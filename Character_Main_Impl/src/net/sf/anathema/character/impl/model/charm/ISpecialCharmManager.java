@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCha
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
@@ -38,4 +39,7 @@ public interface ISpecialCharmManager {
       ILearningCharmGroup group,
       CharmConfiguration arbitrator);
 
+  public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm);
+
+  public boolean hasSpecialCharmConfiguration(ICharm charm);
 }

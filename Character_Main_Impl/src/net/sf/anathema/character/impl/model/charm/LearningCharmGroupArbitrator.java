@@ -43,7 +43,7 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
   public String[] getUncompletedCelestialMartialArtsGroups(ILearningCharmGroup[] groups) {
     Set<String> uncompletedGroups = new HashSet<String>();
     for (ILearningCharmGroup group : groups) {
-      ICharm martialArtsCharm = getBasicCharms(group)[0];
+      ICharm martialArtsCharm = group.getCoreCharms()[0];
       if (!isCelestialStyle(martialArtsCharm) || isCompleted(group)) {
         continue;
       }
@@ -56,7 +56,7 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
 
   public final boolean isCelestialMartialArtsGroupCompleted(ILearningCharmGroup[] groups) {
     for (ILearningCharmGroup group : groups) {
-      ICharm martialArtsCharm = getBasicCharms(group)[0];
+      ICharm martialArtsCharm = group.getCoreCharms()[0];
       if (isCelestialStyle(martialArtsCharm) && isCompleted(group)) {
         return true;
       }
@@ -69,17 +69,6 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
         && MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, martialArtsCharm);
   }
 
-  private ICharm[] getBasicCharms(ICharmGroup group) {
-    ICharm[] allCharms = group.getAllCharms();
-    List<ICharm> charms = new ArrayList<ICharm>();
-    for (ICharm charm : allCharms) {
-      if (!charm.hasAttribute(IExtendedCharmData.EXCLUSIVE_ATTRIBUTE)) {
-        charms.add(charm);
-      }
-    }
-    return charms.toArray(new ICharm[charms.size()]);
-  }
-
   private boolean isBegun(ILearningCharmGroup group) {
     for (ICharm charm : group.getAllCharms()) {
       if (group.isLearned(charm)) {
@@ -90,7 +79,7 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
   }
 
   private boolean isCompleted(ILearningCharmGroup group) {
-    for (ICharm charm : getBasicCharms(group)) {
+    for (ICharm charm : group.getCoreCharms()) {
       if (!group.isLearned(charm)) {
         return false;
       }

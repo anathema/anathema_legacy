@@ -41,46 +41,46 @@ public class CharmConfigurationPersister {
     ICharmConfiguration charmConfiguration = statistics.getCharms();
     ISpecialCharmPersister specialPersister = createSpecialCharmPersister(charmConfiguration);
     for (IIdentificate type : charmConfiguration.getCharacterTypes(true)) {
-      saveTypeCharms(specialPersister, charmConfiguration, type, charmsElement);
+      saveCharms(specialPersister, charmConfiguration, type, charmsElement);
     }
-    saveTypeCharms(specialPersister, charmConfiguration, MartialArtsUtilities.MARTIAL_ARTS, charmsElement);
+    saveCharms(specialPersister, charmConfiguration, MartialArtsUtilities.MARTIAL_ARTS, charmsElement);
     saveCombos(charmsElement, statistics.getCombos());
   }
 
   private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration charmConfiguration) {
-    return new SpecialCharmPersister(
-        charmConfiguration.getSpecialCharms(),
-        charmConfiguration.getCharmIdMap());
+    return new SpecialCharmPersister(charmConfiguration.getSpecialCharms(), charmConfiguration.getCharmIdMap());
   }
 
-  private void saveTypeCharms(
+  private void saveCharms(
       ISpecialCharmPersister specialPersister,
       ICharmConfiguration charmConfiguration,
       IIdentificate type,
       Element charmsElement) {
     for (ILearningCharmGroup group : charmConfiguration.getCharmGroups(type)) {
-      saveCharmGroup(charmsElement, group, specialPersister);
+      if (group.hasLearnedCharms()) {
+        saveCharmGroup(charmsElement, group, specialPersister, charmConfiguration);
+      }
     }
   }
 
-  private void saveCharmGroup(Element charmsElement, ILearningCharmGroup group, ISpecialCharmPersister specialPersister) {
-    ICharm[] creationLearnedCharms = group.getCreationLearnedCharms();
-    ICharm[] experienceLearnedCharms = group.getExperienceLearnedCharms();
-    if (creationLearnedCharms.length + experienceLearnedCharms.length > 0) {
-      Element groupElement = charmsElement.addElement(TAG_CHARMGROUP);
-      groupElement.addAttribute(ATTRIB_NAME, group.getId());
-      groupElement.addAttribute(ATTRIB_TYPE, group.getCharacterType().getId());
-      for (ICharm charm : creationLearnedCharms) {
-        saveCharm(group, specialPersister, groupElement, charm, false);
-      }
-      for (ICharm charm : experienceLearnedCharms) {
-        saveCharm(group, specialPersister, groupElement, charm, true);
-      }
+  private void saveCharmGroup(
+      Element charmsElement,
+      ILearningCharmGroup group,
+      ISpecialCharmPersister specialPersister,
+      ICharmConfiguration charmConfiguration) {
+    Element groupElement = charmsElement.addElement(TAG_CHARMGROUP);
+    groupElement.addAttribute(ATTRIB_NAME, group.getId());
+    groupElement.addAttribute(ATTRIB_TYPE, group.getCharacterType().getId());
+    for (ICharm charm : group.getCreationLearnedCharms()) {
+      saveCharm(charmConfiguration, specialPersister, groupElement, charm, false);
+    }
+    for (ICharm charm : group.getExperienceLearnedCharms()) {
+      saveCharm(charmConfiguration, specialPersister, groupElement, charm, true);
     }
   }
 
   private void saveCharm(
-      ILearningCharmGroup group,
+      ICharmConfiguration charmConfiguration,
       ISpecialCharmPersister specialPersister,
       Element groupElement,
       ICharm charm,
@@ -88,7 +88,7 @@ public class CharmConfigurationPersister {
     Element charmElement = groupElement.addElement(TAG_CHARM);
     charmElement.addAttribute(ATTRIB_NAME, charm.getId());
     charmElement.addAttribute(ATTRIB_EXPERIENCE_LEARNED, String.valueOf(experienceLearned));
-    ISpecialCharmConfiguration specialCharmConfiguration = group.getSpecialCharmConfiguration(charm);
+    ISpecialCharmConfiguration specialCharmConfiguration = charmConfiguration.getSpecialCharmConfiguration(charm);
     if (specialCharmConfiguration != null) {
       Element specialElement = charmElement.addElement(TAG_SPECIAL);
       specialPersister.saveConfiguration(specialElement, specialCharmConfiguration);

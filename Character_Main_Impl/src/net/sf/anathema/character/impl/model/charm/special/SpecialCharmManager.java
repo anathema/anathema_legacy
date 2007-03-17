@@ -1,9 +1,12 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
@@ -17,7 +20,7 @@ import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.health.IPainToleranceProvider;
 
 public class SpecialCharmManager implements ISpecialCharmManager {
-
+  private final Map<ICharm, ISpecialCharmConfiguration> specialConfigurationsByCharm = new HashMap<ICharm, ISpecialCharmConfiguration>();
   private final IHealthConfiguration health;
   private final ICharacterModelContext context;
 
@@ -55,7 +58,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   public void registerPainToleranceCharm(final IPainToleranceCharm visitedCharm, ICharm charm, ILearningCharmGroup group) {
-    final ISpecialCharmConfiguration specialCharmConfiguration = group.getSpecialCharmConfiguration(charm);
+    final ISpecialCharmConfiguration specialCharmConfiguration = getSpecialCharmConfiguration(charm);
     IPainToleranceProvider painToleranceProvider = new IPainToleranceProvider() {
       public int getPainToleranceLevel() {
         int learnCount = specialCharmConfiguration.getCurrentLearnCount();
@@ -63,6 +66,15 @@ public class SpecialCharmManager implements ISpecialCharmManager {
       }
     };
     health.addPainToleranceProvider(painToleranceProvider);
+  }
+
+  public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
+    return specialConfigurationsByCharm.get(charm);
+  }
+
+  @Override
+  public boolean hasSpecialCharmConfiguration(ICharm charm) {
+    return specialConfigurationsByCharm.containsKey(charm);
   }
 
   public void registerSubeffectCharm(
@@ -84,10 +96,14 @@ public class SpecialCharmManager implements ISpecialCharmManager {
         new MultipleEffectCharmConfiguration(context, charm, visited, arbitrator));
   }
 
-  private void addSpecialCharmConfiguration(
-      ICharm charm,
-      ILearningCharmGroup group,
+  public void addSpecialCharmConfiguration(
+      final ICharm charm,
+      final ILearningCharmGroup group,
       ISpecialCharmConfiguration configuration) {
-    group.addSpecialCharmConfiguration(charm, configuration);
+    if (specialConfigurationsByCharm.containsKey(charm)) {
+      throw new IllegalArgumentException("Special configuration already defined for charm " + charm.getId()); //$NON-NLS-1$
+    }
+    specialConfigurationsByCharm.put(charm, configuration);
+    configuration.addSpecialCharmLearnListener(group.createSpecialCharmLearnListenerFor(charm));
   }
 }

@@ -133,7 +133,8 @@ public class CharmConfiguration implements ICharmConfiguration {
     return provider.getSpecialCharms(
         context.getBasicCharacterContext().getRuleSet().getEdition(),
         new MartialArtsLearnableArbitrator(martialArtsCharmTree),
-        getCharmIdMap(), getNativeCharacterType());
+        getCharmIdMap(),
+        getNativeCharacterType());
   }
 
   private void initSpecialCharmConfigurations() {
@@ -187,7 +188,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private ILearningCharmGroup[] createGroups(ICharmGroup[] charmGroups) {
     List<ILearningCharmGroup> newGroups = new ArrayList<ILearningCharmGroup>();
     for (ICharmGroup charmGroup : charmGroups) {
-      newGroups.add(new LearningCharmGroup(getLearnStrategy(), charmGroup, this, learningCharmGroupContainer));
+      newGroups.add(new LearningCharmGroup(getLearnStrategy(), charmGroup, this, learningCharmGroupContainer, manager));
     }
     return newGroups.toArray(new LearningCharmGroup[0]);
   }
@@ -247,9 +248,9 @@ public class CharmConfiguration implements ICharmConfiguration {
   public ICharm[] getCreationLearnedCharms() {
     List<ICharm> allLearnedCharms = new ArrayList<ICharm>();
     for (ILearningCharmGroup group : getAllGroups()) {
-      allLearnedCharms.addAll(Arrays.asList(group.getCreationLearnedCharms()));
+      Collections.addAll(allLearnedCharms, group.getCreationLearnedCharms());
     }
-    return allLearnedCharms.toArray(new ICharm[0]);
+    return allLearnedCharms.toArray(new ICharm[allLearnedCharms.size()]);
   }
 
   public ICharm[] getExperienceLearnedCharms() {
@@ -284,8 +285,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
-    ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
-    return group.getSpecialCharmConfiguration(charm);
+    return manager.getSpecialCharmConfiguration(charm);
   }
 
   private void initCharacterType(ICharmTemplate charmTemplate, IExaltedRuleSet rules, ICharacterType type) {
@@ -330,6 +330,9 @@ public class CharmConfiguration implements ICharmConfiguration {
           group.forgetAll();
         }
       }
+    }
+    for (ILearningCharmGroup group : martialArtsGroups) {
+      group.unlearnExclusives();
     }
   }
 

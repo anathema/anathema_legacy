@@ -1,13 +1,17 @@
 package net.sf.anathema.character.impl.model.charm;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
@@ -26,16 +30,17 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   private final Set<ICharm> charmsLearnedOnCreation = new HashSet<ICharm>();
   private final Set<ICharm> charmsLearnedWithExperience = new HashSet<ICharm>();
   private final GenericControl<ICharmLearnListener> control = new GenericControl<ICharmLearnListener>();
-  private final Map<ICharm, ISpecialCharmConfiguration> specialConfigurationsByCharm = new HashMap<ICharm, ISpecialCharmConfiguration>();
   private final IExtendedCharmLearnableArbitrator learnArbitrator;
   private final ICharmLearnStrategy learnStrategy;
   private final ILearningCharmGroupContainer charmGroupContainer;
+  private final ISpecialCharmManager manager;
 
   public LearningCharmGroup(
       ICharmLearnStrategy learnStrategy,
       ICharmGroup simpleCharmGroup,
       IExtendedCharmLearnableArbitrator arbitrator,
-      ILearningCharmGroupContainer charmGroupContainer) {
+      ILearningCharmGroupContainer charmGroupContainer,
+      ISpecialCharmManager manager) {
     super(
         simpleCharmGroup.getCharacterType(),
         simpleCharmGroup.getId(),
@@ -44,10 +49,11 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     this.learnStrategy = learnStrategy;
     this.learnArbitrator = arbitrator;
     this.charmGroupContainer = charmGroupContainer;
+    this.manager = manager;
   }
 
   public void toggleLearned(ICharm charm) {
-    if (specialConfigurationsByCharm.containsKey(charm)) {
+    if (manager.hasSpecialCharmConfiguration(charm)) {
       return;
     }
     learnStrategy.toggleLearned(this, charm);
@@ -100,7 +106,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   public void learnCharmNoParents(ICharm charm, boolean experienced) {
-    ISpecialCharmConfiguration specialCharmConfiguration = getSpecialCharmConfiguration(charm);
+    ISpecialCharmConfiguration specialCharmConfiguration = manager.getSpecialCharmConfiguration(charm);
     if (specialCharmConfiguration instanceof IMultiLearnableCharmConfiguration) {
       IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) specialCharmConfiguration;
       IDefaultTrait category = configuration.getCategory();
@@ -218,30 +224,6 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     return charmsLearnedOnCreation.contains(charm);
   }
 
-  public void addSpecialCharmConfiguration(final ICharm charm, ISpecialCharmConfiguration configuration) {
-    if (specialConfigurationsByCharm.containsKey(charm)) {
-      throw new IllegalArgumentException("Special configuration already defined for charm " + charm.getId()); //$NON-NLS-1$
-    }
-    specialConfigurationsByCharm.put(charm, configuration);
-    configuration.addSpecialCharmLearnListener(new ISpecialCharmLearnListener() {
-      public void learnCountChanged(int newValue) {
-        if (newValue == 0) {
-          forgetCharm(charm, charmsLearnedWithExperience.contains(charm));
-        }
-        else {
-          if (!isLearned(charm)) {
-            learnStrategy.toggleLearned(LearningCharmGroup.this, charm);
-          }
-          fireRecalculateRequested();
-        }
-      }
-    });
-  }
-
-  public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
-    return specialConfigurationsByCharm.get(charm);
-  }
-
   public boolean isUnlearnable(ICharm charm) {
     return !learnArbitrator.isCompulsiveCharm(charm) && learnStrategy.isUnlearnable(this, charm);
   }
@@ -254,6 +236,49 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     forgetCloneCharms = new HashSet<ICharm>(charmsLearnedOnCreation);
     for (ICharm charm : forgetCloneCharms) {
       forgetCharm(charm, false);
+    }
+  }
+
+  @Override
+  public boolean hasLearnedCharms() {
+    return charmsLearnedOnCreation.size() + charmsLearnedWithExperience.size() > 0;
+  }
+
+  public ISpecialCharmLearnListener createSpecialCharmLearnListenerFor(final ICharm charm) {
+    return new ISpecialCharmLearnListener() {
+      public void learnCountChanged(int newValue) {
+        if (newValue == 0) {
+          forgetCharm(charm, charmsLearnedWithExperience.contains(charm));
+        }
+        else {
+          if (!isLearned(charm)) {
+            learnStrategy.toggleLearned(LearningCharmGroup.this, charm);
+          }
+          fireRecalculateRequested();
+        }
+      }
+    };
+  }
+
+  @Override
+  public ICharm[] getCoreCharms() {
+    ICharm[] allCharms = getAllCharms();
+    List<ICharm> charms = new ArrayList<ICharm>();
+    for (ICharm charm : allCharms) {
+      if (!charm.hasAttribute(IExtendedCharmData.EXCLUSIVE_ATTRIBUTE)) {
+        charms.add(charm);
+      }
+    }
+    return charms.toArray(new ICharm[charms.size()]);
+  }
+
+  @Override
+  public void unlearnExclusives() {
+    List<ICharm> exclusiveCharms = new ArrayList<ICharm>();
+    Collections.addAll(exclusiveCharms, getAllCharms());
+    exclusiveCharms.removeAll(Arrays.asList(getCoreCharms()));
+    for (ICharm charm : exclusiveCharms) {
+      forgetCharm(charm, isLearned(charm, true));
     }
   }
 }

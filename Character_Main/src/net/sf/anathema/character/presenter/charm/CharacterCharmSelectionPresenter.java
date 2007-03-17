@@ -25,6 +25,7 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
+import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -219,26 +220,26 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private ICharmLearnListener createCharmLearnListener(final ICharmSelectionView selectionView) {
-    ICharmLearnListener charmLearnListener = new ICharmLearnListener() {
+    ICharmLearnListener charmLearnListener = new CharmLearnAdapter() {
+      @Override
       public void charmLearned(ICharm charm) {
         setCharmVisuals(charm, selectionView);
       }
 
+      @Override
       public void charmForgotten(ICharm charm) {
         setCharmVisuals(charm, selectionView);
       }
 
+      @Override
       public void charmNotLearnable(ICharm charm) {
         Toolkit.getDefaultToolkit().beep();
       }
 
+      @Override
       public void charmNotUnlearnable(ICharm charm) {
         Toolkit.getDefaultToolkit().beep();
-      }
-
-      public void recalculateRequested() {
-        // Nothing to do
-      }
+      }     
     };
     return charmLearnListener;
   }
