@@ -5,6 +5,10 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 
 public interface IMartialArtsSpecialCharms {
 
+  public static final ISpecialCharm DRAGON_CLAW_ELEMENTAL_STRIKE = new MultipleEffectCharm(
+      "Terrestrial.Dragon-ClawElementalStrike", //$NON-NLS-1$
+      new String[] { "Air", "Earth", "Fire", "Water", "Wood" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+
   public static final ISpecialCharm TYPE_EXALT_WAYS = new MultipleEffectCharm("Sidereal.(Type)ExaltWays", new String[] { //$NON-NLS-1$
       "SolarDawn", //$NON-NLS-1$
           "SolarZenith", //$NON-NLS-1$

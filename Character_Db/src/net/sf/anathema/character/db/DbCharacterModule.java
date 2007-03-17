@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackground
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
@@ -61,8 +60,14 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    ISpecialCharm[] specialCharms = new ISpecialCharm[] { IDbSpecialCharms.OX_BODY_TECHNIQUE };
-    characterGenerics.getCharmProvider().setSpecialCharms(CharacterType.DB, ExaltedEdition.FirstEdition, specialCharms);
+    characterGenerics.getCharmProvider().setSpecialCharms(
+        CharacterType.DB,
+        ExaltedEdition.FirstEdition,
+        IDbSpecialCharms.OX_BODY_TECHNIQUE);
+    characterGenerics.getCharmProvider().setSpecialCharms(
+        CharacterType.DB,
+        ExaltedEdition.SecondEdition,
+        IDbSpecialCharms.DRAGON_CLAW_ELEMENTAL_STRIKE);
     characterGenerics.getCasteCollectionRegistry().register(CharacterType.DB, new CasteCollection(DBAspect.values()));
   }
 
