@@ -19,10 +19,6 @@ public interface ILearningCharmGroup extends ICharmGroup, IBasicLearnCharmGroup 
 
   public void addSpecialCharmConfiguration(ICharm charm, ISpecialCharmConfiguration configuration);
 
-  public int getCreationCharmLearnCount();
-
-  public int getCreationLearnCount(ICharm charm);
-
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm);
 
   public boolean isUnlearnable(ICharm charm);

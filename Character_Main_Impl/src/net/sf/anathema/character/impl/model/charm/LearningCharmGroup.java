@@ -207,6 +207,10 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     return learnStrategy.isLearned(this, charm);
   }
 
+  /**
+   * @parame experienced true to learn whether the charm is learned on experience, false if interested in creation
+   *         learning.
+   */
   public boolean isLearned(ICharm charm, boolean experienced) {
     if (experienced) {
       return charmsLearnedWithExperience.contains(charm);
@@ -232,21 +236,6 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
         }
       }
     });
-  }
-
-  public int getCreationCharmLearnCount() {
-    int count = 0;
-    for (ICharm charm : getCreationLearnedCharms()) {
-      count += getCreationLearnCount(charm);
-    }
-    return count;
-  }
-
-  public int getCreationLearnCount(ICharm charm) {
-    if (specialConfigurationsByCharm.containsKey(charm)) {
-      return specialConfigurationsByCharm.get(charm).getCreationLearnCount();
-    }
-    return isLearned(charm, false) ? 1 : 0;
   }
 
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
