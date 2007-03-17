@@ -32,12 +32,8 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
     }
     List<ICharm> charms = new ArrayList<ICharm>();
     for (ICharm charm : allCharms) {
-      if (charm.hasAttribute(IExtendedCharmData.EXCLUSIVE_ATTRIBUTE)) {
-        if (data.getCharacterType() == charm.getCharacterType()) {
-          charms.add(charm);
-        }
-      }
-      else {
+      if (!charm.hasAttribute(IExtendedCharmData.EXCLUSIVE_ATTRIBUTE)
+          || data.getCharacterType() == charm.getCharacterType()) {
         charms.add(charm);
       }
     }
@@ -47,19 +43,12 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
   public String[] getUncompletedCelestialMartialArtsGroups(ILearningCharmGroup[] groups) {
     Set<String> uncompletedGroups = new HashSet<String>();
     for (ILearningCharmGroup group : groups) {
-      ICharm[] basicCharms = getBasicCharms(group);
-      if (!isCelestialStyle(basicCharms[0])) {
+      ICharm martialArtsCharm = getBasicCharms(group)[0];
+      if (!isCelestialStyle(martialArtsCharm) || isCompleted(group)) {
         continue;
       }
-      if (isCompleted(group)) {
-        continue;
-      }
-      boolean begun = false;
-      for (ICharm charm : basicCharms) {
-        begun |= group.isLearned(charm);
-      }
-      if (begun) {
-        uncompletedGroups.add(basicCharms[0].getGroupId());
+      if (isBegun(group)) {
+        uncompletedGroups.add(group.getId());
       }
     }
     return uncompletedGroups.toArray(new String[uncompletedGroups.size()]);
@@ -89,6 +78,15 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
       }
     }
     return charms.toArray(new ICharm[charms.size()]);
+  }
+
+  private boolean isBegun(ILearningCharmGroup group) {
+    for (ICharm charm : group.getAllCharms()) {
+      if (group.isLearned(charm)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   private boolean isCompleted(ILearningCharmGroup group) {
