@@ -33,6 +33,10 @@ public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager<ISVGSp
       SVGSVGElement rootElement = document.getRootElement();
       Element viewElement = specialView.initGui(document, boundsCalculator);
       Rectangle bounds = getGroupBounds(specialView.getNodeId());
+      if (bounds == null) {
+        specialView.setVisible(false);
+        return;
+      }
       float xPosition = bounds.x / rootElement.getScreenCTM().getA();
       float yPosition = (bounds.y + bounds.height + 5) / rootElement.getScreenCTM().getD();
       setAttribute(viewElement, SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" + xPosition + "," + yPosition + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -42,6 +46,9 @@ public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager<ISVGSp
 
   private Rectangle getGroupBounds(final String nodeId) {
     SVGGElement svgElement = (SVGGElement) canvas.getElementById(nodeId);
+    if (svgElement == null) {
+      return null;
+    }
     return boundsCalculator.getBounds(svgElement);
   }
 
