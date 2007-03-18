@@ -53,6 +53,16 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     trait.setCurrentValue(0);
   }
 
+  @Override
+  public void learn(boolean experienced) {
+    if (experienced) {
+      trait.setExperiencedValue(1);
+    }
+    else {
+      trait.setCreationValue(1);
+    }
+  }
+
   public int getCreationLearnCount() {
     return trait.getCreationValue();
   }

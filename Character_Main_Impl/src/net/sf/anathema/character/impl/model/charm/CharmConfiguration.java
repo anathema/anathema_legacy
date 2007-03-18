@@ -146,7 +146,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private ILearningCharmGroup[] createGroups(ICharmGroup[] charmGroups) {
     List<ILearningCharmGroup> newGroups = new ArrayList<ILearningCharmGroup>();
     for (ICharmGroup charmGroup : charmGroups) {
-      newGroups.add(new LearningCharmGroup(getLearnStrategy(), charmGroup, this, learningCharmGroupContainer, manager));
+      newGroups.add(new LearningCharmGroup(getLearnStrategy(), charmGroup, this, learningCharmGroupContainer));
     }
     return newGroups.toArray(new LearningCharmGroup[0]);
   }

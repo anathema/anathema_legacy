@@ -62,6 +62,17 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     }
   }
 
+  @Override
+  public void learn(boolean experienced) {
+    OxBodyCategory trait = getCategories()[0];
+    if (experienced) {
+      trait.setExperiencedValue(1);
+    }
+    else {
+      trait.setCreationValue(1);
+    }
+  }
+
   public OxBodyCategory[] getCategories() {
     return categories;
   }

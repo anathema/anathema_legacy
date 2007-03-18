@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.charm.LearningCharmGroup;
-import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -34,10 +33,7 @@ public class LearningCharmGroupTest extends BasicTestCase {
     CharmTree charmTree = new CharmTree(new DummyCharmTemplate(), ExaltedRuleSet.CoreRules);
     CharmGroup group = new CharmGroup(CharacterType.SOLAR, groupId, charmTree.getAllCharmsForGroup(groupId).toArray(
         new ICharm[0]), false);
-    return new LearningCharmGroup(learnSrategy, group, learnableArbitrator, container, new SpecialCharmManager(
-        null,
-        null,
-        null));
+    return new LearningCharmGroup(learnSrategy, group, learnableArbitrator, container);
   }
 
   private LearningCharmGroup createSolarGroup(
@@ -47,10 +43,7 @@ public class LearningCharmGroupTest extends BasicTestCase {
     ICharmLearnStrategy learnSrategy = new CreationCharmLearnStrategy();
     CharmGroup group = new CharmGroup(CharacterType.SOLAR, groupId, charmTree.getAllCharmsForGroup(groupId).toArray(
         new ICharm[0]), false);
-    return new LearningCharmGroup(learnSrategy, group, learnableArbitrator, container, new SpecialCharmManager(
-        null,
-        null,
-        null));
+    return new LearningCharmGroup(learnSrategy, group, learnableArbitrator, container);
   }
 
   public void testIsLearnedCreationCharmOnCreation() throws Exception {

@@ -9,7 +9,5 @@ public interface ISpecialCharmManager {
 
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm);
 
-  public boolean hasSpecialCharmConfiguration(ICharm charm);
-
   public void registerSpecialCharmConfiguration(ISpecialCharm specialCharm, ICharm charm, ILearningCharmGroup group);
 }

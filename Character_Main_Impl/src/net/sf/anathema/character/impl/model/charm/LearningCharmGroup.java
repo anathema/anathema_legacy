@@ -12,15 +12,9 @@ import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.character.model.charm.OxBodyCategory;
-import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
-import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 
@@ -32,14 +26,12 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   private final IExtendedCharmLearnableArbitrator learnArbitrator;
   private final ICharmLearnStrategy learnStrategy;
   private final ILearningCharmGroupContainer charmGroupContainer;
-  private final ISpecialCharmManager manager;
 
   public LearningCharmGroup(
       ICharmLearnStrategy learnStrategy,
       ICharmGroup simpleCharmGroup,
       IExtendedCharmLearnableArbitrator arbitrator,
-      ILearningCharmGroupContainer charmGroupContainer,
-      ISpecialCharmManager manager) {
+      ILearningCharmGroupContainer charmGroupContainer) {
     super(
         simpleCharmGroup.getCharacterType(),
         simpleCharmGroup.getId(),
@@ -48,13 +40,9 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     this.learnStrategy = learnStrategy;
     this.learnArbitrator = arbitrator;
     this.charmGroupContainer = charmGroupContainer;
-    this.manager = manager;
   }
 
   public void toggleLearned(ICharm charm) {
-    if (manager.hasSpecialCharmConfiguration(charm)) {
-      return;
-    }
     learnStrategy.toggleLearned(this, charm);
   }
 
@@ -105,17 +93,6 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   public void learnCharmNoParents(ICharm charm, boolean experienced) {
-    ISpecialCharmConfiguration specialCharmConfiguration = manager.getSpecialCharmConfiguration(charm);
-    if (specialCharmConfiguration instanceof IMultiLearnableCharmConfiguration) {
-      IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) specialCharmConfiguration;
-      IDefaultTrait category = configuration.getCategory();
-      ensureMinimumValue(experienced, configuration, category);
-    }
-    if (specialCharmConfiguration instanceof IOxBodyTechniqueConfiguration) {
-      IOxBodyTechniqueConfiguration configuration = (IOxBodyTechniqueConfiguration) specialCharmConfiguration;
-      OxBodyCategory category = configuration.getCategories()[0];
-      ensureMinimumValue(experienced, configuration, category);
-    }
     if (experienced) {
       charmsLearnedWithExperience.add(charm);
     }
@@ -123,19 +100,6 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
       charmsLearnedOnCreation.add(charm);
     }
     fireCharmLearned(charm);
-  }
-
-  private void ensureMinimumValue(boolean experienced, ISpecialCharmConfiguration configuration, IDefaultTrait category) {
-    if (experienced) {
-      if (configuration.getCurrentLearnCount() < 1) {
-        category.setExperiencedValue(1);
-      }
-    }
-    else {
-      if (configuration.getCreationLearnCount() < 1) {
-        category.setCreationValue(1);
-      }
-    }
   }
 
   private void forgetChildren(ICharm charm, boolean experienced) {
@@ -186,7 +150,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     });
   }
 
-  private void fireRecalculateRequested() {
+  public void fireRecalculateRequested() {
     control.forAllDo(new IClosure<ICharmLearnListener>() {
       public void execute(ICharmLearnListener input) {
         input.recalculateRequested();
@@ -239,22 +203,6 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   @Override
   public boolean hasLearnedCharms() {
     return charmsLearnedOnCreation.size() + charmsLearnedWithExperience.size() > 0;
-  }
-
-  public ISpecialCharmLearnListener createSpecialCharmLearnListenerFor(final ICharm charm) {
-    return new ISpecialCharmLearnListener() {
-      public void learnCountChanged(int newValue) {
-        if (newValue == 0) {
-          forgetCharm(charm, charmsLearnedWithExperience.contains(charm));
-        }
-        else {
-          if (!isLearned(charm)) {
-            learnStrategy.toggleLearned(LearningCharmGroup.this, charm);
-          }
-          fireRecalculateRequested();
-        }
-      }
-    };
   }
 
   @Override

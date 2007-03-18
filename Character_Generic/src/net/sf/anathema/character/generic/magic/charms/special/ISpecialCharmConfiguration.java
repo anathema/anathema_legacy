@@ -12,4 +12,6 @@ public interface ISpecialCharmConfiguration {
   public int getCurrentLearnCount();
 
   public void forget();
+
+  public void learn(boolean experienced);
 }
