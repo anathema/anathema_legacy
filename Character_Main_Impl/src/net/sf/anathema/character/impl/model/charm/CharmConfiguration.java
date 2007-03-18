@@ -143,17 +143,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     }
   }
 
-  public boolean contains(ICharm charm) {
-    ICharacterType characterType = charm.getCharacterType();
-    ICharm[] allCharms = alienTreesByType.get(characterType).getAllCharms();
-    for (ICharm alienCharm : allCharms) {
-      if (alienCharm == charm) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   private ILearningCharmGroup[] createGroups(ICharmGroup[] charmGroups) {
     List<ILearningCharmGroup> newGroups = new ArrayList<ILearningCharmGroup>();
     for (ICharmGroup charmGroup : charmGroups) {
