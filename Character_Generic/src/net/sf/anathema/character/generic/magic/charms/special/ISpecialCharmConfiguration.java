@@ -10,4 +10,6 @@ public interface ISpecialCharmConfiguration {
   public ICharm getCharm();
 
   public int getCurrentLearnCount();
+
+  public void forget();
 }

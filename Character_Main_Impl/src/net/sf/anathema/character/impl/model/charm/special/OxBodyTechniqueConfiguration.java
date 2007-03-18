@@ -55,6 +55,13 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     this.healthLevelProvider = new OxBodyTechniqueHealthLevelProvider(categories);
   }
 
+  @Override
+  public void forget() {
+    for (OxBodyCategory category : getCategories()) {
+      category.setCurrentValue(0);
+    }
+  }
+
   public OxBodyCategory[] getCategories() {
     return categories;
   }

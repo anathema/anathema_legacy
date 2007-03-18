@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisit
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
+import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
@@ -37,13 +38,21 @@ public class SpecialCharmManager implements ISpecialCharmManager {
 
   private void addSpecialCharmConfiguration(
       final ICharm charm,
-      final ILearningCharmGroup group,
-      ISpecialCharmConfiguration configuration) {
+      ILearningCharmGroup group,
+      final ISpecialCharmConfiguration configuration) {
     if (specialConfigurationsByCharm.containsKey(charm)) {
       throw new IllegalArgumentException("Special configuration already defined for charm " + charm.getId()); //$NON-NLS-1$
     }
     specialConfigurationsByCharm.put(charm, configuration);
     configuration.addSpecialCharmLearnListener(group.createSpecialCharmLearnListenerFor(charm));
+    group.addCharmLearnListener(new CharmLearnAdapter() {
+      @Override
+      public void charmForgotten(ICharm forgottenCharm) {
+        if (charm.equals(forgottenCharm)) {
+          configuration.forget();
+        }
+      }
+    });
   }
 
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
@@ -124,5 +133,5 @@ public class SpecialCharmManager implements ISpecialCharmManager {
 
   private void registerSubeffectCharm(ISubeffectCharm visited, ICharm charm, ILearningCharmGroup group) {
     addSpecialCharmConfiguration(charm, group, new SubeffectCharmConfiguration(context, charm, visited, arbitrator));
-  }
+  }  
 }

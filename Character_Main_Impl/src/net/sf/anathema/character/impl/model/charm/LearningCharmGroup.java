@@ -141,9 +141,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   private void forgetChildren(ICharm charm, boolean experienced) {
     for (ICharm child : charm.getLearnFollowUpCharms(learnArbitrator)) {
       ILearningCharmGroup childGroup = charmGroupContainer.getLearningCharmGroup(child);
-      if (childGroup.isLearned(child)) {
-        childGroup.forgetCharm(child, experienced);
-      }
+      childGroup.forgetCharm(child, experienced);
     }
   }
 

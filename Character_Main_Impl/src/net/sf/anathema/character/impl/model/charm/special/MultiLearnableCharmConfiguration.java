@@ -3,14 +3,13 @@ package net.sf.anathema.character.impl.model.charm.special;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
@@ -25,9 +24,9 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
 
   public MultiLearnableCharmConfiguration(
       final ICharacterModelContext context,
-      ICharm charm,
+      final ICharm charm,
       final IMultiLearnableCharm specialCharm,
-      final IExtendedCharmLearnableArbitrator arbitrator) {
+      final ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
     this.trait = new LimitedTrait(new TraitType("SpecialCharm"), SimpleTraitTemplate.createStaticLimitedTemplate( //$NON-NLS-1$
         0,
@@ -38,7 +37,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
         if (incrementedValue == 0) {
           return true;
         }
-        boolean learnable = arbitrator.isLearnable(getCharm());
+        boolean learnable = arbitrator.isLearnable(charm);
         return learnable && allowedRange.contains(incrementedValue);
       }
     }, context.getTraitContext());
@@ -47,17 +46,11 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
         fireLearnCountChanged(newValue);
       }
     });
-    arbitrator.addCharmLearnListener(new CharmLearnAdapter() {
-      @Override
-      public void charmForgotten(ICharm forgottenCharm) {
-        if (!forgottenCharm.getId().equals(getCharm().getId())) {
-          return;
-        }
-        if (trait.getCurrentValue() != 0) {
-          trait.setCurrentValue(0);
-        }
-      }
-    });
+  }
+
+  @Override
+  public void forget() {
+    trait.setCurrentValue(0);
   }
 
   public int getCreationLearnCount() {

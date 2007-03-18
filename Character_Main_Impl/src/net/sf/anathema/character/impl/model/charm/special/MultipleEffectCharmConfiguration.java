@@ -34,6 +34,13 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
     }
   }
 
+  @Override
+  public void forget() {
+    for (ISubeffect effect : subeffects) {
+      effect.setLearned(false);
+    }
+  }
+
   private void fireLearnCountChanged() {
     control.forAllDo(new IClosure<ISpecialCharmLearnListener>() {
       public void execute(ISpecialCharmLearnListener input) {
