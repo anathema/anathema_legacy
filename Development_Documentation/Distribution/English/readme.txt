@@ -56,7 +56,8 @@ that a proper directory is specified at startup, using the '-Drepository' parame
 to store files in the folder AnathemaRepository on drive C.
 The shell script takes care of this.
 
-Anathema needs at least Java Runtime Environment 6.0 to run.
+Anathema needs at least Java Runtime Environment (JRE) 5.0 to run.
+For the Windows executable, you will need JRE 6.0.
 To determine your version please type "java -version". 
 You can always get the most up to date version at "http//java.sun.com".
 

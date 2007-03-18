@@ -1,7 +1,5 @@
 Q: I'm trying to run Anathema on a Mac, but it won't work.
-A: Java 6 is not yet available for Mac OS X computers.
-	You can use Anathema 1.0 on Java 5. Here's how:
-	(Thanks to Nadine, Four Willows Weeping and wordman)
+A: (Thanks to Nadine, Four Willows Weeping and wordman)
    Macs do support Java 5 on Tiger (Mac OS 10.4).  
    However, it's an additional package available at:
    http://www.apple.com/support/downloads/java2se50release1.html   
