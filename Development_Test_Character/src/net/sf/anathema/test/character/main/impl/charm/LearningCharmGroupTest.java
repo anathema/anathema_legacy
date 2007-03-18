@@ -34,7 +34,10 @@ public class LearningCharmGroupTest extends BasicTestCase {
     CharmTree charmTree = new CharmTree(new DummyCharmTemplate(), ExaltedRuleSet.CoreRules);
     CharmGroup group = new CharmGroup(CharacterType.SOLAR, groupId, charmTree.getAllCharmsForGroup(groupId).toArray(
         new ICharm[0]), false);
-    return new LearningCharmGroup(learnSrategy, group, learnableArbitrator, container, new SpecialCharmManager(null, null));
+    return new LearningCharmGroup(learnSrategy, group, learnableArbitrator, container, new SpecialCharmManager(
+        null,
+        null,
+        null));
   }
 
   private LearningCharmGroup createSolarGroup(
@@ -44,7 +47,10 @@ public class LearningCharmGroupTest extends BasicTestCase {
     ICharmLearnStrategy learnSrategy = new CreationCharmLearnStrategy();
     CharmGroup group = new CharmGroup(CharacterType.SOLAR, groupId, charmTree.getAllCharmsForGroup(groupId).toArray(
         new ICharm[0]), false);
-    return new LearningCharmGroup(learnSrategy, group, learnableArbitrator, container, new SpecialCharmManager(null, null));
+    return new LearningCharmGroup(learnSrategy, group, learnableArbitrator, container, new SpecialCharmManager(
+        null,
+        null,
+        null));
   }
 
   public void testIsLearnedCreationCharmOnCreation() throws Exception {

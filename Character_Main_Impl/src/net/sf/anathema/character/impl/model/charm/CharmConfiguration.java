@@ -25,14 +25,8 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
-import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
@@ -91,7 +85,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       ICharacterModelContext context,
       ITemplateRegistry registry,
       ICharmProvider provider) {
-    this.manager = new SpecialCharmManager(health, context);
+    this.manager = new SpecialCharmManager(this, health, context);
     this.context = context;
     this.provider = provider;
     IExaltedRuleSet rules = context.getBasicCharacterContext().getRuleSet();
@@ -144,34 +138,9 @@ public class CharmConfiguration implements ICharmConfiguration {
       if (charm == null) {
         continue;
       }
-      initSpecialCharmConfiguration(specialCharm, charm);
+      ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
+      manager.registerSpecialCharmConfiguration(specialCharm, charm, group);
     }
-  }
-
-  private void initSpecialCharmConfiguration(final ISpecialCharm specialCharm, final ICharm charm) {
-    final ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
-    specialCharm.accept(new ISpecialCharmVisitor() {
-      public void visitOxBodyTechnique(IOxBodyTechniqueCharm visitedCharm) {
-        IGenericTrait relevantTrait = context.getTraitCollection().getTrait(visitedCharm.getRelevantTrait());
-        manager.registerOxBodyTechnique(visitedCharm, charm, relevantTrait, group);
-      }
-
-      public void visitMultiLearnableCharm(IMultiLearnableCharm visitedCharm) {
-        manager.registerMultiLearnableCharm(visitedCharm, charm, group, CharmConfiguration.this);
-      }
-
-      public void visitPainToleranceCharm(IPainToleranceCharm visitedCharm) {
-        manager.registerPainToleranceCharm(visitedCharm, charm, group);
-      }
-
-      public void visitSubeffectCharm(ISubeffectCharm visitedCharm) {
-        manager.registerSubeffectCharm(visitedCharm, charm, group, CharmConfiguration.this);
-      }
-
-      public void visitMultipleEffectCharm(IMultipleEffectCharm visitedCharm) {
-        manager.registerEffectMultilearnableCharm(visitedCharm, charm, group, CharmConfiguration.this);
-      }
-    });
   }
 
   public boolean contains(ICharm charm) {
