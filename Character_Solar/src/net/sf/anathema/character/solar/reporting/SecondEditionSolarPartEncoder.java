@@ -2,9 +2,7 @@ package net.sf.anathema.character.solar.reporting;
 
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.common.anima.AnimaTableEncoder;
 import net.sf.anathema.character.reporting.sheet.page.AbstractSecondEditionExaltPdfPartEncoder;
-import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionSolarPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
@@ -18,12 +16,7 @@ public class SecondEditionSolarPartEncoder extends AbstractSecondEditionExaltPdf
   }
 
   @Override
-  protected IPdfTableEncoder getAnimaTableEncoder() {
-    return new AnimaTableEncoder(getResources(), getBaseFont(), getFontSize());
-  }
-
-  @Override
-  protected int getAnimaPowerCount() {
-    return 3;
+  public IPdfContentBoxEncoder getAnimaEncoder() {
+    return new SolarAnimaEncoderFactory(getResources(), getBaseFont(), getSymbolBaseFont()).createAnimaEncoder();
   }
 }

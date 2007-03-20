@@ -2,9 +2,11 @@ package net.sf.anathema.character.reporting.sheet.page;
 
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 
 public interface IPdfPartEncoder {
+  public static final int FONT_SIZE = IVoidStateFormatConstants.FONT_SIZE - 1;
 
   public IPdfContentBoxEncoder getAnimaEncoder();
 
