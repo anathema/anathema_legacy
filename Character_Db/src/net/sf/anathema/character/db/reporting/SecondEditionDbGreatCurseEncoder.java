@@ -53,7 +53,7 @@ public class SecondEditionDbGreatCurseEncoder implements IPdfContentBoxEncoder {
       virtue = resources.getString("Sheet.GreatCurse.UnknownVirtue"); //$NON-NLS-1$
     }
     String aspect = getAspectString(character, isRootSelected);
-    String message = resources.getString("Sheet.GreatCurse.Message", virtue, aspect); //$NON-NLS-1$
+    String message = resources.getString("Sheet.GreatCurse.Message.SecondEditon", virtue, aspect); //$NON-NLS-1$
     Phrase phrase = new Phrase(message, font);
     PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
   }
