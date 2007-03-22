@@ -7,15 +7,15 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 
-public interface IGenericCharacter extends ILimitationContext, IMagicCollection {
+public interface IGenericCharacter extends ILimitationContext, IMagicCollection, IGenericCharmConfiguration {
 
   public boolean isLearned(IMagic magic);
 
@@ -50,10 +50,6 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection 
   public IGenericCombo[] getCombos();
 
   public boolean isExperienced();
-
-  public boolean isRequirementFulfilled(ICharmAttributeRequirement requirement);
-
-  public String[] getUncompletedCelestialMartialArtsGroups();
 
   public int getPainTolerance();
 

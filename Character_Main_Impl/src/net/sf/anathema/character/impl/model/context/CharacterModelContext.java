@@ -12,8 +12,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
-import net.sf.anathema.character.generic.impl.magic.charm.GenericCharmConfiguration;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.CreationComboLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.CreationSpellLearnStrategy;
@@ -29,10 +29,7 @@ import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrateg
 import net.sf.anathema.character.model.ISpellLearnStrategy;
 import net.sf.anathema.character.model.charm.learn.IComboLearnStrategy;
 
-public class CharacterModelContext extends GenericCharmConfiguration implements
-    ICharacterModelContext,
-    ICharmContext,
-    ITraitContext {
+public class CharacterModelContext implements ICharacterModelContext, ICharmContext, ITraitContext {
 
   private final ProxyTraitValueStrategy traitValueStrategy = new ProxyTraitValueStrategy(
       new CreationTraitValueStrategy());
@@ -47,7 +44,6 @@ public class CharacterModelContext extends GenericCharmConfiguration implements
   private final IBasicCharacterData characterData;
 
   public CharacterModelContext(IGenericCharacter character) {
-    super(character);
     this.character = character;
     this.characterData = new BasicCharacterContext(character);
   }
@@ -121,5 +117,13 @@ public class CharacterModelContext extends GenericCharmConfiguration implements
 
   public IBasicCharacterData getBasicCharacterContext() {
     return characterData;
+  }
+
+  public final boolean isRequirementFulfilled(ICharmAttributeRequirement requirement) {
+    return character.isRequirementFulfilled(requirement);
+  }
+
+  public final String[] getUncompletedCelestialMartialArtsGroups() {
+    return character.getUncompletedCelestialMartialArtsGroups();
   }
 }
