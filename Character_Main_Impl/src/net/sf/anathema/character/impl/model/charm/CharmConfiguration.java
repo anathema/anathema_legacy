@@ -374,7 +374,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       }
       if (!getCharmTemplate(getNativeCharacterType()).getMartialArtsRules().isCharmAllowed(
           charm,
-          context.getCharmContext(),
+          context.getCharmContext().getCharmConfiguration(),
           context.getBasicCharacterContext().isExperienced())) {
         return false;
       }

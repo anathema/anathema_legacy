@@ -12,8 +12,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
+import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.CreationComboLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.CreationSpellLearnStrategy;
@@ -87,10 +86,6 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
     return character;
   }
 
-  public boolean isLearned(ICharm charm) {
-    return character.isLearned(charm);
-  }
-
   public IAdditionalRules getAdditionalRules() {
     return character.getTemplate().getAdditionalRules();
   }
@@ -119,11 +114,8 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
     return characterData;
   }
 
-  public final boolean isRequirementFulfilled(ICharmAttributeRequirement requirement) {
-    return character.isRequirementFulfilled(requirement);
-  }
-
-  public final String[] getUncompletedCelestialMartialArtsGroups() {
-    return character.getUncompletedCelestialMartialArtsGroups();
+  @Override
+  public IGenericCharmConfiguration getCharmConfiguration() {
+    return character;
   }
 }
