@@ -52,7 +52,7 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
     for (AbilityType abilityType : AbilityType.getAbilityTypes(ExaltedEdition.SecondEdition)) {
       table.addCell(createHeaderCell(directContent, abilityType));
     }
-    for (String genericId : CharmUtilities.SOLAR_EXCELLENCIES) {
+    for (String genericId : CharmUtilities.getGenericCharmIdsFor(character.getTemplate().getTemplateType().getCharacterType())) {
       Phrase charmPhrase = new Phrase(resources.getString(genericId), font);
       table.addCell(new TableCell(charmPhrase, Rectangle.NO_BORDER));
       for (AbilityType abilityType : AbilityType.getAbilityTypes(ExaltedEdition.SecondEdition)) {
