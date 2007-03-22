@@ -61,7 +61,7 @@ public enum CharacterType implements ICharacterType {
   public abstract void accept(ICharacterTypeVisitor visitor);
 
   public static ICharacterType getById(String id) {
-    for (CharacterType type : values()) {
+    for (ICharacterType type : values()) {
       if (type.getId().equals(id)) {
         return type;
       }
@@ -74,14 +74,14 @@ public enum CharacterType implements ICharacterType {
     Collections.addAll(types, values());
     types.remove(MORTAL);
     types.remove(DRAGON_KING);
-    return types.toArray(new CharacterType[types.size()]);
+    return types.toArray(new ICharacterType[types.size()]);
   }
 
   public static ICharacterType[] getCelestialExaltTypes() {
     List<ICharacterType> types = new ArrayList<ICharacterType>();
     Collections.addAll(types, getAllExaltTypes());
     types.remove(DB);
-    return types.toArray(new CharacterType[types.size()]);
+    return types.toArray(new ICharacterType[types.size()]);
   }
 
   public String getId() {

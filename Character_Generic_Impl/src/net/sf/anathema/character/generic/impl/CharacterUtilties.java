@@ -41,7 +41,7 @@ public class CharacterUtilties {
   }
 
   private static int getDv(ICharacterType characterType, IGenericTraitCollection traitCollection, ITraitType... types) {
-    if (characterType == CharacterType.MORTAL) {
+    if (!characterType.isExaltType()) {
       return getRoundDownDv(traitCollection, types);
     }
     return getRoundUpDv(traitCollection, types);

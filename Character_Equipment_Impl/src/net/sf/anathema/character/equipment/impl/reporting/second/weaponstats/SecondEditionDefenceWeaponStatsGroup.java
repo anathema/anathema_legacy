@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponStatsGroup {
@@ -21,7 +20,7 @@ public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponS
         weapon.getDefence(),
         traitCollection.getTrait(AttributeType.Dexterity),
         traitCollection.getTrait(weapon.getTraitType()));
-    boolean isMortal = getCharacter().getTemplate().getTemplateType().getCharacterType() == CharacterType.MORTAL;
+    boolean isMortal = !getCharacter().getTemplate().getTemplateType().getCharacterType().isExaltType();
     if (isMortal) {
       finalValue = Math.floor(finalValue / 2);
     }

@@ -51,7 +51,7 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
     String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
     drawLabelledContent(directContent, conceptLabel, conceptContent, new Position(firstColumnX, secondRowY), entryWidth);
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    if (characterType != CharacterType.MORTAL) {
+    if (characterType.isExaltType()) {
       String casteContent = getCasteString(character.getConcept().getCasteType());
       drawLabelledContent(
           directContent,
