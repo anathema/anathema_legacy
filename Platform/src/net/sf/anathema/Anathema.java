@@ -35,6 +35,7 @@ public class Anathema implements Application {
       anathemaView = new AnathemaInitializer(manager, anathemaPreferences).initialize();
     }
     catch (InitializationException e) {
+      //TODO: ANDERER DIALOG
       UserDialog dialog = MessageDialogFactory.createMessageDialog(null, new Message(e.getMessage(), e));
       dialog.show();
       return;
