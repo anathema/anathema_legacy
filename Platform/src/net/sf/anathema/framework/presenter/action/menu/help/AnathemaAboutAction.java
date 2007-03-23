@@ -5,8 +5,10 @@ import java.awt.Component;
 import javax.swing.Action;
 
 import net.disy.commons.swing.action.SmartAction;
+import net.disy.commons.swing.dialog.userdialog.DefaultUserDialogConfiguration;
 import net.disy.commons.swing.dialog.userdialog.IDialogPage;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
+import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfigurationFactory;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaAboutAction extends SmartAction {
@@ -26,8 +28,9 @@ public class AnathemaAboutAction extends SmartAction {
   @Override
   protected void execute(Component parentComponent) {
     IDialogPage page = new AboutDialogPage(resources);
-    // todo NOW vom (08.04.2006) (sieroux): Hier war nur ein Okay-Button
-    UserDialog dialog = new UserDialog(parentComponent, page);
+    UserDialog dialog = new UserDialog(parentComponent, new DefaultUserDialogConfiguration(
+        page,
+        DialogButtonConfigurationFactory.createOnlyOkay()));
     dialog.show();
   }
 }

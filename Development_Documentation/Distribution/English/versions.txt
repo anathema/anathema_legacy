@@ -10,6 +10,7 @@ http://anathema.sf.net
 + Special Charms are finally learned / unlearned on click. (Way easier than changing the cursors.) 
 + "(Type) Exalt Ways" no supports all known valid types.
 * Charms with multiple variants are correctly unlearned when a parent Charm is unlearned.
+* About-Dialog and Repository Browser no longer show 'Cancel'-Buttons.
 
 
 ===------------------------------------------------------------------------------===
