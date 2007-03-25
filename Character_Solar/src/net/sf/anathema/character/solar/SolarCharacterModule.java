@@ -12,7 +12,6 @@ import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
@@ -47,22 +46,20 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.SOLAR,
         ExaltedEdition.FirstEdition,
-        new ISpecialCharm[] {
-            ISolarSpecialCharms.OX_BODY_TECHNIQUE,
-            ISolarSpecialCharms.ENVIRONMENTAL_HAZARD_RESISTING_MEDITATION });
+        ISolarSpecialCharms.OX_BODY_TECHNIQUE,
+        ISolarSpecialCharms.ENVIRONMENTAL_HAZARD_RESISTING_MEDITATION);
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.SOLAR,
         ExaltedEdition.SecondEdition,
-        new ISpecialCharm[] {
-            ISolarSpecialCharms.OX_BODY_TECHNIQUE_SECOND_EDITION,
-            ISolarSpecialCharms.GLORIOUS_SOLAR_SABER,
-            ISolarSpecialCharms.CITY_MOVING_SECRETS,
-            ISolarSpecialCharms.IMMANENT_SOLAR_GLORY,
-            ISolarSpecialCharms.RIGHTEOUS_LION_DEFENSE,
-            ISolarSpecialCharms.WONDER_FORGING_GENIUS,
-            ISolarSpecialCharms.ESSENCE_ARROW_ATTACK,
-            ISolarSpecialCharms.MASTER_HORSEMANS_TECHNIQUES,
-            ISolarSpecialCharms.PHOENIX_RENEWAL_TACTIC });
+        ISolarSpecialCharms.OX_BODY_TECHNIQUE_SECOND_EDITION,
+        ISolarSpecialCharms.GLORIOUS_SOLAR_SABER,
+        ISolarSpecialCharms.CITY_MOVING_SECRETS,
+        ISolarSpecialCharms.IMMANENT_SOLAR_GLORY,
+        ISolarSpecialCharms.RIGHTEOUS_LION_DEFENSE,
+        ISolarSpecialCharms.WONDER_FORGING_GENIUS,
+        ISolarSpecialCharms.ESSENCE_ARROW_ATTACK,
+        ISolarSpecialCharms.MASTER_HORSEMANS_TECHNIQUES,
+        ISolarSpecialCharms.PHOENIX_RENEWAL_TACTIC);
     characterGenerics.getAdditionalTemplateParserRegistry().register(
         SolarVirtueFlawTemplate.ID,
         new SolarVirtueFlawParser());
