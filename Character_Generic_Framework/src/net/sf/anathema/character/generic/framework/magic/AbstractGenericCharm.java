@@ -1,9 +1,9 @@
-package net.sf.anathema.character.reporting.sheet.common.magic.generic.solar;
+package net.sf.anathema.character.generic.framework.magic;
 
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;

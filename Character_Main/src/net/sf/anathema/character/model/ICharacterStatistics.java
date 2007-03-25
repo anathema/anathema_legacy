@@ -1,6 +1,7 @@
 package net.sf.anathema.character.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
@@ -41,4 +42,6 @@ public interface ICharacterStatistics {
   public ISpellConfiguration getSpells();
 
   public ICharacterModelContext getCharacterContext();
+
+  public IMagicStats[] getGenericCharmStats();
 }

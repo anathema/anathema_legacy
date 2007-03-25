@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -15,6 +16,11 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.solar.caste.SolarCaste;
+import net.sf.anathema.character.solar.magic.EssenceFlow;
+import net.sf.anathema.character.solar.magic.FirstExcellency;
+import net.sf.anathema.character.solar.magic.InfiniteMastery;
+import net.sf.anathema.character.solar.magic.SecondExcellency;
+import net.sf.anathema.character.solar.magic.ThirdExcellency;
 import net.sf.anathema.character.solar.reporting.FirstEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.reporting.SecondEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.template.ISolarSpecialCharms;
@@ -31,6 +37,14 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
+    characterGenerics.getGenericCharmStatsRegistry().register(
+        CharacterType.SOLAR,
+        new IMagicStats[] {
+            new FirstExcellency(),
+            new SecondExcellency(),
+            new ThirdExcellency(),
+            new InfiniteMastery(),
+            new EssenceFlow() });
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.SOLAR,
         ExaltedEdition.FirstEdition,

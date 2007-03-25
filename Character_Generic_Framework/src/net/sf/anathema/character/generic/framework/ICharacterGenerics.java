@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -40,4 +41,6 @@ public interface ICharacterGenerics {
   public ICharacterModuleObjectMap getModuleObjectMap();
 
   public IDataFileProvider getDataFileProvider();
+
+  public IRegistry<ICharacterType, IMagicStats[]> getGenericCharmStatsRegistry();
 }

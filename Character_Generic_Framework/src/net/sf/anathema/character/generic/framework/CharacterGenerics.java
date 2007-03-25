@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.framework.xml.registry.CharacterTemplat
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
 import net.sf.anathema.character.generic.impl.template.magic.CharmProvider;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -33,6 +34,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final ICharacterTemplateRegistryCollection templateRegistries = new CharacterTemplateRegistryCollection();
   private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry = new Registry<ICharacterType, ICasteCollection>();
   private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<String, IAdditionalTemplateParser>();
+  private final IRegistry<ICharacterType, IMagicStats[]> genericCharmRegistry = new Registry<ICharacterType, IMagicStats[]>();
   private final ICharmProvider charmProvider = new CharmProvider();
   private final CharacterModuleObjectMap moduleObjectMap = new CharacterModuleObjectMap();
   private final IDataFileProvider dataFileProvider;
@@ -77,6 +79,11 @@ public class CharacterGenerics implements ICharacterGenerics {
 
   public IRegistry<String, IAdditionalTemplateParser> getAdditionalTemplateParserRegistry() {
     return additionalTemplateParserRegistry;
+  }
+
+  @Override
+  public IRegistry<ICharacterType, IMagicStats[]> getGenericCharmStatsRegistry() {
+    return genericCharmRegistry;
   }
 
   public ICharmProvider getCharmProvider() {

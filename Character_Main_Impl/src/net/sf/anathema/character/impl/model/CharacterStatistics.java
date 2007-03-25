@@ -4,6 +4,7 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -70,6 +71,7 @@ public class CharacterStatistics implements ICharacterStatistics {
   };
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final ICoreTraitConfiguration traitConfiguration;
+  private IMagicStats[] genericStats;
 
   public CharacterStatistics(final ICharacterTemplate template, ICharacterGenerics generics, IExaltedRuleSet rules)
       throws SpellException {
@@ -213,5 +215,14 @@ public class CharacterStatistics implements ICharacterStatistics {
 
   public ICharacterModelContext getCharacterContext() {
     return context;
+  }
+
+  public void setGenericCharmStats(IMagicStats[] genericStats) {
+    this.genericStats = genericStats;
+  }
+
+  @Override
+  public IMagicStats[] getGenericCharmStats() {
+    return genericStats;
   }
 }

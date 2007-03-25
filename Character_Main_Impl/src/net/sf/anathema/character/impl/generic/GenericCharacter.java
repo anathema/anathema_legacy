@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
@@ -231,5 +232,10 @@ public class GenericCharacter implements IGenericCharacter {
       }
     }
     return learnedEffectIds.toArray(new String[learnedEffectIds.size()]);
+  }
+
+  @Override
+  public IMagicStats[] getGenericCharmStats() {
+    return statistics.getGenericCharmStats();
   }
 }

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.common.magic.stats;
 
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractTextStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 

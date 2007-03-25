@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -274,5 +275,10 @@ public class DemoGenericCharacter implements IGenericCharacter {
 
   public boolean isSubeffectCharm(ICharm magic) {
     return false;
+  }
+
+  @Override
+  public IMagicStats[] getGenericCharmStats() {
+    return new IMagicStats[0];
   }
 }

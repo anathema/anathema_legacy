@@ -7,9 +7,9 @@ import java.util.List;
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
@@ -52,9 +52,10 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
     for (AbilityType abilityType : AbilityType.getAbilityTypes(ExaltedEdition.SecondEdition)) {
       table.addCell(createHeaderCell(directContent, abilityType));
     }
-    for (String genericId : CharmUtilities.getGenericCharmIdsFor(character.getTemplate().getTemplateType().getCharacterType())) {
-      Phrase charmPhrase = new Phrase(resources.getString(genericId), font);
+    for (IMagicStats stats : character.getGenericCharmStats()) {
+      Phrase charmPhrase = new Phrase(stats.getNameString(resources), font);
       table.addCell(new TableCell(charmPhrase, Rectangle.NO_BORDER));
+      String genericId = stats.getName().getId();
       for (AbilityType abilityType : AbilityType.getAbilityTypes(ExaltedEdition.SecondEdition)) {
         table.addCell(createGenericCell(character, abilityType, genericId, learnedTemplate, notLearnedTemplate));
       }

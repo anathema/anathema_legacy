@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.CostStrin
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.HealthCostStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;

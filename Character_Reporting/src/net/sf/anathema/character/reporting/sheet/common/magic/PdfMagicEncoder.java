@@ -5,21 +5,14 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.EssenceFlow;
-import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.FirstExcellency;
-import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.InfiniteMastery;
-import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.SecondExcellency;
-import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.ThirdExcellency;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.CharmStats;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MultipleEffectCharmStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.SpellStats;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -32,15 +25,10 @@ import com.lowagie.text.pdf.PdfContentByte;
 public class PdfMagicEncoder implements IPdfContentBoxEncoder {
 
   public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
-    final IExaltedEdition edition = character.getRules().getEdition();
     final ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
-    if (edition == ExaltedEdition.SecondEdition) {
-      printStats.add(new FirstExcellency());
-      printStats.add(new SecondExcellency());
-      printStats.add(new ThirdExcellency());
-      printStats.add(new InfiniteMastery());
-      printStats.add(new EssenceFlow());
+    for (IMagicStats stats : character.getGenericCharmStats()) {
+      printStats.add(stats);
     }
     for (IMagic magic : character.getAllLearnedMagic()) {
       magic.accept(new IMagicVisitor() {
@@ -60,7 +48,7 @@ public class PdfMagicEncoder implements IPdfContentBoxEncoder {
         }
 
         public void visitSpell(ISpell spell) {
-          printStats.add(new SpellStats(spell, edition));
+          printStats.add(new SpellStats(spell, character.getRules().getEdition()));
         }
       });
     }

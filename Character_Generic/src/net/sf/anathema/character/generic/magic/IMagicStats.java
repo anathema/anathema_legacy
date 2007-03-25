@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.sheet.common.magic.stats;
+package net.sf.anathema.character.generic.magic;
 
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.lib.resources.IResources;

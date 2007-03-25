@@ -5,7 +5,7 @@ import java.util.List;
 
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicCostStatsGroup;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicDurationStatsGroup;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicDetailsStatsGroup;
