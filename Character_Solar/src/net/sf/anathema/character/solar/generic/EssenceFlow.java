@@ -1,4 +1,4 @@
-package net.sf.anathema.character.solar.magic;
+package net.sf.anathema.character.solar.generic;
 
 import net.sf.anathema.character.generic.framework.magic.AbstractGenericCharm;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
