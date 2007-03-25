@@ -1,35 +1,43 @@
-package net.sf.anathema.character.solar.magic;
+package net.sf.anathema.character.generic.framework.magic;
 
 import net.sf.anathema.character.generic.framework.magic.AbstractGenericCharm;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
+import net.sf.anathema.character.generic.impl.magic.charm.type.ReflexiveSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.lib.resources.IResources;
 
-public class EssenceFlow extends AbstractGenericCharm {
+public class FirstExcellency extends AbstractGenericCharm {
+
+  private final String costString;
+
+  public FirstExcellency(String costString) {
+    this.costString = costString;
+  }
+
+  public String getCostString(IResources resources) {
+    return costString;
+  }
 
   @Override
   protected String getId() {
-    return "Solar.EssenceFlow"; //$NON-NLS-1$
+    return "Dragon-Blooded.1stExcellency"; //$NON-NLS-1$
   }
 
   @Override
   protected boolean isComboOk() {
-    return false;
-  }
-
-  public String getCostString(IResources resources) {
-    return "-"; //$NON-NLS-1$
+    return true;
   }
 
   public String getDurationString(IResources resources) {
-    return SimpleDuration.PERMANENT_DURATION.getText(resources);
+    return SimpleDuration.INSTANT_DURATION.getText(resources);
   }
 
   public String getType(IResources resources) {
     CharmTypeModel model = new CharmTypeModel();
-    model.setCharmType(CharmType.Permanent);
+    model.setCharmType(CharmType.Reflexive);
+    model.setSpecialModel(new ReflexiveSpecialsModel(1, 2));
     return new ShortCharmTypeStringBuilder(resources).createTypeString(model);
   }
 }

@@ -1,22 +1,22 @@
-package net.sf.anathema.character.solar.generic;
+package net.sf.anathema.character.db.magic;
 
 import net.sf.anathema.character.generic.framework.magic.AbstractGenericCharm;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
-import net.sf.anathema.character.generic.impl.magic.charm.type.ReflexiveSpecialsModel;
-import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
+import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.lib.resources.IResources;
 
-public class FirstExcellency extends AbstractGenericCharm {
+public class TerrestrialReinforcement extends AbstractGenericCharm {
 
+  @Override
   public String getCostString(IResources resources) {
-    return "1 m per die";
+    return "1 m per 2 dice + 1m per subject";
   }
 
   @Override
   protected String getId() {
-    return "Solar.1stExcellency"; //$NON-NLS-1$
+    return "Dragon-Blooded.TerrestrialReinforcement"; //$NON-NLS-1$
   }
 
   @Override
@@ -24,14 +24,15 @@ public class FirstExcellency extends AbstractGenericCharm {
     return true;
   }
 
+  @Override
   public String getDurationString(IResources resources) {
-    return SimpleDuration.INSTANT_DURATION.getText(resources);
+    return new QualifiedAmountDuration("1", "scene").getText(resources); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
+  @Override
   public String getType(IResources resources) {
     CharmTypeModel model = new CharmTypeModel();
-    model.setCharmType(CharmType.Reflexive);
-    model.setSpecialModel(new ReflexiveSpecialsModel(1, 2));
+    model.setCharmType(CharmType.Simple);
     return new ShortCharmTypeStringBuilder(resources).createTypeString(model);
   }
 }

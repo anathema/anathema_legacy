@@ -1,4 +1,4 @@
-package net.sf.anathema.character.solar.magic;
+package net.sf.anathema.character.generic.framework.magic;
 
 import net.sf.anathema.character.generic.framework.magic.AbstractGenericCharm;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
@@ -23,7 +23,7 @@ public class SecondExcellency extends AbstractGenericCharm {
 
   @Override
   protected String getId() {
-    return "Solar.2ndExcellency"; //$NON-NLS-1$
+    return "Dragon-Blooded.2ndExcellency"; //$NON-NLS-1$
   }
 
   @Override

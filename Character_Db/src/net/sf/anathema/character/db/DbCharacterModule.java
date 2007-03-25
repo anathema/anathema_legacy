@@ -1,16 +1,21 @@
 package net.sf.anathema.character.db;
 
 import net.sf.anathema.character.db.aspect.DBAspect;
+import net.sf.anathema.character.db.magic.TerrestrialReinforcement;
 import net.sf.anathema.character.db.reporting.FirstEditionDbPartEncoder;
 import net.sf.anathema.character.db.template.IDbSpecialCharms;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
+import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
+import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
@@ -60,6 +65,12 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
+    characterGenerics.getGenericCharmStatsRegistry().register(
+        CharacterType.DB,
+        new IMagicStats[] { new FirstExcellency("1 m per 2 dice"), //$NON-NLS-1$
+            new SecondExcellency(),
+            new ThirdExcellency("3 m"), //$NON-NLS-1$
+            new TerrestrialReinforcement() });
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.DB,
         ExaltedEdition.FirstEdition,

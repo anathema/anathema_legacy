@@ -1,4 +1,4 @@
-package net.sf.anathema.character.solar.magic;
+package net.sf.anathema.character.generic.framework.magic;
 
 import net.sf.anathema.character.generic.framework.magic.AbstractGenericCharm;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
@@ -9,6 +9,12 @@ import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ThirdExcellency extends AbstractGenericCharm {
+
+  private final String costString;
+
+  public ThirdExcellency(String costString) {
+    this.costString = costString;
+  }
 
   public String getType(IResources resources) {
     CharmTypeModel model = new CharmTypeModel();
@@ -32,6 +38,6 @@ public class ThirdExcellency extends AbstractGenericCharm {
   }
 
   public String getCostString(IResources resources) {
-    return "4 m";
+    return costString;
   }
 }

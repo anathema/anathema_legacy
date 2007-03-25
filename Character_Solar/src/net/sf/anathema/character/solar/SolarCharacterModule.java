@@ -4,6 +4,9 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
+import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
+import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
+import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
@@ -17,10 +20,7 @@ import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 import net.sf.anathema.character.solar.magic.EssenceFlow;
-import net.sf.anathema.character.solar.magic.FirstExcellency;
 import net.sf.anathema.character.solar.magic.InfiniteMastery;
-import net.sf.anathema.character.solar.magic.SecondExcellency;
-import net.sf.anathema.character.solar.magic.ThirdExcellency;
 import net.sf.anathema.character.solar.reporting.FirstEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.reporting.SecondEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.template.ISolarSpecialCharms;
@@ -39,10 +39,9 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getGenericCharmStatsRegistry().register(
         CharacterType.SOLAR,
-        new IMagicStats[] {
-            new FirstExcellency(),
+        new IMagicStats[] { new FirstExcellency("1 m per die"), //$NON-NLS-1$
             new SecondExcellency(),
-            new ThirdExcellency(),
+            new ThirdExcellency("4 m"), //$NON-NLS-1$
             new InfiniteMastery(),
             new EssenceFlow() });
     characterGenerics.getCharmProvider().setSpecialCharms(
