@@ -78,7 +78,14 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.DB,
         ExaltedEdition.SecondEdition,
-        IDbSpecialCharms.DRAGON_CLAW_ELEMENTAL_STRIKE);
+        IDbSpecialCharms.OX_BODY_TECHNIQUE_SECOND_EDITION,
+        IDbSpecialCharms.DRAGON_CLAW_ELEMENTAL_STRIKE,
+        IDbSpecialCharms.ELEMENT_PROTECTION_FORM,
+        IDbSpecialCharms.ELEMENT_SHELTER_CREATION_TECHNIQUE,
+        IDbSpecialCharms.ELEMENTAL_DEFENSE_TECHNIQUE,
+        IDbSpecialCharms.EXTENSION_ELEMENT_DRAGONS_BLESSING,
+        IDbSpecialCharms.TERRIFYING_ELEMENT_DRAGON_ROAR,
+        IDbSpecialCharms.UNASSAILABLE_BODY_OF_ELEMENT_DEFENSE);
     characterGenerics.getCasteCollectionRegistry().register(CharacterType.DB, new CasteCollection(DBAspect.values()));
   }
 
