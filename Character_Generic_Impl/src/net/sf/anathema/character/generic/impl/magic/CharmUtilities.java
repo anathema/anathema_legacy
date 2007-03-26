@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class CharmUtilities {
@@ -11,16 +10,6 @@ public class CharmUtilities {
   private static final String THIRD_EXCELLENCY = ".3rdExcellency"; //$NON-NLS-1$
   private static final String INFINITE_MASTERY = ".InfiniteMastery"; //$NON-NLS-1$
   private static final String ESSENCE_FLOW = ".EssenceFlow"; //$NON-NLS-1$
-  private static final String[] SOLAR_EXCELLENCIES = new String[] {
-      CharacterType.SOLAR.getId() + FIRST_EXCELLENCY,
-      CharacterType.SOLAR.getId() + SECOND_EXCELLENCY,
-      CharacterType.SOLAR.getId() + THIRD_EXCELLENCY,
-      CharacterType.SOLAR.getId() + INFINITE_MASTERY,
-      CharacterType.SOLAR.getId() + ESSENCE_FLOW };
-
-  public static String[] getGenericCharmIdsFor(ICharacterType characterType) {
-    return SOLAR_EXCELLENCIES;
-  }
 
   public static boolean isGenericCharmFor(ICharm charm, ICharacterType type) {
     String charmId = charm.getId();
