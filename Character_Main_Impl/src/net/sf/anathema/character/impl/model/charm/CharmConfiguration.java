@@ -16,7 +16,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
@@ -192,11 +191,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     if (charm != null) {
       return charm;
     }
-    charm = CharmCache.getInstance().searchCharm(charmId, context.getBasicCharacterContext().getRuleSet());
-    if (charm != null) {
-      return charm;
-    }
-    throw new IllegalArgumentException("No charm for id \"" + charmId + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+    throw new IllegalArgumentException("No charm found for id \"" + charmId + "\""); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   private ICharmIdMap getCharmTree(ICharacterType type) {
