@@ -18,18 +18,15 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
   private final ICascadeView cascadeView;
   private final CascadeCharmTreeViewProperties viewProperties;
   private final ITemplateRegistry templateRegistry;
-  private final ICascadePresenter presenter;
   private IExaltedEdition edition = ExaltedEdition.FirstEdition;
 
   public CascadeCharmGroupChangeListener(
       ICascadeView cascadeView,
       CascadeCharmTreeViewProperties viewProperties,
-      ICascadePresenter presenter,
       ITemplateRegistry templateRegistry) {
     super(cascadeView.getCharmTreeView(), templateRegistry, new FriendlyCharmGroupArbitrator());
     this.cascadeView = cascadeView;
     this.viewProperties = viewProperties;
-    this.presenter = presenter;
     this.templateRegistry = templateRegistry;
   }
 
@@ -40,7 +37,7 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
 
   @Override
   protected final void modifyCharmVisuals(IIdentificate type) {
-    viewProperties.setCharmTree(presenter.getCharmTree(type));
+    viewProperties.setCharmType(type);
     if (type instanceof ICharacterType) {
       IPresentationProperties presentationProperties = templateRegistry.getDefaultTemplate(
           (ICharacterType) type,

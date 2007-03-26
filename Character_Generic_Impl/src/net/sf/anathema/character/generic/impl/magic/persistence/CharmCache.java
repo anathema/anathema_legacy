@@ -9,11 +9,7 @@ import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.collection.Predicate;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class CharmCache implements ICharmCache {
@@ -34,19 +30,6 @@ public class CharmCache implements ICharmCache {
   public ICharm[] getCharms(IIdentificate type, IExaltedRuleSet ruleset) {
     List<ICharm> charmList = charmSetsByRuleSet.get(ruleset).get(type);
     return charmList.toArray(new ICharm[charmList.size()]);
-  }
-
-  // Necessary for connections between Charms from different documents/types
-  public ICharm searchCharm(final String charmId, IExaltedRuleSet rules) {
-    String[] idParts = charmId.split("\\."); //$NON-NLS-1$
-    ICharacterType characterTypeId = CharacterType.getById(idParts[0]);
-    ICharm[] charms = getCharms(characterTypeId, rules);
-    ICharm charm = ArrayUtilities.find(new Predicate<ICharm>() {
-      public boolean evaluate(ICharm candidate) {
-        return candidate.getId().equals(charmId);
-      }
-    }, charms);
-    return charm;
   }
 
   public void addCharm(IIdentificate type, IExaltedRuleSet rules, ICharm charm) {

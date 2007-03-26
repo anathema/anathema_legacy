@@ -5,8 +5,11 @@ import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
@@ -44,28 +47,45 @@ public class CharmCompiler {
 
   public void buildCharms() throws PersistenceException {
     for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
+      List<ICharm> allCharms = new ArrayList<ICharm>();
       for (ICharacterType type : CharacterType.values()) {
-        buildCharms(type, rules);
+        List<ICharm> builtCharms = buildCharms(type, rules);
+        allCharms.addAll(builtCharms);
       }
-      buildCharms(MARTIAL_ARTS, rules);
+      List<ICharm> builtCharms = buildCharms(MARTIAL_ARTS, rules);
+      allCharms.addAll(builtCharms);
+      extractParents(allCharms);
     }
   }
 
-  private void buildCharms(IIdentificate type, IExaltedRuleSet rules) throws PersistenceException {
+  private void extractParents(List<ICharm> charms) {
+    Map<String, Charm> charmsById = new HashMap<String, Charm>();
+    for (ICharm charm : charms) {
+      charmsById.put(charm.getId(), (Charm) charm);
+    }
+    for (Charm charm : charmsById.values()) {
+      charm.extractParentCharms(charmsById);
+    }
+  }
+
+  private List<ICharm> buildCharms(IIdentificate type, IExaltedRuleSet rules) throws PersistenceException {
+    List<ICharm> allCharms = new ArrayList<ICharm>();
     if (charmFileTable.contains(type, rules)) {
       for (URL url : charmFileTable.get(type, rules)) {
         try {
           Document charmDocument = new SAXReader().read(url);
-          buildRulesetCharms(type, rules, charmDocument);
+          ICharm[] builtCharms = buildRulesetCharms(type, rules, charmDocument);
+          Collections.addAll(allCharms, builtCharms);
         }
         catch (DocumentException e) {
           throw new CharmException(e);
         }
       }
     }
+    return allCharms;
   }
 
-  private void buildRulesetCharms(final IIdentificate type, IExaltedRuleSet rules, Document charmDocument)
+  private ICharm[] buildRulesetCharms(final IIdentificate type, IExaltedRuleSet rules, Document charmDocument)
       throws PersistenceException {
     List<ICharm> existingCharms = new ArrayList<ICharm>();
     final IExaltedRuleSet basicRules = rules.getBasicRuleset();
@@ -77,5 +97,6 @@ public class CharmCompiler {
     for (ICharm charm : charmArray) {
       cache.addCharm(type, rules, charm);
     }
+    return charmArray;
   }
 }

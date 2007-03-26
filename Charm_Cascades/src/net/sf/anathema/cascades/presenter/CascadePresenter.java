@@ -43,12 +43,11 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
 
   public CascadePresenter(IResources resources, ITemplateRegistry templateRegistry, ICascadeViewFactory factory) {
     super(resources, templateRegistry);
-    this.viewProperties = new CascadeCharmTreeViewProperties(resources);
+    this.viewProperties = new CascadeCharmTreeViewProperties(resources, charmMapsByRules);
     this.view = factory.createCascadeView(viewProperties);
   }
 
   public void initPresentation() {
-    this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, this, getTemplateRegistry());
     for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
       charmMapsByRules.put(ruleSet, new CharmTreeIdentificateMap());
     }
@@ -62,6 +61,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]),
         view,
         "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
+    this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, getTemplateRegistry());
     createCharmGroupSelector(view, selectionListener, allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]));
     initRules();
     initCharmTypeSelectionListening();
@@ -113,14 +113,13 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
           currentEdition = selectedRuleset.getEdition();
         }
         selectedRuleset = newValue;
-        viewProperties.setCharmTree(getCharmTree(selectedType));
         viewProperties.setRules(selectedRuleset);
         if (selectedRuleset.getEdition() == currentEdition) {
           return;
         }
         selectionListener.setEdition(selectedRuleset.getEdition());
         final IIdentificate[] cascadeTypes = getCharmTreeMap(selectedRuleset).keySet().toArray(new IIdentificate[0]);
-        //TODO: Mach mich schön.
+        // TODO: Mach mich schön.
         Arrays.sort(cascadeTypes, new Comparator<IIdentificate>() {
           public int compare(IIdentificate o1, IIdentificate o2) {
             final boolean firstCharacterType = o1 instanceof ICharacterType;

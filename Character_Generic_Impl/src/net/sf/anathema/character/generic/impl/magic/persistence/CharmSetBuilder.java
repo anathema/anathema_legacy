@@ -50,7 +50,7 @@ public class CharmSetBuilder implements ICharmSetBuilder {
   public ICharm[] buildCharms(Document charmDoc, List<ICharm> existingCharms, IExaltedRuleSet rules)
       throws PersistenceException {
     // TODO : Hier kann man die Reihenfolge richtig drehen
-//    Set<Charm> allCharms = new TreeSet<Charm>(new IdentificateComparator());
+    // Set<Charm> allCharms = new TreeSet<Charm>(new IdentificateComparator());
     Set<Charm> allCharms = new HashSet<Charm>();
     Map<String, Charm> charmsById = new HashMap<String, Charm>();
     for (ICharm charm : existingCharms) {
@@ -63,7 +63,6 @@ public class CharmSetBuilder implements ICharmSetBuilder {
       createCharm(allCharms, charmsById, builder, charmElementObject);
     }
     buildGenericCharms(allCharms, charmsById, charmListElement);
-    extractParents(charmsById, allCharms, rules);
     readAlternatives(charmsById, charmListElement);
     return allCharms.toArray(new ICharm[allCharms.size()]);
   }
@@ -105,12 +104,6 @@ public class CharmSetBuilder implements ICharmSetBuilder {
     }
     allCharms.add(newCharm);
     charmsById.put(newCharm.getId(), newCharm);
-  }
-
-  private void extractParents(Map<String, Charm> charmsById, Set<Charm> allCharms, IExaltedRuleSet rules) {
-    for (Charm charm : allCharms) {
-      charm.extractParentCharms(charmsById, rules);
-    }
   }
 
   private void readAlternatives(Map<String, Charm> charmsById, Element charmListElement) {

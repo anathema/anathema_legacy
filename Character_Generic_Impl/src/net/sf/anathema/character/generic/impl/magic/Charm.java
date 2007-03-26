@@ -14,7 +14,6 @@ import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.impl.magic.charm.prerequisite.CompositeLearnWorker;
 import net.sf.anathema.character.generic.impl.magic.charm.prerequisite.ICharmLearnWorker;
 import net.sf.anathema.character.generic.impl.magic.charm.prerequisite.SelectiveCharmGroup;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -30,7 +29,6 @@ import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.IFavoringTraitTypeVisitor;
@@ -188,16 +186,13 @@ public class Charm extends Identificate implements ICharm {
     return new HashSet<ICharm>(parentCharms);
   }
 
-  public void extractParentCharms(Map<String, Charm> charmsById, IExaltedRuleSet rules) {
+  public void extractParentCharms(Map<String, Charm> charmsById) {
     if (parentCharms.size() > 0) {
       return;
     }
     for (final String parentId : prerequisisteList.getParentIDs()) {
       Charm parentCharm = charmsById.get(parentId);
-      if (parentCharm == null) {
-        parentCharm = (Charm) CharmCache.getInstance().searchCharm(parentId, rules);
-      }
-      Ensure.ensureNotNull("Parent charm not found for id " + getId(), parentCharm); //$NON-NLS-1$
+      Ensure.ensureNotNull("Parent Charm " + parentId + " not defined for " + getId(), parentCharm); //$NON-NLS-1$//$NON-NLS-2$
       parentCharms.add(parentCharm);
       parentCharm.addChild(this);
     }
