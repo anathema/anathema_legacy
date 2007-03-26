@@ -53,18 +53,14 @@ public class CharmCompiler {
 
   private void buildCharms(IIdentificate type, IExaltedRuleSet rules) throws PersistenceException {
     if (charmFileTable.contains(type, rules)) {
-      buildOfficialCharms(type, rules);
-    }
-  }
-
-  private void buildOfficialCharms(final IIdentificate type, IExaltedRuleSet rules) throws PersistenceException {
-    for (URL url : charmFileTable.get(type, rules)) {
-      try {
-        Document charmDocument = new SAXReader().read(url);
-        buildRulesetCharms(type, rules, charmDocument);
-      }
-      catch (DocumentException e) {
-        throw new CharmException(e);
+      for (URL url : charmFileTable.get(type, rules)) {
+        try {
+          Document charmDocument = new SAXReader().read(url);
+          buildRulesetCharms(type, rules, charmDocument);
+        }
+        catch (DocumentException e) {
+          throw new CharmException(e);
+        }
       }
     }
   }
