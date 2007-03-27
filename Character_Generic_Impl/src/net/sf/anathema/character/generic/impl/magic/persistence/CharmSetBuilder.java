@@ -7,12 +7,13 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_CHARM;
 
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
+import net.disy.commons.core.predicate.IPredicate;
+import net.disy.commons.core.util.CollectionUtilities;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder;
@@ -51,24 +52,21 @@ public class CharmSetBuilder implements ICharmSetBuilder {
       throws PersistenceException {
     // TODO : Hier kann man die Reihenfolge richtig drehen
     // Set<Charm> allCharms = new TreeSet<Charm>(new IdentificateComparator());
-    Set<Charm> allCharms = new HashSet<Charm>();
-    Map<String, Charm> charmsById = new HashMap<String, Charm>();
+    Collection<Charm> allCharms = new HashSet<Charm>();
     for (ICharm charm : existingCharms) {
       Charm clone = ((Charm) charm).cloneUnconnected();
       allCharms.add(clone);
-      charmsById.put(clone.getId(), clone);
     }
     Element charmListElement = charmDoc.getRootElement();
     for (Element charmElementObject : ElementUtilities.elements(charmListElement, TAG_CHARM)) {
-      createCharm(allCharms, charmsById, builder, charmElementObject);
+      createCharm(allCharms, builder, charmElementObject);
     }
-    buildGenericCharms(allCharms, charmsById, charmListElement);
-    readAlternatives(charmsById, charmListElement);
+    buildGenericCharms(allCharms, charmListElement);
+    readAlternatives(charmListElement, allCharms);
     return allCharms.toArray(new ICharm[allCharms.size()]);
   }
 
-  private void buildGenericCharms(Set<Charm> allCharms, Map<String, Charm> charmsById, Element charmListElement)
-      throws PersistenceException {
+  private void buildGenericCharms(Collection<Charm> allCharms, Element charmListElement) throws PersistenceException {
     final List<Element> elements = ElementUtilities.elements(charmListElement, TAG_GENERIC_CHARM);
     if (elements.isEmpty()) {
       return;
@@ -77,12 +75,12 @@ public class CharmSetBuilder implements ICharmSetBuilder {
     for (ITraitType type : types) {
       genericsBuilder.setType(type);
       for (Element charmElementObject : elements) {
-        createCharm(allCharms, charmsById, genericsBuilder, charmElementObject);
+        createCharm(allCharms, genericsBuilder, charmElementObject);
       }
     }
   }
 
-  private ITraitType[] createTraitList(Set<Charm> allCharms) {
+  private ITraitType[] createTraitList(Collection<Charm> allCharms) {
     Set<ITraitType> types = new HashSet<ITraitType>();
     for (Charm charm : allCharms) {
       final IGenericTrait[] prerequisites = charm.getPrerequisites();
@@ -93,35 +91,36 @@ public class CharmSetBuilder implements ICharmSetBuilder {
     return types.toArray(new ITraitType[types.size()]);
   }
 
-  private void createCharm(
-      Set<Charm> allCharms,
-      Map<String, Charm> charmsById,
-      ICharmBuilder currentbuilder,
-      Element charmElement) throws PersistenceException {
+  private void createCharm(Collection<Charm> allCharms, ICharmBuilder currentbuilder, Element charmElement)
+      throws PersistenceException {
     Charm newCharm = currentbuilder.buildCharm(charmElement);
     if (allCharms.contains(newCharm)) {
       allCharms.remove(newCharm);
     }
     allCharms.add(newCharm);
-    charmsById.put(newCharm.getId(), newCharm);
   }
 
-  private void readAlternatives(Map<String, Charm> charmsById, Element charmListElement) {
+  private void readAlternatives(Element charmListElement, Collection<Charm> allCharms) {
     Element alternativesElement = charmListElement.element(TAG_ALTERNATIVES);
     if (alternativesElement == null) {
       return;
     }
     for (Element alternativeElement : ElementUtilities.elements(alternativesElement, TAG_ALTERNATIVE)) {
-      readAlternative(alternativeElement, charmsById);
+      readAlternative(alternativeElement, allCharms);
     }
   }
 
-  private void readAlternative(Element alternativeElement, Map<String, Charm> charmsById) {
+  private void readAlternative(Element alternativeElement, Collection<Charm> allCharms) {
     List<Element> charmReferences = ElementUtilities.elements(alternativeElement, TAG_CHARM_REFERENCE);
     Charm[] charms = new Charm[charmReferences.size()];
     for (int index = 0; index < charms.length; index++) {
-      String charmId = charmReferences.get(index).attributeValue(ATTRIB_ID);
-      Charm charm = charmsById.get(charmId);
+      final String charmId = charmReferences.get(index).attributeValue(ATTRIB_ID);
+      Charm charm = CollectionUtilities.find(allCharms, new IPredicate<Charm>() {
+        @Override
+        public boolean evaluate(Charm candidate) {
+          return candidate.getId().equals(charmId);
+        }
+      });
       Ensure.ensureNotNull("Charm not found " + charmId, charm); //$NON-NLS-1$
       charms[index] = charm;
     }
