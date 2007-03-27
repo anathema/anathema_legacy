@@ -48,7 +48,6 @@ public class SmartJList<T> extends JList {
     return (T) super.getSelectedValue();
   }
 
-  @SuppressWarnings("unchecked")
   @Override
   public T[] getSelectedValues() {
     return ArrayUtilities.transform(super.getSelectedValues(), clazz);

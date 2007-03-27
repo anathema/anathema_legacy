@@ -28,7 +28,6 @@ public class AnathemaDevelopmentBootLoader {
     new Anathema(manager).startApplication();
   }
 
-  @SuppressWarnings("unchecked")
   private static void collectPlugins(PluginManager manager) throws InitializationException {
     try {
       DefaultPluginsCollector collector = new DefaultPluginsCollector();

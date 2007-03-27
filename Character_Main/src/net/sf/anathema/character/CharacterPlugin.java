@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
-import net.sf.anathema.initialization.plugin.PluginUtilities;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
 
@@ -25,7 +24,6 @@ public class CharacterPlugin extends Plugin {
   private static final String EXTENSION_POINT_CHARM_LIST = "CharmList"; //$NON-NLS-1$
   private static final String CHARACTER_PLUGIN_ID = "net.sf.anathema.character"; //$NON-NLS-1$
 
-  @SuppressWarnings("unchecked")
   @Override
   protected void doStart() throws Exception {
     ProxySplashscreen.getInstance().displayStatusMessage("Compiling Charm Sets..."); //$NON-NLS-1$
@@ -34,7 +32,7 @@ public class CharacterPlugin extends Plugin {
     IIdentificateRegistry<ICharacterType> registry = fillTypeRegistry();
     CharmCompiler charmCompiler = new CharmCompiler(registry);
     for (Extension extension : connectedExtensions) {
-      for (Parameter listParameter : PluginUtilities.getParameters(extension, PARAM_LIST)) {
+      for (Parameter listParameter : extension.getParameters(PARAM_LIST)) {
         Parameter typeParameter = listParameter.getSubParameter(PARAM_TYPE);
         Parameter rules = listParameter.getSubParameter(PARAM_RULES);
         Parameter path = listParameter.getSubParameter(PARAM_PATH);

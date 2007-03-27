@@ -12,7 +12,6 @@ import net.sf.anathema.framework.view.AnathemaView;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
-import net.sf.anathema.initialization.plugin.PluginUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import org.java.plugin.PluginManager;
@@ -66,7 +65,7 @@ public class AnathemaInitializer {
     ProxySplashscreen.getInstance().displayStatusMessage("Loading Resources..."); //$NON-NLS-1$
     AnathemaResources resources = new AnathemaResources();
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_RESOURCES)) {
-      for (Parameter param : PluginUtilities.getParameters(extension, PARAM_BUNDLE)) {
+      for (Parameter param : extension.getParameters(PARAM_BUNDLE)) {
         resources.addResourceBundle(param.valueAsString(), pluginManager.getClassLoader(extension));
       }
     }

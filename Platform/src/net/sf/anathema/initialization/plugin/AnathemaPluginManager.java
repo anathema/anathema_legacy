@@ -7,7 +7,6 @@ import net.sf.anathema.initialization.InitializationException;
 import org.java.plugin.PluginLifecycleException;
 import org.java.plugin.PluginManager;
 import org.java.plugin.registry.Extension;
-import org.java.plugin.registry.ExtensionPoint;
 import org.java.plugin.registry.PluginDescriptor;
 
 public class AnathemaPluginManager implements IAnathemaPluginManager {
@@ -18,13 +17,10 @@ public class AnathemaPluginManager implements IAnathemaPluginManager {
     this.manager = manager;
   }
 
-  @SuppressWarnings("unchecked")
   public Collection<Extension> getExtension(String plugin, String extensionPoint) {
-    ExtensionPoint point = manager.getRegistry().getExtensionPoint(plugin, extensionPoint);
-    return point.getConnectedExtensions();
+    return manager.getRegistry().getExtensionPoint(plugin, extensionPoint).getConnectedExtensions();
   }
 
-  @SuppressWarnings("unchecked")
   public void activatePlugins() throws InitializationException {
     Collection<PluginDescriptor> pluginDescriptors = manager.getRegistry().getPluginDescriptors();
     for (PluginDescriptor descriptor : pluginDescriptors) {

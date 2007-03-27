@@ -12,8 +12,8 @@ import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
+import net.sf.anathema.initialization.plugin.IClassLoaderProvider;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
-import net.sf.anathema.initialization.plugin.PluginUtilities;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -74,8 +74,8 @@ public class AnathemaPresenter {
 
   private void runBootJobs() throws InitializationException {
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_BOOTJOBS)) {
-      for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_CLASS)) {
-        ((IAnathemaBootJob) PluginUtilities.instantiate(parameter, pluginManager)).run(resources, model, view);
+      for (Parameter parameter : extension.getParameters(PARAM_CLASS)) {
+        instantiate(parameter, pluginManager, IAnathemaBootJob.class).run(resources, model, view);
       }
     }
   }
@@ -86,8 +86,8 @@ public class AnathemaPresenter {
     for (Extension extension : pluginManager.getExtension(
         IPluginConstants.PLUGIN_CORE,
         EXTENSION_POINT_PREFERENCE_ELEMENTS)) {
-      for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_CLASS)) {
-        IPreferencesElement element = (IPreferencesElement) PluginUtilities.instantiate(parameter, pluginManager);
+      for (Parameter parameter : extension.getParameters(PARAM_CLASS)) {
+        IPreferencesElement element = instantiate(parameter, pluginManager, IPreferencesElement.class);
         extensionPoint.addPreferencesElement(element);
       }
     }
@@ -97,8 +97,8 @@ public class AnathemaPresenter {
     for (Extension extension : pluginManager.getExtension(
         IPluginConstants.PLUGIN_CORE,
         EXTENSION_POINT_REPORT_FACTORIES)) {
-      for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_CLASS)) {
-        IReportFactory reportFactory = (IReportFactory) PluginUtilities.instantiate(parameter, pluginManager);
+      for (Parameter parameter : extension.getParameters(PARAM_CLASS)) {
+        IReportFactory reportFactory = instantiate(parameter, pluginManager, IReportFactory.class);
         model.getReportRegistry().addReports(reportFactory.createReport(resources, model.getExtensionPointRegistry()));
       }
     }
@@ -106,8 +106,8 @@ public class AnathemaPresenter {
 
   private void initializeMenus() throws InitializationException {
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_MENUBAR)) {
-      for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_CLASS)) {
-        IAnathemaMenu menu = (IAnathemaMenu) PluginUtilities.instantiate(parameter, pluginManager);
+      for (Parameter parameter : extension.getParameters(PARAM_CLASS)) {
+        IAnathemaMenu menu = instantiate(parameter, pluginManager, IAnathemaMenu.class);
         menu.add(resources, model, view.getMenuBar());
       }
     }
@@ -115,10 +115,22 @@ public class AnathemaPresenter {
 
   private void initializeTools() throws InitializationException {
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_TOOLBAR)) {
-      for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_CLASS)) {
-        IAnathemaTool tool = (IAnathemaTool) PluginUtilities.instantiate(parameter, pluginManager);
+      for (Parameter parameter : extension.getParameters(PARAM_CLASS)) {
+        IAnathemaTool tool = instantiate(parameter, pluginManager, IAnathemaTool.class);
         tool.add(resources, model, view.getToolbar());
       }
+    }
+  }
+
+  private <T> T instantiate(Parameter classParameter, IClassLoaderProvider provider, Class<T> clazz)
+      throws InitializationException {
+    String className = classParameter.valueAsString();
+    try {
+      return clazz.cast(Class.forName(className, true, provider.getClassLoader(classParameter.getDeclaringExtension()))
+          .newInstance());
+    }
+    catch (Throwable e) {
+      throw new InitializationException("Failed to load required class " + className + ".", e); //$NON-NLS-1$ //$NON-NLS-2$
     }
   }
 }
