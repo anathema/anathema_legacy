@@ -14,10 +14,10 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.Table;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.util.IIdentificate;
 
 import org.dom4j.Document;
@@ -27,6 +27,11 @@ import org.dom4j.io.SAXReader;
 public class CharmCompiler {
   private final Table<IIdentificate, IExaltedRuleSet, List<URL>> charmFileTable = new Table<IIdentificate, IExaltedRuleSet, List<URL>>();
   private final ICharmSetBuilder builder = new CharmSetBuilder();
+  private final IIdentificateRegistry<ICharacterType> registry;
+
+  public CharmCompiler(IIdentificateRegistry<ICharacterType> registry) {
+    this.registry = registry;
+  }
 
   public void registerCharmFile(String typeString, String ruleString, URL resource) {
     IIdentificate type;
@@ -34,7 +39,7 @@ public class CharmCompiler {
       type = MARTIAL_ARTS;
     }
     else {
-      type = CharacterType.getById(typeString);
+      type = registry.getById(typeString);
     }
     ExaltedRuleSet ruleSet = ExaltedRuleSet.valueOf(ruleString);
     List<URL> list = charmFileTable.get(type, ruleSet);
@@ -48,7 +53,7 @@ public class CharmCompiler {
   public void buildCharms() throws PersistenceException {
     for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
       List<ICharm> allCharms = new ArrayList<ICharm>();
-      for (ICharacterType type : CharacterType.values()) {
+      for (ICharacterType type : registry.getAll()) {
         List<ICharm> builtCharms = buildCharms(type, rules);
         allCharms.addAll(builtCharms);
       }

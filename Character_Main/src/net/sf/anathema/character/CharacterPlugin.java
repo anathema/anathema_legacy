@@ -5,8 +5,12 @@ import java.util.Collection;
 
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.PluginUtilities;
+import net.sf.anathema.lib.registry.IIdentificateRegistry;
+import net.sf.anathema.lib.registry.IdentificateRegistry;
 
 import org.java.plugin.Plugin;
 import org.java.plugin.registry.Extension;
@@ -27,7 +31,8 @@ public class CharacterPlugin extends Plugin {
     ProxySplashscreen.getInstance().displayStatusMessage("Compiling Charm Sets..."); //$NON-NLS-1$
     AnathemaPluginManager manager = new AnathemaPluginManager(getManager());
     Collection<Extension> connectedExtensions = manager.getExtension(CHARACTER_PLUGIN_ID, EXTENSION_POINT_CHARM_LIST);
-    CharmCompiler charmCompiler = new CharmCompiler();
+    IIdentificateRegistry<ICharacterType> registry = fillTypeRegistry();
+    CharmCompiler charmCompiler = new CharmCompiler(registry);
     for (Extension extension : connectedExtensions) {
       for (Parameter listParameter : PluginUtilities.getParameters(extension, PARAM_LIST)) {
         Parameter typeParameter = listParameter.getSubParameter(PARAM_TYPE);
@@ -38,6 +43,12 @@ public class CharacterPlugin extends Plugin {
       }
     }
     charmCompiler.buildCharms();
+  }
+
+  private IIdentificateRegistry<ICharacterType> fillTypeRegistry() {
+    IIdentificateRegistry<ICharacterType> registry = new IdentificateRegistry<ICharacterType>();
+    registry.add(CharacterType.values());
+    return registry;
   }
 
   @Override
