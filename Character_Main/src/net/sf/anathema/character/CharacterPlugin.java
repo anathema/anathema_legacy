@@ -1,7 +1,6 @@
 package net.sf.anathema.character;
 
 import java.net.URL;
-import java.util.Collection;
 
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
@@ -22,16 +21,15 @@ public class CharacterPlugin extends Plugin {
   private static final String PARAM_TYPE = "type"; //$NON-NLS-1$
   private static final String PARAM_LIST = "list"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_CHARM_LIST = "CharmList"; //$NON-NLS-1$
-  private static final String CHARACTER_PLUGIN_ID = "net.sf.anathema.character"; //$NON-NLS-1$
+  private static final String PLUGIN_ID = "net.sf.anathema.character"; //$NON-NLS-1$
 
   @Override
   protected void doStart() throws Exception {
     ProxySplashscreen.getInstance().displayStatusMessage("Compiling Charm Sets..."); //$NON-NLS-1$
-    AnathemaPluginManager manager = new AnathemaPluginManager(getManager());
-    Collection<Extension> connectedExtensions = manager.getExtension(CHARACTER_PLUGIN_ID, EXTENSION_POINT_CHARM_LIST);
     IIdentificateRegistry<ICharacterType> registry = fillTypeRegistry();
+    AnathemaPluginManager manager = new AnathemaPluginManager(getManager());
     CharmCompiler charmCompiler = new CharmCompiler(registry);
-    for (Extension extension : connectedExtensions) {
+    for (Extension extension : manager.getExtension(PLUGIN_ID, EXTENSION_POINT_CHARM_LIST)) {
       for (Parameter listParameter : extension.getParameters(PARAM_LIST)) {
         Parameter typeParameter = listParameter.getSubParameter(PARAM_TYPE);
         Parameter rules = listParameter.getSubParameter(PARAM_RULES);
