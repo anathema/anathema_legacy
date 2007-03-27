@@ -26,7 +26,6 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequi
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAlternative;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -48,8 +47,7 @@ public class CharmSetBuilder implements ICharmSetBuilder {
       new GenericAttributeRequirementBuilder(),
       new GenericComboRulesBuilder());
 
-  public ICharm[] buildCharms(Document charmDoc, List<ICharm> existingCharms, IExaltedRuleSet rules)
-      throws PersistenceException {
+  public ICharm[] buildCharms(Document charmDoc, List<ICharm> existingCharms) throws PersistenceException {
     // TODO : Hier kann man die Reihenfolge richtig drehen
     // Set<Charm> allCharms = new TreeSet<Charm>(new IdentificateComparator());
     Collection<Charm> allCharms = new HashSet<Charm>();

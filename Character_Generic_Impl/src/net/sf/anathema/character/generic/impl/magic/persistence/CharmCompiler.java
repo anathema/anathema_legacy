@@ -98,7 +98,7 @@ public class CharmCompiler {
     if (basicRules != null) {
       Collections.addAll(existingCharms, cache.getCharms(type, basicRules));
     }
-    ICharm[] charmArray = builder.buildCharms(charmDocument, existingCharms, rules);
+    ICharm[] charmArray = builder.buildCharms(charmDocument, existingCharms);
     for (ICharm charm : charmArray) {
       cache.addCharm(type, rules, charm);
     }

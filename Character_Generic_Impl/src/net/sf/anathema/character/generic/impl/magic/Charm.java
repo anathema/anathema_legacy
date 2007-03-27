@@ -311,6 +311,7 @@ public class Charm extends Identificate implements ICharm {
     return !children.isEmpty();
   }
 
+  /** Required for base rules charms reused in subrules. */
   public Charm cloneUnconnected() {
     // Charmalternatives need to be calculated anew - find the old charms' clones.
     // SelectiveCharmGroups have to reference the newly cloned objects.
