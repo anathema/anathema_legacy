@@ -24,16 +24,12 @@ public abstract class AbstractInitializationCollection<T> {
 
   protected abstract String getExtensionPointId();
 
+  @SuppressWarnings("unchecked")
   private T createItemType(Parameter typeParameter, Extension extension, IAnathemaPluginManager pluginManager)
       throws InitializationException {
-    return instantiateItemType(typeParameter.getSubParameter(PARAM_CLASS), extension, pluginManager);
-  }
-
-  private final T instantiateItemType(Parameter classParameter, Extension extension, IAnathemaPluginManager manager)
-      throws InitializationException {
-    String className = classParameter.valueAsString();
+    String className = typeParameter.getSubParameter(PARAM_CLASS).valueAsString();
     try {
-      return (T) Class.forName(className, true, manager.getClassLoader(extension)).newInstance();
+      return (T) Class.forName(className, true, pluginManager.getClassLoader(extension)).newInstance();
     }
     catch (Throwable throwable) {
       throw new InitializationException("Failed to create item type from class " + className + ".", throwable); //$NON-NLS-1$ //$NON-NLS-2$
