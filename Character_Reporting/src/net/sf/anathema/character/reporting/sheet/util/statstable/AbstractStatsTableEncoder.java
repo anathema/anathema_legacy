@@ -74,7 +74,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
     table.addCell(cell);
   }
 
-  protected final float[] calculateColumnWidths(IStatsGroup[] groups) {
+  protected final float[] calculateColumnWidths(IStatsGroup<T>[] groups) {
     Float[] columnWidths = new Float[0];
     for (IStatsGroup<T> group : groups) {
       if (columnWidths.length != 0) {

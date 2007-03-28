@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonu
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
+import net.sf.anathema.character.meritsflaws.model.perk.IPerk;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsAdditionalModel;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsModel;
 
@@ -17,8 +18,8 @@ public class CheckMeritsFlawsFixture extends AbstractCharacterColumnFixture {
 
   public int getCreationActiveMeritsFlaws() {
     int sum = 0;
-    IQualitySelection[] selected = getModel().getSelectedQualities();
-    for (IQualitySelection< ? extends IQuality> selection : selected) {
+    IQualitySelection<IPerk>[] selected = getModel().getSelectedQualities();
+    for (IQualitySelection<IPerk> selection : selected) {
       if (selection.isCreationActive()) {
         sum++;
       }
@@ -28,8 +29,8 @@ public class CheckMeritsFlawsFixture extends AbstractCharacterColumnFixture {
 
   public int getExperienceActiveMeritsFlaws() {
     int sum = 0;
-    IQualitySelection[] selected = getModel().getSelectedQualities();
-    for (IQualitySelection< ? extends IQuality> selection : selected) {
+    IQualitySelection<IPerk>[] selected = getModel().getSelectedQualities();
+    for (IQualitySelection<IPerk> selection : selected) {
       if (selection.isExperienceActive()) {
         sum++;
       }
