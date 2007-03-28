@@ -2,11 +2,11 @@ package net.sf.anathema.charmtree.presenter.view;
 
 import java.awt.Cursor;
 
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewProperties {
@@ -32,7 +32,9 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
       String charmString = resources.getString(requirementCount == 1 ? "Charms.Charm.Single" : "Charms.Charm.Multiple"); //$NON-NLS-1$//$NON-NLS-2$
       return resources.getString("Requirement.Message", new Object[] { requirementCount, requirementName, charmString }); //$NON-NLS-1$
     }
-    throw new UnreachableCodeReachedException("Node " + nodeId + " must be requirement or charm."); //$NON-NLS-1$ //$NON-NLS-2$
+    Logger.getLogger(getClass()).warn(
+        "No resource key found for node " + nodeId + ". It must be a requirement or a charm."); //$NON-NLS-1$ //$NON-NLS-2$
+    return resources.getString(nodeId);
   }
 
   public final boolean isRequirementNode(final String nodeId) {
