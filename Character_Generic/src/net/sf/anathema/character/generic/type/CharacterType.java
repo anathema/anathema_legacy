@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import net.disy.commons.core.util.ArrayUtilities;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 
 public enum CharacterType implements ICharacterType {
 
@@ -24,6 +25,11 @@ public enum CharacterType implements ICharacterType {
     @Override
     public void accept(ICharacterTypeVisitor visitor) {
       visitor.visitLunar(this);
+    }
+
+    @Override
+    public FavoringTraitType getFavoringTraitType() {
+      return FavoringTraitType.AttributeType;
     }
   },
   ABYSSAL("Abyssal") { //$NON-NLS-1$
@@ -95,5 +101,10 @@ public enum CharacterType implements ICharacterType {
 
   public boolean isExaltType() {
     return ArrayUtilities.contains(getAllExaltTypes(), this);
+  }
+
+  @Override
+  public FavoringTraitType getFavoringTraitType() {
+    return FavoringTraitType.AbilityType;
   }
 }

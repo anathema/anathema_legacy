@@ -2,6 +2,7 @@ package net.sf.anathema.test.character.equipment.character;
 
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalSoak;
 import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -36,11 +37,17 @@ public class NaturalSoakTest {
         // Nothing to do
         return 0;
       }
+
+      @Override
+      public FavoringTraitType getFavoringTraitType() {
+        // TODO Auto-generated method stub
+        return null;
+      }
     });
     Assert.assertEquals(0, naturalSoak.getSoak(HealthType.Lethal));
     Assert.assertEquals(2, naturalSoak.getSoak(HealthType.Bashing));
   }
-  
+
   @Test
   public void testSoakForExalts() {
     NaturalSoak naturalSoak = new NaturalSoak(new ValuedTraitType(AttributeType.Stamina, 2), new ICharacterType() {
@@ -63,6 +70,12 @@ public class NaturalSoakTest {
       public int compareTo(CharacterType o) {
         // Nothing to do
         return 0;
+      }
+
+      @Override
+      public FavoringTraitType getFavoringTraitType() {
+        // TODO Auto-generated method stub
+        return null;
       }
     });
     Assert.assertEquals(1, naturalSoak.getSoak(HealthType.Lethal));

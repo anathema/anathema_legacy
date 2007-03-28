@@ -22,6 +22,7 @@
     	</restrictions>
     </combo>
     <genericCharmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Mortal"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="SecondEdition" page="183"/>
   </genericCharm>
@@ -45,6 +46,7 @@
     	</restrictions>
     </combo>
     <genericCharmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Mortal"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="SecondEdition" page="184"/>
   </genericCharm>
@@ -63,6 +65,7 @@
       <special primaryStep="4" secondaryStep="6"/>
     </charmtype>
     <genericCharmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Mortal"/>
 	<charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="SecondEdition" page="185"/>
   </genericCharm>
@@ -80,6 +83,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
+    <charmAttribute attribute="Mortal"/>
     <source source="SecondEdition" page="185"/>
   </genericCharm>
   <genericCharm id="Solar.EssenceFlow" exalt="Solar">
@@ -93,6 +97,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
+    <charmAttribute attribute="Mortal"/>
     <source source="SecondEdition" page="187"/>
   </genericCharm>
   <!-- Solar Archery -->

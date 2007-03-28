@@ -5,97 +5,38 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ALTERNATIVES;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_CHARM;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.CollectionUtilities;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.AttributeRequirementBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAlternative;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
-import org.dom4j.Document;
 import org.dom4j.Element;
 
-public class CharmSetBuilder implements ICharmSetBuilder {
+public class CharmSetBuilder extends AbstractCharmSetBuilder implements ICharmSetBuilder {
 
   private final ICharmBuilder builder = new CharmBuilder(
       new IdStringBuilder(),
       new TraitPrerequisitesBuilder(),
       new AttributeRequirementBuilder(),
       new ComboRulesBuilder());
-  private final GenericCharmBuilder genericsBuilder = new GenericCharmBuilder(
-      new GenericIdStringBuilder(),
-      new GenericTraitPrerequisitesBuilder(),
-      new GenericAttributeRequirementBuilder(),
-      new GenericComboRulesBuilder());
 
-  public ICharm[] buildCharms(Document charmDoc, List<ICharm> existingCharms) throws PersistenceException {
-    // TODO : Hier kann man die Reihenfolge richtig drehen
-    // Set<Charm> allCharms = new TreeSet<Charm>(new IdentificateComparator());
-    Collection<Charm> allCharms = new HashSet<Charm>();
-    for (ICharm charm : existingCharms) {
-      Charm clone = ((Charm) charm).cloneUnconnected();
-      allCharms.add(clone);
-    }
-    Element charmListElement = charmDoc.getRootElement();
+  @Override
+  protected void buildCharms(Collection<Charm> allCharms, Element charmListElement) throws PersistenceException {
     for (Element charmElementObject : ElementUtilities.elements(charmListElement, TAG_CHARM)) {
       createCharm(allCharms, builder, charmElementObject);
     }
-    buildGenericCharms(allCharms, charmListElement);
     readAlternatives(charmListElement, allCharms);
-    return allCharms.toArray(new ICharm[allCharms.size()]);
-  }
-
-  private void buildGenericCharms(Collection<Charm> allCharms, Element charmListElement) throws PersistenceException {
-    final List<Element> elements = ElementUtilities.elements(charmListElement, TAG_GENERIC_CHARM);
-    if (elements.isEmpty()) {
-      return;
-    }
-    final ITraitType[] types = createTraitList(allCharms);
-    for (ITraitType type : types) {
-      genericsBuilder.setType(type);
-      for (Element charmElementObject : elements) {
-        createCharm(allCharms, genericsBuilder, charmElementObject);
-      }
-    }
-  }
-
-  private ITraitType[] createTraitList(Collection<Charm> allCharms) {
-    Set<ITraitType> types = new HashSet<ITraitType>();
-    for (Charm charm : allCharms) {
-      final IGenericTrait[] prerequisites = charm.getPrerequisites();
-      if (prerequisites.length > 0) {
-        types.add(prerequisites[0].getType());
-      }
-    }
-    return types.toArray(new ITraitType[types.size()]);
-  }
-
-  private void createCharm(Collection<Charm> allCharms, ICharmBuilder currentbuilder, Element charmElement)
-      throws PersistenceException {
-    Charm newCharm = currentbuilder.buildCharm(charmElement);
-    if (allCharms.contains(newCharm)) {
-      allCharms.remove(newCharm);
-    }
-    allCharms.add(newCharm);
   }
 
   private void readAlternatives(Element charmListElement, Collection<Charm> allCharms) {

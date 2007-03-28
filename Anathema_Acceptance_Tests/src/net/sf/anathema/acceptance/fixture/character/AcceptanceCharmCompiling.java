@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.List;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
+import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -55,7 +56,7 @@ public class AcceptanceCharmCompiling {
     }
   }
 
-  private void registerCharmFile(Element parent, CharmCompiler charmCompiler) {
+  private void registerCharmFile(Element parent, CharmCompiler charmCompiler) throws CharmException {
     List<Element> subParameterList = ElementUtilities.elements(parent, TAG_PARAMETER);
     String type = getParameterValue(subParameterList, VALUE_TYPE);
     String rules = getParameterValue(subParameterList, VALUE_RULES);
