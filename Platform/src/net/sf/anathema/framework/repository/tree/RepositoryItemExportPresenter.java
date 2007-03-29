@@ -46,6 +46,9 @@ public class RepositoryItemExportPresenter implements IPresenter {
       protected void execute(Component parentComponent) {
         try {
           File saveFile = FileChoosingUtilities.selectSaveFile(parentComponent, "Export.zip"); //$NON-NLS-1$
+          if (saveFile == null) {
+            return;
+          }
           ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(saveFile));
           zipOutputStream.setComment(resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$
           PrintNameFile[] printNameFiles = model.getPrintNameFilesInSelection();

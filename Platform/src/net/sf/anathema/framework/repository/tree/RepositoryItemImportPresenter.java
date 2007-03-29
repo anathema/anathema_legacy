@@ -48,6 +48,9 @@ public class RepositoryItemImportPresenter implements IPresenter {
         try {
           File loadFile = FileChoosingUtilities.chooseFile(
               resources.getString("AnathemaCore.Tools.RepositoryView.ImportOk"), parentComponent, new ZipFileFilter()); //$NON-NLS-1$
+          if (loadFile == null) {
+            return;
+          }
           ZipFile importZipFile = new ZipFile(loadFile);
           MultiEntryMap<String, ZipEntry> entriesByItem = groupEntriesByItems(importZipFile);
           for (String comment : entriesByItem.keySet()) {
