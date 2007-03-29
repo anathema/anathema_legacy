@@ -132,6 +132,9 @@ public class CharmConfigurationPersister {
       ISpecialCharmPersister specialPersister) throws PersistenceException {
     String groupName = groupElement.attributeValue(ATTRIB_NAME);
     String groupType = groupElement.attributeValue(ATTRIB_TYPE);
+    if (groupName.equals("Generics")) { //$NON-NLS-1$
+      groupName = "MartialArts"; //$NON-NLS-1$
+    }
     ILearningCharmGroup group = charmConfiguration.getGroup(groupType, groupName);
     for (Object charmObjectElement : groupElement.elements()) {
       Element charmElement = (Element) charmObjectElement;
