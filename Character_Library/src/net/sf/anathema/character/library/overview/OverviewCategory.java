@@ -25,7 +25,6 @@ public class OverviewCategory implements IOverviewCategory, IView {
     parent.add(panel);
   }
 
-  @SuppressWarnings("deprecation")
   @Override
   public JComponent getComponent() {
     return panel;

@@ -79,8 +79,6 @@ public class BeastformView implements IBeastformView {
   }
 
   public IBeastformOverviewView addOverviewView(IBeastformOverviewViewProperties overviewProperties) {
-    BeastformOverviewView overviewView = new BeastformOverviewView(overviewProperties);
-    overviewPanel.add(overviewView.getComponent());
-    return overviewView;
+    return new BeastformOverviewView(overviewPanel, overviewProperties);
   }
 }
