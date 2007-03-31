@@ -28,18 +28,12 @@ public class OverviewView implements IOverviewView, IView {
   }
 
   public final IOverviewCategory addOverviewCategory(String borderText) {
-    OverviewCategory category = new OverviewCategory(borderText, true);
+    OverviewCategory category = new OverviewCategory(panel, borderText, true);
     categories.add(category);
     return category;
   }
 
   protected final List<IOverviewCategory> getCategories() {
     return categories;
-  }
-
-  public void initGui() {
-    for (IOverviewCategory category : getCategories()) {
-      panel.add(category.getComponent());
-    }
   }
 }

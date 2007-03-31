@@ -58,7 +58,7 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
   }
 
   public IOverviewCategory createOverview(String borderLabel) {
-    return new OverviewCategory(borderLabel, false);
+    return new OverviewCategory(overviewPanel, borderLabel, false);
   }
 
   public void setOverview(IOverviewCategory overview) {

@@ -15,20 +15,19 @@ import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 public class OverviewCategory implements IOverviewCategory, IView {
 
   private final JPanel panel = new JPanel(new GridDialogLayout(4, false));
-  private final String borderTitle;
-  private final boolean useSmallFont;
 
-  public OverviewCategory(String borderTitle, boolean useSmallFont) {
-    this.borderTitle = borderTitle;
-    this.useSmallFont = useSmallFont;
-  }
-
-  public JComponent getComponent() {
+  public OverviewCategory(JComponent parent, String borderTitle, boolean useSmallFont) {
     TitledBorder titledBorder = new TitledBorder(borderTitle);
     if (useSmallFont) {
       titledBorder.setTitleFont(AbstractLabelledValueView.deriveSmallerFont(titledBorder.getTitleFont()));
     }
     panel.setBorder(titledBorder);
+    parent.add(panel);
+  }
+
+  @SuppressWarnings("deprecation")
+  @Override
+  public JComponent getComponent() {
     return panel;
   }
 

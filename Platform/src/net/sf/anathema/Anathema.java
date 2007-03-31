@@ -37,10 +37,12 @@ public class Anathema implements Application {
       anathemaView = new AnathemaInitializer(manager, anathemaPreferences).initialize();
     }
     catch (InitializationException e) {
-      JOptionPane.showMessageDialog(null, e.getMessage() + "\n" + e.getStackTrace(), "Initialization Error", JOptionPane.ERROR_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
-      //TODO: Disy-Dialoge ohne I18n?
-//      UserDialog dialog = MessageDialogFactory.createMessageDialog(null, new Message(e.getMessage(), e));
-//      dialog.show();
+      JOptionPane.showMessageDialog(
+          null,
+          e.getMessage() + "\n" + e.getStackTrace(), "Initialization Error", JOptionPane.ERROR_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
+      // TODO: Disy-Dialoge ohne I18n?
+      // UserDialog dialog = MessageDialogFactory.createMessageDialog(null, new Message(e.getMessage(), e));
+      // dialog.show();
       return;
     }
     ProxySplashscreen.getInstance().displayStatusMessage("Done."); //$NON-NLS-1$

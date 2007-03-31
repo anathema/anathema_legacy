@@ -53,7 +53,6 @@ public class ExperiencedOverviewPresenter implements IPresenter {
     }
     initTotal(category);
     calculateXPCost();
-    view.initGui();
   }
 
   private void initTotal(IOverviewCategory category) {

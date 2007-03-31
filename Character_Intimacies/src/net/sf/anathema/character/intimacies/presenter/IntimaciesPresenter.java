@@ -65,7 +65,6 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
         resources.getString("Intimacies.Overview.Maximum"), 2); //$NON-NLS-1$    
     final IValueView<Integer> bonusPointsView = creationOverview.addIntegerValueView(
         resources.getString("Intimacies.Overview.BonusPoints"), 2); //$NON-NLS-1$
-    view.setOverview(creationOverview);
     final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel")); //$NON-NLS-1$    
     final ILabelledAlotmentView experienceMaximumView = experienceOverview.addAlotmentView(
         resources.getString("Intimacies.Overview.Maximum"), 2); //$NON-NLS-1$
@@ -98,7 +97,7 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
         }
       }
     });
-
+    view.setOverview(creationOverview);
     recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
   }
 

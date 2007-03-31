@@ -26,6 +26,7 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
   private final JPanel selectionPanel = new JPanel(new GridDialogLayout(3, false));
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel overviewPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
   private IOverviewCategory category;
 
@@ -36,9 +37,7 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
     entryData.setGrabExcessVerticalSpace(true);
     mainPanel.add(new JScrollPane(entryPanel), entryData);
     panel.add(mainPanel, entryData);
-    if (category != null) {
-      panel.add(category.getComponent(), GridDialogLayoutDataUtilities.createTopData());
-    }
+    panel.add(overviewPanel, GridDialogLayoutDataUtilities.createTopData());
     return panel;
   }
 
@@ -70,7 +69,7 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
   }
 
   public IOverviewCategory addOverview(String border) {
-    this.category = new OverviewCategory(border, false);
+    this.category = new OverviewCategory(overviewPanel, border, false);
     return category;
   }
 }

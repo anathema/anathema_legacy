@@ -87,7 +87,6 @@ public class CreationOverviewPresenter implements IPresenter {
         }
       });
     }
-    view.initGui();
     updateOverview();
   }
 
