@@ -54,7 +54,7 @@ public class RenownView implements IView {
   }
 
   public ILabelledAlotmentView addOverview(String borderLabel, String categoryLabel) {
-    OverviewCategory category = new OverviewCategory(overviewPanel ,borderLabel, false);
+    OverviewCategory category = new OverviewCategory(overviewPanel, borderLabel, false);
     ILabelledAlotmentView view = category.addAlotmentView(categoryLabel, 2);
     overviewPanel.add(category.getComponent());
     return view;

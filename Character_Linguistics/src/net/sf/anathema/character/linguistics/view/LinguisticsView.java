@@ -28,7 +28,6 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel overviewPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
-  private IOverviewCategory category;
 
   public JComponent getComponent() {
     mainPanel.add(selectionPanel);
@@ -69,7 +68,6 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
   }
 
   public IOverviewCategory addOverview(String border) {
-    this.category = new OverviewCategory(overviewPanel, border, false);
-    return category;
+    return new OverviewCategory(overviewPanel, border, false);
   }
 }

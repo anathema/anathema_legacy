@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.view.overview;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
@@ -21,19 +18,12 @@ public class OverviewView implements IOverviewView, IView {
       panel,
       ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
       ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-  private final List<IOverviewCategory> categories = new ArrayList<IOverviewCategory>();
 
   public JComponent getComponent() {
     return content;
   }
 
   public final IOverviewCategory addOverviewCategory(String borderText) {
-    OverviewCategory category = new OverviewCategory(panel, borderText, true);
-    categories.add(category);
-    return category;
-  }
-
-  protected final List<IOverviewCategory> getCategories() {
-    return categories;
+    return new OverviewCategory(panel, borderText, true);
   }
 }
