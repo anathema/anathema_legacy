@@ -1,5 +1,7 @@
 package net.sf.anathema;
 
+import javax.swing.JOptionPane;
+
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
@@ -35,9 +37,10 @@ public class Anathema implements Application {
       anathemaView = new AnathemaInitializer(manager, anathemaPreferences).initialize();
     }
     catch (InitializationException e) {
-      //TODO: ANDERER DIALOG
-      UserDialog dialog = MessageDialogFactory.createMessageDialog(null, new Message(e.getMessage(), e));
-      dialog.show();
+      JOptionPane.showMessageDialog(null, e.getMessage() + "\n" + e.getStackTrace(), "Initialization Error", JOptionPane.ERROR_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
+      //TODO: Disy-Dialoge ohne I18n?
+//      UserDialog dialog = MessageDialogFactory.createMessageDialog(null, new Message(e.getMessage(), e));
+//      dialog.show();
       return;
     }
     ProxySplashscreen.getInstance().displayStatusMessage("Done."); //$NON-NLS-1$
