@@ -7,5 +7,4 @@ import org.dom4j.Element;
 public interface IIdStringBuilder {
 
   public String build(Element element) throws CharmException;
-
 }

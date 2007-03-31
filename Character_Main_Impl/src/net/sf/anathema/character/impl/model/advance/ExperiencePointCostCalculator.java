@@ -71,12 +71,8 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
     return costs.getSpecialtyCosts(favored);
   }
 
-  public int getSpellCosts(
-      ISpell spell,
-      IBasicCharacterData basicCharacter,
-      IGenericTraitCollection traitCollection,
-      FavoringTraitType type) {
-    return costs.getSpellCosts(spell, basicCharacter, traitCollection, type);
+  public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
+    return costs.getSpellCosts(spell, basicCharacter, traitCollection); 
   }
 
   public int getCharmCosts(
@@ -84,6 +80,6 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
       IBasicCharacterData basicCharacter,
       IGenericTraitCollection traitCollection,
       FavoringTraitType type) {
-    return costs.getCharmCosts(charm, new CostAnalyzer(basicCharacter, traitCollection, type));
+    return costs.getCharmCosts(charm, new CostAnalyzer(basicCharacter, traitCollection));
   }
 }

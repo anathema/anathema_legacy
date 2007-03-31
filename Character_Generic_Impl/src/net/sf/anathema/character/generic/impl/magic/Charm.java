@@ -278,10 +278,7 @@ public class Charm extends Identificate implements ICharm {
     favoredCasteIds.add(casteId);
   }
 
-  public boolean isFavored(
-      IBasicCharacterData basicCharacter,
-      IGenericTraitCollection traitCollection,
-      FavoringTraitType type) {
+  public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
     boolean specialFavored = favoredCasteIds.contains(basicCharacter.getCasteType().getId());
     if (specialFavored) {
       return true;
@@ -291,7 +288,7 @@ public class Charm extends Identificate implements ICharm {
     }
     final boolean[] characterCanFavorMagicOfPrimaryType = new boolean[1];
     final ITraitType primaryTraitType = getPrerequisites()[0].getType();
-    type.accept(new IFavoringTraitTypeVisitor() {
+    basicCharacter.getCharacterType().getFavoringTraitType().accept(new IFavoringTraitTypeVisitor() {
       public void visitAbilityType(FavoringTraitType visitedType) {
         characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AbilityType;
       }

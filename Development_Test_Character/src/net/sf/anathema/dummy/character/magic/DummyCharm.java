@@ -24,7 +24,6 @@ import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
@@ -161,10 +160,7 @@ public class DummyCharm extends Identificate implements ICharm {
     return false;
   }
 
-  public boolean isFavored(
-      IBasicCharacterData basicCharacter,
-      IGenericTraitCollection traitCollection,
-      FavoringTraitType type) {
+  public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
     if (getPrerequisites().length <= 0) {
       return false;
     }

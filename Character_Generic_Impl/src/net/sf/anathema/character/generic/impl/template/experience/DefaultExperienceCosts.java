@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 
 public class DefaultExperienceCosts implements IExperiencePointCosts {
@@ -25,12 +24,8 @@ public class DefaultExperienceCosts implements IExperiencePointCosts {
     return new MultiplyRatingCosts(4);
   }
 
-  public int getSpellCosts(
-      ISpell spell,
-      IBasicCharacterData basicCharacter,
-      IGenericTraitCollection traitCollection,
-      FavoringTraitType type) {
-    return getCharmCosts(spell.isFavored(basicCharacter, traitCollection, type), null);
+  public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
+    return getCharmCosts(spell.isFavored(basicCharacter, traitCollection), null);
   }
 
   public int getCharmCosts(ICharm charm, ICostAnalyzer costMapping) {

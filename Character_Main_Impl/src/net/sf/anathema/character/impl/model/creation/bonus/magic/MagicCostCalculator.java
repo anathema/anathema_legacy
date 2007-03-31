@@ -55,7 +55,7 @@ public class MagicCostCalculator {
     this.costs = costs;
     this.bonusPools = bonusPools;
     this.magicPools = magicPools;
-    this.analyzer = new CostAnalyzer(basicCharacter, traitCollection, magicTemplate.getFavoringTraitType());
+    this.analyzer = new CostAnalyzer(basicCharacter, traitCollection);
   }
 
   public void calculateMagicCosts() {

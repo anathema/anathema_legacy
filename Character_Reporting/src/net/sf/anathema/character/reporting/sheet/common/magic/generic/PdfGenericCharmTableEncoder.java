@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
@@ -56,8 +57,13 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
       Phrase charmPhrase = new Phrase(stats.getNameString(resources), font);
       table.addCell(new TableCell(charmPhrase, Rectangle.NO_BORDER));
       String genericId = stats.getName().getId();
-      for (AbilityType abilityType : AbilityType.getAbilityTypes(ExaltedEdition.SecondEdition)) {
-        table.addCell(createGenericCell(character, abilityType, genericId, learnedTemplate, notLearnedTemplate));
+      ITraitType[] genericTraitTypes = character.getTemplate()
+          .getTemplateType()
+          .getCharacterType()
+          .getFavoringTraitType()
+          .getTraitTypes(ExaltedEdition.SecondEdition);
+      for (ITraitType type : genericTraitTypes) {
+        table.addCell(createGenericCell(character, type, genericId, learnedTemplate, notLearnedTemplate));
       }
     }
     return table;
@@ -78,11 +84,11 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
 
   private PdfPCell createGenericCell(
       IGenericCharacter character,
-      AbilityType abilityType,
+      ITraitType type,
       String genericId,
       PdfTemplate learnedTemplate,
       PdfTemplate notLearnedTemplate) throws DocumentException {
-    final String charmId = genericId + "." + abilityType.getId(); //$NON-NLS-1$
+    final String charmId = genericId + "." + type.getId(); //$NON-NLS-1$
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
     boolean isLearned = CollectionUtilities.find(allLearnedMagic, new IPredicate<IMagic>() {
       public boolean evaluate(IMagic value) {

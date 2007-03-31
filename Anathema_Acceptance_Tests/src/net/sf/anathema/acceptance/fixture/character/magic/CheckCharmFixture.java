@@ -41,9 +41,6 @@ public class CheckCharmFixture extends AbstractCheckCharmFisture {
   public boolean isFavored() {
     ICharm charm = getCharm();
     ICharacterModelContext characterContext = getCharacterStatistics().getCharacterContext();
-    return charm.isFavored(
-        characterContext.getBasicCharacterContext(),
-        characterContext.getTraitCollection(),
-        getCharacterStatistics().getCharacterTemplate().getMagicTemplate().getFavoringTraitType());
+    return charm.isFavored(characterContext.getBasicCharacterContext(), characterContext.getTraitCollection());
   }
 }

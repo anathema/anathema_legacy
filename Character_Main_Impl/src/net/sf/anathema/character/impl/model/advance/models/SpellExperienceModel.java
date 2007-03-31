@@ -32,11 +32,7 @@ public class SpellExperienceModel extends AbstractIntegerValueModel {
     int experienceCosts = 0;
     for (ISpell spell : statistics.getSpells().getLearnedSpells(true)) {
       if (!statistics.getSpells().isLearnedOnCreation(spell)) {
-        experienceCosts += calculator.getSpellCosts(
-            spell,
-            basicCharacter,
-            traitConfiguration,
-            statistics.getCharacterTemplate().getMagicTemplate().getFavoringTraitType());
+        experienceCosts += calculator.getSpellCosts(spell, basicCharacter, traitConfiguration);
       }
     }
     return experienceCosts;

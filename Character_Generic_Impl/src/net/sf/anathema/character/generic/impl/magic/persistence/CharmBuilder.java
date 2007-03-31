@@ -63,69 +63,79 @@ public class CharmBuilder implements ICharmBuilder {
 
   public Charm buildCharm(Element charmElement) throws PersistenceException {
     String id = idBuilder.build(charmElement);
-    ICharacterType characterType = getCharacterType(charmElement, id);
-    ICostList temporaryCost;
-    IPermanentCostList permanentCost;
     try {
-      Element costElement = charmElement.element(TAG_COST);
-      temporaryCost = costListBuilder.buildTemporaryCostList(costElement.element(TAG_TEMPORARY));
-      permanentCost = costListBuilder.buildPermanentCostList(costElement.element(TAG_PERMANENT));
+      ICharacterType characterType = getCharacterType(charmElement);
+      ICostList temporaryCost;
+      IPermanentCostList permanentCost;
+      try {
+        Element costElement = charmElement.element(TAG_COST);
+        temporaryCost = costListBuilder.buildTemporaryCostList(costElement.element(TAG_TEMPORARY));
+        permanentCost = costListBuilder.buildPermanentCostList(costElement.element(TAG_PERMANENT));
+      }
+      catch (PersistenceException e) {
+        throw new CharmException("Error building costlist for charm " + id, e); //$NON-NLS-1$
+      }
+      IComboRestrictions comboRules = comboBuilder.buildComboRules(charmElement);
+      IDuration duration = buildDuration(charmElement);
+      ICharmTypeModel charmTypeModel = charmTypeBuilder.build(charmElement);
+      IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(charmElement);
+      CharmPrerequisiteList prerequisiteList = getPrerequisites(charmElement);
+      IGenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
+      final IGenericTrait primaryPrerequisite = prerequisites.length != 0 ? prerequisites[0] : null;
+      String group = groupBuilder.build(charmElement, primaryPrerequisite);
+      Charm charm = new Charm(
+          characterType,
+          id,
+          group,
+          prerequisiteList,
+          temporaryCost,
+          permanentCost,
+          comboRules,
+          duration,
+          charmTypeModel,
+          sources);
+      for (ICharmAttribute attribute : attributeBuilder.buildCharmAttributes(charmElement, primaryPrerequisite)) {
+        charm.addCharmAttribute(attribute);
+      }
+      loadSpecialLearning(charmElement, charm);
+      return charm;
     }
     catch (PersistenceException e) {
-      throw new CharmException("Error building costlist for charm " + id, e); //$NON-NLS-1$
+      throw new PersistenceException("Parsing error for Charm " + id, e); //$NON-NLS-1$
     }
-    IComboRestrictions comboRules = comboBuilder.buildComboRules(charmElement);
+  }
+
+  private IDuration buildDuration(Element charmElement) throws CharmException {
     IDuration duration;
     try {
       duration = durationBuilder.buildDuration(charmElement.element(TAG_DURATION));
     }
     catch (PersistenceException e) {
-      throw new CharmException("Error in Charm duration " + id, e); //$NON-NLS-1$
+      throw new CharmException("Error in Charm duration.", e); //$NON-NLS-1$
     }
-    ICharmTypeModel charmTypeModel = charmTypeBuilder.build(charmElement);
-    IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(charmElement);
-    CharmPrerequisiteList prerequisiteList = getPrerequisites(charmElement, id);
-    IGenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
-    final IGenericTrait primaryPrerequisite = prerequisites.length != 0 ? prerequisites[0] : null;
-    String group = groupBuilder.build(charmElement, primaryPrerequisite);
-    Charm charm = new Charm(
-        characterType,
-        id,
-        group,
-        prerequisiteList,
-        temporaryCost,
-        permanentCost,
-        comboRules,
-        duration,
-        charmTypeModel,
-        sources);
-    for (ICharmAttribute attribute : attributeBuilder.buildCharmAttributes(charmElement, primaryPrerequisite)) {
-      charm.addCharmAttribute(attribute);
-    }
-    loadSpecialLearning(charmElement, charm);
-    return charm;
+    return duration;
   }
 
-  private CharmPrerequisiteList getPrerequisites(Element charmElement, String id) throws CharmException {
+  private CharmPrerequisiteList getPrerequisites(Element charmElement) throws CharmException {
     CharmPrerequisiteList prerequisiteList;
     try {
       Element prerequisiteListElement = ElementUtilities.getRequiredElement(charmElement, TAG_PREREQUISITE_LIST);
       prerequisiteList = new PrerequisiteListBuilder(traitsBuilder, attributeRequirementsBuilder).buildPrerequisiteList(prerequisiteListElement);
     }
     catch (PersistenceException e) {
-      throw new CharmException("Error in Charm " + id, e); //$NON-NLS-1$
+      throw new CharmException("Error in Charm prerequisites.", e); //$NON-NLS-1$
     }
     return prerequisiteList;
   }
 
-  private ICharacterType getCharacterType(Element charmElement, String id) throws CharmException {
+  private ICharacterType getCharacterType(Element charmElement) throws CharmException {
     String typeAttribute = charmElement.attributeValue(ATTRIB_EXALT);
     ICharacterType characterType;
     try {
       characterType = CharacterType.getById(typeAttribute);
     }
     catch (IllegalArgumentException e) {
-      throw new CharmException("No chararacter type given for Charm: " + id, e); //$NON-NLS-1$
+      throw new CharmException("No chararacter type given.", e); //$NON-NLS-1$
     }
     return characterType;
   }

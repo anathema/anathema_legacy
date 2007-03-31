@@ -24,11 +24,7 @@ public interface IPointCostCalculator {
 
   public double getSpecialtyCosts(boolean favored);
 
-  public int getSpellCosts(
-      ISpell spell,
-      IBasicCharacterData basicCharacter,
-      IGenericTraitCollection traitCollection,
-      FavoringTraitType type);
+  public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection);
 
   public int getCharmCosts(
       ICharm charm,

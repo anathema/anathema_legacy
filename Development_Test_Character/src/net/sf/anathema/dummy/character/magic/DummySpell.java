@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
@@ -67,10 +66,7 @@ public class DummySpell implements ISpell {
     visitor.visitSpell(this);
   }
 
-  public boolean isFavored(
-      IBasicCharacterData basicCharacter,
-      IGenericTraitCollection traitCollection,
-      FavoringTraitType type) {
+  public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
     return ((IFavorableGenericTrait) traitCollection.getTrait(AbilityType.Occult)).isCasteOrFavored();
   }
 

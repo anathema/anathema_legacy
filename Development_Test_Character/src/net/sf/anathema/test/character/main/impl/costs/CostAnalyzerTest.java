@@ -3,7 +3,6 @@ package net.sf.anathema.test.character.main.impl.costs;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.dummy.character.DummyBasicCharacterData;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
@@ -25,20 +24,18 @@ public class CostAnalyzerTest extends BasicTestCase {
     super.setUp();
     this.dummyCoreTraitConfiguration = new DummyCoreTraitConfiguration();
     this.basicCharacterData = new DummyBasicCharacterData();
-    this.costAnalyzer = new CostAnalyzer(basicCharacterData, dummyCoreTraitConfiguration, FavoringTraitType.AbilityType);
+    this.costAnalyzer = new CostAnalyzer(basicCharacterData, dummyCoreTraitConfiguration);
   }
 
   public void testIsFavoredMagicDelegatesToMagic() throws Exception {
     IMagic magic = EasyMock.createStrictMock(IMagic.class);
     IBasicCharacterData trueCharacterData = new DummyBasicCharacterData();
-    EasyMock.expect(magic.isFavored(trueCharacterData, dummyCoreTraitConfiguration, FavoringTraitType.AbilityType))
-        .andReturn(true);
+    EasyMock.expect(magic.isFavored(trueCharacterData, dummyCoreTraitConfiguration)).andReturn(true);
     IBasicCharacterData falseCharacterData = new DummyBasicCharacterData();
-    EasyMock.expect(magic.isFavored(falseCharacterData, dummyCoreTraitConfiguration, FavoringTraitType.AbilityType))
-        .andReturn(false);
+    EasyMock.expect(magic.isFavored(falseCharacterData, dummyCoreTraitConfiguration)).andReturn(false);
     EasyMock.replay(magic);
-    assertTrue(new CostAnalyzer(trueCharacterData, dummyCoreTraitConfiguration, FavoringTraitType.AbilityType).isMagicFavored(magic));
-    assertFalse(new CostAnalyzer(falseCharacterData, dummyCoreTraitConfiguration, FavoringTraitType.AbilityType).isMagicFavored(magic));
+    assertTrue(new CostAnalyzer(trueCharacterData, dummyCoreTraitConfiguration).isMagicFavored(magic));
+    assertFalse(new CostAnalyzer(falseCharacterData, dummyCoreTraitConfiguration).isMagicFavored(magic));
     EasyMock.verify(magic);
   }
 

@@ -11,7 +11,6 @@ public class CheckSpellMagicFixture extends AbstractCharacterColumnFixture {
     ICharacterModelContext characterContext = getCharacterStatistics().getCharacterContext();
     return getCharacterStatistics().getSpells().getSpellById(id).isFavored(
         characterContext.getBasicCharacterContext(),
-        characterContext.getTraitCollection(),
-        getCharacterStatistics().getCharacterTemplate().getMagicTemplate().getFavoringTraitType());
+        characterContext.getTraitCollection());
   }
 }

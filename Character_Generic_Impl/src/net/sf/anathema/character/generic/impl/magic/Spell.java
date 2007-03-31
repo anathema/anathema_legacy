@@ -67,12 +67,9 @@ public class Spell extends Identificate implements ISpell {
     visitor.visitSpell(this);
   }
 
-  public boolean isFavored(
-      IBasicCharacterData basicCharacter,
-      IGenericTraitCollection traitCollection,
-      FavoringTraitType type) {
+  public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
     final ITraitType[] spellFavoringType = new ITraitType[1];
-    type.accept(new IFavoringTraitTypeVisitor() {
+    basicCharacter.getCharacterType().getFavoringTraitType().accept(new IFavoringTraitTypeVisitor() {
       public void visitAbilityType(FavoringTraitType visitedType) {
         spellFavoringType[0] = AbilityType.Occult;
       }
