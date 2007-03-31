@@ -49,9 +49,7 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   }
 
   public IStringSelectionView addSelectionView(String labelText, Icon addIcon) {
-    StringSelectionView view = new StringSelectionView(labelText, addIcon);
-    mainPanel.add(view.getComponent());
-    return view;
+    return new StringSelectionView(mainPanel, labelText, addIcon);
   }
 
   public IRemovableTraitView<IToggleButtonTraitView< ? >> addEntryView(Icon removeIcon, String string) {

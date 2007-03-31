@@ -39,9 +39,7 @@ public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<Si
   }
 
   public IStringSelectionView addSelectionView(String labelText, Icon addIcon) {
-    StringSelectionView view = new StringSelectionView(labelText, addIcon);
-    mainPanel.add(view.getComponent());
-    return view;
+    return new StringSelectionView(mainPanel, labelText, addIcon);
   }
 
   public IRemovableTraitView<SimpleTraitView> addEntryView(Icon removeIcon, String string) {
