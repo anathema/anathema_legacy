@@ -117,15 +117,13 @@ public class CharmBuilder implements ICharmBuilder {
   }
 
   private CharmPrerequisiteList getPrerequisites(Element charmElement) throws CharmException {
-    CharmPrerequisiteList prerequisiteList;
     try {
       Element prerequisiteListElement = ElementUtilities.getRequiredElement(charmElement, TAG_PREREQUISITE_LIST);
-      prerequisiteList = new PrerequisiteListBuilder(traitsBuilder, attributeRequirementsBuilder).buildPrerequisiteList(prerequisiteListElement);
+      return new PrerequisiteListBuilder(traitsBuilder, attributeRequirementsBuilder).buildPrerequisiteList(prerequisiteListElement);
     }
     catch (PersistenceException e) {
       throw new CharmException("Error in Charm prerequisites.", e); //$NON-NLS-1$
     }
-    return prerequisiteList;
   }
 
   private ICharacterType getCharacterType(Element charmElement) throws CharmException {
