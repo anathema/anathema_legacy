@@ -17,6 +17,7 @@
 !path ../Character_Equipment_Impl/build/classes
 !path ../Character_Intimacies/build/classes
 !path ../Character_Lunar/build/classes
+!path ../Character_MartialArts/build/classes
 !path ../Character_Mortal/build/classes
 !path ../Character_Reporting/build/classes
 !path ../Character_Solar/build/classes
@@ -26,6 +27,7 @@
 !path ../Charm_Cascades/build/classes
 !path ../Development_Test_Character/build/classes
 !path ../Platform/build/classes
+!path ../Platform_SvgTree/build/classes
 !path ../Lib/build/classes
 !path ../Lib_Gui/build/classes
 !path ../Lib_Workflow/build/classes

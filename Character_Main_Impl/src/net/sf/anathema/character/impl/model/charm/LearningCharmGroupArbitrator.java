@@ -48,6 +48,7 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
         continue;
       }
       if (isBegun(group)) {
+        System.out.println(group.getId());
         uncompletedGroups.add(group.getId());
       }
     }
@@ -65,17 +66,16 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
   }
 
   private boolean isCelestialStyle(ICharm martialArtsCharm) {
-    return !martialArtsCharm.hasAttribute(ICharmData.NO_STYLE_ATTRIBUTE)
-        && MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, martialArtsCharm);
+    return MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, martialArtsCharm) && !martialArtsCharm.hasAttribute(ICharmData.NO_STYLE_ATTRIBUTE);
   }
 
   private boolean isBegun(ILearningCharmGroup group) {
     for (ICharm charm : group.getAllCharms()) {
       if (group.isLearned(charm)) {
-        return false;
+        return true;
       }
     }
-    return true;
+    return false;
   }
 
   private boolean isCompleted(ILearningCharmGroup group) {
