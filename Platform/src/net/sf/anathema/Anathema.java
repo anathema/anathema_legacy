@@ -2,9 +2,6 @@ package net.sf.anathema;
 
 import javax.swing.JOptionPane;
 
-import net.disy.commons.core.message.Message;
-import net.disy.commons.swing.dialog.message.MessageDialogFactory;
-import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.framework.configuration.AnathemaPreferences;
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
@@ -37,9 +34,10 @@ public class Anathema implements Application {
       anathemaView = new AnathemaInitializer(manager, anathemaPreferences).initialize();
     }
     catch (InitializationException e) {
+      e.printStackTrace();
       JOptionPane.showMessageDialog(
           null,
-          e.getMessage() + "\n" + e.getStackTrace(), "Initialization Error", JOptionPane.ERROR_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
+          e.getMessage() + "\n" + e.getStackTrace()[0].toString(), "Initialization Error", JOptionPane.ERROR_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
       // TODO: Disy-Dialoge ohne I18n?
       // UserDialog dialog = MessageDialogFactory.createMessageDialog(null, new Message(e.getMessage(), e));
       // dialog.show();
