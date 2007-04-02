@@ -152,7 +152,7 @@
  </prerequisite>
  <cost>
   <temporary>
-   <!-- Cost: Special -->
+   <essence cost="Special"/>
    <willpower cost="1"/>
   </temporary>
  </cost>

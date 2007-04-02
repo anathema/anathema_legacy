@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<charmlist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ComplexCharms.xsd">
+  <!-- Generics -->
+  <genericCharm id="Dragon-Blooded.1stExcellency" exalt="Dragon-Blooded">
+    <prerequisite>
+      <trait value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 2 dice"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1" secondaryStep="2"/>
+    </charmtype>
+    <genericCharmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="DragonBlooded2nd" page="128"/>
+  </genericCharm>
+  <genericCharm id="Dragon-Blooded.2ndExcellency" exalt="Dragon-Blooded">
+    <prerequisite>
+      <trait value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per success"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1" secondaryStep="2"/>
+    </charmtype>
+    <genericCharmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="DragonBlooded2nd" page="128"/>
+  </genericCharm>
+  <genericCharm id="Dragon-Blooded.3rdExcellency" exalt="Dragon-Blooded">
+    <prerequisite>
+      <trait value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="4" secondaryStep="6"/>
+    </charmtype>
+    <genericCharmAttribute attribute="Excellency"/>
+	<charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="DragonBlooded2nd" page="128"/>
+  </genericCharm>
+  <genericCharm id="Dragon-Blooded.TerrestrialReinforcement" exalt="Dragon-Blooded">
+    <prerequisite>
+      <trait value="3"/>
+      <essence value="2"/>
+      <genericCharmAttributeRequirement attribute="Excellency"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 2 dice + 1m per subject"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple"/>
+    <source source="DragonBlooded2nd" page="128"/>
+  </genericCharm>
+</charmlist>

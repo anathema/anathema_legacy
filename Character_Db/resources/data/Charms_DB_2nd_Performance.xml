@@ -121,7 +121,7 @@
    <essence cost="8"/>
   </temporary>
  </cost>
- <duration duration="PerformanceEndsPlus"/> <!-- Added to CharmDurations -->
+ <duration duration="PerformanceEndsPlus"/>
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Compulsion" visualize="true"/>
@@ -138,7 +138,7 @@
    <essence cost="3"/>
   </temporary>
  </cost>
- <duration duration="PerformanceEnds"/> <!-- Added to CharmDuration -->
+ <duration event="PerformanceEnds"/>
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Illusion" visualize="true"/>
