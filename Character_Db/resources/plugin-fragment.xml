@@ -24,6 +24,46 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_Dragon-Blooded_SecondEdition.xml"/>
 	  </parameter>
+ 	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Archery.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Investigation.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Larceny.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Medicine.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Performance.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Ride.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Sail.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Survival.xml"/>
+	  </parameter>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="DBResources">
 		<parameter id="bundle" value="Dragon-Blooded"/>
