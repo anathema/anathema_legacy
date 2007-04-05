@@ -1,0 +1,130 @@
+<charmlist>
+<charm id="Dragon-Blooded.TerrestrialCircleSorcery" exalt="Dragon-Blooded" group="Occult">
+ <prerequisite>
+  <trait id="Occult" value="3"/>
+  <essence value="3"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <willpower cost="1"/>
+  </temporary>
+ </cost>
+  <duration duration="Permanent"/>  
+  <charmtype type="Permanent"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Spirit-DetectingMirrorTechnique" exalt="Dragon-Blooded" group="Occult">
+ <prerequisite>
+  <trait id="Occult" value="2"/>
+  <essence value="1"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="2"/>
+  </temporary>
+ </cost>
+  <duration amount="1" unit="scene"/>  
+  <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.HarmoniousWind-LuringSong" exalt="Dragon-Blooded" group="Occult">
+ <prerequisite>
+  <trait id="Occult" value="2"/>
+  <essence value="1"/>
+  <charmReference id="Dragon-Blooded.Spirit-DetectingMirrorTechnique"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="5"/>
+  </temporary>
+ </cost>
+  <duration amount="1" unit="hour"/>  
+  <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Spirit-GroundingShout" exalt="Dragon-Blooded" group="Occult">
+ <prerequisite>
+  <trait id="Occult" value="3"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.Spirit-DetectingMirrorTechnique"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="5"/>
+  </temporary>
+ </cost>
+  <duration duration="Instant"/>  
+  <charmtype type="Simple"/>
+  <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Spirit-ChainingStrike" exalt="Dragon-Blooded" group="Occult">
+ <prerequisite>
+  <trait id="Occult" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.Spirit-GroundingShout"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="3"/>
+   <willpower cost="1"/>
+  </temporary>
+ </cost>
+  <duration amount="5" unit="minute"/>  
+  <charmtype type="Supplemental"/>
+  <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Spirit-ShreddingAttack" exalt="Dragon-Blooded" group="Occult">
+ <prerequisite>
+  <trait id="Occult" value="5"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.Spirit-GroundingShout"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="4"/>
+  </temporary>
+ </cost>
+  <duration duration="Instant"/>  
+  <charmtype type="Supplemental"/>
+  <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.FivefoldResonanceSense" exalt="Dragon-Blooded" group="Occult">
+ <prerequisite>
+  <trait id="Occult" value="2"/>
+  <essence value="1"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="2"/>
+  </temporary>
+ </cost>
+  <duration amount="1" unit="scene"/>  
+  <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.SeeingMakersHand" exalt="Dragon-Blooded" group="Occult">
+ <prerequisite>
+  <trait id="Occult" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.FivefoldResonanceSense"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="4"/>
+  </temporary>
+ </cost>
+  <duration duration="Instant"/>  
+  <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+</charmlist>

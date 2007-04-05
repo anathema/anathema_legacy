@@ -94,7 +94,7 @@
         <essence cost="5" text="or more"/>
       </temporary>
     </cost>
-    <duration amount="1" unit="Scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
