@@ -1,0 +1,127 @@
+<charmlist>
+ 
+  <charm id="Dragon-Blooded.LoyalWeapon" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="3"/>
+      <essence value="2"/>
+      <charmAttributeRequirement attribute="ExcellencyThrown" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+   
+  <charm id="Dragon-Blooded.PersistentHornetAttack" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Dragon-Blooded.LoyalWeapon"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration amount="Essence" unit="action" />
+    <charmtype type="Simple"/>
+     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  
+   <charm id="Dragon-Blooded.InvisiblyHiddenChakramMethod" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Dragon-Blooded.PersistentHornetAttack"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10" text="per weapon"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant" />
+    <charmtype type="Simple"/>
+     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  
+  <charm id="Dragon-Blooded.WhirlwindShieldForm" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="3"/>
+      <essence value="2"/>
+      <charmAttributeRequirement attribute="ExcellencyThrown" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="+1 per ally protected"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene" />
+    <charmtype type="Simple"/>
+     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  
+  <charm id="Dragon-Blooded.VengefulGustCounterattack" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Dragon-Blooded.WhirlwindShieldForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="or 4 motes"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant" />
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Counterattack" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  
+  <charm id="Dragon-Blooded.DeadlyBladesFiveDragon" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Dragon-Blooded.PersistentHornetAttack"/>
+      <charmReference id="Dragon-Blooded.VengefulGustCounterattack"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="per weapon"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant" />
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Elemental" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  
+  <charm id="Dragon-Blooded.ElementalArmorTechnique" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Dragon-Blooded.VengefulGustCounterattack"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="or 2 motes per 1B/1L of soak"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene" />
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Elemental" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  
+</charmlist>

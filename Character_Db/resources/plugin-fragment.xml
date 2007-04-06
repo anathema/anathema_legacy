@@ -82,7 +82,17 @@
 	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Stealth.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Survival.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Thrown.xml"/>
 	  </parameter>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="DBResources">
