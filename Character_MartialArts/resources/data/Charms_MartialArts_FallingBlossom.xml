@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<charmlist>
+  <!-- Falling Blossom Style -->
+  <charm id="Terrestrial.LivingShieldTechnique" exalt="Dragon-Blooded" group="FallingBlossomStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+    	<special primaryStep="2"/>
+    </charmtype>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="ScrollMonk"/>
+  </charm>
+  <charm id="Terrestrial.UndefendedAssaultMethod" exalt="Dragon-Blooded" group="FallingBlossomStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="1"/>
+      <charmReference id="Terrestrial.LivingShieldTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="action"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="ScrollMonk"/>
+  </charm>
+  <charm id="Terrestrial.DualScarletBlossomTechnique" exalt="Dragon-Blooded" group="FallingBlossomStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Terrestrial.LivingShieldTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+        <health cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="ScrollMonk"/>
+  </charm>
+  <charm id="Terrestrial.FallingBlossomForm" exalt="Dragon-Blooded" group="FallingBlossomStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Terrestrial.DualScarletBlossomTechnique"/>
+      <charmReference id="Terrestrial.UndefendedAssaultMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple">
+    	<special speed="3" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Form" visualize="true"/>
+    <source source="ScrollMonk"/>
+  </charm>
+  <charm id="Terrestrial.PurityPurposeAttack" exalt="Dragon-Blooded" group="FallingBlossomStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Terrestrial.FallingBlossomForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+        <willpower cost="1"/>
+      </temporary>
+      <permanent>
+      	<experience cost="1"/>
+      </permanent>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="ScrollMonk"/>
+  </charm>
+  <charm id="Terrestrial.StrengthFaithMeditation" exalt="Dragon-Blooded" group="FallingBlossomStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Terrestrial.FallingBlossomForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <source source="ScrollMonk"/>
+  </charm>
+  <charm id="Terrestrial.VerseMartyr" exalt="Dragon-Blooded" group="FallingBlossomStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Terrestrial.PurityPurposeAttack"/>
+      <charmReference id="Terrestrial.StrengthFaithMeditation"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="15"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="day"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <source source="ScrollMonk"/>
+  </charm>
+</charmlist>

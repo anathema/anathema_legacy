@@ -300,7 +300,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <source source="SavantSorcerer" page="103"/>
+    <target target="Animals"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="103"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="40"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.ConjuringAzureChariot">
     <cost>
@@ -308,7 +310,9 @@
         <essence cost="15"/>
       </temporary>
     </cost>
-    <source source="SavantSorcerer" page="103"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="103"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="41"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CorruptedWords">
     <cost>
@@ -316,7 +320,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <source source="SavantSorcerer" page="103"/>
+    <target target="SpeakingCreature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="103"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="41"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CurseSlavishHumility">
     <cost>
@@ -324,7 +330,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <source source="SavantSorcerer" page="104"/>
+    <target target="Creature10yards"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="104"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="42"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.DanceSmokeCobras">
     <cost>
@@ -332,7 +340,9 @@
         <essence cost="15"/>
       </temporary>
     </cost>
-    <source source="SavantSorcerer" page="104"/>
+    <target target="Creature30yards"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="104"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="43"/>    
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.DisguiseNewFace">
     <cost>
@@ -340,7 +350,9 @@
         <essence cost="15"/>
       </temporary>
     </cost>
-    <source source="SavantSorcerer" page="105"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="105"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="43"/> 
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.EmeraldCircleBanishment">
     <cost>
@@ -1192,7 +1204,9 @@
         <essence cost="15"/>
       </temporary>
     </cost>
-    <source source="Bo3C" page="33"/>
+    <target target="SummonedCloud"/>   
+    <source edition="FirstEdition" source="Bo3C" page="33"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="40"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CoinDistantVision">
     <cost>
@@ -1200,7 +1214,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <source source="Bo3C" page="33"/>
+    <target target="BlackCeramicCoin"/>   
+    <source edition="FirstEdition" source="Bo3C" page="33"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="40"/>
   </spell>
     <spell circle="Terrestrial" id="Terrestrial.CommandingPresenceFire">
     <cost>
@@ -1208,7 +1224,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <source source="Bo3C" page="33"/>
+    <target target="FieryProjection"/>
+    <source edition="FirstEdition" source="Bo3C" page="33"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="40"/>
   </spell>
     <spell circle="Terrestrial" id="Terrestrial.CurtainQuartz">
     <cost>
@@ -1216,7 +1234,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <source source="Bo3C" page="34"/>
+    <target target="CreatureNearby"/>
+    <source edition="FirstEdition" source="Bo3C" page="34"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="42"/>
   </spell>
     <spell circle="Terrestrial" id="Terrestrial.DragonSmokeSerpentFlame">
     <cost>

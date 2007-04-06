@@ -4,17 +4,21 @@ Exalted (C) 2001-2007 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
-			Release 1.2 "" (Upcoming)
+			Release 1.2 "Nexus" (15/04/07)
 ===------------------------------------------------------------------------------===
 [2E] Solar Exalts from previous versions knowing Martial Arts generic Charms will
 be invalid in future releases. Use this version to convert them by loading them once and saving thereafter.  
 
++ [2E] Dragon-Blooded
 + Special Charms are finally learned / unlearned on click. (Way easier than changing the cursors.) 
-+ "(Type) Exalt Ways" now supports all known valid types.
++ [2E] Falling Blossom Style from Scroll of the Monk.
++ [1E] "(Type) Exalt Ways" now supports all known valid types.
 + Customizers behold: Charms can now come from any number of interdependent documents.
-* Martial Arts Generics are shown as type specific, not Martial Arts Charms.
++ More spells fitted with targets
+* [2E] Martial Arts Generics are shown as type specific, not Martial Arts Charms.
 * Charms with multiple variants are correctly unlearned when a parent Charm is unlearned.
 * About-Dialog and Repository Browser no longer show 'Cancel'-Buttons.
+
 
 ===------------------------------------------------------------------------------===
 			Release 1.1.1 "Patch 1" (25/02/07)
