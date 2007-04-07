@@ -1,0 +1,92 @@
+<charmlist>
+
+<charm id="Dragon-Blooded.EffortlesslyRisingFlame" exalt="Dragon-Blooded" group="Athletics">
+ <prerequisite>
+  <trait id="Athletics" value="2"/>
+  <essence value="1"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="1"/>
+  </temporary>
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+
+<charm id="Dragon-Blooded.FallingStarManeuver" exalt="Dragon-Blooded" group="Athletics">
+ <prerequisite>
+  <trait id="Athletics" value="2"/>
+  <essence value="1"/>
+  <charmReference id="Dragon-Blooded.EffortlesslyRisingFlame"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="1" text="per 2 dice of damage"/>
+  </temporary>
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Supplemental"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Bellows-PumpingStride" exalt="Dragon-Blooded" group="Athletics">
+ <prerequisite>
+  <trait id="Athletics" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.FallingStarManeuver"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="1" text="or 2 motes"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.IncenseSmokeLadder" exalt="Dragon-Blooded" group="Athletics">
+ <prerequisite>
+  <trait id="Athletics" value="4"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.Bellows-PumpingStride"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="2" />
+  </temporary>
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.DancingEmberStride" exalt="Dragon-Blooded" group="Athletics">
+ <prerequisite>
+  <trait id="Athletics" value="5"/>
+  <essence value="4"/>
+  <charmReference id="Dragon-Blooded.IncenseSmokeLadder"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="4" />
+   <willpower cost="1" />
+  </temporary>
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+</charmlist>
