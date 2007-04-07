@@ -34,16 +34,15 @@
   <source source="DragonBlooded2nd"/>
 </charm>
 
-<charm id="Dragon-Blooded.OathTen-ThousandDragons" exalt="Dragon-Blooded" group="Archery">
+<charm id="Dragon-Blooded.OathTen-ThousandDragons" exalt="Dragon-Blooded" group="Integrity">
  <prerequisite>
   <trait id="Integrity" value="2"/>
   <essence value="2"/>
   <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1"/>
  </prerequisite>
  <cost>
-  <temporary>
-   <essence cost="2"/>
-  </temporary>
+ <temporary/>
+ </cost>
  </cost>
  <duration duration="Permanent"/>
  <charmtype type="Permanent"/>
@@ -155,7 +154,7 @@
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+ <charmAttribute attribute="Exclusive" visualize="false"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 </charmlist>
