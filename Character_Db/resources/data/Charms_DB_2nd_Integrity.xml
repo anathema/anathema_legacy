@@ -1,0 +1,161 @@
+<charmlist>
+
+<charm id="Dragon-Blooded.UnsleepingEarthMeditation" exalt="Dragon-Blooded" group="Integrity">
+ <prerequisite>
+  <trait id="Integrity" value="2"/>
+  <essence value="2"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="1"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="day"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.UntiringEarthMeditation" exalt="Dragon-Blooded" group="Integrity">
+ <prerequisite>
+  <trait id="Integrity" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.UnsleepingEarthMeditation" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="5"/>
+   <willpower cost="1"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="day"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.OathTen-ThousandDragons" exalt="Dragon-Blooded" group="Archery">
+ <prerequisite>
+  <trait id="Integrity" value="2"/>
+  <essence value="2"/>
+  <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="2"/>
+  </temporary>
+ </cost>
+ <duration duration="Permanent"/>
+ <charmtype type="Permanent"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Ten-ThousandDragonsFightasOne" exalt="Dragon-Blooded" group="Integrity">
+ <prerequisite>
+  <trait id="Integrity" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.OathTen-ThousandDragons" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="4"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Social" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.UnflaggingVengeanceMeditation" exalt="Dragon-Blooded" group="Integrity">
+ <prerequisite>
+  <trait id="Integrity" value="4"/>
+  <essence value="4"/>
+  <charmReference id="Dragon-Blooded.UntiringEarthMeditation" />
+  <charmReference id="Dragon-Blooded.Ten-ThousandDragonsFightasOne" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="5"/>
+   <willpower cost="1" text=", additional allies pay 1 wp"/>
+  </temporary>
+ </cost>
+ <duration event="Satisfied"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Social" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.GraniteCurtainSerenity" exalt="Dragon-Blooded" group="Integrity">
+ <prerequisite>
+  <trait id="Integrity" value="5"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.Ten-ThousandDragonsFightasOne" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="5"/>
+   <willpower cost="1"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.InviolateDragonSpirit" exalt="Dragon-Blooded" group="Integrity">
+ <prerequisite>
+  <trait id="Integrity" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.Ten-ThousandDragonsFightasOne" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="10"/>
+   <willpower cost="1"/>
+   <health cost="1"/>
+  </temporary>
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Chaos-WardingPrana" exalt="Dragon-Blooded" group="Integrity">
+ <prerequisite>
+  <trait id="Integrity" value="3"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.InviolateDragonSpirit" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="5"/>
+   <willpower cost="1"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Defense-From-AnathemaMethod" exalt="Dragon-Blooded" group="Integrity">
+ <prerequisite>
+  <trait id="Integrity" value="5"/>
+  <essence value="4"/>
+  <charmReference id="Dragon-Blooded.Chaos-WardingPrana" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="8"/>
+   <willpower cost="1"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Exclusive" visualize="false"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+</charmlist>
