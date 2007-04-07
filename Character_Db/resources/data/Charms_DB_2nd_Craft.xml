@@ -71,7 +71,7 @@
 <charm id="Dragon-Blooded.CharmLesserUnmaking" exalt="Dragon-Blooded" group="Craft">
  <prerequisite>
   <trait id="Craft" value="5"/>
-  <essence value="2"/>
+  <essence value="3"/>
   <charmReference id="Dragon-Blooded.Flaw-FindingExamination"/>
  </prerequisite>
  <cost>

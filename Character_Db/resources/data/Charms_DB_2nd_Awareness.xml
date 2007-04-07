@@ -72,7 +72,7 @@
  <prerequisite>
   <trait id="Awareness" value="4"/>
   <essence value="3"/>
-  <charmReference id="Sense-RidingTechnique"/>
+  <charmReference id="Dragon-Blooded.Sense-RidingTechnique"/>
  </prerequisite>
  <cost>
   <temporary>
@@ -99,7 +99,7 @@
    <willpower cost="1"/>
   </temporary>
  </cost>
- <duration amount="Essencex5" unit="ticks"/>
+ <duration amount="Essencex5" unit="tick"/>
  <charmtype type="Simple"/>
   <source source="DragonBlooded2nd"/>
 </charm>

@@ -1,0 +1,154 @@
+<charmlist>
+<charm id="Dragon-Blooded.EnfoldedDragon'sWings" exalt="Dragon-Blooded" group="War">
+ <prerequisite>
+  <trait id="War" value="1"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.TerrestrialReinforcement.War" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="1" text="per ally"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="day"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Touch" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.TirelessFootfallsCadence" exalt="Dragon-Blooded" group="War">
+ <prerequisite>
+  <trait id="War" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.EnfoldedDragon'sWings" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="2" text="per fang"/>
+  </temporary>
+ </cost>
+ <duration duration="Varies"/>
+ <charmtype type="Simple"/>
+  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Cooperative" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Armor-HardeningConcentration" exalt="Dragon-Blooded" group="War">
+ <prerequisite>
+  <trait id="War" value="2"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.EnfoldedDragon'sWings" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="2" text="per person"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+  <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Phantom-WarriorHorde" exalt="Dragon-Blooded" group="War">
+ <prerequisite>
+  <trait id="War" value="2"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.EnfoldedDragon'sWings" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="2"/>
+  </temporary>
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Reflexive">
+ 	<special primaryStep="3"/>
+ </charmtype>
+  <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <charmAttribute attribute="Elemental" visualize="true"/>
+  <charmAttribute attribute="Obvious" visualize="true"/>
+  <charmAttribute attribute="War" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.BlazingCourageousSwordsmenInspiration" exalt="Dragon-Blooded" group="War">
+ <prerequisite>
+  <trait id="War" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.Phantom-WarriorHorde" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="Varies"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.RampartsObedientEarth" exalt="Dragon-Blooded" group="War">
+ <prerequisite>
+  <trait id="War" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.Phantom-WarriorHorde" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="2" text="per cubic yard"/>
+  </temporary>
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Reflexive"/>
+  <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <charmAttribute attribute="Obvious" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Dragon-SearedBattlefield" exalt="Dragon-Blooded" group="War">
+ <prerequisite>
+  <trait id="War" value="4"/>
+  <essence value="4"/>
+  <charmReference id="Dragon-Blooded.BlazingCourageousSwordsmenInspiration" />
+  <charmReference id="Dragon-Blooded.RampartsObedientEarth" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="8"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+  <charmAttribute attribute="Cooperative" visualize="true"/>
+  <charmAttribute attribute="Elemental" visualize="true"/>
+  <charmAttribute attribute="Obvious" visualize="true"/>
+  <charmAttribute attribute="War" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.DragonVortexAttack" exalt="Dragon-Blooded" group="War">
+ <prerequisite>
+  <trait id="War" value="5"/>
+  <essence value="5"/>
+  <charmReference id="Dragon-Blooded.Dragon-SearedBattlefield" />
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="15"/>
+   <willpower cost="1"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+  <charmAttribute attribute="Cooperative" visualize="true"/>
+  <charmAttribute attribute="Elemental" visualize="true"/>
+  <charmAttribute attribute="Obvious" visualize="true"/>
+  <charmAttribute attribute="War" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+</charmlist>

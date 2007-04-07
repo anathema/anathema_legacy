@@ -7,7 +7,7 @@
  <cost>
  <temporary/>
  </cost>
- <duration duration="Permanent/>
+ <duration duration="Permanent"/>
  <charmtype type="Permanent"/>
  <charmAttribute attribute="Stackable" visualize="true"/>
   <source source="DragonBlooded2nd"/>

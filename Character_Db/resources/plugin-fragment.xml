@@ -29,10 +29,25 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Archery.xml"/>
 	  </parameter>
+	  	     <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Awareness.xml"/>
+	  </parameter>
 	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Bureaucracy.xml"/>
+	  </parameter>
+	  	     <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Craft.xml"/>
+	  </parameter>
+	  	     <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Integrity.xml"/>
 	  </parameter>
 	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
@@ -69,6 +84,11 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Performance.xml"/>
 	  </parameter>
+	     <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Resistance.xml"/>
+	  </parameter>
 	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
@@ -93,6 +113,11 @@
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Thrown.xml"/>
+	  </parameter>
+	   <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_War.xml"/>
 	  </parameter>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="DBResources">
