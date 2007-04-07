@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.view;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
@@ -10,20 +11,27 @@ import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
 
-public class GroupedFavorableTraitConfigurationView extends AbstractInitializableContentView<Object> implements
-    IGroupedFavorableTraitConfigurationView {
+public class GroupedFavorableTraitConfigurationView implements IGroupedFavorableTraitConfigurationView {
 
   private final GroupedTraitView groupedTraitView;
   private final IIntValueDisplayFactory markerIntValueDisplayFactory;
   private final IIntValueDisplayFactory markerLessIntValueDisplayFactory;
+  private final JComponent parent;
 
   public GroupedFavorableTraitConfigurationView(
+      JComponent parent,
       int columnCount,
       IIntValueDisplayFactory factoryWithMarker,
       IIntValueDisplayFactory factoryWithoutMarker) {
-    this.groupedTraitView = new GroupedTraitView(columnCount);
+    this.parent = parent;
+    this.groupedTraitView = new GroupedTraitView(parent, columnCount);
     this.markerIntValueDisplayFactory = factoryWithMarker;
     this.markerLessIntValueDisplayFactory = factoryWithoutMarker;
+  }
+
+  @Override
+  public JComponent getComponent() {
+    return parent;
   }
 
   public IToggleButtonTraitView<SimpleTraitView> addTraitView(
@@ -48,11 +56,6 @@ public class GroupedFavorableTraitConfigurationView extends AbstractInitializabl
         selected,
         properties,
         markerLessIntValueDisplayFactory);
-  }
-
-  @Override
-  protected void createContent(JPanel component, Object object) {
-    groupedTraitView.addOverallView(component);
   }
 
   public void startNewTraitGroup(String groupLabel) {

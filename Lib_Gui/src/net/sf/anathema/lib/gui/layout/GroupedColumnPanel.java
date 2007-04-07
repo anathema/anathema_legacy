@@ -1,5 +1,6 @@
 package net.sf.anathema.lib.gui.layout;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -12,11 +13,12 @@ public class GroupedColumnPanel {
   private final JPanel[] columns;
   private int columnIndex = -1;
 
-  public GroupedColumnPanel(int columnCount) {
+  public GroupedColumnPanel(JComponent parent, int columnCount) {
     columns = new JPanel[columnCount];
     for (int i = 0; i < columns.length; i++) {
       columns[i] = new JPanel(new GridDialogLayout(2, false));
     }
+    addOverallView(parent);
   }
 
   public void startNewGroup(String groupLabel) {
@@ -37,7 +39,7 @@ public class GroupedColumnPanel {
     return columns[columnIndex];
   }
 
-  public void addOverallView(JPanel container) {
+  private void addOverallView(JComponent container) {
     GridDialogLayout layout = new GridDialogLayout(columns.length, false);
     layout.setHorizontalSpacing(15);
     container.setLayout(layout);

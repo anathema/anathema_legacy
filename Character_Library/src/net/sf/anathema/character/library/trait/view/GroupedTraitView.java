@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.trait.view;
 
-import javax.swing.JPanel;
+import javax.swing.JComponent;
 
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
@@ -11,8 +11,8 @@ public class GroupedTraitView {
 
   private final GroupedColumnPanel panel;
 
-  public GroupedTraitView(int columnCount) {
-    panel = new GroupedColumnPanel(columnCount);
+  public GroupedTraitView(JComponent parent, int columnCount) {
+    panel = new GroupedColumnPanel(parent, columnCount);
   }
 
   public IToggleButtonTraitView<SimpleTraitView> addTraitView(
@@ -33,9 +33,5 @@ public class GroupedTraitView {
 
   public void startNewGroup(String groupLabel) {
     panel.startNewGroup(groupLabel);
-  }
-
-  public void addOverallView(JPanel container) {
-    panel.addOverallView(container);
   }
 }

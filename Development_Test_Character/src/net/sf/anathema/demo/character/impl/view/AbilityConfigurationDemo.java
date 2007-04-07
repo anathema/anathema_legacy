@@ -1,6 +1,7 @@
 package net.sf.anathema.demo.character.impl.view;
 
 import javax.swing.Icon;
+import javax.swing.JPanel;
 
 import net.sf.anathema.character.impl.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
@@ -10,7 +11,9 @@ public class AbilityConfigurationDemo extends BasicCharacterDemoCase {
 
   public void demo() {
     AnathemaResources resources = new AnathemaResources();
+    JPanel panel = new JPanel();
     GroupedFavorableTraitConfigurationView configurationView = new GroupedFavorableTraitConfigurationView(
+        panel,
         1,
         createMortalGuiConfiguration(resources),
         createMortalGuiConfiguration(resources));
@@ -28,7 +31,6 @@ public class AbilityConfigurationDemo extends BasicCharacterDemoCase {
             return null;
           }
         });
-    configurationView.initGui(null);
-    show(configurationView.getComponent());
+    show(panel);
   }
 }

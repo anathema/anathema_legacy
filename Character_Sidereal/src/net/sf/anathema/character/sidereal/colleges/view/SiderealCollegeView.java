@@ -18,9 +18,10 @@ import net.sf.anathema.lib.gui.IView;
 
 public class SiderealCollegeView implements IView, ISiderealCollegeView {
 
-  private final GroupedTraitView groupedTraitView = new GroupedTraitView(3);
   private JPanel content;
+  private final JPanel collegePanel = new JPanel();
   private final JPanel overviewPanel = new JPanel();
+  private final GroupedTraitView groupedTraitView = new GroupedTraitView(collegePanel, 3);
   private final ISiderealCollegeViewProperties properties;
 
   public SiderealCollegeView(ISiderealCollegeViewProperties properties) {
@@ -34,17 +35,11 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
   public JComponent getComponent() {
     if (content == null) {
       content = new JPanel(new GridDialogLayout(1, false));
-      addCollegePanel();
+      collegePanel.setBorder(new TitledBorder(properties.getCollegeString()));
+      content.add(collegePanel);
       content.add(overviewPanel);
     }
     return content;
-  }
-
-  private void addCollegePanel() {
-    JPanel collegePanel = new JPanel();
-    collegePanel.setBorder(new TitledBorder(properties.getCollegeString()));
-    groupedTraitView.addOverallView(collegePanel);
-    content.add(collegePanel);
   }
 
   public IToggleButtonTraitView<SimpleTraitView> addIntValueView(
