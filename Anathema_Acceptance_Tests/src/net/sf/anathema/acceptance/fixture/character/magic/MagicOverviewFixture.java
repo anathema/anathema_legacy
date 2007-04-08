@@ -1,6 +1,9 @@
 package net.sf.anathema.acceptance.fixture.character.magic;
 
 import net.sf.anathema.acceptance.fixture.character.util.AbstractCharacterColumnFixture;
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
+import net.sf.anathema.character.impl.model.charm.LearningCharmGroupArbitrator;
+import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 
 public class MagicOverviewFixture extends AbstractCharacterColumnFixture {
 
@@ -17,6 +20,11 @@ public class MagicOverviewFixture extends AbstractCharacterColumnFixture {
   }
 
   public boolean isCelestialMartialArtsTreeCompleted() {
-    return getCharacterStatistics().getCharms().isCelestialMartialArtsGroupCompleted();
+    ILearningCharmGroup[] charms = getCharacterStatistics().getCharms().getCharmGroups(
+        MartialArtsUtilities.MARTIAL_ARTS);
+    LearningCharmGroupArbitrator arbitrator = new LearningCharmGroupArbitrator(
+        getCharacterStatistics().getCharacterTemplate().getMagicTemplate().getCharmTemplate(),
+        getCharacterStatistics().getCharacterContext().getBasicCharacterContext());
+    return arbitrator.isCelestialMartialArtsGroupCompleted(charms);
   }
 }

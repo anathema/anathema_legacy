@@ -468,7 +468,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     return arbitrator.getUncompletedCelestialMartialArtsGroups(getMartialArtsGroups());
   }
 
-  public boolean isCelestialMartialArtsGroupCompleted() {
+  private boolean isCelestialMartialArtsGroupCompleted() {
     return arbitrator.isCelestialMartialArtsGroupCompleted(getMartialArtsGroups());
   }
 }

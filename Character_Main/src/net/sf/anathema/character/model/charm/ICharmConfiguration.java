@@ -36,8 +36,6 @@ public interface ICharmConfiguration extends IExtendedCharmLearnableArbitrator, 
 
   public String[] getUncompletedCelestialMartialArtsGroups();
 
-  public boolean isCelestialMartialArtsGroupCompleted();
-
   public boolean isFullfilled(ICharmAttributeRequirement requirement);
 
   public boolean isLearnable(String charmId);
