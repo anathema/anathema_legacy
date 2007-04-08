@@ -27,7 +27,7 @@
    <essence cost="2"/>
   </temporary>
  </cost>
- <duration durations="EssenceActionsOrLongTicks"/>
+ <duration duration="EssenceActionsOrLongTicks"/>
  <charmtype type="Simple"/>
  <charmAttribute attribute="Compulsion" visualize="true"/>
   <source source="DragonBlooded2nd"/>
@@ -60,8 +60,7 @@
  </prerequisite>
  <cost>
   <temporary>
-   <essence cost="4"/>
-   <willpower cost="1"/>
+   <essence cost="3"/>
   </temporary>
  </cost>
  <duration amount="1" unit="scene"/>
@@ -78,7 +77,6 @@
  <cost>
   <temporary>
    <essence cost="4"/>
-   <willpower cost="1"/>
   </temporary>
  </cost>
  <duration duration="Instant"/>
@@ -142,4 +140,4 @@
   <source source="DragonBlooded2nd"/>
 </charm>
 
-</<charmlist>
+</charmlist>

@@ -85,7 +85,6 @@
  <cost>
   <temporary>
    <essence cost="5"/>
-   <willpower cost="1"/>
   </temporary>
  </cost>
  <duration amount="1" unit="scene"/>

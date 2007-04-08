@@ -29,7 +29,12 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Archery.xml"/>
 	  </parameter>
-	  	     <parameter id="list">
+	  	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Athletics.xml"/>
+	  </parameter>
+	  	  	     <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Awareness.xml"/>
@@ -44,6 +49,11 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Craft.xml"/>
 	  </parameter>
+	  	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Dodge.xml"/>
+	  </parameter>	  
 	  	     <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
@@ -74,7 +84,12 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Medicine.xml"/>
 	  </parameter>
-	  <parameter id="list">
+	  	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Melee.xml"/>
+	  </parameter>
+	  	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Occult.xml"/>
@@ -84,7 +99,12 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Performance.xml"/>
 	  </parameter>
-	     <parameter id="list">
+	  	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Presence.xml"/>
+	  </parameter>
+	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Resistance.xml"/>
@@ -98,6 +118,11 @@
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Sail.xml"/>
+	  </parameter>
+	   <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_DB_2nd_Socialize.xml"/>
 	  </parameter>
 	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
