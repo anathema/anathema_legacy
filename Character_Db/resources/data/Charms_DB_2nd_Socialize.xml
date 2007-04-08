@@ -67,6 +67,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Compulsion" visualize="true"/>
  <charmAttribute attribute="Social" visualize="true"/>
+ <charmAttribute attribute="Mandate" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -104,6 +105,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Social" visualize="true"/>
+ <charmAttribute attribute="Mandate" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
