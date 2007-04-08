@@ -1,0 +1,140 @@
+<charmlist>
+<charm id="Dragon-Blooded.ThresholdWardingStance" exalt="Dragon-Blooded" group="Dodge">
+ <prerequisite>
+  <trait id="Dodge" value="2"/>
+  <essence value="1"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="1"/>
+  </temporary>
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Reflexive">
+  <special primaryStep="5"/>
+ </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.HoppingFirecrackerEvasion" exalt="Dragon-Blooded" group="Dodge">
+ <prerequisite>
+  <trait id="Dodge" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.ThresholdWardingStance"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="2"/>
+  </temporary>
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Reflexive">
+  <special primaryStep="5"/>
+ </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+
+<charm id="Dragon-Blooded.VirtuousNegationDefense" exalt="Dragon-Blooded" group="Dodge">
+ <prerequisite>
+  <trait id="Dodge" value="4"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.HoppingFirecrackerEvasion"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="2"/>
+  </temporary>
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Reflexive">
+  <special primaryStep="5"/>
+ </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.SafetyAmongEnemies" exalt="Dragon-Blooded" group="Dodge">
+ <prerequisite>
+  <trait id="Dodge" value="4"/>
+  <essence value="2"/>
+  <charmAttributeRequirement attribute="ExcellencyDodge" count="1"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="3"/>
+   <willpower cost="1"/>
+  </temporary>
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Reflexive">
+ 	<special primaryStep="5"/>
+ </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.ElementalDefenseTechnique" exalt="Dragon-Blooded" group="Dodge">
+ <prerequisite>
+  <trait id="Dodge" value="5"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.SafetyAmongEnemies"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="5"/>
+   <willpower cost="1"/>
+  </temporary>
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.SmolderingKarmaStrike" exalt="Dragon-Blooded" group="Dodge">
+ <prerequisite>
+  <trait id="Dodge" value="5"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.VirtuousNegationDefense"/>
+  <charmReference id="Dragon-Blooded.SafetyAmongEnemies"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="3"/>
+  </temporary>
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Reflexive">
+  <special primaryStep="9"/>
+ </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Counterattack" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.UnassailableBodyElementDefense" exalt="Dragon-Blooded" group="Dodge">
+ <prerequisite>
+  <trait id="Dodge" value="5"/>
+  <essence value="4"/>
+  <charmReference id="Dragon-Blooded.SmolderingKarmaStrike"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <essence cost="4"/>
+   <willpower cost="1"/>
+  </temporary>
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Reflexive">
+  <special primaryStep="5"/>
+ </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+</charmlist>
