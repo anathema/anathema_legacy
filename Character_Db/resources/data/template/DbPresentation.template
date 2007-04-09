@@ -1,4 +1,4 @@
 <presentation>
   <color red="139" green="0" blue="0" />
-  <charmPresentation uses="template/DbCharmPresentation.template"/>
+  <charmPresentation uses="template/SolarCharmPresentation2nd.template"/>
 </presentation>
