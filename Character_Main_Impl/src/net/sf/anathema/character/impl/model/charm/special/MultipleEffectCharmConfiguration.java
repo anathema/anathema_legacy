@@ -43,10 +43,10 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
 
   @Override
   public void learn(boolean experienced) {
-    if (experienced) {
+    if (experienced && getCurrentLearnCount() == 0) {
       subeffects[0].setExperienceLearned(true);
     }
-    else {
+    else if (getCreationLearnCount() == 0) {
       subeffects[0].setCreationLearned(true);
     }
   }

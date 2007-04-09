@@ -45,8 +45,7 @@ public class CharacterModuleContainerInitializer {
 
   private void addModule(CharacterModuleContainer container, String moduleName) throws InitializationException {
     try {
-      Object clazz = Class.forName(moduleName).newInstance();
-      ICharacterModule< ? extends ICharacterModuleObject> module = (ICharacterModule< ? extends ICharacterModuleObject>) clazz;
+      ICharacterModule< ? extends ICharacterModuleObject> module = (ICharacterModule< ? extends ICharacterModuleObject>) Class.forName(moduleName).newInstance();
       container.addCharacterGenericsModule(module);
     }
     catch (ClassNotFoundException e) {

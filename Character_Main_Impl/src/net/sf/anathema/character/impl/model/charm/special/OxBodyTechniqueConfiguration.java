@@ -65,10 +65,10 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
   @Override
   public void learn(boolean experienced) {
     OxBodyCategory trait = getCategories()[0];
-    if (experienced) {
+    if (experienced && getCurrentLearnCount() == 0) {
       trait.setExperiencedValue(1);
     }
-    else {
+    else if (getCreationLearnCount() == 0) {
       trait.setCreationValue(1);
     }
   }
