@@ -13,8 +13,7 @@ public class SecondEditionDbPartEncoder extends AbstractSecondEditionExaltPdfPar
 
   @Override
   public IPdfContentBoxEncoder getGreatCurseEncoder() {
-    // TODO Auto-generated method stub
-    return null;
+    return new SecondEditionDbGreatCurseEncoder(getBaseFont(), getSymbolBaseFont(), getResources());
   }
 
   @Override

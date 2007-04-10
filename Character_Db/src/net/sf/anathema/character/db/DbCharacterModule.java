@@ -3,9 +3,17 @@ package net.sf.anathema.character.db;
 import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.magic.TerrestrialReinforcement;
 import net.sf.anathema.character.db.reporting.FirstEditionDbPartEncoder;
+import net.sf.anathema.character.db.reporting.SecondEditionDbPartEncoder;
 import net.sf.anathema.character.db.template.IDbSpecialCharms;
+import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawModelFactory;
+import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawParser;
+import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
+import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawViewFactory;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
+import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
 import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
 import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
@@ -20,11 +28,14 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.library.virtueflaw.persistence.DefaultVirtueFlawPersisterFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
+import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -86,6 +97,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
         IDbSpecialCharms.EXTENSION_ELEMENT_DRAGONS_BLESSING,
         IDbSpecialCharms.TERRIFYING_ELEMENT_DRAGON_ROAR,
         IDbSpecialCharms.UNASSAILABLE_BODY_OF_ELEMENT_DEFENSE);
+    characterGenerics.getAdditionalTemplateParserRegistry().register(
+        DbVirtueFlawTemplate.TEMPLATE_ID,
+        new DbVirtueFlawParser());
     characterGenerics.getCasteCollectionRegistry().register(CharacterType.DB, new CasteCollection(DBAspect.values()));
   }
 
@@ -162,6 +176,17 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, lookshyTemplateTypes));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_RETAINERS, retainerTemplateTypes));
   }
+  
+  @Override
+  public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) throws InitializationException {
+    IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry = characterGenerics.getAdditionalModelFactoryRegistry();
+    String templateId = DbVirtueFlawTemplate.TEMPLATE_ID;
+    additionalModelFactoryRegistry.register(templateId, new DbVirtueFlawModelFactory());
+    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry = characterGenerics.getAdditionalViewFactoryRegistry();
+    additionalViewFactoryRegistry.register(templateId, new DbVirtueFlawViewFactory());
+    IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
+    persisterFactory.register(templateId, new DefaultVirtueFlawPersisterFactory());
+  }
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
@@ -170,5 +195,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
     IPdfPartEncoder firstEditionDbPartEncoder = new FirstEditionDbPartEncoder(resources, registry, ESSENCE_MAX);
     registry.setPartEncoder(CharacterType.DB, ExaltedEdition.FirstEdition, firstEditionDbPartEncoder);
+    IPdfPartEncoder secondEditionDbPartEncoder = new SecondEditionDbPartEncoder(resources, registry, ESSENCE_MAX);
+    registry.setPartEncoder(CharacterType.DB, ExaltedEdition.SecondEdition, secondEditionDbPartEncoder);
   }
 }
