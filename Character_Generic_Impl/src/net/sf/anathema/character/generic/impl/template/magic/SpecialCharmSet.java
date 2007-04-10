@@ -12,11 +12,11 @@ public class SpecialCharmSet {
 
   public void add(ISpecialCharm... identificates) {
     for (ISpecialCharm identificate : identificates) {
-      add(identificate);
+      addCharm(identificate);
     }
   }
 
-  private void add(ISpecialCharm identificate) {
+  private void addCharm(ISpecialCharm identificate) {
     for (ISpecialCharm existing : new ArrayList<ISpecialCharm>(list)) {
       if (existing.getCharmId().equals(identificate.getCharmId())) {
         list.remove(existing);
@@ -35,7 +35,7 @@ public class SpecialCharmSet {
 
   public void addAll(Collection<ISpecialCharm> identificates) {
     for (ISpecialCharm identificate : identificates) {
-      add(identificate);
+      addCharm(identificate);
     }
   }
 }
