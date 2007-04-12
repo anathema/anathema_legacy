@@ -57,7 +57,7 @@
       <Presence creationValue="4">
         <Specialty creationValue="2" name="Seduction"/>
       </Presence>
-      <Resistance creationValue="2"/>
+      <Resistance creationValue="1"/>
       <Survival creationValue="0"/>
       <Craft>
         <subTrait creationValue="0">
@@ -77,11 +77,11 @@
         </subTrait>
       </Craft>
       <Investigation creationValue="3"/>
-      <Lore creationValue="2"/>
+      <Lore creationValue="1"/>
       <Medicine creationValue="0"/>
       <Occult creationValue="0"/>
       <Athletics creationValue="2"/>
-      <Awareness creationValue="2" favored="true"/>
+      <Awareness creationValue="1" favored="true"/>
       <Dodge creationValue="4" favored="true">
         <Specialty creationValue="2" name="Unarmed"/>
       </Dodge>
@@ -89,11 +89,11 @@
         <Specialty creationValue="2" name="Blackmail"/>
       </Larceny>
       <Stealth creationValue="0"/>
-      <Bureaucracy creationValue="2" favored="true"/>
+      <Bureaucracy creationValue="1"/>
       <Linguistics creationValue="1"/>
       <Ride creationValue="0"/>
       <Sail creationValue="0"/>
-      <Socialize creationValue="2"/>
+      <Socialize creationValue="2" favored="true"/>
     </Abilities>
     <Backgrounds>
       <Background creationValue="2"><![CDATA[Artifact]]></Background>
@@ -105,8 +105,8 @@
         <Charm name="Solar.2ndExcellency.Presence" experienceLearned="false"/>
       </CharmGroup>
       <CharmGroup name="Dodge" type="Solar">
-        <Charm name="Solar.SevenShadowEvasion" experienceLearned="false"/>
         <Charm name="Solar.ShadowOverWater" experienceLearned="false"/>
+        <Charm name="Solar.SevenShadowEvasion" experienceLearned="false"/>
         <Charm name="Solar.1stExcellency.Dodge" experienceLearned="false"/>
       </CharmGroup>
       <CharmGroup name="Resistance" type="Solar">
@@ -160,7 +160,14 @@
       </Model>
       <Model templateId="Intimacies">
         <Content>
-          <Intimacies/>
+          <Intimacies>
+            <Intimacy name="Scarlet Dynasty" complete="true">
+              <Trait creationValue="2"/>
+            </Intimacy>
+            <Intimacy name="Mnemon Tochter B" complete="true">
+              <Trait creationValue="2"/>
+            </Intimacy>
+          </Intimacies>
         </Content>
       </Model>
       <Model templateId="SolarVirtueFlaw">
