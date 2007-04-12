@@ -38,9 +38,9 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getGenericCharmStatsRegistry().register(
         CharacterType.SOLAR,
-        new IMagicStats[] { new FirstExcellency("1 m per die"), //$NON-NLS-1$
-            new SecondExcellency(),
-            new ThirdExcellency("4 m"), //$NON-NLS-1$
+        new IMagicStats[] { new FirstExcellency(CharacterType.SOLAR, "1 m per die"), //$NON-NLS-1$
+            new SecondExcellency(CharacterType.SOLAR),
+            new ThirdExcellency(CharacterType.SOLAR, "4 m"), //$NON-NLS-1$
             new InfiniteMastery(),
             new EssenceFlow() });
     characterGenerics.getCharmProvider().setSpecialCharms(

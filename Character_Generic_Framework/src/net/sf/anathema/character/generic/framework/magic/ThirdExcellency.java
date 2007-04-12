@@ -6,13 +6,16 @@ import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.magic.charm.type.ReflexiveSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ThirdExcellency extends AbstractGenericCharm {
 
   private final String costString;
+  private final ICharacterType type;
 
-  public ThirdExcellency(String costString) {
+  public ThirdExcellency(ICharacterType type, String costString) {
+    this.type = type;
     this.costString = costString;
   }
 
@@ -29,7 +32,7 @@ public class ThirdExcellency extends AbstractGenericCharm {
 
   @Override
   protected String getId() {
-    return "Solar.3rdExcellency"; //$NON-NLS-1$
+    return type.getId() + ".3rdExcellency"; //$NON-NLS-1$
   }
 
   @Override

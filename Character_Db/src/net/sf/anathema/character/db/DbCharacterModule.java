@@ -78,9 +78,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getGenericCharmStatsRegistry().register(
         CharacterType.DB,
-        new IMagicStats[] { new FirstExcellency("1 m per 2 dice"), //$NON-NLS-1$
-            new SecondExcellency(),
-            new ThirdExcellency("3 m"), //$NON-NLS-1$
+        new IMagicStats[] { new FirstExcellency(CharacterType.DB, "1 m per 2 dice"), //$NON-NLS-1$
+            new SecondExcellency(CharacterType.DB),
+            new ThirdExcellency(CharacterType.DB, "3 m"), //$NON-NLS-1$
             new TerrestrialReinforcement() });
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.DB,
@@ -176,7 +176,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, lookshyTemplateTypes));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_RETAINERS, retainerTemplateTypes));
   }
-  
+
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) throws InitializationException {
     IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry = characterGenerics.getAdditionalModelFactoryRegistry();

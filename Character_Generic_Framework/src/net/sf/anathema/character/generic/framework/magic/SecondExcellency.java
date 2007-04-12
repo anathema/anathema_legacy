@@ -1,14 +1,20 @@
 package net.sf.anathema.character.generic.framework.magic;
 
-import net.sf.anathema.character.generic.framework.magic.AbstractGenericCharm;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.magic.charm.type.ReflexiveSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondExcellency extends AbstractGenericCharm {
+
+  private final ICharacterType type;
+
+  public SecondExcellency(ICharacterType type) {
+    this.type = type;
+  }
 
   public String getType(IResources resources) {
     CharmTypeModel model = new CharmTypeModel();
@@ -23,7 +29,7 @@ public class SecondExcellency extends AbstractGenericCharm {
 
   @Override
   protected String getId() {
-    return "Dragon-Blooded.2ndExcellency"; //$NON-NLS-1$
+    return type.getId() + ".2ndExcellency"; //$NON-NLS-1$
   }
 
   @Override
