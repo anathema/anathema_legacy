@@ -17,6 +17,7 @@
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
     <genericCharmAttribute attribute="Excellency"/>
+	<charmAttribute attribute="Mortal"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="DragonBlooded2nd" page="128"/>
   </genericCharm>
@@ -35,6 +36,7 @@
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
     <genericCharmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Mortal"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="DragonBlooded2nd" page="128"/>
   </genericCharm>
@@ -52,6 +54,7 @@
     <charmtype type="Reflexive">
       <special primaryStep="4" secondaryStep="6"/>
     </charmtype>
+    <charmAttribute attribute="Mortal"/>
     <genericCharmAttribute attribute="Excellency"/>
 	<charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="DragonBlooded2nd" page="128"/>
@@ -69,6 +72,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
+    <charmAttribute attribute="Mortal"/>
     <source source="DragonBlooded2nd" page="128"/>
   </genericCharm>
 </charmlist>
