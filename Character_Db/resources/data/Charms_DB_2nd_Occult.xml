@@ -14,6 +14,21 @@
   <source source="DragonBlooded2nd"/>
 </charm>
 
+<charm id="Dragon-Blooded.ShadowlandsCircleNecromancy" exalt="Dragon-Blooded" group="Occult">
+ <prerequisite>
+  <trait id="Occult" value="3"/>
+  <essence value="3"/>
+ </prerequisite>
+ <cost>
+  <temporary>
+   <willpower cost="1"/>
+  </temporary>
+ </cost>
+  <duration duration="Permanent"/>  
+  <charmtype type="Permanent"/>
+  <source source="BlackTreatise"/>
+</charm>
+
 <charm id="Dragon-Blooded.Spirit-DetectingMirrorTechnique" exalt="Dragon-Blooded" group="Occult">
  <prerequisite>
   <trait id="Occult" value="2"/>
@@ -127,4 +142,10 @@
   <charmtype type="Simple"/>
   <source source="DragonBlooded2nd"/>
 </charm>
+ <alternatives>
+    <alternative>
+      <charmReference id="Dragon-Blooded.TerrestrialCircleSorcery"/>
+      <charmReference id="Dragon-Blooded.ShadowlandsCircleNecromancy"/>
+    </alternative>
+  </alternatives>
 </charmlist>

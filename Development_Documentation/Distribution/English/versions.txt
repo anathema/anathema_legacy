@@ -9,7 +9,7 @@ http://anathema.sf.net
 [2E] Solar Exalts from previous versions knowing Martial Arts generic Charms will
 be invalid in future releases. Use this version to convert them by loading them once and saving thereafter.  
 
-+ [2E] Dragon-Blooded, with all the usual features.
++ [2E] Dragon-Blooded, with all the usual features - including Necromancy rules from the Black Treatise.
 + Special Charms are finally learned / unlearned on click. (Way easier than changing the cursors.)
 + [2E] Solars with Necromancy. 
 + [2E] Falling Blossom Style from Scroll of the Monk.
