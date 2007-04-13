@@ -24,6 +24,11 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_Solar_SecondEdition.xml"/>
 	  </parameter>
+ 	  <parameter id="list">
+		<parameter id="type" value="Solar"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_Solar_2nd_Occult.xml"/>
+	  </parameter>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="SolarResources">
 		<parameter id="bundle" value="Charms_Solar"/>
