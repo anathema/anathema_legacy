@@ -360,7 +360,9 @@
         <essence cost="10+"/>
       </temporary>
     </cost>
-    <source source="SavantSorcerer" page="105"/>
+    <target target="Demon"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="105"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="44"/>
   </spell>
     <spell circle="Celestial" id="Celestial.SapphireCircleBanishment">
     <cost>
@@ -1252,7 +1254,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <source source="Bo3C" page="36"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="Bo3C" page="36"/>
+    <source edition="SecondEdition" source="WhiteTreatise"/>
   </spell>
     <spell circle="Terrestrial" id="Terrestrial.EmpathicWind">
     <cost>
@@ -1260,7 +1264,9 @@
         <essence cost="15"/>
       </temporary>
     </cost>
-    <source source="Bo3C" page="36"/>
+    <target target="Individual"/>
+    <source edition="FirstEdition" source="Bo3C" page="36"/>
+    <source edition="SecondEdition" source="WhiteTreatise"/>
   </spell>
       <spell circle="Terrestrial" id="Terrestrial.EyeandMouth">
     <cost>
