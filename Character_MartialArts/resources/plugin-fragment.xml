@@ -22,6 +22,11 @@
 	  <parameter id="list">
 		<parameter id="type" value="MartialArts"/>
 		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_Initiation.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_MartialArts_SecondEdition.xml"/>
 	  </parameter>
 	  <parameter id="list">
