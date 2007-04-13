@@ -34,6 +34,11 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_MartialArts_FallingBlossom.xml"/>
 	  </parameter>
+	    <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_FiveDragon.xml"/>
+	  </parameter>
 	  <parameter id="list">
 		<parameter id="type" value="MartialArts"/>
 		<parameter id="rules" value="SecondEdition"/>
