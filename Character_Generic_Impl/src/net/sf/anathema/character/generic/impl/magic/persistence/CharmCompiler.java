@@ -29,6 +29,7 @@ public class CharmCompiler {
   private final Table<IIdentificate, IExaltedRuleSet, List<Document>> charmFileTable = new Table<IIdentificate, IExaltedRuleSet, List<Document>>();
   private final CharmSetBuilder setBuilder = new CharmSetBuilder();
   private final GenericCharmSetBuilder genericBuilder = new GenericCharmSetBuilder();
+  private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
   private final IIdentificateRegistry<ICharacterType> registry;
 
   public CharmCompiler(IIdentificateRegistry<ICharacterType> registry) {
@@ -59,16 +60,27 @@ public class CharmCompiler {
 
   public void buildCharms() throws PersistenceException {
     for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
-      List<ICharm> allCharms = new ArrayList<ICharm>();
-      for (ICharacterType type : registry.getAll()) {
-        List<ICharm> builtCharms = buildCharms(type, rules, setBuilder);
-        allCharms.addAll(builtCharms);
-        List<ICharm> builtGenericCharms = buildGenericCharms(type, rules);
-        allCharms.addAll(builtGenericCharms);
+      IExaltedRuleSet basicRules = rules.getBasicRuleset();
+      if (basicRules != null) {
+        CharmCache.getInstance().cloneCharms(basicRules, rules);
       }
-      List<ICharm> builtCharms = buildCharms(MARTIAL_ARTS, rules, setBuilder);
-      allCharms.addAll(builtCharms);
-      extractParents(allCharms);
+      for (ICharacterType type : registry.getAll()) {
+        buildCharms(type, rules, setBuilder);
+        buildGenericCharms(type, rules);
+        buildCharmAlternatives(type, rules);
+      }
+      buildCharms(MARTIAL_ARTS, rules, setBuilder);
+    }
+    for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
+      extractParents(CharmCache.getInstance().getCharms(rules));
+    }
+  }
+
+  private void buildCharmAlternatives(ICharacterType type, ExaltedRuleSet rules) {
+    if (charmFileTable.contains(type, rules)) {
+      for (Document charmDocument : charmFileTable.get(type, rules)) {
+        alternativeBuilder.buildAlternatives(charmDocument, CharmCache.getInstance().getCharms(type, rules));
+      }
     }
   }
 
@@ -82,7 +94,8 @@ public class CharmCompiler {
       throws PersistenceException {
     List<ICharm> allCharms = new ArrayList<ICharm>();
     if (charmFileTable.contains(type, rules)) {
-      for (Document charmDocument : charmFileTable.get(type, rules)) {
+      List<Document> documents = charmFileTable.get(type, rules);
+      for (Document charmDocument : documents) {
         ICharm[] builtCharms = buildRulesetCharms(type, rules, charmDocument, builder);
         Collections.addAll(allCharms, builtCharms);
       }
@@ -95,21 +108,15 @@ public class CharmCompiler {
       IExaltedRuleSet rules,
       Document charmDocument,
       ICharmSetBuilder builder) throws PersistenceException {
-    List<ICharm> existingCharms = new ArrayList<ICharm>();
-    final IExaltedRuleSet basicRules = rules.getBasicRuleset();
     CharmCache cache = CharmCache.getInstance();
-    if (basicRules != null) {
-      Collections.addAll(existingCharms, cache.getCharms(type, basicRules));
-    }
-    // Collections.addAll(existingCharms, cache.getCharms(type, rules));
-    ICharm[] charmArray = builder.buildCharms(charmDocument, existingCharms);
+    ICharm[] charmArray = builder.buildCharms(charmDocument);
     for (ICharm charm : charmArray) {
       cache.addCharm(type, rules, charm);
     }
     return charmArray;
   }
 
-  private void extractParents(List<ICharm> charms) {
+  private void extractParents(Iterable<ICharm> charms) {
     Map<String, Charm> charmsById = new HashMap<String, Charm>();
     for (ICharm charm : charms) {
       charmsById.put(charm.getId(), (Charm) charm);

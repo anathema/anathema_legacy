@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,8 @@ public class CharmCache implements ICharmCache {
   }
 
   public void addCharm(IIdentificate type, IExaltedRuleSet rules, ICharm charm) {
-    charmSetsByRuleSet.get(rules).add(type, charm);
+    MultiEntryMap<IIdentificate, ICharm> ruleMap = charmSetsByRuleSet.get(rules);
+    ruleMap.replace(type, charm, charm);
   }
 
   public void addCharm(ICharmEntryData charmData) {
@@ -48,5 +50,26 @@ public class CharmCache implements ICharmCache {
       }
     }
     return true;
+  }
+
+  public void cloneCharms(IExaltedRuleSet sourceRules, ExaltedRuleSet targetRules) {
+    MultiEntryMap<IIdentificate, ICharm> sourceMap = charmSetsByRuleSet.get(sourceRules);
+    MultiEntryMap<IIdentificate, ICharm> targetMap = charmSetsByRuleSet.get(targetRules);
+    for (IIdentificate type : sourceMap.keySet()) {
+      for (ICharm charm : sourceMap.get(type)) {
+        targetMap.add(type, ((Charm) charm).cloneUnconnected());
+      }
+    }
+  }
+
+  public Iterable<ICharm> getCharms(IExaltedRuleSet rules) {
+    MultiEntryMap<IIdentificate, ICharm> ruleMap = charmSetsByRuleSet.get(rules);
+    List<ICharm> allCharms = new ArrayList<ICharm>();
+    for (IIdentificate type : ruleMap.keySet()) {
+      for (ICharm charm : ruleMap.get(type)) {
+        allCharms.add(charm);
+      }
+    }
+    return allCharms;
   }
 }

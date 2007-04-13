@@ -16,7 +16,7 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class GenericCharmSetBuilder extends AbstractCharmSetBuilder implements ICharmSetBuilder {
+public class GenericCharmSetBuilder extends AbstractCharmSetBuilder {
   private final GenericCharmBuilder genericsBuilder = new GenericCharmBuilder(
       new GenericIdStringBuilder(),
       new GenericTraitPrerequisitesBuilder(),

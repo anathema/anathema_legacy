@@ -2,7 +2,6 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -14,12 +13,8 @@ import org.dom4j.Element;
 public abstract class AbstractCharmSetBuilder implements ICharmSetBuilder {
 
   @Override
-  public ICharm[] buildCharms(Document charmDoc, List<ICharm> existingCharms) throws PersistenceException {
+  public ICharm[] buildCharms(Document charmDoc) throws PersistenceException {
     Collection<Charm> allCharms = new HashSet<Charm>();
-    for (ICharm charm : existingCharms) {
-      Charm clone = ((Charm) charm).cloneUnconnected();
-      allCharms.add(clone);
-    }
     Element charmListElement = charmDoc.getRootElement();
     buildCharms(allCharms, charmListElement);
     return allCharms.toArray(new ICharm[allCharms.size()]);
