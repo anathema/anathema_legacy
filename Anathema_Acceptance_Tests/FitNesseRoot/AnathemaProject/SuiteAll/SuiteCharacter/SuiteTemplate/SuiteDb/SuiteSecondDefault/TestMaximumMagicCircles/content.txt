@@ -1,1 +1,1 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SuiteDb.SnippetCheckMaximumMagicCircles
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SuiteDb.SnippetCheckSecondMaximumMagicCircles

@@ -1,1 +1,1 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SnippetEnduranceToughnessTrait
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SnippetResistanceToughnessTrait

@@ -1,0 +1,4 @@
+!3 Terrestrial Circle and Shadowlands Circle, with Alternative
+!|Check Magic Template|
+|getMaximumSorceryCircle?|getMaximumNecromancyCircle?|
+|Terrestrial|Shadowlands|
