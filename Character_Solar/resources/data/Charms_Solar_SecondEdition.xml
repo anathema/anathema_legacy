@@ -2288,6 +2288,29 @@
     <charmAttribute attribute="Touch" visualize="true"/>
     <source source="SecondEdition" page="218"/>
   </charm>
+  
+  <charm id="Solar.Soul-EnlighteningBeneficence" exalt="Solar" group="Lore">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Lore" value="3"/>
+      <charmReference id="Solar.Essence-LendingMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="15"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="DramaticAction" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Enlightening" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="ScrollMonk"/>
+  </charm>
+  
   <charm id="Solar.Order-AffirmingBlow" exalt="Solar" group="Lore">
     <prerequisite>
       <essence id="Essence" value="4"/>
