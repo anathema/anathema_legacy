@@ -10,7 +10,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.MultiColumnText;
 
-public abstract class AbstractTraitTextEncoder<T extends ITraitType> extends AbstractTextEncoder {
+public abstract class AbstractTraitTextEncoder extends AbstractTextEncoder {
 
   public AbstractTraitTextEncoder(ITextReportUtils utils, IResources resources) {
     super(utils, resources);
@@ -18,11 +18,16 @@ public abstract class AbstractTraitTextEncoder<T extends ITraitType> extends Abs
 
   public void createParagraphs(MultiColumnText columnText, IGenericCharacter genericCharacter) throws DocumentException {
     Phrase traitPhrase = createTextParagraph(createBoldTitle(getString(getLabelKey()) + ": ")); //$NON-NLS-1$
-    for (T type : getTypes(genericCharacter)) {
-      if (addSeparator(type)) {
+    boolean firstPrinted = true;
+    for (ITraitType type : getTypes(genericCharacter)) {
+      IFavorableGenericTrait trait = genericCharacter.getTraitCollection().getFavorableTrait(type);
+      if (trait.getCurrentValue() == 0) {
+        continue;
+      }
+      if (!firstPrinted) {
         traitPhrase.add(createTextChunk(", ")); //$NON-NLS-1$
       }
-      IFavorableGenericTrait trait = genericCharacter.getTraitCollection().getFavorableTrait(type);
+      firstPrinted = false;
       if (trait.isCasteOrFavored()) {
         traitPhrase.add(createTextChunk("*")); //$NON-NLS-1$
       }
@@ -32,9 +37,7 @@ public abstract class AbstractTraitTextEncoder<T extends ITraitType> extends Abs
     columnText.addElement(traitPhrase);
   }
 
-  protected abstract boolean addSeparator(T type);
-
-  protected abstract T[] getTypes(IGenericCharacter genericCharacter);
+  protected abstract ITraitType[] getTypes(IGenericCharacter genericCharacter);
 
   protected abstract String getLabelKey();
 }

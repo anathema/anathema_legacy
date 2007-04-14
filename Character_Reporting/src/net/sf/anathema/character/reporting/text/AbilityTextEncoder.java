@@ -1,23 +1,19 @@
 package net.sf.anathema.character.reporting.text;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.framework.reporting.ITextReportUtils;
 import net.sf.anathema.lib.resources.IResources;
 
-public class AbilityTextEncoder extends AbstractTraitTextEncoder<AbilityType> {
+public class AbilityTextEncoder extends AbstractTraitTextEncoder {
 
   public AbilityTextEncoder(ITextReportUtils utils, IResources resources) {
     super(utils, resources);
   }
 
   @Override
-  protected boolean addSeparator(AbilityType type) {
-    return type.ordinal() > 0;
-  }
-
-  @Override
-  protected AbilityType[] getTypes(IGenericCharacter genericCharacter) {
+  protected ITraitType[] getTypes(IGenericCharacter genericCharacter) {
     return AbilityType.getAbilityTypes(genericCharacter.getRules().getEdition());
   }
 
