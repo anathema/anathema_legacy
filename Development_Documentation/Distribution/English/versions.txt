@@ -19,6 +19,7 @@ be invalid in future releases. Use this version to convert them by loading them 
 * [2E] Martial Arts Generics are shown as type specific, not Martial Arts Charms.
 * Charms with multiple variants are correctly unlearned when a parent Charm is unlearned.
 * About-Dialog and Repository Browser no longer show 'Cancel'-Buttons.
+* 0-Abilities are no longer printed in Character Description printout
 
 
 ===------------------------------------------------------------------------------===
