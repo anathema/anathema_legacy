@@ -6,7 +6,7 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 			Release 1.2 "Nexus" (15/04/07)
 ===------------------------------------------------------------------------------===
-[2E] Solar Exalts from previous versions knowing Martial Arts generic Charms will
+[2E] Solar Exalts from previous versions knowing generic Martial Arts Charms will
 be invalid in future releases. Use this version to convert them by loading them once and saving thereafter.  
 
 + [2E] Dragon-Blooded, with all the usual features - including Necromancy rules from the Black Treatise.
@@ -14,7 +14,6 @@ be invalid in future releases. Use this version to convert them by loading them 
 + [2E] Solars with Necromancy. 
 + [2E] Falling Blossom Style from Scroll of the Monk.
 + [1E] "(Type) Exalt Ways" now supports all known valid types.
-+ Customizers behold: Charms can now come from any number of interdependent documents.
 + More spells fitted with targets
 * [2E] Martial Arts Generics are shown as type specific, not Martial Arts Charms.
 * Charms with multiple variants are correctly unlearned when a parent Charm is unlearned.
