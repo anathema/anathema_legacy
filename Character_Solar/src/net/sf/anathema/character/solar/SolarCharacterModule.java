@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -38,9 +39,9 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getGenericCharmStatsRegistry().register(
         CharacterType.SOLAR,
-        new IMagicStats[] { new FirstExcellency(CharacterType.SOLAR, "1 m per die"), //$NON-NLS-1$
-            new SecondExcellency(CharacterType.SOLAR),
-            new ThirdExcellency(CharacterType.SOLAR, "4 m"), //$NON-NLS-1$
+        new IMagicStats[] { new FirstExcellency(CharacterType.SOLAR, ExaltedSourceBook.SecondEdition, "1 m per die"), //$NON-NLS-1$
+            new SecondExcellency(CharacterType.SOLAR, ExaltedSourceBook.SecondEdition),
+            new ThirdExcellency(CharacterType.SOLAR, "4 m", ExaltedSourceBook.SecondEdition), //$NON-NLS-1$
             new InfiniteMastery(),
             new EssenceFlow() });
     characterGenerics.getCharmProvider().setSpecialCharms(

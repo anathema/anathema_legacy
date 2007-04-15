@@ -132,7 +132,6 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
 
   private float encodeGenericCharms(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop)
       throws DocumentException {
-    // float height =110;
     float height = 55 + character.getGenericCharmStats().length * 11;
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
     IPdfContentBoxEncoder encoder = new PdfGenericCharmEncoder(resources, baseFont);

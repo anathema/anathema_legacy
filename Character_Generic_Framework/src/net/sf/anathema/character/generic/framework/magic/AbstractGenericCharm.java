@@ -11,10 +11,10 @@ import net.sf.anathema.lib.util.Identificate;
 public abstract class AbstractGenericCharm implements IMagicStats {
 
   public String getSourceString(IResources resources) {
-    return new MagicSourceStringBuilder<IMagic>(resources).createShortSourceString(
-        ExaltedSourceBook.SecondEdition,
-        getId());
+    return new MagicSourceStringBuilder<IMagic>(resources).createShortSourceString(getSourceBook(), getId());
   }
+
+  protected abstract ExaltedSourceBook getSourceBook();
 
   public String[] getDetailKeys() {
     return new String[] { getId() + ".Description" }; //$NON-NLS-1$

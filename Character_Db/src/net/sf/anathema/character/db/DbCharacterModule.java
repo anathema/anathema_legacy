@@ -22,6 +22,7 @@ import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroun
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateType;
@@ -78,9 +79,10 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getGenericCharmStatsRegistry().register(
         CharacterType.DB,
-        new IMagicStats[] { new FirstExcellency(CharacterType.DB, "1 m per 2 dice"), //$NON-NLS-1$
-            new SecondExcellency(CharacterType.DB),
-            new ThirdExcellency(CharacterType.DB, "3 m"), //$NON-NLS-1$
+        new IMagicStats[] {
+            new FirstExcellency(CharacterType.DB, ExaltedSourceBook.DragonBlooded2nd, "1 m per 2 dice"), //$NON-NLS-1$
+            new SecondExcellency(CharacterType.DB, ExaltedSourceBook.DragonBlooded2nd),
+            new ThirdExcellency(CharacterType.DB, "3 m", ExaltedSourceBook.DragonBlooded2nd), //$NON-NLS-1$
             new TerrestrialReinforcement() });
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.DB,

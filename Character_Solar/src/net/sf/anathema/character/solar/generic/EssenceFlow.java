@@ -3,6 +3,7 @@ package net.sf.anathema.character.solar.generic;
 import net.sf.anathema.character.generic.framework.magic.AbstractGenericCharm;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
+import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.lib.resources.IResources;
@@ -12,6 +13,11 @@ public class EssenceFlow extends AbstractGenericCharm {
   @Override
   protected String getId() {
     return "Solar.EssenceFlow"; //$NON-NLS-1$
+  }
+
+  @Override
+  protected ExaltedSourceBook getSourceBook() {
+    return ExaltedSourceBook.SecondEdition;
   }
 
   @Override

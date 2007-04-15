@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.magic;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.magic.charm.type.ReflexiveSpecialsModel;
+import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -11,9 +12,16 @@ import net.sf.anathema.lib.resources.IResources;
 public class SecondExcellency extends AbstractGenericCharm {
 
   private final ICharacterType type;
+  private final ExaltedSourceBook book;
 
-  public SecondExcellency(ICharacterType type) {
+  public SecondExcellency(ICharacterType type, ExaltedSourceBook book) {
     this.type = type;
+    this.book = book;
+  }
+
+  @Override
+  protected ExaltedSourceBook getSourceBook() {
+    return book;
   }
 
   public String getType(IResources resources) {

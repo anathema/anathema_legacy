@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.magic;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.magic.charm.type.ReflexiveSpecialsModel;
+import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -12,10 +13,17 @@ public class FirstExcellency extends AbstractGenericCharm {
 
   private final String costString;
   private final ICharacterType characterType;
+  private final ExaltedSourceBook book;
 
-  public FirstExcellency(ICharacterType characterType, String costString) {
+  public FirstExcellency(ICharacterType characterType, ExaltedSourceBook book, String costString) {
     this.characterType = characterType;
+    this.book = book;
     this.costString = costString;
+  }
+
+  @Override
+  protected ExaltedSourceBook getSourceBook() {
+    return book;
   }
 
   public String getCostString(IResources resources) {
@@ -24,7 +32,7 @@ public class FirstExcellency extends AbstractGenericCharm {
 
   @Override
   protected String getId() {
-    return characterType.getId() +".1stExcellency"; //$NON-NLS-1$
+    return characterType.getId() + ".1stExcellency"; //$NON-NLS-1$
   }
 
   @Override

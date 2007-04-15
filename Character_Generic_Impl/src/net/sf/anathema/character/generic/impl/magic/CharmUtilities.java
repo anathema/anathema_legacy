@@ -10,6 +10,7 @@ public class CharmUtilities {
   private static final String THIRD_EXCELLENCY = ".3rdExcellency"; //$NON-NLS-1$
   private static final String INFINITE_MASTERY = ".InfiniteMastery"; //$NON-NLS-1$
   private static final String ESSENCE_FLOW = ".EssenceFlow"; //$NON-NLS-1$
+  private static final String TERRESTRIAL_REINFORCEMENT = ".TerrestrialReinforcement"; //$NON-NLS-1$
 
   public static boolean isGenericCharmFor(ICharm charm, ICharacterType type) {
     String charmId = charm.getId();
@@ -17,7 +18,8 @@ public class CharmUtilities {
         || charmId.startsWith(type.getId() + SECOND_EXCELLENCY)
         || charmId.startsWith(type.getId() + THIRD_EXCELLENCY)
         || charmId.startsWith(type.getId() + INFINITE_MASTERY)
-        || charmId.startsWith(type.getId() + ESSENCE_FLOW);
+        || charmId.startsWith(type.getId() + ESSENCE_FLOW)
+        || charmId.startsWith(type.getId() + TERRESTRIAL_REINFORCEMENT);
   }
 
   public static String createIDFromName(ICharacterType type, String charmName) {
