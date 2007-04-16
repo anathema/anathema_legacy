@@ -30,7 +30,7 @@ public class TerrestrialMartialArtsRules implements IMartialArtsRules {
       IGenericCharmConfiguration charmConfiguration,
       boolean isExperienced) {
     MartialArtsLevel level = MartialArtsUtilities.getLevel(martialArtsCharm);
-    if (level == MartialArtsLevel.Terrestrial) {
+    if (MartialArtsLevel.Terrestrial.compareTo(level) >= 0) {
       return true;
     }
     if (level == MartialArtsLevel.Celestial) {
