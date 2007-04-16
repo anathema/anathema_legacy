@@ -48,7 +48,6 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
         continue;
       }
       if (isBegun(group)) {
-        System.out.println(group.getId());
         uncompletedGroups.add(group.getId());
       }
     }
