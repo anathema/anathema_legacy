@@ -19,6 +19,7 @@ import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
 import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
+import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
@@ -149,7 +150,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void addSorcery(IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
-    TemplateTypeBackgroundTemplate sorceryBackground = new TemplateTypeBackgroundTemplate(
+    TemplateTypeBackgroundTemplate sorceryBackground = new EditionSpecificTemplateTypeBackgroundTemplate(
         BACKGROUND_ID_SORCERY,
         new ITemplateType[] {
             dynastTemplateType,
@@ -158,6 +159,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
             lookshyOutcasteTemplateType,
             ketherRockTemplateType,
             tabernacleTemplateType },
+        ExaltedEdition.FirstEdition,
         LowerableState.Immutable);
     backgroundRegistry.add(sorceryBackground);
   }
