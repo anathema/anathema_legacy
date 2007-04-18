@@ -5,12 +5,9 @@ import java.util.List;
 
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ObjectUtilities;
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.library.trait.DefaultTrait;
@@ -29,31 +26,24 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   private final List<IDefaultTrait> backgrounds = new ArrayList<IDefaultTrait>();
   private final GenericControl<IBackgroundListener> listeners = new GenericControl<IBackgroundListener>();
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
-  private final IAdditionalRules additionalRules;
   private final ITraitTemplateCollection traitTemplates;
   private final ITraitContext context;
-  private final ITemplateType templateType;
-  private final IExaltedEdition edition;
+  private final IBackgroundArbitrator backgroundArbitrator;
 
-  public BackgroundConfiguration(
-      ITemplateType templateType,
-      IAdditionalRules additionalRules,
+  public BackgroundConfiguration(IBackgroundArbitrator arbitrator,
       ITraitTemplateCollection traitTemplates,
       ITraitContext context,
-      IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry,
-      IExaltedEdition edition) {
-    this.templateType = templateType;
+      IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
+    backgroundArbitrator = arbitrator;
     this.context = context;
     this.backgroundRegistry = backgroundRegistry;
-    this.additionalRules = additionalRules;
     this.traitTemplates = traitTemplates;
-    this.edition = edition;
   }
 
   public IBackgroundTemplate[] getAllAvailableBackgroundTemplates() {
     List<IBackgroundTemplate> backgroundList = new ArrayList<IBackgroundTemplate>();
     for (IBackgroundTemplate backgroundTemplate : backgroundRegistry.getAll()) {
-      if (backgroundTemplate.acceptsTemplate(templateType, edition) && !additionalRules.isRejected(backgroundTemplate)) {
+      if (backgroundArbitrator.accepts(backgroundTemplate)) {
         backgroundList.add(backgroundTemplate);
       }
     }

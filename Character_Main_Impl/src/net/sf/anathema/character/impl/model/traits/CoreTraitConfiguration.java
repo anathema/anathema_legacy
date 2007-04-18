@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.impl.model.traits.backgrounds.BackgroundArbitrator;
 import net.sf.anathema.character.impl.model.traits.backgrounds.BackgroundConfiguration;
 import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
 import net.sf.anathema.character.impl.model.traits.creation.AttributeTypeGroupFactory;
@@ -72,12 +73,10 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     new WillpowerListening().initListening(willpower, virtues);
     addAbilities(template);
     this.backgrounds = new BackgroundConfiguration(
-        template.getTemplateType(),
-        template.getAdditionalRules(),
+        new BackgroundArbitrator(template, modelContext.getBasicCharacterContext().getRuleSet().getEdition()),
         template.getTraitTemplateCollection(),
         modelContext.getTraitContext(),
-        backgroundRegistry,
-        modelContext.getBasicCharacterContext().getRuleSet().getEdition());
+        backgroundRegistry);
     this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, modelContext);
   }
 
