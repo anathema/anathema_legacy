@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CostList;
-import net.sf.anathema.character.generic.impl.magic.PermanentCostList;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
@@ -29,7 +28,6 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.collection.ListOrderedSet;
-import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -130,10 +128,6 @@ public class DummyCharm extends Identificate implements ICharm {
 
   public Set<ICharm> getParentCharms() {
     return parentCharms;
-  }
-
-  public PermanentCostList getPermanentCost() {
-    throw new NotYetImplementedException();
   }
 
   public IGenericTrait[] getPrerequisites() {

@@ -7,10 +7,10 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="week"/>
     <charmtype type="Simple"/>
@@ -23,9 +23,9 @@
       <charmReference id="Dragon-Blooded.Language-LearningRitual"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -38,10 +38,10 @@
       <charmReference id="Dragon-Blooded.ThousandTonguesMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Concentration"/>
     <charmtype type="Simple"/>
@@ -54,10 +54,10 @@
       <charmReference id="Dragon-Blooded.PoisonedTongueTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5+"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -69,9 +69,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per sentence plus distance"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -84,9 +84,9 @@
       <charmReference id="Dragon-Blooded.Wind-CarriedWordsTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="plus distance"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="minute"/>
     <charmtype type="Simple"/>
@@ -100,9 +100,9 @@
       <charmReference id="Dragon-Blooded.VoicesonWind"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per dot of increase"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -114,10 +114,10 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -130,10 +130,10 @@
       <charmReference id="Dragon-Blooded.ElementalConcentrationTrance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="None"/>
         <willpower cost="1" text="or more"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -146,10 +146,10 @@
       <charmReference id="Dragon-Blooded.ElementalEmpowermentMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5" text="per lethal health level or 2 motes per bashing health level"/>
         <willpower cost="1" text="per lethal health level"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -161,9 +161,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2L damage"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -176,9 +176,9 @@
       <charmReference id="Dragon-Blooded.ElementalBoltAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 1L damage"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -192,10 +192,10 @@
       <charmReference id="Dragon-Blooded.ElementalBurstTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -207,9 +207,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -222,9 +222,9 @@
       <charmReference id="Dragon-Blooded.Spirit-DetectingMirrorTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
@@ -237,9 +237,9 @@
       <charmReference id="Dragon-Blooded.Spirit-DetectingMirrorTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -252,10 +252,10 @@
       <charmReference id="Dragon-Blooded.Spirit-GroundingShout"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <combo allAbilities="true"/>
     <duration amount="5" unit="minute"/>
@@ -269,9 +269,9 @@
       <charmReference id="Dragon-Blooded.Spirit-GroundingShout"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
@@ -284,10 +284,10 @@
       <essence value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="Varies"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <combo comboable="false"/>
     <duration duration="Instant"/>
@@ -300,9 +300,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -315,9 +315,9 @@
       <charmReference id="Dragon-Blooded.Feeling-the-AirTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per minute"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -330,10 +330,10 @@
       <charmReference id="Dragon-Blooded.SoundlessActionPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="minute"/>
     <charmtype type="Simple"/>
@@ -345,9 +345,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two sucesses"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -360,9 +360,9 @@
       <charmReference id="Dragon-Blooded.DistractingBreezeMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per being per mile"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -375,9 +375,9 @@
       <charmReference id="Dragon-Blooded.TracklessPassageStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration event="Broken"/>
     <charmtype type="Simple"/>
@@ -391,10 +391,10 @@
       <charmReference id="Dragon-Blooded.Wind-WalkingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -406,9 +406,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -421,9 +421,9 @@
       <charmReference id="Dragon-Blooded.SeekingThrowTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -436,9 +436,9 @@
       <charmReference id="Dragon-Blooded.LoyalWeapon"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Simple"/>
@@ -451,10 +451,10 @@
       <charmReference id="Dragon-Blooded.PersistantHornetAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10" text="per weapon"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <combo>
       <restrictions>
@@ -471,9 +471,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="+1 mote per additional person"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -486,9 +486,9 @@
       <charmReference id="Dragon-Blooded.WhirlwindShieldForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -502,9 +502,9 @@
       <charmReference id="Dragon-Blooded.VengefulGustCounterattack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per weapon"/>
-      </temporary>
+      
     </cost>
     <combo>
       <restrictions>
@@ -522,9 +522,9 @@
       <charmReference id="Dragon-Blooded.VengefulGustCounterattack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 1L/1B soak"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="scene"/>
     <charmtype type="Simple"/>
@@ -536,9 +536,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -551,9 +551,9 @@
       <charmReference id="Dragon-Blooded.PrecisionObservationMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -566,9 +566,9 @@
       <charmReference id="Dragon-Blooded.All-EncompassingEarthSense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -581,9 +581,9 @@
       <charmReference id="Dragon-Blooded.FeelingDragon'sBone"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="5" unit="minute"/>
     <charmtype type="Simple"/>
@@ -596,9 +596,9 @@
       <charmReference id="Dragon-Blooded.PrecisionObservationMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration event="Disturbed"/>
     <charmtype type="Simple"/>
@@ -611,9 +611,9 @@
       <charmReference id="Dragon-Blooded.PrecisionObservationMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration event="Disturbed"/>
     <charmtype type="Simple"/>
@@ -626,9 +626,9 @@
       <charmReference id="Dragon-Blooded.PrecisionObservationMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration event="Disturbed"/>
     <charmtype type="Simple"/>
@@ -641,10 +641,10 @@
       <charmReference id="Dragon-Blooded.Sight-RidingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3+"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
@@ -657,10 +657,10 @@
       <charmReference id="Dragon-Blooded.SmellAndTaste-RidingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3+"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
@@ -673,10 +673,10 @@
       <charmReference id="Dragon-Blooded.HearingAndTouch-RidingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3+"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
@@ -691,10 +691,10 @@
       <charmReference id="Dragon-Blooded.HearingAndTouch-DestroyingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3+"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
@@ -706,9 +706,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
@@ -721,9 +721,9 @@
       <charmReference id="Dragon-Blooded.ShapingHandStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per cubic foot"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -736,9 +736,9 @@
       <charmReference id="Dragon-Blooded.Stone-CarvingFingersForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -750,9 +750,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="for touch, 3 for sight"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="minute"/>
     <charmtype type="Simple"/>
@@ -765,9 +765,9 @@
       <charmReference id="Dragon-Blooded.Flaw-FindingExamination"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -780,10 +780,10 @@
       <charmReference id="Dragon-Blooded.CharmLesserUnmaking"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Special"/>
@@ -795,7 +795,7 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary/>
+      
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
@@ -807,9 +807,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -822,9 +822,9 @@
       <charmReference id="Dragon-Blooded.UnsleepingEarthMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -837,9 +837,9 @@
       <charmReference id="Dragon-Blooded.UneatingEarthMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -852,10 +852,10 @@
       <charmReference id="Dragon-Blooded.UnbreathingEarthMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Reflexive"/>
@@ -868,10 +868,10 @@
       <charmReference id="Dragon-Blooded.UnsleepingEarthMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -885,10 +885,10 @@
       <charmReference id="Dragon-Blooded.UntiringEarthMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1" text="per Person"/>
-      </temporary>
+      
     </cost>
     <duration event="Satisfied"/>
     <charmtype type="Simple"/>
@@ -900,9 +900,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per person"/>
-      </temporary>
+      
     </cost>
     <duration amount="One" unit="scene"/>
     <charmtype type="Simple"/>
@@ -915,9 +915,9 @@
       <charmReference id="Dragon-Blooded.StrengthStoneTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2L/2B soak"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -930,9 +930,9 @@
       <charmReference id="Dragon-Blooded.StrengthStoneTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
 	<combo allAbilities="true"/>
     <duration amount="1" unit="turn"/>
@@ -946,9 +946,9 @@
       <charmReference id="Dragon-Blooded.ImperviousSkinStoneMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="ElementProtectionForm"/>
     <duration amount="1" unit="scene"/>
@@ -962,9 +962,9 @@
       <charmReference id="Dragon-Blooded.ImperviousSkinStoneMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="ElementProtectionForm"/>
     <duration amount="1" unit="scene"/>
@@ -978,9 +978,9 @@
       <charmReference id="Dragon-Blooded.ImperviousSkinStoneMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="ElementProtectionForm"/>
     <duration amount="1" unit="scene"/>
@@ -994,9 +994,9 @@
       <charmReference id="Dragon-Blooded.ImperviousSkinStoneMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="ElementProtectionForm"/>
     <duration amount="1" unit="scene"/>
@@ -1010,9 +1010,9 @@
       <charmReference id="Dragon-Blooded.ImperviousSkinStoneMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="ElementProtectionForm"/>
     <duration amount="1" unit="scene"/>
@@ -1026,10 +1026,10 @@
       <charmAttributeRequirement attribute="ElementProtectionForm" count="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1042,10 +1042,10 @@
       <charmReference id="Dragon-Blooded.Chaos-WardingPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1057,9 +1057,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1072,9 +1072,9 @@
       <charmReference id="Dragon-Blooded.EffortlesslyRisingFlame"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
@@ -1088,9 +1088,9 @@
       <charmReference id="Dragon-Blooded.FallingStarManeuver"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
@@ -1103,9 +1103,9 @@
       <charmReference id="Dragon-Blooded.Bellows-PumpingStride"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1118,9 +1118,9 @@
       <charmReference id="Dragon-Blooded.IncenseSmokeLadder"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -1133,9 +1133,9 @@
       <charmReference id="Dragon-Blooded.FallingStarManeuver"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2 soak"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1148,9 +1148,9 @@
       <charmReference id="Dragon-Blooded.EffortlesslyRisingFlame"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1164,9 +1164,9 @@
       <charmReference id="Dragon-Blooded.Bellows-PumpingStride"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per subject"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1178,9 +1178,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1193,9 +1193,9 @@
       <charmReference id="Dragon-Blooded.ThresholdWardingStance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1208,9 +1208,9 @@
       <charmReference id="Dragon-Blooded.HoppingFirecrakerEvasion"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1222,9 +1222,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1237,9 +1237,9 @@
       <charmReference id="Dragon-Blooded.FlickeringCandleMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice +1 mote per ally"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1252,9 +1252,9 @@
       <charmReference id="Dragon-Blooded.FlickeringCandleMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1267,9 +1267,9 @@
       <charmReference id="Dragon-Blooded.SafetyAmongEnemies"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1284,9 +1284,9 @@
       <charmReference id="Dragon-Blooded.SafetyAmongEnemies"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1298,9 +1298,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1313,9 +1313,9 @@
       <charmReference id="Dragon-Blooded.Dragon-GracedWeapon"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1328,10 +1328,10 @@
       <charmReference id="Dragon-Blooded.Dragon-GracedWeapon"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1343,9 +1343,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1358,9 +1358,9 @@
       <charmReference id="Dragon-Blooded.StokingBonfireStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice +1 mote per subject"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1373,10 +1373,10 @@
       <charmReference id="Dragon-Blooded.StokingBonfireStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1389,9 +1389,9 @@
       <charmReference id="Dragon-Blooded.StokingBonfireStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="+1 mote per targeted ally"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
@@ -1404,9 +1404,9 @@
       <charmReference id="Dragon-Blooded.ThreshingFloorTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -1418,9 +1418,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1433,9 +1433,9 @@
       <charmReference id="Dragon-Blooded.PhantomFire-WarriorHorde"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per person"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1447,9 +1447,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
@@ -1462,9 +1462,9 @@
       <charmReference id="Dragon-Blooded.GlowingCoalRadiance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1478,10 +1478,10 @@
       <charmReference id="Dragon-Blooded.AuraInvulnerability"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1494,9 +1494,9 @@
       <charmReference id="Dragon-Blooded.GlowingCoalRadiance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Simple"/>
@@ -1509,10 +1509,10 @@
       <charmReference id="Dragon-Blooded.UnbearableTauntTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
@@ -1524,9 +1524,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1539,9 +1539,9 @@
       <charmReference id="Dragon-Blooded.LoquaciousCourtierTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1554,9 +1554,9 @@
       <charmReference id="Dragon-Blooded.Sweeteen-the-TapMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1569,9 +1569,9 @@
       <charmReference id="Dragon-Blooded.LoquaciousCourtierTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1584,10 +1584,10 @@
       <charmReference id="Dragon-Blooded.Seizing-the-TongueTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1600,9 +1600,9 @@
       <charmReference id="Dragon-Blooded.LoquaciousCourtierTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1615,9 +1615,9 @@
       <charmReference id="Dragon-Blooded.Warm-FacedSeductionStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1630,10 +1630,10 @@
       <charmReference id="Dragon-Blooded.Warm-FacedSeductionStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
@@ -1645,9 +1645,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1660,9 +1660,9 @@
       <charmReference id="Dragon-Blooded.DrowningEmbrace"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per attack/foe"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="ExtraAction"/>
@@ -1675,9 +1675,9 @@
       <charmReference id="Dragon-Blooded.DrowningEmbrace"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1690,10 +1690,10 @@
       <charmReference id="Dragon-Blooded.PoundingSurfStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per attack"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -1705,9 +1705,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1720,9 +1720,9 @@
       <charmReference id="Dragon-Blooded.Blade-DeflectingPalm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1737,9 +1737,9 @@
       <charmReference id="Dragon-Blooded.BecomeHammer"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="+1 mote each additional turn"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
@@ -1751,9 +1751,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="or 1 mote per two dice"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1766,9 +1766,9 @@
       <charmReference id="Dragon-Blooded.BenevolentMaster'sBlessing"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1781,10 +1781,10 @@
       <charmReference id="Dragon-Blooded.ConfluenceSavantThought"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
@@ -1797,9 +1797,9 @@
       <charmReference id="Dragon-Blooded.Geese-Flying-SouthAdministration"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="+1 mote per dot lent"/>
-      </temporary>
+      
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
@@ -1812,9 +1812,9 @@
       <charmReference id="Dragon-Blooded.BenevolentMaster'sBlessing"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1827,9 +1827,9 @@
       <charmReference id="Dragon-Blooded.TrashingCarpSerenade"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -1842,9 +1842,9 @@
       <charmReference id="Dragon-Blooded.TrashingCarpSerenade"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -1857,10 +1857,10 @@
       <charmReference id="Dragon-Blooded.BenevolentMaster'sBlessing"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="plus 1 mote per mote granted"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="week"/>
     <charmtype type="Simple"/>
@@ -1872,9 +1872,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1886,9 +1886,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1901,10 +1901,10 @@
       <charmReference id="Dragon-Blooded.Scent-of-CrimeMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1916,9 +1916,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -1932,10 +1932,10 @@
       <charmReference id="Dragon-Blooded.Atsiluth'sBounty"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1949,10 +1949,10 @@
       <charmReference id="Dragon-Blooded.IndisputablePhysicalAnalysisTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1965,10 +1965,10 @@
       <charmReference id="Dragon-Blooded.IndisputablePhysicalAnalysisTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -1981,10 +1981,10 @@
       <charmReference id="Dragon-Blooded.RevelationAssociationHunch"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -1996,9 +1996,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2011,9 +2011,9 @@
       <charmReference id="Dragon-Blooded.ObserverAwarenessMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2026,9 +2026,9 @@
       <charmReference id="Dragon-Blooded.ObserverAwarenessMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="minute"/>
     <charmtype type="Simple"/>
@@ -2041,9 +2041,9 @@
       <charmReference id="Dragon-Blooded.EarsSnowyOwl"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
@@ -2055,9 +2055,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2070,9 +2070,9 @@
       <charmReference id="Dragon-Blooded.ResettingTumblersTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
@@ -2086,9 +2086,9 @@
       <charmReference id="Dragon-Blooded.ArtfulSprintingTheft"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2100,9 +2100,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2115,9 +2115,9 @@
       <charmReference id="Dragon-Blooded.Hurricane-PredictingGlance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2130,9 +2130,9 @@
       <charmReference id="Dragon-Blooded.Storm-OutrunningTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2145,9 +2145,9 @@
       <charmReference id="Dragon-Blooded.Hurricane-PredictingGlance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
@@ -2160,10 +2160,10 @@
       <charmReference id="Dragon-Blooded.FinePassageNegotiatingStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2176,10 +2176,10 @@
       <charmReference id="Dragon-Blooded.FinePassageNegotiatingStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2192,9 +2192,9 @@
       <charmReference id="Dragon-Blooded.PleasantConvocationLike-Minded"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2207,9 +2207,9 @@
       <charmReference id="Dragon-Blooded.FinePassageNegotiatingStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2222,9 +2222,9 @@
       <charmReference id="Dragon-Blooded.FinePassageNegotiatingStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2237,9 +2237,9 @@
       <charmReference id="Dragon-Blooded.Pirate-MasqueradingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2251,9 +2251,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2266,9 +2266,9 @@
       <charmReference id="Dragon-Blooded.SpringFollowsWinter"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per arrow"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -2281,9 +2281,9 @@
       <charmReference id="Dragon-Blooded.SpringFollowsWinter"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2296,9 +2296,9 @@
       <charmReference id="Dragon-Blooded.HarvestHunter"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -2311,9 +2311,9 @@
       <charmReference id="Dragon-Blooded.SpringFollowsWinter"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2326,10 +2326,10 @@
       <charmReference id="Dragon-Blooded.DragonflyFindsMate"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="+1 mote per person defended"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
@@ -2342,10 +2342,10 @@
       <charmReference id="Dragon-Blooded.Seven-YearSwarmVolley"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2357,9 +2357,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2372,9 +2372,9 @@
       <charmReference id="Dragon-Blooded.InfectionBanishingPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
@@ -2388,10 +2388,10 @@
       <charmReference id="Dragon-Blooded.InfectionBanishingPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2404,10 +2404,10 @@
       <charmReference id="Dragon-Blooded.Disease-BanishingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per health level converted"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2420,10 +2420,10 @@
       <charmReference id="Dragon-Blooded.Wound-ClosingTouch"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per health level converted"/>
         <willpower cost="1" text="per health level converted"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2436,9 +2436,9 @@
       <charmReference id="Dragon-Blooded.InfectionBanishingPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2452,10 +2452,10 @@
       <charmReference id="Dragon-Blooded.Wound-ClosingTouch"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2467,9 +2467,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -2482,9 +2482,9 @@
       <charmReference id="Dragon-Blooded.MemorablePerformanceTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2497,10 +2497,10 @@
       <charmReference id="Dragon-Blooded.TalentedImprovisation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="+1 mote per extra enemy"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
@@ -2513,10 +2513,10 @@
       <charmReference id="Dragon-Blooded.MemorablePerformanceTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2529,9 +2529,9 @@
       <charmReference id="Dragon-Blooded.EnchantingPerformance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="performance"/>
     <charmtype type="Simple"/>
@@ -2544,9 +2544,9 @@
       <charmReference id="Dragon-Blooded.MemorablePerformanceTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per fang"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple" synergistic="true"/>
@@ -2558,10 +2558,10 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5" text="plus 1 mote and 1 committed mote per fang trained"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="2" unit="month"/>
     <charmtype type="Simple" synergistic="true"/>
@@ -2574,10 +2574,10 @@
       <charmReference id="Dragon-Blooded.FlawlessTrainingExecution"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple" synergistic="true"/>
@@ -2589,9 +2589,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -2604,9 +2604,9 @@
       <charmReference id="Dragon-Blooded.ScatteredPearlHoofFalls"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2619,9 +2619,9 @@
       <charmReference id="Dragon-Blooded.Heaven-GracingLeap"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -2634,9 +2634,9 @@
       <charmReference id="Dragon-Blooded.ScatteredPearlHoofFalls"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two damage dice"/>
-      </temporary>
+      
     </cost>
 	<combo allAbilities="true"/>
     <duration duration="Instant"/>
@@ -2650,10 +2650,10 @@
       <charmReference id="Dragon-Blooded.EbonySpurTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per mount/rider pair"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="charge"/>
     <charmtype type="Supplemental"/>
@@ -2666,9 +2666,9 @@
       <charmReference id="Dragon-Blooded.ScatteredPearlHoofFalls"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="Successes" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -2681,10 +2681,10 @@
       <charmReference id="Dragon-Blooded.GreatHeartCompanion"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Special"/>
     <charmtype type="Supplemental"/>
@@ -2696,9 +2696,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -2711,9 +2711,9 @@
       <charmReference id="Dragon-Blooded.Wild-WanderingForesterCharm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2726,9 +2726,9 @@
       <charmReference id="Dragon-Blooded.Wild-WanderingForesterCharm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -2741,9 +2741,9 @@
       <charmReference id="Dragon-Blooded.QuarryRevelationTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -2756,9 +2756,9 @@
       <charmReference id="Dragon-Blooded.QuarryRevelationTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="hunt"/>
     <charmtype type="Simple"/>
@@ -2771,9 +2771,9 @@
       <charmReference id="Dragon-Blooded.Wild-WanderingForesterCharm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="+1 mote per companion"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -2786,9 +2786,9 @@
       <charmReference id="Dragon-Blooded.HostileEnvironmentPreparation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2803,9 +2803,9 @@
       <charmReference id="Dragon-Blooded.ElementalConcentrationTrance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2818,9 +2818,9 @@
       <charmReference id="Dragon-Blooded.Language-LearningRitual"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2833,9 +2833,9 @@
       <charmReference id="Dragon-Blooded.CipherMissive"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2849,9 +2849,9 @@
       <charmReference id="Dragon-Blooded.VoicesonWind"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="plus 1 mote per ally included"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2864,9 +2864,9 @@
       <charmAttributeRequirement attribute="Linguistics" count="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -2879,9 +2879,9 @@
       <charmReference id="Dragon-Blooded.ElementalConcentrationTrance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration amount="Successes" unit="hour"/>
     <charmtype type="Supplemental"/>
@@ -2894,9 +2894,9 @@
       <charmReference id="Dragon-Blooded.CarefulInsight-GatheringStudy"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -2909,10 +2909,10 @@
       <charmReference id="Dragon-Blooded.CarefulInsight-GatheringStudy"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2925,9 +2925,9 @@
       <charmReference id="Dragon-Blooded.ElementalConcentrationTrance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="plus 1 mote per student"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -2940,9 +2940,9 @@
       <charmAttributeRequirement attribute="Lore" count="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -2957,10 +2957,10 @@
       <charmReference id="Dragon-Blooded.Flaw-FindingExamination"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -2973,9 +2973,9 @@
       <charmReference id="Dragon-Blooded.SeekingThrowTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per penalty cancelled"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -2988,9 +2988,9 @@
       <charmReference id="Dragon-Blooded.CrosswindOffense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -3003,9 +3003,9 @@
       <charmReference id="Dragon-Blooded.CrosswindOffense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3018,9 +3018,9 @@
       <charmReference id="Dragon-Blooded.CrosswindOffense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per point of base damage"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3032,9 +3032,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3047,9 +3047,9 @@
       <charmReference id="Dragon-Blooded.MindingDragon'sEggs"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3062,10 +3062,10 @@
       <charmReference id="Dragon-Blooded.FivefoldResonanceSense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3078,9 +3078,9 @@
       <charmAttributeRequirement attribute="Occult" count="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -3093,9 +3093,9 @@
       <charmReference id="Dragon-Blooded.TracklessPassageStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="plus 1 mote per ally masked"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3109,9 +3109,9 @@
       <charmReference id="Dragon-Blooded.SoundlessActionPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per minute per target"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -3125,10 +3125,10 @@
       <charmReference id="Dragon-Blooded.DistractingBreezeMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -3141,9 +3141,9 @@
       <charmAttributeRequirement attribute="Stealth" count="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -3155,9 +3155,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -3170,9 +3170,9 @@
       <charmReference id="Dragon-Blooded.All-EncompassingEarthSense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
@@ -3185,9 +3185,9 @@
       <charmReference id="Dragon-Blooded.FeelingDragon'sBone"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="or 3 motes"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Special"/>
@@ -3200,9 +3200,9 @@
       <charmAttributeRequirement attribute="Craft" count="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -3215,9 +3215,9 @@
       <charmReference id="Dragon-Blooded.Stone-CarvingFingersForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per cubic yard"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -3230,11 +3230,11 @@
       <charmReference id="Dragon-Blooded.CharmGreaterUnmaking"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3247,9 +3247,9 @@
       <charmReference id="Dragon-Blooded.UnsleepingEarthMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
@@ -3262,9 +3262,9 @@
       <charmReference id="Dragon-Blooded.SleepStonesTrance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration event="Broken"/>
     <charmtype type="Simple"/>
@@ -3277,10 +3277,10 @@
       <charmReference id="Dragon-Blooded.UneatingEarthMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -3292,9 +3292,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -3307,9 +3307,9 @@
       <charmReference id="Dragon-Blooded.Sweeteen-the-TapMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3322,9 +3322,9 @@
       <charmReference id="Dragon-Blooded.Brother-Against-BrotherInsinuation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3336,9 +3336,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3350,9 +3350,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3365,9 +3365,9 @@
       <charmReference id="Dragon-Blooded.AuraInvulnerability"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3380,9 +3380,9 @@
       <charmReference id="Dragon-Blooded.EffortlesslyRisingFlame"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3395,10 +3395,10 @@
       <charmReference id="Dragon-Blooded.SmolderingKarmaStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -3411,9 +3411,9 @@
       <charmReference id="Dragon-Blooded.Dragon-GracedWeapon"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="plus 1 mote per turn beyond the first"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -3426,9 +3426,9 @@
       <charmReference id="Dragon-Blooded.Dragon-GracedWeapon"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -3441,9 +3441,9 @@
       <charmReference id="Dragon-Blooded.Ghostly-FireBlade"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4" text="or more"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="day"/>
     <charmtype type="Supplemental"/>
@@ -3456,9 +3456,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -3471,9 +3471,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -3486,9 +3486,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -3502,10 +3502,10 @@
       <charmReference id="Dragon-Blooded.RiptideMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
@@ -3518,10 +3518,10 @@
       <charmReference id="Dragon-Blooded.BondsUnbreakableIceTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
@@ -3534,10 +3534,10 @@
       <charmReference id="Dragon-Blooded.CrushingGlacierPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="plus 3 motes per additional target"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="Brawl" unit="turn"/>
     <charmtype type="Supplemental"/>
@@ -3550,9 +3550,9 @@
       <charmReference id="Dragon-Blooded.DrowningEmbrace"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -3565,9 +3565,9 @@
       <charmReference id="Dragon-Blooded.SlipperyEscapeMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -3580,10 +3580,10 @@
       <charmReference id="Dragon-Blooded.BecomeHammer"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3596,10 +3596,10 @@
       <charmReference id="Dragon-Blooded.Storm-OutrunningTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3611,9 +3611,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
@@ -3626,9 +3626,9 @@
       <charmReference id="Dragon-Blooded.Deck-WalkingPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3640,9 +3640,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3655,9 +3655,9 @@
       <charmReference id="Dragon-Blooded.FindingWaters'Depths"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3670,10 +3670,10 @@
       <charmReference id="Dragon-Blooded.SparklingFountainsEloquence"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3686,10 +3686,10 @@
       <charmReference id="Dragon-Blooded.Geese-Flying-SouthAdministration"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
@@ -3702,9 +3702,9 @@
       <charmReference id="Dragon-Blooded.IndisputablePhysicalAnalysisTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3717,10 +3717,10 @@
       <charmReference id="Dragon-Blooded.TamperingDetectionTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3733,9 +3733,9 @@
       <charmReference id="Dragon-Blooded.IndisputablePhysicalAnalysisTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3748,9 +3748,9 @@
       <charmReference id="Dragon-Blooded.EyeEnlightenedReader"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -3763,10 +3763,10 @@
       <charmReference id="Dragon-Blooded.ResettingTumblersTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
@@ -3779,9 +3779,9 @@
       <charmReference id="Dragon-Blooded.NakedThiefStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
@@ -3793,9 +3793,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3807,9 +3807,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
@@ -3821,10 +3821,10 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3837,9 +3837,9 @@
       <charmReference id="Dragon-Blooded.WatersHonestyMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3852,10 +3852,10 @@
       <charmReference id="Dragon-Blooded.PerfectGamblingPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3868,9 +3868,9 @@
       <charmReference id="Dragon-Blooded.StrengthStoneTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per person"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3883,10 +3883,10 @@
       <charmReference id="Dragon-Blooded.FireProtectionForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <learning>
       <favored caste="Fire"/>
@@ -3902,10 +3902,10 @@
       <charmReference id="Dragon-Blooded.AirProtectionForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <learning>
       <favored caste="Air"/>
@@ -3921,10 +3921,10 @@
       <charmReference id="Dragon-Blooded.EarthProtectionForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3937,10 +3937,10 @@
       <charmReference id="Dragon-Blooded.WaterProtectionForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <learning>
       <favored caste="Water"/>
@@ -3956,10 +3956,10 @@
       <charmReference id="Dragon-Blooded.WoodProtectionForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <learning>
       <favored caste="Wood"/>
@@ -3979,11 +3979,11 @@
       <charmReference id="Dragon-Blooded.MantleWoodInvulnerability"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="12"/>
         <willpower cost="1"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <learning>
       <favored caste="Wood"/>
@@ -3999,14 +3999,11 @@
       <charmReference id="Dragon-Blooded.Chaos-WardingPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
         <willpower cost="1"/>
         <health cost="1" type="Aggravated"/>
-      </temporary>
-      <permanent>
-        <experience cost="1"/>
-      </permanent>
+        <experience cost="1" permanent="true"/>
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -4019,9 +4016,9 @@
       <charmReference id="Dragon-Blooded.HarvestHunter"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -4034,9 +4031,9 @@
       <charmReference id="Dragon-Blooded.Life-SwellingSapStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -4049,10 +4046,10 @@
       <charmReference id="Dragon-Blooded.PurityMindMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -4067,10 +4064,10 @@
       <charmReference id="Dragon-Blooded.PurityMindMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="Special"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -4083,10 +4080,10 @@
       <charmReference id="Dragon-Blooded.JadeCrucibleMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -4099,9 +4096,9 @@
       <charmReference id="Dragon-Blooded.MemorablePerformanceTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per subject"/>
-      </temporary>
+      
     </cost>
     <duration duration="Special"/>
     <charmtype type="Reflexive"/>
@@ -4114,9 +4111,9 @@
       <charmReference id="Dragon-Blooded.DanceFlashingSwords"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -4129,9 +4126,9 @@
       <charmReference id="Dragon-Blooded.GreatHeartCompanion"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -4144,9 +4141,9 @@
       <charmReference id="Dragon-Blooded.Wild-WanderingForesterCharm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per two dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>

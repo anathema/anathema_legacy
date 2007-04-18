@@ -55,11 +55,11 @@ public class CostEntryModel implements ICostEntryModel {
   }
 
   public void setXpCostValue(String newValue) {
-    charmData.getPermanentCost().getXPCost().setValue(newValue);
+    charmData.getTemporaryCost().getXPCost().setValue(newValue);
   }
 
   public void setXpCostText(String newValue) {
-    charmData.getPermanentCost().getXPCost().setText(newValue);
+    charmData.getTemporaryCost().getXPCost().setText(newValue);
   }
 
   public IExaltedEdition getEdition() {

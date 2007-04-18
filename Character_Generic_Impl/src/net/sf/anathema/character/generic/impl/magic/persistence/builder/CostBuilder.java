@@ -16,6 +16,7 @@ public class CostBuilder {
     }
     String costString = ElementUtilities.getRequiredAttrib(element, ICharmXMLConstants.ATTRIB_COST);
     String text = element.attributeValue(ICharmXMLConstants.ATTRIB_TEXT);
-    return new Cost(costString, text);
+    boolean permanent = ElementUtilities.getBooleanAttribute(element, ICharmXMLConstants.ATTRIB_PERMANENT, false);
+    return new Cost(costString, text, permanent);
   }
 }

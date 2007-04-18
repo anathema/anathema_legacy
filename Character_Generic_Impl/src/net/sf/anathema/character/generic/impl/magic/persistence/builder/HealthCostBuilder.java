@@ -17,6 +17,7 @@ public class HealthCostBuilder {
     }
     int cost = ElementUtilities.getRequiredIntAttrib(element, ICharmXMLConstants.ATTRIB_COST);
     String text = element.attributeValue(ICharmXMLConstants.ATTRIB_TEXT);
+    boolean permanent = ElementUtilities.getBooleanAttribute(element, ICharmXMLConstants.ATTRIB_PERMANENT, false);
     String typeString = element.attributeValue(ICharmXMLConstants.ATTRIB_TYPE);
     HealthType type;
     if (typeString == null) {
@@ -25,6 +26,6 @@ public class HealthCostBuilder {
     else {
       type = HealthType.valueOf(typeString);
     }
-    return new HealthCost(cost, text, type);
+    return new HealthCost(cost, text, permanent, type);
   }
 }

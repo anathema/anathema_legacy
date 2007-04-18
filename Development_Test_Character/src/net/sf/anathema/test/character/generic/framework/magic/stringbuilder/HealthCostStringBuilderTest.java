@@ -32,22 +32,22 @@ public class HealthCostStringBuilderTest extends BasicTestCase {
   }
 
   public void testValueOnly() throws Exception {
-    String costString = getDisplayString(new HealthCost(2, null, HealthType.Lethal));
+    String costString = getDisplayString(new HealthCost(2, null, false, HealthType.Lethal));
     assertEquals("2 Lethal health levels", costString); //$NON-NLS-1$
   }
 
   public void testValueAndText() throws Exception {
-    String costString = getDisplayString(new HealthCost(3, "or more", HealthType.Bashing)); //$NON-NLS-1$
+    String costString = getDisplayString(new HealthCost(3, "or more", false, HealthType.Bashing)); //$NON-NLS-1$
     assertEquals("3 Bashing health levels or more", costString); //$NON-NLS-1$
   }
 
   public void testSingleHealthLevel() throws Exception {
-    String costString = getDisplayString(new HealthCost(1, null, HealthType.Bashing));
+    String costString = getDisplayString(new HealthCost(1, null, false, HealthType.Bashing));
     assertEquals("1 Bashing health level", costString); //$NON-NLS-1$
   }
 
   public void testTextOnly() throws Exception {
-    String costString = getDisplayString(new HealthCost(0, "Special", HealthType.Aggravated)); //$NON-NLS-1$
+    String costString = getDisplayString(new HealthCost(0, "Special", false, HealthType.Aggravated)); //$NON-NLS-1$
     assertEquals(" Special", costString); //$NON-NLS-1$
   }
 }

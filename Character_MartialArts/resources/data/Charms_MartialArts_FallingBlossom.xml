@@ -8,9 +8,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
@@ -27,9 +27,9 @@
       <charmReference id="Terrestrial.LivingShieldTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="action"/>
     <charmtype type="Reflexive"/>
@@ -44,10 +44,10 @@
       <charmReference id="Terrestrial.LivingShieldTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
         <health cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -63,9 +63,9 @@
       <charmReference id="Terrestrial.UndefendedAssaultMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple">
@@ -82,13 +82,11 @@
       <charmReference id="Terrestrial.FallingBlossomForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
-      <permanent>
-      	<experience cost="1"/>
-      </permanent>
+      	<experience cost="1" permanent="true"/>
+
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -103,10 +101,10 @@
       <charmReference id="Terrestrial.FallingBlossomForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -121,9 +119,9 @@
       <charmReference id="Terrestrial.StrengthFaithMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>

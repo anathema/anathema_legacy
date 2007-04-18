@@ -5,9 +5,9 @@
   <essence value="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -21,10 +21,10 @@
   <charmReference id="Dragon-Blooded.ScentCrimeMethod"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -38,9 +38,9 @@
   <charmAttributeRequirement attribute="ExcellencyInvestigation" count="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -55,10 +55,10 @@
   <charmReference id="Dragon-Blooded.TamperingDetectionTechnique"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="6"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -73,10 +73,10 @@
   <charmReference id="Dragon-Blooded.TamperingDetectionTechnique"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -90,10 +90,10 @@
   <charmAttributeRequirement attribute="ExcellencyInvestigation" count="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="4"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -107,10 +107,10 @@
   <charmReference id="Dragon-Blooded.RevelationAssociatesHunch"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="4"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>

@@ -7,9 +7,9 @@
       <charmReference id="Solar.WiseArrow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -22,10 +22,10 @@
       <charmReference id="Solar.PhantomArrowTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -38,9 +38,9 @@
       <charmReference id="Solar.FerociousJab"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -53,9 +53,9 @@
       <charmReference id="Solar.FistIronTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per turn"/>
-      </temporary>
+      
     </cost>
     <combo comboable="true">
       <restrictions>
@@ -72,9 +72,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -87,9 +87,9 @@
       <charmReference id="Solar.SledgehammerFistPunch"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -102,9 +102,9 @@
       <charmReference id="Solar.ExcellentStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -117,9 +117,9 @@
       <charmReference id="Solar.OneWeapon,TwoBlows"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per attack"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -132,10 +132,10 @@
       <charmReference id="Solar.CallBlade"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -147,9 +147,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2 dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -163,10 +163,10 @@
       <charmReference id="Solar.CoronaRadiance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -178,9 +178,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per mobility and fatigue negated"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -193,10 +193,10 @@
       <charmReference id="Solar.ArmoredScout'sInvigoration"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
@@ -209,9 +209,9 @@
       <charmReference id="Solar.CascadeCuttingTerror"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -223,9 +223,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -238,11 +238,11 @@
       <charmReference id="Solar.Front-LineWarrior'sStamina"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
 		<willpower cost="1"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="EssenceAndEndurance" unit="hour" />
     <charmtype type="Simple"/>
@@ -255,9 +255,9 @@
       <charmReference id="Solar.HarmoniousPresenceMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -270,10 +270,10 @@
       <charmReference id="Solar.MajesticRadiantPresence"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -285,9 +285,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2B soak"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -300,9 +300,9 @@
       <charmReference id="Solar.DurabilityOakMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -315,10 +315,10 @@
       <charmReference id="Solar.DurabilityOakMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
@@ -331,9 +331,9 @@
       <charmReference id="Solar.DurabilityOakMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -346,9 +346,9 @@
       <charmReference id="Solar.UnfailingTortoiseTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -361,10 +361,10 @@
       <charmReference id="Solar.Hauberk-SummoningGesture"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -377,9 +377,9 @@
       <charmReference id="Solar.GracefulCraneStance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -392,9 +392,9 @@
       <charmReference id="Solar.LightningSpeed"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
          <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
@@ -407,9 +407,9 @@
       <charmReference id="Solar.LightningSpeed"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
@@ -423,10 +423,10 @@
       <charmReference id="Solar.TwoSwordsTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>

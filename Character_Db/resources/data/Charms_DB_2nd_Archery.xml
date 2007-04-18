@@ -5,9 +5,9 @@
   <essence value="2"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Supplemental"/>
@@ -24,9 +24,9 @@
   <charmReference id="Dragon-Blooded.DragonGracedArrow"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1" text=" per arrow"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="ExtraAction"/>
@@ -41,9 +41,9 @@
   <charmReference id="Dragon-Blooded.DragonGracedArrow"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive">
@@ -60,10 +60,10 @@
   <charmReference id="Dragon-Blooded.DragonflyFindsMate"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <willpower cost="1"/>
    <essence cost="3" text="+1m per person defended"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="action"/>
  <charmtype type="Simple"/>
@@ -78,10 +78,10 @@
   <charmReference id="Dragon-Blooded.SevenYearSwarmVolley"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive">
@@ -99,9 +99,9 @@
   <charmAttributeRequirement attribute="ExcellencyArchery" count="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -116,10 +116,10 @@
   <charmReference id="Dragon-Blooded.HarvestHunter"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="4"/>
    <willpower cost="1" text="(optional)"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive">
@@ -136,9 +136,9 @@
   <charmReference id="Dragon-Blooded.UnobstructedHunter'sAim"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Supplemental"/>
@@ -152,9 +152,9 @@
   <charmReference id="Dragon-Blooded.LifeSwellingSapStrike"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Supplemental"/>

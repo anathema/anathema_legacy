@@ -9,4 +9,7 @@ public interface IConfigurableCostList extends ICostList {
   public IConfigurableCost getWillpowerCost();
 
   public IConfigurableHealthCost getHealthCost();
+  
+  @Override
+  public IConfigurableCost getXPCost();
 }

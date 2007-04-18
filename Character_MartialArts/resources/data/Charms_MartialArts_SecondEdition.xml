@@ -8,9 +8,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -25,9 +25,9 @@
       <charmReference id="Solar.StrikingCobraTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
@@ -44,9 +44,9 @@
       <charmReference id="Solar.SerpentineEvasion"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple">
@@ -65,9 +65,9 @@
       <charmReference id="Solar.SnakeForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple">
@@ -83,10 +83,10 @@
       <charmReference id="Solar.EssenceFangsandScalesTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -102,9 +102,9 @@
       <charmReference id="Solar.SnakeForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
@@ -122,9 +122,9 @@
       <charmReference id="Solar.SnakeStrikesHeel"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -140,9 +140,9 @@
       <charmReference id="Solar.UncoilingSerpentPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -158,10 +158,10 @@
       <charmReference id="Solar.Armor-PenetratingFangStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple">
@@ -180,9 +180,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental" />
@@ -197,9 +197,9 @@
       <charmReference id="Solar.FistsIronTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -215,9 +215,9 @@
       <charmReference id="Solar.FistsIronTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration event="NextAction"/>
     <charmtype type="Reflexive">
@@ -240,9 +240,9 @@
       <charmReference id="Solar.SledgehammerFistPunch"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple">
@@ -260,9 +260,9 @@
       <charmReference id="Solar.SolarHeroForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -277,9 +277,9 @@
       <charmReference id="Solar.HeavenThunderHammer"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -294,9 +294,9 @@
       <charmReference id="Solar.SolarHeroForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple">
@@ -314,10 +314,10 @@
       <charmReference id="Solar.SolarHeroForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" />
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -334,9 +334,9 @@
       <charmReference id="Solar.HammeronIronTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" />
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -355,9 +355,9 @@
       <charmReference id="Solar.FistsIronTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" />
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple">
@@ -375,10 +375,10 @@
       <charmReference id="Solar.SolarHeroForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4" />
         <willpower cost="1" />
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -396,9 +396,9 @@
       <charmReference id="Solar.HeavenThunderHammer"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7" />
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -416,10 +416,10 @@
       <charmReference id="Solar.HammeronIronTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7" />
         <willpower cost="1" />
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
@@ -436,10 +436,10 @@
       <charmReference id="Solar.FistsIronTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" />
         <willpower cost="1" />
-      </temporary>
+      
     </cost>
     <duration event="Used"/>
     <charmtype type="Simple">
@@ -457,9 +457,9 @@
       <charmReference id="Solar.ThunderclapRushAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per success" />
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
@@ -476,9 +476,9 @@
       <charmReference id="Solar.IrrepressibleBraveryTactic"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" />
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
@@ -497,9 +497,9 @@
       <charmReference id="Solar.DancingwithStrifeTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die" />
-      </temporary>
+      
     </cost>
     <duration duration="OneSceneOrUsed"/>
     <charmtype type="Reflexive">
@@ -519,10 +519,10 @@
       <charmReference id="Solar.BloodthirstySword-DancerSpirit"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="action"/>
     <charmtype type="Simple"/>

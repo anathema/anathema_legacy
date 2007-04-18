@@ -8,9 +8,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2 dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
@@ -27,9 +27,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
@@ -46,9 +46,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
@@ -66,9 +66,9 @@
       <genericCharmAttributeRequirement attribute="Excellency"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2 dice + 1m per subject"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>

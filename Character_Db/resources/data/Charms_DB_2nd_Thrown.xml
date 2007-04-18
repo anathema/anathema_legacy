@@ -7,9 +7,9 @@
       <charmAttributeRequirement attribute="ExcellencyThrown" count="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -24,9 +24,9 @@
       <charmReference id="Dragon-Blooded.LoyalWeapon"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="action" />
     <charmtype type="Simple"/>
@@ -41,9 +41,9 @@
       <charmReference id="Dragon-Blooded.PersistentHornetAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10" text="per weapon"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant" />
     <charmtype type="Simple"/>
@@ -58,9 +58,9 @@
       <charmAttributeRequirement attribute="ExcellencyThrown" count="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="+1 per ally protected"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene" />
     <charmtype type="Simple"/>
@@ -75,9 +75,9 @@
       <charmReference id="Dragon-Blooded.WhirlwindShieldForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="or 4 motes"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant" />
     <charmtype type="Reflexive"/>
@@ -94,9 +94,9 @@
       <charmReference id="Dragon-Blooded.VengefulGustCounterattack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per weapon"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant" />
     <charmtype type="Simple"/>
@@ -113,9 +113,9 @@
       <charmReference id="Dragon-Blooded.VengefulGustCounterattack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="or 2 motes per 1B/1L of soak"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene" />
     <charmtype type="Simple"/>

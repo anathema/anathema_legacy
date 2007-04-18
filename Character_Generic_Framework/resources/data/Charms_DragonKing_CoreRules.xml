@@ -5,9 +5,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="2"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -19,10 +19,10 @@
 			<charmReference id="DragonKing.PiercingCelestialVeil"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
 				<willpower cost="1" text="(optional)"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Varies"/>
 		<combo comboable="true"/>
@@ -35,10 +35,10 @@
 			<charmReference id="DragonKing.TouchCelestialForm"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -50,10 +50,10 @@
 			<charmReference id="DragonKing.OpenCelestialDoorway"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="10+"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Indefinite"/>
 		<charmtype type="Simple"/>
@@ -65,10 +65,10 @@
 			<charmReference id="DragonKing.SummonCelestialServant"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="" text="Half temporary Essence (round down)"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Indefinite"/>
 		<charmtype type="Simple"/>
@@ -80,10 +80,10 @@
 			<charmReference id="DragonKing.WalkCelestialRoad"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="15"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Indefinite"/>
 		<charmtype type="Simple"/>
@@ -94,9 +94,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="2"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -108,9 +108,9 @@
 			<charmReference id="DragonKing.ClaritySense"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -122,10 +122,10 @@
 			<charmReference id="DragonKing.SeeWindsEssence"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="PathLevel" unit="turn"/>
 		<charmtype type="Reflexive"/>
@@ -137,9 +137,9 @@
 			<charmReference id="DragonKing.VisionsAttackAndDefense"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Supplemental"/>
@@ -151,10 +151,10 @@
 			<charmReference id="DragonKing.PerceptionSubtleFlaws"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -166,10 +166,10 @@
 			<charmReference id="DragonKing.AncientUnderstanding"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="7"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="day"/>
 		<charmtype type="Simple"/>
@@ -180,9 +180,9 @@
 			<essence value="1"/>			
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -194,9 +194,9 @@
 			<charmReference id="DragonKing.LithicUnderstanding"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -208,10 +208,10 @@
 			<charmReference id="DragonKing.ShapeEarth"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="6"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Varies"/>
 		<charmtype type="Simple"/>
@@ -223,10 +223,10 @@
 			<charmReference id="DragonKing.EmpowerCrystal"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="day"/>
 		<charmtype type="Simple"/>
@@ -238,10 +238,10 @@
 			<charmReference id="DragonKing.BecomeStone"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="7"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -253,10 +253,10 @@
 			<charmReference id="DragonKing.CommandEarth"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -267,9 +267,9 @@
 			<essence value="1"/>			
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -281,9 +281,9 @@
 			<charmReference id="DragonKing.BalmHealth"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -295,10 +295,10 @@
 			<charmReference id="DragonKing.Repair"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -310,10 +310,10 @@
 			<charmReference id="DragonKing.SpeedHealing"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -325,10 +325,10 @@
 			<charmReference id="DragonKing.Restore"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5" text="per health level healed"/>
 				<willpower cost="1" text="per health level healed"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -340,13 +340,10 @@
 			<charmReference id="DragonKing.EmpowerHealing"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="10"/>
 				<willpower cost="1"/>
-			</temporary>
-			<permanent>
-				<experience cost="1" text="per level of Artifact"/>
-			</permanent>
+				<experience cost="1" text="per level of Artifact" permanent="true"/>
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -357,9 +354,9 @@
 			<essence value="1"/>			
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -371,9 +368,9 @@
 			<charmReference id="DragonKing.FirstLight"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="OneSceneOrExtinguished"/>
 		<charmtype type="Simple"/>
@@ -385,9 +382,9 @@
 			<charmReference id="DragonKing.LesserConjurationFlame"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="1" text="per 1L damage"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -399,10 +396,10 @@
 			<charmReference id="DragonKing.BoltFire"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -414,9 +411,9 @@
 			<charmReference id="DragonKing.CommandFire"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -428,10 +425,10 @@
 			<charmReference id="DragonKing.Immolation"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="7"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -442,9 +439,9 @@
 			<essence value="1"/>		
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="2"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="Essence" unit="hour"/>
 		<charmtype type="Simple"/>
@@ -456,9 +453,9 @@
 			<charmReference id="DragonKing.FlashingAgility"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Reflexive"/>
@@ -470,9 +467,9 @@
 			<charmReference id="DragonKing.FieryProwess"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3" text="per additional action"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="ExtraAction"/>
@@ -484,9 +481,9 @@
 			<charmReference id="DragonKing.OneFireManyFlames"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -498,10 +495,10 @@
 			<charmReference id="DragonKing.SpeedFlame"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -513,10 +510,10 @@
 			<charmReference id="DragonKing.Twice-FlickeringFlame"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -527,9 +524,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="2"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Reflexive"/>
@@ -541,9 +538,9 @@
 			<charmReference id="DragonKing.ClingingPuddleStyle"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="PathLevel" unit="turn"/>
 		<charmtype type="Reflexive"/>
@@ -555,9 +552,9 @@
 			<charmReference id="DragonKing.AirWalkingStyle"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="6"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="turn"/>
 		<charmtype type="Simple"/>
@@ -569,10 +566,10 @@
 			<charmReference id="DragonKing.Vault-BreachingMethod"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Reflexive"/>
@@ -584,10 +581,10 @@
 			<charmReference id="DragonKing.Barrier-BreachingMethod"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Reflexive"/>
@@ -599,10 +596,10 @@
 			<charmReference id="DragonKing.DistanceIgnoringTechnique"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="10"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="turn"/>
 		<charmtype type="Simple"/>
@@ -613,9 +610,9 @@
 			<essence value="1"/>			
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="1" text="per +1 in difficulty"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -627,9 +624,9 @@
 			<charmReference id="DragonKing.AvertingEyes"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="day"/>
 		<charmtype type="Simple"/>
@@ -641,10 +638,10 @@
 			<charmReference id="DragonKing.VisageAnotherFace"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="Essence" unit="hour"/>
 		<charmtype type="Simple"/>
@@ -656,10 +653,10 @@
 			<charmReference id="DragonKing.GuiseNewForm"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="PathLevel" unit="minuteShort"/>
 		<charmtype type="Simple"/>
@@ -671,10 +668,10 @@
 			<charmReference id="DragonKing.UnseenFormTechnique"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="6"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -686,10 +683,10 @@
 			<charmReference id="DragonKing.VeilDeception"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="7"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="Willpower" unit="turn"/>
 		<charmtype type="Simple"/>
@@ -700,9 +697,9 @@
 			<essence value="1"/>			
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -714,9 +711,9 @@
 			<charmReference id="DragonKing.VerdantUnderstanding"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -728,10 +725,10 @@
 			<charmReference id="DragonKing.EmpowerCultivation"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Indefinite"/>
 		<charmtype type="Simple"/>
@@ -743,9 +740,9 @@
 			<charmReference id="DragonKing.EmpowerPlants"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<willpower cost="5"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -757,10 +754,10 @@
 			<charmReference id="DragonKing.ShapePlants"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -772,10 +769,10 @@
 			<charmReference id="DragonKing.AlterPlants"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -786,9 +783,9 @@
 			<essence value="1"/>			
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3" text="and an additional mote to remove"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Indefinite"/>
 		<charmtype type="Simple"/>
@@ -800,9 +797,9 @@
 			<charmReference id="DragonKing.ShapingBark"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -814,10 +811,10 @@
 			<charmReference id="DragonKing.AlterTrunk"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="day"/>
 		<charmtype type="Simple"/>
@@ -829,10 +826,10 @@
 			<charmReference id="DragonKing.Adaptation"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -844,10 +841,10 @@
 			<charmReference id="DragonKing.FormAnotherBreed"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -859,10 +856,10 @@
 			<charmReference id="DragonKing.FormTerribleAncestors"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="10"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -874,10 +871,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="Varies"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<combo comboable="false"/>
 		<duration duration="Instant"/>

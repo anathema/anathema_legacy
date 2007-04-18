@@ -13,7 +13,6 @@ import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
-import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
@@ -60,10 +59,6 @@ public class DummyCharmData implements ICharmData {
 
   public Set<ICharm> getParentCharms() {
     return parents;
-  }
-
-  public IPermanentCostList getPermanentCost() {
-    return null;
   }
 
   public IExaltedSourceBook getSource() {

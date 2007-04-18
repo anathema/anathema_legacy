@@ -5,9 +5,9 @@
   <essence value="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive"/>
@@ -22,9 +22,9 @@
   <charmReference id="Dragon-Blooded.HeavenGracedRidingTechnique"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1" text="per 2 damage dice"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Supplemental"/>
@@ -40,10 +40,10 @@
   <charmReference id="Dragon-Blooded.EbonySpurTechnique"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1" text="per mount/rider pair or 5m per point of Magnitude"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="charge"/>
  <charmtype type="Supplemental"/>
@@ -60,10 +60,10 @@
   <charmReference id="Dragon-Blooded.ChargeOneHundredGenerals"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3" text="per point of Magnitude"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="1ChargeOrEssence"/> <!-- Added to CharmDuration -->
  <charmtype type="Supplemental"/>
@@ -79,9 +79,9 @@
   <charmAttributeRequirement attribute="ExcellencyRide" count="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="4"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Reflexive"/>
@@ -96,9 +96,9 @@
   <charmReference id="Dragon-Blooded.GreatHeartCompanion"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -112,10 +112,10 @@
   <charmReference id="Dragon-Blooded.ElementalHalo'sMercy"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="10"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -131,10 +131,10 @@
   <charmReference id="Dragon-Blooded.GreatHeartCompanion"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="10"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Special"/>
  <charmtype type="Supplemental"/>

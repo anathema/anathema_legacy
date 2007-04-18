@@ -5,9 +5,9 @@
   <essence value="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="action"/>
  <charmtype type="Simple"/>
@@ -23,9 +23,9 @@
   <charmReference id="Dragon-Blooded.GlowingCoalRadiance"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration duration="EssenceActionsOrLongTicks"/>
  <charmtype type="Simple"/>
@@ -41,10 +41,10 @@
   <charmReference id="Dragon-Blooded.UnbearableTauntTechnique"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="4"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration event="NextAction"/>
  <charmtype type="Simple"/>
@@ -59,9 +59,9 @@
   <charmReference id="Dragon-Blooded.GlowingCoalRadiance"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -75,9 +75,9 @@
   <charmReference id="Dragon-Blooded.AuraInvulnerability"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="4"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -94,10 +94,10 @@
    <charmReference id="Dragon-Blooded.AuraInvulnerability"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="8"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="OneSceneOrInstant"/>
  <charmtype type="Simple"/>
@@ -111,9 +111,9 @@
   <essence value="2"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Reflexive"/>
@@ -129,9 +129,9 @@
   <essence value="2"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>

@@ -30,7 +30,7 @@ public class CostWriterTest extends BasicTestCase {
   }
 
   public void testWriteEssenceCost() throws Exception {
-    charm.setTemporaryCost(new CostList(new Cost("1", null), null, null)); //$NON-NLS-1$
+    charm.setTemporaryCost(new CostList(new Cost("1", null, false), null, null, null)); //$NON-NLS-1$
     writer.write(charm, element);
     Element temporaryElement = element.element("cost").element("temporary");//$NON-NLS-1$ //$NON-NLS-2$
     assertNotNull(temporaryElement);
@@ -39,7 +39,7 @@ public class CostWriterTest extends BasicTestCase {
   }
 
   public void testWriteWillpowerCost() throws Exception {
-    charm.setTemporaryCost(new CostList(null, new Cost("1", "test"), null)); //$NON-NLS-1$ //$NON-NLS-2$
+    charm.setTemporaryCost(new CostList(null, new Cost("1", "test", false), null, null)); //$NON-NLS-1$ //$NON-NLS-2$
     writer.write(charm, element);
     Element temporaryElement = element.element("cost").element("temporary");//$NON-NLS-1$ //$NON-NLS-2$
     assertNotNull(temporaryElement);
@@ -49,7 +49,7 @@ public class CostWriterTest extends BasicTestCase {
   }
 
   public void testWriteHealthCost() throws Exception {
-    charm.setTemporaryCost(new CostList(null, null, new HealthCost(4, "REALLY!", HealthType.Aggravated))); //$NON-NLS-1$ 
+    charm.setTemporaryCost(new CostList(null, null, new HealthCost(4, "REALLY!", false, HealthType.Aggravated), null)); //$NON-NLS-1$ 
     writer.write(charm, element);
     Element temporaryElement = element.element("cost").element("temporary");//$NON-NLS-1$ //$NON-NLS-2$
     assertNotNull(temporaryElement);

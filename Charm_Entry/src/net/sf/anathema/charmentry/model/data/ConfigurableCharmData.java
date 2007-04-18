@@ -38,7 +38,6 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private final Set<ICharm> parentCharms = new ListOrderedSet<ICharm>();
   private final ITextualDescription name = new SimpleTextualDescription(""); //$NON-NLS-1$
   private final IConfigurableCostList temporaryCost = new ConfigurableCostList();
-  private final IConfigurablePermanentCostList permanentCost = new ConfigurablePermanentCostList();
   private IExaltedSourceBook source = null;
   private ITraitType primaryType;
   private IExaltedEdition edition;
@@ -61,10 +60,6 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 
   public String getId() {
     return id;
-  }
-
-  public IConfigurablePermanentCostList getPermanentCost() {
-    return permanentCost;
   }
 
   public IExaltedSourceBook getSource() {

@@ -6,9 +6,9 @@
   <essence value="2"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="day"/>
  <charmtype type="Simple"/>
@@ -23,10 +23,10 @@
   <charmReference id="Dragon-Blooded.UnsleepingEarthMeditation" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="day"/>
  <charmtype type="Simple"/>
@@ -41,7 +41,7 @@
   <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1"/>
  </prerequisite>
  <cost>
- <temporary/>
+ 
  </cost>
  <duration duration="Permanent"/>
  <charmtype type="Permanent"/>
@@ -55,9 +55,9 @@
   <charmReference id="Dragon-Blooded.OathTen-ThousandDragons" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="4"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Reflexive"/>
@@ -74,10 +74,10 @@
   <charmReference id="Dragon-Blooded.Ten-ThousandDragonsFightasOne" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
    <willpower cost="1" text=", additional allies pay 1 wp"/>
-  </temporary>
+  
  </cost>
  <duration event="Satisfied"/>
  <charmtype type="Simple"/>
@@ -92,10 +92,10 @@
   <charmReference id="Dragon-Blooded.Ten-ThousandDragonsFightasOne" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Reflexive"/>
@@ -110,11 +110,11 @@
   <charmReference id="Dragon-Blooded.Ten-ThousandDragonsFightasOne" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="10"/>
    <willpower cost="1"/>
    <health cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -128,10 +128,10 @@
   <charmReference id="Dragon-Blooded.InviolateDragonSpirit" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -145,10 +145,10 @@
   <charmReference id="Dragon-Blooded.Chaos-WardingPrana" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="8"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>

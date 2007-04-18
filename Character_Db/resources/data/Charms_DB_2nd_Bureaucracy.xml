@@ -11,9 +11,9 @@
       <charmReference id="Dragon-Blooded.TerrestrialReinforcement.Bureaucracy"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -26,9 +26,9 @@
       <trait id="Bureaucracy" value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -43,10 +43,10 @@
       <charmReference id="Dragon-Blooded.ConfluenceSavantThought"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="LessOfTaskOr3Months"/>
     <charmtype type="Simple">
@@ -66,9 +66,9 @@
       <charmReference id="Dragon-Blooded.BenevolentMaster'sBlessing"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="+1m per dot lent"/>
-      </temporary>
+      
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
@@ -83,9 +83,9 @@
       <charmAttributeRequirement attribute="ExcellencyBureaucracy" count="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -100,9 +100,9 @@
       <charmReference id="Dragon-Blooded.ThrashingCarpSerenade"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -115,9 +115,9 @@
       <trait id="Bureaucracy" value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -131,9 +131,9 @@
       <charmReference id="Dragon-Blooded.FindingWater'sDepths"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -147,10 +147,10 @@
       <charmReference id="Dragon-Blooded.ThoughtfulGiftTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -167,10 +167,10 @@
       <charmReference id="Dragon-Blooded.DistractionBabblingBrook"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>

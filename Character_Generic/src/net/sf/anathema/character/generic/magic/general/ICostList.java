@@ -7,4 +7,6 @@ public interface ICostList {
   public IHealthCost getHealthCost();
 
   public ICost getWillpowerCost();
+
+  public ICost getXPCost();
 }

@@ -7,10 +7,10 @@
       <charmReference id="Abyssal.RelicArrowMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -24,10 +24,10 @@
       <charmReference id="Abyssal.PulsePrey"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -40,9 +40,9 @@
       <charmReference id="Abyssal.DeadMan'sGrasp"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration event="Released"/>
     <charmtype type="Supplemental"/>
@@ -55,9 +55,9 @@
       <charmReference id="Abyssal.DeadMan'sGrasp"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -70,10 +70,10 @@
       <charmReference id="Abyssal.VoidSheathTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -85,9 +85,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2 dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -99,9 +99,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -114,9 +114,9 @@
       <charmReference id="Abyssal.IvoryBlossomCarapace"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="Varies"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -129,11 +129,11 @@
       <charmReference id="Abyssal.CrimsonPetalArmor"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -146,11 +146,11 @@
       <charmReference id="Abyssal.IvoryBlossomCarapace"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 1B/1L"/>
         <willpower cost="1"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -163,10 +163,10 @@
       <charmReference id="Abyssal.Void-BanishedMail"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -179,9 +179,9 @@
       <charmReference id="Abyssal.ShadowRacesLight"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>

@@ -7,9 +7,9 @@
   <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="hour"/>
  <charmtype type="Simple"/>
@@ -24,9 +24,9 @@
   <charmReference id="Dragon-Blooded.ShapingHandStyle"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1" text="per cubic foot"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -40,9 +40,9 @@
   <charmReference id="Dragon-Blooded.Stone-CarvingFingersForm"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -57,10 +57,10 @@
   <essence value="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1" text="for touch or 3m for sight"/>
    <willpower cost="1" text="to repair"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="minute"/>
  <charmtype type="Simple"/>
@@ -75,9 +75,9 @@
   <charmReference id="Dragon-Blooded.Flaw-FindingExamination"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -91,10 +91,10 @@
   <charmReference id="Dragon-Blooded.CharmLesserUnmaking"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="10"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>

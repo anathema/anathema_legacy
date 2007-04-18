@@ -7,10 +7,8 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.AT
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARMTYPE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COST;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_TEMPORARY;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_TRAIT;
 
 import org.dom4j.Element;
@@ -25,8 +23,6 @@ public class CharmXmlTestUtils {
     charmElement.addAttribute(ATTRIB_GROUP, "AbilityGroup"); //$NON-NLS-1$
     Element prerequisiteListElement = charmElement.addElement(TAG_PREREQUISITE_LIST);
     fillBasicPrerequisites(prerequisiteListElement);
-    Element costElement = charmElement.addElement(TAG_COST);
-    costElement.addElement(TAG_TEMPORARY);
     charmElement.addElement(TAG_DURATION).addAttribute(ATTRIB_DURATION, "Duration"); //$NON-NLS-1$
     charmElement.addElement(TAG_CHARMTYPE).addAttribute(ATTRIB_TYPE, "Simple"); //$NON-NLS-1$
     return charmElement;

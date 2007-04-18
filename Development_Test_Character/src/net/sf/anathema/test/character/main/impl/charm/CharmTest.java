@@ -4,7 +4,6 @@ import junit.framework.TestCase;
 import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.CostList;
-import net.sf.anathema.character.generic.impl.magic.PermanentCostList;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
@@ -35,8 +34,7 @@ public class CharmTest extends TestCase {
       new Charm(CharacterType.SOLAR, "ID", //$NON-NLS-1$
           "Group", //$NON-NLS-1$
           prerequisiteList,
-          new CostList(null, null, null),
-          new PermanentCostList(null, null, null, null),
+          new CostList(null, null, null, null),
           new ComboRestrictions(),
           SimpleDuration.getDuration("Duration"), //$NON-NLS-1$
           model,

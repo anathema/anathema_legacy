@@ -28,22 +28,22 @@ public class EssenceCostStringBuilderTest extends BasicTestCase {
   }
 
   public void testPluralValue() throws Exception {
-    String costString = getCostString(new Cost("2", null)); //$NON-NLS-1$
+    String costString = getCostString(new Cost("2", null, false)); //$NON-NLS-1$
     assertEquals("2 motes", costString); //$NON-NLS-1$
   }
 
   public void testSingularValue() throws Exception {
-    String costString = getCostString(new Cost("1", null)); //$NON-NLS-1$
+    String costString = getCostString(new Cost("1", null, false)); //$NON-NLS-1$
     assertEquals("1 mote", costString); //$NON-NLS-1$
   }
 
   public void testValueAndText() throws Exception {
-    String costString = getCostString(new Cost("4", "or more")); //$NON-NLS-1$ //$NON-NLS-2$
+    String costString = getCostString(new Cost("4", "or more", false)); //$NON-NLS-1$ //$NON-NLS-2$
     assertEquals("4 motes or more", costString); //$NON-NLS-1$
   }
 
   public void testTextOnly() throws Exception {
-    String costString = getCostString(new Cost(null, "Special")); //$NON-NLS-1$
+    String costString = getCostString(new Cost(null, "Special", false)); //$NON-NLS-1$
     assertEquals(" Special", costString); //$NON-NLS-1$
   }
 }

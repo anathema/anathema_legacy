@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.general.ICostList;
-import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
@@ -43,10 +42,6 @@ public class DummySpell implements ISpell {
   }
 
   public String getPage() {
-    throw new NotYetImplementedException();
-  }
-
-  public IPermanentCostList getPermanentCost() {
     throw new NotYetImplementedException();
   }
 

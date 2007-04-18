@@ -28,7 +28,6 @@ import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
-import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.IFavoringTraitTypeVisitor;
@@ -52,7 +51,6 @@ public class Charm extends Identificate implements ICharm {
 
   private final IExaltedSourceBook[] sources;
   private final ICostList temporaryCost;
-  private final IPermanentCostList permanentCost;
 
   private final List<ICharmAlternative> alternatives = new ArrayList<ICharmAlternative>();
   private final List<ICharm> parentCharms = new ArrayList<ICharm>();
@@ -69,7 +67,6 @@ public class Charm extends Identificate implements ICharm {
       String group,
       CharmPrerequisiteList prerequisiteList,
       ICostList temporaryCost,
-      IPermanentCostList permanentCost,
       IComboRestrictions comboRules,
       IDuration duration,
       ICharmTypeModel charmTypeModel,
@@ -80,7 +77,6 @@ public class Charm extends Identificate implements ICharm {
     Ensure.ensureNotNull("Argument must not be null.", id); //$NON-NLS-1$
     Ensure.ensureNotNull("Argument must not be null.", group); //$NON-NLS-1$
     Ensure.ensureNotNull("Argument must not be null.", temporaryCost); //$NON-NLS-1$
-    Ensure.ensureNotNull("Argument must not be null.", permanentCost); //$NON-NLS-1$
     Ensure.ensureNotNull("Argument must not be null.", comboRules); //$NON-NLS-1$
     Ensure.ensureNotNull("Argument must not be null.", duration); //$NON-NLS-1$
     Ensure.ensureNotNull("Argument must not be null.", charmTypeModel.getCharmType()); //$NON-NLS-1$
@@ -89,7 +85,6 @@ public class Charm extends Identificate implements ICharm {
     this.group = group;
     this.prerequisisteList = prerequisiteList;
     this.temporaryCost = temporaryCost;
-    this.permanentCost = permanentCost;
     this.comboRules = comboRules;
     this.duration = duration;
     this.typeModel = charmTypeModel;
@@ -104,7 +99,6 @@ public class Charm extends Identificate implements ICharm {
     this.characterType = charmData.getCharacterType();
     this.group = charmData.getGroupId();
     this.temporaryCost = charmData.getTemporaryCost();
-    this.permanentCost = charmData.getPermanentCost();
     this.comboRules = new ComboRestrictions();
     this.duration = charmData.getDuration();
     this.sources = new IExaltedSourceBook[] { charmData.getSource() };
@@ -132,10 +126,6 @@ public class Charm extends Identificate implements ICharm {
 
   public IDuration getDuration() {
     return duration;
-  }
-
-  public IPermanentCostList getPermanentCost() {
-    return permanentCost;
   }
 
   public IGenericTrait getEssence() {
@@ -324,7 +314,6 @@ public class Charm extends Identificate implements ICharm {
         getGroupId(),
         this.prerequisisteList,
         getTemporaryCost(),
-        getPermanentCost(),
         getComboRules(),
         getDuration(),
         getCharmTypeModel(),

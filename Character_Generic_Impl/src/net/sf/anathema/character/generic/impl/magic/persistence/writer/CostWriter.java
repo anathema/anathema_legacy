@@ -13,12 +13,11 @@ public class CostWriter implements ICharmXMLConstants {
 
   public void write(ICharmData charm, Element charmElement) {
     Element costElement = charmElement.addElement(TAG_COST);
-    Element temporaryListElement = costElement.addElement(TAG_TEMPORARY);
     ICostList temporaryCost = charm.getTemporaryCost();
     if (temporaryCost != null) {
-      writeCost(TAG_ESSENCE_COST, temporaryCost.getEssenceCost(), temporaryListElement);
-      writeCost(TAG_WILLPOWER_COST, temporaryCost.getWillpowerCost(), temporaryListElement);
-      writeCost(TAG_HEALTH_COST, temporaryCost.getHealthCost(), temporaryListElement);
+      writeCost(TAG_ESSENCE_COST, temporaryCost.getEssenceCost(), costElement);
+      writeCost(TAG_WILLPOWER_COST, temporaryCost.getWillpowerCost(), costElement);
+      writeCost(TAG_HEALTH_COST, temporaryCost.getHealthCost(), costElement);
     }
   }
 

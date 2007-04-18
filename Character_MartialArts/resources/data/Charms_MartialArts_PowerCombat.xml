@@ -7,10 +7,10 @@
       <charmReference id="Dragon-Blooded.Ghost-GroundingBlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="scene"/>
@@ -25,10 +25,10 @@
       <charmReference id="Dragon-Blooded.CrashingWaveStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="turn"/>
@@ -44,11 +44,11 @@
       <charmReference id="Abyssal.CharmSmotheringTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -62,9 +62,9 @@
       <charmReference id="Solar.Iron-ArmBlock"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -79,9 +79,9 @@
       <charmReference id="Solar.MantisForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="OneTurnOrOneHold"/>
     <charmtype type="Reflexive"/>
@@ -95,9 +95,9 @@
       <charmReference id="Solar.FlyingMantisKick"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per turn"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -111,9 +111,9 @@
       <charmReference id="Solar.SnakeForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -127,10 +127,10 @@
       <charmReference id="Solar.EssenceFangsandScalesTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -146,10 +146,10 @@
       <charmReference id="Solar.CripplingPressure-PointStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -163,9 +163,9 @@
       <charmReference id="Solar.UncoilingSerpentPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>

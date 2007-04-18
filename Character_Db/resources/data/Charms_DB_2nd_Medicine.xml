@@ -5,9 +5,9 @@
   <essence value="2"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -22,9 +22,9 @@
   <charmReference id="Dragon-Blooded.InfectionBanishingPrana"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Supplemental"/>
@@ -39,10 +39,10 @@
   <charmReference id="Dragon-Blooded.InfectionBanishingPrana"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="4"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Supplemental"/>
@@ -58,10 +58,10 @@
   <charmReference id="Dragon-Blooded.DiseaseBanishingTechnique"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2" text="per lhl converted"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -77,10 +77,10 @@
   <charmReference id="Dragon-Blooded.WoundClosingTouch"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3" text="and"/>
    <willpower cost="1" text="per ahl converted"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -96,9 +96,9 @@
   <charmReference id="Dragon-Blooded.InfectionBanishingPrana"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -113,10 +113,10 @@
   <charmReference id="Dragon-Blooded.MadnessAnalyzingStare"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -132,10 +132,10 @@
   <charmReference id="Dragon-Blooded.PurityMindMethod"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Reflexive"/>
@@ -151,10 +151,10 @@
   <charmReference id="Dragon-Blooded.PurityMindMethod"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="Special"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -169,10 +169,10 @@
   <charmReference id="Dragon-Blooded.JadeCrucibleMethod"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="8"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>

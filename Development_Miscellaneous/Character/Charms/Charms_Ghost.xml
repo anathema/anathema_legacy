@@ -7,9 +7,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -21,9 +21,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Reflexive"/>
@@ -35,9 +35,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One hour"/>
 		<charmtype type="Simple"/>
@@ -49,9 +49,9 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="10"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -63,10 +63,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="7"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One Day"/>
 		<charmtype type="Simple"/>
@@ -78,10 +78,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<health cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="(Essence) Hours"/>
 		<charmtype type="Simple"/>
@@ -93,10 +93,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="9"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One day"/>
 		<charmtype type="Supplemental"/>
@@ -108,9 +108,9 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="7"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant or one hour"/>
 		<charmtype type="Supplemental"/>
@@ -122,10 +122,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="20"/>
 				<willpower cost="2"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One hour"/>
 		<charmtype type="Simple"/>
@@ -137,10 +137,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="12"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One week/success"/>
 		<charmtype type="Supplemental"/>
@@ -152,9 +152,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="2"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -166,9 +166,9 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="8"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -180,9 +180,9 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One Scene"/>
 		<charmtype type="Simple"/>
@@ -194,10 +194,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One hour"/>
 		<charmtype type="Simple"/>
@@ -209,9 +209,9 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="6"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One hour"/>
 		<charmtype type="Simple"/>
@@ -223,10 +223,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5" text="+5 motes per sense"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -238,10 +238,10 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -253,10 +253,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Supplemental"/>
@@ -268,10 +268,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="20"/>
 				<willpower cost="2"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One hour"/>
 		<charmtype type="Simple"/>
@@ -283,10 +283,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="8"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="ExtraAction"/>
@@ -298,10 +298,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="16"/>
 				<willpower cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -313,9 +313,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="2"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -327,10 +327,10 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="8"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -342,9 +342,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="12"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -356,9 +356,9 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="8"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -370,10 +370,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="8"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -385,10 +385,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="10"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One hour"/>
 		<charmtype type="Simple"/>
@@ -400,10 +400,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="12"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -415,10 +415,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="2"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -430,10 +430,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One month"/>
 		<charmtype type="Simple"/>
@@ -445,9 +445,9 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -459,9 +459,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="2"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -473,9 +473,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Supplemental"/>
@@ -487,9 +487,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<willpower cost="1" text="+1 per activation"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -501,10 +501,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Supplemental"/>
@@ -516,9 +516,9 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -530,10 +530,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="7"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -545,9 +545,9 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="6"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -559,10 +559,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="7"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -574,13 +574,10 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
 				<willpower cost="1"/>
-			</temporary>
-			<permanent>
-				<experience cost="1" text="or2"/>
-			</permanent>
+				<experience cost="1" text="or 2" permanent="true"/>
 		</cost>
 		<duration duration="One week/Instant"/>
 		<charmtype type="Supplemental"/>
@@ -592,9 +589,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="4"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -606,9 +603,9 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="6"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -620,10 +617,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="6"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Reflexive"/>
@@ -635,13 +632,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="6"/>
 				<willpower cost="1"/>
-			</temporary>
-			<permanent>
-				<experience cost="1" text="or 2"/>
-			</permanent>
+				<experience cost="1" text="or 2" permanent="true"/>
 		</cost>
 		<duration duration="One week"/>
 		<charmtype type="Simple"/>
@@ -653,13 +647,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="2"/>
-			</temporary>
-			<permanent>
-				<experience cost="1" text="or 2"/>
-			</permanent>
+				<experience cost="1" text="or 2" permanent="true"/>
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -671,9 +662,9 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One day"/>
 		<charmtype type="Reflexive"/>
@@ -685,10 +676,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="6"/>
 				<willpower cost="3"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -700,9 +691,9 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Reflexive"/>
@@ -714,10 +705,10 @@
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="3"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -729,9 +720,9 @@
 			<essence/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="2"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Simple"/>
@@ -743,10 +734,10 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="6"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One scene"/>
 		<charmtype type="Simple"/>
@@ -758,10 +749,10 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="7"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One hour"/>
 		<charmtype type="Simple"/>
@@ -773,10 +764,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5" text="3 to eject"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One day"/>
 		<charmtype type="Simple"/>
@@ -788,10 +779,10 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="7"/>
 				<willpower cost="2"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="One hour"/>
 		<charmtype type="Supplemental"/>
@@ -803,13 +794,10 @@
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="5"/>
 				<willpower cost="1"/>
-			</temporary>
-			<permanent>
-				<experience cost="1"/>
-			</permanent>
+				<experience cost="1" permanent="true"/>
 		</cost>
 		<duration duration="One day"/>
 		<charmtype type="Simple"/>
@@ -821,10 +809,10 @@
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<temporary>
+			
 				<essence cost="6"/>
 				<willpower cost="1"/>
-			</temporary>
+			
 		</cost>
 		<duration duration="Indefinite"/>
 		<charmtype type="Simple"/>

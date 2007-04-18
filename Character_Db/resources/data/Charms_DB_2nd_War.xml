@@ -6,9 +6,9 @@
   <charmReference id="Dragon-Blooded.TerrestrialReinforcement.War" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1" text="per ally"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="day"/>
  <charmtype type="Reflexive"/>
@@ -25,9 +25,9 @@
   <charmReference id="Dragon-Blooded.EnfoldedDragon'sWings" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2" text="per fang"/>
-  </temporary>
+  
  </cost>
  <duration duration="Varies"/>
  <charmtype type="Simple"/>
@@ -43,9 +43,9 @@
   <charmReference id="Dragon-Blooded.EnfoldedDragon'sWings" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2" text="per person"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -60,9 +60,9 @@
   <charmReference id="Dragon-Blooded.EnfoldedDragon'sWings" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive">
@@ -82,9 +82,9 @@
   <charmReference id="Dragon-Blooded.Phantom-WarriorHorde" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="Varies"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -98,9 +98,9 @@
   <charmReference id="Dragon-Blooded.Phantom-WarriorHorde" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2" text="per cubic yard"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive"/>
@@ -117,9 +117,9 @@
   <charmReference id="Dragon-Blooded.RampartsObedientEarth" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="8"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -137,10 +137,10 @@
   <charmReference id="Dragon-Blooded.Dragon-SearedBattlefield" />
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="15"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>

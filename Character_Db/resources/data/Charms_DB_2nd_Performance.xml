@@ -6,9 +6,9 @@
   <charmAttributeRequirement attribute="ExcellencyPerformance" count="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -23,10 +23,10 @@
   <charmReference id="Dragon-Blooded.TalentedImprovisation"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2" text="+1m per extra foe"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Reflexive"/>
@@ -42,9 +42,9 @@
   <charmReference id="Dragon-Blooded.DanceFlashingSwords"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive">
@@ -61,9 +61,9 @@
   <essence value="2"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -78,9 +78,9 @@
   <charmAttributeRequirement attribute="ExcellencyPerformance" count="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2" text="per subject"/>
-  </temporary>
+  
  </cost>
  <duration duration="Special"/>
  <charmtype type="Reflexive">
@@ -97,10 +97,10 @@
   <charmAttributeRequirement attribute="ExcellencyPerformance" count="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -117,9 +117,9 @@
   <charmReference id="Dragon-Blooded.SoulStirringPerformanceMethod"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="8"/>
-  </temporary>
+  
  </cost>
  <duration duration="PerformanceEndsPlus"/>
  <charmtype type="Simple"/>
@@ -134,9 +134,9 @@
   <essence value="2"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
-  </temporary>
+  
  </cost>
  <duration event="PerformanceEnds"/>
  <charmtype type="Simple"/>
@@ -152,9 +152,9 @@
   <charmReference id="Dragon-Blooded.InvisibleStreetPerformerTechnique"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5" text="+1m per attack"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="day"/>
  <charmtype type="Simple"/>
@@ -169,9 +169,9 @@
   <charmReference id="Dragon-Blooded.InvisibleStreetPerformerTechnique"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Reflexive">
@@ -189,9 +189,9 @@
   <charmReference id="Dragon-Blooded.VibratingStringsDefense"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1" text="per 2 lhl"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>

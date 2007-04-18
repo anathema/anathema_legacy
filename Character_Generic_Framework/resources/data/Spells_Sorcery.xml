@@ -4,33 +4,33 @@
 
   <spell id="Terrestrial.ConnivanceWoodAndBone" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Outcaste" page="128"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Magician'sPleasantPath">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="40"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.MaledictionDistortedCompass">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="41"/>
   </spell>     
   <spell id="Terrestrial.DeathObsidianButterflies" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <target target="Area30x100x10yards"/>
     <source source="FirstEdition" page="217" edition="FirstEdition"/>
@@ -38,9 +38,9 @@
   </spell>
   <spell id="Terrestrial.DemonFirstCircle" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="20" text="or more"/>
-      </temporary>
+      
     </cost>
     <target target="SummonedDemon"/>
     <source source="FirstEdition" page="218" edition="FirstEdition"/>
@@ -48,9 +48,9 @@
   </spell>
   <spell id="Terrestrial.EmeraldCountermagic" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="10" text="or 20 motes"/>
-      </temporary>
+      
     </cost>
     <target target="CasterSpell"/>
     <source source="FirstEdition" page="218" edition="FirstEdition"/>
@@ -58,9 +58,9 @@
   </spell>
   <spell id="Terrestrial.ImpenetrableFrostBarrier" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <target target="Area1015feet"/>
     <source source="FirstEdition" page="218" edition="FirstEdition"/>
@@ -68,9 +68,9 @@
   </spell>
   <spell id="Terrestrial.InfallibleMessenger" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <target target="SummonedCherub"/>
     <source source="FirstEdition" page="218" edition="FirstEdition"/>
@@ -78,9 +78,9 @@
   </spell>
   <spell id="Terrestrial.InvulnerableSkinBronze" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <target target="Caster"/>
     <source source="FirstEdition" page="219" edition="FirstEdition"/>
@@ -89,9 +89,9 @@
   </spell>
   <spell id="Terrestrial.SummonElemental" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="10" text="or more"/>
-      </temporary>
+      
     </cost>
     <target target="SummonedElemental"/>
     <source source="FirstEdition" page="219" edition="FirstEdition"/>
@@ -99,17 +99,17 @@
   </spell>
   <spell id="Terrestrial.StormwindRider" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="FirstEdition" page="220"/>
   </spell>
   <spell id="Terrestrial.WoodDragon'sClaw" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <target target="Caster"/>
     <source source="FirstEdition" page="220" edition="FirstEdition"/>
@@ -117,9 +117,9 @@
   </spell>
   <spell id="Celestial.BloodBoilingOil" circle="Celestial">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <target target="TouchedCreature"/>
     <source source="FirstEdition" page="220" edition="FirstEdition"/>
@@ -127,9 +127,9 @@
   </spell>
   <spell id="Celestial.DemonSecondCircle" circle="Celestial">
     <cost>
-      <temporary>
+      
         <essence cost="30" text="or more"/>
-      </temporary>
+      
     </cost>
     <target target="SummonedDemon"/>
     <source source="FirstEdition" page="220" edition="FirstEdition"/>
@@ -137,9 +137,9 @@
   </spell>
   <spell id="Celestial.DolorousReflection" circle="Celestial">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <target target="Caster"/>
     <source source="FirstEdition" page="220" edition="FirstEdition"/>
@@ -147,9 +147,9 @@
   </spell>
   <spell id="Celestial.IncomparableBodyArsenal" circle="Celestial">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <target target="Caster"/>
     <source source="FirstEdition" page="221" edition="FirstEdition"/>
@@ -157,9 +157,9 @@
   </spell>
   <spell id="Celestial.SapphireCountermagic" circle="Celestial">
     <cost>
-      <temporary>
+      
         <essence cost="15" text="or 20 motes"/>
-      </temporary>
+      
     </cost>
     <target target="CasterSpell"/>
     <source source="FirstEdition" page="221" edition="FirstEdition"/>
@@ -167,9 +167,9 @@
   </spell>
   <spell id="Celestial.TravelwithoutDistance" circle="Celestial">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <target target="Caster"/>
     <source source="FirstEdition" page="221" edition="FirstEdition"/>
@@ -177,9 +177,9 @@
   </spell>
   <spell id="Solar.AdamantCountermagic" circle="Solar">
     <cost>
-      <temporary>
+      
         <essence cost="20" text="or 25 motes"/>
-      </temporary>
+      
     </cost>
     <target target="CasterSpell"/>
     <source source="FirstEdition" page="222" edition="FirstEdition"/>
@@ -187,9 +187,9 @@
   </spell>
   <spell id="Solar.DemonThirdCircle" circle="Solar">
     <cost>
-      <temporary>
+      
         <essence cost="40" text="or more"/>
-      </temporary>
+      
     </cost>
     <target target="SummonedDemon"/>
     <source source="FirstEdition" page="222" edition="FirstEdition"/>
@@ -197,9 +197,9 @@
   </spell>
   <spell id="Solar.RainDoom" circle="Solar">
     <cost>
-      <temporary>
+      
         <essence cost="60"/>
-      </temporary>
+      
     </cost>
     <target target="Area"/>
     <source source="FirstEdition" page="222" edition="FirstEdition"/>
@@ -207,57 +207,57 @@
   </spell>
   <spell id="Solar.RuneSingularHate" circle="Solar">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="FirstEdition" page="223"/>
   </spell>
   <spell id="Terrestrial.RaisingEarth'sBones" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="Outcaste" page="46"/>
   </spell>
   <spell id="Terrestrial.CallingGullsWithBeaksSteel" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="Outcaste" page="94"/>
   </spell>
   <spell id="Terrestrial.InvocationLivingShip" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="Outcaste" page="95"/>
   </spell>
   <spell id="Terrestrial.KeelCleavesClouds" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="Outcaste" page="95"/>
   </spell>
   <spell id="Terrestrial.LightningWhipSmitesWater" circle="Terrestrial">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Outcaste" page="95"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.BecomingWoodFriend">
     <cost>
-      <temporary>
+      
         <essence cost="14"/>
-      </temporary>
+      
     </cost>
     <target target="Caster"/>
     <source edition="FirstEdition" source="SavantSorcerer" page="101"/>
@@ -265,10 +265,10 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.BloodLash">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <target target="Caster"/>
     <source edition="FirstEdition" source="SavantSorcerer" page="102"/>
@@ -276,9 +276,9 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.BurningEyesOffender">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <target target="Caster"/>
     <source edition="FirstEdition" source="SavantSorcerer" page="102"/>
@@ -286,9 +286,9 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CallingWind'sKiss">
     <cost>
-      <temporary>
+      
         <essence cost="10" text="+2 motes per additional hour (Maximum: +20)"/>
-      </temporary>
+      
     </cost>
     <target target="SailingVessel"/>
     <source edition="FirstEdition" source="SavantSorcerer" page="102"/>
@@ -296,9 +296,9 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CommandingBeasts">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <target target="Animals"/>
     <source edition="FirstEdition" source="SavantSorcerer" page="103"/>
@@ -306,9 +306,9 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.ConjuringAzureChariot">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <target target="Caster"/>
     <source edition="FirstEdition" source="SavantSorcerer" page="103"/>
@@ -316,9 +316,9 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CorruptedWords">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <target target="SpeakingCreature"/>
     <source edition="FirstEdition" source="SavantSorcerer" page="103"/>
@@ -326,9 +326,9 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CurseSlavishHumility">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <target target="Creature10yards"/>
     <source edition="FirstEdition" source="SavantSorcerer" page="104"/>
@@ -336,9 +336,9 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.DanceSmokeCobras">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <target target="Creature30yards"/>
     <source edition="FirstEdition" source="SavantSorcerer" page="104"/>
@@ -346,9 +346,9 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.DisguiseNewFace">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <target target="Creature"/>
     <source edition="FirstEdition" source="SavantSorcerer" page="105"/>
@@ -356,9 +356,9 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.EmeraldCircleBanishment">
     <cost>
-      <temporary>
+      
         <essence cost="10+"/>
-      </temporary>
+      
     </cost>
     <target target="Demon"/>
     <source edition="FirstEdition" source="SavantSorcerer" page="105"/>
@@ -366,825 +366,825 @@
   </spell>
     <spell circle="Celestial" id="Celestial.SapphireCircleBanishment">
     <cost>
-      <temporary>
+      
         <essence cost="15+"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="105"/>
   </spell>
   
     <spell circle="Solar" id="Solar.AdamantCircleBanishment">
     <cost>
-      <temporary>
+      
         <essence cost="20+"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="105"/>
   </spell>
   
   <spell circle="Terrestrial" id="Terrestrial.EyeAlliance">
     <cost>
-      <temporary>
+      
         <essence cost="5" text="per participant"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="105"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.FlightSeparation">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="106"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.FlightBrilliantRaptor">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="106"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.FlyingGuillotine">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="107"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.FoodFromAerialTable">
     <cost>
-      <temporary>
+      
         <essence cost="10" text="or more"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="107"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.FugueTruth">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="107"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.HorseTravelsEarthWater">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="108"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.HoundFiveWinds">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="108"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.HypnoticPiping">
     <cost>
-      <temporary>
+      
         <essence cost="21" text="plus 10 to activate"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="109"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.IncantationSpiritualDiscretion">
     <cost>
-      <temporary>
+      
         <essence cost="20" text="+"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="109"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.InternalFlame">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="109"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.LightningSpider">
     <cost>
-      <temporary>
+      
         <essence cost="10" text="+"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="110"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.ManifestationVigorousDesign">
     <cost>
-      <temporary>
+      
         <essence cost="5" text="+ (committed)"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="110"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Mast-ShatteringSpell">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="110"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.MistsEventide">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="111"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.ParalyzingContradiction">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="111"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.PeacockShadowEyes">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="111"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.PersonalTempest">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="112"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.PlagueBronzeSnakes">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="112"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.PrivatePlazaDowncastEyes">
     <cost>
-      <temporary>
+      
         <essence cost="20" text="+"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="112"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.RavenousFire">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="113"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.RitualElementalEmpowerment">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="114"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.RiverBlood">
     <cost>
-      <temporary>
+      
         <essence cost="15" text="+"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="114"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SacredTongue">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="115"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.ShadowSummons">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="115"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SilentWordsDreamsNightmares">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <arcaneLink required="true"/>
     <source source="SavantSorcerer" page="116"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SleepStonySafety">
     <cost>
-      <temporary>
+      
         <essence cost="15+"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="117"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Sorcerer'sIrresistiblePuppetry">
     <cost>
-      <temporary>
+      
         <essence cost="25" text="plus 25 to activate"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="117"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SpiritMight">
     <cost>
-      <temporary>
+      
         <essence cost="10+"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="118"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SpiritSword">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="118"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SproutingShaklesDoom">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="118"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SpyWhoWalksDarkness">
     <cost>
-      <temporary>
+      
         <essence cost="15" text="(committed), 5 to possess"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="119"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.StingIceHornet">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="121"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SummoningLesserMinionsEyelessFace">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="121"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.TheftMemory">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="122"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.ThunderWolf'sHowl">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="122"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Tree'sManyBranches">
     <cost>
-      <temporary>
+      
         <essence cost="5" text="per pair"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="122"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.UnbreakableBonesStone">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="123"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.UnstoppableFountainDepths">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="123"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.VirdianMantleUnderwalterJourneys">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="123"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.VirtuousGuardianFlame">
     <cost>
-      <temporary>
+      
         <essence cost="25" text="(committed)"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="124"/>
   </spell>
   <spell circle="Celestial" id="Celestial.Battle'sEnd">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="125"/>
   </spell>
   <spell circle="Celestial" id="Celestial.BetweenMinuteHour">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="125"/>
   </spell>
   <spell circle="Celestial" id="Celestial.BoneLion">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="125"/>
   </spell>
   <spell circle="Celestial" id="Celestial.CantataEmptyVoices">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="126"/>
   </spell>
   <spell circle="Celestial" id="Celestial.CloudTrapeze">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="126"/>
   </spell>
   <spell circle="Celestial" id="Celestial.EternalCrystallineEnchantment">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="127"/>
   </spell>
   <spell circle="Celestial" id="Celestial.FaithfulAlly">
     <cost>
-      <temporary>
+      
         <essence cost="20" text="plus 20 to activate"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="127"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ForceLife'sSummer">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="128"/>
   </spell>
   <spell circle="Celestial" id="Celestial.GeyserCorruption">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="128"/>
   </spell>
   <spell circle="Celestial" id="Celestial.HideousConfusionTongues">
     <cost>
-      <temporary>
+      
         <essence cost="35"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="128"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ImbueAmalgam">
     <cost>
-      <temporary>
+      
         <essence cost="15" text="+"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="128"/>
   </spell>
   <spell circle="Celestial" id="Celestial.InsidiousTendrilsHate">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="129"/>
   </spell>
   <spell circle="Celestial" id="Celestial.IvoryOrchidPavilion">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="130"/>
   </spell>
   <spell circle="Celestial" id="Celestial.MagmaKraken">
     <cost>
-      <temporary>
+      
         <essence cost="35"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="131"/>
   </spell>
   <spell circle="Celestial" id="Celestial.Mercury'sDeliverance">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="131"/>
   </spell>
   <spell circle="Celestial" id="Celestial.OutsideWorldsWithin">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="131"/>
   </spell>
   <spell circle="Celestial" id="Celestial.PrincesFallenTower">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="132"/>
   </spell>
   <spell circle="Celestial" id="Celestial.RollingEarthCarpet">
     <cost>
-      <temporary>
+      
         <essence cost="20" text="(committed)"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="132"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ServantInfallibleLocation">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="133"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ShadowTheft">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="133"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ShadowsAncientPast">
     <cost>
-      <temporary>
+      
         <essence cost="25" text="+"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="134"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SpawningMonsters">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="134"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SummonArmyWild">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="134"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SummoningHeartDarkness">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="135"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SwiftSpiritWingedTransportation">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="136"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ThreefoldBindingHeart">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="136"/>
   </spell>
   <spell circle="Celestial" id="Celestial.TorrentialCascade">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="137"/>
   </spell>
   <spell circle="Celestial" id="Celestial.UnityDreams">
     <cost>
-      <temporary>
+      
         <essence cost="20" text="+"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="137"/>
   </spell>
   <spell circle="Celestial" id="Celestial.VoicesDistantRegard">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="137"/>
   </spell>
   <spell circle="Celestial" id="Celestial.WheelTurningHeavens">
     <cost>
-      <temporary>
+      
         <essence cost="35"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="138"/>
   </spell>
   <spell circle="Celestial" id="Celestial.WhirlwindFate">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="138"/>
   </spell>
   <spell circle="Celestial" id="Celestial.RaisePuissantSanctum">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <target target="Demesne"/>
     <source source="SavantSorcerer" page="57"/>
   </spell>
   <spell circle="Solar" id="Solar.CraftPuissantSanctum">
     <cost>
-      <temporary>
+      
         <essence cost="50"/>
-      </temporary>
+      
     </cost>
     <target target="Demesne"/>
     <source source="SavantSorcerer" page="57"/>
   </spell>
   <spell circle="Solar" id="Solar.AbjurationMaidens">
     <cost>
-      <temporary>
+      
         <essence cost="40"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="138"/>
   </spell>
   <spell circle="Solar" id="Solar.BenedictionArchgenesis">
     <cost>
-      <temporary>
+      
         <essence cost="40"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="139"/>
   </spell>
   <spell circle="Solar" id="Solar.ChariotBlazingSun">
     <cost>
-      <temporary>
+      
         <essence cost="45"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="139"/>
   </spell>
   <spell circle="Solar" id="Solar.CurseUnyieldingMist">
     <cost>
-      <temporary>
+      
         <essence cost="40"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="140"/>
   </spell>
   <spell circle="Solar" id="Solar.EssenceInversion">
     <cost>
-      <temporary>
+      
         <essence cost="50"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="141"/>
   </spell>
   <spell circle="Solar" id="Solar.Gaia'sRebuke">
     <cost>
-      <temporary>
+      
         <essence cost="50"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="141"/>
   </spell>
   <spell circle="Solar" id="Solar.IncantationInvincibleArmy">
     <cost>
-      <temporary>
+      
         <essence cost="50"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="142"/>
   </spell>
   <spell circle="Solar" id="Solar.TotalAnnihilation">
     <cost>
-      <temporary>
+      
         <essence cost="65"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="142"/>
   </spell>
   <spell circle="Solar" id="Solar.WrathFiveElements">
     <cost>
-      <temporary>
+      
         <essence cost="45"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="142"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Water'sAlly">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavageSeas" page="117"/>
     <source source="BloodSalt" page="125"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Water'sChillingGrasp">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="SavageSeas" page="117"/>
   </spell>
   <spell circle="Celestial" id="Celestial.StormRiderEnchantment">
     <cost>
-      <temporary>
+      
         <essence cost="35"/>
-      </temporary>
+      
     </cost>
     <source source="SavageSeas" page="117"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SummonSpiritBoat">
     <cost>
-      <temporary>
+      
         <essence cost="30" text="+2 per additional day"/>
-      </temporary>
+      
     </cost>
     <source source="SavageSeas" page="117"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SwiftJourney">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="SavageSeas" page="118"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SongLintha">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="SavageSeas" page="118"/>
     <source source="BloodSalt" page="125"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.OpenSpiritDoor">
     <cost>
-      <temporary>
+      
         <essence cost="15" text="+5 per additional target"/>
-      </temporary>
+      
     </cost>
     <source source="Sidereals1st" page="122"/>
   </spell>
   <spell circle="Celestial" id="Celestial.GiftKnowledge">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="Sidereals1st" page="123"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SummoningHeavenlyPortal">
     <cost>
-      <temporary>
+      
         <essence cost="35"/>
-      </temporary>
+      
     </cost>
     <source source="Sidereals1st" page="123"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SwornBrother'sOath">
     <cost>
-      <temporary>
+      
         <essence cost="10" text="+1 for each Exalted bound"/>
-      </temporary>
+      
     </cost>
     <source source="DragonBlooded1st" page="161"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.WhisperGrasses">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="CBTwilight" page="74"/>
   </spell>
   <spell circle="Celestial" id="Celestial.CurseBetrayal">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="CBTwilight" page="75"/>
   </spell>
   <spell circle="Celestial" id="Celestial.HiddenJudgesSecretFlame">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="CBTwilight" page="75"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ShoutTurmoil">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="CBTwilight" page="76"/>
   </spell>
   <spell circle="Solar" id="Solar.AtrociousFireTransformation">
     <cost>
-      <temporary>
+      
         <essence cost="35"/>
-      </temporary>
+      
     </cost>
     <source source="CBTwilight" page="76"/>
   </spell>
   <spell circle="Solar" id="Solar.EvocationFromMirror">
     <cost>
-      <temporary>
+      
         <essence cost="40"/>
-      </temporary>
+      
     </cost>
     <source source="CBTwilight" page="76"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Assassin'sFatalTouch">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <target target="TouchedCreature"/>
     <source edition="FirstEdition" source="Bo3C" page="31"/>
@@ -1192,9 +1192,9 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CallingStalwartServitor">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <target target="SummonedServitor"/>   
     <source edition="FirstEdition" source="Bo3C" page="32"/>
@@ -1202,9 +1202,9 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CirrusSkiff">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <target target="SummonedCloud"/>   
     <source edition="FirstEdition" source="Bo3C" page="33"/>
@@ -1212,9 +1212,9 @@
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CoinDistantVision">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <target target="BlackCeramicCoin"/>   
     <source edition="FirstEdition" source="Bo3C" page="33"/>
@@ -1222,9 +1222,9 @@
   </spell>
     <spell circle="Terrestrial" id="Terrestrial.CommandingPresenceFire">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <target target="FieryProjection"/>
     <source edition="FirstEdition" source="Bo3C" page="33"/>
@@ -1232,9 +1232,9 @@
   </spell>
     <spell circle="Terrestrial" id="Terrestrial.CurtainQuartz">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <target target="CreatureNearby"/>
     <source edition="FirstEdition" source="Bo3C" page="34"/>
@@ -1242,17 +1242,17 @@
   </spell>
     <spell circle="Terrestrial" id="Terrestrial.DragonSmokeSerpentFlame">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="35"/>
   </spell>
     <spell circle="Terrestrial" id="Terrestrial.DroningSuggestion">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <target target="Area"/>
     <source edition="FirstEdition" source="Bo3C" page="36"/>
@@ -1260,9 +1260,9 @@
   </spell>
     <spell circle="Terrestrial" id="Terrestrial.EmpathicWind">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <target target="Individual"/>
     <source edition="FirstEdition" source="Bo3C" page="36"/>
@@ -1270,345 +1270,345 @@
   </spell>
       <spell circle="Terrestrial" id="Terrestrial.EyeandMouth">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="36"/>
   </spell>
       <spell circle="Terrestrial" id="Terrestrial.FloralFerry">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="37"/>
   </spell>
       <spell circle="Terrestrial" id="Terrestrial.ImperviousSphereWater">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="39"/>
   </spell>
       <spell circle="Terrestrial" id="Terrestrial.IncantationEffectiveRestoration">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="39"/>
   </spell>
       <spell circle="Terrestrial" id="Terrestrial.LesserGolem">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="39"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.MirrorBendingLight">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="41"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.PartingSeas">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="42"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.PurifyingFlames">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="43"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.ShadowySimulacrumsSmoke">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="45"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.SheddingSerpent'sSkin">
     <cost>
-      <temporary>
+      
         <essence cost="10+"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="46"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.SongWaves">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="47"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.SongVertigo">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="47"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.SpokeWoodenFace">
     <cost>
-      <temporary>
+      
         <essence cost="10" text="plus 5 to activate" />
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="48"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.StalwartEarthGuardian">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="49"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.SummoningHarvest">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="50"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.Titan'sIcyBreath">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="50"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.TongueElementSpirit">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="51"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.UnconquerableSelf">
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <source source="SavantSorcerer" page="123"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.VenomHeart">
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="52"/>
   </spell>  
         <spell circle="Terrestrial" id="Terrestrial.ViolentOpeningClosedPortals">
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="52"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.WaterFromStone">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="53"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.WrittenUponWater">
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="53"/>
   </spell>
         <spell circle="Celestial" id="Celestial.CrumblingWalls">
     <cost>
-      <temporary>
+      
         <essence cost="25"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="57"/>
   </spell>
        <spell circle="Celestial" id="Celestial.Venus'Disfavor">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="66"/>
   </spell>
          <spell circle="Celestial" id="Celestial.VoiceDistantCommand">
     <cost>
-      <temporary>
+      
         <essence cost="35"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="66"/>
   </spell>
          <spell circle="Solar" id="Solar.EnemyNature">
     <cost>
-      <temporary>
+      
         <essence cost="50"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="71"/>
   </spell>
          <spell circle="Solar" id="Solar.LightSolarCleansing">
     <cost>
-      <temporary>
+      
         <essence cost="20" text="plut 5 per attack"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="72"/>
   </spell>
          <spell circle="Solar" id="Solar.LoyalGolem">
     <cost>
-      <temporary>
+      
         <essence cost="40+"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="72"/>
   </spell>
            <spell circle="Solar" id="Solar.MirageProtectiveShelter">
     <cost>
-      <temporary>
+      
         <essence cost="40"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="73"/>
   </spell>
    <spell circle="Solar" id="Solar.MysticTravel">
     <cost>
-      <temporary>
+      
         <essence cost="30"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="73"/>
   </spell>
    <spell circle="Solar" id="Solar.PressedBeyondWheelTime">
     <cost>
-      <temporary>
+      
         <essence cost="60"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="73"/>
   </spell>
    <spell circle="Solar" id="Solar.SolarSanctuary">
     <cost>
-      <temporary>
+      
         <essence cost="60"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="74"/>
   </spell>
    <spell circle="Solar" id="Solar.SoulSeal">
     <cost>
-      <temporary>
+      
         <essence cost="50"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="75"/>
   </spell>
    <spell circle="Solar" id="Solar.SummonAnimalAvatar">
     <cost>
-      <temporary>
+      
         <essence cost="40"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="76"/>
   </spell>
    <spell circle="Solar" id="Solar.SummoningGreaterMinionsEyelessFace">
     <cost>
-      <temporary>
+      
         <essence cost="30+"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="77"/>
   </spell>
    <spell circle="Solar" id="Solar.TechniqueMirror">
     <cost>
-      <temporary>
+      
         <essence cost="20+"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="77"/>
   </spell>
    <spell circle="Solar" id="Solar.TheftYears">
     <cost>
-      <temporary>
+      
         <essence cost="50"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="78"/>
   </spell>
    <spell circle="Solar" id="Solar.UnityClosedFist">
     <cost>
-      <temporary>
+      
         <essence cost="40+"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="77"/>
   </spell>
    <spell circle="Solar" id="Solar.WhisperersInMirror">
     <cost>
-      <temporary>
+      
         <essence cost="50"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="79"/>
   </spell>
    <spell circle="Solar" id="Solar.WindsConfusion">
     <cost>
-      <temporary>
+      
         <essence cost="45"/>
-      </temporary>
+      
     </cost>
     <source source="Bo3C" page="79"/>
   </spell>
   <spell circle="Solar" id="Solar.CleansingSolarFlames">
 			<cost>
-				<temporary>
+				
 					<essence cost="50+"/>
-				</temporary>
+				
 			</cost>
 		<source source="BoneEbony" page="139"/>
 		</spell>
   <spell id="Celestial.GentleCallLethe" circle="Celestial">
 	<cost>
-		<temporary>
+		
 			<essence cost="20"/>
-		</temporary>
+		
 	</cost>
     <source source="BoneEbony" page="127"/>
   </spell>
   <spell circle="Solar" id="Solar.TransferenceSanctum">
     <cost>
-      <temporary>
+      
         <essence cost="45"/>
-      </temporary>
+      
     </cost>
     <source source="GamesOfDivinity" page="49"/>
   </spell>

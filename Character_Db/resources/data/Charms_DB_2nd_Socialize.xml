@@ -7,9 +7,9 @@
   <charmAttributeRequirement attribute="ExcellencySocialize" count="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -24,9 +24,9 @@
   <charmReference id="Dragon-Blooded.Sweeten-the-TapMethod"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -41,9 +41,9 @@
   <charmReference id="Dragon-Blooded.Sweeten-the-TapMethod"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive"/>
@@ -58,10 +58,10 @@
   <charmAttributeRequirement attribute="ExcellencySocialize" count="2"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="4"/>
    <willpoer cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -78,9 +78,9 @@
   <charmAttributeRequirement attribute="ExcellencySocialize" count="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Supplemental"/>
@@ -97,9 +97,9 @@
   <charmReference id="Dragon-Blooded.Warm-FacedSeductionStyle"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -116,10 +116,10 @@
   <charmReference id="Dragon-Blooded.Warm-FacedSeductionStyle"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Reflexive"/>

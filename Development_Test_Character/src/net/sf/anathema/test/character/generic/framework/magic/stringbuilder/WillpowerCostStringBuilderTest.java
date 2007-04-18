@@ -28,17 +28,22 @@ public class WillpowerCostStringBuilderTest extends BasicTestCase {
   }
 
   public void testValueOnly() throws Exception {
-    String costString = getDisplayString(new Cost("2", null)); //$NON-NLS-1$
+    String costString = getDisplayString(new Cost("2", null, false)); //$NON-NLS-1$
     assertEquals("2 Willpower", costString); //$NON-NLS-1$
   }
 
   public void testValueAndText() throws Exception {
-    String costString = getDisplayString(new Cost("2", "or more")); //$NON-NLS-1$ //$NON-NLS-2$
+    String costString = getDisplayString(new Cost("2", "or more", false)); //$NON-NLS-1$ //$NON-NLS-2$
     assertEquals("2 Willpower or more", costString); //$NON-NLS-1$
   }
 
   public void testTextOnly() throws Exception {
-    String costString = getDisplayString(new Cost(null, "Special")); //$NON-NLS-1$
+    String costString = getDisplayString(new Cost(null, "Special", false)); //$NON-NLS-1$
     assertEquals(" Special", costString); //$NON-NLS-1$
+  }
+
+  public void testPermanentCost() throws Exception {
+    String costString = getDisplayString(new Cost("2", null, true)); //$NON-NLS-1$
+    assertEquals("2 permanent Willpower", costString); //$NON-NLS-1$
   }
 }

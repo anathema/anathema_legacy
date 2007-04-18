@@ -5,9 +5,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -23,9 +23,9 @@
       <charmReference id="Terrestrial.Five-DragonClaw"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -40,9 +40,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2B or 1L"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
@@ -60,10 +60,10 @@
       <charmReference id="Terrestrial.Five-DragonFortitude"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple">
@@ -82,9 +82,9 @@
       <charmReference id="Terrestrial.Five-DragonBlockingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple">
@@ -102,11 +102,11 @@
       <charmReference id="Terrestrial.Five-DragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -122,10 +122,10 @@
       <charmReference id="Terrestrial.Five-DragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
@@ -144,10 +144,10 @@
       <charmReference id="Terrestrial.Five-DragonInvulnerability"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per attack"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>

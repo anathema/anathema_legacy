@@ -7,9 +7,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -23,9 +23,9 @@
       <charmReference id="Solar.LeapingMantisTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -39,9 +39,9 @@
       <charmReference id="Solar.Iron-ArmBlock"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -56,9 +56,9 @@
       <charmReference id="Solar.MantisForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -72,9 +72,9 @@
       <charmReference id="Solar.MantisForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="OneTurnOrOneHold"/>
     <charmtype type="Reflexive"/>
@@ -90,10 +90,10 @@
       <charmReference id="Solar.Joint-BreakingAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -107,9 +107,9 @@
       <charmReference id="Solar.FlyingMantisKick"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per turn"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -123,9 +123,9 @@
       <charmReference id="Solar.MantisForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -139,9 +139,9 @@
       <charmReference id="Solar.Joint-LockingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -155,9 +155,9 @@
       <charmReference id="Solar.GraspingClawMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -170,9 +170,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -186,9 +186,9 @@
       <charmReference id="Solar.ImageDeathTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -202,9 +202,9 @@
       <charmReference id="Solar.WallClimbingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -218,9 +218,9 @@
       <charmReference id="Solar.DistractingFinger-GestureAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -235,9 +235,9 @@
       <charmReference id="Solar.EbonShadowForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -251,9 +251,9 @@
       <charmReference id="Solar.EbonShadowForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -267,9 +267,9 @@
       <charmReference id="Solar.SevenPointsWeaknessStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -283,10 +283,10 @@
       <charmReference id="Solar.ElusiveFlickerEvasion"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
@@ -301,10 +301,10 @@
       <charmReference id="Solar.Limb-ImmobilizingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -318,10 +318,10 @@
       <charmReference id="Solar.Blow-ConcealingGestureTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
@@ -336,10 +336,10 @@
       <charmReference id="Solar.Shadow-BodyStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -352,9 +352,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
@@ -368,9 +368,9 @@
       <charmReference id="Solar.CrimsonLeapingCatTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -384,9 +384,9 @@
       <charmReference id="Solar.TigerForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
@@ -400,9 +400,9 @@
       <charmReference id="Solar.StrikingFuryClawsAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -417,9 +417,9 @@
       <charmReference id="Solar.TigerForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="+ 1 per die"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -433,9 +433,9 @@
       <charmReference id="Solar.RagingTigerPounce"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="+1 per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -449,10 +449,10 @@
       <charmReference id="Solar.TigerForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -466,9 +466,9 @@
       <charmReference id="Solar.StalkingCatMovementMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -484,10 +484,10 @@
       <charmReference id="Solar.CelestialTigerHide"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="ExtraAction"/>
@@ -500,9 +500,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -516,9 +516,9 @@
       <charmReference id="Solar.StrikingCobraTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -532,9 +532,9 @@
       <charmReference id="Solar.SnakeForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -548,9 +548,9 @@
       <charmReference id="Solar.SerpentineEvasion"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -565,10 +565,10 @@
       <charmReference id="Solar.EssenceFangsandScalesTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -582,9 +582,9 @@
       <charmReference id="Solar.SnakeStrikesHeel"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -598,9 +598,9 @@
       <charmReference id="Solar.SnakeForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -614,9 +614,9 @@
       <charmReference id="Solar.SnakeForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -632,11 +632,11 @@
       <charmReference id="Solar.CripplingPressure-PointStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
         <health cost="1" type="Lethal"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -650,10 +650,10 @@
       <charmReference id="Solar.UncoilingSerpentPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -666,7 +666,7 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary/>
+      
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
@@ -680,9 +680,9 @@
       <charmReference id="Sidereal.SecretFutureStrife"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per initiative bonus"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
@@ -696,10 +696,10 @@
       <charmReference id="Sidereal.SecretFutureStrife"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per die"/>
         <willpower cost="2"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
@@ -713,9 +713,9 @@
       <charmReference id="Sidereal.SecretFutureStrife"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
@@ -731,9 +731,9 @@
       <charmReference id="Sidereal.JoyinAdversityStance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -748,9 +748,9 @@
       <charmReference id="Sidereal.VioletBierSorrowsForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per health level"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -764,9 +764,9 @@
       <charmReference id="Sidereal.VioletBierSorrowsForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per health level"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -780,9 +780,9 @@
       <charmReference id="Sidereal.Life-SeveringBlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per attack"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -797,10 +797,10 @@
       <charmReference id="Sidereal.Death-ParryingStroke"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -814,10 +814,10 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -831,9 +831,9 @@
       <charmReference id="Sidereal.UnnaturalMany-StepStride"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
-      </temporary>
+      
     </cost>
     <duration amount="5" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -846,9 +846,9 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -862,10 +862,10 @@
       <charmReference id="Sidereal.RainUnseenThreads"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -878,9 +878,9 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -896,9 +896,9 @@
       <charmReference id="Sidereal.DanceHungrySpider"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="12"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -913,10 +913,10 @@
       <charmReference id="Sidereal.CharcoalMarchSpidersForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -930,10 +930,10 @@
       <charmReference id="Sidereal.CannibalisticHeritageTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="12"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -947,10 +947,10 @@
       <charmReference id="Sidereal.CannibalisticHeritageTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -964,10 +964,10 @@
       <charmReference id="Sidereal.CannibalisticHeritageTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -983,10 +983,10 @@
       <charmReference id="Sidereal.ThumbnailSpiderMarch"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1000,10 +1000,10 @@
       <charmReference id="Sidereal.PatternSpiderTouch"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
@@ -1016,9 +1016,9 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="5" unit="turn"/>
     <charmtype type="Simple"/>
@@ -1031,10 +1031,10 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="5" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -1047,9 +1047,9 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <duration amount="5" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -1062,9 +1062,9 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <duration amount="5" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -1081,9 +1081,9 @@
       <charmReference id="Sidereal.DeadlyStarmetalOffensive"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1097,9 +1097,9 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -1113,10 +1113,10 @@
       <charmReference id="Sidereal.CharmRedirectionTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5" text="+ mote cost of charm disrupted"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1129,9 +1129,9 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="12"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1144,10 +1144,10 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1163,9 +1163,9 @@
       <charmReference id="Sidereal.Spell-ShatteringPalm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1179,9 +1179,9 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
@@ -1194,10 +1194,10 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="5" unit="turn"/>
     <charmtype type="Simple"/>
@@ -1212,10 +1212,10 @@
       <charmReference id="Sidereal.GodWays"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1229,11 +1229,11 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="20"/>
         <willpower cost="1"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1247,9 +1247,9 @@
       <charmReference id="Sidereal.DemesneEmulationPractice"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="12"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
        	<charmAttribute attribute="Sidereal"/>
@@ -1268,10 +1268,10 @@
       <charmReference id="Sidereal.FourMagicalMaterialsForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration  amount="1" unit="scene"/>
@@ -1285,9 +1285,9 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
@@ -1300,9 +1300,9 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="12"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
@@ -1315,10 +1315,10 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="12"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
@@ -1334,10 +1334,10 @@
       <charmReference id="Sidereal.FeverishEssenceDischargeAtemi"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="12"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
@@ -1350,13 +1350,11 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
         <willpower cost="1"/>
-      </temporary>
-      <permanent>
-        <experience cost="1"/>
-      </permanent>
+        <experience cost="1" permanent="true"/>
+
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
@@ -1369,10 +1367,10 @@
       <essence value="4"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
@@ -1386,10 +1384,10 @@
       <charmReference id="Sidereal.SpiritandBodyPurificationTouch"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="12"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration amount="1" unit="turn"/>
@@ -1404,9 +1402,9 @@
       <charmReference id="Sidereal.PerfectReconstructionMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration  amount="1" unit="scene"/>
@@ -1422,10 +1420,10 @@
       <charmReference id="Sidereal.Essence-DisruptingAtemi"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration  amount="1" unit="scene"/>
@@ -1440,9 +1438,9 @@
       <charmReference id="Sidereal.CitrinePoxesContagionForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
@@ -1456,10 +1454,10 @@
       <charmReference id="Sidereal.SpiritualPerfection"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
@@ -1473,10 +1471,10 @@
       <charmReference id="Sidereal.SpiritualPerfection"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration  amount="1" unit="scene"/>
@@ -1491,10 +1489,10 @@
       <charmReference id="Sidereal.GentleTouchWickedHand"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Sidereal"/>
     <duration amount="1" unit="turn"/>
@@ -1507,9 +1505,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2B or 1L"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -1523,10 +1521,10 @@
       <charmReference id="Dragon-Blooded.Five-DragonFortitude"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
@@ -1539,9 +1537,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -1555,9 +1553,9 @@
       <charmReference id="Dragon-Blooded.Five-DragonClaw"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -1572,9 +1570,9 @@
       <charmReference id="Dragon-Blooded.Five-Dragon-ForceBlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
@@ -1589,11 +1587,11 @@
       <charmReference id="Dragon-Blooded.Five-DragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -1607,10 +1605,10 @@
       <charmReference id="Dragon-Blooded.Five-DragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -1625,10 +1623,10 @@
       <charmReference id="Dragon-Blooded.Five-DragonInvulnerability"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per attack"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -1641,9 +1639,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -1657,9 +1655,9 @@
       <charmReference id="Dragon-Blooded.AirDragon'sSight"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -1673,9 +1671,9 @@
       <charmReference id="Dragon-Blooded.AirDragon'sSight"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="turn"/>
@@ -1689,9 +1687,9 @@
       <charmReference id="Dragon-Blooded.AirDragon'sSight"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="turn"/>
@@ -1707,9 +1705,9 @@
       <charmReference id="Dragon-Blooded.ShroudingBodyandMind"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -1724,9 +1722,9 @@
       <charmReference id="Dragon-Blooded.AirDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4" text="per attack"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -1740,9 +1738,9 @@
       <charmReference id="Dragon-Blooded.TornadoOffenseTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -1756,10 +1754,10 @@
       <charmReference id="Dragon-Blooded.AvengingWindStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -1773,9 +1771,9 @@
       <charmReference id="Dragon-Blooded.AirDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="turn"/>
@@ -1789,9 +1787,9 @@
       <charmReference id="Dragon-Blooded.CloudTreadingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -1805,10 +1803,10 @@
       <charmReference id="Dragon-Blooded.ThunderclapKata"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="turn"/>
@@ -1823,11 +1821,11 @@
       <charmReference id="Dragon-Blooded.LightningStrikeStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="turn"/>
@@ -1840,9 +1838,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -1855,9 +1853,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="minute"/>
@@ -1870,9 +1868,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="turn"/>
@@ -1888,9 +1886,9 @@
       <charmReference id="Dragon-Blooded.StoneDragon'sSkin"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -1905,9 +1903,9 @@
       <charmReference id="Dragon-Blooded.EarthDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="turn"/>
@@ -1921,10 +1919,10 @@
       <charmReference id="Dragon-Blooded.ShatteringFistStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="Special"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -1938,9 +1936,9 @@
       <charmReference id="Dragon-Blooded.EarthDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Special"/>
@@ -1954,9 +1952,9 @@
       <charmReference id="Dragon-Blooded.StillnessStone"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Special"/>
@@ -1970,9 +1968,9 @@
       <charmReference id="Dragon-Blooded.EarthDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -1986,10 +1984,10 @@
       <charmReference id="Dragon-Blooded.EarthshakerAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5+"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2005,10 +2003,10 @@
       <charmReference id="Dragon-Blooded.HungryEarthStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2022,10 +2020,10 @@
       <charmReference id="Dragon-Blooded.Ghost-GroundingBlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -2038,9 +2036,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2054,9 +2052,9 @@
       <charmReference id="Dragon-Blooded.Flash-FireTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per +1 difficulty"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="turn"/>
@@ -2069,9 +2067,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="turn"/>
@@ -2085,9 +2083,9 @@
       <charmReference id="Dragon-Blooded.SearingFistTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2102,9 +2100,9 @@
       <charmReference id="Dragon-Blooded.PerfectBlazingBlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -2119,9 +2117,9 @@
       <charmReference id="Dragon-Blooded.FireDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2135,9 +2133,9 @@
       <charmReference id="Dragon-Blooded.FieryHandAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per Essence lethal damage"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2151,10 +2149,10 @@
       <charmReference id="Dragon-Blooded.BreathFireDragon"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2168,9 +2166,9 @@
       <charmReference id="Dragon-Blooded.FireDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration event="Abandoned"/>
@@ -2184,9 +2182,9 @@
       <charmReference id="Dragon-Blooded.OverwhelmingFireMajestyStance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
@@ -2201,10 +2199,10 @@
       <charmReference id="Dragon-Blooded.SmolderingWoundAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -2217,9 +2215,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="Essence" unit="turn"/>
@@ -2233,9 +2231,9 @@
       <charmReference id="Dragon-Blooded.FlowingWaterDefense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2249,9 +2247,9 @@
       <charmReference id="Dragon-Blooded.RipplingWaterStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2265,9 +2263,9 @@
       <charmReference id="Dragon-Blooded.RipplingWaterStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2282,9 +2280,9 @@
       <charmReference id="Dragon-Blooded.ShruggingWaterDragonEscape"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -2299,10 +2297,10 @@
       <charmReference id="Dragon-Blooded.WaterDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2316,10 +2314,10 @@
       <charmReference id="Dragon-Blooded.Theft-of-EssenceMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration event="Abandoned"/>
@@ -2333,9 +2331,9 @@
       <charmReference id="Dragon-Blooded.WaterDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2349,9 +2347,9 @@
       <charmReference id="Dragon-Blooded.FlowReversalStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2366,10 +2364,10 @@
       <charmReference id="Dragon-Blooded.CrashingWaveStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="turn"/>
@@ -2383,10 +2381,10 @@
       <charmReference id="Dragon-Blooded.BottomlessDepthsDefense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
@@ -2400,11 +2398,11 @@
       <charmReference id="Dragon-Blooded.Essence-DousingWaveAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2417,9 +2415,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="5turnsOrUntilUsed"/>
@@ -2433,9 +2431,9 @@
       <charmReference id="Dragon-Blooded.EyesWoodDragon"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per health level"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2449,9 +2447,9 @@
       <charmReference id="Dragon-Blooded.Mind-Over-BodyMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="turn"/>
@@ -2465,9 +2463,9 @@
       <charmReference id="Dragon-Blooded.WoodDragonVitality"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -2481,9 +2479,9 @@
       <charmReference id="Dragon-Blooded.Soul-MarkingStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -2498,9 +2496,9 @@
       <charmReference id="Dragon-Blooded.WoodDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration event="Abandoned"/>
@@ -2514,9 +2512,9 @@
       <charmReference id="Dragon-Blooded.Death-PatternSensingAttitude"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per health level"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2530,10 +2528,10 @@
       <charmReference id="Dragon-Blooded.WoodDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2547,10 +2545,10 @@
       <charmReference id="Dragon-Blooded.Spirit-WrackingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2564,10 +2562,10 @@
       <charmReference id="Dragon-Blooded.WoodDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5" text="+1 mote per attack dodged"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -2581,10 +2579,10 @@
       <charmReference id="Dragon-Blooded.UnbreakableFascinationKata"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2600,10 +2598,10 @@
       <charmReference id="Dragon-Blooded.SpiritRendingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="EssenceTurnsOrUntilDischarged"/>
@@ -2617,9 +2615,9 @@
       <charmReference id="Abyssal.EssenceDiscerningGlance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2632,9 +2630,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -2648,9 +2646,9 @@
       <charmReference id="Abyssal.ShroudedClawAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -2665,10 +2663,10 @@
       <charmReference id="Abyssal.HungryGhostForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="None"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <combo allAbilities="true"/>
@@ -2683,9 +2681,9 @@
       <charmReference id="Abyssal.PowerReapingPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1+"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2699,9 +2697,9 @@
       <charmReference id="Abyssal.HungryGhostForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2L"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2715,9 +2713,9 @@
       <charmReference id="Abyssal.UnnaturalShamblingDefense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2731,10 +2729,10 @@
       <charmReference id="Abyssal.HungryGhostForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2748,10 +2746,10 @@
       <charmReference id="Abyssal.ConsumingEntropyStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2767,11 +2765,11 @@
       <charmReference id="Abyssal.CharmSmotheringTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
         <health cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -2784,9 +2782,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -2800,9 +2798,9 @@
       <charmReference id="Dragon-Blooded.LivingShieldTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration amount="1" unit="turn"/>
@@ -2816,11 +2814,11 @@
       <charmReference id="Dragon-Blooded.LivingShieldTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
         <willpower cost="1"/>
         <health cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -2835,9 +2833,9 @@
       <charmReference id="Dragon-Blooded.DualScarletBlossomTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
@@ -2852,13 +2850,10 @@
       <charmReference id="Dragon-Blooded.FallingBlossomForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
-      <permanent>
-        <experience cost="1"/>
-      </permanent>
+        <experience cost="1" permanent="true"/>
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -2872,10 +2867,10 @@
       <charmReference id="Dragon-Blooded.FallingBlossomForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
@@ -2890,9 +2885,9 @@
       <charmReference id="Dragon-Blooded.StrengthFaithMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration amount="1" unit="day"/>
@@ -2905,9 +2900,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
@@ -2921,9 +2916,9 @@
       <charmReference id="Dragon-Blooded.GracefulTortoiseTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -2937,9 +2932,9 @@
       <charmReference id="Dragon-Blooded.SpeardancerConcentration"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
@@ -2954,9 +2949,9 @@
       <charmReference id="Dragon-Blooded.CrimsonPentacleBladeForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
@@ -2970,9 +2965,9 @@
 			<charmReference id="Dragon-Blooded.EasternRootProtocol"/>
 		</prerequisite>
  		<cost>
-			<temporary>
+			
  				<essence cost="Varies"/>
- 			</temporary>
+ 			
 		</cost>
  		<charmAttribute attribute="Terrestrial"/>
 		<duration duration="Varies"/>
@@ -2986,9 +2981,9 @@
       <charmReference id="Dragon-Blooded.CrimsonPentacleBladeForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -3002,9 +2997,9 @@
       <charmReference id="Dragon-Blooded.NothernLotusPetalDiscernmentMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -3018,9 +3013,9 @@
       <charmReference id="Dragon-Blooded.CrimsonPentacleBladeForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -3034,10 +3029,10 @@
       <charmReference id="Dragon-Blooded.WesternShieldCrushCounterattack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
@@ -3051,10 +3046,10 @@
       <charmReference id="Dragon-Blooded.CrimsonPentacleBladeForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
@@ -3068,9 +3063,9 @@
       <charmReference id="Dragon-Blooded.GloriousSouthernHarbingerWarAndFury"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration event="NextTurn"/>
@@ -3084,10 +3079,10 @@
       <charmReference id="Dragon-Blooded.CrimsonPentacleBladeForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="+1 mote per attack"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
@@ -3101,10 +3096,10 @@
       <charmReference id="Dragon-Blooded.RetributionHonorableGuardianshipAttitude"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="(committed)"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration amount="1" unit="day"/>
@@ -3122,10 +3117,10 @@
       <charmReference id="Dragon-Blooded.Call-to-BladeRighteousnessMantra"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -3138,9 +3133,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3154,9 +3149,9 @@
       <charmReference id="Solar.MonkeyTailDistractionStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3169,9 +3164,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4" text="per point of Strength / Stamina, 6 motes per point of Dexterity"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -3185,10 +3180,10 @@
       <charmReference id="Solar.BodyWarMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3203,9 +3198,9 @@
       <charmReference id="Solar.WitheringPawStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -3220,13 +3215,10 @@
       <charmReference id="Solar.CelestialMonkeyForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
-      <permanent>
-        <experience cost="2"/>
-      </permanent>
+        <experience cost="2" permanent="true"/>
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3240,10 +3232,10 @@
       <charmReference id="Solar.WalkingFootstepsTenThousandThings"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3257,10 +3249,10 @@
       <charmReference id="Solar.FourHaloGoldenMonkeyPalm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -3274,7 +3266,7 @@
       <charmReference id="Solar.FourHaloGoldenMonkeyRealignement"/>
     </prerequisite>
     <cost>
-      <temporary/>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Permanent"/>
@@ -3287,9 +3279,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3303,9 +3295,9 @@
       <charmReference id="Solar.KissSunConcentration"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3319,9 +3311,9 @@
       <charmReference id="Solar.KissSunConcentration"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3335,9 +3327,9 @@
       <charmReference id="Solar.FireBlossomInevitableDemiseTechique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration event="Fired"/>
@@ -3351,9 +3343,9 @@
       <charmReference id="Solar.LightingDrawStance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3368,9 +3360,9 @@
       <charmReference id="Solar.CloudEbonDevils"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -3385,9 +3377,9 @@
       <charmReference id="Solar.RighteousDevilForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3401,10 +3393,10 @@
       <charmReference id="Solar.PhoenixFliesonGoldenWingsAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3418,9 +3410,9 @@
       <charmReference id="Solar.RighteousDevilForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -3434,10 +3426,10 @@
       <charmReference id="Solar.TwinSalamanderFist"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3451,9 +3443,9 @@
       <charmReference id="Solar.RighteousDevilForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3467,10 +3459,10 @@
       <charmReference id="Solar.PhantomFlameboltPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
@@ -3483,9 +3475,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="+"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -3499,10 +3491,10 @@
       <charmReference id="Dragon-Blooded.PillarMarbleStance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per 1L/1B"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
@@ -3515,9 +3507,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration event="Released"/>
@@ -3531,10 +3523,10 @@
       <charmReference id="Dragon-Blooded.Boulder-CrushingGrasp"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -3549,9 +3541,9 @@
       <charmReference id="Dragon-Blooded.SlinderGlacierGrip"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
@@ -3566,9 +3558,9 @@
       <charmReference id="Dragon-Blooded.JadeMountainForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2B or 1L"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -3582,10 +3574,10 @@
       <charmReference id="Dragon-Blooded.PasiapStillStands"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
@@ -3598,9 +3590,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="NoStyle"/>
@@ -3616,10 +3608,10 @@
       <charmReference id="Dragon-Blooded.SpiritSight"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="AllowsCelestial"/>
@@ -3635,9 +3627,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="NoStyle"/>
@@ -3653,10 +3645,10 @@
       <charmReference id="Dragon-Blooded.Walker-Among-IrisesPerception"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="AllowsCelestial"/>
@@ -3672,9 +3664,9 @@
       <essence value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="NoStyle"/>
@@ -3690,10 +3682,10 @@
       <charmReference id="Dragon-Blooded.Tiger-and-Bear-Awareness"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="AllowsCelestial"/>
@@ -3709,9 +3701,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3724,9 +3716,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="1L/2B soak"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -3739,9 +3731,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3757,9 +3749,9 @@
       <charmReference id="Solar.LethalPaperFanAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
@@ -3773,9 +3765,9 @@
       <charmReference id="Solar.DreamingPearlCourtesanForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per weapon"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3789,9 +3781,9 @@
       <charmReference id="Solar.FlurryAugustLeavesConcentration"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per turn"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
@@ -3806,9 +3798,9 @@
       <charmReference id="Solar.DreamingPearlCourtesanForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3822,10 +3814,10 @@
       <charmReference id="Solar.FlurryAugustLeavesConcentration"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration event="Disturbed"/>
@@ -3839,10 +3831,10 @@
       <charmReference id="Solar.FragrantPetalFascinationKata"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
@@ -3859,10 +3851,10 @@
       <charmReference id="Solar.SevenStormsEscapePrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="15"/>
         <willpower cost="1" text="+1 Willpower to end the Charm"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>

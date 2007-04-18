@@ -7,9 +7,9 @@
       <charmReference id="Lunar.FindingTheSpiritsShape"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -23,9 +23,9 @@
       <charmReference id="Lunar.DeadlyClawBlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -38,10 +38,10 @@
       <charmReference id="Lunar.ClawsOfTheSilverMoon"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -54,9 +54,9 @@
       <charmReference id="Lunar.BearEmbraceMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="plus 1 for each success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -69,9 +69,9 @@
       <charmReference id="Lunar.MightyBearCrush"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5" text="per turn"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Supplemental"/>
@@ -84,9 +84,9 @@
       <charmReference id="Lunar.MightyBearCrush"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
@@ -99,10 +99,10 @@
       <charmReference id="Lunar.BearEmbraceMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>

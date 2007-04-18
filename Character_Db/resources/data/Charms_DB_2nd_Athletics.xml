@@ -6,9 +6,9 @@
   <essence value="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive"/>
@@ -25,9 +25,9 @@
   <charmReference id="Dragon-Blooded.EffortlesslyRisingFlame"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1" text="per 2 dice of damage"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Supplemental"/>
@@ -42,9 +42,9 @@
   <charmReference id="Dragon-Blooded.FallingStarManeuver"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1" text="or 2 motes"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Reflexive"/>
@@ -60,9 +60,9 @@
   <charmReference id="Dragon-Blooded.Bellows-PumpingStride"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2" />
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive"/>
@@ -78,10 +78,10 @@
   <charmReference id="Dragon-Blooded.IncenseSmokeLadder"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="4" />
    <willpower cost="1" />
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>

@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.general.ICostList;
-import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
 import net.sf.anathema.character.generic.magic.general.ISourceList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
@@ -20,21 +19,13 @@ import net.sf.anathema.lib.util.Identificate;
 public class Spell extends Identificate implements ISpell {
   private final CircleType circleType;
   private final ICostList temporaryCost;
-  private final IPermanentCostList permanentCost;
   private ISourceList source;
   private final String target;
 
-  public Spell(
-      String id,
-      CircleType circleType,
-      ICostList temporaryCost,
-      IPermanentCostList permanentCost,
-      ISourceList source,
-      String target) {
+  public Spell(String id, CircleType circleType, ICostList temporaryCost, ISourceList source, String target) {
     super(id);
     this.circleType = circleType;
     this.temporaryCost = temporaryCost;
-    this.permanentCost = permanentCost;
     this.source = source;
     this.target = target;
   }
@@ -45,10 +36,6 @@ public class Spell extends Identificate implements ISpell {
 
   public CircleType getCircleType() {
     return circleType;
-  }
-
-  public IPermanentCostList getPermanentCost() {
-    return permanentCost;
   }
 
   public IExaltedSourceBook getSource() {

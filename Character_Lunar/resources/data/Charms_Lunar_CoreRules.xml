@@ -7,9 +7,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -22,10 +22,10 @@
       <charmReference id="Lunar.HideOfTheCunningHunter"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -37,9 +37,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -53,9 +53,9 @@
       <charmReference id="Lunar.FindingTheSpiritsShape"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -72,9 +72,9 @@
       <charmReference id="Lunar.DeadlyBeastmanTransformation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -87,10 +87,10 @@
       <charmReference id="Lunar.CallingLunasFavor"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
@@ -103,7 +103,7 @@
       <charmReference id="Lunar.FindingTheSpiritsShape"/>
     </prerequisite>
     <cost>
-      <temporary/>
+      
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
@@ -117,7 +117,7 @@
       <charmReference id="Lunar.FindingTheSpiritsShape"/>
     </prerequisite>
     <cost>
-      <temporary/>
+      
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
@@ -131,9 +131,9 @@
       <charmReference id="Lunar.FindingTheSpiritsShape"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -146,9 +146,9 @@
       <charmReference id="Lunar.ShapingIdealForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -163,10 +163,10 @@
       <charmReference id="Lunar.ManyFacedMoonTransformation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
@@ -180,10 +180,10 @@
       <charmReference id="Lunar.ShapingIdealForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <health type="Lethal" cost="1" text="+Special"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -197,11 +197,11 @@
       <charmReference id="Lunar.LunarBloodReshapingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
         <health type="Lethal" cost="1" text="+Special"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -214,11 +214,11 @@
       <charmReference id="Lunar.LunarBloodReshapingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per raw cubic foot"/>
         <essence cost="1" text="per volume increase"/>
         <health type="Lethal" cost="1" text="+Special"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -231,9 +231,9 @@
       <charmReference id="Lunar.ShapingIdealForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
@@ -246,9 +246,9 @@
       <charmReference id="Lunar.ShapingIdealForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -261,9 +261,9 @@
       <charmReference id="Lunar.ShapingIdealForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -275,7 +275,7 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary/>
+      
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
@@ -288,10 +288,10 @@
       <charmReference id="Lunar.ShapingIdealForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -304,10 +304,10 @@
       <charmReference id="Lunar.ShapingIdealForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -321,9 +321,9 @@
       <charmReference id="Lunar.MoonsilverMonkeyExercise"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -336,9 +336,9 @@
       <charmReference id="Lunar.RegainingBreathExercise"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -351,9 +351,9 @@
       <charmReference id="Lunar.ShapingIdealForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2 dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -366,9 +366,9 @@
       <charmReference id="Lunar.PredatorGraceMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -381,9 +381,9 @@
       <charmReference id="Lunar.PantherStrideStance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -396,9 +396,9 @@
       <charmReference id="Lunar.PredatorGraceMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -411,9 +411,9 @@
       <charmReference id="Lunar.ShapingIdealForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -426,9 +426,9 @@
       <charmReference id="Lunar.TreeDwellingJaguarClaws"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -440,9 +440,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -455,9 +455,9 @@
       <charmReference id="Lunar.BodyWeaponTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per +1 initiative"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -470,9 +470,9 @@
       <charmReference id="Lunar.SinuousStrikingGrace"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -485,10 +485,10 @@
       <charmReference id="Lunar.TyrantLizardStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per attack"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -501,9 +501,9 @@
       <charmReference id="Lunar.SinuousStrikingGrace"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -517,9 +517,9 @@
       <charmReference id="Lunar.DeadlyViperStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Special"/>
     <charmtype type="Supplemental"/>
@@ -532,9 +532,9 @@
       <charmReference id="Lunar.BodyWeaponTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -547,9 +547,9 @@
       <charmReference id="Lunar.DeadlyClawBlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -565,10 +565,10 @@
       <charmReference id="Lunar.ClawsOfTheSilverMoon"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -584,9 +584,9 @@
       <charmReference id="Lunar.ClawsOfTheSilverMoon"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -599,9 +599,9 @@
       <charmReference id="Lunar.AdderFangMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -614,9 +614,9 @@
       <charmReference id="Lunar.BurningSalivaAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -629,9 +629,9 @@
       <charmReference id="Lunar.BurningSalivaAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -644,10 +644,10 @@
       <charmReference id="Lunar.AdderFangMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -660,9 +660,9 @@
       <charmReference id="Lunar.DeadlyViperStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -675,10 +675,10 @@
       <charmReference id="Lunar.RabidBeastBite"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -691,9 +691,9 @@
       <charmReference id="Lunar.DeadlyViperStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
@@ -706,9 +706,9 @@
       <charmReference id="Lunar.BodyWeaponTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -721,9 +721,9 @@
       <charmReference id="Lunar.MonkeyArmStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per Attack"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -736,9 +736,9 @@
       <charmReference id="Lunar.StartlingTentacleAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration event="AttackEnds"/>
     <charmtype type="Supplemental"/>
@@ -751,9 +751,9 @@
       <charmReference id="Lunar.StartlingTentacleAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4" text="or 5 motes per tentacle"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -766,10 +766,10 @@
       <charmReference id="Lunar.Tentacle-SpearStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4" text="per tentacle"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -782,9 +782,9 @@
       <charmReference id="Lunar.BodyWeaponTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -797,18 +797,18 @@
       <charmReference id="Lunar.BearEmbraceMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Lunars1st" page="144"/>
     <ruleset name="PowerCombat">	
 	    <cost>
-    	  <temporary>
+    	  
         	<essence cost="1" text="plus 1 for each success"/>
-	      </temporary>
+	      
 	    </cost>	
     	<source source="Player's Guide" page="209"/>
     </ruleset>
@@ -820,9 +820,9 @@
       <charmReference id="Lunar.BearEmbraceMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -835,9 +835,9 @@
       <charmReference id="Lunar.MightyBearCrush"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5" text="per turn"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Supplemental"/>
@@ -853,18 +853,18 @@
       <charmReference id="Lunar.MightyBearCrush"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
     <source source="Lunars1st" page="145"/>
     <ruleset name="PowerCombat">
 		<cost>
-	      <temporary>
+	      
     	    <essence cost="4"/>
-	      </temporary>
+	      
 	    </cost>
     	<source source="Player's Guide" page="207"/>
     </ruleset>
@@ -876,10 +876,10 @@
       <charmReference id="Lunar.BearEmbraceMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
@@ -895,9 +895,9 @@
       <charmReference id="Lunar.CunningPorcupineDefense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -910,9 +910,9 @@
       <charmReference id="Lunar.BodyWeaponTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2 dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -925,9 +925,9 @@
       <charmReference id="Lunar.AngryRhinoCharge"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -940,9 +940,9 @@
       <charmReference id="Lunar.BodyWeaponTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -956,9 +956,9 @@
       <charmReference id="Lunar.SubduingHonoredFoe"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -971,9 +971,9 @@
       <charmReference id="Lunar.SubduingHonoredFoe"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="+1 mote per die"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
@@ -986,9 +986,9 @@
       <charmReference id="Lunar.BodyWeaponTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per damage success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -1001,9 +1001,9 @@
       <charmReference id="Lunar.BodyWeaponTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1017,9 +1017,9 @@
       <charmReference id="Lunar.Hunter'sEyeTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1031,9 +1031,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1046,9 +1046,9 @@
       <charmReference id="Lunar.SensingDeadlyFlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per +1 initiative"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1061,9 +1061,9 @@
       <charmReference id="Lunar.StrikingMospidMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1076,10 +1076,10 @@
       <charmReference id="Lunar.StrikingMospidMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per attack"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -1092,10 +1092,10 @@
       <charmReference id="Lunar.DanceLivingBlade"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6" text="+ 1 mote per yard"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -1108,9 +1108,9 @@
       <charmReference id="Lunar.DanceLivingBlade"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -1123,9 +1123,9 @@
       <charmReference id="Lunar.SpinningBladeAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -1138,10 +1138,10 @@
       <charmReference id="Lunar.SpinningBladeAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Reflexive"/>
@@ -1154,9 +1154,9 @@
       <charmReference id="Lunar.StrikingMospidMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1169,10 +1169,10 @@
       <charmReference id="Lunar.TwistingSurpriseAttack"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -1185,9 +1185,9 @@
       <charmReference id="Lunar.SensingDeadlyFlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1200,9 +1200,9 @@
       <charmReference id="Lunar.MonkeyPawAdvantage"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1215,9 +1215,9 @@
       <charmReference id="Lunar.Weapon-ClutchingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1230,9 +1230,9 @@
       <charmReference id="Lunar.MonkeyPawAdvantage"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1245,9 +1245,9 @@
       <charmReference id="Lunar.SensingDeadlyFlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1260,9 +1260,9 @@
       <charmReference id="Lunar.SensingDeadlyFlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1275,9 +1275,9 @@
       <charmReference id="Lunar.TigerClawSwat"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1290,9 +1290,9 @@
       <charmReference id="Lunar.TigerClawSwat"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per yard"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1305,9 +1305,9 @@
       <charmReference id="Lunar.FerociousAvalancheTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1320,9 +1320,9 @@
       <charmReference id="Lunar.TigerClawSwat"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1335,9 +1335,9 @@
       <charmReference id="Lunar.SensingDeadlyFlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1350,9 +1350,9 @@
       <charmReference id="Lunar.WeaponFusionMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="or 3 motes"/>
-      </temporary>
+      
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
@@ -1365,9 +1365,9 @@
       <charmReference id="Lunar.WeaponFusionMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1380,9 +1380,9 @@
       <charmReference id="Lunar.StunningMoonsilverBlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1395,9 +1395,9 @@
       <charmReference id="Lunar.StunningMoonsilverBlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="or 3 motes per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1411,10 +1411,10 @@
       <charmReference id="Lunar.DeadlyMoonsilverAffinity"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1426,9 +1426,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1441,9 +1441,9 @@
       <charmReference id="Lunar.EagleEyeAdvantage"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1456,9 +1456,9 @@
       <charmReference id="Lunar.Nature'sHarmonyAdvantage"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1471,9 +1471,9 @@
       <charmReference id="Lunar.KnowingArrow'sPath"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -1486,10 +1486,10 @@
       <charmReference id="Lunar.Two-TargetMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per attack"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -1502,9 +1502,9 @@
       <charmReference id="Lunar.SilverWaterfallTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per target"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -1517,9 +1517,9 @@
       <charmReference id="Lunar.KnowingArrow'sPath"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1532,9 +1532,9 @@
       <charmReference id="Lunar.FindingNeedle'sEye"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1547,9 +1547,9 @@
       <charmReference id="Lunar.KnowingArrow'sPath"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1563,10 +1563,10 @@
       <charmReference id="Lunar.Nature'sHarmonyAdvantage"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1579,9 +1579,9 @@
       <charmReference id="Lunar.EagleEyeAdvantage"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1594,9 +1594,9 @@
       <charmReference id="Lunar.WolfEyeAdvantage"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1609,9 +1609,9 @@
       <charmReference id="Lunar.Wind-WingsCarryTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1624,9 +1624,9 @@
       <charmReference id="Lunar.Bow-BendingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1639,9 +1639,9 @@
       <charmReference id="Lunar.Body-PinningStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1654,9 +1654,9 @@
       <charmReference id="Lunar.Body-PinningStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1669,9 +1669,9 @@
       <charmReference id="Lunar.Wind-WingsCarryTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="7"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -1683,9 +1683,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1698,9 +1698,9 @@
       <charmReference id="Lunar.SteelPawStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per enemy denied"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -1713,9 +1713,9 @@
       <charmReference id="Lunar.SteelPawStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -1728,9 +1728,9 @@
       <charmReference id="Lunar.GoldenTigerBlock"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1743,9 +1743,9 @@
       <charmReference id="Lunar.SteelPawStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1758,9 +1758,9 @@
       <charmReference id="Lunar.FelineGuardTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1773,9 +1773,9 @@
       <charmReference id="Lunar.FelineGuardTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1787,9 +1787,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1802,9 +1802,9 @@
       <charmReference id="Lunar.BowingReedTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per success"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1817,9 +1817,9 @@
       <charmReference id="Lunar.BendingBeforeStorm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1832,9 +1832,9 @@
       <charmReference id="Lunar.BowingReedTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1847,9 +1847,9 @@
       <charmReference id="Lunar.BowingReedTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1862,9 +1862,9 @@
       <charmReference id="Lunar.UnmovingBearDefense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1877,10 +1877,10 @@
       <charmReference id="Lunar.UnmovingBearDefense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -1893,9 +1893,9 @@
       <charmReference id="Lunar.UnmovingBearDefense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="or 3 motes"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1909,10 +1909,10 @@
       <charmReference id="Lunar.Pack-SavingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -1924,9 +1924,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2 points"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1939,9 +1939,9 @@
       <charmReference id="Lunar.Hide-TougheningEssence"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per point"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1954,9 +1954,9 @@
       <charmReference id="Lunar.Hide-TougheningEssence"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1969,10 +1969,10 @@
       <charmReference id="Lunar.Armor-FormingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -1986,10 +1986,10 @@
       <charmReference id="Lunar.ScalesDragon"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8" text="per turn"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -2001,10 +2001,10 @@
       <essence value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="Varies"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <combo comboable="false"/>
     <duration duration="Instant"/>
@@ -2017,10 +2017,10 @@
       <essence value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="Varies"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <combo comboable="false"/>
     <duration duration="Instant"/>
@@ -2033,13 +2033,11 @@
       <essence value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>        
-      </temporary>
-      <permanent>
-      	<experience cost="3"/>
-      </permanent>
+      	<experience cost="3" permanent="true"/>
+
     </cost>
     <combo comboable="false"/>
     <duration duration="Instant"/>
@@ -2053,13 +2051,10 @@
       <charmReference id="Lunar.Form-FindingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
-      <permanent>
-      	<experience cost="1"/>
-      </permanent>
+      	<experience cost="1" permanent="true"/>
     </cost>
     <combo comboable="false"/>
     <duration duration="Instant"/>
@@ -2073,9 +2068,9 @@
       <charmReference id="Lunar.Tatoo-CuttingWisdom"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="Varies"/>
-      </temporary>
+      
     </cost>
     <combo comboable="false"/>
     <duration duration="Indefinite"/>
@@ -2090,10 +2085,10 @@
       <charmReference id="Lunar.Moonsilver-ShapingRite"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="Varies"/>
         <willpower cost="2"/>
-      </temporary>
+      
     </cost>
     <combo comboable="false"/>
     <duration duration="Instant"/>
@@ -2106,9 +2101,9 @@
       <trait id="Wits" value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -2121,9 +2116,9 @@
       <charmReference id="Lunar.Whale-BreathTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
@@ -2136,9 +2131,9 @@
       <charmReference id="Lunar.BeastInstinctMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="Staminax10" unit="minute"/>
     <charmtype type="Simple"/>
@@ -2151,9 +2146,9 @@
       <charmReference id="Lunar.BeastInstinctMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -2166,9 +2161,9 @@
       <charmReference id="Lunar.BeastInstinctMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -2181,9 +2176,9 @@
       <charmReference id="Lunar.HeatAdaptingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="10" unit="turn"/>
     <charmtype type="Simple"/>
@@ -2196,9 +2191,9 @@
       <charmReference id="Lunar.BeastInstinctMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2211,9 +2206,9 @@
       <charmReference id="Lunar.BeastInstinctMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -2226,9 +2221,9 @@
       <charmReference id="Lunar.BeastInstinctMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -2242,9 +2237,9 @@
       <charmReference id="Lunar.Food-ScentingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <duration event="Released"/>
     <charmtype type="Simple"/>
@@ -2257,9 +2252,9 @@
       <charmReference id="Lunar.WolfEnduranceMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="and 1 Stamina"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="month"/>
     <charmtype type="Simple"/>
@@ -2272,9 +2267,9 @@
       <charmReference id="Lunar.WolfEnduranceMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -2287,9 +2282,9 @@
       <charmReference id="Lunar.WolfEnduranceMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -2301,9 +2296,9 @@
       <trait id="Stamina" value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Reflexive"/>
@@ -2316,9 +2311,9 @@
       <charmReference id="Lunar.Pain-NumbingPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Reflexive"/>
@@ -2331,9 +2326,9 @@
       <charmReference id="Lunar.WillStoicWarrior"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -2345,9 +2340,9 @@
       <trait id="Stamina" value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2360,9 +2355,9 @@
       <charmReference id="Lunar.Infection-ResistingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2375,9 +2370,9 @@
       <charmReference id="Lunar.Infection-ResistingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per health level"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2390,9 +2385,9 @@
       <charmReference id="Lunar.Bruise-ReliefTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per health level"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2405,9 +2400,9 @@
       <charmReference id="Lunar.Infection-ResistingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2421,10 +2416,10 @@
       <charmReference id="Lunar.HaltingScarletFlow"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2 or 3" text="per health level"/>
         <willpower cost="1" text="per health level"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2436,9 +2431,9 @@
       <trait id="Perception" value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2451,9 +2446,9 @@
       <charmReference id="Lunar.Sense-SharpeningChange"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="10" unit="turn"/>
     <charmtype type="Simple"/>
@@ -2466,9 +2461,9 @@
       <charmReference id="Lunar.Sense-SharpeningChange"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="10" unit="turn"/>
     <charmtype type="Simple"/>
@@ -2481,9 +2476,9 @@
       <charmReference id="Lunar.Sense-SharpeningChange"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="10" unit="turn"/>
     <charmtype type="Simple"/>
@@ -2495,9 +2490,9 @@
       <trait id="Charisma" value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2510,9 +2505,9 @@
       <charmReference id="Lunar.UnspeakingAuraDread"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2525,10 +2520,10 @@
       <charmReference id="Lunar.BeastCalmingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
@@ -2541,9 +2536,9 @@
       <charmReference id="Lunar.UnspeakingAuraDread"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2556,9 +2551,9 @@
       <charmReference id="Lunar.AttentionDemandingPresence"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -2572,9 +2567,9 @@
       <charmReference id="Lunar.Pack-FormingPresence"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Sustained"/>
     <charmtype type="Simple"/>
@@ -2587,9 +2582,9 @@
       <charmReference id="Lunar.Sense-SharpeningChange"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2602,9 +2597,9 @@
       <charmReference id="Lunar.Ever-WaryFoxTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2617,9 +2612,9 @@
       <charmReference id="Lunar.Ever-WaryFoxTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2632,9 +2627,9 @@
       <charmReference id="Lunar.Ever-WaryFoxTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2647,9 +2642,9 @@
       <charmReference id="Lunar.UnerringEarthDirectionSense"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
@@ -2662,9 +2657,9 @@
       <charmReference id="Lunar.Ever-WaryFoxTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2677,10 +2672,10 @@
       <charmReference id="Lunar.Wyld-SensingInstincts"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="lunarMonth"/>
     <charmtype type="Simple"/>
@@ -2693,9 +2688,9 @@
       <charmReference id="Lunar.Wyld-SensingInstincts"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2709,10 +2704,10 @@
       <charmReference id="Lunar.WyldObjectAppraisalMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10" text="plus 1 mote per pound"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2725,10 +2720,10 @@
       <charmReference id="Lunar.HarmonyWithRealityTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="lunarMonth"/>
     <charmtype type="Simple"/>
@@ -2741,9 +2736,9 @@
       <charmReference id="Lunar.HeightenedSightMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2756,9 +2751,9 @@
       <charmReference id="Lunar.HeightenedSightMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2771,9 +2766,9 @@
       <charmReference id="Lunar.HeightenedSightMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2786,9 +2781,9 @@
       <charmReference id="Lunar.HeightenedHearingandTouchMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2801,10 +2796,10 @@
       <charmReference id="Lunar.ComprehendingEarsMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2817,9 +2812,9 @@
       <charmReference id="Lunar.ComprehendingEarsMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2832,9 +2827,9 @@
       <charmReference id="Lunar.HeightenedHearingandTouchMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2847,9 +2842,9 @@
       <charmReference id="Lunar.RabbitEarMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2862,9 +2857,9 @@
       <charmReference id="Lunar.HeightenedSmellandTasteMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2877,9 +2872,9 @@
       <charmReference id="Lunar.HeightenedSmellandTasteMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -2892,9 +2887,9 @@
       <charmReference id="Lunar.HeightenedSmellandTasteMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -2907,9 +2902,9 @@
       <charmReference id="Lunar.Emotion-RevealingScent"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2921,9 +2916,9 @@
       <trait id="Dexterity" value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2936,9 +2931,9 @@
       <charmReference id="Lunar.StealthyFoxMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2951,9 +2946,9 @@
       <charmReference id="Lunar.ChameleonSkinDisguise"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -2966,9 +2961,9 @@
       <charmReference id="Lunar.Object-ConcealingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5" text="per person"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -2981,10 +2976,10 @@
       <charmReference id="Lunar.StealthyFoxMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -2997,10 +2992,10 @@
       <charmReference id="Lunar.TracelessPassageTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4" text="plus 2 motes per person"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
@@ -3012,9 +3007,9 @@
       <trait id="Charisma" value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3027,9 +3022,9 @@
       <charmReference id="Lunar.Tale-SpinningMastery"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="30MinutesAnd10PerDie"/>
     <charmtype type="Simple"/>
@@ -3042,10 +3037,10 @@
       <charmReference id="Lunar.Lore-SpeakingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="1HourPlus"/>
     <charmtype type="Simple"/>
@@ -3058,9 +3053,9 @@
       <charmReference id="Lunar.Tale-SpinningMastery"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
@@ -3073,9 +3068,9 @@
       <charmReference id="Lunar.LionRoarMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3088,9 +3083,9 @@
       <charmReference id="Lunar.Tale-SpinningMastery"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3103,10 +3098,10 @@
       <charmReference id="Lunar.Wind-SpeakingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4" text="per 10 words/person"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3119,10 +3114,10 @@
       <charmReference id="Lunar.EmotionShapingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="plus 1 per 10 people"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3135,10 +3130,10 @@
       <charmReference id="Lunar.Crowd-IncitingMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6" text="plus 1 per 10 people"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3151,10 +3146,10 @@
       <charmReference id="Lunar.Crowd-CalmingPronouncement"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6" text="plus 1 per 25 people"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="battle"/>
     <charmtype type="Simple"/>
@@ -3167,10 +3162,10 @@
       <charmReference id="Lunar.Courage-BuildingAdress"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="5" unit="turn"/>
     <charmtype type="Special"/>
@@ -3183,9 +3178,9 @@
       <charmReference id="Lunar.EmotionShapingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
@@ -3198,9 +3193,9 @@
       <charmReference id="Lunar.Foe-TauntingUtterance"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3213,9 +3208,9 @@
       <charmReference id="Lunar.EmotionShapingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -3228,9 +3223,9 @@
       <charmReference id="Lunar.ImposingPresenceAttitude"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="per die"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3243,9 +3238,9 @@
       <charmReference id="Lunar.FearfulLunarForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3257,10 +3252,10 @@
       <trait id="Wits" value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5" text="per person"/>
         <willpower cost="1" text="per person"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3273,9 +3268,9 @@
       <charmReference id="Lunar.BrotherhoodLakeandRiver"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per wolf-sibling"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
@@ -3288,9 +3283,9 @@
       <charmReference id="Lunar.BrotherhoodLakeandRiver"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per sibling called"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -3302,9 +3297,9 @@
       <trait id="Perception" value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3317,9 +3312,9 @@
       <charmReference id="Lunar.Spirit-ScentingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="8"/>
-      </temporary>
+      
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3332,10 +3327,10 @@
       <charmReference id="Lunar.Spirit-ScentingTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -3348,10 +3343,10 @@
       <charmReference id="Lunar.Devil-RestrainingGrip"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>

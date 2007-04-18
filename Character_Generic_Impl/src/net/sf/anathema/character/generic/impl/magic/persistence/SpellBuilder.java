@@ -13,7 +13,6 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostLis
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBuilder;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.general.ICostList;
-import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
 import net.sf.anathema.character.generic.magic.general.ISourceList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
@@ -86,14 +85,13 @@ public class SpellBuilder {
     String id = spellElement.attributeValue("id"); //$NON-NLS-1$
     String circleId = spellElement.attributeValue("circle"); //$NON-NLS-1$
     ICostList temporaryCost = costListBuilder.buildTemporaryCostList(spellElement.element("cost").element("temporary")); //$NON-NLS-1$ //$NON-NLS-2$
-    IPermanentCostList permanentCost = costListBuilder.buildPermanentCostList(spellElement.element("cost").element("permanent")); //$NON-NLS-1$ //$NON-NLS-2$
     final Element targetElement = spellElement.element("target"); //$NON-NLS-1$
     String target = null;
     if (targetElement != null) {
       target = targetElement.attributeValue("target"); //$NON-NLS-1$
     }
     final ISourceList sourceList = buildSource(spellElement);
-    return new Spell(id, CircleType.valueOf(circleId), temporaryCost, permanentCost, sourceList, target);
+    return new Spell(id, CircleType.valueOf(circleId), temporaryCost, sourceList, target);
   }
 
   private ISourceList buildSource(Element spellElement) {

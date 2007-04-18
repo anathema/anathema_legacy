@@ -5,9 +5,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="NoStyle"/>
@@ -25,10 +25,10 @@
       <charmReference id="Dragon-Blooded.PasiapsHumility"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="AllowsCelestial" visualize="true"/>
@@ -46,9 +46,9 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="NoStyle"/>
@@ -66,10 +66,10 @@
       <charmReference id="Dragon-Blooded.Walker-Among-IrisesPerception"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="5"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="NoStyle"/>
@@ -90,9 +90,9 @@
       <essence value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="6"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="NoStyle"/>
@@ -112,10 +112,10 @@
       <charmReference id="Dragon-Blooded.Tiger-and-Bear-Awareness"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>

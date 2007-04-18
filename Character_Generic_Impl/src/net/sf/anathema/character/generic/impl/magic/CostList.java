@@ -9,11 +9,17 @@ public class CostList implements ICostList {
   private final ICost essence;
   private final ICost willpower;
   private final IHealthCost health;
+  private final ICost xp;
 
-  public CostList(ICost essence, ICost willpower, IHealthCost health) {
+  public CostList(ICost essence, ICost willpower, IHealthCost health, ICost xp) {
+    this.xp = xp;
     this.essence = essence;
     this.willpower = willpower;
     this.health = health;
+  }
+
+  public ICost getXPCost() {
+    return xp != null ? xp : Cost.NULL_COST;
   }
 
   public ICost getEssenceCost() {

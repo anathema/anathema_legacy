@@ -5,9 +5,9 @@
   <essence value="2"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Supplemental"/>
@@ -23,9 +23,9 @@
   <charmReference id="Dragon-Blooded.Dragon-GracedWeapon"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive"/>
@@ -40,9 +40,9 @@
   <charmReference id="Dragon-Blooded.Dragon-GracedWeapon"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2" text="or 4m"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Supplemental"/>
@@ -59,10 +59,10 @@
   <charmReference id="Dragon-Blooded.Dragon-GracedWeapon"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -80,10 +80,10 @@
   <charmAttributeRequirement attribute="ExcellencyMelee" count="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
    <willpower cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive">
@@ -101,9 +101,9 @@
   <charmReference id="Dragon-Blooded.TerrestrialReinforcement.Melee"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="2" text="+1 per ally"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="action"/>
  <charmtype type="Simple"/>
@@ -118,9 +118,9 @@
   <charmReference id="Dragon-Blooded.ThreshingFloorTechnique"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="8"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="ExtraAction"/>

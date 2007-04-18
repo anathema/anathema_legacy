@@ -8,9 +8,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -24,9 +24,9 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -42,9 +42,9 @@
       <charmReference id="Terrestrial.PoundingSurfStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration event="NextAction"/>
     <charmtype type="Supplemental"/>
@@ -61,9 +61,9 @@
       <charmReference id="Terrestrial.FlowRocks"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple">
@@ -80,9 +80,9 @@
       <charmReference id="Terrestrial.TerrestrialHeroForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per attack"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -97,10 +97,10 @@
       <charmReference id="Terrestrial.TerrestrialHeroForm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
         <essence willpower="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -116,9 +116,9 @@
       <charmReference id="Terrestrial.RiptideMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -134,9 +134,9 @@
       <charmAttributeRequirement attribute="MartialArts" count="1"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
@@ -155,9 +155,9 @@
       <charmReference id="Terrestrial.Blade-DeflectingPalm"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -174,9 +174,9 @@
       <charmReference id="Terrestrial.BecomeHammer"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -194,10 +194,10 @@
       <charmReference id="Terrestrial.BecomeHammer"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -213,10 +213,10 @@
       <charmReference id="Terrestrial.RiptideMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="action"/>
     <charmtype type="Supplemental"/>
@@ -234,10 +234,10 @@
       <charmReference id="Terrestrial.BondsUnbreakableIceTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="10"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="Essence" unit="action"/>
     <charmtype type="Supplemental"/>
@@ -255,10 +255,10 @@
       <charmReference id="Terrestrial.CrushingGlacierPrana"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="3" text="+3 per additional target"/>
         <willpower cost="1"/>
-      </temporary>
+      
     </cost>
     <duration amount="MartialArts" unit="action"/>
     <charmtype type="Supplemental"/>
@@ -274,9 +274,9 @@
       <charmReference id="Terrestrial.DrowningEmbrace"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="1" text="per 2 dice"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -293,9 +293,9 @@
       <charmReference id="Terrestrial.SlipperyEscapeMethod"/>
     </prerequisite>
     <cost>
-      <temporary>
+      
         <essence cost="2"/>
-      </temporary>
+      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">

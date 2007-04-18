@@ -3,9 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_EXALT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COST;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PERMANENT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_TEMPORARY;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmAttributeBuilder;
@@ -27,7 +25,6 @@ import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
-import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -66,11 +63,8 @@ public class CharmBuilder implements ICharmBuilder {
     try {
       ICharacterType characterType = getCharacterType(charmElement);
       ICostList temporaryCost;
-      IPermanentCostList permanentCost;
       try {
-        Element costElement = charmElement.element(TAG_COST);
-        temporaryCost = costListBuilder.buildTemporaryCostList(costElement.element(TAG_TEMPORARY));
-        permanentCost = costListBuilder.buildPermanentCostList(costElement.element(TAG_PERMANENT));
+        temporaryCost = costListBuilder.buildTemporaryCostList(charmElement.element(TAG_COST));
       }
       catch (PersistenceException e) {
         throw new CharmException("Error building costlist for charm " + id, e); //$NON-NLS-1$
@@ -89,7 +83,6 @@ public class CharmBuilder implements ICharmBuilder {
           group,
           prerequisiteList,
           temporaryCost,
-          permanentCost,
           comboRules,
           duration,
           charmTypeModel,

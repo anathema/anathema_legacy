@@ -5,9 +5,9 @@
   <essence value="1"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="1"/>
-  </temporary>
+  
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
@@ -21,9 +21,9 @@
   <charmReference id="Dragon-Blooded.HurricanePredictingGlance"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="5"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="hour"/>
  <charmtype type="Simple"/>
@@ -37,9 +37,9 @@
   <charmReference id="Dragon-Blooded.HurricanePredictingGlance"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -53,9 +53,9 @@
   <charmReference id="Dragon-Blooded.HurricanePredictingGlance"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Reflexive"/>
@@ -70,9 +70,9 @@
   <charmReference id="Dragon-Blooded.FinePassageNegotiatingStyle"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
@@ -86,9 +86,9 @@
   <essence value="2"/>
  </prerequisite>
  <cost>
-  <temporary>
+  
    <essence cost="3" text="or 6 motes"/>
-  </temporary>
+  
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Reflexive"/>

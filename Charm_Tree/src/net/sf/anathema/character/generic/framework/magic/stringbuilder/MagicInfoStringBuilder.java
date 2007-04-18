@@ -32,7 +32,7 @@ public class MagicInfoStringBuilder implements IMagicInfoStringBuilder {
     String essenceCost = essenceBuilder.getCostString(temporaryCost.getEssenceCost());
     String willpowerCost = willpowerBuilder.getCostString(temporaryCost.getWillpowerCost());
     String healthCost = healthBuilder.getCostString(temporaryCost.getHealthCost());
-    String xpCost = experienceBuilder.getCostString(magic.getPermanentCost().getXPCost());
+    String xpCost = experienceBuilder.getCostString(temporaryCost.getXPCost());
     return concatenator.buildCostString(essenceCost, willpowerCost, healthCost, xpCost);
   }
 }

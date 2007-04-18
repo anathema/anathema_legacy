@@ -17,8 +17,6 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
 
   public IExaltedSourceBook getSource();
 
-  public IConfigurablePermanentCostList getPermanentCost();
-
   public IConfigurableCostList getTemporaryCost();
 
   public IExaltedEdition getEdition();
