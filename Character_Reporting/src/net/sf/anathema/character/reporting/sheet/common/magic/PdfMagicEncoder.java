@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.CharmStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MultipleEffectCharmStats;
@@ -25,7 +24,6 @@ import com.lowagie.text.pdf.PdfContentByte;
 public class PdfMagicEncoder implements IPdfContentBoxEncoder {
 
   public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
-    final ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
     for (IMagicStats stats : character.getGenericCharmStats()) {
       printStats.add(stats);
@@ -33,7 +31,7 @@ public class PdfMagicEncoder implements IPdfContentBoxEncoder {
     for (IMagic magic : character.getAllLearnedMagic()) {
       magic.accept(new IMagicVisitor() {
         public void visitCharm(ICharm charm) {
-          if (CharmUtilities.isGenericCharmFor(charm, characterType)) {
+          if (CharmUtilities.isGenericCharmFor(charm, character)) {
             return;
           }
           if (character.isMultipleEffectCharm(charm)) {

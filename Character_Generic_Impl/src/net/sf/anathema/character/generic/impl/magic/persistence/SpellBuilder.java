@@ -84,7 +84,7 @@ public class SpellBuilder {
   private ISpell buildSpell(Element spellElement) throws PersistenceException {
     String id = spellElement.attributeValue("id"); //$NON-NLS-1$
     String circleId = spellElement.attributeValue("circle"); //$NON-NLS-1$
-    ICostList temporaryCost = costListBuilder.buildTemporaryCostList(spellElement.element("cost").element("temporary")); //$NON-NLS-1$ //$NON-NLS-2$
+    ICostList temporaryCost = costListBuilder.buildTemporaryCostList(spellElement.element("cost")); //$NON-NLS-1$
     final Element targetElement = spellElement.element("target"); //$NON-NLS-1$
     String target = null;
     if (targetElement != null) {

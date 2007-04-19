@@ -14,9 +14,6 @@ public class CostListBuilder implements ICostListBuilder {
   private final HealthCostBuilder healthCostBuilder = new HealthCostBuilder();
 
   public ICostList buildTemporaryCostList(Element costListElement) throws PersistenceException {
-    if (costListElement == null) {
-      throw new PersistenceException("Temporary cost element required."); //$NON-NLS-1$
-    }
     return buildCostList(costListElement);
   }
 

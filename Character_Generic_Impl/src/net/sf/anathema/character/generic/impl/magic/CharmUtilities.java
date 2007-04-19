@@ -1,25 +1,21 @@
 package net.sf.anathema.character.generic.impl.magic;
 
+import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class CharmUtilities {
 
-  private static final String FIRST_EXCELLENCY = ".1stExcellency"; //$NON-NLS-1$
-  private static final String SECOND_EXCELLENCY = ".2ndExcellency"; //$NON-NLS-1$
-  private static final String THIRD_EXCELLENCY = ".3rdExcellency"; //$NON-NLS-1$
-  private static final String INFINITE_MASTERY = ".InfiniteMastery"; //$NON-NLS-1$
-  private static final String ESSENCE_FLOW = ".EssenceFlow"; //$NON-NLS-1$
-  private static final String TERRESTRIAL_REINFORCEMENT = ".TerrestrialReinforcement"; //$NON-NLS-1$
-
-  public static boolean isGenericCharmFor(ICharm charm, ICharacterType type) {
+  public static boolean isGenericCharmFor(ICharm charm, IGenericCharacter character) {
+    IMagicStats[] genericCharmStats = character.getGenericCharmStats();
     String charmId = charm.getId();
-    return charmId.startsWith(type.getId() + FIRST_EXCELLENCY)
-        || charmId.startsWith(type.getId() + SECOND_EXCELLENCY)
-        || charmId.startsWith(type.getId() + THIRD_EXCELLENCY)
-        || charmId.startsWith(type.getId() + INFINITE_MASTERY)
-        || charmId.startsWith(type.getId() + ESSENCE_FLOW)
-        || charmId.startsWith(type.getId() + TERRESTRIAL_REINFORCEMENT);
+    for (IMagicStats stat : genericCharmStats) {
+      if (charmId.startsWith(stat.getName().getId())) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public static String createIDFromName(ICharacterType type, String charmName) {
