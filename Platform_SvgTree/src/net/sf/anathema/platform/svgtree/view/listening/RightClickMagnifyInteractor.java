@@ -14,6 +14,7 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
   private final BoundsCalculator calculator;
   private boolean finished = true;
   private int yStart;
+  private int xStart;
 
   public RightClickMagnifyInteractor(BoundsCalculator calculator) {
     this.calculator = calculator;
@@ -39,6 +40,7 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
     }
     finished = false;
     yStart = e.getY();
+    xStart = e.getX();
   }
 
   @Override
@@ -57,10 +59,7 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
   @Override
   public void mouseDragged(MouseEvent event) {
     JGVTComponent component = (JGVTComponent) event.getSource();
-    int xCenter = component.getWidth() / 2;
-    int yCenter = component.getHeight() / 2;
-
-    AffineTransform at = AffineTransform.getTranslateInstance(xCenter, yCenter);
+    AffineTransform at = AffineTransform.getTranslateInstance(xStart, yStart);
     int movement = event.getY() - yStart;
     if (movement < 0) {
       movement = movement > -5 ? 15 : movement - 10;
@@ -72,7 +71,7 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
     scale = scale > 0 ? scale : -1 / scale;
 
     at.scale(scale, scale);
-    at.translate(-xCenter, -yCenter);
+    at.translate(-xStart, -yStart);
     component.setPaintingTransform(at);
   }
 }
