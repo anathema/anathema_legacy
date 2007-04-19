@@ -14,6 +14,7 @@ public class WillpowerCostStringBuilderTest extends BasicTestCase {
     super.setUp();
     DummyResources resources = new DummyResources();
     resources.putString("WillpowerType.Name", "Willpower"); //$NON-NLS-1$ //$NON-NLS-2$
+    resources.putString("Magic.Cost.Permanent", "permanent"); //$NON-NLS-1$//$NON-NLS-2$
     builder = new CostStringBuilder(resources, "WillpowerType.Name"); //$NON-NLS-1$
   }
 

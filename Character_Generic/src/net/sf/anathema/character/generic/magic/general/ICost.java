@@ -4,4 +4,6 @@ public interface ICost {
   public String getCost();
 
   public String getText();
+
+  public boolean isPermanent();
 }

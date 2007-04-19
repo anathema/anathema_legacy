@@ -24,12 +24,19 @@ public class Cost implements ICost {
   }
 
   @Override
+  public boolean isPermanent() {
+    return permanent;
+  }
+
+  @Override
   public boolean equals(Object obj) {
     if (!(obj instanceof Cost)) {
       return false;
     }
     Cost other = (Cost) obj;
-    return other.costString.equals(this.costString) && other.text.equals(this.text);
+    return other.costString.equals(this.costString)
+        && other.text.equals(this.text)
+        && other.permanent == this.permanent;
   }
 
   @Override
