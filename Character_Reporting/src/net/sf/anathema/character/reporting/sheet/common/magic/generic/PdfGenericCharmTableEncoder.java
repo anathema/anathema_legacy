@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableCell;
@@ -50,8 +50,10 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
     PdfPTable table = new PdfPTable(createColumnWidths());
     table.setWidthPercentage(100);
     table.addCell(new TableCell(new Phrase(), Rectangle.NO_BORDER));
-    for (AbilityType abilityType : AbilityType.getAbilityTypes(ExaltedEdition.SecondEdition)) {
-      table.addCell(createHeaderCell(directContent, abilityType));
+    for (ITraitTypeGroup group : character.getAbilityTypeGroups()) {
+      for (ITraitType type : group.getAllGroupTypes()) {
+        table.addCell(createHeaderCell(directContent, type));
+      }
     }
     for (IMagicStats stats : character.getGenericCharmStats()) {
       Phrase charmPhrase = new Phrase(stats.getNameString(resources), font);
@@ -101,7 +103,7 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
     return tableCell;
   }
 
-  private PdfPCell createHeaderCell(PdfContentByte directContent, AbilityType abilityType) throws DocumentException {
+  private PdfPCell createHeaderCell(PdfContentByte directContent, ITraitType abilityType) throws DocumentException {
     directContent.setColorStroke(Color.BLACK);
     directContent.setColorFill(Color.BLACK);
     String text = resources.getString(abilityType.getId());
