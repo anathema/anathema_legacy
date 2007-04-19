@@ -34,7 +34,8 @@ public class SvgTreeListening {
   private final EventListener canvasResettingListener = new EventListener() {
     public void handleEvent(Event evt) {
       canvas.setToolTipText(null);
-      canvas.setCursorInternal(Cursor.getDefaultCursor());
+      canvas.setCursorInternal(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      leftClickPanInteractor.setEnabled(true);
     }
   };
 
@@ -45,6 +46,7 @@ public class SvgTreeListening {
         String nodeId = group.getId();
         setCursor(nodeId);
         setCanvasTooltip(nodeId);
+        leftClickPanInteractor.setEnabled(false);
       }
     }
   };
@@ -56,9 +58,11 @@ public class SvgTreeListening {
         String nodeId = group.getId();
         fireNodeSelectionEvent(nodeId);
         setCursor(nodeId);
+        setCanvasTooltip(nodeId);
       }
     }
   };
+  private LeftClickPanInteractor leftClickPanInteractor;
 
   public SvgTreeListening(final AnathemaCanvas canvas, ISvgTreeViewProperties viewProperties) {
     this.canvas = canvas;
@@ -76,6 +80,8 @@ public class SvgTreeListening {
     List<Interactor> interactors = canvas.getInteractors();
     interactors.add(new RightClickMagnifyInteractor(boundsCalculator));
     interactors.add(new RightClickPanInteractor(boundsCalculator));
+    this.leftClickPanInteractor = new LeftClickPanInteractor(boundsCalculator, canvas);
+    interactors.add(leftClickPanInteractor);
     interactors.add(new DoubleRightClickResetTransformInteractor(boundsCalculator));
   }
 
@@ -137,7 +143,6 @@ public class SvgTreeListening {
     boolean isDeselectable = properties.isNodeDeselectable(nodeId);
     boolean isSelectable = properties.isNodeSelectable(nodeId);
     setCursorForNode(isSelected, isSelectable, isDeselectable);
-    setCanvasTooltip(nodeId);
   }
 
   private void setCursorForNode(boolean isSelected, boolean isSelectable, boolean isDeselectable) {

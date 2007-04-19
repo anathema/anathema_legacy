@@ -12,43 +12,15 @@ import org.apache.batik.swing.gvt.InteractorAdapter;
 import org.apache.batik.swing.gvt.JGVTComponent;
 
 public class LeftClickPanInteractor extends InteractorAdapter {
-  /**
-   * The cursor for panning.
-   */
   public final static Cursor PAN_CURSOR = new Cursor(Cursor.MOVE_CURSOR);
-
-  /**
-   * Whether the interactor has finished.
-   */
   protected boolean finished = true;
-
-  /**
-   * The mouse x start position.
-   */
   protected int xStart;
-
-  /**
-   * The mouse y start position.
-   */
   protected int yStart;
-
-  /**
-   * The mouse x current position.
-   */
-  protected int xCurrent;
-
-  /**
-   * The mouse y current position.
-   */
-  protected int yCurrent;
-
-  /**
-   * To store the previous cursor.
-   */
   protected Cursor previousCursor;
 
   private final IAnathemaCanvas canvas;
   private final BoundsCalculator calculator;
+  private boolean enabled;
 
   public LeftClickPanInteractor(BoundsCalculator calculator, IAnathemaCanvas canvas) {
     this.calculator = calculator;
@@ -62,7 +34,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
 
   @Override
   public boolean startInteraction(InputEvent ie) {
-    if (!(ie instanceof MouseEvent)) {
+    if (!enabled || !(ie instanceof MouseEvent)) {
       return false;
     }
     int mods = ie.getModifiers();
@@ -71,8 +43,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
 
   @Override
   public void mousePressed(MouseEvent e) {
-    if (!finished) {
-      mouseExited(e);
+    if (!enabled || !finished) {
       return;
     }
     finished = false;
@@ -85,14 +56,12 @@ public class LeftClickPanInteractor extends InteractorAdapter {
 
   @Override
   public void mouseReleased(MouseEvent e) {
-    if (finished) {
+    if (!enabled || finished) {
       return;
     }
     finished = true;
     JGVTComponent c = (JGVTComponent) e.getSource();
-    xCurrent = e.getX();
-    yCurrent = e.getY();
-    AffineTransform at = AffineTransform.getTranslateInstance(xCurrent - xStart, yCurrent - yStart);
+    AffineTransform at = createTranslateTransform(e);
     AffineTransform rt = (AffineTransform) c.getRenderingTransform().clone();
     rt.preConcatenate(at);
     c.setRenderingTransform(rt);
@@ -103,22 +72,18 @@ public class LeftClickPanInteractor extends InteractorAdapter {
   }
 
   @Override
-  public void mouseExited(MouseEvent e) {
-    finished = true;
-    JGVTComponent c = (JGVTComponent) e.getSource();
-    c.setPaintingTransform(null);
-    if (c.getCursor() == PAN_CURSOR) {
-      canvas.setCursorInternal(previousCursor);
-    }
-    calculator.reset();
-  }
-
-  @Override
   public void mouseDragged(MouseEvent e) {
     JGVTComponent component = (JGVTComponent) e.getSource();
-    xCurrent = e.getX();
-    yCurrent = e.getY();
-    AffineTransform transform = AffineTransform.getTranslateInstance(xCurrent - xStart, yCurrent - yStart);
+    AffineTransform transform = createTranslateTransform(e);
     component.setPaintingTransform(transform);
+  }
+
+  private AffineTransform createTranslateTransform(MouseEvent e) {
+    AffineTransform transform = AffineTransform.getTranslateInstance(e.getX() - xStart, e.getY() - yStart);
+    return transform;
+  }
+
+  public void setEnabled(boolean enabled) {
+    this.enabled = enabled;
   }
 }
