@@ -23,6 +23,8 @@ import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGGElement;
+import org.w3c.dom.svg.SVGTSpanElement;
+import org.w3c.dom.svg.SVGTextElement;
 
 public class SvgTreeListening {
 
@@ -33,21 +35,22 @@ public class SvgTreeListening {
 
   private final EventListener canvasResettingListener = new EventListener() {
     public void handleEvent(Event evt) {
+      if (evt.getTarget() instanceof SVGTSpanElement || evt.getTarget() instanceof SVGTextElement) {
+        return;
+      }
       canvas.setToolTipText(null);
-      canvas.setCursorInternal(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      canvas.setCursorInternal(properties.getDefaultCursor());
       leftClickPanInteractor.setEnabled(true);
     }
   };
 
   private final EventListener cursorTooltipInitListener = new EventListener() {
     public void handleEvent(Event evt) {
-      if (evt instanceof MouseEvent) {
-        SVGGElement group = (SVGGElement) evt.getCurrentTarget();
-        String nodeId = group.getId();
-        setCursor(nodeId);
-        setCanvasTooltip(nodeId);
-        leftClickPanInteractor.setEnabled(false);
-      }
+      SVGGElement group = (SVGGElement) evt.getCurrentTarget();
+      String nodeId = group.getId();
+      setCursor(nodeId);
+      setCanvasTooltip(nodeId);
+      leftClickPanInteractor.setEnabled(false);
     }
   };
 
@@ -80,9 +83,10 @@ public class SvgTreeListening {
     List<Interactor> interactors = canvas.getInteractors();
     interactors.add(new RightClickMagnifyInteractor(boundsCalculator));
     interactors.add(new RightClickPanInteractor(boundsCalculator));
-    this.leftClickPanInteractor = new LeftClickPanInteractor(boundsCalculator, canvas);
+    this.leftClickPanInteractor = new LeftClickPanInteractor(boundsCalculator, canvas, properties.getDragCursor());
     interactors.add(leftClickPanInteractor);
     interactors.add(new DoubleRightClickResetTransformInteractor(boundsCalculator));
+    canvas.setCursorInternal(properties.getDefaultCursor());
   }
 
   public void addNodeSelectionListener(final INodeSelectionListener listener) {
@@ -139,7 +143,7 @@ public class SvgTreeListening {
   }
 
   private void setCursor(final String nodeId) {
-    Cursor cursor =   properties.getCursor(nodeId);
-    canvas.setCursorInternal(cursor);    
+    Cursor cursor = properties.getCursor(nodeId);
+    canvas.setCursorInternal(cursor);
   }
 }

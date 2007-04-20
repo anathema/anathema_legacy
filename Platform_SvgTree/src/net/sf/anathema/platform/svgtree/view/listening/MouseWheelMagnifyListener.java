@@ -18,7 +18,7 @@ public class MouseWheelMagnifyListener implements MouseWheelListener {
 
   public void mouseWheelMoved(MouseWheelEvent event) {
     JGVTComponent component = (JGVTComponent) event.getSource();
-    double scale = 1 + 0.1 * event.getWheelRotation();
+    double scale = 1 + 0.2 * event.getWheelRotation();
     int x = event.getX();
     int y = event.getY();
     AffineTransform at = AffineTransform.getTranslateInstance(x, y);

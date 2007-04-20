@@ -12,7 +12,6 @@ import org.apache.batik.swing.gvt.InteractorAdapter;
 import org.apache.batik.swing.gvt.JGVTComponent;
 
 public class LeftClickPanInteractor extends InteractorAdapter {
-  public final static Cursor PAN_CURSOR = new Cursor(Cursor.MOVE_CURSOR);
   protected boolean finished = true;
   protected int xStart;
   protected int yStart;
@@ -21,10 +20,12 @@ public class LeftClickPanInteractor extends InteractorAdapter {
   private final IAnathemaCanvas canvas;
   private final BoundsCalculator calculator;
   private boolean enabled;
+  private final Cursor dragCursor;
 
-  public LeftClickPanInteractor(BoundsCalculator calculator, IAnathemaCanvas canvas) {
+  public LeftClickPanInteractor(BoundsCalculator calculator, IAnathemaCanvas canvas, Cursor dragCursor) {
     this.calculator = calculator;
     this.canvas = canvas;
+    this.dragCursor = dragCursor;
   }
 
   @Override
@@ -33,12 +34,12 @@ public class LeftClickPanInteractor extends InteractorAdapter {
   }
 
   @Override
-  public boolean startInteraction(InputEvent ie) {
-    if (!enabled || !(ie instanceof MouseEvent)) {
+  public boolean startInteraction(InputEvent event) {
+    if (!(event instanceof MouseEvent)) {
       return false;
     }
-    int mods = ie.getModifiers();
-    return ie.getID() == MouseEvent.MOUSE_PRESSED && (mods & InputEvent.BUTTON1_MASK) != 0;
+    int mods = event.getModifiers();
+    return event.getID() == MouseEvent.MOUSE_PRESSED && (mods & InputEvent.BUTTON1_MASK) != 0;
   }
 
   @Override
@@ -51,7 +52,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
     yStart = e.getY();
     JGVTComponent c = (JGVTComponent) e.getSource();
     previousCursor = c.getCursor();
-    canvas.setCursorInternal(PAN_CURSOR);
+    canvas.setCursorInternal(dragCursor);
   }
 
   @Override
@@ -65,7 +66,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
     AffineTransform rt = (AffineTransform) c.getRenderingTransform().clone();
     rt.preConcatenate(at);
     c.setRenderingTransform(rt);
-    if (c.getCursor() == PAN_CURSOR) {
+    if (c.getCursor() == dragCursor) {
       canvas.setCursorInternal(previousCursor);
     }
     calculator.reset();

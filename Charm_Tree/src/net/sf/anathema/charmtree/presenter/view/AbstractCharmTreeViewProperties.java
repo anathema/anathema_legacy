@@ -1,5 +1,9 @@
 package net.sf.anathema.charmtree.presenter.view;
 
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.Toolkit;
+
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
@@ -12,10 +16,30 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   private static final String REQUIREMENT = "Requirement"; //$NON-NLS-1$
   private final ICharmInfoStringBuilder tooltipTextProvider;
   private final IResources resources;
+  private final Cursor openHandCursor;
+  private final Cursor dragHandCursor;
 
   public AbstractCharmTreeViewProperties(final IResources resources) {
     this.resources = resources;
-    tooltipTextProvider = new CharmInfoStringBuilder(resources);
+    this.tooltipTextProvider = new CharmInfoStringBuilder(resources);
+    this.openHandCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+        resources.getImage(this.getClass(), "CursorHandOpen.png"), //$NON-NLS-1$
+        new Point(0, 0),
+        resources.getString("CharmTreeView.GUI.HandCursor")); //$NON-NLS-1$
+    this.dragHandCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+        resources.getImage(this.getClass(), "CursorHandGrab.png"), //$NON-NLS-1$
+        new Point(0, 0),
+        resources.getString("CharmTreeView.GUI.GrabCursor")); //$NON-NLS-1$
+  }
+
+  @Override
+  public Cursor getDefaultCursor() {
+    return openHandCursor;
+  }
+
+  @Override
+  public Cursor getDragCursor() {
+    return dragHandCursor;
   }
 
   public final String getNodeName(final String nodeId) {

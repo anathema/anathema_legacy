@@ -11,4 +11,8 @@ public interface ISvgTreeViewProperties {
   public String getToolTip(String nodeId);
 
   public Cursor getCursor(String nodeId);
+
+  public Cursor getDefaultCursor();
+
+  public Cursor getDragCursor();
 }
