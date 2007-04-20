@@ -139,20 +139,7 @@ public class SvgTreeListening {
   }
 
   private void setCursor(final String nodeId) {
-    boolean isSelected = properties.isNodeSelected(nodeId);
-    boolean isDeselectable = properties.isNodeDeselectable(nodeId);
-    boolean isSelectable = properties.isNodeSelectable(nodeId);
-    setCursorForNode(isSelected, isSelectable, isDeselectable);
-  }
-
-  private void setCursorForNode(boolean isSelected, boolean isSelectable, boolean isDeselectable) {
-    Cursor currentCursor;
-    if (!isSelected) {
-      currentCursor = !isSelectable ? properties.getDefaultCursor() : properties.getAddCursor();
-    }
-    else {
-      currentCursor = !isDeselectable ? properties.getDefaultCursor() : properties.getRemoveCursor();
-    }
-    canvas.setCursorInternal(currentCursor);
+    Cursor cursor =   properties.getCursor(nodeId);
+    canvas.setCursorInternal(cursor);    
   }
 }

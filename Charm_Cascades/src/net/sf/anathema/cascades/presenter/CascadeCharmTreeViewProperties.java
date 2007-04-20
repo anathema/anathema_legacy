@@ -28,22 +28,6 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   }
 
-  public boolean isNodeSelected(String charmId) {
-    return true;
-  }
-
-  public Cursor getAddCursor() {
-    return Cursor.getDefaultCursor();
-  }
-
-  public Cursor getRemoveCursor() {
-    return Cursor.getDefaultCursor();
-  }
-
-  public boolean isNodeSelectable(String charmId) {
-    return true;
-  }
-
   @Override
   protected ICharm getCharmById(String id) {
     ICharm charm = charmMapsByRules.get(rules).get(type).getCharmById(id);
@@ -65,15 +49,16 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
     return charm;
   }
 
-  public boolean isNodeDeselectable(String charmId) {
-    return false;
-  }
-
   public void setCharmType(IIdentificate type) {
     this.type = type;
   }
 
   public void setRules(IExaltedRuleSet rules) {
     this.rules = rules;
+  }
+
+  @Override
+  public Cursor getCursor(String nodeId) {
+    return Cursor.getDefaultCursor();
   }
 }

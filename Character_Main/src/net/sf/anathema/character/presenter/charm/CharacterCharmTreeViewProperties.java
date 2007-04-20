@@ -27,36 +27,38 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
             resources.getImage(this.getClass(), "CursorMinus.png"), new Point(0, 0), resources.getString("CharmTreeView.GUI.RemoveCursor")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  public boolean isNodeSelected(String charmId) {
-    if (isRequirementNode(charmId)) {
-      return false;
-    }
-    return configuration.isLearned(charmId);
-  }
-
-  public Cursor getAddCursor() {
-    return addCursor;
-  }
-
-  public Cursor getRemoveCursor() {
-    return removeCursor;
-  }
-
-  public boolean isNodeSelectable(String charmId) {
-    return !StringUtilities.isNullOrEmpty(charmId) && !isRequirementNode(charmId) && configuration.isLearnable(charmId);
-  }
-
-  public boolean isNodeDeselectable(String charmId) {
-    return !StringUtilities.isNullOrEmpty(charmId)
-        && !isRequirementNode(charmId)
-        && configuration.isUnlearnable(charmId);
-  }
-
   @Override
   protected ICharm getCharmById(String id) {
     if (isRequirementNode(id)) {
       return null;
     }
     return configuration.getCharmById(id);
+  }
+
+  @Override
+  public Cursor getCursor(String nodeId) {
+    boolean isDeselectable = isNodeDeselectable(nodeId);
+    boolean isSelectable = isNodeSelectable(nodeId);
+    if (isNodeSelected(nodeId)) {
+      return isDeselectable ? removeCursor : Cursor.getDefaultCursor();
+    }
+    return isSelectable ? addCursor : Cursor.getDefaultCursor();
+  }
+
+  private boolean isNodeSelected(String charmId) {
+    if (isRequirementNode(charmId)) {
+      return false;
+    }
+    return configuration.isLearned(charmId);
+  }
+
+  private boolean isNodeSelectable(String charmId) {
+    return !StringUtilities.isNullOrEmpty(charmId) && !isRequirementNode(charmId) && configuration.isLearnable(charmId);
+  }
+
+  private boolean isNodeDeselectable(String charmId) {
+    return !StringUtilities.isNullOrEmpty(charmId)
+        && !isRequirementNode(charmId)
+        && configuration.isUnlearnable(charmId);
   }
 }

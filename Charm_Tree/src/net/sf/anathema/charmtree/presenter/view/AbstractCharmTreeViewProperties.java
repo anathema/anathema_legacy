@@ -1,7 +1,5 @@
 package net.sf.anathema.charmtree.presenter.view;
 
-import java.awt.Cursor;
-
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
@@ -56,10 +54,6 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   }
 
   protected abstract ICharm getCharmById(String id);
-
-  public final Cursor getDefaultCursor() {
-    return Cursor.getDefaultCursor();
-  }
 
   public final String getToolTip(final String charmId) {
     if (isRequirementNode(charmId)) {

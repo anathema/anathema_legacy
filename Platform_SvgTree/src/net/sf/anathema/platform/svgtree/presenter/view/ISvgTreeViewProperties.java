@@ -8,17 +8,7 @@ public interface ISvgTreeViewProperties {
 
   public boolean isRootNode(String nodeId);
 
-  public boolean isNodeSelected(String nodeId);
-
-  public Cursor getAddCursor();
-
-  public Cursor getRemoveCursor();
-
-  public Cursor getDefaultCursor();
-
-  public boolean isNodeSelectable(String nodeId);
-
-  public boolean isNodeDeselectable(String nodeId);
-
   public String getToolTip(String nodeId);
+
+  public Cursor getCursor(String nodeId);
 }
