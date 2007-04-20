@@ -34,19 +34,24 @@ public class SvgTreeListening {
   private final GenericControl<INodeSelectionListener> control = new GenericControl<INodeSelectionListener>();
 
   private final EventListener canvasResettingListener = new EventListener() {
-    public void handleEvent(Event evt) {
-      if (evt.getTarget() instanceof SVGTSpanElement || evt.getTarget() instanceof SVGTextElement) {
+    public void handleEvent(Event event) {
+      if (event.getTarget() instanceof SVGTSpanElement || event.getTarget() instanceof SVGTextElement) {
         return;
       }
       canvas.setToolTipText(null);
-      canvas.setCursorInternal(properties.getDefaultCursor());
+      if (((MouseEvent) event).getButton() == 0) {
+        canvas.setCursorInternal(properties.getForbiddenCursor());
+      }
+      else {
+        canvas.setCursorInternal(properties.getDefaultCursor());
+      }
       leftClickPanInteractor.setEnabled(true);
     }
   };
 
   private final EventListener cursorTooltipInitListener = new EventListener() {
-    public void handleEvent(Event evt) {
-      SVGGElement group = (SVGGElement) evt.getCurrentTarget();
+    public void handleEvent(Event event) {
+      SVGGElement group = (SVGGElement) event.getCurrentTarget();
       String nodeId = group.getId();
       setCursor(nodeId);
       setCanvasTooltip(nodeId);
@@ -55,9 +60,10 @@ public class SvgTreeListening {
   };
 
   private final EventListener selectionInvokingListener = new EventListener() {
-    public void handleEvent(Event evt) {
-      if (evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0 && ((MouseEvent) evt).getDetail() == 1) {
-        SVGGElement group = (SVGGElement) evt.getCurrentTarget();
+    public void handleEvent(Event event) {
+      MouseEvent mouseEvent = (MouseEvent) event;
+      if (mouseEvent.getButton() == 0 && mouseEvent.getDetail() == 1) {
+        SVGGElement group = (SVGGElement) event.getCurrentTarget();
         String nodeId = group.getId();
         fireNodeSelectionEvent(nodeId);
         setCursor(nodeId);
@@ -103,7 +109,7 @@ public class SvgTreeListening {
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
       if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_LISTENER_REQUIRED)) {
-        groupElement.removeEventListener("click", selectionInvokingListener, false); //$NON-NLS-1$
+        groupElement.removeEventListener("mouseup", selectionInvokingListener, false); //$NON-NLS-1$
         groupElement.removeEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
         groupElement.removeEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
       }
@@ -127,7 +133,7 @@ public class SvgTreeListening {
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
       if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_LISTENER_REQUIRED)) {
-        groupElement.addEventListener("click", selectionInvokingListener, false); //$NON-NLS-1$
+        groupElement.addEventListener("mouseup", selectionInvokingListener, false); //$NON-NLS-1$
         groupElement.addEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
         groupElement.addEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
       }
