@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<ExaltedCharacter repositoryId="GloriousSoul" repositoryPrintName="Glorious Soul">
+<ExaltedCharacter repositoryId="GloriousSoul" repositoryPrintName="Hikari Taiyô">
   <Description>
-    <CharacterName><![CDATA[Glorious Soul]]></CharacterName>
+    <CharacterName><![CDATA[Hikari Taiyô]]></CharacterName>
     <Player><![CDATA[Sandra Sieroux]]></Player>
-    <Characterization><![CDATA[- Party hopping intrigant
-- Bei Party am Hof anbaggern jüngster Tochter von Mnemon, gewinnt aber die Aufmerksamkeit der Empress
-- Beim dem Schäferstündchen wird die Empress von unheiligen Häschern ergriffen. 
--Mist versteckt sich / schleicht hinterher und exaltiert. Bei der versuchten Flucht aus der Imperial Manse geschieht es dann...
-- Unsere Geschichte beginnt.]]></Characterization>
+    <Characterization><![CDATA[- Arbeitet sich trotz seines Mortaltums als Party Hopping Intrigant in die Drachenblütigen Gesellschaft der Gesegneten Insel empor.
+- Bei Celebration-Party am Hof anbaggern jüngster Tochter von Mnemon, gewinnt aber die Aufmerksamkeit der Empress
+- Beim Versuch die Empress zu besteigen erhebt in die Unbesiegte Sonne und stachelt ihn zu größeren Taten ein.
+- Ein Pferdelunar stürmt in das Gemach und Hikari stellt sich ihm zum Kampf.
+- Derweil öffent sich in einer Kaskade von purpurnen Blitzen ein Astraltor in der Kammer. Die Empress begrüsst den dämonischen Ankömmling mit den Worten 'Er sei zu früh.'
+- Dieser verneint das mit einem siegesgewissen Lächeln und greift sich die Herrscherin um mit ihr durch das Tor zu verschwieden. 
+- Perfekt Dodge vor dem Todesstoß seines Gegners, welcher von dem sich beim Schließen ausdehnenden Tor verschlungen wird. Das Gleißen der Anima des Exalt verstärkt sich und hält der Finsternis Stand.
+- Und hier beginnt unsere Geschichte.]]></Characterization>
+    <PhysicalDescription><![CDATA[- Haare in allen Helligkeitsschattierungen einer Farbe, manchmal auch zweier Farben.
+- schwarze Lederstiefel und schwarze Seidenweste mit Elementarsticker in den entsprechenden Farben (blau, rot grün, schwarz, grün) Stickereien ,  
+- weiter Mantel und enge Stoffhose in verschiedenen Brauntönen
+- Weißes Hemd mit geschlossenem hohen Rüschenkragen und weit ausladnden Rüschen an den Ärmeln
+- Dunkelroter Kummerbund.]]></PhysicalDescription>
     <Notes><![CDATA[Seven Shadow Evasion (Conviction Flaw)]]></Notes>
     <Concept><![CDATA[James Bond meets Casanova]]></Concept>
   </Description>
-  <Statistics experienced="false">
+  <Statistics experienced="true">
     <Rules>
       <RuleSet name="SecondEdition"/>
     </Rules>
@@ -48,7 +56,7 @@
     </Attributes>
     <Abilities>
       <Archery creationValue="0"/>
-      <MartialArts creationValue="4" favored="true"/>
+      <MartialArts creationValue="5" favored="true"/>
       <Melee creationValue="0"/>
       <Thrown creationValue="0"/>
       <War creationValue="0"/>
@@ -82,8 +90,8 @@
       <Occult creationValue="0"/>
       <Athletics creationValue="2"/>
       <Awareness creationValue="1" favored="true"/>
-      <Dodge creationValue="4" favored="true">
-        <Specialty creationValue="2" name="Unarmed"/>
+      <Dodge creationValue="5" favored="true">
+        <Specialty creationValue="2" name="Unarmoured"/>
       </Dodge>
       <Larceny creationValue="1" favored="true">
         <Specialty creationValue="2" name="Blackmail"/>
@@ -96,9 +104,9 @@
       <Socialize creationValue="2" favored="true"/>
     </Abilities>
     <Backgrounds>
-      <Background creationValue="2"><![CDATA[Artifact]]></Background>
       <Background creationValue="3"><![CDATA[Resources]]></Background>
       <Background creationValue="2"><![CDATA[Court Intrigant (Blessed Isle)]]></Background>
+      <Background creationValue="2"><![CDATA[Artifact (Discreet Essence Armour)]]></Background>
     </Backgrounds>
     <Charms>
       <CharmGroup name="Presence" type="Solar">
@@ -129,10 +137,21 @@
         <Charm name="Celestial.DreamingPearlCourtesanForm" experienceLearned="false"/>
         <Charm name="Celestial.PearlescentFiligreeDefense" experienceLearned="false"/>
       </CharmGroup>
-      <Combos/>
+      <Combos>
+        <Combo experienceLearned="false">
+          <Name><![CDATA[Ähäm]]></Name>
+          <Charm name="Celestial.LethalPaperFanAttack" type="Solar"/>
+          <Charm name="Solar.1stExcellency.Dodge" type="Solar"/>
+          <Charm name="Solar.SevenShadowEvasion" type="Solar"/>
+        </Combo>
+      </Combos>
     </Charms>
     <Spells/>
-    <Experience/>
+    <Experience>
+      <Entry points="4">
+        <Description><![CDATA[Erwachen in Gefangenschaft]]></Description>
+      </Entry>
+    </Experience>
     <AdditionalModels>
       <Model templateId="Equipment">
         <Content>
