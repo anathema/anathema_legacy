@@ -71,7 +71,7 @@ public class CharacterStatistics implements ICharacterStatistics {
   };
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final ICoreTraitConfiguration traitConfiguration;
-  private IMagicStats[] genericStats;
+  private IMagicStats[] genericStats = new IMagicStats[0];
 
   public CharacterStatistics(final ICharacterTemplate template, ICharacterGenerics generics, IExaltedRuleSet rules)
       throws SpellException {
