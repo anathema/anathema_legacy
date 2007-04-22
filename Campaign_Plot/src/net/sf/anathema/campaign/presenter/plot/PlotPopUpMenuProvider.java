@@ -41,7 +41,7 @@ public class PlotPopUpMenuProvider {
   }
 
   private void checkPopup(MouseEvent e) {
-    if (e.isMetaDown() && e.getSource() instanceof Component) {
+    if ((e.isMetaDown() || e.isControlDown()) && e.getSource() instanceof Component) {
       TreePath clickedPath = treeView.getPathForLocation(e.getX(), e.getY());
       if (clickedPath == null) {
         return;
