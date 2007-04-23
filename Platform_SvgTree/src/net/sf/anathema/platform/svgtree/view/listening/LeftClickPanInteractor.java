@@ -35,7 +35,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
 
   @Override
   public boolean startInteraction(InputEvent event) {
-    if (!(event instanceof MouseEvent)) {
+    if (!enabled || !(event instanceof MouseEvent)) {
       return false;
     }
     int mods = event.getModifiers();

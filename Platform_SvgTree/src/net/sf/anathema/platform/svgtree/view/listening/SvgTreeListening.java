@@ -57,7 +57,7 @@ public class SvgTreeListening {
         setCursor(nodeId);
         setCanvasTooltip(nodeId);
         leftClickPanInteractor.setEnabled(false);
-      }      
+      }
     }
   };
 
@@ -105,7 +105,7 @@ public class SvgTreeListening {
     interactors.add(new RightClickMagnifyInteractor(boundsCalculator));
     interactors.add(new RightClickPanInteractor(boundsCalculator));
     this.leftClickPanInteractor = new LeftClickPanInteractor(boundsCalculator, canvas, properties.getDragCursor());
-    // interactors.add(leftClickPanInteractor);
+    interactors.add(leftClickPanInteractor);
     interactors.add(new DoubleRightClickResetTransformInteractor(boundsCalculator));
     canvas.setCursorInternal(properties.getDefaultCursor());
   }
