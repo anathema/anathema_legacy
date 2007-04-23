@@ -32,6 +32,9 @@ public class SvgTreeListening {
   private final IAnathemaCanvas canvas;
   private final BoundsCalculator boundsCalculator = new BoundsCalculator();
   private final GenericControl<INodeSelectionListener> control = new GenericControl<INodeSelectionListener>();
+  private final LeftClickPanInteractor leftClickPanInteractor;
+  private final CursorResetAdapter resetInteractor;
+  private String selectionId;
 
   private final EventListener canvasResettingListener = new EventListener() {
     public void handleEvent(Event event) {
@@ -40,13 +43,17 @@ public class SvgTreeListening {
       }
       canvas.setToolTipText(null);
       if (((MouseEvent) event).getButton() == 0) {
+        if (selectionId == null) {
+          SVGGElement group = (SVGGElement) event.getCurrentTarget();
+          selectionId = group.getId();
+        }
         canvas.setCursorInternal(properties.getForbiddenCursor());
+        leftClickPanInteractor.setEnabled(false);
+        resetInteractor.setEnabled(true);
       }
       else {
-        canvas.setCursorInternal(properties.getDefaultCursor());
-        selectionId = null;
+        resetCursor();
       }
-      leftClickPanInteractor.setEnabled(true);
     }
   };
 
@@ -58,16 +65,7 @@ public class SvgTreeListening {
         setCursor(nodeId);
         setCanvasTooltip(nodeId);
         leftClickPanInteractor.setEnabled(false);
-      }
-    }
-  };
-
-  private String selectionId;
-  private final EventListener selectionRegisteringListener = new EventListener() {
-    public void handleEvent(Event event) {
-      if (((MouseEvent) event).getButton() == 0) {
-        SVGGElement group = (SVGGElement) event.getCurrentTarget();
-        selectionId = group.getId();
+        resetInteractor.setEnabled(false);
       }
     }
   };
@@ -78,7 +76,7 @@ public class SvgTreeListening {
       if (mouseEvent.getButton() == 0 && mouseEvent.getDetail() == 1) {
         SVGGElement group = (SVGGElement) event.getCurrentTarget();
         String nodeId = group.getId();
-        if (nodeId.equals(selectionId)) {
+        if (selectionId == null || nodeId.equals(selectionId)) {
           fireNodeSelectionEvent(nodeId);
           setCursor(nodeId);
           setCanvasTooltip(nodeId);
@@ -87,7 +85,6 @@ public class SvgTreeListening {
       }
     }
   };
-  private LeftClickPanInteractor leftClickPanInteractor;
 
   public SvgTreeListening(final AnathemaCanvas canvas, ISvgTreeViewProperties viewProperties) {
     this.canvas = canvas;
@@ -103,12 +100,14 @@ public class SvgTreeListening {
     });
     canvas.addMouseWheelListener(new MouseWheelMagnifyListener(boundsCalculator));
     List<Interactor> interactors = canvas.getInteractors();
-    interactors.add(new RightClickMagnifyInteractor(boundsCalculator, canvas, properties.getZoomCursor()));
+    interactors.add(new RightClickMagnifyInteractor(boundsCalculator, canvas, this, properties.getZoomCursor()));
     interactors.add(new RightClickPanInteractor(boundsCalculator));
-    this.leftClickPanInteractor = new LeftClickPanInteractor(boundsCalculator, canvas, properties.getDragCursor());
+    this.leftClickPanInteractor = new LeftClickPanInteractor(boundsCalculator, canvas, properties);
     interactors.add(leftClickPanInteractor);
     interactors.add(new DoubleRightClickResetTransformInteractor(boundsCalculator));
     canvas.setCursorInternal(properties.getDefaultCursor());
+    this.resetInteractor = new CursorResetAdapter(this);
+    canvas.addMouseListener(resetInteractor);
   }
 
   public void addNodeSelectionListener(final INodeSelectionListener listener) {
@@ -125,7 +124,6 @@ public class SvgTreeListening {
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
       if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_LISTENER_REQUIRED)) {
-        groupElement.removeEventListener("mousedown", selectionRegisteringListener, false); //$NON-NLS-1$
         groupElement.removeEventListener("mouseup", selectionInvokingListener, false); //$NON-NLS-1$
         groupElement.removeEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
         groupElement.removeEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
@@ -150,7 +148,6 @@ public class SvgTreeListening {
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
       if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_LISTENER_REQUIRED)) {
-        groupElement.addEventListener("mousedown", selectionRegisteringListener, false); //$NON-NLS-1$
         groupElement.addEventListener("mouseup", selectionInvokingListener, false); //$NON-NLS-1$
         groupElement.addEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
         groupElement.addEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
@@ -169,5 +166,12 @@ public class SvgTreeListening {
   private void setCursor(final String nodeId) {
     Cursor cursor = properties.getCursor(nodeId);
     canvas.setCursorInternal(cursor);
+  }
+
+  public void resetCursor() {
+    this.selectionId = null;
+    canvas.setCursorInternal(properties.getDefaultCursor());
+    leftClickPanInteractor.setEnabled(true);
+    resetInteractor.setEnabled(false);
   }
 }

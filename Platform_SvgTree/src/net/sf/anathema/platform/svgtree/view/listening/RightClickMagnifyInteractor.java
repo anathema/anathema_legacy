@@ -19,11 +19,16 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
   private int xStart;
   private final Cursor zoomCursor;
   private final IAnathemaCanvas canvas;
-  private Cursor previousCursor;
+  private final SvgTreeListening listening;
 
-  public RightClickMagnifyInteractor(BoundsCalculator calculator, IAnathemaCanvas canvas, Cursor zoomCursor) {
+  public RightClickMagnifyInteractor(
+      BoundsCalculator calculator,
+      IAnathemaCanvas canvas,
+      SvgTreeListening svgTreeListening,
+      Cursor zoomCursor) {
     this.calculator = calculator;
     this.canvas = canvas;
+    this.listening = svgTreeListening;
     this.zoomCursor = zoomCursor;
   }
 
@@ -48,7 +53,6 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
     finished = false;
     yStart = e.getY();
     xStart = e.getX();
-    previousCursor = c.getCursor();
     canvas.setCursorInternal(zoomCursor);
   }
 
@@ -63,7 +67,7 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
       c.setRenderingTransform(rt);
     }
     if (c.getCursor() == zoomCursor) {
-      canvas.setCursorInternal(previousCursor);
+      listening.resetCursor();
     }
     calculator.reset();
   }

@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
 
 import org.apache.batik.swing.gvt.InteractorAdapter;
@@ -20,12 +21,12 @@ public class LeftClickPanInteractor extends InteractorAdapter {
   private final IAnathemaCanvas canvas;
   private final BoundsCalculator calculator;
   private boolean enabled;
-  private final Cursor dragCursor;
+  private final ISvgTreeViewProperties properties;
 
-  public LeftClickPanInteractor(BoundsCalculator calculator, IAnathemaCanvas canvas, Cursor dragCursor) {
+  public LeftClickPanInteractor(BoundsCalculator calculator, IAnathemaCanvas canvas, ISvgTreeViewProperties properties) {
     this.calculator = calculator;
     this.canvas = canvas;
-    this.dragCursor = dragCursor;
+    this.properties = properties;
   }
 
   @Override
@@ -39,7 +40,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
       return false;
     }
     int mods = event.getModifiers();
-    return event.getID() == MouseEvent.MOUSE_PRESSED && (mods & InputEvent.BUTTON1_MASK) != 0;
+    return (event.getID() == MouseEvent.MOUSE_PRESSED) && (mods & InputEvent.BUTTON1_MASK) != 0;
   }
 
   @Override
@@ -52,7 +53,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
     yStart = e.getY();
     JGVTComponent c = (JGVTComponent) e.getSource();
     previousCursor = c.getCursor();
-    canvas.setCursorInternal(dragCursor);
+    canvas.setCursorInternal(properties.getDragCursor());
   }
 
   @Override
@@ -66,9 +67,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
     AffineTransform rt = (AffineTransform) c.getRenderingTransform().clone();
     rt.preConcatenate(at);
     c.setRenderingTransform(rt);
-    if (c.getCursor() == dragCursor) {
-      canvas.setCursorInternal(previousCursor);
-    }
+    canvas.setCursorInternal(previousCursor);
     calculator.reset();
   }
 

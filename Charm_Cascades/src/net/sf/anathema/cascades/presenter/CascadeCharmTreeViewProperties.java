@@ -58,6 +58,9 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   @Override
   public Cursor getCursor(String nodeId) {
+    if (nodeId==null) {
+      return getDefaultCursor();
+    }
     return getPointCursor();
   }
 }
