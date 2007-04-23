@@ -17,4 +17,6 @@ public interface ISvgTreeViewProperties {
   public Cursor getDragCursor();
 
   public Cursor getForbiddenCursor();
+
+  public Cursor getZoomCursor();
 }

@@ -19,6 +19,8 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   private final Cursor openHandCursor;
   private final Cursor dragHandCursor;
   private final Cursor forbiddenCursor;
+  private final Cursor zoomCursor;
+  private final Cursor pointCursor;
 
   public AbstractCharmTreeViewProperties(final IResources resources) {
     this.resources = resources;
@@ -35,6 +37,13 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
         resources.getImage(this.getClass(), "CursorDisallow.png"), //$NON-NLS-1$
         new Point(0, 0),
         resources.getString("CharmTreeView.GUI.ForbiddenCursor")); //$NON-NLS-1$
+    this.zoomCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+        resources.getImage(this.getClass(), "CursorZoom.png"), //$NON-NLS-1$
+        new Point(0, 0),
+        resources.getString("CharmTreeView.GUI.ZoomCursor")); //$NON-NLS-1$
+    this.pointCursor = Toolkit.getDefaultToolkit()
+        .createCustomCursor(
+            resources.getImage(this.getClass(), "CursorHandPoint.png"), new Point(0, 0), resources.getString("CharmTreeView.GUI.PointCursor")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   @Override
@@ -50,6 +59,11 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   @Override
   public Cursor getForbiddenCursor() {
     return forbiddenCursor;
+  }
+
+  @Override
+  public Cursor getZoomCursor() {
+    return zoomCursor;
   }
 
   public final String getNodeName(final String nodeId) {
@@ -95,5 +109,9 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
     }
     ICharm charm = findNonNullCharm(charmId);
     return tooltipTextProvider.getInfoString(charm);
+  }
+
+  protected Cursor getPointCursor() {
+    return pointCursor;
   }
 }

@@ -1,8 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
 import java.awt.Cursor;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
@@ -21,16 +19,12 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
   private IIdentificate type;
   private IExaltedRuleSet rules;
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules;
-  private final Cursor pointCursor;
 
   public CascadeCharmTreeViewProperties(
       IResources resources,
       Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules) {
     super(resources);
     this.charmMapsByRules = charmMapsByRules;
-    this.pointCursor = Toolkit.getDefaultToolkit()
-        .createCustomCursor(
-            resources.getImage(this.getClass(), "CursorHandPoint.png"), new Point(0, 0), resources.getString("CharmTreeView.GUI.PointCursor")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   @Override
@@ -64,6 +58,6 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   @Override
   public Cursor getCursor(String nodeId) {
-    return pointCursor;
+    return getPointCursor();
   }
 }

@@ -25,6 +25,7 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
     removeCursor = Toolkit.getDefaultToolkit()
         .createCustomCursor(
             resources.getImage(this.getClass(), "CursorHandMinus.png"), new Point(0, 0), resources.getString("CharmTreeView.GUI.RemoveCursor")); //$NON-NLS-1$ //$NON-NLS-2$
+
   }
 
   @Override
@@ -40,9 +41,9 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
     boolean isDeselectable = isNodeDeselectable(nodeId);
     boolean isSelectable = isNodeSelectable(nodeId);
     if (isNodeSelected(nodeId)) {
-      return isDeselectable ? removeCursor : Cursor.getDefaultCursor();
+      return isDeselectable ? removeCursor : getPointCursor();
     }
-    return isSelectable ? addCursor : Cursor.getDefaultCursor();
+    return isSelectable ? addCursor : getPointCursor();
   }
 
   private boolean isNodeSelected(String charmId) {

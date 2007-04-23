@@ -1,9 +1,11 @@
 package net.sf.anathema.platform.svgtree.view.listening;
 
+import java.awt.Cursor;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 
+import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
 
 import org.apache.batik.swing.gvt.InteractorAdapter;
@@ -15,9 +17,14 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
   private boolean finished = true;
   private int yStart;
   private int xStart;
+  private final Cursor zoomCursor;
+  private final IAnathemaCanvas canvas;
+  private Cursor previousCursor;
 
-  public RightClickMagnifyInteractor(BoundsCalculator calculator) {
+  public RightClickMagnifyInteractor(BoundsCalculator calculator, IAnathemaCanvas canvas, Cursor zoomCursor) {
     this.calculator = calculator;
+    this.canvas = canvas;
+    this.zoomCursor = zoomCursor;
   }
 
   @Override
@@ -33,14 +40,16 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
 
   @Override
   public void mousePressed(MouseEvent e) {
+    JGVTComponent c = (JGVTComponent) e.getSource();
     if (!finished) {
-      JGVTComponent c = (JGVTComponent) e.getSource();
       c.setPaintingTransform(null);
       return;
     }
     finished = false;
     yStart = e.getY();
     xStart = e.getX();
+    previousCursor = c.getCursor();
+    canvas.setCursorInternal(zoomCursor);
   }
 
   @Override
@@ -52,6 +61,9 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
       AffineTransform rt = (AffineTransform) c.getRenderingTransform().clone();
       rt.preConcatenate(pt);
       c.setRenderingTransform(rt);
+    }
+    if (c.getCursor() == zoomCursor) {
+      canvas.setCursorInternal(previousCursor);
     }
     calculator.reset();
   }

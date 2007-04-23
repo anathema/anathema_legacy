@@ -44,6 +44,7 @@ public class SvgTreeListening {
       }
       else {
         canvas.setCursorInternal(properties.getDefaultCursor());
+        selectionId = null;
       }
       leftClickPanInteractor.setEnabled(true);
     }
@@ -102,7 +103,7 @@ public class SvgTreeListening {
     });
     canvas.addMouseWheelListener(new MouseWheelMagnifyListener(boundsCalculator));
     List<Interactor> interactors = canvas.getInteractors();
-    interactors.add(new RightClickMagnifyInteractor(boundsCalculator));
+    interactors.add(new RightClickMagnifyInteractor(boundsCalculator, canvas, properties.getZoomCursor()));
     interactors.add(new RightClickPanInteractor(boundsCalculator));
     this.leftClickPanInteractor = new LeftClickPanInteractor(boundsCalculator, canvas, properties.getDragCursor());
     interactors.add(leftClickPanInteractor);
