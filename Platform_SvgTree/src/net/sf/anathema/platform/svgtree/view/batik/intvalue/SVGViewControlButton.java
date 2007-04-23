@@ -19,11 +19,11 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
 
   private final ISVGSpecialNodeView display;
   private final double nodeWidth;
+  private final SVGButton button;
   private boolean enabled = false;
   private Element displayElement;
   private Element outerGroupElement;
   private SVGSVGElement rootElement;
-  private SVGButton button;
 
   public SVGViewControlButton(final ISVGSpecialNodeView display, final double nodeWidth, final String label) {
     this.display = display;
