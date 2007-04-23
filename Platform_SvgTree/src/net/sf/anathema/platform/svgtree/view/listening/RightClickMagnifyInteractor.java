@@ -76,7 +76,7 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
   public void mouseDragged(MouseEvent event) {
     JGVTComponent component = (JGVTComponent) event.getSource();
     AffineTransform at = AffineTransform.getTranslateInstance(xStart, yStart);
-    int movement = event.getY() - yStart;
+    int movement = yStart - event.getY();
     if (movement < 0) {
       movement = movement > -5 ? 15 : movement - 10;
     }
