@@ -119,9 +119,9 @@ public class SvgTreeListening {
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
       if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_LISTENER_REQUIRED)) {
-        groupElement.removeEventListener("mouseup", selectionInvokingListener, false); //$NON-NLS-1$
-        groupElement.removeEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
-        groupElement.removeEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
+        groupElement.removeEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
+        groupElement.removeEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
+        groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
       }
     }
   }
@@ -143,9 +143,9 @@ public class SvgTreeListening {
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
       if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_LISTENER_REQUIRED)) {
-        groupElement.addEventListener("mouseup", selectionInvokingListener, false); //$NON-NLS-1$
-        groupElement.addEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
-        groupElement.addEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
+        groupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
+        groupElement.addEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
+        groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
       }
     }
   }
