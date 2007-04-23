@@ -118,7 +118,7 @@ public class SvgTreeListening {
         .getElementsByTagName(SVGConstants.SVG_G_TAG);
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
-      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_LISTENER_REQUIRED)) {
+      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_TREE_NODE)) {
         groupElement.removeEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
         groupElement.removeEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
         groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
@@ -142,7 +142,7 @@ public class SvgTreeListening {
         .getElementsByTagName(SVGConstants.SVG_G_TAG);
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
-      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_LISTENER_REQUIRED)) {
+      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_TREE_NODE)) {
         groupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
         groupElement.addEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
         groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);

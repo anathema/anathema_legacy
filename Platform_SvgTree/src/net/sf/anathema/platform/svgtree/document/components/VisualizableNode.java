@@ -31,7 +31,7 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
     QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element g = element.addElement(group);
     g.addAttribute(SVGConstants.SVG_ID_ATTRIBUTE, getContentNode().getId());
-    g.addAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_LISTENER_REQUIRED, SVGConstants.SVG_TRUE_VALUE);
+    g.addAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_TREE_NODE, SVGConstants.SVG_TRUE_VALUE);
     addUseElement(g);
     addTextElement(g);
     // addFlowTextElement(g);
