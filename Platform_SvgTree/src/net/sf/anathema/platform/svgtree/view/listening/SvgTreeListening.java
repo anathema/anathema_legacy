@@ -33,7 +33,6 @@ public class SvgTreeListening {
   private final BoundsCalculator boundsCalculator = new BoundsCalculator();
   private final GenericControl<INodeSelectionListener> control = new GenericControl<INodeSelectionListener>();
   private final LeftClickPanInteractor leftClickPanInteractor;
-  private final CursorResetAdapter resetInteractor;
   private String selectionId;
 
   private final EventListener canvasResettingListener = new EventListener() {
@@ -47,9 +46,7 @@ public class SvgTreeListening {
           SVGGElement group = (SVGGElement) event.getCurrentTarget();
           selectionId = group.getId();
         }
-        canvas.setCursorInternal(properties.getForbiddenCursor());
-        leftClickPanInteractor.setEnabled(false);
-        resetInteractor.setEnabled(true);
+        leftClickPanInteractor.toggleCursorControls();
       }
       else {
         resetCursor();
@@ -64,8 +61,7 @@ public class SvgTreeListening {
       if (selectionId == null || nodeId.equals(selectionId)) {
         setCursor(nodeId);
         setCanvasTooltip(nodeId);
-        leftClickPanInteractor.setEnabled(false);
-        resetInteractor.setEnabled(false);
+        leftClickPanInteractor.disable();
       }
     }
   };
@@ -102,12 +98,11 @@ public class SvgTreeListening {
     List<Interactor> interactors = canvas.getInteractors();
     interactors.add(new RightClickMagnifyInteractor(boundsCalculator, canvas, this, properties.getZoomCursor()));
     interactors.add(new RightClickPanInteractor(boundsCalculator));
-    this.leftClickPanInteractor = new LeftClickPanInteractor(boundsCalculator, canvas, properties);
+    this.leftClickPanInteractor = new LeftClickPanInteractor(boundsCalculator, canvas, properties, this);
     interactors.add(leftClickPanInteractor);
     interactors.add(new DoubleRightClickResetTransformInteractor(boundsCalculator));
     canvas.setCursorInternal(properties.getDefaultCursor());
-    this.resetInteractor = new CursorResetAdapter(this);
-    canvas.addMouseListener(resetInteractor);
+    canvas.addMouseListener(leftClickPanInteractor);
   }
 
   public void addNodeSelectionListener(final INodeSelectionListener listener) {
@@ -171,7 +166,5 @@ public class SvgTreeListening {
   public void resetCursor() {
     this.selectionId = null;
     canvas.setCursorInternal(properties.getDefaultCursor());
-    leftClickPanInteractor.setEnabled(true);
-    resetInteractor.setEnabled(false);
   }
 }

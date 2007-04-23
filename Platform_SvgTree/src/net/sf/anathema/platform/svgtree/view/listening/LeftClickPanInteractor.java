@@ -20,13 +20,20 @@ public class LeftClickPanInteractor extends InteractorAdapter {
 
   private final IAnathemaCanvas canvas;
   private final BoundsCalculator calculator;
-  private boolean enabled;
+  private boolean panningEnabled;
+  private boolean cursorEnabled;
   private final ISvgTreeViewProperties properties;
+  private final SvgTreeListening listening;
 
-  public LeftClickPanInteractor(BoundsCalculator calculator, IAnathemaCanvas canvas, ISvgTreeViewProperties properties) {
+  public LeftClickPanInteractor(
+      BoundsCalculator calculator,
+      IAnathemaCanvas canvas,
+      ISvgTreeViewProperties properties,
+      SvgTreeListening listening) {
     this.calculator = calculator;
     this.canvas = canvas;
     this.properties = properties;
+    this.listening = listening;
   }
 
   @Override
@@ -36,7 +43,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
 
   @Override
   public boolean startInteraction(InputEvent event) {
-    if (!enabled || !(event instanceof MouseEvent)) {
+    if (!panningEnabled || !(event instanceof MouseEvent)) {
       return false;
     }
     int mods = event.getModifiers();
@@ -45,7 +52,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
 
   @Override
   public void mousePressed(MouseEvent e) {
-    if (!enabled || !finished) {
+    if (!panningEnabled || !finished) {
       return;
     }
     finished = false;
@@ -58,7 +65,12 @@ public class LeftClickPanInteractor extends InteractorAdapter {
 
   @Override
   public void mouseReleased(MouseEvent e) {
-    if (!enabled || finished) {
+    if (cursorEnabled) {
+      listening.resetCursor();
+      togglePanning();
+      return;
+    }
+    if (!panningEnabled || finished) {
       return;
     }
     finished = true;
@@ -83,7 +95,19 @@ public class LeftClickPanInteractor extends InteractorAdapter {
     return transform;
   }
 
-  public void setEnabled(boolean enabled) {
-    this.enabled = enabled;
+  private void togglePanning() {
+    this.panningEnabled = true;
+    this.cursorEnabled = false;
+  }
+
+  public void toggleCursorControls() {
+    this.cursorEnabled = true;
+    this.panningEnabled = false;
+    canvas.setCursorInternal(properties.getForbiddenCursor());
+  }
+
+  public void disable() {
+    this.cursorEnabled = false;
+    this.panningEnabled = false;
   }
 }
