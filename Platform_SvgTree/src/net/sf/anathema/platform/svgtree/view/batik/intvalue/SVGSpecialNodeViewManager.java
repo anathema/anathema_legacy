@@ -14,7 +14,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGSVGElement;
 
-public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager<ISVGSpecialNodeView> {
+public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
 
   private final IAnathemaCanvas canvas;
   private final IBoundsCalculator boundsCalculator;
@@ -24,24 +24,23 @@ public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager<ISVGSp
     this.boundsCalculator = view.getBoundsCalculator();
   }
 
-  public void setSpecialNodeViewVisible(final ISvgTreeView view, final ISVGSpecialNodeView specialView, boolean visible) {
-    SVGOMDocument document = (SVGOMDocument) canvas.getSVGDocument();
+  public void setSpecialNodeViewVisible(final ISVGSpecialNodeView specialView, boolean visible) {
     if (!visible) {
       specialView.setVisible(false);
+      return;
     }
-    else {
-      SVGSVGElement rootElement = document.getRootElement();
-      Element viewElement = specialView.initGui(document, boundsCalculator);
-      Rectangle bounds = getGroupBounds(specialView.getNodeId());
-      if (bounds == null) {
-        specialView.setVisible(false);
-        return;
-      }
-      float xPosition = bounds.x / rootElement.getScreenCTM().getA();
-      float yPosition = (bounds.y + bounds.height + 5) / rootElement.getScreenCTM().getD();
-      setAttribute(viewElement, SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" + xPosition + "," + yPosition + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-      rootElement.appendChild(viewElement);
+    SVGOMDocument document = (SVGOMDocument) canvas.getSVGDocument();
+    SVGSVGElement rootElement = document.getRootElement();
+    Element viewElement = specialView.initGui(document, boundsCalculator);
+    Rectangle bounds = getGroupBounds(specialView.getNodeId());
+    if (bounds == null) {
+      specialView.setVisible(false);
+      return;
     }
+    float xPosition = bounds.x / rootElement.getScreenCTM().getA();
+    float yPosition = (bounds.y + bounds.height + 5) / rootElement.getScreenCTM().getD();
+    setAttribute(viewElement, SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" + xPosition + "," + yPosition + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    rootElement.appendChild(viewElement);
   }
 
   private Rectangle getGroupBounds(final String nodeId) {
