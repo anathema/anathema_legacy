@@ -32,6 +32,7 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGElement;
+import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGTextElement;
 import org.w3c.dom.svg.SVGUseElement;
 
@@ -49,7 +50,7 @@ public class SvgTreeView implements ISvgTreeView {
     this.listening = new SvgTreeListening(canvas, calculator, properties);
     addDocumentLoadedListener(new IDocumentLoadedListener() {
       public void documentLoaded() {
-        initNodeNames(canvas.getSVGDocument());
+        initNodeNames();
       }
     });
     addDocumentLoadedListener(new IDocumentLoadedListener() {
@@ -119,6 +120,15 @@ public class SvgTreeView implements ISvgTreeView {
     nodeGroup.setAttribute(SVGConstants.SVG_OPACITY_ATTRIBUTE, String.valueOf((float) alpha / 255));
   }
 
+  public void addDocumentPreloadListener(final IDocumentLoadedListener listener) {
+    canvas.addSVGLoadEventDispatcherListener(new SVGLoadEventDispatcherAdapter() {
+      @Override
+      public void svgLoadEventDispatchStarted(SVGLoadEventDispatcherEvent e) {
+        listener.documentLoaded();
+      }
+    });
+  }
+
   public void addDocumentLoadedListener(final IDocumentLoadedListener listener) {
     canvas.addSVGLoadEventDispatcherListener(new SVGLoadEventDispatcherAdapter() {
       @Override
@@ -128,12 +138,14 @@ public class SvgTreeView implements ISvgTreeView {
     });
   }
 
-  private void initNodeNames(final SVGDocument svgDoc) {
-    NodeList textNodes = svgDoc.getElementsByTagName(SVGConstants.SVG_TEXT_TAG);
-    for (int i = 0; i < textNodes.getLength(); i++) {
-      SVGTextElement currentNode = (SVGTextElement) textNodes.item(i);
-      internationalize(currentNode);
-      breakText(currentNode);
+  private void initNodeNames() {
+    for (SVGGElement groupElement : canvas.getNodeElements()) {
+      NodeList textNodes = groupElement.getElementsByTagName(SVGConstants.SVG_TEXT_TAG);
+      for (int i = 0; i < textNodes.getLength(); i++) {
+        SVGTextElement currentNode = (SVGTextElement) textNodes.item(i);
+        internationalize(currentNode);
+        breakText(currentNode);
+      }
     }
   }
 

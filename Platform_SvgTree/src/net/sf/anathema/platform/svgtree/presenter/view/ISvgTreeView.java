@@ -23,4 +23,6 @@ public interface ISvgTreeView extends IView, IDisposable {
   public void loadCascade(Document document) throws DocumentException;
 
   public ISpecialNodeViewManager getSpecialViewManager();
+
+  void addDocumentPreloadListener(IDocumentLoadedListener listener);
 }

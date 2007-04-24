@@ -7,6 +7,7 @@ import org.apache.batik.swing.gvt.Interactor;
 import org.w3c.dom.Element;
 import org.w3c.dom.events.EventListener;
 import org.w3c.dom.svg.SVGDocument;
+import org.w3c.dom.svg.SVGGElement;
 
 public interface IAnathemaCanvas {
 
@@ -21,4 +22,6 @@ public interface IAnathemaCanvas {
   public SVGDocument getSVGDocument();
 
   public List<Interactor> getInteractors();
+
+  public List<SVGGElement> getNodeElements();
 }

@@ -7,7 +7,6 @@ import java.util.List;
 
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
@@ -16,7 +15,6 @@ import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.swing.gvt.Interactor;
 import org.apache.batik.util.SVGConstants;
-import org.w3c.dom.NodeList;
 import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.MouseEvent;
@@ -118,15 +116,10 @@ public class SvgTreeListening {
     if (document == null) {
       return;
     }
-    NodeList groupElementsList = document.getElementById(ISVGCascadeXMLConstants.VALUE_CASCADE_ID)
-        .getElementsByTagName(SVGConstants.SVG_G_TAG);
-    for (int index = 0; index < groupElementsList.getLength(); index++) {
-      SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
-      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_TREE_NODE)) {
-        groupElement.removeEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
-        groupElement.removeEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
-        groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
-      }
+    for (SVGGElement groupElement : canvas.getNodeElements()) {
+      groupElement.removeEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
+      groupElement.removeEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
+      groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
     }
   }
 
@@ -142,15 +135,10 @@ public class SvgTreeListening {
     if (document == null) {
       return;
     }
-    NodeList groupElementsList = document.getElementById(ISVGCascadeXMLConstants.VALUE_CASCADE_ID)
-        .getElementsByTagName(SVGConstants.SVG_G_TAG);
-    for (int index = 0; index < groupElementsList.getLength(); index++) {
-      SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
-      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_TREE_NODE)) {
-        groupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
-        groupElement.addEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
-        groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
-      }
+    for (SVGGElement groupElement : canvas.getNodeElements()) {
+      groupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
+      groupElement.addEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
+      groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
     }
   }
 
