@@ -4,16 +4,16 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.AffineTransform;
 
-import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
+import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.swing.gvt.JGVTComponent;
 
 public class MouseWheelMagnifyListener implements MouseWheelListener {
 
-  private final BoundsCalculator calculator;
+  private final IBoundsCalculator calculator;
 
-  public MouseWheelMagnifyListener(BoundsCalculator calculator) {
-    this.calculator = calculator;
+  public MouseWheelMagnifyListener(IBoundsCalculator boundsCalculator) {
+    this.calculator = boundsCalculator;
   }
 
   public void mouseWheelMoved(MouseWheelEvent event) {

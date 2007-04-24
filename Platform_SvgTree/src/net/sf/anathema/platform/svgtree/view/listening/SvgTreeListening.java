@@ -12,7 +12,6 @@ import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
-import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.swing.gvt.Interactor;
@@ -30,7 +29,7 @@ public class SvgTreeListening {
 
   private final ISvgTreeViewProperties properties;
   private final IAnathemaCanvas canvas;
-  private final BoundsCalculator boundsCalculator = new BoundsCalculator();
+  private final IBoundsCalculator boundsCalculator;
   private final GenericControl<INodeSelectionListener> control = new GenericControl<INodeSelectionListener>();
   private final LeftClickPanInteractor leftClickPanInteractor;
   private String selectionId;
@@ -83,8 +82,12 @@ public class SvgTreeListening {
     }
   };
 
-  public SvgTreeListening(final AnathemaCanvas canvas, ISvgTreeViewProperties viewProperties) {
+  public SvgTreeListening(
+      final AnathemaCanvas canvas,
+      IBoundsCalculator calculator,
+      ISvgTreeViewProperties viewProperties) {
     this.canvas = canvas;
+    this.boundsCalculator = calculator;
     this.properties = viewProperties;
     canvas.addKeyListener(new KeyAdapter() {
       @Override
@@ -153,10 +156,6 @@ public class SvgTreeListening {
 
   private void setCanvasTooltip(final String node) {
     canvas.setToolTipText(properties.getToolTip(node));
-  }
-
-  public IBoundsCalculator getBoundsCalculator() {
-    return boundsCalculator;
   }
 
   private void setCursor(final String nodeId) {

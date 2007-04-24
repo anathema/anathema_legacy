@@ -8,4 +8,5 @@ public interface IBoundsCalculator {
 
   public Rectangle getBounds(SVGLocatable svgElement);
 
+  public void reset();
 }

@@ -4,14 +4,11 @@ import java.awt.Color;
 
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 
 public interface ISvgTreeView extends IView, IDisposable {
-
-  public IAnathemaCanvas getCanvas();
 
   public void addNodeSelectionListener(INodeSelectionListener listener);
 
@@ -25,5 +22,5 @@ public interface ISvgTreeView extends IView, IDisposable {
 
   public void loadCascade(Document document) throws DocumentException;
 
-  public IBoundsCalculator getBoundsCalculator();
+  public ISpecialNodeViewManager getSpecialViewManager();
 }

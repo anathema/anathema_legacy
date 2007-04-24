@@ -1,9 +1,6 @@
 package net.sf.anathema.platform.svgtree.view;
 
 import java.awt.Color;
-import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +8,14 @@ import javax.swing.JComponent;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
-import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
-import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
+import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.view.listening.SvgTreeListening;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
@@ -42,10 +40,13 @@ public class SvgTreeView implements ISvgTreeView {
   private AnathemaCanvas canvas = new AnathemaCanvas();
   private final ISvgTreeViewProperties properties;
   private final SvgTreeListening listening;
+  private final SVGSpecialNodeViewManager manager;
 
   public SvgTreeView(final ISvgTreeViewProperties properties) {
     this.properties = properties;
-    this.listening = new SvgTreeListening(canvas, properties);
+    BoundsCalculator calculator = new BoundsCalculator();
+    this.manager = new SVGSpecialNodeViewManager(canvas, calculator);
+    this.listening = new SvgTreeListening(canvas, calculator, properties);
     addDocumentLoadedListener(new IDocumentLoadedListener() {
       public void documentLoaded() {
         initNodeNames(canvas.getSVGDocument());
@@ -57,8 +58,9 @@ public class SvgTreeView implements ISvgTreeView {
     return canvas;
   }
 
-  public IAnathemaCanvas getCanvas() {
-    return canvas;
+  @Override
+  public ISpecialNodeViewManager getSpecialViewManager() {
+    return manager;
   }
 
   public void loadCascade(final org.dom4j.Document dom4jDocument) throws DocumentException {
@@ -142,10 +144,6 @@ public class SvgTreeView implements ISvgTreeView {
     canvas.setDocument(null);
     // todo vom (22.02.2005) (sieroux): Notify pool of unused canvas
     canvas = null;
-  }
-
-  public IBoundsCalculator getBoundsCalculator() {
-    return listening.getBoundsCalculator();
   }
 
   private void breakText(final SVGTextElement text) {

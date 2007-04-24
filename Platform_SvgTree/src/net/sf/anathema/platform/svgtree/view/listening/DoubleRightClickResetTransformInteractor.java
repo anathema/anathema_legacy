@@ -3,15 +3,15 @@ package net.sf.anathema.platform.svgtree.view.listening;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 
-import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
+import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.swing.gvt.AbstractResetTransformInteractor;
 
 public class DoubleRightClickResetTransformInteractor extends AbstractResetTransformInteractor {
-  private final BoundsCalculator calculator;
+  private final IBoundsCalculator calculator;
 
-  public DoubleRightClickResetTransformInteractor(BoundsCalculator calculator) {
-    this.calculator = calculator;
+  public DoubleRightClickResetTransformInteractor(IBoundsCalculator boundsCalculator) {
+    this.calculator = boundsCalculator;
   }
 
   public boolean startInteraction(InputEvent ie) {

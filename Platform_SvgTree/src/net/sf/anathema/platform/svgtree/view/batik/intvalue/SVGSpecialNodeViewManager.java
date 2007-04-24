@@ -3,9 +3,10 @@ package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 import java.awt.Rectangle;
 
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
+import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
+import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.dom.svg.SVGOMDocument;
@@ -19,12 +20,12 @@ public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
   private final IAnathemaCanvas canvas;
   private final IBoundsCalculator boundsCalculator;
 
-  public SVGSpecialNodeViewManager(final ISvgTreeView view) {
-    this.canvas = view.getCanvas();
-    this.boundsCalculator = view.getBoundsCalculator();
+  public SVGSpecialNodeViewManager(AnathemaCanvas canvas, BoundsCalculator calculator) {
+    this.canvas = canvas;
+    this.boundsCalculator = calculator;
   }
 
-  public void setSpecialNodeViewVisible(final ISVGSpecialNodeView specialView, boolean visible) {
+  public void setVisible(final ISVGSpecialNodeView specialView, boolean visible) {
     if (!visible) {
       specialView.setVisible(false);
       return;
@@ -39,7 +40,10 @@ public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
     }
     float xPosition = bounds.x / rootElement.getScreenCTM().getA();
     float yPosition = (bounds.y + bounds.height + 5) / rootElement.getScreenCTM().getD();
-    setAttribute(viewElement, SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" + xPosition + "," + yPosition + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    DomUtilities.setAttribute(
+        viewElement,
+        SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
+        "translate(" + xPosition + "," + yPosition + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     rootElement.appendChild(viewElement);
   }
 
@@ -49,9 +53,5 @@ public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
       return null;
     }
     return boundsCalculator.getBounds(svgElement);
-  }
-
-  private void setAttribute(final Element element, final String attributeName, final String attributeValue) {
-    element.setAttributeNS(null, attributeName, attributeValue);
   }
 }

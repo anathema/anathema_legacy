@@ -4,17 +4,17 @@ import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 
-import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
+import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.swing.gvt.InteractorAdapter;
 import org.apache.batik.swing.gvt.JGVTComponent;
 
 public class RightClickPanInteractor extends InteractorAdapter {
 
-  private final BoundsCalculator calculator;
+  private final IBoundsCalculator calculator;
 
-  public RightClickPanInteractor(BoundsCalculator calculator) {
-    this.calculator = calculator;
+  public RightClickPanInteractor(IBoundsCalculator boundsCalculator) {
+    this.calculator = boundsCalculator;
   }
 
   @Override
