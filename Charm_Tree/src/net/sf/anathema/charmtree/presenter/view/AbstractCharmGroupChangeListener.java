@@ -76,11 +76,9 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     }
   }
 
-  protected final ICharmGroup getCurrentGroup() {
+  public ICharmGroup getCurrentGroup() {
     return currentGroup;
   }
 
   protected abstract void modifyCharmVisuals(IIdentificate type);
-
-  public abstract void updateColors();
 }

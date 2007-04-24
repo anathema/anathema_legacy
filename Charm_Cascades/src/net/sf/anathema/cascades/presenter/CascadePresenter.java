@@ -1,5 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -15,6 +16,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
@@ -67,7 +69,9 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     initCharmTypeSelectionListening();
     view.addDocumentLoadedListener(new IDocumentLoadedListener() {
       public void documentLoaded() {
-        selectionListener.updateColors();
+        for (ICharm charm : selectionListener.getCurrentGroup().getAllCharms()) {
+          view.setCharmVisuals(charm.getId(), Color.WHITE);
+        }
       }
     });
   }

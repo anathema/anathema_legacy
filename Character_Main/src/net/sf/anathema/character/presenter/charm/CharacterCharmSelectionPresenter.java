@@ -92,7 +92,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         if (viewProperties.isRequirementNode(charmId)) {
           return;
         }
-        ILearningCharmGroup charmGroup = charmSelectionChangeListener.getSelectedLearnCharmGroup();
+        ILearningCharmGroup charmGroup = charmSelectionChangeListener.getCurrentGroup();
         charmGroup.toggleLearned(charms.getCharmById(charmId));
       }
     });
@@ -102,7 +102,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       public void mouseExited(final MouseEvent e) {
         for (ISVGSpecialNodeView charmView : specialCharmViews) {
           ICharm charm = getCharmConfiguration().getCharmById(charmView.getNodeId());
-          boolean isVisible = isVisible(charmSelectionChangeListener.getSelectedLearnCharmGroup(), charm);
+          boolean isVisible = isVisible(charmSelectionChangeListener.getCurrentGroup(), charm);
           if (isVisible) {
             charmView.reset();
           }
@@ -189,7 +189,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
 
   private void setCharmVisuals(final ICharm charm, final ICharmSelectionView selectionView) {
     ICharmConfiguration charmConfiguration = getCharmConfiguration();
-    ILearningCharmGroup selectedGroup = charmSelectionChangeListener.getSelectedLearnCharmGroup();
+    ILearningCharmGroup selectedGroup = charmSelectionChangeListener.getCurrentGroup();
     if (selectedGroup == null || !charm.getGroupId().equals(selectedGroup.getId())) {
       return;
     }
@@ -199,7 +199,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private void setCharmVisuals() {
-    ILearningCharmGroup group = charmSelectionChangeListener.getSelectedLearnCharmGroup();
+    ILearningCharmGroup group = charmSelectionChangeListener.getCurrentGroup();
     if (group == null) {
       return;
     }
@@ -234,7 +234,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private void showSpecialViews() {
-    ILearningCharmGroup group = charmSelectionChangeListener.getSelectedLearnCharmGroup();
+    ILearningCharmGroup group = charmSelectionChangeListener.getCurrentGroup();
     if (group == null) {
       return;
     }

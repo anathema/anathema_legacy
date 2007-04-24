@@ -32,11 +32,7 @@ public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeL
   }
 
   @Override
-  public void updateColors() {
-    // nothing to do;
-  }
-
-  public ILearningCharmGroup getSelectedLearnCharmGroup() {
-    return (ILearningCharmGroup) getCurrentGroup();
+  public ILearningCharmGroup getCurrentGroup() {
+    return (ILearningCharmGroup) super.getCurrentGroup();
   }
 }
