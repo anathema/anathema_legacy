@@ -51,12 +51,6 @@ public class SvgTreeView implements ISvgTreeView {
         initNodeNames(canvas.getSVGDocument());
       }
     });
-    canvas.addMouseMotionListener(new MouseMotionAdapter() {
-      @Override
-      public void mouseDragged(final MouseEvent evt) {
-        canvas.scrollRectToVisible(new Rectangle(evt.getX(), evt.getY(), 1, 1));
-      }
-    });
   }
 
   public JComponent getComponent() {

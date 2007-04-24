@@ -34,6 +34,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
     this.canvas = canvas;
     this.properties = properties;
     this.listening = listening;
+    togglePanning();
   }
 
   @Override
@@ -95,7 +96,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
     return transform;
   }
 
-  private void togglePanning() {
+  public void togglePanning() {
     this.panningEnabled = true;
     this.cursorEnabled = false;
   }

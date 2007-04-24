@@ -49,6 +49,7 @@ public class SvgTreeListening {
         leftClickPanInteractor.toggleCursorControls();
       }
       else {
+        leftClickPanInteractor.togglePanning();
         resetCursor();
       }
     }
