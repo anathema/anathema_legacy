@@ -9,6 +9,7 @@ public interface ISVGCascadeXMLConstants {
 
   public static final String ATTRIB_IS_TREE_NODE = "isTreeNode"; //$NON-NLS-1$
   public static final String ATTRIB_IS_ARROW = "isArrow"; //$NON-NLS-1$
+  public static final String ATTRIB_IS_CONTROL = "isControl"; //$NON-NLS-1$
 
   public static final String VALUE_15 = "15"; //$NON-NLS-1$
   public static final String VALUE_3 = "3"; //$NON-NLS-1$

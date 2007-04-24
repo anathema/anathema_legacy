@@ -140,6 +140,9 @@ public class SvgTreeListening {
       groupElement.addEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
       groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
     }
+    for (SVGGElement groupElement : canvas.getControlElements()) {
+      System.out.println("YOHO");
+    }
   }
 
   private void setCanvasTooltip(final String node) {

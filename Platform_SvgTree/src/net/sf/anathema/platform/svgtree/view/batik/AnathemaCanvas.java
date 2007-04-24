@@ -40,26 +40,24 @@ public class AnathemaCanvas extends JSVGCanvas implements IAnathemaCanvas {
     super.setCursor(cursor);
   }
 
-  public void addEventListener(String eventType, EventListener eventListener, boolean useCapture) {
-    Document document = getSVGDocument();
-    if (document == null || !(document instanceof SVGOMDocument)) {
-      return;
-    }
-    final SVGOMDocument omDocument = (SVGOMDocument) document;
-    omDocument.addEventListener(eventType, eventListener, false);
+  public List<SVGGElement> getNodeElements() {
+    return getElementByAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_TREE_NODE);
   }
 
-  public List<SVGGElement> getNodeElements() {
-    NodeList groupElementsList = getElementById(ISVGCascadeXMLConstants.VALUE_CASCADE_ID).getElementsByTagName(
-        SVGConstants.SVG_G_TAG);
+  private List<SVGGElement> getElementByAttribute(String attrrb) {
+    NodeList groupElementsList = getSVGDocument().getElementsByTagName(SVGConstants.SVG_G_TAG);
     List<SVGGElement> list = new ArrayList<SVGGElement>();
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
-      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_TREE_NODE)) {
+      if (groupElement.hasAttribute(attrrb)) {
         list.add(groupElement);
       }
     }
     return list;
+  }
+
+  public List<SVGGElement> getControlElements() {
+    return getElementByAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_CONTROL);
   }
 
   public Element getElementById(String id) {
