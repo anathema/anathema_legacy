@@ -10,17 +10,14 @@ import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 
 public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 
-  private final ICharacterCharmSelectionPresenter presenter;
   private final IExaltedEdition edition;
 
   public CharacterCharmGroupChangeListener(
       ISvgTreeView view,
-      ICharacterCharmSelectionPresenter presenter,
       ITemplateRegistry templateRegistry,
       ICharmGroupArbitrator arbitrator,
       IExaltedEdition edition) {
     super(view, templateRegistry, arbitrator);
-    this.presenter = presenter;
     this.edition = edition;
   }
 
@@ -36,7 +33,7 @@ public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeL
 
   @Override
   public void updateColors() {
-    presenter.setCharmVisuals(getSelectedLearnCharmGroup());
+    // nothing to do;
   }
 
   public ILearningCharmGroup getSelectedLearnCharmGroup() {

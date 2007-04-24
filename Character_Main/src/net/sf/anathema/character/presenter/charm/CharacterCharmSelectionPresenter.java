@@ -49,9 +49,7 @@ import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGCategorizedSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGToggleButtonSpecialNodeView;
 
-public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPresenter implements
-    ICharacterCharmSelectionPresenter,
-    IContentPresenter {
+public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPresenter implements IContentPresenter {
 
   private final ICharmTreeViewProperties viewProperties;
   private CharacterCharmGroupChangeListener charmSelectionChangeListener;
@@ -82,7 +80,6 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     createCharmTypeSelector(getCurrentCharmTypes(alienCharms), view, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
     this.charmSelectionChangeListener = new CharacterCharmGroupChangeListener(
         view.getCharmTreeView(),
-        this,
         getTemplateRegistry(),
         getCharmConfiguration(),
         statistics.getRules().getEdition());
@@ -116,17 +113,13 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     });
     view.addDocumentLoadedListener(new IDocumentLoadedListener() {
       public void documentLoaded() {
-        ILearningCharmGroup charmGroup = charmSelectionChangeListener.getSelectedLearnCharmGroup();
-        if (charmGroup == null) {
-          return;
-        }
-        setCharmVisuals(charmGroup);
-        showSpecialViews(charmGroup);
+        setCharmVisuals();
+        showSpecialViews();
       }
     });
     charms.addLearnableListener(new IChangeListener() {
       public void changeOccured() {
-        setCharmVisuals(charmSelectionChangeListener.getSelectedLearnCharmGroup());
+        setCharmVisuals();
       }
     });
     view.initGui();
@@ -176,7 +169,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       allCharmGroups = sortCharmGroups(charms.getCharmGroups(cascadeType));
     }
     view.fillCharmGroupBox(allCharmGroups);
-    showSpecialViews(null);
+    showSpecialViews();
   }
 
   private boolean isVisible(final ILearningCharmGroup group, final ICharm charm) {
@@ -205,11 +198,13 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     selectionView.setCharmVisuals(charm.getId(), fillColor, opacity);
   }
 
-  public void setCharmVisuals(final ILearningCharmGroup group) {
-    if (group != null) {
-      for (ICharm charm : group.getAllCharms()) {
-        setCharmVisuals(charm, view);
-      }
+  private void setCharmVisuals() {
+    ILearningCharmGroup group = charmSelectionChangeListener.getSelectedLearnCharmGroup();
+    if (group == null) {
+      return;
+    }
+    for (ICharm charm : group.getAllCharms()) {
+      setCharmVisuals(charm, view);
     }
   }
 
@@ -238,7 +233,11 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     return charmLearnListener;
   }
 
-  private void showSpecialViews(final ILearningCharmGroup group) {
+  private void showSpecialViews() {
+    ILearningCharmGroup group = charmSelectionChangeListener.getSelectedLearnCharmGroup();
+    if (group == null) {
+      return;
+    }
     for (ISVGSpecialNodeView charmView : specialCharmViews) {
       ICharm charm = getCharmConfiguration().getCharmById(charmView.getNodeId());
       boolean isVisible = isVisible(group, charm);
