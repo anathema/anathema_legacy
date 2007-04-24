@@ -1,6 +1,5 @@
 package net.sf.anathema.charmtree.presenter.view;
 
-import java.awt.Cursor;
 import java.util.Set;
 
 import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeBuilder;
@@ -36,16 +35,12 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   }
 
   public final void valueChanged(final Object cascade, final Object type) {
-    charmTreeView.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     try {
       loadCharmTree((ICharmGroup) cascade, (IIdentificate) type);
       return;
     }
     catch (DocumentException e) {
       e.printStackTrace();
-    }
-    finally {
-      charmTreeView.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }
   }
 

@@ -81,16 +81,15 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         statistics.getCharacterConcept().getCaste().getType());
     createCharmTypeSelector(getCurrentCharmTypes(alienCharms), view, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
     this.charmSelectionChangeListener = new CharacterCharmGroupChangeListener(
-        view,
+        view.getCharmTreeView(),
         this,
         getTemplateRegistry(),
         getCharmConfiguration(),
         statistics.getRules().getEdition());
     initSpecialCharmViews();
-    initCharmTypeSelectionListening(charms, view);
-    initCasteListening(view);
-    ILearningCharmGroup[] allGroups = charms.getAllGroups();
-    createCharmGroupSelector(view, charmSelectionChangeListener, allGroups);
+    initCharmTypeSelectionListening(charms);
+    initCasteListening();
+    createCharmGroupSelector(view, charmSelectionChangeListener, charms.getAllGroups());
     view.addCharmSelectionListener(new INodeSelectionListener() {
       public void nodeSelected(final String charmId) {
         if (viewProperties.isRequirementNode(charmId)) {
@@ -100,7 +99,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         charmGroup.toggleLearned(charms.getCharmById(charmId));
       }
     });
-    initCharmLearnListening(charms, view);
+    initCharmLearnListening(charms);
     view.getCharmTreeView().getComponent().addMouseListener(new MouseAdapter() {
       @Override
       public void mouseExited(final MouseEvent e) {
@@ -121,13 +120,13 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         if (charmGroup == null) {
           return;
         }
-        setCharmVisuals(charmGroup, view);
-        showSpecialViews(view, charmGroup);
+        setCharmVisuals(charmGroup);
+        showSpecialViews(charmGroup);
       }
     });
     charms.addLearnableListener(new IChangeListener() {
       public void changeOccured() {
-        setCharmVisuals(charmSelectionChangeListener.getSelectedLearnCharmGroup(), view);
+        setCharmVisuals(charmSelectionChangeListener.getSelectedLearnCharmGroup());
       }
     });
     view.initGui();
@@ -138,7 +137,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     return new SimpleViewContent(new ContentProperties(header), view);
   }
 
-  private void initCasteListening(final ICharmSelectionView selectionView) {
+  private void initCasteListening() {
     final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
     caste.addChangeListener(new IChangeListener() {
       public void changeOccured() {
@@ -151,7 +150,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
           charmConfiguration.unlearnAllAlienCharms();
         }
         IIdentificate[] currentCharmTypes = getCurrentCharmTypes(alienCharms);
-        selectionView.fillCharmTypeBox(currentCharmTypes);
+        view.fillCharmTypeBox(currentCharmTypes);
       }
     });
   }
@@ -163,24 +162,21 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     return types.toArray(new IIdentificate[types.size()]);
   }
 
-  private void initCharmTypeSelectionListening(final ICharmConfiguration charms, final ICharmSelectionView selectionView) {
-    selectionView.addCharmTypeSelectionListener(new IObjectValueChangedListener<IIdentificate>() {
+  private void initCharmTypeSelectionListening(final ICharmConfiguration charms) {
+    view.addCharmTypeSelectionListener(new IObjectValueChangedListener<IIdentificate>() {
       public void valueChanged(final IIdentificate cascadeType) {
-        handleTypeSelectionChange(charms, selectionView, cascadeType);
+        handleTypeSelectionChange(charms, cascadeType);
       }
     });
   }
 
-  private void handleTypeSelectionChange(
-      final ICharmConfiguration charms,
-      final ICharmSelectionView selectionView,
-      final IIdentificate cascadeType) {
+  private void handleTypeSelectionChange(final ICharmConfiguration charms, final IIdentificate cascadeType) {
     ICharmGroup[] allCharmGroups = new ICharmGroup[0];
     if (cascadeType != null) {
       allCharmGroups = sortCharmGroups(charms.getCharmGroups(cascadeType));
     }
-    selectionView.fillCharmGroupBox(allCharmGroups);
-    showSpecialViews(selectionView, null);
+    view.fillCharmGroupBox(allCharmGroups);
+    showSpecialViews(null);
   }
 
   private boolean isVisible(final ILearningCharmGroup group, final ICharm charm) {
@@ -191,10 +187,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     return isOfGroupType && charm.getGroupId().equals(group.getId());
   }
 
-  private void initCharmLearnListening(
-      final ICharmConfiguration charmConfiguration,
-      final ICharmSelectionView selectionView) {
-    ICharmLearnListener charmLearnListener = createCharmLearnListener(selectionView);
+  private void initCharmLearnListening(final ICharmConfiguration charmConfiguration) {
+    ICharmLearnListener charmLearnListener = createCharmLearnListener(view);
     for (ILearningCharmGroup group : charmConfiguration.getAllGroups()) {
       group.addCharmLearnListener(charmLearnListener);
     }
@@ -211,10 +205,10 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     selectionView.setCharmVisuals(charm.getId(), fillColor, opacity);
   }
 
-  public void setCharmVisuals(final ILearningCharmGroup group, final ICharmSelectionView selectionView) {
+  public void setCharmVisuals(final ILearningCharmGroup group) {
     if (group != null) {
       for (ICharm charm : group.getAllCharms()) {
-        setCharmVisuals(charm, selectionView);
+        setCharmVisuals(charm, view);
       }
     }
   }
@@ -239,16 +233,16 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       @Override
       public void charmNotUnlearnable(ICharm charm) {
         Toolkit.getDefaultToolkit().beep();
-      }     
+      }
     };
     return charmLearnListener;
   }
 
-  private void showSpecialViews(final ICharmSelectionView selectionView, final ILearningCharmGroup group) {
+  private void showSpecialViews(final ILearningCharmGroup group) {
     for (ISVGSpecialNodeView charmView : specialCharmViews) {
       ICharm charm = getCharmConfiguration().getCharmById(charmView.getNodeId());
       boolean isVisible = isVisible(group, charm);
-      selectionView.setSpecialCharmViewVisible(charmView, isVisible);
+      view.setSpecialCharmViewVisible(charmView, isVisible);
     }
   }
 

@@ -52,6 +52,12 @@ public class SvgTreeView implements ISvgTreeView {
         initNodeNames(canvas.getSVGDocument());
       }
     });
+    addDocumentLoadedListener(new IDocumentLoadedListener() {
+      @Override
+      public void documentLoaded() {
+        listening.initDocumentListening(canvas.getSVGDocument());
+      }
+    });
   }
 
   public JComponent getComponent() {
@@ -69,7 +75,6 @@ public class SvgTreeView implements ISvgTreeView {
     if (dom4jDocument != null) {
       DOMImplementation implementation = SVG12DOMImplementation.getDOMImplementation();
       document = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
-      listening.initDocumentListening(document);
     }
     canvas.setDocument(document);
   }
