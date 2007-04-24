@@ -10,16 +10,15 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
 import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSpecialNodeViewManager;
 
 public class CharmSelectionView extends AbstractCascadeSelectionView implements ICharmSelectionView {
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
-  private final ISpecialNodeViewManager<ISVGSpecialNodeView> svgManager = new SVGSpecialNodeViewManager(
-      getCharmTreeView());
+  private final ISpecialNodeViewManager svgManager = new SVGSpecialNodeViewManager(getCharmTreeView());
 
   public CharmSelectionView(ISvgTreeViewProperties treeProperties) {
     super(treeProperties);
@@ -44,6 +43,6 @@ public class CharmSelectionView extends AbstractCascadeSelectionView implements 
   }
 
   public void setSpecialCharmViewVisible(ISVGSpecialNodeView charmView, boolean visible) {
-    svgManager.setSpecialNodeViewVisible(getCharmTreeView(), charmView, visible);
+    svgManager.setSpecialNodeViewVisible(charmView, visible);
   }
 }
