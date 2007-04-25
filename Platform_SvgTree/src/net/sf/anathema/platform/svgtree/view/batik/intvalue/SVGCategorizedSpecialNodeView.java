@@ -15,6 +15,7 @@ import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
 import org.w3c.dom.svg.SVGDocument;
+import org.w3c.dom.svg.SVGGElement;
 
 public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNodeView {
 
@@ -45,8 +46,10 @@ public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNode
     }
   }
 
-  public Element initGui(final SVGOMDocument document, final IBoundsCalculator boundsCalculator) {
-    Element groupElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
+  public SVGGElement initGui(final SVGOMDocument document, final IBoundsCalculator boundsCalculator) {
+    SVGGElement groupElement = (SVGGElement) document.createElementNS(
+        SVGDOMImplementation.SVG_NAMESPACE_URI,
+        SVGConstants.SVG_G_TAG);
     groupElement.appendChild(createBorder(document));
     for (int index = 0; index < categories.size(); index++) {
       Element displayElement = categories.get(index).initGui(document, boundsCalculator);

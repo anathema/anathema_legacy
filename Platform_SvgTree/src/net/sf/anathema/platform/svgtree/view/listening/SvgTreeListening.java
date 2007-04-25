@@ -12,6 +12,7 @@ import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSpecialNodeViewManager;
 
 import org.apache.batik.swing.gvt.Interactor;
 import org.apache.batik.util.SVGConstants;
@@ -91,7 +92,7 @@ public class SvgTreeListening {
   public SvgTreeListening(
       final AnathemaCanvas canvas,
       IBoundsCalculator calculator,
-      ISvgTreeViewProperties viewProperties) {
+      SVGSpecialNodeViewManager manager, ISvgTreeViewProperties viewProperties) {
     this.canvas = canvas;
     this.boundsCalculator = calculator;
     this.properties = viewProperties;

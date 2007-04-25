@@ -12,6 +12,7 @@ import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
+import org.w3c.dom.svg.SVGGElement;
 
 public class SVGToggleButtonSpecialNodeView implements ISVGSpecialNodeView {
 
@@ -26,8 +27,10 @@ public class SVGToggleButtonSpecialNodeView implements ISVGSpecialNodeView {
     this.color = color;
   }
 
-  public Element initGui(SVGOMDocument document, IBoundsCalculator boundsCalculator) {
-    Element groupElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
+  public SVGGElement initGui(SVGOMDocument document, IBoundsCalculator boundsCalculator) {
+    SVGGElement groupElement = (SVGGElement) document.createElementNS(
+        SVGDOMImplementation.SVG_NAMESPACE_URI,
+        SVGConstants.SVG_G_TAG);
     for (int index = 0; index < effects.size(); index++) {
       Element displayElement = effects.get(index).initGui(document);
       DomUtilities.setAttribute(
