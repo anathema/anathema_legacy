@@ -41,9 +41,9 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
     boolean isDeselectable = isNodeDeselectable(nodeId);
     boolean isSelectable = isNodeSelectable(nodeId);
     if (isNodeSelected(nodeId)) {
-      return isDeselectable ? removeCursor : getPointCursor();
+      return isDeselectable ? removeCursor : getControlCursor();
     }
-    return isSelectable ? addCursor : getPointCursor();
+    return isSelectable ? addCursor : getControlCursor();
   }
 
   private boolean isNodeSelected(String charmId) {

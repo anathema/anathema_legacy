@@ -111,7 +111,7 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
     return tooltipTextProvider.getInfoString(charm);
   }
 
-  protected Cursor getPointCursor() {
+  public Cursor getControlCursor() {
     return pointCursor;
   }
 }

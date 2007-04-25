@@ -19,4 +19,6 @@ public interface ISvgTreeViewProperties {
   public Cursor getForbiddenCursor();
 
   public Cursor getZoomCursor();
+
+  public Cursor getControlCursor();
 }

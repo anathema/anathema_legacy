@@ -80,6 +80,14 @@ public class SvgTreeListening {
     }
   };
 
+  private final EventListener controlListener = new EventListener() {
+    @Override
+    public void handleEvent(Event evt) {
+      leftClickPanInteractor.disable();
+      canvas.setCursorInternal(properties.getControlCursor());
+    }
+  };
+
   public SvgTreeListening(
       final AnathemaCanvas canvas,
       IBoundsCalculator calculator,
@@ -121,6 +129,10 @@ public class SvgTreeListening {
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
     }
+    for (final SVGGElement groupElement : canvas.getControlElements()) {
+      groupElement.removeEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, controlListener, false);
+      groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
+    }
   }
 
   private void fireNodeSelectionEvent(final String nodeId) {
@@ -140,8 +152,9 @@ public class SvgTreeListening {
       groupElement.addEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
       groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
     }
-    for (SVGGElement groupElement : canvas.getControlElements()) {
-      System.out.println("YOHO");
+    for (final SVGGElement groupElement : canvas.getControlElements()) {
+      groupElement.addEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, controlListener, false);
+      groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
     }
   }
 

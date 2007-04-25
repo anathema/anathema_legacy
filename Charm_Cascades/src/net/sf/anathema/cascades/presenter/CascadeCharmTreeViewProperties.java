@@ -61,6 +61,6 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
     if (nodeId==null) {
       return getDefaultCursor();
     }
-    return getPointCursor();
+    return getControlCursor();
   }
 }
