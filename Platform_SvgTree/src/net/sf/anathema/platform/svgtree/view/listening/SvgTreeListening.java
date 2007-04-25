@@ -33,7 +33,7 @@ public class SvgTreeListening {
   private final LeftClickPanInteractor leftClickPanner;
   private String selectionId;
 
-  private final EventListener canvasResettingListener = new EventListener() {
+  private final EventListener nodeExitListener = new EventListener() {
     public void handleEvent(Event event) {
       if (event.getTarget() instanceof SVGTSpanElement || event.getTarget() instanceof SVGTextElement) {
         return;
@@ -92,7 +92,8 @@ public class SvgTreeListening {
   public SvgTreeListening(
       final AnathemaCanvas canvas,
       IBoundsCalculator calculator,
-      SVGSpecialNodeViewManager manager, ISvgTreeViewProperties viewProperties) {
+      SVGSpecialNodeViewManager manager,
+      ISvgTreeViewProperties viewProperties) {
     this.canvas = canvas;
     this.boundsCalculator = calculator;
     this.properties = viewProperties;
@@ -128,11 +129,11 @@ public class SvgTreeListening {
     for (SVGGElement groupElement : canvas.getNodeElements()) {
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
-      groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
+      groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, nodeExitListener, false);
     }
     for (final SVGGElement groupElement : canvas.getControlElements()) {
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, controlListener, false);
-      groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
+      groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, nodeExitListener, false);
     }
   }
 
@@ -151,11 +152,11 @@ public class SvgTreeListening {
     for (SVGGElement groupElement : canvas.getNodeElements()) {
       groupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
       groupElement.addEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
-      groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
+      groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, nodeExitListener, false);
     }
     for (final SVGGElement groupElement : canvas.getControlElements()) {
       groupElement.addEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, controlListener, false);
-      groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, canvasResettingListener, false);
+      groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, nodeExitListener, false);
     }
   }
 

@@ -12,6 +12,7 @@ import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGGElement;
+import org.w3c.dom.svg.SVGLocatable;
 import org.w3c.dom.svg.SVGSVGElement;
 
 public class SVGViewControlButton implements ISVGSpecialNodeView {
@@ -48,19 +49,22 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
     outerGroupElement.appendChild(displayElement);
     this.rootElement = svgDocument.getRootElement();
     buttonGroup.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(), false);
-    displayElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, createRemoveListener(), false);
+    displayElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, createRemoveListener(boundsCalculator), false);
     setDisplayVisible(false);
     return outerGroupElement;
   }
 
-  private EventListener createRemoveListener() {
+  private EventListener createRemoveListener(final IBoundsCalculator boundsCalculator) {
     return new EventListener() {
       public void handleEvent(final Event evt) {
         if (!enabled) {
           return;
         }
-        removeFromView();
-        evt.stopPropagation();
+        MouseEvent event = (MouseEvent) evt;
+        if (!boundsCalculator.getBounds(displayElement).contains(event.getClientX(), event.getClientY())) {
+          removeFromView();
+          evt.stopPropagation();
+        }
       }
     };
   }
