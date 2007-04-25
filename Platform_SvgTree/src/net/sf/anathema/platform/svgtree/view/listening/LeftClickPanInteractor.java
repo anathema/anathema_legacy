@@ -2,7 +2,6 @@ package net.sf.anathema.platform.svgtree.view.listening;
 
 import java.awt.Cursor;
 import java.awt.event.InputEvent;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 
@@ -10,9 +9,10 @@ import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
+import org.apache.batik.swing.gvt.AbstractPanInteractor;
 import org.apache.batik.swing.gvt.JGVTComponent;
 
-public class LeftClickPanAdapter extends MouseAdapter {
+public class LeftClickPanInteractor extends AbstractPanInteractor {
   private boolean finished = true;
   private int xStart;
   private int yStart;
@@ -25,7 +25,7 @@ public class LeftClickPanAdapter extends MouseAdapter {
   private boolean panningEnabled;
   private boolean cursorEnabled;
 
-  public LeftClickPanAdapter(
+  public LeftClickPanInteractor(
       IBoundsCalculator boundsCalculator,
       IAnathemaCanvas canvas,
       ISvgTreeViewProperties properties,
@@ -35,6 +35,19 @@ public class LeftClickPanAdapter extends MouseAdapter {
     this.properties = properties;
     this.listening = listening;
     togglePanning();
+  }
+
+  @Override
+  public boolean endInteraction() {
+    return finished;
+  }
+
+  @Override
+  public boolean startInteraction(InputEvent event) {
+    if (!panningEnabled || !(event instanceof MouseEvent)) {
+      return false;
+    }
+    return (event.getID() == MouseEvent.MOUSE_PRESSED) && (event.getModifiers() & InputEvent.BUTTON1_MASK) != 0;
   }
 
   @Override

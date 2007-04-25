@@ -1,41 +1,27 @@
 package net.sf.anathema.platform.svgtree.view.listening;
 
 import java.awt.event.InputEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
-import org.apache.batik.swing.gvt.InteractorAdapter;
 import org.apache.batik.swing.gvt.JGVTComponent;
 
-public class RightClickPanInteractor extends InteractorAdapter {
+public class RightClickPanAdapter extends MouseAdapter {
 
   private final IBoundsCalculator calculator;
 
-  public RightClickPanInteractor(IBoundsCalculator boundsCalculator) {
+  public RightClickPanAdapter(IBoundsCalculator boundsCalculator) {
     this.calculator = boundsCalculator;
   }
 
   @Override
-  public boolean endInteraction() {
-    return true;
-  }
-
-  @Override
-  public boolean startInteraction(InputEvent ie) {
-    if (!(ie instanceof MouseEvent)) {
-      return false;
-    }
-    MouseEvent event = (MouseEvent) ie;
-    int mods = ie.getModifiers();
-    return ie.getID() == MouseEvent.MOUSE_CLICKED
-        && (mods & InputEvent.BUTTON3_MASK) != 0
-        && event.getClickCount() == 1;
-  }
-
-  @Override
   public void mouseClicked(MouseEvent e) {
+    if ((e.getModifiers() & InputEvent.BUTTON3_MASK) == 0 || e.getClickCount() != 1) {
+      return;
+    }
     JGVTComponent component = (JGVTComponent) e.getSource();
     int xCenter = component.getWidth() / 2;
     int yCenter = component.getHeight() / 2;

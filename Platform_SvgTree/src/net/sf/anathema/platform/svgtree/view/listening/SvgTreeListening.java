@@ -29,7 +29,7 @@ public class SvgTreeListening {
   private final IAnathemaCanvas canvas;
   private final IBoundsCalculator boundsCalculator;
   private final GenericControl<INodeSelectionListener> control = new GenericControl<INodeSelectionListener>();
-  private final LeftClickPanAdapter leftClickPanner;
+  private final LeftClickPanInteractor leftClickPanner;
   private String selectionId;
 
   private final EventListener canvasResettingListener = new EventListener() {
@@ -104,13 +104,14 @@ public class SvgTreeListening {
         }
       }
     });
-    canvas.addMouseWheelListener(new MouseWheelMagnifyListener(boundsCalculator));
     List<Interactor> interactors = canvas.getInteractors();
     interactors.add(new RightClickMagnifyInteractor(boundsCalculator, canvas, this, properties.getZoomCursor()));
-    interactors.add(new RightClickPanInteractor(boundsCalculator));
     interactors.add(new DoubleRightClickResetTransformInteractor(boundsCalculator));
-    this.leftClickPanner = new LeftClickPanAdapter(boundsCalculator, canvas, properties, this);
+    this.leftClickPanner = new LeftClickPanInteractor(boundsCalculator, canvas, properties, this);
+    interactors.add(leftClickPanner);
     canvas.addMouseListener(leftClickPanner);
+    canvas.addMouseListener(new RightClickPanAdapter(boundsCalculator));
+    canvas.addMouseWheelListener(new MouseWheelMagnifyListener(boundsCalculator));
     canvas.setCursorInternal(properties.getDefaultCursor());
   }
 
