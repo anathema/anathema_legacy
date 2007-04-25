@@ -27,23 +27,23 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
     this.tooltipTextProvider = new CharmInfoStringBuilder(resources);
     this.openHandCursor = Toolkit.getDefaultToolkit().createCustomCursor(
         resources.getImage(this.getClass(), "CursorHandOpen.png"), //$NON-NLS-1$
-        new Point(0, 0),
+        new Point(5, 0),
         resources.getString("CharmTreeView.GUI.HandCursor")); //$NON-NLS-1$
     this.dragHandCursor = Toolkit.getDefaultToolkit().createCustomCursor(
         resources.getImage(this.getClass(), "CursorHandGrab.png"), //$NON-NLS-1$
-        new Point(0, 0),
+        new Point(5, 0),
         resources.getString("CharmTreeView.GUI.GrabCursor")); //$NON-NLS-1$
     this.forbiddenCursor = Toolkit.getDefaultToolkit().createCustomCursor(
         resources.getImage(this.getClass(), "CursorDisallow.png"), //$NON-NLS-1$
-        new Point(0, 0),
+        new Point(5, 0),
         resources.getString("CharmTreeView.GUI.ForbiddenCursor")); //$NON-NLS-1$
     this.zoomCursor = Toolkit.getDefaultToolkit().createCustomCursor(
         resources.getImage(this.getClass(), "CursorZoom.png"), //$NON-NLS-1$
-        new Point(0, 0),
+        new Point(5, 0),
         resources.getString("CharmTreeView.GUI.ZoomCursor")); //$NON-NLS-1$
     this.pointCursor = Toolkit.getDefaultToolkit()
         .createCustomCursor(
-            resources.getImage(this.getClass(), "CursorHandPoint.png"), new Point(0, 0), resources.getString("CharmTreeView.GUI.PointCursor")); //$NON-NLS-1$ //$NON-NLS-2$
+            resources.getImage(this.getClass(), "CursorHandPoint.png"), new Point(5, 0), resources.getString("CharmTreeView.GUI.PointCursor")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   @Override
