@@ -29,7 +29,7 @@ public class SvgTreeListening {
   private final IAnathemaCanvas canvas;
   private final IBoundsCalculator boundsCalculator;
   private final GenericControl<INodeSelectionListener> control = new GenericControl<INodeSelectionListener>();
-  private final LeftClickPanInteractor leftClickPanInteractor;
+  private final LeftClickPanAdapter leftClickPanner;
   private String selectionId;
 
   private final EventListener canvasResettingListener = new EventListener() {
@@ -43,10 +43,10 @@ public class SvgTreeListening {
           SVGGElement group = (SVGGElement) event.getCurrentTarget();
           selectionId = group.getId();
         }
-        leftClickPanInteractor.toggleCursorControls();
+        leftClickPanner.toggleCursorControls();
       }
       else {
-        leftClickPanInteractor.togglePanning();
+        leftClickPanner.togglePanning();
         resetCursor();
       }
     }
@@ -59,7 +59,7 @@ public class SvgTreeListening {
       if (selectionId == null || nodeId.equals(selectionId)) {
         setCursor(nodeId);
         setCanvasTooltip(nodeId);
-        leftClickPanInteractor.disable();
+        leftClickPanner.disable();
       }
     }
   };
@@ -83,7 +83,7 @@ public class SvgTreeListening {
   private final EventListener controlListener = new EventListener() {
     @Override
     public void handleEvent(Event evt) {
-      leftClickPanInteractor.disable();
+      leftClickPanner.disable();
       canvas.setCursorInternal(properties.getControlCursor());
     }
   };
@@ -108,11 +108,10 @@ public class SvgTreeListening {
     List<Interactor> interactors = canvas.getInteractors();
     interactors.add(new RightClickMagnifyInteractor(boundsCalculator, canvas, this, properties.getZoomCursor()));
     interactors.add(new RightClickPanInteractor(boundsCalculator));
-    this.leftClickPanInteractor = new LeftClickPanInteractor(boundsCalculator, canvas, properties, this);
-    interactors.add(leftClickPanInteractor);
     interactors.add(new DoubleRightClickResetTransformInteractor(boundsCalculator));
+    this.leftClickPanner = new LeftClickPanAdapter(boundsCalculator, canvas, properties, this);
+    canvas.addMouseListener(leftClickPanner);
     canvas.setCursorInternal(properties.getDefaultCursor());
-    canvas.addMouseListener(leftClickPanInteractor);
   }
 
   public void addNodeSelectionListener(final INodeSelectionListener listener) {

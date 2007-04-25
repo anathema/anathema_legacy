@@ -66,9 +66,7 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
       rt.preConcatenate(pt);
       c.setRenderingTransform(rt);
     }
-    if (c.getCursor() == zoomCursor) {
-      listening.resetCursor();
-    }
+    listening.resetCursor();
     calculator.reset();
   }
 

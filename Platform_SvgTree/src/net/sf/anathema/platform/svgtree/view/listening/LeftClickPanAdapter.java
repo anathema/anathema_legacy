@@ -2,6 +2,7 @@ package net.sf.anathema.platform.svgtree.view.listening;
 
 import java.awt.Cursor;
 import java.awt.event.InputEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 
@@ -9,14 +10,13 @@ import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
-import org.apache.batik.swing.gvt.InteractorAdapter;
 import org.apache.batik.swing.gvt.JGVTComponent;
 
-public class LeftClickPanInteractor extends InteractorAdapter {
-  protected boolean finished = true;
-  protected int xStart;
-  protected int yStart;
-  protected Cursor previousCursor;
+public class LeftClickPanAdapter extends MouseAdapter {
+  private boolean finished = true;
+  private int xStart;
+  private int yStart;
+  private Cursor previousCursor;
 
   private final IAnathemaCanvas canvas;
   private final IBoundsCalculator calculator;
@@ -25,7 +25,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
   private boolean panningEnabled;
   private boolean cursorEnabled;
 
-  public LeftClickPanInteractor(
+  public LeftClickPanAdapter(
       IBoundsCalculator boundsCalculator,
       IAnathemaCanvas canvas,
       ISvgTreeViewProperties properties,
@@ -38,22 +38,11 @@ public class LeftClickPanInteractor extends InteractorAdapter {
   }
 
   @Override
-  public boolean endInteraction() {
-    return finished;
-  }
-
-  @Override
-  public boolean startInteraction(InputEvent event) {
-    if (!panningEnabled || !(event instanceof MouseEvent)) {
-      return false;
-    }
-    int mods = event.getModifiers();
-    return (event.getID() == MouseEvent.MOUSE_PRESSED) && (mods & InputEvent.BUTTON1_MASK) != 0;
-  }
-
-  @Override
   public void mousePressed(MouseEvent e) {
     if (!panningEnabled || !finished) {
+      return;
+    }
+    if ((e.getModifiers() & InputEvent.BUTTON1_MASK) == 0) {
       return;
     }
     finished = false;
@@ -74,6 +63,9 @@ public class LeftClickPanInteractor extends InteractorAdapter {
     if (!panningEnabled || finished) {
       return;
     }
+    if ((e.getModifiers() & InputEvent.BUTTON1_MASK) == 0) {
+      return;
+    }
     finished = true;
     JGVTComponent c = (JGVTComponent) e.getSource();
     AffineTransform at = createTranslateTransform(e);
@@ -86,14 +78,16 @@ public class LeftClickPanInteractor extends InteractorAdapter {
 
   @Override
   public void mouseDragged(MouseEvent e) {
+    if ((e.getModifiers() & InputEvent.BUTTON1_MASK) == 0) {
+      return;
+    }
     JGVTComponent component = (JGVTComponent) e.getSource();
     AffineTransform transform = createTranslateTransform(e);
     component.setPaintingTransform(transform);
   }
 
   private AffineTransform createTranslateTransform(MouseEvent e) {
-    AffineTransform transform = AffineTransform.getTranslateInstance(e.getX() - xStart, e.getY() - yStart);
-    return transform;
+    return AffineTransform.getTranslateInstance(e.getX() - xStart, e.getY() - yStart);
   }
 
   public void togglePanning() {
