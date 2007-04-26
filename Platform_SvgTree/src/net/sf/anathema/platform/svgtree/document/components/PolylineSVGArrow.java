@@ -20,14 +20,6 @@ public class PolylineSVGArrow {
     pointList.add(new Point2D.Double(x, y));
   }
 
-  private double getHeight(Double point1, Double point2) {
-    return point2.y - point1.y;
-  }
-
-  private double getWidth(Double point1, Double point2) {
-    return point2.x - point1.x;
-  }
-
   public Element toXML() {
     QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element g = new DefaultElement(group);
@@ -46,7 +38,7 @@ public class PolylineSVGArrow {
     for (int pointIndex = 0; pointIndex < pointList.size() - 1; pointIndex++) {
       pointString = addPoint(pointString, pointList.get(pointIndex).x, pointList.get(pointIndex).y);
     }
-    pointString = createFinalLinePart(
+    pointString = createFinalLinePart2(
         pointString,
         pointList.get(pointList.size() - 2),
         pointList.get(pointList.size() - 1));
@@ -55,28 +47,16 @@ public class PolylineSVGArrow {
     line.addAttribute(ISVGCascadeXMLConstants.ATTRIB_MARKER_END, ISVGCascadeXMLConstants.VALUE_ARROWHEAD_REFERENCE);
   }
 
-  private String createFinalLinePart(String pointString, Double startPoint, Double endPoint) {
-    double ratio = Math.abs(getWidth(startPoint, endPoint) / getHeight(startPoint, endPoint));
-    double halfArrowWidth = PolylineSVGArrow.ShaftWidth / 2.0;
-    if (endPoint.x > startPoint.x) {
-      if (ratio > 1) {
-        pointString = addPoint(pointString, endPoint.x - halfArrowWidth, endPoint.y - ratio / halfArrowWidth);
-      }
-      else {
-        pointString = addPoint(pointString, endPoint.x - ratio / halfArrowWidth, endPoint.y - halfArrowWidth);
-      }
-    }
-    else if (startPoint.x > endPoint.x) {
-      if (ratio > 1) {
-        pointString = addPoint(pointString, endPoint.x + halfArrowWidth, endPoint.y - ratio / halfArrowWidth);
-      }
-      else {
-        pointString = addPoint(pointString, endPoint.x + ratio / halfArrowWidth, endPoint.y - halfArrowWidth);
-      }
-    }
-    else {
-      pointString = addPoint(pointString, endPoint.x, endPoint.y - halfArrowWidth);
-    }
+  private String createFinalLinePart2(String pointString, Double startPoint, Double endPoint) {
+    double horizontalCathetus = endPoint.x - startPoint.x;
+    double verticalCathetus = endPoint.y - startPoint.y;
+    double hypothenuse = Math.sqrt(Math.pow(horizontalCathetus, 2) + Math.pow(verticalCathetus, 2));
+    double shortenedHypothenuse = hypothenuse - 10;
+    double shortenedVerticalCathetus = (verticalCathetus / hypothenuse) * shortenedHypothenuse;
+    double shortenedHorizontalCathetus = (horizontalCathetus / hypothenuse) * shortenedHypothenuse;
+    double newEndPointX = startPoint.x + shortenedHorizontalCathetus;
+    double newEndPointY = startPoint.y + shortenedVerticalCathetus;
+    pointString = addPoint(pointString, newEndPointX, newEndPointY);
     return pointString;
   }
 
