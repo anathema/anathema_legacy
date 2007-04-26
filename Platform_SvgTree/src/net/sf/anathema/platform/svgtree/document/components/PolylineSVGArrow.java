@@ -38,7 +38,7 @@ public class PolylineSVGArrow {
     for (int pointIndex = 0; pointIndex < pointList.size() - 1; pointIndex++) {
       pointString = addPoint(pointString, pointList.get(pointIndex).x, pointList.get(pointIndex).y);
     }
-    pointString = createFinalLinePart2(
+    pointString = createFinalLinePart(
         pointString,
         pointList.get(pointList.size() - 2),
         pointList.get(pointList.size() - 1));
@@ -47,7 +47,7 @@ public class PolylineSVGArrow {
     line.addAttribute(ISVGCascadeXMLConstants.ATTRIB_MARKER_END, ISVGCascadeXMLConstants.VALUE_ARROWHEAD_REFERENCE);
   }
 
-  private String createFinalLinePart2(String pointString, Double startPoint, Double endPoint) {
+  private String createFinalLinePart(String pointString, Double startPoint, Double endPoint) {
     double horizontalCathetus = endPoint.x - startPoint.x;
     double verticalCathetus = endPoint.y - startPoint.y;
     double hypothenuse = Math.sqrt(Math.pow(horizontalCathetus, 2) + Math.pow(verticalCathetus, 2));
