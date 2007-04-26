@@ -9,7 +9,9 @@ http://anathema.sf.net
 
 --Usability--
 * Generic Charms are ordered in a character-specific way. 
-* Printing for 1E characters and 2E mortals is back. (Bug 1705201, found by Hotep.) 
+* Printing for 1E characters and 2E mortals is back. (Bug 1705201, found by Hotep.)
+* Revised Charm Cascade Controls
+* Improved accuracy of Charm rendering.
 
 ===------------------------------------------------------------------------------===
 			Release 1.2 "Nexus" (17/04/07)
