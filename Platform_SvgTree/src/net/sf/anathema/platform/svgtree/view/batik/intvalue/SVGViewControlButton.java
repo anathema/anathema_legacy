@@ -12,11 +12,13 @@ import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGGElement;
-import org.w3c.dom.svg.SVGLocatable;
 import org.w3c.dom.svg.SVGSVGElement;
 
 public class SVGViewControlButton implements ISVGSpecialNodeView {
 
+  private static final String VALUE_INHERIT = "inherit"; //$NON-NLS-1$
+  private static final String VALUE_NONE = "none"; //$NON-NLS-1$
+  private static final String ATTRIB_DISPLAY = "display"; //$NON-NLS-1$
   private final ISVGSpecialNodeView display;
   private final double nodeWidth;
   private final SVGButton button;
@@ -130,10 +132,10 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
   private void setDisplayVisible(boolean visible) {
     if (displayElement != null) {
       if (visible) {
-        setAttribute(displayElement, "display", "inherit");
+        setAttribute(displayElement, ATTRIB_DISPLAY, VALUE_INHERIT);
       }
       else {
-        setAttribute(displayElement, "display", "none");
+        setAttribute(displayElement, ATTRIB_DISPLAY, VALUE_NONE);
       }
     }
   }

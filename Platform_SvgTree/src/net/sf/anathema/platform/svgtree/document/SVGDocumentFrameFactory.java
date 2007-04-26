@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.svgtree.document;
 
 import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
+import static org.apache.batik.util.SVGConstants.*;
 import net.sf.anathema.platform.svgtree.document.util.SVGCreationUtils;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
@@ -22,6 +23,7 @@ public class SVGDocumentFrameFactory {
     Element defsElement = rootElement.addElement(defs);
     addNodeFrameSymbol(properties, defsElement);
     addArrowHeadSymbol(defsElement);
+    addArrowBottomSymbol(defsElement);
     Document frameDocument = DocumentFactory.getInstance().createDocument(rootElement);
     frameDocument.setDocType(new DefaultDocumentType(
         SVGConstants.SVG_SVG_TAG,
@@ -31,14 +33,33 @@ public class SVGDocumentFrameFactory {
   }
 
   private void addArrowHeadSymbol(final Element defsElement) {
-    QName arrowHeadSymbol = SVGCreationUtils.createSVGQName(SVGConstants.SVG_SYMBOL_TAG);
+    QName arrowHeadSymbol = SVGCreationUtils.createSVGQName(SVGConstants.SVG_MARKER_TAG);
     Element arrowHeadSymbolElement = defsElement.addElement(arrowHeadSymbol);
-    arrowHeadSymbolElement.addAttribute(SVGConstants.SVG_ID_ATTRIBUTE, VALUE_ARROWHEAD_ID);
+    arrowHeadSymbolElement.addAttribute(SVG_ID_ATTRIBUTE, VALUE_ARROWHEAD_ID);
+    arrowHeadSymbolElement.addAttribute(SVG_ORIENT_ATTRIBUTE, SVG_AUTO_VALUE);
+    arrowHeadSymbolElement.addAttribute(SVG_REF_X_ATTRIBUTE, VALUE_8);
+    arrowHeadSymbolElement.addAttribute(SVG_REF_Y_ATTRIBUTE, VALUE_15);
+    arrowHeadSymbolElement.addAttribute(SVG_VIEW_BOX_ATTRIBUTE, VALUE_ARROWHEAD_VIEWBOX);
     QName polygon = SVGCreationUtils.createSVGQName(SVGConstants.SVG_POLYGON_TAG);
     Element polygonElement = arrowHeadSymbolElement.addElement(polygon);
     polygonElement.addAttribute(SVGConstants.SVG_POINTS_ATTRIBUTE, VALUE_ARROWHEAD_POINTS);
     polygonElement.addAttribute(SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
     polygonElement.addAttribute(SVGConstants.SVG_STROKE_WIDTH_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
+  }
+
+  private void addArrowBottomSymbol(final Element defsElement) {
+    QName arrowBottomSymbol = SVGCreationUtils.createSVGQName(SVGConstants.SVG_MARKER_TAG);
+    Element arrowHeadSymbolElement = defsElement.addElement(arrowBottomSymbol);
+    arrowHeadSymbolElement.addAttribute(SVG_ID_ATTRIBUTE, VALUE_ARROWBOTTOM_ID);
+    arrowHeadSymbolElement.addAttribute(SVG_REF_X_ATTRIBUTE, VALUE_8);
+    arrowHeadSymbolElement.addAttribute(SVG_REF_Y_ATTRIBUTE, VALUE_8);
+    arrowHeadSymbolElement.addAttribute(SVG_VIEW_BOX_ATTRIBUTE, VALUE_ARROWBOTTOM_VIEWBOX);
+    QName path = SVGCreationUtils.createSVGQName(SVGConstants.SVG_CIRCLE_TAG);
+    Element pathElement = arrowHeadSymbolElement.addElement(path);
+    pathElement.addAttribute(SVGConstants.SVG_R_ATTRIBUTE, VALUE_6);
+    pathElement.addAttribute(SVGConstants.SVG_CY_ATTRIBUTE, VALUE_8);
+    pathElement.addAttribute(SVGConstants.SVG_CX_ATTRIBUTE, VALUE_8);
+    pathElement.addAttribute(SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
   }
 
   private void addNodeFrameSymbol(final ITreePresentationProperties properties, final Element defsElement) {
