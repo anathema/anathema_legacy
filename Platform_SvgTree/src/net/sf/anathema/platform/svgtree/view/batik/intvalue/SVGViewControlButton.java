@@ -50,20 +50,26 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
         "translate(0," + SVGIntValueDisplay.getDiameter(nodeWidth) * 1.15 + SVGButton.SHADOW_OFFSET + ")"); //$NON-NLS-1$ //$NON-NLS-2$
     outerGroupElement.appendChild(displayElement);
     this.rootElement = svgDocument.getRootElement();
+    EventListener removeListener = createRemoveListener(boundsCalculator, buttonGroup);
     buttonGroup.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(), false);
-    displayElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, createRemoveListener(boundsCalculator), false);
+    buttonGroup.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, removeListener, false);
+    displayElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, removeListener, false);
     setDisplayVisible(false);
     return outerGroupElement;
   }
 
-  private EventListener createRemoveListener(final IBoundsCalculator boundsCalculator) {
+  private EventListener createRemoveListener(final IBoundsCalculator boundsCalculator, final SVGGElement buttonGroup) {
     return new EventListener() {
       public void handleEvent(final Event evt) {
         if (!enabled) {
           return;
         }
         MouseEvent event = (MouseEvent) evt;
-        if (!boundsCalculator.getBounds(displayElement).contains(event.getClientX(), event.getClientY())) {
+        boolean outOfDisplay = !boundsCalculator.getBounds(displayElement).contains(
+            event.getClientX(),
+            event.getClientY());
+        boolean outOfButton = !boundsCalculator.getBounds(buttonGroup).contains(event.getClientX(), event.getClientY());
+        if (outOfDisplay && outOfButton) {
           removeFromView();
           evt.stopPropagation();
         }
