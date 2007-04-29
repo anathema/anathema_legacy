@@ -121,7 +121,7 @@ public class SvgTreeListening {
     }
     for (SVGGElement groupElement : canvas.getNodeElements()) {
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
-      groupElement.removeEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
+      groupElement.removeEventListener(SVGConstants.SVG_MOUSEOVER_EVENT_TYPE, cursorTooltipInitListener, false);
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, nodeExitListener, false);
     }
     for (final SVGGElement groupElement : canvas.getControlElements()) {
@@ -144,7 +144,7 @@ public class SvgTreeListening {
     }
     for (SVGGElement groupElement : canvas.getNodeElements()) {
       groupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
-      groupElement.addEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, cursorTooltipInitListener, false);
+      groupElement.addEventListener(SVGConstants.SVG_MOUSEOVER_EVENT_TYPE, cursorTooltipInitListener, false);
       groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, nodeExitListener, false);
     }
     for (final SVGGElement groupElement : canvas.getControlElements()) {

@@ -1,5 +1,8 @@
 package net.sf.anathema.platform.svgtree.view;
 
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
+import static org.apache.batik.util.SVGConstants.*;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +11,8 @@ import javax.swing.JComponent;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
+import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
+import net.sf.anathema.platform.svgtree.document.visualizer.ICascadeVisualizer;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
@@ -33,6 +38,7 @@ import org.w3c.dom.Text;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGElement;
 import org.w3c.dom.svg.SVGGElement;
+import org.w3c.dom.svg.SVGRectElement;
 import org.w3c.dom.svg.SVGTextElement;
 import org.w3c.dom.svg.SVGUseElement;
 
@@ -76,9 +82,24 @@ public class SvgTreeView implements ISvgTreeView {
     if (dom4jDocument != null) {
       DOMImplementation implementation = SVG12DOMImplementation.getDOMImplementation();
       document = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
+//      createGlassPane(document);
     }
     canvas.setDocument(document);
   }
+
+//  private SVGRectElement createGlassPane(SVGDocument document) {
+//    SVGRectElement rectangle = (SVGRectElement) document.createElementNS(
+//        SVGDOMImplementation.SVG_NAMESPACE_URI,
+//        SVGConstants.SVG_RECT_TAG);
+//    document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
+//    setAttribute(rectangle, SVGConstants.SVG_X_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
+//    setAttribute(rectangle, SVGConstants.SVG_Y_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
+//    setAttribute(rectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, "10000");
+//    setAttribute(rectangle, SVGConstants.SVG_HEIGHT_ATTRIBUTE, "10000");
+//    setAttribute(rectangle, SVGConstants.SVG_FILL_ATTRIBUTE, SVGConstants.SVG_NONE_VALUE);
+//    setAttribute(rectangle, ISVGCascadeXMLConstants.ATTRIB_POINTER_EVENTS, "fill");
+//    document.insertBefore(rectangle, document.getRootElement().getElementById(ISVGCascadeXMLConstants.VALUE_CASCADE_ID));
+//  }
 
   public void addNodeSelectionListener(final INodeSelectionListener listener) {
     listening.addNodeSelectionListener(listener);
@@ -94,14 +115,14 @@ public class SvgTreeView implements ISvgTreeView {
     for (int i = 0; i < list.getLength(); i++) {
       if (list.item(i) instanceof SVGUseElement) {
         SVGElement element = (SVGElement) list.item(i);
-        element.setAttribute(SVGConstants.SVG_FILL_ATTRIBUTE, "rgb(" //$NON-NLS-1$
+        element.setAttribute(SVG_FILL_ATTRIBUTE, "rgb(" //$NON-NLS-1$
             + color.getRed()
             + "," //$NON-NLS-1$
             + color.getGreen()
             + "," //$NON-NLS-1$
             + color.getBlue()
             + ")"); //$NON-NLS-1$
-        element.setAttribute(SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE, String.valueOf((float) color.getAlpha() / 255));
+        element.setAttribute(SVG_FILL_OPACITY_ATTRIBUTE, String.valueOf((float) color.getAlpha() / 255));
       }
     }
   }
@@ -117,7 +138,7 @@ public class SvgTreeView implements ISvgTreeView {
     if (nodeGroup == null) {
       return;
     }
-    nodeGroup.setAttribute(SVGConstants.SVG_OPACITY_ATTRIBUTE, String.valueOf((float) alpha / 255));
+    nodeGroup.setAttribute(SVG_OPACITY_ATTRIBUTE, String.valueOf((float) alpha / 255));
   }
 
   public void addDocumentPreloadListener(final IDocumentLoadedListener listener) {
@@ -140,7 +161,7 @@ public class SvgTreeView implements ISvgTreeView {
 
   private void initNodeNames() {
     for (SVGGElement groupElement : canvas.getNodeElements()) {
-      NodeList textNodes = groupElement.getElementsByTagName(SVGConstants.SVG_TEXT_TAG);
+      NodeList textNodes = groupElement.getElementsByTagName(SVG_TEXT_TAG);
       for (int i = 0; i < textNodes.getLength(); i++) {
         SVGTextElement currentNode = (SVGTextElement) textNodes.item(i);
         internationalize(currentNode);
@@ -170,7 +191,7 @@ public class SvgTreeView implements ISvgTreeView {
     Text oldNode = (Text) text.getFirstChild();
     Text[] textNodes = new Text[lines];
     int lineHeight = 16;
-    float varY = Float.valueOf(text.getAttribute(SVGConstants.SVG_Y_ATTRIBUTE));
+    float varY = Float.valueOf(text.getAttribute(SVG_Y_ATTRIBUTE));
     varY += lineHeight - lines * lineHeight / 2 - (lines == 1 ? 2 : 0);
     List<Integer> wrap = new ArrayList<Integer>();
     wrap.add(0);
@@ -185,7 +206,7 @@ public class SvgTreeView implements ISvgTreeView {
     }
     text.removeChild(oldNode);
     Element[] lineBreak = new Element[lines];
-    String xPosition = text.getAttribute(SVGConstants.SVG_X_ATTRIBUTE);
+    String xPosition = text.getAttribute(SVG_X_ATTRIBUTE);
     for (int index = 0; index < lineBreak.length; index++) {
       lineBreak[index] = createTSpanElement(document, textNodes[index], xPosition, varY, lineHeight * index);
       text.appendChild(lineBreak[index]);
@@ -198,11 +219,12 @@ public class SvgTreeView implements ISvgTreeView {
       final String xPosition,
       final float varY,
       final int dy) {
-    Element tSpanElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_TSPAN_TAG);
-    tSpanElement.setAttribute(SVGConstants.SVG_X_ATTRIBUTE, xPosition);
-    tSpanElement.setAttribute(SVGConstants.SVG_Y_ATTRIBUTE, String.valueOf(varY));
-    tSpanElement.setAttribute(SVGConstants.SVG_DX_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
-    tSpanElement.setAttribute(SVGConstants.SVG_DY_ATTRIBUTE, String.valueOf(dy));
+    Element tSpanElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVG_TSPAN_TAG);
+    tSpanElement.setAttribute(SVG_X_ATTRIBUTE, xPosition);
+    tSpanElement.setAttribute(SVG_Y_ATTRIBUTE, String.valueOf(varY));
+    tSpanElement.setAttribute(SVG_DX_ATTRIBUTE, SVG_ZERO_VALUE);
+    tSpanElement.setAttribute(SVG_DY_ATTRIBUTE, String.valueOf(dy));
+    tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_POINTER_EVENTS, SVG_NONE_VALUE);
     tSpanElement.appendChild(textNode);
     return tSpanElement;
   }

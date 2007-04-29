@@ -12,7 +12,7 @@ public interface ISVGCascadeXMLConstants {
   public static final String ATTRIB_IS_CONTROL = "isControl"; //$NON-NLS-1$
   public static final String ATTRIB_MARKER_START = "marker-start"; //$NON-NLS-1$
   public static final String ATTRIB_MARKER_END = "marker-end"; //$NON-NLS-1$
-  public static final String ATTRIB_POINTER_EVENTS = "pointer_events"; //$NON-NLS-1$ 
+  public static final String ATTRIB_POINTER_EVENTS = "pointer-events"; //$NON-NLS-1$ 
 
   public static final String VALUE_15 = "15"; //$NON-NLS-1$
   public static final String VALUE_12 = "12"; //$NON-NLS-1$
@@ -32,7 +32,7 @@ public interface ISVGCascadeXMLConstants {
   public static final String VALUE_SVG_VERSION = "1.2"; //$NON-NLS-1$
   public static final String VALUE_VIEWBOX_SIZE = "0 0 1400 625"; //$NON-NLS-1$
   public static final String VALUE_XMID_YMIN_MEET = SVGConstants.SVG_XMIDYMIN_VALUE + " meet"; //$NON-NLS-1$
-
+  public static final String VALUE_VISIBLE = "visible"; //$NON-NLS-1$ 
   public static final String VALUE_COLOR_SVG_BLACK = "rgb(0,0,0)"; //$NON-NLS-1$
   public static final String VALUE_COLOR_LIGHT_MEDIUM_GRAY = "rgb(120,120,120)"; //$NON-NLS-1$
   public static final String VALUE_COLOR_SVG_GRAY = "rgb(128,128,128)"; //$NON-NLS-1$

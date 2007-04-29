@@ -64,8 +64,8 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
     regionRect.addAttribute("visibility", "hidden"); //$NON-NLS-1$ //$NON-NLS-2$
     Element flowDiv = flowText.addElement(SVGCreationUtils.createSVGQName(SVG12Constants.SVG_FLOW_DIV_TAG));
     Element paragraph = flowDiv.addElement(SVGCreationUtils.createSVGQName(SVG12Constants.SVG_FLOW_PARA_TAG));
-    paragraph.addAttribute(SVGConstants.SVG_FONT_SIZE_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_15);
-    paragraph.addAttribute("text-align", SVGConstants.SVG_MIDDLE_VALUE); //$NON-NLS-1$
+    paragraph.addAttribute(SVG_FONT_SIZE_ATTRIBUTE, VALUE_15);
+    paragraph.addAttribute("text-align", SVG_MIDDLE_VALUE); //$NON-NLS-1$
     paragraph.addAttribute("margin-top", "10"); //$NON-NLS-1$ //$NON-NLS-2$
     paragraph.addAttribute("margin-bottom", "10"); //$NON-NLS-1$ //$NON-NLS-2$
     paragraph.addAttribute("margin-left", "10"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -74,12 +74,13 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
   }
 
   private void addUseElement(final Element g) {
-    QName useName = SVGCreationUtils.createSVGQName(SVGConstants.SVG_USE_TAG);
+    QName useName = SVGCreationUtils.createSVGQName(SVG_USE_TAG);
     Element use = g.addElement(useName);
-    use.addAttribute(SVGConstants.SVG_X_ATTRIBUTE, String.valueOf(getPosition() - getNodeDimension().width / 2));
-    use.addAttribute(SVGConstants.SVG_Y_ATTRIBUTE, String.valueOf(getLayer().getYPosition()));
-    use.addAttribute(SVGConstants.SVG_FILL_ATTRIBUTE, SVGConstants.SVG_NONE_VALUE);
-    use.addAttribute(SVGCreationUtils.createXLinkQName(), ISVGCascadeXMLConstants.VALUE_FRAME_REFERENCE);
+    use.addAttribute(SVG_X_ATTRIBUTE, String.valueOf(getPosition() - getNodeDimension().width / 2));
+    use.addAttribute(SVG_Y_ATTRIBUTE, String.valueOf(getLayer().getYPosition()));
+    use.addAttribute(ATTRIB_POINTER_EVENTS, VALUE_VISIBLE);
+    use.addAttribute(SVG_FILL_ATTRIBUTE, SVG_NONE_VALUE);
+    use.addAttribute(SVGCreationUtils.createXLinkQName(), VALUE_FRAME_REFERENCE);
   }
 
   @Override
