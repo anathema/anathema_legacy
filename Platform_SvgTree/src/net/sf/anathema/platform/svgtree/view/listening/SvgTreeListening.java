@@ -12,7 +12,6 @@ import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
-import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSpecialNodeViewManager;
 
 import org.apache.batik.swing.gvt.Interactor;
 import org.apache.batik.util.SVGConstants;
@@ -39,14 +38,14 @@ public class SvgTreeListening {
         return;
       }
       canvas.setToolTipText(null);
+      String nodeId = ((SVGGElement) event.getCurrentTarget()).getId();
       if (((MouseEvent) event).getButton() == 0) {
         if (selectionId == null) {
-          SVGGElement group = (SVGGElement) event.getCurrentTarget();
-          selectionId = group.getId();
+          selectionId = nodeId;
         }
         leftClickPanner.toggleCursorControls();
       }
-      else {
+      else if (selectionId == null || selectionId == nodeId) {
         leftClickPanner.togglePanning();
         resetCursor();
       }
@@ -92,7 +91,6 @@ public class SvgTreeListening {
   public SvgTreeListening(
       final AnathemaCanvas canvas,
       IBoundsCalculator calculator,
-      SVGSpecialNodeViewManager manager,
       ISvgTreeViewProperties viewProperties) {
     this.canvas = canvas;
     this.boundsCalculator = calculator;

@@ -105,7 +105,7 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
 
   public final String getToolTip(final String charmId) {
     if (isRequirementNode(charmId)) {
-      return ""; //$NON-NLS-1$
+      return null;
     }
     ICharm charm = findNonNullCharm(charmId);
     return tooltipTextProvider.getInfoString(charm);
