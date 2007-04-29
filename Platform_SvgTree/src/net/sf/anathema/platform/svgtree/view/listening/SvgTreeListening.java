@@ -20,8 +20,6 @@ import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGGElement;
-import org.w3c.dom.svg.SVGTSpanElement;
-import org.w3c.dom.svg.SVGTextElement;
 
 public class SvgTreeListening {
 
@@ -34,9 +32,6 @@ public class SvgTreeListening {
 
   private final EventListener nodeExitListener = new EventListener() {
     public void handleEvent(Event event) {
-      if (event.getTarget() instanceof SVGTSpanElement || event.getTarget() instanceof SVGTextElement) {
-        return;
-      }
       canvas.setToolTipText(null);
       String nodeId = ((SVGGElement) event.getCurrentTarget()).getId();
       if (((MouseEvent) event).getButton() == 0) {

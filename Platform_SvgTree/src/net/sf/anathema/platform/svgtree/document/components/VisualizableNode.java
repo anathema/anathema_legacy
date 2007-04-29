@@ -1,5 +1,7 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
+import static org.apache.batik.util.SVGConstants.*;
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
 import java.awt.Dimension;
 import java.util.Map;
 
@@ -31,7 +33,7 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
     QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element g = element.addElement(group);
     g.addAttribute(SVGConstants.SVG_ID_ATTRIBUTE, getContentNode().getId());
-    g.addAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_TREE_NODE, SVGConstants.SVG_TRUE_VALUE);
+    g.addAttribute(ATTRIB_IS_TREE_NODE, SVGConstants.SVG_TRUE_VALUE);
     addUseElement(g);
     addTextElement(g);
     // addFlowTextElement(g);
@@ -40,15 +42,13 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
   private void addTextElement(final Element g) {
     QName textName = SVGCreationUtils.createSVGQName(SVGConstants.SVG_TEXT_TAG);
     Element text = g.addElement(textName);
-    {
-      text.addAttribute(SVGConstants.SVG_X_ATTRIBUTE, String.valueOf(getPosition()));
-      text.addAttribute(SVGConstants.SVG_Y_ATTRIBUTE, String.valueOf(getLayer().getYPosition()
-          + getNodeDimension().getHeight()
-          / 2));
-      text.addAttribute(SVGConstants.SVG_TEXT_ANCHOR_ATTRIBUTE, SVGConstants.SVG_MIDDLE_VALUE);
-      text.addAttribute(SVGConstants.SVG_FONT_SIZE_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_15);
-      text.setText(getContentNode().getId());
-    }
+    text.addAttribute(SVG_X_ATTRIBUTE, String.valueOf(getPosition()));
+    text.addAttribute(SVG_Y_ATTRIBUTE, String.valueOf(getLayer().getYPosition() + getNodeDimension().getHeight() / 2));
+    text.addAttribute(SVG_TEXT_ANCHOR_ATTRIBUTE, SVG_MIDDLE_VALUE);
+    text.addAttribute(SVG_FONT_SIZE_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_15);
+    text.addAttribute(ATTRIB_POINTER_EVENTS, SVG_NONE_VALUE);
+    text.setText(getContentNode().getId());
+
   }
 
   @SuppressWarnings("unused")
@@ -57,10 +57,10 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
     Element flowText = g.addElement(textName);
     Element region = flowText.addElement(SVGCreationUtils.createSVGQName(SVG12Constants.SVG_FLOW_REGION_TAG));
     Element regionRect = region.addElement(SVGCreationUtils.createSVGQName(SVGConstants.SVG_RECT_TAG));
-    regionRect.addAttribute(SVGConstants.SVG_X_ATTRIBUTE, String.valueOf(getPosition() - getNodeDimension().width / 2));
-    regionRect.addAttribute(SVGConstants.SVG_Y_ATTRIBUTE, String.valueOf(getLayer().getYPosition()));
-    regionRect.addAttribute(SVGConstants.SVG_WIDTH_ATTRIBUTE, String.valueOf(getNodeDimension().getWidth()));
-    regionRect.addAttribute(SVGConstants.SVG_HEIGHT_ATTRIBUTE, String.valueOf(getNodeDimension().getHeight()));
+    regionRect.addAttribute(SVG_X_ATTRIBUTE, String.valueOf(getPosition() - getNodeDimension().width / 2));
+    regionRect.addAttribute(SVG_Y_ATTRIBUTE, String.valueOf(getLayer().getYPosition()));
+    regionRect.addAttribute(SVG_WIDTH_ATTRIBUTE, String.valueOf(getNodeDimension().getWidth()));
+    regionRect.addAttribute(SVG_HEIGHT_ATTRIBUTE, String.valueOf(getNodeDimension().getHeight()));
     regionRect.addAttribute("visibility", "hidden"); //$NON-NLS-1$ //$NON-NLS-2$
     Element flowDiv = flowText.addElement(SVGCreationUtils.createSVGQName(SVG12Constants.SVG_FLOW_DIV_TAG));
     Element paragraph = flowDiv.addElement(SVGCreationUtils.createSVGQName(SVG12Constants.SVG_FLOW_PARA_TAG));

@@ -12,6 +12,7 @@ public interface ISVGCascadeXMLConstants {
   public static final String ATTRIB_IS_CONTROL = "isControl"; //$NON-NLS-1$
   public static final String ATTRIB_MARKER_START = "marker-start"; //$NON-NLS-1$
   public static final String ATTRIB_MARKER_END = "marker-end"; //$NON-NLS-1$
+  public static final String ATTRIB_POINTER_EVENTS = "pointer_events"; //$NON-NLS-1$ 
 
   public static final String VALUE_15 = "15"; //$NON-NLS-1$
   public static final String VALUE_12 = "12"; //$NON-NLS-1$

@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
-
 import org.dom4j.Element;
 
 public interface IVisualizableNode {
