@@ -7,7 +7,6 @@ import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
-import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.dom.svg.SVGOMDocument;
@@ -21,7 +20,7 @@ public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
   private final IAnathemaCanvas canvas;
   private final IBoundsCalculator boundsCalculator;
 
-  public SVGSpecialNodeViewManager(AnathemaCanvas canvas, BoundsCalculator calculator) {
+  public SVGSpecialNodeViewManager(AnathemaCanvas canvas, IBoundsCalculator calculator) {
     this.canvas = canvas;
     this.boundsCalculator = calculator;
   }

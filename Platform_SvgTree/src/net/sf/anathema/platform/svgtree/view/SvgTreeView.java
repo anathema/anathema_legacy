@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.svgtree.view;
 
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
 import static org.apache.batik.util.SVGConstants.*;
 
 import java.awt.Color;
@@ -12,7 +11,6 @@ import javax.swing.JComponent;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
-import net.sf.anathema.platform.svgtree.document.visualizer.ICascadeVisualizer;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
@@ -20,6 +18,8 @@ import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
+import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.DomUtilities;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.view.listening.SvgTreeListening;
 
@@ -27,7 +27,6 @@ import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg12.SVG12DOMImplementation;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherAdapter;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherEvent;
-import org.apache.batik.util.SVGConstants;
 import org.dom4j.DocumentException;
 import org.dom4j.io.DOMWriter;
 import org.w3c.dom.DOMImplementation;
@@ -39,6 +38,7 @@ import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGElement;
 import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGRectElement;
+import org.w3c.dom.svg.SVGSVGElement;
 import org.w3c.dom.svg.SVGTextElement;
 import org.w3c.dom.svg.SVGUseElement;
 
@@ -48,10 +48,11 @@ public class SvgTreeView implements ISvgTreeView {
   private final ISvgTreeViewProperties properties;
   private final SvgTreeListening listening;
   private final SVGSpecialNodeViewManager manager;
+  private final IBoundsCalculator calculator;
 
   public SvgTreeView(final ISvgTreeViewProperties properties) {
     this.properties = properties;
-    BoundsCalculator calculator = new BoundsCalculator();
+    this.calculator = new BoundsCalculator();
     this.manager = new SVGSpecialNodeViewManager(canvas, calculator);
     this.listening = new SvgTreeListening(canvas, calculator, properties);
     addDocumentLoadedListener(new IDocumentLoadedListener() {
@@ -77,29 +78,31 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   public void loadCascade(final org.dom4j.Document dom4jDocument) throws DocumentException {
+    calculator.reset();
     listening.destructDocumentListening(canvas.getSVGDocument());
     SVGDocument document = null;
     if (dom4jDocument != null) {
       DOMImplementation implementation = SVG12DOMImplementation.getDOMImplementation();
       document = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
-//      createGlassPane(document);
+      createGlassPane(document);
     }
     canvas.setDocument(document);
   }
 
-//  private SVGRectElement createGlassPane(SVGDocument document) {
-//    SVGRectElement rectangle = (SVGRectElement) document.createElementNS(
-//        SVGDOMImplementation.SVG_NAMESPACE_URI,
-//        SVGConstants.SVG_RECT_TAG);
-//    document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
-//    setAttribute(rectangle, SVGConstants.SVG_X_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
-//    setAttribute(rectangle, SVGConstants.SVG_Y_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
-//    setAttribute(rectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, "10000");
-//    setAttribute(rectangle, SVGConstants.SVG_HEIGHT_ATTRIBUTE, "10000");
-//    setAttribute(rectangle, SVGConstants.SVG_FILL_ATTRIBUTE, SVGConstants.SVG_NONE_VALUE);
-//    setAttribute(rectangle, ISVGCascadeXMLConstants.ATTRIB_POINTER_EVENTS, "fill");
-//    document.insertBefore(rectangle, document.getRootElement().getElementById(ISVGCascadeXMLConstants.VALUE_CASCADE_ID));
-//  }
+  private void createGlassPane(SVGDocument document) {
+    SVGRectElement rectangle = (SVGRectElement) document.createElementNS(
+        SVGDOMImplementation.SVG_NAMESPACE_URI,
+        SVG_RECT_TAG);
+    document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVG_RECT_TAG);
+    DomUtilities.setAttribute(rectangle, SVG_X_ATTRIBUTE, SVG_ZERO_VALUE);
+    DomUtilities.setAttribute(rectangle, SVG_Y_ATTRIBUTE, SVG_ZERO_VALUE);
+    DomUtilities.setAttribute(rectangle, SVG_WIDTH_ATTRIBUTE, "2000");
+    DomUtilities.setAttribute(rectangle, SVG_HEIGHT_ATTRIBUTE, "2000");
+    DomUtilities.setAttribute(rectangle, "visibility", "hidden");
+    DomUtilities.setAttribute(rectangle, ISVGCascadeXMLConstants.ATTRIB_POINTER_EVENTS, "fill");
+    SVGSVGElement root = document.getRootElement();
+    root.insertBefore(rectangle, root.getFirstChild());
+  }
 
   public void addNodeSelectionListener(final INodeSelectionListener listener) {
     listening.addNodeSelectionListener(listener);
@@ -107,7 +110,7 @@ public class SvgTreeView implements ISvgTreeView {
 
   public void setNodeBackgroundColor(final String nodeId, final Color color) {
     Ensure.ensureNotNull("Color must not be null.", color); //$NON-NLS-1$
-    SVGElement nodeGroup = (SVGElement) canvas.getSVGDocument().getElementById(nodeId);
+    SVGElement nodeGroup = (SVGElement) canvas.getElementById(nodeId);
     if (nodeGroup == null) {
       return;
     }
@@ -134,7 +137,7 @@ public class SvgTreeView implements ISvgTreeView {
     if (alpha < 0) {
       alpha = 0;
     }
-    SVGElement nodeGroup = (SVGElement) canvas.getSVGDocument().getElementById(nodeId);
+    SVGElement nodeGroup = (SVGElement) canvas.getElementById(nodeId);
     if (nodeGroup == null) {
       return;
     }

@@ -8,14 +8,11 @@ import java.util.List;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 
-import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.swing.JSVGCanvas;
 import org.apache.batik.swing.svg.AbstractJSVGComponent;
 import org.apache.batik.util.SVGConstants;
-import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import org.w3c.dom.events.EventListener;
 import org.w3c.dom.svg.SVGGElement;
 
 public class AnathemaCanvas extends JSVGCanvas implements IAnathemaCanvas {
@@ -44,12 +41,12 @@ public class AnathemaCanvas extends JSVGCanvas implements IAnathemaCanvas {
     return getElementByAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_TREE_NODE);
   }
 
-  private List<SVGGElement> getElementByAttribute(String attrrb) {
+  private List<SVGGElement> getElementByAttribute(String attrib) {
     NodeList groupElementsList = getSVGDocument().getElementsByTagName(SVGConstants.SVG_G_TAG);
     List<SVGGElement> list = new ArrayList<SVGGElement>();
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
-      if (groupElement.hasAttribute(attrrb)) {
+      if (groupElement.hasAttribute(attrib)) {
         list.add(groupElement);
       }
     }

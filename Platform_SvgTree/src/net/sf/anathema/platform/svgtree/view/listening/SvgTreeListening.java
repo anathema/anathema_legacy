@@ -115,7 +115,6 @@ public class SvgTreeListening {
   }
 
   public void destructDocumentListening(final SVGDocument document) {
-    boundsCalculator.reset();
     if (document == null) {
       return;
     }
