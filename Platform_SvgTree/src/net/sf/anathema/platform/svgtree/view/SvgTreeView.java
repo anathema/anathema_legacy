@@ -84,7 +84,7 @@ public class SvgTreeView implements ISvgTreeView {
     if (dom4jDocument != null) {
       DOMImplementation implementation = SVG12DOMImplementation.getDOMImplementation();
       document = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
-      createGlassPane(document);
+//      createGlassPane(document);
     }
     canvas.setDocument(document);
   }
