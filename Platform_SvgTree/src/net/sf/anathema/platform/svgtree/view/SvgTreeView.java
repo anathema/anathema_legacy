@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.swing.JComponent;
 
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
+
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
@@ -24,7 +26,6 @@ import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSpecialNodeViewMa
 import net.sf.anathema.platform.svgtree.view.listening.SvgTreeListening;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
-import org.apache.batik.dom.svg12.SVG12DOMImplementation;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherAdapter;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherEvent;
 import org.dom4j.DocumentException;
@@ -37,8 +38,6 @@ import org.w3c.dom.Text;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGElement;
 import org.w3c.dom.svg.SVGGElement;
-import org.w3c.dom.svg.SVGRectElement;
-import org.w3c.dom.svg.SVGSVGElement;
 import org.w3c.dom.svg.SVGTextElement;
 import org.w3c.dom.svg.SVGUseElement;
 
@@ -82,26 +81,22 @@ public class SvgTreeView implements ISvgTreeView {
     listening.destructDocumentListening(canvas.getSVGDocument());
     SVGDocument document = null;
     if (dom4jDocument != null) {
-      DOMImplementation implementation = SVG12DOMImplementation.getDOMImplementation();
+      DOMImplementation implementation = SVGDOMImplementation.getDOMImplementation();
       document = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
-//      createGlassPane(document);
+      injectGlassPane(document);
     }
     canvas.setDocument(document);
   }
 
-  private void createGlassPane(SVGDocument document) {
-    SVGRectElement rectangle = (SVGRectElement) document.createElementNS(
-        SVGDOMImplementation.SVG_NAMESPACE_URI,
-        SVG_RECT_TAG);
-    document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVG_RECT_TAG);
+  private void injectGlassPane(SVGDocument document) {
+    Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVG_RECT_TAG);
     DomUtilities.setAttribute(rectangle, SVG_X_ATTRIBUTE, SVG_ZERO_VALUE);
     DomUtilities.setAttribute(rectangle, SVG_Y_ATTRIBUTE, SVG_ZERO_VALUE);
-    DomUtilities.setAttribute(rectangle, SVG_WIDTH_ATTRIBUTE, "2000");
-    DomUtilities.setAttribute(rectangle, SVG_HEIGHT_ATTRIBUTE, "2000");
-    DomUtilities.setAttribute(rectangle, "visibility", "hidden");
-    DomUtilities.setAttribute(rectangle, ISVGCascadeXMLConstants.ATTRIB_POINTER_EVENTS, "fill");
-    SVGSVGElement root = document.getRootElement();
-    root.insertBefore(rectangle, root.getFirstChild());
+    DomUtilities.setAttribute(rectangle, SVG_WIDTH_ATTRIBUTE, VALUE_3000);
+    DomUtilities.setAttribute(rectangle, SVG_HEIGHT_ATTRIBUTE, VALUE_1500);
+    DomUtilities.setAttribute(rectangle, ATTRIB_VISIBILITY, ISVGCascadeXMLConstants.VALUE_HIDDEN);
+    DomUtilities.setAttribute(rectangle, ATTRIB_POINTER_EVENTS, VALUE_FILL);
+    document.getDocumentElement().insertBefore(rectangle, document.getElementById(VALUE_CASCADE_ID));
   }
 
   public void addNodeSelectionListener(final INodeSelectionListener listener) {
