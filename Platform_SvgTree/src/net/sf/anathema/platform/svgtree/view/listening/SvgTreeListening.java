@@ -35,13 +35,11 @@ public class SvgTreeListening {
       canvas.setToolTipText(null);
       String nodeId = ((SVGGElement) event.getCurrentTarget()).getId();
       if (((MouseEvent) event).getButton() == 0) {
-        if (selectionId == null) {
-          selectionId = nodeId;
-        }
         canvas.setCursorInternal(properties.getForbiddenCursor());
         leftClickPanner.toggleCursorControls();
       }
       else if (selectionId == null || selectionId.equals(nodeId)) {
+        selectionId = null;
         leftClickPanner.togglePanning();
         resetCursor();
       }
@@ -50,12 +48,12 @@ public class SvgTreeListening {
 
   private final EventListener cursorTooltipInitListener = new EventListener() {
     public void handleEvent(Event event) {
-      SVGGElement group = (SVGGElement) event.getCurrentTarget();
-      String nodeId = group.getId();
+      leftClickPanner.disable();
+      String nodeId = ((SVGGElement) event.getCurrentTarget()).getId();
       if (selectionId == null || selectionId.equals(nodeId)) {
+        selectionId = nodeId;
         setCursor(nodeId);
         setCanvasTooltip(nodeId);
-        leftClickPanner.disable();
       }
     }
   };
@@ -85,6 +83,7 @@ public class SvgTreeListening {
   private EventListener cursorListener = new EventListener() {
     @Override
     public void handleEvent(Event event) {
+      selectionId = null;
       resetCursor();
     }
   };
@@ -170,7 +169,6 @@ public class SvgTreeListening {
   }
 
   public void resetCursor() {
-    this.selectionId = null;
     canvas.setCursorInternal(properties.getDefaultCursor());
   }
 }
