@@ -35,12 +35,15 @@ public class SvgTreeListening {
       canvas.setToolTipText(null);
       String nodeId = ((SVGGElement) event.getCurrentTarget()).getId();
       if (((MouseEvent) event).getButton() == 0) {
+        if (selectionId == null) {
+          selectionId=nodeId;
+        }
         canvas.setCursorInternal(properties.getForbiddenCursor());
         leftClickPanner.toggleCursorControls();
       }
       else if (selectionId == null || selectionId.equals(nodeId)) {
-        selectionId = null;
         leftClickPanner.togglePanning();
+        selectionId = null;
         resetCursor();
       }
     }
