@@ -21,19 +21,16 @@ public class LeftClickPanInteractor extends AbstractPanInteractor {
   private final IAnathemaCanvas canvas;
   private final IBoundsCalculator calculator;
   private final ISvgTreeViewProperties properties;
-  private final SvgTreeListening listening;
   private boolean panningEnabled;
   private boolean cursorEnabled;
 
   public LeftClickPanInteractor(
       IBoundsCalculator boundsCalculator,
       IAnathemaCanvas canvas,
-      ISvgTreeViewProperties properties,
-      SvgTreeListening listening) {
+      ISvgTreeViewProperties properties) {
     this.calculator = boundsCalculator;
     this.canvas = canvas;
     this.properties = properties;
-    this.listening = listening;
     togglePanning();
   }
 
@@ -69,7 +66,6 @@ public class LeftClickPanInteractor extends AbstractPanInteractor {
   @Override
   public void mouseReleased(MouseEvent e) {
     if (cursorEnabled) {
-      listening.resetCursor();
       togglePanning();
       return;
     }
@@ -111,7 +107,6 @@ public class LeftClickPanInteractor extends AbstractPanInteractor {
   public void toggleCursorControls() {
     this.cursorEnabled = true;
     this.panningEnabled = false;
-    canvas.setCursorInternal(properties.getForbiddenCursor());
   }
 
   public void disable() {
