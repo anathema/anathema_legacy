@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.svgtree.view;
 
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
 import static org.apache.batik.util.SVGConstants.*;
 
 import java.awt.Color;
@@ -7,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JComponent;
-
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
@@ -26,6 +25,8 @@ import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSpecialNodeViewMa
 import net.sf.anathema.platform.svgtree.view.listening.SvgTreeListening;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
+import org.apache.batik.swing.gvt.GVTTreeRendererAdapter;
+import org.apache.batik.swing.gvt.GVTTreeRendererEvent;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherAdapter;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherEvent;
 import org.dom4j.DocumentException;
@@ -59,9 +60,9 @@ public class SvgTreeView implements ISvgTreeView {
         initNodeNames();
       }
     });
-    addDocumentLoadedListener(new IDocumentLoadedListener() {
+    canvas.addGVTTreeRendererListener(new GVTTreeRendererAdapter() {
       @Override
-      public void documentLoaded() {
+      public void gvtRenderingCompleted(GVTTreeRendererEvent e) {
         listening.initDocumentListening(canvas.getSVGDocument());
       }
     });
@@ -137,15 +138,6 @@ public class SvgTreeView implements ISvgTreeView {
       return;
     }
     nodeGroup.setAttribute(SVG_OPACITY_ATTRIBUTE, String.valueOf((float) alpha / 255));
-  }
-
-  public void addDocumentPreloadListener(final IDocumentLoadedListener listener) {
-    canvas.addSVGLoadEventDispatcherListener(new SVGLoadEventDispatcherAdapter() {
-      @Override
-      public void svgLoadEventDispatchStarted(SVGLoadEventDispatcherEvent e) {
-        listener.documentLoaded();
-      }
-    });
   }
 
   public void addDocumentLoadedListener(final IDocumentLoadedListener listener) {

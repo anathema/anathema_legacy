@@ -116,7 +116,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         setCharmVisuals();
       }
     });
-    view.getCharmTreeView().addDocumentPreloadListener(new IDocumentLoadedListener() {
+    view.getCharmTreeView().addDocumentLoadedListener(new IDocumentLoadedListener() {
       public void documentLoaded() {
         showSpecialViews();
       }
