@@ -68,7 +68,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     if (experienced && getCurrentLearnCount() == 0) {
       trait.setExperiencedValue(1);
     }
-    else if (getCreationLearnCount() == 0) {
+    else if (!experienced && getCreationLearnCount() == 0) {
       trait.setCreationValue(1);
     }
   }

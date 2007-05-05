@@ -7,6 +7,9 @@ http://anathema.sf.net
 			Release 1.2.1 "Nexus Firewander" (Upcoming)
 ===------------------------------------------------------------------------------===
 
+--Features--
+* Allowed C-Tag for ranged weapons (Requested by uteck as per Scroll of the Monk.)
+
 --Usability--
 * Revised Charm Cascade Controls
 * Improved accuracy of Charm rendering.
@@ -15,7 +18,7 @@ http://anathema.sf.net
 
 --Bugs--
 * Printing for 1E characters and 2E mortals is back. (Bug 1705201, found by Hotep.)
-
+* Ox-Body Technique is /once again/ correctly restored for experienced characters (Bug 1704333 by Chris Venus.)
 
 ===------------------------------------------------------------------------------===
 			Release 1.2 "Nexus" (17/04/07)
