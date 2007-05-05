@@ -22,7 +22,6 @@ public class WeaponTagsModel implements IWeaponTagsModel {
       WeaponTag.FlameType };
   private final WeaponTag[] rangedWeaponTags = new WeaponTag[] { WeaponTag.SingleShot };
   private final WeaponTag[] meleeWeaponTags = new WeaponTag[] {
-      WeaponTag.ClinchEnhancer,
       WeaponTag.LanceType,
       WeaponTag.MartialArts,
       WeaponTag.Natural };
