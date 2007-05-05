@@ -7,18 +7,18 @@ http://anathema.sf.net
 			Release 1.2.1 "Nexus Firewander" (Upcoming)
 ===------------------------------------------------------------------------------===
 
---Features--
+-- Features --
 * Allowed C-Tag for ranged weapons (Requested by uteck as per Scroll of the Monk.)
 
---Usability--
-* Revised Charm Cascade Controls
+-- Usability --
+* Revised Charm controls (Thanks to Demo, Jontu and Chris.)
 * Improved accuracy of Charm rendering.
 * Generic Charms are ordered in a character-specific way. 
 
-
---Bugs--
+-- Bugs Fixed--
 * Printing for 1E characters and 2E mortals is back. (Bug 1705201, found by Hotep.)
 * Ox-Body Technique is /once again/ correctly restored for experienced characters (Bug 1704333 by Chris Venus.)
+
 
 ===------------------------------------------------------------------------------===
 			Release 1.2 "Nexus" (17/04/07)
@@ -33,7 +33,6 @@ be invalid in future releases. Use this version to convert them by loading them 
 + [2E] Falling Blossom Style from Scroll of the Monk.
 + [1E] "(Type) Exalt Ways" now supports all known valid types.
 + More spells fitted with targets
-
 
 -- Usability --
 + Special Charms are finally learned / unlearned on click. (Way easier than changing the cursors.)
