@@ -36,6 +36,7 @@ public class SVGDocumentFrameFactory {
     arrowHeadSymbolElement.addAttribute(SVG_REF_X_ATTRIBUTE, VALUE_8);
     arrowHeadSymbolElement.addAttribute(SVG_REF_Y_ATTRIBUTE, VALUE_15);
     arrowHeadSymbolElement.addAttribute(SVG_VIEW_BOX_ATTRIBUTE, VALUE_ARROWHEAD_VIEWBOX);
+    arrowHeadSymbolElement.addAttribute(ATTRIB_OVERFLOW, VALUE_VISIBLE);
     QName polygon = SVGCreationUtils.createSVGQName(SVG_POLYGON_TAG);
     Element polygonElement = arrowHeadSymbolElement.addElement(polygon);
     polygonElement.addAttribute(SVG_POINTS_ATTRIBUTE, VALUE_ARROWHEAD_POINTS);

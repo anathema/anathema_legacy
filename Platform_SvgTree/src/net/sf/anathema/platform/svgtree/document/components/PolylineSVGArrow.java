@@ -43,7 +43,7 @@ public class PolylineSVGArrow {
         pointList.get(pointList.size() - 2),
         pointList.get(pointList.size() - 1));
     line.addAttribute(SVGConstants.SVG_POINTS_ATTRIBUTE, pointString);
-    line.addAttribute(ISVGCascadeXMLConstants.ATTRIB_MARKER_START, ISVGCascadeXMLConstants.vALUE_ARROWBOTTOM_REFERENCE);
+    line.addAttribute(ISVGCascadeXMLConstants.ATTRIB_MARKER_START, ISVGCascadeXMLConstants.VALUE_ARROWBOTTOM_REFERENCE);
     line.addAttribute(ISVGCascadeXMLConstants.ATTRIB_MARKER_END, ISVGCascadeXMLConstants.VALUE_ARROWHEAD_REFERENCE);
   }
 

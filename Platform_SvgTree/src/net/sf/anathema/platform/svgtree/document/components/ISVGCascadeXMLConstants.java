@@ -9,6 +9,7 @@ public interface ISVGCascadeXMLConstants {
   public static final String ATTRIB_IS_TREE_NODE = "isTreeNode"; //$NON-NLS-1$
   public static final String ATTRIB_MARKER_END = "marker-end"; //$NON-NLS-1$
   public static final String ATTRIB_MARKER_START = "marker-start"; //$NON-NLS-1$
+  public static final String ATTRIB_OVERFLOW = "overflow"; //$NON-NLS-1$  
   public static final String ATTRIB_POINTER_EVENTS = "pointer-events"; //$NON-NLS-1$ 
   public static final String ATTRIB_VISIBILITY = "visibility"; //$NON-NLS-1$
 
@@ -23,7 +24,7 @@ public interface ISVGCascadeXMLConstants {
   public static final String VALUE_6 = "6"; //$NON-NLS-1$
   public static final String VALUE_8 = "8"; //$NON-NLS-1$
   public static final String VALUE_ARROWBOTTOM_ID = "ArrowBottom"; //$NON-NLS-1$
-  public static final String vALUE_ARROWBOTTOM_REFERENCE = "url(#" + VALUE_ARROWBOTTOM_ID + ")"; //$NON-NLS-1$ //$NON-NLS-2$
+  public static final String VALUE_ARROWBOTTOM_REFERENCE = "url(#" + VALUE_ARROWBOTTOM_ID + ")"; //$NON-NLS-1$ //$NON-NLS-2$
   public static final String VALUE_ARROWBOTTOM_VIEWBOX = "0 0 16 16"; //$NON-NLS-1$
   public static final String VALUE_ARROWHEAD_ID = "ArrowHead"; //$NON-NLS-1$
   public static final String VALUE_ARROWHEAD_POINTS = "0,0 15,15 0,30 5,15"; //$NON-NLS-1$
