@@ -1,0 +1,53 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
+
+This test will ensure that the Charm costs for the various MA levels are calculated correctly.
+Sidereal Charms will cost 15/13, while all others cost 10/8.
+
+!3 Prepare
+!|Set Abilities|
+|traitType|value|
+|MartialArts|5|
+!|Set Other Traits|
+|traitType|value|
+|Essence|5|
+!|Set Experienced|
+
+!3 Learn Celestial Charm
+!|Toggle Charm Learned|
+|id|
+|Solar.StrikingCobraTechnique|
+
+!3 Check
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|10|
+!|Set Abilities Favored|
+|abilityType|
+|MartialArts|
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|8|
+
+!3 Reset
+!|Toggle Charm Learned|
+|id|
+|Solar.StrikingCobraTechnique|
+!|Set Abilities Default|
+|abilityType|
+|MartialArts|
+
+!3 Learn Sidereal Charm
+!|Toggle Charm Learned|
+|id|
+|Sidereal.UnnaturalMany-StepStride|
+
+!3 Check
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|15|
+!|Set Abilities Favored|
+|abilityType|
+|MartialArts|
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|13|
