@@ -18,6 +18,7 @@ http://anathema.sf.net
 -- Bugs Fixed--
 * Printing for 1E characters and 2E mortals is back. (Bug 1705201, found by Hotep.)
 * Ox-Body Technique is /once again/ correctly restored for experienced characters (Bug 1704333 by Chris Venus.)
+* Martial Arts Charms no longer cost the "upper tier" amount. (Bugs 1689276 and 1704475, observed by Anonymous and confirmed by Etheric1.)
 
 
 ===------------------------------------------------------------------------------===

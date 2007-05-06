@@ -49,6 +49,7 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
 
   public GenericExperiencePointCosts parseTemplate(Element element) throws PersistenceException {
     GenericExperiencePointCosts costs = getBasicTemplate(element);
+    costs.setStandardMartialArtsLevel(standardLevel);
     setAttributeCosts(element, costs);
     setAbilityCosts(element, costs);
     setAdvantageCosts(element, costs);
@@ -69,7 +70,6 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     int favoredMartialArtsCost = ElementUtilities.getRequiredIntAttrib(martialArts, ATTRIB_FAVORED);
     int generalMartialArtsCost = ElementUtilities.getRequiredIntAttrib(martialArts, ATTRIB_GENERAL);
     costs.setMartialArtsCosts(favoredMartialArtsCost, generalMartialArtsCost);
-    costs.setStandardMartialArtsLevel(standardLevel);
   }
 
   private void setAdvantageCosts(Element element, GenericExperiencePointCosts costs) throws PersistenceException {
