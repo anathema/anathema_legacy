@@ -13,7 +13,7 @@ public class SecondEditionDbPartEncoder extends AbstractSecondEditionExaltPdfPar
 
   @Override
   public IPdfContentBoxEncoder getGreatCurseEncoder() {
-    return new SecondEditionDbGreatCurseEncoder(getBaseFont(), getSymbolBaseFont(), getResources());
+    return new SecondEditionDbGreatCurseEncoder(getBaseFont(), getResources());
   }
 
   @Override
