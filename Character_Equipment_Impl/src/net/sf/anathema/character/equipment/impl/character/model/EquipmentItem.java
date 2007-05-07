@@ -1,7 +1,9 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import net.disy.commons.core.util.ArrayUtilities;
@@ -17,6 +19,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -44,23 +47,38 @@ public class EquipmentItem implements IEquipmentItem {
   }
 
   public IEquipmentStats[] getStats() {
+    IEquipmentStats[] views = getViews();
     if (template.getComposition() != MaterialComposition.Variable) {
-      return template.getStats(ruleSet);
+      return views;
     }
-    return ArrayUtilities.transform(
-        template.getStats(ruleSet),
-        IEquipmentStats.class,
-        new ITransformer<IEquipmentStats, IEquipmentStats>() {
-          public IEquipmentStats transform(IEquipmentStats input) {
-            if (input instanceof IArmourStats) {
-              return new ProxyArmourStats((IArmourStats) input, material, ruleSet);
-            }
-            if (input instanceof IWeaponStats) {
-              return new ProxyWeaponStats((IWeaponStats) input, material, ruleSet);
-            }
-            return new ProxyShieldStats((IShieldStats) input, material, ruleSet);
-          }
-        });
+    return ArrayUtilities.transform(views, IEquipmentStats.class, new ITransformer<IEquipmentStats, IEquipmentStats>() {
+      public IEquipmentStats transform(IEquipmentStats input) {
+        if (input instanceof IArmourStats) {
+          return new ProxyArmourStats((IArmourStats) input, material, ruleSet);
+        }
+        if (input instanceof IWeaponStats) {
+          return new ProxyWeaponStats((IWeaponStats) input, material, ruleSet);
+        }
+        return new ProxyShieldStats((IShieldStats) input, material, ruleSet);
+      }
+    });
+  }
+
+  private IEquipmentStats[] getViews() {
+    IEquipmentStats[] statsArray = template.getStats(ruleSet);
+    if (ExaltedRuleSet.SecondEdition != ruleSet) {
+      return statsArray;
+    }
+    List<IEquipmentStats> views = new ArrayList<IEquipmentStats>();
+    for (IEquipmentStats stats : statsArray) {
+      if (stats instanceof IWeaponStats) {
+        Collections.addAll(views, ((IWeaponStats) stats).getViews());
+      }
+      else {
+        views.add(stats);
+      }
+    }
+    return views.toArray(new IEquipmentStats[views.size()]);
   }
 
   public String getTemplateId() {
@@ -98,9 +116,9 @@ public class EquipmentItem implements IEquipmentItem {
   }
 
   public void setPrinted(String printedStatId) {
-    for (IEquipmentStats stats : getStats()) {
-      if (stats.getName().getId().equals(printedStatId)) {
-        setPrintEnabled(stats, true);
+    for (IEquipmentStats view : getViews()) {
+      if (view.getName().getId().equals(printedStatId)) {
+        setPrintEnabled(view, true);
         return;
       }
     }

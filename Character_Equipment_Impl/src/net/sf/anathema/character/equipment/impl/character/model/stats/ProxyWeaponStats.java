@@ -12,6 +12,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SpeedModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -116,5 +117,10 @@ public class ProxyWeaponStats implements IWeaponStats {
 
   public boolean isRangedCombat() {
     return isRangedCombat();
+  }
+
+  @Override
+  public IEquipmentStats[] getViews() {
+    return new IEquipmentStats[] { this };
   }
 }

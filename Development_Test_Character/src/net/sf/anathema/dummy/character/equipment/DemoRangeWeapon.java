@@ -1,5 +1,6 @@
 package net.sf.anathema.dummy.character.equipment;
 
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -29,7 +30,8 @@ public class DemoRangeWeapon implements IWeaponStats {
       int damage,
       HealthType damageType,
       int range,
-      int rate, boolean isNoDamage) {
+      int rate,
+      boolean isNoDamage) {
     this.name = name;
     this.speed = speed;
     this.accuracy = accuracy;
@@ -88,8 +90,13 @@ public class DemoRangeWeapon implements IWeaponStats {
   public IIdentificate getName() {
     return name;
   }
-  
+
   public boolean isRangedCombat() {
     return true;
+  }
+
+  @Override
+  public IEquipmentStats[] getViews() {
+    return new IEquipmentStats[] { this };
   }
 }

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.lunar.beastform.model.gift.weapons;
 
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -39,5 +40,10 @@ public abstract class AbstractLunarGiftWeapon implements IWeaponStats {
 
   public ITraitType getTraitType() {
     return AbilityType.Brawl;
+  }
+
+  @Override
+  public IEquipmentStats[] getViews() {
+    return new IEquipmentStats[] { this };
   }
 }

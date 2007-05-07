@@ -78,6 +78,11 @@ public class EquipmentDEcorationUtilities {
       public boolean isRangedCombat() {
         return stats.isRangedCombat();
       }
+
+      @Override
+      public IEquipmentStats[] getViews() {
+        return new IEquipmentStats[] { this };
+      }
     };
   }
 

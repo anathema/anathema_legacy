@@ -1,5 +1,6 @@
 package net.sf.anathema.character.abyssal.equipment;
 
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -60,5 +61,10 @@ public class CoreRulesFangStats implements IWeaponStats {
 
   public IIdentificate getName() {
     return new Identificate("Abyssal.Fangs"); //$NON-NLS-1$
+  }
+
+  @Override
+  public IEquipmentStats[] getViews() {
+    return new IEquipmentStats[] { this };
   }
 }

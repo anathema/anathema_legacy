@@ -29,4 +29,6 @@ public interface IWeaponStats extends IEquipmentStats {
   public boolean inflictsNoDamage();
 
   public boolean isRangedCombat();
+
+  public IEquipmentStats[] getViews();
 }

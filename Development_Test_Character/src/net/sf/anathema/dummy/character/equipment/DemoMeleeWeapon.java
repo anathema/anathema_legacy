@@ -1,6 +1,7 @@
 package net.sf.anathema.dummy.character.equipment;
 
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -21,8 +22,7 @@ public class DemoMeleeWeapon implements IWeaponStats {
   private IIdentificate name;
 
   public DemoMeleeWeapon() {
-    this(
-        new Identificate("Melee"), //$NON-NLS-1$
+    this(new Identificate("Melee"), //$NON-NLS-1$
         2,
         -5,
         3,
@@ -99,8 +99,13 @@ public class DemoMeleeWeapon implements IWeaponStats {
   public IIdentificate getName() {
     return name;
   }
-  
+
   public boolean isRangedCombat() {
     return false;
+  }
+
+  @Override
+  public IEquipmentStats[] getViews() {
+    return new IEquipmentStats[] { this };
   }
 }
