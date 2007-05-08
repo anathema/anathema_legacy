@@ -43,9 +43,7 @@ public class PropertiesMatcher {
             if (propertiesFile.isDirectory()) {
               continue;
             }
-            if (!propertiesFile.getName().contains("_es.")) {
-              defaultPropertiesFiles.add(propertiesFile);
-            }
+            addDefaultFile(defaultPropertiesFiles, propertiesFile);
           }
         }
       }
@@ -55,6 +53,15 @@ public class PropertiesMatcher {
       PropertiesMatcher matcher = new PropertiesMatcher(propertiesFile, locale.getLocale());
       matcher.matchProperties();
     }
+  }
+
+  private static void addDefaultFile(List<File> defaultPropertiesFiles, File propertiesFile) {
+    for (SupportedLocale supportedLocale : SupportedLocale.values()) {
+      if (propertiesFile.getName().contains("_" + supportedLocale.getLocale().getLanguage() + ".")) {
+        return;
+      }
+    }
+    defaultPropertiesFiles.add(propertiesFile);
   }
 
   private final Properties localeProperties = new Properties();
@@ -71,7 +78,8 @@ public class PropertiesMatcher {
     this.locale = locale;
     getLocaleProperties(defaultPropertiesFile);
     new File("./language/").mkdir();
-    localePropertiesWriter = new BufferedWriter(new FileWriter(new File("./language/"+localePropertiesFile.getName())));
+    localePropertiesWriter = new BufferedWriter(
+        new FileWriter(new File("./language/" + localePropertiesFile.getName())));
   }
 
   private void getLocaleProperties(File defaultPropertiesFile) throws IOException {
