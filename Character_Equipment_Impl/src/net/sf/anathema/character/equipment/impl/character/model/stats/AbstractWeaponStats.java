@@ -99,12 +99,6 @@ public abstract class AbstractWeaponStats extends AbstractStats implements IWeap
     }
   }
 
-  public ITraitType getTraitType() {
-    return getCombatTrait();
-  }
-
-  protected abstract ITraitType getCombatTrait();
-
   protected final boolean hasTag(WeaponTag tag) {
     return tags.contains(tag.getId()) || tags.contains(tag);
   }
@@ -122,7 +116,7 @@ public abstract class AbstractWeaponStats extends AbstractStats implements IWeap
   }
 
   public void setDamageType(HealthType damageType) {
-    this.damageType=null;
+    this.damageType = null;
     this.damageTypeString = damageType.name();
   }
 

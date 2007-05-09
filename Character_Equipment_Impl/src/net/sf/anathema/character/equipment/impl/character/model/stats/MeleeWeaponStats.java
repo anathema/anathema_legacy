@@ -16,7 +16,7 @@ public class MeleeWeaponStats extends AbstractWeaponStats {
   }
 
   @Override
-  protected AbilityType getCombatTrait() {
+  public AbilityType getTraitType() {
     return isMartialArtsOnlyWeapon() ? AbilityType.MartialArts : AbilityType.Melee;
   }
 
