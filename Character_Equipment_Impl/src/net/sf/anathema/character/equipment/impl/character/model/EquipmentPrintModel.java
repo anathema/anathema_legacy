@@ -60,7 +60,7 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
             if (statsArray.length > 1) {
               itemName += " - " + stats.getName(); //$NON-NLS-1$
             }
-            printStats.add((K) EquipmentDEcorationUtilities.getRenamedPrintDecoration(stats, itemName));
+            printStats.add((K) EquipmentDecorationFactory.createRenamedPrintDecoration(stats, itemName));
           }
         }
       }

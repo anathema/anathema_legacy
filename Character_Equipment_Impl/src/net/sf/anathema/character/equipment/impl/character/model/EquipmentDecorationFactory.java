@@ -10,9 +10,9 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class EquipmentDEcorationUtilities {
+public class EquipmentDecorationFactory {
 
-  public static IEquipmentStats getRenamedPrintDecoration(IEquipmentStats stats, String name) {
+  public static IEquipmentStats createRenamedPrintDecoration(IEquipmentStats stats, String name) {
     if (stats instanceof IWeaponStats) {
       return getRenamedPrintDecoration((IWeaponStats) stats, name);
     }
