@@ -26,24 +26,23 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
   public IArmourStats[] getPrintArmours() {
     List<IArmourStats> printStats = new ArrayList<IArmourStats>();
     printStats.add(naturalArmour);
-    fillPrintEquipmentList(printStats, IArmourStats.class);
+    printStats.addAll(getPrintEquipmentList(IArmourStats.class));
     return printStats.toArray(new IArmourStats[printStats.size()]);
   }
 
   public IWeaponStats[] getPrintWeapons() {
-    List<IWeaponStats> printStats = new ArrayList<IWeaponStats>();
-    fillPrintEquipmentList(printStats, IWeaponStats.class);
+    List<IWeaponStats> printStats = getPrintEquipmentList(IWeaponStats.class);
     return printStats.toArray(new IWeaponStats[printStats.size()]);
   }
 
   public IShieldStats[] getPrintShield() {
-    List<IShieldStats> printStats = new ArrayList<IShieldStats>();
-    fillPrintEquipmentList(printStats, IShieldStats.class);
+    List<IShieldStats> printStats = getPrintEquipmentList(IShieldStats.class);
     return printStats.toArray(new IShieldStats[printStats.size()]);
   }
 
   @SuppressWarnings("unchecked")
-  private <K extends IEquipmentStats> void fillPrintEquipmentList(List<K> printStats, Class<K> printedClass) {
+  private <K extends IEquipmentStats> List<K> getPrintEquipmentList(Class<K> printedClass) {
+    List<K> printStats = new ArrayList<K>();
     IEquipmentItem[] naturalWeapons = collection.getNaturalWeapons();
     for (IEquipmentItem item : collection.getEquipmentItems()) {
       IEquipmentStats[] statsArray = item.getStats();
@@ -66,6 +65,7 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
         }
       }
     }
+    return printStats;
   }
 
   private <K> boolean doPrint(IEquipmentItem item, IEquipmentStats stats, Class<K> printedClass) {
