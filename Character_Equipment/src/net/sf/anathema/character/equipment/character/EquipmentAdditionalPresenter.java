@@ -40,6 +40,9 @@ public class EquipmentAdditionalPresenter implements IPresenter {
   }
 
   public void initPresentation() {
+    for (IEquipmentItem item : model.getNaturalWeapons()) {
+      initEquipmentObjectPresentation(item);
+    }
     for (IEquipmentItem item : model.getEquipmentItems()) {
       initEquipmentObjectPresentation(item);
     }

@@ -29,7 +29,11 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
   }
 
   public void save(Element parent, IAdditionalModel model) {
-    IEquipmentItem[] equipmentItems = ((IEquipmentAdditionalModel) model).getEquipmentItems();
+    saveItems(parent, ((IEquipmentAdditionalModel) model).getNaturalWeapons());
+    saveItems(parent, ((IEquipmentAdditionalModel) model).getEquipmentItems());
+  }
+
+  private void saveItems(Element parent, IEquipmentItem[] equipmentItems) {
     for (IEquipmentItem item : equipmentItems) {
       Element itemElement = parent.addElement(TAG_ITEM);
       itemElement.addElement(TAG_TEMPLATE_ID).addCDATA(item.getTemplateId());

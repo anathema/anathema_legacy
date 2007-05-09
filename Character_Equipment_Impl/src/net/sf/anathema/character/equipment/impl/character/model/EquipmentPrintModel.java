@@ -3,7 +3,6 @@ package net.sf.anathema.character.equipment.impl.character.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
@@ -31,7 +30,16 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
   }
 
   public IWeaponStats[] getPrintWeapons() {
-    List<IWeaponStats> printStats = getPrintEquipmentList(IWeaponStats.class);
+    List<IWeaponStats> printStats = new ArrayList<IWeaponStats>();
+    for (IEquipmentItem item : collection.getNaturalWeapons()) {
+      IEquipmentStats[] statsArray = item.getStats();
+      for (IEquipmentStats stats : statsArray) {
+        if (doPrint(item, stats, IWeaponStats.class)) {
+          printStats.add((IWeaponStats) stats);
+        }
+      }
+    }
+    printStats.addAll(getPrintEquipmentList(IWeaponStats.class));
     return printStats.toArray(new IWeaponStats[printStats.size()]);
   }
 
@@ -43,25 +51,14 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
   @SuppressWarnings("unchecked")
   private <K extends IEquipmentStats> List<K> getPrintEquipmentList(Class<K> printedClass) {
     List<K> printStats = new ArrayList<K>();
-    IEquipmentItem[] naturalWeapons = collection.getNaturalWeapons();
     for (IEquipmentItem item : collection.getEquipmentItems()) {
-      IEquipmentStats[] statsArray = item.getStats();
-      if (ArrayUtilities.contains(naturalWeapons, item)) {
-        for (IEquipmentStats stats : statsArray) {
-          if (doPrint(item, stats, printedClass)) {
-            printStats.add((K) stats);
+      for (IEquipmentStats stats : item.getStats()) {
+        if (doPrint(item, stats, printedClass)) {
+          String itemName = item.getTemplateId();
+          if (item.getStats().length > 1) {
+            itemName += " - " + stats.getName(); //$NON-NLS-1$
           }
-        }
-      }
-      else {
-        for (IEquipmentStats stats : statsArray) {
-          if (doPrint(item, stats, printedClass)) {
-            String itemName = item.getTemplateId();
-            if (statsArray.length > 1) {
-              itemName += " - " + stats.getName(); //$NON-NLS-1$
-            }
-            printStats.add((K) EquipmentDecorationFactory.createRenamedPrintDecoration(stats, itemName));
-          }
+          printStats.add((K) EquipmentDecorationFactory.createRenamedPrintDecoration(stats, itemName));
         }
       }
     }
