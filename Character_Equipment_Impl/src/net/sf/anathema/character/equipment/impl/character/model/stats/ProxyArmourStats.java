@@ -70,4 +70,9 @@ public class ProxyArmourStats implements IArmourStats {
   public int hashCode() {
     return delegate.hashCode();
   }
+
+  @Override
+  public String getId() {
+    return getName().getId();
+  }
 }

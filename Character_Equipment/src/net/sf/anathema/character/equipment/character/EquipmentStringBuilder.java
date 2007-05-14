@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.character;
 
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
+import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
@@ -16,13 +17,15 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     this.resources = resources;
   }
 
-  private String createWeaponString(IWeaponStats weapon) {
+  private String createWeaponString(IEquipmentItem item, IWeaponStats weapon) {
     StringBuilder stringBuilder = new StringBuilder();
-    String name = weapon.getName().getId();
-    if (resources.supportsKey(EquipmentObjectPresenter.EQUIPMENT_NAME_PREFIX + name)) {
-      name = resources.getString(EquipmentObjectPresenter.EQUIPMENT_NAME_PREFIX + name);
+    String key = EquipmentObjectPresenter.EQUIPMENT_NAME_PREFIX + weapon.getName().getId();
+    if (resources.supportsKey(key)) {
+      stringBuilder.append(resources.getString(key));
     }
-    stringBuilder.append(name);
+    else {
+      stringBuilder.append(new WeaponStatsNameStringFactory(resources).create(item, weapon));
+    }
     stringBuilder.append(":"); //$NON-NLS-1$
     stringBuilder.append(getStatsString("Speed", weapon.getSpeed(), false)); //$NON-NLS-1$
     stringBuilder.append(getStatsString("Accuracy", weapon.getAccuracy(), true)); //$NON-NLS-1$
@@ -51,9 +54,9 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     return " " + resources.getString("Equipment.Stats.Short." + keyPart) + ":"; //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
   }
 
-  public String createString(IEquipmentStats equipment) {
+  public String createString(IEquipmentItem item, IEquipmentStats equipment) {
     if (equipment instanceof IWeaponStats) {
-      return createWeaponString((IWeaponStats) equipment);
+      return createWeaponString(item, (IWeaponStats) equipment);
     }
     if (equipment instanceof IArmourStats) {
       return createArmourString((IArmourStats) equipment);

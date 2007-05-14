@@ -10,11 +10,11 @@ public interface IWeaponTagsModel {
 
   public BooleanValueModel getSelectedModel(IWeaponTag tag);
 
-  public int getSelectedRangedWeaponTagCount();
-
   public void setTagsCloseCombatStyle();
 
   public void setTagsRangedCombatStyle();
 
   public IWeaponTag[] getSelectedTags();
+
+  public boolean isRangedWeaponTagSelected();
 }

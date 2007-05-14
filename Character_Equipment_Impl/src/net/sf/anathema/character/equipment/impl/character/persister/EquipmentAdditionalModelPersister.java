@@ -42,7 +42,7 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
       }
       for (IEquipmentStats stats : item.getStats()) {
         if (item.isPrintEnabled(stats)) {
-          itemElement.addElement(TAG_PRINT_STATS).addCDATA(stats.getName().getId());
+          itemElement.addElement(TAG_PRINT_STATS).addCDATA(stats.getId());
         }
       }
     }

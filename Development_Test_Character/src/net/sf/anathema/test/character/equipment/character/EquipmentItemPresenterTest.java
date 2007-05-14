@@ -18,7 +18,7 @@ import org.easymock.EasyMock;
 public class EquipmentItemPresenterTest extends BasicTestCase {
 
   private IEquipmentStringBuilder equipmentStringBuilder = new IEquipmentStringBuilder() {
-    public String createString(IEquipmentStats equipment) {
+    public String createString(IEquipmentItem item, IEquipmentStats equipment) {
       if (equipment.getName().getId().equals("Sword")) { //$NON-NLS-1$
         return "Passt!"; //$NON-NLS-1$
       }
@@ -61,7 +61,7 @@ public class EquipmentItemPresenterTest extends BasicTestCase {
     initPresentation(model, view);
     EasyMock.verify(view);
   }
-  
+
   public void testPrintModelInitialization() throws Exception {
     IEquipmentObjectView view = EasyMock.createMock(IEquipmentObjectView.class);
     view.setItemTitle("Title"); //$NON-NLS-1$
@@ -73,7 +73,7 @@ public class EquipmentItemPresenterTest extends BasicTestCase {
     initPresentation(model, view);
     assertFalse(isPrintSelectedModel.getValue());
   }
-  
+
   public void testPrintModelEvent() throws Exception {
     IEquipmentObjectView view = EasyMock.createMock(IEquipmentObjectView.class);
     view.setItemTitle("Title"); //$NON-NLS-1$

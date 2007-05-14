@@ -47,5 +47,7 @@
 	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-logging-api.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Swing/l2fprod-common-directorychooser.jar" sourcepath="/Thirdparty/Swing/l2fprod-common-0.2dev-src.zip"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Character"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/Thirdparty/Testing/easymock.jar" sourcepath="/Thirdparty/Testing/easymock-src.zip"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

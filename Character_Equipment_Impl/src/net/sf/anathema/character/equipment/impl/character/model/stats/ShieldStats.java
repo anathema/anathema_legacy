@@ -40,4 +40,9 @@ public class ShieldStats extends AbstractStats implements IShieldStats {
   public void setMobilityPenalty(Integer mobilityPenalty) {
     this.mobilityPenalty = mobilityPenalty;
   }
+
+  @Override
+  public String getId() {
+    return getName().getId();
+  }
 }

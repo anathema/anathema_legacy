@@ -10,4 +10,16 @@ public enum WeaponTag implements IWeaponTag {
   public String getId() {
     return name();
   }
+
+  public static WeaponTag[] getMeleeWeaponTags() {
+    return new WeaponTag[] { WeaponTag.LanceType, WeaponTag.MartialArts, WeaponTag.Natural };
+  }
+
+  public static WeaponTag[] getRangedWeaponTags() {
+    return new WeaponTag[] { WeaponTag.SingleShot };
+  }
+
+  public static WeaponTag[] getRangedWeaponTypeTags() {
+    return new WeaponTag[] { WeaponTag.BowType, WeaponTag.Thrown, WeaponTag.FlameType };
+  }
 }

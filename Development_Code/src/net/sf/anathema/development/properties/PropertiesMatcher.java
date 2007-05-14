@@ -27,14 +27,12 @@ public class PropertiesMatcher {
         null,
         "Choose Locale:", "Locale", JOptionPane.QUESTION_MESSAGE, null, SupportedLocale.values(), null); //$NON-NLS-1$ //$NON-NLS-2$
     JDirectoryChooser chooser = new JDirectoryChooser();
-    int choice = chooser.showOpenDialog(null);
-    if (choice != JFileChooser.APPROVE_OPTION) {
+    if (chooser.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
       return;
     }
     File superFolder = chooser.getSelectedFile();
     List<File> defaultPropertiesFiles = new ArrayList<File>();
-    File[] projectFolders = superFolder.listFiles();
-    for (File file : projectFolders) {
+    for (File file : superFolder.listFiles()) {
       if (file.isDirectory()) {
         File resourceFolder = new File(file, "/resources/language");
         if (resourceFolder.exists()) {
@@ -48,7 +46,6 @@ public class PropertiesMatcher {
         }
       }
     }
-
     for (File propertiesFile : defaultPropertiesFiles) {
       PropertiesMatcher matcher = new PropertiesMatcher(propertiesFile, locale.getLocale());
       matcher.matchProperties();

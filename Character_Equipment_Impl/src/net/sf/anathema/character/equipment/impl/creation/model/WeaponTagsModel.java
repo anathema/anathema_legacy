@@ -12,19 +12,10 @@ import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
 public class WeaponTagsModel implements IWeaponTagsModel {
 
-  private final Map<WeaponTag, BooleanValueModel> selectedMap = new EnumMap<WeaponTag, BooleanValueModel>(
-      WeaponTag.class);
   private final Map<WeaponTag, BooleanValueModel> enabledMap = new EnumMap<WeaponTag, BooleanValueModel>(
       WeaponTag.class);
-  private final WeaponTag[] rangedWeaponTypeTags = new WeaponTag[] {
-      WeaponTag.BowType,
-      WeaponTag.Thrown,
-      WeaponTag.FlameType };
-  private final WeaponTag[] rangedWeaponTags = new WeaponTag[] { WeaponTag.SingleShot };
-  private final WeaponTag[] meleeWeaponTags = new WeaponTag[] {
-      WeaponTag.LanceType,
-      WeaponTag.MartialArts,
-      WeaponTag.Natural };
+  private final Map<WeaponTag, BooleanValueModel> selectedMap = new EnumMap<WeaponTag, BooleanValueModel>(
+      WeaponTag.class);
 
   private final IBooleanValueChangedListener updateRangeEnabledListener = new IBooleanValueChangedListener() {
     public void valueChanged(boolean newValue) {
@@ -37,59 +28,21 @@ public class WeaponTagsModel implements IWeaponTagsModel {
       selectedMap.put(tag, new BooleanValueModel(false));
       enabledMap.put(tag, new BooleanValueModel(true));
     }
-    for (WeaponTag rangedTag : rangedWeaponTypeTags) {
+    for (WeaponTag rangedTag : WeaponTag.getRangedWeaponTypeTags()) {
       getSelectedModel(rangedTag).addChangeListener(updateRangeEnabledListener);
     }
   }
 
-  public void setTagsRangedCombatStyle() {
-    int selectedCount = getSelectedRangedWeaponTagCount();
-    setAllCloseCombatTagsEnabled(false);
-    if (selectedCount == 0) {
-      setAllRangedWeaponTagsEnabled(true);
-    }
-    else {
-      for (WeaponTag tag : rangedWeaponTypeTags) {
-        getEnabledModel(tag).setValue(isSelected(tag));
-      }
-    }
-  }
-
-  private void setAllCloseCombatTagsEnabled(boolean enabled) {
-    for (WeaponTag tag : meleeWeaponTags) {
-      getEnabledModel(tag).setValue(enabled);
-    }
-  }
-
-  private void setAllRangedWeaponTagsEnabled(boolean enabled) {
-    for (WeaponTag tag : rangedWeaponTypeTags) {
-      getEnabledModel(tag).setValue(enabled);
-    }
-    for (WeaponTag tag : rangedWeaponTags) {
-      getEnabledModel(tag).setValue(enabled);
-    }
-  }
-
-  public void setTagsCloseCombatStyle() {
-    setAllRangedWeaponTagsEnabled(false);
-  }
-
-  public int getSelectedRangedWeaponTagCount() {
-    int selectionCount = 0;
-    for (WeaponTag tag : rangedWeaponTypeTags) {
-      if (isSelected(tag)) {
-        selectionCount++;
-      }
-    }
-    return selectionCount;
-  }
-
-  private boolean isSelected(WeaponTag tag) {
-    return getSelectedModel(tag).getValue();
-  }
-
   public IWeaponTag[] getAllTags() {
     return WeaponTag.values();
+  }
+
+  public BooleanValueModel getEnabledModel(IWeaponTag tag) {
+    return enabledMap.get(tag);
+  }
+
+  public BooleanValueModel getSelectedModel(IWeaponTag tag) {
+    return selectedMap.get(tag);
   }
 
   public IWeaponTag[] getSelectedTags() {
@@ -102,11 +55,62 @@ public class WeaponTagsModel implements IWeaponTagsModel {
     return tags.toArray(new IWeaponTag[tags.size()]);
   }
 
-  public BooleanValueModel getSelectedModel(IWeaponTag tag) {
-    return selectedMap.get(tag);
+  private boolean isSelected(WeaponTag tag) {
+    return getSelectedModel(tag).getValue();
   }
 
-  public BooleanValueModel getEnabledModel(IWeaponTag tag) {
-    return enabledMap.get(tag);
+  private void setAllCloseCombatTagsEnabled(boolean enabled) {
+    for (WeaponTag tag : WeaponTag.getMeleeWeaponTags()) {
+      setEnabled(enabled, tag);
+    }
+  }
+
+  private void setAllRangedWeaponTagsEnabled(boolean enabled) {
+    if (!enabled) {
+      for (WeaponTag tag : WeaponTag.getRangedWeaponTypeTags()) {
+        getSelectedModel(tag).setValue(false);
+      }
+    }
+    for (WeaponTag tag : WeaponTag.getRangedWeaponTypeTags()) {
+      getEnabledModel(tag).setValue(enabled);
+    }
+    for (WeaponTag tag : WeaponTag.getRangedWeaponTags()) {
+      setEnabled(enabled, tag);
+    }
+  }
+
+  private void setEnabled(boolean enabled, WeaponTag tag) {
+    getEnabledModel(tag).setValue(enabled);
+    if (!enabled) {
+      getSelectedModel(tag).setValue(false);
+    }
+  }
+
+  public void setTagsCloseCombatStyle() {
+    setAllRangedWeaponTagsEnabled(false);
+    setAllCloseCombatTagsEnabled(true);
+  }
+
+  public void setTagsRangedCombatStyle() {
+    setAllCloseCombatTagsEnabled(false);
+    if (isRangedWeaponTagSelected()) {
+      for (WeaponTag tag : WeaponTag.getRangedWeaponTypeTags()) {
+        getEnabledModel(tag).setValue(isSelected(tag));
+      }
+    }
+    else {
+      setAllRangedWeaponTagsEnabled(true);
+    }
+  }
+
+  @Override
+  public boolean isRangedWeaponTagSelected() {
+    int selectionCount = 0;
+    for (WeaponTag tag : WeaponTag.getRangedWeaponTypeTags()) {
+      if (isSelected(tag)) {
+        selectionCount++;
+      }
+    }
+    return selectionCount == 1;
   }
 }

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.character.model;
+package net.sf.anathema.character.equipment.impl.character.model.print;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentPrintModel implements IEquipmentPrintModel {
 
@@ -24,7 +25,7 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
 
   public IArmourStats[] getPrintArmours() {
     List<IArmourStats> printStats = getNaturalArmourList();
-    printStats.addAll(getPrintEquipmentList(IArmourStats.class));
+    printStats.addAll(getPrintEquipmentList(IArmourStats.class, new ArmourStatsDecorationFactory()));
     return printStats.toArray(new IArmourStats[printStats.size()]);
   }
 
@@ -34,44 +35,46 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
     return printStats;
   }
 
-  public IWeaponStats[] getPrintWeapons() {
+  public IWeaponStats[] getPrintWeapons(IResources resources) {
     List<IWeaponStats> printStats = getNaturalWeaponList();
-    printStats.addAll(getPrintEquipmentList(IWeaponStats.class));
+    printStats.addAll(getPrintEquipmentList(IWeaponStats.class, new WeaponStatsDecorationFactory(resources)));
     return printStats.toArray(new IWeaponStats[printStats.size()]);
   }
 
   private List<IWeaponStats> getNaturalWeaponList() {
     List<IWeaponStats> printStats = new ArrayList<IWeaponStats>();
     for (IEquipmentItem item : collection.getNaturalWeapons()) {
-      for (IEquipmentStats stats : item.getStats()) {
-        if (doPrint(item, stats, IWeaponStats.class)) {
-          printStats.add((IWeaponStats) stats);
-        }
-      }
+      printStats.addAll(getPrintedStats(item, IWeaponStats.class));
     }
     return printStats;
   }
 
   public IShieldStats[] getPrintShield() {
-    List<IShieldStats> printStats = getPrintEquipmentList(IShieldStats.class);
+    List<IShieldStats> printStats = getPrintEquipmentList(IShieldStats.class, new ShieldStatsDecorationFactory());
     return printStats.toArray(new IShieldStats[printStats.size()]);
   }
 
-  @SuppressWarnings("unchecked")
-  private <K extends IEquipmentStats> List<K> getPrintEquipmentList(Class<K> printedClass) {
+  private <K extends IEquipmentStats> List<K> getPrintEquipmentList(
+      Class<K> printedClass,
+      IEquipmentStatsDecorationFactory<K> factory) {
     List<K> printStats = new ArrayList<K>();
     for (IEquipmentItem item : collection.getEquipmentItems()) {
-      for (IEquipmentStats stats : item.getStats()) {
-        if (doPrint(item, stats, printedClass)) {
-          String itemName = item.getTemplateId();
-          if (item.getStats().length > 1) {
-            itemName += " - " + stats.getName(); //$NON-NLS-1$
-          }
-          printStats.add((K) EquipmentDecorationFactory.createRenamedPrintDecoration(stats, itemName));
-        }
+      for (K stats : getPrintedStats(item, printedClass)) {
+        printStats.add(factory.createRenamedPrintDecoration(item, stats));
       }
     }
     return printStats;
+  }
+
+  @SuppressWarnings("unchecked")
+  private <K> List<K> getPrintedStats(IEquipmentItem item, Class<K> printedClass) {
+    List<K> printedStats = new ArrayList<K>();
+    for (IEquipmentStats stats : item.getStats()) {
+      if (doPrint(item, stats, printedClass)) {
+        printedStats.add((K) stats);
+      }
+    }
+    return printedStats;
   }
 
   private <K> boolean doPrint(IEquipmentItem item, IEquipmentStats stats, Class<K> printedClass) {

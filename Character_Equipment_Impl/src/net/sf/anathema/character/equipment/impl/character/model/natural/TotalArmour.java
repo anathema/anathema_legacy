@@ -63,4 +63,9 @@ public class TotalArmour implements IArmourStats {
   private int getIncrementedValue(int value, Integer increment) {
     return increment == null ? value : value + increment;
   }
+
+  @Override
+  public String getId() {
+    return getName().getId();
+  }
 }

@@ -53,4 +53,9 @@ public class ProxyShieldStats implements IShieldStats {
   public int getRangedCombatBonus() {
     return delegate.getRangedCombatBonus();
   }
+
+  @Override
+  public String getId() {
+    return getName().getId();
+  }
 }

@@ -63,7 +63,7 @@ public class EquipmentEditStatsPresenter implements IPresenter {
             index,
             isSelected,
             cellHasFocus);
-        component.setToolTipText(equipmentStringBuilder.createString((IEquipmentStats) value));
+        component.setToolTipText(equipmentStringBuilder.createString(null, (IEquipmentStats) value));
         return component;
       }
     };

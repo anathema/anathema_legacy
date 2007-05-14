@@ -72,7 +72,7 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
 
   private boolean isIllegalRangedWeapon() {
     return model.getEquipmentType() == EquipmentStatisticsType.RangedCombat
-        && model.getWeaponTagsModel().getSelectedRangedWeaponTagCount() == 0;
+        && !model.getWeaponTagsModel().isRangedWeaponTagSelected();
   }
 
   public String getDescription() {

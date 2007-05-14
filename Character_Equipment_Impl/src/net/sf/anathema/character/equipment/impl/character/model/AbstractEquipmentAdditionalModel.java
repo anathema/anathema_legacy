@@ -9,6 +9,7 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
+import net.sf.anathema.character.equipment.impl.character.model.print.EquipmentPrintModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;

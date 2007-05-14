@@ -45,17 +45,18 @@ public class AboutDialogPage extends AbstractDialogPage {
 
   public JComponent createContent() {
     JPanel panel = new JPanel(new GridDialogLayout(2, false));
-    panel.add(new JLabel(getString("Help.AboutDialog.Artwork")), IGridDialogLayoutData.DEFAULT); //$NON-NLS-1$
-    panel.add(new JLabel("Martin Nerukar"), GridDialogLayoutData.RIGHT); //$NON-NLS-1$
-    panel.add(new JLabel(getString("Help.AboutDialog.Translation.Spanish")), IGridDialogLayoutData.DEFAULT); //$NON-NLS-1$
-    panel.add(new JLabel("Ricardo Rodriguez"), GridDialogLayoutData.RIGHT); //$NON-NLS-1$
-    panel.add(new JLabel(getString("Help.AboutDialog.CharmTreeVisualization")), IGridDialogLayoutData.DEFAULT); //$NON-NLS-1$
-    panel.add(new JLabel("Daniel Hohenberger"), GridDialogLayoutData.RIGHT); //$NON-NLS-1$
-    panel.add(new JLabel(getString("Help.AboutDialog.CharacterSheet")), IGridDialogLayoutData.DEFAULT); //$NON-NLS-1$
-    panel.add(new JLabel("voidstate"), GridDialogLayoutData.RIGHT); //$NON-NLS-1$
-    panel.add(new JLabel(getString("Help.AboutDialog.NameTokenDatabase")), IGridDialogLayoutData.DEFAULT); //$NON-NLS-1$
-    panel.add(new JLabel("voidstate"), GridDialogLayoutData.RIGHT); //$NON-NLS-1$
+    addCredit(panel, "Help.AboutDialog.Artwork", "Martin Nerukar"); //$NON-NLS-1$//$NON-NLS-2$
+    addCredit(panel, "Help.AboutDialog.Translation.Spanish", "Ricardo Rodriguez"); //$NON-NLS-1$//$NON-NLS-2$
+    addCredit(panel, "Help.AboutDialog.Translation.Italian", "Giovanni D'Addabbo & Team ITA"); //$NON-NLS-1$//$NON-NLS-2$
+    addCredit(panel, "Help.AboutDialog.CharmTreeVisualization", "Daniel Hohenberger"); //$NON-NLS-1$//$NON-NLS-2$
+    addCredit(panel, "Help.AboutDialog.CharacterSheet", "voidstate"); //$NON-NLS-1$//$NON-NLS-2$
+    addCredit(panel, "Help.AboutDialog.NameTokenDatabase", "voidstate"); //$NON-NLS-1$//$NON-NLS-2$
     return panel;
+  }
+
+  private void addCredit(JPanel panel, String key, String name) {
+    panel.add(new JLabel(getString(key)), IGridDialogLayoutData.DEFAULT);
+    panel.add(new JLabel(name), GridDialogLayoutData.RIGHT);
   }
 
   private String getString(String key) {

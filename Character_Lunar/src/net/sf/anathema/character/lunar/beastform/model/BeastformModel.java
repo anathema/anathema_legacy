@@ -6,7 +6,7 @@ import java.util.List;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
-import net.sf.anathema.character.equipment.impl.character.model.EquipmentPrintModel;
+import net.sf.anathema.character.equipment.impl.character.model.print.EquipmentPrintModel;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -34,8 +34,6 @@ public class BeastformModel extends AbstractAdditionalModelAdapter implements IB
   private final IGiftModel giftModel;
   private final BeastformGenericTraitCollection allTraitsCollection;
   private final IEquipmentPrintModel equipmentModel;
-
-  // Idee: Attributpunkte aus der Menschlichen Form andersfarbig darstellen. Gut?
 
   public BeastformModel(ICharacterModelContext context) {
     this.context = context;

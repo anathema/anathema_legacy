@@ -6,11 +6,11 @@ import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
 public class DemoNaturalArmour implements IArmourStats {
-  
+
   private final int bashingSoak;
   private final int lethalSoak;
   private final IIdentificate name;
-  
+
   public DemoNaturalArmour() {
     this(new Identificate("Natural"), 2, 1); //$NON-NLS-1$
   }
@@ -45,5 +45,10 @@ public class DemoNaturalArmour implements IArmourStats {
 
   public IIdentificate getName() {
     return name;
+  }
+
+  @Override
+  public String getId() {
+    return getName().getId();
   }
 }

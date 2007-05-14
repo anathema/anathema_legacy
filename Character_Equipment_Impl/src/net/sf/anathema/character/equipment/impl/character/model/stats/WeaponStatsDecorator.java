@@ -8,13 +8,21 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class MeleeWeaponStatsView implements IWeaponStats {
-  private MeleeWeaponStats stats;
-  private AbilityType ability;
+public class WeaponStatsDecorator implements IWeaponStats {
+  private IWeaponStats stats;
+  private ITraitType ability;
+  private IIdentificate name;
 
-  public MeleeWeaponStatsView(MeleeWeaponStats stats, AbilityType statsAbility) {
+  public WeaponStatsDecorator(IWeaponStats stats, AbilityType statsAbility) {
     this.stats = stats;
     this.ability = statsAbility;
+    this.name = stats.getName();
+  }
+
+  public WeaponStatsDecorator(IWeaponStats stats, String name) {
+    this.stats = stats;
+    this.ability = stats.getTraitType();
+    this.name = new Identificate(name);
   }
 
   public int getAccuracy() {
@@ -62,7 +70,7 @@ public class MeleeWeaponStatsView implements IWeaponStats {
   }
 
   public boolean isRangedCombat() {
-    return false;
+    return stats.isRangedCombat();
   }
 
   public IEquipmentStats[] getViews() {
@@ -70,20 +78,25 @@ public class MeleeWeaponStatsView implements IWeaponStats {
   }
 
   public IIdentificate getName() {
-    return new Identificate(this.stats.getName().getId() + " (" + ability.getId() + ")"); //$NON-NLS-1$//$NON-NLS-2$
+    return name;
   }
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof MeleeWeaponStatsView)) {
+    if (!(obj instanceof WeaponStatsDecorator)) {
       return false;
     }
-    MeleeWeaponStatsView view = (MeleeWeaponStatsView) obj;
+    WeaponStatsDecorator view = (WeaponStatsDecorator) obj;
     return view.stats.equals(stats) && view.ability.equals(ability);
   }
 
   @Override
   public int hashCode() {
     return stats.hashCode() + ability.hashCode();
+  }
+
+  @Override
+  public String getId() {
+    return name.getId() + "." + ability.getId(); //$NON-NLS-1$
   }
 }

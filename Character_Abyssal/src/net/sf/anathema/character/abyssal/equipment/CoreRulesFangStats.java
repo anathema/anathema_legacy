@@ -67,4 +67,9 @@ public class CoreRulesFangStats implements IWeaponStats {
   public IEquipmentStats[] getViews() {
     return new IEquipmentStats[] { this };
   }
+
+  @Override
+  public String getId() {
+    return getName().getId();
+  }
 }

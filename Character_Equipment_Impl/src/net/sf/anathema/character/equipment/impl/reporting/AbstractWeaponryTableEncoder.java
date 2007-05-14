@@ -55,6 +55,6 @@ public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTabl
 
   @Override
   protected IWeaponStats[] getPrintStats(IGenericCharacter character) {
-    return getEquipmentModel(character).getPrintWeapons();
+    return getEquipmentModel(character).getPrintWeapons(getResources());
   }
 }

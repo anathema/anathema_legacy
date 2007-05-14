@@ -27,4 +27,8 @@ public class BooleanValueModel {
     this.value = value;
     control.fireValueChangedEvent(value);
   }
+
+  public void setValueSilent(boolean value) {
+    this.value = value;
+  }
 }

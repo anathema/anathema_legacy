@@ -30,8 +30,8 @@ public class MeleeWeaponStats extends AbstractWeaponStats {
       return new IEquipmentStats[] { this };
     }
     IEquipmentStats[] views = new IEquipmentStats[2];
-    views[0] = new MeleeWeaponStatsView(this, AbilityType.Melee);
-    views[1] = new MeleeWeaponStatsView(this, AbilityType.MartialArts);
+    views[0] = new WeaponStatsDecorator(this, AbilityType.Melee);
+    views[1] = new WeaponStatsDecorator(this, AbilityType.MartialArts);
     return views;
   }
 }

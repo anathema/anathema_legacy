@@ -59,4 +59,9 @@ public class ArmourStats extends AbstractStats implements IArmourStats {
       hardnessByHealthType.put(healthType.name(), hardness);
     }
   }
+  
+  @Override
+  public String getId() {
+    return getName().getId();
+  }
 }

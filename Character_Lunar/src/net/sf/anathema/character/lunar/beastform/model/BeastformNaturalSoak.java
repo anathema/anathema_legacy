@@ -108,4 +108,9 @@ public class BeastformNaturalSoak implements IArmourStats {
   public IIdentificate getName() {
     return new Identificate("NaturalSoak"); //$NON-NLS-1$
   }
+
+  @Override
+  public String getId() {
+    return getName().getId();
+  }
 }

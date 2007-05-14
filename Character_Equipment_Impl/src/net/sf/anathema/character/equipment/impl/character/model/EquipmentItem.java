@@ -117,7 +117,7 @@ public class EquipmentItem implements IEquipmentItem {
 
   public void setPrinted(String printedStatId) {
     for (IEquipmentStats view : getViews()) {
-      if (view.getName().getId().equals(printedStatId)) {
+      if (view.getId().equals(printedStatId)) {
         setPrintEnabled(view, true);
         return;
       }

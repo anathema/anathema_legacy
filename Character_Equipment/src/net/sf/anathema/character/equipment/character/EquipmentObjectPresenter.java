@@ -49,7 +49,7 @@ public class EquipmentObjectPresenter implements IPresenter {
       view.setItemDescription(description);
     }
     for (final IEquipmentStats equipment : model.getStats()) {
-      final BooleanModel booleanModel = view.addStats(createEquipmentDescription(equipment));
+      final BooleanModel booleanModel = view.addStats(createEquipmentDescription(model, equipment));
       booleanModel.setValue(model.isPrintEnabled(equipment));
       booleanModel.addChangeListener(new ChangeListener() {
         public void stateChanged(ChangeEvent e) {
@@ -59,7 +59,7 @@ public class EquipmentObjectPresenter implements IPresenter {
     }
   }
 
-  private String createEquipmentDescription(IEquipmentStats equipment) {
-    return stringBuilder.createString(equipment);
+  private String createEquipmentDescription(IEquipmentItem item, IEquipmentStats equipment) {
+    return stringBuilder.createString(item, equipment);
   }
 }
