@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="FrozenasSolar" repositoryPrintName="Frozen as Solar">
+  <Description>
+    <CharacterName><![CDATA[Frozen as Solar]]></CharacterName>
+  </Description>
+  <Statistics experienced="false">
+    <Rules>
+      <RuleSet name="SecondEdition"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
+    <CharacterConcept/>
+    <Essence creationValue="2"/>
+    <Willpower creationValue="2"/>
+    <Virtues>
+      <Compassion creationValue="1"/>
+      <Conviction creationValue="1"/>
+      <Temperance creationValue="1"/>
+      <Valor creationValue="1"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="3"/>
+        <Dexterity creationValue="5"/>
+        <Stamina creationValue="4"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="5"/>
+        <Manipulation creationValue="4"/>
+        <Appearance creationValue="1"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="5"/>
+        <Intelligence creationValue="4"/>
+        <Wits creationValue="4"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="0"/>
+      <MartialArts creationValue="5"/>
+      <Melee creationValue="0"/>
+      <Thrown creationValue="1"/>
+      <War creationValue="3"/>
+      <Integrity creationValue="4"/>
+      <Performance creationValue="5"/>
+      <Presence creationValue="1"/>
+      <Resistance creationValue="2"/>
+      <Survival creationValue="2"/>
+      <Craft>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Air]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Earth]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Fire]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Water]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Wood]]></traitName>
+        </subTrait>
+        <subTrait creationValue="5">
+          <traitName><![CDATA[Fate]]></traitName>
+        </subTrait>
+      </Craft>
+      <Investigation creationValue="5"/>
+      <Lore creationValue="5"/>
+      <Medicine creationValue="2"/>
+      <Occult creationValue="5"/>
+      <Athletics creationValue="3"/>
+      <Awareness creationValue="5"/>
+      <Dodge creationValue="5"/>
+      <Larceny creationValue="5"/>
+      <Stealth creationValue="5"/>
+      <Bureaucracy creationValue="4"/>
+      <Linguistics creationValue="0"/>
+      <Ride creationValue="0"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="3"/>
+    </Abilities>
+    <Backgrounds/>
+    <Charms>
+      <Combos/>
+    </Charms>
+    <Spells/>
+    <Experience/>
+    <AdditionalModels>
+      <Model templateId="Equipment">
+        <Content>
+          <item>
+            <templateId><![CDATA[Natural]]></templateId>
+            <printedStats><![CDATA[Punch]]></printedStats>
+            <printedStats><![CDATA[Kick]]></printedStats>
+            <printedStats><![CDATA[Clinch]]></printedStats>
+          </item>
+        </Content>
+      </Model>
+      <Model templateId="Specialties">
+        <Content/>
+      </Model>
+      <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
+        <Content>
+          <linguistics/>
+        </Content>
+      </Model>
+      <Model templateId="Intimacies">
+        <Content>
+          <Intimacies/>
+        </Content>
+      </Model>
+      <Model templateId="SolarVirtueFlaw">
+        <Content>
+          <VirtueFlaw/>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

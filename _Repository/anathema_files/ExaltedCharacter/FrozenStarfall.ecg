@@ -18,7 +18,6 @@ Beyond her long black hair seems to lack any luster and dangles in three tight b
     <CharacterConcept>
       <Caste type="Secrets"/>
       <Nature type="Visionary"/>
-      <Concept/>
     </CharacterConcept>
     <Essence creationValue="3"/>
     <Willpower creationValue="6"/>
@@ -46,61 +45,71 @@ Beyond her long black hair seems to lack any luster and dangles in three tight b
       </Mental>
     </Attributes>
     <Abilities>
-      <Endurance creationValue="1"/>
+      <Endurance creationValue="1" favored="true"/>
       <Ride creationValue="0"/>
       <Sail creationValue="0"/>
-      <Survival creationValue="1"/>
+      <Survival creationValue="0"/>
       <Thrown creationValue="1"/>
-      <Craft creationValue="2" favored="true"/>
-      <Dodge creationValue="0"/>
+      <Craft favored="true">
+        <subTrait creationValue="2">
+          <traitName><![CDATA[Generic]]></traitName>
+        </subTrait>
+      </Craft>
+      <Dodge creationValue="3"/>
       <Linguistics creationValue="1"/>
-      <Performance creationValue="5" favored="true"/>
+      <Performance creationValue="5" favored="true">
+        <Specialty creationValue="2" name="Dance"/>
+      </Performance>
       <Socialize creationValue="2"/>
       <Archery creationValue="0"/>
       <Brawl creationValue="0"/>
       <Melee creationValue="0"/>
       <Presence creationValue="0"/>
-      <Resistance creationValue="1"/>
+      <Resistance creationValue="0"/>
       <Investigation creationValue="3"/>
       <Larceny creationValue="3"/>
       <Lore creationValue="3"/>
-      <Occult creationValue="3"/>
+      <Occult creationValue="3">
+        <Specialty creationValue="2" name="Fair Folk"/>
+        <Specialty creationValue="1" name="Spellcasting"/>
+      </Occult>
       <Stealth creationValue="3"/>
-      <Athletics creationValue="1"/>
+      <Athletics creationValue="0"/>
       <Awareness creationValue="3"/>
       <Bureaucracy creationValue="2"/>
-      <MartialArts creationValue="4" favored="true"/>
+      <MartialArts creationValue="4" favored="true">
+        <Specialty creationValue="3" name="One on One"/>
+      </MartialArts>
       <Medicine creationValue="0"/>
     </Abilities>
     <Backgrounds>
       <Background creationValue="3"><![CDATA[CelestialManse]]></Background>
       <Background creationValue="3"><![CDATA[Salary]]></Background>
       <Background creationValue="3"><![CDATA[Savant]]></Background>
-      <Background creationValue="4"><![CDATA[Artifact]]></Background>
+      <Background creationValue="3"><![CDATA[Artifact]]></Background>
       <Background creationValue="3"><![CDATA[Sifu]]></Background>
     </Backgrounds>
     <Charms>
-      <CharmGroup name="Occult" type="Sidereal">
-        <Charm name="Sidereal.TerrestrialCircleSorcery" experienceLearned="false"/>
-      </CharmGroup>
-      <CharmGroup name="Larceny" type="Sidereal">
-        <Charm name="Sidereal.CreationSmugglingProcedures" experienceLearned="false"/>
-        <Charm name="Sidereal.SiderealShellGames" experienceLearned="false"/>
-        <Charm name="Sidereal.HonorableThiefSpirit" experienceLearned="false"/>
-      </CharmGroup>
       <CharmGroup name="Performance" type="Sidereal">
-        <Charm name="Sidereal.DefenseShiningJoy" experienceLearned="false"/>
         <Charm name="Sidereal.CompassionateEssenceReplenishment" experienceLearned="false"/>
         <Charm name="Sidereal.PerfectioninLife" experienceLearned="false"/>
       </CharmGroup>
-      <CharmGroup name="Dodge" type="Sidereal">
-        <Charm name="Sidereal.Absence" experienceLearned="false"/>
-        <Charm name="Sidereal.DuckFate" experienceLearned="false"/>
+      <CharmGroup name="Larceny" type="Sidereal">
+        <Charm name="Sidereal.SiderealShellGames" experienceLearned="false"/>
+        <Charm name="Sidereal.HonorableThiefSpirit" experienceLearned="false"/>
+        <Charm name="Sidereal.CreationSmugglingProcedures" experienceLearned="false"/>
       </CharmGroup>
-      <CharmGroup name="FireDragonStyle" type="Sidereal">
-        <Charm name="Dragon-Blooded.Flame-FlickerStance" experienceLearned="false"/>
+      <CharmGroup name="Dodge" type="Sidereal">
+        <Charm name="Sidereal.DuckFate" experienceLearned="false"/>
+        <Charm name="Sidereal.Absence" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Occult" type="Sidereal">
+        <Charm name="Sidereal.TerrestrialCircleSorcery" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="FireDragonStyle" type="Dragon-Blooded">
         <Charm name="Dragon-Blooded.Flash-FireTechnique" experienceLearned="false"/>
         <Charm name="Dragon-Blooded.PerfectBlazingBlow" experienceLearned="false"/>
+        <Charm name="Dragon-Blooded.Flame-FlickerStance" experienceLearned="false"/>
         <Charm name="Dragon-Blooded.SearingFistTechnique" experienceLearned="false"/>
       </CharmGroup>
       <Combos/>
@@ -108,6 +117,33 @@ Beyond her long black hair seems to lack any luster and dangles in three tight b
     <Spells/>
     <Experience/>
     <AdditionalModels>
+      <Model templateId="Equipment">
+        <Content>
+          <item>
+            <templateId><![CDATA[Natural]]></templateId>
+            <printedStats><![CDATA[Punch]]></printedStats>
+            <printedStats><![CDATA[Kick]]></printedStats>
+            <printedStats><![CDATA[Clinch]]></printedStats>
+            <printedStats><![CDATA[Hold]]></printedStats>
+          </item>
+        </Content>
+      </Model>
+      <Model templateId="MeritsAndFlaws">
+        <Content>
+          <meritsFlaws/>
+        </Content>
+      </Model>
+      <Model templateId="Specialties">
+        <Content/>
+      </Model>
+      <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
+        <Content>
+          <linguistics/>
+        </Content>
+      </Model>
       <Model templateId="SiderealColleges">
         <Content>
           <Colleges>
@@ -138,9 +174,6 @@ Beyond her long black hair seems to lack any luster and dangles in three tight b
             <Sword creationValue="0"/>
           </Colleges>
         </Content>
-      </Model>
-      <Model templateId="MeritsAndFlaws">
-        <Content/>
       </Model>
     </AdditionalModels>
   </Statistics>
