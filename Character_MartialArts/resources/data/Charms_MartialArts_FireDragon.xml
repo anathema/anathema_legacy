@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-stylesheet type="text/xsl" href="../charmreview.xsl"?>
+<!DOCTYPE charmlist SYSTEM "../charms.dtd">-->
+
+<!--
+
+FireDragon.xml © Paul R. Adams, 2007
+
+This XML is licensed under the Creative Commons Attribution-Share Alike 3.0 United States 
+License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/us/ 
+or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 
+94105, USA.
+
+-->
+<charmlist>
+  <!-- Fire Dragon Style -->
+  <charm id="Celestial.FlashFireTechnique" exalt="Dragon-Blooded" group="FireDragonStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Celestial.FlameFlickerStance" exalt="Dragon-Blooded" group="FireDragonStyle">
+  <!-- Possible Problem with Essence -->
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Celestial.FlashFireTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Varies"/>
+      </temporary>
+    </cost>
+    <duration event="NextAction"/>
+    <charmtype type="Reflexive">
+    	<special primaryStep="2"/>
+    </charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Celestial.SearingFistAttack" exalt="Dragon-Blooded" group="FireDragonStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Crippling" visualize="true"/>
+    <charmAttribute attribute="Stackable" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Celestial.PerfectBlazingBlow" exalt="Dragon-Blooded" group="FireDragonStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Celestial.SearingFistAttack"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Celestial.FireDragonForm" exalt="Dragon-Blooded" group="FireDragonStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Celestial.FlameFlickerStance"/>
+      <charmReference id="Celestial.PerfectBlazingBlow"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple">
+    	<special speed="4" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Form" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Celestial.FieryHandAttack" exalt="Dragon-Blooded" group="FireDragonStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Celestial.FireDragonForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Celestial.BreathOfTheFireDragon" exalt="Dragon-Blooded" group="FireDragonStyle">
+  	<!-- Essence may not work correctly -->
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Celestial.FieryHandAttack"/>
+    </prerequisite>
+    <cost>
+    	<temporary>
+        	<essence cost="Varies"/>
+		</temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-Basic" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Celestial.EssenceIgnitingNerveStrike" exalt="Dragon-Blooded" group="FireDragonStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Celestial.BreathOfTheFireDragon"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+    	<special speed="5" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Celestial.OverwhelmingFireMajestyStance" exalt="Dragon-Blooded" group="FireDragonStyle">
+  	<!-- Duration may not work -->
+  	<prerequisite>
+  		<trait id="MartialArts" value="5"/>
+  		<essence value="3"/>
+  		<charmReference id="Celestial.FireDragonForm"/>
+  	</prerequisite>
+  	<cost>
+  		<temporary>
+  			<essence cost="4"/>
+  		</temporary>
+  	</cost>
+  	<duration duration="Varies"/>
+  	<charmtype type="Simple"/>
+  	<charmAttribute attribute="Celestial"/>
+  	<charmAttribute attribute="Combo-Basic" visualize="true"/>
+  	<charmAttribute attribute="Obvious" visualize="true"/>
+  	<source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Celestial.SmolderingWoundAttack" exalt="Dragon-Blooded" group="FireDragonStyle">
+  	<!-- Again, duration may not work. -->
+  	<prerequisite>
+  		<trait id="MartialArts" value="5"/>
+  		<essence value="3"/>
+  		<charmReference id="Celestial.OverwhelmingFireMajestyStance"/>
+  	</prerequisite>
+  	<cost>
+  		<temporary>
+  			<essence cost="4"/>
+  		</temporary>
+  	</cost>
+  	<duration duration="Varies"/>
+  	<charmtype type="Supplemental"/>
+  	<charmAttribute attribute="Celestial"/>
+  	<charmAttribute attribute="Combo-OK" visualize="true"/>
+  	<source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Celestial.ConsumingMightOfTheFireDragon" exalt="Dragon-Blooded" group="FireDragonStyle">
+  	<prerequisite>
+  		<trait id="MartialArts" value="5"/>
+  		<essence value="4"/>
+  		<charmReference id="Celestial.EssenceIgnitingNerveStrike"/>
+  		<charmReference id="Celestial.SmolderingWoundAttack"/>
+  	</prerequisite>
+  	<cost>
+  		<temporary>
+  			<essence cost="6"/>
+  			<willpower cost="1"/>
+  		</temporary>
+  	</cost>
+  	<duration amount="1" unit="scene"/>
+  	<charmtype type="Simple"/>
+  	<charmAttribute attribute="Celestial"/>
+  	<charmAttribute attribute="Obvious" visualize="true"/>
+  	<source source="DragonBlooded2nd"/>
+  </charm>
+</charmlist>

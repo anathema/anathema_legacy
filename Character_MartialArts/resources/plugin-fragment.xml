@@ -44,6 +44,31 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_MartialArts_FiveDragon.xml"/>
 	  </parameter>
+	    <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_AirDragon.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_EarthDragon.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_FireDragon.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_WaterDragon.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_WoodDragon.xml"/>
+	  </parameter>
 	  <parameter id="list">
 		<parameter id="type" value="MartialArts"/>
 		<parameter id="rules" value="SecondEdition"/>
@@ -63,5 +88,7 @@
 		<parameter id="bundle" value="Charms_ScrolloftheMonk"/>
 		<parameter id="bundle" value="ScrolloftheMonk"/>
 		<parameter id="bundle" value="Pages_ScrolloftheMonk"/>
+		<parameter id="bundle" value="Charms_ElementalDragonStyles"/>
+		<parameter id="bundle" value="Pages_ElementalDragonStyles"/>
 	</extension>
 </plugin-fragment>
