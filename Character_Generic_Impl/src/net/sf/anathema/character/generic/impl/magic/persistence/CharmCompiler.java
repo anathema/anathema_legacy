@@ -31,9 +31,11 @@ public class CharmCompiler {
   private final GenericCharmSetBuilder genericBuilder = new GenericCharmSetBuilder();
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
   private final IIdentificateRegistry<ICharacterType> registry;
+  private final SAXReader reader;
 
   public CharmCompiler(IIdentificateRegistry<ICharacterType> registry) {
     this.registry = registry;
+    this.reader = new SAXReader();
   }
 
   public void registerCharmFile(String typeString, String ruleString, URL resource) throws CharmException {
@@ -51,7 +53,7 @@ public class CharmCompiler {
       charmFileTable.add(type, ruleSet, list);
     }
     try {
-      list.add(new SAXReader().read(resource));
+      list.add(reader.read(resource));
     }
     catch (DocumentException e) {
       throw new CharmException(e);
