@@ -8,15 +8,17 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- Features --
-+ On popular demand, the M-Tag now is fully supported. (Thanks to everyone discussing the issue.)
-+ Allowed C-Tag for ranged weapons (Requested by uteck as per Scroll of the Monk.)
++ [2E] More Dragon-Blooded: Immaculate Monks & Cherak.
++ [2E] Immaculate Martial Arts Styles, kindly provided by Jontu Kontar
++ [2E] On popular demand, the M-Tag now is fully supported. (Thanks to everyone discussing the issue.)
++ [2E] Allowed C-Tag for ranged weapons (Requested by uteck as per Scroll of the Monk.)
 
 -- Usability --
 + New Language: Italian. The translation was conceived by Giovanni D'Addabbo of exalteditalia.com and 
 	created by Giovanni and Team ITA. Bits and pieces are still missing, but they will soon be done with.
 * Revised Charm controls (Thanks to Demo, Jontu and Chris.)
 * Improved accuracy of Charm rendering.
-* Generic Charms are ordered in a character-specific way.
+* [2E] Generic Charms are ordered in a character-specific way.
 
 -- Bugs Fixed--
 * Printing for 1E characters and 2E mortals is back. (Bug 1705201, found by Hotep.)
