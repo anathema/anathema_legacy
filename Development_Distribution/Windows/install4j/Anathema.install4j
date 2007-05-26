@@ -5,7 +5,7 @@
     <languages skipLanguageSelection="true">
       <principalLanguage id="en" customLocalizationFile="./Installer.properties" />
       <additionalLanguages>
-        <language id="it" customLocalizationFile="" />
+        <language id="it" customLocalizationFile="./Installer_it.properties" />
         <language id="es" customLocalizationFile="./Installer_es.properties" />
       </additionalLanguages>
     </languages>
