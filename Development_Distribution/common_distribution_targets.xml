@@ -30,5 +30,8 @@
 		<copy todir="${spanish.files.dir}">
 			<fileset dir="${documentation.dir}/Spanish" includes="*.txt" />
 		</copy>
+		<copy todir="${italian.files.dir}">
+			<fileset dir="${documentation.dir}/Italian" includes="*.txt" />
+		</copy>
 	</target>
 </project>

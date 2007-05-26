@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="4.0.5" transformSequenceNumber="1">
-  <directoryPresets config="../../build/files/anathema.exe" />
-  <application name="Anathema" distributionSourceDir="" applicationId="1767-2668-0185-7732" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_v${compiler:sys.version}_${compiler:sys.platform}" compression="6" lzmaCompression="false" pack200Compression="true" keepModificationTimes="false" shortName="Anathema" publisher="Anathema Team" publisherWeb="http://anathema.sf.net" version="1.1" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="false" macSignature="????" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="true">
+  <directoryPresets config="../../build/files/doc/italian/readme_it.txt" />
+  <application name="Anathema" distributionSourceDir="" applicationId="1767-2668-0185-7732" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_v${compiler:sys.version}_${compiler:sys.platform}" compression="6" lzmaCompression="false" pack200Compression="true" excludeSignedFromPacking="true" keepModificationTimes="false" shortName="Anathema" publisher="Anathema Team" publisherWeb="http://anathema.sf.net" version="1.3" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="false" macSignature="????" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="true">
     <languages skipLanguageSelection="true">
       <principalLanguage id="en" customLocalizationFile="./Installer.properties" />
       <additionalLanguages>
+        <language id="it" customLocalizationFile="" />
         <language id="es" customLocalizationFile="./Installer_es.properties" />
       </additionalLanguages>
     </languages>
@@ -22,6 +23,7 @@
       <mountPoint id="33" root="" location="plugins" mode="755" />
       <mountPoint id="34" root="" location="doc" mode="755" />
       <mountPoint id="35" root="" location="doc/spanish" mode="755" />
+      <mountPoint id="1010" root="" location="doc/italian" mode="755" />
       <mountPoint id="25" root="" location="" mode="755" />
     </mountPoints>
     <entries>
@@ -33,6 +35,8 @@
       </dirEntry>
       <fileEntry mountPoint="35" file="../../build/files/doc/spanish/FAQ_es.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="35" file="../../build/files/doc/spanish/readme_es.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="1010" file="../../build/files/doc/italian/FAQ_it.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="1010" file="../../build/files/doc/italian/readme_it.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="25" file="../../build/anathema.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="25" file="../../build/files/anathema.exe" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="25" file="../../build/files/FAQ.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
@@ -105,7 +109,7 @@
   <launchers>
     <launcher name="Anathema" id="364" external="true" excludeFromMenu="false" menuName="" externalFile="anathema.exe" />
   </launchers>
-  <installerGui installerType="1" suggestPreviousProgramGroup="true" addOnAppId="" suggestPreviousLocations="true" allowUnattended="false" allowConsole="false" useCustomInstallerHeaderImage="true" customInstallerHeaderImage="./Anathema_Install_small.png" useCustomUninstallerHeaderImage="true" customUninstallerHeaderImage="./Anathema_Install_small.png" customSize="false" customWidth="500" customHeight="390" useCustomIcon="true" customIcnsFile="" customPngIcon16File="./Anathema_Install_Icon_48.png" customPngIcon32File="./Anathema_Install_Icon_48.png" customIcoFile="./sungearInstall.ico" vmParameters="" watermark="false" resizable="false">
+  <installerGui installerType="1" suggestPreviousProgramGroup="true" addOnAppId="" suggestPreviousLocations="true" allowUnattended="false" allowConsole="false" useCustomInstallerHeaderImage="true" customInstallerHeaderImage="./Anathema_Install_small.png" useCustomUninstallerHeaderImage="true" customUninstallerHeaderImage="./Anathema_Install_small.png" customSize="false" customWidth="500" customHeight="390" useCustomIcon="true" customIcnsFile="" customPngIcon16File="./Anathema_Install_Icon_48.png" customPngIcon32File="./Anathema_Install_Icon_48.png" customIcoFile="./sungearInstall.ico" vmParameters="" watermark="false" resizable="false" suppressProgressDialog="false">
     <customCode useInstalledFiles="false" />
     <installerScreens>
       <screen name="" id="1" beanClass="com.install4j.runtime.beans.screens.WelcomeScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
@@ -175,7 +179,7 @@
             </serializedBean>
             <condition />
           </action>
-          <action name="Move FAQ" id="568" beanClass="com.install4j.runtime.beans.actions.files.MoveFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+          <action name="Move Spanish FAQ" id="568" beanClass="com.install4j.runtime.beans.actions.files.MoveFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.actions.files.MoveFileAction">
@@ -200,7 +204,7 @@
             </serializedBean>
             <condition>context.getLanguageId().equalsIgnoreCase("es")</condition>
           </action>
-          <action name="Move ReadMe" id="804" beanClass="com.install4j.runtime.beans.actions.files.MoveFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+          <action name="Move Spanish ReadMe" id="804" beanClass="com.install4j.runtime.beans.actions.files.MoveFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.actions.files.MoveFileAction">
@@ -224,6 +228,56 @@
               </java>
             </serializedBean>
             <condition>context.getLanguageId().equalsIgnoreCase("es")</condition>
+          </action>
+          <action name="Move Italian FAQ" id="1011" beanClass="com.install4j.runtime.beans.actions.files.MoveFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.MoveFileAction">
+                  <void property="destinationFile">
+                    <object class="java.io.File">
+                      <string>FAQ.txt</string>
+                    </object>
+                  </void>
+                  <void property="overwriteMode">
+                    <object class="com.install4j.api.context.OverwriteMode" field="ALWAYS" />
+                  </void>
+                  <void property="sourceFile">
+                    <object class="java.io.File">
+                      <string>doc/italian/FAQ_it.txt</string>
+                    </object>
+                  </void>
+                  <void property="uninstallMode">
+                    <object class="com.install4j.api.context.UninstallMode" field="ALWAYS" />
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition>context.getLanguageId().equalsIgnoreCase("it")</condition>
+          </action>
+          <action name="Move Italian ReadMe" id="1012" beanClass="com.install4j.runtime.beans.actions.files.MoveFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.MoveFileAction">
+                  <void property="destinationFile">
+                    <object class="java.io.File">
+                      <string>readme.txt</string>
+                    </object>
+                  </void>
+                  <void property="overwriteMode">
+                    <object class="com.install4j.api.context.OverwriteMode" field="ALWAYS" />
+                  </void>
+                  <void property="sourceFile">
+                    <object class="java.io.File">
+                      <string>doc/italian/readme_it.txt</string>
+                    </object>
+                  </void>
+                  <void property="uninstallMode">
+                    <object class="com.install4j.api.context.UninstallMode" field="ALWAYS" />
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition>context.getLanguageId().equalsIgnoreCase("it")</condition>
           </action>
           <action name="Delete Documentation" id="805" beanClass="com.install4j.runtime.beans.actions.files.DeleteFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
             <serializedBean>
@@ -599,7 +653,7 @@ return "English";</string>
     </uninstallerStartup>
   </installerGui>
   <mediaSets>
-    <win32 name="Windows" id="17" mediaFileName="" installDir="Anathema" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" includedJRE="" manualJREEntry="false" bundleType="1" jreURL="http://www.java.com/en/download/windows_xpi.jsp" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="false">
+    <win32 name="Windows" id="17" mediaFileName="" installDir="Anathema" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="" manualJREEntry="false" bundleType="1" jreURL="http://www.java.com/en/download/windows_xpi.jsp" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="false">
       <excludedLaunchers />
       <excludedComponents />
       <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
