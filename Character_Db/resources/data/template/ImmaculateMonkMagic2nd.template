@@ -1,6 +1,5 @@
 <magicTemplate>
 	<freePicksPredicate defaultResponse="false">
-		<idException id="Dragon-Blooded.Ox-BodyTechnique"/>
 		<idException id="Dragon-Blooded.PasiapsHumility"/>
 		<idException id="Dragon-Blooded.MomentDanaad"/>
 		<groupException id="AirDragonStyle"/>
