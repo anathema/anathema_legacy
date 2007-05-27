@@ -20,9 +20,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="2"/>
-      </temporary>
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple">
@@ -39,9 +37,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.EyesOfTheWoodDragon"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="2" text="per hl"/>
-      </temporary>
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple">
@@ -59,9 +55,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.MindOverBodyMeditation"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="2"/>
-      </temporary>
     </cost>
     <duration amount="1" unit="action"/>
     <charmtype type="Reflexive">
@@ -78,9 +72,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.WoodDragonVitality"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="3"/>
-      </temporary>
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
@@ -97,9 +89,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.SoulMarkingStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="5"/>
-      </temporary>
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple">
@@ -117,9 +107,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.WoodDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="4"/>
-      </temporary>
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
@@ -135,10 +123,8 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.UnbreakableFascinationKata"/>
     </prerequisite>
     <cost>
-    	<temporary>
         	<essence cost="8"/>
         	<willpower cost="1"/>
-		</temporary>
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -155,10 +141,8 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.WoodDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -174,10 +158,8 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   		<charmReference id="Celestial.SpiritWrackingMethod"/>
   	</prerequisite>
   	<cost>
-  		<temporary>
   			<essence cost="8"/>
   			<willpower cost="1"/>
-  		</temporary>
   	</cost>
   	<duration duration="Instant"/>
   	<charmtype type="Simple">
@@ -195,9 +177,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   		<charmReference id="Celestial.WoodDragonForm"/>
   	</prerequisite>
   	<cost>
-  		<temporary>
   			<essence cost="Varies"/>
-  		</temporary>
   	</cost>
   	<duration amount="1" unit="scene"/>
   	<charmtype type="Simple"/>
@@ -212,9 +192,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   		<charmReference id="Celestial.DeathPatternSensingAttitude"/>
   	</prerequisite>
   	<cost>
-  		<temporary>
   			<essence cost="3" text="per hl"/>
-  		</temporary>
   	</cost>
   	<duration duration="Instant"/>
   	<charmtype type="Simple">
@@ -234,10 +212,8 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   		<charmReference id="Celestial.WoodDragonSuccor"/>
   	</prerequisite>
   	<cost>
-  		<temporary>
   			<essence cost="10"/>
   			<health cost="1"/>
-  		</temporary>
   	</cost>
   	<duration amount="Essence" unit="action"/>
   	<charmtype type="Simple">

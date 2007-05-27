@@ -20,9 +20,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="3"/>
-      </temporary>
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
@@ -37,9 +35,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.AirDragonsSight"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="2"/>
-      </temporary>
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
@@ -56,9 +52,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.AirDragonsSight"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="4"/>
-      </temporary>
     </cost>
     <duration amount="MartialArts" unit="action"/>
     <charmtype type="Simple"/>
@@ -74,9 +68,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.AirDragonsSight"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="4"/>
-      </temporary>
     </cost>
     <duration amount="MartialArts" unit="action"/>
     <charmtype type="Simple">
@@ -96,9 +88,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.WindDragonSpeed"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="5"/>
-      </temporary>
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple">
@@ -115,9 +105,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.AirDragonForm"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="3" text="per attack"/>
-      </temporary>
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
@@ -133,9 +121,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.TornadoOffenseTechnique"/>
     </prerequisite>
     <cost>
-    	<temporary>
         	<essence cost="3"/>
-		</temporary>
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -152,9 +138,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Celestial.AvengingWindStrike"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="4"/>
-      </temporary>
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -170,9 +154,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   		<charmReference id="Celestial.AirDragonForm"/>
   	</prerequisite>
   	<cost>
-  		<temporary>
   			<essence cost="3"/>
-  		</temporary>
   	</cost>
   	<duration amount="MartialArts" unit="action"/>
   	<charmtype type="Reflexive"/>
@@ -188,9 +170,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   		<charmReference id="Celestial.CloudTreadingMethod"/>
   	</prerequisite>
   	<cost>
-  		<temporary>
   			<essence cost="5"/>
-  		</temporary>
   	</cost>
   	<duration duration="Instant"/>
   	<charmtype type="Simple"/>
@@ -205,10 +185,8 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   		<charmReference id="Celestial.ThunderclapKata"/>
   	</prerequisite>
   	<cost>
-  		<temporary>
   			<essence cost="4"/>
   			<health cost="1"/>
-  		</temporary>
   	</cost>
   	<duration amount="MartialArts" unit="action"/>
   	<charmtype type="Simple">
@@ -227,12 +205,9 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   		<charmReference id="Celestial.LightningStrikeStyle"/>
   	</prerequisite>
   	<cost>
-  		<temporary>
   			<essence cost="10"/>
   			<willpower cost="1"/>
-  			<!--Not sure that this is correct.-->
-  			<health cost="1" text="per action"/>
-  		</temporary>
+  			<health cost="1" type="Bashing" text="per action"/>
   	</cost>
   	<duration amount="MartialArts" unit="action"/>
   	<charmtype type="Reflexive"/>
