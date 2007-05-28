@@ -143,7 +143,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Celestial"/>
-    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Combo-Basic" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
@@ -193,7 +193,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   		<special speed="4" defense="-1"/>
   	</charmtype>
   	<charmAttribute attribute="Celestial"/>
-  	<charmAttribute attribute="Combo-Basic" visualize="true"/>
+  	<charmAttribute attribute="Combo-OK" visualize="true"/>
   	<charmAttribute attribute="Obvious" visualize="true"/>
   	<source source="DragonBlooded2nd"/>
   </charm>
@@ -212,7 +212,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   	<duration amount="MartialArts" unit="action"/>
   	<charmtype type="Reflexive"/>
   	<charmAttribute attribute="Celestial"/>
-  	<charmAttribute attribute="Combo-Basic" visualize="true"/>
+  	<charmAttribute attribute="Combo-OK" visualize="true"/>
   	<charmAttribute attribute="Obvious" visualize="true"/>
   	<source source="DragonBlooded2nd"/>
   </charm>
