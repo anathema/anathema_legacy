@@ -18,11 +18,7 @@ Q: How do I determine what version of java I am running or even where my java ex
 A: Please refer to the Anathema Installation Guide available on the project page.
 	
 Q: Alright, so I need Java 6. How to get it?
-A: Just follow these instructions:
-	-Go to http://java.sun.com 
-	-Click "Java SE" in the "Popular Downloads"-box in the top right corner. 
-	-On the next page, there should be an entry "Java Runtime Environment (JRE) 6". Click "Download". 
-	-Follow the on-screen instructions to the end. 
+A: Look for the "Free download" at www.java.com. 
 	
 Q: Are saved characters and the like going to be compatible between versions?
 A: Well, yes. At least, that's what we aim for. If some file happens not to be compatible and you
