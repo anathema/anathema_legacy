@@ -12,6 +12,7 @@ http://anathema.sf.net
 + [2E] Immaculate Martial Arts Styles, kindly provided by Jontu Kontar
 + [2E] On popular demand, the M-Tag now is fully supported. (Thanks to everyone discussing the issue.)
 + [2E] Allowed C-Tag for ranged weapons (Requested by uteck as per Scroll of the Monk.)
++ [2E] Brand-new Charms from Oadenol's Codex
 
 -- Usability --
 + New Language: Italian. The translation was conceived by Giovanni D'Addabbo of exalteditalia.com and 
