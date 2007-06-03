@@ -20,7 +20,8 @@ public enum ExaltedSourceBook implements IExaltedSourceBook {
       ExaltedEdition.SecondEdition), DragonBlooded2nd(ExaltedEdition.SecondEdition), Lunars2nd(
       ExaltedEdition.SecondEdition), WondersLostAge(ExaltedEdition.SecondEdition), ScrollMonk(
       ExaltedEdition.SecondEdition), ImperfectLotus(ExaltedEdition.SecondEdition), WhiteTreatise(
-      ExaltedEdition.SecondEdition), BlackTreatise(ExaltedEdition.SecondEdition), Comic0(ExaltedEdition.FirstEdition);
+      ExaltedEdition.SecondEdition), BlackTreatise(ExaltedEdition.SecondEdition), OadenolsCodex(
+      ExaltedEdition.SecondEdition), Comic0(ExaltedEdition.FirstEdition);
 
   private final IExaltedEdition edition;
 
