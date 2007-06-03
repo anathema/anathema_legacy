@@ -28,7 +28,9 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
     }
     for (ISimpleNode node : hierarchicalGraph) {
       for (ISimpleNode child : node.getChildren()) {
-        Ensure.ensureEqual(1, child.getLayer() - node.getLayer());
+        Ensure.ensureArgumentEquals(node + " and " + child + " are more than one layer apart.", //$NON-NLS-1$ //$NON-NLS-2$
+            1,
+            child.getLayer() - node.getLayer());
       }
       nodesByLayer.get(node.getLayer()).add(node);
     }
