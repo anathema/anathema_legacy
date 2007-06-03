@@ -2528,7 +2528,24 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="WondersLostAge" page="6"/>
+    <source source="OadenolsCodex" page="29"/>
+  </charm>
+  <charm id="Solar.Words-as-WorkshopMethod" exalt="Solar" group="Craft">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Craft" value="5"/>
+      <charmReference id="Solar.CraftsmanNeedsNoTools"/>
+    </prerequisite>
+    <cost>
+      <essence cost="16"/>
+      <willpower cost="2"/>
+    </cost>
+    <duration duration="Varies"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Shaping" visualize="true"/>
+    <source source="OadenolsCodex"/>
   </charm>
   <charm id="Solar.InvincibleArmorInvocation" exalt="Solar" group="Resistance">
     <prerequisite>
