@@ -90,7 +90,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     IExaltedRuleSet rules = context.getBasicCharacterContext().getRuleSet();
     List<ICharacterType> allCharacterTypes = new ArrayList<ICharacterType>();
     ICharmTemplate nativeCharmTemplate = getNativeCharmTemplate(registry);
-    this.arbitrator = new LearningCharmGroupArbitrator(nativeCharmTemplate, context.getBasicCharacterContext());
+    this.arbitrator = new LearningCharmGroupArbitrator(nativeCharmTemplate, context);
     this.martialArtsCharmTree = new MartialArtsCharmTree(nativeCharmTemplate, rules);
     this.martialArtsGroups = createGroups(martialArtsCharmTree.getAllCharmGroups());
     initCharacterType(nativeCharmTemplate, rules, getNativeCharacterType());

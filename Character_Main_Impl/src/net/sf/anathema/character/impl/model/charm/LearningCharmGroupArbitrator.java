@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
@@ -18,14 +19,15 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrator {
 
   private final ICharmTemplate template;
-  private final IBasicCharacterData data;
+  private final ICharacterModelContext context;
 
-  public LearningCharmGroupArbitrator(ICharmTemplate template, IBasicCharacterData data) {
+  public LearningCharmGroupArbitrator(ICharmTemplate template, ICharacterModelContext context) {
     this.template = template;
-    this.data = data;
+    this.context = context;
   }
 
   public ICharm[] getCharms(ICharmGroup charmGroup) {
+    IBasicCharacterData data = context.getBasicCharacterContext();
     final ICharm[] allCharms = charmGroup.getAllCharms();
     if (template.isAllowedAlienCharms(data.getCasteType())) {
       return allCharms;
@@ -65,7 +67,8 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
   }
 
   private boolean isCelestialStyle(ICharm martialArtsCharm) {
-    return MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, martialArtsCharm) && !martialArtsCharm.hasAttribute(ICharmData.NO_STYLE_ATTRIBUTE);
+    return MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, martialArtsCharm)
+        && !martialArtsCharm.hasAttribute(ICharmData.NO_STYLE_ATTRIBUTE);
   }
 
   private boolean isBegun(ILearningCharmGroup group) {
@@ -79,7 +82,7 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
 
   private boolean isCompleted(ILearningCharmGroup group) {
     for (ICharm charm : group.getCoreCharms()) {
-      if (!group.isLearned(charm)) {
+      if (!group.isLearned(charm) && !charm.isBlockedByAlternative(context.getMagicCollection())) {
         return false;
       }
     }

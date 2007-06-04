@@ -24,7 +24,7 @@ public class MagicOverviewFixture extends AbstractCharacterColumnFixture {
         MartialArtsUtilities.MARTIAL_ARTS);
     LearningCharmGroupArbitrator arbitrator = new LearningCharmGroupArbitrator(
         getCharacterStatistics().getCharacterTemplate().getMagicTemplate().getCharmTemplate(),
-        getCharacterStatistics().getCharacterContext().getBasicCharacterContext());
+        getCharacterStatistics().getCharacterContext());
     return arbitrator.isCelestialMartialArtsGroupCompleted(charms);
   }
 }

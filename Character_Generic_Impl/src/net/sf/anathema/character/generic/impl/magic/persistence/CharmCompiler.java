@@ -72,13 +72,14 @@ public class CharmCompiler {
         buildCharmAlternatives(type, rules);
       }
       buildCharms(MARTIAL_ARTS, rules, setBuilder);
+      buildCharmAlternatives(MARTIAL_ARTS, rules);
     }
     for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
       extractParents(CharmCache.getInstance().getCharms(rules));
     }
   }
 
-  private void buildCharmAlternatives(ICharacterType type, ExaltedRuleSet rules) {
+  private void buildCharmAlternatives(IIdentificate type, ExaltedRuleSet rules) {
     if (charmFileTable.contains(type, rules)) {
       for (Document charmDocument : charmFileTable.get(type, rules)) {
         alternativeBuilder.buildAlternatives(charmDocument, CharmCache.getInstance().getCharms(type, rules));
