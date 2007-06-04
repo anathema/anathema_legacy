@@ -79,6 +79,16 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/DreamingPearlCourtesan.xml"/>
 	  </parameter>	 	
+	    <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/TerribleAscentDrivenBeast.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/PathOfTheArbiter.xml"/>
+	  </parameter>		
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="MartialArtsResources">
 		<!--<parameter id="bundle" value="Charms_MartialArts"/>-->
