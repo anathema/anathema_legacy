@@ -10,11 +10,6 @@ public class MartialArtsUtilities {
 
   public static final Identificate MARTIAL_ARTS = new Identificate(AbilityType.MartialArts.name());
 
-  // private static final Identificate MORTAL_LEVEL = new Identificate(MartialArtsLevel.Mortal.getId());
-  // private static final Identificate TERRESTRIAL_LEVEL = new Identificate(MartialArtsLevel.Terrestrial.getId());
-  // private static final Identificate CELESTIAL_LEVEL = new Identificate(MartialArtsLevel.Celestial.getId());
-  // private static final Identificate SIDEREAL_LEVEL = new Identificate(MartialArtsLevel.Sidereal.getId());
-
   public static boolean isMartialArtsCharm(ICharm charm) {
     return charm.hasAttribute(MARTIAL_ARTS);
   }
