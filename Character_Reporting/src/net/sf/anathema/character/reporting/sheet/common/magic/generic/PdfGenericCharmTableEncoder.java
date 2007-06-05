@@ -7,7 +7,6 @@ import java.util.List;
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -59,13 +58,10 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
       Phrase charmPhrase = new Phrase(stats.getNameString(resources), font);
       table.addCell(new TableCell(charmPhrase, Rectangle.NO_BORDER));
       String genericId = stats.getName().getId();
-      ITraitType[] genericTraitTypes = character.getTemplate()
-          .getTemplateType()
-          .getCharacterType()
-          .getFavoringTraitType()
-          .getTraitTypes(ExaltedEdition.SecondEdition);
-      for (ITraitType type : genericTraitTypes) {
-        table.addCell(createGenericCell(character, type, genericId, learnedTemplate, notLearnedTemplate));
+      for (ITraitTypeGroup group : character.getAbilityTypeGroups()) {
+        for (ITraitType type : group.getAllGroupTypes()) {
+          table.addCell(createGenericCell(character, type, genericId, learnedTemplate, notLearnedTemplate));
+        }
       }
     }
     return table;
