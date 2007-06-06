@@ -6,8 +6,11 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 			Release 1.x "" (Upcoming)
 ===------------------------------------------------------------------------------===
+-- Features --
++ [2E] Full programmatic support for Scroll of the Monk: Imperfect Lotus
 
-* DB-Excellencies are ordered correctly on the sheet. (1731018)
+-- Bugs Fixed --
+* DB-Excellencies on the sheet appear where they should. (1731018)
 
 ===------------------------------------------------------------------------------===
 			Release 1.3 "Opal Spire" (03/06/07)

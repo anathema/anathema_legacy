@@ -73,7 +73,7 @@ public class LongestPathLayererTest extends BasicTestCase {
     IRegularNode[] acyclicGraph = new IRegularNode[] { leaf1, leaf2, leaf3, root1, root2 };
     connect(acyclicGraph);
     int deepestLayer = layerer.layerGraph(acyclicGraph);
-    assertEquals(3, deepestLayer);
+    assertEquals(2, deepestLayer);
     assertEquals(root1.getLayer(), 1);
     assertEquals(root2.getLayer(), 1);
     assertTrue(leaf1.getLayer() == 2);

@@ -38,8 +38,9 @@ public class LongestPathLayerer implements ILayerer {
     }
     boolean increaseDeepestLayer = false;
     for (int layerIndex = 2; layerIndex <= deepestLayer; layerIndex++) {
-      increaseDeepestLayer = increaseDeepestLayer
-          || TwoCommonParentsOptimizer.moveDownOvercrossingTwoTupels(nodesByLayer, layerIndex, deepestLayer);
+      increaseDeepestLayer |= TwoCommonParentsOptimizer.moveDownOvercrossingTwoTupels(
+          nodesByLayer.get(layerIndex),
+          deepestLayer);
     }
     if (increaseDeepestLayer) {
       deepestLayer++;
