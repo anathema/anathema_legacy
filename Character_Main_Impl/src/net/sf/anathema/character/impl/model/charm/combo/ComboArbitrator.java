@@ -54,7 +54,7 @@ public abstract class ComboArbitrator implements IComboArbitrator {
     if (comboRules.isRestrictedCharm(charm2)) {
       return true;
     }
-    if (ArrayUtilities.contains(comboRules.getRestrictedTraitTypes(), charm2.getPrerequisites()[0].getType())) {
+    if (ArrayUtilities.contains(comboRules.getRestrictedTraitTypes(), charm2.getPrimaryTraitType())) {
       return true;
     }
     return false;

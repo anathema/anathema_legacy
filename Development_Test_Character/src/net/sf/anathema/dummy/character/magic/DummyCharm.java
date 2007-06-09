@@ -25,6 +25,7 @@ import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.collection.ListOrderedSet;
@@ -132,6 +133,11 @@ public class DummyCharm extends Identificate implements ICharm {
 
   public IGenericTrait[] getPrerequisites() {
     return prerequisites;
+  }
+
+  @Override
+  public ITraitType getPrimaryTraitType() {
+    return getPrerequisites()[0].getType();
   }
 
   public Set<ICharm> getRenderingPrerequisiteCharms() {

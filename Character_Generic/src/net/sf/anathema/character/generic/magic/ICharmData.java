@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -27,6 +28,8 @@ public interface ICharmData extends IMagicData {
 
   public IGenericTrait[] getPrerequisites();
 
+  public ITraitType getPrimaryTraitType();
+
   public String getGroupId();
 
   public IComboRestrictions getComboRules();
@@ -38,4 +41,5 @@ public interface ICharmData extends IMagicData {
   public Set<ICharm> getParentCharms();
 
   public ICharmTypeModel getCharmTypeModel();
+
 }

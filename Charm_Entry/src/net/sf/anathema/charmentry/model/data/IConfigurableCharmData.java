@@ -31,8 +31,6 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
 
   public void setPrimaryPrerequisite(IGenericTrait trait);
 
-  public IGenericTrait getPrimaryPrerequiste();
-
   public void setDuration(IDuration duration);
 
   public void setParentCharms(ICharm[] charms);
@@ -52,4 +50,6 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
   public int getPage();
 
   public void setPage(int newValue);
+
+  public IGenericTrait getPrimaryPrerequisite();
 }

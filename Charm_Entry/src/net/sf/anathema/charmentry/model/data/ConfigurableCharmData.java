@@ -86,10 +86,6 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     return prerequisitesByType.values().toArray(new IGenericTrait[0]);
   }
 
-  private IGenericTrait getPrerequisiteByType(ITraitType type) {
-    return prerequisitesByType.get(type);
-  }
-
   public String getGroupId() {
     return groupId;
   }
@@ -145,16 +141,12 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     }
   }
 
-  public ITraitType getPrimaryPrerequisiteType() {
+  public ITraitType getPrimaryTraitType() {
     return primaryType;
   }
 
   public void clearPrimaryPrerequisite() {
     setPrimaryPrerequisite(ValuedTraitType.NULL_TYPE);
-  }
-
-  public IGenericTrait getPrimaryPrerequiste() {
-    return getPrerequisiteByType(primaryType);
   }
 
   public void setParentCharms(ICharm[] charms) {
@@ -204,5 +196,10 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 
   public void setPage(int page) {
     this.page = page;
+  }
+
+  @Override
+  public IGenericTrait getPrimaryPrerequisite() {
+    return prerequisitesByType.get(primaryType);
   }
 }

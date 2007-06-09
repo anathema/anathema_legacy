@@ -351,7 +351,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
       boolean isSiderealFormCharm = MartialArtsUtilities.isFormCharm(charm)
           && MartialArtsUtilities.hasLevel(MartialArtsLevel.Sidereal, charm);
-      if (isSiderealFormCharm && !isCelestialMartialArtsGroupCompleted()) {
+      if (isSiderealFormCharm && !arbitrator.isCelestialMartialArtsGroupCompleted(getMartialArtsGroups())) {
         return false;
       }
       if (!getCharmTemplate(getNativeCharacterType()).getMartialArtsRules().isCharmAllowed(
@@ -361,8 +361,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         return false;
       }
     }
-    ICharmAttributeRequirement[] attributeRequirements = charm.getAttributeRequirements();
-    for (ICharmAttributeRequirement requirement : attributeRequirements) {
+    for (ICharmAttributeRequirement requirement : charm.getAttributeRequirements()) {
       if (!requirement.isFulfilled(getLearnedCharms(true))) {
         return false;
       }
@@ -453,9 +452,5 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   public String[] getUncompletedCelestialMartialArtsGroups() {
     return arbitrator.getUncompletedCelestialMartialArtsGroups(getMartialArtsGroups());
-  }
-
-  private boolean isCelestialMartialArtsGroupCompleted() {
-    return arbitrator.isCelestialMartialArtsGroupCompleted(getMartialArtsGroups());
   }
 }

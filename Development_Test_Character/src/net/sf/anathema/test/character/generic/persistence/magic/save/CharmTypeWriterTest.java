@@ -1,11 +1,11 @@
 package net.sf.anathema.test.character.generic.persistence.magic.save;
 
-import net.sf.anathema.character.generic.impl.magic.persistence.writer.CharmTypeWriter;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.charms.type.IReflexiveSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.ITypeSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
+import net.sf.anathema.charmentry.persistence.CharmTypeWriter;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.ElementUtilities;

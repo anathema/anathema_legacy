@@ -36,7 +36,7 @@ public class ConfigurableCharmDataTest extends BasicTestCase {
     assertEquals(1, data.getPrerequisites().length);
     assertTrue(ArrayUtilities.contains(data.getPrerequisites(), expected));
     assertFalse(ArrayUtilities.contains(data.getPrerequisites(), unwanted));
-    assertEquals(expected.getType(), data.getPrimaryPrerequisiteType());
+    assertEquals(expected.getType(), data.getPrimaryTraitType());
   }
 
   public void testRemovePrerequisite() throws Exception {
@@ -65,7 +65,7 @@ public class ConfigurableCharmDataTest extends BasicTestCase {
     data.setPrimaryPrerequisite(unwanted);
     data.clearPrimaryPrerequisite();
     assertEquals(0, data.getPrerequisites().length);
-    assertNull(data.getPrimaryPrerequisiteType());
+    assertNull(data.getPrimaryTraitType());
   }
 
   public void testClearPrimaryBySettingToNull() throws Exception {
@@ -74,7 +74,7 @@ public class ConfigurableCharmDataTest extends BasicTestCase {
     IGenericTrait expected = new ValuedTraitType(null, 1);
     data.setPrimaryPrerequisite(expected);
     assertEquals(0, data.getPrerequisites().length);
-    assertNull(data.getPrimaryPrerequisiteType());
+    assertNull(data.getPrimaryTraitType());
   }
 
   public void testPrimaryPrerequisteComesFirst() throws Exception {

@@ -41,14 +41,14 @@ public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryMod
   public ICharm[] getAvailableCharms() throws PersistenceException {
     if (charmData.getCharacterType() == null
         || charmData.getEdition() == null
-        || charmData.getPrimaryPrerequiste() == null) {
+        || charmData.getPrimaryTraitType() == null) {
       return new ICharm[0];
     }
     IExaltedRuleSet set = charmData.getEdition().getDefaultRuleset();
     ICharm[] charms = CharmCache.getInstance().getCharms(charmData.getCharacterType(), set);
     List<ICharm> filterList = new ArrayList<ICharm>();
     for (ICharm charm : charms) {
-      if (charm.getPrerequisites()[0].getType() == charmData.getPrimaryPrerequiste().getType()) {
+      if (charm.getPrimaryTraitType() == charmData.getPrimaryTraitType()) {
         filterList.add(charm);
       }
     }

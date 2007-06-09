@@ -57,7 +57,7 @@ public class PrerequisiteEntryModel implements IPrerequisitesModel {
   }
 
   public IGenericTrait getPrimaryPrerequisite() {
-    return charmData.getPrimaryPrerequiste();
+    return charmData.getPrimaryPrerequisite();
   }
 
   public void setPrimaryPrerequisite(ITraitType type, int value) {

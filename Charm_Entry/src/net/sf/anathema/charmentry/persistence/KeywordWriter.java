@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.impl.magic.persistence.writer;
+package net.sf.anathema.charmentry.persistence;
 
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.magic.ICharmData;

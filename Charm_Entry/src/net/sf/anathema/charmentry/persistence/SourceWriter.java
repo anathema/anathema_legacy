@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.impl.magic.persistence.writer;
+package net.sf.anathema.charmentry.persistence;
 
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SOURCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_SOURCE;

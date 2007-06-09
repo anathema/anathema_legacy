@@ -2,11 +2,11 @@ package net.sf.anathema.test.character.generic.persistence.magic.save;
 
 import java.util.List;
 
-import net.sf.anathema.character.generic.impl.magic.persistence.writer.PrerequisiteWriter;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
+import net.sf.anathema.charmentry.persistence.PrerequisiteWriter;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.testing.BasicTestCase;

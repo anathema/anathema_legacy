@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 public abstract class AbstractComboRules implements IComboRules {
 
   protected final boolean haveSamePrerequisite(ICharm charm1, ICharm charm2) {
-    return charm1.getPrerequisites()[0].getType() == charm2.getPrerequisites()[0].getType();
+    return charm1.getPrimaryTraitType() == charm2.getPrimaryTraitType();
   }
 
   protected final boolean haveAttributePrerequisites(ICharm charm1, ICharm charm2) {
@@ -31,11 +31,11 @@ public abstract class AbstractComboRules implements IComboRules {
   }
 
   private boolean hasAbilityPrerequisite(ICharm charm) {
-    return charm.getPrerequisites()[0].getType() instanceof AbilityType;
+    return charm.getPrimaryTraitType() instanceof AbilityType;
   }
 
   private boolean hasAttributePrerequisite(ICharm charm) {
-    return charm.getPrerequisites()[0].getType() instanceof AttributeType;
+    return charm.getPrimaryTraitType() instanceof AttributeType;
   }
 
   private boolean allAbiltiesCombo(ICharm charm1, ICharm charm2) {

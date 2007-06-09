@@ -1,7 +1,7 @@
 package net.sf.anathema.test.character.generic.persistence.magic.save;
 
-import net.sf.anathema.character.generic.impl.magic.persistence.writer.HeadDataWriter;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.charmentry.persistence.HeadDataWriter;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
