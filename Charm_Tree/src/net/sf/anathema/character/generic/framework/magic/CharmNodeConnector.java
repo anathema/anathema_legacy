@@ -16,9 +16,8 @@ public class CharmNodeConnector {
         IIdentifiedRegularNode parentNode = charmNodesById.get(parentCharm.getId());
         connectNodes(childNode, parentNode);
       }
-      for (ICharmAttributeRequirement requirement : charm.getAttributeRequirements()) {
-        String id = "Requirement." + requirement.getAttribute().getId() + "." + requirement.getCount(); //$NON-NLS-1$//$NON-NLS-2$
-        IIdentifiedRegularNode parentNode = charmNodesById.get(id);
+      for (ICharmAttributeRequirement requirement : charm.getAttributeRequirements()) {        
+        IIdentifiedRegularNode parentNode = charmNodesById.get(requirement.getStringRepresentation());
         connectNodes(childNode, parentNode);
       }
     }

@@ -335,19 +335,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     return context.getCharmContext().getCharmLearnStrategy();
   }
 
-  public boolean isFullfilled(ICharmAttributeRequirement requirement) {
-    int count = 0;
-    for (ICharm charm : getLearnedCharms(true)) {
-      if (charm.hasAttribute(requirement.getAttribute())) {
-        count++;
-      }
-      if (count >= requirement.getCount()) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   public final boolean isLearnable(ICharm charm) {
     if (isAlienCharm(charm)) {
       ICasteType casteType = context.getBasicCharacterContext().getCasteType();
@@ -376,7 +363,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     }
     ICharmAttributeRequirement[] attributeRequirements = charm.getAttributeRequirements();
     for (ICharmAttributeRequirement requirement : attributeRequirements) {
-      if (!isFullfilled(requirement)) {
+      if (!requirement.isFulfilled(getLearnedCharms(true))) {
         return false;
       }
     }

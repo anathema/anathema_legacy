@@ -16,7 +16,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
@@ -179,10 +178,6 @@ public class DemoGenericCharacter implements IGenericCharacter {
     return false;
   }
 
-  public boolean isRequirementFulfilled(ICharmAttributeRequirement requirement) {
-    return false;
-  }
-
   public ICasteType getCasteType() {
     return ICasteType.NULL_CASTE_TYPE;
   }
@@ -280,5 +275,10 @@ public class DemoGenericCharacter implements IGenericCharacter {
   @Override
   public IMagicStats[] getGenericCharmStats() {
     return new IMagicStats[0];
+  }
+
+  @Override
+  public ICharm[] getLearnedCharms() {
+    return new ICharm[0];
   }
 }

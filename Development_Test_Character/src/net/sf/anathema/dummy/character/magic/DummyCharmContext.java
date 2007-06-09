@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 
 public final class DummyCharmContext implements ICharmContext {
@@ -28,10 +27,6 @@ public final class DummyCharmContext implements ICharmContext {
 
   public ICharmLearnStrategy getCharmLearnStrategy() {
     return learnStrategy;
-  }
-
-  public final boolean isRequirementFulfilled(ICharmAttributeRequirement requirement) {
-    return character.isRequirementFulfilled(requirement);
   }
 
   public final String[] getUncompletedCelestialMartialArtsGroups() {

@@ -17,7 +17,6 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
@@ -180,10 +179,6 @@ public class GenericCharacter implements IGenericCharacter {
     return statistics.isExperienced();
   }
 
-  public boolean isRequirementFulfilled(ICharmAttributeRequirement requirement) {
-    return statistics.getCharms().isFullfilled(requirement);
-  }
-
   public String[] getUncompletedCelestialMartialArtsGroups() {
     return statistics.getCharms().getUncompletedCelestialMartialArtsGroups();
   }
@@ -237,5 +232,10 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public IMagicStats[] getGenericCharmStats() {
     return statistics.getGenericCharmStats();
+  }
+
+  @Override
+  public ICharm[] getLearnedCharms() {
+    return statistics.getCharms().getLearnedCharms(true);
   }
 }

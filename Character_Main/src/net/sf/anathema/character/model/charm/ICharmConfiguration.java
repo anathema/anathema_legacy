@@ -1,7 +1,6 @@
 package net.sf.anathema.character.model.charm;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
@@ -35,8 +34,6 @@ public interface ICharmConfiguration extends IExtendedCharmLearnableArbitrator, 
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(String charmId);
 
   public String[] getUncompletedCelestialMartialArtsGroups();
-
-  public boolean isFullfilled(ICharmAttributeRequirement requirement);
 
   public boolean isLearnable(String charmId);
 

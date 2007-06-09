@@ -32,7 +32,7 @@ public class CharmNodeBuilder {
     }
     for (ICharm charm : groupCharms) {
       for (ICharmAttributeRequirement requirement : charm.getAttributeRequirements()) {
-        String id = "Requirement." + requirement.getAttribute().getId() + "." + requirement.getCount(); //$NON-NLS-1$//$NON-NLS-2$
+        String id = requirement.getStringRepresentation();
         IIdentifiedRegularNode parentNode = NodeFactory.createChildlessNode(id);
         charmNodesById.put(id, parentNode);
       }

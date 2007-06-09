@@ -40,7 +40,7 @@ public class TerrestrialMartialArtsRules implements IMartialArtsRules {
       if (martialArtsCharm.hasAttribute(ICharmData.UNRESTRICTED_ATTRIBUTE)) {
         return true;
       }
-      if (charmConfiguration.isRequirementFulfilled(celestialAttributeRequirement)) {
+      if (celestialAttributeRequirement.isFulfilled(charmConfiguration.getLearnedCharms())) {
         String[] uncompletedGroupIds = charmConfiguration.getUncompletedCelestialMartialArtsGroups();
         if (uncompletedGroupIds.length > 1) {
           throw new IllegalStateException("The character has started learning more than one celestial style."); //$NON-NLS-1$
