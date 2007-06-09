@@ -137,7 +137,7 @@ public class DummyCharm extends Identificate implements ICharm {
 
   @Override
   public ITraitType getPrimaryTraitType() {
-    return getPrerequisites()[0].getType();
+    return prerequisites[0].getType();
   }
 
   public Set<ICharm> getRenderingPrerequisiteCharms() {
@@ -161,10 +161,10 @@ public class DummyCharm extends Identificate implements ICharm {
   }
 
   public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
-    if (getPrerequisites().length <= 0) {
+    if (prerequisites.length <= 0) {
       return false;
     }
-    IGenericTrait trait = traitCollection.getTrait(getPrerequisites()[0].getType());
+    IGenericTrait trait = traitCollection.getTrait(getPrimaryTraitType());
     return trait instanceof IFavorableGenericTrait && ((IFavorableGenericTrait) trait).isCasteOrFavored();
   }
 

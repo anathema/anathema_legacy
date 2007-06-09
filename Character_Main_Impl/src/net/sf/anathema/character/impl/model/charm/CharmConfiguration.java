@@ -366,8 +366,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         return false;
       }
     }
-    IGenericTrait[] prerequisites = charm.getPrerequisites();
-    for (IGenericTrait prerequisite : prerequisites) {
+    for (IGenericTrait prerequisite : charm.getPrerequisites()) {
       IGenericTrait prerequisiteTrait = context.getTraitCollection().getTrait(prerequisite.getType());
       if (prerequisite.getCurrentValue() > prerequisiteTrait.getCurrentValue()) {
         return false;

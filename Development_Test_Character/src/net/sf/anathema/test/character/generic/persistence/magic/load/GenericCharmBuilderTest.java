@@ -43,7 +43,7 @@ public class GenericCharmBuilderTest extends BasicTestCase {
     Element prerequisites = xml.element("prerequisite"); //$NON-NLS-1$
     removeAttribute(prerequisites.element("trait"), "id"); //$NON-NLS-1$ //$NON-NLS-2$
     Charm charm = builder.buildCharm(xml);
-    assertEquals(AbilityType.Archery, charm.getPrerequisites()[0].getType());
+    assertEquals(AbilityType.Archery, charm.getPrimaryTraitType());
   }
 
   public void testReadGenericPrerequisiteSecond() throws Exception {
@@ -52,7 +52,7 @@ public class GenericCharmBuilderTest extends BasicTestCase {
     Element prerequisites = xml.element("prerequisite"); //$NON-NLS-1$
     removeAttribute(prerequisites.element("trait"), "id"); //$NON-NLS-1$//$NON-NLS-2$
     Charm charm = builder.buildCharm(xml);
-    assertEquals(AbilityType.Athletics, charm.getPrerequisites()[0].getType());
+    assertEquals(AbilityType.Athletics, charm.getPrimaryTraitType());
   }
 
   public void testReadGenericPrerequisiteHigherValue() throws Exception {
