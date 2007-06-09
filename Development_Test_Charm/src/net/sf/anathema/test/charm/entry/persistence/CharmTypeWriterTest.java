@@ -1,4 +1,4 @@
-package net.sf.anathema.test.character.generic.persistence.magic.save;
+package net.sf.anathema.test.charm.entry.persistence;
 
 import junit.framework.TestCase;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;

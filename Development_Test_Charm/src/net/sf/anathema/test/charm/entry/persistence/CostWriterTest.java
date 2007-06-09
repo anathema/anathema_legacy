@@ -1,4 +1,4 @@
-package net.sf.anathema.test.character.generic.persistence.magic.save;
+package net.sf.anathema.test.charm.entry.persistence;
 
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.impl.magic.Cost;

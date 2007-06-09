@@ -1,4 +1,4 @@
-package net.sf.anathema.test.character.generic.persistence.magic.save;
+package net.sf.anathema.test.charm.entry.persistence;
 
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.charmentry.persistence.KeywordWriter;
