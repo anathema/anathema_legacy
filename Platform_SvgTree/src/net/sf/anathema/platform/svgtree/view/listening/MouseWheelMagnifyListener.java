@@ -26,6 +26,9 @@ public class MouseWheelMagnifyListener implements MouseWheelListener {
     at.translate(-x, -y);
     AffineTransform rt = (AffineTransform) component.getRenderingTransform().clone();
     rt.preConcatenate(at);
+    if (rt.getDeterminant() == 0.0) {
+      return;
+    }
     component.setRenderingTransform(rt);
     calculator.reset();
   }
