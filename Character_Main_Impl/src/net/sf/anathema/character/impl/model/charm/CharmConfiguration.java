@@ -316,6 +316,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     addCharmLearnListener(learnableListener);
   }
 
+  //TODO: Seems rather complicated - why not just listen to each and every trait-change?
   private ITraitType[] createPrerequisiteSet() {
     PrerequisiteSetBuilder prerequisiteSetBuilder = new PrerequisiteSetBuilder();
     prerequisiteSetBuilder.addCharms(getAllCharms());

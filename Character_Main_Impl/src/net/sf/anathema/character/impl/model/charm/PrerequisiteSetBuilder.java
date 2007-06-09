@@ -18,7 +18,7 @@ public class PrerequisiteSetBuilder {
     prerequisiteSet.add(OtherTraitType.Essence);
   }
 
-  public void addCharms(ICharm... charms) {
+  public void addCharms(ICharm[] charms) {
     for (ICharm charm : charms) {
       addCharm(charm);
     }
