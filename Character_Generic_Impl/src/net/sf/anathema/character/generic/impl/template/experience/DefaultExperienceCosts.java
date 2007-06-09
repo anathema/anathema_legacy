@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 
 public class DefaultExperienceCosts implements IExperiencePointCosts {
 
@@ -40,13 +39,7 @@ public class DefaultExperienceCosts implements IExperiencePointCosts {
   }
 
   public int getComboCosts(ICharm[] comboCharms) {
-    int costs = 0;
-    for (ICharm charm : comboCharms) {
-      for (IGenericTrait prerequiste : charm.getPrerequisites()) {
-        costs += prerequiste.getCurrentValue();
-      }
-    }
-    return costs;
+    return new ComboCostCalculator().getComboCosts(comboCharms);
   }
 
   public ICurrentRatingCosts getEssenceCosts() {

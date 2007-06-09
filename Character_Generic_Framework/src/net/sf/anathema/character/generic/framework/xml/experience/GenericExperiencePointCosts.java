@@ -2,13 +2,13 @@ package net.sf.anathema.character.generic.framework.xml.experience;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.impl.template.experience.ComboCostCalculator;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericExperiencePointCosts extends ReflectionCloneableObject<GenericExperiencePointCosts> implements
@@ -36,13 +36,7 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   }
 
   public int getComboCosts(ICharm[] comboCharms) {
-    int costs = 0;
-    for (ICharm charm : comboCharms) {
-      for (IGenericTrait prerequiste : charm.getPrerequisites()) {
-        costs += prerequiste.getCurrentValue();
-      }
-    }
-    return costs;
+    return new ComboCostCalculator().getComboCosts(comboCharms);
   }
 
   public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
