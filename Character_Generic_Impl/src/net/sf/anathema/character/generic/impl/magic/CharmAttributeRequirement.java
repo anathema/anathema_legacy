@@ -10,14 +10,6 @@ public class CharmAttributeRequirement extends ReflectionEqualsObject implements
   private final ICharmAttribute attribute;
   private final int count;
 
-  public ICharmAttribute getAttribute() {
-    return attribute;
-  }
-
-  public int getCount() {
-    return count;
-  }
-
   public CharmAttributeRequirement(ICharmAttribute attribute, int count) {
     this.attribute = attribute;
     this.count = count;

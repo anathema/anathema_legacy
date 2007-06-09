@@ -38,11 +38,6 @@ public class CharmCache implements ICharmCache {
     ruleMap.replace(type, charm, charm);
   }
 
-  public void addCharm(ICharmEntryData charmData) {
-    ICharm charm = new Charm(charmData.getCoreData());
-    addCharm(charm.getCharacterType(), charmData.getEdition().getDefaultRuleset(), charm);
-  }
-
   public boolean isEmpty() {
     for (Entry<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>> entry : charmSetsByRuleSet.entrySet()) {
       if (!entry.getValue().keySet().isEmpty()) {

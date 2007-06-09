@@ -1,4 +1,4 @@
-package net.sf.anathema.test.charm.entry;
+package net.sf.anathema.test;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;

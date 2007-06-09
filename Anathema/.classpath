@@ -21,7 +21,6 @@
 	<classpathentry kind="src" path="/Namegenerator"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Lunar"/>
-	<classpathentry kind="src" path="/Charm_Entry"/>
 	<classpathentry kind="src" path="/Character_Main_Impl"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Intimacies"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Main"/>

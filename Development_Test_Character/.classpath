@@ -32,7 +32,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Solar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Charm_Tree"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/easymock.jar" sourcepath="/Thirdparty/Testing/easymock-src.zip"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Charm_Entry"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-bridge.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-css.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>

@@ -1,5 +1,6 @@
 package net.sf.anathema.test.character.generic.persistence.magic.save;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.charms.type.IReflexiveSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
@@ -7,13 +8,12 @@ import net.sf.anathema.character.generic.magic.charms.type.ITypeSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 import net.sf.anathema.charmentry.persistence.CharmTypeWriter;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
-import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
 
-public class CharmTypeWriterTest extends BasicTestCase {
+public class CharmTypeWriterTest extends TestCase {
   private CharmTypeWriter writer;
   private Element element;
   private DummyCharm charm;
