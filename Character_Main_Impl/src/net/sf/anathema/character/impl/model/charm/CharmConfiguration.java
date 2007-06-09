@@ -10,7 +10,7 @@ import java.util.Map;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ConfigurableCharacterChangeListener;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
@@ -32,7 +32,6 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.IUnsupportedTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -66,18 +65,6 @@ public class CharmConfiguration implements ICharmConfiguration {
   private final ChangeControl control = new ChangeControl();
   private final ICharmProvider provider;
   private final ILearningCharmGroupArbitrator arbitrator;
-
-  private final ICharmLearnListener learnableListener = new CharmLearnAdapter() {
-    @Override
-    public void charmForgotten(ICharm charm) {
-      fireLearnConditionsChanged();
-    }
-
-    @Override
-    public void charmLearned(ICharm charm) {
-      fireLearnConditionsChanged();
-    }
-  };
 
   public CharmConfiguration(
       IHealthConfiguration health,
@@ -148,14 +135,6 @@ public class CharmConfiguration implements ICharmConfiguration {
       newGroups.add(new LearningCharmGroup(getLearnStrategy(), charmGroup, this, learningCharmGroupContainer));
     }
     return newGroups.toArray(new LearningCharmGroup[0]);
-  }
-
-  private ICharm[] getAllCharms() {
-    List<ICharm> charms = new ArrayList<ICharm>();
-    for (ICharmTree tree : alienTreesByType.values()) {
-      charms.addAll(Arrays.asList(tree.getAllCharms()));
-    }
-    return charms.toArray(new ICharm[charms.size()]);
   }
 
   public ILearningCharmGroup[] getAllGroups() {
@@ -305,23 +284,23 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   public void initListening() {
-    ConfigurableCharacterChangeListener changeListener = new ConfigurableCharacterChangeListener() {
+    context.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
-      public void configuredChangeOccured() {
+      public void characterChanged() {
         fireLearnConditionsChanged();
       }
-    };
-    changeListener.addTraitTypes(createPrerequisiteSet());
-    context.getCharacterListening().addChangeListener(changeListener);
-    addCharmLearnListener(learnableListener);
-  }
+    });
+    addCharmLearnListener(new CharmLearnAdapter() {
+      @Override
+      public void charmForgotten(ICharm charm) {
+        fireLearnConditionsChanged();
+      }
 
-  //TODO: Seems rather complicated - why not just listen to each and every trait-change?
-  private ITraitType[] createPrerequisiteSet() {
-    PrerequisiteSetBuilder prerequisiteSetBuilder = new PrerequisiteSetBuilder();
-    prerequisiteSetBuilder.addCharms(getAllCharms());
-    prerequisiteSetBuilder.addCharms(martialArtsCharmTree.getAllCharms());
-    return prerequisiteSetBuilder.getAllPrerequisites().toArray(new ITraitType[0]);
+      @Override
+      public void charmLearned(ICharm charm) {
+        fireLearnConditionsChanged();
+      }
+    });
   }
 
   public void addLearnableListener(IChangeListener listener) {
