@@ -386,10 +386,10 @@ public class CharmConfiguration implements ICharmConfiguration {
       if (prerequisite.getCurrentValue() > prerequisiteTrait.getCurrentValue()) {
         return false;
       }
-      IGenericTrait essenceTrait = context.getTraitCollection().getTrait(OtherTraitType.Essence);
-      if (charm.getEssence().getCurrentValue() > essenceTrait.getCurrentValue()) {
-        return false;
-      }
+    }
+    IGenericTrait essenceTrait = context.getTraitCollection().getTrait(OtherTraitType.Essence);
+    if (charm.getEssence().getCurrentValue() > essenceTrait.getCurrentValue()) {
+      return false;
     }
     for (ICharm parentCharm : charm.getLearnPrerequisitesCharms(this)) {
       if (!isLearnable(parentCharm)) {
