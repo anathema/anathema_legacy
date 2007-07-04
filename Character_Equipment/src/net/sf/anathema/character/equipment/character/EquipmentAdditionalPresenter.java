@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.character;
 
 import java.awt.Component;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalVi
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
+import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.collection.ICollectionListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -98,7 +100,9 @@ public class EquipmentAdditionalPresenter implements IPresenter {
   }
 
   private void setObjects(final IListObjectSelectionView<String> equipmentTemplatePickList) {
-    equipmentTemplatePickList.setObjects(model.getAvailableTemplateIds());
+    String[] templates = model.getAvailableTemplateIds();
+    Arrays.sort(templates, new EquipmentTemplateNameComparator());
+    equipmentTemplatePickList.setObjects(templates);
   }
 
   private SmartAction createTemplateAddAction(

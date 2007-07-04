@@ -9,6 +9,9 @@ http://anathema.sf.net
 -- Features --
 + [2E] Full programmatic support for Scroll of the Monk: Imperfect Lotus
 
+-- Usability --
+* The equipment list now appears sorted, thanks to Gareth Jenkins-Jones.
+
 -- Bugs Fixed --
 * DB-Excellencies on the sheet appear where they should. (1731018)
 
