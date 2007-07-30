@@ -116,7 +116,7 @@ public class ProxyWeaponStats implements IWeaponStats {
   }
 
   public boolean isRangedCombat() {
-    return isRangedCombat();
+    return delegate.isRangedCombat();
   }
 
   @Override

@@ -14,6 +14,7 @@ http://anathema.sf.net
 
 -- Bugs Fixed --
 * DB-Excellencies on the sheet appear where they should. (1731018)
+* First Edition items no longer cause the program to crash (1755203)
 
 ===------------------------------------------------------------------------------===
 			Release 1.3 "Opal Spire" (03/06/07)
