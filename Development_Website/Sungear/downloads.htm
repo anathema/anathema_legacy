@@ -102,7 +102,6 @@ To do so, open the "Window" menu and choose "Select Perspective" -&gt; "Java". T
 Application" and finally "Anathema". Click "Run" in the lower right.</p>
 <p>If everything went according to plan, Anathema should launch just as if you double clicked it on your desktop.</p>
 <p>From now on, you can just start Eclipse and launch Anathema from within.</p>
-</p>
 
 <h3>Update</h3>
 <p>
@@ -111,5 +110,14 @@ Update". A process not unlike the initial checkout will be automatically initiat
 <p>
 Afterwards, go back to Eclipse, look for the "Package Explorer" on the left side of the screen and select the first project in the list while holding the shift key.
 Scroll down, and select the last project as well, so that all projects are selected. Right-click any of them and select "Refresh" from the context menu.</p>
-<p>Stand by, while Eclipse rebuilds Anathema, indicated by the small progress indicator in the lower right.</p> 
+<p>Stand by while Eclipse rebuilds Anathema, indicated by the small progress indicator in the lower right.</p> 
 <p>Once it vanishes, all updates are integrated. Launch Anathema as you did before and reap your rewards.</p>
+
+<h3>Distribution</h3>
+<p>So maybe you made some changes you want to share with your group, or maybe you don't like starting eclipse to run Anathema.
+Whatever the reason, here is how to build a fresh distribution to run from your desktop.</p>
+<p>First, you have to tell the build system two things about your local setup: It requires access to your Java Development Kit and needs to know the location of your workspace.</p>
+<p>To provide this information open the Preferences dialog (Window->Preferences). In the Ant-section's Runtime-item, add " tools.jar" from the JDK to the classpath and create the property "workspace.dir", which you want to point to ${workspace_loc} to be independent of your current workspace location.</p>
+<p>Now that you're ready, close the dialog and look for the Development_Distribution module in your workspace. Once there, inspect the "version.properties" file and customize your build name and version number.</p>
+<p>Now finally you are ready to find the file called "build_raw_distribution.xml", right-click on it and choose "Run As..." "Ant Build". The console will open, and lot's of messages will fly past. Wait. This may take some minutes. When finally "BUILD SUCCESSFUL" is printed,
+you need to refresh the module (by selecting it and pressing F5) to find a freshly created .zip file.</p>
