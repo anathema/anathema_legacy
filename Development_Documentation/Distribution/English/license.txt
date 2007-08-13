@@ -123,9 +123,9 @@ Tritonus is published under the LGPL.
 MP3SPI is published under the LGPL. 
 jlGui is published under the LGPL. 
 JLayer is published under the LGPL.
-JTS is published unter the LGPL.
-Geotools is published unter der LGPL.
 Note that Anathema contains only part of this library in order not to infringe the MP3 copyrights held by Fraunhofer/Thompson.
+JTS is published under the LGPL.
+Geotools is published under the LGPL.
 
 GNU GPL (This file)
 =========================
