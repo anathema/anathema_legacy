@@ -47,7 +47,7 @@ public class RepositoryItemImportPresenter implements IPresenter {
       protected void execute(Component parentComponent) {
         try {
           File loadFile = FileChoosingUtilities.chooseFile(
-              resources.getString("AnathemaCore.Tools.RepositoryView.ImportOk"), parentComponent, new ZipFileFilter()); //$NON-NLS-1$
+              resources.getString("AnathemaCore.Tools.RepositoryView.ImportOk"), parentComponent, new ZipFileFilter(resources)); //$NON-NLS-1$
           if (loadFile == null) {
             return;
           }

@@ -32,12 +32,6 @@ public abstract class AbstractFileTypeFilter extends FileFilter implements java.
 
   protected abstract boolean acceptExtension(String extension);
 
-  @Override
-  public String getDescription() {
-    // Nothing to do
-    return null;
-  }
-
   protected boolean acceptDirectory(File directory) {
     return !directory.isHidden();
   }

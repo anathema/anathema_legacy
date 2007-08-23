@@ -4,13 +4,14 @@ Exalted (C) 2001-2007 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
-			Release 1.x "" (Upcoming)
+			Release 1.3.1 "Patch 1" (01/09/07)
 ===------------------------------------------------------------------------------===
 -- Features --
 + [2E] Full programmatic support for Scroll of the Monk: Imperfect Lotus
 
 -- Usability --
 * The equipment list now appears sorted, thanks to Gareth Jenkins-Jones.
+* File selection dialogs now show the supported filetype, thanks to onii.
 
 -- Bugs Fixed --
 * DB-Excellencies on the sheet appear where they should. (1731018)

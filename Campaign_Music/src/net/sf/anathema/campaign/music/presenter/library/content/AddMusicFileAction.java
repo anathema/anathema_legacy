@@ -52,7 +52,7 @@ public class AddMusicFileAction extends SmartAction {
     final File mp3File = DirectoryFileChooser.chooseSingleFile(
         parentComponent,
         DirectoryFileChooser.ADD_MUSIC_CHOOSER_VALUE,
-        resources.getString("Music.Actions.AddFile.FileDialogTitle"), new Mp3FileFilter()); //$NON-NLS-1$
+        resources.getString("Music.Actions.AddFile.FileDialogTitle"), new Mp3FileFilter(resources)); //$NON-NLS-1$
     if (mp3File == null) {
       return;
     }

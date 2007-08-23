@@ -8,4 +8,9 @@ public class PropertiesFilter extends AbstractFileTypeFilter {
   protected boolean acceptExtension(String extension) {
     return extension.equals("properties"); //$NON-NLS-1$
   }
+
+  @Override
+  public String getDescription() {
+    return "Property files (*.properties)";
+  }
 }
