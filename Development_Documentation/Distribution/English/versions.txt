@@ -14,8 +14,9 @@ http://anathema.sf.net
 * File selection dialogs now show the supported filetype, thanks to onii.
 
 -- Bugs Fixed --
-* DB-Excellencies on the sheet appear where they should. (1731018)
-* First Edition items no longer cause the program to crash (1755203)
+* [2E] DB-Excellencies on the sheet appear where they should. (1731018)
+* [1E] Items no longer cause the program to crash. (1755203)
+* [2E] Removed Eagle-Wing Style's dependency on Graceful Crane Stance.
 
 ===------------------------------------------------------------------------------===
 			Release 1.3 "Opal Spire" (03/06/07)

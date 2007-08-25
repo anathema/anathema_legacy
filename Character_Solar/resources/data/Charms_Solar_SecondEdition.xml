@@ -2742,7 +2742,6 @@
     <prerequisite>
       <essence id="Essence" value="4"/>
       <trait id="Athletics" value="5"/>
-      <charmReference id="Solar.GracefulCraneStance"/>
       <charmReference id="Solar.Spider-FootStyle"/>
       <charmReference id="Solar.Feather-FootStyle"/>
     </prerequisite>
