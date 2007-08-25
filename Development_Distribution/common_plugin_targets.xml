@@ -68,7 +68,7 @@
 	</target>
 
 	<target name="Copy project libraries">
-		<getEclipseClasspath property="classpath" workspace="${workspace.dir}" projectName="${project.name}" relative="false" initialiseWorkspace="true" />
+		<getEclipseClasspath property="classpath" workspace="${workspace.dir}" projectName="${project.name}" relative="false" initialiseWorkspace="true" pathSeparator=";" />
 		<foreach list="${classpath}" delimiter=";" target="Copy JAR" param="classpath.entry" />
 	</target>
 

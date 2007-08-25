@@ -18,6 +18,6 @@
 	</target>
 
 	<target name="Copy Linux Launcher">
-		<copy todir="${files.dir}" file="linux/anathema.sh" />
+		<copy todir="${files.dir}" file="Linux/anathema.sh" />
 	</target>
 </project>
