@@ -88,7 +88,7 @@
 		<if>
 			<and>
 				<isfileselected file="${classpath.entry}">
-					<filename name="**/*.jar" />
+					<filename name="/**/*.jar" />
 				</isfileselected>
 				<or>
 					<contains string="${classpath.entry}" substring="Database" />
