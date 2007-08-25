@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN" "../charms.dtd">
+<!--
+
+ArtOfForcefulDeclaration.xml © Paul R. Adams, 2007
+
+This XML is licensed under the Creative Commons Attribution-Share Alike 3.0 United States 
+License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/us/ 
+or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 
+94105, USA.
+
+-->
+<charmlist>
+  <!-- Art of Forceful Declaration -->
+  <charm id="Celestial.StentorianChallenge" exalt="Solar" group="ArtOfForcefulDeclarationStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="2"/>
+      <trait id="Valor" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+        <essence cost="1"/>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="ImperfectLotus"/>
+  </charm>
+  <charm id="Celestial.ChallengesAnswer" exalt="Solar" group="ArtOfForcefulDeclarationStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <trait id="Valor" value="2"/>
+      <essence value="1"/>
+      <charmReference id="Celestial.StentorianChallenge"/>
+    </prerequisite>
+    <cost>
+        <essence cost="3"/>
+    </cost>
+    <duration event="NextAction"/>
+    <charmtype type="Reflexive">
+    	<special primaryStep="9"/>
+    </charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Counterattack" visualize="true"/>
+    <source source="ImperfectLotus"/>
+  </charm>
+  <charm id="Celestial.ViolentlyAdvancingTheories" exalt="Solar" group="ArtOfForcefulDeclarationStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <trait id="Valor" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+        <essence cost="2"/>
+    </cost>
+    <duration event="NextAction"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="ImperfectLotus"/>
+  </charm>
+  <charm id="Celestial.InstructionInSpirit" exalt="Solar" group="ArtOfForcefulDeclarationStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <trait id="Valor" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Celestial.ChallengesAnswer"/>
+      <charmReference id="Celestial.ViolentlyAdvancingTheories"/>
+    </prerequisite>
+    <cost>
+        <essence cost="6"/>
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Form" visualize="true"/>
+    <source source="ImperfectLotus"/>
+  </charm>
+  <charm id="Celestial.RapidRebuttalOfTheHarshTongue" exalt="Solar" group="ArtOfForcefulDeclarationStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <trait id="Valor" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Celestial.InstructionInSpirit"/>
+    </prerequisite>
+    <cost>
+        <essence cost="7"/>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+    	<special primaryStep="9"/>
+    </charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Counterattack" visualize="true"/>
+    <source source="ImperfectLotus"/>
+  </charm>
+  <charm id="Celestial.CeaselessProgressiveArguments" exalt="Solar" group="ArtOfForcefulDeclarationStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <trait id="Valor" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Celestial.RapidRebuttalOfTheHarshTongue"/>
+    </prerequisite>
+    <cost>
+        <essence cost="4"/>
+        <willpower cost="1"/>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="ImperfectLotus"/>
+  </charm>
+  <charm id="Celestial.BitingRemark" exalt="Solar" group="ArtOfForcefulDeclarationStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <trait id="Valor" value="3"/>
+      <essence value="3"/>
+      <charmReference id="Celestial.InstructionInSpirit"/>
+    </prerequisite>
+    <cost>
+        <essence cost="5"/>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Crippling" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="ImperfectLotus"/>
+  </charm>
+  <charm id="Celestial.VituperativeAccount" exalt="Solar" group="ArtOfForcefulDeclarationStyle">
+  	<prerequisite>
+  		<trait id="MartialArts" value="5"/>
+  		<trait id="Valor" value="4"/>
+  		<essence value="3"/>
+  		<charmReference id="Celestial.BitingRemark"/>
+  	</prerequisite>
+  	<cost>
+  		<essence cost="2" text="or 4m"/>
+  		<willpower cost="1"/>
+  	</cost>
+  	<duration duration="Instant"/>
+  	<charmtype type="Supplemental"/>
+  	<charmAttribute attribute="Celestial"/>
+  	<charmAttribute attribute="Combo-OK" visualize="true"/>
+  	<charmAttribute attribute="Obvious" visualize="true"/>
+  	<source source="ImperfectLotus"/>
+  </charm>
+  <charm id="Celestial.WieldingOnesTongue" exalt="Solar" group="ArtOfForcefulDeclarationStyle">
+  	<prerequisite>
+  		<trait id="MartialArts" value="5"/>
+  		<trait id="Valor" value="4"/>
+  		<essence value="3"/>
+  		<charmReference id="Celestial.CeaselessProgressiveArguments"/>
+  		<charmReference id="Celestial.VituperativeAccount"/>
+  	</prerequisite>
+  	<cost>
+  		<essence cost="3"/>
+  		<willpower cost="1"/>
+  	</cost>
+  	<duration amount="1" unit="scene"/>
+  	<charmtype type="Simple"/>
+  	<charmAttribute attribute="Celestial"/>
+  	<charmAttribute attribute="Combo-OK" visualize="true"/>
+  	<source source="ImperfectLotus"/>
+  </charm>
+  <charm id="Celestial.LooseningTongues" exalt="Solar" group="ArtOfForcefulDeclarationStyle">
+  	<prerequisite>
+  		<trait id="MartialArts" value="5"/>
+  		<trait id="Valor" value="4"/>
+  		<essence value="4"/>
+  		<charmReference id="Celestial.WieldingOnesTongue"/>
+  	</prerequisite>
+  	<cost>
+  		<essence cost="4"/>
+  		<willpower cost="1"/>
+  	</cost>
+  	<duration amount="Essence" unit="action"/>
+  	<charmtype type="Simple"/>
+  	<charmAttribute attribute="Celestial"/>
+  	<charmAttribute attribute="Combo-OK" visualize="true"/>
+  	<charmAttribute attribute="Obvious" visualize="true"/>
+  	<charmAttribute attribute="Touch" visualize="true"/>
+  	<source source="ImperfectLotus"/>
+  </charm>
+  <charm id="Celestial.RagingRepartee" exalt="Solar" group="ArtOfForcefulDeclarationStyle">
+  	<prerequisite>
+  		<trait id="MartialArts" value="5"/>
+  		<trait id="Valor" value="5"/>
+  		<essence value="4"/>
+  		<charmReference id="Celestial.LooseningTongues"/>
+  	</prerequisite>
+  	<cost>
+  		<essence cost="6"/>
+  		<willpower cost="1"/>
+  	</cost>
+  	<duration amount="1" unit="scene"/>
+  	<charmtype type="Simple"/>
+  	<charmAttribute attribute="Celestial"/>
+  	<charmAttribute attribute="Obvious" visualize="true"/>
+  	<source source="ImperfectLotus"/>
+  </charm>
+</charmlist>

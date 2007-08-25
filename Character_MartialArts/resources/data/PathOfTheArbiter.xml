@@ -1,4 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN" "../charms.dtd">
 <!--
 
 PathOfTheArbiter.xml © Paul R. Adams, 2007
@@ -17,15 +19,13 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="3"/>
-      </temporary>
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
-    <source source="ScrollMonk"/>
+    <source source="ImperfectLotus"/>
   </charm>
   <charm id="Terrestrial.MeditationOnTheHeart" exalt="Dragon-Blooded" group="PathOfTheArbiterStyle">
     <prerequisite>
@@ -34,15 +34,13 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Terrestrial.MeditationOnTheEnemy"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="2" text="per die"/>
-      </temporary>
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="ScrollMonk"/>
+    <source source="ImperfectLotus"/>
   </charm>
   <charm id="Terrestrial.PathOfTheArbiterForm" exalt="Dragon-Blooded" group="PathOfTheArbiterStyle">
     <prerequisite>
@@ -51,16 +49,14 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Terrestrial.MeditationOnTheHeart"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="5" text="or more"/>
-      </temporary>
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Form" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="ScrollMonk"/>
+    <source source="ImperfectLotus"/>
   </charm>
   <charm id="Terrestrial.StudyOfDeepestDevotion" exalt="Dragon-Blooded" group="PathOfTheArbiterStyle">
     <prerequisite>
@@ -69,16 +65,14 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Terrestrial.PathOfTheArbiterForm"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="4"/>
         <willpower cost="1"/>
-      </temporary>
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="ScrollMonk"/>
+    <source source="ImperfectLotus"/>
   </charm>
   <charm id="Terrestrial.SecretOfBrightBurningPassion" exalt="Dragon-Blooded" group="PathOfTheArbiterStyle">
     <prerequisite>
@@ -87,15 +81,13 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Terrestrial.PathOfTheArbiterForm"/>
     </prerequisite>
     <cost>
-      <temporary>
         <essence cost="3"/>
-      </temporary>
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="ScrollMonk"/>
+    <source source="ImperfectLotus"/>
   </charm>
   <charm id="Terrestrial.ForgingTheSoulBornSword" exalt="Dragon-Blooded" group="PathOfTheArbiterStyle">
     <prerequisite>
@@ -104,13 +96,11 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Terrestrial.StudyOfDeepestDevotion"/>
       <charmReference id="Terrestrial.SecretOfBrightBurningPassion"/>
     </prerequisite>
-    <cost>
-      <temporary />
-    </cost>
+    <cost/>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Terrestrial"/>
-    <source source="ScrollMonk"/>
+    <source source="ImperfectLotus"/>
   </charm>
   <charm id="Terrestrial.ForgingTheArmorOfIntegrity" exalt="Dragon-Blooded" group="PathOfTheArbiterStyle">
     <prerequisite>
@@ -119,13 +109,11 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Terrestrial.StudyOfDeepestDevotion"/>
       <charmReference id="Terrestrial.SecretOfBrightBurningPassion"/>
     </prerequisite>
-    <cost>
-      <temporary />
-    </cost>
+    <cost/>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Terrestrial"/>
-    <source source="ScrollMonk"/>
+    <source source="ImperfectLotus"/>
   </charm>
   <charm id="Terrestrial.ForgingTheBondOfFellowship" exalt="Dragon-Blooded" group="PathOfTheArbiterStyle">
     <prerequisite>
@@ -134,13 +122,11 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Terrestrial.StudyOfDeepestDevotion"/>
       <charmReference id="Terrestrial.SecretOfBrightBurningPassion"/>
     </prerequisite>
-    <cost>
-      <temporary />
-    </cost>
+    <cost/>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Terrestrial"/>
-    <source source="ScrollMonk"/>
+    <source source="ImperfectLotus"/>
   </charm>
   <charm id="Terrestrial.MeditationOnJudgement" exalt="Dragon-Blooded" group="PathOfTheArbiterStyle">
     <prerequisite>
@@ -151,17 +137,15 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
       <charmReference id="Terrestrial.ForgingTheBondOfFellowship"/>
     </prerequisite>
     <cost>
-      <temporary>
       	<essence cost="2"/>
       	<willpower cost="2"/>
       	<health cost="1" type="Aggravated" />
-      </temporary>
     </cost>
     <duration event="Discharged"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="ScrollMonk"/>
+    <source source="ImperfectLotus"/>
   </charm>
 </charmlist>
