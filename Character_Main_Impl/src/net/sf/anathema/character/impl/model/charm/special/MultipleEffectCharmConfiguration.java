@@ -46,7 +46,7 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
     if (experienced && getCurrentLearnCount() == 0) {
       subeffects[0].setExperienceLearned(true);
     }
-    else if (getCreationLearnCount() == 0) {
+    else if (!experienced && getCreationLearnCount() == 0) {
       subeffects[0].setCreationLearned(true);
     }
   }
