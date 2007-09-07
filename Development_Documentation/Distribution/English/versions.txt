@@ -4,7 +4,7 @@ Exalted (C) 2001-2007 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
-			Release 1.3.1 "Patch 1" (01/09/07)
+			Release 1.3.1 "Patch 1" (09/09/07)
 ===------------------------------------------------------------------------------===
 -- Features --
 + [2E] Martial Arts styles from Scroll of the Monk: Imperfect Lotus, with support from Jontu Kontar.
@@ -17,6 +17,7 @@ http://anathema.sf.net
 * [2E] DB-Excellencies on the sheet appear where they should. (1731018)
 * [1E] Items no longer cause the program to crash. (1755203)
 * [2E] Removed Eagle-Wing Style's dependency on Graceful Crane Stance.
+* [2E] Fixed an experience-calculation problem with Essence Arrow Technique (1788105, reported by the British SAS) 
 
 ===------------------------------------------------------------------------------===
 			Release 1.3 "Opal Spire" (03/06/07)
