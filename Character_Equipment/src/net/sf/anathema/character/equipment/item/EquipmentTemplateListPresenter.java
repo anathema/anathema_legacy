@@ -1,8 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
