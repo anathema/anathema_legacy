@@ -75,6 +75,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
       "LookshyOutcasteSubtype")); //$NON-NLS-1$
   private static final TemplateType lookshyRealmTemplateType = new TemplateType(CharacterType.DB, new Identificate(
       "LookshyRealmSubtype")); //$NON-NLS-1$
+  private static final TemplateType cherakiTemplateType = new TemplateType(CharacterType.DB, new Identificate("Cherak")); //$NON-NLS-1$
+  private static final TemplateType immaculateTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+      "ImmaculateSubtype")); //$NON-NLS-1$
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -172,6 +175,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
         lookshyRealmTemplateType,
         lookshyOutcasteTemplateType };
     ITemplateType[] retainerTemplateTypes = new ITemplateType[] {
+        dynastTemplateType,
+        immaculateTemplateType,
+        cherakiTemplateType,
         lookshyNativeTemplateType,
         lookshyRealmTemplateType,
         lookshyOutcasteTemplateType,
