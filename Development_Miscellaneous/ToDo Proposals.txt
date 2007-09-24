@@ -47,3 +47,5 @@ figure that out).
 
 Jason Hardin
 -Don't use "description" tag more than once in XML files
+
+Nah, Specialty ist Specialty und Wert ist Wert. Eine "Include in DV calculation" Checkbox könnte ich mir vorstellen, oder - alternativ - eine Extra-Seite im Druck mit viel Platz für Kampfrelevante Daten.
