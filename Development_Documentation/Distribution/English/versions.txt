@@ -11,7 +11,7 @@ http://anathema.sf.net
 
 -- Bugs Fixed --
 * [2E] Corrected Presence-requirement for Authority-Radiating Stance (thanks to Andy Day)
-* [2E] Added translation keys for (Element) Protection Form (thank you,  Scorpio)
+* [2E] Added translation keys for the various (Element) Charms (thank you,  Scorpio and Gareth)
 * [2E] Added Retainers background for Dynasts, Immaculates and Cheraki (thanks again, Scorpio)
 
 ===------------------------------------------------------------------------------===
