@@ -99,7 +99,7 @@
     <cost>
       
         <essence cost="1"/>
-        <essence willpower="1"/>
+        <willpower cost="1"/>
       
     </cost>
     <duration duration="Varies"/>
