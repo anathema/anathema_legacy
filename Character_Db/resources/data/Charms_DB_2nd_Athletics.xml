@@ -25,10 +25,9 @@
   <charmReference id="Dragon-Blooded.EffortlesslyRisingFlame"/>
  </prerequisite>
  <cost>
-  
    <essence cost="1" text="per 2 dice of damage"/>
-  
  </cost>
+ <combo allAbilities="true" />
  <duration duration="Instant"/>
  <charmtype type="Supplemental"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>

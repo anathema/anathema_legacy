@@ -14,7 +14,7 @@ http://anathema.sf.net
 * [2E] Added translation keys for the various (Element) Charms (thank you,  Scorpio and Gareth)
 * [2E] Added Retainers background for Dynasts, Immaculates and Cheraki (thanks again, Scorpio)
 * [2E] Corrected Willpower cost for Drowning Embrace (1807106, found by Allan) 
-
+* [2E] Corrected comboability for Falling Star Maneuver (E Allen noticed bug 1809183)
 ===------------------------------------------------------------------------------===
 			Release 1.3.1 "Opal Spire Revised" (21/09/07)
 ===------------------------------------------------------------------------------===
