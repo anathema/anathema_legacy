@@ -4,56 +4,60 @@
   <Description>
     <CharacterName><![CDATA[Frozen as Solar]]></CharacterName>
   </Description>
-  <Statistics experienced="false">
+  <Statistics experienced="true">
     <Rules>
       <RuleSet name="SecondEdition"/>
     </Rules>
     <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
     <CharacterConcept/>
-    <Essence creationValue="2"/>
-    <Willpower creationValue="2"/>
+    <Essence creationValue="3" experiencedValue="6"/>
+    <Willpower creationValue="6" experiencedValue="8"/>
     <Virtues>
-      <Compassion creationValue="1"/>
-      <Conviction creationValue="1"/>
+      <Compassion creationValue="3" experiencedValue="5"/>
+      <Conviction creationValue="2" experiencedValue="4"/>
       <Temperance creationValue="1"/>
-      <Valor creationValue="1"/>
+      <Valor creationValue="3" experiencedValue="5"/>
     </Virtues>
     <Attributes>
       <Physical>
-        <Strength creationValue="3"/>
-        <Dexterity creationValue="5"/>
-        <Stamina creationValue="4"/>
+        <Strength creationValue="3" experiencedValue="6"/>
+        <Dexterity creationValue="4" experiencedValue="6"/>
+        <Stamina creationValue="2" experiencedValue="4"/>
       </Physical>
       <Social>
-        <Charisma creationValue="5"/>
-        <Manipulation creationValue="4"/>
+        <Charisma creationValue="3" experiencedValue="5"/>
+        <Manipulation creationValue="3" experiencedValue="6"/>
         <Appearance creationValue="1"/>
       </Social>
       <Mental>
-        <Perception creationValue="5"/>
-        <Intelligence creationValue="4"/>
-        <Wits creationValue="4"/>
+        <Perception creationValue="4" experiencedValue="6"/>
+        <Intelligence creationValue="3" experiencedValue="4"/>
+        <Wits creationValue="4" experiencedValue="6"/>
       </Mental>
     </Attributes>
     <Abilities>
       <Archery creationValue="0"/>
-      <MartialArts creationValue="5"/>
+      <MartialArts creationValue="4" experiencedValue="6" favored="true">
+        <Specialty creationValue="3" name="One on One"/>
+      </MartialArts>
       <Melee creationValue="0"/>
-      <Thrown creationValue="1"/>
-      <War creationValue="3"/>
-      <Integrity creationValue="4"/>
-      <Performance creationValue="5"/>
-      <Presence creationValue="1"/>
-      <Resistance creationValue="2"/>
-      <Survival creationValue="2"/>
-      <Craft>
-        <subTrait creationValue="0">
+      <Thrown creationValue="1" experiencedValue="3"/>
+      <War creationValue="0" experiencedValue="2"/>
+      <Integrity creationValue="1" experiencedValue="4" favored="true"/>
+      <Performance creationValue="5" experiencedValue="6" favored="true">
+        <Specialty creationValue="2" name="Dance"/>
+      </Performance>
+      <Presence creationValue="0" experiencedValue="3"/>
+      <Resistance creationValue="0" experiencedValue="3"/>
+      <Survival creationValue="0" experiencedValue="2"/>
+      <Craft favored="true">
+        <subTrait creationValue="0" experiencedValue="2">
           <traitName><![CDATA[Air]]></traitName>
         </subTrait>
-        <subTrait creationValue="0">
+        <subTrait creationValue="0" experiencedValue="4">
           <traitName><![CDATA[Earth]]></traitName>
         </subTrait>
-        <subTrait creationValue="0">
+        <subTrait creationValue="0" experiencedValue="2">
           <traitName><![CDATA[Fire]]></traitName>
         </subTrait>
         <subTrait creationValue="0">
@@ -62,30 +66,87 @@
         <subTrait creationValue="0">
           <traitName><![CDATA[Wood]]></traitName>
         </subTrait>
-        <subTrait creationValue="5">
+        <subTrait creationValue="2">
           <traitName><![CDATA[Fate]]></traitName>
         </subTrait>
+        <subTrait creationValue="0" experiencedValue="3">
+          <traitName><![CDATA[Magitech]]></traitName>
+        </subTrait>
       </Craft>
-      <Investigation creationValue="5"/>
-      <Lore creationValue="5"/>
-      <Medicine creationValue="2"/>
-      <Occult creationValue="5"/>
-      <Athletics creationValue="3"/>
-      <Awareness creationValue="5"/>
-      <Dodge creationValue="5"/>
-      <Larceny creationValue="5"/>
-      <Stealth creationValue="5"/>
-      <Bureaucracy creationValue="4"/>
-      <Linguistics creationValue="0"/>
-      <Ride creationValue="0"/>
-      <Sail creationValue="0"/>
-      <Socialize creationValue="3"/>
+      <Investigation creationValue="3" experiencedValue="6"/>
+      <Lore creationValue="3" experiencedValue="6"/>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="3" experiencedValue="6">
+        <Specialty creationValue="2" name="Fair Folk"/>
+        <Specialty creationValue="1" name="Spellcasting"/>
+      </Occult>
+      <Athletics creationValue="0" experiencedValue="4"/>
+      <Awareness creationValue="3"/>
+      <Dodge creationValue="3" experiencedValue="6"/>
+      <Larceny creationValue="3" experiencedValue="5"/>
+      <Stealth creationValue="3"/>
+      <Bureaucracy creationValue="2" experiencedValue="5"/>
+      <Linguistics creationValue="1" experiencedValue="3"/>
+      <Ride creationValue="0" experiencedValue="2"/>
+      <Sail creationValue="0" experiencedValue="2"/>
+      <Socialize creationValue="2" experiencedValue="3"/>
     </Abilities>
-    <Backgrounds/>
+    <Backgrounds>
+      <Background creationValue="3"><![CDATA[CelestialManse]]></Background>
+      <Background creationValue="3" experiencedValue="4"><![CDATA[Salary]]></Background>
+      <Background creationValue="3" experiencedValue="5"><![CDATA[Savant]]></Background>
+      <Background creationValue="2"><![CDATA[Artifact (Paired Short Daiklave)]]></Background>
+      <Background creationValue="2"><![CDATA[Sifu]]></Background>
+      <Background creationValue="2"><![CDATA[Artifact (Mask)]]></Background>
+    </Backgrounds>
     <Charms>
+      <CharmGroup name="Occult" type="Solar">
+        <Charm name="Solar.TerrestrialCircleSorcery" experienceLearned="false"/>
+        <Charm name="Solar.CelestialCircleSorcery" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="MartialArts" type="Solar">
+        <Charm name="Solar.1stExcellency.MartialArts" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Five-DragonStyle" type="Dragon-Blooded">
+        <Charm name="Terrestrial.Five-DragonClaw" experienceLearned="true"/>
+        <Charm name="Terrestrial.Five-DragonWrath" experienceLearned="true"/>
+        <Charm name="Terrestrial.Five-DragonInvulnerability" experienceLearned="true"/>
+        <Charm name="Terrestrial.Five-DragonForceBlow" experienceLearned="true"/>
+        <Charm name="Terrestrial.Five-DragonFortitude" experienceLearned="true"/>
+        <Charm name="Terrestrial.Five-DragonForm" experienceLearned="true"/>
+        <Charm name="Terrestrial.Five-DragonBlockingTechnique" experienceLearned="true"/>
+        <Charm name="Terrestrial.Five-DragonFist" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="FireDragonStyle" type="Dragon-Blooded">
+        <Charm name="Celestial.SearingFistAttack" experienceLearned="false"/>
+        <Charm name="Celestial.PerfectBlazingBlow" experienceLearned="false"/>
+        <Charm name="Celestial.FlashFireTechnique" experienceLearned="false"/>
+        <Charm name="Celestial.FlameFlickerStance" experienceLearned="false"/>
+        <Charm name="Celestial.FireDragonForm" experienceLearned="false"/>
+      </CharmGroup>
       <Combos/>
     </Charms>
-    <Spells/>
+    <Spells>
+      <Spell name="Terrestrial.FlightSeparation" experienceLearned="false"/>
+      <Spell name="Terrestrial.TheftMemory" experienceLearned="false"/>
+      <Spell name="Terrestrial.SummonElemental" experienceLearned="false"/>
+      <Spell name="Terrestrial.EmeraldCountermagic" experienceLearned="false"/>
+      <Spell name="Terrestrial.EmeraldCircleBanishment" experienceLearned="false"/>
+      <Spell name="Terrestrial.DemonFirstCircle" experienceLearned="false"/>
+      <Spell name="Celestial.DemonSecondCircle" experienceLearned="true"/>
+      <Spell name="Celestial.SapphireCircleBanishment" experienceLearned="true"/>
+      <Spell name="Celestial.SapphireCountermagic" experienceLearned="true"/>
+      <Spell name="Terrestrial.CoinDistantVision" experienceLearned="true"/>
+      <Spell name="Celestial.IncomparableBodyArsenal" experienceLearned="true"/>
+      <Spell name="Celestial.TravelwithoutDistance" experienceLearned="true"/>
+      <Spell name="Celestial.DolorousReflection" experienceLearned="true"/>
+      <Spell name="Terrestrial.DisguiseNewFace" experienceLearned="true"/>
+      <Spell name="Terrestrial.CorruptedWords" experienceLearned="true"/>
+      <Spell name="Terrestrial.EmpathicWind" experienceLearned="true"/>
+      <Spell name="Terrestrial.LightningSpider" experienceLearned="true"/>
+      <Spell name="Terrestrial.MistsEventide" experienceLearned="true"/>
+      <Spell name="Terrestrial.ThunderWolf'sHowl" experienceLearned="true"/>
+    </Spells>
     <Experience/>
     <AdditionalModels>
       <Model templateId="Equipment">
@@ -95,6 +156,16 @@
             <printedStats><![CDATA[Punch]]></printedStats>
             <printedStats><![CDATA[Kick]]></printedStats>
             <printedStats><![CDATA[Clinch]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Short Daiklave]]></templateId>
+            <material><![CDATA[Jade]]></material>
+            <printedStats><![CDATA[Close]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Short Daiklave]]></templateId>
+            <material><![CDATA[Starmetal]]></material>
+            <printedStats><![CDATA[Close]]></printedStats>
           </item>
         </Content>
       </Model>
@@ -106,7 +177,10 @@
       </Model>
       <Model templateId="Linguistics">
         <Content>
-          <linguistics/>
+          <linguistics>
+            <language><![CDATA[HighRealm]]></language>
+            <language><![CDATA[OldRealm]]></language>
+          </linguistics>
         </Content>
       </Model>
       <Model templateId="Intimacies">
