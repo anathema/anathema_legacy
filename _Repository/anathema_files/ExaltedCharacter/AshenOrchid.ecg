@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="AshenOrchid" repositoryPrintName="Ashen Orchid">
+  <Description>
+    <CharacterName><![CDATA[Ashen Orchid]]></CharacterName>
+    <Player><![CDATA[Sandra Sieroux]]></Player>
+    <Concept><![CDATA[Righteous Avenger]]></Concept>
+  </Description>
+  <Statistics experienced="false">
+    <Rules>
+      <RuleSet name="SecondEdition"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
+    <CharacterConcept>
+      <Caste type="Night"/>
+      <Motivation><![CDATA[Save ... from Mortality]]></Motivation>
+    </CharacterConcept>
+    <Essence creationValue="3"/>
+    <Willpower creationValue="6"/>
+    <Virtues>
+      <Compassion creationValue="3"/>
+      <Conviction creationValue="2"/>
+      <Temperance creationValue="1"/>
+      <Valor creationValue="3"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="3"/>
+        <Dexterity creationValue="5"/>
+        <Stamina creationValue="3"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="2"/>
+        <Manipulation creationValue="2"/>
+        <Appearance creationValue="3"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="3"/>
+        <Intelligence creationValue="3"/>
+        <Wits creationValue="3"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="0"/>
+      <MartialArts creationValue="0"/>
+      <Melee creationValue="0"/>
+      <Thrown creationValue="4" favored="true"/>
+      <War creationValue="0"/>
+      <Integrity creationValue="1" favored="true"/>
+      <Performance creationValue="0"/>
+      <Presence creationValue="0"/>
+      <Resistance creationValue="1"/>
+      <Survival creationValue="1" favored="true"/>
+      <Craft>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Air]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Earth]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Fire]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Water]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Wood]]></traitName>
+        </subTrait>
+      </Craft>
+      <Investigation creationValue="1"/>
+      <Lore creationValue="1"/>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="2" favored="true"/>
+      <Athletics creationValue="3"/>
+      <Awareness creationValue="3"/>
+      <Dodge creationValue="3"/>
+      <Larceny creationValue="5"/>
+      <Stealth creationValue="3"/>
+      <Bureaucracy creationValue="2" favored="true"/>
+      <Linguistics creationValue="0"/>
+      <Ride creationValue="0"/>
+      <Sail creationValue="1"/>
+      <Socialize creationValue="0"/>
+    </Abilities>
+    <Backgrounds>
+      <Background creationValue="3"><![CDATA[Contacts (Guild)]]></Background>
+      <Background creationValue="5"><![CDATA[Resources]]></Background>
+      <Background creationValue="2"><![CDATA[Artifact (Inifinite Jade Chakram)]]></Background>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Athletics" type="Solar">
+        <Charm name="Solar.IncreasingStrengthExercise" experienceLearned="false"/>
+        <Charm name="Solar.MonkeyLeapTechnique" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Larceny" type="Solar">
+        <Charm name="Solar.1stExcellency.Larceny" experienceLearned="false"/>
+        <Charm name="Solar.PerfectMirror" experienceLearned="false"/>
+        <Charm name="Solar.FlawlesslyImpenetrableDisguise" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Thrown" type="Solar">
+        <Charm name="Solar.CascadeCuttingTerror" experienceLearned="false"/>
+        <Charm name="Solar.Triple-DistanceAttackTechnique" experienceLearned="false"/>
+        <Charm name="Solar.1stExcellency.Thrown" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Stealth" type="Solar">
+        <Charm name="Solar.EasilyOverlookedPresenceMethod" experienceLearned="false"/>
+        <Charm name="Solar.InvisibleStatueSpirit" experienceLearned="false"/>
+      </CharmGroup>
+      <Combos/>
+    </Charms>
+    <Spells/>
+    <Experience/>
+    <AdditionalModels>
+      <Model templateId="Equipment">
+        <Content>
+          <item>
+            <templateId><![CDATA[Natural]]></templateId>
+          </item>
+          <item>
+            <templateId><![CDATA[Infinite Jade Chakram]]></templateId>
+            <printedStats><![CDATA[Ranged]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Exceptional Breastplate]]></templateId>
+            <printedStats><![CDATA[Armour]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Exceptional Chakram / Shuriken]]></templateId>
+            <printedStats><![CDATA[Ranged]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Exceptional Hatchet]]></templateId>
+            <printedStats><![CDATA[Ranged]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Exceptional Knife]]></templateId>
+            <printedStats><![CDATA[Ranged]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Exceptional Needle]]></templateId>
+            <printedStats><![CDATA[Ranged]]></printedStats>
+          </item>
+        </Content>
+      </Model>
+      <Model templateId="Specialties">
+        <Content/>
+      </Model>
+      <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
+        <Content>
+          <linguistics/>
+        </Content>
+      </Model>
+      <Model templateId="Intimacies">
+        <Content>
+          <Intimacies/>
+        </Content>
+      </Model>
+      <Model templateId="SolarVirtueFlaw">
+        <Content>
+          <VirtueFlaw>
+            <RootVirtue name="Compassion"/>
+          </VirtueFlaw>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>
