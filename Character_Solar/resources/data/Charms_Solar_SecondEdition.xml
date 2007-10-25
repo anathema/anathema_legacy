@@ -2287,8 +2287,8 @@
   
   <charm id="Solar.Soul-EnlighteningBeneficence" exalt="Solar" group="Lore">
     <prerequisite>
-      <essence id="Essence" value="4"/>
-      <trait id="Lore" value="3"/>
+      <essence id="Essence" value="3"/>
+      <trait id="Lore" value="4"/>
       <charmReference id="Solar.Essence-LendingMethod"/>
     </prerequisite>
     <cost>

@@ -9,6 +9,10 @@ http://anathema.sf.net
 			Release 1.3.2 "" (Upcoming)
 ===------------------------------------------------------------------------------===
 
+Corrected prerequisites for some charms. 
+Characters knowing these charms might not load. 
+Please contact us if you encounter any problems.
+
 -- Bugs Fixed --
 * [2E] Corrected Presence-requirement for Authority-Radiating Stance (thanks to Andy Day)
 * [2E] Added translation keys for the various (Element) Charms (thank you,  Scorpio and Gareth)
@@ -16,6 +20,7 @@ http://anathema.sf.net
 * [2E] Corrected Willpower cost for Drowning Embrace (1807106, found by Allan) 
 * [2E] Corrected comboability for Falling Star Maneuver (E Allen noticed bug 1809183)
 * [2E] Corrected several Charm names (1819445, all found by Allan)
+* [2E] Corrected prerequisites for Soul-Enlightening Beneficience (1819750, spotted by the Astral Wanderer)
 
 ===------------------------------------------------------------------------------===
 			Release 1.3.1 "Opal Spire Revised" (21/09/07)
