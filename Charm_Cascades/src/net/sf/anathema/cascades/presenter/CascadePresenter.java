@@ -56,9 +56,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     List<IIdentificate> supportedCharmTypes = new ArrayList<IIdentificate>();
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
     initCharacterTypeCharms(supportedCharmTypes, allCharmGroups);
-    initMartialArts(allCharmGroups, CharacterType.SIDEREAL, ExaltedEdition.FirstEdition);
-    initMartialArts(allCharmGroups, CharacterType.SOLAR, ExaltedEdition.SecondEdition);
-    supportedCharmTypes.add(MartialArtsUtilities.MARTIAL_ARTS);
+    initMartialArts(supportedCharmTypes, allCharmGroups);
     createCharmTypeSelector(
         supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]),
         view,
@@ -95,13 +93,16 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     }
   }
 
-  private void initMartialArts(List<ICharmGroup> allCharmGroups, ICharacterType type, ExaltedEdition rules) {
-    ICharacterTemplate template = getTemplateRegistry().getDefaultTemplate(type, rules);
-    for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(rules)) {
-      ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate(), ruleSet);
-      getCharmTreeMap(ruleSet).put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
-      allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
+  private void initMartialArts(List<IIdentificate> supportedCharmTypes, List<ICharmGroup> allCharmGroups) {
+    for (IExaltedEdition edition : ExaltedEdition.values()) {
+      ICharacterTemplate template = getTemplateRegistry().getDefaultTemplate(CharacterType.SIDEREAL, edition);
+      for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
+        ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate(), ruleSet);
+        getCharmTreeMap(ruleSet).put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
+        allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
+      }
     }
+    supportedCharmTypes.add(MartialArtsUtilities.MARTIAL_ARTS);
   }
 
   private void initRules() {

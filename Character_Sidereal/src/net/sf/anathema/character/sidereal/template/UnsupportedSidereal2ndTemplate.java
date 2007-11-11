@@ -33,7 +33,7 @@ public class UnsupportedSidereal2ndTemplate extends AbstractUnsupportedExaltTemp
         charmProvider,
         CharacterType.SIDEREAL,
         ExaltedEdition.SecondEdition);
-    this.charmTemplate = new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), charmSet);
+    this.charmTemplate = new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Sidereal), charmSet);
     this.presentationProperties = new SiderealPresentationProperties();
   }
 
