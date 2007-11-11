@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.unsupported.UnsupportedDragonKingTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
@@ -29,6 +30,7 @@ import net.sf.anathema.character.sidereal.colleges.persistence.SiderealCollegePe
 import net.sf.anathema.character.sidereal.reporting.FirstEditionSiderealPartEncoder;
 import net.sf.anathema.character.sidereal.template.DefaultSiderealTemplate;
 import net.sf.anathema.character.sidereal.template.ISiderealSpecialCharms;
+import net.sf.anathema.character.sidereal.template.UnsupportedSidereal2ndTemplate;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -60,6 +62,7 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
     CharmCache charmProvider = CharmCache.getInstance();
     characterGenerics.getTemplateRegistry().register(
         new DefaultSiderealTemplate(charmProvider, new AdditionalSiderealRules()));
+    characterGenerics.getTemplateRegistry().register(new UnsupportedSidereal2ndTemplate(charmProvider));
   }
 
   @Override
