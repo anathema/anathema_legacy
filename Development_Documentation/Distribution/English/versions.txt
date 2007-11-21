@@ -19,7 +19,7 @@ Please contact us if you encounter any problems.
 * [2E] Added Retainers background for Dynasts, Immaculates and Cheraki (thanks again, Scorpio)
 * [2E] Corrected Willpower cost for Drowning Embrace (1807106, found by Allan) 
 * [2E] Corrected comboability for Falling Star Maneuver (E Allen noticed bug 1809183)
-* [2E] Corrected several Charm names (1819445, all found by Allan)
+* [2E] Corrected several Charm names (All found by Allan Morstein)
 * [2E] Corrected prerequisites for Soul-Enlightening Beneficience (1819750, spotted by the Astral Wanderer)
 
 ===------------------------------------------------------------------------------===
