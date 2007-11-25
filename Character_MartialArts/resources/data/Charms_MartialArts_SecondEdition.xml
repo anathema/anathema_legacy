@@ -53,7 +53,6 @@
    	  <special speed="3" defense="-1"/>
    	</charmtype>
     <charmAttribute attribute="Celestial"/>
-    <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Form" visualize="true"/>    
     <charmAttribute attribute="Obvious" visualize="true"/>    
     <source source="SecondEdition" page="240"/>

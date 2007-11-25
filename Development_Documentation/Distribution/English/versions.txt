@@ -21,6 +21,7 @@ Please contact us if you encounter any problems.
 * [2E] Corrected comboability for Falling Star Maneuver (E Allen noticed bug 1809183)
 * [2E] Corrected several Charm names (All found by Allan Morstein)
 * [2E] Corrected prerequisites for Soul-Enlightening Beneficience (1819750, spotted by the Astral Wanderer)
+* [2E] Snake Form no longer Combo-OK
 
 ===------------------------------------------------------------------------------===
 			Release 1.3.1 "Opal Spire Revised" (21/09/07)
