@@ -16,11 +16,11 @@
       <Motivation><![CDATA[Save Artemesia Sapphire from Mortality]]></Motivation>
     </CharacterConcept>
     <Essence creationValue="3"/>
-    <Willpower creationValue="5"/>
+    <Willpower creationValue="6"/>
     <Virtues>
-      <Compassion creationValue="3"/>
+      <Compassion creationValue="4"/>
       <Conviction creationValue="2"/>
-      <Temperance creationValue="2"/>
+      <Temperance creationValue="1"/>
       <Valor creationValue="2"/>
     </Virtues>
     <Attributes>
@@ -44,7 +44,7 @@
       <Archery creationValue="0"/>
       <MartialArts creationValue="0"/>
       <Melee creationValue="0"/>
-      <Thrown creationValue="4" favored="true"/>
+      <Thrown creationValue="5" favored="true"/>
       <War creationValue="0"/>
       <Integrity creationValue="1" favored="true"/>
       <Performance creationValue="2"/>
@@ -68,12 +68,12 @@
           <traitName><![CDATA[Wood]]></traitName>
         </subTrait>
       </Craft>
-      <Investigation creationValue="1" experiencedValue="3" favored="true"/>
+      <Investigation creationValue="1" experiencedValue="2" favored="true"/>
       <Lore creationValue="2"/>
       <Medicine creationValue="0"/>
       <Occult creationValue="2"/>
       <Athletics creationValue="1" experiencedValue="3"/>
-      <Awareness creationValue="1" experiencedValue="3"/>
+      <Awareness creationValue="1" experiencedValue="2"/>
       <Dodge creationValue="3"/>
       <Larceny creationValue="5"/>
       <Stealth creationValue="1" experiencedValue="2"/>
@@ -84,7 +84,7 @@
       <Socialize creationValue="1"/>
     </Abilities>
     <Backgrounds>
-      <Background creationValue="3"><![CDATA[Contacts (Guild)]]></Background>
+      <Background creationValue="2"><![CDATA[Contacts (Guild)]]></Background>
       <Background creationValue="5"><![CDATA[Resources]]></Background>
       <Background creationValue="2"><![CDATA[Artifact (Hearthstone Bracers)]]></Background>
     </Backgrounds>
