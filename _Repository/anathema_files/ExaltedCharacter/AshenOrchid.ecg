@@ -47,8 +47,8 @@
       <Thrown creationValue="5" favored="true"/>
       <War creationValue="0"/>
       <Integrity creationValue="1" favored="true"/>
-      <Performance creationValue="2"/>
-      <Presence creationValue="1" favored="true"/>
+      <Performance creationValue="1"/>
+      <Presence creationValue="1" experiencedValue="2" favored="true"/>
       <Resistance creationValue="1"/>
       <Survival creationValue="2"/>
       <Craft>
@@ -81,7 +81,7 @@
       <Linguistics creationValue="2"/>
       <Ride creationValue="0"/>
       <Sail creationValue="0"/>
-      <Socialize creationValue="1"/>
+      <Socialize creationValue="2"/>
     </Abilities>
     <Backgrounds>
       <Background creationValue="2"><![CDATA[Contacts (Guild)]]></Background>
