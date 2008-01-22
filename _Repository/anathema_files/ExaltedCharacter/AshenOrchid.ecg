@@ -46,11 +46,11 @@
       <Melee creationValue="0"/>
       <Thrown creationValue="5" favored="true"/>
       <War creationValue="0"/>
-      <Integrity creationValue="1" favored="true"/>
-      <Performance creationValue="1"/>
+      <Integrity creationValue="2"/>
+      <Performance creationValue="3"/>
       <Presence creationValue="1" experiencedValue="2" favored="true"/>
       <Resistance creationValue="1"/>
-      <Survival creationValue="2"/>
+      <Survival creationValue="1"/>
       <Craft>
         <subTrait creationValue="0">
           <traitName><![CDATA[Air]]></traitName>
@@ -77,11 +77,11 @@
       <Dodge creationValue="3"/>
       <Larceny creationValue="5"/>
       <Stealth creationValue="1" experiencedValue="2"/>
-      <Bureaucracy creationValue="1" favored="true"/>
-      <Linguistics creationValue="2"/>
+      <Bureaucracy creationValue="1" experiencedValue="2" favored="true"/>
+      <Linguistics creationValue="1"/>
       <Ride creationValue="0"/>
       <Sail creationValue="0"/>
-      <Socialize creationValue="2"/>
+      <Socialize creationValue="1" experiencedValue="2" favored="true"/>
     </Abilities>
     <Backgrounds>
       <Background creationValue="2"><![CDATA[Contacts (Guild)]]></Background>
@@ -95,7 +95,6 @@
       <CharmGroup name="Larceny" type="Solar">
         <Charm name="Solar.1stExcellency.Larceny" experienceLearned="false"/>
         <Charm name="Solar.PerfectMirror" experienceLearned="false"/>
-        <Charm name="Solar.Lock-OpeningTouch" experienceLearned="false"/>
         <Charm name="Solar.FlawlesslyImpenetrableDisguise" experienceLearned="false"/>
       </CharmGroup>
       <CharmGroup name="Thrown" type="Solar">
@@ -103,7 +102,10 @@
         <Charm name="Solar.ReturningWeaponConcentration" experienceLearned="false"/>
         <Charm name="Solar.SpiritWeapons" experienceLearned="false"/>
         <Charm name="Solar.Triple-DistanceAttackTechnique" experienceLearned="false"/>
-        <Charm name="Solar.1stExcellency.Thrown" experienceLearned="true"/>
+        <Charm name="Solar.1stExcellency.Thrown" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Socialize" type="Solar">
+        <Charm name="Solar.MasterySmallManners" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Resistance" type="Solar">
         <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
@@ -134,6 +136,9 @@
       </Entry>
       <Entry points="5">
         <Description><![CDATA[Home Again]]></Description>
+      </Entry>
+      <Entry points="10">
+        <Description><![CDATA[Destiny Revealed]]></Description>
       </Entry>
     </Experience>
     <AdditionalModels>
