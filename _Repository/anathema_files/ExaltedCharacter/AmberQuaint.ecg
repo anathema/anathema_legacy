@@ -5,6 +5,7 @@
     <CharacterName><![CDATA[Amber Quaint]]></CharacterName>
     <Player><![CDATA[Sandra]]></Player>
     <PhysicalDescription><![CDATA[eisblaues langes Haar]]></PhysicalDescription>
+    <Concept><![CDATA[Erudite Princess]]></Concept>
   </Description>
   <Statistics experienced="true">
     <Rules>
@@ -14,7 +15,6 @@
     <CharacterConcept>
       <Caste type="Twilight"/>
       <Motivation><![CDATA[Restore peace and order throughout the Heavenly Hierarchy]]></Motivation>
-      <Concept><![CDATA[Erudite Princess]]></Concept>
     </CharacterConcept>
     <Essence creationValue="3" experiencedValue="4"/>
     <Willpower creationValue="7"/>
@@ -38,7 +38,7 @@
       <Mental>
         <Perception creationValue="2"/>
         <Intelligence creationValue="4"/>
-        <Wits creationValue="1" experiencedValue="2"/>
+        <Wits creationValue="1" experiencedValue="3"/>
       </Mental>
     </Attributes>
     <Abilities>
@@ -47,7 +47,9 @@
       <Melee creationValue="5" favored="true"/>
       <Thrown creationValue="0"/>
       <War creationValue="0"/>
-      <Integrity creationValue="1" experiencedValue="2" favored="true"/>
+      <Integrity creationValue="1" experiencedValue="4" favored="true">
+        <Specialty creationValue="0" experiencedValue="3" name="Sidereals"/>
+      </Integrity>
       <Performance creationValue="3"/>
       <Presence creationValue="0"/>
       <Resistance creationValue="2"/>
@@ -78,12 +80,10 @@
       <Investigation creationValue="1" experiencedValue="3"/>
       <Lore creationValue="3" experiencedValue="4"/>
       <Medicine creationValue="2"/>
-      <Occult creationValue="5">
-        <Specialty creationValue="0" experiencedValue="3" name="Sidereals"/>
-      </Occult>
+      <Occult creationValue="5"/>
       <Athletics creationValue="1" experiencedValue="4" favored="true"/>
       <Awareness creationValue="1" experiencedValue="2"/>
-      <Dodge creationValue="1"/>
+      <Dodge creationValue="1" experiencedValue="2"/>
       <Larceny creationValue="0"/>
       <Stealth creationValue="1" experiencedValue="2" favored="true"/>
       <Bureaucracy creationValue="0"/>
@@ -98,15 +98,27 @@
       <Background creationValue="1"><![CDATA[Resources]]></Background>
     </Backgrounds>
     <Charms>
+      <CharmGroup name="Athletics" type="Solar">
+        <Charm name="Solar.MonkeyLeapTechnique" experienceLearned="true"/>
+        <Charm name="Solar.GracefulCraneStance" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Investigation" type="Solar">
+        <Charm name="Solar.2ndExcellency.Investigation" experienceLearned="true"/>
+      </CharmGroup>
       <CharmGroup name="Melee" type="Solar">
         <Charm name="Solar.DippingSwallowDefense" experienceLearned="false"/>
+        <Charm name="Solar.FivefoldBulwarkStance" experienceLearned="false"/>
         <Charm name="Solar.BulwarkStance" experienceLearned="false"/>
         <Charm name="Solar.1stExcellency.Melee" experienceLearned="false"/>
-        <Charm name="Solar.FivefoldBulwarkStance" experienceLearned="false"/>
+        <Charm name="Solar.InfiniteMastery.Melee" experienceLearned="true"/>
+        <Charm name="Solar.EssenceFlow.Melee" experienceLearned="true"/>
       </CharmGroup>
-      <CharmGroup name="Occult" type="Solar">
-        <Charm name="Solar.TerrestrialCircleSorcery" experienceLearned="false"/>
-        <Charm name="Solar.CelestialCircleSorcery" experienceLearned="true"/>
+      <CharmGroup name="Integrity" type="Solar">
+        <Charm name="Solar.Integrity-PotectingPrana" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Craft" type="Solar">
+        <Charm name="Solar.1stExcellency.Craft" experienceLearned="true"/>
+        <Charm name="Solar.CraftsmanNeedsNoTools" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Resistance" type="Solar">
         <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
@@ -120,19 +132,9 @@
         </Charm>
         <Charm name="Solar.Body-MendingMeditation" experienceLearned="false"/>
       </CharmGroup>
-      <CharmGroup name="Athletics" type="Solar">
-        <Charm name="Solar.MonkeyLeapTechnique" experienceLearned="true"/>
-        <Charm name="Solar.GracefulCraneStance" experienceLearned="true"/>
-      </CharmGroup>
-      <CharmGroup name="Investigation" type="Solar">
-        <Charm name="Solar.2ndExcellency.Investigation" experienceLearned="true"/>
-      </CharmGroup>
-      <CharmGroup name="Integrity" type="Solar">
-        <Charm name="Solar.Integrity-PotectingPrana" experienceLearned="true"/>
-      </CharmGroup>
-      <CharmGroup name="Craft" type="Solar">
-        <Charm name="Solar.CraftsmanNeedsNoTools" experienceLearned="true"/>
-        <Charm name="Solar.1stExcellency.Craft" experienceLearned="true"/>
+      <CharmGroup name="Occult" type="Solar">
+        <Charm name="Solar.TerrestrialCircleSorcery" experienceLearned="false"/>
+        <Charm name="Solar.CelestialCircleSorcery" experienceLearned="true"/>
       </CharmGroup>
       <Combos/>
     </Charms>
@@ -176,17 +178,8 @@
       <Entry points="10">
         <Description><![CDATA[Downtime for Attributes & Virtues]]></Description>
       </Entry>
-      <Entry points="-1">
-        <Description><![CDATA[Dowtime for Attributes & Virtues ungenutzt]]></Description>
-      </Entry>
       <Entry points="5">
         <Description><![CDATA[Downtime for Essence & Willpower]]></Description>
-      </Entry>
-      <Entry points="-5">
-        <Description><![CDATA[Downtime for Essence & Willpower ungenutzt]]></Description>
-      </Entry>
-      <Entry points="-10">
-        <Description><![CDATA[Unsleeping Watchman Technique]]></Description>
       </Entry>
       <Entry points="6">
         <Description><![CDATA[Heuschrecken in Fanshu]]></Description>
@@ -196,20 +189,9 @@
       </Entry>
     </Experience>
     <AdditionalModels>
-      <Model templateId="SolarVirtueFlaw">
-        <Content>
-          <VirtueFlaw>
-            <RootVirtue name="Conviction"/>
-            <Name><![CDATA[Indignation of the Avarice Lamb]]></Name>
-            <LimitBreak><![CDATA[Can't get what she believes must haves.]]></LimitBreak>
-            <Description><![CDATA[Tries to destroy the things she can't have, to assure to one else will have it.]]></Description>
-          </VirtueFlaw>
-        </Content>
-      </Model>
       <Model templateId="Equipment">
         <Content>
           <item>
-            <templateId><![CDATA[Natural]]></templateId>
             <templateId><![CDATA[Natural]]></templateId>
             <printedStats><![CDATA[Punch]]></printedStats>
             <printedStats><![CDATA[Kick]]></printedStats>
@@ -218,16 +200,12 @@
           <item>
             <templateId><![CDATA[Daiklave]]></templateId>
             <material><![CDATA[Orichalcum]]></material>
-            <templateId><![CDATA[Daiklave]]></templateId>
-            <printedStats><![CDATA[Close]]></printedStats>
           </item>
           <item>
             <templateId><![CDATA[Dragon-King Toy]]></templateId>
-            <templateId><![CDATA[Dragon-King Toy]]></templateId>
             <printedStats><![CDATA[Close]]></printedStats>
           </item>
           <item>
-            <templateId><![CDATA[Armor of the Unseen Assassin]]></templateId>
             <templateId><![CDATA[Armor of the Unseen Assassin]]></templateId>
             <printedStats><![CDATA[Armour]]></printedStats>
           </item>
@@ -257,6 +235,16 @@
               <Trait creationValue="0" experiencedValue="3"/>
             </Intimacy>
           </Intimacies>
+        </Content>
+      </Model>
+      <Model templateId="SolarVirtueFlaw">
+        <Content>
+          <VirtueFlaw>
+            <RootVirtue name="Conviction"/>
+            <Name><![CDATA[Indignation of the Avarice Lamb]]></Name>
+            <LimitBreak><![CDATA[Can't get what she believes must haves.]]></LimitBreak>
+            <Description><![CDATA[Tries to destroy the things she can't have, to assure to one else will have it.]]></Description>
+          </VirtueFlaw>
         </Content>
       </Model>
     </AdditionalModels>
