@@ -19,7 +19,7 @@
     <Willpower creationValue="6"/>
     <Virtues>
       <Compassion creationValue="4"/>
-      <Conviction creationValue="2"/>
+      <Conviction creationValue="2" experiencedValue="3"/>
       <Temperance creationValue="1"/>
       <Valor creationValue="2"/>
     </Virtues>
@@ -32,7 +32,7 @@
       <Social>
         <Charisma creationValue="3"/>
         <Manipulation creationValue="2"/>
-        <Appearance creationValue="2"/>
+        <Appearance creationValue="2" experiencedValue="3"/>
       </Social>
       <Mental>
         <Perception creationValue="3"/>
@@ -72,11 +72,11 @@
       <Lore creationValue="2"/>
       <Medicine creationValue="0"/>
       <Occult creationValue="2"/>
-      <Athletics creationValue="1" experiencedValue="3"/>
+      <Athletics creationValue="1" experiencedValue="5"/>
       <Awareness creationValue="1" experiencedValue="2"/>
       <Dodge creationValue="3"/>
       <Larceny creationValue="5"/>
-      <Stealth creationValue="1" experiencedValue="2"/>
+      <Stealth creationValue="1" experiencedValue="3"/>
       <Bureaucracy creationValue="1" experiencedValue="2" favored="true"/>
       <Linguistics creationValue="1"/>
       <Ride creationValue="0"/>
@@ -84,13 +84,14 @@
       <Socialize creationValue="1" experiencedValue="2" favored="true"/>
     </Abilities>
     <Backgrounds>
-      <Background creationValue="2"><![CDATA[Contacts (Guild)]]></Background>
+      <Background creationValue="2"><![CDATA[Backing (Guild)]]></Background>
       <Background creationValue="5"><![CDATA[Resources]]></Background>
       <Background creationValue="2"><![CDATA[Artifact (Hearthstone Bracers)]]></Background>
     </Backgrounds>
     <Charms>
       <CharmGroup name="Athletics" type="Solar">
         <Charm name="Solar.MonkeyLeapTechnique" experienceLearned="false"/>
+        <Charm name="Solar.Foe-VaultingMethod" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Larceny" type="Solar">
         <Charm name="Solar.1stExcellency.Larceny" experienceLearned="false"/>
@@ -103,6 +104,14 @@
         <Charm name="Solar.SpiritWeapons" experienceLearned="false"/>
         <Charm name="Solar.Triple-DistanceAttackTechnique" experienceLearned="false"/>
         <Charm name="Solar.1stExcellency.Thrown" experienceLearned="false"/>
+        <Charm name="Solar.Observer-DeceivingAttack" experienceLearned="true"/>
+        <Charm name="Solar.FallingIcicleStrike" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Bureaucracy" type="Solar">
+        <Charm name="Solar.1stExcellency.Bureaucracy" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Presence" type="Solar">
+        <Charm name="Solar.1stExcellency.Presence" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Socialize" type="Solar">
         <Charm name="Solar.MasterySmallManners" experienceLearned="true"/>
@@ -118,7 +127,14 @@
           </Special>
         </Charm>
       </CharmGroup>
-      <Combos/>
+      <Combos>
+        <Combo experienceLearned="true">
+          <Name><![CDATA[Unexpected Wave of Death]]></Name>
+          <Charm name="Solar.FallingIcicleStrike" type="Solar"/>
+          <Charm name="Solar.Observer-DeceivingAttack" type="Solar"/>
+          <Charm name="Solar.1stExcellency.Thrown" type="Solar"/>
+        </Combo>
+      </Combos>
     </Charms>
     <Spells/>
     <Experience>
@@ -139,6 +155,27 @@
       </Entry>
       <Entry points="10">
         <Description><![CDATA[Destiny Revealed]]></Description>
+      </Entry>
+      <Entry points="2">
+        <Description><![CDATA[Intermezzo mit SesusRela]]></Description>
+      </Entry>
+      <Entry points="5">
+        <Description><![CDATA[Back To The East]]></Description>
+      </Entry>
+      <Entry points="4">
+        <Description><![CDATA[Pleading for Help]]></Description>
+      </Entry>
+      <Entry points="50">
+        <Description><![CDATA[Bis Mnemon Comes to Town]]></Description>
+      </Entry>
+      <Entry points="10">
+        <Description><![CDATA[Schlacht gegen Mnemon]]></Description>
+      </Entry>
+      <Entry points="-12">
+        <Description><![CDATA[Appearance 4]]></Description>
+      </Entry>
+      <Entry points="5">
+        <Description><![CDATA[Rote Lotus in Gefahr]]></Description>
       </Entry>
     </Experience>
     <AdditionalModels>
@@ -170,7 +207,7 @@
             <printedStats><![CDATA[Ranged]]></printedStats>
           </item>
           <item>
-            <templateId><![CDATA[Sirka-Lederrüstung]]></templateId>
+            <templateId><![CDATA[Swift Reinforced Buffjacket (Perfect)]]></templateId>
             <printedStats><![CDATA[Armour]]></printedStats>
           </item>
         </Content>
@@ -186,20 +223,24 @@
           <linguistics>
             <language><![CDATA[Riverspeak]]></language>
             <language><![CDATA[HighRealm]]></language>
+            <language><![CDATA[GuildCant]]></language>
           </linguistics>
         </Content>
       </Model>
       <Model templateId="Intimacies">
         <Content>
           <Intimacies>
-            <Intimacy name="Gilde" complete="true">
-              <Trait creationValue="2"/>
+            <Intimacy name="Luxury (Compassion)" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
             </Intimacy>
-            <Intimacy name="Anti-Emissary" complete="true">
-              <Trait creationValue="2"/>
+            <Intimacy name="Artemesia Sapphire (Compassion)" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
             </Intimacy>
-            <Intimacy name="Luxury" complete="true">
-              <Trait creationValue="2"/>
+            <Intimacy name="Sesus Rela (Compassion)" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Gilde (Conviction)" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
             </Intimacy>
           </Intimacies>
         </Content>
