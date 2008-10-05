@@ -1,9 +1,9 @@
-package net.sf.anathema.platform.svgtree.graph.ordering;
+package net.sf.anathema.charms.graph.ordering;
 
-import net.sf.anathema.lib.lang.ArrayUtilities;
-import net.sf.anathema.lib.lang.IntegerUtilities;
-import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
+import net.sf.anathema.charms.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.charms.graph.nodes.ISimpleNode;
+import net.sf.anathema.charms.graph.util.ArrayUtilities;
+import net.sf.anathema.charms.graph.util.IntegerUtilities;
 
 public class LayerCrossingMinimizer {
 
@@ -63,7 +63,7 @@ public class LayerCrossingMinimizer {
     ISimpleNode[] changeableLayer = graph.getNodesByLayer(changeableLayerIndex);
     ISimpleNode[] newOrder = new ISimpleNode[changeableLayer.length];
     System.arraycopy(changeableLayer, 0, newOrder, 0, newOrder.length);
-    ArrayUtilities.reorder(newOrder, originalIndices, newIndices);
+    net.sf.anathema.charms.graph.util.ArrayUtilities.reorder(newOrder, originalIndices, newIndices);
     graph.setNewLayerOrder(changeableLayerIndex, newOrder);
     int newCrossingCount = calculateCrossingCount();
     if (newCrossingCount <= crossingCount) {

@@ -1,12 +1,13 @@
-package net.sf.anathema.platform.svgtree.graph.ordering;
+package net.sf.anathema.charms.graph.ordering;
 
+import net.disy.commons.core.util.ArrayUtilities;
+import net.disy.commons.core.util.CollectionUtilities;
+import net.sf.anathema.charms.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.charms.graph.nodes.ISimpleNode;
+import net.sf.anathema.charms.graph.nodes.WeightedNode;
+import net.sf.anathema.charms.graph.util.BarycenterCalculator;
+import net.sf.anathema.charms.graph.util.IncidentMatrixUtilities;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.lang.IntegerUtilities;
-import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
-import net.sf.anathema.platform.svgtree.graph.nodes.WeightedNode;
-import net.sf.anathema.platform.svgtree.graph.util.BarycenterCalculator;
-import net.sf.anathema.platform.svgtree.graph.util.IncidentMatrixUtilities;
 
 public class SandraVertexOrderer extends AbstractVertexOrderer {
 
@@ -53,7 +54,7 @@ public class SandraVertexOrderer extends AbstractVertexOrderer {
     WeightedNode[] weightedLowerLayerNodes = getWeightedLowerLayerNodes(upperLayer, lowerLayer);
     MultiEntryMap<Double, Integer> weightSeparation = getWeightSeparation(weightedLowerLayerNodes);
     for (Double key : weightSeparation.keySet()) {
-      int[] indices = IntegerUtilities.toIntArray(weightSeparation.get(key));
+      int[] indices = ArrayUtilities.toPrimitive(CollectionUtilities.toArray(weightSeparation.get(key), Integer.class));
       for (int index = 0; index < indices.length - 1; index++) {
         exchangeNodes(weightedLowerLayerNodes, indices[index], indices[index + 1]);
         reorderLayer(upperLayerIndex + 1, weightedLowerLayerNodes);
@@ -72,7 +73,7 @@ public class SandraVertexOrderer extends AbstractVertexOrderer {
     WeightedNode[] weightedUpperLayerNodes = getWeightedUpperLayerNodes(upperLayer, lowerLayer);
     MultiEntryMap<Double, Integer> weightSeparation = getWeightSeparation(weightedUpperLayerNodes);
     for (Double key : weightSeparation.keySet()) {
-      int[] indices = IntegerUtilities.toIntArray(weightSeparation.get(key));
+      int[] indices = ArrayUtilities.toPrimitive(CollectionUtilities.toArray(weightSeparation.get(key), Integer.class));
       for (int index = 0; index < indices.length - 1; index++) {
         exchangeNodes(weightedUpperLayerNodes, indices[index], indices[index + 1]);
         reorderLayer(upperLayerIndex, weightedUpperLayerNodes);

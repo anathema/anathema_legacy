@@ -1,13 +1,12 @@
-package net.sf.anathema.platform.svgtree.graph.hierarchy;
+package net.sf.anathema.charms.graph.hierarchy;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.sf.anathema.platform.svgtree.graph.nodes.DummyNode;
-import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
-
+import net.sf.anathema.charms.graph.nodes.DummyNode;
+import net.sf.anathema.charms.graph.nodes.IRegularNode;
+import net.sf.anathema.charms.graph.nodes.ISimpleNode;
 public class HierarchyBuilder implements IHierachyBuilder {
 
   public ISimpleNode[] removeLongEdges(IRegularNode[] acyclicGraph) {

@@ -1,7 +1,7 @@
-package net.sf.anathema.platform.svgtree.graph.util;
+package net.sf.anathema.charms.graph.util;
 
 import net.disy.commons.core.util.ArrayUtilities;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
+import net.sf.anathema.charms.graph.nodes.ISimpleNode;
 
 public class IncidentMatrixUtilities {
 

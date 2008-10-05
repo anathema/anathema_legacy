@@ -1,6 +1,6 @@
-package net.sf.anathema.platform.svgtree.graph.ordering;
+package net.sf.anathema.charms.graph.ordering;
 
-import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.charms.graph.graph.IProperHierarchicalGraph;
 
 public class LayerByLayerSweepVertexOrderer extends AbstractVertexOrderer {
 

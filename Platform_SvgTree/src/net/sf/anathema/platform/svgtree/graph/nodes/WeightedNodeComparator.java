@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.graph.nodes;
+package net.sf.anathema.charms.graph.nodes;
 
 import java.util.Comparator;
 

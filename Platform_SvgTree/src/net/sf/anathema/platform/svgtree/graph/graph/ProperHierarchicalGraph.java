@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.graph.graph;
+package net.sf.anathema.charms.graph.graph;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
-import net.sf.anathema.platform.svgtree.graph.util.IncidentMatrixUtilities;
+import net.sf.anathema.charms.graph.nodes.ISimpleNode;
+import net.sf.anathema.charms.graph.util.IncidentMatrixUtilities;
 
 public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
   private final Map<Integer, List<ISimpleNode>> nodesByLayer = new HashMap<Integer, List<ISimpleNode>>();
@@ -21,7 +21,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
   }
 
   public ProperHierarchicalGraph(final ISimpleNode[] hierarchicalGraph, final int deepestLayer) {
-    this.allNodes = hierarchicalGraph;
+    allNodes = hierarchicalGraph;
     this.deepestLayer = deepestLayer;
     for (int index = 1; index <= deepestLayer; index++) {
       nodesByLayer.put(index, new ArrayList<ISimpleNode>());
@@ -34,11 +34,11 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
       }
       nodesByLayer.get(node.getLayer()).add(node);
     }
-    this.type = identifyGraphType();
+    type = identifyGraphType();
   }
 
   private ProperHierarchicalGraph(final ISimpleNode[] nodes, final int deepestLayer, final IGraphType type) {
-    this.allNodes = nodes;
+    allNodes = nodes;
     this.deepestLayer = deepestLayer;
     this.type = type;
     for (int index = 1; index - 1 < deepestLayer; index++) {

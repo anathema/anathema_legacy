@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.graph.graph;
+package net.sf.anathema.charms.graph.graph;
 
 public interface IGraphTypeVisitor {
 

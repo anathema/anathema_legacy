@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.graph.util;
+package net.sf.anathema.charms.graph.util;
 
 public class BarycenterCalculator {
 

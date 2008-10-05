@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.graph.nodes;
+package net.sf.anathema.charms.graph.nodes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import net.sf.anathema.lib.lang.ArrayUtilities;
+import net.sf.anathema.charms.graph.util.ArrayUtilities;
 import net.sf.anathema.lib.util.Identificate;
 
 public class IdentifiedRegularNode extends Identificate implements IIdentifiedRegularNode {
@@ -70,7 +70,7 @@ public class IdentifiedRegularNode extends Identificate implements IIdentifiedRe
   }
 
   public void setLowerToChildren(boolean lower) {
-    this.lowerToChildren = lower;
+    lowerToChildren = lower;
   }
 
   public boolean getLowerToChildren() {

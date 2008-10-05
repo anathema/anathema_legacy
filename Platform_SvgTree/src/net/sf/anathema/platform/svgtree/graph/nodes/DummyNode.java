@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.graph.nodes;
+package net.sf.anathema.charms.graph.nodes;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.Ensure;
@@ -23,7 +23,7 @@ public class DummyNode implements ISimpleNode {
   }
 
   public boolean isParentOf(ISimpleNode potential) {
-    return ArrayUtilities.contains(this.child, potential);
+    return ArrayUtilities.contains(child, potential);
   }
 
   public ISimpleNode[] getParents() {
@@ -31,8 +31,8 @@ public class DummyNode implements ISimpleNode {
   }
 
   public void addParent(ISimpleNode node) {
-    Ensure.ensureNull(this.parent[0]);
-    this.parent[0] = node;
+    Ensure.ensureNull(parent[0]);
+    parent[0] = node;
   }
 
   public boolean isRootNode() {
