@@ -1,6 +1,6 @@
-package net.sf.anathema.charms.graph.ordering;
+package net.sf.anathema.platform.svgtree.graph.ordering;
 
-import net.sf.anathema.charms.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
 
 public interface IVertexOrdererFactory {
 

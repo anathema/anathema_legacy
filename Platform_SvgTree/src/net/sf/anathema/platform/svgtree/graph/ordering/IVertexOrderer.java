@@ -1,4 +1,4 @@
-package net.sf.anathema.charms.graph.ordering;
+package net.sf.anathema.platform.svgtree.graph.ordering;
 
 public interface IVertexOrderer {
 

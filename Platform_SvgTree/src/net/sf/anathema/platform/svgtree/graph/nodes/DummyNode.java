@@ -1,4 +1,4 @@
-package net.sf.anathema.charms.graph.nodes;
+package net.sf.anathema.platform.svgtree.graph.nodes;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.Ensure;

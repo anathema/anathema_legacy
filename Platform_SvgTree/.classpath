@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-xml.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-dom3.jar"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Platform"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

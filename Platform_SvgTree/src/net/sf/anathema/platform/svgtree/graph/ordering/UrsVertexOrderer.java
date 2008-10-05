@@ -1,10 +1,10 @@
-package net.sf.anathema.charms.graph.ordering;
+package net.sf.anathema.platform.svgtree.graph.ordering;
 
-import net.sf.anathema.charms.graph.graph.IProperHierarchicalGraph;
-import net.sf.anathema.charms.graph.nodes.ISimpleNode;
-import net.sf.anathema.charms.graph.nodes.WeightedNode;
-import net.sf.anathema.charms.graph.util.BarycenterCalculator;
-import net.sf.anathema.charms.graph.util.IncidentMatrixUtilities;
+import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
+import net.sf.anathema.platform.svgtree.graph.nodes.WeightedNode;
+import net.sf.anathema.platform.svgtree.graph.util.BarycenterCalculator;
+import net.sf.anathema.platform.svgtree.graph.util.IncidentMatrixUtilities;
 
 public class UrsVertexOrderer extends AbstractVertexOrderer {
 

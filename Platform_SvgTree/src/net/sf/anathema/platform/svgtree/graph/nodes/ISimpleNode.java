@@ -1,6 +1,6 @@
-package net.sf.anathema.charms.graph.nodes;
+package net.sf.anathema.platform.svgtree.graph.nodes;
 
-import net.sf.anathema.charms.graph.ordering.IStructureNode;
+import net.sf.anathema.platform.svgtree.graph.ordering.IStructureNode;
 
 public interface ISimpleNode extends IStructureNode {
 

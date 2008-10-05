@@ -1,4 +1,4 @@
-package net.sf.anathema.charms.graph.nodes;
+package net.sf.anathema.platform.svgtree.graph.nodes;
 
 public class NodeFactory {
 
