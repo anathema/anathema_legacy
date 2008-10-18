@@ -13,7 +13,7 @@
     <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
     <CharacterConcept>
       <Caste type="Night"/>
-      <Motivation><![CDATA[Save Artemesia Sapphire from Mortality]]></Motivation>
+      <Motivation><![CDATA[Save Gereth From His Fetters]]></Motivation>
     </CharacterConcept>
     <Essence creationValue="3"/>
     <Willpower creationValue="6"/>
@@ -97,6 +97,9 @@
         <Charm name="Solar.1stExcellency.Larceny" experienceLearned="false"/>
         <Charm name="Solar.PerfectMirror" experienceLearned="false"/>
         <Charm name="Solar.FlawlesslyImpenetrableDisguise" experienceLearned="false"/>
+        <Charm name="Solar.FlawlessPickpocketingTechnique" experienceLearned="true"/>
+        <Charm name="Solar.StealingfromPlainSightSpirit" experienceLearned="true"/>
+        <Charm name="Solar.Lock-OpeningTouch" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Thrown" type="Solar">
         <Charm name="Solar.CascadeCuttingTerror" experienceLearned="false"/>
@@ -116,66 +119,38 @@
       <CharmGroup name="Socialize" type="Solar">
         <Charm name="Solar.MasterySmallManners" experienceLearned="true"/>
       </CharmGroup>
+      <CharmGroup name="Awareness" type="Solar">
+        <Charm name="Solar.3rdExcellency.Awareness" experienceLearned="true"/>
+      </CharmGroup>
       <CharmGroup name="Resistance" type="Solar">
         <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
           <Special>
             <Categories>
               <Category.-0 creationValue="0"/>
-              <Category.-1x2 creationValue="1"/>
-              <Category.-1-2x2 creationValue="0"/>
+              <Category.-1x2 creationValue="0"/>
+              <Category.-1-2x2 creationValue="1"/>
             </Categories>
           </Special>
         </Charm>
       </CharmGroup>
-      <Combos>
-        <Combo experienceLearned="true">
-          <Name><![CDATA[Unexpected Wave of Death]]></Name>
-          <Charm name="Solar.FallingIcicleStrike" type="Solar"/>
-          <Charm name="Solar.Observer-DeceivingAttack" type="Solar"/>
-          <Charm name="Solar.1stExcellency.Thrown" type="Solar"/>
-        </Combo>
-      </Combos>
+      <Combos/>
     </Charms>
     <Spells/>
     <Experience>
-      <Entry points="5">
-        <Description><![CDATA[Moonlit Flowers]]></Description>
-      </Entry>
-      <Entry points="4">
-        <Description><![CDATA[New Comrads?]]></Description>
-      </Entry>
-      <Entry points="5">
-        <Description><![CDATA[There must be a Way in]]></Description>
-      </Entry>
-      <Entry points="8">
-        <Description><![CDATA[Pilgrims in an Unholy Land]]></Description>
-      </Entry>
-      <Entry points="5">
-        <Description><![CDATA[Home Again]]></Description>
-      </Entry>
-      <Entry points="10">
-        <Description><![CDATA[Destiny Revealed]]></Description>
-      </Entry>
-      <Entry points="2">
-        <Description><![CDATA[Intermezzo mit SesusRela]]></Description>
-      </Entry>
-      <Entry points="5">
-        <Description><![CDATA[Back To The East]]></Description>
-      </Entry>
-      <Entry points="4">
-        <Description><![CDATA[Pleading for Help]]></Description>
-      </Entry>
-      <Entry points="50">
-        <Description><![CDATA[Bis Mnemon Comes to Town]]></Description>
-      </Entry>
-      <Entry points="10">
-        <Description><![CDATA[Schlacht gegen Mnemon]]></Description>
+      <Entry points="112">
+        <Description><![CDATA[Der Osten in Gefahr]]></Description>
       </Entry>
       <Entry points="-12">
         <Description><![CDATA[Appearance 4]]></Description>
       </Entry>
-      <Entry points="5">
-        <Description><![CDATA[Rote Lotus in Gefahr]]></Description>
+      <Entry points="11">
+        <Description><![CDATA[Roter Lotus in Gefahr]]></Description>
+      </Entry>
+      <Entry points="8">
+        <Description><![CDATA[Gereth in Nöten]]></Description>
+      </Entry>
+      <Entry points="11">
+        <Description><![CDATA[A New Brother]]></Description>
       </Entry>
     </Experience>
     <AdditionalModels>
@@ -223,6 +198,7 @@
           <linguistics>
             <language><![CDATA[Riverspeak]]></language>
             <language><![CDATA[HighRealm]]></language>
+            <language><![CDATA[OldRealm]]></language>
             <language><![CDATA[GuildCant]]></language>
           </linguistics>
         </Content>
@@ -230,16 +206,28 @@
       <Model templateId="Intimacies">
         <Content>
           <Intimacies>
-            <Intimacy name="Luxury (Compassion)" complete="true">
-              <Trait creationValue="0" experiencedValue="3"/>
+            <Intimacy name="Ihre 'Familie' (Compassion)" complete="true">
+              <Trait creationValue="2" experiencedValue="2"/>
             </Intimacy>
-            <Intimacy name="Artemesia Sapphire (Compassion)" complete="true">
+            <Intimacy name="Gereth (Compassion)" complete="true">
               <Trait creationValue="0" experiencedValue="3"/>
             </Intimacy>
             <Intimacy name="Sesus Rela (Compassion)" complete="true">
               <Trait creationValue="0" experiencedValue="3"/>
             </Intimacy>
-            <Intimacy name="Gilde (Conviction)" complete="true">
+            <Intimacy name="Gilde (Compassion)" complete="true">
+              <Trait creationValue="2" experiencedValue="2"/>
+            </Intimacy>
+            <Intimacy name="Avoid War (Conviction)" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Luxury (Temperance)" complete="true">
+              <Trait creationValue="2" experiencedValue="2"/>
+            </Intimacy>
+            <Intimacy name="Guard Subordinates (Valor)" complete="true">
+              <Trait creationValue="2" experiencedValue="2"/>
+            </Intimacy>
+            <Intimacy name="Impede Samea (Valor)" complete="true">
               <Trait creationValue="0" experiencedValue="3"/>
             </Intimacy>
           </Intimacies>
@@ -249,6 +237,11 @@
         <Content>
           <VirtueFlaw>
             <RootVirtue name="Compassion"/>
+            <Name><![CDATA[Red Rage of Compassion]]></Name>
+            <LimitBreak><![CDATA[The character sees innocents suffering and is unable to effetively intervene]]></LimitBreak>
+            <Description><![CDATA[Attacks most obvious source, unlikely to perform simple acts, no wound penalties.
+Without target: rage, smashing objects, will attack anyone foolish enough to interfere
+Duration: For one scene in combat or hours equal to Compassion]]></Description>
           </VirtueFlaw>
         </Content>
       </Model>
