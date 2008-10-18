@@ -71,14 +71,14 @@
       <Investigation creationValue="1" experiencedValue="2" favored="true"/>
       <Lore creationValue="2"/>
       <Medicine creationValue="0"/>
-      <Occult creationValue="2"/>
+      <Occult creationValue="3"/>
       <Athletics creationValue="1" experiencedValue="5"/>
-      <Awareness creationValue="1" experiencedValue="2"/>
-      <Dodge creationValue="3"/>
+      <Awareness creationValue="0" experiencedValue="2"/>
+      <Dodge creationValue="1" experiencedValue="3"/>
       <Larceny creationValue="5"/>
       <Stealth creationValue="1" experiencedValue="3"/>
       <Bureaucracy creationValue="1" experiencedValue="2" favored="true"/>
-      <Linguistics creationValue="1"/>
+      <Linguistics creationValue="3"/>
       <Ride creationValue="0"/>
       <Sail creationValue="0"/>
       <Socialize creationValue="1" experiencedValue="2" favored="true"/>
@@ -120,7 +120,7 @@
         <Charm name="Solar.MasterySmallManners" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Awareness" type="Solar">
-        <Charm name="Solar.3rdExcellency.Awareness" experienceLearned="true"/>
+        <Charm name="Solar.2ndExcellency.Awareness" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Resistance" type="Solar">
         <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
@@ -133,11 +133,18 @@
           </Special>
         </Charm>
       </CharmGroup>
-      <Combos/>
+      <Combos>
+        <Combo experienceLearned="true">
+          <Name><![CDATA[Golden Fury]]></Name>
+          <Charm name="Solar.FallingIcicleStrike" type="Solar"/>
+          <Charm name="Solar.CascadeCuttingTerror" type="Solar"/>
+          <Charm name="Solar.1stExcellency.Thrown" type="Solar"/>
+        </Combo>
+      </Combos>
     </Charms>
     <Spells/>
     <Experience>
-      <Entry points="112">
+      <Entry points="119">
         <Description><![CDATA[Der Osten in Gefahr]]></Description>
       </Entry>
       <Entry points="-12">
@@ -207,7 +214,16 @@
         <Content>
           <Intimacies>
             <Intimacy name="Ihre 'Familie' (Compassion)" complete="true">
-              <Trait creationValue="2" experiencedValue="2"/>
+              <Trait creationValue="2" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Gilde (Compassion)" complete="true">
+              <Trait creationValue="2" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Luxury (Temperance)" complete="true">
+              <Trait creationValue="2" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Guard Subordinates (Valor)" complete="true">
+              <Trait creationValue="2" experiencedValue="3"/>
             </Intimacy>
             <Intimacy name="Gereth (Compassion)" complete="true">
               <Trait creationValue="0" experiencedValue="3"/>
@@ -215,17 +231,8 @@
             <Intimacy name="Sesus Rela (Compassion)" complete="true">
               <Trait creationValue="0" experiencedValue="3"/>
             </Intimacy>
-            <Intimacy name="Gilde (Compassion)" complete="true">
-              <Trait creationValue="2" experiencedValue="2"/>
-            </Intimacy>
             <Intimacy name="Avoid War (Conviction)" complete="true">
               <Trait creationValue="0" experiencedValue="3"/>
-            </Intimacy>
-            <Intimacy name="Luxury (Temperance)" complete="true">
-              <Trait creationValue="2" experiencedValue="2"/>
-            </Intimacy>
-            <Intimacy name="Guard Subordinates (Valor)" complete="true">
-              <Trait creationValue="2" experiencedValue="2"/>
             </Intimacy>
             <Intimacy name="Impede Samea (Valor)" complete="true">
               <Trait creationValue="0" experiencedValue="3"/>
@@ -238,7 +245,7 @@
           <VirtueFlaw>
             <RootVirtue name="Compassion"/>
             <Name><![CDATA[Red Rage of Compassion]]></Name>
-            <LimitBreak><![CDATA[The character sees innocents suffering and is unable to effetively intervene]]></LimitBreak>
+            <LimitBreak><![CDATA[The character sees innocents suffering and is unable to effecively intervene]]></LimitBreak>
             <Description><![CDATA[Attacks most obvious source, unlikely to perform simple acts, no wound penalties.
 Without target: rage, smashing objects, will attack anyone foolish enough to interfere
 Duration: For one scene in combat or hours equal to Compassion]]></Description>
