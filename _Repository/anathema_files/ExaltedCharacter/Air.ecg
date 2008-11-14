@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="Air" repositoryPrintName="Air">
+  <Description>
+    <CharacterName><![CDATA[Air]]></CharacterName>
+  </Description>
+  <Statistics experienced="true">
+    <Rules>
+      <RuleSet name="SecondEdition"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Dragon-Blooded</CharacterType>
+    <CharacterConcept>
+      <Caste type="Air"/>
+      <Motivation><![CDATA[Follow the wyld hunt]]></Motivation>
+    </CharacterConcept>
+    <Essence creationValue="3"/>
+    <Willpower creationValue="7"/>
+    <Virtues>
+      <Compassion creationValue="3"/>
+      <Conviction creationValue="4"/>
+      <Temperance creationValue="2"/>
+      <Valor creationValue="1"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="2"/>
+        <Dexterity creationValue="3"/>
+        <Stamina creationValue="2"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="3"/>
+        <Manipulation creationValue="4"/>
+        <Appearance creationValue="2"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="2"/>
+        <Intelligence creationValue="4"/>
+        <Wits creationValue="4"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Linguistics creationValue="3"/>
+      <Lore creationValue="3"/>
+      <Occult creationValue="5"/>
+      <Stealth creationValue="2"/>
+      <Thrown creationValue="2"/>
+      <Awareness creationValue="2"/>
+      <Craft>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Air]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Earth]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Fire]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Water]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Wood]]></traitName>
+        </subTrait>
+      </Craft>
+      <Integrity creationValue="2" favored="true"/>
+      <Resistance creationValue="3" favored="true"/>
+      <War creationValue="1"/>
+      <Athletics creationValue="0"/>
+      <Dodge creationValue="3" favored="true"/>
+      <Melee creationValue="1"/>
+      <Presence creationValue="2"/>
+      <Socialize creationValue="2"/>
+      <Bureaucracy creationValue="2"/>
+      <Investigation creationValue="0"/>
+      <Larceny creationValue="0"/>
+      <MartialArts creationValue="1"/>
+      <Sail creationValue="0"/>
+      <Archery creationValue="1"/>
+      <Medicine creationValue="0"/>
+      <Performance creationValue="1"/>
+      <Ride creationValue="1"/>
+      <Survival creationValue="0"/>
+    </Abilities>
+    <Backgrounds>
+      <Background creationValue="3"><![CDATA[Artifact]]></Background>
+      <Background creationValue="3"><![CDATA[Backing]]></Background>
+      <Background creationValue="3"><![CDATA[Breeding]]></Background>
+      <Background creationValue="3"><![CDATA[Family]]></Background>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Lore" type="Dragon-Blooded">
+        <Charm name="Dragon-Blooded.ElementalConcentrationTrance" experienceLearned="true"/>
+        <Charm name="Dragon-Blooded.ElementalBoltAttack" experienceLearned="true"/>
+        <Charm name="Dragon-Blooded.ElementalBurstTechnique" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Occult" type="Dragon-Blooded">
+        <Charm name="Dragon-Blooded.TerrestrialCircleSorcery" experienceLearned="false"/>
+        <Charm name="Dragon-Blooded.1stExcellency.Occult" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Resistance" type="Dragon-Blooded">
+        <Charm name="Dragon-Blooded.Ox-BodyTechnique" experienceLearned="true">
+          <Special>
+            <Categories>
+              <Category.-1-2 creationValue="0" experiencedValue="2"/>
+            </Categories>
+          </Special>
+        </Charm>
+      </CharmGroup>
+      <Combos/>
+    </Charms>
+    <Spells>
+      <Spell name="Terrestrial.EmeraldCountermagic" experienceLearned="false"/>
+      <Spell name="Terrestrial.FlyingGuillotine" experienceLearned="false"/>
+      <Spell name="Terrestrial.SpiritSword" experienceLearned="false"/>
+      <Spell name="Terrestrial.FlightBrilliantRaptor" experienceLearned="false"/>
+      <Spell name="Terrestrial.HoundFiveWinds" experienceLearned="false"/>
+    </Spells>
+    <Experience>
+      <Entry points="50">
+        <Description><![CDATA[Lesser Slayer of Anathema]]></Description>
+      </Entry>
+    </Experience>
+    <AdditionalModels>
+      <Model templateId="Equipment">
+        <Content>
+          <item>
+            <templateId><![CDATA[Natural]]></templateId>
+            <printedStats><![CDATA[Punch]]></printedStats>
+            <printedStats><![CDATA[Kick]]></printedStats>
+            <printedStats><![CDATA[Clinch]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Jade Reinforced Buff Jacket]]></templateId>
+            <printedStats><![CDATA[Armour]]></printedStats>
+          </item>
+        </Content>
+      </Model>
+      <Model templateId="Specialties">
+        <Content/>
+      </Model>
+      <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
+        <Content>
+          <linguistics/>
+        </Content>
+      </Model>
+      <Model templateId="Intimacies">
+        <Content>
+          <Intimacies/>
+        </Content>
+      </Model>
+      <Model templateId="Db.VirtueFlaw.Template">
+        <Content>
+          <VirtueFlaw>
+            <RootVirtue name="Conviction"/>
+          </VirtueFlaw>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

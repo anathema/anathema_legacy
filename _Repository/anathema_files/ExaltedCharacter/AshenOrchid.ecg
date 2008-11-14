@@ -32,7 +32,7 @@
       <Social>
         <Charisma creationValue="3"/>
         <Manipulation creationValue="2"/>
-        <Appearance creationValue="2" experiencedValue="3"/>
+        <Appearance creationValue="2" experiencedValue="4"/>
       </Social>
       <Mental>
         <Perception creationValue="3"/>
@@ -147,9 +147,6 @@
       <Entry points="119">
         <Description><![CDATA[Der Osten in Gefahr]]></Description>
       </Entry>
-      <Entry points="-12">
-        <Description><![CDATA[Appearance 4]]></Description>
-      </Entry>
       <Entry points="11">
         <Description><![CDATA[Roter Lotus in Gefahr]]></Description>
       </Entry>
@@ -158,6 +155,9 @@
       </Entry>
       <Entry points="11">
         <Description><![CDATA[A New Brother]]></Description>
+      </Entry>
+      <Entry points="6">
+        <Description><![CDATA[Appointment With The Devil]]></Description>
       </Entry>
     </Experience>
     <AdditionalModels>

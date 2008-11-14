@@ -5,13 +5,16 @@
     <CharacterName><![CDATA[Vedia Telperion]]></CharacterName>
     <PhysicalDescription><![CDATA[Languages Riverspeak, High Realm
 ]]></PhysicalDescription>
+    <Concept><![CDATA[General]]></Concept>
   </Description>
   <Statistics experienced="true">
-    <CharacterType>Solar</CharacterType>
+    <Rules>
+      <RuleSet name="CoreRules"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
     <CharacterConcept>
       <Caste type="Dawn"/>
       <Nature type="Leader"/>
-      <Concept>General</Concept>
     </CharacterConcept>
     <Essence creationValue="3" experiencedValue="4"/>
     <Willpower creationValue="5"/>
@@ -21,10 +24,6 @@
       <Temperance creationValue="2"/>
       <Valor creationValue="3"/>
     </Virtues>
-    <VirtueFlaw>
-      <RootVirtue name="Valor"/>
-      <LimitBreak><![CDATA[not being properly commended for a deed well done.]]></LimitBreak>
-    </VirtueFlaw>
     <Attributes>
       <Physical>
         <Strength creationValue="4"/>
@@ -55,7 +54,11 @@
       <Presence creationValue="1"/>
       <Resistance creationValue="2" favored="true"/>
       <Survival creationValue="0"/>
-      <Craft creationValue="0"/>
+      <Craft>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Generic]]></traitName>
+        </subTrait>
+      </Craft>
       <Investigation creationValue="0"/>
       <Lore creationValue="1"/>
       <Medicine creationValue="2"/>
@@ -72,18 +75,12 @@
       <Socialize creationValue="0"/>
     </Abilities>
     <Backgrounds>
-      <Allies creationValue="2"/>
-      <Artifact creationValue="3"/>
-      <Resources creationValue="3"/>
+      <Background creationValue="2"><![CDATA[Allies]]></Background>
+      <Background creationValue="3"><![CDATA[Artifact]]></Background>
+      <Background creationValue="3"><![CDATA[Resources]]></Background>
     </Backgrounds>
     <Charms>
-      <CharmGroup name="Performance">
-        <Charm name="Solar.RespectCommandingAttitude" experienceLearned="false"/>
-        <Charm name="Solar.Heroism-EncouragingPresence" experienceLearned="false"/>
-        <Charm name="Solar.UnrulyMobDispersingRebuke" experienceLearned="false"/>
-        <Charm name="Solar.FuryIncitingPresence" experienceLearned="false"/>
-      </CharmGroup>
-      <CharmGroup name="Endurance">
+      <CharmGroup name="Endurance" type="Solar">
         <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
           <Special>
             <Categories>
@@ -95,31 +92,37 @@
         </Charm>
         <Charm name="Solar.ArmoredScout'sInvigoration" experienceLearned="true"/>
       </CharmGroup>
-      <CharmGroup name="Archery">
-        <Charm name="Solar.PhantomArrowTechnique" experienceLearned="true"/>
-        <Charm name="Solar.ImmaculateGoldenBow" experienceLearned="true"/>
-        <Charm name="Solar.FieryArrowTechnique" experienceLearned="true"/>
-      </CharmGroup>
-      <CharmGroup name="Lore">
+      <CharmGroup name="Lore" type="Solar">
         <Charm name="Solar.Integrity-ProtectingPrana" experienceLearned="true"/>
       </CharmGroup>
-      <CharmGroup name="Melee">
-        <Charm name="Solar.ExcellentStrike" experienceLearned="false"/>
+      <CharmGroup name="Archery" type="Solar">
+        <Charm name="Solar.FieryArrowTechnique" experienceLearned="true"/>
+        <Charm name="Solar.ImmaculateGoldenBow" experienceLearned="true"/>
+        <Charm name="Solar.PhantomArrowTechnique" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Melee" type="Solar">
         <Charm name="Solar.FireandStonesStrike" experienceLearned="false"/>
+        <Charm name="Solar.GoldenEssenceBlock" experienceLearned="false"/>
         <Charm name="Solar.WhirlwindSearingBlows" experienceLearned="false"/>
         <Charm name="Solar.HungryTigerTechnique" experienceLearned="false"/>
-        <Charm name="Solar.GoldenEssenceBlock" experienceLearned="false"/>
+        <Charm name="Solar.ExcellentStrike" experienceLearned="false"/>
         <Charm name="Solar.IronRaptorTechnique" experienceLearned="true"/>
-        <Charm name="Solar.DippingSwallowDefense" experienceLearned="true"/>
-        <Charm name="Solar.Sandstorm-WindAttack" experienceLearned="true"/>
         <Charm name="Solar.RetrieveFallenWeapon" experienceLearned="true"/>
+        <Charm name="Solar.Sandstorm-WindAttack" experienceLearned="true"/>
+        <Charm name="Solar.DippingSwallowDefense" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Performance" type="Solar">
+        <Charm name="Solar.FuryIncitingPresence" experienceLearned="false"/>
+        <Charm name="Solar.UnrulyMobDispersingRebuke" experienceLearned="false"/>
+        <Charm name="Solar.Heroism-EncouragingPresence" experienceLearned="false"/>
+        <Charm name="Solar.RespectCommandingAttitude" experienceLearned="false"/>
       </CharmGroup>
       <Combos>
         <Combo experienceLearned="false">
           <Name><![CDATA[Proling Telperion]]></Name>
-          <Charm name="Solar.ExcellentStrike"/>
-          <Charm name="Solar.FireandStonesStrike"/>
-          <Charm name="Solar.HungryTigerTechnique"/>
+          <Charm name="Solar.ExcellentStrike" type="Solar"/>
+          <Charm name="Solar.FireandStonesStrike" type="Solar"/>
+          <Charm name="Solar.HungryTigerTechnique" type="Solar"/>
         </Combo>
       </Combos>
     </Charms>
@@ -134,6 +137,47 @@
       <Entry points="8">
         <Description><![CDATA[3.6 Echoes and Mirages]]></Description>
       </Entry>
+      <Entry points="7">
+        <Description><![CDATA[4.1 Adamant Hearts]]></Description>
+      </Entry>
+      <Entry points="50">
+        <Description><![CDATA[Downtime XP]]></Description>
+      </Entry>
+      <Entry points="30"/>
     </Experience>
+    <AdditionalModels>
+      <Model templateId="Equipment">
+        <Content>
+          <item>
+            <templateId><![CDATA[Natural]]></templateId>
+            <printedStats><![CDATA[Punch]]></printedStats>
+            <printedStats><![CDATA[Kick]]></printedStats>
+            <printedStats><![CDATA[Clinch]]></printedStats>
+            <printedStats><![CDATA[Hold]]></printedStats>
+          </item>
+        </Content>
+      </Model>
+      <Model templateId="MeritsAndFlaws">
+        <Content>
+          <meritsFlaws/>
+        </Content>
+      </Model>
+      <Model templateId="Specialties">
+        <Content/>
+      </Model>
+      <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
+        <Content>
+          <linguistics/>
+        </Content>
+      </Model>
+      <Model templateId="SolarVirtueFlaw">
+        <Content>
+          <VirtueFlaw/>
+        </Content>
+      </Model>
+    </AdditionalModels>
   </Statistics>
 </ExaltedCharacter>

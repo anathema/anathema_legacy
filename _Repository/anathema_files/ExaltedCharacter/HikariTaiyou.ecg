@@ -10,7 +10,7 @@
 - Ein Pferdelunar stürmt in das Gemach und Hikari stellt sich ihm zum Kampf.
 - Derweil öffent sich in einer Kaskade von purpurnen Blitzen ein Astraltor in der Kammer. Die Empress begrüsst den dämonischen Ankömmling mit den Worten 'Er sei zu früh.'
 - Dieser verneint das mit einem siegesgewissen Lächeln und greift sich die Herrscherin um mit ihr durch das Tor zu verschwieden. 
-- Perfekt Dodge vor dem Todesstoß seines Gegners, welcher von dem sich beim Schließen ausdehnenden Tor verschlungen wird. Das Gleißen der Anima des Exalt verstärkt sich und hält der Finsternis Stand.
+- Perfekt Dodge vor dem Todesstoß seines Gegners, welcher von dem sich beim Schließen ausdehnenden Tor verschlungen wird. Das Gleißen der Anima des Exalt verstärkt sich und hält der Finsternis stand.
 - Und hier beginnt unsere Geschichte.]]></Characterization>
     <PhysicalDescription><![CDATA[- Haare in allen Helligkeitsschattierungen einer Farbe, manchmal auch zweier Farben.
 - schwarze Lederstiefel und schwarze Seidenweste mit Elementarsticker in den entsprechenden Farben (blau, rot grün, schwarz, grün) Stickereien ,  
@@ -87,17 +87,17 @@
       <Investigation creationValue="3"/>
       <Lore creationValue="1"/>
       <Medicine creationValue="0"/>
-      <Occult creationValue="0"/>
+      <Occult creationValue="0" experiencedValue="1"/>
       <Athletics creationValue="2"/>
       <Awareness creationValue="1" experiencedValue="2" favored="true"/>
       <Dodge creationValue="5" favored="true">
         <Specialty creationValue="2" name="Unarmoured"/>
       </Dodge>
-      <Larceny creationValue="1" favored="true">
+      <Larceny creationValue="1">
         <Specialty creationValue="2" name="Blackmail"/>
       </Larceny>
       <Stealth creationValue="0"/>
-      <Bureaucracy creationValue="1"/>
+      <Bureaucracy creationValue="1" favored="true"/>
       <Linguistics creationValue="2"/>
       <Ride creationValue="0"/>
       <Sail creationValue="0"/>
@@ -111,10 +111,11 @@
     <Charms>
       <CharmGroup name="Presence" type="Solar">
         <Charm name="Solar.2ndExcellency.Presence" experienceLearned="false"/>
+        <Charm name="Solar.IrresistibleSalesmanSpirit" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Dodge" type="Solar">
-        <Charm name="Solar.ShadowOverWater" experienceLearned="false"/>
         <Charm name="Solar.SevenShadowEvasion" experienceLearned="false"/>
+        <Charm name="Solar.ShadowOverWater" experienceLearned="false"/>
         <Charm name="Solar.1stExcellency.Dodge" experienceLearned="false"/>
       </CharmGroup>
       <CharmGroup name="Resistance" type="Solar">
@@ -147,8 +148,8 @@
     </Charms>
     <Spells/>
     <Experience>
-      <Entry points="8">
-        <Description><![CDATA[Erwachen in Gefangenschaft]]></Description>
+      <Entry points="40">
+        <Description><![CDATA[Bis vor Verlobungsparty der Empress]]></Description>
       </Entry>
     </Experience>
     <AdditionalModels>
@@ -159,19 +160,6 @@
             <printedStats><![CDATA[Punch]]></printedStats>
             <printedStats><![CDATA[Kick]]></printedStats>
             <printedStats><![CDATA[Clinch]]></printedStats>
-          </item>
-          <item>
-            <templateId><![CDATA[Discreet Essence Armour]]></templateId>
-            <material><![CDATA[Orichalcum]]></material>
-            <printedStats><![CDATA[Armour]]></printedStats>
-          </item>
-          <item>
-            <templateId><![CDATA[Seven-Section Staff]]></templateId>
-            <printedStats><![CDATA[Close]]></printedStats>
-          </item>
-          <item>
-            <templateId><![CDATA[Wind-Fire Wheel / War Fan]]></templateId>
-            <printedStats><![CDATA[Close]]></printedStats>
           </item>
         </Content>
       </Model>
@@ -186,6 +174,7 @@
           <linguistics>
             <language><![CDATA[HighRealm]]></language>
             <language><![CDATA[LowRealm]]></language>
+            <language><![CDATA[OldRealm]]></language>
           </linguistics>
         </Content>
       </Model>
