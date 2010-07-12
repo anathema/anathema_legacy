@@ -2384,7 +2384,6 @@
     <prerequisite>
       <essence id="Essence" value="2"/>
       <trait id="Medicine" value="3"/>
-      <charmAttributeRequirement attribute="ExcellencyMedicine" count="1"/>
     </prerequisite>
     <cost>
       
@@ -2513,13 +2512,25 @@
     <source source="SecondEdition" page="220"/>
   </charm>
 
-  <charm id="Solar.Wonder-ForgingGenius" exalt="Solar" group="Craft">
+  <charm id="Solar.Wonder-ForgingGenius4" exalt="Solar" group="Craft">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Craft" value="5"/>
+      <charmReference id="Solar.Crack-MendingTechnique"/>
+      <charmReference id="Solar.CraftsmanNeedsNoTools"/>
+    </prerequisite>
+    <cost>
+      
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="OadenolsCodex" page="29"/>
+  </charm>
+   <charm id="Solar.Wonder-ForgingGenius5" exalt="Solar" group="Craft">
     <prerequisite>
       <essence id="Essence" value="5"/>
       <trait id="Craft" value="5"/>
-      <charmReference id="Solar.InfiniteMastery.Craft"/>
-      <charmReference id="Solar.Crack-MendingTechnique"/>
-      <charmReference id="Solar.CraftsmanNeedsNoTools"/>
+      <charmReference id="Solar.Wonder-ForgingGenius4"/>
     </prerequisite>
     <cost>
       
@@ -3024,15 +3035,11 @@
     </prerequisite>
     <cost>
       
-        <essence cost="10"/>
-        <willpower cost="1"/>
+        <essence cost="" text="(+3m, 1wp)"/>
       
     </cost>
-    <duration amount="1" unit="hour"/>
-    <charmtype type="Simple">
-      <special speed="6" turntype="LongTick" defense="-1"/>
-    </charmtype>
-    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent" />
     <source source="SecondEdition" page="228"/>
   </charm>
   <charm id="Solar.FlawlessPickpocketingTechnique" exalt="Solar" group="Larceny">
