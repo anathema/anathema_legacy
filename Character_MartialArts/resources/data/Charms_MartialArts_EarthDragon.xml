@@ -26,6 +26,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   <charm id="Celestial.UnmovingMountainStance" exalt="Dragon-Blooded" group="EarthDragonStyle">
@@ -58,6 +59,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     </charmtype>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   <charm id="Celestial.EarthDragonForm" exalt="Dragon-Blooded" group="EarthDragonStyle">
@@ -77,6 +79,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     </charmtype>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Form" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
@@ -93,6 +96,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmtype type="Simple"/>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   <charm id="Celestial.WeaponBreakingDefenseTechnique" exalt="Dragon-Blooded" group="EarthDragonStyle">
@@ -107,10 +111,11 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
-    	<special primaryStep="2"/>
+    	<special primaryStep="9"/>
     </charmtype>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Counterattack" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   <charm id="Celestial.EarthshakerAttack" exalt="Dragon-Blooded" group="EarthDragonStyle">
@@ -153,7 +158,8 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   		<charmReference id="Celestial.EarthDragonForm"/>
   	</prerequisite>
   	<cost>
-  			<essence cost="3"/>
+  			<essence cost="5"/>
+			<willpower cost="1"/>
   	</cost>
   	<duration duration="Special"/>
   	<charmtype type="Supplemental"/>
@@ -196,6 +202,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   	<charmtype type="Supplemental"/>
   	<charmAttribute attribute="Celestial"/>
   	<charmAttribute attribute="Combo-OK" visualize="true"/>
+        <charmAttribute attribute="Compulsion" visualize="true"/>
   	<charmAttribute attribute="Obvious" visualize="true"/>
   	<charmAttribute attribute="Touch" visualize="true"/>
   	<source source="DragonBlooded2nd"/>
@@ -215,6 +222,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   		<special speed="6" defense="-2"/>
   	</charmtype>
   	<charmAttribute attribute="Celestial"/>
+    	<charmAttribute attribute="Leader" visualize="true"/>
   	<charmAttribute attribute="Obvious" visualize="true"/>
   	<source source="DragonBlooded2nd"/>
   </charm>
