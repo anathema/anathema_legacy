@@ -94,14 +94,15 @@
         <essence cost="6"/>
       
     </cost>
-    <charmAttribute attribute="Unrestricted"/>
-    <charmAttribute attribute="NoStyle"/>
-    <charmAttribute attribute="Celestial"/>
-    <charmAttribute attribute="Combo-OK" visualize="true"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive">
     	<special primaryStep="2"/>
     </charmtype>
+    <charmAttribute attribute="Unrestricted"/>
+    <charmAttribute attribute="NoStyle"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   
@@ -117,13 +118,14 @@
         <willpower cost="1"/>
       
     </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="AllowsCelestial" visualize="true"/>
     <charmAttribute attribute="NoStyle"/>
     <charmAttribute attribute="Celestial"/>
-    <duration duration="Instant"/>
-    <charmtype type="Supplemental"/>
     <source source="DragonBlooded2nd"/>
   </charm>
 </charmlist>
