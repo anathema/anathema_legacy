@@ -43,6 +43,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     </charmtype>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   <charm id="Celestial.BreathSeizingTechnique" exalt="Dragon-Blooded" group="AirDragonStyle">
@@ -59,6 +60,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Crippling" visualize="true"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Stackable" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   <charm id="Celestial.ShroudingTheBodyAndMind" exalt="Dragon-Blooded" group="AirDragonStyle">
@@ -96,6 +98,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     </charmtype>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Form" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   <charm id="Celestial.TornadoOffenseTechnique" exalt="Dragon-Blooded" group="AirDragonStyle">
@@ -144,6 +147,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmtype type="Simple"/>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
+    <charmAttribute attribute="Crippling" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
@@ -176,6 +180,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   	<charmtype type="Simple"/>
   	<charmAttribute attribute="Celestial"/>
   	<charmAttribute attribute="Combo-Basic" visualize="true"/>
+        <charmAttribute attribute="Crippling" visualize="true"/>
   	<source source="DragonBlooded2nd"/>
   </charm>
   <charm id="Celestial.LightningStrikeStyle" exalt="Dragon-Blooded" group="AirDragonStyle">
@@ -194,6 +199,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   	</charmtype>
   	<charmAttribute attribute="Celestial"/>
   	<charmAttribute attribute="Combo-OK" visualize="true"/>
+        <charmAttribute attribute="Leader" visualize="true"/>
   	<charmAttribute attribute="Obvious" visualize="true"/>
   	<source source="DragonBlooded2nd"/>
   </charm>
