@@ -55,6 +55,11 @@ public interface ISolarSpecialCharms {
       EssenceTemplate.SYSTEM_ESSENCE_MAX,
       OtherTraitType.Essence);
 
+  public static final IMultiLearnableCharm INVINCIBLE_ESSENCE_REINFORCEMENT = new TraitDependentMultiLearnableCharm(
+      "Solar.InvincibleEssenceReinforcement", //$NON-NLS-1$
+      EssenceTemplate.SYSTEM_ESSENCE_MAX,
+      AbilityType.Resistance);
+  
   public static final IMultiLearnableCharm RIGHTEOUS_LION_DEFENSE = new StaticMultiLearnableCharm(
       "Solar.RighteousLionDefense", //$NON-NLS-1$
       2);
