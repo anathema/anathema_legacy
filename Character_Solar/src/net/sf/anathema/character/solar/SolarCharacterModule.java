@@ -56,6 +56,7 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
         ISolarSpecialCharms.GLORIOUS_SOLAR_SABER,
         ISolarSpecialCharms.CITY_MOVING_SECRETS,
         ISolarSpecialCharms.IMMANENT_SOLAR_GLORY,
+        ISolarSpecialCharms.INVINCIBLE_ESSENCE_REINFORCEMENT,
         ISolarSpecialCharms.RIGHTEOUS_LION_DEFENSE,
         ISolarSpecialCharms.WONDER_FORGING_GENIUS,
         ISolarSpecialCharms.ESSENCE_ARROW_ATTACK,
