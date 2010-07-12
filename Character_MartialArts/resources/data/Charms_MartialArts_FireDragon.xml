@@ -43,6 +43,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     </charmtype>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
@@ -59,6 +60,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Crippling" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
@@ -94,6 +96,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     </charmtype>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Form" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
@@ -110,6 +113,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
@@ -126,6 +130,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmtype type="Simple"/>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
@@ -145,6 +150,8 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     </charmtype>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Shaping" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   <charm id="Celestial.OverwhelmingFireMajestyStance" exalt="Dragon-Blooded" group="FireDragonStyle">
@@ -160,6 +167,8 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   	<charmtype type="Simple"/>
   	<charmAttribute attribute="Celestial"/>
   	<charmAttribute attribute="Combo-Basic" visualize="true"/>
+    	<charmAttribute attribute="Emotion" visualize="true"/>
+    	<charmAttribute attribute="Leader" visualize="true"/>
   	<charmAttribute attribute="Obvious" visualize="true"/>
   	<source source="DragonBlooded2nd"/>
   </charm>
@@ -192,6 +201,8 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
   	<duration amount="1" unit="scene"/>
   	<charmtype type="Simple"/>
   	<charmAttribute attribute="Celestial"/>
+    	<charmAttribute attribute="Emotion" visualize="true"/>
+    	<charmAttribute attribute="Leader" visualize="true"/>
   	<charmAttribute attribute="Obvious" visualize="true"/>
   	<source source="DragonBlooded2nd"/>
   </charm>
