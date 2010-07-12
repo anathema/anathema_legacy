@@ -16,6 +16,7 @@
     </specialties>
   </abilities>
   <advantages>
+    <backgrounds cost="3"/>
     <willpower>
       <currentRating multiplier="2" />
     </willpower>
