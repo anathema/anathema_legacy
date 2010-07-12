@@ -8,7 +8,7 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Outcaste" page="128"/>
+    <source edition="FirstEdition" source="Outcaste" page="128"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Magician'sPleasantPath">
     <cost>
@@ -16,7 +16,7 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="Bo3C" page="40"/>
+    <source edition="FirstEdition" source="Bo3C" page="40"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.MaledictionDistortedCompass">
     <cost>
@@ -24,7 +24,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Bo3C" page="41"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="Bo3C" page="41"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="52"/>
   </spell>     
   <spell id="Terrestrial.DeathObsidianButterflies" circle="Terrestrial">
     <cost>
@@ -103,7 +105,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="FirstEdition" page="220"/>
+    <target target="SummonedStormwind"/>
+    <source source="FirstEdition" page="220" edition="FirstEdition"/>
+    <source source="SecondEdition" page="254" edition="SecondEdition"/>
   </spell>
   <spell id="Terrestrial.WoodDragon'sClaw" circle="Terrestrial">
     <cost>
@@ -211,7 +215,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="FirstEdition" page="223"/>
+    <target target="Person"/>
+    <source edition="FirstEdition" source="FirstEdition" page="223"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="95"/>
   </spell>
   <spell id="Terrestrial.RaisingEarth'sBones" circle="Terrestrial">
     <cost>
@@ -219,7 +225,9 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="Outcaste" page="46"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="Outcaste" page="46"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="56"/>
   </spell>
   <spell id="Terrestrial.CallingGullsWithBeaksSteel" circle="Terrestrial">
     <cost>
@@ -227,7 +235,7 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="Outcaste" page="94"/>
+    <source edition="FirstEdition" source="Outcaste" page="94"/>
   </spell>
   <spell id="Terrestrial.InvocationLivingShip" circle="Terrestrial">
     <cost>
@@ -235,7 +243,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="Outcaste" page="95"/>
+    <target target="Ship"/>
+    <source edition="FirstEdition" source="Outcaste" page="95"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="51"/>
   </spell>
   <spell id="Terrestrial.KeelCleavesClouds" circle="Terrestrial">
     <cost>
@@ -243,7 +253,9 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="Outcaste" page="95"/>
+    <target target="Ship"/>
+    <source edition="FirstEdition" source="Outcaste" page="95"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="51"/>
   </spell>
   <spell id="Terrestrial.LightningWhipSmitesWater" circle="Terrestrial">
     <cost>
@@ -251,7 +263,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Outcaste" page="95"/>
+    <target target="ConjuredWhip"/>
+    <source edition="FirstEdition" source="Outcaste" page="95"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="52"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.BecomingWoodFriend">
     <cost>
@@ -370,7 +384,9 @@
         <essence cost="15+"/>
       
     </cost>
-    <source source="SavantSorcerer" page="105"/>
+    <target target="DemonDemons"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="105"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="80"/>
   </spell>
   
     <spell circle="Solar" id="Solar.AdamantCircleBanishment">
@@ -379,7 +395,9 @@
         <essence cost="20+"/>
       
     </cost>
-    <source source="SavantSorcerer" page="105"/>
+    <target target="DemonDemonsEssencex15yards"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="105"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="87"/>
   </spell>
   
   <spell circle="Terrestrial" id="Terrestrial.EyeAlliance">
@@ -388,7 +406,9 @@
         <essence cost="5" text="per participant"/>
       
     </cost>
-    <source source="SavantSorcerer" page="105"/>
+    <target target="Essencex2People"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="105"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="45"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.FlightSeparation">
     <cost>
@@ -396,7 +416,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="SavantSorcerer" page="106"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="106"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="45"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.FlightBrilliantRaptor">
     <cost>
@@ -404,7 +426,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="SavantSorcerer" page="106"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="106"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="46"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.FlyingGuillotine">
     <cost>
@@ -412,7 +436,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="SavantSorcerer" page="107"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="107"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="47"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.FoodFromAerialTable">
     <cost>
@@ -420,7 +446,9 @@
         <essence cost="10" text="or more"/>
       
     </cost>
-    <source source="SavantSorcerer" page="107"/>
+    <target target="ConjuredFood"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="107"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="47"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.FugueTruth">
     <cost>
@@ -428,7 +456,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="SavantSorcerer" page="107"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="107"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="48"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.HorseTravelsEarthWater">
     <cost>
@@ -436,7 +466,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="SavantSorcerer" page="108"/>
+    <target target="ConjuredAutomaton"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="108"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="48"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.HoundFiveWinds">
     <cost>
@@ -444,7 +476,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavantSorcerer" page="108"/>
+    <target target="ConjuredAutomaton"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="108"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="49"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.HypnoticPiping">
     <cost>
@@ -452,7 +486,7 @@
         <essence cost="21" text="plus 10 to activate"/>
       
     </cost>
-    <source source="SavantSorcerer" page="109"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="109"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.IncantationSpiritualDiscretion">
     <cost>
@@ -460,7 +494,9 @@
         <essence cost="20" text="+"/>
       
     </cost>
-    <source source="SavantSorcerer" page="109"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="109"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="50"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.InternalFlame">
     <cost>
@@ -468,7 +504,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavantSorcerer" page="109"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="109"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="51"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.LightningSpider">
     <cost>
@@ -476,7 +514,9 @@
         <essence cost="10" text="+"/>
       
     </cost>
-    <source source="SavantSorcerer" page="110"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="110"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="52"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.ManifestationVigorousDesign">
     <cost>
@@ -484,7 +524,7 @@
         <essence cost="5" text="+ (committed)"/>
       
     </cost>
-    <source source="SavantSorcerer" page="110"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="110"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Mast-ShatteringSpell">
     <cost>
@@ -492,7 +532,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="SavantSorcerer" page="110"/>
+    <target target="Ship"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="110"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="52"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.MistsEventide">
     <cost>
@@ -500,7 +542,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavantSorcerer" page="111"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="111"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="53"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.ParalyzingContradiction">
     <cost>
@@ -508,7 +552,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavantSorcerer" page="111"/>
+    <target target="CreaturesArea"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="111"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="54"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.PeacockShadowEyes">
     <cost>
@@ -516,7 +562,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="SavantSorcerer" page="111"/>
+    <target target="SentientBeing"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="111"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="55"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.PersonalTempest">
     <cost>
@@ -524,7 +572,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavantSorcerer" page="112"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="112"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="55"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.PlagueBronzeSnakes">
     <cost>
@@ -532,7 +582,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavantSorcerer" page="112"/>
+    <target target="ConjuredAutomata"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="112"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="55"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.PrivatePlazaDowncastEyes">
     <cost>
@@ -540,7 +592,9 @@
         <essence cost="20" text="+"/>
       
     </cost>
-    <source source="SavantSorcerer" page="112"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="112"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="55"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.RavenousFire">
     <cost>
@@ -548,7 +602,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavantSorcerer" page="113"/>
+    <target target="InanimateObject"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="113"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="56"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.RitualElementalEmpowerment">
     <cost>
@@ -556,7 +612,17 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="114"/>
+    <target target="InanimateObject"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="114"/>
+  </spell>
+  <spell circle="Terrestrial" id="Terrestrial.RitualElementalEmpowerment">
+    <cost>
+      
+        <essence cost="30" text="+"/>
+      
+    </cost>
+    <target target="InanimateObject"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="57"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.RiverBlood">
     <cost>
@@ -564,7 +630,9 @@
         <essence cost="15" text="+"/>
       
     </cost>
-    <source source="SavantSorcerer" page="114"/>
+    <target target="FlowingBodyWater"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="114"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="58"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SacredTongue">
     <cost>
@@ -572,7 +640,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="SavantSorcerer" page="115"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="115"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="58"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.ShadowSummons">
     <cost>
@@ -580,7 +650,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavantSorcerer" page="115"/>
+    <target target="LivingCreature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="115"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="58"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SilentWordsDreamsNightmares">
     <cost>
@@ -589,7 +661,9 @@
       
     </cost>
     <arcaneLink required="true"/>
-    <source source="SavantSorcerer" page="116"/>
+    <target target="Person"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="116"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="59"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SleepStonySafety">
     <cost>
@@ -597,15 +671,19 @@
         <essence cost="15+"/>
       
     </cost>
-    <source source="SavantSorcerer" page="117"/>
+    <target target="CasterWillpowerSubjects"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="117"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="60"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Sorcerer'sIrresistiblePuppetry">
     <cost>
       
-        <essence cost="25" text="plus 25 to activate"/>
+        <essence cost="25" text="+20 motes to activate"/>
       
     </cost>
-    <source source="SavantSorcerer" page="117"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="117"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="60"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SpiritMight">
     <cost>
@@ -613,7 +691,9 @@
         <essence cost="10+"/>
       
     </cost>
-    <source source="SavantSorcerer" page="118"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="118"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="61"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SpiritSword">
     <cost>
@@ -621,7 +701,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="SavantSorcerer" page="118"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="118"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="61"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SproutingShaklesDoom">
     <cost>
@@ -629,7 +711,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="SavantSorcerer" page="118"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="118"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="62"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SpyWhoWalksDarkness">
     <cost>
@@ -637,7 +721,9 @@
         <essence cost="15" text="(committed), 5 to possess"/>
       
     </cost>
-    <source source="SavantSorcerer" page="119"/>
+    <target target="ConjuredServant"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="119"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="62"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.StingIceHornet">
     <cost>
@@ -645,15 +731,19 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavantSorcerer" page="121"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="121"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="63"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SummoningLesserMinionsEyelessFace">
     <cost>
       
-        <essence cost="15"/>
+        <essence cost="25"/>
       
     </cost>
-    <source source="SavantSorcerer" page="121"/>
+    <target target="SummonedMinions"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="121"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="65"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.TheftMemory">
     <cost>
@@ -661,7 +751,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavantSorcerer" page="122"/>
+    <target target="Person"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="122"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="65"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.ThunderWolf'sHowl">
     <cost>
@@ -669,7 +761,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="SavantSorcerer" page="122"/>
+    <target target="Area20100yards"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="122"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="66"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Tree'sManyBranches">
     <cost>
@@ -677,7 +771,7 @@
         <essence cost="5" text="per pair"/>
       
     </cost>
-    <source source="SavantSorcerer" page="122"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="122"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.UnbreakableBonesStone">
     <cost>
@@ -685,7 +779,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="SavantSorcerer" page="123"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="123"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="66"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.UnstoppableFountainDepths">
     <cost>
@@ -693,7 +789,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="SavantSorcerer" page="123"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="123"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="67"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.VirdianMantleUnderwalterJourneys">
     <cost>
@@ -701,7 +799,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="SavantSorcerer" page="123"/>
+    <target target="CasterEssenceTargets"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="123"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="68"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.VirtuousGuardianFlame">
     <cost>
@@ -709,7 +809,17 @@
         <essence cost="25" text="(committed)"/>
       
     </cost>
-    <source source="SavantSorcerer" page="124"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="124"/>
+  </spell>
+  <spell circle="Terrestrial" id="Terrestrial.VirtuousGuardianFlame">
+    <cost>
+      
+        <essence cost="25" text="(5 committed)"/>
+      
+    </cost>
+    <target target="Creature"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="68"/>
   </spell>
   <spell circle="Celestial" id="Celestial.Battle'sEnd">
     <cost>
@@ -717,7 +827,9 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="125"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="125"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="69"/>
   </spell>
   <spell circle="Celestial" id="Celestial.BetweenMinuteHour">
     <cost>
@@ -725,7 +837,7 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="SavantSorcerer" page="125"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="125"/>
   </spell>
   <spell circle="Celestial" id="Celestial.BoneLion">
     <cost>
@@ -733,7 +845,8 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="125"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="125"/>
   </spell>
   <spell circle="Celestial" id="Celestial.CantataEmptyVoices">
     <cost>
@@ -741,7 +854,9 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="126"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="126"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="69"/>
   </spell>
   <spell circle="Celestial" id="Celestial.CloudTrapeze">
     <cost>
@@ -749,7 +864,9 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="SavantSorcerer" page="126"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="126"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="70"/>
   </spell>
   <spell circle="Celestial" id="Celestial.EternalCrystallineEnchantment">
     <cost>
@@ -757,7 +874,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="SavantSorcerer" page="127"/>
+    <target target="CreatureObject"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="127"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="70"/>
   </spell>
   <spell circle="Celestial" id="Celestial.FaithfulAlly">
     <cost>
@@ -765,7 +884,9 @@
         <essence cost="20" text="plus 20 to activate"/>
       
     </cost>
-    <source source="SavantSorcerer" page="127"/>
+    <target target="CasterCreature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="127"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="70"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ForceLife'sSummer">
     <cost>
@@ -773,7 +894,7 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="SavantSorcerer" page="128"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="128"/>
   </spell>
   <spell circle="Celestial" id="Celestial.GeyserCorruption">
     <cost>
@@ -781,7 +902,17 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="128"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="128"/>
+  </spell>
+  <spell circle="Celestial" id="Celestial.GeyserCorrosion">
+    <cost>
+      
+        <essence cost="30"/>
+      
+    </cost>
+    <target target="Area"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="72"/>
   </spell>
   <spell circle="Celestial" id="Celestial.HideousConfusionTongues">
     <cost>
@@ -789,7 +920,9 @@
         <essence cost="35"/>
       
     </cost>
-    <source source="SavantSorcerer" page="128"/>
+    <target target="AreaInfectedCreatures"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="128"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="74"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ImbueAmalgam">
     <cost>
@@ -797,7 +930,9 @@
         <essence cost="15" text="+"/>
       
     </cost>
-    <source source="SavantSorcerer" page="128"/>
+    <target target="MortalCreature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="128"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="74"/>
   </spell>
   <spell circle="Celestial" id="Celestial.InsidiousTendrilsHate">
     <cost>
@@ -805,7 +940,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="SavantSorcerer" page="129"/>
+    <target target="PeopleArea"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="129"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="76"/>
   </spell>
   <spell circle="Celestial" id="Celestial.IvoryOrchidPavilion">
     <cost>
@@ -813,7 +950,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="SavantSorcerer" page="130"/>
+    <target target="ConjuredPavilion"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="130"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="76"/>
   </spell>
   <spell circle="Celestial" id="Celestial.MagmaKraken">
     <cost>
@@ -821,7 +960,9 @@
         <essence cost="35"/>
       
     </cost>
-    <source source="SavantSorcerer" page="131"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="131"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="76"/>
   </spell>
   <spell circle="Celestial" id="Celestial.Mercury'sDeliverance">
     <cost>
@@ -829,7 +970,9 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="131"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="131"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="77"/>
   </spell>
   <spell circle="Celestial" id="Celestial.OutsideWorldsWithin">
     <cost>
@@ -837,7 +980,9 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="SavantSorcerer" page="131"/>
+    <target target="Room"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="131"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="77"/>
   </spell>
   <spell circle="Celestial" id="Celestial.PrincesFallenTower">
     <cost>
@@ -845,7 +990,9 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="132"/>
+    <target target="ConjuredAutomata"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="132"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="78"/>
   </spell>
   <spell circle="Celestial" id="Celestial.RollingEarthCarpet">
     <cost>
@@ -853,7 +1000,17 @@
         <essence cost="20" text="(committed)"/>
       
     </cost>
-    <source source="SavantSorcerer" page="132"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="132"/>
+  </spell>
+  <spell circle="Celestial" id="Celestial.RollingEarthCarpet">
+    <cost>
+      
+        <essence cost="20" text="+ (committed)"/>
+      
+    </cost>
+    <target target="Area"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="79"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ServantInfallibleLocation">
     <cost>
@@ -861,7 +1018,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavantSorcerer" page="133"/>
+    <target target="ConjuredCreature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="133"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="80"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ShadowTheft">
     <cost>
@@ -869,7 +1028,9 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="133"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="133"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="80"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ShadowsAncientPast">
     <cost>
@@ -877,7 +1038,9 @@
         <essence cost="25" text="+"/>
       
     </cost>
-    <source source="SavantSorcerer" page="134"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="134"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="81"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SpawningMonsters">
     <cost>
@@ -885,7 +1048,7 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="134"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="134"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SummonArmyWild">
     <cost>
@@ -893,7 +1056,7 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="134"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="134"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SummoningHeartDarkness">
     <cost>
@@ -901,7 +1064,9 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="135"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="135"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="83"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SwiftSpiritWingedTransportation">
     <cost>
@@ -909,7 +1074,9 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="SavantSorcerer" page="136"/>
+    <target target="Vessel"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="136"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="83"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ThreefoldBindingHeart">
     <cost>
@@ -917,7 +1084,9 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="136"/>
+    <target target="Being"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="136"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="84"/>
   </spell>
   <spell circle="Celestial" id="Celestial.TorrentialCascade">
     <cost>
@@ -925,7 +1094,9 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="SavantSorcerer" page="137"/>
+    <target target="BodyWater"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="137"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="85"/>
   </spell>
   <spell circle="Celestial" id="Celestial.UnityDreams">
     <cost>
@@ -933,7 +1104,9 @@
         <essence cost="20" text="+"/>
       
     </cost>
-    <source source="SavantSorcerer" page="137"/>
+    <target target="CasterAllies"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="137"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="85"/>
   </spell>
   <spell circle="Celestial" id="Celestial.VoicesDistantRegard">
     <cost>
@@ -941,7 +1114,9 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="SavantSorcerer" page="137"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="137"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="85"/>
   </spell>
   <spell circle="Celestial" id="Celestial.WheelTurningHeavens">
     <cost>
@@ -949,7 +1124,9 @@
         <essence cost="35"/>
       
     </cost>
-    <source source="SavantSorcerer" page="138"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="138"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="85"/>
   </spell>
   <spell circle="Celestial" id="Celestial.WhirlwindFate">
     <cost>
@@ -957,7 +1134,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="SavantSorcerer" page="138"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="138"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="85"/>
   </spell>
   <spell circle="Celestial" id="Celestial.RaisePuissantSanctum">
     <cost>
@@ -966,7 +1145,8 @@
       
     </cost>
     <target target="Demesne"/>
-    <source source="SavantSorcerer" page="57"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="57"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="79"/>
   </spell>
   <spell circle="Solar" id="Solar.CraftPuissantSanctum">
     <cost>
@@ -975,7 +1155,7 @@
       
     </cost>
     <target target="Demesne"/>
-    <source source="SavantSorcerer" page="57"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="57"/>
   </spell>
   <spell circle="Solar" id="Solar.AbjurationMaidens">
     <cost>
@@ -984,7 +1164,9 @@
         <health cost="1"/>
       
     </cost>
-    <source source="SavantSorcerer" page="138"/>
+    <target target="AreaEssencemiles"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="138"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="86"/>
   </spell>
   <spell circle="Solar" id="Solar.BenedictionArchgenesis">
     <cost>
@@ -992,7 +1174,9 @@
         <essence cost="40"/>
       
     </cost>
-    <source source="SavantSorcerer" page="139"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="139"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="88"/>
   </spell>
   <spell circle="Solar" id="Solar.ChariotBlazingSun">
     <cost>
@@ -1000,7 +1184,9 @@
         <essence cost="45"/>
       
     </cost>
-    <source source="SavantSorcerer" page="139"/>
+    <target target="SummonedChariot"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="139"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="88"/>
   </spell>
   <spell circle="Solar" id="Solar.CurseUnyieldingMist">
     <cost>
@@ -1008,7 +1194,9 @@
         <essence cost="40"/>
       
     </cost>
-    <source source="SavantSorcerer" page="140"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="140"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="89"/>
   </spell>
   <spell circle="Solar" id="Solar.EssenceInversion">
     <cost>
@@ -1016,7 +1204,9 @@
         <essence cost="50"/>
       
     </cost>
-    <source source="SavantSorcerer" page="141"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="141"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="90"/>
   </spell>
   <spell circle="Solar" id="Solar.Gaia'sRebuke">
     <cost>
@@ -1024,7 +1214,9 @@
         <essence cost="50"/>
       
     </cost>
-    <source source="SavantSorcerer" page="141"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="141"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="91"/>
   </spell>
   <spell circle="Solar" id="Solar.IncantationInvincibleArmy">
     <cost>
@@ -1032,7 +1224,9 @@
         <essence cost="50"/>
       
     </cost>
-    <source source="SavantSorcerer" page="142"/>
+    <target target="Army"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="142"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="91"/>
   </spell>
   <spell circle="Solar" id="Solar.TotalAnnihilation">
     <cost>
@@ -1040,7 +1234,9 @@
         <essence cost="65"/>
       
     </cost>
-    <source source="SavantSorcerer" page="142"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="142"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="97"/>
   </spell>
   <spell circle="Solar" id="Solar.WrathFiveElements">
     <cost>
@@ -1048,7 +1244,9 @@
         <essence cost="45"/>
       
     </cost>
-    <source source="SavantSorcerer" page="142"/>
+    <target target="Creature"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="142"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="99"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Water'sAlly">
     <cost>
@@ -1056,8 +1254,8 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavageSeas" page="117"/>
-    <source source="BloodSalt" page="125"/>
+    <source edition="FirstEdition" source="SavageSeas" page="117"/>
+    <source edition="FirstEdition" source="BloodSalt" page="125"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Water'sChillingGrasp">
     <cost>
@@ -1065,15 +1263,24 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="SavageSeas" page="117"/>
+    <source edition="FirstEdition" source="SavageSeas" page="117"/>
   </spell>
   <spell circle="Celestial" id="Celestial.StormRiderEnchantment">
     <cost>
       
-        <essence cost="35"/>
+        <essence cost="30"/>
       
     </cost>
-    <source source="SavageSeas" page="117"/>
+    <source edition="FirstEdition" source="SavageSeas" page="117"/>
+  </spell>
+  <spell circle="Terrestrial" id="Terrestrial.StormRiderEnchantment">
+    <cost>
+      
+        <essence cost="20"/>
+      
+    </cost>
+    <target target="Ship"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="64"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SummonSpiritBoat">
     <cost>
@@ -1081,7 +1288,16 @@
         <essence cost="30" text="+2 per additional day"/>
       
     </cost>
-    <source source="SavageSeas" page="117"/>
+    <source edition="FirstEdition" source="SavageSeas" page="117"/>
+  </spell>
+  <spell circle="Celestial" id="Celestial.SummonSpiritBoat">
+    <cost>
+      
+        <essence cost="30"/>
+      
+    </cost>
+    <target target="SummonedShip"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="81"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SwiftJourney">
     <cost>
@@ -1089,7 +1305,7 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="SavageSeas" page="118"/>
+    <source edition="FirstEdition" source="SavageSeas" page="118"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SongLintha">
     <cost>
@@ -1097,8 +1313,8 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="SavageSeas" page="118"/>
-    <source source="BloodSalt" page="125"/>
+    <source edition="FirstEdition" source="SavageSeas" page="118"/>
+    <source edition="FirstEdition" source="BloodSalt" page="125"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.OpenSpiritDoor">
     <cost>
@@ -1106,7 +1322,9 @@
         <essence cost="15" text="+5 per additional target"/>
       
     </cost>
-    <source source="Sidereals1st" page="122"/>
+    <target target="TouchedCreatures"/>   
+    <source edition="FirstEdition" source="Sidereals1st" page="122"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="54"/>
   </spell>
   <spell circle="Celestial" id="Celestial.GiftKnowledge">
     <cost>
@@ -1114,7 +1332,7 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="Sidereals1st" page="123"/>
+    <source edition="FirstEdition" source="Sidereals1st" page="123"/>
   </spell>
   <spell circle="Celestial" id="Celestial.SummoningHeavenlyPortal">
     <cost>
@@ -1122,7 +1340,9 @@
         <essence cost="35"/>
       
     </cost>
-    <source source="Sidereals1st" page="123"/>
+    <target target="SummonedCalibrationGate"/>   
+    <source edition="FirstEdition" source="Sidereals1st" page="123"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="82"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.SwornBrother'sOath">
     <cost>
@@ -1130,7 +1350,7 @@
         <essence cost="10" text="+1 for each Exalted bound"/>
       
     </cost>
-    <source source="DragonBlooded1st" page="161"/>
+    <source edition="FirstEdition" source="DragonBlooded1st" page="161"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.WhisperGrasses">
     <cost>
@@ -1138,7 +1358,7 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="CBTwilight" page="74"/>
+    <source edition="FirstEdition" source="CBTwilight" page="74"/>
   </spell>
   <spell circle="Celestial" id="Celestial.CurseBetrayal">
     <cost>
@@ -1146,7 +1366,7 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="CBTwilight" page="75"/>
+    <source edition="FirstEdition" source="CBTwilight" page="75"/>
   </spell>
   <spell circle="Celestial" id="Celestial.HiddenJudgesSecretFlame">
     <cost>
@@ -1154,7 +1374,9 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="CBTwilight" page="75"/>
+    <target target="SummonedJudge"/>   
+    <source edition="FirstEdition" source="CBTwilight" page="75"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="72"/>
   </spell>
   <spell circle="Celestial" id="Celestial.ShoutTurmoil">
     <cost>
@@ -1162,7 +1384,7 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="CBTwilight" page="76"/>
+    <source edition="FirstEdition" source="CBTwilight" page="76"/>
   </spell>
   <spell circle="Solar" id="Solar.AtrociousFireTransformation">
     <cost>
@@ -1170,7 +1392,9 @@
         <essence cost="35"/>
       
     </cost>
-    <source source="CBTwilight" page="76"/>
+    <target target="BodyWater"/>   
+    <source edition="FirstEdition" source="CBTwilight" page="76"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="87"/>
   </spell>
   <spell circle="Solar" id="Solar.EvocationFromMirror">
     <cost>
@@ -1178,7 +1402,9 @@
         <essence cost="40"/>
       
     </cost>
-    <source source="CBTwilight" page="76"/>
+    <target target="Creature"/>   
+    <source edition="FirstEdition" source="CBTwilight" page="76"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="91"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.Assassin'sFatalTouch">
     <cost>
@@ -1236,7 +1462,7 @@
         <essence cost="10"/>
       
     </cost>
-    <target target="CreatureNearby"/>
+    <target target="CreaturesNearby"/>
     <source edition="FirstEdition" source="Bo3C" page="34"/>
     <source edition="SecondEdition" source="WhiteTreatise" page="42"/>
   </spell>
@@ -1246,7 +1472,16 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="Bo3C" page="35"/>
+    <source edition="FirstEdition" source="Bo3C" page="35"/>
+  </spell>
+    <spell circle="Terrestrial" id="Terrestrial.DragonSmokeFlame">
+    <cost>
+      
+        <essence cost="20"/>
+      
+    </cost>
+    <target target="SerpentineGuide"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="43"/>
   </spell>
     <spell circle="Terrestrial" id="Terrestrial.DroningSuggestion">
     <cost>
@@ -1274,7 +1509,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Bo3C" page="36"/>
+    <target target="SummonedEyeMouth"/>
+    <source edition="FirstEdition" source="Bo3C" page="36"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="45"/>
   </spell>
       <spell circle="Terrestrial" id="Terrestrial.FloralFerry">
     <cost>
@@ -1282,7 +1519,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Bo3C" page="37"/>
+    <target target="Plant"/>
+    <source edition="FirstEdition" source="Bo3C" page="37"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="47"/>
   </spell>
       <spell circle="Terrestrial" id="Terrestrial.ImperviousSphereWater">
     <cost>
@@ -1290,7 +1529,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Bo3C" page="39"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="Bo3C" page="39"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="49"/>
   </spell>
       <spell circle="Terrestrial" id="Terrestrial.IncantationEffectiveRestoration">
     <cost>
@@ -1298,7 +1539,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Bo3C" page="39"/>
+    <target target="Item"/>
+    <source edition="FirstEdition" source="Bo3C" page="39"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="49"/>
   </spell>
       <spell circle="Terrestrial" id="Terrestrial.LesserGolem">
     <cost>
@@ -1306,7 +1549,7 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="Bo3C" page="39"/>
+    <source edition="FirstEdition" source="Bo3C" page="39"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.MirrorBendingLight">
     <cost>
@@ -1314,7 +1557,7 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="Bo3C" page="41"/>
+    <source edition="FirstEdition" source="Bo3C" page="41"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.PartingSeas">
     <cost>
@@ -1322,7 +1565,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="Bo3C" page="42"/>
+    <target target="BodyWater"/>
+    <source edition="FirstEdition" source="Bo3C" page="42"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="54"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.PurifyingFlames">
     <cost>
@@ -1330,7 +1575,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="Bo3C" page="43"/>
+    <target target="FoodDrink"/>
+    <source edition="FirstEdition" source="Bo3C" page="43"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="56"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.ShadowySimulacrumsSmoke">
     <cost>
@@ -1338,7 +1585,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Bo3C" page="45"/>
+    <target target="AreaCaster"/>
+    <source edition="FirstEdition" source="Bo3C" page="45"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="59"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.SheddingSerpent'sSkin">
     <cost>
@@ -1346,7 +1595,7 @@
         <essence cost="10+"/>
       
     </cost>
-    <source source="Bo3C" page="46"/>
+    <source edition="FirstEdition" source="Bo3C" page="46"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.SongWaves">
     <cost>
@@ -1354,7 +1603,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="Bo3C" page="47"/>
+    <target target="Opponent"/>
+    <source edition="FirstEdition" source="Bo3C" page="47"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="60"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.SongVertigo">
     <cost>
@@ -1362,7 +1613,7 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Bo3C" page="47"/>
+    <source edition="FirstEdition" source="Bo3C" page="47"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.SpokeWoodenFace">
     <cost>
@@ -1370,7 +1621,9 @@
         <essence cost="10" text="plus 5 to activate" />
       
     </cost>
-    <source source="Bo3C" page="48"/>
+    <target target="LivingTree"/>
+    <source edition="FirstEdition" source="Bo3C" page="48"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="61"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.StalwartEarthGuardian">
     <cost>
@@ -1378,7 +1631,7 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Bo3C" page="49"/>
+    <source edition="FirstEdition" source="Bo3C" page="49"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.SummoningHarvest">
     <cost>
@@ -1386,7 +1639,9 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Bo3C" page="50"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="Bo3C" page="50"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="64"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.Titan'sIcyBreath">
     <cost>
@@ -1394,7 +1649,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="Bo3C" page="50"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="Bo3C" page="50"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="66"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.TongueElementSpirit">
     <cost>
@@ -1402,7 +1659,7 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Bo3C" page="51"/>
+    <source edition="FirstEdition" source="Bo3C" page="51"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.UnconquerableSelf">
     <cost>
@@ -1410,7 +1667,9 @@
         <essence cost="1"/>
       
     </cost>
-    <source source="SavantSorcerer" page="123"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="123"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="66"/>
   </spell>
           <spell circle="Terrestrial" id="Terrestrial.VenomHeart">
     <cost>
@@ -1418,7 +1677,7 @@
         <essence cost="15"/>
       
     </cost>
-    <source source="Bo3C" page="52"/>
+    <source edition="FirstEdition" source="Bo3C" page="52"/>
   </spell>  
         <spell circle="Terrestrial" id="Terrestrial.ViolentOpeningClosedPortals">
     <cost>
@@ -1426,7 +1685,9 @@
         <essence cost="20"/>
       
     </cost>
-    <source source="Bo3C" page="52"/>
+    <target target="SingleStructure"/>
+    <source edition="FirstEdition" source="Bo3C" page="52"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="67"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.WaterFromStone">
     <cost>
@@ -1434,7 +1695,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="Bo3C" page="53"/>
+    <target target="Boulder"/>
+    <source edition="FirstEdition" source="Bo3C" page="53"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="68"/>
   </spell>
         <spell circle="Terrestrial" id="Terrestrial.WrittenUponWater">
     <cost>
@@ -1442,7 +1705,9 @@
         <essence cost="10"/>
       
     </cost>
-    <source source="Bo3C" page="53"/>
+    <target target="BodyLiquid"/>
+    <source edition="FirstEdition" source="Bo3C" page="53"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="69"/>
   </spell>
         <spell circle="Celestial" id="Celestial.CrumblingWalls">
     <cost>
@@ -1450,7 +1715,9 @@
         <essence cost="25"/>
       
     </cost>
-    <source source="Bo3C" page="57"/>
+    <target target="CityWalls"/>
+    <source edition="FirstEdition" source="Bo3C" page="57"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="70"/>
   </spell>
        <spell circle="Celestial" id="Celestial.Venus'Disfavor">
     <cost>
@@ -1458,7 +1725,7 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="Bo3C" page="66"/>
+    <source edition="FirstEdition" source="Bo3C" page="66"/>
   </spell>
          <spell circle="Celestial" id="Celestial.VoiceDistantCommand">
     <cost>
@@ -1466,7 +1733,7 @@
         <essence cost="35"/>
       
     </cost>
-    <source source="Bo3C" page="66"/>
+    <source edition="FirstEdition" source="Bo3C" page="66"/>
   </spell>
          <spell circle="Solar" id="Solar.EnemyNature">
     <cost>
@@ -1474,15 +1741,26 @@
         <essence cost="50"/>
       
     </cost>
-    <source source="Bo3C" page="71"/>
+    <target target="EntitySocialGroup"/>
+    <source edition="FirstEdition" source="Bo3C" page="71"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="90"/>
   </spell>
          <spell circle="Solar" id="Solar.LightSolarCleansing">
     <cost>
       
-        <essence cost="20" text="plut 5 per attack"/>
+        <essence cost="20" text="+5 motes per attack"/>
       
     </cost>
-    <source source="Bo3C" page="72"/>
+    <source edition="FirstEdition" source="Bo3C" page="72"/>
+  </spell>
+         <spell circle="Solar" id="Solar.LightSolarCleansing">
+    <cost>
+      
+        <essence cost="30"/>
+      
+    </cost>
+    <target target="Area"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="92"/>
   </spell>
          <spell circle="Solar" id="Solar.LoyalGolem">
     <cost>
@@ -1490,7 +1768,7 @@
         <essence cost="40+"/>
       
     </cost>
-    <source source="Bo3C" page="72"/>
+    <source edition="FirstEdition" source="Bo3C" page="72"/>
   </spell>
            <spell circle="Solar" id="Solar.MirageProtectiveShelter">
     <cost>
@@ -1498,7 +1776,9 @@
         <essence cost="40"/>
       
     </cost>
-    <source source="Bo3C" page="73"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="Bo3C" page="73"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="93"/>
   </spell>
    <spell circle="Solar" id="Solar.MysticTravel">
     <cost>
@@ -1506,7 +1786,9 @@
         <essence cost="30"/>
       
     </cost>
-    <source source="Bo3C" page="73"/>
+    <target target="UnitTravelers"/>
+    <source edition="FirstEdition" source="Bo3C" page="73"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="93"/>
   </spell>
    <spell circle="Solar" id="Solar.PressedBeyondWheelTime">
     <cost>
@@ -1514,7 +1796,9 @@
         <essence cost="60"/>
       
     </cost>
-    <source source="Bo3C" page="73"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="Bo3C" page="73"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="93"/>
   </spell>
    <spell circle="Solar" id="Solar.SolarSanctuary">
     <cost>
@@ -1522,7 +1806,16 @@
         <essence cost="60"/>
       
     </cost>
-    <source source="Bo3C" page="74"/>
+    <source edition="FirstEdition" source="Bo3C" page="74"/>
+  </spell>
+   <spell circle="Solar" id="Solar.SolarSanctuary">
+    <cost>
+      
+        <essence cost="70"/>
+      
+    </cost>
+    <target target="Area"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="95"/>
   </spell>
    <spell circle="Solar" id="Solar.SoulSeal">
     <cost>
@@ -1530,7 +1823,9 @@
         <essence cost="50"/>
       
     </cost>
-    <source source="Bo3C" page="75"/>
+    <target target="CasterEntity"/>
+    <source edition="FirstEdition" source="Bo3C" page="75"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="96"/>
   </spell>
    <spell circle="Solar" id="Solar.SummonAnimalAvatar">
     <cost>
@@ -1538,7 +1833,7 @@
         <essence cost="40"/>
       
     </cost>
-    <source source="Bo3C" page="76"/>
+    <source edition="FirstEdition" source="Bo3C" page="76"/>
   </spell>
    <spell circle="Solar" id="Solar.SummoningGreaterMinionsEyelessFace">
     <cost>
@@ -1546,7 +1841,16 @@
         <essence cost="30+"/>
       
     </cost>
-    <source source="Bo3C" page="77"/>
+    <source edition="FirstEdition" source="Bo3C" page="77"/>
+  </spell>
+   <spell circle="Celestial" id="Celestial.SummoningGreaterMinionsEyelessFace">
+    <cost>
+      
+        <essence cost="30+"/>
+      
+    </cost>
+    <target target="SummonedMinions"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="83"/>
   </spell>
    <spell circle="Solar" id="Solar.TechniqueMirror">
     <cost>
@@ -1554,7 +1858,16 @@
         <essence cost="20+"/>
       
     </cost>
-    <source source="Bo3C" page="77"/>
+    <source edition="FirstEdition" source="Bo3C" page="77"/>
+  </spell>
+   <spell circle="Solar" id="Solar.TechniqueMirror">
+    <cost>
+      
+        <essence cost="50"/>
+      
+    </cost>
+    <target target="Caster"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="97"/>
   </spell>
    <spell circle="Solar" id="Solar.TheftYears">
     <cost>
@@ -1562,15 +1875,17 @@
         <essence cost="50"/>
       
     </cost>
-    <source source="Bo3C" page="78"/>
+    <source edition="FirstEdition" source="Bo3C" page="78"/>
   </spell>
    <spell circle="Solar" id="Solar.UnityClosedFist">
     <cost>
       
-        <essence cost="40+"/>
+        <essence cost="40"/>
       
     </cost>
-    <source source="Bo3C" page="77"/>
+    <target target="CasterCreatures"/>
+    <source edition="FirstEdition" source="Bo3C" page="78"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="98"/>
   </spell>
    <spell circle="Solar" id="Solar.WhisperersInMirror">
     <cost>
@@ -1578,7 +1893,7 @@
         <essence cost="50"/>
       
     </cost>
-    <source source="Bo3C" page="79"/>
+    <source edition="FirstEdition" source="Bo3C" page="79"/>
   </spell>
    <spell circle="Solar" id="Solar.WindsConfusion">
     <cost>
@@ -1586,7 +1901,9 @@
         <essence cost="45"/>
       
     </cost>
-    <source source="Bo3C" page="79"/>
+    <target target="Area"/>
+    <source edition="FirstEdition" source="Bo3C" page="79"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="99"/>
   </spell>
   <spell circle="Solar" id="Solar.CleansingSolarFlames">
 			<cost>
@@ -1594,7 +1911,9 @@
 					<essence cost="50+"/>
 				
 			</cost>
-		<source source="BoneEbony" page="139"/>
+		<target target="TouchedShadowland"/>
+		<source edition="FirstEdition" source="BoneEbony" page="139"/>
+		<source edition="SecondEdition" source="WhiteTreatise" page="89"/>
 		</spell>
   <spell id="Celestial.GentleCallLethe" circle="Celestial">
 	<cost>
@@ -1602,7 +1921,9 @@
 			<essence cost="20"/>
 		
 	</cost>
-    <source source="BoneEbony" page="127"/>
+    <target target="Ghost"/>
+    <source edition="FirstEdition" source="BoneEbony" page="127"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="71"/>
   </spell>
   <spell circle="Solar" id="Solar.TransferenceSanctum">
     <cost>
@@ -1610,6 +1931,88 @@
         <essence cost="45"/>
       
     </cost>
-    <source source="GamesOfDivinity" page="49"/>
+    <source edition="FirstEdition" source="GamesOfDivinity" page="49"/>
+  </spell>
+  <spell circle="Celestial" id="Celestial.GodForgedChampionWar">
+    <cost>
+      
+        <essence cost="20" text="+ (committed)"/>
+      
+    </cost>
+    <target target="Caster"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="72"/>
+  </spell>
+  <spell circle="Celestial" id="Celestial.SummonGhost">
+    <cost>
+      
+        <essence cost="15" text="or more"/>
+      
+    </cost>
+    <target target="Ghost"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="81"/>
+  </spell>
+  <spell circle="Solar" id="Solar.InvokingEyelessFace">
+    <cost>
+      
+        <essence cost="60"/>
+      
+    </cost>
+    <target target="Caster"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="92"/>
+  </spell>
+  <spell circle="Solar" id="Solar.SpiritUpliftingMercyHalo">
+	<cost>
+	
+		<essence cost="50" text="+ (committed)"/>
+				
+	</cost>
+	<target target="Area"/>
+	<source source="SecondEdition" page="167" edition="SecondEdition" /> 
+	<!--source source="Infernals" page="167" edition="SecondEdition" /--> 
+  </spell>
+  <spell circle="Solar" id="Solar.SoulTwistingDefilementRadiance">
+	<cost>
+		
+		<essence cost="50" text="+ (committed)"/>
+				
+	</cost>
+	<target target="Area"/>
+	<source source="SecondEdition" page="167" edition="SecondEdition" />
+	<!--source source="Infernals" page="167" edition="SecondEdition" /--> 
+  </spell>
+  <spell circle="Solar" id="Solar.WingsOfTheArchon">
+	<cost>
+		
+		<essence cost="40"/>
+				
+	</cost>
+	<target target="Caster"/>
+	<source source="SecondEdition" page="39" edition="SecondEdition" />
+	<!--source source="GloriesUCS" page="39" edition="SecondEdition" /--> 
+  </spell>
+  <spell circle="Solar" id="Solar.InfiniteCatalepsisMacrame">
+	<cost>
+		
+		<essence cost="50"/>
+				
+	</cost>
+	<target target="Area"/>
+	<source source="SecondEdition" page="40" edition="SecondEdition" />
+	<!--source source="GloriesUCS" page="40" edition="SecondEdition" /--> 
+  </spell>
+  <spell circle="Celestial" id="Celestial.GiftOfKnowledge">
+	<cost>
+		<essence cost="25"/>		
+	</cost>
+	<target target="TouchedCreature"/>
+	<source source="Sidereals2nd" page="121" edition="SecondEdition" /> 
+  </spell>
+  <spell circle="Terrestrial" id="Terrestrial.SwornBrothersOath">
+	<cost>
+		<essence cost="to" text="+1m from each Exalt bound by the spell" />		
+	</cost>
+	<target target="CasterAllies"/>
+	<source source="DragonBlooded2nd" page="122" edition="SecondEdition" /> 
   </spell>
 </spelllist>
+
