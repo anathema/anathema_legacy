@@ -21,6 +21,8 @@ import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 import net.sf.anathema.character.solar.generic.EssenceFlow;
 import net.sf.anathema.character.solar.generic.InfiniteMastery;
+import net.sf.anathema.character.solar.generic.SupremePerfection;
+import net.sf.anathema.character.solar.generic.UltimateMastery;
 import net.sf.anathema.character.solar.reporting.FirstEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.reporting.SecondEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.template.ISolarSpecialCharms;
@@ -43,7 +45,7 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
             new SecondExcellency(CharacterType.SOLAR, ExaltedSourceBook.SecondEdition),
             new ThirdExcellency(CharacterType.SOLAR, "4 m", ExaltedSourceBook.SecondEdition), //$NON-NLS-1$
             new InfiniteMastery(),
-            new EssenceFlow() });
+            new EssenceFlow(), new UltimateMastery(), new SupremePerfection()});
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.SOLAR,
         ExaltedEdition.FirstEdition,
