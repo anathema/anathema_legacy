@@ -22,6 +22,7 @@ public enum ExaltedSourceBook implements IExaltedSourceBook {
       ExaltedEdition.SecondEdition), ScrollMonk(ExaltedEdition.SecondEdition), ImperfectLotus(
       ExaltedEdition.SecondEdition), WhiteTreatise(ExaltedEdition.SecondEdition), BlackTreatise(
       ExaltedEdition.SecondEdition), OadenolsCodex(ExaltedEdition.SecondEdition), 
+      LandsOfCreation(ExaltedEdition.SecondEdition), LordsOfCreation(ExaltedEdition.SecondEdition),
       Comic0(ExaltedEdition.FirstEdition), Abyssals2nd(ExaltedEdition.SecondEdition),
       Infernals(ExaltedEdition.SecondEdition), ThousandCorrectActions(ExaltedEdition.SecondEdition),
       GloriesLuna(ExaltedEdition.SecondEdition), GloriesMaidens(ExaltedEdition.SecondEdition),
