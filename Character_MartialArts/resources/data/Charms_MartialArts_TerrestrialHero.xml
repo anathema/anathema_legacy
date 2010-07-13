@@ -135,8 +135,10 @@
     <prerequisite>
       <trait id="MartialArts" value="3"/>
       <essence value="1"/>
-      <charmReference id="Terrestrial.CurrentsSweepSea"/>
-<!-- OR      <charmReference id="Terrestrial.PoundingSurfStyle"/>, not currently supported by Anathema.  3/15/2010-->
+        <selectiveCharmGroup threshold="1">
+           <charmReference id="Terrestrial.CurrentsSweepSea"/>
+           <charmReference id="Terrestrial.PoundingSurfStyle"/>
+        </selectiveCharmGroup>
     </prerequisite>
     <cost>
       
