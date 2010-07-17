@@ -7,11 +7,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
-import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.registry.IIdentificateRegistry;
-import net.sf.anathema.lib.registry.IdentificateRegistry;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -30,9 +26,7 @@ public class AcceptanceCharmCompiling {
   private static final String VALUE_PATH = "path"; //$NON-NLS-1$
 
   public void registerCharmFiles() throws FileNotFoundException, AnathemaException {
-    IIdentificateRegistry<ICharacterType> registry = new IdentificateRegistry<ICharacterType>();
-    registry.add(CharacterType.values());
-    CharmCompiler charmCompiler = new CharmCompiler(registry);
+    CharmCompiler charmCompiler = new CharmCompiler();
     registerCharmFile(charmCompiler, new File("../Character_Main/resources/plugin.xml")); //$NON-NLS-1$
     registerCharmFile(charmCompiler, new File("../Character_Abyssal/resources/plugin-fragment.xml")); //$NON-NLS-1$
     registerCharmFile(charmCompiler, new File("../Character_Lunar/resources/plugin-fragment.xml")); //$NON-NLS-1$
