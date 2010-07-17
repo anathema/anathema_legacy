@@ -1,11 +1,11 @@
 package net.sf.anathema.test.character.generic.framework.treelayout.ordering;
 
 import junit.framework.TestCase;
-import net.sf.anathema.platform.svgtree.graph.hierarchy.HierarchyBuilder;
-import net.sf.anathema.platform.svgtree.graph.hierarchy.IHierachyBuilder;
-import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
-import net.sf.anathema.platform.svgtree.graph.nodes.NodeFactory;
+import net.sf.anathema.graph.hierarchy.HierarchyBuilder;
+import net.sf.anathema.graph.hierarchy.IHierachyBuilder;
+import net.sf.anathema.graph.nodes.IRegularNode;
+import net.sf.anathema.graph.nodes.ISimpleNode;
+import net.sf.anathema.graph.nodes.NodeFactory;
 
 public class HierarchyBuilderTest extends TestCase {
 

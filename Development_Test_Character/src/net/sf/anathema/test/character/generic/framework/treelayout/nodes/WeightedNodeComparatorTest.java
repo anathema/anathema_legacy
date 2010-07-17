@@ -2,9 +2,9 @@ package net.sf.anathema.test.character.generic.framework.treelayout.nodes;
 
 import java.util.Arrays;
 
+import net.sf.anathema.graph.nodes.WeightedNode;
+import net.sf.anathema.graph.nodes.WeightedNodeComparator;
 import net.sf.anathema.lib.testing.BasicTestCase;
-import net.sf.anathema.platform.svgtree.graph.nodes.WeightedNode;
-import net.sf.anathema.platform.svgtree.graph.nodes.WeightedNodeComparator;
 
 public class WeightedNodeComparatorTest extends BasicTestCase {
 

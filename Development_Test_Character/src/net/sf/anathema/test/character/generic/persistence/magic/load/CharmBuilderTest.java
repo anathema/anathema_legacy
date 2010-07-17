@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.ICharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.AttributeRequirementBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.CharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
@@ -23,7 +24,8 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
       new IdStringBuilder(),
       new TraitPrerequisitesBuilder(),
       new AttributeRequirementBuilder(),
-      new ComboRulesBuilder());
+      new ComboRulesBuilder(),
+      new CharmPrerequisiteBuilder());
 
   @Override
   protected void setUp() throws Exception {
