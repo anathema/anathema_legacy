@@ -35,6 +35,7 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
       int maxValue) {
     SpecialtyView specialtyView = new SpecialtyView(factory, abilityName, deleteIcon, specialtyName, value, maxValue);
     specialtyView.addComponents(specialtyPanel);
+    mainPanel.revalidate();
     return specialtyView;
   }
 
