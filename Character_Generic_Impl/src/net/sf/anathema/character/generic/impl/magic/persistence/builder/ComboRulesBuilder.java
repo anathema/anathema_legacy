@@ -13,6 +13,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 import java.util.List;
 
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
+import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
@@ -24,7 +25,7 @@ public class ComboRulesBuilder implements IComboRulesBuilder {
 
   private final TraitTypeUtils traitUtils = new TraitTypeUtils();
 
-  public IComboRestrictions buildComboRules(Element rulesElement) {
+  public IComboRestrictions buildComboRules(Element rulesElement) throws CharmException {
     Element comboElement = rulesElement.element(TAG_COMBO);
     if (comboElement == null) {
       return new ComboRestrictions();
@@ -40,7 +41,7 @@ public class ComboRulesBuilder implements IComboRulesBuilder {
     return comboRules;
   }
 
-  protected void buildRestrictionList(ComboRestrictions comboRules, Element restrictionElement) {
+  protected void buildRestrictionList(ComboRestrictions comboRules, Element restrictionElement) throws CharmException {
     List<Element> restrictedCharmList = ElementUtilities.elements(restrictionElement, TAG_CHARM);
     for (Element element : restrictedCharmList) {
       comboRules.addRestrictedCharmId(element.attributeValue(ATTRIB_ID));

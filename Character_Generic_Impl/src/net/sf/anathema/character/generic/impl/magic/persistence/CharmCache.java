@@ -32,6 +32,7 @@ public class CharmCache implements ICharmCache {
     List<ICharm> charmList = charmSetsByRuleSet.get(ruleset).get(type);
     return charmList.toArray(new ICharm[charmList.size()]);
   }
+
   public void addCharm(IIdentificate type, IExaltedRuleSet rules, ICharm charm) {
     MultiEntryMap<IIdentificate, ICharm> ruleMap = charmSetsByRuleSet.get(rules);
     ruleMap.replace(type, charm, charm);

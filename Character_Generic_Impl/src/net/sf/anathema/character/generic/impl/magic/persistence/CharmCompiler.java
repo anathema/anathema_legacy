@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,10 +16,12 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.Table;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
+import net.sf.anathema.lib.registry.IdentificateRegistry;
 import net.sf.anathema.lib.util.IIdentificate;
 
 import org.dom4j.Document;
@@ -33,8 +36,9 @@ public class CharmCompiler {
   private final IIdentificateRegistry<ICharacterType> registry;
   private final SAXReader reader;
 
-  public CharmCompiler(IIdentificateRegistry<ICharacterType> registry) {
-    this.registry = registry;
+  public CharmCompiler() {
+    this.registry = new IdentificateRegistry<ICharacterType>();
+    registry.add(CharacterType.values()); //$NON-NLS-1$
     this.reader = new SAXReader();
   }
 
@@ -52,6 +56,9 @@ public class CharmCompiler {
       list = new ArrayList<Document>();
       charmFileTable.add(type, ruleSet, list);
     }
+    if (resource == null) {
+      throw new CharmException("No resource given for " + typeString + "," + ruleString);
+    }
     try {
       list.add(reader.read(resource));
     }
@@ -67,16 +74,26 @@ public class CharmCompiler {
         CharmCache.getInstance().cloneCharms(basicRules, rules);
       }
       for (ICharacterType type : registry.getAll()) {
-        buildCharms(type, rules, setBuilder);
+        buildStandardCharms(type, rules);
         buildGenericCharms(type, rules);
         buildCharmAlternatives(type, rules);
       }
-      buildCharms(MARTIAL_ARTS, rules, setBuilder);
+      buildStandardCharms(MARTIAL_ARTS, rules);
       buildCharmAlternatives(MARTIAL_ARTS, rules);
     }
     for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
       extractParents(CharmCache.getInstance().getCharms(rules));
     }
+  }
+
+  private List<ICharm> buildStandardCharms(IIdentificate type, ExaltedRuleSet rules) throws PersistenceException {
+    return buildCharms(type, rules, setBuilder);
+  }
+
+  private List<ICharm> buildGenericCharms(ICharacterType type, ExaltedRuleSet rules) throws PersistenceException {
+    ITraitType[] primaryTypes = type.getFavoringTraitType().getTraitTypes(rules.getEdition());
+    genericBuilder.setTypes(primaryTypes);
+    return buildCharms(type, rules, genericBuilder);
   }
 
   private void buildCharmAlternatives(IIdentificate type, ExaltedRuleSet rules) {
@@ -85,12 +102,6 @@ public class CharmCompiler {
         alternativeBuilder.buildAlternatives(charmDocument, CharmCache.getInstance().getCharms(type, rules));
       }
     }
-  }
-
-  private List<ICharm> buildGenericCharms(ICharacterType type, ExaltedRuleSet rules) throws PersistenceException {
-    ITraitType[] primaryTypes = type.getFavoringTraitType().getTraitTypes(rules.getEdition());
-    genericBuilder.setTypes(primaryTypes);
-    return buildCharms(type, rules, genericBuilder);
   }
 
   private List<ICharm> buildCharms(IIdentificate type, IExaltedRuleSet rules, ICharmSetBuilder builder)

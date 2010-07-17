@@ -21,7 +21,8 @@ public class GenericCharmSetBuilder extends AbstractCharmSetBuilder {
       new GenericIdStringBuilder(),
       new GenericTraitPrerequisitesBuilder(),
       new GenericAttributeRequirementBuilder(),
-      new GenericComboRulesBuilder());
+      new GenericComboRulesBuilder(),
+      new GenericCharmPrerequisiteBuilder());
   private ITraitType[] types;
 
   @Override

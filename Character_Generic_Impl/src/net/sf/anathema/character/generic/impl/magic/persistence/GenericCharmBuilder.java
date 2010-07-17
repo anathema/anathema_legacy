@@ -4,10 +4,12 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericC
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ICharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
-public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder {
+public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder, IGenericsBuilder {
 
+  private final GenericCharmPrerequisiteBuilder charmPrerequisiteBuilder;
   private final GenericIdStringBuilder idBuilder;
   private final GenericTraitPrerequisitesBuilder traitBuilder;
   private final GenericAttributeRequirementBuilder attributeRequirementBuilder;
@@ -17,13 +19,14 @@ public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder {
       GenericIdStringBuilder idBuilder,
       GenericTraitPrerequisitesBuilder traitBuilder,
       GenericAttributeRequirementBuilder attributeRequirementBuilder,
-      GenericComboRulesBuilder comboBuilder) {
-    super(idBuilder, traitBuilder, attributeRequirementBuilder, comboBuilder);
+      GenericComboRulesBuilder comboBuilder,
+      GenericCharmPrerequisiteBuilder charmPrerequisiteBuilder) {
+    super(idBuilder, traitBuilder, attributeRequirementBuilder, comboBuilder, charmPrerequisiteBuilder);
     this.idBuilder = idBuilder;
     this.traitBuilder = traitBuilder;
     this.attributeRequirementBuilder = attributeRequirementBuilder;
     this.comboBuilder = comboBuilder;
-
+    this.charmPrerequisiteBuilder = charmPrerequisiteBuilder;
   }
 
   public void setType(ITraitType type) {
@@ -31,5 +34,6 @@ public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder {
     traitBuilder.setType(type);
     attributeRequirementBuilder.setType(type);
     comboBuilder.setType(type);
+    charmPrerequisiteBuilder.setType(type);
   }
 }

@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.AttributeRequirementBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.CharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -20,7 +21,8 @@ public class CharmSetBuilder extends AbstractCharmSetBuilder {
       new IdStringBuilder(),
       new TraitPrerequisitesBuilder(),
       new AttributeRequirementBuilder(),
-      new ComboRulesBuilder());
+      new ComboRulesBuilder(),
+      new CharmPrerequisiteBuilder());
 
   @Override
   protected void buildCharms(Collection<Charm> allCharms, Element charmListElement) throws PersistenceException {

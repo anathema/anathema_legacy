@@ -17,6 +17,7 @@ import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
+import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.ITypeSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -84,6 +85,7 @@ public class CharmTypeBuilder {
       return new ReflexiveSpecialsModel(primaryStep, secondStep);
     }
     catch (PersistenceException e) {
+      e.printStackTrace();
       return null;
     }
   }
@@ -94,16 +96,26 @@ public class CharmTypeBuilder {
       return null;
     }
     try {
-      int speed = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_SPEED);
       final String attributeValue = element.attributeValue(ATTRIB_TURN_TYPE);
       TurnType type = TurnType.Tick;
       if (attributeValue != null) {
         type = TurnType.valueOf(attributeValue);
+        if (type == TurnType.DramaticAction) {
+          return new SimpleSpecialsModel(
+              ISimpleSpecialsModel.DEFAULT_SPEED,
+              type,
+              ISimpleSpecialsModel.DEFAULT_DEFENSE_MODIFIER);
+        }
       }
-      int defense = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_DEFENSE);
+      int speed = ElementUtilities.getIntAttrib(element, ATTRIB_SPEED, ISimpleSpecialsModel.DEFAULT_SPEED);
+      int defense = ElementUtilities.getIntAttrib(
+          element,
+          ATTRIB_DEFENSE,
+          ISimpleSpecialsModel.DEFAULT_DEFENSE_MODIFIER);
       return new SimpleSpecialsModel(speed, type, defense);
     }
     catch (PersistenceException e) {
+      e.printStackTrace();
       return null;
     }
   }
