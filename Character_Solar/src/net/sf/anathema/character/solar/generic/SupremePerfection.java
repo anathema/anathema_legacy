@@ -1,57 +1,49 @@
+
+
 package net.sf.anathema.character.solar.generic;
 
+import net.sf.anathema.character.generic.framework.magic.AbstractGenericCharm;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
+import net.sf.anathema.character.generic.impl.magic.charm.type.ReflexiveSpecialsModel;
+import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class SupremePerfection implements IMagicStats {
+public class SupremePerfection extends AbstractGenericCharm{
 
-	@Override
-	public String getCostString(IResources resources) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  protected String getId() {
+    return "Solar.SupremePerfection";
+  }
 
-	@Override
-	public String[] getDetailKeys() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  protected ExaltedSourceBook getSourceBook() {
+    return ExaltedSourceBook.LordsOfCreation;
+  }
 
-	@Override
-	public String getDurationString(IResources resources) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  protected boolean isComboOk() {
+    return true;
+  }
 
-	@Override
-	public String getGroupName(IResources resources) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public String getCostString(IResources resources) {
+    return "8 m, 2 wp";
+  }
 
-	@Override
-	public IIdentificate getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public String getDurationString(IResources resources) {
+    return SimpleDuration.INSTANT_DURATION.getText(resources);
+  }
 
-	@Override
-	public String getNameString(IResources resources) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getSourceString(IResources resources) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getType(IResources resources) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+  @Override
+  public String getType(IResources resources) {
+    CharmTypeModel model = new CharmTypeModel();
+    model.setCharmType(CharmType.Reflexive);
+    return new ShortCharmTypeStringBuilder(resources).createTypeString(model);
+  }
 }
