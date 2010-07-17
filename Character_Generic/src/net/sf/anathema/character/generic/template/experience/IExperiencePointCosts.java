@@ -24,4 +24,6 @@ public interface IExperiencePointCosts {
   public ICurrentRatingCosts getWillpowerCosts();
 
   public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection);
+
+  public int getBackgroundCost();
 }
