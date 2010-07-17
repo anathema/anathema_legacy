@@ -1,17 +1,19 @@
-<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="Cherak">
+<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="LookshyRealmSubtype">
   <general>
     <edition edition="SecondEdition"/>
     <abilityGroups uses="template/DbAbilityGroup2nd.template" />
     <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
     <essence uses="template/DbEssence.template" />
-    <traitCollection uses="template/CherakDbTraitCollection2nd.template"/>
+    <traitCollection uses="template/DefaultDbTraitCollection2nd.template"/>
     <magicTemplate uses="template/DbMagic2nd.template"/>
     <presentation uses="template/DbPresentation.template"/>
      <additionalRules>
-     	<forbiddenBackgrounds>
+    	<forbiddenBackgrounds>
+     		<backgroundReference id="Cult" />
      		<backgroundReference id="Contacts" />
      		<backgroundReference id="Followers" />
      		<backgroundReference id="Influence" />
+     		<backgroundReference id="Henchmen" />
      	</forbiddenBackgrounds>
     	<additionalPools>
     		<multilearnablePool>
@@ -31,13 +33,9 @@
     	<additionalCost>
     		<costModifier>
     			<backgroundReference id="Breeding"/>
-    			<dotCostModification thresholdLevel="0" fixedCost="1"/>
-    			<dotCostModification thresholdLevel="1" fixedCost="1"/>
-    			<dotCostModification thresholdLevel="2" fixedCost="1"/>
-    			<bonusModification thresholdLevel="3" fixedCost="2"/>
-    			<bonusModification thresholdLevel="4" fixedCost="2"/>
+    			<dotCostModification thresholdLevel="2" multiplier="1"/>
     		</costModifier>
-    	</additionalCost>
+    	</additionalCost>    	
     </additionalRules>
     <additionalTemplates>
       <template id="Db.VirtueFlaw.Template" />
@@ -50,8 +48,8 @@
     <bonusPointCosts uses="template/DbBonusPointCosts.template" />
     <creationPoints>
       <attributeDots primary="7" secondary="6" tertiary="4" />
-      <abilityDots general="17" favored="13" favoredPicks="3" />
-      <backgroundDots count="12" />
+      <abilityDots general="22" favored="13" favoredPicks="3" />
+      <backgroundDots count="13" />
       <virtueDots count="5" />
       <bonusPoints count="15" />
       <charmPicks favored="4" general="3" />

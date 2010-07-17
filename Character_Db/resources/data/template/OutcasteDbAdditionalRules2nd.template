@@ -1,0 +1,36 @@
+<additionalRules>
+   	<forbiddenBackgrounds>
+		<backgroundReference id="Command" />
+		<backgroundReference id="Connections" />
+		<backgroundReference id="Henchmen" />
+		<backgroundReference id="Reputation" />
+   	</forbiddenBackgrounds>
+   	<additionalPools>
+   		<multilearnablePool>
+   			<backgroundReference id="Breeding"/>    			
+   			<personalPool multiplier="1"/>
+   			<peripheralPool>
+   				<fixedValue value="0" pool="0"/>
+   				<fixedValue value="1" pool="2"/>
+   				<fixedValue value="2" pool="3"/>
+   				<fixedValue value="3" pool="5"/>
+   				<fixedValue value="4" pool="7"/>
+   				<fixedValue value="5" pool="9"/>
+   				<fixedValue value="6" pool="11"/>
+   			</peripheralPool>
+   		</multilearnablePool>
+   	</additionalPools>
+   	<additionalCost>
+   		<costModifier>
+   			<backgroundReference id="Breeding"/>
+   			<dotCostModification thresholdLevel="0" multiplier="1"/>
+   			<dotCostModification thresholdLevel="3" fixedCost="1"/>
+   		</costModifier>
+   		<costModifier>
+   			<backgroundReference id="Cult"/>   			
+   			<dotCostModification thresholdLevel="2" fixedCost="1"/>
+   			<dotCostModification thresholdLevel="3" fixedCost="1"/>
+   			<dotCostModification thresholdLevel="4" fixedCost="1"/>
+   		</costModifier>
+   	</additionalCost>
+</additionalRules>
