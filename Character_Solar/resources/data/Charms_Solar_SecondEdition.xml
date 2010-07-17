@@ -100,8 +100,8 @@
     <charmAttribute attribute="Mortal"/>
     <source source="SecondEdition" page="187"/>
   </genericCharm>
-
-   <genericCharm id="Solar.UltimateMastery" exalt="Solar">
+  
+  <genericCharm id="Solar.UltimateMastery" exalt="Solar">
     <prerequisite>
       <trait value="5"/>
       <essence value="5"/>
@@ -136,7 +136,7 @@
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="LordsOfCreation"/>
   </genericCharm>
-
+  
   <!-- Solar Archery -->
 
   <charm id="Solar.ThereIsNoWind" exalt="Solar" group="Archery">
@@ -941,7 +941,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple">
-      <special speed="6" turntype="LongTick" defense="-1"/>
+      <special turntype="LongTick"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
@@ -962,7 +962,7 @@
     </cost>
     <duration  amount="1" unit="week"/>
     <charmtype type="Simple">
-      <special speed="1" turntype="DramaticAction" defense="-1"/>
+      <special turntype="DramaticAction"/>
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
@@ -2325,7 +2325,7 @@
   
   <charm id="Solar.Soul-EnlighteningBeneficence" exalt="Solar" group="Lore">
     <prerequisite>
-      <essence id="Essence" value="3"/>
+      <essence  value="3"/>
       <trait id="Lore" value="4"/>
       <charmReference id="Solar.Essence-LendingMethod"/>
     </prerequisite>
@@ -2337,7 +2337,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple">
-      <special speed="6" turntype="DramaticAction" defense="-1"/>
+      <special  turntype="DramaticAction" />
     </charmtype>
     <charmAttribute attribute="Enlightening" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
