@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
+import net.sf.anathema.graph.nodes.ISimpleNode;
 
 public abstract class AbstractVisualizableNode implements IVisualizableNode {
 

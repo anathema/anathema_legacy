@@ -1,8 +1,8 @@
 package net.sf.anathema.platform.svgtree.document.visualizer;
 
+import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
-import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
 
 public class TreeVisualizer extends AbstractTreeVisualizer {
 

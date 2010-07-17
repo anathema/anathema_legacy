@@ -18,5 +18,14 @@
 	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-dom3.jar"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Platform_GraphLayout"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-svggen.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-codec.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-extension.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-svgpp.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-transcoder.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-ttf2svg.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-ext.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

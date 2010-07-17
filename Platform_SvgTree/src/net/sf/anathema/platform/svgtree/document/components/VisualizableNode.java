@@ -5,10 +5,10 @@ import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXM
 import java.awt.Dimension;
 import java.util.Map;
 
+import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
+import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.platform.svgtree.document.util.SVGCreationUtils;
-import net.sf.anathema.platform.svgtree.graph.nodes.IIdentifiedRegularNode;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 
 import org.apache.batik.util.SVG12Constants;
 import org.apache.batik.util.SVGConstants;

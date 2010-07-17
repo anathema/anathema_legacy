@@ -4,6 +4,11 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.graph.SugiyamaLayout;
+import net.sf.anathema.graph.graph.IGraphType;
+import net.sf.anathema.graph.graph.IGraphTypeVisitor;
+import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.document.util.SVGCreationUtils;
 import net.sf.anathema.platform.svgtree.document.visualizer.BottomUpGraphVisualizer;
@@ -12,10 +17,6 @@ import net.sf.anathema.platform.svgtree.document.visualizer.IVisualizedGraph;
 import net.sf.anathema.platform.svgtree.document.visualizer.InvertedTreeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.SingleNodeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.TreeVisualizer;
-import net.sf.anathema.platform.svgtree.graph.graph.IGraphType;
-import net.sf.anathema.platform.svgtree.graph.graph.IGraphTypeVisitor;
-import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
-import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
 
 import org.apache.batik.util.SVGConstants;
 import org.dom4j.Document;
