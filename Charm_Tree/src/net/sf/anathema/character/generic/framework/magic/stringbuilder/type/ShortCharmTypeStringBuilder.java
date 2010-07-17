@@ -15,7 +15,7 @@ public class ShortCharmTypeStringBuilder extends AbstractCharmTypeStringBuilder 
   protected StringBuilder buildDefenseString(
       ISimpleSpecialsModel model,
       final boolean defaultSpeed,
-      final boolean dramaticAction) {
+      final boolean longAction) {
     StringBuilder builder = new StringBuilder();
     builder.append(IMagicStringBuilderConstants.CommaSpace);
     final int defenseModifier = model.getDefenseModifier();
