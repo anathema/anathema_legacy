@@ -12,6 +12,7 @@ import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmEntryData;
+import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.charmentry.model.WizardCharmEntryModel;
 import net.sf.anathema.charmentry.persistence.CharmEntryPropertiesPersister;
@@ -51,7 +52,11 @@ public class ShowCharmEntryAction extends SmartAction {
         return;
       }
       final ICharmEntryData entryData = model.getCharmData();
+      // RLR Best Guess is CharmType
+      // Maybe CharacterType
+      //CharmCache.getInstance().addCharm(model.getCharmTypeModel().getCharmType(),entryData.getEdition().getDefaultRuleset(), (ICharm) entryData.getCoreData());
       CharmCache.getInstance().addCharm(entryData);
+
       new CharmIO().writeCharmInternal(entryData);
       final ICharmData coreData = entryData.getCoreData();
       CharmEntryPropertiesPersister charmEntryPropertiesPersister = new CharmEntryPropertiesPersister();
