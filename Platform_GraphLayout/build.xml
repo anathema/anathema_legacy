@@ -1,0 +1,49 @@
+<project default="zip">
+
+  <property file="directories.properties" />
+
+  <fileset id="libraries" dir="${basedir}/../ThirdParty">
+    <include name="disy/disy-commons-core.jar" />
+  </fileset>
+
+  <target name="compile">
+    <mkdir dir="${class.dir}" />
+    <path id="classpath">
+      <fileset refid="libraries" />
+    </path>
+  	<javac srcdir="${basedir}/../Lib/src/" classpathref="classpath" destdir="${class.dir}" debug="true">
+	 	<include name ="**/ArrayUtilities.java"/>
+  		<include name ="**/IntegerUtilities.java"/>
+  		<include name ="**/ListOrderedSet.java"/>
+  		<include name ="**/MultiEntryMap.java"/>
+  		<include name ="**/IIdentificate.java"/>
+  		<include name ="**/Identificate.java"/>
+  	</javac>
+    <javac srcdir="src" classpathref="classpath" destdir="${class.dir}" debug="true"/>    
+  </target>
+
+
+  <target name="jar" depends="compile">
+    <mkdir dir="${build.dir}" />
+    <property name="cp" refid="classpath" />
+    <echo file="pathfile">${cp}</echo>
+    <replaceregexp flags="g" file="pathfile" match=";" replace=" " />
+    <replaceregexp flags="g" file="pathfile" match="\b\S*?ThirdParty" replace="lib" />
+    <loadfile property="classpath" srcFile="pathfile" />
+    <jar basedir="${class.dir}" destfile="graphlayout.jar">
+      <manifest>
+        <attribute name="Built-By" value="${user.name}" />
+        <attribute name="Class-Path" value="${classpath}" />
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="zip" depends="jar">
+    <zip destfile="graphlayout.zip">
+      <fileset dir="${basedir}">
+        <include name="graphlayout.jar" />
+      </fileset>
+      <zipfileset prefix="lib" refid="libraries" />
+    </zip>
+  </target>
+</project>
