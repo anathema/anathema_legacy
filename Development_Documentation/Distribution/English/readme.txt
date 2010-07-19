@@ -1,10 +1,11 @@
 ===------------------------------------------------------------------------------===
-	    ANATHEMA v1.3.1 "OUTCASTE R2"
+	    ANATHEMA v1.4.1 "GREAT FORKS"
 ===------------------------------------------------------------------------------===
 
 Anathema Read Me
 (C) 2004-2008 by Sandra Sieroux and Urs Reupke
-Exalted (C) 2001-2008 by White Wolf Publishing, Inc.
+(C) 2010 BY Scott Olson and Rob Rutherford
+Exalted (C) 2001-2010 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
@@ -65,7 +66,8 @@ You can always get the most up to date version at "http//java.sun.com".
 		IV - Features
 ===------------------------------------------------------------------------------===
 
-+ Generate and maintain all 5 core exalt types
++ Generate and maintain all 5 core exalt types (1E)
++ Generate and maintain Solar and Dragon-blooded exalt types (2E)
 + Generate character descriptions (currently disabled)
 + Print character sheets and descriptions to PDF
 + Organize your series' plot
@@ -110,8 +112,9 @@ See versions.txt for a history of bugs fixed.
 		VII - Contact
 ===------------------------------------------------------------------------------===
 
-Anathema is developed by Sandra Sieroux and Urs Reupke.
-Contact us at urskr@users.sourceforge.net with questions, comments or suggestions.
+Anathema was created  by Sandra Sieroux and Urs Reupke, with further development
+(starting with version 1.4.1) by Scott Olson and Rob Rutherford.
+Contact us at the-smith@users.sourceforge.net with questions, comments or suggestions.
 
 For bug reports you should use the SourceForge.net Tracking System at
 http://sourceforge.net/projects/anathema
@@ -130,18 +133,23 @@ implement it and send it to us for reviewing and integration.
 If you are interested in seeing Anathema in your native language,
 please contact us.
 
-At this point we don't accept other people into the development team. 
-The reasons for this are manifold, if you're interested in them, feel free to 
-send a mail.
+If you're interested in becoming a member of the Anathema
+development team, please contact us, at he-smith@users.sourceforge.net.
 
 ===------------------------------------------------------------------------------===
 		IX - Thanks
 ===------------------------------------------------------------------------------===
 
+Credit for the creation of the Anathema project goes to Urs Reupke, without whom the
+project would never have gotten off the ground.
+
 Special Thanks to vestrial, for staying with me on this project despite her urges to the contrary.
 A huge "Thank you" to Mr. Ricardo Rodriguez who has translated the program to spanish.
 Same to Martin, for the cool new artwork.
 
+Paul Adams provided the inspiration that got me (Scott) started working on Anathema
+plugins, which led inevitably to the current work, with his creation of plugins to
+support Anathema. 
 
 Philip "The_Burrito" Markus provided much of the Necromancy spell and Lunar Charm data.
 Patches did the same for the Dragon Kings.

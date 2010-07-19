@@ -3,6 +3,14 @@ Anathema Version History
 Exalted (C) 2001-2008 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
+===------------------------------------------------------------------------------===
+			Release 1.4.1 "Great Forks"
+===------------------------------------------------------------------------------===
+
+-- Features --
+* [2E] Updated to better display new Charms and errata produced since 2008.
+* [2E] New official charms added to package.    
+
 
 ===------------------------------------------------------------------------------===
 			Outcaste Release III (22/03/08)
