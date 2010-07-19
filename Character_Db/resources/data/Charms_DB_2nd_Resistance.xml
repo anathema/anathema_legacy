@@ -45,6 +45,7 @@
  <duration amount="1" unit="action"/>
  <charmtype type="Supplemental"/>
   <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -62,6 +63,7 @@
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
   <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -80,6 +82,7 @@
  <charmtype type="Simple"/>
   <charmAttribute attribute="Combo-OK" visualize="true"/>
   <charmAttribute attribute="Elemental" visualize="true"/>
+  <charmAttribute attribute="Leader" visualize="true"/>
   <charmAttribute attribute="Obvious" visualize="true"/>
   <charmAttribute attribute="Stackable" visualize="true"/>
   <source source="DragonBlooded2nd"/>
@@ -113,7 +116,9 @@
   
  </cost>
  <duration amount="1" unit="scene"/>
- <charmtype type="Reflexive"/>
+ <charmtype type="Reflexive">
+      <special primaryStep="2"/>
+ </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <source source="DragonBlooded2nd"/>
 </charm>
@@ -131,7 +136,9 @@
   
  </cost>
  <duration amount="1" unit="scene"/>
- <charmtype type="Reflexive"/>
+ <charmtype type="Reflexive">
+      <special primaryStep="2"/>
+ </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <source source="DragonBlooded2nd"/>
 </charm>

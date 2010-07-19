@@ -11,7 +11,7 @@
   
  </cost>
  <duration amount="1" unit="scene"/>
- <charmtype type="Simple"/>
+ <charmtype type="Reflexive"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
@@ -32,6 +32,7 @@
  <charmtype type="Reflexive"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Illusion" visualize="true"/>
+ <charmAttribute attribute="Leader5" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -82,11 +83,13 @@
    <essence cost="2" text="per subject"/>
   
  </cost>
- <duration duration="Special"/>
+ <duration amount="1" unit="scene" />
  <charmtype type="Reflexive">
   <special primaryStep="3"/>
  </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
+ <charmAttribute attribute="Stackable" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -103,10 +106,11 @@
   
  </cost>
  <duration amount="1" unit="scene"/>
- <charmtype type="Simple"/>
+ <charmtype type="Supplemental"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Compulsion" visualize="true"/>
  <charmAttribute attribute="Emotion" visualize="true"/>
+ <charmAttribute attribute="Social" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -125,6 +129,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Compulsion" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -178,6 +183,7 @@
   <special primaryStep="5"/>
  </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
@@ -185,7 +191,7 @@
 <charm id="Dragon-Blooded.ThreeStringSwordPrana" exalt="Dragon-Blooded" group="Performance">
  <prerequisite>
   <trait id="Performance" value="5"/>
-  <essence value="4"/>
+  <essence value="3"/>
   <charmReference id="Dragon-Blooded.VibratingStringsDefense"/>
  </prerequisite>
  <cost>

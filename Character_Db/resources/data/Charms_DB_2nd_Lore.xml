@@ -84,6 +84,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Cooperative" visualize="true"/>
  <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
  <source source="DragonBlooded2nd"/>
 </charm>
@@ -100,7 +101,7 @@
   
  </cost>
  <duration duration="Instant"/>
- <charmtype type="Simple"/>
+ <charmtype type="Permanent"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Cooperative" visualize="true"/>
  <charmAttribute attribute="Elemental" visualize="true"/>

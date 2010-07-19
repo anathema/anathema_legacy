@@ -13,6 +13,7 @@
  <charmtype type="Supplemental"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
@@ -31,6 +32,7 @@
  <duration duration="Instant"/>
  <charmtype type="ExtraAction"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Leader5" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -50,6 +52,7 @@
   <special primaryStep="5"/>
  </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -67,7 +70,8 @@
  </cost>
  <duration amount="1" unit="action"/>
  <charmtype type="Simple"/>
- <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Combo-Basic" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -79,12 +83,11 @@
  </prerequisite>
  <cost>
   
-   <essence cost="5"/>
-   <willpower cost="1"/>
+   <essence cost="-" text="(4m, 1wp)" />
   
  </cost>
  <duration duration="Instant"/>
- <charmtype type="Reflexive">
+ <charmtype type="Permanent">
   <special primaryStep="5" secondaryStep="9"/>
  </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
@@ -126,6 +129,7 @@
   <special primaryStep="3"/>
  </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Leader4" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -143,6 +147,8 @@
  <duration duration="Instant"/>
  <charmtype type="Supplemental"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Holy" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 <charm id="Dragon-Blooded.RavenousThornTechnique" exalt="Dragon-Blooded" group="Archery">

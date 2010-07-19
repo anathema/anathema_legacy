@@ -13,6 +13,7 @@
  <charmtype type="Supplemental"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -28,8 +29,13 @@
   
  </cost>
  <duration duration="Instant"/>
- <charmtype type="Reflexive"/>
+ <charmtype type="Reflexive">
+  <special primaryStep="9"/>
+ </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Crippling" visualize="true"/>
+ <charmAttribute attribute="Counterattack" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -48,6 +54,7 @@
  <charmtype type="Supplemental"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Holy" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
@@ -90,6 +97,7 @@
  	<special primaryStep="5"/>
  </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
@@ -125,6 +133,7 @@
  <duration duration="Instant"/>
  <charmtype type="ExtraAction"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 

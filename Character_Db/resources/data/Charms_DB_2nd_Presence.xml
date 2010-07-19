@@ -10,8 +10,14 @@
   
  </cost>
  <duration amount="1" unit="action"/>
- <charmtype type="Simple"/>
- <charmAttribute attribute="Compulsion" visualize="true"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="2"/>
+    </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Dynasty" visualize="true"/> 
+ <charmAttribute attribute="Leader" visualize="true"/>
+ <charmAttribute attribute="War" visualize="true"/> 
+ <charmAttribute attribute="Emotion" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/> 
   <source source="DragonBlooded2nd"/>
 </charm>
@@ -28,8 +34,15 @@
   
  </cost>
  <duration duration="EssenceActionsOrLongTicks"/>
- <charmtype type="Simple"/>
- <charmAttribute attribute="Compulsion" visualize="true"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1"/>
+    </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="ActionOnly" visualize="true"/>
+ <charmAttribute attribute="Dynasty" visualize="true"/> 
+ <charmAttribute attribute="Social" visualize="true"/>
+ <charmAttribute attribute="War" visualize="true"/> 
+ <charmAttribute attribute="Emotion" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -48,6 +61,8 @@
  </cost>
  <duration event="NextAction"/>
  <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-Basic" visualize="true"/>
+ <charmAttribute attribute="War" visualize="true"/>
  <charmAttribute attribute="Compulsion" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
@@ -65,7 +80,10 @@
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
-  <source source="DragonBlooded2nd"/>
+ <charmAttribute attribute="Combo-Basic" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
+ <charmAttribute attribute="War" visualize="true"/>
+   <source source="DragonBlooded2nd"/>
 </charm>
 
 <charm id="Dragon-Blooded.TerrifyingElementDragonRoar" exalt="Dragon-Blooded" group="Presence">
@@ -81,6 +99,7 @@
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Elemental" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
@@ -100,8 +119,13 @@
   
  </cost>
  <duration duration="OneSceneOrInstant"/>
- <charmtype type="Simple"/>
- <charmAttribute attribute="Compulsion" visualize="true"/>
+    <charmtype type="Simple">
+      <special speed="5" turntype="LongTick"/>
+    </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Dynasty" visualize="true"/>
+ <charmAttribute attribute="Servitude" visualize="true"/>
+ <charmAttribute attribute="Social" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -134,7 +158,10 @@
   
  </cost>
  <duration amount="1" unit="scene"/>
- <charmtype type="Simple"/>
+    <charmtype type="Simple">
+      <special speed="5" turntype="LongTick"/>
+    </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Emotion" visualize="true"/>
  <charmAttribute attribute="Social" visualize="true"/>
   <source source="DragonBlooded2nd"/>

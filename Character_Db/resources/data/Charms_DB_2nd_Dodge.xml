@@ -14,6 +14,7 @@
   <special primaryStep="5"/>
  </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="War" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -30,7 +31,7 @@
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Reflexive">
-  <special primaryStep="5"/>
+  <special primaryStep="7"/>
  </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
@@ -53,6 +54,7 @@
   <special primaryStep="5"/>
  </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="War" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -90,6 +92,7 @@
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
  <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Leader6" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
@@ -112,6 +115,7 @@
  </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Counterattack" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -134,6 +138,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Elemental" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
+ <charmAttribute attribute="Shaping" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 </charmlist>

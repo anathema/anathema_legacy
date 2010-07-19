@@ -31,6 +31,7 @@
  <duration amount="1" unit="day"/>
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Leader5" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -38,28 +39,27 @@
  <prerequisite>
   <trait id="Integrity" value="2"/>
   <essence value="2"/>
-  <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1"/>
  </prerequisite>
  <cost>
  
  </cost>
  <duration duration="Permanent"/>
  <charmtype type="Permanent"/>
+ <charmAttribute attribute="Dynasty" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
 <charm id="Dragon-Blooded.Ten-ThousandDragonsFightasOne" exalt="Dragon-Blooded" group="Integrity">
  <prerequisite>
-  <trait id="Integrity" value="3"/>
+  <trait id="Integrity" value="2"/>
   <essence value="2"/>
-  <charmReference id="Dragon-Blooded.OathTen-ThousandDragons" />
  </prerequisite>
  <cost>
   
    <essence cost="4"/>
   
  </cost>
- <duration amount="1" unit="scene"/>
+ <duration duration="Instant"/>
  <charmtype type="Reflexive"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Social" visualize="true"/>
@@ -81,6 +81,7 @@
  </cost>
  <duration event="Satisfied"/>
  <charmtype type="Simple"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="Social" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
@@ -90,6 +91,7 @@
   <trait id="Integrity" value="5"/>
   <essence value="3"/>
   <charmReference id="Dragon-Blooded.Ten-ThousandDragonsFightasOne" />
+  <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1"/>
  </prerequisite>
  <cost>
   
@@ -98,8 +100,11 @@
   
  </cost>
  <duration amount="1" unit="scene"/>
- <charmtype type="Reflexive"/>
+ <charmtype type="Reflexive">
+      <special primaryStep="2"/>
+ </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -107,7 +112,7 @@
  <prerequisite>
   <trait id="Integrity" value="3"/>
   <essence value="2"/>
-  <charmReference id="Dragon-Blooded.Ten-ThousandDragonsFightasOne" />
+  <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1"/>
  </prerequisite>
  <cost>
   
@@ -117,7 +122,10 @@
   
  </cost>
  <duration duration="Instant"/>
- <charmtype type="Simple"/>
+ <charmtype type="Reflexive">
+      <special primaryStep="2"/>
+ </charmtype>
+ <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -135,6 +143,7 @@
  </cost>
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
+ <charmAttribute attribute="Leader7" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -154,6 +163,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Exclusive" visualize="false"/>
+ <charmAttribute attribute="Leader5" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 </charmlist>
