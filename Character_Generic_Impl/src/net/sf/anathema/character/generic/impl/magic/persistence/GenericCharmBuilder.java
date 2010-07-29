@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericC
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ICharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
 public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder, IGenericsBuilder {
