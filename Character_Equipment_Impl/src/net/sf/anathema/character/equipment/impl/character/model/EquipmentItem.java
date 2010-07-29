@@ -21,6 +21,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
@@ -93,7 +94,11 @@ public class EquipmentItem implements IEquipmentItem {
     return template.getComposition();
   }
 
+  @SuppressWarnings("unchecked")
   public boolean isPrintEnabled(IEquipmentStats stats) {
+    if (stats instanceof IProxy<?>) {
+      stats = ((IProxy<? extends IEquipmentStats>) stats).getUnderlying();
+    }
     return printedStats.contains(stats);
   }
 
