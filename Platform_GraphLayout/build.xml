@@ -2,7 +2,7 @@
 
   <property file="directories.properties" />
 
-  <fileset id="libraries" dir="${basedir}/../ThirdParty">
+  <fileset id="libraries" dir="${basedir}/../Thirdparty">
     <include name="disy/disy-commons-core.jar" />
   </fileset>
 
@@ -28,7 +28,7 @@
     <property name="cp" refid="classpath" />
     <echo file="pathfile">${cp}</echo>
     <replaceregexp flags="g" file="pathfile" match=";" replace=" " />
-    <replaceregexp flags="g" file="pathfile" match="\b\S*?ThirdParty" replace="lib" />
+    <replaceregexp flags="g" file="pathfile" match="\b\S*?Thirdparty" replace="lib" />
     <loadfile property="classpath" srcFile="pathfile" />
     <jar basedir="${class.dir}" destfile="graphlayout.jar">
       <manifest>

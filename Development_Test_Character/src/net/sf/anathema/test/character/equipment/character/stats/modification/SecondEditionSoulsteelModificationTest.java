@@ -13,6 +13,7 @@ public class SecondEditionSoulsteelModificationTest extends AbstractSoulsteelMod
     assertAccuracyModification(3, 1, WeaponStatsType.Melee);
     assertAccuracyModification(1, 1, WeaponStatsType.Bow);
     assertAccuracyModification(1, 1, WeaponStatsType.Thrown);
+    assertAccuracyModification(1, 1, WeaponStatsType.Thrown_BowBonuses);
     assertAccuracyModification(1, 1, WeaponStatsType.Flame);
   }
 

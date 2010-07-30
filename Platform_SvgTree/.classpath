@@ -27,5 +27,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-ttf2svg.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-ext.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Thirdparty/SVG/batik-anim.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

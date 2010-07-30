@@ -106,7 +106,7 @@ public abstract class AbstractWeaponStats extends AbstractStats implements IWeap
   public boolean inflictsNoDamage() {
     return inflictsNoDamage;
   }
-
+  
   public void setAccuracy(int accuracy) {
     this.accuracy = accuracy;
   }

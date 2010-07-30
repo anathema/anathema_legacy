@@ -66,13 +66,8 @@ public class WeaponTagsModel implements IWeaponTagsModel {
   }
 
   private void setAllRangedWeaponTagsEnabled(boolean enabled) {
-    if (!enabled) {
-      for (WeaponTag tag : WeaponTag.getRangedWeaponTypeTags()) {
-        getSelectedModel(tag).setValue(false);
-      }
-    }
     for (WeaponTag tag : WeaponTag.getRangedWeaponTypeTags()) {
-      getEnabledModel(tag).setValue(enabled);
+      setEnabled(enabled, tag);
     }
     for (WeaponTag tag : WeaponTag.getRangedWeaponTags()) {
       setEnabled(enabled, tag);
@@ -93,7 +88,7 @@ public class WeaponTagsModel implements IWeaponTagsModel {
 
   public void setTagsRangedCombatStyle() {
     setAllCloseCombatTagsEnabled(false);
-    if (isRangedWeaponTagSelected()) {
+    if (isRangedTypeTagSelected()) {
       for (WeaponTag tag : WeaponTag.getRangedWeaponTypeTags()) {
         getEnabledModel(tag).setValue(isSelected(tag));
       }
@@ -104,7 +99,7 @@ public class WeaponTagsModel implements IWeaponTagsModel {
   }
 
   @Override
-  public boolean isRangedWeaponTagSelected() {
+  public boolean isRangedTypeTagSelected() {
     int selectionCount = 0;
     for (WeaponTag tag : WeaponTag.getRangedWeaponTypeTags()) {
       if (isSelected(tag)) {
@@ -112,5 +107,20 @@ public class WeaponTagsModel implements IWeaponTagsModel {
       }
     }
     return selectionCount == 1;
+  }
+
+  @Override
+  public boolean isThrownTypeTagSelected() {
+    return isSelected(WeaponTag.Thrown);
+  }
+  
+  @Override
+  public boolean isThrownWeaponTagSelected() {
+    for (WeaponTag tag : WeaponTag.getThrownWeaponTags()) {
+      if (isSelected(tag)) {
+        return true;
+      }
+    }
+    return false;
   }
 }

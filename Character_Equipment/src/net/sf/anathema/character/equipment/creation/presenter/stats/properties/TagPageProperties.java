@@ -28,4 +28,8 @@ public class TagPageProperties {
   public IBasicMessage getSelectRangedWeaponTagMessage() {
     return new BasicMessage(resources.getString("Equipment.Creation.Tags.SelectRangedTagMessage")); //$NON-NLS-1$
   }
+
+  public IBasicMessage getThrownTagButNotThrownTypeMessage() {
+    return new BasicMessage(resources.getString("Equipment.Creation.Tags.ThrownTagButNotThrownTypeMessage")); //$NON-NLS-1$
+  }
 }

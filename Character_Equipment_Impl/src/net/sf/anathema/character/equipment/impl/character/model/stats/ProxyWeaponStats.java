@@ -67,11 +67,15 @@ public class ProxyWeaponStats implements IWeaponStats, IProxy<IWeaponStats> {
     if (ArrayUtilities.contains(getTags(), WeaponTag.BowType)) {
       return WeaponStatsType.Bow;
     }
-    if (ArrayUtilities.contains(getTags(), WeaponTag.BowType)) {
-      return WeaponStatsType.Bow;
+    if (ArrayUtilities.contains(getTags(), WeaponTag.FlameType)) {
+      return WeaponStatsType.Flame;
     }
-    if (ArrayUtilities.contains(getTags(), WeaponTag.BowType)) {
-      return WeaponStatsType.Bow;
+    if (ArrayUtilities.contains(getTags(), WeaponTag.Thrown)) {
+      if (ArrayUtilities.contains(getTags(), WeaponTag.BowBonuses)) {
+        return WeaponStatsType.Thrown_BowBonuses;
+      } else {
+        return WeaponStatsType.Thrown;  
+      }
     }
     return WeaponStatsType.Melee;
   }
