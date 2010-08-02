@@ -18,6 +18,7 @@
 		<ant antfile="build_plot_plugin.xml" />
 		<ant antfile="build_music_plugin.xml" />
 		<ant antfile="build_charmcascades_plugin.xml" />
+		<ant antfile="build_book_scrollofthemonk_plugin.xml" />
 	</target>
 
 	<target name="Build Bootloader">
