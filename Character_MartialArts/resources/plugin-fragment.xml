@@ -69,6 +69,8 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_MartialArts_WoodDragon.xml"/>
 	  </parameter>
+<!-- These charms were imported from Scroll of the Monk - The Imperfect Lotus, and so should no longer be included here. -->
+<!--
  	  <parameter id="list">
 		<parameter id="type" value="MartialArts"/>
 		<parameter id="rules" value="SecondEdition"/>
@@ -109,7 +111,9 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/TerribleAscentDrivenBeast.xml"/>
 	  </parameter>
-<!-- 	  
+-->
+      <!-- These charms were imported from Scroll of the Monk, and so should no longer be included here. -->
+<!--
 	  <parameter id="list">
 		<parameter id="type" value="MartialArts"/>
 		<parameter id="rules" value="SecondEdition"/>
@@ -119,7 +123,8 @@
 		<parameter id="type" value="MartialArts"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/DreamingPearlCourtesan.xml"/>
-	  </parameter> -->	 	
+	  </parameter>
+-->
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="MartialArtsResources">
 		<!--<parameter id="bundle" value="Charms_MartialArts"/>-->
