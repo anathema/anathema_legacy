@@ -134,7 +134,7 @@
           <cost>
                <essence cost="3" />
           </cost>
-          <duration duration="InstantOrScene" />
+          <duration duration="OneSceneOrInstant" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
