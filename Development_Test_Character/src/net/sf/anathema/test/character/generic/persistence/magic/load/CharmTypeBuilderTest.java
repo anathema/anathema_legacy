@@ -59,7 +59,7 @@ public class CharmTypeBuilderTest extends BasicTestCase {
     ICharmTypeModel model = builder.build(element);
     assertIsAssignableFrom(IReflexiveSpecialsModel.class, model.getSpecialsModel().getClass());
     IReflexiveSpecialsModel specialModel = (IReflexiveSpecialsModel) model.getSpecialsModel();
-    assertEquals(5, specialModel.getPrimaryStep());
+    assertEquals(new Integer(5), specialModel.getPrimaryStep());
   }
 
   public void testReflexiveSpecialModelWithTwoSteps() throws Exception {
@@ -68,7 +68,7 @@ public class CharmTypeBuilderTest extends BasicTestCase {
     ICharmTypeModel model = builder.build(element);
     assertIsAssignableFrom(IReflexiveSpecialsModel.class, model.getSpecialsModel().getClass());
     IReflexiveSpecialsModel specialModel = (IReflexiveSpecialsModel) model.getSpecialsModel();
-    assertEquals(5, specialModel.getPrimaryStep());
+    assertEquals(new Integer(5), specialModel.getPrimaryStep());
     assertEquals(new Integer(7), specialModel.getSecondaryStep());
   }
 

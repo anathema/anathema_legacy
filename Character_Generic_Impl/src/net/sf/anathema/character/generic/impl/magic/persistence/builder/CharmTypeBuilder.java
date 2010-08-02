@@ -76,7 +76,7 @@ public class CharmTypeBuilder {
       return null;
     }
     try {
-      int primaryStep = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_PRIMARY_STEP);
+      Integer primaryStep = ElementUtilities.getRequiredIntOrVariesAttrib(element, ATTRIB_PRIMARY_STEP);
       String secondStepString = element.attributeValue(ATTRIB_SECONDARY_STEP);
       if (StringUtilities.isNullOrEmpty(secondStepString)) {
         return new ReflexiveSpecialsModel(primaryStep, null);

@@ -27,6 +27,21 @@ public class ElementUtilities {
     }
   }
 
+  public static Integer getRequiredIntOrVariesAttrib(Element element, String name) throws PersistenceException {
+    String value = getRequiredAttrib(element, name);
+    try {
+      return new Integer(value);
+    }
+    catch (NumberFormatException e) {
+      if (value.equals("Varies")) {
+        return null;
+      } else {
+        String message = "Attribute " + name + " must be of value \"Varies\" or integer, but was: " + value; //$NON-NLS-1$ //$NON-NLS-2$
+        throw new PersistenceException(message);
+      }
+    }
+  }
+
   public static int getIntAttrib(Element element, String name, int nullValue) throws PersistenceException {
     String value = element.attributeValue(name);
     if (value == null) {

@@ -66,7 +66,7 @@ public class CharmTypeWriterTest extends TestCase {
   public void testReflexiveSpecialsModel() throws Exception {
     charm.setCharmType(CharmType.Reflexive);
     ITypeSpecialsModel model = new IReflexiveSpecialsModel() {
-      public int getPrimaryStep() {
+      public Integer getPrimaryStep() {
         return 5;
       }
 
@@ -89,7 +89,7 @@ public class CharmTypeWriterTest extends TestCase {
   public void testSplitReflexiveSpecialsModel() throws Exception {
     charm.setCharmType(CharmType.Reflexive);
     ITypeSpecialsModel model = new IReflexiveSpecialsModel() {
-      public int getPrimaryStep() {
+      public Integer getPrimaryStep() {
         return 3;
       }
 

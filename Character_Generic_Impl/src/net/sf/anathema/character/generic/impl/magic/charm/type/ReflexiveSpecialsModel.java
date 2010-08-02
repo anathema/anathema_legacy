@@ -4,15 +4,15 @@ import net.sf.anathema.character.generic.magic.charms.type.IReflexiveSpecialsMod
 
 public class ReflexiveSpecialsModel implements IReflexiveSpecialsModel {
 
-  private final int primaryStep;
+  private final Integer primaryStep;
   private final Integer secondaryStep;
 
-  public ReflexiveSpecialsModel(int primaryStep, Integer secondaryStep) {
+  public ReflexiveSpecialsModel(Integer primaryStep, Integer secondaryStep) {
     this.primaryStep = primaryStep;
     this.secondaryStep = secondaryStep;
   }
 
-  public int getPrimaryStep() {
+  public Integer getPrimaryStep() {
     return primaryStep;
   }
 

@@ -35,11 +35,21 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
     Object[] objects;
     if (model.getSecondaryStep() == null) {
       formatter.applyPattern(getResources().getString(getReflexiveSingleStepPattern()));
-      objects = new Object[] { model.getPrimaryStep() };
+      if (model.getPrimaryStep() == null) {
+        objects = new Object[] { -1 };
+      }
+      else {
+        objects = new Object[] { model.getPrimaryStep() };
+      }
     }
     else {
       formatter.applyPattern(getResources().getString(getReflexiveDualStepPattern()));
-      objects = new Object[] { model.getPrimaryStep(), model.getSecondaryStep() };
+      if (model.getPrimaryStep() == null) {
+        objects = new Object[] { -1, model.getSecondaryStep() };
+      }
+      else {
+        objects = new Object[] { model.getPrimaryStep(), model.getSecondaryStep() };
+      }
     }
     builder.append(formatter.format(objects));
     builder.append(")"); //$NON-NLS-1$

@@ -6,7 +6,7 @@ public interface IReflexiveSpecialsEntryModel extends IReflexiveSpecialsModel {
 
   public void setSplitEnabled(boolean splitEnabled);
 
-  public void setStep(int newValue);
+  public void setStep(Integer newValue);
 
-  public void setDefenseStep(int newValue);
+  public void setDefenseStep(Integer newValue);
 }

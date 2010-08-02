@@ -39,7 +39,12 @@ public class CharmTypeWriter {
           return;
         }
         Element specialElement = typeElement.addElement(TAG_SPECIAL);
-        ElementUtilities.addAttribute(specialElement, ATTRIB_PRIMARY_STEP, model.getPrimaryStep());
+        if (model.getPrimaryStep() == null) {
+          specialElement.addAttribute(ATTRIB_PRIMARY_STEP, "Varies");
+        }
+        else {
+          ElementUtilities.addAttribute(specialElement, ATTRIB_PRIMARY_STEP, model.getPrimaryStep());
+        }
         if (model.isSplitEnabled()) {
           ElementUtilities.addAttribute(specialElement, ATTRIB_SECONDARY_STEP, model.getSecondaryStep());
         }
