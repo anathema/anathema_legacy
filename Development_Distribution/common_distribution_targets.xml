@@ -21,6 +21,7 @@
 		<ant antfile="build_book_scrollofthemonk_plugin.xml" />
 		<ant antfile="build_book_scrollofthemonk_imperfectlotus_plugin.xml" />
 		<ant antfile="build_book_moep_abyssals_plugin.xml" />
+		<ant antfile="build_book_moep_sidereals_plugin.xml" />
 	</target>
 
 	<target name="Build Bootloader">

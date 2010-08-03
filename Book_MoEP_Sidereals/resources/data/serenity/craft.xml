@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    craft.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Craft -->
+     <charm id="Sidereal.ElementalVision" exalt="Sidereal" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="2" />
+               <essence value="2" />
+          </prerequisite>
+          <!-- Coding:  Purchasable multiple times for additional elements.
+                 Journeys = Air
+                 Serenity = Wood
+                 Battles = Fire
+                 Secrets = Water
+                 Endings = Earth -->
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Special" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <charmAttribute attribute="Virtue-Compassion" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.ExcellentImplementationOfObjectives" exalt="Sidereal" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="3" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+          </cost>
+          <duration duration="Varies" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.DestinyKnittingEntanglement" exalt="Sidereal" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="3" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.WorldShapingArtisticVision" exalt="Sidereal" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="2" />
+               <essence value="2" />
+          </prerequisite>
+          <!-- Coding:  This charm can be purchased up to three times, for different specialties
+                 or the same one multiple times. -->
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.PredestinedDeliveryShaping" exalt="Sidereal" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="4" />
+               <essence value="3" />
+               <charmReference id="Sidereal.DestinyKnittingEntanglement" />
+          </prerequisite>
+          <cost>
+               <essence cost="7" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple">
+               <special speed="6" turntype="DramaticAction" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Fate" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.MendingWarpedDesigns" exalt="Sidereal" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="4" />
+               <essence value="3" />
+               <charmReference id="Sidereal.ExcellentImplementationOfObjectives" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+               <special speed="5" defense="-2" />
+          </charmtype>
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Virtue-Valor" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.ImplicitConstructionMethodology" exalt="Sidereal" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="5" />
+               <essence value="4" />
+               <charmReference id="Sidereal.ElementalVision" />
+               <charmReference id="Sidereal.MendingWarpedDesigns" />
+               <charmReference id="Sidereal.PredestinedDeliveryShaping" />
+               <charmReference id="Sidereal.WorldShapingArtisticVision" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1" />
+               <health cost="1" type="Lethal" />
+          </cost>
+          <duration duration="Varies" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="PrayerStrip" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+</charmlist>
