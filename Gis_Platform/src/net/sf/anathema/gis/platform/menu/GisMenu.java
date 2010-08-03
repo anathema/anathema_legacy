@@ -10,6 +10,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class GisMenu implements IAnathemaMenu {
 
+  @Override
   public void add(IResources resources, IAnathemaModel model, IMenuBar menubar) {
     GisDataDirectory gisDataDirectory = new GisDataDirectory();
     gisDataDirectory.setDirectory(new File("./gisdata/"));

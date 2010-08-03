@@ -14,10 +14,12 @@ public class CatalogTile implements ICatalogTile {
     this.envelope = envelope;
   }
 
+  @Override
   public String getRelativeFileName() {
     return fileName;
   }
 
+  @Override
   public Envelope getEnvelope() {
     return envelope;
   }

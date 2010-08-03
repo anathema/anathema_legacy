@@ -39,6 +39,7 @@ public abstract class AbstractRasterTiler implements IRasterTiler {
 
   // todo vom (27.04.2006) (sieroux): Themenname als Zusatzdatei
   // todo vom (27.04.2006) (sieroux): Index-Raufzählen, wenn die Datei schon existiert
+  @Override
   public final void tileRasterTheme(File imageFile, IProgressMonitor monitor) throws IOException {
     if (!gisDataDirectory.canWrite()) {
       throw new IOException("Gisdata directory cannot be written."); //$NON-NLS-1$

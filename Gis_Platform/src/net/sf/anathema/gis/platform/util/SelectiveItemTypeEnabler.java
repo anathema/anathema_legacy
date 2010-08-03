@@ -15,14 +15,17 @@ public class SelectiveItemTypeEnabler extends AbstractItemTypeEnabler {
     action.setEnabled(false);
   }
 
+  @Override
   public void itemAdded(IItem item) throws AnathemaException {
     // nothing to do
   }
 
+  @Override
   public void itemSelected(IItem item) {
     action.setEnabled(isRelevantItem(item));
   }
 
+  @Override
   public void itemRemoved(IItem item) {
     // nothing to do
   }

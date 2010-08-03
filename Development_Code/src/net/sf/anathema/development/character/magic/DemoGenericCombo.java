@@ -13,10 +13,12 @@ public class DemoGenericCombo implements IGenericCombo {
     this.charms = charms;
   }
 
+  @Override
   public ICharm[] getCharms() {
     return charms;
   }
 
+  @Override
   public String getName() {
     return name;
   }
