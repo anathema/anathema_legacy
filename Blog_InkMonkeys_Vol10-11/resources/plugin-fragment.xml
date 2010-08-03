@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.inkmonkeys.vol10_11" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="InkMonkeys_Vol10-11" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="InkMonkeys_Vol10-11Resources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="InkMonkeys_Vol10-11Charms">
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/misc/blackClaw.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/misc/crane.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/misc/flowingKata.xml" />
+          </parameter> 
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="InkMonkeys_Vol10-11Resources">
+          <parameter id="bundle" value="InkMonkeys_Vol10-11" />
+          <parameter id="bundle" value="Pages_InkMonkeys_Vol10-11" />
+          <parameter id="bundle" value="Charms_InkMonkeys_Vol10-11" />
+     </extension>
+</plugin-fragment>

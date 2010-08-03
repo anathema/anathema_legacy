@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.scrollofthefallenraces.debris" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="DebrisFromTheFallenRaces" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="DebrisFromTheFallenRacesResources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="DebrisFromTheFallenRacesCharms">
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/twilight/lore.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/misc/eyeHeaven.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/misc/flameStone.xml" />
+          </parameter> 
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/misc/blackTide.xml" />
+          </parameter> 
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/misc/daggerWind.xml" />
+          </parameter> 
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/misc/shadowHunter.xml" />
+          </parameter> 
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="DebrisFromTheFallenRacesResources">
+          <parameter id="bundle" value="DebrisFromTheFallenRaces" />
+          <parameter id="bundle" value="Pages_DebrisFromTheFallenRaces" />
+          <parameter id="bundle" value="Charms_DebrisFromTheFallenRaces" />
+     </extension>
+</plugin-fragment>

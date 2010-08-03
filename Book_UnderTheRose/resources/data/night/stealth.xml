@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    stealth.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2010 Scott D. Olson (scott.d.olson@comcast.net)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Stealth -->
+     <charm id="Solar.SpreadingNightsShroud" exalt="Solar" group="Stealth">
+          <prerequisite>
+               <trait id="Stealth" value="5" />
+               <essence value="3" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" text=" per beneficiary" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="UnderRose" />
+     </charm>
+</charmlist>

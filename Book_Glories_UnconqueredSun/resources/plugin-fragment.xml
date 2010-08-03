@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.glories.unconqueredsun" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="Glories_UnconqueredSun" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="Glories_UnconqueredSunResources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="Glories_UnconqueredSunCharms">
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/dawn/melee.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/zenith/integrity.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/zenith/performance.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/zenith/presence.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/zenith/resistance.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/zenith/survival.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/twilight/craft.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/twilight/investigation.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/twilight/lore.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/twilight/medicine.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/twilight/occult.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/night/athletics.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/night/awareness.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/night/dodge.xml" />
+          </parameter> 
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/night/stealth.xml" />
+          </parameter> 
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/eclipse/bureaucracy.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/eclipse/linguistics.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/eclipse/ride.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/eclipse/socialize.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/misc/solarHero.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/misc/armsUnconqueredSun.xml" />
+          </parameter>
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="Glories_UnconqueredSunResources">
+          <parameter id="bundle" value="Glories_UnconqueredSun" />
+          <parameter id="bundle" value="Pages_Glories_UnconqueredSun" />
+          <parameter id="bundle" value="Charms_Glories_UnconqueredSun" />
+     </extension>
+</plugin-fragment>

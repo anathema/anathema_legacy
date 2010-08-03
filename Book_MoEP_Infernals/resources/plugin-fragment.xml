@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.moepInfernals" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="moepInfernals" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="moepInfernalsResources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="moepInfernalsCharms">
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/occult.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/war.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/presence.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/awareness.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/linguistics.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/integrity.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/solarHero.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/infernalMonster.xml" />
+          </parameter>
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="moepInfernalsResources">
+          <parameter id="bundle" value="moepInfernals" />
+          <parameter id="bundle" value="Pages_moepInfernals" />
+          <parameter id="bundle" value="Charms_moepInfernals" />
+     </extension>
+</plugin-fragment>

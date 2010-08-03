@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.glories.maidens" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="Glories_Maidens" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="Glories_MaidensResources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="Glories_MaidensCharms">
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/crane.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/crystalChameleon.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="data/sapphireVeil.xml" />
+          </parameter> 
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="Glories_MaidensResources">
+          <parameter id="bundle" value="Glories_Maidens" />
+          <parameter id="bundle" value="Pages_Glories_Maidens" />
+          <parameter id="bundle" value="Charms_Glories_Maidens" />
+     </extension>
+</plugin-fragment>
