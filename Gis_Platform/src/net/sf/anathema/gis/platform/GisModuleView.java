@@ -20,30 +20,37 @@ public class GisModuleView implements IItemView {
     this.printName = printName;
   }
 
+  @Override
   public JComponent getComponent() {
     return panel;
   }
 
+  @Override
   public void setName(String newName) {
     // Nothing to do
   }
 
+  @Override
   public String getName() {
     return printName;
   }
 
+  @Override
   public Icon getIcon() {
     return null;
   }
 
+  @Override
   public void addNameChangedListener(IObjectValueChangedListener<String> nameListener) {
     // Nothing to do
   }
 
+  @Override
   public void removeNameChangedListener(IObjectValueChangedListener<String> nameListener) {
     // Nothing to do
   }
 
+  @Override
   public void dispose() {
     // Nothing to do
   }

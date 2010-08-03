@@ -19,10 +19,12 @@ public class CoordinateView implements ICoordinateView {
     this.numberFormat = numberFormat;
   }
 
+  @Override
   public void setCoordinate(double x, double y) {
     label.setText(numberFormat.format(x) + "  " + numberFormat.format(y)); //$NON-NLS-1$
   }
 
+  @Override
   public JComponent getComponent() {
     return label;
   }

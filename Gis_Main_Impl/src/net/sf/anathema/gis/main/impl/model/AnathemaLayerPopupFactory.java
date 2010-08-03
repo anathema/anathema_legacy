@@ -8,6 +8,7 @@ import de.disy.gis.gisterm.pro.map.layer.popup.IMapLayerPopupMenuContext;
 
 public class AnathemaLayerPopupFactory implements ILayerPopupFactory {
 
+  @Override
   public JPopupMenu createPopupMenu(ITheme arg0, IMapLayerPopupMenuContext arg1) {
     return null;
   }
