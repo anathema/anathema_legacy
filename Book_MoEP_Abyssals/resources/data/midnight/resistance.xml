@@ -100,7 +100,7 @@
           <cost>
                <essence cost="10" />
           </cost>
-          <duration event="UntilNightEnds" />
+          <duration event="NightEnds" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />

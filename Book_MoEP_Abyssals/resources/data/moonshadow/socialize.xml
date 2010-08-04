@@ -32,7 +32,7 @@
           <cost>
                <essence cost="1" />
           </cost>
-          <duration event="UntilNextAction" />
+          <duration event="NextAction" />
           <charmtype type="Reflexive">
 			<special primaryStep="1" secondaryStep="2" />
 		</charmtype>

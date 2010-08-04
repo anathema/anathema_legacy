@@ -103,7 +103,7 @@
 		<xsl:element name="div"><xsl:attribute name="style">background-color: silver</xsl:attribute>
 			<!-- List any restrictions on selecting the charm. -->
 			<xsl:call-template name="charmRestrictions" />
-			<!-- List he Exalt to whose tree the charm belongs. -->
+			<!-- List the Exalt to whose tree the charm belongs. -->
 			<xsl:call-template name="writeExalt"/>
 			<!-- What group is the charm a part of? -->
 			<xsl:call-template name="charmGroup" />

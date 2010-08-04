@@ -44,7 +44,7 @@
           <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <source source="Abyssals2nd" page="140" />
+          <source source="Abyssals2nd" page="121" />
      </genericCharm>
      <genericCharm id="Abyssal.2ndExcellency" exalt="Abyssal">
           <prerequisite>
@@ -66,7 +66,7 @@
           <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <source source="Abyssals2nd" page="140" />
+          <source source="Abyssals2nd" page="121" />
      </genericCharm>
      <genericCharm id="Abyssal.3rdExcellency" exalt="Abyssal">
           <prerequisite>
@@ -83,7 +83,7 @@
           <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <source source="Abyssals2nd" page="185" />
+          <source source="Abyssals2nd" page="121" />
      </genericCharm>
      <!-- Unique Abyssal Excellencies -->
      <genericCharm id="Abyssal.RaveningMouth" exalt="Abyssal">
@@ -100,6 +100,6 @@
           <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <source source="Abyssals2nd" />
+          <source source="Abyssals2nd" page="122"/>
      </genericCharm>
 </charmlist>

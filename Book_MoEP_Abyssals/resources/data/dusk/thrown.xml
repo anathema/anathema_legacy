@@ -134,7 +134,7 @@
           <cost>
                <essence cost="3" text="or 3m, 1wp" />
           </cost>
-          <duration event="UntilBroken" />
+          <duration event="Broken" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />

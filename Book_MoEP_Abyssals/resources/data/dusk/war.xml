@@ -163,7 +163,7 @@
                <essence cost="8" />
                <willpower cost="1" />
           </cost>
-          <duration event="UntilDisengaged" />
+          <duration event="Disengaged" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />

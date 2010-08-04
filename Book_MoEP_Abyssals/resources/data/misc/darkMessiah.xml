@@ -62,7 +62,7 @@
           <cost>
                <essence cost="1" text="per action" />
           </cost>
-          <duration event="UntilReleased" />
+          <duration event="Released" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
@@ -77,7 +77,7 @@
           <cost>
                <essence cost="5" />
           </cost>
-          <duration event="UntilReleased" />
+          <duration event="Released" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />

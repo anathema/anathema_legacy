@@ -129,7 +129,7 @@
           <cost>
                <essence cost="2" />
           </cost>
-          <duration event="UntilNextAction" />
+          <duration event="NextAction" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
