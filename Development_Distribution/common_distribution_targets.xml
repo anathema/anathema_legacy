@@ -18,11 +18,22 @@
 		<ant antfile="build_plot_plugin.xml" />
 		<ant antfile="build_music_plugin.xml" />
 		<ant antfile="build_charmcascades_plugin.xml" />
-		<ant antfile="build_book_scrollofthemonk_plugin.xml" />
-		<ant antfile="build_book_scrollofthemonk_imperfectlotus_plugin.xml" />
+		<!-- Additional Sources -->
+		<ant antfile="build_blog_inkmonkeys_vol8_plugin.xml" />
+		<ant antfile="build_blog_inkmonkeys_vol10-11_plugin.xml" />
+		<ant antfile="build_book_glories_luna_plugin.xml" />
+		<ant antfile="build_book_glories_maidens_plugin.xml" />
+		<ant antfile="build_book_glories_unconqueredsun_plugin.xml" />
 		<ant antfile="build_book_moep_abyssals_plugin.xml" />
+		<ant antfile="build_book_moep_infernals_plugin.xml" />
 		<ant antfile="build_book_moep_lunars_plugin.xml" />
 		<ant antfile="build_book_moep_sidereals_plugin.xml" />
+		<ant antfile="build_book_scrollofexalts_plugin.xml" />
+		<ant antfile="build_book_scrollofthefallenraces_debris_plugin.xml" />
+		<ant antfile="build_book_scrollofthemonk_plugin.xml" />
+		<ant antfile="build_book_scrollofthemonk_imperfectlotus_plugin.xml" />
+		<ant antfile="build_book_thousandcorrectactions_plugin.xml" />
+		<ant antfile="build_book_undertherose_plugin.xml" />
 	</target>
 
 	<target name="Build Bootloader">
