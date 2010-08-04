@@ -85,6 +85,33 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Abyssals2nd" page="121" />
      </genericCharm>
+     <genericCharm id="Abyssal.InfiniteMastery" exalt="Solar">
+          <prerequisite>
+               <trait value="4"/>
+               <essence value="3"/>
+               <genericCharmAttributeRequirement attribute="Excellency"/>
+          </prerequisite>
+          <cost>
+               <essence cost="2" text="or more"/>
+               <willpower cost="1"/>
+          </cost>
+          <duration amount="1" unit="scene"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Mortal"/>
+          <source source="SecondEdition" page="185"/>
+     </genericCharm>
+     <genericCharm id="Abyssal.EssenceFlow" exalt="Solar">
+          <prerequisite>
+               <trait value="5"/>
+               <essence value="4"/>
+               <genericCharmAttributeRequirement attribute="Excellency"/>
+          </prerequisite>
+          <cost/>
+          <duration duration="Permanent"/>
+          <charmtype type="Permanent"/>
+          <charmAttribute attribute="Mortal"/>
+          <source source="SecondEdition" page="187"/>
+     </genericCharm>
      <!-- Unique Abyssal Excellencies -->
      <genericCharm id="Abyssal.RaveningMouth" exalt="Abyssal">
           <prerequisite>
