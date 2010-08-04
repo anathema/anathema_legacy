@@ -8,16 +8,16 @@
 
 	<target name="Distribute" depends="Build Bootloader, Build Plugins, Copy Text, Copy Linux Launcher, Build ZIP" />
 
+	<target name="Copy Linux Launcher">
+		<copy todir="${files.dir}" file="Linux/anathema.sh" />
+	</target>
+
 	<target name="Build ZIP">
-		<zip destfile="anathema_v${version.major}.${version.minor}.zip">
+		<zip destfile="anathema_v${version.major}.${version.minor}.${version.revision}.zip">
 			<fileset dir="${build.dir}" includes="anathema.jar" />
 			<fileset dir="${files.dir}" includes="**/*" />
 			<zipfileset dir="${plugins.dir}/" prefix="plugins" includes="*" />
 			<zipfileset dir="${libraries.dir}" prefix="lib" includes="*" />
 		</zip>
-	</target>
-
-	<target name="Copy Linux Launcher">
-		<copy todir="${files.dir}" file="Linux/anathema.sh" />
 	</target>
 </project>
