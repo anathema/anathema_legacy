@@ -101,42 +101,7 @@
     <source source="SecondEdition" page="187"/>
   </genericCharm>
   
-  <genericCharm id="Solar.UltimateMastery" exalt="Solar">
-    <prerequisite>
-      <trait value="5"/>
-      <essence value="5"/>
-      <genericCharmReference id="Solar.EssenceFlow"/>
-    </prerequisite>
-    <cost>
-      <essence cost="3"/>
-      <willpower cost="1"/>
-    </cost>
-    <duration duration="Instant"/>
-  	<charmtype type="Reflexive"/>
-    <charmAttribute attribute="Mortal"/>
-    <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="LordsOfCreation" />
-  </genericCharm>
-  
-  <genericCharm id="Solar.SupremePerfection" exalt="Solar">
-    <prerequisite>
-      <trait value="6"/>
-      <essence value="6"/>
-      <genericCharmReference id="Solar.EssenceFlow"/>
-    </prerequisite>
-    <cost>
-      <essence cost="8"/>
-      <willpower cost="2"/>
-    </cost>
-    <duration duration="Instant"/>
-    <charmtype type="Reflexive"/>
-    <charmAttribute attribute="Mortal"/>
-    <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="LordsOfCreation"/>
-  </genericCharm>
-  
+
   <!-- Solar Archery -->
 
   <charm id="Solar.ThereIsNoWind" exalt="Solar" group="Archery">
