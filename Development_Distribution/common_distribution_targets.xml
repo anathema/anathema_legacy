@@ -51,4 +51,13 @@
 			<fileset dir="${documentation.dir}/Italian" includes="*.txt" />
 		</copy>
 	</target>
+	
+	<target name="Build ZIP">
+		<zip destfile="anathema_v${version.major}.${version.minor}.${version.revision}.zip">
+			<fileset dir="${build.dir}" includes="anathema.jar" />
+			<fileset dir="${files.dir}" includes="**/*" />
+			<zipfileset dir="${plugins.dir}/" prefix="plugins" includes="*" />
+			<zipfileset dir="${libraries.dir}" prefix="lib" includes="*" />
+		</zip>
+	</target>
 </project>

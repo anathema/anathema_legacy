@@ -1,29 +1,10 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<project name="Build Windows distribution" default="Distribute">
+<project name="Build Windows distribution" default="Distribute ZIP">
 
 	<!--Requires the property "launch4j.dir" to point to the launch4j installation.-->
-	<import file="common_distribution_targets.xml" />
+	<import file="windows_distribution_targets.xml" />
 
 	<property file="directories.properties" />
 
-	<taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar
-	   :${launch4j.dir}/xstream.jar" />
-
-	<target name="Distribute" depends="Build Bootloader, Build Plugins, Copy Text, Build Windows executable, Build ZIP" />
-
-	<target name="Build Windows executable">
-		<property file="version.properties" />
-		<property name="versionString" value="${version.major}.${version.minor}.${version.revision}.0" />
-		<property name="versionText" value="${versionString} ${version.name}" />
-		<launch4j configFile="Windows/launch4j.xml" outfile="${files.dir}/anathema.exe" fileVersion="${versionString}" productVersion="${versionString}" txtFileVersion="${versionText}" txtProductVersion="${versionText}" />
-	</target>
-
-	<target name="Build ZIP">
-		<zip destfile="anathema_v${version.major}.${version.minor}.${version.revision}.zip">
-			<fileset dir="${build.dir}" includes="anathema.jar" />
-			<fileset dir="${files.dir}" includes="**/*" />
-			<zipfileset dir="${plugins.dir}/" prefix="plugins" includes="*" />
-			<zipfileset dir="${libraries.dir}" prefix="lib" includes="*" />
-		</zip>
-	</target>
+	<target name="Distribute ZIP" depends="Build Bootloader, Build Plugins, Copy Text, Build Windows executable, Build ZIP" />
 </project>
