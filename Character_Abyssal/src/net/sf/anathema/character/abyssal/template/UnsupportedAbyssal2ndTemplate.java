@@ -33,7 +33,7 @@ public class UnsupportedAbyssal2ndTemplate extends AbstractUnsupportedExaltTempl
         CharacterType.ABYSSAL,
         ExaltedEdition.SecondEdition);
     this.charmTemplate = new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Celestial), charmSet);
-    this.presentationProperties = new AbyssalPresentationProperties("Should.Not.Be.Displayed");
+    this.presentationProperties = new Abyssal2ndPresentationProperties("Should.Not.Be.Displayed");
   }
 
   public IGroupedTraitType[] getAbilityGroups() {
