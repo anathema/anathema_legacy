@@ -77,6 +77,7 @@ public class SugiyamaLayout {
 
   private IProperHierarchicalGraph createOrderedGraph(final IProperHierarchicalGraph graph) {
     IProperHierarchicalGraph bestGraph = null;
+    int bestCrossingCount = Integer.MAX_VALUE;
     for (IVertexOrdererFactory ordererFactory : factoryList) {
       IProperHierarchicalGraph clonedGraph = graph.clone();
       ordererFactory.createVertexOrderer(clonedGraph).processMultiLayerGraph();
@@ -84,8 +85,9 @@ public class SugiyamaLayout {
       if (crossingCount == 0) {
         return clonedGraph;
       }
-      if (bestGraph == null || crossingCount < bestGraph.calculateTotalNumberOfCrossings()) {
+      if (bestGraph == null || crossingCount < bestCrossingCount) {
         bestGraph = clonedGraph;
+        bestCrossingCount = crossingCount;
       }
     }
     return bestGraph;
