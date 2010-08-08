@@ -3,6 +3,11 @@
 	<dirname property="distributiontargets.basedir" file="${ant.file.Common_Distribution_Targets}"/>
 	<taskdef resource="net/sf/ant4eclipse/antlib.xml" classpath="${distributiontargets.basedir}/../Thirdparty/Ant/ant4eclipse-0.5.0.rc1.jar" />
 	<taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${distributiontargets.basedir}/../Thirdparty/Ant/ant-contrib-1.0b1.jar" />
+	
+	<target name="Clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${test.dir}" />
+	</target>
 
 	<target name="Build Plugins">
 		<ant antfile="build_core_plugin.xml" />
@@ -59,5 +64,19 @@
 			<zipfileset dir="${plugins.dir}/" prefix="plugins" includes="*" />
 			<zipfileset dir="${libraries.dir}" prefix="lib" includes="*" />
 		</zip>
+	</target>
+	
+	<target name="Build Test Distribution">
+		<deltree dir="${test.dir}"/>
+		<copy todir="${test.dir}">
+            <fileset dir="${build.dir}" includes="anathema.jar" />
+            <fileset dir="${files.dir}" includes="**/*" />
+		</copy>
+        <copy todir="${test.dir}/plugins">
+            <fileset dir="${plugins.dir}" includes="*" />
+        </copy>
+        <copy todir="${test.dir}/lib">
+            <fileset dir="${libraries.dir}" includes="*" />
+        </copy>
 	</target>
 </project>
