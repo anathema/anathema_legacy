@@ -192,7 +192,7 @@ public class SvgTreeView implements ISvgTreeView {
     for (int index = 0; index < lines; index++) {
       int startIndex = wrap.get(index);
       int runLength = wrap.get(index + 1) - startIndex;
-      textNodes[index] = document.createTextNode(oldNode.substringData(startIndex, runLength));
+      textNodes[index] = document.createTextNode(oldNode.substringData(startIndex, runLength).trim());
     }
     text.removeChild(oldNode);
     Element[] lineBreak = new Element[lines];
