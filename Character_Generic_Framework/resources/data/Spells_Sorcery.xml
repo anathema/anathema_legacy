@@ -1273,15 +1273,6 @@
     </cost>
     <source edition="FirstEdition" source="SavageSeas" page="117"/>
   </spell>
-  <spell circle="Terrestrial" id="Terrestrial.StormRiderEnchantment">
-    <cost>
-      
-        <essence cost="20"/>
-      
-    </cost>
-    <target target="Ship"/>
-    <source edition="SecondEdition" source="WhiteTreatise" page="64"/>
-  </spell>
   <spell circle="Celestial" id="Celestial.SummonSpiritBoat">
     <cost>
       
@@ -1967,8 +1958,8 @@
 				
 	</cost>
 	<target target="Area"/>
-	<source source="SecondEdition" page="167" edition="SecondEdition" /> 
-	<!--source source="Infernals" page="167" edition="SecondEdition" /--> 
+	<!--source source="SecondEdition" page="167" edition="SecondEdition" /--> 
+	<source source="Infernals" page="167" edition="SecondEdition" /> 
   </spell>
   <spell circle="Solar" id="Solar.SoulTwistingDefilementRadiance">
 	<cost>
@@ -1977,8 +1968,8 @@
 				
 	</cost>
 	<target target="Area"/>
-	<source source="SecondEdition" page="167" edition="SecondEdition" />
-	<!--source source="Infernals" page="167" edition="SecondEdition" /--> 
+	<!--source source="SecondEdition" page="167" edition="SecondEdition" /-->
+	<source source="Infernals" page="167" edition="SecondEdition" /> 
   </spell>
   <spell circle="Solar" id="Solar.WingsOfTheArchon">
 	<cost>
@@ -1987,8 +1978,8 @@
 				
 	</cost>
 	<target target="Caster"/>
-	<source source="SecondEdition" page="39" edition="SecondEdition" />
-	<!--source source="GloriesUCS" page="39" edition="SecondEdition" /--> 
+	<!--source source="SecondEdition" page="39" edition="SecondEdition" /-->
+	<source source="GloriesUCS" page="39" edition="SecondEdition" /> 
   </spell>
   <spell circle="Solar" id="Solar.InfiniteCatalepsisMacrame">
 	<cost>
@@ -1997,8 +1988,8 @@
 				
 	</cost>
 	<target target="Area"/>
-	<source source="SecondEdition" page="40" edition="SecondEdition" />
-	<!--source source="GloriesUCS" page="40" edition="SecondEdition" /--> 
+	<!--source source="SecondEdition" page="40" edition="SecondEdition" /-->
+	<source source="GloriesUCS" page="40" edition="SecondEdition" /> 
   </spell>
   <spell circle="Celestial" id="Celestial.GiftOfKnowledge">
 	<cost>
@@ -2014,5 +2005,26 @@
 	<target target="CasterAllies"/>
 	<source source="DragonBlooded2nd" page="122" edition="SecondEdition" /> 
   </spell>
-</spelllist>
+  <spell circle="Terrestrial" id="Terrestrial.BloodWithoutTies">
+	<cost>
+		<essence cost="10" />		
+	</cost>
+	<target target="WillingIndividual"/>
+	<source source="ReturnEmpress" page="36" edition="SecondEdition" /> 
+  </spell>
+  <spell circle="Solar" id="Solar.UndisturbedConvocationVeil">
+	<cost>
+		<essence cost="50" />		
+	</cost>
+	<target target="Area"/>
+	<source source="ReturnEmpress" page="42" edition="SecondEdition" /> 
+  </spell>
+  <spell circle="Solar" id="Solar.StoneIsTheGate">
+	<cost>
+		<essence cost="40" />		
+	</cost>
+	<target target="SanctumEntrance"/>
+	<source source="ReturnEmpress" page="44" edition="SecondEdition" /> 
+  </spell>
+  </spelllist>
 
