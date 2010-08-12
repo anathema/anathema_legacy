@@ -38,6 +38,6 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Dynasty" visualize="true" />
           <charmAttribute attribute="Social" visualize="true" />
-          <source source="ThousandCorrectActions" />
+          <source source="ReturnEmpress" />
      </charm>
 </charmlist>

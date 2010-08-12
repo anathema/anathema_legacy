@@ -38,4 +38,18 @@
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="UnderRose" />
      </charm>
-</charmlist>
+     <charm id="Solar.KingStridesUnseen" exalt="Solar" group="Stealth">
+          <prerequisite>
+               <trait id="Stealth" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.EasilyOverlookedPresenceMethod"/>
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="ReturnEmpress" />
+     </charm>
+ </charmlist>
