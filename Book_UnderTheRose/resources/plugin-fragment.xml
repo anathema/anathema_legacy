@@ -14,27 +14,27 @@
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/night/stealth.xml" />
+               <parameter id="path" value="underRose_data/night/stealth.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/zenith/integrity.xml" />
+               <parameter id="path" value="underRose_data/zenith/integrity.xml" />
           </parameter> 
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/air/lore.xml" />
+               <parameter id="path" value="underRose_data/air/lore.xml" />
           </parameter> 
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/fire/presence.xml" />
+               <parameter id="path" value="underRose_data/fire/presence.xml" />
           </parameter> 
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/solarHero.xml" />
+               <parameter id="path" value="underRose_data/misc/solarHero.xml" />
           </parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="UnderTheRoseResources">
