@@ -14,103 +14,103 @@
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/eclipse/sail.xml" />
+               <parameter id="path" value="thousand_data/eclipse/sail.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/zenith/integrity.xml" />
+               <parameter id="path" value="thousand_data/zenith/integrity.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/dawn/war.xml" />
+               <parameter id="path" value="thousand_data/dawn/war.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/night/athletics.xml" />
+               <parameter id="path" value="thousand_data/night/athletics.xml" />
           </parameter>
 
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/wood/ride.xml" />
+               <parameter id="path" value="thousand_data/wood/ride.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/wood/medicine.xml" />
+               <parameter id="path" value="thousand_data/wood/medicine.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/wood/archery.xml" />
+               <parameter id="path" value="thousand_data/wood/archery.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/water/sail.xml" />
+               <parameter id="path" value="thousand_data/water/sail.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/fire/socialize.xml" />
+               <parameter id="path" value="thousand_data/fire/socialize.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/fire/melee.xml" />
+               <parameter id="path" value="thousand_data/fire/melee.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/fire/athletics.xml" />
+               <parameter id="path" value="thousand_data/fire/athletics.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/earth/war.xml" />
+               <parameter id="path" value="thousand_data/earth/war.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/earth/integrity.xml" />
+               <parameter id="path" value="thousand_data/earth/integrity.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/earth/awareness.xml" />
+               <parameter id="path" value="thousand_data/earth/awareness.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/air/stealth.xml" />
+               <parameter id="path" value="thousand_data/air/stealth.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/air/occult.xml" />
+               <parameter id="path" value="thousand_data/air/occult.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/air/lore.xml" />
+               <parameter id="path" value="thousand_data/air/lore.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/air/linguistics.xml" />
+               <parameter id="path" value="thousand_data/air/linguistics.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/excellencies.xml" />
+               <parameter id="path" value="thousand_data/excellencies.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/terrestrialHero.xml" />
+               <parameter id="path" value="thousand_data/misc/terrestrialHero.xml" />
           </parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="ThousandCorrectActionsResources">

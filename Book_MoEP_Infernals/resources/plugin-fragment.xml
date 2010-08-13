@@ -14,42 +14,42 @@
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/occult.xml" />
+               <parameter id="path" value="moep_Infernals_data/occult.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/war.xml" />
+               <parameter id="path" value="moep_Infernals_data/war.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/presence.xml" />
+               <parameter id="path" value="moep_Infernals_data/presence.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/awareness.xml" />
+               <parameter id="path" value="moep_Infernals_data/awareness.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/linguistics.xml" />
+               <parameter id="path" value="moep_Infernals_data/linguistics.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/integrity.xml" />
+               <parameter id="path" value="moep_Infernals_data/integrity.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/solarHero.xml" />
+               <parameter id="path" value="moep_Infernals_data/solarHero.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/infernalMonster.xml" />
+               <parameter id="path" value="moep_Infernals_data/infernalMonster.xml" />
           </parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="moepInfernalsResources">

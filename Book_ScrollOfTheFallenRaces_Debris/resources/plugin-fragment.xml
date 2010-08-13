@@ -14,32 +14,32 @@
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/twilight/lore.xml" />
+               <parameter id="path" value="debris_data/twilight/lore.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/eyeHeaven.xml" />
+               <parameter id="path" value="debris_data/misc/eyeHeaven.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/flameStone.xml" />
+               <parameter id="path" value="debris_data/misc/flameStone.xml" />
           </parameter> 
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/blackTide.xml" />
+               <parameter id="path" value="debris_data/misc/blackTide.xml" />
           </parameter> 
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/daggerWind.xml" />
+               <parameter id="path" value="debris_data/misc/daggerWind.xml" />
           </parameter> 
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/shadowHunter.xml" />
+               <parameter id="path" value="debris_data/misc/shadowHunter.xml" />
           </parameter> 
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="DebrisFromTheFallenRacesResources">

@@ -14,302 +14,302 @@
 	     <!-- parameter id="list">
               <parameter id="type" value="Lunar" />
               <parameter id="rules" value="SecondEdition" />
-              <parameter id="path" value="data/knacks/human.xml" />
+              <parameter id="path" value="moep_Lunars_data/knacks/human.xml" />
          </parameter>
 	     <parameter id="list">
               <parameter id="type" value="Lunar" />
               <parameter id="rules" value="SecondEdition" />
-              <parameter id="path" value="data/knacks/miscellaneous.xml" />
+              <parameter id="path" value="moep_Lunars_data/knacks/miscellaneous.xml" />
          </parameter>
 	     <parameter id="list">
               <parameter id="type" value="Lunar" />
               <parameter id="rules" value="SecondEdition" />
-              <parameter id="path" value="data/knacks/refinement.xml" />
+              <parameter id="path" value="moep_Lunars_data/knacks/refinement.xml" />
          </parameter>
 	     <parameter id="list">
               <parameter id="type" value="Lunar" />
               <parameter id="rules" value="SecondEdition" />
-              <parameter id="path" value="data/knacks/shifting.xml" />
+              <parameter id="path" value="moep_Lunars_data/knacks/shifting.xml" />
          </parameter>
 	     <parameter id="list">
               <parameter id="type" value="Lunar" />
               <parameter id="rules" value="SecondEdition" />
-              <parameter id="path" value="data/knacks/speed.xml" />
+              <parameter id="path" value="moep_Lunars_data/knacks/speed.xml" />
          </parameter>
 	     <parameter id="list">
               <parameter id="type" value="Lunar" />
               <parameter id="rules" value="SecondEdition" />
-              <parameter id="path" value="data/knacks/supernatural.xml" />
+              <parameter id="path" value="moep_Lunars_data/knacks/supernatural.xml" />
          </parameter>
 	     <parameter id="list">
               <parameter id="type" value="Lunar" />
               <parameter id="rules" value="SecondEdition" />
-              <parameter id="path" value="data/knacks/war.xml" />
+              <parameter id="path" value="moep_Lunars_data/knacks/war.xml" />
          </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/excellencies.xml" />
+               <parameter id="path" value="moep_Lunars_data/excellencies.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/appearance/disguise.xml" />
+               <parameter id="path" value="moep_Lunars_data/appearance/disguise.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/appearance/interaction.xml" />
+               <parameter id="path" value="moep_Lunars_data/appearance/interaction.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/charisma/animalAndTraining.xml" />
+               <parameter id="path" value="moep_Lunars_data/charisma/animalAndTraining.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/charisma/fascination.xml" />
+               <parameter id="path" value="moep_Lunars_data/charisma/fascination.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/charisma/holy.xml" />
+               <parameter id="path" value="moep_Lunars_data/charisma/holy.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/charisma/interaction.xml" />
+               <parameter id="path" value="moep_Lunars_data/charisma/interaction.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/charisma/militaryUnit.xml" />
+               <parameter id="path" value="moep_Lunars_data/charisma/militaryUnit.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/charisma/socialUnit.xml" />
+               <parameter id="path" value="moep_Lunars_data/charisma/socialUnit.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/charisma/territory.xml" />
+               <parameter id="path" value="moep_Lunars_data/charisma/territory.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/dexterity/balanceAndGrace.xml" />
+               <parameter id="path" value="moep_Lunars_data/dexterity/balanceAndGrace.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/dexterity/crafting.xml" />
+               <parameter id="path" value="moep_Lunars_data/dexterity/crafting.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/dexterity/defensive.xml" />
+               <parameter id="path" value="moep_Lunars_data/dexterity/defensive.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/dexterity/lunarHeroStyleExpansion.xml" />
+               <parameter id="path" value="moep_Lunars_data/dexterity/lunarHeroStyleExpansion.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/dexterity/movement.xml" />
+               <parameter id="path" value="moep_Lunars_data/dexterity/movement.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/dexterity/speedAndExtraAction.xml" />
+               <parameter id="path" value="moep_Lunars_data/dexterity/speedAndExtraAction.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/intelligence/crafting.xml" />
+               <parameter id="path" value="moep_Lunars_data/intelligence/crafting.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/intelligence/defensive.xml" />
+               <parameter id="path" value="moep_Lunars_data/intelligence/defensive.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/intelligence/insight.xml" />
+               <parameter id="path" value="moep_Lunars_data/intelligence/insight.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/intelligence/sorcery.xml" />
+               <parameter id="path" value="moep_Lunars_data/intelligence/sorcery.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/intelligence/wyld.xml" />
+               <parameter id="path" value="moep_Lunars_data/intelligence/wyld.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/manipulation/belief.xml" />
+               <parameter id="path" value="moep_Lunars_data/manipulation/belief.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/manipulation/defenseAndDissembling.xml" />
+               <parameter id="path" value="moep_Lunars_data/manipulation/defenseAndDissembling.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/manipulation/feint.xml" />
+               <parameter id="path" value="moep_Lunars_data/manipulation/feint.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/manipulation/interaction.xml" />
+               <parameter id="path" value="moep_Lunars_data/manipulation/interaction.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/manipulation/militaryUnit.xml" />
+               <parameter id="path" value="moep_Lunars_data/manipulation/militaryUnit.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/manipulation/socialUnit.xml" />
+               <parameter id="path" value="moep_Lunars_data/manipulation/socialUnit.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/lunarHero.xml" />
+               <parameter id="path" value="moep_Lunars_data/misc/lunarHero.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/perception/craft.xml" />
+               <parameter id="path" value="moep_Lunars_data/perception/craft.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/perception/essence.xml" />
+               <parameter id="path" value="moep_Lunars_data/perception/essence.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/perception/extendedSense.xml" />
+               <parameter id="path" value="moep_Lunars_data/perception/extendedSense.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/perception/militaryUnit.xml" />
+               <parameter id="path" value="moep_Lunars_data/perception/militaryUnit.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/perception/perceptionAdvantage.xml" />
+               <parameter id="path" value="moep_Lunars_data/perception/perceptionAdvantage.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/perception/personExamination.xml" />
+               <parameter id="path" value="moep_Lunars_data/perception/personExamination.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/perception/wyldPerception.xml" />
+               <parameter id="path" value="moep_Lunars_data/perception/wyldPerception.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/stamina/consumption.xml" />
+               <parameter id="path" value="moep_Lunars_data/stamina/consumption.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/stamina/endurance.xml" />
+               <parameter id="path" value="moep_Lunars_data/stamina/endurance.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/stamina/environmental.xml" />
+               <parameter id="path" value="moep_Lunars_data/stamina/environmental.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/stamina/essenceRegaining.xml" />
+               <parameter id="path" value="moep_Lunars_data/stamina/essenceRegaining.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/stamina/fury.xml" />
+               <parameter id="path" value="moep_Lunars_data/stamina/fury.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/stamina/healing.xml" />
+               <parameter id="path" value="moep_Lunars_data/stamina/healing.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/stamina/soak.xml" />
+               <parameter id="path" value="moep_Lunars_data/stamina/soak.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/stamina/substance.xml" />
+               <parameter id="path" value="moep_Lunars_data/stamina/substance.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/strength/attackEnhancement.xml" />
+               <parameter id="path" value="moep_Lunars_data/strength/attackEnhancement.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/strength/crippling.xml" />
+               <parameter id="path" value="moep_Lunars_data/strength/crippling.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/strength/damageEnhancement.xml" />
+               <parameter id="path" value="moep_Lunars_data/strength/damageEnhancement.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/strength/featsOfStrength.xml" />
+               <parameter id="path" value="moep_Lunars_data/strength/featsOfStrength.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/strength/grappling.xml" />
+               <parameter id="path" value="moep_Lunars_data/strength/grappling.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/strength/subdual.xml" />
+               <parameter id="path" value="moep_Lunars_data/strength/subdual.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/wits/concealment.xml" />
+               <parameter id="path" value="moep_Lunars_data/wits/concealment.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/wits/reaction.xml" />
+               <parameter id="path" value="moep_Lunars_data/wits/reaction.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/wits/speedAndExtraAction.xml" />
+               <parameter id="path" value="moep_Lunars_data/wits/speedAndExtraAction.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/wits/survival.xml" />
+               <parameter id="path" value="moep_Lunars_data/wits/survival.xml" />
           </parameter-->
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="moepLunarsResources">

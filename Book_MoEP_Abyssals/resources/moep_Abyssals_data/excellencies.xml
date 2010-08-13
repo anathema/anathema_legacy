@@ -24,7 +24,6 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Abyssal Excellencies -->
-     <!-- Commenting out until we can get the bug worked out.....
      <genericCharm id="Abyssal.1stExcellency" exalt="Abyssal">
           <prerequisite>
                <trait value="1" />
@@ -129,5 +128,4 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Abyssals2nd" page="122"/>
      </genericCharm>
-     -->
 </charmlist>

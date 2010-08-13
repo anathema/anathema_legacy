@@ -28,7 +28,10 @@
           <prerequisite>
                <trait id="Occult" value="5" />
                <essence value="4" />
-               <charmReference id="Solar.LabyrinthCircleNecromancy"/>
+               <selectiveCharmGroup threshold="1">
+                   <charmReference id="Solar.LabyrinthCircleNecromancy" />
+                   <charmReference id="Solar.EssenceFlow.Occult" />
+               </selectiveCharmGroup>
           </prerequisite>
           <cost />
           <duration duration="Permanent" />

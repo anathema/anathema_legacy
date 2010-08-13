@@ -14,107 +14,107 @@
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/dawn/melee.xml" />
+               <parameter id="path" value="glories_UCS_data/dawn/melee.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/zenith/integrity.xml" />
+               <parameter id="path" value="glories_UCS_data/zenith/integrity.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/zenith/performance.xml" />
+               <parameter id="path" value="glories_UCS_data/zenith/performance.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/zenith/presence.xml" />
+               <parameter id="path" value="glories_UCS_data/zenith/presence.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/zenith/resistance.xml" />
+               <parameter id="path" value="glories_UCS_data/zenith/resistance.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/zenith/survival.xml" />
+               <parameter id="path" value="glories_UCS_data/zenith/survival.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/twilight/craft.xml" />
+               <parameter id="path" value="glories_UCS_data/twilight/craft.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/twilight/investigation.xml" />
+               <parameter id="path" value="glories_UCS_data/twilight/investigation.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/twilight/lore.xml" />
+               <parameter id="path" value="glories_UCS_data/twilight/lore.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/twilight/medicine.xml" />
+               <parameter id="path" value="glories_UCS_data/twilight/medicine.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/twilight/occult.xml" />
+               <parameter id="path" value="glories_UCS_data/twilight/occult.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/night/athletics.xml" />
+               <parameter id="path" value="glories_UCS_data/night/athletics.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/night/awareness.xml" />
+               <parameter id="path" value="glories_UCS_data/night/awareness.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/night/dodge.xml" />
+               <parameter id="path" value="glories_UCS_data/night/dodge.xml" />
           </parameter> 
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/night/stealth.xml" />
+               <parameter id="path" value="glories_UCS_data/night/stealth.xml" />
           </parameter> 
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/eclipse/bureaucracy.xml" />
+               <parameter id="path" value="glories_UCS_data/eclipse/bureaucracy.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/eclipse/linguistics.xml" />
+               <parameter id="path" value="glories_UCS_data/eclipse/linguistics.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/eclipse/ride.xml" />
+               <parameter id="path" value="glories_UCS_data/eclipse/ride.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/eclipse/socialize.xml" />
+               <parameter id="path" value="glories_UCS_data/eclipse/socialize.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/solarHero.xml" />
+               <parameter id="path" value="glories_UCS_data/misc/solarHero.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/armsUnconqueredSun.xml" />
+               <parameter id="path" value="glories_UCS_data/misc/armsUnconqueredSun.xml" />
           </parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="Glories_UnconqueredSunResources">

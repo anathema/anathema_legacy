@@ -14,17 +14,17 @@
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/zenith/resistance.xml" />
+               <parameter id="path" value="scroll_Exalts_data/zenith/resistance.xml" />
           </parameter>
          <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/eclipse/sail.xml" />
+               <parameter id="path" value="scroll_Exalts_data/eclipse/sail.xml" />
           </parameter>
            <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/earth/awareness.xml" />
+               <parameter id="path" value="scroll_Exalts_data/earth/awareness.xml" />
           </parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="ScrollOfExaltsResources">

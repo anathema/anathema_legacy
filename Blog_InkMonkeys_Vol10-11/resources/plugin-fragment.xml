@@ -14,17 +14,12 @@
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/blackClaw.xml" />
+               <parameter id="path" value="ink_Monkeys10_11_data/misc/blackClaw.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/crane.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="MartialArts" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/misc/flowingKata.xml" />
+               <parameter id="path" value="ink_Monkeys10_11_data/misc/flowingKata.xml" />
           </parameter> 
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="InkMonkeys_Vol10-11Resources">

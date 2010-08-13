@@ -14,32 +14,32 @@
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/presence.xml" />
+               <parameter id="path" value="ink_Monkeys8_data/presence.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/resistance.xml" />
+               <parameter id="path" value="ink_Monkeys8_data/resistance.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/athletics.xml" />
+               <parameter id="path" value="ink_Monkeys8_data/athletics.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/awareness.xml" />
+               <parameter id="path" value="ink_Monkeys8_data/awareness.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/dodge.xml" />
+               <parameter id="path" value="ink_Monkeys8_data/dodge.xml" />
           </parameter> 
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data/ride.xml" />
+               <parameter id="path" value="ink_Monkeys8_data/ride.xml" />
           </parameter> 
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="InkMonkeys_Vol8Resources">
