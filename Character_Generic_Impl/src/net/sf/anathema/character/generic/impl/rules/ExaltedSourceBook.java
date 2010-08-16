@@ -28,7 +28,7 @@ public enum ExaltedSourceBook implements IExaltedSourceBook {
       GloriesUCS(ExaltedEdition.SecondEdition), DebrisFallenRaces(ExaltedEdition.SecondEdition),
       ScrollExalts(ExaltedEdition.SecondEdition), InkMonkeys(ExaltedEdition.SecondEdition),
       ReturnEmpress(ExaltedEdition.SecondEdition), UnderRose(ExaltedEdition.SecondEdition),
-      ContagionLaw(ExaltedEdition.SecondEdition);
+      ContagionLaw(ExaltedEdition.SecondEdition), ScrollErrata(ExaltedEdition.SecondEdition);
 
   private final IExaltedEdition edition;
 
