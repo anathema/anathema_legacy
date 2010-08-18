@@ -44,6 +44,6 @@ public class LookAndFeelInitializer {
   }
 
   private boolean isAqua(String lookAndFeelClassName) {
-    return lookAndFeelClassName.equals(AQUA_LOOK_AND_FEEL_CLASSNAME);
+    return lookAndFeelClassName.contains(AQUA_LOOK_AND_FEEL_CLASSNAME);
   }
 }
