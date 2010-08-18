@@ -29,17 +29,16 @@
                <trait id="Archery" value="5" />
                <essence value="4" />
                <charmReference id="Solar.EssenceArrowAttack" />
-               <!-- charmAttributeRequirement attribute="ExcellencyArchery" count="1" /-->
           </prerequisite>
           <cost>
                <essence cost="5" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
-          <!-- charmAttribute attribute="Combo-OK" visualize="true" /-->
+          <charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Howling Shadows of the Void -->
-          <!-- charmAttribute attribute="Obvious" visualize="true" /-->
+          <charmAttribute attribute="Obvious" visualize="true" />
           <source source="ScrollOfErrata" />
      </charm>
      <charm id="Solar.GoldenArtilleristMethod" exalt="Solar" group="Archery">
@@ -47,34 +46,30 @@
                <trait id="Archery" value="5" />
                <essence value="5" />
                <charmReference id="Solar.PhantomArrowTechnique" />
-               <!-- charmReference id="Solar.EssenceFlow.Archery" /-->
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <!-- charmAttribute attribute="Combo-OK" visualize="true" /-->
-          <!-- charmAttribute attribute="Holy" visualize="true" /-->
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Uncanny Extermination Instinct -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="ScrollOfErrata" />
      </charm>
-     <charm id="Solar.BoundlessArrowOfTheUnconqueredSun" exalt="Solar" group="Archery">
+     <charm id="Solar.BoundlessArrowOfTheSun" exalt="Solar" group="Archery">
           <prerequisite>
                <trait id="Archery" value="7" />
                <essence value="7" />
                <charmReference id="Solar.AccuracyWithoutDistance" />
-               <!-- charmReference id="Solar.SupremePerfectionOf.Archery" /-->
           </prerequisite>
           <cost>
-               <essence cost="Varies" />
+               <essence cost="Varies" text="(+9m, 1wp)" />
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <!-- charmAttribute attribute="Combo-Basic" visualize="true" /-->
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Caught in Oblivion's Eye -->
           <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="LordsOfCreation" />
+          <source source="ScrollOfErrata" />
      </charm-->
 </charmlist>

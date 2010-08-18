@@ -33,30 +33,28 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <!-- charmAttribute attribute="Combo-OK" visualize="true" /-->
-          <!-- charmAttribute attribute="Holy" visualize="true" /-->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
      </charm>
-     <charm id="Solar.UnassailableAegisOfDualArmament" exalt="Solar" group="Melee">
+     <charm id="Solar.GuardingStarTactics" exalt="Solar" group="Melee">
           <prerequisite>
                <trait id="Melee" value="5" />
                <essence value="5" />
-               <!-- charmReference id="Solar.ProtectionOfCelestialBliss" /-->
+				<!-- TODO:
+               <charmReference id="Solar.ProtectionOfCelestialBliss">
+				-->
 			<!-- NOTE:  Above Charm is Abyssal Mirror of "Fluttering Moth Defense" -->
           </prerequisite>
           <cost>
-               <essence cost="Varies" />
+               <essence cost="Varies" text="(+4m)"/>
           </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Simple" />
-          <!-- charmAttribute attribute="Combo-Basic" visualize="true" /-->
-          <!-- charmAttribute attribute="Counterattack" visualize="true" /-->
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="War" visualize="true" />
           <source source="ScrollOfErrata" />
      </charm>
-     <!--charm id="Solar.SharpLightOfJudgementStance" exalt="Solar" group="Melee">
+     <charm id="Solar.SharpLightOfJudgementStance" exalt="Solar" group="Melee">
           <prerequisite>
                <trait id="Melee" value="7" />
                <essence value="7" />
@@ -71,6 +69,9 @@
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Holy" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+			<charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Symphony of the Flayed Legion -->
+			<charmAttribute attribute="War" visualize="true" />
           <source source="LordsOfCreation" />
-     </charm-->
+     </charm>
 </charmlist>

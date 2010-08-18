@@ -24,11 +24,13 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Unique Solar Excellencies -->
-     <genericCharm id="Solar.UltimateMastery" exalt="Solar">
+     <genericCharm id="Solar.DivineTranscendenceOf" exalt="Solar">
           <prerequisite>
                <trait value="5" />
                <essence value="5" />
-               <!-- Coding:  Requires "Any (Ability) Excellency". -->
+               <!-- TODO:
+					<charmAttributeRequirement attribute="Excellency?" count="1" />
+				-->
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
@@ -40,12 +42,13 @@
 		<charmAttribute attribute="Native" visualize="true" />
           <source source="ScrollOfErrata" page="55" />
      </genericCharm>
-     <genericCharm id="Solar.SupremePerfection" exalt="Solar">
+     <genericCharm id="Solar.SupremePerfectionOf" exalt="Solar">
           <prerequisite>
                <trait value="5" />
                <essence value="5" />
-               <!-- Coding:  Requires "Essence Flow" for the given ability. -->
-               <!-- genericCharmAttributeRequirement attribute="Solar.EssenceFlow" -->
+               <!-- TODO:
+               	<genericCharmAttributeRequirement attribute="Solar.EssenceFlow?"
+				-->
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
@@ -53,6 +56,7 @@
           <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Supreme Perfection of (Ability) -->
           <source source="ScrollOfErrata" page="55" />
      </genericCharm>
 </charmlist>

@@ -29,44 +29,45 @@
                <trait id="Thrown" value="5" />
                <essence value="4" />
                <charmReference id="Solar.SpiritWeapons" />
+				<charmReference id="Solar.FallingIcicleStrike" />
+				<charmReference id="Solar.TripleDistanceAttackTechnique" />
+				<!-- NOTE:  Will have to verify above charm ID. -->
           </prerequisite>
-          <cost>
-               <essence cost="1" text="per 2L" />
-          </cost>
-          <duration duration="Variable" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="LordsOfCreation" />
+          <source source="ScrollOfErrata" />
      </charm>
      <charm id="Solar.AcuityOfTheFarFlungHand" exalt="Solar" group="Thrown">
           <prerequisite>
                <trait id="Thrown" value="5" />
                <essence value="5" />
                <charmReference id="Solar.CallBlade" />
-               <charmReference id="Solar.EssenceFlow.Thrown" />
           </prerequisite>
           <cost>
-               <essence cost="3" />
+               <essence cost="Varies" text="(3m)" />
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <source source="LordsOfCreation" />
+          <source source="ScrollOfErrata" />
      </charm>
-     <!--charm id="Solar.MaelstromOfCelestialDominance" exalt="Solar" group="Thrown">
+     <charm id="Solar.MaelstromOfCelestialDominance" exalt="Solar" group="Thrown">
           <prerequisite>
-               <trait id="Thrown" value="7" />
-               <essence value="7" />
+               <trait id="Thrown" value="6" />
+               <essence value="6" />
                <charmReference id="Solar.CascadeCuttingTerror" />
-               <!- charmReference id="Solar.SupremePerfectionOf.Melee" /->
           </prerequisite>
           <cost>
-               <essence cost="20" />
-               <willpower cost="2" />
+               <essence cost="10" />
+               <willpower cost="1" />
           </cost>
-          <duration amount="1" unit="scene" />
+          <duration duration="Instant" />
           <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
-          <source source="LordsOfCreation" />
-     </charm-->
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Bone-Filled Maelstrom Gust -->
+		<charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollOfErrata" />
+     </charm>
 </charmlist>

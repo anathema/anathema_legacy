@@ -29,18 +29,15 @@
                <trait id="MartialArts" value="5" />
                <essence value="5" />
                <charmReference id="Solar.FistsIronTechnique" />
-               <charmAttributeRequirement attribute="ExcellencyMartialArts" count="1" />
           </prerequisite>
           <cost />
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <!-- charmAttribute attribute="Combo-Basic" visualize="true" /-->
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Agony of the Black Messiah -->
-          <!-- charmAttribute attribute="Obvious" visualize="true" /-->
 		<charmAttribute attribute="Stackable" visualize="true" />
-          <source source="LordsOfCreation" />
+          <source source="ScrollOfErrata" />
      </charm>
      <charm id="Solar.SwallowingTheLotusRoot" exalt="Solar" group="MartialArts">
           <prerequisite>
@@ -50,7 +47,7 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <source source="LordsOfCreation" />
+          <source source="ScrollOfErrata" />
      </charm>
      <charm id="Solar.OrichalcumFistsOfBattle" exalt="Solar" group="MartialArts">
           <prerequisite>
@@ -66,7 +63,7 @@
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="LordsOfCreation" />
+          <source source="ScrollOfErrata" />
      </charm>
 	<charm id="Solar.WickedDissolveDust" exalt="Solar" group="MartialArts">
 		<prerequisite>
