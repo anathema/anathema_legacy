@@ -113,7 +113,7 @@ See versions.txt for a history of bugs fixed.
 ===------------------------------------------------------------------------------===
 
 Anathema was created  by Sandra Sieroux and Urs Reupke, with further development
-(starting with version 1.4.1) by Scott Olson and Rob Rutherford.
+(starting with version 1.4.1) by Scott Olson, Eric Astor, Rob Rutherford, and others.
 Contact us at the-smith@users.sourceforge.net with questions, comments or suggestions.
 
 For bug reports you should use the SourceForge.net Tracking System at
@@ -143,13 +143,16 @@ development team, please contact us, at he-smith@users.sourceforge.net.
 Credit for the creation of the Anathema project goes to Urs Reupke, without whom the
 project would never have gotten off the ground.
 
-Special Thanks to vestrial, for staying with me on this project despite her urges to the contrary.
+Special Thanks to vestrial, for staying with Urs on this project despite her urges to the contrary.
 A huge "Thank you" to Mr. Ricardo Rodriguez who has translated the program to spanish.
 Same to Martin, for the cool new artwork.
 
 Paul Adams provided the inspiration that got me (Scott) started working on Anathema
-plugins, which led inevitably to the current work, with his creation of plugins to
-support Anathema. 
+plugins, which led inevitably to the current work, with his creation of new plugins to
+support Anathema.
+
+Thanks also to Rob Rutherford and Eric Astor, without whom 1.4.1 probably wouldn't have
+gotten done in 2010.  Their knowledge of Java and Eclipse has been invaluable. 
 
 Philip "The_Burrito" Markus provided much of the Necromancy spell and Lunar Charm data.
 Patches did the same for the Dragon Kings.

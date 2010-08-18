@@ -28,9 +28,7 @@
           <prerequisite>
                <trait value="5" />
                <essence value="5" />
-               <!-- TODO:
-					<charmAttributeRequirement attribute="Excellency?" count="1" />
-				-->
+               <genericCharmAttributeRequirement attribute="Excellency"/>
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
@@ -46,9 +44,7 @@
           <prerequisite>
                <trait value="5" />
                <essence value="5" />
-               <!-- TODO:
-               	<genericCharmAttributeRequirement attribute="Solar.EssenceFlow?"
-				-->
+               <genericCharmReference id="Solar.EssenceFlow"/>
           </prerequisite>
           <cost />
           <duration duration="Permanent" />

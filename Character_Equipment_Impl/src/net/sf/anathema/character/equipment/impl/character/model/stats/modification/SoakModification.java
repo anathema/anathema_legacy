@@ -14,6 +14,7 @@ public class SoakModification implements IArmourStatsModification {
     if (magicMaterial == MagicalMaterial.Orichalcum || magicMaterial == MagicalMaterial.Soulsteel) {
       return input + 2;
     }
+    
     return input;
   }
 }

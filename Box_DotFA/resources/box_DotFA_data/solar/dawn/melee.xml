@@ -40,10 +40,7 @@
           <prerequisite>
                <trait id="Melee" value="5" />
                <essence value="5" />
-				<!-- TODO:
-               <charmReference id="Solar.ProtectionOfCelestialBliss">
-				-->
-			<!-- NOTE:  Above Charm is Abyssal Mirror of "Fluttering Moth Defense" -->
+               <charmReference id="Solar.ProtectionCelestialBliss">
           </prerequisite>
           <cost>
                <essence cost="Varies" text="(+4m)"/>
