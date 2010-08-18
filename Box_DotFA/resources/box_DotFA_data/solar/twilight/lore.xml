@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../../charms.dtd">
+<!--
+
+    lore.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Lore -->
+     <charm id="Solar.AspectOfThePhilosopherPrince" exalt="Solar" group="Lore">
+          <prerequisite>
+               <trait id="Lore" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.ImmanentSolarGlory" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Solar.TerrestrialEdificationProgram" exalt="Solar" group="Lore">
+          <prerequisite>
+               <trait id="Lore" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.LegendaryScholarCurriculum" />
+               <charmReference id="Solar.EssenceFlow.Lore" />
+          </prerequisite>
+          <cost />
+          <duration amount="1" unit="week" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <!-- charm id="Solar.WyldHandlingScience" exalt="Solar" group="Lore">
+          <prerequisite>
+               <trait id="Lore" value="7" />
+               <essence value="7" />
+               <charmReference id="Solar.WyldCauldronTechnique" />
+               <!- charmReference id="Solar.SupremePerfectionOf.Lore" / ->
+          </prerequisite>
+          <cost />
+          <duration duration="Instant" />
+          <charmtype type="Permanent" />
+          <source source="LordsOfCreation" />
+     </charm -->
+</charmlist>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../charms.dtd">
+<!--
+
+    air.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Air -->
+     <charm id="Dragon-Blooded.HonoredAncestorExhalation" exalt="Dragon-Blooded" group="Linguistics">
+          <prerequisite>
+               <trait id="Linguistics" value="5" />
+               <!-- Coding:  Breeding ->
+               <trait id="Breeding" value="3" /-->
+               <essence value="6" />
+               <charmReference id="Dragon-Blooded.SpeechWithoutWords" />
+               <charmReference id="Dragon-Blooded.WithOneMind" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="2" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Dynasty" visualize="true" />
+          <charmAttribute attribute="Martyr" visualize="true" />
+          <charmAttribute attribute="Purity" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Dragon-Blooded.EndlessCoilsEnlightenment" exalt="Dragon-Blooded" group="Lore">
+          <prerequisite>
+               <trait id="Lore" value="6" />
+               <!-- Coding:  Breeding ->
+               <trait id="Breeding" value="5" /-->
+               <essence value="6" />
+               <charmReference id="Dragon-Blooded.EternalMindMeditation" />
+               <charmReference id="Dragon-Blooded.ElementalSuccorMethod" />
+          </prerequisite>
+          <cost>
+               <essence cost="15" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Purity" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Dragon-Blooded.MantleOfElementalFusion" exalt="Dragon-Blooded" group="Occult">
+          <prerequisite>
+               <trait id="Occult" value="6" />
+               <essence value="6" />
+               <charmReference id="Dragon-Blooded.Spirit-ChainingStrike" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Elemental" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Dragon-Blooded.HiddenMaelstromCloak" exalt="Dragon-Blooded" group="Stealth">
+          <prerequisite>
+               <trait id="Stealth" value="5" />
+               <essence value="5" />
+               <charmReference id="Dragon-Blooded.DragonShroudTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="-(+1m per ally or +1wp for a vehicle)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Dragon-Blooded.HurricaneHandGesture" exalt="Dragon-Blooded" group="Thrown">
+          <prerequisite>
+               <trait id="Thrown" value="5" />
+               <essence value="5" />
+               <charmReference id="Dragon-Blooded.DeadlyBladesFiveDragon" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+               <special speed="4" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Elemental" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+</charmlist>

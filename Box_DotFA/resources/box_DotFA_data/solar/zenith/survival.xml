@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../../charms.dtd">
+<!--
+
+    survival.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Survival -->
+     <charm id="Solar.SolarFlareMethodology-LO" exalt="Solar" group="Survival">
+          <prerequisite>
+               <trait id="Survival" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.FriendshipwithAnimalsApproach" />
+          </prerequisite>
+          <cost>
+               <essence cost="7" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Crippling" visualize="true" />
+          <charmAttribute attribute="Holy" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Solar.GreaterBlessingOfTheDay" exalt="Solar" group="Survival">
+          <prerequisite>
+               <trait id="Survival" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.Element-ResistingPrana" />
+               <charmReference id="Solar.EssenceFlow.Survival" />
+          </prerequisite>
+          <cost>
+               <essence cost="15" />
+               <willpower cost="1" />
+          </cost>
+          <duration event="Sunset" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Holy" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <!--charm id="Solar.GodKingBenevolence" exalt="Solar" group="Survival">
+          <prerequisite>
+               <trait id="Survival" value="7" />
+               <essence value="7" />
+               <charmReference id="Solar.City-MovingSecrets" />
+               <!- charmReference id="Solar.SupremePerfectionOf.Survival" / ->
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+          </cost>
+          <duration amount="1" unit="week" />
+          <charmtype type="Simple" />
+          <source source="LordsOfCreation" />
+     </charm-->
+</charmlist>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../../charms.dtd">
+<!--
+
+    occult.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Occult -->
+     <charm id="Solar.RingsOfSpiritualFrailty" exalt="Solar" group="Occult">
+          <prerequisite>
+               <trait id="Occult" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.Spirit-CuttingAttack" />
+          </prerequisite>
+          <cost>
+               <essence cost="12" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Holy" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Solar.MagicShatteringStrike" exalt="Solar" group="Occult">
+          <prerequisite>
+               <trait id="Occult" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.Spirit-DetectingGlance" />
+               <charmReference id="Solar.EssenceFlow.Occult" />
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <!-- charm id="Solar.PowerFromDarkness" exalt="Solar" group="Occult">
+          <prerequisite>
+               <trait id="Occult" value="7" />
+               <essence value="7" />
+               <selectiveCharmGroup threshold="1">
+                                <charmReference id="Solar.ShadowlandsCircleNecromancy" />
+                                <charmReference id="Solar.TerrestrialCircleSorcery" />
+                        </selectiveCharmGroup>
+               <!- charmReference id="Solar.SupremePerfectionOf.Occult" / ->
+          </prerequisite>
+          <cost>
+               <essence cost="50" />
+               <willpower cost="5" />
+               <experience cost="1" text="per success" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm-->
+</charmlist>

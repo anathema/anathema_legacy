@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../../charms.dtd">
+<!--
+
+    athletics.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Sail -->
+     <charm id="Solar.OmnipotentAdmiralAuthority" exalt="Solar" group="Sail">
+          <prerequisite>
+               <trait id="Sail" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.Storm-WeatheringEssenceInfusion" />
+          </prerequisite>
+          <cost>
+               <essence cost="12" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="voyage" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Solar.InvincibleSolarVessel" exalt="Solar" group="Sail">
+          <prerequisite>
+               <trait id="Sail" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.Ship-ClaimingStance" />
+               <charmReference id="Solar.EssenceFlow.Sail" />
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="year" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <!--charm id="Solar.MistyVoyage" exalt="Solar" group="Sail">
+          <prerequisite>
+               <trait id="Sail" value="7" />
+               <essence value="7" />
+               <charmReference id="Solar.PerfectReckoningTechnique" />
+               <charmReference id="Solar.SeaAmbushTechnique" />
+               <!-charmReference id="Solar.SupremePerfectionOf.Sail" /->
+          </prerequisite>
+          <cost>
+               <essence cost="30" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="5" unit="day" />
+          <charmtype type="Simple" />
+          <source source="LordsOfCreation" />
+     </charm-->
+</charmlist>
