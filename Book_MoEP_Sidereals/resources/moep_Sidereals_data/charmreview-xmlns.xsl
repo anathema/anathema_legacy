@@ -252,8 +252,11 @@
 	</xsl:template>
 	
 	<xsl:template name="charmSource">
-		<xsl:element name="p"><xsl:element name="b">Source: </xsl:element><xsl:value-of select="chrm:source/@source"/>
-			<xsl:if test="chrm:source/@page!=''"> on page <xsl:value-of select="chrm:source/@page"/></xsl:if>
+		<xsl:element name="p"><xsl:element name="b">Source: </xsl:element>
+			<xsl:for-each select="chrm:source">
+				<xsl:value-of select="@source"/>
+				<xsl:if test="@page!=''"> on page <xsl:value-of select="@page"/></xsl:if>, 
+			</xsl:for-each>
 		</xsl:element>
 	</xsl:template>
 	

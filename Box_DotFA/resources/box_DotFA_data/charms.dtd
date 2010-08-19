@@ -44,10 +44,10 @@
 <!ELEMENT charmlist (genericCharm*, charm+, alternatives?)>
 	<!ATTLIST charmlist xmlns CDATA #IMPLIED>
 
-	<!ELEMENT genericCharm (prerequisite, cost, duration, charmtype, combo?, genericCharmAttribute?, charmAttribute*, source, ruleset?)>
+	<!ELEMENT genericCharm (prerequisite, cost, duration, charmtype, combo?, genericCharmAttribute?, charmAttribute*, source+, ruleset?)>
 		<!ATTLIST genericCharm id ID #REQUIRED
 			exalt (%Exalted.Types;) "Solar">
-	<!ELEMENT charm (prerequisite?, cost?, combo?, duration?, combo?, charmtype?, learning?, charmAttribute*, source?, ruleset?)>
+	<!ELEMENT charm (prerequisite?, cost?, combo?, duration?, combo?, charmtype?, learning?, charmAttribute*, source*, ruleset?)>
 		<!ATTLIST charm id ID #REQUIRED
 			exalt (%Exalted.Types;) "Solar"
 			group CDATA #IMPLIED>

@@ -38,7 +38,8 @@
           <charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Apocalyptic Evolution of (Ability) -->
 		<charmAttribute attribute="Native" visualize="true" />
-          <source source="ScrollOfErrata" page="55" />
+		<source source="ScrollOfErrata" />
+          <source source="LordsOfCreation" page="55" />
      </genericCharm>
      <genericCharm id="Solar.SupremePerfectionOf" exalt="Solar">
           <prerequisite>
@@ -53,6 +54,7 @@
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Supreme Perfection of (Ability) -->
-          <source source="ScrollOfErrata" page="55" />
+			<source source="ScrollOfErrata" />
+          <source source="LordsOfCreation" page="55" />
      </genericCharm>
 </charmlist>

@@ -103,7 +103,7 @@
 		<xsl:element name="div"><xsl:attribute name="style">background-color: silver</xsl:attribute>
 			<!-- List any restrictions on selecting the charm. -->
 			<xsl:call-template name="charmRestrictions" />
-			<!-- List the Exalt to whose tree the charm belongs. -->
+			<!-- List he Exalt to whose tree the charm belongs. -->
 			<xsl:call-template name="writeExalt"/>
 			<!-- What group is the charm a part of? -->
 			<xsl:call-template name="charmGroup" />
@@ -252,8 +252,11 @@
 	</xsl:template>
 	
 	<xsl:template name="charmSource">
-		<xsl:element name="p"><xsl:element name="b">Source: </xsl:element><xsl:value-of select="chrm:source/@source"/>
-			<xsl:if test="chrm:source/@page!=''"> on page <xsl:value-of select="chrm:source/@page"/></xsl:if>
+		<xsl:element name="p"><xsl:element name="b">Source: </xsl:element>
+			<xsl:for-each select="chrm:source">
+				<xsl:value-of select="@source"/>
+				<xsl:if test="@page!=''"> on page <xsl:value-of select="@page"/></xsl:if>, 
+			</xsl:for-each>
 		</xsl:element>
 	</xsl:template>
 	
