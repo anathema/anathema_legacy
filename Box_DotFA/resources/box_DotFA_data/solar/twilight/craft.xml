@@ -40,32 +40,40 @@
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="LordsOfCreation" />
      </charm>
-     <charm id="Solar.GloriousHaloOfTheBuildersGrace" exalt="Solar" group="Craft">
+     <charm id="Solar.DesignBeyondLimit" exalt="Solar" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.Durability-EnhancingTechnique" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Mirror" visualize="true" />
+          <source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.HolisticMiracleUnderstanding" group="Craft">
           <prerequisite>
                <trait id="Craft" value="5" />
                <essence value="5" />
-               <charmReference id="Solar.Object-StrengtheningTouch" />
-               <charmReference id="Solar.EssenceFlow.Craft" />
+               <charmReference id="Solar.DesignBeyondLimit" />
           </prerequisite>
-          <cost>
-               <essence cost="15" />
-               <willpower cost="1" />
-          </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Reflexive" />
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <source source="LordsOfCreation" />
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="ScrollErrata" />
      </charm>
-     <!--charm id="Solar.TheArtOfPermanence" exalt="Solar" group="Craft">
+     
+     <charm id="Solar.TheArtOfPermanence" exalt="Solar" group="Craft">
           <prerequisite>
-               <trait id="Craft" value="7" />
-               <essence value="7" />
+               <trait id="Craft" value="6" />
+               <essence value="6" />
                <charmReference id="Solar.Durability-EnhancingTechnique" />
-               <!- charmReference id="Solar.SupremePerfectionOf.Craft" / ->
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <source source="LordsOfCreation" />
-     </charm-->
+          <source source="ScrollErrata" />
+     </charm>
 </charmlist>
