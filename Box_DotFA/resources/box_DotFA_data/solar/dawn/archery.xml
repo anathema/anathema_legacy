@@ -40,7 +40,7 @@
 		<!-- NOTE:  Abyssal Mirror - Howling Shadows of the Void -->
           <charmAttribute attribute="Obvious" visualize="true" />
 <source source="LordsOfCreation" />
-          <source source="ScrollOfErrata" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.GoldenArtilleristMethod" exalt="Solar" group="Archery">
           <prerequisite>
@@ -55,7 +55,7 @@
 		<!-- NOTE:  Abyssal Mirror - Uncanny Extermination Instinct -->
           <charmAttribute attribute="Obvious" visualize="true" />
 <source source="LordsOfCreation" />
-          <source source="ScrollOfErrata" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.BoundlessArrowOfTheSun" exalt="Solar" group="Archery">
           <prerequisite>
@@ -73,6 +73,6 @@
 		<!-- NOTE:  Abyssal Mirror - Caught in Oblivion's Eye -->
           <charmAttribute attribute="Obvious" visualize="true" />
 <source source="LordsOfCreation" />
-          <source source="ScrollOfErrata" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>

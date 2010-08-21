@@ -37,7 +37,8 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="ScrollOfErrata" />
+<source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.AcuityOfTheFarFlungHand" exalt="Solar" group="Thrown">
           <prerequisite>
@@ -50,7 +51,8 @@
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <source source="ScrollOfErrata" />
+          <source source="ScrollErrata" />
+<source source="LordsOfCreation" />
      </charm>
      <charm id="Solar.MaelstromOfCelestialDominance" exalt="Solar" group="Thrown">
           <prerequisite>
@@ -68,6 +70,7 @@
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Bone-Filled Maelstrom Gust -->
 		<charmAttribute attribute="Obvious" visualize="true" />
-          <source source="ScrollOfErrata" />
+          <source source="ScrollErrata" />
+<source source="LordsOfCreation" />
      </charm>
 </charmlist>

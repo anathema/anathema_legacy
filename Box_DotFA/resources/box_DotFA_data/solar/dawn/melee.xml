@@ -35,7 +35,7 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
-<source source="ScrollOfErrata" />
+<source source="ScrollErrata" />
      </charm>
      <charm id="Solar.GuardingStarTactics" exalt="Solar" group="Melee">
           <prerequisite>
@@ -50,8 +50,7 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="War" visualize="true" />
-          <source source="ScrollOfErrata" />
-<source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.SharpLightOfJudgementStance" exalt="Solar" group="Melee">
           <prerequisite>
@@ -72,6 +71,6 @@
 			<!-- NOTE:  Abyssal Mirror - Symphony of the Flayed Legion -->
 			<charmAttribute attribute="War" visualize="true" />
           <source source="LordsOfCreation" />
-<source source="ScrollOfErrata" />
+<source source="ScrollErrata" />
      </charm>
 </charmlist>
