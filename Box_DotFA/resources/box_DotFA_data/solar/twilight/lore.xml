@@ -24,40 +24,70 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Lore -->
-     <charm id="Solar.AspectOfThePhilosopherPrince" exalt="Solar" group="Lore">
+     <charm id="Solar.ShinmaicCommunion" exalt="Solar" group="Lore">
           <prerequisite>
-               <trait id="Lore" value="5" />
-               <essence value="4" />
-               <charmReference id="Solar.ImmanentSolarGlory" />
+               <trait id="Lore" value="7" />
+               <essence value="7" />
+               <charmReference id="Solar.WyldCauldronTechnology" />
           </prerequisite>
-          <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="LordsOfCreation" />
+          <cost>
+               <essence cost="30" />
+               <willpower cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.TerrestrialEdificationProgram" exalt="Solar" group="Lore">
           <prerequisite>
                <trait id="Lore" value="5" />
                <essence value="5" />
                <charmReference id="Solar.LegendaryScholarCurriculum" />
-               <charmReference id="Solar.EssenceFlow.Lore" />
           </prerequisite>
           <cost />
           <duration amount="1" unit="week" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Training" visualize="true" />
           <source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
      </charm>
-     <!-- charm id="Solar.WyldHandlingScience" exalt="Solar" group="Lore">
+     <charm id="Solar.ShinmaicCalibration" exalt="Solar" group="Lore">
           <prerequisite>
                <trait id="Lore" value="7" />
                <essence value="7" />
-               <charmReference id="Solar.WyldCauldronTechnique" />
-               <!- charmReference id="Solar.SupremePerfectionOf.Lore" / ->
+               <charmReference id="Solar.ShinmaicCommunion" />
           </prerequisite>
-          <cost />
+          <cost>
+               <essence cost="20" />
+               <experience cost="1" />
+          <cost/>
           <duration duration="Instant" />
-          <charmtype type="Permanent" />
-          <source source="LordsOfCreation" />
-     </charm -->
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.LegendDrawingInvocation" exalt="Solar" group="Lore">
+          <prerequisite>
+               <trait id="Lore" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.Essence-LendingMethod" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          <cost/>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple">
+               <special speed="3" turntype="DramaticAction" defense="-0" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollErrata" />
+     </charm>
 </charmlist>
