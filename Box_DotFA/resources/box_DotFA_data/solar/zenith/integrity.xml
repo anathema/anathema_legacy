@@ -37,7 +37,7 @@
 		<!-- NOTE:  Abyssal Mirror - Underworld Executioner Stance -->
 		<charmAttribute attribute="Native" visualize="true" />
           <source source="LordsOfCreation" />
-			<source	source="ScrollErrata" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Solar.SacrosanctSoulRetribution" exalt="Solar" group="Integrity">
           <prerequisite>

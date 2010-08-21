@@ -24,53 +24,50 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Survival -->
-     <charm id="Solar.SolarFlareMethodology-LO" exalt="Solar" group="Survival">
+     <charm id="Solar.GuidingLightShinesOn" exalt="Solar" group="Survival">
           <prerequisite>
                <trait id="Survival" value="5" />
                <essence value="4" />
-               <charmReference id="Solar.FriendshipwithAnimalsApproach" />
+               <charmReference id="Solar.TracklessRegionNavigation" />
           </prerequisite>
           <cost>
-               <essence cost="7" />
-               <willpower cost="1" />
+               <essence cost="5" />
           </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Simple" />
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Crippling" visualize="true" />
-          <charmAttribute attribute="Holy" visualize="true" />
-          <source source="LordsOfCreation" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollErrata" />
      </charm>
-     <charm id="Solar.GreaterBlessingOfTheDay" exalt="Solar" group="Survival">
+     <charm id="Solar.LifeSustainingShelterPreparation" exalt="Solar" group="Survival">
           <prerequisite>
                <trait id="Survival" value="5" />
                <essence value="5" />
-               <charmReference id="Solar.Element-ResistingPrana" />
-               <charmReference id="Solar.EssenceFlow.Survival" />
+               <charmReference id="Solar.FoodGatheringExercise" />
+               <charmReference id="Solar.Hardship-SurvivingMendicantSpirit" />
           </prerequisite>
           <cost>
-               <essence cost="15" />
+               <essence cost="10" />
                <willpower cost="1" />
           </cost>
-          <duration event="Sunset" />
-          <charmtype type="Reflexive" />
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+			<!-- TODO:  (One dramatic action) -->
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Compulsion" visualize="true" />
-          <charmAttribute attribute="Holy" visualize="true" />
-          <source source="LordsOfCreation" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="ScrollErrata" />
      </charm>
-     <!--charm id="Solar.GodKingBenevolence" exalt="Solar" group="Survival">
+     <charm id="Solar.GodKingBenevolence" exalt="Solar" group="Survival">
           <prerequisite>
                <trait id="Survival" value="7" />
                <essence value="7" />
                <charmReference id="Solar.City-MovingSecrets" />
-               <!- charmReference id="Solar.SupremePerfectionOf.Survival" / ->
+				<charmReference id="Solar.Element-ResistingPrana" />
           </prerequisite>
-          <cost>
-               <essence cost="20" />
-          </cost>
-          <duration amount="1" unit="week" />
-          <charmtype type="Simple" />
-          <source source="LordsOfCreation" />
-     </charm-->
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollErrata" />
+     </charm>
 </charmlist>

@@ -24,55 +24,72 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Resistance -->
-     <charm id="Solar.WoundMendingPurityStance" exalt="Solar" group="Resistance">
-          <prerequisite>
-               <trait id="Resistance" value="5" />
-               <essence value="4" />
-               <charmReference id="Solar.Body-MendingMeditation" />
-               <charmAttributeRequirement attribute="ExcellencyResistance" count="1" />
-          </prerequisite>
-          <cost>
-               <essence cost="12" />
-               <willpower cost="1" />
-          </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Reflexive" />
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="LordsOfCreation" />
-     </charm>
-     <charm id="Solar.EnduranceOf10000Cuts" exalt="Solar" group="Resistance">
+     <charm id="Solar.RisingSunRenewal" exalt="Solar" group="Resistance">
           <prerequisite>
                <trait id="Resistance" value="5" />
                <essence value="5" />
-               <charmReference id="Solar.BattleFuryFocus" />
-               <charmReference id="Solar.EssenceFlow.Resistance" />
+               <charmReference id="Solar.Body-MendingMeditation" />
           </prerequisite>
           <cost>
-               <essence cost="16" />
+               <essence cost="10" />
                <willpower cost="1" />
           </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <duration amount="5" unit="action" />
+          <charmtype type="Simple">
+		<special speed="5" defense="-0" />
+	</charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
      </charm>
-     <!--charm id="Solar.IncomparableSoulBornWarstrider" exalt="Solar" group="Resistance">
+     <charm id="Solar.RuinAbasingShrug" exalt="Solar" group="Resistance">
           <prerequisite>
                <trait id="Resistance" value="6" />
                <essence value="6" />
-               <charmReference id="Solar.GloriousSolarPlate" />
-               <!- charmReference id="Solar.SupremePerfectionOf.Resistance" / ->
+               <charmReference id="Solar.AdamantSkinTechnique" />
           </prerequisite>
           <cost>
-               <essence cost="20" />
-               <willpower cost="1" />
+               <essence cost="5" />
           </cost>
-          <duration amount="1" unit="day" />
-          <charmtype type="Simple" />
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+			<special primaryStep="10" />
+		</charmtype>
           <charmAttribute attribute="Combo-Basic" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="LordsOfCreation" />
-     </charm-->
+          <charmAttribute attribute="Mirror" visualize="true" />
+<!-- NOTE:  Abyssal Mirror - Far Beyond Ruin -->
+          <source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.UnbrokenChainResolve" exalt="Solar" group="Resistance">
+          <prerequisite>
+               <trait id="Resistance" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.IronKettleBody" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+          </cost>
+          <duration amount="3" unit="action" />
+          <charmtype type="Reflexive">
+			<special primaryStep="10" />
+		</charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="ScrollErrata" />
+     </charm>
+	<charm id="Solar.InnerFireUnleashed" exalt="Solar" group="Resistance">
+		<prerequisite>
+			<trait id="Resistance" value="6" />
+			<essence value="6" />
+			<charmReference id="Solar.Ox-BodyTechnique" />
+		</prerequisite>
+		<cost>
+			<essence />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="Reactor" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+	
 </charmlist>

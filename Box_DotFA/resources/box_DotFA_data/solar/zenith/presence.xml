@@ -34,39 +34,68 @@
                <essence cost="5" />
           </cost>
           <duration duration="Instant" />
-          <charmtype type="Reflexive" />
+          <charmtype type="Simple">
+			<special speed="6" turntype="LongTick" defense="-1" />
+			</charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Compulsion" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Insidious Forbidding Command -->
           <charmAttribute attribute="Obvious" visualize="true" />
+			<charmAttribute attribute="Social" visualize="true" />
           <source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
      </charm>
      <charm id="Solar.SearingAfterImagePassion" exalt="Solar" group="Presence">
           <prerequisite>
                <trait id="Presence" value="5" />
                <essence value="5" />
                <charmReference id="Solar.Enemy-CastigatingSolarJudgement" />
-               <charmReference id="Solar.EssenceFlow.Presence" />
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Stalking the Shadowed Mind -->
           <source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
      </charm>
-     <!--charm id="Solar.EternalEmpressOfLoveAttitude" exalt="Solar" group="Presence">
+     <charm id="Solar.EternalEmpressOfLoveAttitude" exalt="Solar" group="Presence">
           <prerequisite>
-               <trait id="Presence" value="7" />
-               <essence value="7" />
+               <trait id="Presence" value="6" />
+               <essence value="6" />
                <charmReference id="Solar.Authority-RadiatingStance" />
-               <!- charmReference id="Solar.SupremePerfectionOf.Presence" / ->
           </prerequisite>
           <cost>
-               <essence cost="20" />
-               <willpower cost="4" />
+               <essence cost="5" />
+               <willpower cost="1" />
           </cost>
-          <duration amount="1" unit="year" />
+          <duration duration="Indefinite" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-Basic" visualize="true" />
+			<charmAttribute attribute="Compulsion" visualize="true" />
           <charmAttribute attribute="Emotion" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Eternal overlord of Dread Attitude -->
           <source source="LordsOfCreation" />
-     </charm-->
+		<source source="ScrollErrata" />
+     </charm>
+	<charm id="Solar.HasteningNightsEnd" exalt="Solar" group="Presence">
+		<prerequisite>
+			<trait id="Presence" value="5" />
+			<essence value="4" />
+			<charmReference id="Solar.Husband-SeducingDemonDance" />
+		</prerequisite>
+		<cost>
+			<essence cost="10" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Simple" />
+			<!-- TODO:  (One dramatic action) -->
+			<charmAttribute attribute="Combo-OK" visualize="true" />
+			<charmAttribute attribute="Emotion" visualize="true" />
+			<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+	
 </charmlist>
