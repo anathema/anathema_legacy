@@ -37,20 +37,39 @@
           <charmAttribute attribute="Stackable" visualize="true" />
           <source source="LordsOfCreation" />
      </charm>
-     <charm id="Solar.GoingElsewhereStance" exalt="Solar" group="Stealth">
+     <charm id="Solar.EverywhereAndNowhereStance" exalt="Solar" group="Stealth">
           <prerequisite>
                <trait id="Stealth" value="5" />
                <essence value="5" />
-               <charmReference id="Solar.EasilyOverlookedPresenceMethod" />
-               <charmReference id="Solar.EssenceFlow.Stealth" />
+               <charmReference id="Solar.MentalInvisibilityTechnique" />
           </prerequisite>
           <cost>
-               <essence cost="10" />
-               <willpower cost="1" />
+               <essence cost="4" />
           </cost>
           <duration duration="Indefinite" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmtype type="Simple">
+			<special speed="4" defense="-0" />
+		</charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Illusion" visualize="true" />
+		<charmAttribute attribute="Touch" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
+	<charm id="Solar.WalkingInLegendsShadow" exalt="Solar" group="Stealth">
+		<prerequisite>
+			<trait id="Stealth" value="6" />
+			<essence value="6" />
+			<charmReference id="Solar.VanishingfromMind'sEyeMethod" />
+		</prerequisite>
+		<cost>
+			<essence cost="10" />
+			<willpower cost="1"/>
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Illusion" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
 </charmlist>

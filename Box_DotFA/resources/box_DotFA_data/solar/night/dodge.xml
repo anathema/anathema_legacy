@@ -31,45 +31,49 @@
                <charmReference id="Solar.SevenShadowEvasion" />
           </prerequisite>
           <cost>
-               <essence cost="12" />
+               <essence cost="Varies" text="+3m or +3m, 1wp" />
           </cost>
-          <duration amount="1" unit="action" />
-          <charmtype type="Reflexive" />
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Thousandfold Shadow Dance -->
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Solar.AegisOfAltruisticInterposition" exalt="Solar" group="Dodge">
           <prerequisite>
                <trait id="Dodge" value="5" />
-               <essence value="5" />
+               <essence value="4" />
                <charmReference id="Solar.LeapingDodgeMethod" />
-               <charmReference id="Solar.EssenceFlow.Dodge" />
           </prerequisite>
           <cost>
                <essence cost="4" />
           </cost>
-          <duration duration="Instant" />
-          <charmtype type="Reflexive" />
+          <duration amount="1" unit="action" />
+          <charmtype type="Reflexive">
+			<special primaryStep="2" />
+		</charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
      </charm>
-     <!--charm id="Solar.DivineWitnessOfUtterSafety" exalt="Solar" group="Dodge">
+     <charm id="Solar.DivineWitnessOfUtterSafety" exalt="Solar" group="Dodge">
           <prerequisite>
-               <trait id="Dodge" value="7" />
-               <essence value="7" />
-               <charmReference id="Solar.FlowLikeBlood" />
-               <!- charmReference id="Solar.SupremePerfectionOf.Dodge" / ->
+               <trait id="Dodge" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.LeapingDodgeMethod" />
+				<charmReference id="Solar.SevenShadowEvasion" />
           </prerequisite>
           <cost>
-               <essence cost="1" />
-               <willpower cost="1" />
-               <experience cost="1" />
+               <essence cost="Varies" text="+4m"/>
           </cost>
-          <duration duration="Indefinite" />
-          <charmtype type="Simple" />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Shadow Fades at Dawn -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
-     </charm-->
+			<source source="ScrollErrata" />
+     </charm>
 </charmlist>

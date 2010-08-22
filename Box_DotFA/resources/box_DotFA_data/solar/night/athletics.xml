@@ -35,41 +35,70 @@
                <essence cost="6" />
           </cost>
           <duration duration="Indefinite" />
-          <charmtype type="Simple" />
+          <charmtype type="Simple">
+			<special speed="4" defense="-0" />
+		</charmtype>
           <charmAttribute attribute="Combo-Basic" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Nimble Ghost Grace -->
           <source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
      </charm>
      <charm id="Solar.UnconqueredMight" exalt="Solar" group="Athletics">
           <prerequisite>
                <trait id="Athletics" value="5" />
                <essence value="5" />
                <charmReference id="Solar.IncreasingStrengthExercise" />
-               <charmReference id="Solar.EssenceFlow.Athletics" />
           </prerequisite>
           <cost>
-               <essence cost="10" />
-               <willpower cost="1" />
-          </cost>
-          <duration duration="Instant" />
-          <charmtype type="Supplemental" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="LordsOfCreation" />
-     </charm>
-     <!--charm id="Solar.SpeedOfLightApproach" exalt="Solar" group="Athletics">
-          <prerequisite>
-               <trait id="Athletics" value="7" />
-               <essence value="7" />
-               <charmReference id="Solar.RacingHareMethod" />
-               <!-charmReference id="Solar.SupremePerfectionOf.Athletics" / ->
-          </prerequisite>
-          <cost>
-               <essence cost="5" />
+               <essence cost="7" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Oblivion's Triumph -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+     </charm>
+	<charm id="Solar.GodspeedSteps" exalt="Solar" group="Athletics">
+		<prerequisite>
+			<trait id="Athletics" value="5" />
+			<essence value="5" />
+			<charmReference id="Solar.LightningSpeed" />
+		</prerequisite>
+		<cost>
+			<essence cost="Varies" text="3-8m" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Death Draws Near -->
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+     <charm id="Solar.SpeedOfLightApproach" exalt="Solar" group="Athletics">
+          <prerequisite>
+               <trait id="Athletics" value="7" />
+               <essence value="7" />
+               <charmReference id="Solar.GodspeedSteps" />
+          </prerequisite>
+          <cost>
+               <essence cost="7" />
+				<willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple">
+			<special speed="4" />
+		</charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+			<charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Swifter than a Scream -->
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm-->
 </charmlist>
