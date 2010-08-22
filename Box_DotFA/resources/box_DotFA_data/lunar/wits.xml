@@ -33,7 +33,7 @@
           <cost>
                <essence cost="3" />
           </cost>
-          <!-- Coding:  Or "Indefinite". -->
+          <!-- TODO:  Or "Indefinite". -->
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />

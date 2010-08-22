@@ -45,7 +45,7 @@
      <charm id="Dragon-Blooded.DredgedMurmursHunch" exalt="Dragon-Blooded" group="Investigation">
           <prerequisite>
                <trait id="Investigation" value="5" />
-               <!-- Coding:  Breeding ->
+               <!-- TODO:  Targeting Background? ->
                <trait id="Breeding" value="3" /-->
                <essence value="5" />
                <charmReference id="Dragon-Blooded.BloodhoundsNoseTechnique" />
@@ -81,7 +81,7 @@
                <trait id="MartialArts" value="5" />
                <essence value="5" />
                <charmReference id="Dragon-Blooded.Tiger-and-BearUnity" />
-               <!-- Coding:  One complete Celestial Style. -->
+               <!-- TODO:  One complete Celestial Style. -->
           </prerequisite>
           <cost>
                <essence cost="25" />

@@ -34,19 +34,20 @@
                <essence cost="20" />
                <willpower cost="1" />
           </cost>
-          <duration duration="Indefinite" />
+          <duration duration="Instant" />
           <charmtype type="Simple">
                <special speed="6" turntype="DramaticAction" defense="-1" />
           </charmtype>
           <charmAttribute attribute="Combo-Basic" visualize="true" />
+		<charmAttribute attribute="Social" visualize="true" />
           <source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
      </charm>
      <charm id="Solar.MarketBusterStrike" exalt="Solar" group="Bureaucracy">
           <prerequisite>
                <trait id="Bureaucracy" value="5" />
                <essence value="5" />
                <charmReference id="Solar.FrugalMerchantMethod" />
-               <charmReference id="Solar.EssenceFlow.Bureaucracy" />
           </prerequisite>
           <cost>
                <essence cost="20" />
@@ -58,5 +59,47 @@
           </charmtype>
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
+	<charm id="Solar.CharterStrippingCondemnation" exalt="Solar" group="Bureaucracy">
+		<prerequisite>
+			<trait id="Bureaucracy" value="6" />
+			<essence value="6" />
+			<charmReference id="Solar.FoulAirArgumentTechnique" />
+		</prerequisite>
+		<cost>
+			<essence cost="0" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="Reactor" visualize="true" />
+		<charmAttribute attribute="Shaping" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Solar.VisageMadeLaw" exalt="Solar" group="Bureaucracy">
+		<prerequisite>
+			<trait id="Bureaucracy" value="7" />
+			<essence value="7" />
+			<charmReference id="Solar.Bureau-RectifyingMethod" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Solar.LegendLivesOn" exalt="Solar" group="Bureaucracy">
+		<prerequisite>
+			<trait id="Bureaucracy" value="7" />
+			<essence value="7" />
+			<charmReference id="Solar.Bureau-RectifyingMethod" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<source source="ScrollErrata" />
+		<!-- NOTE:  Solar - War:  The Unending March -->
+	</charm>
 </charmlist>

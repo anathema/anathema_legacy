@@ -28,7 +28,7 @@
           <prerequisite>
                <trait id="Awareness" value="5" />
                <essence value="5" />
-			<!- TODO:  Solar.EyesOfTheUnconqueredSun doesn't exist ->
+			<!- TODO:  Solar.EyesOfTheUnconqueredSun does not exist ->
           </prerequisite>
           <cost>
                <essence cost="3" />

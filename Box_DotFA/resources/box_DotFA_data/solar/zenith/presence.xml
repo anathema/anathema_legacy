@@ -76,7 +76,7 @@
 			<charmAttribute attribute="Compulsion" visualize="true" />
           <charmAttribute attribute="Emotion" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Abyssal Mirror - Eternal overlord of Dread Attitude -->
+		<!-- NOTE:  Abyssal Mirror - Eternal Overlord of Dread Attitude -->
           <source source="LordsOfCreation" />
 		<source source="ScrollErrata" />
      </charm>
@@ -96,6 +96,7 @@
 			<charmAttribute attribute="Emotion" visualize="true" />
 			<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="ScrollErrata" />
+		<!-- NOTE:  Solar - Medicine:  Mind-Soothing Anodyne -->
 	</charm>
 	
 </charmlist>

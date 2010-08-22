@@ -45,7 +45,7 @@
      <charm id="Dragon-Blooded.TranscendentGaianHarmony" exalt="Dragon-Blooded" group="Medicine">
           <prerequisite>
                <trait id="Medicine" value="6" />
-               <!-- Coding: Breeding ->
+               <!-- TODO: Targeting Background? ->
                <trait id="Breeding" value="5" /-->
                <essence value="6" />
                <charmReference id="Dragon-Blooded.MostBeneficentSeedFiveDragons" />
@@ -97,7 +97,7 @@
      <charm id="Dragon-Blooded.WellTendedGardenOfTheSoul" exalt="Dragon-Blooded" group="Survival">
           <prerequisite>
                <trait id="Survival" value="5" />
-               <!-- Coding:  Breeding ->
+               <!-- TODO:  Targeting Background? ->
                <trait id="Breeding" value="3" /-->
                <essence value="5" />
           </prerequisite>

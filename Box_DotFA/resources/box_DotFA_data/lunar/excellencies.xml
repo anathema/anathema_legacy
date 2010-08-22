@@ -28,9 +28,9 @@
           <prerequisite>
                <trait value="5" />
                <essence value="5" />
-               <!-- Coding:  Requires specific excellencies for the given ability. -->
-               <!-- genericCharmAttributeRequirement attribute="Lunar.InstinctiveUnity" -->
-               <!-- genericCharmAttributeRequirement attribute="Lunar.FlawlessFocus" -->
+               <!-- TODO:  Requires specific excellencies for the given ability. -->
+               <!-- TODO:  genericCharmAttributeRequirement attribute="Lunar.InstinctiveUnity" -->
+               <!-- TODO:  genericCharmAttributeRequirement attribute="Lunar.FlawlessFocus" -->
           </prerequisite>
           <cost />
           <duration duration="Permanent" />

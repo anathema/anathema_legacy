@@ -30,8 +30,7 @@
                <essence value="4" />
                <charmReference id="Solar.SpiritWeapons" />
 				<charmReference id="Solar.FallingIcicleStrike" />
-				<charmReference id="Solar.TripleDistanceAttackTechnique" />
-				<!-- NOTE:  Will have to verify above charm ID. -->
+				<charmReference id="Solar.Triple-DistanceAttackTechnique" />
           </prerequisite>
           <cost />
           <duration duration="Permanent" />

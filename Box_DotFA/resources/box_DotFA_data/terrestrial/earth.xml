@@ -27,7 +27,7 @@
      <charm id="Dragon-Blooded.EarthReclaimsHerBounty" exalt="Dragon-Blooded" group="Awareness">
           <prerequisite>
                <trait id="Awareness" value="5" />
-               <!-- Coding:  Is this legal? ->
+               <!-- TODO:  Targeting Background? ->
                <trait id="Breeding" value="3" /-->
                <essence value="6" />
                <charmReference id="Dragon-Blooded.EntombedMindTechnique" />
@@ -68,7 +68,7 @@
      <charm id="Dragon-Blooded.ThickerThanStone" exalt="Dragon-Blooded" group="Integrity">
           <prerequisite>
                <trait id="Integrity" value="5" />
-               <!-- Coding:  Legal, again? ->
+               <!-- TODO:  Targeting Background? ->
                <trait id="Breeding" value="3" /-->
                <essence value="5" />
                <charmReference id="Dragon-Blooded.UnflaggingVengeanceMeditation" />
@@ -85,10 +85,17 @@
      <charm id="Dragon-Blooded.PerfectedScalesOfTheDragon" exalt="Dragon-Blooded" group="Resistance">
           <prerequisite>
                <trait id="Resistance" value="6" />
-               <!-- Coding:  Legal? ->
+               <!-- TODO:  Targeting Background? ->
                <trait id="Breeding" value="4" /-->
                <essence value="6" />
-               <!--Coding:  Requires all 5 forms before acquiring this charm. -->
+               <!--TODO:  Requires all 5 forms before acquiring this charm. -->
+				<!-- selectiveCharmGroup threshold="5">
+					<charmReference id="Dragon-Blooded.ElementProtectionForm.Fire" />
+					<charmReference id="Dragon-Blooded.ElementProtectionForm.Earth" />
+					<charmReference id="Dragon-Blooded.ElementProtectionForm.Air" />
+					<charmReference id="Dragon-Blooded.ElementProtectionForm.Water" />
+					<charmReference id="Dragon-Blooded.ElementProtectionForm.Wood" />
+				</selectiveCharmGroup -->
                <charmReference id="Dragon-Blooded.ElementProtectionForm" />
           </prerequisite>
           <cost>
@@ -108,7 +115,7 @@
           <prerequisite>
                <trait id="War" value="7" />
                <essence value="7" />
-               <!-- Coding:  Breeding ->
+               <!-- TODO:  Targeting Background? ->
                <trait id="Breeding" value="5" /-->
                <charmReference id="Dragon-Blooded.DragonVortexAttack" />
           </prerequisite>

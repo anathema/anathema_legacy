@@ -45,27 +45,32 @@
                <trait id="Socialize" value="5" />
                <essence value="5" />
                <charmReference id="Solar.MasterySmallManners" />
-               <charmReference id="Solar.EssenceFlow.Socialize" />
           </prerequisite>
           <cost>
-               <essence cost="8" />
+               <essence cost="5" />
           </cost>
           <duration amount="1" unit="scene" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+			<charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Merciless Dissecting Stare -->
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
-     <!--charm id="Solar.MasteryOfSocietyTechnique" exalt="Solar" group="Socialize">
+     <charm id="Solar.MasteryOfSocietyTechnique" exalt="Solar" group="Socialize">
           <prerequisite>
-               <trait id="Socialize" value="7" />
-               <essence value="7" />
+               <trait id="Socialize" value="5" />
+               <essence value="5" />
                <charmReference id="Solar.UnderstandingCourt" />
-               <!-charmReference id="Solar.SupremePerfectionOfSocialize" /->
           </prerequisite>
-          <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
+          <cost>
+				<essence cost="3" />
+				<willpower cost="1" />
+			</cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="LordsOfCreation" />
-     </charm-->
+			<source source="ScrollErrata" />
+     </charm>
 </charmlist>

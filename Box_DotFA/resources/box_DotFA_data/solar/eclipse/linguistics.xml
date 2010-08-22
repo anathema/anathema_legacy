@@ -38,15 +38,16 @@
           <charmtype type="Simple">
                <special speed="6" turntype="DramaticAction" defense="-1" />
           </charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Training" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Solar.BeautifulEssenceBornRune" exalt="Solar" group="Linguistics">
           <prerequisite>
-               <trait id="Linguistics" value="5" />
-               <essence value="5" />
+               <trait id="Linguistics" value="6" />
+               <essence value="6" />
                <charmReference id="Solar.FlawlessBrushDiscipline" />
-               <charmReference id="Solar.EssenceFlow.Linguistics" />
           </prerequisite>
           <cost>
                <essence cost="20" />
@@ -55,25 +56,22 @@
           <duration duration="Instant" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+			<charmAttribute attribute="Obvious" visualize="true" />
+			<charmAttribute attribute="Training" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
-     <!--charm id="Solar.UnderstandingOfTheGoldenTongue" exalt="Solar" group="Linguistics">
+     <charm id="Solar.UnderstandingOfTheGoldenTongue" exalt="Solar" group="Linguistics">
           <prerequisite>
                <trait id="Linguistics" value="7" />
                <essence value="7" />
                <charmReference id="Solar.TwistedWordsTechnique" />
-               <!-charmReference id="Solar.SupremePerfectionOf.Linguistics" /->
           </prerequisite>
-          <cost>
-               <essence cost="20" />
-               <willpower cost="3" />
-               <experience cost="2" />
-          </cost>
-          <duration duration="Instant" />
-          <charmtype type="Simple">
-               <special speed="6" turntype="DramaticAction" defense="-1" />
-          </charmtype>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
           <charmAttribute attribute="Training" visualize="true" />
           <source source="LordsOfCreation" />
-     </charm-->
+			<source source="ScrollErrata" />
+     </charm>
 </charmlist>

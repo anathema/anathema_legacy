@@ -93,7 +93,7 @@
      <charm id="Dragon-Blooded.ImplacableProgenitorMien" exalt="Dragon-Blooded" group="Socialize">
           <prerequisite>
                <trait id="Socialize" value="6" />
-               <!-- Coding:  Breeding again. ->
+               <!-- TODO:  Targeting Background? ->
                <trait id="Breeding" value="5" /-->
                <essence value="6" />
                <charmReference id="Dragon-Blooded.JadeDefense" />

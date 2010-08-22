@@ -24,38 +24,36 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Ride -->
-     <charm id="Solar.ShiningInevitableLasso" exalt="Solar" group="Ride">
-          <prerequisite>
-               <trait id="Ride" value="5" />
-               <essence value="4" />
-               <charmReference id="Solar.MasterHorseman'sTechniques" />
-               <charmAttributeRequirement attribute="ExcellencyRide" count="1" />
-          </prerequisite>
-          <cost>
-               <essence cost="10" />
-               <willpower cost="1" />
-          </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="LordsOfCreation" />
-     </charm>
-     <charm id="Solar.MountedInvincibilityCompanionship" exalt="Solar" group="Ride">
+     <charm id="Solar.SunTowingMethod" exalt="Solar" group="Ride">
           <prerequisite>
                <trait id="Ride" value="5" />
                <essence value="5" />
-               <charmReference id="Solar.WorthyMountTechnique" />
-               <charmReference id="Solar.EssenceFlow.Ride" />
+               <charmReference id="Solar.DraftHorseMeasure" />
+				<charmReference id="Solar.SingleSpiritMethod" />
           </prerequisite>
           <cost>
-               <essence cost="15" />
-               <willpower cost="3" />
+               <essence cost="2" />
           </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
+     <!--charm id="Solar.DraftHorseMeasure" exalt="Solar" group="Ride">
+          <prerequisite>
+               <trait id="Ride" value="5" />
+               <essence value="4" />
+               <!- TODO:  Solar.HorseSkidsTrick does not exist. ->
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+          </cost>
+          <duration amount="1" unit="day" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm-->
 </charmlist>

@@ -27,7 +27,7 @@
      <charm id="Dragon-Blooded.HonoredAncestorExhalation" exalt="Dragon-Blooded" group="Linguistics">
           <prerequisite>
                <trait id="Linguistics" value="5" />
-               <!-- Coding:  Breeding ->
+               <!-- TODO:  Targeting Background? ->
                <trait id="Breeding" value="3" /-->
                <essence value="6" />
                <charmReference id="Dragon-Blooded.SpeechWithoutWords" />
@@ -47,7 +47,7 @@
      <charm id="Dragon-Blooded.EndlessCoilsEnlightenment" exalt="Dragon-Blooded" group="Lore">
           <prerequisite>
                <trait id="Lore" value="6" />
-               <!-- Coding:  Breeding ->
+               <!-- TODO:  Targeting Background? ->
                <trait id="Breeding" value="5" /-->
                <essence value="6" />
                <charmReference id="Dragon-Blooded.EternalMindMeditation" />
