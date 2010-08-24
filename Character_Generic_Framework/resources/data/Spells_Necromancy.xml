@@ -1247,7 +1247,7 @@
         <essence cost="20" text="or more"/>
       
     </cost>
-    <target target="SummonedDemon"/>
+    <target target="DemonFirstCircle"/>
     <source edition="SecondEdition" source="BlackTreatise" page="39"/>
   </spell>
   <spell circle="Void" id="Void.DemonSecondCircle">
@@ -1256,7 +1256,7 @@
         <essence cost="30" text="or more"/>
       
     </cost>
-    <target target="SummonedDemon"/>
+    <target target="DemonSecondCircle"/>
     <source edition="SecondEdition" source="BlackTreatise" page="50"/>
   </spell>
   <spell circle="Labyrinth" id="Labyrinth.ArisenLegion">

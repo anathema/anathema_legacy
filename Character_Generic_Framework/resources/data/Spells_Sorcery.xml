@@ -44,7 +44,7 @@
         <essence cost="20" text="or more"/>
       
     </cost>
-    <target target="SummonedDemon"/>
+    <target target="DemonFirstCircle"/>
     <source source="FirstEdition" page="218" edition="FirstEdition"/>
     <source source="SecondEdition" page="252" edition="SecondEdition"/>
   </spell>
@@ -95,7 +95,7 @@
         <essence cost="10" text="or more"/>
       
     </cost>
-    <target target="SummonedElemental"/>
+    <target target="Elemental"/>
     <source source="FirstEdition" page="219" edition="FirstEdition"/>
     <source source="SecondEdition" page="254" edition="SecondEdition"/>
   </spell>
@@ -135,7 +135,7 @@
         <essence cost="30" text="or more"/>
       
     </cost>
-    <target target="SummonedDemon"/>
+    <target target="DemonSecondCircle"/>
     <source source="FirstEdition" page="220" edition="FirstEdition"/>
     <source source="SecondEdition" page="255" edition="SecondEdition"/>
   </spell>
@@ -195,7 +195,7 @@
         <essence cost="40" text="or more"/>
       
     </cost>
-    <target target="SummonedDemon"/>
+    <target target="DemonThirdCircle"/>
     <source source="FirstEdition" page="222" edition="FirstEdition"/>
     <source source="SecondEdition" page="256" edition="SecondEdition"/>
   </spell>
@@ -2002,7 +2002,7 @@
 	<cost>
 		<essence cost="10" text="+1m from each Exalt bound by the spell" />		
 	</cost>
-	<target target="CasterAllies"/>
+	<target target="ExaltsBound"/>
 	<source source="DragonBlooded2nd" page="122" edition="SecondEdition" /> 
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.BloodWithoutTies">
