@@ -1998,9 +1998,9 @@
 	<target target="TouchedCreature"/>
 	<source source="Sidereals2nd" page="121" edition="SecondEdition" /> 
   </spell>
-  <spell circle="Terrestrial" id="Terrestrial.SwornBrothersOath">
+  <spell circle="Terrestrial" id="Terrestrial.SwornBrother'sOath">
 	<cost>
-		<essence cost="to" text="+1m from each Exalt bound by the spell" />		
+		<essence cost="10" text="+1m from each Exalt bound by the spell" />		
 	</cost>
 	<target target="CasterAllies"/>
 	<source source="DragonBlooded2nd" page="122" edition="SecondEdition" /> 
