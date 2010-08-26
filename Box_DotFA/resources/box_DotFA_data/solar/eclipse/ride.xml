@@ -41,11 +41,11 @@
           <source source="LordsOfCreation" />
 			<source source="ScrollErrata" />
      </charm>
-     <!--charm id="Solar.DraftHorseMeasure" exalt="Solar" group="Ride">
+     <charm id="Solar.DraftHorseMeasure" exalt="Solar" group="Ride">
           <prerequisite>
                <trait id="Ride" value="5" />
                <essence value="4" />
-               <!- TODO:  Solar.HorseSkidsTrick does not exist. ->
+               <charmReference id="Solar.HorseSkidsTrick" />
           </prerequisite>
           <cost>
                <essence cost="8" />
@@ -54,6 +54,6 @@
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="LordsOfCreation" />
-			<source source="ScrollErrata" />
-     </charm-->
+		  <source source="ScrollErrata" />
+     </charm>
 </charmlist>

@@ -60,11 +60,11 @@
           <source source="LordsOfCreation" />
 			<source source="ScrollErrata" />
      </charm>
-     <!--charm id="Solar.ShipAndSoulUnion" exalt="Solar" group="Sail">
+     <charm id="Solar.ShipAndSoulUnion" exalt="Solar" group="Sail">
           <prerequisite>
                <trait id="Sail" value="5" />
                <essence value="5" />
-               <!- TODO:  Solar.ImmortalCaptainsAdvantages does not exist. ->
+               <charmReference id="Solar.ImmortalCaptainsAdvantages" />
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
@@ -73,5 +73,5 @@
 			<charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
 			<source source="ScrollErrata" />
-     </charm-->
+     </charm>
 </charmlist>

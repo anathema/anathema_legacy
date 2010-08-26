@@ -38,7 +38,7 @@
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- Mirror:  Master Horseman's Techniques. -->
           <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Touh" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.SpectralSteed" exalt="Abyssal" group="Ride">

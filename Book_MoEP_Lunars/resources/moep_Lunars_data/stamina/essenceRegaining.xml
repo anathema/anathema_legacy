@@ -61,12 +61,12 @@
           <prerequisite>
                <trait id="Stamina" value="4" />
                <essence value="3" />
-               <charmAttributeRequirement attribute="ExcellencyStamina" count="1" />
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />
+          <source source="InkMonkeys" />
      </charm>
 </charmlist>

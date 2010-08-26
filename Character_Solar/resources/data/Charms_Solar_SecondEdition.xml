@@ -2336,15 +2336,14 @@
     <prerequisite>
       <essence id="Essence" value="3"/>
       <trait id="Lore" value="5"/>
-      <charmAttributeRequirement attribute="ExcellencyLore" count="1"/>
     </prerequisite>
     <cost>
       
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <charmAttribute attribute="Obvious" visualize="true"/>
-    <charmAttribute attribute="Mandate" visualize="true"/>
+    <charmAttribute attribute="Mirror" visualize="true"/>
+    <charmAttribute attribute="Native" visualize="true"/>
     <source source="SecondEdition" page="218"/>
   </charm>
   <charm id="Solar.TouchBlissfulRelease" exalt="Solar" group="Medicine">

@@ -141,15 +141,15 @@
           <prerequisite>
                <trait id="Lore" value="5" />
                <essence value="3" />
-               <charmAttributeRequirement attribute="ExcellencyLore" count="1" />
           </prerequisite>
           <cost />
           <duration duration="Indefinite" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- Mirror:  Immanent Solar Glory. -->
-          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="InkMonkeys" />
      </charm>
      <charm id="Abyssal.NightmareCarvingMurmur" exalt="Abyssal" group="Lore">
           <prerequisite>
@@ -168,7 +168,7 @@
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Wyld-Shaping Techinque. -->
+          <!-- Mirror:  Wyld-Shaping Technique. -->
 			<charmAttribute attribute="Obvious" visualize="true" />
 			<charmAttribute attribute="Shaping" visualize="true" />
           <source source="Abyssals2nd" />

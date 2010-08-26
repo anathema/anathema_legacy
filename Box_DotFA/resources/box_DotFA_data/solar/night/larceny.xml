@@ -41,11 +41,11 @@
           <source source="LordsOfCreation" />
 			<source source="ScrollErrata" />
      </charm>
-     <!--charm id="Solar.GearStrippingMethod" exalt="Solar" group="Larceny">
+     <charm id="Solar.GearStrippingMethod" exalt="Solar" group="Larceny">
           <prerequisite>
                <trait id="Larceny" value="5" />
                <essence value="4" />
-				<!- TODO:  Solar.ReversalOfFortune does not exist ->
+               <charmReference id="Solar.ReversalOfFortune" />
           </prerequisite>
           <cost>
                <essence cost="2" />
@@ -57,12 +57,12 @@
 			<charmAttribute attribute="Touch" visualize="true" />
           <source source="LordsOfCreation" />
 			<source source="ScrollErrata" />
-     </charm-->
-	<!--charm id="Solar.KingOfThievesSpirit" exalt="Solar" group="Larceny">
+     </charm>
+	<!charm id="Solar.KingOfThievesSpirit" exalt="Solar" group="Larceny">
 		<prerequisite>
 			<trait id="Larceny" value="5" />
 			<essence value="4" />
-			<!- TODO:  Solar.ReversalOfFortune does not exist. ->
+            <charmReference id="Solar.ReversalOfFortune" />
 		</prerequisite>
 		<cost>
 			<essence cost="5" />
@@ -74,6 +74,6 @@
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="Touch" visualize="true" />
 		<source source="ScrollErrata" />
-	</charm-->
+	</charm>
 	
 </charmlist>
