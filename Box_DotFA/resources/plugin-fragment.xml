@@ -11,216 +11,217 @@
           </library>
      </runtime>
      <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="boxDotFACharms">
+          <parameter id="list">
+              <parameter id="type" value="Solar"/>
+              <parameter id="rules" value="SecondEdition"/>
+              <parameter id="path" value="box_DotFA_data/solar/excellencies.xml"/>
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/dawn/archery.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/dawn/martialarts.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/dawn/melee.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/dawn/thrown.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/dawn/war.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/eclipse/bureaucracy.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/eclipse/linguistics.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/eclipse/ride.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/eclipse/sail.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/eclipse/socialize.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/night/athletics.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/night/awareness.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/night/dodge.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/night/larceny.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/night/stealth.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/twilight/craft.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/twilight/investigation.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/twilight/lore.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/twilight/medicine.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/twilight/occult.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/zenith/integrity.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/zenith/performance.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/zenith/presence.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/zenith/resistance.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/solar/zenith/survival.xml" />
+          </parameter>
           <!--parameter id="list">
-                        <parameter id="type" value="Solar"/>
-                        <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="data.2nd.dotfa/solar/excellencies.xml"/>
-                </parameter-->
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/dawn/archery.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/dawn/martialarts.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/dawn/melee.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/dawn/thrown.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/dawn/war.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/eclipse/bureaucracy.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/eclipse/linguistics.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/eclipse/ride.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/eclipse/sail.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/eclipse/socialize.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/night/athletics.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/night/awareness.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/night/dodge.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/night/larceny.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/night/stealth.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/twilight/craft.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/twilight/investigation.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/twilight/lore.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/twilight/medicine.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/twilight/occult.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/zenith/integrity.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/zenith/performance.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/zenith/presence.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/zenith/resistance.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/solar/zenith/survival.xml" />
-          </parameter>
-          <!--parameter id="list">
                         <parameter id="type" value="Lunar"/>
                         <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="data.2nd.dotfa/lunar/excellencies.xml"/>
+                        <parameter id="path" value="box_DotFA_data/lunar/excellencies.xml"/>
                 </parameter>
                 <parameter id="list">
                         <parameter id="type" value="Lunar"/>
                         <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="data.2nd.dotfa/lunar/appearance.xml"/>
+                        <parameter id="path" value="box_DotFA_data/lunar/appearance.xml"/>
                 </parameter>
                 <parameter id="list">
                         <parameter id="type" value="Lunar"/>
                         <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="data.2nd.dotfa/lunar/charisma.xml"/>
+                        <parameter id="path" value="box_DotFA_data/lunar/charisma.xml"/>
                 </parameter>
                 <parameter id="list">
                         <parameter id="type" value="Lunar"/>
                         <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="data.2nd.dotfa/lunar/dexterity.xml"/>
+                        <parameter id="path" value="box_DotFA_data/lunar/dexterity.xml"/>
                 </parameter>
                 <parameter id="list">
                         <parameter id="type" value="Lunar"/>
                         <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="data.2nd.dotfa/lunar/dexterity.xml"/>
+                        <parameter id="path" value="box_DotFA_data/lunar/dexterity.xml"/>
                 </parameter>
                 <parameter id="list">
                         <parameter id="type" value="Lunar"/>
                         <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="data.2nd.dotfa/lunar/intelligence.xml"/>
+                        <parameter id="path" value="box_DotFA_data/lunar/intelligence.xml"/>
                 </parameter>
                 <parameter id="list">
                         <parameter id="type" value="Lunar"/>
                         <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="data.2nd.dotfa/lunar/manipulation.xml"/>
+                        <parameter id="path" value="box_DotFA_data/lunar/manipulation.xml"/>
                 </parameter>
                 <parameter id="list">
                         <parameter id="type" value="Lunar"/>
                         <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="data.2nd.dotfa/lunar/perception.xml"/>
+                        <parameter id="path" value="box_DotFA_data/lunar/perception.xml"/>
                 </parameter>
                 <parameter id="list">
                         <parameter id="type" value="Lunar"/>
                         <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="data.2nd.dotfa/lunar/stamina.xml"/>
+                        <parameter id="path" value="box_DotFA_data/lunar/stamina.xml"/>
                 </parameter>
                 <parameter id="list">
                         <parameter id="type" value="Lunar"/>
                         <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="data.2nd.dotfa/lunar/strength.xml"/>
+                        <parameter id="path" value="box_DotFA_data/lunar/strength.xml"/>
                 </parameter>
                 <parameter id="list">
                         <parameter id="type" value="Lunar"/>
                         <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="data.2nd.dotfa/lunar/wits.xml"/>
-                </parameter-->
+                        <parameter id="path" value="box_DotFA_data/lunar/wits.xml"/>
+                </parameter>
+                
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/terrestrial/air.xml" />
+               <parameter id="path" value="box_DotFA_data/terrestrial/air.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/terrestrial/earth.xml" />
+               <parameter id="path" value="box_DotFA_data/terrestrial/earth.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/terrestrial/fire.xml" />
+               <parameter id="path" value="box_DotFA_data/terrestrial/fire.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/terrestrial/water.xml" />
+               <parameter id="path" value="box_DotFA_data/terrestrial/water.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />
                <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="data.2nd.dotfa/terrestrial/wood.xml" />
-          </parameter>
+               <parameter id="path" value="box_DotFA_data/terrestrial/wood.xml" />
+          </parameter-->
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="boxDotFAResources">
           <parameter id="bundle" value="boxDotFA" />

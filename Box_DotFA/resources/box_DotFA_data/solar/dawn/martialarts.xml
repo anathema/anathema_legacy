@@ -31,7 +31,6 @@
                <charmReference id="Solar.FistsIronTechnique" />
           </prerequisite>
           <cost />
-          </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
 		<charmAttribute attribute="Mirror" visualize="true" />
@@ -48,7 +47,7 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-<source source="LordsOfCreation" />
+          <source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.OrichalcumFistsOfBattle" exalt="Solar" group="MartialArts">
@@ -65,7 +64,7 @@
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
-<source source="LordsOfCreation" />
+          <source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
 	<charm id="Solar.WickedDissolveDust" exalt="Solar" group="MartialArts">
