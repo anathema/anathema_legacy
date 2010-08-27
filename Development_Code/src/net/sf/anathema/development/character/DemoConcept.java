@@ -10,6 +10,7 @@ public class DemoConcept implements IConcept {
   private String conceptText;
   private String willpowerRegainingConceptName;
 
+  @Override
   public ICasteType getCasteType() {
     return casteType;
   }
@@ -18,6 +19,7 @@ public class DemoConcept implements IConcept {
     return conceptText;
   }
 
+  @Override
   public String getWillpowerRegainingConceptName() {
     return willpowerRegainingConceptName;
   }
@@ -34,6 +36,7 @@ public class DemoConcept implements IConcept {
     this.willpowerRegainingConceptName = willpowerRegainingConceptName;
   }
 
+  @Override
   public String getWillpowerRegainingComment(IResources resources) {
     return getWillpowerRegainingConceptName();
   }

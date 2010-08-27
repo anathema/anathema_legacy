@@ -41,6 +41,11 @@ public class DefaultExperienceCosts implements IExperiencePointCosts {
   public int getComboCosts(ICharm[] comboCharms) {
     return new ComboCostCalculator().getComboCosts(comboCharms);
   }
+  
+  @Override
+  public int getBackgroundCost() {
+    return 3;
+  }
 
   public ICurrentRatingCosts getEssenceCosts() {
     return new MultiplyRatingCosts(8);

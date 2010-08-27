@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Book Scroll of the Monk Imperfect Lotus Plugin" default="Build Scroll of the Monk - The Imperfect Lotus">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Book_ScrollOfTheMonk_ImperfectLotus" />
+	<property name="module.name" value="book_scrollofthemonk_imperfectlotus" />
+
+	<property file="plugin.directories.properties" />
+	
+	<target name="Build Scroll of the Monk - The Imperfect Lotus" depends="Compile, Build JAR"/>
+</project>

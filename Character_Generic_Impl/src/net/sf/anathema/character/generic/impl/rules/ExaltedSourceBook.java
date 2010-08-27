@@ -18,10 +18,17 @@ public enum ExaltedSourceBook implements IExaltedSourceBook {
   CBTwilight(ExaltedEdition.FirstEdition), CBNight(ExaltedEdition.FirstEdition),
   CBEclipse(ExaltedEdition.FirstEdition), PlayersGuide(ExaltedEdition.FirstEdition), SecondEdition(
       ExaltedEdition.SecondEdition), DragonBlooded2nd(ExaltedEdition.SecondEdition), Lunars2nd(
-      ExaltedEdition.SecondEdition), Sidereals2nd(ExaltedEdition.SecondEdition), WondersLostAge(
+      ExaltedEdition.SecondEdition), Sidereals2nd(ExaltedEdition.SecondEdition), Abyssals2nd(ExaltedEdition.SecondEdition), WondersLostAge(
       ExaltedEdition.SecondEdition), ScrollMonk(ExaltedEdition.SecondEdition), ImperfectLotus(
       ExaltedEdition.SecondEdition), WhiteTreatise(ExaltedEdition.SecondEdition), BlackTreatise(
-      ExaltedEdition.SecondEdition), OadenolsCodex(ExaltedEdition.SecondEdition), Comic0(ExaltedEdition.FirstEdition);
+      ExaltedEdition.SecondEdition), OadenolsCodex(ExaltedEdition.SecondEdition), LandsOfCreation(ExaltedEdition.SecondEdition),
+      LordsOfCreation(ExaltedEdition.SecondEdition), Comic0(ExaltedEdition.FirstEdition), 
+      Infernals(ExaltedEdition.SecondEdition), ThousandCorrectActions(ExaltedEdition.SecondEdition),
+      GloriesLuna(ExaltedEdition.SecondEdition), GloriesMaidens(ExaltedEdition.SecondEdition),
+      GloriesUCS(ExaltedEdition.SecondEdition), DebrisFallenRaces(ExaltedEdition.SecondEdition),
+      ScrollExalts(ExaltedEdition.SecondEdition), InkMonkeys(ExaltedEdition.SecondEdition),
+      ReturnEmpress(ExaltedEdition.SecondEdition), UnderRose(ExaltedEdition.SecondEdition),
+      ContagionLaw(ExaltedEdition.SecondEdition), ScrollErrata(ExaltedEdition.SecondEdition);
 
   private final IExaltedEdition edition;
 

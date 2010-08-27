@@ -11,6 +11,7 @@ public abstract class AbstractFirstEditionOrichalcumModificationTest extends Abs
   public final void addsOneToAccuracy() throws Exception {
     assertAccuracyModification(2, 1, WeaponStatsType.Bow);
     assertAccuracyModification(2, 1, WeaponStatsType.Thrown);
+    assertAccuracyModification(2, 1, WeaponStatsType.Thrown_BowBonuses);
     assertAccuracyModification(2, 1, WeaponStatsType.Melee);
   }
 
@@ -20,9 +21,10 @@ public abstract class AbstractFirstEditionOrichalcumModificationTest extends Abs
   }
 
   @Test
-  public final void rangedIncreasedBy50ForBows() throws Exception {
+  public final void rangeIncreasedBy50ForBows() throws Exception {
     assertRangeModification(51, 1, WeaponStatsType.Bow);
     assertRangeModification(1, 1, WeaponStatsType.Thrown);
+    assertRangeModification(51, 1, WeaponStatsType.Thrown_BowBonuses);
     assertRangeModification(1, 1, WeaponStatsType.Flame);
   }
 

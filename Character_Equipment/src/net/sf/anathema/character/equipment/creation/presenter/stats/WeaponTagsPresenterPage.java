@@ -71,8 +71,16 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
   }
 
   private boolean isIllegalRangedWeapon() {
-    return model.getEquipmentType() == EquipmentStatisticsType.RangedCombat
-        && !model.getWeaponTagsModel().isRangedWeaponTagSelected();
+    if (model.getEquipmentType() == EquipmentStatisticsType.RangedCombat) {
+      if (!model.getWeaponTagsModel().isRangedTypeTagSelected()) {
+        return true;
+      }
+      if (!model.getWeaponTagsModel().isThrownTypeTagSelected()
+    	  && model.getWeaponTagsModel().isThrownWeaponTagSelected()) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public String getDescription() {
@@ -81,7 +89,13 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
 
   public IBasicMessage getMessage() {
     if (isIllegalRangedWeapon()) {
-      return properties.getSelectRangedWeaponTagMessage();
+      if (!model.getWeaponTagsModel().isRangedTypeTagSelected()) {
+        return properties.getSelectRangedWeaponTagMessage();
+      }
+      if (!model.getWeaponTagsModel().isThrownTypeTagSelected()
+          && model.getWeaponTagsModel().isThrownWeaponTagSelected()) {
+        return properties.getThrownTagButNotThrownTypeMessage();
+      }
     }
     return properties.getDefaultMessage();
   }

@@ -40,11 +40,11 @@
  </prerequisite>
  <cost>
   
-   <essence cost="1" text="+1m per additional hunter"/>
+   <essence cost="1"/>
   
  </cost>
- <duration amount="1" unit="hunt"/> <!-- Added to CharmDuration -->
- <charmtype type="Simple"/>
+ <duration amount="1" unit="hour" /> <!-- Added to CharmDuration -->
+ <charmtype type="Supplemental" />
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
@@ -95,10 +95,11 @@
    <essence cost="5"/>
   
  </cost>
- <duration amount="1" unit="day"/>
+ <duration duration="Indefinite" />
  <charmtype type="Simple"/>
  <charmAttribute attribute="Elemental" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
+ <charmAttribute attribute="Shaping" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -122,18 +123,13 @@
 <charm id="Dragon-Blooded.Nature'sHealingBounty" exalt="Dragon-Blooded" group="Survival">
  <prerequisite>
   <trait id="Survival" value="3"/>
-  <trait id="Medicine" value="1"/>
   <essence value="2"/>
   <charmAttributeRequirement attribute="ExcellencySurvival" count="1"/>
-  <charmAttributeRequirement attribute="Medicine" count="1"/>
  </prerequisite>
  <cost>
-  
-   <essence cost="1" text="per 2 dice"/>
-  
  </cost>
- <duration duration="Instant"/>
- <charmtype type="Reflexive"/>
+ <duration duration="Permanent"/>
+ <charmtype type="Permanent"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>

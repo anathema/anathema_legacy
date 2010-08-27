@@ -17,9 +17,10 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class ProxyWeaponStats implements IWeaponStats {
+public class ProxyWeaponStats implements IWeaponStats, IProxy<IWeaponStats> {
 
   private final IWeaponStats delegate;
   private final MagicalMaterial material;
@@ -29,6 +30,10 @@ public class ProxyWeaponStats implements IWeaponStats {
     this.delegate = stats;
     this.material = material;
     this.ruleSet = ruleSet;
+  }
+  
+  public IWeaponStats getUnderlying() {
+    return this.delegate;
   }
 
   @Override
@@ -62,11 +67,15 @@ public class ProxyWeaponStats implements IWeaponStats {
     if (ArrayUtilities.contains(getTags(), WeaponTag.BowType)) {
       return WeaponStatsType.Bow;
     }
-    if (ArrayUtilities.contains(getTags(), WeaponTag.BowType)) {
-      return WeaponStatsType.Bow;
+    if (ArrayUtilities.contains(getTags(), WeaponTag.FlameType)) {
+      return WeaponStatsType.Flame;
     }
-    if (ArrayUtilities.contains(getTags(), WeaponTag.BowType)) {
-      return WeaponStatsType.Bow;
+    if (ArrayUtilities.contains(getTags(), WeaponTag.Thrown)) {
+      if (ArrayUtilities.contains(getTags(), WeaponTag.BowBonuses)) {
+        return WeaponStatsType.Thrown_BowBonuses;
+      } else {
+        return WeaponStatsType.Thrown;  
+      }
     }
     return WeaponStatsType.Melee;
   }

@@ -73,6 +73,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Mortal"/>
+    <charmAttribute attribute="War" visualize="true"/>
     <source source="DragonBlooded2nd" page="128"/>
   </genericCharm>
 </charmlist>

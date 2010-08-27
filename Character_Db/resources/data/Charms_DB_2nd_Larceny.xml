@@ -62,7 +62,7 @@
   
  </cost>
  <duration amount="1" unit="task"/>
- <charmtype type="Supplemental"/>
+ <charmtype type="Reflexive"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
@@ -97,6 +97,7 @@
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="War" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -145,7 +146,7 @@
   
  </cost>
  <duration duration="Instant"/>
- <charmtype type="Simple"/>
+ <charmtype type="Reflexive"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
@@ -162,7 +163,7 @@
    <willpower cost="1"/>
   
  </cost>
- <duration amount="1" unit="scene"/>
+ <duration amount="1" unit="Game"/>
  <charmtype type="Simple"/>
   <source source="DragonBlooded2nd"/>
 </charm>

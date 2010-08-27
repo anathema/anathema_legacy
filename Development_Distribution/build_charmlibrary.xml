@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Charm Library" default="Build Charm Library">
+
+	<import file="common_distribution_targets.xml" />
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Platform_SvgTree,Character_Generic,Character_Generic_Impl" />
+	<property name="module.name" value="charmlibrary" />
+
+	<property file="directories.properties" />
+	<property file="plugin.directories.properties" />
+	
+	<target name="Build Charm Library" depends="Purge, Compile, Build JAR"/>
+</project>

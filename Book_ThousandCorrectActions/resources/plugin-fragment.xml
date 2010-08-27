@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.thousandcorrectactions" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="ThousandCorrectActions" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="ThousandCorrectActionsResources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="ThousandCorrectActionsCharms">
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/eclipse/sail.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/zenith/integrity.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/dawn/war.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/night/athletics.xml" />
+          </parameter>
+
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/wood/ride.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/wood/medicine.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/wood/archery.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/water/sail.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/fire/socialize.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/fire/melee.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/fire/athletics.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/earth/war.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/earth/integrity.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/earth/awareness.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/air/stealth.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/air/occult.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/air/lore.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/air/linguistics.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/excellencies.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="thousand_data/misc/terrestrialHero.xml" />
+          </parameter>
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="ThousandCorrectActionsResources">
+          <parameter id="bundle" value="ThousandCorrectActions" />
+          <parameter id="bundle" value="Pages_ThousandCorrectActions" />
+          <parameter id="bundle" value="Charms_ThousandCorrectActions" />
+     </extension>
+</plugin-fragment>

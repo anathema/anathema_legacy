@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 
 public abstract class AbstractSingleVisualizableNode extends AbstractVisualizableNode {
 

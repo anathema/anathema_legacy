@@ -2,6 +2,7 @@ package net.sf.anathema.test.character.generic.persistence.magic.load;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.persistence.GenericCharmBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.GenericCharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
@@ -16,7 +17,8 @@ public class GenericCharmBuilderTest extends BasicTestCase {
       new GenericIdStringBuilder(),
       new GenericTraitPrerequisitesBuilder(),
       new GenericAttributeRequirementBuilder(),
-      new GenericComboRulesBuilder());
+      new GenericComboRulesBuilder(),
+      new GenericCharmPrerequisiteBuilder());
 
   public void testReadGenericCharmId() throws Exception {
     Element xml = CharmXmlTestUtils.createCharmElement("Solar.Generic"); //$NON-NLS-1$

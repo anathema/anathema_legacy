@@ -26,6 +26,7 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   private int generalHighLevelCharmCost;
   private int favoredHighLevelCharmCost;
   private MartialArtsLevel standardMartialArtsLevel;
+  private int backgroundCosts;
 
   public ICurrentRatingCosts getAbilityCosts(boolean favored) {
     return favored ? favoredAbilityCost : generalAbilityCost;
@@ -103,6 +104,16 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
     this.generalCharmCost = generalCharmCost;
   }
 
+  @Override
+  public int getBackgroundCost() {
+    return backgroundCosts;
+  }
+  
+  public void setBackgroundCosts(int backgroundCosts) {
+    this.backgroundCosts = backgroundCosts;
+  }
+  
+  
   public void setMartialArtsCosts(int favoredMartialArtsCost, int generalMartialArtsCost) {
     this.favoredHighLevelCharmCost = favoredMartialArtsCost;
     this.generalHighLevelCharmCost = generalMartialArtsCost;

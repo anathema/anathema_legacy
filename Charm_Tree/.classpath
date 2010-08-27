@@ -5,5 +5,7 @@
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Platform_SvgTree"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Character_Generic"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Character_Generic_Impl"/>
+	<classpathentry exported="true" kind="lib" path="/Thirdparty/Graph/graphlayout.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-anim.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

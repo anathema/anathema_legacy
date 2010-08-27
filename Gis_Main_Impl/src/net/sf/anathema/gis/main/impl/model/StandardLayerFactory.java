@@ -38,6 +38,7 @@ public class StandardLayerFactory implements IStandardLayerFactory {
     this.gisDataDirectory = gisDataDirectory;
   }
 
+  @Override
   public GenericLayer createXeriarRasterLayer() throws LayerCreationException {
     if (!gisDataDirectory.canRead()) {
       return null;
@@ -60,22 +61,27 @@ public class StandardLayerFactory implements IStandardLayerFactory {
     RasterCatalogLayer catalogLayer = new RasterCatalogLayer();
     RasterCatalogLayerDataProvider rasterDataProvider = catalogLayer.getRasterCatalogLayerDataProvider();
     IImageCatalogProperties properties = new IImageCatalogProperties() {
+      @Override
       public String getAbsoluteImagePath() {
         return dbfFile.getAbsolutePath();
       }
 
+      @Override
       public String getCatalogName() {
         return "Creation Xeriar";
       }
 
+      @Override
       public double getInitialMaxScale() {
         return IScaleRange.MAX_VALUE;
       }
 
+      @Override
       public double getInitialMinScale() {
         return IScaleRange.MIN_VALUE;
       }
 
+      @Override
       public String getMmlSaveString() {
         throw new UnsupportedOperationException();
       }
@@ -88,10 +94,12 @@ public class StandardLayerFactory implements IStandardLayerFactory {
     return catalogLayer;
   }
 
+  @Override
   public GenericLayer createSketchLayer() {
     AbstractSketchLayer sketchLayer = new AbstractSketchLayer() {
       {
         IFileProvider fileProvider = new IFileProvider() {
+          @Override
           public File getFile(Component parent) {
             OneFileFilterOpenConfiguration configuration = new OneFileFilterOpenConfiguration(
                 false,

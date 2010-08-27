@@ -57,7 +57,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   }
 
   private IValueModel<Integer> getBackgroundModel() {
-    return new BackgroundExperienceModel(traitConfiguration);
+    return new BackgroundExperienceModel(traitConfiguration,statistics.getCharacterTemplate().getExperienceCost());
   }
 
   private IValueModel<Integer> getCharmModel() {

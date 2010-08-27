@@ -17,7 +17,7 @@ public abstract class AbstractBasicItemDataTest {
   public void testBasicDataOnCreation() throws Exception {
     IBasicItemData itemData = getObjectUnderTest();
     Assert.assertEquals("", itemData.getDescription().getName().getText()); //$NON-NLS-1$
-    Assert.assertEquals(new ITextPart[0], itemData.getDescription().getContent().getTextParts());
+    Assert.assertArrayEquals(new ITextPart[0], itemData.getDescription().getContent().getTextParts());
   }
 
   @Test

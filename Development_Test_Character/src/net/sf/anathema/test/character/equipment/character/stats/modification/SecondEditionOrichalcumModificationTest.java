@@ -14,6 +14,7 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
     assertAccuracyModification(2, 1, WeaponStatsType.Melee);
     assertAccuracyModification(2, 1, WeaponStatsType.Bow);
     assertAccuracyModification(2, 1, WeaponStatsType.Thrown);
+    assertAccuracyModification(2, 1, WeaponStatsType.Thrown_BowBonuses);
     assertAccuracyModification(2, 1, WeaponStatsType.Flame);
   }
 
@@ -27,6 +28,7 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
     assertRateModification(2, 1, WeaponStatsType.Melee);
     assertRateModification(1, 1, WeaponStatsType.Bow);
     assertRateModification(1, 1, WeaponStatsType.Thrown);
+    assertRateModification(1, 1, WeaponStatsType.Thrown_BowBonuses);
     assertRateModification(1, 1, WeaponStatsType.Flame);
   }
 
@@ -40,6 +42,7 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
     assertDamageModification(1, 1, WeaponStatsType.Melee);
     assertDamageModification(2, 1, WeaponStatsType.Bow);
     assertDamageModification(2, 1, WeaponStatsType.Thrown);
+    assertDamageModification(2, 1, WeaponStatsType.Thrown_BowBonuses);
     assertDamageModification(2, 1, WeaponStatsType.Flame);
   }
 
@@ -47,6 +50,7 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
   public void rangeIncreasedForBowAndThrown() throws Exception {
     assertRangeModification(51, 1, WeaponStatsType.Bow);
     assertRangeModification(11, 1, WeaponStatsType.Thrown);
+    assertRangeModification(51, 1, WeaponStatsType.Thrown_BowBonuses);
     assertRangeModification(1, 1, WeaponStatsType.Flame);
   }
 

@@ -36,6 +36,7 @@ public abstract class AbstractFirstEditionStarmetalModificationTest extends Abst
   public final void damageIncreasedBy2() throws Exception {
     assertDamageModification(3, 1, WeaponStatsType.Bow);
     assertDamageModification(3, 1, WeaponStatsType.Thrown);
+    assertDamageModification(3, 1, WeaponStatsType.Thrown_BowBonuses);
     assertDamageModification(3, 1, WeaponStatsType.Melee);
     assertDamageModification(3, 1, WeaponStatsType.Flame);
   }

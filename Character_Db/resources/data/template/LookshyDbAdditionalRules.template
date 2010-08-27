@@ -74,7 +74,9 @@
     	<additionalCost>
     		<costModifier>
     			<backgroundReference id="Breeding"/>
-    			<dotCostModification thresholdLevel="2" multiplier="1"/>
+    			<dotCostModification thresholdLevel="2" fixedCost="1"/>
+    			<bonusModification thresholdLevel="3" fixedCost="2"/>
+    			<bonusModification thresholdLevel="4" fixedCost="2"/>
     		</costModifier>
     	</additionalCost>
     </additionalRules>

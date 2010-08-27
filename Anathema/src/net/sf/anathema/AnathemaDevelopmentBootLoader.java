@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.AccessController;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Properties;
@@ -16,10 +17,12 @@ import org.java.plugin.PluginManager.PluginLocation;
 import org.java.plugin.boot.DefaultPluginsCollector;
 import org.java.plugin.util.ExtendedProperties;
 
+import sun.security.action.GetPropertyAction;
+
 public class AnathemaDevelopmentBootLoader {
 
   public static void main(String[] arguments) throws Exception {
-    if (!System.getProperty("java.version").startsWith("1.5")) { //$NON-NLS-1$ //$NON-NLS-2$
+    if (isSplashScreenSupported()) { //$NON-NLS-1$ //$NON-NLS-2$
       new AnathemaPrebootSplashscreen().displayStatusMessage("Collecting Plugins..."); //$NON-NLS-1$
     }
     ObjectFactory factory = ObjectFactory.newInstance();
@@ -27,6 +30,11 @@ public class AnathemaDevelopmentBootLoader {
     collectPlugins(manager);
     new Anathema(manager).startApplication();
   }
+	
+  public static boolean isSplashScreenSupported() {
+	String osName = (String)AccessController.doPrivileged(new GetPropertyAction("os.name"));
+    return !osName.contains("Mac OS X"); //$NON-NLS-1$ //$NON-NLS-2$
+  }	
 
   private static void collectPlugins(PluginManager manager) throws InitializationException {
     try {

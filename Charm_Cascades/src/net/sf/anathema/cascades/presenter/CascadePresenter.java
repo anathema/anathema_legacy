@@ -38,7 +38,6 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
 
   private CascadeCharmGroupChangeListener selectionListener;
   private IExaltedRuleSet selectedRuleset;
-  private IIdentificate selectedType;
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules = new HashMap<IExaltedRuleSet, CharmTreeIdentificateMap>();
   private final CascadeCharmTreeViewProperties viewProperties;
   private final ICascadeView view;
@@ -84,8 +83,11 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         if (defaultTemplate.getMagicTemplate().getCharmTemplate().knowsCharms(edition.getDefaultRuleset())) {
           for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
             CharmTree charmTree = new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate(), ruleSet);
-            getCharmTreeMap(ruleSet).put(type, charmTree);
-            allCharmGroups.addAll(Arrays.asList(charmTree.getAllCharmGroups()));
+            ICharmGroup[] groups = charmTree.getAllCharmGroups();
+            if (groups.length != 0) {
+              getCharmTreeMap(ruleSet).put(type, charmTree);
+              allCharmGroups.addAll(Arrays.asList(groups));
+            }
           }
           supportedCharmTypes.add(type);
         }
@@ -162,12 +164,11 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
   }
 
   private void handleTypeSelectionChange(IIdentificate cascadeType) {
-    this.selectedType = cascadeType;
     if (cascadeType == null) {
       view.fillCharmGroupBox(new IIdentificate[0]);
       return;
     }
-    final ICharmTree charmTree = getCharmTree(selectedType);
+    final ICharmTree charmTree = getCharmTree(cascadeType);
     if (charmTree == null) {
       view.fillCharmGroupBox(new IIdentificate[0]);
       return;

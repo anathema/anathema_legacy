@@ -13,6 +13,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   
@@ -31,6 +32,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   
@@ -50,6 +52,7 @@
     </charmtype>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   
@@ -71,6 +74,7 @@
     </charmtype>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
 
@@ -92,6 +96,7 @@
     </charmtype>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Form" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
 
@@ -133,6 +138,7 @@
     </charmtype>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   

@@ -1,7 +1,7 @@
 package net.sf.anathema.test.character.generic.framework.treelayout.util;
 
+import net.sf.anathema.graph.util.BarycenterCalculator;
 import net.sf.anathema.lib.testing.BasicTestCase;
-import net.sf.anathema.platform.svgtree.graph.util.BarycenterCalculator;
 
 public class BarycenterCalculatorTest extends BasicTestCase {
 

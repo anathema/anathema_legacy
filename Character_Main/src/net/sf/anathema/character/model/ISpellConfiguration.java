@@ -16,8 +16,6 @@ public interface ISpellConfiguration {
 
   public void addMagicLearnListener(IMagicLearnListener<ISpell> listener);
 
-  public ISpell[] getAllSpells();
-
   public boolean isSpellAllowed(ISpell spell);
 
   public ISpell[] getSpellsByCircle(CircleType circle);

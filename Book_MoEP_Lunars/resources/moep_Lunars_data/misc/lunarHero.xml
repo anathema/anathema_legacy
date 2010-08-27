@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    lunarHero.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Lunar Hero Style -->
+     <!-- For any charms in this tree, non-Lunar characters may substitute MartialArts
+          ability for the required Dexterity attribute ranking. -->
+     <charm id="Celestial.FootTrappingCounter" exalt="Lunar" group="LunarHeroStyle">
+          <prerequisite>
+               <trait id="Dexterity" value="3" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Celestial.RapidBeastAttitude" exalt="Lunar" group="LunarHeroStyle">
+          <prerequisite>
+               <trait id="Dexterity" value="3" />
+               <essence value="2" />
+               <charmReference id="Celestial.FootTrappingCounter" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" />
+          </cost>
+          <duration amount="Essence" unit="action" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Celestial.ThousandClawInfliction" exalt="Lunar" group="LunarHeroStyle">
+          <prerequisite>
+               <trait id="Dexterity" value="3" />
+               <essence value="2" />
+               <charmReference id="Celestial.FootTrappingCounter" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Lunar" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Celestial.LunarHeroForm" exalt="Lunar" group="LunarHeroStyle">
+          <prerequisite>
+               <trait id="Dexterity" value="4" />
+               <essence value="2" />
+               <charmReference id="Celestial.RapidBeastAttitude" />
+               <charmReference id="Celestial.ThousandClawInfliction" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple">
+               <special speed="5" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Form" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Celestial.ArmorRendingClawFist" exalt="Lunar" group="LunarHeroStyle">
+          <prerequisite>
+               <trait id="Dexterity" value="4" />
+               <essence value="2" />
+               <charmReference id="Celestial.LunarHeroForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+               <special speed="5" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Celestial.CrouchingTigerStance" exalt="Lunar" group="LunarHeroStyle">
+          <prerequisite>
+               <trait id="Dexterity" value="5" />
+               <essence value="2" />
+               <charmReference id="Celestial.ArmorRendingClawFist" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+          </cost>
+          <duration event="NextAction" />
+          <charmtype type="Reflexive">
+               <special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Celestial.DenMotherMethod" exalt="Lunar" group="LunarHeroStyle">
+          <prerequisite>
+               <trait id="Dexterity" value="4" />
+               <essence value="2" />
+               <charmReference id="Celestial.LunarHeroForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="6" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Celestial.RunningThroughTheHerd" exalt="Lunar" group="LunarHeroStyle">
+          <prerequisite>
+               <trait id="Dexterity" value="5" />
+               <essence value="3" />
+               <charmReference id="Celestial.DenMotherMethod" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Celestial.TerribleWolverineOnslaught" exalt="Lunar" group="LunarHeroStyle">
+          <prerequisite>
+               <trait id="Dexterity" value="5" />
+               <essence value="4" />
+               <charmReference id="Celestial.CrouchingTigerStance" />
+               <charmReference id="Celestial.RunningThroughTheHerd" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1" />
+               <health cost="1" type="Lethal" text="or more" />
+          </cost>
+          <duration event="Released" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+</charmlist>

@@ -11,6 +11,7 @@ import de.disy.lib.gui.filechooser.configuration.OneFileFilterOpenConfiguration;
 
 public class ImageFileProvider implements IFileProvider {
 
+  @Override
   public File getFile(Component parent) {
     OneFileFilterOpenConfiguration configuration = new OneFileFilterOpenConfiguration(
         false,

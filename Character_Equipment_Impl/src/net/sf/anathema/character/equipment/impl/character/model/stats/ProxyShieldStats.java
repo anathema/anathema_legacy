@@ -4,9 +4,10 @@ import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class ProxyShieldStats implements IShieldStats {
+public class ProxyShieldStats implements IShieldStats, IProxy<IShieldStats> {
 
   private final IShieldStats delegate;
   private final MagicalMaterial material;
@@ -16,6 +17,10 @@ public class ProxyShieldStats implements IShieldStats {
     this.delegate = stats;
     this.material = material;
     this.ruleSet = ruleSet;
+  }
+  
+  public IShieldStats getUnderlying() {
+    return this.delegate;
   }
 
   public Integer getFatigue() {

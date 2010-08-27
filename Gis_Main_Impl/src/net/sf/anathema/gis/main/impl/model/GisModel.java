@@ -17,30 +17,37 @@ public class GisModel implements IGisModel {
     standardLayerFactory = new StandardLayerFactory(gisDataDirectory);
   }
 
+  @Override
   public IMapModel getMapModel() {
     return mapModel;
   }
 
+  @Override
   public IStandardLayerFactory getStandardLayerFactory() {
     return standardLayerFactory;
   }
 
+  @Override
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
     // nothing to do
   }
 
+  @Override
   public void addDirtyListener(IChangeListener changeListener) {
     // nothing to do
   }
 
+  @Override
   public boolean isDirty() {
     return true;
   }
 
+  @Override
   public void setClean() {
     // TODO Auto-generated method stub
   }
 
+  @Override
   public void removeDirtyListener(IChangeListener changeListener) {
     // nothing to do
   }

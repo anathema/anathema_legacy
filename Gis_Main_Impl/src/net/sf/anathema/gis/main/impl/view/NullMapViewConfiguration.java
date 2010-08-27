@@ -10,22 +10,27 @@ public class NullMapViewConfiguration implements IMapViewConfiguration {
 
   private IMenuItemFactoryRegistry menuItemFactory;
 
+  @Override
   public boolean isDemo() {
     return false;
   }
 
+  @Override
   public IMenuItemFactoryRegistry getContextMenuItemFactoryRegistry() {
     return menuItemFactory;
   }
 
+  @Override
   public ImageResolution getScreenResolution() {
     return ImageResolution.SCREEN;
   }
 
+  @Override
   public boolean isRestrictedPanVisualization() {
     return false;
   }
 
+  @Override
   public IGisFileTypeProvider getGisFileProvider() {
     return NullGisFileTypeProvider.INSTANCE;
   }

@@ -11,10 +11,12 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.magic.spells.ICircleTypeVisitor;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
+import net.sf.anathema.character.model.ISpellMapper;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.lib.control.GenericControl;
@@ -29,21 +31,38 @@ public class SpellConfiguration implements ISpellConfiguration {
   private final ChangeControl changeControl = new ChangeControl();
   private final GenericControl<IMagicLearnListener<ISpell>> magicLearnControl = new GenericControl<IMagicLearnListener<ISpell>>();
   private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<CircleType, List<ISpell>>();
+  private final List<ISpell> spellsOtherEdition = new ArrayList<ISpell>();
   private final ICharmConfiguration charms;
   private final ISpellLearnStrategy strategy;
   private final ICharacterType characterType;
+  private final IExaltedEdition edition;
+  private final ISpellMapper spellMapper;
 
-  public SpellConfiguration(ICharmConfiguration charms, ISpellLearnStrategy strategy, ICharacterType characterType)
-      throws SpellException {
+  public SpellConfiguration(
+      ICharmConfiguration charms,
+      ISpellLearnStrategy strategy,
+      ICharacterType characterType,
+      IExaltedEdition edition) throws SpellException {
     this.charms = charms;
     this.strategy = strategy;
     this.characterType = characterType;
+    this.edition = edition;
     for (CircleType type : CircleType.values()) {
       spellsByCircle.put(type, new ArrayList<ISpell>());
     }
     for (ISpell spell : SpellBuilder.getInstance().getSpells()) {
-      spellsByCircle.get(spell.getCircleType()).add(spell);
+      if (isEdition(spell)) {
+        spellsByCircle.get(spell.getCircleType()).add(spell);
+      }
+      else {
+        spellsOtherEdition.add(spell);
+      }
     }
+    spellMapper = new SpellMapper();
+  }
+
+  private boolean isEdition(ISpell spell) {
+    return spell.getSource(edition).getEdition() == edition;
   }
 
   public void removeSpells(ISpell[] removedSpells) {
@@ -166,14 +185,6 @@ public class SpellConfiguration implements ISpellConfiguration {
     magicLearnControl.addListener(listener);
   }
 
-  public ISpell[] getAllSpells() {
-    List<ISpell> allSpells = new ArrayList<ISpell>();
-    for (List<ISpell> circleSpells : spellsByCircle.values()) {
-      allSpells.addAll(circleSpells);
-    }
-    return allSpells.toArray(new ISpell[allSpells.size()]);
-  }
-
   public ISpell[] getSpellsByCircle(CircleType circle) {
     List<ISpell> spells = spellsByCircle.get(circle);
     if (spells != null) {
@@ -183,12 +194,23 @@ public class SpellConfiguration implements ISpellConfiguration {
   }
 
   public ISpell getSpellById(String id) {
+    String correctedId = spellMapper.getId(id, edition);
     for (ISpell spell : getAllSpells()) {
-      if (spell.getId().equals(id)) {
+      if (spell.getId().equals(correctedId)) {
         return spell;
       }
     }
     throw new IllegalArgumentException("No Spell for id: " + id); //$NON-NLS-1$
+  }
+
+  private Iterable<ISpell> getAllSpells() {
+    List<ISpell> allSpells = new ArrayList<ISpell>();
+    for (List<ISpell> circleSpells : spellsByCircle.values()) {
+      allSpells.addAll(circleSpells);
+    }
+    // Handle any 1e-only spells learned (before spell list filtering) by 2e characters
+    allSpells.addAll(spellsOtherEdition);
+    return allSpells;
   }
 
   public boolean isLearnedOnCreation(ISpell spell) {

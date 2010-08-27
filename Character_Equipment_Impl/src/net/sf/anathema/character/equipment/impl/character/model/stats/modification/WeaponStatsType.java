@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.character.model.stats.modificat
 
 public enum WeaponStatsType {
 
-  Bow(true), Thrown(true), Melee(false), Flame(true);
+  Bow(true), Thrown(true), Melee(false), Flame(true), Thrown_BowBonuses(true);
 
   private boolean isRanged;
 

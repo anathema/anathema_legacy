@@ -24,6 +24,7 @@ public class SecondEditionJadeModificationTest extends AbstractEquipmentModifica
     assertDamageModification(2, 1, WeaponStatsType.Melee);
     assertDamageModification(1, 1, WeaponStatsType.Bow);
     assertDamageModification(1, 1, WeaponStatsType.Thrown);
+    assertDamageModification(1, 1, WeaponStatsType.Thrown_BowBonuses);
     assertDamageModification(1, 1, WeaponStatsType.Flame);
   }
 
@@ -31,6 +32,7 @@ public class SecondEditionJadeModificationTest extends AbstractEquipmentModifica
   public void speedReducedBy1() {
     assertSpeedModification(1, 2, WeaponStatsType.Bow);
     assertSpeedModification(1, 2, WeaponStatsType.Thrown);
+    assertSpeedModification(1, 2, WeaponStatsType.Thrown_BowBonuses);
     assertSpeedModification(1, 2, WeaponStatsType.Melee);
     assertSpeedModification(1, 2, WeaponStatsType.Flame);
   }
@@ -49,6 +51,7 @@ public class SecondEditionJadeModificationTest extends AbstractEquipmentModifica
   public void rangeIncreasedForBowAndThrown() {
     assertRangeModification(51, 1, WeaponStatsType.Bow);
     assertRangeModification(11, 1, WeaponStatsType.Thrown);
+    assertRangeModification(51, 1, WeaponStatsType.Thrown_BowBonuses);
     assertRangeModification(1, 1, WeaponStatsType.Flame);
   }
 

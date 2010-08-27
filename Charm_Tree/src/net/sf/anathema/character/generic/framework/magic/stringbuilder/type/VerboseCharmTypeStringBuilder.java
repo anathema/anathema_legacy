@@ -15,9 +15,9 @@ public class VerboseCharmTypeStringBuilder extends AbstractCharmTypeStringBuilde
   protected StringBuilder buildDefenseString(
       ISimpleSpecialsModel model,
       final boolean defaultSpeed,
-      final boolean dramaticAction) {
+      final boolean longAction) {
     StringBuilder builder = new StringBuilder();
-    if (!defaultSpeed || dramaticAction) {
+    if (!defaultSpeed || longAction) {
       builder.append(IMagicStringBuilderConstants.CommaSpace);
     }
     builder.append(getResources().getString("CharmTreeView.ToolTip.Type.Defense")); //$NON-NLS-1$

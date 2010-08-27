@@ -8,6 +8,7 @@ import net.sf.anathema.character.abyssal.equipment.FangTemplate;
 import net.sf.anathema.character.abyssal.reporting.FirstEditionAbyssalPartEncoder;
 import net.sf.anathema.character.abyssal.template.LoyalAbyssalTemplate;
 import net.sf.anathema.character.abyssal.template.RenegadeAbyssalTemplate;
+import net.sf.anathema.character.abyssal.template.UnsupportedAbyssal2ndTemplate;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -63,19 +64,22 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     ICharmCache charmProvider = CharmCache.getInstance();
-    initTemplate(characterGenerics.getTemplateRegistry(), new LoyalAbyssalTemplate(
+    ITemplateRegistry templateRegistry = characterGenerics.getTemplateRegistry();
+    initTemplate(
+        templateRegistry, new LoyalAbyssalTemplate(
         charmProvider,
         additionalLoyalAbyssalRules), additionalLoyalAbyssalRules);
-    initTemplate(characterGenerics.getTemplateRegistry(), new RenegadeAbyssalTemplate(
+    initTemplate(templateRegistry, new RenegadeAbyssalTemplate(
         charmProvider,
         additionalRenegadeAbyssalRules), additionalRenegadeAbyssalRules);
+    templateRegistry.register(new UnsupportedAbyssal2ndTemplate(charmProvider));
   }
 
   private void initTemplate(
       ITemplateRegistry templateRegistry,
       ICharacterTemplate template,
       AdditionalAbyssalRules additionalRules) {
-    templateRegistry.register(template);
+    templateRegistry.register(template);    
     additionalRules.addEssenceEngorgementTechniqueRules(IAbyssalSpecialCharms.ESSENCE_ENGORGEMENT_TECHNIQUE);
   }
 

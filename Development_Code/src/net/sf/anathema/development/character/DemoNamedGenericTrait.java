@@ -15,6 +15,7 @@ public class DemoNamedGenericTrait extends DummyGenericTrait implements INamedGe
     this.postfix = postfix;
   }
 
+  @Override
   public String getName() {
     return getType().getId() + postfix;
   }

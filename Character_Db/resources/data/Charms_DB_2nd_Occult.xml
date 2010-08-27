@@ -55,8 +55,10 @@
    <essence cost="5"/>
   
  </cost>
-  <duration amount="1" unit="hour"/>  
-  <charmtype type="Simple"/>
+  <duration amount="1" unit="day"/>  
+  <charmtype type="Simple" >
+	<special speed="5" urntype="LongTick" defense="-0" />
+  </charmtype>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -74,6 +76,7 @@
   <duration duration="Instant"/>  
   <charmtype type="Simple"/>
   <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <charmAttribute attribute="Shaping" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -92,6 +95,8 @@
   <duration amount="5" unit="minute"/>  
   <charmtype type="Supplemental"/>
   <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <charmAttribute attribute="Crippling" visualize="true"/>
+  <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -109,6 +114,7 @@
   <duration duration="Instant"/>  
   <charmtype type="Supplemental"/>
   <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 

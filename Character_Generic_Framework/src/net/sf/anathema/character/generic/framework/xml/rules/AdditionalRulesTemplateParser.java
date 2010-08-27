@@ -53,6 +53,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String ATTRIB_DEFAULT_RESPONSE = "defaultResponse"; //$NON-NLS-1$
   private static final String TAG_SPELL_REFERENCE = "spellReference"; //$NON-NLS-1$
   private static final String TAG_DOT_COST_MODIFICATION = "dotCostModification"; //$NON-NLS-1$
+  private static final String ATTRIB_FIXED_COST = "fixedCost";
   private final ISpecialCharm[] charms;
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 
@@ -88,15 +89,30 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     }
     for (Element costModifierElement : ElementUtilities.elements(additionalCostElement, TAG_COST_MODIFIER)) {
       IBackgroundTemplate backgroundTemplate = getBackgroundTemplate(costModifierElement);
-      final IPointModification bonusModification = createPointCostModification(costModifierElement.element(TAG_BONUS_MODIFICATION));
-      final IPointModification dotCostModification = createPointCostModification(costModifierElement.element(TAG_DOT_COST_MODIFICATION));
+      final List<IPointModification> bonusModifications = new ArrayList<IPointModification>();
+      for (Element modificationElement : ElementUtilities.elements(costModifierElement, TAG_BONUS_MODIFICATION)) {
+        bonusModifications.add(createPointCostModification(modificationElement));
+      }
+      final List<IPointModification> dotCostModifications = new ArrayList<IPointModification>();
+      for (Element modificationElement : ElementUtilities.elements(costModifierElement, TAG_DOT_COST_MODIFICATION)) {
+        dotCostModifications.add(createPointCostModification(modificationElement));
+      }
       basicTemplate.addBackgroundCostModifier(backgroundTemplate.getId(), new ITraitCostModifier() {
         public int getAdditionalBonusPointsToSpend(int traitValue) {
-          return bonusModification.getAdditionalPoints(traitValue);
+          int cost = 0;
+          for (IPointModification modification : bonusModifications) {
+            cost += modification.getAdditionalPoints(traitValue);
+          }
+          return cost;
         }
 
+        @Override
         public int getAdditionalDotsToSpend(int traitValue) {
-          return dotCostModification.getAdditionalPoints(traitValue);
+          int cost = 0;
+          for (IPointModification modification : dotCostModifications) {
+            cost += modification.getAdditionalPoints(traitValue);
+          }
+          return cost;
         }
       });
     }
@@ -107,10 +123,13 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       return new DefaultPointModification();
     }
     final int minimumValue = ElementUtilities.getRequiredIntAttrib(bonusModification, ATTRIB_MINIMUM_VALUE);
-    final int multiplier = ElementUtilities.getRequiredIntAttrib(bonusModification, ATTRIB_MULTIPLIER);
+    final int multiplier = ElementUtilities.getIntAttrib(bonusModification, ATTRIB_MULTIPLIER, 0);
+    final int fixedCost = ElementUtilities.getIntAttrib(bonusModification, ATTRIB_FIXED_COST, 0);
     return new IPointModification() {
       public int getAdditionalPoints(int traitValue) {
-        return Math.max(0, (traitValue - minimumValue) * multiplier);
+        int variable = Math.max(0, (traitValue - minimumValue) * multiplier);
+        int fixed = traitValue > minimumValue ? fixedCost : 0;
+        return variable + fixed;
       }
     };
   }

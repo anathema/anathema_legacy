@@ -14,9 +14,9 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.platform.svgtree.graph.layering.TopologyBuilder;
-import net.sf.anathema.platform.svgtree.graph.nodes.IIdentifiedRegularNode;
-import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
+import net.sf.anathema.graph.layering.TopologyBuilder;
+import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
+import net.sf.anathema.graph.nodes.IRegularNode;
 
 public class MagicComparator implements Comparator<IMagic> {
 

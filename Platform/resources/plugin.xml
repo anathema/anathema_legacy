@@ -1,7 +1,10 @@
 <!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
-<plugin id="net.sf.anathema.core" version="0.12" class="net.sf.anathema.AnathemaApplicationPlugin">
+<plugin id="net.sf.anathema.core" version="1.4" class="net.sf.anathema.AnathemaApplicationPlugin">
 	<runtime>
 		<library id="core" path="./" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="graphlayout" path="${ANATHEMA_LIB}/graphlayout.jar" type="code">
 			<export prefix="*"/>
 		</library>
 		<library id="disyCore" path="${ANATHEMA_LIB}/disy-commons-core.jar" type="code">
@@ -34,6 +37,51 @@
 		<library id="db4o" path="${ANATHEMA_LIB}/db4o-6.0-java5.jar" type="code">
 			<export prefix="*"/>
 		</library>
+		<library id="BatikExt" path="${ANATHEMA_LIB}/batik-ext.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikGVT" path="${ANATHEMA_LIB}/batik-gvt.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikUtil" path="${ANATHEMA_LIB}/batik-util.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikBridge" path="${ANATHEMA_LIB}/batik-bridge.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikDOM" path="${ANATHEMA_LIB}/batik-dom.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikSVGDOM" path="${ANATHEMA_LIB}/batik-svg-dom.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikXML" path="${ANATHEMA_LIB}/batik-xml.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikAWT" path="${ANATHEMA_LIB}/batik-awt-util.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikParser" path="${ANATHEMA_LIB}/batik-parser.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikSwing" path="${ANATHEMA_LIB}/batik-swing.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikGUI" path="${ANATHEMA_LIB}/batik-gui-util.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikCSS" path="${ANATHEMA_LIB}/batik-css.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikScript" path="${ANATHEMA_LIB}/batik-script.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikAnim" path="${ANATHEMA_LIB}/batik-anim.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikDOMExt" path="${ANATHEMA_LIB}/xml-apis-ext.jar" type="code">
+			<export prefix="*"/>
+		</library>		
 	</runtime>
 	<extension-point id="AnathemaExtensions">
 		<parameter-def id="type" multiplicity="any">

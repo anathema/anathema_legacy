@@ -9,6 +9,7 @@ public class DeepCloneCheckerTest {
 
   private DeepCloneChecker cloneChecker;
 
+  @SuppressWarnings("unused")
   private static class StaticPrimitiveField {
     public static final int CONSTANT = 2;
   }

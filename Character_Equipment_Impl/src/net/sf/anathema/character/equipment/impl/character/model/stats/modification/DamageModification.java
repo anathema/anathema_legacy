@@ -19,8 +19,9 @@ public class DamageModification implements IStatsModification {
     if (material == MagicalMaterial.Starmetal) {
       if (type == WeaponStatsType.Melee && isSecondEdition) {
         return input + 3;
+      } else {
+        return input + 2;
       }
-      return input + 2;
     }
     if (material == MagicalMaterial.Jade && type == WeaponStatsType.Melee && isSecondEdition) {
       return input + 1;

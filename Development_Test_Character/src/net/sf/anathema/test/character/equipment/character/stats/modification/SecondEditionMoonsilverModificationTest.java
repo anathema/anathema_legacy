@@ -18,6 +18,7 @@ public class SecondEditionMoonsilverModificationTest extends AbstractEquipmentMo
   public void accuracyIncreasedForRangedWeaponsBy1() throws Exception {
     assertAccuracyModification(2, 1, WeaponStatsType.Bow);
     assertAccuracyModification(2, 1, WeaponStatsType.Thrown);
+    assertAccuracyModification(2, 1, WeaponStatsType.Thrown_BowBonuses);
     assertAccuracyModification(2, 1, WeaponStatsType.Flame);
   }
 
@@ -65,6 +66,7 @@ public class SecondEditionMoonsilverModificationTest extends AbstractEquipmentMo
   public void rangeIncreasedForBowAndThrown() {
     assertRangeModification(101, 1, WeaponStatsType.Bow);
     assertRangeModification(21, 1, WeaponStatsType.Thrown);
+    assertRangeModification(101, 1, WeaponStatsType.Thrown_BowBonuses);
     assertRangeModification(1, 1, WeaponStatsType.Flame);
   }
 

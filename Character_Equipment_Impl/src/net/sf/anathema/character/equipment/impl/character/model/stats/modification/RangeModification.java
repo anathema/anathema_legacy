@@ -16,7 +16,7 @@ public class RangeModification implements IStatsModification {
 
   public int getModifiedValue(int input, WeaponStatsType type) {
     int modificationFactor = getModificationFactor();
-    if (type == WeaponStatsType.Bow) {
+    if (type == WeaponStatsType.Bow || type == WeaponStatsType.Thrown_BowBonuses) {
       return input + 50 * modificationFactor;
     }
     if (type == WeaponStatsType.Thrown && ruleSet == ExaltedRuleSet.SecondEdition) {

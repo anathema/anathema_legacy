@@ -39,6 +39,7 @@ public class RasterTileAction extends SmartAction {
     ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(parentComponent, "Raster tiling");
     try {
       progressMonitorDialog.run(false, new IRunnableWithProgress() {
+        @Override
         public void run(IProgressMonitor monitor) throws InterruptedException, InvocationTargetException {
           try {
             rasterTiler.tileRasterTheme(result.getSelectedFile(), monitor);

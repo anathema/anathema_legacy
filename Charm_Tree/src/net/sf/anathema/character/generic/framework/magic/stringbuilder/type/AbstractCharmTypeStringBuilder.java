@@ -25,7 +25,7 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
   protected abstract StringBuilder buildDefenseString(
       ISimpleSpecialsModel model,
       boolean defaultSpeed,
-      boolean dramaticAction);
+      boolean longAction);
 
   private StringBuilder buildReflexiveModelString(IReflexiveSpecialsModel model) {
     StringBuilder builder = new StringBuilder();
@@ -35,11 +35,21 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
     Object[] objects;
     if (model.getSecondaryStep() == null) {
       formatter.applyPattern(getResources().getString(getReflexiveSingleStepPattern()));
-      objects = new Object[] { model.getPrimaryStep() };
+      if (model.getPrimaryStep() == null) {
+        objects = new Object[] { -1 };
+      }
+      else {
+        objects = new Object[] { model.getPrimaryStep() };
+      }
     }
     else {
       formatter.applyPattern(getResources().getString(getReflexiveDualStepPattern()));
-      objects = new Object[] { model.getPrimaryStep(), model.getSecondaryStep() };
+      if (model.getPrimaryStep() == null) {
+        objects = new Object[] { -1, model.getSecondaryStep() };
+      }
+      else {
+        objects = new Object[] { model.getPrimaryStep(), model.getSecondaryStep() };
+      }
     }
     builder.append(formatter.format(objects));
     builder.append(")"); //$NON-NLS-1$
@@ -57,14 +67,17 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
     builder.append(IMagicStringBuilderConstants.Space);
     builder.append("("); //$NON-NLS-1$
     final boolean dramaticAction = model.getTurnType() == TurnType.DramaticAction;
+    boolean longTick = model.getTurnType() == TurnType.LongTick;
     if (dramaticAction) {
       builder.append(getResources().getString(getDramaticActionKey()));
     }
-    else if (!defaultSpeed || model.getTurnType() == TurnType.LongTick || displayDefaultValues) {
-      builder.append(buildSpeedString(model));
+    else {
+      if (!defaultSpeed || longTick || displayDefaultValues) {
+        builder.append(buildSpeedString(model));
+      }
     }
     if (!defaultDefense || displayDefaultValues) {
-      builder.append(buildDefenseString(model, defaultSpeed, dramaticAction));
+      builder.append(buildDefenseString(model, defaultSpeed, dramaticAction||longTick));
     }
     builder.append(")"); //$NON-NLS-1$
     return builder;

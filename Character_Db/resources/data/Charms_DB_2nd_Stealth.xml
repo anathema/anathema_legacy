@@ -12,6 +12,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
      <charmAttribute attribute="Combo-OK" visualize="true"/>
+     <charmAttribute attribute="Leader5" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   
@@ -63,6 +64,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
      <charmAttribute attribute="Combo-OK" visualize="true"/>
+     <charmAttribute attribute="Leader4" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   
@@ -81,6 +83,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
      <charmAttribute attribute="Combo-Basic" visualize="true"/>
+     <charmAttribute attribute="Leader4" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   
@@ -100,7 +103,7 @@
      <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
-  
+
     <charm id="Dragon-Blooded.DragonShroudTechnique" exalt="Dragon-Blooded" group="Stealth">
     <prerequisite>
       <trait id="Stealth" value="5"/>

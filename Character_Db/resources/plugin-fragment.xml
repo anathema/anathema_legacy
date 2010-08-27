@@ -1,5 +1,7 @@
-<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
-<plugin-fragment id="net.sf.anathema.character.db" version="1.03" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.db" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
 	<runtime>		
 		<library id="db" path="./" type="code">
 			<export prefix="*"/>
@@ -34,7 +36,7 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Athletics.xml"/>
 	  </parameter>
-	  	  	     <parameter id="list">
+	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Awareness.xml"/>
@@ -44,17 +46,17 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Bureaucracy.xml"/>
 	  </parameter>
-	  	     <parameter id="list">
+	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Craft.xml"/>
 	  </parameter>
-	  	  <parameter id="list">
+	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Dodge.xml"/>
 	  </parameter>	  
-	  	     <parameter id="list">
+	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Integrity.xml"/>
@@ -84,12 +86,12 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Medicine.xml"/>
 	  </parameter>
-	  	  <parameter id="list">
+	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Melee.xml"/>
 	  </parameter>
-	  	  <parameter id="list">
+	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Occult.xml"/>
@@ -99,7 +101,7 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Performance.xml"/>
 	  </parameter>
-	  	  <parameter id="list">
+	  <parameter id="list">
 		<parameter id="type" value="Dragon-Blooded"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_DB_2nd_Presence.xml"/>
@@ -146,9 +148,9 @@
 	  </parameter>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="DBResources">
-		<parameter id="bundle" value="Dragon-Blooded"/>
 		<parameter id="bundle" value="Charms_Dragon-Blooded"/>
 		<parameter id="bundle" value="Charms_Dragon-Blooded_Pages"/>
 		<parameter id="bundle" value="Charms_Dragon-Blooded_SecondEdition"/>
+		<parameter id="bundle" value="Dragon-Blooded"/>
 	</extension>
 </plugin-fragment>

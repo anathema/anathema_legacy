@@ -14,6 +14,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
      <charmAttribute attribute="Combo-OK" visualize="true"/>
+     <charmAttribute attribute="Leader4" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
    
@@ -31,6 +32,7 @@
     <duration amount="Essence" unit="action" />
     <charmtype type="Simple"/>
      <charmAttribute attribute="Combo-OK" visualize="true"/>
+     <charmAttribute attribute="Leader6" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   
@@ -42,11 +44,11 @@
     </prerequisite>
     <cost>
       
-        <essence cost="10" text="per weapon"/>
+        <essence cost="2" text="per weapon"/>
       
     </cost>
     <duration duration="Instant" />
-    <charmtype type="Simple"/>
+    <charmtype type="Reflexive"/>
      <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
@@ -65,6 +67,7 @@
     <duration amount="1" unit="scene" />
     <charmtype type="Simple"/>
      <charmAttribute attribute="Combo-OK" visualize="true"/>
+     <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   
@@ -83,6 +86,7 @@
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Counterattack" visualize="true"/>
+     <charmAttribute attribute="Leader5" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   
@@ -98,11 +102,12 @@
         <essence cost="3" text="per weapon"/>
       
     </cost>
-    <duration duration="Instant" />
+    <duration event="UntilThrown" />
     <charmtype type="Simple"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Elemental" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
+     <charmAttribute attribute="Stackable" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   
@@ -120,7 +125,9 @@
     <duration amount="1" unit="scene" />
     <charmtype type="Simple"/>
     <charmAttribute attribute="Elemental" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Stackable" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   

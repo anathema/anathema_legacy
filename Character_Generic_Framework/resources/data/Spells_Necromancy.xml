@@ -6,7 +6,9 @@
 				<essence cost="15"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="224"/>
+		<target target="Creature"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="224"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="29"/>
 	</spell>
 	<spell id="Shadowlands.IronCountermagic" circle="Shadowlands">
 		<cost>
@@ -14,7 +16,9 @@
 				<essence cost="10" text="or 20 motes"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="224"/>
+		<target target="CasterIronCountermagicSpell"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="224"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="30"/>
 	</spell>
 	<spell id="Shadowlands.PiercingShroud" circle="Shadowlands">
 		<cost>
@@ -22,7 +26,16 @@
 				<essence cost="10"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="225"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="225"/>
+	</spell>
+	<spell id="Shadowlands.PiercingShroud" circle="Shadowlands">
+		<cost>
+			
+				<essence cost="25"/>
+			
+		</cost>
+		<target target="Labyrinth"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="31"/>
 	</spell>
 	<spell id="Shadowlands.RaisingSkeletalHorde" circle="Shadowlands">
 		<cost>
@@ -30,7 +43,16 @@
 				<essence cost="Varies"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="225"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="225"/>
+	</spell>
+	<spell id="Shadowlands.RaisingSkeletalHorde" circle="Shadowlands">
+		<cost>
+			
+				<essence cost="10" text="+1 mote per zombie"/>
+			
+		</cost>
+		<target target="Corpses"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="31"/>
 	</spell>
 	<spell id="Shadowlands.RuneSweetPassing" circle="Shadowlands">
 		<cost>
@@ -38,7 +60,9 @@
 				<essence cost="15"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="225"/>
+		<target target="LivingCreature"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="225"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="32"/>
 	</spell>
 	<spell id="Shadowlands.ShadePrisonAmulet" circle="Shadowlands">
 		<cost>
@@ -46,7 +70,9 @@
 				<essence cost="10"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="225"/>
+		<target target="Bone"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="225"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="32"/>
 	</spell>
 	<spell id="Shadowlands.SoulBrand" circle="Shadowlands">
 		<cost>
@@ -54,7 +80,9 @@
 				<essence cost="15"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="225"/>
+		<target target="LivingCreature"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="225"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="34"/>
 	</spell>
 	<spell id="Shadowlands.SummonGhost" circle="Shadowlands">
 		<cost>
@@ -62,7 +90,9 @@
 				<essence cost="15" text="or more"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="225"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="225"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="34"/>
 	</spell>
 	<spell id="Shadowlands.WalkingWarMachine" circle="Shadowlands">
 		<cost>
@@ -70,7 +100,9 @@
 				<essence cost="Varies"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="226"/>
+		<target target="UndeadCreatureNecromanticAutomaton"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="226"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="35"/>
 	</spell>
 	<spell id="Labyrinth.ExquisiteUndeadAide" circle="Labyrinth">
 		<cost>
@@ -78,7 +110,9 @@
 				<essence cost="20"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="226"/>
+		<target target="Corpse"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="226"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="40"/>
 	</spell>
 	<spell id="Labyrinth.HundredShadeBreath" circle="Labyrinth">
 		<cost>
@@ -86,7 +120,16 @@
 				<essence cost="Varies"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="226"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="226"/>
+	</spell>
+	<spell id="Labyrinth.HundredShadeBreath" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="20" text="+1 mote per hungry ghost"/>
+			
+		</cost>
+		<target target="Caster"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="41"/>
 	</spell>
 	<spell id="Labyrinth.IvoryRazorForest" circle="Labyrinth">
 		<cost>
@@ -94,7 +137,9 @@
 				<essence cost="25"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="227"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="227"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="42"/>
 	</spell>
 	<spell id="Labyrinth.ReapingFallen" circle="Labyrinth">
 		<cost>
@@ -102,7 +147,9 @@
 				<essence cost="25"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="227"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="227"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="44"/>
 	</spell>
 	<spell id="Labyrinth.SpitefulPassing" circle="Labyrinth">
 		<cost>
@@ -110,7 +157,16 @@
 				<essence cost="Special"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="227"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="227"/>
+	</spell>
+	<spell id="Labyrinth.SpitefulPassing" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="1"/>
+			
+		</cost>
+		<target target="Area"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="46"/>
 	</spell>
 	<spell id="Labyrinth.StealingGatheredBreath" circle="Labyrinth">
 		<cost>
@@ -118,7 +174,9 @@
 				<essence cost="15"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="228"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="228"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="46"/>
 	</spell>
 	<spell id="Labyrinth.StrikingSpectreLash" circle="Labyrinth">
 		<cost>
@@ -126,7 +184,9 @@
 				<essence cost="15" text="plus 2 motes per attack"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="228"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="228"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="46"/>
 	</spell>
 	<spell id="Void.AbyssalAegis" circle="Void">
 		<cost>
@@ -134,7 +194,9 @@
 				<essence cost="20"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="228"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="228"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="48"/>
 	</spell>
 	<spell id="Void.AnguishedShadeHarvest" circle="Void">
 		<cost>
@@ -142,16 +204,28 @@
 				<essence cost="60"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="228"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="228"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="48"/>
 	</spell>
 	<spell id="Void.BloodMonsoon" circle="Void">
 		<cost>
 			
-				<essence cost="50" text="(commited)"/>
+				<essence cost="50" text="(committed)"/>
 				<health cost="1" type="Lethal"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="228"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="228"/>
+	</spell>
+	<spell id="Void.BloodMonsoon" circle="Void">
+		<cost>
+			
+				<essence cost="50"/>
+				<health cost="1" type="Lethal"/>
+			
+		</cost>
+		<target target="Area"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="48"/>
 	</spell>
 	<spell id="Void.DimmingLight" circle="Void">
 		<cost>
@@ -159,15 +233,18 @@
 				<essence cost="80"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="229"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="229"/>
 	</spell>
 	<spell id="Void.InauspiciousCitadel" circle="Void">
 		<cost>
 			
 				<essence cost="60"/>
+				<health cost="1" type="Lethal"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="229"/>
+		<target target="ConjuredCitadel"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="229"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="53"/>
 	</spell>
 	<spell id="Void.LordDead" circle="Void">
 		<cost>
@@ -175,15 +252,19 @@
 				<essence cost="25"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="229"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="229"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="53"/>
 	</spell>
 	<spell id="Void.PoisoningWell" circle="Void">
 		<cost>
 			
-				<essence cost="50" text="(commited)"/>
+				<essence cost="50" text="(committed)"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="229"/>
+		<target target="Demesne"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="229"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="55"/>
 	</spell>
 	<spell id="Labyrinth.OnyxCountermagic" circle="Labyrinth">
 		<cost>
@@ -191,7 +272,9 @@
 				<essence cost="15" text="or 20 motes"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="225"/>
+		<target target="CasterOnyxCountermagicSpell"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="225"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="43"/>
 	</spell>
 	<spell id="Void.ObsidianCountermagic" circle="Void">
 		<cost>
@@ -199,7 +282,9 @@
 				<essence cost="20" text="or 25 motes"/>
 			
 		</cost>
-		<source source="Abyssals1st" page="225"/>
+		<target target="CasterObsidianCountermagicSpell"/>
+		<source edition="FirstEdition" source="Abyssals1st" page="225"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="55"/>
 	</spell>	
 	<spell id="Shadowlands.BanishGhost" circle="Shadowlands">
 		<cost>
@@ -207,7 +292,9 @@
 				<essence cost="12" text="+"/>
 			
 		</cost>
-		<source source="BoneEbony" page="119"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="119"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="23"/>
 	</spell>
 	<spell id="Shadowlands.BlackCandleVisage" circle="Shadowlands">
 		<cost>
@@ -215,7 +302,9 @@
 				<essence cost="18"/>
 			
 		</cost>
-		<source source="BoneEbony" page="119"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="119"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="23"/>
 	</spell>
 	<spell id="Shadowlands.BlessRapineSoul" circle="Shadowlands">
 		<cost>
@@ -223,7 +312,9 @@
 				<essence cost="16"/>
 			
 		</cost>
-		<source source="BoneEbony" page="120"/>
+		<target target="LivingCreature"/>
+		<source edition="FirstEdition" source="BoneEbony" page="120"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="24"/>
 	</spell>
 	<spell id="Shadowlands.BlessedDeadFools" circle="Shadowlands">
 		<cost>
@@ -231,7 +322,9 @@
 				<essence cost="13"/>
 			
 		</cost>
-		<source source="BoneEbony" page="120"/>
+		<target target="Ghosts6"/>
+		<source edition="FirstEdition" source="BoneEbony" page="120"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="24"/>
 	</spell>
 	<spell id="Shadowlands.BloodMirrorSpeech" circle="Shadowlands">
 		<cost>
@@ -240,7 +333,9 @@
 				<health type="Lethal" cost="1"/>
 			
 		</cost>
-		<source source="BoneEbony" page="120"/>
+		<target target="Creature"/>
+		<source edition="FirstEdition" source="BoneEbony" page="120"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="24"/>
 	</spell>
 	<spell id="Shadowlands.BonePuppetDance" circle="Shadowlands">
 		<cost>
@@ -248,7 +343,9 @@
 				<essence cost="16"/>
 			
 		</cost>
-		<source source="BoneEbony" page="121"/>
+		<target target="Skeleton"/>
+		<source edition="FirstEdition" source="BoneEbony" page="121"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="25"/>
 	</spell>
 	<spell id="Shadowlands.BonfireVisions" circle="Shadowlands">
 		<cost>
@@ -256,7 +353,9 @@
 				<essence cost="13"/>
 			
 		</cost>
-		<source source="BoneEbony" page="121"/>
+		<target target="Bonfire"/>
+		<source edition="FirstEdition" source="BoneEbony" page="121"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="25"/>
 	</spell>
 	<spell id="Shadowlands.ConsortingWithDevils" circle="Shadowlands">
 		<cost>
@@ -264,15 +363,17 @@
 				<essence cost="10"/>
 			
 		</cost>
-		<source source="BoneEbony" page="120"/>
+		<source edition="FirstEdition" source="BoneEbony" page="120"/>
 	</spell>
 	<spell id="Shadowlands.DeathFliesTwoSails" circle="Shadowlands">
 		<cost>
 			
-				<essence cost="14" text="(7 commited)"/>
+				<essence cost="14" text="(7 committed)"/>
 			
 		</cost>
-		<source source="BoneEbony" page="121"/>
+		<target target="SailingVessel"/>
+		<source edition="FirstEdition" source="BoneEbony" page="121"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="25"/>
 	</spell>
 	<spell id="Shadowlands.DeathInversionLoop" circle="Shadowlands">
 		<cost>
@@ -280,7 +381,9 @@
 				<essence cost="18"/>
 			
 		</cost>
-		<source source="BoneEbony" page="122"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="122"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="25"/>
 	</spell>
 	<spell id="Shadowlands.DeathMask" circle="Shadowlands">
 		<cost>
@@ -288,7 +391,9 @@
 				<essence cost="14"/>
 			
 		</cost>
-		<source source="BoneEbony" page="122"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="BoneEbony" page="122"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="26"/>
 	</spell>
 	<spell id="Shadowlands.DrawingBlindEdge" circle="Shadowlands">
 		<cost>
@@ -296,7 +401,9 @@
 				<essence cost="20"/>
 			
 		</cost>
-		<source source="BoneEbony" page="123"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="123"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="27"/>
 	</spell>
 	<spell id="Shadowlands.DuskEyes" circle="Shadowlands">
 		<cost>
@@ -304,7 +411,9 @@
 				<essence cost="10"/>
 			
 		</cost>
-		<source source="BoneEbony" page="123"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="BoneEbony" page="123"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="27"/>
 	</spell>
 	<spell id="Shadowlands.EasingForsakenMemory" circle="Shadowlands">
 		<cost>
@@ -312,7 +421,17 @@
 				<essence cost="12" text="+"/>
 			
 		</cost>
-		<source source="BoneEbony" page="123"/>
+		<target target="Haunt"/>
+		<source edition="FirstEdition" source="BoneEbony" page="123"/>
+	</spell>
+	<spell id="Shadowlands.EasingForsakenMemory" circle="Shadowlands">
+		<cost>
+			
+				<essence cost="12"/>
+			
+		</cost>
+		<target target="Haunt"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="27"/>
 	</spell>
 	<spell id="Shadowlands.EmperorsChains" circle="Shadowlands">
 		<cost>
@@ -320,7 +439,9 @@
 				<essence cost="16"/>
 			
 		</cost>
-		<source source="BoneEbony" page="124"/>
+		<target target="GhostGhosts"/>
+		<source edition="FirstEdition" source="BoneEbony" page="124"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="27"/>
 	</spell>
 	<spell id="Shadowlands.FacesDead" circle="Shadowlands">
 		<cost>
@@ -328,7 +449,9 @@
 				<essence cost="16"/>
 			
 		</cost>
-		<source source="BoneEbony" page="124"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="BoneEbony" page="124"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="28"/>
 	</spell>
 	<spell id="Shadowlands.FieldFellDreams" circle="Shadowlands">
 		<cost>
@@ -336,7 +459,9 @@
 				<essence cost="16"/>
 			
 		</cost>
-		<source source="BoneEbony" page="124"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="124"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="28"/>
 	</spell>
 	<spell id="Shadowlands.FiveGifts" circle="Shadowlands">
 		<cost>
@@ -344,7 +469,9 @@
 				<essence cost="12"/>
 			
 		</cost>
-		<source source="BoneEbony" page="124"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="124"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="28"/>
 	</spell>
 	<spell id="Shadowlands.FleshBoneWinds" circle="Shadowlands">
 		<cost>
@@ -352,7 +479,9 @@
 				<essence cost="18"/>
 			
 		</cost>
-		<source source="BoneEbony" page="125"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="BoneEbony" page="125"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="29"/>
 	</spell>
 	<spell id="Shadowlands.FleshSloughingWave" circle="Shadowlands">
 		<cost>
@@ -360,7 +489,9 @@
 				<essence cost="16"/>
 			
 		</cost>
-		<source source="BoneEbony" page="126"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="126"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="29"/>
 	</spell>
 	<spell id="Shadowlands.GatheringAGhostsStrings" circle="Shadowlands">
 		<cost>
@@ -368,7 +499,9 @@
 				<essence cost="10" text="or 20 Motes"/>
 			
 		</cost>
-		<source source="BoneEbony" page="126"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="126"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="29"/>
 	</spell>
 	<spell id="Shadowlands.GentleCallLethe" circle="Shadowlands">
 		<cost>
@@ -376,7 +509,9 @@
 				<essence cost="13"/>
 			
 		</cost>
-		<source source="BoneEbony" page="127"/>
+		<target target="LivingCreature"/>
+		<source edition="FirstEdition" source="BoneEbony" page="127"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="29"/>
 	</spell>
 	<spell id="Shadowlands.InvisibleDoorway" circle="Shadowlands">
 		<cost>
@@ -385,7 +520,17 @@
 				<health type="Lethal" cost="1"/>
 			
 		</cost>
-		<source source="BoneEbony" page="120"/>
+		<target target="ReflectiveSurface"/>
+		<source edition="FirstEdition" source="BoneEbony" page="120"/>
+	</spell>
+	<spell id="Shadowlands.DoorDead" circle="Shadowlands">
+		<cost>
+			
+				<essence cost="18"/>
+			
+		</cost>
+		<target target="ReflectiveSurface"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="27"/>
 	</spell>
 	<spell id="Shadowlands.MasterPuppeteersKnife" circle="Shadowlands">
 		<cost>
@@ -393,7 +538,9 @@
 				<essence cost="14"/>
 			
 		</cost>
-		<source source="BoneEbony" page="127"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="127"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="30"/>
 	</spell>
 	<spell id="Shadowlands.MidnightShadowSun" circle="Shadowlands">
 		<cost>
@@ -401,7 +548,9 @@
 				<essence cost="8"/>
 			
 		</cost>
-		<source source="BoneEbony" page="127"/>
+		<target target="ShadowlandBorder"/>
+		<source edition="FirstEdition" source="BoneEbony" page="127"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="31"/>
 	</spell>
 	<spell id="Shadowlands.MotherDarkness" circle="Shadowlands">
 		<cost>
@@ -409,7 +558,9 @@
 				<essence cost="12"/>
 			
 		</cost>
-		<source source="BoneEbony" page="128"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="128"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="31"/>
 	</spell>
 	<spell id="Shadowlands.PiercingHeel" circle="Shadowlands">
 		<cost>
@@ -418,7 +569,17 @@
 			
 		</cost>
 		<arcaneLink required="true"/>
-		<source source="BoneEbony" page="128"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="128"/>
+	</spell>
+	<spell id="Shadowlands.PiercingHeel" circle="Shadowlands">
+		<cost>
+			
+				<essence cost="15"/>
+			
+		</cost>
+		<target target="Ghost"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="31"/>
 	</spell>
 	<spell id="Shadowlands.RingingHunRebuke" circle="Shadowlands">
 		<cost>
@@ -426,7 +587,17 @@
 				<essence cost="19"/>
 			
 		</cost>
-		<source source="BoneEbony" page="128"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="BoneEbony" page="128"/>
+	</spell>
+	<spell id="Shadowlands.RingingRebuke" circle="Shadowlands">
+		<cost>
+			
+				<essence cost="19"/>
+			
+		</cost>
+		<target target="Caster"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="32"/>
 	</spell>
 	<spell id="Shadowlands.SeatDeadlySplendors" circle="Shadowlands">
 		<cost>
@@ -434,7 +605,9 @@
 				<essence cost="15"/>
 			
 		</cost>
-		<source source="BoneEbony" page="129"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="BoneEbony" page="129"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="32"/>
 	</spell>
 	<spell id="Shadowlands.ShatteredVoidMirror" circle="Shadowlands">
 		<cost>
@@ -442,7 +615,9 @@
 				<essence cost="20"/>
 			
 		</cost>
-		<source source="BoneEbony" page="129"/>
+		<target target="LivingCreature"/>
+		<source edition="FirstEdition" source="BoneEbony" page="129"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="32"/>
 	</spell>
 	<spell id="Shadowlands.SilentMastersPollen" circle="Shadowlands">
 		<cost>
@@ -450,7 +625,9 @@
 				<essence cost="18"/>
 			
 		</cost>
-		<source source="BoneEbony" page="129"/>
+		<target target="Ghost2Ghosts"/>
+		<source edition="FirstEdition" source="BoneEbony" page="129"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="33"/>
 	</spell>
 	<spell id="Shadowlands.SmoothingCreaseWornMind" circle="Shadowlands">
 		<cost>
@@ -458,7 +635,17 @@
 				<essence cost="23"/>
 			
 		</cost>
-		<source source="BoneEbony" page="130"/>
+		<target target="Creature"/>
+		<source edition="FirstEdition" source="BoneEbony" page="130"/>
+	</spell>
+	<spell id="Shadowlands.SmoothingCreaseWornMind" circle="Shadowlands">
+		<cost>
+			
+				<essence cost="20"/>
+			
+		</cost>
+		<target target="Creature"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="33"/>
 	</spell>
 	<spell id="Shadowlands.StonesWornSmooth" circle="Shadowlands">
 		<cost>
@@ -466,15 +653,27 @@
 				<essence cost="15"/>
 			
 		</cost>
-		<source source="BoneEbony" page="130"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="130"/>
+	</spell>
+	<spell id="Shadowlands.StonesWornSmooth" circle="Shadowlands">
+		<cost>
+			
+				<essence cost="18"/>
+			
+		</cost>
+		<target target="Ghost"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="34"/>
 	</spell>
 	<spell id="Shadowlands.TrollingDarkWater" circle="Shadowlands">
 		<cost>
 			
-				<essence cost="10"/>
+				<essence cost="10" text="+"/>
 			
 		</cost>
-		<source source="BoneEbony" page="130"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="130"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="35"/>
 	</spell>
 	<spell id="Shadowlands.WithoutPityWithoutScorn" circle="Shadowlands">
 		<cost>
@@ -482,7 +681,9 @@
 				<essence cost="18"/>
 			
 		</cost>
-		<source source="BoneEbony" page="130"/>
+		<target target="Fetters"/>
+		<source edition="FirstEdition" source="BoneEbony" page="130"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="35"/>
 	</spell>
 	<spell id="Labyrinth.BanefulSun" circle="Labyrinth">
 		<cost>
@@ -490,7 +691,17 @@
 				<essence cost="22"/>
 			
 		</cost>
-		<source source="BoneEbony" page="131"/>
+		<target target="Creature"/>
+		<source edition="FirstEdition" source="BoneEbony" page="131"/>
+	</spell>
+	<spell id="Labyrinth.BanefulSunShadow" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="22"/>
+			
+		</cost>
+		<target target="Creature"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="36"/>
 	</spell>
 	<spell id="Labyrinth.BlackVial" circle="Labyrinth">
 		<cost>
@@ -498,7 +709,17 @@
 				<essence cost="24"/>
 			
 		</cost>
-		<source source="BoneEbony" page="129"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="129"/>
+	</spell>
+	<spell id="Labyrinth.BlackVialMedicine" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="24"/>
+			
+		</cost>
+		<target target="Area"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="36"/>
 	</spell>
 	<spell id="Labyrinth.BrickByBrickSolitude" circle="Labyrinth">
 		<cost>
@@ -506,7 +727,17 @@
 				<essence cost="19"/>
 			
 		</cost>
-		<source source="BoneEbony" page="128"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="128"/>
+	</spell>
+	<spell id="Labyrinth.BrickByBrickSolitude" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="23"/>
+			
+		</cost>
+		<target target="Area"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="37"/>
 	</spell>
 	<spell id="Labyrinth.ClamoringShackles" circle="Labyrinth">
 		<cost>
@@ -514,15 +745,28 @@
 				<essence cost="21"/>
 			
 		</cost>
-		<source source="BoneEbony" page="132"/>
+		<target target="Creatures2"/>
+		<source edition="FirstEdition" source="BoneEbony" page="132"/>
+	</spell>
+	<spell id="Labyrinth.ClamoringShackles" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="21"/>
+				<willpower cost="1" permanent="true"/>
+			
+		</cost>
+		<target target="Creatures2"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="37"/>
 	</spell>
 	<spell id="Labyrinth.CrystalGhostShard" circle="Labyrinth">
 		<cost>
 			
-				<essence cost="15" text="(commited)"/>
+				<essence cost="15" text="(committed)"/>
 			
 		</cost>
-		<source source="BoneEbony" page="132"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="BoneEbony" page="132"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="38"/>
 	</spell>
 	<spell id="Labyrinth.DeadMansVoice" circle="Labyrinth">
 		<cost>
@@ -531,7 +775,9 @@
 			
 		</cost>
 		<arcaneLink required="true"/>
-		<source source="BoneEbony" page="133"/>
+		<target target="Creature"/>
+		<source edition="FirstEdition" source="BoneEbony" page="133"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="38"/>
 	</spell>
 	<spell id="Labyrinth.DenyingCall" circle="Labyrinth">
 		<cost>
@@ -539,15 +785,19 @@
 				<essence cost="24"/>
 			
 		</cost>
-		<source source="BoneEbony" page="133"/>
+		<target target="RecentlyDeadCreature"/>
+		<source edition="FirstEdition" source="BoneEbony" page="133"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="39"/>
 	</spell>
 	<spell id="Labyrinth.FuneraryMistedVessel" circle="Labyrinth">
 		<cost>
 			
-				<essence cost="22" text="(11 commited)"/>
+				<essence cost="22" text="(11 committed)"/>
 			
 		</cost>
-		<source source="BoneEbony" page="122"/>
+		<target target="SailingVessel"/>
+		<source edition="FirstEdition" source="BoneEbony" page="122"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="40"/>
 	</spell>
 	<spell id="Labyrinth.GoldenShadowsCastInFrieze" circle="Labyrinth">
 		<cost>
@@ -555,7 +805,9 @@
 				<essence cost="30" text="+"/>
 			
 		</cost>
-		<source source="BoneEbony" page="134"/>
+		<target target="Spectre"/>
+		<source edition="FirstEdition" source="BoneEbony" page="134"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="40"/>
 	</spell>
 	<spell id="Labyrinth.GrayEyesShieldAndShell" circle="Labyrinth">
 		<cost>
@@ -563,7 +815,9 @@
 				<essence cost="25"/>
 			
 		</cost>
-		<source source="BoneEbony" page="135"/>
+		<target target="CasterGhost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="135"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="41"/>
 	</spell>
 	<spell id="Labyrinth.InfiniteFootsteps" circle="Labyrinth">
 		<cost>
@@ -571,7 +825,9 @@
 				<essence cost="26"/>
 			
 		</cost>
-		<source source="BoneEbony" page="135"/>
+		<target target="Journey"/>
+		<source edition="FirstEdition" source="BoneEbony" page="135"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="41"/>
 	</spell>
 	<spell id="Labyrinth.JoylessSpiritsCorruption" circle="Labyrinth">
 		<cost>
@@ -579,7 +835,9 @@
 				<essence cost="30"/>
 			
 		</cost>
-		<source source="BoneEbony" page="135"/>
+		<target target="GodElemental"/>
+		<source edition="FirstEdition" source="BoneEbony" page="135"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="42"/>
 	</spell>
 	<spell id="Labyrinth.LinksBornTumult" circle="Labyrinth">
 		<cost>
@@ -588,23 +846,37 @@
 				<health type="Lethal" cost="1"/>
 			
 		</cost>
-		<source source="BoneEbony" page="136"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="BoneEbony" page="136"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="42"/>
 	</spell>
 	<spell id="Labyrinth.PuzzleBoxLove" circle="Labyrinth">
 		<cost>
 			
-				<essence cost="10" text="or 20 motes"/>
+				<essence cost="20"/>
 			
 		</cost>
-		<source source="BoneEbony" page="127"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="127"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="43"/>
 	</spell>
 	<spell id="Labyrinth.RattledBonesWar" circle="Labyrinth">
 		<cost>
 			
-				<essence cost="22" text="(commited)"/>
+				<essence cost="22" text="(committed)"/>
 			
 		</cost>
-		<source source="BoneEbony" page="136"/>
+		<target target="SummonedWarstrider"/>
+		<source edition="FirstEdition" source="BoneEbony" page="136"/>
+	</spell>
+	<spell id="Labyrinth.RattledBonesWar" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="25" text="(committed)"/>
+			
+		</cost>
+		<target target="SummonedWarstrider"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="43"/>
 	</spell>
 	<spell id="Labyrinth.RebirthIntoDarkness" circle="Labyrinth">
 		<cost>
@@ -612,7 +884,17 @@
 				<essence cost="25"/>
 			
 		</cost>
-		<source source="BoneEbony" page="137"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="137"/>
+	</spell>
+	<spell id="Labyrinth.RebirthIntoDarkness" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="22" text="+"/>
+			
+		</cost>
+		<target target="Ghost"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="44"/>
 	</spell>
 	<spell id="Labyrinth.SevenVisionsWisdom" circle="Labyrinth">
 		<cost>
@@ -620,7 +902,9 @@
 				<essence cost="34"/>
 			
 		</cost>
-		<source source="BoneEbony" page="137"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="137"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="44"/>
 	</spell>
 	<spell id="Labyrinth.ShadowStonesTravel" circle="Labyrinth">
 		<cost>
@@ -628,7 +912,17 @@
 				<essence cost="24"/>
 			
 		</cost>
-		<source source="BoneEbony" page="137"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="137"/>
+	</spell>
+	<spell id="Labyrinth.ShadowStonesTravel" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="26"/>
+			
+		</cost>
+		<target target="Area"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="45"/>
 	</spell>
 	<spell id="Labyrinth.ShieldShatteringBones" circle="Labyrinth">
 		<cost>
@@ -636,7 +930,9 @@
 				<essence cost="18"/>
 			
 		</cost>
-		<source source="BoneEbony" page="138"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="BoneEbony" page="138"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="45"/>
 	</spell>
 	<spell id="Labyrinth.SilencedWhisperedPrayers" circle="Labyrinth">
 		<cost>
@@ -644,7 +940,17 @@
 				<essence cost="27"/>
 			
 		</cost>
-		<source source="BoneEbony" page="138"/>
+		<target target="CreatureArea"/>
+		<source edition="FirstEdition" source="BoneEbony" page="138"/>
+	</spell>
+	<spell id="Labyrinth.SilencedWhisperedPrayers" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="25"/>
+			
+		</cost>
+		<target target="CreatureArea"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="45"/>
 	</spell>
 	<spell id="Labyrinth.SweetVoiceFamiliar" circle="Labyrinth">
 		<cost>
@@ -652,15 +958,17 @@
 				<essence cost="32"/>
 			
 		</cost>
-		<source source="BoneEbony" page="138"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="138"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="47"/>
 	</spell>
 	<spell id="Labyrinth.WalkingGoreTitan" circle="Labyrinth">
 		<cost>
 			
-				<essence cost="16" text="commited"/>
+				<essence cost="16" text="committed"/>
 			
 		</cost>
-		<source source="BoneEbony" page="136"/>
+		<source edition="FirstEdition" source="BoneEbony" page="136"/>
 	</spell>
 	<spell id="Labyrinth.WhiteShard" circle="Labyrinth">
 		<cost>
@@ -668,7 +976,17 @@
 				<essence cost="28"/>
 			
 		</cost>
-		<source source="BoneEbony" page="120"/>
+		<target target="Mirror"/>
+		<source edition="FirstEdition" source="BoneEbony" page="120"/>
+	</spell>
+	<spell id="Labyrinth.WhiteShardFuneral" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="28"/>
+			
+		</cost>
+		<target target="Mirror"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="47"/>
 	</spell>
 	<spell id="Labyrinth.WillfulFleshCommands" circle="Labyrinth">
 		<cost>
@@ -676,7 +994,17 @@
 				<essence cost="24"/>
 			
 		</cost>
-		<source source="BoneEbony" page="119"/>
+		<target target="Ghost"/>
+		<source edition="FirstEdition" source="BoneEbony" page="119"/>
+	</spell>
+	<spell id="Labyrinth.WillfulFleshCommands" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="18"/>
+			
+		</cost>
+		<target target="Ghost"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="47"/>
 	</spell>
 	<spell id="Void.BarlessGate" circle="Void">
 		<cost>
@@ -684,7 +1012,9 @@
 				<essence cost="42"/>
 			
 		</cost>
-		<source source="BoneEbony" page="120"/>
+		<target target="Mirror"/>
+		<source edition="FirstEdition" source="BoneEbony" page="120"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="48"/>
 	</spell>
 	<spell id="Void.BarredTomb" circle="Void">
 		<cost>
@@ -692,16 +1022,28 @@
 				<essence cost="24"/>
 			
 		</cost>
-		<source source="BoneEbony" page="133"/>
+		<target target="RecentlyDeadCreature"/>
+		<source edition="FirstEdition" source="BoneEbony" page="133"/>
+	</spell>
+	<spell id="Void.BarredTomb" circle="Void">
+		<cost>
+			
+				<essence cost="40"/>
+			
+		</cost>
+		<target target="RecentlyDeadCreature"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="48"/>
 	</spell>
 	<spell id="Void.BirthSanitysSorrow" circle="Void">
 		<cost>
 			
-				<essence cost="18"/>
+				<essence cost="10"/>
 			
 			<willpower cost="1" permanent="true"/>
 		</cost>
-		<source source="BoneEbony" page="139"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="BoneEbony" page="139"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="48"/>
 	</spell>
 	<spell id="Void.BlackFaith" circle="Void">
 		<cost>
@@ -710,7 +1052,9 @@
 				<health type="Lethal" cost="1"/>
 			
 		</cost>
-		<source source="BoneEbony" page="140"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="BoneEbony" page="140"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="49"/>
 	</spell>
 	<spell id="Void.BlackstormWagon" circle="Void">
 		<cost>
@@ -718,15 +1062,27 @@
 				<essence cost="48"/>
 			
 		</cost>
-		<source source="BoneEbony" page="132"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="132"/>
+	</spell>
+	<spell id="Void.BlackstormCoffle" circle="Void">
+		<cost>
+			
+				<essence cost="48"/>
+			
+		</cost>
+		<target target="Area"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="49"/>
 	</spell>
 	<spell id="Void.ClayWarpedDreams" circle="Void">
 		<cost>
 			
-				<essence cost="60" text="(commited)"/>
+				<essence cost="60" text="(committed)"/>
 			
 		</cost>
-		<source source="BoneEbony" page="140"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="140"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="50"/>
 	</spell>
 	<spell id="Void.EmptyNightFuture" circle="Void">
 		<cost>
@@ -734,7 +1090,9 @@
 				<essence cost="32"/>
 			
 		</cost>
-		<source source="BoneEbony" page="129"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="129"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="50"/>
 	</spell>
 	<spell id="Void.FoldingMidnight" circle="Void">
 		<cost>
@@ -742,7 +1100,17 @@
 				<essence cost="46"/>
 			
 		</cost>
-		<source source="BoneEbony" page="127"/>
+		<target target="ShadowlandBorder"/>
+		<source edition="FirstEdition" source="BoneEbony" page="127"/>
+	</spell>
+	<spell id="Labyrinth.FoldingMidnight" circle="Labyrinth">
+		<cost>
+			
+				<essence cost="46"/>
+			
+		</cost>
+		<target target="Shadowland"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="40"/>
 	</spell>
 	<spell id="Void.ForsakenLifeEngine" circle="Void">
 		<cost>
@@ -750,7 +1118,9 @@
 				<essence cost="50" text="+"/>
 			
 		</cost>
-		<source source="BoneEbony" page="140"/>
+		<target target="AreaConjuredAutomaton"/>
+		<source edition="FirstEdition" source="BoneEbony" page="140"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="51"/>
 	</spell>
 	<spell id="Void.GrandmotherVoid" circle="Void">
 		<cost>
@@ -759,7 +1129,18 @@
 				<health type="Lethal" cost="1"/>
 			
 		</cost>
-		<source source="BoneEbony" page="141"/>
+		<target target="CasterSpectres"/>
+		<source edition="FirstEdition" source="BoneEbony" page="141"/>
+	</spell>
+	<spell id="Void.GrandmotherVoid" circle="Void">
+		<cost>
+			
+				<essence cost="40" text="+"/>
+				<health type="Lethal" cost="1"/>
+			
+		</cost>
+		<target target="CasterSpectres"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="52"/>
 	</spell>
 	<spell id="Void.MouthVoid" circle="Void">
 		<cost>
@@ -767,16 +1148,28 @@
 				<essence cost="50"/>
 			
 		</cost>
-		<source source="BoneEbony" page="142"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="142"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="53"/>
 	</spell>
 	<spell id="Void.OblivionsAvatar" circle="Void">
 		<cost>
 			
-				<essence cost="10" text="(commited)per power, or 40 motes per power."/>
+				<essence cost="10" text="(committed)per power, or 40 motes per power."/>
 			
 			<experience cost="5" text="optional" permanent="true"/>
 		</cost>
-		<source source="BoneEbony" page="102"/>
+		<target target="WarMachine"/>
+		<source edition="FirstEdition" source="BoneEbony" page="102"/>
+	</spell>
+	<spell id="Void.OblivionsAvatar" circle="Void">
+		<cost>
+			
+				<essence cost="Varies"/>
+			
+		</cost>
+		<target target="WarMachine"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="54"/>
 	</spell>
 	<spell id="Void.PyreFlameGuardian" circle="Void">
 		<cost>
@@ -784,7 +1177,9 @@
 				<essence cost="50"/>
 			
 		</cost>
-		<source source="BoneEbony" page="142"/>
+		<target target="Caster"/>
+		<source edition="FirstEdition" source="BoneEbony" page="142"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="56"/>
 	</spell>
 	<spell id="Void.RisenAndScreaming" circle="Void">
 		<cost>
@@ -792,15 +1187,19 @@
 				<essence cost="40"/>
 			
 		</cost>
-		<source source="BoneEbony" page="143"/>
+		<target target="Area"/>
+		<source edition="FirstEdition" source="BoneEbony" page="143"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="57"/>
 	</spell>
 	<spell id="Void.SummonHekatonkhire" circle="Void">
 		<cost>
 			
-				<essence cost="40"/>
+				<essence cost="40" text="+"/>
 			
 		</cost>
-		<source source="BoneEbony" page="143"/>
+		<target target="SummonedHekatonkhire"/>
+		<source edition="FirstEdition" source="BoneEbony" page="143"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="57"/>
 	</spell>
 	<spell id="Void.SinsFather" circle="Void">
 		<cost>
@@ -809,15 +1208,140 @@
 			
 			<willpower cost="1" permanent="true"/>
 		</cost>
-		<source source="BoneEbony" page="144"/>
+		<target target="LivingPerson"/>
+		<source edition="FirstEdition" source="BoneEbony" page="144"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="57"/>
 	</spell>
 	<spell id="Void.VoidCocoonWarrior" circle="Void">
 		<cost>
 			
-				<essence cost="28" text="+ (commited)"/>
+				<essence cost="28" text="+ (committed)"/>
 				<health type="Lethal" cost="1" text="(optional)"/>
 			
 		</cost>
-		<source source="BoneEbony" page="136"/>	
+		<target target="SummonedWarstrider"/>
+		<source edition="FirstEdition" source="BoneEbony" page="136"/>	
 	</spell>
+	<spell id="Void.VoidCocoonWarrior" circle="Void">
+		<cost>
+			
+				<essence cost="33" text="+ (committed)"/>
+				<health type="Lethal" cost="1" text="(optional)"/>
+			
+		</cost>
+		<target target="SummonedWarstrider"/>
+		<source edition="SecondEdition" source="BlackTreatise" page="59"/>
+	</spell>
+  <spell circle="Labyrinth" id="Labyrinth.BoneLion">
+    <cost>
+      
+        <essence cost="30"/>
+      
+    </cost>
+    <target target="Automaton"/>
+    <source edition="SecondEdition" source="BlackTreatise" page="36"/>
+  </spell>
+  <spell circle="Labyrinth" id="Labyrinth.DemonFirstCircle">
+    <cost>
+      
+        <essence cost="20" text="or more"/>
+      
+    </cost>
+    <target target="DemonFirstCircle"/>
+    <source edition="SecondEdition" source="BlackTreatise" page="39"/>
+  </spell>
+  <spell circle="Void" id="Void.DemonSecondCircle">
+    <cost>
+      
+        <essence cost="30" text="or more"/>
+      
+    </cost>
+    <target target="DemonSecondCircle"/>
+    <source edition="SecondEdition" source="BlackTreatise" page="50"/>
+  </spell>
+  <spell circle="Labyrinth" id="Labyrinth.ArisenLegion">
+    <cost>
+      
+        <essence cost="30"/>
+      
+    </cost>
+    <target target="Corpses"/>
+    <source edition="SecondEdition" source="BlackTreatise" page="36"/>
+  </spell>
+  <spell circle="Labyrinth" id="Labyrinth.BaubleCaptiveSoul">
+    <cost>
+      
+        <essence cost="15"/>
+      
+    </cost>
+    <target target="Bone"/>
+    <source edition="FirstEdition" source="Abyssals1st" page="225"/>
+    <source edition="SecondEdition" source="BlackTreatise" page="36"/>
+  </spell>
+  <spell circle="Labyrinth" id="Labyrinth.CallGreaterServitor">
+    <cost>
+      
+        <essence cost="6" text="per zombie"/>
+      
+    </cost>
+    <target target="Corpses"/>
+    <source edition="SecondEdition" source="BlackTreatise" page="37"/>
+  </spell>
+  <spell circle="Labyrinth" id="Labyrinth.SpurringBeastWar">
+    <cost>
+      
+        <essence cost="Varies"/>
+      
+    </cost>
+    <target target="WarMachine"/>
+    <source edition="FirstEdition" source="BoneEbony" page="98"/>
+    <source edition="SecondEdition" source="BlackTreatise" page="46"/>
+  </spell>
+  <spell circle="Void" id="Void.BloodSlaughter">
+    <cost>
+      
+        <essence cost="35"/>
+      
+    </cost>
+    <target target="Caster"/>
+    <source edition="SecondEdition" source="BlackTreatise" page="49"/>
+  </spell>
+  <spell circle="Void" id="Void.IncomparableDestructionEngine">
+    <cost>
+      
+        <essence cost="Varies"/>
+      
+    </cost>
+    <target target="WarMachine"/>
+    <source edition="FirstEdition" source="BoneEbony" page="99"/>
+    <source edition="SecondEdition" source="BlackTreatise" page="53"/>
+  </spell>
+  <spell id="Void.InDarknessDrowned" circle="Void">
+	<cost>
+		<essence cost="50" text="+ (committed)"/>
+	</cost>
+	<source source="SecondEdition" page="167" edition="SecondEdition" /> 
+	<!--source source="Infernals" page="167" edition="SecondEdition" /--> 
+  </spell>
+  <spell id="Void.DimmingOfTheLight" circle="Void">
+	<cost>
+		<essence cost="80" />
+	</cost>
+	<source source="SecondEdition" page="117" edition="SecondEdition" /> 
+	<!--source source="Abyssals2nd" page="117" edition="SecondEdition" /--> 
+  </spell>
+  <spell id="Void.CallTheBlackSun" circle="Void">
+	<cost>
+		<essence cost="40" text="+ (committed)"/>
+	</cost>
+	<source source="SecondEdition" page="117" edition="SecondEdition" /> 
+	<!--source source="Abyssals2nd" page="117" edition="SecondEdition" /--> 
+  </spell>
+  <spell id="Labyrinth.BlackInvestiture" circle="Labyrinth">
+	<cost>
+		<essence cost="20" text="or 60 motes, + 1 committed mote"/>
+	</cost>
+	<source source="SecondEdition" page="219" edition="SecondEdition" /> 
+	<!--source source="Abyssals2nd" page="219" edition="SecondEdition" /--> 
+  </spell>
 </spelllist>

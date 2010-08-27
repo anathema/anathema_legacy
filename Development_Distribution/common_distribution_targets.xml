@@ -1,7 +1,13 @@
 <?xml version="1.0"?>
-<project name="Common Distribution Targets">
-	<taskdef resource="net/sf/ant4eclipse/antlib.xml" classpath="../Thirdparty/Ant/ant4eclipse-0.4.0.jar" />
-	<taskdef resource="net/sf/antcontrib/antlib.xml" classpath="../Thirdparty/Ant/ant-contrib-1.0b1.jar" />
+<project name="Common_Distribution_Targets">
+	<dirname property="distributiontargets.basedir" file="${ant.file.Common_Distribution_Targets}"/>
+	<taskdef resource="net/sf/ant4eclipse/antlib.xml" classpath="${distributiontargets.basedir}/../Thirdparty/Ant/ant4eclipse-0.5.0.rc1.jar" />
+	<taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${distributiontargets.basedir}/../Thirdparty/Ant/ant-contrib-1.0b1.jar" />
+	
+	<target name="Clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${test.dir}" />
+	</target>
 
 	<target name="Build Plugins">
 		<ant antfile="build_core_plugin.xml" />
@@ -17,6 +23,24 @@
 		<ant antfile="build_plot_plugin.xml" />
 		<ant antfile="build_music_plugin.xml" />
 		<ant antfile="build_charmcascades_plugin.xml" />
+		<!-- Additional Sources -->
+		<ant antfile="build_blog_inkmonkeys_vol8_plugin.xml" />
+		<ant antfile="build_blog_inkmonkeys_vol10-11_plugin.xml" />
+		<ant antfile="build_blog_inkmonkeys_vol20-22_plugin.xml" />
+		<ant antfile="build_book_glories_luna_plugin.xml" />
+		<ant antfile="build_book_glories_maidens_plugin.xml" />
+		<ant antfile="build_book_glories_unconqueredsun_plugin.xml" />
+		<ant antfile="build_book_moep_abyssals_plugin.xml" />
+		<ant antfile="build_book_moep_infernals_plugin.xml" />
+		<ant antfile="build_book_moep_lunars_plugin.xml" />
+		<ant antfile="build_book_moep_sidereals_plugin.xml" />
+		<ant antfile="build_book_scrollofexalts_plugin.xml" />
+		<ant antfile="build_book_scrollofthefallenraces_debris_plugin.xml" />
+		<ant antfile="build_book_scrollofthemonk_plugin.xml" />
+		<ant antfile="build_book_scrollofthemonk_imperfectlotus_plugin.xml" />
+		<ant antfile="build_book_thousandcorrectactions_plugin.xml" />
+		<ant antfile="build_book_undertherose_plugin.xml" />
+		<ant antfile="build_box_dotfa_plugin.xml" />
 	</target>
 
 	<target name="Build Bootloader">
@@ -33,5 +57,28 @@
 		<copy todir="${italian.files.dir}">
 			<fileset dir="${documentation.dir}/Italian" includes="*.txt" />
 		</copy>
+	</target>
+	
+	<target name="Build ZIP">
+		<zip destfile="anathema_v${version.major}.${version.minor}.${version.revision}.zip">
+			<fileset dir="${build.dir}" includes="anathema.jar" />
+			<fileset dir="${files.dir}" includes="**/*" />
+			<zipfileset dir="${plugins.dir}/" prefix="plugins" includes="*" />
+			<zipfileset dir="${libraries.dir}" prefix="lib" includes="*" />
+		</zip>
+	</target>
+	
+	<target name="Build Test Distribution">
+		<deltree dir="${test.dir}"/>
+		<copy todir="${test.dir}">
+            <fileset dir="${build.dir}" includes="anathema.jar" />
+            <fileset dir="${files.dir}" includes="**/*" />
+		</copy>
+        <copy todir="${test.dir}/plugins">
+            <fileset dir="${plugins.dir}" includes="*" />
+        </copy>
+        <copy todir="${test.dir}/lib">
+            <fileset dir="${libraries.dir}" includes="*" />
+        </copy>
 	</target>
 </project>

@@ -21,12 +21,14 @@ public abstract class AbstractFirstEditionJadeModificationTest extends AbstractE
     assertSpeedModification(4, 1, WeaponStatsType.Melee);
     assertSpeedModification(1, 1, WeaponStatsType.Bow);
     assertSpeedModification(1, 1, WeaponStatsType.Thrown);
+    assertSpeedModification(1, 1, WeaponStatsType.Thrown_BowBonuses);
     assertSpeedModification(1, 1, WeaponStatsType.Flame);
   }
 
   @Test
   public final void bowRangeIncreasedBy50() throws Exception {
     assertRangeModification(51, 1, WeaponStatsType.Bow);
+    assertRangeModification(51, 1, WeaponStatsType.Thrown_BowBonuses);
     assertRangeModification(1, 1, WeaponStatsType.Thrown);
     assertRangeModification(1, 1, WeaponStatsType.Flame);
   }
@@ -35,6 +37,7 @@ public abstract class AbstractFirstEditionJadeModificationTest extends AbstractE
   public final void rateForRangedCombatIncreasedBy1() throws Exception {
     assertRateModification(2, 1, WeaponStatsType.Bow);
     assertRateModification(2, 1, WeaponStatsType.Thrown);
+    assertRateModification(2, 1, WeaponStatsType.Thrown_BowBonuses);
     assertRateModification(2, 1, WeaponStatsType.Flame);
     assertRateModification(1, 1, WeaponStatsType.Melee);
   }

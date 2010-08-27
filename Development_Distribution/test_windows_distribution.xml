@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Windows test distribution" default="Distribute">
+
+	<!--Requires the property "launch4j.dir" to point to the launch4j installation.-->
+	<import file="windows_distribution_targets.xml" />
+
+	<property file="directories.properties" />
+
+	<target name="Distribute" depends="Clean, Build Bootloader, Build Plugins, Copy Text, Build Windows executable, Build Test Distribution" />
+</project>

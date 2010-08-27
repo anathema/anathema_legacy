@@ -24,6 +24,7 @@ public final class GisItemTypeConfiguration extends AbstractNonPersistableItemTy
   @Override
   protected IItemViewFactory createItemViewFactory(final IAnathemaModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
+      @Override
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
         GisModuleView anathemaGisView = new GisModuleView(printName);

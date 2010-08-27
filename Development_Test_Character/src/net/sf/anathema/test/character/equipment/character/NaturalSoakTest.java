@@ -44,8 +44,8 @@ public class NaturalSoakTest {
         return null;
       }
     });
-    Assert.assertEquals(0, naturalSoak.getSoak(HealthType.Lethal));
-    Assert.assertEquals(2, naturalSoak.getSoak(HealthType.Bashing));
+    Assert.assertEquals(new Integer(0), naturalSoak.getSoak(HealthType.Lethal));
+    Assert.assertEquals(new Integer(2), naturalSoak.getSoak(HealthType.Bashing));
   }
 
   @Test
@@ -78,7 +78,7 @@ public class NaturalSoakTest {
         return null;
       }
     });
-    Assert.assertEquals(1, naturalSoak.getSoak(HealthType.Lethal));
-    Assert.assertEquals(2, naturalSoak.getSoak(HealthType.Bashing));
+    Assert.assertEquals(new Integer(1), naturalSoak.getSoak(HealthType.Lethal));
+    Assert.assertEquals(new Integer(2), naturalSoak.getSoak(HealthType.Bashing));
   }
 }

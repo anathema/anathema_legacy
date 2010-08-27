@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.magic.charms.duration;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.IStringResourceHandler;
 
 public class UntilEventDuration extends ReflectionEqualsObject implements IDuration {
 
@@ -21,7 +21,7 @@ public class UntilEventDuration extends ReflectionEqualsObject implements IDurat
     visitor.acceptUntilEventDuration(this);
   }
 
-  public String getText(IResources resources) {
+  public String getText(IStringResourceHandler resources) {
     final String eventText = resources.getString("Charm.Event." + getEvent()); //$NON-NLS-1$
     return resources.getString("Charm.UntilEvent", new Object[] { eventText }); //$NON-NLS-1$
   }

@@ -1,0 +1,61 @@
+<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="LookshyRealmSubtype">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="template/DbAbilityGroup2nd.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="template/DbEssence.template" />
+    <traitCollection uses="template/DefaultDbTraitCollection2nd.template"/>
+    <magicTemplate uses="template/DbMagic2nd.template"/>
+    <presentation uses="template/DbPresentation.template"/>
+     <additionalRules>
+    	<forbiddenBackgrounds>
+     		<backgroundReference id="Cult" />
+     		<backgroundReference id="Contacts" />
+     		<backgroundReference id="Followers" />
+     		<backgroundReference id="Influence" />
+     		<backgroundReference id="Henchmen" />
+     	</forbiddenBackgrounds>
+    	<additionalPools>
+    		<multilearnablePool>
+    			<backgroundReference id="Breeding"/>    			
+    			<personalPool multiplier="1"/>
+    			<peripheralPool>
+    				<fixedValue value="0" pool="0"/>
+    				<fixedValue value="1" pool="2"/>
+    				<fixedValue value="2" pool="3"/>
+    				<fixedValue value="3" pool="5"/>
+    				<fixedValue value="4" pool="7"/>
+    				<fixedValue value="5" pool="9"/>
+    				<fixedValue value="6" pool="11"/>
+    			</peripheralPool>
+    		</multilearnablePool>
+    	</additionalPools>
+    	<additionalCost>
+    		<costModifier>
+    			<backgroundReference id="Breeding"/>
+    			<dotCostModification thresholdLevel="2" multiplier="1"/>
+    		</costModifier>
+    	</additionalCost>    	
+    </additionalRules>
+    <additionalTemplates>
+      <template id="Db.VirtueFlaw.Template" />
+    </additionalTemplates>
+    <healthTemplate>
+      <toughnessControllingTrait type="Resistance"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="template/DbBonusPointCosts.template" />
+    <creationPoints>
+      <attributeDots primary="7" secondary="6" tertiary="4" />
+      <abilityDots general="22" favored="13" favoredPicks="3" />
+      <backgroundDots count="13" />
+      <virtueDots count="5" />
+      <bonusPoints count="15" />
+      <charmPicks favored="4" general="3" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/DbExperiencePoints.template" />
+  </experience>
+</exaltedCharacterTemplate>

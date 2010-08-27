@@ -19,14 +19,22 @@ public class AccuracyModification implements IStatsModification {
    */
   public int getModifiedValue(int input, WeaponStatsType type) {
     boolean isSecondEdition = ruleSet.getEdition() == ExaltedEdition.SecondEdition;
-    if (material == MagicalMaterial.Soulsteel && !type.isRanged()) {
-      return isSecondEdition ? input + 2 : input + 1;
+    if (material == MagicalMaterial.Soulsteel) {
+      if (isSecondEdition || type.isRanged()) {
+        return input + 2;
+      } else {
+        return input + 1;
+      }
     }
     if (material == MagicalMaterial.Orichalcum) {
       return input + 1;
     }
     if (material == MagicalMaterial.Moonsilver) {
-      return type.isRanged() ? input + 1 : input + 2;
+      if (type.isRanged()) {
+        return input + 1;
+      } else {
+        return input + 2;
+      }
     }
     if (material == MagicalMaterial.Starmetal && isSecondEdition) {
       return input + 1;

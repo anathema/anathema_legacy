@@ -51,7 +51,11 @@ public class ShowCharmEntryAction extends SmartAction {
         return;
       }
       final ICharmEntryData entryData = model.getCharmData();
+      // RLR Best Guess is CharmType
+      // Maybe CharacterType
+      //CharmCache.getInstance().addCharm(model.getCharmTypeModel().getCharmType(),entryData.getEdition().getDefaultRuleset(), (ICharm) entryData.getCoreData());
       CharmCache.getInstance().addCharm(entryData);
+
       new CharmIO().writeCharmInternal(entryData);
       final ICharmData coreData = entryData.getCoreData();
       CharmEntryPropertiesPersister charmEntryPropertiesPersister = new CharmEntryPropertiesPersister();

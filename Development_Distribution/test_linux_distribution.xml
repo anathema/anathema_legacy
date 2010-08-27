@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Linux distribution" default="Distribute">
+
+	<import file="linux_distribution_targets.xml" />
+
+	<property file="version.properties" />
+	<property file="directories.properties" />
+
+	<target name="Distribute" depends="Clean, Build Bootloader, Build Plugins, Copy Text, Copy Linux Launcher, Build Test Distribution" />
+</project>

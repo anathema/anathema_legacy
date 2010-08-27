@@ -9,6 +9,7 @@ import net.disy.commons.swing.filechooser.chooser.IFileChooser;
 public class DefaultFileChooserProvider implements IFileChooserProvider {
   private final IFileChooser fileChooser = new DefaultFileChooser();
 
+  @Override
   public IFileChooser getFileChooser() {
     return fileChooser;
   }

@@ -100,7 +100,10 @@
     <charmAttribute attribute="Mortal"/>
     <source source="SecondEdition" page="187"/>
   </genericCharm>
+  
+
   <!-- Solar Archery -->
+
   <charm id="Solar.ThereIsNoWind" exalt="Solar" group="Archery">
     <prerequisite>
       <essence id="Essence" value="1"/>
@@ -903,7 +906,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple">
-      <special speed="6" turntype="LongTick" defense="-1"/>
+      <special turntype="LongTick"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
@@ -924,7 +927,7 @@
     </cost>
     <duration  amount="1" unit="week"/>
     <charmtype type="Simple">
-      <special speed="1" turntype="DramaticAction" defense="-1"/>
+      <special turntype="DramaticAction"/>
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
@@ -1797,7 +1800,7 @@
     <charmtype type="Permanent"/>
     <source source="SecondEdition" page="210"/>
   </charm>
-  <charm id="Solar.Food-GatheringExcercise" exalt="Solar" group="Survival">
+  <charm id="Solar.Food-GatheringExercise" exalt="Solar" group="Survival">
     <prerequisite>
       <essence id="Essence" value="2"/>
       <trait id="Survival" value="5"/>
@@ -2287,7 +2290,7 @@
   
   <charm id="Solar.Soul-EnlighteningBeneficence" exalt="Solar" group="Lore">
     <prerequisite>
-      <essence id="Essence" value="3"/>
+      <essence  value="3"/>
       <trait id="Lore" value="4"/>
       <charmReference id="Solar.Essence-LendingMethod"/>
     </prerequisite>
@@ -2299,7 +2302,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple">
-      <special speed="6" turntype="DramaticAction" defense="-1"/>
+      <special  turntype="DramaticAction" />
     </charmtype>
     <charmAttribute attribute="Enlightening" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
@@ -2333,15 +2336,14 @@
     <prerequisite>
       <essence id="Essence" value="3"/>
       <trait id="Lore" value="5"/>
-      <charmAttributeRequirement attribute="ExcellencyLore" count="1"/>
     </prerequisite>
     <cost>
       
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <charmAttribute attribute="Obvious" visualize="true"/>
-    <charmAttribute attribute="Mandate" visualize="true"/>
+    <charmAttribute attribute="Mirror" visualize="true"/>
+    <charmAttribute attribute="Native" visualize="true"/>
     <source source="SecondEdition" page="218"/>
   </charm>
   <charm id="Solar.TouchBlissfulRelease" exalt="Solar" group="Medicine">
@@ -2384,7 +2386,6 @@
     <prerequisite>
       <essence id="Essence" value="2"/>
       <trait id="Medicine" value="3"/>
-      <charmAttributeRequirement attribute="ExcellencyMedicine" count="1"/>
     </prerequisite>
     <cost>
       
@@ -2513,13 +2514,25 @@
     <source source="SecondEdition" page="220"/>
   </charm>
 
-  <charm id="Solar.Wonder-ForgingGenius" exalt="Solar" group="Craft">
+  <charm id="Solar.Wonder-ForgingGenius4" exalt="Solar" group="Craft">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Craft" value="5"/>
+      <charmReference id="Solar.Crack-MendingTechnique"/>
+      <charmReference id="Solar.CraftsmanNeedsNoTools"/>
+    </prerequisite>
+    <cost>
+      
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="OadenolsCodex" page="29"/>
+  </charm>
+   <charm id="Solar.Wonder-ForgingGenius5" exalt="Solar" group="Craft">
     <prerequisite>
       <essence id="Essence" value="5"/>
       <trait id="Craft" value="5"/>
-      <charmReference id="Solar.InfiniteMastery.Craft"/>
-      <charmReference id="Solar.Crack-MendingTechnique"/>
-      <charmReference id="Solar.CraftsmanNeedsNoTools"/>
+      <charmReference id="Solar.Wonder-ForgingGenius4"/>
     </prerequisite>
     <cost>
       
@@ -3024,15 +3037,11 @@
     </prerequisite>
     <cost>
       
-        <essence cost="10"/>
-        <willpower cost="1"/>
+        <essence cost="" text="(+3m, 1wp)"/>
       
     </cost>
-    <duration amount="1" unit="hour"/>
-    <charmtype type="Simple">
-      <special speed="6" turntype="LongTick" defense="-1"/>
-    </charmtype>
-    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent" />
     <source source="SecondEdition" page="228"/>
   </charm>
   <charm id="Solar.FlawlessPickpocketingTechnique" exalt="Solar" group="Larceny">

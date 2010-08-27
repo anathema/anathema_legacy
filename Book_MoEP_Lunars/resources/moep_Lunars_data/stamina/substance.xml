@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    substance.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Substance Charms -->
+     <charm id="Lunar.ScorpionAndToadAbsolution" exalt="Lunar" group="Substance">
+          <prerequisite>
+               <trait id="Stamina" value="3" />
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyStamina" count="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.ScorpionAndToadAssumption" exalt="Lunar" group="Substance">
+          <prerequisite>
+               <trait id="Stamina" value="3" />
+               <essence value="3" />
+               <charmReference id="Lunar.ScorpionAndToadAbsolution" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+               <special speed="6" turntype="DramaticAction" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.ScorpionAndToadImmunity" exalt="Lunar" group="Substance">
+          <prerequisite>
+               <trait id="Stamina" value="4" />
+               <essence value="3" />
+               <charmReference id="Lunar.ScorpionAndToadAssumption" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.ScorpionAndToadMastery" exalt="Lunar" group="Substance">
+          <prerequisite>
+               <trait id="Stamina" value="4" />
+               <essence value="3" />
+               <charmReference id="Lunar.ScorpionAndToadAssumption" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" text="+ Resource value of poison in motes" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Poision" visualize="true" />
+          <charmAttribute attribute="Sickness" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.AdderFangMethod" exalt="Lunar" group="Substance">
+          <!-- Coding:  Can buy additional alternative versions for - 1 for 4xp OR 1 for 2bp
+        Versions:  Luna's Spite (default), Chosen's Bane, Closing Eye Toxin, Night's Lure,
+        and Still Water Infusion.  -->
+          <prerequisite>
+               <trait id="Stamina" value="5" />
+               <essence value="4" />
+               <charmReference id="Lunar.ScorpionAndToadMastery" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Gift" visualize="true" />
+          <charmAttribute attribute="Poison" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.CobraEyeMethod" exalt="Lunar" group="Substance">
+          <!-- Coding:  Can buy additional alternative versions for - 1 for 4xp OR 1 for 2bp
+        Versions:  Burning Tar, Foe-Softening Discharge, Soporific Nectar, Steel-Eater, and
+        whatever other options the character and StoryTeller come up with.  -->
+          <prerequisite>
+               <trait id="Stamina" value="5" />
+               <essence value="4" />
+               <charmReference id="Lunar.ScorpionAndToadMastery" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+</charmlist>

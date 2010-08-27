@@ -16,5 +16,9 @@ public interface IWeaponTagsModel {
 
   public IWeaponTag[] getSelectedTags();
 
-  public boolean isRangedWeaponTagSelected();
+  public boolean isRangedTypeTagSelected();
+  
+  public boolean isThrownTypeTagSelected();
+  
+  public boolean isThrownWeaponTagSelected();
 }

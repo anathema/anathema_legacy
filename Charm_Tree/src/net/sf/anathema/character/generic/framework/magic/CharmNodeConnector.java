@@ -5,7 +5,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
-import net.sf.anathema.platform.svgtree.graph.nodes.IIdentifiedRegularNode;
+import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 
 public class CharmNodeConnector {
 

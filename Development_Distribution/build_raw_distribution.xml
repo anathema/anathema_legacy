@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<project name="Build raw distribution" default="Distribute">
+<project name="Build raw distribution" default="Distribute raw ZIP">
 
 	<import file="common_distribution_targets.xml" />
 
 	<property file="version.properties" />
 	<property file="directories.properties" />
 
-	<target name="Distribute" depends="Build Bootloader, Build Plugins, Copy Text, Copy Linux Launcher, Build ZIP" />
-
-	<target name="Build ZIP">
-		<zip destfile="anathema_v${version.major}.${version.minor}.zip">
-			<fileset dir="${build.dir}" includes="anathema.jar" />
-			<fileset dir="${files.dir}" includes="**/*" />
-			<zipfileset dir="${plugins.dir}/" prefix="plugins" includes="*" />
-			<zipfileset dir="${libraries.dir}" prefix="lib" includes="*" />
-		</zip>
-	</target>
-
-	<target name="Copy Linux Launcher">
-		<copy todir="${files.dir}" file="Linux/anathema.sh" />
-	</target>
+	<target name="Distribute raw ZIP" depends="Build Bootloader, Build Plugins, Copy Text, Build ZIP" />
 </project>

@@ -10,9 +10,10 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class ProxyArmourStats implements IArmourStats {
+public class ProxyArmourStats implements IArmourStats, IProxy<IArmourStats> {
 
   private final IArmourStats delegate;
   private final MagicalMaterial material;
@@ -22,6 +23,10 @@ public class ProxyArmourStats implements IArmourStats {
     this.delegate = stats;
     this.material = material;
     this.ruleSet = ruleSet;
+  }
+  
+  public IArmourStats getUnderlying() {
+    return this.delegate;
   }
 
   public Integer getFatigue() {

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../../charms.dtd">
+<!--
+
+    medicine.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Medicine -->
+     <charm id="Solar.AHoodOnDeath" exalt="Solar" group="Medicine">
+          <prerequisite>
+               <trait id="Medicine" value="7" />
+               <essence value="7" />
+               <charmReference id="Solar.Contagion-CuringTouch" />
+               <charmReference id="Solar.Ailment-RectifyingMethod" />
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Solar.MiracleWorkersRedemption" exalt="Solar" group="Medicine">
+          <prerequisite>
+               <trait id="Medicine" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.Wholeness-RestoringMeditation" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Reactor" visualize="true" />
+          <source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.ScienceOfMutation" exalt="Solar" group="Medicine">
+          <prerequisite>
+               <trait id="Medicine" value="7" />
+               <essence value="7" />
+               <charmReference id="Solar.Wholeness-RestoringMeditation" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" text="per mutation point" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+               <special speed="6" turntype="DramaticAction" defense="-0" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+</charmlist>

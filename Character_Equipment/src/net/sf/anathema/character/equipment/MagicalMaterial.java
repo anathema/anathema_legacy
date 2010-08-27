@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.type.ICharacterTypeVisitor;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public enum MagicalMaterial implements IIdentificate {
-  Orichalcum, Jade, Moonsilver, Starmetal, Soulsteel;
+  Orichalcum, Jade, Moonsilver, Starmetal, Soulsteel, Adamant;
 
   public String getId() {
     return name();

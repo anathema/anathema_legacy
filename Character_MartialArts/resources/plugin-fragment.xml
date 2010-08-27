@@ -69,70 +69,13 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/Charms_MartialArts_WoodDragon.xml"/>
 	  </parameter>
- 	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="SecondEdition"/>
-		<parameter id="path" value="data/ArtOfForcefulDeclaration.xml"/>
-	  </parameter>
-	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="SecondEdition"/>
-		<parameter id="path" value="data/ArtOfMeditativeDiscussion.xml"/>
-	  </parameter>
-	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="SecondEdition"/>
-		<parameter id="path" value="data/ArtOfRelentlessPersuasion.xml"/>
-	  </parameter>
-	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="SecondEdition"/>
-		<parameter id="path" value="data/ArtOfVictoriousConcession.xml"/>
-	  </parameter>
-	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="SecondEdition"/>
-		<parameter id="path" value="data/GoldenExhalation.xml"/>
-	  </parameter>
-	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="SecondEdition"/>
-		<parameter id="path" value="data/LightningHoof.xml"/>
-	  </parameter>
-	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="SecondEdition"/>
-		<parameter id="path" value="data/PathOfTheArbiter.xml"/>
-	  </parameter>
-	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="SecondEdition"/>
-		<parameter id="path" value="data/TerribleAscentDrivenBeast.xml"/>
-	  </parameter>
-<!-- 	  
-	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="SecondEdition"/>
-		<parameter id="path" value="data/WhiteVeil.xml"/>
-	  </parameter>
-	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="SecondEdition"/>
-		<parameter id="path" value="data/DreamingPearlCourtesan.xml"/>
-	  </parameter> -->	 	
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="MartialArtsResources">
 		<!--<parameter id="bundle" value="Charms_MartialArts"/>-->
 		<parameter id="bundle" value="MartialArts"/>
 		<parameter id="bundle" value="Charms_MartialArts_Pages"/>
 		<parameter id="bundle" value="Charms_MartialArts_SecondEdition"/>
-		<parameter id="bundle" value="Charms_ScrolloftheMonk"/>
-		<parameter id="bundle" value="ScrolloftheMonk"/>
-		<parameter id="bundle" value="Pages_ScrolloftheMonk"/>
 		<parameter id="bundle" value="Charms_ElementalDragonStyles"/>
-		<parameter id="bundle" value="Charms_ImperfectLotus"/>
-		<parameter id="bundle" value="Pages_ImperfectLotus"/>
-		<parameter id="bundle" value="ImperfectLotus"/>
 		<parameter id="bundle" value="Pages_ElementalDragonStyles"/>
 	</extension>
 </plugin-fragment>

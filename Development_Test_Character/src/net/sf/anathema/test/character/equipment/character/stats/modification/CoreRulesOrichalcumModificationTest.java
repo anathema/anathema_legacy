@@ -13,6 +13,7 @@ public class CoreRulesOrichalcumModificationTest extends AbstractFirstEditionOri
     assertSpeedModification(2, 1, WeaponStatsType.Melee);
     assertSpeedModification(1, 1, WeaponStatsType.Bow);
     assertSpeedModification(1, 1, WeaponStatsType.Thrown);
+    assertSpeedModification(1, 1, WeaponStatsType.Thrown_BowBonuses);
     assertSpeedModification(1, 1, WeaponStatsType.Flame);
   }
 

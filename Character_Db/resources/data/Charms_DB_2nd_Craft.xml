@@ -11,7 +11,7 @@
    <essence cost="2"/>
   
  </cost>
- <duration amount="1" unit="hour"/>
+ <duration duration="Indefinite" />
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
@@ -25,11 +25,15 @@
  </prerequisite>
  <cost>
   
-   <essence cost="1" text="per cubic foot"/>
+   <essence cost="1" text="per cubic yard"/>
   
  </cost>
  <duration duration="Instant"/>
- <charmtype type="Simple"/>
+ <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction"/>
+ </charmtype>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Shaping" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -63,8 +67,12 @@
   
  </cost>
  <duration amount="1" unit="minute"/>
- <charmtype type="Simple"/>
+ <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction"/>
+ </charmtype>
   <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <charmAttribute attribute="Leader" visualize="true"/>
+  <charmAttribute attribute="War" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -81,6 +89,9 @@
  </cost>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
+  <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <charmAttribute attribute="Shaping" visualize="true"/>
+  <charmAttribute attribute="Touch" visualize="true"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 
@@ -91,14 +102,9 @@
   <charmReference id="Dragon-Blooded.CharmLesserUnmaking"/>
  </prerequisite>
  <cost>
-  
-   <essence cost="10"/>
-   <willpower cost="1"/>
-  
  </cost>
- <duration duration="Instant"/>
- <charmtype type="Simple"/>
-   <charmAttribute attribute="Combo-Basic" visualize="true"/>
+ <duration duration="Permanent"/>
+ <charmtype type="Permanent"/>
   <source source="DragonBlooded2nd"/>
 </charm>
 

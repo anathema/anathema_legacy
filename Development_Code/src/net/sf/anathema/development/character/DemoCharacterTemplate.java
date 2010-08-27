@@ -29,18 +29,22 @@ public class DemoCharacterTemplate implements ICharacterTemplate {
     this.templateType = new TemplateType(characterType);
   }
 
+  @Override
   public IGroupedTraitType[] getAbilityGroups() {
     return null;
   }
 
+  @Override
   public IAdditionalRules getAdditionalRules() {
     return null;
   }
 
+  @Override
   public IAdditionalTemplate[] getAdditionalTemplates() {
     return null;
   }
 
+  @Override
   public IGroupedTraitType[] getAttributeGroups() {
     return new IGroupedTraitType[] {
         new GroupedTraitType(AttributeType.Strength, AttributeGroupType.Physical, null),
@@ -54,46 +58,57 @@ public class DemoCharacterTemplate implements ICharacterTemplate {
         new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental, null) };
   }
 
+  @Override
   public IBonusPointCosts getBonusPointCosts() {
     return null;
   }
 
+  @Override
   public ICasteCollection getCasteCollection() {
     return null;
   }
 
+  @Override
   public ICreationPoints getCreationPoints() {
     return null;
   }
 
+  @Override
   public IEssenceTemplate getEssenceTemplate() {
     return null;
   }
 
+  @Override
   public IExperiencePointCosts getExperienceCost() {
     return null;
   }
 
+  @Override
   public IMagicTemplate getMagicTemplate() {
     return null;
   }
 
+  @Override
   public ITraitType getToughnessControllingTraitType() {
     return null;
   }
 
+  @Override
   public ITraitTemplateCollection getTraitTemplateCollection() {
     return null;
   }
 
+  @Override
   public IExaltedEdition getEdition() {
     return null;
   }
 
+  @Override
   public IPresentationProperties getPresentationProperties() {
     return null;
   }
 
+  @Override
   public ITemplateType getTemplateType() {
     return templateType;
   }

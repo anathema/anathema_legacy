@@ -21,6 +21,7 @@ public class AnathemaGisView implements IAnathemaGisView, IView {
   private final JPanel content = new JPanel(new BorderLayout());
   private IGisView gisView;
 
+  @Override
   public IGisView initGisView(IMapModel mapModel) {
     gisView = new GisView(mapModel, new NullMapViewConfiguration(), null);
     content.add(createDisplayToolbar(), BorderLayout.NORTH);
@@ -34,10 +35,12 @@ public class AnathemaGisView implements IAnathemaGisView, IView {
     return displayToolbar;
   }
 
+  @Override
   public JComponent getComponent() {
     return content;
   }
 
+  @Override
   public ICoordinateView addCoordinateView(NumberFormat numberFormat) {
     CoordinateView coordView = new CoordinateView(numberFormat);
     content.add(coordView.getComponent(), BorderLayout.SOUTH);

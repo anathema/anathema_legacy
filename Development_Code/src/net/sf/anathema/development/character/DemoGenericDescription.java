@@ -16,18 +16,22 @@ public class DemoGenericDescription implements IGenericDescription {
     return appearance;
   }
 
+  @Override
   public String getCharacterization() {
     return characterization;
   }
 
+  @Override
   public String getName() {
     return name;
   }
 
+  @Override
   public String getPeriphrase() {
     return periphrase;
   }
 
+  @Override
   public String getPhysicalAppearance() {
     return appearance;
   }
@@ -48,6 +52,7 @@ public class DemoGenericDescription implements IGenericDescription {
     this.periphrase = periphrase;
   }
 
+  @Override
   public String getPlayer() {
     return player;
   }
@@ -60,10 +65,12 @@ public class DemoGenericDescription implements IGenericDescription {
     this.concept = concept;
   }
 
+  @Override
   public String getNotes() {
     throw new NotYetImplementedException();
   }
 
+  @Override
   public String getConceptText() {
     return concept;
   }

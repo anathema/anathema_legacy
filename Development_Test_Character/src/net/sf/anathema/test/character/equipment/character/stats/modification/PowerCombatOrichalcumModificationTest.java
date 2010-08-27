@@ -18,6 +18,7 @@ public class PowerCombatOrichalcumModificationTest extends AbstractFirstEditionO
     assertRateModification(2, 1, WeaponStatsType.Melee);
     assertRateModification(1, 1, WeaponStatsType.Bow);
     assertRateModification(1, 1, WeaponStatsType.Thrown);
+    assertRateModification(1, 1, WeaponStatsType.Thrown_BowBonuses);
     assertRateModification(1, 1, WeaponStatsType.Flame);
   }
 

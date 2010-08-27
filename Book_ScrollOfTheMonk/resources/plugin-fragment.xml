@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.scrollofthemonk" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="scrollOfTheMonk" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="scrollOfTheMonkResources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="scrollOfTheMonkCharms">
+          <!-- Terrestrial Level Martial Arts -->
+          <!-- The following style is included with Anathema, an add-on is unnecessary. -->
+          <!--parameter id="list">
+                        <parameter id="type" value="MartialArts"/>
+                        <parameter id="rules" value="SecondEdition"/>
+                        <parameter id="path" value="scrollMonk_data/terrestrial/TerrestrialHero.xml"/>
+          </parameter-->
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/terrestrial/FallingBlossom.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/terrestrial/FirstPulse.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/terrestrial/GoldenJanissary.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/terrestrial/IllLilly.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/terrestrial/JadeMountain.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/terrestrial/NightBreeze.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/terrestrial/OrgiasticFugitive.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/terrestrial/SeafaringHero.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/terrestrial/WhiteVeil.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/terrestrial/CrimsonPentacleBlade.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/terrestrial/EvenBlade.xml" />
+          </parameter>
+          <!-- Coding:  It is not currently possible to do the following charm.
+               It's prerequisites are based upon 'keywords'. -->
+          <!--parameter id="list">
+                        <parameter id="type" value="MartialArts"/>
+                        <parameter id="rules" value="SecondEdition"/>
+                        <parameter id="path" value="scrollMonk_data/terrestrial/FivefoldShadowHand.xml"/>
+          </parameter-->
+          <!-- Celestial Level Martial Arts -->
+          <!-- The following charm is included with Anathema, an add-on is unnecessary. -->
+          <!--parameter id="list">
+                        <parameter id="type" value="MartialArts"/>
+                        <parameter id="rules" value="SecondEdition"/>
+                        <parameter id="path" value="scrollMonk_data/celestial/SolarHero.xml"/>
+          </parameter-->
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/celestial/CelestialMonkey.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/celestial/DreamingPearlCourtesan.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/celestial/EbonShadow.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/celestial/LaughingWounds.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/celestial/Mantis.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/celestial/RighteousDevil.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/celestial/SilverVoicedNightingale.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/celestial/Tiger.xml" />
+          </parameter>
+          <!-- Sidereal Level Martial Arts-->
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/sidereal/BorderOfKaleidoscopicLogic.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/sidereal/CharcoalMarchOfSpiders.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/sidereal/CitrinePoxesOfContagion.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/sidereal/ObsidianShardsOfInfinity.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/sidereal/PrismaticArrangementOfCreation.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/sidereal/QuicksilverHandOfDreams.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scrollMonk_data/sidereal/ScarletPatternedBattlefield.xml" />
+          </parameter>
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="scrollOfTheMonkResources">
+          <parameter id="bundle" value="ScrolloftheMonk" />
+          <parameter id="bundle" value="Pages_ScrolloftheMonk" />
+          <parameter id="bundle" value="Charms_ScrolloftheMonk" />
+     </extension>
+</plugin-fragment>

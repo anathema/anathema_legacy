@@ -50,5 +50,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Craft"/>
 	<classpathentry kind="lib" path="/Thirdparty/Database/db4o-6.0-java5.jar" sourcepath="/Thirdparty/Database/db4o-6.0-src.zip"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Platform_GraphLayout"/>
+	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-ext.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

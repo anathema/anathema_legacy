@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.moepsidereals" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="moepSidereals" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="moepSiderealsResources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="moepSiderealsCharms">
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/excellencies.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/battles/archery.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/battles/athletics.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/battles/melee.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/battles/presence.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/battles/war.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/endings/awareness.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/endings/bureaucracy.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/endings/integrity.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/endings/martialarts.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/endings/medicine.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/journeys/resistance.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/journeys/ride.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/journeys/sail.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/journeys/survival.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/journeys/thrown.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/secrets/investigation.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/secrets/larceny.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/secrets/lore.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/secrets/occult.xml" />
+          </parameter>
+          <!-- Good -->
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/secrets/stealth.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/serenity/craft.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/serenity/dodge.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/serenity/linguistics.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/serenity/performance.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Sidereal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Sidereals_data/serenity/socialize.xml" />
+          </parameter>
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="moepSiderealsResources">
+          <parameter id="bundle" value="moepSidereals" />
+          <parameter id="bundle" value="Pages_moepSidereals" />
+          <parameter id="bundle" value="Charms_moepSidereals" />
+     </extension>
+</plugin-fragment>
