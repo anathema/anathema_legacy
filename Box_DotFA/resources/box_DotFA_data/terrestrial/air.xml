@@ -28,7 +28,7 @@
           <prerequisite>
                <trait id="Linguistics" value="5" />
                <!-- TODO:  Targeting Background? ->
-               <trait id="Breeding" value="3" /-->
+               <trait id="Breeding" value="3" /--
                <essence value="6" />
                <charmReference id="Dragon-Blooded.SpeechWithoutWords" />
                <charmReference id="Dragon-Blooded.WithOneMind" />

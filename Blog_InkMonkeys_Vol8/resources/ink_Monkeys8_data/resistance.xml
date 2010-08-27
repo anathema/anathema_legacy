@@ -26,8 +26,8 @@
      <!-- Resistance -->
      <charm id="Solar.InvincibleEssenceReinforcement" exalt="Solar" group="Resistance">
           <prerequisite>
-               <trait id="Resistance" value="4" />
-               <essence value="3" />
+               <trait id="Resistance" value="3" />
+               <essence value="2" />
           </prerequisite>
           <cost>
                <essence cost="-" />
