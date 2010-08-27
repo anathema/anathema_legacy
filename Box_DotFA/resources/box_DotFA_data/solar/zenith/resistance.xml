@@ -82,9 +82,7 @@
 			<essence value="6" />
 			<charmReference id="Solar.Ox-BodyTechnique" />
 		</prerequisite>
-		<cost>
-			<essence />
-		</cost>
+		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Native" visualize="true" />

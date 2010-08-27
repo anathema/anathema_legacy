@@ -1800,7 +1800,7 @@
     <charmtype type="Permanent"/>
     <source source="SecondEdition" page="210"/>
   </charm>
-  <charm id="Solar.Food-GatheringExcercise" exalt="Solar" group="Survival">
+  <charm id="Solar.Food-GatheringExercise" exalt="Solar" group="Survival">
     <prerequisite>
       <essence id="Essence" value="2"/>
       <trait id="Survival" value="5"/>

@@ -57,7 +57,7 @@
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="Shaping" visualize="true" />
           <source source="LordsOfCreation" />
-		<source="ScrollErrata" />
+		<source source="ScrollErrata" />
      </charm>
      <charm id="Solar.CatchingTheSunsGlance" exalt="Solar" group="Performance">
           <prerequisite>

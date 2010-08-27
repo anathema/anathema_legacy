@@ -31,7 +31,7 @@
                <charmReference id="Solar.Ghost-EatingTechnique" />
           </prerequisite>
           <cost>
-               <essence cost="" text= (3m, 1wp, or 3m, 1wp, 1 Limit)" />
+               <essence cost="" text="(3m, 1wp, or 3m, 1wp, 1 Limit)" />
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
@@ -59,7 +59,7 @@
           <prerequisite>
                <trait id="Occult" value="7" />
                <essence value="7" />
-               <charmReference id="Solar.All-EncompassingSorcceror'sSight" />
+               <charmReference id="Solar.All-EncompassingSorcerer'sSight" />
                <charmReference id="Solar.SolarCircleSorcery" />
           </prerequisite>
           <cost>

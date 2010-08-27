@@ -44,7 +44,7 @@
           <prerequisite>
                <trait id="Medicine" value="5" />
                <essence value="5" />
-               <charmReference id="Solar.WholenessRestoringMeditation" />
+               <charmReference id="Solar.Wholeness-RestoringMeditation" />
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
@@ -70,5 +70,5 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Stackable" visualize="true" />
           <source source="LordsOfCreation" />
-     </charm-->
+     </charm>
 </charmlist>

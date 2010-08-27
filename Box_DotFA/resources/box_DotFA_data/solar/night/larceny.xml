@@ -58,7 +58,7 @@
           <source source="LordsOfCreation" />
 			<source source="ScrollErrata" />
      </charm>
-	<!charm id="Solar.KingOfThievesSpirit" exalt="Solar" group="Larceny">
+	<charm id="Solar.KingOfThievesSpirit" exalt="Solar" group="Larceny">
 		<prerequisite>
 			<trait id="Larceny" value="5" />
 			<essence value="4" />

@@ -28,7 +28,7 @@
           <prerequisite>
                <trait id="Investigation" value="4" />
                <essence value="4" />
-               <charmReference id="Solar.KnowTheSoul'sPrice" />
+               <charmReference id="Solar.KnowSoul'sPrice" />
           </prerequisite>
           <cost>
                <essence cost="4" />

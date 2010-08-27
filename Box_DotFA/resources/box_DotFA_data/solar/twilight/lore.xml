@@ -28,7 +28,7 @@
           <prerequisite>
                <trait id="Lore" value="7" />
                <essence value="7" />
-               <charmReference id="Solar.WyldCauldronTechnology" />
+               <charmReference id="Solar.WyldCauldronTechnique" />
           </prerequisite>
           <cost>
                <essence cost="30" />
@@ -64,7 +64,7 @@
           <cost>
                <essence cost="20" />
                <experience cost="1" />
-          <cost/>
+          </cost>
           <duration duration="Instant" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
@@ -81,7 +81,7 @@
           </prerequisite>
           <cost>
                <essence cost="5" />
-          <cost/>
+          </cost>
           <duration duration="Indefinite" />
           <charmtype type="Simple">
                <special speed="3" turntype="DramaticAction" defense="-0" />

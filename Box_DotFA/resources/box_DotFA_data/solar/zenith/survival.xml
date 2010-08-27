@@ -43,7 +43,7 @@
           <prerequisite>
                <trait id="Survival" value="5" />
                <essence value="5" />
-               <charmReference id="Solar.FoodGatheringExercise" />
+               <charmReference id="Solar.Food-GatheringExercise" />
                <charmReference id="Solar.Hardship-SurvivingMendicantSpirit" />
           </prerequisite>
           <cost>
