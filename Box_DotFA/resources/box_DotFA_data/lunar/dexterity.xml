@@ -98,8 +98,10 @@
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Counterattack" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+			<charmAttribute attribute="Shaping" visualize="true" />
           <charmAttribute attribute="Wyld" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.UnhesitantScorpionLash" exalt="Lunar" group="SpeedAndExtraAction">
           <prerequisite>

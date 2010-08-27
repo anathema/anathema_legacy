@@ -89,7 +89,7 @@
           </prerequisite>
           <cost>
                <essence cost="12" />
-               <willpower cost="2" />
+               <willpower cost="1" />
           </cost>
           <duration amount="1" unit="scene" />
           <charmtype type="Simple">

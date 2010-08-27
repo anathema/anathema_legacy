@@ -24,11 +24,11 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Awareness -->
-     <!--charm id="Solar.FallingSunEyes" exalt="Solar" group="Awareness">
+     <charm id="Solar.FallingSunEyes" exalt="Solar" group="Awareness">
           <prerequisite>
                <trait id="Awareness" value="5" />
                <essence value="5" />
-			<!- TODO:  Solar.EyesOfTheUnconqueredSun does not exist ->
+				<charmReference id="Solar.EyeUnconqueredSun" />
           </prerequisite>
           <cost>
                <essence cost="3" />
@@ -45,7 +45,7 @@
 		<charmAttribute attribute="Touch" visualize="true" />
           <source source="LordsOfCreation" />
 			<source source="ScrollErrata" />
-     </charm-->
+     </charm>
      <charm id="Solar.EverWatchfulSentinelDedication" exalt="Solar" group="Awareness">
           <prerequisite>
                <trait id="Awareness" value="5" />

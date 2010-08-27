@@ -68,7 +68,7 @@
      <charm id="Lunar.NativeSonsGrace" exalt="Lunar" group="Territory">
           <prerequisite>
                <trait id="Stamina" value="5" />
-               <essence value="5" />
+               <essence value="4" />
                <charmReference id="Lunar.FrenziedBearFortification" />
                <charmAttributeRequirement attribute="ExcellencyStamina" count="1" />
           </prerequisite>
@@ -83,25 +83,20 @@
           <charmAttribute attribute="Fury-OK" visualize="true" />
           <source source="LordsOfCreation" />
      </charm>
-     <charm id="Lunar.ImmovableDefenderOfTheLand" exalt="Lunar" group="Territory">
+     <charm id="Lunar.IndestructibleRecursiveDesign" exalt="Lunar" group="Territory">
           <prerequisite>
-          <trait id="Stamina" value="7" />
-          <essence value="7" />&#160; 
-          <selectiveCharmGroup threshold="1">
-               <charmReference id="Lunar.LunasFortitude" />
-               <charmReference id="Lunar.UnstoppableJuggernautIncarnation" />
-          </selectiveCharmGroup>
-          <charmReference id="Lunar.NativeSonsGrace" /></prerequisite>
+          <trait id="Stamina" value="4" />
+          <essence value="4" />
+          <charmReference id="Lunar.HideTougheningEssence" />
+		</prerequisite>
           <cost>
-               <essence cost="12" />
-               <willpower cost="1" />
+               <essence cost="8" />
           </cost>
-          <duration amount="1" unit="scene" />
+          <duration duration="Indefinite" />
           <charmtype type="Simple">
-               <special speed="7" defense="-1" />
+               <special speed="5" defense="-2" />
           </charmtype>
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Wyld" visualize="true" />
-          <source source="LordsOfCreation" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>
