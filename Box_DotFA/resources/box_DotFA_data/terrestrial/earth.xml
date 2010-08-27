@@ -89,13 +89,13 @@
                <trait id="Breeding" value="4" /-->
                <essence value="6" />
                <!--TODO:  Requires all 5 forms before acquiring this charm. -->
-				<!-- selectiveCharmGroup threshold="5">
+				<!--selectiveCharmGroup threshold="5">
 					<charmReference id="Dragon-Blooded.ElementProtectionForm.Fire" />
 					<charmReference id="Dragon-Blooded.ElementProtectionForm.Earth" />
 					<charmReference id="Dragon-Blooded.ElementProtectionForm.Air" />
 					<charmReference id="Dragon-Blooded.ElementProtectionForm.Water" />
 					<charmReference id="Dragon-Blooded.ElementProtectionForm.Wood" />
-				</selectiveCharmGroup -->
+				</selectiveCharmGroup-->
                <charmReference id="Dragon-Blooded.ElementProtectionForm" />
           </prerequisite>
           <cost>
@@ -117,7 +117,7 @@
                <essence value="7" />
                <!-- TODO:  Targeting Background? ->
                <trait id="Breeding" value="5" /-->
-               <charmReference id="Dragon-Blooded.DragonVortexAttack" />
+               <charmReference id="Dragon-Blooded.DragonVortexAttack5" />
           </prerequisite>
           <cost>
                <essence cost="50" />

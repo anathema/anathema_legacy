@@ -81,7 +81,13 @@
           <prerequisite>
                <trait id="Ride" value="5" />
                <essence value="5" />
-               <charmReference id="Dragon-Blooded.FiveDragonHorsemanPrana" />
+               <selectiveCharmGroup threshold="1">
+                   <charmReference id="Dragon-Blooded.FiveDragonHorsemanPranaAir" />
+                   <charmReference id="Dragon-Blooded.FiveDragonHorsemanPranaFire" />
+                   <charmReference id="Dragon-Blooded.FiveDragonHorsemanPranaEarth" />
+                   <charmReference id="Dragon-Blooded.FiveDragonHorsemanPranaWood" />
+                   <charmReference id="Dragon-Blooded.FiveDragonHorsemanPranaWater" />
+               </selectiveCharmGroup>
                <charmReference id="Dragon-Blooded.DanceJadeBridle" />
           </prerequisite>
           <cost>
