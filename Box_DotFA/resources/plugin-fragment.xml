@@ -174,6 +174,11 @@
                 <parameter id="list">
                         <parameter id="type" value="Lunar"/>
                         <parameter id="rules" value="SecondEdition"/>
+                        <parameter id="path" value="box_DotFA_data/lunar/knacks.xml"/>
+                </parameter>
+                <parameter id="list">
+                        <parameter id="type" value="Lunar"/>
+                        <parameter id="rules" value="SecondEdition"/>
                         <parameter id="path" value="box_DotFA_data/lunar/manipulation.xml"/>
                 </parameter>
                 <parameter id="list">
@@ -196,6 +201,18 @@
                         <parameter id="rules" value="SecondEdition"/>
                         <parameter id="path" value="box_DotFA_data/lunar/wits.xml"/>
                 </parameter-->
+				<!--
+					<parameter id="list">
+		               <parameter id="type" value="MartialArts" />
+		               <parameter id="rules" value="SecondEdition" />
+		               <parameter id="path" value="box_DotFA_data/sidereal/throneShadow.xml" />
+		          </parameter>
+				  <parameter id="list">
+		               <parameter id="type" value="MartialArts" />
+		               <parameter id="rules" value="SecondEdition" />
+		               <parameter id="path" value="box_DotFA_data/sidereal/misc.xml" />
+		          </parameter>
+			-->
                 
           <parameter id="list">
                <parameter id="type" value="Dragon-Blooded" />

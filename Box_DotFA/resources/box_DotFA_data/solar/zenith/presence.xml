@@ -90,8 +90,9 @@
 			<essence cost="10" />
 		</cost>
 		<duration duration="Instant" />
-		<charmtype type="Simple" />
-			<!-- TODO:  (One dramatic action) -->
+		<charmtype type="Simple">
+			<special turntype="DramaticAction" />
+		</charmtype>
 			<charmAttribute attribute="Combo-OK" visualize="true" />
 			<charmAttribute attribute="Emotion" visualize="true" />
 			<charmAttribute attribute="Obvious" visualize="true" />
