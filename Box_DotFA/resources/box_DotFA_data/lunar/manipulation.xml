@@ -35,6 +35,7 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Wyld" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.FalseBurrowGift" exalt="Lunar" group="Belief">
           <prerequisite>
@@ -74,12 +75,13 @@
      </charm>
      <charm id="Lunar.ButterflyEyesEnhancement" exalt="Lunar" group="Feint">
           <prerequisite>
-          <trait id="Manipulation" value="8" />
-          <essence value="7" />&#160; 
-          <selectiveCharmGroup threshold="1">
-               <charmReference id="Lunar.ButterflyEyesDefense" />
-               <charmReference id="Lunar.ButterflyEyesTread" />
-          </selectiveCharmGroup></prerequisite>
+          	<trait id="Manipulation" value="8" />
+          	<essence value="7" />
+          	<selectiveCharmGroup threshold="1">
+               	<charmReference id="Lunar.ButterflyEyesDefense" />
+               	<charmReference id="Lunar.ButterflyEyesTread" />
+          	</selectiveCharmGroup>
+		</prerequisite>
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />

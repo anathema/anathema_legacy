@@ -82,6 +82,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Fury-OK" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.IndestructibleRecursiveDesign" exalt="Lunar" group="Territory">
           <prerequisite>
@@ -97,6 +98,7 @@
                <special speed="5" defense="-2" />
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
+			<source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
 </charmlist>

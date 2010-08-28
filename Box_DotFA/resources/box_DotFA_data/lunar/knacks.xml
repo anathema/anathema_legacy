@@ -82,6 +82,7 @@
 		<cost />
 		<!-- duration />
 		<charmtype /-->
+			<source source="LordsOfCreation" />
 		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Lunar.HeavenlyServantImitation" exalt="Lunar" group="Supernatural">
@@ -106,5 +107,6 @@
 		<!-- duration />
 		<charmtype /-->
 		<source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
 	</charm>
 </charmlist>

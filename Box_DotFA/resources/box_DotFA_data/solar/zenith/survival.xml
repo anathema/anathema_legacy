@@ -37,6 +37,7 @@
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+			<source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.LifeSustainingShelterPreparation" exalt="Solar" group="Survival">
@@ -55,6 +56,7 @@
 			<!-- TODO:  (One dramatic action) -->
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
+			<source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.GodKingBenevolence" exalt="Solar" group="Survival">
@@ -68,6 +70,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
 		<charmAttribute attribute="Obvious" visualize="true" />
+			<source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
 </charmlist>

@@ -39,6 +39,7 @@
           <charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Filling the Elephants' Graveyard -->
           <charmAttribute attribute="War" visualize="true" />
+			<source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.InDoubtOfLegionsSpirit" exalt="Solar" group="War">
@@ -55,6 +56,7 @@
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="War" visualize="true" />
+			<source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
 	<charm id="Solar.OneWithStrifeMethod" exalt="Solar" group="War">

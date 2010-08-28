@@ -26,8 +26,8 @@
      <!-- Appearance -->
      <charm id="Lunar.AirBodyStyle" exalt="Lunar" group="Disguise">
           <prerequisite>
-               <trait id="Appearance" value="7" />
-               <essence value="7" />
+               <trait id="Appearance" value="5" />
+               <essence value="5" />
                <charmReference id="Lunar.CloverCantBeFound" />
           </prerequisite>
           <cost>
@@ -39,6 +39,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.StanceAsThoughtStride" exalt="Lunar" group="Interaction">
           <prerequisite>
@@ -53,8 +54,10 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+			<charmAttribute attribute="Illusion" visualize="true" />
           <charmAttribute attribute="Social" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.DevilBodyTerrorFace" exalt="Lunar" group="Interaction">
           <prerequisite>

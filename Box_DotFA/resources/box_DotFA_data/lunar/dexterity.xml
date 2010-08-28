@@ -34,6 +34,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.BecomingWatersEnvy" exalt="Lunar" group="Defensive">
           <prerequisite>
@@ -46,6 +47,7 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Fury-OK" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.WorldBendingGuardianAttentiveness" exalt="Lunar" group="Defensive">
           <prerequisite>
@@ -63,6 +65,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Wyld" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.MoonlightHunt" exalt="Lunar" group="Movement">
           <prerequisite>
@@ -79,6 +82,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Wyld" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.StarFallsThrough" exalt="Lunar" group="Movement">
           <prerequisite>
@@ -113,6 +117,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.GreedyMosquitoBite" exalt="Lunar" group="SpeedAndExtraAction">
           <prerequisite>
