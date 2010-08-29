@@ -23,7 +23,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- throneShadow -->
-	<charm id="Sidereal.LotusEyeTactics" exalt="Sidereal" group="ThroneShadowStyle">
+	<charm id="Celestial.LotusEyeTactics" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="3" />
 			<essence value="2" />
@@ -33,10 +33,11 @@
 		</cost>
 		<duration duration="Indefinite" />
 		<charmtype type="Reflexive" />
+        <charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.LionMouseStratagem" exalt="Sidereal" group="ThroneShadowStyle">
+	<charm id="Celestial.LionMouseStratagem" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="3" />
 			<essence value="2" />
@@ -46,11 +47,12 @@
 		</cost>
 		<duration duration="Indefinite" />
 		<charmtype type="Reflexive" />
+        <charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Illusion" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.SifusUsefulFingers" exalt="Sidereal" group="ThroneShadowStyle">
+	<charm id="Celestial.SifusUsefulFingers" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="3" />
 			<essence value="2" />
@@ -62,30 +64,32 @@
 		<charmtype type="Simple">
 			<special turntype="DramaticAction" />
 		</charmtype>
+        <charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.ThroneShadowForm" exalt="Sidereal" group="ThroneShadowStyle">
+	<charm id="Celestial.ThroneShadowForm" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="4" />
 			<essence value="2" />
-			<charmReference id="Sidereal.LotusEyeTactics" />
-			<charmReference id="Sidereal.LionMouseStratagem" />
-			<charmReference id="Sidereal.SifusUsefulFingers" />
+			<charmReference id="Celestial.LotusEyeTactics" />
+			<charmReference id="Celestial.LionMouseStratagem" />
+			<charmReference id="Celestial.SifusUsefulFingers" />
 		</prerequisite>
 		<cost>
 			<essence cost="5" />
 		</cost>
 		<duration amount="1" unit="day" />
 		<charmtype type="Simple" />
+        <charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Form" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.ShadowLostInTheCourt" exalt="Sidereal" group="ThroneShadowStyle">
+	<charm id="Celestial.ShadowLostInTheCourt" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="4" />
 			<essence value="2" />
-			<charmReference id="Sidereal.ThroneShadowForm" />
+			<charmReference id="Celestial.ThroneShadowForm" />
 		</prerequisite>
 		<cost>
 			<essence cost="3" />
@@ -93,14 +97,15 @@
 		</cost>
 		<duration duration="Instant" />
 		<charmtype type="Supplemental" />
+        <charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.PneumaSealingStrike" exalt="Sidereal" group="ThroneShadowStyle">
+	<charm id="Celestial.PneumaSealingStrike" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
-			<charmReference id="Sidereal.ShadowLostInTheCourt" />
+			<charmReference id="Celestial.ShadowLostInTheCourt" />
 		</prerequisite>
 		<cost>
 			<essence cost="4" />
@@ -109,16 +114,17 @@
 		<charmtype type="Reflexive">
 			<special primaryStep="1" />
 		</charmtype>
+        <charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Crippling" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.DeadliestOfAllWeapons" exalt="Sidereal" group="ThroneShadowStyle">
+	<charm id="Celestial.DeadliestOfAllWeapons" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
-			<charmReference id="Sidereal.PneumaSealingStrike" />
+			<charmReference id="Celestial.PneumaSealingStrike" />
 		</prerequisite>
 		<cost>
 			<essence cost="3" />
@@ -127,15 +133,16 @@
 		<charmtype type="Reflexive">
 			<special primaryStep="1" />
 		</charmtype>
+        <charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Poison" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.ClearEyesDefense" exalt="Sidereal" group="ThroneShadowStyle">
+	<charm id="Celestial.ClearEyesDefense" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="2" />
-			<charmReference id="Sidereal.ThroneShadowForm" />
+			<charmReference id="Celestial.ThroneShadowForm" />
 		</prerequisite>
 		<cost>
 			<essence cost="4" />
@@ -143,15 +150,16 @@
 		</cost>
 		<duration amount="1" unit="scene" />
 		<charmtype type="Reflexive" />
+        <charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Counterattack" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.WelcomingTheUninvitedGuest" exalt="Sidereal" group="ThroneShadowStyle">
+	<charm id="Celestial.WelcomingTheUninvitedGuest" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
-			<charmReference id="Sidereal.ThroneShadowForm" />
+			<charmReference id="Celestial.ThroneShadowForm" />
 		</prerequisite>
 		<cost>
 			<essence cost="3" />
@@ -160,16 +168,17 @@
 		<charmtype type="Simple">
 			<special speed="3" defense="-0" />
 		</charmtype>
+        <charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.FingerStealingHandshake" exalt="Sidereal" group="ThroneShadowStyle">
+	<charm id="Celestial.FingerStealingHandshake" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
-			<charmReference id="Sidereal.ClearEyesDefense" />
-			<charmReference id="Sidereal.WelcomingTheUninvitedGuest" />
+			<charmReference id="Celestial.ClearEyesDefense" />
+			<charmReference id="Celestial.WelcomingTheUninvitedGuest" />
 		</prerequisite>
 		<cost>
 			<essence cost="5" />
@@ -177,20 +186,22 @@
 		</cost>
 		<duration amount="1" unit="scene" />
 		<charmtype type="Simple" />
+        <charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Servitude" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.WorldAsWeaponMastery" exalt="Sidereal" group="ThroneShadowStyle">
+	<charm id="Celestial.WorldAsWeaponMastery" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="4" />
-			<charmReference id="Sidereal.DeadliestOfAllWeapons" />
-			<charmReference id="Sidereal.FingerStealingHandshake" />
+			<charmReference id="Celestial.DeadliestOfAllWeapons" />
+			<charmReference id="Celestial.FingerStealingHandshake" />
 		</prerequisite>
 		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
+        <charmAttribute attribute="Celestial" />
 		<source source="ScrollErrata" />
 	</charm>
 </charmlist>

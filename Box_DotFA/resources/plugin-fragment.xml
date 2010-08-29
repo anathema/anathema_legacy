@@ -239,6 +239,16 @@
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="box_DotFA_data/terrestrial/wood.xml" />
           </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/sidereal/throneShadow.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="box_DotFA_data/sidereal/misc.xml" />
+          </parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="boxDotFAResources">
           <parameter id="bundle" value="boxDotFA" />
