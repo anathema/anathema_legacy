@@ -29,7 +29,7 @@
 			<essence value="2" />
 		</prerequisite>
 		<cost>
-			<essence cost="Varies" note="1m or 3m" />
+			<essence cost="Varies" text="1m or 3m" />
 		</cost>
 		<duration duration="Indefinite" />
 		<charmtype type="Reflexive" />
