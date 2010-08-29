@@ -43,6 +43,7 @@
           <charmAttribute attribute="Martyr" visualize="true" />
           <charmAttribute attribute="Purity" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Dragon-Blooded.EndlessCoilsEnlightenment" exalt="Dragon-Blooded" group="Lore">
           <prerequisite>

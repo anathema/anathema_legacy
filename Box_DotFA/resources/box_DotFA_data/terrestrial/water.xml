@@ -59,7 +59,7 @@
           <charmAttribute attribute="Purity" visualize="true" />
           <source source="LordsOfCreation" />
      </charm>
-     <charm id="Dragon-Blooded.FlowingGodDragonShintai" exalt="Dragon-Blooded" group="Larceny">
+     <charm id="Dragon-Blooded.FlowingGodDragonStance" exalt="Dragon-Blooded" group="Larceny">
           <prerequisite>
                <trait id="Larceny" value="5" />
                <essence value="5" />

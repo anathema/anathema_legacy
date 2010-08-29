@@ -70,9 +70,9 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Elemental" visualize="true" />
-          <charmAttribute attribute="Holy" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Dragon-Blooded.PurityCrucibleStrike" exalt="Dragon-Blooded" group="Presence">
           <prerequisite>

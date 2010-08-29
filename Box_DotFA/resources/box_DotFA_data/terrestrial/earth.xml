@@ -64,6 +64,7 @@
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Dragon-Blooded.ThickerThanStone" exalt="Dragon-Blooded" group="Integrity">
           <prerequisite>
@@ -81,6 +82,7 @@
           <charmAttribute attribute="Martyr" visualize="true" />
           <charmAttribute attribute="Purity" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Dragon-Blooded.PerfectedScalesOfTheDragon" exalt="Dragon-Blooded" group="Resistance">
           <prerequisite>
@@ -110,6 +112,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Purity" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Dragon-Blooded.AsInTheBeginning" exalt="Dragon-Blooded" group="War">
           <prerequisite>
@@ -125,6 +128,7 @@
           </cost>
           <duration amount="1" unit="scene" />
           <charmtype type="Simple">
+				<!-- TODO:  Speed 1 Hour -->
                <special speed="10" defense="-3" />
           </charmtype>
           <charmAttribute attribute="Elemental" visualize="true" />
@@ -132,6 +136,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Purity" visualize="true" />
           <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Dragon-Blooded.TigerDragonDrillApproach" exalt="Dragon-Blooded" group="War">
           <prerequisite>
