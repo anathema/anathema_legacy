@@ -31,8 +31,8 @@
                <charmReference id="Dragon-Blooded.TracklessWalkStyle" />
           </prerequisite>
           <cost>
-		<essence cost="" text="(+5m)" >
-	  </cost>
+              <essence cost="" text="(+5m)" />
+	      </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Illusion" visualize="true" />
