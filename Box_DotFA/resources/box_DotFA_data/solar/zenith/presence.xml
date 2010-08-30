@@ -97,7 +97,5 @@
 			<charmAttribute attribute="Emotion" visualize="true" />
 			<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="ScrollErrata" />
-		<!-- NOTE:  Solar - Medicine:  Mind-Soothing Anodyne -->
 	</charm>
-	
 </charmlist>

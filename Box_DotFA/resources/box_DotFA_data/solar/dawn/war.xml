@@ -91,4 +91,15 @@
 		<charmAttribute attribute="Native" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
+	<charm id="Solar.TheUnendingMarch" exalt="Solar" group="War">
+		<prerequisite>
+			<trait id="War" value="7" />
+			<essence value="7" />
+			<charmReference id="Solar.Heroism-EncouragingPresence" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<source source="ScrollErrata" />
+	</charm>
 </charmlist>
