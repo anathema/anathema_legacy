@@ -60,6 +60,7 @@
 			<source source="ScrollErrata" />
      </charm>
      <charm id="Solar.OmniscientEarsApproach" exalt="Solar" group="Awareness">
+	<!-- NOTE:  Solar/Linguistics "Mirror" - The Ever-Vigilant Scribe -->
           <prerequisite>
                <trait id="Awareness" value="5" />
                <essence value="5" />

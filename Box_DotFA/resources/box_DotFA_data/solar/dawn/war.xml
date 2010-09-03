@@ -92,7 +92,7 @@
 		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Solar.TheUnendingMarch" exalt="Solar" group="War">
-		<!-- NOTE:  Nearly identical to Solar/Bureaucracy Charm "Legend Lives On". -->
+		<!-- NOTE:  Solar/Bureaucracy "Mirror" - Legend Lives On -->
 		<prerequisite>
 			<trait id="War" value="7" />
 			<essence value="7" />

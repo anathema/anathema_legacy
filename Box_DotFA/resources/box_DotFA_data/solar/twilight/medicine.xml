@@ -72,7 +72,7 @@
           <source source="LordsOfCreation" />
      </charm>
 	<charm id="Solar.MindSoothingAnodyne" exalt="Solar" group="Medicine">
-		<!-- NOTE:  Nearly identical to Solar/Presence Charm "Hastening Nights End". -->
+		<!-- NOTE:  Solar/Presence "Mirror" - Hastening Nights End -->
 		<prerequisite>
 			<trait id="Medicine" value="5" />
 			<essence value="4" />

@@ -81,6 +81,7 @@
 		<source source="ScrollErrata" />
      </charm>
 	<charm id="Solar.HasteningNightsEnd" exalt="Solar" group="Presence">
+		<!-- NOTE:  Solar/Medicine "Mirror" - Mind-Soothing Anodyne -->
 		<prerequisite>
 			<trait id="Presence" value="5" />
 			<essence value="4" />

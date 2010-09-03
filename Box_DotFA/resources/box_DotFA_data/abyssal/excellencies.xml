@@ -36,6 +36,7 @@
           <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Divine Trancendence of (Ability) -->
 		<charmAttribute attribute="Native" visualize="true" />
 		<source source="ScrollErrata" />
      </genericCharm>
@@ -51,7 +52,7 @@
           <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Abyssal Mirror - Supreme Perfection of (Ability) -->
+		<!-- NOTE:  Solar Mirror - Supreme Perfection of (Ability) -->
 			<source source="ScrollErrata" />
      </genericCharm>
 </charmlist>

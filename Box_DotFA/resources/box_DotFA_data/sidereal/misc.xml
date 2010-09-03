@@ -73,4 +73,15 @@
 		<charmAttribute attribute="Counterattack" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
+	<charm id="Sidereal.PerfectedLotusMastery" exalt="Sidereal" group="MartialArts">
+         <prerequisite>
+              <trait id="MartialArts" value="5" />
+              <essence value="2" />
+         </prerequisite>
+         <cost />
+         <duration duration="Permanent" />
+         <charmtype type="Permanent" />
+		<!-- NOTE:  Solar Mirror - Swallowing the Lotus Root -->
+         <source source="ScrollErrata" />
+    </charm>
 </charmlist>

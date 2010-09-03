@@ -74,4 +74,17 @@
           <source source="LordsOfCreation" />
 			<source source="ScrollErrata" />
      </charm>
+	<charm id="Solar.TheEverVigilantScribe" exalt="Solar" group="Linguistics">
+		<!-- NOTE:  Solar/Awareness "Mirror" - Omniscient Ears Approach -->
+          <prerequisite>
+               <trait id="Awareness" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.DiscerningSavantsEye" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+     </charm>
 </charmlist>

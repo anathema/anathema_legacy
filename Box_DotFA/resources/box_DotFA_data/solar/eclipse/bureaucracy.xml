@@ -91,6 +91,7 @@
 		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Solar.LegendLivesOn" exalt="Solar" group="Bureaucracy">
+		<!-- NOTE:  Solar/War "Mirror" - The Unending March -->
 		<prerequisite>
 			<trait id="Bureaucracy" value="7" />
 			<essence value="7" />

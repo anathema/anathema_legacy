@@ -48,10 +48,10 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
 		<!-- NOTE:  Abyssal Mirror - Blood-Soaked Lotus Roots -->
-		<!-- NOTE:  Infernal Mirror - Roots of the Brass Lotus -->
+		<!-- TODO:  Infernal Mirror - Roots of the Brass Lotus -->
 		<!-- NOTE:  Sidereal Mirror - Perfected Lotus Mastery -->
-		<!-- NOTE:  Lunar Mirror - Terrestrial Bloodline Integration -->
-		<!-- NOTE:  Alchemical Mirror - Lotus Filament Conduction -->
+		<!-- TODO:  Lunar Mirror - Terrestrial Bloodline Integration -->
+		<!-- TODO:  Alchemical Mirror - Lotus Filament Conduction -->
           <source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
