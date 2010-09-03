@@ -52,7 +52,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Magic-Devouring Strike -->
-		<!-- TODO:  Lunar Mirror - Sorcery-Rending Talons -->
+		<!-- NOTE:  Lunar Mirror - Sorcery-Rending Talons -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
           <source source="ScrollErrata" />

@@ -74,6 +74,7 @@
 		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Sidereal.PerfectedLotusMastery" exalt="Sidereal" group="MartialArts">
+		<!-- NOTE:  Solar/MartialArts "Mirror" - Swallowing the Lotus Root -->
          <prerequisite>
               <trait id="MartialArts" value="5" />
               <essence value="2" />
@@ -81,7 +82,6 @@
          <cost />
          <duration duration="Permanent" />
          <charmtype type="Permanent" />
-		<!-- NOTE:  Solar Mirror - Swallowing the Lotus Root -->
          <source source="ScrollErrata" />
     </charm>
 </charmlist>
