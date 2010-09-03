@@ -4,7 +4,7 @@
       Usage:
 
 charmNames=$(mktemp /tmp/charmNames.XXXXXX;);
-find [PATH TO data DIRECTORY] -iregex ".*xml$" -exec xsltproc [PATH TO charm_name_extractor.xsl] {} \; |\
+find [PATH TO data DIRECTORY] -iname "*.xml" -exec xsltproc [PATH TO charm_name_extractor.xsl] {} \; |\
   grep -Ev '<[^>]*>' |\
   tr " " "\n" > $charmNames;
       
@@ -17,8 +17,19 @@ find [PATH TO data DIRECTORY] -iregex ".*xml$" -exec xsltproc [PATH TO charm_nam
 -->
 <xsl:stylesheet xmlns:chrm="http://anathema.sourceforge.net/charms" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:template match="chrm:charmlist">
-		<xsl:for-each select="chrm:charm">
+		<xsl:for-each select="chrm:genericCharm">
+			<!-- Charms_ file:  Just Name -->
+			<!--xsl:value-of select="@id" /><xsl:text>= </xsl:text-->
+			<!-- Pages_ File: Book.Name -->
+			<xsl:value-of select="chrm:source/@source" /><xsl:text>.</xsl:text>
 			<xsl:value-of select="@id" /><xsl:text> </xsl:text>
+		</xsl:for-each>
+		<xsl:for-each select="chrm:charm">
+			<!-- Charms_ file:  Just Name -->
+			<!--xsl:value-of select="@id" /><xsl:text>= </xsl:text-->
+			<!-- Pages_ File: Book.Name.Pages= -->
+			<xsl:value-of select="chrm:source/@source" /><xsl:text>.</xsl:text>
+			<xsl:value-of select="@id" /><xsl:text>.Page= </xsl:text>
 		</xsl:for-each>
 	</xsl:template>
 </xsl:stylesheet>
