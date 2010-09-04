@@ -17,19 +17,27 @@ find [PATH TO data DIRECTORY] -iname "*.xml" -exec xsltproc [PATH TO charm_name_
 -->
 <xsl:stylesheet xmlns:chrm="http://anathema.sourceforge.net/charms" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:template match="chrm:charmlist">
+		<!--xsl:text> ##Charms##  </xsl:text>
 		<xsl:for-each select="chrm:genericCharm">
-			<!-- Charms_ file:  Just Name -->
-			<!--xsl:value-of select="@id" /><xsl:text>= </xsl:text-->
-			<!-- Pages_ File: Book.Name -->
+			<xsl:value-of select="@id" /><xsl:text>= </xsl:text>
+		</xsl:for-each>
+		<xsl:for-each select="chrm:charm">
+			<xsl:value-of select="@id" /><xsl:text>= </xsl:text>
+		</xsl:for-each-->
+		<xsl:text> ##Pages##  </xsl:text>
+		<xsl:for-each select="chrm:genericCharm">
 			<xsl:value-of select="chrm:source/@source" /><xsl:text>.</xsl:text>
 			<xsl:value-of select="@id" /><xsl:text> </xsl:text>
 		</xsl:for-each>
 		<xsl:for-each select="chrm:charm">
-			<!-- Charms_ file:  Just Name -->
-			<!--xsl:value-of select="@id" /><xsl:text>= </xsl:text-->
-			<!-- Pages_ File: Book.Name.Pages= -->
 			<xsl:value-of select="chrm:source/@source" /><xsl:text>.</xsl:text>
 			<xsl:value-of select="@id" /><xsl:text>.Page= </xsl:text>
 		</xsl:for-each>
+		<!--xsl:text> ##Other##  </xsl:text>
+		<xsl:for-each select="chrm:charm">
+			<xsl:for-each select="chrm:charmAttribute[@visualize='true']">
+				<xsl:text>Keyword.</xsl:text><xsl:value-of select="@attribute" /><xsl:text> </xsl:text>
+			</xsl:for-each>
+		</xsl:for-each-->
 	</xsl:template>
 </xsl:stylesheet>

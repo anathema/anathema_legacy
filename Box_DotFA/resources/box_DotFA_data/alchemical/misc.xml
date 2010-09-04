@@ -3,7 +3,7 @@
 "../charms.dtd">
 <!--
 
-    essence.xml - XML charm data for Anathema plug-ins.
+    misc.xml - XML charm data for Anathema plug-ins.
     Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
 
     This program is free software; you can redistribute it and/or modify
@@ -22,22 +22,16 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Essence Charms -->
-	<charm id="Lunar.SorceryRendingTalons" exalt="Lunar" group="Essence">
-		<!-- NOTE:  Solar/Occult "Mirror" - Magic-Shattering Strike -->
+     <!-- Miscellaneous Charms -->
+	<charm id="Alchemical.LotusFilamentConduction" exalt="Alchemical" group="MartialArts">
 		<prerequisite>
-			<trait id="Perception" value="5" />
-			<essence value="4" />
-			<charmReference id="Lunar.GodCuttingEssence" />
-			<charmReference id="Lunar.InstinctiveEssencePrediction" />
+			<trait id="MartialArts" value="5" />
+			<essence value="2" />
 		</prerequisite>
-		<cost>
-			<essence cost="15" />
-		</cost>
-		<duration duration="Instant" />
-		<charmtype type="Supplemental" />
-		<charmAttribute attribute="Combo-OK" visualize="true" />
-		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="ScrollErrata" />
-	</charm>
+			<cost />
+			<duration duration="Permanent" />
+			<!-- NOTE:  Solar Mirror - Swallowing the Lotus Root -->
+			<charmtype type="Permanent" />
+			<source source="ScrollErrata" />
+		</charm>
 </charmlist>
