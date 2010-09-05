@@ -69,7 +69,7 @@
 			<special primaryStep="9" />
 		</charmtype>
         <charmAttribute attribute="Sidereal" />
-		<charmAttribute attribute="Combo-Ok" visualize="true" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Counterattack" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>

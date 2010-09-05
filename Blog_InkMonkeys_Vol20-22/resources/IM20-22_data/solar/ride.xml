@@ -34,7 +34,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <charmAttribute attribute="Mount (Mundane)" visualize="true" />
+          <charmAttribute attribute="Mount(Mundane)" visualize="true" />
           <charmAttribute attribute="Native" visualize="true" />
           <source source="InkMonkeys" />
       </charm>
@@ -50,7 +50,7 @@
           <duration duration="Instant" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Mount (Mundane)" visualize="true" />
+          <charmAttribute attribute="Mount(Mundane)" visualize="true" />
           <source source="InkMonkeys" />
       </charm>
      <charm id="Solar.OneManCavalry" exalt="Solar" group="Ride">

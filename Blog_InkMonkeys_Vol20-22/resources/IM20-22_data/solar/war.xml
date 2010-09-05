@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- War -->
-     <charm id="Solar.ImmanentSolarGloryWar" exalt="Solar" group="war">
+     <charm id="Solar.ImmanentSolarGloryWar" exalt="Solar" group="War">
           <prerequisite>
                <trait id="War" value="5" />
                <essence value="3" />

@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Bureaucracy -->
-     <charm id="Solar.ImmanentSolarGloryBureaucracy" exalt="Solar" group="bureaucracy">
+     <charm id="Solar.ImmanentSolarGloryBureaucracy" exalt="Solar" group="Bureaucracy">
           <prerequisite>
                <trait id="Bureaucracy" value="5" />
                <essence value="3" />

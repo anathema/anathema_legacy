@@ -79,12 +79,11 @@
           <prerequisite>
                <trait id="Awareness" value="5" />
                <essence value="4" />
-               <charmReference id="Solar.DiscerningSavantsEye" />
+               <charmReference id="Solar.DiscerningSavant'sEye" />
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <source source="LordsOfCreation" />
 		<source source="ScrollErrata" />
      </charm>
 </charmlist>

@@ -39,10 +39,11 @@
           <prerequisite>
                <trait id="Larceny" value="5" />
                <essence value="3" />
+				<!-- TODO:  net.disy.commons.core.util.ContractFailedException: Parent Charm Solar.StealingFromPlainSightSpirit not defined for Solar.ReversalOfFortune -->
                <charmReference id="Solar.StealingFromPlainSightSpirit" />
           </prerequisite>
           <cost >
-		<essence cost="5" >
+		<essence cost="5" />
 	  </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive" />

@@ -104,6 +104,8 @@
    <source source="DragonBlooded2nd"/>
 </charm>
 
+<!-- TODO:  The following charms are "sub-effects" of Dragon-Blooded.FiveDragonHorsemanPrana -->
+
 <charm id="Dragon-Blooded.FiveDragonHorsemanPranaAir" exalt="Dragon-Blooded" group="Ride">
  <prerequisite>
   <trait id="Ride" value="4"/>
