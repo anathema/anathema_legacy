@@ -52,6 +52,7 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Native" visualize="true" />
           <charmAttribute attribute="Reactor" visualize="true" />
+			<source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.ScienceOfMutation" exalt="Solar" group="Medicine">

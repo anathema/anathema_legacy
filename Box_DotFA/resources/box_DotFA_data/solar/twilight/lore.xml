@@ -39,6 +39,7 @@
           <charmAttribute attribute="Native" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
+		<source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.TerrestrialEdificationProgram" exalt="Solar" group="Lore">
@@ -71,6 +72,7 @@
           <charmAttribute attribute="Native" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
+			<source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.LegendDrawingInvocation" exalt="Solar" group="Lore">
