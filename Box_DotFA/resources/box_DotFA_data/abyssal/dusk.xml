@@ -71,36 +71,12 @@
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Abyssal.AgonyOfTheBlackMessiah" exalt="Abyssal" group="MartialArts">
-		<prerequisite>
-			<trait id="MartialArts" value="5" />
-			<essence value="5" />
-			<charmReference id="Abyssal.RavagingBlow" />
-		</prerequisite>
-		<cost />
-		<duration duration="Permanent" />
-		<charmtype type="Permanent" />
-		<charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Solar Mirror - Solar Hero Supremacy -->
-		<charmAttribute attribute="Stackable" visualize="true" />
-	    <source source="ScrollErrata" />
-	</charm>
-	<charm id="Abyssal.BloodSoakedLotusRoots" exalt="Abyssal" group="MartialArts">
-		<prerequisite>
-			<trait id="MartialArts" value="5" />
-			<essence value="2" />
-		</prerequisite>
-		<cost />
-		<duration duration="Permanent" />
-		<!-- NOTE:  Solar Mirror - Swallowing the Lotus Root -->
-		<charmtype type="Permanent" />
-		<source source="ScrollErrata" />
-	</charm>
 		<charm id="Abyssal.SymphonyOfTheFlayedLegion" exalt="Abyssal" group="Melee">
 			<prerequisite>
 				<trait id="Melee" value="7" />
 				<essence value="7" />
-				<charmReference id="Abyssal.EbonLightningPrana" />
+				<!-- TODO:  net.disy.commons.core.util.ContractFailedException: Parent Charm Abyssal.EbonLightningPrana not defined for Abyssal.SymphonyOfTheFlayedLegion -->
+				<!--charmReference id="Abyssal.EbonLightningPrana" /-->
 			</prerequisite>
 			<cost>
 				<essence cost="12" />
@@ -119,7 +95,7 @@
 		<prerequisite>
 			<trait id="Thrown" value="6" />
 			<essence value="6" />
-			<charmReference id="Abyssal.BurrowingBoneMagot" />
+			<charmReference id="Abyssal.BurrowingBoneMaggot" />
 		</prerequisite>
 		<cost>
 			<essence cost="10" />
@@ -137,7 +113,8 @@
 		<prerequisite>
 			<trait id="War" value="5" />
 			<essence value="5" />
-			<charmReference id="Abyssal.MoraleShatteringMethod" />
+			<!-- TODO:  net.disy.commons.core.util.ContractFailedException: Parent Charm Abyssal.MoraleShatteringMethod not defined for Abyssal.FillingTheElephantsGraveyard -->
+			<!--charmReference id="Abyssal.MoraleShatteringMethod" /-->
 		</prerequisite>
 		<cost>
 			<essence cost="7" />

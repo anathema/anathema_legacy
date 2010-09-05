@@ -23,7 +23,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- misc -->
-	<charm id="Sidereal.FlowBreakingStrike" exalt="Solar" group="ThroneShadowStyleSid">
+	<charm id="Sidereal.FlowBreakingStrike" exalt="Solar" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="4" />
@@ -35,13 +35,14 @@
 		</cost>
 		<duration duration="Instant" />
 		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Exclusive" />
         <charmAttribute attribute="Sidereal" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Crippling" visualize="true" />
 		<charmAttribute attribute="Stackable" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.TheLotusBlossoms" exalt="Solar" group="ThroneShadowStyleSid">
+	<charm id="Sidereal.TheLotusBlossoms" exalt="Solar" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="5" />
@@ -51,11 +52,12 @@
 		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
+		<charmAttribute attribute="Exclusive" />
         <charmAttribute attribute="Sidereal" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.ShowingTheSecretHand" exalt="Solar" group="ThroneShadowStyleSid">
+	<charm id="Sidereal.ShowingTheSecretHand" exalt="Solar" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="6" />
 			<essence value="6" />
@@ -68,13 +70,15 @@
 		<charmtype type="Reflexive">
 			<special primaryStep="9" />
 		</charmtype>
+		<charmAttribute attribute="Exclusive" />
         <charmAttribute attribute="Sidereal" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Counterattack" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.PerfectedLotusMastery" exalt="Sidereal" group="MartialArts">
-		<!-- NOTE:  Solar/MartialArts "Mirror" - Swallowing the Lotus Root -->
+	<!-- TODO:  Coding - Will need to do something about MA charms that are not attached to a specific style. -->
+	<!--charm id="Sidereal.PerfectedLotusMastery" exalt="Sidereal" group="MartialArts">
+		<!- NOTE:  Solar/MartialArts "Mirror" - Swallowing the Lotus Root ->
          <prerequisite>
               <trait id="MartialArts" value="5" />
               <essence value="2" />
@@ -83,5 +87,5 @@
          <duration duration="Permanent" />
          <charmtype type="Permanent" />
          <source source="ScrollErrata" />
-    </charm>
+    </charm-->
 </charmlist>

@@ -28,8 +28,7 @@
           <prerequisite>
                <trait id="Sail" value="3" />
                <essence value="3" />
-				<!-- net.disy.commons.core.util.ContractFailedException: Parent Charm Solar.PerfectReckoningTechniques not defined for Solar.ImmortalCaptainsAdvantages -->
-               <charmReference id="Solar.PerfectReckoningTechniques" />
+               <charmReference id="Solar.PerfectReckoningTechnique" />
           </prerequisite>
           <cost />
           <duration duration="Permanent" />

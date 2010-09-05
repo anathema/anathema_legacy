@@ -101,7 +101,8 @@
 		<prerequisite>
 			<trait id="Dodge" value="5" />
 			<essence value="4" />
-			<charmReference id="Abyssal.FlickeringWispTechnique" />
+			<!-- TODO:  net.disy.commons.core.util.ContractFailedException: Parent Charm Abyssal.FlickeringWispTechnique not defined for Abyssal.ThousandfoldShadowDance -->
+			<!--charmReference id="Abyssal.FlickeringWispTechnique" /-->
 		</prerequisite>
 		<cost>
 			<essence cost="Varies" text="+3m or +3m, 1wp" />
@@ -116,8 +117,9 @@
 		<prerequisite>
 			<trait id="Dodge" value="5" />
 			<essence value="5" />
-			<charmReference id="Abyssal.FlickeringWispTechnique" />
-			<charmReference id="Abyssal.FoeShamingDefense" />
+			<!-- TODO:  net.disy.commons.core.util.ContractFailedException: Parent Charm Abyssal.FlickeringWispTechnique not defined for Abyssal.ShadowFadesAtDawn -->
+			<!--charmReference id="Abyssal.FlickeringWispTechnique" /-->
+			<!--charmReference id="Abyssal.FoeShamingDefense" /-->
 		</prerequisite>
 		<cost>
 			<essence cost="Varies" text="+4m"/>

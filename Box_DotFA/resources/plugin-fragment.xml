@@ -12,7 +12,7 @@
      </runtime>
      <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="boxDotFACharms">
 		<!-- Abyssal List -->
-		<!-- parameter id="list">
+		<parameter id="list">
 			<parameter id="type" value="Abyssal"/>
 			<parameter id="rules" value="SecondEdition"/>
 			<parameter id="path" value="box_DotFA_data/abyssal/day.xml"/>
@@ -38,10 +38,15 @@
 			<parameter id="path" value="box_DotFA_data/abyssal/midnight.xml"/>
 		</parameter>
 		<parameter id="list">
+			<parameter id="type" value="MartialArts"/>
+			<parameter id="rules" value="SecondEdition"/>
+			<parameter id="path" value="box_DotFA_data/abyssal/misc.xml"/>
+		</parameter>
+		<parameter id="list">
 			<parameter id="type" value="Abyssal"/>
 			<parameter id="rules" value="SecondEdition"/>
 			<parameter id="path" value="box_DotFA_data/abyssal/moonshadow.xml"/>
-		</parameter-->
+		</parameter>
 		<!-- Alchemical List -->
 		<!-- parameter id="list">
 			<parameter id="type" value="Alchemical"/>
@@ -116,11 +121,11 @@
 			<parameter id="rules" value="SecondEdition" />
 			<parameter id="path" value="box_DotFA_data/sidereal/throneShadow.xml" />
 		</parameter>
-		<!-- parameter id="list">
+		<parameter id="list">
 			<parameter id="type" value="MartialArts" />
 			<parameter id="rules" value="SecondEdition" />
 			<parameter id="path" value="box_DotFA_data/sidereal/misc.xml" />
-		</parameter-->
+		</parameter>
 		<!-- Solar List -->
 		<parameter id="list">
 			 <parameter id="type" value="Solar" />
