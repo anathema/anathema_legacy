@@ -128,7 +128,7 @@
 			 <parameter id="path" value="box_DotFA_data/solar/dawn/archery.xml" />
 		</parameter>
 		<parameter id="list">
-			 <parameter id="type" value="Solar" />
+			 <parameter id="type" value="MartialArts" />
 			 <parameter id="rules" value="SecondEdition" />
 			 <parameter id="path" value="box_DotFA_data/solar/dawn/martialarts.xml" />
 		</parameter>
@@ -267,6 +267,11 @@
 			<parameter id="type" value="Dragon-Blooded" />
 			<parameter id="rules" value="SecondEdition" />
 			<parameter id="path" value="box_DotFA_data/terrestrial/fire.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="box_DotFA_data/terrestrial/misc.xml" />
 		</parameter>
 		<parameter id="list">
 			<parameter id="type" value="Dragon-Blooded" />

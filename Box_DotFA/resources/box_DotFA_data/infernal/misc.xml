@@ -22,7 +22,7 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- misc -->
+     <!-- Miscellaneous Charms -->
 	<charm id="Infernal.RootsOfTheBrassLotus" exalt="Infernal" group="MartialArts">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
