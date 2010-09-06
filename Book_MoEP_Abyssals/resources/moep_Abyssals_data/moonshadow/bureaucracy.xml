@@ -36,7 +36,7 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Frugal Merchant Method. -->
+          <!-- NOTE:  Solar Mirror - Frugal Merchant Method -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.EloquentExampleInspiration" exalt="Abyssal" group="Bureaucracy">
@@ -55,7 +55,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Emotion" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Speed the Wheels. -->
+          <!-- NOTE:  Solar Mirror - Speed the Wheels -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
@@ -86,7 +86,7 @@
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Indolent Official Charm. -->
+          <!-- NOTE:  Solar Mirror - Indolent Official Charm -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.CausticHatredDiatribe" exalt="Abyssal" group="Bureaucracy">
@@ -102,7 +102,7 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Foul Air of Argument. -->
+          <!-- NOTE:  Solar Mirror - Foul Air of Argument -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.RegimeTopplingLordOfMisrule" exalt="Abyssal" group="Bureaucracy">

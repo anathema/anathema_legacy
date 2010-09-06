@@ -37,7 +37,7 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Hungry Tiger Technique. -->
+          <!-- NOTE:  Solar Mirror - Hungry Tiger Technique -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.ArtfulMaimingOnslaught" exalt="Abyssal" group="Melee">
@@ -54,7 +54,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Crippling" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Fire and Stones Strike. -->
+          <!-- NOTE:  Solar Mirror - Fire and Stones Strike -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.SoulCleavingWound" exalt="Abyssal" group="Melee">
@@ -105,7 +105,7 @@
           <charmtype type="ExtraAction" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Peony Blossom Attack. -->
+          <!-- NOTE:  Solar Mirror - Peony Blossom Attack -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
@@ -123,7 +123,7 @@
           <charmtype type="ExtraAction" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Iron Whirlwind Attack. -->
+          <!-- NOTE:  Solar Mirror - Iron Whirlwind Attack -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
@@ -137,7 +137,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Invincible Fury of the Dawn. -->
+          <!-- NOTE:  Solar Mirror - Invincible Fury of the Dawn -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.BladeSummoningGesture" exalt="Abyssal" group="Melee">
@@ -153,7 +153,7 @@
                <special primaryStep="2" />
           </charmtype>
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Call the Blade. -->
+          <!-- NOTE:  Solar Mirror - Call the Blade -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
@@ -172,7 +172,7 @@
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Summoning the Loyal Steel. -->
+          <!-- NOTE:  Solar Mirror - Summoning the Loyal Steel -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.ResplendentShadowBlade" exalt="Abyssal" group="Melee">
@@ -191,7 +191,7 @@
           <charmAttribute attribute="Emotion" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
 			<charmAttribute attribute="Obvious" visualize="true" />
-          <!-- Mirror:  Glorious Solar Saber. -->
+          <!-- NOTE:  Solar Mirror - Glorious Solar Saber -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.ThievingRaitonClaws" exalt="Abyssal" group="Melee">
@@ -225,7 +225,7 @@
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Blazing Solar Bolt. -->
+          <!-- NOTE:  Solar Mirror - Blazing Solar Bolt -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.ElegantFlowingDeflection" exalt="Abyssal" group="Melee">
@@ -243,7 +243,7 @@
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Dipping Swallow Defense. -->
+          <!-- NOTE:  Solar Mirror - Dipping Swallow Defense -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.VengefulRiposte" exalt="Abyssal" group="Melee">
@@ -262,7 +262,7 @@
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Counterattack" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Solar Counterattack. -->
+          <!-- NOTE:  Solar Mirror - Solar Counterattack -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.BrokenToysRiposte" exalt="Abyssal" group="Melee">
@@ -272,7 +272,7 @@
                <charmReference id="Abyssal.VengefulRiposte" />
           </prerequisite>
           <cost>
-               <essence text="Weapon Damage Modifier +1m" />
+               <essence cost="Varies" text="Weapon Damage Modifier +1m" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive">
@@ -297,7 +297,7 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Fivefold Bulwark Stance. -->
+          <!-- NOTE:  Solar Mirror - Fivefold Bulwark Stance -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.DeathDeflectingTechnique" exalt="Abyssal" group="Melee">
@@ -315,7 +315,7 @@
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Heavenly Guardian Defense. -->
+          <!-- NOTE:  Solar Mirror - Heavenly Guardian Defense -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Spectral" visualize="true" />
           <source source="Abyssals2nd" />
@@ -330,7 +330,7 @@
           <duration duration="Instant" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Protection of Celestial Bliss. -->
+          <!-- NOTE:  Solar Mirror - Protection of Celestial Bliss -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.HundredRazorCircle" exalt="Abyssal" group="Melee">

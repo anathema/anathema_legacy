@@ -132,11 +132,11 @@
 			 <parameter id="rules" value="SecondEdition" />
 			 <parameter id="path" value="box_DotFA_data/solar/dawn/archery.xml" />
 		</parameter>
-		<parameter id="list">
-			 <parameter id="type" value="MartialArts" />
+		<!--parameter id="list">
+			 <parameter id="type" value="Solar" />
 			 <parameter id="rules" value="SecondEdition" />
 			 <parameter id="path" value="box_DotFA_data/solar/dawn/martialarts.xml" />
-		</parameter>
+		</parameter-->
 		<parameter id="list">
 			 <parameter id="type" value="Solar" />
 			 <parameter id="rules" value="SecondEdition" />
@@ -206,6 +206,11 @@
 			<parameter id="type" value="Solar"/>
 			<parameter id="rules" value="SecondEdition"/>
 			<parameter id="path" value="box_DotFA_data/solar/excellencies.xml"/>
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="box_DotFA_data/solar/misc.xml" />
 		</parameter>
 		<parameter id="list">
 			 <parameter id="type" value="Solar" />

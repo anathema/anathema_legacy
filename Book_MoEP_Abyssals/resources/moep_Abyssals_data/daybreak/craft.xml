@@ -39,7 +39,7 @@
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Shattering Grasp. -->
+          <!-- NOTE:  Solar Mirror - Shattering Grasp -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.AllConsumingEntropyAttack" exalt="Abyssal" group="Craft">
@@ -144,14 +144,14 @@
                <trait id="Craft" value="5" />
                <essence value="5" />
                <charmReference id="Abyssal.FrenziedForgeWithin" />
-               <charmReference id="Abyssa.EssenceFlow.Craft" />
+               <charmReference id="Abyssal.EssenceFlow.Craft" />
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Avatar3" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Wonder-Forging Genius. -->
+          <!-- NOTE:  Solar Mirror - Wonder-Forging Genius -->
           <source source="Abyssals2nd" />
      </charm>
 </charmlist>

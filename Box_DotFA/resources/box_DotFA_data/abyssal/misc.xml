@@ -39,16 +39,4 @@
 		<charmAttribute attribute="Stackable" visualize="true" />
 	    <source source="ScrollErrata" />
 	</charm>
-	<!-- TODO:  Coding - Will need to do something about MA charms that are not attached to a specific style. -->
-	<!--charm id="Abyssal.BloodSoakedLotusRoots" exalt="Abyssal" group="MartialArts">
-		<prerequisite>
-			<trait id="MartialArts" value="5" />
-			<essence value="2" />
-		</prerequisite>
-		<cost />
-		<duration duration="Permanent" />
-		<!- NOTE:  Solar Mirror - Swallowing the Lotus Root ->
-		<charmtype type="Permanent" />
-		<source source="ScrollErrata" />
-	</charm-->
 </charmlist>

@@ -27,8 +27,7 @@
 		<prerequisite>
 			<trait id="Integrity" value="5" />
 			<essence value="4" />
-			<!-- TODO:  net.disy.commons.core.util.ContractFailedException: Parent Charm Abyssal.FaithfulKillersReprieve not defined for Abyssal.UnderworldExecutionerStance -->
-			<!--charmReference id="Abyssal.FaithfulKillersReprieve" /-->
+			<charmReference id="Abyssal.FaithfulKillersReprieve" />
 		</prerequisite>
 		<cost />
 		<duration duration="Permanent" />

@@ -36,7 +36,7 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Chaos-Repelling Pattern. -->
+          <!-- NOTE:  Solar Mirror - Chaos-Repelling Pattern -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
@@ -71,7 +71,7 @@
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Essence-Lending Method. -->
+          <!-- NOTE:  Solar Mirror - Essence-Lending Method -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="Abyssals2nd" />
@@ -90,7 +90,7 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Will-Bolstering Method.  -->
+          <!-- NOTE:  Solar Mirror - Will-Bolstering Method.  -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="Abyssals2nd" />
@@ -118,7 +118,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Virtue-Donating Grace. -->
+          <!-- NOTE:  Solar Mirror - Virtue-Donating Grace -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.TeachingIncomprehensibleTruths" exalt="Abyssal" group="Lore">
@@ -146,7 +146,7 @@
           <duration duration="Indefinite" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Immanent Solar Glory. -->
+          <!-- NOTE:  Solar Mirror - Immanent Solar Glory -->
           <charmAttribute attribute="Native" visualize="true" />
           <source source="Abyssals2nd" />
           <source source="InkMonkeys" />
@@ -168,7 +168,7 @@
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Wyld-Shaping Technique. -->
+          <!-- NOTE:  Solar Mirror - Wyld-Shaping Technique -->
 			<charmAttribute attribute="Obvious" visualize="true" />
 			<charmAttribute attribute="Shaping" visualize="true" />
           <source source="Abyssals2nd" />
@@ -183,7 +183,7 @@
           <duration duration="Varies" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Wyld Cauldron Technology.  -->
+          <!-- NOTE:  Solar Mirror - Wyld Cauldron Technology.  -->
           <source source="Abyssals2nd" />
      </charm>
 </charmlist>

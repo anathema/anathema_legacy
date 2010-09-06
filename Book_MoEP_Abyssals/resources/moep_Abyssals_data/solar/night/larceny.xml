@@ -37,6 +37,7 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Illusion" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Solar Impersonation Style -->
           <source source="Abyssals2nd" />
      </charm>
 </charmlist>

@@ -36,7 +36,7 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Master Horseman's Techniques. -->
+          <!-- NOTE:  Solar Mirror - Master Horseman's Techniques -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="Abyssals2nd" />
@@ -55,7 +55,7 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Phantom Steed. -->
+          <!-- NOTE:  Solar Mirror - Phantom Steed -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
@@ -73,7 +73,7 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Flashing Thunderbolt Steed. -->
+          <!-- NOTE:  Solar Mirror - Flashing Thunderbolt Steed -->
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
@@ -87,7 +87,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Wind-Racing Essence Infusion. -->
+          <!-- NOTE:  Solar Mirror - Wind-Racing Essence Infusion -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
@@ -101,7 +101,7 @@
           <duration duration="Instant" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Worthy Mount Technique. -->
+          <!-- NOTE:  Solar Mirror - Worthy Mount Technique -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.WretchedRiddenNightmare" exalt="Abyssal" group="Ride">

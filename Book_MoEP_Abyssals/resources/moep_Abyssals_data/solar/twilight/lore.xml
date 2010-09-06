@@ -34,6 +34,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Virtue-Devouring Hunger -->
           <source source="Abyssals2nd" />
      </charm>
 </charmlist>

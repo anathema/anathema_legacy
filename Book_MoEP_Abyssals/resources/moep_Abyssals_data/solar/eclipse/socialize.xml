@@ -38,6 +38,7 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Honey-Tongued Serpent Attack -->
           <charmAttribute attribute="Social" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>

@@ -2,145 +2,217 @@
 <!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
 "http://jpf.sourceforge.net/plugin_0_6.dtd">
 <plugin-fragment id="net.sf.anathema.character.moepAbyssals" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
-     <runtime>
-          <library id="moepAbyssals" path="./" type="code">
-               <export prefix="*" />
-          </library>
-          <library id="moepAbyssalsResources" path="./" type="resources">
-               <export prefix="*" />
-          </library>
-     </runtime>
-     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="moepAbyssalsCharms">
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/excellencies.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/day/athletics.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/day/larceny.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/daybreak/lore.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/daybreak/occult.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/dusk/archery.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/dusk/martialarts.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/dusk/thrown.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/midnight/performance.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/midnight/presence.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/midnight/resistance.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="MartialArts" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/misc/darkMessiah.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="MartialArts" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/misc/hungryGhost.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/moonshadow/sail.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Abyssal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/moonshadow/socialize.xml" />
-          </parameter>
-          <!-- Mirror Charms -->
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/solar/dawn/thrown.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/solar/eclipse/sail.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/solar/eclipse/socialize.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/solar/night/athletics.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/solar/night/larceny.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/solar/twilight/lore.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/solar/twilight/occult.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/solar/zenith/performance.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/solar/zenith/presence.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Abyssals_data/solar/zenith/resistance.xml" />
-          </parameter>
-     </extension>
-     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="moepAbyssalsResources">
-          <parameter id="bundle" value="moepAbyssals" />
-          <parameter id="bundle" value="Pages_moepAbyssals" />
-          <parameter id="bundle" value="Charms_moepAbyssals" />
-     </extension>
+	<runtime>
+		<library id="moepAbyssals" path="./" type="code">
+			<export prefix="*" />
+		</library>
+		<library id="moepAbyssalsResources" path="./" type="resources">
+			<export prefix="*" />
+		</library>
+	</runtime>
+	<extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="moepAbyssalsCharms">
+		<!-- Abyssal List -->
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/day/athletics.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/day/awareness.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/day/dodge.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/day/larceny.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/day/stealth.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/daybreak/craft.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/daybreak/investigation.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/daybreak/lore.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/daybreak/medicine.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/daybreak/occult.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/dusk/archery.xml" />
+		</parameter>
+		<!--parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/dusk/martialarts.xml" />
+		</parameter-->
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/dusk/melee.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/dusk/thrown.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/dusk/war.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/excellencies.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/midnight/integrity.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/midnight/performance.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/midnight/presence.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/midnight/resistance.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/midnight/survival.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/moonshadow/bureaucracy.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/moonshadow/linguistics.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/moonshadow/ride.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/moonshadow/sail.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/moonshadow/socialize.xml" />
+		</parameter>
+		<!-- Abyssal Martial Arts Styles -->
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/misc/darkMessiah.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/misc/hungryGhost.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/misc/misc.xml" />
+		</parameter>
+		<!-- Solar List -->
+		<parameter id="list">
+			<parameter id="type" value="Solar" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/solar/dawn/thrown.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Solar" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/solar/eclipse/sail.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Solar" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/solar/eclipse/socialize.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Solar" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/solar/night/athletics.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Solar" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/solar/night/larceny.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Solar" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/solar/twilight/lore.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Solar" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/solar/twilight/occult.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Solar" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/solar/zenith/performance.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Solar" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/solar/zenith/presence.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Solar" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/solar/zenith/resistance.xml" />
+		</parameter>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="moepAbyssalsResources">
+		<parameter id="bundle" value="moepAbyssals" />
+		<parameter id="bundle" value="Pages_moepAbyssals" />
+		<parameter id="bundle" value="Charms_moepAbyssals" />
+	</extension>
 </plugin-fragment>

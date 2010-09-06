@@ -37,7 +37,7 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Crafty Observation Method. -->
+          <!-- NOTE:  Solar Mirror - Crafty Observation Method -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.DeceptionPiercingStare" exalt="Abyssal" group="Investigation">
@@ -55,7 +55,7 @@
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Judge's Ear Techinque. -->
+          <!-- NOTE:  Solar Mirror - Judge's Ear Techinque -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.SoulInvadingGlance" exalt="Abyssal" group="Investigation">
@@ -89,7 +89,7 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Courtier's Eye Technique. -->
+          <!-- NOTE:  Solar Mirror - Courtier's Eye Technique -->
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.UnholyUnwittingPact" exalt="Abyssal" group="Investigation">
@@ -108,7 +108,7 @@
           <charmAttribute attribute="Avatar1" visualize="true" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <!-- Mirror:  Know the Soul's Price. -->
+          <!-- NOTE:  Solar Mirror - Know the Soul's Price -->
           <charmAttribute attribute="Servitude" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>

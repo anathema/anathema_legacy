@@ -47,7 +47,7 @@
           <cost>
                <essence cost="3" />
           </cost>
-          <!-- Eratta:  Duration is not listed in Solar book -->
+          <!-- TODO:  Eratta - Duration is not listed in Solar book -->
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Celestial" />
@@ -221,7 +221,7 @@
                <essence value="3" />
                <charmReference id="Celestial.HungryGhostForm" />
           </prerequisite>
-          <!-- NOTE:  There is not essence cost to the following charm. -->
+          <!-- NOTE:  There is not essence cost to the following charm -->
           <cost>
                <essence cost="0" />
                <willpower cost="1" />

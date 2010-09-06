@@ -176,7 +176,7 @@
                <charmReference id="Celestial.IllustrativeOverkillTechnique" />
                <charmReference id="Celestial.LashingTempestPalm" />
           </prerequisite>
-          <!-- NOTE:  There is not essence cost to the following charm. -->
+          <!-- NOTE:  There is no essence cost to the following charm -->
           <cost>
                <essence cost="0" />
                <willpower cost="1" text="(+1m)" />

@@ -35,6 +35,7 @@
           <duration duration="Indefinite" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Restless as the Dead -->
           <source source="Abyssals2nd" />
      </charm>
 </charmlist>
