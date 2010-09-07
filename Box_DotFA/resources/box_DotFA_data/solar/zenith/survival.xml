@@ -44,8 +44,7 @@
           <prerequisite>
                <trait id="Survival" value="5" />
                <essence value="5" />
-				<!-- TODO:  net.disy.commons.core.util.ContractFailedException: Parent Charm Solar.Food-GatheringExercise not defined for Solar.LifeSustainingShelterPreparation -->
-               <!--charmReference id="Solar.Food-GatheringExercise" /-->
+               <charmReference id="Solar.Food-GatheringExercise" />
                <charmReference id="Solar.Hardship-SurvivingMendicantSpirit" />
           </prerequisite>
           <cost>

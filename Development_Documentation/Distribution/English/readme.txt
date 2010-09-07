@@ -1,5 +1,5 @@
 ===------------------------------------------------------------------------------===
-	    ANATHEMA v1.4.1 "GREAT FORKS"
+	    ANATHEMA v1.4.2 "GREAT FORKS"
 ===------------------------------------------------------------------------------===
 
 Anathema Read Me
@@ -149,9 +149,10 @@ Same to Martin, for the cool new artwork.
 
 Paul Adams provided the inspiration that got me (Scott) started working on Anathema
 plugins, which led inevitably to the current work, with his creation of new plugins to
-support Anathema.
+support Anathema, and his sterling work on the new plugins for 1.4.2 (and getting us
+pointed in the right direction for future expansions).
 
-Thanks also to Rob Rutherford and Eric Astor, without whom 1.4.1 probably wouldn't have
+Thanks also to Rob Rutherford and Eric Astor, without whom 1.4.2 probably wouldn't have
 gotten done in 2010.  Their knowledge of Java and Eclipse has been invaluable. 
 
 Philip "The_Burrito" Markus provided much of the Necromancy spell and Lunar Charm data.

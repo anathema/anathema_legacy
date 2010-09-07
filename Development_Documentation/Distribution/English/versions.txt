@@ -4,6 +4,14 @@ Exalted (C) 2001-2008 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
+			Release 1.4.2 "Great Forks"
+===------------------------------------------------------------------------------===
+
+-- Features --
+* [2E] Updated to add Dreams of the First Age erratta and Ink Monkeys vols. 20-22.
+* [2E] New official charms added to package.    
+
+===------------------------------------------------------------------------------===
 			Release 1.4.1 "Great Forks"
 ===------------------------------------------------------------------------------===
 
