@@ -81,7 +81,7 @@
           <charmtype type="Permanent" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.BloodOnTheWind" exalt="Lunar" group="ExtendedSense">
+     <charm id="Lunar.BloodOnTheWindPer" exalt="Lunar" group="ExtendedSense">
           <prerequisite>
                <trait id="Perception" value="3" />
                <essence value="3" />
@@ -94,6 +94,7 @@
           <duration duration="Indefinite" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+		<!-- NOTE:  Lunar/Wits "Mirror" - Blood on the Wind -->
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.InevitableSpoorDiscovery" exalt="Lunar" group="ExtendedSense">

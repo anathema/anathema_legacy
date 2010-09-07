@@ -99,6 +99,7 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
           <genericCharmAttribute attribute="Excellency" />
+			<!-- NOTE:  Solar/General "Mirror" - Infinite (Ability) Mastery -->
           <charmAttribute attribute="Mortal" />
           <source source="Lunars2nd" />
      </genericCharm>

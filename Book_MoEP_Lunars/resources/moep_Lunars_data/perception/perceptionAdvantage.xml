@@ -78,6 +78,7 @@
           <duration event="NextAction" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-Basic" visualize="true" />
+			<!-- NOTE:  Lunar/Perception "Mirror" - Eagle Eye Advantage -->
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.KeenSenseTechnique" exalt="Lunar" group="PerceptionAdvantage">
@@ -93,10 +94,11 @@
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Fury-OK" visualize="true" />
+			<!-- NOTE:  Solar/Awareness "Mirror" - Keen (Sense) Technique -->
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.HeightenedSenseMethod" exalt="Lunar" group="PerceptionAdvantage">
-          <!-- Coding:  Heightenend (Sense) must match Keen (Sense). -->
+          <!-- TODO:  Coding -  Heightened (Sense) must match Keen (Sense). -->
           <prerequisite>
                <trait id="Perception" value="4" />
                <essence value="2" />

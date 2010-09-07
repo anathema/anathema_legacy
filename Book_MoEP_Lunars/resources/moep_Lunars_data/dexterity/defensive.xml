@@ -106,6 +106,7 @@
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.FlowingBodyEvasion" exalt="Lunar" group="Defensive">
+		<!-- TODO:  Coding - Has one of the "Four Flaws of Invulnerability" -->
           <prerequisite>
                <trait id="Dexterity" value="5" />
                <essence value="3" />

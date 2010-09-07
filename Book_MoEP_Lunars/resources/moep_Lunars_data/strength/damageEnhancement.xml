@@ -43,9 +43,8 @@
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.ImpressionsOfStrength" exalt="Lunar" group="DamageEnhancement">
-          <!-- Coding:  Can buy additional alternative versions for - 1 for 2xp OR 1 for 1bp
-                Versions:  Ogre's Loving Caress, Rock-to-Pebbles Attitude, Undeniable Might, 
-                Birth of Flight, and Mighty Ram Practice. -->
+          <!-- TODO:  Coding - Can buy additional alternative versions for - 1 for 2xp OR 1 for 1bp
+                Versions:  Ogre's Loving Caress, Rock-to-Pebbles Attitude, Undeniable Might, Birth of Flight, and Mighty Ram Practice. -->
           <prerequisite>
                <trait id="Strength" value="4" />
                <essence value="2" />

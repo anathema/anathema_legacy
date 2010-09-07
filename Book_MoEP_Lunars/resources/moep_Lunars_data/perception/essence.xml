@@ -117,7 +117,8 @@
           <charmtype type="Reflexive">
                <special primaryStep="1" />
           </charmtype>
-          <source source="SecondEdition" />
+			<!-- NOTE:  Solar/Occult "Mirror" - All-Encompassing Sorcerer's Sight -->
+          <source source="Lunars2nd" />
           <!-- See charm on page 222 of Core book. -->
      </charm>
 </charmlist>

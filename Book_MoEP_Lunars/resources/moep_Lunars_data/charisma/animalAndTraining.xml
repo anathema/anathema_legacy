@@ -25,9 +25,10 @@
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Animal and Training Charms -->
      <charm id="Lunar.DogTongueMethod" exalt="Lunar" group="AnimalAndTraining">
-          <!-- Coding:  Can also be Preception of two. -->
+          <!-- TODO:  Coding - This charm has an OR feature between Charisma and Perception. -->
           <prerequisite>
                <trait id="Charisma" value="2" />
+				<!--trait id="Perception" value="2" /-->
                <essence value="2" />
                <charmAttributeRequirement attribute="ExcellencyCharisma" count="1" />
           </prerequisite>
@@ -56,6 +57,7 @@
                <special speed="6" turntype="DramaticAction" defense="-1" />
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
+			<!-- NOTE:  Solar/Survival "Mirror" - Spirit-Tied Pet -->
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="Lunars2nd" />
      </charm>

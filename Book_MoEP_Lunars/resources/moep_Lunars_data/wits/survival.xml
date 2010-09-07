@@ -37,7 +37,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.BloodOnTheWind" exalt="Lunar" group="Survival">
+     <charm id="Lunar.BloodOnTheWindWit" exalt="Lunar" group="Survival">
           <!-- Since this is referenced in the Perception tree it may not need to be included here. -->
           <prerequisite>
                <trait id="Wits" value="3" />
@@ -51,6 +51,7 @@
           <duration duration="Indefinite" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+			<!-- NOTE:  Lunar/Perception "Mirror" - Blood on the Wind -->
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.PredatorAndPreyRecognition" exalt="Lunar" group="Survival">

@@ -35,6 +35,7 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+		<!-- NOTE:  Solar/Athletics "Mirror" - Graceful Crane Stance -->
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.LightFootedMountainGoatStance" exalt="Lunar" group="BalanceAndGrace">

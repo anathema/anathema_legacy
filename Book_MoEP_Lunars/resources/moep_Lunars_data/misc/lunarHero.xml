@@ -24,8 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Lunar Hero Style -->
-     <!-- For any charms in this tree, non-Lunar characters may substitute MartialArts
-          ability for the required Dexterity attribute ranking. -->
+     <!-- TODO:  For any charms in this tree, non-Lunar characters may substitute MartialArts ability for the required Dexterity attribute ranking. -->
      <charm id="Celestial.FootTrappingCounter" exalt="Lunar" group="LunarHeroStyle">
           <prerequisite>
                <trait id="Dexterity" value="3" />

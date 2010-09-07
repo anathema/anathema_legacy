@@ -38,7 +38,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.WaspStingBlur" exalt="Lunar" group="SpeedAndExtraAction">
+     <charm id="Lunar.WaspStingBlurDex" exalt="Lunar" group="SpeedAndExtraAction">
           <prerequisite>
                <trait id="Dexterity" value="3" />
                <essence value="2" />
@@ -50,6 +50,7 @@
           <duration duration="Instant" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+			<!-- NOTE:  Lunar/Wits "Mirror" - Wasp Sting Blur -->
           <charmAttribute attribute="Fury-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
@@ -57,7 +58,7 @@
           <prerequisite>
                <trait id="Dexterity" value="4" />
                <essence value="2" />
-               <charmReference id="Lunar.WaspStingBlur" />
+               <charmReference id="Lunar.WaspStingBlurDex" />
           </prerequisite>
           <cost>
                <essence cost="5" />
@@ -71,7 +72,7 @@
           <prerequisite>
                <trait id="Dexterity" value="5" />
                <essence value="3" />
-               <charmReference id="Lunar.WaspStingBlur" />
+               <charmReference id="Lunar.WaspStingBlurDex" />
           </prerequisite>
           <cost>
                <essence cost="6" />
@@ -83,7 +84,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.LightningStrokeAttack" exalt="Lunar" group="SpeedAndExtraAction">
+     <charm id="Lunar.LightningStrokeAttackDex" exalt="Lunar" group="SpeedAndExtraAction">
           <prerequisite>
                <trait id="Dexterity" value="5" />
                <essence value="4" />
@@ -95,6 +96,7 @@
           </cost>
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
+			<!-- NOTE:  Lunar/Strength "Mirror" - Lightning Stroke Attack -->
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />

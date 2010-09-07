@@ -66,7 +66,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.LightningStrokeAttack" exalt="Lunar" group="AttackEnhancement">
+     <charm id="Lunar.LightningStrokeAttackStr" exalt="Lunar" group="AttackEnhancement">
           <prerequisite>
                <trait id="Strength" value="5" />
                <essence value="4" />
@@ -78,6 +78,7 @@
           </cost>
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
+			<!-- NOTE:  Lunar/Dexterity "Mirror" - Lightning Stroke Attack -->
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />
