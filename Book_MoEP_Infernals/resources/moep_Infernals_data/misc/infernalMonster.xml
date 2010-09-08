@@ -113,24 +113,6 @@
           <charmAttribute attribute="Celestial" />
           <source source="Infernals" />
      </charm>
-     <charm id="Celestial.CrackTheSky" exalt="Solar" group="InfernalMonsterStyle">
-          <prerequisite>
-               <trait id="MartialArts" value="5" />
-               <essence value="5" />
-               <charmReference id="Celestial.FistsOfTheOldOnes" />
-          </prerequisite>
-          <cost>
-               <essence cost="15" />
-               <willpower cost="1" />
-          </cost>
-          <duration duration="Instant" />
-          <charmtype type="Reflexive" />
-          <charmAttribute attribute="Celestial" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
-          <charmAttribute attribute="Knockback" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="Infernals" />
-    </charm>
     <charm id="Celestial.JoyfulCessationOfRestraint" exalt="Solar" group="InfernalMonsterStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
@@ -195,43 +177,6 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="Infernals" />
-    </charm>
-     <charm id="Celestial.HeroSunderingHands" exalt="Solar" group="InfernalMonsterStyle">
-          <prerequisite>
-               <trait id="MartialArts" value="5" />
-               <essence value="3" />
-               <charmReference id="Celestial.WorldBreakerGrip" />
-          </prerequisite>
-          <cost>
-               <essence cost="5" />
-               <willpower cost="1" />
-          </cost>
-          <duration duration="Instant" />
-          <charmtype type="Reflexive" />
-          <charmAttribute attribute="Celestial" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
-          <charmAttribute attribute="Crippling" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="Infernals" />
-    </charm>
-     <charm id="Celestial.OathShatteringStrike" exalt="Solar" group="InfernalMonsterStyle">
-          <prerequisite>
-               <trait id="MartialArts" value="5" />
-               <essence value="5" />
-               <charmReference id="Celestial.OneHandFury" />
-          </prerequisite>
-          <cost>
-               <essence cost="60" />
-               <willpower cost="6" />
-          </cost>
-          <duration duration="Instant" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Celestial" />
-          <charmAttribute attribute="Blasphemy" visualize="true" />
-          <charmAttribute attribute="Sorcerous" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Touch" visualize="true" />
           <source source="Infernals" />
     </charm>
 </charmlist>
