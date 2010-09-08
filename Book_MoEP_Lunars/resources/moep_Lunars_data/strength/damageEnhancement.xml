@@ -41,6 +41,7 @@
           <charmAttribute attribute="Gift" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.ImpressionsOfStrength" exalt="Lunar" group="DamageEnhancement">
           <!-- TODO:  Coding - Can buy additional alternative versions for - 1 for 2xp OR 1 for 1bp

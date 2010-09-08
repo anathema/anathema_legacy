@@ -50,7 +50,7 @@
 				<prerequisite>
 					<trait id="Perception" value="4" />
 					<essence value="3" />
-					<charmReference id="Lunar.LifeOfTheHummingbird"
+					<charmReference id="Lunar.LifeOfTheHummingbird" />
 				</prerequisite>
 					<cost />
 					<!-- duration />

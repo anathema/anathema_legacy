@@ -97,6 +97,7 @@
           <charmAttribute attribute="Gift" visualize="true" />
           <charmAttribute attribute="Poison" visualize="true" />
           <source source="Lunars2nd" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.CobraEyeMethod" exalt="Lunar" group="Substance">
           <!-- TODO:  Coding -Can buy additional alternative versions for - 1 for 4xp OR 1 for 2bp
@@ -115,5 +116,6 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />
+			<source source="ScrollErrata" />
      </charm>
 </charmlist>

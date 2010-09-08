@@ -34,6 +34,7 @@
           <charmtype / -->
           <charmAttribute attribute="NotAlienLearnable" />
           <source source="Lunars2nd" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.HeartTheftOfTheBehemoth" exalt="Lunar" group="Supernatural">
           <prerequisite>

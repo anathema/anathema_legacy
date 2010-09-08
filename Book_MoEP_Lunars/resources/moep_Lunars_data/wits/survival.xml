@@ -38,8 +38,7 @@
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.BloodOnTheWindWit" exalt="Lunar" group="Survival">
-          <!-- Since this is referenced in the Perception tree it may not need to be included here. -->
-          <prerequisite>
+	          <prerequisite>
                <trait id="Wits" value="3" />
                <essence value="3" />
                <charmReference id="Lunar.LodestoneReckoningManner" />

@@ -54,5 +54,6 @@
           <charmAttribute attribute="Gift" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />
+		<source source="ScrollErrata" />
      </charm>
 </charmlist>
