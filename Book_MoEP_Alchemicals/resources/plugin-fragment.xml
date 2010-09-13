@@ -17,6 +17,17 @@
 			<parameter id="rules" value="SecondEdition"/>
 			<parameter id="path" value="moep_Alchemicals_data/??"/>
 		</parameter-->
+		<!-- Alchemical Martial Arts Styles -->
+		<parameter id="list">
+             <parameter id="type" value="MartialArts" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="moep_Alchemicals_data/misc/liveWire.xml" />
+        </parameter>
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Alchemicals_data/misc/thousandWoundsGear.xml" />
+		</parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="moepAlchemicalsResources">
           <parameter id="bundle" value="moepAlchemicals" />

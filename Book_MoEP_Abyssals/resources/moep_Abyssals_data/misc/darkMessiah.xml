@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Dark Messiah Style -->
-     <charm id="Celestial.RavagingBlow" exalt="Solar" group="DarkMessiahStyle">
+     <charm id="Celestial.RavagingBlow" exalt="Abyssal" group="DarkMessiahStyle">
           <prerequisite>
                <trait id="MartialArts" value="2" />
                <essence value="2" />
@@ -38,7 +38,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.FoeBlindingJab" exalt="Solar" group="DarkMessiahStyle">
+     <charm id="Celestial.FoeBlindingJab" exalt="Abyssal" group="DarkMessiahStyle">
           <prerequisite>
                <trait id="MartialArts" value="3" />
                <essence value="2" />
@@ -54,7 +54,7 @@
           <charmAttribute attribute="Crippling" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.DeadMansGrasp" exalt="Solar" group="DarkMessiahStyle">
+     <charm id="Celestial.DeadMansGrasp" exalt="Abyssal" group="DarkMessiahStyle">
           <prerequisite>
                <trait id="MartialArts" value="2" />
                <essence value="2" />
@@ -68,7 +68,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.InescapableIronGrip" exalt="Solar" group="DarkMessiahStyle">
+     <charm id="Celestial.InescapableIronGrip" exalt="Abyssal" group="DarkMessiahStyle">
           <prerequisite>
                <trait id="MartialArts" value="3" />
                <essence value="2" />
@@ -83,7 +83,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.DarkMessiahForm" exalt="Solar" group="DarkMessiahStyle">
+     <charm id="Celestial.DarkMessiahForm" exalt="Abyssal" group="DarkMessiahStyle">
           <prerequisite>
                <trait id="MartialArts" value="4" />
                <essence value="2" />
@@ -101,7 +101,7 @@
           <charmAttribute attribute="Form" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.BoneShatteringBlow" exalt="Solar" group="DarkMessiahStyle">
+     <charm id="Celestial.BoneShatteringBlow" exalt="Abyssal" group="DarkMessiahStyle">
           <prerequisite>
                <trait id="MartialArts" value="4" />
                <essence value="3" />
@@ -120,7 +120,7 @@
           <charmAttribute attribute="Crippling" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.GrievousAgonyAttack" exalt="Solar" group="DarkMessiahStyle">
+     <charm id="Celestial.GrievousAgonyAttack" exalt="Abyssal" group="DarkMessiahStyle">
           <prerequisite>
                <trait id="MartialArts" value="4" />
                <essence value="3" />
@@ -136,7 +136,7 @@
           <charmAttribute attribute="Crippling" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.IllustrativeOverkillTechnique" exalt="Solar" group="DarkMessiahStyle">
+     <charm id="Celestial.IllustrativeOverkillTechnique" exalt="Abyssal" group="DarkMessiahStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="3" />
@@ -153,7 +153,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.LashingTempestPalm" exalt="Solar" group="DarkMessiahStyle">
+     <charm id="Celestial.LashingTempestPalm" exalt="Abyssal" group="DarkMessiahStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="3" />
@@ -168,7 +168,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.VoidAvatarPrana" exalt="Solar" group="DarkMessiahStyle">
+     <charm id="Celestial.VoidAvatarPrana" exalt="Abyssal" group="DarkMessiahStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="4" />

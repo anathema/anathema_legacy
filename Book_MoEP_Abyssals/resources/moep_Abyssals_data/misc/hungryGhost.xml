@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Hungry Ghost Style -->
-     <charm id="Celestial.BloodScentingHunger" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.BloodScentingHunger" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="2" />
                <essence value="2" />
@@ -38,7 +38,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.LeapingHorrorApproach" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.LeapingHorrorApproach" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="4" />
                <essence value="2" />
@@ -55,7 +55,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.LungingPhantomMethod" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.LungingPhantomMethod" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="3" />
                <essence value="2" />
@@ -70,7 +70,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.ShroudedClawAttack" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.ShroudedClawAttack" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="3" />
                <essence value="2" />
@@ -86,7 +86,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.HungryGhostForm" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.HungryGhostForm" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="4" />
                <essence value="2" />
@@ -106,7 +106,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.PowerReapingPrana" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.PowerReapingPrana" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="4" />
                <essence value="3" />
@@ -124,7 +124,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.CharmSmotheringTechnique" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.CharmSmotheringTechnique" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="3" />
@@ -141,7 +141,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.UnnaturalShamblingDeftness" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.UnnaturalShamblingDeftness" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="4" />
                <essence value="2" />
@@ -158,7 +158,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.ScuttlingApparitionDefense" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.ScuttlingApparitionDefense" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="4" />
                <essence value="3" />
@@ -178,7 +178,7 @@
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.ConsumingEntropyStrike" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.ConsumingEntropyStrike" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="4" />
                <essence value="3" />
@@ -197,7 +197,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.BloodFreezingTechnique" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.BloodFreezingTechnique" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="3" />
@@ -215,7 +215,7 @@
           <charmAttribute attribute="Stackable" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.LabyrinthWalkingPrana" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.LabyrinthWalkingPrana" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="3" />
@@ -234,7 +234,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.SoulFlayingStrike" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.SoulFlayingStrike" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="4" />
@@ -255,7 +255,7 @@
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-     <charm id="Celestial.SoulConsumingTranscendence" exalt="Solar" group="HungryGhostStyle">
+     <charm id="Celestial.SoulConsumingTranscendence" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="4" />
