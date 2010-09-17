@@ -10,7 +10,7 @@ public class LongestPathLayerer implements ILayerer {
     IRegularNode[] topologicallySortedNodes = TopologyBuilder.sortGraphByTopology(acyclicGraph);
     setLayersToOne(topologicallySortedNodes);
     int deepestLayer = determineLayers(topologicallySortedNodes);
-    deepestLayer = optimizeLayers(topologicallySortedNodes, deepestLayer);
+    //deepestLayer = optimizeLayers(topologicallySortedNodes, deepestLayer);
     return deepestLayer;
   }
 
@@ -32,6 +32,8 @@ public class LongestPathLayerer implements ILayerer {
   }
 
   private int optimizeLayers(IRegularNode[] topologicallySortedNodes, int deepestLayer) {
+	// This is not currently useful, as the one "optimizer" in place produces often-questionable results.
+    // TODO: [2010-09-17] Improve the TwoCommonParentsOptimizer - or possibly optimization as a whole.
     MultiEntryMap<Integer, IRegularNode> nodesByLayer = new MultiEntryMap<Integer, IRegularNode>();
     for (IRegularNode node : topologicallySortedNodes) {
       nodesByLayer.add(node.getLayer(), node);
