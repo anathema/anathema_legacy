@@ -1,4 +1,4 @@
-<project default="zip">
+<project default="thirdparty">
 
   <property file="directories.properties" />
 
@@ -45,5 +45,9 @@
       </fileset>
       <zipfileset prefix="lib" refid="libraries" />
     </zip>
+  </target>
+  
+  <target name="thirdparty" depends="jar">
+    <copy file="graphlayout.jar" todir="../Thirdparty/Graph" />
   </target>
 </project>
