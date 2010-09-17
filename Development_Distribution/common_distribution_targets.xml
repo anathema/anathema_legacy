@@ -5,8 +5,10 @@
 	<taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${distributiontargets.basedir}/../Thirdparty/Ant/ant-contrib-1.0b1.jar" />
 	
 	<target name="Clean">
-		<delete dir="${build.dir}" />
-		<delete dir="${test.dir}" />
+		<delete>
+			<fileset dir="${build.dir}" />
+			<fileset dir="${test.dir}" />
+		</delete>
 	</target>
 
 	<target name="Build Plugins">
@@ -69,7 +71,9 @@
 	</target>
 	
 	<target name="Build Test Distribution">
-		<deltree dir="${test.dir}"/>
+		<delete>
+			<fileset dir="${test.dir}" />
+		</delete>
 		<copy todir="${test.dir}">
             <fileset dir="${build.dir}" includes="anathema.jar" />
             <fileset dir="${files.dir}" includes="**/*" />
