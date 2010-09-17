@@ -36,14 +36,10 @@ public class LongestPathLayerer implements ILayerer {
     for (IRegularNode node : topologicallySortedNodes) {
       nodesByLayer.add(node.getLayer(), node);
     }
-    boolean increaseDeepestLayer = false;
     for (int layerIndex = 2; layerIndex <= deepestLayer; layerIndex++) {
-      increaseDeepestLayer |= TwoCommonParentsOptimizer.moveDownOvercrossingTwoTupels(
+      deepestLayer = TwoCommonParentsOptimizer.moveDownOvercrossingTwoTupels(
           nodesByLayer.get(layerIndex),
           deepestLayer);
-    }
-    if (increaseDeepestLayer) {
-      deepestLayer++;
     }
     return deepestLayer;
   }

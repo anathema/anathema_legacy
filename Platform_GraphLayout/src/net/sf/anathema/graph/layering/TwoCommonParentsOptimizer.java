@@ -12,12 +12,11 @@ import net.sf.anathema.graph.nodes.ISimpleNode;
 
 public class TwoCommonParentsOptimizer {
 
-  public static boolean moveDownOvercrossingTwoTupels(List<IRegularNode> nodes, int deepestLayer) {
+  public static int moveDownOvercrossingTwoTupels(List<IRegularNode> nodes, int deepestLayer) {
     List<IRegularNode> dualParentNodes = getDualParentNodes(nodes);
     if (dualParentNodes.size() < 2) {
-      return false;
+      return deepestLayer;
     }
-    boolean increaseDeepestLayer = false;
     Set<IRegularNode> doubleParentNodeSet = new HashSet<IRegularNode>(dualParentNodes);
     for (IRegularNode node : dualParentNodes) {
       if (!doubleParentNodeSet.contains(node)) {
@@ -26,16 +25,27 @@ public class TwoCommonParentsOptimizer {
       doubleParentNodeSet.remove(node);
       for (IRegularNode otherNode : new HashSet<IRegularNode>(doubleParentNodeSet)) {
         if (shareAllParents(node, otherNode) && noCommonSiblings(node, otherNode)) {
-          // TODO (26.10.2005): Kindreicher Knoten hinab
           doubleParentNodeSet.remove(otherNode);
           int targetLayer = node.getLayer() + 1;
           node.setLayer(targetLayer);
-          increaseDeepestLayer |= targetLayer > deepestLayer;
+          deepestLayer = fixLayers(node, deepestLayer);
           break;
         }
       }
     }
-    return increaseDeepestLayer;
+    return deepestLayer;
+  }
+  
+  private static int fixLayers(IRegularNode node, int deepestLayer) {
+    for (ISimpleNode child : node.getChildren()) {
+      IRegularNode regularChild = (IRegularNode) child;
+      if (regularChild.getLayer() <= node.getLayer())
+      {
+        regularChild.setLayer(node.getLayer() + 1);
+        deepestLayer = Math.max(fixLayers(regularChild, deepestLayer), deepestLayer);
+      }
+    }
+    return Math.max(node.getLayer(), deepestLayer);
   }
 
   private static boolean noCommonSiblings(IRegularNode node, IRegularNode otherNode) {

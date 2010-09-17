@@ -125,8 +125,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
-	<!-- TODO:  Exception in thread "AWT-EventQueue-0" java.lang.IllegalArgumentException: Abyssal.WickedDartsOfSuffering (Layer:3) and Abyssal.FrozenPrayerEntombment (Layer:3) are more than one layer apart. -->
-     <!--charm id="Abyssal.FrozenPrayerEntombment" exalt="Abyssal" group="Thrown">
+     <charm id="Abyssal.FrozenPrayerEntombment" exalt="Abyssal" group="Thrown">
           <prerequisite>
                <trait id="Thrown" value="5" />
                <essence value="3" />
@@ -140,7 +139,7 @@
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
-     </charm-->
+     </charm>
      <charm id="Abyssal.LightningClutchOfTheRaptor" exalt="Abyssal" group="Thrown">
           <prerequisite>
                <trait id="Thrown" value="4" />
@@ -177,6 +176,7 @@
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Spirit Weapons -->
           <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.EyesLikeDaggersGlance" exalt="Abyssal" group="Thrown">
           <prerequisite>
