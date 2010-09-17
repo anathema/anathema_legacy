@@ -23,7 +23,7 @@ public enum ExaltedSourceBook implements IExaltedSourceBook {
  Infernals(ExaltedEdition.SecondEdition), ThousandCorrectActions(ExaltedEdition.SecondEdition),GloriesLuna(ExaltedEdition.SecondEdition),
  GloriesMaidens(ExaltedEdition.SecondEdition),GloriesUCS(ExaltedEdition.SecondEdition), DebrisFallenRaces(ExaltedEdition.SecondEdition),
  ScrollExalts(ExaltedEdition.SecondEdition), InkMonkeys(ExaltedEdition.SecondEdition),ReturnEmpress(ExaltedEdition.SecondEdition),
- UnderRose(ExaltedEdition.SecondEdition), ContagionLaw(ExaltedEdition.SecondEdition), ScrollErrata(ExaltedEdition.SecondEdition)
+ UnderRose(ExaltedEdition.SecondEdition), ContagionLaw(ExaltedEdition.SecondEdition), ScrollErrata(ExaltedEdition.SecondEdition),
  Alchemicals2nd(ExaltedEdition.SecondEdition);
 
   private final IExaltedEdition edition;
