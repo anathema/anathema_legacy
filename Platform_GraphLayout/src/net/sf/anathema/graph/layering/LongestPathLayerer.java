@@ -32,17 +32,22 @@ public class LongestPathLayerer implements ILayerer {
   }
 
   private int optimizeLayers(IRegularNode[] topologicallySortedNodes, int deepestLayer) {
-	// This is not currently useful, as the one "optimizer" in place produces often-questionable results.
+	// This is not currently useful, as the one "optimizer" in place produces often-questionable results,
+	// and the new layer-overflow optimizer isn't yet supported by the SVG tree rendering code.
+	
     // TODO: [2010-09-17] Improve the TwoCommonParentsOptimizer - or possibly optimization as a whole.
     MultiEntryMap<Integer, IRegularNode> nodesByLayer = new MultiEntryMap<Integer, IRegularNode>();
     for (IRegularNode node : topologicallySortedNodes) {
       nodesByLayer.add(node.getLayer(), node);
     }
-    for (int layerIndex = 2; layerIndex <= deepestLayer; layerIndex++) {
-      deepestLayer = TwoCommonParentsOptimizer.moveDownOvercrossingTwoTupels(
-          nodesByLayer.get(layerIndex),
-          deepestLayer);
-    }
+    //for (int layerIndex = 1; layerIndex <= deepestLayer; layerIndex++) {
+    //    deepestLayer = LayerOverflowOptimizer.splitLayer(nodesByLayer.get(layerIndex), deepestLayer);
+    //}
+    //for (int layerIndex = 2; layerIndex <= deepestLayer; layerIndex++) {
+    //  deepestLayer = TwoCommonParentsOptimizer.moveDownOvercrossingTwoTupels(
+    //      nodesByLayer.get(layerIndex),
+    //      deepestLayer);
+    //}
     return deepestLayer;
   }
 
