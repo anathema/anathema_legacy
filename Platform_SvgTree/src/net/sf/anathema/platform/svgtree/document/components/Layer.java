@@ -256,10 +256,10 @@ public class Layer implements ILayer {
   }
 
   public int getWidth() {
-    IVisualizableNode finalNode = nodes.get(nodes.size() - 1);
-    if (finalNode == null) {
+    if (nodes.isEmpty()) {
       return 0;
     }
+    IVisualizableNode finalNode = nodes.get(nodes.size() - 1);
     return finalNode.getRightSide();
   }
 
