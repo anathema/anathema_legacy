@@ -23,7 +23,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Thousand Wounds Gear Style -->
-<!-- TODO:  Coding - Implementing work around due to lack of Charm View for Alchemicals. (e.g. exalt "Solar" -> "Alchemicals")-->
+<!-- TODO:  Coding - Implementing work around due to lack of Charm View for Alchemicals. (e.g. exalt "Solar" -> "Alchemical")-->
 	<charm id="Celestial.TheCircleScreams" exalt="Solar" group="ThousandWoundsGearStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="2" />
