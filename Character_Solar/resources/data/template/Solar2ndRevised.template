@@ -1,0 +1,39 @@
+<exaltedCharacterTemplate characterType="Solar" subtemplate="RevisedSolar">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="template/SolarAbilityGroup2nd.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="DefaultEssence.template" />
+    <traitCollection uses="trait/DefaultTraitCollection.template"/>
+    <magicTemplate uses="template/SolarMagic2nd.template"/>
+    <presentation uses="template/SolarPresentation2nd.template"/>
+    <additionalRules>
+    	<additionalPools>
+    		<multilearnablePool>
+    			<charmReference id="Solar.ImmanentSolarGlory"/>    			
+    			<peripheralPool multiplier="10"/>
+    		</multilearnablePool>
+    	</additionalPools> 
+    </additionalRules>
+    <additionalTemplates>
+      <template id="SolarVirtueFlaw" />
+    </additionalTemplates>
+    <healthTemplate>
+      <toughnessControllingTrait type="Resistance"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="RevisedDefaultBonusPointCost2nd.template" />
+    <creationPoints>
+      <attributeDots primary="8" secondary="6" tertiary="4" />
+      <abilityDots general="18" favored="10" favoredPicks="5" />
+      <backgroundDots count="7" />
+      <virtueDots count="5" />
+      <bonusPoints count="18" />
+      <charmPicks favored="0" general="10" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="experience/DefaultExperienceCost.template" />
+  </experience>
+</exaltedCharacterTemplate>

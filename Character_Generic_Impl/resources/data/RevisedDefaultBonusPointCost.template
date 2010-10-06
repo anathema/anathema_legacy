@@ -1,0 +1,46 @@
+<bonusPointCost>
+  <attributes>
+    <generalAttribute>
+      <fixedCost cost="4" />
+    </generalAttribute>
+  </attributes>
+  <abilities>
+    <generalAbility>
+      <fixedCost cost="2" />
+    </generalAbility>
+    <favoredAbility>
+      <fixedCost cost="1" />
+    </favoredAbility>
+    <specialties>
+      <generalDotsPerPoint dots="1" />
+      <favoredDotsPerPoint dots="2" />
+    </specialties>
+  </abilities>
+  <advantages>
+    <backgrounds>
+      <lowRatings>
+        <fixedCost cost="1" />
+      </lowRatings>
+      <highRatings>
+        <fixedCost cost="2" />
+      </highRatings>
+    </backgrounds>
+    <virtues>
+      <fixedCost cost="1" />
+    </virtues>
+    <willpower>
+      <fixedCost cost="1" />
+    </willpower>
+    <essence>
+      <fixedCost cost="7" />
+    </essence>
+  </advantages>
+  <charms>
+    <generalCharms>
+      <fixedCost cost="5" />
+    </generalCharms>
+    <favoredCharms>
+      <fixedCost cost="4" />
+    </favoredCharms>
+  </charms>
+</bonusPointCost>

@@ -1,0 +1,8 @@
+<bonusPointCost uses="RevisedDefaultBonusPointCost.template">
+  <advantages>
+    <virtues>
+      <fixedCost cost="1" />
+      <maximumFreeRank rank="4"/>
+    </virtues>
+  </advantages>
+</bonusPointCost>
