@@ -3664,8 +3664,8 @@
   </charm>
   <charm id="Solar.PerfectReckoningTechnique" exalt="Solar" group="Sail">
     <prerequisite>
-      <essence id="Essence" value="2"/>
-      <trait id="Sail" value="4"/>
+      <essence id="Essence" value="1"/>
+      <trait id="Sail" value="3"/>
       <charmAttributeRequirement attribute="ExcellencySail" count="1"/>
     </prerequisite>
     <cost>
