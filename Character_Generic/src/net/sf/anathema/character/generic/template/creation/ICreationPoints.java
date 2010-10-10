@@ -10,6 +10,8 @@ public interface ICreationPoints {
   public int getBonusPointCount();
 
   public int getVirtueCreationPoints();
+  
+  public int getSpecialityCreationPoints();
 
   public IFavorableTraitCreationPoints getAbilityCreationPoints();
 
