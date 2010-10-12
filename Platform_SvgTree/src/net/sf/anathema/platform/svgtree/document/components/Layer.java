@@ -12,7 +12,7 @@ import org.dom4j.Element;
 
 public class Layer implements ILayer {
 
-  private final List<IVisualizableNode> nodes = new ArrayList<IVisualizableNode>();
+  protected final List<IVisualizableNode> nodes = new ArrayList<IVisualizableNode>();
   private ILayer nextLayer;
   private final Dimension gapDimension;
   private final int yPosition;
@@ -21,6 +21,10 @@ public class Layer implements ILayer {
   public Layer(Dimension gapDimension, int yPosition) {
     this.gapDimension = gapDimension;
     this.yPosition = yPosition;
+  }
+  
+  public Dimension getGapDimension() {
+    return new Dimension(gapDimension);
   }
 
   public void setPreviousLayer(ILayer previousLayer) {
@@ -182,11 +186,11 @@ public class Layer implements ILayer {
     return nodes.get(index - 1);
   }
 
-  private Integer calculateNextFreePosition(Integer lastNodeRightSide, IVisualizableNode node) {
+  protected Integer calculateNextFreePosition(Integer lastNodeRightSide, IVisualizableNode node) {
     if (lastNodeRightSide == null) {
-      return node.getWidth() / 2;
+      return (node.getWidth() + 1) / 2;
     }
-    return lastNodeRightSide + gapDimension.width + node.getWidth() / 2;
+    return lastNodeRightSide + gapDimension.width + (node.getWidth() + 1) / 2;
   }
 
   public void setFollowUp(ILayer layer) {
@@ -284,6 +288,12 @@ public class Layer implements ILayer {
           // Nothing to do
         }
       });
+    }
+  }
+
+  public void forceShift(int shift) {
+    for (IVisualizableNode node : nodes) {
+      node.setPosition(node.getPosition() + shift);
     }
   }
 

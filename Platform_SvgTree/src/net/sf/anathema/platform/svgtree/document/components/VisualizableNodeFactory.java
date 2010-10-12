@@ -13,15 +13,18 @@ public class VisualizableNodeFactory {
   private final Map<ISimpleNode, IVisualizableNode> map;
   private final Dimension nodeDimension;
   private final Dimension gapDimension;
+  private final Dimension lineDimension;
   private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors;
 
   public VisualizableNodeFactory(
       final Dimension nodeDimension,
       final Dimension gapDimension,
+      final Dimension lineDimension,
       final Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent,
       final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
     this.nodeDimension = nodeDimension;
     this.gapDimension = gapDimension;
+    this.lineDimension = lineDimension;
     this.map = visualizableNodesByContent;
     this.leafNodesByAncestors = leafNodesByAncestors;
   }
@@ -32,7 +35,7 @@ public class VisualizableNodeFactory {
       node = new VisualizableNode((IIdentifiedRegularNode) contentNode, map, nodeDimension, leafNodesByAncestors);
     }
     else {
-      node = new VisualizableDummyNode(contentNode, map, nodeDimension, leafNodesByAncestors);
+      node = new VisualizableDummyNode(contentNode, map, lineDimension, leafNodesByAncestors);
     }
     return node;
   }

@@ -9,6 +9,8 @@ public interface ITreePresentationProperties {
   public Dimension getNodeDimension();
 
   public Dimension getGapDimension();
+  
+  public Dimension getVerticalLineDimension();
 
   public boolean isolateSingles();
 }

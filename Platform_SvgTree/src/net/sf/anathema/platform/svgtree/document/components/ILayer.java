@@ -30,6 +30,8 @@ public interface ILayer {
   public int getWidth();
 
   public void unrollHorizontalMetanodes();
+  
+  public void forceShift(int shift);
 
   public void shiftRight(int requiredShift);
 

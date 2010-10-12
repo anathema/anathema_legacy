@@ -97,10 +97,10 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
   }
 
   public int getLeftSide() {
-    return getPosition() - getWidth() / 2;
+    return getPosition() - (getWidth() + 1) / 2;
   }
 
   public int getRightSide() {
-    return getPosition() + getWidth() / 2;
+    return getPosition() + (getWidth() + 1) / 2;
   }
 }

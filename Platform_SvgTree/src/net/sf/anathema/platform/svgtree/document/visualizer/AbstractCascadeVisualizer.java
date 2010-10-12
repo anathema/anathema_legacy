@@ -31,6 +31,7 @@ public abstract class AbstractCascadeVisualizer implements ICascadeVisualizer {
     this.nodeFactory = new VisualizableNodeFactory(
         properties.getNodeDimension(),
         properties.getGapDimension(),
+        properties.getVerticalLineDimension(),
         visualizableNodesByContent,
         leafNodesByAncestors);
   }

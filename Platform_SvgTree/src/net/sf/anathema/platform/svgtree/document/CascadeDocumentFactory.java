@@ -15,6 +15,7 @@ import net.sf.anathema.platform.svgtree.document.visualizer.BottomUpGraphVisuali
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.document.visualizer.IVisualizedGraph;
 import net.sf.anathema.platform.svgtree.document.visualizer.InvertedTreeVisualizer;
+import net.sf.anathema.platform.svgtree.document.visualizer.PriorityLayoutGraphVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.SingleNodeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.TreeVisualizer;
 
