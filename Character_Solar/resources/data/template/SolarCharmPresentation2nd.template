@@ -13,5 +13,6 @@
              5.5,82.64578</polygon>             
 	<charmDimension width="180" height="90"/>
 	<gapDimension width="25" height="50"/>
+	<lineDimension width="25" height="90"/>
 	<isolateSingleCharms isolate="true"/>
 </charmPresentation>

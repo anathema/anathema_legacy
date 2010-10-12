@@ -18,6 +18,7 @@ public class CharmPresentationPropertiesParserTest extends BasicTestCase {
       + "<polygon>157.07742,9.777771</polygon>" //$NON-NLS-1$
       + "<charmDimension width=\"150\" height=\"75\"/>" //$NON-NLS-1$
       + "<gapDimension width=\"25\" height=\"50\"/>" //$NON-NLS-1$
+      + "<lineDimension width=\"25\" height=\"75\"/>" //$NON-NLS-1$
       + "</charmPresentation>"; //$NON-NLS-1$
   private CharmPresentationPropertiesParser parser;
   private DummyXmlTemplateRegistry<GenericCharmPresentationProperties> templateRegistry;
@@ -53,6 +54,7 @@ public class CharmPresentationPropertiesParserTest extends BasicTestCase {
     String challengedXml = "<charmPresentation>" //$NON-NLS-1$
         + "<polygon>157.07742,9.777771</polygon>" //$NON-NLS-1$
         + "<gapDimension width=\"25\" height=\"50\"/>" //$NON-NLS-1$
+        + "<lineDimension width=\"25\" height=\"75\"/>" //$NON-NLS-1$
         + "</charmPresentation>"; //$NON-NLS-1$
     GenericCharmPresentationProperties properties = parseXml(challengedXml);
     assertNull(properties.getNodeDimension());
@@ -67,9 +69,25 @@ public class CharmPresentationPropertiesParserTest extends BasicTestCase {
     String crippleXML = "<charmPresentation>" //$NON-NLS-1$
         + "<polygon>157.07742,9.777771</polygon>" //$NON-NLS-1$
         + "<charmDimension width=\"150\" height=\"75\"/>" //$NON-NLS-1$
+        + "<lineDimension width=\"25\" height=\"75\"/>" //$NON-NLS-1$
         + "</charmPresentation>"; //$NON-NLS-1$
     GenericCharmPresentationProperties properties = parseXml(crippleXML);
     assertNull(properties.getGapDimension());
+  }
+
+  public void testParseLineDimension() throws Exception {
+    GenericCharmPresentationProperties presentationProperties = parseXml(xml);
+    assertEquals(new Dimension(25, 75), presentationProperties.getVerticalLineDimension());
+  }
+
+  public void testNoLineDimensionThrowsException() throws Exception {
+    String crippleXML = "<charmPresentation>" //$NON-NLS-1$
+        + "<polygon>157.07742,9.777771</polygon>" //$NON-NLS-1$
+        + "<charmDimension width=\"150\" height=\"75\"/>" //$NON-NLS-1$
+        + "<gapDimension width=\"25\" height=\"50\"/>" //$NON-NLS-1$
+        + "</charmPresentation>"; //$NON-NLS-1$
+    GenericCharmPresentationProperties properties = parseXml(crippleXML);
+    assertNull(properties.getVerticalLineDimension());
   }
 
   public void testNoIsolateSingles() throws Exception {
@@ -82,6 +100,7 @@ public class CharmPresentationPropertiesParserTest extends BasicTestCase {
         + "<polygon>157.07742,9.777771</polygon>" //$NON-NLS-1$
         + "<charmDimension width=\"150\" height=\"75\"/>" //$NON-NLS-1$
         + "<gapDimension width=\"25\" height=\"50\"/>" //$NON-NLS-1$
+        + "<lineDimension width=\"25\" height=\"75\"/>" //$NON-NLS-1$
         + "<isolateSingleCharms isolate=\"true\"/>" //$NON-NLS-1$
         + "</charmPresentation>"; //$NON-NLS-1$
     GenericCharmPresentationProperties properties = parseXml(isolateXml);
