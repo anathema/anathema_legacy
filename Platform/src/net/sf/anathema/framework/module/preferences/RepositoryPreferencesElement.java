@@ -20,6 +20,10 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
+import net.sf.anathema.framework.repository.RepositoryException;
+import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
+import net.sf.anathema.initialization.repository.IStringResolver;
+import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -113,9 +117,33 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     }
     catch (IOException e) {
       Throwable cause = e.getCause();
+      if (cause == null) {
+        cause = e;
+      }
       MessageDialogFactory.showMessageDialog(null, new Message(
           "An error occured while saving the repository preferences: " + cause.getMessage(), cause)); //$NON-NLS-1$
     }
+  }
+  
+  public boolean isValid() {
+	try {
+      IOFileSystemAbstraction fileSystem = new IOFileSystemAbstraction();
+      new RepositoryFolderCreator(fileSystem, new IStringResolver() {
+        public String resolve() {
+          return repositoryDirectory.getAbsolutePath();
+        }
+        }).createRepositoryFolder();
+      return true;
+	}
+	catch (RepositoryException e) {
+      Throwable cause = e.getCause();
+      if (cause == null) {
+        cause = e;
+      }
+      MessageDialogFactory.showMessageDialog(null, new Message(
+          "Could not create the new repository: " + cause.getMessage(), cause)); //$NON-NLS-1$
+      return false;
+	}
   }
 
   public boolean isDirty() {

@@ -15,6 +15,8 @@ public interface IPreferencesElement {
   public static final IIdentificate SYSTEM_CATEGORY = new Identificate("System"); //$NON-NLS-1$
 
   public void savePreferences();
+  
+  public boolean isValid();
 
   public boolean isDirty();
 

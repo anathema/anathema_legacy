@@ -43,6 +43,10 @@ public class RulesetPreferenceElement extends AbstractCharacterPreferencesElemen
   public void savePreferences() {
     CHARACTER_PREFERENCES.put(RULESET_PREFERENCE, ruleset.getId());
   }
+  
+  public boolean isValid() {
+    return true;
+  }
 
   public boolean isDirty() {
     return dirty;

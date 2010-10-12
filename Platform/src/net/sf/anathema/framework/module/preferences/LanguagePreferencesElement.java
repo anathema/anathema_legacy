@@ -74,6 +74,10 @@ public class LanguagePreferencesElement implements IPreferencesElement {
   public void savePreferences() {
     SYSTEM_PREFERENCES.put(LOCALE_PREFERENCE, locale.name());
   }
+  
+  public boolean isValid() {
+    return true;
+  }
 
   public boolean isDirty() {
     return dirty;

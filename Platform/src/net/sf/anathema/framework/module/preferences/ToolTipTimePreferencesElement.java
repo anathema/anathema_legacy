@@ -53,6 +53,10 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
   public void savePreferences() {
     IPreferencesElement.SYSTEM_PREFERENCES.putInt(TOOL_TIP_TIME_PREFERENCE, toolTipTime);
   }
+  
+  public boolean isValid() {
+    return true;
+  }
 
   public boolean isDirty() {
     return dirty;

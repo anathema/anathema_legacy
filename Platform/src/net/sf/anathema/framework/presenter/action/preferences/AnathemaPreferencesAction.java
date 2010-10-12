@@ -29,16 +29,35 @@ public class AnathemaPreferencesAction extends SmartAction {
   protected void execute(Component parentComponent) {
     AnathemaPreferencesPage page = new AnathemaPreferencesPage(resources, elements);
     UserDialog userDialog = new UserDialog(parentComponent, page);
-    userDialog.show();
-    if (userDialog.isCanceled()) {
-      for (IPreferencesElement element : elements) {
-        if (element.isDirty()) {
-          element.reset();
+    
+    boolean confirmed = false;
+    boolean dirty = false;
+    while (!confirmed) {
+      userDialog.show();
+      confirmed = true;
+      
+      if (userDialog.isCanceled()) {
+        for (IPreferencesElement element : elements) {
+          if (element.isDirty()) {
+            element.reset();
+          }
         }
       }
-      return;
+      else {
+        dirty = false;
+        for (IPreferencesElement element : elements) {
+          if (element.isDirty()) {
+            if (element.isValid()) {
+              dirty = true;
+            }
+            else {
+              confirmed = false;
+              continue;
+            }
+          }
+        }
+      }
     }
-    boolean dirty = false;
     for (IPreferencesElement element : elements) {
       if (element.isDirty()) {
         element.savePreferences();

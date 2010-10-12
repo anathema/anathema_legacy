@@ -56,6 +56,10 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
     });
     return checkBox;
   }
+  
+  public boolean isValid() {
+    return true;
+  }
 
   public boolean isDirty() {
     return dirty;
