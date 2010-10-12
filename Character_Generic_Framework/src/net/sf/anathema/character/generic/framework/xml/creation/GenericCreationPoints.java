@@ -47,7 +47,7 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
     return virtueCreationPoints;
   }
 
-  public int getSpecialityCreationPoints() {
+  public int getSpecialtyCreationPoints() {
 	    return specialityCreationPoints;
 	  }
 

@@ -25,6 +25,10 @@ public class UnsupportedCreationPoints implements ICreationPoints {
   public int getVirtueCreationPoints() {
     throw new UnsupportedOperationException("Not supported."); //$NON-NLS-1$
   }
+  
+  public int getSpecialtyCreationPoints() {
+    throw new UnsupportedOperationException("Not supported."); //$NON-NLS-1$
+  }
 
   public int getFavoredCreationCharmCount() {
     throw new UnsupportedOperationException("Not supported."); //$NON-NLS-1$

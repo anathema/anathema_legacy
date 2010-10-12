@@ -95,6 +95,10 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
       public int getVirtueCreationPoints() {
         throw new NotYetImplementedException();
       }
+      
+      public int getSpecialtyCreationPoints() {
+        throw new NotYetImplementedException();
+      }
 
       public IFavorableTraitCreationPoints getAbilityCreationPoints() {
         throw new NotYetImplementedException();

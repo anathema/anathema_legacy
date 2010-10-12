@@ -20,6 +20,10 @@ public class LoyalAbyssalCreationPoints extends AbstractCreationPoints {
     return 15;
   }
 
+  public int getSpecialtyCreationPoints() {
+    return 0;
+  }
+  
   public final IFavorableTraitCreationPoints getAbilityCreationPoints() {
     return new FavorableTraitCreationPoints(5, 10, 15);
   }

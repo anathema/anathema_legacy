@@ -19,6 +19,10 @@ public class TestCreationPoints extends AbstractCreationPoints {
   public int getBackgroundPointCount() {
     return 7;
   }
+  
+  public int getSpecialtyCreationPoints() {
+    return 0;
+  }
 
   public IFavorableTraitCreationPoints getAbilityCreationPoints() {
     return new FavorableTraitCreationPoints(5, 10, 15);

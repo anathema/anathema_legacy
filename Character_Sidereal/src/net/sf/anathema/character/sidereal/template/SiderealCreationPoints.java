@@ -15,6 +15,10 @@ public class SiderealCreationPoints extends AbstractCreationPoints {
   public int getBonusPointCount() {
     return 18;
   }
+  
+  public int getSpecialtyCreationPoints() {
+    return 0;
+  }
 
   public IFavorableTraitCreationPoints getAbilityCreationPoints() {
     return new FavorableTraitCreationPoints(4, 10, 25);
