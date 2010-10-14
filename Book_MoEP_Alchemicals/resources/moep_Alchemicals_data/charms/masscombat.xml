@@ -23,5 +23,137 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Mass Combat Charms -->
-	
+	<charm id="Alchemical.HundredfoldStrafingMethodology" exalt="Alchemical" group="MassCombat">
+		<prerequisite>
+			<trait id="Dexterity" value="5" />
+			<essence value="3" />
+			<charmAttributeRequirement attribute="ExcellencyDexterity" count="1" />
+			<charmReference id="Alchemical.AimCalibratingSensors" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" text="[1m]" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="War" visualize="true" />
+		<!-- TODO:  Upgrade - Siege Devastation Mode (Min Strength 6 & Essence 5) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.SemioticFlareProjector" exalt="Alchemical" group="MassCombat">
+		<prerequisite>
+			<trait id="Charisma" value="4" />
+			<essence value="3" />
+			<charmAttributeRequirement attribute="ExcellencyCharisma" count="1" />
+		</prerequisite>
+		<cost>
+			<essence cost="4" text="[1m]" />
+			<willpower cost="1" />
+		</cost>
+		<duration amount="1" unit="scene" />
+		<charmtype type="Simple">
+			<special speed="4" turntype="LongTick" defense="-1" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="War" visualize="true" />
+		<!-- TODO:  Upgrade - Fear Override Device (Min Charisma 5 & 5 XP) -->
+		<!-- TODO:  Upgrade - Transdivine Synergy Beacon (Min Charisma 5) -->
+		<!-- TODO:  Upgrade - Tireless Army of Order (Min Charisma 6 & 4 XP) -->
+		<!-- TODO:  Upgrade - Central Command Beacon (Min Charisma 7) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.TunnelFightingTacticalOmnibusImplant" exalt="Alchemical" group="MassCombat">
+		<prerequisite>
+			<trait id="Charisma" value="3" />
+			<essence value="2" />
+			<charmAttributeRequirement attribute="ExcellencyCharisma" count="1" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="[1m]" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="War" visualize="true" />
+		<!-- TODO:  Upgrade - Close-Quarters Vector Compensator (Min Wits 4 & 3 XP) -->
+		<!-- TODO:  Upgrade - Tactical Sub-Noetic Transmitter (Min Intelligence 5 & Essence 4) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.ClockworkSoldierPatternProjector" exalt="Alchemical" group="MassCombat">
+		<prerequisite>
+			<trait id="Charisma" value="5" />
+			<essence value="4" />
+			<charmReference id="Alchemical.TunnelFightingTacticalOmnibusImplant" />
+		</prerequisite>
+		<cost>
+			<essence cost="7" text="[1m]" />
+			<willpower cost="1" />
+		</cost>
+		<duration amount="1" unit="scene" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="War" visualize="true" />
+		<!-- TODO:  Upgrade - Veteran Faith Inculcator (Min 3 XP) -->
+		<!-- TODO:  Upgrade - Populat Militia Drive (Min Essence 4 & 4 XP) -->
+		<!-- TODO:  Upgrade - Precision-Tuned Coordinator (Min Charisma 7 & 4 XP) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.StrategosCommanderSynergyCircuits" exalt="Alchemical" group="MassCombat">
+		<prerequisite>
+			<trait id="Intelligence" value="4" />
+			<essence value="2" />
+			<selectiveCharmGroup threshold="1">
+				<charmAttributeRequirement attribute="ExcellencyWits" count="1" />
+				<charmAttributeRequirement attribute="ExcellencyIntelligence" count="1" />
+				<charmAttributeRequirement attribute="ExcellencyPerception" count="1" />
+			</selectiveCharmGroup>
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="[2m]" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Permanent" />
+		<!-- TODO:  Upgrade - Ally-Integrating Alchemy (Min Manipulation 3 & 3 XP) -->
+		<!-- TODO:  Upgrade - Unit Readiness Algorithms (Min Wits 4 & Essence 3) -->
+		<!-- TODO:  Upgrade - Industrial Assembly Warfare Mode (Min Charisma 9 & Essence 6) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.OmnipresentGuardianDirective" exalt="Alchemical" group="MassCombat">
+		<prerequisite>
+			<trait id="Wits" value="4" />
+			<essence value="3" />
+			<charmAttributeRequirement attribute="ExcellencyWits" count="1" />
+			<charmReference id="Alchemical.TunnelFightingTacticalOmnibusImplant" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" text="[1m]" />
+			<health cost="1" type="Lethal" />
+		</cost>
+		<duration amount="1" unit="scene" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="War" visualize="true" />
+		<!-- TODO:  Upgrade - Riot-Dispersion Attack (Min Charisma 5 & 3 XP) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.UnifyingResurgenceAssembly" exalt="Alchemical" group="MassCombat">
+		<prerequisite>
+			<trait id="Charisma" value="6" />
+			<essence value="4" />
+			<charmReference id="Alchemical.OmnipresentGuardianDirective" />
+		</prerequisite>
+		<cost>
+			<essence cost="10" text="[1m]" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="War" visualize="true" />
+		<!-- TODO:  Upgrade - Homeguard Reinforcement Clarion (Min 4 XP) -->
+		<source source="Alchemicals2nd" />
+	</charm>
 </charmlist>
