@@ -22,7 +22,7 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
   private static final String TAG_CHARM_PICKS = "charmPicks"; //$NON-NLS-1$
   private static final String TAG_ATTRIBUTE_DOTS = "attributeDots"; //$NON-NLS-1$
   private static final String TAG_BACKGROUND_DOTS = "backgroundDots"; //$NON-NLS-1$
-  private static final String TAG_SPECIALITY_DOTS = "specialityDots"; //$NON-NLS-1$
+  private static final String TAG_SPECIALTY_DOTS = "specialtyDots"; //$NON-NLS-1$
   private static final String TAG_VIRTUE_DOTS = "virtueDots"; //$NON-NLS-1$
   private static final String TAG_BONUS_POINTS = "bonusPoints"; //$NON-NLS-1$
 
@@ -47,7 +47,7 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
     if (bonusPointsElement != null) {
       creationPoints.setBonusPointCount(getCountAttribute(bonusPointsElement));
     }
-    Element specialityElement = element.element(TAG_SPECIALITY_DOTS);
+    Element specialityElement = element.element(TAG_SPECIALTY_DOTS);
     if (specialityElement != null) {
         creationPoints.setSpecialityPoints(getCountAttribute(specialityElement));
       }

@@ -29,7 +29,7 @@
       <abilityDots general="18" favored="10" favoredPicks="5" />
       <backgroundDots count="7" />
       <virtueDots count="5" />
-      <specialityDots count="4" />
+      <specialtyDots count="4" />
       <bonusPoints count="18" />
       <charmPicks favored="0" general="10" />
     </creationPoints>
