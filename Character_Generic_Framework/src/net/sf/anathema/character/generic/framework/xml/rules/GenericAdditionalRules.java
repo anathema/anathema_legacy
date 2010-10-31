@@ -16,6 +16,8 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public class GenericAdditionalRules extends NullAdditionalRules implements ICloneable<GenericAdditionalRules> {
 
+  private boolean revisedIntimacies = false;
+  private boolean willpowerVirtueBased = true;
   private String[] compulsiveCharmIds = new String[0];
   private String[] rejectedBackgroundIds = new String[0];
   private IAdditionalEssencePool[] essencePools = new IAdditionalEssencePool[0];
@@ -57,6 +59,24 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
 
   public void setRejectedBackgrounds(String[] backgroundIds) {
     this.rejectedBackgroundIds = backgroundIds;
+  }
+  
+  @Override
+  public boolean isRevisedIntimacies() {
+    return revisedIntimacies;
+  }
+  
+  public void setRevisedIntimacies(boolean revisedIntimacies) {
+    this.revisedIntimacies = revisedIntimacies;
+  }
+  
+  @Override
+  public boolean isWillpowerVirtueBased() {
+    return willpowerVirtueBased;
+  }
+  
+  public void setWillpowerVirtueBased(boolean willpowerVirtueBased) {
+    this.willpowerVirtueBased = willpowerVirtueBased;
   }
 
   @Override

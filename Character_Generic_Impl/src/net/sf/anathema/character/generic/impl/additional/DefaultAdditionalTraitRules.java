@@ -9,4 +9,8 @@ public class DefaultAdditionalTraitRules implements IAdditionalTraitRules {
   public boolean isAllowedTraitValue(IGenericTrait trait, IGenericTraitCollection collection) {
     return true;
   }
+  
+  public boolean isWillpowerVirtueBased() {
+    return true;
+  }
 }

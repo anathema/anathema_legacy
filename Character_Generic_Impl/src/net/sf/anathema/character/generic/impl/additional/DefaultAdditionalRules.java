@@ -37,6 +37,10 @@ public class DefaultAdditionalRules implements IAdditionalRules {
   public final boolean isRejected(IBackgroundTemplate backgroundTemplate) {
     return ArrayUtilities.contains(rejectedBackgrounds, backgroundTemplate.getId());
   }
+  
+  public boolean isRevisedIntimacies() {
+    return false;
+  }
 
   public IAdditionalMagicLearnPool[] getAdditionalMagicLearnPools() {
     return additonalMagicLearnPools.toArray(new IAdditionalMagicLearnPool[additonalMagicLearnPools.size()]);

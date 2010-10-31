@@ -44,10 +44,15 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   }
 
   public int getFreeIntimacies() {
-    return getCompassionValue();
+    if (context.getAdditionalRules().isRevisedIntimacies()) {
+      return getCompassionValue() + context.getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
+    }
+    else {
+      return getCompassionValue();
+    }
   }
 
-  private int getCompassionValue() {
+  protected int getCompassionValue() {
     return context.getTraitCollection().getTrait(VirtueType.Compassion).getCurrentValue();
   }
 

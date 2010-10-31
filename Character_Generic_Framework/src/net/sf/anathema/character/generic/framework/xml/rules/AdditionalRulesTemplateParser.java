@@ -54,6 +54,8 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String TAG_SPELL_REFERENCE = "spellReference"; //$NON-NLS-1$
   private static final String TAG_DOT_COST_MODIFICATION = "dotCostModification"; //$NON-NLS-1$
   private static final String ATTRIB_FIXED_COST = "fixedCost";
+  private static final String TAG_REVISED_INTIMACIES = "revisedIntimacies";
+  private static final String TAG_WILLPOWER_VIRTUE_BASED = "willpowerVirtueBased";
   private final ISpecialCharm[] charms;
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 
@@ -78,6 +80,8 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     setAdditionalMagicPools(element, basicTemplate);
     setAdditionalTraitCosts(element, basicTemplate);
     setForbiddenBackgrounds(element, basicTemplate);
+    setRevisedIntimacies(element, basicTemplate);
+    setWillpowerVirtueBased(element, basicTemplate);
     return basicTemplate;
   }
 
@@ -229,5 +233,21 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       }
     }
     basicTemplate.setCompulsiveCharmIds(compulsiveCharms.toArray(new String[compulsiveCharms.size()]));
+  }
+
+  private void setRevisedIntimacies(Element element, GenericAdditionalRules basicTemplate) throws PersistenceException {
+    Element revisedIntimaciesElement = element.element(TAG_REVISED_INTIMACIES);
+    if (revisedIntimaciesElement == null) {
+      return;
+    }
+    basicTemplate.setRevisedIntimacies(ElementUtilities.getBooleanAttribute(revisedIntimaciesElement, ATTRIB_VALUE, true));
+  }
+
+  private void setWillpowerVirtueBased(Element element, GenericAdditionalRules basicTemplate) throws PersistenceException {
+    Element willpowerRulesElement = element.element(TAG_WILLPOWER_VIRTUE_BASED);
+    if (willpowerRulesElement == null) {
+      return;
+    }
+    basicTemplate.setWillpowerVirtueBased(ElementUtilities.getBooleanAttribute(willpowerRulesElement, ATTRIB_VALUE, true));
   }
 }

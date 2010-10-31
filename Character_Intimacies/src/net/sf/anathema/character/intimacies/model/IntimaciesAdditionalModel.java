@@ -14,10 +14,14 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {
   private final IIntimaciesModel model;
   private final IAdditionalTemplate additionalTemplate;
+  
+  protected IntimaciesAdditionalModel(IAdditionalTemplate additionalTemplate, IIntimaciesModel model) {
+    this.additionalTemplate = additionalTemplate;
+    this.model = model;
+  }
 
   public IntimaciesAdditionalModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
-    this.additionalTemplate = additionalTemplate;
-    this.model = new IntimaciesModel(context);
+	this(additionalTemplate, new IntimaciesModel(context));
   }
 
   public void addChangeListener(IChangeListener listener) {

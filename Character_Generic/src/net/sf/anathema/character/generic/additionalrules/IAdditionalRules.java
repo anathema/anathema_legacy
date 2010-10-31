@@ -12,6 +12,8 @@ public interface IAdditionalRules {
   public IAdditionalEssencePool[] getAdditionalEssencePools();
 
   public boolean isRejected(IBackgroundTemplate backgroundTemplate);
+  
+  public boolean isRevisedIntimacies();
 
   public ITraitCostModifier getCostModifier(ITraitType type);
 

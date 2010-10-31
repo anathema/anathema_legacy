@@ -24,6 +24,14 @@ public class NullAdditionalRules implements IAdditionalRules, IAdditionalTraitRu
   public boolean isRejected(IBackgroundTemplate backgroundTemplate) {
     return false;
   }
+  
+  public boolean isRevisedIntimacies() {
+    return false;
+  }
+  
+  public boolean isWillpowerVirtueBased() {
+    return true;
+  }
 
   public IAdditionalEssencePool[] getAdditionalEssencePools() {
     return new IAdditionalEssencePool[0];

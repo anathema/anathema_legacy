@@ -37,10 +37,10 @@
   </advantages>
   <charms>
     <generalCharms>
-      <fixedCost cost="5" />
+      <fixedCost cost="4" />
     </generalCharms>
     <favoredCharms>
-      <fixedCost cost="4" />
+      <fixedCost cost="3" />
     </favoredCharms>
   </charms>
 </bonusPointCost>

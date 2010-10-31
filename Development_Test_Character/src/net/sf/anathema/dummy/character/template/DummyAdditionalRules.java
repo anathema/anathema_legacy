@@ -29,6 +29,14 @@ public final class DummyAdditionalRules implements IAdditionalRules, IAdditional
   public boolean isRejected(IBackgroundTemplate backgroundTemplate) {
     return false;
   }
+  
+  public boolean isRevisedIntimacies() {
+    return false;
+  }
+  
+  public boolean isWillpowerVirtueBased() {
+    return true;
+  }
 
   public boolean isAllowedTraitValue(IGenericTrait trait, IGenericTraitCollection collection) {
     return true;

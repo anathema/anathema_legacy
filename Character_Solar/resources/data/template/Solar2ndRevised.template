@@ -13,7 +13,9 @@
     			<charmReference id="Solar.ImmanentSolarGlory"/>    			
     			<peripheralPool multiplier="10"/>
     		</multilearnablePool>
-    	</additionalPools> 
+    	</additionalPools>
+    	<revisedIntimacies value="true" />
+    	<willpowerVirtueBased value="false" />
     </additionalRules>
     <additionalTemplates>
       <template id="SolarVirtueFlaw" />

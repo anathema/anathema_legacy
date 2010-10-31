@@ -70,7 +70,12 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addAttributes();
     IDefaultTrait willpower = TraitCollectionUtilities.getWillpower(this);
     IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(this);
-    new WillpowerListening().initListening(willpower, virtues);
+    if (template.getAdditionalRules().getAdditionalTraitRules().isWillpowerVirtueBased()) {
+      new WillpowerListening().initListening(willpower, virtues);
+    }
+    else {
+      willpower.setModifiedCreationRange(5, 10);
+    }
     addAbilities(template);
     this.backgrounds = new BackgroundConfiguration(
         new BackgroundArbitrator(template, modelContext.getBasicCharacterContext().getRuleSet().getEdition()),
