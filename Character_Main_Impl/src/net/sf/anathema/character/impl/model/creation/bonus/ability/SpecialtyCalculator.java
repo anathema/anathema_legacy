@@ -11,9 +11,15 @@ import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
 public class SpecialtyCalculator {
 
   private final IGenericTraitCollection traitConfiguration;
+  private final int specialtyPoints;
 
-  public SpecialtyCalculator(IGenericTraitCollection traitConfiguration) {
+  public SpecialtyCalculator(IGenericTraitCollection traitConfiguration, int specialtyPoints) {
     this.traitConfiguration = traitConfiguration;
+    this.specialtyPoints = specialtyPoints;
+  }
+  
+  public int getSpecialtyPointsSpent(IGenericSpecialty[] specialties) {
+    return Math.min(specialtyPoints, specialties.length);
   }
 
   public int getSpecialtyCosts(IGenericSpecialty[] specialties) {
@@ -22,6 +28,12 @@ public class SpecialtyCalculator {
     unfavoredSpecialties.removeAll(favoredSpecialties);
     int favoredCount = favoredSpecialties.size();
     int unfavoredCount = unfavoredSpecialties.size();
+    
+    unfavoredCount -= specialtyPoints;
+    if (unfavoredCount < 0) {
+      favoredCount = Math.max(favoredCount + unfavoredCount, 0);
+      unfavoredCount = 0;
+    }
     return unfavoredCount + (int) Math.ceil(favoredCount * 0.5);
   }
 

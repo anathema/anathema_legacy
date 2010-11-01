@@ -23,7 +23,7 @@ public class AdditionalBonusPointPoolCalculator {
   public AdditionalBonusPointPoolCalculator(IAdditionalBonusPointPool poolTemplate, IGenericTraitCollection collection) {
     this.poolTemplate = poolTemplate;
     this.collection = collection;
-    this.specialtyCalculator = new SpecialtyCalculator(collection);
+    this.specialtyCalculator = new SpecialtyCalculator(collection, 0);
   }
 
   public void spendPoints(int pointsToSpent) {

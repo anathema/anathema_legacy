@@ -49,6 +49,10 @@ public class DefaultBonusPointCosts implements IBonusPointCosts {
   public int getMaximumFreeVirtueRank() {
     return 3;
   }
+  
+  public int getMaximumFreeAbilityRank() {
+    return 3;
+  }
 
   public int getWillpowerCosts() {
     return 2;

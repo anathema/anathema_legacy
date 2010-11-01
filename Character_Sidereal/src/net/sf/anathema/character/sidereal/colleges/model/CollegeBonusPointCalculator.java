@@ -14,7 +14,7 @@ public class CollegeBonusPointCalculator extends AbstractFavorableTraitCostCalcu
       IFavorableTraitCreationPoints points,
       IFavorableDefaultTrait[] traits,
       ICollegeBonusPointCosts costs) {
-    super(additionalPools, points, traits);
+    super(additionalPools, points, 3, traits);
     this.costs = costs;
   }
 

@@ -2,7 +2,7 @@
   <advantages>
     <virtues>
       <fixedCost cost="3" />
-      <maximumFreeRank rank="4"/>
+      <maximumFreeVirtueRank rank="4"/>
     </virtues>
   </advantages>
 </bonusPointCost>

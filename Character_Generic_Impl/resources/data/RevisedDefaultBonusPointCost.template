@@ -5,6 +5,7 @@
     </generalAttribute>
   </attributes>
   <abilities>
+    <maximumFreeAbilityRank rank="5" />
     <generalAbility>
       <fixedCost cost="2" />
     </generalAbility>

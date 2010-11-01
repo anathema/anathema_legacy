@@ -30,6 +30,10 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     public int getFavoredSpecialtyDotsPerPoint() {
       return 2;
     }
+    
+    public int getMaximumFreeAbilityRank() {
+      return 3;
+    }
   }
 
   private static void assertEmptyCosts(AbilityCostCalculator calculator, IFavorableTrait ability) {
@@ -72,6 +76,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     AbilityCostCalculator calculator = new AbilityCostCalculator(
         traitConfiguration,
         creationPoints,
+        0,
         costs,
         additionalBonusPointManagment);
     calculator.calculateCosts();

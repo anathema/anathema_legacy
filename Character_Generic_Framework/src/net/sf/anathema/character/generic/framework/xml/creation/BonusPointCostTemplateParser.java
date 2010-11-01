@@ -33,7 +33,8 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
   private static final String TAG_CHARMS = "charms"; //$NON-NLS-1$
   private static final String TAG_GENERAL_CHARMS = "generalCharms"; //$NON-NLS-1$
   private static final String TAG_FAVORED_CHARMS = "favoredCharms"; //$NON-NLS-1$
-  private static final String TAG_MAXIMUM_FREE_RANK = "maximumFreeRank"; //$NON-NLS-1$
+  private static final String TAG_MAXIMUM_FREE_ABILITY_RANK = "maximumFreeAbilityRank"; //$NON-NLS-1$
+  private static final String TAG_MAXIMUM_FREE_VIRTUE_RANK = "maximumFreeVirtueRank"; //$NON-NLS-1$
   private static final String TAG_GENERAL_MARTIAL_ARTS_CHARMS = "generalHighLevelMartialArtsCharms"; //$NON-NLS-1$
   private static final String TAG_FAVORED_MARTIAL_ARTS_CHARMS = "favoredHighLevelMartialArtsCharms"; //$NON-NLS-1$
 
@@ -115,7 +116,7 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
       return;
     }
     int fixedCost = costParser.getFixedCostFromRequiredElement(element, TAG_VIRTUES);
-    Element maximumFreeRank = virtueElement.element(TAG_MAXIMUM_FREE_RANK);
+    Element maximumFreeRank = virtueElement.element(TAG_MAXIMUM_FREE_VIRTUE_RANK);
     if (maximumFreeRank != null) {
       costs.setMaximumFreeVirtueRank(ElementUtilities.getRequiredIntAttrib(maximumFreeRank, ATTRIB_RANK));
     }
@@ -154,6 +155,11 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     }
     int generalCost = costParser.getFixedCostFromRequiredElement(abilityElement, TAG_GENERAL_ABILITY);
     int favoredCost = costParser.getFixedCostFromRequiredElement(abilityElement, TAG_FAVORED_ABILITY);
+    
+    Element maximumFreeRank = abilityElement.element(TAG_MAXIMUM_FREE_ABILITY_RANK);
+    if (maximumFreeRank != null) {
+      costs.setMaximumFreeAbilityRank(ElementUtilities.getRequiredIntAttrib(maximumFreeRank, ATTRIB_RANK));
+    }
     costs.setAbilityCosts(generalCost, favoredCost);
     setSpecialtyDots(abilityElement, costs);
   }

@@ -7,4 +7,6 @@ public interface IAbilityPointCosts {
   public int getDefaultSpecialtyDotsPerPoint();
 
   public int getFavoredSpecialtyDotsPerPoint();
+  
+  public int getMaximumFreeAbilityRank();
 }

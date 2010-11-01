@@ -33,6 +33,7 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   private int generalAttributeCost = 0;
   private int favoredAttributeCost = 0;
   private int maximumFreeVirtueRank = 3;
+  private int maximumFreeAbilityRank = 3;
 
   public int getCharmCosts(ICharm charm, ICostAnalyzer analyzer) {
     return getCharmCosts(analyzer.isMagicFavored(charm), analyzer.getMartialArtsLevel(charm));
@@ -60,6 +61,10 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
 
   public int getMaximumFreeVirtueRank() {
     return maximumFreeVirtueRank;
+  }
+
+  public int getMaximumFreeAbilityRank() {
+    return maximumFreeAbilityRank;
   }
 
   public int getWillpowerCosts() {
@@ -160,6 +165,10 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
 
   public void setMaximumFreeVirtueRank(int rank) {
     this.maximumFreeVirtueRank = rank;
+  }
+
+  public void setMaximumFreeAbilityRank(int rank) {
+    this.maximumFreeAbilityRank = rank;
   }
 
   public void setStandardMartialArtsLevel(MartialArtsLevel standardMartialArtsLevel) {

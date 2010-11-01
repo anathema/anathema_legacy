@@ -33,18 +33,20 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   private final ICoreTraitConfiguration traitConfiguration;
   private final IAbilityPointCosts costs;
   private int specialtyBonusPointCosts;
+  private int specialtyDotSum;
   private SpecialtyCalculator specialtyCalculator;
 
   public AbilityCostCalculator(
       ICoreTraitConfiguration traitConfiguration,
       IFavorableTraitCreationPoints points,
+      int specialtyPoints,
       IAbilityPointCosts costs,
       IAdditionalBonusPointManagment additionalPools) {
-    super(additionalPools, points, getAllAbilities(traitConfiguration));
+    super(additionalPools, points, costs.getMaximumFreeAbilityRank(), getAllAbilities(traitConfiguration));
     this.traitConfiguration = traitConfiguration;
     this.costs = costs;
     this.additionalPools = additionalPools;
-    this.specialtyCalculator = new SpecialtyCalculator(traitConfiguration);
+    this.specialtyCalculator = new SpecialtyCalculator(traitConfiguration, specialtyPoints);
   }
 
   @Override
@@ -55,6 +57,7 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
 
   private void calculateSpecialtyCosts() {
     IGenericSpecialty[] specialties = createGenericSpecialties();
+    specialtyDotSum = specialtyCalculator.getSpecialtyPointsSpent(specialties);
     specialtyBonusPointCosts = specialtyCalculator.getSpecialtyCosts(specialties);
     additionalPools.spendOn(specialties, costs);
   }
@@ -62,6 +65,7 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   @Override
   protected void clear() {
     super.clear();
+    specialtyDotSum = 0;
     specialtyBonusPointCosts = 0;
   }
 
@@ -87,5 +91,9 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
 
   public int getSpecialtyBonusPointCosts() {
     return specialtyBonusPointCosts;
+  }
+  
+  public int getFreeSpecialtyPointsSpent() {
+	  return specialtyDotSum;
   }
 }

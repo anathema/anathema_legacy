@@ -16,6 +16,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.ability.DefaultAbilit
 import net.sf.anathema.character.impl.model.creation.bonus.ability.FavoredAbilityBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.FavoredAbilityPickModel;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.IAbilityCostCalculator;
+import net.sf.anathema.character.impl.model.creation.bonus.ability.SpecialtyBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.AdditionalBonusPointPoolManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeCostCalculator;
@@ -74,6 +75,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     this.abilityCalculator = new AbilityCostCalculator(
         traitConfiguration,
         creationPoints.getAbilityCreationPoints(),
+        creationPoints.getSpecialtyCreationPoints(),
         cost,
         bonusAdditionalPools);
     this.attributeCalculator = new AttributeCostCalculator(
@@ -180,6 +182,10 @@ public class BonusPointManagement implements IBonusPointManagement {
     return new FavoredAbilityPickModel(abilityCalculator, creationPoints);
   }
 
+  public ISpendingModel getSpecialtiesModel() {
+    return new SpecialtyBonusModel(abilityCalculator, creationPoints);
+  }
+
   public ISpendingModel getAttributeModel(final AttributeGroupPriority priority) {
     return new AttributeBonusModel(attributeCalculator, priority, creationPoints);
   }
@@ -234,6 +240,9 @@ public class BonusPointManagement implements IBonusPointManagement {
     models.add(getFavoredAbilityPickModel());
     models.add(getFavoredAbilityModel());
     models.add(getDefaultAbilityModel());
+    if (getSpecialtiesModel().getAlotment() > 0) {
+      models.add(getSpecialtiesModel());
+    }
     addCharmModels(models);
     models.add(getVirtueModel());
     models.add(getBackgroundModel());
@@ -246,7 +255,9 @@ public class BonusPointManagement implements IBonusPointManagement {
     if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms(statistics.getRules())) {
       return;
     }
-    models.add(getFavoredCharmModel());
+    if (getFavoredCharmModel().getAlotment() > 0) {
+      models.add(getFavoredCharmModel());
+    }
     models.add(getDefaultCharmModel());
   }
 }
