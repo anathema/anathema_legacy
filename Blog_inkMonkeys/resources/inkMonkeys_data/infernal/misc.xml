@@ -23,157 +23,156 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Miscellaneous Charms  -->
-
-<!-- TODO:  Coding:  When appropriate will need to change Solar -> Infernal. -->
-<charm id="Celestial.ImpatientSlaughterSpeed" exalt="Solar" group="MartialArts">
-	<prerequisite>
-		<trait id="MartialArts" value="4" />
-		<essence value="2" />
-		<charmReference id="Celestial.RagingBehemothCharge" />
-	</prerequisite>
-	<cost />
-	<duration duration="Permanent" />
-	<charmtype type="Permanent" />
-	<charmAttribute attribute="Celestial"/>
-	<charmAttribute attribute="Obvious" visualize="true" />
-	<source source="BIM_5" />
-</charm>
-<charm id="Celestial.BoundingBeastAdvance" exalt="Solar" group="MartialArts">
-	<prerequisite>
-		<trait id="MartialArts" value="3" />
-		<essence value="2" />
-		<charmReference id="Celestial.RagingBehemothCharge" />
-	</prerequisite>
-	<cost />
-	<duration duration="Permanent" />
-	<charmtype type="Permanent" />
-	<charmAttribute attribute="Celestial" />
-	<charmAttribute attribute="Obvious" visualize="true" />
-	<source source="BIM_5" />
-</charm>
-<charm id="Celestial.LeapingSmashTechnique" exalt="Solar" group="MartialArts">
-	<prerequisite>
-		<trait id="MartialArts" value="3" />
-		<essence value="2" />
-		<charmReference id="Celestial.BoundingBeastAdvance" />
-	</prerequisite>
-	<cost>
-		<essence cost="2" />
-	</cost>
-	<duration duration="Instant" />
-	<charmtype type="Reflexive">
-		<special primaryStep="1" />
-	</charmtype>
-	<charmAttribute attribute="Celestial" />
-	<charmAttribute attribute="Combo-OK" visualize="true" />
-	<charmAttribute attribute="Obvious" visualize="true" />
-	<source source="BIM_5" />
-</charm>
-<charm id="Celestial.ShockAndAweSlam" exalt="Solar" group="MartialArts">
-	<prerequisite>
-		<trait id="MartialArts" value="5" />
-		<essence value="2" />
-		<charmReference id="Celestial.LeapingSmashTechnique" />
-	</prerequisite>
-	<cost>
-		<essence cost="-" text="(+4)"/>
-	</cost>
-	<duration duration="Permanent" />
-	<charmtype type="Permanent" />
-	<charmAttribute attribute="Celestial" />
-	<charmAttribute attribute="Combo-OK" visualize="true" />
-	<charmAttribute attribute="Obvious" visualize="true" />
-	<source source="BIM_5" />
-</charm>
-<charm id="Celestial.NowhereToRun" exalt="Solar" group="MartialArts">
-	<prerequisite>
-		<trait id="MartialArts" value="4" />
-		<essence value="3" />
-		<charmReference id="Celestial.LeapingSmashTechnique" />
-	</prerequisite>
-	<cost /
-	<duration duration="Permanent" />
-	<charmtype type="Permanent" />
-	<charmAttribute attribute="Celestial" />
-	<charmAttribute attribute="Combo-OK" visualize="true" />
-	<charmAttribute attribute="Obvious" visualize="true" />
-	<source source="BIM_5" />
-</charm>
-<charm id="Celestial.NowhereToHide" exalt="Solar" group="MartialArts">
-	<prerequisite>
-		<trait id="MartialArts" value="4" />
-		<essence value="3" />
-		<charmReference id="Celestial.LeapingSmashTechnique" />
-	</prerequisite>
-	<cost />
-	<duration duration="Permanent" />
-	<charmtype type="Permanent" />
-	<charmAttribute attribute="Celestial" />
-	<charmAttribute attribute="Combo-OK" visualize="true" />
-	<charmAttribute attribute="Obvious" visualize="true" />
-	<charmAttribute attribute="Sorcerous" visualize="true" />
-	<charmAttribute attribute="Stackable" visualize="true" />
-	<source source="BIM_5" />
-</charm>
-<charm id="Celestial.BloodHeraldsDeath" exalt="Celestial" group="MartialArts">
-	<prerequisite>
-		<trait id="MartialArts" value="5" />
-		<essence value="3" />
-		<charmReference id="Celestial.NowhereToHide" />
-	</prerequisite>
-	<cost>
-		<essence cost="10" />
-		<willpower cost="1" />
-	</cost>
-	<duration amount="1" unit="week" />
-	<charmtype type="Simple" />
-	<charmAttribute attribute="Celestial" />
-	<charmAttribute attribute="Combo-OK" visualize="true" />
-	<charmAttribute attribute="Sorcerous" visualize="true" />
-	<charmAttribute attribute="Stackable" visualize="true" />
-	<source source="BIM_5" />
-</charm>
-<charm id="Celestial.EternalMonstrousHunt" exalt="Celestial" group="MartialArts">
-	<prerequisite>
-		<trait id="MartialArts" value="5" />
-		<essence value="4" />
-		<charmReference id="Celestial.BloodHeraldsDeath" />
-	</prerequisite>
-	<cost />
-	<duration duration="Permanent" />
-	<charmtype type="Permanent" />
-	<charmAttribute attribute="Celestial" />
-	<source source="BIM_5" />
-</charm>
-<charm id="Celestial.ArmageddonNightmareDuel" exalt="Celestial" group="MartialArts">
-	<prerequisite>
-		<trait id="MartialArts" value="5" />
-		<essence value="4" />
-		<charmReference id="Celestial.BloodHeraldsDeath" />
-	</prerequisite>
-	<cost>
-		<essence cost="0" text=" or (15m, 1wp)"/>
-	</cost>
-	<duration amount="MA" unit="minutes" />
-	<charmtype type="Reflexive" />
-	<charmAttribute attribute="Celestial" />
-	<charmAttribute attribute="Combo-OK" visualize="true" />
-	<charmAttribute attribute="Sorcerous" visualize="true" />
-	<source source="BIM_5" />
-</charm>
-<charm id="Celestial.DeathDevouringSadism" exalt="Celestial" group="MartialArts">
-	<prerequisite>
-		<trait id="MartialArts" value="5" />
-		<essence value="4" />
-		<charmReference id="Celestial.ArmageddonNightmareDuel" />
-	</prerequisite>
-	<cost />
-	<duration duration="Permanent" />
-	<charmtype type="Permanent" />
-	<charmAttribute attribute="Celestial" />
-	<source source="BIM_5" />
-</charm>
-	<charm id="Celestial.SanityDevouringNightTerror" exalt="Solar" group="MartialArts">
+	<!-- TODO:  Coding:  When appropriate will need to change Solar -> Infernal. -->
+	<charm id="Celestial.ImpatientSlaughterSpeed" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="2" />
+			<charmReference id="Celestial.RagingBehemothCharge" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial"/>
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="BIM_5" />
+	</charm>
+	<charm id="Celestial.BoundingBeastAdvance" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="3" />
+			<essence value="2" />
+			<charmReference id="Celestial.RagingBehemothCharge" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="BIM_5" />
+	</charm>
+	<charm id="Celestial.LeapingSmashTechnique" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="3" />
+			<essence value="2" />
+			<charmReference id="Celestial.BoundingBeastAdvance" />
+		</prerequisite>
+		<cost>
+			<essence cost="2" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="1" />
+		</charmtype>
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="BIM_5" />
+	</charm>
+	<charm id="Celestial.ShockAndAweSlam" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="2" />
+			<charmReference id="Celestial.LeapingSmashTechnique" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="(+4)"/>
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="BIM_5" />
+	</charm>
+	<charm id="Celestial.NowhereToRun" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="3" />
+			<charmReference id="Celestial.LeapingSmashTechnique" />
+		</prerequisite>
+		<cost /
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="BIM_5" />
+	</charm>
+	<charm id="Celestial.NowhereToHide" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="3" />
+			<charmReference id="Celestial.LeapingSmashTechnique" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="Sorcerous" visualize="true" />
+		<charmAttribute attribute="Stackable" visualize="true" />
+		<source source="BIM_5" />
+	</charm>
+	<charm id="Celestial.BloodHeraldsDeath" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.NowhereToHide" />
+		</prerequisite>
+		<cost>
+			<essence cost="10" />
+			<willpower cost="1" />
+		</cost>
+		<duration amount="1" unit="week" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Sorcerous" visualize="true" />
+		<charmAttribute attribute="Stackable" visualize="true" />
+		<source source="BIM_5" />
+	</charm>
+	<charm id="Celestial.EternalMonstrousHunt" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="4" />
+			<charmReference id="Celestial.BloodHeraldsDeath" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<source source="BIM_5" />
+	</charm>
+	<charm id="Celestial.ArmageddonNightmareDuel" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="4" />
+			<charmReference id="Celestial.BloodHeraldsDeath" />
+		</prerequisite>
+		<cost>
+			<essence cost="0" text=" or (15m, 1wp)"/>
+		</cost>
+		<duration amount="MA" unit="minutes" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Sorcerous" visualize="true" />
+		<source source="BIM_5" />
+	</charm>
+	<charm id="Celestial.DeathDevouringSadism" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="4" />
+			<charmReference id="Celestial.ArmageddonNightmareDuel" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<source source="BIM_5" />
+	</charm>
+	<charm id="Celestial.SanityDevouringNightTerror" exalt="Solar" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="4" />
