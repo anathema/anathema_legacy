@@ -36,6 +36,8 @@
           <duration duration="Indefinite" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Wisp Light Summons -->
           <charmAttribute attribute="Obvious" visualize="true" />
 			<source source="LordsOfCreation" />
           <source source="ScrollErrata" />
