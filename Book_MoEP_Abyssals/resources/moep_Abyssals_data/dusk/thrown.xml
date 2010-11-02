@@ -30,7 +30,7 @@
                <essence value="2" />
           </prerequisite>
           <cost>
-               <essence cost="3" />
+               <essence cost="2" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
@@ -84,6 +84,7 @@
           <charmtype type="Reflexive">
                <special primaryStep="2" />
           </charmtype>
+          <charmAttribute attribute="Merged" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Call the Blade -->
           <charmAttribute attribute="Obvious" visualize="true" />
