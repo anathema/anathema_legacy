@@ -100,6 +100,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Dawn" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition"/>
   </charm>
@@ -120,6 +121,7 @@
       <special primaryStep="10"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Dawn" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition"/>
   </charm>
