@@ -35,6 +35,7 @@
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <charmAttribute attribute="Dawn" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
 			<!-- NOTE:  Abyssal Mirror - Thousandfold Shadow Dance -->
           <source source="LordsOfCreation" />
@@ -70,6 +71,7 @@
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <charmAttribute attribute="Dawn" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Shadow Fades at Dawn -->
           <charmAttribute attribute="Obvious" visualize="true" />

@@ -36,6 +36,7 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Dawn" visualize="true" />
           <source source="InkMonkeys" />
      </charm>
 </charmlist>

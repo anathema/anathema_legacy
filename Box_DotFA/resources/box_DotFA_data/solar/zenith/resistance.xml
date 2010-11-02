@@ -57,6 +57,7 @@
 			<special primaryStep="10" />
 		</charmtype>
           <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Dawn" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
 <!-- NOTE:  Abyssal Mirror - Far Beyond Ruin -->
 			<source source="LordsOfCreation" />
@@ -74,9 +75,10 @@
           <duration amount="3" unit="action" />
           <charmtype type="Reflexive">
 			<special primaryStep="10" />
-		</charmtype>
+  		  </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
-			<source source="LordsOfCreation" />
+          <charmAttribute attribute="Dawn" visualize="true" />
+          <source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
 	<charm id="Solar.InnerFireUnleashed" exalt="Solar" group="Resistance">
