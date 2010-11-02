@@ -23,6 +23,21 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Melee -->
+	<charm id="Abyssal.ElegantBloodlettingArt" exalt="Abyssal" group="Melee">
+		<prerequisite>
+			<trait id="Melee" value="5" />
+			<essence value="4" />
+			<charmReference id="Abyssal.SavageShadeStyle" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Golden Destruction Cut -->
+		<source source="BIM_29" />
+	</charm>
 	<charm id="Abyssal.PinnedMothTactic" exalt="Abyssal" group="Melee">
 		<prerequisite>
 			<trait id="Melee" value="3" />

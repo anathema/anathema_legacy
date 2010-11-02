@@ -25,7 +25,7 @@ public enum ExaltedSourceBook implements IExaltedSourceBook {
  ScrollExalts(ExaltedEdition.SecondEdition), InkMonkeys(ExaltedEdition.SecondEdition),ReturnEmpress(ExaltedEdition.SecondEdition),
  UnderRose(ExaltedEdition.SecondEdition), ContagionLaw(ExaltedEdition.SecondEdition), ScrollErrata(ExaltedEdition.SecondEdition),
  Alchemicals2nd(ExaltedEdition.SecondEdition), BIM_5(ExaltedEdition.SecondEdition), BIM_37(ExaltedEdition.SecondEdition),
- BIM_38(ExaltedEdition.SecondEdition);
+ BIM_38(ExaltedEdition.SecondEdition), BIM_29(ExaltedEdition.SecondEdition);
 
   private final IExaltedEdition edition;
 
