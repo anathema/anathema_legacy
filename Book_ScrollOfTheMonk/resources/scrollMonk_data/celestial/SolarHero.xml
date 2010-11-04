@@ -8,8 +8,7 @@
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="4" />
-               <charmReference id="Solar.HeavenThunderHammer" />
-<!--               <charmReference id="Solar.DomeShatteringSmite" /> -->
+               <charmReference id="Solar.DomeShatteringSmite" />
           </prerequisite>
           <cost>
                <essence cost="6" />

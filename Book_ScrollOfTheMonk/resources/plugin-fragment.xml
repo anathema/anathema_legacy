@@ -81,12 +81,11 @@
                         <parameter id="path" value="scrollMonk_data/terrestrial/FivefoldShadowHand.xml"/>
           </parameter-->
           <!-- Celestial Level Martial Arts -->
-          <!-- The following charm is included with Anathema, an add-on is unnecessary. -->
-          <!--parameter id="list">
-                        <parameter id="type" value="MartialArts"/>
-                        <parameter id="rules" value="SecondEdition"/>
-                        <parameter id="path" value="scrollMonk_data/celestial/SolarHero.xml"/>
-          </parameter-->
+          <parameter id="list">
+               <parameter id="type" value="MartialArts"/>
+               <parameter id="rules" value="SecondEdition"/>
+               <parameter id="path" value="scrollMonk_data/celestial/SolarHero.xml"/>
+          </parameter>
           <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />

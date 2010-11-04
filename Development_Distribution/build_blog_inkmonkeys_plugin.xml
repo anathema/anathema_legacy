@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Blog Ink Monkeys Plugin" default="Build Ink Monkeys">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Blog_inkMonkeys" />
+	<property name="module.name" value="blog_inkmonkeys" />
+
+	<property file="plugin.directories.properties" />
+	
+	<target name="Build Ink Monkeys" depends="Compile, Build JAR"/>
+</project>

@@ -1,7 +1,16 @@
 Anathema Version History
 (C) 2004 - 2008 by Sandra Sieroux and Urs Reupke
-Exalted (C) 2001-2008 by White Wolf Publishing, Inc.
+(C) 2009 - 2010 by Urs Reupke, Sandra Sieroux, Scott Olson, Eric Astor, Paul Adams, & Rob Rutherford
+Exalted (C) 2001-2010 by White Wolf Publishing, Inc.
+
 http://anathema.sf.net
+===------------------------------------------------------------------------------===
+			Release 1.5.0 "Lookshy"
+===------------------------------------------------------------------------------===
+
+-- Features --
+* [2E] Updated to add Dawn Solution erratta and Ink Monkeys vols. 30-38.
+* [2E] New official charms added to package.    
 
 ===------------------------------------------------------------------------------===
 			Release 1.4.2 "Great Forks"
