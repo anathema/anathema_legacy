@@ -16,6 +16,11 @@
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="inkMonkeys_data/misc/solarHero.xml" />
           </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="inkMonkeys_data/solar/zenith/resistance.xml" />
+          </parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="InkMonkeysResources">
           <parameter id="bundle" value="inkMonkeys" />
