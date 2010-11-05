@@ -1,6 +1,6 @@
-<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
 <!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
-"../charms.dtd">
+"../../charms.dtd">
 <!--
 
     archery.xml - XML charm data for Anathema plug-ins.
@@ -35,5 +35,20 @@
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="Overdrive" visualize="true" />
 		<source source="BIM_37" />
+	</charm>
+	<charm id="Solar.ThrustShotEvasion" exalt="Solar" group="Archery">
+		<prerequisite>
+			<trait id="Archery" value="5" />
+			<essence value="3" />
+			<charmReference id="Solar.ForcefulArrow" />
+		</prerequisite>
+		<cost>
+		     <essence cost="3" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="InkMonkeys" />
 	</charm>
 </charmlist>

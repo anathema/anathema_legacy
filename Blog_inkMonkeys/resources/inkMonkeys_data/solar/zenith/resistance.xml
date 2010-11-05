@@ -1,6 +1,6 @@
-<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
 <!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
-"../charms.dtd">
+"../../charms.dtd">
 <!--
 
     resistance.xml - XML charm data for Anathema plug-ins.
@@ -60,6 +60,21 @@
 		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
+        <charmAttribute attribute="Native" visualize="true" />
+        <charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Solar.SoulFireResurgence" exalt="Solar" group="Resistance">
+		<prerequisite>
+			<trait id="Resistance" value="2" />
+			<essence value="2" />
+		</prerequisite>
+        <cost>
+             <willpower cost="1" />
+        </cost>
+        <duration duration="Permanent" />
+		<charmtype type="Permanent" />
+        <charmAttribute attribute="Dawn" visualize="true" />
         <charmAttribute attribute="Native" visualize="true" />
         <charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
 		<source source="InkMonkeys" />
