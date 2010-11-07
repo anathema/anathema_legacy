@@ -51,7 +51,10 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
         basicCharacter,
         traitConfiguration,
         statistics.getCharacterTemplate().getMagicTemplate().getFavoringTraitType());
-    if (specialCharm != null) {
+    if (charm.isFreeByMerged(statistics.getCharacterContext().getMagicCollection())) {
+      return 0;
+    }
+    else if (specialCharm != null) {
       int timesLearnedWithExperience = specialCharm.getCurrentLearnCount() - specialCharm.getCreationLearnCount();
       final int specialCharmCost = timesLearnedWithExperience * charmCost;
       if (!(specialCharm instanceof ISubeffectCharmConfiguration)) {
