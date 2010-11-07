@@ -1,9 +1,9 @@
-<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
 <!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
-"../../charms.dtd">
+"../charms.dtd">
 <!--
 
-    integrity.xml - XML charm data for Anathema plug-ins.
+    survival.xml - XML charm data for Anathema plug-ins.
     Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
 
     This program is free software; you can redistribute it and/or modify
@@ -22,40 +22,23 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Integrity -->
-	<charm id="Solar.RighteousAvengersAspect" exalt="Solar" group="Integrity">
+     <!-- Survival -->
+	<charm id="Abyssal.WispLightSummons" exalt="Abyssal" group="Survival">
 		<prerequisite>
-			<trait id="Integrity" value="4" />
-			<essence value="2" />
-			<charmReference id="Solar.RighteousLionDefense" />
+			<trait id="Survival" value="5" />
+			<essence value="4" />
+			<charmReference id="Abyssal.DarkPathsFound" />
 		</prerequisite>
 		<cost>
 			<essence cost="5" />
 		</cost>
-		<duration amount="1" unit="scene" />
+		<duration duration="Indefinite" />
 		<charmtype type="Reflexive" />
-		<charmAttribute attribute="Combo-Ok" visualize="true" />
-		<charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
-		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="Overdrive" visualize="true" />
-		<source source="BIM_37" />
-	</charm>
-	<charm id="Solar.StaringAtTheSun" exalt="Solar" group="Integrity">
-		<prerequisite>
-			<trait id="Integrity" value="3" />
-			<essence value="2" />
-		</prerequisite>
-		<cost>
-			<essence cost="1" />
-		</cost>
-		<duration duration="Instant" />
-		<charmtype type="Reflexive">
-			<special primaryStep="2" />
-		</charmtype>
 		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Compulsion" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Abyssal Mirror - Dark Visionary Defense -->
-		<charmAttribute attribute="Social" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Guiding Light Shines On -->
+		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="BIM_38" />
 	</charm>
 </charmlist>
