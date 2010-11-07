@@ -41,7 +41,7 @@
 
 <!-- This begins the code that actually validates your XML documents -->
 
-<!ELEMENT charmlist (genericCharm*, charm+, alternatives?)>
+<!ELEMENT charmlist (genericCharm*, charm+, alternatives?, merges?)>
 	<!ATTLIST charmlist xmlns CDATA #IMPLIED>
 
 	<!ELEMENT genericCharm (prerequisite, cost, duration, charmtype, combo?, genericCharmAttribute?, charmAttribute*, source+, ruleset?)>
@@ -51,7 +51,8 @@
 		<!ATTLIST charm id ID #REQUIRED
 			exalt (%Exalted.Types;) "Solar"
 			group CDATA #IMPLIED>
-	<!ELEMENT alternatives (alternative?)>
+	<!ELEMENT alternatives (alternative*)>
+	<!ELEMENT merges (merged*)>
 	
 		<!ELEMENT prerequisite (essence?, trait+, essence?, genericCharmAttributeRequirement?, selectiveCharmGroup?, genericCharmAttributeRequirement?, charmReference*, charmAttributeRequirement?)>
 		<!ELEMENT cost (essence?, willpower?, health?, experience?)>
@@ -77,6 +78,7 @@
 			<!ATTLIST ruleset name (PowerCombat | CDATA) "PowerCombat">
 		<!ELEMENT learning (favored?)>
 		<!ELEMENT alternative (charmReference*)>
+		<!ELEMENT merged (charmReference*)>
 		
 			<!ELEMENT essence EMPTY>
 				<!ATTLIST essence value CDATA #IMPLIED

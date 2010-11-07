@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ALTERNATIVE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ALTERNATIVES;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_MERGED;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_MERGES;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
 
 import java.util.HashSet;
@@ -19,25 +19,25 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Document;
 import org.dom4j.Element;
 
-public class CharmAlternativeBuilder {
+public class CharmMergedBuilder {
 
-  public void buildAlternatives(Document charmDoc, ICharm[] charms) {
+  public void buildMerges(Document charmDoc, ICharm[] charms) {
     Element charmListElement = charmDoc.getRootElement();
-    readAlternatives(charmListElement, charms);
+    readMerges(charmListElement, charms);
   }
 
-  private void readAlternatives(Element charmListElement, ICharm[] charms) {
-    Element alternativesElement = charmListElement.element(TAG_ALTERNATIVES);
-    if (alternativesElement == null) {
+  private void readMerges(Element charmListElement, ICharm[] charms) {
+    Element mergesElement = charmListElement.element(TAG_MERGES);
+    if (mergesElement == null) {
       return;
     }
-    for (Element alternativeElement : ElementUtilities.elements(alternativesElement, TAG_ALTERNATIVE)) {
-      readAlternative(alternativeElement, charms);
+    for (Element mergedElement : ElementUtilities.elements(mergesElement, TAG_MERGED)) {
+      readMerged(mergedElement, charms);
     }
   }
 
-  private void readAlternative(Element alternativeElement, ICharm[] existingCharms) {
-    List<Element> charmReferences = ElementUtilities.elements(alternativeElement, TAG_CHARM_REFERENCE);
+  private void readMerged(Element mergedElement, ICharm[] existingCharms) {
+    List<Element> charmReferences = ElementUtilities.elements(mergedElement, TAG_CHARM_REFERENCE);
     Set<ICharm> charms = new HashSet<ICharm>(charmReferences.size());
     for (Element charmReference : charmReferences) {
       final String charmId = charmReference.attributeValue(ATTRIB_ID);
@@ -51,7 +51,7 @@ public class CharmAlternativeBuilder {
       charms.add(charm);
     }
     for (ICharm charm : charms) {
-      ((Charm) charm).addAlternative(charms);
+      ((Charm) charm).addMerged(charms);
     }
   }
 }

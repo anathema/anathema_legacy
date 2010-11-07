@@ -20,7 +20,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.ICharmAlternative;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
@@ -52,7 +51,8 @@ public class Charm extends Identificate implements ICharm {
   private final IExaltedSourceBook[] sources;
   private final ICostList temporaryCost;
 
-  private final List<ICharmAlternative> alternatives = new ArrayList<ICharmAlternative>();
+  private final List<Set<ICharm>> alternatives = new ArrayList<Set<ICharm>>();
+  private final List<Set<ICharm>> merges = new ArrayList<Set<ICharm>>();
   private final List<ICharm> parentCharms = new ArrayList<ICharm>();
   private final List<Charm> children = new ArrayList<Charm>();
   private final List<SelectiveCharmGroup> selectiveCharmGroups = new ArrayList<SelectiveCharmGroup>();
@@ -156,13 +156,34 @@ public class Charm extends Identificate implements ICharm {
     visitor.visitCharm(this);
   }
 
-  public void addAlternative(ICharmAlternative alternative) {
+  public void addAlternative(Set<ICharm> alternative) {
     alternatives.add(alternative);
   }
 
   public boolean isBlockedByAlternative(IMagicCollection magicCollection) {
-    for (ICharmAlternative alternative : alternatives) {
-      for (ICharm charm : alternative.getCharms()) {
+    for (Set<ICharm> alternative : alternatives) {
+      for (ICharm charm : alternative) {
+        boolean isThis = charm.getId().equals(getId());
+        if (!isThis && magicCollection.isLearned(charm)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  public void addMerged(Set<ICharm> merged) {
+    if (!merged.isEmpty()) {
+      merges.add(merged);
+      if (!hasAttribute(ICharmData.MERGED_ATTRIBUTE)) {
+        addCharmAttribute(new CharmAttribute(ICharmData.MERGED_ATTRIBUTE.getId(), true));
+      }
+    }
+  }
+
+  public boolean isFreeByMerged(IMagicCollection magicCollection) {
+    for (Set<ICharm> merged : merges) {
+      for (ICharm charm : merged) {
         boolean isThis = charm.getId().equals(getId());
         if (!isThis && magicCollection.isLearned(charm)) {
           return true;

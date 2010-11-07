@@ -160,6 +160,10 @@ public class DummyCharm extends Identificate implements ICharm {
     return false;
   }
 
+  public boolean isFreeByMerged(IMagicCollection magicCollection) {
+    return false;
+  }
+
   public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
     if (prerequisites.length <= 0) {
       return false;

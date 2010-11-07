@@ -32,6 +32,7 @@ public class CharmCompiler {
   private final CharmSetBuilder setBuilder = new CharmSetBuilder();
   private final GenericCharmSetBuilder genericBuilder = new GenericCharmSetBuilder();
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
+  private final CharmMergedBuilder mergedBuilder = new CharmMergedBuilder();
   private final IIdentificateRegistry<ICharacterType> registry;
   private final SAXReader reader;
 
@@ -76,9 +77,11 @@ public class CharmCompiler {
         buildStandardCharms(type, rules);
         buildGenericCharms(type, rules);
         buildCharmAlternatives(type, rules);
+        buildCharmMerges(type, rules);
       }
       buildStandardCharms(MARTIAL_ARTS, rules);
       buildCharmAlternatives(MARTIAL_ARTS, rules);
+      buildCharmMerges(MARTIAL_ARTS, rules);
     }
     for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
       extractParents(CharmCache.getInstance().getCharms(rules));
@@ -99,6 +102,14 @@ public class CharmCompiler {
     if (charmFileTable.contains(type, rules)) {
       for (Document charmDocument : charmFileTable.get(type, rules)) {
         alternativeBuilder.buildAlternatives(charmDocument, CharmCache.getInstance().getCharms(type, rules));
+      }
+    }
+  }
+
+  private void buildCharmMerges(IIdentificate type, ExaltedRuleSet rules) {
+    if (charmFileTable.contains(type, rules)) {
+      for (Document charmDocument : charmFileTable.get(type, rules)) {
+        mergedBuilder.buildMerges(charmDocument, CharmCache.getInstance().getCharms(type, rules));
       }
     }
   }

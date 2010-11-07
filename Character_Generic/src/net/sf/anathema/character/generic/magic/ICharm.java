@@ -13,6 +13,8 @@ public interface ICharm extends ICharmData, IMagic {
   public Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator);
 
   public boolean isBlockedByAlternative(IMagicCollection magicCollection);
+  
+  public boolean isFreeByMerged(IMagicCollection magicCollection);
 
   public boolean isTreeRoot();
 
