@@ -147,7 +147,7 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Increasing Strength Exercise -->
           <charmAttribute attribute="Obvious" visualize="true" />
@@ -166,7 +166,7 @@
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Hill-Hurling Might -->
           <source source="Abyssals2nd" />
@@ -184,7 +184,7 @@
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Thunderbolt Attack Prana -->
           <charmAttribute attribute="Obvious" visualize="true" />
@@ -202,7 +202,7 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Lightning Speed -->
           <source source="Abyssals2nd" />

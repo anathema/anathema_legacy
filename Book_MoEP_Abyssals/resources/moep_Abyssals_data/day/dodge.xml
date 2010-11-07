@@ -58,7 +58,7 @@
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Seven Shadow Evasion -->
           <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.UncannyImpulseEvasion" exalt="Abyssal" group="Dodge">
@@ -75,7 +75,7 @@
                <special primaryStep="2" />
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Reflex Sidestep Technique -->
           <source source="Abyssals2nd" />
@@ -115,7 +115,7 @@
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Counterattack" visualize="true" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Leaping Dodge Method -->
           <charmAttribute attribute="Obvious" visualize="true" />

@@ -31,7 +31,7 @@
 		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
-		<charmAttribute attribute="Dusk" visualize="true" />
+		<charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
 		<source source="BIM_37" />
 	</charm>
 	<charm id="Abyssal.BrightDaysPaintedBlack" exalt="Abyssal" group="Integrity">
@@ -43,7 +43,7 @@
 		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
-		<charmAttribute attribute="Dusk" visualize="true" />
+		<charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="Overdrive" visualize="true" />
 		<source source="BIM_37" />
@@ -57,7 +57,7 @@
 		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
-		<charmAttribute attribute="Dusk" visualize="true" />
+		<charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="Overdrive" visualize="true" />
 		<source source="BIM_37" />

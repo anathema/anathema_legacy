@@ -75,7 +75,7 @@
 		<duration duration="Instant" />
 		<charmtype type="Reflexive" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
-        <charmAttribute attribute="Dawn" visualize="true" />
+        <charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Death Draws Near -->
 		<charmAttribute attribute="Obvious" visualize="true" />
@@ -96,7 +96,7 @@
 			<special speed="4" />
 		</charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Dawn" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
 		  <charmAttribute attribute="Mirror" visualize="true" />
 			<!-- NOTE:  Abyssal Mirror - Swifter than a Scream -->
           <charmAttribute attribute="Obvious" visualize="true" />

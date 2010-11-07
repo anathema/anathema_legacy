@@ -106,7 +106,7 @@
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Spirit-Cutting Attack -->
 			<charmAttribute attribute="Obvious" visualize="true" />
@@ -126,7 +126,7 @@
                <special primaryStep="10" />
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Ghost-Eating Technique -->
           <charmAttribute attribute="Obvious" visualize="true" />

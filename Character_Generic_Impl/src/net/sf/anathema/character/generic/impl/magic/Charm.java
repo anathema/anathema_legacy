@@ -57,7 +57,7 @@ public class Charm extends Identificate implements ICharm {
   private final List<Charm> children = new ArrayList<Charm>();
   private final List<SelectiveCharmGroup> selectiveCharmGroups = new ArrayList<SelectiveCharmGroup>();
   private final List<ICharmAttribute> charmAttributes = new ArrayList<ICharmAttribute>();
-  private final List<String> favoredCasteIds = new ArrayList<String>();
+  private final Set<String> favoredCasteIds = new HashSet<String>();
 
   private final ICharmTypeModel typeModel;
 

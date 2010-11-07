@@ -20,6 +20,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequi
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ITraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
+import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
@@ -136,6 +137,12 @@ public class CharmBuilder implements ICharmBuilder {
   }
 
   private void loadSpecialLearning(Element charmElement, Charm charm) {
+    for (ICharmAttribute attribute : charm.getAttributes()) {
+      if (attribute.getId().startsWith(ICharmData.FAVORED_CASTE_PREFIX)) {
+        String casteId = attribute.getId().substring(ICharmData.FAVORED_CASTE_PREFIX.length());
+        charm.addFavoredCasteId(casteId);
+      }
+    }
     Element learningElement = charmElement.element(ICharmXMLConstants.TAG_LEARNING);
     if (learningElement == null) {
       return;

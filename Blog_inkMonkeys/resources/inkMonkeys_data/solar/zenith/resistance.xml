@@ -32,7 +32,7 @@
 		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
-		<charmAttribute attribute="Dawn" visualize="true" />
+		<charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
         <charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
 		<charmAttribute attribute="Overdrive" visualize="true" />
@@ -74,7 +74,7 @@
         </cost>
         <duration duration="Permanent" />
 		<charmtype type="Permanent" />
-        <charmAttribute attribute="Dawn" visualize="true" />
+        <charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
         <charmAttribute attribute="Native" visualize="true" />
         <charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
 		<source source="InkMonkeys" />

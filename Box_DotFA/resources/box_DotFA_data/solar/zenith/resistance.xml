@@ -57,7 +57,7 @@
 			<special primaryStep="10" />
 		</charmtype>
           <charmAttribute attribute="Combo-Basic" visualize="true" />
-          <charmAttribute attribute="Dawn" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
 <!-- NOTE:  Abyssal Mirror - Far Beyond Ruin -->
 			<source source="LordsOfCreation" />
@@ -77,7 +77,7 @@
 			<special primaryStep="10" />
   		  </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Dawn" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
           <source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>

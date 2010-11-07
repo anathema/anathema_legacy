@@ -1496,7 +1496,7 @@
       <special primaryStep="7"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Dawn" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <source source="SecondEdition" page="206"/>
   </charm>
   <charm id="Solar.SpiritStrengthensSkin" exalt="Solar" group="Resistance">
@@ -1515,7 +1515,7 @@
       <special primaryStep="7"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Dawn" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition" page="207"/>
   </charm>
@@ -1535,7 +1535,7 @@
       <special primaryStep="7"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Dawn" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition" page="207"/>
   </charm>
@@ -1555,7 +1555,7 @@
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
-    <charmAttribute attribute="Dawn" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <source source="SecondEdition" page="207"/>
   </charm>
   <charm id="Solar.AdamantSkinTechnique" exalt="Solar" group="Resistance">
@@ -1575,7 +1575,7 @@
       <special primaryStep="7"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Dawn" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition" page="207"/>
   </charm>
@@ -1592,7 +1592,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Native" visualize="true"/>
-    <charmAttribute attribute="Dawn" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <charmAttribute attribute="Overdrive" visualize="true"/>
     <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
     <source source="ScrollErrata" />
@@ -2695,7 +2695,7 @@
     <combo allAbilities="true"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Dawn" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition" page="223"/>
   </charm>
@@ -2713,7 +2713,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Dawn" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <source source="SecondEdition" page="224"/>
   </charm>
   <charm id="Solar.RacingHareMethod" exalt="Solar" group="Athletics">
@@ -2802,7 +2802,7 @@
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Dawn" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
     <source source="SecondEdition" page="225"/>
@@ -2971,7 +2971,7 @@
       <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Dawn" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition" page="227"/>
   </charm>
@@ -2990,7 +2990,7 @@
       <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Dawn" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <source source="SecondEdition" page="227"/>
   </charm>
   <charm id="Solar.FlowLikeBlood" exalt="Solar" group="Dodge">
@@ -3031,7 +3031,7 @@
       <special primaryStep="9"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Dawn" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <charmAttribute attribute="Counterattack" visualize="true"/>
     <source source="SecondEdition" page="227"/>
   </charm>

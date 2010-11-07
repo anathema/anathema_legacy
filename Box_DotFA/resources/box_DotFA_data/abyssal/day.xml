@@ -72,7 +72,7 @@
 		<duration duration="Instant" />
 		<charmtype type="Reflexive" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Goodspeed Steps -->
 		<charmAttribute attribute="Obvious" visualize="true" />
@@ -93,7 +93,7 @@
 			<special speed="4" />
 		</charmtype>
 		<charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
 			<charmAttribute attribute="Mirror" visualize="true" />
 			<!-- NOTE:  Solar Mirror - Speed of Light Approach -->
 		<charmAttribute attribute="Obvious" visualize="true" />
@@ -110,7 +110,7 @@
 		</cost>
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Thousandfold Shadow Dance -->
 		<source source="ScrollErrata" />
@@ -127,7 +127,7 @@
 		</cost>
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
-          <charmAttribute attribute="Dusk" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Divine Witness of Utter Safety -->
 		<charmAttribute attribute="Obvious" visualize="true" />

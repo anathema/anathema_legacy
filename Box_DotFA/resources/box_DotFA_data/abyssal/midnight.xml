@@ -104,7 +104,7 @@
 			<special primaryStep="10" />
 		</charmtype>
 		<charmAttribute attribute="Combo-Basic" visualize="true" />
-        <charmAttribute attribute="Dusk" visualize="true" />
+        <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Ruin-Abasing Shrug -->
 		<source source="ScrollErrata" />

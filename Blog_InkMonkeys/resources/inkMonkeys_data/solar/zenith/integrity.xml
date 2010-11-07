@@ -35,7 +35,7 @@
 		<duration amount="1" unit="scene" />
 		<charmtype type="Reflexive" />
 		<charmAttribute attribute="Combo-Ok" visualize="true" />
-		<charmAttribute attribute="Dawn" visualize="true" />
+		<charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="Overdrive" visualize="true" />
 		<source source="BIM_37" />
