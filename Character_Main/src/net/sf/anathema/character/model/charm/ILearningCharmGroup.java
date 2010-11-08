@@ -17,6 +17,8 @@ public interface ILearningCharmGroup extends ICharmGroup, IBasicLearnCharmGroup 
   public void learnCharmNoParents(ICharm charm, boolean experienced);
 
   public boolean isUnlearnable(ICharm charm);
+  
+  public boolean isUnlearnableWithoutConsequences(ICharm charm);
 
   public ICharm[] getExperienceLearnedCharms();
 

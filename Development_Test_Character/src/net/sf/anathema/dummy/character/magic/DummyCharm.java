@@ -159,6 +159,10 @@ public class DummyCharm extends Identificate implements ICharm {
   public boolean isBlockedByAlternative(IMagicCollection magicCollection) {
     return false;
   }
+  
+  public Set<ICharm> getMergedCharms() {
+    return new HashSet<ICharm>();
+  }
 
   public boolean isFreeByMerged(IMagicCollection magicCollection) {
     return false;

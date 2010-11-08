@@ -180,6 +180,14 @@ public class Charm extends Identificate implements ICharm {
       }
     }
   }
+  
+  public Set<ICharm> getMergedCharms() {
+    Set<ICharm> mergedCharms = new HashSet<ICharm>();
+    for (Set<ICharm> merge : merges) {
+      mergedCharms.addAll(merge);
+    }
+    return mergedCharms;
+  }
 
   public boolean isFreeByMerged(IMagicCollection magicCollection) {
     for (Set<ICharm> merged : merges) {

@@ -131,8 +131,30 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   private ILearningCharmGroup[] createGroups(ICharmGroup[] charmGroups) {
     List<ILearningCharmGroup> newGroups = new ArrayList<ILearningCharmGroup>();
+    ICharmLearnListener mergedListener = new CharmLearnAdapter() {
+      @Override
+      public void charmLearned(ICharm charm) {
+        for (ICharm mergedCharm : charm.getMergedCharms()) {
+          if (!isLearned(mergedCharm) && isLearnableWithoutPrereqs(mergedCharm)) {
+            getGroup(mergedCharm).learnCharm(mergedCharm, context.getBasicCharacterContext().isExperienced());
+          }
+        }
+      }
+
+      @Override
+      public void charmForgotten(ICharm charm) {
+        for (ICharm mergedCharm : charm.getMergedCharms()) {
+          if (isLearned(mergedCharm) && isUnlearnableWithoutConsequences(mergedCharm)) {
+            getGroup(mergedCharm).forgetCharm(mergedCharm, context.getBasicCharacterContext().isExperienced());
+          }
+        }
+      }
+    };
     for (ICharmGroup charmGroup : charmGroups) {
-      newGroups.add(new LearningCharmGroup(getLearnStrategy(), charmGroup, this, learningCharmGroupContainer));
+      ILearningCharmGroup group = new LearningCharmGroup(getLearnStrategy(), charmGroup, this, learningCharmGroupContainer);
+      newGroups.add(group);
+      
+      group.addCharmLearnListener(mergedListener);
     }
     return newGroups.toArray(new LearningCharmGroup[0]);
   }
@@ -371,6 +393,18 @@ public class CharmConfiguration implements ICharmConfiguration {
     }
     return isLearnable(charm);
   }
+  
+  protected boolean isLearnableWithoutPrereqs(ICharm charm) {
+    if (!isLearnable(charm)) {
+      return false;
+    }
+    for (ICharm parentCharm : charm.getLearnPrerequisitesCharms(this)) {
+      if (!isLearned(parentCharm)) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   public boolean isLearned(String charmId) {
     ICharm charm = getCharmById(charmId);
@@ -382,8 +416,20 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   public boolean isUnlearnable(String charmId) {
     ICharm charm = getCharmById(charmId);
+    if (charm == null) {
+      return false;
+    }
+    return isUnlearnable(charm);
+  }
+  
+  public final boolean isUnlearnable(ICharm charm) {
     final ILearningCharmGroup group = getGroup(charm);
     return group.isUnlearnable(charm);
+  }
+  
+  protected boolean isUnlearnableWithoutConsequences(ICharm charm) {
+    final ILearningCharmGroup group = getGroup(charm);
+    return group.isUnlearnableWithoutConsequences(charm);
   }
 
   public boolean isAlienCharm(ICharm charm) {

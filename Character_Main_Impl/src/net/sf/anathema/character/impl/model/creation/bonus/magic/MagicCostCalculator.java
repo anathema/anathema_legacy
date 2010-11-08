@@ -2,7 +2,9 @@ package net.sf.anathema.character.impl.model.creation.bonus.magic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -71,25 +73,38 @@ public class MagicCostCalculator {
     List<IMagic> sortedMagicList = new WeightedMagicSorter().sortDescending(
         magicToHandle.toArray(new IMagic[magicToHandle.size()]),
         weights);
+    Set<IMagic> handledMagic = new HashSet<IMagic>();
     for (IMagic magic : sortedMagicList) {
-      handleMagic(magic);
+      handleMagic(magic, handledMagic);
     }
   }
 
-  private void handleMagic(IMagic magic) {
+  private class CountVisitor implements IMagicVisitor {
+    int learnCount;
+    Set<IMagic> handledMagic;
+    
+    public CountVisitor(Set<IMagic> handledMagic) {
+      this.learnCount = 0;
+      this.handledMagic = handledMagic;
+    }
+    
+    public void visitCharm(ICharm charm) {
+      learnCount = determineLearnCount(charm, handledMagic);
+    }
+    public void visitSpell(ISpell spell) {
+      learnCount = 1;
+    }
+    
+    public int getLearnCount() {
+      return learnCount;
+    }
+  }
+  private void handleMagic(IMagic magic, Set<IMagic> handledMagic) {
     final int bonusPointFactor = costs.getMagicCosts(magic, analyzer);
-    final int[] learnCount = new int[1];
-    magic.accept(new IMagicVisitor() {
-      public void visitCharm(ICharm charm) {
-        learnCount[0] = determineLearnCount(charm);
-      }
-
-      public void visitSpell(ISpell spell) {
-        learnCount[0] = 1;
-      }
-    });
+    CountVisitor visitor = new CountVisitor(handledMagic);
+    magic.accept(visitor);
     boolean favored = analyzer.isMagicFavored(magic);
-    for (int timesHandled = 0; timesHandled < learnCount[0]; timesHandled++) {
+    for (int timesHandled = 0; timesHandled < visitor.getLearnCount(); timesHandled++) {
       if (favored) {
         handleFavoredMagic(bonusPointFactor, magic);
       }
@@ -98,6 +113,8 @@ public class MagicCostCalculator {
       }
     }
     handleSubeffectCharm(magic);
+    
+    handledMagic.add(magic);
   }
 
   private void handleSubeffectCharm(IMagic magic) {
@@ -135,10 +152,15 @@ public class MagicCostCalculator {
     bonusPointsSpentForSpells = 0;
   }
 
-  private int determineLearnCount(ICharm charm) {
+  private int determineLearnCount(ICharm charm, Set<IMagic> handledMagic) {
     int learnCount = handleSpecialCharm(charm);
     if (charms.isAlienCharm(charm)) {
       learnCount *= 2;
+    }
+    for (ICharm mergedCharm : charm.getMergedCharms()) {
+      if (handledMagic.contains(mergedCharm)) {
+        return 0;
+      }
     }
     return learnCount;
   }

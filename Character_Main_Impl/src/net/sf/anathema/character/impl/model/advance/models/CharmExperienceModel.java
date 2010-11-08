@@ -1,5 +1,8 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
@@ -34,27 +37,26 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
   private int getCharmCosts() {
     int experienceCosts = 0;
     ICharmConfiguration charmConfiguration = statistics.getCharms();
+    Set<ICharm> charmsCalculated = new HashSet<ICharm>();
     for (ICharm charm : charmConfiguration.getLearnedCharms(true)) {
-      int charmCosts = calculateCharmCost(charmConfiguration, charm);
+      int charmCosts = calculateCharmCost(charmConfiguration, charm, charmsCalculated);
       if (charmConfiguration.isAlienCharm(charm)) {
         charmCosts *= 2;
       }
       experienceCosts += charmCosts;
+      charmsCalculated.add(charm);
     }
     return experienceCosts;
   }
 
-  private int calculateCharmCost(ICharmConfiguration charmConfiguration, ICharm charm) {
+  private int calculateCharmCost(ICharmConfiguration charmConfiguration, ICharm charm, Set<ICharm> charmsCalculated) {
     ISpecialCharmConfiguration specialCharm = charmConfiguration.getSpecialCharmConfiguration(charm);
     int charmCost = calculator.getCharmCosts(
         charm,
         basicCharacter,
         traitConfiguration,
         statistics.getCharacterTemplate().getMagicTemplate().getFavoringTraitType());
-    if (charm.isFreeByMerged(statistics.getCharacterContext().getMagicCollection())) {
-      return 0;
-    }
-    else if (specialCharm != null) {
+    if (specialCharm != null) {
       int timesLearnedWithExperience = specialCharm.getCurrentLearnCount() - specialCharm.getCreationLearnCount();
       final int specialCharmCost = timesLearnedWithExperience * charmCost;
       if (!(specialCharm instanceof ISubeffectCharmConfiguration)) {
@@ -70,6 +72,11 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
       return subeffectCost + specialCharmCost;
     }
     else if (charmConfiguration.getGroup(charm).isLearned(charm, true)) {
+      for (ICharm mergedCharm : charm.getMergedCharms()) {
+        if (charmsCalculated.contains(mergedCharm)) {
+          return 0;
+        }
+      }
       return charmCost;
     }
     return 0;

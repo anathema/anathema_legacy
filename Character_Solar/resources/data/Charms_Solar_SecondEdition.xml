@@ -256,7 +256,6 @@
       <special speed="3" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Merged" visualize="true"/>
     <source source="SecondEdition" page="189"/>
   </charm>
   <charm id="Solar.ImmaculateGoldenBow" exalt="Solar" group="Archery">
@@ -447,7 +446,6 @@
     <duration duration="Instant"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <charmAttribute attribute="Merged" visualize="true"/>
     <source source="SecondEdition" page="191"/>
     <source source="ScrollErrata" />
   </charm>
@@ -467,7 +465,6 @@
       <special speed="3" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Merged" visualize="true"/>
     <source source="SecondEdition" page="192"/>
   </charm>
   <charm id="Solar.GloriousSolarSaber" exalt="Solar" group="Melee">
@@ -789,7 +786,6 @@
     <charmtype type="Reflexive">
       <special primaryStep="2"/>
     </charmtype>
-    <charmAttribute attribute="Merged" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition" page="197"/>
   </charm>
@@ -3879,4 +3875,14 @@
     <charmAttribute attribute="Social" visualize="true"/>
     <source source="SecondEdition" page="240"/>
   </charm>
+  <merges>
+    <merged>
+      <charmReference id="Solar.SummoningLoyalBow" />
+      <charmReference id="Solar.SummoningLoyalSteel" />
+    </merged>
+    <merged>
+      <charmReference id="Solar.CallBlade" />
+      <charmReference id="Solar.CallBladeThrown" />
+    </merged>
+  </merges>
 </charmlist>

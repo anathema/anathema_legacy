@@ -189,6 +189,19 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     return !learnArbitrator.isCompulsiveCharm(charm) && learnStrategy.isUnlearnable(this, charm);
   }
 
+  public boolean isUnlearnableWithoutConsequences(ICharm charm) {
+    if (!isUnlearnable(charm)) {
+      return false;
+    }
+    for (ICharm child : charm.getLearnFollowUpCharms(learnArbitrator)) {
+      ILearningCharmGroup childGroup = charmGroupContainer.getLearningCharmGroup(child);
+      if (childGroup.isLearned(child)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   public void forgetAll() {
     Set<ICharm> forgetCloneCharms = new HashSet<ICharm>(charmsLearnedWithExperience);
     for (ICharm charm : forgetCloneCharms) {
