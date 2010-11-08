@@ -28,9 +28,7 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
     IEquipmentAdditionalModelTemplate template = (IEquipmentAdditionalModelTemplate) additionalTemplate;
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
     ICharacterType characterType = basicCharacterContext.getCharacterType();
-    IArmourStats naturalArmour = new NaturalSoak(
-        context.getTraitCollection().getTrait(AttributeType.Stamina),
-        characterType);
+    IArmourStats naturalArmour = new NaturalSoak(context);
     IExaltedRuleSet ruleSet = basicCharacterContext.getRuleSet();
     return new EquipmentAdditionalModel(
         getDefaultMaterial(characterType),
