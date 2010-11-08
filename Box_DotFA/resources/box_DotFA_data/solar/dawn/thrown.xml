@@ -43,7 +43,7 @@
           <prerequisite>
                <trait id="Thrown" value="5" />
                <essence value="5" />
-               <charmReference id="Solar.CallBlade" />
+               <charmReference id="Solar.CallBladeThrown" />
           </prerequisite>
           <cost>
                <essence cost="Varies" text="(3m)" />
