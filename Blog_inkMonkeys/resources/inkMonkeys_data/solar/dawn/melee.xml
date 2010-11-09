@@ -84,7 +84,7 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <charmAttribute attribute="MartialReadyArcheryMartialArtsThrown" visualize="true" />
+          <charmAttribute attribute="MartialReadyMartialArtsArcheryThrown" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
 			<!-- NOTE:  Abyssal Mirror - Entropic Blade Nature -->
   		  <charmAttribute attribute="Native" visualize="true" />
@@ -160,7 +160,7 @@
                <charmReference id="Solar.HeavenlyGuardianDefense" />
           </prerequisite>
           <cost>
-               <essence cost="" text="(3m or 3m, 1wp)" />
+               <essence cost="-" text="(3m or 3m, 1wp)" />
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
@@ -188,7 +188,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="InkMonkeys" />
      </charm>
-     <charm id="Solar.CoronaOfRadiance" exalt="Solar" group="Melee">
+     <charm id="Solar.CoronaOfRadiance5" exalt="Solar" group="Melee">
           <prerequisite>
                <trait id="Melee" value="5" />
                <essence value="5" />
@@ -197,6 +197,21 @@
           </prerequisite>
           <cost>
                <essence cost="-" text="(5m, 1wp)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Holy" visualize="true"/>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.CoronaOfRadiance7" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="7" />
+               <charmReference id="Solar.CoronaOfRadiance5" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(7m, 1wp)" />
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
@@ -217,6 +232,107 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.ThousandArmsPrana" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.SummoningLoyalSteel" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(1m)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.FinalSunsetStance" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.DippingSwallowDefense" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" />
+          </cost>
+          <duration amount="1" unit="tick"/>
+          <charmtype type="Reflexive">
+              <special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="MartialReadyMartialArts" visualize="true"/>
+  		  <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.FadingLightQuickening" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.FinalSunsetStance" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(1m)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Overdrive" visualize="true"/>
+  		  <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.DawnsParableDefense" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.FinalSunsetStance" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" text=" per defense" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+              <special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="MartialReadyMartialArts" visualize="true"/>
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.ArrowPennantAegis" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="3" />
+               <essence value="1" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.CrossFangMaelstrom" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.IronWhirlwindAttack" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" text=", 3+ free reflexive attacks" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="ExtraAction" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.StormSlayingAttitude" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.IronWhirlwindAttack" />
+          </prerequisite>
+          <cost/>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
           <source source="InkMonkeys" />
      </charm>
 </charmlist>
