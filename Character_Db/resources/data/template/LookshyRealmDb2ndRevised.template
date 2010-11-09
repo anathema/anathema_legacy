@@ -1,4 +1,4 @@
-<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="LookshyRealmSubtype">
+<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="LookshyRealmRevisedSubtype">
   <general>
     <edition edition="SecondEdition"/>
     <abilityGroups uses="template/DbAbilityGroup2nd.template" />
@@ -36,6 +36,8 @@
     			<dotCostModification thresholdLevel="2" multiplier="1"/>
     		</costModifier>
     	</additionalCost>
+    	<revisedIntimacies value="true" />
+   		<willpowerVirtueBased value="false" />   	
     </additionalRules>
     <additionalTemplates>
       <template id="Db.VirtueFlaw.Template" />
@@ -51,7 +53,8 @@
       <abilityDots general="22" favored="13" favoredPicks="3" />
       <backgroundDots count="13" />
       <virtueDots count="5" />
-      <bonusPoints count="15" />
+      <bonusPoints count="18" />
+      <specialtyDots count="4" />
       <charmPicks favored="4" general="3" />
     </creationPoints>
   </creation>

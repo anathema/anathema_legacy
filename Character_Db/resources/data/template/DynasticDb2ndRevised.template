@@ -1,4 +1,4 @@
-<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="LookshyRealmSubtype">
+<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="DynasticRevisedSubtype">
   <general>
     <edition edition="SecondEdition"/>
     <abilityGroups uses="template/DbAbilityGroup2nd.template" />
@@ -8,12 +8,10 @@
     <magicTemplate uses="template/DbMagic2nd.template"/>
     <presentation uses="template/DbPresentation.template"/>
      <additionalRules>
-    	<forbiddenBackgrounds>
-     		<backgroundReference id="Cult" />
+     	<forbiddenBackgrounds>
      		<backgroundReference id="Contacts" />
      		<backgroundReference id="Followers" />
      		<backgroundReference id="Influence" />
-     		<backgroundReference id="Henchmen" />
      	</forbiddenBackgrounds>
     	<additionalPools>
     		<multilearnablePool>
@@ -29,13 +27,9 @@
     				<fixedValue value="6" pool="11"/>
     			</peripheralPool>
     		</multilearnablePool>
+	    	<revisedIntimacies value="true" />
+    		<willpowerVirtueBased value="false" />
     	</additionalPools>
-    	<additionalCost>
-    		<costModifier>
-    			<backgroundReference id="Breeding"/>
-    			<dotCostModification thresholdLevel="2" multiplier="1"/>
-    		</costModifier>
-    	</additionalCost>
     </additionalRules>
     <additionalTemplates>
       <template id="Db.VirtueFlaw.Template" />
@@ -49,9 +43,10 @@
     <creationPoints>
       <attributeDots primary="7" secondary="6" tertiary="4" />
       <abilityDots general="22" favored="13" favoredPicks="3" />
-      <backgroundDots count="13" />
+      <backgroundDots count="12" />
       <virtueDots count="5" />
-      <bonusPoints count="15" />
+      <bonusPoints count="18" />
+      <specialtyDots count="4" />
       <charmPicks favored="4" general="3" />
     </creationPoints>
   </creation>

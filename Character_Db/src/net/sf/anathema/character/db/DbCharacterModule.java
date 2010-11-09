@@ -78,7 +78,18 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final TemplateType cherakiTemplateType = new TemplateType(CharacterType.DB, new Identificate("Cherak")); //$NON-NLS-1$
   private static final TemplateType immaculateTemplateType = new TemplateType(CharacterType.DB, new Identificate(
       "ImmaculateSubtype")); //$NON-NLS-1$
-
+  private static final TemplateType lookshyNativeRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+      "LookshyRevisedSubtype")); //$NON-NLS-1$
+  private static final TemplateType lookshyOutcasteRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  "LookshyOutcasteRevisedSubtype")); //$NON-NLS-1$
+  private static final TemplateType lookshyRealmRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  "LookshyRealmRevisedSubtype")); //$NON-NLS-1$
+  private static final TemplateType dynasticRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  "DynasticRevisedSubtype")); //$NON-NLS-1$
+  private static final TemplateType cherakiRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate("Cherak")); //$NON-NLS-1$
+  private static final TemplateType immaculateRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  "ImmaculateRevisedSubtype")); //$NON-NLS-1$
+  
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getGenericCharmStatsRegistry().register(
@@ -130,6 +141,13 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     registerParsedTemplate(characterGenerics, "template/LookshyNativeDb2nd.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/LookshyOutcasteDb2nd.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/LookshyRealmDb2nd.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/DynasticDb2ndRevised.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/LookshyNativeDb2ndRevised.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/LookshyOutcasteDb2ndRevised.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/LookshyRealmDb2ndRevised.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/CherakDb2ndRevised.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/ImmaculateMonkDb2ndRevised.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/ThresholdOutcasteDb2ndRevised.template"); //$NON-NLS-1$
   }
 
   @Override
@@ -145,7 +163,10 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_FAMILY, new ITemplateType[] {
         dynastTemplateType,
         lookshyNativeTemplateType,
-        lookshyRealmTemplateType }));
+        lookshyRealmTemplateType,
+        dynasticRevisedTemplateType,
+        lookshyNativeRevisedTemplateType,
+        lookshyRealmRevisedTemplateType}));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HENCHMEN, CharacterType.DB));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, CharacterType.DB));
     addLookshyBackgrounds(backgroundRegistry);
@@ -177,7 +198,10 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     ITemplateType[] lookshyTemplateTypes = new ITemplateType[] {
         lookshyNativeTemplateType,
         lookshyRealmTemplateType,
-        lookshyOutcasteTemplateType };
+        lookshyOutcasteTemplateType,
+        lookshyNativeRevisedTemplateType,
+        lookshyRealmRevisedTemplateType,
+        lookshyOutcasteRevisedTemplateType};
     ITemplateType[] retainerTemplateTypes = new ITemplateType[] {
         dynastTemplateType,
         immaculateTemplateType,
@@ -188,7 +212,13 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
         pirateOutcasteTemplateType,
         pirateRealmTemplateType,
         patricianOutcasteTemplateType,
-        lowerCasteOutcasteTemplateType };
+        lowerCasteOutcasteTemplateType,
+        dynasticRevisedTemplateType,
+        immaculateRevisedTemplateType,
+        cherakiRevisedTemplateType,
+        lookshyNativeRevisedTemplateType,
+        lookshyRealmRevisedTemplateType,
+        lookshyOutcasteRevisedTemplateType,};
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, lookshyTemplateTypes));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_RETAINERS, retainerTemplateTypes));
   }
