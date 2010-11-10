@@ -90,7 +90,7 @@
 			<essence value="3" />
 			<charmReference id="Celestial.LeapingSmashTechnique" />
 		</prerequisite>
-		<cost /
+		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
