@@ -153,7 +153,8 @@ support Anathema, and his sterling work on the new plugins for 1.4.2 and 1.5.0 (
 getting us pointed in the right direction for future expansions).
 
 Thanks also to Rob Rutherford and Eric Astor, without whom 1.4.2 probably wouldn't have
-gotten done in 2010.  Their knowledge of Java and Eclipse has been invaluable. 
+gotten done in 2010, and 1.5.0 wouldn't have been done until 2011-12.  Their knowledge
+of Java and Eclipse has been invaluable, as have been their coding skills. 
 
 Philip "The_Burrito" Markus provided much of the Necromancy spell and Lunar Charm data.
 Patches did the same for the Dragon Kings.

@@ -10,7 +10,8 @@ http://anathema.sf.net
 
 -- Features --
 * [2E] Updated to add Dawn Solution erratta and Ink Monkeys vols. 30-38.
-* [2E] New official charms added to package.    
+* [2E] New official charms added to package.
+* [2E] New character creation rules (for Solars and DBs) added to package.   
 
 ===------------------------------------------------------------------------------===
 			Release 1.4.2 "Great Forks"

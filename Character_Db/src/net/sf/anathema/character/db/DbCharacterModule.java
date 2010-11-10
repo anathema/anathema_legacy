@@ -86,9 +86,13 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   "LookshyRealmRevisedSubtype")); //$NON-NLS-1$
   private static final TemplateType dynasticRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
   "DynasticRevisedSubtype")); //$NON-NLS-1$
-  private static final TemplateType cherakiRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate("Cherak")); //$NON-NLS-1$
+  private static final TemplateType cherakiRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate("CherakRevisedSubtype")); //$NON-NLS-1$
   private static final TemplateType immaculateRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
   "ImmaculateRevisedSubtype")); //$NON-NLS-1$
+  private static final TemplateType dreamsTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  "DreamsSubtype")); //$NON-NLS-1$
+  private static final TemplateType dreamsRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  "DreamsRevisedSubtype")); //$NON-NLS-1$
   
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -148,6 +152,8 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     registerParsedTemplate(characterGenerics, "template/CherakDb2ndRevised.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/ImmaculateMonkDb2ndRevised.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/ThresholdOutcasteDb2ndRevised.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/DreamsDb2nd.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/DreamsDb2ndRevised.template"); //$NON-NLS-1$
   }
 
   @Override
@@ -165,6 +171,8 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
         lookshyNativeTemplateType,
         lookshyRealmTemplateType,
         dynasticRevisedTemplateType,
+        dreamsTemplateType,
+        dreamsRevisedTemplateType,
         lookshyNativeRevisedTemplateType,
         lookshyRealmRevisedTemplateType}));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HENCHMEN, CharacterType.DB));
@@ -201,7 +209,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
         lookshyOutcasteTemplateType,
         lookshyNativeRevisedTemplateType,
         lookshyRealmRevisedTemplateType,
-        lookshyOutcasteRevisedTemplateType};
+        lookshyOutcasteRevisedTemplateType,
+        dreamsTemplateType,
+        dreamsRevisedTemplateType};
     ITemplateType[] retainerTemplateTypes = new ITemplateType[] {
         dynastTemplateType,
         immaculateTemplateType,
@@ -218,7 +228,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
         cherakiRevisedTemplateType,
         lookshyNativeRevisedTemplateType,
         lookshyRealmRevisedTemplateType,
-        lookshyOutcasteRevisedTemplateType,};
+        lookshyOutcasteRevisedTemplateType,
+        dreamsTemplateType,
+        dreamsRevisedTemplateType};
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, lookshyTemplateTypes));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_RETAINERS, retainerTemplateTypes));
   }
