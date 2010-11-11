@@ -3,7 +3,7 @@
 
 	<import file="common_plugin_targets.xml" />
 
-	<property name="projectset" value="Blog_inkMonkeys" />
+	<property name="projectset" value="Blog_InkMonkeys" />
 	<property name="module.name" value="blog_inkmonkeys" />
 
 	<property file="plugin.directories.properties" />
