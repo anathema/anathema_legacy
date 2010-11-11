@@ -145,15 +145,15 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     registerParsedTemplate(characterGenerics, "template/LookshyNativeDb2nd.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/LookshyOutcasteDb2nd.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/LookshyRealmDb2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/DynasticDb2ndRevised.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/LookshyNativeDb2ndRevised.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/DreamsDb2nd.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/DreamsDb2ndRevised.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/LookshyOutcasteDb2ndRevised.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/LookshyRealmDb2ndRevised.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/CherakDb2ndRevised.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/ImmaculateMonkDb2ndRevised.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/ThresholdOutcasteDb2ndRevised.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/DreamsDb2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/DreamsDb2ndRevised.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/LookshyNativeDb2ndRevised.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/DynasticDb2ndRevised.template"); //$NON-NLS-1$
   }
 
   @Override

@@ -1,0 +1,44 @@
+<traitTemplates uses="trait/DefaultTraitCollection.template">
+  <abilities>
+		<defaultTrait startValue="0" lowerableState="Default">
+			<limitation type="Essence"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Linguistics" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Integrity" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<alternateMinimumTraits count="1" value="1">
+ 	  		<trait id="Bureaucracy" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+ 	  		<trait id="Presence" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+ 	  		<trait id="Performance" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+ 	  		<trait id="Socialize" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+		</alternateMinimumTraits>
+		<alternateMinimumTraits count="1" value="1">
+ 	  		<trait id="Ride" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+ 	  		<trait id="Sail" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+		</alternateMinimumTraits>
+  </abilities>
+</traitTemplates>

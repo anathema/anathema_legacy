@@ -1,0 +1,24 @@
+<traitTemplates uses="trait/DefaultTraitCollection.template">
+  <abilities>
+		<defaultTrait startValue="0" lowerableState="Default">
+			<limitation type="Essence"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Craft" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Lore" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Medicine" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Occult" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+  </abilities>
+</traitTemplates>
