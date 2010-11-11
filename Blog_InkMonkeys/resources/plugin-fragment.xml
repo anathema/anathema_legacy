@@ -46,11 +46,11 @@
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="inkMonkeys_data/solar/dawn/melee.xml" />
           </parameter>
-          <!-- <parameter id="list">
+          <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="inkMonkeys_data/solar/night/dodge.xml" />
-          </parameter> -->
+          </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
