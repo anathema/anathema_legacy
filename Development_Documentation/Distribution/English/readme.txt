@@ -106,6 +106,14 @@ but it appears to be quite elusive. Please contact us should you encounter this 
 
 -"Start Maximized" doesn't work on some Linux systems.
 
+The new (as of Ink Monkeys 35) rules on modifying Combos are supported to a limited degree:
+Combos created at character creation cannot be modified, and the program does not charge the
+character 1 xp for modifying combos, but the program allows the modification to happen.  If
+a combo is modified, please deduct 1 xp to follow this rule.
+
+Note: the Dreams of the First Age Solar templates give 2 more bonus dots than the the rules
+do, to allow the player to place the free manse and free cult dots that they automatically get.
+
 See versions.txt for a history of bugs fixed.
 
 ===------------------------------------------------------------------------------===
@@ -113,8 +121,9 @@ See versions.txt for a history of bugs fixed.
 ===------------------------------------------------------------------------------===
 
 Anathema was created  by Sandra Sieroux and Urs Reupke, with further development
-(starting with version 1.4.1) by Scott Olson, Eric Astor, Rob Rutherford, and others.
-Contact us at the-smith@users.sourceforge.net with questions, comments or suggestions.
+(starting with version 1.4.1) by Scott Olson, Eric Astor, Rob Rutherford, Paul Adams,
+and others. Contact us at the-smith@users.sourceforge.net with questions, comments or
+suggestions.
 
 For bug reports you should use the SourceForge.net Tracking System at
 http://sourceforge.net/projects/anathema

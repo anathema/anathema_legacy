@@ -11,7 +11,11 @@ http://anathema.sf.net
 -- Features --
 * [2E] Updated to add Dawn Solution erratta and Ink Monkeys vols. 30-38.
 * [2E] New official charms added to package.
-* [2E] New character creation rules (for Solars and DBs) added to package.   
+* [2E] New character creation rules (for Solars and DBs) added to package.
+* [2E] Dreams of the First Age character templates for Solars and DBs added to
+       package.  Note: the Dreams of the First Age Solar templates give 2 more
+       bonus dots than the the rules do, to allow the player to place the free
+       manse and free cult dots that they automatically get.
 
 ===------------------------------------------------------------------------------===
 			Release 1.4.2 "Great Forks"
