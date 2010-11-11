@@ -214,33 +214,18 @@
           <source source="InkMonkeys" />
      </charm>
      <charm id="Solar.SecondImpactFlourish" exalt="Solar" group="SolarHeroStyle">
-          <prerequisite>
-               <trait id="MartialArts" value="4" />
-               <essence value="3" />
-               <charmReference id="Solar.HeavenThunderHammer" />
-          </prerequisite>
-          <cost>
-               <essence cost="-" text="(3m)"/>
-          </cost>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Celestial" />
-          <source source="InkMonkeys" />
-     </charm>
-     <charm id="Solar.WorldRupturingBlow" exalt="Solar" group="SolarHeroStyle">
-          <prerequisite>
-               <trait id="MartialArts" value="5" />
-               <essence value="5" />
-               <charmReference id="Solar.HeavenThunderHammer" />
-          </prerequisite>
-          <cost>
-               <essence cost="-" text="(1m per yard)"/>
-          </cost>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Celestial" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="InkMonkeys" />
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="3" />
+			<charmReference id="Solar.HeavenThunderHammer" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="(3m)"/>
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<source source="InkMonkeys" />
      </charm>
      <charm id="Solar.SolarCombination" exalt="Solar" group="SolarHeroStyle">
           <prerequisite>
