@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Solar Hero Style - Infernals Add-on charms -->
-     <charm id="Celestial.HorizonHurlingTactic" exalt="Solar" group="SolarHeroStyle">
+     <charm id="Solar.HorizonHurlingTactic" exalt="Solar" group="SolarHeroStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="5" />
