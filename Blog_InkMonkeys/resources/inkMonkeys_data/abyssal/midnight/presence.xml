@@ -34,7 +34,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Shining on Dark Realms -->
-		<source source="BIM_29" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.HungryDarknessPrana" exalt="Abyssal" group="Presence">
 		<prerequisite>
@@ -49,7 +49,7 @@
 		<charmtype type="Reflexive" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="BIM_29" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.LightDevouringLabyrinth" exalt="Abyssal" group="Presence">
 		<prerequisite>
@@ -62,6 +62,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Illusion" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="BIM_29" />
+		<source source="InkMonkeys" />
 	</charm>
 </charmlist>

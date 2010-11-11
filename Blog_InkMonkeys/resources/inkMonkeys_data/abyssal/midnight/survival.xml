@@ -39,6 +39,6 @@
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Guiding Light Shines On -->
 		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="BIM_38" />
+		<source source="InkMonkeys" />
 	</charm>
 </charmlist>

@@ -41,7 +41,7 @@
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="Shaping" visualize="true" />
 		<charmAttribute attribute="Touch" visualize="true" />
-		<source source="BIM_29" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.DeathDealersChance" exalt="Abyssal" group="Larceny">
 		<prerequisite>
@@ -57,6 +57,6 @@
 		<charmtype type="Simple">
 			<special speed="6" defense="-1" turntype="DramaticAction" />
 		</charmtype>
-		<source source="BIM_29" />
+		<source source="InkMonkeys" />
 	</charm>
 </charmlist>

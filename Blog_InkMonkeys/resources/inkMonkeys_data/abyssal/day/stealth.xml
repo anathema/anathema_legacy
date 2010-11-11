@@ -35,6 +35,6 @@
 		<duration duration="Indefinite" />
 		<charmtype type="Reflexive" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
-		<source source="BIM_38" />
+		<source source="InkMonkeys" />
 	</charm>
 </charmlist>

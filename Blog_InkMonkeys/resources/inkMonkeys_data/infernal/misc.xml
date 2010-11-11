@@ -35,7 +35,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="BIM_5" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.BoundingBeastAdvance" exalt="Solar" group="InfernalMonsterStyle">
 		<prerequisite>
@@ -48,7 +48,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="BIM_5" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.LeapingSmashTechnique" exalt="Solar" group="InfernalMonsterStyle">
 		<prerequisite>
@@ -66,7 +66,7 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="BIM_5" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.ShockAndAweSlam" exalt="Solar" group="InfernalMonsterStyle">
 		<prerequisite>
@@ -82,7 +82,7 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="BIM_5" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.NowhereToRun" exalt="Solar" group="InfernalMonsterStyle">
 		<prerequisite>
@@ -96,7 +96,7 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="BIM_5" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.NowhereToHide" exalt="Solar" group="InfernalMonsterStyle">
 		<prerequisite>
@@ -112,7 +112,7 @@
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="Sorcerous" visualize="true" />
 		<charmAttribute attribute="Stackable" visualize="true" />
-		<source source="BIM_5" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.BloodHeraldsDeath" exalt="Solar" group="InfernalMonsterStyle">
 		<prerequisite>
@@ -130,7 +130,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Sorcerous" visualize="true" />
 		<charmAttribute attribute="Stackable" visualize="true" />
-		<source source="BIM_5" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.EternalMonstrousHunt" exalt="Solar" group="InfernalMonsterStyle">
 		<prerequisite>
@@ -142,7 +142,7 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
-		<source source="BIM_5" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.ArmageddonNightmareDuel" exalt="Solar" group="InfernalMonsterStyle">
 		<prerequisite>
@@ -158,7 +158,7 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Sorcerous" visualize="true" />
-		<source source="BIM_5" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.DeathDevouringSadism" exalt="Solar" group="InfernalMonsterStyle">
 		<prerequisite>
@@ -170,7 +170,7 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
-		<source source="BIM_5" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.SanityDevouringNightTerror" exalt="Solar" group="InfernalMonsterStyle">
 		<prerequisite>
@@ -183,6 +183,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Illusion" visualize="true" />
-		<source source="BIM_37" />
+		<source source="InkMonkeys" />
 	</charm>
 </charmlist>

@@ -34,7 +34,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="Overdrive" visualize="true" />
-		<source source="BIM_37" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.ThrustShotEvasion" exalt="Solar" group="Archery">
 		<prerequisite>

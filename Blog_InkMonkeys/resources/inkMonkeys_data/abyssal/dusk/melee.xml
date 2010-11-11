@@ -36,7 +36,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Golden Destruction Cut -->
-		<source source="BIM_29" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.PinnedMothTactic" exalt="Abyssal" group="Melee">
 		<prerequisite>
@@ -55,7 +55,7 @@
 		<charmAttribute attribute="Crippling" visualize="true" />
 		<charmAttribute attribute="Martial" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="BIM_38" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.InstantMurderFlash" exalt="Abyssal" group="Melee">
 		<prerequisite>
@@ -71,7 +71,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Martial" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="BIM_38" />
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.BloodPressGuillotine" exalt="Abyssal" group="Melee">
 		<prerequisite>
@@ -87,6 +87,6 @@
 		<charmAttribute attribute="Martial-ready" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="BIM_38" />
+		<source source="InkMonkeys" />
 	</charm>
 </charmlist>
