@@ -113,6 +113,9 @@ a combo is modified, please deduct 1 xp to follow this rule.
 
 Note: the Dreams of the First Age Solar templates give 2 more bonus dots than the the rules
 do, to allow the player to place the free manse and free cult dots that they automatically get.
+Also, the Solar types that get 1 or 2 dots of an Ability of their choice from a selection of
+options, those dots will be the first dots chosen from that range and are not deletable, so
+choose carefully. 
 
 See versions.txt for a history of bugs fixed.
 
