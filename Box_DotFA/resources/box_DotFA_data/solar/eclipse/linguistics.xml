@@ -77,7 +77,7 @@
 	<charm id="Solar.TheEverVigilantScribe" exalt="Solar" group="Linguistics">
 		<!-- NOTE:  Solar/Awareness "Mirror" - Omniscient Ears Approach -->
           <prerequisite>
-               <trait id="Awareness" value="5" />
+               <trait id="Linguistics" value="5" />
                <essence value="4" />
                <charmReference id="Solar.DiscerningSavant'sEye" />
           </prerequisite>
