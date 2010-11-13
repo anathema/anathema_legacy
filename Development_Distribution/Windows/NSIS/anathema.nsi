@@ -129,8 +129,10 @@ SectionEnd
 Section $(SEC0005_NAME) SEC0005
     SetOutPath $INSTDIR\plugins
     SetOverwrite on
+    File ..\..\build\plugins\blog_inkmonkeys.jar
     File ..\..\build\plugins\blog_inkmonkeys_vol8.jar
     File ..\..\build\plugins\blog_inkmonkeys_vol10_11.jar
+    File ..\..\build\plugins\blog_inkmonkeys_vol20_22.jar
     File ..\..\build\plugins\book_glories_luna.jar
     File ..\..\build\plugins\book_glories_maidens.jar
     File ..\..\build\plugins\book_glories_unconqueredsun.jar
@@ -144,6 +146,7 @@ Section $(SEC0005_NAME) SEC0005
     File ..\..\build\plugins\book_scrollofthemonk_imperfectlotus.jar
     File ..\..\build\plugins\book_thousandcorrectactions.jar
     File ..\..\build\plugins\book_undertherose.jar
+    File ..\..\build\plugins\box_dotfa.jar
     WriteRegStr HKLM "${REGKEY}\Components" Sourcebooks 1
 SectionEnd
 
@@ -183,6 +186,7 @@ done${UNSECTION_ID}:
 
 # Uninstaller sections
 Section /o "-un.$(SEC0005_NAME)" UNSEC0005
+    Delete /REBOOTOK $INSTDIR\plugins\box_dotfa.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_undertherose.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_thousandcorrectactions.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_scrollofthemonk_imperfectlotus.jar
@@ -196,8 +200,10 @@ Section /o "-un.$(SEC0005_NAME)" UNSEC0005
     Delete /REBOOTOK $INSTDIR\plugins\book_glories_unconqueredsun.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_glories_maidens.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_glories_luna.jar
+    Delete /REBOOTOK $INSTDIR\plugins\blog_inkmonkeys_vol20_22.jar
     Delete /REBOOTOK $INSTDIR\plugins\blog_inkmonkeys_vol10_11.jar
     Delete /REBOOTOK $INSTDIR\plugins\blog_inkmonkeys_vol8.jar
+    Delete /REBOOTOK $INSTDIR\plugins\blog_inkmonkeys.jar
     DeleteRegValue HKLM "${REGKEY}\Components" Sourcebooks
 SectionEnd
 
