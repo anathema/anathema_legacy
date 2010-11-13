@@ -132,7 +132,7 @@ Section $(SEC0005_NAME) SEC0005
     File ..\..\build\plugins\blog_inkmonkeys.jar
     File ..\..\build\plugins\blog_inkmonkeys_vol8.jar
     File ..\..\build\plugins\blog_inkmonkeys_vol10_11.jar
-    File ..\..\build\plugins\blog_inkmonkeys_vol20_22.jar
+    File ..\..\build\plugins\blog_inkmonkeys_vol20-22.jar
     File ..\..\build\plugins\book_glories_luna.jar
     File ..\..\build\plugins\book_glories_maidens.jar
     File ..\..\build\plugins\book_glories_unconqueredsun.jar

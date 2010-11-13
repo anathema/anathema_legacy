@@ -8,5 +8,5 @@
 
 	<property file="directories.properties" />
 
-	<target name="Distribute" depends="Build Bootloader, Build Plugins, Copy Text, Copy Linux Launcher, Build Windows executable, Build ZIP, Compile NSIS Installer" />
+	<target name="Distribute" depends="Clean, Build Bootloader, Build Plugins, Copy Text, Build Windows executable, Compile NSIS Installer, Copy Linux Launcher, Build ZIP" />
 </project>

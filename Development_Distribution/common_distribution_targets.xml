@@ -5,7 +5,7 @@
 	<taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${distributiontargets.basedir}/../Thirdparty/Ant/ant-contrib-1.0b1.jar" />
 	
 	<target name="Clean">
-		<delete>
+		<delete quiet="true">
 			<fileset dir="${build.dir}" />
 			<fileset dir="${test.dir}" />
 		</delete>
@@ -72,7 +72,7 @@
 	</target>
 	
 	<target name="Build Test Distribution">
-		<delete>
+		<delete quiet="true">
 			<fileset dir="${test.dir}" />
 		</delete>
 		<copy todir="${test.dir}">
