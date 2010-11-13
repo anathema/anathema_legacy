@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Character Lunar Plugin" default="Build Lunar">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Character_Lunar" />
+	<property name="module.name" value="character_lunar" />
+
+	<property file="plugin.directories.properties" />
+	
+	<target name="Build Lunar" depends="Compile, Build JAR"/>
+</project>

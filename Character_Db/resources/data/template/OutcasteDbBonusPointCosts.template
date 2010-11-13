@@ -1,0 +1,12 @@
+<bonusPointCost uses="template/DbBonusPointCosts.template">
+  <advantages>    
+	<backgrounds>
+      <lowRatings>
+        <fixedCost cost="2" />
+      </lowRatings>
+      <highRatings>
+        <fixedCost cost="3" />
+      </highRatings>
+    </backgrounds>
+  </advantages> 
+</bonusPointCost>

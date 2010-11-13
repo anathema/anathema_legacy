@@ -1,0 +1,112 @@
+Default Sidereals get 5 favored and 7 general picks.
+!2 Test the cost for non-favored Martial Arts
+
+!3 Spend the Free General Picks on Martial Arts
+This time, we have to spend all our charm picks on Martial Arts Charms.
+To make things simpler, let's pump our abilities.
+
+4 BP for a whopping 5 points of (non-favored) Martial Arts...
+
+!|SetAbilities|
+|traitType|value|
+|MartialArts|5|
+
+...and 20 BP for two points of Essence
+
+!|SetOtherTraits|
+|traitType|value|
+|Essence|4|
+
+!|CheckBonusPoints|
+|regularSpent?|
+|24|
+
+!|ToggleCharmLearned|
+|id|
+|Solar.LeapingMantisTechnique|
+|Solar.Iron-ArmBlock|
+|Solar.ImageDeathTechnique|
+|Solar.WallClimbingTechnique|
+|Solar.DistractingFinger-GestureAttack|
+|Solar.CrimsonLeapingCatTechnique|
+|Solar.StrikingFuryClawsAttack|
+
+Make sure there's a total of seven picks spent
+
+!|MagicOverview|
+|charmsLearned?|
+|7|
+
+!3 Ensure No Additional Bonus Points Are Spent
+
+!|CheckBonusPoints|
+|regularSpent?|
+|24|
+
+Any further charm picks should be paid for with bonus points.
+
+!3 Learn a non-Sidereal Martial Arts Charm
+Learn, Check BP, and unlearn once more.
+
+!|ToggleCharmLearned|
+|id|
+|Solar.StrikingCobraTechnique|
+
+!|CheckBonusPoints|
+|regularSpent?|
+|31|
+
+!|ToggleCharmLearned|
+|id|
+|Solar.StrikingCobraTechnique|
+
+!2 Test the Cost for Favored Martial Arts
+
+!3 Spend the favored picks
+
+First, set Martial Arts favored.
+
+!|SetAbilitiesFavored|
+|abilityType|
+|MartialArts|
+
+This reduces BP spent
+
+!|CheckBonusPoints|
+|regularSpent?|
+|22|
+
+Learn another 5 Charms to spend the favored Charm picks
+
+!|ToggleCharmLearned|
+|id|
+|Solar.EbonShadowForm|
+|Solar.SevenPointsWeaknessStrike|
+|Solar.Limb-ImmobilizingMethod|
+|Solar.ElusiveFlickerEvasion|
+|Solar.ParalyzingTouchAttack|
+
+Make sure there's a total of twelve picks spent
+
+!|MagicOverview|
+|charmsLearned?|
+|12|
+
+There should be no additional BP cost
+
+!|CheckBonusPoints|
+|regularSpent?|
+|22|
+
+!3 Learn another non-Sidereal MA Charm.
+!|ToggleCharmLearned|
+|id|
+|Solar.Blow-ConcealingGestureTechnique|
+
+!|MagicOverview|
+|charmsLearned?|
+|13|
+
+!|CheckBonusPoints|
+|regularSpent?|
+|27|

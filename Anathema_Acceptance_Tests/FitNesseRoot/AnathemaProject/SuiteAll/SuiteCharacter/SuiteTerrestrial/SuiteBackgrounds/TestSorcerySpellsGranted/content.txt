@@ -1,0 +1,63 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateDefaultTerrestrial
+
+This test will ensure that the correct amount of additional picks is granted for Terrestrial Sorcery.
+
+!3 Check Sorcery 0
+
+!|Set Background|
+|traitType|value|
+|Sorcery|0|
+
+!|Check Charm Points|
+|getAdditionalPicksGranted?|
+|0|
+
+!3 Check Sorcery 1
+
+!|Set Background|
+|traitType|value|
+|Sorcery|1|
+
+!|Check Charm Points|
+|getAdditionalPicksGranted?|
+|1|
+
+!3 Check Sorcery 2
+
+!|Set Background|
+|traitType|value|
+|Sorcery|2|
+
+!|Check Charm Points|
+|getAdditionalPicksGranted?|
+|2|
+
+!3 Check Sorcery 3
+
+!|Set Background|
+|traitType|value|
+|Sorcery|3|
+
+!|Check Charm Points|
+|getAdditionalPicksGranted?|
+|3|
+
+!3 Check Sorcery 4
+
+!|Set Background|
+|traitType|value|
+|Sorcery|4|
+
+!|Check Charm Points|
+|getAdditionalPicksGranted?|
+|4|
+
+!3 Check Sorcery 5
+
+!|Set Background|
+|traitType|value|
+|Sorcery|5|
+
+!|Check Charm Points|
+|getAdditionalPicksGranted?|
+|5|

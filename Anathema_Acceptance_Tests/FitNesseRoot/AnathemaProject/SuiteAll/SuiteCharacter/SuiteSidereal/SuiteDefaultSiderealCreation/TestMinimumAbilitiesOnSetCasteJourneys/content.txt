@@ -1,0 +1,74 @@
+!3 Setting the Caste
+
+Set the caste Journeys...
+
+!|Set Concept|
+|caste|
+|Journeys|
+
+... and check on the abilities:
+
+!3 Caste ablilities
+
+!|Check Abilities|
+|Trait Type|isCaste?|
+|Endurance|true|
+|Ride|true|
+|Sail|true|
+|Survival|true|
+|Thrown|true|
+
+!3 New Minimum Ablilities
+
+Check their initial state.
+
+!|Check Abilities|
+|Trait Type|value?|
+|Endurance|2|
+|Ride|3|
+|Survival|2|
+|Linguistics|2|
+|Athletics|2|
+
+Check that the new minimum abilities may not be lowered any more.
+
+!|Set Abilities|
+|Trait Type|value|
+|Endurance|1|
+|Ride|2|
+|Survival|1|
+|Linguistics|1|
+|Athletics|1|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Endurance|2|
+|Ride|3|
+|Sail|0|
+|Survival|2|
+|Linguistics|2|
+|Athletics|2|
+
+!3 Alternative Requirements Ride and Sail
+
+'''Sail''' and '''Ride''' are alternative requirements. So if Sail is set to 3 Ride may be lowered:
+
+!|Set Abilities|
+|Trait Type|value|
+|Sail|3|
+|Ride|0|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Sail|3|
+|Ride|0|
+
+But now Sail might no longer be lowered:
+
+!|Set Abilities|
+|Trait Type|value|
+|Sail|2|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Sail|3|

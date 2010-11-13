@@ -1,0 +1,166 @@
+\documentclass[]{report}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex,bookmarks=true,bookmarksnumbered=true,pdfauthor={Urs Reupke},pdftitle={Anathema User's Guide}]{hyperref}
+\usepackage[pdftex]{graphics}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{makeidx}
+\makeindex
+
+\title{Anathema User Guide\\ Target Program Version: 0.8}
+\author{Urs Reupke\\ Original User's Guide written by uteck \\ Anathema created by Sandra Sieroux and Urs Reupke}
+\date{}
+
+\begin{document}
+\maketitle
+\sffamily
+\pagenumbering{roman}
+\tableofcontents
+\pagebreak
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\include{ChapIntroduction}
+\include{ChapSetup}
+
+\chapter{Management}
+This chapter describes those features of Anathema dealing with the bookkeeping aspects of Exalted. All you need is basic familiarity with your computer and the Exalted rules. Copies of the books might come in handy at times, but should not be necessary for understanding.
+
+\section{Basics}
+In the following section, you will learn about the basics of item management in Anathema. Items in this case means anything you can create anew and save to disk, later to load it again. Below, you will find explanations of item creation, saving, loading and printing.
+
+\subsection{Item creation}
+No matter the type, all items are created by opening the ``Anathema'' menu and pointing towards ``New'', afterwards selecting the item type in question. Depending on the item type chosen, there might be further submenus or dialogs to configure the newly created item.
+
+\subsection{Saving}
+When you need to pause editing an item or are truly and utterly done with it, you will want to save your progress. To do so, go the ``Anathema'' menu once more and click the ``Save'' entry. The item will be stored in the repository with a filename depending on both the item type and the name you have given to it. 
+
+Please refer to section \ref{sec:Preferences} for details on customizing the repository directory.
+
+\subsection{Printing}
+'Printing' in Anathema is used to output your items to the PDF format.
+Select ``Print'' from the ``Anathema'' menu, and a small popup dialog will open, asking you to select the type of report to print the current item in. The options available will, of course, depend on the item type and be explained there.
+After choosing the report type, all that is required is a filename to print. 
+
+By default, files will be saved within the Anathema directory with a filename depending on the item name.
+
+\subsection{Loading}
+To load an item, simply select ``Load'' from the ``Anathema'' menu. Select the item type to load from the submenu, and a dialog will open, presenting you the previously stored items of the selected type. Select the one you require, and you are done.
+
+\subsection{Recurring Controls}
+Some controls are shared by different items. They are collectively explained here for reference.
+
+\subsubsection*{Trait Controls}
+Throughout the screens representing a character, you will find rows of dots, either transparent or rendered in a color specific to the character type. These rows, hereafter referred to as ``trait controls'' are used to set your characters various traits.
+
+To use them, either click on the number of dots you wish the trait to have. You can set a value to zero, if allowed, by clicking in the firth third of the first dot. As an alternative, you can click and hold the mouse button. A grey rectangle will appear. Dragging the mouse changes the width of this rectangle, instantly selecting the dots covered.
+
+Trait controls will not allow you to select illegal values for a trait, so if a click yields no reponse or the dots covered by the rectangle are not selected, the values are most probably not allowed by the rules.
+
+\subsubsection*{Formatted Text}
+Both notes and series management contain fields in formatted text can be entered. Font options include \textbf{bold}, \textit{italics} or unterlined, to be selected by the controls on the right.
+
+The well established keyboard shortcuts for text formatting, cut and paste operations as well as navigation and selection are also available.
+
+\section{Character Description}\label{sec:CharacterDescription}
+
+\section{Character}
+Character items support you in creating and maintaining your character. Among it's features are automatic calculation for point expenditures and generation of character sheets. 
+
+Players use character management to plan and plot their character's advance, while for storytellers it provides the means to be informed of the capabilities of player characters as well as non-player characters.
+
+\subsubsection*{Supported character types}
+Anathema supports both Solar and Abyssal Exalted, the Dragon-Blooded as well as Mortals. For most character types, there are various character templates to chose from.
+
+\subsection{Creating a new character}
+Together, we will walk through the creation of a new character, from initial creation up to spending the first experience points. Afterwards, everything is up to you.
+
+To create a new character, click Anathema->New->Statted Character. A dialog will open. In there, chose the type of character to create and the ruleset (Core Rules or Power Combat) to use for this character. Both of these settings can't be changed afterwards, so choose wisely.
+For purposes of this guide, a ``Loyal Abyssal'' seems like a good choice, since they have some options others are lacking. Confirm the choices made by clicking ``OK''.
+
+After a moment's notice, a item will open.
+Three separate areas can be distinguished: The tab area on the upper left, granting access to the different aspects of a character, the overview on the lower left, at all times displaying information about points spent, and the main view, in which the options pertaining to the tab selected are shown.
+
+Right now, we are on the ``Description'' panel, with fields identical to the ``Character Description'' item outlined above (\ref{sec:CharacterDescription}).
+
+Adjusting Values
+Throughout Character Creation, you will notice sets of light grey dots - these are to adjust your characters trait values. To select the number of dots assigned to a certain trait, just click on the dots and they will be filled in - alternatively click and keep the mousebutton pressed to be able to drag the value until it's set to the amount you want it to be.
+If you want to remove dots, click on the previous dot to remove the next. To remove the first dot, click just before it or in the first third of the dot - again, dragging the selection and releasing the mouse after the value is adjusted will make things easier.
+Caste \& Favored Abilities
+On the abilities tab, you will note a button in front of each ability. Clicking this button will add it to your Favored Abilities, marked by a highlight.
+Caste Abilities are marked with the caste mark.
+Magic
+The Magic section allows you to choose Charms, spells, and create combos, each on a separate page. Except for some Martial Arts, only Solar Charms can be currently selected. Use the drop list to choose the Group (Ability the Charm is in on and the complete cascade for it will appear. Select Charms by clicking on them and they should turn yellow, indicating a learned charm.This cascade works the same as the separate Cascade function described earlier.
+If a Charm is grayed out that means the character has not yet met all prerequisites.
+Spells can be learned by selecting them from in the left listbox and clicking the green arrow to the right. To unlearn a spell, select it, then click the red "X".
+Combo creation is similar to spell selection: Simply select one charm at a time and click the green arrows to add it to the current combo, afterwards enter a name and short description of the combo, then click the green + to finalize the combo. The center button can be used to clear the combo currently edited and start over.
+Overview
+The Overview on the left will keep track of the choices you made, automatically adjusting if you change things. Colors and font show the state of the item displayed:
+Purple indicates that you still need to spend points, while black means that everything allotted is spend. Items on which you spend bonus points (which are calculated automatically) are shown bold. If the Bonus Points counter at the bottom becomes red, this means that you have overextended your amount allowed bonus points.
+Number in parentheses indicated that the characters absolute maximum has somehow been raised above the maximum (eg. a larger than usual Essence Pool), while a second number delimited by a "+" notifies you of additional Points to spend.
+For example, if I put 8 dots in Physical, and 6 in Mental, then remove 2 dots from Physical, the Promary will list 6/8 meaning only 6 points of 8 have been spent. If I then add them to Mental, it becomes the Primary and is then listed as 8/8. If I spend a 9th dot the Primary line becomes Bold, and the Bonus Points, at the bottom of the left side, is incremented to show that 4 points has been spent to increase the Attribute.
+
+\subsection{Experience}
+Once character creation is finished, the character can be further advanced within the program, but first, you have to convert it to 'experienced mode' by clicking the equinymous entry in the 'Character' menu.
+After clicking, you'll notice a change in the overview window - it now shows your current XP breakdown - as well as a new tab for the character - within, you'll find a table in which to enter the experience awards for your character.To do so, just add an entry by clicking the '+' and adjust the number. You can also add a comment for later reference.
+From now on, your character's stats cannot be lowered below the values you've set during creation, and any adjustments you make will be paid for with experience, their cost being calculated automatically.
+
+\section{Series Management}
+Series management is currently limited to plot management.
+
+Usage is straightforward: To the left of the screen, the series plot tree is displayed. 
+
+Use the right-click context-menu or the buttons provided at the screen's bottom to add Stories, Episodes and Scenes to the plot outline. Afterwards select an entry in the outline to enter a title and an description for the proceedings within, either planned or already passed.
+
+An item can be moved among it's peers via the up/down controls next to the add/remove buttons. Drag-and-dropping allows to attach child items to different parents.
+
+\section{Notes}
+Notes are the most basic type of item known to Anathema. They consist of nothing more than a title and a formatted text field, allowing you to keep track of things fitting nowhere else or preparing simple texts for game sessions.
+
+Printing is currently not available for notes.
+
+\section{Music Database}
+One of the more unusual features of Anathema's is the Music Database. This module, which could as well be seen as a stand-alone program, is used to prepare a database of mp3-files for use at the gaming table. Tracks can be categorized by three different types of keywords, stored in playlists and sought for by various parameters. This section explains the options the Music Database offers.
+
+\subsection{Libraries}
+\subsection{Selections}
+\subsubsection*{Current Selections}
+\subsubsection*{Stored Selections}
+\subsection{Track Details}
+\subsubsection{Categories}
+\subsection{Search}
+
+\include{ChapExtras}
+\chapter{Customizing}
+\chapter{Future development}
+\section{Planned Features}
+\section{Feature Requests}
+
+\begin{appendix}
+\chapter{Development Environment}
+
+\section{CVS Projects}
+\texttt{include CurrentProjects.txt}
+
+\section{An Introduction to Modules}
+\texttt{include ExplanationOfModules.txt}
+
+\section{Software}
+%Was für Software wir wofür benutzen
+%Eclipse with Ant, JUnit and Continuous Testing, JDemo
+%GIMP
+%LaTeX, MikTex, TeXnicCenter
+
+\chapter{Format explanations}
+This appendix contains the XML schemas defining the various formats defined for use with Anathema. 
+
+For a short explanation of the M3U playlist format, please read the relevant article at AssistantTools.com\footnote{http://www.assistanttools.com/articles/m3u_playlist_format.shtml}.
+\section{Note Files}
+\section{Character Files}
+\section{Series Files}
+\section{Charm Files}
+\printindex
+\bibliography{Anathema}
+\bibliographystyle{unsrt}
+\end{appendix}
+\end{document}

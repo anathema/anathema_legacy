@@ -1,0 +1,17 @@
+!3 Set the Prerequisites
+
+!|Set Abilities|
+|traitType|value|
+|Endurance|3|
+
+!3 Learn the Charm
+
+!|Learn Ox Body Technique|
+|id|count|
+|Solar.Ox-BodyTechnique|3|
+
+!3 Check the Points
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|0|3|0|

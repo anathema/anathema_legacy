@@ -1,0 +1,17 @@
+!*> Imports
+!|Import|
+|net.sf.anathema.acceptance.fixture|
+|net.sf.anathema.acceptance.fixture.character|
+|net.sf.anathema.acceptance.fixture.character.costs|
+|net.sf.anathema.acceptance.fixture.character.magic|
+|net.sf.anathema.acceptance.fixture.character.persistence|
+|net.sf.anathema.acceptance.fixture.character.sidereal|
+|net.sf.anathema.acceptance.fixture.character.miscellaneous|
+|net.sf.anathema.acceptance.fixture.character.template|
+|net.sf.anathema.acceptance.fixture.character.template.traits|
+|net.sf.anathema.acceptance.fixture.character.traits|
+|net.sf.anathema.acceptance.fixture.character.intimacies|
+|net.sf.anathema.acceptance.fixture.character.meritsflaws|
+|net.sf.anathema.acceptance.fixture.character.lunar.renown|
+
+*!

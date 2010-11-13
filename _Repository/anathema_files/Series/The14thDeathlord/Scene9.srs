@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene9" repositoryPrintName="Messenger of the Gods">
+  <Name><![CDATA[Messenger of the Gods]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[In der zweiten Nacht macht sich der geschwächte Abyssal erneut auf den Weg. Im Dorf von bedrohlichen Visionen getrieben, sucht er eine der Zelthütten auf.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Die Familie von Precious Metal ....]]></Text>
+    </Part>
+  </Summary>
+</Scene>

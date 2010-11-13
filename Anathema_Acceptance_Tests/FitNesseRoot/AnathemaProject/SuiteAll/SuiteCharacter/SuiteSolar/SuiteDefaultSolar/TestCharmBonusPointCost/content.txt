@@ -1,0 +1,45 @@
+This test covers Solar Charm Bonus Point costs - 5 for unfavored, 4 for favored Charms.
+
+!3 Prerequisites
+
+!|Set Abilities|
+|traitType|value|
+|Socialize|5|
+
+!|Set Other Traits|
+|traitType|value|
+|Essence|5|
+
+!|Check Bonus Points|
+|regularSpent?|
+|25|
+
+!3 6 Regular Charms
+!|Toggle Charm Learned|
+|id|
+|Solar.VenomousRumorsTechnique|
+
+!|Check Bonus Points|
+|regularSpent?|
+|30|
+
+!3 5 Favored Charms
+
+!|Set Abilities Favored|
+|abilityType|
+|Socialize|
+
+!|Toggle Charm Learned|
+|id|
+|Solar.DistractingBanterMethod|
+|Solar.GracefulCourtierAttitude|
+|Solar.FlawlessDiscretionStyle|
+|Solar.WelcomeGuestMethod|
+
+!|Magic Overview|
+|charmsLearned?|
+|11|
+
+!|Check Bonus Points|
+|regularSpent?|
+|27|

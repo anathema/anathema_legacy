@@ -1,0 +1,10 @@
+!3 Virtues
+
+Virtues normally all have a maximum value of 5.
+
+!|CheckVirtueTemplate|
+|traitType|absoluteMaximumValue?|
+|Compassion|5|
+|Conviction|5|
+|Temperance|5|
+|Valor|5|

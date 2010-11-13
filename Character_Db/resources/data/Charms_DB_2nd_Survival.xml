@@ -1,0 +1,136 @@
+<charmlist>
+<charm id="Dragon-Blooded.QuarryRevelationTechnique" exalt="Dragon-Blooded" group="Survival">
+ <prerequisite>
+  <trait id="Survival" value="3"/>
+  <essence value="2"/>
+  <charmAttributeRequirement attribute="ExcellencySurvival" count="1"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="2"/>
+  
+ </cost>
+ <duration amount="1" unit="day"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.TrailConcealingMeasurement" exalt="Dragon-Blooded" group="Survival">
+ <prerequisite>
+  <trait id="Survival" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.QuarryRevelationTechnique"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="3"/>
+  
+ </cost>
+ <duration amount="1" unit="day"/>
+ <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.RationEnhancingMethod" exalt="Dragon-Blooded" group="Survival">
+ <prerequisite>
+  <trait id="Survival" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.QuarryRevelationTechnique"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="hour" /> <!-- Added to CharmDuration -->
+ <charmtype type="Supplemental" />
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.HostileEnvironmentPreparationMethod" exalt="Dragon-Blooded" group="Survival">
+ <prerequisite>
+  <trait id="Survival" value="3"/>
+  <essence value="2"/>
+  <charmAttributeRequirement attribute="ExcellencySurvival" count="1"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="3" text="+1m per companion"/>
+  
+ </cost>
+ <duration amount="1" unit="day"/>
+ <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.TirelessCaravanPrana" exalt="Dragon-Blooded" group="Survival">
+ <prerequisite>
+  <trait id="Survival" value="4"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.HostileEnvironmentPreparationMethod"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="5"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="journey"/> <!-- Added to CharmDuration -->
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Cooperative" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.ElementShelterCreationTechnique" exalt="Dragon-Blooded" group="Survival">
+ <prerequisite>
+  <trait id="Survival" value="5"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.HostileEnvironmentPreparationMethod"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="5"/>
+  
+ </cost>
+ <duration duration="Indefinite" />
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+ <charmAttribute attribute="Shaping" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.ExtensionElementDragon'sBlessing" exalt="Dragon-Blooded" group="Survival">
+ <prerequisite>
+  <trait id="Survival" value="5"/>
+  <essence value="4"/>
+  <charmReference id="Dragon-Blooded.ElementShelterCreationTechnique"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="10" text="+2m per ally"/>
+  
+ </cost>
+ <duration amount="1" unit="day"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Nature'sHealingBounty" exalt="Dragon-Blooded" group="Survival">
+ <prerequisite>
+  <trait id="Survival" value="3"/>
+  <essence value="2"/>
+  <charmAttributeRequirement attribute="ExcellencySurvival" count="1"/>
+ </prerequisite>
+ <cost>
+ </cost>
+ <duration duration="Permanent"/>
+ <charmtype type="Permanent"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+</charmlist>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Windows install4j distribution" default="Distribute install4j">
+
+	<!--Requires the property "launch4j.dir" to point to the launch4j installation.-->
+	<!--Requires the property "install4j.dir" to point to the install4j installation.-->
+	<import file="windows_distribution_targets.xml" />
+
+	<property file="directories.properties" />
+
+	<taskdef name="install4j" classname="com.install4j.Install4JTask" classpath="${install4j.dir}\bin\ant.jar" />
+
+	<target name="Distribute install4j" depends="Build Bootloader, Build Plugins, Copy Text, Build Windows executable, Compile install4j Installer" />
+
+	<target name="Compile install4j Installer">
+		<property file="version.properties" />
+		<property name="releaseVersion" value="${version.major}.${version.minor}" />
+		<install4j projectfile="Windows/install4j/Anathema.install4j" release="${releaseVersion}" destination="${basedir}"/>
+	</target>
+</project>

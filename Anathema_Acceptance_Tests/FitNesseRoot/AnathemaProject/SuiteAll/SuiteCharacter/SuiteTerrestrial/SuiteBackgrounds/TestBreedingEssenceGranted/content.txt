@@ -1,0 +1,56 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateDefaultTerrestrial
+This test will ensure that the Breeding backround grants the proper essence boni.
+
+!3 No Breeding
+!|Set Background|
+|traitType|value|
+|Breeding|0|
+
+|Check Essence Pools|
+|personalPool?|peripheralPool?|
+|4 (4)|12 (12)|
+
+!3 Breeding 1
+!|Set Background|
+|traitType|value|
+|Breeding|1|
+
+|Check Essence Pools|
+|personalPool?|peripheralPool?|
+|4 (5)|12 (14)|
+
+!3 Breeding 2
+!|Set Background|
+|traitType|value|
+|Breeding|2|
+
+|Check Essence Pools|
+|personalPool?|peripheralPool?|
+|4 (6)|12 (15)|
+
+!3 Breeding 3
+!|Set Background|
+|traitType|value|
+|Breeding|3|
+
+|Check Essence Pools|
+|personalPool?|peripheralPool?|
+|4 (7)|12 (17)|
+
+!3 Breeding 4
+!|Set Background|
+|traitType|value|
+|Breeding|4|
+
+|Check Essence Pools|
+|personalPool?|peripheralPool?|
+|4 (8)|12 (19)|
+
+!3 Breeding 5
+!|Set Background|
+|traitType|value|
+|Breeding|5|
+
+|Check Essence Pools|
+|personalPool?|peripheralPool?|
+|4 (9)|12 (21)|

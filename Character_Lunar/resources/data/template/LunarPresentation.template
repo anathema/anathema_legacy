@@ -1,0 +1,4 @@
+<presentation>
+  <color red="167" green="195" blue="220" />
+  <charmPresentation uses="template/LunarCharmPresentation.template"/>
+</presentation>

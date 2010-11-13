@@ -1,0 +1,43 @@
+!|Check Bonus Points|
+|regularSpent?|
+|0|
+
+!3 Check Breeding 1
+
+!|Set Background|
+|traitType|value|
+|Breeding|1|
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|2|
+
+!3 Check Breeding 2
+
+!|Set Background|
+|traitType|value|
+|Breeding|2|
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|4|
+
+!3 Check Breeding 3
+
+!|Set Background|
+|traitType|value|
+|Breeding|3|
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|6|
+
+!3 Breeding 4 is Verboten!
+
+!|Set Background|
+|traitType|value|
+|Breeding|4|
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|6|

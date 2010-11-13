@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene33" repositoryPrintName="Protest of Godlings">
+  <Name><![CDATA[Protest of Godlings]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Gods... they are everywhere, and when the end time cometh, they tend to get a bit upset. Thus treten immer wieder Götter auf, die Verdant in seinem gegenwärtigen Zustand fürchten und ihn nicht länger dabei haben wollen. Unter ungünstigen Umständen kann die Szene eskalieren, sollte aber unter allen umständen gewaltfrei gelöst werden.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Zunächst treten einzelne Götter auf, versuchen, Emerald davon zu überzeugen, seinen Bruder auszustoßen oder sogar zu töten ? wenn er dies ablehnt, versuchen sie ihr Glück bei Telperion.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Schließlich gründen sie ein Zweckbündnis, und wählen eine Stimme, die vor versammelter Gruppe druck auf die Exalts machen soll.]]></Text>
+    </Part>
+  </Summary>
+</Scene>

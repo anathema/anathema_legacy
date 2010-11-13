@@ -1,0 +1,7 @@
+!3 Additional bonus points spent
+
+Check that bonus points provided by liege are spent.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|2|0|

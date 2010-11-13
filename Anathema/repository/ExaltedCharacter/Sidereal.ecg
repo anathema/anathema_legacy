@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="Sidereal" repositoryPrintName="Sidereal">
+  <Description>
+    <CharacterName><![CDATA[Sidereal]]></CharacterName>
+  </Description>
+  <Statistics experienced="false">
+    <Rules>
+      <RuleSet name="PowerCombat"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Sidereal</CharacterType>
+    <CharacterConcept>
+      <Nature/>
+      <Concept/>
+    </CharacterConcept>
+    <Essence creationValue="2"/>
+    <Willpower creationValue="2"/>
+    <Virtues>
+      <Compassion creationValue="1"/>
+      <Conviction creationValue="1"/>
+      <Temperance creationValue="1"/>
+      <Valor creationValue="1"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="1"/>
+        <Dexterity creationValue="1"/>
+        <Stamina creationValue="1"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="1"/>
+        <Manipulation creationValue="1"/>
+        <Appearance creationValue="1"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="1"/>
+        <Intelligence creationValue="1"/>
+        <Wits creationValue="1"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="1"/>
+      <Brawl creationValue="0"/>
+      <MartialArts creationValue="2"/>
+      <Melee creationValue="0"/>
+      <Thrown creationValue="0"/>
+      <Endurance creationValue="0"/>
+      <Performance creationValue="0"/>
+      <Presence creationValue="0"/>
+      <Resistance creationValue="0"/>
+      <Survival creationValue="0"/>
+      <Craft creationValue="0"/>
+      <Investigation creationValue="0"/>
+      <Lore creationValue="3"/>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="2"/>
+      <Athletics creationValue="0"/>
+      <Awareness creationValue="2"/>
+      <Dodge creationValue="0"/>
+      <Larceny creationValue="0"/>
+      <Stealth creationValue="1"/>
+      <Bureaucracy creationValue="2"/>
+      <Linguistics creationValue="1"/>
+      <Ride creationValue="0"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="1"/>
+    </Abilities>
+    <Backgrounds/>
+    <Charms>
+      <Combos/>
+    </Charms>
+    <Spells/>
+    <Experience/>
+    <AdditionalModels>
+      <Model templateId="SiderealColleges">
+        <Content>
+          <Colleges>
+            <Captain creationValue="0"/>
+            <Gull creationValue="0"/>
+            <Mast creationValue="0"/>
+            <Messenger creationValue="0"/>
+            <ShipsWheel creationValue="0"/>
+            <Ewer creationValue="0"/>
+            <Lovers creationValue="0"/>
+            <Musician creationValue="0"/>
+            <Peacock creationValue="0"/>
+            <Pillar creationValue="0"/>
+            <Banner creationValue="0"/>
+            <Gauntlet creationValue="0"/>
+            <Quiver creationValue="0"/>
+            <Shield creationValue="0"/>
+            <Spear creationValue="0"/>
+            <Guardians creationValue="0"/>
+            <Key creationValue="0"/>
+            <Mask creationValue="0"/>
+            <Sorcerer creationValue="0"/>
+            <TreasureTrove creationValue="0"/>
+            <Corpse creationValue="0"/>
+            <Crow creationValue="0"/>
+            <Haywain creationValue="0"/>
+            <RisingSmoke creationValue="0"/>
+            <Sword creationValue="0"/>
+          </Colleges>
+        </Content>
+      </Model>
+      <Model templateId="MeritsAndFlaws">
+        <Content>
+          <meritsFlaws/>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

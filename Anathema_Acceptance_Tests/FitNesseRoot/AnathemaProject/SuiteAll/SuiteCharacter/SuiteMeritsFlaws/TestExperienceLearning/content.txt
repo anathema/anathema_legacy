@@ -1,0 +1,40 @@
+!include SnippetSetExperienced
+
+!include SnippetNoExperiencedMeritsFlawsLearned
+
+!3 Learn a Merit
+!|Learn Merits Flaws|
+|id|category|type|value|
+|Destiny|Supernatural|Merit|4|
+
+!|Check Merits Flaws|
+|meritsFlawsSelected?|getExperiencePointsSpent?|getExperiencePointsGained?|
+|1|8|0|
+
+!3 Learn a Flaw
+!|Learn Merits Flaws|
+|id|category|type|value|
+|Sun-Seared|Physical|Flaw|6|
+
+!|Check Merits Flaws|
+|meritsFlawsSelected?|getExperiencePointsSpent?|getExperiencePointsGained?|
+|2|8|12|
+
+!3 Unlearn the Merit
+!|Unlearn Merits Flaws|
+|id|category|type|value|
+|Destiny|Supernatural|Merit|4|
+
+!|Check Merits Flaws|
+|meritsFlawsSelected?|getExperiencePointsSpent?|getExperiencePointsGained?|
+|1|0|12|
+
+
+!3 Unlearn the Flaw
+!|Unlearn Merits Flaws|
+|id|category|type|value|
+|Sun-Seared|Physical|Flaw|6|
+
+!|Check Merits Flaws|
+|meritsFlawsSelected?|getExperiencePointsSpent?|getExperiencePointsGained?|
+|0|0|0|

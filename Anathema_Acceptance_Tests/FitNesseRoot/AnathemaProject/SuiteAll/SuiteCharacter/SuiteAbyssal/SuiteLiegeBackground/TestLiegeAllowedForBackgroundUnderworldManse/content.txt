@@ -1,0 +1,9 @@
+!include SnippetSetLiegeToThree
+
+!3 Underworld Manse To Value 4
+
+!|Set Background|
+|trait type|value|
+|UnderworldManse|4|
+
+!include SnippetCheckTwoLiegePointsSpent

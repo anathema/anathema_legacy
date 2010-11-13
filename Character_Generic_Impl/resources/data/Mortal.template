@@ -1,0 +1,24 @@
+<exaltedCharacterTemplate characterType="Mortal" subtemplate="default">
+  <general>
+    <edition edition="FirstEdition"/>
+    <abilityGroups uses="trait/DefaultAbilityGroup.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="MortalEssence.template" />
+    <traitCollection uses="trait/MortalTraitCollection.template"/>
+    <magicTemplate uses="magic/MortalMagic.template"/>
+    <presentation uses="presentation/MortalPresentation.template"/>
+  </general>
+  <creation>
+    <bonusPointCosts uses="DefaultBonusPointCost.template" />
+    <creationPoints>
+      <attributeDots primary="4" secondary="3" tertiary="3" />
+      <abilityDots general="16" favored="0" favoredPicks="0" />
+      <backgroundDots count="5" />
+      <virtueDots count="5" />
+      <bonusPoints count="21" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="experience/MortalExperienceCost.template" />
+  </experience>
+</exaltedCharacterTemplate>

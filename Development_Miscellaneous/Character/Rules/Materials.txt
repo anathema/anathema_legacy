@@ -1,0 +1,53 @@
+Core Rules
+==============
+Melee
+*Orichalcum: +1 Acc, +1 Def, +1 Speed
+*Moonsilver: +2 Acc
+*Jade: +3 Speed
+*Starmetal:+2 Damage
+*Soulsteel: +1 Accuracy (and drains motels equal to wielders permanent essence)
+
+Ranged
+*Orichalcum: +1 Acc, +1 Damage, +50 Range for bows
+*Moonsilver: +1 Acc, +100 Range for bows 
+*Jade: +1 Rate, +50 Range for bows
+*Starmetal: +2 Damage
+*Soulsteel: +2 Accuracy (but only when used against living targets)
+
+Armour
+*Orichalcum: +2 Soak L/B
+*Moonsilver: No mobility penalty
+*Jade: No fatigue value
+*Starmetal: Reduces attackers damage roll success by 1
+*Soulsteel: +2 Soak L/B
+
+
+Power Combat
+==============
+Wie Core Rules, lediglich Orichalcum/Melee gibt einen Rate-Bonus statt dem Speed-Bonus
+
+Melee
+*Orichalcum: +1 Acc, +1 Def, +1 Rate
+
+Second Edition
+==============
+Melee
+*Orichalcum: +1 Acc, +1 Def, +1 Rate
+*Moonsilver: +2 Acc, +2 Def
+*Jade: -1 Speed, +1 Damage
+*Starmetal: +1 Acc, +3 Damage
+*Soulsteel: +2 Accuracy (and drains motels equal to wielders permanent essence)
+
+Ranged
+*Orichalcum: +1 Acc, +1 Damage, +50 Range for bows / +10 Range for thrown
+*Moonsilver: +1 Acc, +100 Range for bows / +20 Range for thrown
+*Jade: -1 Speed, +50 Range for bows / +10 Range for thrown
+*Starmetal: +1 Acc, +2 Damage
+*Soulsteel: +2 Accuracy, +2 Damage (but only when used against living targets)
+
+Armour
+*Orichalcum: +2 Soak L/B, +1 Hardness L/B
+*Moonsilver: No mobility penalty
+*Jade: No fatigue value
+*Starmetal: +1 Hardness L/B, reduces attackers damage rolls by a -1 external penalty
+*Soulsteel: +2 Soak L/B, +1 Hardness L/B

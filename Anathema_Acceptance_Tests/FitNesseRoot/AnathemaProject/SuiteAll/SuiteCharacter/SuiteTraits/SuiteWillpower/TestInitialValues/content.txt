@@ -1,0 +1,25 @@
+After creating a new character, Willpower should be 2 - the sum of the two highest Virtues.
+
+!3 Make sure all Virtues are at 1.
+!|Check Virtues|
+|traitType|value?|
+|Compassion|1|
+|Conviction|1|
+|Valor|1|
+|Temperance|1|
+
+!3 Check Willpower
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|2|
+
+!3 Ensure it's not lowerable
+!|Check Other Traits|
+|traitType|minimumValue?|
+|Willpower|2|
+
+
+!3 Ensure a maximum of 10 is attainable
+!|Check Other Traits|
+|traitType|maximumValue?|
+|Willpower|10|

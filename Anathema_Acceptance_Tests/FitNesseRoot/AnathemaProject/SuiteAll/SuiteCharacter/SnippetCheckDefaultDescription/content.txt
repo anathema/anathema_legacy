@@ -1,0 +1,7 @@
+!3 Check the character description
+
+All fields of the character description must be empty.
+
+!|Check Description|
+|characterization?|name?|notes?|periphrase?|physical description?|
+||||||

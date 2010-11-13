@@ -1,0 +1,3 @@
+!|Create Character|
+|character type|subtemplate|edition|
+|Dragon-Blooded|LookshySubtype|FirstEdition|

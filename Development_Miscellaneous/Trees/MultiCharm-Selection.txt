@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<!--Created with Sketsa SVG Graphics Editor (http://www.kiyut.com)-->
+<svg contentScriptType="text/ecmascript" width="600.0px" xmlns:xlink="http://www.w3.org/1999/xlink"
+     zoomAndPan="magnify" contentStyleType="text/css" height="600.0px" preserveAspectRatio="xMidYMid meet"
+     xmlns="http://www.w3.org/2000/svg" version="1.0">
+    <rect x="92.0" y="265.0" fill="none" width="273.0" height="42.0" stroke="#000000" stroke-width="2"/>
+    <text x="105.0" y="289.0"><tspan xml:space="preserve">-2x4</tspan></text>
+    <ellipse fill="none" rx="12.5" cx="142.5" ry="12.5" cy="284.5" stroke="#000000"/>
+    <ellipse fill="none" rx="12.5" cx="173.5" ry="12.5" cy="284.5" stroke="#000000"/>
+    <ellipse fill="none" rx="12.5" cx="206.5" ry="12.5" cy="284.5" stroke="#000000"/>
+    <ellipse fill="none" rx="12.5" cx="239.5" ry="12.5" cy="285.5" stroke="#000000"/>
+    <ellipse fill="none" rx="12.5" cx="271.5" ry="12.5" cy="285.5" stroke="#000000"/>
+    <ellipse fill="none" rx="12.5" cx="313.5" ry="12.5" cy="285.5" stroke="#000000"/>
+    <ellipse fill="none" rx="12.5" cx="345.5" ry="12.5" cy="284.5" stroke="#000000"/>
+</svg>

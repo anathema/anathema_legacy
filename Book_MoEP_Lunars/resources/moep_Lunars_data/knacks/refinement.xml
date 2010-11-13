@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    refinement.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Refinement Knacks -->
+     <charm id="Lunar.HybridBodyRearrangement" exalt="Lunar" group="Refinement">
+          <prerequisite>
+               <trait id="Wits" value="3" />
+               <essence value="3" />
+          </prerequisite>
+          <cost />
+          <!-- duration />
+                        <charmType /-->
+          <charmAttribute attribute="NotAlienLernable" />
+          <source source="Lunars2nd" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Lunar.MonkeyArmStyle" exalt="Lunar" group="Refinement">
+          <prerequisite>
+               <trait id="Dexterity" value="4" />
+               <essence value="4" />
+               <charmReference id="Lunar.HybridBodyRearrangement" />
+          </prerequisite>
+          <cost />
+          <!-- duration />
+                                <charmType /-->
+          <charmAttribute attribute="NotAlienLernable" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.ChangingPlumageMastery" exalt="Lunar" group="Refinement">
+          <prerequisite>
+               <trait id="Appearance" value="3" />
+               <essence value="2" />
+          </prerequisite>
+          <cost />
+          <!-- duration />
+                                        <charmType /-->
+          <charmAttribute attribute="NotAlienLernable" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.InternalFormMastery" exalt="Lunar" group="Refinement">
+          <prerequisite>
+               <trait id="Wits" value="3" />
+               <essence value="2" />
+          </prerequisite>
+          <cost />
+          <!-- duration />
+                                                <charmType /-->
+          <charmAttribute attribute="NotAlienLernable" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.SubtleSilverDeclration" exalt="Lunar" group="Refinement">
+          <prerequisite>
+               <trait id="Appearance" value="3" />
+               <essence value="2" />
+          </prerequisite>
+          <cost />
+          <!-- duration />
+                                                        <charmType /-->
+          <charmAttribute attribute="NotAlienLernable" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.TwinFacedHero" exalt="Lunar" group="Refinement">
+          <prerequisite>
+               <trait id="Wits" value="3" />
+               <essence value="2" />
+          </prerequisite>
+          <cost />
+          <!-- duration />
+                                                                <charmType /-->
+          <charmAttribute attribute="NotAlienLernable" />
+          <source source="Lunars2nd" />
+     </charm>
+</charmlist>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Episode repositoryId="Episode12" repositoryPrintName="Prelude">
+  <Name><![CDATA[Prelude]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Der junge Mensch verlässt sein Dorf, um in Lookshy Soldat zu werden.]]></Text>
+    </Part>
+  </Summary>
+</Episode>

@@ -1,0 +1,7 @@
+<magicTemplate>
+	<freePicksPredicate defaultResponse="true"/>
+	<charmTemplate charmType="Dragon-Blooded">
+		<martialArts rulesClass="net.sf.anathema.character.db.template.TerrestrialMartialArtsRules" level="Terrestrial" highLevel="false"/>		
+	</charmTemplate>
+	<spellTemplate maximumSorceryCircle="Terrestrial" maximumNecromancyCircle="Shadowlands"/>
+</magicTemplate>		

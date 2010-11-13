@@ -1,0 +1,71 @@
+!include SnippetSetLiegeToThree
+
+!include SnippetLearnFiveNonFavoredCharms
+
+!include SnippetPrepareTraitsForSpellMagic
+
+Since Essence must not be paid with liege bonus points now 7 regular bonus points are spent.
+
+!include SnippetSevenRegularBonusPointsSpent
+
+!3 Learn 3 Favored Charms
+
+!|Set Abilities Favored|
+|ability type|
+|Brawl|
+
+!|Set Abilities|
+|trait type|value|
+|Brawl|3|
+
+!|Toggle Charm Learned|
+|id|
+|Abyssal.DeadMan'sGrasp|
+|Abyssal.RapaciousLampreyTechnique|
+|Abyssal.InescapableIronGrip|
+
+!3 Learn Favored Charms Terrestrial Circle Sorcery and Shadowslands Circle Necromancy
+
+Set Occult to favored...
+
+!|Set Abilities Favored|
+|ability type|
+|Occult|
+
+... and learn the two spell magic entry charms from the remaining to free dots for favored chars.
+
+!|Toggle Charm Learned|
+|id|
+|Abyssal.TerrestrialCircleSorcery|
+|Abyssal.ShadowlandsCircleNecromancy|
+
+Till now we have spent no bonus points except for Essence.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|0|7|
+
+!3 Learn A Terrestrial Circle Spell
+
+!|Learn Spell Magic|
+|id|
+|Terrestrial.EmeraldCountermagic|
+
+Now the 4 bonus points for favored magic are paid from the liege pool.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|4|7|
+
+
+!3 Learn A Shadowlands Circle Spell
+
+!|Learn Spell Magic|
+|id|
+|Shadowlands.BanishGhost|
+
+Now the 2 of the bonus points for favored magic are paid from the liege pool, the other 2 from regular bonus points.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|6|9|

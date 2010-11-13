@@ -1,0 +1,2 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SuiteMortal.SuiteFirstEdition.SnippetSetMortalTemplate
+!include SnippetVerifyMortalMaximumValues

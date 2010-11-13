@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../charms.dtd">
+<!--
+
+    appearance.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Appearance -->
+     <charm id="Lunar.AirBodyStyle" exalt="Lunar" group="Disguise">
+          <prerequisite>
+               <trait id="Appearance" value="5" />
+               <essence value="5" />
+               <charmReference id="Lunar.CloverCantBeFound" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Lunar.StanceAsThoughtStride" exalt="Lunar" group="Interaction">
+          <prerequisite>
+               <trait id="Appearance" value="6" />
+               <essence value="5" />
+               <charmReference id="Lunar.ObservedPredatorInstinct" />
+               <charmReference id="Lunar.GlanceOrationTechinque" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+			<charmAttribute attribute="Illusion" visualize="true" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Lunar.DevilBodyTerrorFace" exalt="Lunar" group="Interaction">
+          <prerequisite>
+               <trait id="Appearance" value="7" />
+               <essence value="7" />
+               <charmReference id="Lunar.StanceAsThoughtStride" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+</charmlist>

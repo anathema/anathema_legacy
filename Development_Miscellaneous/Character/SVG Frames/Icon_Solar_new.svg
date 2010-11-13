@@ -1,0 +1,39 @@
+<?xml version="1.0" standalone="no"?>
+
+
+<svg width="200" xmlns:xlink="http://www.w3.org/1999/xlink" height="90.0" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter x="-10%" y="-10%" width="150%" filterUnits="objectBoundingBox" height="150%" id="Beveled-Marble-Shadow">
+            <feTurbulence baseFrequency="0.15" result="I0A" numOctaves="1"/>
+            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" result="I0" in="I0A" scale="25"
+                 in2="I0A"/>
+            <feColorMatrix values="0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 255" type="matrix" result="I1"
+                 in="I0"/>
+            <feComposite in2="I1" operator="arithmetic" result="I2" in="SourceGraphic" k1="1"/>
+            <feGaussianBlur stdDeviation="1" result="I3" in="I2"/>
+            <feGaussianBlur stdDeviation="3" result="I4" in="SourceAlpha"/>
+            <feSpecularLighting specularConstant="0.5" specularExponent="20" result="I5" in="I4"
+                 surfaceScale="5" lighting-color="rgb(255,255,255)">
+                <fePointLight x="-5000" y="-10000" z="20000"/>
+            </feSpecularLighting>
+            <feComposite result="I6" in="I3" k2="1" k3="1" in2="I5" operator="arithmetic"/>
+            <feComposite in2="SourceGraphic" operator="in" result="I7" in="I6"/>
+            <feGaussianBlur stdDeviation="4" result="blur" in="SourceAlpha"/>
+            <feOffset dx="4" dy="4" result="offsetBlur" in="blur"/>
+            <feMerge>
+                <feMergeNode in="offsetBlur"/>
+                <feMergeNode in="I7"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <g>
+        <polygon stroke-width="0" points="95.0,4.0 103.0,10.0 159.0,10.0 
+            155.0,16.0 178.0,16.0 178.0,32.0 184.0,38.0 178.0,44.0 178.0,60.0 155.0,60.0 159.0,66.0 
+            103.0,66.0 95.0,72.0 87.0,66.0 31.0,66.0 35.0,60.0 12.0,60.0 12.0,44.0 6.0,38.0 
+            12.0,32.0 12.0,16.0 35.0,16.0 31.0,10.0 87.0,10.0"/>
+        <polygon fill="none" stroke-width="3" points="95.0,4.0 103.0,10.0 159.0,10.0 155.0,16.0 
+            178.0,16.0 178.0,32.0 184.0,38.0 178.0,44.0 178.0,60.0 155.0,60.0 159.0,66.0 103.0,66.0 
+            95.0,72.0 87.0,66.0 31.0,66.0 35.0,60.0 12.0,60.0 12.0,44.0 6.0,38.0 12.0,32.0 12.0,16.0 
+            35.0,16.0 31.0,10.0 87.0,10.0" filter="url(#Beveled-Marble-Shadow)" stroke="rgb(128,128,128)"/>
+    </g>
+</svg>

@@ -1,0 +1,123 @@
+<h2>Download</h2>
+	<ul><center><a href="http://sourceforge.net/project/platformdownload.php?group_id=122320">Download Anathema</a></center></ul>
+	<p>
+	Should you require assistance with either download or installation, please refer to the quickstart section below or get the latest version of the <a href="http://prdownloads.sourceforge.net/anathema/AnathemaInstallationGuide_v1.0.pdf?download">installation guide</a>.
+	Once you're done installing, the <a href="http://prdownloads.sourceforge.net/anathema/AnathemaUsersGuide_v1.0.pdf?download">user's guide</a> might be helpful.
+	</p>
+
+<h2>Requirements</h2>
+	<p>We have found these system specs sufficient for running Anathema:</p>
+	<ul>
+		<li><a href="http://www.java.com">Java Runtime Environment</a> Version 5.0 or later, 6.0 for the Windows version.
+		<li>1.6 GHz CPU</li>
+		<li>256 MB RAM</li>
+		<li>20 MB available hard disk space</li>
+	</ul>
+	<p>If your results differ, please <a href="?page=contact">let us know</a>.</p>
+	
+<h2>Quickstart Guide</h2>
+	<h3>Download</h3>
+	<p>
+	<a href="http://sourceforge.net/project/platformdownload.php?group_id=122320">Click</a> to have the download system calculate the most suitable download for your system. 
+	Accept the proposal made, and wait for your download to finish. 
+	</p>
+	<h3>Installation</h3>
+	<p>
+	Regular releases are pre-packed and installed on their own. Auto-installing packages for different operating systems are available.
+	If you downloaded the raw (.zip) package, the archive can simply be extracted into the target directory.</p>
+	<h3>Launch</h3>
+	<p>Depending on your download choice and operating system, you are provided with a executable file or link for launching Anathema.
+	If yours was the raw download, chances are your system allows to launch Anathema by double-clicking "anathema.jar" in the main folder.
+	Failing that, you will need to open a console window, switch to the installation directory and type "java -jar anathema.jar".</p>
+	<h3>Enjoy Anathema!</h3>
+
+<h2>Sourcecode Download</h2>
+	<p>
+	The latest development code resides in the "trunk"-folder of our <a href="http://sourceforge.net/svn/?group_id=122320">Subversion (SVN) repository</a> at all times.
+	You can download a specific release's code using its tag in the "tags" folder.
+	</p>
+	<p>
+	To browse Anathema's source code online use the <a href="http://fisheye3.cenqua.com/browse/anathema">Fisheye repository browser</a>. You can also subscribe to an <a href="http://fisheye3.cenqua.com/changelog/%7Erss/anathema/rss.xml" title="RSS feed">RSS
+feed</a> to be notified of changes to the code.
+	</p>
+	<p>
+	For information on SVN in general, there is an <a href="http://svnbook.red-bean.com/" title="excellent online book">excellent online book</a>.<br/>
+	</p>
+	
+<h2>SVN Walkthrough</h2>
+<p>
+The instructions below are written from a Windows perspective, but similar tools
+tools and procedures should work on all operating systems.</p>
+<h3>Disclaimer</h3>
+<p>
+You might be operating on raw, unpolished code, so this is not for the faint of
+heart.</p>
+<p>
+Unless your party would just die without a newly introduced feature or you are
+looking for a fix to the show-stopping bug you found, we do not recommend using
+the code from SVN for your day-to-day gaming needs. Stuff in there might be only
+half done or plain broken.</p>
+<b>You could lose data.</b>
+
+<h3>Download</h3>
+<p>
+To start with, you need two tools: The <a href="http://www.eclipse.org/downloads/" title="Eclipse SDK">Eclipse SDK</a>
+and the <a href="http://tortoisesvn.tigris.org/" title="Tortoise SVN client">Tortoise SVN client</a>. Of course, Java 6 should already be installed. (And this time, it's a must-have. Sorry, Mac people.)
+</p>
+<p>
+First, install Tortoise via the integrated installer. It will add several icons to your Windows Explorer's context menu, allowing you to access the Anathema SVN repository.
+</p>
+<p>
+One of these options, "SVN Checkout", is what you're after next. Select it to open a dialog. There, enter <i>https://anathema.svn.sourceforge.net/svnroot/anathema/trunk</i>
+as the "Repository URL" and name a directory on your hard drive as the "Checkout directory". Any path should do, but for technical reasons it must not contain any blanks and should be rather short (e.g "D:\Anathema\Trunk").</p>
+<p>
+Confirm and wait while files, files and more files are dumped onto your hard-drive.
+</p>
+<h3>Setup</h3>
+<p>
+Next, install Eclipse by unzipping it to a fresh directory of your choice and launch it via the executable file offered.</p>
+<p>
+A dialog will ask you where data should be stored. It can be satisfied by any local path, but for sanity's sake it should be separate from the one you chose
+for the SVN checkout. After confirming the path, Eclipse will boot and take its sweet time to do so.</p>
+<p>
+Once it is ready, go to the "Window" menu and open the "Preferences" dialog. There, choose "Java" from the tree on the left and "Compiler" from the subtree
+below. The first entry in the panel to the right, "Compiler Compliance Level", has to be changed from whatever it is set to now (probably "1.4") to "6.0". This
+indicates the Java version used. Confirm your changes to exit the dialog.</p>
+<p>
+Next, open the "File" menu, opt to "Import" within and choose "General/Existing Projects into Workspace" from the dialog opening. Next, you'll be asked for more
+info on the projects. Answer by naming the folder the SVN files were stored to, and click anywhere within the dialog to start the project search.</p>
+<p>
+A short moment after, the search will be completed and a list of all of Anathema's subprojects will be filled into the previously blank space in the
+dialog's center. Just make sure all of them are checked, and that "Copy projects into workspace" below is unchecked. Confirm your selection, and, once again,
+wait. Eclipse will perform the operation and compile the files afterwards.</p>
+<p>
+Clicking around, you might come across a bundle of warnings marked by black-in-yellow exclamation marks. Pay them no heed, they are for internal use.<br/>
+</p>
+
+<h3>Launch</h3>
+<p>
+Congratulations, your very own Anathema environment is set up. All that is left is launching the program.</p>
+<p>
+To do so, open the "Window" menu and choose "Select Perspective" -&gt; "Java". Then, from the "Run" menu, select "Open Run dialog...", there "Java
+Application" and finally "Anathema". Click "Run" in the lower right.</p>
+<p>If everything went according to plan, Anathema should launch just as if you double clicked it on your desktop.</p>
+<p>From now on, you can just start Eclipse and launch Anathema from within.</p>
+
+<h3>Update</h3>
+<p>
+Now, finally, we can tackle updating: Whenever you feel the need to do so, go to the directory containing the SVN files and right click on it, then choose "SVN
+Update". A process not unlike the initial checkout will be automatically initiated.</p>
+<p>
+Afterwards, go back to Eclipse, look for the "Package Explorer" on the left side of the screen and select the first project in the list while holding the shift key.
+Scroll down, and select the last project as well, so that all projects are selected. Right-click any of them and select "Refresh" from the context menu.</p>
+<p>Stand by while Eclipse rebuilds Anathema, indicated by the small progress indicator in the lower right.</p> 
+<p>Once it vanishes, all updates are integrated. Launch Anathema as you did before and reap your rewards.</p>
+
+<h3>Distribution</h3>
+<p>So maybe you made some changes you want to share with your group, or maybe you don't like starting eclipse to run Anathema.
+Whatever the reason, here is how to build a fresh distribution to run from your desktop.</p>
+<p>First, you have to tell the build system two things about your local setup: It requires access to your Java Development Kit and needs to know the location of your workspace.</p>
+<p>To provide this information open the Preferences dialog (Window->Preferences). In the Ant-section's Runtime-item, add " tools.jar" from the JDK to the classpath and create the property "workspace.dir", which you want to point to ${workspace_loc} to be independent of your current workspace location.</p>
+<p>Now that you're ready, close the dialog and look for the Development_Distribution module in your workspace. Once there, inspect the "version.properties" file and customize your build name and version number.</p>
+<p>Now finally you are ready to find the file called "build_raw_distribution.xml", right-click on it and choose "Run As..." "Ant Build". The console will open, and lot's of messages will fly past. Wait. This may take some minutes. When finally "BUILD SUCCESSFUL" is printed,
+you need to refresh the module (by selecting it and pressing F5) to find a freshly created .zip file.</p>

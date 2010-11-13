@@ -1,0 +1,53 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteSidereal.SnippetCreateNewDefaultSidereal
+This test will ensure that the Savant backround is not lowerable when the character is experienced.
+
+!3 Raise Background to 3
+!|Set Background|
+|traitType|value|
+|Savant|3|
+
+!|Check Background|
+|backgroundType|value?|
+|Savant|3|
+
+!3 Set Experienced
+!|Set Experienced|
+
+!3 Ensure that lowering fails.
+!|Set Background|
+|traitType|value|
+|Savant|1|
+
+!|Check Background|
+|backgroundType|value?|
+|Savant|3|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|0|
+
+!3 Ensure proper behaviour for value 0
+!|Set Background|
+|traitType|value|
+|Savant|0|
+
+!|Check Background|
+|backgroundType|value?|
+|Savant|3|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|0|
+
+!3 Ensure that raising succeeds.
+!|Set Background|
+|traitType|value|
+|Savant|4|
+
+!|Check Background|
+|backgroundType|value?|
+|Savant|4|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|3|

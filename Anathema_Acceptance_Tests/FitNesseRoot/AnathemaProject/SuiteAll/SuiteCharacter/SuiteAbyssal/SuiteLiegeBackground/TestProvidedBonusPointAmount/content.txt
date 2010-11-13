@@ -1,0 +1,62 @@
+!3 Value 0
+
+Initially a background has value 0.
+
+!|Check Background|
+|Background Type|value?|
+|Liege|0|
+
+
+!|Check Bonus Points|
+|Has Additional Pool?|Additional Amount?|Additional Spent?|Regular Amount?|Regular Spent?|
+|true|0|0|15|0|
+
+!3 Value 1
+
+!|Set Background|
+|trait type|value|
+|Liege|1|
+
+!|Check Bonus Points|
+|Additional Amount?|
+|2|
+
+!3 Value 2
+
+!|Set Background|
+|trait type|value|
+|Liege|2|
+
+!|Check Bonus Points|
+|Additional Amount?|
+|4|
+
+!3 Value 3
+
+!|Set Background|
+|trait type|value|
+|Liege|3|
+
+!|Check Bonus Points|
+|Additional Amount?|
+|6|
+
+!3 Value 4
+
+!|Set Background|
+|trait type|value|
+|Liege|4|
+
+!|Check Bonus Points|
+|Additional Amount?|
+|9|
+
+!3 Value 5
+
+!|Set Background|
+|trait type|value|
+|Liege|5|
+
+!|Check Bonus Points|
+|Additional Amount?|
+|12|

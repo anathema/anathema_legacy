@@ -1,0 +1,29 @@
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin id="net.sf.anathema.campaign.plot" version="0.12">
+	<requires>
+		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
+	</requires>
+	<runtime>
+		<library id="core" path="./" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="resources" path="./" type="resources">
+			<export prefix="*"/>
+		</library>
+	</runtime>
+	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
+		<parameter id="type">
+			<parameter id="class" value="net.sf.anathema.campaign.module.NoteTypeConfiguration"/>
+		</parameter>
+		<parameter id="type">
+			<parameter id="class" value="net.sf.anathema.campaign.module.SeriesTypeConfiguration"/>
+		</parameter>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="ReportFactories" id="ReportFactories">
+		<parameter id="class" value="net.sf.anathema.campaign.module.reporting.NoteReportFactory"/>
+		<parameter id="class" value="net.sf.anathema.campaign.module.reporting.SeriesReportFactory"/>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
+		<parameter id="bundle" value="Campaign"/>
+	</extension>
+</plugin>

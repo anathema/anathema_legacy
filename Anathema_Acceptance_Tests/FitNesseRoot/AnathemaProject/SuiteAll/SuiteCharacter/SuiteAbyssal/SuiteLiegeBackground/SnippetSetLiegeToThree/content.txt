@@ -1,0 +1,9 @@
+!3 Set Liege to Value 3
+
+Setting the ''Liege'' background to value 3 ...
+
+!|Set Background|
+|trait type|value|
+|Liege|3|
+
+... which provides 6 additional bonus points  for later use without bonus point costs.

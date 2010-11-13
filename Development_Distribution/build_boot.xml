@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Anathema Bootloader" default="Build">
+
+	<property file="directories.properties" />
+
+	<target name="Build" depends="Prepare, Compile Bootloader, Create Properties, Build JAR" />
+
+	<target name="Build JAR">
+		<jar destfile="${build.dir}/anathema.jar">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Main-Class" value="net.sf.anathema.AnathemaBootLoader" />
+				<attribute name="SplashScreen-Image" value="icons/core/AnathemaSplashNew.png" />
+				<attribute name="Class-Path" value="${library.dir}/jpf.jar ${library.dir}/jpf-boot.jar ${library.dir}/commons-logging-api.jar" />
+				<section name="net/sf/anathema/AnathemaBootLoader.class" />
+			</manifest>
+			<fileset dir="${boot.dir}" includes="**/*" />
+			<fileset dir="../Anathema/resources" includes="**/*" excludes="**/Thumbs.db" />
+		</jar>
+	</target>
+
+	<target name="Create Properties" depends="Prepare">
+		<propertyfile file="${boot.dir}/boot.properties">
+			<entry key="org.java.plugin.boot.applicationPlugin" value="net.sf.anathema.core" />
+			<entry key="org.java.plugin.PathResolver" value="net.sf.anathema.AnathemaPathResolver" />
+		</propertyfile>
+	</target>
+
+	<target name="Compile Bootloader" depends="Prepare">
+		<getEclipseClasspath property="classpath" workspace="${workspace.dir}" projectName="Anathema" relative="false" initialiseWorkspace="true" />
+		<javac classpath="${classpath}" srcdir="../Anathema/src" destdir="${boot.dir}" target="1.5" debug="true">
+			<include name="**/AnathemaBootLoader.java" />
+			<include name="**/AnathemaPathResolver.java" />
+			<include name="**/AnathemaPrebootSplashscreen.java" />
+		</javac>
+	</target>
+
+	<target name="Prepare">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${boot.dir}" />
+	</target>
+</project>

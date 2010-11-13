@@ -1,0 +1,2 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SetUp 
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteSolar.SuiteSecondEditionDefault.SnippetCreateSecondEditionSolar

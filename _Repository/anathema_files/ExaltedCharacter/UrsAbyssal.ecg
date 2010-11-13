@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="UrsAbyssal" repositoryPrintName="Kurani Radoon">
+  <Description>
+    <CharacterName><![CDATA[Kurani Radoon]]></CharacterName>
+  </Description>
+  <Statistics experienced="false">
+    <Rules>
+      <RuleSet name="PowerCombat"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Abyssal</CharacterType>
+    <CharacterConcept>
+      <Caste type="Moonshadow"/>
+      <Nature type="Conniver"/>
+      <Concept/>
+    </CharacterConcept>
+    <Essence creationValue="2"/>
+    <Willpower creationValue="8"/>
+    <Virtues>
+      <Compassion creationValue="1"/>
+      <Conviction creationValue="5"/>
+      <Temperance creationValue="2"/>
+      <Valor creationValue="3"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="3"/>
+        <Dexterity creationValue="3"/>
+        <Stamina creationValue="5"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="3"/>
+        <Manipulation creationValue="5"/>
+        <Appearance creationValue="1"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="2"/>
+        <Intelligence creationValue="2"/>
+        <Wits creationValue="3"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="0"/>
+      <Brawl creationValue="4" favored="true"/>
+      <MartialArts creationValue="0"/>
+      <Melee creationValue="2"/>
+      <Thrown creationValue="0"/>
+      <Endurance creationValue="3" favored="true"/>
+      <Performance creationValue="2"/>
+      <Presence creationValue="4" favored="true"/>
+      <Resistance creationValue="2" favored="true"/>
+      <Survival creationValue="0"/>
+      <Craft creationValue="0"/>
+      <Investigation creationValue="0"/>
+      <Lore creationValue="1"/>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="0"/>
+      <Athletics creationValue="0"/>
+      <Awareness creationValue="0"/>
+      <Dodge creationValue="0"/>
+      <Larceny creationValue="3" favored="true"/>
+      <Stealth creationValue="0"/>
+      <Bureaucracy creationValue="3"/>
+      <Linguistics creationValue="0"/>
+      <Ride creationValue="0"/>
+      <Sail creationValue="2"/>
+      <Socialize creationValue="3"/>
+    </Abilities>
+    <Backgrounds>
+      <Background creationValue="1"><![CDATA[AbyssalCommand]]></Background>
+      <Background creationValue="3"><![CDATA[Artifact]]></Background>
+      <Background creationValue="4"><![CDATA[Whispers]]></Background>
+      <Background creationValue="4"><![CDATA[Contacts (Guild)]]></Background>
+      <Background creationValue="3"><![CDATA[Liege]]></Background>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Resistance" type="Abyssal">
+        <Charm name="Abyssal.Spirit-HardenedFrame" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Performance" type="Abyssal">
+        <Charm name="Abyssal.HauntingInflectionTechnique" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Brawl" type="Abyssal">
+        <Charm name="Abyssal.ScouringErosionMethod" experienceLearned="false"/>
+        <Charm name="Abyssal.Bone-ShatteringBlow" experienceLearned="false"/>
+        <Charm name="Abyssal.LashingTempestAttack" experienceLearned="false"/>
+        <Charm name="Abyssal.RavagingStrike" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Endurance" type="Abyssal">
+        <Charm name="Abyssal.InsensibleCorpseTechniqueTemporary" experienceLearned="false"/>
+        <Charm name="Abyssal.Pain-EatingFocus" experienceLearned="false"/>
+        <Charm name="Abyssal.Ox-BodyTechnique" experienceLearned="false">
+          <Special>
+            <Categories>
+              <Category.-0 creationValue="0"/>
+              <Category.-1x2 creationValue="0"/>
+              <Category.-1-2x2 creationValue="1"/>
+            </Categories>
+          </Special>
+        </Charm>
+      </CharmGroup>
+      <CharmGroup name="Presence" type="Abyssal">
+        <Charm name="Abyssal.ElegantTyrant'sMajesty" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Larceny" type="Abyssal">
+        <Charm name="Abyssal.CunningCriminalStyle" experienceLearned="false"/>
+      </CharmGroup>
+      <Combos>
+        <Combo experienceLearned="false">
+          <Name><![CDATA[Gleaming Grrr]]></Name>
+          <Charm name="Abyssal.RavagingStrike" type="Abyssal"/>
+          <Charm name="Abyssal.ScouringErosionMethod" type="Abyssal"/>
+          <Charm name="Abyssal.Bone-ShatteringBlow" type="Abyssal"/>
+        </Combo>
+      </Combos>
+    </Charms>
+    <Spells/>
+    <Experience/>
+    <AdditionalModels>
+      <Model templateId="MeritsAndFlaws">
+        <Content>
+          <meritsFlaws/>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

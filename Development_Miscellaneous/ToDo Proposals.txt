@@ -1,0 +1,51 @@
+Import Custom Charms from Ed
+Human Form Lunars Heartsblood
+
+Ricardo
+-Allow selection of favored character type
+-Forest witches
+-Character type on the sheet
+-Restrict the charmgroups in the charms section to those with charms available / ability learned
+-Lookshy prerequisites for *all* lookshy characters
+-Color the spell selections allowed for sorcery
+
+* The Shillouette or visualization thing, that when you chage your
+stats it changes the drawing.
+* When you select a background like Artifact or Manse, you can select
+from a list of canon or user created ones.
+* The No Solar Circle spells from start.
+* The automatic Unlearning charms thing or a warning or something, so
+that when you start playing with Essence or Ability traits, it
+unlearns charms that do not meet the prerequisites.
+* Info in the User Guide - Reference pages of all those rules, like
+liege, Appearence and Essence for Abyssals, etc.
+* The thing about only the abilities for which at least one charm is available
+are shown, whith the "Don't check prerequisites", "fulfill all
+prerequisites", "Don't check prerequisites", and "Enforce
+prerequisites" that you mentioned.
+* Links in the Help menu.
+
+
+
+Ok, thats a lot of things, and when i was writing them down, i have other ideas:
+* With the Shillouette or visualization thing, being something quite
+complicated, i think that for now it would be good to just show a
+picture, so maybe in the description would be a browse button, so you
+can browse your directories for a picture or a drawing, and it would
+show up in the program, with that character.
+* Put the User and maybe Instalation Guides in the zip file, so when
+you download the program you have that guides along with the readme,
+versions, and faq files.
+*Change min Traits for Immaculate MArtist to MA3 / Ess 3 (for spirit walk / sight)
+
+Maybe put that in the user guide, or
+in another section call spells instead of under charms. And maybe put
+the explination of Liege in the user guide, because i didn't remember
+that liege only give you bonus points in certain backgrounds and in
+Favored and Caste abilities and Charms (and took me some time to
+figure that out).
+
+Jason Hardin
+-Don't use "description" tag more than once in XML files
+
+Nah, Specialty ist Specialty und Wert ist Wert. Eine "Include in DV calculation" Checkbox könnte ich mir vorstellen, oder - alternativ - eine Extra-Seite im Druck mit viel Platz für Kampfrelevante Daten.

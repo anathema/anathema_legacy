@@ -1,0 +1,20 @@
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin id="net.sf.anathema.namegenerator" version="0.12">
+	<requires>
+		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
+	</requires>
+	<runtime>
+		<library id="core" path="/" type="code">
+			<export prefix="*"/>
+		</library>
+	</runtime>
+	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
+		<parameter id="type">
+			<parameter id="class" value="net.sf.anathema.namegenerator.anathema.NameGeneratorItemTypeConfiguration"/>
+			<parameter id="development" value="true"/>
+		</parameter>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
+		<parameter id="bundle" value="NameGenerator"/>
+	</extension>
+</plugin>

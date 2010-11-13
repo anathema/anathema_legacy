@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../charms.dtd">
+<!--
+
+        QuicksilverHandOfDreams.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Quicksilver Hand of Dreams Style -->
+     <charm id="Sidereal.TheQuicksilverStaircase" exalt="Solar" group="QuicksilverHandOfDreamsStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="2" />
+               <essence value="2" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Sidereal" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.PeacefulReposeTouch" exalt="Solar" group="QuicksilverHandOfDreamsStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="3" />
+               <essence value="2" />
+               <charmReference id="Sidereal.TheQuicksilverStaircase" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" text="or 4 motes or 6 motes" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.FerventNightPhantasm" exalt="Solar" group="QuicksilverHandOfDreamsStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="3" />
+               <essence value="2" />
+               <charmReference id="Sidereal.TheQuicksilverStaircase" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" text="or 4 motes or 6 motes" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.DreamRavagerHand" exalt="Solar" group="QuicksilverHandOfDreamsStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="3" />
+               <essence value="2" />
+               <charmReference id="Sidereal.TheQuicksilverStaircase" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" text="or 4 motes or 6 motes" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.EphemeralPresenceTechnique" exalt="Solar" group="QuicksilverHandOfDreamsStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+               <charmReference id="Sidereal.PeacefulReposeTouch" />
+               <charmReference id="Sidereal.FerventNightPhantasm" />
+               <charmReference id="Sidereal.DreamRavagerHand" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.DreamwalkerKata" exalt="Solar" group="QuicksilverHandOfDreamsStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+               <charmReference id="Sidereal.EphemeralPresenceTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.InescapableNightmarePursuit" exalt="Solar" group="QuicksilverHandOfDreamsStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+               <charmReference id="Sidereal.EphemeralPresenceTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.QuicksilverHandOfDreamsForm" exalt="Solar" group="QuicksilverHandOfDreamsStyle">
+          <prerequisite>
+               <!-- Prerequisite of "One complete Celestial Style" doesn't seem to be modeled in XML. -->
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Sidereal.DreamwalkerKata" />
+               <charmReference id="Sidereal.InescapableNightmarePursuit" />
+          </prerequisite>
+          <cost>
+               <essence cost="15" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Form" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.GossamerUnderstanding" exalt="Solar" group="QuicksilverHandOfDreamsStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Sidereal.QuicksilverHandOfDreamsForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.ChimericalAscension" exalt="Solar" group="QuicksilverHandOfDreamsStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="6" />
+               <essence value="6" />
+               <charmReference id="Sidereal.GossamerUnderstanding" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" text="+10 motes for every additional 50 yards" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.Fantasy" exalt="Solar" group="QuicksilverHandOfDreamsStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="7" />
+               <essence value="7" />
+               <charmReference id="Sidereal.ChimericalAscension" />
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+               <willpower cost="2" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+</charmlist>

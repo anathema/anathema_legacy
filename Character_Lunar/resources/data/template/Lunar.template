@@ -1,0 +1,39 @@
+<exaltedCharacterTemplate characterType="Lunar" subtemplate="default">
+  <general>
+    <edition edition="FirstEdition"/>
+    <abilityGroups uses="trait/DefaultAbilityGroup.template" />
+    <attributeGroups uses="template/LunarAttributeGroup.template"/>
+    <essence uses="template/LunarEssence.template" />
+    <traitCollection uses="template/LunarTraitCollection.template"/>
+    <magicTemplate uses="template/LunarMagic.template"/>
+    <presentation uses="template/LunarPresentation.template"/>
+    <additionalRules>
+      <requiredMagic>
+        <magic type="charm" id="Lunar.FindingTheSpiritsShape" />
+      </requiredMagic>
+    </additionalRules>
+    <additionalTemplates>
+      <template id="Lunar.DeadlyBeastmanTransformation.Template" />
+      <template id="Lunar.HeartsBlood.Template" />
+      <template id="Lunar.Renown.Template" />
+      <template id="Lunar.VirtueFlaw.Template" />
+    </additionalTemplates>
+    <healthTemplate>
+      <toughnessControllingTrait type="Stamina"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="template/LunarBonusPointCost.template" />
+    <creationPoints>
+      <attributeDots primary="9" secondary="7" tertiary="5" />
+      <abilityDots general="15" favored="10" favoredPicks="5" />
+      <backgroundDots count="7" />
+      <virtueDots count="5" />
+      <bonusPoints count="15" />
+      <charmPicks favored="4" general="5" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/LunarExperienceCost.template" />
+  </experience>
+</exaltedCharacterTemplate>

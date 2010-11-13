@@ -1,0 +1,21 @@
+!include SnippetSetLiegeToThree
+
+!3 Select the Dusk Caste
+
+!|Set Concept|
+|caste|
+|Dusk|
+
+!3 Set Brawl To Value 4
+
+!|Set Abilities|
+|trait type|value|
+|Brawl|4|
+
+!3 Additional bonus points spent
+
+Check that the needed is spent from the pool provided by liege.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|1|0|

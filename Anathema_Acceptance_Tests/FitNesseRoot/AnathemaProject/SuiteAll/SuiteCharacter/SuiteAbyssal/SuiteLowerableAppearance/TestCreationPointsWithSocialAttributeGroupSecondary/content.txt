@@ -1,0 +1,52 @@
+!3 Primary Group Physical
+
+Loyal Abyssal may spent 8 points for their primary group, so we spent 4 for Strength and 4 for Dexterity.
+
+!|SetAttributes|
+|traitType|value|
+|Strength|5|
+|Dexterity|5|
+
+!|CheckAttributePoints|
+|primaryDotsSpent?|secondaryDotsSpent?|tertiaryDotsSpent?|
+|8|0|0|
+
+!|CheckBonusPoints|
+|regularSpent?|additionalSpent?|
+|0|0|
+
+
+!3 Secondary Group Social
+
+Now we make the social group secondary, where we have 6 points to spent freely. We increase Charisma to 4, as well as Manipulation.
+
+!|SetAttributes|
+|traitType|value|
+|Charisma|4|
+|Manipulation|4|
+
+!|CheckAttributePoints|
+|primaryDotsSpent?|secondaryDotsSpent?|tertiaryDotsSpent?|
+|8|6|0|
+
+!|CheckBonusPoints|
+|regularSpent?|additionalSpent?|
+|0|0|
+
+
+!3 Increase Appearance
+
+If we now increase appearance by one. Physical is still primary, as well as social secondary.
+The additional point shall cost the 4 bonus points, an Abyssal has to spent for an attribute point.
+
+!|SetAttributes|
+|traitType|value|
+|Appearance|2|
+
+!|CheckAttributePoints|
+|primaryDotsSpent?|secondaryDotsSpent?|tertiaryDotsSpent?|
+|8|6|0|
+
+!|CheckBonusPoints|
+|regularSpent?|additionalSpent?|
+|4|0|

@@ -1,0 +1,13 @@
+!3 All Lunars have to learn "Finding the Spirit's Shape".
+!|Check Charm|
+|id|isLearnedOnCreation?|
+|Lunar.FindingTheSpiritsShape|true|
+
+!3 It mustn't be unlearned.
+!|ToggleCharmLearned|
+|id|
+|Lunar.FindingTheSpiritsShape|
+
+!|Check Charm|
+|id|isLearnedOnCreation?|
+|Lunar.FindingTheSpiritsShape|true|

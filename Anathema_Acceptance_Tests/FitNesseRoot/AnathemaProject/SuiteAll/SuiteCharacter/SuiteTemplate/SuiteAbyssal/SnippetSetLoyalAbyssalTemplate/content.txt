@@ -1,0 +1,3 @@
+!|Set Template|
+|characterType|subtemplate|edition|
+|Abyssal|blank|FirstEdition|

@@ -1,0 +1,11 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
+
+!3 Set Character to 'Experienced'...
+
+!|SetExperienced|
+
+!3 ...And Validate.
+
+!|CheckExperienced|
+|isExperienced?|
+|true|

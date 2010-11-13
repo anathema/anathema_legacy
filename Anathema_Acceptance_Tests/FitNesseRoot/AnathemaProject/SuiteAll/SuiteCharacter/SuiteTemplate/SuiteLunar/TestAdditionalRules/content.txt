@@ -1,0 +1,3 @@
+!|Check Compulsive Charms|
+|id|isCompulsive?|
+|Lunar.FindingTheSpiritsShape|true|

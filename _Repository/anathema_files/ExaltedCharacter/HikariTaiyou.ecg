@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="HikariTaiyou" repositoryPrintName="Hikari Taiyô">
+  <Description>
+    <CharacterName><![CDATA[Hikari Taiyô]]></CharacterName>
+    <Player><![CDATA[Sandra Sieroux]]></Player>
+    <Characterization><![CDATA[- Arbeitet sich trotz seines Mortaltums als Party Hopping Intrigant in die Drachenblütigen Gesellschaft der Gesegneten Insel empor.
+- Bei Celebration-Party am Hof anbaggern jüngster Tochter von Mnemon, gewinnt aber die Aufmerksamkeit der Empress
+- Beim Versuch die Empress zu besteigen erhebt in die Unbesiegte Sonne und stachelt ihn zu größeren Taten ein.
+- Ein Pferdelunar stürmt in das Gemach und Hikari stellt sich ihm zum Kampf.
+- Derweil öffent sich in einer Kaskade von purpurnen Blitzen ein Astraltor in der Kammer. Die Empress begrüsst den dämonischen Ankömmling mit den Worten 'Er sei zu früh.'
+- Dieser verneint das mit einem siegesgewissen Lächeln und greift sich die Herrscherin um mit ihr durch das Tor zu verschwieden. 
+- Perfekt Dodge vor dem Todesstoß seines Gegners, welcher von dem sich beim Schließen ausdehnenden Tor verschlungen wird. Das Gleißen der Anima des Exalt verstärkt sich und hält der Finsternis stand.
+- Und hier beginnt unsere Geschichte.]]></Characterization>
+    <PhysicalDescription><![CDATA[- Haare in allen Helligkeitsschattierungen einer Farbe, manchmal auch zweier Farben.
+- schwarze Lederstiefel und schwarze Seidenweste mit Elementarsticker in den entsprechenden Farben (blau, rot grün, schwarz, grün) Stickereien ,  
+- weiter Mantel und enge Stoffhose in verschiedenen Brauntönen
+- Weißes Hemd mit geschlossenem hohen Rüschenkragen und weit ausladnden Rüschen an den Ärmeln
+- Dunkelroter Kummerbund.]]></PhysicalDescription>
+    <Notes><![CDATA[Seven Shadow Evasion (Conviction Flaw)]]></Notes>
+    <Concept><![CDATA[James Bond meets Casanova]]></Concept>
+  </Description>
+  <Statistics experienced="true">
+    <Rules>
+      <RuleSet name="SecondEdition"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
+    <CharacterConcept>
+      <Caste type="Zenith"/>
+      <Motivation><![CDATA[Scarlet Empress retten]]></Motivation>
+    </CharacterConcept>
+    <Essence creationValue="2"/>
+    <Willpower creationValue="6"/>
+    <Virtues>
+      <Compassion creationValue="2"/>
+      <Conviction creationValue="2"/>
+      <Temperance creationValue="1"/>
+      <Valor creationValue="4"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="3"/>
+        <Dexterity creationValue="4"/>
+        <Stamina creationValue="3"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="4"/>
+        <Manipulation creationValue="3"/>
+        <Appearance creationValue="4"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="2"/>
+        <Intelligence creationValue="2"/>
+        <Wits creationValue="3"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="0"/>
+      <MartialArts creationValue="5" favored="true"/>
+      <Melee creationValue="0"/>
+      <Thrown creationValue="0"/>
+      <War creationValue="0"/>
+      <Integrity creationValue="3"/>
+      <Performance creationValue="3"/>
+      <Presence creationValue="4">
+        <Specialty creationValue="2" name="Seduction"/>
+      </Presence>
+      <Resistance creationValue="1"/>
+      <Survival creationValue="0"/>
+      <Craft>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Air]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Earth]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Fire]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Water]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Wood]]></traitName>
+        </subTrait>
+      </Craft>
+      <Investigation creationValue="3"/>
+      <Lore creationValue="1"/>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="0" experiencedValue="1"/>
+      <Athletics creationValue="2"/>
+      <Awareness creationValue="1" experiencedValue="2" favored="true"/>
+      <Dodge creationValue="5" favored="true">
+        <Specialty creationValue="2" name="Unarmoured"/>
+      </Dodge>
+      <Larceny creationValue="1">
+        <Specialty creationValue="2" name="Blackmail"/>
+      </Larceny>
+      <Stealth creationValue="0"/>
+      <Bureaucracy creationValue="1" favored="true"/>
+      <Linguistics creationValue="2"/>
+      <Ride creationValue="0"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="1" experiencedValue="2" favored="true"/>
+    </Abilities>
+    <Backgrounds>
+      <Background creationValue="3"><![CDATA[Resources]]></Background>
+      <Background creationValue="2"><![CDATA[Court Intrigant (Blessed Isle)]]></Background>
+      <Background creationValue="2"><![CDATA[Artifact (Discreet Essence Armour)]]></Background>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Presence" type="Solar">
+        <Charm name="Solar.2ndExcellency.Presence" experienceLearned="false"/>
+        <Charm name="Solar.IrresistibleSalesmanSpirit" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Dodge" type="Solar">
+        <Charm name="Solar.SevenShadowEvasion" experienceLearned="false"/>
+        <Charm name="Solar.ShadowOverWater" experienceLearned="false"/>
+        <Charm name="Solar.1stExcellency.Dodge" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Resistance" type="Solar">
+        <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
+          <Special>
+            <Categories>
+              <Category.-0 creationValue="0"/>
+              <Category.-1x2 creationValue="0"/>
+              <Category.-1-2x2 creationValue="1"/>
+            </Categories>
+          </Special>
+        </Charm>
+      </CharmGroup>
+      <CharmGroup name="MartialArts" type="Solar">
+        <Charm name="Solar.1stExcellency.MartialArts" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="DreamingPearlCourtesanStyle" type="Solar">
+        <Charm name="Celestial.DemureCarpFeint" experienceLearned="false"/>
+        <Charm name="Celestial.LethalPaperFanAttack" experienceLearned="false"/>
+        <Charm name="Celestial.DreamingPearlCourtesanForm" experienceLearned="false"/>
+        <Charm name="Celestial.PearlescentFiligreeDefense" experienceLearned="false"/>
+      </CharmGroup>
+      <Combos>
+        <Combo experienceLearned="false">
+          <Name><![CDATA[Ähäm]]></Name>
+          <Charm name="Celestial.LethalPaperFanAttack" type="Solar"/>
+          <Charm name="Solar.SevenShadowEvasion" type="Solar"/>
+        </Combo>
+      </Combos>
+    </Charms>
+    <Spells/>
+    <Experience>
+      <Entry points="40">
+        <Description><![CDATA[Bis vor Verlobungsparty der Empress]]></Description>
+      </Entry>
+    </Experience>
+    <AdditionalModels>
+      <Model templateId="Equipment">
+        <Content>
+          <item>
+            <templateId><![CDATA[Natural]]></templateId>
+            <printedStats><![CDATA[Punch]]></printedStats>
+            <printedStats><![CDATA[Kick]]></printedStats>
+            <printedStats><![CDATA[Clinch]]></printedStats>
+          </item>
+        </Content>
+      </Model>
+      <Model templateId="Specialties">
+        <Content/>
+      </Model>
+      <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
+        <Content>
+          <linguistics>
+            <language><![CDATA[HighRealm]]></language>
+            <language><![CDATA[LowRealm]]></language>
+            <language><![CDATA[OldRealm]]></language>
+          </linguistics>
+        </Content>
+      </Model>
+      <Model templateId="Intimacies">
+        <Content>
+          <Intimacies>
+            <Intimacy name="Scarlet Dynasty" complete="true">
+              <Trait creationValue="2"/>
+            </Intimacy>
+            <Intimacy name="Mnemon Tochter B" complete="true">
+              <Trait creationValue="2"/>
+            </Intimacy>
+          </Intimacies>
+        </Content>
+      </Model>
+      <Model templateId="SolarVirtueFlaw">
+        <Content>
+          <VirtueFlaw>
+            <RootVirtue name="Valor"/>
+            <Name><![CDATA[Wounded Pride's Retaliation]]></Name>
+            <LimitBreak><![CDATA[Feeling inferior to another being]]></LimitBreak>
+            <Description><![CDATA[Reestablish his feeling of superiorty by imposing his undeniable strength to the weak and vulnerable.]]></Description>
+          </VirtueFlaw>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

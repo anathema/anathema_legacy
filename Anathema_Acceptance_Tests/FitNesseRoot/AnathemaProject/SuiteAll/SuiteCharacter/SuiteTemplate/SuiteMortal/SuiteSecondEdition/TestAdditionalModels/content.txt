@@ -1,0 +1,3 @@
+!|Check Additional Templates|
+|id|isTemplateRegistered?|
+|Intimacies|true|

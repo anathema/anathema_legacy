@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Character Abyssal Plugin" default="Build Abyssal">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Character_Abyssal" />
+	<property name="module.name" value="character_abyssal" />
+
+	<property file="plugin.directories.properties" />
+	
+	<target name="Build Abyssal" depends="Compile, Build JAR"/>
+</project>

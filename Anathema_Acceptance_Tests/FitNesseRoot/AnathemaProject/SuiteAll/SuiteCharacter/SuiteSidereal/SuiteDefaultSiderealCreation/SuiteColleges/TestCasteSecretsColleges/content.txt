@@ -1,0 +1,33 @@
+Initially all Sidereal Colleges are at value 0.
+
+!|Set Concept|
+|caste|
+|Secrets|
+
+!|Check Sidereal Colleges|
+|trait type|isCaste?|
+|Captain|false|
+|Gull|false|
+|Mast|false|
+|Messenger|false|
+|ShipsWheel|false|
+|Ewer|false|
+|Lovers|false|
+|Musician|false|
+|Peacock|false|
+|Pillar|false|
+|Banner|false|
+|Gauntlet|false|
+|Quiver|false|
+|Shield|false|
+|Spear|false|
+|Guardians|true|
+|Key|true|
+|Mask|true|
+|Sorcerer|true|
+|TreasureTrove|true|
+|Corpse|false|
+|Crow|false|
+|Haywain|false|
+|RisingSmoke|false|
+|Sword|false|

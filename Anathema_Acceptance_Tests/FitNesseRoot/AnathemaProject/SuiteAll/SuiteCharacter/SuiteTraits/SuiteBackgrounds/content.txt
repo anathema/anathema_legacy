@@ -1,0 +1,12 @@
+!3 Character Type-Independent Tests
+!contents
+
+!3 Tests for Specific Character Types
+[[Dragon Blooded][.AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SuiteBackgrounds]]
+!see .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SuiteBackgrounds.TestDynasticSorceryBonusCost
+!see .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SuiteBackgrounds.TestLookshySorceryBonusCost
+!see .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SuiteBackgrounds.TestSorcerySpellsGranted
+
+[[Abyssal][.AnathemaProject.SuiteAll.SuiteCharacter.SuiteAbyssal.SuiteBackgrounds]]
+[[Liege Background][.AnathemaProject.SuiteAll.SuiteCharacter.SuiteAbyssal.SuiteLiegeBackground]]
+!see .AnathemaProject.SuiteAll.SuiteCharacter.SuiteAbyssal.SuiteBackgrounds.TestNecromancySpellsGranted

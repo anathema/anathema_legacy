@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build all distributions" default="Distribute">
+
+	<!--Requires the property "launch4j.dir" to point to the launch4j installation.-->
+	<!--Requires the property "nsis.dir" to point to the NSIS installation.-->
+    <import file="linux_distribution_targets.xml" />
+	<import file="build_windows_nsis_distribution.xml" />
+
+	<property file="directories.properties" />
+
+	<target name="Distribute" depends="Clean, Build Bootloader, Build Plugins, Copy Text, Build Windows executable, Compile NSIS Installer, Copy Linux Launcher, Build ZIP" />
+</project>

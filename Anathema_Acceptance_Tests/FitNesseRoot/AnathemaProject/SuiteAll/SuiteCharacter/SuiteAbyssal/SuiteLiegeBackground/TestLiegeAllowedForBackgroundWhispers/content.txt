@@ -1,0 +1,9 @@
+!include SnippetSetLiegeToThree
+
+!3 Whispers To Value 4
+
+!|Set Background|
+|trait type|value|
+|Whispers|4|
+
+!include SnippetCheckTwoLiegePointsSpent

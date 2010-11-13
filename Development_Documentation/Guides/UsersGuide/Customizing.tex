@@ -1,0 +1,63 @@
+\chapter{Various Customizations}
+
+This chapter details various ways to improve Anathema's usefulness.
+
+\section{Custom Properties}
+Since Anathema uses a lookup-mechanism to determine what texts are actually displayed, it is possible to replace each an every string within the program with a custom value. While this might at first seem useless, the following sections will show how to use the mechanism to customize Anima effects and natures.
+
+To begin, create a plain text file called "custom.properties" in the Anathema main directory. If you frequently change the program's language setting, you can also create one file per language by appending an underscore and the languages abbreviation to the "custom"-part of the filename. The spanish file, for instance, would be called "custom\_es.properties".
+
+The contents of these files take precendence over everything that is pre-defined in the program.
+
+Entries are generally specified in the [Key]=[Value] format. The first part, [Key], is a technical looking expression the program looks up and replaces with the second part, the far more legible [Value]. To replace a text, simply find out its key and add a new line to this file, stating the replacement value.
+
+All changes will take effect when you next start Anathema.
+
+\section{Custom Anima Effects}
+Not only do Anathema's "Second Edition" character sheets print the anima abilities for each character type, they can also add the character's caste-specific anima power.
+
+To define them, you have to edit custom.properties, adding one line per caste and edition (since the powers vary between editions of the game). The line's key is created from the pattern \texttt{Sheet.AnimaPower.[Caste/Aspect].[Edition]}, where \texttt{[Caste/Aspect]} is replaced with the character's caste (capitalized, to give "Twilight" instead of "twilight") and \texttt{[Edition]} can be either "FirstEdition" or "SecondEdition".
+
+\section{Custom Natures}
+This section details the process of customizing the "willpower recovery" conditions for 
+exisiting natures and describes how to adding completely new ones. 
+
+The program comes complete with all natures from the Exalted core rulebook, but the willpower recovery conditions are omitted -- you guessed it -- for copyright reasons. 
+
+\subsection{Concepts: Three parts of a Nature}
+A nature in Anathema is represented by three parts: An unique ID for identification purposes,
+the nature's name as it appears in the program and on character sheets and a
+willpower recovery condition. 
+
+For the core book's natures, ID and Name are both set to the nature's name (as given in the core rulebook, including capitalization), while the condition only states the page containing the description.
+
+\subsection{Adding Willpower Recovery Conditions}
+To make more use of the "`Willpower"'-part of the nature, you may want to replace the stub descriptions by more useful ones. This is done via the custom.properties file explained earlier in the chapter. Keys for the willpower recovery conditions adhere to the format \texttt{Nature.[Insert ID].Text}. The Value-part is whatever you want to make of it.
+
+\paragraph{Note:} "Gain Willpower" is always included in front of the text, so you need to enter the conditional
+phrase ("when...", "any time...") only.
+
+Once you've entered all the conditions you need, save the file and restart Anathema. They'll automatically be used for all existing and newly created characters.
+
+\subsection{Creating New Natures}
+The first step to creating new natures is to create a new file "natures.xml" in the subdirectory "data", then editing the content of this file. The nature file must begin with a root element \texttt{<naturelist>} and then specify any number of
+nature entries, before ending with a final \texttt{</naturelist>}.
+
+Each nature entry consists of a single line announcing the new nature's ID to the program, and looks like this:
+\texttt{<nature id="[Insert ID]" />}
+
+This file is read during the Anathema launch process and it's contents are added to the
+nature list. 
+
+\paragraph{Example:} A very simple natures.xml file could look like this:\\
+\texttt{<naturelist>\\
+	<nature id="Customizer" />\\
+</naturelist>}
+
+However, newly created natures show as "\#\#Nature.[ID].Name\#\#" in the character concept screen. You will have to tell the program what to put in its place, and attach a willpower recovery condition.
+
+To this end, open "custom.properties" and add the recovery conditions as before. Additionally, you will want to tell the program what the new nature is called - just one more line per nature, giving \texttt{Nature.[Insert ID].Name} as the key and the nature's actual name as its value.
+
+\paragraph{Example:} For our example nature, these lines could read:\\
+\texttt{Nature.Customizer.Name=Customizer\\
+Nature.Customizer.Text=when using variations of pre-defined patterns.}

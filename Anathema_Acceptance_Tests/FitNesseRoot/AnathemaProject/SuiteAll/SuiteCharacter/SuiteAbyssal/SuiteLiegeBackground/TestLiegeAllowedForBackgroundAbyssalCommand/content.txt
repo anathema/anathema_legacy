@@ -1,0 +1,9 @@
+!include SnippetSetLiegeToThree
+
+!3 Abyssal Command To Value 4
+
+!|Set Background|
+|trait type|value|
+|AbyssalCommand|4|
+
+!include SnippetCheckTwoLiegePointsSpent

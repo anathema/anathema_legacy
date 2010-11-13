@@ -1,0 +1,47 @@
+D: Ho provato ad eseguire Anathema su un Mac, ma non parte.
+R: (Grazie a Nadine)
+Mac supporta Java 5 su Tiger( Mac OS 10.4)
+C'è un pacchetto addizionale sul sito apple:
+http://www.apple.com/support/downloads/java2se50release1.html.
+Per eseguire correttamente Anathema hai bisogno di impostare
+per Default tale versione di Java.
+Il tool per impostare tale valore lo trovate in:
+/Applications/Utilities/Java/J2SE 5.0
+Fatto ciò, potete scaricare ed eseguire il .dmg prelevato dal sito
+
+D: Ricevo un messaggio "Could not find the main class. Program will exit"
+D: Eseguendo Anathema dalla console ricevo questo messaggio:
+"Exception in thread "main" java.lang.UnsupportedClassVersionError: net/sf/anathema/Anathema (Unsupported major.minor version 49.0)"
+R: Molto probabilmente stai utilizzando una vecchia versione di Java che
+non supporta alcune funzioni avanzate introdotte con Java 6.0.
+Puoi sempre aggiornare Java all'ultima versione andando sul sito:
+http://java.sun.com and download
+
+D: Come faccio a determinare quale versione di Java ho o come faccio ad eseguirlo?
+R: Fai riferimento alla Guida all'Installazione di Anatema disponibile sul sito
+
+D: Ok, so di avere bisogno della JRE 6.0. Dove la prendo?
+R: Puoi fare in questo modo:
+- Andare sul sito http://java.sun.com
+- Cliccare su "Java SE" nella sezione "Popular Downloads" in alto a destra
+- Nella pagina successiva, "Java Runtime Evironment (JRE) 6". Cliccare "Download"
+- Seguire le istruzioni a video fino al completamento dell'operazione
+
+D: I personaggi salvati sono compatibili tra le diverse versioni di Anathema?
+R: Si. Normalmente è così. Se per qualsiasi ragione non dovessero essere compatibili, contattaci immediatamente.
+
+D: Quali permessi sono necessari per avviare Anathema su Linux?
+R: (Grazie a Shattercrack)
+cambiare i permessi con chmod 755
+ed indicare la cartella "repository" come parametro alla quale vuoi cambiare i permessi.
+Se vuoi usare la cartella di default, come parametro del comando chmod indica la cartella dentro Anathema.
+Attenzione, alcuni ambienti Linux per il cambio di permessi richiedono l'esecuzione del chmod come "root" o "super user"
+Puoi eseguire il comando come "root" o "super user" grazie al comando "su" o "sudo"
+
+D: Anathema non viene eseguito correttamente sul mio Linux con Compiz-3D-Desktop.
+R: (Grazie a pippo_jedi, utilizzando "bash")
+$export AWT_TOOLKIT=MToolkit
+Ora, aggiungi:
+AWT_TOOLKIT=MToolkit
+export AWT_TOOLKIT
+Nel profilo "~/.bash_profile" nella home directory. 

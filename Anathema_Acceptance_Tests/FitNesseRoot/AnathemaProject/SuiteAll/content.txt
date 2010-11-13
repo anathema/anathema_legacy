@@ -1,0 +1,40 @@
+!contents
+----
+
+!*> Classpath
+!path build/classes
+!path ../Thirdparty/Testing/fitnesse.jar
+!path ../Campaign/build/classes
+!path ../Character_Main/build/classes
+!path ../Character_Main_Impl/build/classes
+!path ../Character_Generic/build/classes
+!path ../Character_Generic_Impl/build/classes
+!path ../Character_Generic_Framework/build/classes
+!path ../Character_Library/build/classes
+!path ../Character_Abyssal/build/classes
+!path ../Character_Db/build/classes
+!path ../Character_Equipment/build/classes
+!path ../Character_Equipment_Impl/build/classes
+!path ../Character_Intimacies/build/classes
+!path ../Character_Lunar/build/classes
+!path ../Character_MartialArts/build/classes
+!path ../Character_Mortal/build/classes
+!path ../Character_Reporting/build/classes
+!path ../Character_Solar/build/classes
+!path ../Character_Sidereal/build/classes
+!path ../Character_MeritsFlaws/build/classes
+!path ../Charm_Tree/build/classes
+!path ../Charm_Cascades/build/classes
+!path ../Development_Test_Character/build/classes
+!path ../Platform/build/classes
+!path ../Platform_SvgTree/build/classes
+!path ../Lib/build/classes
+!path ../Lib_Gui/build/classes
+!path ../Lib_Workflow/build/classes
+!path ../Thirdparty/Database/db4o-6.0-java5.jar
+!path ../Thirdparty/XML/dom4j-1.5.jar
+!path ../Thirdparty/Reporting/jasperreports-0.6.2.jar
+!path ../Thirdparty/Reporting/itext-1.4.jar
+!path ../Thirdparty/disy/disy-commons-core.jar
+!path ../Thirdparty/disy/disy-commons-swing.jar
+*!

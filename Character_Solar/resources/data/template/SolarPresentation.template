@@ -1,0 +1,4 @@
+<presentation>
+  <color red="255" green="215" blue="0" />
+  <charmPresentation uses="template/SolarCharmPresentation.template"/>
+</presentation>

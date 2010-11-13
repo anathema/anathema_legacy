@@ -1,0 +1,49 @@
+!3 Setting the Caste
+
+Set the caste Secrets...
+
+!|Set Concept|
+|caste|
+|Secrets|
+
+... and check on the abilities:
+
+!3 Caste ablilities
+
+!|Check Abilities|
+|Trait Type|isCaste?|
+|Investigation|true|
+|Larceny|true|
+|Lore|true|
+|Occult|true|
+|Stealth|true|
+
+!3 New Minimum Ablilities
+
+Check their initial state.
+
+!|Check Abilities|
+|Trait Type|value?|
+|Awareness|3|
+|Investigation|3|
+|Larceny|3|
+|Socialize|2|
+|Stealth|3|
+
+Check that the new minimum abilities may not be lowered any more.
+
+!|Set Abilities|
+|Trait Type|value|
+|Awareness|2|
+|Investigation|2|
+|Larceny|2|
+|Socialize|1|
+|Stealth|2|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Awareness|3|
+|Investigation|3|
+|Larceny|3|
+|Socialize|2|
+|Stealth|3|

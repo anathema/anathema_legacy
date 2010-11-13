@@ -1,0 +1,50 @@
+!3 At first, Willpower should be limited to 8.
+!|Set Other Traits|
+|traitType|value|
+|Willpower|9|
+
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|8|
+
+!3 Even when virtues are raised, this limit is not broken
+!|Set Virtues|
+|traitType|value|
+|Valor|4|
+|Temperance|4|
+
+!|Set Other Traits|
+|traitType|value|
+|Willpower|9|
+
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|8|
+
+!3 Only by having the highest Virtues sum to 9 or 10 can these Willpower-values be reached
+!|Set Virtues|
+|traitType|value|
+|Valor|5|
+|Temperance|4|
+
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|9|
+
+!|Set Virtues|
+|traitType|value|
+|Valor|5|
+|Temperance|5|
+
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|10|
+
+!3 Once they're lowered, Willpower drops back to 8 and remains there.
+!|Set Virtues|
+|traitType|value|
+|Valor|2|
+
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|8|

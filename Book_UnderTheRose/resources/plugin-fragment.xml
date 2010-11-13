@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.undertherose" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="UnderTheRose" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="UnderTheRoseResources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="UnderTheRoseCharms">
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="underRose_data/night/stealth.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="underRose_data/zenith/integrity.xml" />
+          </parameter> 
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="underRose_data/air/lore.xml" />
+          </parameter> 
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="underRose_data/fire/presence.xml" />
+          </parameter> 
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="underRose_data/misc/solarHero.xml" />
+          </parameter>
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="UnderTheRoseResources">
+          <parameter id="bundle" value="UnderTheRose" />
+          <parameter id="bundle" value="Pages_UnderTheRose" />
+          <parameter id="bundle" value="Charms_UnderTheRose" />
+     </extension>
+</plugin-fragment>

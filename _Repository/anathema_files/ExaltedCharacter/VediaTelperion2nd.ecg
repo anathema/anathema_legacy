@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="VediaTelperion2nd" repositoryPrintName="Vedia Telperion (2nd)">
+  <Description>
+    <CharacterName><![CDATA[Vedia Telperion (2nd)]]></CharacterName>
+  </Description>
+  <Statistics experienced="true">
+    <Rules>
+      <RuleSet name="SecondEdition"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
+    <CharacterConcept>
+      <Caste type="Dawn"/>
+    </CharacterConcept>
+    <Essence creationValue="3" experiencedValue="4"/>
+    <Willpower creationValue="5"/>
+    <Virtues>
+      <Compassion creationValue="2"/>
+      <Conviction creationValue="2" experiencedValue="3"/>
+      <Temperance creationValue="2"/>
+      <Valor creationValue="3" experiencedValue="4"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="4"/>
+        <Dexterity creationValue="4"/>
+        <Stamina creationValue="3"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="3"/>
+        <Manipulation creationValue="4"/>
+        <Appearance creationValue="2"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="2"/>
+        <Intelligence creationValue="3"/>
+        <Wits creationValue="2"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="2" experiencedValue="5"/>
+      <MartialArts creationValue="2"/>
+      <Melee creationValue="5">
+        <Specialty creationValue="2" name="Daiklave"/>
+      </Melee>
+      <Thrown creationValue="0"/>
+      <War creationValue="4" experiencedValue="5"/>
+      <Integrity creationValue="2" experiencedValue="3" favored="true"/>
+      <Performance creationValue="3"/>
+      <Presence creationValue="1" favored="true"/>
+      <Resistance creationValue="2" favored="true"/>
+      <Survival creationValue="0"/>
+      <Craft>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Air]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Earth]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Fire]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Water]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Wood]]></traitName>
+        </subTrait>
+      </Craft>
+      <Investigation creationValue="0"/>
+      <Lore creationValue="1" experiencedValue="2"/>
+      <Medicine creationValue="2"/>
+      <Occult creationValue="0"/>
+      <Athletics creationValue="2" experiencedValue="3" favored="true"/>
+      <Awareness creationValue="0" experiencedValue="3"/>
+      <Dodge creationValue="2" experiencedValue="3"/>
+      <Larceny creationValue="0"/>
+      <Stealth creationValue="0"/>
+      <Bureaucracy creationValue="0"/>
+      <Linguistics creationValue="1" experiencedValue="2"/>
+      <Ride creationValue="2" experiencedValue="5" favored="true"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="0"/>
+    </Abilities>
+    <Backgrounds>
+      <Background creationValue="3"><![CDATA[Resources]]></Background>
+      <Background creationValue="3"><![CDATA[Artifact (Great Daiklave)]]></Background>
+      <Background creationValue="2"><![CDATA[Allies]]></Background>
+      <Background creationValue="0" experiencedValue="5"><![CDATA[Blazing Stride]]></Background>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Archery" type="Solar">
+        <Charm name="Solar.ImmaculateGoldenBow" experienceLearned="true"/>
+        <Charm name="Solar.EssenceArrowAttack" experienceLearned="true">
+          <Special>
+            <Subeffects>
+              <Subeffect id="FieryArrowAttack" creationlearned="false" experiencelearned="true"/>
+              <Subeffect id="DazzlingFlare" creationlearned="false" experiencelearned="false"/>
+              <Subeffect id="RighteousJudgementArrow" creationlearned="false" experiencelearned="false"/>
+            </Subeffects>
+          </Special>
+        </Charm>
+        <Charm name="Solar.PhantomArrowTechnique" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Melee" type="Solar">
+        <Charm name="Solar.FireandStonesStrike" experienceLearned="false"/>
+        <Charm name="Solar.HungryTigerTechnique" experienceLearned="false"/>
+        <Charm name="Solar.1stExcellency.Melee" experienceLearned="false"/>
+        <Charm name="Solar.IronRaptorTechnique" experienceLearned="true"/>
+        <Charm name="Solar.CallBlade" experienceLearned="true"/>
+        <Charm name="Solar.EssenceFlow.Melee" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Integrity" type="Solar">
+        <Charm name="Solar.Integrity-PotectingPrana" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="War" type="Solar">
+        <Charm name="Solar.Mob-DispersingRebuke" experienceLearned="false"/>
+        <Charm name="Solar.FuryIncitingPresence" experienceLearned="false"/>
+        <Charm name="Solar.Heroism-EncouragingPresence" experienceLearned="false"/>
+        <Charm name="Solar.1stExcellency.War" experienceLearned="false"/>
+        <Charm name="Solar.Rout-StemmingGesture" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Resistance" type="Solar">
+        <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
+          <Special>
+            <Categories>
+              <Category.-0 creationValue="0"/>
+              <Category.-1x2 creationValue="0"/>
+              <Category.-1-2x2 creationValue="1"/>
+            </Categories>
+          </Special>
+        </Charm>
+      </CharmGroup>
+      <CharmGroup name="Performance" type="Solar">
+        <Charm name="Solar.RespectCommandingAttitude" experienceLearned="false"/>
+      </CharmGroup>
+      <Combos>
+        <Combo experienceLearned="false">
+          <Name><![CDATA[Proling Telperion]]></Name>
+          <Charm name="Solar.FireandStonesStrike" type="Solar"/>
+          <Charm name="Solar.HungryTigerTechnique" type="Solar"/>
+          <Charm name="Solar.1stExcellency.Melee" type="Solar"/>
+        </Combo>
+      </Combos>
+    </Charms>
+    <Spells/>
+    <Experience>
+      <Entry points="96">
+        <Description><![CDATA[Bis "Protektorat Netherless"]]></Description>
+      </Entry>
+      <Entry points="5">
+        <Description><![CDATA[Protektorat Netherless]]></Description>
+      </Entry>
+      <Entry points="8">
+        <Description><![CDATA[3.6 Echoes and Mirages]]></Description>
+      </Entry>
+      <Entry points="7">
+        <Description><![CDATA[4.1 Adamant Hearts]]></Description>
+      </Entry>
+      <Entry points="15">
+        <Description><![CDATA[Downtime (Blazing Stride)]]></Description>
+      </Entry>
+      <Entry points="5">
+        <Description><![CDATA[Downtime (Essence)]]></Description>
+      </Entry>
+      <Entry points="20">
+        <Description><![CDATA[Downtime (Abilities)]]></Description>
+      </Entry>
+      <Entry points="10">
+        <Description><![CDATA[Downtime (Virtues)]]></Description>
+      </Entry>
+      <Entry points="30">
+        <Description><![CDATA[Politics in Gem]]></Description>
+      </Entry>
+    </Experience>
+    <AdditionalModels>
+      <Model templateId="Equipment">
+        <Content>
+          <item>
+            <templateId><![CDATA[Natural]]></templateId>
+            <printedStats><![CDATA[Punch]]></printedStats>
+            <printedStats><![CDATA[Kick]]></printedStats>
+            <printedStats><![CDATA[Clinch]]></printedStats>
+          </item>
+        </Content>
+      </Model>
+      <Model templateId="Specialties">
+        <Content/>
+      </Model>
+      <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
+        <Content>
+          <linguistics/>
+        </Content>
+      </Model>
+      <Model templateId="Intimacies">
+        <Content>
+          <Intimacies>
+            <Intimacy name="Amber (Compassion)" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Ehrenhaftigkeit (Conviction)" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
+            </Intimacy>
+          </Intimacies>
+        </Content>
+      </Model>
+      <Model templateId="SolarVirtueFlaw">
+        <Content>
+          <VirtueFlaw/>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

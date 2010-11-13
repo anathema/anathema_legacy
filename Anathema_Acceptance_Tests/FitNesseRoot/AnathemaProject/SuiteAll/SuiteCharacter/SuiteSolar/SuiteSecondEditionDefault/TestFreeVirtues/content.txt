@@ -1,0 +1,21 @@
+In 2nd Edition, Characters may raise their virtues up to 4 without spending BP.
+
+!3 Set a Virtue to 4
+!|Set Virtues|
+|traitType|value|
+|Compassion|4|
+
+!3 Check Bonus Points
+!|Check Bonus Points|
+|regularSpent?|
+|0|
+
+!3 Set a Virtue to 5
+!|Set Virtues|
+|traitType|value|
+|Compassion|5|
+
+!3 Check Bonus Points
+!|Check Bonus Points|
+|regularSpent?|
+|3|

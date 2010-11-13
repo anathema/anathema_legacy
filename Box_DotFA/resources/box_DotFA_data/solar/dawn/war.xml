@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../../charms.dtd">
+<!--
+
+    war.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- War -->
+     <charm id="Solar.BehemothSlayingAttitude" exalt="Solar" group="War">
+          <prerequisite>
+               <trait id="War" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.Mob-DispersingRebuke" />
+          </prerequisite>
+          <cost>
+               <essence cost="7" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Filling the Elephants' Graveyard -->
+          <charmAttribute attribute="War" visualize="true" />
+			<source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.InDoubtOfLegionsSpirit" exalt="Solar" group="War">
+          <prerequisite>
+               <trait id="War" value="6" />
+               <essence value="6" />
+               <charmReference id="Solar.BehemothSlayingAttitude" />
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="War" visualize="true" />
+			<source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
+     </charm>
+	<charm id="Solar.OneWithStrifeMethod" exalt="Solar" group="War">
+		<prerequisite>
+			<trait id="War" value="5" />
+			<essence value="4" />
+			<charmReference id="Solar.FuryIncitingPresence" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+			<willpower cost="1" />
+		</cost>
+		<duration amount="1" unit="scene" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Counterattack" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Solar.YoziFightingPrinciple" exalt="Solar" group="War">
+		<prerequisite>
+			<trait id="War" value="8" />
+			<essence value="8" />
+			<charmReference id="Solar.OneWithStrifeMethod" />
+		</prerequisite>
+		<cost>
+			<essence cost="10" />
+			<willpower cost="1" />
+		</cost>
+		<duration amount="1" unit="scene" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Solar.TheUnendingMarch" exalt="Solar" group="War">
+		<!-- NOTE:  Solar/Bureaucracy "Mirror" - Legend Lives On -->
+		<prerequisite>
+			<trait id="War" value="7" />
+			<essence value="7" />
+			<charmReference id="Solar.Heroism-EncouragingPresence" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<source source="ScrollErrata" />
+	</charm>
+</charmlist>

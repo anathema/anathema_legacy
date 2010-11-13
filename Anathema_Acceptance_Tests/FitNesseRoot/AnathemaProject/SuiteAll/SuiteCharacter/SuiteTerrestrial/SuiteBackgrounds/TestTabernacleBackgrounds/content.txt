@@ -1,0 +1,33 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateTabernacleDb
+
+!|Check Background|
+|Background Type|isAvailable?|
+|Allies|true|
+|Artifact|true|
+|Contacts|true|
+|Familiar|true|
+|Contacts|true|
+|Followers|true|
+|Influence|true|
+|Illumination|true|
+|Manse|true|
+|Mentor|true|
+|Resources|true|
+|Sorcery|true|
+|Breeding|false|
+|Command|false|
+|Connections|false|
+|Henchmen|false|
+|Reputation|false|
+
+All set as they should be. Fine. Now, let's make sure that Illumination is capped at 3, and that a randomly chosen background is not.
+
+!|Set Background|
+|traitType|value|
+|Illumination|4|
+|Singer's Mercy|5|
+
+!|Check Background|
+|Background Type|value?|
+|Illumination|3|
+|Singer's Mercy|5|

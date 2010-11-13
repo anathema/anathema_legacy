@@ -1,0 +1,7 @@
+<magicTemplate>
+	<freePicks predicate="default"/>
+	<charmTemplate martialArtsLevel="Mortal" characterType="Mortal">
+		<specialCharm id="XXX"/>
+	</charmTemplate>
+	<spellTemplate maximumSorceryCircle="XXX" maximumNecromancyCircle="YYY"/>
+</magicTemplate>		

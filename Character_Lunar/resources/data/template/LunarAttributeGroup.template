@@ -1,0 +1,17 @@
+<attributeGroups>
+  <group id="Physical" casteId="FullMoon">
+    <trait type="Strength"/>
+    <trait type="Dexterity"/>
+    <trait type="Stamina"/>
+  </group>
+  <group id="Social" casteId="ChangingMoon">
+     <trait type="Charisma"/>
+     <trait type="Manipulation"/>
+     <trait type="Appearance"/>    
+  </group>
+  <group id="Mental" casteId="NoMoon">
+    <trait type="Perception"/>
+    <trait type="Intelligence"/>
+    <trait type="Wits"/>
+  </group>  
+</attributeGroups>

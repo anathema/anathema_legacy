@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene43" repositoryPrintName="Übergabe der Armee an Kazu">
+  <Name><![CDATA[Übergabe der Armee an Kazu]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Telperion übergibt Armee gegen Willen der Generalität an Kazu
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Hypothese : Verabschiedungsding, Alles offizierige versammelt
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Alternativ: An anderen Offizier
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Oder: Kommunikationsmöglichkeit schaffen und selber führen
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Maybe: Lowkey-Abhau-Ding ohne Aufsehen zu erregen.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Bold"/>
+      <Text><![CDATA[Musik]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[:  FFT - Tutorial (Military Briefing Mix -> -26% Tempo)
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[        Vielleicht auch: The Stage is Set]]></Text>
+    </Part>
+  </Summary>
+</Scene>

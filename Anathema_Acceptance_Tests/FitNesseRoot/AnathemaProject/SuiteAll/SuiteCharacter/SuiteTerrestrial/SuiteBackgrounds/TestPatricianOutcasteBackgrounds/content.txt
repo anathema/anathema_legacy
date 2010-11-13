@@ -1,0 +1,3 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreatePatricianOutcaste
+
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SuiteBackgrounds.SnippetRealmOutcasteBackgrounds

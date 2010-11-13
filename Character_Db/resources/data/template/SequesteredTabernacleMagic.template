@@ -1,0 +1,16 @@
+<magicTemplate>
+	<freePicksPredicate defaultResponse="false">
+		<idException id="Dragon-Blooded.Ox-BodyTechnique"/>
+		<idException id="Dragon-Blooded.Walker-Among-IrisesPerception"/>
+		<idException id="Dragon-Blooded.Iris-BulbDiscourse"/>
+		<groupException id="EbonShadowStyle"/>
+		<groupException id="FallingBlossomStyle"/>
+		<groupException id="MantisStyle"/>
+		<groupException id="SnakeStyle"/>
+		<groupException id="TigerStyle"/>
+	</freePicksPredicate>
+	<charmTemplate charmType="Dragon-Blooded">
+		<martialArts rulesClass="net.sf.anathema.character.db.template.TerrestrialMartialArtsRules" level="Terrestrial" highLevel="true"/>		
+	</charmTemplate>
+	<spellTemplate maximumSorceryCircle="Terrestrial" maximumNecromancyCircle="None"/>
+</magicTemplate>

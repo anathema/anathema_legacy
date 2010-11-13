@@ -1,0 +1,56 @@
+CharacterType
+	|=>Mortal=>Thaumaturge (!)
+	|
+	|=>Dragon King	!*
+	|	|=>Modern Dragon-King
+	|	\=>Ancient Dragon-King
+	|
+	|=>Exalted	!
+	|	|=>Terrestrial=>Outcaste=>Forest Witch
+	|	|							|=>Non-Dynastic Character
+	|	|							|=>Ex-Dynast
+	|	|							|=>Ex-Immaculate
+	|	|							\=>Numen
+	|	|	
+	|	\=>Celestial
+	|		|=>Lunar=>Casteless
+	|		|=>Sidereal=>Ronin
+	|		|
+	|		|=>Alchemical	N
+	|		|=>Infernal	N
+	|		\=>Solar	T#(Twilight)
+	|			\=>Immaculate Solar
+	|
+	|=>God-Blooded	!
+	|	|=>God-Blooded
+	|	|	|=>Divine God-Blooded
+	|	|	\=>Elemental God-Blooded
+	|	|
+	|	|=>Demon-Blooded
+	|	|=>Ghost-Blooded (+)
+	|	|=>Fae Blooded
+	|	\=>Half-Caste
+	|		|=>Solar Half-Caste
+	|		|=>Abyssal Half-Caste
+	|		\=>Beastmen
+	|
+	|=>Fair Folk	!
+	|	|=>Mountain Folk
+	|	|	|=>Unenlightened
+	|	|	\=>Enlightened
+	|	|	
+	|	\=>Raksha
+	|		|=>Commoner
+	|		|=>Heroic Commoner
+	|		|=>Noble
+	|		\=>Unformed	N
+	|
+	\=>Spirits	!N
+		|=>Ghosts	+	
+		\=>"True" Spirits
+					|=>Gods
+					|=>Demons
+					\=>Elementals
+		
++: Underworld Dweller	*: Yu-Shan Dweller	T: Threshold Dweller 
+#: Caste Specialties	!: Essence User		N: Non-Playable	

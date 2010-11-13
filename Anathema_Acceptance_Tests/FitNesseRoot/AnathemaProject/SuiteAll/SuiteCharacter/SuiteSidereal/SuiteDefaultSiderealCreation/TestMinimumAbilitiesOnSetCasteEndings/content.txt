@@ -1,0 +1,49 @@
+!3 Setting the Caste
+
+Set the caste Endings...
+
+!|Set Concept|
+|caste|
+|Endings|
+
+... and check on the abilities:
+
+!3 Caste ablilities
+
+!|Check Abilities|
+|Trait Type|isCaste?|
+|Athletics|true|
+|Awareness|true|
+|Bureaucracy|true|
+|MartialArts|true|
+|Medicine|true|
+
+!3 New Minimum Ablilities
+
+Check their initial state.
+
+!|Check Abilities|
+|Trait Type|value?|
+|Athletics|2|
+|Awareness|2|
+|Dodge|3|
+|MartialArts|3|
+|Stealth|3|
+
+Check that the new minimum abilities may not be lowered any more.
+
+!|Set Abilities|
+|Trait Type|value|
+|Athletics|1|
+|Awareness|1|
+|Dodge|2|
+|MartialArts|2|
+|Stealth|2|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Athletics|2|
+|Awareness|2|
+|Dodge|3|
+|MartialArts|3|
+|Stealth|3|

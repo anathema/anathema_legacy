@@ -1,0 +1,16 @@
+!include SnippetPrepareMartialArtsSidereal
+
+Since no Martial Arts charm is learned at all, none of its trees can be learned completely.
+
+!include SnippetCheckNoCelestialTreeCompleted
+
+!3 Complete the ''Falling Blossom'' style tree
+Since 'Verse of the Martyr' is final charm in the tree, it should be complete when learning 'Verse of the Martyr'.
+
+!|Toggle Charm Learned|
+|id|
+|Dragon-Blooded.VerseMartyr|
+
+Since completing a terrestrial style is not really interesting, we will assure that no celestial style is regarded learned completely.
+
+!include SnippetCheckNoCelestialTreeCompleted

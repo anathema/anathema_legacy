@@ -1,0 +1,13 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
+
+!|Set Concept|
+|caste|
+|Zenith|
+
+!|Check Concept|
+|caste?|
+|Zenith|
+
+!|Check Abilities|
+|traitType|isCaste?|
+|Performance|true|

@@ -1,0 +1,6 @@
+dist
+build
+anathema_developer_v0.3.zip
+anathema_user_v0.3.zip
+*.zip
+Thumbs.db

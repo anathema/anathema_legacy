@@ -1,0 +1,45 @@
+!3 Check initial spendings
+
+!|Check Attribute Points|
+|getTotalDotsSpent?|
+|0|
+
+!3 Make sure no negative points are spent
+
+Set Appearance to 0.
+
+!|Set Attributes|
+|traitType|value|
+|Appearance|0|
+
+No change in point cost allowed.
+
+!|Check Attribute Points|
+|getTotalDotsSpent?|
+|0|
+
+!3 Ensure Appearance adds no negative factors
+
+Increase another attribute from the same group while appearance is still 0.
+
+!|Set Attributes|
+|traitType|value|
+|Charisma|3|
+
+2 Points should be spent: Current Value 3 - Initial Value 1.
+
+!|Check Attribute Points|
+|getTotalDotsSpent?|
+|2|
+
+!3 Ensure Appearance does not always calculate as 0
+
+!|Set Attributes|
+|traitType|value|
+|Appearance|3|
+
+4 Points should be spent: 2 for Charisma, 2 for Appearance.
+
+!|Check Attribute Points|
+|getTotalDotsSpent?|
+|4|

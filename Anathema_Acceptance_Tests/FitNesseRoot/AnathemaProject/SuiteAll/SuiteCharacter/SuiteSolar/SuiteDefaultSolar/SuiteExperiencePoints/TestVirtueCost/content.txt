@@ -1,0 +1,17 @@
+!|Set Experienced|
+
+!|Set Virtues|
+|traitType|value|
+|Valor|2|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|3|
+
+!|Set Virtues|
+|traitType|value|
+|Valor|3|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|9|

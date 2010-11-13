@@ -1,0 +1,20 @@
+Why we decided not to invite other developers
+=============================================
+I've taken the time to discuss this issue with my partner, and we've come to the decision to decline at this point. (Please don't quit now, read on for an explanation.) 
+
+The reasons for this are several: 
+Most importantly, we envision Anathema as a overall tool for keeping track of your Exalted series, not only as a character generator and management program. I've read this thread and it's predecessor, and there are many great features discussed herein (especially the "best build" calculator and the "Random Character Generator"). However, while I'd like to have most of them see the light of day and be part of Anathema (or any other Exalted toolkit), we feel that right now, they'd detriment from the overall effort, giving too much focus on CharGen and hampering the campaign management efforts. 
+This leads to a second issue: My partner, a software development professional for some years now, is very concerned about flexibility and quality standards - standards I can think I can hardly keep up with - and is devoted to agile development, planning and implementing features when it's time for them to be there, instead of front up design as it's practiced here. 
+Thus, we haven't spent much thought on (for example) the implementation of Merits and Flaws, and aren't planning to do so for some time, as it won't be of much use to have such features without having the entirety of the generation module running first, in addition to at least basic notekeeping to have a means of tracking the game effects of the less tangible M&Fs. 
+Another point is the cry for flexibility expressed: The framework we've created is highly flexible, but user-side creation of new Exalt types or houserules would need for several advanced tools worth entire projects of their own - for example, we'd need to provide an graphical SVG-Editor to create the graphical representation of the charm trees. 
+For type safety reasons, we have chosen to implement character types (and similar things, like castes) within Java instead of going the string-way proposed earlier in this thread, another point hampering the flexibility you want. 
+Given this, a commitment of even some of you to Anathema would most probably mean the end of the RPG.net effort and many cool features. (I'd rather not see "He Who Slew NetExalted" as my signature.) 
+
+There are some further remarks, though: 
+Please bear in mind that we, too, are only beginning - maybe, once basic character creation and advancement is done, we could speak of this again and have you join in for implementation of the more advanced features, if you are still interested. 
+
+Finally, as stated in my initial post, we are highly interested in cooperating with you and keep the programs as compatible as possible without violating either projects spirit. I am quite certain that a complete character generation utility and a well thought out campaign management tool are to greater advantage of the community than a jack-of-all-trades program which strives to provide every possible feature but never sees the light of day. 
+
+Please comment or correct me if I misread your intentions for the program, as JackT stated in the mean time, the vision for NetExalted isn't clearly formulated with and everything I talked about was gathered from the plethora of voices talking here. 
+
+Thanks for staying with me all the way to the last line.

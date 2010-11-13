@@ -1,0 +1,112 @@
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    midnight.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+	<!-- Midnight Ability Charms -->
+	<charm id="Abyssal.UnderworldExecutionerStance" exalt="Abyssal" group="Integrity">
+		<prerequisite>
+			<trait id="Integrity" value="5" />
+			<essence value="4" />
+			<charmReference id="Abyssal.FaithfulKillersReprieve" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Lion's Roar Recovery -->
+		<charmAttribute attribute="Native" visualize="true" />
+		<source source="ScrollErrata" />
+    </charm>
+	<charm id="Abyssal.InsidiousForbiddingCommand" exalt="Abyssal" group="Presence">
+		<prerequisite>
+			<trait id="Presence" value="5" />
+			<essence value="4" />
+			<charmReference id="Abyssal.DreadLordsDemeanor" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Simple">
+			<special speed="6" turntype="LongTick" defense="-1" />
+			</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Compulsion" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Mind-Blanking Rebuke -->
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="Social" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Abyssal.StalkingTheShadowedMind" exalt="Abyssal" group="Presence">
+		<prerequisite>
+			<trait id="Presence" value="5" />
+			<essence value="5" />
+			<charmReference id="Abyssal.SanityErodingDiatribe" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Searing After-Image Passion -->
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Abyssal.EternalOverlordOfDreadAttitude" exalt="Abyssal" group="Presence">
+		<prerequisite>
+			<trait id="Presence" value="6" />
+			<essence value="6" />
+			<charmReference id="Abyssal.BrokenHeartTriumph" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
+			<charmAttribute attribute="Compulsion" visualize="true" />
+		<charmAttribute attribute="Emotion" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Eternal Empress of Love Attitude -->
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Abyssal.FarBeyondRuin" exalt="Abyssal" group="Resistance">
+		<prerequisite>
+			<trait id="Resistance" value="6" />
+			<essence value="6" />
+			<charmReference id="Abyssal.WoundsMeanNothing" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="10" />
+		</charmtype>
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
+        <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Ruin-Abasing Shrug -->
+		<source source="ScrollErrata" />
+	</charm>
+</charmlist>

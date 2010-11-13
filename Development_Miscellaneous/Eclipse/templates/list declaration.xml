@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><templates><template context="java" deleted="false" description="GenericList" enabled="true" name="list">private final List &lt;${elementClass}&gt; ${name} = new ArrayList&lt;${elementClass}&gt; ();</template></templates>

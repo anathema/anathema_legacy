@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Book Debris from the Fallen Races Plugin" default="Build Debris from the Fallen Races">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Book_ScrollOfTheFallenRaces_Debris" />
+	<property name="module.name" value="book_scrollofthefallenraces_debris" />
+
+	<property file="plugin.directories.properties" />
+	
+	<target name="Build Debris from the Fallen Races" depends="Compile, Build JAR"/>
+</project>

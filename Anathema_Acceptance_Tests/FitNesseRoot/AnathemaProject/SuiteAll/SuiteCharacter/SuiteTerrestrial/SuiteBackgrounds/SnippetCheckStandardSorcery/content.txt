@@ -1,0 +1,41 @@
+!3 Check Sorcery 0
+
+!|Set Background|
+|traitType|value|
+|Sorcery|0|
+
+!|Check Bonus Points|
+|regularSpent?|
+|0|
+
+!3 Check Sorcery 1
+
+!|Set Background|
+|traitType|value|
+|Sorcery|1|
+
+!|Check Bonus Points|
+|regularSpent?|
+|0|
+
+
+!3 Check Sorcery 2
+
+!|Set Background|
+|traitType|value|
+|Sorcery|2|
+
+!|Check Bonus Points|
+|regularSpent?|
+|0|
+
+
+!3 Check Sorcery 3
+
+!|Set Background|
+|traitType|value|
+|Sorcery|3|
+
+!|Check Bonus Points|
+|regularSpent?|
+|0|

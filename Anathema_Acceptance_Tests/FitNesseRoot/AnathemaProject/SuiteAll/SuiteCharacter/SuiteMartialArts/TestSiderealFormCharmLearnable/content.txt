@@ -1,0 +1,15 @@
+!include SnippetPrepareMartialArtsSidereal
+
+Since no Martial Arts charm is learned at all, no Sidereal form charm may be learned.
+
+!|Check Charm|
+|id|isLearnable?|
+|Sidereal.CharcoalMarchSpidersForm|false|
+
+!include SnippetCompleteCelestialStyle
+
+Now a complete Celestial Martial Arts style is learned and therefore the Sidereal form charm is learnable.
+
+!|Check Charm|
+|id|isLearnable?|
+|Sidereal.CharcoalMarchSpidersForm|true|

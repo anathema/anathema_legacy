@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><templates><template context="java" deleted="false" description="enum field declaration" enabled="true" name="enum">public static final ${enclosing_type} ${name} = new ${enclosing_type} (${args}) {&#13;
+}</template></templates>

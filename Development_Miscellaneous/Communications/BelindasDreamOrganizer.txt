@@ -1,0 +1,33 @@
+Belinda's Dream Campaign Organiser (rough notes!) 
+
+A freeform note utility sort of the treepad/jreepad structure.
+There’s a list on the left hand side and a text window on the right. 
+You can create a main topic and then create a child of that topic into infinitum. 
+So I could make a main topic called ‘NPCs’ and sub-topics like ‘PC group’ and ‘GM City PC group’.
+A sub-topic of the PC group could be ‘Sargad the World’s Greatest Lunar’ with information about 
+that character. I could make a link to the character’s data, also stored in Anathema. 
+
+The text window would allow basic formatting (dot points) and so forth.
+It would also allow the user to embed hypertext links, in program links and images. 
+Possibly HTML based. I’d be able to click on a topic and either export that topic to PDF 
+or whatever for printing, and also have the option of when I clicked on a topic, 
+to be able to export all of that topic’s children to the output file as well. 
+You could also link to other external files as well that can launch in your browser
+of choice or system browser. 
+
+I’d like the ability to define my own categories. You could have it come with default
+categories (NPCs, Locations) for people who like a bit more structure. 
+Maybe an option to export the campaign notes to an ‘index card’ layout, for printing.
+Or you can keep it at A4 size. And you could make NPC index cards as well, including a 
+stat block that’s perhaps been dragged over from the NPC creation section. 
+
+Maybe a user data entry section where they enter stuff for custom charms, artefacts, MAs and
+these can in turn be ‘dragged over’ to the freeform campaign note section, where a small 
+statblock of the article appears, or at least is available upon printing. 
+
+Maybe the note section would allow hidden/reveal text. You could could write out a scenario
+in the editor, and ‘hide’ the GM notes and then un-hide them. This means you can store your
+player and GM notes in the same file without maintaining multiple versions, to eliminate 
+information redundancy.
+
+Added later by Lazarus: Look at http://www.geocities.com/blackwing_leader

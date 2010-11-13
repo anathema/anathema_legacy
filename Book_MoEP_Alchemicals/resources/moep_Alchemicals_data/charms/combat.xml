@@ -1,0 +1,368 @@
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    combat.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Combat Charms -->
+	<charm id="Alchemical.PistonDrivenMegatonHammer" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Strength" value="2" />
+			<essence value="2" />
+			<charmAttributeRequirement attribute="ExcellencyStrength" count="1" />
+		</prerequisite>
+		<cost>
+			<essence cost="3" text="[1m]" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Combo-Ok" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<!-- TODO:  Upgrade - Optimized Demolition Vibration (Min Essence 3 & 2 XP) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.UnstoppableImpulseEngine" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Strength" value="5" />
+			<essence value="4" />
+			<charmReference id="Alchemical.PistonDrivenMegatonHammer" />
+		</prerequisite>
+		<cost>
+			<essence cost="4" text="[2m]" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.ElectrificationOnslaughtDynamo" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Strength" value="3" />
+			<essence value="2" />
+			<charmAttributeRequirement attribute="ExcellencyStrength" count="Minimum_Number" />
+		</prerequisite>
+		<cost>
+			<essence cost="1" text="or more, [1m]" />
+		</cost>
+		<duration amount="1" unit="scene" />
+		<!-- TODO:  Coding - Can also last until discharged. -->
+		<charmtype type="Simple">
+			<special speed="3" defense="-1" />
+			<!-- TODO:  Coding - Can also be speed 6. -->
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Counterattack" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="Touch" visualize="true" />
+		<!-- TODO:  Upgrade - Conductive (Min Essence 3 & 4 XP) -->
+		<!-- TODO:  Upgrade - Godhead Bolt Emulator (Min Essence 3 & 4 XP) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.EssenceIrradiationCorona" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Strength" value="2" />
+			<essence value="3" />
+			<!-- TODO:  Coding - Can you use a selectiveCharmGroup with Excellencies? -->
+			<!--selectiveCharmGroup threshold="1">
+				<charmAttributeRequirement attribute="ExcellencyStrength" count="1" />
+				<charmAttributeRequirement attribute="ExcellencyDexterity" count="1" />
+				<charmAttributeRequirement attribute="ExcellencyStamina" count="1" />
+			</selectiveCharmGroup-->
+		</prerequisite>
+		<cost>
+			<essence cost="2" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<!-- TODO:  Upgrade - Optimized Trauma Upgrade (Min Strength 3 & 3 XP) -->
+		<!-- TODO:  Upgrade - Field Stabilization Fins (Min Strength 4 & 3 XP) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.ToroidalShockwaveCatalyst" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Strength" value="3" />
+			<essence value="2" />
+			<!-- TODO:  Coding - Can you use a selectiveCharmGroup with Excellencies? -->
+			<!--selectiveCharmGroup threshold="1">
+				<charmAttributeRequirement attribute="ExcellencyStrength" count="1" />
+				<charmAttributeRequirement attribute="ExcellencyDexterity" count="1" />
+				<charmAttributeRequirement attribute="ExcellencyStamina" count="1" />
+			</selectiveCharmGroup-->
+		</prerequisite>
+		<cost>
+			<essence cost="4" text="[1m]" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Simple">
+			<special speed="5" defense="-0" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Crippling" visualize="true" />
+		<charmAttribute attribute="Knockback" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<!-- TODO:  Upgrade - Gravitational Resonator (2 XP) -->
+		<!-- TODO:  Upgrade - Order-Asserting Pulse (Min Strength 4 , Min Essence 3 & 5 XP) -->
+		<!-- TODO:  Upgrade - Holocaustic Fury Device (Min Strength 4 & Min Essence 4)
+		<!-- TODO:  Upgrade - Mind-Battering Force Emitter (Min Charisma 4 & Min Essence 3) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.ShockAndAweCannonadeDelivery" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Strength" value="4" />
+			<essence value="3" />
+			<charmReference id="Alchemical.ToroidalShockwaveCatalyst" />
+		</prerequisite>
+		<cost>
+			<essence cost="6" />
+		</cost>
+		<duration amount="1" unit="action" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Crippling" visualize="true" />
+		<charmAttribute attribute="Knockback" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.ProtosyntheticAmmunitionReplicator" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Dexterity" value="2" />
+			<essence value="2" />
+			<charmAttributeRequirement attribute="ExcellencyDexterity" count="1" />
+		</prerequisite>
+		<cost>
+			<essence cost="Varies" text="(1m or 2m), [1m]" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<!-- TODO:  Upgrade - Artillery Synthesis System (Min Essence 4 & 4 XP) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.AimCalibratingSensors" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Perception" value="2" />
+			<essence value="2" />
+		</prerequisite>
+		<cost>
+			<essence cost="3" text="[1m]"/>
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<!-- TODO:  Upgrade - Inward Focus Refractor (Min Essence 3 & 4 XP) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.RecursiveFractalTargetingCalculations" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Dexterity" value="4" />
+			<essence value="3" />
+			<charmReference id="Alchemical.AimCalibratingSensors" />
+		</prerequisite>
+		<cost>
+			<essence cost="7" text="[1m]" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="ExtraAction" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.AllInclusiveTargetingCalculations" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Dexterity" value="5" />
+			<essence value="4" />
+			<charmReference id="Alchemical.RecursiveFractalTargetingCalculations" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" text="[2m]" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.TransmodalRapidTargetingSystem" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Dexterity" value="3" />
+			<essence value="3" />
+			<charmReference id="Alchemical.AimCalibratingSensors" />
+		</prerequisite>
+		<cost>
+			<essence cost="3" text="per target, [1m]" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="ExtraAction" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.DedicatedHarmonicTargeting" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Perception" value="3" />
+			<essence value="3" />
+		</prerequisite>
+		<cost>
+			<essence cost="3" text="[1m]" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<!-- TODO:  Upgrade - Armor-Bypassing Algorithms (Min Essence 4) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.AcceleratedResponseSystem" exalt="Alchemical" group="Combat">
+		<!-- TODO:  This constitutes two charms. -->
+		<prerequisite>
+			<trait id="Dexterity" value="3" />
+			<essence value="2" />
+			<charmAttributeRequirement attribute="ExcellencyDexterity" count="1" />
+		</prerequisite>
+		<cost>
+			<essence cost="2" text="[1m]" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="2" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Internal" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.PrecalculatedEvasionSystem" exalt="Alchemical" group="Combat">
+		<!-- TODO:  This charm requires "dodge" Alchemical.AcceleratedResponseSystem charm. -->
+		<prerequisite>
+			<trait id="Dexterity" value="4" />
+			<essence value="2" />
+			<!--charmReference id="Alchemical.AcceleratedResponseSystem.Dodge" /-->
+		</prerequisite>
+		<cost>
+			<essence cost="4" text="[1m]" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="2" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<!-- TODO:  Upgrade - Transphase Engine (Min Dexterity 5 & Min Essence 3) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.OmnisituationalEvasiveEquation" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Wits" value="6" />
+			<essence value="5" />
+			<charmReference id="Alchemical.PrecalculatedEvasionSystem" />
+		</prerequisite>
+		<cost>
+			<essence cost="0" text="[1m]" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<!-- TODO:  Upgrade - Advanced Calculation Storage (Min Wits 7 & Min Essence 6) -->
+		<!-- TODO:  Upgrade - Infinite Calculation Storage (Min Wits 9 & Min Essence 7) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.ImpenetrableRepulsorField" exalt="Alchemical" group="Combat">
+		<!-- TODO:  This charm requires "parry" Alchemical.AcceleratedResponseSystem charm. -->
+		<prerequisite>
+			<trait id="Dexterity" value="5" />
+			<essence value="3" />
+			<!--charmReference id="Alchemical.AcceleratedResponseSystem.Parry" /-->
+		</prerequisite>
+		<cost>
+			<essence cost="6" text="[1m]"/>
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="2" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<!-- TODO:  Upgrade - Overcharger Module (Min Dexterity 7 & Min Essence 5) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.CelerityEnablingModule" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Dexterity" value="4" />
+			<essence value="3" />
+			<!--selectiveCharmGroup threshold="1" />
+				<charmReference id="Alchemical.AcceleratedResponseSystem.Parry" />
+				<charmReference id="Alchemical.AcceleratedResponseSystem.Dodge" />
+			</selectiveCharmGroup-->
+		</prerequisite>
+		<cost>
+			<essence cost="5" text="or 5m & 1wp, [1m]" />
+		</cost>
+		<duration amount="1" unit="action" />
+		<!-- TODO:  Coding - Also have 1 Scene as a possible Duration. -->
+		<charmtype type="Reflexive">
+			<special primaryStep="2" />
+		</charmtype>
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
+		<charmAttribute attribute="Variable" visualize="true" />
+		<!-- TODO:  Upgrade - Thread Prioritization Unit (Min Dexterity 5 & 3 XP) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.IntegratedArsenalSystem" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Strength" value="2" />
+			<essence value="2" />
+		</prerequisite>
+		<cost>
+			<essence cost="0" text="[1m]" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<!-- TODO:  Upgrade - Refinement of Excellence (Min Essence 3 & 3 XP) -->
+		<!-- TODO:  Upgrade - Refinement of Perfection (Min Essence 3 & 2 XP) -->
+		<!-- TODO:  Upgrade - Material Synthesis Wave Emitter (Min Essence 3 & 3 XP) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Alchemical.ChemicalFogGenerator" exalt="Alchemical" group="Combat">
+		<prerequisite>
+			<trait id="Stamina" value="3" />
+			<essence value="2" />
+		</prerequisite>
+		<cost>
+			<essence cost="1" text="or more, [1m]"/>
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="2" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="Poison" visualize="true" />
+		<charmAttribute attribute="Stackable" visualize="true" />
+		<!-- TODO:  Upgrade - Tear Gas -->
+		<!-- TODO:  Upgrade - Clandestine Toxin System (Min Manipulation 3) -->
+		<!-- TODO:  Upgrade - Vectored Toxin Deployment (Min Strength 3 & Min Essence 3) -->
+		<!-- TODO:  Upgrade - Nerve Gas (Min Essence 4) -->
+		<source source="Alchemicals2nd" />
+	</charm>
+</charmlist>

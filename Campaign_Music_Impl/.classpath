@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Campaign_Music"/>
+	<classpathentry kind="lib" path="/Thirdparty/Multimedia/basicplayer2.3.jar" sourcepath="/Thirdparty/Multimedia/BasicPlayer-2.3-src.zip"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="lib" path="/Thirdparty/Development/jl1.0.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-logging-api.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Multimedia/javalayer.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Platform_Database"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

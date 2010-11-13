@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Episode repositoryId="Episode17" repositoryPrintName="Telperion Sandkasten">
+  <Name><![CDATA[Telperion Sandkasten]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA["Spiel" mit allen 6 Maps of Azure Victory]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Spiel: Solars gegeneinander, jeder einen Chariot of Aerial Conquest, eine Map, einen Warstrider und eine Legion
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Regel: keine Performance-Charms, keine Map außerhalb des Chariot
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Gebiet abgesteckt]]></Text>
+    </Part>
+  </Summary>
+</Episode>

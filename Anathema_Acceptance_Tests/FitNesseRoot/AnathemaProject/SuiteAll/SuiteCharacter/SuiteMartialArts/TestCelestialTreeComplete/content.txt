@@ -1,0 +1,18 @@
+!include SnippetPrepareMartialArtsSidereal
+
+Since no Martial Arts charm is learned at all, none of its trees can be learned completely.
+
+!include SnippetCheckNoCelestialTreeCompleted
+
+!include SnippetCompleteCelestialStyle
+
+!3 Forget a charm of the Snake Style Tree
+Forget about 'Essence Vemom Strike' again...
+
+!|Toggle Charm Learned|
+|id|
+|Solar.EssenceVenomStrike|
+
+... and there must be no longer a martial arts tree known completely.
+
+!include SnippetCheckNoCelestialTreeCompleted

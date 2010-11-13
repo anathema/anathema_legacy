@@ -1,0 +1,12 @@
+!3 Magic Using Mortals
+
+Mortals never have any personal pool. But if they ever become essence users their periphal
+pool calculates [Essence + Willpower + Conviction + (highest Virtue x 2)].
+
+!|CheckEssenceTemplate|
+|willpower|compassion|conviction|temperance|valor|essence|peripheralPool?|personalPool?|
+|5|2|3|2|1|1|15|0|
+|5|3|2|2|1|1|14|0|
+|5|3|2|2|1|2|15|0|
+|6|3|2|2|1|2|16|0|
+|6|4|2|2|1|2|18|0|

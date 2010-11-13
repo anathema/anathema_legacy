@@ -1,0 +1,40 @@
+!include SnippetNoCreationMeritsFlawsLearned
+!include SnippetNoExperiencedMeritsFlawsLearned
+
+!3 Learn a Merit
+!|Learn Merits Flaws|
+|id|category|type|value|
+|Ambidextrous|Physical|Merit|2|
+
+!|Check Merits Flaws|
+|meritsFlawsSelected?|getBonusPointsSpent?|getBonusPointsGranted?|
+|1|2|0|
+
+!3 Learn a Flaw
+!|Learn Merits Flaws|
+|id|category|type|value|
+|Amputee|Physical|Flaw|4|
+
+!|Check Merits Flaws|
+|meritsFlawsSelected?|getBonusPointsSpent?|getBonusPointsGranted?|
+|2|2|4|
+
+!include SnippetSetExperienced
+
+!3 Unlearn the Merit
+!|Unlearn Creation Active Merits Flaws|
+|id|category|type|value|
+|Ambidextrous|Physical|Merit|2|
+
+!|Check Merits Flaws|
+|meritsFlawsSelected?|getExperienceActiveMeritsFlaws?|getExperiencePointsSpent?|getExperiencePointsGained?|
+|2|1|0|4|
+
+!3 Unlearn the Flaw
+!|Unlearn Creation Active Merits Flaws|
+|id|category|type|value|
+|Amputee|Physical|Flaw|4|
+
+!|Check Merits Flaws|
+|meritsFlawsSelected?|getExperienceActiveMeritsFlaws?|getExperiencePointsSpent?|getExperiencePointsGained?|
+|2|0|8|4|

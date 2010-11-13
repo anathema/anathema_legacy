@@ -1,0 +1,49 @@
+Dreaming Pearl Courtesan Martial Arts can only be mastered by Solars and Moonshadow Abyssals.
+Moonshadow Abyssals might prove problematic, so we test it.
+
+A default Abysssal is already created.
+
+!3 Ensure the pinnacle Charm of Dream Pearl Courtesan Style is not learnable
+
+!|Check Charm|
+|id|isLearnable?|
+|Solar.InvokingChimera'sCoils|false|
+
+!3 Set Caste to Moonshadow
+
+!|Set Concept|
+|caste|
+|Moonshadow|
+
+!3 Set Prerequisites
+
+!|Set Abilities|
+|traitType|value|
+|Socialize|5|
+|MartialArts|5|
+
+!|Set Other Traits|
+|traitType|value|
+|Essence|4|
+
+!3 Learn the Prerequisite Solar Socialize Charms
+
+!|Toggle Extrinsic Charm Learned|
+|charactertype|charmId|
+|Solar|Solar.KnowingSoul'sPrice|
+
+!3 Ensure the Charm is learnable
+
+!|Check Charm|
+|id|isLearnable?|
+|Solar.InvokingChimera'sCoils|true|
+
+!3 Learn the pinnacle Charm of Dream Pearl Courtesan Style
+
+!|Toggle Charm Learned|
+|id|
+|Solar.InvokingChimera'sCoils|
+
+!|Check Charm|
+|id|isLearned?|
+|Solar.InvokingChimera'sCoils|true|

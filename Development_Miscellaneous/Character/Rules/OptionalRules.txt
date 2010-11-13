@@ -1,0 +1,8 @@
+Optional Rules to implement
+
+- 1 Favored Ability for Heroic Mortals
+- More than 3 Specialties per Ability (3 specialties with 3 dots / unlimited specialties with 3 dots)
+- Virtues up to 10 / unlimited, once 8 is broken.
+- No Background-restrictions for Mortals
+- Transform Mortals to Exalted
+- Build Characters from Experience Points

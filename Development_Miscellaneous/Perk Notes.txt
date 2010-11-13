@@ -1,0 +1,105 @@
+This is a list of the basic merits and flaws from the player's guide.
+At the very end is a list that identifies the various specialties a perk can have. 
+
+Extra Rules (M/Fs that are already entered, but deserve special treatment)
+===========
+Pain Tolerance: Mark on sheet, does not add with abyssal charm
+Large Size: Extra Health Levels
+Small: Lose Health Levels
+Jack Of All Trades: Suffer no dice pool penalty when ability not known.
+Heir Apparent: Convert Point Value to Background Points
+Luck: Indicate luck pool = Rating? (+2 for Sidereals?)
+Sun-Seared: Physical /or/ Supernatural for Abyssals, Ghosts
+Amputee: Allow to indicate which body parts are gone
+
+Enter stuff
+===========
+Unusual Appearance: Enter special trait 
+Enemy/Rival: Name a rival
+Disciple: Name disciple
+Secrets: Name secret
+Heirloom: Pick an object
+Legendary Artifact: Enter an N/A Artifact
+Wanted: Name a crime
+Driving Passion: Enter a goal 
+True Love: Enter a person 
+Favor: Enter debtor / holder. Merit or Flaw.
+Eternal Vow: Enter Person. Lunars too. Merit or Flaw.
+Addiction: Pick a substance
+Superstition: Name condition 
+Amnesia: Name the forgotten things. 
+Special Resistance (Special): Enter Poison Name
+Climate Sensitive: Enter Climate Condition
+Priest: Enter a God or Religion. 
+Sworn Brotherhood: Name sworn brothers
+
+Unimplemented sorted by specialty
+===================
+
+Sense-Dependent
+===
+Acute Sense: Pick a sense, Can Buy Multiple, Cost 1 or 3
+Special Sense: Pick sense, name expanded effect. 2 points per expansion
+Diminished Sense: Pick a Sense
+Eidetic Recall: Pick one or more senses, pay 1 to 5 points each.
+
+Multiples, may other special
+===
+Signature Style: Enter a stunt specialty. May be purchased thrice
+Alternative Divination: Enter a Method per point. May not spend more points than Occult.
+Special Resistance (General): Pick "Poison" or "Disease" or both, may invest up to 5 points in each
+Derangement: Name Derangement. Multiple picks bring 1 bp beyond first.
+
+Dependent on core trait
+===
+Cache: 1-9 Points, must have resources 4 or salary 2
+Hidden Manse: Must have Manse BG
+Innocuous: Must have Appearance 2 for 2 point version
+	Not for Sidereals
+Damaged Artifact: Pick an Artifact. Rating may not exceed min(Art. Rating, Points spent to get)
+Debt: Enter Bedepted. Rating (1..5) must be greater than Resources.
+Throwback:Pick a second nature. Overrides original nature, if Essence > Willpower. Celestials Only.
+Greater Curse: Reduce Limit Break Count. Celestials only 1..5
+Death Taint: Abyssal 4 - 10/ permanent resonance. ghosts too. Ghosts may purchase Background: Whispers
+Known Anathema: Not greater than "Influence" or other fame granting background. 1..5. Celestials Only.
+
+Need special rules implemented to be of use:
+========================
+Weak Essence: Magical Beings (except Dragon-Kings) only. Start at Essence 1. May withhold 5 charm picks
+Beacon of Power: Only one Essence Pool. Exalted Only.
+Brigids Heir: Cost for Charms (except Ox Body & Sorcery related), Halve for Spells. Reduced cost for twilight.
+	Only for those who can learn sorcery
+Legendary Breeding: DB Only. Must have Breeding 5.
+Unskilled: Forfeit ability dots. May not buy ability dots with bonus points
+Callous: Forfeit Virtue Dots
+Diminished Attributes: Forfeit Attribute Points
+True Paragon: Paragon Nature only. Allows a Virtue to reach 6.
+Weak-Willed: Limits to Willpower for Exalted
+Virtue Specialty: Pick a Virtue, enter a specialty. Up to three per virtue. 2 points per specialty.
+Vice:Pick Virtue, Name the Vice
+Legendary Attribute: Pick an Attribute, increases max rating by one, cost 5, 3 for Exalts
+Disfigured: Limits Appearance
+Mutation: Pick a Wyld Mutation, both merit and flaw
+Prodigy: Cost given in text and title differ.
+	Pick an additional favored ability, up to 5 all rules apply.
+	/or/ enhance one favored ability already present similiar to Cult o.t. Illuminated Calling
+Amnesia Hidden: Reduce all BP-costs by one
+
+
+Lunars only
+===
+Limited Forms: Lunar Only
+Chimera: Lunar Only
+
+
+Types of specialties
+=====================
+Pick a trait
+Pick an object
+Pick an id (from a set)
+Enter an id (free-form)
+Forfeit / Gain Points
+Requires trait at rating
+Limited by trait rating
+Multi Learnable
+Cost changed for charactertype / caste

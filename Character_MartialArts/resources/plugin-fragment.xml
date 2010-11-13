@@ -1,0 +1,81 @@
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.martialarts" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+	<runtime>		
+		<library id="martialArts" path="./" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="martialArtsResources" path="./" type="resources">
+			<export prefix="*"/>
+		</library>
+	</runtime>
+	<extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="MartialArtsCharms">
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="CoreRules"/>
+		<parameter id="path" value="data/Charms_MartialArts_CoreRules.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="PowerCombat"/>
+		<parameter id="path" value="data/Charms_MartialArts_PowerCombat.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_Initiation.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_SecondEdition.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_TerrestrialHero.xml"/>
+	  </parameter>	 
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_FallingBlossom.xml"/>
+	  </parameter>
+	    <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_FiveDragon.xml"/>
+	  </parameter>
+	    <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_AirDragon.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_EarthDragon.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_FireDragon.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_WaterDragon.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_WoodDragon.xml"/>
+	  </parameter>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="MartialArtsResources">
+		<!--<parameter id="bundle" value="Charms_MartialArts"/>-->
+		<parameter id="bundle" value="MartialArts"/>
+		<parameter id="bundle" value="Charms_MartialArts_Pages"/>
+		<parameter id="bundle" value="Charms_MartialArts_SecondEdition"/>
+		<parameter id="bundle" value="Charms_ElementalDragonStyles"/>
+		<parameter id="bundle" value="Pages_ElementalDragonStyles"/>
+	</extension>
+</plugin-fragment>

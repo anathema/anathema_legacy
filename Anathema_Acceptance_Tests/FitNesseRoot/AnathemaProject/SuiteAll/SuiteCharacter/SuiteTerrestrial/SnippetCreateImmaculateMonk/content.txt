@@ -1,0 +1,3 @@
+!|Create Character|
+|characterType|subtemplate|edition|
+|Dragon-Blooded|ImmaculateSubtype|FirstEdition|

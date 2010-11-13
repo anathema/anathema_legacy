@@ -1,0 +1,7 @@
+!|SetAttributes|
+|traitType|value|
+|Appearance|1|
+
+!|CheckAttributePoints|
+|primaryDotsSpent?|secondaryDotsSpent?|tertiaryDotsSpent?|
+|0|0|0|

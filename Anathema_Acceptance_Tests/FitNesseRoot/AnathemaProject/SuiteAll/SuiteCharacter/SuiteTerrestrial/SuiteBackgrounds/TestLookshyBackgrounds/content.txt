@@ -1,0 +1,3 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateLookshyNative
+
+!include SnippetCheckLookshyBackgrounds

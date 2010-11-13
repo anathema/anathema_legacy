@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Platform"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar" sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar" sourcepath="/Thirdparty/disy/disy-commons-core-src.zip"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Main"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Main_Impl"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar" sourcepath="/Thirdparty/disy/disy-commons-swing-dialog-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar" sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-smarttable.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/disy-commons-fontchooser.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/disy-commons-swing-filechooser.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/disy-commons-swing-mousecursor.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/geoapi-2.0.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-icons.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-lib.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_codec.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_core.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/jts.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-shapeexport.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Data"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Data_Impl"/>
+	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Plugin/jpf.jar" sourcepath="/JPF/source"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

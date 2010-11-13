@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../charms.dtd">
+<!--
+
+    ObsidianShardsOfInfinity.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Obsidian Shards of Infinity Style -->
+     <charm id="Sidereal.BlackShardsFallLikeIce" exalt="Solar" group="ObsidianShardsOfInfinityStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.RippleInTheSilveredGlass" exalt="Solar" group="ObsidianShardsOfInfinityStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="5" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.ReachingThroughTheMirror" exalt="Solar" group="ObsidianShardsOfInfinityStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="8" text="per target" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.ShatteringTheBalance" exalt="Solar" group="ObsidianShardsOfInfinityStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+               <charmReference id="Sidereal.BlackShardsFallLikeIce" />
+               <charmReference id="Sidereal.RippleInTheSilveredGlass" />
+               <charmReference id="Sidereal.ReachingThroughTheMirror" />
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Sickness" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.ObsidianShardsOfInfinityForm" exalt="Solar" group="ObsidianShardsOfInfinityStyle">
+          <prerequisite>
+               <!-- Prerequisite of "One complete Celestial Style" doesn't seem to be modeled in XML. -->
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Sidereal.ShatteringTheBalance" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Form" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.TheMirrorDoesNotLie" exalt="Solar" group="ObsidianShardsOfInfinityStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Sidereal.ObsidianShardsOfInfinityForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive">
+               <special primaryStep="3" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.VanishedWithinTheGlass" exalt="Solar" group="ObsidianShardsOfInfinityStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="6" />
+               <charmReference id="Sidereal.TheMirrorDoesNotLie" />
+          </prerequisite>
+          <cost>
+               <essence cost="15" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.DrawForthOneShard" exalt="Solar" group="ObsidianShardsOfInfinityStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="6" />
+               <charmReference id="Sidereal.ObsidianShardsOfInfinityForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="15" />
+               <willpower cost="1" text="+ later expenditure" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.DrawForthEveryShard" exalt="Solar" group="ObsidianShardsOfInfinityStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="6" />
+               <essence value="6" />
+               <charmReference id="Sidereal.DrawForthOneShard" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" text="per duplicate" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.EchoesOfInfinity" exalt="Solar" group="ObsidianShardsOfInfinityStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="6" />
+               <essence value="7" />
+               <charmReference id="Sidereal.VanishedWithinTheGlass" />
+               <charmReference id="Sidereal.DrawForthEveryShard" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.BreathingOnTheBlackMirror" exalt="Solar" group="ObsidianShardsOfInfinityStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="7" />
+               <essence value="7" />
+               <charmReference id="Sidereal.EchoesOfInfinity" />
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+</charmlist>

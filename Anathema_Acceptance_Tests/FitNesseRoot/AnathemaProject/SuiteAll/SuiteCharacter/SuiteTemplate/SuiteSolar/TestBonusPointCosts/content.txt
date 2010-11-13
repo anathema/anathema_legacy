@@ -1,0 +1,21 @@
+This will cover all Solar BP Costs, except for Charms, which are covered in ..AnathemaProject.SuiteAll.SuiteCharacter.SuiteSolar.SuiteDefaultSolar.TestCharmBonusPointCost
+
+!|Check Bonus Point Template|
+|getUnfavoredAttributePointCost?|getFavoredAttributePointCost?|
+|4|4|
+
+!|Check Bonus Point Template|
+|getUnfavoredAbilityPointCost?|getFavoredAbilityPointCost?|
+|2|1|
+
+!|Check Bonus Point Template|
+|getUnfavoredSpecialtyDotsPerPoint?|getFavoredSpecialtyDotsPerPoint?|
+|1|2|
+
+!|Check Bonus Point Template|
+|getLowBackgroundCost?|getHighBackgroundCost?|
+|1|2|
+
+!|Check Bonus Point Template|
+|getVirtueCost?|getWillpowerCost?|getEssenceCost?|
+|3|2|7|

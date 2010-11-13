@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Charm Cascades Plugin" default="Build Charm Cascades">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Charm_Cascades" />
+	<property name="module.name" value="charmcascades" />
+
+	<property file="plugin.directories.properties" />
+		
+	<target name="Build Charm Cascades" depends="Compile, Build JAR"/>
+</project>

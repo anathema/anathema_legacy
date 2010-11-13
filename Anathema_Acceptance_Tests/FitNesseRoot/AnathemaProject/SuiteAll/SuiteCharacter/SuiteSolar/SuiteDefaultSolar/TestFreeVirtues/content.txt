@@ -1,0 +1,21 @@
+In 1st Edition, Characters may raise their virtues up to 3without spending BP.
+
+!3 Set a Virtue to 3
+!|Set Virtues|
+|traitType|value|
+|Compassion|3|
+
+!3 Check Bonus Points
+!|Check Bonus Points|
+|regularSpent?|
+|0|
+
+!3 Set a Virtue to 4
+!|Set Virtues|
+|traitType|value|
+|Compassion|4|
+
+!3 Check Bonus Points
+!|Check Bonus Points|
+|regularSpent?|
+|3|

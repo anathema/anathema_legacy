@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="AnimalFormTestLunar1" repositoryPrintName="AnimalFormTestLunar1">
+  <Description>
+    <CharacterName><![CDATA[AnimalFormTestLunar1]]></CharacterName>
+  </Description>
+  <Statistics experienced="false">
+    <Rules>
+      <RuleSet name="PowerCombat"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Lunar</CharacterType>
+    <CharacterConcept>
+      <Nature/>
+      <Concept/>
+    </CharacterConcept>
+    <Essence creationValue="2"/>
+    <Willpower creationValue="2"/>
+    <Virtues>
+      <Compassion creationValue="1"/>
+      <Conviction creationValue="1"/>
+      <Temperance creationValue="1"/>
+      <Valor creationValue="1"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="1"/>
+        <Dexterity creationValue="1"/>
+        <Stamina creationValue="1"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="1"/>
+        <Manipulation creationValue="1"/>
+        <Appearance creationValue="1"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="1"/>
+        <Intelligence creationValue="1"/>
+        <Wits creationValue="1"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="0"/>
+      <Brawl creationValue="1"/>
+      <MartialArts creationValue="0"/>
+      <Melee creationValue="0"/>
+      <Thrown creationValue="0"/>
+      <Endurance creationValue="0"/>
+      <Performance creationValue="0"/>
+      <Presence creationValue="0"/>
+      <Resistance creationValue="0"/>
+      <Survival creationValue="2" favored="true"/>
+      <Craft creationValue="0"/>
+      <Investigation creationValue="0"/>
+      <Lore creationValue="0"/>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="0"/>
+      <Athletics creationValue="0"/>
+      <Awareness creationValue="0"/>
+      <Dodge creationValue="0"/>
+      <Larceny creationValue="0"/>
+      <Stealth creationValue="0"/>
+      <Bureaucracy creationValue="0"/>
+      <Linguistics creationValue="0"/>
+      <Ride creationValue="0"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="0"/>
+    </Abilities>
+    <Backgrounds/>
+    <Charms>
+      <Combos/>
+    </Charms>
+    <Spells/>
+    <Experience/>
+    <AdditionalModels>
+      <Model templateId="Lunar.DeadlyBeastmanTransformation.Template">
+        <Content>
+          <Beastform>
+            <BeastAttributes>
+              <Strength creationValue="1"/>
+              <Dexterity creationValue="1"/>
+              <Stamina creationValue="1"/>
+            </BeastAttributes>
+            <Gifts/>
+          </Beastform>
+        </Content>
+      </Model>
+      <Model templateId="Lunar.HeartsBlood.Template">
+        <Content>
+          <HeartsBlood>
+            <AnimalForm name="Niedliches Putzel-Animal!" animalStrength="9" animalStamina="15"/>
+          </HeartsBlood>
+        </Content>
+      </Model>
+      <Model templateId="MeritsAndFlaws">
+        <Content>
+          <meritsFlaws/>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

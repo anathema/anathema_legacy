@@ -1,0 +1,715 @@
+Anathema Version History
+(C) 2004 - 2008 by Sandra Sieroux and Urs Reupke
+(C) 2009 - 2010 by Urs Reupke, Sandra Sieroux, Scott Olson, Eric Astor, Paul Adams, & Rob Rutherford
+Exalted (C) 2001-2010 by White Wolf Publishing, Inc.
+
+http://anathema.sf.net
+===------------------------------------------------------------------------------===
+			Release 1.5.0 "Lookshy"
+===------------------------------------------------------------------------------===
+
+-- Features --
+* [2E] Updated to add Dawn Solution erratta and Ink Monkeys vols. 30-38.
+* [2E] New official charms added to package.
+* [2E] New character creation rules (for Solars and DBs) added to package.
+* [2E] Dreams of the First Age character templates for Solars and DBs added to
+       package.  Note: the Dreams of the First Age Solar templates give 2 more
+       bonus dots than the the rules do, to allow the player to place the free
+       manse and free cult dots that they automatically get.
+
+===------------------------------------------------------------------------------===
+			Release 1.4.2 "Great Forks"
+===------------------------------------------------------------------------------===
+
+-- Features --
+* [2E] Updated to add Dreams of the First Age erratta and Ink Monkeys vols. 20-22.
+* [2E] New official charms added to package.    
+
+===------------------------------------------------------------------------------===
+			Release 1.4.1 "Great Forks"
+===------------------------------------------------------------------------------===
+
+-- Features --
+* [2E] Updated to better display new Charms and errata produced since 2008.
+* [2E] New official charms added to package.    
+
+
+===------------------------------------------------------------------------------===
+			Outcaste Release III (22/03/08)
+===------------------------------------------------------------------------------===
+
+-- Bugs Fixed (Urs) --
+* Charms are learnable once more (thanks, Axel)
+
+===------------------------------------------------------------------------------===
+			Outcaste Release II (21/03/08)
+===------------------------------------------------------------------------------===
+
+Corrected prerequisites for some charms. 
+Characters knowing these charms might not load. 
+Please contact us if you encounter any problems.
+
+-- Features (Thraxis) --
+* [2E] Lookshy character templates
+
+-- Features (Urs) --
+* Background Dot XP cost is now configurable, as requested by the Binary Phantom
+
+-- Bugs Fixed (Urs) --
+* [2E] Corrected several Charm names (All found by Allan Morstein)
+* [2E] Corrected prerequisites for Soul-Enlightening Beneficience (1819750, spotted by the Astral Wanderer)
+* [2E] Snake Form no longer Combo-OK
+* [2E] Fixed a bug where a separator was missing in the Charm Viewer (found by Jontu Kontar)
+* Relaxed restrictions on timing and defense data in Charm-XML (per request of Jontu Kontar)
+* Long specialty names no longer push the dots out of the screen (found by Rahod) 
+
+===------------------------------------------------------------------------------===
+			Outcaste Release I (22/10/07)
+===------------------------------------------------------------------------------===
+
+-- Features (Onii) --
+* Support for the Black and White Treatises
+* Spells are filtered by edition. 
+
+-- Features (Urs) --
+* Support for Threshold Outcaste Dragon-Blooded.
+
+-- Bugs Fixed (Urs) --
+* [2E] Corrected Presence-requirement for Authority-Radiating Stance (thanks to Andy Day and Tybalt Broods)
+* [2E] Added translation keys for the various (Element) Charms (thank you,  Scorpio and Gareth)
+* [2E] Added Retainers background for Dynasts, Immaculates and Cheraki (thanks again, Scorpio)
+* [2E] Corrected Willpower cost for Drowning Embrace (1807106, found by Allan) 
+* [2E] Corrected comboability for Falling Star Maneuver (E Allen noticed bug 1809183)
+
+===------------------------------------------------------------------------------===
+			Release 1.3.1 "Opal Spire Revised" (21/09/07)
+===------------------------------------------------------------------------------===
+-- Features --
++ [2E] Martial Arts styles from Scroll of the Monk: Imperfect Lotus, with support from Jontu Kontar.
++ Added Pelagial, Claw Speak and High Holy Speech as per ArykAran's request.
+
+-- Usability --
+* The equipment list now appears sorted, thanks to Gareth Jenkins-Jones.
+* File selection dialogs now show the supported filetype, thanks to onii.
+
+-- Bugs Fixed --
+* [2E] DB-Excellencies on the sheet appear where they should. (1731018 and several others)
+* [1E] Items no longer cause the program to crash. (1755203)
+* [2E] Removed Eagle-Wing Style's dependency on Graceful Crane Stance.
+* [2E] Fixed an experience-calculation problem with Essence Arrow Technique (1788105, reported by the British SAS) 
+
+===------------------------------------------------------------------------------===
+			Release 1.3 "Opal Spire" (03/06/07)
+===------------------------------------------------------------------------------===
+
+-- Features --
++ [2E] More Dragon-Blooded: Immaculate Monks & Cherak.
++ [2E] Immaculate Martial Arts Styles, kindly provided by Jontu Kontar
++ [2E] On popular demand, the M-Tag now is fully supported. (Thanks to everyone discussing the issue.)
++ [2E] Allowed C-Tag for ranged weapons (Requested by uteck as per Scroll of the Monk.)
++ [2E] Brand-new Charms from Oadenol's Codex
+
+-- Usability --
++ New Language: Italian. The translation was conceived by Giovanni D'Addabbo of exalteditalia.com and 
+	created by Giovanni and Team ITA. Bits and pieces are still missing, but they will soon be done with.
+* Revised Charm controls (Thanks to Demo, Jontu and Chris.)
+* Improved accuracy of Charm rendering.
+* [2E] Generic Charms are ordered in a character-specific way.
+
+-- Bugs Fixed--
+* Printing for 1E characters and 2E mortals is back. (Bug 1705201, found by Hotep.)
+* Ox-Body Technique is /once again/ correctly restored for experienced characters (Bug 1704333 by Chris Venus.)
+* Martial Arts Charms no longer cost the "upper tier" amount. (Bugs 1689276 and 1704475, observed by Anonymous and confirmed by Etheric1.)
+
+
+===------------------------------------------------------------------------------===
+			Release 1.2 "Nexus" (17/04/07)
+===------------------------------------------------------------------------------===
+-- ATTENTION --
+[2E] Solar Exalts from previous versions knowing generic Martial Arts Charms will
+be invalid in future releases. Use this version to convert them by loading them once and saving thereafter.  
+
+-- Features --
++ [2E] Dragon-Blooded, with all the usual features - including Necromancy rules from the Black Treatise.
++ [2E] Solars with Necromancy. 
++ [2E] Falling Blossom Style from Scroll of the Monk.
++ [1E] "(Type) Exalt Ways" now supports all known valid types.
++ More spells fitted with targets
+
+-- Usability --
++ Special Charms are finally learned / unlearned on click. (Way easier than changing the cursors.)
+* [2E] Martial Arts Generics are shown as type specific, not Martial Arts Charms.
+* Charms with multiple variants are correctly unlearned when a parent Charm is unlearned.
+* About-Dialog and Repository Browser no longer show 'Cancel'-Buttons.
+* 0-Abilities are no longer printed in Character Description printout
+
+-- Bugs Fixed --
+None? I can hardly believe it.
+Kudos to Sandra, Junto and Flagg for finding some stupid mistakes of mine before they reached bug level.
+
+===------------------------------------------------------------------------------===
+			Release 1.1.1 "Patch 1" (25/02/07)
+===------------------------------------------------------------------------------===
+* Tagged equipment from version 1.0 no longer breaks the program (Bug 1657429, found by Xanatos and uteck)
+* Terrestrial aspect abilities back online (Bug 1667686)
+* Martial Arts charm cascades update when MA Ability changes
+* [1E/Core] Close combat weapons are editable
+* Prevented a possible problem with the "update view" function in equipment
+* Load buttons are now sensitive to actions taken in the repository browser (Bug 1657791, found by bartkusa)
+* Anathema starts from paths containing umlauts (Bug 1662453)
+* Changing a character's XP makes him saveable now (Found by ECR's Fragg) 
+* Spirit-Cutting Attack now combos with all abilities (Bug 1657432, found by Xanatos)
+* Wonder-Forging Genius is multi-learnable. (Found by Ashtear Hinoarashi)
+* "Open after print" now works in Windows Vista
++ Added Terrestrial Hero Style
++ Updated the first three pages of spells from White Treatise
+
+
+===------------------------------------------------------------------------------===
+			Release 1.1 "Meru" (11/02/07)
+===------------------------------------------------------------------------------===
+-- ATTENTION --
+From this version onward, Anathema requires Java 6 or later.
+
+Corrected the type of [1E] Lunar Sense-Borrowing Method and Abyssal Corruption-Sensing Scrutiny as well as 
+Dragon-Blooded Strenght of Stone Technique to Simple, which might make combos illegal. 
+Moreover, corrected prerequisites for several [1E] Lunar, Abyssal and Sidereal charms. 
+Characters knowing these charms might not load. 
+Please contact us if you encounter any problems.
+
+This version will no longer load Solars and Heroic Mortals created with with early 0.x versions. 
+Load and re-save them with v1.0 to make them work.
+
+[1E] Solar Exalts from previous versions knowing variants of Elemental Hazard-Resisting Meditation will
+be invalid in future releases. Use this version to convert them by loading them once and saving thereafter.  
+
+-- Features --
++ [1E] All character types now use 2E-Style sheets, allowing them to use equipment and so on.
+
+-- Usability --
++ "Repository Browser" to delete, copy, im- and export items from the repository
++ Toolbar with transparent icons (Proposed by Democritus)
++ The program now makes an informed guess at the standard printing error, namely the file being in use. (Requested by Peter Blake)
++ Windows Installer finally online
++ [1E] Solar "Elemental Hazard-Resisting Meditation" now uses the sub-effect interface.
+* Some twiddling with the series view
+* Fixed layout issues in music, hearts blood, linguistics views
+* Added intelligent enforcement of 1-dot-minimum for Craft subtraits.
+* "Character concept" moved to "Description" screen.
+* Cost for sorcery-type Charms now is "Varies" throughout the database.  
+
+-- Bugs Fixed --
+* Series should be loading once again (Thanks to Jontu Kontar)
+* Fixed a potential problem with series overwriting one another
+* Characters with Craft specialties now can be loaded (Discovered by ArsGlacialis)
+* Ox-Body Technique is now correctly restored for experienced characters (Report 1619249, discovered by Ash)
+* [1E/Core Rules] Rate no longer shows when dealing with close combat weapons. (Thanks ipsi)
+* [1E] Fixed two problems with Abyssal Appearance/Essence relation
+* [1E] Weapon speeds can be negative (Found by uteck)
+* [1E] Outcaste Dragon-Bloodeds' Breeding is no longer lowerable when experienced.
+* [1E] DBs exiled to Lookshy now truly purchase BGs as if they were born there.
+* [1E] DBs actually born in Lookshy have minimum Stealth 1, not 2.
+* [1E] Martial Artists from the Sequestered Tabernacle are now limited to the styles named in the book.
+* Crafts now register as a favored ability (Reported by ArsGlacialis & Peter Blake)
+* Experienced specialty values are displayed correctly after loading
+
+-- [1E] Charms Corrected (Kudos to Ricardo) --
+  Dragon-Blooded
+* Correct name for Swallows Defend the Nest
+* Correct type for Strenght of Stone Technique
+* Correct duration for Breath of Earth Trance, Strength of Stone Technique
+* Correct prerequisites for Purifying Blood Ascendancy, Pounding Surf Style, Scent-of-Crime Method,
+	Swallows Defend the Nest
+* Correct cost for Unflagging Vengeance Meditation, Breath of Earth Trance, Warlord's Convocation,
+	Auspicious First Meeting Attitude, Naked Thief Style, Instant Disguise Prana, Life-Swelling Sap Strike,
+	Dance of Flashing Swords
+
+  Lunars 
+* Correct name for Weapon-Shaping Prana, Form-Fixing Method
+* Correct prerequisites for Unspeaking Aura of Dread, Blossoming Gift of Luna, Ox-Body Technique, Wolf Endurance Method  
+* Correct type for Invulnerable Moonsilver Carapace, Sense-Borrowing Method 
+* Correct cost for Masking the Brilliant Form, Deadly Viper Strike, Mighty Bear Crush, Hyena Jaw Technique,
+     Ossific Shard Shot, Tiger Claw Swat, Eagle Eye Advantage, Form-Fixing Method, Tattoo-Cutting Wisdom, 
+     Moonsilver-Shaping Rite, Celestial Circle Sorcery
+          
+  Abyssals
+* Correct name for Bone Graft Technique, Attunement-Shattering Block
+* Correct duration for Shadow Races the Light
+* Correct type for Furious Blade, Soul-Searing Blow, Five Shadow Feint, Attunement-Shattering Block, Strength Stealing Technique,
+	Corruption-Sensing Scrutiny
+* Correct cost for Pulse of the Prey, Fetter the Beast, Wyld-Slaying Burst, Rampant Pestilence Method, Unsurpassed Plague Kiss,
+	Labyrinth Circle Necromancy
+* Correct prerequisites for Ivory Spine Attack, Bone Arsenal Method, Bone Graft Technique, Spider Pounce Technique,
+	Ghost-Warding Glyph, Exquisite Etiquette Style, Sin-Sensing Meditation
+          
+  Sidereals
+* Correct type for Smiling at the Damned, Marvelous Inclusion of Details, Systematic Understanding of Everything, Hungry Touch
+* Correct duration for Prior Warning  
+* Correct cost for One Direction Invocation, Neighborhood Relocation Scheme, Conning Chaos Technique, End Debate
+* Correct prerequisites for Destiny-Knitting Entanglement, Cash and Murder Games, Of the Shape of the World, 
+	Inevitable Pursuit, Slick Essence Replenishment
+
+===------------------------------------------------------------------------------===
+			Release 1.00 "Lap" (22/10/06)
+===------------------------------------------------------------------------------===
+-- ATTENTION --
+Characters knowing 2e "Phoenix Renewal Tactic" or 1e "(Type) Exalt Ways" are in an illegal state
+after loading (but should load nonetheless). To fix this, select those effects you learned and re-save
+your character. This might lead to problems if you try to "un-learn" the charm altogether.
+1st Edition Solar "Elemental Protection Prana" will be switched over as soon as Solars and Abyssals 
+are migrated to the new printing engine.
+Please contact us if you encounter any problems.
+
+-- Features --
++More rules supported, including:
++	Equipment
++ 	Craft
++ 	Linguistics
++ Added proper support for Charms with multiple variants.
++ Motivation now is changeable
+
+-- Usability --
++ New art through and through
++ New "New" and "Load" dialogs
++ Basic Messaging implemented, informs about the goings-on within the program.
+* Predefined "Connections"-Background available for Sidereals and Dragon-Blooded (Thanks to Ricardo)
+
+-- Miscellaneous --
++ New website
++ Some tinkering with linux shell script & Mac OS launcher
++ Supports Mac "Command" key in menu hotkeys
+
+-- Bugs Fixed --
+* Corrected charm prerequisites for 
+	"Fivefold Bulwark Stance", "Invincible Fury of the Dawn", "Mist on Water Attack"
+* Corrected min. Bureaucracy value for "Underling Invisibility Practice" (Spotted by ever-vigilant Ricardo)
+* Corrected charm type for "Heart-Brightening Presentation Style" (Same here)
+* Added two spells from Savant & Sorcerer (...)
+* Corrected cost entry for "Durability of Oak Meditation" (Bug 1578859: Thanks to ipsi, for a change) 
+* Fixed a problem with Dragon-Blooded Style-Countering Meditation (MartialArts)
+* Fixed a problem with Heart's Blood (Name had to be null for the button to go green.)
+* Corrected enablement/disablement of background-addition button (Must not be empty for button to go green.)
+
+===------------------------------------------------------------------------------===
+			Release 0.11 "Kirighast" (11/06/06)
+===------------------------------------------------------------------------------===
+-- Features --
++ Support for Exalted, Second Edition with
++	Both character types from the main rulebook.
++   All Charms from the core book as well as the first two supplements.
++   Intimacies
++ Character Description now sports a "Player" field.
++ Anathema now accepts user-defined strings. 
+	The file "custom.properties" (or a locale-specific variant) in the main directory is read at startup.
+* There have been major changes to the handling of customized natures. 
+	Refer to "nature_instructions.txt" for details.
+
+-- Reporting --
++ An all new character sheet with advanced features:
++	Combo-field prints only when combos learned
++	Prints caste-specific Anima ability: To use, define key "Sheet.AnimaPower.[CASTE/ASPECT].[EDITION]" 
++	in custom.properties (see above), where [EDITION] can either be "FirstEdition" or "SecondEdition"
++	Makes use of the as yet incomplete Equipment and Crafts models
++	Variable paper format
++ Series and Notes (finally) are printable.
+
+-- Usability --
++ CharmCascades now honor the preferred ruleset.
+* Revamped the spell selection view
+* 	View now filters illegals spells from mass-selection without throwing an exception
+*	Removed the "All Spells" filter. It was a major speedbump and we felt it to be largely useless.
+* Greatly improved speed of Charm trees.
+* Negative experience point entries are now added to "Misc. spendings" instead of reducing the XP total.
+* Changes to the magic database model allowed for
+* 	Charm durations to be translated.
+*	Page numbers to be locale-specific
+* Charm attribute requirements now use proper spanish grammar.	
+
+-- Mac OS X --
++ Hired wordman to tend to the Mac's needs.
++ As of this version there will be special archives for Macs.
+* Improved look & feel.
+* Let us know what you think and where to improve even more.
+
+-- Bugs Fixed --
+* Replaced "Periphrase" by "Periphrasis", as is due in English.
+* Fixed an error in the Linux launcher.
+* Violet Bier of Sorrows' "Conclusion Pursuing Approach" is now attributed as "Prayer Strip".
+* Power Combat's "Glorious Solar Saber" now has a mote cost of 6.
+* The DBT-Gift "Enhanced Senses" can be learned twice (Reported as Bug 1490754)
+* Fixed translations for some Necromancy-Spells
+
+-- Features Missing --
+- Experienced second edition Characters' motivation is not yet changeable
+- The main menu on Mac OS X is still called 'Anathema' instead of the usual 'File'.
+
+===------------------------------------------------------------------------------===
+			Release 0.10 Patch 1 (26/03/06)
+===------------------------------------------------------------------------------===
+
+-- Miscellaneous --
++ Added a Linux launch script (provided by the illustrious Cerebral) to the distribution.
+* Fixed calculation for Lunar attribute points.
+* Lunars are able to learn Shadowlands circle Necromancy.
+* Changed Lunars' charm selection color
+
+
+-- Reporting --
++ The character's ruleset is now included on the voidstate sheet.
+* Fixed printing, was broken for all character types but Lunars (1453475:Problem with pdf export)
+* Backgrounds are sorted alphabetically on the character sheets.
+* "Extra Action" and "Martial Arts" are two words on the character sheets.
+* Caste / Aspect names are internationalized on the character sheets.
+* Dragon-Blooded without any Backgrounds whatsoever have their Anima table filled out anyway.
+
+
+===------------------------------------------------------------------------------===
+			Release 0.10 "Juche" (19/03/06)
+===------------------------------------------------------------------------------===
+
+-- ATTENTION --
+There are two issues that might prevent your previously saved character from loading with this version:
+- The prerequisite Charms for the Dragon-Blooded Brawl Charm "Bonds of Unbreakable Ice Technique" 
+now correctly include "Riptide Method". 
+- The combo rules have been corrected and now check whether comboed Extra Action and Supplemental Charms 
+use the same Ability.
+Please contact us if you encounter any problems, we will fix your character file.
+
+-- Features --
++ Lunars are finally done, along with the usual features.
++ Backgrounds of experienced characters are now changeable. (They were in 0.9, but that was unintentional)
+	Experience cost for these changes is calculated as per the Player's Guide.
+	Some Backgrounds (Sorcery, Necromancy, Breeding) remain immutable, Savant is not lowerable.
++ Ricardo has translated the entirety of Terrestrial Charms into Spanish.
+
+-- Usability --
++ Charms are ordered by (topological) tree-order on the character sheet.
++ The character sheet now handles an unlimited number of Charms (Fixing Bug 1289209 and a RFE)
++ Spells are sorted alphabetically in spell-selection screens.
++ The combo-creation screen displays tooltips for charms.
++ Added various operations to the charm visualization screens:
++	Zoom: Mousewheel or Right-Click-and-Drag (Up to zoom out, Down to zoom in)
++	Center on location: Right-Click
++	Reset: Double-click the right mouse button.
+* Re-Built the Charm visualization system.
+* Improved behaviour of "Requirement"-Nodes in the charm trees.
+* Overview now factors in bonus points gained from flaws when coloring the total.
+
+-- Miscellaneous --
+* All Sidereal Abilities now go up to seven.
+* Mortal Abilities, on the other hand, are limited to 5 dots once more.
+* Experience point totals with 4 digits are now correctly displayed. (1000xp... wow: Bug 1429973)
+* Fixed a problem with the priorization of Attributes with Abyssal Exalted.
+* Abbreviated "Book of Bone & Ebony" to "Bone & Ebony" due to problems with the title's length.
+* Fixed the odd "jumping" in the Sidereal college view.
+* Combo rules fixed: Extra Action and Supplemental Charm must be of the same ability.
+
+-- Charms Fixed (so many they get a category of their own)-- 
+* Artful Maiming Onslaught: Charm Type is  Supplemental. (Bug Report 1421735)
+* Essence Fangs and Scales Technique: Duration  is One scene. (Bug 1430224)
+* Ebony Spur Technique: Combos with all abilities (Reported by Ricardo R.)
+* Mountain Toppling Method: Duration is One turn (Still.)
+* Tornado Offense Technique: Charm Type is Extra Action (Again.)
+* Bonds of Unbreakable Ice Technique: Prerequisite "Riptide Method" (Shame on me, Praises to Ricardo.)
+* In addition, the following Charms had typos fixed: (Guess who found them all.)
+* 	Falsehood Unearthing Attitude
+*	Sweeten-the-Tap Method
+*	Persistent Hornet Attack
+*	Sliding Glacier Grip
+*	Most Beneficent Seed of the Five Dragons
+
+
+===------------------------------------------------------------------------------===
+			Release 0.9 "Icehome" (22/10/05)
+===------------------------------------------------------------------------------===
+
+-- ATTENTION --
+The Celestial "Dream Pearl Courtesan" Martial Arts Style has been moved to the 
+general Martial Arts Cascades. This might render previously saved characters of the 
+Abyssal Moonshadow Caste invalid.
+Please contact us if you encounter any problems, we will fix your character file.
+
+-- Note --
+Please note that the "Pain Tolerance" merit does not yet factor into the character's
+total pain tolerance rating.
+
+-- Features --
++ Anathema now boasts an internal random name generator.
++ Experienced Exalts can now raise their Essence up to 7.
++ Experienced Solars and Abyssals are now able to learn Sidereal Martial Arts.
++ The rules for Terrestrial introduction into the Celestial Martial Arts are now supported.
++ Added the beginnings of an interface for Merits and Flaws.
++ Added various templates for Dragon-Blooded characters, 
+	to which Ricardo Rodriguez contributed quite a bit.
++ "Dream Pearl Courtesan" Style is now treated as regular Martial Arts.
++ Added an overview panel to the Sidereal Astrology screen.
++ Permanent pain tolerance (as per the Abyssal "Insensible Corpse Technique") 
+	now registers on the character sheet. (Dedicated to Ipsi, who did not tire of asking for it.)
+
+-- Usability --
++ Integrated the Eclipse/Moonshadow-charms into the main charm tab.
++ Added a preference-setting for the inititally selected ruleset (For Ricardo, thank you for all the help!)
++ Moved Solar Virtue Flaw to a separate tab
++ Anathema now checks whether the repository directory set is the default repository and is thus
+	able to adapt to changes of installation path.
++ You can now add single files to the music database
+- Disabled free editing of repository path
+* Reduced the amount of information in the overview - we felt it got too crowded to be of use:
+-	Removed Essence display
+-	Removed Willpower display
+-	Removed Virtue Flaw display
+
+-- Miscellaneous --
++ Added an "About" Dialog (as per RFE 1261801)
++ Added Charms from the Aspect Books
++ Added Subtle Comprehension Technique from "Outcaste", thanks to Ricardo.
++ Virtue panel now fills the entire space available.
+* Corrected name for "Feeling the Dragon's Bones"
+* Ricardo found and fixed some mistakes with Lower-Class Outcaste:
+*  The minimum abilities now behave correctly
+*  All backgrounds are available
+* Fixed a problem with removing and once again adding backgrounds, found by Ricardo
+
+===------------------------------------------------------------------------------===
+			Release 0.8.1 "Hollow" (12/09/05)
+===------------------------------------------------------------------------------===
+-- ATTENTION --
+The prerequisite Charms for the Abyssal Linguistics Charm "Ghost-Warding Glyph" now correctly include
+the Occult Charm "Corpus-Rending Blow". This might render previously saved characters invalid.
+Please contact us if you encounter any problems, we will fix your character file.
+
+-- Note --
+There was a bug-ridden release of Anathema 0.8 on the 11th of September.
+No use patching, we replaced it.
+
+-- Features --
++ New Module! The long announced music database debuts
++ Support for the Sidereal Exalted, including
++   A separate view to manage Colleges, complete with point calculation
++   All the charm prerequisites visualized and supported
++ Support for Power Combat
++ All of the "Lost Egg"-Templates from 'The Outcaste'
+
+-- Usability --
++ Created a shiny new dialog for character template selection.
++ Added progress monitors for most complex actions.
++ Character type and ruleset are displayed on the "Concept and Rules" screen.
+* Anathema now uses a simpler dialog for directory browsing.
+* Beautified the preferences dialog.
+* Unified the all three charm tree views to use a common user interface. (Adressing Features 1146114 and 1146117, both from Xanatos)
+* Anathema no longer crashes when changing traits while a charm cascade is loading
+
+-- Miscellaneous --
++ Caste marks displayed in caste selection
++ First edition of the Anathema Installation Guide released
++ Spanish Website unveiled
+- Removed the White-Wolf-style character sheet for Solar Exalted
+* Fixed prerequisite Charms for the Abyssal "Ghost-Warding Glyph". SEE RELEASE NOTES!
+* Corrected cost and type for the Solar "Iron Skin Concentration". (Thanks to ipsi's Eagle Eye Technique.)
+* With two more Necromancy and a final Sorcery-Spell, the database is now truely complete (Thanks to The_Burrito)
+* Made available the 'Reputation' background for Realm Dragon-Blooded.
+* Fixed the Essence cost for experienced Dragon-Blooded
+* Experienced Characters' Willpower is no longer reset to 8 after loading (Bug 1255007, discovered by marwin.at.email.cz)
+* Experienced Characters no longer pay XP for specialties learned at creation (Bug 1273947, found by exalted@binary-pulsar.net)
+
+===------------------------------------------------------------------------------===
+			Release 0.7 Patch 1 (11/07/05)
+===------------------------------------------------------------------------------===
+
+-- Usability --
++ Mortals and Heroic Mortals have been consolidated into a single character type
+* Results of Breeding are now correctly updated (most shaming Bug 1235133, found by Xanatos)
+* Text boxes for virtue flaws are now grayed out when disabled (Bug 1198165, long ago mentioned by Xanatos)
+* Abyssal athletics Charms are working once more (Bug 1235216, teaching never to assume - always check)
+
+===------------------------------------------------------------------------------===
+			Release 0.7 "Gem" (08/07/05)
+===------------------------------------------------------------------------------===
+
+-- Features --
++ Character-Type-Time once more: Dynastic Dragon-Blooded join us, bringing
++	A fully modelled Breeding Background
++	The charm set from the DB Core book
++	One more Voidstate-style sheet
++ Finally, the Eclipse/Moonshadow special ability is properly supported
++ Support for variable prerequisite Charms (as in Solar Endurance)
++ Added a field for 'Notes' to the character description panel
+
+-- Usability -- 
++ Added a switch to toggle whether printouts are opened directly
+* Improved the order of items in the 'New' Menu (Feature 1198880, requested by Xanatos)
+* Improved the layout in the experience view (Feature 1198166, also by Xanatos)
+* XP table now only accepts numbers (and '-') as valid point values (also part of Feature 1198166)
+* The White Wolf character sheet is working once more
+
+-- Miscellaneous --
++ Martial Arts from Player's Guide and Aspect Book: Earth are included, thanks to the tireless Ricardo Rodriguez
++ All spells officially published are included in the database (Thanks, in part, to J.B.)
++ The charm from Exalted #0 is in. (All Hail UDON.)
+* The Bonus Point costs for spell are calculated correctly once again (Bug 1221183, discovered by Eisenstein)
+* XP total now properly updates when a table row is removed
+* XP table no longer breaks if the currently edited row is removed
+
+
+===------------------------------------------------------------------------------===
+			Release 0.6 "Farhold" (12/06/05)
+===------------------------------------------------------------------------------===
+
+-- Features --
++ A brand new Character Type: Abyssal Exalted, complete with
++	Necromancy (with all the spells from the Abyssals hardback)
++	Fully effective Liege & Necromancy Backgrounds
++	Best-spend calculator for said Backgrounds
++	The complete charm set from the Abyssals fatsplat
++	All the special charms fully modeled
++	A Voidstate-style character sheet
++	Appearance-dependend Essence trait
++	Templates for both loyal and renegade Abyssals
++ A Spanish translation, brought to you by Ricardo Rodriguez
++ An option to select the program's language
++ Some minor improvements on the Solar character sheet
++ Necromancy for Solar Exalted
+
+-- Usability --
++ The "All Spells" filter in the spell selection view is now limited to allowed circles
++ Specialties are no longer printed if their value is 0
+
+-- Miscellaneous --
++ All the hot new Charms from Cult of the Illuminated
++ Specialties learned with experience are now removeable
++ Overspent experience points are marked red
+* Metal L&F should be fine again
+* Willpower now goes all the way to 10 when raised with XP (Bug 1217645, found by Eisenstein)
+* Mortal Willpower was limited to 8 by accident. This is remedied.
+
+===------------------------------------------------------------------------------===
+			Release 0.5 "Eagle's Launch" (08/05/05)
+===------------------------------------------------------------------------------===
+
+-- Features --
++ All new character sheet, modeled after the excellent Voidstate sheets (RFE 1173913)
++ Character Advancement at last, consisting of
++	Automatic calculation of your XP spendings
++	An overview of your XP awards
++ Made combos editable
++ Rebuilt the nature system, allowing for
++ 	Fully customizable natures (via ./data/natures.xml)
++	Showing the nature's willpower recovery condition
++ Plot-Element Drag and Drop now works all across the hierarchy
+
+-- Usability --
++ Type-specific Icons on main tabs
++ Wait-Cursors are displayed during prolonged actions
++ Preferences can be set in a Dialog in the Extras Menu
++ Style buttons show their current state
+* CTRL+SHIFT+Cursor now works as expected in styled text editors
+* Special characters (in XML-files) should be saved correctly
+* Swapped Magic and Advantages tab as per Xanatos' request (RFE 1192940)
+
+-- Miscellaneous --
++ Spell learn view shows the number of learned spells
++ Series plot files are only saved when changed
+* Fontsize in character overview dependent on screen resolution, not screen size (Most probably fixing Bug 1192945)
+* Fixed a wrong resource name for the overwrite warning
+* Possibly eliminated a major bug in Series saving/loading
+* Heroic Mortals are once more entitled to favored abilities
+* Essence Pool values are displayed on smaller displays (Bug 1192944, reported by Xanatos)
+
+
+===------------------------------------------------------------------------------===
+			Release 0.4 "Denandsor" (28/03/05)
+===------------------------------------------------------------------------------===
+
+-- Features --
++ All-New Series Management Module, beginning with
++	Series Plot Management
++ New item type: Notes (Feature 1150975)
++ Both featuring styled text
+
+-- Usability --
++ Changed the Tabs in the main view to a more advanced version, thus enabling
++ 	Close Buttons on the tabs
++ The print dialog now warns when overwriting files.
++ Added a "Save all" action
++ Accelerators and Mnemonics ("Shortcuts")
++ Tooltips for the more ominous buttons
+* Clarified Menu-Entries
+* Changed the "Print"-toolbar image to a more intuitive PDF-icon
+* Line breaks in descriptive texts are kept when saving characters (Feature 1150975)
+* Solar Buttons now are somewhat darker to improve visibility (Feature 1145899, requested by Argyle)
+* The main menu now has a proper "Exit" entry
+
+-- Miscellaneous -- 
++ Command line customizable repository location (Fixing Bug 1100698, initially reported by Shattercrack)
++ Added the Abyssal Hungry Ghost martial arts style to the crowd
++ uteck wrote an Anathema User's Guide, which can be read via the Documentation section on the project page (Feature 1151521, Requested by uteck himself)
++ Xanatos created an icon for Anathema, which is now included in the distribution
++ Anathema website is unveiled
+* No more scrollbars in character overview
+* "Saving" Charm Cascades is no longer possible (Bug 1150124)
+* Fixed the prerequisite Charm for Glorious Solar Plate. (Patch 1151513, submitted by ojastej)
+* Ox-Body Technique can be reduced if Endurance value is 0 (Bug 1151991, Thanks to Hilak)
+* Combo Restrictions are now properly checked (Bug 1163849) 
+
+
+===------------------------------------------------------------------------------===
+			Release 0.3 Patch 1 (23/02/05)
+===------------------------------------------------------------------------------===
+
++ Identical Specialties are included into one entry (Feature 1145091, Long time "want to", requested by Xanatos)
++ Background-Color for Martial Arts Charms in Charm Cascades
++ Tiger, Mantis & Ebon Shadow style martial arts added, completing the Solar Martial Arts cascades
++ Added all 5 Immaculate Martial Arts as well as Five-Dragon Style
+* Charm Trees are shown once again on Linux systems (Bug 1145262, Special Thanks to Lazarus)
+* Combo Boxes in Charm Cascades no longer disappear if window gets too small (Bug 1144803, Submitted by Xanatos)
+* Fixed out of memory-Bug with Charm display (Bug 1113973, spotted by Vestrial)
+* No more Nullpointer-Exception when deleting a previously entered Virtue Flaw (Bug 1144804, Xanatos again)
+* Fixed the prerequisite Charm for Accuracy Without Distance. (Bug 1145027, Thanks to anowack)
+* Windows "Thumbs.db" files no longer part of distribution, resulting in smaller download size. (Bug 1145416, Found by Xanatos)
+* Removed Character Sheet XML files from distribution, resulting in smaller size again.
+* Fixed a wrong resource name for Sidereal "Forward-Thinking Technique"
+
+
+===------------------------------------------------------------------------------===
+			Release 0.3 "Chiaroscuro" (20/02/05)
+===------------------------------------------------------------------------------===
+
++ Print basic Exalted Character Sheets to PDF
++ No more JDK required to print
++ Charm Data is displayed as tooltips (Feature 1098846)
++ Custom Cursors show the action performed on a Charm 
++ Charm Cascades: An all new Module - view Charm Trees w/o creating characters
++ 	Sidereal Charm Trees (but no characters yet)
++ 	Dragon-Blooded Charm Trees (again, no characters)
++ Solar Charm Trees, completely redone
++ Combos are adjusted automatically if component Charms are unlearned.
++ "Clear current Combo"-Button
+* Willpower for Solars is no longer limited to 8 (Bug 1105078)
+* No more width-jumping overview
+* Cleaned up screen layout
+* Typos
+
+
+===------------------------------------------------------------------------------===
+			Release 0.2 "Bluehaven" (11/01/05)
+===------------------------------------------------------------------------------===
+
++ Generate Solar Exalted, including
++ 	a fully-graphical Charm selection interface
++ 	easy-to-use Combo generation
++	Sorcery (spells from Exalted only)
++	Virtue Flaws
+* Bonus point cost for favored ability specialties is calculated correctly (Thanks to Ky'Tlan)
+* No more Nullpointer-Exception when trying to create a new Character Description (Thanks to Xanatos)
+* Fixed some typos ("Bonuspoints", "Charactername") (Xanatos)
+* Translated the German error notifications (Xanatos, again)
+* New distribution scheme with Archives for Updaters, First Timers and Developers (Feature 1087532, Suggested by Xanatos)
+
+
+===------------------------------------------------------------------------------===
+			Release 0.1 "Abalone" (28/11/04)
+===------------------------------------------------------------------------------===
++ Generate Mortals/Heroic Mortals as per Exalted page 103
++ Generate Solars as per Exalted page 104 (no Charms and Sorcery yet)
++ Generate character description
++ Print character description to PDF (requires JDK)

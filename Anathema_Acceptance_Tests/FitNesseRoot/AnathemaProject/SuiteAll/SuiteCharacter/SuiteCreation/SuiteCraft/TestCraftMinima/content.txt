@@ -1,0 +1,98 @@
+This test will ascertain the correct behaviour of craft sub-abilities in regard to the favored state: They can be lowered below the minimum value for favored abilities as long as any single one fulfills that requirement.
+
+!3 Initially, Craft is at 0 dots with no special sub-abilities learned
+
+|Check Aggregated Abilities|
+|traitType|value?|isFavored?|isCaste?|subTraits?|
+|Craft|0|false|false|1|
+
+|Check Aggregated Abilities|
+|traitType|subTrait|subTraitValue?|isSubTraitFavored?|isSubTraitCaste?|
+|Craft|Generic|0|false|false|
+
+!3 Set craft to favored. Current values raised to 1 dot.
+|Set Abilities Favored|
+|abilityType|
+|Craft|
+
+|Check Aggregated Abilities|
+|traitType|value?|isFavored?|isCaste?|
+|Craft|1|true|false|
+
+|Check Aggregated Abilities|
+|traitType|subTrait|subTraitValue?|isSubTraitFavored?|isSubTraitCaste?|
+|Craft|Generic|1|true|false|
+
+!3 Attempt to lower aggregated trait directly fails
+
+|Set Abilities|
+|traitType|value|
+|Craft|0|
+
+|Check Aggregated Abilities|
+|traitType|value?|isFavored?|isCaste?|
+|Craft|1|true|false|
+
+!3 Attempt to lower sub-trait fails
+
+|Set Abilities|
+|traitType|subTrait|value|
+|Craft|Generic|0|
+
+|Check Aggregated Abilities|
+|traitType|subTrait|subTraitValue?|isSubTraitFavored?|isSubTraitCaste?|
+|Craft|Generic|1|true|false|
+
+!3 Addition of a second sub-trait succeeds
+|Add Sub Ability|
+|abilityType|subTrait|
+|Craft|Warcraft|
+
+|Check Aggregated Abilities|
+|traitType|subTraits?|
+|Craft|2|
+
+|Check Aggregated Abilities|
+|traitType|subTrait|subTraitValue?|isSubTraitFavored?|isSubTraitCaste?|
+|Craft|Warcraft|0|true|false|
+
+!3 New subtrait's current value is set to 1
+|Set Abilities|
+|traitType|subTrait|value|
+|Craft|Warcraft|1|
+
+|Check Aggregated Abilities|
+|traitType|subTrait|subTraitValue?|isSubTraitFavored?|isSubTraitCaste?|
+|Craft|Warcraft|1|true|false|
+
+!3 Now, the original sub-trait can be lowered.
+
+|Set Abilities|
+|traitType|subTrait|value|
+|Craft|Generic|0|
+
+|Check Aggregated Abilities|
+|traitType|subTrait|subTraitValue?|isSubTraitFavored?|isSubTraitCaste?|
+|Craft|Generic|0|true|false|
+
+!3 The newly added trait, however, is frozen at 1 dot
+|Set Abilities|
+|traitType|subTrait|value|
+|Craft|Warcraft|0|
+
+|Check Aggregated Abilities|
+|traitType|subTrait|subTraitValue?|isSubTraitFavored?|isSubTraitCaste?|
+|Craft|Warcraft|1|true|false|
+
+!3 The added subtrait is removed entirely, and thus, the original trait needs to fill its role once more
+|Remove Sub Ability|
+|abilityType|subTrait|
+|Craft|Warcraft|
+
+|Check Aggregated Abilities|
+|traitType|subTraits?|
+|Craft|1|
+
+|Check Aggregated Abilities|
+|traitType|subTrait|subTraitValue?|isSubTraitFavored?|isSubTraitCaste?|
+|Craft|Generic|1|true|false|

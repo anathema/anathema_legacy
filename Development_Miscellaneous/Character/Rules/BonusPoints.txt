@@ -1,0 +1,42 @@
+SOLAR ABYSSAL
+Attribute 	4  
+Ability 	2 (1 if a Favored or Caste Ability)
+Background 	1 (2 if the Background is being raised above 3)
+Specialty 	1 (2 per 1 if in a Favored or Caste Ability)
+Virtue 		3
+Willpower 	2
+Essence 	7
+Charms 		5 (4 if in a Favored or Caste Ability)
+
+DB
+Attribute 	4  
+Ability 	2 (1 if a Favored or Caste Ability)
+Background 	1 (2 if the Background is being raised above 3)
+Specialty 	1 (2 per 1 if in a Favored or Caste Ability)
+Virtue 		3
+Willpower 	2
+Essence 	10
+Charms 		7 (5 if in a Favored or Caste Ability)
+Imma. Charm 10 (7 if in a Favored or Caste Ability) 
+
+LUNAR
+Attribute 	4 (3 if a Caste Attribute)
+Ability 	2 (1 if a Favored Ability)
+Background 	1 (2 if the Background is being raised above 3)
+Specialty 	1 (2 per 1 if in a Favored Ability)
+Virtue 		3
+Willpower 	2
+Essence 	10
+Charms 		7 (5 if in Caste Attribute)
+
+SIDEREAL
+Attribute 	4  
+Ability 	2 (1 if a Favored or Auspicious Ability)
+Background 	1 (2 if the Background is being raised above 3)
+Specialty 	1 (2 per 1 if in a Favored or Auspicious Ability)
+Virtue 		3
+Willpower 	2
+Essence 	10
+Charms 		7 (5 if in a Favored or Auspicious Ability)
+Sid-MA Charm8 (6 if in a Favored or Auspicious Ability)
+Colleges	8 (6 if in your Maidens College)

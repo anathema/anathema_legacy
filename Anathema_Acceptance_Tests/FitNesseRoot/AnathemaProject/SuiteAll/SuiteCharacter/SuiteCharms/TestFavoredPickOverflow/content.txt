@@ -1,0 +1,60 @@
+!3 Set the prerequisites
+
+!|Set Abilities|
+|traitType|value|
+|Melee|3|
+
+!|Set Abilities Favored|
+|abilityType|
+|Melee|
+
+!3 Learn the full complement of favored Charms
+
+!|Toggle Charm Learned|
+|id|
+|Solar.RetrieveFallenWeapon|
+|Solar.CallBlade|
+|Solar.GloriousSolarSaber|
+|Solar.SummoningLoyalSteel|
+|Solar.IronRaptorTechnique|
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|5|0|0|
+
+!3 Learn another favored Charm
+
+!|Toggle Charm Learned|
+|id|
+|Solar.ExcellentStrike|
+
+!3 See the Picks flow over to general points
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|5|1|0|
+
+!3 Spend the remaining general picks on favored Charms
+
+!|Toggle Charm Learned|
+|id|
+|Solar.HungryTigerTechnique|
+|Solar.FireandStonesStrike|
+|Solar.OneWeapon,TwoBlows|
+|Solar.PeonyBlossomAttack|
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|5|5|0|
+
+!3 Learn another favored Charm
+
+!|Toggle Charm Learned|
+|id|
+|Solar.DualSlayingStance|
+
+!3 See the Picks flow over to general points
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|5|5|4|

@@ -1,0 +1,139 @@
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin id="net.sf.anathema.character" version="1.03" class="net.sf.anathema.character.CharacterPlugin">
+	<requires>
+		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
+		<import plugin-id="net.sf.anathema.namegenerator"/>
+	</requires>
+	<runtime>
+		<library id="Taskpane" path="${ANATHEMA_LIB}/l2fprod-common-tasks.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikExt" path="${ANATHEMA_LIB}/batik-ext.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikGVT" path="${ANATHEMA_LIB}/batik-gvt.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikUtil" path="${ANATHEMA_LIB}/batik-util.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikBridge" path="${ANATHEMA_LIB}/batik-bridge.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikDOM" path="${ANATHEMA_LIB}/batik-dom.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikSVGDOM" path="${ANATHEMA_LIB}/batik-svg-dom.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikXML" path="${ANATHEMA_LIB}/batik-xml.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikAWT" path="${ANATHEMA_LIB}/batik-awt-util.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikParser" path="${ANATHEMA_LIB}/batik-parser.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikSwing" path="${ANATHEMA_LIB}/batik-swing.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikGUI" path="${ANATHEMA_LIB}/batik-gui-util.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikCSS" path="${ANATHEMA_LIB}/batik-css.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikScript" path="${ANATHEMA_LIB}/batik-script.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikDOM3API" path="${ANATHEMA_LIB}/xml-apis-dom3.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="core" path="./" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="resources" path="./" type="resources">
+			<export prefix="*"/>
+		</library>
+	</runtime>
+	<extension-point id="CharmList">
+		<parameter-def id="list" multiplicity="any">
+			<parameter-def id="type" multiplicity="one"/>
+			<parameter-def id="rules" multiplicity="one"/>
+			<parameter-def id="path" multiplicity="one"/>
+		</parameter-def>
+	</extension-point>	
+	<extension plugin-id="net.sf.anathema.core"	point-id="Menubar" id="Menubar">
+		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterMenu"/>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaExtensions" id="AnathemaExtensions">
+	  <parameter id="type">
+		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterGenericsExtension"/>
+		<parameter id="id" value="net.sf.anathema.character.generic.framework.ICharacterGenericsExtension"/>
+	  </parameter>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="PreferenceElements" id="PreferenceElements">
+		<parameter id="class" value="net.sf.anathema.character.impl.module.preferences.RulesetPreferenceElement"/>
+		<parameter id="class" value="net.sf.anathema.character.impl.module.preferences.PrintZeroCraftsPreferencesElement"/>
+		<parameter id="class" value="net.sf.anathema.character.impl.module.preferences.PrintZeroBackgroundsPreferencesElement"/>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="Bootjob">
+		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterPerformanceBootJob"/>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="DatabaseJob">
+		<parameter id="class" value="net.sf.anathema.character.equipment.impl.module.DatabaseConversionBootJob"/>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
+		<parameter id="type">
+			<parameter id="class" value="net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration"/>
+		</parameter>
+		<parameter id="type">
+			<parameter id="class" value="net.sf.anathema.character.equipment.impl.module.EquipmentDatabaseItemTypeConfiguration"/>
+		</parameter>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="ReportFactories" id="ReportFactories">
+		<parameter id="class" value="net.sf.anathema.character.impl.module.reporting.A4SheetReportFactory"/>
+		<parameter id="class" value="net.sf.anathema.character.impl.module.reporting.LetterSheetReportFactory"/>
+		<parameter id="class" value="net.sf.anathema.character.impl.module.reporting.TextReportFactory"/>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
+		<parameter id="bundle" value="Backgrounds"/>
+		<parameter id="bundle" value="Character"/>
+		<parameter id="bundle" value="CharacterControl"/>
+		<parameter id="bundle" value="CharacterModule"/>
+		<parameter id="bundle" value="CharacterSheet"/>
+		<parameter id="bundle" value="CharmDuration"/>
+		<parameter id="bundle" value="Charmgroups"/>
+		<parameter id="bundle" value="Charms_DragonKing"/>
+		<parameter id="bundle" value="CharmTreeView"/>
+		<parameter id="bundle" value="Craft"/>
+		<parameter id="bundle" value="Equipment"/>
+		<parameter id="bundle" value="Equipment_Database"/>
+		<parameter id="bundle" value="Health"/>
+		<parameter id="bundle" value="Intimacies"/>
+		<parameter id="bundle" value="Linguistics"/>
+		<parameter id="bundle" value="MeritsFlaws"/>
+		<parameter id="bundle" value="Natures"/>
+		<parameter id="bundle" value="Overview"/>
+		<parameter id="bundle" value="Sourcebooks"/>
+		<parameter id="bundle" value="Spells_Necromancy"/>
+		<parameter id="bundle" value="Spells_Pages"/>
+		<parameter id="bundle" value="Spells_Sorcery"/>
+		<parameter id="bundle" value="TextSheet"/>
+		<parameter id="bundle" value="Traits"/>
+		<parameter id="bundle" value="Weapons"/>
+	</extension>
+	<extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="UntypedCharms">
+	   <parameter id="list">
+		<parameter id="type" value="DragonKing"/>
+		<parameter id="rules" value="CoreRules"/>
+		<parameter id="path" value="data/Charms_DragonKing_CoreRules.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="DragonKing"/>
+		<parameter id="rules" value="PowerCombat"/>
+		<parameter id="path" value="data/Charms_DragonKing_PowerCombat.xml"/>
+	  </parameter>
+	</extension>
+</plugin>

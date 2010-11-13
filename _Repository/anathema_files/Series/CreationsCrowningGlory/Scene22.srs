@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene22" repositoryPrintName="Encountering the Enemy">
+  <Name><![CDATA[Encountering the Enemy]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Einige Tage darauf: Die drei Herrscherkinder ? Amber und Telperion in Fairschen Uniformen, verkleidet als Leibwache des Prinzen - erreichen das Lager Fethans, knapp jenseits der Grenze Fairs. Sie werden von Spähern Fethans ins Lager geführt und hier dem Archgeneral Vedia Delaron und den drei Truppenführern vorgestellt.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Emerald kann unter Zugeständnissen einen Abzug beider Armeen aushandeln... doch währenddessen wird der Bote mit dem zweiten Befehl von Fethanischen Schützen terminal aufgehalten, und im Moment, da die Friedensboten das Lager verlassen wollen, beginnt die erste Schlacht des Krieges...]]></Text>
+    </Part>
+  </Summary>
+</Scene>

@@ -1,0 +1,11 @@
+<h3>Últimas Noticias</h3>
+<p>
+	<?php include("news.cache"); ?>
+</p>
+<h3>Quiénes somos</h3>
+<p>Anathema es un grupo de programas completo acerca del juego Exaltado y que ofrece funciones básicas de generación de personajes y gestión de cruzadas (otras características más avanzadas luego serán añadidas).</p>
+<p>Anathema es un programa gratuito y de código fuente libre, licenciado bajo los términos de la Licencia Pública General (GPL).</p>
+<p>El proyecto Anathema y este sitio de web no son, en absoluto, afiliados a White Wolf Publishing, Inc.</p>
+<p>Utilice los enlaces a la izquierda para obtener más informaciones acerca de varios asuntos relacionados al programa.</p>
+
+<a href="http://www.white-wolf.com/legalize.html">Derechos de Autor White Wolf Publishing, Inc.</a>

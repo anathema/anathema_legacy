@@ -1,0 +1,9 @@
+!include SnippetSetLiegeToThree
+
+!3 Influence To Value 4
+
+!|Set Background|
+|trait type|value|
+|Influence|4|
+
+!include SnippetCheckTwoLiegePointsSpent

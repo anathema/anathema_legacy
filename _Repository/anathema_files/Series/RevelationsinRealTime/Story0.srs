@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Story repositoryId="Story0" repositoryPrintName="Intro">
+  <Name><![CDATA[Intro]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[Stichworte]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Zwei Prinzen auf überfrorenem See.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Eine Sonnenfinsternis.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Eine Gildenkarawane.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Ein Sklaventrupp, der aus Kriegern besteht.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Ein Geheimnis unter dem Eis.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Ein fliegender Wal.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Blut der Feen, im Dunkel vergossen.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Schneeglöckchen blühen als Boten des Bösen.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[Anwesende]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Ein Händlerprinz der Gilde.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[   Dessen Krieger, als Sklaven verkleidet.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[   Dessen Karawane und Bedienstete
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Ein Prinz des Fair Folk
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[   Dessen Gefolge
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[   Ein fliegendes Monster der Feen, in der Gestalt nicht unähnlich denen zur Zeit der Invasion.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[(Drei Exalts)
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[Gedanken zur Handlung
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[  Die Szene beginnt mit dem Abwenden des Gildengesandten von seinem Gegenüber, er geht hundert Meter, langsam, und brüllt einen Angriffsbefehl. Seine Krieger stürmen vor, als auf einer Klippe über dem See 5 Gestalten erscheinen: 4 sind blau scheinend, eine leuchtet Golden.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Kurze Rede von [Urs], dann springt er vom Berg herab.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Option: Er landet zwischen Fair Folk und Gilde.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Option: Er landet an der Seite des Fair Folk, den er für seinen Alliierten hält.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Option: Er landet an der Seite des Fair Folk, der seine einzige Informationsquelle ist.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Combat ensues.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[Fragen]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Italic"/>
+      <Text><![CDATA[Warum hat der Gildenprinz Krieger unter die Sklaven gemischt?]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[  Vermutung: Er will den Edlen gefangen nehmen oder töten. Warum? Zusammenhang mit dem Geheimnis im See?
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Italic"/>
+      <Text><![CDATA[Wie will der Gildengesandte den Fair Folk Noble besiegen?]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[ 
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[  Option: Es sind Exalts oder sehr starke Sterbliche unter den Kriegern. *
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[  Option: Er will ihn nicht besiegen, nur verwunden. Warum fürchtet er nicht um sein Leben?
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[  Option: Er sieht die Unsinnigkeit seiner Handlung nicht. Vielleicht ist er von Exalt oder Fair Folk verblendet?
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[  Option: Hass oder Verzweiflung/Zwang treiben ihn. Die Konsequenzen kümmern ihn nicht.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Italic"/>
+      <Text><![CDATA[Was ist unter dem Eis verborgen?]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Italic"/>
+      <Text><![CDATA[  ]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[First Age- / Shogunatsstadt? Nur ein einzelnes (gewaltiges) Artefakt? Es sollte Bedrohungspotential haben.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Italic"/>
+      <Text><![CDATA[Was wollen die Exalts?]]></Text>
+    </Part>
+  </Summary>
+</Story>

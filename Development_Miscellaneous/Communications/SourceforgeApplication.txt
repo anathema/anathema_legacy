@@ -1,0 +1,50 @@
+Anathema Sourceforge Application (22/10/04)
+===========================================
+
+The project aims to develop an exhaustive suite of management toolkits for role-playing game of  
+"Exalted", published by White Wolf Game Studio of Atlanta, Georgia.
+
+The first waypoint is a character generation- and management-tool, providing assistance to players 
+along the way, afterwards, more wide-scaped tools like (MP3-)playlist-management, notekeeping, 
+storyline/chapter outlines will follow.
+
+Although a similiar project (http://www.edexalted.com) is already widely advanced and implements many 
+of the basic features we aim for, we consider the usability of said project to be lacking and are 
+missing key features like a overarching campaign management utility to supplement basic character 
+management.
+
+The project will be implemented solely in Java, aiming for compatibility with language version 1.4 
+until language version 5.0 is widely distributed. As a component of the character generation part 
+relies on Scalable Vector Graphics, Apache Batik (xml.apache.org/batik) will be distributed with the 
+package. Persistence and Data Management rely on XML, using either DOM4J (http://www.dom4j.org/) or 
+JDOM(http://www.jdom.org) for access.  Supported OSs, obviously, will depend solely on the availability 
+of the Java Virtual Machine.
+
+[REMARK ON JAVA 5: With the advent of Eclipse 3.1 M3 we've decided to make the switch to Java 5.0
+earlier than expected, as most of the enhanced features are already available within the IDE. 
+(added 13/11/04)]
+
+[REMARK ON XML: XML-handling now is DOM4J only, to scale down the size of file releases. There's not
+much between JDOM and DOM4J in terms of features, so we decided to kick one of them. (added 13/11/04)]
+
+Main focus along the road will lie on extensibility and support for future expansions to the published 
+game line, with obstacles arising in modeling of game-related terms into language classes, while still 
+allowing support for sometimes highly specific exceptions from the usual ruleset. Another point of 
+interest is graphics and design, where we aim to provide several unique look and feels for users to 
+chose from, themed with key points of the game world. Another problem to solve is grouping and attachment
+of objects. 
+
+Features
+=======
+o Character generation for all types of characters in the game line beginning with game-related
+	 statistics and extending to several sets of annotations
+o Character management for said character-types including character advancement and modification
+o Character sheet printout in different varieties and levels of detail
+o Campaign management with abilities to link objects, including but not limited to characters,
+	playlists, annotations and images, to each other
+o Playlist management featuring the possibility to assign music and sounds to virtually every object
+	and send them to the default media player
+o Unique look and feel for each character type
+
+A preliminary version of the aforementioned SVG-Viewing component can be accessed at 
+	http://i08fs1.atis-stud.uni-karlsruhe.de/~s_reupke/CCC3Beta/ (Java Web Start Required)

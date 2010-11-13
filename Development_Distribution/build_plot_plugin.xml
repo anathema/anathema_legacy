@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Plot Plugin" default="Build Plot">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Campaign_Plot" />
+	<property name="module.name" value="plot" />
+
+	<property file="plugin.directories.properties" />
+
+	<target name="Build Plot" depends="Compile, Build JAR" />
+</project>

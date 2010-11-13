@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-comons-swing-dialog.src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/disy-commons-swing-filechooser.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-lib.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

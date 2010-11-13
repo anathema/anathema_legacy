@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Series repositoryId="GuidanceoftheStars" repositoryPrintName="Guidance of the Stars">
+  <Name><![CDATA[Guidance of the Stars]]></Name>
+  <Content/>
+  <Plot>
+    <Story repositoryId="Story0">
+      <Episode repositoryId="Episode0">
+        <Scene repositoryId="Scene0"/>
+        <Scene repositoryId="Scene1"/>
+        <Scene repositoryId="Scene3"/>
+        <Scene repositoryId="Scene4"/>
+        <Scene repositoryId="Scene5"/>
+        <Scene repositoryId="Scene6"/>
+        <Scene repositoryId="Scene7"/>
+      </Episode>
+    </Story>
+  </Plot>
+</Series>

@@ -1,0 +1,4 @@
+!3 Terrestrial Circle and No Circle
+!|Check Magic Template|
+|getMaximumSorceryCircle?|getMaximumNecromancyCircle?|
+|Terrestrial|null|

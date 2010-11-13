@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="Unnamed" repositoryPrintName="Teshar">
+  <Description>
+    <CharacterName><![CDATA[Teshar]]></CharacterName>
+    <Player><![CDATA[Chris]]></Player>
+    <PhysicalDescription><![CDATA[
+
+
+(If you?re going to do called shots to the head when people aren?t wearing helmets, let me know now and I?ll incorporate more headgear.)
+
+Merchant Prince ? LOOK AT ME!
+	Lots of gaudy jewelry and clothing, though somehow still tasteful. Royal raimant and Imperial jewelry as described on p364. Eccentricities and faked mannerisms, mercurial emotions.
+
+Adventurer ? Travelling in style
+	- Perfect Reinforced Buff Jacket: The armor plating and leather are a very dark but pleasing grey. The leather is textured and the armor engraved with matching patterns that flow seemlessly from one to the other. Such patterning is of course amazing craftsmanship and lovely to look at, but also serves to help him blend in to his surroundings. The overall look is almost black, but in bright light there seems to be a depth to the patterns. (Kind of like those stones or minerals that give the illusion of being three dimensional when you look at them closely.)
+	- Jewelry: He wears a red jade ring set with a ruby. In situations where the item may serve to identify him, he wears the ring on a chain or hides it in secure places on his person. He does have earrings, rings, necklaces, medallions, pendants, and any other sort of jewelry a man might wear. These are usually saved for disguises, but when a piece is perfect for a situation he will wear it. Quite picky and very specific with what he wants, since jewelry is in fact his business.
+	- Clothing: Underneath the armor is usually a fine cotton shirt in deep gemstone colors, black or occasionally white. Pants are also of high quality. One thing common to all of his clothing, whenever possible, is that it breathe and be comfortable. Cotton, soft linen and other luxurious materials are difficult to acquire in the South, and certainly not without lots of money. Now that he has the resources to get whatever he desires, he wastes no opportunity to do so. If he must be in disguise, so be it; he will return to his comforts soon enough.
+
+Night Stalker ? Zero identifying features
+	- Perfect Buff Jacket: Jet black and completely nonreflective. In my mind, leather armor falls into the stats for Buff Jackets, so I may try that as well.
+	- Helm: He wears a masked helmet, sometimes crafted in frightening images but usually has smooth, organic lines and is as matte black as his armor. Worst case a black scarf wrapped appropriately will do in a pinch.
+	- Hands: Gloves that match the armor and the helm and allow for maximum manual dexterity. Assuming fingerprints aren?t used in this world, he would probably have holes in the gloves for his fingertips.
+]]></PhysicalDescription>
+  </Description>
+  <Statistics experienced="true">
+    <Rules>
+      <RuleSet name="SecondEdition"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
+    <CharacterConcept>
+      <Caste type="Night"/>
+      <Motivation><![CDATA[We Are Not Monsters: Prove the Immaculate Philosophy false]]></Motivation>
+    </CharacterConcept>
+    <Essence creationValue="2"/>
+    <Willpower creationValue="5"/>
+    <Virtues>
+      <Compassion creationValue="2"/>
+      <Conviction creationValue="3"/>
+      <Temperance creationValue="2"/>
+      <Valor creationValue="2"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="2"/>
+        <Dexterity creationValue="5"/>
+        <Stamina creationValue="2"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="2"/>
+        <Manipulation creationValue="3"/>
+        <Appearance creationValue="2"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="4"/>
+        <Intelligence creationValue="3"/>
+        <Wits creationValue="4"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="0"/>
+      <MartialArts creationValue="3" favored="true">
+        <Specialty creationValue="3" name="Melee chakram"/>
+      </MartialArts>
+      <Melee creationValue="0"/>
+      <Thrown creationValue="3" favored="true"/>
+      <War creationValue="0"/>
+      <Integrity creationValue="2" favored="true"/>
+      <Performance creationValue="0"/>
+      <Presence creationValue="1"/>
+      <Resistance creationValue="1"/>
+      <Survival creationValue="1"/>
+      <Craft favored="true">
+        <subTrait creationValue="3">
+          <traitName><![CDATA[Air]]></traitName>
+          <Specialty creationValue="3" name="Shinies"/>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Earth]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Fire]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Water]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Wood]]></traitName>
+        </subTrait>
+      </Craft>
+      <Investigation creationValue="2"/>
+      <Lore creationValue="0" experiencedValue="1"/>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="0"/>
+      <Athletics creationValue="2"/>
+      <Awareness creationValue="2" experiencedValue="4"/>
+      <Dodge creationValue="4"/>
+      <Larceny creationValue="5"/>
+      <Stealth creationValue="4"/>
+      <Bureaucracy creationValue="2" favored="true"/>
+      <Linguistics creationValue="0" experiencedValue="1"/>
+      <Ride creationValue="0"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="1"/>
+    </Abilities>
+    <Backgrounds>
+      <Background creationValue="1"><![CDATA[Allies (V'neef Esela)]]></Background>
+      <Background creationValue="3"><![CDATA[Contacts]]></Background>
+      <Background creationValue="5"><![CDATA[Resources]]></Background>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Thrown" type="Solar">
+        <Charm name="Solar.Joint-WoundingAttack" experienceLearned="false"/>
+        <Charm name="Solar.1stExcellency.Thrown" experienceLearned="false"/>
+        <Charm name="Solar.Observer-DeceivingAttack" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Stealth" type="Solar">
+        <Charm name="Solar.EasilyOverlookedPresenceMethod" experienceLearned="false"/>
+        <Charm name="Solar.2ndExcellency.Stealth" experienceLearned="true"/>
+        <Charm name="Solar.MentalInvisibilityTechnique" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Resistance" type="Solar">
+        <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
+          <Special>
+            <Categories>
+              <Category.-0 creationValue="0"/>
+              <Category.-1x2 creationValue="0"/>
+              <Category.-1-2x2 creationValue="1"/>
+            </Categories>
+          </Special>
+        </Charm>
+        <Charm name="Solar.Body-MendingMeditation" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Dodge" type="Solar">
+        <Charm name="Solar.ShadowOverWater" experienceLearned="false"/>
+        <Charm name="Solar.SevenShadowEvasion" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Larceny" type="Solar">
+        <Charm name="Solar.FlawlesslyImpenetrableDisguise" experienceLearned="false"/>
+        <Charm name="Solar.2ndExcellency.Larceny" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Craft" type="Solar">
+        <Charm name="Solar.2ndExcellency.Craft" experienceLearned="false"/>
+      </CharmGroup>
+      <Combos/>
+    </Charms>
+    <Spells/>
+    <Experience>
+      <Entry points="39"/>
+    </Experience>
+    <AdditionalModels>
+      <Model templateId="SolarVirtueFlaw">
+        <Content>
+          <VirtueFlaw>
+            <RootVirtue name="Conviction"/>
+          </VirtueFlaw>
+        </Content>
+      </Model>
+      <Model templateId="Equipment">
+        <Content>
+          <item>
+            <templateId><![CDATA[Natural]]></templateId>
+            <templateId><![CDATA[Natural]]></templateId>
+            <printedStats><![CDATA[Punch]]></printedStats>
+            <printedStats><![CDATA[Kick]]></printedStats>
+            <printedStats><![CDATA[Clinch]]></printedStats>
+          </item>
+        </Content>
+      </Model>
+      <Model templateId="Specialties">
+        <Content/>
+      </Model>
+      <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
+        <Content>
+          <linguistics>
+            <language><![CDATA[Flametongue]]></language>
+            <language><![CDATA[Riverspeak]]></language>
+          </linguistics>
+        </Content>
+      </Model>
+      <Model templateId="Intimacies">
+        <Content>
+          <Intimacies>
+            <Intimacy name="V'neef Esela" complete="true">
+              <Trait creationValue="3"/>
+            </Intimacy>
+            <Intimacy name="Free from destiny" complete="true">
+              <Trait creationValue="3"/>
+            </Intimacy>
+          </Intimacies>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="VediaDelaron" repositoryPrintName="Vedia Delaron">
+  <Description>
+    <CharacterName><![CDATA[Vedia Delaron]]></CharacterName>
+    <PhysicalDescription><![CDATA[Fights with Great Sword and Reinforced Breastplate]]></PhysicalDescription>
+  </Description>
+  <Statistics experienced="true">
+    <CharacterType>Mortal</CharacterType>
+    <CharacterConcept>
+      <Nature type="Survivor"/>
+      <Concept>General-Prince</Concept>
+    </CharacterConcept>
+    <Essence creationValue="1"/>
+    <Willpower creationValue="5"/>
+    <Virtues>
+      <Compassion creationValue="2"/>
+      <Conviction creationValue="3"/>
+      <Temperance creationValue="2"/>
+      <Valor creationValue="2"/>
+    </Virtues>
+    <VirtueFlaw/>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="4"/>
+        <Dexterity creationValue="2"/>
+        <Stamina creationValue="3"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="3"/>
+        <Manipulation creationValue="2"/>
+        <Appearance creationValue="2"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="2"/>
+        <Intelligence creationValue="2"/>
+        <Wits creationValue="2"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="2"/>
+      <Athletics creationValue="1"/>
+      <Awareness creationValue="1"/>
+      <Brawl creationValue="2"/>
+      <Dodge creationValue="2">
+        <Specialty creationValue="1" name="On Battlefield"/>
+      </Dodge>
+      <Endurance creationValue="1"/>
+      <MartialArts creationValue="0"/>
+      <Melee creationValue="3">
+        <Specialty creationValue="2" name="Telperion"/>
+      </Melee>
+      <Resistance creationValue="2"/>
+      <Thrown creationValue="1"/>
+      <Craft creationValue="1"/>
+      <Larceny creationValue="0"/>
+      <Linguistics creationValue="1"/>
+      <Performance creationValue="1"/>
+      <Presence creationValue="3"/>
+      <Ride creationValue="2"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="3" favored="true">
+        <Specialty creationValue="1" name="Family"/>
+        <Specialty creationValue="1" name="Soldiers"/>
+      </Socialize>
+      <Stealth creationValue="1"/>
+      <Survival creationValue="1"/>
+      <Bureaucracy creationValue="1"/>
+      <Investigation creationValue="1"/>
+      <Lore creationValue="1"/>
+      <Medicine creationValue="1"/>
+      <Occult creationValue="0"/>
+    </Abilities>
+    <Backgrounds>
+      <Allies creationValue="1"/>
+      <Backing creationValue="1"/>
+      <Artifact creationValue="3"/>
+    </Backgrounds>
+    <Charms>
+      <Combos/>
+    </Charms>
+    <Spells/>
+    <Experience/>
+  </Statistics>
+</ExaltedCharacter>

@@ -1,0 +1,82 @@
+ <additionalRules>
+     	<forbiddenBackgrounds>
+     		<backgroundReference id="Contacts" />
+     		<backgroundReference id="Followers" />
+     		<backgroundReference id="Influence" />
+     		<backgroundReference id="Henchmen" />
+     	</forbiddenBackgrounds>
+    	<additionalPools>
+    		<multilearnablePool>
+    			<backgroundReference id="Breeding"/>    			
+    			<personalPool multiplier="1"/>
+    			<peripheralPool>
+    				<fixedValue value="0" pool="0"/>
+    				<fixedValue value="1" pool="2"/>
+    				<fixedValue value="2" pool="3"/>
+    				<fixedValue value="3" pool="5"/>
+    				<fixedValue value="4" pool="7"/>
+    				<fixedValue value="5" pool="9"/>
+    				<fixedValue value="6" pool="11"/>
+    			</peripheralPool>
+    		</multilearnablePool>
+    	</additionalPools>
+    	<additionalMagic>
+    		<magicPool defaultResponse="false">
+    			<backgroundReference id="Sorcery"/>
+    			<spellReference id="Terrestrial.DeathObsidianButterflies"/>
+   				<spellReference id="Terrestrial.EmeraldCountermagic"/>
+   				<spellReference id="Terrestrial.ImpenetrableFrostBarrier"/>
+<spellReference id="Terrestrial.InfallibleMessenger"/>
+<spellReference id="Terrestrial.InvulnerableSkinBronze"/>
+<spellReference id="Terrestrial.StormwindRider"/>
+<spellReference id="Terrestrial.CirrusSkiff"/>
+<spellReference id="Terrestrial.CoinDistantVision"/>
+<spellReference id="Terrestrial.CommandingPresenceFire"/>
+<spellReference id="Terrestrial.CommandingBeasts"/>
+<spellReference id="Terrestrial.DanceSmokeCobras"/>
+<spellReference id="Terrestrial.DisguiseNewFace"/>
+<spellReference id="Terrestrial.DragonSmokeSerpentFlame"/>
+<spellReference id="Terrestrial.FlightBrilliantRaptor"/>
+<spellReference id="Terrestrial.FlyingGuillotine"/>
+<spellReference id="Terrestrial.IncantationEffectiveRestoration"/>
+<spellReference id="Terrestrial.Magician'sPleasantPath"/>
+<spellReference id="Terrestrial.MirrorBendingLight"/>
+<spellReference id="Terrestrial.ParalyzingContradiction"/>
+<spellReference id="Terrestrial.PlagueBronzeSnakes"/>
+<spellReference id="Terrestrial.PurifyingFlames"/>
+<spellReference id="Terrestrial.RitualElementalEmpowerment"/>
+<spellReference id="Terrestrial.ShadowSummons"/>
+<spellReference id="Terrestrial.SongWaves"/>
+<spellReference id="Terrestrial.SpiritMight"/>
+<spellReference id="Terrestrial.SpiritSword"/>
+<spellReference id="Terrestrial.SpokeWoodenFace"/>
+<spellReference id="Terrestrial.SproutingShacklesDoom"/>
+<spellReference id="Terrestrial.StalwartEarthGuardian"/>
+<spellReference id="Terrestrial.StingIceHornet"/>
+<spellReference id="Terrestrial.ThunderWolf'sHowl"/>
+<spellReference id="Terrestrial.TongueElementSpirit"/>
+<spellReference id="Terrestrial.UnconquerableSelf"/>
+<spellReference id="Terrestrial.UnstoppableFountainsDepths"/>
+<spellReference id="Terrestrial.ViolentOpeningClosedPortals"/>
+<spellReference id="Terrestrial.VirtuousGuardianFlame"/>
+<spellReference id="Terrestrial.WaterFromStone"/>
+<spellReference id="Terrestrial.WrittenUponWater"/>
+<spellReference id="Terrestrial.PeacockShadowEyes"/>
+<spellReference id="Terrestrial.CallingWind'sKiss"/>
+<spellReference id="Terrestrial.Mast-ShatteringSpell"/>
+<spellReference id="Terrestrial.CallingStalwartServitor"/>
+<spellReference id="Terrestrial.DemonFirstCircle"/>
+<spellReference id="Terrestrial.LesserGolem"/>
+<spellReference id="Terrestrial.OpenSpiritDoor"/>
+<spellReference id="Terrestrial.SummonElemental"/>   				
+    		</magicPool>
+    	</additionalMagic>
+    	<additionalCost>
+    		<costModifier>
+    			<backgroundReference id="Breeding"/>
+    			<dotCostModification thresholdLevel="2" fixedCost="1"/>
+    			<bonusModification thresholdLevel="3" fixedCost="2"/>
+    			<bonusModification thresholdLevel="4" fixedCost="2"/>
+    		</costModifier>
+    	</additionalCost>
+    </additionalRules>

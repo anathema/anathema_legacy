@@ -1,0 +1,169 @@
+package net.sf.anathema.character.presenter;
+
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.Icon;
+import javax.swing.JList;
+
+import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.generic.framework.resources.BackgroundInternationalizer;
+import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
+import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.util.ProxyComboBoxEditor;
+import net.sf.anathema.character.model.background.IBackgroundConfiguration;
+import net.sf.anathema.character.model.background.IBackgroundListener;
+import net.sf.anathema.character.presenter.util.I18nComparator;
+import net.sf.anathema.character.view.IBasicAdvantageView;
+import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
+import net.sf.anathema.lib.collection.IdentityMapping;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.registry.IIdentificateRegistry;
+import net.sf.anathema.lib.resources.IResources;
+
+public class BackgroundPresenter implements IPresenter {
+
+  private final IBackgroundConfiguration configuration;
+  private final IBasicAdvantageView configurationView;
+  private final IResources resources;
+  private final IdentityMapping<IDefaultTrait, IRemovableTraitView< ? >> viewsByBackground = new IdentityMapping<IDefaultTrait, IRemovableTraitView< ? >>();
+  private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
+  private final Map<String, IBackgroundTemplate> templatesByDisplayName = new HashMap<String, IBackgroundTemplate>();
+  private final BackgroundInternationalizer internationalizer;
+
+  public BackgroundPresenter(
+      IResources resources,
+      IBackgroundConfiguration configuration,
+      ICharacterModelContext context,
+      IBasicAdvantageView backgroundView,
+      IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
+    this.resources = resources;
+    this.configuration = configuration;
+    this.configurationView = backgroundView;
+    this.backgroundRegistry = backgroundRegistry;
+    this.internationalizer = new BackgroundInternationalizer(resources);
+    this.configuration.addBackgroundListener(new IBackgroundListener() {
+      public void backgroundAdded(IDefaultTrait background) {
+        addBackgroundView(background);
+      }
+
+      public void backgroundRemoved(IDefaultTrait background) {
+        removeBackgroundView(background);
+      }
+    });
+    context.getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
+      public void experiencedChanged(boolean experienced) {
+        allowRemoveCreationBackground(!experienced);
+      }
+    });
+  }
+
+  private Object getDisplayObject(Object anObject) {
+    if (anObject instanceof IDefaultTrait) {
+      anObject = ((IDefaultTrait) anObject).getType();
+    }
+    if (anObject instanceof IBackgroundTemplate) {
+      return internationalizer.getDisplayName((IBackgroundTemplate) anObject);
+    }
+    return anObject;
+  }
+
+  public void initPresentation() {
+    Icon addIcon = new BasicUi(resources).getAddIcon();
+    IButtonControlledObjectSelectionView<Object> view = configurationView.addBackgroundSelectionView(
+        resources.getString("BackgroundConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
+        new ProxyComboBoxEditor() {
+          @Override
+          public void setItem(Object anObject) {
+            super.setItem(getDisplayObject(anObject));
+          }
+        },
+        new DefaultListCellRenderer() {
+          @Override
+          public Component getListCellRendererComponent(
+              JList list,
+              Object value,
+              int index,
+              boolean isSelected,
+              boolean cellHasFocus) {
+            return super.getListCellRendererComponent(list, getDisplayObject(value), index, isSelected, cellHasFocus);
+          }
+        },
+        addIcon);
+    view.setObjects(getSortedBackgrounds());
+    view.addButtonListener(new IObjectValueChangedListener<Object>() {
+      public void valueChanged(Object newValue) {
+        IBackgroundTemplate backgroundType = getBackgroundType(newValue);
+        if (backgroundType == null) {
+          configuration.addBackground(newValue.toString());
+        }
+        else {
+          configuration.addBackground(backgroundType);
+        }
+      }
+    });
+    for (IBackgroundTemplate template : configuration.getAllAvailableBackgroundTemplates()) {
+      templatesByDisplayName.put(internationalizer.getDisplayName(template), template);
+    }
+    for (IDefaultTrait background : configuration.getBackgrounds()) {
+      addBackgroundView(background);
+    }
+  }
+
+  private IBackgroundTemplate[] getSortedBackgrounds() {
+    IBackgroundTemplate[] backgroundTemplates = configuration.getAllAvailableBackgroundTemplates();
+    Arrays.sort(backgroundTemplates, new I18nComparator(resources, internationalizer.getPrefix()));
+    return backgroundTemplates;
+  }
+
+  private synchronized void addBackgroundView(final IDefaultTrait background) {
+    Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
+    IRemovableTraitView< ? > backgroundView = configurationView.addBackgroundView(deleteIcon, getDisplayObject(
+        background).toString(), background.getCurrentValue(), background.getMaximalValue());
+    new TraitPresenter(background, backgroundView).initPresentation();
+    backgroundView.addButtonListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        configuration.removeBackground(background);
+      }
+    });
+    viewsByBackground.put(background, backgroundView);
+  }
+
+  private synchronized void removeBackgroundView(IDefaultTrait background) {
+    IRemovableTraitView< ? > view = viewsByBackground.get(background);
+    viewsByBackground.remove(background);
+    view.delete();
+  }
+
+  private IBackgroundTemplate getBackgroundType(Object anObject) {
+    if (anObject instanceof IBackgroundTemplate) {
+      return (IBackgroundTemplate) anObject;
+    }
+    String displayName = anObject.toString();
+    IBackgroundTemplate template = templatesByDisplayName.get(displayName);
+    if (template != null) {
+      return template;
+    }
+    return backgroundRegistry.getById(displayName);
+  }
+
+  public void allowRemoveCreationBackground(boolean allowed) {
+    for (IDefaultTrait background : viewsByBackground.getAllKeys()) {
+      if (background.getCalculationValue() > 0) {
+        IRemovableTraitView< ? > view = viewsByBackground.get(background);
+        view.setButtonEnabled(allowed);
+      }
+    }
+  }
+}
