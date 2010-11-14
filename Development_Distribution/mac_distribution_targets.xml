@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<project name="Mac_Distribution_Targets">
+	
+    <import file="common_distribution_targets.xml" />
+	
+	<target name="Build Mac Application" if="isUnix">
+		<!-- Make the app shell -->
+	    <property name="appdir" value="${app.name}.app" />
+		
+		<delete dir="${appdir}" quiet="true" />
+		<mkdir dir="${appdir}"/>
+		<mkdir dir="${appdir}/Contents"/>
+		<mkdir dir="${appdir}/Contents/MacOS"/>
+		<mkdir dir="${appdir}/Contents/Resources"/>
+		<mkdir dir="${appdir}/Contents/Resources/Java"/>
+		
+		<!-- Copy Apple's application stub. Should probably really grab this from 
+		     /System/Library/Frameworks/JavaVM.framework/ Versions/Current/Resources/MacOS/,
+		     but since that doesn't exist on other platforms, use our own copy.
+		-->
+		<copy file="Mac/JavaApplicationStub" todir="${appdir}/Contents/MacOS"/>
+		
+		<!-- Set execution bits -->
+		<exec executable="chmod" osfamily="unix">
+		    <arg value="755"/>
+		    <arg value="${appdir}/Contents/MacOS/JavaApplicationStub"/>
+		</exec>
+				
+		<!-- Copy files and directories where we need them -->
+		<!--
+	    <mkdir dir="${appdir}/.background"/>
+	    <copy file="Mac/background.png"
+	          tofile="${appdir}/.background/background.png"
+	          overwrite="true"/>
+	    <copy file="Mac/VolumeIcon.icns"
+	          tofile="${appdir}/.VolumeIcon.icns"
+	          overwrite="true"/>
+	    <copy file="Mac/.DS_Store"
+	          tofile="${appdir}/.DS_Store"
+	          overwrite="true"/>
+	    -->
+		<copy file="Mac/Info.plist" todir="${appdir}/Contents"/>
+		<copy file="Mac/sungear.icns" todir="${appdir}/Contents/Resources"/>
+		<copy todir="${appdir}/Contents/Resources/Java">
+			<fileset dir="${build.dir}" includes="anathema.jar" />
+			<fileset dir="${files.dir}" includes="**/*.txt" />
+		</copy>
+		
+		<!-- Copy whole directories. -->
+		<copy todir="${appdir}/Contents/Resources/Java/lib">
+		   	<fileset dir="${libraries.dir}"/>
+		</copy>
+		<copy todir="${appdir}/Contents/Resources/Java/plugins">
+		   	<fileset dir="${plugins.dir}"/>
+		</copy>
+		
+		<!-- The Mac command to "bless" the directory into an app bundle. Will not execute on other platforms. -->
+		<!-- However, it shouldn't be necessary, strictly speaking. -->
+		<exec executable="/Developer/Tools/SetFile" os="Mac OS X" failonerror="true">
+		    <arg value="-a B ${appdir}"/>
+		</exec>
+	</target>
+	
+	<target name="Build DMG" depends="Build Mac Application" if="isUnix">
+		<condition property="isOSX">
+			<os name="Mac OS X" />
+		</condition>
+		<condition property="isUnixNotMac">
+			<and>
+				<os family="unix" />
+				<not>
+					<os family="mac" />
+				</not>
+			</and>
+		</condition>
+		<antcall target="Build DMG Mac" />
+		<antcall target="Build DMG Unix" />
+	</target>
+
+	<target name="Build DMG Unix" if="isUnixNotMac">
+	    <property name="appdir" value="${app.name}.app" />
+	    <property name="dmgname" value="${app.name}_v${version.major}.${version.minor}.${version.revision}.dmg" />
+		<property name="padding_size" value="250" />
+		
+		<!-- Make a .dmg image to receive the application. -->
+		<!-- This can be automated as follows, but should not run without copying the application into the image. -->
+		<!--
+			<exec executable="sh" failonerror="true" outputproperty="appdir_size">
+				<arg value="-c" />
+				<arg value='du -sk ${appdir} | cut -f1' />
+			</exec>
+			<echo message="Application directory size: ${appdir_size}" />
+			<exec executable="expr" failonerror="true" outputproperty="image_size">
+				<arg value="${appdir_size}" />
+				<arg value="+" />
+				<arg value="${padding_size}" />
+			</exec>
+			<exec executable="dd" failonerror="true">
+				<arg value="if=/dev/zero" />
+				<arg value="of=${dmgname}" />
+				<arg value="bs=1024" />
+				<arg value="count=${image_size}" />
+			</exec>
+			<exec executable="mkfs.hfsplus" failonerror="true">
+				<arg value="-v" />
+				<arg value="${app.name}" />
+				<arg file="${dmgname}" />
+			</exec>
+		-->
+		
+		<!-- Copy the application into the .dmg image. -->
+		<!-- This appears to be impossible to automate, as it requires mounting the .dmg - which can only be done as root. -->
+		<!--
+		Using a shell script:
+			1) sudo Mac/finishDMG.sh ${appdir} ${dmgname} ${mountdir}/${app.name}
+		Manually:
+			1) appdir_size = `du -sk ${appdir} | cut -f1`
+			2) image_size = `expr $appdir_size + ${padding_size}
+			3) dd if=/dev/zero of=${dmgname} bs=1024 count=$image_size
+			4) mkfs.hfsplus -v ${app.name} ${dmgname} 
+			5) mkdir ${mountdir}/${app.name}
+			6) sudo mount -o loop -t hfsplus ${dmgname} ${mountdir}/${app.name}
+			7) sudo cp -a ${appdir} ${mountdir}/${app.name}/
+			8) sudo umount ${mountdir}/${app.name}
+			9) rmdir ${mountdir}/${app.name}
+		-->
+		<echo message="MUST RUN: sudo Mac/finishDMG.sh ${appdir} ${dmgname} ${mountdir}/${app.name}" />
+	</target>
+		
+	<target name="Build DMG Mac" if="isMac"
+		description="Create a DMG package for MacOSX (only works on MacOSX)">
+		<!-- Create a DMG - This only works on MacOSX (requires hdiutil) -->
+		<!-- Source: http://www.rkuntz.org/pmwiki.php?n=Code.AntDiskImage -->
+
+	    <!-- Delete any previously created DMG -->
+	    <delete file="${app.name}_v${version.major}.${version.minor}.${version.revision}.dmg" quiet="yes" />
+
+	    <!-- Create a temporary Disk Image -->
+	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
+	      <arg value="create"/>
+	      <arg value="-srcfolder"/>
+	      <arg value="${app.name}.app"/>
+	      <arg value="-volname"/>
+	      <arg value="${app.name}"/>
+	      <arg value="-ov"/>
+	      <arg value="${app.name}-tmp.dmg"/>
+	      <arg value="-format"/>
+	      <arg value="UDRW"/>
+	    </exec>
+
+	    <!-- Attach the temporary image -->
+	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
+	      <arg value="attach"/>
+	      <arg value="${app.name}-tmp.dmg"/>
+	      <arg value="-mountroot"/>
+	      <arg value="${mountdir}/"/>
+	    </exec>
+
+	    <!-- Recopy the background, the volume icon and DS_Store files -->
+	    <copy file="Mac/background.tiff"
+	          tofile="${mountdir}/${app.name}/.background.tiff"
+	          overwrite="true"/>
+	    <copy file="Mac/VolumeIcon.icns"
+	          tofile="${mountdir}/${app.name}/.VolumeIcon.icns"
+	          overwrite="true"/>
+	    <copy file="Mac/DS_Store"
+	          tofile="${mountdir}/${app.name}/.DS_Store"
+	          overwrite="true"/>
+
+	    <!-- Indicate that we want a custom icon -->
+	    <exec executable="/Developer/Tools/SetFile" os="Mac OS X">
+	      <arg value="-a"/>
+	      <arg value="C"/>
+	      <arg value="${mountdir}/${app.name}"/>
+	    </exec>
+
+	    <!-- Add a symbolic link to the Applications directory -->
+	    <symlink link="${mountdir}/${app.name}" resource="/Applications"/>
+
+	    <!-- Detach the temporary image -->
+	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
+	      <arg value="detach"/>
+	      <arg value="${mountdir}/${app.name}"/>
+	    </exec>
+
+	    <!-- Compress it to a new image -->
+	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
+	      <arg value="convert"/>
+	      <arg value="${app.name}-tmp.dmg"/>
+	      <arg value="-format"/>
+	      <arg value="UDZO"/>
+	      <arg value="-o"/>
+	      <arg value="${app.name}_v${version.major}.${version.minor}.${version.revision}.dmg"/>
+	    </exec>
+
+	    <!-- Delete the temporary image -->
+	    <delete file="${app.name}-tmp.dmg" quiet="yes" />
+	</target>
+</project>
