@@ -3,6 +3,8 @@
 	
     <import file="common_distribution_targets.xml" />
 	
+    <property name="app.name" value="Anathema" />
+	
 	<target name="Build Mac Application" if="isUnix">
 		<!-- Make the app shell -->
 	    <property name="appdir" value="${app.name}.app" />
@@ -27,18 +29,6 @@
 		</exec>
 				
 		<!-- Copy files and directories where we need them -->
-		<!--
-	    <mkdir dir="${appdir}/.background"/>
-	    <copy file="Mac/background.png"
-	          tofile="${appdir}/.background/background.png"
-	          overwrite="true"/>
-	    <copy file="Mac/VolumeIcon.icns"
-	          tofile="${appdir}/.VolumeIcon.icns"
-	          overwrite="true"/>
-	    <copy file="Mac/.DS_Store"
-	          tofile="${appdir}/.DS_Store"
-	          overwrite="true"/>
-	    -->
 		<copy file="Mac/Info.plist" todir="${appdir}/Contents"/>
 		<copy file="Mac/sungear.icns" todir="${appdir}/Contents/Resources"/>
 		<copy todir="${appdir}/Contents/Resources/Java">
@@ -57,7 +47,9 @@
 		<!-- The Mac command to "bless" the directory into an app bundle. Will not execute on other platforms. -->
 		<!-- However, it shouldn't be necessary, strictly speaking. -->
 		<exec executable="/Developer/Tools/SetFile" os="Mac OS X" failonerror="true">
-		    <arg value="-a B ${appdir}"/>
+		    <arg value="-a" />
+			<arg value="B" />
+			<arg file="${appdir}"/>
 		</exec>
 	</target>
 	
@@ -73,6 +65,8 @@
 				</not>
 			</and>
 		</condition>
+		<property name="mountdir" value="/tmp" />
+		
 		<antcall target="Build DMG Mac" />
 		<antcall target="Build DMG Unix" />
 	</target>
@@ -108,6 +102,19 @@
 			</exec>
 		-->
 		
+		<!-- Update the DS_Store file as required. -->
+		<copy file="Mac/DS_Store"
+	          tofile="Mac/DS_Store.tmp"
+	          overwrite="true">
+			<filterchain>
+				<replacetokens>
+					<token key="version-major" value="${version.major}" />
+					<token key="version-minor" value="${version.minor}" />
+					<token key="version-revision" value="${version.revision}" />
+				</replacetokens>
+			</filterchain>
+	    </copy>
+		
 		<!-- Copy the application into the .dmg image. -->
 		<!-- This appears to be impossible to automate, as it requires mounting the .dmg - which can only be done as root. -->
 		<!--
@@ -124,24 +131,28 @@
 			8) sudo umount ${mountdir}/${app.name}
 			9) rmdir ${mountdir}/${app.name}
 		-->
-		<echo message="MUST RUN: sudo Mac/finishDMG.sh ${appdir} ${dmgname} ${mountdir}/${app.name}" />
+		<echo message="MUST RUN: sudo Mac/finishDMG.sh '${appdir}' '${dmgname}' '${app.name} ${version.major}.${version.minor}.${version.revision}' '${mountdir}/${app.name}'" />
 	</target>
 		
-	<target name="Build DMG Mac" if="isMac"
+	<target name="Build DMG Mac" if="isOSX"
 		description="Create a DMG package for MacOSX (only works on MacOSX)">
 		<!-- Create a DMG - This only works on MacOSX (requires hdiutil) -->
 		<!-- Source: http://www.rkuntz.org/pmwiki.php?n=Code.AntDiskImage -->
+	    
+		<property name="app.dir" value="${app.name}.app" />
+		<property name="dmg.name" value="${app.name}_v${version.major}.${version.minor}.${version.revision}.dmg" />
+		<property name="volume.name" value="${app.name} ${version.major}.${version.minor}.${version.revision}" />
 
 	    <!-- Delete any previously created DMG -->
-	    <delete file="${app.name}_v${version.major}.${version.minor}.${version.revision}.dmg" quiet="yes" />
+	    <delete file="${dmg.name}" quiet="yes" />
 
 	    <!-- Create a temporary Disk Image -->
 	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
 	      <arg value="create"/>
 	      <arg value="-srcfolder"/>
-	      <arg value="${app.name}.app"/>
+	      <arg value="${app.dir}"/>
 	      <arg value="-volname"/>
-	      <arg value="${app.name}"/>
+	      <arg value="${volume.name}"/>
 	      <arg value="-ov"/>
 	      <arg value="${app.name}-tmp.dmg"/>
 	      <arg value="-format"/>
@@ -156,31 +167,44 @@
 	      <arg value="${mountdir}/"/>
 	    </exec>
 
-	    <!-- Recopy the background, the volume icon and DS_Store files -->
+	    <!-- Copy the background, the volume icon and DS_Store files -->
 	    <copy file="Mac/background.tiff"
-	          tofile="${mountdir}/${app.name}/.background.tiff"
+	          tofile="${mountdir}/${volume.name}/.background.tiff"
 	          overwrite="true"/>
 	    <copy file="Mac/VolumeIcon.icns"
-	          tofile="${mountdir}/${app.name}/.VolumeIcon.icns"
+	          tofile="${mountdir}/${volume.name}/.VolumeIcon.icns"
 	          overwrite="true"/>
 	    <copy file="Mac/DS_Store"
-	          tofile="${mountdir}/${app.name}/.DS_Store"
-	          overwrite="true"/>
+	          tofile="${mountdir}/${volume.name}/.DS_Store"
+	          overwrite="true">
+			<filterchain>
+				<replacetokens>
+					<token key="version-major" value="${version.major}" />
+					<token key="version-minor" value="${version.minor}" />
+					<token key="version-revision" value="${version.revision}" />
+				</replacetokens>
+			</filterchain>
+	    </copy>
 
 	    <!-- Indicate that we want a custom icon -->
 	    <exec executable="/Developer/Tools/SetFile" os="Mac OS X">
 	      <arg value="-a"/>
 	      <arg value="C"/>
-	      <arg value="${mountdir}/${app.name}"/>
+	      <arg value="${mountdir}/${volume.name}"/>
 	    </exec>
+		
+		<!-- Put the license into the root of the image -->
+		<copy file="${app.name}.app/Contents/Resources/Java/license.txt"
+              tofile="${mountdir}/${volume.name}/License.txt"
+		      overwrite="true"/>
 
 	    <!-- Add a symbolic link to the Applications directory -->
-	    <symlink link="${mountdir}/${app.name}" resource="/Applications"/>
+	    <symlink link="${mountdir}/${volume.name}" resource="/Applications"/>
 
 	    <!-- Detach the temporary image -->
 	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
 	      <arg value="detach"/>
-	      <arg value="${mountdir}/${app.name}"/>
+	      <arg value="${mountdir}/${volume.name}"/>
 	    </exec>
 
 	    <!-- Compress it to a new image -->
@@ -190,7 +214,7 @@
 	      <arg value="-format"/>
 	      <arg value="UDZO"/>
 	      <arg value="-o"/>
-	      <arg value="${app.name}_v${version.major}.${version.minor}.${version.revision}.dmg"/>
+	      <arg value="${dmg.name}"/>
 	    </exec>
 
 	    <!-- Delete the temporary image -->
