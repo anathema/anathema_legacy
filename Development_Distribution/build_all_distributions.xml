@@ -4,9 +4,21 @@
 	<!--Requires the property "launch4j.dir" to point to the launch4j installation.-->
 	<!--Requires the property "nsis.dir" to point to the NSIS installation.-->
     <import file="linux_distribution_targets.xml" />
+	<import file="mac_distribution_targets.xml" />
 	<import file="build_windows_nsis_distribution.xml" />
 
 	<property file="directories.properties" />
 
-	<target name="Distribute" depends="Clean, Build Bootloader, Build Plugins, Copy Text, Build Windows executable, Compile NSIS Installer, Copy Linux Launcher, Build ZIP" />
+	<target name="Distribute" depends="Clean, Build Bootloader, Build Plugins, Copy Text">
+		<antcall target="Build Windows executable" />
+		<antcall target="Compile NSIS Installer" />
+		<antcall target="Copy Linux Launcher" />
+		<antcall target="Build ZIP" />
+
+		<condition property="isUnix">
+			<os family="unix" />
+		</condition>
+		<antcall target="Build Mac Application" />
+		<antcall target="Build DMG" />
+	</target>
 </project>
