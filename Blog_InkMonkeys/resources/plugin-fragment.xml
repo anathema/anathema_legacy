@@ -73,11 +73,11 @@
              <parameter id="path" value="inkMonkeys_data/abyssal/moonshadow/socialize.xml" />
         </parameter>
 		<!-- Martial Arts -->
-		<paramenter id="list">
+		<parameter id="list">
 			<parameter id="type" value="MartialArts" />
 			<parameter id="rules" value="SecondEdition" />
 			<parameter id="path" value="inkMonkeys_data/misc/blackClaw.xml" />
-		</paramenter> />
+		</parameter>
 		<parameter id="list">
 			<parameter id="type" value="MartialArts" />
 			<parameter id="rules" value="SecondEdition" />
