@@ -3,6 +3,8 @@
 	
     <import file="common_distribution_targets.xml" />
 	
+    <property name="app.name" value="Anathema" />
+	
 	<target name="Build Mac Application" if="isUnix">
 		<!-- Make the app shell -->
 	    <property name="appdir" value="${app.name}.app" />
@@ -73,6 +75,8 @@
 				</not>
 			</and>
 		</condition>
+		<property name="mountdir" value="/tmp" />
+		
 		<antcall target="Build DMG Mac" />
 		<antcall target="Build DMG Unix" />
 	</target>

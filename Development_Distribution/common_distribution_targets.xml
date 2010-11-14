@@ -63,7 +63,7 @@
 	</target>
 	
 	<target name="Build ZIP">
-		<zip destfile="anathema_v${version.major}.${version.minor}.${version.revision}.zip">
+		<zip destfile="Anathema_v${version.major}.${version.minor}.${version.revision}.zip">
 			<fileset dir="${build.dir}" includes="anathema.jar" />
 			<fileset dir="${files.dir}" includes="**/*" />
 			<zipfileset dir="${plugins.dir}/" prefix="plugins" includes="*" />
