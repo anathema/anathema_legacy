@@ -24,6 +24,33 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Dodge -->
+     <charm id="Solar.ReedintheWind" exalt="Solar" group="Dodge">
+          <prerequisite>
+               <trait id="Dodge" value="2" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.LightspeedBodyDynamics" exalt="Solar" group="Dodge">
+          <prerequisite>
+               <trait id="Dodge" value="4" />
+               <essence value="2" />
+               <charmReference id="Solar.ShadowOverWater" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Reactor" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
      <charm id="Solar.NightsAvengerLunge" exalt="Solar" group="Dodge">
           <prerequisite>
                <trait id="Dodge" value="4" />

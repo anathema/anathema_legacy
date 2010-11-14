@@ -24,6 +24,20 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Resistance -->
+     <charm id="Solar.InvincibleEssenceReinforcement" exalt="Solar" group="Resistance">
+          <prerequisite>
+               <trait id="Resistance" value="3" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" />
+          </cost>
+
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
 	<charm id="Solar.RedDawnAscending" exalt="Solar" group="Resistance">
 		<prerequisite>
 			<trait id="Resistance" value="5" />

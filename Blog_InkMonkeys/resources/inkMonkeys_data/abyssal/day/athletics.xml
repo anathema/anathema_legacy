@@ -1,9 +1,9 @@
 <?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
 <!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
-"../../charms.dtd">
+"../charms.dtd">
 <!--
 
-    presence.xml - XML charm data for Anathema plug-ins.
+    athletics.xml - XML charm data for Anathema plug-ins.
     Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
 
     This program is free software; you can redistribute it and/or modify
@@ -22,34 +22,20 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Presence -->
-     <charm id="Solar.ListenerSwayingArgument" exalt="Solar" group="Presence">
-          <prerequisite>
-               <trait id="Presence" value="3" />
-               <essence value="2" />
-               <charmAttributeRequirement attribute="ExcellencyPresence" count="1"/>
-          </prerequisite>
-          <cost>
-               <essence cost="5" />
-          </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Reflexive" />
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Illusion" visualize="true" />
-          <charmAttribute attribute="Social" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm>
-	<charm id="Solar.ShiningOnDarkRealms" exalt="Solar" group="Presence">
+     <!-- Athletics -->
+	<charm id="Abyssal.SuperiorWeaponBody" exalt="Abyssal" group="Athletics">
 		<prerequisite>
-			<trait id="Presence" value="5" />
+			<trait id="Athletics" value="5" />
 			<essence value="3" />
-			<charmReference id="Solar.MajesticRadiantPresence" />
+			<charmReference id="Abyssal.CorpseMightSurge" />
+			<charmReference id="Abyssal.ShadowRacesTheLight" />
+			<charmReference id="Abyssal.SpiderPounceTechnique" />
 		</prerequisite>
 		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Abyssal Mirror - Barrow Kings Authority -->
+		<!-- NOTE:  Solar Mirror - Glorious Temple Body -->
 		<source source="InkMonkeys" />
 	</charm>
 </charmlist>

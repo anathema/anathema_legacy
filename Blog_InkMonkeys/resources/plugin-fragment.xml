@@ -11,11 +11,89 @@
           </library>
      </runtime>
      <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="InkMonkeysCharms">
-          <parameter id="list">
-               <parameter id="type" value="MartialArts" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="inkMonkeys_data/misc/solarHero.xml" />
-          </parameter>
+		<!-- Abyssal Charms -->
+		<parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/day/athletics.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/day/larceny.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/day/stealth.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/daybreak/medicine.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/daybreak/occult.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/dusk/melee.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/dusk/war.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/midnight/integrity.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/midnight/presence.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/midnight/resistance.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/midnight/survival.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/moonshadow/socialize.xml" />
+        </parameter>
+		<!-- Martial Arts -->
+		<paramenter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="inkMonkeys_data/misc/blackClaw.xml" />
+		</paramenter> />
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="inkMonkeys_Data/misc/flowingKata.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="inkMonkeys_Data/misc/infernalMonster.xml"/>
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="inkMonkeys_data/misc/solarHero.xml" />
+		</parameter>
+		<!-- Solar Charms -->
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
