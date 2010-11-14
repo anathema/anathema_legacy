@@ -8,6 +8,7 @@
 	<import file="build_windows_nsis_distribution.xml" />
 
 	<property file="directories.properties" />
+	<property file="version.properties" />
 
 	<target name="Distribute" depends="Clean, Build Bootloader, Build Plugins, Copy Text">
 		<antcall target="Build Windows executable" />
