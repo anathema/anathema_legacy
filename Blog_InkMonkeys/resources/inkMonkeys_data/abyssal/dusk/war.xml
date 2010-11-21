@@ -5,6 +5,7 @@
 
     war.xml - XML charm data for Anathema plug-ins.
     Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
+	Copyright (C) 2010 Scott D. Olson (scott.d.olson@comcast.net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -37,6 +38,18 @@
 		<charmtype type="Reflexive" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Abyssal.EssenceEngorgementTechniqueWar" exalt="Abyssal" group="War">
+		<prerequisite>
+			<trait id="War" value="5" />
+			<essence value="3" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<charmAttribute attribute="Native" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
 </charmlist>

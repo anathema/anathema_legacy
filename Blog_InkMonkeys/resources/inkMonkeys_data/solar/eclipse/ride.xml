@@ -24,6 +24,68 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Ride -->
+     <charm id="Solar.ImmortalRidersAdvantages" exalt="Solar" group="Ride">
+          <prerequisite>
+               <trait id="Ride" value="3" />
+               <essence value="3" />
+               <charmReference id="Solar.MasterHorseman'sTechniques" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Mirror" visualize="true" />
+          <charmAttribute attribute="Mount(Mundane)" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <source source="InkMonkeys" />
+      </charm>
+     <charm id="Solar.HorseSkidsTrick" exalt="Solar" group="Ride">
+          <prerequisite>
+               <trait id="Ride" value="3" />
+               <essence value="3" />
+               <charmReference id="Solar.MasterHorseman'sTechniques" />
+          </prerequisite>
+          <cost>
+		<essence cost="3" />
+	  </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Mount(Mundane)" visualize="true" />
+          <source source="InkMonkeys" />
+      </charm>
+     <charm id="Solar.OneManCavalry" exalt="Solar" group="Ride">
+          <prerequisite>
+               <trait id="Ride" value="3" />
+               <essence value="3" />
+               <charmReference id="Solar.HeroRidesAway" />
+          </prerequisite>
+          <cost>
+		<essence cost="5" />
+	  </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="War" visualize="true" />
+          <source source="InkMonkeys" />
+      </charm>
+     <charm id="Solar.ThunderHoofMethod" exalt="Solar" group="Ride">
+          <prerequisite>
+               <trait id="Ride" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.SometimesHorsesFlyApproach" />
+          </prerequisite>
+          <cost>
+		<essence cost="5" />
+		<willpower cost="1" />
+	  </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Holy" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+      </charm>
      <charm id="Solar.HeroRidesAway" exalt="Solar" group="Ride">
           <prerequisite>
                <trait id="Ride" value="3" />
