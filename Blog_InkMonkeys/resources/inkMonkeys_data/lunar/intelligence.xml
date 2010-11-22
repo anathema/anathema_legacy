@@ -37,5 +37,67 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="InkMonkeys" />
      </charm>
+	<charm id="Lunar.MandateOfTheHungryMouse" exalt="Lunar" group="Inisight">
+		<prerequisite>
+			<trait id="Intelligence" value="3" />
+			<essence value="3" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Simple">
+			<special speed="6" turntype="DramaticAction" defense="-1" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Lunar.WaspOfTheLabyrinthTrick" exalt="Lunar" group="Craft">
+		<prerequisite>
+			<trait id="Intelligence" value="3" />
+			<essence value="3" />
+			<charmAttributeRequirement attribute="ExcellencyIntelligence" count="1" />
+		</prerequisite>
+		<cost>
+			<essence cost="1" />
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Simple">
+			<special speed="4" defense="-1" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Stackable" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Lunar.MoonAndEarthBlessing" exalt="Lunar" group="Craft">
+		<prerequisite>
+			<trait id="Intelligence" value="4" />
+			<essence value="3" />
+		</prerequisite>
+		<cost>
+			<essence cost="15" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Simple">
+			<special speed="5" turntype="DramaticAction" defense="-1" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Lunar.PhantomCrossfireFeint" exalt="Lunar" group="Sorcery">
+		<prerequisite>
+			<trait id="Intelligence" value="5" />
+			<essence value="4" />
+			<charmReference id="Lunar.CelestialCircleSorcery" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="(+5m)"/>
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
 </charmlist>
 

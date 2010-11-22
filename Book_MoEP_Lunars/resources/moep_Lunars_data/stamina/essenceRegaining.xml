@@ -66,6 +66,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
+		<!-- NOTE:  "Mirror" - Lunar/Wits & Lunar/Charisma -->
           <source source="Lunars2nd" />
           <source source="InkMonkeys" />
      </charm>

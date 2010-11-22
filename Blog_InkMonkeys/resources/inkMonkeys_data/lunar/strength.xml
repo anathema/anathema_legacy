@@ -6,6 +6,7 @@
 
     perception.xml - XML charm data for Anathema Plug-ins.
     Copyright (C) 2010  Scott Olson (scott.d.olson@comcast.net)
+	Copyright (C) 2010  Paul Adams (pauladams@hotmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,14 +27,14 @@
      <!-- Soak Charms -->
      <charm id="Lunar.LionsRoarRebuke" exalt="Lunar" group="AttackEnhancement">
           <prerequisite>
-               <trait id="Perception" value="4" />
+               <trait id="Strength" value="4" />
                <essence value="3" />
-               <charmAttributeRequirement attribute="ExcellencyPerception" count="1" />
+               <charmAttributeRequirement attribute="ExcellencyStrength" count="1" />
           </prerequisite>
           <cost>
                <essence cost="5" />
           </cost>
-          <duration amount="1" unit="scene" />
+          <duration duration="Instant" />
           <charmtype type="Simple">
                <special speed="4" defense="-1" />
           </charmtype>
@@ -42,5 +43,23 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="InkMonkeys" />
      </charm>
+	<charm id="Lunar.BeastSpiritDefense" exalt="Lunar" group="AttackEnhancement">
+		<prerequisite>
+			<trait id="Strength" value="4" />
+			<essence value="3" />
+			<charmReference id="Lunar.FerociousBitingTooth" />
+			<charmReference id="Lunar.ImpressionsOfStrength" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="2" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
 </charmlist>
 

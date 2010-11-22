@@ -85,7 +85,7 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Celestial" />
-          <charmAttribute attribute="Form-type" visualize="true" />
+          <charmAttribute attribute="Form" visualize="true" />
           <charmAttribute attribute="Emotion" visualize="true" />
           <source source="InkMonkeys" />
      </charm>

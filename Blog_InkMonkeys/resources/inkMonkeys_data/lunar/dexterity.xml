@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
 <!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
 "../charms.dtd">
 <!--
 
-    manipulation.xml - XML charm data for Anathema Plug-ins.
-    Copyright (C) 2010  Scott Olson (scott.d.olson@comcast.net)
+    dexterity.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,36 +22,38 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-	<charm id="Lunar.AnyTrinketAllure" exalt="Lunar" group="Interaction">
+     <!-- Dexterity -->
+	<charm id="Lunar.EssentialMoonsilverAffinity" exalt="Lunar" group="Craft">
 		<prerequisite>
-			<trait id="Manipulation" value="3" />
-			<essence value="3" />
-			<!-- TODO:  Charm Reference is from Glories:  Luna -->
-			<!-- charmReference id="Lunar.TreasureAsTrashMisdirection" /> -->
+			<trait id="Dexterity" value="3" />
+			<essence value="2" />
+			<charmAttributeRequirement attribute="ExcellencyDexterity" count="1" />
 		</prerequisite>
 		<cost>
-			<essence cost="3" text="(+1wp)" />
+			<essence cost="2" />
 		</cost>
-		<duration duration="Instant" />
+		<duration amount="1" unit="scene" />
 		<charmtype type="Reflexive" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
-		<charmAttribute attribute="Illusion" visualize="true" />
+		<charmAttribute attribute="Gift" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Lunar.ScentOfAllNationsAttitude" exalt="Lunar" group="Interaction">
+	<charm id="Lunar.SensingTheDeadlyFlow" exalt="Lunar" group="Defensive">
 		<prerequisite>
-			<trait id="Manipulation" value="4" />
+			<trait id="Dexterity" value="5" />
 			<essence value="3" />
-			<charmReference id="Lunar.PerfectionOfTheMockingbird" />
+			<charmReference id="Lunar.WarySwallowMethod" />
+			<charmReference id="Lunar.WindDancingMethod" />
 		</prerequisite>
 		<cost>
 			<essence cost="5" />
+			<willpower cost="1" />
 		</cost>
-		<duration duration="Indefinite" />
-		<charmtype type="Reflexive" />
+		<duration amount="1" unit="scene" />
+		<charmtype type="Simple" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
-		<charmAttribute attribute="Illusion" visualize="true" />
+		<charmAttribute attribute="Fury-OK" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
 </charmlist>
-

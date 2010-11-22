@@ -40,7 +40,26 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Gift" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="InkMOnkeys" />
+          <source source="InkMonkeys" />
      </charm>
+	<charm id="Lunar.WeaponTrappingBodyDominion" exalt="Lunar" group="Soak">
+		<prerequisite>
+			<trait id="Stamina" value="4" />
+			<essence value="4" />
+			<charmReference id="Lunar.ArmorFormingTechnique" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration duration="InstantOS" />
+		<charmtype type="Reflexive">
+			<special primaryStep="9" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Counterattack" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="Stackable" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
 </charmlist>
 
