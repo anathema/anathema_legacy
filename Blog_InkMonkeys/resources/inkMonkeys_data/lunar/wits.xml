@@ -30,7 +30,7 @@
                <essence value="2" />
           </prerequisite>
           <cost >
-                <essence cost="4" >
+                <essence cost="4" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Simple" />
