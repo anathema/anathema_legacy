@@ -79,7 +79,7 @@
 			<charmReference id="Abyssal.RealitySubvertingGesture" />
 		</prerequisite>
 		<cost >
-			<essence cost="5" >
+			<essence cost="5" />
 		</cost>
 		<duration duration="Instant" />
 		<charmtype type="Reflexive" />

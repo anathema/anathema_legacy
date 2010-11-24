@@ -25,7 +25,7 @@
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Martial Arts -->
 	<!-- TODO:  Coding - Will need to do something about MA charms that are not attached to a specific style. -->
-     <!--charm id="Solar.SwallowingTheLotusRoot" exalt="Solar" group="MartialArts">
+     <charm id="Solar.SwallowingTheLotusRoot" exalt="Solar" group="MartialArts">
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="2" />
@@ -33,11 +33,13 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+		  <charmAttribute attribute="Celestial" />
 		<!- NOTE:  Abyssal Mirror - Blood-Soaked Lotus Roots ->
 		<!- NOTE:  Infernal Mirror - Roots of the Brass Lotus ->
 		<!- NOTE:  Sidereal Mirror - Perfected Lotus Mastery ->
 		<!- TODO:  Lunar Mirror - Terrestrial Bloodline Integration ->
 		<!- NOTE:  Alchemical Mirror - Lotus Filament Conduction ->
+		  <charmAttribute attribute="Mirror" visualize="true" />
           <source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
@@ -54,9 +56,10 @@
 		<charmtype type="Reflexive">
 			<special primaryStep="10" />
 		</charmtype>
+		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Crippling" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="ScrollErrata" />
-	</charm-->
+	</charm>
 </charmlist>
