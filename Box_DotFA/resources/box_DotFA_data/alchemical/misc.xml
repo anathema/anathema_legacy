@@ -28,10 +28,12 @@
 			<trait id="MartialArts" value="5" />
 			<essence value="2" />
 		</prerequisite>
-			<cost />
-			<duration duration="Permanent" />
-			<!-- NOTE:  Solar Mirror - Swallowing the Lotus Root -->
-			<charmtype type="Permanent" />
-			<source source="ScrollErrata" />
-		</charm>
+	    <cost />
+		<duration duration="Permanent" />
+        <charmAttribute attribute="Celestial" />
+        <charmAttribute attribute="Mirror" />
+		<!-- NOTE:  Solar Mirror - Swallowing the Lotus Root -->
+		<charmtype type="Permanent" />
+		<source source="ScrollErrata" />
+	</charm>
 </charmlist>

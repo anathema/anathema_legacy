@@ -76,9 +76,7 @@
 		<charmAttribute attribute="Counterattack" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<!-- TODO:  Coding - Will need to do something about MA charms that are not attached to a specific style. -->
-	<!--charm id="Sidereal.PerfectedLotusMastery" exalt="Sidereal" group="MartialArts">
-		<!- NOTE:  Solar/MartialArts "Mirror" - Swallowing the Lotus Root ->
+	<charm id="Sidereal.PerfectedLotusMastery" exalt="Sidereal" group="MartialArts">
          <prerequisite>
               <trait id="MartialArts" value="5" />
               <essence value="2" />
@@ -86,6 +84,9 @@
          <cost />
          <duration duration="Permanent" />
          <charmtype type="Permanent" />
+         <charmAttribute attribute="Celestial" />
+         <charmAttribute attribute="Mirror" />
+ 		 <!-- NOTE:  Solar/MartialArts "Mirror" - Swallowing the Lotus Root -->
          <source source="ScrollErrata" />
-    </charm-->
+    </charm>
 </charmlist>

@@ -30,6 +30,8 @@
 		</prerequisite>
 		<cost />
 		<duration duration="Permanent" />
+        <charmAttribute attribute="Celestial" />
+        <charmAttribute attribute="Mirror" />
 		<!-- NOTE:  Solar Mirror - Swallowing the Lotus Root -->
 		<charmtype type="Permanent" />
 		<source source="ScrollErrata" />

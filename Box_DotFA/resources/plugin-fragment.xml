@@ -132,11 +132,11 @@
 			 <parameter id="rules" value="SecondEdition" />
 			 <parameter id="path" value="box_DotFA_data/solar/dawn/archery.xml" />
 		</parameter>
-		<!--parameter id="list">
+		<parameter id="list">
 			 <parameter id="type" value="Solar" />
 			 <parameter id="rules" value="SecondEdition" />
 			 <parameter id="path" value="box_DotFA_data/solar/dawn/martialarts.xml" />
-		</parameter-->
+		</parameter>
 		<parameter id="list">
 			 <parameter id="type" value="Solar" />
 			 <parameter id="rules" value="SecondEdition" />
