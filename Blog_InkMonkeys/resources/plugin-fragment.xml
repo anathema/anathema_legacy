@@ -106,13 +106,13 @@
 		<!--parameter id="list">
 			<parameter id="type" value="MartialArts" />
 			<parameter id="rules" value="SecondEdition" />
-			<parameter id="path" value="inkMonkeys_Data/misc/flowingKata.xml" />
+			<parameter id="path" value="inkMonkeys_data/misc/flowingKata.xml" />
 		</parameter-->
-		<!--parameter id="list">
+		<parameter id="list">
 			<parameter id="type" value="MartialArts" />
 			<parameter id="rules" value="SecondEdition" />
-			<parameter id="path" value="inkMonkeys_Data/misc/infernalMonster.xml"/>
-		</parameter-->
+			<parameter id="path" value="inkMonkeys_data/misc/infernalMonster.xml"/>
+		</parameter>
 		<parameter id="list">
 			<parameter id="type" value="MartialArts" />
 			<parameter id="rules" value="SecondEdition" />

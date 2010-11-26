@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Bureaucracy -->
-     <charm id="Abyssal.EssenceEngorgementTechniqueBureaucracy" exalt="Abyssal" group="bureaucracy">
+     <charm id="Abyssal.EssenceEngorgementTechniqueBureaucracy" exalt="Abyssal" group="Bureaucracy">
           <prerequisite>
                <trait id="Bureaucracy" value="5" />
                <essence value="3" />

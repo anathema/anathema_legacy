@@ -126,6 +126,11 @@
 			<parameter id="rules" value="SecondEdition" />
 			<parameter id="path" value="box_DotFA_data/sidereal/misc.xml" />
 		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Sidereal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="box_DotFA_data/sidereal/martialarts.xml" />
+		</parameter>
 		<!-- Solar List -->
 		<parameter id="list">
 			 <parameter id="type" value="Solar" />

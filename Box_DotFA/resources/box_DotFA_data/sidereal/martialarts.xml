@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../charms.dtd">
+<!--
+
+    martialarts.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Martial Arts -->
+	<charm id="Sidereal.PerfectedLotusMastery" exalt="Sidereal" group="MartialArts">
+         <prerequisite>
+              <trait id="MartialArts" value="5" />
+              <essence value="2" />
+         </prerequisite>
+         <cost />
+         <duration duration="Permanent" />
+         <charmtype type="Permanent" />
+         <charmAttribute attribute="Celestial" />
+         <charmAttribute attribute="Mirror" />
+ 		 <!-- NOTE:  Solar/MartialArts "Mirror" - Swallowing the Lotus Root -->
+         <source source="ScrollErrata" />
+    </charm>
+</charmlist>
