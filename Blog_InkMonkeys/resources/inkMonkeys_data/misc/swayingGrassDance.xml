@@ -23,7 +23,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Swaying Grass Dance Style -->
-	<charm id="Terrestrial.JubilantBattleProposition" exalt="Terrestrial" group="SwayingGrassDanceStyle">
+	<charm id="Terrestrial.JubilantBattleProposition" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="2" />
 			<trait id="Performance" value="2" />
@@ -38,7 +38,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Terrestrial.SweapingMeadowAwarenessPractice" exalt="Terrestrial" group="SwayingGrassDanceStyle">
+	<charm id="Terrestrial.SweepingMeadowAwarenessPractice" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="3" />
 			<essence value="2" />
@@ -54,7 +54,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Terrestrial.SwayingGrassDanceForm" exalt="Terrestrial" group="SwayingGrassDanceStyle">
+	<charm id="Terrestrial.SwayingGrassDanceForm" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="4" />
 			<essence value="2" />
@@ -72,7 +72,7 @@
 		<charmAttribute attribute="Form" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Terrestrial.TeethInTheGrassStrike" exalt="Terrestrial" group="SwayingGrassDanceStyle">
+	<charm id="Terrestrial.TeethInTheGrassStrike" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="4" />
 			<essence value="3" />
@@ -90,7 +90,7 @@
 		<charmAttribute attribute="Illusion" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Terrestrial.RollingWithTheWindMethod" exalt="Terrestrial" group="SwayingGrassDanceStyle">
+	<charm id="Terrestrial.RollingWithTheWindMethod" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="4" />
 			<essence value="3" />
@@ -108,7 +108,7 @@
 		<charmAttribute attribute="Counterattack" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Terrestrial.InescapableTumbleweedPrana" exalt="Terrestrial" group="SwayingGrassDanceStyle">
+	<charm id="Terrestrial.InescapableTumbleweedPrana" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -124,7 +124,7 @@
 		<charmAttribute attribute="Terrestrial" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Terrestrial.WhirlingRhythmRevolution" exalt="Terrestrial" group="SwayingGrassDanceStyle">
+	<charm id="Terrestrial.WhirlingRhythmRevolution" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -140,7 +140,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Terrestrial.GrassReapingPosture" exalt="Terrestrial" group="SwayingGrassDanceStyle">
+	<charm id="Terrestrial.GrassReapingPosture" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -158,7 +158,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Terrestrial.SerenadingTheReed" exalt="Terrestrial" group="SwayingGrassDanceStyle">
+	<charm id="Terrestrial.SerenadingTheReed" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />

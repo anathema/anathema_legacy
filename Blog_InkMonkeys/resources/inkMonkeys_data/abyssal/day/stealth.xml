@@ -27,7 +27,7 @@
 		<prerequisite>
 			<trait id="Stealth" value="4" />
 			<essence value="3" />
-			<charmReference id="Abyssal.ShadowCloakTechinque" />
+			<charmReference id="Abyssal.ShadowCloakTechnique" />
 		</prerequisite>
 		<cost>
 			<essence cost="4" />

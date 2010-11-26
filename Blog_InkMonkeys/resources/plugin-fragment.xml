@@ -52,6 +52,11 @@
              <parameter id="rules" value="SecondEdition" />
              <parameter id="path" value="inkMonkeys_data/abyssal/midnight/integrity.xml" />
         </parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="inkMonkeys_data/abyssal/midnight/performance.xml" />
+		</parameter>
         <parameter id="list">
              <parameter id="type" value="Abyssal" />
              <parameter id="rules" value="SecondEdition" />
@@ -72,6 +77,21 @@
              <parameter id="rules" value="SecondEdition" />
              <parameter id="path" value="inkMonkeys_data/abyssal/moonshadow/socialize.xml" />
         </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/moonshadow/sail.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/moonshadow/ride.xml" />
+        </parameter>
+        <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/abyssal/moonshadow/bureaucracy.xml" />
+        </parameter>
 		<!-- Martial Arts -->
 		<parameter id="list">
 			<parameter id="type" value="MartialArts" />
@@ -81,29 +101,29 @@
 		<parameter id="list">
 			<parameter id="type" value="MartialArts" />
 			<parameter id="rules" value="SecondEdition" />
-			<parameter id="path" value="inkMonkeys_Data/misc/flowingKata.xml" />
+			<parameter id="path" value="inkMonkeys_data/misc/darkMessiah.xml" />
 		</parameter>
-		<parameter id="list">
+		<!--parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="inkMonkeys_Data/misc/flowingKata.xml" />
+		</parameter-->
+		<!--parameter id="list">
 			<parameter id="type" value="MartialArts" />
 			<parameter id="rules" value="SecondEdition" />
 			<parameter id="path" value="inkMonkeys_Data/misc/infernalMonster.xml"/>
-		</parameter>
+		</parameter-->
 		<parameter id="list">
 			<parameter id="type" value="MartialArts" />
 			<parameter id="rules" value="SecondEdition" />
 			<parameter id="path" value="inkMonkeys_data/misc/solarHero.xml" />
 		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="inkMonkeys_data/misc/swayingGrassDance.xml" />
+		</parameter>
 		<!-- Solar Charms -->
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="inkMonkeys_data/solar/zenith/resistance.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Solar" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="inkMonkeys_data/solar/zenith/integrity.xml" />
-          </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
@@ -127,12 +147,57 @@
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="inkMonkeys_data/solar/eclipse/bureaucracy.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="inkMonkeys_data/solar/eclipse/ride.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="inkMonkeys_data/solar/eclipse/sail.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="inkMonkeys_data/solar/night/athletics.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="inkMonkeys_data/solar/night/awareness.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="inkMonkeys_data/solar/night/dodge.xml" />
           </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="inkMonkeys_data/solar/night/larceny.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="inkMonkeys_data/solar/zenith/presence.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="inkMonkeys_data/solar/zenith/resistance.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="inkMonkeys_data/solar/zenith/performance.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="inkMonkeys_data/solar/zenith/integrity.xml" />
           </parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="InkMonkeysResources">

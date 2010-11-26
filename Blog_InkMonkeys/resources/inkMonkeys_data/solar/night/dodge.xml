@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Dodge -->
-     <charm id="Solar.ReedintheWind" exalt="Solar" group="Dodge">
+     <charm id="Solar.ReedInTheWind" exalt="Solar" group="Dodge">
           <prerequisite>
                <trait id="Dodge" value="2" />
                <essence value="2" />

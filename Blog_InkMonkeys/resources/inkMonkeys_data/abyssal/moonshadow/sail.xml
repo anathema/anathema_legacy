@@ -41,7 +41,7 @@
           <prerequisite>
                <trait id="Sail" value="4" />
                <essence value="3" />
-               <charmReference id="Solar.UnhallowedGhostShip" />
+               <charmReference id="Abyssal.UnhallowedGhostShip" />
           </prerequisite>
           <cost>
 			<essence cost="7" />
