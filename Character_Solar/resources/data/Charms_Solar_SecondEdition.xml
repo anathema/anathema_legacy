@@ -107,6 +107,7 @@
   <charm id="Solar.ThereIsNoWind" exalt="Solar" group="Archery">
     <prerequisite>
       <essence id="Essence" value="1"/>
+      <trait id="Archery" value="4"/>
     </prerequisite>
     <cost>
       
@@ -333,6 +334,7 @@
   <charm id="Solar.HungryTigerTechnique" exalt="Solar" group="Melee">
     <prerequisite>
       <essence id="Essence" value="1"/>
+      <trait id="Melee" value="1"/>
     </prerequisite>
     <cost>
       
@@ -364,6 +366,7 @@
   <charm id="Solar.OneWeapon,TwoBlows" exalt="Solar" group="Melee">
     <prerequisite>
       <essence id="Essence" value="1"/>
+      <trait id="Melee" value="1"/>
     </prerequisite>
     <cost>
       
@@ -659,6 +662,7 @@
   <charm id="Solar.Joint-WoundingAttack" exalt="Solar" group="Thrown">
     <prerequisite>
       <essence id="Essence" value="1"/>
+      <trait id="Thrown" value="1"/>
       <charmAttributeRequirement attribute="ExcellencyThrown" count="1"/>
     </prerequisite>
     <cost>
@@ -676,6 +680,7 @@
   <charm id="Solar.Observer-DeceivingAttack" exalt="Solar" group="Thrown">
     <prerequisite>
       <essence id="Essence" value="1"/>
+      <trait id="Thrown" value="1"/>
     </prerequisite>
     <cost>
       
