@@ -334,7 +334,7 @@
   <charm id="Solar.HungryTigerTechnique" exalt="Solar" group="Melee">
     <prerequisite>
       <essence id="Essence" value="1"/>
-      <trait id="Melee" value="1"/>
+      <trait id="Melee" value="2"/>
     </prerequisite>
     <cost>
       
@@ -366,7 +366,7 @@
   <charm id="Solar.OneWeapon,TwoBlows" exalt="Solar" group="Melee">
     <prerequisite>
       <essence id="Essence" value="1"/>
-      <trait id="Melee" value="1"/>
+      <trait id="Melee" value="2"/>
     </prerequisite>
     <cost>
       
@@ -679,8 +679,8 @@
   </charm>
   <charm id="Solar.Observer-DeceivingAttack" exalt="Solar" group="Thrown">
     <prerequisite>
-      <essence id="Essence" value="1"/>
-      <trait id="Thrown" value="1"/>
+      <essence id="Essence" value="2"/>
+      <trait id="Thrown" value="3"/>
     </prerequisite>
     <cost>
       
