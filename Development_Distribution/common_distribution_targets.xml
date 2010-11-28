@@ -27,9 +27,9 @@
 		<ant antfile="build_charmcascades_plugin.xml" />
 		<!-- Additional Sources -->
 		<ant antfile="build_blog_inkmonkeys_plugin.xml" />
-		<ant antfile="build_blog_inkmonkeys_vol8_plugin.xml" />
+<!--		<ant antfile="build_blog_inkmonkeys_vol8_plugin.xml" />
 		<ant antfile="build_blog_inkmonkeys_vol10-11_plugin.xml" />
-		<ant antfile="build_blog_inkmonkeys_vol20-22_plugin.xml" />
+		<ant antfile="build_blog_inkmonkeys_vol20-22_plugin.xml" /> -->
 		<ant antfile="build_book_glories_luna_plugin.xml" />
 		<ant antfile="build_book_glories_maidens_plugin.xml" />
 		<ant antfile="build_book_glories_unconqueredsun_plugin.xml" />

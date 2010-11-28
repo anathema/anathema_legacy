@@ -5,6 +5,14 @@ Exalted (C) 2001-2010 by White Wolf Publishing, Inc.
 
 http://anathema.sf.net
 ===------------------------------------------------------------------------------===
+			Release 1.5.1 "Lookshy"
+===------------------------------------------------------------------------------===
+
+-- Features --
+* [2E] Bug-fix release to remove Charm errors and Combo-creation bug.
+* [2E] Internal changes to shrink the number of Ink_Monkeys plugins.
+
+===------------------------------------------------------------------------------===
 			Release 1.5.0 "Lookshy"
 ===------------------------------------------------------------------------------===
 

@@ -10,37 +10,37 @@ import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SupremePerfection extends AbstractGenericCharm{
+public class SupremePerfectionOf extends AbstractGenericCharm{
 
   @Override
   protected String getId() {
-    return "Solar.SupremePerfection";
+    return "Solar.SupremePerfectionOf";
   }
 
   @Override
   protected ExaltedSourceBook getSourceBook() {
-    return ExaltedSourceBook.LordsOfCreation;
+    return ExaltedSourceBook.ScrollErrata;
   }
 
   @Override
   protected boolean isComboOk() {
-    return true;
+    return false;
   }
 
   @Override
   public String getCostString(IResources resources) {
-    return "8 m, 2 wp";
+    return "-";
   }
 
   @Override
   public String getDurationString(IResources resources) {
-    return SimpleDuration.INSTANT_DURATION.getText(resources);
+    return SimpleDuration.PERMANENT_DURATION.getText(resources);
   }
 
   @Override
   public String getType(IResources resources) {
     CharmTypeModel model = new CharmTypeModel();
-    model.setCharmType(CharmType.Reflexive);
+    model.setCharmType(CharmType.Permanent);
     return new ShortCharmTypeStringBuilder(resources).createTypeString(model);
   }
 }
