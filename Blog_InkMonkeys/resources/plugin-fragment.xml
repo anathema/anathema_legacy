@@ -199,6 +199,12 @@
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="inkMonkeys_data/solar/zenith/integrity.xml" />
           </parameter>
+			<!-- Terrestrial Charms -->
+			<parameter id="list">
+				<parameter id="type" value="Dragon-Blooded" />
+				<parameter id="rules" value="SecondEdition" />
+				<parameter id="path" value="inkMonkeys_data/terrestrial/water/larceny.xml" />
+			</parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="InkMonkeysResources">
           <parameter id="bundle" value="inkMonkeys" />

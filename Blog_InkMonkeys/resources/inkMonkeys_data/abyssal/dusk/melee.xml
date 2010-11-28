@@ -84,7 +84,7 @@
 		</cost>
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
-		<charmAttribute attribute="Martial-ready" visualize="true" />
+		<charmAttribute attribute="Martial" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
