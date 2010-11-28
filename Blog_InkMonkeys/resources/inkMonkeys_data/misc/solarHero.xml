@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../charms.dtd">
+<!--
+
+    solarHero.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2010  Scott D. Olson (scottolson275@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Solar Hero Style -->
+     <charm id="Solar.BreakTheStorm" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="4" />
+               <essence value="3" />
+               <charmReference id="Solar.KnockoutBlow" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+          	<special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.ChainedThunderStrike" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.BreakTheStorm" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+          	<special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.StunningDeathblowEvasion" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="4" />
+               <essence value="2" />
+               <charmReference id="Solar.DragonCoilTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration amount="1" unit="action" />
+          <charmtype type="Reflexive">
+          	<special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.TitanStraighteningMethod" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.DragonCoilTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="7" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.TeahouseShatteringSymphony" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="3" />
+               <essence value="3" />
+               <charmReference id="Solar.HammeronIronTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="ExtraAction" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.ShadowFootTrap" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="3" />
+               <essence value="3" />
+               <charmReference id="Solar.DragonCoilTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+          	<special primaryStep="1" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="MartialArcheryMeleeThrown" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.DomeShatteringSmite" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="3" />
+               <essence value="3" />
+               <charmReference id="Solar.HeavenThunderHammer" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Celestial" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.LightningStrikesTwice" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="4" />
+               <essence value="4" />
+               <charmReference id="Solar.DomeShatteringSmite" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(2m, 1wp)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="MartialArcheryMeleeThrown" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.SplitTheChase" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.LightningStrikesTwice" />
+          </prerequisite>
+          <cost>
+               <essence cost="-"/>
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.FlickerFadeRecursion" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.SplitTheChase" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(+2m)"/>
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.StormBurstExplosion" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.LightningStrikesTwice" />
+               <charmReference id="Solar.PoundingHammerDevastationTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(6m, 1wp)"/>
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="MartialReadyArcheryMeleeThrown" visualize="true"/>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.SecondImpactFlourish" exalt="Solar" group="SolarHeroStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="3" />
+			<charmReference id="Solar.HeavenThunderHammer" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="(3m)"/>
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.SolarCombination" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="4" />
+               <essence value="3" />
+               <charmReference id="Solar.HammeronIronTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="ExtraAction" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.OneWithTheWave" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.CrashingWaveThrow" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+          	<special primaryStep="9" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.CancelTheApocalypse" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.CrashingWaveThrow" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(+5m)" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.CastDownStarsCondemnation" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="6" />
+               <essence value="6" />
+               <charmReference id="Solar.CancelTheApocalypse" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(+10m, 1wp)" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.StanceBreakerInstinct" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.FistsIronTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="" text="(5m)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Celestial" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.HellraisersInstinct" exalt="Solar" group="SolarHeroStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.SledgehammerFistPunch" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(6m)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.DauntingTheFalseSavior" exalt="Solar" group="SolarHeroStyle">
+		  <prerequisite>
+			   <trait id="MartialArts" value="5" />
+			   <essence value="4" />
+			   <charmReference id="Solar.SolarHeroForm" />
+		  </prerequisite>
+		  <cost >
+		       <essence cost="5" />
+		  </cost>
+          <duration  amount="1" unit="action"/>
+		  <charmtype type="Reflexive" />
+          <charmAttribute attribute="Celestial" />
+		  <charmAttribute attribute="Combo-OK" visualize="true" />
+		  <source source="InkMonkeys" />
+	 </charm>
+	 <charm id="Solar.SunSuffusingSlag" exalt="Solar" group="SolarHeroStyle">
+		  <prerequisite>
+			   <trait id="MartialArts" value="5" />
+			   <essence value="4" />
+		       <charmReference id="Solar.DauntingTheFalseSavior" />
+		  </prerequisite>
+		  <cost >
+		       <essence cost="5" />
+		  </cost>
+          <duration  amount="1" unit="action"/>
+    	  <charmtype type="Reflexive">
+   		       <special primaryStep="1" />
+		  </charmtype>
+          <charmAttribute attribute="Celestial" />
+		  <charmAttribute attribute="Combo-OK" visualize="true" /> 
+		  <charmAttribute attribute="Crippling" visualize="true" /> 
+          <charmAttribute attribute="MartialArcheryMeleeThrown" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+		  <source source="InkMonkeys" />
+	 </charm>
+	 <charm id="Solar.WorldRupturingBlow" exalt="Solar" group="SolarHeroStyle">
+		  <prerequisite>
+			   <trait id="MartialArts" value="5" />
+			   <essence value="5" />
+		       <charmReference id="Solar.HeavenThunderHammer" />
+		  </prerequisite>
+		  <cost >
+		       <essence cost="" text="(1m per yard)" />
+		  </cost>
+          <duration duration="Permanent" />
+    	  <charmtype type="Permanent" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+		  <source source="InkMonkeys" />
+	 </charm>
+	 <charm id="Solar.BreakThroughTheWorld" exalt="Solar" group="SolarHeroStyle">
+		  <prerequisite>
+			   <trait id="MartialArts" value="5" />
+			   <essence value="5" />
+		       <charmReference id="Solar.SledgehammerFistPunch" />
+		  </prerequisite>
+		  <cost >
+		       <essence cost="7" />
+		       <willpower cost="1" />
+		  </cost>
+          <duration duration="Instant" />
+    	  <charmtype type="Reflexive">
+   		       <special primaryStep="1" />
+		  </charmtype>
+          <charmAttribute attribute="Celestial" />
+		  <charmAttribute attribute="Combo-OK" visualize="true" /> 
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/> 
+		  <charmAttribute attribute="Obvious" visualize="true" />
+		  <source source="InkMonkeys" />
+	 </charm>
+	 <charm id="Solar.SkyBreakerThrow" exalt="Solar" group="SolarHeroStyle">
+		  <prerequisite>
+			   <trait id="MartialArts" value="6" />
+			   <essence value="6" />
+		       <charmReference id="Solar.OneWithTheWave" />
+		       <charmReference id="Solar.HorizonHurlingTactic" />
+		  </prerequisite>
+		  <cost >
+		       <essence cost="7" />
+		       <willpower cost="1" />
+		  </cost>
+          <duration duration="Instant" />
+    	  <charmtype type="Reflexive">
+   		       <special primaryStep="9" />
+		  </charmtype>
+          <charmAttribute attribute="Celestial" />
+		  <charmAttribute attribute="Combo-OK" visualize="true" /> 
+          <charmAttribute attribute="Counterattack" visualize="true" />
+		  <source source="InkMonkeys" />
+	 </charm>
+</charmlist>

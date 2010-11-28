@@ -1,0 +1,9 @@
+!3 Charisma must be 2, so Finding the Spirit's Shape can be learned.
+!|Check Attributes|
+|traitType|value?|
+|Charisma|2|
+
+!3 This costs one attribute point.
+!|Check Attribute Points|
+|getTotalDotsSpent?|
+|1|

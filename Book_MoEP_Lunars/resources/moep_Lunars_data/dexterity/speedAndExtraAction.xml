@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    speedAndExtraAction.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Speed and Extra Action Charms -->
+     <charm id="Lunar.DiligentHiveImitation" exalt="Lunar" group="SpeedAndExtraAction">
+          <prerequisite>
+               <trait id="Dexterity" value="3" />
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyDexterity" count="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration event="NextAction" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.WaspStingBlurDex" exalt="Lunar" group="SpeedAndExtraAction">
+          <prerequisite>
+               <trait id="Dexterity" value="3" />
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyDexterity" count="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" text="per tick" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+			<!-- NOTE:  Lunar/Wits "Mirror" - Wasp Sting Blur -->
+          <charmAttribute attribute="Fury-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.TwinFangTechnique" exalt="Lunar" group="SpeedAndExtraAction">
+          <prerequisite>
+               <trait id="Dexterity" value="4" />
+               <essence value="2" />
+               <charmReference id="Lunar.WaspStingBlurDex" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.OctopusAndSpiderBarrage" exalt="Lunar" group="SpeedAndExtraAction">
+          <prerequisite>
+               <trait id="Dexterity" value="5" />
+               <essence value="3" />
+               <charmReference id="Lunar.WaspStingBlurDex" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="ExtraAction" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.LightningStrokeAttackDex" exalt="Lunar" group="SpeedAndExtraAction">
+          <prerequisite>
+               <trait id="Dexterity" value="5" />
+               <essence value="4" />
+               <charmReference id="Lunar.TwinFangTechnique" />
+               <charmReference id="Lunar.OctopusAndSpiderBarrage" />
+          </prerequisite>
+          <cost>
+               <essence cost="7" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+			<!-- NOTE:  Lunar/Strength "Mirror" - Lightning Stroke Attack -->
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.SpreadingTheWyldRoots" exalt="Lunar" group="SpeedAndExtraAction">
+          <prerequisite>
+               <trait id="Dexterity" value="5" />
+               <essence value="4" />
+               <charmReference id="Lunar.OctopusAndSpiderBarrage" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Wyld" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+</charmlist>

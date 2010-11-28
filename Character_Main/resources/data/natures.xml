@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<naturelist>
+	<nature id="Architect" name="Architect">
+		<willpower text="(see Exalted, page 114)"/>
+	</nature>
+	<nature id="Bravo" name="Bravo">
+		<willpower text="(see Exalted, page 115)"/>
+	</nature>
+	<nature id="Bureaucrat" name="Bureaucrat">
+		<willpower text="(see Exalted, page 115)"/>
+	</nature>
+	<nature id="Caregiver" name="Caregiver">
+		<willpower text="(see Exalted, page 115)"/>
+	</nature>
+	<nature id="Conniver" name="Conniver">
+		<willpower text="(see Exalted, page 115)"/>
+	</nature>
+	<nature id="Critic" name="Critic">
+		<willpower text="(see Exalted, page 115)"/>
+	</nature>
+	<nature id="Explorer" name="Explorer">
+		<willpower text="(see Exalted, page 115)"/>
+	</nature>
+	<nature id="Follower" name="Follower">
+		<willpower text="(see Exalted, page 115)"/>
+	</nature>
+	<nature id="Gallant" name="Gallant">
+		<willpower text="(see Exalted, page 115)"/>
+	</nature>
+	<nature id="Hedonist" name="Hedonist">
+		<willpower text="(see Exalted, page 115)"/>
+	</nature>
+	<nature id="Jester" name="Jester">
+		<willpower text="(see Exalted, page 115)"/>
+	</nature>
+	<nature id="Judge" name="Judge">
+		<willpower text="(see Exalted, page 116)"/>
+	</nature>
+	<nature id="Leader" name="Leader">
+		<willpower text="(see Exalted, page 116)"/>
+	</nature>
+	<nature id="Martyr" name="Martyr">
+		<willpower text="(see Exalted, page 116)"/>
+	</nature>
+		<nature id="Paragon" name="Paragon">
+		<willpower text="(see Exalted, page 116)"/>
+	</nature>
+	<nature id="Rebel" name="Rebel">
+		<willpower text="(see Exalted, page 117)"/>
+	</nature>
+	<nature id="Savant" name="Savant">
+		<willpower text="(see Exalted, page 117)"/>
+	</nature>
+	<nature id="Survivor" name="Survivor">
+		<willpower text="(see Exalted, page 117)"/>
+	</nature>
+	<nature id="Thrillseeker" name="Thrillseeker">
+		<willpower text="(see Exalted, page 117)"/>
+	</nature>
+	<nature id="Traditionalist" name="Traditionalist">
+		<willpower text="(see Exalted, page 117)"/>
+	</nature>
+	<nature id="Visionary" name="Visionary">
+		<willpower text="(see Exalted, page 117)"/>
+	</nature>
+</naturelist>

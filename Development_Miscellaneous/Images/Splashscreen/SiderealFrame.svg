@@ -1,0 +1,52 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<svg contentScriptType="text/ecmascript" width="550" xmlns:xlink="http://www.w3.org/1999/xlink"
+     zoomAndPan="magnify" contentStyleType="text/css" height="290" preserveAspectRatio="xMidYMid meet"
+     xmlns="http://www.w3.org/2000/svg" version="1.0">
+    <defs>
+        <filter x="-10%" y="-10%" width="150%" xmlns:xlink="http://www.w3.org/1999/xlink"
+             filterUnits="objectBoundingBox" xlink:type="simple" xlink:actuate="onLoad" height="150%"
+             id="Beveled-Marble-Shadow" xlink:show="other">
+            <feTurbulence baseFrequency="0.15" stitchTiles="noStitch" type="turbulence" result="I0A"
+                 numOctaves="1"/>
+            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" result="I0" in="I0A" scale="25"
+                 in2="I0A"/>
+            <feColorMatrix values="0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 255" type="matrix" result="I1"
+                 in="I0"/>
+            <feComposite in2="I1" operator="arithmetic" result="I2" in="SourceGraphic" k1="1"/>
+            <feGaussianBlur stdDeviation="1" result="I3" in="I2"/>
+            <feGaussianBlur stdDeviation="3" result="I4" in="SourceAlpha"/>
+            <feSpecularLighting specularConstant="0.5" specularExponent="20" result="I5" in="I4"
+                 surfaceScale="5" lighting-color="rgb(255,255,255)">
+                <fePointLight x="-5000" y="-10000" z="20000"/>
+            </feSpecularLighting>
+            <feComposite result="I6" in="I3" k2="1" k3="1" in2="I5" operator="arithmetic"/>
+            <feComposite in2="SourceGraphic" operator="in" result="I7" in="I6"/>
+            <feGaussianBlur stdDeviation="4" result="blur" in="SourceAlpha"/>
+            <feOffset dx="4" dy="4" result="offsetBlur" in="blur"/>
+            <feMerge>
+                <feMergeNode in="offsetBlur"/>
+                <feMergeNode in="I7"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <g>
+        <polygon fill="black" stroke-width="0" points="265.375,26.157894 296.625,5.0 
+            365.375,29.68421 449.75,36.736843 443.49997,57.894737 477.875,64.947365 512.25,54.36842 
+            527.875,82.57895 531.0,103.73684 512.25,139.0 531.0,174.26315 527.875,195.42104 
+            512.25,223.63158 477.875,213.05264 443.49997,220.10529 449.75,241.26315 365.375,248.3158 
+            296.625,273.0 265.375,251.8421 234.125,273.0 165.375,248.3158 81.0,241.26315 
+            87.25,220.10529 52.875,213.05264 24.75,223.63158 9.125,195.42104 6.0,174.26315 
+            24.75,139.0 6.0,103.73684 9.125,82.57895 24.75,54.36842 59.125,64.947365 87.25,57.894737 
+            81.0,36.736843 165.375,29.68421 234.125,5.0"/>
+        <polygon fill="none" stroke-width="3" points="265.375,26.157894 296.625,5.0 365.375,29.68421 
+            449.75,36.736843 443.49997,57.894737 477.875,64.947365 512.25,54.36842 527.875,82.57895 
+            531.0,103.73684 512.25,139.0 531.0,174.26315 527.875,195.42104 512.25,223.63158 
+            477.875,213.05264 443.49997,220.10529 449.75,241.26315 365.375,248.3158 296.625,273.0 
+            265.375,251.8421 234.125,273.0 165.375,248.3158 81.0,241.26315 87.25,220.10529 
+            52.875,213.05264 24.75,223.63158 9.125,195.42104 6.0,174.26315 24.75,139.0 6.0,103.73684 
+            9.125,82.57895 24.75,54.36842 59.125,64.947365 87.25,57.894737 81.0,36.736843 
+            165.375,29.68421 234.125,5.0" filter="url(#Beveled-Marble-Shadow)" stroke="rgb(128,128,128)"/>
+    </g>
+</svg>

@@ -1,0 +1,38 @@
+This test will ensure that Essence is not lowerable.
+!3 Raise Essence to 3
+!|Set Other Traits|
+|traitType|value|
+|Essence|3|
+
+!|Check Other Traits|
+|traitType|value?|
+|Essence|3|
+
+!3 Set Experienced
+!|Set Experienced|
+
+!3 Ensure that lowering fails.
+!|Set Other Traits|
+|traitType|value|
+|Essence|1|
+
+!|Check Other Traits|
+|traitType|value?|
+|Essence|3|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|0|
+
+!3 Ensure that raising succeeds
+!|Set Other Traits|
+|traitType|value|
+|Essence|4|
+
+!|Check Other Traits|
+|traitType|value?|
+|Essence|4|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|24|

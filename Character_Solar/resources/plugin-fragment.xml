@@ -1,0 +1,39 @@
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.solar" version="1.03" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+	<runtime>		
+		<library id="solar" path="./" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="solarresources" path="./" type="resources">
+			<export prefix="*"/>
+		</library>
+	</runtime>
+	<extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="SolarCharms">
+	  <parameter id="list">
+		<parameter id="type" value="Solar"/>
+		<parameter id="rules" value="CoreRules"/>
+		<parameter id="path" value="data/Charms_Solar_CoreRules.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Solar"/>
+		<parameter id="rules" value="PowerCombat"/>
+		<parameter id="path" value="data/Charms_Solar_PowerCombat.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Solar"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_Solar_SecondEdition.xml"/>
+	  </parameter>
+ 	  <parameter id="list">
+		<parameter id="type" value="Solar"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_Solar_2nd_Occult.xml"/>
+	  </parameter>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="SolarResources">
+		<parameter id="bundle" value="Charms_Solar"/>
+		<parameter id="bundle" value="Charms_Solar_Pages"/>
+		<parameter id="bundle" value="Charms_Solar_SecondEdition"/>
+		<parameter id="bundle" value="Solar"/>	
+	</extension>
+</plugin-fragment>

@@ -1,0 +1,82 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteSidereal.SnippetCreateNewDefaultSidereal
+
+!3 No Caste
+
+!|CheckCharm|
+|id|isFavored?|
+|Sidereal.AuspiciousProspectforJourneys|false|
+|Sidereal.AuspiciousProspectforSerenity|false|
+|Sidereal.AuspiciousProspectforBattles|false|
+|Sidereal.AuspiciousProspectforFate|false|
+|Sidereal.AuspiciousProspectforEndings|false|
+
+!3 Caste Journeys
+
+!|SetConcept|
+|caste|
+|Journeys|
+
+!|CheckCharm|
+|id|isFavored?|
+|Sidereal.AuspiciousProspectforJourneys|true|
+|Sidereal.AuspiciousProspectforSerenity|false|
+|Sidereal.AuspiciousProspectforBattles|false|
+|Sidereal.AuspiciousProspectforFate|false|
+|Sidereal.AuspiciousProspectforEndings|false|
+
+!3 Caste Serenity
+
+!|SetConcept|
+|caste|
+|Serenity|
+
+!|CheckCharm|
+|id|isFavored?|
+|Sidereal.AuspiciousProspectforJourneys|false|
+|Sidereal.AuspiciousProspectforSerenity|true|
+|Sidereal.AuspiciousProspectforBattles|false|
+|Sidereal.AuspiciousProspectforFate|false|
+|Sidereal.AuspiciousProspectforEndings|false|
+
+!3 Caste Battles
+
+!|SetConcept|
+|caste|
+|Battles|
+
+!|CheckCharm|
+|id|isFavored?|
+|Sidereal.AuspiciousProspectforJourneys|false|
+|Sidereal.AuspiciousProspectforSerenity|false|
+|Sidereal.AuspiciousProspectforBattles|true|
+|Sidereal.AuspiciousProspectforFate|false|
+|Sidereal.AuspiciousProspectforEndings|false|
+
+!3 Caste Secrets
+
+!|SetConcept|
+|caste|
+|Secrets|
+
+!|CheckCharm|
+|id|isFavored?|
+|Sidereal.AuspiciousProspectforJourneys|true|
+|Sidereal.AuspiciousProspectforSerenity|true|
+|Sidereal.AuspiciousProspectforBattles|true|
+|Sidereal.AuspiciousProspectforFate|true|
+|Sidereal.AuspiciousProspectforEndings|true|
+
+!3 Caste Endings
+
+!|SetConcept|
+|caste|
+|Endings|
+
+!|CheckCharm|
+|id|isFavored?|
+|Sidereal.AuspiciousProspectforJourneys|false|
+|Sidereal.AuspiciousProspectforSerenity|false|
+|Sidereal.AuspiciousProspectforBattles|false|
+|Sidereal.AuspiciousProspectforFate|false|
+|Sidereal.AuspiciousProspectforEndings|true|
+

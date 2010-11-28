@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../charms.dtd">
+<!--
+
+    stamina.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Stamina -->
+     <charm id="Lunar.MoonsilverAbsorption" exalt="Lunar" group="Endurance">
+          <prerequisite>
+               <trait id="Stamina" value="6" />
+               <essence value="5" />
+               <charmReference id="Lunar.UnstoppableJuggernautIncarnation" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Lunar.RelentlessLunarHorde" exalt="Lunar" group="Fury">
+          <prerequisite>
+               <trait id="Stamina" value="5" />
+               <essence value="6" />
+               <charmReference id="Lunar.RelentlessLunarFury" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="War" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Lunar.PurgingTheTarnishedSilver" exalt="Lunar" group="Healing">
+          <prerequisite>
+               <trait id="Stamina" value="6" />
+               <essence value="5" />
+               <charmReference id="Lunar.InstinctiveStaminaUnity" />
+               <charmReference id="Lunar.HaltingTheScarletFlow" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" text="or more motes" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Lunar.NativeSonsGrace" exalt="Lunar" group="Territory">
+          <prerequisite>
+               <trait id="Stamina" value="5" />
+               <essence value="4" />
+               <charmReference id="Lunar.FrenziedBearFortification" />
+               <charmAttributeRequirement attribute="ExcellencyStamina" count="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="7" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Fury-OK" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Lunar.IndestructibleRecursiveDesign" exalt="Lunar" group="Territory">
+          <prerequisite>
+          <trait id="Stamina" value="4" />
+          <essence value="4" />
+          <charmReference id="Lunar.HideTougheningEssence" />
+		</prerequisite>
+          <cost>
+               <essence cost="8" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple">
+               <special speed="5" defense="-2" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+			<source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
+     </charm>
+</charmlist>

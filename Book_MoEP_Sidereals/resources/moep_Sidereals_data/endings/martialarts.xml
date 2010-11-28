@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    martialarts.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Violet Bier Style -->
+     <charm id="Celestial.SecretsOfFutureStrife" exalt="Sidereal" group="VioletBierStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="1" />
+               <essence value="1" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Celestial.FlightOfMercury" exalt="Sidereal" group="VioletBierStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="2" />
+               <essence value="1" />
+               <charmReference id="Celestial.SecretsOfFutureStrife" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" text="per action" />
+          </cost>
+          <duration amount="MartialArts" unit="action" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Celestial.BladeOfTheBattleMaiden" exalt="Sidereal" group="VioletBierStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="3" />
+               <essence value="2" />
+               <charmReference id="Celestial.SecretsOfFutureStrife" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" text="per die" />
+               <willpower cost="2" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Celestial.JoyInAdversityStance" exalt="Sidereal" group="VioletBierStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="2" />
+               <essence value="1" />
+               <charmReference id="Celestial.SecretsOfFutureStrife" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive">
+               <special primaryStep="5" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Celestial.VioletBierOfSorrowsForm" exalt="Sidereal" group="VioletBierStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="4" />
+               <essence value="2" />
+               <charmReference id="Celestial.BladeOfTheBattleMaiden" />
+               <charmReference id="Celestial.FlightOfMercury" />
+               <charmReference id="Celestial.JoyInAdversityStance" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Form" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Celestial.DeathParryingStroke" exalt="Sidereal" group="VioletBierStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="4" />
+               <essence value="2" />
+               <charmReference id="Celestial.VioletBierOfSorrowsForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" text="per health level" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="8" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Celestial.UnobstructedBlow" exalt="Sidereal" group="VioletBierStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="3" />
+               <charmReference id="Celestial.DeathParryingStroke" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Celestial.HorrificWreath" exalt="Sidereal" group="VioletBierStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="4" />
+               <essence value="2" />
+               <charmReference id="Celestial.VioletBierOfSorrowsForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Holy" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Celestial.MetalStorm" exalt="Sidereal" group="VioletBierStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="3" />
+               <charmReference id="Celestial.HorrificWreath" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" text="per attack" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="ExtraAction" />
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Celestial.CrimsonPalmCounterstrike" exalt="Sidereal" group="VioletBierStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="4" />
+               <essence value="2" />
+               <charmReference id="Celestial.VioletBierOfSorrowsForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Celestial.LifeSeveringBlow" exalt="Sidereal" group="VioletBierStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="3" />
+               <charmReference id="Celestial.CrimsonPalmCounterstrike" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" text="per health level" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="8" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Celestial.ConclusionPursuingApproach" exalt="Sidereal" group="VioletBierStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+               <charmReference id="Celestial.LifeSeveringBlow" />
+               <charmReference id="Celestial.MetalStorm" />
+               <charmReference id="Celestial.UnobstructedBlow" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1" />
+               <health cost="1" type="Lethal" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple">
+               <special speed="6" defense="-2" />
+          </charmtype>
+          <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Fate" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="PrayerStrip" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+</charmlist>

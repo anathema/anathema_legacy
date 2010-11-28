@@ -1,0 +1,17 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
+
+Set a customized background with invalid XML-Tag name.
+
+!|Set Background|
+|traitType|value|
+|Connection (Yu Shan)|1|
+
+Save and load the character...
+
+!|Save And Load Character|
+
+... and verify that the customized background has the correct value.
+
+!|Check Background|
+|backgroundType|value?|
+|Connection (Yu Shan)|1|

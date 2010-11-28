@@ -1,0 +1,7 @@
+In one of Archery, Melee or Throw must be spent at least one dot. First we check the initial values of this abilities:
+
+!|Check Abilities|
+|Trait Type|value?|
+|Thrown|0|
+|Archery|1|
+|Melee|0|

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Book MoEP Sidereals Plugin" default="Build Manual of Exalted Power: Sidereals">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Book_MoEP_Sidereals" />
+	<property name="module.name" value="book_moep_sidereals" />
+
+	<property file="plugin.directories.properties" />
+	
+	<target name="Build Manual of Exalted Power: Sidereals" depends="Compile, Build JAR"/>
+</project>

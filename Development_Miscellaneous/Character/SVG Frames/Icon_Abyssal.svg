@@ -1,0 +1,42 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg width="215" xmlns:xlink="http://www.w3.org/1999/xlink" height="105.0" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+        <filter x="-10%" y="-10%" width="150%" filterUnits="objectBoundingBox" height="150%" id="Beveled-Marble-Shadow">
+            <feTurbulence baseFrequency="0.15" result="I0A" numOctaves="1"/>
+            <feDisplacementMap xChannelSelector="R" result="I0" yChannelSelector="G" in="I0A" scale="25"
+                 in2="I0A"/>
+            <feColorMatrix values="0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 255" type="matrix" result="I1"
+                 in="I0"/>
+            <feComposite operator="arithmetic" in2="I1" result="I2" in="SourceGraphic" k1="1"/>
+            <feGaussianBlur stdDeviation="1" result="I3" in="I2"/>
+            <feGaussianBlur stdDeviation="3" result="I4" in="SourceAlpha"/>
+            <feSpecularLighting specularConstant="0.5" specularExponent="20" result="I5" in="I4"
+                 surfaceScale="5" lighting-color="rgb(255,255,255)">
+                <fePointLight x="-5000" y="-10000" z="20000"/>
+            </feSpecularLighting>
+            <feComposite result="I6" in="I3" k2="1" k3="1" in2="I5" operator="arithmetic"/>
+            <feComposite operator="in" in2="SourceGraphic" result="I7" in="I6"/>
+            <feGaussianBlur stdDeviation="4" result="blur" in="SourceAlpha"/>
+            <feOffset dx="4" dy="4" result="offsetBlur" in="blur"/>
+            <feMerge>
+                <feMergeNode in="offsetBlur"/>
+                <feMergeNode in="I7"/>
+            </feMerge>
+        </filter>
+    </defs>
+<g>
+   <polygon stroke-width="0" points="105.0,8.0 94.0,15.0 43.0,22.0 51.0,30.0 21.0,29.0 
+        16.0,41.0 9.0,49.0 16.0,57.0 21.0,69.0 51.0,68.0 43.0,76.0 94.0,83.0 105.0,90.0 116.0,83.0 
+        167.0,76.0 159.0,68.0 189.0,69.0 194.0,57.0 201.0,49.0 194.0,41.0 189.0,29.0 159.0,30.0 
+        167.0,22.0 116.0,15.0" fill="rgb(169, 169, 169) 
+"/>
+
+   <polygon fill="none" stroke-width="3" points="105.0,8.0 94.0,15.0 43.0,22.0 51.0,30.0 21.0,29.0 
+        16.0,41.0 9.0,49.0 16.0,57.0 21.0,69.0 51.0,68.0 43.0,76.0 94.0,83.0 105.0,90.0 116.0,83.0 
+        167.0,76.0 159.0,68.0 189.0,69.0 194.0,57.0 201.0,49.0 194.0,41.0 189.0,29.0 159.0,30.0 
+        167.0,22.0 116.0,15.0" stroke="rgb(128,128,128)" filter="url(#Beveled-Marble-Shadow)"/>
+
+</g>
+</svg>

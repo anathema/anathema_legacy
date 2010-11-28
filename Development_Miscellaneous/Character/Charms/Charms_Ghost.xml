@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by pridigy Smith (n/a) -->
+<charmlist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="G:\Games\Exalted\anathema_developer_v0.71\data\data\ComplexCharms.xsd">
+	<charm group="Compassion" exalt="Ghost" id="Ghost.WaxenFlesh">
+		<prerequisite>
+			<trait id="Compassion" value="2"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="5"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="234"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.YeildingForm">
+		<prerequisite>
+			<trait id="Compassion" value="2"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="4"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive"/>
+		<source source="The Abyssals" page="235"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.NineTerrors">
+		<prerequisite>
+			<trait id="Compassion" value="3"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="5"/>
+			
+		</cost>
+		<duration duration="One hour"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="235"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.Ghost-DevilForm">
+		<prerequisite>
+			<trait id="Compassion" value="3"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="10"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="236"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.SteelingSpirit">
+		<prerequisite>
+			<trait id="Compassion" value="2"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="7"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One Day"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="236"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.StolenWaxDiscipline">
+		<prerequisite>
+			<trait id="Compassion" value="3"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="5"/>
+				<health cost="1"/>
+			
+		</cost>
+		<duration duration="(Essence) Hours"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="237"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.ShapingServant">
+		<prerequisite>
+			<trait id="Compassion" value="3"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="9"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One day"/>
+		<charmtype type="Supplemental"/>
+		<source source="The Abyssals" page="238"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.BrokenMoldStrike">
+		<prerequisite>
+			<trait id="Compassion" value="4"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="7"/>
+			
+		</cost>
+		<duration duration="Instant or one hour"/>
+		<charmtype type="Supplemental"/>
+		<source source="The Abyssals" page="238"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.WeightedFlesh">
+		<prerequisite>
+			<trait id="Compassion" value="5"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="20"/>
+				<willpower cost="2"/>
+			
+		</cost>
+		<duration duration="One hour"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="238"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.PrisonNewForm">
+		<prerequisite>
+			<trait id="Compassion" value="4"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="12"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One week/success"/>
+		<charmtype type="Supplemental"/>
+		<source source="The Abyssals" page="238"/>
+	</charm>
+	<charm group="Conviction" exalt="Ghost" id="Ghost.CorpseFedRadiance">
+		<prerequisite>
+			<trait id="Conviction" value="1"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="2"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="239"/>
+	</charm>
+	<charm group="Conviction" exalt="Ghost" id="Ghost.BlackBreathAbyss">
+		<prerequisite>
+			<trait id="Conviction" value="1"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="8"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="239"/>
+	</charm>
+	<charm group="Conviction" exalt="Ghost" id="Ghost.PaintingSunsetPicture">
+		<prerequisite>
+			<trait id="Conviction" value="2"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="4"/>
+			
+		</cost>
+		<duration duration="One Scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="239"/>
+	</charm>
+	<charm group="Conviction" exalt="Ghost" id="Ghost.MessengerGrave">
+		<prerequisite>
+			<trait id="Conviction" value="3"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="4"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One hour"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="240"/>
+	</charm>
+	<charm group="Conviction" exalt="Ghost" id="Ghost.IchorCauldron">
+		<prerequisite>
+			<trait id="Conviction" value="3"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="6"/>
+			
+		</cost>
+		<duration duration="One hour"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="240"/>
+	</charm>
+	<charm group="Conviction" exalt="Ghost" id="Ghost.MidnightCanvasUnfurled">
+		<prerequisite>
+			<trait id="Conviction" value="3"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="5" text="+5 motes per sense"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="240"/>
+	</charm>
+	<charm group="Conviction" exalt="Ghost" id="Ghost.HandofWind">
+		<prerequisite>
+			<trait id="Conviction" value="1"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="3"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="241"/>
+	</charm>
+	<charm group="Conviction" exalt="Ghost" id="Ghost.StrikeDeadHands">
+		<prerequisite>
+			<trait id="Conviction" value="2"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Supplemental"/>
+		<source source="The Abyssals" page="241"/>
+	</charm>
+	<charm group="Conviction" exalt="Ghost" id="Ghost.SixPlagueSummons">
+		<prerequisite>
+			<trait id="Conviction" value="3"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="20"/>
+				<willpower cost="2"/>
+			
+		</cost>
+		<duration duration="One hour"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="242"/>
+	</charm>
+	<charm group="Conviction" exalt="Ghost" id="Ghost.FlyingTimeTechnique">
+		<prerequisite>
+			<trait id="Conviction" value="3"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="8"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="ExtraAction"/>
+		<source source="The Abyssals" page="242"/>
+	</charm>
+	<charm group="Conviction" exalt="Ghost" id="Ghost.EbonGraspOblivion">
+		<prerequisite>
+			<trait id="Conviction" value="3"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="16"/>
+				<willpower cost="3"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="243"/>
+	</charm>
+	<charm group="Valor" exalt="Ghost" id="Ghost.TasteDemonWind">
+		<prerequisite>
+			<trait id="Valor" value="1"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="2"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="243"/>
+	</charm>
+	<charm group="Valor" exalt="Ghost" id="Ghost.CalRaveningHound">
+		<prerequisite>
+			<trait id="Valor" value="2"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="8"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="243"/>
+	</charm>
+	<charm group="Valor" exalt="Ghost" id="Ghost.DiversionSavageHunger">
+		<prerequisite>
+			<trait id="Valor" value="2"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="12"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="243"/>
+	</charm>
+	<charm group="Valor" exalt="Ghost" id="Ghost.TameWickedAppetite">
+		<prerequisite>
+			<trait id="Valor" value="2"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="8"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="244"/>
+	</charm>
+	<charm group="Valor" exalt="Ghost" id="Ghost.CommandHungryDevil">
+		<prerequisite>
+			<trait id="Valor" value="3"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="8"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="244"/>
+	</charm>
+	<charm group="Valor" exalt="Ghost" id="Ghost.RelentlessHunterMask">
+		<prerequisite>
+			<trait id="Valor" value="4"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="10"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One hour"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="244"/>
+	</charm>
+	<charm group="Valor" exalt="Ghost" id="Ghost.DustCommand">
+		<prerequisite>
+			<trait id="Valor" value="2"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="12"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="245"/>
+	</charm>
+	<charm group="Valor" exalt="Ghost" id="Ghost.Spirit-HandlingLeash">
+		<prerequisite>
+			<trait id="Valor" value="3"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="5"/>
+				<willpower cost="2"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="245"/>
+	</charm>
+	<charm group="Valor" exalt="Ghost" id="Ghost.GhostlyHarness">
+		<prerequisite>
+			<trait id="Valor" value="3"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One month"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="245"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.DeliciousEssenceScent">
+		<prerequisite>
+			<trait id="Temperance" value="1"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="3"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="246"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.Aura-Reading Technique">
+		<prerequisite>
+			<trait id="Temperance" value="1"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="2"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="246"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.Essence-DevouringTouch">
+		<prerequisite>
+			<trait id="Temperance" value="1"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="3"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Supplemental"/>
+		<source source="The Abyssals" page="246"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.Blood-DrinkingThirst">
+		<prerequisite>
+			<trait id="Temperance" value="2"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<willpower cost="1" text="+1 per activation"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="247"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.RaveningLife-ForceHunger">
+		<prerequisite>
+			<trait id="Temperance" value="2"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="4"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Supplemental"/>
+		<source source="The Abyssals" page="247"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.FeedingLamprey">
+		<prerequisite>
+			<trait id="Temperance" value="2"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="247"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.FeedingLifesFountain">
+		<prerequisite>
+			<trait id="Temperance" value="2"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="7"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="248"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.BlendingStreamsEssence">
+		<prerequisite>
+			<trait id="Temperance" value="2"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="6"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="248"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.FillingPreciousVial">
+		<prerequisite>
+			<trait id="Temperance" value="3"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="7"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="248"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.Death-AvoidingMonitor">
+		<prerequisite>
+			<trait id="Temperance" value="1"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="4"/>
+				<willpower cost="1"/>
+				<experience cost="1" text="or 2" permanent="true"/>
+		</cost>
+		<duration duration="One week/Instant"/>
+		<charmtype type="Supplemental"/>
+		<source source="The Abyssals" page="251"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.World-Bridging">
+		<prerequisite>
+			<trait id="Temperance" value="1"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="4"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="252"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.ExtensionFriendlyGaze">
+		<prerequisite>
+			<trait id="Temperance" value="2"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="6"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="252"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.SensingDelicateStrands">
+		<prerequisite>
+			<trait id="Temperance" value="2"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="6"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive"/>
+		<source source="The Abyssals" page="252"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.MarkofRelentlessHunter">
+		<prerequisite>
+			<trait id="Temperance" value="2"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="6"/>
+				<willpower cost="1"/>
+				<experience cost="1" text="or 2" permanent="true"/>
+		</cost>
+		<duration duration="One week"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="252"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.Veil-PiercingBinding">
+		<prerequisite>
+			<trait id="Temperance" value="4"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="5"/>
+				<willpower cost="2"/>
+				<experience cost="1" text="or 2" permanent="true"/>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="253"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.WeaverGuardLoom">
+		<prerequisite>
+			<trait id="Temperance" value="2"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="3"/>
+			
+		</cost>
+		<duration duration="One day"/>
+		<charmtype type="Reflexive"/>
+		<source source="The Abyssals" page="253"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.Chain-ShatteringDiscipline">
+		<prerequisite>
+			<trait id="Temperance" value="3"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="6"/>
+				<willpower cost="3"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="253"/>
+	</charm>
+	<charm group="Temperance" exalt="Ghost" id="Ghost.FarmerDefendsUnharvestedField">
+		<prerequisite>
+			<trait id="Temperance" value="3"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="5"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive"/>
+		<source source="The Abyssals" page="157"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.Soul-WhisperingEmpathy">
+		<prerequisite>
+			<trait id="Compassion" value="1"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="3"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="249"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.Spirit-CatchingEye">
+		<prerequisite>
+			<trait id="Compassion" value="1"/>
+			<essence/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="2"/>
+			
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="249"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.Skin-Riding">
+		<prerequisite>
+			<trait id="Compassion" value="1"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="6"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="249"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.Mortal-Shadowing">
+		<prerequisite>
+			<trait id="Compassion" value="2"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="7"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One hour"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="157"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.SixDemonBag">
+		<prerequisite>
+			<trait id="Compassion" value="2"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="5" text="3 to eject"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="One day"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="250"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.PuppeteersMasterfulHand">
+		<prerequisite>
+			<trait id="Compassion" value="3"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="7"/>
+				<willpower cost="2"/>
+			
+		</cost>
+		<duration duration="One hour"/>
+		<charmtype type="Supplemental"/>
+		<source source="The Abyssals" page="250"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.NemissarysRide">
+		<prerequisite>
+			<trait id="Compassion" value="2"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="5"/>
+				<willpower cost="1"/>
+				<experience cost="1" permanent="true"/>
+		</cost>
+		<duration duration="One day"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="251"/>
+	</charm>
+	<charm group="Compassion" exalt="Ghost" id="Ghost.DeadFu Cloak">
+		<prerequisite>
+			<trait id="Compassion" value="3"/>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			
+				<essence cost="6"/>
+				<willpower cost="1"/>
+			
+		</cost>
+		<duration duration="Indefinite"/>
+		<charmtype type="Simple"/>
+		<source source="The Abyssals" page="251"/>
+	</charm>
+</charmlist>

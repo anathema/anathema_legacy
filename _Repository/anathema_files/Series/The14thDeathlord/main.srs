@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Series repositoryId="The14thDeathlord" repositoryPrintName="The 14th Deathlord">
+  <Name><![CDATA[The 14th Deathlord]]></Name>
+  <Content/>
+  <Plot>
+    <Story repositoryId="Story17">
+      <Episode repositoryId="Episode13"/>
+    </Story>
+    <Story repositoryId="Story2">
+      <Episode repositoryId="Episode14">
+        <Scene repositoryId="Scene7"/>
+        <Scene repositoryId="Scene9"/>
+        <Scene repositoryId="Scene10"/>
+        <Scene repositoryId="Scene11"/>
+        <Scene repositoryId="Scene12"/>
+      </Episode>
+    </Story>
+    <Story repositoryId="Story9"/>
+    <Story repositoryId="Story16"/>
+    <Story repositoryId="Story12"/>
+    <Story repositoryId="Story15"/>
+  </Plot>
+</Series>

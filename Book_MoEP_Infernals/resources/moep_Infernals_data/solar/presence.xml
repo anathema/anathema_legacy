@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    presence.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2009 Scott D. Olson (scott.d.olson@comcast.net)
+
+    This program is free softPresencee; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free SoftPresencee Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY PresenceRANTY; without even the implied Presenceranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free SoftPresencee
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Presence version of Demon Wracking Shout, for Zeniths or others who favor Presence -->
+     <charm id="Solar.DemonWrackingShoutPresence1" exalt="Solar" group="Presence">
+          <prerequisite>
+               <trait id="Presence" value="1" />
+               <essence value="5" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" secondaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Mortal" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Solar.DemonWrackingShoutPresence2" exalt="Solar" group="Presence">
+          <prerequisite>
+               <trait id="Presence" value="1" />
+               <essence value="5" />
+	       <charmReference id="Solar.DemonWrackingShoutPresence1" />
+          </prerequisite>
+          <cost>
+               <essence cost="50" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" secondaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Mortal" />
+          <charmAttribute attribute="Blasphemy" visualize="true" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+</charmlist>

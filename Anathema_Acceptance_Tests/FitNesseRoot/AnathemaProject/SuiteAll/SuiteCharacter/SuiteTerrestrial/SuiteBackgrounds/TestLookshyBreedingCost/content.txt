@@ -1,0 +1,73 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateLookshyNative
+
+!3 Breeding 0 is free
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|0|
+
+!3 Breeding 1: 1 dot
+
+!|Set Background|
+|traitType|value|
+|Breeding|1|
+
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|1|
+
+
+!3 Breeding 2: 1+1 dot
+
+!|Set Background|
+|traitType|value|
+|Breeding|2|
+
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|2|
+
+
+!3 Breeding 3: 1+1+2 dot
+
+!|Set Background|
+|traitType|value|
+|Breeding|3|
+
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|4|
+
+
+!3 Breeding 4: 1+1+2+1 dots and 2 BP
+
+!|Set Background|
+|traitType|value|
+|Breeding|4|
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|5|
+
+!|Check Bonus Points|
+|regularSpent?|
+|2|
+
+
+!3 Breeding 5: 1+1+2+1+1 dots and 2 BP
+
+!|Set Background|
+|traitType|value|
+|Breeding|5|
+
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|6|
+
+!|Check Bonus Points|
+|regularSpent?|
+|4|

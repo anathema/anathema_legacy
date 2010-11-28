@@ -1,0 +1,10 @@
+!3 Check the Virtues
+
+All virtues must be of value 1.
+
+!|Check Virtues|
+|Trait Type|value?|
+|Compassion|1|
+|Conviction|1|
+|Temperance|1|
+|Valor|1|

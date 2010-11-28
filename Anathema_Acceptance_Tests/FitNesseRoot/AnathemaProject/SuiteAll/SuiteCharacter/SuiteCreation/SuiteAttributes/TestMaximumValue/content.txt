@@ -1,0 +1,28 @@
+!3 Try set attributes to 6
+
+!|Set Attributes|
+|trait type|value|
+|Strength|6|
+|Dexterity|6|
+|Stamina|6|
+|Appearance|6|
+|Manipulation|6|
+|Charisma|6|
+|Perception|6|
+|Intelligence|6|
+|Wits|6|
+
+!3 Check That All Attributes Have Value 5
+
+!|Check Attributes|
+|trait type|value?|
+|Strength|5|
+|Dexterity|5|
+|Stamina|5|
+|Appearance|5|
+|Manipulation|5|
+|Charisma|5|
+|Perception|5|
+|Intelligence|5|
+|Wits|5|
+

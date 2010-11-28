@@ -1,0 +1,26 @@
+!3 Lunars treat spells as favored when Intelligence (not Occult) is favored.
+
+Ensure Spells not favored.
+!|Check Spell Magic|
+|id|isSpellFavored?|
+|Terrestrial.EmeraldCountermagic|false|
+
+Set Occult to be favored.
+!|Set Abilities Favored|
+|abilityType|
+|Occult|
+
+Ensure Spells not favored.
+!|Check Spell Magic|
+|id|isSpellFavored?|
+|Terrestrial.EmeraldCountermagic|false|
+
+Set Intelligence to be favored.
+!|Set Concept|
+|caste|
+|NoMoon|
+
+Ensure Spells are favored.
+!|Check Spell Magic|
+|id|isSpellFavored?|
+|Terrestrial.EmeraldCountermagic|true|

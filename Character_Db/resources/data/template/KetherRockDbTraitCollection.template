@@ -1,0 +1,56 @@
+<traitTemplates uses="trait/DefaultTraitCollection.template">
+	<backgrounds>
+		<defaultTrait startValue="0" lowerableState="LowerableRegain">
+			<limitation type="Static" value="5"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Sorcery" startValue="0" lowerableState="Immutable"  zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="5"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="Illumination" startValue="0" lowerableState="LowerableRegain"  zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="3"/>
+			<minimum value="0"/>
+		</specialTrait>
+	</backgrounds>
+  <abilities>
+		<defaultTrait startValue="0" lowerableState="Default">
+			<limitation type="Essence"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Endurance" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Melee" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="Medicine" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Presence" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Resistance" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Survival" startValue="3" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="3"/>
+		</specialTrait>		
+		<alternateMinimumTraits count="1" value="1">
+ 	  		<trait id="Brawl" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+ 	  		<trait id="Archery" startValue="1" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+		</alternateMinimumTraits>
+  </abilities>
+</traitTemplates>

@@ -1,0 +1,7 @@
+!3 Check character concept
+
+All concept fields must be empty.
+
+!|Check Concept|
+|concept?|nature?|caste?|
+||||

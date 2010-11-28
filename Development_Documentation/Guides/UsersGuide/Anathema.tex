@@ -1,0 +1,36 @@
+\documentclass[]{report}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex,bookmarks=true,bookmarksnumbered=true,pdfauthor={bil Jeschke and Urs Reupke},pdftitle={Anathema User's Guide}]{hyperref}
+\usepackage[pdftex]{graphics}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{makeidx}
+\makeindex
+
+\title{Anathema User's Guide\\ Target Program Version: 1.0}
+\author{Written by bil Jeschke and Urs Reupke \\ Anathema created by Sandra Sieroux and Urs Reupke}
+\date{}
+
+\begin{document}
+\maketitle
+\sffamily
+\pagenumbering{roman}
+\tableofcontents
+\pagebreak
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\include{Summary}
+\include{BasicFunctions}
+\include{CharmCascades}
+\include{Character}
+\include{Series}
+\appendix
+\include{Equipment}
+\include{Customizing}
+\chapter*{Revisions}
+\begin{description}
+\item[12/07/06] - Updated to reflect "Refresh" in Equipment
+\item[12/07/06] - Added customization chapter
+\item[12/05/06] - Initial Release for v1.0
+\end{description}
+\end{document}

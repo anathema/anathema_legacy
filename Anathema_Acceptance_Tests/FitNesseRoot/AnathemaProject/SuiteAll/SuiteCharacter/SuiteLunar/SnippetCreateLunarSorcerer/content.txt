@@ -1,0 +1,14 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteLunar.SnippetCreateLunar
+
+!3 Prepare for Spellcraft
+!|Set Attributes|
+|traitType|value|
+|Intelligence|3|
+
+!|Set Other Traits|
+|traitType|value|
+|Essence|3|
+
+!|Toggle Charm Learned|
+|id|
+|Lunar.TerrestrialCircleSorcery|

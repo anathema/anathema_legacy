@@ -1,0 +1,53 @@
+This test will ensure that generic backgrounds are lowerable and calculated for XP refunds.
+
+!3 Raise Background to 3
+!|Set Background|
+|traitType|value|
+|Artifact|3|
+
+!|Check Background|
+|backgroundType|value?|
+|Artifact|3|
+
+!3 Set Experienced
+!|Set Experienced|
+
+!3 Ensure that lowering succeeds and that XP are refunded.
+!|Set Background|
+|traitType|value|
+|Artifact|1|
+
+!|Check Background|
+|backgroundType|value?|
+|Artifact|1|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|-6|
+
+!3 Ensure proper behaviour for value 0
+!|Set Background|
+|traitType|value|
+|Artifact|0|
+
+!|Check Background|
+|backgroundType|value?|
+|Artifact|0|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|-9|
+
+
+!3 Ensure that raising succeeds and that the creation value is used as a basis for xp expenditure
+!|Set Background|
+|traitType|value|
+|Artifact|4|
+
+!|Check Background|
+|backgroundType|value?|
+|Artifact|4|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|3|

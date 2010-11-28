@@ -1,0 +1,30 @@
+!include SnippetSetLiegeToThree
+
+!3 Set Willpower to Value 3
+Initially Willpower has a value of 2.
+
+!|Set Other Traits|
+|trait type|value|
+|Willpower|3|
+
+!3 Regular Bonus Points Spent
+
+The additional point costs 2 bonus points.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|0|2|
+
+!3 Set Essence to Value 3
+Initially Essence has a value of 2.
+
+!|Set Other Traits|
+|trait type|value|
+|Essence|3|
+
+The point costs 7 bonus points, which makes a sum of 9.
+
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|0|9|

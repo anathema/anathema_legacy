@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="AshenOrchid" repositoryPrintName="Ashen Orchid">
+  <Description>
+    <CharacterName><![CDATA[Ashen Orchid]]></CharacterName>
+    <Player><![CDATA[Sandra Sieroux]]></Player>
+    <Concept><![CDATA[Righteous Avenger]]></Concept>
+  </Description>
+  <Statistics experienced="true">
+    <Rules>
+      <RuleSet name="SecondEdition"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
+    <CharacterConcept>
+      <Caste type="Night"/>
+      <Motivation><![CDATA[Save Gereth From His Fetters]]></Motivation>
+    </CharacterConcept>
+    <Essence creationValue="3"/>
+    <Willpower creationValue="6"/>
+    <Virtues>
+      <Compassion creationValue="4"/>
+      <Conviction creationValue="2" experiencedValue="3"/>
+      <Temperance creationValue="1"/>
+      <Valor creationValue="2"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="3"/>
+        <Dexterity creationValue="5"/>
+        <Stamina creationValue="3"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="3"/>
+        <Manipulation creationValue="2"/>
+        <Appearance creationValue="2" experiencedValue="4"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="3"/>
+        <Intelligence creationValue="3"/>
+        <Wits creationValue="3"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="0"/>
+      <MartialArts creationValue="0"/>
+      <Melee creationValue="0"/>
+      <Thrown creationValue="5" favored="true"/>
+      <War creationValue="0"/>
+      <Integrity creationValue="2"/>
+      <Performance creationValue="3"/>
+      <Presence creationValue="1" experiencedValue="2" favored="true"/>
+      <Resistance creationValue="1"/>
+      <Survival creationValue="1"/>
+      <Craft>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Air]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Earth]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Fire]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Water]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Wood]]></traitName>
+        </subTrait>
+      </Craft>
+      <Investigation creationValue="1" experiencedValue="2" favored="true"/>
+      <Lore creationValue="2"/>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="3"/>
+      <Athletics creationValue="1" experiencedValue="5"/>
+      <Awareness creationValue="0" experiencedValue="2"/>
+      <Dodge creationValue="1" experiencedValue="3"/>
+      <Larceny creationValue="5"/>
+      <Stealth creationValue="1" experiencedValue="3"/>
+      <Bureaucracy creationValue="1" experiencedValue="2" favored="true"/>
+      <Linguistics creationValue="3"/>
+      <Ride creationValue="0"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="1" experiencedValue="2" favored="true"/>
+    </Abilities>
+    <Backgrounds>
+      <Background creationValue="2"><![CDATA[Backing (Guild)]]></Background>
+      <Background creationValue="5"><![CDATA[Resources]]></Background>
+      <Background creationValue="2"><![CDATA[Artifact (Hearthstone Bracers)]]></Background>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Athletics" type="Solar">
+        <Charm name="Solar.MonkeyLeapTechnique" experienceLearned="false"/>
+        <Charm name="Solar.Foe-VaultingMethod" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Larceny" type="Solar">
+        <Charm name="Solar.1stExcellency.Larceny" experienceLearned="false"/>
+        <Charm name="Solar.PerfectMirror" experienceLearned="false"/>
+        <Charm name="Solar.FlawlesslyImpenetrableDisguise" experienceLearned="false"/>
+        <Charm name="Solar.FlawlessPickpocketingTechnique" experienceLearned="true"/>
+        <Charm name="Solar.StealingfromPlainSightSpirit" experienceLearned="true"/>
+        <Charm name="Solar.Lock-OpeningTouch" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Thrown" type="Solar">
+        <Charm name="Solar.CascadeCuttingTerror" experienceLearned="false"/>
+        <Charm name="Solar.ReturningWeaponConcentration" experienceLearned="false"/>
+        <Charm name="Solar.SpiritWeapons" experienceLearned="false"/>
+        <Charm name="Solar.Triple-DistanceAttackTechnique" experienceLearned="false"/>
+        <Charm name="Solar.1stExcellency.Thrown" experienceLearned="false"/>
+        <Charm name="Solar.Observer-DeceivingAttack" experienceLearned="true"/>
+        <Charm name="Solar.FallingIcicleStrike" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Bureaucracy" type="Solar">
+        <Charm name="Solar.1stExcellency.Bureaucracy" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Presence" type="Solar">
+        <Charm name="Solar.1stExcellency.Presence" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Socialize" type="Solar">
+        <Charm name="Solar.MasterySmallManners" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Awareness" type="Solar">
+        <Charm name="Solar.2ndExcellency.Awareness" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Resistance" type="Solar">
+        <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
+          <Special>
+            <Categories>
+              <Category.-0 creationValue="0"/>
+              <Category.-1x2 creationValue="0"/>
+              <Category.-1-2x2 creationValue="1"/>
+            </Categories>
+          </Special>
+        </Charm>
+      </CharmGroup>
+      <Combos>
+        <Combo experienceLearned="true">
+          <Name><![CDATA[Golden Fury]]></Name>
+          <Charm name="Solar.FallingIcicleStrike" type="Solar"/>
+          <Charm name="Solar.CascadeCuttingTerror" type="Solar"/>
+          <Charm name="Solar.1stExcellency.Thrown" type="Solar"/>
+        </Combo>
+      </Combos>
+    </Charms>
+    <Spells/>
+    <Experience>
+      <Entry points="119">
+        <Description><![CDATA[Der Osten in Gefahr]]></Description>
+      </Entry>
+      <Entry points="11">
+        <Description><![CDATA[Roter Lotus in Gefahr]]></Description>
+      </Entry>
+      <Entry points="8">
+        <Description><![CDATA[Gereth in Nöten]]></Description>
+      </Entry>
+      <Entry points="11">
+        <Description><![CDATA[A New Brother]]></Description>
+      </Entry>
+      <Entry points="6">
+        <Description><![CDATA[Appointment With The Devil]]></Description>
+      </Entry>
+    </Experience>
+    <AdditionalModels>
+      <Model templateId="Equipment">
+        <Content>
+          <item>
+            <templateId><![CDATA[Natural]]></templateId>
+            <printedStats><![CDATA[Punch]]></printedStats>
+            <printedStats><![CDATA[Kick]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Exceptional Chakram / Shuriken]]></templateId>
+            <printedStats><![CDATA[Ranged]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Exceptional Hatchet]]></templateId>
+            <printedStats><![CDATA[Ranged]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Exceptional Knife]]></templateId>
+            <printedStats><![CDATA[Ranged]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Exceptional Needle]]></templateId>
+            <printedStats><![CDATA[Ranged]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Javelin]]></templateId>
+            <printedStats><![CDATA[Ranged]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Swift Reinforced Buffjacket (Perfect)]]></templateId>
+            <printedStats><![CDATA[Armour]]></printedStats>
+          </item>
+        </Content>
+      </Model>
+      <Model templateId="Specialties">
+        <Content/>
+      </Model>
+      <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
+        <Content>
+          <linguistics>
+            <language><![CDATA[Riverspeak]]></language>
+            <language><![CDATA[HighRealm]]></language>
+            <language><![CDATA[OldRealm]]></language>
+            <language><![CDATA[GuildCant]]></language>
+          </linguistics>
+        </Content>
+      </Model>
+      <Model templateId="Intimacies">
+        <Content>
+          <Intimacies>
+            <Intimacy name="Ihre 'Familie' (Compassion)" complete="true">
+              <Trait creationValue="2" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Gilde (Compassion)" complete="true">
+              <Trait creationValue="2" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Luxury (Temperance)" complete="true">
+              <Trait creationValue="2" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Guard Subordinates (Valor)" complete="true">
+              <Trait creationValue="2" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Gereth (Compassion)" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Sesus Rela (Compassion)" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Avoid War (Conviction)" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Impede Samea (Valor)" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
+            </Intimacy>
+          </Intimacies>
+        </Content>
+      </Model>
+      <Model templateId="SolarVirtueFlaw">
+        <Content>
+          <VirtueFlaw>
+            <RootVirtue name="Compassion"/>
+            <Name><![CDATA[Red Rage of Compassion]]></Name>
+            <LimitBreak><![CDATA[The character sees innocents suffering and is unable to effecively intervene]]></LimitBreak>
+            <Description><![CDATA[Attacks most obvious source, unlikely to perform simple acts, no wound penalties.
+Without target: rage, smashing objects, will attack anyone foolish enough to interfere
+Duration: For one scene in combat or hours equal to Compassion]]></Description>
+          </VirtueFlaw>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

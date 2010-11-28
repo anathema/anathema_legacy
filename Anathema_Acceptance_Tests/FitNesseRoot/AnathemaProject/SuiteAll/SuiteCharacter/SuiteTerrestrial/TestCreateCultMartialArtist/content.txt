@@ -1,0 +1,169 @@
+!|Create Character|
+|characterType|subtemplate|edition|
+|Dragon-Blooded|SequesteredTabernacleSubtype|FirstEdition|
+
+This test will ensure that the Sequestered Tabernacle's specialties are treated correctly.
+
+First of all, they don't have to buy Charms for their favored abilities.
+On the other hand, they only get 5 picks for general charms.
+
+!|Check Charm Points|
+|getFavoredPicksGranted?|getGeneralPicksGranted?|
+|0|5|
+
+Though learning the higher mysteries is quite taxing, they are allowed Sorcery.
+
+!|Check Background|
+|backgroundType|isAvailable?|
+|Sorcery|true|
+
+Finally, their Essence starts at 3.
+
+!|CheckOtherTraitsFixture|
+|traitType|value?|
+|Essence|3|
+
+When chosing Charms, their picks are restricted to Ox-Body-Technique and the specified Styles.
+The introductory Charms are mandatory.
+
+|Check Charm|
+|id|isLearned?|
+|!-Dragon-Blooded.Walker-Among-IrisesPerception-!|true|
+|!-Dragon-Blooded.Iris-BulbDiscourse-!|true|
+
+BP were spent for Essence:
+
+!|Check Bonus Points|
+|regularSpent?|
+|10|
+
+First, let's learn any Charm and see it's paid for with bonus points.
+
+!|Set Abilities|
+|traitType|value|
+|Presence|3|
+
+!|Check Bonus Points|
+|regularSpent?|
+|10|
+
+!|Check Charm Points|
+|getGeneralPicksSpent?|
+|2|
+
+!|Toggle Charm Learned|
+|id|
+|Dragon-Blooded.GlowingCoalRadiance|
+
+!|Check Bonus Points|
+|regularSpent?|
+|17|
+
+!|Check Charm Points|
+|getGeneralPicksSpent?|
+|2|
+
+Let us unlearn the Charm to reset things.
+
+!|Toggle Charm Learned|
+|id|
+|Dragon-Blooded.GlowingCoalRadiance|
+
+!|Check Bonus Points|
+|regularSpent?|
+|10|
+
+
+Now then, a non-Tabernacle Introduction Charm, to be paid with Bonus Points.
+
+!|Toggle Charm Learned|
+|id|
+|Dragon-Blooded.Tiger-and-Bear-Awareness|
+
+!|Check Bonus Points|
+|regularSpent?|
+|20|
+
+!|Toggle Charm Learned|
+|id|
+|Dragon-Blooded.Tiger-and-Bear-Awareness|
+
+!|Check Bonus Points|
+|regularSpent?|
+|10|
+
+The teachings of the Tabernacle cannot be undone:
+
+!|Toggle Charm Learned|
+|id|
+|Dragon-Blooded.Walker-Among-IrisesPerception|
+|Dragon-Blooded.Iris-BulbDiscourse|
+
+|Check Charm|
+|id|isLearned?|
+|!-Dragon-Blooded.Walker-Among-IrisesPerception-!|true|
+|!-Dragon-Blooded.Iris-BulbDiscourse-!|true|
+
+!|Check Bonus Points|
+|regularSpent?|
+|10|
+
+!|Check Charm Points|
+|getGeneralPicksSpent?|
+|2|
+
+We finally learn Celestial Martial Arts.
+
+!|Check Charm|
+|id|isLearnable?|
+|Solar.ImageDeathTechnique|true|
+|Dragon-Blooded.LivingShieldTechnique|true|
+|Solar.LeapingMantisTechnique|true|
+|Solar.StrikingCobraTechnique|true|
+|Solar.CrimsonLeapingCatTechnique|true|
+
+Again, let's check non-Tabernacle Charms are paid for with Bonus Points:
+
+!|Toggle Charm Learned|
+|id|
+|Solar.KissSunConcentration|
+
+!|Check Bonus Points|
+|regularSpent?|
+|20|
+
+!|Toggle Charm Learned|
+|id|
+|Solar.KissSunConcentration|
+
+!|Check Bonus Points|
+|regularSpent?|
+|10|
+
+And then, learn a Tabernacle Charm to pay with Charm picks.
+
+!|Toggle Charm Learned|
+|id|
+|Solar.ImageDeathTechnique|
+
+!|Check Charm Points|
+|getGeneralPicksSpent?|
+|3|
+
+!3 Check Ox-Body Technique
+
+!|Set Abilities|
+|traitType|value|
+|Endurance|2|
+
+!|Learn Ox Body Technique|
+|id|count|
+|Dragon-Blooded.Ox-BodyTechnique|2|
+
+!|Check Charm Points|
+|getGeneralPicksSpent?|
+|5|
+
+!|Check Bonus Points|
+|regularSpent?|
+|10|

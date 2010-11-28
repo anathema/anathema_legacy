@@ -1,0 +1,5 @@
+!include SnippetPrepareMartialArtsImmaculate
+
+!|Check Charm|
+|id|isLearnable?|
+|Dragon-Blooded.SpiritSight|true|

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene40" repositoryPrintName="Warstrider Romantik">
+  <Name><![CDATA[Warstrider Romantik]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Blazing Stride
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Nubas Zauber hat gewirkt, kurzfristig für die Schlacht, aber die langfristige
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[      Abnutzung auf dem Marsch kann dadurch nicht überwunden werden.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Für unzureichende Feldpflege wurde eine Gruppe von Soldaten abgestellt.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Nuba nimmt Kem nicht ernst, er ist jedoch ein willkommenes Vortragsopfer.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    In einen dieser Vorträge stolpert Kazu mit den Solars hinein und Gerät mit 
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Nuba aneinander.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Bold"/>
+      <Text><![CDATA[Musik]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[:  FF V - Musica Machina
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Wie steht Kazu zu Nuba? 
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[  - Ist für Offenheit zwar zu haben, lehnt aber extrem Opportunismus ab. Nuba ist, als Kazu seine Überlegenheit im Warstrider-Handling beteuert. 
+]]></Text>
+    </Part>
+  </Summary>
+</Scene>

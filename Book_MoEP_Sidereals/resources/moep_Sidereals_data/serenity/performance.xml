@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    performance.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Performance -->
+     <charm id="Sidereal.HeartBrighteningPresentationStyle" exalt="Sidereal" group="Performance">
+          <prerequisite>
+               <trait id="Performance" value="2" />
+               <essence value="1" />
+               <charmAttributeRequirement attribute="ExcellencyPerformance" count="1" />
+               <!-- The following doesn't work, need to see if it can be enabled. -->
+               <!--selectiveCharmGroup threshold="1">
+                  <charmAttributeRequirement attribute="ExcellencyBureaucracy" count="1" />
+                                        <charmAttributeRequirement attribute="ExcellencyPresence" count="1" />
+                                        <charmAttributeRequirement attribute="ExcellencySocialize" count="1" />
+                                </selectiveCharmGroup-->
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Permanent" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.FaultlessCeremony" exalt="Sidereal" group="Performance">
+          <prerequisite>
+               <trait id="Performance" value="3" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" />
+          </cost>
+          <duration amount="1" unit="week" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.PerfectionInLife" exalt="Sidereal" group="Performance">
+          <prerequisite>
+               <trait id="Performance" value="2" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Fate" visualize="true" />
+          <charmAttribute attribute="Virtue-Compassion" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.DefenseOfShiningJoy" exalt="Sidereal" group="Performance">
+          <prerequisite>
+               <trait id="Performance" value="3" />
+               <essence value="2" />
+               <charmReference id="Sidereal.PerfectionInLife" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple">
+               <special speed="5" defense="-1" />
+          </charmtype>
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.SongOfSpiritPersuasion" exalt="Sidereal" group="Performance">
+          <prerequisite>
+               <trait id="Performance" value="3" />
+               <essence value="2" />
+               <charmReference id="Sidereal.PerfectionInLife" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Servitude" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.IceAndFireBinding" exalt="Sidereal" group="Performance">
+          <prerequisite>
+               <trait id="Performance" value="3" />
+               <essence value="3" />
+               <charmReference id="Sidereal.FaultlessCeremony" />
+               <charmReference id="Sidereal.SongOfSpiritPersuasion" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+          </cost>
+          <duration amount="1" unit="Season" />
+          <charmtype type="Simple" />
+          <!--Coding:  Charm type is "Simple (One Hour), this may need to be coded... -->
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Maiden" visualize="true" />
+          <charmAttribute attribute="Mandate" visualize="true" />
+          <charmAttribute attribute="Servitude" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.HarmonicCompletion" exalt="Sidereal" group="Performance">
+          <prerequisite>
+               <trait id="Performance" value="5" />
+               <essence value="4" />
+               <charmReference id="Sidereal.DefenseOfShiningJoy" />
+               <charmReference id="Sidereal.IceAndFireBinding" />
+          </prerequisite>
+          <cost>
+               <essence cost="16" />
+               <willpower cost="1" />
+               <health cost="1" type="Lethal" />
+          </cost>
+          <duration amount="5" unit="day" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="PrayerStrip" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+</charmlist>

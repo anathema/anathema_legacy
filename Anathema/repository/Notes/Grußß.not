@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Note repositoryId="Grußß" repositoryPrintName="Grußß">
+  <Name><![CDATA[Grußß]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Bold"/>
+      <Text><![CDATA[Kuss]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[ i]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[st]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Bold"/>
+      <Text><![CDATA[ ]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Bold italic"/>
+      <Text><![CDATA[der]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Bold italic"/>
+      <Text><![CDATA[ Beste]]></Text>
+    </Part>
+  </Summary>
+</Note>

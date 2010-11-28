@@ -1,0 +1,44 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<svg width="552" xmlns:xlink="http://www.w3.org/1999/xlink" height="293" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter x="-10%" y="-10%" width="150%" filterUnits="objectBoundingBox" id="Beveled-Marble-Shadow"
+             height="150%">
+            <feTurbulence baseFrequency="0.15" numOctaves="1" result="I0A"/>
+            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" result="I0" in="I0A" in2="I0A"
+                 scale="25"/>
+            <feColorMatrix values="0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 255" type="matrix" in="I0"
+                 result="I1"/>
+            <feComposite in2="I1" operator="arithmetic" in="SourceGraphic" result="I2" k1="1"/>
+            <feGaussianBlur stdDeviation="1" in="I2" result="I3"/>
+            <feGaussianBlur stdDeviation="3" in="SourceAlpha" result="I4"/>
+            <feSpecularLighting specularExponent="20" specularConstant="0.5" result="I5" in="I4"
+                 surfaceScale="5" lighting-color="rgb(255,255,255)">
+                <fePointLight x="-5000" y="-10000" z="20000"/>
+            </feSpecularLighting>
+            <feComposite result="I6" in="I3" k2="1" k3="1" in2="I5" operator="arithmetic"/>
+            <feComposite in2="SourceGraphic" operator="in" in="I6" result="I7"/>
+            <feGaussianBlur stdDeviation="4" in="SourceAlpha" result="blur"/>
+            <feOffset dx="4" dy="4" in="blur" result="offsetBlur"/>
+            <feMerge>
+                <feMergeNode in="offsetBlur"/>
+                <feMergeNode in="I7"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <polygon fill="rgb(0,0,0)" stroke-width="0" transform="matrix(1 0.0 0.0 1 -11.354167 -9.0)"
+         points="280.4,15.933332 250.03545,39.09593 109.254166,62.258533 131.33751,88.73009 
+        48.525,85.42114 34.72292,125.12846 15.400002,151.59999 34.72292,178.07155 48.525,217.77885 
+        131.33751,214.46992 109.254166,240.94145 250.03545,264.10403 280.4,287.26666 
+        310.7646,264.10403 451.54587,240.94145 429.4625,214.46992 512.275,217.77885 
+        526.0771,178.07155 545.4,151.59999 526.0771,125.12846 512.275,85.42114 429.4625,88.73009 
+        451.54587,62.258533 310.7646,39.09593"/>
+    <polygon points="280.4,15.933332 250.03545,39.09593 109.254166,62.258533 131.33751,88.73009 
+        48.525,85.42114 34.72292,125.12846 15.400002,151.59999 34.72292,178.07155 48.525,217.77885 
+        131.33751,214.46992 109.254166,240.94145 250.03545,264.10403 280.4,287.26666 
+        310.7646,264.10403 451.54587,240.94145 429.4625,214.46992 512.275,217.77885 
+        526.0771,178.07155 545.4,151.59999 526.0771,125.12846 512.275,85.42114 429.4625,88.73009 
+        451.54587,62.258533 310.7646,39.09593" transform="matrix(1 0.0 0.0 1 -11.354167 -9.0)" fill="none"
+         filter="url(#Beveled-Marble-Shadow)" stroke="rgb(128,128,128)" stroke-width="3"/>
+</svg>

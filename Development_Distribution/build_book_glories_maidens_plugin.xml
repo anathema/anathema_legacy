@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Book Glories Maidens Plugin" default="Build Glories of the Most High: Maidens">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Book_Glories_Maidens" />
+	<property name="module.name" value="book_glories_maidens" />
+
+	<property file="plugin.directories.properties" />
+	
+	<target name="Build Glories of the Most High: Maidens" depends="Compile, Build JAR"/>
+</project>

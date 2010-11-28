@@ -1,0 +1,33 @@
+!3 Set the prerequisites
+
+!|Set Abilities|
+|traitType|value|
+|Melee|3|
+
+!include SnippetEnsureNoPointsSpent
+
+!3 Learn the full complement of general Charms
+
+!|Toggle Charm Learned|
+|id|
+|Solar.RetrieveFallenWeapon|
+|Solar.CallBlade|
+|Solar.GloriousSolarSaber|
+|Solar.SummoningLoyalSteel|
+|Solar.IronRaptorTechnique|
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|0|5|0|
+
+!3 Learn another general Charm
+
+!|Toggle Charm Learned|
+|id|
+|Solar.ExcellentStrike|
+
+!3 See the Picks flow over to Bonus Points
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|0|5|5|

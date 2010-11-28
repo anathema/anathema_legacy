@@ -1,0 +1,67 @@
+First, we will ensure that Sid. MA Charms always come last where bonus points are concerned.
+
+!3 Set Prerequisites
+
+!|Set Abilities|
+|traitType|value|
+|MartialArts|5|
+
+!|Set Other Traits|
+|traitType|value|
+|Essence|5|
+
+!|Check Bonus Points|
+|regularSpent?|
+|34|
+
+!3 Spend general picks on Sid MAs
+So, we learn six of them and one other, spending all general picks:
+!|Toggle Charm Learned|
+|id|
+|Solar.StrikingCobraTechnique|
+|Sidereal.OrichalcumSheathingStance|
+|Sidereal.FlickeringMoonsilverApproach|
+|Sidereal.FiveJadeFury|
+|Sidereal.DemesneEmulationPractice|
+|Sidereal.CharmRedirectionTechnique|
+|Sidereal.Spell-ShatteringPalm|
+
+!3 Learn another MA charm
+Now, we learn another sidereal martial arts charm...
+
+!|Toggle Charm Learned|
+|id|
+|Sidereal.DeadlyStarmetalOffensive|
+
+...and ensure that the BP are spent on the celestial one.
+
+!|Check Bonus Points|
+|regularSpent?|
+|41|
+
+!Repeat with MA favored
+
+!|Set Abilities Favored|
+|abilityType|
+|MartialArts|
+
+!3 Spend favored picks on Sidereal Martial Arts
+
+Same as before - another four picks have to be spent.
+
+!|Toggle Charm Learned|
+|id|
+|Sidereal.RainUnseenThreads|
+|Sidereal.NestLivingStrands|
+|Sidereal.DanceHungrySpider|
+|Sidereal.AstrologyInterruptionMethod|
+
+!|Magic Overview|
+|charmsLearned?|
+|13|
+
+!3 Make sure no BP are spent on Sid-Level MAs
+
+!|Check Bonus Points|
+|regularSpent?|
+|37|

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene5" repositoryPrintName="Frieden in Greyfalls (8 Jahre)">
+  <Name><![CDATA[Frieden in Greyfalls (8 Jahre)]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Es ist der Abend vor Telperions aufbruch zur Primärschule auf der Blessed Isle. Er liegt im Palast des Gästehauses in Greyfalls, und erinnert sich zurück an die Reise, versucht, trotz der Aufregung einzuschlafen. Gerade will es ihm gelingen, als sein Vater eintritt, um sich trotz der späten Stunde nocheinmal von ihm zu verabschieden. Keiner von beiden weiss genau, was er sagen soll, Telperion
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[vor Aufregung, Pesiae vor Stolz und Trauer.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Kurz darauf stößt auch Selena, die Mutter des Jungen dazu. Mit gebührendem Respekt zieht sich Pesiae zurück, Selena nimmt knapp Abschied, bevor Telperion einschläft.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[Zwischenspiel: Bilder einer Reise (8 Jahre)]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Am Tor der Schule erinnert sich Telperion zurück an die Reise, und wie beeindruckend die Orte waren, die er gesehen hat, bevor er von einem Diener der Schule an den Ort gebracht wird, der für die nächsten Jahre seine Heimat sein wird.]]></Text>
+    </Part>
+  </Summary>
+</Scene>

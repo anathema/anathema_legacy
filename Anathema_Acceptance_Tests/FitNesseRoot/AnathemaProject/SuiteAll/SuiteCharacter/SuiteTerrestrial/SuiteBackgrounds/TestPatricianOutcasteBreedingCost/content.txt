@@ -1,0 +1,5 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreatePatricianOutcaste
+
+Outcaste Terrestrials purchase Breeding at double cost.
+
+!include SnippetCheckOutcasteBreeding

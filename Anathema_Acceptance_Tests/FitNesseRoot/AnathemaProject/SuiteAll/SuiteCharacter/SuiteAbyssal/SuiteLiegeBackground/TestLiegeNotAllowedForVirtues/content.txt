@@ -1,0 +1,17 @@
+!include SnippetSetLiegeToThree
+
+!3 Set Compassion to Value 4
+
+Virtue values may only be bought until value 3 with general dots.
+
+!|Set Virtues|
+|trait type|value|
+|Compassion|4|
+
+!3 Regular Bonus Points Spent
+
+One dot of attribute costs 3 bonus points.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|0|3|

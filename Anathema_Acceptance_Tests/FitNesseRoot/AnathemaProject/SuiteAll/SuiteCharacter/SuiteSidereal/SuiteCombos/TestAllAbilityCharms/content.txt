@@ -1,0 +1,23 @@
+!3 Heart-Brightening Presentation Style
+
+!|Check Combo Rules|
+|id|isAllAbilities?|
+|Sidereal.Heart-BrighteningPresentationStyle|true|
+
+!3 Hot-Eyed Snake Whispering
+
+!|Check Combo Rules|
+|id|isAllAbilities?|
+|Sidereal.Hot-EyedSnakeWhispering|true|
+
+!3 Harmony of Blows
+
+!|Check Combo Rules|
+|id|isAllAbilities?|
+|Sidereal.HarmonyBlows|true|
+
+!3 Avoiding Truth Technique
+
+!|Check Combo Rules|
+|id|isAllAbilities?|
+|Sidereal.AvoidingTruthTechnique|true|

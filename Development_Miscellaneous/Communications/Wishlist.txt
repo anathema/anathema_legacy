@@ -1,0 +1,31 @@
+A feature-wishlist extracted from a discussion at www.rpg.net
+=============================================================
+Step through the character creation process. 
+
+Allow trivial input and saving of descriptions of Charms, etc. so people can put them in on their own (as White Wolf will surely not allow them to be distributed with the program).
+Include a toolkit like EdExalted did that allows you to add / modify just about anything with a database entry: items, Charms, Sorcery / Necromancy spells, Abilities, Merits & Flaws, etc.
+
+Allow any enforced rules options and caps to be toggled off if necessary. For example: allowing multiple specialties beyond 3 with a warning / toggle, etc.
+
+Possible GM Tools... quick NPC creations - maybe allowing GMs to create some basic templates for quick gen customization 
+Campaign Tracking - At the very least be a good file for keeping NPCs and characters, locations, etc. 
+Die roller 
+
+The Core engine handles the basic traits. Attributes, Abilities, Virtues, Essence, Willpower, and some of the backgrounds (those that actually modify the end character, like Experienced, Inheritance, Knowledge, and Breeding). It's sole purpose is to handle text. Is Presence an Ability, Breeding a Background, is Craft one skill or fifty, etc. It should never report a number, with the sole exception being, possibly, if we want to flag certain skills like Craft and Linguistics (allow them all to be so flagged - some people want to houserule these two, as well as Martial Arts and Lore). 
+- Some consideration may have to be made for Merits and Flaws here, but I'm not sure what. I can't think of any offhand - Legendary (Attribute and Breeding) just lets you raise stuff to 6. 
+The character types engine handles mortals, the various Exalted types, spirits and (we hope) Fair Folk. This engine reports numbers - the equation for calculating personal or peripheral essence, how many bonus or experience points a charm costs, and so on. Special backgrounds (like Breeding), Limit, Resonance, and such also need to be reported by this engine (the ability to take them, or that the value matters on your character sheet). 
+- I see Merits and Flaws applying here, as a list of who can take what, and perhaps their cost. 
+The Charms engine is handled entirely by prerequisites, which will refer to the above two engines to verify names. That is, there is no breakdown between Spirit, Exalted, Spells, or Martial Arts charms, but rather, a character sheet will need to report the correct prerequisites to access these charms. 
+- Perhaps as a sub-engine under Charms will be the Combo Construction engine. 
+The equipment layer is probably going to have to be several, perhaps an entirely new program just for making and designing artifacts and equipment. However, it really only needs to report die bonuses, resource/artifact level and commitment cost. 
+The Character Creation engine is presented with a number of options by the underlying engines. It is (probably) going to have to do most of the work, with everything under it being so general. 
+
+* All character creation choices should be fully reversible. I should be able to build up a character, spend my XP, and then undo that to go back and spend it differently if I so desire. Hell, I should be able to go back, change my bonus point usage, and then respend my XP. 
+
+* A best-build calculator might be difficult, but it'd be insanely cool. Build a character under a certain set of character creation rules, then press a button and it figures out whether there's an alternate way to spend points which would produce a more efficient result. 
+
+* It should be easily user-extendable, or at least power-user extendable. If a new book comes out, I should be able to knock out a new character creation template just by editing some XML files or something that should let me simulate 80+% of the new character type. 
+
+Tree structure organisation for characters - Whilst I doubt that this feature would be all that useful to people playing a game, it would be useful for the GM to be able to create characters and group them. This way the character sheets can be organized into regions, circles, whatever. And why stop at just character sheets? Makes sense to me to include the option of images and text documents as well (hell, even sound files if you really want to be crazy). This'll make the program a lot more than just a character generator; it'll be an incredibly useful tool for the GM to record details of his game.
+
+On the topic of what we actually want to see in the generator, I think a lifepath thing like nargun mentioned in that thread a few days ago would be a cool option. You could set it up as a series of lists and menus, each with a random button. Even if people didn't use it for their PCs (I doubt I would) it would be fun for NPCs. It also wouldn't be hard for anyone who doesn't like lifepaths to just ignore the option, too.  

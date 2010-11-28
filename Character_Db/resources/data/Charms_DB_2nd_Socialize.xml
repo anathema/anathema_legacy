@@ -1,0 +1,136 @@
+<charmlist>
+
+<charm id="Dragon-Blooded.Sweeten-the-TapMethod" exalt="Dragon-Blooded" group="Socialize">
+ <prerequisite>
+  <trait id="Socialize" value="3"/>
+  <essence value="1"/>
+  <charmAttributeRequirement attribute="ExcellencySocialize" count="1"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="2"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Emotion" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.JadeDefense" exalt="Dragon-Blooded" group="Socialize">
+ <prerequisite>
+  <trait id="Socialize" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.Sweeten-the-TapMethod"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="5"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.WaryYellowDogAttitude" exalt="Dragon-Blooded" group="Socialize">
+ <prerequisite>
+  <trait id="Socialize" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.Sweeten-the-TapMethod"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Brother-Against-BrotherInsinuation" exalt="Dragon-Blooded" group="Socialize">
+ <prerequisite>
+  <trait id="Socialize" value="3"/>
+  <essence value="2"/>
+  <charmAttributeRequirement attribute="ExcellencySocialize" count="2"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="4"/>
+   <willpoer cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Emotion" visualize="true"/>
+ <charmAttribute attribute="Illusion" visualize="true"/>
+ <charmAttribute attribute="Compulsion" visualize="true"/>
+ <charmAttribute attribute="Social" visualize="true"/>
+ <charmAttribute attribute="Mandate" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Warm-FacedSeductionStyle" exalt="Dragon-Blooded" group="Socialize">
+ <prerequisite>
+  <trait id="Socialize" value="3"/>
+  <essence value="2"/>
+  <charmAttributeRequirement attribute="ExcellencySocialize" count="1"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Supplemental"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Emotion" visualize="true"/>
+ <charmAttribute attribute="Social" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Friend-to-All-NationsAttitude" exalt="Dragon-Blooded" group="Socialize">
+ <prerequisite>
+  <trait id="Socialize" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.Warm-FacedSeductionStyle"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="2"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Social" visualize="true"/>
+ <charmAttribute attribute="Mandate" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Smoothing-over-the-PastTechnique" exalt="Dragon-Blooded" group="Socialize">
+ <prerequisite>
+  <trait id="Socialize" value="5"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.Warm-FacedSeductionStyle"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="3"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Dynasty" visualize="true"/>
+ <charmAttribute attribute="Illusion" visualize="true"/>
+ <charmAttribute attribute="Social" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+</charmlist>

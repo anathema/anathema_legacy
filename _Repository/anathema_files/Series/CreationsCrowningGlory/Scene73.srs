@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene73" repositoryPrintName="Auf nach Marita">
+  <Name><![CDATA[Auf nach Marita]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Auf nach Marita
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Reiseunterbrechung Priestertum
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Reiseunterbrechung Sun Ascending]]></Text>
+    </Part>
+  </Summary>
+</Scene>

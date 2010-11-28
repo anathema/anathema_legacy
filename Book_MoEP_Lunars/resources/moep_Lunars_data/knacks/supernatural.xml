@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    supernatural.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Supernatural Knacks -->
+     <charm id="Lunar.GreenSunChild" exalt="Lunar" group="Supernatural">
+          <prerequisite>
+               <trait id="Intelligence" value="4" />
+               <essence value="4" />
+          </prerequisite>
+          <cost />
+          <!-- duration />
+          <charmtype / -->
+          <charmAttribute attribute="NotAlienLearnable" />
+          <source source="Lunars2nd" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Lunar.HeartTheftOfTheBehemoth" exalt="Lunar" group="Supernatural">
+          <prerequisite>
+               <trait id="Stamina" value="5" />
+               <essence value="5" />
+               <charmReference id="Lunar.GreenSunChild" />
+          </prerequisite>
+          <cost />
+          <!-- duration />
+          <charmtype / -->
+          <charmAttribute attribute="NotAlienLearnable" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.HearthAndFlameShell" exalt="Lunar" group="Supernatural">
+          <prerequisite>
+               <trait id="Stamina" value="4" />
+               <essence value="4" />
+          </prerequisite>
+          <cost />
+          <!-- duration />
+          <charmtype /-->
+          <charmAttribute attribute="NotAlienLearnable" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.LunasHiddenFace" exalt="Lunar" group="Supernatural">
+          <prerequisite>
+               <trait id="Perception" value="4" />
+               <essence value="3" />
+          </prerequisite>
+          <cost />
+          <!-- duration />
+          <charmtype  / -->
+          <charmAttribute attribute="NotAlienLearnable" />
+          <source source="Lunars2nd" />
+     </charm>
+</charmlist>

@@ -1,0 +1,58 @@
+<traitTemplates uses="trait/DefaultTraitCollection.template">
+  <abilities>
+		<defaultTrait startValue="0" lowerableState="Default">
+			<limitation type="Essence"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Archery" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="Linguistics" startValue="3" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="3"/>
+		</specialTrait>
+		<specialTrait id="Lore" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="MartialArts" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="Melee" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="Performance" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Presence" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Ride" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Stealth" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="War" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+  </abilities>
+	<backgrounds>
+		<defaultTrait startValue="0" lowerableState="LowerableRegain">
+			<limitation type="Static" value="5"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Breeding" startValue="0" lowerableState="Immutable"  zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="5"/>
+			<minimum value="0"/>
+		</specialTrait>
+	</backgrounds>
+</traitTemplates>

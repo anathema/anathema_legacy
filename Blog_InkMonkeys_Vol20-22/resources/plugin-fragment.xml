@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.IM20-22" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="IM20-22" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="IM20-22Resources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="IM20-22Charms">
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/solar/bureaucracy.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/solar/larceny.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/solar/performance.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/solar/sail.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/solar/war.xml" />
+          </parameter> 
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/solar/ride.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/db/larceny.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/abyssal/darkMessiah.xml" />
+          </parameter>
+
+          <!-- Unleash when MoEP:Abyssals is working correctly
+          <parameter id="list">
+               <parameter id="type" value="Abyssal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/abyssal/bureaucracy.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Abyssal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/abyssal/larceny.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Abyssal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/abyssal/performance.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Abyssal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/abyssal/sail.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Abyssal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/abyssal/war.xml" />
+          </parameter> 
+          <parameter id="list">
+               <parameter id="type" value="Abyssal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/abyssal/ride.xml" />
+          </parameter>
+          -->
+
+          <!-- Unleash when MoEP:Lunars is working correctly
+          <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/lunar/charisma.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/lunar/intelligence.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/Lunar/manipulation.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/Lunar/perception.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/Lunar/stamina.xml" />
+          </parameter> 
+          <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/Lunar/strength.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="IM20-22_data/Lunar/wits.xml" />
+          </parameter>
+          -->
+
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="IM20-22Resources">
+          <parameter id="bundle" value="IM20-22" />
+          <parameter id="bundle" value="Pages_IM20-22" />
+          <parameter id="bundle" value="Charms_IM20-22" />
+     </extension>
+</plugin-fragment>

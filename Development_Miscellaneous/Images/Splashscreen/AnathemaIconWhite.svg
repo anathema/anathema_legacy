@@ -1,0 +1,62 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<!-- Created with Sketsa SVG Graphics Editor (http://www.kiyut.com) -->
+<svg width="200" xmlns:xlink="http://www.w3.org/1999/xlink" height="200" xmlns="http://www.w3.org/2000/svg">
+    <ellipse transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" rx="57.0" cx="83.0" ry="57.0"
+         cy="58.0" stroke="#ffffff" stroke-width="0.5"/>
+    <polygon fill="none" points="82.75,113.0 88.5,90.0 99.0,99.5 101.5,85.0 121.75,97.0 110.0,76.0 
+        124.0,75.0 115.0,64.0 138.25,58.0 115.5,51.5 124.0,40.5 110.0,39.5 122.0,19.0 101.5,30.5 
+        100.5,17.0 89.0,26.0 82.5,2.5 76.5,25.5 65.5,17.5 64.5,30.5 44.25,18.5 56.0,39.5 41.5,41.0 
+        50.0,51.5 27.5,58.0 50.5,64.0 42.0,74.5 55.5,76.0 43.25,97.0 64.0,85.5 65.5,99.0 76.5,90.5"
+         transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" stroke="#ffffff"/>
+    <ellipse transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" rx="28.5" cx="83.0" ry="28.5"
+         cy="57.75" stroke="#ffffff"/>
+    <ellipse transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" fill-rule="evenodd" rx="26"
+         cx="83.0" ry="26" cy="58.0" stroke="#ffffff" stroke-width=".5"/>
+    <ellipse transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" fill-rule="evenodd" rx="20.0"
+         cx="83" ry="20.0" cy="58" stroke="#ffffff"/>
+    <polygon fill="none" transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" points="65.5,40.5 76.0,43.5 
+        83.0,33.0 89.5,43.0 101.25,41.25 98.0,52.0 108.0,58.0 97.75,64.5 100.5,75.5 89.0,73.5 
+        83.0,83.0 76.0,73.5 65.5,75.5 67.5,64.5 58.0,58.0 68.0,52.25" stroke="#ffffff"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="63.48271" x2="43.75" y1="78.00908"
+         y2="96.5" stroke="#ffffff" stroke-width=".5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="72.0" x2="65.5" y1="84.0"
+         y2="99.0" stroke="#ffffff" stroke-width=".5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="82.5" x2="82.75" y1="86.5"
+         y2="112.75" stroke="#ffffff" stroke-width=".5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="99.0" x2="93.0" y1="99.5"
+         y2="84.0" stroke="#ffffff" stroke-width=".5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="102.5" x2="122.0" y1="78.0"
+         y2="97.25" stroke="#ffffff" stroke-width=".5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="109.0" x2="124.0" y1="69.0"
+         y2="75.0" stroke="#ffffff" stroke-width=".5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="111.0" x2="139.0" y1="58.0"
+         y2="58.0" stroke="#ffffff" stroke-width=".5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="110.0" x2="124.0" y1="47.0"
+         y2="40.5" stroke="#ffffff" stroke-width=".5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="103.5" x2="122.0" y1="37.5"
+         y2="19.0" stroke="#ffffff" stroke-width=".5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="100.0" x2="94.0" y1="18.0"
+         y2="32.0" stroke="#ffffff" stroke-width="0.5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="82.5" x2="83.0" y1="2.75"
+         y2="29.0" stroke="#ffffff" stroke-width="0.5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="26.5" x2="54.5" y1="58.0"
+         y2="57.5" stroke="#ffffff" stroke-width="0.5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="41.75" x2="56.5" y1="74.5"
+         y2="68.5" stroke="#ffffff" stroke-width="0.5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="41.5" x2="57.0" y1="41.0"
+         y2="46.5" stroke="#ffffff" stroke-width="0.5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="43.5" x2="63.0" y1="17.5"
+         y2="37.5" stroke="#ffffff" stroke-width="0.5"/>
+    <line transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" x1="66.0" x2="71.5" y1="18.0"
+         y2="31.5" stroke="#ffffff" stroke-width="0.5"/>
+    <ellipse transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" rx="59.0" cx="83.0" ry="59.0"
+         cy="58.0" stroke="#ffffff" stroke-width="0.5"/>
+    <polygon fill="none" stroke-width="0.5" transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" points=
+        "69.5,52.75 69.25,44.25 76.75,45.25 82.75,38.75 88.75,44.75 97.0,44.75 96.5,52.5 102.0,57.75 
+        96.25,64.0 96.5,71.75 88.25,71.5 82.75,77.25 77.0,71.25 69.5,72.0 69.5,63.5 64.0,58.0"
+         stroke="#ffffff"/>
+    <ellipse transform="matrix(1.0 0.0 0.0 1.0 20.0 37.0)" fill="none" rx="14.0" cx="83.0" ry="13.75"
+         cy="58" stroke="#ffffff"/>
+</svg>

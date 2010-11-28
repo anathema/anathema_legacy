@@ -1,0 +1,15 @@
+<magicTemplate>
+	<freePicksPredicate defaultResponse="false">
+		<idException id="Dragon-Blooded.PasiapsHumility"/>
+		<idException id="Dragon-Blooded.MomentDanaad"/>
+		<groupException id="AirDragonStyle"/>
+		<groupException id="EarthDragonStyle"/>
+		<groupException id="FireDragonStyle"/>
+		<groupException id="WaterDragonStyle"/>
+		<groupException id="WoodDragonStyle"/>
+	</freePicksPredicate>
+	<charmTemplate charmType="Dragon-Blooded">
+		<martialArts rulesClass="net.sf.anathema.character.db.template.TerrestrialMartialArtsRules" level="Terrestrial" highLevel="true"/>		
+	</charmTemplate>
+	<spellTemplate maximumSorceryCircle="Terrestrial" maximumNecromancyCircle="Shadowlands"/>
+</magicTemplate>	

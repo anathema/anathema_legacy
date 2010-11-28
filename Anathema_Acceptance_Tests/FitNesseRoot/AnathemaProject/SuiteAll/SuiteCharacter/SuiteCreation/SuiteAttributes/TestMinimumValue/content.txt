@@ -1,0 +1,15 @@
+!3 Try set attributes to 0
+
+!|Set Attributes|
+|trait type|value|
+|Strength|0|
+|Dexterity|0|
+|Stamina|0|
+|Appearance|0|
+|Manipulation|0|
+|Charisma|0|
+|Perception|0|
+|Intelligence|0|
+|Wits|0|
+
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCheckDefaultAttributes

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="Fire" repositoryPrintName="Fire">
+  <Description>
+    <CharacterName><![CDATA[Fire]]></CharacterName>
+  </Description>
+  <Statistics experienced="true">
+    <Rules>
+      <RuleSet name="SecondEdition"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Dragon-Blooded</CharacterType>
+    <CharacterConcept>
+      <Caste type="Fire"/>
+      <Motivation><![CDATA[Be the best]]></Motivation>
+    </CharacterConcept>
+    <Essence creationValue="3"/>
+    <Willpower creationValue="6"/>
+    <Virtues>
+      <Compassion creationValue="3"/>
+      <Conviction creationValue="2"/>
+      <Temperance creationValue="1"/>
+      <Valor creationValue="3"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="3"/>
+        <Dexterity creationValue="4"/>
+        <Stamina creationValue="3"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="2"/>
+        <Manipulation creationValue="3"/>
+        <Appearance creationValue="4"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="3"/>
+        <Intelligence creationValue="2"/>
+        <Wits creationValue="2"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Linguistics creationValue="2"/>
+      <Lore creationValue="2"/>
+      <Occult creationValue="1"/>
+      <Stealth creationValue="2" favored="true"/>
+      <Thrown creationValue="0"/>
+      <Awareness creationValue="3" favored="true"/>
+      <Craft>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Air]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Earth]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Fire]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Water]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Wood]]></traitName>
+        </subTrait>
+      </Craft>
+      <Integrity creationValue="2"/>
+      <Resistance creationValue="2"/>
+      <War creationValue="3" favored="true"/>
+      <Athletics creationValue="4">
+        <Specialty creationValue="1" name="Running"/>
+      </Athletics>
+      <Dodge creationValue="3"/>
+      <Melee creationValue="5">
+        <Specialty creationValue="3" name="Short Daiklave"/>
+      </Melee>
+      <Presence creationValue="1"/>
+      <Socialize creationValue="2"/>
+      <Bureaucracy creationValue="0"/>
+      <Investigation creationValue="0"/>
+      <Larceny creationValue="0"/>
+      <MartialArts creationValue="1"/>
+      <Sail creationValue="0"/>
+      <Archery creationValue="1"/>
+      <Medicine creationValue="0"/>
+      <Performance creationValue="1"/>
+      <Ride creationValue="1"/>
+      <Survival creationValue="2"/>
+    </Abilities>
+    <Backgrounds>
+      <Background creationValue="2"><![CDATA[Breeding]]></Background>
+      <Background creationValue="2"><![CDATA[Artifact]]></Background>
+      <Background creationValue="3"><![CDATA[Resources]]></Background>
+      <Background creationValue="3"><![CDATA[Backing]]></Background>
+      <Background creationValue="2"><![CDATA[Family]]></Background>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Athletics" type="Dragon-Blooded">
+        <Charm name="Dragon-Blooded.FallingStarManeuver" experienceLearned="false"/>
+        <Charm name="Dragon-Blooded.EffortlesslyRisingFlame" experienceLearned="false"/>
+        <Charm name="Dragon-Blooded.Bellows-PumpingStride" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Melee" type="Dragon-Blooded">
+        <Charm name="Dragon-Blooded.Dragon-GracedWeapon" experienceLearned="false"/>
+        <Charm name="Dragon-Blooded.1stExcellency.Melee" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Resistance" type="Dragon-Blooded">
+        <Charm name="Dragon-Blooded.Ox-BodyTechnique" experienceLearned="false">
+          <Special>
+            <Categories>
+              <Category.-1-2 creationValue="2"/>
+            </Categories>
+          </Special>
+        </Charm>
+      </CharmGroup>
+      <Combos/>
+    </Charms>
+    <Spells/>
+    <Experience/>
+    <AdditionalModels>
+      <Model templateId="Equipment">
+        <Content>
+          <item>
+            <templateId><![CDATA[Natural]]></templateId>
+            <printedStats><![CDATA[Punch]]></printedStats>
+            <printedStats><![CDATA[Kick]]></printedStats>
+            <printedStats><![CDATA[Clinch]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Short Jade Daiklave]]></templateId>
+            <printedStats><![CDATA[Close]]></printedStats>
+          </item>
+        </Content>
+      </Model>
+      <Model templateId="Specialties">
+        <Content/>
+      </Model>
+      <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
+        <Content>
+          <linguistics/>
+        </Content>
+      </Model>
+      <Model templateId="Intimacies">
+        <Content>
+          <Intimacies/>
+        </Content>
+      </Model>
+      <Model templateId="Db.VirtueFlaw.Template">
+        <Content>
+          <VirtueFlaw>
+            <RootVirtue name="Valor"/>
+          </VirtueFlaw>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

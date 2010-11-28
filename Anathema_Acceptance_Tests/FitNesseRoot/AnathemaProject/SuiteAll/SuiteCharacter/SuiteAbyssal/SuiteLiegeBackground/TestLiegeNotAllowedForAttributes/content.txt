@@ -1,0 +1,19 @@
+!include SnippetSetLiegeToThree
+
+!3 Allocate 9 Attribute Dots On One Group
+
+Abyssals may spent 8/6/4 ability dots for free.
+
+!|Set Attributes|
+|trait type|value|
+|Strength|5|
+|Dexterity|5|
+|Stamina|2|
+
+!3 Regular Bonus Points Spent
+
+One dot of attribute costs 4 bonus points.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|0|4|

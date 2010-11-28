@@ -1,0 +1,5 @@
+!|Check Background|
+|Background Type|isAvailable?|
+|Followers|false|
+|Influence|false|
+|Contacts|false|

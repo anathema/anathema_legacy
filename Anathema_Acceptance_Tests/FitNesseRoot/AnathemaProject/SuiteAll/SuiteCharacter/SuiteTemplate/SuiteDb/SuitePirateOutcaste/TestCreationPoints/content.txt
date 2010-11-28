@@ -1,0 +1,29 @@
+!3 Attribute creation points
+
+!|Check Template Creation Points|
+|getPrimaryAttributes?|getSecondaryAttributes?|getTertiaryAttributes?|
+|7|6|4|
+
+!3 Ability creation points
+
+!|Check Template Creation Points|
+|getFavoredAbilityPicks?|getFavoredAbilityDots?|getGeneralAbilityDots?|
+|3|10|15|
+
+!3 Advantage creation points
+
+!|Check Template Creation Points|
+|getBackgroundDots?|getVirtueDots?|
+|12|5|
+
+!3 Magic creation points
+
+!|Check Template Creation Points|
+|getFavoredCharmPicks?|getGeneralCharmPicks?|
+|4|3|
+
+!3 Bonus points
+
+!|Check Template Creation Points|
+|getGeneralBonusPoints?|
+|15|

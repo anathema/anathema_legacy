@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="0.9">
+<dict>
+	<!-- Change these with each version -->
+	<key>CFBundleVersion</key>
+	<string>1.0-rc2</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0-rc2</string>
+	<key>CFBundleGetInfoString</key>
+	<string>1.0-rc2</string>
+	<!-- Should never need changing -->	
+	<key>CFBundleName</key>
+	<string>Anathema</string>
+	<key>CFBundleAllowMixedLocalizations</key>
+	<string>true</string>
+	<key>CFBundleExecutable</key>
+	<string>JavaApplicationStub</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>Athm</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleIconFile</key>
+	<string>sungear.icns</string>
+	<key>Java</key>
+	<dict>
+		<key>MainClass</key>
+		<string>net.sf.anathema.AnathemaBootLoader</string>
+		<key>WorkingDirectory</key>
+		<string>$APP_PACKAGE/Contents/Resources/Java</string>
+		<key>JVMVersion</key>
+		<string>1.5+</string>
+		<!-- May need to update this if any jars get added to the project. -->
+		<key>ClassPath</key>
+			<array>
+			<string>$JAVAROOT/anathema.jar</string>
+			<string>$JAVAROOT/lib/basicplayer2.3.jar</string>
+			<string>$JAVAROOT/lib/batik-awt-util.jar</string>
+			<string>$JAVAROOT/lib/batik-bridge.jar</string>
+			<string>$JAVAROOT/lib/batik-css.jar</string>
+			<string>$JAVAROOT/lib/batik-dom.jar</string>
+			<string>$JAVAROOT/lib/batik-ext.jar</string>
+			<string>$JAVAROOT/lib/batik-gui-util.jar</string>
+			<string>$JAVAROOT/lib/batik-gvt.jar</string>
+			<string>$JAVAROOT/lib/batik-parser.jar</string>
+			<string>$JAVAROOT/lib/batik-script.jar</string>
+			<string>$JAVAROOT/lib/batik-svg-dom.jar</string>
+			<string>$JAVAROOT/lib/batik-swing.jar</string>
+			<string>$JAVAROOT/lib/batik-util.jar</string>
+			<string>$JAVAROOT/lib/batik-xml.jar</string>
+			<string>$JAVAROOT/lib/commons-io.jar</string>
+			<string>$JAVAROOT/lib/commons-logging-api.jar</string>
+			<string>$JAVAROOT/lib/db4o-5.5-java5.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-core.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-swing-dialog.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-swing-layout.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-swing.jar</string>
+			<string>$JAVAROOT/lib/dom4j-1.5.jar</string>
+			<string>$JAVAROOT/lib/idw-gpl-1.4.0.jar</string>
+			<string>$JAVAROOT/lib/itext-1.4.jar</string>
+			<string>$JAVAROOT/lib/jasperreports-0.6.2.jar</string>
+			<string>$JAVAROOT/lib/javalayer.jar</string>
+			<string>$JAVAROOT/lib/jpf-boot.jar</string>
+			<string>$JAVAROOT/lib/jpf.jar</string>
+			<string>$JAVAROOT/lib/l2fprod-common-directorychooser.jar</string>
+			<string>$JAVAROOT/lib/l2fprod-common-tasks.jar</string>
+			<string>$JAVAROOT/lib/mp3spi1.9.2.jar</string>
+			<string>$JAVAROOT/lib/tritonus_share.jar</string>
+			<string>$JAVAROOT/lib/xml-apis-dom3.jar</string>
+			</array>
+		<key>Properties</key>
+		<dict>
+			<key>apple.laf.useScreenMenuBar</key>
+			<string>true</string>
+			<key>defaultrepository</key>
+			<string>%USER_HOME%/Library/Application Support/Anathema</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../../charms.dtd">
+<!--
+
+    stealth.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Stealth -->
+     <charm id="Solar.HoodingTheSolarLantern" exalt="Solar" group="Stealth">
+          <prerequisite>
+               <trait id="Stealth" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.EasilyOverlookedPresenceMethod" />
+               <charmAttributeRequirement attribute="ExcellencyStealth" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.EverywhereAndNowhereStance" exalt="Solar" group="Stealth">
+          <prerequisite>
+               <trait id="Stealth" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.MentalInvisibilityTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple">
+			<special speed="4" defense="-0" />
+		</charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Illusion" visualize="true" />
+		<charmAttribute attribute="Touch" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+	<charm id="Solar.WalkingInLegendsShadow" exalt="Solar" group="Stealth">
+		<prerequisite>
+			<trait id="Stealth" value="6" />
+			<essence value="6" />
+			<charmReference id="Solar.VanishingfromMind'sEyeMethod" />
+		</prerequisite>
+		<cost>
+			<essence cost="10" />
+			<willpower cost="1"/>
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Illusion" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+</charmlist>

@@ -1,0 +1,34 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
+
+Set some attribute values on creation ...
+
+!|Set Attributes|
+|trait type|value|
+|Strength|3|
+|Stamina|5|
+|Charisma|4|
+|Intelligence|5|
+|Wits|2|
+
+... and some on experience.
+
+!|Set Experienced|
+
+!|Set Attributes|
+|trait type|value|
+|Strength|4|
+|Appearance|2|
+
+Now we verify the complete attribute list.
+
+!|Attribute List|
+|trait type|creation value|experienced value|current value|
+|Strength|3|4|4|
+|Dexterity|1|-1|1|
+|Stamina|5|-1|5|
+|Charisma|4|-1|4|
+|Manipulation|1|-1|1|
+|Appearance|1|2|2|
+|Perception|1|-1|1|
+|Intelligence|5|-1|5|
+|Wits|2|-1|2|

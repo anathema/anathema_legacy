@@ -1,0 +1,33 @@
+!include SnippetPrepareMartialArtsDragonBlooded
+
+Initially, Dragon-Blooded may not learn Celestial Martial Arts. Not even introductory charms are allowed.
+
+!|Check Charm|
+|id|isLearnable?|
+|Solar.LeapingMantisTechnique|false|
+|Dragon-Blooded.SpiritSight|false|
+
+This is also true for experienced Terrestrials.
+
+!|Set Experienced|
+
+!|Check Charm|
+|id|isLearnable?|
+|Solar.LeapingMantisTechnique|false|
+
+After an initiatory cascades is learned...
+
+!|Toggle Charm Learned|
+|id|
+|Dragon-Blooded.SpiritSight|
+|Dragon-Blooded.SpiritWalking|
+
+!|Check Charm|
+|id|isLearned?|
+|Dragon-Blooded.SpiritSight|true|
+
+...this limit is lifted.
+
+!|Check Charm|
+|id|isLearnable?|
+|Solar.LeapingMantisTechnique|true|

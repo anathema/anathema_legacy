@@ -1,0 +1,31 @@
+ <additionalRules>
+     	<forbiddenBackgrounds>
+     		<backgroundReference id="Contacts" />
+     		<backgroundReference id="Followers" />
+     		<backgroundReference id="Influence" />
+     		<backgroundReference id="Henchmen" />
+     	</forbiddenBackgrounds>
+    	<additionalPools>
+    		<multilearnablePool>
+    			<backgroundReference id="Breeding"/>    			
+    			<personalPool multiplier="1"/>
+    			<peripheralPool>
+    				<fixedValue value="0" pool="0"/>
+    				<fixedValue value="1" pool="2"/>
+    				<fixedValue value="2" pool="3"/>
+    				<fixedValue value="3" pool="5"/>
+    				<fixedValue value="4" pool="7"/>
+    				<fixedValue value="5" pool="9"/>
+    				<fixedValue value="6" pool="11"/>
+    			</peripheralPool>
+    		</multilearnablePool>
+    	</additionalPools>
+    	<additionalCost>
+    		<costModifier>
+    			<backgroundReference id="Breeding"/>
+    			<dotCostModification thresholdLevel="2" fixedCost="1"/>
+    			<bonusModification thresholdLevel="3" fixedCost="2"/>
+    			<bonusModification thresholdLevel="4" fixedCost="2"/>
+    		</costModifier>
+    	</additionalCost>
+    </additionalRules>

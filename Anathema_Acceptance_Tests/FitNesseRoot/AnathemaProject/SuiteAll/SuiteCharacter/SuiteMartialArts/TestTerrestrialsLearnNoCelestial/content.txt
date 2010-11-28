@@ -1,0 +1,15 @@
+!include SnippetPrepareMartialArtsDragonBlooded
+
+Initially, Dragon-Blooded may not learn Celestial Martial Arts.
+
+!|Check Charm|
+|id|isLearnable?|
+|Solar.LeapingMantisTechnique|false|
+
+This is also true for experienced Terrestrials.
+
+!|Set Experienced|
+
+!|Check Charm|
+|id|isLearnable?|
+|Solar.LeapingMantisTechnique|false|

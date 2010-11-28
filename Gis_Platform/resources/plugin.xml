@@ -1,0 +1,14 @@
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin id="net.sf.anathema.gis" version="1.04" class="net.sf.anathema.gis.GisPlugin">
+	<requires>
+		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
+	</requires>
+	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
+		<parameter id="type">
+			<parameter id="class" value="net.sf.anathema.gis.platform.GisItemTypeConfiguration"/>
+		</parameter>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="Menubar" id="Menubar">
+		<parameter id="class" value="net.sf.anathema.gis.platform.menu.GisMenu"/>
+	</extension>
+</plugin>

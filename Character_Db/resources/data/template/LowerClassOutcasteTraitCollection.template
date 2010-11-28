@@ -1,0 +1,48 @@
+<traitTemplates uses="template/OutcasteDbTraitCollection.template">
+  <abilities>
+		<defaultTrait startValue="0" lowerableState="Default">
+			<limitation type="Essence"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Archery" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Melee" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+			<specialTrait id="Ride" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Lore" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Socialize" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<alternateMinimumTraits count="1" value="1">
+ 	  		<trait id="Brawl" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+ 	  		<trait id="MartialArts" startValue="1" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+		</alternateMinimumTraits>
+		<alternateMinimumTraits count="1" value="1">	
+			<trait id="Performance" startValue="1" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+			<trait id="Presence" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+		</alternateMinimumTraits>
+	</abilities>
+</traitTemplates>

@@ -1,0 +1,157 @@
+!contents
+
+First things first: Check the ultimate Face rank attainable.
+
+!|Check Face|
+|getUltimateRank?|
+|10|
+
+Now, let's get to it: At first, we cannot achieve more than a meager rank 0.
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|0|
+
+Gain some renown to achieve rank 1.
+
+!|Set Renown|
+|id|value|
+|Mettle|10|
+|Succor|10|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|1|
+
+At fifty points, rank 2 is in reach.
+
+!|Set Renown|
+|id|value|
+|Glory|15|
+|Cunning|15|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|2|
+
+75 are necessary to reach 3.
+
+!|Set Renown|
+|id|value|
+|Mettle|25|
+|Succor|20|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|3|
+
+100 for rank 4.
+
+!|Set Renown|
+|id|value|
+|Glory|30|
+|Cunning|25|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|4|
+
+To reach rank 5, all Attributes have to be greater than 2. 150 points are required, too.
+
+!|Set Renown|
+|id|value|
+|Mettle|50|
+|Succor|45|
+
+!|Set Attributes|
+|traitType|value|
+|Strength|3|
+|Stamina|3|
+|Dexterity|3|
+|Charisma|3|
+|Appearance|3|
+|Manipulation|3|
+|Wits|3|
+|Intelligence|3|
+|Perception|3|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|5|
+
+200 for rank 6.
+
+!|Set Renown|
+|id|value|
+|Mettle|50|
+|Succor|50|
+|Glory|50|
+|Cunning|50|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|6|
+
+240: 7.
+
+!|Set Renown|
+|id|value|
+|Mettle|60|
+|Succor|60|
+|Glory|60|
+|Cunning|60|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|7|
+
+Rank 8 weighs in with 280 points, also all attributes must be at 4 or higher.
+
+!|Set Renown|
+|id|value|
+|Mettle|70|
+|Succor|70|
+|Glory|70|
+|Cunning|70|
+
+!|Set Attributes|
+|traitType|value|
+|Strength|4|
+|Stamina|4|
+|Dexterity|4|
+|Charisma|4|
+|Appearance|4|
+|Manipulation|4|
+|Wits|4|
+|Intelligence|4|
+|Perception|4|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|8|
+
+With 320, we get to go to 9.
+
+!|Set Renown|
+|id|value|
+|Mettle|80|
+|Succor|80|
+|Glory|80|
+|Cunning|80|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|9|
+
+And at 360, highest honors are ours.
+
+!|Set Renown|
+|id|value|
+|Mettle|90|
+|Succor|90|
+|Glory|90|
+|Cunning|90|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|10|

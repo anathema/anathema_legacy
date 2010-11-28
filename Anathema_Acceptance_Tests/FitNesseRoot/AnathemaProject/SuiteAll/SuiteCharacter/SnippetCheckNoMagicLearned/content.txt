@@ -1,0 +1,7 @@
+!3 Check Magic
+
+No magic must be learned.
+
+!|Magic Overview|
+|charms learned?|spells learned?|combo count?|
+|0|0|0|

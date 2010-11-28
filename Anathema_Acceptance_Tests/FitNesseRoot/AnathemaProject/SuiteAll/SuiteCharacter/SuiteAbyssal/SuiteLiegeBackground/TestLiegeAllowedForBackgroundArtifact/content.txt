@@ -1,0 +1,9 @@
+!include SnippetSetLiegeToThree
+
+!3 Background To Value 4
+
+!|Set Background|
+|trait type|value|
+|Artifact|4|
+
+!include SnippetCheckTwoLiegePointsSpent

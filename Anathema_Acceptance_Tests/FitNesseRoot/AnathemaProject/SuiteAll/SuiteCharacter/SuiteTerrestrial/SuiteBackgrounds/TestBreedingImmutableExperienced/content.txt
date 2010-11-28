@@ -1,0 +1,53 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateDefaultTerrestrial
+This test will ensure that the Breeding backround is immutable when the character is experienced.
+
+!3 Raise Background to 3
+!|Set Background|
+|traitType|value|
+|Breeding|3|
+
+!|Check Background|
+|backgroundType|value?|
+|Breeding|3|
+
+!3 Set Experienced
+!|Set Experienced|
+
+!3 Ensure that lowering fails.
+!|Set Background|
+|traitType|value|
+|Breeding|1|
+
+!|Check Background|
+|backgroundType|value?|
+|Breeding|3|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|0|
+
+!3 Ensure proper behaviour for value 0
+!|Set Background|
+|traitType|value|
+|Breeding|0|
+
+!|Check Background|
+|backgroundType|value?|
+|Breeding|3|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|0|
+
+!3 Ensure that raising fails.
+!|Set Background|
+|traitType|value|
+|Breeding|4|
+
+!|Check Background|
+|backgroundType|value?|
+|Breeding|3|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|0|

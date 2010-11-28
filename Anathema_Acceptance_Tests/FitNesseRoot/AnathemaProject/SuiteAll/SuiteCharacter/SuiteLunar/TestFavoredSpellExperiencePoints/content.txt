@@ -1,0 +1,16 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteLunar.SnippetCreateLunarSorcerer
+
+!|Set Concept|
+|caste|
+|NoMoon|
+
+!|SetExperiencedFixture|
+
+!3 Learn a Spell and check xp.
+!|Learn Spell Magic|
+|id|
+|Terrestrial.Magician'sPleasantPath|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|12|

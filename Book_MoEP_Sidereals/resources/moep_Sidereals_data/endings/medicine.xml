@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    medicine.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Medicine -->
+     <charm id="Sidereal.PeacableConclusion" exalt="Sidereal" group="Medicine">
+          <prerequisite>
+               <trait id="Medicine" value="2" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+               <willpower cost="1" />
+               <health cost="1" type="Lethal" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.SmoothTransition" exalt="Sidereal" group="Medicine">
+          <prerequisite>
+               <trait id="Medicine" value="3" />
+               <essence value="2" />
+               <charmReference id="Sidereal.PeacableConclusion" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+               <special speed="4" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.InvocationOfTheStormFollowingSilence" exalt="Sidereal" group="Medicine">
+          <prerequisite>
+               <trait id="Medicine" value="3" />
+               <essence value="4" />
+               <charmReference id="Sidereal.SmoothTransition" />
+               <charmAttributeRequirement attribute="ExcellencyMedicine" count="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+               <special speed="4" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Virtue-Valor" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.TerminateIllness" exalt="Sidereal" group="Medicine">
+          <prerequisite>
+               <trait id="Medicine" value="3" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <charmAttribute attribute="Virtue-Conviction" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.DeferredWounds" exalt="Sidereal" group="Medicine">
+          <prerequisite>
+               <trait id="Medicine" value="4" />
+               <essence value="3" />
+               <charmReference id="Sidereal.TerminateIllness" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="WitsMedicine" unit="hour" />
+          <!-- Coding: This probably doesn't need to be coded with Java...
+                 When possible, I will have to "jar" this file and see if a simple "property"
+                 file will be sufficient. -->
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Fate" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.EarthAndSkyBargin" exalt="Sidereal" group="Medicine">
+          <prerequisite>
+               <trait id="Medicine" value="4" />
+               <essence value="4" />
+               <charmReference id="Sidereal.DeferredWounds" />
+               <charmReference id="Sidereal.SmoothTransition" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1" />
+               <health cost="1" type="Lethal" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="PrayerStrip" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+</charmlist>

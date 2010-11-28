@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.scrollofexalts" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="ScrollOfExalts" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="ScrollOfExaltsResources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="ScrollOfExaltsCharms">
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scroll_Exalts_data/zenith/resistance.xml" />
+          </parameter>
+         <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scroll_Exalts_data/eclipse/sail.xml" />
+          </parameter>
+           <parameter id="list">
+               <parameter id="type" value="Dragon-Blooded" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="scroll_Exalts_data/earth/awareness.xml" />
+          </parameter>
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="ScrollOfExaltsResources">
+          <parameter id="bundle" value="ScrollOfExalts" />
+          <parameter id="bundle" value="Pages_ScrollOfExalts" />
+          <parameter id="bundle" value="Charms_ScrollOfExalts" />
+     </extension>
+</plugin-fragment>

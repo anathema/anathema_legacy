@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../charms.dtd">
+<!--
+
+    manipulation.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Manipulation -->
+     <charm id="Lunar.MirrorShatteringWord" exalt="Lunar" group="Belief">
+          <prerequisite>
+               <trait id="Manipulation" value="6" />
+               <essence value="5" />
+               <charmReference id="Lunar.LostMirrorFlight" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Wyld" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Lunar.FalseBurrowGift" exalt="Lunar" group="Belief">
+          <prerequisite>
+               <trait id="Manipulation" value="6" />
+               <essence value="6" />
+               <charmReference id="Lunar.LostMirrorFlight" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+               <special speed="6" turntype="LongTick" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Lunar.ButterflyEyesFace" exalt="Lunar" group="Feint">
+          <prerequisite>
+               <trait id="Manipulation" value="6" />
+               <essence value="6" />
+               <charmReference id="Lunar.ButterflyEyesFist" />
+               <charmReference id="Lunar.OneOfTheHerd" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration amount="Essence" unit="action" />
+          <charmtype type="Simple">
+               <special speed="3" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Lunar.ButterflyEyesEnhancement" exalt="Lunar" group="Feint">
+          <prerequisite>
+          	<trait id="Manipulation" value="8" />
+          	<essence value="7" />
+          	<selectiveCharmGroup threshold="1">
+               	<charmReference id="Lunar.ButterflyEyesDefense" />
+               	<charmReference id="Lunar.ButterflyEyesTread" />
+          	</selectiveCharmGroup>
+		</prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="LordsOfCreation" />
+     </charm>
+     <charm id="Lunar.FirstInSchoolAssumption" exalt="Lunar" group="MilitaryUnit">
+          <prerequisite>
+               <trait id="Manipulation" value="6" />
+               <essence value="6" />
+               <charmReference id="Lunar.SchoolInTheReedsTechinque" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+               <willpower cost="2" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple">
+               <special speed="4" turntype="LongTick" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <charmAttribute attribute="War" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+</charmlist>

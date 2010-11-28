@@ -1,0 +1,39 @@
+<exaltedCharacterTemplate characterType="Solar" subtemplate="DreamsTwilight">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="template/SolarAbilityGroup2nd.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="DefaultEssence.template" />
+    <traitCollection uses="template/DreamsTwilightTraitCollection.template"/>
+    <magicTemplate uses="template/SolarMagic2nd.template"/>
+    <presentation uses="template/SolarPresentation2nd.template"/>
+    <additionalRules>
+    	<additionalPools>
+    		<multilearnablePool>
+    			<charmReference id="Solar.ImmanentSolarGlory"/>    			
+    			<peripheralPool multiplier="10"/>
+    		</multilearnablePool>
+    	</additionalPools> 
+    </additionalRules>
+    <additionalTemplates>
+      <template id="SolarVirtueFlaw" />
+    </additionalTemplates>
+    <healthTemplate>
+      <toughnessControllingTrait type="Resistance"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="DefaultBonusPointCost2nd.template" />
+    <creationPoints>
+      <attributeDots primary="8" secondary="6" tertiary="4" />
+      <abilityDots general="22" favored="10" favoredPicks="5" />
+      <backgroundDots count="22" />
+      <virtueDots count="5" />
+      <bonusPoints count="15" />
+      <charmPicks favored="5" general="5" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="experience/DefaultExperienceCost.template" />
+  </experience>
+</exaltedCharacterTemplate>

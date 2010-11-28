@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../charms.dtd">
+<!--
+
+    dexterity.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Dexterity -->
+     <charm id="Lunar.FlowingBodyAscension" exalt="Lunar" group="Defensive">
+          <prerequisite>
+               <trait id="Dexterity" value="6" />
+               <essence value="5" />
+               <charmReference id="Lunar.FlowingBodyEvasion" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Lunar.BecomingWatersEnvy" exalt="Lunar" group="Defensive">
+          <prerequisite>
+               <trait id="Dexterity" value="5" />
+               <essence value="6" />
+               <charmReference id="Lunar.FlowingBodyEvasion" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Fury-OK" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Lunar.WorldBendingGuardianAttentiveness" exalt="Lunar" group="Defensive">
+          <prerequisite>
+               <trait id="Dexterity" value="6" />
+               <essence value="6" />
+               <charmReference id="Lunar.FindingTheNeedlesEye" />
+               <charmReference id="Lunar.FlowingBodyEvasion" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Wyld" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Lunar.MoonlightHunt" exalt="Lunar" group="Movement">
+          <prerequisite>
+               <trait id="Dexterity" value="6" />
+               <essence value="6" />
+               <charmReference id="Lunar.MistWalkingPrana" />
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Wyld" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Lunar.StarFallsThrough" exalt="Lunar" group="Movement">
+          <prerequisite>
+               <trait id="Dexterity" value="7" />
+               <essence value="7" />
+               <charmReference id="Lunar.SnakeBodyTechnique" />
+               <charmReference id="Lunar.MoonlightHunt" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="9" />
+          </charmtype>
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+			<charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Wyld" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Lunar.UnhesitantScorpionLash" exalt="Lunar" group="SpeedAndExtraAction">
+          <prerequisite>
+               <trait id="Dexterity" value="6" />
+               <essence value="6" />
+               <charmReference id="Lunar.OctopusAndSpiderBarrage" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Lunar.GreedyMosquitoBite" exalt="Lunar" group="SpeedAndExtraAction">
+          <prerequisite>
+               <trait id="Dexterity" value="6" />
+               <essence value="5" />
+               <charmReference id="Lunar.LightningStrokeAttack" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Fury-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="LordsOfCreation" />
+     </charm>
+</charmlist>

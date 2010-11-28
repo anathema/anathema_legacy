@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Series repositoryId="RevelationsinRealTime" repositoryPrintName="Revelations in Real-Time">
+  <Name><![CDATA[Revelations in Real-Time]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[Modus Operandi
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Rundum-Reden, nur kurze Beschreibungen
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Szenen wachsen kollaborativ, weniger im Kopf eines einzelnen.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Vereinzelt könnten "geleitete" Sitzungen stattfinden.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[Anmerkungen
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[-Statistiken für Charaktere sind nicht on-the-fly zu entwickeln, daher werden vermutlich wichtige Kämpfe zum Ende der Sitzung führen. Vielleicht genügen auch kurze Unterbrechungen.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[-Musik ist schwer einzubinden, vielleicht aber partiell on-the-fly zu realisieren.]]></Text>
+    </Part>
+  </Summary>
+  <Content/>
+  <Plot>
+    <Story repositoryId="Story0"/>
+    <Story repositoryId="Story1"/>
+  </Plot>
+</Series>

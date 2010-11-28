@@ -1,0 +1,118 @@
+Default Sidereals get 5 favored and 7 general picks.
+
+!3 Spend the Free General Picks
+
+First, we need to fulfill the prerequisites
+
+!|SetAbilities|
+|traitType|value|
+|Craft|3|
+|Endurance|3|
+
+Then, learn the charms.
+
+!|ToggleCharmLearned|
+|id|
+|Sidereal.MendingWarpedDesigns|
+|Sidereal.ElementalVision|
+|Sidereal.ElegantPatternsFate|
+|Sidereal.ExcellentImplementationObjectives|
+|Sidereal.UnsweringJuggernautPrinciple|
+|Sidereal.UnwaveringWell-BeingMeditation|
+|Sidereal.OptimisticSecurityPractice|
+
+Make sure there's a total of seven picks spent
+
+!|MagicOverview|
+|charmsLearned?|
+|7|
+
+!3 Ensure No Bonus Points Are Spent
+
+!|CheckBonusPoints|
+|regularSpent?|
+|0|
+
+Any further general charm picks should be paid for with bonus points.
+
+!3 Learn a general Charm
+
+First, we need to fulfill the prerequisites
+
+!|SetAbilities|
+|traitType|value|
+|Stealth|2|
+
+Learn, Check BP, and unlearn once more.
+
+!|ToggleCharmLearned|
+|id|
+|Sidereal.BlindingBoar|
+
+!|CheckBonusPoints|
+|regularSpent?|
+|7|
+
+!|ToggleCharmLearned|
+|id|
+|Sidereal.BlindingBoar|
+
+
+!3 Spend the favored picks
+
+First, set the prerequisites
+
+!|SetAbilitiesFavored|
+|abilityType|
+|Thrown|
+|Sail|
+
+!|SetAbilities|
+|traitType|value|
+|Thrown|3|
+|Sail|3|
+
+!|ToggleCharmLearned|
+|id|
+|Sidereal.LifeGetsWorseApproach|
+|Sidereal.WillfulWeaponMethod|
+|Sidereal.MirrorShatteringMethod|
+|Sidereal.SaltintoAshSleight|
+
+Make sure there's a total of seven picks spent
+
+!|MagicOverview|
+|charmsLearned?|
+|12|
+
+!3 Ensure No Bonus Points Are Spent
+
+!|CheckBonusPoints|
+|regularSpent?|
+|0|
+
+!3 Learn a favored Charm
+First, we need another favored ability.
+
+!|SetAbilitiesFavored|
+|abilityType|
+|Dodge|
+
+!|SetAbilities|
+|traitType|value|
+|Dodge|3|
+
+Now, learn the charm, check the points, unlearn once more.
+
+!|ToggleCharmLearned|
+|id|
+|Sidereal.Absence|
+
+!|CheckBonusPoints|
+|regularSpent?|
+|5|
+
+!|ToggleCharmLearned|
+|id|
+|Sidereal.Absence|
+

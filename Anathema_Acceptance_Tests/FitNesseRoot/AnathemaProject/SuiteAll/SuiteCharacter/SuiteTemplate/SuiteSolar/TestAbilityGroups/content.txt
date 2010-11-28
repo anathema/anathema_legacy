@@ -1,0 +1,31 @@
+!3 Checking Ability Groups
+
+Checking that the ability groups are grouped into Solar Castes.
+
+!|Check Grouped Ability Types Fixture|
+|abilityTypeId|getGroupId?|
+|Archery|Dawn|
+|Brawl|Dawn|
+|MartialArts|Dawn|
+|Melee|Dawn|
+|Thrown|Dawn|
+|Endurance|Zenith|
+|Performance|Zenith|
+|Presence|Zenith|
+|Resistance|Zenith|
+|Survival|Zenith|
+|Craft|Twilight|
+|Investigation|Twilight|
+|Lore|Twilight|
+|Medicine|Twilight|
+|Occult|Twilight|
+|Athletics|Night|
+|Awareness|Night|
+|Dodge|Night|
+|Larceny|Night|
+|Stealth|Night|
+|Bureaucracy|Eclipse|
+|Linguistics|Eclipse|
+|Ride|Eclipse|
+|Sail|Eclipse|
+|Socialize|Eclipse|

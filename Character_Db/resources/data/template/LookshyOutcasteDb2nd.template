@@ -1,0 +1,37 @@
+<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="LookshyOutcasteSubtype">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="template/DbAbilityGroup2nd.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="template/DbEssence.template" />
+    <traitCollection uses="template/LookshyTraitCollection2nd.template"/>
+    <magicTemplate uses="template/DbMagic2nd.template"/>
+    <presentation uses="template/DbPresentation.template"/>
+     <additionalRules uses="template/LookshyDbAdditionalRules2nd.template">
+    	<requiredMagic>
+        	<magic type="charm" id="Dragon-Blooded.ElementalBoltAttack" />
+        	<magic type="charm" id="Dragon-Blooded.Wind-CarriedWordsTechnique" />
+     	 </requiredMagic>
+    </additionalRules>
+         <additionalTemplates>
+      <template id="Db.VirtueFlaw.Template" />
+    </additionalTemplates>
+    <healthTemplate>
+      <toughnessControllingTrait type="Resistance"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="template/DbBonusPointCosts.template" />
+    <creationPoints>
+      <attributeDots primary="7" secondary="6" tertiary="4" />
+      <abilityDots general="15" favored="10" favoredPicks="3" />
+      <backgroundDots count="13" />
+      <virtueDots count="5" />
+      <bonusPoints count="15" />
+      <charmPicks favored="4" general="4" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/DbExperiencePoints.template" />
+  </experience>
+</exaltedCharacterTemplate>

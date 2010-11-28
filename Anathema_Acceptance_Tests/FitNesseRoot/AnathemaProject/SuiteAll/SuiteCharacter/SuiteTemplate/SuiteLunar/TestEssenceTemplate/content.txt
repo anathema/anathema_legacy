@@ -1,0 +1,6 @@
+!3 Calculate the Lunar Template's Essence Pools for some random values.
+
+!|CheckEssenceTemplate|
+|willpower|compassion|conviction|essence|peripheralPool?|personalPool?|
+|6|5|0|2|40|14|
+|6|5|1|2|40|14|

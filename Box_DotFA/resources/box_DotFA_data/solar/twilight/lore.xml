@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../../charms.dtd">
+<!--
+
+    lore.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Lore -->
+     <charm id="Solar.ShinmaicCommunion" exalt="Solar" group="Lore">
+          <prerequisite>
+               <trait id="Lore" value="7" />
+               <essence value="7" />
+               <charmReference id="Solar.WyldCauldronTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="30" />
+               <willpower cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+		<source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.TerrestrialEdificationProgram" exalt="Solar" group="Lore">
+          <prerequisite>
+               <trait id="Lore" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.LegendaryScholarCurriculum" />
+          </prerequisite>
+          <cost />
+          <duration amount="1" unit="week" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Training" visualize="true" />
+          <source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.ShinmaicCalibration" exalt="Solar" group="Lore">
+          <prerequisite>
+               <trait id="Lore" value="7" />
+               <essence value="7" />
+               <charmReference id="Solar.ShinmaicCommunion" />
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+               <experience cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+			<source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.LegendDrawingInvocation" exalt="Solar" group="Lore">
+          <prerequisite>
+               <trait id="Lore" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.Essence-LendingMethod" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple">
+               <special speed="3" turntype="DramaticAction" defense="-0" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollErrata" />
+     </charm>
+</charmlist>

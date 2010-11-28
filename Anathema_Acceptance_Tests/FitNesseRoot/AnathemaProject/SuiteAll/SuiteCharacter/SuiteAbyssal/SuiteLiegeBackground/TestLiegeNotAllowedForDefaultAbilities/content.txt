@@ -1,0 +1,9 @@
+!include SnippetSetLiegeToThree
+
+!3 Default Ability Brawl To Value 4
+
+!|Set Abilities|
+|trait type|value|
+|Brawl|4|
+
+!include SnippetTwoRegularBonusPointsSpent

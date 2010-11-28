@@ -1,0 +1,55 @@
+!include SnippetSetLiegeToThree
+
+!include SnippetPrepareTraitsForSpellMagic
+
+Since Essence must not be paid with liege bonus points now 7 regular bonus points are spent.
+
+!include SnippetSevenRegularBonusPointsSpent
+
+!3 Learn 5 Non-Favored Charms Including Spell Magic Entry Charms
+
+Prepare Brawl for learning charms without spending bonus points.
+
+!|Set Abilities|
+|trait type|value|
+|Brawl|3|
+
+... and learn 3 charm form non-favored ability Brawl and the 2 spell magic entry charms from non-favored ablity occult.
+
+!|Toggle Charm Learned|
+|id|
+|Abyssal.DeadMan'sGrasp|
+|Abyssal.RapaciousLampreyTechnique|
+|Abyssal.InescapableIronGrip|
+|Abyssal.TerrestrialCircleSorcery|
+|Abyssal.ShadowlandsCircleNecromancy|
+
+Till now we have spent no bonus points except for Essence.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|0|7|
+
+!3 Learn A Terrestrial Circle Spell
+
+!|Learn Spell Magic|
+|id|
+|Terrestrial.EmeraldCountermagic|
+
+The 5 bonus points for non-favored magic are paid from the liege pool.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|5|7|
+
+!3 Learn A Shadowlands Circle Spell
+
+!|Learn Spell Magic|
+|id|
+|Shadowlands.BanishGhost|
+
+One point fo the 5 bonus points for non-favored magic is paid from liege pool the remaining 5 from regular bonus points.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|6|11|

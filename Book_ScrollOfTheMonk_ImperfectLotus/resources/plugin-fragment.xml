@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.imperfectlotus" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="imperfectLotus" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="imperfectLotusResources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="imperfectLotusCharms">
+          <!-- Terrestrial Level Martial Arts -->
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="imperfectLotus_data/terrestrial/GoldenExhalation.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="imperfectLotus_data/terrestrial/LightningHoof.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="imperfectLotus_data/terrestrial/PathOfTheArbiter.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="imperfectLotus_data/terrestrial/TerribleAscentDrivenBeast.xml" />
+          </parameter>
+          <!-- Celestial Level Martial Arts -->
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="imperfectLotus_data/celestial/ArtOfForcefulDeclaration.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="imperfectLotus_data/celestial/ArtOfMeditativeDiscussion.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="imperfectLotus_data/celestial/ArtOfRelentlessPersuasion.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="imperfectLotus_data/celestial/ArtOfVictoriousConcession.xml" />
+          </parameter>
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="imperfectLotusResources">
+          <parameter id="bundle" value="ImperfectLotus" />
+          <parameter id="bundle" value="Pages_ImperfectLotus" />
+          <parameter id="bundle" value="Charms_ImperfectLotus" />
+     </extension>
+</plugin-fragment>

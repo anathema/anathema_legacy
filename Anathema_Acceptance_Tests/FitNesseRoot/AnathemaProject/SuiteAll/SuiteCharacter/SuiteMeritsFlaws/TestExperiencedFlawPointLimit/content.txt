@@ -1,0 +1,15 @@
+!include SnippetSetExperienced
+!include SnippetNoExperiencedMeritsFlawsLearned
+
+!3 Learn over 10 points of Flaws
+!|Learn Merits Flaws|
+|id|category|type|value|
+|Small|Physical|Flaw|3|
+|DarkFate|Supernatural|Flaw|4|
+|PermanentCastemark|Supernatural|Flaw|2|
+|SlowHealing|Physical|Flaw|3|
+
+!3 Assert that only 20 Experience Points are granted
+!|Check Merits Flaws|
+|getExperienceFlawPointsSelected?|getExperiencePointsGained?|
+|12|20|

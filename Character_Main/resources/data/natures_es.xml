@@ -1,0 +1,65 @@
+<naturelist>
+	<nature id="Architect" name="Arquitecto">
+		<willpower text="(vea Exaltado, pagina 100) o (Exalted, pagina 114)"/>
+	</nature>
+	<nature id="Gallant" name="Bizarro">
+		<willpower text="(vea Exaltado, pagina 100) o (Exalted, pagina 115)"/>
+	</nature>
+	<nature id="Bravo" name="Bravucon">
+		<willpower text="(vea Exaltado, pagina 100) o (Exalted, pagina 115)"/>
+	</nature>
+	<nature id="Bureaucrat" name="Burocrata">
+		<willpower text="(vea Exaltado, pagina 101) o (Exalted, pagina 115)"/>
+	</nature>
+	<nature id="Caregiver" name="Protector">
+		<willpower text="(vea Exaltado, pagina 102) o (Exalted, pagina 115)"/>
+	</nature>
+	<nature id="Conniver" name="Confabulador">
+		<willpower text="(vea Exaltado, pagina 101) o (Exalted, pagina 115)"/>
+	</nature>
+	<nature id="Critic" name="Critico">
+		<willpower text="(vea Exaltado, pagina 101) o (Exalted, pagina 115)"/>
+	</nature>
+	<nature id="Explorer" name="Explorador">
+		<willpower text="(vea Exaltado, pagina 101) o (Exalted, pagina 115)"/>
+	</nature>
+	<nature id="Follower" name="Gregario">
+		<willpower text="(vea Exaltado, pagina 101) o (Exalted, pagina 115)"/>
+	</nature>
+	<nature id="Hedonist" name="Hedonista">
+		<willpower text="(vea Exaltado, pagina 101) o (Exalted, pagina 115)"/>
+	</nature>
+	<nature id="Jester" name="Bufon">
+		<willpower text="(vea Exaltado, pagina 101) o (Exalted, pagina 115)"/>
+	</nature>
+	<nature id="Judge" name="Juez">
+		<willpower text="(vea Exaltado, pagina 101) o (Exalted, pagina 116)"/>
+	</nature>
+	<nature id="Leader" name="Lider">
+		<willpower text="(vea Exaltado, pagina 101) o (Exalted, pagina 116)"/>
+	</nature>
+	<nature id="Martyr" name="Martir">
+		<willpower text="(vea Exaltado, pagina 101) o (Exalted, pagina 116)"/>
+	</nature>
+		<nature id="Paragon" name="Parangon">
+		<willpower text="(vea Exaltado, pagina 101) o (Exalted, pagina 116)"/>
+	</nature>
+	<nature id="Thrillseeker" name="Buscador de Emociones">
+		<willpower text="(vea Exaltado, pagina 101) o (Exalted, pagina 117)"/>
+	</nature>
+	<nature id="Rebel" name="Rebelde">
+		<willpower text="(vea Exaltado, pagina 102) o (Exalted, pagina 117)"/>
+	</nature>
+	<nature id="Savant" name="Sabio">
+		<willpower text="(vea Exaltado, pagina 102) o (Exalted, pagina 117)"/>
+	</nature>
+	<nature id="Survivor" name="Superviviente">
+		<willpower text="(vea Exaltado, pagina 102) o (Exalted, pagina 117)"/>
+	</nature>
+	<nature id="Traditionalist" name="Tradicionalista">
+		<willpower text="(vea Exaltado, pagina 102) o (Exalted, pagina 117)"/>
+	</nature>
+	<nature id="Visionary" name="Visionario">
+		<willpower text="(vea Exaltado, pagina 102) o (Exalted, pagina 117)"/>
+	</nature>
+</naturelist>

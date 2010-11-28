@@ -1,0 +1,5 @@
+*.pdf
+*.java
+build
+Thumbs.db
+*.jasper

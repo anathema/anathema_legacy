@@ -1,0 +1,24 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
+
+!|Set Experienced|
+
+!|Set Concept|
+|caste|
+|Twilight|
+
+!|Check Abilities|
+|traitType|value?|
+|Craft|0|
+
+!|Set Abilities|
+|traitType|value|
+|Craft|1|
+
+
+!|Check Abilities|
+|traitType|value?|
+|Craft|1|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|3|

@@ -1,0 +1,39 @@
+This test will ensure that Virtues are not lowerable.
+
+!3 Raise Virtue to 3
+!|Set Virtues|
+|traitType|value|
+|Valor|3|
+
+!|Check Virtues|
+|traitType|value?|
+|Valor|3|
+
+!3 Set Experienced
+!|Set Experienced|
+
+!3 Ensure that lowering fails.
+!|Set Virtues|
+|traitType|value|
+|Valor|1|
+
+!|Check Virtues|
+|traitType|value?|
+|Valor|3|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|0|
+
+!3 Ensure that raising succeeds
+!|Set Virtues|
+|traitType|value|
+|Valor|4|
+
+!|Check Virtues|
+|traitType|value?|
+|Valor|4|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|9|

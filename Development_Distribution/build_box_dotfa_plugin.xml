@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Box Dreams of the First Age Plugin" default="Build Dreams of the First Age">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Box_DotFA" />
+	<property name="module.name" value="box_DotFA" />
+
+	<property file="plugin.directories.properties" />
+	
+	<target name="Build Dreams of the First Age" depends="Compile, Build JAR"/>
+</project>

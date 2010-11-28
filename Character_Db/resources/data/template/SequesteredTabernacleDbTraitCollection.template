@@ -1,0 +1,54 @@
+<traitTemplates uses="trait/DefaultTraitCollection.template">
+	<essence startValue="3" lowerableState="Default" zeroLevel="2">
+		<limitation type="Static" value="7"/>
+		<minimum value="3"/>
+	</essence>
+	<backgrounds>
+		<defaultTrait startValue="0" lowerableState="LowerableRegain">
+			<limitation type="Static" value="5"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Sorcery" startValue="0" lowerableState="Immutable"  zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="5"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="Illumination" startValue="0" lowerableState="LowerableRegain"  zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="3"/>
+			<minimum value="0"/>
+		</specialTrait>
+	</backgrounds>
+  <abilities>
+		<defaultTrait startValue="0" lowerableState="Default">
+			<limitation type="Essence"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Endurance" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Linguistics" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Lore" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="MartialArts" startValue="3" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="3"/>
+		</specialTrait>
+		<specialTrait id="Occult" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Presence" startValue="3" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="3"/>
+		</specialTrait>
+		<specialTrait id="Socialize" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>		
+  </abilities>
+</traitTemplates>

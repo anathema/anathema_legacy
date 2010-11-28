@@ -1,0 +1,35 @@
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin id="net.sf.anathema.campaign.music" version="0.12">
+	<requires>
+		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
+	</requires>
+	<runtime>
+		<library id="MP3SPI" path="${ANATHEMA_LIB}/mp3spi1.9.2.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="tritonus" path="${ANATHEMA_LIB}/tritonus_share.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="basicplayer" path="${ANATHEMA_LIB}/basicplayer2.3.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="javalayer" path="${ANATHEMA_LIB}/javalayer.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="core" path="./" type="code">
+			<export prefix="*"/>
+		</library>
+	</runtime>
+	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
+		<parameter id="type">
+			<parameter id="class" value="net.sf.anathema.campaign.music.impl.module.MusicDatabaseItemTypeConfiguration"/>
+		</parameter>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
+		<parameter id="bundle" value="MusicModule"/>
+		<parameter id="bundle" value="MusicView"/>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="Toolbar" id="Toolbar">
+		<parameter id="class" value="net.sf.anathema.campaign.music.impl.module.StartDatabaseTool"/>
+	</extension>
+</plugin>

@@ -1,0 +1,33 @@
+<abilityGroups>
+  <group id="War">
+    <trait type="Archery" />
+    <trait type="Athletics" />
+    <trait type="Awareness" />
+    <trait type="Brawl" />
+    <trait type="Dodge" />
+    <trait type="Endurance" />
+    <trait type="MartialArts" />
+    <trait type="Melee" />
+    <trait type="Resistance" />
+    <trait type="Thrown" />
+  </group>
+  <group id="Life">
+    <trait type="Craft" />
+    <trait type="Larceny" />
+    <trait type="Linguistics" />
+    <trait type="Performance" />
+    <trait type="Presence" />
+    <trait type="Ride" />
+    <trait type="Sail" />
+    <trait type="Socialize" />
+    <trait type="Stealth" />
+    <trait type="Survival" />
+  </group>
+  <group id="Wisdom">
+    <trait type="Bureaucracy" />
+    <trait type="Investigation" />
+    <trait type="Lore" />
+    <trait type="Medicine" />
+    <trait type="Occult" />
+  </group>
+</abilityGroups>

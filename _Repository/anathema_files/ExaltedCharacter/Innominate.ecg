@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="Innominate" repositoryPrintName="Innominate">
+  <Description>
+    <Player><![CDATA[Urs]]></Player>
+    <Periphrase><![CDATA[A live of shadows, shadowed by fate itself.]]></Periphrase>
+  </Description>
+  <Statistics experienced="false">
+    <Rules>
+      <RuleSet name="SecondEdition"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
+    <CharacterConcept>
+      <Caste type="Night"/>
+      <Motivation><![CDATA[To find out who I am.]]></Motivation>
+      <Concept><![CDATA[Riskbreaker]]></Concept>
+    </CharacterConcept>
+    <Essence creationValue="2"/>
+    <Willpower creationValue="7"/>
+    <Virtues>
+      <Compassion creationValue="2"/>
+      <Conviction creationValue="4"/>
+      <Temperance creationValue="1"/>
+      <Valor creationValue="3"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="3"/>
+        <Dexterity creationValue="4"/>
+        <Stamina creationValue="4"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="2"/>
+        <Manipulation creationValue="2"/>
+        <Appearance creationValue="3"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="4"/>
+        <Intelligence creationValue="2"/>
+        <Wits creationValue="3"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="3" favored="true">
+        <Specialty creationValue="2" name="Firewands"/>
+      </Archery>
+      <MartialArts creationValue="0"/>
+      <Melee creationValue="2"/>
+      <Thrown creationValue="0"/>
+      <War creationValue="0"/>
+      <Integrity creationValue="2"/>
+      <Performance creationValue="0"/>
+      <Presence creationValue="1"/>
+      <Resistance creationValue="3" favored="true"/>
+      <Survival creationValue="1" favored="true"/>
+      <Craft>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Air]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Earth]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Fire]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Water]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Wood]]></traitName>
+        </subTrait>
+      </Craft>
+      <Investigation creationValue="3" favored="true"/>
+      <Lore creationValue="1">
+        <Specialty creationValue="1" name="The Lap"/>
+      </Lore>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="0">
+        <Specialty creationValue="2" name="Desert Spirits"/>
+      </Occult>
+      <Athletics creationValue="3"/>
+      <Awareness creationValue="3"/>
+      <Dodge creationValue="0"/>
+      <Larceny creationValue="4"/>
+      <Stealth creationValue="3"/>
+      <Bureaucracy creationValue="1"/>
+      <Linguistics creationValue="0"/>
+      <Ride creationValue="1"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="1" favored="true"/>
+    </Abilities>
+    <Backgrounds>
+      <Background creationValue="1"><![CDATA[Allies - Golden Bridge]]></Background>
+      <Background creationValue="3"><![CDATA[Contacts - Gem Spymaster]]></Background>
+      <Background creationValue="1"><![CDATA[Artifact]]></Background>
+      <Background creationValue="3"><![CDATA[Resources]]></Background>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Stealth" type="Solar">
+        <Charm name="Solar.EasilyOverlookedPresenceMethod" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Resistance" type="Solar">
+        <Charm name="Solar.IronSkinConcentration" experienceLearned="false"/>
+        <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
+          <Special>
+            <Categories>
+              <Category.-0 creationValue="0"/>
+              <Category.-1x2 creationValue="1"/>
+              <Category.-1-2x2 creationValue="0"/>
+            </Categories>
+          </Special>
+        </Charm>
+        <Charm name="Solar.DurabilityOakMeditation" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Athletics" type="Solar">
+        <Charm name="Solar.1stExcellency.Athletics" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Awareness" type="Solar">
+        <Charm name="Solar.KeenHearingandTouchTechnique" experienceLearned="false"/>
+        <Charm name="Solar.1stExcellency.Awareness" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Archery" type="Solar">
+        <Charm name="Solar.EssenceArrowAttack" experienceLearned="false">
+          <Special>
+            <Subeffects>
+              <Subeffect id="FieryArrowAttack" creationlearned="false" experiencelearned="false"/>
+              <Subeffect id="DazzlingFlare" creationlearned="false" experiencelearned="false"/>
+              <Subeffect id="RighteousJudgementArrow" creationlearned="true" experiencelearned="true"/>
+            </Subeffects>
+          </Special>
+        </Charm>
+        <Charm name="Solar.1stExcellency.Archery" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Larceny" type="Solar">
+        <Charm name="Solar.Lock-OpeningTouch" experienceLearned="false"/>
+      </CharmGroup>
+      <Combos>
+        <Combo experienceLearned="false">
+          <Name><![CDATA[Loricate of Righteousness]]></Name>
+          <Charm name="Solar.IronSkinConcentration" type="Solar"/>
+          <Charm name="Solar.EssenceArrowAttack" type="Solar"/>
+        </Combo>
+      </Combos>
+    </Charms>
+    <Spells/>
+    <Experience/>
+    <AdditionalModels>
+      <Model templateId="SolarVirtueFlaw">
+        <Content>
+          <VirtueFlaw>
+            <RootVirtue name="Conviction"/>
+            <Name><![CDATA[Crisis Core]]></Name>
+            <LimitBreak><![CDATA[Being confronted with her lack of identity.]]></LimitBreak>
+          </VirtueFlaw>
+        </Content>
+      </Model>
+      <Model templateId="Equipment">
+        <Content>
+          <item>
+            <templateId><![CDATA[Natural]]></templateId>
+            <templateId><![CDATA[Natural]]></templateId>
+            <printedStats><![CDATA[Punch]]></printedStats>
+            <printedStats><![CDATA[Kick]]></printedStats>
+            <printedStats><![CDATA[Clinch]]></printedStats>
+          </item>
+        </Content>
+      </Model>
+      <Model templateId="Specialties">
+        <Content/>
+      </Model>
+      <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
+        <Content>
+          <linguistics/>
+        </Content>
+      </Model>
+      <Model templateId="Intimacies">
+        <Content>
+          <Intimacies>
+            <Intimacy name="Golden Bridge through Scorched Sand" complete="true">
+              <Trait creationValue="4"/>
+            </Intimacy>
+            <Intimacy name="The Lap" complete="true">
+              <Trait creationValue="4"/>
+            </Intimacy>
+          </Intimacies>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

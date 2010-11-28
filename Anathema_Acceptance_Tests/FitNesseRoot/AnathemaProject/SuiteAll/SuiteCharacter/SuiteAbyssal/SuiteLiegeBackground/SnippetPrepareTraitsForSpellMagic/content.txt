@@ -1,0 +1,15 @@
+!3 Prepare Learning Spell Magic
+
+We need Occult of value 3, along with ...
+
+!|Set Abilities|
+|trait type|value|
+|Occult|3|
+
+... value 3 in Essence.
+
+!|Set Other Traits|
+|trait type|value|
+|Essence|3|
+
+... for the Sorcery and Necromancy entry charms. 

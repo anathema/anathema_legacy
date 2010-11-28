@@ -1,0 +1,17 @@
+!|Set Experienced|
+
+!|Set Other Traits|
+|traitType|value|
+|Essence|3|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|16|
+
+!|Set Other Traits|
+|traitType|value|
+|Essence|4|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|40|

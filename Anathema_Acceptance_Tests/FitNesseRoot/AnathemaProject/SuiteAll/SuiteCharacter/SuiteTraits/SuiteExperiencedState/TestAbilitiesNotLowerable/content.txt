@@ -1,0 +1,39 @@
+This test will ensure that abilities are not lowerable.
+
+!3 Raise Ability to 3
+!|Set Abilities|
+|traitType|value|
+|Socialize|3|
+
+!|Check Abilities|
+|traitType|value?|
+|Socialize|3|
+
+!3 Set Experienced
+!|Set Experienced|
+
+!3 Ensure that lowering fails.
+!|Set Abilities|
+|traitType|value|
+|Socialize|1|
+
+!|Check Abilities|
+|traitType|value?|
+|Socialize|3|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|0|
+
+!3 Ensure that raising succeeds
+!|Set Abilities|
+|traitType|value|
+|Socialize|4|
+
+!|Check Abilities|
+|traitType|value?|
+|Socialize|4|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|6|

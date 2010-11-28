@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.inkmonkeys.vol8" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="InkMonkeys_Vol8" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="InkMonkeys_Vol8Resources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="InkMonkeys_Vol8Charms">
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="ink_Monkeys8_data/presence.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="ink_Monkeys8_data/resistance.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="ink_Monkeys8_data/athletics.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="ink_Monkeys8_data/awareness.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="ink_Monkeys8_data/dodge.xml" />
+          </parameter> 
+          <parameter id="list">
+               <parameter id="type" value="Solar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="ink_Monkeys8_data/ride.xml" />
+          </parameter> 
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="InkMonkeys_Vol8Resources">
+          <parameter id="bundle" value="InkMonkeys_Vol8" />
+          <parameter id="bundle" value="Pages_InkMonkeys_Vol8" />
+          <parameter id="bundle" value="Charms_InkMonkeys_Vol8" />
+     </extension>
+</plugin-fragment>

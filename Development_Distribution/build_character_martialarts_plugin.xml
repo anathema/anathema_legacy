@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Character Martial Arts Plugin" default="Build Martial Arts">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Character_MartialArts" />
+	<property name="module.name" value="character_martialarts" />
+
+	<property file="plugin.directories.properties" />
+	
+	<target name="Build Martial Arts" depends="Compile, Build JAR"/>
+</project>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
+	<classpathentry exported="true" kind="lib" path="/Thirdparty/Database/db4o-6.0-java5.jar" sourcepath="/Thirdparty/Database/db4o-6.0-src.zip"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

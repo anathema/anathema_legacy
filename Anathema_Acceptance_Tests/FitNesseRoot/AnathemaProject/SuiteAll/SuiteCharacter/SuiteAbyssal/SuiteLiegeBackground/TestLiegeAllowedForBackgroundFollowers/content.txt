@@ -1,0 +1,9 @@
+!include SnippetSetLiegeToThree
+
+!3 Followers To Value 4
+
+!|Set Background|
+|trait type|value|
+|Followers|4|
+
+!include SnippetCheckTwoLiegePointsSpent

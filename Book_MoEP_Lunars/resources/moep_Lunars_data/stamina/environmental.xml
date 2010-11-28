@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    environmental.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Environmental Charms -->
+     <charm id="Lunar.DirectionalMasteryTechnique" exalt="Lunar" group="Environmental">
+          <!-- TODO:  Coding - This charm constitutes 5 different charms (one per direction).
+			These alternative charms are purchased as if they were separate charms.  -->
+          <prerequisite>
+               <trait id="Stamina" value="4" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.ExternalHidePerfection" exalt="Lunar" group="Environmental">
+          <prerequisite>
+               <trait id="Stamina" value="5" />
+               <essence value="4" />
+          <!-- TODO:  Coding - Must be updated to include the specific charm ID for each sub-charm listed. -->
+				<!--selectiveCharmGroup threshold="1">
+					<charmReference id="Lunar.DirectionalMasteryTechnique.Air" />
+               		<charmReference id="Lunar.DirectionalMasteryTechnique.Earth" />
+					<charmReference id="Lunar.DirectionalMasteryTechnique.Fire" />
+					<charmReference id="Lunar.DirectionalMasteryTechnique.Water" />
+					<charmReference id="Lunar.DirectionalMasteryTechnique.Wood" />
+				</selectiveCharmGroup-->
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Lunars2nd" />
+     </charm>
+</charmlist>

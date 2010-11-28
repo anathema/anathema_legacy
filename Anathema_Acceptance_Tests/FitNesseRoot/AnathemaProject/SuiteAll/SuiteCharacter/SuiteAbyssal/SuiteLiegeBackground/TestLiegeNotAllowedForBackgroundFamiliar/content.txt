@@ -1,0 +1,9 @@
+!include SnippetSetLiegeToThree
+
+!3 Familiar To Value 4
+
+!|Set Background|
+|trait type|value|
+|Familiar|4|
+
+!include SnippetTwoRegularBonusPointsSpent

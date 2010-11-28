@@ -1,0 +1,16 @@
+!3 Lunars never treat Martial Arts Charms as favored.
+
+Learn some MA.
+!|Set Abilities|
+|traitType|value|
+|MartialArts|3|
+
+Set MA to be favored.
+!|Set Abilities Favored|
+|abilityType|
+|MartialArts|
+
+Ensure MA Charms are not favored.
+!|Check Charm|
+|id|isFavored?|
+|Dragon-Blooded.GracefulTortoiseTechnique|false|

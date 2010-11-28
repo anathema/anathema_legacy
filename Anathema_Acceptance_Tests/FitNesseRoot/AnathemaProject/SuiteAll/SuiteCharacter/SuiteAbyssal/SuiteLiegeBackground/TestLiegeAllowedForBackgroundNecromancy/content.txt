@@ -1,0 +1,9 @@
+!include SnippetSetLiegeToThree
+
+!3 Necromany To Value 4
+
+!|Set Background|
+|trait type|value|
+|Necromancy|4|
+
+!include SnippetCheckTwoLiegePointsSpent

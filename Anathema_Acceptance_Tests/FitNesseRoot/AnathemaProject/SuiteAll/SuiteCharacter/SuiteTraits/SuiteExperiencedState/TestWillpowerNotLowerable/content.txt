@@ -1,0 +1,39 @@
+This test will ensure that Willpower is not lowerable.
+
+!3 Raise Willpower to 5
+!|Set Other Traits|
+|traitType|value|
+|Willpower|5|
+
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|5|
+
+!3 Set Experienced
+!|Set Experienced|
+
+!3 Ensure that lowering fails.
+!|Set Other Traits|
+|traitType|value|
+|Willpower|1|
+
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|5|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|0|
+
+!3 Ensure that raising succeeds
+!|Set Other Traits|
+|traitType|value|
+|Willpower|6|
+
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|6|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|10|

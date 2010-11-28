@@ -1,0 +1,20 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteAbyssal.SnippetCreateLoyalAbyssal
+
+!|Set Attributes|
+|traitType|value|
+|Appearance|5|
+
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteExperience.SnippetLearnSiderealMartialArtsCharm
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|15|
+
+!|Set Abilities Favored|
+|abilityType|
+|MartialArts|
+
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|13|

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><templates><template context="java" deleted="false" description="" enabled="true" name="for Iterable">for (${elementClass} ${elementName} : ${iterable}) {&#13;
+  ${cursor}&#13;
+}</template></templates>

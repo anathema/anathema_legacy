@@ -1,0 +1,8 @@
+!3 Check the Other Traits
+
+Willpower and Essence must have a value of 2.
+
+!|Check Other Traits|
+|Trait Type|value?|
+|Willpower|2|
+|Essence|2|

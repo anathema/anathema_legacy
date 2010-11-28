@@ -1,0 +1,29 @@
+An Abyssal with Essence below or equals to three may have any appearance he or she wishes to have.
+
+Starting Abyssals have Essence two. Testing extremes is more interesting, so we'll look at three.
+
+Every value of Appearance should be allowed - since later tests will forbid the middle range, we test indeed have to test all values.
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|3|0|true|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|3|1|true|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|3|2|true|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|3|3|true|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|3|4|true|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|3|5|true|

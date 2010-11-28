@@ -1,0 +1,19 @@
+!3 Generic Tests
+!contents
+
+!3 Tests for Specific Character Types
+[[Abyssal][.AnathemaProject.SuiteAll.SuiteCharacter.SuiteAbyssal]]
+[[Appearance][.AnathemaProject.SuiteAll.SuiteCharacter.SuiteAbyssal.SuiteLowerableAppearance]]
+!see .AnathemaProject.SuiteAll.SuiteCharacter.SuiteAbyssal.SuiteLowerableAppearance.TestExperiencedAppearance
+Necromancy
+!see .AnathemaProject.SuiteAll.SuiteCharacter.SuiteAbyssal.SuiteBackgrounds.TestNecromancyExperiencedImmutable
+
+[[Dragon-Blooded][.AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial]]
+Sorcery
+!see .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SuiteBackgrounds.TestSorceryImmutableExperienced
+Breeding
+!see .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SuiteBackgrounds.TestBreedingImmutableExperienced
+
+[[Sidereal][.AnathemaProject.SuiteAll.SuiteCharacter.SuiteSidereal]]
+Savant
+!see .AnathemaProject.SuiteAll.SuiteCharacter.SuiteSidereal.SuiteBackgrounds.TestSavantNotLowerable

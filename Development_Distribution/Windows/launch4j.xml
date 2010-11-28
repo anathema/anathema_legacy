@@ -1,0 +1,22 @@
+<launch4jConfig>
+  <dontWrapJar>true</dontWrapJar>
+  <headerType>0</headerType>
+  <jar>anathema.jar</jar>
+  <outfile>anathema.exe</outfile>
+  <errTitle></errTitle>
+  <jarArgs></jarArgs>
+  <chdir></chdir>
+  <customProcName>false</customProcName>
+  <stayAlive>false</stayAlive>
+  <icon>anathema.ico</icon>
+  <jre>
+    <minVersion>1.6.0</minVersion>
+  </jre>
+  <versionInfo>
+    <fileDescription>Anathema</fileDescription>
+    <copyright>Urs Reupke &amp; Sandra Sieroux</copyright>
+    <productName>Anathema</productName>
+    <internalName>Anathema Core Windows Launcher</internalName>
+    <originalFilename>Anathema.exe</originalFilename>
+  </versionInfo>
+</launch4jConfig>

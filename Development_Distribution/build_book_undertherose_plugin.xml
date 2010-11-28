@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Book Under the Rose Plugin" default="Build Under the Rose">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="projectset" value="Book_UnderTheRose" />
+	<property name="module.name" value="book_undertherose" />
+
+	<property file="plugin.directories.properties" />
+	
+	<target name="Build Under the Rose" depends="Compile, Build JAR"/>
+</project>

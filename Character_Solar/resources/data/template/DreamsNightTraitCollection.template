@@ -1,0 +1,40 @@
+<traitTemplates uses="trait/DefaultTraitCollection.template">
+  <abilities>
+		<defaultTrait startValue="0" lowerableState="Default">
+			<limitation type="Essence"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Stealth" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<alternateMinimumTraits count="1" value="1">
+ 	  		<trait id="Melee" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+ 	  		<trait id="MartialArts" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+ 	  		<trait id="Archery" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+ 	  		<trait id="Thrown" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+		</alternateMinimumTraits>
+		<alternateMinimumTraits count="1" value="2">
+ 	  		<trait id="Larceny" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+ 	  		<trait id="Investigation" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+		</alternateMinimumTraits>
+  </abilities>
+</traitTemplates>

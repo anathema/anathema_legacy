@@ -1,0 +1,48 @@
+Q: I'm trying to run Anathema on a Mac, but it won't work.
+A: (Thanks to Nadine, Four Willows Weeping and wordman)
+   Macs do support Java 5 on Tiger (Mac OS 10.4).  
+   However, it's an additional package available at:
+   http://www.apple.com/support/downloads/java2se50release1.html   
+   To successfully run Anathema, you need to set the default Java version.
+   A tool for this is provided by the J2SE 5.0 update at: 
+   /Applications/Utilities/Java/J2SE 5.0/
+   Afterwards, use download and run the .dmg provided on the website.
+
+Q: I get a popup window "Could not find the main class. Program will exit."
+Q: Running Anathema from the console yields "Exception in thread "main" java.lang.UnsupportedClassVersionError: net/sf/anathema/Anathema (Unsupported major.minor version 49.0)"
+A: Most probably, you are running an old version of Java which does not support the 
+	advanced features introduced in Java 6. Please go to http://java.sun.com and download
+	the most recent Java Runtime Environment (JRE).
+
+Q: How do I determine what version of java I am running or even where my java executable is?
+A: Please refer to the Anathema Installation Guide available on the project page.
+	
+Q: Alright, so I need Java 6. How to get it?
+A: Look for the "Free download" at www.java.com. 
+	
+Q: Are saved characters and the like going to be compatible between versions?
+A: Well, yes. At least, that's what we aim for. If some file happens not to be compatible and you
+	cannot find any comment on it in the readme, kindly assume that we screwed up somehow and contact 
+	us immediately.
+	
+Q: How do I grant the neccessary permissions for Anathema to run on Linux?
+A: (Thanks to Shattercrack)
+	Change permissions by entering 
+		chmod 755
+	and giving your chosen repository directory as a further parameter.
+	If you want to use the default-repository, the directory to specify for the chmod-command
+	if the main Anathema directory.
+	Note that, depending on your system, you need to be logged in as "root" or "super user" to change
+	permissions.
+	This should be done by typing 
+		su
+	before creating the directory.
+	
+Q: Anathema doesn't run properly on my Linux-Box with Compiz-3D-Desktop.
+A: (Thanks to pippo_jedi, using bash)
+		$export AWT_TOOLKIT=MToolkit
+	So now I'm adding
+		AWT_TOOLKIT=MToolkit
+		export AWT_TOOLKIT
+	to my ~/.bash_profile in my home directory.
+	Now anathema works fine.

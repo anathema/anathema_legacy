@@ -1,0 +1,31 @@
+<exaltedCharacterTemplate characterType="Solar" subtemplate="default">
+  <general>
+    <edition edition="FirstEdition"/>
+    <abilityGroups uses="template/SolarAbilityGroup.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="DefaultEssence.template" />
+    <traitCollection uses="trait/DefaultTraitCollection.template"/>
+    <magicTemplate uses="template/SolarMagic.template"/>
+    <presentation uses="template/SolarPresentation.template"/>
+    <additionalTemplates>
+      <template id="SolarVirtueFlaw" />
+    </additionalTemplates>
+    <healthTemplate>
+      <toughnessControllingTrait type="Endurance"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="DefaultBonusPointCost.template" />
+    <creationPoints>
+      <attributeDots primary="8" secondary="6" tertiary="4" />
+      <abilityDots general="15" favored="10" favoredPicks="5" />
+      <backgroundDots count="7" />
+      <virtueDots count="5" />
+      <bonusPoints count="15" />
+      <charmPicks favored="5" general="5" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="experience/DefaultExperienceCost.template" />
+  </experience>
+</exaltedCharacterTemplate>

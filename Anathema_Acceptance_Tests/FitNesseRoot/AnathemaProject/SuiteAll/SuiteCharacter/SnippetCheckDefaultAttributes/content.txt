@@ -1,0 +1,13 @@
+!3 All Attributes Have Default Value 1
+
+!|Check Attributes|
+|Trait Type|value?|
+|Strength|1|
+|Dexterity|1|
+|Stamina|1|
+|Charisma|1|
+|Manipulation|1|
+|Appearance|1|
+|Strength|1|
+|Dexterity|1|
+|Stamina|1|

@@ -1,0 +1,62 @@
+In Reach
+	-Custom Charms
+	-Filter Sourcebooks
+
+Features
+	-Willpower Lock Button
+	-Bonus Points Overview Page (aka "What-goeth-where")
+	-Custom Spells
+	-Best Build
+	-Alternative Minimum-Ability automatisch setzen wenn andere nicht gesetzt
+	-Crimson Pentacle Form Ultra-SpecialCharm
+	
+Code
+	-IOverview *Properties im CharacterPresenter
+	-Unique Charmgroups
+	
+Usability/L&F/UI
+	-Speichern der Session
+	-Leerer / Grauer / Colorierter Kreis vor der Charmbaumauswahl zur Anzeige des Status
+	-Doppelklick für Charaktererschaffung
+
+Preferences
+  	-Shortcut settings
+  	-Toolbar settings
+  	
+Daten / Tippkram
+	-Concept-Liste
+
+===
+Associations zwischen Items
+
+Notes Hinzufügen
+
+"Handlungsabschnitte" / "Fäden"
+	
+PRIO 1.5
+Warnungen
+	- falls Prerequisites für bereits gewählte Dinge nicht länger erfüllt werden
+	- falls gecomboter Charm unlearned wird
+	- falls endurance zu gering für anzahl OxBodies
+	- falls Punkte nicht ausgegeben werden
+
+Meldungen für 
+	In ComboConfigurationPresenter.InitComboConfigurationListening event auslösen
+	=> im CharmSelectionPresenter event bekommen
+	=> im CharmSelectionView Nachricht einblenden.
+	- Charm aus Combo entfernt
+	- Combo entfernt			
+	(Getrennt oder einfach : "Combos changed")
+
+Charms
+	- Alternativer Listenview mit Übersicht über alle gelernten Charms
+	- Selection
+		=> ID nicht bekannt behandeln
+		=> Gruppen von Charms cascadierend anwählen
+		=> Alle Prerequisites setzen
+	- Popup-Menü für verschiedene Optionen (Charmdaten)
+	- Fulfill Prerequisites
+
+PRIO 3:
+- Concepts and Campaigns may have CharacterSettings
+- Change-Delta-Log

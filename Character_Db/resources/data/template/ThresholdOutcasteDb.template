@@ -1,0 +1,37 @@
+<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="ThresholdOutcasteSubtype">
+  <general>
+    <edition edition="FirstEdition"/>
+    <abilityGroups uses="template/DbAbilityGroup.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="template/DbEssence.template" />
+    <traitCollection uses="trait/DefaultTraitCollection.template" />    
+    <magicTemplate uses="template/DbMagic.template"/>
+    <presentation uses="template/DbPresentation.template"/>
+    <additionalRules>
+     	<forbiddenBackgrounds>
+     		<backgroundReference id="Breeding" />
+     		<backgroundReference id="Command" />
+     		<backgroundReference id="Connections" />
+     		<backgroundReference id="Henchmen" />
+     		<backgroundReference id="Reputation" />
+     	</forbiddenBackgrounds>    	
+    </additionalRules>
+    <healthTemplate>
+      <toughnessControllingTrait type="Endurance"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="template/OutcasteDbBonusPointCosts.template" />
+    <creationPoints>
+      <attributeDots primary="7" secondary="6" tertiary="4" />
+      <abilityDots general="15" favored="10" favoredPicks="3" />
+      <backgroundDots count="7" />
+      <virtueDots count="5" />
+      <bonusPoints count="15" />
+      <charmPicks favored="4" general="3" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/DbExperiencePoints.template" />
+  </experience>
+</exaltedCharacterTemplate>

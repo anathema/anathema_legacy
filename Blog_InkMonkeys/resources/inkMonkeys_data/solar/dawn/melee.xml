@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../../charms.dtd">
+<!--
+
+    melee.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2010 Scott D. Olson (scottolson275@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Melee-->
+     <charm id="Solar.PerfectedBattleArray" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.OneWeapon,TwoBlows" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Blades Well-Blooded -->
+  		  <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.PerfectBladeAegis" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.BulwarkStance" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="MartialReadyMartialArts" visualize="true" />
+          <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Death Well-Remembered -->
+  		  <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.BladeLairDiscipline" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.PerfectBladeAegis" />
+          </prerequisite>
+          <cost >
+               <essence cost="4" text="or 6m" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Coiled Shadow Attitude -->
+  		  <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.InexorableSwordsmanSpirit" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.BladeLairDiscipline" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="MartialReadyMartialArtsArcheryThrown" visualize="true" />
+          <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Entropic Blade Nature -->
+  		  <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.SunSwordConcentration" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="4" />
+               <essence value="3" />
+               <charmReference id="Solar.GloriousSolarSaber" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - All Blades Cry for Blood -->
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.MoltenSunBlade" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="4" />
+               <essence value="3" />
+               <charmReference id="Solar.GloriousSolarSaber" />
+               <charmReference id="Solar.HungryTigerTechnique" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.BlindImpulseStrike" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.IronRaptorTechnique" />
+               <charmReference id="Solar.SolarCounterattack" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+              <special primaryStep="9" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <charmAttribute attribute="MartialReadyMartialArts" visualize="true"/>
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.FlawlessMirrorTrance" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.ReadyinEightDirectionsStance" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+              <special speed="7" turntype="Tick" defense="0"/>
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <charmAttribute attribute="MartialReadyMartialArts" visualize="true"/>
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.GuardianSunfireCatechism" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.HeavenlyGuardianDefense" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(3m or 3m, 1wp)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Death's Knight Stance -->
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.EdgeOfMorningSunlight" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.IronRaptorTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+              <special speed="3" turntype="Tick" defense="0"/>
+          </charmtype>
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Crippling" visualize="true" />
+          <charmAttribute attribute="Holy" visualize="true"/>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.CoronaOfRadiance5" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.EdgeOfMorningSunlight" />
+               <charmReference id="Solar.BlazingSolarBolt" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(5m, 1wp)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Holy" visualize="true"/>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.CoronaOfRadiance7" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="7" />
+               <charmReference id="Solar.CoronaOfRadiance5" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(7m, 1wp)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Holy" visualize="true"/>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.GrassCuttingStrike" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="4" />
+               <essence value="4" />
+               <charmReference id="Solar.IronRaptorTechnique" />
+               <charmReference id="Solar.PeonyBlossomAttack" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(+4m)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.ThousandArmsPrana" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.SummoningLoyalSteel" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(1m)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.FinalSunsetStance" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.DippingSwallowDefense" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" />
+          </cost>
+          <duration amount="1" unit="tick"/>
+          <charmtype type="Reflexive">
+              <special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="MartialReadyMartialArts" visualize="true"/>
+  		  <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.FadingLightQuickening" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.FinalSunsetStance" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(1m)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Overdrive" visualize="true"/>
+  		  <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.DawnsParableDefense" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.FinalSunsetStance" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" text=" per defense" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+              <special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="MartialReadyMartialArts" visualize="true"/>
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.ArrowPennantAegis" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="3" />
+               <essence value="1" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.CrossFangMaelstrom" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.IronWhirlwindAttack" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" text=", 3+ free reflexive attacks" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="ExtraAction" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+     <charm id="Solar.StormSlayingAttitude" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.IronWhirlwindAttack" />
+          </prerequisite>
+          <cost/>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm>
+</charmlist>

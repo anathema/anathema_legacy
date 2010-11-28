@@ -1,0 +1,31 @@
+!3 Override the default character type
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteAbyssal.SnippetCreateLoyalAbyssal
+
+!3 Set the Prerequisites
+
+!|Set Abilities|
+|traitType|value|
+|Endurance|3|
+
+!3 Learn Prerequisite Charm
+
+!|Toggle Charm Learned|
+|id|
+|Abyssal.Pain-EatingFocus|
+
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|0|1|0|
+
+!3 Learn the Multiple Learnable Charm
+
+!|Learn Multiple Learnable Charm|
+|id|count|
+|Abyssal.InsensibleCorpseTechniquePermanent|3|
+
+!3 Check the Points
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|0|4|0|

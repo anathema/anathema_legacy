@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../charms.dtd">
+<!--
+
+    ScarletPatternedBattlefield.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Scarlet Patterned Battlefield Style -->
+     <charm id="Sidereal.UnassailableRebuffPosition" exalt="Solar" group="ScarletPatternedBattlefieldStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <trait id="War" value="3" />
+               <essence value="4" />
+          </prerequisite>
+          <cost />
+          <duration amount="2xMartialArts" unit="action" />
+          <charmtype type="Simple">
+               <special speed="4" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Knockback" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.ImpeccablePatternedDeployment" exalt="Solar" group="ScarletPatternedBattlefieldStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <trait id="War" value="3" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.GlanceAndStride" exalt="Solar" group="ScarletPatternedBattlefieldStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+               <charmReference id="Sidereal.ImpeccablePatternedDeployment" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.WithoutStrategyArrangement" exalt="Solar" group="ScarletPatternedBattlefieldStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <trait id="War" value="3" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="7" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.FallenIvoryDefense" exalt="Solar" group="ScarletPatternedBattlefieldStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Sidereal.UnassailableRebuffPosition" />
+               <charmReference id="Sidereal.GlanceAndStride" />
+               <charmReference id="Sidereal.WithoutStrategyArrangement" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+               <health cost="1" type="Lethal" />
+          </cost>
+          <duration event="Released" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.ScarletPatternedBattlefieldForm" exalt="Solar" group="ScarletPatternedBattlefieldStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Sidereal.FallenIvoryDefense" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Form" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.VictoryOfTheCheat" exalt="Solar" group="ScarletPatternedBattlefieldStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="6" />
+               <charmReference id="Sidereal.ScarletPatternedBattlefieldForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="16" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="War" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.SingularEscapeStratagem" exalt="Solar" group="ScarletPatternedBattlefieldStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="6" />
+               <charmReference id="Sidereal.ScarletPatternedBattlefieldForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="12" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="2" unit="action" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.GreatThinkersDefenseManeuver" exalt="Solar" group="ScarletPatternedBattlefieldStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="6" />
+               <essence value="6" />
+               <charmReference id="Sidereal.VictoryOfTheCheat" />
+               <charmReference id="Sidereal.SingularEscapeStratagem" />
+          </prerequisite>
+          <cost>
+               <essence cost="15" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive">
+               <special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.TheEmpressLivesForAll" exalt="Solar" group="ScarletPatternedBattlefieldStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="6" />
+               <essence value="6" />
+               <charmReference id="Sidereal.GreatThinkersDefenseManeuver" />
+          </prerequisite>
+          <cost>
+               <essence cost="16" />
+               <willpower cost="1" />
+          </cost>
+          <duration event="Released" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+</charmlist>

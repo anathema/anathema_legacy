@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.moepAlchemicals" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="moepAlchemicals" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="moepAlchemicalsResources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="moepAlchemicalsCharms">
+		<!-- Alchemical List -->
+		<!--parameter id="list">
+			<parameter id="type" value="Alchemical"/>
+			<parameter id="rules" value="SecondEdition"/>
+			<parameter id="path" value="moep_Alchemicals_data/??"/>
+		</parameter-->
+		<!-- Alchemical Martial Arts Styles -->
+		<parameter id="list">
+             <parameter id="type" value="MartialArts" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="moep_Alchemicals_data/misc/liveWire.xml" />
+        </parameter>
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Alchemicals_data/misc/thousandWoundsGear.xml" />
+		</parameter>
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="moepAlchemicalsResources">
+          <parameter id="bundle" value="moepAlchemicals" />
+          <parameter id="bundle" value="Pages_moepAlchemicals" />
+          <parameter id="bundle" value="Charms_moepAlchemicals" />
+     </extension>
+</plugin-fragment>

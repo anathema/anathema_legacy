@@ -1,0 +1,15 @@
+!|Set Virtues|
+|traitType|value|
+|Compassion|2|
+
+!|Check Bonus Points|
+|regularSpent?|
+|0|
+
+!|Set Virtues|
+|traitType|value|
+|Compassion|3|
+
+!|Check Bonus Points|
+|regularSpent?|
+|0|

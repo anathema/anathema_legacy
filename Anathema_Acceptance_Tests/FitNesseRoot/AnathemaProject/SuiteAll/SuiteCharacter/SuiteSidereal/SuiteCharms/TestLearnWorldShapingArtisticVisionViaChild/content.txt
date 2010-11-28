@@ -1,0 +1,26 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteSidereal.SnippetCreateNewDefaultSidereal
+
+'Destiny Knitting Entanglement' is direct child of the charm 'World Shaping Artistic Vision'.
+Its Requirements are an essence of 3 and a craft ablity of value 3.
+
+!|Set Other Traits|
+|traitType|value|
+|Essence|3|
+
+!|Set Abilities|
+|traitType|value|
+|Craft|3|
+
+Now we learn 'Destiny Knitting Entanglement'.
+
+!|Toggle Charm Learned|
+|id|
+|Sidereal.Destiny-KnittingEntanglement|
+
+We need to verify that both charms are learned.
+
+!|Check Charm|
+|id|isLearned?|learn count?|
+|Sidereal.Destiny-KnittingEntanglement|true|1|
+|Sidereal.World-ShapingArtisticVision|true|1|
+

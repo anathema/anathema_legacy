@@ -1,0 +1,31 @@
+!3 First, I will raise Virtues and WP itself to create a suitable environment.
+
+!|Set Virtues|
+|traitType|value|
+|Compassion|2|
+|Temperance|3|
+
+!|Set Other Traits|
+|traitType|value|
+|Willpower|6|
+
+!|Set Experienced|
+
+!3 Now, I will perform various experiments on the Willpower value, to check...
+!3 ...it's not lowerable below it's value at character creation.
+!|Set Other Traits|
+|traitType|value|
+|Willpower|5|
+
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|6|
+
+!3 ...it can be raised above the limit of 8.
+!|Set Other Traits|
+|traitType|value|
+|Willpower|9|
+
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|9|

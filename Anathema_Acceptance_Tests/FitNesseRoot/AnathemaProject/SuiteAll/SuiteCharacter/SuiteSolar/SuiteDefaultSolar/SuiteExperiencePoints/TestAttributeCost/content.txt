@@ -1,0 +1,9 @@
+!|Set Experienced|
+
+!|Set Attributes|
+|traitType|value|
+|Appearance|2|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|4|

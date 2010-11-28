@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="Testit" repositoryPrintName="Test it">
+  <Description>
+    <CharacterName><![CDATA[Test it]]></CharacterName>
+  </Description>
+  <Statistics experienced="false">
+    <Rules>
+      <RuleSet name="PowerCombat"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
+    <CharacterConcept>
+      <Caste type="Eclipse"/>
+      <Nature/>
+      <Concept/>
+    </CharacterConcept>
+    <Essence creationValue="2"/>
+    <Willpower creationValue="2"/>
+    <Virtues>
+      <Compassion creationValue="1"/>
+      <Conviction creationValue="1"/>
+      <Temperance creationValue="1"/>
+      <Valor creationValue="1"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="5"/>
+        <Dexterity creationValue="3"/>
+        <Stamina creationValue="1"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="1"/>
+        <Manipulation creationValue="1"/>
+        <Appearance creationValue="1"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="1"/>
+        <Intelligence creationValue="1"/>
+        <Wits creationValue="1"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="0"/>
+      <Brawl creationValue="0"/>
+      <MartialArts creationValue="0"/>
+      <Melee creationValue="0"/>
+      <Thrown creationValue="0"/>
+      <Endurance creationValue="4"/>
+      <Performance creationValue="0"/>
+      <Presence creationValue="0"/>
+      <Resistance creationValue="0"/>
+      <Survival creationValue="0"/>
+      <Craft creationValue="0"/>
+      <Investigation creationValue="0"/>
+      <Lore creationValue="0"/>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="0"/>
+      <Athletics creationValue="0"/>
+      <Awareness creationValue="0"/>
+      <Dodge creationValue="0"/>
+      <Larceny creationValue="0"/>
+      <Stealth creationValue="0"/>
+      <Bureaucracy creationValue="0"/>
+      <Linguistics creationValue="0"/>
+      <Ride creationValue="0"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="0"/>
+    </Abilities>
+    <Backgrounds/>
+    <Charms>
+      <CharmGroup name="Endurance" type="Abyssal">
+        <Charm name="Abyssal.InsensibleCorpseTechniquePermanent" experienceLearned="false">
+          <Special>
+            <LearnCount creationValue="3"/>
+          </Special>
+        </Charm>
+        <Charm name="Abyssal.Pain-EatingFocus" experienceLearned="false"/>
+      </CharmGroup>
+      <Combos/>
+    </Charms>
+    <Spells/>
+    <Experience/>
+    <AdditionalModels>
+      <Model templateId="SolarVirtueFlaw">
+        <Content>
+          <VirtueFlaw/>
+        </Content>
+      </Model>
+      <Model templateId="MeritsAndFlaws">
+        <Content>
+          <meritsFlaws/>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

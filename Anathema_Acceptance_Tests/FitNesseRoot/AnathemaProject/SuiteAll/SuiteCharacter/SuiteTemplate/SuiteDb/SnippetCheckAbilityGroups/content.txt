@@ -1,0 +1,31 @@
+!3 Checking Ability Groups
+
+Checking that the ability groups are Dragon-Blooded Aspects.
+
+!|Check Grouped Ability Types|
+|abilityTypeId|getGroupId?|
+|Linguistics|Air|
+|Lore|Air|
+|Occult|Air|
+|Stealth|Air|
+|Thrown|Air|
+|Awareness|Earth|
+|Craft|Earth|
+|Endurance|Earth|
+|MartialArts|Earth|
+|Resistance|Earth|
+|Brawl|Water|
+|Bureaucracy|Water|
+|Investigation|Water|
+|Larceny|Water|
+|Sail|Water|
+|Athletics|Fire|
+|Dodge|Fire|
+|Melee|Fire|
+|Presence|Fire|
+|Socialize|Fire|
+|Archery|Wood|
+|Medicine|Wood|
+|Performance|Wood|
+|Ride|Wood|
+|Survival|Wood|

@@ -1,0 +1,216 @@
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    thousandWoundsGear.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Thousand Wounds Gear Style -->
+<!-- TODO:  Coding - Implementing work around due to lack of Charm View for Alchemicals. (e.g. exalt "Solar" -> "Alchemical")-->
+	<charm id="Celestial.TheCircleScreams" exalt="Solar" group="ThousandWoundsGearStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="2" />
+			<essence value="2" />
+		</prerequisite>
+		<cost>
+			<essence cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Celestial.GearCatchesGearDefense" exalt="Solar" group="ThousandWoundsGearStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="3" />
+			<essence value="2" />
+			<charmReference id="Celestial.TheCircleScreams" />
+		</prerequisite>
+		<cost>
+			<essence cost="3" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="2" />
+		</charmtype>
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Celestial.ThousandWoundsGearForm" exalt="Solar" group="ThousandWoundsGearStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="2" />
+			<charmReference id="Celestial.GearCatchesGearDefense" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration amount="1" unit="scene" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Form" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Celestial.RearingCraneRelease" exalt="Solar" group="ThousandWoundsGearStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="2" />
+			<charmReference id="Celestial.ThousandWoundsGearForm" />
+		</prerequisite>
+		<cost>
+			<essence cost="3" />
+		</cost>
+		<duration amount="1" unit="action" />
+		<charmtype type="Reflexive">
+			<special primaryStep="1" />
+		</charmtype>
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Celestial.FloatingTargetLock" exalt="Solar" group="ThousandWoundsGearStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.RearingCraneRelease" />
+		</prerequisite>
+		<cost>
+			<essence cost="3" />
+		</cost>
+		<duration amount="1" unit="action" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Celestial.FleshRendingGearTechnique" exalt="Solar" group="ThousandWoundsGearStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.ThousandWoundsGearForm" />
+		</prerequisite>
+		<cost>
+			<essence cost="4" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Celestial.LinearFlightPrinciple" exalt="Solar" group="ThousandWoundsGearStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.FloatingTargetLock" />
+			<charmReference id="Celestial.FleshRendingGearTechnique" />
+		</prerequisite>
+		<cost>
+			<essence cost="4" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Knockback" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Celestial.ArcBlindingAssault" exalt="Solar" group="ThousandWoundsGearStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="2" />
+			<charmReference id="Celestial.ThousandWoundsGearForm" />
+		</prerequisite>
+		<cost>
+			<essence cost="4" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="9" />
+		</charmtype>
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Counterattack" visualize="true" />
+		<charmAttribute attribute="Crippling" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Celestial.HungryGearToothAttack" exalt="Solar" group="ThousandWoundsGearStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.ArcBlindingAssault" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Crippling" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Celestial.ThousandWoundsPersistence" exalt="Solar" group="ThousandWoundsGearStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.LinearFlightPrinciple" />
+			<charmReference id="Celestial.HungryGearToothAttack" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+	<charm id="Celestial.ThousandWoundsDisassembly" exalt="Solar" group="ThousandWoundsGearStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="4" />
+			<charmReference id="Celestial.ThousandWoundsPersistence" />
+		</prerequisite>
+		<cost>
+			<essence cost="7" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="ExtraAction" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="Alchemicals2nd" />
+	</charm>
+</charmlist>

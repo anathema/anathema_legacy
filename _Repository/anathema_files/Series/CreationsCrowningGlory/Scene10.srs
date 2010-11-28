@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene10" repositoryPrintName="Sorrow">
+  <Name><![CDATA[Sorrow]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Als Amber Quaint zu sich kommt, ist sie in ihrem Zimmer. Still Surprise ist bei ihr. Amber berichtet ihr von einem furchtbaren Traum, in dem ihr geliebter Emerald Flux gestorben ist ? nur um zu hören, dass Emerald ]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Italic"/>
+      <Text><![CDATA[wirklich]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[ von der Mauer gestürzt ist. Damit nicht genug ? er hat Still Surprise Fechtlehrer und heimliche Liebe, Sanfter Stahl, mit sich gerissen.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Fast kommt es zum Streit zwischen den Schwestern, als Amber mit ihrem Vater sprechen will, ohne Still zu trösten, doch im letzten Moment entschließt sie sich anders und bleibt bei ihrer Schwester, bis diese sich beruhigt hat. Amber verspricht, Still nie zu verlassen, nachdem sie sich schwere Vorwürfe machen lassen muss, das sie ihre Familie und besonders Still selbst wegen Emerald vernachlässigt hätte.]]></Text>
+    </Part>
+  </Summary>
+</Scene>

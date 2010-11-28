@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene39" repositoryPrintName="Wiedersehen mit Kazu">
+  <Name><![CDATA[Wiedersehen mit Kazu]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Bold"/>
+      <Text><![CDATA[Kazu]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Chance für Telperion, seine Generale zu verärgern
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Kazu hat Erfolg    zu vermelden, Lager mit Ausrüstung gefunden, ist für größeren
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[      Trupp relativ leicht zu bergen.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Schwer zugängliches zweites Lager besucht, ist für Truppe ggw. nicht zugänglich
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Berichtet über Frontverlauf und Truppenbewegungen im Süden und südlich von der
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[      ggw. Position, dabei könnte Lookshy-Vermeiden des Realm aufgezeigt werden.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Befürwortet den Krieg, aber ist gegen Telperions Fethan-Bezogenheit.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Sieht Lage in größerem Maßstab.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Fragt nach Planung und Möglichkeiten der eigenen Unterstützung.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Entwickelt schnell einen Plan, wie man in (bevorzugte) Machtposition kommen kann.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[      Greyfalls liegt weit hinter Linien, Eilmarsch und durchbrechen der Front würde
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[      es erlauben, Gegner kritisch und unerwartet zu treffen und logistische Anbindung
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[      an das Reich zu unterbrechen.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Informiert über Natur des Artefakts und die Passagesteine
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Macht Artefakt-nach-Greyfalls-Vorschlag
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Interessiert sich für Blazing Stride
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Bold"/>
+      <Text><![CDATA[Musik]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[:  Pearl Harbor - Attack (ab 2:00 oder ab 4:00)]]></Text>
+    </Part>
+  </Summary>
+</Scene>

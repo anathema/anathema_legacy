@@ -1,0 +1,115 @@
+package net.sf.anathema.framework.presenter.itemmanagement;
+
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.swing.Action;
+import javax.swing.KeyStroke;
+
+import net.disy.commons.core.io.IOUtilities;
+import net.disy.commons.core.message.Message;
+import net.disy.commons.swing.action.SmartAction;
+import net.disy.commons.swing.dialog.message.MessageDialogFactory;
+import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
+import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
+import net.sf.anathema.framework.presenter.resources.PlatformUI;
+import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.RepositoryException;
+import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.resources.IResources;
+
+public class AnathemaSaveAction extends SmartAction {
+
+  private IItem currentItem;
+  private final IChangeListener changeListener = new IChangeListener() {
+    public void changeOccured() {
+      AnathemaSaveAction.this.setEnabled(currentItem.isDirty());
+    }
+  };
+
+  private class SaveEnabledListener extends ItemManagementModelAdapter {
+
+    private final Action action;
+
+    public SaveEnabledListener(Action action) {
+      this.action = action;
+    }
+
+    @Override
+    public void itemSelected(final IItem item) {
+      if (currentItem != null) {
+        currentItem.removeDirtyListener(changeListener);
+      }
+      AnathemaSaveAction.this.currentItem = item;
+      if (item == null) {
+        action.setEnabled(false);
+        return;
+      }
+      if (!item.getItemType().supportsRepository()) {
+        action.setEnabled(false);
+        return;
+      }
+      item.addDirtyListener(changeListener);
+      action.setEnabled(item.isDirty());
+    }
+  }
+
+  private IAnathemaModel model;
+  private IResources resources;
+
+  public static Action createToolAction(IAnathemaModel model, IResources resources) {
+    SmartAction action = new AnathemaSaveAction(model, resources);
+    action.setToolTipText(resources.getString("AnathemaPersistence.SaveAction.Tooltip")); //$NON-NLS-1$
+    action.setIcon(new PlatformUI(resources).getSaveTaskBarIcon());
+    return action;
+  }
+
+  public static Action createMenuAction(IAnathemaModel model, IResources resources) {
+    SmartAction action = new AnathemaSaveAction(model, resources);
+    action.setName(resources.getString("AnathemaPersistence.SaveAction.Name")); //$NON-NLS-1$
+    return action;
+  }
+
+  private AnathemaSaveAction(IAnathemaModel model, IResources resources) {
+    SaveEnabledListener listener = new SaveEnabledListener(this);
+    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+    model.getItemManagement().addListener(listener);
+    listener.itemSelected(model.getItemManagement().getSelectedItem());
+    this.model = model;
+    this.resources = resources;
+  }
+
+  @Override
+  protected void execute(Component parentComponent) {
+    parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    OutputStream stream = null;
+    try {
+      IItem selectedItem = model.getItemManagement().getSelectedItem();
+      IRepositoryWriteAccess writeAccess = model.getRepository().createWriteAccess(selectedItem);
+      IRepositoryItemPersister persister = model.getPersisterRegistry().get(selectedItem.getItemType());
+      persister.save(writeAccess, selectedItem);
+      selectedItem.setClean();
+    }
+    catch (IOException e) {
+      MessageDialogFactory.showMessageDialog(parentComponent, new Message(
+          resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e)); //$NON-NLS-1$
+      Logger.getLogger(getClass()).error(e);
+    }
+    catch (RepositoryException e) {
+      MessageDialogFactory.showMessageDialog(parentComponent, new Message(
+          resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e)); //$NON-NLS-1$
+      Logger.getLogger(getClass()).error(e);
+    }
+    finally {
+      IOUtilities.close(stream);
+      parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+    }
+  }
+}

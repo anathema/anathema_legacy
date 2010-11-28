@@ -1,0 +1,18 @@
+<charmPresentation>
+	<polygon>5.5,11.3542 
+             35.3236,11.3542 
+             30.24724,3.5 
+             155.2527,3.5 
+             150.17636,11.3542
+             180.0,11.3542
+             180.0,82.64578
+             150.17636,82.64578
+             155.2527,90.5 
+             30.24724,90.5
+             35.3236,82.64578
+             5.5,82.64578</polygon>             
+	<charmDimension width="180" height="90"/>
+	<gapDimension width="25" height="50"/>
+	<lineDimension width="25" height="90"/>
+	<isolateSingleCharms isolate="true"/>
+</charmPresentation>

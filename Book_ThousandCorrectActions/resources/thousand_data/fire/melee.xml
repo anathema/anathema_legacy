@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    melee.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2010 Scott D. Olson (scott.d.olson@comcast.net)
+
+    This program is free softMeleee; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free SoftMeleee Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY MeleeRANTY; without even the implied Meleeranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free SoftMeleee
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Melee -->
+     <charm id="Dragon-Blooded.DragonBladeBeneficence" exalt="Dragon-Blooded" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Dragon-Blooded.RefiningInnerBlade" /> 
+          </prerequisite>
+          <cost>
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Leader" visualize="true" />
+          <charmAttribute attribute="War" visualize="true" />
+          <source source="ThousandCorrectActions" />
+     </charm>
+     <charm id="Dragon-Blooded.ConflagrationOfWarding" exalt="Dragon-Blooded" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="5" />
+               <essence value="3" />
+               <charmReference id="Dragon-Blooded.PortentousCometDeflectingMethod" /> 
+          </prerequisite>
+          <cost>
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Cooperative" visualize="true" />
+          <charmAttribute attribute="Leader" visualize="true" />
+          <charmAttribute attribute="War" visualize="true" />
+          <source source="ThousandCorrectActions" />
+     </charm>
+
+</charmlist>

@@ -1,0 +1,37 @@
+<abilityGroups>
+  <group id="Dawn" casteId="Dawn">
+    <trait type="Archery" />
+    <trait type="Brawl" />
+    <trait type="MartialArts" />
+    <trait type="Melee" />
+    <trait type="Thrown" />
+  </group>
+  <group id="Zenith" casteId="Zenith">
+    <trait type="Endurance" />
+    <trait type="Performance" />
+    <trait type="Presence" />
+    <trait type="Resistance" />
+    <trait type="Survival" />
+  </group>
+  <group id="Twilight" casteId="Twilight">
+    <trait type="Craft" />
+    <trait type="Investigation" />
+    <trait type="Lore" />
+    <trait type="Medicine" />
+    <trait type="Occult" />
+  </group>
+  <group id="Night" casteId="Night">
+    <trait type="Athletics" />
+    <trait type="Awareness" />
+    <trait type="Dodge" />
+    <trait type="Larceny" />
+    <trait type="Stealth" />
+  </group>
+  <group id="Eclipse" casteId="Eclipse">
+    <trait type="Bureaucracy" />
+    <trait type="Linguistics" />  
+    <trait type="Ride" />
+    <trait type="Sail" />
+    <trait type="Socialize" />
+  </group> 
+</abilityGroups>
