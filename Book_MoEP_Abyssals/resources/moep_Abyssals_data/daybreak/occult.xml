@@ -194,7 +194,7 @@
                <charmReference id="Abyssal.GodSlayingTorment" />
           </prerequisite>
           <cost />
-          <duration duration="Various" />
+          <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />

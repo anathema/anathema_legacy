@@ -34,7 +34,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
-          <charmAttribute attribute="Mount (Mundane)" visualize="true" />
+          <charmAttribute attribute="Mount(Mundane)" visualize="true" />
           <charmAttribute attribute="Native" visualize="true" />
           <source source="InkMonkeys" />
       </charm>

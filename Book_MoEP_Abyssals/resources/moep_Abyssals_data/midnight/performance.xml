@@ -70,7 +70,7 @@
                <charmAttributeRequirement attribute="ExcellencyPerformance" count="1" />
           </prerequisite>
           <cost />
-          <duration duration="Variable" />
+          <duration duration="Varies" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Phantom-Conjuring Performance -->
