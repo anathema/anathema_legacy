@@ -99,10 +99,16 @@ public class EquipmentItem implements IEquipmentItem {
     if (stats instanceof IProxy<?>) {
       stats = ((IProxy<? extends IEquipmentStats>) stats).getUnderlying();
     }
+    
     return printedStats.contains(stats);
   }
 
+  @SuppressWarnings("unchecked")
   public void setPrintEnabled(IEquipmentStats stats, boolean enabled) {
+    if (stats instanceof IProxy<?>) {
+      stats = ((IProxy<? extends IEquipmentStats>) stats).getUnderlying();
+    }
+    
     if (isPrintEnabled(stats) == enabled) {
       return;
     }
