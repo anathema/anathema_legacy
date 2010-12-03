@@ -120,7 +120,7 @@
 		<prerequisite>
 			<trait id="Melee" value="5" />
 			<essence value="4" />
-			<charmReference id="Abyssal.DeathDeflectingTechinque" />
+			<charmReference id="Abyssal.DeathDeflectingTechnique" />
 		</prerequisite>
 		<cost>
 			<essence cost="-" text="+3m or +3m, 1wp"/>
