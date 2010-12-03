@@ -6,10 +6,12 @@ import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplat
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ArmourStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ShieldStats;
+import net.sf.anathema.framework.Version;
 
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.config.Configuration;
+import com.db4o.reflect.jdk.JdkReflector;
 
 public class EquipmentDatabaseConnectionManager {
 
@@ -23,6 +25,7 @@ public class EquipmentDatabaseConnectionManager {
     configuration.allowVersionUpdates(true);
     configuration.automaticShutDown(true);
     configuration.readOnly(false);
+    configuration.reflectWith(new JdkReflector(Version.class.getClassLoader()));
     return Db4o.openFile(configuration, dbFile.getAbsolutePath());
   }
 }

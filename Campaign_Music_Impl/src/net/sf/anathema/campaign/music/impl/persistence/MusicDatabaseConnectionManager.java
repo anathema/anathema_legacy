@@ -3,10 +3,12 @@ package net.sf.anathema.campaign.music.impl.persistence;
 import java.io.File;
 
 import net.sf.anathema.campaign.music.model.track.Md5Checksum;
+import net.sf.anathema.framework.Version;
 
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.config.Configuration;
+import com.db4o.reflect.jdk.JdkReflector;
 
 public class MusicDatabaseConnectionManager {
 
@@ -25,6 +27,7 @@ public class MusicDatabaseConnectionManager {
     configuration.objectClass(Md5Checksum.class).cascadeOnDelete(true);
     configuration.allowVersionUpdates(true);
     configuration.automaticShutDown(true);
+    configuration.reflectWith(new JdkReflector(Version.class.getClassLoader()));
     connection = Db4o.openFile(configuration, dbFile.getAbsolutePath());
     return connection;
   }
