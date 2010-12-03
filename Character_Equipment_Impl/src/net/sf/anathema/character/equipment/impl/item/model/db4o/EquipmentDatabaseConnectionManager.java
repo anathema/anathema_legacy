@@ -6,21 +6,26 @@ import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplat
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ArmourStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ShieldStats;
+import net.sf.anathema.framework.Version;
 
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
+import com.db4o.config.Configuration;
+import com.db4o.reflect.jdk.JdkReflector;
 
 public class EquipmentDatabaseConnectionManager {
 
   public static ObjectContainer createConnection(File dbFile) {
-    Db4o.configure().objectClass(EquipmentTemplate.class).cascadeOnUpdate(true);
-    Db4o.configure().objectClass(ArmourStats.class).cascadeOnUpdate(true);
-    Db4o.configure().objectClass(ShieldStats.class).cascadeOnUpdate(true);
-    Db4o.configure().objectClass(AbstractWeaponStats.class).cascadeOnActivate(true);
-    Db4o.configure().objectClass(AbstractWeaponStats.class).cascadeOnUpdate(true);
-    Db4o.configure().allowVersionUpdates(true);
-    Db4o.configure().automaticShutDown(true);
-    Db4o.configure().readOnly(false);
-    return Db4o.openFile(dbFile.getAbsolutePath());
+    Configuration configuration = Db4o.newConfiguration();
+    configuration.objectClass(EquipmentTemplate.class).cascadeOnUpdate(true);
+    configuration.objectClass(ArmourStats.class).cascadeOnUpdate(true);
+    configuration.objectClass(ShieldStats.class).cascadeOnUpdate(true);
+    configuration.objectClass(AbstractWeaponStats.class).cascadeOnActivate(true);
+    configuration.objectClass(AbstractWeaponStats.class).cascadeOnUpdate(true);
+    configuration.allowVersionUpdates(true);
+    configuration.automaticShutDown(true);
+    configuration.readOnly(false);
+    configuration.reflectWith(new JdkReflector(Version.class.getClassLoader()));
+    return Db4o.openFile(configuration, dbFile.getAbsolutePath());
   }
 }

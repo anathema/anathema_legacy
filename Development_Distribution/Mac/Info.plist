@@ -2,14 +2,12 @@
 <!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
 <plist version="0.9">
 <dict>
-	<!-- Change these with each version -->
 	<key>CFBundleVersion</key>
-	<string>1.0-rc2</string>
+	<string>@version-major@.@version-minor@.@version-revision@</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0-rc2</string>
+	<string>@version-major@.@version-minor@.@version-revision@</string>
 	<key>CFBundleGetInfoString</key>
-	<string>1.0-rc2</string>
-	<!-- Should never need changing -->	
+	<string>@version-major@.@version-minor@.@version-revision@</string>
 	<key>CFBundleName</key>
 	<string>Anathema</string>
 	<key>CFBundleAllowMixedLocalizations</key>
@@ -39,30 +37,38 @@
 			<array>
 			<string>$JAVAROOT/anathema.jar</string>
 			<string>$JAVAROOT/lib/basicplayer2.3.jar</string>
+			<string>$JAVAROOT/lib/batik-anim.jar</string>
 			<string>$JAVAROOT/lib/batik-awt-util.jar</string>
 			<string>$JAVAROOT/lib/batik-bridge.jar</string>
+			<string>$JAVAROOT/lib/batik-codec.jar</string>
 			<string>$JAVAROOT/lib/batik-css.jar</string>
 			<string>$JAVAROOT/lib/batik-dom.jar</string>
 			<string>$JAVAROOT/lib/batik-ext.jar</string>
+			<string>$JAVAROOT/lib/batik-extension.jar</string>
 			<string>$JAVAROOT/lib/batik-gui-util.jar</string>
 			<string>$JAVAROOT/lib/batik-gvt.jar</string>
 			<string>$JAVAROOT/lib/batik-parser.jar</string>
 			<string>$JAVAROOT/lib/batik-script.jar</string>
 			<string>$JAVAROOT/lib/batik-svg-dom.jar</string>
+			<string>$JAVAROOT/lib/batik-svggen.jar</string>
+			<string>$JAVAROOT/lib/batik-svgpp.jar</string>
 			<string>$JAVAROOT/lib/batik-swing.jar</string>
+			<string>$JAVAROOT/lib/batik-transcoder.jar</string>
+			<string>$JAVAROOT/lib/batik-ttf2svg.jar</string>
 			<string>$JAVAROOT/lib/batik-util.jar</string>
 			<string>$JAVAROOT/lib/batik-xml.jar</string>
+			<string>$JAVAROOT/lib/batik.jar</string>
 			<string>$JAVAROOT/lib/commons-io.jar</string>
 			<string>$JAVAROOT/lib/commons-logging-api.jar</string>
-			<string>$JAVAROOT/lib/db4o-5.5-java5.jar</string>
+			<string>$JAVAROOT/lib/db4o-6.0-java5.jar</string>
 			<string>$JAVAROOT/lib/disy-commons-core.jar</string>
 			<string>$JAVAROOT/lib/disy-commons-swing-dialog.jar</string>
 			<string>$JAVAROOT/lib/disy-commons-swing-layout.jar</string>
 			<string>$JAVAROOT/lib/disy-commons-swing.jar</string>
 			<string>$JAVAROOT/lib/dom4j-1.5.jar</string>
+			<string>$JAVAROOT/lib/graphlayout.jar</string>
 			<string>$JAVAROOT/lib/idw-gpl-1.4.0.jar</string>
 			<string>$JAVAROOT/lib/itext-1.4.jar</string>
-			<string>$JAVAROOT/lib/jasperreports-0.6.2.jar</string>
 			<string>$JAVAROOT/lib/javalayer.jar</string>
 			<string>$JAVAROOT/lib/jpf-boot.jar</string>
 			<string>$JAVAROOT/lib/jpf.jar</string>
@@ -71,6 +77,7 @@
 			<string>$JAVAROOT/lib/mp3spi1.9.2.jar</string>
 			<string>$JAVAROOT/lib/tritonus_share.jar</string>
 			<string>$JAVAROOT/lib/xml-apis-dom3.jar</string>
+			<string>$JAVAROOT/lib/xml-apis-ext.jar</string>
 			</array>
 		<key>Properties</key>
 		<dict>
