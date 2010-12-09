@@ -101,6 +101,11 @@
 		<parameter id="list">
 			<parameter id="type" value="MartialArts" />
 			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="inkMonkeys_data/misc/cobra.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
 			<parameter id="path" value="inkMonkeys_data/misc/darkMessiah.xml" />
 		</parameter>
 		<!--parameter id="list">

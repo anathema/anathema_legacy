@@ -30,22 +30,28 @@
                <essence value="2" />
           </prerequisite>
           <cost>
-               <essence cost="2" text="per attack" />
+				<!-- TODO:  No Reference for cost change. -->
+               <!--essence cost="2" text="per attack" /-->
           </cost>
+			<!-- TODO:  Cost is listed as Permanent (Reflexive [Step 2]) -->
           <duration duration="Permanent" />
-          <charmtype type="Permanent" />
+          <charmtype type="Reflexive" />
           <charmAttribute attribute="Mirror" visualize="true" />
 			<!-- NOTE:  Abyssal Mirror - Stalking the Striker's Hand -->
           <source source="InkMonkeys" />
      </charm>
      <charm id="Solar.WhaleMarkingAttack" exalt="Solar" group="Thrown">
           <prerequisite>
-               <trait id="Thrown" value="3" />
+				<trait id="Thrown" value="4" />
+				<!-- TODO:  NO Reference to thrown change. -->
+               <!--trait id="Thrown" value="3" /-->
                <essence value="3" />
                <charmReference id="Solar.CallBladeThrown" />
           </prerequisite>
           <cost>
-               <essence cost="-(2m per attack)" />
+				<!-- TODO:  NO Reference to cost change.  -->
+               <!--essence cost="-(2m per attack)" /-->
+				<essence cost="1" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
@@ -59,7 +65,7 @@
                <trait id="Thrown" value="3" />
                <essence value="2" />
           </prerequisite>
-          <cost/>
+          <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="MartialReadyMartialArtsArcheryMelee" visualize="true" />

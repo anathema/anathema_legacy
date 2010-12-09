@@ -85,7 +85,7 @@
 			<essence value="2" />
 		</prerequisite>
         <cost>
-             <willpower cost="1" />
+             <essence cost="-" text="(1wp)" />
         </cost>
         <duration duration="Permanent" />
 		<charmtype type="Permanent" />

@@ -32,6 +32,7 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Ever-Ready Killer's Tools) -->
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.DawnKingsStrife" exalt="Solar" group="War">
@@ -44,6 +45,7 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Ash Child's Requiem -->
 		<charmAttribute attribute="Native" visualize="true" />
         <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<source source="InkMonkeys" />
@@ -60,6 +62,7 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Manifold Murder Arts -->
 		<charmAttribute attribute="Native" visualize="true" />
         <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<source source="InkMonkeys" />
@@ -71,7 +74,7 @@
 			<charmReference id="Solar.Heroism-EncouragingPresence" />
 		</prerequisite>
 		<cost >
-		    <essence cost="" />
+		    <essence cost="0" />
 		    <willpower cost="1" />
 		</cost>
         <duration  amount="2" unit="action"/>
