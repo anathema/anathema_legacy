@@ -24,6 +24,8 @@ public class GisPresenter implements IPresenter {
   private static final Logger logger = Logger.getLogger(GisPresenter.class);
   private final IGisModel model;
   private final IAnathemaGisView view;
+  
+  @SuppressWarnings("unused")
   private final IResources resources;
 
   public GisPresenter(IGisModel model, IAnathemaGisView view, IResources resources) {

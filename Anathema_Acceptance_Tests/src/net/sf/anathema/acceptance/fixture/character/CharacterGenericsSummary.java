@@ -20,8 +20,7 @@ public class CharacterGenericsSummary {
 
   private static final String KEY_CHARACTER_MODULE_CONTAINER = "characterModuleContainer"; //$NON-NLS-1$
 
-  @SuppressWarnings("unchecked")
-  public CharacterGenericsSummary(Map summary) {
+  public CharacterGenericsSummary(Map<Object, Object> summary) {
     this.summary = summary;
   }
 

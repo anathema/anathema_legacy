@@ -39,7 +39,10 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
 
+  @SuppressWarnings("unused")
   private static final TemplateType solarTemplateType = new TemplateType(CharacterType.SOLAR);
+  
+  @SuppressWarnings("unused")
   private static final TemplateType solarRevisedTemplateType = new TemplateType(CharacterType.SOLAR, new Identificate(
       "RevisedSolarSubtype")); //$NON-NLS-1$
   

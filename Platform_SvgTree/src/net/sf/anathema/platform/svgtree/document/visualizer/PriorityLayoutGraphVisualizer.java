@@ -3,8 +3,6 @@ package net.sf.anathema.platform.svgtree.document.visualizer;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -14,9 +12,7 @@ import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.platform.svgtree.document.components.Direction;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
-import net.sf.anathema.platform.svgtree.document.components.Layer;
 import net.sf.anathema.platform.svgtree.document.components.PriorityLayer;
-import net.sf.anathema.platform.svgtree.document.components.VisualizableNodePositionComparator;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 
 public class PriorityLayoutGraphVisualizer extends AbstractCascadeVisualizer {
@@ -64,7 +60,6 @@ public class PriorityLayoutGraphVisualizer extends AbstractCascadeVisualizer {
   // Instead of giving the entire map as argument, just give the relevant leaves?
 
   private final int ITERATIONS = 5;
-  private final VisualizableNodePositionComparator nodePositionComparator = new VisualizableNodePositionComparator();
 
   public PriorityLayoutGraphVisualizer(IProperHierarchicalGraph graph, ITreePresentationProperties properties) {
     super(properties, graph);

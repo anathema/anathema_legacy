@@ -12,8 +12,7 @@ public class CharacterTemplateSummary extends CharacterGenericsSummary {
 
   private static final String TEMPLATE_KEY = "template"; //$NON-NLS-1$
 
-  @SuppressWarnings("unchecked")
-  public CharacterTemplateSummary(Map summary) {
+  public CharacterTemplateSummary(Map<Object, Object> summary) {
     super(summary);
   }
 

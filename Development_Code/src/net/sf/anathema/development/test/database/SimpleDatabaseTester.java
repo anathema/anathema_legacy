@@ -16,7 +16,7 @@ public class SimpleDatabaseTester {
     // queryDatabase();
   }
 
-  @SuppressWarnings( { "unchecked", "unused" })
+  @SuppressWarnings( { "rawtypes", "unused" })
   private static void queryDatabase() {
     ObjectContainer db = Db4o.openFile("TestSimple.yap");
     ObjectSet<Map> query = db.query(new Predicate<Map>() {
@@ -31,7 +31,7 @@ public class SimpleDatabaseTester {
     db.close();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings("rawtypes")
   private static void fillDatabase() {
     ObjectContainer db = Db4o.openFile("TestSimple.yap");
     Map map = new HashedMap();

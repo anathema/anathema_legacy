@@ -10,7 +10,7 @@ public class LongestPathLayerer implements ILayerer {
     IRegularNode[] topologicallySortedNodes = TopologyBuilder.sortGraphByTopology(acyclicGraph);
     setLayersToOne(topologicallySortedNodes);
     int deepestLayer = determineLayers(topologicallySortedNodes);
-    //deepestLayer = optimizeLayers(topologicallySortedNodes, deepestLayer);
+    deepestLayer = optimizeLayers(topologicallySortedNodes, deepestLayer);
     return deepestLayer;
   }
 
@@ -36,18 +36,20 @@ public class LongestPathLayerer implements ILayerer {
 	// and the new layer-overflow optimizer isn't yet supported by the SVG tree rendering code.
 	
     // TODO: [2010-09-17] Improve the TwoCommonParentsOptimizer - or possibly optimization as a whole.
-    MultiEntryMap<Integer, IRegularNode> nodesByLayer = new MultiEntryMap<Integer, IRegularNode>();
-    for (IRegularNode node : topologicallySortedNodes) {
-      nodesByLayer.add(node.getLayer(), node);
-    }
-    //for (int layerIndex = 1; layerIndex <= deepestLayer; layerIndex++) {
-    //    deepestLayer = LayerOverflowOptimizer.splitLayer(nodesByLayer.get(layerIndex), deepestLayer);
-    //}
-    //for (int layerIndex = 2; layerIndex <= deepestLayer; layerIndex++) {
-    //  deepestLayer = TwoCommonParentsOptimizer.moveDownOvercrossingTwoTupels(
-    //      nodesByLayer.get(layerIndex),
-    //      deepestLayer);
-    //}
+	/*
+      MultiEntryMap<Integer, IRegularNode> nodesByLayer = new MultiEntryMap<Integer, IRegularNode>();
+      for (IRegularNode node : topologicallySortedNodes) {
+        nodesByLayer.add(node.getLayer(), node);
+      }
+      //for (int layerIndex = 1; layerIndex <= deepestLayer; layerIndex++) {
+      //    deepestLayer = LayerOverflowOptimizer.splitLayer(nodesByLayer.get(layerIndex), deepestLayer);
+      //}
+      //for (int layerIndex = 2; layerIndex <= deepestLayer; layerIndex++) {
+      //  deepestLayer = TwoCommonParentsOptimizer.moveDownOvercrossingTwoTupels(
+      //      nodesByLayer.get(layerIndex),
+      //      deepestLayer);
+      //}
+     */
     return deepestLayer;
   }
 

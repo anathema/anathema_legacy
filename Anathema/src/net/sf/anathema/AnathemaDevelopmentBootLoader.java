@@ -1,12 +1,7 @@
 package net.sf.anathema;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.security.AccessController;
 import java.util.Collection;
-import java.util.Enumeration;
 import java.util.Properties;
 
 import net.sf.anathema.initialization.InitializationException;

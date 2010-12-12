@@ -4,6 +4,7 @@ import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 
 public class BrawlWeaponProvidingGift extends Gift {
 
+  @SuppressWarnings("unused")
   private final IEquipmentTemplate template;
 
   public BrawlWeaponProvidingGift(String id, IEquipmentTemplate template) {
