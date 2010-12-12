@@ -17,25 +17,16 @@ public class PluginRepositoryCollector {
   }
 
   private void addLaunchDirectory() throws MalformedURLException {
-    addSeparatorIfNecessary();
     addResource(getFilePath(".")); //$NON-NLS-1$
   }
 
   private void addPluginsFolder() throws MalformedURLException {
-    addSeparatorIfNecessary();
     addResource(getFilePath("./plugins"));
-  }
-
-  private void addSeparatorIfNecessary() {
-    if (!builder.toString().endsWith(",")) {
-      builder.append(",");
-    }
   }
 
   private void addClassPath() throws IOException {
     Enumeration<URL> systemResources = ClassLoader.getSystemResources("."); //$NON-NLS-1$
     while (systemResources.hasMoreElements()) {
-      addSeparatorIfNecessary();
       addResource(systemResources.nextElement().getPath());
     }
   }
@@ -45,10 +36,17 @@ public class PluginRepositoryCollector {
   }
 
   private void addResource(String resource) {
+    addSeparatorIfNecessary();
     if (resource.equals("/")) {
       return;
     }
     builder.append(resource);
+  }
+
+  private void addSeparatorIfNecessary() {
+    if (!builder.toString().endsWith(",")) {
+      builder.append(",");
+    }
   }
 
   private String getFilePath(String string) throws MalformedURLException {
