@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<project name="Build Windows NSIS distribution" default="Distribute NSIS">
+<project name="Build Windows installer distribution" default="Distribute Windows Installer">
 
 	<!--Requires the property "launch4j.dir" to point to the launch4j installation.-->
 	<!--Requires the property "nsis.dir" to point to the NSIS installation.-->
-	<import file="windows_distribution_targets.xml" />
+	<import file="Windows/windows_distribution_targets.xml" />
 
 	<property file="directories.properties" />
 
 	<taskdef name="nsis" classname="net.sf.nsisant.Task" classpath="${workspace.dir}/Thirdparty/Ant/nsisant-1.2.jar" />
 
-	<target name="Distribute NSIS" depends="Build Bootloader, Build Plugins, Copy Text, Build Windows executable, Compile NSIS Installer" />
+	<target name="Distribute Windows Installer" depends="Build Bootloader, Build Plugins, Copy Text, Build Windows executable, Compile NSIS Installer" />
 
 	<target name="Compile NSIS Installer">
 		<nsis script="Windows/NSIS/anathema.nsi" path="${nsis.dir}">

@@ -1,7 +1,7 @@
-<project name="Build OS X distribution" default="Distribute">
+<project name="Build OS X distribution" default="Distribute OS X">
 	<description>Assemble a distribution directory of Anathema into a double-clickable Mac OS X application.</description>
 
-    <import file="mac_distribution_targets.xml" />
+    <import file="Mac/mac_distribution_targets.xml" />
 
 	<property file="version.properties" />
 	<property file="directories.properties" />
@@ -9,7 +9,7 @@
 	<property name="app.name" value="Anathema"/>
 	<property name="mountdir" value="/tmp" />
 	
-	<target name="Distribute" depends="Build Bootloader, Build Plugins, Copy Text">
+	<target name="Distribute OS X" depends="Build Bootloader, Build Plugins, Copy Text">
 		<condition property="isUnix">
 			<os family="unix" />
 		</condition>

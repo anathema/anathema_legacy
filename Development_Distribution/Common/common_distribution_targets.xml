@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<project name="Common_Distribution_Targets">
+	<dirname property="commondistributiontargets.basedir" file="${ant.file.Common_Distribution_Targets}"/>
+	<taskdef resource="net/sf/ant4eclipse/antlib.xml" classpath="${commondistributiontargets.basedir}/../../Thirdparty/Ant/ant4eclipse-0.5.0.rc1.jar" />
+	<taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${commondistributiontargets.basedir}/../../Thirdparty/Ant/ant-contrib-1.0b1.jar" />
+
+	<import file="common_plugin_targets.xml" />
+	
+	<target name="Clean">
+		<delete quiet="true">
+			<fileset dir="${build.dir}" />
+			<fileset dir="${test.dir}" />
+		</delete>
+	</target>
+
+	<target name="Build Plugins">
+		<buildAnathemaPlugin module.name="core"
+			projectset="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Platform_Database,Platform_SvgTree" />
+		<buildAnathemaPlugin module.name="namegenerator" projectset="Namegenerator" />
+		<buildAnathemaPlugin module.name="character"
+			projectset="Character_Generic,Character_Generic_Impl,Character_Generic_Framework,Character_Reporting,Character_Library,Character_Craft,Character_Linguistics,Charm_Tree,Character_Intimacies,Character_Equipment,Character_Equipment_Impl,Character_MeritsFlaws,Character_Main,Character_Main_Impl" />
+		<buildAnathemaPlugin module.name="character_martialarts" projectset="Character_MartialArts" />
+		<buildAnathemaPlugin module.name="character_mortal" projectset="Character_Mortal" />
+		<buildAnathemaPlugin module.name="character_solar" projectset="Character_Solar" />
+		<buildAnathemaPlugin module.name="character_db" projectset="Character_Db" />
+		<buildAnathemaPlugin module.name="character_lunar" projectset="Character_Lunar" />
+		<buildAnathemaPlugin module.name="character_abyssal" projectset="Character_Abyssal" />
+		<buildAnathemaPlugin module.name="character_sidereal" projectset="Character_Sidereal" />
+		<buildAnathemaPlugin module.name="plot" projectset="Campaign_Plot" />
+		<buildAnathemaPlugin module.name="music" projectset="Campaign_Music,Campaign_Music_Impl" />
+		<buildAnathemaPlugin module.name="charmcascades" projectset="Charm_Cascades" />
+		
+		<!-- Additional Sources -->
+		<buildAnathemaPlugin module.name="blog_inkmonkeys" projectset="Blog_InkMonkeys" />
+		<!--buildAnathemaPlugin module.name="blog_inkmonkeys_vol8" projectset="Blog_InkMonkeys_Vol8" /-->
+		<!--buildAnathemaPlugin module.name="blog_inkmonkeys_vol10_11" projectset="Blog_InkMonkeys_Vol10-11" /-->
+		<!--buildAnathemaPlugin module.name="blog_inkmonkeys_vol20_22" projectset="Blog_InkMonkeys_Vol20-22" /-->
+		<buildAnathemaPlugin module.name="book_glories_luna" projectset="Book_Glories_Luna" />
+		<buildAnathemaPlugin module.name="book_glories_maidens" projectset="Book_Glories_Maidens" />
+		<buildAnathemaPlugin module.name="book_glories_unconqueredsun" projectset="Book_Glories_UnconqueredSun" />
+		<buildAnathemaPlugin module.name="book_moep_abyssals" projectset="Book_MoEP_Abyssals" />
+		<buildAnathemaPlugin module.name="book_moep_infernals" projectset="Book_MoEP_Infernals" />
+		<buildAnathemaPlugin module.name="book_moep_lunars" projectset="Book_MoEP_Lunars" />
+		<buildAnathemaPlugin module.name="book_moep_sidereals" projectset="Book_MoEP_Sidereals" />
+		<buildAnathemaPlugin module.name="book_scrollofexalts" projectset="Book_ScrollOfExalts" />
+		<buildAnathemaPlugin module.name="book_scrollofthefallenraces_debris" projectset="Book_ScrollOfTheFallenRaces_Debris" />
+		<buildAnathemaPlugin module.name="book_scrollofthemonk" projectset="Book_ScrollOfTheMonk" />
+		<buildAnathemaPlugin module.name="book_scrollofthemonk_imperfectlotus" projectset="Book_ScrollOfTheMonk_ImperfectLotus" />
+		<buildAnathemaPlugin module.name="book_thousandcorrectactions" projectset="Book_ThousandCorrectActions" />
+		<buildAnathemaPlugin module.name="book_undertherose" projectset="Book_UnderTheRose" />
+		<buildAnathemaPlugin module.name="box_DotFA" projectset="Box_DotFA" />
+	</target>
+
+	<target name="Build Bootloader">
+		<ant antfile="build_boot.xml" />
+	</target>
+
+	<target name="Copy Text">
+		<copy todir="${files.dir}">
+			<fileset dir="${documentation.dir}/English" includes="*.txt" />
+		</copy>
+		<copy todir="${spanish.files.dir}">
+			<fileset dir="${documentation.dir}/Spanish" includes="*.txt" />
+		</copy>
+		<copy todir="${italian.files.dir}">
+			<fileset dir="${documentation.dir}/Italian" includes="*.txt" />
+		</copy>
+	</target>
+	
+	<target name="Build ZIP">
+		<zip destfile="Anathema_v${version.major}.${version.minor}.${version.revision}.zip">
+			<fileset dir="${build.dir}" includes="anathema.jar" />
+			<fileset dir="${files.dir}" includes="**/*" />
+			<zipfileset dir="${plugins.dir}/" prefix="plugins" includes="*" />
+			<zipfileset dir="${libraries.dir}" prefix="lib" includes="*" />
+		</zip>
+	</target>
+	
+	<target name="Build Test Distribution">
+		<delete quiet="true">
+			<fileset dir="${test.dir}" />
+		</delete>
+		<copy todir="${test.dir}">
+            <fileset dir="${build.dir}" includes="anathema.jar" />
+            <fileset dir="${files.dir}" includes="**/*" />
+		</copy>
+        <copy todir="${test.dir}/plugins">
+            <fileset dir="${plugins.dir}" includes="*" />
+        </copy>
+        <copy todir="${test.dir}/lib">
+            <fileset dir="${libraries.dir}" includes="*" />
+        </copy>
+	</target>
+</project>

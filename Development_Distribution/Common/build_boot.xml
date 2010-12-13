@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <project name="Build Anathema Bootloader" default="Build">
 
-	<property file="directories.properties" />
+	<property file="../directories.properties" />
 
 	<target name="Build" depends="Prepare, Compile Bootloader, Create Properties, Build JAR" />
 

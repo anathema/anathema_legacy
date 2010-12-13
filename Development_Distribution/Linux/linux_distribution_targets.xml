@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="Linux_Distribution_Targets">
 	
-    <import file="common_distribution_targets.xml" />
+    <import file="../Common/common_distribution_targets.xml" />
 
 	<target name="Copy Linux Launcher">
 		<copy todir="${files.dir}" file="Linux/anathema.sh" />
