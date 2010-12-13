@@ -52,7 +52,7 @@
 	</target>
 
 	<target name="Build Bootloader">
-		<ant antfile="build_boot.xml" />
+		<ant antfile="${commondistributiontargets.basedir}/build_boot.xml" />
 	</target>
 
 	<target name="Copy Text">
