@@ -22,7 +22,7 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- socialize -->
+	<!-- socialize -->
 	<charm id="Abyssal.ScribingTheOldLaws" exalt="Abyssal" group="Socialize">
 		<prerequisite>
 			<trait id="Socialize" value="3" />

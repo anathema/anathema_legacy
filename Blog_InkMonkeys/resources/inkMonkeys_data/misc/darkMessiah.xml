@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
 	<!-- Dark Messiah Style -->
-	<charm id="Celestial.IronMaidensEmbrace" exalt="Solar" group="DarkMessiahStyle">
+	<charm id="Celestial.IronMaidensEmbrace" exalt="Abyssal" group="DarkMessiahStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -42,6 +42,41 @@
 		<!-- NOTE:  Solar Mirror - Armor-Shattering Strike -->
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="Stackable" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.AgonysCrucibleStrike" exalt="Abyssal" group="DarkMessiahStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="3" />
+			<charmReference id="Celestial.RavagingBlow" />
+		</prerequisite>
+		<cost>
+			<essence cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="MartialReadyArcheryMeleeThrown" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Hewer-Sharpened Fist -->
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.RaggedShadesRevenge" exalt="Celestial" group="DarkMessiahStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="3" />
+			<charmReference id="Celestial.AgonysCrucibleStrike" />
+		</prerequisite>
+		<cost>
+			<essence cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="MartialReadyArcheryMeleeThrown" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Bloodied King Rebuke -->
 		<source source="InkMonkeys" />
 	</charm>
 </charmlist>

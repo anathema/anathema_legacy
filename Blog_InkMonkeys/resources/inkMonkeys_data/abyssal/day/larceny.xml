@@ -77,6 +77,7 @@
 		<charmtype type="Simple">
 			<special speed="6" defense="-1" turntype="DramaticAction" />
 		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.EssenceEngorgementTechniqueLarceny" exalt="Abyssal" group="Larceny">

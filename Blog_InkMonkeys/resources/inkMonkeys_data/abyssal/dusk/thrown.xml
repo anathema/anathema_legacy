@@ -33,7 +33,7 @@
 		<charmtype type="Reflexive">
 			<special primaryStep="2" />
 		</charmtype>
-		<charmAttribute attribute="Mirro" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Angle-Tracing Edge -->
 		<source source="InkMonkeys" />
 	</charm>

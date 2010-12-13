@@ -23,54 +23,56 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Melee -->
-     <charm id="Solar.GoldenDestructionCut" exalt="Solar" group="Melee">
-          <prerequisite>
-               <trait id="Melee" value="5" />
-               <essence value="4" />
-               <charmReference id="Solar.HungryTigerTechnique" />
-          </prerequisite>
-          <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="LordsOfCreation" />
-<source source="ScrollErrata" />
-     </charm>
-     <charm id="Solar.GuardingStarTactics" exalt="Solar" group="Melee">
-          <prerequisite>
-               <trait id="Melee" value="5" />
-               <essence value="5" />
-               <charmReference id="Solar.ProtectionCelestialBliss" />
-          </prerequisite>
-          <cost>
-               <essence cost="Varies" text="(+4m)"/>
-          </cost>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Obvious" visualize="true" />
+	<!-- Melee -->
+	<charm id="Solar.GoldenDestructionCut" exalt="Solar" group="Melee">
+	 	<prerequisite>
+			<trait id="Melee" value="5" />
+			<essence value="4" />
+			<charmReference id="Solar.HungryTigerTechnique" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Elegant Bloodletting Art -->
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Solar.GuardingStarTactics" exalt="Solar" group="Melee">
+		<prerequisite>
+			<trait id="Melee" value="5" />
+			<essence value="5" />
+			<charmReference id="Solar.ProtectionCelestialBliss" />
+		</prerequisite>
+		<cost>
+			<essence cost="Varies" text="(+4m)"/>
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="War" visualize="true" />
-          <source source="ScrollErrata" />
-     </charm>
-     <charm id="Solar.SharpLightOfJudgementStance" exalt="Solar" group="Melee">
-          <prerequisite>
-               <trait id="Melee" value="7" />
-               <essence value="7" />
-               <charmReference id="Solar.BlazingSolarBolt" />
-          </prerequisite>
-          <cost>
-               <essence cost="12" />
-               <willpower cost="1" />
-          </cost>
-          <duration amount="1" unit="action" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
-          <charmAttribute attribute="Holy" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-			<charmAttribute attribute="Mirror" visualize="true" />
-			<!-- NOTE:  Abyssal Mirror - Symphony of the Flayed Legion -->
-			<charmAttribute attribute="War" visualize="true" />
-          <source source="LordsOfCreation" />
-<source source="ScrollErrata" />
-     </charm>
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Solar.SharpLightOfJudgementStance" exalt="Solar" group="Melee">
+		<prerequisite>
+			<trait id="Melee" value="7" />
+			<essence value="7" />
+			<charmReference id="Solar.BlazingSolarBolt" />
+		</prerequisite>
+		<cost>
+			<essence cost="12" />
+			<willpower cost="1" />
+		</cost>
+		<duration amount="1" unit="action" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
+		<charmAttribute attribute="Holy" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Symphony of the Flayed Legion -->
+		<charmAttribute attribute="War" visualize="true" />
+		<source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+	</charm>
 </charmlist>

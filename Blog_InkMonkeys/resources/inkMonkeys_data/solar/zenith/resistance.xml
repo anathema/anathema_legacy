@@ -50,6 +50,7 @@
 		<charmAttribute attribute="Overdrive" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
+	<!-- NOTE:  Essence-Gathering Temper is in Core 2e charm set. -->
 	<charm id="Solar.UnabatingFuryFocus" exalt="Solar" group="Resistance">
 		<prerequisite>
 			<trait id="Resistance" value="3" />
@@ -60,7 +61,7 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
         <charmAttribute attribute="Native" visualize="true" />
-        <charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
+        <charmAttribute attribute="NotAlienLearnable" />    
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.SurgingEssenceReactor" exalt="Solar" group="Resistance">
@@ -73,7 +74,7 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
         <charmAttribute attribute="Native" visualize="true" />
-        <charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
+        <charmAttribute attribute="NotAlienLearnable" />    
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.SoulFireResurgence" exalt="Solar" group="Resistance">
@@ -88,7 +89,7 @@
 		<charmtype type="Permanent" />
         <charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
         <charmAttribute attribute="Native" visualize="true" />
-        <charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
+        <charmAttribute attribute="NotAlienLearnable" />    
 		<source source="InkMonkeys" />
 	</charm>
 </charmlist>
