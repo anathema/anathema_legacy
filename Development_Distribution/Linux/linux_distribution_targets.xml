@@ -4,6 +4,6 @@
     <import file="../Common/common_distribution_targets.xml" />
 
 	<target name="Copy Linux Launcher">
-		<copy todir="${files.dir}" file="Linux/anathema.sh" />
+		<copy todir="${files.dir}" file="${workspace.dir}/Development_Distribution/Linux/anathema.sh" />
 	</target>
 </project>

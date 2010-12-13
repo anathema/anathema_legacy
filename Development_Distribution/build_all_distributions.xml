@@ -10,5 +10,5 @@
 	<property file="directories.properties" />
 	<property file="version.properties" />
 
-	<target name="Distribute" depends="Clean, Build Bootloader, Build Plugins, Copy Text, Distribute Windows Installer, Distribute OS X, Distribute Generic" />
+	<target name="Distribute" depends="Clean, Build Bootloader, Build Plugins, Copy Text, Distribute Windows Installer, Distribute Generic, Distribute OS X" />
 </project>

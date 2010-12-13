@@ -8,9 +8,10 @@
        :${launch4j.dir}/xstream.jar" />
 
     <target name="Build Windows executable">
-        <property file="version.properties" />
+        <property file="${workspace.dir}/Development_Distribution/version.properties" />
         <property name="versionString" value="${version.major}.${version.minor}.${version.revision}.0" />
         <property name="versionText" value="${versionString} ${version.name}" />
-        <launch4j configFile="Windows/launch4j.xml" outfile="${files.dir}/anathema.exe" fileVersion="${versionString}" productVersion="${versionString}" txtFileVersion="${versionText}" txtProductVersion="${versionText}" />
+        <launch4j configFile="${workspace.dir}/Development_Distribution/Windows/launch4j.xml" outfile="${files.dir}/anathema.exe"
+        	fileVersion="${versionString}" productVersion="${versionString}" txtFileVersion="${versionText}" txtProductVersion="${versionText}" />
     </target>
 </project>

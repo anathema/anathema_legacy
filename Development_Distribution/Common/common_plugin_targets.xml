@@ -19,6 +19,7 @@
 		<sequential>
 			<echo>=== Preparing @{module.name}... ===</echo>
 			<mkdir dir="${build.dir}" />
+			<mkdir dir="${libraries.dir}" />
 			<mkdir dir="${plugins.dir}" />
 			<mkdir dir="${build.dir}/@{module.name}" />
 			<mkdir dir="${build.dir}/@{module.name}/classes" />
@@ -64,7 +65,7 @@
 				<sequential>
 					<echo>=== Copying resources for @{project.name}... ===</echo>
 					<copy todir="${build.dir}/@{module.name}/resources" failonerror="false">
-						<fileset dir="../@{project.name}/resources">
+						<fileset dir="${workspace.dir}/@{project.name}/resources">
 							<include name="**/*" />
 							<exclude name="**/*.xcf" />
 							<exclude name="**/*.svg" />
@@ -128,25 +129,25 @@
 		<sequential>
 			<if>
 				<and>
-					<isfileselected file="${classpath.entry}">
+					<isfileselected file="@{classpath.entry}">
 						<filename name="/**/*.jar" />
 					</isfileselected>
 					<or>
-						<contains string="${classpath.entry}" substring="Database" />
-						<contains string="${classpath.entry}" substring="disy" />
-						<contains string="${classpath.entry}" substring="Graph" />
-						<contains string="${classpath.entry}" substring="Jakarta" />
-						<!--<contains string="${classpath.entry}" substring="GISterm" />-->
-						<contains string="${classpath.entry}" substring="Multimedia" />
-						<contains string="${classpath.entry}" substring="Plugin" />
-						<contains string="${classpath.entry}" substring="Reporting" />
-						<contains string="${classpath.entry}" substring="SVG" />
-						<contains string="${classpath.entry}" substring="Swing" />
-						<contains string="${classpath.entry}" substring="XML" />
+						<contains string="@{classpath.entry}" substring="Database" />
+						<contains string="@{classpath.entry}" substring="disy" />
+						<contains string="@{classpath.entry}" substring="Graph" />
+						<contains string="@{classpath.entry}" substring="Jakarta" />
+						<!--<contains string="@{classpath.entry}" substring="GISterm" />-->
+						<contains string="@{classpath.entry}" substring="Multimedia" />
+						<contains string="@{classpath.entry}" substring="Plugin" />
+						<contains string="@{classpath.entry}" substring="Reporting" />
+						<contains string="@{classpath.entry}" substring="SVG" />
+						<contains string="@{classpath.entry}" substring="Swing" />
+						<contains string="@{classpath.entry}" substring="XML" />
 					</or>
 				</and>
 				<then>
-					<copy file="${classpath.entry}" todir="${libraries.dir}" overwrite="true" />
+					<copy file="@{classpath.entry}" todir="${libraries.dir}" overwrite="true" />
 				</then>
 			</if>
 		</sequential>

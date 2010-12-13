@@ -18,16 +18,10 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Campaign_Music"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Campaign_Music_Impl"/>
 	<classpathentry kind="src" path="/Character_MeritsFlaws"/>
-	<classpathentry kind="src" path="/Namegenerator"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Lunar"/>
 	<classpathentry kind="src" path="/Character_Main_Impl"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Intimacies"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Main"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Main_Impl"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Platform"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Data"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Data_Impl"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Reporting"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
@@ -38,5 +32,22 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Craft"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Linguistics"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_MartialArts"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Blog_InkMonkeys"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_Glories_Luna"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_Glories_Maidens"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_Glories_UnconqueredSun"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_MoEP_Abyssals"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_MoEP_Alchemicals"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_MoEP_Infernals"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_MoEP_Lunars"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_MoEP_Sidereals"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_ScrollOfExalts"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_ScrollOfTheFallenRaces_Debris"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_ScrollOfTheMonk"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_ScrollOfTheMonk_ImperfectLotus"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_ThousandCorrectActions"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Book_UnderTheRose"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Box_DotFA"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Namegenerator"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
