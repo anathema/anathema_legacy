@@ -23,19 +23,19 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Larceny -->
-     <charm id="Dragon-Blooded.InvestigationDeflectingCurrent" exalt="Dragon-Blooded" group="Larceny">
-          <prerequisite>
-               <trait id="Larceny" value="5" />
-               <essence value="4" />
-               <charmReference id="Dragon-Blooded.TracklessWalkStyle" />
-          </prerequisite>
-          <cost>
-              <essence cost="" text="(+5m)" />
-	      </cost>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Illusion" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm>
+	<!-- Larceny -->
+	<charm id="Dragon-Blooded.InvestigationDeflectingCurrent" exalt="Dragon-Blooded" group="Larceny">
+		<prerequisite>
+			<trait id="Larceny" value="5" />
+			<essence value="4" />
+			<charmReference id="Dragon-Blooded.TracklessWalkStyle" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="(+5m)" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Illusion" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
 </charmlist>

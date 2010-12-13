@@ -23,51 +23,48 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Dodge -->
-     <charm id="Solar.ReedInTheWind" exalt="Solar" group="Dodge">
-          <prerequisite>
-               <trait id="Dodge" value="2" />
-               <essence value="2" />
-          </prerequisite>
-          <cost>
-               <essence cost="-" />
-          </cost>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="InkMonkeys" />
-     </charm>
-     <charm id="Solar.LightspeedBodyDynamics" exalt="Solar" group="Dodge">
-          <prerequisite>
-               <trait id="Dodge" value="4" />
-               <essence value="2" />
-               <charmReference id="Solar.ShadowOverWater" />
-          </prerequisite>
-          <cost>
-               <essence cost="-" />
-          </cost>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Native" visualize="true" />
-          <charmAttribute attribute="Reactor" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm>
-     <charm id="Solar.NightsAvengerLunge" exalt="Solar" group="Dodge">
-          <prerequisite>
-               <trait id="Dodge" value="4" />
-               <essence value="3" />
-               <charmReference id="Solar.ShadowOverWater" />
-          </prerequisite>
-          <cost>
-               <essence cost="3" text=" or 5m or 10m" />
-               <willpower cost="1" />
-          </cost>
-          <duration amount="1" unit="tick" />
-          <charmtype type="Reflexive">
-          	<special primaryStep="9" />
-          </charmtype>
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Counterattack" visualize="true" />
-          <charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm>
+	<!-- Dodge -->
+	<charm id="Solar.ReedInTheWind" exalt="Solar" group="Dodge">
+		<prerequisite>
+			<trait id="Dodge" value="2" />
+			<essence value="2" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Solar.LightspeedBodyDynamics" exalt="Solar" group="Dodge">
+		<prerequisite>
+			<trait id="Dodge" value="4" />
+			<essence value="2" />
+			<charmReference id="Solar.ShadowOverWater" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
+		<charmAttribute attribute="Reactor" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Solar.NightsAvengerLunge" exalt="Solar" group="Dodge">
+		<prerequisite>
+			<trait id="Dodge" value="4" />
+			<essence value="3" />
+			<charmReference id="Solar.ShadowOverWater" />
+		</prerequisite>
+		<cost>
+			<essence cost="3" text=" or 5m or 10m" />
+			<willpower cost="1" />
+		</cost>
+		<duration amount="1" unit="tick" />
+		<charmtype type="Reflexive">
+			<special primaryStep="9" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Counterattack" visualize="true" />
+		<charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
 </charmlist>

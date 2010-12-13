@@ -23,16 +23,19 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Performance -->
-     <charm id="Solar.ImmanentSolarGloryPerformance" exalt="Solar" group="Performance">
-          <prerequisite>
-               <trait id="Performance" value="5" />
-               <essence value="3" />
-          </prerequisite>
-          <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Mirror" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm>
+	<!-- Performance -->
+	<charm id="Solar.ImmanentSolarGloryPerformance" exalt="Solar" group="Performance">
+		<prerequisite>
+			<trait id="Performance" value="5" />
+			<essence value="3" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Essence Engorgement Technique -->
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
+		<source source="InkMonkeys" />
+	</charm>
 </charmlist>

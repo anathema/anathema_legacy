@@ -90,8 +90,8 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.ImpatientSlaughterSpeed" exalt="Solar" group="InfernalMonsterStyle">
@@ -233,7 +233,7 @@
 	<charm id="Celestial.DeathDevouringSadism" exalt="Solar" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
-			<essence value="4" />
+			<essence value="5" />
 			<charmReference id="Celestial.ArmageddonNightmareDuel" />
 		</prerequisite>
 		<cost />
@@ -340,6 +340,7 @@
 		<charmAttribute attribute="FormEnhancing" visualize="true" />
 		<charmAttribute attribute="Monstrous" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
 		<!-- TODO:  Solar Akuma Only! -->
 		<source source="InkMonkeys" />
 	</charm>
@@ -354,6 +355,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
 		<!-- TODO:  Lunar Akuma Only! -->
 		<source source="InkMonkeys" />
 	</charm>
@@ -369,8 +371,9 @@
 		<charmAttribute attribute="Celstial" />
 		<charmAttribute attribute="Fate" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<!-- TODO:  Sidereal Akuma Only! -->
+		<charmAttribute attribute="NotAlienLearnable" />
 		<charmAttribute attribute="Shaping" visualize="true" />
+		<!-- TODO:  Sidereal Akuma Only! -->
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.DragonSpawnedDemonMonster" exalt="Solar" group="InfernalMonsterStyle">
@@ -384,6 +387,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
 		<!-- TODO:  Terrestrial Akuma Only! -->
 		<source source="InkMonkeys" />
 	</charm>

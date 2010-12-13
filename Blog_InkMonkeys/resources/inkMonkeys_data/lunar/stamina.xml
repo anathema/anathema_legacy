@@ -23,25 +23,25 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Soak Charms -->
-     <charm id="Lunar.LimbShieldingGrowth" exalt="Lunar" group="Soak">
-          <prerequisite>
-               <trait id="Stamina" value="3" />
-               <essence value="2" />
-               <charmReference id="Lunar.ArmorFormingTechnique" />
-          </prerequisite>
-          <cost>
-               <essence cost="4" />
-          </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Reflexive">
-               <special primaryStep="2" />
-          </charmtype>
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Gift" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm>
+	<!-- Soak Charms -->
+	<charm id="Lunar.LimbShieldingGrowth" exalt="Lunar" group="Soak">
+		<prerequisite>
+			<trait id="Stamina" value="3" />
+			<essence value="2" />
+			<charmReference id="Lunar.ArmorFormingTechnique" />
+		</prerequisite>
+		<cost>
+			<essence cost="4" />
+		</cost>
+		<duration amount="1" unit="scene" />
+		<charmtype type="Reflexive">
+			<special primaryStep="2" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Gift" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
 	<charm id="Lunar.WeaponTrappingBodyDominion" exalt="Lunar" group="Soak">
 		<prerequisite>
 			<trait id="Stamina" value="4" />

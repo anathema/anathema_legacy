@@ -23,19 +23,20 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Ride -->
-     <charm id="Abyssal.FellRidersAdvantages" exalt="Abyssal" group="Ride">
-          <prerequisite>
-               <trait id="Ride" value="3" />
-               <essence value="3" />
-               <charmReference id="Abyssal.SoulReins" />
-          </prerequisite>
-          <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Mirror" visualize="true" />
-          <charmAttribute attribute="Mount(Mundane)" visualize="true" />
-          <charmAttribute attribute="Native" visualize="true" />
-          <source source="InkMonkeys" />
-      </charm>
+	<!-- Ride -->
+	<charm id="Abyssal.FellRidersAdvantages" exalt="Abyssal" group="Ride">
+		<prerequisite>
+			<trait id="Ride" value="3" />
+			<essence value="3" />
+			<charmReference id="Abyssal.SoulReins" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<charmAttribute attribute="Mount(Mundane)" visualize="true" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
+		<source source="InkMonkeys" />
+	</charm>
 </charmlist>

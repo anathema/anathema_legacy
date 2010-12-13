@@ -23,16 +23,19 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Bureaucracy -->
-     <charm id="Solar.ImmanentSolarGloryBureaucracy" exalt="Solar" group="Bureaucracy">
-          <prerequisite>
-               <trait id="Bureaucracy" value="5" />
-               <essence value="3" />
-          </prerequisite>
-          <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Mirror" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm>
+	<!-- Bureaucracy -->
+	<charm id="Solar.ImmanentSolarGloryBureaucracy" exalt="Solar" group="Bureaucracy">
+		<prerequisite>
+			<trait id="Bureaucracy" value="5" />
+			<essence value="3" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Essence Engorgement Technique -->
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotALienLearnable" />
+		<source source="InkMonkeys" />
+	</charm>
 </charmlist>

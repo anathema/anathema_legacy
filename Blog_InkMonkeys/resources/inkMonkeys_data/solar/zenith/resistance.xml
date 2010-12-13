@@ -29,10 +29,7 @@
                <trait id="Resistance" value="3" />
                <essence value="2" />
           </prerequisite>
-          <cost>
-               <essence cost="-" />
-          </cost>
-
+          <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Stackable" visualize="true" />

@@ -24,32 +24,33 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <charm id="Lunar.ColdBreathOfTheMoon" exalt="Lunar" group="Reaction">
-          <prerequisite>
-               <trait id="Wits" value="3" />
-               <essence value="2" />
-          </prerequisite>
-          <cost >
-                <essence cost="4" />
-          </cost>
-          <duration duration="Instant" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Sickness" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm>
-     <charm id="Lunar.SilverLunarResolutionWits" exalt="Lunar" group="Survival">
-          <prerequisite>
-               <trait id="Wits" value="4" />
-               <essence value="3" />
-          </prerequisite>
-          <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-			<!-- NOTE:  "Mirror" - Lunar/Stamina & Lunar/Charisma -->
-          <source source="InkMonkeys" />
-     </charm>
+	<charm id="Lunar.ColdBreathOfTheMoon" exalt="Lunar" group="Reaction">
+		<prerequisite>
+			<trait id="Wits" value="3" />
+			<essence value="2" />
+		</prerequisite>
+		<cost >
+			<essence cost="4" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Sickness" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Lunar.SilverLunarResolutionWits" exalt="Lunar" group="Survival">
+		<prerequisite>
+			<trait id="Wits" value="4" />
+			<essence value="3" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotALienLearnable" />
+		<!-- NOTE:  "Mirror" - Lunar/Stamina & Lunar/Charisma -->
+		<source source="InkMonkeys" />
+	</charm>
 	<charm id="Lunar.MothToFlamesDefense" exalt="Lunar" group="Reaction">
 		<prerequisite>
 			<trait id="Wits" value="3" />

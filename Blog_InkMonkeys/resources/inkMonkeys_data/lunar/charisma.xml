@@ -24,55 +24,56 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Charisma Charms -->
-     <charm id="Lunar.FeralSmileTactic" exalt="Lunar" group="Interaction">
-          <prerequisite>
-               <trait id="Charisma" value="3" />
-               <essence value="3" />
-               <charmAttributeRequirement attribute="ExcellencyCharisma" count="1" />
-          </prerequisite>
-          <cost>
+	<!-- Charisma Charms -->
+	<charm id="Lunar.FeralSmileTactic" exalt="Lunar" group="Interaction">
+		<prerequisite>
+			<trait id="Charisma" value="3" />
+			<essence value="3" />
+			<charmAttributeRequirement attribute="ExcellencyCharisma" count="1" />
+		</prerequisite>
+		<cost>
 			<essence cost="6" />
 			<willpower cost="1" />
-          </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Simple">
-               <special speed="5" defense="-1" />
-          </charmtype>
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Compulsion" visualize="true" />
-          <charmAttribute attribute="Emotion" visualize="true" />
-          <charmAttribute attribute="Social" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm>
-     <charm id="Lunar.LionsVoiceCommand" exalt="Lunar" group="MilitaryUnit">
-          <prerequisite>
-               <trait id="Charisma" value="4" />
-               <essence value="3" />
-               <charmAttributeRequirement attribute="ExcellencyCharisma" count="1" />
-          </prerequisite>
-          <cost>
-               <essence cost="5" />
-          </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Reflexive" />
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="War" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm>
-     <charm id="Lunar.SilverLunarResolutionCharisma" exalt="Lunar" group="EssenceRegaining">
-          <prerequisite>
-               <trait id="Charisma" value="4" />
-               <essence value="3" />
-          </prerequisite>
-          <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-			<!-- NOTE:  "Mirror" - Lunar/Stamina & Lunar/Charisma -->
-          <source source="InkMonkeys" />
-     </charm>
+		</cost>
+		<duration amount="1" unit="scene" />
+		<charmtype type="Simple">
+			<special speed="5" defense="-1" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Compulsion" visualize="true" />
+		<charmAttribute attribute="Emotion" visualize="true" />
+		<charmAttribute attribute="Social" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Lunar.LionsVoiceCommand" exalt="Lunar" group="MilitaryUnit">
+		<prerequisite>
+			<trait id="Charisma" value="4" />
+			<essence value="3" />
+			<charmAttributeRequirement attribute="ExcellencyCharisma" count="1" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration amount="1" unit="scene" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="War" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Lunar.SilverLunarResolutionCharisma" exalt="Lunar" group="EssenceRegaining">
+		<prerequisite>
+			<trait id="Charisma" value="4" />
+			<essence value="3" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		!-- NOTE:  "Mirror" - Lunar/Stamina & Lunar/Charisma -->
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
+		<source source="InkMonkeys" />
+	</charm>
 	<charm id="Lunar.SilverAndGoldSpanTheHeavens" exalt="Lunar" group="Interaction">
 		<prerequisite>
 			<trait id="Charisma" value="3" />

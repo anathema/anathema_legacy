@@ -179,6 +179,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Martial" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>

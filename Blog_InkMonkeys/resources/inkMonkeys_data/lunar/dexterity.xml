@@ -22,7 +22,7 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Dexterity -->
+	<!-- Dexterity -->
 	<charm id="Lunar.EssentialMoonsilverAffinity" exalt="Lunar" group="Craft">
 		<prerequisite>
 			<trait id="Dexterity" value="3" />

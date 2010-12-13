@@ -41,6 +41,7 @@
 	<charm id="Terrestrial.SweepingMeadowAwarenessPractice" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="3" />
+			<trait id="Performance" value="2" />
 			<essence value="2" />
 		</prerequisite>
 		<cost>
@@ -122,6 +123,7 @@
 		<duration event="NextAction" />
 		<charmtype type="Reflexive" />
 		<charmAttribute attribute="Terrestrial" />
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Terrestrial.WhirlingRhythmRevolution" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
@@ -170,7 +172,7 @@
 		</cost>
 		<duration duration="Indefinite" />
 		<charmtype type="Simple">
-			<special speed="4" defense="-1" />
+			<special speed="3" defense="-1" />
 		</charmtype>
 		<charmAttribute attribute="Terrestrial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />

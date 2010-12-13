@@ -37,6 +37,8 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Iron Maiden's Embrace -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="GloriesUCS" />
@@ -54,6 +56,7 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Iron Maiden's Embrace -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="GloriesUCS" />

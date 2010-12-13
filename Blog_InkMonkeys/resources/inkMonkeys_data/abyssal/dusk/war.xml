@@ -49,7 +49,9 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Immanent Solar Glory -->
 		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.EverReadyKillersTools" exalt="Abyssal" group="War">

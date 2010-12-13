@@ -23,20 +23,20 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <charm id="Lunar.ArgentMuseApproach" exalt="Lunar" group="Insight">
-          <prerequisite>
-               <trait id="Intelligence" value="3" />
-               <essence value="2" />
-               <charmAttributeRequirement attribute="ExcellencyIntelligence" count="1" />
-          </prerequisite>
-          <cost >
-                <essence cost="3" text=" per die" />
-          </cost>
-          <duration duration="Indefinite" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm>
+	<charm id="Lunar.ArgentMuseApproach" exalt="Lunar" group="Insight">
+		<prerequisite>
+			<trait id="Intelligence" value="3" />
+			<essence value="2" />
+			<charmAttributeRequirement attribute="ExcellencyIntelligence" count="1" />
+		</prerequisite>
+		<cost >
+			<essence cost="3" text="per die" />
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
 	<charm id="Lunar.MandateOfTheHungryMouse" exalt="Lunar" group="Inisight">
 		<prerequisite>
 			<trait id="Intelligence" value="3" />
