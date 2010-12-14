@@ -22,7 +22,7 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Integrity -->
+	<!-- Integrity -->
 	<charm id="Abyssal.SoulsteelReaperSpirit" exalt="Abyssal" group="Integrity">
 		<prerequisite>
 			<trait id="Integrity" value="1" />

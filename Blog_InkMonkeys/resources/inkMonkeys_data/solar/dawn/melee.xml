@@ -282,9 +282,9 @@
 		</cost>
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
-		<charmAttribute attribute="Overdrive" visualize="true"/>
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+		<charmAttribute attribute="Overdrive" visualize="true"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.DawnsParableDefense" exalt="Solar" group="Melee">
@@ -294,7 +294,7 @@
 			<charmReference id="Solar.FinalSunsetStance" />
 		</prerequisite>
 		<cost>
-			<essence cost="1" text=" per defense" />
+			<essence cost="1" text="per defense" />
 		</cost>
 		<duration duration="Instant" />
 		<charmtype type="Reflexive">

@@ -22,25 +22,7 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Survival -->
-	<charm id="Abyssal.WispLightSummons" exalt="Abyssal" group="Survival">
-		<prerequisite>
-			<trait id="Survival" value="5" />
-			<essence value="4" />
-			<charmReference id="Abyssal.DarkPathsFound" />
-		</prerequisite>
-		<cost>
-			<essence cost="5" />
-		</cost>
-		<duration duration="Indefinite" />
-		<charmtype type="Reflexive" />
-		<charmAttribute attribute="Combo-OK" visualize="true" />
-		<charmAttribute attribute="Compulsion" visualize="true" />
-		<charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Solar Mirror - Guiding Light Shines On -->
-		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="InkMonkeys" />
-	</charm>
+	<!-- Survival -->
 	<charm id="Abyssal.CannibalisticEmpowermentUnderstanding" exalt="Abyssal" group="Survival">
 		<prerequisite>
 			<trait id="Survival" value="2" />
@@ -68,6 +50,24 @@
 		<charmAttribute attribute="Emotion" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- Todo - Solar Mirror Food-Gathering Exercise -->
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Abyssal.WispLightSummons" exalt="Abyssal" group="Survival">
+		<prerequisite>
+			<trait id="Survival" value="5" />
+			<essence value="4" />
+			<charmReference id="Abyssal.DarkPathsFound" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Compulsion" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Guiding Light Shines On -->
+		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
 </charmlist>
