@@ -228,7 +228,7 @@
 		<prerequisite>
 			<trait id="MartialArts" value="4" />
 			<essence value="3" />
-			<charmReference id="Celestial.HewerSharpenedFist" />
+			<charmReference id="Solar.HewerSharpenedFist" />
 		</prerequisite>
 		<cost>
 			<essence cost="1" />

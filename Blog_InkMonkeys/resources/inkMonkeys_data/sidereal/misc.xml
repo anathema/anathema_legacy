@@ -27,7 +27,7 @@
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="4" />
-			<charmReference id="Celestial.ThrownShadowForm" />
+			<charmReference id="Celestial.ThroneShadowForm" />
 		</prerequisite>
 		<cost>
 			<essence cost="-" text="(2wp)"/>

@@ -41,6 +41,7 @@
 	<charm id="Terrestrial.WhirlingPestleKata" exalt="Dragon-Blooded" group="IvoryPestleStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="2" />
+			<trait id="Melee" value="2" />
 			<essence value="1" />
 		</prerequisite>
 		<cost>
