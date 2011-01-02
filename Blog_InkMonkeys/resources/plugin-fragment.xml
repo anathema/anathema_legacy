@@ -121,6 +121,11 @@
 		<parameter id="list">
 			<parameter id="type" value="MartialArts" />
 			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="inkMonkeys_data/misc/ivoryPestle.xml" />
+		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
 			<parameter id="path" value="inkMonkeys_data/misc/solarHero.xml" />
 		</parameter>
 		<parameter id="list">
@@ -128,6 +133,11 @@
 			<parameter id="rules" value="SecondEdition" />
 			<parameter id="path" value="inkMonkeys_data/misc/swayingGrassDance.xml" />
 		</parameter>
+		<!--parameter id="list">
+			<parameter id="type" value="MartialArts" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="inkMonkeys_data/sidereal/misc.xml" />
+		</parameter-->
 		<!-- Solar Charms -->
           <parameter id="list">
                <parameter id="type" value="Solar" />
@@ -184,6 +194,11 @@
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="inkMonkeys_data/solar/night/larceny.xml" />
           </parameter>
+		<parameter id="list">
+			<parameter id="type" value="Solar" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="inkMonkeys_data/solar/twilight/investigation.xml" />
+		</parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
@@ -209,6 +224,11 @@
 				<parameter id="type" value="Dragon-Blooded" />
 				<parameter id="rules" value="SecondEdition" />
 				<parameter id="path" value="inkMonkeys_data/terrestrial/water/larceny.xml" />
+			</parameter>
+			<parameter id="list">
+				<parameter id="type" value="Dragon-Blooded" />
+				<parameter id="rules" value="SecondEdition" />
+				<parameter id="path" value="inkMonkeys_data/terrestrial/fire/socialize.xml" />
 			</parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="InkMonkeysResources">

@@ -3,8 +3,8 @@
 "../../charms.dtd">
 <!--
 
-    thrown.xml - XML charm data for Anathema plug-ins.
-    Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
+    investigation.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2011  Paul R Adams (pauladams@hotmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,19 +22,20 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Thrown -->
-	<charm id="Abyssal.StalkingTheStrikersHand" exalt="Abyssal" group="Thrown">
+     <!-- Investigation -->
+	<charm id="Solar.VirtueDiscerningSight" exalt="Solar" group="Investigation">
 		<prerequisite>
-			<trait id="Thrown" value="3" />
+			<trait id="Investigation" value="3" />
 			<essence value="2" />
+			<charmReference id="Solar.Courtier'sEyeTechnique" />
 		</prerequisite>
-		<cost />
-		<duration duration="Permanent" />
-		<charmtype type="Reflexive">
-			<special primaryStep="2" />
-		</charmtype>
-		<charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Solar Mirror - Angle-Tracing Edge -->
+		<cost>
+			<essence cost="3" />
+		</cost>
+		<duration amount="1" unit="scene" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Social" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
 </charmlist>

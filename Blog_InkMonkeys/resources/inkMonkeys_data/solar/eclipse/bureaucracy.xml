@@ -38,4 +38,20 @@
 		<charmAttribute attribute="NotALienLearnable" />
 		<source source="InkMonkeys" />
 	</charm>
+	<charm id="Solar.ServantRewardingBenevolence" exalt="Solar" group="Bureaucracy">
+		<prerequisite>
+			<trait id="Bureaucracy" value="4" />
+			<essence value="2" />
+			<charmReference id="Solar.SpeedWheels" />
+		</prerequisite>
+		<cost>
+			<essence cost="2" />
+			<willpower cost="1" />
+		</cost>
+		<duration amount="1" unit="month" />
+		<charmtype type="Simple">
+			<special speed="6" turntype="DramaticAction" defense="-1" />
+		</charmtype>
+		<source source="InkMonkeys" />
+	</charm>
 </charmlist>

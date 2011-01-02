@@ -69,7 +69,7 @@
 		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
-		!-- NOTE:  "Mirror" - Lunar/Stamina & Lunar/Charisma -->
+		<!-- NOTE:  "Mirror" - Lunar/Stamina & Lunar/Charisma -->
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="NotAlienLearnable" />
 		<source source="InkMonkeys" />

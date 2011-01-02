@@ -61,7 +61,7 @@
 		<!-- NOTE:  Solar Mirror - Hewer-Sharpened Fist -->
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.RaggedShadesRevenge" exalt="Celestial" group="DarkMessiahStyle">
+	<charm id="Celestial.RaggedShadesRevenge" exalt="Abyssal" group="DarkMessiahStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="4" />
 			<essence value="3" />

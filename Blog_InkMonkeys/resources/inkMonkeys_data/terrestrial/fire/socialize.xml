@@ -3,8 +3,8 @@
 "../../charms.dtd">
 <!--
 
-    thrown.xml - XML charm data for Anathema plug-ins.
-    Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
+    socialize.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2011  Paul R Adams (pauladams@hotmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,19 +22,23 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Thrown -->
-	<charm id="Abyssal.StalkingTheStrikersHand" exalt="Abyssal" group="Thrown">
+     <!-- Socialize -->
+	<charm id="Dragon-Blooded.AuspiciousMerrymakingTechnique" exalt="Dragon-Blooded" group="Socialize">
 		<prerequisite>
-			<trait id="Thrown" value="3" />
+			<trait id="Socialize" value="3" />
 			<essence value="2" />
+			<charmReference id="Dragon-Blooded.Sweeten-the-TapMethod" />
 		</prerequisite>
-		<cost />
-		<duration duration="Permanent" />
-		<charmtype type="Reflexive">
-			<special primaryStep="2" />
+		<cost>
+			<essence cost="6" />
+			<willpower cost="1" />
+		</cost>
+		<duration amount="1" unit="SocialEvent" />
+		<charmtype type="Simple">
+			<special speed="6" turntype="DramaticAction" defense="-1" />
 		</charmtype>
-		<charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Solar Mirror - Angle-Tracing Edge -->
+		<charmAttribute attribute="Compulsion" visualize="true" />
+		<charmAttribute attribute="Emotion" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
 </charmlist>
