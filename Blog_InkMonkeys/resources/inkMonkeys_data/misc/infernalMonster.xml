@@ -368,7 +368,7 @@
 		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
-		<charmAttribute attribute="Celstial" />
+		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Fate" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="NotAlienLearnable" />

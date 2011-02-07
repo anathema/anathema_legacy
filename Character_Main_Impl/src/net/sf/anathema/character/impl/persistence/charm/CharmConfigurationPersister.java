@@ -11,6 +11,11 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_DESCRIPTION;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_NAME;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPECIAL;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARMFILTERS;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
@@ -21,6 +26,9 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.character.presenter.charm.ObtainableCharmFilter;
+import net.sf.anathema.character.presenter.charm.SourceBookCharmFilter;
+import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -45,9 +53,18 @@ public class CharmConfigurationPersister {
     }
     saveCharms(specialPersister, charmConfiguration, MartialArtsUtilities.MARTIAL_ARTS, charmsElement);
     saveCombos(charmsElement, statistics.getCombos());
+    saveFilters(charmsElement, charmConfiguration.getCharmFilters());
   }
 
-  private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration charmConfiguration) {
+  private void saveFilters(Element charmsElement, List<ICharmFilter> charmFilters)
+  {
+	  Element filtersElement = charmsElement.addElement(TAG_CHARMFILTERS);
+	  
+	  for (ICharmFilter filter : charmFilters)
+		  filter.save(filtersElement);
+  }
+
+private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration charmConfiguration) {
     return new SpecialCharmPersister(charmConfiguration.getSpecialCharms(), charmConfiguration.getCharmIdMap());
   }
 
@@ -124,6 +141,7 @@ public class CharmConfigurationPersister {
       loadCharmFromConfiguration(charmConfiguration, groupElement, specialPersister);
     }
     loadCombos(charmsElement, statistics.getCombos(), charmConfiguration);
+    loadFilters(charmsElement, statistics);
   }
 
   private void loadCharmFromConfiguration(
@@ -170,5 +188,30 @@ public class CharmConfigurationPersister {
       }
       comboConfiguration.finalizeCombo(experienceLearned);
     }
+  }
+  
+  private void loadFilters(Element parent, ICharacterStatistics statistics)
+  {
+	  ICharmConfiguration config = statistics.getCharms();
+	  List<ICharmFilter> filterSet = new ArrayList<ICharmFilter>();
+	  filterSet.add(new ObtainableCharmFilter(config));
+	  filterSet.add(new SourceBookCharmFilter(statistics.getRules().getEdition(),
+			  config));
+	  
+	  Element charmFilterNode = parent.element(TAG_CHARMFILTERS);
+	  if (charmFilterNode != null)
+	  {
+		  for (Object filterNode : charmFilterNode.elements())
+		  {
+			  Element node = (Element) filterNode;
+			  for (ICharmFilter filter : filterSet)
+			  {
+				  if (filter.load(node))
+					  break;
+			  }
+		  }
+	  }
+	  
+	  config.setCharmFilters(filterSet);
   }
 }

@@ -41,6 +41,7 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
+import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.lib.collection.DefaultValueHashMap;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -65,6 +66,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private final ChangeControl control = new ChangeControl();
   private final ICharmProvider provider;
   private final ILearningCharmGroupArbitrator arbitrator;
+  private List<ICharmFilter> filterSet;
 
   public CharmConfiguration(
       IHealthConfiguration health,
@@ -478,4 +480,15 @@ public class CharmConfiguration implements ICharmConfiguration {
   public String[] getUncompletedCelestialMartialArtsGroups() {
     return arbitrator.getUncompletedCelestialMartialArtsGroups(getMartialArtsGroups());
   }
+
+	@Override
+	public List<ICharmFilter> getCharmFilters()
+	{
+		return filterSet;
+	}
+	
+	public void setCharmFilters(List<ICharmFilter> filters)
+	{
+		filterSet = filters;
+	}
 }

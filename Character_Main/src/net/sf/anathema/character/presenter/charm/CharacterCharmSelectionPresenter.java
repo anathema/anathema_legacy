@@ -1,7 +1,10 @@
 package net.sf.anathema.character.presenter.charm;
 
 import java.awt.Color;
+
 import java.awt.Toolkit;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -78,15 +81,18 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     boolean alienCharms = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(
         statistics.getCharacterConcept().getCaste().getType());
     createCharmTypeSelector(getCurrentCharmTypes(alienCharms), view, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
+    initFilters(charms);
     this.charmSelectionChangeListener = new CharacterCharmGroupChangeListener(
         view.getCharmTreeView(),
         getTemplateRegistry(),
         getCharmConfiguration(),
+        filterSet,
         statistics.getRules().getEdition());
     initSpecialCharmViews();
     initCharmTypeSelectionListening(charms);
     initCasteListening();
     createCharmGroupSelector(view, charmSelectionChangeListener, charms.getAllGroups());
+    createFilterButton(view);
     view.addCharmSelectionListener(new INodeSelectionListener() {
       public void nodeSelected(final String charmId) {
         if (viewProperties.isRequirementNode(charmId)) {
@@ -97,6 +103,18 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       }
     });
     initCharmLearnListening(charms);
+    view.getCharmTreeView().getComponent().addHierarchyListener(new HierarchyListener()
+    {
+
+		@Override
+		public void hierarchyChanged(HierarchyEvent arg0) {
+			if ((arg0.getChangeFlags() & HierarchyEvent.SHOWING_CHANGED) != 0 &&
+				view.getCharmTreeView().getComponent().isShowing())
+				refresh();
+			
+		}
+    	
+    });
     view.getCharmTreeView().getComponent().addMouseListener(new MouseAdapter() {
       @Override
       public void mouseExited(final MouseEvent e) {
@@ -128,6 +146,19 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     });
     view.initGui();
   }
+  
+  private void initFilters(ICharmConfiguration charms)
+  {
+	  if (charms.getCharmFilters() == null)
+	  {
+		  filterSet.add(new ObtainableCharmFilter(statistics.getCharms()));
+		  filterSet.add(new SourceBookCharmFilter(statistics.getRules().getEdition(),
+				  statistics.getCharms()));
+		  statistics.getCharms().setCharmFilters(filterSet);
+	  }
+	  else
+		  filterSet = charms.getCharmFilters();	  
+  }
 
   public IViewContent getTabContent() {
     String header = getResources().getString("CardView.CharmConfiguration.CharmSelection.Title"); //$NON-NLS-1$
@@ -158,19 +189,27 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     types.add(MartialArtsUtilities.MARTIAL_ARTS);
     return types.toArray(new IIdentificate[types.size()]);
   }
+  
+  private void refresh()
+  {
+	  handleTypeSelectionChange(currentType);
+	  charmSelectionChangeListener.reselect();
+  }
 
   private void initCharmTypeSelectionListening(final ICharmConfiguration charms) {
     view.addCharmTypeSelectionListener(new IObjectValueChangedListener<IIdentificate>() {
       public void valueChanged(final IIdentificate cascadeType) {
-        handleTypeSelectionChange(charms, cascadeType);
+    	  currentType = cascadeType;
+        handleTypeSelectionChange(cascadeType);
       }
     });
   }
 
-  private void handleTypeSelectionChange(final ICharmConfiguration charms, final IIdentificate cascadeType) {
+  protected void handleTypeSelectionChange(final IIdentificate cascadeType) {
     ICharmGroup[] allCharmGroups = new ICharmGroup[0];
     if (cascadeType != null) {
-      allCharmGroups = sortCharmGroups(charms.getCharmGroups(cascadeType));
+      allCharmGroups = sortCharmGroups(getCharmConfiguration()
+    		  .getCharmGroups(cascadeType));
     }
     view.fillCharmGroupBox(allCharmGroups);
     showSpecialViews();
@@ -217,11 +256,13 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       @Override
       public void charmLearned(ICharm charm) {
         setCharmVisuals(charm, selectionView);
+        charmSelectionChangeListener.reselect();
       }
 
       @Override
       public void charmForgotten(ICharm charm) {
         setCharmVisuals(charm, selectionView);
+        charmSelectionChangeListener.reselect();
       }
 
       @Override

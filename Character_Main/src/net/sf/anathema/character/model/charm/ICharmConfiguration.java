@@ -1,10 +1,13 @@
 package net.sf.anathema.character.model.charm;
 
+import java.util.List;
+
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -52,4 +55,7 @@ public interface ICharmConfiguration extends IExtendedCharmLearnableArbitrator, 
   public ILearningCharmGroup getGroup(String characterType, String groupName);
 
   public ISpecialCharm[] getSpecialCharms();
+  
+  public List<ICharmFilter> getCharmFilters();
+  public void setCharmFilters(List<ICharmFilter> filters);
 }

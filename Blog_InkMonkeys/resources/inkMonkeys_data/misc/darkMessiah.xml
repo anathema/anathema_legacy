@@ -55,6 +55,7 @@
 		</cost>
 		<duration duration="Instant" />
 		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="MartialReadyArcheryMeleeThrown" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />

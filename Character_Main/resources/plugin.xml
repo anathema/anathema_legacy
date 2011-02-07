@@ -104,6 +104,7 @@
 		<parameter id="bundle" value="CharacterModule"/>
 		<parameter id="bundle" value="CharacterSheet"/>
 		<parameter id="bundle" value="CharmDuration"/>
+		<parameter id="bundle" value="CharmFilters"/>
 		<parameter id="bundle" value="Charmgroups"/>
 		<parameter id="bundle" value="Charms_DragonKing"/>
 		<parameter id="bundle" value="CharmTreeView"/>

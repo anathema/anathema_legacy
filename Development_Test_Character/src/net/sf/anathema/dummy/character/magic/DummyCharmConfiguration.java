@@ -1,5 +1,7 @@
 package net.sf.anathema.dummy.character.magic;
 
+import java.util.List;
+
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
@@ -12,6 +14,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -150,4 +153,15 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
   public ISpecialCharm[] getSpecialCharms() {
     throw new NotYetImplementedException();
   }
+
+	@Override
+	public List<ICharmFilter> getCharmFilters() {
+		return null;
+	}
+
+	@Override
+	public void setCharmFilters(List<ICharmFilter> filters) {
+		// TODO Auto-generated method stub
+		
+	}
 }

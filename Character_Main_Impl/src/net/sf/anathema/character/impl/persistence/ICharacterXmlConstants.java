@@ -45,6 +45,8 @@ public interface ICharacterXmlConstants {
   public static final String TAG_VIRTUE_FLAW = "VirtueFlaw"; //$NON-NLS-1$
   public static final String TAG_VIRTUES = "Virtues"; //$NON-NLS-1$
   public static final String TAG_WILLPOWER = "Willpower"; //$NON-NLS-1$
-
+  
+  public static final String TAG_CHARMFILTERS = "CharmFilters";
+  
   public static final String VALUE_HEROICMORTAL = "HeroicMortal";//$NON-NLS-1$
 }

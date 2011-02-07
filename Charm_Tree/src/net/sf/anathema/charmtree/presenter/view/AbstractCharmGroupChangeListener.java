@@ -1,5 +1,6 @@
 package net.sf.anathema.charmtree.presenter.view;
 
+import java.util.List;
 import java.util.Set;
 
 import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeBuilder;
@@ -7,6 +8,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
+import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -23,15 +25,19 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   private final ITemplateRegistry templateRegistry;
   private final ISvgTreeView charmTreeView;
   private final ICharmGroupArbitrator arbitrator;
+  protected final List<ICharmFilter> charmFilterSet;
   private ICharmGroup currentGroup;
+  private IIdentificate currentType;
 
   public AbstractCharmGroupChangeListener(
       final ISvgTreeView charmTreeView,
       final ITemplateRegistry templateRegistry,
-      final ICharmGroupArbitrator arbitrator) {
+      final ICharmGroupArbitrator arbitrator,
+      final List<ICharmFilter> charmFilterSet) {
     this.charmTreeView = charmTreeView;
     this.templateRegistry = templateRegistry;
     this.arbitrator = arbitrator;
+    this.charmFilterSet = charmFilterSet;
   }
 
   public final void valueChanged(final Object cascade, final Object type) {
@@ -48,6 +54,8 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     ICharm[] allCharms = arbitrator.getCharms(charmGroup);
     Set<ICharm> charmsToDisplay = new ListOrderedSet<ICharm>();
     for (ICharm charm : allCharms) {
+    	if (!filterCharm(charm, false) || !filterAncestors(charm))
+    		continue;
       charmsToDisplay.add(charm);
       for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms()) {
         if (charmGroup.getId().equals(prerequisite.getGroupId())) {
@@ -57,11 +65,24 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     }
     return charmsToDisplay;
   }
+  
+  protected boolean filterAncestors(ICharm charm)
+  {
+	  for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms())
+	  {
+		  if (!filterCharm(prerequisite, true) || !filterAncestors(prerequisite))
+			  return false;
+	  }
+	  return true;
+  }
+  
+  protected abstract boolean filterCharm(ICharm charm, boolean isAncestor);
 
   protected abstract IExaltedEdition getEdition();
 
   private void loadCharmTree(final ICharmGroup charmGroup, final IIdentificate type) throws DocumentException {
     currentGroup = charmGroup;
+    currentType = type;
     modifyCharmVisuals(type);
     if (charmGroup == null) {
       charmTreeView.loadCascade(null);
@@ -81,4 +102,9 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   }
 
   protected abstract void modifyCharmVisuals(IIdentificate type);
+  
+  public void reselect()
+  {
+	  valueChanged(getCurrentGroup(), currentType);
+  }
 }

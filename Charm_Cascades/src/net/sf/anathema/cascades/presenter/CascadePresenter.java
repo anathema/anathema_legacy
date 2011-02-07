@@ -25,6 +25,7 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.presenter.charm.SourceBookCharmFilter;
 import net.sf.anathema.charmtree.presenter.AbstractCascadeSelectionPresenter;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -41,6 +42,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules = new HashMap<IExaltedRuleSet, CharmTreeIdentificateMap>();
   private final CascadeCharmTreeViewProperties viewProperties;
   private final ICascadeView view;
+  private SourceBookCharmFilter sourceFilter; 
 
   public CascadePresenter(IResources resources, ITemplateRegistry templateRegistry, ICascadeViewFactory factory) {
     super(resources, templateRegistry);
@@ -60,9 +62,11 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]),
         view,
         "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
-    this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, getTemplateRegistry());
+    this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, getTemplateRegistry(),filterSet);
     createCharmGroupSelector(view, selectionListener, allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]));
     initRules();
+    initFilters();
+    createFilterButton(view);
     initCharmTypeSelectionListening();
     view.addDocumentLoadedListener(new IDocumentLoadedListener() {
       public void documentLoaded() {
@@ -150,6 +154,12 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     });
     rulesComboBox.setSelectedObject(AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset());
   }
+  
+  private void initFilters()
+  {
+	  sourceFilter = new SourceBookCharmFilter(selectedRuleset.getEdition()); 
+	  filterSet.add(sourceFilter);
+  }
 
   private CharmTreeIdentificateMap getCharmTreeMap(IExaltedRuleSet ruleSet) {
     return charmMapsByRules.get(ruleSet);
@@ -158,12 +168,13 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
   private void initCharmTypeSelectionListening() {
     view.addCharmTypeSelectionListener(new IObjectValueChangedListener<IIdentificate>() {
       public void valueChanged(IIdentificate cascadeType) {
+    	  currentType = cascadeType;
         handleTypeSelectionChange(cascadeType);
       }
     });
   }
 
-  private void handleTypeSelectionChange(IIdentificate cascadeType) {
+  protected void handleTypeSelectionChange(IIdentificate cascadeType) {
     if (cascadeType == null) {
       view.fillCharmGroupBox(new IIdentificate[0]);
       return;
@@ -177,7 +188,8 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     view.fillCharmGroupBox(sortCharmGroups(allCharmGroups));
   }
 
-  public ICharmTree getCharmTree(IIdentificate type) {
-    return getCharmTreeMap(selectedRuleset).get(type);
+  public ICharmTree getCharmTree(IIdentificate type)
+  {
+	  return getCharmTreeMap(selectedRuleset).get(type);
   }
 }
