@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
 public class FangTemplate implements IEquipmentTemplate {
 
+  private static final SecondEditionFangStats SECOND_EDITION_FANG_STATS = new SecondEditionFangStats();
   private static final PowerCombatFangStats POWER_COMBAT_FANG_STATS = new PowerCombatFangStats();
   private static final CoreRulesFangStats CORE_RULES_FANG_STATS = new CoreRulesFangStats();
   private static final String FANG = "Abyssal.Fangs"; //$NON-NLS-1$
@@ -41,7 +42,7 @@ public class FangTemplate implements IEquipmentTemplate {
       }
 
       public void visitSecondEdition(IExaltedRuleSet set) {
-        throw new UnsupportedOperationException("Second Edition Abyssals not yet supported"); //$NON-NLS-1$
+        stats[0] = SECOND_EDITION_FANG_STATS;
       }
     });
     return stats;
