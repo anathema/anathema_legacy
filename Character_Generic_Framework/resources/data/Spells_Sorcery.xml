@@ -1610,6 +1610,6 @@
 			<essence cost="60" />
 		</cost>
 		<target target="ConjuredBastion" />
-		<source source="BlogInkmonkeys" page="46" edition="SecondEdition" />
+		<source source="InkMonkeys" page="46" edition="SecondEdition" />
 	</spell>
 </spelllist>
