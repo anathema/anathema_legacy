@@ -10,13 +10,13 @@ import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTe
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.Identificate;
 
-public class EquipmentAdditonalModelTemplate extends Identificate implements
+public class EquipmentAdditionalModelTemplate extends Identificate implements
     IGlobalAdditionalTemplate,
     IEquipmentAdditionalModelTemplate {
 
   public final Map<ICharacterType, IEquipmentTemplate> templatesByType = new HashMap<ICharacterType, IEquipmentTemplate>();
 
-  public EquipmentAdditonalModelTemplate() {
+  public EquipmentAdditionalModelTemplate() {
     super(ID);
   }
 

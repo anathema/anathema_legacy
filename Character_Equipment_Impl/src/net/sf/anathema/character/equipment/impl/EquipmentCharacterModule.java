@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalModelFactory;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPersisterFactory;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalViewFactory;
-import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditonalModelTemplate;
+import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase;
 import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.ArmourTableEncoder;
@@ -47,7 +47,7 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalViewFactoryRegistry().register(
         IEquipmentAdditionalModelTemplate.ID,
         new EquipmentAdditionalViewFactory());
-    characterGenerics.getGlobalAdditionalTemplateRegistry().add(new EquipmentAdditonalModelTemplate());
+    characterGenerics.getGlobalAdditionalTemplateRegistry().add(new EquipmentAdditionalModelTemplate());
   }
 
   @Override
