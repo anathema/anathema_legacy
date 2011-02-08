@@ -34,6 +34,9 @@ public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> i
   }
 
   protected final void registerParsedTemplate(ICharacterGenerics generics, String templateId) {
+    registerParsedTemplate(generics, templateId, "");
+  }
+  protected final void registerParsedTemplate(ICharacterGenerics generics, String templateId, String prefix) {
     ICharacterTemplateRegistryCollection characterTemplateRegistries = generics.getCharacterTemplateRegistries();
     IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = generics.getAdditionalTemplateParserRegistry();
     new CharacterTemplateParser(
@@ -44,7 +47,7 @@ public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> i
         additionalTemplateParserRegistry);
     try {
       generics.getTemplateRegistry().register(
-          characterTemplateRegistries.getCharacterTemplateRegistry().get(templateId));
+          characterTemplateRegistries.getCharacterTemplateRegistry().get(templateId, prefix));
     }
     catch (PersistenceException e) {
       Logger.getLogger(CharacterModuleAdapter.class).error(e);
