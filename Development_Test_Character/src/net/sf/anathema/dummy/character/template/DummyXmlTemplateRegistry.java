@@ -9,4 +9,8 @@ public class DummyXmlTemplateRegistry<V> extends Registry<String, V> implements 
   public void setTemplateParser(ITemplateParser<V> templateParser) {
     // Nothing to do
   }
+  
+  public V get(String id, String prefix) {
+    return null;
+  }
 }

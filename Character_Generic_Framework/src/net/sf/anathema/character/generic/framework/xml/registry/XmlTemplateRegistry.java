@@ -24,6 +24,10 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
   }
 
   public T get(String id) throws PersistenceException {
+    return get(id, "");
+  }
+  
+  public T get(String id, String prefix) throws PersistenceException {
     T template = templateRegistry.get(id);
     if (template != null) {
       return template;
@@ -33,7 +37,7 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
       throw new PersistenceException("Illegal recursion in template file:" + id); //$NON-NLS-1$
     }
     idsInProgress.add(id);
-    InputStream resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream("data/" + id); //$NON-NLS-1$
+    InputStream resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(prefix + "data/" + id); //$NON-NLS-1$
     Document document;
     document = DocumentUtilities.read(resourceAsStream);
     T parsedTemplate = templateParser.parseTemplate(document.getRootElement());
