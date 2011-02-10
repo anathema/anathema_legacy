@@ -12,6 +12,7 @@ public abstract class AbstractXmlTemplateParser<T extends ICloneable<T>> impleme
   private final IXmlTemplateRegistry<T> templateRegistry;
 
   private static final String ATTRIB_USES = "uses"; //$NON-NLS-1$
+  private static final String ATTRIB_PREFIX = "prefix"; //$NON-NLS-1$
 
   private final IWorkingTemplateFactory<T> workingTemplateFactory = new ClonedInstanceWorkingTemplateFactory<T>();
 
@@ -21,16 +22,21 @@ public abstract class AbstractXmlTemplateParser<T extends ICloneable<T>> impleme
   }
 
   protected final T getBasicTemplate(Element element) throws PersistenceException {
-    return getBasicTemplate(element.attributeValue(ATTRIB_USES));
+    return getBasicTemplate(element.attributeValue(ATTRIB_USES), element.attributeValue(ATTRIB_PREFIX));
   }
 
-  protected final T getBasicTemplate(String templateId) throws PersistenceException {
+  protected final T getBasicTemplate(String templateId, String prefix) throws PersistenceException {
     T template;
     if (templateId == null) {
       template = createNewBasicTemplate();
     }
     else {
-      template = workingTemplateFactory.getWorkingTemplateForId(templateRegistry, templateId);
+      if (prefix == null) {
+        template = workingTemplateFactory.getWorkingTemplateForId(templateRegistry, templateId);
+      }
+      else {
+        template = workingTemplateFactory.getWorkingTemplateForId(templateRegistry, templateId, prefix);
+      }
     }
     if (template == null) {
       throw new PersistenceException("Template not found: " + templateId); //$NON-NLS-1$

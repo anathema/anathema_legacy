@@ -7,4 +7,7 @@ public interface IWorkingTemplateFactory<T> {
 
   public T getWorkingTemplateForId(IXmlTemplateRegistry<T> templateRegistry, String templateId)
       throws PersistenceException;
+  
+  public T getWorkingTemplateForId(IXmlTemplateRegistry<T> templateRegistry, String templateId, String prefix)
+      throws PersistenceException;
 }
