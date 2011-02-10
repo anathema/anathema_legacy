@@ -44,7 +44,7 @@
 <!ELEMENT charmlist (genericCharm*, charm+, alternatives?, merges?)>
 	<!ATTLIST charmlist xmlns CDATA #IMPLIED>
 
-	<!ELEMENT genericCharm (prerequisite, cost, duration, charmtype, combo?, genericCharmAttribute?, charmAttribute*, source+, ruleset?)>
+	<!ELEMENT genericCharm (genericTraitSet?, prerequisite, cost, duration, charmtype, combo?, genericCharmAttribute?, charmAttribute*, source+, ruleset?)>
 		<!ATTLIST genericCharm id ID #REQUIRED
 			exalt (%Exalted.Types;) "Solar">
 	<!ELEMENT charm (prerequisite?, cost?, combo?, duration?, combo?, charmtype?, learning?, charmAttribute*, source*, ruleset?)>
@@ -54,6 +54,7 @@
 	<!ELEMENT alternatives (alternative*)>
 	<!ELEMENT merges (merged*)>
 	
+		<!ELEMENT genericTraitSet (genericTrait+)>
 		<!ELEMENT prerequisite (essence?, trait+, essence?, genericCharmAttributeRequirement?, selectiveCharmGroup?, genericCharmAttributeRequirement?, charmReference*, charmAttributeRequirement?)>
 		<!ELEMENT cost (essence?, willpower?, health?, experience?)>
 		<!ELEMENT duration EMPTY>
@@ -80,6 +81,8 @@
 		<!ELEMENT alternative (charmReference*)>
 		<!ELEMENT merged (charmReference*)>
 		
+			<!ELEMENT genericTrait EMPTY>
+				<!ATTLIST genericTrait id ID #REQUIRED>
 			<!ELEMENT essence EMPTY>
 				<!ATTLIST essence value CDATA #IMPLIED
 					id (Essence) #IMPLIED>

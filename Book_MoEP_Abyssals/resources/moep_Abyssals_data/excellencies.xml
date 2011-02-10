@@ -113,6 +113,12 @@
           <source source="SecondEdition" page="187"/>
      </genericCharm>
      <genericCharm id="Abyssal.RaveningMouth" exalt="Abyssal">
+          <genericTraitSet>
+               <genericTrait id="Archery" />
+               <genericTrait id="MartialArts" />
+               <genericTrait id="Melee" />
+               <genericTrait id="Thrown" />
+          </genericTraitSet>
           <prerequisite>
                <trait value="4" />
                <essence value="3" />
