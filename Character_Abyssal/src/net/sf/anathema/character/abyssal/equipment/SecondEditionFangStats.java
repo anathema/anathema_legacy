@@ -49,7 +49,7 @@ public class SecondEditionFangStats implements IWeaponStats {
   }
 
   public ITraitType getTraitType() {
-    return AbilityType.Brawl;
+    return AbilityType.MartialArts;
   }
 
   public boolean inflictsNoDamage() {
