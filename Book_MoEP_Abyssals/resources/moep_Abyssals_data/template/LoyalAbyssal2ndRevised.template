@@ -1,0 +1,42 @@
+<exaltedCharacterTemplate characterType="Abyssal" subtemplate="RevisedLoyalAbyssal">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="template/AbyssalAbilityGroup2nd.template" prefix="moep_Abyssals_" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template" />
+    <essence uses="DefaultEssence.template" />
+    <traitCollection uses="trait/DefaultTraitCollection.template" />
+    <magicTemplate uses="template/AbyssalMagic2nd.template" prefix="moep_Abyssals_" />
+    <presentation uses="template/AbyssalPresentation2nd.template" prefix="moep_Abyssals_" />
+    <additionalRules>
+    	<additionalPools>
+    		<multilearnablePool>
+    			<charmReference id="Abyssal.EssenceEngorgementTechnique"/>    			
+    			<peripheralPool multiplier="10"/>
+    		</multilearnablePool>
+    	</additionalPools> 
+    	<revisedIntimacies value="true" />
+    	<willpowerVirtueBased value="false" />
+    </additionalRules>
+    <additionalTemplates>
+      <template id="AbyssalResonance" />
+    </additionalTemplates>
+    <healthTemplate>
+      <toughnessControllingTrait type="Resistance"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="RevisedDefaultBonusPointCost2nd.template" />
+    <creationPoints>
+      <attributeDots primary="8" secondary="6" tertiary="4" />
+      <abilityDots general="18" favored="10" favoredPicks="5" />
+      <backgroundDots count="7" />
+      <virtueDots count="5" />
+      <specialtyDots count="4" />
+      <bonusPoints count="18" />
+      <charmPicks favored="0" general="10" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="experience/DefaultExperienceCost.template" />
+  </experience>
+</exaltedCharacterTemplate>

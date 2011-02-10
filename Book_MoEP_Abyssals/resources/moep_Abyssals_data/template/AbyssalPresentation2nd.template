@@ -1,0 +1,4 @@
+<presentation>
+  <color red="169" green="169" blue="169" />
+  <charmPresentation uses="template/AbyssalCharmPresentation2nd.template" prefix="moep_Abyssals_" />
+</presentation>

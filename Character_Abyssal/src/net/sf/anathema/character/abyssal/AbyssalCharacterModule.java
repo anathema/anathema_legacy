@@ -72,7 +72,7 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
     initTemplate(templateRegistry, new RenegadeAbyssalTemplate(
         charmProvider,
         additionalRenegadeAbyssalRules), additionalRenegadeAbyssalRules);
-    templateRegistry.register(new UnsupportedAbyssal2ndTemplate(charmProvider));
+    //templateRegistry.register(new UnsupportedAbyssal2ndTemplate(charmProvider));
   }
 
   private void initTemplate(

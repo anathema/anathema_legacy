@@ -1,0 +1,37 @@
+<abilityGroups>
+  <group id="Dusk" casteId="Dusk">
+    <trait type="Archery" />
+    <trait type="MartialArts" />
+    <trait type="Melee" />
+    <trait type="Thrown" />
+    <trait type="War"/>
+  </group>
+  <group id="Midnight" casteId="Midnight">
+    <trait type="Integrity" />
+    <trait type="Performance" />
+    <trait type="Presence" />
+    <trait type="Resistance" />
+    <trait type="Survival" />
+  </group>
+  <group id="Daybreak" casteId="Daybreak">
+    <trait type="Craft" />
+    <trait type="Investigation" />
+    <trait type="Lore" />
+    <trait type="Medicine" />
+    <trait type="Occult" />
+  </group>
+  <group id="Day" casteId="Day">
+    <trait type="Athletics" />
+    <trait type="Awareness" />
+    <trait type="Dodge" />
+    <trait type="Larceny" />
+    <trait type="Stealth" />
+  </group>
+  <group id="Moonshadow" casteId="Moonshadow">
+    <trait type="Bureaucracy" />
+    <trait type="Linguistics" />  
+    <trait type="Ride" />
+    <trait type="Sail" />
+    <trait type="Socialize" />
+  </group> 
+</abilityGroups>
