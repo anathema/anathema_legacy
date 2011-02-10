@@ -101,9 +101,14 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
   private void addAnimaPowerText(IGenericCharacter character, Phrase phrase) {
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     String resourceBase = "Sheet.AnimaPower." + characterType.getId() + "."; //$NON-NLS-1$ //$NON-NLS-2$
+    String baseWithEdition = resourceBase + character.getRules().getEdition().getId() + ".";
     for (int power = 0; power < animaPowerCount; power++) {
       phrase.add(symbolChunk);
-      phrase.add(resources.getString(resourceBase + AnimaUtils.resourceIds[power]) + "\n"); //$NON-NLS-1$
+      String resource = resources.getString(baseWithEdition + AnimaUtils.resourceIds[power]);
+      if (resource == null) {
+        resource = resources.getString(resourceBase + AnimaUtils.resourceIds[power]);
+      }
+      phrase.add(resource + "\n"); //$NON-NLS-1$
     }
   }
 }
