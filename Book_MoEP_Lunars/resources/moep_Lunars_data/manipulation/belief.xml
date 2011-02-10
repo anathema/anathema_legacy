@@ -58,7 +58,7 @@
           <charmAttribute attribute="Social" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.LostMirrorFight" exalt="Lunar" group="Belief">
+     <charm id="Lunar.LostMirrorFlight" exalt="Lunar" group="Belief">
           <prerequisite>
                <trait id="Manipulation" value="5" />
                <essence value="3" />

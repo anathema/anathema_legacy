@@ -45,4 +45,30 @@
           <charmtype type="Permanent" />
           <source source="SecondEdition" />
      </charm>
+	  <charm id="Lunar.ShadowlandsCircleNecromancy" exalt="Lunar" group="Sorcery">
+	    <prerequisite>
+	      <essence id="Essence" value="3"/>
+	      <trait id="Intelligence" value="3"/>
+	    </prerequisite>
+	    <cost>
+	      
+	    </cost>
+	    <duration duration="Permanent"/>
+	    <charmtype type="Permanent"/>
+	    <source source="SecondEdition"/>
+	  </charm>
+	  
+	  <charm id="Lunar.LabyrinthCircleNecromancy" exalt="Lunar" group="Sorcery">
+	    <prerequisite>
+	      <essence id="Essence" value="4"/>
+	      <trait id="Intelligence" value="4"/>
+	      <charmReference id="Lunar.ShadowlandsCircleNecromancy"/>
+	    </prerequisite>
+	    <cost>
+	      
+	    </cost>
+	    <duration duration="Permanent"/>
+	    <charmtype type="Permanent"/>
+	     <source source="SecondEdition"/>
+	  </charm>
 </charmlist>

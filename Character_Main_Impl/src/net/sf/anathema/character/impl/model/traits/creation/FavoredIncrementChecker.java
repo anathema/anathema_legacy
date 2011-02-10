@@ -29,6 +29,20 @@ public class FavoredIncrementChecker implements IIncrementChecker {
         abilityTypes.toArray(new ITraitType[abilityTypes.size()]),
         traitConfiguration);
   }
+  
+  public static IIncrementChecker createFavoredAttributeIncrementChecker(
+	      ICharacterTemplate template,
+	      ICoreTraitConfiguration traitConfiguration) {
+	    int maxFavoredAttributeCount = template.getCreationPoints().getAttributeCreationPoints().getFavorableTraitCount();
+	    List<ITraitType> attributeTypes = new ArrayList<ITraitType>();
+	    for (IGroupedTraitType traitType : template.getAttributeGroups()) {
+	      attributeTypes.add(traitType.getTraitType());
+	    }
+	    return new FavoredIncrementChecker(
+	        maxFavoredAttributeCount,
+	        attributeTypes.toArray(new ITraitType[attributeTypes.size()]),
+	        traitConfiguration);
+	  }
 
   public FavoredIncrementChecker(
       int maxFavoredCount,

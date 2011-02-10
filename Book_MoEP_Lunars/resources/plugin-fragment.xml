@@ -11,7 +11,7 @@
           </library>
      </runtime>
      <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="moepLunarsCharms">
-	     <!-- parameter id="list">
+	     <parameter id="list">
               <parameter id="type" value="Lunar" />
               <parameter id="rules" value="SecondEdition" />
               <parameter id="path" value="moep_Lunars_data/knacks/human.xml" />
@@ -310,7 +310,7 @@
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="moep_Lunars_data/wits/survival.xml" />
-          </parameter-->
+          </parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="moepLunarsResources">
           <parameter id="bundle" value="moepLunars" />

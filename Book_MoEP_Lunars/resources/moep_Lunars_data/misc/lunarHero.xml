@@ -50,6 +50,7 @@
           </cost>
           <duration amount="Essence" unit="action" />
           <charmtype type="Reflexive" />
+          <charmAttribute attribute="MartialArts"/>
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
@@ -65,7 +66,8 @@
           </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive" />
-          <charmAttribute attribute="Lunar" />
+          <charmAttribute attribute="MartialArts"/>
+          <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
@@ -83,6 +85,7 @@
           <charmtype type="Simple">
                <special speed="5" defense="-1" />
           </charmtype>
+		  <charmAttribute attribute="MartialArts"/>          
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Form" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
@@ -101,6 +104,7 @@
           <charmtype type="Simple">
                <special speed="5" defense="-1" />
           </charmtype>
+          <charmAttribute attribute="MartialArts"/>
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
@@ -118,6 +122,7 @@
           <charmtype type="Reflexive">
                <special primaryStep="2" />
           </charmtype>
+          <charmAttribute attribute="MartialArts"/>
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Counterattack" visualize="true" />
@@ -136,6 +141,7 @@
           <charmtype type="Reflexive">
                <special primaryStep="6" />
           </charmtype>
+          <charmAttribute attribute="MartialArts"/>
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Counterattack" visualize="true" />
@@ -155,6 +161,7 @@
           <charmtype type="Reflexive">
                <special primaryStep="2" />
           </charmtype>
+          <charmAttribute attribute="MartialArts"/>
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Counterattack" visualize="true" />
@@ -174,6 +181,7 @@
           </cost>
           <duration event="Released" />
           <charmtype type="Reflexive" />
+          <charmAttribute attribute="MartialArts"/>
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />

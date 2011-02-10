@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Craft Charms -->
-     <charm id="Lunar.ClayWettingPractice" exalt="Lunar" group="Craft">
+     <charm id="Lunar.ClayWettingPractice" exalt="Lunar" group="CraftCharm">
           <prerequisite>
                <trait id="Dexterity" value="4" />
                <essence value="3" />
@@ -40,7 +40,7 @@
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.WeaponShapingMethod" exalt="Lunar" group="Craft">
+     <charm id="Lunar.WeaponShapingMethod" exalt="Lunar" group="CraftCharm">
           <prerequisite>
                <trait id="Dexterity" value="4" />
                <essence value="3" />
@@ -56,7 +56,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.LunarBladeReconfiguration" exalt="Lunar" group="Craft">
+     <charm id="Lunar.LunarBladeReconfiguration" exalt="Lunar" group="CraftCharm">
           <prerequisite>
                <trait id="Dexterity" value="4" />
                <essence value="4" />

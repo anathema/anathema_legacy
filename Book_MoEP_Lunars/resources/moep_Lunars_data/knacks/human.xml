@@ -30,9 +30,10 @@
                <essence value="2" />
           </prerequisite>
           <cost />
-          <!-- duration />
-          <charmtype / -->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.HoningTheStolenForm" exalt="Lunar" group="Human">
@@ -42,9 +43,10 @@
                <charmReference id="Lunar.PreysSkinDisguise" />
           </prerequisite>
           <cost />
-          <!-- duration />
-          <charmtype / -->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.IntimateTrainingRecollection" exalt="Lunar" group="Human">
@@ -54,9 +56,10 @@
                <charmReference id="Lunar.PreysSkinDisguise" />
           </prerequisite>
           <cost />
-          <!-- duration />
-          <charmtype / -->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.FlickeringStarInfusion" exalt="Lunar" group="Human">
@@ -67,9 +70,10 @@
                <charmReference id="Lunar.IntimateTrainingRecollection" />
           </prerequisite>
           <cost />
-          <!-- duration />
-          <charmtype / -->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.LunarBloodShapingTechinque" exalt="Lunar" group="Human">
@@ -79,9 +83,10 @@
                <charmReference id="Lunar.PreysSkinDisguise" />
           </prerequisite>
           <cost />
-          <!-- duration />
-          <charmtype / -->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.InsidiousLunarTransformation" exalt="Lunar" group="Human">
@@ -91,9 +96,10 @@
                <charmReference id="Lunar.LunarBloodShapingTechinque" />
           </prerequisite>
           <cost />
-          <!-- duration />
-          <charmtype / -->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
 </charmlist>

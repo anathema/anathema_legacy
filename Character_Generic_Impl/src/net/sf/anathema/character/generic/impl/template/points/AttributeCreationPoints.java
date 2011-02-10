@@ -11,11 +11,20 @@ public class AttributeCreationPoints extends ReflectionCloneableObject<IAttribut
   private final int primary;
   private final int secondary;
   private final int tertiary;
+  private final int favoredPicks;
+  private final int extraDots;
 
-  public AttributeCreationPoints(int primary, int secondary, int tertiary) {
+  public AttributeCreationPoints(int primary, int secondary, int tertiary)
+  {
+	  this(primary, secondary, tertiary, 0, 0);
+  }
+  
+  public AttributeCreationPoints(int primary, int secondary, int tertiary, int picks, int dots) {
     this.primary = primary;
     this.secondary = secondary;
     this.tertiary = tertiary;
+    this.favoredPicks = picks;
+    this.extraDots = dots;
   }
 
   public int getPrimaryCount() {
@@ -28,6 +37,21 @@ public class AttributeCreationPoints extends ReflectionCloneableObject<IAttribut
 
   public int getTertiaryCount() {
     return tertiary;
+  }
+  
+  public int getFavorableTraitCount()
+  {
+	  return favoredPicks;
+  }
+  
+  public int getFavoredDotCount()
+  {
+	  return 0;
+  }
+  
+  public int getExtraDotCount()
+  {
+	  return extraDots;
   }
 
   public int[] getCounts() {
@@ -56,4 +80,10 @@ public class AttributeCreationPoints extends ReflectionCloneableObject<IAttribut
   public AttributeCreationPoints clone() {
     return (AttributeCreationPoints) super.clone();
   }
+
+	@Override
+	public int getDefaultDotCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}	
 }

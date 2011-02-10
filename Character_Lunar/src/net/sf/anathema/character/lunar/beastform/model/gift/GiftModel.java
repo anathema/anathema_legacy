@@ -3,6 +3,8 @@ package net.sf.anathema.character.lunar.beastform.model.gift;
 import java.util.ArrayList;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.quality.model.AbstractQualityModel;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
@@ -16,13 +18,17 @@ public class GiftModel extends AbstractQualityModel<IGift> implements IGiftModel
   private final ChangeControl overviewControl = new ChangeControl();
   private int picks = 0;
 
-  public GiftModel(ICharacterModelContext context, IBeastformModel model) {
+  public GiftModel(final ICharacterModelContext context, IBeastformModel model) {
     super(context);
-    this.allGifts = GiftProvider.getAllGifts();
+    this.allGifts = GiftProvider.getAllGifts(context.getBasicCharacterContext().getRuleSet().getEdition());
     model.addCharmLearnCountChangedListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
-        GiftModel.this.picks = newValue == 0 ? 0 : 2 + newValue - 1;
-        overviewControl.fireChangedEvent();
+    	  if (context.getBasicCharacterContext().getRuleSet().getEdition() == ExaltedEdition.FirstEdition)
+    		  GiftModel.this.picks = newValue == 0 ? 0 : 2 + newValue - 1;
+    	  else
+    		  GiftModel.this.picks = newValue == 0 ? 0 : 4 + context.getTraitCollection().
+    				  getTrait(OtherTraitType.Essence).getCurrentValue();
+          overviewControl.fireChangedEvent();
       }
     });
   }
@@ -32,11 +38,19 @@ public class GiftModel extends AbstractQualityModel<IGift> implements IGiftModel
     if (quality == null) {
       return false;
     }
-    if (getSelectedQualities().length >= picks) {
+    if (getGroupCost(getSelectedQualities()) >= picks) {
       return false;
     }
     boolean prerequisitesFulfilled = quality.prerequisitesFulfilled(getSelectedQualities());
     return super.isSelectable(quality) && prerequisitesFulfilled;
+  }
+  
+  private int getGroupCost(IQualitySelection<IGift>[] selection)
+  {
+	  int total = 0;
+	  for (IQualitySelection<IGift> item : selection)
+		  total += item.getPointValue();
+	  return total;
   }
 
   public IGift[] getAvailableQualities() {
@@ -48,6 +62,11 @@ public class GiftModel extends AbstractQualityModel<IGift> implements IGiftModel
       availableGifts.add(gift);
     }
     return availableGifts.toArray(new IGift[availableGifts.size()]);
+  }
+  
+  public int getSpentPicks()
+  {
+	  return getGroupCost(getSelectedQualities());
   }
 
   public int getAllowedPicks() {

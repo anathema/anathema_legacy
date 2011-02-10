@@ -21,6 +21,11 @@ public abstract class AbstractSecondEditionExaltPdfPartEncoder extends AbstractS
   public boolean hasSecondPage() {
     return true;
   }
+  
+  protected int getEssenceMax()
+  {
+	return essenceMax;
+  }
 
   protected int getFontSize() {
     return FONT_SIZE;

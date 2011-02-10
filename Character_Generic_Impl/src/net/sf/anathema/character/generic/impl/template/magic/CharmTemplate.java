@@ -11,12 +11,14 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
+import net.sf.anathema.character.generic.template.magic.IUniqueRequiredCharmType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class CharmTemplate implements ICharmTemplate {
 
   private final ICharmSet charmSet;
   private final List<String> alienAllowedCastes = new ArrayList<String>();
+  private final IUniqueRequiredCharmType uniqueRequiredCharmType;
   private final IMartialArtsRules martialArtsRules;
 
   public CharmTemplate(
@@ -29,14 +31,24 @@ public class CharmTemplate implements ICharmTemplate {
         characterType,
         edition));
   }
-
+  
   public CharmTemplate(IMartialArtsRules rules, ICharmSet charmSet) {
+	    this(rules, charmSet, null);
+	  }
+
+  public CharmTemplate(IMartialArtsRules rules, ICharmSet charmSet, IUniqueRequiredCharmType special) {
     this.martialArtsRules = rules;
     this.charmSet = charmSet;
+    this.uniqueRequiredCharmType = special;
   }
 
   public final ICharm[] getCharms(IExaltedRuleSet rules) {
     return charmSet.getCharms(rules);
+  }
+  
+  public final IUniqueRequiredCharmType getUniqueRequiredCharmType()
+  {
+	  return uniqueRequiredCharmType;
   }
 
   public final ICharm[] getMartialArtsCharms(IExaltedRuleSet rules) {

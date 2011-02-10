@@ -110,5 +110,6 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
      </charm>
 </charmlist>

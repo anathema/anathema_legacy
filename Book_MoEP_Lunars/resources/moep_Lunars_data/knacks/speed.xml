@@ -30,9 +30,10 @@
                <essence value="2" />
           </prerequisite>
           <cost />
-          <!-- duration />
-                        <charmType /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLernable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.LightningChangeStyle" exalt="Lunar" group="Speed">
@@ -42,9 +43,10 @@
                <charmReference id="Lunar.QuicksilverSecondFace" />
           </prerequisite>
           <cost />
-          <!-- duration />
-                                <charmType /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLernable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.ConstantQuicksilverRearrangement" exalt="Lunar" group="Speed">
@@ -54,9 +56,10 @@
                <charmReference id="Lunar.LightningChangeStyle" />
           </prerequisite>
           <cost />
-          <!-- duration />
-                                        <charmType /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLernable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
 </charmlist>

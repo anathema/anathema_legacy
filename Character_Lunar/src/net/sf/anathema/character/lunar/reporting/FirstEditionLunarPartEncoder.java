@@ -17,7 +17,7 @@ public class FirstEditionLunarPartEncoder extends AbstractFirstEditionExaltPdfPa
   }
 
   public IPdfContentBoxEncoder getGreatCurseEncoder() {
-    return new LunarGreatCurseEncoder(getBaseFont(), getSymbolBaseFont(), getResources());
+    return new FirstEditionLunarGreatCurseEncoder(getBaseFont(), getSymbolBaseFont(), getResources());
   }
 
   @Override
@@ -27,7 +27,7 @@ public class FirstEditionLunarPartEncoder extends AbstractFirstEditionExaltPdfPa
 
   @Override
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[] { new LunarBeastformPageEncoder(
+    return new IPdfPageEncoder[] { new FirstEditionLunarBeastformPageEncoder(
         this,
         registry,
         getResources(),

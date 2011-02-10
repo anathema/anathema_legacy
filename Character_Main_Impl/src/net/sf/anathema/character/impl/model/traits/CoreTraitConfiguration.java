@@ -24,7 +24,6 @@ import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
-import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
@@ -67,7 +66,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addTrait(traitFactory.createTrait(OtherTraitType.Essence));
     addTraits(traitFactory.createTraits(VirtueType.values()));
     addTrait(traitFactory.createTrait(OtherTraitType.Willpower));
-    addAttributes();
+    addAttributes(template);
     IDefaultTrait willpower = TraitCollectionUtilities.getWillpower(this);
     IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(this);
     if (template.getAdditionalRules().getAdditionalTraitRules().isWillpowerVirtueBased()) {
@@ -85,8 +84,9 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, modelContext);
   }
 
-  private void addAttributes() {
-    GrumpyIncrementChecker incrementChecker = new GrumpyIncrementChecker();
+  private void addAttributes(ICharacterTemplate template) {
+    //GrumpyIncrementChecker incrementChecker = new GrumpyIncrementChecker();
+	IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredAttributeIncrementChecker(template, this);
     addFavorableTraits(attributeTraitGroups, incrementChecker);
   }
 

@@ -24,12 +24,16 @@ public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryV
       Icon icon,
       String animalFormString,
       String animalStrengthString,
-      String animalStaminaString) {
+      String animalDexterityString,
+      String animalStaminaString,
+      String animalAppearanceString) {
     AnimalFormSelectionView view = new AnimalFormSelectionView(
         icon,
         animalFormString,
         animalStrengthString,
-        animalStaminaString);
+        animalDexterityString,
+        animalStaminaString,
+        animalAppearanceString);
     content.add(view.getComponent());
     return view;
   }

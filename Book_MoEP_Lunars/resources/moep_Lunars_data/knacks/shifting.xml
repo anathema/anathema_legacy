@@ -30,9 +30,10 @@
                <essence value="2" />
           </prerequisite>
           <cost />
-          <!--duration />
-          <charmtype /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.EmeraldGrasshopperForm" exalt="Lunar" group="Shifting">
@@ -42,9 +43,10 @@
                <charmReference id="Lunar.HumbleMouseShape" />
           </prerequisite>
           <cost />
-          <!--duration />
-          <charmtype /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.ToweringBeastForm" exalt="Lunar" group="Shifting">
@@ -53,9 +55,10 @@
                <essence value="2" />
           </prerequisite>
           <cost />
-          <!--duration />
-          <charmtype /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.MountainousSpiritExpression" exalt="Lunar" group="Shifting">
@@ -64,9 +67,10 @@
                <essence value="3" />
           </prerequisite>
           <cost />
-          <!-- duration />
-                        <charmType /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLernable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
 </charmlist>

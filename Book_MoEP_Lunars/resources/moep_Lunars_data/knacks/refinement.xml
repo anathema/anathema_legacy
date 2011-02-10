@@ -30,9 +30,10 @@
                <essence value="3" />
           </prerequisite>
           <cost />
-          <!-- duration />
-                        <charmType /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLernable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
 			<source source="ScrollErrata" />
      </charm>
@@ -43,9 +44,10 @@
                <charmReference id="Lunar.HybridBodyRearrangement" />
           </prerequisite>
           <cost />
-          <!-- duration />
-                                <charmType /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLernable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.ChangingPlumageMastery" exalt="Lunar" group="Refinement">
@@ -54,8 +56,8 @@
                <essence value="2" />
           </prerequisite>
           <cost />
-          <!-- duration />
-                                        <charmType /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLernable" />
           <source source="Lunars2nd" />
      </charm>
@@ -65,20 +67,22 @@
                <essence value="2" />
           </prerequisite>
           <cost />
-          <!-- duration />
-                                                <charmType /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLernable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.SubtleSilverDeclration" exalt="Lunar" group="Refinement">
+     <charm id="Lunar.SubtleSilverDeclaration" exalt="Lunar" group="Refinement">
           <prerequisite>
                <trait id="Appearance" value="3" />
                <essence value="2" />
           </prerequisite>
           <cost />
-          <!-- duration />
-                                                        <charmType /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLernable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.TwinFacedHero" exalt="Lunar" group="Refinement">
@@ -87,9 +91,10 @@
                <essence value="2" />
           </prerequisite>
           <cost />
-          <!-- duration />
-                                                                <charmType /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLernable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
 </charmlist>

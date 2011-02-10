@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
@@ -26,7 +27,7 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
-public class BeastformModel extends AbstractAdditionalModelAdapter implements IBeastformModel {
+public class FirstEditionBeastformModel extends AbstractAdditionalModelAdapter implements IBeastformModel {
   private final ICharacterModelContext context;
   private final IntValueControl charmLearnControl = new IntValueControl();
   private final IBeastformGroupCost cost;
@@ -35,7 +36,7 @@ public class BeastformModel extends AbstractAdditionalModelAdapter implements IB
   private final BeastformGenericTraitCollection allTraitsCollection;
   private final IEquipmentPrintModel equipmentModel;
 
-  public BeastformModel(ICharacterModelContext context) {
+  public FirstEditionBeastformModel(ICharacterModelContext context) {
     this.context = context;
     this.giftModel = new GiftModel(context, this);
     this.collection = new BeastformTraitCollection();
@@ -52,7 +53,7 @@ public class BeastformModel extends AbstractAdditionalModelAdapter implements IB
     });
     update();
   }
-
+  
   public IEquipmentPrintModel getEquipmentModel() {
     return equipmentModel;
   }
@@ -61,16 +62,19 @@ public class BeastformModel extends AbstractAdditionalModelAdapter implements IB
     List<IBeastformAttribute> attributes = new ArrayList<IBeastformAttribute>();
     ITraitContext traitContext = context.getTraitContext();
     attributes.add(new BeastformAttribute(
+    	ExaltedEdition.FirstEdition,
         context.getTraitCollection().getTrait(AttributeType.Strength),
         traitContext,
         1,
         cost));
     attributes.add(new BeastformAttribute(
+    	ExaltedEdition.FirstEdition,
         context.getTraitCollection().getTrait(AttributeType.Dexterity),
         traitContext,
         2,
         cost));
     attributes.add(new BeastformAttribute(
+    	ExaltedEdition.FirstEdition,
         context.getTraitCollection().getTrait(AttributeType.Stamina),
         traitContext,
         1,

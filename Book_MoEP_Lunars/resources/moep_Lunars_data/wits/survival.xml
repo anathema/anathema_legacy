@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Survival Charms -->
-     <charm id="Lunar.LodestoneReckoningManner" exalt="Lunar" group="Survival">
+     <charm id="Lunar.LodestoneReckoningManner" exalt="Lunar" group="SurvivalCharms">
           <prerequisite>
                <trait id="Wits" value="2" />
                <essence value="1" />
@@ -37,7 +37,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.BloodOnTheWindWit" exalt="Lunar" group="Survival">
+     <charm id="Lunar.BloodOnTheWindWit" exalt="Lunar" group="SurvivalCharms">
 	          <prerequisite>
                <trait id="Wits" value="3" />
                <essence value="3" />
@@ -53,7 +53,7 @@
 			<!-- NOTE:  Lunar/Perception "Mirror" - Blood on the Wind -->
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.PredatorAndPreyRecognition" exalt="Lunar" group="Survival">
+     <charm id="Lunar.PredatorAndPreyRecognition" exalt="Lunar" group="SurvivalCharms">
           <prerequisite>
                <trait id="Wits" value="3" />
                <essence value="3" />

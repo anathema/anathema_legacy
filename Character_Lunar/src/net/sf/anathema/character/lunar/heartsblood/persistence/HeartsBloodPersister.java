@@ -16,6 +16,8 @@ public class HeartsBloodPersister implements IAdditionalPersister {
   private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
   private static final String ATTRIB_STRENGTH_VALUE = "animalStrength"; //$NON-NLS-1$
   private static final String ATTRIB_STAMINA_VALUE = "animalStamina"; //$NON-NLS-1$
+  private static final String ATTRIB_DEXTERITY_VALUE = "animalDexterity"; //$NON-NLS-1$
+  private static final String ATTRIB_APPEARANCE_VALUE = "animalAppearance"; //$NON-NLS-1$
 
   public void save(Element parent, IAdditionalModel model) {
     Element element = parent.addElement(TAG_HEARTS_BLOOD);
@@ -30,6 +32,10 @@ public class HeartsBloodPersister implements IAdditionalPersister {
     animalFormElement.addAttribute(ATTRIB_NAME, form.getName());
     ElementUtilities.addAttribute(animalFormElement, ATTRIB_STRENGTH_VALUE, form.getStrength());
     ElementUtilities.addAttribute(animalFormElement, ATTRIB_STAMINA_VALUE, form.getStamina());
+    if (form.getDexterity() > 0)
+    	ElementUtilities.addAttribute(animalFormElement, ATTRIB_DEXTERITY_VALUE, form.getDexterity());
+    if (form.getAppearance() > 0)
+    	ElementUtilities.addAttribute(animalFormElement, ATTRIB_APPEARANCE_VALUE, form.getAppearance());
   }
 
   public void load(Element parent, IAdditionalModel model) throws PersistenceException {
@@ -39,9 +45,13 @@ public class HeartsBloodPersister implements IAdditionalPersister {
       String name = ElementUtilities.getRequiredAttrib(formElement, ATTRIB_NAME);
       int strength = ElementUtilities.getRequiredIntAttrib(formElement, ATTRIB_STRENGTH_VALUE);
       int stamina = ElementUtilities.getRequiredIntAttrib(formElement, ATTRIB_STAMINA_VALUE);
+      int dexterity = ElementUtilities.getIntAttrib(formElement, ATTRIB_DEXTERITY_VALUE, 0);
+      int appearance = ElementUtilities.getIntAttrib(formElement, ATTRIB_APPEARANCE_VALUE, 0);
       heartsBloodModel.setCurrentName(name);
       heartsBloodModel.setCurrentStrength(strength);
       heartsBloodModel.setCurrentStamina(stamina);
+      heartsBloodModel.setCurrentDexterity(dexterity);
+      heartsBloodModel.setCurrentAppearance(appearance);
       heartsBloodModel.commitSelection();
     }
   }

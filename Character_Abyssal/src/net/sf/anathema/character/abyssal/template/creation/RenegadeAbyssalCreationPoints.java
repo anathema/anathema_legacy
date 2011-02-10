@@ -1,9 +1,9 @@
 package net.sf.anathema.character.abyssal.template.creation;
 
-import net.sf.anathema.character.generic.impl.template.points.FavorableTraitCreationPoints;
+import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.AbstractCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
-import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 
 public class RenegadeAbyssalCreationPoints extends AbstractCreationPoints {
@@ -24,8 +24,8 @@ public class RenegadeAbyssalCreationPoints extends AbstractCreationPoints {
     return 0;
   }
 
-  public final IFavorableTraitCreationPoints getAbilityCreationPoints() {
-    return new FavorableTraitCreationPoints(5, 10, 15);
+  public final IAbilityCreationPoints getAbilityCreationPoints() {
+    return new AbilityCreationPoints(5, 10, 15);
   }
 
   public final int getDefaultCreationCharmCount() {
@@ -34,5 +34,10 @@ public class RenegadeAbyssalCreationPoints extends AbstractCreationPoints {
 
   public final int getFavoredCreationCharmCount() {
     return 5;
+  }
+  
+  public int getUniqueRequiredCreationCharmCount()
+  {
+	return 0;
   }
 }

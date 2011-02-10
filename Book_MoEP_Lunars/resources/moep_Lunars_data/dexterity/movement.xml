@@ -46,7 +46,7 @@
                <charmAttributeRequirement attribute="ExcellencyDexterity" count="1" />
           </prerequisite>
           <cost>
-               <essence text="4m+" />
+               <essence cost="" text="4m+" />
           </cost>
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />

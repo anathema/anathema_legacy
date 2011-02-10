@@ -1,0 +1,33 @@
+<exaltedCharacterTemplate characterType="Lunar" subtemplate="Casteless" casteless="true">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template" />
+    <attributeGroups uses="template/LunarAttributeGroup.template"/>
+    <essence uses="template/LunarEssence.template" />
+    <traitCollection uses="template/LunarTraitCollection2ndCasteless.template"/>
+    <magicTemplate uses="template/LunarMagic2nd.template"/>
+    <presentation uses="template/LunarPresentation.template"/>
+    <additionalTemplates>
+      <template id="Lunar.DeadlyBeastmanTransformation.Template" />
+      <template id="Lunar.HeartsBlood.Template" />
+      <template id="Lunar.VirtueFlaw.Template" />
+    </additionalTemplates>
+    <healthTemplate>
+      <toughnessControllingTrait type="Stamina"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="template/LunarBonusPointCost.template" />
+    <creationPoints>
+      <attributeDots primary="8" secondary="6" tertiary="4" favoredPicks="2"/>
+      <abilityDots general="25" favored="0" favoredPicks="2" />
+      <backgroundDots count="7" />
+      <virtueDots count="5" />
+      <bonusPoints count="15" />
+      <charmPicks favored="4" general="4" unique="1"/>
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/LunarExperienceCost.template" />
+  </experience>
+</exaltedCharacterTemplate>

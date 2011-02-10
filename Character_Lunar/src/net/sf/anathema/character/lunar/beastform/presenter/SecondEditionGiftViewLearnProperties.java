@@ -18,21 +18,21 @@ import net.sf.anathema.character.lunar.beastform.view.IGiftLearnViewProperties;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 
-public class GiftViewLearnProperties extends AbstractMagicLearnProperties implements IGiftLearnViewProperties {
+public class SecondEditionGiftViewLearnProperties extends AbstractMagicLearnProperties implements IGiftLearnViewProperties {
 
   private final IGiftModel model;
 
-  public GiftViewLearnProperties(IResources resources, IGiftModel model) {
+  public SecondEditionGiftViewLearnProperties(IResources resources, IGiftModel model) {
     super(resources);
     this.model = model;
   }
 
   public String getAddButtonToolTip() {
-    return getResources().getString("Lunar.DeadlyBeastmanTransformation.Gifts.AddTooltip"); //$NON-NLS-1$
+    return getResources().getString("Lunar.DeadlyBeastmanTransformation.Gifts.AddTooltip_2nd"); //$NON-NLS-1$
   }
 
   public String getRemoveButtonToolTip() {
-    return getResources().getString("Lunar.DeadlyBeastmanTransformation.Gifts.RemoveTooltip"); //$NON-NLS-1$
+    return getResources().getString("Lunar.DeadlyBeastmanTransformation.Gifts.RemoveTooltip_2nd"); //$NON-NLS-1$
   }
 
   public ListCellRenderer getAvailableMagicRenderer() {

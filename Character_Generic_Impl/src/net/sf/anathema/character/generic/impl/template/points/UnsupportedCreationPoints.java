@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.template.points;
 
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
-import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 
 public class UnsupportedCreationPoints implements ICreationPoints {
@@ -18,7 +18,7 @@ public class UnsupportedCreationPoints implements ICreationPoints {
     throw new UnsupportedOperationException("Not supported."); //$NON-NLS-1$
   }
 
-  public IFavorableTraitCreationPoints getAbilityCreationPoints() {
+  public IAbilityCreationPoints getAbilityCreationPoints() {
     throw new UnsupportedOperationException("Not supported."); //$NON-NLS-1$
   }
 
@@ -37,4 +37,8 @@ public class UnsupportedCreationPoints implements ICreationPoints {
   public int getDefaultCreationCharmCount() {
     throw new UnsupportedOperationException("Not supported."); //$NON-NLS-1$
   }
+  
+  public int getUniqueRequiredCreationCharmCount() {
+	    throw new UnsupportedOperationException("Not supported."); //$NON-NLS-1$
+	  }
 }

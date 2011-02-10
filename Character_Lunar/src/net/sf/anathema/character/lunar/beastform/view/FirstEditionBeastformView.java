@@ -19,7 +19,7 @@ import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
 import net.sf.anathema.framework.value.IIntValueView;
 
-public class BeastformView implements IBeastformView {
+public class FirstEditionBeastformView implements IBeastformView {
 
   private final JPanel charmValuePanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel attributePanel = new JPanel(new GridDialogLayout(2, false));
@@ -29,24 +29,24 @@ public class BeastformView implements IBeastformView {
   private final JPanel overviewPanel = new JPanel();
   private final IBeastformViewProperties properties;
 
-  public BeastformView(MarkerIntValueDisplayFactory intValueDisplayFactory, IBeastformViewProperties properties) {
+  public FirstEditionBeastformView(MarkerIntValueDisplayFactory intValueDisplayFactory, IBeastformViewProperties properties) {
     this.intValueDisplayFactory = intValueDisplayFactory;
     this.properties = properties;
   }
 
   public JComponent getComponent() {
-    charmValuePanel.setBorder(new TitledBorder(properties.getCharmString()));
-    content.add(charmValuePanel);
-    content.add(new EndOfLineMarkerComponent());
-    attributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
-    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalSpanData(2);
-    data.setHorizontalAlignment(GridAlignment.FILL);
-    content.add(attributePanel, data);
-    content.add(new EndOfLineMarkerComponent());
-    giftPanel.setBorder(new TitledBorder(properties.getGiftsString()));
-    content.add(giftPanel);
-    content.add(overviewPanel, GridDialogLayoutDataUtilities.createTopData());
-    return content;
+	  charmValuePanel.setBorder(new TitledBorder(properties.getCharmString()));
+      content.add(charmValuePanel);
+      content.add(new EndOfLineMarkerComponent());
+	  attributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
+	  GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalSpanData(2);
+	  data.setHorizontalAlignment(GridAlignment.FILL);
+	  content.add(attributePanel, data);
+	  content.add(new EndOfLineMarkerComponent());
+	  giftPanel.setBorder(new TitledBorder(properties.getGiftsString()));
+	  content.add(giftPanel);
+	  content.add(overviewPanel, GridDialogLayoutDataUtilities.createTopData());
+	  return content;
   }
 
   public IIntValueView addCharmValueView(String label, int value, int maxValue) {
@@ -79,6 +79,6 @@ public class BeastformView implements IBeastformView {
   }
 
   public IBeastformOverviewView addOverviewView(IBeastformOverviewViewProperties overviewProperties) {
-    return new BeastformOverviewView(overviewPanel, overviewProperties);
+    return new FirstEditionBeastformOverviewView(overviewPanel, overviewProperties);
   }
 }

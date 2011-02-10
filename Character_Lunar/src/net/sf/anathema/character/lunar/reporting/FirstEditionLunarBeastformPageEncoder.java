@@ -26,7 +26,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class LunarBeastformPageEncoder implements IPdfPageEncoder {
+public class FirstEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
   public static final int CONTENT_HEIGHT = 755;
   private final IResources resources;
   private final int essenceMax;
@@ -39,7 +39,7 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
   private final PdfEncodingRegistry registry;
   private final IPdfPartEncoder partEncoder;
 
-  public LunarBeastformPageEncoder(
+  public FirstEditionLunarBeastformPageEncoder(
       IPdfPartEncoder partEncoder,
       PdfEncodingRegistry registry,
       IResources resources,
@@ -86,7 +86,7 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
     distanceFromTop += calculateBoxIncrement(armourHeight);
     float healthHeight = encodeMovementAndHealth(directContent, character, distanceFromTop, 99);
     distanceFromTop += calculateBoxIncrement(healthHeight);
-    float remainingHeight = LunarBeastformPageEncoder.CONTENT_HEIGHT - distanceFromTop;
+    float remainingHeight = FirstEditionLunarBeastformPageEncoder.CONTENT_HEIGHT - distanceFromTop;
     encodeCombatStats(directContent, character, distanceFromTop, remainingHeight);
     encodeAbilities(directContent, character, abilityStartHeight, (int) remainingHeight + PADDING);
     encodeGifts(directContent, character, distanceFromTop, remainingHeight);

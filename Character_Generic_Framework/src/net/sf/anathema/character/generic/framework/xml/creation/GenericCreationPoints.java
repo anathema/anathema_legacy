@@ -2,24 +2,25 @@ package net.sf.anathema.character.generic.framework.xml.creation;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
-import net.sf.anathema.character.generic.impl.template.points.FavorableTraitCreationPoints;
+import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
+import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
-import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericCreationPoints extends ReflectionCloneableObject<GenericCreationPoints> implements ICreationPoints {
 
-  private IFavorableTraitCreationPoints abilityCreationPoints = new FavorableTraitCreationPoints(0, 0, 0);
+  private IAbilityCreationPoints abilityCreationPoints = new AbilityCreationPoints(0, 0, 0);
   private IAttributeCreationPoints attributeCreationPoints = new AttributeCreationPoints(0, 0, 0);
   private int backgroundPointCount = 0;
   private int bonusPointCount = 0;
   private int defaultCreationCharmCount = 0;
   private int favoredCreationCharmCount = 0;
+  private int uniqueCreationCharmCount = 0;
   private int virtueCreationPoints = 0;
   private int specialityCreationPoints = 0;
 
-  public IFavorableTraitCreationPoints getAbilityCreationPoints() {
+  public IAbilityCreationPoints getAbilityCreationPoints() {
     return abilityCreationPoints;
   }
 
@@ -42,6 +43,11 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
   public int getFavoredCreationCharmCount() {
     return favoredCreationCharmCount;
   }
+  
+  public int getUniqueRequiredCreationCharmCount()
+  {
+	  return uniqueCreationCharmCount;
+  }
 
   public int getVirtueCreationPoints() {
     return virtueCreationPoints;
@@ -51,7 +57,7 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
 	    return specialityCreationPoints;
 	  }
 
-  public void setAbilityCreationPoints(IFavorableTraitCreationPoints abiltyCreationPoints) {
+  public void setAbilityCreationPoints(IAbilityCreationPoints abiltyCreationPoints) {
     Ensure.ensureNotNull(abiltyCreationPoints);
     this.abilityCreationPoints = abiltyCreationPoints;
   }
@@ -79,6 +85,12 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
   public void setFavoredCreationCharmCount(int charmCount) {
     Ensure.ensureArgumentTrue("Favored charm count must be positive.", charmCount >= 0); //$NON-NLS-1$
     this.favoredCreationCharmCount = charmCount;
+  }
+  
+  public void setUniqueCreationCharmCount(int charmCount)
+  {
+	  Ensure.ensureArgumentTrue("Unique charm count must be positive.", charmCount >= 0); //$NON-NLS-1$
+	  this.uniqueCreationCharmCount = charmCount;  
   }
 
   public void setVirtueCreationPoints(int virtueCreationPoints) {

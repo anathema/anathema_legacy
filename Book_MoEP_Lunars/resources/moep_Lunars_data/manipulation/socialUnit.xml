@@ -43,7 +43,7 @@
           <charmAttribute attribute="Mandate" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.FeedTheBearProgression" exalt="Lunar" group="SocialUnit">
+     <charm id="Lunar.FeedingTheBearProgression" exalt="Lunar" group="SocialUnit">
           <prerequisite>
                <trait id="Manipulation" value="4" />
                <essence value="2" />

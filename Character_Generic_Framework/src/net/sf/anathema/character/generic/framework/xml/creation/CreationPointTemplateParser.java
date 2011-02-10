@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.creation;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
-import net.sf.anathema.character.generic.impl.template.points.FavorableTraitCreationPoints;
+import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -13,7 +13,9 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
 
   private static final String ATTRIB_COUNT = "count"; //$NON-NLS-1$
   private static final String ATTRIB_FAVORED = "favored"; //$NON-NLS-1$
-  private static final String ATTRIB_FAVORED_PICKS = "favoredPicks"; //$NON-NLS-1$  
+  private static final String ATTRIB_FAVORED_PICKS = "favoredPicks"; //$NON-NLS-1$
+  private static final String ATTRIB_FAVORED_DOTS = "favoredDots"; //$NON-NLS-1$
+  private static final String ATTRIB_UNIQUE = "unique"; //$NON-NLS-1$
   private static final String ATTRIB_GENERAL = "general"; //$NON-NLS-1$
   private static final String ATTRIB_PRIMARY = "primary"; //$NON-NLS-1$
   private static final String ATTRIB_SECONDARY = "secondary"; //$NON-NLS-1$
@@ -62,7 +64,7 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
     int generalDots = ElementUtilities.getIntAttrib(element, ATTRIB_GENERAL, 0);
     int favoredDots = ElementUtilities.getIntAttrib(element, ATTRIB_FAVORED, 0);
     int favoredPicks = ElementUtilities.getIntAttrib(element, ATTRIB_FAVORED_PICKS, 0);
-    creationPoints.setAbilityCreationPoints(new FavorableTraitCreationPoints(favoredPicks, favoredDots, generalDots));
+    creationPoints.setAbilityCreationPoints(new AbilityCreationPoints(favoredPicks, favoredDots, generalDots));
   }
 
   private void parseAttributeCreationPoints(Element element, GenericCreationPoints creationPoints)
@@ -73,7 +75,10 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
     int primaryDots = ElementUtilities.getIntAttrib(element, ATTRIB_PRIMARY, 0);
     int secondaryDots = ElementUtilities.getIntAttrib(element, ATTRIB_SECONDARY, 0);
     int tertiaryDots = ElementUtilities.getIntAttrib(element, ATTRIB_TERTIARY, 0);
-    creationPoints.setAttributeCreationPoints(new AttributeCreationPoints(primaryDots, secondaryDots, tertiaryDots));
+    int favoredPicks = ElementUtilities.getIntAttrib(element, ATTRIB_FAVORED_PICKS, 0);
+    int favoredDots = ElementUtilities.getIntAttrib(element, ATTRIB_FAVORED_DOTS, 0);
+    creationPoints.setAttributeCreationPoints(new AttributeCreationPoints(primaryDots, secondaryDots, tertiaryDots,
+    		favoredPicks, favoredDots));
   }
 
   private int getCountAttribute(Element element) throws PersistenceException {
@@ -87,8 +92,10 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
     }
     int generalPicks = ElementUtilities.getIntAttrib(element, ATTRIB_GENERAL, 0);
     int favoredPicks = ElementUtilities.getIntAttrib(element, ATTRIB_FAVORED, 0);
+    int uniquePicks = ElementUtilities.getIntAttrib(element, ATTRIB_UNIQUE, 0);
     creationPoints.setGeneralCreationCharmCount(generalPicks);
     creationPoints.setFavoredCreationCharmCount(favoredPicks);
+    creationPoints.setUniqueCreationCharmCount(uniquePicks);
   }
 
   @Override

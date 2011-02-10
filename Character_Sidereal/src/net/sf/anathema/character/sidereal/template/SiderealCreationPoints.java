@@ -2,7 +2,8 @@ package net.sf.anathema.character.sidereal.template;
 
 import net.sf.anathema.character.generic.impl.template.points.AbstractCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
-import net.sf.anathema.character.generic.impl.template.points.FavorableTraitCreationPoints;
+import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
+import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 
@@ -20,8 +21,8 @@ public class SiderealCreationPoints extends AbstractCreationPoints {
     return 0;
   }
 
-  public IFavorableTraitCreationPoints getAbilityCreationPoints() {
-    return new FavorableTraitCreationPoints(4, 10, 25);
+  public IAbilityCreationPoints getAbilityCreationPoints() {
+    return new AbilityCreationPoints(4, 10, 25);
   }
 
   public IAttributeCreationPoints getAttributeCreationPoints() {
@@ -35,8 +36,12 @@ public class SiderealCreationPoints extends AbstractCreationPoints {
   public int getDefaultCreationCharmCount() {
     return 7;
   }
+  
+  public int getUniqueRequiredCreationCharmCount() {
+	    return 0;
+	  }
 
   public IFavorableTraitCreationPoints getCollegeCreationPoints() {
-    return new FavorableTraitCreationPoints(0, 4, 3);
+    return new AbilityCreationPoints(0, 4, 3);
   }
 }

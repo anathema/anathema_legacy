@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Defensive Charms -->
-     <charm id="Lunar.SecureCatStepping" exalt="Lunar" group="Defensive">
+     <charm id="Lunar.SecureCatStepping" exalt="Lunar" group="DefensiveCharm">
           <prerequisite>
                <trait id="Dexterity" value="3" />
                <essence value="1" />
@@ -39,7 +39,7 @@
           <charmAttribute attribute="Fury-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.FindingTheNeedlesEye" exalt="Lunar" group="Defensive">
+     <charm id="Lunar.FindingTheNeedlesEye" exalt="Lunar" group="DefensiveCharm">
           <prerequisite>
                <trait id="Dexterity" value="4" />
                <essence value="2" />
@@ -55,7 +55,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.GoldenTigerStance" exalt="Lunar" group="Defensive">
+     <charm id="Lunar.GoldenTigerStance" exalt="Lunar" group="DefensiveCharm">
           <prerequisite>
                <trait id="Dexterity" value="3" />
                <essence value="1" />
@@ -72,7 +72,7 @@
           <charmAttribute attribute="Fury-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.WarySwallowMethod" exalt="Lunar" group="Defensive">
+     <charm id="Lunar.WarySwallowMethod" exalt="Lunar" group="DefensiveCharm">
           <prerequisite>
                <trait id="Dexterity" value="3" />
                <essence value="2" />
@@ -88,7 +88,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.WindDancingMethod" exalt="Lunar" group="Defensive">
+     <charm id="Lunar.WindDancingMethod" exalt="Lunar" group="DefensiveCharm">
           <prerequisite>
                <trait id="Dexterity" value="4" />
                <essence value="2" />
@@ -105,7 +105,7 @@
           <charmAttribute attribute="Counterattack" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.FlowingBodyEvasion" exalt="Lunar" group="Defensive">
+     <charm id="Lunar.FlowingBodyEvasion" exalt="Lunar" group="DefensiveCharm">
 		<!-- TODO:  Coding - Has one of the "Four Flaws of Invulnerability" -->
           <prerequisite>
                <trait id="Dexterity" value="5" />

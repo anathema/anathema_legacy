@@ -12,9 +12,11 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
+import net.sf.anathema.character.generic.template.magic.IUniqueRequiredCharmType;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.character.impl.model.creation.bonus.IAdditionalMagicLearnPointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
@@ -37,6 +39,7 @@ public class MagicCostCalculator {
   protected int bonusPointsSpentForSpells;
   private final IAdditionalMagicLearnPointManagement magicPools;
   private final IMagicTemplate magicTemplate;
+  private final IUniqueRequiredCharmType uniqueType; 
 
   public MagicCostCalculator(
       IMagicTemplate magicTemplate,
@@ -58,6 +61,7 @@ public class MagicCostCalculator {
     this.bonusPools = bonusPools;
     this.magicPools = magicPools;
     this.analyzer = new CostAnalyzer(basicCharacter, traitCollection);
+    this.uniqueType = magicTemplate.getCharmTemplate().getUniqueRequiredCharmType();
   }
 
   public void calculateMagicCosts() {
@@ -174,7 +178,8 @@ public class MagicCostCalculator {
   }
 
   private void handleFavoredMagic(int bonusPointFactor, IMagic magic) {
-    if (canBuyFromFreePicks(magic) && favoredPicksSpent < favoredCreationCharmCount) {
+    if (canBuyFromFreePicks(magic) && favoredPicksSpent < favoredCreationCharmCount &&
+    	checkUniqueAsFavored(magic)) {
       favoredPicksSpent++;
     }
     else {
@@ -203,6 +208,17 @@ public class MagicCostCalculator {
       });
     }
   }
+  
+  private boolean checkUniqueAsFavored(IMagic magic)
+  {
+	  if (uniqueType == null || uniqueType.canCountAsFavored())
+		  return true;
+	  if (magic instanceof ICharm)
+		  for (ICharmAttribute attribute : ((ICharm)magic).getAttributes())
+			  if (attribute.getId().equals(uniqueType.getType()))
+				  return false;
+	  return true;
+  }
 
   public int getFavoredCharmPicksSpent() {
     return favoredPicksSpent;
@@ -210,6 +226,18 @@ public class MagicCostCalculator {
 
   public int getGeneralCharmPicksSpent() {
     return generalPicksSpent;
+  }
+  
+  public int getUniqueRequiredCharmTypePicksSpent()
+  {
+	  if (uniqueType == null)
+		  return 0;
+	  int specialCharms = 0;
+	  for (ICharm charm : charms.getLearnedCharms(false))
+		  for (ICharmAttribute attribute : charm.getAttributes())
+			  if (attribute.getId().equals(uniqueType.getType()))
+				  specialCharms++;
+	  return specialCharms;
   }
 
   public int getBonusPointsSpentForCharms() {

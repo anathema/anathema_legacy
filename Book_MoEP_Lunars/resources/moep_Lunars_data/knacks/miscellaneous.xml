@@ -24,15 +24,16 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Miscellaneous Knacks -->
- 	<charm id="Lunar.LurelsAndIvyTechinque" exalt="Lunar" group="Miscellaneous">
+ 	<charm id="Lunar.LaurelsAndIvyTechnique" exalt="Lunar" group="Miscellaneous">
 		<prerequisite>
 			<trait id="Perception" value="4" />
 			<essence value="4" />
 		</prerequisite>
 			<cost />
-			<!-- duration />
-			<charmType /-->
+            <duration duration="Instant"/>
+            <charmtype type="Reflexive"/>
 			<charmAttribute attribute="NotAlienLernable" />
+			<charmAttribute attribute="Knack"/>
 			<source source="Lunars2nd" />
 		</charm>
 		<charm id="Lunar.LifeOfTheHummingbird" exalt="Lunar" group="Miscellaneous">
@@ -41,9 +42,10 @@
 				<essence value="2" />
 			</prerequisite>
 				<cost />
-				<!-- duration />
-				<charmType /-->
+				<duration duration="Instant"/>
+          		<charmtype type="Reflexive"/>
 				<charmAttribute attribute="NotAlienLernable" />
+				<charmAttribute attribute="Knack"/>
 				<source source="Lunars2nd" />
 			</charm>
 			<charm id="Lunar.TasteOfLunasChampions" exalt="Lunar" group="Miscellaneous">
@@ -53,9 +55,10 @@
 					<charmReference id="Lunar.LifeOfTheHummingbird" />
 				</prerequisite>
 					<cost />
-					<!-- duration />
-					<charmType /-->
+				    <duration duration="Instant"/>
+          			<charmtype type="Reflexive"/>
 					<charmAttribute attribute="NotAlienLernable" />
+					<charmAttribute attribute="Knack"/>
 					<source source="Lunars2nd" />
 				</charm>
 </charmlist>

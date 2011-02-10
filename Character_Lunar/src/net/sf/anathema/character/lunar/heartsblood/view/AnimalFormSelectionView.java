@@ -20,24 +20,43 @@ import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView {
 
   private ITextView textField;
+  private IntegerSpinner strengthSpinner;
+  private IntegerSpinner dexteritySpinner;
   private IntegerSpinner staminaSpinner;
+  private IntegerSpinner appearanceSpinner;
   private String animalFormString;
   private String animalStrengthString;
+  private String animalDexterityString;
   private String animalStaminaString;
+  private String animalAppearanceString;
   private JButton button;
-  private IntegerSpinner strengthSpinner;
 
+  public AnimalFormSelectionView(
+	      Icon icon,
+	      String animalFormString,
+	      String animalStrengthString,
+	      String animalStaminaString)
+  {
+	  this(icon, animalFormString, animalStrengthString, null, animalStaminaString, null);
+  }
+  
   public AnimalFormSelectionView(
       Icon icon,
       String animalFormString,
       String animalStrengthString,
-      String animalStaminaString) {
+      String animalDexterityString,
+      String animalStaminaString,
+      String animalAppearanceString) {
     this.animalFormString = animalFormString;
     this.animalStrengthString = animalStrengthString;
+    this.animalDexterityString = animalDexterityString;
     this.animalStaminaString = animalStaminaString;
+    this.animalAppearanceString = animalAppearanceString;
     this.textField = new LineTextView(15);
     this.strengthSpinner = createIntegerSpinner();
+    this.dexteritySpinner = createIntegerSpinner();
     this.staminaSpinner = createIntegerSpinner();
+    this.appearanceSpinner = createIntegerSpinner();
     this.button = new JButton(null, icon);
     button.setPreferredSize(new Dimension(icon.getIconWidth() + 4, icon.getIconHeight() + 4));
   }
@@ -46,18 +65,31 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
     IntegerSpinner spinner = new IntegerSpinner(1);
     spinner.setMaximum(99);
     spinner.setMinimum(1);
-    spinner.setPreferredWidth(70);
+    spinner.setPreferredWidth(40);
     return spinner;
   }
 
   public JComponent getComponent() {
-    JPanel panel = new JPanel(new GridDialogLayout(7, false));
+	int width = 7;
+	if (animalDexterityString  != null) width += 2;
+	if (animalAppearanceString != null) width += 2;
+    JPanel panel = new JPanel(new GridDialogLayout(width, false));
     panel.add(new JLabel(animalFormString));
     panel.add(textField.getComponent());
     panel.add(new JLabel(animalStrengthString));
     panel.add(strengthSpinner.getComponent());
+    if (animalDexterityString != null)
+    {
+    	panel.add(new JLabel(animalDexterityString));
+        panel.add(dexteritySpinner.getComponent());	
+    }
     panel.add(new JLabel(animalStaminaString));
     panel.add(staminaSpinner.getComponent());
+    if (animalAppearanceString != null)
+    {
+    	panel.add(new JLabel(animalAppearanceString));
+        panel.add(appearanceSpinner.getComponent());	
+    }
     panel.add(button);
     return panel;
   }
@@ -73,6 +105,14 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
   public void addStrengthListener(IIntValueChangedListener listener) {
     strengthSpinner.addChangeListener(listener);
   }
+  
+  public void addDexterityListener(IIntValueChangedListener listener) {
+	    dexteritySpinner.addChangeListener(listener);
+	  }
+  
+  public void addAppearanceListener(IIntValueChangedListener listener) {
+	    appearanceSpinner.addChangeListener(listener);
+	  }
 
   public void addAddButtonListener(ActionListener listener) {
     button.addActionListener(listener);
@@ -93,4 +133,12 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
   public void setStrength(int value) {
     strengthSpinner.setValue(value);
   }
+  
+  public void setDexterity(int value) {
+	    dexteritySpinner.setValue(value);
+	  }
+  
+  public void setAppearance(int value) {
+	    appearanceSpinner.setValue(value);
+	  }
 }

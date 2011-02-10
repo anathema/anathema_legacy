@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Essence Charms -->
-     <charm id="Lunar.EyeOfTheCat" exalt="Lunar" group="Essence">
+     <charm id="Lunar.EyeOfTheCat" exalt="Lunar" group="EssenceCharm">
           <prerequisite>
                <trait id="Perception" value="4" />
                <essence value="2" />
@@ -39,7 +39,7 @@
           <charmAttribute attribute="Fury-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.DevilRestrainingGrip" exalt="Lunar" group="Essence">
+     <charm id="Lunar.DevilRestrainingGrip" exalt="Lunar" group="EssenceCharm">
           <prerequisite>
                <trait id="Perception" value="4" />
                <essence value="3" />
@@ -55,7 +55,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.GodCuttingEssence" exalt="Lunar" group="Essence">
+     <charm id="Lunar.GodCuttingEssence" exalt="Lunar" group="EssenceCharm">
           <prerequisite>
                <trait id="Perception" value="4" />
                <essence value="3" />
@@ -70,7 +70,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.SpiritMaimingEssenceAttack" exalt="Lunar" group="Essence">
+     <charm id="Lunar.SpiritMaimingEssenceAttack" exalt="Lunar" group="EssenceCharm">
           <prerequisite>
                <trait id="Perception" value="5" />
                <essence value="4" />
@@ -88,7 +88,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.InstinctiveEssencePrediction" exalt="Lunar" group="Essence">
+     <charm id="Lunar.InstinctiveEssencePrediction" exalt="Lunar" group="EssenceCharm">
           <prerequisite>
                <trait id="Perception" value="4" />
                <essence value="2" />
@@ -103,7 +103,7 @@
           <charmAttribute attribute="Fury-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.AllEncompassingSorcerersSight" exalt="Lunar" group="Essence">
+     <charm id="Lunar.AllEncompassingSorcerersSight" exalt="Lunar" group="EssenceCharm">
           <prerequisite>
                <trait id="Perception" value="5" />
                <essence value="3" />

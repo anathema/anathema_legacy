@@ -1,0 +1,18 @@
+<traitTemplates uses="trait/DefaultTraitCollection.template">
+  <attributes>
+    <defaultTrait startValue="1" lowerableState="Default">
+      <limitation type="Essence"/>
+      <minimum value="1"/>
+    </defaultTrait>
+  </attributes>
+  <abilities>
+		<defaultTrait startValue="0" lowerableState="Default">
+			<limitation type="Essence"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Survival" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="true">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+  </abilities>
+</traitTemplates>

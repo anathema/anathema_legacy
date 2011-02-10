@@ -9,6 +9,8 @@ public interface ICharmTemplate {
   public ICharm[] getCharms(IExaltedRuleSet rules);
 
   public ICharm[] getMartialArtsCharms(IExaltedRuleSet rules);
+  
+  public IUniqueRequiredCharmType getUniqueRequiredCharmType();
 
   public boolean knowsCharms(IExaltedRuleSet rules);
 

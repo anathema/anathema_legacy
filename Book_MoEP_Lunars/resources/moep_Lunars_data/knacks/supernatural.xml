@@ -30,9 +30,10 @@
                <essence value="4" />
           </prerequisite>
           <cost />
-          <!-- duration />
-          <charmtype / -->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
 			<source source="ScrollErrata" />
      </charm>
@@ -43,9 +44,10 @@
                <charmReference id="Lunar.GreenSunChild" />
           </prerequisite>
           <cost />
-          <!-- duration />
-          <charmtype / -->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.HearthAndFlameShell" exalt="Lunar" group="Supernatural">
@@ -54,9 +56,10 @@
                <essence value="4" />
           </prerequisite>
           <cost />
-          <!-- duration />
-          <charmtype /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.LunasHiddenFace" exalt="Lunar" group="Supernatural">
@@ -65,9 +68,10 @@
                <essence value="3" />
           </prerequisite>
           <cost />
-          <!-- duration />
-          <charmtype  / -->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
 </charmlist>

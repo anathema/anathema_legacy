@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Subdual Charms -->
-     <charm id="Lunar.SubduingTheHornedFoe" exalt="Lunar" group="Subdual">
+     <charm id="Lunar.SubduingTheHonoredFoe" exalt="Lunar" group="Subdual">
           <prerequisite>
                <trait id="Strength" value="2" />
                <essence value="1" />
@@ -42,7 +42,7 @@
           <prerequisite>
                <trait id="Strength" value="4" />
                <essence value="3" />
-               <charmReference id="Lunar.SubduingTheHornedFoe" />
+               <charmReference id="Lunar.SubduingTheHonoredFoe" />
           </prerequisite>
           <cost>
                <essence cost="6" />

@@ -29,9 +29,7 @@ public class CharacterTraitListening {
   }
 
   public void initListening() {
-    for (ITrait attribute : traitConfiguration.getTraits(AttributeType.values())) {
-      listening.addTraitListening(attribute);
-    }
+    initAttributeListening();
     initAbilityListening();
     initBackgroundListening();
     for (ITrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
@@ -81,5 +79,21 @@ public class CharacterTraitListening {
         }
       });
     }
+  }
+  
+  private void initAttributeListening()
+  {
+	  ITraitTypeGroup[] groups = traitConfiguration.getAttributeTypeGroups();
+	  ITraitType[] allAttributeTypes = TraitTypeGroup.getAllTraitTypes(groups);
+	  for (ITraitType traitType : allAttributeTypes)
+	  {
+	      IFavorableTrait attribute = traitConfiguration.getFavorableTrait(traitType);
+	      listening.addTraitListening(attribute);
+	      attribute.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
+	        public void favorableStateChanged(FavorableState state) {
+	          listening.fireCharacterChanged();
+	        }
+	      });
+	    }
   }
 }

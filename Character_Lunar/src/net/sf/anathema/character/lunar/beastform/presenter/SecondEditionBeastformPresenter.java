@@ -7,7 +7,6 @@ import net.sf.anathema.character.library.quality.presenter.IQualityModel;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.lunar.beastform.model.IAlotmentChangedListener;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGiftModel;
 import net.sf.anathema.character.lunar.beastform.view.IBeastformOverviewView;
@@ -15,14 +14,13 @@ import net.sf.anathema.character.lunar.beastform.view.IBeastformOverviewViewProp
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
-public class BeastformPresenter implements IPresenter {
+public class SecondEditionBeastformPresenter implements IPresenter {
 
   private final IResources resources;
   private final IBeastformView view;
@@ -30,7 +28,7 @@ public class BeastformPresenter implements IPresenter {
   private IBeastformOverviewView overView;
   private final LegalityColorProvider provider = new LegalityColorProvider();
 
-  public BeastformPresenter(IResources resources, IBeastformView view, IBeastformModel model) {
+  public SecondEditionBeastformPresenter(IResources resources, IBeastformView view, IBeastformModel model) {
     this.resources = resources;
     this.view = view;
     this.model = model;
@@ -38,15 +36,15 @@ public class BeastformPresenter implements IPresenter {
 
   public void initPresentation() {
     initOverviewPresentation();
-    initCharmValuePresentation();
     initAttributePresentation();
     initGiftPresentation();
   }
 
   private void initOverviewPresentation() {
-    overView = view.addOverviewView(new IBeastformOverviewViewProperties() {
+    overView = view.addOverviewView(new IBeastformOverviewViewProperties()
+    {	
       public String getGiftPicksString() {
-        return resources.getString("Lunar.DeadlyBeastmanTransformation.Gifts.Label"); //$NON-NLS-1$
+        return resources.getString("Lunar.DeadlyBeastmanTransformation.Gifts.Label_2nd"); //$NON-NLS-1$
       }
 
       public String getAttributeDotsString() {
@@ -61,7 +59,7 @@ public class BeastformPresenter implements IPresenter {
 
   private void initGiftPresentation() {
     final IGiftModel giftModel = model.getGiftModel();
-    final IMagicLearnView giftView = view.addGiftsView(new GiftViewLearnProperties(resources, giftModel));
+    final IMagicLearnView giftView = view.addGiftsView(new SecondEditionGiftViewLearnProperties(resources, giftModel));
 
     giftView.addMagicViewListener(new IMagicViewListener() {
       @SuppressWarnings("unchecked")
@@ -71,7 +69,7 @@ public class BeastformPresenter implements IPresenter {
 
       public void magicAdded(Object[] addedMagic) {
         IGift gift = (IGift) addedMagic[0];
-        IQualitySelection<IGift> selection = new QualitySelection<IGift>(gift, 1, !giftModel.isCharacterExperienced());
+        IQualitySelection<IGift> selection = new QualitySelection<IGift>(gift, gift.getCost(), !giftModel.isCharacterExperienced());
         giftModel.addQualitySelection(selection);
       }
     });
@@ -92,7 +90,7 @@ public class BeastformPresenter implements IPresenter {
 
   private void updateOverview() {
     ILabelledAlotmentView giftOverview = overView.getGiftOverview();
-    int giftSpent = model.getGiftModel().getSelectedQualities().length;
+    int giftSpent = model.getGiftModel().getSpentPicks();
     giftOverview.setValue(giftSpent);
     int giftTotal = model.getGiftModel().getAllowedPicks();
     giftOverview.setAlotment(giftTotal);
@@ -133,45 +131,6 @@ public class BeastformPresenter implements IPresenter {
           trait.getMaximalValue());
       new TraitPresenter(trait, traitView).initPresentation();
     }
-    model.getAttributeCostModel().addCostChangeListener(new IAlotmentChangedListener() {
-      public void totalChanged(int newValue) {
-        overView.getAttributeOverview().setAlotment(newValue);
-        setOverviewColor(newValue, model.getAttributeCostModel().getSpentDots(), overView.getAttributeOverview());
-      }
-
-      public void spentChanged(int newValue) {
-        overView.getAttributeOverview().setValue(newValue);
-        setOverviewColor(model.getAttributeCostModel().getTotalDots(), newValue, overView.getAttributeOverview());
-      }
-    });
-    overView.getAttributeOverview().setAlotment(model.getAttributeCostModel().getTotalDots());
-    overView.getAttributeOverview().setValue(model.getAttributeCostModel().getSpentDots());
-    setOverviewColor(
-        model.getAttributeCostModel().getTotalDots(),
-        model.getAttributeCostModel().getSpentDots(),
-        overView.getAttributeOverview());
-  }
-
-  private void initCharmValuePresentation() {
-    final IIntValueView charmView = view.addCharmValueView(
-        resources.getString("Lunar.DeadlyBeastmanTransformation.Value"), model.getCharmValue(), 7); //$NON-NLS-1$
-    charmView.addIntValueChangedListener(new IIntValueChangedListener() {
-      public void valueChanged(int newValue) {
-        model.setCharmLearnCount(newValue);
-      }
-    });
-    model.addCharmLearnCountChangedListener(new IIntValueChangedListener() {
-      public void valueChanged(int newValue) {
-        charmView.setValue(newValue);
-        int totalDots = model.getAttributeCostModel().getTotalDots();
-        int spentDots = model.getAttributeCostModel().getSpentDots();
-        setOverviewColor(totalDots, spentDots, overView.getAttributeOverview());
-        int totalPicks = model.getGiftModel().getAllowedPicks();
-        int spentPicks = model.getGiftModel().getSelectedQualities().length;
-        setOverviewColor(totalPicks, spentPicks, overView.getGiftOverview());
-
-      }
-    });
   }
 
   private void setOverviewColor(int total, int spent, ILabelledAlotmentView view) {

@@ -1,8 +1,10 @@
 package net.sf.anathema.character.lunar.beastform.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.library.trait.DefaultTrait;
@@ -21,6 +23,7 @@ public class BeastformAttribute implements IBeastformAttribute {
     return Math.min(calculatedMaximum, 30);
   }
 
+  private final IExaltedEdition edition;
   private final int pointCost;
   private final IGenericTrait baseTrait;
   private final IDefaultTrait beastmanTrait;
@@ -28,16 +31,21 @@ public class BeastformAttribute implements IBeastformAttribute {
 
   // TODO: Available dots limit max. value
   public BeastformAttribute(
+		  IExaltedEdition edition,
       final IGenericTrait baseTrait,
       ITraitContext context,
       final int pointCost,
       final IBeastformGroupCost cost) {
+	  this.edition = edition;
     ITraitTemplate template = SimpleTraitTemplate.createStaticLimitedTemplate(0, calculateMaxValue(pointCost));
     TraitRules traitRules = new TraitRules(baseTrait.getType(), template, context.getLimitationContext());
     IValueChangeChecker incrementChecker = new IValueChangeChecker() {
       public boolean isValidNewValue(int value) {
-        return value >= baseTrait.getCurrentValue()
-            && cost.getUnspentDots() >= pointCost * (value - additionalValue - baseTrait.getCurrentValue());
+    	  if (BeastformAttribute.this.edition == ExaltedEdition.FirstEdition)
+    		  return value >= baseTrait.getCurrentValue()
+    		  	&& cost.getUnspentDots() >= pointCost * (value - additionalValue - baseTrait.getCurrentValue());
+    	  else
+    		  return value == (baseTrait.getCurrentValue() + 1);
       }
     };
     this.beastmanTrait = new DefaultTrait(traitRules, context, incrementChecker);
@@ -63,6 +71,7 @@ public class BeastformAttribute implements IBeastformAttribute {
   }
 
   public void recalculate() {
-    beastmanTrait.setCurrentValue(baseTrait.getCurrentValue() + additionalValue);
+    beastmanTrait.setCurrentValue(baseTrait.getCurrentValue() +
+    		(edition == ExaltedEdition.SecondEdition ? 1 : additionalValue));
   }
 }

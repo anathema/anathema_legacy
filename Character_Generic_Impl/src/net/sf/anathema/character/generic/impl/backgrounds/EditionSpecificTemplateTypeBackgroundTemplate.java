@@ -16,6 +16,13 @@ public class EditionSpecificTemplateTypeBackgroundTemplate extends TemplateTypeB
     super(id, types, state);
     this.edition = edition;
   }
+  
+  public EditionSpecificTemplateTypeBackgroundTemplate(
+	      String id,
+	      ITemplateType[] types,
+	      IExaltedEdition edition) {
+	    this(id, types, edition, LowerableState.LowerableRegain);
+	  }
 
   @Override
   public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition requestEdition) {

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.lunar.heartsblood.view.HeartsBloodView;
@@ -32,13 +33,27 @@ public class HeartsBloodPresenter implements IPresenter {
   public void initPresentation() {
     String animalFormString = resources.getString("Lunar.HeartsBlood.AnimalForm"); //$NON-NLS-1$
     String animalStaminaString = resources.getString("Lunar.HeartsBlood.AnimalStamina"); //$NON-NLS-1$
+    String animalDexterityString = resources.getString("Lunar.HeartsBlood.AnimalDexterity"); //$NON-NLS-1$
     String animalStrengthString = resources.getString("Lunar.HeartsBlood.AnimalStrength"); //$NON-NLS-1$
+    String animalAppearanceString = resources.getString("Lunar.HeartsBlood.AnimalAppearance"); //$NON-NLS-1$
     final BasicUi basicUi = new BasicUi(resources);
-    IAnimalFormSelectionView selectionView = view.createAnimalFormSelectionView(
+    IAnimalFormSelectionView selectionView;
+    if (model.getEdition() == ExaltedEdition.FirstEdition)
+    	selectionView = view.createAnimalFormSelectionView(
         basicUi.getAddIcon(),
         animalFormString,
         animalStrengthString,
-        animalStaminaString);
+        null,
+        animalStaminaString,
+        null);
+    else
+    	selectionView = view.createAnimalFormSelectionView(
+    	        basicUi.getAddIcon(),
+    	        animalFormString,
+    	        animalStrengthString,
+    	        animalDexterityString,
+    	        animalStaminaString,
+    	        animalAppearanceString);
     initSelectionViewListening(selectionView);
     initModelListening(basicUi, selectionView);
     for (IAnimalForm form : model.getEntries()) {
@@ -58,11 +73,21 @@ public class HeartsBloodPresenter implements IPresenter {
         model.setCurrentStrength(newValue);
       }
     });
+    selectionView.addDexterityListener(new IIntValueChangedListener() {
+        public void valueChanged(int newValue) {
+          model.setCurrentDexterity(newValue);
+        }
+      });
     selectionView.addStaminaListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         model.setCurrentStamina(newValue);
       }
     });
+    selectionView.addAppearanceListener(new IIntValueChangedListener() {
+        public void valueChanged(int newValue) {
+          model.setCurrentAppearance(newValue);
+        }
+      });
     selectionView.addAddButtonListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         model.commitSelection();
@@ -71,8 +96,11 @@ public class HeartsBloodPresenter implements IPresenter {
   }
 
   private void addAnimalFormView(final BasicUi basicUi, final IAnimalForm form) {
-    IRemovableEntryView formView = view.addEntryView(basicUi.getRemoveIcon(), form.getName()
-        + " (" + form.getStrength() + "/" + form.getStamina() + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    IRemovableEntryView formView = view.addEntryView(basicUi.getRemoveIcon(), form.getName() +
+    		(model.getEdition() == ExaltedEdition.FirstEdition ?
+        " (" + form.getStrength() + "/" + form.getStamina() :
+        " (" + form.getStrength() + "/" + form.getDexterity() + "/" + form.getStamina() + 
+        "/" + form.getAppearance()) + ")") ; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     viewsByForm.put(form, formView);
     formView.addButtonListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
@@ -113,9 +141,13 @@ public class HeartsBloodPresenter implements IPresenter {
   private void reset(final IAnimalFormSelectionView selectionView) {
     selectionView.setName(null);
     selectionView.setStrength(1);
+    selectionView.setDexterity(model.getEdition() == ExaltedEdition.FirstEdition ? 0 : 1);
     selectionView.setStamina(1);
+    selectionView.setAppearance(model.getEdition() == ExaltedEdition.FirstEdition ? 0 : 1);
     model.setCurrentName(null);
     model.setCurrentStamina(1);
+    model.setCurrentDexterity(model.getEdition() == ExaltedEdition.FirstEdition ? 0 : 1);
     model.setCurrentStrength(1);
+    model.setCurrentAppearance(model.getEdition() == ExaltedEdition.FirstEdition ? 0 : 1);
   }
 }

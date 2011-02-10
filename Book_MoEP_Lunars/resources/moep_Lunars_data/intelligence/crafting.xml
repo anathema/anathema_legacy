@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Crafting Charms -->
-     <charm id="Lunar.LunasBlessedHands" exalt="Lunar" group="Crafting">
+     <charm id="Lunar.LunasBlessedHands" exalt="Lunar" group="CraftCharm">
           <prerequisite>
                <trait id="Intelligence" value="5" />
                <essence value="5" />
@@ -36,7 +36,7 @@
           <charmtype type="Permanent" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.FormFixingMethod" exalt="Lunar" group="Crafting">
+     <charm id="Lunar.FormFixingMethod" exalt="Lunar" group="CraftCharm">
           <prerequisite>
                <trait id="Intelligence" value="4" />
                <essence value="3" />
@@ -54,7 +54,7 @@
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.HarmonyWithRealityTechnique" exalt="Lunar" group="Crafting">
+     <charm id="Lunar.HarmonyWithRealityTechnique" exalt="Lunar" group="CraftCharm">
           <prerequisite>
                <trait id="Intelligence" value="4" />
                <essence value="3" />
@@ -73,7 +73,7 @@
           <charmAttribute attribute="Wyld" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.RitualOfLunarStability" exalt="Lunar" group="Crafting">
+     <charm id="Lunar.RitualOfLunarStability" exalt="Lunar" group="CraftCharm">
           <prerequisite>
                <trait id="Intelligence" value="5" />
                <essence value="4" />

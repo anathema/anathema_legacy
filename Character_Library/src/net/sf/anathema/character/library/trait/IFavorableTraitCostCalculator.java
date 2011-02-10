@@ -7,6 +7,8 @@ public interface IFavorableTraitCostCalculator {
   public void calculateCosts();
 
   public int getFreePointsSpent(boolean favored);
+  
+  public int getExtraDotsSpent();
 
   public int getBonusPointsSpent();
 

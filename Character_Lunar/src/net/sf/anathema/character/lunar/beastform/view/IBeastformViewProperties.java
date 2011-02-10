@@ -1,7 +1,7 @@
 package net.sf.anathema.character.lunar.beastform.view;
 
-public interface IBeastformViewProperties {
-
+public interface IBeastformViewProperties
+{
   public String getCharmString();
 
   public String getAttributesString();

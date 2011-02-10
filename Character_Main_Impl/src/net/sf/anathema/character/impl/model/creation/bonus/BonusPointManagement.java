@@ -20,11 +20,14 @@ import net.sf.anathema.character.impl.model.creation.bonus.ability.SpecialtyBonu
 import net.sf.anathema.character.impl.model.creation.bonus.additional.AdditionalBonusPointPoolManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeCostCalculator;
+import net.sf.anathema.character.impl.model.creation.bonus.attribute.FavoredAttributeDotBonusModel;
+import net.sf.anathema.character.impl.model.creation.bonus.attribute.FavoredAttributePickModel;
 import net.sf.anathema.character.impl.model.creation.bonus.backgrounds.BackgroundBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.backgrounds.BackgroundBonusPointCostCalculator;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.DefaultCharmModel;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.FavoredCharmModel;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
+import net.sf.anathema.character.impl.model.creation.bonus.magic.UniqueRequiredCharmTypeModel;
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
@@ -81,7 +84,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     this.attributeCalculator = new AttributeCostCalculator(
         traitConfiguration,
         creationPoints.getAttributeCreationPoints(),
-        cost);
+        cost,
+        bonusAdditionalPools);
     this.backgroundCalculator = new BackgroundBonusPointCostCalculator(
         bonusAdditionalPools,
         traitConfiguration.getBackgrounds(),
@@ -189,9 +193,26 @@ public class BonusPointManagement implements IBonusPointManagement {
   public ISpendingModel getAttributeModel(final AttributeGroupPriority priority) {
     return new AttributeBonusModel(attributeCalculator, priority, creationPoints);
   }
+  
+  public ISpendingModel getFavoredAttributeDotModel()
+  {
+	  return new FavoredAttributeDotBonusModel(attributeCalculator, creationPoints);
+  }
+
+  public ISpendingModel getFavoredAttributePickModel()
+  {
+	return new FavoredAttributePickModel(attributeCalculator, creationPoints);
+  }
 
   public ISpendingModel getFavoredCharmModel() {
     return new FavoredCharmModel(magicCalculator, creationPoints);
+  }
+  
+  public ISpendingModel getSpecialCharmModel()
+  {
+	  return new UniqueRequiredCharmTypeModel(statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().
+			  getUniqueRequiredCharmType(),
+			  magicCalculator, creationPoints);
   }
 
   public IAdditionalSpendingModel getDefaultCharmModel() {
@@ -237,8 +258,13 @@ public class BonusPointManagement implements IBonusPointManagement {
     models.add(getAttributeModel(AttributeGroupPriority.Primary));
     models.add(getAttributeModel(AttributeGroupPriority.Secondary));
     models.add(getAttributeModel(AttributeGroupPriority.Tertiary));
+    if (getFavoredAttributePickModel().getAlotment() > 0)
+    	models.add(getFavoredAttributePickModel());
+    if (getFavoredAttributeDotModel().getAlotment() > 0)
+    	models.add(getFavoredAttributeDotModel());
     models.add(getFavoredAbilityPickModel());
-    models.add(getFavoredAbilityModel());
+    if (getFavoredAbilityModel().getAlotment() > 0)
+    	models.add(getFavoredAbilityModel());
     models.add(getDefaultAbilityModel());
     if (getSpecialtiesModel().getAlotment() > 0) {
       models.add(getSpecialtiesModel());
@@ -258,6 +284,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     if (getFavoredCharmModel().getAlotment() > 0) {
       models.add(getFavoredCharmModel());
     }
+    if (getSpecialCharmModel().getAlotment() > 0)
+    	models.add(getSpecialCharmModel());
     models.add(getDefaultCharmModel());
   }
 }

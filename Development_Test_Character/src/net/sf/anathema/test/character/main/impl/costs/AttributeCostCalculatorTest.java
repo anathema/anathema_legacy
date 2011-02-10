@@ -28,6 +28,7 @@ import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.dummy.character.DummyAdditionalBonusPointManagment;
 import net.sf.anathema.dummy.character.DummyGenericCharacter;
 import net.sf.anathema.dummy.character.template.DummyCharacterTemplate;
 import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
@@ -90,15 +91,20 @@ public class AttributeCostCalculatorTest extends BasicCharacterTestCase {
   private DefaultBonusPointCosts cost;
   private AttributeCostCalculator calculator;
   private DummyCoreTraitConfiguration traitConfiguration;
+  private DummyAdditionalBonusPointManagment additionalBonusPointManagement;
 
   @Override
   protected void setUp() throws Exception {
     super.setUp();
     this.creationPoint = new AttributeCreationPoints(6, 4, 2);
     this.traitConfiguration = new DummyCoreTraitConfiguration();
+    this.additionalBonusPointManagement = new DummyAdditionalBonusPointManagment();
     addAttributesAndEssence(traitConfiguration);
     this.cost = new DefaultBonusPointCosts();
-    this.calculator = new AttributeCostCalculator(traitConfiguration, creationPoint, cost);
+    this.calculator = new AttributeCostCalculator(traitConfiguration,
+    		creationPoint,
+    		cost,
+    		additionalBonusPointManagement);
   }
 
   private void addAttributesAndEssence(DummyCoreTraitConfiguration coreTraits) {

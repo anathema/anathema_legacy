@@ -1,16 +1,16 @@
 package net.sf.anathema.character.generic.impl.template.points;
 
-import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class FavorableTraitCreationPoints extends ReflectionCloneableObject<IFavorableTraitCreationPoints> implements
-    IFavorableTraitCreationPoints {
-
+public class AbilityCreationPoints extends ReflectionCloneableObject<IAbilityCreationPoints> implements
+	IAbilityCreationPoints
+{
   private final int defaultDotCount;
   private final int favoredCount;
   private final int favoredDotCount;
 
-  public FavorableTraitCreationPoints(int favoredAbilityCount, int favoredDotCount, int defaultDotCount) {
+  public AbilityCreationPoints(int favoredAbilityCount, int favoredDotCount, int defaultDotCount) {
     this.favoredCount = favoredAbilityCount;
     this.favoredDotCount = favoredDotCount;
     this.defaultDotCount = defaultDotCount;
@@ -27,6 +27,11 @@ public class FavorableTraitCreationPoints extends ReflectionCloneableObject<IFav
   public int getDefaultDotCount() {
     return defaultDotCount;
   }
+  
+  public int getExtraDotCount()
+  {
+	  return 0;
+  }
 
   @Override
   public String toString() {
@@ -40,7 +45,7 @@ public class FavorableTraitCreationPoints extends ReflectionCloneableObject<IFav
   }
 
   @Override
-  public FavorableTraitCreationPoints clone() {
-    return (FavorableTraitCreationPoints) super.clone();
+  public AbilityCreationPoints clone() {
+    return (AbilityCreationPoints) super.clone();
   }
 }

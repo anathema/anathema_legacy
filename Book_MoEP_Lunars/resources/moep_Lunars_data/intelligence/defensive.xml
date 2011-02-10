@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Defensive Charms -->
-     <charm id="Lunar.RighteousLionDefense" exalt="Lunar" group="Defensive">
+     <charm id="Lunar.RighteousLionDefense" exalt="Lunar" group="DefensiveCharm">
           <prerequisite>
                <trait id="Intelligence" value="3" />
                <essence value="1" />
@@ -34,7 +34,7 @@
           <charmtype type="Permanent" />
           <source source="SecondEdition" />
      </charm>
-     <charm id="Lunar.IntimacyOfTheHunterAndThePrey" exalt="Lunar" group="Defensive">
+     <charm id="Lunar.IntimacyOfTheHunterAndThePrey" exalt="Lunar" group="DefensiveCharm">
           <prerequisite>
                <trait id="Intelligence" value="3" />
                <essence value="2" />
@@ -49,7 +49,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.TrueToThePackDedication" exalt="Lunar" group="Defensive">
+     <charm id="Lunar.TrueToThePackDedication" exalt="Lunar" group="DefensiveCharm">
           <prerequisite>
                <trait id="Intelligence" value="3" />
                <essence value="2" />

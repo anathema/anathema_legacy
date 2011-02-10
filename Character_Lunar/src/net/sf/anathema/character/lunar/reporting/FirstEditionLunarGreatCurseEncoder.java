@@ -21,7 +21,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class LunarGreatCurseEncoder implements IPdfContentBoxEncoder {
+public class FirstEditionLunarGreatCurseEncoder implements IPdfContentBoxEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder;
   private final Chunk symbolChunk;
@@ -29,7 +29,7 @@ public class LunarGreatCurseEncoder implements IPdfContentBoxEncoder {
   private final Font nameFont;
   private final IResources resources;
 
-  public LunarGreatCurseEncoder(BaseFont baseFont, BaseFont symbolBaseFont, IResources resources) {
+  public FirstEditionLunarGreatCurseEncoder(BaseFont baseFont, BaseFont symbolBaseFont, IResources resources) {
     this.resources = resources;
     this.font = createFont(baseFont);
     this.nameFont = createNameFont(baseFont);

@@ -3,6 +3,8 @@ package net.sf.anathema.character.lunar.beastform.model.gift;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.quality.model.QualityExclusion;
 import net.sf.anathema.character.library.quality.model.QualityPrerequisite;
@@ -11,7 +13,62 @@ import net.sf.anathema.character.lunar.beastform.model.gift.weapons.TerribleBeas
 
 public class GiftProvider {
 
-  public static IGift[] getAllGifts() {
+  public static IGift[] getAllGifts(IExaltedEdition edition)
+  {
+	  if (edition == ExaltedEdition.FirstEdition)
+		  return getFirstEditionGifts();
+	  if (edition == ExaltedEdition.SecondEdition)
+		  return getSecondEditionGifts();
+	  return null;
+  }
+  
+  private static IGift[] getSecondEditionGifts()
+  {
+	  List<IGift> gifts = new ArrayList<IGift>();
+	  gifts.add(new Gift("EnhancedSense", 1));
+	  gifts.add(new Gift("Claws", 1));
+	  gifts.add(new Gift("Fangs", 1));
+	  gifts.add(new Gift("FurFeathersLeavesScales", 1));
+	  gifts.add(new Gift("Hooves", 1));
+	  gifts.add(new Gift("SerpentineTongue", 1));
+	  gifts.add(new Gift("SkinHair", 1));
+	  gifts.add(new Gift("Small", 1));
+	  gifts.add(new Gift("Tail", 1));
+	  gifts.add(new Gift("ThirdEye", 1));
+	  gifts.add(new Gift("WolfsPace", 1));
+	  gifts.add(new Gift("ChakraEye", 2));
+	  gifts.add(new Gift("Chameleon", 2));
+	  gifts.add(new Gift("FrogTongue", 2));
+	  gifts.add(new Gift("GazellesPace", 2));
+	  gifts.add(new Gift("Gills", 2));
+	  gifts.add(new Gift("PrehensileTail", 2));
+	  gifts.add(new Gift("ScorpionsTail", 2));
+	  gifts.add(new Gift("TalonsTusksHorns", 2));
+	  gifts.add(new Gift("ThickSkin", 2));
+	  gifts.add(new Gift("Toxin", 2));
+	  gifts.add(new Gift("AcidicPustules", 4));
+	  gifts.add(new Gift("ArmoredHide", 4));
+	  gifts.add(new Gift("CheetahsPace", 4));
+	  gifts.add(new Gift("Glider", 4));
+	  gifts.add(new Gift("HideousMaw", 4));
+	  gifts.add(new Gift("LidlessDemonEye", 4));
+	  gifts.add(new Gift("PrehensileBodyHair", 4));
+	  gifts.add(new Gift("Quills", 4));
+	  gifts.add(new Gift("SerpentineHair", 4));
+	  gifts.add(new Gift("Tentacles", 4));
+	  gifts.add(new Gift("WallWalking", 4));
+	  gifts.add(new Gift("Hive", 6));
+	  gifts.add(new Gift("ExtraArmLegHead", 6));
+	  gifts.add(new Gift("SerpentsBody", 6));
+	  gifts.add(new Gift("SpiderLegs", 6));
+	  gifts.add(new Gift("TerrifyingMane", 6));
+	  gifts.add(new Gift("Wings", 6));
+	  
+	  return gifts.toArray(new IGift[gifts.size()]);
+  }
+  
+  private static IGift[] getFirstEditionGifts()
+  {
     List<IGift> gifts = new ArrayList<IGift>();
     Gift horrifyingFirst = new AttributePointsProvidingGift("HorrifyingMightFirst", 2);//$NON-NLS-1$
     gifts.add(horrifyingFirst);

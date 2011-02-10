@@ -40,7 +40,7 @@
           <charmAttribute attribute="Gift" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.MoonsilverStomacheConversion" exalt="Lunar" group="Consumption">
+     <charm id="Lunar.MoonsilverStomachConversion" exalt="Lunar" group="Consumption">
           <prerequisite>
                <trait id="Stamina" value="4" />
                <essence value="2" />

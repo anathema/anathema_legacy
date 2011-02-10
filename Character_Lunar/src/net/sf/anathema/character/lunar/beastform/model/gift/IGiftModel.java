@@ -6,6 +6,8 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IGiftModel extends IQualityModel<IGift> {
 
+  public int getSpentPicks();
+	
   public int getAllowedPicks();
 
   public IGift getGiftById(String giftId);

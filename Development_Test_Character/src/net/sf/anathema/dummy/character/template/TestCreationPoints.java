@@ -2,9 +2,9 @@ package net.sf.anathema.dummy.character.template;
 
 import net.sf.anathema.character.generic.impl.template.points.AbstractCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
-import net.sf.anathema.character.generic.impl.template.points.FavorableTraitCreationPoints;
+import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
+import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
-import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 
 public class TestCreationPoints extends AbstractCreationPoints {
 
@@ -24,8 +24,8 @@ public class TestCreationPoints extends AbstractCreationPoints {
     return 0;
   }
 
-  public IFavorableTraitCreationPoints getAbilityCreationPoints() {
-    return new FavorableTraitCreationPoints(5, 10, 15);
+  public IAbilityCreationPoints getAbilityCreationPoints() {
+    return new AbilityCreationPoints(5, 10, 15);
   }
 
   public int getFavoredCreationCharmCount() {
@@ -35,4 +35,9 @@ public class TestCreationPoints extends AbstractCreationPoints {
   public int getDefaultCreationCharmCount() {
     return 5;
   }
+  
+  public int getUniqueRequiredCreationCharmCount() {
+	    return 0;
+  }
+  
 }

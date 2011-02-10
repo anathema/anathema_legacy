@@ -10,12 +10,26 @@ import net.sf.anathema.character.library.quality.presenter.IQualityPredicate;
 
 public class Gift extends Quality implements IGift {
 
-  public Gift(String id) {
-    super(id, GiftType.Gift);
+	private final int cost;
+	
+	public Gift(String id, int cost)
+	{
+		super(id, GiftType.Gift);
+		this.cost = cost;
+	}
+	
+  public Gift(String id)
+  {
+    this(id, 1);
   }
 
   public void accept(IGiftVisitor visitor) {
     // Nothing to do
+  }
+  
+  public int getCost()
+  {
+	  return cost;
   }
 
   protected final boolean isPrerequisite(IQuality gift) {

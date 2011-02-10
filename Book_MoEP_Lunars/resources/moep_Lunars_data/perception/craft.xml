@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Craft Charms -->
-     <charm id="Lunar.FlawFindingExamination" exalt="Lunar" group="Craft">
+     <charm id="Lunar.FlawFindingExamination" exalt="Lunar" group="CraftCharm">
           <prerequisite>
                <trait id="Perception" value="4" />
                <essence value="2" />
@@ -38,7 +38,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.MonkeyShapingEmulation" exalt="Lunar" group="Craft">
+     <charm id="Lunar.MonkeyShapingEmulation" exalt="Lunar" group="CraftCharm">
           <prerequisite>
                <trait id="Perception" value="4" />
                <essence value="2" />

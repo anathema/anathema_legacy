@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelB
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.library.removableentry.presenter.RemovableEntryChangeAdapter;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
@@ -22,11 +23,18 @@ public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> i
 
   private String currentName;
   private int currentStrength;
+  private int currentDexterity;
   private int currentStamina;
+  private int currentAppearance;
   private final ICharacterModelContext context;
 
   public HeartsBloodModel(ICharacterModelContext context) {
     this.context = context;
+  }
+  
+  public IExaltedEdition getEdition()
+  {
+	  return context.getBasicCharacterContext().getRuleSet().getEdition();
   }
 
   public String getTemplateId() {
@@ -57,9 +65,19 @@ public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> i
   public void setCurrentStrength(int newValue) {
     this.currentStrength = newValue;
   }
+  
+  public void setCurrentDexterity(int newValue)
+  {
+	  this.currentDexterity = newValue;
+  }
 
   public void setCurrentStamina(int newValue) {
     this.currentStamina = newValue;
+  }
+  
+  public void setCurrentAppearance(int newValue)
+  {
+	  this.currentAppearance = newValue;
   }
 
   @Override
@@ -69,7 +87,8 @@ public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> i
 
   @Override
   protected IAnimalForm createEntry() {
-    return new AnimalForm(currentName, currentStrength, currentStamina, context.getBasicCharacterContext()
+    return new AnimalForm(currentName, currentStrength, currentDexterity, 
+    		currentStamina, currentAppearance, context.getBasicCharacterContext()
         .isExperienced());
   }
 

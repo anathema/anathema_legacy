@@ -30,8 +30,8 @@ import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
+import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
-import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -100,7 +100,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
         throw new NotYetImplementedException();
       }
 
-      public IFavorableTraitCreationPoints getAbilityCreationPoints() {
+      public IAbilityCreationPoints getAbilityCreationPoints() {
         throw new NotYetImplementedException();
       }
 
@@ -114,6 +114,11 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
       public int getDefaultCreationCharmCount() {
         throw new NotYetImplementedException();
+      }
+      
+      public int getUniqueRequiredCreationCharmCount()
+      {
+    	throw new NotYetImplementedException();
       }
     };
   }

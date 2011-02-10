@@ -9,6 +9,7 @@ import net.sf.anathema.character.lunar.beastform.model.gift.AttributePointsProvi
 import net.sf.anathema.character.lunar.beastform.model.gift.GiftVisitorAdapter;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
+import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -20,7 +21,7 @@ public class BeastformGroupCost implements IBeastformGroupCost {
   private int totalDots;
   private final GenericControl<IAlotmentChangedListener> control = new GenericControl<IAlotmentChangedListener>();
 
-  public BeastformGroupCost(IBeastformTraitCollection collection, final BeastformModel model) {
+  public BeastformGroupCost(IBeastformTraitCollection collection, final IBeastformModel model) {
     this.collection = collection;
     model.getGiftModel().addModelChangeListener(new IChangeListener() {
       public void changeOccured() {

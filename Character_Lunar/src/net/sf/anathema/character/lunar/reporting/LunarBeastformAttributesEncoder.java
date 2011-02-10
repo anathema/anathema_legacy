@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
-import net.sf.anathema.character.lunar.beastform.model.BeastformModel;
+import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -36,7 +36,7 @@ public class LunarBeastformAttributesEncoder implements IPdfContentBoxEncoder {
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
-    BeastformModel additionalModel = (BeastformModel) character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
+    IBeastformModel additionalModel = (IBeastformModel) character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getTraitCollection();
     encodeAttributes(directContent, bounds, attributeGroups, traitCollection);
   }
