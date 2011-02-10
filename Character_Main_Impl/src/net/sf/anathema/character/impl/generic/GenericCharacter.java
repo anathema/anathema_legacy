@@ -57,8 +57,13 @@ public class GenericCharacter implements IGenericCharacter {
 
   public int getLearnCount(IMultiLearnableCharm charm) {
     ICharmConfiguration charms = statistics.getCharms();
-    IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charm.getCharmId());
-    return configuration.getCurrentLearnCount();
+    try {
+      IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charm.getCharmId());
+      return configuration.getCurrentLearnCount();
+    }
+    catch (IllegalArgumentException e) {
+      return 0;
+    }
   }
 
   public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue) {
