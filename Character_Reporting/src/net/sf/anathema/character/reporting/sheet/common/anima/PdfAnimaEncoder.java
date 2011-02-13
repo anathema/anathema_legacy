@@ -104,8 +104,11 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
     String baseWithEdition = resourceBase + character.getRules().getEdition().getId() + ".";
     for (int power = 0; power < animaPowerCount; power++) {
       phrase.add(symbolChunk);
-      String resource = resources.getString(baseWithEdition + AnimaUtils.resourceIds[power]);
-      if (resource == null) {
+      String resource;
+      if (resources.supportsKey(baseWithEdition + AnimaUtils.resourceIds[power])) {
+        resource = resources.getString(baseWithEdition + AnimaUtils.resourceIds[power]);
+      }
+      else {
         resource = resources.getString(resourceBase + AnimaUtils.resourceIds[power]);
       }
       phrase.add(resource + "\n"); //$NON-NLS-1$
