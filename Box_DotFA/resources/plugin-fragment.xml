@@ -60,7 +60,7 @@
 			<parameter id="path" value="box_DotFA_data/infernal/misc.xml"/>
 		</parameter -->
 		<!-- Lunar List -->
-		<!-- parameter id="list">
+		<parameter id="list">
 			<parameter id="type" value="Lunar"/>
 			<parameter id="rules" value="SecondEdition"/>
 			<parameter id="path" value="box_DotFA_data/lunar/appearance.xml"/>
@@ -114,7 +114,7 @@
 			<parameter id="type" value="Lunar"/>
 			<parameter id="rules" value="SecondEdition"/>
 			<parameter id="path" value="box_DotFA_data/lunar/wits.xml"/>
-		</parameter-->
+		</parameter>
 		<!-- Sidereal List -->
 		<parameter id="list">
 			<parameter id="type" value="MartialArts" />

@@ -58,7 +58,10 @@
           <prerequisite>
                <trait id="Dexterity" value="4" />
                <essence value="2" />
-               <charmReference id="Lunar.WaspStingBlurDex" />
+			<selectiveCharmGroup threshold="1">
+				<charmReference id="Lunar.WaspStingBlurWit" />
+				<charmReference id="Lunar.WaspStingBlurDex" />
+			</selectiveCharmGroup>
           </prerequisite>
           <cost>
                <essence cost="5" />
@@ -72,7 +75,10 @@
           <prerequisite>
                <trait id="Dexterity" value="5" />
                <essence value="3" />
-               <charmReference id="Lunar.WaspStingBlurDex" />
+			<selectiveCharmGroup threshold="1">
+				<charmReference id="Lunar.WaspStingBlurWit" />
+				<charmReference id="Lunar.WaspStingBlurDex" />
+			</selectiveCharmGroup>
           </prerequisite>
           <cost>
                <essence cost="6" />
