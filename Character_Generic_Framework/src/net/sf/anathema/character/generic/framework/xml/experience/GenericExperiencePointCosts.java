@@ -1,10 +1,13 @@
 package net.sf.anathema.character.generic.framework.xml.experience;
 
+import java.util.Map;
+
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.template.experience.ComboCostCalculator;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
@@ -27,6 +30,8 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   private int favoredHighLevelCharmCost;
   private MartialArtsLevel standardMartialArtsLevel;
   private int backgroundCosts;
+  private Map<String, Integer> keywordGeneralCosts;
+  private Map<String, Integer> keywordFavoredCosts;
 
   public ICurrentRatingCosts getAbilityCosts(boolean favored) {
     return favored ? favoredAbilityCost : generalAbilityCost;
@@ -45,7 +50,14 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   }
 
   public int getCharmCosts(ICharm charm, ICostAnalyzer costMapping) {
-    return getCharmCosts(costMapping.isMagicFavored(charm), costMapping.getMartialArtsLevel(charm));
+	  boolean favored = costMapping.isMagicFavored(charm);
+	  for (ICharmAttribute attribute : charm.getAttributes())
+	  {
+		  Map<String, Integer> set = favored ? keywordFavoredCosts : keywordGeneralCosts;
+		  if (set != null && set.get(attribute.getId()) != null)
+				  return set.get(attribute.getId());
+	   }
+    return getCharmCosts(favored, costMapping.getMartialArtsLevel(charm));
   }
 
   private int getCharmCosts(boolean favored, MartialArtsLevel level) {
@@ -98,10 +110,18 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   public void setEssenceCosts(ICurrentRatingCosts essenceCosts) {
     this.essenceCosts = essenceCosts;
   }
-
+  
   public void setCharmCosts(int favoredCharmCost, int generalCharmCost) {
+	  setCharmCosts(favoredCharmCost, generalCharmCost, null, null);
+  }
+
+  public void setCharmCosts(int favoredCharmCost, int generalCharmCost,
+		  Map<String, Integer> keywordGeneralCost, Map<String, Integer> keywordFavoredCost)
+  {
     this.favoredCharmCost = favoredCharmCost;
     this.generalCharmCost = generalCharmCost;
+    this.keywordFavoredCosts = keywordFavoredCost;
+    this.keywordGeneralCosts = keywordGeneralCost;
   }
 
   @Override

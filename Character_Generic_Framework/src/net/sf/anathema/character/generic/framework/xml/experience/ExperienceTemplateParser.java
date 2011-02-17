@@ -1,5 +1,8 @@
 package net.sf.anathema.character.generic.framework.xml.experience;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.util.CostParser;
@@ -13,6 +16,7 @@ import org.dom4j.Element;
 
 public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericExperiencePointCosts> {
 
+  private static final String ATTRIB_KEYWORD = "keyword";
   private static final String ATTRIB_FAVORED = "favored"; //$NON-NLS-1$
   private static final String ATTRIB_GENERAL = "general"; //$NON-NLS-1$
   private static final String ATTRIB_INITIALCOST = "initialCosts"; //$NON-NLS-1$
@@ -32,6 +36,7 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
   private static final String TAG_ESSENCE = "essence"; //$NON-NLS-1$
   private static final String TAG_MAGIC = "magic"; //$NON-NLS-1$
   private static final String TAG_CHARMS = "charms"; //$NON-NLS-1$
+  private static final String TAG_KEYWORD_CHARMS = "keywordCharms";
   private static final String TAG_MARTIAL_ARTS = "highLevelMartialArts"; //$NON-NLS-1$
   private static final String TAG_BACKGROUNDS = "backgrounds";
   private final CostParser costParser = new CostParser();
@@ -67,7 +72,20 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     Element charms = magic.element(TAG_CHARMS);
     int favoredCost = ElementUtilities.getRequiredIntAttrib(charms, ATTRIB_FAVORED);
     int generalCost = ElementUtilities.getRequiredIntAttrib(charms, ATTRIB_GENERAL);
-    costs.setCharmCosts(favoredCost, generalCost);
+    Map<String, Integer> keywordGeneralCost = new HashMap<String, Integer>();
+    Map<String, Integer> keywordFavoredCost = new HashMap<String, Integer>();
+    
+    for (Object node : charms.elements(TAG_KEYWORD_CHARMS))
+    {
+    	Element keywordClass = (Element) node;
+    	String keyword = ElementUtilities.getRequiredAttrib(keywordClass, ATTRIB_KEYWORD);
+    	int gCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_GENERAL);
+    	int fCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_FAVORED);
+    	keywordGeneralCost.put(keyword, gCost);
+    	keywordFavoredCost.put(keyword, fCost);
+    }
+    
+    costs.setCharmCosts(favoredCost, generalCost, keywordGeneralCost, keywordFavoredCost);
     Element martialArts = charms.element(TAG_MARTIAL_ARTS);
     int favoredMartialArtsCost = ElementUtilities.getRequiredIntAttrib(martialArts, ATTRIB_FAVORED);
     int generalMartialArtsCost = ElementUtilities.getRequiredIntAttrib(martialArts, ATTRIB_GENERAL);

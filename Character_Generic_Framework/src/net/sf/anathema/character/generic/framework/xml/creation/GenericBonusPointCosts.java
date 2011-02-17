@@ -1,11 +1,14 @@
 package net.sf.anathema.character.generic.framework.xml.creation;
 
+import java.util.Map;
+
 import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.generic.impl.template.points.ThresholdRatingCosts;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
@@ -34,9 +37,19 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   private int favoredAttributeCost = 0;
   private int maximumFreeVirtueRank = 3;
   private int maximumFreeAbilityRank = 3;
+  private Map<String, Integer> generalKeywordCosts;
+  private Map<String, Integer> favoredKeywordCosts;
 
-  public int getCharmCosts(ICharm charm, ICostAnalyzer analyzer) {
-    return getCharmCosts(analyzer.isMagicFavored(charm), analyzer.getMartialArtsLevel(charm));
+  public int getCharmCosts(ICharm charm, ICostAnalyzer analyzer)
+  {
+	  boolean favored = analyzer.isMagicFavored(charm);
+	  for (ICharmAttribute attribute : charm.getAttributes())
+	  {
+		  Map<String, Integer> set = favored ? favoredKeywordCosts : generalKeywordCosts;
+		  if (set != null && set.get(attribute.getId()) != null)
+				  return set.get(attribute.getId());
+	   }
+	   return getCharmCosts(favored, analyzer.getMartialArtsLevel(charm));
   }
 
   public int getAttributeCosts(IFavorableGenericTrait trait) {
@@ -146,16 +159,31 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   public void setEssenceCosts(int essenceCost) {
     this.essenceCost = essenceCost;
   }
+  
+  public void setCharmCost(
+	      int generalCharmCost,
+	      int favoredCharmCost,
+	      int generalHighLevelMartialArtsCost,
+	      int favoredHighLevelMartialArtsCost)
+  {
+	  setCharmCosts(generalCharmCost, favoredCharmCost,
+			  generalHighLevelMartialArtsCost, favoredHighLevelMartialArtsCost,
+			  null, null);
+  }
 
   public void setCharmCosts(
       int generalCharmCost,
       int favoredCharmCost,
       int generalHighLevelMartialArtsCost,
-      int favoredHighLevelMartialArtsCost) {
+      int favoredHighLevelMartialArtsCost,
+      Map<String, Integer> generalKeywordCosts,
+      Map<String, Integer> favoredKeywordCosts) {
     this.generalCharmCost = generalCharmCost;
     this.generalHighLevelMartialArtsCharmCost = generalHighLevelMartialArtsCost;
     this.favoredCharmCost = favoredCharmCost;
     this.favoredHighLevelMartialArtsCharmCost = favoredHighLevelMartialArtsCost;
+    this.generalKeywordCosts = generalKeywordCosts;
+    this.favoredKeywordCosts = favoredKeywordCosts;
   }
 
   public void setAbilityCosts(int generalCost, int favoredCost) {

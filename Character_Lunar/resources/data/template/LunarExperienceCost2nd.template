@@ -1,0 +1,13 @@
+<experiencePointCost uses="experience/DefaultExperienceCost.template">
+  <advantages>
+    <essence>
+      <currentRating multiplier="9" />
+    </essence>
+  </advantages>
+  <magic>
+    <charms favored="10" general="12">
+    	<keywordCharms keyword="Knack" favored="11" general="11"/>
+    	<highLevelMartialArts favored="10" general="12"/>
+    </charms>
+  </magic>
+</experiencePointCost>

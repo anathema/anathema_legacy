@@ -1,5 +1,8 @@
 package net.sf.anathema.character.generic.framework.xml.creation;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.util.CostParser;
@@ -13,6 +16,9 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
 
   private static final String ATTRIB_DOTS = "dots"; //$NON-NLS-1$
   private static final String ATTRIB_RANK = "rank"; //$NON-NLS-1$
+  private static final String ATTRIB_KEYWORD = "keyword";
+  private static final String ATTRIB_GENERAL_COST = "generalCost";
+  private static final String ATTRIB_FAVORED_COST = "favoredCost";
 
   private static final String TAG_ATTRIBUTES = "attributes"; //$NON-NLS-1$
   private static final String TAG_GENERAL_ATTRIBUTE = "generalAttribute"; //$NON-NLS-1$
@@ -33,6 +39,7 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
   private static final String TAG_CHARMS = "charms"; //$NON-NLS-1$
   private static final String TAG_GENERAL_CHARMS = "generalCharms"; //$NON-NLS-1$
   private static final String TAG_FAVORED_CHARMS = "favoredCharms"; //$NON-NLS-1$
+  private static final String TAG_KEYWORD_CHARMS = "keywordCharms";
   private static final String TAG_MAXIMUM_FREE_ABILITY_RANK = "maximumFreeAbilityRank"; //$NON-NLS-1$
   private static final String TAG_MAXIMUM_FREE_VIRTUE_RANK = "maximumFreeVirtueRank"; //$NON-NLS-1$
   private static final String TAG_GENERAL_MARTIAL_ARTS_CHARMS = "generalHighLevelMartialArtsCharms"; //$NON-NLS-1$
@@ -73,11 +80,25 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
         charmElement,
         TAG_FAVORED_MARTIAL_ARTS_CHARMS,
         favoredCharmCost);
+    Map<String, Integer> keywordGeneralCost = new HashMap<String, Integer>();
+    Map<String, Integer> keywordFavoredCost = new HashMap<String, Integer>();
+    for (Object keywordNode : charmElement.elements(TAG_KEYWORD_CHARMS))
+    {
+    	Element keywordClass = (Element) keywordNode;
+    	String keyword = ElementUtilities.getRequiredAttrib(keywordClass, ATTRIB_KEYWORD);
+    	int generalCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_GENERAL_COST);
+    	int favoredCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_FAVORED_COST);
+    	keywordGeneralCost.put(keyword, generalCost);
+    	keywordFavoredCost.put(keyword, favoredCost);
+    }
+    
     costs.setCharmCosts(
         generalCharmCost,
         favoredCharmCost,
         generalHighLevelMartialArtsCharmCost,
-        favoredHighLevelMartialArtsCharmCost);
+        favoredHighLevelMartialArtsCharmCost,
+        keywordGeneralCost,
+        keywordFavoredCost);
     costs.setStandardMartialArtsLevel(standardMartialArtsLevel);
   }
 

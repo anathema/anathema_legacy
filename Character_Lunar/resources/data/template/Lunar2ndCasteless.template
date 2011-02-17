@@ -17,7 +17,7 @@
     </healthTemplate>
   </general>
   <creation>
-    <bonusPointCosts uses="template/LunarBonusPointCost.template" />
+    <bonusPointCosts uses="template/LunarBonusPointCost2nd.template" />
     <creationPoints>
       <attributeDots primary="8" secondary="6" tertiary="4" favoredPicks="2"/>
       <abilityDots general="25" favored="0" favoredPicks="2" />
@@ -28,6 +28,6 @@
     </creationPoints>
   </creation>
   <experience>
-    <experiencePointCost uses="template/LunarExperienceCost.template" />
+    <experiencePointCost uses="template/LunarExperienceCost2nd.template" />
   </experience>
 </exaltedCharacterTemplate>
