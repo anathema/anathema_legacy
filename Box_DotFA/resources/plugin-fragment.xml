@@ -74,7 +74,7 @@
 			<parameter id="type" value="Lunar"/>
 			<parameter id="rules" value="SecondEdition"/>
 			<parameter id="path" value="box_DotFA_data/lunar/dexterity.xml"/>
-		</parameter>
+		</parameter>		
 		<parameter id="list">
 			<parameter id="type" value="Lunar"/>
 			<parameter id="rules" value="SecondEdition"/>

@@ -49,7 +49,7 @@
                <essence cost="5" />
                <willpower cost="1" />
           </cost>
-          <duration amount="LunarsEssence" unit="day" />
+          <duration amount="Essence" unit="day" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />

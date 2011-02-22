@@ -31,7 +31,7 @@
                <charmAttributeRequirement attribute="ExcellencyManipulation" count="1" />
           </prerequisite>
           <cost>
-               <essence cost="3" text="per attack" />
+               <essence cost="3" text="per point of rate" />
           </cost>
           <duration amount="1" unit="tick" />
           <charmtype type="Reflexive">

@@ -37,7 +37,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Lunar.MandateOfTheHungryMouse" exalt="Lunar" group="Inisight">
+	<charm id="Lunar.MandateOfTheHungryMouse" exalt="Lunar" group="Insight">
 		<prerequisite>
 			<trait id="Intelligence" value="3" />
 			<essence value="3" />
@@ -53,7 +53,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Lunar.WaspOfTheLabyrinthTrick" exalt="Lunar" group="Craft">
+	<charm id="Lunar.WaspOfTheLabyrinthTrick" exalt="Lunar" group="CraftCharm">
 		<prerequisite>
 			<trait id="Intelligence" value="3" />
 			<essence value="3" />
@@ -70,7 +70,7 @@
 		<charmAttribute attribute="Stackable" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Lunar.MoonAndEarthBlessing" exalt="Lunar" group="Craft">
+	<charm id="Lunar.MoonAndEarthBlessing" exalt="Lunar" group="CraftCharm">
 		<prerequisite>
 			<trait id="Intelligence" value="4" />
 			<essence value="3" />

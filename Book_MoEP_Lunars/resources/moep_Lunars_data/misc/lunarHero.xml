@@ -39,7 +39,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Celestial.RapidBeastAttitude" exalt="Lunar" group="LunarHeroStyle">
+     <charm id="Celestial.RabidBeastAttitude" exalt="Lunar" group="LunarHeroStyle">
           <prerequisite>
                <trait id="Dexterity" value="3" />
                <essence value="2" />
@@ -75,7 +75,7 @@
           <prerequisite>
                <trait id="Dexterity" value="4" />
                <essence value="2" />
-               <charmReference id="Celestial.RapidBeastAttitude" />
+               <charmReference id="Celestial.RabidBeastAttitude" />
                <charmReference id="Celestial.ThousandClawInfliction" />
           </prerequisite>
           <cost>

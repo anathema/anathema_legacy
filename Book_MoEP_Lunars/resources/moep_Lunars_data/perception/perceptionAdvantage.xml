@@ -81,7 +81,7 @@
 			<!-- NOTE:  Lunar/Perception "Mirror" - Eagle Eye Advantage -->
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.KeenSenseTechnique" exalt="Lunar" group="PerceptionAdvantage">
+     <charm id="Lunar.KeenSightTechnique" exalt="Lunar" group="PerceptionAdvantage">
           <prerequisite>
                <trait id="Perception" value="3" />
                <essence value="1" />
@@ -93,16 +93,76 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Fury-OK" visualize="true" />
 			<!-- NOTE:  Solar/Awareness "Mirror" - Keen (Sense) Technique -->
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.HeightenedSenseMethod" exalt="Lunar" group="PerceptionAdvantage">
+     <charm id="Lunar.HeightenedSightMethod" exalt="Lunar" group="PerceptionAdvantage">
           <!-- TODO:  Coding -  Heightened (Sense) must match Keen (Sense). -->
           <prerequisite>
                <trait id="Perception" value="4" />
                <essence value="2" />
-               <charmReference id="Lunar.KeenSenseTechnique" />
+               <charmReference id="Lunar.KeenSightTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+	 
+     <charm id="Lunar.KeenHearingAndTouchTechnique" exalt="Lunar" group="PerceptionAdvantage">
+          <prerequisite>
+               <trait id="Perception" value="3" />
+               <essence value="1" />
+               <charmAttributeRequirement attribute="ExcellencyPerception" count="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+			<!-- NOTE:  Solar/Awareness "Mirror" - Keen (Sense) Technique -->
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.HeightenedHearingAndTouchMethod" exalt="Lunar" group="PerceptionAdvantage">
+          <!-- TODO:  Coding -  Heightened (Sense) must match Keen (Sense). -->
+          <prerequisite>
+               <trait id="Perception" value="4" />
+               <essence value="2" />
+               <charmReference id="Lunar.KeenHearingAndTouchTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.KeenSmellAndTasteTechnique" exalt="Lunar" group="PerceptionAdvantage">
+          <prerequisite>
+               <trait id="Perception" value="3" />
+               <essence value="1" />
+               <charmAttributeRequirement attribute="ExcellencyPerception" count="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+			<!-- NOTE:  Solar/Awareness "Mirror" - Keen (Sense) Technique -->
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.HeightenedSmellAndTasteMethod" exalt="Lunar" group="PerceptionAdvantage">
+          <!-- TODO:  Coding -  Heightened (Sense) must match Keen (Sense). -->
+          <prerequisite>
+               <trait id="Perception" value="4" />
+               <essence value="2" />
+               <charmReference id="Lunar.KeenSmellAndTasteTechnique" />
           </prerequisite>
           <cost>
                <essence cost="2" />

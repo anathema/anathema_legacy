@@ -27,7 +27,7 @@
 		<prerequisite>
 			<trait id="Manipulation" value="4" />
 			<essence value="3" />
-			<charmReference id="Lunar.AnyTrinkeyAllure" />
+			<charmReference id="Lunar.AnyTrinketAllure" />
 		</prerequisite>
 		<cost>
 			<essence cost="10" />

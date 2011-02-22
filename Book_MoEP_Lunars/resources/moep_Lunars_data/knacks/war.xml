@@ -32,7 +32,7 @@
           <cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-          <charmAttribute attribute="NotAlienLernable" />
+          <charmAttribute attribute="NotAlienLearnable" />
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>

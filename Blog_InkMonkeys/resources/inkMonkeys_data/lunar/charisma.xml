@@ -74,12 +74,11 @@
 		<charmAttribute attribute="NotAlienLearnable" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Lunar.SilverAndGoldSpanTheHeavens" exalt="Lunar" group="Interaction">
+	<charm id="Lunar.SilverAndGoldSpanTheHeavens" exalt="Lunar" group="Virtue">
 		<prerequisite>
 			<trait id="Charisma" value="3" />
 			<essence value="3" />
-			<!-- TODO:  Charm Reference is from Glories:  Luna -->
-			<!-- charmReference id="Lunar.SacredGuardianRenewal" /-->
+               <charmReference id="Lunar.SacredGuardianRenewal" />
 		</prerequisite>
 		<cost>
 			<essence cost="1" text="per dot of Bond"/>

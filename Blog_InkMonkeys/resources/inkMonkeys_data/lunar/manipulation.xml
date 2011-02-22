@@ -26,9 +26,8 @@
 	<charm id="Lunar.AnyTrinketAllure" exalt="Lunar" group="Interaction">
 		<prerequisite>
 			<trait id="Manipulation" value="3" />
-			<essence value="3" />
-			<!-- TODO:  Charm Reference is from Glories:  Luna -->
-			<!-- charmReference id="Lunar.TreasureAsTrashMisdirection" /> -->
+			<essence value="3" />			
+			<charmReference id="Lunar.TreasureAsTrashMisdirection" /> 
 		</prerequisite>
 		<cost>
 			<essence cost="3" text="(+1wp)" />
