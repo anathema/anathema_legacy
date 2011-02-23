@@ -16,6 +16,61 @@
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="gloried_Luna_data/whiteReaper.xml" />
           </parameter>
+		  <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="gloried_Luna_data/Knacks.xml" />
+          </parameter>
+		  <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="gloried_Luna_data/Strength.xml" />
+          </parameter>
+		  <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="gloried_Luna_data/Dexterity.xml" />
+          </parameter>
+		  <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="gloried_Luna_data/Stamina.xml" />
+          </parameter>
+		  <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="gloried_Luna_data/Charisma.xml" />
+          </parameter>
+		  <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="gloried_Luna_data/Manipulation.xml" />
+          </parameter>
+		  <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="gloried_Luna_data/Appearance.xml" />
+          </parameter>
+		  <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="gloried_Luna_data/Perception.xml" />
+          </parameter>
+		  <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="gloried_Luna_data/Intelligence.xml" />
+          </parameter>
+		  <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="gloried_Luna_data/Wits.xml" />
+          </parameter>
+		  <!--parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="gloried_Luna_data/misc.xml" />
+          </parameter-->
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="Glories_LunaResources">
           <parameter id="bundle" value="Glories_Luna" />

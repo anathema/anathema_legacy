@@ -24,7 +24,7 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-	<charm id="Lunar.ColdBreathOfTheMoon" exalt="Lunar" group="Reaction">
+	<charm id="Lunar.ColdBreathOfTheMoon" exalt="Lunar" group="Sorcery">
 		<prerequisite>
 			<trait id="Wits" value="3" />
 			<essence value="2" />
@@ -38,7 +38,7 @@
 		<charmAttribute attribute="Sickness" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Lunar.SilverLunarResolutionWits" exalt="Lunar" group="Survival">
+	<charm id="Lunar.SilverLunarResolutionWits" exalt="Lunar" group="SurvivalCharms">
 		<prerequisite>
 			<trait id="Wits" value="4" />
 			<essence value="3" />
@@ -51,7 +51,7 @@
 		<!-- NOTE:  "Mirror" - Lunar/Stamina & Lunar/Charisma -->
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Lunar.MothToFlamesDefense" exalt="Lunar" group="Reaction">
+	<charm id="Lunar.MothToFlamesDefense" exalt="Lunar" group="Sorcery">
 		<prerequisite>
 			<trait id="Wits" value="3" />
 			<essence value="3" />
@@ -68,7 +68,7 @@
 		<charmAttribute attribute="Touch" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Lunar.ThousandfoldWaspDance" exalt="Lunar" group="Survival">
+	<charm id="Lunar.ThousandfoldWaspDance" exalt="Lunar" group="SurvivalCharms">
 		<prerequisite>
 			<trait id="Wits" value="4" />
 			<essence value="3" />
@@ -81,11 +81,11 @@
 		<charmtype type="Simple">
 			<special speed="5" defense="-1" />
 		</charmtype>
-		<charmAttribute attribute="Combo-Ok" visualize="true" />
-		<charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+		  <charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Lunar.WalkingOnMoonlight" exalt="Lunar" group="Survival">
+	<charm id="Lunar.WalkingOnMoonlight" exalt="Lunar" group="Concealment">
 		<prerequisite>
 			<trait id="Wits" value="5" />
 			<essence value="4" />
@@ -96,8 +96,8 @@
 		</cost>
 		<duration duration="Indefinite" />
 		<charmtype type="Simple" />
-		<charmAttribute attribute="Combo-Ok" visualize="true" />
-		<charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+		  <charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
 </charmlist>

@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Perception -->
-     <charm id="Lunar.GodBodyDissection" exalt="Lunar" group="Essence">
+     <charm id="Lunar.GodBodyDissection" exalt="Lunar" group="EssenceCharm">
           <prerequisite>
                <trait id="Perception" value="6" />
                <essence value="6" />
@@ -40,9 +40,9 @@
           <charmAttribute attribute="Crippling" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
-			<source source="ScrollErrata" />
+		  <source source="ScrollErrata" />
      </charm>
-     <charm id="Lunar.GodBodyConsumption" exalt="Lunar" group="Essence">
+     <charm id="Lunar.GodBodyConsumption" exalt="Lunar" group="EssenceCharm">
           <prerequisite>
                <trait id="Perception" value="8" />
                <essence value="7" />
@@ -52,9 +52,9 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <source source="LordsOfCreation" />
-			<source source="ScrollErrata" />
+		  <source source="ScrollErrata" />
      </charm>
-     <charm id="Lunar.EyeOnTheSpider" exalt="Lunar" group="Essence">
+     <charm id="Lunar.EyeOnTheSpider" exalt="Lunar" group="EssenceCharm">
           <prerequisite>
                <trait id="Perception" value="6" />
                <essence value="6" />
@@ -68,9 +68,9 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
-			<source source="ScrollErrata" />
+		  <source source="ScrollErrata" />
      </charm>
-     <charm id="Lunar.EvadingTheSpidersEye" exalt="Lunar" group="Essence">
+     <charm id="Lunar.EvadingTheSpidersEye" exalt="Lunar" group="EssenceCharm">
           <prerequisite>
                <trait id="Perception" value="4" />
                <essence value="4" />
@@ -84,9 +84,9 @@
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="LordsOfCreation" />
-			<source source="ScrollErrata" />
+		  <source source="ScrollErrata" />
      </charm>
-	<charm id="Lunar.SorceryRendingTalons" exalt="Lunar" group="Essence">
+	<charm id="Lunar.SorceryRendingTalons" exalt="Lunar" group="EssenceCharm">
 		<!-- NOTE:  Solar/Occult "Mirror" - Magic-Shattering Strike -->
 		<prerequisite>
 			<trait id="Perception" value="5" />

@@ -23,32 +23,37 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- knacks -->
-	<charm id="Lunar.IllimitableBeastDeclaration" exalt="Lunar" group="Animal">
+	<charm id="Lunar.IllimitableBeastDeclaration" exalt="Lunar" group="Shifting">
 		<prerequisite>
 			<trait id="Stamina" value="5" />
 			<essence value="5" />
-			<selectiveCharmGroup threshold="1">
+               <selectiveCharmGroup threshold="1">
 				<charmReference id="Lunar.EmeraldGrasshopperForm" />
 				<charmReference id="Lunar.ToweringBeastForm" />
 			</selectiveCharmGroup>
 		</prerequisite>
 		<cost />
-		<!--duration />
-		<charmtype /-->
-			<charmAttribute attribute="NotAlienLernable" />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
 		<source source="LordsOfCreation" />
 	</charm>
-	<charm id="Lunar.EmperorOxExpansion" exalt="Lunar" group="Animal">
+	
+	<charm id="Lunar.EmperorOxExpansion" exalt="Lunar" group="Shifting">
 		<prerequisite>
 			<trait id="Stamina" value="5" />
 			<essence value="5" />
 			<charmReference id="Lunar.MountainousSpiritExpression" />
 		</prerequisite>
 		<cost />
-		<!--duration />
-		<charmtype /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
 		<source source="LordsOfCreation" />
 	</charm>
+	
 	<charm id="Lunar.CompassionateMirrorNature" exalt="Lunar" group="Human">
 		<prerequisite>
 			<trait id="Perception" value="4" />
@@ -56,23 +61,29 @@
 			<charmReference id="Lunar.PreysSkinDisguise" />
 		</prerequisite>
 		<cost />
-		<!-- duration />
-		<charmtype /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
 		<source source="LordsOfCreation" />
 		<source source="ScrollErrata" />
 	</charm>
+	
 	<charm id="Lunar.CourtesansPossession" exalt="Lunar" group="Human">
 		<prerequisite>
-			<trait id="Human" value="4" />
+			<trait id="Wits" value="4" />
 			<essence value="4" />
 			<charmReference id="Lunar.CompassionateMirrorNature" />
 		</prerequisite>
 		<cost />
-		<!-- duration />
-		<charmtype /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
 		<source source="LordsOfCreation" />
-		<Source source="ScrollErrata" />
+		<source source="ScrollErrata" />
 	</charm>
+	
 	<charm id="Lunar.MoonAndEarthSong" exalt="Lunar" group="Miscellaneous">
 		<prerequisite>
 			<trait id="Perception" value="7" />
@@ -80,11 +91,14 @@
 			<charmReference id="Lunar.LaurelsAndIvyTechnique" />
 		</prerequisite>
 		<cost />
-		<!-- duration />
-		<charmtype /-->
-			<source source="LordsOfCreation" />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
+		<source source="LordsOfCreation" />
 		<source source="ScrollErrata" />
 	</charm>
+	
 	<charm id="Lunar.HeavenlyServantImitation" exalt="Lunar" group="Supernatural">
 		<prerequisite>
 			<trait id="Intelligence" value="6" />
@@ -93,19 +107,23 @@
 			<charmReference id="Lunar.HearthAndFlameShell" />
 		</prerequisite>
 		<cost />
-		<!-- duration />
-		<charmtype /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
 		<source source="LordsOfCreation" />
 	</charm>
+	
 	<charm id="Lunar.EssentialMirrorForm" exalt="Lunar" group="Supernatural">
 		<prerequisite>
 			<trait id="Intelligence" value="6" />
 			<essence value="6" />
-			<!-- TODO:  SelectiveCharmGroup -->
 		</prerequisite>
 		<cost />
-		<!-- duration />
-		<charmtype /-->
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
 		<source source="LordsOfCreation" />
 		<source source="ScrollErrata" />
 	</charm>

@@ -35,7 +35,7 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Wyld" visualize="true" />
           <source source="LordsOfCreation" />
-			<source source="ScrollErrata" />
+		  <source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.FalseBurrowGift" exalt="Lunar" group="Belief">
           <prerequisite>
@@ -91,7 +91,7 @@
           <prerequisite>
                <trait id="Manipulation" value="6" />
                <essence value="6" />
-               <charmReference id="Lunar.SchoolInTheReedsTechinque" />
+               <charmReference id="Lunar.SchoolInTheReedsTechnique" />
           </prerequisite>
           <cost>
                <essence cost="4" />

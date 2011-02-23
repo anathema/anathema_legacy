@@ -35,7 +35,7 @@
 		<charmtype type="Permanent" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Lunar.WorryTheBone" exalt="Lunar" group="Craft">
+	<charm id="Lunar.WorryTheBone" exalt="Lunar" group="CraftCharm">
 		<prerequisite>
 			<trait id="Perception" value="4" />
 			<essence value="3" />

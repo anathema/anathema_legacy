@@ -40,7 +40,7 @@
           <charmAttribute attribute="Fury-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
-			<source source="ScrollErrata" />
+		  <source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.BesiegingTheBastionOfForm" exalt="Lunar" group="DamageEnhancement">
           <prerequisite>
@@ -80,6 +80,6 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
 			<charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
-		<source source="ScrollErrata" />
+		  <source source="ScrollErrata" />
      </charm>
 </charmlist>
