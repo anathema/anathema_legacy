@@ -31,6 +31,7 @@ import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.BeastformViewFactory;
 import net.sf.anathema.character.lunar.caste.LunarCaste;
 import net.sf.anathema.character.lunar.generic.FlawlessFocus;
+import net.sf.anathema.character.lunar.generic.ImpossibleImprovement;
 import net.sf.anathema.character.lunar.generic.InstinctiveUnity;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodFactory;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodPersisterFactory;
@@ -97,9 +98,13 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
         CharacterType.LUNAR,
         ExaltedEdition.SecondEdition,
         new ISpecialCharm[] {
-                ILunarSpecialCharms.DIRECTIONAL_MASTERY_TECHNIQUE,
-                //ILunarSpecialCharms.DEADLY_BEASTMAN_TRANSFORMATION_2ND,
-                ILunarSpecialCharms.OX_BODY_TECHNIQUE_2ND });
+                ILunarSpecialCharms.OX_BODY_TECHNIQUE_2ND,
+                ILunarSpecialCharms.IMPRESSIONS_OF_STRENGTH,
+                ILunarSpecialCharms.RIGHTEOUS_LION_DEFENSE,
+                ILunarSpecialCharms.ADDER_FANG_METHOD,
+                ILunarSpecialCharms.BESIEGING_THE_BASTION,
+                ILunarSpecialCharms.COBRA_EYE_METHOD,
+                ILunarSpecialCharms.PERFECT_OUTSIDER_UNDERSTANDING});
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.LUNAR,
         new CasteCollection(LunarCaste.values()));
@@ -109,7 +114,8 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
                 new SecondExcellency(CharacterType.LUNAR, ExaltedSourceBook.Lunars2nd),
                 new ThirdExcellency(CharacterType.LUNAR, "4 m", ExaltedSourceBook.Lunars2nd), //$NON-NLS-1$
                 new InstinctiveUnity(),
-                new FlawlessFocus()});
+                new FlawlessFocus(),
+                new ImpossibleImprovement()});
   }
 
   @Override

@@ -28,8 +28,8 @@
           <prerequisite>
                <trait value="5" />
                <essence value="5" />
-               <genericCharmAttributeRequirement attribute="Lunar.InstinctiveUnity" />
-               <genericCharmAttributeRequirement attribute="Lunar.FlawlessFocus" />
+               <genericCharmReference id="Lunar.InstinctiveUnity"/>
+               <genericCharmReference id="Lunar.FlawlessFocus"/>
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
