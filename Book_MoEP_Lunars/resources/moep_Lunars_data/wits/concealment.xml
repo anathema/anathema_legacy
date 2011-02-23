@@ -94,7 +94,7 @@
                <charmReference id="Lunar.SecureDenPrana" />
           </prerequisite>
           <cost />
-          <duration duration="Permanent" />
+          <duration event="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Social" visualize="true" />
           <charmAttribute attribute="War" visualize="true" />

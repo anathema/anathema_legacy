@@ -23,7 +23,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
 	<!-- Dexterity -->
-	<charm id="Lunar.EssentialMoonsilverAffinity" exalt="Lunar" group="CraftCharm">
+	<charm id="Lunar.EssentialMoonsilverAffinity" exalt="Lunar" group="Craft">
 		<prerequisite>
 			<trait id="Dexterity" value="3" />
 			<essence value="2" />
@@ -39,7 +39,7 @@
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Lunar.SensingTheDeadlyFlow" exalt="Lunar" group="DefensiveCharm">
+	<charm id="Lunar.SensingTheDeadlyFlow" exalt="Lunar" group="Defensive">
 		<prerequisite>
 			<trait id="Dexterity" value="5" />
 			<essence value="3" />

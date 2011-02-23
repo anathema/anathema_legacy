@@ -65,7 +65,6 @@
           <prerequisite>
                <trait id="Stamina" value="4" />
                <essence value="3" />
-               <charmReference id="Lunar.ToweringBeastForm" />
           </prerequisite>
           <cost />
           <duration duration="Instant"/>

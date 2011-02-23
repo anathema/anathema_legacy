@@ -46,7 +46,7 @@
                <trait id="Appearance" value="6" />
                <essence value="5" />
                <charmReference id="Lunar.ObservedPredatorInstinct" />
-               <charmReference id="Lunar.GlanceOrationTechnique" />
+               <charmReference id="Lunar.GlanceOrationTechinque" />
           </prerequisite>
           <cost>
                <essence cost="6" />
@@ -54,7 +54,7 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-		  <charmAttribute attribute="Illusion" visualize="true" />
+			<charmAttribute attribute="Illusion" visualize="true" />
           <charmAttribute attribute="Social" visualize="true" />
           <source source="LordsOfCreation" />
 			<source source="ScrollErrata" />

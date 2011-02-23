@@ -114,7 +114,7 @@
                <charmReference id="Lunar.WindDancingMethod" />
           </prerequisite>
           <cost>
-               <essence cost="-" text="(+2m)" />
+               <essence cost="4" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive">

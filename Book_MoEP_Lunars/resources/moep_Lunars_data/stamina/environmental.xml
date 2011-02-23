@@ -43,7 +43,6 @@
           <prerequisite>
                <trait id="Stamina" value="5" />
                <essence value="4" />
-               <charmReference id="Lunar.DirectionalMasteryTechnique" />
           <!-- TODO:  Coding - Must be updated to include the specific charm ID for each sub-charm listed. -->
 				<!--selectiveCharmGroup threshold="1">
 					<charmReference id="Lunar.DirectionalMasteryTechnique.Air" />

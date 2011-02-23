@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<?xml-stylesheet type="text/xsl" href="charmreview-xmlns.xsl"?>
 <!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
 "../charms.dtd">
 <!--
@@ -28,8 +28,9 @@
           <prerequisite>
                <trait value="5" />
                <essence value="5" />
-               <genericCharmAttributeRequirement attribute="Lunar.InstinctiveUnity" />
-               <genericCharmAttributeRequirement attribute="Lunar.FlawlessFocus" />
+               <!-- TODO:  Requires specific excellencies for the given ability. -->
+               <!-- TODO:  genericCharmAttributeRequirement attribute="Lunar.InstinctiveUnity" -->
+               <!-- TODO:  genericCharmAttributeRequirement attribute="Lunar.FlawlessFocus" -->
           </prerequisite>
           <cost />
           <duration duration="Permanent" />

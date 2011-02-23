@@ -92,6 +92,56 @@
              <parameter id="rules" value="SecondEdition" />
              <parameter id="path" value="inkMonkeys_data/abyssal/moonshadow/bureaucracy.xml" />
         </parameter>
+       <parameter id="list">
+             <parameter id="type" value="Lunar" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/lunar/wits.xml" />
+        </parameter>
+       <parameter id="list">
+             <parameter id="type" value="Lunar" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/lunar/strength.xml" />
+        </parameter>
+       <parameter id="list">
+             <parameter id="type" value="Lunar" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/lunar/stamina.xml" />
+        </parameter>
+       <parameter id="list">
+             <parameter id="type" value="Lunar" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/lunar/preception.xml" />
+        </parameter>
+       <parameter id="list">
+             <parameter id="type" value="Lunar" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/lunar/manipulation.xml" />
+        </parameter>
+       <parameter id="list">
+             <parameter id="type" value="Lunar" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/lunar/knacks.xml" />
+        </parameter>
+       <parameter id="list">
+             <parameter id="type" value="Lunar" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/lunar/interaction.xml" />
+        </parameter>
+       <parameter id="list">
+             <parameter id="type" value="Lunar" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/lunar/intelligence.xml" />
+        </parameter>
+       <parameter id="list">
+             <parameter id="type" value="Lunar" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/lunar/dexterity.xml" />
+        </parameter>
+       <parameter id="list">
+             <parameter id="type" value="Lunar" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/lunar/charisma.xml" />
+        </parameter>
 		<!-- Martial Arts -->
 		<parameter id="list">
 			<parameter id="type" value="MartialArts" />
@@ -230,57 +280,6 @@
 				<parameter id="rules" value="SecondEdition" />
 				<parameter id="path" value="inkMonkeys_data/terrestrial/fire/socialize.xml" />
 			</parameter>
-			<!-- Lunar Charms -->			
-			<parameter id="list">
-				<parameter id="type" value="Lunar" />
-				<parameter id="rules" value="SecondEdition" />
-				<parameter id="path" value="inkMonkeys_data/lunar/charisma.xml" />
-			</parameter>				
-			<parameter id="list">
-				<parameter id="type" value="Lunar" />
-				<parameter id="rules" value="SecondEdition" />
-				<parameter id="path" value="inkMonkeys_data/lunar/intelligence.xml" />
-			</parameter>		
-			<parameter id="list">
-				<parameter id="type" value="Lunar" />
-				<parameter id="rules" value="SecondEdition" />
-				<parameter id="path" value="inkMonkeys_data/lunar/strength.xml" />
-			</parameter>				
-			<parameter id="list">
-				<parameter id="type" value="Lunar" />
-				<parameter id="rules" value="SecondEdition" />
-				<parameter id="path" value="inkMonkeys_data/lunar/dexterity.xml" />
-			</parameter>		
-			<parameter id="list">
-				<parameter id="type" value="Lunar" />
-				<parameter id="rules" value="SecondEdition" />
-				<parameter id="path" value="inkMonkeys_data/lunar/manipulation.xml" />
-			</parameter>			
-			<parameter id="list">
-				<parameter id="type" value="Lunar" />
-				<parameter id="rules" value="SecondEdition" />
-				<parameter id="path" value="inkMonkeys_data/lunar/stamina.xml" />
-			</parameter>			
-			<parameter id="list">
-				<parameter id="type" value="Lunar" />
-				<parameter id="rules" value="SecondEdition" />
-				<parameter id="path" value="inkMonkeys_data/lunar/wits.xml" />
-			</parameter>
-			<parameter id="list">
-				<parameter id="type" value="Lunar" />
-				<parameter id="rules" value="SecondEdition" />
-				<parameter id="path" value="inkMonkeys_data/lunar/knacks.xml" />
-			</parameter>	
-			<parameter id="list">
-				<parameter id="type" value="Lunar" />
-				<parameter id="rules" value="SecondEdition" />
-				<parameter id="path" value="inkMonkeys_data/lunar/perception.xml" />
-			</parameter>			
-			<parameter id="list">
-				<parameter id="type" value="Lunar" />
-				<parameter id="rules" value="SecondEdition" />
-				<parameter id="path" value="inkMonkeys_data/lunar/interaction.xml" />
-			</parameter>					
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="InkMonkeysResources">
           <parameter id="bundle" value="inkMonkeys" />

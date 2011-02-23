@@ -73,12 +73,12 @@
                <charmReference id="Lunar.ScorpionAndToadAssumption" />
           </prerequisite>
           <cost>
-               <essence cost="1" text="+ (Resource value of poison in motes)" />
+               <essence cost="1" text="+ Resource value of poison in motes" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Poison" visualize="true" />
+          <charmAttribute attribute="Poision" visualize="true" />
           <charmAttribute attribute="Sickness" visualize="true" />
           <source source="Lunars2nd" />
      </charm>

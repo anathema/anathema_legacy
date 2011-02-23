@@ -32,7 +32,7 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <source source="Lunars2nd" />
+          <source source="SecondEdition" />
      </charm>
      <charm id="Lunar.IntimacyOfTheHunterAndThePrey" exalt="Lunar" group="DefensiveCharm">
           <prerequisite>

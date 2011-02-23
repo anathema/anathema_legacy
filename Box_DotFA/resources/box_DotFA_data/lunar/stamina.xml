@@ -52,7 +52,7 @@
           <prerequisite>
                <trait id="Stamina" value="6" />
                <essence value="5" />
-               <charmReference id="Lunar.InstinctiveUnity.Stamina" />
+               <charmReference id="Lunar.InstinctiveStaminaUnity" />
                <charmReference id="Lunar.HaltingTheScarletFlow" />
           </prerequisite>
           <cost>
@@ -65,7 +65,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
      </charm>
-     <charm id="Lunar.NativeSonsGrace" exalt="Lunar" group="Soak">
+     <charm id="Lunar.NativeSonsGrace" exalt="Lunar" group="Territory">
           <prerequisite>
                <trait id="Stamina" value="5" />
                <essence value="4" />
@@ -82,9 +82,9 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Fury-OK" visualize="true" />
           <source source="LordsOfCreation" />
-		  <source source="ScrollErrata" />
+			<source source="ScrollErrata" />
      </charm>
-     <charm id="Lunar.IndestructibleRecursiveDesign" exalt="Lunar" group="Soak">
+     <charm id="Lunar.IndestructibleRecursiveDesign" exalt="Lunar" group="Territory">
           <prerequisite>
           <trait id="Stamina" value="4" />
           <essence value="4" />
@@ -98,7 +98,7 @@
                <special speed="5" defense="-2" />
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
-		  <source source="LordsOfCreation" />
-		  <source source="ScrollErrata" />
+			<source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>

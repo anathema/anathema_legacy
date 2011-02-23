@@ -49,7 +49,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <source source="LordsOfCreation" />
-		  <source source="ScrollErrata" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.FrozenRippleLair" exalt="Lunar" group="Concealment">
           <prerequisite>
@@ -68,7 +68,7 @@
           <charmAttribute attribute="Wyld" visualize="true" />
           <source source="LordsOfCreation" />
      </charm>
-     <charm id="Lunar.SoldierBeeEmulationExtraction" exalt="Lunar" group="Reaction">
+     <charm id="Lunar.SoldierBeeEmulationExtraction" exalt="Lunar" group="Movement">
           <prerequisite>
                <trait id="Wits" value="6" />
                <essence value="6" />
@@ -87,6 +87,6 @@
           <charmAttribute attribute="Obvious" visualize="true" />
 			<charmAttribute attribute="Shaping" visualize="true" />
           <source source="LordsOfCreation" />
-		  <source source="ScrollErrata" />
+			<source source="ScrollErrata" />
      </charm>
 </charmlist>

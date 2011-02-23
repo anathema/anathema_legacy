@@ -186,11 +186,6 @@
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="moep_Lunars_data/misc/lunarHero.xml" />
           </parameter>
-		   <parameter id="list">
-               <parameter id="type" value="MartialArts" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="moep_Lunars_data/misc/misc.xml" />
-          </parameter>
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />

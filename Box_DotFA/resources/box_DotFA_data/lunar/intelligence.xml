@@ -54,7 +54,7 @@
           <duration amount="1" unit="day" />
           <charmtype type="Simple" />
           <source source="LordsOfCreation" />
-		  <source source="ScrollErrata" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.DefeatedTechinqueMastery" exalt="Lunar" group="Insight">
           <prerequisite>
@@ -70,9 +70,9 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
-		  <charmAttribute attribute="Training" visualize="true" />
+			<charmAttribute attribute="Training" visualize="true" />
           <source source="LordsOfCreation" />
-		  <source source="ScrollErrata" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.EternalWyldGift" exalt="Lunar" group="Wyld">
           <prerequisite>

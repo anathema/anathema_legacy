@@ -36,7 +36,7 @@
 		</cost>
 		<duration duration="Instant" />
 		<charmtype type="Simple">
-			<special speed="4"  defense="-1"  />
+			<special speed="4" defense="-1" />
 		</charmtype>
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Crippling" visualize="true" />

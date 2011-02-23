@@ -69,7 +69,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <source source="LordsOfCreation" />
-		  <source source="ScrollErrata" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.UnstoppableBeastWarriorIndoctrination" exalt="Lunar" group="AnimalAndTraining">
           <prerequisite>
@@ -100,7 +100,7 @@
           <charmAttribute attribute="Holy" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="LordsOfCreation" />
-		  <source source="ScrollErrata" />
+			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.FeralCatTread" exalt="Lunar" group="Territory">
           <prerequisite>
