@@ -1,11 +1,12 @@
 ===------------------------------------------------------------------------------===
-	    ANATHEMA v1.5.1 "LOOKSHY"
+	    ANATHEMA v2.0.0 "STYGIA"
 ===------------------------------------------------------------------------------===
 
 Anathema Read Me
 (C) 2004-2008 by Sandra Sieroux and Urs Reupke
-(C) 2010 BY Urs Reupke, Sandra Sieroux, Scott Olson, Eric Astor, Paul Adams, and Rob Rutherford
-Exalted (C) 2001-2010 by White Wolf Publishing, Inc.
+(C) 2010 BY Urs Reupke, Sandra Sieroux, Scott Olson, Eric Astor, Paul Adams, Rob Rutherford,
+            Sean Mattox, and Douglas Fotheringham
+Exalted (C) 2001-2011 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
@@ -67,7 +68,7 @@ You can always get the most up to date version at "http//java.sun.com".
 ===------------------------------------------------------------------------------===
 
 + Generate and maintain all 5 core exalt types (1E)
-+ Generate and maintain Solar and Dragon-blooded exalt types (2E)
++ Generate and maintain Solar. Lunar, Abyssal, and Dragon-blooded exalt types (2E)
 + Generate character descriptions (currently disabled)
 + Print character sheets and descriptions to PDF
 + Organize your series' plot
@@ -115,7 +116,7 @@ Note: the Dreams of the First Age Solar templates give 2 more bonus dots than th
 do, to allow the player to place the free manse and free cult dots that they automatically get.
 Also, the Solar types that get 1 or 2 dots of an Ability of their choice from a selection of
 options, those dots will be the first dots chosen from that range and are not deletable, so
-choose carefully. 
+choose carefully. These templates need some revising as well, but are a start.
 
 See versions.txt for a history of bugs fixed.
 
@@ -125,8 +126,8 @@ See versions.txt for a history of bugs fixed.
 
 Anathema was created  by Sandra Sieroux and Urs Reupke, with further development
 (starting with version 1.4.1) by Scott Olson, Eric Astor, Rob Rutherford, Paul Adams,
-and others. Contact us at the-smith@users.sourceforge.net with questions, comments or
-suggestions.
+Sean Mattox, Douglas Fotheringham, and others. Contact us at
+the-smith@users.sourceforge.net with questions, comments or suggestions.
 
 For bug reports you should use the SourceForge.net Tracking System at
 http://sourceforge.net/projects/anathema
@@ -146,7 +147,7 @@ If you are interested in seeing Anathema in your native language,
 please contact us.
 
 If you're interested in becoming a member of the Anathema
-development team, please contact us, at he-smith@users.sourceforge.net.
+development team, please contact us, at the-smith@users.sourceforge.net.
 
 ===------------------------------------------------------------------------------===
 		IX - Thanks
@@ -167,6 +168,10 @@ getting us pointed in the right direction for future expansions).
 Thanks also to Rob Rutherford and Eric Astor, without whom 1.4.2 probably wouldn't have
 gotten done in 2010, and 1.5.0 wouldn't have been done until 2011-12.  Their knowledge
 of Java and Eclipse has been invaluable, as have been their coding skills. 
+
+Sean Mattox provided a new burst of energy and skill when he joined up and hammered out
+the code for 2E Lunars in record time.  His arrival, along with that of Douglas Fotheringham,
+got 2.0 out the door long before I'd expected it.
 
 Philip "The_Burrito" Markus provided much of the Necromancy spell and Lunar Charm data.
 Patches did the same for the Dragon Kings.
