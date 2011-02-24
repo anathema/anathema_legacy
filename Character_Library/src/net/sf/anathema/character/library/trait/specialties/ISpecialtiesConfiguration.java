@@ -13,6 +13,8 @@ public interface ISpecialtiesConfiguration {
   public ISubTraitContainer getSpecialtiesContainer(ITraitType traitType);
 
   public ITraitReference[] getAllTraits();
+  
+  public ITraitReference[] getAllEligibleTraits();
 
   public void setCurrentTrait(ITraitReference newValue);
 

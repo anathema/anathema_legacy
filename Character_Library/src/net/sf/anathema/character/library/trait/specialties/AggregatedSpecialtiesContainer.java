@@ -109,4 +109,10 @@ public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
   public void dispose() {
     throw new UnsupportedOperationException("Dispose subcontainers instead."); //$NON-NLS-1$
   }
+
+	@Override
+	public boolean isNewSubTraitAllowed()
+	{
+		return true;
+	}
 }

@@ -1,6 +1,8 @@
 package net.sf.anathema.character.library.trait.specialties;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -8,9 +10,11 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.ITraitCollection;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
@@ -33,6 +37,9 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   private final ICharacterModelContext context;
   private String currentName;
   private ITraitReference currentType;
+  
+  //reference to the Lunar generic charm which grants the ability to take attribute specialties
+  private final String flawlessFocus = "Lunar.FlawlessFocus.";
 
   public SpecialtiesConfiguration(
       ITraitCollection traitCollection,
@@ -118,6 +125,35 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   public ITraitReference[] getAllTraits() {
     Set<ITraitReference> keySet = specialtiesByTrait.keySet();
     return keySet.toArray(new ITraitReference[keySet.size()]);
+  }
+  
+  public ITraitReference[] getAllEligibleTraits()
+  {
+	   List<ITraitReference> keySet = new ArrayList<ITraitReference>(specialtiesByTrait.keySet());
+	   List<ITraitReference> toRemove = new ArrayList<ITraitReference>();
+	   
+	   for (ITraitReference trait : keySet)
+	   {
+		   if (trait.getTraitType() instanceof AttributeType)
+		   {
+			   boolean hasFocus = false;
+			   for (ICharm charm : context.getCharmContext().getCharmConfiguration().getLearnedCharms())
+				   if (charm.getId().equals(flawlessFocus + trait))
+					   hasFocus = true;
+			   if (!hasFocus)
+			   {
+				   toRemove.add(trait);
+				   getSpecialtiesContainer(trait.getTraitType()).dispose();
+			   }
+		   }
+		   if (!getSpecialtiesContainer(trait.getTraitType()).isNewSubTraitAllowed() &&
+			   !toRemove.contains(trait))
+			   toRemove.add(trait);
+			   
+	   }
+	   keySet.removeAll(toRemove);
+	   
+	   return keySet.toArray(new ITraitReference[keySet.size()]);
   }
 
   public void setCurrentSpecialtyName(String newSpecialtyName) {

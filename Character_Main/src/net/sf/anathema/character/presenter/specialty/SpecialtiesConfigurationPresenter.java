@@ -8,7 +8,7 @@ import java.util.Comparator;
 import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
@@ -110,7 +110,7 @@ public class SpecialtiesConfigurationPresenter implements IPresenter {
       }
 
       public void referenceRemoved(ITraitReference reference) {
-        specialtySelectionView.setObjects(specialtyManagement.getAllTraits());
+        specialtySelectionView.setObjects(specialtyManagement.getAllEligibleTraits());
       }
     });
     reset(specialtySelectionView);
@@ -119,11 +119,24 @@ public class SpecialtiesConfigurationPresenter implements IPresenter {
         addSpecialtyView((ISpecialty) specialty);
       }
     }
-    initExperiencedListening();
+    specialtyManagement.addCharacterChangeListener(new GlobalCharacterChangeAdapter() {
+    	
+        @Override
+        public void characterChanged()
+        {
+        	setObjects(specialtySelectionView);
+        }
+        
+        @Override
+        public void experiencedChanged(boolean experienced) {
+          updateSpecialtyViewButtons();
+        }
+      });
+    updateSpecialtyViewButtons();
   }
 
   private void setObjects(IButtonControlledComboEditView<ITraitReference> specialtySelectionView) {
-    ITraitReference[] allTraits = getAllTraits();
+    ITraitReference[] allTraits = getAllEligibleTraits();
     Arrays.sort(allTraits, comparator);
     specialtySelectionView.setObjects(allTraits);
   }
@@ -143,16 +156,6 @@ public class SpecialtiesConfigurationPresenter implements IPresenter {
     specialtySelectionView.clear();
   }
 
-  private void initExperiencedListening() {
-    specialtyManagement.addCharacterChangeListener(new DedicatedCharacterChangeAdapter() {
-      @Override
-      public void experiencedChanged(boolean experienced) {
-        updateSpecialtyViewButtons();
-      }
-    });
-    updateSpecialtyViewButtons();
-  }
-
   protected void removeSpecialtyView(ISubTrait specialty) {
     ISpecialtyView view = viewsBySpecialty.get(specialty);
     viewsBySpecialty.remove(specialty);
@@ -161,6 +164,11 @@ public class SpecialtiesConfigurationPresenter implements IPresenter {
 
   private ITraitReference[] getAllTraits() {
     return specialtyManagement.getAllTraits();
+  }
+  
+  private ITraitReference[] getAllEligibleTraits()
+  {
+	return specialtyManagement.getAllEligibleTraits();
   }
 
   private void updateSpecialtyViewButtons() {

@@ -3,7 +3,6 @@ package net.sf.anathema.character.impl.model.traits.listening;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
@@ -85,6 +84,7 @@ public class CharacterTraitListening {
   {
 	  ITraitTypeGroup[] groups = traitConfiguration.getAttributeTypeGroups();
 	  ITraitType[] allAttributeTypes = TraitTypeGroup.getAllTraitTypes(groups);
+	  ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
 	  for (ITraitType traitType : allAttributeTypes)
 	  {
 	      IFavorableTrait attribute = traitConfiguration.getFavorableTrait(traitType);
@@ -94,6 +94,20 @@ public class CharacterTraitListening {
 	          listening.fireCharacterChanged();
 	        }
 	      });
-	    }
+	      
+	      specialtyConfiguration.getSpecialtiesContainer(traitType).addSubTraitListener(new ISubTraitListener() {
+	          public void subTraitRemoved(ISubTrait specialty) {
+	            listening.fireCharacterChanged();
+	          }
+
+	          public void subTraitAdded(ISubTrait specialty) {
+	            listening.fireCharacterChanged();
+	          }
+
+	          public void subTraitValueChanged() {
+	            listening.fireCharacterChanged();
+	          }
+	        });
+	  }
   }
 }

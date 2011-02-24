@@ -107,8 +107,6 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
 
   protected abstract ISubTrait createSubTrait(String name);
 
-  protected abstract boolean isNewSubTraitAllowed();
-
   protected abstract void handleAdditionOfContainedEquivalent(ISubTrait subTrait);
 
   public final ISubTrait addSubTrait(String traitName) {

@@ -5,6 +5,8 @@ public interface ISubTraitContainer {
   public ISubTrait[] getSubTraits();
 
   public ISubTrait addSubTrait(String subName);
+  
+  public boolean isNewSubTraitAllowed();
 
   public void removeSubTrait(ISubTrait specialty);
 

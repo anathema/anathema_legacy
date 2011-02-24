@@ -64,7 +64,7 @@ public class AggregationSubTraitContainer extends AbstractSubTraitContainer {
   }
 
   @Override
-  protected boolean isNewSubTraitAllowed() {
+  public boolean isNewSubTraitAllowed() {
     return true;
   }
 }

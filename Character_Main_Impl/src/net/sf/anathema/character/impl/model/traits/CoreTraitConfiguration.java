@@ -82,7 +82,14 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
         template.getTraitTemplateCollection(),
         modelContext.getTraitContext(),
         backgroundRegistry);
-    this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, modelContext);
+    
+    IIdentifiedCasteTraitTypeGroup[] specialtyGroup = new IIdentifiedCasteTraitTypeGroup[abilityTraitGroups.length + attributeTraitGroups.length];
+    int index = 0;
+    for (; index != abilityTraitGroups.length; index++)
+    	specialtyGroup[index] = abilityTraitGroups[index];
+    for (; index != abilityTraitGroups.length + attributeTraitGroups.length; index++)
+    	specialtyGroup[index] = attributeTraitGroups[index - abilityTraitGroups.length];
+    this.specialtyConfiguration = new SpecialtiesConfiguration(this, specialtyGroup, modelContext);
   }
 
   private void addAttributes(ICharacterTemplate template) {
