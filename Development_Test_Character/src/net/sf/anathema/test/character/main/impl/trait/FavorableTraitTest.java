@@ -1,5 +1,6 @@
 package net.sf.anathema.test.character.main.impl.trait;
 
+import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
@@ -114,7 +115,7 @@ public class FavorableTraitTest extends AbstractTraitTest {
         traitContext.getLimitationContext());
     return new DefaultTrait(
         rules,
-        new DummyCasteType(),
+        new ICasteType[] { new DummyCasteType() },
         traitContext,
         context.getBasicCharacterContext(),
         context.getCharacterListening(),

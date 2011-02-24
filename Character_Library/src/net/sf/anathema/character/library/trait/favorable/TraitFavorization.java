@@ -16,18 +16,18 @@ public class TraitFavorization implements ITraitFavorization {
   private final GenericControl<IFavorableStateChangedListener> favorableStateControl = new GenericControl<IFavorableStateChangedListener>();
   private final IIncrementChecker favoredIncrementChecker;
   private final ITrait trait;
-  private final ICasteType caste;
+  private final ICasteType[] castes;
   private final boolean isRequiredFavored;
   private final IBasicCharacterData basicData;
 
   public TraitFavorization(
       IBasicCharacterData basicData,
-      ICasteType caste,
+      ICasteType[] castes,
       IIncrementChecker favoredIncrementChecker,
       ITrait trait,
       boolean isRequiredFavored) {
     this.basicData = basicData;
-    this.caste = caste;
+    this.castes = castes;
     this.favoredIncrementChecker = favoredIncrementChecker;
     this.trait = trait;
     this.isRequiredFavored = isRequiredFavored;
@@ -117,8 +117,8 @@ public class TraitFavorization implements ITraitFavorization {
     return isCaste() || isFavored();
   }
 
-  public ICasteType getCaste() {
-    return caste;
+  public ICasteType[] getCastes() {
+    return castes;
   }
 
   public void updateFavorableStateToCaste() {
@@ -129,7 +129,11 @@ public class TraitFavorization implements ITraitFavorization {
   }
 
   private boolean isSupportedCasteType(ICasteType casteType) {
-    ICasteType favorizationCaste = getCaste();
-    return favorizationCaste != null && favorizationCaste == casteType;
+    ICasteType[] favorizationCaste = getCastes();
+    if (favorizationCaste == null) return false;
+    for (ICasteType caste : favorizationCaste)
+    	if (caste == casteType)
+    		return true;
+    return false;
   }
 }

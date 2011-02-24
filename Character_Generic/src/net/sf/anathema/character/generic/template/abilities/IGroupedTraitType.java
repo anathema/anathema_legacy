@@ -1,5 +1,7 @@
 package net.sf.anathema.character.generic.template.abilities;
 
+import java.util.List;
+
 import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface IGroupedTraitType {
@@ -8,5 +10,7 @@ public interface IGroupedTraitType {
 
   public String getGroupId();
 
-  public String getCasteId();
+  public String getGroupCasteId();
+  
+  public List<String> getTraitCasteSet();
 }

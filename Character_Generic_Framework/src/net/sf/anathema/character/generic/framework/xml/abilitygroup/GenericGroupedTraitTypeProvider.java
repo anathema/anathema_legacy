@@ -22,9 +22,11 @@ public class GenericGroupedTraitTypeProvider implements ICloneable<GenericGroupe
     return groupedTraitTypes.toArray(new IGroupedTraitType[groupedTraitTypes.size()]);
   }
 
-  public void addGroupedAbilityType(String abilityTypeId, String traitTypeId, String casteId) {
+  public void addGroupedAbilityType(String abilityTypeId, String traitTypeId, String groupCasteId, List<String> traitCasteIds) {
     ITraitType traitType = traitTypeGroup.getById(abilityTypeId);
-    groupedTraitTypes.add(new GroupedTraitType(traitType, traitTypeId, casteId));
+    groupedTraitTypes.add(traitCasteIds.size() > 0 ?
+    		new GroupedTraitType(traitType, traitCasteIds, traitTypeId) :
+    		new GroupedTraitType(traitType, traitTypeId, groupCasteId));
   }
 
   @Override

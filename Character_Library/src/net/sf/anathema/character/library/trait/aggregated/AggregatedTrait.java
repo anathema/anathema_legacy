@@ -42,13 +42,13 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
       ICharacterListening listening,
       ITraitContext traitContext,
       IValueChangeChecker valueChangeChecker,
-      ICasteType caste,
+      ICasteType[] castes,
       IIncrementChecker favoredIncrementChecker,
       String... unremovableSubTraits) {
     super(traitRules, traitContext);
     this.traitFavorization = new TraitFavorization(
         basicData,
-        caste,
+        castes,
         favoredIncrementChecker,
         this,
         traitRules.isRequiredFavored());

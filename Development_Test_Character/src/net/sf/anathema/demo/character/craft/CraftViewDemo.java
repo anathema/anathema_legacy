@@ -52,7 +52,7 @@ public class CraftViewDemo extends SwingDemoCase {
         context.getCharacterListening(),
         context.getTraitContext(),
         valueChecker,
-        ICasteType.NULL_CASTE_TYPE,
+        new ICasteType[] { ICasteType.NULL_CASTE_TYPE },
         new FriendlyIncrementChecker(),
         unremovableTraits);
   }

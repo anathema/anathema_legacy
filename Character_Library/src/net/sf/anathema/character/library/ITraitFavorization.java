@@ -6,7 +6,7 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedL
 
 public interface ITraitFavorization {
 
-  public ICasteType getCaste();
+  public ICasteType[] getCastes();
 
   public void addFavorableStateChangedListener(IFavorableStateChangedListener listener);
 

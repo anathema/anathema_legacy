@@ -39,8 +39,8 @@ public class AggregatedTraitFavorization implements ITraitFavorization {
     favorization.addFavorableStateChangedListener(listener);
   }
 
-  public ICasteType getCaste() {
-    return favorization.getCaste();
+  public ICasteType[] getCastes() {
+    return favorization.getCastes();
   }
 
   public FavorableState getFavorableState() {

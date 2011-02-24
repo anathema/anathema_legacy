@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
+import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -85,7 +86,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   }
 
   private void addAttributes(ICharacterTemplate template) {
-    //GrumpyIncrementChecker incrementChecker = new GrumpyIncrementChecker();
 	IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredAttributeIncrementChecker(template, this);
     addFavorableTraits(attributeTraitGroups, incrementChecker);
   }
@@ -97,9 +97,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
   private void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker) {
     for (IIdentifiedCasteTraitTypeGroup traitGroup : traitGroups) {
-      addTraits(favorableTraitFactory.createTraits(
-          traitGroup.getAllGroupTypes(),
-          traitGroup.getCasteType(),
+      addTraits(favorableTraitFactory.createTraits(traitGroup,
           incrementChecker));
     }
   }

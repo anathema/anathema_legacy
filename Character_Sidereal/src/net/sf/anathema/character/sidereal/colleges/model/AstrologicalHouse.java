@@ -99,7 +99,7 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
           traitContext.getLimitationContext());
       colleges[index] = new DefaultTrait(
           rules,
-          casteType,
+          new ICasteType[] { casteType },
           traitContext,
           context.getBasicCharacterContext(),
           context.getCharacterListening(),

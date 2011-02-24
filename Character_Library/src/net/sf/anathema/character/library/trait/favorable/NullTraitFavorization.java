@@ -9,8 +9,8 @@ public class NullTraitFavorization implements ITraitFavorization {
     // nothing to do
   }
 
-  public ICasteType getCaste() {
-    return ICasteType.NULL_CASTE_TYPE;
+  public ICasteType[] getCastes() {
+    return new ICasteType[] { ICasteType.NULL_CASTE_TYPE };
   }
 
   public FavorableState getFavorableState() {

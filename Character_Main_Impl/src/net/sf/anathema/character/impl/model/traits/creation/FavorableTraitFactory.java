@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
@@ -39,19 +40,21 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
   }
 
   public IFavorableTrait[] createTraits(
-      ITraitType[] traitTypes,
-      ICasteType casteType,
+		  IIdentifiedCasteTraitTypeGroup group,
       IIncrementChecker favoredIncrementChecker) {
+	  ITraitType[] traitTypes = group.getAllGroupTypes();
     IFavorableTrait[] newTraits = new IFavorableTrait[traitTypes.length];
     for (int index = 0; index < newTraits.length; index++) {
-      newTraits[index] = createTrait(traitTypes[index], casteType, favoredIncrementChecker);
+    	ITraitType type = traitTypes[index];
+        newTraits[index] = createTrait(type, group.getTraitCasteTypes(type),
+    		  favoredIncrementChecker);
     }
     return newTraits;
   }
 
   public IFavorableTrait createTrait(
       ITraitType traitType,
-      ICasteType casteType,
+      ICasteType[] casteTypes,
       IIncrementChecker favoredIncrementChecker) {
     ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
     FavorableTraitRules favorableTraitRules = new FavorableTraitRules(
@@ -76,13 +79,13 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
           characterListening,
           traitContext,
           valueChecker,
-          casteType,
+          casteTypes,
           favoredIncrementChecker,
           crafts[0]);
     }
     return new DefaultTrait(
         favorableTraitRules,
-        casteType,
+        casteTypes,
         traitContext,
         basicCharacterData,
         characterListening,

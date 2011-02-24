@@ -2,6 +2,7 @@ package net.sf.anathema.test.character.main.impl.charm;
 
 import java.util.LinkedHashMap;
 
+import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -41,7 +42,7 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
         traitContext.getLimitationContext());
     endurance = new DefaultTrait(
         enduranceRules,
-        new DummyCasteType(),
+        new ICasteType[] { new DummyCasteType() },
         traitContext,
         modelContext.getBasicCharacterContext(),
         modelContext.getCharacterListening(),

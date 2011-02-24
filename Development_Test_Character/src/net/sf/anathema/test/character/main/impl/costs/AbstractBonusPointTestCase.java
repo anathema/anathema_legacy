@@ -63,9 +63,9 @@ public abstract class AbstractBonusPointTestCase extends BasicCharacterTestCase 
         });
     IIncrementChecker friendlyIncrementChecker = new FriendlyIncrementChecker();
     for (AbilityType traitType : AbilityType.values()) {
-      DummyCasteType casteType = new DummyCasteType();
+      DummyCasteType[] casteType = { new DummyCasteType() };
       coreTraits.addTestTrait(favorableTraitFactory.createTrait(traitType, casteType, friendlyIncrementChecker));
-      coreTraits.addAbilityTypeToGroup(traitType, casteType.getId());
+      coreTraits.addAbilityTypeToGroup(traitType, casteType[0].getId());
     }
   }
 }
