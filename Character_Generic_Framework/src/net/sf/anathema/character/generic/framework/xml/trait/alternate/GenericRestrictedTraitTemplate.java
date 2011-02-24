@@ -49,7 +49,7 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
   }
 
   public int getMinimumValue(ILimitationContext limitationContext) {
-    if (restriction.isFullfilledWithout(limitationContext.getTraitCollection(), traitType)) {
+    if (restriction.isFullfilledWithout(limitationContext, traitType)) {
       return traitTemplate.getMinimumValue(limitationContext);
     }
     return restriction.getStrictMinimumValue();
@@ -57,6 +57,16 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
 
   public ITraitType getTraitType() {
     return traitType;
+  }
+  
+  public IMinimumRestriction getRestriction()
+  {
+	  return restriction;
+  }
+  
+  public IClonableTraitTemplate getTemplate()
+  {
+	  return traitTemplate;
   }
 
   @Override

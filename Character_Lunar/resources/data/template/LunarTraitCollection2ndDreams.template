@@ -1,0 +1,55 @@
+<traitTemplates uses="trait/DefaultTraitCollection.template">
+  <attributes>
+    <defaultTrait startValue="1" lowerableState="Default">
+      <limitation type="Essence"/>
+      <minimum value="1"/>
+    </defaultTrait>
+  </attributes>
+  <abilities>
+		<defaultTrait startValue="0" lowerableState="Default">
+			<limitation type="Essence"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Survival" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="true">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<alternateMinimumTraits count="1" value="1">
+ 	  <trait id="Archery" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+      <trait id="MartialArts" startValue="1" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+ 	  <trait id="Melee" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+      <trait id="Thrown" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+		</alternateMinimumTraits>
+		
+		<casteMinimumTraits caste="FullMoon">
+			<specialTrait id="Melee" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="4"/>
+			</specialTrait>
+			
+			<alternateMinimumTraits count="1" value="1">
+			<trait id="Lore" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+			<trait id="Occult" startValue="0" lowerableState="Default" zeroLevel="0">
+				<limitation type="Essence"/>
+				<minimum value="0"/>
+			</trait>
+			</alternateMinimumTraits>
+		</casteMinimumTraits>
+		
+  </abilities>
+</traitTemplates>
