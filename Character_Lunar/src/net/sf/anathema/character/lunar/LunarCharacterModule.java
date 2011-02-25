@@ -1,9 +1,12 @@
 package net.sf.anathema.character.lunar;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
+import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
@@ -22,6 +25,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -105,9 +109,13 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
                 ILunarSpecialCharms.BESIEGING_THE_BASTION,
                 ILunarSpecialCharms.COBRA_EYE_METHOD,
                 ILunarSpecialCharms.PERFECT_OUTSIDER_UNDERSTANDING});
+    
+    Map<IExaltedEdition, ICasteType[]> editionMap = new HashMap<IExaltedEdition, ICasteType[]>();
+    editionMap.put(ExaltedEdition.FirstEdition, LunarCaste.getFirstEditionValues());
+    editionMap.put(ExaltedEdition.SecondEdition, LunarCaste.values());
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.LUNAR,
-        new CasteCollection(LunarCaste.values()));
+        new CasteCollection(editionMap));
     characterGenerics.getGenericCharmStatsRegistry().register(
             CharacterType.LUNAR,
             new IMagicStats[] { new FirstExcellency(CharacterType.LUNAR, ExaltedSourceBook.Lunars2nd, "1 m per die"), //$NON-NLS-1$

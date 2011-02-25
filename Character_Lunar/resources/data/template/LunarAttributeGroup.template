@@ -1,17 +1,17 @@
 <attributeGroups>
   <group id="Physical">
     <trait type="Strength" casteId="FullMoon"/>
-    <trait type="Dexterity" casteId="FullMoon"/>
+    <trait type="Dexterity" casteId="FullMoon,WaningMoon"/>
     <trait type="Stamina" casteId="FullMoon"/>
   </group>
   <group id="Social">
-     <trait type="Charisma" casteId="ChangingMoon"/>
-     <trait type="Manipulation" casteId="ChangingMoon"/>
-     <trait type="Appearance" casteId="ChangingMoon"/>    
+     <trait type="Charisma" casteId="ChangingMoon,WaxingMoon,HalfMoon"/>
+     <trait type="Manipulation" casteId="ChangingMoon,WaxingMoon,WaningMoon"/>
+     <trait type="Appearance" casteId="ChangingMoon,WaxingMoon"/>    
   </group>
   <group id="Mental">
-    <trait type="Perception" casteId="NoMoon"/>
-    <trait type="Intelligence" casteId="NoMoon"/>
-    <trait type="Wits" casteId="NoMoon"/>
+    <trait type="Perception" casteId="NoMoon,HalfMoon"/>
+    <trait type="Intelligence" casteId="NoMoon,HalfMoon"/>
+    <trait type="Wits" casteId="NoMoon,WaningMoon"/>
   </group>  
 </attributeGroups>
