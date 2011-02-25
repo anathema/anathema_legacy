@@ -12,6 +12,7 @@ import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
 public class AllocationMinimumRestriction extends ReflectionEqualsObject implements IMinimumRestriction
 {
+
   private final Map<ITraitType, Integer> allocationMap = new HashMap<ITraitType, Integer>();
   private final List<AllocationMinimumRestriction> siblings;
   private final int dotCount;
@@ -38,11 +39,11 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
     strictMinimumValue = remainingDots;
     return remainingDots == 0;
   }
-  
+
   private int getExternalAllocation(ITraitType traitType)
   {
 	  int allocated = 0;
-	  
+
 	  for (AllocationMinimumRestriction sibling : siblings)
 	  {
 		  if (sibling == this)
@@ -54,12 +55,12 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
 		  }
 		  catch (NullPointerException e)
 		  {
-			  
+
 		  }
 	  }
 	  return allocated;
   }
-  
+
   public void clear()
   {
 	  allocationMap.clear();
