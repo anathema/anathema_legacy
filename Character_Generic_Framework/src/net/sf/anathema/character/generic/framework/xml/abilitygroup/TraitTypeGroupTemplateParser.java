@@ -36,11 +36,11 @@ public class TraitTypeGroupTemplateParser extends AbstractXmlTemplateParser<Gene
   private void updateGroups(Element element, GenericGroupedTraitTypeProvider abilityGroupProvider) {
     List<Element> groups = ElementUtilities.elements(element, TAG_GROUP);
     for (Element group : groups) {
-      List<String> traitCastes = new ArrayList<String>();
       String groupId = group.attributeValue(ATTRIB_ID);
       String groupCasteId = group.attributeValue(CASTE_ID);
       List<Element> abilities = ElementUtilities.elements(group, TAG_TRAIT);
       for (Element ability : abilities) {
+    	List<String> traitCastes = new ArrayList<String>();
         String attributeTypeValue = ability.attributeValue(ATTRIB_TYPE);
         if (ability.attributeValue(CASTE_ID) != null)
         	for (String caste : ability.attributeValue(CASTE_ID).split(","))

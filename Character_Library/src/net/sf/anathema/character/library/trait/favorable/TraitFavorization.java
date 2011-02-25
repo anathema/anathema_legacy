@@ -38,7 +38,7 @@ public class TraitFavorization implements ITraitFavorization {
     if (state == FavorableState.Caste && isRequiredFavored) {
       throw new IllegalStateException("Traits with required favored must not  be of any caste"); //$NON-NLS-1$
     }
-    if (this.state == state) {
+    if (this.state == state && state != FavorableState.Caste) {
       return;
     }
     if (this.state == FavorableState.Caste && state == FavorableState.Favored) {
@@ -83,7 +83,7 @@ public class TraitFavorization implements ITraitFavorization {
   }
 
   public void setCaste(boolean caste) {
-    if (isCaste() == caste) {
+    if (caste == false && isCaste() == caste) {
       return;
     }
     setFavorableState(caste ? FavorableState.Caste : (isCaste() ? FavorableState.Default : FavorableState.Favored));
@@ -123,9 +123,7 @@ public class TraitFavorization implements ITraitFavorization {
 
   public void updateFavorableStateToCaste() {
     ICasteType casteType = basicData.getCasteType();
-    if (isCaste() != isSupportedCasteType(casteType)) {
-      setCaste(isSupportedCasteType(casteType));
-    }
+    setCaste(isSupportedCasteType(casteType));
   }
 
   private boolean isSupportedCasteType(ICasteType casteType) {

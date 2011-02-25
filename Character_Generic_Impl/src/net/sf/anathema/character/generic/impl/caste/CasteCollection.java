@@ -18,7 +18,10 @@ public class CasteCollection implements ICasteCollection
 	  int maxLength = 0;
 	  for (ICasteType[] casteSet : editionMap.values())
 		  if (casteSet.length > maxLength)
+		  {
 			  longest = casteSet;
+			  maxLength = longest.length;
+		  }
 	  allTypes = longest;
   }
 
