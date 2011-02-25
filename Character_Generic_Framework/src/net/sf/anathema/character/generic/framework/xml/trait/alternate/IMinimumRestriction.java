@@ -6,6 +6,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 public interface IMinimumRestriction {
 
   public boolean isFullfilledWithout(ILimitationContext context, ITraitType traitType);
+  
+  public void clear();
 
   public int getStrictMinimumValue();
 

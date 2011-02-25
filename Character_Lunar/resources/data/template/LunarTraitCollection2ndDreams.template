@@ -14,41 +14,44 @@
 			<limitation type="Essence"/>
 			<minimum value="2"/>
 		</specialTrait>
-		<alternateMinimumTraits count="1" value="1">
- 	  <trait id="Archery" startValue="0" lowerableState="Default" zeroLevel="0">
-				<limitation type="Essence"/>
-				<minimum value="0"/>
-			</trait>
-      <trait id="MartialArts" startValue="1" lowerableState="Default" zeroLevel="0">
-				<limitation type="Essence"/>
-				<minimum value="0"/>
-			</trait>
- 	  <trait id="Melee" startValue="0" lowerableState="Default" zeroLevel="0">
-				<limitation type="Essence"/>
-				<minimum value="0"/>
-			</trait>
-      <trait id="Thrown" startValue="0" lowerableState="Default" zeroLevel="0">
-				<limitation type="Essence"/>
-				<minimum value="0"/>
-			</trait>
-		</alternateMinimumTraits>
+		<allocationMinimumTraits count="2">
+	 	  <trait id="Archery" startValue="0" lowerableState="Default" zeroLevel="0">
+					<limitation type="Essence"/>
+					<minimum value="0"/>
+				</trait>
+	      <trait id="MartialArts" startValue="2" lowerableState="Default" zeroLevel="0">
+					<limitation type="Essence"/>
+					<minimum value="0"/>
+				</trait>
+	 	  <trait id="Melee" startValue="0" lowerableState="Default" zeroLevel="0">
+					<limitation type="Essence"/>
+					<minimum value="0"/>
+				</trait>
+	      <trait id="Thrown" startValue="0" lowerableState="Default" zeroLevel="0">
+					<limitation type="Essence"/>
+					<minimum value="0"/>
+				</trait>
+		</allocationMinimumTraits>
 		
 		<casteMinimumTraits caste="FullMoon">
-			<specialTrait id="Melee" startValue="0" lowerableState="Default" zeroLevel="0">
-				<limitation type="Essence"/>
-				<minimum value="4"/>
-			</specialTrait>
-			
-			<alternateMinimumTraits count="1" value="1">
-			<trait id="Lore" startValue="0" lowerableState="Default" zeroLevel="0">
-				<limitation type="Essence"/>
-				<minimum value="0"/>
-			</trait>
-			<trait id="Occult" startValue="0" lowerableState="Default" zeroLevel="0">
-				<limitation type="Essence"/>
-				<minimum value="0"/>
-			</trait>
-			</alternateMinimumTraits>
+			<allocationMinimumTraits count="1">
+		 	  <trait id="Archery" startValue="0" lowerableState="Default" zeroLevel="0">
+						<limitation type="Essence"/>
+						<minimum value="0"/>
+					</trait>
+		      <trait id="MartialArts" startValue="2" lowerableState="Default" zeroLevel="0">
+						<limitation type="Essence"/>
+						<minimum value="0"/>
+					</trait>
+		 	  <trait id="Melee" startValue="0" lowerableState="Default" zeroLevel="0">
+						<limitation type="Essence"/>
+						<minimum value="0"/>
+					</trait>
+		      <trait id="Thrown" startValue="0" lowerableState="Default" zeroLevel="0">
+						<limitation type="Essence"/>
+						<minimum value="0"/>
+					</trait>
+			</allocationMinimumTraits>
 		</casteMinimumTraits>
 		
   </abilities>

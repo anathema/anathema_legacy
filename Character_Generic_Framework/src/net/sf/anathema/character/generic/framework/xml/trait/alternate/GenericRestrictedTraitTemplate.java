@@ -1,5 +1,8 @@
 package net.sf.anathema.character.generic.framework.xml.trait.alternate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.xml.trait.IClonableTraitTemplate;
@@ -11,7 +14,7 @@ import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IClonableTraitTemplate> implements
     IClonableTraitTemplate {
 
-  private final IMinimumRestriction restriction;
+  private final List<IMinimumRestriction> restrictions = new ArrayList<IMinimumRestriction>();
   private final ITraitType traitType;
   private IClonableTraitTemplate traitTemplate;
 
@@ -24,8 +27,13 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
     Ensure.ensureArgumentNotNull(traitType);
     this.traitType = traitType;
     this.traitTemplate = traitTemplate;
-    this.restriction = restriction;
+    restrictions.add(restriction);
     restriction.addTraitType(traitType);
+  }
+  
+  public void addRestriction(IMinimumRestriction restriction)
+  {
+	  restrictions.add(restriction);
   }
 
   public ITraitLimitation getLimitation() {
@@ -48,20 +56,21 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
     return traitTemplate.isRequiredFavored();
   }
 
-  public int getMinimumValue(ILimitationContext limitationContext) {
-    if (restriction.isFullfilledWithout(limitationContext, traitType)) {
+  public int getMinimumValue(ILimitationContext limitationContext)
+  {
+	  for (IMinimumRestriction restriction : restrictions)
+	  	  if (!restriction.isFullfilledWithout(limitationContext, traitType))
+	  			return restriction.getStrictMinimumValue();
       return traitTemplate.getMinimumValue(limitationContext);
-    }
-    return restriction.getStrictMinimumValue();
   }
 
   public ITraitType getTraitType() {
     return traitType;
   }
   
-  public IMinimumRestriction getRestriction()
+  public List<IMinimumRestriction> getRestrictions()
   {
-	  return restriction;
+	  return restrictions;
   }
   
   public IClonableTraitTemplate getTemplate()

@@ -1,12 +1,19 @@
 package net.sf.anathema.character.generic.framework.xml.trait.pool;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateParser;
+import net.sf.anathema.character.generic.framework.xml.trait.allocation.AllocationMinimumRestriction;
+import net.sf.anathema.character.generic.framework.xml.trait.allocation.AllocationMinimumTraitTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.AlternateMinimumTraitTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.GenericRestrictedTraitTemplate;
+import net.sf.anathema.character.generic.framework.xml.trait.alternate.IMinimumRestriction;
 import net.sf.anathema.character.generic.framework.xml.trait.caste.CasteMinimumTraitTemplateParser;
+import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -17,9 +24,11 @@ public class GenericTraitTemplatePoolParser extends AbstractXmlTemplateParser<Ge
 
   private static final String TAG_DEFAULT_TRAIT = "defaultTrait"; //$NON-NLS-1$
   private static final String TAG_SPECIAL_TRAIT = "specialTrait"; //$NON-NLS-1$
+  private static final String TAG_ALLOCATION_MINIMUM_TRAITS = "allocationMinimumTraits";
   private static final String TAG_ALTERNATE_MINMUM_TRAITS = "alternateMinimumTraits"; //$NON-NLS-1$
   private static final String TAG_CASTE_MINIMUM_TRAITS = "casteMinimumTraits";
   private final ITraitTypeGroup traitTypeGroup;
+  private final List<AllocationMinimumRestriction> family = new ArrayList<AllocationMinimumRestriction>();
 
   public GenericTraitTemplatePoolParser(
       IXmlTemplateRegistry<GenericTraitTemplatePool> templateRegistry,
@@ -37,6 +46,7 @@ public class GenericTraitTemplatePoolParser extends AbstractXmlTemplateParser<Ge
     GenericTraitTemplatePool pool = getBasicTemplate(element);
     parseDefaultTraitTemplate(pool, element);
     parseSpecialTraitTemplates(pool, element);
+    parseAllocationMinimumTraitTemplates(pool, element);
     parseAlternateMinimumTraitTemplates(pool, element);
     parseCasteMinimumTraitTemplates(pool, element);
     return pool;
@@ -69,12 +79,28 @@ public class GenericTraitTemplatePoolParser extends AbstractXmlTemplateParser<Ge
     }
   }
   
+  private void parseAllocationMinimumTraitTemplates(GenericTraitTemplatePool pool, Element element)
+  throws PersistenceException {
+	AllocationMinimumTraitTemplateParser parser = new AllocationMinimumTraitTemplateParser(traitTypeGroup);
+	for (Element specialTraitElement : ElementUtilities.elements(element, TAG_ALLOCATION_MINIMUM_TRAITS))
+	  for (GenericRestrictedTraitTemplate template : parser.parseAllocationMinimumTraits(specialTraitElement, family))
+	    pool.setSpecialTemplate(template.getTraitType(), template);
+	}
+  
   private void parseCasteMinimumTraitTemplates(GenericTraitTemplatePool pool, Element element)
   {
 	  CasteMinimumTraitTemplateParser parser = new CasteMinimumTraitTemplateParser(traitTypeGroup);
 	    for (Element specialTraitElement : ElementUtilities.elements(element, TAG_CASTE_MINIMUM_TRAITS)) {
-	      for (GenericRestrictedTraitTemplate template : parser.parseCasteMinimumTraits(specialTraitElement)) {
-	        pool.setSpecialTemplate(template.getTraitType(), template);
+	      for (GenericRestrictedTraitTemplate template : parser.parseCasteMinimumTraits(specialTraitElement, family)) {
+	    	ITraitTemplate baseTemplate = pool.getTemplate(template.getTraitType());
+	    	if (baseTemplate instanceof GenericRestrictedTraitTemplate)
+	    	{
+	    		GenericRestrictedTraitTemplate baseTemp = (GenericRestrictedTraitTemplate) baseTemplate;
+	    		for (IMinimumRestriction restriction : baseTemp.getRestrictions())
+	    			template.addRestriction(restriction);
+	    		
+	    	}
+    		pool.setSpecialTemplate(template.getTraitType(), template);
 	      }
 	    }
   }

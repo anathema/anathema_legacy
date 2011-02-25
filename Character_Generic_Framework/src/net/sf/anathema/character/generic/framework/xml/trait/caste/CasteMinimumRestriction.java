@@ -44,8 +44,15 @@ public class CasteMinimumRestriction extends ReflectionEqualsObject implements I
 			ITraitType traitType)
 	{
 		boolean caste = !context.getCasteType().toString().equals(this.caste);
-		boolean fulfilled = (restriction != null && restriction.isFullfilledWithout(context, traitType));
+		boolean fulfilled = !caste &&
+			(restriction != null && restriction.isFullfilledWithout(context, traitType));
+		if (caste && restriction != null)
+			restriction.clear();
 		return caste || fulfilled;
+	}
+	
+	public void clear()
+	{
 	}
 
 }

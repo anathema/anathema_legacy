@@ -5,8 +5,11 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateParser;
+import net.sf.anathema.character.generic.framework.xml.trait.allocation.AllocationMinimumRestriction;
+import net.sf.anathema.character.generic.framework.xml.trait.allocation.AllocationMinimumTraitTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.AlternateMinimumTraitTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.GenericRestrictedTraitTemplate;
+import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -17,6 +20,7 @@ public class CasteMinimumTraitTemplateParser
 {
 	  private static final String ATTRIB_CASTE = "caste";
 	  private static final String TAG_SPECIAL_TRAIT = "specialTrait"; //$NON-NLS-1$
+	  private static final String TAG_ALLOCATION_MINIMUM_TRAITS = "allocationMinimumTraits";
 	  private static final String TAG_ALTERNATE_MINMUM_TRAITS = "alternateMinimumTraits"; //$NON-NLS-1$
 	  private final ITraitTypeGroup type;
 	  private String caste;
@@ -26,7 +30,8 @@ public class CasteMinimumTraitTemplateParser
 	  this.type = type;
   }
 
-  public GenericRestrictedTraitTemplate[] parseCasteMinimumTraits(Element element)
+  public GenericRestrictedTraitTemplate[] parseCasteMinimumTraits(Element element,
+		  List<AllocationMinimumRestriction> list)
   {
 	  GenericRestrictedTraitTemplate[] templates = null;
 	  List<GenericRestrictedTraitTemplate> limits = new ArrayList<GenericRestrictedTraitTemplate>();
@@ -34,6 +39,7 @@ public class CasteMinimumTraitTemplateParser
 	  {
 		  caste = element.attributeValue(ATTRIB_CASTE);
 		  parseSpecialTraitTemplates(limits, element);
+		  parseAllocationMinimumTraitTemplates(limits, element, list);
 	  	  parseAlternateMinimumTraitTemplates(limits, element);
 	  	  
 	  	  templates = new GenericRestrictedTraitTemplate[limits.size()];
@@ -62,8 +68,20 @@ public class CasteMinimumTraitTemplateParser
 		    for (Element specialTraitElement : ElementUtilities.elements(element, TAG_ALTERNATE_MINMUM_TRAITS)) {
 		      for (GenericRestrictedTraitTemplate template : parser.parseAlternateMinimumTraits(specialTraitElement)) {
 		        pool.add(new GenericRestrictedTraitTemplate(template.getTemplate(),
-		        	new CasteMinimumRestriction(caste, template.getRestriction()), template.getTraitType()));
+		        	new CasteMinimumRestriction(caste, template.getRestrictions().get(0)), template.getTraitType()));
 		      }
 		    }
 	  }
+	  
+	  private void parseAllocationMinimumTraitTemplates(List<GenericRestrictedTraitTemplate> pool, Element element,
+			  List<AllocationMinimumRestriction> list)
+	  throws PersistenceException {
+		  AllocationMinimumTraitTemplateParser parser = new AllocationMinimumTraitTemplateParser(type);
+		    for (Element specialTraitElement : ElementUtilities.elements(element, TAG_ALLOCATION_MINIMUM_TRAITS)) {
+		      for (GenericRestrictedTraitTemplate template : parser.parseAllocationMinimumTraits(specialTraitElement, list)) {
+		        pool.add(new GenericRestrictedTraitTemplate(template.getTemplate(),
+		        	new CasteMinimumRestriction(caste, template.getRestrictions().get(0)), template.getTraitType()));
+		      }
+		    }
+		}
 }

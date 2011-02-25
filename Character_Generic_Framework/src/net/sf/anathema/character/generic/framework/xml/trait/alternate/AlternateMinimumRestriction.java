@@ -36,4 +36,8 @@ public class AlternateMinimumRestriction extends ReflectionEqualsObject implemen
   public int getStrictMinimumValue() {
     return strictMinimumValue;
   }
+  
+  public void clear()
+  {
+  }
 }
