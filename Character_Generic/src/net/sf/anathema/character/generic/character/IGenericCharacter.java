@@ -53,6 +53,8 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   public int getPainTolerance();
 
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
+  
+  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
 
   public int getTotalExperiencePoints();
 

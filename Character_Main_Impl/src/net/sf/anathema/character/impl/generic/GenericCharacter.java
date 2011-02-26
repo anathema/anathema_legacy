@@ -199,6 +199,11 @@ public class GenericCharacter implements IGenericCharacter {
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     return statistics.getTraitConfiguration().getAbilityTypeGroups();
   }
+  
+  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups()
+  {
+	  return statistics.getTraitConfiguration().getAttributeTypeGroups();
+  }
 
   public int getSpentExperiencePoints() {
     return new ExperiencePointManagement(statistics).getTotalCosts();

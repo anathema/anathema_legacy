@@ -16,12 +16,16 @@ import net.sf.anathema.character.reporting.sheet.common.magic.stats.MultipleEffe
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.SpellStats;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identificate;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfMagicEncoder implements IPdfContentBoxEncoder {
+public class PdfMagicEncoder implements IPdfContentBoxEncoder
+{
+	static IIdentificate KNACK = new Identificate("Knack");
 
   public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
     final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
@@ -34,6 +38,9 @@ public class PdfMagicEncoder implements IPdfContentBoxEncoder {
           if (CharmUtilities.isGenericCharmFor(charm, character)) {
             return;
           }
+          if (charm.hasAttribute(KNACK))
+        	  return;
+          
           if (character.isMultipleEffectCharm(charm)) {
             String[] effects = character.getLearnedEffects(charm);
             for (String effect : effects) {

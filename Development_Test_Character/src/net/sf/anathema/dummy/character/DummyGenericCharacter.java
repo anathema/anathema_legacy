@@ -181,6 +181,10 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     return new IIdentifiedTraitTypeGroup[0];
   }
+  
+  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
+	    return new IIdentifiedTraitTypeGroup[0];
+	  }
 
   public IArmourStats[] getPrintArmours() {
     return new IArmourStats[0];

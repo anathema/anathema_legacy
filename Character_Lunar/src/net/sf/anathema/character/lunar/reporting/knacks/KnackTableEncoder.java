@@ -71,7 +71,6 @@ public class KnackTableEncoder extends AbstractStatsTableEncoder<IKnackStats> {
           table.deleteLastRow();
           return;
         }
-        printKnacks.remove(stats);
       }
     }
     while (encodeLine) {

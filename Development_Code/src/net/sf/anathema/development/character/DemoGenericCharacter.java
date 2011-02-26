@@ -260,6 +260,11 @@ public class DemoGenericCharacter implements IGenericCharacter {
             AbilityType.Sail,
             AbilityType.Socialize }, SolarCaste.Eclipse) };
   }
+  
+  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups()
+  {
+	  return null;
+  }
 
   public void addSpecialtyTrait(ITraitType traitType) {
     specialtyTraitTypes.add(traitType);

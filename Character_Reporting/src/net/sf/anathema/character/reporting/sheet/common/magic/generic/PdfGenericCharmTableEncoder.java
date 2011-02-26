@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.common.magic.generic;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,7 +10,9 @@ import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
@@ -43,28 +46,40 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
   @Override
   protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException {
+	List<ITraitType> traits = getTraits(character);
     Font font = TableEncodingUtilities.createFont(baseFont);
     PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, Color.BLACK);
     PdfTemplate notLearnedTemplate = createCharmDotTemplate(directContent, Color.WHITE);
-    PdfPTable table = new PdfPTable(createColumnWidths());
+    PdfPTable table = new PdfPTable(createColumnWidths(traits.size() + 1));
     table.setWidthPercentage(100);
     table.addCell(new TableCell(new Phrase(), Rectangle.NO_BORDER));
-    for (ITraitTypeGroup group : character.getAbilityTypeGroups()) {
-      for (ITraitType type : group.getAllGroupTypes()) {
-        table.addCell(createHeaderCell(directContent, type));
-      }
-    }
+    for (ITraitType trait : traits)
+        table.addCell(createHeaderCell(directContent, trait));
     for (IMagicStats stats : character.getGenericCharmStats()) {
       Phrase charmPhrase = new Phrase(stats.getNameString(resources), font);
       table.addCell(new TableCell(charmPhrase, Rectangle.NO_BORDER));
       String genericId = stats.getName().getId();
-      for (ITraitTypeGroup group : character.getAbilityTypeGroups()) {
-        for (ITraitType type : group.getAllGroupTypes()) {
-          table.addCell(createGenericCell(character, type, genericId, learnedTemplate, notLearnedTemplate));
-        }
-      }
+      for (ITraitType trait : traits)
+          table.addCell(createGenericCell(character, trait, genericId, learnedTemplate, notLearnedTemplate));
     }
     return table;
+  }
+  
+  private List<ITraitType> getTraits(IGenericCharacter character)
+  {
+	  FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
+	  List<ITraitType> traits = new ArrayList<ITraitType>();
+	  IIdentifiedTraitTypeGroup[] list = null;
+	  if (type == FavoringTraitType.AbilityType)
+		  list = character.getAbilityTypeGroups();
+	  if (type == FavoringTraitType.AttributeType)
+		  list = character.getAttributeTypeGroups();
+
+	  for (ITraitTypeGroup group : list)
+		  for (ITraitType trait : group.getAllGroupTypes())
+			  traits.add(trait);
+	  
+	  return traits;
   }
 
   private PdfTemplate createCharmDotTemplate(PdfContentByte directContent, Color color) {
@@ -121,10 +136,10 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
     return tableCell;
   }
 
-  private float[] createColumnWidths() {
-    float[] columnWidths = new float[26];
+  private float[] createColumnWidths(int columnCount) {
+    float[] columnWidths = new float[columnCount];
     Arrays.fill(columnWidths, 1);
-    columnWidths[0] = 10;
+    columnWidths[0] = (int)(.4 * columnCount);
     return columnWidths;
   }
 }
