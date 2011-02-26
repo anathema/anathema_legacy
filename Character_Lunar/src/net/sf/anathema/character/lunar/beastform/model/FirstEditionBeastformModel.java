@@ -138,7 +138,7 @@ public class FirstEditionBeastformModel extends AbstractAdditionalModelAdapter i
     return collection.getDeadlyBeastmanAttribute(type);
   }
 
-  public IGenericTraitCollection getTraitCollection() {
+  public IGenericTraitCollection getBeastTraitCollection() {
     return allTraitsCollection;
   }
 }

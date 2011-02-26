@@ -154,7 +154,7 @@ public class FirstEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
         baseFont,
         smallWidth,
         getOverlapFreeSpaceHeight());
-    LunarBeastformAttributesEncoder encoder = new LunarBeastformAttributesEncoder(
+    FirstEditionLunarBeastformAttributesEncoder encoder = new FirstEditionLunarBeastformAttributesEncoder(
         baseFont,
         resources,
         boxEncoder.calculateInsettedWidth(smallWidth));

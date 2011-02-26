@@ -8,74 +8,86 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
 
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class LunarBeastformAttributesEncoder implements IPdfContentBoxEncoder {
+public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
 
-  private final static int PHYSICAL_MAX = 30;
-  private final static int STANDARD_MAX = 10;
+  private final static int PHYSICAL_MAX = 15;
   private final IResources resources;
   private final PdfTraitEncoder smallTraitEncoder;
+  private final BaseFont baseFont;
   private final float smallWidth;
 
-  public LunarBeastformAttributesEncoder(BaseFont baseFont, IResources resources, float smallWidth) {
+  public SecondEditionLunarDBTFormEncoder(BaseFont baseFont, IResources resources, float smallWidth) {
     this.resources = resources;
     this.smallWidth = smallWidth;
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
+    this.baseFont = baseFont;
   }
 
   public String getHeaderKey() {
-    return "Attributes"; //$NON-NLS-1$
+    return "Deadly Beastman Transformation"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
     IBeastformModel additionalModel = (IBeastformModel) character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
-    IGenericTraitCollection traitCollection = additionalModel.getTraitCollection();
+    IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
     encodeAttributes(directContent, bounds, attributeGroups, traitCollection);
+    encodeMutations(directContent, bounds, character);
+  }
+  
+  private final void encodeMutations(PdfContentByte directContent,
+		  Bounds bounds,
+		  IGenericCharacter character)
+  {
+	  final int spacing = 15;
+	  Bounds newBounds = new Bounds(
+			  bounds.x + bounds.getWidth() * 1 / 2 + spacing,
+			  bounds.y,
+			  bounds.getWidth() * 1 / 2 - spacing,
+			  bounds.height);
+	  IPdfContentBoxEncoder encoder = new GiftEncoder(baseFont, resources);
+	  try {
+		new PdfBoxEncoder(resources, baseFont).encodeBox(directContent, encoder, character, newBounds);
+	} catch (DocumentException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
   }
 
-  public final void encodeAttributes(
+  private final void encodeAttributes(
       PdfContentByte directContent,
       Bounds contentBounds,
       IGroupedTraitType[] attributeGroups,
       IGenericTraitCollection traitCollection) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
-    float y = contentBounds.getMaxY() - groupSpacing;
-    String groupId = null;
-    int maximum = 0;
-    float width = 0;
-    for (IGroupedTraitType groupedTraitType : attributeGroups) {
-      if (!groupedTraitType.getGroupId().equals(groupId)) {
-        groupId = groupedTraitType.getGroupId();
-        y -= groupSpacing;
-        if (groupId.equals(AttributeGroupType.Physical.name())) {
-          maximum = PHYSICAL_MAX;
-          width = contentBounds.width - 3;
-        }
-        else {
-          maximum = STANDARD_MAX;
-          width = smallWidth;
-        }
-      }
-      ITraitType traitType = groupedTraitType.getTraitType();
+    float y = contentBounds.getMaxY() - 2 * groupSpacing;
+    int maximum = PHYSICAL_MAX;
+    float width = contentBounds.getWidth() * 1 / 2;
+    for (IGroupedTraitType groupedTraitType : attributeGroups)
+    {
+    	if (!groupedTraitType.getGroupId().equals(AttributeGroupType.Physical.name()))
+    		continue;
+
+    	ITraitType traitType = groupedTraitType.getTraitType();
       String traitLabel = resources.getString("AttributeType.Name." + traitType.getId()); //$NON-NLS-1$
       int value = traitCollection.getTrait(traitType).getCurrentValue();
       Position position = new Position(contentBounds.x, y);
-      boolean favored = traitCollection.isFavoredOrCasteTrait(traitType);
-      y -= smallTraitEncoder.encodeWithTextAndRectangle(
+      y -= smallTraitEncoder.encodeWithText(
           directContent,
           traitLabel,
           position,
           width,
           value,
-          favored,
           maximum);
     }
   }

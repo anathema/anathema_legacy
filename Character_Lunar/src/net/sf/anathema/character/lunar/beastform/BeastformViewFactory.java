@@ -37,6 +37,16 @@ public class BeastformViewFactory implements IAdditionalViewFactory {
               public String getGiftsString() {
                 return resources.getString("Lunar.DeadlyBeastmanTransformation.Gifts.Label"); //$NON-NLS-1$
               }
+
+				@Override
+				public String getDBTBoxString() {
+					return null;
+				}
+	
+				@Override
+				public String getSpiritFormBoxString() {
+					return null;
+				}
             };
     	view = new FirstEditionBeastformView(intValueDisplayFactory, properties); 
         new FirstEditionBeastformPresenter(resources, view, (IBeastformModel) model).initPresentation();	
@@ -55,6 +65,16 @@ public class BeastformViewFactory implements IAdditionalViewFactory {
               public String getGiftsString() {
                 return resources.getString("Lunar.DeadlyBeastmanTransformation.Gifts.Label_2nd"); //$NON-NLS-1$
               }
+
+			@Override
+			public String getDBTBoxString() {
+				return resources.getString("Lunar.DeadlyBeastmanTransformation");
+			}
+
+			@Override
+			public String getSpiritFormBoxString() {
+				return resources.getString("Lunar.SpiritForm");
+			}
             };
     	view = new SecondEditionBeastformView(intValueDisplayFactory, properties); 
         new SecondEditionBeastformPresenter(resources, view, (IBeastformModel) model).initPresentation();

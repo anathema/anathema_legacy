@@ -34,6 +34,7 @@ public class GiftEncoder extends AbstractLineTextEncoder {
     for (int index = 0; index < gifts.length; index++) {
       IIdentificate gift = gifts[index].getQuality();
       String text = resources.getString("DeadlyBeastmanTransformation.Gift." + gift.getId()); //$NON-NLS-1$
+      text = text.replaceFirst("\\(\\p{Alnum}+\\) ", "");
       text += index + 1 < gifts.length ? ", " : ""; //$NON-NLS-1$ //$NON-NLS-2$
       phrase.add(new Chunk(text, font));
     }

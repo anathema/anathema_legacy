@@ -16,11 +16,15 @@ import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public class BeastformAttribute implements IBeastformAttribute {
 
-  private static int calculateMaxValue(int pointCost) {
-    int calculatedMaximum = EssenceTemplate.SYSTEM_ESSENCE_MAX
-        + (5 + EssenceTemplate.SYSTEM_ESSENCE_MAX * 3 + 2)
-        / pointCost;
-    return Math.min(calculatedMaximum, 30);
+  private int calculateMaxValue(int pointCost) {
+	  if (edition == ExaltedEdition.FirstEdition)
+	  {
+	    int calculatedMaximum = EssenceTemplate.SYSTEM_ESSENCE_MAX
+	        + (5 + EssenceTemplate.SYSTEM_ESSENCE_MAX * 3 + 2)
+	        / pointCost;
+	    return Math.min(calculatedMaximum, 30);
+	  }
+	  return 12;
   }
 
   private final IExaltedEdition edition;

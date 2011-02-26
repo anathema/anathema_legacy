@@ -37,6 +37,7 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
   private final IGiftModel giftModel;
   private final BeastformGenericTraitCollection allTraitsCollection;
   private final IEquipmentPrintModel equipmentModel;
+  private String spiritForm = "";
 
   public SecondEditionBeastformModel(ICharacterModelContext context) {
     this.context = context;
@@ -46,6 +47,7 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
     this.cost = new BeastformGroupCost(beastCollection, this);
     createAttributes();
     this.allTraitsCollection = new BeastformGenericTraitCollection(context.getTraitCollection(), beastCollection, giftModel);
+    
     IEquipmentAdditionalModel equipment = (IEquipmentAdditionalModel) context.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
     this.equipmentModel = new EquipmentPrintModel(equipment, new BeastformNaturalSoak(allTraitsCollection, giftModel));
     context.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
@@ -85,6 +87,27 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
     for (IBeastformAttribute attribute : attributes) {
     	beastCollection.addBeastFormAttribute(attribute);
     }
+    
+    attributes.clear();
+    attributes.add(new SpiritFormAttribute(
+        context.getTraitCollection().getTrait(AttributeType.Strength),
+        context,
+        traitContext));
+    attributes.add(new SpiritFormAttribute(
+        context.getTraitCollection().getTrait(AttributeType.Dexterity),
+        context,
+        traitContext));
+    attributes.add(new SpiritFormAttribute(
+        context.getTraitCollection().getTrait(AttributeType.Stamina),
+        context,
+        traitContext));
+    attributes.add(new SpiritFormAttribute(
+            context.getTraitCollection().getTrait(AttributeType.Appearance),
+            context,
+            traitContext));
+    for (IBeastformAttribute attribute : attributes) {
+    	spiritCollection.addBeastFormAttribute(attribute);
+    }
   }
 
   private void update() {
@@ -92,6 +115,9 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
     for (IBeastformAttribute attribute : getAttributes()) {
       attribute.recalculate();
     }
+    for (IBeastformAttribute attribute : getSpiritAttributes()) {
+        attribute.recalculate();
+      }
   }
 
   public IBeastformAttribute[] getAttributes() {
@@ -101,6 +127,25 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
     }
     return traits.toArray(new IBeastformAttribute[traits.size()]);
   }
+  
+  public String getSpiritForm()
+  {
+	  return spiritForm;
+  }
+  
+  public void setSpiritForm(String newName)
+  {
+	  spiritForm = newName;
+  }
+  
+  public IBeastformAttribute[] getSpiritAttributes() {
+	    List<IBeastformAttribute> traits = new ArrayList<IBeastformAttribute>();
+	    for (AttributeType type : AttributeType.getAllFor(AttributeGroupType.Physical)) {
+	      traits.add(spiritCollection.getDeadlyBeastmanAttribute(type));
+	    }
+	    traits.add(spiritCollection.getDeadlyBeastmanAttribute(AttributeType.Appearance));
+	    return traits.toArray(new IBeastformAttribute[traits.size()]);
+	  }
 
   public void setCharmLearnCount(int newValue) {
     context.getMagicCollection().setLearnCount(ILunarSpecialCharms.DEADLY_BEASTMAN_TRANSFORMATION, newValue);
@@ -130,6 +175,9 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
     for (IBeastformAttribute trait : getAttributes()) {
       trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter<Object>(listener));
     }
+    for (IBeastformAttribute trait : getSpiritAttributes()) {
+        trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter<Object>(listener));
+      }
   }
 
   public IGiftModel getGiftModel() {
@@ -144,7 +192,11 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
     return beastCollection.getDeadlyBeastmanAttribute(type);
   }
 
-  public IGenericTraitCollection getTraitCollection() {
+  public IGenericTraitCollection getSpiritTraitCollection() {
+	    return spiritCollection;
+	  }
+  
+  public IGenericTraitCollection getBeastTraitCollection() {
     return allTraitsCollection;
   }
 }

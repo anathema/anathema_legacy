@@ -1,5 +1,8 @@
 package net.sf.anathema.character.lunar.beastform.presenter;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnView;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.library.quality.model.QualitySelection;
@@ -7,10 +10,12 @@ import net.sf.anathema.character.library.quality.presenter.IQualityModel;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.lunar.beastform.model.SecondEditionBeastformModel;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGiftModel;
 import net.sf.anathema.character.lunar.beastform.view.IBeastformOverviewView;
 import net.sf.anathema.character.lunar.beastform.view.IBeastformOverviewViewProperties;
+import net.sf.anathema.character.lunar.beastform.view.SecondEditionBeastformView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -35,6 +40,7 @@ public class SecondEditionBeastformPresenter implements IPresenter {
   }
 
   public void initPresentation() {
+	initSpiritFormPresentation();
     initOverviewPresentation();
     initAttributePresentation();
     initGiftPresentation();
@@ -55,6 +61,18 @@ public class SecondEditionBeastformPresenter implements IPresenter {
         return resources.getString("Lunar.DeadlyBeastmanTransformation.Overview.Label"); //$NON-NLS-1$
       }
     });
+  }
+  
+  private void initSpiritFormPresentation()
+  {
+	  ((SecondEditionBeastformView)view).setSpiritListener(new ChangeListener()
+	  {
+		@Override
+		public void stateChanged(ChangeEvent e)
+		{
+			((SecondEditionBeastformModel)model).setSpiritForm(e.toString());
+		} 
+	  });
   }
 
   private void initGiftPresentation() {
@@ -131,6 +149,15 @@ public class SecondEditionBeastformPresenter implements IPresenter {
           trait.getMaximalValue());
       new TraitPresenter(trait, traitView).initPresentation();
     }
+    for (IBeastformAttribute attribute : ((SecondEditionBeastformModel)model).getSpiritAttributes()) {
+        IDefaultTrait trait = attribute.getTrait();
+        IIntValueView traitView = ((SecondEditionBeastformView)view).addSpiritAttributeValueView(
+                resources.getString(trait.getType().getId()),
+                trait.getCurrentValue(),
+                trait.getMaximalValue());
+        new TraitPresenter(trait, traitView).initPresentation();
+        
+      }
   }
 
   private void setOverviewColor(int total, int spent, ILabelledAlotmentView view) {

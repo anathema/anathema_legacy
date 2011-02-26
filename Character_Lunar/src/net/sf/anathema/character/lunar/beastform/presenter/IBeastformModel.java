@@ -26,5 +26,5 @@ public interface IBeastformModel extends IAdditionalModel {
   
   public IBeastformAttribute getAttributeByType(AttributeType type);
   
-  public IGenericTraitCollection getTraitCollection();
+  public IGenericTraitCollection getBeastTraitCollection();
 }
