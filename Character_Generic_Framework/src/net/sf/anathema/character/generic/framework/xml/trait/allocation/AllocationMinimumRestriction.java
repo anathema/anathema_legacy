@@ -6,14 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.character.ILimitationContext;
-import net.sf.anathema.character.generic.framework.xml.trait.alternate.IMinimumRestriction;
+import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
 public class AllocationMinimumRestriction extends ReflectionEqualsObject implements IMinimumRestriction
 {
-
-  private final Map<ITraitType, Integer> allocationMap = new HashMap<ITraitType, Integer>();
+  private final Map<ILimitationContext,Map<ITraitType, Integer>> allocationMap = new HashMap<ILimitationContext,Map<ITraitType, Integer>>();
   private final List<AllocationMinimumRestriction> siblings;
   private final int dotCount;
   private int strictMinimumValue = 0;
@@ -29,18 +28,29 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
     for (ITraitType type : alternateTraitTypes)
       if (type != traitType)
       {
-    	  int allocatedDots = Math.max(context.getTraitCollection().getTrait(type).
-          		  getCurrentValue() - getExternalAllocation(type),
-          		  0);
+    	  int currentDots = context.getTraitCollection().getTrait(type).getCurrentValue();
+    	  int externalDots = getExternalAllocation(context, type);
+    	  int allocatedDots = Math.max(currentDots - externalDots, 0);
     	  allocatedDots = Math.min(allocatedDots, remainingDots);
-    	  allocationMap.put(type, allocatedDots);
+    	  allocateDots(context, type, allocatedDots);
     	  remainingDots -= allocatedDots;
       }
     strictMinimumValue = remainingDots;
     return remainingDots == 0;
   }
+  
+  private void allocateDots(ILimitationContext context, ITraitType type, int dots)
+  {
+	  Map<ITraitType, Integer> map = allocationMap.get(context);
+	  if (map == null)
+	  {
+		  map = new HashMap<ITraitType, Integer>();
+		  allocationMap.put(context, map);
+	  }
+	  map.put(type, dots);
+  }
 
-  private int getExternalAllocation(ITraitType traitType)
+  private int getExternalAllocation(ILimitationContext context, ITraitType traitType)
   {
 	  int allocated = 0;
 
@@ -50,7 +60,8 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
 			  continue;
 		  try
 		  {
-			  Map<ITraitType, Integer> map = sibling.allocationMap;
+			  Map<ITraitType, Integer> map = sibling.allocationMap.get(context);
+			  
 			  allocated += map.get(traitType);
 		  }
 		  catch (NullPointerException e)

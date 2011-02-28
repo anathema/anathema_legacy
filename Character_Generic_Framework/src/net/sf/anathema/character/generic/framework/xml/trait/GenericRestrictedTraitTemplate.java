@@ -1,11 +1,10 @@
-package net.sf.anathema.character.generic.framework.xml.trait.alternate;
+package net.sf.anathema.character.generic.framework.xml.trait;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.character.ILimitationContext;
-import net.sf.anathema.character.generic.framework.xml.trait.IClonableTraitTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
@@ -58,9 +57,19 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
 
   public int getMinimumValue(ILimitationContext limitationContext)
   {
+	  boolean restricted = false;
+	  int minimum = 0;
+	  for (IMinimumRestriction restriction : restrictions)
+		  restriction.clear();
 	  for (IMinimumRestriction restriction : restrictions)
 	  	  if (!restriction.isFullfilledWithout(limitationContext, traitType))
-	  			return restriction.getStrictMinimumValue();
+	  	  {
+	  		  int newMin = restriction.getStrictMinimumValue();
+	  		  minimum = newMin > minimum ? newMin : minimum;	  			  
+	  		  restricted = true;
+	  	  }
+	  if (restricted)
+		  return minimum;
       return traitTemplate.getMinimumValue(limitationContext);
   }
 
@@ -71,6 +80,11 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
   public List<IMinimumRestriction> getRestrictions()
   {
 	  return restrictions;
+  }
+  
+  public void setTemplate(IClonableTraitTemplate template)
+  {
+	  traitTemplate = template;
   }
   
   public IClonableTraitTemplate getTemplate()

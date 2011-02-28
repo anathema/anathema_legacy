@@ -3,9 +3,9 @@ package net.sf.anathema.character.generic.framework.xml.trait.allocation;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateParser;
-import net.sf.anathema.character.generic.framework.xml.trait.alternate.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;

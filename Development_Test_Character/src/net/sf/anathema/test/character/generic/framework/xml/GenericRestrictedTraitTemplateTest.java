@@ -1,8 +1,8 @@
 package net.sf.anathema.test.character.generic.framework.xml;
 
+import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.AlternateMinimumRestriction;
-import net.sf.anathema.character.generic.framework.xml.trait.alternate.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.dummy.character.DummyLimitationContext;
 import net.sf.anathema.dummy.character.trait.DummyFavorableGenericTrait;

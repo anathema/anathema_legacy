@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.character.ILimitationContext;
-import net.sf.anathema.character.generic.framework.xml.trait.alternate.IMinimumRestriction;
+import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
@@ -46,13 +46,13 @@ public class CasteMinimumRestriction extends ReflectionEqualsObject implements I
 		boolean caste = !context.getCasteType().toString().equals(this.caste);
 		boolean fulfilled = !caste &&
 			(restriction != null && restriction.isFullfilledWithout(context, traitType));
-		if (caste && restriction != null)
-			restriction.clear();
 		return caste || fulfilled;
 	}
 	
 	public void clear()
 	{
+		if (restriction != null)
+			restriction.clear();
 	}
 
 }

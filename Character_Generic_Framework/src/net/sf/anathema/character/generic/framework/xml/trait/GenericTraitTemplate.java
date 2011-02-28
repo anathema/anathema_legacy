@@ -10,7 +10,7 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
 
   private Integer minimumValue;
   private Integer zeroLevelValue;
-  private Integer startValue;
+  private Integer startValue = 0;
   private LowerableState lowerableState;
   private ITraitLimitation limitation;
   private boolean isRequiredFavored;
@@ -48,7 +48,8 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   }
 
   public final void setStartValue(int startValue) {
-    this.startValue = startValue;
+	  if (startValue > this.startValue)
+		  this.startValue = startValue;
   }
 
   public final void setZeroLevelValue(int zeroLevelValue) {

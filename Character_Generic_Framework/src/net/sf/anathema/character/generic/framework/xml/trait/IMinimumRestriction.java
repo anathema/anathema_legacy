@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.framework.xml.trait.alternate;
+package net.sf.anathema.character.generic.framework.xml.trait;
 
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.traits.ITraitType;

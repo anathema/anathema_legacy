@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.trait.alternate;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateParser;
 import net.sf.anathema.character.generic.traits.ITraitType;

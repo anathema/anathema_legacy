@@ -10,7 +10,15 @@
 			<limitation type="Essence"/>
 			<minimum value="0"/>
 		</defaultTrait>
-		<specialTrait id="Survival" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="true">
+		<specialTrait id="Survival" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="true">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Lore" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="Occult" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
 			<limitation type="Essence"/>
 			<minimum value="2"/>
 		</specialTrait>
@@ -32,14 +40,38 @@
 					<minimum value="0"/>
 				</trait>
 		</allocationMinimumTraits>
+		<allocationMinimumTraits count="1">
+	 	  <trait id="Bureaucracy" startValue="0" lowerableState="Default" zeroLevel="0">
+					<limitation type="Essence"/>
+					<minimum value="0"/>
+				</trait>
+	      <trait id="Presence" startValue="1" lowerableState="Default" zeroLevel="0">
+					<limitation type="Essence"/>
+					<minimum value="0"/>
+				</trait>
+	 	  <trait id="Socialize" startValue="0" lowerableState="Default" zeroLevel="0">
+					<limitation type="Essence"/>
+					<minimum value="0"/>
+				</trait>	      
+		</allocationMinimumTraits>		
+		<allocationMinimumTraits count="1">
+	 	  <trait id="Ride" startValue="0" lowerableState="Default" zeroLevel="0">
+					<limitation type="Essence"/>
+					<minimum value="0"/>
+				</trait>
+	      <trait id="Sail" startValue="1" lowerableState="Default" zeroLevel="0">
+					<limitation type="Essence"/>
+					<minimum value="0"/>
+				</trait>
+		</allocationMinimumTraits>		
 		
 		<casteMinimumTraits caste="FullMoon">
-			<allocationMinimumTraits count="1">
+			<allocationMinimumTraits count="3">
 		 	  <trait id="Archery" startValue="0" lowerableState="Default" zeroLevel="0">
 						<limitation type="Essence"/>
 						<minimum value="0"/>
 					</trait>
-		      <trait id="MartialArts" startValue="2" lowerableState="Default" zeroLevel="0">
+		      <trait id="MartialArts" startValue="0" lowerableState="Default" zeroLevel="0">
 						<limitation type="Essence"/>
 						<minimum value="0"/>
 					</trait>
@@ -52,7 +84,71 @@
 						<minimum value="0"/>
 					</trait>
 			</allocationMinimumTraits>
+		<specialTrait id="Resistance" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="War" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
 		</casteMinimumTraits>
 		
+		<casteMinimumTraits caste="WaxingMoon">			
+		<specialTrait id="Performance" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Presence" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="Socialize" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		</casteMinimumTraits>
+		
+		<casteMinimumTraits caste="HalfMoon">			
+		<specialTrait id="Investigation" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Presence" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="War" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		</casteMinimumTraits>		
+		
+		<casteMinimumTraits caste="WaningMoon">			
+		<specialTrait id="Larceny" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="Stealth" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		</casteMinimumTraits>		
+		
+		<casteMinimumTraits caste="NoMoon">			
+		<specialTrait id="Craft" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Lore" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="Occult" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		</casteMinimumTraits>		
   </abilities>
+  
 </traitTemplates>

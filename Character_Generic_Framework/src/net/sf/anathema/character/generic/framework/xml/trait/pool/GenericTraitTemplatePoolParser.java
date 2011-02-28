@@ -5,13 +5,14 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
+import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateParser;
+import net.sf.anathema.character.generic.framework.xml.trait.IClonableTraitTemplate;
+import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
 import net.sf.anathema.character.generic.framework.xml.trait.allocation.AllocationMinimumRestriction;
 import net.sf.anathema.character.generic.framework.xml.trait.allocation.AllocationMinimumTraitTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.AlternateMinimumTraitTemplateParser;
-import net.sf.anathema.character.generic.framework.xml.trait.alternate.GenericRestrictedTraitTemplate;
-import net.sf.anathema.character.generic.framework.xml.trait.alternate.IMinimumRestriction;
 import net.sf.anathema.character.generic.framework.xml.trait.caste.CasteMinimumTraitTemplateParser;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
@@ -91,16 +92,25 @@ public class GenericTraitTemplatePoolParser extends AbstractXmlTemplateParser<Ge
   {
 	  CasteMinimumTraitTemplateParser parser = new CasteMinimumTraitTemplateParser(traitTypeGroup);
 	    for (Element specialTraitElement : ElementUtilities.elements(element, TAG_CASTE_MINIMUM_TRAITS)) {
-	      for (GenericRestrictedTraitTemplate template : parser.parseCasteMinimumTraits(specialTraitElement, family)) {
-	    	ITraitTemplate baseTemplate = pool.getTemplate(template.getTraitType());
-	    	if (baseTemplate instanceof GenericRestrictedTraitTemplate)
+	      for (GenericRestrictedTraitTemplate casteTemplate : parser.parseCasteMinimumTraits(specialTraitElement, family)) {
+	    	ITraitTemplate existingTemplate = pool.getTemplate(casteTemplate.getTraitType());
+	    	
+	
+	    	if (existingTemplate instanceof GenericRestrictedTraitTemplate)
 	    	{
-	    		GenericRestrictedTraitTemplate baseTemp = (GenericRestrictedTraitTemplate) baseTemplate;
-	    		for (IMinimumRestriction restriction : baseTemp.getRestrictions())
-	    			template.addRestriction(restriction);
-	    		
+	    		GenericRestrictedTraitTemplate restrictedTemplate = (GenericRestrictedTraitTemplate) existingTemplate;
+	    		for (IMinimumRestriction restriction : casteTemplate.getRestrictions())
+	    			restrictedTemplate.addRestriction(restriction);
+
+	    		/*GenericTraitTemplate baseTemplate = (GenericTraitTemplate) restrictedTemplate.getTemplate();
+	    		baseTemplate.setMinimumValue(casteTemplate.getStartValue() )*/
 	    	}
-    		pool.setSpecialTemplate(template.getTraitType(), template);
+	    	else
+	    	{
+	    		casteTemplate.setTemplate((IClonableTraitTemplate) existingTemplate);
+	    		pool.setSpecialTemplate(casteTemplate.getTraitType(), casteTemplate);
+	    	}
+	    		
 	      }
 	    }
   }
