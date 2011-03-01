@@ -1,4 +1,4 @@
-package net.sf.anathema.character.lunar.knacks;
+package net.sf.anathema.character.lunar.reporting.knacks;
 
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.lib.resources.IResources;

@@ -17,11 +17,21 @@ public class WeaponryEncoder implements IPdfContentBoxEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;
+  private final AbstractWeaponryTableEncoder customEncoder;
 
   public WeaponryEncoder(IResources resources, BaseFont baseFont) {
     this.baseFont = baseFont;
     this.resources = resources;
+    this.customEncoder = null;
   }
+  
+  public WeaponryEncoder(IResources resources,
+		  BaseFont baseFont,
+		  AbstractWeaponryTableEncoder customEncoder) {
+	    this.baseFont = baseFont;
+	    this.resources = resources;
+	    this.customEncoder = customEncoder;
+	  }
 
   public String getHeaderKey() {
     return "Weapons"; //$NON-NLS-1$
@@ -40,6 +50,8 @@ public class WeaponryEncoder implements IPdfContentBoxEncoder {
       }
 
     });
+    if (customEncoder != null)
+    	encoder[0] = customEncoder;
     encoder[0].encodeTable(directContent, character, bounds);
   }
 }

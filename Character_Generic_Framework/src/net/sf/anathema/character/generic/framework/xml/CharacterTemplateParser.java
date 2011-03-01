@@ -62,7 +62,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String TAG_ADDITIONAL_RULES = "additionalRules"; //$NON-NLS-1$
   private static final String TAG_EDITION = "edition"; //$NON-NLS-1$
   private static final String ATTRIB_EDITION = "edition"; //$NON-NLS-1$
-  private static final String ATTRIB_CASTELESS = "casteless";
 
   private final ICharacterTemplateRegistryCollection registryCollection;
   private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry;
@@ -120,13 +119,9 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     ITemplateType templateType = new TemplateTypeParser().parse(element);
     characterTemplate.setTemplateType(templateType);
     
-    if (element.attribute(ATTRIB_CASTELESS) == null || element.attribute(ATTRIB_CASTELESS).equals("false"))
-    {
-	    ICasteCollection casteCollection = casteCollectionRegistry.get(templateType.getCharacterType());
-	    if (casteCollection != null) {
-	      characterTemplate.setCasteCollection(casteCollection);
-	    }
-    }
+    ICasteCollection casteCollection = casteCollectionRegistry.get(templateType.getCharacterType());
+    if (casteCollection != null)
+      characterTemplate.setCasteCollection(casteCollection);
   }
 
   private void setAbilityGroups(Element generalElement, GenericCharacterTemplate characterTemplate)

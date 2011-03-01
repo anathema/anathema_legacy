@@ -24,13 +24,13 @@ public class SecondEditionWeaponryTableEncoder extends AbstractWeaponryTableEnco
   }
 
   @Override
-  protected AbstractDefenceWeaponStatsGroup createDefenceGroup(IGenericCharacter character) {
-    return new SecondEditionDefenceWeaponStatsGroup(getResources(), character);
+  protected AbstractDefenceWeaponStatsGroup createDefenceGroup(IGenericCharacter character, IGenericTraitCollection traitCollection) {
+    return new SecondEditionDefenceWeaponStatsGroup(getResources(), character, traitCollection);
   }
 
   @Override
-  protected AccuracyWeaponStatsGroup createAccuracyGroup(IGenericCharacter character) {
-    return new AccuracyWeaponStatsGroup(getResources(), character.getTraitCollection());
+  protected AccuracyWeaponStatsGroup createAccuracyGroup(IGenericCharacter character, IGenericTraitCollection traitCollection) {
+    return new AccuracyWeaponStatsGroup(getResources(), traitCollection);
   }
 
   @Override

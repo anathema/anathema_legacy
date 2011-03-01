@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.lunar.knacks.IKnackStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicCostStatsGroup;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicDurationStatsGroup;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicDetailsStatsGroup;
@@ -42,7 +41,6 @@ public class KnackTableEncoder extends AbstractStatsTableEncoder<IKnackStats> {
   protected IStatsGroup<IKnackStats>[] createStatsGroups(IGenericCharacter character) {
     return new IStatsGroup[] {
         new KnackNameStatsGroup(resources),
-        new KnackDetailStatsGroup(resources),
         new KnackSourceStatsGroup(resources) };
   }
 

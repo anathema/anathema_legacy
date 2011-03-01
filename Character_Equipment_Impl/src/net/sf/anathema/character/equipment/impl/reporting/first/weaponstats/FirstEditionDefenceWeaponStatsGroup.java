@@ -14,10 +14,16 @@ public class FirstEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponSt
   public FirstEditionDefenceWeaponStatsGroup(IResources resources, IGenericCharacter character) {
     super(resources, character);
   }
+  
+  public FirstEditionDefenceWeaponStatsGroup(IResources resources,
+		  IGenericCharacter character,
+		  IGenericTraitCollection traitCollection) {
+	    super(resources, character, traitCollection);
+	  }
 
   @Override
   protected int getDefenceValue(IWeaponStats weapon) {
-    IGenericTraitCollection traitCollection = getCharacter().getTraitCollection();
+    IGenericTraitCollection traitCollection = getTraitCollection();
     int dexterityValue = traitCollection.getTrait(AttributeType.Dexterity).getCurrentValue();
     ITraitType weaponTrait = weapon.getTraitType();
     int value = traitCollection.getTrait(weaponTrait).getCurrentValue() + dexterityValue + weapon.getDefence();

@@ -5,7 +5,7 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.lunar.reporting.heartsblood.LunarHeartsBloodEncoder;
+import net.sf.anathema.character.lunar.reporting.heartsblood.FirstEditionLunarHeartsBloodEncoder;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
@@ -199,7 +199,7 @@ public class FirstEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    IPdfContentBoxEncoder encoder = new LunarHeartsBloodEncoder(baseFont, resources);
+    IPdfContentBoxEncoder encoder = new FirstEditionLunarHeartsBloodEncoder(baseFont, resources);
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }

@@ -9,13 +9,15 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponStatsGroup {
 
-  public SecondEditionDefenceWeaponStatsGroup(IResources resources, IGenericCharacter character) {
-    super(resources, character);
+  public SecondEditionDefenceWeaponStatsGroup(IResources resources,
+		  IGenericCharacter character,
+		  IGenericTraitCollection traitCollection) {
+    super(resources, character, traitCollection);
   }
 
   @Override
   protected int getDefenceValue(IWeaponStats weapon) {
-    IGenericTraitCollection traitCollection = getCharacter().getTraitCollection();
+    IGenericTraitCollection traitCollection = getTraitCollection();
     double finalValue = calculateFinalValue(
         weapon.getDefence(),
         traitCollection.getTrait(AttributeType.Dexterity),

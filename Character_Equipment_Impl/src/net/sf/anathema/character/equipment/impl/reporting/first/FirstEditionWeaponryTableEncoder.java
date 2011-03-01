@@ -28,13 +28,13 @@ public class FirstEditionWeaponryTableEncoder extends AbstractWeaponryTableEncod
   }
 
   @Override
-  protected AbstractDefenceWeaponStatsGroup createDefenceGroup(IGenericCharacter character) {
-    return new FirstEditionDefenceWeaponStatsGroup(getResources(), character);
+  protected AbstractDefenceWeaponStatsGroup createDefenceGroup(IGenericCharacter character, IGenericTraitCollection traitCollection) {
+    return new FirstEditionDefenceWeaponStatsGroup(getResources(), character, traitCollection);
   }
 
   @Override
-  protected AccuracyWeaponStatsGroup createAccuracyGroup(IGenericCharacter character) {
-    return new FirstEditionAccuracyWeaponStatsGroup(getResources(), character);
+  protected AccuracyWeaponStatsGroup createAccuracyGroup(IGenericCharacter character, IGenericTraitCollection traitCollection) {
+    return new FirstEditionAccuracyWeaponStatsGroup(getResources(), character, traitCollection);
   }
 
   @Override

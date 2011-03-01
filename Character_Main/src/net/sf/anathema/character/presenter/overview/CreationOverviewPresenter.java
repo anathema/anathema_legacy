@@ -118,7 +118,8 @@ public class CreationOverviewPresenter implements IPresenter {
 
   private void initConcept() {
     IOverviewCategory category = view.addOverviewCategory(getString("Overview.Creation.Category.Concept")); //$NON-NLS-1$
-    if (!template.getCasteCollection().isEmpty()) {
+    if (template.getCasteCollection().getAllCasteTypes(template.getEdition(),
+    		template.getTemplateType()).length > 0) {
       IValueView<String> casteView = category.addStringValueView(getString(template.getPresentationProperties()
           .getCasteLabelResource()));
       IValueModel<String> casteModel = new IValueModel<String>() {

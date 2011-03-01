@@ -10,8 +10,6 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.lunar.knacks.IKnackStats;
-import net.sf.anathema.character.lunar.knacks.KnackStats;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.CharmStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MultipleEffectCharmStats;
@@ -51,7 +49,7 @@ public class KnackEncoder implements IPdfContentBoxEncoder {
   }
 
   public String getHeaderKey() {
-    return "Knacks"; //$NON-NLS-1$
+    return "Lunar.Knacks"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {

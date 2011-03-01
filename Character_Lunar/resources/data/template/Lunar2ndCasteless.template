@@ -1,4 +1,4 @@
-<exaltedCharacterTemplate characterType="Lunar" subtemplate="Casteless" casteless="true">
+<exaltedCharacterTemplate characterType="Lunar" subtemplate="Casteless">
   <general>
     <edition edition="SecondEdition"/>
     <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template" />

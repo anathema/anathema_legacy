@@ -20,17 +20,22 @@ public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTabl
     super(baseFont);
     this.resources = resources;
   }
+  
+  protected IGenericTraitCollection getTraitCollection(IGenericCharacter character)
+  {
+	  return character.getTraitCollection();
+  }
 
   @SuppressWarnings("unchecked")
   @Override
   protected IEquipmentStatsGroup<IWeaponStats>[] createStatsGroups(IGenericCharacter character) {
-    IGenericTraitCollection traitCollection = character.getTraitCollection();
+    IGenericTraitCollection traitCollection = getTraitCollection(character);
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup<IWeaponStats>(resources),
         createSpeedGroup(traitCollection),
-        createAccuracyGroup(character),
+        createAccuracyGroup(character, traitCollection),
         new DamageWeaponStatsGroup(resources, traitCollection),
-        createDefenceGroup(character),
+        createDefenceGroup(character, traitCollection),
         createRateGroup(character),
         new RangeWeaponStatsGroup(resources),
         new TagsStatsGroup(resources) };
@@ -38,9 +43,9 @@ public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTabl
 
   protected abstract RateWeaponStatsGroup createRateGroup(IGenericCharacter character);
 
-  protected abstract AccuracyWeaponStatsGroup createAccuracyGroup(IGenericCharacter character);
+  protected abstract AccuracyWeaponStatsGroup createAccuracyGroup(IGenericCharacter character, IGenericTraitCollection traitCollection);
 
-  protected abstract AbstractDefenceWeaponStatsGroup createDefenceGroup(IGenericCharacter character);
+  protected abstract AbstractDefenceWeaponStatsGroup createDefenceGroup(IGenericCharacter character, IGenericTraitCollection traitCollection);
 
   protected abstract AbstractSpeedWeaponStatsGroup createSpeedGroup(IGenericTraitCollection traitCollection);
 

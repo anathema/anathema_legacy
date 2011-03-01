@@ -5,7 +5,11 @@ import net.sf.anathema.character.generic.util.IStats;
 public interface IHeartsBloodStats extends IStats {
 
   public String getStrengthString();
+  
+  public String getDexterityString();
 
   public String getStaminaString();
+  
+  public String getAppearanceString();
 
 }

@@ -116,6 +116,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     editionMap.put(ExaltedEdition.FirstEdition, LunarCaste.getFirstEditionValues());
     editionMap.put(ExaltedEdition.SecondEdition, LunarCaste.values());
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
+    templateMap.put(castelessType, new ICasteType[] { });
     templateMap.put(dreamsType, LunarCaste.getDreamsValues());
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.LUNAR,

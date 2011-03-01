@@ -15,7 +15,7 @@ public class SecondEditionHealthAndMovementEncoder extends AbstractHealthAndMove
   }
 
   @Override
-  protected final IPdfTableEncoder createTableEncoder() {
+  protected IPdfTableEncoder createTableEncoder() {
     return new SecondEditionHealthAndMovemenTableEncoder(getResources(), getBaseFont());
   }
 

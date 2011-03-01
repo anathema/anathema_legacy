@@ -1,4 +1,4 @@
-package net.sf.anathema.character.lunar.knacks;
+package net.sf.anathema.character.lunar.reporting.knacks;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.AbstractCharmStats;
@@ -16,7 +16,7 @@ public class KnackStats implements IKnackStats
 
 	@Override
 	public String getGroupName(IResources resources) {
-		return charm.getGroupId();
+		return resources.getString(charm.getGroupId());
 	}
 
 	@Override
@@ -31,7 +31,9 @@ public class KnackStats implements IKnackStats
 
 	@Override
 	public String getSourceString(IResources resources) {
-		return resources.getString("ExaltedSourceBook." + charm.getSource());
+		return resources.getString("ExaltedSourceBook." + charm.getSource() + ".Short") +
+			" p" +
+			resources.getString(charm.getSource().getId() + "." + charm.getId() + ".Page");
 	}
 
 	@Override

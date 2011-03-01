@@ -1,7 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.knacks;
 
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.lunar.knacks.IKnackStats;
 import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractTextStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 

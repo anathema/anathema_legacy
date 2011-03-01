@@ -60,6 +60,11 @@ public abstract class AbstractHealthAndMovemenTableEncoder implements IPdfTableE
     tableColumn.go();
     return table.getTotalHeight();
   }
+  
+  protected IGenericTraitCollection getTraits(IGenericCharacter character)
+  {
+	  return character.getTraitCollection();
+  }
 
   private int getRowCount(HealthLevelType type) {
     if (type == HealthLevelType.TWO || type == HealthLevelType.ONE) {
@@ -100,7 +105,7 @@ public abstract class AbstractHealthAndMovemenTableEncoder implements IPdfTableE
           addIncapacitatedMovement(table);
         }
         else {
-          addMovementCells(table, type, painTolerance, character.getTraitCollection());
+          addMovementCells(table, type, painTolerance, getTraits(character));
         }
         addHealthTypeCells(table, type, painTolerance);
       }
@@ -257,7 +262,7 @@ public abstract class AbstractHealthAndMovemenTableEncoder implements IPdfTableE
     if (level == HealthLevelType.INCAPACITATED) {
       addSpaceCells(table, 1);
       for (int index = 0; index < additionalCount - 1; index++) {
-        if (index < character.getTraitCollection().getTrait(AttributeType.Stamina).getCurrentValue()) {
+        if (index < getTraits(character).getTrait(AttributeType.Stamina).getCurrentValue()) {
           table.addCell(createHealthCell(activeImage));
         }
         else {

@@ -8,23 +8,30 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Font;
+import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
 
+  private final String notes = "Sheet.Lunar.WarForm";
   private final static int PHYSICAL_MAX = 15;
   private final IResources resources;
   private final PdfTraitEncoder smallTraitEncoder;
   private final BaseFont baseFont;
   private final float smallWidth;
+  private final int lineHeight = IVoidStateFormatConstants.LINE_HEIGHT - 4;
 
   public SecondEditionLunarDBTFormEncoder(BaseFont baseFont, IResources resources, float smallWidth) {
     this.resources = resources;
@@ -34,27 +41,58 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
   }
 
   public String getHeaderKey() {
-    return "Deadly Beastman Transformation"; //$NON-NLS-1$
+    return "Lunar.WarForm"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
+	  
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
     IBeastformModel additionalModel = (IBeastformModel) character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
     encodeAttributes(directContent, bounds, attributeGroups, traitCollection);
+    encodeNotes(directContent, bounds);
     encodeMutations(directContent, bounds, character);
+  }
+  
+  private final void encodeNotes(PdfContentByte directContent, Bounds bounds)
+  {
+	  final int offsetX = 0;
+	  final int offsetY = 42;
+	  final int numNotes = 4;
+	  try
+	  {
+	  for (int i = 1; i <= numNotes; i++)
+		  writeLine(directContent, resources.getString(notes + ".Note" + i),
+				  bounds, offsetX, offsetY + lineHeight * (i - 1));
+	  }
+	  catch (DocumentException e) { }
+  }
+  
+  private final void writeLine(PdfContentByte directContent, String text,
+		  Bounds bounds, int offsetX, int offsetY) throws DocumentException
+  {
+	  Font font = TableEncodingUtilities.createFont(baseFont);
+	  Bounds newBounds = new Bounds(
+			  bounds.x + offsetX,
+			  bounds.y + bounds.height - offsetY,
+			  bounds.width / 2 - offsetX,
+			  lineHeight);
+	  font.setSize(IVoidStateFormatConstants.COMMENT_FONT_SIZE);
+	  PdfTextEncodingUtilities.encodeText(directContent, new Phrase(text, font),
+			  newBounds, lineHeight);
   }
   
   private final void encodeMutations(PdfContentByte directContent,
 		  Bounds bounds,
 		  IGenericCharacter character)
   {
-	  final int spacing = 15;
+	  final int horizontalSpacing = 15;
+	  final int verticalSpacing = 5;
 	  Bounds newBounds = new Bounds(
-			  bounds.x + bounds.getWidth() * 1 / 2 + spacing,
-			  bounds.y,
-			  bounds.getWidth() * 1 / 2 - spacing,
-			  bounds.height);
+			  bounds.x + bounds.getWidth() * 1 / 2 + horizontalSpacing,
+			  bounds.y + verticalSpacing,
+			  bounds.getWidth() * 1 / 2 - horizontalSpacing,
+			  bounds.height - 2 * verticalSpacing);
 	  IPdfContentBoxEncoder encoder = new GiftEncoder(baseFont, resources);
 	  try {
 		new PdfBoxEncoder(resources, baseFont).encodeBox(directContent, encoder, character, newBounds);

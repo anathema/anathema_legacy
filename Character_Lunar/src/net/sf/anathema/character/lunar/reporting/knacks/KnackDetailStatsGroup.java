@@ -4,7 +4,6 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.lunar.knacks.IKnackStats;
 import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractTextStatsGroup;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;

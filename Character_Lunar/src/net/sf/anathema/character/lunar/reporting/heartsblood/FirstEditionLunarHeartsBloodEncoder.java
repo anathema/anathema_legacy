@@ -19,12 +19,12 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class LunarHeartsBloodEncoder extends AbstractFixedLineStatsTableEncoder<IHeartsBloodStats> implements
+public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsTableEncoder<IHeartsBloodStats> implements
     IPdfContentBoxEncoder {
 
   private final IResources resources;
 
-  public LunarHeartsBloodEncoder(BaseFont baseFont, IResources resources) {
+  public FirstEditionLunarHeartsBloodEncoder(BaseFont baseFont, IResources resources) {
     super(baseFont);
     this.resources = resources;
   }
@@ -51,10 +51,18 @@ public class LunarHeartsBloodEncoder extends AbstractFixedLineStatsTableEncoder<
         public IIdentificate getName() {
           return new Identificate(form.getName());
         }
+        
+        public String getAppearanceString() {
+            return String.valueOf(form.getAppearance());
+          }
 
         public String getStaminaString() {
           return String.valueOf(form.getStamina());
         }
+        
+        public String getDexterityString() {
+            return String.valueOf(form.getDexterity());
+          }
 
         public String getStrengthString() {
           return String.valueOf(form.getStrength());
@@ -66,9 +74,10 @@ public class LunarHeartsBloodEncoder extends AbstractFixedLineStatsTableEncoder<
 
   @Override
   protected IStatsGroup<IHeartsBloodStats>[] createStatsGroups(IGenericCharacter character) {
-    return new IStatsGroup[] {
-        new HeartsBloodNameStatsGroup(resources),
-        new HeartsBloodStrengthStatsGroup(resources),
-        new HeartsBloodStaminaStatsGroup(resources) };
+	    return new IStatsGroup[] {
+	        new HeartsBloodNameStatsGroup(resources),
+	        new HeartsBloodStrengthStatsGroup(resources),
+	        new HeartsBloodStaminaStatsGroup(resources) };
+		  
   }
 }

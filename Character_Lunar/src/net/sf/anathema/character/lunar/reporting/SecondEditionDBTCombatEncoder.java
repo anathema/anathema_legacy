@@ -6,6 +6,8 @@ import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
+import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
@@ -31,7 +33,8 @@ public class SecondEditionDBTCombatEncoder implements IPdfContentBoxEncoder {
 	    String dodgeLabel = resources.getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
 	    String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
 	    String stunningLabel = resources.getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
-	    IGenericTraitCollection traitCollection = character.getTraitCollection();
+	    IBeastformModel additionalModel = (IBeastformModel) character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
+	    IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
 	    int joinBattle = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
 	    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
 	    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection);
@@ -46,22 +49,21 @@ public class SecondEditionDBTCombatEncoder implements IPdfContentBoxEncoder {
 	    String mobilityPenaltyLabel = "-" + resources.getString("Sheet.Combat.MobilityPenalty"); //$NON-NLS-1$ //$NON-NLS-2$
 	    String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$
 	    Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
-	    LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 4, upperLeftCorner, bounds.width, 3);
+	    LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
 	    encoder.addLabelledValue(directContent, 0, joinLabel, joinBattle);
 	    encoder.addLabelledValue(directContent, 1, dodgeLabel, dodgeDV);
 	    encoder.addComment(directContent, mobilityPenaltyLabel, 1);
-	    encoder.addComment(directContent, thresholdPoolLabel, 2);
 	    
-	    upperLeftCorner = new Position(bounds.x, bounds.getMaxY() - 20);
-	    encoder = new LabelledValueEncoder(baseFont, 4, upperLeftCorner, bounds.width, 3);
+	    upperLeftCorner = new Position(bounds.x, bounds.getMaxY() - 25);
+	    encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
 	    
 	    encoder.addLabelledValue(directContent, 0, knockdownLabel, knockdownThreshold, knockdownPool);
 	    encoder.addLabelledValue(directContent, 1, stunningLabel, stunningThreshold, stunningPool);
-	    encoder.addComment(directContent, thresholdPoolLabel, 1);
+	    encoder.addComment(directContent, thresholdPoolLabel, 0);
   }
 
 	@Override
 	public String getHeaderKey() {
-		return "CombatValues";
+		return "Lunar.WarForm.CombatValues";
 	}
 }
