@@ -231,12 +231,12 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   private boolean initCastePresentation() {
     final ICharacterTemplate template = statistics.getCharacterTemplate();
     IExaltedEdition edition = statistics.getCharacterContext().getBasicCharacterContext().getRuleSet().getEdition();
-    if (template.getCasteCollection().getAllCasteTypes(edition).length <= 0) {
+    if (template.getCasteCollection().getAllCasteTypes(edition, statistics.getCharacterTemplate().getTemplateType()).length <= 0) {
       return false;
     }
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     IObjectUi casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties(), template.getEdition());
-    ICasteType[] allCasteTypes = template.getCasteCollection().getAllCasteTypes(edition);
+    ICasteType[] allCasteTypes = template.getCasteCollection().getAllCasteTypes(edition, statistics.getCharacterTemplate().getTemplateType());
     final IObjectSelectionView<ICasteType> casteView = view.addObjectSelectionView(
         resources.getString(casteLabelResourceKey),
         allCasteTypes,

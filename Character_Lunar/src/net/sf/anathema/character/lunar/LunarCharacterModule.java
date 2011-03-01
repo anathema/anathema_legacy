@@ -77,6 +77,8 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   
   private static final TemplateType castelessType = new TemplateType(CharacterType.LUNAR, new Identificate(
   "Casteless")); //$NON-NLS-1$
+  private static final TemplateType dreamsType = new TemplateType(CharacterType.LUNAR, new Identificate(
+  "Dreams")); //$NON-NLS-1$
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -113,9 +115,11 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     Map<IExaltedEdition, ICasteType[]> editionMap = new HashMap<IExaltedEdition, ICasteType[]>();
     editionMap.put(ExaltedEdition.FirstEdition, LunarCaste.getFirstEditionValues());
     editionMap.put(ExaltedEdition.SecondEdition, LunarCaste.values());
+    Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
+    templateMap.put(dreamsType, LunarCaste.getDreamsValues());
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.LUNAR,
-        new CasteCollection(editionMap));
+        new CasteCollection(editionMap, templateMap));
     characterGenerics.getGenericCharmStatsRegistry().register(
             CharacterType.LUNAR,
             new IMagicStats[] { new FirstExcellency(CharacterType.LUNAR, ExaltedSourceBook.Lunars2nd, "1 m per die"), //$NON-NLS-1$

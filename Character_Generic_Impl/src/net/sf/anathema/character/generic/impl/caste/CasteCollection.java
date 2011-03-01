@@ -5,15 +5,19 @@ import java.util.Map;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.template.ITemplateType;
 
 public class CasteCollection implements ICasteCollection
 {
+  private Map<ITemplateType, ICasteType[]> templateMap;
   private Map<IExaltedEdition, ICasteType[]> editionMap;
   private final ICasteType[] allTypes;
   
-  public CasteCollection(Map<IExaltedEdition, ICasteType[]> editionMap)
+  public CasteCollection(Map<IExaltedEdition, ICasteType[]> editionMap,
+		  Map<ITemplateType, ICasteType[]> templateMap)
   {
 	  this.editionMap = editionMap;
+	  this.templateMap = templateMap;
 	  ICasteType[] longest = null;
 	  int maxLength = 0;
 	  for (ICasteType[] casteSet : editionMap.values())
@@ -51,11 +55,18 @@ public class CasteCollection implements ICasteCollection
     return allTypes.length <= 0;
   }
 
-  public ICasteType[] getAllCasteTypes(IExaltedEdition edition)
+  public ICasteType[] getAllCasteTypes(IExaltedEdition edition, ITemplateType template)
   {
-	  if (editionMap == null)
-		  return allTypes;
-	  else
-		  return editionMap.get(edition);
+	  ICasteType[] set = null;
+	  
+	  if (templateMap != null)
+		  set = set != null ? set : templateMap.get(template);
+	  
+	  if (editionMap != null)
+		  set = set != null ? set : editionMap.get(edition);
+	  
+	  set = set != null ? set : allTypes;
+	  
+	  return set;
   }
 }
