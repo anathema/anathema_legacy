@@ -5,8 +5,9 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
-import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateParser;
+import net.sf.anathema.character.generic.impl.traits.limitation.EssenceBasedLimitation;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -18,6 +19,7 @@ public class AllocationMinimumTraitTemplateParser
   private static final String ATTRIB_COUNT = "count"; //$NON-NLS-1$
   private static final String TAG_TRAIT = "trait"; //$NON-NLS-1$
   private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
+  private static final String ATTRIB_START_VALUE = "startValue";
   private final ITraitTypeGroup traitTypeGroup;
 
   public AllocationMinimumTraitTemplateParser(ITraitTypeGroup traitTypeGroup) {
@@ -32,10 +34,23 @@ public class AllocationMinimumTraitTemplateParser
     list.add(restriction);
     List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<GenericRestrictedTraitTemplate>();
     for (Element traitElement : ElementUtilities.elements(element, TAG_TRAIT)) {
-      GenericTraitTemplate template = GenericTraitTemplateParser.parseTraitTemplate(traitElement);
+      GenericTraitTemplate template = parseTraitTemplate(traitElement);
       ITraitType type = traitTypeGroup.getById(ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_ID));
       traitTemplates.add(new GenericRestrictedTraitTemplate(template, restriction, type));
     }
     return traitTemplates.toArray(new GenericRestrictedTraitTemplate[traitTemplates.size()]);
+  }
+  
+  public GenericTraitTemplate parseTraitTemplate(Element traitElement)
+  	throws PersistenceException
+  {
+	GenericTraitTemplate template = new GenericTraitTemplate();
+	template.setLimitation(new EssenceBasedLimitation());
+	template.setLowerableState(LowerableState.Default);
+	template.setRequiredFavored(false);
+	template.setZeroLevelValue(0);
+	template.setStartValue(ElementUtilities.getIntAttrib(traitElement, ATTRIB_START_VALUE, 0));
+	template.setMinimumValue(0);
+	return template;
   }
 }

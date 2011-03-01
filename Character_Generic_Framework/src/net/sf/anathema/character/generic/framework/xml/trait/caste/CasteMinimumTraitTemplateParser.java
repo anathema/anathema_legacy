@@ -54,7 +54,7 @@ public class CasteMinimumTraitTemplateParser
   
   private void parseSpecialTraitTemplates(List<GenericRestrictedTraitTemplate> pool, Element element) throws PersistenceException {
 	    for (Element specialTraitElement : ElementUtilities.elements(element, TAG_SPECIAL_TRAIT)) {
-	      GenericTraitTemplate specialTraitTemplate = GenericTraitTemplateParser.parseTraitTemplate(specialTraitElement);
+	      GenericTraitTemplate specialTraitTemplate = GenericTraitTemplateParser.parseTraitTemplateSoft(specialTraitElement);
 	      String traitTypeId = ElementUtilities.getRequiredAttrib(specialTraitElement, "id"); //$NON-NLS-1$
 	      pool.add(new GenericRestrictedTraitTemplate(specialTraitTemplate,
 	    		  new CasteMinimumRestriction(caste, specialTraitTemplate.getMinimumValue(null)), type.getById(traitTypeId)));

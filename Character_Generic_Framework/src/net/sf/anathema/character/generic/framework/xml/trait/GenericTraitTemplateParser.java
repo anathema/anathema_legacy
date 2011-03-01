@@ -18,6 +18,7 @@ public class GenericTraitTemplateParser {
   private static final String ATTRIB_VALUE = "value"; //$NON-NLS-1$
   private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
   private static final String ATTRIB_IS_REQUIRED_FAVORED = "isRequiredFavored"; //$NON-NLS-1$
+  private static final String ATTRIB_MINIMUM = "minimum";
   private static final String TAG_MINIMUM = "minimum"; //$NON-NLS-1$
   private static final String TAG_LIMITATION = "limitation"; //$NON-NLS-1$
   private static final String VALUE_STATIC = "Static"; //$NON-NLS-1$
@@ -43,6 +44,28 @@ public class GenericTraitTemplateParser {
     defaultTraitTemplate.setLimitation(parseLimitation(traitElement));
     return defaultTraitTemplate;
   }
+  
+  public static GenericTraitTemplate parseTraitTemplateSoft(Element traitElement) throws PersistenceException {
+	    GenericTraitTemplate defaultTraitTemplate = new GenericTraitTemplate();
+	    int startValue = ElementUtilities.getIntAttrib(traitElement, ATTRIB_START_VALUE, 0);
+	    defaultTraitTemplate.setStartValue(startValue);
+	    defaultTraitTemplate.setZeroLevelValue(ElementUtilities.getIntAttrib(traitElement, ATTRIB_ZERO_LEVEL, startValue));
+	    defaultTraitTemplate.setRequiredFavored(ElementUtilities.getBooleanAttribute(
+	        traitElement,
+	        ATTRIB_IS_REQUIRED_FAVORED,
+	        false));
+	    String lowerableStateId = traitElement.attributeValue(ATTRIB_LOWERABLE_STATE, LowerableState.Default.toString());
+	    defaultTraitTemplate.setLowerableState(LowerableState.valueOf(lowerableStateId));
+	    Element minimumValueElement = traitElement.element(TAG_MINIMUM);
+	    defaultTraitTemplate.setMinimumValue(minimumValueElement != null ?
+	    		ElementUtilities.getRequiredIntAttrib(minimumValueElement, ATTRIB_VALUE) :
+	    		ElementUtilities.getIntAttrib(traitElement, ATTRIB_MINIMUM, 0));
+	    if (traitElement.element(TAG_LIMITATION) != null)
+	    	defaultTraitTemplate.setLimitation(parseLimitation(traitElement));
+	    else
+	    	defaultTraitTemplate.setLimitation(new EssenceBasedLimitation());
+	    return defaultTraitTemplate;
+	  }
 
   private static ITraitLimitation parseLimitation(Element defaultTraitElement) throws PersistenceException {
     Element limitationElement = ElementUtilities.getRequiredElement(defaultTraitElement, TAG_LIMITATION);
