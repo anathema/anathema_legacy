@@ -70,7 +70,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
     return traitFavorization;
   }
 
-  public final void setCreationValue(int value) {
+  public void setCreationValue(int value) {
     if (getFavorization().isFavored()) {
       value = Math.max(value, getFavorization().getMinimalValue());
     }

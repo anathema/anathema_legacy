@@ -9,6 +9,8 @@ import net.sf.anathema.lib.util.IIdentificate;
 public interface ICharm extends ICharmData, IMagic {
 
   public Set<ICharm> getLearnFollowUpCharms(ICharmLearnArbitrator learnArbitrator);
+  
+  public Set<ICharm> getLearnChildCharms();
 
   public Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator);
 

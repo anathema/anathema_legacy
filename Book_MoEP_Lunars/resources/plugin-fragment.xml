@@ -194,6 +194,11 @@
           <parameter id="list">
                <parameter id="type" value="Lunar" />
                <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Lunars_data/misc/Merges.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Lunar" />
+               <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="moep_Lunars_data/perception/craft.xml" />
           </parameter>
           <parameter id="list">

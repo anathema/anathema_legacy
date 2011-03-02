@@ -126,6 +126,11 @@ public class DummyCharm extends Identificate implements ICharm {
   public Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {
     return parentCharms;
   }
+  
+  public Set<ICharm> getLearnChildCharms()
+  {
+	    return learnFollowUpCharms;
+  }
 
   public Set<ICharm> getParentCharms() {
     return parentCharms;

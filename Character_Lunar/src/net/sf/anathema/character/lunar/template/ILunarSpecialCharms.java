@@ -70,4 +70,19 @@ public interface ILunarSpecialCharms {
   public static final IMultiLearnableCharm RIGHTEOUS_LION_DEFENSE = new StaticMultiLearnableCharm(
 	      "Lunar.RighteousLionDefense", //$NON-NLS-1$
 	      2);
+  
+  public static final IMultiLearnableCharm SILVER_LUNAR_STA = new TraitDependentMultiLearnableCharm(
+	      "Lunar.SilverLunarResolution", //$NON-NLS-1$
+	      7,
+	      OtherTraitType.Essence);
+  
+  public static final IMultiLearnableCharm SILVER_LUNAR_CHA = new TraitDependentMultiLearnableCharm(
+	      "Lunar.SilverLunarResolutionCharisma", //$NON-NLS-1$
+	      7,
+	      OtherTraitType.Essence);
+  
+  public static final IMultiLearnableCharm SILVER_LUNAR_WIT = new TraitDependentMultiLearnableCharm(
+	      "Lunar.SilverLunarResolutionWits", //$NON-NLS-1$
+	      7,
+	      OtherTraitType.Essence);
 }

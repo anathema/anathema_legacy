@@ -41,6 +41,21 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
+     <charm id="Lunar.DogEarMethod" exalt="Lunar" group="AnimalAndTraining">
+          <prerequisite>
+				<trait id="Perception" value="2" />
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyPerception" count="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
      <charm id="Lunar.PackInstinctAffirmation" exalt="Lunar" group="AnimalAndTraining">
           <prerequisite>
                <trait id="Charisma" value="3" />

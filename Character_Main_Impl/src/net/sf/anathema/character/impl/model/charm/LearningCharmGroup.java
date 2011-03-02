@@ -52,7 +52,11 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
       return;
     }
     if (!learnArbitrator.isLearnable(charm)) {
-      fireNotLearnableEvent(charm);
+      boolean mergedLearned = false;
+    	for (ICharm merged : charm.getMergedCharms())
+    		mergedLearned = mergedLearned || learnArbitrator.isLearned(merged);
+      if (!mergedLearned)
+    	  fireNotLearnableEvent(charm);
       return;
     }
     learnCharm(charm, false);

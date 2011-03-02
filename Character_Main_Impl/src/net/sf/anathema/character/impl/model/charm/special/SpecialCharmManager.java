@@ -16,6 +16,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisit
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -49,11 +50,22 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerMultiLearnableCharm(IMultiLearnableCharm visitedCharm, ICharm charm, ILearningCharmGroup group) {
+	  IDefaultTrait trait = null;
+	  for (ICharm merged : charm.getMergedCharms())
+	  {
+		  ISpecialCharmConfiguration config = specialConfigurationsByCharm.get(merged);
+		  if (config != null && config instanceof MultiLearnableCharmConfiguration)
+		  {
+			  trait = ((MultiLearnableCharmConfiguration)config).getTrait();
+			  break;
+		  }
+	  }
     addSpecialCharmConfiguration(charm, group, new MultiLearnableCharmConfiguration(
         context,
         charm,
         visitedCharm,
-        arbitrator));
+        arbitrator,
+        trait));
   }
 
   private void registerOxBodyTechnique(IOxBodyTechniqueCharm visited, ICharm charm, ILearningCharmGroup group) {

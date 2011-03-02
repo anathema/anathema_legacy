@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.library.trait.LimitedTrait;
+import net.sf.anathema.character.library.trait.SharedLimitedTrait;
 import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
@@ -19,33 +20,58 @@ import net.sf.anathema.lib.data.Range;
 public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmConfiguration {
 
   private final GenericControl<ISpecialCharmLearnListener> control = new GenericControl<ISpecialCharmLearnListener>();
-  private final ICharm charm;
+  private ICharm charm;
   private final IDefaultTrait trait;
-
+  
   public MultiLearnableCharmConfiguration(
-      final ICharacterModelContext context,
-      final ICharm charm,
-      final IMultiLearnableCharm specialCharm,
-      final ICharmLearnableArbitrator arbitrator) {
+	      final ICharacterModelContext context,
+	      final ICharm charm,
+	      final IMultiLearnableCharm specialCharm,
+	      final ICharmLearnableArbitrator arbitrator)
+  {
+	  this(context, charm, specialCharm, arbitrator, null);
+  }
+  
+  public MultiLearnableCharmConfiguration(
+	      final ICharacterModelContext context,
+	      final ICharm charm,
+	      final IMultiLearnableCharm specialCharm,
+	      final ICharmLearnableArbitrator arbitrator,
+	      final IDefaultTrait trait){
     this.charm = charm;
-    this.trait = new LimitedTrait(new TraitType("SpecialCharm"), SimpleTraitTemplate.createStaticLimitedTemplate( //$NON-NLS-1$
-        0,
-        specialCharm.getAbsoluteLearnLimit()), new IIncrementChecker() {
-      public boolean isValidIncrement(int increment) {
-        Range allowedRange = new Range(0, specialCharm.getMaximumLearnCount(context.getTraitCollection()));
-        int incrementedValue = trait.getCurrentValue() + increment;
-        if (incrementedValue == 0) {
-          return true;
-        }
-        boolean learnable = arbitrator.isLearnable(charm);
-        return learnable && allowedRange.contains(incrementedValue);
-      }
-    }, context.getTraitContext());
-    trait.addCurrentValueListener(new IIntValueChangedListener() {
+    this.trait = getNewTrait(context, specialCharm, arbitrator, (SharedLimitedTrait) trait);
+    this.trait.addCurrentValueListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         fireLearnCountChanged(newValue);
       }
     });
+  }
+  
+  public IDefaultTrait getTrait()
+  {
+	  return trait;
+  }
+  
+  private SharedLimitedTrait getNewTrait(final ICharacterModelContext context,
+	      final IMultiLearnableCharm specialCharm,
+	      final ICharmLearnableArbitrator arbitrator,
+	      final SharedLimitedTrait linkedTraits)
+  {
+	  return new SharedLimitedTrait(new TraitType("SpecialCharm"), SimpleTraitTemplate.createStaticLimitedTemplate( //$NON-NLS-1$
+		        0,
+		        specialCharm.getAbsoluteLearnLimit()), new IIncrementChecker() {
+		      public boolean isValidIncrement(int increment) {
+		        Range allowedRange = new Range(0, specialCharm.getMaximumLearnCount(context.getTraitCollection()));
+		        int incrementedValue = MultiLearnableCharmConfiguration.this.trait.getCurrentValue() + increment;
+		        if (incrementedValue == 0) {
+		          return true;
+		        }
+		        boolean learnable = arbitrator.isLearnable(charm);
+		        return learnable && allowedRange.contains(incrementedValue);
+		      }
+		    }
+	  , context.getTraitContext(),
+	  linkedTraits == null ? null : linkedTraits.getLinks());
   }
 
   @Override

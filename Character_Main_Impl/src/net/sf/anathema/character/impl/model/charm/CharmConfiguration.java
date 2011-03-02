@@ -141,15 +141,28 @@ public class CharmConfiguration implements ICharmConfiguration {
             getGroup(mergedCharm).learnCharm(mergedCharm, context.getBasicCharacterContext().isExperienced());
           }
         }
+        
+        for (ICharm child : charm.getLearnChildCharms())
+        {
+        	boolean learnedMerged = false;
+        	for (ICharm mergedCharm : child.getMergedCharms())
+                learnedMerged = learnedMerged || isLearned(mergedCharm);
+        	if (learnedMerged && isLearnable(child))
+                getGroup(child).learnCharm(child, context.getBasicCharacterContext().isExperienced());
+        }
       }
 
       @Override
       public void charmForgotten(ICharm charm) {
-        for (ICharm mergedCharm : charm.getMergedCharms()) {
-          if (isLearned(mergedCharm) && isUnlearnableWithoutConsequences(mergedCharm)) {
-            getGroup(mergedCharm).forgetCharm(mergedCharm, context.getBasicCharacterContext().isExperienced());
-          }
-        }
+    	  boolean forgetMerges = true;
+    	  for (ICharm parentCharm : charm.getParentCharms())
+    		  forgetMerges = forgetMerges && isLearned(parentCharm);
+    	  if (forgetMerges)
+	        for (ICharm mergedCharm : charm.getMergedCharms()) {
+	          if (isLearned(mergedCharm) && isUnlearnableWithoutConsequences(mergedCharm)) {
+	            getGroup(mergedCharm).forgetCharm(mergedCharm, context.getBasicCharacterContext().isExperienced());
+	          }
+	        }
       }
     };
     for (ICharmGroup charmGroup : charmGroups) {

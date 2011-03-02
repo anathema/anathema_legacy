@@ -110,7 +110,10 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
                 ILunarSpecialCharms.ADDER_FANG_METHOD,
                 ILunarSpecialCharms.BESIEGING_THE_BASTION,
                 ILunarSpecialCharms.COBRA_EYE_METHOD,
-                ILunarSpecialCharms.PERFECT_OUTSIDER_UNDERSTANDING});
+                ILunarSpecialCharms.PERFECT_OUTSIDER_UNDERSTANDING,
+                ILunarSpecialCharms.SILVER_LUNAR_CHA,
+                ILunarSpecialCharms.SILVER_LUNAR_STA,
+                ILunarSpecialCharms.SILVER_LUNAR_WIT});
     
     Map<IExaltedEdition, ICasteType[]> editionMap = new HashMap<IExaltedEdition, ICasteType[]>();
     editionMap.put(ExaltedEdition.FirstEdition, LunarCaste.getFirstEditionValues());

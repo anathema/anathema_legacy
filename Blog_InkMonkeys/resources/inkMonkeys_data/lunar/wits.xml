@@ -38,7 +38,7 @@
 		<charmAttribute attribute="Sickness" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Lunar.SilverLunarResolutionWits" exalt="Lunar" group="SurvivalCharms">
+	<charm id="Lunar.SilverLunarResolutionWits" exalt="Lunar" group="EssenceRegaining">
 		<prerequisite>
 			<trait id="Wits" value="4" />
 			<essence value="3" />

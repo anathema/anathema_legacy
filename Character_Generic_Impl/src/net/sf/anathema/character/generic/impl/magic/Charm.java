@@ -256,6 +256,11 @@ public class Charm extends Identificate implements ICharm {
     }
     return learnWorker.getForgottenCharms();
   }
+  
+  public Set<ICharm> getLearnChildCharms()
+  {
+	  return new HashSet<ICharm>(children);
+  }
 
   private void addCharmsToForget(ICharmLearnWorker learnWorker) {
     if (isCharmPrerequisiteListFullfilled(learnWorker)) {
