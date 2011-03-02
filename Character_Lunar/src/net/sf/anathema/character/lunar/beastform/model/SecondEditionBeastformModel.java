@@ -191,6 +191,10 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
   public IBeastformAttribute getAttributeByType(AttributeType type) {
     return beastCollection.getDeadlyBeastmanAttribute(type);
   }
+  
+  public IBeastformAttribute getSpiritAttributeByType(AttributeType type) {
+	    return spiritCollection.getDeadlyBeastmanAttribute(type);
+	  }
 
   public IGenericTraitCollection getSpiritTraitCollection() {
 	    return spiritCollection;

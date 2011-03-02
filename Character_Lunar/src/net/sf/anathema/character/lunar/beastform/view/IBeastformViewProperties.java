@@ -4,6 +4,8 @@ public interface IBeastformViewProperties
 {
   public String getSpiritFormBoxString();
   
+  public String getSpiritFormBoxInitialString();
+  
   public String getDBTBoxString();
 	
   public String getCharmString();

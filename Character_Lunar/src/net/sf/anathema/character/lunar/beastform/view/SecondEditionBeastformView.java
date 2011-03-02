@@ -1,30 +1,25 @@
 package net.sf.anathema.character.lunar.beastform.view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionListener;
 
 import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnView;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 public class SecondEditionBeastformView implements IBeastformView
@@ -35,7 +30,7 @@ public class SecondEditionBeastformView implements IBeastformView
   private final JPanel beastmanAttributePanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel giftPanel = new JPanel(new GridDialogLayout(4, false));
   private final MarkerIntValueDisplayFactory intValueDisplayFactory;
-  private final JPanel content = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel content = new JPanel();
   private final JPanel overviewPanel = new JPanel();
   private final IBeastformViewProperties properties;
 
@@ -47,35 +42,33 @@ public class SecondEditionBeastformView implements IBeastformView
   public JComponent getComponent() {
 	  JPanel spiritPanel = new JPanel(new GridDialogLayout(1, false));
 	  
-	  /*spiritNameBox.getTextComponent().setDisabledTextColor(Color.DARK_GRAY);
-	  LabelTextView labelView = new LabelTextView(properties.getSpiritFormBoxString(),
-			  spiritNameBox);
-	  labelView.setDisabledLabelColor(Color.DARK_GRAY);
-	  labelView.addToStandardPanel(spiritNamePanel);
-
-	  //spiritNameBox.setPreferredSize(new Dimension(100, 30));
-	  //spiritNamePanel.add(spiritNameBox);
-	  spiritNameBox.setText(properties.getSpiritFormBoxString());
+	  spiritPanel.add(spiritNamePanel);
+	  spiritNameBox.setText(properties.getSpiritFormBoxInitialString());
+	  spiritNamePanel.add(spiritNameBox.getComponent());
 	  spiritNamePanel.setBorder(BorderFactory.createTitledBorder(properties.getSpiritFormBoxString()));
 
-	  spiritPanel.add(spiritNamePanel);*/
 	  spiritAttributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
 	  spiritPanel.add(spiritAttributePanel);
 	  spiritPanel.setBorder(BorderFactory.createTitledBorder(properties.getSpiritFormBoxString()));
 	  
-	  JPanel beastmanPanel = new JPanel(new GridDialogLayout(2, false));
-	  beastmanAttributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
-	  GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalSpanData(2);
-	  data.setHorizontalAlignment(GridAlignment.BEGINNING);
-	  beastmanPanel.add(beastmanAttributePanel, data);
-	  beastmanPanel.add(new EndOfLineMarkerComponent());
-	  giftPanel.setBorder(new TitledBorder(properties.getGiftsString()));
-	  beastmanPanel.add(giftPanel);
-	  beastmanPanel.add(overviewPanel, GridDialogLayoutDataUtilities.createTopData());
-	  beastmanPanel.setBorder(BorderFactory.createTitledBorder(properties.getDBTBoxString()));
+	  JPanel beastmanPanel = new JPanel();
+	  beastmanPanel.setLayout(new BoxLayout(beastmanPanel, BoxLayout.Y_AXIS));
+	  JPanel beastAttributePane = new JPanel(new GridDialogLayout(2,false));
+	  beastAttributePane.add(beastmanAttributePanel);
+	  beastAttributePane.add(new EndOfLineMarkerComponent());
 	  
+	  beastmanAttributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
+	  beastmanPanel.add(beastAttributePane);
+	  giftPanel.setBorder(new TitledBorder(properties.getGiftsString()));
+	  JPanel mutationPanel = new JPanel(new GridDialogLayout(2, false));
+	  mutationPanel.add(giftPanel);
+	  mutationPanel.add(overviewPanel, GridDialogLayoutDataUtilities.createTopData());
+	  beastmanPanel.add(mutationPanel);
+	  beastmanPanel.setBorder(BorderFactory.createTitledBorder(properties.getDBTBoxString()));
+
 	  content.add(spiritPanel);
 	  content.add(beastmanPanel);
+	  content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 	  return content;
   }
 
@@ -94,9 +87,9 @@ public class SecondEditionBeastformView implements IBeastformView
     return traitView;
   }
   
-  public void setSpiritListener(ChangeListener listener)
+  public void setSpiritListener(IObjectValueChangedListener<String> listener)
   {
-	  
+	  spiritNameBox.addTextChangedListener(listener);
   }
   
   public SimpleTraitView addSpiritAttributeValueView(String label, int value, int maxValue) {

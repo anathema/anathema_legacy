@@ -47,6 +47,11 @@ public class BeastformViewFactory implements IAdditionalViewFactory {
 				public String getSpiritFormBoxString() {
 					return null;
 				}
+
+				@Override
+				public String getSpiritFormBoxInitialString() {
+					return null;
+				}
             };
     	view = new FirstEditionBeastformView(intValueDisplayFactory, properties); 
         new FirstEditionBeastformPresenter(resources, view, (IBeastformModel) model).initPresentation();	
@@ -74,6 +79,12 @@ public class BeastformViewFactory implements IAdditionalViewFactory {
 			@Override
 			public String getSpiritFormBoxString() {
 				return resources.getString("Lunar.SpiritForm");
+			}
+
+			@Override
+			public String getSpiritFormBoxInitialString() {
+				String shape = ((SecondEditionBeastformModel)model).getSpiritForm();
+				return shape.equals("") ? resources.getString("Lunar.SpiritForm.EnterShape") : shape;
 			}
             };
     	view = new SecondEditionBeastformView(intValueDisplayFactory, properties); 

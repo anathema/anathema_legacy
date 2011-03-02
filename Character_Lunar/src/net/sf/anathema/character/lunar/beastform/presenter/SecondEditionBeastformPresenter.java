@@ -21,9 +21,12 @@ import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
+import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 public class SecondEditionBeastformPresenter implements IPresenter {
 
@@ -40,10 +43,10 @@ public class SecondEditionBeastformPresenter implements IPresenter {
   }
 
   public void initPresentation() {
-	initSpiritFormPresentation();
     initOverviewPresentation();
     initAttributePresentation();
     initGiftPresentation();
+    initSpiritFormPresentation();
   }
 
   private void initOverviewPresentation() {
@@ -65,13 +68,14 @@ public class SecondEditionBeastformPresenter implements IPresenter {
   
   private void initSpiritFormPresentation()
   {
-	  ((SecondEditionBeastformView)view).setSpiritListener(new ChangeListener()
+	  ((SecondEditionBeastformView)view).setSpiritListener(new IObjectValueChangedListener<String>()
 	  {
+
 		@Override
-		public void stateChanged(ChangeEvent e)
+		public void valueChanged(String newValue)
 		{
-			((SecondEditionBeastformModel)model).setSpiritForm(e.toString());
-		} 
+			((SecondEditionBeastformModel)model).setSpiritForm(newValue);
+		}
 	  });
   }
 
