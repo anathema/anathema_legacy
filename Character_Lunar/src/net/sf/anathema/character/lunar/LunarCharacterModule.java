@@ -1,8 +1,6 @@
 package net.sf.anathema.character.lunar;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
@@ -136,16 +134,14 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
-	  List<ITemplateType> excludedTypes = new ArrayList<ITemplateType>();
-	  excludedTypes.add(castelessType);
       IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
       backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD, CharacterType.LUNAR));
       backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD_HUMAN, CharacterType.LUNAR, ExaltedEdition.FirstEdition));
       backgroundRegistry.add(new EditionSpecificBackgroundTemplate(BACKGROUND_ID_RENOWN, ExaltedEdition.FirstEdition));
       
       backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SOLAR_BOND, CharacterType.LUNAR));
-      backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, CharacterType.LUNAR, excludedTypes, ExaltedEdition.SecondEdition));
-      backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, CharacterType.LUNAR, excludedTypes, ExaltedEdition.SecondEdition));
+      backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, CharacterType.LUNAR, ExaltedEdition.SecondEdition));
+      backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, CharacterType.LUNAR, ExaltedEdition.SecondEdition));
       backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TABOO, new ITemplateType[] { castelessType }, ExaltedEdition.SecondEdition));
   }
 

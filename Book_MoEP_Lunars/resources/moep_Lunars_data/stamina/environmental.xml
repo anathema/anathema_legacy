@@ -24,9 +24,59 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Environmental Charms -->
-     <charm id="Lunar.DirectionalMasteryTechnique" exalt="Lunar" group="Environmental">
-          <!-- TODO:  Coding - This charm constitutes 5 different charms (one per direction).
-			These alternative charms are purchased as if they were separate charms.  -->
+     <charm id="Lunar.DirectionalMasteryTechniqueAir" exalt="Lunar" group="Environmental">
+          <prerequisite>
+               <trait id="Stamina" value="4" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.DirectionalMasteryTechniqueEarth" exalt="Lunar" group="Environmental">
+          <prerequisite>
+               <trait id="Stamina" value="4" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.DirectionalMasteryTechniqueFire" exalt="Lunar" group="Environmental">
+          <prerequisite>
+               <trait id="Stamina" value="4" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.DirectionalMasteryTechniqueWater" exalt="Lunar" group="Environmental">
+          <prerequisite>
+               <trait id="Stamina" value="4" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.DirectionalMasteryTechniqueWood" exalt="Lunar" group="Environmental">
           <prerequisite>
                <trait id="Stamina" value="4" />
                <essence value="2" />
@@ -43,15 +93,13 @@
           <prerequisite>
                <trait id="Stamina" value="5" />
                <essence value="4" />
-               <charmReference id="Lunar.DirectionalMasteryTechnique" />
-          <!-- TODO:  Coding - Must be updated to include the specific charm ID for each sub-charm listed. -->
-				<!--selectiveCharmGroup threshold="1">
-					<charmReference id="Lunar.DirectionalMasteryTechnique.Air" />
-               		<charmReference id="Lunar.DirectionalMasteryTechnique.Earth" />
-					<charmReference id="Lunar.DirectionalMasteryTechnique.Fire" />
-					<charmReference id="Lunar.DirectionalMasteryTechnique.Water" />
-					<charmReference id="Lunar.DirectionalMasteryTechnique.Wood" />
-				</selectiveCharmGroup-->
+				<selectiveCharmGroup threshold="1">
+					<charmReference id="Lunar.DirectionalMasteryTechniqueAir" />
+               		<charmReference id="Lunar.DirectionalMasteryTechniqueEarth" />
+					<charmReference id="Lunar.DirectionalMasteryTechniqueFire" />
+					<charmReference id="Lunar.DirectionalMasteryTechniqueWater" />
+					<charmReference id="Lunar.DirectionalMasteryTechniqueWood" />
+				</selectiveCharmGroup>
           </prerequisite>
           <cost />
           <duration duration="Permanent" />

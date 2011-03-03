@@ -6,10 +6,14 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 public interface IBackgroundConfiguration {
 
   public IBackgroundTemplate[] getAllAvailableBackgroundTemplates();
-
+  
   public IDefaultTrait addBackground(String customBackgroundName);
-
+  
   public IDefaultTrait addBackground(IBackgroundTemplate type);
+
+  public IDefaultTrait addBackground(String customBackgroundName, boolean loadIfExists);
+
+  public IDefaultTrait addBackground(IBackgroundTemplate type, boolean loadIfExists);
 
   public IDefaultTrait[] getBackgrounds();
 

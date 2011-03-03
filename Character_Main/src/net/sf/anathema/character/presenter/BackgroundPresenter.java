@@ -137,6 +137,8 @@ public class BackgroundPresenter implements IPresenter {
         configuration.removeBackground(background);
       }
     });
+    if (background.getMinimalValue() > 0)
+    	backgroundView.setButtonEnabled(false);
     viewsByBackground.put(background, backgroundView);
   }
 
@@ -162,7 +164,7 @@ public class BackgroundPresenter implements IPresenter {
     for (IDefaultTrait background : viewsByBackground.getAllKeys()) {
       if (background.getCalculationValue() > 0) {
         IRemovableTraitView< ? > view = viewsByBackground.get(background);
-        view.setButtonEnabled(allowed);
+        view.setButtonEnabled(allowed && background.getMinimalValue() == 0);
       }
     }
   }

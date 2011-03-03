@@ -49,10 +49,10 @@ public class BackgroundConfigurationPersister {
     }
     IDefaultTrait background;
     if (backgroundRegistry.idRegistered(backgroundId)) {
-      background = backgrounds.addBackground(backgroundRegistry.getById(backgroundId));
+      background = backgrounds.addBackground(backgroundRegistry.getById(backgroundId), true);
     }
     else {
-      background = backgrounds.addBackground(backgroundId);
+      background = backgrounds.addBackground(backgroundId, true);
     }
     if (background == null) {
       throw new PersistenceException("Error reading Background: " + backgroundId); //$NON-NLS-1$

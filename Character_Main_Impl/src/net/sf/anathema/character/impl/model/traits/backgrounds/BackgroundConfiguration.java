@@ -38,8 +38,20 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     this.context = context;
     this.backgroundRegistry = backgroundRegistry;
     this.traitTemplates = traitTemplates;
+    
+    initStartingBackgrounds();
   }
 
+  private void initStartingBackgrounds()
+  {
+	  for (IBackgroundTemplate background : getAllAvailableBackgroundTemplates())
+	  {
+		  ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(background);
+		  if (traitTemplate.getStartValue() > 0)
+			  addBackground(background);
+	  }
+  }
+  
   public IBackgroundTemplate[] getAllAvailableBackgroundTemplates() {
     List<IBackgroundTemplate> backgroundList = new ArrayList<IBackgroundTemplate>();
     for (IBackgroundTemplate backgroundTemplate : backgroundRegistry.getAll()) {
@@ -49,13 +61,23 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     }
     return backgroundList.toArray(new IBackgroundTemplate[backgroundList.size()]);
   }
-
-  public IDefaultTrait addBackground(String customBackgroundName) {
-    Ensure.ensureNotNull(customBackgroundName);
-    return addBackground(new CustomizedBackgroundTemplate(customBackgroundName));
+  
+  public IDefaultTrait addBackground(String customBackgroundName)
+  {
+	  return addBackground(customBackgroundName, false);
+  }
+  
+  public IDefaultTrait addBackground(final IBackgroundTemplate backgroundType)
+  {
+	  return addBackground(backgroundType, false);
   }
 
-  public IDefaultTrait addBackground(final IBackgroundTemplate backgroundType) {
+  public IDefaultTrait addBackground(String customBackgroundName, boolean loadIfExists) {
+    Ensure.ensureNotNull(customBackgroundName);
+    return addBackground(new CustomizedBackgroundTemplate(customBackgroundName), loadIfExists);
+  }
+
+  public IDefaultTrait addBackground(final IBackgroundTemplate backgroundType, boolean loadIfExists) {
     Ensure.ensureNotNull(backgroundType);
     IDefaultTrait foundBackground = new Predicate<IDefaultTrait>() {
       public boolean evaluate(IDefaultTrait listBackground) {
@@ -63,7 +85,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
       }
     }.find(backgrounds);
     if (foundBackground != null) {
-      return null;
+      return loadIfExists ? foundBackground : null;
     }
     ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(backgroundType);
     TraitRules rules = new TraitRules(backgroundType, traitTemplate, context.getLimitationContext());

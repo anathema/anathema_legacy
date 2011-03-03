@@ -83,6 +83,18 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <source source="GloriesLuna" />
-		  <!--TODO: Can be Repurchased-->
+     </charm>
+	 <charm id="Lunar.TimeBendingChrysalis2" exalt="Lunar" group="Endurance">
+          <prerequisite>
+               <trait id="Stamina" value="10" />
+               <essence value="9" />
+               <charmReference id="Lunar.TimeBendingChrysalis" />
+          </prerequisite>
+          <cost>
+               <essence cost="-" text="(+20m)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="GloriesLuna" />
      </charm>
 </charmlist>

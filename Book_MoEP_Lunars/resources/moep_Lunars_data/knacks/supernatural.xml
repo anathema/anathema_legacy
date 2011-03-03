@@ -50,6 +50,19 @@
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
+     <charm id="Lunar.HeartTheftOfTheBehemoth2" exalt="Lunar" group="Supernatural">
+          <prerequisite>
+               <trait id="Stamina" value="7" />
+               <essence value="7" />
+               <charmReference id="Lunar.HeartTheftOfTheBehemoth" />
+          </prerequisite>
+          <cost />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+          <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
+          <source source="Lunars2nd" />
+     </charm>
      <charm id="Lunar.HearthAndFlameShell" exalt="Lunar" group="Supernatural">
           <prerequisite>
                <trait id="Stamina" value="4" />

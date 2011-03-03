@@ -78,5 +78,19 @@
 			<specialTrait id="Occult" minimum="3"/>
 		</casteMinimumTraits>		
   </abilities>
+  <backgrounds>
+  		<defaultTrait startValue="0" lowerableState="LowerableRegain">
+			<limitation type="Static" value="5"/>
+			<minimum value="0"/>
+		</defaultTrait>
+  		<specialTrait id="Cult" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="5"/>
+			<minimum value="1"/>
+		</specialTrait>
+  </backgrounds>
+  <essence startValue="3" lowerableState="Default">
+		<limitation type="Static" value="7"/>
+		<minimum value="3"/>
+  </essence>
   
 </traitTemplates>

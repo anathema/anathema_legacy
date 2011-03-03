@@ -114,10 +114,101 @@
 		<source source="LordsOfCreation" />
 	</charm>
 	
-	<charm id="Lunar.EssentialMirrorForm" exalt="Lunar" group="Supernatural">
+	<charm id="Lunar.EssentialMirrorFormHAFS" exalt="Lunar" group="Supernatural">
 		<prerequisite>
 			<trait id="Intelligence" value="6" />
 			<essence value="6" />
+			<charmReference id="Lunar.HearthAndFlameShell" />
+		</prerequisite>
+		<cost />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
+		<source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+	</charm>
+	
+	<charm id="Lunar.EssentialMirrorFormGSC" exalt="Lunar" group="Supernatural">
+		<prerequisite>
+			<trait id="Intelligence" value="6" />
+			<essence value="6" />
+			<charmReference id="Lunar.GreenSunChild" />
+		</prerequisite>
+		<cost />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
+		<source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+	</charm>
+	
+	<charm id="Lunar.EssentialMirrorFormHSI" exalt="Lunar" group="Supernatural">
+		<prerequisite>
+			<trait id="Intelligence" value="8" />
+			<essence value="8" />
+			<charmReference id="Lunar.HeavenlyServantImitation" />
+		</prerequisite>
+		<cost />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
+		<source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+	</charm>
+	
+	<charm id="Lunar.EssentialMirrorFormATB" exalt="Lunar" group="Supernatural">
+		<prerequisite>
+			<trait id="Intelligence" value="7" />
+			<essence value="7" />
+			<charmReference id="Lunar.AshAndTearsBanquet" />
+		</prerequisite>
+		<cost />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
+		<source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+	</charm>
+	
+	<charm id="Lunar.EssentialMirrorFormHTB" exalt="Lunar" group="Supernatural">
+		<prerequisite>
+			<trait id="Intelligence" value="7" />
+			<essence value="7" />
+			<charmReference id="Lunar.HeartTheftOfTheBehemoth" />
+		</prerequisite>
+		<cost />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
+		<source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+	</charm>
+	
+	<charm id="Lunar.EssentialMirrorFormHTB2" exalt="Lunar" group="Supernatural">
+		<prerequisite>
+			<trait id="Intelligence" value="9" />
+			<essence value="9" />
+			<charmReference id="Lunar.HeartTheftOfTheBehemoth2" />
+		</prerequisite>
+		<cost />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+		<charmAttribute attribute="NotAlienLernable" />
+        <charmAttribute attribute="Knack"/>
+		<source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+	</charm>
+	
+	<charm id="Lunar.EssentialMirrorFormLHF" exalt="Lunar" group="Supernatural">
+		<prerequisite>
+			<trait id="Intelligence" value="6" />
+			<essence value="5" />
+			<charmReference id="Lunar.LunasHiddenFace" />
 		</prerequisite>
 		<cost />
           <duration duration="Instant"/>
