@@ -151,6 +151,10 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     registerParsedTemplate(characterGenerics, "template/Lunar2ndCasteless.template");
     registerParsedTemplate(characterGenerics, "template/Lunar2ndSilverPact.template");
     registerParsedTemplate(characterGenerics, "template/Lunar2ndDreams.template");
+    
+    registerParsedTemplate(characterGenerics, "template/Lunar2ndCastelessRevised.template");
+    registerParsedTemplate(characterGenerics, "template/Lunar2ndSilverPactRevised.template");
+    registerParsedTemplate(characterGenerics, "template/Lunar2ndDreamsRevised.template");
   }
 
   @Override

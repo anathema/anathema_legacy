@@ -1,0 +1,14 @@
+<additionalRules>
+   	<additionalCost>
+   		<costModifier>
+   			<backgroundReference id="Followers"/>   			
+   			<bonusModification thresholdLevel="3" fixedCost="2"/>
+    		<bonusModification thresholdLevel="4" fixedCost="2"/>
+   		</costModifier>
+   		<costModifier>
+   			<backgroundReference id="Influence"/>   			
+   			<bonusModification thresholdLevel="3" fixedCost="2"/>
+    		<bonusModification thresholdLevel="4" fixedCost="2"/>
+   		</costModifier>
+   	</additionalCost>
+</additionalRules>

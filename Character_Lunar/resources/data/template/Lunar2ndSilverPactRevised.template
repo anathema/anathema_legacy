@@ -1,17 +1,15 @@
-<exaltedCharacterTemplate characterType="Lunar" subtemplate="Casteless">
+<exaltedCharacterTemplate characterType="Lunar" subtemplate="SilverPactRevised">
   <general>
     <edition edition="SecondEdition"/>
     <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template" />
     <attributeGroups uses="template/LunarAttributeGroup.template"/>
     <essence uses="template/LunarEssence.template" />
-    <traitCollection uses="template/LunarTraitCollection2ndCasteless.template"/>
+    <traitCollection uses="template/LunarTraitCollection2ndSilverPact.template"/>
     <magicTemplate uses="template/LunarMagic2nd.template"/>
     <presentation uses="template/LunarPresentation.template"/>
-    <additionalRules uses="template/LunarAdditionalRules2nd.template">
-     	<forbiddenBackgrounds>
-     		<backgroundReference id="Reputation" />
-     		<backgroundReference id="TattooArtifact" />
-     	</forbiddenBackgrounds>
+    <additionalRules uses="template/LunarAdditionalRules2nd.template">    	
+    	<revisedIntimacies value="true" />
+    	<willpowerVirtueBased value="false" />
     </additionalRules>
     <additionalTemplates>
       <template id="Lunar.DeadlyBeastmanTransformation.Template" />
@@ -25,11 +23,12 @@
   <creation>
     <bonusPointCosts uses="template/LunarBonusPointCost2nd.template" />
     <creationPoints>
-      <attributeDots primary="8" secondary="6" tertiary="4" favoredPicks="2"/>
+      <attributeDots primary="8" secondary="6" tertiary="4" favoredPicks="1" favoredDots="1"/>
       <abilityDots general="25" favored="0" favoredPicks="2" />
       <backgroundDots count="7" />
       <virtueDots count="5" />
-      <bonusPoints count="15" />
+      <bonusPoints count="18" />
+      <specialtyDots count="4" />
       <charmPicks favored="4" general="4" unique="1"/>
     </creationPoints>
   </creation>

@@ -1,4 +1,4 @@
-<exaltedCharacterTemplate characterType="Lunar" subtemplate="Casteless">
+<exaltedCharacterTemplate characterType="Lunar" subtemplate="CastelessRevised">
   <general>
     <edition edition="SecondEdition"/>
     <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template" />
@@ -8,10 +8,12 @@
     <magicTemplate uses="template/LunarMagic2nd.template"/>
     <presentation uses="template/LunarPresentation.template"/>
     <additionalRules uses="template/LunarAdditionalRules2nd.template">
-     	<forbiddenBackgrounds>
+	<forbiddenBackgrounds>
      		<backgroundReference id="Reputation" />
      		<backgroundReference id="TattooArtifact" />
      	</forbiddenBackgrounds>
+    	<revisedIntimacies value="true" />
+    	<willpowerVirtueBased value="false" />
     </additionalRules>
     <additionalTemplates>
       <template id="Lunar.DeadlyBeastmanTransformation.Template" />
@@ -29,7 +31,8 @@
       <abilityDots general="25" favored="0" favoredPicks="2" />
       <backgroundDots count="7" />
       <virtueDots count="5" />
-      <bonusPoints count="15" />
+      <bonusPoints count="18" />
+      <specialtyDots count="4" />
       <charmPicks favored="4" general="4" unique="1"/>
     </creationPoints>
   </creation>

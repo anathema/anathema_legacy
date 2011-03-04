@@ -12,6 +12,8 @@
       <template id="Lunar.HeartsBlood.Template" />
       <template id="Lunar.VirtueFlaw.Template" />
     </additionalTemplates>
+    <additionalRules uses="template/LunarAdditionalRules2nd.template">
+    </additionalRules>
     <healthTemplate>
       <toughnessControllingTrait type="Stamina"/>
     </healthTemplate>
