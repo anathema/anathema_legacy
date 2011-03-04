@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Stamina -->
-     <charm id="Lunar.MoonsilverAbsorption" exalt="Lunar" group="Endurance">
+     <charm id="Lunar.MoonsilverAbsorption" exalt="Lunar" group="EnduranceCharms">
           <prerequisite>
                <trait id="Stamina" value="6" />
                <essence value="5" />

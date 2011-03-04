@@ -71,7 +71,7 @@
           <charmtype type="Permanent" />
           <source source="GloriesLuna" />
      </charm>
-	 <charm id="Lunar.TimeBendingChrysalis" exalt="Lunar" group="Endurance">
+	 <charm id="Lunar.TimeBendingChrysalis" exalt="Lunar" group="EnduranceCharms">
           <prerequisite>
                <trait id="Stamina" value="6" />
                <essence value="7" />
@@ -84,7 +84,7 @@
           <charmtype type="Permanent" />
           <source source="GloriesLuna" />
      </charm>
-	 <charm id="Lunar.TimeBendingChrysalis2" exalt="Lunar" group="Endurance">
+	 <charm id="Lunar.TimeBendingChrysalis2" exalt="Lunar" group="EnduranceCharms">
           <prerequisite>
                <trait id="Stamina" value="10" />
                <essence value="9" />

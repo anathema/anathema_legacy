@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Endurance Charms -->
-     <charm id="Lunar.OxBodyTechnique" exalt="Lunar" group="Endurance">
+     <charm id="Lunar.OxBodyTechnique" exalt="Lunar" group="EnduranceCharms">
           <!-- Coding:  Each purchase of this charm (up to a maximum of Stamina times)
         2x Dying levels AND (2x -1 levels OR 4x -2 levels) -->
           <prerequisite>
@@ -37,7 +37,7 @@
           <charmAttribute attribute="Stackable" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.SteadfastYeddimMeditation" exalt="Lunar" group="Endurance">
+     <charm id="Lunar.SteadfastYeddimMeditation" exalt="Lunar" group="EnduranceCharms">
           <prerequisite>
                <trait id="Stamina" value="3" />
                <essence value="2" />
@@ -53,7 +53,7 @@
           <charmAttribute attribute="Stackable" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.BearSleepTechnique" exalt="Lunar" group="Endurance">
+     <charm id="Lunar.BearSleepTechnique" exalt="Lunar" group="EnduranceCharms">
           <prerequisite>
                <trait id="Stamina" value="4" />
                <essence value="4" />
@@ -67,7 +67,7 @@
           <charmtype type="Simple" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.UnstoppableJuggernautIncarnation" exalt="Lunar" group="Endurance">
+     <charm id="Lunar.UnstoppableJuggernautIncarnation" exalt="Lunar" group="EnduranceCharms">
           <prerequisite>
                <trait id="Stamina" value="4" />
                <essence value="3" />
@@ -82,7 +82,7 @@
           <charmAttribute attribute="Stackable" visualize="true" />
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.LunasFortitude" exalt="Lunar" group="Endurance">
+     <charm id="Lunar.LunasFortitude" exalt="Lunar" group="EnduranceCharms">
           <prerequisite>
                <trait id="Stamina" value="5" />
                <essence value="3" />
