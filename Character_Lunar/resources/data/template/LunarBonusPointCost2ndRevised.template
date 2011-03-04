@@ -1,4 +1,4 @@
-<bonusPointCost uses="DefaultBonusPointCost2nd.template">
+<bonusPointCost uses="RevisedDefaultBonusPointCost2nd.template">
   <attributes>
     <generalAttribute>
       <fixedCost cost="4" />

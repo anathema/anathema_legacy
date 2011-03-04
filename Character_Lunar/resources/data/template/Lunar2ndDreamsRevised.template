@@ -21,7 +21,7 @@
     </healthTemplate>
   </general>
   <creation>
-    <bonusPointCosts uses="template/LunarBonusPointCost2nd.template" />
+    <bonusPointCosts uses="template/LunarBonusPointCost2ndRevised.template" />
     <creationPoints>
       <attributeDots primary="8" secondary="6" tertiary="4" favoredPicks="1" favoredDots="2"/>
       <abilityDots general="20" favored="5" favoredPicks="3" />
