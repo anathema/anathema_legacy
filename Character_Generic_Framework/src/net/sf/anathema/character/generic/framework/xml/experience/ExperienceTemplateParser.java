@@ -159,6 +159,7 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
       return;
     }
     costs.setGeneralAttributeCosts(getGeneralCost(attributes));
+    costs.setFavoredAttributeCosts(getFavoredCost(attributes));
   }
 
   protected final ICurrentRatingCosts getFavoredCost(Element attributes) throws PersistenceException {

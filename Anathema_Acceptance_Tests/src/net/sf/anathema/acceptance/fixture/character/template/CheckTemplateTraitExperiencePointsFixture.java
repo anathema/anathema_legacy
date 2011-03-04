@@ -27,7 +27,7 @@ public class CheckTemplateTraitExperiencePointsFixture extends AbstractTemplateC
   }
 
   public int attributeCost() {
-    return getRatingBasedCost(getExperiencePointCosts().getAttributeCosts());
+    return getRatingBasedCost(getExperiencePointCosts().getAttributeCosts(favored));
   }
 
   public int willpowerCost() {

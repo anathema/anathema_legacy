@@ -3,6 +3,9 @@
     <generalCosts>
       <currentRating multiplier="4" />
     </generalCosts>
+    <favoredCosts>
+      <currentRating multiplier="4" />
+    </favoredCosts>
   </attributes>
   <abilities>
     <generalCosts>

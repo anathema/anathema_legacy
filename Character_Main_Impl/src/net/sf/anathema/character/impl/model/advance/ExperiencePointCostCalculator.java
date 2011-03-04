@@ -47,8 +47,8 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
     return abilityCosts[0];
   }
 
-  public int getAttributeCosts(IBasicTrait attribute) {
-    return getTraitRatingCosts(attribute, costs.getAttributeCosts());
+  public int getAttributeCosts(ITrait attribute, final boolean favored) {
+    return getTraitRatingCosts((IDefaultTrait)attribute, costs.getAttributeCosts(favored));
   }
 
   public int getEssenceCosts(IBasicTrait essence) {

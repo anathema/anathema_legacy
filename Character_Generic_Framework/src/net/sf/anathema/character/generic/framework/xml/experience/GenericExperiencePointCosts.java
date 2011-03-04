@@ -18,6 +18,7 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
     IExperiencePointCosts {
 
   private ICurrentRatingCosts generalAttributeCost;
+  private ICurrentRatingCosts favoredAttributeCost;
   private ICurrentRatingCosts generalAbilityCost;
   private ICurrentRatingCosts favoredAbilityCost;
   private int specialtyCost;
@@ -37,8 +38,8 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
     return favored ? favoredAbilityCost : generalAbilityCost;
   }
 
-  public ICurrentRatingCosts getAttributeCosts() {
-    return generalAttributeCost;
+  public ICurrentRatingCosts getAttributeCosts(boolean favored) {
+    return favored ? favoredAttributeCost : generalAttributeCost;
   }
 
   public int getComboCosts(ICharm[] comboCharms) {
@@ -85,6 +86,10 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
 
   public void setGeneralAttributeCosts(ICurrentRatingCosts generalAttributeCost) {
     this.generalAttributeCost = generalAttributeCost;
+  }
+  
+  public void setFavoredAttributeCosts(ICurrentRatingCosts favoredAttributeCost) {
+	this.favoredAttributeCost = favoredAttributeCost;
   }
 
   public void setGeneralAbilityCosts(ICurrentRatingCosts generalAbilityCost) {

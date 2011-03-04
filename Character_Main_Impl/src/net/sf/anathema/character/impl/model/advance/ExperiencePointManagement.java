@@ -53,7 +53,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   }
 
   private IValueModel<Integer> getAttributeModel() {
-    return new AttributeExperienceModel(traitConfiguration, calculator);
+    return new AttributeExperienceModel(traitConfiguration, calculator, statistics);
   }
 
   private IValueModel<Integer> getBackgroundModel() {

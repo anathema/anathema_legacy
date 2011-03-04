@@ -19,8 +19,9 @@ public class DefaultExperienceCosts implements IExperiencePointCosts {
     return new MultiplyRatingCosts(2, 3);
   }
 
-  public ICurrentRatingCosts getAttributeCosts() {
-    return new MultiplyRatingCosts(4);
+  public ICurrentRatingCosts getAttributeCosts(boolean favored)
+  {
+	  return favored ? new MultiplyRatingCosts(3) : new MultiplyRatingCosts(4);
   }
 
   public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {

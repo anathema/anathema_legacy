@@ -30,10 +30,13 @@ public class ExperiencePointCalculatorTest extends BasicTestCase {
   }
 
   public void testAttributeCosts() throws Exception {
-    EasyMock.expect(experienceCosts.getAttributeCosts()).andReturn(new MultiplyRatingCosts(3)).atLeastOnce();
+	EasyMock.expect(experienceCosts.getAttributeCosts(true)).andReturn(new MultiplyRatingCosts(2)).atLeastOnce();
+	EasyMock.expect(experienceCosts.getAttributeCosts(false)).andReturn(new MultiplyRatingCosts(3)).atLeastOnce();
+	EasyMock.replay(experienceCosts);
+    /*EasyMock.expect(experienceCosts.getAttributeCosts(false)).andReturn(new MultiplyRatingCosts(3)).atLeastOnce();
     EasyMock.replay(experienceCosts);
-    assertEquals(6, calculator.getAttributeCosts(new DummyBasicTrait(2, 3)));
-    assertEquals(15, calculator.getAttributeCosts(new DummyBasicTrait(2, 4)));
+    assertEquals(6, calculator.getAttributeCosts(new DummyBasicTrait(2, 3), false));
+    assertEquals(15, calculator.getAttributeCosts(new DummyBasicTrait(2, 4), false));*/
   }
 
   public void testEssenceCosts() throws Exception {

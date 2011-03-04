@@ -71,7 +71,7 @@ public class ExperienceTemplateParserTest extends BasicTestCase {
   public void testAttributeCosts() throws Exception {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(new MultiplyRatingCosts(4), costs.getAttributeCosts());
+    assertEquals(new MultiplyRatingCosts(4), costs.getAttributeCosts(false));
   }
 
   public void testGeneralAbilityCosts() throws Exception {

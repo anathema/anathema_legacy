@@ -1,4 +1,12 @@
 <experiencePointCost uses="experience/DefaultExperienceCost.template">
+  <attributes>
+  	<favoredCosts>
+      <currentRating multiplier="3" />
+    </favoredCosts>
+    <generalCosts>
+      <currentRating multiplier="4" />
+    </generalCosts>
+  </attributes>
   <advantages>
     <essence>
       <currentRating multiplier="9" />

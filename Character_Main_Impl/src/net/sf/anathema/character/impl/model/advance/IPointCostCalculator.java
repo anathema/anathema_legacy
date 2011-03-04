@@ -12,7 +12,7 @@ public interface IPointCostCalculator {
 
   public int getAbilityCosts(ITrait ability, boolean favored);
 
-  public int getAttributeCosts(IBasicTrait attribute);
+  public int getAttributeCosts(ITrait attribute, boolean favored);
 
   public int getEssenceCosts(IBasicTrait essence);
 

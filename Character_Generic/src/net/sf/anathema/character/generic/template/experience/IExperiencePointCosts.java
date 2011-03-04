@@ -9,7 +9,7 @@ public interface IExperiencePointCosts {
 
   public ICurrentRatingCosts getAbilityCosts(boolean favored);
 
-  public ICurrentRatingCosts getAttributeCosts();
+  public ICurrentRatingCosts getAttributeCosts(boolean favored);
 
   public int getCharmCosts(ICharm charm, ICostAnalyzer costMapping);
 
