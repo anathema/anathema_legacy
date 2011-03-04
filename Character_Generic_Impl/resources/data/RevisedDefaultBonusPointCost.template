@@ -3,6 +3,9 @@
     <generalAttribute>
       <fixedCost cost="4" />
     </generalAttribute>
+    <favoredAttribute>
+      <fixedCost cost="4" />
+    </favoredAttribute>
   </attributes>
   <abilities>
     <maximumFreeAbilityRank rank="5" />
