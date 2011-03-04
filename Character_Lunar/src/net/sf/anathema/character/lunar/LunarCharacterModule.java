@@ -75,8 +75,12 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   
   private static final TemplateType castelessType = new TemplateType(CharacterType.LUNAR, new Identificate(
   "Casteless")); //$NON-NLS-1$
+  private static final TemplateType revisedCastelessType = new TemplateType(CharacterType.LUNAR, new Identificate(
+  "CastelessRevised")); //$NON-NLS-1$
   private static final TemplateType dreamsType = new TemplateType(CharacterType.LUNAR, new Identificate(
   "Dreams")); //$NON-NLS-1$
+  private static final TemplateType revisedDreamsType = new TemplateType(CharacterType.LUNAR, new Identificate(
+  "DreamsRevised")); //$NON-NLS-1$
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -118,7 +122,9 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     editionMap.put(ExaltedEdition.SecondEdition, LunarCaste.values());
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
     templateMap.put(castelessType, new ICasteType[] { });
+    templateMap.put(revisedCastelessType, new ICasteType[] { });
     templateMap.put(dreamsType, LunarCaste.getDreamsValues());
+    templateMap.put(revisedDreamsType, LunarCaste.getDreamsValues());
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.LUNAR,
         new CasteCollection(editionMap, templateMap));
@@ -142,7 +148,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
       backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SOLAR_BOND, CharacterType.LUNAR));
       backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, CharacterType.LUNAR, ExaltedEdition.SecondEdition));
       backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, CharacterType.LUNAR, ExaltedEdition.SecondEdition));
-      backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TABOO, new ITemplateType[] { castelessType }, ExaltedEdition.SecondEdition));
+      backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TABOO, new ITemplateType[] { castelessType, revisedCastelessType }, ExaltedEdition.SecondEdition));
   }
 
   @Override
