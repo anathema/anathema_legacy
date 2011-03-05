@@ -10,4 +10,6 @@ public interface ICharacterExternalsTemplate {
   public IExaltedEdition getEdition();
 
   public IPresentationProperties getPresentationProperties();
+  
+  public boolean isLegacy();
 }

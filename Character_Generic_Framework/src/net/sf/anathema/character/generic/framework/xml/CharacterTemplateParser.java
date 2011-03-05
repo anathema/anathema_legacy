@@ -57,6 +57,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String TAG_PRESENTATION_TEMPLATE = "presentation"; //$NON-NLS-1$
   private static final String TAG_ADDITIONAL_TEMPLATES = "additionalTemplates"; //$NON-NLS-1$
   private static final String TAG_TEMPLATE = "template"; //$NON-NLS-1$
+  private static final String TAG_LEGACY = "isLegacy"; //$NON-NLS-1$
   private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
   private static final String TAG_HEALTH_TEMPLATE = "healthTemplate"; //$NON-NLS-1$
   private static final String TAG_ADDITIONAL_RULES = "additionalRules"; //$NON-NLS-1$
@@ -118,6 +119,9 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       throws PersistenceException {
     ITemplateType templateType = new TemplateTypeParser().parse(element);
     characterTemplate.setTemplateType(templateType);
+    
+    boolean isLegacy = ElementUtilities.getBooleanAttribute(element, TAG_LEGACY, false);
+    characterTemplate.setLegacy(isLegacy);
     
     ICasteCollection casteCollection = casteCollectionRegistry.get(templateType.getCharacterType());
     if (casteCollection != null)

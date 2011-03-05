@@ -1,10 +1,10 @@
-<exaltedCharacterTemplate characterType="Solar" subtemplate="default">
+<exaltedCharacterTemplate characterType="Solar" subtemplate="DreamsEclipseRevised" isLegacy="true">
   <general>
     <edition edition="SecondEdition"/>
     <abilityGroups uses="template/SolarAbilityGroup2nd.template" />
     <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
     <essence uses="DefaultEssence.template" />
-    <traitCollection uses="trait/DefaultTraitCollection.template"/>
+    <traitCollection uses="template/legacy/DreamsEclipseTraitCollection.template"/>
     <magicTemplate uses="template/SolarMagic2nd.template"/>
     <presentation uses="template/SolarPresentation2nd.template"/>
     <additionalRules>
@@ -13,7 +13,9 @@
     			<charmReference id="Solar.ImmanentSolarGlory"/>    			
     			<peripheralPool multiplier="10"/>
     		</multilearnablePool>
-    	</additionalPools> 
+    	</additionalPools>  
+    	<revisedIntimacies value="true" />
+    	<willpowerVirtueBased value="false" />
     </additionalRules>
     <additionalTemplates>
       <template id="SolarVirtueFlaw" />
@@ -26,11 +28,12 @@
     <bonusPointCosts uses="DefaultBonusPointCost2nd.template" />
     <creationPoints>
       <attributeDots primary="8" secondary="6" tertiary="4" />
-      <abilityDots general="18" favored="10" favoredPicks="5" />
-      <backgroundDots count="7" />
+      <abilityDots general="22" favored="10" favoredPicks="5" />
+      <backgroundDots count="22" />
       <virtueDots count="5" />
-      <bonusPoints count="15" />
-      <charmPicks favored="5" general="5" />
+      <specialtyDots count="4" />
+      <bonusPoints count="18" />
+      <charmPicks favored="0" general="10" />
     </creationPoints>
   </creation>
   <experience>

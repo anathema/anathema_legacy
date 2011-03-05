@@ -187,4 +187,9 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
         new GroupedTraitType(AttributeType.Intelligence, AttributeGroupType.Mental.getId(), null),
         new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), null), };
   }
+  
+  public boolean isLegacy()
+  {
+	  return false;
+  }
 }

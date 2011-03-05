@@ -54,4 +54,9 @@ public abstract class AbstractUnsupportedExaltTemplate extends AbstractCharacter
   public ICasteType[] getAllCasteTypes() {
     return new ICasteType[0];
   }
+  
+  public boolean isLegacy()
+  {
+	  return false;
+  }
 }

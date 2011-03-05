@@ -50,6 +50,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   private final List<IAdditionalTemplate> additionalTemplates = new ArrayList<IAdditionalTemplate>();
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private IExaltedEdition edition;
+  private boolean isLegacy;
 
   public IGroupedTraitType[] getAbilityGroups() {
     return abilityGroups;
@@ -105,6 +106,17 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
 
   public IMagicTemplate getMagicTemplate() {
     return magicTemplate;
+  }
+  
+  @Override
+  public boolean isLegacy()
+  {
+	  return isLegacy;
+  }
+  
+  public void setLegacy(boolean legacy)
+  {
+	  isLegacy = legacy;
   }
 
   public void setAbilityGroups(IGroupedTraitType[] abilityGroups) {

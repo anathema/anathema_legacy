@@ -37,6 +37,6 @@
     </creationPoints>
   </creation>
   <experience>
-    <experiencePointCost uses="experience/DefaultExperienceCost.template" />
+    <experiencePointCost uses="template/SolarExperienceCost2nd.template" />
   </experience>
 </exaltedCharacterTemplate>

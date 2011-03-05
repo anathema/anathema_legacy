@@ -93,4 +93,9 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   public IExaltedEdition getEdition() {
     return edition;
   }
+  
+  public boolean isLegacy()
+  {
+	  return false;
+  }
 }

@@ -1,0 +1,116 @@
+<traitTemplates uses="trait/DefaultTraitCollection.template">
+  <attributes>
+    <defaultTrait startValue="1" lowerableState="Default">
+      <limitation type="Essence"/>
+      <minimum value="1"/>
+    </defaultTrait>
+  </attributes>
+  <abilities>
+		<defaultTrait startValue="0" lowerableState="Default">
+			<limitation type="Essence"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Lore" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="Occult" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<allocationMinimumTraits count="2">
+	 	  <trait id="Archery"/>
+	      <trait id="MartialArts" startValue="2"/>
+	 	  <trait id="Melee"/>
+	      <trait id="Thrown"/>
+		</allocationMinimumTraits>
+		<allocationMinimumTraits count="1">
+	 	  <trait id="Bureaucracy"/>
+	      <trait id="Presence" startValue="1"/>
+	 	  <trait id="Socialize"/>  
+		</allocationMinimumTraits>		
+		<allocationMinimumTraits count="1">
+	 	  <trait id="Ride"/>
+	      <trait id="Sail" startValue="1"/>
+		</allocationMinimumTraits>		
+		
+		<casteMinimumTraits caste="Dawn">
+			<allocationMinimumTraits count="2">
+		 	  <trait id="Archery"/>
+		      <trait id="MartialArts"/>
+		 	  <trait id="Melee"/>
+		      <trait id="Thrown"/>
+			</allocationMinimumTraits>
+			<allocationMinimumTraits count="1">
+	 	  	 <trait id="Ride"/>
+	     	 <trait id="Sail"/>
+			</allocationMinimumTraits>	
+			<specialTrait id="War" minimum="1"/>
+		</casteMinimumTraits>
+		
+		<casteMinimumTraits caste="Zenith">			
+			<specialTrait id="Performance" minimum="2"/>
+			<allocationMinimumTraits count="1">
+				<trait id="Presence"/>
+			</allocationMinimumTraits>
+			<allocationMinimumTraits count="1">
+				<trait id="Bureaucracy"/>
+			</allocationMinimumTraits>
+		</casteMinimumTraits>
+		
+		<casteMinimumTraits caste="Twilight">	
+			<specialTrait id="Craft" minimum="1"/>
+			<specialTrait id="Lore" minimum="3"/>
+			<specialTrait id="Occult" minimum="3"/>
+			<specialTrait id="Medicine" minimum="1"/>
+		</casteMinimumTraits>		
+		
+		<casteMinimumTraits caste="Night">
+			<allocationMinimumTraits count="2">
+				<trait id="Larceny"/>
+				<trait id="Investigation"/>
+			</allocationMinimumTraits>	
+			<allocationMinimumTraits count="1">
+		 	  <trait id="Archery"/>
+		      <trait id="MartialArts"/>
+		 	  <trait id="Melee"/>
+		      <trait id="Thrown"/>
+			</allocationMinimumTraits>
+			<specialTrait id="Stealth" minimum="1"/>
+		</casteMinimumTraits>		
+		
+		<casteMinimumTraits caste="Eclipse">			
+			<specialTrait id="Integrity" minimum="1"/>
+			<specialTrait id="Linguistics" minimum="1"/>
+			<allocationMinimumTraits count="1">
+	 	  	 <trait id="Ride"/>
+	     	 <trait id="Sail"/>
+			</allocationMinimumTraits>	
+			<allocationMinimumTraits count="1">
+		 	  <trait id="Bureaucracy"/>
+		 	  <trait id="Presence"/>
+		      <trait id="Presence"/>
+		 	  <trait id="Socialize"/>  
+			</allocationMinimumTraits>	
+		</casteMinimumTraits>		
+  </abilities>
+  <backgrounds>
+  		<defaultTrait startValue="0" lowerableState="LowerableRegain">
+			<limitation type="Static" value="5"/>
+			<minimum value="0"/>
+		</defaultTrait>
+  		<specialTrait id="Cult" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="5"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Manse" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="5"/>
+			<minimum value="1"/>
+		</specialTrait>
+  </backgrounds>
+  <essence startValue="3" lowerableState="Default">
+		<limitation type="Static" value="7"/>
+		<minimum value="3"/>
+  </essence>
+  
+</traitTemplates>

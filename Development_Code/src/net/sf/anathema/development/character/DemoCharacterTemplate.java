@@ -112,4 +112,9 @@ public class DemoCharacterTemplate implements ICharacterTemplate {
   public ITemplateType getTemplateType() {
     return templateType;
   }
+  
+  public boolean isLegacy()
+  {
+	  return false;
+  }
 }

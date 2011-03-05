@@ -21,6 +21,8 @@ public class TemplateTypeAggregator {
     ICharacterExternalsTemplate[] templates = characterTemplateRegistry.getAllSupportedTemplates(type);
     Map<ITemplateType, TemplateTypeAggregation> aggregations = new LinkedHashMap<ITemplateType, TemplateTypeAggregation>();
     for (ICharacterExternalsTemplate template : templates) {
+      if (template.isLegacy())
+    	  continue;
       TemplateTypeAggregation aggregation = aggregations.get(template.getTemplateType());
       if (aggregation == null) {
         aggregation = new TemplateTypeAggregation(template.getTemplateType(), template.getPresentationProperties());
