@@ -4,6 +4,8 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 public interface IBackgroundConfiguration {
+	
+  public void initStartingBackgrounds();
 
   public IBackgroundTemplate[] getAllAvailableBackgroundTemplates();
   

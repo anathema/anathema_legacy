@@ -38,17 +38,21 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     this.context = context;
     this.backgroundRegistry = backgroundRegistry;
     this.traitTemplates = traitTemplates;
-    
-    initStartingBackgrounds();
   }
 
-  private void initStartingBackgrounds()
+  public void initStartingBackgrounds()
   {
 	  for (IBackgroundTemplate background : getAllAvailableBackgroundTemplates())
 	  {
 		  ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(background);
-		  if (traitTemplate.getStartValue() > 0)
-			  addBackground(background);
+		  boolean startsWith = traitTemplate.getStartValue() > 0;
+		  boolean hasLearned = false;
+		  for (IDefaultTrait trait : backgrounds)
+			  if (background.getId().equals(trait.getType().getId()) &&
+					  trait.getCurrentValue() > 0)
+				  hasLearned = true;
+		  if (startsWith || hasLearned)
+			  addBackground(background, true);
 	  }
   }
   
@@ -84,7 +88,10 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
         return ObjectUtilities.equals(backgroundType, listBackground.getType());
       }
     }.find(backgrounds);
-    if (foundBackground != null) {
+    if (foundBackground != null)
+    {
+    	if (loadIfExists && foundBackground != null)
+    		fireBackgroundAddedEvent(foundBackground);
       return loadIfExists ? foundBackground : null;
     }
     ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(backgroundType);

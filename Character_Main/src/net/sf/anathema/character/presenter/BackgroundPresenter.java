@@ -116,9 +116,7 @@ public class BackgroundPresenter implements IPresenter {
     for (IBackgroundTemplate template : configuration.getAllAvailableBackgroundTemplates()) {
       templatesByDisplayName.put(internationalizer.getDisplayName(template), template);
     }
-    for (IDefaultTrait background : configuration.getBackgrounds()) {
-      addBackgroundView(background);
-    }
+    configuration.initStartingBackgrounds();
   }
 
   private IBackgroundTemplate[] getSortedBackgrounds() {
