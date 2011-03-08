@@ -3,6 +3,7 @@ package net.sf.anathema.character.sidereal.reporting;
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.PADDING;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPageEncoder;
@@ -16,7 +17,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class SiderealDetailsPageEncoder implements IPdfPageEncoder {
+public class FirstEditionSiderealDetailsPageEncoder implements IPdfPageEncoder {
 
   private final static int COLLEGE_HEIGHT = 312;
   private final static int DESTINY_HEIGHT = (COLLEGE_HEIGHT - PADDING) / 2;
@@ -30,7 +31,7 @@ public class SiderealDetailsPageEncoder implements IPdfPageEncoder {
   private final PdfPageConfiguration configuration;
   private final int fontSize;
 
-  public SiderealDetailsPageEncoder(
+  public FirstEditionSiderealDetailsPageEncoder(
       IResources resources,
       int essenceMax,
       BaseFont baseFont,
@@ -164,7 +165,8 @@ public class SiderealDetailsPageEncoder implements IPdfPageEncoder {
       throws DocumentException {
     int height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    IPdfContentBoxEncoder encoder = new ParadoxInfoEncoder(baseFont, symbolBaseFont, fontSize, resources);
+    IPdfContentBoxEncoder encoder = new ParadoxInfoEncoder(baseFont, symbolBaseFont,
+    		fontSize, resources, ExaltedEdition.FirstEdition);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
     return height;
   }
@@ -173,7 +175,8 @@ public class SiderealDetailsPageEncoder implements IPdfPageEncoder {
       throws DocumentException {
     int height = THIRD_BLOCK_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IPdfContentBoxEncoder encoder = new ArcaneFateInfoEncoder(baseFont, symbolBaseFont, fontSize, resources);
+    IPdfContentBoxEncoder encoder = new ArcaneFateInfoEncoder(baseFont, symbolBaseFont,
+    		fontSize, resources, ExaltedEdition.FirstEdition);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
     return height;
   }

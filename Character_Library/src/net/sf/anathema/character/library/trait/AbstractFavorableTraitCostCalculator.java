@@ -120,6 +120,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   }
 
   private FavorableTraitCost handleFavoredSingleTrait(IDefaultTrait trait, int bonusPointCostFactor) {
+	int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
     int pointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax);
     int favoredDotsSpent = 0;
     int generalDotsSpent = 0;
@@ -173,6 +174,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   }
 
   private FavorableTraitCost handleGeneralSingleTrait(IDefaultTrait trait, int bonusPointCostFactor) {
+	int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
     int pointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax);
     int generalDotsSpent = 0;
     int bonusPointsSpent = 0;

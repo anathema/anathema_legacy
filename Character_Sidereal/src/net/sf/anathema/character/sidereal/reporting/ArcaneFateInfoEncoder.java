@@ -10,6 +10,8 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
@@ -21,18 +23,23 @@ public class ArcaneFateInfoEncoder implements IPdfContentBoxEncoder {
   private final BaseFont basefont;
   private final IResources resources;
   private final Chunk symbolChunk;
+  private final IExaltedEdition edition;
   private final int fontSize;
   private float lineHeight;
 
-  public ArcaneFateInfoEncoder(BaseFont baseFont, BaseFont symbolBaseFont, int fontSize, IResources resources) {
+  public ArcaneFateInfoEncoder(BaseFont baseFont, BaseFont symbolBaseFont, int fontSize, IResources resources,
+		  IExaltedEdition edition) {
     this.fontSize = fontSize;
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
     this.resources = resources;
     this.basefont = baseFont;
     this.lineHeight = fontSize * 1.5f;
+    this.edition = edition;
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+	String rememberingResource = edition == ExaltedEdition.FirstEdition ?
+			"Sheet.ArcaneFate.Remembering" : "Sheet.ArcaneFate.Remembering2nd";
     Phrase phrase = new Phrase("", new Font(basefont, fontSize, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
     phrase.add(symbolChunk);
     phrase.add(resources.getString("Sheet.ArcaneFate.Masquerade") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
@@ -45,7 +52,7 @@ public class ArcaneFateInfoEncoder implements IPdfContentBoxEncoder {
     phrase.add(symbolChunk);
     phrase.add(resources.getString("Sheet.ArcaneFate.Stealth") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.ArcaneFate.Remembering") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
+    phrase.add(resources.getString(rememberingResource) + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, lineHeight);
   }
 

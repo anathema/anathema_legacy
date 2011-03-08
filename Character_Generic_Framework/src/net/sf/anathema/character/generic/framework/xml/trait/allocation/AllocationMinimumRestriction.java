@@ -7,7 +7,6 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
@@ -33,7 +32,6 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
     for (ITraitType type : alternateTraitTypes)
       if (type != traitType)
       {
-    	  //DefaultTrait trait = context.getTraitCollection().getTrait(type);
     	  int currentDots = context.getTraitCollection().getTrait(type).getCurrentValue();
     	  int externalDots = getExternalClaims(context, type);
     	  int claimedDots = Math.max(currentDots - externalDots, 0);
@@ -76,6 +74,8 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
   public void clear()
   {
 	  claimMap.clear();
+	  for (AllocationMinimumRestriction sibling : siblings)
+		  sibling.claimMap.clear();
   }
 
   public void addTraitType(ITraitType traitType) {
@@ -86,5 +86,10 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
   {
 	  claimDots(latestContext, latestTrait, strictMinimumValue);
 	  return strictMinimumValue + getExternalClaims(latestContext, latestTrait);
+  }
+  
+  public String toString()
+  {
+	  return "{" + dotCount + ";" + alternateTraitTypes + "}";
   }
 }

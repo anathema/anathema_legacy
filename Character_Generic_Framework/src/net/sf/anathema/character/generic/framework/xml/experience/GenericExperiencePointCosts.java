@@ -62,7 +62,8 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   }
 
   private int getCharmCosts(boolean favored, MartialArtsLevel level) {
-    if (level != null && standardMartialArtsLevel.compareTo(level) < 0) {
+    if (level != null && (standardMartialArtsLevel.compareTo(level) < 0 ||
+    		level == MartialArtsLevel.Sidereal)) {
       return favored ? favoredHighLevelCharmCost : generalHighLevelCharmCost;
     }
     return favored ? favoredCharmCost : generalCharmCost;

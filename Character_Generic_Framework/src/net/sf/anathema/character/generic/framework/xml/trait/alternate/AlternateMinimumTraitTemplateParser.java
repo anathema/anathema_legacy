@@ -37,4 +37,17 @@ public class AlternateMinimumTraitTemplateParser {
     }
     return traitTemplates.toArray(new GenericRestrictedTraitTemplate[traitTemplates.size()]);
   }
+  
+  public GenericRestrictedTraitTemplate[] parseAlternateMinimumTraitsSoft(Element element) throws PersistenceException {
+	    int count = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_COUNT);
+	    int value = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);
+	    AlternateMinimumRestriction restriction = new AlternateMinimumRestriction(count, value);
+	    List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<GenericRestrictedTraitTemplate>();
+	    for (Element traitElement : ElementUtilities.elements(element, TAG_TRAIT)) {
+	      GenericTraitTemplate template = GenericTraitTemplateParser.parseTraitTemplateSoft(traitElement);
+	      ITraitType type = traitTypeGroup.getById(ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_ID));
+	      traitTemplates.add(new GenericRestrictedTraitTemplate(template, restriction, type));
+	    }
+	    return traitTemplates.toArray(new GenericRestrictedTraitTemplate[traitTemplates.size()]);
+	  }
 }

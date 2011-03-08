@@ -1,0 +1,15 @@
+<additionalRules>
+   	<additionalCost>
+   		<costModifier>
+   			<backgroundReference id="Resources"/>   			
+   			<bonusModification thresholdLevel="3" fixedCost="2"/>
+    		<bonusModification thresholdLevel="4" fixedCost="2"/>
+   		</costModifier>
+   		<costModifier>
+   			<backgroundReference id="Mentor"/>
+   			<dotCostModification thresholdLevel="0" multiplier="1"/>
+   			<bonusModification thresholdLevel="3" fixedCost="2"/>
+   			<bonusModification thresholdLevel="4" fixedCost="2"/>
+   		</costModifier>
+   	</additionalCost>
+</additionalRules>

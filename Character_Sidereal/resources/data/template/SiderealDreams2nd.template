@@ -1,0 +1,44 @@
+<exaltedCharacterTemplate characterType="Sidereal" subtemplate="Dreams">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="template/SiderealAbilityGroup2nd.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="template/SiderealEssence.template" />
+    <traitCollection uses="template/SiderealTraitCollectionDreams2nd.template"/>
+    <magicTemplate uses="template/SiderealMagic2nd.template"/>
+    <presentation uses="template/SiderealPresentation.template"/>
+    <additionalRules uses="template/SiderealAdditionalRules2nd.template">
+     	<forbiddenBackgrounds>
+     		<backgroundReference id="Contacts" />
+     		<backgroundReference id="Influence" />
+     		<backgroundReference id="Followers" />
+     		<backgroundReference id="Cult" />
+     	</forbiddenBackgrounds>
+    </additionalRules>
+    <additionalTemplates>
+    	<template id="SiderealColleges" general="3" favored="4">
+    		<bonusGeneral value="8"/>
+    		<bonusFavored value="6"/>
+    		<experienceBase value="5"/>
+    		<experienceMultiple value="3"/>
+    	</template>
+    </additionalTemplates>
+    <healthTemplate>
+      <toughnessControllingTrait type="Resistance"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="template/SiderealBonusPointCost2nd.template" />
+    <creationPoints>
+      <attributeDots primary="8" secondary="6" tertiary="4"/>
+      <abilityDots general="27" favored="10" favoredPicks="4" />
+      <backgroundDots count="10" />
+      <virtueDots count="5" />
+      <bonusPoints count="15" />
+      <charmPicks favored="5" general="5"/>
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/SiderealExperienceCost2nd.template" />
+  </experience>
+</exaltedCharacterTemplate>

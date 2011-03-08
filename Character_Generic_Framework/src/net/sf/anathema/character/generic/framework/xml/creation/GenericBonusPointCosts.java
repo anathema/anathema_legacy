@@ -90,7 +90,8 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   }
 
   private int getCharmCosts(boolean favored, MartialArtsLevel martialArtsLevel) {
-    if (martialArtsLevel != null && standardLevel.compareTo(martialArtsLevel) < 0) {
+    if (martialArtsLevel != null && (standardLevel.compareTo(martialArtsLevel) < 0 ||
+    		martialArtsLevel == MartialArtsLevel.Sidereal)) {
       return favored ? favoredHighLevelMartialArtsCharmCost : generalHighLevelMartialArtsCharmCost;
     }
     return favored ? favoredCharmCost : generalCharmCost;

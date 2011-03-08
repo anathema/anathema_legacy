@@ -66,7 +66,7 @@ public class CasteMinimumTraitTemplateParser
 	      throws PersistenceException {
 		  AlternateMinimumTraitTemplateParser parser = new AlternateMinimumTraitTemplateParser(type);
 		    for (Element specialTraitElement : ElementUtilities.elements(element, TAG_ALTERNATE_MINMUM_TRAITS)) {
-		      for (GenericRestrictedTraitTemplate template : parser.parseAlternateMinimumTraits(specialTraitElement)) {
+		      for (GenericRestrictedTraitTemplate template : parser.parseAlternateMinimumTraitsSoft(specialTraitElement)) {
 		        pool.add(new GenericRestrictedTraitTemplate(template.getTemplate(),
 		        	new CasteMinimumRestriction(caste, template.getRestrictions().get(0)), template.getTraitType()));
 		      }

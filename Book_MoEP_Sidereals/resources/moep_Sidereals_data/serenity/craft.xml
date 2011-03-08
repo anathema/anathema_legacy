@@ -24,17 +24,59 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Craft -->
-     <charm id="Sidereal.ElementalVision" exalt="Sidereal" group="Craft">
+     <charm id="Sidereal.ElementalVisionEarth" exalt="Sidereal" group="Craft">
           <prerequisite>
                <trait id="Craft" value="2" />
                <essence value="2" />
           </prerequisite>
-          <!-- Coding:  Purchasable multiple times for additional elements.
-                 Journeys = Air
-                 Serenity = Wood
-                 Battles = Fire
-                 Secrets = Water
-                 Endings = Earth -->
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Special" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <charmAttribute attribute="Virtue-Compassion" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.ElementalVisionAir" exalt="Sidereal" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="2" />
+               <essence value="2" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Special" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <charmAttribute attribute="Virtue-Compassion" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.ElementalVisionWood" exalt="Sidereal" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="2" />
+               <essence value="2" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Special" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <charmAttribute attribute="Virtue-Compassion" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.ElementalVisionFire" exalt="Sidereal" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="2" />
+               <essence value="2" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Special" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <charmAttribute attribute="Virtue-Compassion" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.ElementalVisionWater" exalt="Sidereal" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="2" />
+               <essence value="2" />
+          </prerequisite>
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Special" />
@@ -117,7 +159,13 @@
           <prerequisite>
                <trait id="Craft" value="5" />
                <essence value="4" />
-               <charmReference id="Sidereal.ElementalVision" />
+               <selectiveCharmGroup threshold="1">
+					<charmReference id="Sidereal.ElementalVisionEarth" />
+					<charmReference id="Sidereal.ElementalVisionAir" />
+					<charmReference id="Sidereal.ElementalVisionWood" />
+					<charmReference id="Sidereal.ElementalVisionFire" />
+					<charmReference id="Sidereal.ElementalVisionWater" />
+			   </selectiveCharmGroup>
                <charmReference id="Sidereal.MendingWarpedDesigns" />
                <charmReference id="Sidereal.PredestinedDeliveryShaping" />
                <charmReference id="Sidereal.WorldShapingArtisticVision" />

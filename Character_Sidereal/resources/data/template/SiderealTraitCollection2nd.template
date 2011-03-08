@@ -1,0 +1,100 @@
+<traitTemplates uses="trait/DefaultTraitCollection.template">
+  <attributes>
+    <defaultTrait startValue="1" lowerableState="Default">
+      <limitation type="Essence"/>
+      <minimum value="1"/>
+    </defaultTrait>
+  </attributes>
+  <abilities>
+		<defaultTrait startValue="0" lowerableState="Default">
+			<limitation type="Essence"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Lore" startValue="3" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="3"/>
+		</specialTrait>
+		<specialTrait id="Occult" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="Awareness" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="Bureaucracy" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="MartialArts" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="2"/>
+		</specialTrait>
+		<specialTrait id="Stealth" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Linguistics" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<specialTrait id="Socialize" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Essence"/>
+			<minimum value="1"/>
+		</specialTrait>
+		<allocationMinimumTraits count="1">
+	 	  <trait id="Archery"  startValue="1"/>
+	 	  <trait id="Melee"/>
+	      <trait id="Thrown"/>
+		</allocationMinimumTraits>
+		
+		<casteMinimumTraits caste="Journeys">
+			<alternateMinimumTraits count="1" value="3">
+	 	  		<trait id="Ride"/>
+	 	  		<trait id="Sail"/>
+			</alternateMinimumTraits>
+			<specialTrait id="Athletics" minimum="2"/>
+			<specialTrait id="Linguistics" minimum="2"/>
+			<specialTrait id="Resistance" minimum="2"/>
+			<specialTrait id="Survival" minimum="2"/>
+		</casteMinimumTraits>
+		
+		<casteMinimumTraits caste="Serenity">
+			<alternateMinimumTraits count="1" value="2">
+	 	  		<trait id="Craft"/>
+	 	  		<trait id="Performance"/>
+			</alternateMinimumTraits>
+			<specialTrait id="Socialize" minimum="3"/>
+			<specialTrait id="Linguistics" minimum="2"/>
+			<specialTrait id="Medicine" minimum="2"/>
+			<specialTrait id="Presence" minimum="2"/>
+		</casteMinimumTraits>
+		
+		<casteMinimumTraits caste="Battles">
+			<alternateMinimumTraits count="1" value="3">
+	 	  		<trait id="Archery"/>
+	 	  		<trait id="Melee"/>
+			</alternateMinimumTraits>
+			<specialTrait id="Athletics" minimum="2"/>
+			<specialTrait id="Dodge" minimum="2"/>
+			<specialTrait id="Presence" minimum="2"/>
+			<specialTrait id="War" minimum="2"/>
+		</casteMinimumTraits>
+		
+		<casteMinimumTraits caste="Secrets">
+			<specialTrait id="Investigation" minimum="3"/>
+			<specialTrait id="Awareness" minimum="2"/>
+			<specialTrait id="Larceny" minimum="2"/>
+			<specialTrait id="Socialize" minimum="2"/>
+			<specialTrait id="Stealth" minimum="2"/>
+		</casteMinimumTraits>
+		
+		<casteMinimumTraits caste="Endings">
+			<specialTrait id="MartialArts" minimum="3"/>
+			<specialTrait id="Awareness" minimum="2"/>
+			<specialTrait id="Dodge" minimum="2"/>
+			<specialTrait id="Integrity" minimum="2"/>
+			<specialTrait id="Stealth" minimum="2"/>
+		</casteMinimumTraits>
+  </abilities>
+</traitTemplates>

@@ -24,19 +24,49 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Integrity -->
-     <charm id="Sidereal.VirtueEssenceReplenishment" exalt="Sidereal" group="Integrity">
+     <charm id="Sidereal.CompassionateEssenceReplenishment" exalt="Sidereal" group="Integrity">
           <prerequisite>
                <trait id="Integrity" value="2" />
-               <!-- trait id="*" value="3"/ -->
+               <trait id="Performance" value="3"/>
                <essence value="2" />
                <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1" />
           </prerequisite>
-          <!-- Coding:  This charm can be purchased up to 4 times, each time represents a different 
-                 "sub-charm".  The "sub-charms" and requirements are as follows:
-                 Compassionate Essence Replenishment:    Performance
-                 Stern Essence Replenishment:                    Socialize
-                 Heroic Essence Replenishiment:                  Presence
-                 Slick Essence Replenishment:                    Bureaucracy -->
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Special" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.SternEssenceReplenishment" exalt="Sidereal" group="Integrity">
+          <prerequisite>
+               <trait id="Integrity" value="2" />
+               <trait id="Socialize" value="3"/>
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Special" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.HeroicEssenceReplenishment" exalt="Sidereal" group="Integrity">
+          <prerequisite>
+               <trait id="Integrity" value="2" />
+               <trait id="Presence" value="3"/>
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Special" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.SlickEssenceReplenishment" exalt="Sidereal" group="Integrity">
+          <prerequisite>
+               <trait id="Integrity" value="2" />
+               <trait id="Bureaucracy" value="3"/>
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1" />
+          </prerequisite>
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Special" />
@@ -120,7 +150,12 @@
           <prerequisite>
                <trait id="Integrity" value="5" />
                <essence value="4" />
-               <charmReference id="Sidereal.VirtueEssenceReplenishment" />
+               <selectiveCharmGroup threshold="1">
+					<charmReference id="Sidereal.CompassionateEssenceReplenishment" />
+					<charmReference id="Sidereal.SternEssenceReplenishment" />
+					<charmReference id="Sidereal.HeroicEssenceReplenishment" />
+					<charmReference id="Sidereal.SlickEssenceReplenishment" />
+			   </selectiveCharmGroup>
                <charmReference id="Sidereal.DeathOfSelfMeditation" />
                <charmReference id="Sidereal.UnwaveringWellBeingMeditation" />
           </prerequisite>

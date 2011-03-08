@@ -156,10 +156,49 @@
           <charmAttribute attribute="War" visualize="true" />
           <source source="Sidereals2nd" />
      </charm>
+     <charm id="Sidereal.ChaosQuellingBattlePattern" exalt="Sidereal" group="War">
+          <prerequisite>
+               <trait id="War" value="5" />
+               <essence value="3" />
+               <charmReference id="Sidereal.PredestinedTriumphPractice" />
+               <charmReference id="Sidereal.RedHaze" />
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+          </cost>
+          <duration event="BattlesEnd" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Holy" visualize="true" />
+          <charmAttribute attribute="Virtue-Compassion" visualize="true" />
+          <charmAttribute attribute="War" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.GhostBanishingBattlePattern" exalt="Sidereal" group="War">
+          <prerequisite>
+               <trait id="War" value="5" />
+               <essence value="3" />
+               <charmReference id="Sidereal.PredestinedTriumphPractice" />
+               <charmReference id="Sidereal.RedHaze" />
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+          </cost>
+          <duration event="BattlesEnd" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Holy" visualize="true" />
+          <charmAttribute attribute="Virtue-Compassion" visualize="true" />
+          <charmAttribute attribute="War" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
      <charm id="Sidereal.SpiritBindingBattlePattern" exalt="Sidereal" group="War">
           <prerequisite>
                <trait id="War" value="5" />
                <essence value="4" />
+               <selectiveCharmGroup threshold="1">
+					<charmReference id="Sidereal.DemonBlockingBattlePattern" />
+					<charmReference id="Sidereal.ChaosQuellingBattlePattern" />
+					<charmReference id="Sidereal.GhostBanishingBattlePattern" />
+			   </selectiveCharmGroup>
                <charmReference id="Sidereal.DemonBlockingBattlePattern" />
                <charmReference id="Sidereal.EssenceDrainingBattlePattern" />
                <charmReference id="Sidereal.TrainingMandateOfCelestialEmpowerment" />
