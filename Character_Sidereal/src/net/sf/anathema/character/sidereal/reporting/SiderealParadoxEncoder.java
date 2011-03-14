@@ -2,6 +2,7 @@ package net.sf.anathema.character.sidereal.reporting;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
@@ -53,7 +54,9 @@ public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IPdfCo
     Font font = TableEncodingUtilities.createFont(getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.GreatCurse.Sidereal.RulesPages")); //$NON-NLS-1$
+    phrase.add(resources.getString("Sheet.GreatCurse.Sidereal." +
+    		(character.getRules().getEdition() == ExaltedEdition.SecondEdition ?
+    		 "2E" : "") + "RulesPages")); //$NON-NLS-1$
     Bounds infoBounds = new Bounds(bounds.x, bounds.y, bounds.width, textBounds.height - lineHeight);
     PdfTextEncodingUtilities.encodeText(directContent, phrase, infoBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
   }

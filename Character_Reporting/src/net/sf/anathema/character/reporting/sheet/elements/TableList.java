@@ -27,6 +27,11 @@ public class TableList {
     table.setWidthPercentage(100);
     this.font = font;
   }
+  
+  public void setIndex(int index)
+  {
+	  this.index = index;
+  }
 
   public void addHeader(Chunk chunk, boolean paddingTop) {
     addHeader(new Phrase(chunk), paddingTop);

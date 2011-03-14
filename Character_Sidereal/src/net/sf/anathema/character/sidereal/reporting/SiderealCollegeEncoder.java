@@ -5,6 +5,8 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
@@ -19,8 +21,17 @@ import com.lowagie.text.pdf.BaseFont;
 
 public class SiderealCollegeEncoder extends FavorableTraitEncoder {
 
-  public SiderealCollegeEncoder(BaseFont baseFont, IResources resources, int essenceMax) {
+  private IExaltedEdition edition;
+	
+  public SiderealCollegeEncoder(BaseFont baseFont, IResources resources,
+		  int essenceMax) {
+    this(baseFont, resources, essenceMax, ExaltedEdition.FirstEdition);
+  }
+  
+  public SiderealCollegeEncoder(BaseFont baseFont, IResources resources,
+		  int essenceMax, IExaltedEdition edition) {
     super(baseFont, resources, essenceMax);
+    this.edition = edition;
   }
 
   @Override
@@ -54,6 +65,7 @@ public class SiderealCollegeEncoder extends FavorableTraitEncoder {
 
   @Override
   protected String getGroupNamePrefix() {
-    return "Sheet.Colleges.Houses."; //$NON-NLS-1$
+    return "Sheet.Colleges.Houses." +
+    (edition == ExaltedEdition.SecondEdition ? "2E." : ""); //$NON-NLS-1$
   }
 }

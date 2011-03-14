@@ -1,14 +1,13 @@
 package net.sf.anathema.character.sidereal.reporting;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.sheet.elements.CellPadding;
-import net.sf.anathema.character.reporting.sheet.elements.TableList;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableCell;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
+import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
@@ -23,31 +22,42 @@ public class DestinyTypeTableEncoder extends AbstractTableEncoder {
   private final IResources resources;
   private final Font font;
   private final Font commentFont;
+  private final Font boldCommentFont;
 
   public DestinyTypeTableEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
     this.font = TableEncodingUtilities.createFont(baseFont);
     this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
+    this.boldCommentFont = TableEncodingUtilities.createCommentFont(baseFont);
+    boldCommentFont.setStyle(Font.BOLD);
   }
 
   @Override
   protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException {
-    TableList list = new TableList(font, new CellPadding(2, 0, 1, 1));
-    TableCell spaceCell = new TableCell(new Phrase(" ", commentFont), Rectangle.NO_BORDER); //$NON-NLS-1$
-    spaceCell.setPadding(0);
-
-    list.addItem(resources.getString("Sheet.Astrology.DestinyTypes")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.ArtlessProdigy")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.BlissfulIdiot")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.HoundChasesRabbit")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.FortifiedSpirit")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.SlopedFloor")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.RuinWithoutFailure")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.HeartPiercingCurse")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.NameDestroyingCurse")); //$NON-NLS-1$
+	PdfPTable table = new PdfPTable(new float[] { 1f });
     
-    return list.getTable();
+    Phrase destinyPhrase = new Phrase(resources.getString("Sheet.Astrology.DestinyTypes") + "\n\n", font);
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.ArtlessProdigy") + ": ", boldCommentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.ArtlessProdigyEffect") + "\n", commentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.BlissfulIdiot") + ": ", boldCommentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.BlissfulIdiotEffect") + "\n", commentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.HoundChasesRabbit") + ": ", boldCommentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.HoundChasesRabbitEffect") + "\n", commentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.FortifiedSpirit") + ": ", boldCommentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.FortifiedSpiritEffect") + "\n", commentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.SlopedFloor") + ": ", boldCommentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.SlopedFloorEffect") + "\n", commentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.RuinWithoutFailure") + ": ", boldCommentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.RuinWithoutFailureEffect") + "\n", commentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.HeartPiercingCurse") + ": ", boldCommentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.HeartPiercingCurseEffect") + "\n", commentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.NameDestroyingCurse") + ": ", boldCommentFont));
+    destinyPhrase.add(new Chunk(resources.getString("Sheet.Astrology.NameDestroyingCurseEffect") + "\n", commentFont));
+    destinyPhrase.add(new Chunk("\n", commentFont));
+    table.addCell(createContentCell(destinyPhrase));
+    
+    return table;
   }
   
   protected PdfPCell createContentCell(Phrase phrase) {

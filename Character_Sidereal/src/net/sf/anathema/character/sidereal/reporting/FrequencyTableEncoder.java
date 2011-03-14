@@ -1,6 +1,8 @@
 package net.sf.anathema.character.sidereal.reporting;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.reporting.sheet.elements.CellPadding;
+import net.sf.anathema.character.reporting.sheet.elements.TableList;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableCell;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
@@ -17,14 +19,14 @@ import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class TriggerTypeTableEncoder extends AbstractTableEncoder {
+public class FrequencyTableEncoder extends AbstractTableEncoder {
 
   private final IResources resources;
   private final Font font;
   private final Font commentFont;
   private final Font boldCommentFont;
 
-  public TriggerTypeTableEncoder(IResources resources, BaseFont baseFont) {
+  public FrequencyTableEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
     this.font = TableEncodingUtilities.createFont(baseFont);
     this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
@@ -35,17 +37,22 @@ public class TriggerTypeTableEncoder extends AbstractTableEncoder {
   @Override
   protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException {
-		PdfPTable table = new PdfPTable(new float[] { 1f });
-	    
-	    Phrase triggerPhrase = new Phrase(resources.getString("Sheet.Astrology.TriggerTypes") + "\n\n", font);
-	    triggerPhrase.add(new Chunk(resources.getString("Sheet.Astrology.Simple") + ": ", boldCommentFont));
-	    triggerPhrase.add(new Chunk(resources.getString("Sheet.Astrology.SimpleEffect") + "\n", commentFont));
-	    triggerPhrase.add(new Chunk(resources.getString("Sheet.Astrology.Intelligent") + ": ", boldCommentFont));
-	    triggerPhrase.add(new Chunk(resources.getString("Sheet.Astrology.IntelligentEffect") + "\n", commentFont));
-	    triggerPhrase.add(new Chunk("\n", commentFont));
-	    
-	    table.addCell(createContentCell(triggerPhrase));
-	    
+	   TableList list = new TableList(commentFont, new CellPadding(2, 0, 1, 1));
+	   TableCell spaceCell = new TableCell(new Phrase(" ", commentFont), Rectangle.NO_BORDER); //$NON-NLS-1$
+	    spaceCell.setPadding(0);
+
+	    list.addHeader(new Chunk(resources.getString("Sheet.Astrology.Frequency"), font), true); //$NON-NLS-1$
+	    list.addCell(spaceCell);
+	    list.addCell(spaceCell);
+	    list.addItem(resources.getString("Sheet.Astrology.Frequency.Weekly")); //$NON-NLS-1$
+	    list.addItem(resources.getString("Sheet.Astrology.Frequency.Daily")); //$NON-NLS-1$
+	    list.addItem(resources.getString("Sheet.Astrology.Frequency.Scene")); //$NON-NLS-1$
+	    list.addItem(resources.getString("Sheet.Astrology.Frequency.Anytime")); //$NON-NLS-1$
+	    list.addCell(spaceCell);
+	    list.addCell(spaceCell);	    
+
+	    PdfPTable table = new PdfPTable(new float[] { 1f });
+	    table.addCell(new TableCell(list.getTable(), Rectangle.BOX));
 	    return table;
   }
   
