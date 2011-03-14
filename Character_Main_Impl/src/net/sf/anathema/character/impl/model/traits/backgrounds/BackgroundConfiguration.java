@@ -42,18 +42,17 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
 
   public void initStartingBackgrounds()
   {
+	  //load starting backgrounds from template
+	  List<IDefaultTrait> otherBackgroundsToInit = new ArrayList<IDefaultTrait>(backgrounds);
 	  for (IBackgroundTemplate background : getAllAvailableBackgroundTemplates())
 	  {
 		  ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(background);
-		  boolean startsWith = traitTemplate.getStartValue() > 0;
-		  boolean hasLearned = false;
-		  for (IDefaultTrait trait : backgrounds)
-			  if (background.getId().equals(trait.getType().getId()) &&
-					  trait.getCurrentValue() > 0)
-				  hasLearned = true;
-		  if (startsWith || hasLearned)
-			  addBackground(background, true);
+		  if (traitTemplate.getStartValue() > 0)
+			  otherBackgroundsToInit.remove(addBackground(background, true));
 	  }
+	  //anything else should also be notified as going to the screen
+	  for (IDefaultTrait background : otherBackgroundsToInit)
+	  	  fireBackgroundAddedEvent(background);
   }
   
   public IBackgroundTemplate[] getAllAvailableBackgroundTemplates() {
