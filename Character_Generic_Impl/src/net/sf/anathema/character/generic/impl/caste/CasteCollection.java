@@ -13,20 +13,13 @@ public class CasteCollection implements ICasteCollection
   private Map<IExaltedEdition, ICasteType[]> editionMap;
   private final ICasteType[] allTypes;
   
-  public CasteCollection(Map<IExaltedEdition, ICasteType[]> editionMap,
+  public CasteCollection(ICasteType[] allTypes,
+		  Map<IExaltedEdition, ICasteType[]> editionMap,
 		  Map<ITemplateType, ICasteType[]> templateMap)
   {
 	  this.editionMap = editionMap;
 	  this.templateMap = templateMap;
-	  ICasteType[] longest = null;
-	  int maxLength = 0;
-	  for (ICasteType[] casteSet : editionMap.values())
-		  if (casteSet.length > maxLength)
-		  {
-			  longest = casteSet;
-			  maxLength = longest.length;
-		  }
-	  allTypes = longest;
+	  this.allTypes = allTypes;
   }
 
   public CasteCollection(ICasteType[] allTypes) {

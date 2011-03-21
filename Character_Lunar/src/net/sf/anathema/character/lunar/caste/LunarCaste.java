@@ -15,7 +15,7 @@ public enum LunarCaste implements ICasteType {
     return name();
   }
   
-  public static ICasteType[] getFirstEditionValues()
+  public static ICasteType[] getModernValues()
   {
 	  return new ICasteType[] { FullMoon, ChangingMoon, NoMoon };
   }

@@ -118,8 +118,8 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
                 ILunarSpecialCharms.SILVER_LUNAR_WIT});
     
     Map<IExaltedEdition, ICasteType[]> editionMap = new HashMap<IExaltedEdition, ICasteType[]>();
-    editionMap.put(ExaltedEdition.FirstEdition, LunarCaste.getFirstEditionValues());
-    editionMap.put(ExaltedEdition.SecondEdition, LunarCaste.values());
+    editionMap.put(ExaltedEdition.FirstEdition, LunarCaste.getModernValues());
+    editionMap.put(ExaltedEdition.SecondEdition, LunarCaste.getModernValues());
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
     templateMap.put(castelessType, new ICasteType[] { });
     templateMap.put(revisedCastelessType, new ICasteType[] { });
@@ -127,7 +127,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     templateMap.put(revisedDreamsType, LunarCaste.getDreamsValues());
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.LUNAR,
-        new CasteCollection(editionMap, templateMap));
+        new CasteCollection(LunarCaste.values(), editionMap, templateMap));
     characterGenerics.getGenericCharmStatsRegistry().register(
             CharacterType.LUNAR,
             new IMagicStats[] { new FirstExcellency(CharacterType.LUNAR, ExaltedSourceBook.Lunars2nd, "1 m per die"), //$NON-NLS-1$
