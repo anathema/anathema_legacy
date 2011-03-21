@@ -13,6 +13,7 @@ public class SecondEditionAstrologyInfoEncoder implements IPdfContentBoxEncoder 
 
   private final IResources resources;
   private final BaseFont basefont;
+  private final float SPACING = 5;
 
   public SecondEditionAstrologyInfoEncoder(BaseFont baseFont, IResources resources) {
     this.resources = resources;
@@ -20,14 +21,25 @@ public class SecondEditionAstrologyInfoEncoder implements IPdfContentBoxEncoder 
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    int height = 0;
-    height += (int) new AstrologyTableEncoder(resources, basefont).encodeTable(directContent, character, bounds);
+    int height = (int) SPACING;
+    height += (int) new SecondEditionAstrologyTableEncoder(resources, basefont).encodeTable(directContent,
+    		character, getBounds(bounds, 0, height)) + SPACING + 1;
     height += (int) new DestinyTypeTableEncoder(resources, basefont).encodeTable(directContent,
-    		character, getBounds(bounds, 0, height));
+    		character, getBounds(bounds, 0, height)) + SPACING + 2;
+    height += (int) new ResplendentDestinyTableEncoder(resources, basefont).encodeTable(directContent,
+    		character, getBounds(bounds, 0, height)) + SPACING + 2;
+    
+    int horizSpan = (int) (bounds.width / 2);
+    height = (int) SPACING;
+    
     height += (int) new TriggerTypeTableEncoder(resources, basefont).encodeTable(directContent,
-    		character, getBounds(bounds, 0, height));
-    
-    
+    		character, getBounds(bounds, horizSpan, height)) + SPACING;
+    height += (int) new ScopeTableEncoder(resources, basefont).encodeTable(directContent,
+    		character, getBounds(bounds, horizSpan, height)) + SPACING;
+    height += (int) new DurationTableEncoder(resources, basefont).encodeTable(directContent,
+    		character, getBounds(bounds, horizSpan, height)) + SPACING;
+    height += (int) new FrequencyTableEncoder(resources, basefont).encodeTable(directContent,
+    		character, getBounds(bounds, horizSpan, height)) + SPACING;
 
   }
   
@@ -36,7 +48,7 @@ public class SecondEditionAstrologyInfoEncoder implements IPdfContentBoxEncoder 
 	  return new Bounds(
 			  bounds.x + offsetX,
 			  bounds.y - offsetY,
-			  bounds.width / 2,
+			  bounds.width / 2 - SPACING,
 			  bounds.height);
   }
 
