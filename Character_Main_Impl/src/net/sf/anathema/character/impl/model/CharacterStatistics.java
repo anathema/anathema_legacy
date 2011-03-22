@@ -84,7 +84,7 @@ public class CharacterStatistics implements ICharacterStatistics {
     this.traitConfiguration = new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry());
     new CharacterTraitListening(traitConfiguration, context.getCharacterListening()).initListening();
     ITrait toughnessTrait = getTraitConfiguration().getTrait(template.getToughnessControllingTraitType());
-    this.health = new HealthConfiguration(toughnessTrait);
+    this.health = new HealthConfiguration(toughnessTrait, traitConfiguration);
     this.charms = new CharmConfiguration(health, context, generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
     this.essencePool = new EssencePoolConfiguration(

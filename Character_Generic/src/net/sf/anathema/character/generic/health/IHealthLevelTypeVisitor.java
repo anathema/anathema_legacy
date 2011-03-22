@@ -11,4 +11,6 @@ public interface IHealthLevelTypeVisitor {
   public void visitFour(HealthLevelType type);
 
   public void visitIncapacitated(HealthLevelType type);
+  
+  public void visitDying(HealthLevelType type);
 }

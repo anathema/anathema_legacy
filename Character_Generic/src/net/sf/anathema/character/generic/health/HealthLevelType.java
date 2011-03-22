@@ -33,7 +33,13 @@ public enum HealthLevelType implements IIdentificate {
     public void accept(IHealthLevelTypeVisitor visitor) {
       visitor.visitIncapacitated(this);
     }
-  };
+  },
+  DYING("Dying", Integer.MIN_VALUE) { //$NON-NLS-1$
+	    @Override
+	    public void accept(IHealthLevelTypeVisitor visitor) {
+	      visitor.visitDying(this);
+	    }
+	  };
 
   private final String id;
   private final int value;

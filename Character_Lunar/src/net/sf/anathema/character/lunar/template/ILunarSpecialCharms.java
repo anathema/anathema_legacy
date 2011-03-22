@@ -34,9 +34,10 @@ public interface ILunarSpecialCharms {
 	      "Lunar.OxBodyTechnique", AttributeType.Stamina,//$NON-NLS-1$
 	      new LinkedHashMap<String, HealthLevelType[]>() {
 	        {
-	          put("Category.-1x2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.ONE }); //$NON-NLS-1$
+	          put("Category.-1x2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.ONE, HealthLevelType.DYING, HealthLevelType.DYING }); //$NON-NLS-1$
 	          put(
-	              "Category.-2x4", new HealthLevelType[] { HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO }); //$NON-NLS-1$
+	              "Category.-2x4", new HealthLevelType[] { HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO,
+	            		  HealthLevelType.DYING, HealthLevelType.DYING }); //$NON-NLS-1$
 	        }
 	      });
   

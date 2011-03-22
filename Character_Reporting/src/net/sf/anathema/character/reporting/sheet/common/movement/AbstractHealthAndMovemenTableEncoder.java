@@ -97,6 +97,9 @@ public abstract class AbstractHealthAndMovemenTableEncoder implements IPdfTableE
       Image activeTemplate,
       Image passiveTemplate,
       HealthLevelType type) {
+	  if (type == HealthLevelType.DYING)
+		  return;
+	  
     int rowCount = getRowCount(type);
     for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
       if (rowIndex == 0) {
@@ -262,7 +265,7 @@ public abstract class AbstractHealthAndMovemenTableEncoder implements IPdfTableE
     if (level == HealthLevelType.INCAPACITATED) {
       addSpaceCells(table, 1);
       for (int index = 0; index < additionalCount - 1; index++) {
-        if (index < getTraits(character).getTrait(AttributeType.Stamina).getCurrentValue()) {
+        if (index < character.getHealthLevelTypeCount(HealthLevelType.DYING)) {
           table.addCell(createHealthCell(activeImage));
         }
         else {
