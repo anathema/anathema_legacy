@@ -119,7 +119,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     
     Map<IExaltedEdition, ICasteType[]> editionMap = new HashMap<IExaltedEdition, ICasteType[]>();
     editionMap.put(ExaltedEdition.FirstEdition, LunarCaste.getModernValues());
-    editionMap.put(ExaltedEdition.SecondEdition, LunarCaste.getModernValues());
+    editionMap.put(ExaltedEdition.SecondEdition, LunarCaste.values());
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
     templateMap.put(castelessType, new ICasteType[] { });
     templateMap.put(revisedCastelessType, new ICasteType[] { });
