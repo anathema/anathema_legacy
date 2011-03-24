@@ -38,6 +38,51 @@
 		<!-- NOTE:  Solar Mirror - Golden Destruction Cut -->
 		<source source="InkMonkeys" />
 	</charm>
+		<charm id="Abyssal.ElegantBloodlettingArt2" exalt="Abyssal" group="Melee">
+		<prerequisite>
+			<trait id="Melee" value="6" />
+			<essence value="4" />
+			<charmReference id="Abyssal.SavageShadeStyle" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Golden Destruction Cut -->
+		<source source="InkMonkeys" />
+	</charm>
+		<charm id="Abyssal.ElegantBloodlettingArt3" exalt="Abyssal" group="Melee">
+		<prerequisite>
+			<trait id="Melee" value="8" />
+			<essence value="4" />
+			<charmReference id="Abyssal.SavageShadeStyle" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Golden Destruction Cut -->
+		<source source="InkMonkeys" />
+	</charm>
+		<charm id="Abyssal.ElegantBloodlettingArt4" exalt="Abyssal" group="Melee">
+		<prerequisite>
+			<trait id="Melee" value="9" />
+			<essence value="4" />
+			<charmReference id="Abyssal.SavageShadeStyle" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Golden Destruction Cut -->
+		<source source="InkMonkeys" />
+	</charm>
 	<charm id="Abyssal.BladesWellBlooded" exalt="Abyssal" group="Melee">
 		<prerequisite>
 			<trait id="Melee" value="5" />
@@ -116,7 +161,7 @@
 		<!-- NOTE:  Solar Mirror - Sun-Sword Concentration -->
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Abyssal.DeathsKnightStance" exalt="Abyssal" group="Melee">
+	<charm id="Abyssal.DeathKnightStance" exalt="Abyssal" group="Melee">
 		<prerequisite>
 			<trait id="Melee" value="5" />
 			<essence value="4" />

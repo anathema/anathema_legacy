@@ -184,4 +184,10 @@
           <charmtype type="Permanent" />
           <source source="Abyssals2nd" />
      </charm>
+     <alternatives>
+    <alternative>
+      <charmReference id="Abyssal.UnconqueredHerosFaith"/>
+      <charmReference id="Abyssal.ImmortalMalevolenceEnslavement"/>
+    </alternative>
+  </alternatives>
 </charmlist>

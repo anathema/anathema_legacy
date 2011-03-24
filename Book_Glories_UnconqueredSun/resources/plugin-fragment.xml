@@ -107,6 +107,31 @@
                <parameter id="path" value="glories_UCS_data/eclipse/socialize.xml" />
           </parameter>
           <parameter id="list">
+               <parameter id="type" value="Abyssal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="glories_UCS_data/abyssal/melee.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Abyssal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="glories_UCS_data/abyssal/resistance.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Abyssal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="glories_UCS_data/abyssal/stealth.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Abyssal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="glories_UCS_data/abyssal/integrity.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Abyssal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="glories_UCS_data/abyssal/survival.xml" />
+          </parameter>
+          <parameter id="list">
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="glories_UCS_data/misc/solarHero.xml" />
@@ -115,6 +140,11 @@
                <parameter id="type" value="MartialArts" />
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="glories_UCS_data/misc/armsUnconqueredSun.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="MartialArts" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="glories_UCS_data/abyssal/darkMessiah.xml" />
           </parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="Glories_UnconqueredSunResources">

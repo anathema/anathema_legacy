@@ -189,5 +189,6 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Servitude" visualize="true" />
           <charmAttribute attribute="War" visualize="true" />
+          <source source="Abyssals2nd" />
      </charm>
 </charmlist>

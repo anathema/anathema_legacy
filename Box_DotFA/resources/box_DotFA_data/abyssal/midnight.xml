@@ -90,10 +90,48 @@
 		<!-- NOTE:  Solar Mirror - Eternal Empress of Love Attitude -->
 		<source source="ScrollErrata" />
 	</charm>
+	<charm id="Abyssal.EternalOverlordOfDreadAttitude2" exalt="Abyssal" group="Presence">
+		<prerequisite>
+			<trait id="Presence" value="7" />
+			<essence value="7" />
+			<charmReference id="Abyssal.BrokenHeartTriumph" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
+			<charmAttribute attribute="Compulsion" visualize="true" />
+		<charmAttribute attribute="Emotion" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Eternal Empress of Love Attitude -->
+		<source source="ScrollErrata" />
+	</charm>
 	<charm id="Abyssal.FarBeyondRuin" exalt="Abyssal" group="Resistance">
 		<prerequisite>
 			<trait id="Resistance" value="6" />
 			<essence value="6" />
+			<charmReference id="Abyssal.WoundsMeanNothing" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="10" />
+		</charmtype>
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
+        <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Ruin-Abasing Shrug -->
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Abyssal.FarBeyondRuin2" exalt="Abyssal" group="Resistance">
+		<prerequisite>
+			<trait id="Resistance" value="6" />
+			<essence value="7" />
 			<charmReference id="Abyssal.WoundsMeanNothing" />
 		</prerequisite>
 		<cost>

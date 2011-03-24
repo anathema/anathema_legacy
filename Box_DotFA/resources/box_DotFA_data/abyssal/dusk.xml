@@ -71,6 +71,57 @@
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
+		<charm id="Abyssal.CaughtInOblivionsEye2" exalt="Abyssal" group="Archery">
+		<prerequisite>
+			<trait id="Archery" value="8" />
+			<essence value="8" />
+			<charmReference id="Abyssal.FlawlessArcherDiscipline" />
+		</prerequisite>
+		<cost>
+			<essence cost="Varies" text="(+9m, 1wp)" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Boundless Arrow of the Sun -->
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+		<charm id="Abyssal.CaughtInOblivionsEye3" exalt="Abyssal" group="Archery">
+		<prerequisite>
+			<trait id="Archery" value="9" />
+			<essence value="9" />
+			<charmReference id="Abyssal.FlawlessArcherDiscipline" />
+		</prerequisite>
+		<cost>
+			<essence cost="Varies" text="(+9m, 1wp)" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Boundless Arrow of the Sun -->
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+		<charm id="Abyssal.CaughtInOblivionsEye4" exalt="Abyssal" group="Archery">
+		<prerequisite>
+			<trait id="Archery" value="10" />
+			<essence value="10" />
+			<charmReference id="Abyssal.FlawlessArcherDiscipline" />
+		</prerequisite>
+		<cost>
+			<essence cost="Varies" text="(+9m, 1wp)" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Boundless Arrow of the Sun -->
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
 	<!-- TODO:  Coding - Will need to do something about MA charms that are not attached to a specific style. -->
 	<charm id="Abyssal.BloodSoakedLotusRoots" exalt="Abyssal" group="MartialArts">
 		<prerequisite>
@@ -108,6 +159,24 @@
 		<prerequisite>
 			<trait id="Thrown" value="6" />
 			<essence value="6" />
+			<charmReference id="Abyssal.BurrowingBoneMaggot" />
+		</prerequisite>
+		<cost>
+			<essence cost="10" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Maelstrom of Celestial Dominance -->
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Abyssal.BoneFilledMaelstromGust2" exalt="Abyssal" group="Thrown">
+		<prerequisite>
+			<trait id="Thrown" value="7" />
+			<essence value="7" />
 			<charmReference id="Abyssal.BurrowingBoneMaggot" />
 		</prerequisite>
 		<cost>

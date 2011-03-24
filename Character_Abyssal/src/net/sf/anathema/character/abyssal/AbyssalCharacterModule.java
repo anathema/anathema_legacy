@@ -8,7 +8,6 @@ import net.sf.anathema.character.abyssal.equipment.FangTemplate;
 import net.sf.anathema.character.abyssal.reporting.FirstEditionAbyssalPartEncoder;
 import net.sf.anathema.character.abyssal.template.LoyalAbyssalTemplate;
 import net.sf.anathema.character.abyssal.template.RenegadeAbyssalTemplate;
-import net.sf.anathema.character.abyssal.template.UnsupportedAbyssal2ndTemplate;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;

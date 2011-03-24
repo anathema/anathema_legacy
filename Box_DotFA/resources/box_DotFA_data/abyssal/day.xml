@@ -99,6 +99,7 @@
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
+	
 	<charm id="Abyssal.ThousandfoldShadowDance" exalt="Abyssal" group="Dodge">
 		<prerequisite>
 			<trait id="Dodge" value="5" />

@@ -80,7 +80,14 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
     	            new SupremePerfection()}); //$NON-NLS-1$
 	ISpecialCharm[] specialCharms = new ISpecialCharm[]   { // TODO 2E Special Charms
             IAbyssalSpecialCharms.OX_BODY_TECHNIQUE,
-            IAbyssalSpecialCharms.ESSENCE_ENGORGEMENT_TECHNIQUE };
+            IAbyssalSpecialCharms.WORLD_SLAYING_ARSENEL,
+            IAbyssalSpecialCharms.CADAVEROUS_TORPOR_TECHNIQUE,
+            IAbyssalSpecialCharms.WRITHING_BLOOD_CHAIN_TECHNIQUE,
+            IAbyssalSpecialCharms.ETERNAL_EMNITY_APPROACH,
+            IAbyssalSpecialCharms.ESSENCE_ENGORGEMENT_TECHNIQUE,
+            IAbyssalSpecialCharms.VOID_SPLINTER,
+            IAbyssalSpecialCharms.PESTILENCE_BEARING_TOUCH,
+            IAbyssalSpecialCharms.WICKED_DARTS_OF_SUFFERING};
     
     characterGenerics.getCharmProvider().setSpecialCharms(
             CharacterType.ABYSSAL,

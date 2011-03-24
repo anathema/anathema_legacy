@@ -8,11 +8,18 @@ public class TraitDependentMultiLearnableCharm extends AbstractMultiLearnableCha
 
   private final int absoluteLearnLimit;
   private final ITraitType traitType;
+  private final int countModifier;
+  
+  public TraitDependentMultiLearnableCharm(String charmId, int absoluteLearnLimit, ITraitType traitType)
+  {
+	  this(charmId, absoluteLearnLimit, traitType, 0);
+  }
 
-  public TraitDependentMultiLearnableCharm(String charmId, int absoluteLearnLimit, ITraitType traitType) {
+  public TraitDependentMultiLearnableCharm(String charmId, int absoluteLearnLimit, ITraitType traitType, int modifier) {
     super(charmId);
     this.absoluteLearnLimit = absoluteLearnLimit;
     this.traitType = traitType;
+    this.countModifier = modifier;
   }
 
   public int getAbsoluteLearnLimit() {
@@ -21,6 +28,10 @@ public class TraitDependentMultiLearnableCharm extends AbstractMultiLearnableCha
 
   public int getMaximumLearnCount(IGenericTraitCollection traitCollection) {
     IGenericTrait trait = traitCollection.getTrait(traitType);
-    return trait.getCurrentValue();
+    int count = trait.getCurrentValue();
+    count += countModifier;
+    count = Math.max(count, 0);
+    count = Math.min(count, absoluteLearnLimit);
+    return count;
   }
 }
