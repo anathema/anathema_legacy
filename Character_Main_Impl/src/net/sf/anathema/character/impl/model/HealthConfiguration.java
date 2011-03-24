@@ -19,6 +19,11 @@ public class HealthConfiguration implements IHealthConfiguration {
   private final List<IPainToleranceProvider> painResistanceProviders = new ArrayList<IPainToleranceProvider>();
   private final OxBodyTechniqueArbitrator arbitrator;
 
+  public HealthConfiguration(IGenericTrait toughnessControllingTrait)
+  {
+	  this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTrait);
+  }
+  
   public HealthConfiguration(IGenericTrait toughnessControllingTrait,
 		  ICoreTraitConfiguration config) {
     this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTrait);
