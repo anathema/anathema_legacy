@@ -100,6 +100,7 @@
                <special primaryStep="1" secondaryStep="2" />
           </charmtype>
           <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mortal" />
           <source source="Sidereals2nd" />
      </genericCharm>

@@ -67,6 +67,7 @@
           </cost>
           <duration duration="Instant" />
           <charmtype type="Simple" />
+          <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Sidereals2nd" />
      </charm>
      <charm id="Sidereal.SkyAndRainMantra" exalt="Sidereal" group="Survival">

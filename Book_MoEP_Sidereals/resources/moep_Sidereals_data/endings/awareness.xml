@@ -61,7 +61,7 @@
           <cost>
                <essence cost="4" />
           </cost>
-          <duration duration="Instant" />
+          <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Fate" visualize="true" />
