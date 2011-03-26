@@ -4,8 +4,8 @@
 
 Anathema Read Me
 (C) 2004-2008 by Sandra Sieroux and Urs Reupke
-(C) 2010 BY Urs Reupke, Sandra Sieroux, Scott Olson, Eric Astor, Paul Adams, Rob Rutherford,
-            Sean Mattox, and Douglas Fotheringham
+(C) 2010-2011 by Urs Reupke, Sandra Sieroux, Scott Olson, Eric Astor, Paul Adams,
+                 Rob Rutherford, Sean Mattox, and Douglas Fotheringham
 Exalted (C) 2001-2011 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
@@ -68,7 +68,8 @@ You can always get the most up to date version at "http//java.sun.com".
 ===------------------------------------------------------------------------------===
 
 + Generate and maintain all 5 core exalt types (1E)
-+ Generate and maintain Solar. Lunar, Abyssal, and Dragon-blooded exalt types (2E)
++ Generate and maintain Solar. Lunar, Abyssal, Sidereal, and Dragon-blooded exalt
+  types (2E)
 + Generate character descriptions (currently disabled)
 + Print character sheets and descriptions to PDF
 + Organize your series' plot
@@ -84,7 +85,8 @@ See versions.txt for a version history.
 To configure Anathema, visit the "Preferences" dialog available in the "Extras" menu.
 All settings need for Anathema to be restarted to take effect.
 
-The full extent of these options is described in the Anathema installation guide available on the project page.
+The full extent of these options is described in the Anathema installation guide
+available on the project page.
 
 ===------------------------------------------------------------------------------===
 		VI - Bugs
@@ -97,8 +99,8 @@ Thanks for helping us improve!
 
 Known Issues:
 ---------------------
--Outcaste DB with the Breeding Background pay more than they should if Breeding is not the first item
-on the list. 
+-Outcaste DB with the Breeding Background pay more than they should if Breeding is not
+the first item on the list. 
 
 -The "Merits and Flaws" tab changes size when items are selected.
 

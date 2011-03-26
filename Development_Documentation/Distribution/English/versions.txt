@@ -12,8 +12,9 @@ http://anathema.sf.net
 -- Features --
 * [2E] Added Abyssal characters to Anathema.
 * [2E] Added Lunar characters to Anathema.
+* [2E] Added Sidereal characters to Anathema.
 * [2E] Added filter code to allow users to adjust what charms are displayed.
-* [2E] Ink Monkeys charms up through 
+* [2E] Ink Monkeys charms up through Ink Monkeys 47
 
 ===------------------------------------------------------------------------------===
 			Release 1.5.1 "Lookshy"
