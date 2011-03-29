@@ -76,7 +76,7 @@
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.LunarBloodShapingTechinque" exalt="Lunar" group="Human">
+     <charm id="Lunar.LunarBloodShapingTechnique" exalt="Lunar" group="Human">
           <prerequisite>
                <trait id="Charisma" value="4" />
                <essence value="3" />
