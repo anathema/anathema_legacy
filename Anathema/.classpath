@@ -49,5 +49,8 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Book_UnderTheRose"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Box_DotFA"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Namegenerator"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Godblooded"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Spirit"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Ghost"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

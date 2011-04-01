@@ -93,7 +93,7 @@
           <prerequisite>
                <trait id="Charisma" value="5" />
                <essence value="5" />
-               <charmReference id="Lunar.LunarBloodShapingTechinque" />
+               <charmReference id="Lunar.LunarBloodShapingTechnique" />
           </prerequisite>
           <cost />
           <duration duration="Instant"/>

@@ -6,7 +6,9 @@ public interface IFavorableTraitCreationPoints
 
   public int getFavorableTraitCount();
   
-  public int getExtraDotCount();
+  public int getExtraFavoredDotCount();
+  
+  public int getExtraGenericDotCount();
 
   public int getDefaultDotCount();
 }

@@ -46,4 +46,9 @@ public class DummyUnsupportedTemplate extends AbstractUnsupportedExaltTemplate {
   public IMagicTemplate getMagicTemplate() {
     throw new NotYetImplementedException();
   }
+  
+  public String[] getBaseHealthProviders()
+  {
+	  return new String[0];
+  }
 }

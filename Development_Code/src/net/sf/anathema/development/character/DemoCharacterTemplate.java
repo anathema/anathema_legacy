@@ -117,4 +117,9 @@ public class DemoCharacterTemplate implements ICharacterTemplate {
   {
 	  return false;
   }
+  
+  public String[] getBaseHealthProviders()
+  {
+	  return new String[0];
+  }
 }

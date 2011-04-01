@@ -27,6 +27,15 @@ public enum MagicalMaterial implements IIdentificate {
       public void visitMortal(ICharacterType visitedType) {
         // nothing to do
       }
+      
+      public void visitSpirit(ICharacterType visitedType) {
+          // nothing to do
+        }
+      
+      public void visitGhost(ICharacterType visitedType)
+      {
+    	  // nothing to do
+      }
 
       public void visitLunar(ICharacterType type) {
         material[0] = Moonsilver;

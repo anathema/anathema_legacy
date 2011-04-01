@@ -17,6 +17,8 @@ public class MartialArtsCharmTree extends CharmTree {
 
   @Override
   public boolean isLearnable(ICharm charm) {
+	if (charm.getId().toString().equals("Lunar.PredatorDistractionMethod"))
+		charm = charm;
     return MartialArtsUtilities.getLevel(charm).compareTo(standardLevel) <= 1;
   }
 }

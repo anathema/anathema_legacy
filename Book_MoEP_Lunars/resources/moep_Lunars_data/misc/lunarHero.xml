@@ -35,6 +35,7 @@
           </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive" />
+          <charmAttribute attribute="MartialArts"/>
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />

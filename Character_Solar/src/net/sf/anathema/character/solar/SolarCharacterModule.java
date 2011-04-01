@@ -1,5 +1,10 @@
 package net.sf.anathema.character.solar;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
+import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
@@ -8,11 +13,13 @@ import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
 import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
 import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -31,6 +38,7 @@ import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawViewFactory;
+import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
@@ -38,6 +46,7 @@ import net.sf.anathema.lib.util.Identificate;
 public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
+  private static final String BACKGROUND_ID_INHERITANCE = "Inheritance"; //$NON-NLS-1$
 
   @SuppressWarnings("unused")
   private static final TemplateType solarTemplateType = new TemplateType(CharacterType.SOLAR);
@@ -45,6 +54,9 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   @SuppressWarnings("unused")
   private static final TemplateType solarRevisedTemplateType = new TemplateType(CharacterType.SOLAR, new Identificate(
       "RevisedSolarSubtype")); //$NON-NLS-1$
+  
+  private static final TemplateType halfCasteType = new TemplateType(CharacterType.SOLAR, new Identificate(
+  	"HalfCasteSolar")); //$NON-NLS-1$
   
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -78,9 +90,11 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(
         SolarVirtueFlawTemplate.ID,
         new SolarVirtueFlawParser());
+    Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
+    templateMap.put(halfCasteType, new ICasteType[] { });
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.SOLAR,
-        new CasteCollection(SolarCaste.values()));
+        new CasteCollection(SolarCaste.values(), null, templateMap));
   }
 
   @Override
@@ -100,6 +114,12 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
     registerParsedTemplate(characterGenerics, "template/Solar2ndRevised.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/Solar2ndDreams.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/Solar2ndDreamsRevised.template"); //$NON-NLS-1$
+  }
+  
+  @Override
+  public void addBackgroundTemplates(ICharacterGenerics generics) {
+      IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
+      backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_INHERITANCE, new ITemplateType[] { halfCasteType }));
   }
 
   @Override

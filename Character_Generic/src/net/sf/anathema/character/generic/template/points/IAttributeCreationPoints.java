@@ -15,4 +15,6 @@ public interface IAttributeCreationPoints extends ICloneable<IAttributeCreationP
   public int getCount(AttributeGroupPriority priority);
 
   public int[] getCounts();
+  
+  public void informTraits(Object traits);
 }

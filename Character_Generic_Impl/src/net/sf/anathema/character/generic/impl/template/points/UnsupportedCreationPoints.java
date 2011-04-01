@@ -41,4 +41,9 @@ public class UnsupportedCreationPoints implements ICreationPoints {
   public int getUniqueRequiredCreationCharmCount() {
 	    throw new UnsupportedOperationException("Not supported."); //$NON-NLS-1$
 	  }
+  
+  public void informTraits(Object traits)
+  {
+	  throw new UnsupportedOperationException("Not supported."); //$NON-NLS-1$
+  }
 }

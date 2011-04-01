@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
+import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
@@ -45,9 +46,17 @@ public class PdfEssenceEncoder extends AbstractPdfEncoder implements IPdfContent
     Position personalPosition = new Position(bounds.x, essencePosition.y - poolLineHeight);
     String personalLabel = resources.getString("Sheet.Essence.PersonalPool"); //$NON-NLS-1$
     encodePool(directContent, personalLabel, character.getPersonalPool(), personalPosition, bounds.width);
-    Position peripheralPosition = new Position(bounds.x, essencePosition.y - 2 * poolLineHeight);
-    String peripheralLabel = resources.getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
-    encodePool(directContent, peripheralLabel, character.getPeripheralPool(), peripheralPosition, bounds.width);
+    
+    try
+    {
+    	Position peripheralPosition = new Position(bounds.x, essencePosition.y - 2 * poolLineHeight);
+    	String peripheralLabel = resources.getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
+    	encodePool(directContent, peripheralLabel, character.getPeripheralPool(), peripheralPosition, bounds.width);
+    }
+    catch (ContractFailedException e)
+    {
+    	
+    }
   }
 
   private void encodePool(
