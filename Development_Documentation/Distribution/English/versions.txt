@@ -6,15 +6,17 @@ Exalted (C) 2001-2010 by White Wolf Publishing, Inc.
 
 http://anathema.sf.net
 ===------------------------------------------------------------------------------===
-			Release 2.0.0 "Stygia"
+			Release 2.0.0 "Calibration"
 ===------------------------------------------------------------------------------===
 
 -- Features --
 * [2E] Added Abyssal characters to Anathema.
 * [2E] Added Lunar characters to Anathema.
 * [2E] Added Sidereal characters to Anathema.
+* [2E] Consolidated the First Age Solars templates.
 * [2E] Added filter code to allow users to adjust what charms are displayed.
-* [2E] Ink Monkeys charms up through Ink Monkeys 47
+* [2E] Added and updated Ink Monkeys charms up through Ink Monkeys 48.
+* [2E] Assorted bugs and data-entry errors fixed.
 
 ===------------------------------------------------------------------------------===
 			Release 1.5.1 "Lookshy"

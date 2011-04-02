@@ -1,5 +1,5 @@
 ===------------------------------------------------------------------------------===
-	    ANATHEMA v2.0.0 "STYGIA"
+	    ANATHEMA v2.0.0 "CALIBRATION"
 ===------------------------------------------------------------------------------===
 
 Anathema Read Me
@@ -50,7 +50,9 @@ Guides covering installation and general use are available from the project page
 
 Run the program by typing "java -jar anathema.jar".
 Windows users will want to use the executable provided, same goes for Linux and the 
-shell script. Automatic desktop integration on Mac OS X is handled by the .dmg download.
+shell script. Automatic desktop integration on Mac OS X is handled by the .dmg
+download; if no .dmg is available, Mac users should take the application out of the
+Mac .zip file and drag it to the Applications folder.
 
 Linux users should make sure that either r/w-rights are granted on the Anathema directory or
 that a proper directory is specified at startup, using the '-Drepository' parameter, e.g.
@@ -68,7 +70,7 @@ You can always get the most up to date version at "http//java.sun.com".
 ===------------------------------------------------------------------------------===
 
 + Generate and maintain all 5 core exalt types (1E)
-+ Generate and maintain Solar. Lunar, Abyssal, Sidereal, and Dragon-blooded exalt
++ Generate and maintain Solar. Lunar, Sidereal, Dragon-Blooded, and Abyssal exalt
   types (2E)
 + Generate character descriptions (currently disabled)
 + Print character sheets and descriptions to PDF
