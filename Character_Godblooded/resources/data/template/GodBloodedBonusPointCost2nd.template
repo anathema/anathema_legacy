@@ -1,0 +1,15 @@
+<bonusPointCost uses="DefaultBonusPointCost2nd.template">
+  <advantages>
+    <essence>
+      <fixedCost cost="15" />
+    </essence>
+  </advantages>
+  <charms>
+    <generalCharms>
+      <fixedCost cost="7" />
+    </generalCharms>
+    <favoredCharms>
+      <fixedCost cost="7" />
+    </favoredCharms>
+  </charms>
+</bonusPointCost>

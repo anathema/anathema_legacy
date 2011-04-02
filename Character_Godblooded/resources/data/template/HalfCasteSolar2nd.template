@@ -1,0 +1,29 @@
+<exaltedCharacterTemplate characterType="Solar" subtemplate="HalfCasteSolar">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="template/GodBloodedEssence.template" />
+    <traitCollection uses="template/GodBloodedTraitCollection2nd.template"/>
+    <magicTemplate uses="template/HalfCasteSolarMagic2nd.template"/>
+    <presentation uses="template/SpiritPresentation2nd.template"/>
+    <additionalRules uses="template/GodBloodedAdditionalRules2nd.template"/>
+    <healthTemplate>
+      <toughnessControllingTrait type="Resistance"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="template/GodBloodedBonusPointCost2nd.template" />
+    <creationPoints uses="net.sf.anathema.character.godblooded.template.GodBloodCreationPoints">
+      <attributeDots primary="6" secondary="5" tertiary="3" genericDots="1"/>
+      <abilityDots general="25" favoredPicks="2" />
+      <backgroundDots count="6" />
+      <virtueDots count="5" />
+      <bonusPoints count="21" />
+      <charmPicks favored="0" general="0" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/GodBloodedExperienceCost2nd.template" />
+  </experience>
+</exaltedCharacterTemplate>

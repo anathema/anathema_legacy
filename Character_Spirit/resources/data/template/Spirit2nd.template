@@ -1,0 +1,29 @@
+<exaltedCharacterTemplate characterType="Spirit" subtemplate="default">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="template/SpiritEssence.template" />
+    <traitCollection uses="trait/DefaultTraitCollection.template"/>
+    <magicTemplate uses="template/SpiritMagic2nd.template"/>
+    <presentation uses="template/SpiritPresentation2nd.template"/>
+    <healthTemplate>
+      <usesBaseProvider path="net.sf.anathema.character.spirit.template.SpiritHealthLevelProvider"/>
+      <toughnessControllingTrait type="Resistance"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="template/SpiritBonusPointCost2nd.template" />
+    <creationPoints uses="net.sf.anathema.character.spirit.template.SpiritCreationPoints">
+      <attributeDots uses="net.sf.anathema.character.spirit.template.SpiritAttributeCreationPoints" />
+      <abilityDots uses="net.sf.anathema.character.spirit.template.SpiritAbilityCreationPoints"/>
+      <backgroundDots count="7" />
+      <virtueDots count="5" />
+      <bonusPoints count="15" />
+      <charmPicks favored="0" general="0" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/SpiritExperienceCost2nd.template" />
+  </experience>
+</exaltedCharacterTemplate>
