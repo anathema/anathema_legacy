@@ -19,7 +19,7 @@
 				<limitation type="Essence"/>
 				<minimum value="0"/>
 			</trait>
-      <trait id="MartialArts" startValue="0" lowerableState="Default" zeroLevel="0">
+      <trait id="MartialArts" startValue="1" lowerableState="Default" zeroLevel="0">
 				<limitation type="Essence"/>
 				<minimum value="0"/>
 			</trait>
