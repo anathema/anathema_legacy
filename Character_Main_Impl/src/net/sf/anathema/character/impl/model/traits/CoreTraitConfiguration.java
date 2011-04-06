@@ -11,9 +11,11 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.generic.traits.groups.IdentifiedYoziTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.impl.model.traits.backgrounds.BackgroundArbitrator;
 import net.sf.anathema.character.impl.model.traits.backgrounds.BackgroundConfiguration;
 import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
@@ -22,9 +24,11 @@ import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChecker;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
+import net.sf.anathema.character.infernal.caste.InfernalCaste;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
+import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
@@ -68,6 +72,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addTraits(traitFactory.createTraits(VirtueType.values()));
     addTrait(traitFactory.createTrait(OtherTraitType.Willpower));
     addAttributes(template);
+    addYozis();
     IDefaultTrait willpower = TraitCollectionUtilities.getWillpower(this);
     IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(this);
     if (template.getAdditionalRules().getAdditionalTraitRules().isWillpowerVirtueBased()) {
@@ -100,6 +105,31 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private void addAbilities(ICharacterTemplate template) {
     IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredAbilityIncrementChecker(template, this);
     addFavorableTraits(abilityTraitGroups, incrementChecker);
+  }
+  
+  private void addYozis()
+  {
+	  IIncrementChecker incrementChecker = new GrumpyIncrementChecker();
+	  int size = YoziType.values().length, i = 0;
+	  IIdentifiedCasteTraitTypeGroup[] yoziGroups = new IIdentifiedCasteTraitTypeGroup[size];
+	  for (YoziType yozi : YoziType.values())
+	  {
+		  ICasteType caste = ICasteType.NULL_CASTE_TYPE;
+		  //oh god its so horrible why is this here
+		  //this does not belong here
+		  //modularize it, somehow
+		  switch (yozi)
+		  {
+		  case Malfeas: caste = InfernalCaste.Slayer; break;
+		  case Cecelyne: caste = InfernalCaste.Malefactor; break;
+		  case SheWhoLivesInHerName: caste = InfernalCaste.Defiler; break;
+		  case Adorjan: caste = InfernalCaste.Scourge; break;
+		  case EbonDragon: caste = InfernalCaste.Fiend; break;			  
+		  }
+		  yoziGroups[i++] = new IdentifiedYoziTypeGroup(yozi, caste);
+	  }
+	  addFavorableTraits(yoziGroups, incrementChecker);
+	  
   }
 
   private void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker) {

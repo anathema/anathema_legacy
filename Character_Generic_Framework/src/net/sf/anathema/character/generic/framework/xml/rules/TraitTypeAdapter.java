@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 
 public class TraitTypeAdapter implements ITraitTypeVisitor {
 
@@ -29,6 +30,10 @@ public class TraitTypeAdapter implements ITraitTypeVisitor {
   public void visitWillpower(OtherTraitType type) {
     // Nothing to do
   }
+  
+  public void visitYozi(YoziType type) {
+	    // Nothing to do
+	  }
 
   public void visitBackground(IBackgroundTemplate template) {
     // Nothing to do

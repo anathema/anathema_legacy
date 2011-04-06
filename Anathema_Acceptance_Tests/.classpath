@@ -37,5 +37,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/Plugin/jpf-boot.jar" sourcepath="/JPF/source-boot"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar" sourcepath="/Thirdparty/XML/dom4j-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/Database/db4o-6.0-java5.jar" sourcepath="/Thirdparty/Database/db4o-6.0-src.zip"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Infernal"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

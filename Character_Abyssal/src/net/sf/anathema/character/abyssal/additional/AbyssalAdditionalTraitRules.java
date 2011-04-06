@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.lib.data.Range;
 
 public class AbyssalAdditionalTraitRules extends DefaultAdditionalTraitRules {
@@ -43,6 +44,11 @@ public class AbyssalAdditionalTraitRules extends DefaultAdditionalTraitRules {
 
       public void visitWillpower(OtherTraitType type) {
         allowed[0] = true;
+      }
+      
+      public void visitYozi(YoziType type)
+      {
+    	allowed[0] = true;
       }
 
       public void visitBackground(IBackgroundTemplate template) {

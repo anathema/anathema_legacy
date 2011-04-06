@@ -39,6 +39,11 @@ public enum MagicalMaterial implements IIdentificate {
       public void visitDB(ICharacterType visitedType) {
         material[0] = Jade;
       }
+      
+      public void visitInfernal(ICharacterType visitedType)
+      {
+    	  // nothing to do
+      }
 
       public void visitAbyssal(ICharacterType visitedType) {
         material[0] = Soulsteel;

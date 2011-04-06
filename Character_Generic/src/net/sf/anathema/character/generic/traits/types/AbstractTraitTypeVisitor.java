@@ -24,6 +24,11 @@ public abstract class AbstractTraitTypeVisitor implements ITraitTypeVisitor {
   public void visitWillpower(OtherTraitType type) {
     //Nothing to do
   }
+  
+  public void visitYozi(YoziType type)
+  {
+	//Nothing to do
+  }
 
   public void visitBackground(IBackgroundTemplate template) {
     //Nothing to do

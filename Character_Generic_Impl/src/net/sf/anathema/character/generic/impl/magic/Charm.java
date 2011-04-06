@@ -35,6 +35,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -319,6 +320,11 @@ public class Charm extends Identificate implements ICharm {
 
       public void visitAttributeType(FavoringTraitType visitedType) {
         characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AttributeType;
+      }
+      
+      public void visitYoziType(FavoringTraitType visitedType)
+      {
+    	characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof YoziType;
       }
     });
     if (characterCanFavorMagicOfPrimaryType[0] == false) {

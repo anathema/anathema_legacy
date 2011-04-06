@@ -7,6 +7,8 @@ public interface ICharacterTypeVisitor {
   public void visitMortal(ICharacterType visitedType);
 
   public void visitSidereal(ICharacterType visitedType);
+  
+  public void visitInfernal(ICharacterType visitedType);
 
   public void visitDB(ICharacterType visitedType);
 

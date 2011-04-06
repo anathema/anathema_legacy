@@ -64,6 +64,11 @@ public class Spell extends Identificate implements ISpell {
       public void visitAttributeType(FavoringTraitType visitedType) {
         spellFavoringType[0] = AttributeType.Intelligence;
       }
+      
+      public void visitYoziType(FavoringTraitType visitedType)
+      {
+    	spellFavoringType[0] = AbilityType.Occult;
+      }
     });
     return traitCollection.getFavorableTrait(spellFavoringType[0]).isCasteOrFavored();
   }
