@@ -162,11 +162,16 @@ public class MagicCostCalculator {
       learnCount *= 2;
     }
     for (ICharm mergedCharm : charm.getMergedCharms()) {
-      if (handledMagic.contains(mergedCharm)) {
+      if (handledMagic.contains(mergedCharm) && !isSpecialCharm(charm)) {
         return 0;
       }
     }
     return learnCount;
+  }
+  
+  private boolean isSpecialCharm(ICharm charm)
+  {
+	  return charms.getSpecialCharmConfiguration(charm) != null;
   }
 
   private int handleSpecialCharm(ICharm charm) {
