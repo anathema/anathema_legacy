@@ -79,11 +79,22 @@
           <charmtype type="Simple" />
           <source source="Infernals" />
      </charm>
-     <charm id="Infernal.ViridianLegendExoskeleton" exalt="Infernal" group="Malfeas1">
+     <charm id="Infernal.ViridianLegendExoskeleton2" exalt="Infernal" group="Malfeas1">
           <prerequisite>
                <trait id="Malfeas" value="0" />
-               <essence value="5" />
+               <essence value="2" />
                <charmReference id="Infernal.ScarWritSagaShield"/>
+          </prerequisite>
+          <cost/>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.ViridianLegendExoskeleton4" exalt="Infernal" group="Malfeas1">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="4" />
+               <charmReference id="Infernal.ViridianLegendExoskeleton2"/>
           </prerequisite>
           <cost/>
           <duration duration="Instant" />

@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public enum YoziType implements ITraitType {
 
-  Malfeas, Cecelyne, SheWhoLivesInHerName, Adorjan, EbonDragon;
+  Malfeas, Cecelyne, SheWhoLivesInHerName, Adorjan, EbonDragon, Kimbery;
 
   private YoziType() {
   }

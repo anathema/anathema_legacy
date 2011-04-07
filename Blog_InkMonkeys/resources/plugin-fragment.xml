@@ -11,6 +11,12 @@
           </library>
      </runtime>
      <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="InkMonkeysCharms">
+		<!-- Infernal Charms -->
+		<parameter id="list">
+             <parameter id="type" value="Infernal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/infernal/malfeas.xml" />
+        </parameter>
 		<!-- Abyssal Charms -->
 		<parameter id="list">
              <parameter id="type" value="Abyssal" />
