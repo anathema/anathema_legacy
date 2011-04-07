@@ -1,0 +1,13 @@
+<essence isEssenceUser="true">
+  <personalPool>
+    <essencePart multiplier="1" />
+    <willpowerPart multiplier="2" />
+  </personalPool>
+  <peripheralPool>
+    <essencePart multiplier="4" />
+    <willpowerPart multiplier="2" />
+    <virtuePart>
+      <virtueRanks count="1" multiplier="4" />
+    </virtuePart>
+  </peripheralPool>
+</essence>

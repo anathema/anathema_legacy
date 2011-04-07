@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"charms.dtd">
+<!--
+
+    excellencies.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011 Sean Mattox (sean.mattox@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Infernal Excellencies -->
+     <genericCharm id="Infernal.1stExcellency" exalt="Infernal">
+          <prerequisite>
+               <trait value="0" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" text="per die" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" secondaryStep="2" />
+          </charmtype>
+          <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="Mortal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Infernals" />
+     </genericCharm>
+     <genericCharm id="Infernal.2ndExcellency" exalt="Infernal">
+          <prerequisite>
+               <trait value="0" />
+               <essence value="1" />
+               <genericCharmReference id="Infernal.1stExcellency"/>
+          </prerequisite>
+          <cost>
+               <essence cost="2" text="per success" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" secondaryStep="2" />
+          </charmtype>
+          <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="Mortal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Infernals" />
+     </genericCharm>
+     <genericCharm id="Infernal.MythosExultant" exalt="Infernal">
+          <prerequisite>
+               <trait value="0" />
+               <essence value="3" />
+               <genericCharmReference id="Infernal.1stExcellency"/>
+          </prerequisite>
+          <cost/>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <genericCharmAttribute attribute="Excellency" />
+          <source source="Infernals" />
+     </genericCharm>
+     <genericCharm id="Infernal.InevitabilityTechnique" exalt="Infernal">
+          <prerequisite>
+               <trait value="0" />
+               <essence value="3" />
+               <genericCharmReference id="Infernal.1stExcellency"/>
+          </prerequisite>
+          <cost>
+               <willpower text="(1wp)"/>
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="Shaping" visualize="true"/>
+          <source source="Infernals" />
+     </genericCharm>
+     <genericCharm id="Infernal.EffortlessDominance" exalt="Infernal">
+          <prerequisite>
+               <trait value="0" />
+               <essence value="4" />
+               <genericCharmReference id="Infernal.1stExcellency"/>
+          </prerequisite>
+          <cost/>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <genericCharmAttribute attribute="Excellency" />
+          <source source="Infernals" />
+     </genericCharm>
+     <genericCharm id="Infernal.SoSpeaks" exalt="Infernal">
+          <prerequisite>
+               <trait value="0" />
+               <essence value="4" />
+               <genericCharmReference id="Infernal.1stExcellency"/>
+          </prerequisite>
+          <cost>
+               <essence cost="3"/>
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <source source="Infernals" />
+     </genericCharm>
+</charmlist>

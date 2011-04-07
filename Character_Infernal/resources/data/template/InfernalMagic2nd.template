@@ -1,0 +1,8 @@
+<magicTemplate>
+	<freePicksPredicate defaultResponse="true"/>
+	<favoringTraitType type="YoziType"/>
+	<charmTemplate charmType="Infernal">
+		<martialArts level="Mortal"/> 
+	</charmTemplate>
+	<spellTemplate maximumSorceryCircle="None" maximumNecromancyCircle="None"/>
+</magicTemplate>

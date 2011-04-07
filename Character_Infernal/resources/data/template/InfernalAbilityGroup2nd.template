@@ -1,0 +1,37 @@
+<abilityGroups>
+  <group id="Slayer" casteId="Slayer">
+    <trait type="Archery" />
+    <trait type="MartialArts" />
+    <trait type="Melee" />
+    <trait type="Thrown" />
+    <trait type="War"/>
+  </group>
+  <group id="Malefactor" casteId="Malefactor">
+    <trait type="Integrity" />
+    <trait type="Performance" />
+    <trait type="Presence" />
+    <trait type="Resistance" />
+    <trait type="Survival" />
+  </group>
+  <group id="Defiler" casteId="Defiler">
+    <trait type="Craft" />
+    <trait type="Investigation" />
+    <trait type="Lore" />
+    <trait type="Medicine" />
+    <trait type="Occult" />
+  </group>
+  <group id="Scourge" casteId="Scourge">
+    <trait type="Athletics" />
+    <trait type="Awareness" />
+    <trait type="Dodge" />
+    <trait type="Larceny" />
+    <trait type="Stealth" />
+  </group>
+  <group id="Fiend" casteId="Fiend">
+    <trait type="Bureaucracy" />
+    <trait type="Linguistics" />  
+    <trait type="Ride" />
+    <trait type="Sail" />
+    <trait type="Socialize" />
+  </group> 
+</abilityGroups>

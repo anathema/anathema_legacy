@@ -17,6 +17,21 @@
                <parameter id="path" value="moep_Infernals_data/excellencies.xml" />
           </parameter>
           <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/malfeas/malfeas1.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/malfeas/malfeas2.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/malfeas/malfeas3.xml" />
+          </parameter>
+          <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="moep_Infernals_data/solar/occult.xml" />
