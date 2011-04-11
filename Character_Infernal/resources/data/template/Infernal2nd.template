@@ -6,7 +6,7 @@
     <essence uses="template/InfernalEssence.template" />
     <traitCollection uses="template/InfernalTraitCollection2nd.template"/>
     <magicTemplate uses="template/InfernalMagic2nd.template"/>
-    <presentation uses="template/SolarPresentation.template"/>
+    <presentation uses="template/InfernalPresentation.template"/>
     <healthTemplate>
       <toughnessControllingTrait type="Resistance"/>
     </healthTemplate>

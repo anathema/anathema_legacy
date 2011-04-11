@@ -1,4 +1,4 @@
 <presentation>
-  <color red="167" green="195" blue="220" />
+  <color red="100" green="238" blue="100" />
   <charmPresentation uses="template/InfernalCharmPresentation.template"/>
 </presentation>

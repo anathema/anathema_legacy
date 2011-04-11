@@ -23,94 +23,142 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <charm id="Infernal.ByRageRecast" exalt="Infernal" group="Malfeas1">
+     <charm id="Infernal.ByRageRecast" exalt="Infernal" group="PainReforged">
           <prerequisite>
                <trait id="Malfeas" value="0" />
                <essence value="2" />
                <charmReference id="Infernal.ByPainReforged"/>
           </prerequisite>
           <cost/>
-          <duration duration="Instant" />
-          <charmtype type="Simple" />
-          <source source="Infernals" />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Desecration" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="InkMonkeys" />
      </charm>
-     <charm id="Infernal.DevilTyrantAvatarShintai" exalt="Infernal" group="Malfeas1">
+     <charm id="Infernal.DevilTyrantAvatarShintai" exalt="Infernal" group="PainReforged">
           <prerequisite>
                <trait id="Malfeas" value="0" />
                <essence value="3" />
                <charmReference id="Infernal.ByRageRecast"/>
           </prerequisite>
-          <cost/>
-          <duration duration="Instant" />
+          <cost>  
+               <essence cost="12" />  
+               <willpower cost="1" />  
+          </cost>
+          <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
-          <source source="Infernals" />
+          <charmAttribute attribute="Desecration" visualize="true" />
+          <charmAttribute attribute="Form-type" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="InkMonkeys" />
      </charm>
-     <charm id="Infernal.KneelorBeKnelt" exalt="Infernal" group="Malfeas1">
+     <charm id="Infernal.KneelorBeKnelt" exalt="Infernal" group="PainReforged">
           <prerequisite>
                <trait id="Malfeas" value="0" />
                <essence value="2" />
                <charmReference id="Infernal.ByPainReforged"/>
           </prerequisite>
-          <cost/>
+          <cost>  
+               <essence cost="3" />   
+          </cost>
           <duration duration="Instant" />
-          <charmtype type="Simple" />
-          <source source="Infernals" />
+          <charmtype type="Reflexive" />
+               <special primaryStep="9" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <source source="InkMonkeys" />
      </charm>
-     <charm id="Infernal.TriumphOfTheWill" exalt="Infernal" group="Malfeas1">
+     <charm id="Infernal.TriumphOfTheWill" exalt="Infernal" group="NightmareVigilance">
           <prerequisite>
                <trait id="Malfeas" value="0" />
                <essence value="2" />
                <charmReference id="Infernal.NightmareFugueVigilance"/>
           </prerequisite>
-          <cost/>
+          <cost>  
+               <essence cost="2" />   
+          </cost>
           <duration duration="Instant" />
-          <charmtype type="Simple" />
-          <source source="Infernals" />
+          <charmtype type="Reflexive" />
+               <special primaryStep="1" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="InkMonkeys" />
      </charm>
-     <charm id="Infernal.ScreamsAsPrayersReminders" exalt="Infernal" group="Malfeas2">
+     <charm id="Infernal.ScreamsAsPrayersReminders" exalt="Infernal" group="InsignificantEmbers">
           <prerequisite>
                <trait id="Malfeas" value="0" />
                <essence value="3" />
                <charmReference id="Infernal.MagnanimousWarningGlyph"/>
           </prerequisite>
-          <cost/>
-          <duration duration="Instant" />
-          <charmtype type="Simple" />
-          <source source="Infernals" />
+          <cost>  
+               <essence cost="0" text="or 4m" />   
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Crippling" visualize="true" />
+          <source source="InkMonkeys" />
      </charm>
-     <charm id="Infernal.TheKingStillStands" exalt="Infernal" group="Malfeas1">
+     <charm id="Infernal.TheKingStillStands" exalt="Infernal" group="NightmareVigilance">
           <prerequisite>
                <trait id="Malfeas" value="0" />
                <essence value="3" />
                <charmReference id="Infernal.ByAgonyEmpowered"/>
           </prerequisite>
           <cost/>
-          <duration duration="Instant" />
-          <charmtype type="Simple" />
-          <source source="Infernals" />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Overdrive" visualize="true" />
+          <source source="InkMonkeys" />
      </charm>
-     <charm id="Infernal.RageStokedInfernoSoul" exalt="Infernal" group="Malfeas2">
+     <charm id="Infernal.RageStokedInfernoSoul" exalt="Infernal" group="InsignificantEmbers">
           <prerequisite>
                <trait id="Malfeas" value="0" />
                <essence value="4" />
                <charmReference id="Infernal.GreenSunNimbusFlare"/>
                <charmReference id="Infernal.SunHeartFurnaceSoul"/>
           </prerequisite>
-          <cost/>
-          <duration duration="Instant" />
-          <charmtype type="Simple" />
-          <source source="Infernals" />
+          <cost>  
+               <essence cost="5" />   
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Overdrive" visualize="true" />
+          <source source="InkMonkeys" />
      </charm>
-     <charm id="Infernal.DrivenBeyondDeath" exalt="Infernal" group="Malfeas1">
+     <charm id="Infernal.DrivenBeyondDeath" exalt="Infernal" group="NightmareVigilance">
           <prerequisite>
                <trait id="Malfeas" value="0" />
-               <essence value="4" />
+               <essence value="5" />
                <charmReference id="Infernal.1stExcellency.Malfeas"/>
                <charmReference id="Infernal.TheKingStillStands"/>
           </prerequisite>
-          <cost/>
+          <cost>  
+               <essence cost="-" text="(1m, 1wp)" />   
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm>
+	 <charm id="Infernal.EmberGiftRevocation" exalt="Infernal" group="ColdFire">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="4" />
+               <charmReference id="Infernal.GiftsOfInvisibleFlame"/>
+          </prerequisite>
+          <cost>  
+               <essence cost="10" />  
+               <willpower cost="1" />  
+          </cost>
           <duration duration="Instant" />
           <charmtype type="Simple" />
-          <source source="Infernals" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="InkMonkeys" />
      </charm>
 </charmlist>
