@@ -1,11 +1,13 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
@@ -38,7 +40,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
 	this.charm = charm;
 	this.specialCharm = specialCharm;
 	this.arbitrator = arbitrator;
-    this.trait = new LimitedTrait(new TraitType("SpecialCharm"), SimpleTraitTemplate.createStaticLimitedTemplate( //$NON-NLS-1$
+    this.trait = new LimitedTrait(new TraitType(charm.getId()), SimpleTraitTemplate.createStaticLimitedTemplate( //$NON-NLS-1$
 	        0,
 	        specialCharm.getAbsoluteLearnLimit()), new MultiLearnableIncrementChecker(), 
 	        context.getTraitContext());
@@ -46,6 +48,14 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
       public void valueChanged(int newValue) {
         fireLearnCountChanged(newValue);
       }
+    });
+    context.getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter()
+    {
+		@Override
+		public void traitChanged(ITraitType type)
+		{
+			validateLearnCount();
+		}
     });
   }
   
@@ -57,10 +67,10 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   @Override
   public void learn(boolean experienced) {
     if (experienced && getCurrentLearnCount() == 0) {
-      trait.setExperiencedValue(1);
+      trait.setExperiencedValue(specialCharm.getMinimumLearnCount(context.getTraitCollection()));
     }
     else if (getCreationLearnCount() == 0) {
-      trait.setCreationValue(1);
+      trait.setCreationValue(specialCharm.getMinimumLearnCount(context.getTraitCollection()));
     }
   }
 
@@ -96,25 +106,43 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     trait.setCurrentValue(newValue);
   }
   
+  private void validateLearnCount()
+  {
+	  if (trait.getCurrentValue() == 0)
+		  return;
+	  Range range = getRange();
+	  if (trait.getCurrentValue() < range.getLowerBound())
+	  	setCurrentLearnCount(range.getLowerBound());
+	  if (trait.getCurrentValue() > range.getUpperBound())
+		setCurrentLearnCount(range.getUpperBound());
+  }
+  
+  private Range getRange()
+  {
+	  int mergedDots = getMergedDots();
+	  int minValue = specialCharm.getMinimumLearnCount(context.getTraitCollection()) - mergedDots;
+  	  int maxValue = specialCharm.getMaximumLearnCount(context.getTraitCollection()) - mergedDots;
+      return new Range(minValue, maxValue);
+  }
+  
+  private int getMergedDots()
+  {
+	  int dots = 0;
+	  for (ICharm mergedCharm : charm.getMergedCharms())
+		  dots += mergedCharm == charm ? 0 : config.getSpecialCharmConfiguration(mergedCharm).getCurrentLearnCount();
+	  return dots;
+  }
+  
   private class MultiLearnableIncrementChecker implements IIncrementChecker
   {
-      public boolean isValidIncrement(int increment) {
-    	int mergedDots = getMergedDots();
-        Range allowedRange = new Range(0, specialCharm.getMaximumLearnCount(context.getTraitCollection()) - mergedDots);
-        int incrementedValue = MultiLearnableCharmConfiguration.this.trait.getCurrentValue() + increment;
-        if (incrementedValue == 0) {
-          return true;
-        }
-        boolean learnable = arbitrator.isLearnable(charm);
-        return learnable && allowedRange.contains(incrementedValue);
-      }
-      
-      private int getMergedDots()
+      public boolean isValidIncrement(int increment)
       {
-    	  int dots = 0;
-    	  for (ICharm mergedCharm : charm.getMergedCharms())
-    		  dots += mergedCharm == charm ? 0 : config.getSpecialCharmConfiguration(mergedCharm).getCurrentLearnCount();
-    	  return dots;
+	      int incrementedValue = MultiLearnableCharmConfiguration.this.trait.getCurrentValue() + increment;
+	      if (incrementedValue == 0)
+	         return true;
+	      
+	      boolean learnable = arbitrator.isLearnable(charm);
+	      return learnable && getRange().contains(incrementedValue);
       }
     }
 }

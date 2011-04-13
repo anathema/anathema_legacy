@@ -6,6 +6,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.type.CharacterType;
 
 import net.sf.anathema.character.infernal.caste.InfernalCaste;
@@ -14,6 +16,7 @@ import net.sf.anathema.character.infernal.patron.InfernalPatronParser;
 import net.sf.anathema.character.infernal.patron.InfernalPatronTemplate;
 import net.sf.anathema.character.infernal.patron.InfernalPatronViewFactory;
 import net.sf.anathema.character.infernal.patron.persistence.InfernalPatronPersisterFactory;
+import net.sf.anathema.character.infernal.template.IInfernalSpecialCharms;
 import net.sf.anathema.lib.registry.IRegistry;
 
 public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
@@ -31,7 +34,19 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(
     		InfernalPatronTemplate.ID,
             new InfernalPatronParser());
+    
+    characterGenerics.getCharmProvider().setSpecialCharms(
+            CharacterType.INFERNAL,
+            ExaltedEdition.SecondEdition,
+            new ISpecialCharm[] {
+                    IInfernalSpecialCharms.MALFEAS_EXCELLENCY,
+                    IInfernalSpecialCharms.CECELYNE_EXCELLENCY,
+                    IInfernalSpecialCharms.SWLIHN_EXCELLENCY,
+                    IInfernalSpecialCharms.ADORJAN_EXCELLENCY,
+                    IInfernalSpecialCharms.EBON_DRAGON_EXCELLENCY,
+                    IInfernalSpecialCharms.KIMBERY_EXCELLENCY});
   }
+  
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     registerParsedTemplate(characterGenerics, "template/Infernal2nd.template"); //$NON-NLS-1$
