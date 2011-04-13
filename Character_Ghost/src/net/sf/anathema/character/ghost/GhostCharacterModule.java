@@ -10,8 +10,6 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.ghost.generic.DivineSubordination;
-import net.sf.anathema.character.ghost.generic.InfiniteMastery;
 import net.sf.anathema.character.ghost.reporting.SecondEditionSpiritPartEncoder;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
@@ -38,6 +36,7 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     registerParsedTemplate(characterGenerics, "template/Ghost2nd.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/CommonGhost2nd.template"); //$NON-NLS-1$
   }
 
   @Override

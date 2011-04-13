@@ -64,6 +64,10 @@ public class Spell extends Identificate implements ISpell {
       public void visitAttributeType(FavoringTraitType visitedType) {
         spellFavoringType[0] = AttributeType.Intelligence;
       }
+      
+      public void visitVirtueType(FavoringTraitType visitedType) {
+          // ghosts don't get sorcery?
+        }
     });
     return traitCollection.getFavorableTrait(spellFavoringType[0]).isCasteOrFavored();
   }

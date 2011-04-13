@@ -19,7 +19,7 @@ public class DivineSubordination extends AbstractGenericCharm{
 
   @Override
   protected ExaltedSourceBook getSourceBook() {
-    return ExaltedSourceBook.RollsOfGloriousDivinityOne;
+    return ExaltedSourceBook.GodsAndElementals;
   }
 
   @Override

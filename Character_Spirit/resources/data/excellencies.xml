@@ -21,7 +21,7 @@
 		<genericCharmAttribute attribute="Excellency"/>
 		<charmAttribute attribute="Mortal"/>
 		<charmAttribute attribute="Combo-OK" visualize="true"/>
-		<source source="RollsOfGloriousDivinityOne"/>
+		<source source="GodsAndElementals"/>
 	</genericCharm>
 	<genericCharm id="Spirit.2ndExcellency" exalt="Spirit">
 		<prerequisite>
@@ -43,7 +43,7 @@
 		<genericCharmAttribute attribute="Excellency"/>
 		<charmAttribute attribute="Mortal"/>
 		<charmAttribute attribute="Combo-OK" visualize="true"/>
-		<source source="RollsOfGloriousDivinityOne"/>
+		<source source="GodsAndElementals"/>
 	</genericCharm>
 	<genericCharm id="Spirit.3rdExcellency" exalt="Spirit">
 		<prerequisite>
@@ -60,7 +60,7 @@
 		<genericCharmAttribute attribute="Excellency"/>
 		<charmAttribute attribute="Mortal"/>
 		<charmAttribute attribute="Combo-OK" visualize="true"/>
-		<source source="RollsOfGloriousDivinityOne"/>
+		<source source="GodsAndElementals"/>
 	</genericCharm>
 	<genericCharm id="Spirit.InfiniteMastery" exalt="Spirit">
 		<prerequisite>
@@ -74,7 +74,7 @@
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
 		<charmAttribute attribute="Mortal"/>
-		<source source="RollsOfGloriousDivinityOne"/>
+		<source source="GodsAndElementals"/>
 	</genericCharm>
 	<genericCharm id="Spirit.DivineSubordination" exalt="Spirit">
 		<prerequisite>
@@ -88,6 +88,6 @@
 		<duration duration="Instant"/>
 		<charmtype type="Reflexive"/>
 		<charmAttribute attribute="Mortal"/>
-		<source source="RollsOfGloriousDivinityOne"/>
+		<source source="GodsAndElementals"/>
 	</genericCharm>
 </charmlist>
