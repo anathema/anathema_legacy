@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
@@ -30,6 +31,7 @@ public class CharacterTraitListening {
   public void initListening() {
     initAttributeListening();
     initAbilityListening();
+    initYoziListening();
     initBackgroundListening();
     for (ITrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
       listening.addTraitListening(virtue);
@@ -108,6 +110,20 @@ public class CharacterTraitListening {
 	            listening.fireCharacterChanged();
 	          }
 	        });
+	  }
+  }
+  
+  private void initYoziListening()
+  {
+	  for (YoziType yoziType : YoziType.values())
+	  {
+	      IFavorableTrait yozi = traitConfiguration.getFavorableTrait(yoziType);
+	      listening.addTraitListening(yozi);
+	      yozi.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
+	        public void favorableStateChanged(FavorableState state) {
+	          listening.fireCharacterChanged();
+	        }
+	      });
 	  }
   }
 }

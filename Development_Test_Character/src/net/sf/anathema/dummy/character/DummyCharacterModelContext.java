@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
@@ -76,6 +77,11 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
 
   public ICharacterListening getCharacterListening() {
     return characterListening;
+  }
+  
+  public IPresentationProperties getPresentationProperties()
+  {
+	  return null;
   }
 
   public IBasicCharacterData getBasicCharacterContext() {

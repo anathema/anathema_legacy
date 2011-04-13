@@ -12,19 +12,22 @@ public abstract class AbstractTraitView implements IIntValueView {
 
   public AbstractTraitView(IIntValueDisplayFactory factory, String labelText, int value, int maxValue) {
     this.labelText = labelText;
-    this.valueDisplay = factory.createIntValueDisplay(maxValue, value);
+    this.valueDisplay = maxValue > 0 ? factory.createIntValueDisplay(maxValue, value) : null;
   }
 
   public void setValue(int newValue) {
-    valueDisplay.setValue(newValue);
+	if (valueDisplay != null)
+		valueDisplay.setValue(newValue);
   }
 
   public void addIntValueChangedListener(IIntValueChangedListener listener) {
-    valueDisplay.addIntValueChangedListener(listener);
+	  if (valueDisplay != null)
+		  valueDisplay.addIntValueChangedListener(listener);
   }
 
   public void removeIntValueChangedListener(IIntValueChangedListener listener) {
-    valueDisplay.removeIntValueChangedListener(listener);
+	  if (valueDisplay != null)
+		  valueDisplay.removeIntValueChangedListener(listener);
   }
 
   protected String getLabelText() {

@@ -28,7 +28,7 @@ import net.sf.anathema.character.infernal.caste.InfernalCaste;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
-import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
@@ -109,12 +109,12 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   
   private void addYozis()
   {
-	  IIncrementChecker incrementChecker = new GrumpyIncrementChecker();
+	  IIncrementChecker incrementChecker = new FavoredIncrementChecker(1, YoziType.values(), this);
 	  int size = YoziType.values().length, i = 0;
 	  IIdentifiedCasteTraitTypeGroup[] yoziGroups = new IIdentifiedCasteTraitTypeGroup[size];
 	  for (YoziType yozi : YoziType.values())
 	  {
-		  ICasteType caste = ICasteType.NULL_CASTE_TYPE;
+		  ICasteType caste = InfernalCaste.LateToTheParty;
 		  //oh god its so horrible why is this here
 		  //this does not belong here
 		  //modularize it, somehow
@@ -124,7 +124,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 		  case Cecelyne: caste = InfernalCaste.Malefactor; break;
 		  case SheWhoLivesInHerName: caste = InfernalCaste.Defiler; break;
 		  case Adorjan: caste = InfernalCaste.Scourge; break;
-		  case EbonDragon: caste = InfernalCaste.Fiend; break;			  
+		  case EbonDragon: caste = InfernalCaste.Fiend; break;	  
 		  }
 		  yoziGroups[i++] = new IdentifiedYoziTypeGroup(yozi, caste);
 	  }

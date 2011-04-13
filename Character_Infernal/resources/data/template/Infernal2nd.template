@@ -10,6 +10,9 @@
     <healthTemplate>
       <toughnessControllingTrait type="Resistance"/>
     </healthTemplate>
+    <additionalTemplates>
+    	<template id="InfernalPatron"/>
+    </additionalTemplates>
   </general>
   <creation>
     <bonusPointCosts uses="DefaultBonusPointCost2nd.template" />
