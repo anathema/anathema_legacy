@@ -1,5 +1,6 @@
 package net.sf.anathema.character.infernal.template;
 
+import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -29,6 +30,11 @@ public interface IInfernalSpecialCharms
 		      OtherTraitType.Essence);
 	public static final IMultiLearnableCharm KIMBERY_EXCELLENCY = new InfernalFirstExcellency(
 		      "Infernal.1stExcellency.Kimbery", //$NON-NLS-1$
+		      EssenceTemplate.SYSTEM_ESSENCE_MAX,
+		      OtherTraitType.Essence);
+	
+	public static final IMultiLearnableCharm WINDBORN_STRIDE = new TraitDependentMultiLearnableCharm(
+		      "Infernal.Wind-BornStride", //$NON-NLS-1$
 		      EssenceTemplate.SYSTEM_ESSENCE_MAX,
 		      OtherTraitType.Essence);
 }
