@@ -18,11 +18,16 @@ import net.sf.anathema.lib.registry.IRegistry;
 
 public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
 
+  /*private static final TemplateType baseType = new TemplateType(CharacterType.INFERNAL, new Identificate(
+	  "default")); //$NON-NLS-1$*/
+  
+  //private static final ITemplateType[] baseTemplates = new ITemplateType[] { baseType };
+	
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.INFERNAL,
-        new CasteCollection(InfernalCaste.casteList()));
+        new CasteCollection(InfernalCaste.values()));
     characterGenerics.getAdditionalTemplateParserRegistry().register(
     		InfernalPatronTemplate.ID,
             new InfernalPatronParser());

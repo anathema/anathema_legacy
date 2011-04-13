@@ -60,6 +60,11 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     }
     return abilityTypes;
   }
+  
+  @Override
+  public IGroupedTraitType[] getYoziGroups() {
+    return null;
+  }
 
   public ITemplateType getTemplateType() {
     return type;

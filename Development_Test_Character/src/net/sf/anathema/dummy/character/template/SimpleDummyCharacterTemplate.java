@@ -38,6 +38,11 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   public IGroupedTraitType[] getAttributeGroups() {
     return null;
   }
+  
+  @Override
+  public IGroupedTraitType[] getYoziGroups() {
+    return null;
+  }
 
   public IAdditionalRules getAdditionalRules() {
     return null;

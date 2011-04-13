@@ -44,8 +44,9 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   private GenericCreationPoints creationPoints;
   private GenericEssenceTemplate essenceTemplate;
   private IGroupedTraitType[] abilityGroups;
-  private GenericPresentationTemplate presentationTemplate;
   private IGroupedTraitType[] attributeGroups;
+  private IGroupedTraitType[] yoziGroups;
+  private GenericPresentationTemplate presentationTemplate;
   private ICasteCollection casteCollection = new CasteCollection(new ICasteType[0]);
   private final List<IAdditionalTemplate> additionalTemplates = new ArrayList<IAdditionalTemplate>();
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
@@ -54,6 +55,11 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
 
   public IGroupedTraitType[] getAbilityGroups() {
     return abilityGroups;
+  }
+  
+  @Override
+  public IGroupedTraitType[] getYoziGroups() {
+    return yoziGroups;
   }
 
   public IAdditionalRules getAdditionalRules() {
@@ -121,6 +127,10 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
 
   public void setAbilityGroups(IGroupedTraitType[] abilityGroups) {
     this.abilityGroups = abilityGroups;
+  }
+  
+  public void setYoziGroups(IGroupedTraitType[] yoziGroups) {
+	this.yoziGroups = yoziGroups;
   }
 
   public void setEssenceTemplate(GenericEssenceTemplate essenceTemplate) {

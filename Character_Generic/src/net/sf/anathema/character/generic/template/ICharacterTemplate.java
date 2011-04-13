@@ -16,6 +16,8 @@ public interface ICharacterTemplate extends ICharacterExternalsTemplate {
   public IGroupedTraitType[] getAbilityGroups();
 
   public IGroupedTraitType[] getAttributeGroups();
+  
+  public IGroupedTraitType[] getYoziGroups();
 
   public IAdditionalRules getAdditionalRules();
 

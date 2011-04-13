@@ -3,6 +3,7 @@
     <edition edition="SecondEdition"/>
     <abilityGroups uses="template/InfernalAbilityGroup2nd.template" />
     <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <yoziGroups uses="template/InfernalYoziGroup2nd.template"/>
     <essence uses="template/InfernalEssence.template" />
     <traitCollection uses="template/InfernalTraitCollection2nd.template"/>
     <magicTemplate uses="template/InfernalMagic2nd.template"/>

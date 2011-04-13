@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 
 public abstract class AbstractCharacterTemplate implements ICharacterTemplate {
 
@@ -57,6 +58,17 @@ public abstract class AbstractCharacterTemplate implements ICharacterTemplate {
         new GroupedTraitType(AttributeType.Perception, AttributeGroupType.Mental.getId(), null),
         new GroupedTraitType(AttributeType.Intelligence, AttributeGroupType.Mental.getId(), null),
         new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), null), };
+  }
+  
+  @Override
+  public IGroupedTraitType[] getYoziGroups() {
+	  return new IGroupedTraitType[] {
+		        new GroupedTraitType(YoziType.Malfeas, YoziType.Malfeas.getId(), null),
+		        new GroupedTraitType(YoziType.Cecelyne, YoziType.Cecelyne.getId(), null),
+		        new GroupedTraitType(YoziType.SheWhoLivesInHerName, YoziType.SheWhoLivesInHerName.getId(), null),
+		        new GroupedTraitType(YoziType.Adorjan, YoziType.Adorjan.getId(), null),
+		        new GroupedTraitType(YoziType.EbonDragon, YoziType.EbonDragon.getId(), null),
+		        new GroupedTraitType(YoziType.Kimbery, YoziType.Kimbery.getId(), null) };
   }
   
   public boolean isLegacy()

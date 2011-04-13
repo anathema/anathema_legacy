@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 
 public enum InfernalCaste implements ICasteType {
 
-  Slayer, Malefactor, Defiler, Scourge, Fiend, LateToTheParty;
+  Slayer, Malefactor, Defiler, Scourge, Fiend;
 
   public String getId() {
     return name();
