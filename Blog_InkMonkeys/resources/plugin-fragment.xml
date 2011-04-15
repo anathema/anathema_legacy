@@ -27,6 +27,11 @@
              <parameter id="rules" value="SecondEdition" />
              <parameter id="path" value="inkMonkeys_data/infernal/shewholivesinhername.xml" />
         </parameter>
+		<parameter id="list">
+             <parameter id="type" value="Infernal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="inkMonkeys_data/infernal/adorjan.xml" />
+        </parameter>
 		<!-- Abyssal Charms -->
 		<parameter id="list">
              <parameter id="type" value="Abyssal" />
