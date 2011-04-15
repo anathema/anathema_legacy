@@ -1,6 +1,9 @@
 package net.sf.anathema.character.ghost;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
+import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
 import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
 import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
@@ -10,11 +13,17 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.ghost.passions.GhostPassionsModelFactory;
+import net.sf.anathema.character.ghost.passions.GhostPassionsParser;
+import net.sf.anathema.character.ghost.passions.GhostPassionsTemplate;
+import net.sf.anathema.character.ghost.passions.GhostPassionsViewFactory;
+import net.sf.anathema.character.ghost.passions.persistence.GhostPassionsPersisterFactory;
 import net.sf.anathema.character.ghost.reporting.SecondEditionSpiritPartEncoder;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
@@ -31,6 +40,9 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
 		            new ThirdExcellency(CharacterType.SPIRIT, "4 m", ExaltedSourceBook.SecondEdition), //$NON-NLS-1$
 		            new InfiniteMastery(),
 		            new DivineSubordination()});*/
+	    characterGenerics.getAdditionalTemplateParserRegistry().register(
+	            GhostPassionsTemplate.ID,
+	            new GhostPassionsParser());
   }
 
   @Override
@@ -40,11 +52,21 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    /*CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
-        CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    IPdfPartEncoder secondEditionEncoder = new SecondEditionSpiritPartEncoder(resources, registry, ESSENCE_MAX);
-    registry.setPartEncoder(CharacterType.SPIRIT, ExaltedEdition.SecondEdition, secondEditionEncoder);*/
+  public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) {
+    IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry = characterGenerics.getAdditionalModelFactoryRegistry();
+    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry = characterGenerics.getAdditionalViewFactoryRegistry();
+    IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
+    registerGhostPassions(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
+  }
+  
+  private void registerGhostPassions(
+		  IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
+	      IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry,
+	      IRegistry<String, IAdditionalPersisterFactory> persisterFactory)
+  {
+	  String templateId = GhostPassionsTemplate.ID;
+	  additionalModelFactoryRegistry.register(templateId, new GhostPassionsModelFactory());  
+	  additionalViewFactoryRegistry.register(templateId, new GhostPassionsViewFactory());
+	  persisterFactory.register(templateId, new GhostPassionsPersisterFactory());
   }
 }
