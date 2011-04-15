@@ -54,7 +54,8 @@ public class InfernalPatronView implements IView, IInfernalPatronView {
     return new OverviewCategory(overviewPanel, borderLabel, false);
   }
 
-  public void setOverview(IOverviewCategory overview) {
+  @SuppressWarnings("deprecation")
+public void setOverview(IOverviewCategory overview) {
     overviewPanel.removeAll();
     overviewPanel.add(overview.getComponent());
   }

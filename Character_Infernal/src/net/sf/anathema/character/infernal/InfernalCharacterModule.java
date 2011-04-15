@@ -17,6 +17,11 @@ import net.sf.anathema.character.infernal.patron.InfernalPatronTemplate;
 import net.sf.anathema.character.infernal.patron.InfernalPatronViewFactory;
 import net.sf.anathema.character.infernal.patron.persistence.InfernalPatronPersisterFactory;
 import net.sf.anathema.character.infernal.template.IInfernalSpecialCharms;
+import net.sf.anathema.character.infernal.urge.InfernalUrgeModelFactory;
+import net.sf.anathema.character.infernal.urge.InfernalUrgeParser;
+import net.sf.anathema.character.infernal.urge.InfernalUrgePersisterFactory;
+import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
+import net.sf.anathema.character.infernal.urge.InfernalUrgeViewFactory;
 import net.sf.anathema.lib.registry.IRegistry;
 
 public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
@@ -34,6 +39,9 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(
     		InfernalPatronTemplate.ID,
             new InfernalPatronParser());
+    characterGenerics.getAdditionalTemplateParserRegistry().register(
+    		InfernalUrgeTemplate.ID,
+            new InfernalUrgeParser());
     
     characterGenerics.getCharmProvider().setSpecialCharms(
             CharacterType.INFERNAL,
@@ -59,6 +67,7 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
     IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry = characterGenerics.getAdditionalViewFactoryRegistry();
     IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
     registerInfernalPatron(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
+    registerInfernalUrge(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
     //registerFlawedFate(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
   }
   
@@ -71,6 +80,17 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
 	  additionalModelFactoryRegistry.register(templateId, new InfernalPatronModelFactory());  
 	  additionalViewFactoryRegistry.register(templateId, new InfernalPatronViewFactory());
 	  persisterFactory.register(templateId, new InfernalPatronPersisterFactory());
+  }
+  
+  private void registerInfernalUrge(
+		  IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
+	      IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry,
+	      IRegistry<String, IAdditionalPersisterFactory> persisterFactory)
+  {
+	  String templateId = InfernalUrgeTemplate.ID;
+	  additionalModelFactoryRegistry.register(templateId, new InfernalUrgeModelFactory());  
+	  additionalViewFactoryRegistry.register(templateId, new InfernalUrgeViewFactory());
+	  persisterFactory.register(templateId, new InfernalUrgePersisterFactory());
   }
 
 }

@@ -12,7 +12,8 @@
       <toughnessControllingTrait type="Resistance"/>
     </healthTemplate>
     <additionalTemplates>
-    	<template id="InfernalPatron"/>
+    	<template id="Infernal.Patron.Template"/>
+    	<template id="Infernal.Urge.Template"/>
     </additionalTemplates>
   </general>
   <creation>
