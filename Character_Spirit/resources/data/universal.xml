@@ -3,6 +3,7 @@
 	<!-- Spirit Universal -->
 	<charm id="Spirit.EssencePlethora" exalt="Spirit">
 		<prerequisite>
+			<trait id="Spirit" value="0"/>
 			<essence value="1"/>
 		</prerequisite>
 		<cost/>
@@ -13,6 +14,7 @@
 	</charm>
 	<charm id="Spirit.HurryHome" exalt="Spirit">
 		<prerequisite>
+			<trait id="Spirit" value="0"/>
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
@@ -26,6 +28,7 @@
 	</charm>
 	<charm id="Spirit.Materialize" exalt="Spirit">
 		<prerequisite>
+			<trait id="Spirit" value="0"/>
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
@@ -38,6 +41,7 @@
 	</charm>
 	<charm id="Spirit.Dematerialize" exalt="Spirit">
 		<prerequisite>
+			<trait id="Spirit" value="0"/>
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
@@ -51,6 +55,7 @@
 	</charm>
 	<charm id="Spirit.MeasureTheWind" exalt="Spirit">
 		<prerequisite>
+			<trait id="Spirit" value="0"/>
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
@@ -64,6 +69,7 @@
 	</charm>
 	<charm id="Spirit.PrincipleOfMotion" exalt="Spirit">
 		<prerequisite>
+			<trait id="Spirit" value="0"/>
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
@@ -80,6 +86,7 @@
 	</charm>
 	<charm id="Spirit.ReserveOfWill" exalt="Spirit">
 		<prerequisite>
+			<trait id="Spirit" value="0"/>
 			<essence value="1"/>
 		</prerequisite>
 		<cost/>
