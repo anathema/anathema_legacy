@@ -40,6 +40,7 @@ import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
@@ -182,6 +183,13 @@ public class CharmConfiguration implements ICharmConfiguration {
     		    		  {
     		    		      IMultipleEffectCharmConfiguration mConfig = (IMultipleEffectCharmConfiguration)config;
     		    		      prereqsMet = prereqsMet && mConfig.getEffectById(getSubeffect(subeffectRequirement)).isLearned();
+    		    		  }
+    		    		  if (config instanceof IMultiLearnableCharmConfiguration)
+    		    		  {
+    		    		      IMultiLearnableCharmConfiguration mConfig = (IMultiLearnableCharmConfiguration)config;
+    		    		      String effect = getSubeffect(subeffectRequirement);
+    		    		      int requiredCount = Integer.parseInt(effect.replace("Repurchase", ""));
+    		    		      prereqsMet = mConfig.getCurrentLearnCount() >= requiredCount;
     		    		  }
     		    	  }
     		  if (!prereqsMet)

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.infernal.template;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffectCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -39,6 +40,9 @@ public interface IInfernalSpecialCharms
 		      "Infernal.Wind-BornStride", //$NON-NLS-1$
 		      EssenceTemplate.SYSTEM_ESSENCE_MAX,
 		      OtherTraitType.Essence);
+	public static final IMultiLearnableCharm RUNNING_TO_FOREVER = new StaticMultiLearnableCharm(
+		      "Infernal.RunningtoForever", //$NON-NLS-1$
+		      2);
 	
 	public static final IMultipleEffectCharm INTOLERABLE_BURNING_TRUTHS = new MultipleEffectCharm(
 			"Infernal.IntolerableBurningTruths", new String[] { "MotherBeforeDaughter", "TrustIsNaive", "ExistenceisAgony", "NeverForgive", "HateSpringsEternal" });

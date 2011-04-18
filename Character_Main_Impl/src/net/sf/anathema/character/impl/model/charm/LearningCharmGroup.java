@@ -17,6 +17,7 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
@@ -107,8 +108,8 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   public void learnCharm(ICharm charm, boolean experienced) {
+	learnParents(charm, experienced);
     learnCharmNoParents(charm, experienced);
-    learnParents(charm, experienced);
   }
 
   public void learnCharmNoParents(ICharm charm, boolean experienced) {
@@ -142,6 +143,15 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     			  subeffectHandled = true;
     		      IMultipleEffectCharmConfiguration mConfig = (IMultipleEffectCharmConfiguration)config;
     		      mConfig.getEffectById(getSubeffect(subeffectRequirement)).setLearned(true);
+    		  }
+    		  if (config instanceof IMultiLearnableCharmConfiguration)
+    		  {
+    			  subeffectHandled = true;
+    		      IMultiLearnableCharmConfiguration mConfig = (IMultiLearnableCharmConfiguration)config;
+    		      String effect = getSubeffect(subeffectRequirement);
+    		      int requiredCount = Integer.parseInt(effect.replace("Repurchase", ""));
+    		      if (mConfig.getCurrentLearnCount() < requiredCount)
+    		    	  mConfig.setCurrentLearnCount(requiredCount);
     		  }
     	  }
       }

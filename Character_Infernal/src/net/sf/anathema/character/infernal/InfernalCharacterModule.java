@@ -54,6 +54,7 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
                     IInfernalSpecialCharms.EBON_DRAGON_EXCELLENCY,
                     IInfernalSpecialCharms.KIMBERY_EXCELLENCY,
                     IInfernalSpecialCharms.WINDBORN_STRIDE,
+                    IInfernalSpecialCharms.RUNNING_TO_FOREVER,
                     IInfernalSpecialCharms.INTOLERABLE_BURNING_TRUTHS});
   }
   

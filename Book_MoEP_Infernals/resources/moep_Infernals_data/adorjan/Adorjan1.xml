@@ -344,8 +344,7 @@
                <trait id="Adorjan" value="0" />
                <essence value="3" />	   
                <charmReference id="Infernal.UnimpededPerfectionofExertion"/>	   
-               <charmReference id="Infernal.Wind-BornStride"/>
-			   <!-- Requires 3 purcchases of wind-borne stride-->
+               <charmReference id="Infernal.Wind-BornStride.Subeffects.Repurchase3"/>
           </prerequisite>
            <cost> 
                <essence cost="5" />    
