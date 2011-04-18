@@ -1,7 +1,9 @@
 package net.sf.anathema.character.infernal.template;
 
+import net.sf.anathema.character.generic.impl.magic.charm.special.CharmTier;
 import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -46,6 +48,10 @@ public interface IInfernalSpecialCharms
 	
 	public static final IMultipleEffectCharm INTOLERABLE_BURNING_TRUTHS = new MultipleEffectCharm(
 			"Infernal.IntolerableBurningTruths", new String[] { "MotherBeforeDaughter", "TrustIsNaive", "ExistenceisAgony", "NeverForgive", "HateSpringsEternal" });
+	
+	public static final IMultiLearnableCharm VIRIDIAN_LEGEND_EXOSKELETON = new TieredMultiLearnableCharm(
+		      "Infernal.ViridianLegendExoskeleton", //$NON-NLS-1$
+		      new CharmTier[] { new CharmTier(3), new CharmTier(4) });
 	
 	
 }

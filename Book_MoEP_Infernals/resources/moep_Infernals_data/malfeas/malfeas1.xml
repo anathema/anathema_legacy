@@ -86,7 +86,7 @@
           <charmtype type="Permanent" />
           <source source="Infernals" />
      </charm>
-     <charm id="Infernal.ViridianLegendExoskeleton2" exalt="Infernal" group="PainReforged">
+     <charm id="Infernal.ViridianLegendExoskeleton" exalt="Infernal" group="PainReforged">
           <prerequisite>
                <trait id="Malfeas" value="0" />
                <essence value="3" />
@@ -101,17 +101,6 @@
                <special speed="7" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="Infernals" />
-     </charm>
-     <charm id="Infernal.ViridianLegendExoskeleton4" exalt="Infernal" group="PainReforged">
-          <prerequisite>
-               <trait id="Malfeas" value="0" />
-               <essence value="4" />
-               <charmReference id="Infernal.ViridianLegendExoskeleton2"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Instant" />
-          <charmtype type="Simple" />
           <source source="Infernals" />
      </charm>
      <charm id="Infernal.PatheticDistractionRebuke" exalt="Infernal" group="PainReforged">

@@ -75,7 +75,7 @@
           <prerequisite>
                <trait id="Malfeas" value="0" />
                <essence value="5" />
-               <charmReference id="Infernal.ViridianLegendExoskeleton4"/>
+               <charmReference id="Infernal.ViridianLegendExoskeleton.Subeffect.Repurchase2"/>
                <charmReference id="Infernal.GiftsOfInvisibleFlame"/>
           </prerequisite>
           <cost>  
