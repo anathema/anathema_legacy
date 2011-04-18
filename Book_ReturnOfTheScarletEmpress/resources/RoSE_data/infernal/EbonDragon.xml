@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    EbonDragon.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Sean C. Mattox (sean.mattox@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms"> 	 
+	 <charm id="Infernal.HollowHeartTranscendence" exalt="Infernal" group="Witness">          
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="4" />	 
+			   <charmReference id="Infernal.WitnesstoDarkness"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="ReturnEmpress" />
+     </charm>    
+	 <charm id="Infernal.NoonasNightEvocation" exalt="Infernal" group="Seeing">          
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.SeeingisBlindness"/>
+          </prerequisite>
+           <cost>
+               <essence cost="5" />     		   
+		   </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="ReturnEmpress" />
+     </charm>    
+	 <charm id="Infernal.ExiledbyWickedHate" exalt="Infernal" group="Life">          
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="4" />	 
+			   <charmReference id="Infernal.Life-DenyingHate"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="ReturnEmpress" />
+     </charm>    
+	 <charm id="Infernal.MereWoundsMocked" exalt="Infernal" group="Seeing">          
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="4" />	 
+			   <charmReference id="Infernal.DamningPetulanceTechnique"/>
+          </prerequisite>
+           <cost >
+		   <essence cost="-" text="(+3m, 1wp)" />		  
+		   </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="ReturnEmpress" />
+     </charm>      
+	 <charm id="Infernal.EgoShellAscendancy" exalt="Infernal" group="Nemesis">          
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	 
+			   <charmReference id="Infernal.NesmesisSelfImaginedAnew"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="ReturnEmpress" />
+     </charm>     
+	 <charm id="Infernal.EnemyofAll" exalt="Infernal" group="Nemesis">          
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="5" />	 
+			   <charmReference id="Infernal.NesmesisSelfImaginedAnew"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="ReturnEmpress" />
+     </charm>    
+	 <charm id="Infernal.WretchedVileLies" exalt="Infernal" group="Nemesis">          
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.SoulCrackExploitation"/>
+          </prerequisite>
+           <cost>
+               <essence cost="10" />   
+               <essence cost="1" />     		   
+		   </cost>
+          <duration  duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <source source="ReturnEmpress" />
+     </charm>  	   
+	 <charm id="Infernal.TalentTheftInternalization" exalt="Infernal" group="Nemesis">          
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="5" />	 
+			   <charmReference id="Infernal.PuissanceMimicryIntuition"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="ReturnEmpress" />
+     </charm>  	   
+	 <charm id="Infernal.All-ShadeMockery" exalt="Infernal" group="Nemesis">          
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="7" />	 
+			   <charmReference id="Infernal.PuissanceMimicryIntuition3"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="ReturnEmpress" />
+     </charm>  	   
+	 <charm id="Infernal.ShadowSlaveExtraction" exalt="Infernal" group="Nemesis">          
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="6" />	 
+			   <charmReference id="Infernal.BlackMirrorShintai"/>
+          </prerequisite>
+           <cost>
+               <essence cost="-" text="(20m, 1wp)" />    		   
+		   </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="ReturnEmpress" />
+     </charm>     
+	 <charm id="Infernal.TenebrousApotheosisShintai" exalt="Infernal" group="Loom">          
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="8" />	
+			   <charmReference id="Infernal.MereWoundsMocked"/>	
+			   <charmReference id="Infernal.ExiledbyWickedHate"/>	
+			   <charmReference id="Infernal.BlackMirrorShintai"/>	
+			   <charmReference id="Infernal.BloodlessMurkEvasion"/>
+          </prerequisite>
+           <cost>
+               <essence cost="35" />   
+               <essence cost="1" />     		   
+		   </cost>
+          <duration  amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Blasphemy" visualize="true" />
+          <charmAttribute attribute="Form-type" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ReturnEmpress" />
+     </charm>  	 	   
+	 <charm id="Infernal.DragonWhoSwallowedtheSun" exalt="Infernal" group="Loom">          
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="8" />	 
+			   <charmReference id="Infernal.TenebrousApotheosisShintai"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="ReturnEmpress" />
+     </charm>  	
+</charmlist>

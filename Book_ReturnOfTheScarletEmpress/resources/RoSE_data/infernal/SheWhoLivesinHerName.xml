@@ -4,7 +4,7 @@
 "../charms.dtd">
 <!--
 
-    malfeas1.xml - XML charm data for Anathema Plug-ins.
+    SheWhoLivesinHerName.xml - XML charm data for Anathema Plug-ins.
     Copyright (C) 2011  Sean C. Mattox (sean.mattox@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
@@ -22,16 +22,21 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 -->
-<charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <charm id="Infernal.ByPainReforgedqqq" exalt="Infernal" group="Malfeas1">
+<charmlist xmlns="http://anathema.sourceforge.net/charms"> 	 
+	 <charm id="Infernal.UnmarredFormTechnique" exalt="Infernal" group="Ego">          
           <prerequisite>
-               <trait id="Malfeas" value="0" />
-               <essence value="2" />
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="6" />	 
+               <charmReference id="Infernal.Ego-InfusedPatternPrimacy3"/>			 
+               <charmReference id="Infernal.WholenessRightlyAssumedCrippling"/>			 
+               <charmReference id="Infernal.WholenessRightlyAssumedSickness"/>			 
+               <charmReference id="Infernal.WholenessRightlyAssumedPoison"/>			 
+               <charmReference id="Infernal.WholenessRightlyAssumedBashing"/>			 
+               <charmReference id="Infernal.WholenessRightlyAssumedLethal"/>
           </prerequisite>
-          <cost/>
-          <duration duration="Instant" />
-          <charmtype type="Simple" />
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
           <source source="ReturnEmpress" />
-     </charm>
-     
+     </charm>    	 
 </charmlist>
