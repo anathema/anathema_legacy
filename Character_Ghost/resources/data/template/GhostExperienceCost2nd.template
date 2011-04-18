@@ -1,0 +1,37 @@
+<experiencePointCost uses="experience/DefaultExperienceCost.template">
+  <attributes>
+    <generalCosts>
+      <currentRating multiplier="8" />
+    </generalCosts>
+    <favoredCosts>
+      <currentRating multiplier="8" />
+    </favoredCosts>
+  </attributes>
+  <abilities>
+    <generalCosts>
+      <currentRating multiplier="4" initialCosts="12"/>
+    </generalCosts>
+    <favoredCosts>
+      <currentRating multiplier="4" summand="-1" initialCosts="12"/>
+    </favoredCosts>
+    <specialties>
+      <fixedCost cost="3" />
+    </specialties>
+  </abilities>
+  <advantages>
+    <willpower>
+      <currentRating multiplier="5" />
+    </willpower>
+    <virtues>
+      <currentRating multiplier="6" />
+    </virtues>
+    <essence>
+      <currentRating multiplier="12" />
+    </essence>
+  </advantages>
+  <magic>
+    <charms favored="14" general="14">
+    	<highLevelMartialArts favored="14" general="14"/>
+    </charms>
+  </magic>
+</experiencePointCost>
