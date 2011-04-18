@@ -2,6 +2,7 @@ package net.sf.anathema.dummy.character.magic;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -19,6 +20,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummyCharmData implements ICharmData {
   private final Set<ICharm> parents = new HashSet<ICharm>();
@@ -38,6 +40,10 @@ public class DummyCharmData implements ICharmData {
   public IGenericTrait getEssence() {
     return new ValuedTraitType(null, 1);
   }
+  
+  public List<String> getParentSubeffects() {
+	    throw new NotYetImplementedException();
+	  }
 
   public IGenericTrait[] getPrerequisites() {
     return new IGenericTrait[0];

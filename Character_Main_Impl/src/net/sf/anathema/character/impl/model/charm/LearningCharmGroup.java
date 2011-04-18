@@ -12,9 +12,12 @@ import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 
@@ -26,12 +29,23 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   private final IExtendedCharmLearnableArbitrator learnArbitrator;
   private final ICharmLearnStrategy learnStrategy;
   private final ILearningCharmGroupContainer charmGroupContainer;
+  private final ICharmConfiguration charmConfig;
+  
+  public LearningCharmGroup(
+	      ICharmLearnStrategy learnStrategy,
+	      ICharmGroup simpleCharmGroup,
+	      IExtendedCharmLearnableArbitrator arbitrator,
+	      ILearningCharmGroupContainer charmGroupContainer)
+  {
+	  this(learnStrategy, simpleCharmGroup, arbitrator, charmGroupContainer, null);
+  }
 
   public LearningCharmGroup(
       ICharmLearnStrategy learnStrategy,
       ICharmGroup simpleCharmGroup,
       IExtendedCharmLearnableArbitrator arbitrator,
-      ILearningCharmGroupContainer charmGroupContainer) {
+      ILearningCharmGroupContainer charmGroupContainer,
+      ICharmConfiguration charmConfig) {
     super(
         simpleCharmGroup.getCharacterType(),
         simpleCharmGroup.getId(),
@@ -40,6 +54,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     this.learnStrategy = learnStrategy;
     this.learnArbitrator = arbitrator;
     this.charmGroupContainer = charmGroupContainer;
+    this.charmConfig = charmConfig;
   }
 
   public void toggleLearned(ICharm charm) {
@@ -116,10 +131,34 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   private void learnParents(ICharm charm, boolean experienced) {
     for (ICharm parent : charm.getLearnPrerequisitesCharms(learnArbitrator)) {
       ILearningCharmGroup parentGroup = charmGroupContainer.getLearningCharmGroup(parent);
-      if (!parentGroup.isLearned(parent)) {
+      boolean subeffectHandled = false;
+      for (String subeffectRequirement : charm.getParentSubeffects())
+      {
+    	  if (getSubeffectParent(subeffectRequirement).equals(parent.getId()))
+    	  {
+    		  ISpecialCharmConfiguration config = charmConfig.getSpecialCharmConfiguration(getSubeffectParent(subeffectRequirement));
+    		  if (config instanceof IMultipleEffectCharmConfiguration)
+    		  {
+    			  subeffectHandled = true;
+    		      IMultipleEffectCharmConfiguration mConfig = (IMultipleEffectCharmConfiguration)config;
+    		      mConfig.getEffectById(getSubeffect(subeffectRequirement)).setLearned(true);
+    		  }
+    	  }
+      }
+      if (!subeffectHandled && !parentGroup.isLearned(parent)) {
         parentGroup.learnCharm(parent, experienced);
       }
     }
+  }
+  
+  private String getSubeffectParent(String subeffect)
+  {
+	  return subeffect.split("\\.")[0] + "." + subeffect.split("\\.")[1];
+  }
+  
+  private String getSubeffect(String subeffect)
+  {
+	  return subeffect.split("\\.")[3];
   }
 
   private void fireCharmLearned(final ICharm charm) {

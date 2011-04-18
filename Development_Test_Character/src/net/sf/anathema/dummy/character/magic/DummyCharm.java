@@ -29,6 +29,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.collection.ListOrderedSet;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -102,6 +103,10 @@ public class DummyCharm extends Identificate implements ICharm {
   public void setCharacterType(CharacterType type) {
     characterType = type;
   }
+  
+  public List<String> getParentSubeffects() {
+	    throw new NotYetImplementedException();
+	  }
 
   public IComboRestrictions getComboRules() {
     return comboRestrictions;

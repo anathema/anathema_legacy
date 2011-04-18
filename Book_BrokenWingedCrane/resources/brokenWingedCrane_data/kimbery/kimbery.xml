@@ -277,55 +277,7 @@
           <charmtype type="Permanent" />
           <source source="BrokenWingedCrane" />
      </charm>
-	 <charm id="Infernal.IntolerableBurningTruthsMotherBeforeDaughter" exalt="Infernal" group="Intolerable">		 
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="1" />
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />	  
-          <charmAttribute attribute="Compulsion" visualize="true" />
-          <charmAttribute attribute="Stackable" visualize="true" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.IntolerableBurningTruthsTrustIsNaive" exalt="Infernal" group="Intolerable">		 
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="1" />
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />	  
-          <charmAttribute attribute="Compulsion" visualize="true" />
-          <charmAttribute attribute="Stackable" visualize="true" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.IntolerableBurningTruthsExistenceisAgony" exalt="Infernal" group="Intolerable">		 
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="1" />
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />	  
-          <charmAttribute attribute="Compulsion" visualize="true" />
-          <charmAttribute attribute="Stackable" visualize="true" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.IntolerableBurningTruthsNeverForgive" exalt="Infernal" group="Intolerable">		 
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="1" />
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />	  
-          <charmAttribute attribute="Compulsion" visualize="true" />
-          <charmAttribute attribute="Stackable" visualize="true" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.IntolerableBurningTruthsHateSpringsEternal" exalt="Infernal" group="Intolerable">		 
+     <charm id="Infernal.IntolerableBurningTruths" exalt="Infernal" group="Intolerable">		 
           <prerequisite>
                <trait id="Kimbery" value="0" />
                <essence value="1" />
@@ -341,13 +293,7 @@
           <prerequisite>
                <trait id="Kimbery" value="0" />
                <essence value="3" />
-			   <selectiveCharmGroup threshold="1">
-					<charmReference id="Infernal.IntolerableBurningTruthsMotherBeforeDaughter" />
-               		<charmReference id="Infernal.IntolerableBurningTruthsTrustIsNaive" />
-					<charmReference id="Infernal.IntolerableBurningTruthsExistenceisAgony" />
-					<charmReference id="Infernal.IntolerableBurningTruthsNeverForgive" />
-					<charmReference id="Infernal.IntolerableBurningTruthsHateSpringsEternal" />
-				</selectiveCharmGroup>
+               <charmReference id="Infernal.IntolerableBurningTruths" />
                <charmReference id="Infernal.MotherSeaMastery"/>
           </prerequisite>
           <cost/>
@@ -360,13 +306,7 @@
           <prerequisite>
                <trait id="Kimbery" value="0" />
                <essence value="2" />
-               <selectiveCharmGroup threshold="1">
-					<charmReference id="Infernal.IntolerableBurningTruthsMotherBeforeDaughter" />
-               		<charmReference id="Infernal.IntolerableBurningTruthsTrustIsNaive" />
-					<charmReference id="Infernal.IntolerableBurningTruthsExistenceisAgony" />
-					<charmReference id="Infernal.IntolerableBurningTruthsNeverForgive" />
-					<charmReference id="Infernal.IntolerableBurningTruthsHateSpringsEternal" />
-				</selectiveCharmGroup>
+               <charmReference id="Infernal.IntolerableBurningTruths" />
           </prerequisite>
           <cost> 
                <essence cost="1" text="or 3m"/>   
@@ -381,13 +321,7 @@
           <prerequisite>
                <trait id="Kimbery" value="0" />
                <essence value="2" />
-               <selectiveCharmGroup threshold="1">
-					<charmReference id="Infernal.IntolerableBurningTruthsMotherBeforeDaughter" />
-               		<charmReference id="Infernal.IntolerableBurningTruthsTrustIsNaive" />
-					<charmReference id="Infernal.IntolerableBurningTruthsExistenceisAgony" />
-					<charmReference id="Infernal.IntolerableBurningTruthsNeverForgive" />
-					<charmReference id="Infernal.IntolerableBurningTruthsHateSpringsEternal" />
-				</selectiveCharmGroup>
+               <charmReference id="Infernal.IntolerableBurningTruths" />
           </prerequisite>
           <cost> 
                <essence cost="4"/>   
@@ -402,13 +336,7 @@
           <prerequisite>
                <trait id="Kimbery" value="0" />
                <essence value="2" />
-               <selectiveCharmGroup threshold="1">
-					<charmReference id="Infernal.IntolerableBurningTruthsMotherBeforeDaughter" />
-               		<charmReference id="Infernal.IntolerableBurningTruthsTrustIsNaive" />
-					<charmReference id="Infernal.IntolerableBurningTruthsExistenceisAgony" />
-					<charmReference id="Infernal.IntolerableBurningTruthsNeverForgive" />
-					<charmReference id="Infernal.IntolerableBurningTruthsHateSpringsEternal" />
-				</selectiveCharmGroup>
+               <charmReference id="Infernal.IntolerableBurningTruths" />
           </prerequisite>
           <cost> 
                <essence cost="3" />   

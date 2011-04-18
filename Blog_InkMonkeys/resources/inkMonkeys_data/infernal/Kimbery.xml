@@ -47,7 +47,7 @@
                <trait id="Kimbery" value="0" />
                <essence value="3" />
                <charmReference id="Infernal.BitterHeartUnbleeding"/>
-               <charmReference id="Infernal.IntolerableBurningTruthsHateSpringsEternal"/>
+               <charmReference id="Infernal.IntolerableBurningTruths.Subeffect.HateSpringsEternal"/>
           </prerequisite>
           <cost> 
                <essence cost="15" />   
@@ -64,7 +64,7 @@
           <prerequisite>
                <trait id="Kimbery" value="0" />
                <essence value="2" />
-               <charmReference id="Infernal.IntolerableBurningTruthsNeverForgive"/>
+               <charmReference id="Infernal.IntolerableBurningTruths.Subeffect.NeverForgive"/>
           </prerequisite>
           <cost> 
                <essence cost="-" text="(1m)"/>   

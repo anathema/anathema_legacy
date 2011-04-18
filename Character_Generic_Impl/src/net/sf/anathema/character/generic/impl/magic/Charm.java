@@ -54,6 +54,7 @@ public class Charm extends Identificate implements ICharm {
 
   private final List<Set<ICharm>> alternatives = new ArrayList<Set<ICharm>>();
   private final List<Set<ICharm>> merges = new ArrayList<Set<ICharm>>();
+  private final List<String> requiredSubeffects = new ArrayList<String>();
   private final List<ICharm> parentCharms = new ArrayList<ICharm>();
   private final List<Charm> children = new ArrayList<Charm>();
   private final List<SelectiveCharmGroup> selectiveCharmGroups = new ArrayList<SelectiveCharmGroup>();
@@ -205,14 +206,28 @@ public class Charm extends Identificate implements ICharm {
   public Set<ICharm> getParentCharms() {
     return new HashSet<ICharm>(parentCharms);
   }
-
+  
+  private boolean isSubeffectReference(String id)
+  {
+	  return id.split("\\.").length == 4;
+  }
+  
   public void extractParentCharms(Map<String, Charm> charmsById) {
     if (parentCharms.size() > 0) {
       return;
     }
     for (final String parentId : prerequisisteList.getParentIDs()) {
-      Charm parentCharm = charmsById.get(parentId);
-      Ensure.ensureNotNull("Parent Charm " + parentId + " not defined for " + getId(), parentCharm); //$NON-NLS-1$//$NON-NLS-2$
+      String id = parentId;
+      
+      if (isSubeffectReference(parentId))
+      {
+    	  String[] split = parentId.split("\\.");
+    	  id = split[0] + "." + split[1];
+    	  requiredSubeffects.add(parentId);
+      }
+      
+      Charm parentCharm = charmsById.get(id);
+      Ensure.ensureNotNull("Parent Charm " + id + " not defined for " + getId(), parentCharm); //$NON-NLS-1$//$NON-NLS-2$
       parentCharms.add(parentCharm);
       parentCharm.addChild(this);
     }
@@ -224,6 +239,11 @@ public class Charm extends Identificate implements ICharm {
   public void addChild(Charm child) {
     children.add(child);
   }
+  
+  public List<String> getParentSubeffects()
+  {
+	  return requiredSubeffects;
+  }
 
   public Set<ICharm> getRenderingPrerequisiteCharms() {
     Set<ICharm> prerequisiteCharms = new HashSet<ICharm>();
@@ -231,6 +251,7 @@ public class Charm extends Identificate implements ICharm {
     for (SelectiveCharmGroup charmGroup : selectiveCharmGroups) {
       prerequisiteCharms.addAll(Arrays.asList(charmGroup.getAllGroupCharms()));
     }
+    		
     return prerequisiteCharms;
   }
 
