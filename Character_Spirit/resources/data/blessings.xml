@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <charmlist>
 	<!-- Spirit Blessings -->
-	<charm id="Spirit.Benefaction" exalt="Spirit">
+	<charm id="Spirit.Benefaction" exalt="Spirit" group="Blessings">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
-		   <essence cost="5">
+		   <essence cost="5"/>
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple"/>
@@ -17,9 +16,8 @@
 		<charmAttribute attribute="Touch" visualize="true"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.ElementDragonsEmbrace" exalt="Spirit">
+	<charm id="Spirit.ElementDragonsEmbrace" exalt="Spirit" group="Blessings">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
@@ -38,9 +36,8 @@
 		<charmAttribute attribute="Touch" visualize="true"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.Endowment" exalt="Spirit">
+	<charm id="Spirit.Endowment" exalt="Spirit" group="Blessings">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
@@ -55,9 +52,8 @@
 		<charmAttribute attribute="Touch" visualize="true"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.EyeOfInspiration" exalt="Spirit">
+	<charm id="Spirit.EyeOfInspiration" exalt="Spirit" group="Blessings">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
@@ -71,9 +67,8 @@
 		<charmAttribute attribute="Mortal"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.SignetOfAuthority" exalt="Spirit">
+	<charm id="Spirit.SignetOfAuthority" exalt="Spirit" group="Blessings">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
@@ -87,9 +82,8 @@
 		<charmAttribute attribute="Mortal"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.TouchOfDivinity" exalt="Spirit">
+	<charm id="Spirit.TouchOfDivinity" exalt="Spirit" group="Blessings">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
@@ -104,9 +98,8 @@
 		<charmAttribute attribute="Mortal"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.TouchOfEternity" exalt="Spirit">
+	<charm id="Spirit.TouchOfEternity" exalt="Spirit" group="Blessings">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
@@ -120,9 +113,8 @@
 		<charmAttribute attribute="Mortal"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.TouchOfGrace" exalt="Spirit">
+	<charm id="Spirit.TouchOfGrace" exalt="Spirit" group="Blessings">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="4"/>
 		</prerequisite>
 		<cost>

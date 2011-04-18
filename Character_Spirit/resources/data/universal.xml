@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <charmlist>
 	<!-- Spirit Universal -->
-	<charm id="Spirit.EssencePlethora" exalt="Spirit">
+	<charm id="Spirit.EssencePlethora" exalt="Spirit" group="Universal">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="1"/>
 		</prerequisite>
 		<cost/>
@@ -12,9 +11,8 @@
 		<charmAttribute attribute="Mortal"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.HurryHome" exalt="Spirit">
+	<charm id="Spirit.HurryHome" exalt="Spirit" group="Universal">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
@@ -26,9 +24,8 @@
 		<charmAttribute attribute="Obvious" visualize="true"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.Materialize" exalt="Spirit">
+	<charm id="Spirit.Materialize" exalt="Spirit" group="Universal">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
@@ -39,9 +36,8 @@
 		<charmAttribute attribute="Obvious" visualize="true"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.Dematerialize" exalt="Spirit">
+	<charm id="Spirit.Dematerialize" exalt="Spirit" group="Universal">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
@@ -53,9 +49,8 @@
 		<charmAttribute attribute="Mortal"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.MeasureTheWind" exalt="Spirit">
+	<charm id="Spirit.MeasureTheWind" exalt="Spirit" group="Universal">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="1"/>
 		</prerequisite>
 		<cost>
@@ -67,9 +62,8 @@
 		<charmAttribute attribute="Mortal"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.PrincipleOfMotion" exalt="Spirit">
+	<charm id="Spirit.PrincipleOfMotion" exalt="Spirit" group="Universal">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="3"/>
 		</prerequisite>
 		<cost>
@@ -84,9 +78,8 @@
 		<charmAttribute attribute="Obvious" visualize="true"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.ReserveOfWill" exalt="Spirit">
+	<charm id="Spirit.ReserveOfWill" exalt="Spirit" group="Universal">
 		<prerequisite>
-			<trait id="Spirit" value="0"/>
 			<essence value="1"/>
 		</prerequisite>
 		<cost/>
