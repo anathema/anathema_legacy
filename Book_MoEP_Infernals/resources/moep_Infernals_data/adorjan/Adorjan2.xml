@@ -67,7 +67,7 @@
           <charmAttribute attribute="Emotion" visualize="true" />
           <source source="Infernals" />
      </charm>
-	 <charm id="Infernal.DeadPanoplyoftheSilentWind" exalt="Infernal" group="Sacred">          
+	 <charm id="Infernal.DreadPanoplyoftheSilentWind" exalt="Infernal" group="Sacred">          
           <prerequisite>
                <trait id="Adorjan" value="0" />
                <essence value="2" />	   
@@ -107,7 +107,6 @@
            <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-		  <special primaryStep="2" />
           <source source="Infernals" />
      </charm>
 	 <charm id="Infernal.HatefulWretchedNoise" exalt="Infernal" group="Sacred">          
