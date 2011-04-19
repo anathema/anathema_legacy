@@ -102,8 +102,8 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
     return traitTemplateCollection;
   }
 
-  public ITraitType getToughnessControllingTraitType() {
-    return healthTemplate.getToughnessControllingTrait();
+  public ITraitType[] getToughnessControllingTraitTypes() {
+    return healthTemplate.getToughnessControllingTraits();
   }
 
   public IAdditionalTemplate[] getAdditionalTemplates() {

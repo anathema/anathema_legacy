@@ -6,20 +6,20 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public class GenericHealthTemplate implements IHealthTemplate, ICloneable<GenericHealthTemplate> {
 
-  private ITraitType toughnessTraitType = AbilityType.Endurance;
+  private ITraitType[] toughnessTraitTypes = new ITraitType[] { AbilityType.Endurance };
 
   @Override
   public GenericHealthTemplate clone() {
     GenericHealthTemplate healthTemplate = new GenericHealthTemplate();
-    healthTemplate.setToughnessControllingTraitType(toughnessTraitType);
+    healthTemplate.setToughnessControllingTraitTypes(toughnessTraitTypes);
     return healthTemplate;
   }
 
-  public ITraitType getToughnessControllingTrait() {
-    return toughnessTraitType;
+  public ITraitType[] getToughnessControllingTraits() {
+    return toughnessTraitTypes;
   }
 
-  public void setToughnessControllingTraitType(ITraitType traitType) {
-    this.toughnessTraitType = traitType;
+  public void setToughnessControllingTraitTypes(ITraitType[] traitTypes) {
+    this.toughnessTraitTypes = traitTypes;
   }
 }

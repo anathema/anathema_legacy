@@ -60,6 +60,7 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
                     IInfernalSpecialCharms.SCORPION_TAILED_MIRAGE_TECHNIQUE,
                     IInfernalSpecialCharms.RUNNING_TO_FOREVER,
                     IInfernalSpecialCharms.INTOLERABLE_BURNING_TRUTHS,
+                    IInfernalSpecialCharms.HARDENED_DEVIL_BODY,
                     IInfernalSpecialCharms.VIRIDIAN_LEGEND_EXOSKELETON,
                     IInfernalSpecialCharms.ANALYTIC_MODELING_TECHNIQUE,
                     IInfernalSpecialCharms.UNSHATTERED_TONGUE_PERFECTION,

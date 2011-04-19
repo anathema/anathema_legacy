@@ -10,6 +10,7 @@
     <presentation uses="template/InfernalPresentation.template"/>
     <healthTemplate>
       <toughnessControllingTrait type="Resistance"/>
+      <toughnessControllingTrait type="Stamina"/>
     </healthTemplate>
     <additionalTemplates>
     	<template id="Infernal.Patron.Template"/>

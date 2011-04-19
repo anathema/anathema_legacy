@@ -1,13 +1,21 @@
 package net.sf.anathema.character.infernal.template;
 
+import java.util.LinkedHashMap;
+
+import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.CharmTier;
 import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffectCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.infernal.generic.InfernalFirstExcellency;
 
@@ -67,6 +75,13 @@ public interface IInfernalSpecialCharms
 			"Infernal.IntolerableBurningTruths", new String[] { "MotherBeforeDaughter", "TrustIsNaive", "ExistenceisAgony", "NeverForgive", "HateSpringsEternal" });
 	
 	//Malfeas
+	  public static final IOxBodyTechniqueCharm HARDENED_DEVIL_BODY = new OxBodyTechniqueCharm(
+		      "Infernal.HardenedDevilBody", new ITraitType[] { AttributeType.Stamina, AbilityType.Resistance },
+		      new LinkedHashMap<String, HealthLevelType[]>() {
+		        {
+		          put("Category.Infernal", new HealthLevelType[] { HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.FOUR }); //$NON-NLS-1$
+		        }
+		      });
 	public static final IMultiLearnableCharm VIRIDIAN_LEGEND_EXOSKELETON = new TieredMultiLearnableCharm(
 		      "Infernal.ViridianLegendExoskeleton", //$NON-NLS-1$
 		      new CharmTier[] { new CharmTier(3), new CharmTier(4) });

@@ -94,7 +94,7 @@ public class DemoCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public ITraitType getToughnessControllingTraitType() {
+  public ITraitType[] getToughnessControllingTraitTypes() {
     return null;
   }
 

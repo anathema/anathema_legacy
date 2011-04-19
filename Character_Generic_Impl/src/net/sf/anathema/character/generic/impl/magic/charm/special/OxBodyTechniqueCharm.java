@@ -10,21 +10,28 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public class OxBodyTechniqueCharm implements IOxBodyTechniqueCharm {
 
-  private final ITraitType traitType;
+  private final ITraitType[] traitTypes;
   private final LinkedHashMap<String, HealthLevelType[]> healthLevels;
   private final String charmId;
+  
+  public OxBodyTechniqueCharm(
+	      String charmId,
+	      ITraitType traitType,
+	      LinkedHashMap<String, HealthLevelType[]> healthLevels) {
+	    this (charmId, new ITraitType[] { traitType }, healthLevels);
+	  }
 
   public OxBodyTechniqueCharm(
       String charmId,
-      ITraitType traitType,
+      ITraitType[] traitTypes,
       LinkedHashMap<String, HealthLevelType[]> healthLevels) {
-    this.traitType = traitType;
+    this.traitTypes = traitTypes;
     this.healthLevels = healthLevels;
     this.charmId = charmId;
   }
 
-  public ITraitType getRelevantTrait() {
-    return traitType;
+  public ITraitType[] getRelevantTraits() {
+    return traitTypes;
   }
 
   public Map<String, HealthLevelType[]> getHealthLevels() {

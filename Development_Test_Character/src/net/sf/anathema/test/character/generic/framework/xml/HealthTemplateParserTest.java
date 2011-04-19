@@ -30,13 +30,13 @@ public class HealthTemplateParserTest extends BasicTestCase {
     String xml = "<healthTemplate/>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericHealthTemplate template = parser.parseTemplate(templateElement);
-    assertEquals(AbilityType.Endurance, template.getToughnessControllingTrait());
+    assertEquals(AbilityType.Endurance, template.getToughnessControllingTraits()[0]);
   }
 
   public void testSetToughnessControllingTrait() throws Exception {
     String xml = "<healthTemplate><toughnessControllingTrait type=\"Stamina\"/></healthTemplate>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericHealthTemplate template = parser.parseTemplate(templateElement);
-    assertEquals(AttributeType.Stamina, template.getToughnessControllingTrait());
+    assertEquals(AttributeType.Stamina, template.getToughnessControllingTraits()[0]);
   }
 }

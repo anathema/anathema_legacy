@@ -164,8 +164,8 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     return traitTemplateCollection;
   }
 
-  public ITraitType getToughnessControllingTraitType() {
-    return AbilityType.Endurance;
+  public ITraitType[] getToughnessControllingTraitTypes() {
+    return new ITraitType[] { AbilityType.Endurance };
   }
 
   public IAdditionalTemplate[] getAdditionalTemplates() {

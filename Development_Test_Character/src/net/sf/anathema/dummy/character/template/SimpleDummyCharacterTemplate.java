@@ -83,7 +83,7 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
     return null;
   }
 
-  public ITraitType getToughnessControllingTraitType() {
+  public ITraitType[] getToughnessControllingTraitTypes() {
     return null;
   }
 

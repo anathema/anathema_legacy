@@ -33,7 +33,7 @@ public interface ICharacterTemplate extends ICharacterExternalsTemplate {
 
   public ITraitTemplateCollection getTraitTemplateCollection();
 
-  public ITraitType getToughnessControllingTraitType();
+  public ITraitType[] getToughnessControllingTraitTypes();
 
   public IAdditionalTemplate[] getAdditionalTemplates();
 

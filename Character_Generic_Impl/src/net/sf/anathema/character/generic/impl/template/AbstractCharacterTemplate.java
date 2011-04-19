@@ -35,8 +35,8 @@ public abstract class AbstractCharacterTemplate implements ICharacterTemplate {
 
   protected abstract ICasteType[] getAllCasteTypes();
 
-  public ITraitType getToughnessControllingTraitType() {
-    return AbilityType.Endurance;
+  public ITraitType[] getToughnessControllingTraitTypes() {
+    return new ITraitType[] { AbilityType.Endurance };
   }
 
   public IAdditionalTemplate[] getAdditionalTemplates() {
