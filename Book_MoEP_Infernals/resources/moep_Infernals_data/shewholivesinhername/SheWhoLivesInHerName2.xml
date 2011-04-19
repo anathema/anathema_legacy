@@ -85,28 +85,6 @@
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Infernals" />
      </charm>
-     <charm id="Infernal.ConstructiveConvergenceofPrinciples2" exalt="Infernal" group="MindHand">         
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="4" />		   
-               <charmReference id="Infernal.ConstructiveConvergenceofPrinciples"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
-     <charm id="Infernal.ConstructiveConvergenceofPrinciples3" exalt="Infernal" group="MindHand">         
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="5" />		   
-               <charmReference id="Infernal.ConstructiveConvergenceofPrinciples2"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
 	 <charm id="Infernal.Crystal-FireBarrierTechnique" exalt="Infernal" group="MindHand">  
           <prerequisite>
                <trait id="SheWhoLivesInHerName" value="0" />
@@ -146,42 +124,6 @@
                <trait id="SheWhoLivesInHerName" value="0" />
                <essence value="3" />		   
                <charmReference id="Infernal.Mind-HandManipulation"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Shaping" visualize="true" />
-          <source source="Infernals" />
-     </charm>
-	 <charm id="Infernal.Tool-TranscendingConstructs2" exalt="Infernal" group="MindHand">  
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="4" />		   
-               <charmReference id="Infernal.Tool-TranscendingConstructs"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Shaping" visualize="true" />
-          <source source="Infernals" />
-     </charm>
-	 <charm id="Infernal.Tool-TranscendingConstructs3" exalt="Infernal" group="MindHand">  
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="6" />		   
-               <charmReference id="Infernal.Tool-TranscendingConstructs2"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Shaping" visualize="true" />
-          <source source="Infernals" />
-     </charm>
-	 <charm id="Infernal.Tool-TranscendingConstructs4" exalt="Infernal" group="MindHand">  
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="7" />		   
-               <charmReference id="Infernal.Tool-TranscendingConstructs3"/>
           </prerequisite>
            <cost />
           <duration duration="Permanent" />

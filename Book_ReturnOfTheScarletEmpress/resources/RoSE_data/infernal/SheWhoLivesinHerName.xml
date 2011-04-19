@@ -27,7 +27,7 @@
           <prerequisite>
                <trait id="SheWhoLivesInHerName" value="0" />
                <essence value="6" />	 
-               <charmReference id="Infernal.Ego-InfusedPatternPrimacy3"/>			 
+               <charmReference id="Infernal.Ego-InfusedPatternPrimacy.Subeffects.Repurchase3"/>			 
                <charmReference id="Infernal.WholenessRightlyAssumedCrippling"/>			 
                <charmReference id="Infernal.WholenessRightlyAssumedSickness"/>			 
                <charmReference id="Infernal.WholenessRightlyAssumedPoison"/>			 

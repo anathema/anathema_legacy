@@ -54,9 +54,19 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
                     IInfernalSpecialCharms.EBON_DRAGON_EXCELLENCY,
                     IInfernalSpecialCharms.KIMBERY_EXCELLENCY,
                     IInfernalSpecialCharms.WINDBORN_STRIDE,
+                    IInfernalSpecialCharms.WAYWARD_DIVINITY_OVERSIGHT,
+                    IInfernalSpecialCharms.ANONYMITY_THROUGH_PROPRIETY,
+                    IInfernalSpecialCharms.UNQUESTIONABLE_YOZI_AUTHORITY,
+                    IInfernalSpecialCharms.SCORPION_TAILED_MIRAGE_TECHNIQUE,
                     IInfernalSpecialCharms.RUNNING_TO_FOREVER,
                     IInfernalSpecialCharms.INTOLERABLE_BURNING_TRUTHS,
-                    IInfernalSpecialCharms.VIRIDIAN_LEGEND_EXOSKELETON});
+                    IInfernalSpecialCharms.VIRIDIAN_LEGEND_EXOSKELETON,
+                    IInfernalSpecialCharms.ANALYTIC_MODELING_TECHNIQUE,
+                    IInfernalSpecialCharms.UNSHATTERED_TONGUE_PERFECTION,
+                    IInfernalSpecialCharms.CONSTRUCTIVE_CONVERGANCE_OF_PRINCIPLES,
+                    IInfernalSpecialCharms.ESSENCE_INFUSED_EGO_PRIMACY,
+                    IInfernalSpecialCharms.COSMIC_TRANSCENDENCE,
+                    IInfernalSpecialCharms.TOOL_TRANSCENDING_CONSTRUCTS});
   }
   
   @Override

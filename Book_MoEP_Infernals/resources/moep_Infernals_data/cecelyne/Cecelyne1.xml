@@ -48,28 +48,6 @@
           <charmtype type="Permanent" />
           <source source="Infernals" />
      </charm>	 
-     <charm id="Infernal.WaywardDivinityOversight2" exalt="Infernal" group="HellscryChakra">          
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="4" />		   
-               <charmReference id="Infernal.WaywardDivinityOversight"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>	 
-     <charm id="Infernal.WaywardDivinityOversight3" exalt="Infernal" group="HellscryChakra">          
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="4" />		   
-               <charmReference id="Infernal.WaywardDivinityOversight2"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
      
      <charm id="Infernal.EphemeralAbrasionCurse" exalt="Infernal" group="HellscryChakra">          
           <prerequisite>
@@ -118,73 +96,6 @@
           <charmAttribute attribute="Messianic1" visualize="true" />
           <source source="Infernals" />
      </charm>     
-     <charm id="Infernal.AnonymityThroughPropriety2" exalt="Infernal" group="DemonicPrimacy">     
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="4" />
-               <charmReference id="Infernal.AnonymityThroughPropriety"/>
-          </prerequisite>
-            <cost />
-          <duration duration="Permanent"/>
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>      
-     <charm id="Infernal.AnonymityThroughPropriety3" exalt="Infernal" group="DemonicPrimacy">     
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="5" />
-               <charmReference id="Infernal.AnonymityThroughPropriety2"/>
-          </prerequisite>
-            <cost />
-          <duration duration="Permanent"/>
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>      
-     
-     <charm id="Infernal.AnonymityThroughPropriety4" exalt="Infernal" group="DemonicPrimacy">     
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="7" />
-               <charmReference id="Infernal.AnonymityThroughPropriety3"/>
-          </prerequisite>
-            <cost />
-          <duration duration="Permanent"/>
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>      
-     <charm id="Infernal.AnonymityThroughPropriety5" exalt="Infernal" group="DemonicPrimacy">     
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="8" />
-               <charmReference id="Infernal.AnonymityThroughPropriety4"/>
-          </prerequisite>
-            <cost />
-          <duration duration="Permanent"/>
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>      
-     <charm id="Infernal.AnonymityThroughPropriety6" exalt="Infernal" group="DemonicPrimacy">     
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="9" />
-               <charmReference id="Infernal.AnonymityThroughPropriety5"/>
-          </prerequisite>
-            <cost />
-          <duration duration="Permanent"/>
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>      
-     <charm id="Infernal.AnonymityThroughPropriety7" exalt="Infernal" group="DemonicPrimacy">     
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="10" />
-               <charmReference id="Infernal.AnonymityThroughPropriety6"/>
-          </prerequisite>
-            <cost />
-          <duration duration="Permanent"/>
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>     
      <charm id="Infernal.UnquestionableYoziAuthority" exalt="Infernal" group="DemonicPrimacy">          
           <prerequisite>
                <trait id="Cecelyne" value="0" />
@@ -199,20 +110,6 @@
           <charmAttribute attribute="Compulsion" visualize="true" />
           <source source="Infernals" />
      </charm>   
-     <charm id="Infernal.UnquestionableYoziAuthority2" exalt="Infernal" group="DemonicPrimacy">          
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="4" />	   
-               <charmReference id="Infernal.UnquestionableYoziAuthority"/>
-          </prerequisite>
-            <cost> 
-               <essence cost="5" />    
-          </cost>
-          <duration duration="Permanent"/>
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
-     
      <charm id="Infernal.SubliminationofOrdainedPurpose" exalt="Infernal" group="DemonicPrimacy">          
           <prerequisite>
                <trait id="Cecelyne" value="0" />

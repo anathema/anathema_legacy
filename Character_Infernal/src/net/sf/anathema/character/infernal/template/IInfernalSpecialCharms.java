@@ -38,6 +38,7 @@ public interface IInfernalSpecialCharms
 		      EssenceTemplate.SYSTEM_ESSENCE_MAX,
 		      OtherTraitType.Essence);
 	
+	//Adorjan
 	public static final IMultiLearnableCharm WINDBORN_STRIDE = new TraitDependentMultiLearnableCharm(
 		      "Infernal.Wind-BornStride", //$NON-NLS-1$
 		      EssenceTemplate.SYSTEM_ESSENCE_MAX,
@@ -46,12 +47,48 @@ public interface IInfernalSpecialCharms
 		      "Infernal.RunningtoForever", //$NON-NLS-1$
 		      2);
 	
+	//Cecelyne
+	public static final IMultiLearnableCharm WAYWARD_DIVINITY_OVERSIGHT = new TieredMultiLearnableCharm(
+		      "Infernal.WaywardDivinityOversight", //$NON-NLS-1$
+		      new CharmTier[] { new CharmTier(3), new CharmTier(4), new CharmTier(4) });
+	public static final IMultiLearnableCharm ANONYMITY_THROUGH_PROPRIETY = new TraitDependentMultiLearnableCharm(
+		      "Infernal.AnonymityThroughPropriety", //$NON-NLS-1$
+		      EssenceTemplate.SYSTEM_ESSENCE_MAX - 2,
+		      OtherTraitType.Essence, -2);
+	public static final IMultiLearnableCharm UNQUESTIONABLE_YOZI_AUTHORITY = new TieredMultiLearnableCharm(
+		      "Infernal.UnquestionableYoziAuthority", //$NON-NLS-1$
+		      new CharmTier[] { new CharmTier(3), new CharmTier(4) });
+	public static final IMultiLearnableCharm SCORPION_TAILED_MIRAGE_TECHNIQUE = new StaticMultiLearnableCharm(
+		      "Infernal.Scorpion-TailedMirageTechnique", //$NON-NLS-1$
+		      2);
+	
+	//Kimbery
 	public static final IMultipleEffectCharm INTOLERABLE_BURNING_TRUTHS = new MultipleEffectCharm(
 			"Infernal.IntolerableBurningTruths", new String[] { "MotherBeforeDaughter", "TrustIsNaive", "ExistenceisAgony", "NeverForgive", "HateSpringsEternal" });
 	
+	//Malfeas
 	public static final IMultiLearnableCharm VIRIDIAN_LEGEND_EXOSKELETON = new TieredMultiLearnableCharm(
 		      "Infernal.ViridianLegendExoskeleton", //$NON-NLS-1$
 		      new CharmTier[] { new CharmTier(3), new CharmTier(4) });
+	
+	//She Who Lives In Her Name
+	public static final IMultiLearnableCharm ANALYTIC_MODELING_TECHNIQUE = new StaticMultiLearnableCharm(
+		      "Infernal.AnalyticalModellingIntuition", //$NON-NLS-1$
+		      3);
+	public static final IMultiLearnableCharm UNSHATTERED_TONGUE_PERFECTION = new TieredMultiLearnableCharm(
+		      "Infernal.UnshatteredTonguePerfection", //$NON-NLS-1$
+		      new CharmTier[] { new CharmTier(2), new CharmTier(3) });
+	public static final IMultipleEffectCharm COSMIC_TRANSCENDENCE = new MultipleEffectCharm(
+			"Infernal.CosmicTranscendenceofVirtue", new String[] { "Compassion", "Conviction", "Temperance", "Valor" });
+	public static final IMultiLearnableCharm ESSENCE_INFUSED_EGO_PRIMACY = new TieredMultiLearnableCharm(
+		      "Infernal.Ego-InfusedPatternPrimacy", //$NON-NLS-1$
+		      new CharmTier[] { new CharmTier(2), new CharmTier(3), new CharmTier(3) });
+	public static final IMultiLearnableCharm CONSTRUCTIVE_CONVERGANCE_OF_PRINCIPLES = new TieredMultiLearnableCharm(
+		      "Infernal.ConstructiveConvergenceofPrinciples", //$NON-NLS-1$
+		      new CharmTier[] { new CharmTier(3), new CharmTier(4), new CharmTier(5) });
+	public static final IMultiLearnableCharm TOOL_TRANSCENDING_CONSTRUCTS = new TieredMultiLearnableCharm(
+		      "Infernal.Tool-TranscendingConstructs", //$NON-NLS-1$
+		      new CharmTier[] { new CharmTier(3), new CharmTier(4), new CharmTier(6), new CharmTier(7) });
 	
 	
 }

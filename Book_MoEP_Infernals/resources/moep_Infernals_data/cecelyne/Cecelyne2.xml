@@ -64,20 +64,6 @@
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Infernals" />
      </charm>      
-     <charm id="Infernal.Scorpion-TailedMirageTechnique2" exalt="Infernal" group="TranscendentDesert">          
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="2" />		   
-               <charmReference id="Infernal.Scorpion-TailedMirageTechnique"/>
-          </prerequisite>
-           <cost> 
-               <essence cost="6" text="(Or 4m)" />   
-               <willpower cost="1" />  
-          </cost>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>       
      <charm id="Infernal.Hell-WalkerTechnique" exalt="Infernal" group="TranscendentDesert">          
           <prerequisite>
                <trait id="Cecelyne" value="0" />

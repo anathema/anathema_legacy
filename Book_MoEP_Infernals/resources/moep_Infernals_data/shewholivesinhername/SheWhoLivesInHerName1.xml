@@ -85,60 +85,9 @@
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="Infernals" />
      </charm>
-     <charm id="Infernal.UnshatteredTonguePerfection2" exalt="Infernal" group="Unshattered">         
+     <charm id="Infernal.CosmicTranscendenceofVirtue" exalt="Infernal" group="FactualDetermination">         
           <prerequisite>
                <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="3" />		   
-               <charmReference id="Infernal.UnshatteredTonguePerfection"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
-     <charm id="Infernal.CosmicTranscendenceofValor" exalt="Infernal" group="FactualDetermination">         
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <trait id="Valor" value="5" />
-               <essence value="2" />		   
-               <charmReference id="Infernal.FactualDeterminationAnalysis"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <source source="Infernals" />
-     </charm>
-     <charm id="Infernal.CosmicTranscendenceofTemperance" exalt="Infernal" group="FactualDetermination">         
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <trait id="Temperance" value="5" />
-               <essence value="2" />		   
-               <charmReference id="Infernal.FactualDeterminationAnalysis"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <source source="Infernals" />
-     </charm>
-     <charm id="Infernal.CosmicTranscendenceofConviction" exalt="Infernal" group="FactualDetermination">         
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <trait id="Conviction" value="5" />
-               <essence value="2" />		   
-               <charmReference id="Infernal.FactualDeterminationAnalysis"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <source source="Infernals" />
-     </charm>
-     <charm id="Infernal.CosmicTranscendenceofCompassion" exalt="Infernal" group="FactualDetermination">         
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <trait id="Compassion" value="5" />
                <essence value="2" />		   
                <charmReference id="Infernal.FactualDeterminationAnalysis"/>
           </prerequisite>
@@ -189,28 +138,6 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Shaping" visualize="true" />
-          <source source="Infernals" />
-     </charm>
-     <charm id="Infernal.Ego-InfusedPatternPrimacy2" exalt="Infernal" group="Ego">         
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="3" />		   
-               <charmReference id="Infernal.Ego-InfusedPatternPrimacy"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
-     <charm id="Infernal.Ego-InfusedPatternPrimacy3" exalt="Infernal" group="Ego">         
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="3" />		   
-               <charmReference id="Infernal.Ego-InfusedPatternPrimacy2"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
           <source source="Infernals" />
      </charm>
      <charm id="Infernal.Pattern-ReassertingTouch" exalt="Infernal" group="Ego">         
