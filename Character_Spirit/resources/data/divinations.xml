@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!--
 
-    universal.xml - XML charm data for Anathema Plug-ins.
+    divinations.xml - XML charm data for Anathema Plug-ins.
     Copyright (C) 2011  Scott D. Olson (scottolson275@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
@@ -20,91 +20,117 @@
 
 -->
 <charmlist>
-	<!-- Spirit Universal -->
-	<charm id="Spirit.EssencePlethora" exalt="Spirit" group="Universal">
+	<!-- Spirit Divinations -->
+	<charm id="Spirit.AmethystAwareness" exalt="Spirit" group="Divinations">
 		<prerequisite>
 			<essence value="1"/>
 		</prerequisite>
-		<cost/>
-		<duration duration="Permanent"/>
-		<charmtype type="Permanent"/>
+		<cost>
+		   <essence cost="6"/>
+		</cost>
+		<duration duration="Indefinite"/>
+		<charmtype type="Simple"/>
 		<charmAttribute attribute="Mortal"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.HurryHome" exalt="Spirit" group="Universal">
+	<charm id="Spirit.ForetellTheFuture" exalt="Spirit" group="Divinations">
 		<prerequisite>
-			<essence value="2"/>
+			<essence value="3"/>
 		</prerequisite>
 		<cost>
-			<essence cost="5" />
+			<essence cost="10" />
+			<willpower cost="1"/>
 		</cost>
-		<duration duration="Instant"/>
+		<duration amount="1" unit="scene"/>
 		<charmtype type="Simple" />
 		<charmAttribute attribute="Mortal"/>
-		<charmAttribute attribute="Obvious" visualize="true"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.Materialize" exalt="Spirit" group="Universal">
+	<charm id="Spirit.HandOfDestiny" exalt="Spirit" group="Divinations">
 		<prerequisite>
-			<essence value="3"/>
+			<essence value="5"/>
 		</prerequisite>
 		<cost>
-			<essence cost="" text="([Essence + Willpower]*5)"/>
+			<essence cost="20"/>
+			<willpower cost="2"/>
 		</cost>
-		<duration duration="Varies"/>
+		<duration duration="Indefinite"/>
 		<charmtype type="Simple"/>
-		<charmAttribute attribute="Obvious" visualize="true"/>
-		<source source="GodsAndElementals"/>
-	</charm>
-	<charm id="Spirit.Dematerialize" exalt="Spirit" group="Universal">
-		<prerequisite>
-			<essence value="3"/>
-		</prerequisite>
-		<cost>
-			<essence cost="" text="([Essence + Willpower]*5)"/>
-		</cost>
-		<duration duration="Varies"/>
-		<charmtype type="Simple"/>
-		<charmAttribute attribute="Obvious" visualize="true"/>
 		<charmAttribute attribute="Mortal"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.MeasureTheWind" exalt="Spirit" group="Universal">
+	<charm id="Spirit.IntrusionSensingMethod" exalt="Spirit" group="Divinations">
 		<prerequisite>
-			<essence value="1"/>
-		</prerequisite>
-		<cost>
-			<essence cost="1" />
-		</cost>
-		<duration duration="Instant"/>
-		<charmtype type="Reflexive"/>
-		<charmAttribute attribute="Combo-OK" visualize="true"/>
-		<charmAttribute attribute="Mortal"/>
-		<source source="GodsAndElementals"/>
-	</charm>
-	<charm id="Spirit.PrincipleOfMotion" exalt="Spirit" group="Universal">
-		<prerequisite>
-			<essence value="3"/>
+			<essence value="2"/>
 		</prerequisite>
 		<cost>
 			<essence cost="5"/>
 			<willpower cost="1"/>
 		</cost>
 		<duration duration="Indefinite"/>
-        <charmtype type="Simple">
-            <special speed="6" defense="-2"/>
-        </charmtype>
+		<charmtype type="Simple"/>
 		<charmAttribute attribute="Mortal"/>
-		<charmAttribute attribute="Obvious" visualize="true"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.ReserveOfWill" exalt="Spirit" group="Universal">
+	<charm id="Spirit.MelodiusDiagnosticReport" exalt="Spirit" group="Divinations">
+		<prerequisite>
+			<essence value="4"/>
+		</prerequisite>
+		<cost>
+			<essence cost="15"/>
+			<willpower cost="1"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.MemoryMirror" exalt="Spirit" group="Divinations">
+		<prerequisite>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			<essence cost="5"/>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.NaturalPrognostication" exalt="Spirit" group="Divinations">
 		<prerequisite>
 			<essence value="1"/>
 		</prerequisite>
-		<cost/>
-		<duration duration="Permanent"/>
-		<charmtype type="Permanent"/>
+		<cost>
+			<essence cost="1"/>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.SenseDomain" exalt="Spirit" group="Divinations">
+		<prerequisite>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			<essence cost="5"/>
+			<willpower cost="1"/>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.Tracking" exalt="Spirit" group="Divinations">
+		<prerequisite>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			<essence cost="5"/>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive"/>
 		<charmAttribute attribute="Mortal"/>
 		<source source="GodsAndElementals"/>
 	</charm>

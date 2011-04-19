@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+    blessings.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Scott D. Olson (scottolson275@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
 <charmlist>
 	<!-- Spirit Blessings -->
 	<charm id="Spirit.Benefaction" exalt="Spirit" group="Blessings">
@@ -75,10 +95,9 @@
 			<essence cost="5"/>
 		</cost>
 		<duration amount="1" unit="scene"/>
-		<charmtype type="Simple"/>
-		<charmAttribute attribute="Obvious" visualize="true"/>
-		<charmAttribute attribute="Shaping" visualize="true"/>
-		<charmAttribute attribute="Touch" visualize="true"/>
+		<charmtype type="Reflexive">
+			<special primaryStep="1"/>
+		</charmtype>
 		<charmAttribute attribute="Mortal"/>
 		<source source="GodsAndElementals"/>
 	</charm>
