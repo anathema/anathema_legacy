@@ -317,7 +317,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     }
     GenericMagicTemplateParser parser = new GenericMagicTemplateParser(
         registryCollection.getMagicTemplateRegistry(),
-        characterTemplate.getEdition());
+        characterTemplate);
     GenericMagicTemplate template = parser.parseTemplate(magicTemplateElement);
     characterTemplate.setMagicTemplate(template);
   }

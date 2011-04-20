@@ -44,7 +44,7 @@ public abstract class AbstractAbyssalTemplate extends AbstractCharacterTemplate 
     charmTemplate.setCasteAlienAllowed(AbyssalCaste.Moonshadow.getId());
     ISpellMagicTemplate spellMagic = new SpellMagicTemplate(new CircleType[] {
         CircleType.Terrestrial,
-        CircleType.Celestial }, CircleType.getNecromancyCircles());
+        CircleType.Celestial }, CircleType.getNecromancyCircles(), this);
     this.magicTemplate = new DefaultMagicTemplate(charmTemplate, spellMagic);
     this.additionalRules = additionalRules;
   }

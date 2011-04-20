@@ -4,5 +4,5 @@
 	<charmTemplate charmType="Infernal">
 		<martialArts level="Mortal"/> 
 	</charmTemplate>
-	<spellTemplate maximumSorceryCircle="None" maximumNecromancyCircle="None"/>
+	<spellTemplate maximumSorceryCircle="Solar" maximumNecromancyCircle="Labyrinth" subTemplate="net.sf.anathema.character.infernal.template.InfernalSpellMagicTemplate"/>
 </magicTemplate>

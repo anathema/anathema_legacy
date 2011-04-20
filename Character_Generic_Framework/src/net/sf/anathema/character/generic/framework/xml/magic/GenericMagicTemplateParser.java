@@ -1,5 +1,7 @@
 package net.sf.anathema.character.generic.framework.xml.magic;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
@@ -15,9 +17,10 @@ import net.sf.anathema.character.generic.impl.template.magic.NullCharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.SpellMagicTemplate;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
+import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueRequiredCharmType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -49,11 +52,12 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String TAG_ID_EXCEPTION = "idException"; //$NON-NLS-1$
   private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
   private static final String TAG_GROUP_EXCEPTION = "groupException"; //$NON-NLS-1$
-  private final IExaltedEdition edition;
+  private static final String ATTRIB_SUB_TEMPLATE = "subTemplate";
+  private final ICharacterTemplate hostTemplate;
 
-  public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, IExaltedEdition edition) {
+  public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, ICharacterTemplate template) {
     super(templateRegistry);
-    this.edition = edition;
+    this.hostTemplate = template;
   }
 
   @Override
@@ -80,7 +84,8 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     basicTemplate.setFavoringTraitType(traitTypeType);
   }
 
-  private void setSpellTemplate(GenericMagicTemplate basicTemplate, Element element) throws PersistenceException {
+  @SuppressWarnings("unchecked")
+private void setSpellTemplate(GenericMagicTemplate basicTemplate, Element element) throws PersistenceException {
     Element spellTemplateElement = element.element(TAG_SPELL_TEMPLATE);
     if (spellTemplateElement == null) {
       return;
@@ -99,9 +104,36 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     if (!maximumNecromancyCircleId.equals(VALUE_NONE)) {
       maximumNecromancyCircle = CircleType.valueOf(maximumNecromancyCircleId);
     }
-    basicTemplate.setSpellTemplate(new SpellMagicTemplate(
-        CircleType.getSorceryCirclesUpTo(maximumSorceryCircle),
-        CircleType.getNecromancyCirclesUpTo(maximumNecromancyCircle)));
+    Class<SpellMagicTemplate> magicTemplateClass = SpellMagicTemplate.class;
+    ISpellMagicTemplate template = null;
+    String spellMagicSubTemplate = spellTemplateElement.attributeValue(ATTRIB_SUB_TEMPLATE);
+    if (spellMagicSubTemplate != null)
+    {
+    	try {
+			magicTemplateClass = (Class<SpellMagicTemplate>) Class.forName(spellMagicSubTemplate);
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+    }
+    
+    try {
+		Constructor[] helper = magicTemplateClass.getConstructors();
+		template = (ISpellMagicTemplate) helper[0].newInstance(CircleType.getSorceryCirclesUpTo(maximumSorceryCircle),
+	                CircleType.getNecromancyCirclesUpTo(maximumNecromancyCircle),
+	                hostTemplate);
+			
+			
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+   
+    basicTemplate.setSpellTemplate(template);
   }
 
   private void setCharmTemplate(GenericMagicTemplate basicTemplate, Element element) throws PersistenceException {
@@ -115,7 +147,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
       charmSet = new NullCharmSet();
     }
     else {
-      charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType), edition);
+      charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType), hostTemplate.getEdition());
     }
     IUniqueRequiredCharmType specialCharms = null;
     for (Object node : charmTemplateElement.elements(TAG_UNIQUE_CHARM_TYPE))

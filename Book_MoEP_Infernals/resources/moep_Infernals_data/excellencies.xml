@@ -114,4 +114,40 @@
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <source source="Infernals" />
      </genericCharm>
+     <genericCharm id="Infernal.SorcerousEnlightenment" exalt="Infernal">
+          <prerequisite>
+               <trait value="0" />
+               <essence value="3" />
+               <genericCharmReference id="Infernal.1stExcellency"/>
+          </prerequisite>
+          <cost />
+          <duration  duration="Permanent" />
+          <charmtype type="Permanent" />
+          <genericCharmAttribute attribute="Excellency" />
+          <source source="Infernals" />
+     </genericCharm>
+     <genericCharm id="Infernal.SorcerousEnlightenment2" exalt="Infernal">
+          <prerequisite>
+               <trait value="0" />
+               <essence value="4" />
+               <genericCharmReference id="Infernal.SorcerousEnlightenment"/>
+          </prerequisite>
+          <cost />
+          <duration  duration="Permanent" />
+          <charmtype type="Permanent" />
+          <genericCharmAttribute attribute="Excellency" />
+          <source source="Infernals" />
+     </genericCharm>
+     <genericCharm id="Infernal.SorcerousEnlightenment3" exalt="Infernal">
+          <prerequisite>
+               <trait value="0" />
+               <essence value="5" />
+               <genericCharmReference id="Infernal.SorcerousEnlightenment2"/>
+          </prerequisite>
+          <cost />
+          <duration  duration="Permanent" />
+          <charmtype type="Permanent" />
+          <genericCharmAttribute attribute="Excellency" />
+          <source source="Infernals" />
+     </genericCharm>
 </charmlist>

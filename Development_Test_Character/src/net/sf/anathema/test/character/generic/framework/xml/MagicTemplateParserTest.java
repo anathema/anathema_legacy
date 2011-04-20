@@ -4,7 +4,6 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.db.template.TerrestrialMartialArtsRules;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplateParser;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
@@ -37,7 +36,7 @@ public class MagicTemplateParserTest extends BasicTestCase {
   @Override
   protected void setUp() throws Exception {
     templateRegistry = new DummyXmlTemplateRegistry<GenericMagicTemplate>();
-    parser = new GenericMagicTemplateParser(templateRegistry, ExaltedEdition.FirstEdition);
+    parser = new GenericMagicTemplateParser(templateRegistry, null);
   }
 
   public void testDefaultFreePicksPredicate() throws Exception {
