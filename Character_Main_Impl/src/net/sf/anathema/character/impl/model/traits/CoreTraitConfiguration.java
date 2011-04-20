@@ -142,6 +142,10 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   public final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
     return attributeTraitGroups;
   }
+  
+  public final IIdentifiedCasteTraitTypeGroup[] getYoziTypeGroups() {
+	return yoziTraitGroups;
+  }
 
   public IIdentificate getAbilityGroupId(AbilityType abilityType) {
     for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
