@@ -20,6 +20,10 @@ public class CharmNodeConnector {
         IIdentifiedRegularNode parentNode = charmNodesById.get(requirement.getStringRepresentation());
         connectNodes(childNode, parentNode);
       }
+      for (String label : charm.getRenderingPrerequisiteLabels()) {        
+          IIdentifiedRegularNode parentNode = charmNodesById.get(label);
+          connectNodes(childNode, parentNode);
+        }
     }
   }
 

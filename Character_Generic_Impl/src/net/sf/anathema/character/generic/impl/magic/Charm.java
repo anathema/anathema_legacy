@@ -249,10 +249,20 @@ public class Charm extends Identificate implements ICharm {
     Set<ICharm> prerequisiteCharms = new HashSet<ICharm>();
     prerequisiteCharms.addAll(parentCharms);
     for (SelectiveCharmGroup charmGroup : selectiveCharmGroups) {
-      prerequisiteCharms.addAll(Arrays.asList(charmGroup.getAllGroupCharms()));
+      if (charmGroup.getLabel() == null)
+    	  prerequisiteCharms.addAll(Arrays.asList(charmGroup.getAllGroupCharms()));
     }
     		
     return prerequisiteCharms;
+  }
+  
+  public Set<String> getRenderingPrerequisiteLabels() {
+	Set<String> prerequisiteLabels = new HashSet<String>();
+    for (SelectiveCharmGroup charmGroup : selectiveCharmGroups)
+    	if (charmGroup.getLabel() != null)
+    		prerequisiteLabels.add(charmGroup.getLabel());
+	    		
+	return prerequisiteLabels;
   }
 
   public Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {

@@ -56,7 +56,7 @@
 	<!ELEMENT merges (merged*)>
 	
 		<!ELEMENT genericTraitSet (genericTrait+)>
-		<!ELEMENT prerequisite (essence?, trait+, essence?, genericCharmAttributeRequirement?, selectiveCharmGroup?, genericCharmAttributeRequirement?, charmReference*, charmAttributeRequirement?)>
+		<!ELEMENT prerequisite (essence?, trait?, essence?, genericCharmAttributeRequirement?, selectiveCharmGroup?, genericCharmAttributeRequirement?, charmReference*, charmAttributeRequirement?)>
 		<!ELEMENT cost (essence?, willpower?, health?, experience?)>
 		<!ELEMENT duration EMPTY>
 			<!ATTLIST duration duration CDATA #IMPLIED

@@ -71,6 +71,11 @@ public class SelectiveCharmGroup {
     }
     return learnedCharms >= template.getThreshold();
   }
+  
+  public String getLabel()
+  {
+	  return "Requirement." + template.getLabel() + "." + template.getThreshold();
+  }
 
   public ICharm[] getAllGroupCharms() {
     return charms.toArray(new ICharm[charms.size()]);

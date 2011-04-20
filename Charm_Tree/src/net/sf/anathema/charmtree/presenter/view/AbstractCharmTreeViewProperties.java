@@ -73,10 +73,10 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
     else if (isRequirementNode(nodeId)) {
       String requirementWithCount = nodeId.replaceFirst(REQUIREMENT + ".", ""); //$NON-NLS-1$ //$NON-NLS-2$
       String[] strings = requirementWithCount.split("\\."); //$NON-NLS-1$
-      int requirementCount = Integer.parseInt(strings[1]);
-      String requirementName = resources.getString(REQUIREMENT + "." + strings[0]); //$NON-NLS-1$
-      String charmString = resources.getString(requirementCount == 1 ? "Charms.Charm.Single" : "Charms.Charm.Multiple"); //$NON-NLS-1$//$NON-NLS-2$
-      return resources.getString("Requirement.Message", new Object[] { requirementCount, requirementName, charmString }); //$NON-NLS-1$
+	  int requirementCount = Integer.parseInt(strings[1]);
+	  String requirementName = resources.getString(REQUIREMENT + "." + strings[0]); //$NON-NLS-1$
+	  String charmString = resources.getString(requirementCount == 1 ? "Charms.Charm.Single" : "Charms.Charm.Multiple"); //$NON-NLS-1$//$NON-NLS-2$
+	  return resources.getString("Requirement.Message", new Object[] { requirementCount, requirementName, charmString }); //$NON-NLS-1$
     }
     Logger.getLogger(getClass()).warn(
         "No resource key found for node " + nodeId + ". It must be a requirement or a charm."); //$NON-NLS-1$ //$NON-NLS-2$

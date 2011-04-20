@@ -20,6 +20,8 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
 public class PrerequisiteListBuilder {
+	
+  private final String ATTRIB_LABEL = "label";
 
   private final ITraitPrerequisitesBuilder traitBuilder;
   private final IAttributeRequirementBuilder attributeBuilder;
@@ -71,7 +73,8 @@ public class PrerequisiteListBuilder {
       Element groupElement = selectiveCharmGroupElements.get(index);
       String[] groupCharmIds = charmBuilder.buildCharmPrerequisites(groupElement);
       int threshold = ElementUtilities.getRequiredIntAttrib(groupElement, ATTRIB_THRESHOLD);
-      charmGroups[index] = new SelectiveCharmGroupTemplate(groupCharmIds, threshold);
+      String label = groupElement.attributeValue(ATTRIB_LABEL);
+      charmGroups[index] = new SelectiveCharmGroupTemplate(groupCharmIds, threshold, label);
     }
     return charmGroups;
   }

@@ -90,11 +90,11 @@
      <charm id="Infernal.TriumphantHowloftheDevilTiger" exalt="Infernal" group="DevilTiger">
           <prerequisite>               
                <essence value="6" />
-					<genericCharmReference id="Infernal.1stExcellency"/>
-					<genericCharmReference id="Infernal.SorcerousEnlightenment"/>
-					<selectiveCharmGroup threshold="1">
+			   <genericCharmReference id="Infernal.1stExcellency"/>
+			   <genericCharmReference id="Infernal.SorcerousEnlightenment"/>
+			   <selectiveCharmGroup threshold="1" label="Shintai">
 					<charmReference id="Infernal.BlackMirrorShintai" />
-               		<charmReference id="Infernal.ScarletRaptureShintai" />
+	            	<charmReference id="Infernal.ScarletRaptureShintai" />
 					<charmReference id="Infernal.SplinteredGaleShintai" />
 					<charmReference id="Infernal.Soul-SandDevilShintai" />
 					<!--the greater shintai for Cecelyne requires the minor -->
@@ -103,7 +103,7 @@
 					<charmReference id="Infernal.DevilTyrantAvatarShintai" />
 					<charmReference id="Infernal.DemonEmperorShintai" />
 					<charmReference id="Infernal.HeuristicLogosShintai" />
-				</selectiveCharmGroup>
+			   </selectiveCharmGroup>
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
@@ -136,7 +136,7 @@
           <prerequisite>               
                <essence value="6" />
 					<charmReference id="Infernal.TriumphantHowloftheDevilTiger" />
-					<selectiveCharmGroup threshold="2">
+					<selectiveCharmGroup threshold="2" label="Shintai">
 					<charmReference id="Infernal.BlackMirrorShintai" />
                		<charmReference id="Infernal.ScarletRaptureShintai" />
 					<charmReference id="Infernal.SplinteredGaleShintai" />

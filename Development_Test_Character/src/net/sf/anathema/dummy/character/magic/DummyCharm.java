@@ -153,6 +153,11 @@ public class DummyCharm extends Identificate implements ICharm {
   public Set<ICharm> getRenderingPrerequisiteCharms() {
     return parentCharms;
   }
+  
+  public Set<String> getRenderingPrerequisiteLabels()
+  {
+	return null;
+  }
 
   public CostList getTemporaryCost() {
     return temporaryCost;

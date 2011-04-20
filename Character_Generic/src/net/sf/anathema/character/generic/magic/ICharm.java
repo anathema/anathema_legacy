@@ -23,6 +23,8 @@ public interface ICharm extends ICharmData, IMagic {
   public boolean isTreeRoot();
 
   public Set<ICharm> getRenderingPrerequisiteCharms();
+  
+  public Set<String> getRenderingPrerequisiteLabels();
 
   public boolean hasAttribute(IIdentificate attribute);
 
