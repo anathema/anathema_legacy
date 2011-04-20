@@ -74,7 +74,8 @@ public class SelectiveCharmGroup {
   
   public String getLabel()
   {
-	  return "Requirement." + template.getLabel() + "." + template.getThreshold();
+	  return template.getLabel() != null ? "Requirement." + template.getLabel() + "." + template.getThreshold() :
+		  null; 
   }
 
   public ICharm[] getAllGroupCharms() {

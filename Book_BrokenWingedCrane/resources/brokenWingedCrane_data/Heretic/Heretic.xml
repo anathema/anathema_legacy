@@ -90,8 +90,22 @@
      <charm id="Infernal.TriumphantHowloftheDevilTiger" exalt="Infernal" group="DevilTiger">
           <prerequisite>               
                <essence value="6" />
-			   <genericCharmReference id="Infernal.1stExcellency"/>
-			   <genericCharmReference id="Infernal.SorcerousEnlightenment"/>
+			   <selectiveCharmGroup threshold="1" label="1stExcellency">
+			   		<charmReference id="Infernal.1stExcellency.Adorjan" />
+			   		<charmReference id="Infernal.1stExcellency.Cecelyne" />
+			   		<charmReference id="Infernal.1stExcellency.EbonDragon" />
+			   		<charmReference id="Infernal.1stExcellency.Kimbery" />
+			   		<charmReference id="Infernal.1stExcellency.Malfeas" />
+			   		<charmReference id="Infernal.1stExcellency.SheWhoLivesInHerName" />
+			   </selectiveCharmGroup>
+			   <selectiveCharmGroup threshold="1" label="SorcerousEnlightenment">
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Adorjan" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Cecelyne" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.EbonDragon" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Kimbery" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Malfeas" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.SheWhoLivesInHerName" />
+			   </selectiveCharmGroup>
 			   <selectiveCharmGroup threshold="1" label="Shintai">
 					<charmReference id="Infernal.BlackMirrorShintai" />
 	            	<charmReference id="Infernal.ScarletRaptureShintai" />
