@@ -34,6 +34,11 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/sendings.xml"/>
 	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/divineWorks.xml"/>
+	  </parameter>
 	  </extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="SpiritResources">
 		<parameter id="bundle" value="Spirit"/>	
