@@ -10,6 +10,11 @@
     <healthTemplate>
       <toughnessControllingTrait type="Resistance"/>
     </healthTemplate>
+    <additionalTemplates>
+      <template id="Ghost.Age.Template" />
+      <template id="Ghost.Passions.Template" />
+      <template id="Ghost.Fetters.Template" />
+    </additionalTemplates>
   </general>
   <creation>
     <bonusPointCosts uses="template/GhostBonusPointCost2nd.template" />

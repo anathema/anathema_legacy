@@ -15,18 +15,21 @@ public class Passion extends DefaultTrait implements IPassion {
   private final String subTraitName;
   private final PassionsContainer container;
   private final ITraitReference reference;
+  private final IGhostPassionsModel model;
 
   public Passion(
       AbstractSubTraitContainer container,
+      IGhostPassionsModel model,
       ITraitReference reference,
-      String specialtyName,
+      String passionName,
       ITraitContext context) {
-    super(new TraitRules(new TraitType("Passion (" + specialtyName + ")"), //$NON-NLS-1$
+    super(new TraitRules(new TraitType("Passion (" + passionName + ")"), //$NON-NLS-1$
         SimpleTraitTemplate.createStaticLimitedTemplate(0, 5),
         context.getLimitationContext()), context, new FriendlyValueChangeChecker());
     this.container = (PassionsContainer)container;
     this.reference = reference;
-    this.subTraitName = specialtyName;
+    this.subTraitName = passionName;
+    this.model = model;
   }
 
   public String getName() {
@@ -42,9 +45,13 @@ public class Passion extends DefaultTrait implements IPassion {
   }
 
   @Override
-  public void setCurrentValue(int value) {
+  public void setCurrentValue(int value)
+  {
+	if (model.isExperienced() && getCurrentValue() != 0)
+	  return;
     int increment = value - getCurrentValue();
-    if (container.getCurrentDotTotal() + increment <= container.getAllowedDots()) {
+    if (container.getCurrentDotTotal() + increment <= container.getAllowedDots() &&
+    	model.getCurrentTotalPassions() + increment <= model.getMaxTotalPassions()) {
       super.setCurrentValue(value);
     }
     else {

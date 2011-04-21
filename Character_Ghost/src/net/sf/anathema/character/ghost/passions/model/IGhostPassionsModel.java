@@ -38,5 +38,9 @@ public interface IGhostPassionsModel extends IAdditionalModel {
   public void addTraitListChangeListener(ITraitReferencesChangeListener listener);
   
   public int getCurrentVirtueRating(VirtueType type);
+  
+  public int getCurrentTotalPassions();
+  
+  public int getMaxTotalPassions();
 
 }

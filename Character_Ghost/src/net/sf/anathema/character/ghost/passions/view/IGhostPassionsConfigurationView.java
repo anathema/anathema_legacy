@@ -22,6 +22,8 @@ public interface IGhostPassionsConfigurationView {
       Icon addIcon);
   
   public void setOverview(IOverviewCategory overview);
+  
+  public void removeControls();
 
   public IOverviewCategory createOverview(String borderLabel);
 }

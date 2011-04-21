@@ -23,8 +23,9 @@ public class GhostPassionsConfigurationView implements IGhostPassionsConfigurati
   private final JPanel passionListPanel = new JPanel(new GridDialogLayout(5, false));
   private final JPanel passionPanel = new JPanel(new GridDialogLayout(1, true));
   private final JPanel overviewPanel = new JPanel();
+  private ButtonControlledComboEditView<ITraitReference> objectSelectionView;
 
-  public GhostPassionsConfigurationView(IGhostPassionsViewProperties properties, IIntValueDisplayFactory factory) {
+  public GhostPassionsConfigurationView(IIntValueDisplayFactory factory) {
     this.factory = factory;
   }
 
@@ -32,7 +33,7 @@ public class GhostPassionsConfigurationView implements IGhostPassionsConfigurati
       String labelText,
       ListCellRenderer renderer,
       Icon addIcon) {
-    ButtonControlledComboEditView<ITraitReference> objectSelectionView = new ButtonControlledComboEditView<ITraitReference>(
+	objectSelectionView = new ButtonControlledComboEditView<ITraitReference>(
         addIcon,
         renderer);
     passionPanel.add(objectSelectionView.getComponent());
@@ -68,5 +69,12 @@ public class GhostPassionsConfigurationView implements IGhostPassionsConfigurati
 	public void setOverview(IOverviewCategory overview) {
 	    overviewPanel.removeAll();
 	    overviewPanel.add(overview.getComponent());
+	  }
+	  
+	  public void removeControls()
+	  {
+		  if (objectSelectionView != null)
+			  passionPanel.remove(objectSelectionView.getComponent());
+		  overviewPanel.removeAll();
 	  }
 }

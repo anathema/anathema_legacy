@@ -12,11 +12,16 @@ public class PassionsContainer extends AbstractSubTraitContainer
 
   private final ITraitReference reference;
   private final ITraitContext traitContext;
+  private final IGhostPassionsModel model;
 
-  public PassionsContainer(IGenericTrait parentTrait, ITraitReference reference, ITraitContext traitContext) {
+  public PassionsContainer(IGenericTrait parentTrait,
+		  ITraitReference reference,
+		  ITraitContext traitContext,
+		  IGhostPassionsModel model) {
     this.parentTrait = parentTrait;
     this.reference = reference;
     this.traitContext = traitContext;
+    this.model = model;
   }
 
   @Override
@@ -38,6 +43,6 @@ public class PassionsContainer extends AbstractSubTraitContainer
 
   @Override
   public ISubTrait createSubTrait(String name) {
-    return new Passion(this, reference, name, traitContext);
+    return new Passion(this, model, reference, name, traitContext);
   }
 }

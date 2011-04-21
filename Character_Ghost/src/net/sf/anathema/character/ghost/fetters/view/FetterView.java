@@ -1,4 +1,4 @@
-package net.sf.anathema.character.ghost.passions.view;
+package net.sf.anathema.character.ghost.fetters.view;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -16,35 +16,29 @@ import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public class PassionView extends AbstractTraitView implements IPassionView {
+public class FetterView extends AbstractTraitView implements IFetterView {
 
   private final ChangeControl control = new ChangeControl();
-  private final Component abilityLabel;
-  private final Component separatorLabel = new JLabel("-"); //$NON-NLS-1$
-  private final Component passionLabel;
+  private final Component fetterLabel;
   private JButton deleteButton;
   private JPanel traitPanel;
   private final Icon deleteIcon;
 
-  public PassionView(
+  public FetterView(
       IIntValueDisplayFactory configuration,
-      String labelText,
       Icon deleteIcon,
       String id,
       int value,
       int maxValue) {
-    super(configuration, labelText, value, maxValue);
+    super(configuration, "", value, maxValue);
     this.deleteIcon = deleteIcon;
-    passionLabel = new JLabel(id);
-    abilityLabel = new JLabel(labelText);
+    fetterLabel = new JLabel(id);
   }
 
   @SuppressWarnings("deprecation")
 public void addComponents(JPanel panel) {
     this.traitPanel = panel;
-    panel.add(abilityLabel);
-    panel.add(separatorLabel);
-    panel.add(passionLabel, GridDialogLayoutData.FILL_HORIZONTAL);
+    panel.add(fetterLabel, GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(getValueDisplay().getComponent());
     deleteButton = new JButton(new AbstractAction(null, deleteIcon) {
 		private static final long serialVersionUID = 1L;
@@ -68,9 +62,7 @@ public void addComponents(JPanel panel) {
 
   @SuppressWarnings("deprecation")
 public void delete() {
-    traitPanel.remove(abilityLabel);
-    traitPanel.remove(separatorLabel);
-    traitPanel.remove(passionLabel);
+    traitPanel.remove(fetterLabel);
     traitPanel.remove(getValueDisplay().getComponent());
     traitPanel.remove(deleteButton);
     traitPanel.revalidate(); // Remove this line to keep the positions of specialties constant.

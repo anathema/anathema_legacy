@@ -24,7 +24,6 @@ public class GhostPassionsPersister implements IAdditionalPersister {
   public void save(Element parent, IAdditionalModel model)
   {
 	  IGhostPassionsModel passionsModel = (IGhostPassionsModel) model;
-	  //Element passionsElement = parent.addElement(TAG_PASSIONS);
 	  for (VirtueType virtue : VirtueType.values())
 	    for (ISubTrait passion : passionsModel.getPassionContainer(virtue).getSubTraits())
 	    {

@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -28,7 +29,8 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 public class GhostPassionsModel extends AbstractAdditionalModelAdapter implements IGhostPassionsModel {
 
   private final Map<ITraitType, ISubTraitContainer> passionByType = new HashMap<ITraitType, ISubTraitContainer>();
-  private final Map<ITraitReference, ISubTraitContainer> passionsByTrait = new HashMap<ITraitReference, ISubTraitContainer>();	  private final ChangeControl control = new ChangeControl();
+  private final Map<ITraitReference, ISubTraitContainer> passionsByTrait = new HashMap<ITraitReference, ISubTraitContainer>();
+  private final ChangeControl control = new ChangeControl();
   private final GenericControl<ITraitReferencesChangeListener> traitControl = new GenericControl<ITraitReferencesChangeListener>();
   private final ICharacterModelContext context;
   private final GhostPassionsTemplate template;
@@ -57,6 +59,28 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
 	  return template.getId();
   }
   
+  private int getAge()
+  {
+	  IGenericTrait ageTrait = context.getTraitCollection().getTrait(new CustomizedBackgroundTemplate("Age"));
+	  return ageTrait == null ? 0 : ageTrait.getCurrentValue();
+  }
+  
+  public int getCurrentTotalPassions()
+  {
+	  int total = 0;
+	  for (VirtueType virtue : VirtueType.values())
+		  total += getPassionContainer(virtue).getCurrentDotTotal();
+	  return total;
+  }
+  
+  public int getMaxTotalPassions()
+  {
+	  int total = 0;
+	  for (VirtueType virtue : VirtueType.values())
+		  total += getCurrentVirtueRating(virtue);
+	  return total - getAge();
+  }
+  
   public int getCurrentVirtueRating(VirtueType type)
   {
 	  return context.getTraitCollection().getTrait(type).getCurrentValue();
@@ -64,7 +88,7 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
 
   private PassionsContainer addPassionsContainer(ITraitReference reference) {
     PassionsContainer passionsContainer = new PassionsContainer(context.getTraitCollection().getTrait(reference.getTraitType()),
-    			reference, context.getTraitContext());
+    			reference, context.getTraitContext(), this);
     passionsByTrait.put(reference, passionsContainer);
     return passionsContainer;
   }

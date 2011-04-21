@@ -34,6 +34,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 public class GhostPassionsPresenter implements IPresenter {
 
   IButtonControlledComboEditView<ITraitReference> passionSelectionView;
+  private ILabelledAlotmentView maxPassionView;
   private ILabelledAlotmentView compassionView;
   private ILabelledAlotmentView convictionView;
   private ILabelledAlotmentView temperanceView;
@@ -83,6 +84,7 @@ public class GhostPassionsPresenter implements IPresenter {
   public void initPresentation() {
     initTraitListening();
     final IOverviewCategory overview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
+    maxPassionView = overview.addAlotmentView(resources.getString("Passions.Overview.Max"), 2); //$NON-NLS-1$
     compassionView = overview.addAlotmentView(resources.getString("Compassion"), 2); //$NON-NLS-1$
     convictionView = overview.addAlotmentView(resources.getString("Conviction"), 2); //$NON-NLS-1$
     temperanceView = overview.addAlotmentView(resources.getString("Temperance"), 2); //$NON-NLS-1$
@@ -121,7 +123,7 @@ public class GhostPassionsPresenter implements IPresenter {
     });
     model.addSelectionChangeListener(new IChangeListener() {
       public void changeOccured() {
-    	  passionSelectionView.setButtonEnabled(model.isEntryComplete());
+    	  passionSelectionView.setButtonEnabled(!model.isExperienced() && model.isEntryComplete());
       }
     });
     model.addTraitListChangeListener(new ITraitReferencesChangeListener() {
@@ -138,8 +140,8 @@ public class GhostPassionsPresenter implements IPresenter {
     });
     reset(passionSelectionView);
     for (ITraitReference reference : getAllTraits()) {
-      for (ISubTrait specialty : getPassionContainer(reference).getSubTraits()) {
-        addPassionView((IPassion) specialty);
+      for (ISubTrait passion : getPassionContainer(reference).getSubTraits()) {
+        addPassionView((IPassion) passion);
       }
     }
     model.addCharacterChangeListener(new GlobalCharacterChangeAdapter() {
@@ -153,24 +155,31 @@ public class GhostPassionsPresenter implements IPresenter {
         @Override
         public void experiencedChanged(boolean experienced) {
           updatePassionViewButtons();
+          if (experienced)
+        	  view.removeControls();
         }
       });
     updatePassionViewButtons();
     
     view.setOverview(overview);
     updateOverviewData();
+    
+    if (model.isExperienced())
+    	view.removeControls();
   }
   
   private void updateOverviewData()
  {
-	    compassionView.setValue(model.getPassionContainer(VirtueType.Compassion).getCurrentDotTotal());
-	    compassionView.setAlotment(model.getCurrentVirtueRating(VirtueType.Compassion));
-	    convictionView.setValue(model.getPassionContainer(VirtueType.Conviction).getCurrentDotTotal());
-	    convictionView.setAlotment(model.getCurrentVirtueRating(VirtueType.Conviction));
-	    temperanceView.setValue(model.getPassionContainer(VirtueType.Temperance).getCurrentDotTotal());
-	    temperanceView.setAlotment(model.getCurrentVirtueRating(VirtueType.Temperance));
-	    valorView.setValue(model.getPassionContainer(VirtueType.Valor).getCurrentDotTotal());
-	    valorView.setAlotment(model.getCurrentVirtueRating(VirtueType.Valor));
+	  maxPassionView.setValue(model.getCurrentTotalPassions());
+	  maxPassionView.setAlotment(model.getMaxTotalPassions());
+	  compassionView.setValue(model.getPassionContainer(VirtueType.Compassion).getCurrentDotTotal());
+	  compassionView.setAlotment(model.getCurrentVirtueRating(VirtueType.Compassion));
+	  convictionView.setValue(model.getPassionContainer(VirtueType.Conviction).getCurrentDotTotal());
+	  convictionView.setAlotment(model.getCurrentVirtueRating(VirtueType.Conviction));
+	  temperanceView.setValue(model.getPassionContainer(VirtueType.Temperance).getCurrentDotTotal());
+	  temperanceView.setAlotment(model.getCurrentVirtueRating(VirtueType.Temperance));
+	  valorView.setValue(model.getPassionContainer(VirtueType.Valor).getCurrentDotTotal());
+	  valorView.setAlotment(model.getCurrentVirtueRating(VirtueType.Valor));
 	  }
 
   private void setSelectionObjects()
@@ -217,6 +226,7 @@ public class GhostPassionsPresenter implements IPresenter {
         view.setDeleteButtonEnabled(passion.getCreationValue() == 0 || !model.isExperienced());
       }
     }
+    
   }
 
   private void addPassionView(final IPassion passion) {
