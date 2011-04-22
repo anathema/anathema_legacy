@@ -18,8 +18,8 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
-import net.sf.anathema.character.lunar.beastform.model.gift.GiftModel;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGiftModel;
+import net.sf.anathema.character.lunar.beastform.model.gift.SecondEditionGiftModel;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.lunar.template.ILunarSpecialCharms;
@@ -41,7 +41,7 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
 
   public SecondEditionBeastformModel(ICharacterModelContext context) {
     this.context = context;
-    this.giftModel = new GiftModel(context, this);
+    this.giftModel = new SecondEditionGiftModel(context, this);
     this.beastCollection = new BeastformTraitCollection();
     this.spiritCollection = new BeastformTraitCollection();
     this.cost = new BeastformGroupCost(beastCollection, this);
