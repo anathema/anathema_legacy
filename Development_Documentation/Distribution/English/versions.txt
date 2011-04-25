@@ -14,6 +14,8 @@ http://anathema.sf.net
   below the prerequisites.
 * [2E] Added support for backgrounds dots as a charm prerequisite, and implemented
        this for Abyssal Whispers and Dragon-Blooded Purity.
+* [2E] Adding support for charms which may explicitly be comboed with charms from
+       other abilities (Elemental Bolt Attack being the poster child).
 
 ===------------------------------------------------------------------------------===
 			Release 2.0.1 "Calibration"

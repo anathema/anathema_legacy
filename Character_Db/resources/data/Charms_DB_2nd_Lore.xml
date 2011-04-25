@@ -79,9 +79,13 @@
    <essence cost="1" text="per 2L"/>
   
  </cost>
+ <combo selectAbilities="Archery,Athletics,Thrown"/>
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Combo-AltCore-Archery"/>
+ <charmAttribute attribute="Combo-AltCore-Athletics"/>
+ <charmAttribute attribute="Combo-AltCore-Thrown"/>
  <charmAttribute attribute="Cooperative" visualize="true"/>
  <charmAttribute attribute="Elemental" visualize="true"/>
  <charmAttribute attribute="Leader" visualize="true"/>

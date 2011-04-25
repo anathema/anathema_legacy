@@ -20,10 +20,11 @@ public class SimpleCharmComboRules extends AbstractComboRules {
 
       public void visitExtraAction(CharmType visitedType) {
         boolean allAbilitiesRule = allAbilitiesRuleApplied(simpleCharm, otherCharm);
+        boolean selectAbilitiesRule = selectAbilitiesRuleApplied(simpleCharm, otherCharm);
         boolean samePrerequisite = haveSamePrerequisite(simpleCharm, otherCharm);
         boolean attributePrerequisites = haveAttributePrerequisites(simpleCharm, otherCharm);
         boolean abilityAttributeCombo = crossPrerequisite && isAbilityAttributeCombo(simpleCharm, otherCharm);
-        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
+        legal[0] = allAbilitiesRule || selectAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
       }
 
       public void visitReflexive(CharmType visitedType) {
@@ -32,10 +33,11 @@ public class SimpleCharmComboRules extends AbstractComboRules {
 
       public void visitSupplemental(CharmType visitedType) {
         boolean allAbilitiesRule = allAbilitiesRuleApplied(simpleCharm, otherCharm);
+        boolean selectAbilitiesRule = selectAbilitiesRuleApplied(simpleCharm, otherCharm);
         boolean samePrerequisite = haveSamePrerequisite(simpleCharm, otherCharm);
         boolean attributePrerequisites = haveAttributePrerequisites(simpleCharm, otherCharm);
         boolean abilityAttributeCombo = crossPrerequisite && isAbilityAttributeCombo(simpleCharm, otherCharm);
-        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
+        legal[0] = allAbilitiesRule || selectAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
       }
 
       public void visitPermanent(CharmType visitedType) {
