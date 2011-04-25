@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmTreeViewProperties;
 import net.sf.anathema.lib.resources.IResources;
@@ -34,6 +35,15 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
       return null;
     }
     return configuration.getCharmById(id);
+  }
+  
+  @Override
+  protected ISpecialCharm getSpecialCharm(String charmId)
+  {
+	  for (ISpecialCharm special : configuration.getSpecialCharms())
+		  if (special.getCharmId().equals(charmId))
+			  return special;
+	  return null;
   }
 
   @Override

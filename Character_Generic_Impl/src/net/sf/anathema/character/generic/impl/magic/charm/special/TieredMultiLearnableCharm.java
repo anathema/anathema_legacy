@@ -20,6 +20,11 @@ public class TieredMultiLearnableCharm extends AbstractMultiLearnableCharm {
     this.traitType = traitType;
     this.tiers = tiers;
   }
+  
+  public CharmTier[] getTiers()
+  {
+	  return tiers;
+  }
 
   public int getAbsoluteLearnLimit() {
     return tiers.length;

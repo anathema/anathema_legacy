@@ -8,6 +8,7 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -102,13 +103,16 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   }
 
   protected abstract ICharm getCharmById(String id);
+  
+  protected abstract ISpecialCharm getSpecialCharm(String id);
 
   public final String getToolTip(final String charmId) {
     if (isRequirementNode(charmId)) {
       return null;
     }
     ICharm charm = findNonNullCharm(charmId);
-    return tooltipTextProvider.getInfoString(charm);
+    ISpecialCharm specialCharm = getSpecialCharm(charmId);
+    return tooltipTextProvider.getInfoString(charm, specialCharm);
   }
 
   public Cursor getControlCursor() {

@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -16,6 +17,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
   private final IMagicInfoStringBuilder costStringBuilder;
   private final IMagicSourceStringBuilder<ICharm> sourceStringBuilder;
   private final ICharmTypeStringBuilder typeStringBuilder;
+  private final ISpecialCharmStringBuilder specialCharmStringBuilder;
   private final IResources resources;
 
   public CharmInfoStringBuilder(IResources resources) {
@@ -23,9 +25,10 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     costStringBuilder = new ScreenDisplayInfoStringBuilder(resources);
     sourceStringBuilder = new MagicSourceStringBuilder<ICharm>(resources);
     typeStringBuilder = new VerboseCharmTypeStringBuilder(resources);
+    specialCharmStringBuilder = new SpecialCharmStringBuilder(resources);
   }
 
-  public final String getInfoString(ICharm charm) {
+  public final String getInfoString(ICharm charm, ISpecialCharm specialDetails) {
     Ensure.ensureNotNull("Charm must not be null.", charm); //$NON-NLS-1$
     StringBuilder builder = new StringBuilder();
     builder.append("<html><body><b>"); //$NON-NLS-1$
@@ -49,6 +52,10 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     builder.append(createKeywordLine(charm));
     builder.append(createPrerequisiteLines(charm.getPrerequisites()));
     builder.append(createPrerequisiteLines(new IGenericTrait[] { charm.getEssence() }));
+    
+    if (specialDetails != null)
+    	builder.append(specialCharmStringBuilder.createDetailsString(charm, specialDetails));
+    
     builder.append(resources.getString("CharmTreeView.ToolTip.Source")); //$NON-NLS-1$
     builder.append(IMagicStringBuilderConstants.ColonSpace);
     builder.append(sourceStringBuilder.createSourceString(charm));
@@ -85,6 +92,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
   private String createPrerequisiteLines(IGenericTrait[] prerequisites) {
     String prerequisiteLines = ""; //$NON-NLS-1$
     for (IGenericTrait prerequisite : prerequisites) {
+      if (prerequisite.getCurrentValue() == 0) continue;
       prerequisiteLines = prerequisiteLines.concat(resources.getString("CharmTreeView.ToolTip.Minimum")); //$NON-NLS-1$
       prerequisiteLines = prerequisiteLines.concat(IMagicStringBuilderConstants.Space);
       prerequisiteLines = prerequisiteLines.concat(resources.getString(prerequisite.getType().getId()));

@@ -3,8 +3,10 @@ package net.sf.anathema.cascades.presenter;
 import java.awt.Cursor;
 import java.util.Map;
 
+import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -18,13 +20,16 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   private IIdentificate type;
   private IExaltedRuleSet rules;
+  private ICharacterGenerics generics;
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules;
 
   public CascadeCharmTreeViewProperties(
       IResources resources,
+      ICharacterGenerics generics,
       Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules) {
     super(resources);
     this.charmMapsByRules = charmMapsByRules;
+    this.generics = generics;
   }
 
   @Override
@@ -34,6 +39,16 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
       charm = searchCharm(id);
     }
     return charm;
+  }
+  
+  @Override
+  protected ISpecialCharm getSpecialCharm(String id)
+  {
+	  ISpecialCharm[] set = generics.getCharmProvider().getSpecialCharms((CharacterType)type, rules.getEdition());
+	  for (ISpecialCharm special : set)
+		  if (special.getCharmId().equals(id))
+			  return special;
+	  return null;
   }
 
   private ICharm searchCharm(final String charmId) {
