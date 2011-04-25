@@ -27,9 +27,9 @@
     				<fixedValue value="6" pool="11"/>
     			</peripheralPool>
     		</multilearnablePool>
-	    	<revisedIntimacies value="true" />
-    		<willpowerVirtueBased value="false" />
     	</additionalPools>
+    	<revisedIntimacies value="true" />
+    	<willpowerVirtueBased value="false" />
     </additionalRules>
     <additionalTemplates>
       <template id="Db.VirtueFlaw.Template" />

@@ -44,7 +44,7 @@
 		</specialTrait>
 		<specialTrait id="Socialize" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
 			<limitation type="Essence"/>
-			<minimum value="2"/>
+			<minimum value="1"/>
 		</specialTrait>
 		<specialTrait id="MartialArts" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
 			<limitation type="Essence"/>
@@ -59,4 +59,8 @@
 			<minimum value="1"/>
 		</specialTrait>
   </abilities>
+  <essence startValue="3" lowerableState="Default">
+		<limitation type="Static" value="7"/>
+		<minimum value="3"/>
+  </essence>
 </traitTemplates>

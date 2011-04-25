@@ -3,6 +3,7 @@ package net.sf.anathema.character.lunar.reporting;
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.PADDING;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.lunar.reporting.heartsblood.FirstEditionLunarHeartsBloodEncoder;
@@ -31,12 +32,12 @@ public class FirstEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
   private final IResources resources;
   private final int essenceMax;
   private final BaseFont baseFont;
+  private final BaseFont symbolFont;
 
   private static final int ANIMA_HEIGHT = 128;
   private static final int VIRTUE_HEIGHT = 72;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
-  private final PdfEncodingRegistry registry;
   private final IPdfPartEncoder partEncoder;
 
   public FirstEditionLunarBeastformPageEncoder(
@@ -49,9 +50,9 @@ public class FirstEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
     this.baseFont = registry.getBaseFont();
     this.essenceMax = essenceMax;
     this.resources = resources;
-    this.registry = registry;
     this.pageConfiguration = pageConfiguration;
     this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
+    this.symbolFont = registry.getSymbolBaseFont();
   }
 
   public void encode(
@@ -210,7 +211,7 @@ public class FirstEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfContentBoxEncoder encoder = partEncoder.getCombatStatsEncoder();
+    FirstEditionDBTCombatEncoder encoder = new FirstEditionDBTCombatEncoder(resources, baseFont);
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
@@ -221,7 +222,8 @@ public class FirstEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfContentBoxEncoder encoder = partEncoder.getHealthAndMovementEncoder();
+    IPdfContentBoxEncoder encoder = new FirstEditionLunarHealthAndMovementEncoder(
+    		resources, baseFont, symbolFont, character);
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
@@ -252,7 +254,8 @@ public class FirstEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfContentBoxEncoder weaponryEncoder = registry.getWeaponContentEncoder();
+    IPdfContentBoxEncoder weaponryEncoder = new WeaponryEncoder(resources, baseFont,
+    		new LunarWeaponTableEncoder(baseFont, resources, character));
     boxEncoder.encodeBox(directContent, weaponryEncoder, character, bounds);
     return height;
   }

@@ -27,6 +27,7 @@
      <charm id="Solar.BlackMirrorRevelation" exalt="Solar" group="Occult">
           <prerequisite>
                <trait id="Occult" value="5" />
+               <background id="Whispers" value="1" />
                <essence value="4" />
                <selectiveCharmGroup threshold="1">
                    <charmReference id="Solar.LabyrinthCircleNecromancy" />
@@ -36,7 +37,7 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <charmAttribute attribute="Avatar" visualize="true" />
+          <charmAttribute attribute="Avatar1" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <source source="GloriesUCS" />
      </charm>

@@ -12,6 +12,7 @@ public interface ICharmXMLConstants {
   public static final String ATTRIB_PERMANENT = "permanent"; //$NON-NLS-1$
 
   public static final String ATTRIB_ALL_ABILITIES = "allAbilities"; //$NON-NLS-1$
+  public static final String ATTRIB_SELECT_ABILITIES = "selectAbilities"; //$NON-NLS-1$
   public static final String ATTRIB_AMOUNT = "amount"; //$NON-NLS-1$
   public static final String ATTRIB_ATTRIBUTE = "attribute"; //$NON-NLS-1$  
   public static final String ATTRIB_COMBOABLE = "comboable"; //$NON-NLS-1$
@@ -57,6 +58,7 @@ public interface ICharmXMLConstants {
   public static final String TAG_MARTIAL_ARTS_LEVEL = "martialArtsLevel"; //$NON-NLS-1$
   public static final String TAG_PREREQUISITE_LIST = "prerequisite"; //$NON-NLS-1$
   public static final String TAG_TRAIT = "trait"; //$NON-NLS-1$
+  public static final String TAG_BACKGROUND = "background"; //$NON-NLS-1$
   public static final String TAG_TRAIT_REFERENCE = "traitReference"; //$NON-NLS-1$
   public static final String TAG_SELECTIVE_CHARM_GROUP = "selectiveCharmGroup"; //$NON-NLS-1$
   public static final String TAG_RESTRICTIONS = "restrictions"; //$NON-NLS-1$

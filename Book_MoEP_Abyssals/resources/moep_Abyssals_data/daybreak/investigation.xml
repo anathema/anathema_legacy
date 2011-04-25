@@ -95,6 +95,7 @@
      <charm id="Abyssal.UnholyUnwittingPact" exalt="Abyssal" group="Investigation">
           <prerequisite>
                <trait id="Investigation" value="4" />
+               <background id="Whispers" value="1" />
                <essence value="2" />
                <charmReference id="Abyssal.DeceptionPiercingStare" />
                <charmReference id="Abyssal.SpiderInSocietysWeb" />

@@ -1,6 +1,8 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ALL_ABILITIES;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SELECT_ABILITIES;
+
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_COMBOABLE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
@@ -31,9 +33,10 @@ public class ComboRulesBuilder implements IComboRulesBuilder {
       return new ComboRestrictions();
     }
     Boolean allAbilities = ElementUtilities.getBooleanAttribute(comboElement, ATTRIB_ALL_ABILITIES, false);
+    String selectAbilities = comboElement.attributeValue(ATTRIB_SELECT_ABILITIES, "");
     String comboAllowedValue = comboElement.attributeValue(ATTRIB_COMBOABLE);
     Boolean comboAllowed = comboAllowedValue == null ? null : Boolean.valueOf(comboAllowedValue);
-    ComboRestrictions comboRules = new ComboRestrictions(allAbilities, comboAllowed);
+    ComboRestrictions comboRules = new ComboRestrictions(allAbilities, selectAbilities, comboAllowed);
     Element restrictionElement = comboElement.element(TAG_RESTRICTIONS);
     if (restrictionElement != null) {
       buildRestrictionList(comboRules, restrictionElement);

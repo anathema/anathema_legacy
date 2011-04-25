@@ -124,6 +124,7 @@
      <charm id="Abyssal.TeachingIncomprehensibleTruths" exalt="Abyssal" group="Lore">
           <prerequisite>
                <trait id="Lore" value="5" />
+               <background id="Whispers" value="1" />
                <essence value="3" />
                <charmReference id="Abyssal.WillFeastingOnslaught" />
           </prerequisite>

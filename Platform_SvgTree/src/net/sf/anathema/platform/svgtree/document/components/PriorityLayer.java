@@ -2,6 +2,7 @@ package net.sf.anathema.platform.svgtree.document.components;
 
 import java.awt.Dimension;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -54,9 +55,9 @@ public class PriorityLayer extends Layer {
 			System.out.println("***** Sweeping DOWN *****");
 		}
 		IVisualizableNode[] prioritizedNodes = getNodes();
-		Arrays.sort(prioritizedNodes, new PriorityNodeComparator(direction));
+		Comparator<IVisualizableNode> comparator = new PriorityNodeComparator(direction);
+		Arrays.sort(prioritizedNodes, comparator);
 		
-		Set<IVisualizableNode> fixedNodes = new HashSet<IVisualizableNode>(nodes.size());
 		for (IVisualizableNode node : prioritizedNodes) {
 			Integer targetPosition;
 			if (direction == Direction.DOWN) {
@@ -72,25 +73,37 @@ public class PriorityLayer extends Layer {
 					nodeId = ((VisualizableNode) node).getContentNode().getId();
 				}
 				System.out.println(nodeId + ": " + node.getPosition() + " --> " + targetPosition);
-				setNodePosition(node, targetPosition, fixedNodes);
+				setNodePosition(node, targetPosition, comparator);
 				System.out.println("Reached " + node.getPosition());
 			}
-			fixedNodes.add(node);
 		}
 	}
 
-	public void setNodePosition(IVisualizableNode node, int centralPosition) {
-		setNodePosition(node, centralPosition, new HashSet<IVisualizableNode>());
+	public void setNodePosition(final IVisualizableNode node, int centralPosition) {
+		setNodePosition(node, centralPosition, new Comparator<IVisualizableNode>(){
+			@Override
+			public int compare(IVisualizableNode arg0, IVisualizableNode arg1) {
+				if (arg0 != node && arg1 == node) {
+					return -1;
+				}
+				else if (arg0 == node && arg1 != node) {
+					return 1;
+				}
+				else {
+					return 0;
+				}
+			}
+		});
 	}
 
-	public void setNodePosition(IVisualizableNode node, int position, Set<IVisualizableNode> fixedNodes) {
+	public void setNodePosition(IVisualizableNode node, int position, Comparator<? super IVisualizableNode> priorityComparator) {
 		if (position == node.getPosition()) return;
 		
 		int targetShift = Math.abs(position - node.getPosition());
 		int direction = Integer.signum(position - node.getPosition());
 		IVisualizableNode current = node;
 		IVisualizableNode preceding = null;
-		while (targetShift > 0 && current != null && !fixedNodes.contains(current)) {
+		while (targetShift > 0 && current != null && (current == node || priorityComparator.compare(current, node) < 0)) {
 			Integer slack;
 			if (direction < 0) {
 				slack = getLeftSideSlack(current);

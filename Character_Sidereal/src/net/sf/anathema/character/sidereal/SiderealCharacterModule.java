@@ -20,6 +20,7 @@ import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateType;
+import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -42,6 +43,7 @@ import net.sf.anathema.character.sidereal.template.ISiderealSpecialCharms;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.Identificate;
 
 public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
@@ -53,6 +55,9 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final String BACKGROUND_ID_SALARY = "Salary"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SAVANT = "Savant"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SIFU = "Sifu"; //$NON-NLS-1$
+  
+  private static final TemplateType revisedType = new TemplateType(CharacterType.SIDEREAL, new Identificate(
+  "Revised")); //$NON-NLS-1$
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -99,7 +104,7 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    ITemplateType[] defaultTemplateType = new ITemplateType[] { DefaultSiderealTemplate.TEMPLATE_TYPE };
+    ITemplateType[] defaultTemplateType = new ITemplateType[] { DefaultSiderealTemplate.TEMPLATE_TYPE, revisedType };
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_ACQUAINTANCES, CharacterType.SIDEREAL));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, CharacterType.SIDEREAL));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CELESTIAL_MANSE, defaultTemplateType));

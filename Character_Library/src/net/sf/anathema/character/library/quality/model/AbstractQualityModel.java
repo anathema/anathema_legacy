@@ -85,7 +85,7 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
     }
   }
 
-  private void removeQualityCompletely(IQualitySelection<Q> existingSelection) {
+  protected void removeQualityCompletely(IQualitySelection<Q> existingSelection) {
     selectedQualities.remove(existingSelection);
   }
 

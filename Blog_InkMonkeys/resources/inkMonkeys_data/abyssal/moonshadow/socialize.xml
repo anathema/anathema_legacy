@@ -26,6 +26,7 @@
 	<charm id="Abyssal.ScribingTheOldLaws" exalt="Abyssal" group="Socialize">
 		<prerequisite>
 			<trait id="Socialize" value="3" />
+			<background id="Whispers" value="1" />
 			<essence value="2" />
 		</prerequisite>
 		<cost>
@@ -46,6 +47,7 @@
 	<charm id="Abyssal.KeeperOfTheOldLaws" exalt="Abyssal" group="Socialize">
 		<prerequisite>
 			<trait id="Socialize" value="4" />
+			<background id="Whispers" value="2" />
 			<essence value="3" />
 			<charmReference id="Abyssal.ScribingTheOldLaws" />
 		</prerequisite>

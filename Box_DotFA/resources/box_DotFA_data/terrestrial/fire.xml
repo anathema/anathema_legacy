@@ -93,8 +93,7 @@
      <charm id="Dragon-Blooded.ImplacableProgenitorMien" exalt="Dragon-Blooded" group="Socialize">
           <prerequisite>
                <trait id="Socialize" value="6" />
-               <!-- TODO:  Targeting Background? ->
-               <trait id="Breeding" value="5" /-->
+               <background id="Breeding" value="1" />
                <essence value="6" />
                <charmReference id="Dragon-Blooded.JadeDefense" />
                <charmReference id="Dragon-Blooded.WaryYellowDogAttitude" />
@@ -104,7 +103,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Dynasty" visualize="true" />
-          <charmAttribute attribute="Purity" visualize="true" />
+          <charmAttribute attribute="Purity5" visualize="true" />
           <source source="LordsOfCreation" />
      </charm>
 </charmlist>

@@ -27,8 +27,7 @@
      <charm id="Dragon-Blooded.HonoredAncestorExhalation" exalt="Dragon-Blooded" group="Linguistics">
           <prerequisite>
                <trait id="Linguistics" value="5" />
-               <!-- TODO:  Targeting Background? ->
-               <trait id="Breeding" value="3" /-->
+               <background id="Breeding" value="3" />
                <essence value="6" />
                <charmReference id="Dragon-Blooded.SpeechWithoutWords" />
                <charmReference id="Dragon-Blooded.WithOneMind" />
@@ -41,15 +40,14 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Dynasty" visualize="true" />
           <charmAttribute attribute="Martyr" visualize="true" />
-          <charmAttribute attribute="Purity" visualize="true" />
+          <charmAttribute attribute="Purity3" visualize="true" />
           <source source="LordsOfCreation" />
 			<source source="ScrollErrata" />
      </charm>
      <charm id="Dragon-Blooded.EndlessCoilsEnlightenment" exalt="Dragon-Blooded" group="Lore">
           <prerequisite>
                <trait id="Lore" value="6" />
-               <!-- TODO:  Targeting Background? ->
-               <trait id="Breeding" value="5" /-->
+               <background id="Breeding" value="5" />
                <essence value="6" />
                <charmReference id="Dragon-Blooded.EternalMindMeditation" />
                <charmReference id="Dragon-Blooded.ElementalSuccorMethod" />
@@ -62,7 +60,7 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Emotion" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Purity" visualize="true" />
+          <charmAttribute attribute="Purity5" visualize="true" />
           <source source="LordsOfCreation" />
      </charm>
      <charm id="Dragon-Blooded.MantleOfElementalFusion" exalt="Dragon-Blooded" group="Occult">

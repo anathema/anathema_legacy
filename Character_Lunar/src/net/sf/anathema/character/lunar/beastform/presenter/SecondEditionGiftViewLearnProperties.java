@@ -86,13 +86,13 @@ public class SecondEditionGiftViewLearnProperties extends AbstractMagicLearnProp
     return new ListSelectionListener() {
       public void valueChanged(ListSelectionEvent e) {
         boolean enabled = !list.isSelectionEmpty();
-        for (Object object : list.getSelectedValues()) {
+        /*for (Object object : list.getSelectedValues()) {
           IQualitySelection<IGift> selection = (IQualitySelection<IGift>) object;
           if (model.isCreationLearnedSelectionInExperiencedCharacter(selection)) {
             enabled = false;
             break;
           }
-        }
+        }*/
         button.setEnabled(enabled);
       }
     };

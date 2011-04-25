@@ -1046,8 +1046,8 @@
 		<cost>
 			<essence cost="50" text="+ (committed)"/>
 		</cost>
-		<source source="SecondEdition" page="167" edition="SecondEdition" /> 
-		<!--source source="Infernals" page="167" edition="SecondEdition" /--> 
+		<!--source source="SecondEdition" page="167" edition="SecondEdition" /--> 
+		<source source="Infernals" page="167" edition="SecondEdition" /> 
 	</spell>
 	<spell id="Void.DimmingOfTheLight" circle="Void">
 		<cost>
@@ -1060,15 +1060,15 @@
 		<cost>
 			<essence cost="40" text="+ (committed)"/>
 		</cost>
-		<source source="SecondEdition" page="117" edition="SecondEdition" /> 
-		<!--source source="Abyssals2nd" page="117" edition="SecondEdition" /--> 
+		<!--source source="SecondEdition" page="117" edition="SecondEdition" /--> 
+		<source source="Abyssals2nd" page="117" edition="SecondEdition" /> 
 	</spell>
 	<spell id="Labyrinth.BlackInvestiture" circle="Labyrinth">
 		<cost>
 			<essence cost="20" text="or 60 motes, + 1 committed mote"/>
 		</cost>
-		<source source="SecondEdition" page="219" edition="SecondEdition" /> 
-		<!--source source="Abyssals2nd" page="219" edition="SecondEdition" /--> 
+		<!--source source="SecondEdition" page="219" edition="SecondEdition" /--> 
+		<source source="Abyssals2nd" page="219" edition="SecondEdition" /> 
 	</spell>
 	<spell id="Shadowlands.WhiteBoneEmissary" circle="Shadowlands">
 		<cost>

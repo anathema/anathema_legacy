@@ -78,6 +78,7 @@
      <charm id="Abyssal.InfiniteBlasphemyGlossolalia" exalt="Abyssal" group="Linguistics">
           <prerequisite>
                <trait id="Linguistics" value="2" />
+               <background id="Whispers" value="1" />
                <essence value="1" />
                <charmReference id="Abyssal.ScathingCynicAttitude" />
           </prerequisite>
@@ -175,6 +176,7 @@
      <charm id="Abyssal.ComprehensionSlayingObscenity" exalt="Abyssal" group="Linguistics">
           <prerequisite>
                <trait id="Linguistics" value="5" />
+               <background id="Whispers" value="3" />
                <essence value="3" />
                <charmAttributeRequirement attribute="ExcellencyLinguistics" count="1" />
                <charmReference id="Abyssal.LanguageAbsorbingMethod" />

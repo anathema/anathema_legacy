@@ -98,7 +98,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         if (viewProperties.isRequirementNode(charmId)) {
           return;
         }
-        ILearningCharmGroup charmGroup = charmSelectionChangeListener.getCurrentGroup();
+        ILearningCharmGroup charmGroup = statistics.getCharms().getGroup(statistics.getCharms().getCharmById(charmId));
+        
         charmGroup.toggleLearned(charms.getCharmById(charmId));
       }
     });
