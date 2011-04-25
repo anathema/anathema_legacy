@@ -10,6 +10,8 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- Features --
+* Implemented removal of charms when character's statistics are adjusted to be
+  below the prerequisites.
 * [2E] Added support for backgrounds dots as a charm prerequisite, and implemented
        this for Abyssal Whispers and Dragon-Blooded Purity.
 
