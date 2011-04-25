@@ -6,6 +6,14 @@ Exalted (C) 2001-2010 by White Wolf Publishing, Inc.
 
 http://anathema.sf.net
 ===------------------------------------------------------------------------------===
+			Untitled WIP Release
+===------------------------------------------------------------------------------===
+
+-- Features --
+* [2E] Added support for backgrounds dots as a charm prerequisite, and implemented
+       this for Abyssal Whispers and Dragon-Blooded Purity.
+
+===------------------------------------------------------------------------------===
 			Release 2.0.1 "Calibration"
 ===------------------------------------------------------------------------------===
 

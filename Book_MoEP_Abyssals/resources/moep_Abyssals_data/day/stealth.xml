@@ -39,6 +39,7 @@
      <charm id="Abyssal.UnseenWispMethod" exalt="Abyssal" group="Stealth">
           <prerequisite>
                <trait id="Stealth" value="5" />
+               <background id="Whispers" value="1" />
                <essence value="2" />
                <charmReference id="Abyssal.ShadowCloakTechnique" />
           </prerequisite>

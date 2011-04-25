@@ -107,6 +107,7 @@
      <charm id="Abyssal.WretchedRiddenNightmare" exalt="Abyssal" group="Ride">
           <prerequisite>
                <trait id="Ride" value="5" />
+               <background id="Whispers" value="1" />
                <essence value="3" />
                <charmReference id="Abyssal.UnholyMountWarding" />
           </prerequisite>

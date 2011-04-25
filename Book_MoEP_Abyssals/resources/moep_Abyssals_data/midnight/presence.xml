@@ -185,6 +185,7 @@
      <charm id="Abyssal.HeartlessFiendInsinuation" exalt="Abyssal" group="Presence">
           <prerequisite>
                <trait id="Presence" value="1" />
+               <background id="Whispers" value="1" />
                <essence value="3" />
                <charmAttributeRequirement attribute="ExcellencyPresence" count="1" />
           </prerequisite>
@@ -201,6 +202,7 @@
      <charm id="Abyssal.SanityErodingDiatribe" exalt="Abyssal" group="Presence">
           <prerequisite>
                <trait id="Presence" value="3" />
+               <background id="Whispers" value="1" />
                <essence value="3" />
                <charmAttributeRequirement attribute="ExcellencyPresence" count="1" />
           </prerequisite>

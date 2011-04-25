@@ -124,6 +124,7 @@
      <charm id="Abyssal.PiercingGazeOfTheUnmaker" exalt="Abyssal" group="Awareness">
           <prerequisite>
                <trait id="Awareness" value="5" />
+               <background id="Whispers" value="1" />
                <essence value="5" />
                <charmReference id="Abyssal.EntropicAwakeningOfSight" />
           </prerequisite>
@@ -158,6 +159,7 @@
      <charm id="Abyssal.OminousPortentMethod" exalt="Abyssal" group="Awareness">
           <prerequisite>
                <trait id="Awareness" value="5" />
+               <background id="Whispers" value="2" />
                <essence value="2" />
           </prerequisite>
           <cost />

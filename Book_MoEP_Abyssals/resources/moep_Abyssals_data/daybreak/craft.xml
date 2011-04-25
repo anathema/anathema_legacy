@@ -124,6 +124,7 @@
      <charm id="Abyssal.SoulForgingFury" exalt="Abyssal" group="Craft">
           <prerequisite>
                <trait id="Craft" value="5" />
+               <background id="Whispers" value="1" />
                <essence value="3" />
                <charmReference id="Abyssal.FrenziedForgeWithin" />
           </prerequisite>
@@ -142,6 +143,7 @@
      <charm id="Abyssal.WorldSlayingArsenalEphiphany" exalt="Abyssal" group="Craft">
           <prerequisite>
                <trait id="Craft" value="5" />
+               <background id="Whispers" value="3" />
                <essence value="5" />
                <charmReference id="Abyssal.FrenziedForgeWithin" />
                <charmReference id="Abyssal.EssenceFlow.Craft" />

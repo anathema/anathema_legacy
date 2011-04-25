@@ -133,7 +133,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   public IDefaultTrait getBackgroundByTemplate(IBackgroundTemplate type) {
     Ensure.ensureNotNull("Background type must not be null.", type); //$NON-NLS-1$
     for (IDefaultTrait background : getBackgrounds()) {
-      if (type.equals(background.getType())) {
+      if (type.equals(background.getType()) || type.getId().equals(background.getType().getId())) {
         return background;
       }
     }

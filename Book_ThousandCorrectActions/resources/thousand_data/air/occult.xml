@@ -27,6 +27,7 @@
      <charm id="Dragon-Blooded.ElementalInternalizationTechnique" exalt="Dragon-Blooded" group="Occult">
           <prerequisite>
                <trait id="Occult" value="1" />
+               <background id="Breeding" value="2" />
                <essence value="3" />
           </prerequisite>
           <cost>
