@@ -15,9 +15,13 @@ public class CharacterUtilties {
   public static int getDodgeMdv(IGenericTraitCollection traitCollection) {
     return getRoundDownDv(traitCollection, OtherTraitType.Willpower, AbilityType.Integrity, OtherTraitType.Essence);
   }
+  
+  public static int getKnockdownPool(IGenericCharacter character)
+  {
+	  return getKnockdownPool(character, character.getTraitCollection());
+  }
 
-  public static int getKnockdownPool(IGenericCharacter character) {
-    IGenericTraitCollection traitCollection = character.getTraitCollection();
+  public static int getKnockdownPool(IGenericCharacter character, IGenericTraitCollection traitCollection) {
     if (character.getRules().getEdition() == ExaltedEdition.FirstEdition) {
       return getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
     }

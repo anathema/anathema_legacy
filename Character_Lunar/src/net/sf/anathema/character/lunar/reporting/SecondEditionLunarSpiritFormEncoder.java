@@ -8,10 +8,8 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.model.SecondEditionBeastformModel;
-import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
@@ -31,11 +29,9 @@ public class SecondEditionLunarSpiritFormEncoder implements IPdfContentBoxEncode
   private final IResources resources;
   private final PdfTraitEncoder smallTraitEncoder;
   private final BaseFont baseFont;
-  private final float smallWidth;
 
   public SecondEditionLunarSpiritFormEncoder(BaseFont baseFont, IResources resources, float smallWidth) {
     this.resources = resources;
-    this.smallWidth = smallWidth;
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
     this.baseFont = baseFont;
   }

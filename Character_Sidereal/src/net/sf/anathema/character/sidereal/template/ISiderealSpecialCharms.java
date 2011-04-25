@@ -25,7 +25,7 @@ public interface ISiderealSpecialCharms {
       3);
   
   public static final ISpecialCharm OX_BODY_TECHNIQUE_2ND = new OxBodyTechniqueCharm(
-	      "Sidereal.Ox-BodyTechnique", AbilityType.Endurance, //$NON-NLS-1$
+	      "Sidereal.OxBodyTechnique", AbilityType.Resistance, //$NON-NLS-1$
 	      new LinkedHashMap<String, HealthLevelType[]>() {
 	        {
 	          put("Category.-0", new HealthLevelType[] { HealthLevelType.ZERO }); //$NON-NLS-1$

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite;
 
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_TRAIT;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_BACKGROUND;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class TraitPrerequisitesBuilder implements ITraitPrerequisitesBuilder {
   public IGenericTrait[] buildTraitPrerequisites(Element prerequisiteListElement) throws PersistenceException {
     List<IGenericTrait> allPrerequisites = new ArrayList<IGenericTrait>();
     ITraitPrerequisiteBuilder traitBuilder = new TraitPrerequisiteBuilder();
+    ITraitPrerequisiteBuilder backgroundBuilder = new BackgroundPrerequisiteBuilder();
     for (Element element : ElementUtilities.elements(prerequisiteListElement, TAG_TRAIT)) {
       try {
         allPrerequisites.add(traitBuilder.build(element));
@@ -23,6 +25,14 @@ public class TraitPrerequisitesBuilder implements ITraitPrerequisitesBuilder {
         throw new PersistenceException(e);
       }
     }
+    for (Element element : ElementUtilities.elements(prerequisiteListElement, TAG_BACKGROUND)) {
+        try {
+          allPrerequisites.add(backgroundBuilder.build(element));
+        }
+        catch (Exception e) {
+          throw new PersistenceException(e);
+        }
+      }
     return allPrerequisites.toArray(new IGenericTrait[allPrerequisites.size()]);
   }
 }

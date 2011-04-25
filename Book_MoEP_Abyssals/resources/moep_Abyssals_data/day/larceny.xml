@@ -57,6 +57,7 @@
      <charm id="Abyssal.RealitySubvertingGesture" exalt="Abyssal" group="Larceny">
           <prerequisite>
                <trait id="Larceny" value="3" />
+               <background id="Whispers" value="1" />
                <essence value="2" />
                <charmAttributeRequirement attribute="ExcellencyLarceny" count="1" />
           </prerequisite>

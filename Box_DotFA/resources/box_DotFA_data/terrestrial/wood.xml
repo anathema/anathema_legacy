@@ -45,8 +45,7 @@
      <charm id="Dragon-Blooded.TranscendentGaianHarmony" exalt="Dragon-Blooded" group="Medicine">
           <prerequisite>
                <trait id="Medicine" value="6" />
-               <!-- TODO: Targeting Background? ->
-               <trait id="Breeding" value="5" /-->
+               <background id="Breeding" value="5" />
                <essence value="6" />
                <charmReference id="Dragon-Blooded.MostBeneficentSeedFiveDragons" />
           </prerequisite>
@@ -54,7 +53,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Elemental" visualize="true" />
-          <charmAttribute attribute="Purity" visualize="true" />
+          <charmAttribute attribute="Purity5" visualize="true" />
           <source source="LordsOfCreation" />
 			<source source="ScrollErrata" />
      </charm>
@@ -104,15 +103,14 @@
      <charm id="Dragon-Blooded.WellTendedGardenOfTheSoul" exalt="Dragon-Blooded" group="Survival">
           <prerequisite>
                <trait id="Survival" value="5" />
-               <!-- TODO:  Targeting Background? ->
-               <trait id="Breeding" value="3" /-->
+               <background id="Breeding" value="3" />
                <essence value="5" />
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Martyr" visualize="true" />
-          <charmAttribute attribute="Purity" visualize="true" />
+          <charmAttribute attribute="Purity3" visualize="true" />
           <source source="LordsOfCreation" />
      </charm>
 </charmlist>

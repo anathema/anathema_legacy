@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
@@ -42,7 +41,7 @@ public class SecondEditionDBTCombatEncoder implements IPdfContentBoxEncoder {
 	        traitCollection,
 	        AttributeType.Stamina,
 	        AbilityType.Resistance);
-	    int knockdownPool = CharacterUtilties.getKnockdownPool(character);
+	    int knockdownPool = CharacterUtilties.getKnockdownPool(character, traitCollection);
 	    int stunningThreshold = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina);
 	    int stunningPool = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
 

@@ -73,12 +73,17 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
     }
     else if (charmConfiguration.getGroup(charm).isLearned(charm, true)) {
       for (ICharm mergedCharm : charm.getMergedCharms()) {
-        if (charmsCalculated.contains(mergedCharm)) {
+        if (charmsCalculated.contains(mergedCharm) && !isSpecialCharm(charm)) {
           return 0;
         }
       }
       return charmCost;
     }
     return 0;
+  }
+  
+  private boolean isSpecialCharm(ICharm charm)
+  {
+	  return statistics.getCharms().getSpecialCharmConfiguration(charm) != null;
   }
 }

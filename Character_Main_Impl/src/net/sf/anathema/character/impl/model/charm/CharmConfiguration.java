@@ -137,7 +137,8 @@ public class CharmConfiguration implements ICharmConfiguration {
       @Override
       public void charmLearned(ICharm charm) {
         for (ICharm mergedCharm : charm.getMergedCharms()) {
-          if (!isLearned(mergedCharm) && isLearnableWithoutPrereqs(mergedCharm)) {
+          if (!isLearned(mergedCharm) && isLearnableWithoutPrereqs(mergedCharm) &&
+        		  CharmConfiguration.this.getSpecialCharmConfiguration(mergedCharm) == null) {
             getGroup(mergedCharm).learnCharm(mergedCharm, context.getBasicCharacterContext().isExperienced());
           }
         }
@@ -324,6 +325,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     context.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
       public void characterChanged() {
+    	verifyCharms();
         fireLearnConditionsChanged();
       }
     });
@@ -338,6 +340,19 @@ public class CharmConfiguration implements ICharmConfiguration {
         fireLearnConditionsChanged();
       }
     });
+  }
+  
+  private void verifyCharms()
+  {
+	  List<ICharm> unlearning = new ArrayList<ICharm>();
+	  
+	  for (ICharm charm : this.getLearnedCharms(true))
+		  if (!isLearnable(charm) && isUnlearnable(charm))
+			  unlearning.add(charm);
+	  
+	  for (ICharm charm : unlearning)
+		  learningCharmGroupContainer.getLearningCharmGroup(charm).forgetCharm(charm, 
+				!learningCharmGroupContainer.getLearningCharmGroup(charm).isLearned(charm, false));
   }
 
   public void addLearnableListener(IChangeListener listener) {
@@ -385,7 +400,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     }
     for (IGenericTrait prerequisite : charm.getPrerequisites()) {
       IGenericTrait prerequisiteTrait = context.getTraitCollection().getTrait(prerequisite.getType());
-      if (prerequisite.getCurrentValue() > prerequisiteTrait.getCurrentValue()) {
+      if (prerequisiteTrait == null || prerequisite.getCurrentValue() > prerequisiteTrait.getCurrentValue()) {
         return false;
       }
     }

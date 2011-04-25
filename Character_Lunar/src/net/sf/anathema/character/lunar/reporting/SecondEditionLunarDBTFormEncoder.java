@@ -30,12 +30,10 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
   private final IResources resources;
   private final PdfTraitEncoder smallTraitEncoder;
   private final BaseFont baseFont;
-  private final float smallWidth;
   private final int lineHeight = IVoidStateFormatConstants.LINE_HEIGHT - 4;
 
   public SecondEditionLunarDBTFormEncoder(BaseFont baseFont, IResources resources, float smallWidth) {
     this.resources = resources;
-    this.smallWidth = smallWidth;
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
     this.baseFont = baseFont;
   }

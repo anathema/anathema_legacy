@@ -210,6 +210,7 @@
      <charm id="Abyssal.SteppingOutsideExistence" exalt="Abyssal" group="Athletics">
           <prerequisite>
                <trait id="Athletics" value="5" />
+               <background id="Whispers" value="1" />
                <essence value="4" />
                <charmReference id="Abyssal.EarthForsakingStance" />
           </prerequisite>

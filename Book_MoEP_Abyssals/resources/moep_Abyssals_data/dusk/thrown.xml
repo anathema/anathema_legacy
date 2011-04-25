@@ -93,6 +93,7 @@
      <charm id="Abyssal.BurrowingBoneMaggot" exalt="Abyssal" group="Thrown">
           <prerequisite>
                <trait id="Thrown" value="3" />
+               <background id="Whispers" value="1" />
                <essence value="3" />
                <charmReference id="Abyssal.ImprovisedAssassinsTrick" />
                <charmAttributeRequirement attribute="ExcellencyThrown" count="1" />
@@ -182,6 +183,7 @@
      <charm id="Abyssal.EyesLikeDaggersGlance" exalt="Abyssal" group="Thrown">
           <prerequisite>
                <trait id="Thrown" value="5" />
+               <background id="Whispers" value="1" />
                <essence value="3" />
                <charmReference id="Abyssal.CryptBoltAttack" />
           </prerequisite>

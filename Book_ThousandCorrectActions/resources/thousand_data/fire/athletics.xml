@@ -27,6 +27,7 @@
      <charm id="Dragon-Blooded.TailFollowsHead" exalt="Dragon-Blooded" group="Athletics">
           <prerequisite>
                <trait id="Athletics" value="3" />
+               <background id="Breeding" value="3" />
                <essence value="3" />
                <charmAttributeRequirement attribute="ExcellencyAthletics" count="1" /> 
           </prerequisite>

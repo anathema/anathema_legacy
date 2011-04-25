@@ -45,8 +45,7 @@
      <charm id="Dragon-Blooded.DredgedMurmursHunch" exalt="Dragon-Blooded" group="Investigation">
           <prerequisite>
                <trait id="Investigation" value="5" />
-               <!-- TODO:  Targeting Background? ->
-               <trait id="Breeding" value="3" /-->
+               <background id="Breeding" value="3" />
                <essence value="5" />
                <charmReference id="Dragon-Blooded.BloodhoundsNoseTechnique" />
                <charmReference id="Dragon-Blooded.ClearWaterPrana" />
@@ -56,7 +55,7 @@
           </cost>
           <duration duration="Instant" />
           <charmtype type="Simple" />
-          <charmAttribute attribute="Purity" visualize="true" />
+          <charmAttribute attribute="Purity3" visualize="true" />
           <source source="LordsOfCreation" />
      </charm>
      <charm id="Dragon-Blooded.FlowingGodDragonStance" exalt="Dragon-Blooded" group="Larceny">

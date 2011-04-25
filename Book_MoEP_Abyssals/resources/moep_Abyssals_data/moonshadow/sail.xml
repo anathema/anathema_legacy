@@ -27,6 +27,7 @@
      <charm id="Abyssal.DarkWaterOdyssey" exalt="Abyssal" group="Sail">
           <prerequisite>
                <trait id="Sail" value="3" />
+               <background id="Whispers" value="1" />
                <essence value="2" />
                <charmAttributeRequirement attribute="ExcellencySail" count="1" />
           </prerequisite>
@@ -77,6 +78,7 @@
      <charm id="Abyssal.SeaScanningGlare" exalt="Abyssal" group="Sail">
           <prerequisite>
                <trait id="Sail" value="5" />
+               <background id="Whispers" value="1" />
                <essence value="3" />
                <charmReference id="Abyssal.DeckStridingPhantom" />
                <charmAttributeRequirement attribute="ExcellencySail" count="1" />

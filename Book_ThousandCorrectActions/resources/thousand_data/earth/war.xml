@@ -186,6 +186,7 @@
      <charm id="Dragon-Blooded.WrathDirectingGesture" exalt="Dragon-Blooded" group="War">
           <prerequisite>
                <trait id="War" value="4" />
+               <background id="Breeding" value="3" />
                <essence value="4" />
                <charmReference id="Dragon-Blooded.Dragon-SearedBattlefield" /> 
           </prerequisite>

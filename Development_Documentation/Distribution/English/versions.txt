@@ -6,15 +6,44 @@ Exalted (C) 2001-2010 by White Wolf Publishing, Inc.
 
 http://anathema.sf.net
 ===------------------------------------------------------------------------------===
-			Release 2.0.0 "Stygia"
+			Untitled WIP Release
+===------------------------------------------------------------------------------===
+
+-- Features --
+* Implemented removal of charms when character's statistics are adjusted to be
+  below the prerequisites.
+* [2E] Added support for backgrounds dots as a charm prerequisite, and implemented
+       this for Abyssal Whispers and Dragon-Blooded Purity.
+* [2E] Adding support for charms which may explicitly be comboed with charms from
+       other abilities (Elemental Bolt Attack being the poster child).
+
+===------------------------------------------------------------------------------===
+			Release 2.0.1 "Calibration"
+===------------------------------------------------------------------------------===
+
+-- Features --
+* Fixed assorted printing bugs for 1E and 2E Lunars, and an exception for 1E Lunars.
+* [2E] Fixed some errors in the DB Revised templates.
+* [2E] Fixed problems with Silver Lunar Resolution and Charms in similar contexts.
+* [2E] Restored Ox-Body option selection for Sidereals and Abyssals.
+* [2E] Restored the page reference for Wonder-Forging Genius.
+* [2E] Addressed minor issues with certain default Background options;
+       among other things, Sidereals should now have Salary by default.
+* [2E] Added all Sorcery and Necromancy page references (thanks, Scott!)
+* [2E] Lunars can now properly unlearn DBT mutations taken at character creation.
+
+===------------------------------------------------------------------------------===
+			Release 2.0.0 "Calibration"
 ===------------------------------------------------------------------------------===
 
 -- Features --
 * [2E] Added Abyssal characters to Anathema.
 * [2E] Added Lunar characters to Anathema.
 * [2E] Added Sidereal characters to Anathema.
+* [2E] Consolidated the First Age Solars templates.
 * [2E] Added filter code to allow users to adjust what charms are displayed.
-* [2E] Ink Monkeys charms up through Ink Monkeys 47
+* [2E] Added and updated Ink Monkeys charms up through Ink Monkeys 48.
+* [2E] Assorted bugs and data-entry errors fixed.
 
 ===------------------------------------------------------------------------------===
 			Release 1.5.1 "Lookshy"

@@ -79,7 +79,7 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
     	            new ApocalypticEvolution(),
     	            new SupremePerfection()}); //$NON-NLS-1$
 	ISpecialCharm[] specialCharms = new ISpecialCharm[]   { // TODO 2E Special Charms
-            IAbyssalSpecialCharms.OX_BODY_TECHNIQUE,
+            IAbyssalSpecialCharms.OX_BODY_TECHNIQUE_2ND,
             IAbyssalSpecialCharms.WORLD_SLAYING_ARSENEL,
             IAbyssalSpecialCharms.CADAVEROUS_TORPOR_TECHNIQUE,
             IAbyssalSpecialCharms.WRITHING_BLOOD_CHAIN_TECHNIQUE,

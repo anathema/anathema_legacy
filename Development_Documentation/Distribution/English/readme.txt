@@ -1,11 +1,11 @@
 ===------------------------------------------------------------------------------===
-	    ANATHEMA v2.0.0 "STYGIA"
+	    ANATHEMA v2.0.1 "CALIBRATION"
 ===------------------------------------------------------------------------------===
 
 Anathema Read Me
 (C) 2004-2008 by Sandra Sieroux and Urs Reupke
-(C) 2010-2011 by Urs Reupke, Sandra Sieroux, Scott Olson, Eric Astor, Paul Adams,
-                 Rob Rutherford, Sean Mattox, and Douglas Fotheringham
+(C) 2010-2011 by Urs Reupke, Sandra Sieroux, Paul Adams, Eric Astor,
+                 Douglas Fotheringham, Sean Mattox, Scott Olson, and Rob Rutherford
 Exalted (C) 2001-2011 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
@@ -50,7 +50,9 @@ Guides covering installation and general use are available from the project page
 
 Run the program by typing "java -jar anathema.jar".
 Windows users will want to use the executable provided, same goes for Linux and the 
-shell script. Automatic desktop integration on Mac OS X is handled by the .dmg download.
+shell script. Automatic desktop integration on Mac OS X is handled by the .dmg
+download; if no .dmg is available, Mac users should take the application out of the
+Mac .zip file and drag it to the Applications folder.
 
 Linux users should make sure that either r/w-rights are granted on the Anathema directory or
 that a proper directory is specified at startup, using the '-Drepository' parameter, e.g.
@@ -68,13 +70,13 @@ You can always get the most up to date version at "http//java.sun.com".
 ===------------------------------------------------------------------------------===
 
 + Generate and maintain all 5 core exalt types (1E)
-+ Generate and maintain Solar. Lunar, Abyssal, Sidereal, and Dragon-blooded exalt
++ Generate and maintain Solar, Lunar, Sidereal, Dragon-Blooded, and Abyssal exalt
   types (2E)
 + Generate character descriptions (currently disabled)
 + Print character sheets and descriptions to PDF
 + Organize your series' plot
 + Manage a music database for your series
-+ View many an Exalts Charm data
++ View many an Exalt's Charm data
 
 See versions.txt for a version history.
 
@@ -129,7 +131,7 @@ See versions.txt for a history of bugs fixed.
 Anathema was created  by Sandra Sieroux and Urs Reupke, with further development
 (starting with version 1.4.1) by Scott Olson, Eric Astor, Rob Rutherford, Paul Adams,
 Sean Mattox, Douglas Fotheringham, and others. Contact us at
-the-smith@users.sourceforge.net with questions, comments or suggestions.
+anathema-developers@lists.sourceforge.net with questions, comments or suggestions.
 
 For bug reports you should use the SourceForge.net Tracking System at
 http://sourceforge.net/projects/anathema
@@ -149,7 +151,7 @@ If you are interested in seeing Anathema in your native language,
 please contact us.
 
 If you're interested in becoming a member of the Anathema
-development team, please contact us, at the-smith@users.sourceforge.net.
+development team, please contact us, at anathema-developers@lists.sourceforge.net.
 
 ===------------------------------------------------------------------------------===
 		IX - Thanks

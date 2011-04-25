@@ -91,6 +91,7 @@
      <charm id="Abyssal.HeartOfDarkness" exalt="Abyssal" group="Integrity">
           <prerequisite>
                <trait id="Integrity" value="2" />
+               <background id="Whispers" value="1" />
                <essence value="1" />
                <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1" />
           </prerequisite>
@@ -112,6 +113,7 @@
      <charm id="Abyssal.LesserHorrorsScorned" exalt="Abyssal" group="Integrity">
           <prerequisite>
                <trait id="Integrity" value="4" />
+               <background id="Whispers" value="1" />
                <essence value="2" />
                <charmReference id="Abyssal.HeartOfDarkness" />
           </prerequisite>
@@ -134,6 +136,7 @@
      <charm id="Abyssal.FreedomInSlaveryUnderstanding" exalt="Abyssal" group="Integrity">
           <prerequisite>
                <trait id="Integrity" value="5" />
+               <background id="Whispers" value="3" />
                <essence value="4" />
                <charmReference id="Abyssal.LesserHorrorsScorned" />
           </prerequisite>
@@ -150,6 +153,7 @@
      <charm id="Abyssal.FaithfulKillersReprieve" exalt="Abyssal" group="Integrity">
           <prerequisite>
                <trait id="Integrity" value="4" />
+               <background id="Whispers" value="1" />
                <essence value="3" />
                <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1" />
           </prerequisite>
@@ -162,6 +166,7 @@
      <charm id="Abyssal.ImmortalMalevolenceEnslavement" exalt="Abyssal" group="Integrity">
           <prerequisite>
                <trait id="Integrity" value="5" />
+               <background id="Whispers" value="5" />
                <essence value="5" />
                <charmReference id="Abyssal.FaithfulKillersReprieve" />
                <charmReference id="Abyssal.FreedomInSlaveryUnderstanding" />

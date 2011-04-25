@@ -16,8 +16,8 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisit
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
+import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
@@ -28,12 +28,14 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   private final IHealthConfiguration health;
   private final ICharacterModelContext context;
   private final IExtendedCharmLearnableArbitrator arbitrator;
+  private final ICharmConfiguration config;
 
   public SpecialCharmManager(
-      IExtendedCharmLearnableArbitrator arbitrator,
+	  ICharmConfiguration config,
       IHealthConfiguration health,
       ICharacterModelContext context) {
-    this.arbitrator = arbitrator;
+	this.config = config;
+    this.arbitrator = config;
     this.health = health;
     this.context = context;
   }
@@ -50,22 +52,12 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerMultiLearnableCharm(IMultiLearnableCharm visitedCharm, ICharm charm, ILearningCharmGroup group) {
-	  IDefaultTrait trait = null;
-	  for (ICharm merged : charm.getMergedCharms())
-	  {
-		  ISpecialCharmConfiguration config = specialConfigurationsByCharm.get(merged);
-		  if (config != null && config instanceof MultiLearnableCharmConfiguration)
-		  {
-			  trait = ((MultiLearnableCharmConfiguration)config).getTrait();
-			  break;
-		  }
-	  }
     addSpecialCharmConfiguration(charm, group, new MultiLearnableCharmConfiguration(
         context,
+        config,
         charm,
         visitedCharm,
-        arbitrator,
-        trait));
+        arbitrator));
   }
 
   private void registerOxBodyTechnique(IOxBodyTechniqueCharm visited, ICharm charm, ILearningCharmGroup group) {
