@@ -8,13 +8,16 @@
     <magicTemplate uses="template/HalfCasteSolarMagic2nd.template"/>
     <presentation uses="template/SpiritPresentation2nd.template"/>
     <additionalRules uses="template/GodBloodedAdditionalRules2nd.template"/>
+    <additionalTemplates>
+      <template id="GodBlooded.Inheritance.Template" />
+    </additionalTemplates>
     <healthTemplate>
       <toughnessControllingTrait type="Resistance"/>
     </healthTemplate>
   </general>
   <creation>
     <bonusPointCosts uses="template/GodBloodedBonusPointCost2nd.template" />
-    <creationPoints uses="net.sf.anathema.character.godblooded.template.GodBloodCreationPoints">
+    <creationPoints>
       <attributeDots primary="6" secondary="5" tertiary="3" genericDots="1"/>
       <abilityDots general="25" favoredPicks="2" />
       <backgroundDots count="6" />

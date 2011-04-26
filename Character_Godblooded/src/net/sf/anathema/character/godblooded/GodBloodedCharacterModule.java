@@ -2,12 +2,17 @@ package net.sf.anathema.character.godblooded;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceModelFactory;
+import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceParser;
+import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceTemplate;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
+import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identificate;
 
 public class GodBloodedCharacterModule extends NullObjectCharacterModuleAdapter {
@@ -24,6 +29,14 @@ public class GodBloodedCharacterModule extends NullObjectCharacterModuleAdapter 
   "HalfCasteSidereal")); //$NON-NLS-1$
   private static final TemplateType halfCasteSolarType = new TemplateType(CharacterType.SOLAR, new Identificate(
   "HalfCasteSolar")); //$NON-NLS-1$
+  
+  @Override
+  public void registerCommonData(ICharacterGenerics characterGenerics)
+  {
+	    characterGenerics.getAdditionalTemplateParserRegistry().register(
+	            GodBloodedInheritanceTemplate.ID,
+	            new GodBloodedInheritanceParser());
+  }
   
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
@@ -49,5 +62,19 @@ public class GodBloodedCharacterModule extends NullObjectCharacterModuleAdapter 
     		  halfCasteSolarType
       };
       backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_INHERITANCE, templates));
+  }
+  
+  @Override
+  public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) {
+    IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry = characterGenerics.getAdditionalModelFactoryRegistry();
+    //IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry = characterGenerics.getAdditionalViewFactoryRegistry();
+    //IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
+    registerGodBloodedInheritance(additionalModelFactoryRegistry);
+  }
+  
+  private void registerGodBloodedInheritance(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry)
+  {
+	  String templateId = GodBloodedInheritanceTemplate.ID;
+	  additionalModelFactoryRegistry.register(templateId, new GodBloodedInheritanceModelFactory());  
   }
 }
