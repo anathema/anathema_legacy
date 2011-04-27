@@ -24,6 +24,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -400,12 +401,21 @@ public class CharmConfiguration implements ICharmConfiguration {
     }
     for (IGenericTrait prerequisite : charm.getPrerequisites()) {
       IGenericTrait prerequisiteTrait = context.getTraitCollection().getTrait(prerequisite.getType());
-      if (prerequisiteTrait == null || prerequisite.getCurrentValue() > prerequisiteTrait.getCurrentValue()) {
+      int prereq = prerequisite.getCurrentValue();
+      for (ISpecialCharm specialCharm : getSpecialCharms())
+    	  if (specialCharm instanceof IPrerequisiteModifyingCharm && isLearned(specialCharm.getCharmId()))
+    		  prereq = ((IPrerequisiteModifyingCharm)specialCharm).getTraitModifier(charm, prerequisiteTrait.getType(), prereq);
+      
+      if (prerequisiteTrait == null || prereq > prerequisiteTrait.getCurrentValue()) {
         return false;
       }
     }
     IGenericTrait essenceTrait = context.getTraitCollection().getTrait(OtherTraitType.Essence);
-    if (charm.getEssence().getCurrentValue() > essenceTrait.getCurrentValue()) {
+    int essencePrereq = charm.getEssence().getCurrentValue();
+    for (ISpecialCharm specialCharm : getSpecialCharms())
+  	  if (specialCharm instanceof IPrerequisiteModifyingCharm && isLearned(specialCharm.getCharmId()))
+  		essencePrereq = ((IPrerequisiteModifyingCharm)specialCharm).getTraitModifier(charm, OtherTraitType.Essence, essencePrereq);
+    if (essencePrereq > essenceTrait.getCurrentValue()) {
       return false;
     }
     for (ICharm parentCharm : charm.getLearnPrerequisitesCharms(this)) {

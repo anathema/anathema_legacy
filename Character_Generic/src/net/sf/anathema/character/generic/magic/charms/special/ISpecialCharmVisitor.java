@@ -11,4 +11,6 @@ public interface ISpecialCharmVisitor {
   public void visitSubeffectCharm(ISubeffectCharm charm);
 
   public void visitMultipleEffectCharm(IMultipleEffectCharm charm);
+  
+  public void visitPrerequisiteModifyingCharm(IPrerequisiteModifyingCharm charm);
 }

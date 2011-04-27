@@ -9,11 +9,16 @@ import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
 import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
+import net.sf.anathema.character.generic.impl.magic.charm.special.PrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
@@ -62,25 +67,48 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
         ExaltedEdition.FirstEdition,
         ISolarSpecialCharms.OX_BODY_TECHNIQUE,
         ISolarSpecialCharms.ENVIRONMENTAL_HAZARD_RESISTING_MEDITATION);
+    
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.SOLAR,
         ExaltedEdition.SecondEdition,
-        ISolarSpecialCharms.OX_BODY_TECHNIQUE_SECOND_EDITION,
-        ISolarSpecialCharms.GLORIOUS_SOLAR_SABER,
-        ISolarSpecialCharms.CITY_MOVING_SECRETS,
-        ISolarSpecialCharms.IMMANENT_SOLAR_GLORY,
-        ISolarSpecialCharms.INVINCIBLE_ESSENCE_REINFORCEMENT,
-        ISolarSpecialCharms.RIGHTEOUS_LION_DEFENSE,
-        ISolarSpecialCharms.WONDER_FORGING_GENIUS,
-        ISolarSpecialCharms.ESSENCE_ARROW_ATTACK,
-        ISolarSpecialCharms.MASTER_HORSEMANS_TECHNIQUES,
-        ISolarSpecialCharms.PHOENIX_RENEWAL_TACTIC);
+        getSpecialCharmArray(ExaltedEdition.SecondEdition));
     characterGenerics.getAdditionalTemplateParserRegistry().register(
         SolarVirtueFlawTemplate.ID,
         new SolarVirtueFlawParser());
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.SOLAR,
         new CasteCollection(SolarCaste.values()));
+  }
+  
+  private ISpecialCharm[] getSpecialCharmArray(IExaltedEdition edition)
+  {
+	  if (edition == ExaltedEdition.SecondEdition)
+	  {
+		  ISpecialCharm baseSet[] = new ISpecialCharm[] {
+		    ISolarSpecialCharms.OX_BODY_TECHNIQUE_SECOND_EDITION,
+	        ISolarSpecialCharms.GLORIOUS_SOLAR_SABER,
+	        ISolarSpecialCharms.CITY_MOVING_SECRETS,
+	        ISolarSpecialCharms.IMMANENT_SOLAR_GLORY,
+	        ISolarSpecialCharms.INVINCIBLE_ESSENCE_REINFORCEMENT,
+	        ISolarSpecialCharms.RIGHTEOUS_LION_DEFENSE,
+	        ISolarSpecialCharms.WONDER_FORGING_GENIUS,
+	        ISolarSpecialCharms.ESSENCE_ARROW_ATTACK,
+	        ISolarSpecialCharms.MASTER_HORSEMANS_TECHNIQUES,
+	        ISolarSpecialCharms.PHOENIX_RENEWAL_TACTIC };
+		  
+		  int abilityCount = AbilityType.getAbilityTypes(edition).length;
+		  ISpecialCharm[] masterSet = new ISpecialCharm[baseSet.length + abilityCount];
+		  for (int i = 0; i != baseSet.length; i++) masterSet[i] = baseSet[i];
+		  
+		  for (int i = 0; i != abilityCount; i++)
+		  {
+			  ITraitType type = AbilityType.getAbilityTypes(edition)[i];
+			  masterSet[baseSet.length + i] = new PrerequisiteModifyingCharm("Solar.DivineTranscendenceOf."
+					  + type.getId(), type, -1);
+		  }
+		  return masterSet;		  
+	  }
+	  return null;
   }
 
   @Override

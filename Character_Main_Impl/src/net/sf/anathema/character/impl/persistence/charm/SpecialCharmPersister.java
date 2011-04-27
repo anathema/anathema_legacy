@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCha
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
@@ -42,6 +43,11 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
 
         public void visitMultipleEffectCharm(IMultipleEffectCharm charm) {
           persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
+        }
+        
+        public void visitPrerequisiteModifyingCharm(IPrerequisiteModifyingCharm charm)
+        {
+          // Nothing to do
         }
       });
     }

@@ -26,12 +26,16 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
+import net.sf.anathema.character.generic.impl.magic.charm.special.PrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
@@ -78,21 +82,11 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
     	            new EssenceFlow(),
     	            new ApocalypticEvolution(),
     	            new SupremePerfection()}); //$NON-NLS-1$
-	ISpecialCharm[] specialCharms = new ISpecialCharm[]   { // TODO 2E Special Charms
-            IAbyssalSpecialCharms.OX_BODY_TECHNIQUE_2ND,
-            IAbyssalSpecialCharms.WORLD_SLAYING_ARSENEL,
-            IAbyssalSpecialCharms.CADAVEROUS_TORPOR_TECHNIQUE,
-            IAbyssalSpecialCharms.WRITHING_BLOOD_CHAIN_TECHNIQUE,
-            IAbyssalSpecialCharms.ETERNAL_EMNITY_APPROACH,
-            IAbyssalSpecialCharms.ESSENCE_ENGORGEMENT_TECHNIQUE,
-            IAbyssalSpecialCharms.VOID_SPLINTER,
-            IAbyssalSpecialCharms.PESTILENCE_BEARING_TOUCH,
-            IAbyssalSpecialCharms.WICKED_DARTS_OF_SUFFERING};
     
     characterGenerics.getCharmProvider().setSpecialCharms(
             CharacterType.ABYSSAL,
             ExaltedEdition.SecondEdition,
-            specialCharms);
+            getSpecialCharmArray(ExaltedEdition.SecondEdition));
 
     characterGenerics.getAdditionalTemplateParserRegistry().register(
         AbyssalResonanceTemplate.ID,
@@ -105,6 +99,37 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
     IEquipmentAdditionalModelTemplate equipmentTemplate = (IEquipmentAdditionalModelTemplate) characterGenerics.getGlobalAdditionalTemplateRegistry()
         .getById(IEquipmentAdditionalModelTemplate.ID);
     equipmentTemplate.addNaturalWeaponTemplate(CharacterType.ABYSSAL, new FangTemplate());
+  }
+  
+  private ISpecialCharm[] getSpecialCharmArray(IExaltedEdition edition)
+  {
+	  if (edition == ExaltedEdition.SecondEdition)
+	  {
+		  ISpecialCharm baseSet[] = new ISpecialCharm[]
+		  {
+		      IAbyssalSpecialCharms.OX_BODY_TECHNIQUE_2ND,
+		      IAbyssalSpecialCharms.WORLD_SLAYING_ARSENEL,
+		      IAbyssalSpecialCharms.CADAVEROUS_TORPOR_TECHNIQUE,
+		      IAbyssalSpecialCharms.WRITHING_BLOOD_CHAIN_TECHNIQUE,
+		      IAbyssalSpecialCharms.ETERNAL_EMNITY_APPROACH,
+		      IAbyssalSpecialCharms.ESSENCE_ENGORGEMENT_TECHNIQUE,
+		      IAbyssalSpecialCharms.VOID_SPLINTER,
+		      IAbyssalSpecialCharms.PESTILENCE_BEARING_TOUCH,
+		      IAbyssalSpecialCharms.WICKED_DARTS_OF_SUFFERING };
+		  
+		  int abilityCount = AbilityType.getAbilityTypes(edition).length;
+		  ISpecialCharm[] masterSet = new ISpecialCharm[baseSet.length + abilityCount];
+		  for (int i = 0; i != baseSet.length; i++) masterSet[i] = baseSet[i];
+		  
+		  for (int i = 0; i != abilityCount; i++)
+		  {
+			  ITraitType type = AbilityType.getAbilityTypes(edition)[i];
+			  masterSet[baseSet.length + i] = new PrerequisiteModifyingCharm("Abyssal.ApocalypticEvolutionOf."
+					  + type.getId(), type, -1);
+		  }
+		  return masterSet;		  
+	  }
+	  return null;
   }
 
   @Override
