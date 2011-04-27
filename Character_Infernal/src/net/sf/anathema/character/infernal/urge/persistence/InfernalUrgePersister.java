@@ -1,31 +1,37 @@
 package net.sf.anathema.character.infernal.urge.persistence;
 
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
-import net.sf.anathema.character.infernal.urge.model.IInfernalUrgeModel;
+import net.sf.anathema.character.infernal.urge.model.InfernalUrge;
+import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
+import net.sf.anathema.character.library.virtueflaw.persistence.VirtueFlawPersister;
+import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Element;
 
-public class InfernalUrgePersister implements IAdditionalPersister {
+public class InfernalUrgePersister extends VirtueFlawPersister {
 
   public static final String TAG_URGE = "urge"; //$NON-NLS-1$
-  public static final String ATTRIB_DESCRIPTION = "description";
+  public static final String TAG_DESCRIPTION = "description";
+  private final TextPersister textPersister = new TextPersister();
 
-	@Override
-	public void load(Element parent, IAdditionalModel model)
-			throws PersistenceException
+  @Override
+  protected void saveVirtueFlaw(Element flawElement, IVirtueFlaw virtueFlaw) {
+    super.saveVirtueFlaw(flawElement, virtueFlaw);
+    InfernalUrge infernalUrge = (InfernalUrge) virtueFlaw;
+    textPersister.saveTextualDescription(flawElement, TAG_DESCRIPTION, infernalUrge.getDescription());
+  }
+
+  @Override
+  protected void loadVirtueFlaw(Element flawElement, IVirtueFlaw virtueFlaw) {
+	try
 	{
-		IInfernalUrgeModel urgeModel = (IInfernalUrgeModel)model;
-		Element urgeElement = parent.element(TAG_URGE);
-		urgeModel.setUrge(urgeElement.attributeValue(ATTRIB_DESCRIPTION));
+	    super.loadVirtueFlaw(flawElement, virtueFlaw);
+	    InfernalUrge infernalUrge = (InfernalUrge) virtueFlaw;
+	    textPersister.restoreTextualDescription(flawElement, TAG_DESCRIPTION, infernalUrge.getDescription());
 	}
-	
-	@Override
-	public void save(Element parent, IAdditionalModel model)
+	catch (PersistenceException e)
 	{
-		IInfernalUrgeModel urgeModel = (IInfernalUrgeModel)model;
-		Element urgeElement = parent.addElement(TAG_URGE);
-		urgeElement.addAttribute(ATTRIB_DESCRIPTION, urgeModel.getUrge());
+		e.printStackTrace();
 	}
+  }
 }

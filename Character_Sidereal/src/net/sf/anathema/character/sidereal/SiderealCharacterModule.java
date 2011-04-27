@@ -34,8 +34,18 @@ import net.sf.anathema.character.sidereal.colleges.SiderealCollegeParser;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeViewFactory;
 import net.sf.anathema.character.sidereal.colleges.persistence.SiderealCollegePersisterFactory;
+import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateModelFactory;
+import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateParser;
+import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFatePersisterFactory;
+import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateTemplate;
+import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateViewFactory;
 import net.sf.anathema.character.sidereal.generic.EssenceAuspicious;
 import net.sf.anathema.character.sidereal.generic.PropitiousAlignment;
+import net.sf.anathema.character.sidereal.paradox.SiderealParadoxModelFactory;
+import net.sf.anathema.character.sidereal.paradox.SiderealParadoxParser;
+import net.sf.anathema.character.sidereal.paradox.SiderealParadoxPersisterFactory;
+import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
+import net.sf.anathema.character.sidereal.paradox.SiderealParadoxViewFactory;
 import net.sf.anathema.character.sidereal.reporting.FirstEditionSiderealPartEncoder;
 import net.sf.anathema.character.sidereal.reporting.SecondEditionSiderealPartEncoder;
 import net.sf.anathema.character.sidereal.template.DefaultSiderealTemplate;
@@ -79,6 +89,12 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(
     		SiderealCollegeTemplate.ID,
             new SiderealCollegeParser());
+    characterGenerics.getAdditionalTemplateParserRegistry().register(
+    		SiderealFlawedFateTemplate.ID,
+            new SiderealFlawedFateParser());
+    characterGenerics.getAdditionalTemplateParserRegistry().register(
+    		SiderealParadoxTemplate.ID,
+            new SiderealParadoxParser());
     characterGenerics.getGenericCharmStatsRegistry().register(
             CharacterType.SIDEREAL,
             new IMagicStats[] { new FirstExcellency(CharacterType.SIDEREAL, ExaltedSourceBook.Sidereals2nd, "1 m per die"), //$NON-NLS-1$
@@ -124,7 +140,8 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
     IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry = characterGenerics.getAdditionalViewFactoryRegistry();
     IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
     registerSiderealColleges(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
-    //registerFlawedFate(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
+    registerFlawedFate(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
+    registerParadox(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
   }
   
   private void registerSiderealColleges(
@@ -138,16 +155,27 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
 	  persisterFactory.register(templateId, new SiderealCollegePersisterFactory());
   }
   
-  /*private void registerFlawedFate(
+  private void registerFlawedFate(
 		  IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
 	      IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry,
 	      IRegistry<String, IAdditionalPersisterFactory> persisterFactory)
   {
-	  //String templateId = SiderealFlawedFateTemplate.TEMPLATE_ID;
-	  //additionalModelFactoryRegistry.register(templateId, new SiderealFlawedFateModelFactory());  
-	  //additionalViewFactoryRegistry.register(templateId, new SiderealFlawedFateViewFactory());
-	  //persisterFactory.register(templateId, new SiderealFlawedFatePersisterFactory());
-  }*/
+	  String templateId = SiderealFlawedFateTemplate.ID;
+	  additionalModelFactoryRegistry.register(templateId, new SiderealFlawedFateModelFactory());  
+	  additionalViewFactoryRegistry.register(templateId, new SiderealFlawedFateViewFactory());
+	  persisterFactory.register(templateId, new SiderealFlawedFatePersisterFactory());
+  }
+  
+  private void registerParadox(
+		  IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
+	      IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry,
+	      IRegistry<String, IAdditionalPersisterFactory> persisterFactory)
+  {
+	  String templateId = SiderealParadoxTemplate.ID;
+	  additionalModelFactoryRegistry.register(templateId, new SiderealParadoxModelFactory());  
+	  additionalViewFactoryRegistry.register(templateId, new SiderealParadoxViewFactory());
+	  persisterFactory.register(templateId, new SiderealParadoxPersisterFactory());
+  }
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {

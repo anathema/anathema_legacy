@@ -37,10 +37,10 @@ public class InfernalUrgeEncoder implements IPdfContentBoxEncoder {
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    Bounds textBounds = traitEncoder.encode(directContent, bounds);
+	IInfernalUrgeModel urge = ((IInfernalUrgeModel) character.getAdditionalModel(InfernalUrgeTemplate.ID));
+    Bounds textBounds = traitEncoder.encode(directContent, bounds, urge.getVirtueFlaw().getLimitTrait().getCurrentValue());
     int leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
-    IInfernalUrgeModel urge = ((IInfernalUrgeModel) character.getAdditionalModel(InfernalUrgeTemplate.ID));
-    String description = urge.getUrge();
+    String description = urge.getDescription().getText();
 
     Phrase phrase = new Phrase();
     phrase.add(new Chunk(resources.getString("InfernalUrge.Title"), nameFont));

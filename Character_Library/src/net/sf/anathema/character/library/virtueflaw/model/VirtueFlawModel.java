@@ -14,12 +14,13 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 public abstract class VirtueFlawModel extends AbstractAdditionalModelAdapter implements IVirtueFlawModel {
 
   private final String templateId;
-  private final IVirtueFlaw virtueFlaw = new VirtueFlaw();
+  private final IVirtueFlaw virtueFlaw;
   private final ICharacterModelContext context;
 
   public VirtueFlawModel(final ICharacterModelContext context, IAdditionalTemplate additionalTemplate) {
     this.context = context;
     this.templateId = additionalTemplate.getId();
+    virtueFlaw = new VirtueFlaw(context);
   }
 
   public boolean isVirtueFlawChangable() {

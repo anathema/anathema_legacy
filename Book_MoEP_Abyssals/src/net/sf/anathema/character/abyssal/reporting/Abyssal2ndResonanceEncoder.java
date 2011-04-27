@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
@@ -42,8 +41,8 @@ public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IP
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    Bounds textBounds = traitEncoder.encode(directContent, bounds);
     IVirtueFlaw resonance = ((IVirtueFlawModel) character.getAdditionalModel(AbyssalResonanceTemplate.ID)).getVirtueFlaw();
+    Bounds textBounds = traitEncoder.encode(directContent, bounds, resonance.getLimitTrait().getCurrentValue());
     Font font = createFont(getBaseFont());
     Font nameFont = createNameFont(getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$

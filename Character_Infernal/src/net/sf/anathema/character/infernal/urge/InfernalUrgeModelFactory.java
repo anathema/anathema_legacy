@@ -9,6 +9,6 @@ import net.sf.anathema.character.infernal.urge.model.InfernalUrgeModel;
 public class InfernalUrgeModelFactory implements IAdditionalModelFactory {
 
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
-	  return new InfernalUrgeModel((InfernalUrgeTemplate) additionalTemplate);
+	  return new InfernalUrgeModel((InfernalUrgeTemplate) additionalTemplate, context);
   }
 }

@@ -16,12 +16,13 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class SolarVirtueFlawModel extends VirtueFlawModel implements ISolarVirtueFlawModel {
 
-  private final ISolarVirtueFlaw virtueFlaw = new SolarVirtueFlaw();
+  private final ISolarVirtueFlaw virtueFlaw;
   private IGenericTraitCollection traitCollection;
 
   public SolarVirtueFlawModel(final ICharacterModelContext context, IAdditionalTemplate additionalTemplate) {
     super(context, additionalTemplate);
     this.traitCollection = context.getTraitCollection();
+    virtueFlaw = new SolarVirtueFlaw(context);
     addVirtueChangeListener(new VirtueChangeListener() {
       @Override
       public void configuredChangeOccured() {

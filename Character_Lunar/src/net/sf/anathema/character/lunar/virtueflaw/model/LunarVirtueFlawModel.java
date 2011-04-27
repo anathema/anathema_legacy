@@ -16,12 +16,13 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class LunarVirtueFlawModel extends VirtueFlawModel implements ILunarVirtueFlawModel {
 
-  private final ILunarVirtueFlaw virtueFlaw = new LunarVirtueFlaw();
+  private final ILunarVirtueFlaw virtueFlaw;
   private IGenericTraitCollection traitCollection;
 
   public LunarVirtueFlawModel(final ICharacterModelContext context, IAdditionalTemplate additionalTemplate) {
     super(context, additionalTemplate);
     this.traitCollection = context.getTraitCollection();
+    virtueFlaw = new LunarVirtueFlaw(context);
     addVirtueChangeListener(new VirtueChangeListener() {
       @Override
       public void configuredChangeOccured() {
