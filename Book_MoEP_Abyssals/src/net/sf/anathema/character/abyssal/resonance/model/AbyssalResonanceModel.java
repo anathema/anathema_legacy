@@ -10,10 +10,18 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public class AbyssalResonanceModel extends VirtueFlawModel {
-
+public class AbyssalResonanceModel extends VirtueFlawModel
+{
+  private final AbyssalResonance virtueFlaw;
+	
   public AbyssalResonanceModel(final ICharacterModelContext context, IAdditionalTemplate additionalTemplate) {
     super(context, additionalTemplate);
+    virtueFlaw = new AbyssalResonance(context);
+  }
+  
+  @Override
+  public AbyssalResonance getVirtueFlaw() {
+    return virtueFlaw;
   }
   
   @Override

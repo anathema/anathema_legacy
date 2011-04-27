@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.framework.persistence.TextPersister;
@@ -16,8 +17,10 @@ public class VirtueFlawPersister implements IAdditionalPersister {
   public static final String TAG_ROOT_VIRTUE = "RootVirtue"; //$NON-NLS-1$
   public static final String TAG_VIRTUE_FLAW = "VirtueFlaw"; //$NON-NLS-1$
   public static final String TAG_NAME = "Name"; //$NON-NLS-1$
+  public static final String TAG_LIMIT = "Limit";
   public static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
   private final TextPersister textPersister = new TextPersister();
+  private final TraitPersister traitPersister = new TraitPersister();
 
   public void save(Element parent, IAdditionalModel model) {
     IVirtueFlawModel virtueFlawModel = (IVirtueFlawModel) model;
@@ -27,6 +30,7 @@ public class VirtueFlawPersister implements IAdditionalPersister {
   protected void saveVirtueFlaw(Element flawElement, IVirtueFlaw virtueFlaw) {
     saveRootVirtue(flawElement, virtueFlaw);
     textPersister.saveTextualDescription(flawElement, TAG_NAME, virtueFlaw.getName());
+    traitPersister.saveTrait(flawElement, TAG_LIMIT, virtueFlaw.getLimitTrait());
   }
 
   private Element createFlawElement(Element parent) {
@@ -46,7 +50,7 @@ public class VirtueFlawPersister implements IAdditionalPersister {
     loadVirtueFlaw(parent.element(TAG_VIRTUE_FLAW), virtueFlawModel.getVirtueFlaw());
   }
 
-  protected void loadVirtueFlaw(Element flawElement, IVirtueFlaw virtueFlaw) {
+  protected void loadVirtueFlaw(Element flawElement, IVirtueFlaw virtueFlaw) throws PersistenceException {
     if (flawElement == null) {
       return;
     }
@@ -55,5 +59,8 @@ public class VirtueFlawPersister implements IAdditionalPersister {
       virtueFlaw.setRoot(VirtueType.valueOf(rootElement.attributeValue(ATTRIB_NAME)));
     }
     textPersister.restoreTextualDescription(flawElement, TAG_NAME, virtueFlaw.getName());
+    Element limitElement = flawElement.element(TAG_LIMIT);
+    if (limitElement != null)
+    	traitPersister.restoreTrait(limitElement, virtueFlaw.getLimitTrait());
   }
 }

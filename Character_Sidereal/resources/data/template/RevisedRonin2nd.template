@@ -18,6 +18,7 @@
     	<willpowerVirtueBased value="false" />
     </additionalRules>
     <additionalTemplates>
+    	<template id="Sidereal.FlawedFate.Template"/>
     </additionalTemplates>
     <healthTemplate>
       <toughnessControllingTrait type="Resistance"/>

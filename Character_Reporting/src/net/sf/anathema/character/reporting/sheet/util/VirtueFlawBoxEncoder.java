@@ -15,11 +15,11 @@ public class VirtueFlawBoxEncoder {
     this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
   }
 
-  public Bounds encode(PdfContentByte directContent, Bounds bounds) {
+  public Bounds encode(PdfContentByte directContent, Bounds bounds, int currentLimit) {
     float traitBaseLine = bounds.getMaxY() - traitEncoder.getTraitHeight();
     float padding = IVoidStateFormatConstants.PADDING / 2.0f;
     Position traitPosition = new Position(bounds.x + padding, traitBaseLine);
-    traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, traitPosition, bounds.width - 2 * padding, 0, 10);
+    traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, traitPosition, bounds.width - 2 * padding, currentLimit, 10);
     return new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - traitEncoder.getTraitHeight());
   }
 }

@@ -46,7 +46,7 @@ public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IPdfC
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    Bounds textBounds = traitEncoder.encode(directContent, bounds);
+    Bounds textBounds = traitEncoder.encode(directContent, bounds, 0);
     Font font = TableEncodingUtilities.createFont(getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
     phrase.add(symbolChunk);

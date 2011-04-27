@@ -56,7 +56,8 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
     return new OverviewCategory(overviewPanel, borderLabel, false);
   }
 
-  public void setOverview(IOverviewCategory overview) {
+  @SuppressWarnings("deprecation")
+public void setOverview(IOverviewCategory overview) {
     overviewPanel.removeAll();
     overviewPanel.add(overview.getComponent());
   }
