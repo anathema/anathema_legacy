@@ -7,12 +7,14 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffect
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.SubeffectCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 
@@ -39,6 +41,9 @@ public interface ISolarSpecialCharms {
               "Category.-1-2x2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.TWO, HealthLevelType.TWO }); //$NON-NLS-1$
         }
       });
+  
+  public static final ITraitCapModifyingCharm GLORY_TO_THE_MOST_HIGH = new TraitCapModifyingCharm(
+		  "Solar.GloryToTheMostHigh", OtherTraitType.Essence, 1);
 
   public static final IMultiLearnableCharm GLORIOUS_SOLAR_SABER = new TraitDependentMultiLearnableCharm(
       "Solar.GloriousSolarSaber", //$NON-NLS-1$

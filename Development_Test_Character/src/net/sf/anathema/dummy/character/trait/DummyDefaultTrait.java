@@ -24,6 +24,17 @@ public class DummyDefaultTrait extends DummyModifiableGenericTrait implements ID
   public int getMinimalValue() {
     return 0;
   }
+  
+  public void applyCapModifier(int modifier)
+  {
+	  // not yet implemented
+  }
+  
+  public int getUnmodifiedMaximalValue()
+  {
+	  // not yet implemented
+	  return 0;
+  }
 
   public void resetCurrentValue() {
     //not yet implemented

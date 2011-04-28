@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
+import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateVisitor;
@@ -89,6 +90,7 @@ public class FavorableTraitConfigurationPresenter {
             resources.getString(id),
             favorableTrait.getCurrentValue(),
             favorableTrait.getMaximalValue(),
+            null,
             favorableTrait.getFavorization().isFavored(),
             new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait, resources));
       }
@@ -98,6 +100,7 @@ public class FavorableTraitConfigurationPresenter {
             resources.getString(id),
             favorableTrait.getCurrentValue(),
             favorableTrait.getMaximalValue(),
+            (IModifiableCapTrait) favorableTrait,
             favorableTrait.getFavorization().isFavored(),
             new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait, resources));
       }

@@ -25,6 +25,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModif
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -333,6 +334,11 @@ public void initPresentation() {
       }
       
       public void visitPrerequisiteModifyingCharm(final IPrerequisiteModifyingCharm visited)
+      {
+    	  // Nothing to do
+      }
+      
+      public void visitTraitCapModifyingCharm(final ITraitCapModifyingCharm visited)
       {
     	  // Nothing to do
       }

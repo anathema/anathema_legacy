@@ -15,6 +15,10 @@ public interface ITraitRules {
   public int getAbsoluteMaximumValue();
 
   public int getAbsoluteMinimumValue();
+  
+  public int getCurrentMaximumValue(boolean modified);
+  
+  public void setCapModifier(int modifier);
 
   public Range getModifiedRange(Range unmodifiedRange);
 

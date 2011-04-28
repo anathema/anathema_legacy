@@ -34,13 +34,14 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
       String id,
       int value,
       int maxValue) {
-    super(configuration, labelText, value, maxValue);
+    super(configuration, labelText, value, maxValue, null);
     this.deleteIcon = deleteIcon;
     specialtyLabel = new JLabel(id);
     abilityLabel = new JLabel(labelText);
   }
 
-  public void addComponents(JPanel panel) {
+  @SuppressWarnings({ "deprecation", "serial" })
+public void addComponents(JPanel panel) {
     this.traitPanel = panel;
     panel.add(abilityLabel);
     panel.add(separatorLabel);

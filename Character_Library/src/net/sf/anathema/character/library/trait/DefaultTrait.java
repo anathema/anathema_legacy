@@ -20,6 +20,7 @@ import net.sf.anathema.lib.data.Range;
 public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDefaultTrait {
 
   private final ChangeControl rangeControl = new ChangeControl();
+  private int capModifier = 0;
   private int creationValue;
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
   private final IValueChangeChecker checker;
@@ -56,6 +57,17 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
     setTraitFavorization(new NullTraitFavorization());
     this.checker = checker;
     this.creationValue = traitRules.getStartValue();
+  }
+  
+  public void applyCapModifier(int modifier)
+  {
+	  capModifier += modifier;
+	  getTraitRules().setCapModifier(capModifier);
+  }
+  
+  public int getUnmodifiedMaximalValue()
+  {
+	  return getTraitRules().getCurrentMaximumValue(false);
   }
 
   protected void setTraitFavorization(ITraitFavorization favorization) {

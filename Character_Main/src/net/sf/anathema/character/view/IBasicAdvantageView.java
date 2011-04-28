@@ -4,6 +4,7 @@ import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
 
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
+import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
@@ -24,7 +25,7 @@ public interface IBasicAdvantageView extends IInitializableContentView<IAdvantag
 
   public IRemovableTraitView< ? > addBackgroundView(Icon deleteIcon, String labelText, int creationValue, int maxValue);
 
-  public abstract IIntValueView addEssenceView(String labelText, int value, int maxValue);
+  public abstract IIntValueView addEssenceView(String labelText, int value, int maxValue, IModifiableCapTrait trait);
 
   public IValueView<String> addPoolView(String labelText, String value);
 

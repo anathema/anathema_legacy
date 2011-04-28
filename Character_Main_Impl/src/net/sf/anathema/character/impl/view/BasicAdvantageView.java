@@ -17,6 +17,7 @@ import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
+import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.view.IAdvantageViewProperties;
@@ -113,8 +114,8 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
     return backgroundView;
   }
 
-  public IIntValueView addEssenceView(String labelText, int value, int maxValue) {
-    return essencePanelView.addEssenceView(labelText, value, maxValue);
+  public IIntValueView addEssenceView(String labelText, int value, int maxValue, IModifiableCapTrait trait) {
+    return essencePanelView.addEssenceView(labelText, value, maxValue, trait);
   }
 
   public IValueView<String> addPoolView(String labelText, String value) {

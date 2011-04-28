@@ -108,6 +108,7 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
 		  ISpecialCharm baseSet[] = new ISpecialCharm[]
 		  {
 		      IAbyssalSpecialCharms.OX_BODY_TECHNIQUE_2ND,
+		      IAbyssalSpecialCharms.WORLD_ENDING_VOID_APOSTLE,
 		      IAbyssalSpecialCharms.WORLD_SLAYING_ARSENEL,
 		      IAbyssalSpecialCharms.CADAVEROUS_TORPOR_TECHNIQUE,
 		      IAbyssalSpecialCharms.WRITHING_BLOOD_CHAIN_TECHNIQUE,

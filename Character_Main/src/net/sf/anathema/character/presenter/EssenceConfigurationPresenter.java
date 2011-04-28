@@ -1,6 +1,7 @@
 package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
@@ -34,7 +35,8 @@ public class EssenceConfigurationPresenter implements IPresenter {
     ITrait essenceTrait = traitConfiguration.getTrait(OtherTraitType.Essence);
     IIntValueView essenceView = view.addEssenceView(resources.getString("Essence.Name"), //$NON-NLS-1$
         essenceTrait.getCurrentValue(),
-        essenceTrait.getMaximalValue());
+        essenceTrait.getMaximalValue(),
+        (IModifiableCapTrait) essenceTrait);
     if (essence.isEssenceUser()) {
       final IValueView<String> personalView = view.addPoolView(
           resources.getString("EssencePool.Name.Personal"), essence.getPersonalPool()); //$NON-NLS-1$      

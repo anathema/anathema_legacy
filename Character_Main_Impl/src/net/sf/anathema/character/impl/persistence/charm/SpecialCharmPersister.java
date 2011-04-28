@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Element;
@@ -49,6 +50,11 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
         {
           // Nothing to do
         }
+        
+        public void visitTraitCapModifyingCharm(ITraitCapModifyingCharm charm)
+        {
+          // Nothing to do
+        }
       });
     }
   }
@@ -59,12 +65,14 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
 
   public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
     ISpecialCharmPersister persister = persisterByCharm.get(specialCharmConfiguration.getCharm());
-    persister.saveConfiguration(specialElement, specialCharmConfiguration);
+    if (persister != null)
+    	persister.saveConfiguration(specialElement, specialCharmConfiguration);
   }
 
   public void loadConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration)
       throws PersistenceException {
     ISpecialCharmPersister persister = persisterByCharm.get(specialCharmConfiguration.getCharm());
-    persister.loadConfiguration(specialElement, specialCharmConfiguration);
+    if (persister != null)
+    	persister.loadConfiguration(specialElement, specialCharmConfiguration);
   }
 }

@@ -86,6 +86,7 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
 	  {
 		  ISpecialCharm baseSet[] = new ISpecialCharm[] {
 		    ISolarSpecialCharms.OX_BODY_TECHNIQUE_SECOND_EDITION,
+		    ISolarSpecialCharms.GLORY_TO_THE_MOST_HIGH,
 	        ISolarSpecialCharms.GLORIOUS_SOLAR_SABER,
 	        ISolarSpecialCharms.CITY_MOVING_SECRETS,
 	        ISolarSpecialCharms.IMMANENT_SOLAR_GLORY,

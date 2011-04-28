@@ -13,4 +13,6 @@ public interface ISpecialCharmVisitor {
   public void visitMultipleEffectCharm(IMultipleEffectCharm charm);
   
   public void visitPrerequisiteModifyingCharm(IPrerequisiteModifyingCharm charm);
+  
+  public void visitTraitCapModifyingCharm(ITraitCapModifyingCharm charm);
 }
