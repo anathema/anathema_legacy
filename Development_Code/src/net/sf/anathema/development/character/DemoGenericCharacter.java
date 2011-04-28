@@ -211,6 +211,11 @@ public class DemoGenericCharacter implements IGenericCharacter {
   public ITraitLimitation getEssenceLimitation() {
     return null;
   }
+  
+  @Override
+  public int getAge() {
+    return 0;
+  }
 
   @Override
   public int getLearnCount(IMultiLearnableCharm multiLearnableCharm) {

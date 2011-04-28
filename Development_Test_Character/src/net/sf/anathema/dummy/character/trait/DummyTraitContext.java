@@ -45,6 +45,11 @@ public class DummyTraitContext implements ITraitContext {
         }
       };
     }
+    
+    @Override
+    public int getAge() {
+      return 0;
+    }
   }
 
   private ITraitValueStrategy traitValueStrategy = new CreationTraitValueStrategy();

@@ -45,6 +45,10 @@ public class DummyLimitationContext implements ILimitationContext {
 
     };
   }
+  
+  public int getAge() {
+    return 0;
+  }
 
   public void addTrait(IGenericTrait trait) {
     traits.put(trait.getType(), trait);

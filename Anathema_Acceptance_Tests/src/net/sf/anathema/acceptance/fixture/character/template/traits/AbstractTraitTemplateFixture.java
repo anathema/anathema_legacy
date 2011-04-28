@@ -51,6 +51,10 @@ public abstract class AbstractTraitTemplateFixture extends AbstractTemplateColum
 
         };
       }
+      
+      public int getAge() {
+    	  throw new UnsupportedOperationException("No character defined in template tests."); //$NON-NLS-1$;
+      }
     });
   }
 

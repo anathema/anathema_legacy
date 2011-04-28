@@ -173,6 +173,10 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public ITraitLimitation getEssenceLimitation() {
     return new StaticTraitLimitation(7);
   }
+  
+  public int getAge() {
+    return 0;
+  }
 
   public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue) {
     // Nothing to do

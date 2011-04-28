@@ -195,6 +195,11 @@ public class GenericCharacter implements IGenericCharacter {
   public ITraitLimitation getEssenceLimitation() {
     return getTemplate().getTraitTemplateCollection().getTraitTemplate(OtherTraitType.Essence).getLimitation();
   }
+  
+  public int getAge()
+  {
+	return statistics.getCharacterConcept().getAgeSpinner().getValue();
+  }
 
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     return statistics.getTraitConfiguration().getAbilityTypeGroups();

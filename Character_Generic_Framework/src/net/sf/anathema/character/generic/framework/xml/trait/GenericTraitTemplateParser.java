@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.xml.trait;
 
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
+import net.sf.anathema.character.generic.impl.traits.limitation.AgeBasedLimitation;
 import net.sf.anathema.character.generic.impl.traits.limitation.EssenceBasedLimitation;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
@@ -23,6 +24,7 @@ public class GenericTraitTemplateParser {
   private static final String TAG_LIMITATION = "limitation"; //$NON-NLS-1$
   private static final String VALUE_STATIC = "Static"; //$NON-NLS-1$
   private static final String VALUE_ESSENCE = "Essence"; //$NON-NLS-1$
+  private static final String VALUE_AGE = "Age"; //$NON-NLS-1$
 
   private GenericTraitTemplateParser() {
     throw new UnreachableCodeReachedException();
@@ -77,6 +79,10 @@ public class GenericTraitTemplateParser {
     if (typeId.equals(VALUE_ESSENCE)) {
       return new EssenceBasedLimitation();
     }
+    if (typeId.equals(VALUE_AGE)) {
+    	int staticLimit = ElementUtilities.getRequiredIntAttrib(limitationElement, ATTRIB_VALUE);
+        return new AgeBasedLimitation(staticLimit);
+      }
     throw new PersistenceException("Limitation Type not defined: " + typeId + "."); //$NON-NLS-1$//$NON-NLS-2$
   }
 }

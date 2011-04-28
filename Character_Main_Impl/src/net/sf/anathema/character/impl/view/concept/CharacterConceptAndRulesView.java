@@ -21,6 +21,7 @@ import net.sf.anathema.character.view.concept.IWillpowerConditionView;
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
+import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -62,6 +63,13 @@ public class CharacterConceptAndRulesView extends
     labelView.addToStandardPanel(conceptPanel);
     addButtonPanel();
     return labelView;
+  }
+  
+  public void addSpinner(String labelText, IntegerSpinner spinner)
+  {
+	  JLabel label = new JLabel(labelText);
+	  conceptPanel.add(label);
+	  conceptPanel.add(spinner.getComponent());
   }
 
   private void addButtonPanel() {
