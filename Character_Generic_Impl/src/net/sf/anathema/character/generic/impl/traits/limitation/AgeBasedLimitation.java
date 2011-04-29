@@ -20,7 +20,7 @@ public class AgeBasedLimitation implements ITraitLimitation
 	}
 
 	@Override
-	public int getCurrentMaximum(ILimitationContext limitationContext)
+	public int getCurrentMaximum(ILimitationContext limitationContext, boolean modified)
 	{
 		int age = limitationContext.getAge();
 		int categories = 0;

@@ -16,7 +16,7 @@ public class StaticTraitLimitation extends ReflectionCloneableObject<ITraitLimit
     return staticLimit;
   }
 
-  public int getCurrentMaximum(ILimitationContext limitationContext) {
+  public int getCurrentMaximum(ILimitationContext limitationContext, boolean modified) {
     return staticLimit;
   }
 

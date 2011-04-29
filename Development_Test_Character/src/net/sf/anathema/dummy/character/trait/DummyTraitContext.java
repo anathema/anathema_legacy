@@ -46,6 +46,11 @@ public class DummyTraitContext implements ITraitContext {
       };
     }
     
+    public int getEssenceCap(boolean modified)
+    {
+  	  return 0;
+    }
+    
     @Override
     public int getAge() {
       return 0;

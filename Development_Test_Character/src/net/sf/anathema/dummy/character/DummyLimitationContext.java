@@ -46,6 +46,11 @@ public class DummyLimitationContext implements ILimitationContext {
     };
   }
   
+  public int getEssenceCap(boolean modified)
+  {
+	  return 0;
+  }
+  
   public int getAge() {
     return 0;
   }

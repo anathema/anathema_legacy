@@ -53,7 +53,7 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
         
         public void visitTraitCapModifyingCharm(ITraitCapModifyingCharm charm)
         {
-          // Nothing to do
+          persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new TraitCapModifyingCharmPersister());
         }
       });
     }

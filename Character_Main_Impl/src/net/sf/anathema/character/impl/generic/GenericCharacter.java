@@ -196,6 +196,12 @@ public class GenericCharacter implements IGenericCharacter {
     return getTemplate().getTraitTemplateCollection().getTraitTemplate(OtherTraitType.Essence).getLimitation();
   }
   
+  public int getEssenceCap(boolean modified)
+  {
+	  IDefaultTrait essence = (IDefaultTrait) statistics.getTraitConfiguration().getTrait(OtherTraitType.Essence);
+	  return modified ? essence.getModifiedMaximalValue() : essence.getUnmodifiedMaximalValue();
+  }
+  
   public int getAge()
   {
 	return statistics.getCharacterConcept().getAgeSpinner().getValue();

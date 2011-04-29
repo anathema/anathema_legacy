@@ -2,7 +2,6 @@ package net.sf.anathema.character.impl.model.charm.special;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.library.trait.DefaultTrait;
@@ -37,6 +36,11 @@ public class TraitCapModifyingCharmConfiguration implements ITraitCapModifyingCh
 	
 	@Override
 	public void learn(boolean experienced) {
+		applyModifier();
+	}
+	
+	public void applyModifier()
+	{
 		DefaultTrait trait = (DefaultTrait) context.getTraitCollection().getTrait(specialCharm.getTraitType());
 		trait.applyCapModifier(specialCharm.getModifier());
 	}

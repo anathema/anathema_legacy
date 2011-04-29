@@ -60,6 +60,11 @@ public class DummyGenericCharacter implements IGenericCharacter {
       }
     };
   }
+  
+  public int getEssenceCap(boolean modified)
+  {
+	  return 0;
+  }
 
   public void addTrait(IGenericTrait trait) {
     traitsByType.put(trait.getType(), trait);

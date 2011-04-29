@@ -36,8 +36,8 @@ public class TraitRules implements ITraitRules
   }
 
   public int getCurrentMaximumValue(boolean modified) {
-    return template.getLimitation().getCurrentMaximum(limitationContext) +
-    (modified ? capModifier : 0);
+    return template.getLimitation().getCurrentMaximum(limitationContext, modified) +
+    	(modified ? capModifier : 0);
   }
 
   public int getAbsoluteMinimumValue() {

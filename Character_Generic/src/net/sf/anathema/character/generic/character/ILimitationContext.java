@@ -12,4 +12,6 @@ public interface ILimitationContext {
   public IGenericTraitCollection getTraitCollection();
   
   public int getAge();
+  
+  public int getEssenceCap(boolean modified);
 }
