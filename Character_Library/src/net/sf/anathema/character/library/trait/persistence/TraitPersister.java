@@ -106,13 +106,13 @@ public class TraitPersister {
   }
 
   protected void restoreDefaultTrait(Element traitElement, IDefaultTrait trait) throws PersistenceException {
-    trait.setCreationValue(ElementUtilities.getRequiredIntAttrib(traitElement, ATTRIB_CREATION_VALUE));
+    trait.setUncheckedCreationValue(ElementUtilities.getRequiredIntAttrib(traitElement, ATTRIB_CREATION_VALUE));
     int experiencedValue = ElementUtilities.getIntAttrib(
         traitElement,
         ATTRIB_EXPERIENCED_VALUE,
         ITraitRules.UNEXPERIENCED);
     if (experiencedValue != ITraitRules.UNEXPERIENCED) {
-      trait.setExperiencedValue(experiencedValue);
+      trait.setUncheckedExperiencedValue(experiencedValue);
     }
   }
 }

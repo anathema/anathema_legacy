@@ -92,18 +92,19 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   public void learnCharm(ICharm charm, boolean experienced) {
-    learnCharmNoParents(charm, experienced);
+    learnCharmNoParents(charm, experienced, true);
     learnParents(charm, experienced);
   }
 
-  public void learnCharmNoParents(ICharm charm, boolean experienced) {
+  public void learnCharmNoParents(ICharm charm, boolean experienced, boolean announce) {
     if (experienced) {
       charmsLearnedWithExperience.add(charm);
     }
     else {
       charmsLearnedOnCreation.add(charm);
     }
-    fireCharmLearned(charm);
+    if (announce)
+    	fireCharmLearned(charm);
   }
 
   private void forgetChildren(ICharm charm, boolean experienced) {

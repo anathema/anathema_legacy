@@ -94,6 +94,15 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
     getCreationPointControl().fireValueChangedEvent(this.creationValue);
     getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
   }
+  
+  public void setUncheckedCreationValue(int value)
+  {
+	  if (this.creationValue == value)
+	      return;
+	  this.creationValue = value;
+	  getCreationPointControl().fireValueChangedEvent(this.creationValue);
+	  getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
+  }
 
   public final void resetCreationValue() {
     setCreationValue(getCreationValue());
@@ -152,6 +161,14 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
     this.experiencedValue = correctedValue;
     getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), getCurrentValueControl());
   }
+  
+  public final void setUncheckedExperiencedValue(int value)
+  {
+	if (value == experiencedValue)
+	   return;
+	this.experiencedValue = value;
+	getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), getCurrentValueControl());
+   }
 
   public final void resetCurrentValue() {
     getTraitValueStrategy().resetCurrentValue(this);

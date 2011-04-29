@@ -23,4 +23,8 @@ public interface ICharacterModelContext {
   public ITraitContext getTraitContext();
 
   public IAdditionalModel getAdditionalModel(String id);
+  
+  public boolean isFullyLoaded();
+  
+  public void setFullyLoaded(boolean loaded);
 }

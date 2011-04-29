@@ -345,6 +345,9 @@ public class CharmConfiguration implements ICharmConfiguration {
   
   private void verifyCharms()
   {
+	  if (!context.isFullyLoaded())
+		  return;
+	  
 	  List<ICharm> unlearning = new ArrayList<ICharm>();
 	  
 	  for (ICharm charm : this.getLearnedCharms(true))

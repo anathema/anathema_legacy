@@ -87,6 +87,16 @@ public class DummyDefaultTrait extends DummyModifiableGenericTrait implements ID
   public void setExperiencedValue(int value) {
     //not yet implemented
   }
+  
+  public void setUncheckedCreationValue(int value)
+  {
+	    //not yet implemented
+  }
+
+  public void setUncheckedExperiencedValue(int value)
+  {
+	    //not yet implemented
+  }
 
   public int getAbsoluteMinValue() {
     return 0;
