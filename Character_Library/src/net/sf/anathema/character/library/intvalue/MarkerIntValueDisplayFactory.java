@@ -12,15 +12,17 @@ public class MarkerIntValueDisplayFactory implements IIntValueDisplayFactory {
 
   private final Icon activeBallIcon;
   private final Icon passiveBallIcon;
+  private final Icon blockedIcon;
 
   public MarkerIntValueDisplayFactory(IResources resources, ICharacterType type) {
     CharacterUI characterUI = new CharacterUI(resources);
     this.activeBallIcon = characterUI.getMediumBallResource(type);
     this.passiveBallIcon = characterUI.getUnselectedBallResource();
+    this.blockedIcon = characterUI.getUnselectableBallResource();
   }
 
   public IIntValueDisplay createIntValueDisplay(int maxValue, int value, IModifiableCapTrait trait) {
-    IIntValueDisplay intValueDisplay = IntValueDisplay.createMarkerDisplay(passiveBallIcon, activeBallIcon, trait, maxValue);
+    IIntValueDisplay intValueDisplay = IntValueDisplay.createMarkerDisplay(blockedIcon, passiveBallIcon, activeBallIcon, trait, maxValue);
     intValueDisplay.setValue(value);
     return intValueDisplay;
   }

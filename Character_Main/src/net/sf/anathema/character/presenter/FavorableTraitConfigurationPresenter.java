@@ -90,7 +90,7 @@ public class FavorableTraitConfigurationPresenter {
             resources.getString(id),
             favorableTrait.getCurrentValue(),
             favorableTrait.getMaximalValue(),
-            null,
+            visitedTrait.getFallbackTrait(),
             favorableTrait.getFavorization().isFavored(),
             new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait, resources));
       }

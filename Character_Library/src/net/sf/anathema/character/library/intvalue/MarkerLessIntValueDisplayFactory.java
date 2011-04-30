@@ -12,15 +12,18 @@ public class MarkerLessIntValueDisplayFactory implements IIntValueDisplayFactory
 
   private final Icon activeBallIcon;
   private final Icon passiveBallIcon;
+  private final Icon blockedBallIcon;
 
   public MarkerLessIntValueDisplayFactory(IResources resources, ICharacterType type) {
     CharacterUI characterUI = new CharacterUI(resources);
     this.activeBallIcon = characterUI.getMediumBallResource(type);
     this.passiveBallIcon = characterUI.getUnselectedBallResource();
+    this.blockedBallIcon = characterUI.getUnselectableBallResource();
   }
 
   public IIntValueDisplay createIntValueDisplay(int maxValue, int value, IModifiableCapTrait trait) {
     IIntValueDisplay intValueDisplay = IntValueDisplay.createMarkerLessDisplay(
+    	blockedBallIcon,
         passiveBallIcon,
         activeBallIcon,
         trait,

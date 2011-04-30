@@ -15,6 +15,7 @@ import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
+import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
@@ -40,7 +41,7 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
     return panel;
   }
 
-  public IRemovableEntryView addEntryView(Icon removeIcon, String string) {
+  public IRemovableEntryView addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
     RemovableStringView view = new RemovableStringView(removeIcon, string);
     view.addContent(entryPanel);
     panel.revalidate();

@@ -69,6 +69,11 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   {
 	  return getTraitRules().getCurrentMaximumValue(false);
   }
+  
+  public int getModifiedMaximalValue()
+  {
+	  return getTraitRules().getCurrentMaximumValue(true);
+  }
 
   protected void setTraitFavorization(ITraitFavorization favorization) {
     this.traitFavorization = favorization;

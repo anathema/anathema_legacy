@@ -35,6 +35,12 @@ public class DummyDefaultTrait extends DummyModifiableGenericTrait implements ID
 	  // not yet implemented
 	  return 0;
   }
+  
+  public int getModifiedMaximalValue()
+  {
+	  // not yet implemented
+	  return 0;
+  }
 
   public void resetCurrentValue() {
     //not yet implemented

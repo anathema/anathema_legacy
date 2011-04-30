@@ -4,6 +4,8 @@ public interface IModifiableCapTrait
 {
 	public void applyCapModifier(int modifier);
 	
+	public int getModifiedMaximalValue();
+	
 	public int getUnmodifiedMaximalValue();
 	
 	public void setUncheckedCreationValue(int value);
