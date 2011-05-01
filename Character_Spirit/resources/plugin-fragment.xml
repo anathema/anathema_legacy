@@ -59,6 +59,16 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/inhabitings.xml"/>
 	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/tantra.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/aegis.xml"/>
+	  </parameter>
 	  </extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="SpiritResources">
 		<parameter id="bundle" value="Spirit"/>	
