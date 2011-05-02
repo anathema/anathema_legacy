@@ -24,7 +24,7 @@ public class CharacterConcept implements ICharacterConcept {
 
   public CharacterConcept(IWillpowerRegainingConcept willpowerRegaining) {
     this.willpowerRegaining = willpowerRegaining;
-    this.ageSpinner = new IntegerSpinner(40);
+    this.ageSpinner = new IntegerSpinner(0);
     ageSpinner.setPreferredWidth(48);
     ageSpinner.setStepSize(5);
   }
