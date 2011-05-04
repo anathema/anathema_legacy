@@ -1,0 +1,15 @@
+<bonusPointCost uses="RevisedDefaultBonusPointCost2nd.template">
+  <abilities>
+    <maximumFreeAbilityRank rank="5" />
+    <generalAbility>
+      <fixedCost cost="2" />
+    </generalAbility>
+    <favoredAbility>
+      <fixedCost cost="1" />
+    </favoredAbility>
+    <specialties>
+      <generalDotsPerPoint dots="1" />
+      <favoredDotsPerPoint dots="2" />
+    </specialties>
+  </abilities>
+</bonusPointCost>

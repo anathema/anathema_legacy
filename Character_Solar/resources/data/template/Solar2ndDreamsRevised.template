@@ -25,7 +25,7 @@
     </healthTemplate>
   </general>
   <creation>
-    <bonusPointCosts uses="RevisedDefaultBonusPointCost2nd.template" />
+    <bonusPointCosts uses="SolaroidDefaultBonusPointCost2nd.template" />
     <creationPoints>
       <attributeDots primary="8" secondary="6" tertiary="4" />
       <abilityDots general="30" favored="10" favoredPicks="5" />
