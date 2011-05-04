@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+    curses.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Scott D. Olson (scottolson275@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist>
+	<!-- Spirit Curses -->
+	<charm id="Spirit.ClawsOfTheAngryDragon" exalt="Spirit" group="Curses">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+		   <essence cost="3"/>
+		   <willpower cost="1"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.DreadedEmbraceOfMundanity" exalt="Spirit" group="Curses">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<essence cost="15" />
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.Maledictions" exalt="Spirit" group="Curses">
+		<prerequisite>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.PlagueOfMenaces" exalt="Spirit" group="Curses">
+		<prerequisite>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.Scourge" exalt="Spirit" group="Curses">
+		<prerequisite>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			<essence cost="" text="Varies"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.TasteOfMortality" exalt="Spirit" group="Curses">
+		<prerequisite>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			<essence cost="10"/> 
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.TouchOfSaturn" exalt="Spirit" group="Curses">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<essence cost="" text="3+ motes"/>
+			<willpower cost="" text="1+ Willpower"/> 
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+</charmlist>
