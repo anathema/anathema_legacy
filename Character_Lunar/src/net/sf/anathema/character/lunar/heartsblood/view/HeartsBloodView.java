@@ -9,6 +9,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
+import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 
 public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryView> {
 
@@ -38,7 +39,7 @@ public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryV
     return view;
   }
 
-  public IRemovableEntryView addEntryView(Icon removeIcon, String string) {
+  public IRemovableEntryView addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
     RemovableStringView view = new RemovableStringView(removeIcon, string);
     view.addContent(selectionPanel);
     return view;

@@ -66,12 +66,19 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
         initMotivationPresentation(motivation, casteRow);
       }
     });
+    initAgePresentation();
     initGui();
   }
 
   public IViewContent getTabContent() {
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
     return new SimpleViewContent(new ContentProperties(conceptHeader), view);
+  }
+  
+  private void initAgePresentation()
+  {
+	  view.addSpinner(resources.getString("Label.Age"),
+			  statistics.getCharacterConcept().getAgeSpinner());
   }
 
   private void initMotivationPresentation(final IMotivation motivation, boolean casteRow) {

@@ -21,7 +21,7 @@ public class AbilitiesPresenter implements IContentPresenter {
       IResources resources,
       IGroupedFavorableTraitViewFactory factory) {
     IIdentifiedTraitTypeGroup[] traitTypeGroups = statistics.getTraitConfiguration().getAbilityTypeGroups();
-    int columnCount = traitTypeGroups.length / 2 + 1;
+    int columnCount = 2;
     this.abilityView = factory.createView(columnCount);
     this.presenter = new FavorableTraitConfigurationPresenter(traitTypeGroups, statistics, abilityView, resources);
     this.contentHeader = resources.getString("CardView.AbilityConfiguration.Title"); //$NON-NLS-1$

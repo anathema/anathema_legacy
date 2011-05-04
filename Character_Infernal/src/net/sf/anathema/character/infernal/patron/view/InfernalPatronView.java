@@ -47,7 +47,7 @@ public class InfernalPatronView implements IView, IInfernalPatronView {
       IIntValueDisplayFactory factory,
       IIconToggleButtonProperties viewProperties,
       boolean selected) {
-    return groupedTraitView.addTraitView(label, 0, 0, selected, viewProperties, factory);
+    return groupedTraitView.addTraitView(label, 0, 0, null, selected, viewProperties, factory);
   }
 
   public IOverviewCategory createOverview(String borderLabel) {

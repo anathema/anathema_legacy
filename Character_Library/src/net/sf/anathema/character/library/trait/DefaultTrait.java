@@ -20,6 +20,7 @@ import net.sf.anathema.lib.data.Range;
 public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDefaultTrait {
 
   private final ChangeControl rangeControl = new ChangeControl();
+  private int capModifier = 0;
   private int creationValue;
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
   private final IValueChangeChecker checker;
@@ -57,6 +58,22 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
     this.checker = checker;
     this.creationValue = traitRules.getStartValue();
   }
+  
+  public void applyCapModifier(int modifier)
+  {
+	  capModifier += modifier;
+	  getTraitRules().setCapModifier(capModifier);
+  }
+  
+  public int getUnmodifiedMaximalValue()
+  {
+	  return getTraitRules().getCurrentMaximumValue(false);
+  }
+  
+  public int getModifiedMaximalValue()
+  {
+	  return getTraitRules().getCurrentMaximumValue(true);
+  }
 
   protected void setTraitFavorization(ITraitFavorization favorization) {
     this.traitFavorization = favorization;
@@ -81,6 +98,15 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
     this.creationValue = correctedValue;
     getCreationPointControl().fireValueChangedEvent(this.creationValue);
     getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
+  }
+  
+  public void setUncheckedCreationValue(int value)
+  {
+	  if (this.creationValue == value)
+	      return;
+	  this.creationValue = value;
+	  getCreationPointControl().fireValueChangedEvent(this.creationValue);
+	  getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
   }
 
   public final void resetCreationValue() {
@@ -140,6 +166,14 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
     this.experiencedValue = correctedValue;
     getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), getCurrentValueControl());
   }
+  
+  public final void setUncheckedExperiencedValue(int value)
+  {
+	if (value == experiencedValue)
+	   return;
+	this.experiencedValue = value;
+	getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), getCurrentValueControl());
+   }
 
   public final void resetCurrentValue() {
     getTraitValueStrategy().resetCurrentValue(this);

@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.overview.LabelledOverviewStringValueView;
+import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.IView;
@@ -20,8 +21,8 @@ public class EssencePanelView implements IView {
     this.guiConfiguration = guiConfiguration;
   }
 
-  public IIntValueView addEssenceView(String labelText, int value, int maxValue) {
-    SimpleTraitView essenceView = new SimpleTraitView(guiConfiguration, labelText, value, maxValue);
+  public IIntValueView addEssenceView(String labelText, int value, int maxValue, IModifiableCapTrait trait) {
+    SimpleTraitView essenceView = new SimpleTraitView(guiConfiguration, labelText, value, maxValue, trait);
     essenceView.addComponents(panel);
     return essenceView;
   }

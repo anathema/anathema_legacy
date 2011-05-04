@@ -42,6 +42,7 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   private final CharacterListening characterListening = new CharacterListening();
   private final IGenericCharacter character;
   private final IBasicCharacterData characterData;
+  private boolean isFullyLoaded = false;
 
   public CharacterModelContext(IGenericCharacter character) {
     this.character = character;
@@ -124,4 +125,8 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   public IGenericCharmConfiguration getCharmConfiguration() {
     return character;
   }
+  
+  public boolean isFullyLoaded() { return isFullyLoaded; }
+  
+  public void setFullyLoaded(boolean loaded) { isFullyLoaded = loaded; }
 }

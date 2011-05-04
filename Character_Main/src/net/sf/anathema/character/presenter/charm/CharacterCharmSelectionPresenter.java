@@ -21,9 +21,11 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCha
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -76,7 +78,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     this.view = factory.createCharmSelectionView(viewProperties);
   }
 
-  public void initPresentation() {
+  @SuppressWarnings("deprecation")
+public void initPresentation() {
     final ICharmConfiguration charms = getCharmConfiguration();
     boolean alienCharms = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(
         statistics.getCharacterConcept().getCaste().getType());
@@ -329,7 +332,17 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
           specialCharmViews.add(oxBodyTechniqueView);
         }
       }
-
+      
+      public void visitPrerequisiteModifyingCharm(final IPrerequisiteModifyingCharm visited)
+      {
+    	  // Nothing to do
+      }
+      
+      public void visitTraitCapModifyingCharm(final ITraitCapModifyingCharm visited)
+      {
+    	  // Nothing to do
+      }
+      
       public void visitPainToleranceCharm(final IPainToleranceCharm visited) {
         // Nothing to do
       }

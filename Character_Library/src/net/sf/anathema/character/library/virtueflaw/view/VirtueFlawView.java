@@ -43,6 +43,7 @@ public class VirtueFlawView implements IVirtueFlawView {
 	        label,
 	        value,
 	        maxValue,
+	        null,
 	        GridAlignment.BEGINNING,
 	        null);
 	    traitView.addComponents((JPanel) getComponent());

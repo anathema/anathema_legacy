@@ -87,4 +87,16 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
   public IBasicCharacterData getBasicCharacterContext() {
     return new BasicCharacterContext(getCharacter());
   }
+
+	@Override
+	public boolean isFullyLoaded() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public void setFullyLoaded(boolean loaded) {
+		// TODO Auto-generated method stub
+		
+	}
 }

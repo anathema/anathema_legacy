@@ -32,7 +32,7 @@ public class PrerequisiteEntryView implements IPrerequisitesEntryView {
   public IIntValueView addEssencePrerequisiteView(String label, int minimum, int maximum) {
     content.add(new JLabel(label));
     content.add(new JLabel());
-    IIntValueDisplay display = factory.createIntValueDisplay(maximum, minimum);
+    IIntValueDisplay display = factory.createIntValueDisplay(maximum, minimum, null);
     content.add(display.getComponent());
     return display;
   }

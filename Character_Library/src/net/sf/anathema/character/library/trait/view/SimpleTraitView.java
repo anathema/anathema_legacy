@@ -9,6 +9,7 @@ import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 
 public class SimpleTraitView extends AbstractTraitView implements ITraitView<SimpleTraitView> {
 
@@ -17,9 +18,13 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
   private final GridAlignment dotAlignment;
   private final IGridDialogLayoutData labelAlignment;
   private JPanel traitViewPanel;
-
+  
   public SimpleTraitView(IIntValueDisplayFactory factory, String labelText, int value, int maxValue) {
-    this(factory, labelText, value, maxValue, GridAlignment.END);
+	    this(factory, labelText, value, maxValue, null, GridAlignment.END);
+	  }
+
+  public SimpleTraitView(IIntValueDisplayFactory factory, String labelText, int value, int maxValue, IModifiableCapTrait trait) {
+    this(factory, labelText, value, maxValue, trait, GridAlignment.END);
   }
   
   public SimpleTraitView(
@@ -29,7 +34,18 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
 	      int maxValue,
 	      GridAlignment dotAlignment)
   {
-	  this(factory, labelText, value, maxValue, dotAlignment, GridDialogLayoutData.FILL_HORIZONTAL);
+	  this(factory, labelText, value, maxValue, null, dotAlignment, GridDialogLayoutData.FILL_HORIZONTAL);
+  }
+  
+  public SimpleTraitView(
+	      IIntValueDisplayFactory factory,
+	      String labelText,
+	      int value,
+	      int maxValue,
+	      IModifiableCapTrait trait,
+	      GridAlignment dotAlignment)
+  {
+	  this(factory, labelText, value, maxValue, trait, dotAlignment, GridDialogLayoutData.FILL_HORIZONTAL);
   }
 
   public SimpleTraitView(
@@ -37,9 +53,10 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
       String labelText,
       int value,
       int maxValue,
+      IModifiableCapTrait trait,
       GridAlignment dotAlignment,
       IGridDialogLayoutData labelAlignment) {
-    super(factory, labelText, value, maxValue);
+    super(factory, labelText, value, maxValue, trait);
     this.label = new JLabel(getLabelText());
     this.displayComponent = maxValue > 0 ? getValueDisplay().getComponent() : null;
     this.dotAlignment = dotAlignment;

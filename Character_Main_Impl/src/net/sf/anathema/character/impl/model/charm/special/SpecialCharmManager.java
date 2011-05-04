@@ -9,11 +9,13 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCha
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -42,7 +44,14 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
     return specialConfigurationsByCharm.get(charm);
   }
-
+  
+  private void registerTraitCapModifyingCharm(ITraitCapModifyingCharm visited,
+		  ICharm charm, ISpecialCharm specialCharm, ILearningCharmGroup group)
+  {
+	  addSpecialCharmConfiguration(charm, group,
+			  new TraitCapModifyingCharmConfiguration(context, config, charm, (ITraitCapModifyingCharm) specialCharm));
+  }
+  
   private void registerEffectMultilearnableCharm(IMultipleEffectCharm visited, ICharm charm, ILearningCharmGroup group) {
     addSpecialCharmConfiguration(
         charm,
@@ -85,7 +94,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
 
   @Override
   public void registerSpecialCharmConfiguration(
-      ISpecialCharm specialCharm,
+      final ISpecialCharm specialCharm,
       final ICharm charm,
       final ILearningCharmGroup group) {
     specialCharm.accept(new ISpecialCharmVisitor() {
@@ -107,6 +116,16 @@ public class SpecialCharmManager implements ISpecialCharmManager {
 
       public void visitSubeffectCharm(ISubeffectCharm visitedCharm) {
         registerSubeffectCharm(visitedCharm, charm, group);
+      }
+      
+      public void visitPrerequisiteModifyingCharm(IPrerequisiteModifyingCharm visitedCharm)
+      {
+    	// do nothing
+      }
+      
+      public void visitTraitCapModifyingCharm(ITraitCapModifyingCharm visitedCharm)
+      {
+    	registerTraitCapModifyingCharm(visitedCharm, charm, specialCharm, group);
       }
     });
   }

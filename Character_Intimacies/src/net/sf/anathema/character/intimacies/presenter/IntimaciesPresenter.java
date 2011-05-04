@@ -136,6 +136,7 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
   protected IRemovableTraitView< ? > createSubView(final BasicUi basicUi, final IIntimacy intimacy) {
     final IRemovableTraitView<IToggleButtonTraitView< ? >> intimacyView = view.addEntryView(
         basicUi.getRemoveIcon(),
+        null,
         intimacy.getName());
     intimacyView.setMaximum(model.getCompletionValue());
     intimacyView.setValue(intimacy.getTrait().getCurrentValue());

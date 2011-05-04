@@ -8,6 +8,7 @@ import javax.swing.ListCellRenderer;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
+import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.charmentry.presenter.view.IKeywordView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
@@ -33,7 +34,7 @@ public class KeywordView implements IKeywordView {
     return view;
   }
 
-  public IRemovableEntryView addEntryView(Icon removeIcon, String string) {
+  public IRemovableEntryView addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
     RemovableStringView view = new RemovableStringView(removeIcon, string);
     view.addContent(entryPanel);
     contentPanel.revalidate();

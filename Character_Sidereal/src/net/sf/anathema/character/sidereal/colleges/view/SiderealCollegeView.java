@@ -10,6 +10,7 @@ import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
+import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.GroupedTraitView;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeView;
@@ -49,7 +50,7 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
       int value,
       int maxValue,
       boolean selected) {
-    return groupedTraitView.addTraitView(label, value, maxValue, selected, viewProperties, factory);
+    return groupedTraitView.addTraitView(label, value, maxValue, null, selected, viewProperties, factory);
   }
 
   public IOverviewCategory createOverview(String borderLabel) {
