@@ -1,7 +1,6 @@
 package net.sf.anathema.character.model.background;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 public interface IBackgroundConfiguration {
 	
@@ -9,19 +8,19 @@ public interface IBackgroundConfiguration {
 
   public IBackgroundTemplate[] getAllAvailableBackgroundTemplates();
   
-  public IDefaultTrait addBackground(String customBackgroundName);
+  public IBackground addBackground(String customBackgroundName, String description);
   
-  public IDefaultTrait addBackground(IBackgroundTemplate type);
+  public IBackground addBackground(IBackgroundTemplate type, String description);
 
-  public IDefaultTrait addBackground(String customBackgroundName, boolean loadIfExists);
+  public IBackground addBackground(String customBackgroundName, String description, boolean loadIfExists);
 
-  public IDefaultTrait addBackground(IBackgroundTemplate type, boolean loadIfExists);
+  public IBackground addBackground(IBackgroundTemplate type, String description, boolean loadIfExists);
 
-  public IDefaultTrait[] getBackgrounds();
+  public IBackground[] getBackgrounds();
 
   public void addBackgroundListener(IBackgroundListener listener);
 
-  public void removeBackground(IDefaultTrait background);
+  public void removeBackground(IBackground background);
 
-  public IDefaultTrait getBackgroundByTemplate(IBackgroundTemplate type);
+  public IBackground getBackgroundByTemplate(IBackgroundTemplate type);
 }

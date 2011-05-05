@@ -17,12 +17,13 @@ public class SetBackgroundFixture extends AbstractBackgroundFixture {
       return;
     }
     if (trait == null) {
-      trait = getCharacterStatistics().getTraitConfiguration().getBackgrounds().addBackground(getTraitType());
+      trait = getCharacterStatistics().getTraitConfiguration().getBackgrounds().addBackground(getTraitType(), null);
     }
     trait.setCurrentValue(value);
   }
 
-  protected final ITrait getTrait() {
+  @SuppressWarnings("unchecked")
+protected final ITrait getTrait() {
     ICharacter character = new CharacterSummary(summary).getCharacter();
     ICharacterStatistics statistics = character.getStatistics();
     return statistics.getTraitConfiguration().getTrait(getTraitType());
