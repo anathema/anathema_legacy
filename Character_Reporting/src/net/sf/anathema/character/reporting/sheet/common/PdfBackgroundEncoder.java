@@ -1,9 +1,9 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
+import net.sf.anathema.character.generic.backgrounds.IBackgroundInfo;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
-import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
@@ -39,8 +39,7 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
       if (!printZeroBackgrounds && background.getCurrentValue() == 0) {
         continue;
       }
-      ITraitType backgroundType = background.getType();
-      String backgroundName = getBackgroundName(backgroundType);
+      String backgroundName = getBackgroundName((IBackgroundInfo) background);
       Position position = new Position(bounds.x, yPosition);
       int value = background.getCurrentValue();
       traitEncoder.encodeWithText(directContent, backgroundName, position, bounds.width, value, 5);
@@ -49,12 +48,10 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
     encodeEmptyLines(directContent, bounds, yPosition);
   }
 
-  private String getBackgroundName(ITraitType backgroundType) {
-    String backgroundId = backgroundType.getId();
-    if (backgroundType instanceof CustomizedBackgroundTemplate) {
-      return backgroundId;
-    }
-    return resources.getString("BackgroundType.Name." + backgroundType.getId()); //$NON-NLS-1$
+  private String getBackgroundName(IBackgroundInfo background) {
+	String backgroundName = background.getName(resources);
+	String description = background.getDescription();
+	return backgroundName + (description != null ? " (" + description + ")" : "");
   }
 
   private void encodeEmptyLines(PdfContentByte directContent, Bounds bounds, float yPosition) {
