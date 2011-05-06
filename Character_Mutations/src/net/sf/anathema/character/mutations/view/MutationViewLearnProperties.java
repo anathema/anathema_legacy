@@ -1,4 +1,4 @@
-package net.sf.anathema.character.lunar.beastform.presenter;
+package net.sf.anathema.character.mutations.view;
 
 import java.awt.Component;
 
@@ -12,27 +12,26 @@ import javax.swing.event.ListSelectionListener;
 
 import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearnProperties;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
-import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
-import net.sf.anathema.character.lunar.beastform.model.gift.IGiftModel;
-import net.sf.anathema.character.lunar.beastform.view.IGiftLearnViewProperties;
+import net.sf.anathema.character.mutations.model.IMutation;
+import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 
-public class FirstEditionGiftViewLearnProperties extends AbstractMagicLearnProperties implements IGiftLearnViewProperties {
+public class MutationViewLearnProperties extends AbstractMagicLearnProperties implements IMutationLearnViewProperties {
 
-  private final IGiftModel model;
+  private final IMutationsModel model;
 
-  public FirstEditionGiftViewLearnProperties(IResources resources, IGiftModel model) {
+  public MutationViewLearnProperties(IResources resources, IMutationsModel model) {
     super(resources);
     this.model = model;
   }
 
   public String getAddButtonToolTip() {
-    return getResources().getString("Lunar.DeadlyBeastmanTransformation.Gifts.AddTooltip"); //$NON-NLS-1$
+    return getResources().getString("Mutations.Tooltips.AddTooltip"); //$NON-NLS-1$
   }
 
   public String getRemoveButtonToolTip() {
-    return getResources().getString("Lunar.DeadlyBeastmanTransformation.Gifts.RemoveTooltip"); //$NON-NLS-1$
+    return getResources().getString("Mutations.Tooltips.RemoveTooltip"); //$NON-NLS-1$
   }
 
   public ListCellRenderer getAvailableMagicRenderer() {
@@ -41,12 +40,12 @@ public class FirstEditionGiftViewLearnProperties extends AbstractMagicLearnPrope
 
 	@Override
       protected boolean isLegal(Object object) {
-        return model.isSelectable((IGift) object);
+        return model.isSelectable((IMutation) object);
       }
 
       @Override
       protected String getPrintName(IResources res, Object value) {
-        return getGiftString((IGift) value);
+        return getMutationString((IMutation) value, true);
       }
     };
   }
@@ -64,9 +63,9 @@ public class FirstEditionGiftViewLearnProperties extends AbstractMagicLearnPrope
           int index,
           boolean isSelected,
           boolean cellHasFocus) {
-        IQualitySelection<IGift> selection = (IQualitySelection<IGift>) value;
-        IGift gift = selection.getQuality();
-        String printName = getGiftString(gift);
+        IQualitySelection<IMutation> selection = (IQualitySelection<IMutation>) value;
+        IMutation gift = selection.getQuality();
+        String printName = getMutationString(gift, false);
         Component renderComponent = super.getListCellRendererComponent(list, printName, index, isSelected, cellHasFocus);
         renderComponent.setEnabled(model.isActive(selection));
         return renderComponent;
@@ -75,29 +74,33 @@ public class FirstEditionGiftViewLearnProperties extends AbstractMagicLearnPrope
   }
 
   public boolean isMagicSelectionAvailable(Object selectedValue) {
-    return model.isSelectable((IGift) selectedValue);
+    return model.isSelectable((IMutation) selectedValue);
   }
 
   public int getAvailableListSelectionMode() {
     return ListSelectionModel.SINGLE_SELECTION;
   }
 
-  private String getGiftString(IGift gift) {
-    return getResources().getString("DeadlyBeastmanTransformation.Gift." + gift.getId()); //$NON-NLS-1$
+  private String getMutationString(IMutation mutation, boolean showType) {
+	  String typeString =
+		  getResources().getString("Mutations.Type." + mutation.getType().getId());
+  	String mutationString =
+  		getResources().getString("Mutations.Mutation." //$NON-NLS-1$
+  	            + mutation.getId());
+      return (showType ? "(" + typeString + ") " : "") + mutationString;
   }
 
   public ListSelectionListener getRemoveButtonEnabledListener(final JButton button, final JList list) {
     return new ListSelectionListener() {
-      @SuppressWarnings("unchecked")
-	public void valueChanged(ListSelectionEvent e) {
+      public void valueChanged(ListSelectionEvent e) {
         boolean enabled = !list.isSelectionEmpty();
-        for (Object object : list.getSelectedValues()) {
+        /*for (Object object : list.getSelectedValues()) {
           IQualitySelection<IGift> selection = (IQualitySelection<IGift>) object;
           if (model.isCreationLearnedSelectionInExperiencedCharacter(selection)) {
             enabled = false;
             break;
           }
-        }
+        }*/
         button.setEnabled(enabled);
       }
     };

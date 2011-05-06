@@ -18,6 +18,7 @@ import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
+import net.sf.anathema.character.mutations.view.IMutationsView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -118,4 +119,10 @@ public class SecondEditionBeastformView implements IBeastformView
   public IBeastformOverviewView addOverviewView(IBeastformOverviewViewProperties overviewProperties) {
     return new SecondEditionBeastformOverviewView(overviewPanel, overviewProperties);
   }
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public void addMutationsView(IMutationsView mutationView) {
+		giftPanel.add(mutationView.getComponent());
+	}
 }
