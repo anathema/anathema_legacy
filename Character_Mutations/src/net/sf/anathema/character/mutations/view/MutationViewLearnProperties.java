@@ -10,7 +10,9 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicStringBuilderConstants;
 import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearnProperties;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.mutations.model.IMutationsModel;
@@ -49,6 +51,33 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
       }
     };
   }
+  
+  @Override
+  public String getToolTipText(Object obj)
+  {
+	  IMutation mutation = (IMutation)obj;
+	  final IExaltedSourceBook source = mutation.getSource();
+	  
+	  if (source != null)
+	  {
+		  StringBuilder builder = new StringBuilder();
+		  builder.append(getResources().getString(createSourceBookKey(source)));
+		  Integer page = mutation.getPage();
+     	  if (page != null) {
+		      builder.append(IMagicStringBuilderConstants.CommaSpace);
+		      builder.append(getResources().getString("CharmTreeView.ToolTip.Page")); //$NON-NLS-1$
+		      builder.append(IMagicStringBuilderConstants.Space);
+		      builder.append(page);
+		    }
+		  return builder.toString();
+	  }
+	  return null;
+	    
+  }
+  
+  private String createSourceBookKey(final IExaltedSourceBook source) {
+	    return "ExaltedSourceBook." + source.getId(); //$NON-NLS-1$
+	  }
 
   @Override
   public ListCellRenderer getLearnedMagicRenderer() {

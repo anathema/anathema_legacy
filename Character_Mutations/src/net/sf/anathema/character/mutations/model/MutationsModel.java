@@ -9,11 +9,19 @@ import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 public class MutationsModel extends AbstractMutationsModel
 {
 	  private final IAdditionalModelBonusPointCalculator calculator;
-	  private IValueView<Integer> bonusPointView;
+	  private IValueView<Integer> bonusPointSpentView;
+	  private IValueView<Integer> bonusPointGainedView;
 
 	  public MutationsModel(final ICharacterModelContext context) {
 	    super(context);
-	    this.allMutations = MutationProvider.getAllMutations(context.getBasicCharacterContext().getRuleSet().getEdition());
+	    this.allMutations = MutationProvider.getMutations(context.getBasicCharacterContext().getRuleSet().getEdition(),
+	    		new IMutationRules()
+			    {
+					@Override
+					public boolean acceptMutation(IMutation mutation) {
+						return true;
+					}
+			    });
 	    this.calculator = new MutationsBonusPointCalculator(this);
 	  }
 	  
@@ -28,13 +36,16 @@ public class MutationsModel extends AbstractMutationsModel
 	  
 	  public void designOverview(IOverviewCategory overview, IResources resources)
 	  {
-		   bonusPointView = overview.addIntegerValueView(
+		   bonusPointSpentView = overview.addIntegerValueView(
 			        resources.getString("Mutations.Overview.BonusSpent"), 2);
+		   bonusPointGainedView = overview.addIntegerValueView(
+			        resources.getString("Mutations.Overview.BonusGained"), 2);
 	  }
 	  
 	  public void updateOverview()
 	  {
 		  calculator.recalculate();
-		  bonusPointView.setValue(calculator.getBonusPointCost());
+		  bonusPointSpentView.setValue(calculator.getBonusPointCost());
+		  bonusPointGainedView.setValue(calculator.getBonusPointsGranted());
 	  }
 }

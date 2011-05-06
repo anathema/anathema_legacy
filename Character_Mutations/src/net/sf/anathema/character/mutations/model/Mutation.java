@@ -3,6 +3,7 @@ package net.sf.anathema.character.mutations.model;
 import java.util.List;
 
 import net.disy.commons.core.util.ArrayUtilities;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.library.quality.model.Quality;
 import net.sf.anathema.character.library.quality.model.QualityPrerequisite;
 import net.sf.anathema.character.library.quality.presenter.IQuality;
@@ -10,34 +11,51 @@ import net.sf.anathema.character.library.quality.presenter.IQualityPredicate;
 
 public class Mutation extends Quality implements IMutation {
 
+	private final IExaltedSourceBook source;
+	private final Integer page;
 	private final int cost;
 	
-	public Mutation(String id, int cost)
+	public Mutation(String id, MutationType type, IExaltedSourceBook book, Integer page)
 	{
-		super(id, mapType(cost));
-		this.cost = cost;
+		super(id, type);
+		this.cost = mapCost(type);
+		this.source = book;
+		this.page = page;
 	}
 	
-  public Mutation(String id)
+	public Mutation(String id, MutationType type)
+	{
+		this(id, type, null, null);
+	}
+	
+	public Mutation(String id)
+	{
+	  this(id, MutationType.Pox, null, null);
+	}
+  
+  private static int mapCost(MutationType type)
   {
-    this(id, 1);
+	  switch (type)
+	  {
+	  case Pox: return 1;
+	  case Affliction: return 2;
+	  case Blight: return 4;
+	  case Abomination: return 6;
+	  case Deformity: return -4;
+	  case Debility: return -2;
+	  case Deficiency: return -1;
+	  }
+	  return 0;
   }
   
-  private static MutationType mapType(int cost)
+  public IExaltedSourceBook getSource()
   {
-	  switch (cost)
-		{
-		default:
-		case 1:
-			return MutationType.Pox;
-		case 2:
-			return MutationType.Affliction;
-		case 4:
-			return MutationType.Blight;
-		case 6:
-			return MutationType.Abomination;
-		
-		}
+	  return source;
+  }
+  
+  public Integer getPage()
+  {
+	  return page;
   }
 
   public void accept(IMutationVisitor visitor) {

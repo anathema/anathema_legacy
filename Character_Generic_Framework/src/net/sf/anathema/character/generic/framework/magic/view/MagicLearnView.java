@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.magic.view;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -28,13 +29,25 @@ import net.sf.anathema.lib.util.IIdentificate;
 public class MagicLearnView implements IMagicLearnView {
 
   private final GenericControl<IMagicViewListener> control = new GenericControl<IMagicViewListener>();
-  private final JList learnOptionsList = new JList(new DefaultListModel());
+  private JList learnOptionsList = new JList(new DefaultListModel())
+	{
+		private static final long serialVersionUID = 1L;
+
+		public String getToolTipText(MouseEvent evt) {
+	         int index = locationToIndex(evt.getPoint());
+	         Object item = getModel().getElementAt(index);
+	         String toolTip = properties.getToolTipText(item);
+	         return toolTip;
+	       }
+	}; 
   private final JList learnedList = new JList(new DefaultListModel());
   private final List<JButton> endButtons = new ArrayList<JButton>();
+  private IMagicLearnProperties properties;
   private JPanel boxPanel;
   private JButton addButton;
 
   public void init(final IMagicLearnProperties properties) {
+	this.properties = properties;	
     learnOptionsList.setCellRenderer(properties.getAvailableMagicRenderer());
     learnOptionsList.setSelectionMode(properties.getAvailableListSelectionMode());
     learnedList.setCellRenderer(properties.getLearnedMagicRenderer());
@@ -57,7 +70,9 @@ public class MagicLearnView implements IMagicLearnView {
 
   private JButton createAddMagicButton(Icon icon, String tooltip) {
     final SmartAction smartAction = new SmartAction(icon) {
-      @Override
+		private static final long serialVersionUID = 1L;
+
+	@Override
       protected void execute(Component parentComponent) {
         fireMagicAdded(learnOptionsList.getSelectedValues());
       }
@@ -67,7 +82,9 @@ public class MagicLearnView implements IMagicLearnView {
 
   private JButton createRemoveMagicButton(Icon icon, String tooltip) {
     final SmartAction smartAction = new SmartAction(icon) {
-      @Override
+		private static final long serialVersionUID = 1L;
+
+	@Override
       protected void execute(Component parentComponent) {
         fireMagicRemoved(learnedList.getSelectedValues());
       }

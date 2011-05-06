@@ -21,7 +21,8 @@ public class SecondEditionMutationModel extends AbstractMutationsModel
 			IBeastformModel model)
 	{
 		super(context);
-		this.allMutations = MutationProvider.getAllMutations(context.getBasicCharacterContext().getRuleSet().getEdition());
+		this.allMutations = MutationProvider.getMutations(context.getBasicCharacterContext().getRuleSet().getEdition(),
+					new DBTMutationRules());
 		model.addCharmLearnCountChangedListener(new IIntValueChangedListener() {
 		      public void valueChanged(int newValue) {
 		    		  SecondEditionMutationModel.this.maxPicks = newValue == 0 ? 0 : 4 + context.getTraitCollection().
@@ -34,7 +35,7 @@ public class SecondEditionMutationModel extends AbstractMutationsModel
 	@Override
 	  public boolean isSelectable(IMutation quality) {
 	    return super.isSelectable(quality) &&
-	    	getGroupCost(getSelectedQualities()) <= maxPicks;
+	    	getGroupCost(getSelectedQualities()) + quality.getCost() <= maxPicks;
 	  }
 	
 	  private int getGroupCost(IQualitySelection<IMutation>[] selection)

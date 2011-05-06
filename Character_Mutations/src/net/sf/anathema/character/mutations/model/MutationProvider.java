@@ -4,65 +4,77 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 
 public class MutationProvider {
-
-  public static IMutation[] getAllMutations(IExaltedEdition edition)
+	
+  public static IMutation[] getMutations(IExaltedEdition edition, IMutationRules rules)
   {
+	  List<IMutation> mutations = null;
+	  List<IMutation> toRemove = new ArrayList<IMutation>();
 	  if (edition == ExaltedEdition.FirstEdition)
-		  return getFirstEditionMutations();
+		  mutations = getFirstEditionMutations();
 	  if (edition == ExaltedEdition.SecondEdition)
-		  return getSecondEditionMutations();
-	  return null;
+		  mutations = getSecondEditionMutations();
+	  
+	  for (IMutation mutation : mutations)
+		  if (!rules.acceptMutation(mutation))
+			  toRemove.add(mutation);
+	  
+	  mutations.removeAll(toRemove);
+	  
+	  return mutations.toArray(new IMutation[mutations.size()]);
   }
   
-  private static IMutation[] getSecondEditionMutations()
+  private static List<IMutation> getSecondEditionMutations()
   {
 	  List<IMutation> Mutations = new ArrayList<IMutation>();
-	  Mutations.add(new Mutation("EnhancedSense", 1));
-	  Mutations.add(new Mutation("Claws", 1));
-	  Mutations.add(new Mutation("Fangs", 1));
-	  Mutations.add(new Mutation("FurFeathersLeavesScales", 1));
-	  Mutations.add(new Mutation("Hooves", 1));
-	  Mutations.add(new Mutation("SerpentineTongue", 1));
-	  Mutations.add(new Mutation("SkinHair", 1));
-	  Mutations.add(new Mutation("Small", 1));
-	  Mutations.add(new Mutation("Tail", 1));
-	  Mutations.add(new Mutation("ThirdEye", 1));
-	  Mutations.add(new Mutation("WolfsPace", 1));
-	  Mutations.add(new Mutation("ChakraEye", 2));
-	  Mutations.add(new Mutation("Chameleon", 2));
-	  Mutations.add(new Mutation("FrogTongue", 2));
-	  Mutations.add(new Mutation("GazellesPace", 2));
-	  Mutations.add(new Mutation("Gills", 2));
-	  Mutations.add(new Mutation("PrehensileTail", 2));
-	  Mutations.add(new Mutation("ScorpionsTail", 2));
-	  Mutations.add(new Mutation("TalonsTusksHorns", 2));
-	  Mutations.add(new Mutation("ThickSkin", 2));
-	  Mutations.add(new Mutation("Toxin", 2));
-	  Mutations.add(new Mutation("AcidicPustules", 4));
-	  Mutations.add(new Mutation("ArmoredHide", 4));
-	  Mutations.add(new Mutation("CheetahsPace", 4));
-	  Mutations.add(new Mutation("Glider", 4));
-	  Mutations.add(new Mutation("HideousMaw", 4));
-	  Mutations.add(new Mutation("LidlessDemonEye", 4));
-	  Mutations.add(new Mutation("PrehensileBodyHair", 4));
-	  Mutations.add(new Mutation("Quills", 4));
-	  Mutations.add(new Mutation("SerpentineHair", 4));
-	  Mutations.add(new Mutation("Tentacles", 4));
-	  Mutations.add(new Mutation("WallWalking", 4));
-	  Mutations.add(new Mutation("Hive", 6));
-	  Mutations.add(new Mutation("ExtraArmLegHead", 6));
-	  Mutations.add(new Mutation("SerpentsBody", 6));
-	  Mutations.add(new Mutation("SpiderLegs", 6));
-	  Mutations.add(new Mutation("TerrifyingMane", 6));
-	  Mutations.add(new Mutation("Wings", 6));
+	  Mutations.add(new Mutation("EnhancedSense", MutationType.Pox, ExaltedSourceBook.SecondEdition, 288));
+	  Mutations.add(new Mutation("Claws", MutationType.Pox, ExaltedSourceBook.SecondEdition, 288));
+	  Mutations.add(new Mutation("Fangs", MutationType.Pox));
+	  Mutations.add(new Mutation("FurFeathersLeavesScales", MutationType.Pox));
+	  Mutations.add(new Mutation("Hooves", MutationType.Pox));
+	  Mutations.add(new Mutation("SerpentineTongue", MutationType.Pox));
+	  Mutations.add(new Mutation("SkinHair", MutationType.Pox));
+	  Mutations.add(new Mutation("Small", MutationType.Pox));
+	  Mutations.add(new Mutation("Tail", MutationType.Pox));
+	  Mutations.add(new Mutation("ThirdEye", MutationType.Pox));
+	  Mutations.add(new Mutation("WolfsPace", MutationType.Pox));
+	  Mutations.add(new Mutation("ChakraEye", MutationType.Affliction));
+	  Mutations.add(new Mutation("Chameleon", MutationType.Affliction));
+	  Mutations.add(new Mutation("FrogTongue", MutationType.Affliction));
+	  Mutations.add(new Mutation("GazellesPace", MutationType.Affliction));
+	  Mutations.add(new Mutation("Gills", MutationType.Affliction));
+	  Mutations.add(new Mutation("PrehensileTail", MutationType.Affliction));
+	  Mutations.add(new Mutation("ScorpionsTail", MutationType.Affliction));
+	  Mutations.add(new Mutation("TalonsTusksHorns", MutationType.Affliction));
+	  Mutations.add(new Mutation("ThickSkin", MutationType.Affliction));
+	  Mutations.add(new Mutation("Toxin", MutationType.Affliction));
+	  Mutations.add(new Mutation("AcidicPustules", MutationType.Blight));
+	  Mutations.add(new Mutation("ArmoredHide", MutationType.Blight));
+	  Mutations.add(new Mutation("CheetahsPace", MutationType.Blight));
+	  Mutations.add(new Mutation("Glider", MutationType.Blight));
+	  Mutations.add(new Mutation("HideousMaw", MutationType.Blight));
+	  Mutations.add(new Mutation("LidlessDemonEye", MutationType.Blight));
+	  Mutations.add(new Mutation("PrehensileBodyHair", MutationType.Blight));
+	  Mutations.add(new Mutation("Quills", MutationType.Blight));
+	  Mutations.add(new Mutation("SerpentineHair", MutationType.Blight));
+	  Mutations.add(new Mutation("Tentacles", MutationType.Blight));
+	  Mutations.add(new Mutation("WallWalking", MutationType.Blight));
+	  Mutations.add(new Mutation("Hive", MutationType.Abomination));
+	  Mutations.add(new Mutation("ExtraArmLegHead", MutationType.Abomination));
+	  Mutations.add(new Mutation("SerpentsBody", MutationType.Abomination));
+	  Mutations.add(new Mutation("SpiderLegs", MutationType.Abomination));
+	  Mutations.add(new Mutation("TerrifyingMane", MutationType.Abomination));
+	  Mutations.add(new Mutation("Wings", MutationType.Abomination));
 	  
-	  return Mutations.toArray(new IMutation[Mutations.size()]);
+	  Mutations.add(new Mutation("Atrophy", MutationType.Deficiency));
+	  
+	  return Mutations;
   }
   
-  private static IMutation[] getFirstEditionMutations()
+  private static List<IMutation> getFirstEditionMutations()
   {
 	  return null;
   }

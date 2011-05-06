@@ -4,7 +4,8 @@ import net.sf.anathema.character.library.quality.presenter.IQualityType;
 
 public enum MutationType implements IQualityType
 {
-	  Pox, Affliction, Blight, Abomination;
+	  Pox, Affliction, Blight, Abomination,
+	  Deficiency, Debility, Deformity;
 
 	  public String getId() {
 	    return name();
