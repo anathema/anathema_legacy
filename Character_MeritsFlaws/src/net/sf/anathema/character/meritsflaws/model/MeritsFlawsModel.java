@@ -21,7 +21,8 @@ public class MeritsFlawsModel extends AbstractQualityModel<IPerk> implements IMe
 
   public MeritsFlawsModel(ICharacterModelContext context) {
     super(context);
-    for (IPerk perk : MeritsFlawsProvider.getAllPerks()) {
+    for (IPerk perk : MeritsFlawsProvider.getAllPerks(context.getBasicCharacterContext().getRuleSet().getEdition()))
+    {
       if (perk.isLegalFor(context.getBasicCharacterContext().getCharacterType())) {
         allPerks.add(perk);
       }
