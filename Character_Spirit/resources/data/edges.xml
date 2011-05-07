@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!--
 
-    relocations.xml - XML charm data for Anathema Plug-ins.
+    edges.xml - XML charm data for Anathema Plug-ins.
     Copyright (C) 2011  Scott D. Olson (scottolson275@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
@@ -20,103 +20,105 @@
 
 -->
 <charmlist>
-	<!-- Spirit Relocations -->
-	<charm id="Spirit.Banish" exalt="Spirit" group="Relocations">
+	<!-- Spirit Edges -->
+	<charm id="Spirit.BaneWeapon" exalt="Spirit" group="Edges">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+		   <essence cost="5"/>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Supplemental"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Combo-OK" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.EssenceBite" exalt="Spirit" group="Edges">
+		<prerequisite>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			<essence cost="" text="Varies" />
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Combo-Basic" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.Paralyze" exalt="Spirit" group="Edges">
+		<prerequisite>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			<essence cost="6" />
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Combo-OK" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Varies" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.Shatter" exalt="Spirit" group="Edges">
 		<prerequisite>
 			<essence value="4"/>
 		</prerequisite>
 		<cost>
-		   <essence cost="12"/>
-		   <willpower cost="1"/>
+			<essence cost="10" text="(+5m)"/>
+			<willpower cost="" text="(+1wp)"/>
 		</cost>
-		<duration duration="Instant" />
-		<charmtype type="Simple"/>
+		<duration duration="Instant"/>
+		<charmtype type="ExtraAction" />
 		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Combo-OK" visualize="true"/>
 		<charmAttribute attribute="Obvious" visualize="true"/>
-		<charmAttribute attribute="Shaping" visualize="true"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.Capture" exalt="Spirit" group="Relocations">
+	<charm id="Spirit.ShatteredAdamantAttack" exalt="Spirit" group="Edges">
 		<prerequisite>
 			<essence value="5"/>
 		</prerequisite>
 		<cost>
-		   <essence cost="16"/>
-		   <willpower cost="1"/>
-		</cost>
-		<duration duration="Instant" />
-		<charmtype type="Simple"/>
-		<charmAttribute attribute="Mortal"/>
-		<charmAttribute attribute="Obvious" visualize="true"/>
-		<charmAttribute attribute="Shaping" visualize="true"/>
-		<source source="GodsAndElementals"/>
-	</charm>
-	<charm id="Spirit.EmergencyPrayerRelocation" exalt="Spirit" group="Relocations">
-		<prerequisite>
-			<essence value="4"/>
-		</prerequisite>
-		<cost>
 			<essence cost="10"/>
-			<willpower cost="1"/>
 		</cost>
-		<duration duration="Variable"/>
-		<charmtype type="Simple"/>
+		<duration duration="Instant"/>
+		<charmtype type="Supplemental" />
 		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Combo-OK" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
 		<source source="GodsAndElementals"/>
 	</charm>
-	<charm id="Spirit.LandscapeTravel" exalt="Spirit" group="Relocations">
+	<charm id="Spirit.SpiritCutting" exalt="Spirit" group="Edges">
 		<prerequisite>
 			<essence value="2"/>
 		</prerequisite>
 		<cost>
-			<essence cost="4"/>
+			<essence cost="2"/> 
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Supplemental"/>
+		<charmAttribute attribute="Combo-OK" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.WordsOfPower" exalt="Spirit" group="Edges">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<essence cost="5"/>
 		</cost>
 		<duration amount="1" unit="scene"/>
 		<charmtype type="Reflexive"/>
-		<charmAttribute attribute="Mortal"/>
 		<charmAttribute attribute="Combo-OK" visualize="true"/>
-		<source source="GodsAndElementals"/>
-	</charm>
-	<charm id="Spirit.LoomStride" exalt="Spirit" group="Relocations">
-		<prerequisite>
-			<essence value="2"/>
-		</prerequisite>
-		<cost>
-			<essence cost="4"/>
-		</cost>
-		<duration duration="Instant"/>
-		<charmtype type="Reflexive"/>
-		<charmAttribute attribute="Mortal"/>
-		<charmAttribute attribute="Combo-OK" visualize="true"/>
-		<source source="GodsAndElementals"/>
-	</charm>
-	<charm id="Spirit.Portal" exalt="Spirit" group="Relocations">
-		<prerequisite>
-			<essence value="3"/>
-		</prerequisite>
-		<cost>
-			<essence cost="8"/>
-			<willpower cost="1"/>
-		</cost>
-		<duration duration="Instant"/>
-		<charmtype type="Simple"/>
-		<charmAttribute attribute="Mortal"/>
 		<charmAttribute attribute="Obvious" visualize="true"/>
-		<charmAttribute attribute="Shaping" visualize="true"/>
-		<source source="GodsAndElementals"/>
-	</charm>
-	<charm id="Spirit.StormShuttlePassport" exalt="Spirit" group="Relocations">
-		<prerequisite>
-			<essence value="3"/>
-		</prerequisite>
-		<cost>
-			<essence cost="8"/>
-			<willpower cost="1"/>
-		</cost>
-		<duration duration="TenMinusConviction"/>
-		<charmtype type="Simple"/>
 		<charmAttribute attribute="Mortal"/>
-		<charmAttribute attribute="Obvious" visualize="true"/>
 		<source source="GodsAndElementals"/>
 	</charm>
 </charmlist>
