@@ -20,7 +20,7 @@ public class ArtifactStats extends AbstractStats implements IArtifactStats
 	
 	public ArtifactAttuneType getAttuneType()
 	{
-		return null;
+		return ArtifactAttuneType.FullyAttuned;
 	}
 	
 	@Override
