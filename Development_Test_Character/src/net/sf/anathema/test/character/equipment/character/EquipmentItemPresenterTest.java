@@ -36,7 +36,7 @@ public class EquipmentItemPresenterTest extends BasicTestCase {
   }
 
   private void initPresentation(IEquipmentItem model, IEquipmentObjectView view) {
-    new EquipmentObjectPresenter(model, view, equipmentStringBuilder, new AnathemaResources()).initPresentation();
+    new EquipmentObjectPresenter(model, view, equipmentStringBuilder, new AnathemaResources(), null).initPresentation();
   }
 
   public void testEquipmentWithoutStats() throws Exception {

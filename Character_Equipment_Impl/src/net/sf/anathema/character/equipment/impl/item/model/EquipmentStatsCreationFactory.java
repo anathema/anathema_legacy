@@ -4,6 +4,7 @@ import java.awt.Component;
 
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IArtifactStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.ICloseCombatStatsticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsModel;
@@ -17,6 +18,7 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.IEquipmentSt
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ArmourStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.ArtifactStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ShieldStats;
@@ -174,6 +176,12 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
         setBasicWeaponStats(rangedCombatStats, rangedCombatModel, model.getWeaponTagsModel());
         rangedCombatStats.setRange(rangedCombatModel.getRangeModel().getValue());
         return rangedCombatStats;
+      case Artifact:
+    	ArtifactStats artifactStats = new ArtifactStats();
+    	IArtifactStatisticsModel artifactModel = model.getArtifactStatisticsModel();
+    	setName(artifactStats, artifactModel);
+    	artifactStats.setAttuneCost(artifactModel.getAttuneCostModel().getValue());
+    	return artifactStats;
     }
     return null;
   }

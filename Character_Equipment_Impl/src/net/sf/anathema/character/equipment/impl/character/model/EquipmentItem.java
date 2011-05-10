@@ -12,9 +12,11 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArmourStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArtifactStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyShieldStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyWeaponStats;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
+import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
@@ -60,6 +62,8 @@ public class EquipmentItem implements IEquipmentItem {
         if (input instanceof IWeaponStats) {
           return new ProxyWeaponStats((IWeaponStats) input, material, ruleSet);
         }
+        if (input instanceof IArtifactStats)
+          return new ProxyArtifactStats((IArtifactStats) input, material, ruleSet);
         return new ProxyShieldStats((IShieldStats) input, material, ruleSet);
       }
     });
@@ -75,6 +79,8 @@ public class EquipmentItem implements IEquipmentItem {
       if (stats instanceof IWeaponStats) {
         Collections.addAll(views, ((IWeaponStats) stats).getViews());
       }
+      else if (stats instanceof IArtifactStats)
+    	Collections.addAll(views, ((IArtifactStats)stats).getViews());
       else {
         views.add(stats);
       }

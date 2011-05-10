@@ -68,6 +68,10 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
         EquipmentStatisticsType.Shield,
         new ShieldStatisticsPresenterPage(resources, model, viewFactory),
         inputListener);
+    addPage(
+    	EquipmentStatisticsType.Artifact,
+    	new ArtifactStatisticsPresenterPage(resources, model, viewFactory),
+    	inputListener);
   }
 
   @Override
@@ -79,6 +83,8 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     view.addHorizontalLine();
     addStatisticsTypeRow(properties.getDefensiveLabel(), EquipmentStatisticsType.Armor);
     addStatisticsTypeRow("", EquipmentStatisticsType.Shield); //$NON-NLS-1$
+    view.addHorizontalLine();
+    addStatisticsTypeRow(properties.getOtherLabel(), EquipmentStatisticsType.Artifact);
   }
 
   private void addPage(final EquipmentStatisticsType type, IAnathemaWizardPage page, CheckInputListener inputListener) {
@@ -92,7 +98,9 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
 
   private void addStatisticsTypeRow(String label, final EquipmentStatisticsType type) {
     Action action = new SmartAction(properties.getIcon(type)) {
-      @Override
+		private static final long serialVersionUID = 1L;
+
+	@Override
       protected void execute(Component parentComponent) {
         model.setEquipmentType(type);
       }

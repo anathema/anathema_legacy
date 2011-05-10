@@ -9,25 +9,29 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
+import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.type.ICharacterType;
 
 import com.db4o.query.Predicate;
 
 public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
+  private final ICharacterType characterType;
   private final MagicalMaterial defaultMaterial;
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<IEquipmentItem>();
 
   public EquipmentAdditionalModel(
-      MagicalMaterial defaultMaterial,
+      ICharacterType characterType,
       IArmourStats naturalArmour,
       IEquipmentTemplateProvider equipmentTemplateProvider,
       IExaltedRuleSet ruleSet,
       IEquipmentTemplate... naturalWeapons) {
     super(ruleSet, naturalArmour);
-    this.defaultMaterial = defaultMaterial;
+    this.characterType = characterType;
+    this.defaultMaterial = evaluateDefaultMaterial();
     this.equipmentTemplateProvider = equipmentTemplateProvider;
     for (IEquipmentTemplate template : naturalWeapons) {
       if (template == null) {
@@ -37,6 +41,14 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
       naturalWeaponItems.add(initItem(item));
     }
   }
+  
+  private MagicalMaterial evaluateDefaultMaterial() {
+	    MagicalMaterial defaultMaterial = MagicalMaterial.getDefault(characterType);
+	    if (defaultMaterial == null) {
+	      return MagicalMaterial.Orichalcum;
+	    }
+	    return defaultMaterial;
+	  }
 
   public IEquipmentItem[] getNaturalWeapons() {
     return naturalWeaponItems.toArray(new IEquipmentItem[naturalWeaponItems.size()]);
@@ -49,7 +61,9 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   public String[] getAvailableTemplateIds() {
     final Set<String> idSet = new HashSet<String>();
     equipmentTemplateProvider.queryContainer(new Predicate<IEquipmentTemplate>() {
-      @Override
+		private static final long serialVersionUID = 1L;
+
+	@Override
       public boolean match(IEquipmentTemplate candidate) {
         if (candidate.getStats(getRuleSet()).length > 0) {
           idSet.add(candidate.getName());
@@ -85,5 +99,22 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
 
   public MagicalMaterial getDefaultMaterial() {
     return defaultMaterial;
+  }
+  
+  public ArtifactAttuneType[] getAttuneTypes(IEquipmentItem item)
+  {
+	  MagicalMaterial material = item.getMaterial();
+	  switch (item.getMaterialComposition())
+	  {
+	  default:
+	  case None:
+		  return null;
+	  case Fixed:
+	  case Variable:
+		  return MagicalMaterial.getAttunementTypes(characterType, material);
+	  case Compound:
+		  return new ArtifactAttuneType[]
+		       { ArtifactAttuneType.Unattuned, ArtifactAttuneType.FullyAttuned };
+	  }
   }
 }
