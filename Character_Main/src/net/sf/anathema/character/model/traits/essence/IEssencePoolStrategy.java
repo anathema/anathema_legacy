@@ -11,6 +11,12 @@ public interface IEssencePoolStrategy {
   public int getStandardPersonalPool();
 
   public int getStandardPeripheralPool();
+  
+  public int getUnmodifiedPersonalPool();
+  
+  public int getUnmodifiedPeripheralPool();
+  
+  public int getAttunementExpenditures();
 
   public void addPoolChangeListener(IChangeListener listener);
 }

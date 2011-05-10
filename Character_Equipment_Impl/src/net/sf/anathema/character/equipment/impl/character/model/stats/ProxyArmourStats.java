@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class ProxyArmourStats implements IArmourStats, IProxy<IArmourStats> {
+public class ProxyArmourStats extends AbstractStats implements IArmourStats, IProxy<IArmourStats> {
 
   private final IArmourStats delegate;
   private final MagicalMaterial material;
@@ -43,7 +43,7 @@ public class ProxyArmourStats implements IArmourStats, IProxy<IArmourStats> {
     if (original == null) {
       return null;
     }
-    return modification.getModifiedValue(original);
+    return !useAttunementModifiers() ? original : modification.getModifiedValue(original);
   }
 
   public Integer getMobilityPenalty() {

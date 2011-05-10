@@ -16,6 +16,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArtif
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyShieldStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyWeaponStats;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
+import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -99,13 +100,22 @@ public class EquipmentItem implements IEquipmentItem {
   public MaterialComposition getMaterialComposition() {
     return template.getComposition();
   }
+  
+  @Override
+  public ArtifactAttuneType getAttunementState() {
+  	for (IEquipmentStats stats : getStats())
+  		if (stats instanceof IArtifactStats)
+  			if (isPrintEnabled(stats))
+  				return ((IArtifactStats)stats).getAttuneType();
+  	return ArtifactAttuneType.Unattuned;
+  }
 
   @SuppressWarnings("unchecked")
   public boolean isPrintEnabled(IEquipmentStats stats) {
     if (stats instanceof IProxy<?>) {
       stats = ((IProxy<? extends IEquipmentStats>) stats).getUnderlying();
     }
-    
+
     return printedStats.contains(stats);
   }
 

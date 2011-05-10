@@ -66,7 +66,7 @@ public enum MagicalMaterial implements IIdentificate {
 		  attunement = new ArtifactAttuneType[] { ArtifactAttuneType.Unattuned, ArtifactAttuneType.FullyAttuned };
 	  else
 		  attunement = new ArtifactAttuneType[] { ArtifactAttuneType.Unattuned,
-			  ArtifactAttuneType.PartiallyAttuned, ArtifactAttuneType.UnharmoniousAttuned };
+			  ArtifactAttuneType.PartiallyAttuned, ArtifactAttuneType.UnharmoniouslyAttuned };
 	  return attunement;
   }
 

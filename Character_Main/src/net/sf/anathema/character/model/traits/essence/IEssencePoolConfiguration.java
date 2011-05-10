@@ -7,6 +7,8 @@ public interface IEssencePoolConfiguration {
   public String getPersonalPool();
 
   public String getPeripheralPool();
+  
+  public String getAttunedPool();
 
   public boolean isEssenceUser();
 

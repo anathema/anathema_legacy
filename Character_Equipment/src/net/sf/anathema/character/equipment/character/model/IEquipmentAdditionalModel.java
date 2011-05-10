@@ -14,6 +14,8 @@ public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentI
   public MaterialComposition getMaterialComposition(String templateId);
 
   public MagicalMaterial getMagicalMaterial(String templateId);
+  
+  public int getTotalAttunementCost();
 
   public IEquipmentPrintModel getPrintModel();
 

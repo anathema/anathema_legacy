@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class ProxyArtifactStats implements IArtifactStats, IProxy<IArtifactStats> 
+public class ProxyArtifactStats extends AbstractStats implements IArtifactStats, IProxy<IArtifactStats> 
 {
 	  private final IArtifactStats delegate;
 	  private final MagicalMaterial material;
@@ -49,10 +49,10 @@ public class ProxyArtifactStats implements IArtifactStats, IProxy<IArtifactStats
 	        && ObjectUtilities.equals(ruleSet, other.ruleSet);
 	  }
 
-	  @Override
+	  /*@Override
 	  public int hashCode() {
 	    return delegate.hashCode();
-	  }
+	  }*/
 	  
 	  @Override
 	  public IEquipmentStats[] getViews() {
@@ -61,6 +61,6 @@ public class ProxyArtifactStats implements IArtifactStats, IProxy<IArtifactStats
 
 	  @Override
 	  public String getId() {
-	    return getName().getId();
+	    return delegate.getId();
 	  }
 }

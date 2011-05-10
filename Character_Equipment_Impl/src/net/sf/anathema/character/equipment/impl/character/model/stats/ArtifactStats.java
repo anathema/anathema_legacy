@@ -25,11 +25,11 @@ public class ArtifactStats extends AbstractStats implements IArtifactStats
 	
 	@Override
 	public IEquipmentStats[] getViews() {
-	    IEquipmentStats[] views = new IEquipmentStats[4];
-	    views[0] = new ArtifactStatsDecorator(this, ArtifactAttuneType.Unattuned);
-	    views[1] = new ArtifactStatsDecorator(this, ArtifactAttuneType.PartiallyAttuned);
-	    views[2] = new ArtifactStatsDecorator(this, ArtifactAttuneType.FullyAttuned);
-	    views[3] = new ArtifactStatsDecorator(this, ArtifactAttuneType.UnharmoniousAttuned);
+	    IEquipmentStats[] views = new IEquipmentStats[3];
+	    //views[0] = new ArtifactStatsDecorator(this, ArtifactAttuneType.Unattuned);
+	    views[0] = new ArtifactStatsDecorator(this, ArtifactAttuneType.PartiallyAttuned);
+	    views[1] = new ArtifactStatsDecorator(this, ArtifactAttuneType.FullyAttuned);
+	    views[2] = new ArtifactStatsDecorator(this, ArtifactAttuneType.UnharmoniouslyAttuned);
 	    return views;
 	}
 

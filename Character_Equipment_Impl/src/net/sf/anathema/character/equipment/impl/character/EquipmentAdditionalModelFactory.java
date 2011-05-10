@@ -1,16 +1,12 @@
 package net.sf.anathema.character.equipment.impl.character;
 
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
-import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.equipment.MaterialComposition;
-import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalSoak;
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalWeaponTemplate;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;

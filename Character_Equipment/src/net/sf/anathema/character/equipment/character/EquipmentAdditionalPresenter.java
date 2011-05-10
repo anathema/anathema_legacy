@@ -1,10 +1,8 @@
 package net.sf.anathema.character.equipment.character;
 
 import java.awt.Component;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.swing.DefaultListCellRenderer;
@@ -20,7 +18,6 @@ import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
-import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.collection.ICollectionListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;

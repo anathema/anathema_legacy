@@ -1,11 +1,12 @@
 package net.sf.anathema.dummy.character.additional;
 
+import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class DemoAlienArmour implements IArmourStats {
+public class DemoAlienArmour extends AbstractStats implements IArmourStats {
   public Integer getFatigue() {
     return 2;
   }

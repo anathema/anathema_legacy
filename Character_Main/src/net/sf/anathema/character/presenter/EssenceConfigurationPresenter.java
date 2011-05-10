@@ -39,21 +39,28 @@ public class EssenceConfigurationPresenter implements IPresenter {
         (IModifiableCapTrait) essenceTrait);
     if (essence.isEssenceUser()) {
       final IValueView<String> personalView = view.addPoolView(
-          resources.getString("EssencePool.Name.Personal"), essence.getPersonalPool()); //$NON-NLS-1$      
+          resources.getString("EssencePool.Name.Personal"), essence.getPersonalPool()); //$NON-NLS-1$
+      
       if (essence.hasPeripheralPool()) {
         final IValueView<String> peripheralView = view.addPoolView(
             resources.getString("EssencePool.Name.Peripheral"), essence.getPeripheralPool()); //$NON-NLS-1$
+        final IValueView<String> attunementView = view.addPoolView(
+                resources.getString("EssencePool.Name.Attunement"), essence.getAttunedPool());
         essence.addPoolChangeListener(new IChangeListener() {
           public void changeOccured() {
             personalView.setValue(essence.getPersonalPool());
             peripheralView.setValue(essence.getPeripheralPool());
+            attunementView.setValue(essence.getAttunedPool());
           }
         });
       }
       else {
+    	final IValueView<String> attunementView = view.addPoolView(
+    	          resources.getString("EssencePool.Name.Attunement"), essence.getAttunedPool());
         essence.addPoolChangeListener(new IChangeListener() {
           public void changeOccured() {
             personalView.setValue(essence.getPersonalPool());
+            attunementView.setValue(essence.getAttunedPool());
           }
         });
       }

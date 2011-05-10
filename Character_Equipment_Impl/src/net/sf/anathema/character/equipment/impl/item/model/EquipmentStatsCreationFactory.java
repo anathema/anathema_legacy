@@ -28,6 +28,7 @@ import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
+import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
@@ -119,6 +120,13 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       shieldModel.getFatigueModel().setValue(shieldStats.getFatigue());
       shieldModel.getMobilityPenaltyModel().setValue(shieldStats.getMobilityPenalty());
       shieldModel.getRangedCombatDvBonusModel().setValue(shieldStats.getRangedCombatBonus());
+    }
+    else if (stats instanceof IArtifactStats) {
+      IArtifactStats artifactStats = (IArtifactStats) stats;
+      model.setEquipmentType(EquipmentStatisticsType.Artifact);
+      IArtifactStatisticsModel artifactModel = model.getArtifactStatisticsModel();
+      artifactModel.getName().setText(artifactStats.getName().getId());
+      artifactModel.getAttuneCostModel().setValue(artifactStats.getAttuneCost());
     }
     else {
       throw new NotYetImplementedException();

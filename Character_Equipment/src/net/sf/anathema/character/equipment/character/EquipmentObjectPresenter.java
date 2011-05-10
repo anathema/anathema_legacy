@@ -21,6 +21,7 @@ public class EquipmentObjectPresenter implements IPresenter {
   public static final String EQUIPMENT_NAME_PREFIX = "Equipment.Name."; //$NON-NLS-1$
   private static final String DESCRIPTION_PREFIX = "Equipment.Description."; //$NON-NLS-1$
   private final Map<IEquipmentStats, BooleanModel> attuneStatFlags = new HashMap<IEquipmentStats, BooleanModel>();
+  private final Map<IEquipmentStats, BooleanModel> otherStatFlags = new HashMap<IEquipmentStats, BooleanModel>();
   private final IEquipmentItem model;
   private final IEquipmentObjectView view;
   private final IEquipmentStringBuilder stringBuilder;
@@ -63,14 +64,22 @@ public class EquipmentObjectPresenter implements IPresenter {
       final BooleanModel booleanModel = view.addStats(createEquipmentDescription(model, equipment));
       if (equipment instanceof IArtifactStats)
     	  attuneStatFlags.put(equipment, booleanModel);
+      else
+    	  otherStatFlags.put(equipment, booleanModel);
       booleanModel.setValue(model.isPrintEnabled(equipment));
       booleanModel.addChangeListener(new ChangeListener() {
         public void stateChanged(ChangeEvent e) {
           model.setPrintEnabled(equipment, booleanModel.getValue());
-          if (booleanModel.getValue() == true && equipment instanceof IArtifactStats)
-        	  for (IEquipmentStats stats : attuneStatFlags.keySet())
-        		  if (equipment != stats)
-        			  attuneStatFlags.get(stats).setValue(false);
+          if (equipment instanceof IArtifactStats)
+          {
+	          if (booleanModel.getValue() == true)
+	        	  for (IEquipmentStats stats : attuneStatFlags.keySet())
+	        		  if (equipment != stats)
+	        			  attuneStatFlags.get(stats).setValue(false);
+	        	  
+	          for (IEquipmentStats stats : otherStatFlags.keySet())
+	    		  view.updateStatText(otherStatFlags.get(stats), createEquipmentDescription(model, stats));
+          }
         }
       });
     }
