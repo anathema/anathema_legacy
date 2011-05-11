@@ -70,9 +70,13 @@ public class SVGIntValueDisplay implements IIntValueView {
       }
     }
   };
-
+  
   public static double getDiameter(final double nodeWidth) {
-    return nodeWidth / 10;
+	    return nodeWidth / 10;
+	  }
+
+  public static double getDiameter(final double nodeWidth, final int numDots) {
+    return nodeWidth / numDots;
   }
 
   private final double radius;

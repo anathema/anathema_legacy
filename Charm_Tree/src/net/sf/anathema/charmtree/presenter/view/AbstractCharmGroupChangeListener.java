@@ -81,11 +81,12 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   protected abstract IExaltedEdition getEdition();
 
   private void loadCharmTree(final ICharmGroup charmGroup, final IIdentificate type) throws DocumentException {
+	boolean resetView = !(currentGroup == charmGroup && currentType != null && currentType.getId().equals(type.getId()));
     currentGroup = charmGroup;
     currentType = type;
     modifyCharmVisuals(type);
     if (charmGroup == null) {
-      charmTreeView.loadCascade(null);
+      charmTreeView.loadCascade(null, true);
     }
     else {
       ITreePresentationProperties presentationProperties = templateRegistry.getDefaultTemplate(
@@ -93,7 +94,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
           getEdition()).getPresentationProperties().getCharmPresentationProperties();
       IRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(getDisplayCharms(charmGroup));
       Document document = provider.createCascadeDocument(nodes, presentationProperties);
-      charmTreeView.loadCascade(document);
+      charmTreeView.loadCascade(document, resetView);
     }
   }
 
