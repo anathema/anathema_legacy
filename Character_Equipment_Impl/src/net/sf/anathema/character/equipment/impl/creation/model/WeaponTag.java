@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
 public enum WeaponTag implements IWeaponTag {
 
   TwoHanded, Armor, BowType, ClinchEnhancer, Disarming, FlameType, LanceType, MartialArts, Natural, Overwhelming,
-  Piercing, Reach, SingleShot, Thrown, BowBonuses;
+  Piercing, Reach, SingleShot, Thrown, BowBonuses, FlatDamage;
 
   public String getId() {
     return name();
@@ -16,7 +16,7 @@ public enum WeaponTag implements IWeaponTag {
   }
 
   public static WeaponTag[] getRangedWeaponTags() {
-    return new WeaponTag[] { WeaponTag.SingleShot, WeaponTag.BowBonuses };
+    return new WeaponTag[] { WeaponTag.SingleShot, WeaponTag.BowBonuses, FlatDamage };
   }
 
   public static WeaponTag[] getThrownWeaponTags() {
