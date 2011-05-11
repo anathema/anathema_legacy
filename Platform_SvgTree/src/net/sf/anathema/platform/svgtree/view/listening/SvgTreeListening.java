@@ -91,7 +91,8 @@ public class SvgTreeListening {
     }
   };
 
-  public SvgTreeListening(
+  @SuppressWarnings("unchecked")
+public SvgTreeListening(
       final AnathemaCanvas canvas,
       IBoundsCalculator calculator,
       ISvgTreeViewProperties viewProperties) {

@@ -12,7 +12,8 @@ import org.apache.batik.swing.gvt.InteractorAdapter;
 import org.apache.batik.swing.gvt.JGVTComponent;
 
 public class RightClickMagnifyInteractor extends InteractorAdapter {
-
+	
+  private final float MAX_ZOOM_DETERMINANT = .65f;
   private final IBoundsCalculator calculator;
   private boolean finished = true;
   private int yStart;
@@ -86,6 +87,12 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
 
     at.scale(scale, scale);
     at.translate(-xStart, -yStart);
+    
+    JGVTComponent c = (JGVTComponent) event.getSource();
+    AffineTransform rt = (AffineTransform) c.getRenderingTransform().clone();
+    rt.preConcatenate(at);
+    if (rt.getDeterminant() < MAX_ZOOM_DETERMINANT)
+  	  return;
     component.setPaintingTransform(at);
   }
 }

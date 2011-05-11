@@ -30,7 +30,7 @@ public class SVGIntValueView implements IIntValueView {
     this.widthInDots = widthInDots;
     this.maxWidth = maxWidth;
     this.labelString = labelString;
-    this.dotDiameter = SVGIntValueDisplay.getDiameter(.7 * maxWidth, widthInDots);
+    this.dotDiameter = SVGIntValueDisplay.getDisplayDiameter(maxWidth, widthInDots);
     this.valueDisplay = new SVGIntValueDisplay(
         maxValue,
         widthInDots,

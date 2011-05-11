@@ -56,7 +56,7 @@ public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNode
       setAttribute(
           displayElement,
           SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
-          "translate(0," + index * SVGIntValueDisplay.getDiameter(nodeWidth, widthInDots) * 1.1 + ")"); //$NON-NLS-1$ //$NON-NLS-2$
+          "translate(0," + index * SVGIntValueDisplay.getDisplayDiameter(nodeWidth, widthInDots) * 1.1 + ")"); //$NON-NLS-1$ //$NON-NLS-2$
       groupElement.appendChild(displayElement);
     }
     return groupElement;
@@ -68,12 +68,14 @@ public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNode
 
   private Element createBorder(final SVGDocument document) {
     Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
+    int length = categories.size();
+    double dotHeight = SVGIntValueDisplay.getDisplayDiameter(nodeWidth, widthInDots);
+    double adjustment = 1.15;
+    double height = length * dotHeight * adjustment;
     setAttribute(rectangle, SVGConstants.SVG_X_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, SVGConstants.SVG_Y_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, String.valueOf(nodeWidth));
-    setAttribute(rectangle, SVGConstants.SVG_HEIGHT_ATTRIBUTE, String.valueOf(categories.size()
-        * SVGIntValueDisplay.getDiameter(nodeWidth, widthInDots)
-        * 1.15));
+    setAttribute(rectangle, SVGConstants.SVG_HEIGHT_ATTRIBUTE, String.valueOf(height));
     setAttribute(rectangle, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
     setAttribute(rectangle, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
     setAttribute(rectangle, SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
