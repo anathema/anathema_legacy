@@ -23,7 +23,7 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-    <charm id="Abyssal.UltimateInevitabilityOfTheGrave" exalt="Abyssal" group="DarkMessiahStyle">
+    <charm id="Celestial.UltimateInevitabilityOfTheGrave" exalt="Abyssal" group="DarkMessiahStyle">
           <prerequisite>
                <trait id="MartialArts" value="6" />
                <essence value="6" />
@@ -43,11 +43,11 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="GloriesUCS" page="21"/>
      </charm>
-     <charm id="Abyssal.UltimateInevitabilityOfTheGrave2" exalt="Abyssal" group="DarkMessiahStyle">
+     <charm id="Celestial.UltimateInevitabilityOfTheGrave9" exalt="Abyssal" group="DarkMessiahStyle">
           <prerequisite>
                <trait id="MartialArts" value="9" />
                <essence value="9" />
-               <charmReference id="Abyssal.UltimateInevitabilityOfTheGrave" />
+               <charmReference id="Celestial.UltimateInevitabilityOfTheGrave" />
           </prerequisite>
           <cost>
                <essence cost="5" />
