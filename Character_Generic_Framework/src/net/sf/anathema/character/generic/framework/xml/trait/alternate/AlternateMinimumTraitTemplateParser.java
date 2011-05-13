@@ -6,6 +6,7 @@ import java.util.List;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateParser;
+import net.sf.anathema.character.generic.framework.xml.trait.IClonableTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -31,7 +32,7 @@ public class AlternateMinimumTraitTemplateParser {
     AlternateMinimumRestriction restriction = new AlternateMinimumRestriction(count, value);
     List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<GenericRestrictedTraitTemplate>();
     for (Element traitElement : ElementUtilities.elements(element, TAG_TRAIT)) {
-      GenericTraitTemplate template = GenericTraitTemplateParser.parseTraitTemplate(traitElement);
+      IClonableTraitTemplate template = GenericTraitTemplateParser.parseTraitTemplate(traitElement);
       ITraitType type = traitTypeGroup.getById(ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_ID));
       traitTemplates.add(new GenericRestrictedTraitTemplate(template, restriction, type));
     }

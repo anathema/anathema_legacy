@@ -4,7 +4,7 @@
     <abilityGroups uses="template/AbyssalAbilityGroup2nd.template" prefix="moep_Abyssals_" />
     <attributeGroups uses="trait/DefaultAttributeGroup.template" />
     <essence uses="DefaultEssence.template" />
-    <traitCollection uses="trait/DefaultTraitCollection.template" />
+    <traitCollection uses="template/AbyssalTraitCollection2nd.template" prefix="moep_Abyssals_"/>
     <magicTemplate uses="template/AbyssalMagic2nd.template" prefix="moep_Abyssals_" />
     <presentation uses="template/AbyssalPresentation2nd.template" prefix="moep_Abyssals_" />
     <additionalRules>

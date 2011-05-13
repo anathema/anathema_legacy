@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -32,6 +31,7 @@ import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfigurat
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -90,6 +90,16 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     for (; index != abilityTraitGroups.length + attributeTraitGroups.length; index++)
     	specialtyGroup[index] = attributeTraitGroups[index - abilityTraitGroups.length];
     this.specialtyConfiguration = new SpecialtiesConfiguration(this, specialtyGroup, modelContext);
+    
+    getTrait(OtherTraitType.Essence).addCurrentValueListener(new IIntValueChangedListener()
+    {
+		public void valueChanged(int newValue)
+		{
+			for (ITrait trait : getAllTraits())
+				if (trait instanceof IDefaultTrait)
+					((IDefaultTrait)trait).resetCurrentValue();
+		}
+    });
   }
 
   private void addAttributes(ICharacterTemplate template) {

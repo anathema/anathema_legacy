@@ -1,0 +1,18 @@
+<traitTemplates uses="trait/DefaultTraitCollection.template">
+  <attributes>
+    <defaultTrait startValue="1" lowerableState="Default">
+      <limitation type="Essence"/>
+      <minimum value="1"/>
+    </defaultTrait>
+    <specialTrait id="Appearance" startValue="1" lowerableState="Default" zeroLevel="1" isRequiredFavored="false">
+			<limitation uses="net.sf.anathema.character.abyssal.AbyssalAppearanceLimitation"/>
+			<minimum uses="net.sf.anathema.character.abyssal.AbyssalAppearanceMinimum"/>
+	</specialTrait>
+  </attributes>
+  <abilities>
+  	<defaultTrait startValue="0" lowerableState="Default">
+			<limitation type="Essence"/>
+			<minimum value="0"/>
+	</defaultTrait>
+  </abilities>
+</traitTemplates>
