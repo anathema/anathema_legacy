@@ -2,7 +2,9 @@ package net.sf.anathema.lib.exception;
 
 public class AnathemaException extends Exception {
 
-  public AnathemaException() {
+  private static final long serialVersionUID = 2532438089327188115L;
+
+public AnathemaException() {
     super();
   }
 

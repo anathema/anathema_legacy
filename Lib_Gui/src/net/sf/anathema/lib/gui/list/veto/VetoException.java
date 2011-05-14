@@ -6,6 +6,8 @@ import net.sf.anathema.lib.exception.AnathemaException;
 // NOT_PUBLISHED
 public class VetoException extends AnathemaException {
 
+  private static final long serialVersionUID = 6236435238026824921L;
+
   public VetoException() {
     super();
   }

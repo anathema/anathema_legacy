@@ -19,7 +19,9 @@ public class IntegerTableColumnSettings extends AbstractTableColumnSettings {
   private final int minimum;
   private final Color negativeColor;
   private final TableCellRenderer rightRenderer = new DefaultTableCellRenderer() {
-    {
+	private static final long serialVersionUID = 2316992862338590339L;
+
+	{
       setHorizontalAlignment(SwingConstants.RIGHT);
     }
 

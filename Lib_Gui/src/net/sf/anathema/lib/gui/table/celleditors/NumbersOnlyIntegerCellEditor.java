@@ -8,33 +8,36 @@ import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 
 public class NumbersOnlyIntegerCellEditor extends AbstractDelegatingCellEditor {
 
-  private IntegerSpinner spinner;
+	private IntegerSpinner spinner;
 
-  public NumbersOnlyIntegerCellEditor(int minimum, int maximum, int stepsize) {
-    SpinnerNumberModel model = (SpinnerNumberModel) ((JSpinner) spinner.getComponent()).getModel();
-    model.setMinimum(minimum);
-    model.setMaximum(maximum);
-    model.setStepSize(stepsize);
-  }
+	public NumbersOnlyIntegerCellEditor(int minimum, int maximum, int stepsize) {
+		SpinnerNumberModel model = (SpinnerNumberModel) ((JSpinner) spinner
+				.getComponent()).getModel();
+		model.setMinimum(minimum);
+		model.setMaximum(maximum);
+		model.setStepSize(stepsize);
+	}
 
-  @Override
-  protected EditorDelegate createDelegate(JComponent editor) {
-    return new EditorDelegate(this) {
-      @Override
-      public void setValue(Object value) {
-        spinner.setValue(value);
-      }
+	@Override
+	protected EditorDelegate createDelegate(JComponent editor) {
+		return new EditorDelegate(this) {
+			private static final long serialVersionUID = 8253283572594219955L;
 
-      @Override
-      public Object getCellEditorValue() {
-        return spinner.getValue();
-      }
-    };
-  }
+			@Override
+			public void setValue(Object value) {
+				spinner.setValue(value);
+			}
 
-  @Override
-  protected JComponent createEditorComponent() {
-    spinner = new IntegerSpinner(0);
-    return spinner.getComponent();
-  }
+			@Override
+			public Object getCellEditorValue() {
+				return spinner.getValue();
+			}
+		};
+	}
+
+	@Override
+	protected JComponent createEditorComponent() {
+		spinner = new IntegerSpinner(0);
+		return spinner.getComponent();
+	}
 }

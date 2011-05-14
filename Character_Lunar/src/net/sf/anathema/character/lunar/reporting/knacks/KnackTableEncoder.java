@@ -5,21 +5,10 @@ import java.util.List;
 
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicCostStatsGroup;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicDurationStatsGroup;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicDetailsStatsGroup;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicNameStatsGroup;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicSourceStatsGroup;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicTypeStatsGroup;
 import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.statstable.IStatsGroup;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.lib.util.Identificate;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;

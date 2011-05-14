@@ -4,16 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.CharmStats;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.MultipleEffectCharmStats;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.SpellStats;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
