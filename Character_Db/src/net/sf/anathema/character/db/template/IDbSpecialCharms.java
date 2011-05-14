@@ -14,14 +14,18 @@ public interface IDbSpecialCharms {
   public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE = new OxBodyTechniqueCharm(
       "Dragon-Blooded.Ox-BodyTechnique", AbilityType.Endurance, //$NON-NLS-1$
       new LinkedHashMap<String, HealthLevelType[]>() {
-        {
+		private static final long serialVersionUID = 4907232349336731364L;
+
+		{
           put("Category.-1-2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.TWO }); //$NON-NLS-1$
         }
       });
   public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE_SECOND_EDITION = new OxBodyTechniqueCharm(
       "Dragon-Blooded.Ox-BodyTechnique", AbilityType.Resistance, //$NON-NLS-1$
       new LinkedHashMap<String, HealthLevelType[]>() {
-        {
+		private static final long serialVersionUID = 4618293067517007189L;
+
+		{
           put("Category.-1-2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.TWO }); //$NON-NLS-1$
         }
       });
