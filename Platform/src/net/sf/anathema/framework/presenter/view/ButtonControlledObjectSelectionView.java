@@ -23,9 +23,9 @@ import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
 
 public class ButtonControlledObjectSelectionView<V> implements IButtonControlledObjectSelectionView<V> {
 
-  private final JComboBox comboBox;
-  private final JButton addButton;
-  private final JLabel label;
+  protected final JComboBox comboBox;
+  protected final JButton addButton;
+  protected final JLabel label;
 
   public ButtonControlledObjectSelectionView(ListCellRenderer renderer, Icon addIcon, String labelText) {
     this(renderer, addIcon, labelText, null);
@@ -68,7 +68,7 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
   public void addComponents(JPanel panel) {
     panel.add(label);
     panel.add(comboBox, GridDialogLayoutData.FILL_HORIZONTAL);
-    panel.add(addButton);
+    panel.add(addButton, GridDialogLayoutData.RIGHT);
   }
 
   public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {

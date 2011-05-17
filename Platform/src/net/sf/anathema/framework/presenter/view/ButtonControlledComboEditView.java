@@ -22,10 +22,10 @@ import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 
 public class ButtonControlledComboEditView<V> implements IButtonControlledComboEditView<V>, IView {
 
-  private final ChangeableJComboBox<V> comboBox;
-  private final JLabel label;
-  private final JButton addButton;
-  private final JTextField text;
+  protected final ChangeableJComboBox<V> comboBox;
+  protected final JLabel label;
+  protected final JButton addButton;
+  protected final JTextField text;
   
   public ButtonControlledComboEditView(Icon addIcon, ListCellRenderer renderer)
   {
