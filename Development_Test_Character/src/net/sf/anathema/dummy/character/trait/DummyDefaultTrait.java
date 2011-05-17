@@ -41,6 +41,10 @@ public class DummyDefaultTrait extends DummyModifiableGenericTrait implements ID
 	  // not yet implemented
 	  return 0;
   }
+  
+  public void validate() {
+	  // not yet implemented
+  }
 
   public void resetCurrentValue() {
     //not yet implemented
