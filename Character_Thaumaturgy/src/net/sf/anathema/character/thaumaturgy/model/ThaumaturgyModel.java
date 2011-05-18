@@ -14,14 +14,14 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class ThaumaturgyModel implements IThaumaturgyModel {
 
-  private final List<IThaumaturgyMagic> arts = new ArrayList<IThaumaturgyMagic>();
+  private final List<IThaumaturgyMagic> degrees = new ArrayList<IThaumaturgyMagic>();
   private final List<IThaumaturgyMagic> procedures = new ArrayList<IThaumaturgyMagic>();
   private final ChangeControl control = new ChangeControl();
   private final ICharacterModelContext context;
   private final IDefaultTrait procedureControl;
   private String currentArtName;
   private String currentProcedureName;
-  private ThaumaturgyMagicType currentType = ThaumaturgyMagicType.Art;
+  private ThaumaturgyMagicType currentType = ThaumaturgyMagicType.Degree;
   
   private final ChangeControl bonusControl = new ChangeControl();
   private final IChangeListener thaumaturgyChangeListener = new IChangeListener() {
@@ -49,9 +49,9 @@ public class ThaumaturgyModel implements IThaumaturgyModel {
 	  return ThaumaturgyProvider.getProcedures(art);
   }
   
-  public List<IThaumaturgyMagic> getLearnedArts()
+  public List<IThaumaturgyMagic> getLearnedDegrees()
   {
-	  return arts;
+	  return degrees;
   }
   
   public List<IThaumaturgyMagic> getLearnedProcedures()
@@ -92,14 +92,14 @@ public class ThaumaturgyModel implements IThaumaturgyModel {
   public IThaumaturgyMagic commitSelection()
   {
 	  IThaumaturgyMagic newMagic = null;
-	  if (currentType == ThaumaturgyMagicType.Art)
+	  if (currentType == ThaumaturgyMagicType.Degree)
 	  {
-		  for (IThaumaturgyMagic currentArts : arts)
-			  if (currentArts.getArt().equals(currentArtName))
+		  for (IThaumaturgyMagic currentDegrees : degrees)
+			  if (currentDegrees.getArt().equals(currentArtName))
 				  return null;
 		  
-		  newMagic = new ThaumaturgyArt(currentArtName, context.getTraitCollection(), context.getTraitContext());
-		  arts.add(newMagic);
+		  newMagic = new ThaumaturgyDegree(currentArtName, context.getTraitCollection(), context.getTraitContext());
+		  degrees.add(newMagic);
 		  currentArtName = null;
 	  }
 	  if (currentType == ThaumaturgyMagicType.Procedure)
@@ -129,8 +129,8 @@ public class ThaumaturgyModel implements IThaumaturgyModel {
   
   public void learnMagic(IThaumaturgyMagic magic)
   {
-	  if (magic instanceof ThaumaturgyArt)
-		  arts.add(magic);
+	  if (magic instanceof ThaumaturgyDegree)
+		  degrees.add(magic);
 	  if (magic instanceof ThaumaturgyProcedure)
 		  procedures.add(magic);
   }
@@ -139,7 +139,7 @@ public class ThaumaturgyModel implements IThaumaturgyModel {
   {
 	  List<IThaumaturgyMagic> redundant = new ArrayList<IThaumaturgyMagic>();
 	  for (IThaumaturgyMagic procedure : procedures)
-		  for (IThaumaturgyMagic art : arts)
+		  for (IThaumaturgyMagic art : degrees)
 			  if (art.getArt().equals(procedure.getArt()) &&
 				  art.getCurrentValue() >= procedure.getCurrentValue())
 				  redundant.add(procedure);
@@ -149,7 +149,7 @@ public class ThaumaturgyModel implements IThaumaturgyModel {
   
   public void removeMagic(IThaumaturgyMagic magic)
   {
-	  arts.remove(magic);
+	  degrees.remove(magic);
 	  procedures.remove(magic);
   }
 
@@ -167,7 +167,7 @@ public class ThaumaturgyModel implements IThaumaturgyModel {
 	switch (currentType)
 	{
 	default:
-	case Art:
+	case Degree:
 		return !StringUtilities.isNullOrEmpty(currentArtName);
 	case Procedure:
 		return !StringUtilities.isNullOrEmpty(currentArtName) &&

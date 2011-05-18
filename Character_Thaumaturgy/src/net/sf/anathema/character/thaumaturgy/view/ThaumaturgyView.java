@@ -47,7 +47,7 @@ public class ThaumaturgyView implements IThaumaturgyView, IView {
 	  mode = type;
 	  
 	  selectionPanel.removeAll();
-	  if (type == ThaumaturgyMagicType.Art)
+	  if (type == ThaumaturgyMagicType.Degree)
 	  {
 		  selectionPanel.setLayout(new GridDialogLayout(2, false));
 		  artSelectionView.addComponents(selectionPanel);

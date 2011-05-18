@@ -67,7 +67,7 @@ public class ThaumaturgyPresenter implements IPresenter {
   private void initModeSelection()
   {
 	  view.addModeListener(getModes(),
-			  resources.getString("Thaumaturgy.Mode.Art"),
+			  resources.getString("Thaumaturgy.Mode.Degree"),
 			  new IObjectValueChangedListener<String>()
 			  {
 				@Override
@@ -146,7 +146,7 @@ public class ThaumaturgyPresenter implements IPresenter {
     	  artSelectionView.setButtonEnabled(model.isEntryComplete());
       }
     });
-    for (IThaumaturgyMagic magic : model.getLearnedArts())
+    for (IThaumaturgyMagic magic : model.getLearnedDegrees())
     	addMagicView(magic);
     reset(artSelectionView);
     model.addCharacterChangeListener(new GlobalCharacterChangeAdapter() {

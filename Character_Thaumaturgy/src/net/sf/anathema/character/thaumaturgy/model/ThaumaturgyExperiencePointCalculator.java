@@ -16,7 +16,7 @@ public class ThaumaturgyExperiencePointCalculator implements IAdditionalModelExp
 		int artCost = model.isFavored() ? 8 : 10;
 		int totalCost = 0;
 		
-		for (IThaumaturgyMagic art : model.getLearnedArts())
+		for (IThaumaturgyMagic art : model.getLearnedDegrees())
 			totalCost += artCost * (art.getCurrentValue() - art.getCreationValue());
 		
 		for (IThaumaturgyMagic procedure : model.getLearnedProcedures())

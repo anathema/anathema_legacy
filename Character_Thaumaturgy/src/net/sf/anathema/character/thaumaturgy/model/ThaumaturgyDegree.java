@@ -5,11 +5,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 
-public class ThaumaturgyArt extends ThaumaturgyMagic
+public class ThaumaturgyDegree extends ThaumaturgyMagic
 {
 	private static int[] occultRequirements = { 0, 1, 3, 5 };
 	
-	public ThaumaturgyArt(String name,
+	public ThaumaturgyDegree(String name,
 			final IGenericTraitCollection collection,
 			ITraitContext context) {
 		super(name, null, 0, context, collection, new IValueChangeChecker()

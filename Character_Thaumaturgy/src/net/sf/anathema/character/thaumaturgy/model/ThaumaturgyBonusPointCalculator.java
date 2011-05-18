@@ -29,7 +29,7 @@ public class ThaumaturgyBonusPointCalculator implements IAdditionalModelBonusPoi
 		int totalProcedures = model.getLearnedProcedures().size();
 		totalCost = 0;
 		
-		for (IThaumaturgyMagic art : model.getLearnedArts())
+		for (IThaumaturgyMagic art : model.getLearnedDegrees())
 			totalCost += artCost * art.getCurrentValue();
 		
 		totalCost += (totalProcedures / 3) +

@@ -83,7 +83,7 @@ public void delete() {
 	traitPanel.remove(dummyLabel2);
 	traitPanel.remove(getValueDisplay().getComponent());
 	traitPanel.remove(deleteButton);
-    traitPanel.revalidate(); // Remove this line to keep the positions of specialties constant.
+    traitPanel.revalidate();
     traitPanel.repaint();
   }
 

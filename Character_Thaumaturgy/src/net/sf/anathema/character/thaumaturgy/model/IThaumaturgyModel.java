@@ -20,7 +20,7 @@ public interface IThaumaturgyModel
   
   public void setCurrentType(ThaumaturgyMagicType type);
   
-  public List<IThaumaturgyMagic> getLearnedArts();
+  public List<IThaumaturgyMagic> getLearnedDegrees();
   
   public List<IThaumaturgyMagic> getLearnedProcedures();
   

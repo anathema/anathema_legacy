@@ -25,7 +25,7 @@ public class ThaumaturgyModelPersister implements IAdditionalPersister
 	public void load(Element parent, IAdditionalModel model)
 			throws PersistenceException {
 		IThaumaturgyModel realModel = ((IThaumaturgyAdditionalModel) model).getThaumaturgyModel();
-		realModel.setCurrentType(ThaumaturgyMagicType.Art);
+		realModel.setCurrentType(ThaumaturgyMagicType.Degree);
 		for (Object element : parent.elements(TAG_ART))
 		{
 			Element artElement = (Element)element;
@@ -53,21 +53,21 @@ public class ThaumaturgyModelPersister implements IAdditionalPersister
 	@Override
 	public void save(Element parent, IAdditionalModel model) {
 		IThaumaturgyModel realModel = ((IThaumaturgyAdditionalModel) model).getThaumaturgyModel();
-		for (IThaumaturgyMagic art : realModel.getLearnedArts())
+		for (IThaumaturgyMagic degree : realModel.getLearnedDegrees())
 		{
 			Element artElement = parent.addElement(TAG_ART);
 			Element artNameElement = artElement.addElement(TAG_ART_NAME);
-			artNameElement.addCDATA(art.getArt());
-			persister.saveTrait(artElement, TAG_RANK, art);
+			artNameElement.addCDATA(degree.getArt());
+			persister.saveTrait(artElement, TAG_RANK, degree);
 		}
-		for (IThaumaturgyMagic art : realModel.getLearnedProcedures())
+		for (IThaumaturgyMagic procedure : realModel.getLearnedProcedures())
 		{
 			Element procedureElement = parent.addElement(TAG_PROCEDURE);
 			Element artNameElement = procedureElement.addElement(TAG_ART_NAME);
 			Element procedureNameElement = procedureElement.addElement(TAG_PROCEDURE_NAME);
-			artNameElement.addCDATA(art.getArt());
-			procedureNameElement.addCDATA(art.getProcedure());
-			persister.saveTrait(procedureElement, TAG_RANK, art);
+			artNameElement.addCDATA(procedure.getArt());
+			procedureNameElement.addCDATA(procedure.getProcedure());
+			persister.saveTrait(procedureElement, TAG_RANK, procedure);
 		}		
 	}
 
