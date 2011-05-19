@@ -30,7 +30,9 @@ public interface IAbyssalSpecialCharms {
   public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE = new OxBodyTechniqueCharm(
       "Abyssal.Ox-BodyTechnique", AbilityType.Endurance, //$NON-NLS-1$
       new LinkedHashMap<String, HealthLevelType[]>() {
-        {
+		private static final long serialVersionUID = -4160378543235139868L;
+
+		{
           put("Category.-0", new HealthLevelType[] { HealthLevelType.ZERO }); //$NON-NLS-1$
           put("Category.-1x2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.ONE }); //$NON-NLS-1$
           put(
@@ -44,7 +46,9 @@ public interface IAbyssalSpecialCharms {
   public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE_2ND = new OxBodyTechniqueCharm(
 	      "Abyssal.OxBodyTechnique", AbilityType.Resistance, //$NON-NLS-1$
 	      new LinkedHashMap<String, HealthLevelType[]>() {
-	        {
+			private static final long serialVersionUID = 8074890347746556040L;
+
+			{
 	          put("Category.-0", new HealthLevelType[] { HealthLevelType.ZERO }); //$NON-NLS-1$
 	          put("Category.-1x2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.ONE }); //$NON-NLS-1$
 	          put(

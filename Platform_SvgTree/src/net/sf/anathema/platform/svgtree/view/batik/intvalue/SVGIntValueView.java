@@ -17,6 +17,7 @@ public class SVGIntValueView implements IIntValueView {
   private final SVGIntValueDisplay valueDisplay;
   private final String labelString;
   private final double maxWidth;
+  private final double dotDiameter;
   private final int widthInDots;
 
   public SVGIntValueView(
@@ -29,12 +30,13 @@ public class SVGIntValueView implements IIntValueView {
     this.widthInDots = widthInDots;
     this.maxWidth = maxWidth;
     this.labelString = labelString;
+    this.dotDiameter = SVGIntValueDisplay.getDisplayDiameter(maxWidth, widthInDots);
     this.valueDisplay = new SVGIntValueDisplay(
         maxValue,
         widthInDots,
         fillColor,
         initialValue,
-        SVGIntValueDisplay.getDiameter(maxWidth));
+        dotDiameter);
   }
 
   public Element initGui(final SVGOMDocument svgDocument, final IBoundsCalculator boundsCalculator) {
@@ -43,13 +45,17 @@ public class SVGIntValueView implements IIntValueView {
     setAttribute(
         textElement,
         SVGConstants.SVG_Y_ATTRIBUTE,
-        String.valueOf(SVGIntValueDisplay.getDiameter(maxWidth) * 0.9));
+        String.valueOf(dotDiameter * 0.9));
+    setAttribute(
+            textElement,
+            SVGConstants.SVG_HEIGHT_ATTRIBUTE,
+            String.valueOf(dotDiameter));
     Text text = svgDocument.createTextNode(labelString);
     textElement.appendChild(text);
     groupElement.appendChild(textElement);
     Element valueGroupElement = valueDisplay.initGui(svgDocument, boundsCalculator);
     setAttribute(valueGroupElement, SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" //$NON-NLS-1$
-        + String.valueOf(maxWidth - widthInDots * SVGIntValueDisplay.getDiameter(maxWidth) * 1.11)
+        + String.valueOf(maxWidth - widthInDots * dotDiameter * 1.11)
         + ",0)"); //$NON-NLS-1$
     groupElement.appendChild(valueGroupElement);
     return groupElement;

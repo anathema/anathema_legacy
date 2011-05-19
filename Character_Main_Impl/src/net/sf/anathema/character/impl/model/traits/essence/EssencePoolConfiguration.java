@@ -46,13 +46,19 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     }
     return poolStrategy.getStandardPeripheralPool() + " (" + poolStrategy.getExtendedPeripheralPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
   }
+  
+  public String getAttunedPool()
+  {
+	return "" + poolStrategy.getAttunementExpenditures();
+  }
 
   public boolean isEssenceUser() {
     return essenceTemplate.isEssenceUser();
   }
 
   public boolean hasPeripheralPool() {
-    return isEssenceUser() && poolStrategy.getExtendedPeripheralPool() != 0;
+    return isEssenceUser() && (poolStrategy.getExtendedPeripheralPool() != 0 ||
+    		poolStrategy.getUnmodifiedPeripheralPool() != 0);
   }
 
   public void addPoolChangeListener(IChangeListener listener) {

@@ -89,7 +89,9 @@ public class EquipmentAdditionalPresenter implements IPresenter {
 
   private SmartAction createRefreshAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {
     SmartAction refreshAction = new SmartAction(new EquipmentUI(resources).getRefreshIcon()) {
-      @Override
+		private static final long serialVersionUID = 1L;
+
+	@Override
       protected void execute(Component parentComponent) {
         setObjects(equipmentTemplatePickList);
         model.refreshItems();
@@ -109,7 +111,9 @@ public class EquipmentAdditionalPresenter implements IPresenter {
       final IListObjectSelectionView<String> equipmentTemplatePickList,
       final IMagicalMaterialView materialView) {
     final SmartAction addAction = new SmartAction(new BasicUi(resources).getRightArrowIcon()) {
-      @Override
+		private static final long serialVersionUID = 1L;
+
+	@Override
       protected void execute(Component parentComponent) {
         model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject(), materialView.getSelectedMaterial());
       }
@@ -134,11 +138,13 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
     Icon removeIcon = new BasicUi(resources).getRemoveIcon();
     viewsByItem.put(selectedObject, objectView);
-    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, resources).initPresentation();
+    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, resources, model.getAttuneTypes(selectedObject)).initPresentation();
     if (model.canBeRemoved(selectedObject)) {
       objectView.addAction(new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
           removeIcon) {
-        @Override
+			private static final long serialVersionUID = 1L;
+
+		@Override
         protected void execute(Component parentComponent) {
           model.removeItem(selectedObject);
         }

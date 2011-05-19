@@ -1,7 +1,6 @@
 package net.sf.anathema.charmtree;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
@@ -12,10 +11,7 @@ import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.charmtree.filters.CharmFilterSettingsPage;
-import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -33,8 +29,6 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   private IChangeableJComboBox<IIdentificate> typeComboBox;
   private final JPanel selectionPanel;
   private final ISvgTreeView charmTreeView;
-  private ICharmGroupChangeListener changeListener;
-
   public AbstractCascadeSelectionView(ISvgTreeViewProperties treeProperties) {
     this.selectionPanel = new JPanel(new GridDialogLayout(3, false));
     this.charmTreeView = new SvgTreeView(treeProperties);
@@ -80,7 +74,6 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     });
     panel.add(groupComboBox.getComponent(), BorderLayout.CENTER);
     getSelectionComponent().add(panel);
-    changeListener = selectionListener;
   }
   
   public void addCharmFilterButton(SmartAction action, String titleText, String buttonText)

@@ -1,5 +1,7 @@
 package net.sf.anathema.character.impl.model.traits.essence;
 
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -23,6 +25,8 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   private final IAdditionalRules additionalRules;
   private final IGenericTraitCollection traitCollection;
   private final IMagicCollection magicCollection;
+  private final ICharacterModelContext context;
+  private IEquipmentAdditionalModel equipmentModel;
 
   public EssencePoolStrategy(
       IEssenceTemplate essenceTemplate,
@@ -39,6 +43,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
         firePoolsChanged();
       }
     });
+    this.context = context;
     this.essenceTemplate = essenceTemplate;
   }
 
@@ -59,11 +64,30 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   }
 
   public int getStandardPersonalPool() {
-    return getPool(essenceTemplate.getPersonalTraits(getWillpower(), getVirtues(), getEssence()));
+	int personal = getUnmodifiedPersonalPool();  
+    return personal - Math.max(0, getAttunementExpenditures() - getUnmodifiedPeripheralPool()); 
   }
 
   public int getStandardPeripheralPool() {
-    return getPool(essenceTemplate.getPeripheralTraits(getWillpower(), getVirtues(), getEssence()));
+	int peripheral = getUnmodifiedPeripheralPool();
+    return Math.max(0, peripheral - getAttunementExpenditures()); 
+  }
+  
+  public int getUnmodifiedPersonalPool()
+  {
+	return getPool(essenceTemplate.getPersonalTraits(getWillpower(), getVirtues(), getEssence()));
+  }
+  
+  public int getUnmodifiedPeripheralPool()
+  {
+	return getPool(essenceTemplate.getPeripheralTraits(getWillpower(), getVirtues(), getEssence()));
+  }
+  
+  public int getAttunementExpenditures()
+  {
+	equipmentModel = (IEquipmentAdditionalModel)
+    	context.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
+	return equipmentModel == null ? 0 : equipmentModel.getTotalAttunementCost();
   }
 
   private IGenericTrait[] getVirtues() {

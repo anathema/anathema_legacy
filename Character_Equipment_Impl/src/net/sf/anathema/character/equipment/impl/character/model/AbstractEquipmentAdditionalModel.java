@@ -13,7 +13,9 @@ import net.sf.anathema.character.equipment.impl.character.model.print.EquipmentP
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
+import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
@@ -127,6 +129,18 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   public MagicalMaterial getMagicalMaterial(final String templateId) {
     IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     return template.getMaterial();
+  }
+  
+  public int getTotalAttunementCost()
+  {
+	  int total = 0;
+	  for (IEquipmentItem item : equipmentItems)
+	  {
+		  for (IEquipmentStats stats : item.getStats())
+			  if (stats instanceof IArtifactStats && item.getAttunementState() == ((IArtifactStats)stats).getAttuneType())
+				  total += ((IArtifactStats)stats).getAttuneCost();
+	  }
+	  return total;
   }
 
   public void addChangeListener(final IChangeListener listener) {

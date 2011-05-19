@@ -9,7 +9,8 @@ import net.disy.commons.core.util.Ensure;
 
 public class TextPreferredSizeLabel extends JLabel {
 
-  private final int verticalPadding;
+  private static final long serialVersionUID = -5431559719484711326L;
+private final int verticalPadding;
   private final int horizontalPadding;
   private final String text;
 

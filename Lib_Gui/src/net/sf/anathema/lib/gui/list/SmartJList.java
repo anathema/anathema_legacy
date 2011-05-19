@@ -11,7 +11,8 @@ import net.disy.commons.core.util.ArrayUtilities;
 
 public class SmartJList<T> extends JList {
 
-  private Class< ? extends T> clazz;
+  private static final long serialVersionUID = 9175647149496650572L;
+private Class< ? extends T> clazz;
 
   public SmartJList(Class< ? extends T> contentClass) {
     this.clazz = contentClass;

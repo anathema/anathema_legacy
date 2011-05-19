@@ -6,12 +6,25 @@ import net.sf.anathema.lib.util.IIdentificate;
 public abstract class AbstractStats implements IEquipmentStats {
 
   private IIdentificate name;
+  private boolean useAttunementModifiers = true;
 
-  public final IIdentificate getName() {
+  public IIdentificate getName() {
     return name;
   }
 
   public final void setName(IIdentificate name) {
+	if (name == null)
+		name = null;
     this.name = name;
+  }
+  
+  public boolean useAttunementModifiers()
+  {
+	  return useAttunementModifiers;
+  }
+  
+  public void setUseAttunementModifiers(boolean value)
+  {
+	  useAttunementModifiers = value;
   }
 }

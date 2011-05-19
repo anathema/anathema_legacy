@@ -52,5 +52,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Infernal"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Book_BrokenWingedCrane"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Book_ReturnOfTheScarletEmpress"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Thaumaturgy"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Mutations"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -15,19 +15,20 @@ import com.sun.java.swing.plaf.windows.WindowsComboBoxUI;
 
 public class ColoredJComboBox extends JComboBox {
 
-  public ColoredJComboBox(ComboBoxModel model) {
-    super(model);
-  }
+	private static final long serialVersionUID = 2747323629549356010L;
 
-  @Override
-  public void updateUI() {
-    ComboBoxUI comboBoxUI = (ComboBoxUI) UIManager.getUI(this);
-    if (comboBoxUI instanceof MetalComboBoxUI) {
-      comboBoxUI = new ColoredMetalComboBoxUI(Color.DARK_GRAY);
-    }
-    else if (comboBoxUI instanceof WindowsComboBoxUI) {
-      comboBoxUI = new ColoredWindowsComboBoxUI(Color.DARK_GRAY);
-    }
-    setUI(comboBoxUI);
-  }
+	public ColoredJComboBox(ComboBoxModel model) {
+		super(model);
+	}
+
+	@Override
+	public void updateUI() {
+		ComboBoxUI comboBoxUI = (ComboBoxUI) UIManager.getUI(this);
+		if (comboBoxUI instanceof MetalComboBoxUI) {
+			comboBoxUI = new ColoredMetalComboBoxUI(Color.DARK_GRAY);
+		} else if (comboBoxUI instanceof WindowsComboBoxUI) {
+			comboBoxUI = new ColoredWindowsComboBoxUI(Color.DARK_GRAY);
+		}
+		setUI(comboBoxUI);
+	}
 }

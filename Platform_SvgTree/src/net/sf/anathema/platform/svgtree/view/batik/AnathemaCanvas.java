@@ -15,9 +15,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.svg.SVGGElement;
 
+@SuppressWarnings("unchecked")
 public class AnathemaCanvas extends JSVGCanvas implements IAnathemaCanvas {
+	private static final long serialVersionUID = 1L;
 
-  public AnathemaCanvas() {
+public AnathemaCanvas() {
     super(null, true, false);
     setEnableImageZoomInteractor(false);
     setEnablePanInteractor(false);

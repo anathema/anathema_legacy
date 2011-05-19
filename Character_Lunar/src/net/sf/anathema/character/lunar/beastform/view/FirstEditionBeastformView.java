@@ -17,6 +17,7 @@ import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
+import net.sf.anathema.character.mutations.view.IMutationsView;
 import net.sf.anathema.framework.value.IIntValueView;
 
 public class FirstEditionBeastformView implements IBeastformView {
@@ -77,8 +78,13 @@ public class FirstEditionBeastformView implements IBeastformView {
     learnView.addTo(giftPanel);
     return learnView;
   }
+  
 
   public IBeastformOverviewView addOverviewView(IBeastformOverviewViewProperties overviewProperties) {
     return new FirstEditionBeastformOverviewView(overviewPanel, overviewProperties);
   }
+
+	@Override
+	public void addMutationsView(IMutationsView mutationView) {
+	}
 }

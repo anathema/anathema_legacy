@@ -20,7 +20,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class ProxyWeaponStats implements IWeaponStats, IProxy<IWeaponStats> {
+public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IProxy<IWeaponStats> {
 
   private final IWeaponStats delegate;
   private final MagicalMaterial material;
@@ -60,7 +60,7 @@ public class ProxyWeaponStats implements IWeaponStats, IProxy<IWeaponStats> {
     if (unmodifiedValue == null) {
       return null;
     }
-    return modification.getModifiedValue(unmodifiedValue, getWeaponStatsType());
+    return !useAttunementModifiers() ? unmodifiedValue : modification.getModifiedValue(unmodifiedValue, getWeaponStatsType());
   }
 
   private WeaponStatsType getWeaponStatsType() {

@@ -30,4 +30,9 @@ public abstract class AbstractMagicLearnProperties implements IMagicLearnPropert
   public ListCellRenderer getLearnedMagicRenderer() {
     return new IdentificateListCellRenderer(getResources());
   }
+  
+  public String getToolTipText(Object obj)
+  {
+	  return null;
+  }
 }

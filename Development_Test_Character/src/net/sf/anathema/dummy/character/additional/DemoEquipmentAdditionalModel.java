@@ -10,6 +10,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.AbstractEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
+import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
@@ -74,6 +75,11 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
 
   public MagicalMaterial getDefaultMaterial() {
     return MagicalMaterial.Soulsteel;
+  }
+  
+  @Override
+  public ArtifactAttuneType[] getAttuneTypes(IEquipmentItem item) {
+  	return null;
   }
 
   @Override

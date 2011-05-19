@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.meritsflaws.model.perk.IPerk;
@@ -16,8 +18,26 @@ import net.sf.anathema.character.meritsflaws.model.perk.evaluator.CasteEvaluator
 import net.sf.anathema.character.meritsflaws.model.perk.evaluator.CharacterTypeEvaluator;
 
 public class MeritsFlawsProvider {
+	
+  public static IPerk[] getAllPerks(IExaltedEdition edition)
+  {
+	  if (edition == ExaltedEdition.FirstEdition)
+		  return getAllFirstEditionPerks();
+	  if (edition == ExaltedEdition.SecondEdition)
+		  return getAllSecondEditionPerks();
+	  return null;
+  }
+  
+  public static IPerk[] getAllSecondEditionPerks()
+  {
+	  IPerk[] perks = new IPerk[]
+	  {
+		new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "Ambidextrous", 1), //$NON-NLS-1$
+	  };
+	  return perks;
+  }
 
-  public static IPerk[] getAllPerks() {
+  public static IPerk[] getAllFirstEditionPerks() {
     IPerk pastLives = createPastLives();
     IPerk weakImmuneSystem = createWeakImmuneSystem();
     MultiValuePerk sterile = createSterile();

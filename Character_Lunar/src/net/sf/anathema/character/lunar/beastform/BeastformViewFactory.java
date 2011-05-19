@@ -13,6 +13,9 @@ import net.sf.anathema.character.lunar.beastform.presenter.SecondEditionBeastfor
 import net.sf.anathema.character.lunar.beastform.view.FirstEditionBeastformView;
 import net.sf.anathema.character.lunar.beastform.view.IBeastformViewProperties;
 import net.sf.anathema.character.lunar.beastform.view.SecondEditionBeastformView;
+import net.sf.anathema.character.mutations.view.IMutationsView;
+import net.sf.anathema.character.mutations.view.IMutationsViewProperties;
+import net.sf.anathema.character.mutations.view.MutationsView;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -58,6 +61,7 @@ public class BeastformViewFactory implements IAdditionalViewFactory {
     }
     if (model instanceof SecondEditionBeastformModel)
     {
+    	final SecondEditionBeastformModel secondmodel = (SecondEditionBeastformModel)model;
     	properties = new IBeastformViewProperties() {
         	public String getCharmString() {
                 return resources.getString("Lunar.DeadlyBeastmanTransformation"); //$NON-NLS-1$
@@ -83,12 +87,23 @@ public class BeastformViewFactory implements IAdditionalViewFactory {
 
 			@Override
 			public String getSpiritFormBoxInitialString() {
-				String shape = ((SecondEditionBeastformModel)model).getSpiritForm();
+				String shape = secondmodel.getSpiritForm();
 				return shape.equals("") ? resources.getString("Lunar.SpiritForm.EnterShape") : shape;
 			}
             };
-    	view = new SecondEditionBeastformView(intValueDisplayFactory, properties); 
-        new SecondEditionBeastformPresenter(resources, view, (IBeastformModel) model).initPresentation();
+    	view = new SecondEditionBeastformView(intValueDisplayFactory, properties);
+    	IMutationsView mutationView = new MutationsView(new IMutationsViewProperties()
+    	{
+			@Override
+			public String getMutationsString() {
+				return resources.getString("Mutations.Label");
+			}
+    		
+    	});
+        new SecondEditionBeastformPresenter(resources, view,
+        		(IBeastformModel) model,
+        		secondmodel.getMutationModel(),
+        		mutationView).initPresentation();
     }
     
     return view;

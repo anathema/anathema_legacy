@@ -18,8 +18,8 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.view.ISpecialtyView;
-import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -75,7 +75,9 @@ public class SpecialtiesConfigurationPresenter implements IPresenter {
     final IButtonControlledComboEditView<ITraitReference> specialtySelectionView = configurationView.addSpecialtySelectionView(
         resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
         new AbstractSelectCellRenderer<ITraitReference>(resources) {
-          @Override
+			private static final long serialVersionUID = 1L;
+
+		@Override
           protected String getCustomizedDisplayValue(ITraitReference value) {
             return i18ner.getScreenName(value);
           }

@@ -97,13 +97,15 @@ public class TraitRules implements ITraitRules
     }
     else {
       boolean isImmutable = template.getLowerableState() == LowerableState.Immutable;
-      range = new Range(creationValue, isImmutable ? creationValue : maximumValue);
+      range = new Range(Math.max(Math.min(creationValue, maximumValue), getAbsoluteMinimumValue()), isImmutable ? creationValue : maximumValue);
     }
     int correctedValue = getCorrectedValue(demandedValue, range);
     if (isLowerable()) {
       return correctedValue;
     }
-    return correctedValue <= creationValue ? ITraitRules.UNEXPERIENCED : correctedValue;
+    return correctedValue;
+    //the purpose for the below is unclear... hopefully it is safe to remove
+    //return correctedValue <= creationValue ? ITraitRules.UNEXPERIENCED : correctedValue;
   }
 
   public int getCreationValue(int demandedValue) {

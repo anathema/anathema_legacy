@@ -65,8 +65,8 @@ public class GenericTraitTemplateFactoryParser extends AbstractXmlTemplateParser
     if (willpowerElement == null) {
       return;
     }
-    GenericTraitTemplate willpowerTemplate = GenericTraitTemplateParser.parseTraitTemplate(willpowerElement);
-    templateFactory.setWillpowerTemplate(willpowerTemplate);
+    IClonableTraitTemplate willpowerTemplate = GenericTraitTemplateParser.parseTraitTemplate(willpowerElement);
+    templateFactory.setWillpowerTemplate((GenericTraitTemplate) willpowerTemplate);
   }
 
   private void parseEssence(Element element, GenericTraitTemplateFactory templateFactory) throws PersistenceException {
@@ -74,7 +74,7 @@ public class GenericTraitTemplateFactoryParser extends AbstractXmlTemplateParser
     if (essenceElement == null) {
       return;
     }
-    GenericTraitTemplate essenceTemplate = GenericTraitTemplateParser.parseTraitTemplate(essenceElement);
-    templateFactory.setEssenceTemplate(essenceTemplate);
+    IClonableTraitTemplate essenceTemplate = GenericTraitTemplateParser.parseTraitTemplate(essenceElement);
+    templateFactory.setEssenceTemplate((GenericTraitTemplate) essenceTemplate);
   }
 }

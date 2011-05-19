@@ -19,10 +19,11 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGiftModel;
-import net.sf.anathema.character.lunar.beastform.model.gift.SecondEditionGiftModel;
+import net.sf.anathema.character.lunar.beastform.model.gift.SecondEditionMutationModel;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.lunar.template.ILunarSpecialCharms;
+import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
@@ -34,22 +35,22 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
   private final IBeastformGroupCost cost;
   private final BeastformTraitCollection beastCollection;
   private final BeastformTraitCollection spiritCollection;
-  private final IGiftModel giftModel;
+  private final IMutationsModel mutationModel;
   private final BeastformGenericTraitCollection allTraitsCollection;
   private final IEquipmentPrintModel equipmentModel;
   private String spiritForm = "";
 
   public SecondEditionBeastformModel(ICharacterModelContext context) {
     this.context = context;
-    this.giftModel = new SecondEditionGiftModel(context, this);
+    this.mutationModel = new SecondEditionMutationModel(context, this);
     this.beastCollection = new BeastformTraitCollection();
     this.spiritCollection = new BeastformTraitCollection();
     this.cost = new BeastformGroupCost(beastCollection, this);
     createAttributes();
-    this.allTraitsCollection = new BeastformGenericTraitCollection(context.getTraitCollection(), beastCollection, giftModel);
+    this.allTraitsCollection = new BeastformGenericTraitCollection(context.getTraitCollection(), beastCollection, mutationModel);
     
     IEquipmentAdditionalModel equipment = (IEquipmentAdditionalModel) context.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
-    this.equipmentModel = new EquipmentPrintModel(equipment, new BeastformNaturalSoak(allTraitsCollection, giftModel));
+    this.equipmentModel = new EquipmentPrintModel(equipment, new BeastformNaturalSoak(allTraitsCollection, mutationModel));
     context.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
       public void characterChanged() {
@@ -171,7 +172,7 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
   }
 
   public void addChangeListener(IChangeListener listener) {
-    giftModel.addModelChangeListener(listener);
+    mutationModel.addModelChangeListener(listener);
     for (IBeastformAttribute trait : getAttributes()) {
       trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter<Object>(listener));
     }
@@ -181,8 +182,12 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
   }
 
   public IGiftModel getGiftModel() {
-    return giftModel;
+    return null;
   }
+  
+  public IMutationsModel getMutationModel() {
+	    return mutationModel;
+	  }
 
   public IBeastformGroupCost getAttributeCostModel() {
     return cost;

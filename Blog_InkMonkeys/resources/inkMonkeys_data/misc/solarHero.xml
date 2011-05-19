@@ -224,7 +224,7 @@
 		<!-- NOTE:  Abyssal Mirror - Agony's Crucible Strike -->
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.BloodiedKingRebuke" exalt="Solar" group="SolarHeroStyle">
+	<charm id="Solar.BloodiedKingRebuke" exalt="Solar" group="SolarHeroStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="4" />
 			<essence value="3" />
@@ -242,7 +242,7 @@
 		<!-- NOTE:  Abyssal Mirror - Ragged Shade's Revenge -->
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.HerosFatalResolve" exalt="Solar" group="SolarHeroStyle">
+	<charm id="Solar.HerosFatalResolve" exalt="Solar" group="SolarHeroStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="4" />
 			<essence value="3" />

@@ -18,7 +18,9 @@ public interface ILunarSpecialCharms {
   public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE = new OxBodyTechniqueCharm(
       "Lunar.Ox-BodyTechnique", AttributeType.Stamina,//$NON-NLS-1$
       new LinkedHashMap<String, HealthLevelType[]>() {
-        {
+		private static final long serialVersionUID = 7246562391822388849L;
+
+		{
           put("Category.-1x2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.ONE }); //$NON-NLS-1$
           put(
               "Category.-2x4", new HealthLevelType[] { HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO }); //$NON-NLS-1$
@@ -33,7 +35,9 @@ public interface ILunarSpecialCharms {
   public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE_2ND = new OxBodyTechniqueCharm(
 	      "Lunar.OxBodyTechnique", AttributeType.Stamina,//$NON-NLS-1$
 	      new LinkedHashMap<String, HealthLevelType[]>() {
-	        {
+			private static final long serialVersionUID = -8479217765823767145L;
+
+			{
 	          put("Category.-1x2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.ONE, HealthLevelType.DYING, HealthLevelType.DYING }); //$NON-NLS-1$
 	          put(
 	              "Category.-2x4", new HealthLevelType[] { HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO,
