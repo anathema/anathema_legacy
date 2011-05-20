@@ -8,7 +8,7 @@
     </favoredAttribute>
   </attributes>
   <abilities>
-    <maximumFreeAbilityRank rank="5" />
+    <maximumFreeAbilityRank rank="3" />
     <generalAbility>
       <fixedCost cost="2" />
     </generalAbility>

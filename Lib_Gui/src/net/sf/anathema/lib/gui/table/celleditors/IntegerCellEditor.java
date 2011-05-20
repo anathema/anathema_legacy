@@ -8,38 +8,41 @@ import javax.swing.SpinnerNumberModel;
 // NOT_PUBLISHED
 public class IntegerCellEditor extends AbstractDelegatingCellEditor {
 
-  private final SpinnerNumberModel spinnerNumberModel;
+	private final SpinnerNumberModel spinnerNumberModel;
 
-  public IntegerCellEditor(int minimum, int maximum, int stepsize) {
-    spinnerNumberModel = new SpinnerNumberModel(minimum, minimum, maximum, stepsize);
-  }
+	public IntegerCellEditor(int minimum, int maximum, int stepsize) {
+		spinnerNumberModel = new SpinnerNumberModel(minimum, minimum, maximum,
+				stepsize);
+	}
 
-  @Override
-  protected final EditorDelegate createDelegate(JComponent editorComponent) {
-    final JSpinner spinner = (JSpinner) editorComponent;
-    return new EditorDelegate(this) {
-      @Override
-      public void setValue(Object value) {
-        spinner.setModel(spinnerNumberModel);
-        spinnerNumberModel.setValue(value);
+	@Override
+	protected final EditorDelegate createDelegate(JComponent editorComponent) {
+		final JSpinner spinner = (JSpinner) editorComponent;
+		return new EditorDelegate(this) {
+			private static final long serialVersionUID = -8488347134426404968L;
 
-        // selectall() Does not work :-(
-        // JComponent editor = spinner.getEditor();
-        // if (editor instanceof JSpinner.DefaultEditor) {
-        // JSpinner.DefaultEditor defaultEditor =(DefaultEditor) editor;
-        // defaultEditor.getTextField().selectAll();
-        // }
-      }
+			@Override
+			public void setValue(Object value) {
+				spinner.setModel(spinnerNumberModel);
+				spinnerNumberModel.setValue(value);
 
-      @Override
-      public Object getCellEditorValue() {
-        return spinnerNumberModel.getNumber();
-      }
-    };
-  }
+				// selectall() Does not work :-(
+				// JComponent editor = spinner.getEditor();
+				// if (editor instanceof JSpinner.DefaultEditor) {
+				// JSpinner.DefaultEditor defaultEditor =(DefaultEditor) editor;
+				// defaultEditor.getTextField().selectAll();
+				// }
+			}
 
-  @Override
-  protected JComponent createEditorComponent() {
-    return new JSpinner();
-  }
+			@Override
+			public Object getCellEditorValue() {
+				return spinnerNumberModel.getNumber();
+			}
+		};
+	}
+
+	@Override
+	protected JComponent createEditorComponent() {
+		return new JSpinner();
+	}
 }

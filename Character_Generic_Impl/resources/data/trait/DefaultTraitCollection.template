@@ -24,7 +24,7 @@
 		</defaultTrait>
 	</virtues>	
 	<essence startValue="2" lowerableState="Default">
-		<limitation type="Static" value="7"/>
+		<limitation type="Age" value="10"/>
 		<minimum value="2"/>
 	</essence>
 	<willpower startValue="2" lowerableState="Default">

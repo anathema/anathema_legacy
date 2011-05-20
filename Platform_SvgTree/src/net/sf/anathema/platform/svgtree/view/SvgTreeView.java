@@ -4,6 +4,7 @@ import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXM
 import static org.apache.batik.util.SVGConstants.*;
 
 import java.awt.Color;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ import net.sf.anathema.platform.svgtree.view.listening.SvgTreeListening;
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.swing.gvt.GVTTreeRendererAdapter;
 import org.apache.batik.swing.gvt.GVTTreeRendererEvent;
+import org.apache.batik.swing.gvt.GVTTreeRendererListener;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherAdapter;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherEvent;
 import org.dom4j.DocumentException;
@@ -77,8 +79,10 @@ public class SvgTreeView implements ISvgTreeView {
     return manager;
   }
 
-  public void loadCascade(final org.dom4j.Document dom4jDocument) throws DocumentException {
-    calculator.reset();
+  public void loadCascade(final org.dom4j.Document dom4jDocument, boolean resetView) throws DocumentException {
+    final AffineTransform transform = resetView ? null : canvas.getRenderingTransform();
+	if (resetView)
+	  calculator.reset();
     listening.destructDocumentListening(canvas.getSVGDocument());
     SVGDocument document = null;
     if (dom4jDocument != null) {
@@ -87,6 +91,41 @@ public class SvgTreeView implements ISvgTreeView {
       injectGlassPane(document);
     }
     canvas.setDocument(document);
+    if (transform != null)
+    canvas.addGVTTreeRendererListener(new GVTTreeRendererListener()
+    {
+
+		@Override
+		public void gvtRenderingCancelled(GVTTreeRendererEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void gvtRenderingCompleted(GVTTreeRendererEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void gvtRenderingFailed(GVTTreeRendererEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void gvtRenderingPrepare(GVTTreeRendererEvent e) {
+		    canvas.setRenderingTransform(transform);
+		    canvas.removeGVTTreeRendererListener(this);
+		}
+
+		@Override
+		public void gvtRenderingStarted(GVTTreeRendererEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+    	
+    });
   }
 
   private void injectGlassPane(SVGDocument document) {

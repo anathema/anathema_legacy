@@ -23,7 +23,8 @@ public class RangedWeaponStats extends AbstractWeaponStats {
 
   @Override
   public ITraitType getDamageTraitType() {
-    return hasTag(WeaponTag.FlameType) ? null : super.getDamageTraitType();
+    return hasTag(WeaponTag.FlameType) ||
+    	hasTag(WeaponTag.FlatDamage) ? null : super.getDamageTraitType();
   }
 
   @Override

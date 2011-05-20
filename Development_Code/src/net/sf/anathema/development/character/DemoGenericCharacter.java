@@ -112,6 +112,11 @@ public class DemoGenericCharacter implements IGenericCharacter {
   public void addCombo(IGenericCombo combo) {
     allCombos.add(combo);
   }
+  
+  public int getEssenceCap(boolean modified)
+  {
+	  return 0;
+  }
 
   @Override
   public IGenericCombo[] getCombos() {
@@ -210,6 +215,11 @@ public class DemoGenericCharacter implements IGenericCharacter {
   @Override
   public ITraitLimitation getEssenceLimitation() {
     return null;
+  }
+  
+  @Override
+  public int getAge() {
+    return 0;
   }
 
   @Override

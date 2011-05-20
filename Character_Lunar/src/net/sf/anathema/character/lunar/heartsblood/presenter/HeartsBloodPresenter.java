@@ -96,7 +96,7 @@ public class HeartsBloodPresenter implements IPresenter {
   }
 
   private void addAnimalFormView(final BasicUi basicUi, final IAnimalForm form) {
-    IRemovableEntryView formView = view.addEntryView(basicUi.getRemoveIcon(), form.getName() +
+    IRemovableEntryView formView = view.addEntryView(basicUi.getRemoveIcon(), null, form.getName() +
     		(model.getEdition() == ExaltedEdition.FirstEdition ?
         " (" + form.getStrength() + "/" + form.getStamina() :
         " (" + form.getStrength() + "/" + form.getDexterity() + "/" + form.getStamina() + 

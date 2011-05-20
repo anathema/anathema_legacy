@@ -5,5 +5,6 @@
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Character_Library"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Mutations"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

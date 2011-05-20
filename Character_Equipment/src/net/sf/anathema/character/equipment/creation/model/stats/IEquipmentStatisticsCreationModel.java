@@ -14,6 +14,8 @@ public interface IEquipmentStatisticsCreationModel {
   public IShieldStatisticsModel getShieldStatisticsModel();
 
   public IArmourStatisticsModel getArmourStatisticsModel();
+  
+  public IArtifactStatisticsModel getArtifactStatisticsModel();
 
   public void addEquipmentTypeChangeListener(IChangeListener changeListener);
 

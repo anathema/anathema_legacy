@@ -50,4 +50,8 @@ public class CharacterUI extends AbstractUI {
   public Icon getUnselectedBallResource() {
     return getIcon("BorderUnselectedButton16.png"); //$NON-NLS-1$
   }
+  
+  public Icon getUnselectableBallResource() {
+	return getIcon("BorderUnselectableButton16.png"); //$NON-NLS-1$
+  }
 }

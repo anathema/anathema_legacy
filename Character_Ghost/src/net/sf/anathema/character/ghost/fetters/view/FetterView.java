@@ -30,7 +30,7 @@ public class FetterView extends AbstractTraitView implements IFetterView {
       String id,
       int value,
       int maxValue) {
-    super(configuration, "", value, maxValue);
+    super(configuration, "", value, maxValue, null);
     this.deleteIcon = deleteIcon;
     fetterLabel = new JLabel(id);
   }

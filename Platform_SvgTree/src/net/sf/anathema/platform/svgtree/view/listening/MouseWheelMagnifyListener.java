@@ -11,10 +11,14 @@ import org.apache.batik.swing.gvt.JGVTComponent;
 public class MouseWheelMagnifyListener implements MouseWheelListener {
 
   private final IBoundsCalculator calculator;
+  
+  private final float MAX_ZOOM_DETERMINANT = .65f;
 
   public MouseWheelMagnifyListener(IBoundsCalculator boundsCalculator) {
     this.calculator = boundsCalculator;
   }
+  
+  
 
   public void mouseWheelMoved(MouseWheelEvent event) {
     JGVTComponent component = (JGVTComponent) event.getSource();
@@ -26,7 +30,7 @@ public class MouseWheelMagnifyListener implements MouseWheelListener {
     at.translate(-x, -y);
     AffineTransform rt = (AffineTransform) component.getRenderingTransform().clone();
     rt.preConcatenate(at);
-    if (rt.getDeterminant() == 0.0) {
+    if (rt.getDeterminant() < MAX_ZOOM_DETERMINANT) {
       return;
     }
     component.setRenderingTransform(rt);

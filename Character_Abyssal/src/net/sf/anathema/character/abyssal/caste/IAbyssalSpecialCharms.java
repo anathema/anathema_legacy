@@ -7,11 +7,13 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqu
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticPainToleranceCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.SubeffectCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 
@@ -28,7 +30,9 @@ public interface IAbyssalSpecialCharms {
   public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE = new OxBodyTechniqueCharm(
       "Abyssal.Ox-BodyTechnique", AbilityType.Endurance, //$NON-NLS-1$
       new LinkedHashMap<String, HealthLevelType[]>() {
-        {
+		private static final long serialVersionUID = -4160378543235139868L;
+
+		{
           put("Category.-0", new HealthLevelType[] { HealthLevelType.ZERO }); //$NON-NLS-1$
           put("Category.-1x2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.ONE }); //$NON-NLS-1$
           put(
@@ -36,10 +40,15 @@ public interface IAbyssalSpecialCharms {
         }
       });
   
+  public static final ITraitCapModifyingCharm WORLD_ENDING_VOID_APOSTLE = new TraitCapModifyingCharm(
+		  "Abyssal.WorldEndingVoidApostle", OtherTraitType.Essence, 1);
+  
   public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE_2ND = new OxBodyTechniqueCharm(
 	      "Abyssal.OxBodyTechnique", AbilityType.Resistance, //$NON-NLS-1$
 	      new LinkedHashMap<String, HealthLevelType[]>() {
-	        {
+			private static final long serialVersionUID = 8074890347746556040L;
+
+			{
 	          put("Category.-0", new HealthLevelType[] { HealthLevelType.ZERO }); //$NON-NLS-1$
 	          put("Category.-1x2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.ONE }); //$NON-NLS-1$
 	          put(

@@ -33,7 +33,7 @@ public class PassionView extends AbstractTraitView implements IPassionView {
       String id,
       int value,
       int maxValue) {
-    super(configuration, labelText, value, maxValue);
+    super(configuration, labelText, value, maxValue, null);
     this.deleteIcon = deleteIcon;
     passionLabel = new JLabel(id);
     abilityLabel = new JLabel(labelText);

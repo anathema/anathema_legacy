@@ -5,7 +5,7 @@ import javax.swing.ListCellRenderer;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
-import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
+import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 
 public interface IGhostPassionsConfigurationView {
 

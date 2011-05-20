@@ -8,8 +8,9 @@ import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.library.trait.aggregated.AggregatedTraitTemplate;
 import net.sf.anathema.lib.data.Range;
 
-public class TraitRules implements ITraitRules {
-
+public class TraitRules implements ITraitRules
+{
+  private int capModifier = 0;
   private final ITraitTemplate template;
   private final ILimitationContext limitationContext;
   private final ITraitType traitType;
@@ -29,13 +30,14 @@ public class TraitRules implements ITraitRules {
 
   private int getCreationMaximumValue() {
     if (modifiedCreationRange == null) {
-      return getCurrentMaximumValue();
+      return getCurrentMaximumValue(true);
     }
     return modifiedCreationRange.getUpperBound();
   }
 
-  private int getCurrentMaximumValue() {
-    return template.getLimitation().getCurrentMaximum(limitationContext);
+  public int getCurrentMaximumValue(boolean modified) {
+    return template.getLimitation().getCurrentMaximum(limitationContext, modified) +
+    	(modified ? capModifier : 0);
   }
 
   public int getAbsoluteMinimumValue() {
@@ -47,6 +49,11 @@ public class TraitRules implements ITraitRules {
 
   public int getStartValue() {
     return template.getStartValue();
+  }
+  
+  public void setCapModifier(int modifier)
+  {
+	  capModifier = modifier;
   }
 
   public ITraitRules deriveAggregatedRules(String subname, int startValue) {
@@ -84,19 +91,21 @@ public class TraitRules implements ITraitRules {
 
   public int getExperiencedValue(int creationValue, int demandedValue) {
     Range range;
-    int maximumValue = getCurrentMaximumValue();
+    int maximumValue = getCurrentMaximumValue(true);
     if (isLowerable()) {
       range = new Range(getAbsoluteMinimumValue(), maximumValue);
     }
     else {
       boolean isImmutable = template.getLowerableState() == LowerableState.Immutable;
-      range = new Range(creationValue, isImmutable ? creationValue : maximumValue);
+      range = new Range(Math.max(Math.min(creationValue, maximumValue), getAbsoluteMinimumValue()), isImmutable ? creationValue : maximumValue);
     }
     int correctedValue = getCorrectedValue(demandedValue, range);
     if (isLowerable()) {
       return correctedValue;
     }
-    return correctedValue <= creationValue ? ITraitRules.UNEXPERIENCED : correctedValue;
+    return correctedValue;
+    //the purpose for the below is unclear... hopefully it is safe to remove
+    //return correctedValue <= creationValue ? ITraitRules.UNEXPERIENCED : correctedValue;
   }
 
   public int getCreationValue(int demandedValue) {

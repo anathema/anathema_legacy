@@ -34,5 +34,4 @@ public class SolarVirtueFlawPresenter extends VirtueFlawPresenter {
     ITextView conditionView = view.addTextView(getResources().getString("VirtueFlaw.LimitBreakCondition.Name"), 30, 2); //$NON-NLS-1$
     textualPresentation.initView(conditionView, virtueFlaw.getLimitBreak());
   }
-
 }

@@ -12,8 +12,8 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.lib.resources.IResources;
 
 public final class MagicMaterialCellRenderer extends DefaultListCellRenderer {
-
-  private final IResources resources;
+	private static final long serialVersionUID = 1L;
+private final IResources resources;
 
   public MagicMaterialCellRenderer(IResources resources) {
     this.resources = resources;

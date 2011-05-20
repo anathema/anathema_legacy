@@ -1,5 +1,6 @@
 package net.sf.anathema.character.lunar.beastform.model.gift.weapons;
 
+import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
@@ -9,7 +10,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public abstract class AbstractLunarGiftWeapon implements IWeaponStats {
+public abstract class AbstractLunarGiftWeapon extends AbstractStats implements IWeaponStats {
   public ITraitType getDamageTraitType() {
     return AttributeType.Strength;
   }

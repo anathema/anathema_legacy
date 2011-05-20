@@ -1,5 +1,7 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
+import java.awt.Rectangle;
+
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
@@ -23,6 +25,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
   private final double nodeWidth;
   private final SVGButton button;
   private boolean enabled = false;
+  private IBoundsCalculator calculator;
   private SVGGElement displayElement;
   private SVGGElement outerGroupElement;
   private SVGSVGElement rootElement;
@@ -55,6 +58,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
     buttonGroup.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, removeListener, false);
     displayElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, removeListener, false);
     setDisplayVisible(false);
+    this.calculator = boundsCalculator;
     return outerGroupElement;
   }
 
@@ -65,10 +69,15 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
           return;
         }
         MouseEvent event = (MouseEvent) evt;
-        boolean outOfDisplay = !boundsCalculator.getBounds(displayElement).contains(
+        Rectangle bounds = calculator.getBounds(displayElement);
+        boolean outOfDisplay = !bounds.contains(
             event.getClientX(),
             event.getClientY());
-        boolean outOfButton = !boundsCalculator.getBounds(buttonGroup).contains(event.getClientX(), event.getClientY());
+        boolean outOfButton = !calculator.getBounds(buttonGroup).contains(event.getClientX(), event.getClientY());
+        System.out.println(outOfDisplay + " " + outOfButton);
+        if (outOfDisplay)
+        	System.out.println(event.getClientX() + " " + event.getClientY() + " | " +
+        			bounds.x + " " + bounds.y + " " + bounds.width + " " + bounds.height);
         if (outOfDisplay && outOfButton) {
           removeFromView();
           evt.stopPropagation();
@@ -122,6 +131,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
       }
     }
     setEnabled(false);
+    calculator.reset();
   }
 
   private void setAttribute(final org.w3c.dom.Element element, final String attributeName, final String attributeValue) {

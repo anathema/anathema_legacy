@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character;
 
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
-import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalSoak;
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalWeaponTemplate;
@@ -30,19 +29,11 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
     IArmourStats naturalArmour = new NaturalSoak(context);
     IExaltedRuleSet ruleSet = basicCharacterContext.getRuleSet();
     return new EquipmentAdditionalModel(
-        getDefaultMaterial(characterType),
+        characterType,
         naturalArmour,
         equipmentTemplateProvider,
         ruleSet,
         new NaturalWeaponTemplate(),
         template.getNaturalWeaponTemplate(characterType));
-  }
-
-  private MagicalMaterial getDefaultMaterial(ICharacterType characterType) {
-    MagicalMaterial defaultMaterial = MagicalMaterial.getDefault(characterType);
-    if (defaultMaterial == null) {
-      return MagicalMaterial.Orichalcum;
-    }
-    return defaultMaterial;
   }
 }

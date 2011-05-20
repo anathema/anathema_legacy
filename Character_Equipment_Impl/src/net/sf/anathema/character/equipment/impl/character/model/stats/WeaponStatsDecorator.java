@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class WeaponStatsDecorator implements IWeaponStats {
+public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats {
   private IWeaponStats stats;
   private ITraitType ability;
   private IIdentificate name;

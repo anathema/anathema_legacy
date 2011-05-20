@@ -1,6 +1,10 @@
 package net.sf.anathema.character.equipment.impl.character.view;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.swing.Action;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 
 import net.disy.commons.core.model.BooleanModel;
@@ -16,6 +20,7 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
 
   private final JTaskPaneGroup taskGroup = new JTaskPaneGroup();
   private final JLabel descriptionLabel = new JLabel();
+  private final Map<BooleanModel, JCheckBox> boxes = new HashMap<BooleanModel, JCheckBox>();
 
   public EquipmentObjectView() {
     taskGroup.add(descriptionLabel);
@@ -32,8 +37,15 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
 
   public BooleanModel addStats(String description) {
     BooleanModel isSelectedModel = new BooleanModel();
-    taskGroup.add(ActionWidgetFactory.createCheckBox(new SmartToggleAction(isSelectedModel, description)));
+    JCheckBox box = ActionWidgetFactory.createCheckBox(new SmartToggleAction(isSelectedModel, description));
+    boxes.put(isSelectedModel, box);
+    taskGroup.add(box);
     return isSelectedModel;
+  }
+  
+  public void updateStatText(BooleanModel model, String newText)
+  {
+	  boxes.get(model).setText(newText);
   }
 
   public JTaskPaneGroup getTaskGroup() {

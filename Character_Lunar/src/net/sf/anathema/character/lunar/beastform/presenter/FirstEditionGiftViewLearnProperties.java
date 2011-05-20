@@ -37,7 +37,9 @@ public class FirstEditionGiftViewLearnProperties extends AbstractMagicLearnPrope
 
   public ListCellRenderer getAvailableMagicRenderer() {
     return new LegalityCheckListCellRenderer(getResources()) {
-      @Override
+		private static final long serialVersionUID = 1L;
+
+	@Override
       protected boolean isLegal(Object object) {
         return model.isSelectable((IGift) object);
       }
@@ -52,7 +54,9 @@ public class FirstEditionGiftViewLearnProperties extends AbstractMagicLearnPrope
   @Override
   public ListCellRenderer getLearnedMagicRenderer() {
     return new DefaultListCellRenderer() {
-      @SuppressWarnings("unchecked")
+		private static final long serialVersionUID = 1L;
+
+	@SuppressWarnings("unchecked")
       @Override
       public Component getListCellRendererComponent(
           JList list,
@@ -84,7 +88,8 @@ public class FirstEditionGiftViewLearnProperties extends AbstractMagicLearnPrope
 
   public ListSelectionListener getRemoveButtonEnabledListener(final JButton button, final JList list) {
     return new ListSelectionListener() {
-      public void valueChanged(ListSelectionEvent e) {
+      @SuppressWarnings("unchecked")
+	public void valueChanged(ListSelectionEvent e) {
         boolean enabled = !list.isSelectionEmpty();
         for (Object object : list.getSelectedValues()) {
           IQualitySelection<IGift> selection = (IQualitySelection<IGift>) object;

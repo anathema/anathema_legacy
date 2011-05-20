@@ -22,6 +22,7 @@ import net.sf.anathema.character.lunar.beastform.model.gift.IGiftModel;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.lunar.template.ILunarSpecialCharms;
+import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
@@ -128,6 +129,11 @@ public class FirstEditionBeastformModel extends AbstractAdditionalModelAdapter i
 
   public IGiftModel getGiftModel() {
     return giftModel;
+  }
+  
+  public IMutationsModel getMutationModel()
+  {
+	return null;
   }
 
   public IBeastformGroupCost getAttributeCostModel() {

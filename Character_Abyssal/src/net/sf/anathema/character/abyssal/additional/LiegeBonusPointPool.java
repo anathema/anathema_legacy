@@ -23,7 +23,9 @@ public class LiegeBonusPointPool implements IAdditionalBonusPointPool {
   }
 
   private final List<String> allowedBackgroundIds = new ArrayList<String>() {
-    {
+	private static final long serialVersionUID = -3316917447289462519L;
+
+	{
       add(AbyssalCharacterModule.BACKGROUND_ID_ABYSSAL_COMMAND);
       add(BasicExaltCharacterModule.BACKGROUND_ID_ARTIFACT);
       add(IBackgroundIds.BACKGROUND_ID_FOLLOWERS);

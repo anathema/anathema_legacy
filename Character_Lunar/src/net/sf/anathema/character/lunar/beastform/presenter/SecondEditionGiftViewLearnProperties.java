@@ -37,7 +37,9 @@ public class SecondEditionGiftViewLearnProperties extends AbstractMagicLearnProp
 
   public ListCellRenderer getAvailableMagicRenderer() {
     return new LegalityCheckListCellRenderer(getResources()) {
-      @Override
+		private static final long serialVersionUID = 1L;
+
+	@Override
       protected boolean isLegal(Object object) {
         return model.isSelectable((IGift) object);
       }
@@ -52,7 +54,9 @@ public class SecondEditionGiftViewLearnProperties extends AbstractMagicLearnProp
   @Override
   public ListCellRenderer getLearnedMagicRenderer() {
     return new DefaultListCellRenderer() {
-      @SuppressWarnings("unchecked")
+		private static final long serialVersionUID = 1L;
+
+	@SuppressWarnings("unchecked")
       @Override
       public Component getListCellRendererComponent(
           JList list,

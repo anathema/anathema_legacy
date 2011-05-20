@@ -67,7 +67,7 @@ public class KeywordEntryPage extends AbstractAnathemaWizardPage {
     });
     getPageModel().addModelChangeListener(new IRemovableEntryListener<ICharmAttribute>() {
       public void entryAdded(final ICharmAttribute entry) {
-        IRemovableEntryView entryView = view.addEntryView(properties.getRemoveIcon(), entry.getId());
+        IRemovableEntryView entryView = view.addEntryView(properties.getRemoveIcon(), null, entry.getId());
         viewsByAttribute.put(entry, entryView);
         entryView.addButtonListener(new ActionListener() {
           public void actionPerformed(ActionEvent e) {

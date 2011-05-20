@@ -75,7 +75,9 @@ public class RenownPresenter implements IPresenter {
   private void initFacePresentation() {
     final IIntValueView faceView = view.addFaceSelectionView(resources.getString("Lunar.Renown.FaceLabel"), //$NON-NLS-1$
         new LegalityCheckListCellRenderer(resources) {
-          @Override
+			private static final long serialVersionUID = 2358634195236175019L;
+
+		@Override
           protected boolean isLegal(Object object) {
             return object != null && (Integer) object <= model.getMaximumAllowedFaceRank();
           }

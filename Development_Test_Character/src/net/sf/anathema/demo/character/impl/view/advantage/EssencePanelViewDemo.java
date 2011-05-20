@@ -11,7 +11,7 @@ public class EssencePanelViewDemo extends BasicCharacterDemoCase {
     AnathemaResources resources = new AnathemaResources();
     IIntValueDisplayFactory configuration = createMortalGuiConfiguration(resources);
     EssencePanelView essencePanelView = new EssencePanelView(configuration);
-    essencePanelView.addEssenceView("Essence", 2, 5); //$NON-NLS-1$
+    essencePanelView.addEssenceView("Essence", 2, 5, null); //$NON-NLS-1$
     essencePanelView.addPoolView("Personal Essence", "18"); //$NON-NLS-1$ //$NON-NLS-2$
     essencePanelView.addPoolView("Peripheral Essence", "25"); //$NON-NLS-1$ //$NON-NLS-2$
     show(essencePanelView.getComponent());

@@ -2,6 +2,8 @@ package net.sf.anathema.character.equipment.character;
 
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
+import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
@@ -55,6 +57,8 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
   }
 
   public String createString(IEquipmentItem item, IEquipmentStats equipment) {
+	if (item != null && equipment != null)
+		equipment.setUseAttunementModifiers(checkAttunement(item.getAttunementState()));
     if (equipment instanceof IWeaponStats) {
       return createWeaponString(item, (IWeaponStats) equipment);
     }
@@ -64,7 +68,32 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     if (equipment instanceof IShieldStats) {
       return createShieldString((IShieldStats) equipment);
     }
+    if (equipment instanceof IArtifactStats)
+      return createArtifactString((IArtifactStats) equipment);
     throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong."); //$NON-NLS-1$
+  }
+  
+  private boolean checkAttunement(ArtifactAttuneType state)
+  {
+	  switch (state)
+	  {
+	  case Unattuned:
+	  case PartiallyAttuned:
+	  case ExpensivePartiallyAttuned:
+		  return false;
+	  default:
+	  case FullyAttuned:
+	  case UnharmoniouslyAttuned:
+		  return true;
+	  }
+  }
+  
+  private String createArtifactString(IArtifactStats stats)
+  {
+	  StringBuilder stringBuilder = new StringBuilder();
+	  stringBuilder.append(getStatsString(stats.getAttuneType().name(), stats.getAttuneCost(), false));
+	  stringBuilder.append("m");
+	  return stringBuilder.toString();
   }
 
   private String createShieldString(IShieldStats stats) {

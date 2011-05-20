@@ -6,6 +6,7 @@ import javax.swing.ListCellRenderer;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ICharacterConceptAndRulesView extends
@@ -18,6 +19,8 @@ public interface ICharacterConceptAndRulesView extends
       boolean editable);
 
   public ITextView addLabelTextView(String labelText);
+  
+  public void addSpinner(String labelText, IntegerSpinner spinner);
 
   public IWillpowerConditionView addWillpowerConditionView(String headerLabelText);
 

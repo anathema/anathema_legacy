@@ -8,8 +8,12 @@ import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.lunar.beastform.model.gift.AttributePointsProvidingGift;
 import net.sf.anathema.character.lunar.beastform.model.gift.GiftVisitorAdapter;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
+import net.sf.anathema.character.lunar.beastform.model.gift.IGiftModel;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
+import net.sf.anathema.character.mutations.model.IMutation;
+import net.sf.anathema.character.mutations.model.MutationVisitorAdapter;
+import net.sf.anathema.character.mutations.model.types.AttributePointsProvidingMutation;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -23,14 +27,16 @@ public class BeastformGroupCost implements IBeastformGroupCost {
 
   public BeastformGroupCost(IBeastformTraitCollection collection, final IBeastformModel model) {
     this.collection = collection;
-    model.getGiftModel().addModelChangeListener(new IChangeListener() {
+    IQualityModel<?> listenModel = model.getGiftModel();
+    listenModel = listenModel == null ? model.getMutationModel() : listenModel;
+    listenModel.addModelChangeListener(new IChangeListener() {
       public void changeOccured() {
-        calculateDots(model.getGiftModel(), model.getCharmValue());
+        calculateDots(model.getGiftModel() != null ? model.getGiftModel() : model.getMutationModel(), model.getCharmValue());
       }
     });
     model.addCharmLearnCountChangedListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
-        calculateDots(model.getGiftModel(), model.getCharmValue());
+        calculateDots(model.getGiftModel() != null ? model.getGiftModel() : model.getMutationModel(), model.getCharmValue());
       }
     });
   }
@@ -45,16 +51,28 @@ public class BeastformGroupCost implements IBeastformGroupCost {
     return Math.max(0, totalDots - dotsSpent[0]);
   }
 
-  private void calculateDots(IQualityModel<IGift> giftModel, int charmValue) {
+  @SuppressWarnings("unchecked")
+private void calculateDots(IQualityModel<?> model, int charmValue) {
     final int[] dotsFromGifts = new int[1];
-    for (IQualitySelection<IGift> selection : giftModel.getSelectedQualities()) {
-      selection.getQuality().accept(new GiftVisitorAdapter() {
-        @Override
-        public void visitAttributePointsProvidingGift(AttributePointsProvidingGift gift) {
-          dotsFromGifts[0] += gift.getProvidedPoints();
-        }
-      });
-    }
+    if (model instanceof IGiftModel)
+	    for (IQualitySelection<IGift> selection : ((IQualityModel<IGift>)model).getSelectedQualities()) {
+	      selection.getQuality().accept(new GiftVisitorAdapter() {
+	        @Override
+	        public void visitAttributePointsProvidingGift(AttributePointsProvidingGift gift) {
+	          dotsFromGifts[0] += gift.getProvidedPoints();
+	        }
+	      });
+	    }
+    else
+    	for (IQualitySelection<IMutation> selection : ((IQualityModel<IMutation>)model).getSelectedQualities()) {
+  	      selection.getQuality().accept(new MutationVisitorAdapter() {
+  	        @Override
+  	        public void visitAttributePointsProvidingMutation(AttributePointsProvidingMutation mutation)
+  	        {
+  	          dotsFromGifts[0] += mutation.getProvidedPoints();
+  	        }
+  	      });
+  	    }
     int charmDots = charmValue == 0 ? 0 : 5 + (charmValue - 1) * 3;
     this.totalDots = dotsFromGifts[0] + charmDots;
     control.forAllDo(new IClosure<IAlotmentChangedListener>() {

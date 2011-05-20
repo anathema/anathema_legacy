@@ -4,6 +4,7 @@ import java.awt.Component;
 
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IArtifactStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.ICloseCombatStatsticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsModel;
@@ -17,6 +18,7 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.IEquipmentSt
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ArmourStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.ArtifactStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ShieldStats;
@@ -26,6 +28,7 @@ import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
+import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
@@ -118,6 +121,13 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       shieldModel.getMobilityPenaltyModel().setValue(shieldStats.getMobilityPenalty());
       shieldModel.getRangedCombatDvBonusModel().setValue(shieldStats.getRangedCombatBonus());
     }
+    else if (stats instanceof IArtifactStats) {
+      IArtifactStats artifactStats = (IArtifactStats) stats;
+      model.setEquipmentType(EquipmentStatisticsType.Artifact);
+      IArtifactStatisticsModel artifactModel = model.getArtifactStatisticsModel();
+      artifactModel.getName().setText(artifactStats.getName().getId());
+      artifactModel.getAttuneCostModel().setValue(artifactStats.getAttuneCost());
+    }
     else {
       throw new NotYetImplementedException();
     }
@@ -174,6 +184,12 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
         setBasicWeaponStats(rangedCombatStats, rangedCombatModel, model.getWeaponTagsModel());
         rangedCombatStats.setRange(rangedCombatModel.getRangeModel().getValue());
         return rangedCombatStats;
+      case Artifact:
+    	ArtifactStats artifactStats = new ArtifactStats();
+    	IArtifactStatisticsModel artifactModel = model.getArtifactStatisticsModel();
+    	setName(artifactStats, artifactModel);
+    	artifactStats.setAttuneCost(artifactModel.getAttuneCostModel().getValue());
+    	return artifactStats;
     }
     return null;
   }

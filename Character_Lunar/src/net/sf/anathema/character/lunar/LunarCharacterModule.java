@@ -19,6 +19,7 @@ import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificCharact
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
@@ -27,6 +28,8 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.lunar.beastform.BeastformModelFactory;
 import net.sf.anathema.character.lunar.beastform.BeastformPersisterFactory;
@@ -106,17 +109,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.LUNAR,
         ExaltedEdition.SecondEdition,
-        new ISpecialCharm[] {
-                ILunarSpecialCharms.OX_BODY_TECHNIQUE_2ND,
-                ILunarSpecialCharms.IMPRESSIONS_OF_STRENGTH,
-                ILunarSpecialCharms.RIGHTEOUS_LION_DEFENSE,
-                ILunarSpecialCharms.ADDER_FANG_METHOD,
-                ILunarSpecialCharms.BESIEGING_THE_BASTION,
-                ILunarSpecialCharms.COBRA_EYE_METHOD,
-                ILunarSpecialCharms.PERFECT_OUTSIDER_UNDERSTANDING,
-                ILunarSpecialCharms.SILVER_LUNAR_CHA,
-                ILunarSpecialCharms.SILVER_LUNAR_STA,
-                ILunarSpecialCharms.SILVER_LUNAR_WIT});
+        getSpecialCharmArray(ExaltedEdition.SecondEdition));
     
     Map<IExaltedEdition, ICasteType[]> editionMap = new HashMap<IExaltedEdition, ICasteType[]>();
     editionMap.put(ExaltedEdition.FirstEdition, LunarCaste.getModernValues());
@@ -137,6 +130,37 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
                 new InstinctiveUnity(),
                 new FlawlessFocus(),
                 new ImpossibleImprovement()});
+  }
+  
+  private ISpecialCharm[] getSpecialCharmArray(IExaltedEdition edition)
+  {
+	  if (edition == ExaltedEdition.SecondEdition)
+	  {
+		  ISpecialCharm baseSet[] = new ISpecialCharm[] {
+	                ILunarSpecialCharms.OX_BODY_TECHNIQUE_2ND,
+	                ILunarSpecialCharms.IMPRESSIONS_OF_STRENGTH,
+	                ILunarSpecialCharms.RIGHTEOUS_LION_DEFENSE,
+	                ILunarSpecialCharms.ADDER_FANG_METHOD,
+	                ILunarSpecialCharms.BESIEGING_THE_BASTION,
+	                ILunarSpecialCharms.COBRA_EYE_METHOD,
+	                ILunarSpecialCharms.PERFECT_OUTSIDER_UNDERSTANDING,
+	                ILunarSpecialCharms.SILVER_LUNAR_CHA,
+	                ILunarSpecialCharms.SILVER_LUNAR_STA,
+	                ILunarSpecialCharms.SILVER_LUNAR_WIT};
+		  
+		  int attributeCount = AttributeType.values().length;
+		  ISpecialCharm[] masterSet = new ISpecialCharm[baseSet.length + attributeCount];
+		  for (int i = 0; i != baseSet.length; i++) masterSet[i] = baseSet[i];
+		  
+		  for (int i = 0; i != attributeCount; i++)
+		  {
+			  ITraitType type = AttributeType.values()[i];
+			  masterSet[baseSet.length + i] = new TraitCapModifyingCharm("Lunar.ImpossibleImprovement."
+					  + type.getId(), type, 1);
+		  }
+		  return masterSet;		  
+	  }
+	  return null;
   }
 
   @Override

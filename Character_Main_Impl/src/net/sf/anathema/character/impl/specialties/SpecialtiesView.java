@@ -14,7 +14,8 @@ import net.sf.anathema.character.impl.view.SpecialtyView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationView;
 import net.sf.anathema.character.view.ISpecialtyView;
-import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
+import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
+import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.lib.gui.IView;
 
 public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {

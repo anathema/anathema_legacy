@@ -1,7 +1,6 @@
 package net.sf.anathema.charmtree.filters;
 
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,6 +67,11 @@ public class SourceBookCharmFilterPage implements ICharmFilterPage
 		
 		removeSourceButton.setAction(new SmartAction()
 		{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 839130074208545306L;
+
 			protected void execute(Component parentComponent)
 			{
 				removeBooks(allowedList.getSelectedValues());
@@ -77,6 +81,11 @@ public class SourceBookCharmFilterPage implements ICharmFilterPage
 		
 		addSourceButton.setAction(new SmartAction()
 		{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -5390716556695365718L;
+
 			protected void execute(Component parentComponent)
 			{
 				addBooks(excludedList.getSelectedValues());
@@ -103,6 +112,11 @@ public class SourceBookCharmFilterPage implements ICharmFilterPage
 		prereqButtonGroup.add(prereqHiddenButton);
 		prereqShownButton.setAction(new SmartAction()
 		{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 2099498555362467789L;
+
 			protected void execute(Component parentComponent)
 			{
 				includePrereqs[0] = true;
@@ -110,6 +124,11 @@ public class SourceBookCharmFilterPage implements ICharmFilterPage
 		});
 		prereqHiddenButton.setAction(new SmartAction()
 		{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -6036562759240030621L;
+
 			protected void execute(Component parentComponent)
 			{
 				includePrereqs[0] = false;

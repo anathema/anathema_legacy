@@ -20,7 +20,7 @@ public interface ISvgTreeView extends IView, IDisposable {
 
   public void setCanvasBackground(Color color);
 
-  public void loadCascade(Document document) throws DocumentException;
+  public void loadCascade(Document document, boolean resetView) throws DocumentException;
 
   public ISpecialNodeViewManager getSpecialViewManager();
 }

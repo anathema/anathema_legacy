@@ -25,7 +25,7 @@ public class MeritsFlawsTemplate extends Identificate implements IGlobalAddition
       }
 
       public void visitSecondEdition(IExaltedEdition visitedEdition) {
-        supported[0] = false;
+        supported[0] = true;
       }
     });
     return supported[0];

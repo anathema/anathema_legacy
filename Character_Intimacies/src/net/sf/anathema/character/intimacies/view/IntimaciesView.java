@@ -18,6 +18,7 @@ import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.selection.IStringSelectionView;
 import net.sf.anathema.character.library.selection.StringSelectionView;
+import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.RearToggleButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
@@ -52,7 +53,7 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
     return new StringSelectionView(mainPanel, labelText, addIcon);
   }
 
-  public IRemovableTraitView<IToggleButtonTraitView< ? >> addEntryView(Icon removeIcon, String string) {
+  public IRemovableTraitView<IToggleButtonTraitView< ? >> addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
     SimpleTraitView view = new SimpleTraitView(factory, string, 0, 5);
     RearToggleButtonTraitViewWrapper<SimpleTraitView> oneButtonView = new RearToggleButtonTraitViewWrapper<SimpleTraitView>(
         view,
@@ -69,7 +70,8 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
     return new OverviewCategory(overviewPanel, borderLabel, false);
   }
 
-  public void setOverview(IOverviewCategory overviewView) {
+  @SuppressWarnings("deprecation")
+public void setOverview(IOverviewCategory overviewView) {
     overviewPanel.removeAll();
     overviewPanel.add(overviewView.getComponent());
   }

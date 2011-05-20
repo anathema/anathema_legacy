@@ -92,7 +92,8 @@ public class LinguisticsPresenter implements IPresenter {
     }
   }
 
-  private void initEntryPresentation() {
+  @SuppressWarnings("serial")
+private void initEntryPresentation() {
     String labelText = resources.getString("Linguistics.SelectionView.Label"); //$NON-NLS-1$
     final BasicUi basicUi = new BasicUi(resources);
     Icon addIcon = basicUi.getAddIcon();
@@ -165,7 +166,7 @@ public class LinguisticsPresenter implements IPresenter {
   }
 
   private void addEntry(final BasicUi basicUi, final IIdentificate language) {
-    IRemovableEntryView entryView = view.addEntryView(basicUi.getRemoveIcon(), getDisplayString(language));
+    IRemovableEntryView entryView = view.addEntryView(basicUi.getRemoveIcon(), null, getDisplayString(language));
     viewsByEntry.put(language, entryView);
     entryView.addButtonListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {

@@ -5,6 +5,7 @@ import java.io.File;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ArmourStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.ArtifactStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ShieldStats;
 import net.sf.anathema.framework.Version;
 
@@ -22,6 +23,7 @@ public class EquipmentDatabaseConnectionManager {
     configuration.objectClass(ShieldStats.class).cascadeOnUpdate(true);
     configuration.objectClass(AbstractWeaponStats.class).cascadeOnActivate(true);
     configuration.objectClass(AbstractWeaponStats.class).cascadeOnUpdate(true);
+    configuration.objectClass(ArtifactStats.class).cascadeOnUpdate(true);
     configuration.allowVersionUpdates(true);
     configuration.automaticShutDown(true);
     configuration.readOnly(false);

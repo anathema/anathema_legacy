@@ -20,6 +20,8 @@ public class CharacterModuleContainerInitializer {
       add("net.sf.anathema.character.reporting.CharacterReportingModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.equipment.impl.EquipmentCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.meritsflaws.MeritsFlawsModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.mutations.MutationsModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.thaumaturgy.ThaumaturgyModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.impl.specialties.SpecialtiesModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.craft.CraftModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.linguistics.LinguisticsModule"); //$NON-NLS-1$

@@ -30,7 +30,7 @@ public class GenericTraitTemplateParserTest extends BasicTestCase {
 
   private static GenericTraitTemplate parseTemplate(String xml) throws AnathemaException, PersistenceException {
     Element element = DocumentUtilities.read(xml).getRootElement();
-    return GenericTraitTemplateParser.parseTraitTemplate(element);
+    return (GenericTraitTemplate) GenericTraitTemplateParser.parseTraitTemplate(element);
   }
 
   public void testBasicTraitTemplateProperties() throws Exception {

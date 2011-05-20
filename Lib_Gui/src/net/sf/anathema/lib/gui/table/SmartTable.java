@@ -32,207 +32,217 @@ import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 // NOT_PUBLISHED
 public class SmartTable implements IView {
 
-  private boolean enabled = true;
-  private final JTable table;
-  private JPanel content;
-  private final List<ActionListener> selectionActionListeners = new ArrayList<ActionListener>();
-  private final List<ITableActionFactory> actionFactories = new ArrayList<ITableActionFactory>();
-  private boolean toolbarStyleButtons = true;
+	private boolean enabled = true;
+	private final JTable table;
+	private JPanel content;
+	private final List<ActionListener> selectionActionListeners = new ArrayList<ActionListener>();
+	private final List<ITableActionFactory> actionFactories = new ArrayList<ITableActionFactory>();
+	private boolean toolbarStyleButtons = true;
 
-  private Action[] actions = new Action[0];
+	private Action[] actions = new Action[0];
 
-  public SmartTable(TableModel tableModel, ITableColumnViewSettings[] settings) {
-    Ensure.ensureNotNull(tableModel);
-    Ensure.ensureNotNull(settings);
+	public SmartTable(TableModel tableModel, ITableColumnViewSettings[] settings) {
+		Ensure.ensureNotNull(tableModel);
+		Ensure.ensureNotNull(settings);
 
-    table = new JTable(tableModel);
+		table = new JTable(tableModel);
 
-    table.addMouseListener(new MouseAdapter() {
-      @Override
-      public void mouseClicked(MouseEvent e) {
-        if (e.getClickCount() != 2 || e.isMetaDown()) {
-          return;
-        }
-        if (table.getSelectedRowCount() == 0) {
-          return;
-        }
-        fireSelectionActionEvent();
-      }
-    });
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() != 2 || e.isMetaDown()) {
+					return;
+				}
+				if (table.getSelectedRowCount() == 0) {
+					return;
+				}
+				fireSelectionActionEvent();
+			}
+		});
 
-    table.setRowHeight(Math.max(table.getRowHeight(), 21));
-    TableColumnConfigurator.configureTableColumns(table, settings);
-    setSelectionMode(ListSelectionMode.SINGLE_SELECTION);
-  }
+		table.setRowHeight(Math.max(table.getRowHeight(), 21));
+		TableColumnConfigurator.configureTableColumns(table, settings);
+		setSelectionMode(ListSelectionMode.SINGLE_SELECTION);
+	}
 
-  public void addActionFactory(ITableActionFactory actionFactory) {
-    Ensure.ensureNotNull(actionFactory);
-    if (content != null) {
-      throw new IllegalStateException("Adding actions after creating content."); //$NON-NLS-1$
-    }
-    actionFactories.add(actionFactory);
-  }
+	public void addActionFactory(ITableActionFactory actionFactory) {
+		Ensure.ensureNotNull(actionFactory);
+		if (content != null) {
+			throw new IllegalStateException(
+					"Adding actions after creating content."); //$NON-NLS-1$
+		}
+		actionFactories.add(actionFactory);
+	}
 
-  public void setSelectionMode(ListSelectionMode selectionMode) {
-    table.setSelectionMode(selectionMode.getListSelectionMode());
-  }
+	public void setSelectionMode(ListSelectionMode selectionMode) {
+		table.setSelectionMode(selectionMode.getListSelectionMode());
+	}
 
-  public JTable getTable() {
-    return table;
-  }
+	public JTable getTable() {
+		return table;
+	}
 
-  public TableModel getModel() {
-    return table.getModel();
-  }
+	public TableModel getModel() {
+		return table.getModel();
+	}
 
-  public void setEnabled(boolean enabled) {
-    this.enabled = enabled;
-    updateEnabled();
-  }
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+		updateEnabled();
+	}
 
-  public boolean isEnabled() {
-    return enabled;
-  }
+	public boolean isEnabled() {
+		return enabled;
+	}
 
-  protected void updateEnabled() {
-    table.setEnabled(enabled);
-    if (!enabled) {
-      table.getSelectionModel().clearSelection();
-    }
-    for (Action action : actions) {
-      action.setEnabled(enabled);
-    }
-  }
+	protected void updateEnabled() {
+		table.setEnabled(enabled);
+		if (!enabled) {
+			table.getSelectionModel().clearSelection();
+		}
+		for (Action action : actions) {
+			action.setEnabled(enabled);
+		}
+	}
 
-  public final JPanel getComponent() {
-    if (content == null) {
-      content = createContent();
-      updateEnabled();
-    }
-    return content;
-  }
+	public final JPanel getComponent() {
+		if (content == null) {
+			content = createContent();
+			updateEnabled();
+		}
+		return content;
+	}
 
-  private JPanel createContent() {
-    JPanel tablePanel = new JPanel(new BorderLayout());
-    tablePanel.add(table);
-    JScrollPane scrollPane = new JScrollPane(tablePanel) {
-      @Override
-      public void setEnabled(boolean enabled) {
-        super.setEnabled(enabled);
-        SmartTable.this.setEnabled(enabled);
-      }
-    };
-    scrollPane.setColumnHeaderView(table.getTableHeader());
-    int preferredWidth = table.getPreferredSize().width + scrollPane.getInsets().left + scrollPane.getInsets().right;
-    scrollPane.setPreferredSize(new Dimension(preferredWidth, 150));
-    this.actions = createTableActions();
-    JPanel panel = new JPanel(new GridDialogLayout(2, false)) {
-      @Override
-      public void setEnabled(boolean enabled) {
-        SmartTable.this.setEnabled(enabled);
-        if (!enabled) {
-          TableCellEditor cellEditor = getTable().getCellEditor();
-          if (cellEditor != null) {
-            cellEditor.stopCellEditing();
-          }
-        }
-      }
-    };
-    panel.add(scrollPane, GridDialogLayoutData.FILL_BOTH);
-    if (actions.length <= 0) {
-      panel.add(new EndOfLineMarkerComponent());
-    }
-    else {
-      panel.add(createButtonPanel(actions), GridDialogLayoutDataUtilities.createTopData());
-    }
-    return panel;
-  }
+	private JPanel createContent() {
+		JPanel tablePanel = new JPanel(new BorderLayout());
+		tablePanel.add(table);
+		JScrollPane scrollPane = new JScrollPane(tablePanel) {
+			private static final long serialVersionUID = -8660768514467856637L;
+			@Override
+			public void setEnabled(boolean enabled) {
+				super.setEnabled(enabled);
+				SmartTable.this.setEnabled(enabled);
+			}
+		};
+		scrollPane.setColumnHeaderView(table.getTableHeader());
+		int preferredWidth = table.getPreferredSize().width
+				+ scrollPane.getInsets().left + scrollPane.getInsets().right;
+		scrollPane.setPreferredSize(new Dimension(preferredWidth, 150));
+		this.actions = createTableActions();
+		JPanel panel = new JPanel(new GridDialogLayout(2, false)) {
+			private static final long serialVersionUID = 5547203636645981124L;
 
-  private Action[] createTableActions() {
-    Action[] createdActions = new Action[actionFactories.size()];
-    for (int i = 0; i < createdActions.length; i++) {
-      ITableActionFactory factory = actionFactories.get(i);
-      createdActions[i] = new DisableableProxyAction(factory.createAction(this));
-    }
-    return createdActions;
-  }
+			@Override
+			public void setEnabled(boolean enabled) {
+				SmartTable.this.setEnabled(enabled);
+				if (!enabled) {
+					TableCellEditor cellEditor = getTable().getCellEditor();
+					if (cellEditor != null) {
+						cellEditor.stopCellEditing();
+					}
+				}
+			}
+		};
+		panel.add(scrollPane, GridDialogLayoutData.FILL_BOTH);
+		if (actions.length <= 0) {
+			panel.add(new EndOfLineMarkerComponent());
+		} else {
+			panel.add(createButtonPanel(actions),
+					GridDialogLayoutDataUtilities.createTopData());
+		}
+		return panel;
+	}
 
-  private JPanel createButtonPanel(Action[] additionalActions) {
-    return isToolbarStyleButtons()
-        ? createToolbarStyleButtons(additionalActions)
-        : createNonToolbarStyleButtons(additionalActions);
-  }
+	private Action[] createTableActions() {
+		Action[] createdActions = new Action[actionFactories.size()];
+		for (int i = 0; i < createdActions.length; i++) {
+			ITableActionFactory factory = actionFactories.get(i);
+			createdActions[i] = new DisableableProxyAction(
+					factory.createAction(this));
+		}
+		return createdActions;
+	}
 
-  private JPanel createNonToolbarStyleButtons(Action[] additionalActions) {
-    ButtonPanelBuilder builder = new ButtonPanelBuilder(LayoutDirection.VERTICAL);
-    for (Action action : additionalActions) {
-      builder.add(action);
-    }
-    JPanel panel = builder.createPanel();
-    panel.setBorder(null);
-    return panel;
-  }
+	private JPanel createButtonPanel(Action[] additionalActions) {
+		return isToolbarStyleButtons() ? createToolbarStyleButtons(additionalActions)
+				: createNonToolbarStyleButtons(additionalActions);
+	}
 
-  private JPanel createToolbarStyleButtons(Action[] additionalActions) {
-    JPanel buttonPanel = new JPanel(new GridDialogLayout(1, false));
-    for (Action action : additionalActions) {
-      buttonPanel.add(new JButton(action), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
-    }
-    return buttonPanel;
-  }
+	private JPanel createNonToolbarStyleButtons(Action[] additionalActions) {
+		ButtonPanelBuilder builder = new ButtonPanelBuilder(
+				LayoutDirection.VERTICAL);
+		for (Action action : additionalActions) {
+			builder.add(action);
+		}
+		JPanel panel = builder.createPanel();
+		panel.setBorder(null);
+		return panel;
+	}
 
-  public void requestFocus() {
-    table.requestFocus();
-  }
+	private JPanel createToolbarStyleButtons(Action[] additionalActions) {
+		JPanel buttonPanel = new JPanel(new GridDialogLayout(1, false));
+		for (Action action : additionalActions) {
+			buttonPanel.add(new JButton(action),
+					GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+		}
+		return buttonPanel;
+	}
 
-  public synchronized void addSelectionActionListener(ActionListener listener) {
-    selectionActionListeners.add(listener);
-  }
+	public void requestFocus() {
+		table.requestFocus();
+	}
 
-  public synchronized void removeSelectionActionListener(ActionListener listener) {
-    selectionActionListeners.remove(listener);
-  }
+	public synchronized void addSelectionActionListener(ActionListener listener) {
+		selectionActionListeners.add(listener);
+	}
 
-  private void fireSelectionActionEvent() {
-    List<ActionListener> clone;
-    synchronized (this) {
-      clone = new ArrayList<ActionListener>(selectionActionListeners);
-    }
-    ActionEvent actionEvent = new ActionEvent(table, -1, "select"); //$NON-NLS-1$
-    for (ActionListener element : clone) {
-      element.actionPerformed(actionEvent);
-    }
-  }
+	public synchronized void removeSelectionActionListener(
+			ActionListener listener) {
+		selectionActionListeners.remove(listener);
+	}
 
-  public final void scrollToAndSelect(int rowIndex) {
-    getTable().scrollRectToVisible(getTable().getCellRect(rowIndex, 0, true));
-    getTable().getSelectionModel().setSelectionInterval(rowIndex, rowIndex);
-    getTable().requestFocus();
-  }
+	private void fireSelectionActionEvent() {
+		List<ActionListener> clone;
+		synchronized (this) {
+			clone = new ArrayList<ActionListener>(selectionActionListeners);
+		}
+		ActionEvent actionEvent = new ActionEvent(table, -1, "select"); //$NON-NLS-1$
+		for (ActionListener element : clone) {
+			element.actionPerformed(actionEvent);
+		}
+	}
 
-  public void stopCellEditing() {
-    TableCellEditor cellEditor = getTable().getCellEditor();
-    if (cellEditor != null) {
-      cellEditor.stopCellEditing();
-    }
-  }
+	public final void scrollToAndSelect(int rowIndex) {
+		getTable().scrollRectToVisible(
+				getTable().getCellRect(rowIndex, 0, true));
+		getTable().getSelectionModel().setSelectionInterval(rowIndex, rowIndex);
+		getTable().requestFocus();
+	}
 
-  public boolean isToolbarStyleButtons() {
-    return toolbarStyleButtons;
-  }
+	public void stopCellEditing() {
+		TableCellEditor cellEditor = getTable().getCellEditor();
+		if (cellEditor != null) {
+			cellEditor.stopCellEditing();
+		}
+	}
 
-  public void setToobarStyleButtons(boolean toobarStyleButtons) {
-    this.toolbarStyleButtons = toobarStyleButtons;
-  }
+	public boolean isToolbarStyleButtons() {
+		return toolbarStyleButtons;
+	}
 
-  public int getSelectedRowIndex() {
-    // Bugfix for JDK1.4 JTable Bug 4905083: Pressing enter on empty table moves selection to 1
-    // (fixed in Java 1.5 / Tiger)
-    int selectedRowIndex = table.getSelectedRow();
-    return selectedRowIndex > table.getRowCount() ? -1 : selectedRowIndex;
-  }
+	public void setToobarStyleButtons(boolean toobarStyleButtons) {
+		this.toolbarStyleButtons = toobarStyleButtons;
+	}
 
-  public boolean isSelectionEmpty() {
-    return getSelectedRowIndex() == -1;
-  }
+	public int getSelectedRowIndex() {
+		// Bugfix for JDK1.4 JTable Bug 4905083: Pressing enter on empty table
+		// moves selection to 1
+		// (fixed in Java 1.5 / Tiger)
+		int selectedRowIndex = table.getSelectedRow();
+		return selectedRowIndex > table.getRowCount() ? -1 : selectedRowIndex;
+	}
+
+	public boolean isSelectionEmpty() {
+		return getSelectedRowIndex() == -1;
+	}
 }

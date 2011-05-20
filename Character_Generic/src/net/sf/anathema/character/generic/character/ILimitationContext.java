@@ -10,4 +10,8 @@ public interface ILimitationContext {
   public ICasteType getCasteType();
 
   public IGenericTraitCollection getTraitCollection();
+  
+  public int getAge();
+  
+  public int getEssenceCap(boolean modified);
 }

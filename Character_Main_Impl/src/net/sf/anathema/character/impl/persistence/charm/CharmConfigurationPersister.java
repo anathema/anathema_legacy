@@ -157,7 +157,7 @@ private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration c
     for (Object charmObjectElement : groupElement.elements()) {
       Element charmElement = (Element) charmObjectElement;
       String charmId = charmElement.attributeValue(ATTRIB_NAME);
-      group.learnCharmNoParents(charmConfiguration.getCharmById(charmId), isExperienceLearned(charmElement));
+      group.learnCharmNoParents(charmConfiguration.getCharmById(charmId), isExperienceLearned(charmElement), false);
       Element specialElement = charmElement.element(TAG_SPECIAL);
       if (specialElement != null) {
         ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);

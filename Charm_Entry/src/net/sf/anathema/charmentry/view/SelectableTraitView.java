@@ -31,7 +31,7 @@ public class SelectableTraitView implements ISelectableTraitView {
   private int currentValue;
 
   public SelectableTraitView(IIntValueDisplayFactory configuration) {
-    this.valueDisplay = configuration.createIntValueDisplay(EssenceTemplate.SYSTEM_ESSENCE_MAX, 1);
+    this.valueDisplay = configuration.createIntValueDisplay(EssenceTemplate.SYSTEM_ESSENCE_MAX, 1, null);
     traitSelectionBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IIdentificate>() {
       public void valueChanged(IIdentificate newValue) {
         fireTraitChangedEvent();
@@ -59,6 +59,7 @@ public class SelectableTraitView implements ISelectableTraitView {
     return panel;
   }
 
+  @SuppressWarnings("deprecation")
   public void addTo(JPanel panel) {
     panel.add(traitSelectionBox.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(valueDisplay.getComponent());

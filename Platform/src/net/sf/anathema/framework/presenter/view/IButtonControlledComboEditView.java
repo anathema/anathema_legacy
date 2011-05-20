@@ -1,4 +1,4 @@
-package net.sf.anathema.character.view.basic;
+package net.sf.anathema.framework.presenter.view;
 
 import java.awt.event.ActionListener;
 
@@ -11,6 +11,8 @@ public interface IButtonControlledComboEditView<K> {
   public void addEditChangedListener(IObjectValueChangedListener<String> name);
 
   public void addButtonListener(ActionListener listener);
+  
+  public void addButtonListener(final IObjectValueChangedListener<K> listener);
 
   public void clear();
 

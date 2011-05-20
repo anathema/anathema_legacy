@@ -13,7 +13,8 @@ import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
-import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
+import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
+import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.lib.gui.IView;
 
 public class GhostPassionsConfigurationView implements IGhostPassionsConfigurationView, IView {
