@@ -45,12 +45,6 @@ public enum CharacterType implements ICharacterType {
       visitor.visitSidereal(this);
     }
   },
-  MORTAL("Mortal") {//$NON-NLS-1$
-    @Override
-    public void accept(ICharacterTypeVisitor visitor) {
-      visitor.visitMortal(this);
-    }
-  },
   SPIRIT("Spirit") {//$NON-NLS-1$
 	    @Override
 	    public void accept(ICharacterTypeVisitor visitor) {
@@ -63,6 +57,12 @@ public enum CharacterType implements ICharacterType {
 		      visitor.visitGhost(this);
 		    }
 		  },
+  MORTAL("Mortal") {//$NON-NLS-1$
+    @Override
+    public void accept(ICharacterTypeVisitor visitor) {
+      visitor.visitMortal(this);
+    }
+  },
   DRAGON_KING("DragonKing") { //$NON-NLS-1$
     @Override
     public void accept(ICharacterTypeVisitor visitor) {
