@@ -7,6 +7,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import net.disy.commons.core.model.BooleanModel;
+import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
@@ -87,14 +88,26 @@ public class EquipmentObjectPresenter implements IPresenter {
   
   private boolean viewFilter(IEquipmentStats equipment)
   {
+	  boolean match;
+	  if (model.getMaterialComposition() == MaterialComposition.Variable)
+	  {
+		  if (equipment.getApplicableMaterials() == null)
+			  return false;
+		  match = false;
+		  for (Object matObj : equipment.getApplicableMaterials())
+			  if (model.getMaterial() == (MagicalMaterial)matObj)
+				  match = true;
+		  if (!match) return false;
+	  }
 	  if (equipment instanceof IArtifactStats)
 	  {
 		  IArtifactStats stats = (IArtifactStats)equipment;
+		  match = false;
 		  if (attuneTypes != null)
 			  for (ArtifactAttuneType type : attuneTypes)
 				  if (stats.getAttuneType() == type)
-					  return true;
-		  return false;
+					  match = true;
+		  if (!match) return false;
 	  }
 	  return true;
   }

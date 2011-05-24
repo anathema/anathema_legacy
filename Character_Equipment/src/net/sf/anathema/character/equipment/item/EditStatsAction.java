@@ -19,6 +19,7 @@ import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class EditStatsAction extends SmartAction {
+  private static final long serialVersionUID = 1L;
   private final IEquipmentStatsCreationFactory factory;
   private final IResources resources;
   private final IEquipmentTemplateEditModel editModel;
@@ -67,7 +68,7 @@ public class EditStatsAction extends SmartAction {
       definedNames.add(stats.getName().getId());
     }
     String[] nameArray = definedNames.toArray(new String[definedNames.size()]);
-    IEquipmentStats equipmentStats = factory.editStats(parentComponent, resources, nameArray, selectedStats, ruleset);
+    IEquipmentStats equipmentStats = factory.editStats(parentComponent, resources, editModel, nameArray, selectedStats, ruleset);
     if (equipmentStats == null) {
       return;
     }

@@ -11,12 +11,14 @@ public interface IEquipmentStatsCreationFactory {
   public IEquipmentStats createNewStats(
       Component parentComponent,
       IResources resources,
+      IEquipmentTemplateEditModel editModel,
       String[] definedNames,
       IExaltedRuleSet ruleset);
 
   public IEquipmentStats editStats(
       Component parentComponent,
       IResources resources,
+      IEquipmentTemplateEditModel editModel,
       String[] nameArray,
       IEquipmentStats selectedStats,
       IExaltedRuleSet ruleset);

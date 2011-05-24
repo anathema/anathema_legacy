@@ -63,4 +63,10 @@ public class ProxyArtifactStats extends AbstractStats implements IArtifactStats,
 	  public String getId() {
 	    return delegate.getId();
 	  }
+	  
+	  @Override
+	  public Object[] getApplicableMaterials()
+	  {
+		  return delegate.getApplicableMaterials();
+	  }
 }

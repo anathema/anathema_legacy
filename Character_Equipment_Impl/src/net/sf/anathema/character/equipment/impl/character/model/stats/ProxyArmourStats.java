@@ -80,4 +80,10 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
   public String getId() {
     return getName().getId();
   }
+  
+  @Override
+  public Object[] getApplicableMaterials()
+  {
+	  return delegate.getApplicableMaterials();
+  }
 }
