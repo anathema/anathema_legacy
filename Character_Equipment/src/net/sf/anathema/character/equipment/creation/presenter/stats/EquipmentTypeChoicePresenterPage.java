@@ -90,6 +90,10 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     	EquipmentStatisticsType.Artifact,
     	new ArtifactStatisticsPresenterPage(resources, model, viewFactory),
     	inputListener);
+    addPage(
+        EquipmentStatisticsType.TraitModifying,
+        new TraitModifyingStatisticsPresenterPage(resources, model, viewFactory),
+        inputListener);
   }
   
   private MaterialTypesPresenterPage getMaterialsPage()
@@ -109,7 +113,8 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     addStatisticsTypeRow(properties.getDefensiveLabel(), EquipmentStatisticsType.Armor);
     addStatisticsTypeRow("", EquipmentStatisticsType.Shield); //$NON-NLS-1$
     view.addHorizontalLine();
-    addStatisticsTypeRow(properties.getOtherLabel(), EquipmentStatisticsType.Artifact);
+    addStatisticsTypeRow(properties.getOtherLabel(), EquipmentStatisticsType.TraitModifying);
+    addStatisticsTypeRow("", EquipmentStatisticsType.Artifact);
     if (editModel != null && 
     	editModel.getMaterialComposition() == MaterialComposition.Variable)
     {

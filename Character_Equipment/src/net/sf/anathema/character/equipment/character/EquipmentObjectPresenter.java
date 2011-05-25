@@ -89,10 +89,9 @@ public class EquipmentObjectPresenter implements IPresenter {
   private boolean viewFilter(IEquipmentStats equipment)
   {
 	  boolean match;
-	  if (model.getMaterialComposition() == MaterialComposition.Variable)
+	  if (model.getMaterialComposition() == MaterialComposition.Variable &&
+		  equipment.getApplicableMaterials() != null)
 	  {
-		  if (equipment.getApplicableMaterials() == null)
-			  return false;
 		  match = false;
 		  for (Object matObj : equipment.getApplicableMaterials())
 			  if (model.getMaterial() == (MagicalMaterial)matObj)

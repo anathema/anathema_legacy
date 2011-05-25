@@ -12,6 +12,7 @@ import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatis
 import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IShieldStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.ITraitModifyingStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.EquipmentTypeChoicePresenterPage;
@@ -23,6 +24,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.ArtifactSt
 import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ShieldStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
 import net.sf.anathema.character.equipment.impl.creation.EquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.impl.creation.model.EquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
@@ -31,6 +33,7 @@ import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
@@ -143,6 +146,27 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       artifactModel.getName().setText(artifactStats.getName().getId());
       artifactModel.getAttuneCostModel().setValue(artifactStats.getAttuneCost());
     }
+    else if (stats instanceof ITraitModifyingStats) {
+        ITraitModifyingStats modifierStats = (ITraitModifyingStats) stats;
+        model.setEquipmentType(EquipmentStatisticsType.TraitModifying);
+        ITraitModifyingStatisticsModel modifierModel = model.getTraitModifyingStatisticsModel();
+        modifierModel.getName().setText(modifierStats.getName().getId());
+        modifierModel.getDDVModel().setValue(modifierStats.getDDVMod());
+        modifierModel.getPDVModel().setValue(modifierStats.getPDVMod());
+        modifierModel.getMDDVModel().setValue(modifierStats.getMDDVMod());
+        modifierModel.getMPDVModel().setValue(modifierStats.getMPDVMod());
+        modifierModel.getMeleeWeaponSpeedModel().setValue(modifierStats.getMeleeSpeedMod());
+        modifierModel.getMeleeWeaponAccuracyModel().setValue(modifierStats.getMeleeAccuracyMod());
+        modifierModel.getMeleeWeaponDamageModel().setValue(modifierStats.getMeleeDamageMod());
+        modifierModel.getMeleeWeaponRateModel().setValue(modifierStats.getMeleeRateMod());
+        modifierModel.getRangedWeaponSpeedModel().setValue(modifierStats.getRangedSpeedMod());
+        modifierModel.getRangedWeaponAccuracyModel().setValue(modifierStats.getRangedAccuracyMod());
+        modifierModel.getRangedWeaponDamageModel().setValue(modifierStats.getRangedDamageMod());
+        modifierModel.getRangedWeaponRateModel().setValue(modifierStats.getRangedRateMod());
+        modifierModel.getJoinBattleModel().setValue(modifierStats.getJoinBattleMod());
+        modifierModel.getJoinDebateModel().setValue(modifierStats.getJoinDebateMod());
+        modifierModel.getJoinWarModel().setValue(modifierStats.getJoinWarMod());
+      }
     else {
       throw new NotYetImplementedException();
     }
@@ -210,6 +234,27 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
     	setName(artifactStats, artifactModel);
     	artifactStats.setAttuneCost(artifactModel.getAttuneCostModel().getValue());
     	return artifactStats;
+      case TraitModifying:
+    	TraitModifyingStats modifierStats = new TraitModifyingStats();
+    	applyCommon(modifierStats, model);
+    	ITraitModifyingStatisticsModel modifierModel = model.getTraitModifyingStatisticsModel();
+    	setName(modifierStats, modifierModel);
+    	modifierStats.setDDVMod(modifierModel.getDDVModel().getValue());
+    	modifierStats.setPDVMod(modifierModel.getPDVModel().getValue());
+    	modifierStats.setMDDVMod(modifierModel.getMDDVModel().getValue());
+    	modifierStats.setMPDVMod(modifierModel.getMPDVModel().getValue());
+    	modifierStats.setMeleeSpeedMod(modifierModel.getMeleeWeaponSpeedModel().getValue());
+    	modifierStats.setMeleeAccuracyMod(modifierModel.getMeleeWeaponAccuracyModel().getValue());
+    	modifierStats.setMeleeDamageMod(modifierModel.getMeleeWeaponDamageModel().getValue());
+    	modifierStats.setMeleeRateMod(modifierModel.getMeleeWeaponRateModel().getValue());
+    	modifierStats.setRangedSpeedMod(modifierModel.getRangedWeaponSpeedModel().getValue());
+    	modifierStats.setRangedAccuracyMod(modifierModel.getRangedWeaponAccuracyModel().getValue());
+    	modifierStats.setRangedDamageMod(modifierModel.getRangedWeaponDamageModel().getValue());
+    	modifierStats.setRangedRateMod(modifierModel.getRangedWeaponRateModel().getValue());
+    	modifierStats.setJoinBattleMod(modifierModel.getJoinBattleModel().getValue());
+    	modifierStats.setJoinDebateMod(modifierModel.getJoinDebateModel().getValue());
+    	modifierStats.setJoinWarMod(modifierModel.getJoinWarModel().getValue());
+    	return modifierStats;
     }
     return null;
   }

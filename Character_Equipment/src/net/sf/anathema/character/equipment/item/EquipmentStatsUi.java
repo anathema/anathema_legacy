@@ -8,6 +8,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
@@ -60,6 +61,8 @@ public final class EquipmentStatsUi implements IObjectUi {
     }
     if (value instanceof IArtifactStats)
       return equipmentUI.getStandardIcon(EquipmentStatisticsType.Artifact);
+    if (value instanceof ITraitModifyingStats)
+        return equipmentUI.getStandardIcon(EquipmentStatisticsType.TraitModifying);
     throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong."); //$NON-NLS-1$
   }
 }
