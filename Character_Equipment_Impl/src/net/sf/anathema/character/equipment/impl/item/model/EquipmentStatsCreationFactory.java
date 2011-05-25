@@ -145,6 +145,8 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       IArtifactStatisticsModel artifactModel = model.getArtifactStatisticsModel();
       artifactModel.getName().setText(artifactStats.getName().getId());
       artifactModel.getAttuneCostModel().setValue(artifactStats.getAttuneCost());
+      artifactModel.getForeignAttunementModel().setValue(artifactStats.allowForeignAttunement());
+      artifactModel.getRequireAttunementModel().setValue(artifactStats.requireAttunementToUse());
     }
     else if (stats instanceof ITraitModifyingStats) {
         ITraitModifyingStats modifierStats = (ITraitModifyingStats) stats;
@@ -233,6 +235,8 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
     	IArtifactStatisticsModel artifactModel = model.getArtifactStatisticsModel();
     	setName(artifactStats, artifactModel);
     	artifactStats.setAttuneCost(artifactModel.getAttuneCostModel().getValue());
+    	artifactStats.setAllowForeignAttunement(artifactModel.getForeignAttunementModel().getValue());
+    	artifactStats.setRequireAttunement(artifactModel.getRequireAttunementModel().getValue());
     	return artifactStats;
       case TraitModifying:
     	TraitModifyingStats modifierStats = new TraitModifyingStats();

@@ -3,23 +3,18 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.lib.util.Identificate;
 
 public class ArtifactStatsDecorator extends AbstractStats implements IArtifactStats
 {
 	  private IArtifactStats stats;
 	  private ArtifactAttuneType type;
+	  private boolean requireAttune;
 
-	  public ArtifactStatsDecorator(IArtifactStats stats, ArtifactAttuneType type) {
+	  public ArtifactStatsDecorator(IArtifactStats stats, ArtifactAttuneType type, boolean requireAttune) {
 	    this.stats = stats;
 	    this.type = type;
+	    this.requireAttune = requireAttune;
 	    setName(stats.getName());
-	  }
-
-	  public ArtifactStatsDecorator(IArtifactStats stats, String name) {
-	    this.stats = stats;
-	    this.type = ArtifactAttuneType.Unattuned;
-	    setName(new Identificate(name));
 	  }
 	  
 	  public Integer getAttuneCost()
@@ -38,6 +33,16 @@ public class ArtifactStatsDecorator extends AbstractStats implements IArtifactSt
 		{
 			return type;
 		}
+		
+	  public boolean allowForeignAttunement()
+	  {
+		  return true;
+	  }
+	  
+	  public boolean requireAttunementToUse()
+	  {
+		  return requireAttune;
+	  }
 
 	  public IEquipmentStats[] getViews() {
 	    return new IEquipmentStats[] { this };

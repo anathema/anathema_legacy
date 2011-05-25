@@ -13,6 +13,8 @@ public interface IEquipmentObjectView {
   public BooleanModel addStats(String description);
   
   public void updateStatText(BooleanModel model, String newText);
+  
+  public void setEnabled(BooleanModel model, boolean enabled);
 
   public void addAction(Action action);
 }
