@@ -32,6 +32,9 @@ public abstract class AbstractStats implements IEquipmentStats {
   
   public Object[] getApplicableMaterials()
   {
+	  if (materials != null &&
+		  materials.length == MagicalMaterial.values().length)
+		  return null;
 	  return materials;
   }
   
