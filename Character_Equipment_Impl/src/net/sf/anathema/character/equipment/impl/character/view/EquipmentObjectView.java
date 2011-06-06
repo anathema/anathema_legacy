@@ -47,6 +47,11 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
   {
 	  boxes.get(model).setText(newText);
   }
+  
+  public void setEnabled(BooleanModel model, boolean enabled)
+  {
+	  boxes.get(model).setEnabled(enabled);
+  }
 
   public JTaskPaneGroup getTaskGroup() {
     return taskGroup;

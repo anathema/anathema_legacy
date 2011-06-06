@@ -32,6 +32,10 @@ public class EquipmentTypeChoiceProperties {
   public String getOtherLabel() {
 	return resources.getString("Equipment.Creation.SelectType.OtherLabel") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
   }
+  
+  public String getMaterialToggleLabel() {
+	return resources.getString("Equipment.Creation.SelectType.MaterialToggle"); //$NON-NLS-1$    
+  }
 
   public String getTypeChoiceTitle() {
     return resources.getString("Equipment.Creation.SelectType.PageTitle"); //$NON-NLS-1$

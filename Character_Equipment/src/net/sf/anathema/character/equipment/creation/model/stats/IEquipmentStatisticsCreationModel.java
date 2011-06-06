@@ -16,10 +16,14 @@ public interface IEquipmentStatisticsCreationModel {
   public IArmourStatisticsModel getArmourStatisticsModel();
   
   public IArtifactStatisticsModel getArtifactStatisticsModel();
+  
+  public ITraitModifyingStatisticsModel getTraitModifyingStatisticsModel();
 
   public void addEquipmentTypeChangeListener(IChangeListener changeListener);
 
   public boolean isEquipmentTypeSelected(EquipmentStatisticsType type);
+  
+  public IApplicableMaterialsModel getApplicableMaterialsModel();
 
   public IWeaponTagsModel getWeaponTagsModel();
 

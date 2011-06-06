@@ -17,7 +17,7 @@ public class EquipmentStatisticsCreationWizardDemo extends SwingDemoCase {
     AnathemaResources resources = new AnathemaResources();
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(new String[0], ExaltedRuleSet.SecondEdition);
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
-    EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, viewFactory);
+    EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, null, viewFactory);
     WizardDialog dialog = new AnathemaWizardDialog(createParentComponent(), startPage);
     show(dialog.getConfiguredDialog().getWindow());
   }

@@ -55,6 +55,16 @@ public class ShieldStatsDecorationFactory implements IEquipmentStatsDecorationFa
 	{
 		return stats.useAttunementModifiers();
 	}
+	
+	public Object[] getApplicableMaterials()
+	{
+		return stats.getApplicableMaterials();
+	}
+	
+	public void setApplicableMaterials(Object[] materials)
+	{
+		stats.setApplicableMaterials(materials);
+	}
     };
   }
 
