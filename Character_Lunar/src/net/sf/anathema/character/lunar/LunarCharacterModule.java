@@ -17,6 +17,7 @@ import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroun
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificCharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
+import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;

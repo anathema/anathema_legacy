@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration;
@@ -83,8 +84,7 @@ public class CharacterStatistics implements ICharacterStatistics {
     this.concept = initConcept();
     this.traitConfiguration = new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry());
     new CharacterTraitListening(traitConfiguration, context.getCharacterListening()).initListening();
-    ITrait toughnessTrait = getTraitConfiguration().getTrait(template.getToughnessControllingTraitType());
-    this.health = new HealthConfiguration(toughnessTrait, traitConfiguration);
+    this.health = new HealthConfiguration(this, traitConfiguration, template.getBaseHealthProviders());
     this.charms = new CharmConfiguration(health, context, generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
     this.essencePool = new EssencePoolConfiguration(

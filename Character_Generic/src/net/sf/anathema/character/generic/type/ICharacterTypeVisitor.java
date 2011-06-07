@@ -11,6 +11,10 @@ public interface ICharacterTypeVisitor {
   public void visitDB(ICharacterType visitedType);
 
   public void visitAbyssal(ICharacterType visitedType);
+  
+  public void visitSpirit(ICharacterType type);
+  
+  public void visitGhost(ICharacterType type);
 
   public void visitDragonKing(ICharacterType type);
 

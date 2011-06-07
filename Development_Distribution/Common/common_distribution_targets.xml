@@ -22,10 +22,13 @@
 		<buildAnathemaPlugin module.name="character_martialarts" projectset="Character_MartialArts" />
 		<buildAnathemaPlugin module.name="character_mortal" projectset="Character_Mortal" />
 		<buildAnathemaPlugin module.name="character_solar" projectset="Character_Solar" />
+		<buildAnathemaPlugin module.name="character_spirit" projectset="Character_Spirit" />
+		<buildAnathemaPlugin module.name="character_ghost" projectset="Character_Ghost" />
 		<buildAnathemaPlugin module.name="character_db" projectset="Character_Db" />
 		<buildAnathemaPlugin module.name="character_lunar" projectset="Character_Lunar" />
 		<buildAnathemaPlugin module.name="character_abyssal" projectset="Character_Abyssal" />
 		<buildAnathemaPlugin module.name="character_sidereal" projectset="Character_Sidereal" />
+		<buildAnathemaPlugin module.name="character_godblooded" projectset="Character_Godblooded" />
 		<buildAnathemaPlugin module.name="plot" projectset="Campaign_Plot" />
 		<buildAnathemaPlugin module.name="music" projectset="Campaign_Music,Campaign_Music_Impl" />
 		<buildAnathemaPlugin module.name="charmcascades" projectset="Charm_Cascades" />

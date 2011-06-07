@@ -32,6 +32,8 @@ public interface ICharacterTemplate extends ICharacterExternalsTemplate {
   public ITraitTemplateCollection getTraitTemplateCollection();
 
   public ITraitType getToughnessControllingTraitType();
+  
+  public String[] getBaseHealthProviders();
 
   public IAdditionalTemplate[] getAdditionalTemplates();
 

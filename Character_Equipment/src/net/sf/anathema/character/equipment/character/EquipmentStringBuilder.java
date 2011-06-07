@@ -82,6 +82,7 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
 	  {
 	  case Unattuned:
 	  case PartiallyAttuned:
+	  case ExpensivePartiallyAttuned:
 		  return false;
 	  default:
 	  case FullyAttuned:

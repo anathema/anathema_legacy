@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+    blessings.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Scott D. Olson (scottolson275@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist>
+	<!-- Spirit Blessings -->
+	<charm id="Spirit.Benefaction" exalt="Spirit" group="Blessings">
+		<prerequisite>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+		   <essence cost="5"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.ElementDragonsEmbrace" exalt="Spirit" group="Blessings">
+		<prerequisite>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			<essence cost="10" />
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Elemental" visualize="true"/>
+		<charmAttribute attribute="Holy" visualize="true"/>
+		<charmAttribute attribute="Emotion" visualize="true"/>
+		<charmAttribute attribute="Illusion" visualize="true"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Sickness" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.Endowment" exalt="Spirit" group="Blessings">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<essence cost="Varies"/>
+			<willpower cost="1"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.EyeOfInspiration" exalt="Spirit" group="Blessings">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<essence cost="15"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.SignetOfAuthority" exalt="Spirit" group="Blessings">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<essence cost="5"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Reflexive">
+			<special primaryStep="1"/>
+		</charmtype>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.TouchOfDivinity" exalt="Spirit" group="Blessings">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<essence cost="3" text="+"/>
+			<willpower cost="1"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.TouchOfEternity" exalt="Spirit" group="Blessings">
+		<prerequisite>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			<essence cost="10"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.TouchOfGrace" exalt="Spirit" group="Blessings">
+		<prerequisite>
+			<essence value="4"/>
+		</prerequisite>
+		<cost>
+			<essence cost="3" text="+"/>
+			<willpower cost="1"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<charmAttribute attribute="Touch" visualize="true"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+</charmlist>

@@ -24,6 +24,7 @@ public class ArtifactStatsDecorator extends AbstractStats implements IArtifactSt
 		  default:
 		  case Unattuned: return 0;
 		  case PartiallyAttuned: return stats.getAttuneCost();
+		  case ExpensivePartiallyAttuned: return 2 * stats.getAttuneCost();
 		  case FullyAttuned: return stats.getAttuneCost();
 		  case UnharmoniouslyAttuned: return 2 * stats.getAttuneCost();
 		  }

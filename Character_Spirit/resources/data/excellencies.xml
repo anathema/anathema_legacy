@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<charmlist>
+	<!-- Spirit Generics -->
+	<genericCharm id="Spirit.1stExcellency" exalt="Spirit">
+		<prerequisite>
+			<trait value="1"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			<essence cost="1" text="per die"/>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive">
+			<special primaryStep="1" secondaryStep="2"/>
+		</charmtype>
+		<combo>
+			<restrictions>
+				<genericCharmReference id="Spirit.3rdExcellency"/>
+			</restrictions>
+		</combo>
+		<genericCharmAttribute attribute="Excellency"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Combo-OK" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</genericCharm>
+	<genericCharm id="Spirit.2ndExcellency" exalt="Spirit">
+		<prerequisite>
+			<trait value="1"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			<essence cost="2" text="per success"/>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive">
+			<special primaryStep="1" secondaryStep="2"/>
+		</charmtype>
+			<combo>
+			<restrictions>
+				<genericCharmReference id="Spirit.3rdExcellency"/>
+			</restrictions>
+		</combo>
+		<genericCharmAttribute attribute="Excellency"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Combo-OK" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</genericCharm>
+	<genericCharm id="Spirit.3rdExcellency" exalt="Spirit">
+		<prerequisite>
+			<trait value="1"/>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			<essence cost="4"/>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive">
+			<special primaryStep="4" secondaryStep="6"/>
+		</charmtype>
+		<genericCharmAttribute attribute="Excellency"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Combo-OK" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</genericCharm>
+	<genericCharm id="Spirit.InfiniteMastery" exalt="Spirit">
+		<prerequisite>
+			<trait value="4"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<essence cost="2" text="or more"/>
+			<willpower cost="1"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</genericCharm>
+	<genericCharm id="Spirit.DivineSubordination" exalt="Spirit">
+		<prerequisite>
+			<trait value="5"/>
+			<essence value="5"/>
+		</prerequisite>
+		<cost>
+			<essence cost="5"/>
+			<willpower cost="1"/>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</genericCharm>
+</charmlist>

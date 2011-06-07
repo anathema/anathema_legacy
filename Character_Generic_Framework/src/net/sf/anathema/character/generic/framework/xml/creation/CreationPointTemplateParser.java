@@ -4,6 +4,8 @@ import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateP
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
+import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
+import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -15,6 +17,7 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
   private static final String ATTRIB_FAVORED = "favored"; //$NON-NLS-1$
   private static final String ATTRIB_FAVORED_PICKS = "favoredPicks"; //$NON-NLS-1$
   private static final String ATTRIB_FAVORED_DOTS = "favoredDots"; //$NON-NLS-1$
+  private static final String ATTRIB_GENERIC_DOTS = "genericDots";
   private static final String ATTRIB_UNIQUE = "unique"; //$NON-NLS-1$
   private static final String ATTRIB_GENERAL = "general"; //$NON-NLS-1$
   private static final String ATTRIB_PRIMARY = "primary"; //$NON-NLS-1$
@@ -27,13 +30,25 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
   private static final String TAG_SPECIALTY_DOTS = "specialtyDots"; //$NON-NLS-1$
   private static final String TAG_VIRTUE_DOTS = "virtueDots"; //$NON-NLS-1$
   private static final String TAG_BONUS_POINTS = "bonusPoints"; //$NON-NLS-1$
+  private static final String TAG_USES = "uses";
 
   public CreationPointTemplateParser(IXmlTemplateRegistry<GenericCreationPoints> templateRegistry) {
     super(templateRegistry);
   }
 
   public GenericCreationPoints parseTemplate(Element element) throws PersistenceException {
-    GenericCreationPoints creationPoints = new GenericCreationPoints();
+	GenericCreationPoints creationPoints = new GenericCreationPoints();
+	  
+    String uses = element.attributeValue(TAG_USES);
+	if (uses != null)
+	{
+	  	try {
+			creationPoints = (GenericCreationPoints) Class.forName(uses).newInstance();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+    
     parseAttributeCreationPoints(element.element(TAG_ATTRIBUTE_DOTS), creationPoints);
     parseAbilityCreationPoints(element.element(TAG_ABILITY_DOTS), creationPoints);
     parseCharmCreationPoints(element.element(TAG_CHARM_PICKS), creationPoints);
@@ -61,6 +76,17 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
     if (element == null) {
       return;
     }
+    String uses = element.attributeValue(TAG_USES);
+    if (uses != null)
+    {
+    	try {
+			IAbilityCreationPoints loadedClass = (IAbilityCreationPoints) Class.forName(uses).newInstance();
+			creationPoints.setAbilityCreationPoints(loadedClass);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return;
+    }
     int generalDots = ElementUtilities.getIntAttrib(element, ATTRIB_GENERAL, 0);
     int favoredDots = ElementUtilities.getIntAttrib(element, ATTRIB_FAVORED, 0);
     int favoredPicks = ElementUtilities.getIntAttrib(element, ATTRIB_FAVORED_PICKS, 0);
@@ -72,13 +98,25 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
     if (element == null) {
       return;
     }
+    String uses = element.attributeValue(TAG_USES);
+    if (uses != null)
+    {
+    	try {
+			IAttributeCreationPoints loadedClass = (IAttributeCreationPoints) Class.forName(uses).newInstance();
+			creationPoints.setAttributeCreationPoints(loadedClass);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return;
+    }
     int primaryDots = ElementUtilities.getIntAttrib(element, ATTRIB_PRIMARY, 0);
     int secondaryDots = ElementUtilities.getIntAttrib(element, ATTRIB_SECONDARY, 0);
     int tertiaryDots = ElementUtilities.getIntAttrib(element, ATTRIB_TERTIARY, 0);
     int favoredPicks = ElementUtilities.getIntAttrib(element, ATTRIB_FAVORED_PICKS, 0);
     int favoredDots = ElementUtilities.getIntAttrib(element, ATTRIB_FAVORED_DOTS, 0);
+    int genericDots = ElementUtilities.getIntAttrib(element, ATTRIB_GENERIC_DOTS, 0);
     creationPoints.setAttributeCreationPoints(new AttributeCreationPoints(primaryDots, secondaryDots, tertiaryDots,
-    		favoredPicks, favoredDots));
+    		favoredPicks, favoredDots, genericDots));
   }
 
   private int getCountAttribute(Element element) throws PersistenceException {

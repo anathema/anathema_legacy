@@ -15,7 +15,7 @@ public class FavoredAttributeDotBonusModel extends AbstractSpendingModel {
   }
 
   public Integer getValue() {
-    return attributeCalculator.getExtraDotsSpent();
+    return attributeCalculator.getExtraFavoredDotsSpent();
   }
 
   public int getSpentBonusPoints() {
@@ -23,6 +23,6 @@ public class FavoredAttributeDotBonusModel extends AbstractSpendingModel {
   }
 
   public int getAlotment() {
-    return creationPoints.getAttributeCreationPoints().getExtraDotCount();
+    return creationPoints.getAttributeCreationPoints().getExtraFavoredDotCount();
   }
 }

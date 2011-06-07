@@ -40,4 +40,9 @@ public class TestCreationPoints extends AbstractCreationPoints {
 	    return 0;
   }
   
+  public void informTraits(Object traits)
+  {
+	  //do nothing
+  }
+  
 }

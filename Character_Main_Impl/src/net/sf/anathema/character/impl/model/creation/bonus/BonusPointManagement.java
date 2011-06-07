@@ -22,6 +22,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeBo
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeCostCalculator;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.FavoredAttributeDotBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.FavoredAttributePickModel;
+import net.sf.anathema.character.impl.model.creation.bonus.attribute.GenericAttributeDotBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.backgrounds.BackgroundBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.backgrounds.BackgroundBonusPointCostCalculator;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.DefaultCharmModel;
@@ -110,6 +111,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     this.combos = statistics.getCombos();
     this.willpower = TraitCollectionUtilities.getWillpower(traitConfiguration);
     this.essence = TraitCollectionUtilities.getEssence(traitConfiguration);
+    
+    creationPoints.informTraits(statistics);
   }
 
   public void recalculate() {
@@ -175,7 +178,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   public ISpendingModel getDefaultAbilityModel() {
-    return new DefaultAbilityBonusModel(abilityCalculator, creationPoints);
+    return new DefaultAbilityBonusModel(abilityCalculator, creationPoints, statistics);
   }
 
   public ISpendingModel getFavoredAbilityModel() {
@@ -191,12 +194,17 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   public ISpendingModel getAttributeModel(final AttributeGroupPriority priority) {
-    return new AttributeBonusModel(attributeCalculator, priority, creationPoints);
+    return new AttributeBonusModel(attributeCalculator, priority, creationPoints, statistics);
   }
   
   public ISpendingModel getFavoredAttributeDotModel()
   {
 	  return new FavoredAttributeDotBonusModel(attributeCalculator, creationPoints);
+  }
+  
+  public ISpendingModel getGenericAttributeDotModel(boolean isExtraDots)
+  {
+	  return new GenericAttributeDotBonusModel(attributeCalculator, creationPoints, isExtraDots);
   }
 
   public ISpendingModel getFavoredAttributePickModel()
@@ -255,13 +263,22 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   public IOverviewModel[] getAllModels() {
     List<IOverviewModel> models = new ArrayList<IOverviewModel>();
-    models.add(getAttributeModel(AttributeGroupPriority.Primary));
-    models.add(getAttributeModel(AttributeGroupPriority.Secondary));
-    models.add(getAttributeModel(AttributeGroupPriority.Tertiary));
+    
+    boolean showingAttributeGroups = false;    
+    if (getAttributeModel(AttributeGroupPriority.Primary).getAlotment() > 0)
+    {
+	    models.add(getAttributeModel(AttributeGroupPriority.Primary));
+	    models.add(getAttributeModel(AttributeGroupPriority.Secondary));
+	    models.add(getAttributeModel(AttributeGroupPriority.Tertiary));
+	    showingAttributeGroups = true;
+    }
+    
     if (getFavoredAttributePickModel().getAlotment() > 0)
     	models.add(getFavoredAttributePickModel());
     if (getFavoredAttributeDotModel().getAlotment() > 0)
     	models.add(getFavoredAttributeDotModel());
+    if (getGenericAttributeDotModel(showingAttributeGroups).getAlotment() > 0)
+    	models.add(getGenericAttributeDotModel(showingAttributeGroups));
     models.add(getFavoredAbilityPickModel());
     if (getFavoredAbilityModel().getAlotment() > 0)
     	models.add(getFavoredAbilityModel());

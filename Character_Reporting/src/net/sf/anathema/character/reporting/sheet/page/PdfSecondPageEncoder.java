@@ -64,7 +64,8 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
     }
     if (character.getTemplate().getEdition() == ExaltedEdition.SecondEdition) {
       float genericCharmsHeight = encodeGenericCharms(directContent, character, distanceFromTop);
-      distanceFromTop += genericCharmsHeight + IVoidStateFormatConstants.PADDING;
+      if (genericCharmsHeight != 0)
+    	  distanceFromTop += genericCharmsHeight + IVoidStateFormatConstants.PADDING;
     }
 
     float remainingHeight = configuration.getContentHeight() - distanceFromTop;
@@ -132,11 +133,16 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
 
   private float encodeGenericCharms(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop)
       throws DocumentException {
-    float height = 55 + character.getGenericCharmStats().length * 11;
-    Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    IPdfContentBoxEncoder encoder = new PdfGenericCharmEncoder(resources, baseFont);
-    boxEncoder.encodeBox(directContent, encoder, character, bounds);
-    return height;
+	if (character.getGenericCharmStats().length > 0)
+	{
+	    float height = 55 + character.getGenericCharmStats().length * 11;
+	    Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
+	    IPdfContentBoxEncoder encoder = new PdfGenericCharmEncoder(resources, baseFont);
+	    boxEncoder.encodeBox(directContent, encoder, character, bounds);
+	    return height;
+	}
+	else
+		return 0;
   }
 
   private float encodeCharms(

@@ -45,6 +45,18 @@ public enum CharacterType implements ICharacterType {
       visitor.visitSidereal(this);
     }
   },
+  SPIRIT("Spirit") {//$NON-NLS-1$
+	    @Override
+	    public void accept(ICharacterTypeVisitor visitor) {
+	      visitor.visitSpirit(this);
+	    }
+	  },
+  GHOST("Ghost") {//$NON-NLS-1$
+		    @Override
+		    public void accept(ICharacterTypeVisitor visitor) {
+		      visitor.visitGhost(this);
+		    }
+		  },
   MORTAL("Mortal") {//$NON-NLS-1$
     @Override
     public void accept(ICharacterTypeVisitor visitor) {

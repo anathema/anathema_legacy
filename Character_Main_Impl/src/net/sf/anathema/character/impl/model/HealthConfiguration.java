@@ -7,6 +7,8 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.health.IHealthLevelTypeVisitor;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.health.IHealthLevelProvider;
 import net.sf.anathema.character.model.health.IOxBodyTechniqueArbitrator;
@@ -24,11 +26,28 @@ public class HealthConfiguration implements IHealthConfiguration {
 	  this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTrait);
   }
   
-  public HealthConfiguration(IGenericTrait toughnessControllingTrait,
-		  ICoreTraitConfiguration config) {
-    this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTrait);
+  public HealthConfiguration(ICharacterStatistics statistics,
+		  ICoreTraitConfiguration config,
+		  String[] providers) {
+	ITrait toughnessTrait = statistics.getTraitConfiguration().
+		getTrait(statistics.getCharacterTemplate().getToughnessControllingTraitType());
+    this.arbitrator = new OxBodyTechniqueArbitrator(toughnessTrait);
     
     addHealthLevelProvider(new DyingStaminaHealthLevelProvider(config));
+    
+    if (providers == null) return;
+    for (String providerString : providers)
+    {
+    	Class<?> loadedClass;
+		try {
+			loadedClass = Class.forName(providerString);
+			IHealthLevelProvider provider = (IHealthLevelProvider)
+    			loadedClass.getConstructors()[0].newInstance(statistics);
+			addHealthLevelProvider(provider);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
   }
 
   public void addHealthLevelProvider(IHealthLevelProvider provider) {

@@ -32,6 +32,7 @@
           <cost />
           <duration duration="Instant" />
           <charmtype type="Permanent" />
+        <charmAttribute attribute="MartialArts"/>
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Exclusive" />
           <charmAttribute attribute="Obvious" visualize="true" />
@@ -51,6 +52,7 @@
           <charmtype type="Reflexive">
                <special primaryStep="2" />
           </charmtype>
+          <charmAttribute attribute="MartialArts"/>
 		<charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Counterattack" visualize="true" />
@@ -67,6 +69,7 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+        <charmAttribute attribute="MartialArts"/>
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Exclusive" />
           <charmAttribute attribute="Obvious" visualize="true" />

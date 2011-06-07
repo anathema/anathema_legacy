@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+    relocations.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Scott D. Olson (scottolson275@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist>
+	<!-- Spirit Relocations -->
+	<charm id="Spirit.Banish" exalt="Spirit" group="Relocations">
+		<prerequisite>
+			<essence value="4"/>
+		</prerequisite>
+		<cost>
+		   <essence cost="12"/>
+		   <willpower cost="1"/>
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.Capture" exalt="Spirit" group="Relocations">
+		<prerequisite>
+			<essence value="5"/>
+		</prerequisite>
+		<cost>
+		   <essence cost="16"/>
+		   <willpower cost="1"/>
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.EmergencyPrayerRelocation" exalt="Spirit" group="Relocations">
+		<prerequisite>
+			<essence value="4"/>
+		</prerequisite>
+		<cost>
+			<essence cost="10"/>
+			<willpower cost="1"/>
+		</cost>
+		<duration duration="Variable"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.LandscapeTravel" exalt="Spirit" group="Relocations">
+		<prerequisite>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			<essence cost="4"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Reflexive"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Combo-OK" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.LoomStride" exalt="Spirit" group="Relocations">
+		<prerequisite>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			<essence cost="4"/>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Combo-OK" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.Portal" exalt="Spirit" group="Relocations">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<essence cost="8"/>
+			<willpower cost="1"/>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Shaping" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+	<charm id="Spirit.StormShuttlePassport" exalt="Spirit" group="Relocations">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<essence cost="8"/>
+			<willpower cost="1"/>
+		</cost>
+		<duration duration="TenMinusConviction"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<source source="GodsAndElementals"/>
+	</charm>
+</charmlist>

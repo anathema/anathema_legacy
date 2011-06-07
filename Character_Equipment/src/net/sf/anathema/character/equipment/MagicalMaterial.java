@@ -54,6 +54,23 @@ public enum MagicalMaterial implements IIdentificate {
 		public void visitSolar(ICharacterType visitedType) {
 			types[0] = getSingleMaterialAttunement(type, material);
 		}
+
+		@Override
+		public void visitGhost(ICharacterType type) {
+			if (material == MagicalMaterial.Orichalcum ||
+				material == MagicalMaterial.Moonsilver ||
+				material == MagicalMaterial.Starmetal)
+				types[0] = new ArtifactAttuneType[]
+				    { ArtifactAttuneType.Unattuned, ArtifactAttuneType.ExpensivePartiallyAttuned };
+			else
+				types[0] = new ArtifactAttuneType[]
+				    { ArtifactAttuneType.Unattuned, ArtifactAttuneType.PartiallyAttuned };
+		}
+
+		@Override
+		public void visitSpirit(ICharacterType type) {
+			types[0] = null;
+		}
 	  });
 	  
 	  return types[0];
@@ -85,6 +102,15 @@ public enum MagicalMaterial implements IIdentificate {
 
       public void visitMortal(ICharacterType visitedType) {
         // nothing to do
+      }
+      
+      public void visitSpirit(ICharacterType visitedType) {
+          // nothing to do
+        }
+      
+      public void visitGhost(ICharacterType visitedType)
+      {
+    	  // nothing to do
       }
 
       public void visitLunar(ICharacterType type) {
