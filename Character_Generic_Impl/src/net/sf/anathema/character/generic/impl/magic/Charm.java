@@ -312,24 +312,29 @@ public class Charm extends Identificate implements ICharm {
     if (getPrerequisites().length <= 0) {
       return false;
     }
+    	
     final boolean[] characterCanFavorMagicOfPrimaryType = new boolean[1];
     final ITraitType primaryTraitType = getPrimaryTraitType();
-    basicCharacter.getCharacterType().getFavoringTraitType().accept(new IFavoringTraitTypeVisitor() {
-      public void visitAbilityType(FavoringTraitType visitedType) {
-        characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AbilityType;
-      }
+    if (hasAttribute(new Identificate("MartialArts")) &&
+    	((IFavorableGenericTrait)traitCollection.getTrait(AbilityType.MartialArts)).isCasteOrFavored())
+    	return true;
 
-      public void visitAttributeType(FavoringTraitType visitedType) {
-        characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AttributeType;
-      }
-      
-      public void visitVirtueType(FavoringTraitType visitedType) {
-          characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof VirtueType;
-        }
-    });
-    if (characterCanFavorMagicOfPrimaryType[0] == false) {
-      return false;
-    }
+    basicCharacter.getCharacterType().getFavoringTraitType().accept(new IFavoringTraitTypeVisitor() {
+	    public void visitAbilityType(FavoringTraitType visitedType) {
+	      characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AbilityType;
+	    }
+	
+	    public void visitAttributeType(FavoringTraitType visitedType) {
+	      characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AttributeType;
+	    }
+	      
+	    public void visitVirtueType(FavoringTraitType visitedType) {
+	        characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof VirtueType;
+	      }
+	  });
+	  if (characterCanFavorMagicOfPrimaryType[0] == false) {
+	    return false;
+	  }
     IGenericTrait trait = traitCollection.getTrait(primaryTraitType);
     return trait instanceof IFavorableGenericTrait && ((IFavorableGenericTrait) trait).isCasteOrFavored();
   }
