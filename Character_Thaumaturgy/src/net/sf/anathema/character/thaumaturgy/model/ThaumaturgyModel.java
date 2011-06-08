@@ -75,14 +75,14 @@ public class ThaumaturgyModel implements IThaumaturgyModel {
   }
   
   public void setCurrentProcedure(String name) {
-	    this.currentProcedureName = name;
-	    control.fireChangedEvent();
-	  }
+    this.currentProcedureName = name;
+    control.fireChangedEvent();
+  }
   
   public void setCurrentType(ThaumaturgyMagicType type) {
-	    this.currentType = type;
-	    control.fireChangedEvent();
-	  }
+    this.currentType = type;
+    control.fireChangedEvent();
+  }
   
   public IDefaultTrait getProcedureControl()
   {
@@ -166,19 +166,19 @@ public class ThaumaturgyModel implements IThaumaturgyModel {
   public boolean isEntryComplete() {
 	switch (currentType)
 	{
-	default:
-	case Degree:
+	  default:
+	  case Degree:
 		return !StringUtilities.isNullOrEmpty(currentArtName);
-	case Procedure:
+	  case Procedure:
 		return !StringUtilities.isNullOrEmpty(currentArtName) &&
-			!StringUtilities.isNullOrEmpty(currentProcedureName) &&
-			procedureControl.getCurrentValue() > 0;
+               !StringUtilities.isNullOrEmpty(currentProcedureName) &&
+               procedureControl.getCurrentValue() > 0;
 	}
   }
   
   public void addChangeListener(IChangeListener listener) {
-	    bonusControl.addChangeListener(listener);
-	  }
+	bonusControl.addChangeListener(listener);
+  }
 
   public boolean isExperienced() {
     return context.getBasicCharacterContext().isExperienced();

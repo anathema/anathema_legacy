@@ -321,6 +321,7 @@ public class ThaumaturgyPresenter implements IPresenter {
     magicView.addDeleteListener(new IChangeListener() {
       public void changeOccured() {
     	model.removeMagic(magic);
+    	model.recalculate();
     	magicView.delete();
       }
     });
