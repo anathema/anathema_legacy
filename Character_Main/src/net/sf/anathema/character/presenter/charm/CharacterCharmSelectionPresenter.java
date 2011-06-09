@@ -78,8 +78,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     this.view = factory.createCharmSelectionView(viewProperties);
   }
 
-  @SuppressWarnings("deprecation")
-public void initPresentation() {
+  public void initPresentation() {
     final ICharmConfiguration charms = getCharmConfiguration();
     boolean alienCharms = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(
         statistics.getCharacterConcept().getCaste().getType());

@@ -66,8 +66,7 @@ public class GhostPassionsConfigurationView implements IGhostPassionsConfigurati
 	    return new OverviewCategory(overviewPanel, borderLabel, false);
 	  }
 
-	  @SuppressWarnings("deprecation")
-	public void setOverview(IOverviewCategory overview) {
+	  public void setOverview(IOverviewCategory overview) {
 	    overviewPanel.removeAll();
 	    overviewPanel.add(overview.getComponent());
 	  }

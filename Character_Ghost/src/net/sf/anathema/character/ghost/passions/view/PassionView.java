@@ -39,8 +39,7 @@ public class PassionView extends AbstractTraitView implements IPassionView {
     abilityLabel = new JLabel(labelText);
   }
 
-  @SuppressWarnings("deprecation")
-public void addComponents(JPanel panel) {
+  public void addComponents(JPanel panel) {
     this.traitPanel = panel;
     panel.add(abilityLabel);
     panel.add(separatorLabel);
@@ -66,8 +65,7 @@ public void addComponents(JPanel panel) {
     control.fireChangedEvent();
   }
 
-  @SuppressWarnings("deprecation")
-public void delete() {
+  public void delete() {
     traitPanel.remove(abilityLabel);
     traitPanel.remove(separatorLabel);
     traitPanel.remove(passionLabel);

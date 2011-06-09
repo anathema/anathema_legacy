@@ -41,7 +41,7 @@ public class ThaumaturgyMagicView extends AbstractTraitView implements IThaumatu
     artLabel = new JLabel(labelText);
   }
 
-  @SuppressWarnings({ "deprecation", "serial" })
+  @SuppressWarnings("serial")
   public void addComponents(JPanel panel) {
     this.traitPanel = panel;
     panel.add(artLabel);
@@ -72,7 +72,6 @@ public class ThaumaturgyMagicView extends AbstractTraitView implements IThaumatu
     control.fireChangedEvent();
   }
 
-  @SuppressWarnings("deprecation")
   public void delete() {
     traitPanel.remove(artLabel);
 	if (procedureLabel != null) {

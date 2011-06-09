@@ -40,8 +40,8 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
     abilityLabel = new JLabel(labelText);
   }
 
-  @SuppressWarnings({ "deprecation", "serial" })
-public void addComponents(JPanel panel) {
+  @SuppressWarnings("serial")
+  public void addComponents(JPanel panel) {
     this.traitPanel = panel;
     panel.add(abilityLabel);
     panel.add(separatorLabel);

@@ -35,8 +35,7 @@ public class FetterView extends AbstractTraitView implements IFetterView {
     fetterLabel = new JLabel(id);
   }
 
-  @SuppressWarnings("deprecation")
-public void addComponents(JPanel panel) {
+  public void addComponents(JPanel panel) {
     this.traitPanel = panel;
     panel.add(fetterLabel, GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(getValueDisplay().getComponent());
@@ -60,8 +59,7 @@ public void addComponents(JPanel panel) {
     control.fireChangedEvent();
   }
 
-  @SuppressWarnings("deprecation")
-public void delete() {
+  public void delete() {
     traitPanel.remove(fetterLabel);
     traitPanel.remove(getValueDisplay().getComponent());
     traitPanel.remove(deleteButton);

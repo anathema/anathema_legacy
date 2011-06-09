@@ -120,7 +120,6 @@ public class SecondEditionBeastformView implements IBeastformView
     return new SecondEditionBeastformOverviewView(overviewPanel, overviewProperties);
   }
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void addMutationsView(IMutationsView mutationView) {
 		giftPanel.add(mutationView.getComponent());
