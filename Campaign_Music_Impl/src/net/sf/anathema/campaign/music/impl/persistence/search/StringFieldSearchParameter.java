@@ -17,6 +17,8 @@ public class StringFieldSearchParameter implements IExtendedSearchParameter {
 
   public Constraint configure(Query query) {
     return query.descend(fieldName).constrain(new Evaluation() {
+      private static final long serialVersionUID = 3662382615602783606L;
+
       public void evaluate(Candidate candidate) {
         String value = (String) candidate.getObject();
         if (value == null) {

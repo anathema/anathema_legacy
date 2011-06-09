@@ -64,6 +64,8 @@ public class VirtueFlawPresenter implements IPresenter {
     final IObjectSelectionView<ITraitType> rootView = view.addVirtueFlawRootSelectionView(
         resources.getString(nameReference), //$NON-NLS-1$
         new AbstractSelectCellRenderer<ITraitType>(resources) {
+          private static final long serialVersionUID = -5708766075692361407L;
+
           @Override
           protected String getCustomizedDisplayValue(ITraitType value) {
             return resources.getString("VirtueType.Name." + value.getId()); //$NON-NLS-1$

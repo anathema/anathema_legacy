@@ -21,6 +21,7 @@ public class MusicLibraryCellEditor extends AbstractDelegatingCellEditor {
   protected EditorDelegate createDelegate(JComponent editor) {
     final JTextField textField = (JTextField) editor;
     return new EditorDelegate(this) {
+      private static final long serialVersionUID = 11707497538628072L;
       private ILibrary library;
 
       @Override

@@ -9,6 +9,8 @@ import net.sf.anathema.campaign.music.model.libary.ILibrary;
 
 public class LibraryCellRenderer extends DefaultListCellRenderer {
 
+  private static final long serialVersionUID = 3555587194718383119L;
+
   @Override
   public Component getListCellRendererComponent(
       JList list,

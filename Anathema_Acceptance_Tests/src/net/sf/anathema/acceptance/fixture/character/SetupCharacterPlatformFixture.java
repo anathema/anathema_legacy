@@ -15,6 +15,7 @@ public class SetupCharacterPlatformFixture extends Fixture {
   public void doTable(Parse parse) {
     IResources resources = new AnathemaResources();
     IDataFileProvider dataFileProvider = new DemoDataFileProvider();
+    @SuppressWarnings("unchecked")
     CharacterSummary characterSummary = new CharacterSummary(summary);
     characterSummary.setResources(resources);
     CharacterModuleContainer container;

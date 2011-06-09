@@ -15,6 +15,7 @@ public class CheckAdditionalTemplatesFixture extends AbstractTemplateColumnFixtu
         return true;
       }
     }
+    @SuppressWarnings("unchecked")
     Collection<IGlobalAdditionalTemplate> globalTemplates = new CharacterTemplateSummary(summary).getCharacterGenerics()
         .getGlobalAdditionalTemplateRegistry()
         .getAll();

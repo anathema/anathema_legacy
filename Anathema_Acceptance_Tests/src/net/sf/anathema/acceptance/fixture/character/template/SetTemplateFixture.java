@@ -11,6 +11,7 @@ public class SetTemplateFixture extends RowEntryFixture {
 
   @Override
   public void enterRow() throws Exception {
+    @SuppressWarnings("unchecked")
     CharacterTemplateSummary templateSummary = new CharacterTemplateSummary(summary);
     ICharacterTemplate template = templateSummary.createTemplate(characterType, subtemplate, edition);
     templateSummary.setCharacterTemplate(template);

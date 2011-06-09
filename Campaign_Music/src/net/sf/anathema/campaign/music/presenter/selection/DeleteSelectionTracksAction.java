@@ -11,6 +11,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class DeleteSelectionTracksAction extends AbstractTrackSelectionAction {
 
+  private static final long serialVersionUID = -5960259069807286739L;
   private final IMusicSelectionModel selectionModel;
   private final IMultiSelectionActionAddableListView<IMp3Track> trackListView;
 

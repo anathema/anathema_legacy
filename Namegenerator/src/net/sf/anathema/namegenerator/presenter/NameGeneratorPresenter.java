@@ -43,6 +43,8 @@ public class NameGeneratorPresenter implements IPresenter {
 
   private void initGenerationPresentation() {
     view.addGenerationAction(new SmartAction(resources.getString("NameGeneratorPresenter.GenerateButtonLabel")) { //$NON-NLS-1$
+      private static final long serialVersionUID = 4272323507368472400L;
+
       @Override
       protected void execute(Component parentComponent) {
         String[] generatedNames = model.generateNames(50);

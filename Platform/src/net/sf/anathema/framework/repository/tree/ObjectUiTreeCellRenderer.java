@@ -12,6 +12,7 @@ import net.disy.commons.swing.ui.IObjectUi;
 
 public class ObjectUiTreeCellRenderer extends DefaultTreeCellRenderer {
 
+  private static final long serialVersionUID = -2695297231143816354L;
   private final IObjectUi ui;
 
   public ObjectUiTreeCellRenderer(IObjectUi ui) {

@@ -14,6 +14,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class DeleteLibraryAction extends SmartAction {
 
+  private static final long serialVersionUID = 6364750246390923230L;
   private final ILibraryControlView controlView;
   private final ILibraryControl libraryModel;
 

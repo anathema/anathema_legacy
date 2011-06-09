@@ -16,6 +16,7 @@ public class SearchPersister {
   public IMp3Track[] executeSearch(ObjectContainer db, IExtendedSearchParameter[] parameters) {
     Query query = db.query();
     configureQuery(parameters, query);
+    @SuppressWarnings("unchecked")
     ObjectSet<DbMp3Track> set = query.execute();
     List<DbMp3Track> tracks = new ArrayList<DbMp3Track>();
     while (set.hasNext()) {

@@ -37,6 +37,8 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
 
   public ListCellRenderer getAvailableMagicRenderer() {
     return new LegalityCheckListCellRenderer(getResources()) {
+      private static final long serialVersionUID = 7840060419690645799L;
+
       @Override
       protected boolean isLegal(Object object) {
         return spellConfiguration.isSpellAllowed((ISpell) object);

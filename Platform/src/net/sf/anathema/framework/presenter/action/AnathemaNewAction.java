@@ -19,6 +19,8 @@ import net.sf.anathema.lib.workflow.wizard.selection.LenientLegalityProvider;
 
 public class AnathemaNewAction extends AbstractAnathemaItemAction {
 
+  private static final long serialVersionUID = 1430825278481991466L;
+
   public static Action createMenuAction(IAnathemaModel anathemaModel, IResources resources) {
     SmartAction action = new AnathemaNewAction(anathemaModel, resources);
     action.setName(resources.getString("AnathemaCore.Tools.New.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$       

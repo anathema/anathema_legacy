@@ -12,6 +12,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.lib.resources.IResources;
 
 public final class RepositoryViewAction extends SmartAction {
+  private static final long serialVersionUID = 8273752454261073572L;
   private final IAnathemaModel model;
   private final IResources resources;
 

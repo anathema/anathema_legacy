@@ -22,7 +22,6 @@ public class QualitySelection<Q extends IQuality> implements IQualitySelection<Q
   }
 
   @Override
-  @SuppressWarnings("unchecked")
   public boolean equals(Object obj) {
     if (!(obj instanceof QualitySelection)) {
       return false;

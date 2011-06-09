@@ -113,7 +113,8 @@ public class DemoGenericCharacter implements IGenericCharacter {
     allCombos.add(combo);
   }
   
-  public int getEssenceCap(boolean modified)
+  @Override
+public int getEssenceCap(boolean modified)
   {
 	  return 0;
   }
@@ -271,6 +272,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
             AbilityType.Socialize }, SolarCaste.Eclipse) };
   }
   
+  @Override
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups()
   {
 	  return null;

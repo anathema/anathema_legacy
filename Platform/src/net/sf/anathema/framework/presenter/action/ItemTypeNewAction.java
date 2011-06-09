@@ -21,6 +21,7 @@ import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public class ItemTypeNewAction extends AbstractItemAction {
 
+  private static final long serialVersionUID = 9011845371285941860L;
   private final IItemType type;
   private final ItemCreationOperator itemCreationOperator;
 

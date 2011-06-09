@@ -1,7 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.knacks;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.AbstractCharmStats;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;

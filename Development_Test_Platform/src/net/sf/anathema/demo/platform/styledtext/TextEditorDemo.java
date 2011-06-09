@@ -33,8 +33,8 @@ public class TextEditorDemo extends SwingDemoCase {
         new TextPart("Dieser Text ist fett.", new TextFormat(FontStyle.BOLD, false)), //$NON-NLS-1$
         new TextPart(" Gefolgt von einem kursiven Teil, ", new TextFormat(FontStyle.ITALIC, false)), //$NON-NLS-1$
         new TextPart("und einmal beides.\n", new TextFormat(FontStyle.BOLD_ITALIC, false)), //$NON-NLS-1$
-        new TextPart("Doch wir können auch schlicht und einfach..\n", new TextFormat(FontStyle.PLAIN, false)), //$NON-NLS-1$
-        new TextPart("Und unterstrichen für die besonderen Gelegenheiten..\n", new TextFormat(FontStyle.PLAIN, true)), }; //$NON-NLS-1$
+        new TextPart("Doch wir kï¿½nnen auch schlicht und einfach..\n", new TextFormat(FontStyle.PLAIN, false)), //$NON-NLS-1$
+        new TextPart("Und unterstrichen fï¿½r die besonderen Gelegenheiten..\n", new TextFormat(FontStyle.PLAIN, true)), }; //$NON-NLS-1$
     DefaultStyledDocument document = new DefaultStyledDocument();
     final StyledTextManager textConverter = new StyledTextManager(document);
     textConverter.setText(textParts);
@@ -47,6 +47,8 @@ public class TextEditorDemo extends SwingDemoCase {
 
   private SmartAction createTextPartOutputAction(final StyledTextManager textConverter) {
     return new SmartAction("Print Text Formats") { //$NON-NLS-1$
+      private static final long serialVersionUID = -1186129067427433694L;
+
       @Override
       protected void execute(Component parentComponent) {
         ITextPart[] parts = textConverter.getTextParts();

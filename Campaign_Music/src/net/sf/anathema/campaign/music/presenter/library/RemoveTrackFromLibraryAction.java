@@ -11,6 +11,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class RemoveTrackFromLibraryAction extends AbstractTrackSelectionAction {
 
+  private static final long serialVersionUID = 2773322422703573364L;
   private final ILibraryControlView controlView;
   private final ILibraryControl libraryModel;
 

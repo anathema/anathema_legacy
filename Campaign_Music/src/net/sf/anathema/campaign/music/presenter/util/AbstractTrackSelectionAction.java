@@ -7,6 +7,8 @@ import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 
 public abstract class AbstractTrackSelectionAction extends AbstractListViewSelectionEnabledAction<IMp3Track> {
 
+  private static final long serialVersionUID = -7213680710409909361L;
+
   public AbstractTrackSelectionAction(IActionAddableListView<IMp3Track> view, Icon icon) {
     super(icon, view);
   }

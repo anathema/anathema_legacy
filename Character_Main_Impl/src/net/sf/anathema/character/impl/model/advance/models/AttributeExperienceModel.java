@@ -3,12 +3,9 @@ package net.sf.anathema.character.impl.model.advance.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
-import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;

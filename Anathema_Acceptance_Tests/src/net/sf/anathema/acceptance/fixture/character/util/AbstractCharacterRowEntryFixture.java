@@ -13,6 +13,7 @@ public abstract class AbstractCharacterRowEntryFixture extends RowEntryFixture {
     return getCharacterSummary().getCharacter();
   }
 
+  @SuppressWarnings("unchecked")
   protected final CharacterSummary getCharacterSummary() {
     return new CharacterSummary(summary);
   }

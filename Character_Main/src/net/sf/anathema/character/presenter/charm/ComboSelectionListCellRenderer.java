@@ -6,6 +6,7 @@ import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 
 final class ComboSelectionListCellRenderer extends LegalityCheckListCellRenderer {
+  private static final long serialVersionUID = 1735343957161490343L;
   private final IComboConfiguration comboConfiguration;
 
   public ComboSelectionListCellRenderer(IResources resources, IComboConfiguration comboConfiguration) {

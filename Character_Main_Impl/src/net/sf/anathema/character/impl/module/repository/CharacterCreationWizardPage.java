@@ -49,6 +49,8 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
     IToggleButtonPanel panel = view.addToggleButtonPanel();
     for (final ICharacterType type : model.getAvailableCharacterTypes()) {
       JToggleButton button = panel.addButton(new SmartAction(properties.getTypeIcon(type)) {
+        private static final long serialVersionUID = 6142670276307195593L;
+
         @Override
         protected void execute(Component parentComponent) {
           model.setCharacterType(type);

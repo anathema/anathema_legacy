@@ -23,6 +23,7 @@ public class MultiEntryMap<K, V> {
     Collections.addAll(list, value);
   }
 
+  @SuppressWarnings("unchecked")
   public void replace(K key, V oldValue, V newValue) {
     if (!containsKey(key)) {
       add(key, newValue);

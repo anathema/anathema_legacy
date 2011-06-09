@@ -19,6 +19,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class ExportSelectionTracksAction extends SmartAction {
 
+  private static final long serialVersionUID = -2921604285490853426L;
   private final IMusicSelectionModel selectionModel;
   private final IResources resources;
 

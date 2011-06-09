@@ -37,6 +37,8 @@ public class ExperienceConfigurationView extends
     smartTable.addActionFactory(new ITableActionFactory() {
       public Action createAction(SmartTable table) {
         return new SmartAction(properties.getAddIcon()) {
+          private static final long serialVersionUID = -6922420757124813943L;
+
           @Override
           protected void execute(Component parentComponent) {
             fireAddRequested();
@@ -45,6 +47,8 @@ public class ExperienceConfigurationView extends
       }
     });
     deleteAction = new SmartAction(properties.getDeleteIcon()) {
+      private static final long serialVersionUID = -9129787703604142621L;
+
       @Override
       protected void execute(Component parentComponent) {
         smartTable.stopCellEditing();
@@ -72,7 +76,7 @@ public class ExperienceConfigurationView extends
     labelledIntValueView = new LabelledIntegerValueView(properties.getTotalString(), 0, false, 7);
     labelledIntValueView.addComponents(totalPanel);
     labelledIntValueView.getValueLabel().setHorizontalAlignment(SwingConstants.RIGHT);
-    // todo vom (02.07.2005) (sieroux): Hier muss eine besser Lösung her im Zusammenspiel mit der SmartTable
+    // todo vom (02.07.2005) (sieroux): Hier muss eine besser Lï¿½sung her im Zusammenspiel mit der SmartTable
     smartTablePanel.add(totalPanel, GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(smartTablePanel);
   }

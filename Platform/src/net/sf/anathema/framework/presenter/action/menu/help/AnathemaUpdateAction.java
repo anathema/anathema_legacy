@@ -12,6 +12,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaUpdateAction extends SmartAction {
 
+  private static final long serialVersionUID = -9188349625150813107L;
+
   public static Action createMenuAction(IResources resources) {
     AnathemaUpdateAction action = new AnathemaUpdateAction(resources);
     action.setName(resources.getString("Help.UpdateCheck.Title")); //$NON-NLS-1$

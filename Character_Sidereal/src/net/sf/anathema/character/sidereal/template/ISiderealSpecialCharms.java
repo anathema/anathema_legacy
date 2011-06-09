@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 
 public interface ISiderealSpecialCharms {
 
+  @SuppressWarnings("serial")
   public static final ISpecialCharm OX_BODY_TECHNIQUE = new OxBodyTechniqueCharm(
       "Sidereal.Ox-BodyTechnique", AbilityType.Endurance, //$NON-NLS-1$
       new LinkedHashMap<String, HealthLevelType[]>() {
@@ -24,6 +25,7 @@ public interface ISiderealSpecialCharms {
       "Sidereal.World-ShapingArtisticVision", //$NON-NLS-1$
       3);
   
+  @SuppressWarnings("serial")
   public static final ISpecialCharm OX_BODY_TECHNIQUE_2ND = new OxBodyTechniqueCharm(
 	      "Sidereal.OxBodyTechnique", AbilityType.Resistance, //$NON-NLS-1$
 	      new LinkedHashMap<String, HealthLevelType[]>() {

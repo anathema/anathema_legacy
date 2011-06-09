@@ -21,7 +21,6 @@ import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChang
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
-import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;

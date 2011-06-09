@@ -26,6 +26,7 @@ public class SaveAndLoadCharacterFixture extends Fixture {
 
   @Override
   public void doTable(Parse table) {
+    @SuppressWarnings("unchecked")
     CharacterSummary characterSummary = new CharacterSummary(summary);
     ICharacter character = characterSummary.getCharacter();
     AnathemaDataItem anathemaItem = new AnathemaDataItem(itemType, character);

@@ -17,6 +17,7 @@ public abstract class AbstractTraitTemplateFixture extends AbstractTemplateColum
   public String traitType;
 
   public final int absoluteMaximumValue() {
+    @SuppressWarnings("unchecked")
     final CharacterTemplateSummary templateSummary = new CharacterTemplateSummary(summary);
     ITraitTemplate traitTemplate = templateSummary.getTraitTemplate(getTraitType());
     return traitTemplate.getLimitation().getAbsoluteLimit(new ILimitationContext() {

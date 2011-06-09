@@ -16,6 +16,7 @@ public class SelectionPersister {
   public DbMusicSelection[] getAllSelections(ObjectContainer db) {
     Query query = db.query();
     query.constrain(DbMusicSelection.class);
+    @SuppressWarnings("unchecked")
     ObjectSet<DbMusicSelection> set = query.execute();
     List<DbMusicSelection> selections = new ArrayList<DbMusicSelection>();
     while (set.hasNext()) {
@@ -28,6 +29,7 @@ public class SelectionPersister {
     Query query = db.query();
     query.constrain(DbMusicSelection.class);
     query.descend("name").constrain(string); //$NON-NLS-1$
+    @SuppressWarnings("unchecked")
     ObjectSet<DbMusicSelection> set = query.execute();
     return set.next();
   }

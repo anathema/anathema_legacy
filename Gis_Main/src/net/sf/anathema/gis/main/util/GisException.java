@@ -4,6 +4,8 @@ import net.sf.anathema.lib.exception.AnathemaException;
 
 public class GisException extends AnathemaException {
 
+  private static final long serialVersionUID = -7527648228502209207L;
+
   public GisException() {
     super();
   }

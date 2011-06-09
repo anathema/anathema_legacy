@@ -15,6 +15,8 @@ import net.sf.anathema.framework.value.NoFocusButton;
 
 public class ToolBarButton extends NoFocusButton {
 
+  private static final long serialVersionUID = -1743064954642997489L;
+
   @Override
   public void setAction(Action action) {
     super.setAction(action);

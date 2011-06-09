@@ -31,6 +31,7 @@ public class TabbedViewDemo extends SwingDemoCase {
     TabbedView view = new TabbedView(TabDirection.Left);
     view.addView(new IView() {
 
+      @SuppressWarnings("serial")
       private TabbedPanel tabbedPanel = new TabbedPanel() {
         {
           JPanel panel = new JPanel(new BorderLayout());

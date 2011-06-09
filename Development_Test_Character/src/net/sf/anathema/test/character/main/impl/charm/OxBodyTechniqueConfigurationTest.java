@@ -30,6 +30,7 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
   private IOxBodyTechniqueConfiguration configuration;
   private HealthConfiguration health;
 
+  @SuppressWarnings("serial")
   @Override
   protected void setUp() throws Exception {
     ITraitValueStrategy strategy = new CreationTraitValueStrategy();
@@ -82,6 +83,7 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
   }
 
   public void testTwoOxBodyTechniques() {
+    @SuppressWarnings("serial")
     OxBodyTechniqueConfiguration secondConfiguration = new OxBodyTechniqueConfiguration(
         createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext(),
         null,

@@ -30,7 +30,9 @@ public class CategorizedNamegeneratorPresenter implements IPresenter {
     Object[] categories = getAllVoidStateCategories();
     //TODO Replace with AbstractSelectCellRenderer once IResources are available
     ListCellRenderer renderer = new DefaultListCellRenderer() {
-      @Override
+      private static final long serialVersionUID = 3725470423450865354L;
+
+	  @Override
       public Component getListCellRendererComponent(
           JList list,
           Object value,

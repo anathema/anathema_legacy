@@ -13,6 +13,7 @@ public abstract class AbstractCharacterColumnFixture extends ColumnFixture {
     return getCharacterSummary().getCharacter();
   }
 
+  @SuppressWarnings("unchecked")
   protected final CharacterSummary getCharacterSummary() {
     return new CharacterSummary(summary);
   }

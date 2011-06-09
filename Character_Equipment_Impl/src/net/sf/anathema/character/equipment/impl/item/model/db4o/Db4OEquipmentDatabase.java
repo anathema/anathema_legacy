@@ -36,6 +36,8 @@ public class Db4OEquipmentDatabase extends NonPersistableItemData implements IEq
   public String[] getAllAvailableTemplateIds() {
     final Set<String> idSet = new HashSet<String>();
     queryContainer(new Predicate<IEquipmentTemplate>() {
+      private static final long serialVersionUID = -2285120493783241116L;
+
       @Override
       public boolean match(IEquipmentTemplate candidate) {
         idSet.add(candidate.getName());
@@ -51,6 +53,8 @@ public class Db4OEquipmentDatabase extends NonPersistableItemData implements IEq
 
   public IEquipmentTemplate loadTemplate(final String templateId) {
     ObjectSet<IEquipmentTemplate> results = container.query(new Predicate<IEquipmentTemplate>() {
+      private static final long serialVersionUID = -642301155178585166L;
+
       @Override
       public boolean match(IEquipmentTemplate candidate) {
         return candidate.getName().equals(templateId);

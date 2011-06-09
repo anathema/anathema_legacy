@@ -28,10 +28,12 @@ public final class DbLibrary implements ILibrary {
     return name;
   }
 
+  @SuppressWarnings("unchecked")
   public IMp3Track[] getMp3Items() {
     return (IMp3Track[]) content.toArray(new IMp3Track[content.size()]);
   }
 
+  @SuppressWarnings("unchecked")
   public synchronized void addTrack(DbMp3Track item) {
     for (IMp3Track track : getMp3Items()) {
       if (track.getCheckSum().equals(item.getCheckSum())) {

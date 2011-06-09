@@ -34,6 +34,8 @@ public class RepositoryItemDeletionPresenter implements IPresenter {
   public void initPresentation() {
     final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.DeleteName"), //$NON-NLS-1$
         new FileUi(resources).getRemoveFileIcon()) {
+      private static final long serialVersionUID = 2600386862341380385L;
+
       @Override
       protected void execute(Component parentComponent) {
         String message = resources.getString("AnathemaCore.Tools.RepositoryView.DeleteMessage"); //$NON-NLS-1$

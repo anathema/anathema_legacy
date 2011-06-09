@@ -10,6 +10,7 @@ import net.sf.anathema.namegenerator.domain.INameGenerator;
 
 public class NameGeneratorAction extends SmartAction {
 
+  private static final long serialVersionUID = 1388136037421678507L;
   private final ITextualDescription nameDescription;
   private final INameGenerator generator;
 

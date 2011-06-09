@@ -14,7 +14,7 @@ import net.disy.commons.core.io.IOUtilities;
 import net.sf.anathema.lib.logging.Logger;
 
 /**
- * ImageLoader stellt Methoden zur Verfügung, mit der Images geladen werden
+ * ImageLoader stellt Methoden zur Verfï¿½gung, mit der Images geladen werden
  * koennen. Es wird eine Klasse uebergeben und relativ zu dieser ein Pfad, von
  * der das Bild geladen werden soll. Dies hat den Vorteil, dass der ImageLoader
  * Bilder auch aus JAR Dateien findet.
@@ -125,6 +125,8 @@ public final class ImageLoader {
   }
 
   private static class LoadingException extends Exception {
+    private static final long serialVersionUID = 3049020079587338246L;
+
     private LoadingException(String message) {
       super(message);
     }

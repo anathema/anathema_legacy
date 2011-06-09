@@ -5,6 +5,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public class IdentificateSelectCellRenderer extends AbstractSelectCellRenderer<IIdentificate> {
 
+  private static final long serialVersionUID = -108630268359225612L;
   private final String resourceKeyPrefix;
   private final String resourceKeySuffix;
 

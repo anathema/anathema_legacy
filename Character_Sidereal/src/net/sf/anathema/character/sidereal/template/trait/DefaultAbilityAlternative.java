@@ -14,6 +14,7 @@ public class DefaultAbilityAlternative {
   private final ITraitRequirement defaultThrown = new TraitRequirement(0, 1, AbilityType.Thrown);
   private final ITraitRequirement defaultMelee = new TraitRequirement(0, 1, AbilityType.Melee);
   private final ITraitRequirement defaultArchery = new TraitRequirement(0, 1, AbilityType.Archery);
+  @SuppressWarnings("serial")
   private final List<ITraitRequirement> defaultAlternate = new ArrayList<ITraitRequirement>() {
     {
       add(defaultThrown);

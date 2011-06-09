@@ -23,6 +23,7 @@ import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplat
 
 public final class ItemTypeLoadAction extends AbstractItemAction {
 
+  private static final long serialVersionUID = -3130711679881488117L;
   private final IItemType itemType;
   private final ItemCreationOperator itemCreationOperator;
 

@@ -21,6 +21,7 @@ public class CheckBackgroundFixture extends AbstractCharacterColumnFixture {
   }
 
   protected final ITrait getTrait() {
+    @SuppressWarnings("unchecked")
     ICharacter character = new CharacterSummary(summary).getCharacter();
     ICharacterStatistics statistics = character.getStatistics();
     return statistics.getTraitConfiguration().getTrait(getTraitType());

@@ -9,6 +9,7 @@ public class SetExperiencedFixture extends Fixture {
 
   @Override
   public void doTable(Parse table) {
+    @SuppressWarnings("unchecked")
     ICharacter character = new CharacterSummary(summary).getCharacter();
     character.getStatistics().setExperienced(true);
   }

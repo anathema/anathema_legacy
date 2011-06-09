@@ -2,7 +2,6 @@ package net.sf.anathema.graph.layering;
 
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.graph.nodes.ISimpleNode;
-import net.sf.anathema.lib.collection.MultiEntryMap;
 
 public class LongestPathLayerer implements ILayerer {
 

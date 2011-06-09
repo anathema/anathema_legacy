@@ -8,6 +8,7 @@ public class BackgroundListFixture extends RowFixture {
 
   @Override
   public Object[] query() throws Exception {
+    @SuppressWarnings("unchecked")
     CharacterSummary characterSummary = new CharacterSummary(summary);
     IDefaultTrait[] allBackgrounds = characterSummary.getCharacter()
         .getStatistics()

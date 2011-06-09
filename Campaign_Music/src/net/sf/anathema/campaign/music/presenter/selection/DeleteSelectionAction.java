@@ -11,6 +11,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class DeleteSelectionAction extends AbstractListViewSelectionEnabledAction<IMusicSelection> {
 
+  private static final long serialVersionUID = 6904362002675382744L;
   private final IMusicSelectionModel selectionModel;
 
   public DeleteSelectionAction(

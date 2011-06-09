@@ -6,7 +6,6 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableCell;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;

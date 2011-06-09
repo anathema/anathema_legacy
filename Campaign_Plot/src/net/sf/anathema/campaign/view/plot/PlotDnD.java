@@ -33,6 +33,7 @@ public class PlotDnD {
   public void initDragAndDrop() {
     treeView.getTreeComponent().setDragEnabled(true);
     treeView.getTreeComponent().setTransferHandler(new TransferHandler() {
+      private static final long serialVersionUID = -3503494472294823439L;
 
       @Override
       public boolean canImport(JComponent comp, DataFlavor[] transferFlavors) {

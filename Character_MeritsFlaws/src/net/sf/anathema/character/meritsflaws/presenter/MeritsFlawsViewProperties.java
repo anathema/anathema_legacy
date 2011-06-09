@@ -68,7 +68,9 @@ public class MeritsFlawsViewProperties implements IMeritsFlawsViewProperties {
   }
 
   public ListCellRenderer getTypeFilterListRenderer() {
-    return new IdentificateSelectCellRenderer("Perks.Available.Filter.Type.", resources) { //$NON-NLS-1$
+    return new IdentificateSelectCellRenderer("Perks.Available.Filter.Type.", resources) { //$NON-NLS-1$\
+      private static final long serialVersionUID = 4029188311502420644L;
+
       @Override
       protected String getNullValue() {
         return getCustomizedDisplayValue(new Identificate("All")); //$NON-NLS-1$
@@ -77,7 +79,9 @@ public class MeritsFlawsViewProperties implements IMeritsFlawsViewProperties {
   }
 
   public ListCellRenderer getCategoryFilterListRenderer() {
-    return new IdentificateSelectCellRenderer("Perks.Available.Filter.Category.", resources) { //$NON-NLS-1$
+    return new IdentificateSelectCellRenderer("Perks.Available.Filter.Category.", resources) { //$NON-NLS-1$\
+      private static final long serialVersionUID = -311282298063913853L;
+
       @Override
       protected String getNullValue() {
         return getCustomizedDisplayValue(new Identificate("All")); //$NON-NLS-1$

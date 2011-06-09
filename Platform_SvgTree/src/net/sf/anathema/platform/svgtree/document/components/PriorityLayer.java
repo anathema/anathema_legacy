@@ -3,8 +3,6 @@ package net.sf.anathema.platform.svgtree.document.components;
 import java.awt.Dimension;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
 
 public class PriorityLayer extends Layer {
 

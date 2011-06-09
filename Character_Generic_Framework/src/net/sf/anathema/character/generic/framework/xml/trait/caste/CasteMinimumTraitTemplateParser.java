@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplat
 import net.sf.anathema.character.generic.framework.xml.trait.allocation.AllocationMinimumRestriction;
 import net.sf.anathema.character.generic.framework.xml.trait.allocation.AllocationMinimumTraitTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.AlternateMinimumTraitTemplateParser;
-import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;

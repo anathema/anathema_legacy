@@ -15,6 +15,7 @@ public class CharacterModuleContainerInitializer {
 
   private final Logger logger = Logger.getLogger(CharacterModuleContainerInitializer.class);
 
+  @SuppressWarnings("serial")
   private final List<String> moduleNameList = new ArrayList<String>() {
     {
       add("net.sf.anathema.character.reporting.CharacterReportingModule"); //$NON-NLS-1$
@@ -51,6 +52,7 @@ public class CharacterModuleContainerInitializer {
 
   private void addModule(CharacterModuleContainer container, String moduleName) throws InitializationException {
     try {
+      @SuppressWarnings("unchecked")
       ICharacterModule< ? extends ICharacterModuleObject> module = (ICharacterModule< ? extends ICharacterModuleObject>) Class.forName(moduleName).newInstance();
       container.addCharacterGenericsModule(module);
     }

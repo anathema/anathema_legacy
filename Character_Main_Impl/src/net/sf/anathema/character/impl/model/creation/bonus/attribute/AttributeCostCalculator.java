@@ -39,7 +39,6 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
 	  return traitConfiguration.getFavorableTraits(attributeTypes.toArray(new ITraitType[attributeTypes.size()]));
   }
   
-  private final ICoreTraitConfiguration traits;
   private final Map<ITrait, ElementCreationCost> costsByAttribute = new HashMap<ITrait, ElementCreationCost>();
   private List<TraitGroupCost> orderedGroups;
   private final TraitGroup[] traitGroups;
@@ -55,7 +54,6 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
 	  super(additionalPools, points, costs.getMaximumFreeAbilityRank(), getAllAttributes(traitConfiguration));
     this.traitGroups = createTraitGroups(traitConfiguration);
     this.costs = costs;
-    this.traits = traitConfiguration;
     createPermutations(new ArrayList<TraitGroup>());
   }
 

@@ -72,6 +72,7 @@ public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsT
     return stats.toArray(new IHeartsBloodStats[stats.size()]);
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   protected IStatsGroup<IHeartsBloodStats>[] createStatsGroups(IGenericCharacter character) {
 	    return new IStatsGroup[] {

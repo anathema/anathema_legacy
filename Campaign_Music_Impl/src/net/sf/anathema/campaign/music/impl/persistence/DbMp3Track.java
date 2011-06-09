@@ -112,28 +112,34 @@ public final class DbMp3Track implements IMp3Track {
     this.givenName = givenName;
   }
 
+  @SuppressWarnings("unchecked")
   public IMusicEvent[] getEvents() {
     return (IMusicEvent[]) events.toArray(new IMusicEvent[events.size()]);
   }
 
+  @SuppressWarnings("unchecked")
   public void setEvents(IMusicEvent[] musicMoods) {
     events.clear();
     Collections.addAll(events, musicMoods);
   }
 
+  @SuppressWarnings("unchecked")
   public IMusicTheme[] getThemes() {
     return (IMusicTheme[]) themes.toArray(new IMusicTheme[themes.size()]);
   }
 
+  @SuppressWarnings("unchecked")
   public void setThemes(IMusicTheme[] themes) {
     this.themes.clear();
     Collections.addAll(this.themes, themes);
   }
 
+  @SuppressWarnings("unchecked")
   public IMusicMood[] getMoods() {
     return (IMusicMood[]) moods.toArray(new IMusicMood[moods.size()]);
   }
 
+  @SuppressWarnings("unchecked")
   public void setMoods(IMusicMood[] moods) {
     this.moods.clear();
     Collections.addAll(this.moods, moods);
