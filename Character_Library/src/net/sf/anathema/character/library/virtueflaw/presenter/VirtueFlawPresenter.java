@@ -62,7 +62,7 @@ public class VirtueFlawPresenter implements IPresenter {
   }
   protected void initRootPresentation(final IVirtueFlaw virtueFlaw, final String nameReference) {
     final IObjectSelectionView<ITraitType> rootView = view.addVirtueFlawRootSelectionView(
-        resources.getString(nameReference), //$NON-NLS-1$
+        resources.getString(nameReference), 
         new AbstractSelectCellRenderer<ITraitType>(resources) {
           private static final long serialVersionUID = -5708766075692361407L;
 

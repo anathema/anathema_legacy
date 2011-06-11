@@ -48,7 +48,7 @@ public class ParadoxInfoEncoder implements IPdfContentBoxEncoder {
     phrase.add(symbolChunk);
     phrase.add(resources.getString("Sheet.Paradox.Anima") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(resources.getString("Sheet.Paradox.AnimaLow") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
-    phrase.add(resources.getString(animaResource) + "\n"); //$NON-NLS-1$//$NON-NLS-2$
+    phrase.add(resources.getString(animaResource) + "\n"); //$NON-NLS-1$
     phrase.add(symbolChunk);
     phrase.add(resources.getString("Sheet.Paradox.ConfusionExalted") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(symbolChunk);

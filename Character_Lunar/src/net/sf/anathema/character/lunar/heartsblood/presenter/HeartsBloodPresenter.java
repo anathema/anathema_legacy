@@ -100,7 +100,7 @@ public class HeartsBloodPresenter implements IPresenter {
     		(model.getEdition() == ExaltedEdition.FirstEdition ?
         " (" + form.getStrength() + "/" + form.getStamina() :
         " (" + form.getStrength() + "/" + form.getDexterity() + "/" + form.getStamina() + 
-        "/" + form.getAppearance()) + ")") ; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        "/" + form.getAppearance()) + ")") ; //$NON-NLS-1$ //$NON-NLS-2$ 
     viewsByForm.put(form, formView);
     formView.addButtonListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {

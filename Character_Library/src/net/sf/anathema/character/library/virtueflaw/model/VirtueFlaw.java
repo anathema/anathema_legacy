@@ -39,7 +39,7 @@ public class VirtueFlaw implements IVirtueFlaw {
   {
 	  if (limitTrait == null)
 		  limitTrait = new LimitedTrait(new TraitType(getLimitString()),
-				  SimpleTraitTemplate.createStaticLimitedTemplate( //$NON-NLS-1$
+				  SimpleTraitTemplate.createStaticLimitedTemplate( 
 		          0, 10, LowerableState.LowerableLoss), new FriendlyIncrementChecker(), context.getTraitContext());
 	  return limitTrait;
   }

@@ -32,6 +32,7 @@
 		<buildAnathemaPlugin module.name="plot" projectset="Campaign_Plot" />
 		<buildAnathemaPlugin module.name="music" projectset="Campaign_Music,Campaign_Music_Impl" />
 		<buildAnathemaPlugin module.name="charmcascades" projectset="Charm_Cascades" />
+		<buildAnathemaPlugin module.name="charmentry" projectset="Charm_Entry" />
 		
 		<!-- Additional Sources -->
 		<buildAnathemaPlugin module.name="blog_inkmonkeys" projectset="Blog_InkMonkeys" />

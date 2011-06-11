@@ -52,7 +52,7 @@ public class ArcaneFateInfoEncoder implements IPdfContentBoxEncoder {
     phrase.add(symbolChunk);
     phrase.add(resources.getString("Sheet.ArcaneFate.Stealth") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(symbolChunk);
-    phrase.add(resources.getString(rememberingResource) + "\n"); //$NON-NLS-1$//$NON-NLS-2$
+    phrase.add(resources.getString(rememberingResource) + "\n"); //$NON-NLS-1$
     PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, lineHeight);
   }
 

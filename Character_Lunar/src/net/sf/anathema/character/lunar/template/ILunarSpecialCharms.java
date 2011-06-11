@@ -41,7 +41,7 @@ public interface ILunarSpecialCharms {
 	          put("Category.-1x2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.ONE, HealthLevelType.DYING, HealthLevelType.DYING }); //$NON-NLS-1$
 	          put(
 	              "Category.-2x4", new HealthLevelType[] { HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO,
-	            		  HealthLevelType.DYING, HealthLevelType.DYING }); //$NON-NLS-1$
+	            		  HealthLevelType.DYING, HealthLevelType.DYING }); 
 	        }
 	      });
   
@@ -70,7 +70,7 @@ public interface ILunarSpecialCharms {
   public static final ISubeffectCharm BESIEGING_THE_BASTION = new SubeffectCharm(
 	      "Lunar.BesiegingTheBastionOfForm", //$NON-NLS-1$
 	      new String[] {
-	          "FastProgression", "Fatal", "Selectable", "Custom" }, 1); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+	          "FastProgression", "Fatal", "Selectable", "Custom" }, 1); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ 
   
   public static final IMultiLearnableCharm RIGHTEOUS_LION_DEFENSE = new StaticMultiLearnableCharm(
 	      "Lunar.RighteousLionDefense", //$NON-NLS-1$

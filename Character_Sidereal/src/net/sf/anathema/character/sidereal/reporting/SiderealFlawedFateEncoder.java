@@ -57,7 +57,7 @@ public class SiderealFlawedFateEncoder extends AbstractPdfEncoder implements IPd
     phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Sidereal.LimitBreak") + ": ", boldFont)); //$NON-NLS-1$
     String fateString = resources.getString("Sheet.GreatCurse.Sidereal.FlawedFate." + character.getCasteType().getId()) + "\n";
     if (fateString.startsWith("#")) fateString = "\n";
-    phrase.add(fateString); //$NON-NLS-1$
+    phrase.add(fateString); 
     PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
   }
 

@@ -38,7 +38,7 @@ public class CharmCompiler {
 
   public CharmCompiler() {
     this.registry = new IdentificateRegistry<ICharacterType>();
-    registry.add(CharacterType.values()); //$NON-NLS-1$
+    registry.add(CharacterType.values()); 
     this.reader = new SAXReader();
   }
 

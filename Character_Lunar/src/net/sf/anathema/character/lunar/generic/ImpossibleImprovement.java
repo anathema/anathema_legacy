@@ -30,7 +30,7 @@ public class ImpossibleImprovement extends AbstractGenericCharm {
   }
 
   public String getDurationString(IResources resources) {
-    return SimpleDuration.PERMANENT_DURATION.getText(); //$NON-NLS-1$ //$NON-NLS-2$
+    return SimpleDuration.PERMANENT_DURATION.getText(); 
   }
 
   public String getType(IResources resources) {
