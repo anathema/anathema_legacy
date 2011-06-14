@@ -30,7 +30,7 @@ public class ThaumaturgyProvider
 				                  "Ward Against (Creature)", "Greater Ward Against (Creature)", "Alarm Ward Maintenance",
 				                  "Lesser Ward Maintenance", "Ward Maintenance", "Keyed Ward",
 				                  "Dishonest (Creature)'s Rebuke", "Expulsion", "Banish (Creature)",
-				                  "Pierce Shadowland", "Summon Ghost", "Blood Magic", 
+				                  "Pierce Shadowland", "Summon Ghost", "Blood Magic", "Deathsight",
 				                  "Body Preservation Technique", "Speak with Corpse", "Raise Corpse",
 				                  "Three Days of Hun and Po", "Summon Nephwrack"};
 		if (art.equals("Demon Summoning"))
@@ -64,6 +64,23 @@ public class ThaumaturgyProvider
 				                  "Lesser Ward Maintenance", "Ward Maintenance", "Keyed Ward",
 				                  "Judge the Pure Beast", "Warding the Crops", "Control (Species)",
 				                  "Summon Human", "Summon (Species)", "Improved (Species) Breeding"};
+		if (art.equals("Spirit Beckoning"))
+			return new String[] { "Alarm War Against (Creature)", "Lesser Ward Against (Creature)",
+				                  "Ward Against (Creature)", "Greater Ward Against (Creature)", "Alarm Ward Maintenance",
+				                  "Lesser Ward Maintenance", "Ward Maintenance", "Keyed Ward",
+				                  "Banish (Creature)", "Beckon (Little God)", "The Hecatomb", 
+				                  "Spirit Sight", "Beckon (Greater God)", "The Taurobeleum"};
+		if (art.equals("Warding and Exorcism"))
+			return new String[] { "Alarm Ward Against (Creature)", "Lesser Ward Against (Creature)",
+				                  "Ward Against (Creature)", "Greater Ward Against (Creature)", "Alarm Ward Maintenance",
+				                  "Lesser Ward Maintenance", "Ward Maintenance", "Keyed Ward",
+				                  "Dishonest (Creature)'s Rebuke", "Expulsion", "Banish (Creature)",
+				                  "Sensing the Barrier", "Thrice-Warded Gateway", "Deathsight", 
+				                  "Demonsight", "Elemental Sight", "Spirit Sight", "Warding of Undue Influence",
+				                  "Breaking the Ward"};
+		if (art.equals("Weather Working"))
+			return new String[] { "Foretell Weather", "Minor Changes", "Transform Weather", "Major Changes"};
+
 
 		return new String[0];
 	}
