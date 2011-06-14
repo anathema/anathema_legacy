@@ -4,82 +4,82 @@ public class ThaumaturgyProvider
 {
 	public static String[] getArts()
 	{
-		return new String[] { "Alchemy", "Astrology", "The Dead", "Demon Summoning", "Elemental Summoning",
-				              "Enchantment", "Geomancy", "Husbandry", "Spirit Beckoning",
-				              "Warding and Exorcism", "Weather Working" };
+		return new String[] { "Alchemy", "Astrology", "TheDead", "DemonSummoning", "ElementalSummoning",
+				              "Enchantment", "Geomancy", "Husbandry", "SpiritBeckoning",
+				              "WardingandExorcism", "WeatherWorking" };
 	}
 	
 	public static String[] getProcedures(String art)
 	{
 		if (art.equals("Astrology"))
-			return new String[] { "CompileChart", "Lesser Divination", "Divination", 
-				                  "Greater Divination", "VarangianCasting", "Predetermined Attributes",
-				                  "Reactive Planning", "Reverse Birth Engineering", "Brighter Star",
-				                  "Natural Virtues", "The Fallen Star", "Excellent Orrery Design"};
+			return new String[] { "CompileChart", "LesserDivination", "Divination", 
+				                  "GreaterDivination", "VarangianCasting", "PredeterminedAttributes",
+				                  "ReactivePlanning", "ReverseBirthEngineering", "BrighterStar",
+				                  "NaturalVirtues", "TheFallenStar", "ExcellentOrreryDesign"};
 		if (art.equals("Alchemy"))
-			return new String[] { "Alchemical Touchstone", "Life's Little Luxury Blends",
-				                  "Blood-Staunching Compress", "Draught of Blessed Respite", "Eagle's Eye Potion",
-				                  "Hero's Recovery", "(Type) Venom-Allaying Draught", "Wound-Cleansing Unguent",
-				                  "Age-Staving Cordial", "Ardent Embrace Resin", "Final Vengeance",
-				                  "Munificent Antivenin", "Philtre of Desire", "Tiger's Heart Elixir", 
-				                  "Valiant Warrior Formula", "Deathlord's Breath", "8-Scream Devil Powder",
-				                  "Heavenly Transmutation Processes", "Internal Alchemy", "Seven Bounties Paste",
-				                  "Sweet Cordial", "Wind-Fire Potion"};
-		if (art.equals("The Dead"))
-			return new String[] { "Alarm Ward Against (Creature)", "Lesser Ward Against (Creature)",
-				                  "Ward Against (Creature)", "Greater Ward Against (Creature)", "Alarm Ward Maintenance",
-				                  "Lesser Ward Maintenance", "Ward Maintenance", "Keyed Ward",
-				                  "Dishonest (Creature)'s Rebuke", "Expulsion", "Banish (Creature)",
-				                  "Pierce Shadowland", "Summon Ghost", "Blood Magic", "Deathsight",
-				                  "Body Preservation Technique", "Speak with Corpse", "Raise Corpse",
-				                  "Three Days of Hun and Po", "Summon Nephwrack"};
-		if (art.equals("Demon Summoning"))
-			return new String[] { "Alarm War Against (Creature)", "Lesser Ward Against (Creature)",
-				                  "Ward Against (Creature)", "Greater Ward Against (Creature)", "Alarm Ward Maintenance",
-				                  "Lesser Ward Maintenance", "Ward Maintenance", "Keyed Ward",
-				                  "Dishonest (Creature)'s Rebuke", "Expulsion", "Banish (Creature)",
-				                  "Demonsight", "Summon (Species)", "Banish the Faithless Servant", 
-				                  "Beckon (Unique Demon)", "Five Days Foresight", "The Year and a Day"};
-		if (art.equals("Elemental Summoning"))
-			return new String[] { "Alarm War Against (Creature)", "Lesser Ward Against (Creature)",
-				                  "Ward Against (Creature)", "Greater Ward Against (Creature)", "Alarm Ward Maintenance",
-				                  "Lesser Ward Maintenance", "Ward Maintenance", "Keyed Ward",
-				                  "Dishonest (Creature)'s Rebuke",  "Banish (Creature)", "Jade Extraction Method",
-				                  "Elemental Sight", "Summon (Species)", 
-				                  "Beckon (Species)", "Invoke the Elemental Benediction"};
+			return new String[] { "AlchemicalTouchstone", "Life'sLittleLuxuryBlends",
+				                  "Blood-StaunchingCompress", "DraughtofBlessedRespite", "EaglesEyePotion",
+				                  "HerosRecovery", "(Type)Venom-AllayingDraught", "Wound-CleansingUnguent",
+				                  "Age-StavingCordial", "ArdentEmbraceResin", "FinalVengeance",
+				                  "MunificentAntivenin", "PhiltreofDesire", "TigersHeartElixir", 
+				                  "ValiantWarriorFormula", "DeathlordsBreath", "8-ScreamDevilPowder",
+				                  "HeavenlyTransmutationProcesses", "InternalAlchemy", "SevenBountiesPaste",
+				                  "SweetCordial", "Wind-FirePotion"};
+		if (art.equals("TheDead"))
+			return new String[] { "Alarm WardAgainst(Creature)", "LesserWardAgainst(Creature)",
+				                  "WardAgainst(Creature)", "GreaterWardAgainst(Creature)", "AlarmWardMaintenance",
+				                  "LesserWardMaintenance", "WardMaintenance", "KeyedWard",
+				                  "Dishonest(Creature)sRebuke", "Expulsion", "Banish(Creature)",
+				                  "PierceShadowland", "SummonGhost", "BloodMagic", "Deathsight",
+				                  "BodyPreservationTechnique", "SpeakwithCorpse", "RaiseCorpse",
+				                  "ThreeDaysofHunandPo", "SummonNephwrack"};
+		if (art.equals("DemonSummoning"))
+			return new String[] { "AlarmWardAgainst(Creature)", "LesserWardAgainst(Creature)",
+				                  "WardAgainst(Creature)", "GreaterWardAgainst(Creature)", "AlarmWardMaintenance",
+				                  "LesserWardMaintenance", "WardMaintenance", "KeyedWard",
+				                  "Dishonest(Creature)sRebuke", "Expulsion", "Banish(Creature)",
+				                  "Demonsight", "Summon(Species)", "BanishtheFaithlessServant", 
+				                  "Beckon(Unique Demon)", "FiveDaysForesight", "TheYearandaDay"};
+		if (art.equals("ElementalSummoning"))
+			return new String[] { "AlarmWardAgainst(Creature)", "LesserWardAgainst(Creature)",
+				                  "WardAgainst(Creature)", "GreaterWardAgainst(Creature)", "AlarmWardMaintenance",
+				                  "LesserWardMaintenance", "WardMaintenance", "KeyedWard",
+				                  "Dishonest(Creature)sRebuke",  "Banish(Creature)", "JadeExtractionMethod",
+				                  "ElementalSight", "Summon(Species)", 
+				                  "Beckon(Species)", "InvoketheElementalBenediction"};
 		if (art.equals("Enchantment"))
-			return new String[] { "Least Wonder", "Lesser Wonder", "Talisman", "Analyze Talisman",
-				                  "Fading Color Technique", "Strengthen Ironwood", "Enchant Lucky Rock",
-				                  "Process Steelsilk", "Aegis-Inset Amulats", "Warding Talisman"};
+			return new String[] { "LeastWonder", "LesserWonder", "Talisman", "AnalyzeTalisman",
+				                  "FadingColorTechnique", "StrengthenIronwood", "EnchantLuckyRock",
+				                  "ProcessSteelsilk", "Aegis-InsetAmulets", "WardingTalisman"};
 		if (art.equals("Geomancy"))
-			return new String[] { "Essence Sense", "Blessing", "Curse", "Dragon Line Compass",
-				                  "Alloyed Essence Indicator", "Magical Attunement", "Bathing in the River Meditation",
-				                  "Dragon Nest Compass", "Pearl Collecting Rite", "Ritual of Dedicated Purification",
-				                  "Pulse of the Demense's Heart", "Rattle the Sanctum's Gate", "Essence Enlightening Sutra",
-				                  "Yoga of Celestial Refinement", "House of Good/Ill Fortune",
-				                  "Geomantic Countermagic", "Scrying"};
+			return new String[] { "EssenceSense", "Blessing", "Curse", "DragonLineCompass",
+				                  "AlloyedEssenceIndicator", "MagicalAttunement", "BathingintheRiverMeditation",
+				                  "DragonNestCompass", "PearlCollectingRite", "RitualofDedicatedPurification",
+				                  "PulseoftheDemensesHeart", "RattletheSanctumsGate", "EssenceEnlighteningSutra",
+				                  "YogaofCelestialRefinement", "HouseofGood/IllFortune",
+				                  "GeomanticCountermagic", "Scrying"};
 		if (art.equals("Husbandry"))
-			return new String[] { "Alarm Ward Against (Creature)", "Lesser Ward Against (Creature)",
-				                  "Ward Against (Creature)", "Greater Ward Against (Creature)", "Alarm Ward Maintenance",
-				                  "Lesser Ward Maintenance", "Ward Maintenance", "Keyed Ward",
-				                  "Judge the Pure Beast", "Warding the Crops", "Control (Species)",
-				                  "Summon Human", "Summon (Species)", "Improved (Species) Breeding"};
-		if (art.equals("Spirit Beckoning"))
-			return new String[] { "Alarm War Against (Creature)", "Lesser Ward Against (Creature)",
-				                  "Ward Against (Creature)", "Greater Ward Against (Creature)", "Alarm Ward Maintenance",
-				                  "Lesser Ward Maintenance", "Ward Maintenance", "Keyed Ward",
-				                  "Banish (Creature)", "Beckon (Little God)", "The Hecatomb", 
-				                  "Spirit Sight", "Beckon (Greater God)", "The Taurobeleum"};
-		if (art.equals("Warding and Exorcism"))
-			return new String[] { "Alarm Ward Against (Creature)", "Lesser Ward Against (Creature)",
-				                  "Ward Against (Creature)", "Greater Ward Against (Creature)", "Alarm Ward Maintenance",
-				                  "Lesser Ward Maintenance", "Ward Maintenance", "Keyed Ward",
-				                  "Dishonest (Creature)'s Rebuke", "Expulsion", "Banish (Creature)",
-				                  "Sensing the Barrier", "Thrice-Warded Gateway", "Deathsight", 
-				                  "Demonsight", "Elemental Sight", "Spirit Sight", "Warding of Undue Influence",
-				                  "Breaking the Ward"};
-		if (art.equals("Weather Working"))
-			return new String[] { "Foretell Weather", "Minor Changes", "Transform Weather", "Major Changes"};
+			return new String[] { "AlarmWardAgainst(Creature)", "LesserWardAgainst(Creature)",
+				                  "WardAgainst(Creature)", "GreaterWardAgainst(Creature)", "AlarmWardMaintenance",
+				                  "LesserWardMaintenance", "WardMaintenance", "KeyedWard",
+				                  "JudgethePureBeast", "WardingtheCrops", "Control(Species)",
+				                  "SummonHuman", "Summon(Species)", "Improved(Species)Breeding"};
+		if (art.equals("SpiritBeckoning"))
+			return new String[] { "AlarmWardAgainst(Creature)", "LesserWardAgainst(Creature)",
+				                  "WardAgainst(Creature)", "GreaterWardAgainst(Creature)", "AlarmWardMaintenance",
+				                  "LesserWardMaintenance", "WardMaintenance", "KeyedWard",
+				                  "Banish(Creature)", "Beckon(LittleGod)", "TheHecatomb", 
+				                  "SpiritSight", "Beckon(GreaterGod)", "TheTaurobeleum"};
+		if (art.equals("WardingandExorcism"))
+			return new String[] { "AlarmWardAgainst(Creature)", "LesserWardAgainst(Creature)",
+				                  "WardAgainst(Creature)", "GreaterWardAgainst(Creature)", "AlarmWardMaintenance",
+				                  "LesserWardMaintenance", "WardMaintenance", "KeyedWard",
+				                  "Dishonest(Creature)sRebuke", "Expulsion", "Banish(Creature)",
+				                  "SensingtheBarrier", "Thrice-WardedGateway", "Deathsight", 
+				                  "Demonsight", "ElementalSight", "SpiritSight", "WardingofUndueInfluence",
+				                  "BreakingtheWard"};
+		if (art.equals("WeatherWorking"))
+			return new String[] { "ForetellWeather", "MinorChanges", "TransformWeather", "MajorChanges"};
 
 
 		return new String[0];
