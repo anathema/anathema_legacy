@@ -21,7 +21,9 @@ public class CasteMinimumTraitTemplateParser
 	  private static final String TAG_SPECIAL_TRAIT = "specialTrait"; //$NON-NLS-1$
 	  private static final String TAG_ALLOCATION_MINIMUM_TRAITS = "allocationMinimumTraits";
 	  private static final String TAG_ALTERNATE_MINMUM_TRAITS = "alternateMinimumTraits"; //$NON-NLS-1$
+	  private static final String TAG_FREEBIE = "isFreebie";
 	  private final ITraitTypeGroup type;
+	  private boolean isFreebie;
 	  private String caste;
 	  
   public CasteMinimumTraitTemplateParser(ITraitTypeGroup type)
@@ -37,6 +39,7 @@ public class CasteMinimumTraitTemplateParser
 	  try
 	  {
 		  caste = element.attributeValue(ATTRIB_CASTE);
+		  isFreebie = ElementUtilities.getBooleanAttribute(element, TAG_FREEBIE, false);
 		  parseSpecialTraitTemplates(limits, element);
 		  parseAllocationMinimumTraitTemplates(limits, element, list);
 	  	  parseAlternateMinimumTraitTemplates(limits, element);
@@ -56,7 +59,7 @@ public class CasteMinimumTraitTemplateParser
 	      GenericTraitTemplate specialTraitTemplate = GenericTraitTemplateParser.parseTraitTemplateSoft(specialTraitElement);
 	      String traitTypeId = ElementUtilities.getRequiredAttrib(specialTraitElement, "id"); //$NON-NLS-1$
 	      pool.add(new GenericRestrictedTraitTemplate(specialTraitTemplate,
-	    		  new CasteMinimumRestriction(caste, specialTraitTemplate.getMinimumValue(null)), type.getById(traitTypeId)));
+	    		  new CasteMinimumRestriction(caste, specialTraitTemplate.getMinimumValue(null), isFreebie), type.getById(traitTypeId)));
 	      specialTraitTemplate.setMinimumValue(0);
 	    }
 	  }
@@ -67,7 +70,7 @@ public class CasteMinimumTraitTemplateParser
 		    for (Element specialTraitElement : ElementUtilities.elements(element, TAG_ALTERNATE_MINMUM_TRAITS)) {
 		      for (GenericRestrictedTraitTemplate template : parser.parseAlternateMinimumTraitsSoft(specialTraitElement)) {
 		        pool.add(new GenericRestrictedTraitTemplate(template.getTemplate(),
-		        	new CasteMinimumRestriction(caste, template.getRestrictions().get(0)), template.getTraitType()));
+		        	new CasteMinimumRestriction(caste, template.getRestrictions().get(0), isFreebie), template.getTraitType()));
 		      }
 		    }
 	  }
@@ -79,7 +82,7 @@ public class CasteMinimumTraitTemplateParser
 		    for (Element specialTraitElement : ElementUtilities.elements(element, TAG_ALLOCATION_MINIMUM_TRAITS)) {
 		      for (GenericRestrictedTraitTemplate template : parser.parseAllocationMinimumTraits(specialTraitElement, list)) {
 		        pool.add(new GenericRestrictedTraitTemplate(template.getTemplate(),
-		        	new CasteMinimumRestriction(caste, template.getRestrictions().get(0)), template.getTraitType()));
+		        	new CasteMinimumRestriction(caste, template.getRestrictions().get(0), isFreebie), template.getTraitType()));
 		      }
 		    }
 		}

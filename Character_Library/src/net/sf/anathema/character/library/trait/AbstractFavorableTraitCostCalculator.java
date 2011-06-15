@@ -130,10 +130,10 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   protected IFavorableTrait[] getTraits() {
     return traits;
   }
-
+  
   private FavorableTraitCost handleFavoredSingleTrait(IDefaultTrait trait, int bonusPointCostFactor) {
 	int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
-    int pointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax);
+    int pointsToAdd = Math.min(trait.getCalculationValue() - trait.getCalculationMinValue(), freeTraitMax);
     int favoredDotsSpent = 0;
     int generalDotsSpent = 0;
     int bonusPointsSpent = 0;
@@ -187,18 +187,19 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
 
   private FavorableTraitCost handleGeneralSingleTrait(IDefaultTrait trait, int bonusPointCostFactor) {
 	int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
-    int pointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax);
+	int pointsToAdd = trait.getCalculationValue() - trait.getCalculationMinValue();
+    int freePointsToAdd = Math.min(pointsToAdd, freeTraitMax);
     int generalDotsSpent = 0;
     int bonusPointsSpent = 0;
     if (getFreePointsSpent(false) < getDefaultDotCount()) {
       int remainingGeneralPoints = getDefaultDotCount() - getFreePointsSpent(false);
-      generalDotsSpent = Math.min(remainingGeneralPoints, pointsToAdd);
+      generalDotsSpent = Math.min(remainingGeneralPoints, freePointsToAdd);
       
       increaseGeneralDotSum(generalDotsSpent);
-      pointsToAdd -= generalDotsSpent;
+      freePointsToAdd -= generalDotsSpent;
     }
-    if (pointsToAdd > 0) {
-      bonusPointsSpent += pointsToAdd * bonusPointCostFactor;
+    if (freePointsToAdd > 0) {
+      bonusPointsSpent += freePointsToAdd * bonusPointCostFactor;
     }
     bonusPointsSpent += Math.max(trait.getCalculationValue() - freeTraitMax, 0) * bonusPointCostFactor;
     return new FavorableTraitCost(bonusPointsSpent, generalDotsSpent, 0);
@@ -240,6 +241,8 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   }
 
   private void increaseGeneralDotSum(int generalDotsSpent) {
+	  if (generalDotsSpent == 0)
+		  return;
     generalDotSum += generalDotsSpent;
   }
 

@@ -13,8 +13,8 @@
     </essence>
   </advantages>
   <magic>
-    <charms favored="10" general="12">
-    	<keywordCharms keyword="Knack" favored="11" general="11"/>
+    <charms favored="8" general="10">
+    	<keywordCharms keyword="Knack" favored="9" general="9"/>
     	<highLevelMartialArts favored="10" general="12"/>
     </charms>
   </magic>

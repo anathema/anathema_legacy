@@ -10,31 +10,31 @@
 			<limitation type="Essence"/>
 			<minimum value="0"/>
 		</defaultTrait>
-		<specialTrait id="Lore" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+		<specialTrait id="Lore" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false" isFreebie="true">
 			<limitation type="Essence"/>
 			<minimum value="2"/>
 		</specialTrait>
-		<specialTrait id="Occult" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+		<specialTrait id="Occult" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false" isFreebie="true">
 			<limitation type="Essence"/>
 			<minimum value="2"/>
 		</specialTrait>
-		<allocationMinimumTraits count="2">
+		<allocationMinimumTraits count="2" isFreebie="true">
 	 	  <trait id="Archery"/>
 	      <trait id="MartialArts" startValue="2"/>
 	 	  <trait id="Melee"/>
 	      <trait id="Thrown"/>
 		</allocationMinimumTraits>
-		<allocationMinimumTraits count="1">
+		<allocationMinimumTraits count="1" isFreebie="true">
 	 	  <trait id="Bureaucracy"/>
 	      <trait id="Presence" startValue="1"/>
 	 	  <trait id="Socialize"/>  
 		</allocationMinimumTraits>		
-		<allocationMinimumTraits count="1">
+		<allocationMinimumTraits count="1" isFreebie="true">
 	 	  <trait id="Ride"/>
 	      <trait id="Sail" startValue="1"/>
 		</allocationMinimumTraits>		
 		
-		<casteMinimumTraits caste="Dawn">
+		<casteMinimumTraits caste="Dawn" isFreebie="true">
 			<allocationMinimumTraits count="2">
 		 	  <trait id="Archery"/>
 		      <trait id="MartialArts"/>
@@ -48,7 +48,7 @@
 			<specialTrait id="War" minimum="1"/>
 		</casteMinimumTraits>
 		
-		<casteMinimumTraits caste="Zenith">			
+		<casteMinimumTraits caste="Zenith" isFreebie="true">			
 			<specialTrait id="Performance" minimum="2"/>
 			<allocationMinimumTraits count="1">
 				<trait id="Presence"/>
@@ -58,14 +58,14 @@
 			</allocationMinimumTraits>
 		</casteMinimumTraits>
 		
-		<casteMinimumTraits caste="Twilight">	
+		<casteMinimumTraits caste="Twilight" isFreebie="true">	
 			<specialTrait id="Craft" minimum="1"/>
 			<specialTrait id="Lore" minimum="3"/>
 			<specialTrait id="Occult" minimum="3"/>
 			<specialTrait id="Medicine" minimum="1"/>
 		</casteMinimumTraits>		
 		
-		<casteMinimumTraits caste="Night">
+		<casteMinimumTraits caste="Night" isFreebie="true">
 			<allocationMinimumTraits count="2">
 				<trait id="Larceny"/>
 				<trait id="Investigation"/>
@@ -79,7 +79,7 @@
 			<specialTrait id="Stealth" minimum="1"/>
 		</casteMinimumTraits>		
 		
-		<casteMinimumTraits caste="Eclipse">			
+		<casteMinimumTraits caste="Eclipse" isFreebie="true">			
 			<specialTrait id="Integrity" minimum="1"/>
 			<specialTrait id="Linguistics" minimum="1"/>
 			<allocationMinimumTraits count="1">
@@ -109,7 +109,7 @@
 		</specialTrait>
   </backgrounds>
   <essence startValue="3" lowerableState="Default">
-		<limitation type="Static" value="7"/>
+		<limitation type="Static" value="10"/>
 		<minimum value="3"/>
   </essence>
   

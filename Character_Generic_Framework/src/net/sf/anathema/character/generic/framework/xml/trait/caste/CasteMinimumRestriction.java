@@ -12,21 +12,26 @@ public class CasteMinimumRestriction extends ReflectionEqualsObject implements I
 {
 	private final List<ITraitType> affectedTraitTypes = new ArrayList<ITraitType>();
 	private final String caste;
+	private boolean isFreebie;
 	IMinimumRestriction restriction;
 	int strictMinimum = 0;
 	
 	public CasteMinimumRestriction(String caste, 
-		       IMinimumRestriction restriction)
+		       IMinimumRestriction restriction,
+		       boolean isFreebie)
 	{
-		this(caste, 0);
+		this(caste, 0, isFreebie);
 		this.restriction = restriction;
+		restriction.setIsFreebie(isFreebie);
 	}
 	
 	public CasteMinimumRestriction(String caste, 
-	       int minValue)
+	       int minValue,
+	       boolean isFreebie)
 	{
 		this.caste = caste;
 		this.strictMinimum = minValue;
+		this.isFreebie = isFreebie;
 	}
 
 	public void addTraitType(ITraitType traitType)
@@ -47,6 +52,23 @@ public class CasteMinimumRestriction extends ReflectionEqualsObject implements I
 		boolean fulfilled = !caste &&
 			(restriction != null && restriction.isFullfilledWithout(context, traitType));
 		return caste || fulfilled;
+	}
+	
+	public int getCalculationMinValue(ILimitationContext context, ITraitType traitType)
+	{
+		if (!isFreebie)
+			return 0;
+		if (!context.getCasteType().toString().equals(this.caste))
+			return 0;
+		if (restriction != null)
+			return restriction.getCalculationMinValue(context, traitType);
+		return getStrictMinimumValue();
+	}
+	
+	public void setIsFreebie(boolean value)
+	{
+		if (restriction != null)
+			restriction.setIsFreebie(value);
 	}
 	
 	public void clear()

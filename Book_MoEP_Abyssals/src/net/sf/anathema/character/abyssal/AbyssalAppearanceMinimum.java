@@ -56,6 +56,15 @@ public class AbyssalAppearanceMinimum extends ReflectionEqualsObject implements 
 	
 		return false;
 	}
+	
+	public int getCalculationMinValue(ILimitationContext context, ITraitType traitType)
+	{
+		return getStrictMinimumValue();
+	}
+	
+	public void setIsFreebie(boolean value)
+	{
+	}
 
 	@Override
 	public int getMinimum()

@@ -55,4 +55,9 @@ public class AggregatedTraitTemplate implements ITraitTemplate {
     }
     return necessaryMinimumValue;
   }
+  
+  public int getCalculationMinValue(ILimitationContext context, ITraitType type)
+  {
+	  return getMinimumValue(context);
+  }
 }

@@ -1,6 +1,8 @@
 package net.sf.anathema.character.generic.impl.traits;
 
+import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 
 public abstract class AbstractTraitTemplate implements ITraitTemplate {
@@ -32,5 +34,10 @@ public abstract class AbstractTraitTemplate implements ITraitTemplate {
 
   public boolean isRequiredFavored() {
     return false;
+  }
+  
+  public int getCalculationMinValue(ILimitationContext context, ITraitType type)
+  {
+	  return getMinimumValue(context);
   }
 }

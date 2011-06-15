@@ -65,6 +65,11 @@ public class DummyDefaultTrait extends DummyModifiableGenericTrait implements ID
   public void addCurrentValueListener(IIntValueChangedListener listener) {
     //not yet implemented
   }
+  
+  public int getCalculationMinValue()
+  {
+	return 0;
+  }
 
   public int getInitialValue() {
     return 0;
