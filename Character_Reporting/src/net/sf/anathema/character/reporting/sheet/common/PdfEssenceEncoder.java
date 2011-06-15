@@ -38,24 +38,33 @@ public class PdfEssenceEncoder extends AbstractPdfEncoder implements IPdfContent
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    int value = character.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
-    Position essencePosition = new Position(bounds.x, bounds.y + bounds.height - largeTraitEncoder.getTraitHeight());
-    largeTraitEncoder.encodeDotsCenteredAndUngrouped(directContent, essencePosition, bounds.width, value, essenceMax);
-    float poolHeight = bounds.height - largeTraitEncoder.getTraitHeight() - IVoidStateFormatConstants.TEXT_PADDING;
+	String personalPool = null, peripheralPool = null;
+	try
+	{
+		personalPool = character.getPersonalPool();
+		peripheralPool = character.getPeripheralPool();
+	}
+	catch (ContractFailedException e) { }
+	int numberOfLines = (personalPool == null ? 0 : 1) + (peripheralPool == null ? 0 : 1);
+	float poolHeight = bounds.height - largeTraitEncoder.getTraitHeight() - IVoidStateFormatConstants.TEXT_PADDING;
     float poolLineHeight = poolHeight / 2;
-    Position personalPosition = new Position(bounds.x, essencePosition.y - poolLineHeight);
-    String personalLabel = resources.getString("Sheet.Essence.PersonalPool"); //$NON-NLS-1$
-    encodePool(directContent, personalLabel, character.getPersonalPool(), personalPosition, bounds.width);
+    int offset = (int) ((2 - numberOfLines) * (poolLineHeight / 2));
+    int value = character.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
+    Position essencePosition = new Position(bounds.x, bounds.y + bounds.height - largeTraitEncoder.getTraitHeight() - offset);
+    largeTraitEncoder.encodeDotsCenteredAndUngrouped(directContent, essencePosition, bounds.width, value, essenceMax);
     
-    try
+    if (personalPool != null)
     {
-    	Position peripheralPosition = new Position(bounds.x, essencePosition.y - 2 * poolLineHeight);
-    	String peripheralLabel = resources.getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
-    	encodePool(directContent, peripheralLabel, character.getPeripheralPool(), peripheralPosition, bounds.width);
+	    Position personalPosition = new Position(bounds.x, essencePosition.y - poolLineHeight);
+	    String personalLabel = resources.getString("Sheet.Essence.PersonalPool"); //$NON-NLS-1$
+	    encodePool(directContent, personalLabel, personalPool, personalPosition, bounds.width);
     }
-    catch (ContractFailedException e)
+    
+    if (peripheralPool != null)
     {
-    	
+	    Position peripheralPosition = new Position(bounds.x, essencePosition.y - (numberOfLines == 1 ? 1 : 2) * poolLineHeight);
+	    String peripheralLabel = resources.getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
+	    encodePool(directContent, peripheralLabel, peripheralPool, peripheralPosition, bounds.width);
     }
   }
 

@@ -17,13 +17,18 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
   public IPdfContentBoxEncoder getEssenceEncoder() {
     return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
   }
+  
+  public IPdfContentBoxEncoder getOverdriveEncoder()
+  {
+	return null;
+  }
 
   protected int getEssenceMax() {
     return essenceMax;
   }
-
-  public boolean hasSecondPage() {
-    return true;
+  
+  public boolean hasMagicPage() {
+	return true;
   }
 
   protected final int getFontSize() {

@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.page;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.PdfEssenceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatRulesTableEncoder;
@@ -19,11 +20,13 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
   private final IResources resources;
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
+  private final int essenceMax;
 
-  public AbstractSecondEditionPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
+  public AbstractSecondEditionPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont, int essenceMax) {
     this.resources = resources;
     this.baseFont = baseFont;
     this.symbolBaseFont = symbolBaseFont;
+    this.essenceMax = essenceMax;
   }
 
   public final IResources getResources() {
@@ -36,6 +39,28 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
 
   public final BaseFont getSymbolBaseFont() {
     return symbolBaseFont;
+  }
+  
+  protected int getEssenceMax()
+  {
+	return essenceMax;
+  }
+  
+  public boolean hasSecondPage() {
+	    return true;
+	  }
+  
+  protected int getFontSize() {
+	    return FONT_SIZE;
+	  }
+  
+  public IPdfContentBoxEncoder getEssenceEncoder() {
+	    return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
+	  }
+  
+  public IPdfContentBoxEncoder getOverdriveEncoder()
+  {
+	  return null;
   }
 
   public final IPdfContentBoxEncoder getCombatStatsEncoder() {

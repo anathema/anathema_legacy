@@ -34,8 +34,7 @@ public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
     IPdfPartEncoder secondEditionMortalPartEncoder = new SecondEditionMortalPartEncoder(
         resources,
         baseFont,
-        symbolFont,
-        registry);
+        symbolFont);
     IPdfPartEncoder firstEditionMortalPartEncoder = new FirstEditionMortalPartEncoder(
         resources,
         baseFont,

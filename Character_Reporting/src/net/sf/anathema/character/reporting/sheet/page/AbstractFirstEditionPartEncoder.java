@@ -67,4 +67,9 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
   public boolean isEncodeAttributeAsFavorable() {
     return false;
   }
+  
+  public IPdfContentBoxEncoder getOverdriveEncoder()
+  {
+	  return null;
+  }
 }
