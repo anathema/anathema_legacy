@@ -87,4 +87,9 @@ public class PdfEssenceEncoder extends AbstractPdfEncoder implements IPdfContent
     String totalString = poolValue + " " + resources.getString("Sheet.Essence.Total") + " / "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     drawText(directContent, totalString, lineStartPoint, PdfContentByte.ALIGN_RIGHT);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

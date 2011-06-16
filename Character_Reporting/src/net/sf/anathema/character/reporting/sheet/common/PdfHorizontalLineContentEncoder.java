@@ -31,4 +31,9 @@ public class PdfHorizontalLineContentEncoder implements IPdfContentBoxEncoder {
       new HorizontalLineListEncoder().encodeLines(directContent, columnBounds, LINE_HEIGHT);
     }
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

@@ -91,4 +91,9 @@ public class SecondEditionLunarGreatCurseEncoder implements IPdfContentBoxEncode
   private Font createFont(BaseFont baseFont) {
     return TableEncodingUtilities.createFont(baseFont);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

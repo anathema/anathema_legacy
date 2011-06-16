@@ -81,4 +81,9 @@ public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsT
 	        new HeartsBloodStaminaStatsGroup(resources) };
 		  
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

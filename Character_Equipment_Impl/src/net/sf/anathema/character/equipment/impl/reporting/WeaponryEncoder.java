@@ -54,4 +54,9 @@ public class WeaponryEncoder implements IPdfContentBoxEncoder {
     	encoder[0] = customEncoder;
     encoder[0].encodeTable(directContent, character, bounds);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

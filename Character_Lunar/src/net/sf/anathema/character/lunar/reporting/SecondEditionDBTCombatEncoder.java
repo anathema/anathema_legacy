@@ -65,4 +65,9 @@ public class SecondEditionDBTCombatEncoder implements IPdfContentBoxEncoder {
 	public String getHeaderKey() {
 		return "Lunar.WarForm.CombatValues";
 	}
+	
+	public boolean hasContent(IGenericCharacter character)
+	  {
+		  return true;
+	  }
 }

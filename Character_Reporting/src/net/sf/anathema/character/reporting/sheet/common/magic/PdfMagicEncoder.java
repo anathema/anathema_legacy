@@ -77,4 +77,9 @@ public class PdfMagicEncoder implements IPdfContentBoxEncoder
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     new PdfMagicTableEncoder(resources, baseFont, printMagic).encodeTable(directContent, character, bounds);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

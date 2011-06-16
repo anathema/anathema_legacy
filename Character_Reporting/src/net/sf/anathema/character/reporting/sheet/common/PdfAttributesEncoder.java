@@ -76,4 +76,9 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
       }
     }
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

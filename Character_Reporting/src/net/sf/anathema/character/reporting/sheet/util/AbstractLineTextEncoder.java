@@ -38,6 +38,11 @@ public abstract class AbstractLineTextEncoder extends AbstractPdfEncoder impleme
       yPosition -= LINE_HEIGHT;
     }
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 
   protected abstract void addToPhrase(IGenericCharacter character, Font font, Phrase phrase);
 }

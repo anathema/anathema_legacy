@@ -133,4 +133,9 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     healthText.add(seperator);
     return healthText;
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

@@ -50,4 +50,9 @@ public class ArmourEncoder implements IPdfContentBoxEncoder {
     directContent.stroke();
     directContent.setColorStroke(Color.BLACK);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

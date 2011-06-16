@@ -158,4 +158,9 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
   protected String getMarkerCommentKey() {
     return null;
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

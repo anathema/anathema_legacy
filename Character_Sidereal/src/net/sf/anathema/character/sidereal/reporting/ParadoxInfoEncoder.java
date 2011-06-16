@@ -61,4 +61,9 @@ public class ParadoxInfoEncoder implements IPdfContentBoxEncoder {
   public String getHeaderKey() {
     return "Sidereal.Paradox"; //$NON-NLS-1$
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

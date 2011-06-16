@@ -55,6 +55,11 @@ public class ArcaneFateInfoEncoder implements IPdfContentBoxEncoder {
     phrase.add(resources.getString(rememberingResource) + "\n"); //$NON-NLS-1$
     PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, lineHeight);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 
   public String getHeaderKey() {
     return "Sidereal.ArcaneFate"; //$NON-NLS-1$

@@ -68,4 +68,9 @@ public class SecondEditionDbGreatCurseEncoder implements IPdfContentBoxEncoder {
   public String getHeaderKey() {
     return "GreatCurse.Dragon-Blooded"; //$NON-NLS-1$
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

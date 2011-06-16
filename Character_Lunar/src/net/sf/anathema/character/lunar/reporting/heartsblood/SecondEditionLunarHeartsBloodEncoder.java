@@ -99,4 +99,9 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
 	        encodeContentLine(table, statGroups, null);
 	      table.deleteLastRow();
 	}
+	
+	public boolean hasContent(IGenericCharacter character)
+	  {
+		  return true;
+	  }
 }

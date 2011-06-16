@@ -76,4 +76,9 @@ public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implemen
     int runnerUpValue = sortedVirtues.get(1).getCurrentValue();
     return topVirtue.getCurrentValue() != runnerUpValue;
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

@@ -114,4 +114,9 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
       phrase.add(resource + "\n"); //$NON-NLS-1$
     }
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

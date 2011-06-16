@@ -106,4 +106,9 @@ public class LunarFaceEncoder extends AbstractTableEncoder implements IPdfConten
     cell.setBorder(Rectangle.NO_BORDER);
     return cell;
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

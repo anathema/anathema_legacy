@@ -17,7 +17,7 @@ public class ImpossibleImprovement extends AbstractGenericCharm {
 
   @Override
   protected ExaltedSourceBook getSourceBook() {
-    return ExaltedSourceBook.Lunars2nd;
+    return ExaltedSourceBook.LordsOfCreation;
   }
 
   @Override

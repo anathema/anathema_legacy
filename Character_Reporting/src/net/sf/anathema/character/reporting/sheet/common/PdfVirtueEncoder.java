@@ -66,4 +66,9 @@ public class PdfVirtueEncoder extends AbstractPdfEncoder implements IPdfContentB
     yPosition -= traitEncoder.getTraitHeight() - 1;
     traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, new Position(position.x, yPosition), width, 0, 5);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

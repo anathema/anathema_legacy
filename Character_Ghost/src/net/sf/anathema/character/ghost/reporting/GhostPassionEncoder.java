@@ -56,4 +56,9 @@ public class GhostPassionEncoder implements IPdfContentBoxEncoder {
 		  }
 	  }
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

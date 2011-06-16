@@ -67,4 +67,9 @@ public class ResplendentDestinyEncoder extends AbstractPdfEncoder implements IPd
   protected final String getLabel(String key) {
     return resources.getString("Sheet.ResplendentDestiny." + key) + ":"; //$NON-NLS-1$ //$NON-NLS-2$
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

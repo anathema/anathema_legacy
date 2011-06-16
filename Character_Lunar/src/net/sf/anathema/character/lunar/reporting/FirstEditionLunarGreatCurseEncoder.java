@@ -74,4 +74,9 @@ public class FirstEditionLunarGreatCurseEncoder implements IPdfContentBoxEncoder
   public String getHeaderKey() {
     return "GreatCurse.Lunar"; //$NON-NLS-1$
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

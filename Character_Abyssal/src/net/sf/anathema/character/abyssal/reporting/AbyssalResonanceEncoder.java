@@ -55,6 +55,11 @@ public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IPdfC
     phrase.add(resources.getString("Sheet.GreatCurse.VirtueDifficulty")); //$NON-NLS-1$
     PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 
   private int getMaxVirtueValue(IGenericCharacter character) {
     IGenericTrait[] virtues = character.getTraitCollection().getTraits(VirtueType.values());

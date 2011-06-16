@@ -27,4 +27,9 @@ public class AstrologyInfoEncoder implements IPdfContentBoxEncoder {
   public String getHeaderKey() {
     return "Sidereal.Astrology"; //$NON-NLS-1$
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

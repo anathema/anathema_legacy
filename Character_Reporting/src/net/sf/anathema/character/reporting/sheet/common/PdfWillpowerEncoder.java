@@ -33,4 +33,9 @@ public class PdfWillpowerEncoder implements IPdfContentBoxEncoder {
     yPosition -= entryHeight;
     traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, new Position(leftX, yPosition), width, 0, 10);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

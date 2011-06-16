@@ -95,4 +95,9 @@ public class SecondEditionLunarSpiritFormEncoder implements IPdfContentBoxEncode
           maximum);
     }
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

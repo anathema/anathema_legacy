@@ -51,4 +51,9 @@ public class GhostFetterEncoder implements IPdfContentBoxEncoder {
 	      }
 	    }
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

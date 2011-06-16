@@ -59,6 +59,11 @@ public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IP
     phrase.add(resources.getString("Sheet.GreatCurse.ResonanceReference")); //$NON-NLS-1$
     PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 
   private Font createNameFont(BaseFont baseFont) {
     Font newFont = createFont(baseFont);

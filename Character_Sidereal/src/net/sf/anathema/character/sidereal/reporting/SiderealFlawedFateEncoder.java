@@ -64,4 +64,9 @@ public class SiderealFlawedFateEncoder extends AbstractPdfEncoder implements IPd
   public String getHeaderKey() {
     return "FlawedFate"; //$NON-NLS-1$
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }
