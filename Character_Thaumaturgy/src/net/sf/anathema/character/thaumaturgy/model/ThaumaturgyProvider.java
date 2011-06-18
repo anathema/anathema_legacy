@@ -26,7 +26,7 @@ public class ThaumaturgyProvider
 				                  "HeavenlyTransmutationProcesses", "InternalAlchemy", "SevenBountiesPaste",
 				                  "SweetCordial", "Wind-FirePotion"};
 		if (art.equals("TheDead"))
-			return new String[] { "Alarm WardAgainst(Creature)", "LesserWardAgainst(Creature)",
+			return new String[] { "AlarmWardAgainst(Creature)", "LesserWardAgainst(Creature)",
 				                  "WardAgainst(Creature)", "GreaterWardAgainst(Creature)", "AlarmWardMaintenance",
 				                  "LesserWardMaintenance", "WardMaintenance", "KeyedWard",
 				                  "Dishonest(Creature)sRebuke", "Expulsion", "Banish(Creature)",
@@ -39,7 +39,7 @@ public class ThaumaturgyProvider
 				                  "LesserWardMaintenance", "WardMaintenance", "KeyedWard",
 				                  "Dishonest(Creature)sRebuke", "Expulsion", "Banish(Creature)",
 				                  "Demonsight", "Summon(Species)", "BanishtheFaithlessServant", 
-				                  "Beckon(Unique Demon)", "FiveDaysForesight", "TheYearandaDay"};
+				                  "Beckon(UniqueDemon)", "FiveDaysForesight", "TheYearandaDay"};
 		if (art.equals("ElementalSummoning"))
 			return new String[] { "AlarmWardAgainst(Creature)", "LesserWardAgainst(Creature)",
 				                  "WardAgainst(Creature)", "GreaterWardAgainst(Creature)", "AlarmWardMaintenance",
