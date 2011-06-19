@@ -6,7 +6,7 @@ Exalted (C) 2001-2010 by White Wolf Publishing, Inc.
 
 http://anathema.sf.net
 ===------------------------------------------------------------------------------===
-			Untitled WIP Release
+			Release 3.0.0 "Malfeas" Release
 ===------------------------------------------------------------------------------===
 
 -- Features --
@@ -16,6 +16,11 @@ http://anathema.sf.net
        this for Abyssal Whispers and Dragon-Blooded Purity.
 * [2E] Adding support for charms which may explicitly be comboed with charms from
        other abilities (Elemental Bolt Attack being the poster child).
+* [2E] Added support for Spirits, Spirit charms, and God-blooded.
+* [2E] Added support for Infernals and their charms.
+* [2E] Added support for Thaumaturgy
+* Revised the character sheet layout, providing more space for items, weapons,
+  panoply, etc.
 
 ===------------------------------------------------------------------------------===
 			Release 2.0.1 "Calibration"
