@@ -82,4 +82,146 @@
           </charmtype>
           <source source="GhostsAndDemons" />
      </charm>
+     <charm id="Ghost.MotivatedShell" exalt="Ghost" group="CommonArcanoi">
+          <prerequisite>
+               <trait id="Valor" value="3" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+               <willpower cost="1"/>
+          </cost>
+          <duration duration="Successes" unit="6 ticks"/>
+          <charmtype type="Simple"/>
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.RideTheMysticVessel" exalt="Ghost" group="CommonArcanoi">
+          <prerequisite>
+               <trait id="Valor" value="3" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration duration="Successes" unit="1 action"/>
+          <charmtype type="Simple">
+          	<special speed="6" defense="-1"/>
+          </charmtype>
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.DarkSteedMastery" exalt="Ghost" group="CommonArcanoi">
+          <prerequisite>
+               <trait id="Conviction" value="1" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" text="per die"/>
+          </cost>
+          <duration duration="Instant"/>
+          <charmtype type="Supplemental"/>
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.FormerLifeDestructionTechnique" exalt="Ghost" group="CommonArcanoi">
+          <prerequisite>
+               <trait id="Temperance" value="4" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+          </cost>
+          <duration duration="Permanent"/>
+          <charmtype type="Permanent"/>
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.MoonsColdGlow" exalt="Ghost" group="CommonArcanoi">
+          <prerequisite>
+               <trait id="Conviction" value="1" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="2"
+          </cost>
+          <duration duration="Successes" unit="1 night"/>
+          <charmtype type="Simple">
+          	<special speed="3" defense="-0"/>
+          </charmtype>
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.OxBodyTechnique" exalt="Ghost" group="CommonArcanoi">
+          <prerequisite>
+               <trait id="Conviction" value="1" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+          </cost>
+          <duration duration="Permanent"/>
+          <charmtype type="Permanent"/>
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.PoleTheBlackDepths" exalt="Ghost" group="CommonArcanoi">
+          <prerequisite>
+               <trait id="Conviction" value="1" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" text="per die"/>
+          </cost>
+          <duration duration="Instant"/>
+          <charmtype type="Supplemental"/>
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.SmellOfSweetBlood" exalt="Ghost" group="CommonArcanoi">
+          <prerequisite>
+               <trait id="Compassion" value="1" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="1"
+          </cost>
+		<duration amount="1" unit="scene"/>
+          <charmtype type="Simple">
+          	<special speed="3" defense="-0"/>
+          </charmtype>
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.TwoWorldVision" exalt="Ghost" group="CommonArcanoi">
+          <prerequisite>
+               <trait id="Conviction" value="1" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Successes" unit="6 ticks"/>
+          <charmtype type="Simple">
+          	<special speed="6" defense="-2"/>
+          </charmtype>
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.UnconsciousSpeech" exalt="Ghost" group="CommonArcanoi">
+          <prerequisite>
+               <trait id="Compassion" value="2" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="1"
+          </cost>
+		<duration amount="1" unit="action"/>
+          <charmtype type="Simple"/>
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.WhispersOfTheLiving" exalt="Ghost" group="CommonArcanoi">
+          <prerequisite>
+               <trait id="Conviction" value="2" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration duration="Successes" unit="1 minute"/>
+          <charmtype type="Simple">
+          	<special speed="6" defense="-2"/>
+          </charmtype>
+          <source source="GhostsAndDemons" />
+     </charm>
 </charmlist>
