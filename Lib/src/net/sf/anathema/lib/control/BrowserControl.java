@@ -6,15 +6,14 @@ import java.net.URL;
 import net.sf.anathema.lib.logging.Logger;
 
 /**
- * A simple, static class to display a URL in the system browser.
+ * A simple, static class to display a URL by the system's default method.
  * 
- * Under Unix, the system browser is hard-coded to be 'netscape'. Netscape must
- * be in your PATH for this to work. This has been tested with the following
- * platforms: AIX, HP-UX and Solaris.
+ * Under Unix, we invoke 'xdg-open'. This is included in all FreeDesktop-
+ * compliant systems, and should be installable under most others.
  * 
- * Under Windows, this will bring up the default browser under windows, usually
- * either Netscape or Microsoft IE. The default browser is determined by the
- * OS. This has been tested under Windows 95/98/NT.
+ * Under Windows, this will bring up the default browser under Windows.
+ * The default browser is determined by the OS. This has been tested under
+ * all Windows distributions between Windows 95 and Windows 7.
  * 
  * Examples: BrowserControl.displayURL("http://www.javaworld.com")
  * BrowserControl.displayURL("file://c:\\docs\\index.html")
@@ -50,8 +49,8 @@ public class BrowserControl {
       else {
         // Under Unix, Netscape has to be running for the "-remote" command to work. So, we try sending the command and
         // check for an exit value. If the exit command is 0, it worked, otherwise we need to start the browser.
-        // cmd = 'netscape -remote openURL(http://www.javaworld.com)'
-        cmd = UNIX_PATH + " " + UNIX_FLAG + "(" + url + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        // cmd = 'xdg-open openURL(http://www.javaworld.com)'
+        cmd = UNIX_PATH + " " + url; //$NON-NLS-1$
         Process p = Runtime.getRuntime().exec(cmd);
 
         try {
@@ -66,13 +65,13 @@ public class BrowserControl {
           }
         }
         catch (InterruptedException x) {
-          logger.error("Error bringing up browser, cmd='" + cmd + "'", x); //$NON-NLS-1$ //$NON-NLS-2$
+          logger.error("Error opening URL, cmd='" + cmd + "'", x); //$NON-NLS-1$ //$NON-NLS-2$
         }
       }
     }
     catch (IOException x) {
       // couldn't exec browser
-      logger.error("Could not invoke browser, command=" + cmd, x); //$NON-NLS-1$
+      logger.error("Could not open URL, command='" + cmd + "'", x); //$NON-NLS-1$ //$NON-NLS-2$
     }
   }
 
@@ -90,8 +89,8 @@ public class BrowserControl {
   private static final String WIN_FLAG = "\"\""; //$NON-NLS-1$
 
   // The default browser under unix.
-  private static final String UNIX_PATH = "netscape"; //$NON-NLS-1$
+  private static final String UNIX_PATH = "xdg-open"; //$NON-NLS-1$
 
   // The flag to display a url.
-  private static final String UNIX_FLAG = "-remote openURL"; //$NON-NLS-1$
+  private static final String UNIX_FLAG = ""; //$NON-NLS-1$
 }
