@@ -67,7 +67,7 @@ public class FirstEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
 
     distanceFromTop += firstRowHeight + PADDING;
 
-    int abilityStartHeight = encodeAttributes(directContent, character, distanceFromTop) + distanceFromTop + PADDING;
+    float abilityStartHeight = encodeAttributes(directContent, character, distanceFromTop) + distanceFromTop + PADDING;
     encodeAnima(directContent, character, distanceFromTop, ANIMA_HEIGHT);
     float freeSpace = getOverlapFreeSpaceHeight();
     distanceFromTop += freeSpace;
@@ -89,7 +89,7 @@ public class FirstEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
     distanceFromTop += calculateBoxIncrement(healthHeight);
     float remainingHeight = FirstEditionLunarBeastformPageEncoder.CONTENT_HEIGHT - distanceFromTop;
     encodeCombatStats(directContent, character, distanceFromTop, remainingHeight);
-    encodeAbilities(directContent, character, abilityStartHeight, (int) remainingHeight + PADDING);
+    encodeAbilities(directContent, character, abilityStartHeight, remainingHeight + PADDING);
     encodeGifts(directContent, character, distanceFromTop, remainingHeight);
   }
 
@@ -138,9 +138,9 @@ public class FirstEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
   private void encodeAbilities(
       PdfContentByte directContent,
       IGenericCharacter character,
-      int distanceFromTop,
-      int remainingHeightRequired) throws DocumentException {
-    int abilitiesHeight = CONTENT_HEIGHT - distanceFromTop - remainingHeightRequired;
+      float distanceFromTop,
+      float remainingHeightRequired) throws DocumentException {
+    float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop - remainingHeightRequired;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
     IPdfContentBoxEncoder encoder = PdfAbilitiesEncoder.createWithSpecialtiesOnly(baseFont, resources, essenceMax, 11);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);

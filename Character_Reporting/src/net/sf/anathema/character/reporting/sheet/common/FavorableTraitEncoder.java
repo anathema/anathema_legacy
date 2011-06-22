@@ -12,7 +12,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -65,8 +64,14 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
       yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
       yPosition -= encoder.encode(directContent, character, new Position(position.x, yPosition), width);
     }
+    
+    float bottom = bounds.getMinY() + 4;
+    int nExcellencies = getExcellencies(character).length;
+    if (nExcellencies > 0) {
+      bottom += encodeExcellencyCommentText(directContent, nExcellencies, position, bottom);
+    }
     if (!markedTraitTypes.isEmpty()) {
-      encodeMarkerCommentText(directContent, position, bounds.getMinY() + 4);
+      bottom += encodeMarkerCommentText(directContent, position, bottom);
     }
   }
 
@@ -80,7 +85,6 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     IMagicStats[] excellencies = getExcellencies(character);
     
     float yPosition = position.y;
-    // TODO: (2011-06-19) Add column headers [particularly for Excellencies]
     for (IIdentifiedTraitTypeGroup group : groups) {
       Position groupPosition = new Position(position.x, yPosition);
       yPosition -= encodeTraitGroup(directContent, character, excellencies, traitCollection, group, groupPosition, width);
@@ -91,8 +95,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
   
   protected IMagicStats[] getExcellencies(IGenericCharacter character) {
     List<IMagicStats> excellencies = new ArrayList<IMagicStats>();
-    FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
-    if (type == FavoringTraitType.AbilityType) {
+    if (shouldShowExcellencies(character)) {
       for (IMagicStats stats : character.getGenericCharmStats()) {
         String genericId = stats.getName().getId();
         if (genericId.endsWith("Excellency")) {
@@ -140,20 +143,26 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
       IFavorableGenericTrait trait = traitCollection.getFavorableTrait(traitType);
       String label = resources.getString(getTraitTypePrefix() + traitType.getId());
       
-      boolean[] excellencyLearned = new boolean[excellencies.length];
-      for (int i = 0; i < excellencies.length; i++) {
-        final String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
-        excellencyLearned[i] = CollectionUtilities.find(allLearnedMagic, new IPredicate<IMagic>() {
-          public boolean evaluate(IMagic value) {
-            return charmId.equals(value.getId());
-          }
-        }) != null;
+      if (shouldShowExcellencies(character)) {
+        boolean[] excellencyLearned = new boolean[excellencies.length];
+        for (int i = 0; i < excellencies.length; i++) {
+          final String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
+          excellencyLearned[i] = CollectionUtilities.find(allLearnedMagic, new IPredicate<IMagic>() {
+            public boolean evaluate(IMagic value) {
+              return charmId.equals(value.getId());
+            }
+          }) != null;
+        }
+        
+        height += encodeFavorableTrait(directContent, label, trait, excellencyLearned,
+                                       new Position(traitX, yPosition), width - groupLabelWidth);
       }
-      
-      height += encodeFavorableTrait(directContent, label, trait, excellencyLearned,
-                                     new Position(traitX, yPosition), width - groupLabelWidth);
+      else {
+        height += encodeFavorableTrait(directContent, label, trait,
+                                       new Position(traitX, yPosition), width - groupLabelWidth);
+      }
     }
-    Position groupLabelPosition = new Position(groupLabelX, position.y - height / 2);
+    Position groupLabelPosition = new Position(groupLabelX, position.y - height / 2f);
     addGroupLabel(directContent, group, groupLabelPosition);
     return height;
   }
@@ -208,11 +217,31 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     String mobilityPenaltyText = " : " + resources.getString(getMarkerCommentKey()); //$NON-NLS-1$
     Position commentPosition = new Position(position.x + 5, yPosition);
     drawComment(directContent, mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
-    return 10;
+    return 7;
+  }
+
+  private float encodeExcellencyCommentText(PdfContentByte directContent, int nExcellencies,
+                                            Position position, float yPosition) {
+    StringBuilder numbers = new StringBuilder();
+    for (int i = 1; i <= nExcellencies; i++) {
+      numbers.append(Integer.toString(i));
+    }
+    String mobilityPenaltyText = numbers.toString() + " : " + resources.getString(getExcellencyCommentKey()); //$NON-NLS-1$
+    Position commentPosition = new Position(position.x, yPosition);
+    drawComment(directContent, mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
+    return 7;
   }
 
   protected String getMarkerCommentKey() {
     return null;
+  }
+
+  protected String getExcellencyCommentKey() {
+    return null;
+  }
+  
+  protected boolean shouldShowExcellencies(IGenericCharacter character) {
+    return false;
   }
   
   public boolean hasContent(IGenericCharacter character)

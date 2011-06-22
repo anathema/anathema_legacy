@@ -10,7 +10,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfHorizontalLineContentEncoder implements IPdfContentBoxEncoder {
 
-  private static final int LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
+  private static final float LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
   private final int columnCount;
   private final String headerKey;
 

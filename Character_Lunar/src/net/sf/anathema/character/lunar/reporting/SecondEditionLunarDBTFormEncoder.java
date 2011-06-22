@@ -30,7 +30,7 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
   private final IResources resources;
   private final PdfTraitEncoder smallTraitEncoder;
   private final BaseFont baseFont;
-  private final int lineHeight = IVoidStateFormatConstants.LINE_HEIGHT - 4;
+  private final float lineHeight = IVoidStateFormatConstants.LINE_HEIGHT - 4;
 
   public SecondEditionLunarDBTFormEncoder(BaseFont baseFont, IResources resources, float smallWidth) {
     this.resources = resources;
@@ -54,8 +54,8 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
   
   private final void encodeNotes(PdfContentByte directContent, Bounds bounds)
   {
-	  final int offsetX = 0;
-	  final int offsetY = 42;
+	  final float offsetX = 0;
+	  final float offsetY = 42;
 	  final int numNotes = 4;
 	  try
 	  {
@@ -67,7 +67,7 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
   }
   
   private final void writeLine(PdfContentByte directContent, String text,
-		  Bounds bounds, int offsetX, int offsetY) throws DocumentException
+		  Bounds bounds, float offsetX, float offsetY) throws DocumentException
   {
 	  Font font = TableEncodingUtilities.createFont(baseFont);
 	  Bounds newBounds = new Bounds(

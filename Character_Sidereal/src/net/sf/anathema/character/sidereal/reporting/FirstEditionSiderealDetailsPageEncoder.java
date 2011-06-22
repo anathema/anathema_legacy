@@ -19,10 +19,10 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class FirstEditionSiderealDetailsPageEncoder implements IPdfPageEncoder {
 
-  private final static int COLLEGE_HEIGHT = 312;
-  private final static int DESTINY_HEIGHT = (COLLEGE_HEIGHT - PADDING) / 2;
-  private final static int THIRD_BLOCK_HEIGHT = 145;
-  private final static int STANDING_HEIGHT = 45;
+  private final static float COLLEGE_HEIGHT = 312;
+  private final static float DESTINY_HEIGHT = (COLLEGE_HEIGHT - PADDING) / 2;
+  private final static float THIRD_BLOCK_HEIGHT = 145;
+  private final static float STANDING_HEIGHT = 45;
   private final int essenceMax;
   private final IResources resources;
   private final BaseFont baseFont;
@@ -110,47 +110,47 @@ public class FirstEditionSiderealDetailsPageEncoder implements IPdfPageEncoder {
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
   }
 
-  private int encodeAcquaintances(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private float encodeAcquaintances(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
       throws DocumentException {
-    int height = 145;
+    float height = 145;
     Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
     IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(1, "Sidereal.Acquaintances"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
     return height;
   }
 
-  private int encodeConventions(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private float encodeConventions(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
       throws DocumentException {
-    int height = THIRD_BLOCK_HEIGHT - STANDING_HEIGHT - PADDING;
+    float height = THIRD_BLOCK_HEIGHT - STANDING_HEIGHT - PADDING;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
     IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(2, "Sidereal.Conventions"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
     return height;
   }
 
-  private int encodeStanding(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private float encodeStanding(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
       throws DocumentException {
-    int height = STANDING_HEIGHT;
+    float height = STANDING_HEIGHT;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
     IPdfContentBoxEncoder encoder = new StandingEncoder(baseFont, fontSize, resources);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
     return height;
   }
 
-  private int encodeAstrology(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private float encodeAstrology(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
       throws DocumentException {
-    int height = DESTINY_HEIGHT;
+    float height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
     IPdfContentBoxEncoder encoder = new AstrologyInfoEncoder(baseFont, resources);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
     return height;
   }
 
-  private int encodeResplendentDestiny(PdfContentByte directContent, Bounds boxBounds, IGenericCharacter character)
+  private float encodeResplendentDestiny(PdfContentByte directContent, Bounds boxBounds, IGenericCharacter character)
       throws DocumentException {
     IPdfContentBoxEncoder encoder = new ResplendentDestinyEncoder(baseFont, fontSize, resources);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
-    return (int) boxBounds.height;
+    return boxBounds.height;
   }
 
   private Bounds getRightDestinyBounds(int distanceFromTop) {
@@ -161,9 +161,9 @@ public class FirstEditionSiderealDetailsPageEncoder implements IPdfPageEncoder {
     return configuration.getSecondColumnRectangle(distanceFromTop, DESTINY_HEIGHT, 1);
   }
 
-  private int encodeParadox(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private float encodeParadox(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
       throws DocumentException {
-    int height = DESTINY_HEIGHT;
+    float height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
     IPdfContentBoxEncoder encoder = new ParadoxInfoEncoder(baseFont, symbolBaseFont,
     		fontSize, resources, ExaltedEdition.FirstEdition);
@@ -171,9 +171,9 @@ public class FirstEditionSiderealDetailsPageEncoder implements IPdfPageEncoder {
     return height;
   }
 
-  private int encodeArcaneFate(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private float encodeArcaneFate(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
       throws DocumentException {
-    int height = THIRD_BLOCK_HEIGHT;
+    float height = THIRD_BLOCK_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
     IPdfContentBoxEncoder encoder = new ArcaneFateInfoEncoder(baseFont, symbolBaseFont,
     		fontSize, resources, ExaltedEdition.FirstEdition);
@@ -181,9 +181,9 @@ public class FirstEditionSiderealDetailsPageEncoder implements IPdfPageEncoder {
     return height;
   }
 
-  private int encodeColleges(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private float encodeColleges(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
       throws DocumentException {
-    int height = COLLEGE_HEIGHT;
+    float height = COLLEGE_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
     IPdfContentBoxEncoder encoder = new SiderealCollegeEncoder(baseFont, resources, essenceMax);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);

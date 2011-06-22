@@ -50,7 +50,7 @@ public class FirstEditionLunarGreatCurseEncoder implements IPdfContentBoxEncoder
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) character.getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
-    int leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
+    float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     Phrase phrase = new Phrase();
     String virtue;
     ITraitType rootVirtue = virtueFlaw.getRoot();

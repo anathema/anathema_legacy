@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
@@ -62,5 +63,15 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
   @Override
   protected String getMarkerCommentKey() {
     return "Sheet.Comment.AbilityMobility"; //$NON-NLS-1$
+  }
+
+  @Override
+  protected String getExcellencyCommentKey() {
+    return "Sheet.Comment.AbilityExcellency"; //$NON-NLS-1$
+  }
+  
+  @Override
+  protected boolean shouldShowExcellencies(IGenericCharacter character) {
+    return character.getTemplate().getMagicTemplate().getFavoringTraitType() == FavoringTraitType.AbilityType;
   }
 }

@@ -20,7 +20,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 public class SecondEditionPowersEncoder implements IPdfContentBoxEncoder
 {
   private Font font;
-  private int lineHeight = IVoidStateFormatConstants.LINE_HEIGHT - 2;
+  private float lineHeight = IVoidStateFormatConstants.LINE_HEIGHT - 2;
   private final String powerBase = "Sheet.Lunar.Powers.";
   private final IResources resources;
   private final BaseFont baseFont;

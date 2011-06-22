@@ -143,23 +143,23 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
     encodePersonalInfos(directContent, character, description, infoContentBounds);
   }
 
-  private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop)
       throws DocumentException {
-    int attributeHeight = encodeAttributes(directContent, character, distanceFromTop);
+    float attributeHeight = encodeAttributes(directContent, character, distanceFromTop);
     encodeAbilities(directContent, character, distanceFromTop + attributeHeight + PADDING);
   }
 
-  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop)
       throws DocumentException {
-    int abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
+    float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
     IPdfContentBoxEncoder encoder = PdfAbilitiesEncoder.createWithCraftsAndSpecialties(baseFont, resources, essenceMax);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
   }
 
-  private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private float encodeAttributes(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop)
       throws DocumentException {
-    int attributeHeight = 128;
+    float attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
     IPdfContentBoxEncoder encoder = new PdfAttributesEncoder(
         baseFont,

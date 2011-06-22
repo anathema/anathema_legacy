@@ -41,7 +41,7 @@ public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
 	ISolarVirtueFlaw virtueFlaw = ((ISolarVirtueFlawModel) character.getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
-    int leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
+    float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     String name = virtueFlaw.getName().getText();
     String condition = virtueFlaw.getLimitBreak().getText();
     boolean nameDefined = !StringUtilities.isNullOrTrimEmpty(name);
@@ -74,7 +74,7 @@ public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
     }
   }
 
-  private void encodeLines(PdfContentByte directContent, Bounds bounds, int leading, float yPosition) {
+  private void encodeLines(PdfContentByte directContent, Bounds bounds, float leading, float yPosition) {
     yPosition -= leading;
     while (yPosition > bounds.getMinY()) {
       Line.createHorizontalByCoordinate(new Position(bounds.x, yPosition), bounds.getMaxX()).encode(directContent);

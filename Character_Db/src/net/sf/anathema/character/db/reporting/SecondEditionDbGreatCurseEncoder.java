@@ -38,7 +38,7 @@ public class SecondEditionDbGreatCurseEncoder implements IPdfContentBoxEncoder {
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
 	IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) character.getAdditionalModel(DbVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
-    int leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
+    float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     String virtue;
     ITraitType rootVirtue = virtueFlaw.getRoot();
     if ((rootVirtue != null)) {

@@ -14,7 +14,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public abstract class AbstractLineTextEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
-  private final static int LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
+  private final static float LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
   private final BaseFont baseFont;
 
   @Override

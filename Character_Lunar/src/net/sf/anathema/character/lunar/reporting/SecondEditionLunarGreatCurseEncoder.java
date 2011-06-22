@@ -39,7 +39,7 @@ public class SecondEditionLunarGreatCurseEncoder implements IPdfContentBoxEncode
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    int leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
+    float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     ILunarVirtueFlaw virtueFlaw = ((ILunarVirtueFlawModel) character.getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     String name = virtueFlaw.getName().getText();
@@ -74,7 +74,7 @@ public class SecondEditionLunarGreatCurseEncoder implements IPdfContentBoxEncode
     }
   }
 
-  private void encodeLines(PdfContentByte directContent, Bounds bounds, int leading, float yPosition) {
+  private void encodeLines(PdfContentByte directContent, Bounds bounds, float leading, float yPosition) {
     yPosition -= leading;
     while (yPosition > bounds.getMinY()) {
       Line.createHorizontalByCoordinate(new Position(bounds.x, yPosition), bounds.getMaxX()).encode(directContent);

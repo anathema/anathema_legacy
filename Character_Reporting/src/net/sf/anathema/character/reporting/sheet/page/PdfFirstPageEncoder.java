@@ -30,12 +30,12 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfFirstPageEncoder implements IPdfPageEncoder {
-  public static final int CONTENT_HEIGHT = 755;
+  public static final float CONTENT_HEIGHT = 755;
   private final IResources resources;
   private final int essenceMax;
   private final BaseFont baseFont;
 
-  private static final int ANIMA_HEIGHT = 128;
+  private static final float ANIMA_HEIGHT = 128;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private final PdfEncodingRegistry registry;
@@ -102,8 +102,8 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
 
     float lastRowHeight = firstRowHeight;
     float remainingHeight = PdfFirstPageEncoder.CONTENT_HEIGHT - distanceFromTop - lastRowHeight;
-    int frameHeight = (int) ((remainingHeight)/ 2) ;
-    int boxHeight = frameHeight - PADDING;
+    float frameHeight = remainingHeight / 2;
+    float boxHeight = frameHeight - PADDING;
     int boxPosition = distanceFromTop;
     int boxId = 0;
     
@@ -145,7 +145,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
 	  return boxId % 2 == 1 ? 3 : 2;
   }
   
-  private int getPosition(int position, int height, int id)
+  private float getPosition(int position, float height, int id)
   {
 	  return position + (id > 1 ? height : 0);
   }
@@ -207,21 +207,21 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
 
   private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
       throws DocumentException {
-    int attributeHeight = encodeAttributes(directContent, character, distanceFromTop);
+    float attributeHeight = encodeAttributes(directContent, character, distanceFromTop);
     encodeAbilities(directContent, character, distanceFromTop + attributeHeight + PADDING);
   }
 
-  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop)
       throws DocumentException {
-    int abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
+    float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
     IPdfContentBoxEncoder encoder = PdfAbilitiesEncoder.createWithCraftsAndSpecialties(baseFont, resources, essenceMax);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
   }
 
-  private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private float encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
       throws DocumentException {
-    int attributeHeight = 128;
+    float attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
     IPdfContentBoxEncoder encoder = new PdfAttributesEncoder(
         baseFont,

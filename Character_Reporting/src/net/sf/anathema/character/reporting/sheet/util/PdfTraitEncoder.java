@@ -40,7 +40,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
   }
 
   public static PdfTraitEncoder createSmallTraitEncoder(BaseFont baseFont) {
-    return new PdfTraitEncoder(baseFont, 11, 6);
+    return new PdfTraitEncoder(baseFont, 10, 6);
   }
 
   private final int height;
