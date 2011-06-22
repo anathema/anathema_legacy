@@ -4,7 +4,6 @@ import java.util.LinkedHashMap;
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.CharmTier;
-import net.sf.anathema.character.generic.impl.magic.charm.special.EssenceFixedMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
@@ -21,30 +20,6 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 
 public interface IInfernalSpecialCharms
 {
-	public static final IMultiLearnableCharm MALFEAS_EXCELLENCY = new EssenceFixedMultiLearnableCharm(
-		      "Infernal.1stExcellency.Malfeas", //$NON-NLS-1$
-		      EssenceTemplate.SYSTEM_ESSENCE_MAX,
-		      OtherTraitType.Essence);
-	public static final IMultiLearnableCharm CECELYNE_EXCELLENCY = new EssenceFixedMultiLearnableCharm(
-		      "Infernal.1stExcellency.Cecelyne", //$NON-NLS-1$
-		      EssenceTemplate.SYSTEM_ESSENCE_MAX,
-		      OtherTraitType.Essence);
-	public static final IMultiLearnableCharm SWLIHN_EXCELLENCY = new EssenceFixedMultiLearnableCharm(
-		      "Infernal.1stExcellency.SheWhoLivesInHerName", //$NON-NLS-1$
-		      EssenceTemplate.SYSTEM_ESSENCE_MAX,
-		      OtherTraitType.Essence);
-	public static final IMultiLearnableCharm ADORJAN_EXCELLENCY = new EssenceFixedMultiLearnableCharm(
-		      "Infernal.1stExcellency.Adorjan", //$NON-NLS-1$
-		      EssenceTemplate.SYSTEM_ESSENCE_MAX,
-		      OtherTraitType.Essence);
-	public static final IMultiLearnableCharm EBON_DRAGON_EXCELLENCY = new EssenceFixedMultiLearnableCharm(
-		      "Infernal.1stExcellency.EbonDragon", //$NON-NLS-1$
-		      EssenceTemplate.SYSTEM_ESSENCE_MAX,
-		      OtherTraitType.Essence);
-	public static final IMultiLearnableCharm KIMBERY_EXCELLENCY = new EssenceFixedMultiLearnableCharm(
-		      "Infernal.1stExcellency.Kimbery", //$NON-NLS-1$
-		      EssenceTemplate.SYSTEM_ESSENCE_MAX,
-		      OtherTraitType.Essence);
 	//Heretic
 	public static final IMultiLearnableCharm UNSURPASSED_DEVIL_CRAFT = new TieredMultiLearnableCharm(
 		      "Infernal.UnsurpassedDevil-Craft", //$NON-NLS-1$

@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Infernal Excellencies -->
-          <genericCharm id="Infernal.YoziBodyUnity5" exalt="Infernal">
+          <genericCharm id="Infernal.YoziBodyUnity" exalt="Infernal">
           <prerequisite>
                <trait value="0" />
                <essence value="5" />
@@ -36,23 +36,11 @@
           <genericCharmAttribute attribute="Excellency" />
           <source source="ReturnEmpress" />
      </genericCharm>
-     <genericCharm id="Infernal.YoziBodyUnity7" exalt="Infernal">
-          <prerequisite>
-               <trait value="0" />
-               <essence value="7" />
-               <genericCharmReference id="Infernal.YoziBodyUnity5"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <genericCharmAttribute attribute="Excellency" />
-          <source source="ReturnEmpress" />
-     </genericCharm>
      <genericCharm id="Infernal.EternalEssence" exalt="Infernal">
           <prerequisite>
                <trait value="0" />
                <essence value="7" />
-               <genericCharmReference id="Infernal.YoziBodyUnity7"/>
+               <genericCharmReference id="Infernal.YoziBodyUnity.Subeffects.Repurchase2"/>
           </prerequisite>
           <cost/>
           <duration duration="Permanent" />

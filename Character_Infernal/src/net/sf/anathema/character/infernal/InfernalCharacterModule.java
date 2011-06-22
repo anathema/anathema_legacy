@@ -8,11 +8,18 @@ import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
 import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
+import net.sf.anathema.character.generic.impl.magic.charm.special.CharmTier;
+import net.sf.anathema.character.generic.impl.magic.charm.special.EssenceFixedMultiLearnableCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.type.CharacterType;
 
 import net.sf.anathema.character.infernal.caste.InfernalCaste;
@@ -61,67 +68,7 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getCharmProvider().setSpecialCharms(
             CharacterType.INFERNAL,
             ExaltedEdition.SecondEdition,
-            new ISpecialCharm[] {
-                    IInfernalSpecialCharms.MALFEAS_EXCELLENCY,
-                    IInfernalSpecialCharms.CECELYNE_EXCELLENCY,
-                    IInfernalSpecialCharms.SWLIHN_EXCELLENCY,
-                    IInfernalSpecialCharms.ADORJAN_EXCELLENCY,
-                    IInfernalSpecialCharms.EBON_DRAGON_EXCELLENCY,
-                    IInfernalSpecialCharms.KIMBERY_EXCELLENCY,
-                    IInfernalSpecialCharms.WINDBORN_STRIDE,
-                    IInfernalSpecialCharms.SCARLET_RAPTURE_SHINTAI,
-                    IInfernalSpecialCharms.EARTHSKIMMING_GALE_TREAD,
-                    IInfernalSpecialCharms.SELFISHNESS_IS_POWER,
-                    IInfernalSpecialCharms.LIFE_DENYING_HATE,
-                    IInfernalSpecialCharms.EVER_HUNGRY_SHADOW_AFFLICTION,
-                    IInfernalSpecialCharms.SOUL_CRACK_EXPLOITATION,
-                    IInfernalSpecialCharms.PUISSANCE_MIMICRY_INTUITION,
-                    IInfernalSpecialCharms.BLACK_MIRROR_SHINTAI,
-                    IInfernalSpecialCharms.WHOLENESS_RIGHTFULLY_ASSUMED,
-                    IInfernalSpecialCharms.WAYWARD_DIVINITY_OVERSIGHT,
-                    IInfernalSpecialCharms.ANONYMITY_THROUGH_PROPRIETY,
-                    IInfernalSpecialCharms.UNQUESTIONABLE_YOZI_AUTHORITY,
-                    IInfernalSpecialCharms.SCORPION_TAILED_MIRAGE_TECHNIQUE,
-                    IInfernalSpecialCharms.RUNNING_TO_FOREVER,
-                    IInfernalSpecialCharms.INTOLERABLE_BURNING_TRUTHS,
-                    IInfernalSpecialCharms.HARDENED_DEVIL_BODY,
-                    IInfernalSpecialCharms.VIRIDIAN_LEGEND_EXOSKELETON,
-                    IInfernalSpecialCharms.ANALYTIC_MODELING_TECHNIQUE,
-                    IInfernalSpecialCharms.UNSHATTERED_TONGUE_PERFECTION,
-                    IInfernalSpecialCharms.CONSTRUCTIVE_CONVERGANCE_OF_PRINCIPLES,
-                    IInfernalSpecialCharms.ESSENCE_INFUSED_EGO_PRIMACY,
-                    IInfernalSpecialCharms.COSMIC_TRANSCENDENCE,
-                    IInfernalSpecialCharms.WIND_DAUGHTERS_WRATH,
-                    IInfernalSpecialCharms.VOICE_DRINKING_KISS,
-                    IInfernalSpecialCharms.SCOURING_BANISHMENT_TECHNIQUE,
-                    IInfernalSpecialCharms.FERVOR_DRIVEN_ANTAGONISM,
-                    IInfernalSpecialCharms.GOLDEN_YEARS_TARNISH_BLACK,
-                    IInfernalSpecialCharms.ORBITAL_IMPACT_STORM,
-                    IInfernalSpecialCharms.CRIMSON_WIND_RIBBONS,
-                    IInfernalSpecialCharms.SPLINTERED_GALE_SHINTAI,
-                    IInfernalSpecialCharms.NAKED_WICKED_SOULS,
-                    IInfernalSpecialCharms.UNSURPASSED_DEVIL_CRAFT,
-                    IInfernalSpecialCharms.SPITEFUL_SEA_TINCTURE,
-                    IInfernalSpecialCharms.SEA_WITHIN_VEINS_PRANA,
-                    IInfernalSpecialCharms.SCAR_WRIT_SAGA_SHIELD,
-                    IInfernalSpecialCharms.PATHETIC_DISTRACTION_REBUKE,
-                    IInfernalSpecialCharms.VITRIOLIC_CORNOA_ENDOWMENT,
-                    IInfernalSpecialCharms.KISSED_BY_HELLISH_NOON,
-                    IInfernalSpecialCharms.DEMON_EMPEROR_SHINTAI,
-                    IInfernalSpecialCharms.GREAT_MOTHERS_TEARS,
-                    IInfernalSpecialCharms.ICHOR_FLUX_TENDRILS,
-                    IInfernalSpecialCharms.WHAT_LURKS_BENEATH,
-                    IInfernalSpecialCharms.FATHOMLESS_POISON_HAVEN,
-                    IInfernalSpecialCharms.ACID_SLIPSTREAM_ASSIST,
-                    IInfernalSpecialCharms.GIFT_OF_SILENCE,
-                    IInfernalSpecialCharms.AGONY_OF_UNWISE_ADVERSITY,
-                    IInfernalSpecialCharms.HOLLOW_MIND_POSESSION,
-                    IInfernalSpecialCharms.TRIUMPH_OF_THE_WILL,
-                    IInfernalSpecialCharms.EMBER_GIFT_REVOCATION,
-                    IInfernalSpecialCharms.VOICE_LIKE_CRYSTAL_FACETS,
-                    IInfernalSpecialCharms.SPACE_MONSTER_SCREAM,
-                    IInfernalSpecialCharms.INEVITABILITY_OF_LAW,
-                    IInfernalSpecialCharms.TOOL_TRANSCENDING_CONSTRUCTS});
+            getSpecialCharmArray(ExaltedEdition.SecondEdition));
     
     characterGenerics.getGenericCharmStatsRegistry().register(
             CharacterType.INFERNAL,
@@ -131,6 +78,87 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
                 new YoziInevitabilityTechnique(),
                 new EffortlessYoziDominance(),
                 new SoSpeaksYozi()});
+  }
+  
+  private ISpecialCharm[] getSpecialCharmArray(IExaltedEdition edition)
+  {
+	  if (edition == ExaltedEdition.SecondEdition)
+	  {
+		  ISpecialCharm baseSet[] = new ISpecialCharm[] {
+                  IInfernalSpecialCharms.WINDBORN_STRIDE,
+                  IInfernalSpecialCharms.SCARLET_RAPTURE_SHINTAI,
+                  IInfernalSpecialCharms.EARTHSKIMMING_GALE_TREAD,
+                  IInfernalSpecialCharms.SELFISHNESS_IS_POWER,
+                  IInfernalSpecialCharms.LIFE_DENYING_HATE,
+                  IInfernalSpecialCharms.EVER_HUNGRY_SHADOW_AFFLICTION,
+                  IInfernalSpecialCharms.SOUL_CRACK_EXPLOITATION,
+                  IInfernalSpecialCharms.PUISSANCE_MIMICRY_INTUITION,
+                  IInfernalSpecialCharms.BLACK_MIRROR_SHINTAI,
+                  IInfernalSpecialCharms.WHOLENESS_RIGHTFULLY_ASSUMED,
+                  IInfernalSpecialCharms.WAYWARD_DIVINITY_OVERSIGHT,
+                  IInfernalSpecialCharms.ANONYMITY_THROUGH_PROPRIETY,
+                  IInfernalSpecialCharms.UNQUESTIONABLE_YOZI_AUTHORITY,
+                  IInfernalSpecialCharms.SCORPION_TAILED_MIRAGE_TECHNIQUE,
+                  IInfernalSpecialCharms.RUNNING_TO_FOREVER,
+                  IInfernalSpecialCharms.INTOLERABLE_BURNING_TRUTHS,
+                  IInfernalSpecialCharms.HARDENED_DEVIL_BODY,
+                  IInfernalSpecialCharms.VIRIDIAN_LEGEND_EXOSKELETON,
+                  IInfernalSpecialCharms.ANALYTIC_MODELING_TECHNIQUE,
+                  IInfernalSpecialCharms.UNSHATTERED_TONGUE_PERFECTION,
+                  IInfernalSpecialCharms.CONSTRUCTIVE_CONVERGANCE_OF_PRINCIPLES,
+                  IInfernalSpecialCharms.ESSENCE_INFUSED_EGO_PRIMACY,
+                  IInfernalSpecialCharms.COSMIC_TRANSCENDENCE,
+                  IInfernalSpecialCharms.WIND_DAUGHTERS_WRATH,
+                  IInfernalSpecialCharms.VOICE_DRINKING_KISS,
+                  IInfernalSpecialCharms.SCOURING_BANISHMENT_TECHNIQUE,
+                  IInfernalSpecialCharms.FERVOR_DRIVEN_ANTAGONISM,
+                  IInfernalSpecialCharms.GOLDEN_YEARS_TARNISH_BLACK,
+                  IInfernalSpecialCharms.ORBITAL_IMPACT_STORM,
+                  IInfernalSpecialCharms.CRIMSON_WIND_RIBBONS,
+                  IInfernalSpecialCharms.SPLINTERED_GALE_SHINTAI,
+                  IInfernalSpecialCharms.NAKED_WICKED_SOULS,
+                  IInfernalSpecialCharms.UNSURPASSED_DEVIL_CRAFT,
+                  IInfernalSpecialCharms.SPITEFUL_SEA_TINCTURE,
+                  IInfernalSpecialCharms.SEA_WITHIN_VEINS_PRANA,
+                  IInfernalSpecialCharms.SCAR_WRIT_SAGA_SHIELD,
+                  IInfernalSpecialCharms.PATHETIC_DISTRACTION_REBUKE,
+                  IInfernalSpecialCharms.VITRIOLIC_CORNOA_ENDOWMENT,
+                  IInfernalSpecialCharms.KISSED_BY_HELLISH_NOON,
+                  IInfernalSpecialCharms.DEMON_EMPEROR_SHINTAI,
+                  IInfernalSpecialCharms.GREAT_MOTHERS_TEARS,
+                  IInfernalSpecialCharms.ICHOR_FLUX_TENDRILS,
+                  IInfernalSpecialCharms.WHAT_LURKS_BENEATH,
+                  IInfernalSpecialCharms.FATHOMLESS_POISON_HAVEN,
+                  IInfernalSpecialCharms.ACID_SLIPSTREAM_ASSIST,
+                  IInfernalSpecialCharms.GIFT_OF_SILENCE,
+                  IInfernalSpecialCharms.AGONY_OF_UNWISE_ADVERSITY,
+                  IInfernalSpecialCharms.HOLLOW_MIND_POSESSION,
+                  IInfernalSpecialCharms.TRIUMPH_OF_THE_WILL,
+                  IInfernalSpecialCharms.EMBER_GIFT_REVOCATION,
+                  IInfernalSpecialCharms.VOICE_LIKE_CRYSTAL_FACETS,
+                  IInfernalSpecialCharms.SPACE_MONSTER_SCREAM,
+                  IInfernalSpecialCharms.INEVITABILITY_OF_LAW,
+                  IInfernalSpecialCharms.TOOL_TRANSCENDING_CONSTRUCTS};
+		  
+		  int yoziCount = YoziType.values().length;
+		  int generalSpecialCharmCount = 2;
+		  ISpecialCharm[] masterSet = new ISpecialCharm[baseSet.length + generalSpecialCharmCount*yoziCount];
+		  for (int i = 0; i != baseSet.length; i++) masterSet[i] = baseSet[i];
+		  
+		  for (int i = 0; i != yoziCount; i++)
+		  {
+			  ITraitType type = YoziType.values()[i];
+			  masterSet[baseSet.length + 2*i] = new EssenceFixedMultiLearnableCharm(
+				      "Infernal.1stExcellency." + type.getId(), //$NON-NLS-1$
+				      EssenceTemplate.SYSTEM_ESSENCE_MAX,
+				      OtherTraitType.Essence);
+			  masterSet[baseSet.length + 2*i + 1] = new TieredMultiLearnableCharm(
+				      "Infernal.YoziBodyUnity." + type.getId(), //$NON-NLS-1$
+				      new CharmTier[] { new CharmTier(5), new CharmTier(7) });
+		  }
+		  return masterSet;		  
+	  }
+	  return null;
   }
   
   @Override

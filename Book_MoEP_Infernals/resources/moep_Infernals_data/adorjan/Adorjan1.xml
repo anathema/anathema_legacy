@@ -142,28 +142,6 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Infernals" />
      </charm>
-	 <charm id="Infernal.ScarletRaptureShintai2" exalt="Infernal" group="Wind">          
-          <prerequisite>
-               <trait id="Adorjan" value="0" />
-               <essence value="5" />	   
-               <charmReference id="Infernal.ScarletRaptureShintai"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
-	 <charm id="Infernal.ScarletRaptureShintai3" exalt="Infernal" group="Wind">          
-          <prerequisite>
-               <trait id="Adorjan" value="0" />
-               <essence value="6" />	   
-               <charmReference id="Infernal.ScarletRaptureShintai2"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
 	 <charm id="Infernal.Threat-MonitoringExcitement" exalt="Infernal" group="Wind">          
           <prerequisite>
                <trait id="Adorjan" value="0" />
@@ -317,28 +295,6 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Infernals" />
      </charm>         
-	 <charm id="Infernal.Earth-SkimmingGaleTread2" exalt="Infernal" group="Unimpeded">     
-          <prerequisite>
-               <trait id="Adorjan" value="0" />
-               <essence value="4" />	   
-               <charmReference id="Infernal.Earth-SkimmingGaleTread"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>      
-	 <charm id="Infernal.Earth-SkimmingGaleTread3" exalt="Infernal" group="Unimpeded">     
-          <prerequisite>
-               <trait id="Adorjan" value="0" />
-               <essence value="5" />	   
-               <charmReference id="Infernal.Earth-SkimmingGaleTread2"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
 	 <charm id="Infernal.FasterThanSight" exalt="Infernal" group="Unimpeded">          
           <prerequisite>
                <trait id="Adorjan" value="0" />

@@ -214,6 +214,11 @@ public class Charm extends Identificate implements ICharm {
 	  return id.split("\\.").length == 4;
   }
   
+  private boolean isGenericSubeffectReference(String id)
+  {
+	  return id.split("\\.").length == 5;
+  }
+  
   public void extractParentCharms(Map<String, Charm> charmsById) {
     if (parentCharms.size() > 0) {
       return;
@@ -225,6 +230,12 @@ public class Charm extends Identificate implements ICharm {
       {
     	  String[] split = parentId.split("\\.");
     	  id = split[0] + "." + split[1];
+    	  requiredSubeffects.add(parentId);
+      }
+      if (isGenericSubeffectReference(parentId))
+      {
+    	  String[] split = parentId.split("\\.");
+    	  id = split[0] + "." + split[1] + "." + split[4];
     	  requiredSubeffects.add(parentId);
       }
       

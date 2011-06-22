@@ -164,7 +164,8 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   
   private String getSubeffectParent(String subeffect)
   {
-	  return subeffect.split("\\.")[0] + "." + subeffect.split("\\.")[1];
+	  String[] split = subeffect.split("\\.");
+	  return split[0] + "." + split[1] + (split.length == 5 ? "." + split[4] : "");
   }
   
   private String getSubeffect(String subeffect)
