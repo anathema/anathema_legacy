@@ -85,7 +85,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   }
 
   @SuppressWarnings("unchecked")
-private void setSpellTemplate(GenericMagicTemplate basicTemplate, Element element) throws PersistenceException {
+  private void setSpellTemplate(GenericMagicTemplate basicTemplate, Element element) throws PersistenceException {
     Element spellTemplateElement = element.element(TAG_SPELL_TEMPLATE);
     if (spellTemplateElement == null) {
       return;
@@ -117,8 +117,8 @@ private void setSpellTemplate(GenericMagicTemplate basicTemplate, Element elemen
     }
     
     try {
-		Constructor[] helper = magicTemplateClass.getConstructors();
-		template = (ISpellMagicTemplate) helper[0].newInstance(CircleType.getSorceryCirclesUpTo(maximumSorceryCircle),
+		Constructor<SpellMagicTemplate>[] helper = (Constructor<SpellMagicTemplate>[])magicTemplateClass.getConstructors();
+		template = helper[0].newInstance(CircleType.getSorceryCirclesUpTo(maximumSorceryCircle),
 	                CircleType.getNecromancyCirclesUpTo(maximumNecromancyCircle),
 	                hostTemplate);
 			

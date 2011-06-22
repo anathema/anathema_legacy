@@ -161,7 +161,9 @@ public interface IInfernalSpecialCharms
 	  public static final IOxBodyTechniqueCharm HARDENED_DEVIL_BODY = new OxBodyTechniqueCharm(
 		      "Infernal.HardenedDevilBody", new ITraitType[] { AttributeType.Stamina, AbilityType.Resistance },
 		      new LinkedHashMap<String, HealthLevelType[]>() {
-		        {
+            private static final long serialVersionUID = -8422296765720844316L;
+
+            {
 		          put("Category.Infernal", new HealthLevelType[] { HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.FOUR }); //$NON-NLS-1$
 		        }
 		      });

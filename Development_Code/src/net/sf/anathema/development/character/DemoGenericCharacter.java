@@ -278,6 +278,7 @@ public int getEssenceCap(boolean modified)
 	  return null;
   }
   
+  @Override
   public IIdentifiedTraitTypeGroup[] getYoziTypeGroups()
   {
 	  return null;
