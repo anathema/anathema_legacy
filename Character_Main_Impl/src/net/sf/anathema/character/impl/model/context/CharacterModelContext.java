@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
+import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.CreationComboLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.CreationSpellLearnStrategy;
@@ -113,6 +114,11 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
 
   public IBasicCharacterData getBasicCharacterContext() {
     return characterData;
+  }
+  
+  public IPresentationProperties getPresentationProperties()
+  {
+	  return character.getTemplate().getPresentationProperties();
   }
 
   @Override

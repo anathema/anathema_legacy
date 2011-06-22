@@ -39,6 +39,13 @@ public enum MagicalMaterial implements IIdentificate {
 		public void visitLunar(ICharacterType type) {
 			types[0] = getSingleMaterialAttunement(type, material);
 		}
+		
+		@Override
+		public void visitInfernal(ICharacterType type) {
+			types[0] = new ArtifactAttuneType[] { ArtifactAttuneType.Unattuned, 
+					ArtifactAttuneType.PartiallyAttuned, ArtifactAttuneType.VitriolAttuned,
+					ArtifactAttuneType.FullyAttuned };
+		}
 
 		@Override
 		public void visitMortal(ICharacterType visitedType) {
@@ -123,6 +130,11 @@ public enum MagicalMaterial implements IIdentificate {
 
       public void visitDB(ICharacterType visitedType) {
         material[0] = Jade;
+      }
+      
+      public void visitInfernal(ICharacterType visitedType)
+      {
+    	material[0] = Orichalcum;
       }
 
       public void visitAbyssal(ICharacterType visitedType) {

@@ -10,6 +10,7 @@ import java.util.Map;
 
 import net.sf.anathema.cascades.module.ICascadeViewFactory;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
+import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
@@ -22,7 +23,6 @@ import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.presenter.charm.SourceBookCharmFilter;
@@ -44,9 +44,9 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
   private final ICascadeView view;
   private SourceBookCharmFilter sourceFilter; 
 
-  public CascadePresenter(IResources resources, ITemplateRegistry templateRegistry, ICascadeViewFactory factory) {
-    super(resources, templateRegistry);
-    this.viewProperties = new CascadeCharmTreeViewProperties(resources, charmMapsByRules);
+  public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory) {
+    super(resources, generics.getTemplateRegistry());
+    this.viewProperties = new CascadeCharmTreeViewProperties(resources, generics, charmMapsByRules);
     this.view = factory.createCascadeView(viewProperties);
   }
 

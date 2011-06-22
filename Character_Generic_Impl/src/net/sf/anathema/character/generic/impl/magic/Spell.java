@@ -65,6 +65,11 @@ public class Spell extends Identificate implements ISpell {
         spellFavoringType[0] = AttributeType.Intelligence;
       }
       
+      public void visitYoziType(FavoringTraitType visitedType)
+      {
+    	spellFavoringType[0] = AbilityType.Occult;
+      }
+      
       public void visitVirtueType(FavoringTraitType visitedType) {
           // ghosts don't get sorcery?
         }

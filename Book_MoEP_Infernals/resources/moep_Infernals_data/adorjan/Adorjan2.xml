@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    Adorjan2.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Sean C. Mattox (sean.mattox@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">    
+	 <charm id="Infernal.SacredKamillasInhalation" exalt="Infernal" group="Sacred">          
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="1" />	
+          </prerequisite>
+           <cost> 
+               <essence cost="1" text="per corpse" />    
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="Infernals" />
+     </charm> 
+	 <charm id="Infernal.FreedomLetsGo" exalt="Infernal" group="Freedom">          
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="2" />	   
+               <charmReference id="Infernal.SacredKamillasInhalation"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="4" />     
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+		  <special primaryStep="2" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.TragicLoveAmusement" exalt="Infernal" group="Freedom">          
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="2" />	   
+               <charmReference id="Infernal.FreedomLetsGo"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="4" />     
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.DreadPanoplyoftheSilentWind" exalt="Infernal" group="Sacred">          
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="2" />	   
+               <charmReference id="Infernal.SacredKamillasInhalation"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="10" />     
+               <willpower cost="1" />     
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.BrokenSilenceLaughterDefense" exalt="Infernal" group="Sacred">          
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="2" />	   
+               <charmReference id="Infernal.SacredKamillasInhalation"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="1" text="(+4m or +0m)" />    
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+		  <special primaryStep="2" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.RapaciousVirtueRespiration" exalt="Infernal" group="Sacred">          
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="3" />	   
+               <charmReference id="Infernal.SacredKamillasInhalation"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.HatefulWretchedNoise" exalt="Infernal" group="Sacred">          
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="2" />
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+		  <special primaryStep="2" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.EloquenceinUnspokenWords" exalt="Infernal" group="Sacred">          
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="3" />	   
+               <charmReference id="Infernal.HatefulWretchedNoise"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="6" />     
+               <willpower cost="1" />     
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.DissonantLiesMadeTrue" exalt="Infernal" group="Sacred">          
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="3" />	   
+               <charmReference id="Infernal.HatefulWretchedNoise"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="5" />     
+               <willpower cost="1" />     
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+		  <special primaryStep="9" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.Demon-WrackingShout" exalt="Infernal" group="Sacred">          
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="5" />	
+          </prerequisite>
+           <cost> 
+               <essence cost="50" />    
+               <health cost="5" type="Aggravated" />    
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Blasphemy" visualize="true" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+</charmlist>

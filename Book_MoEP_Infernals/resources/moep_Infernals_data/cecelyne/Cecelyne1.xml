@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    malfeas1.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Sean C. Mattox (sean.mattox@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <charm id="Infernal.HellscryChakra" exalt="Infernal" group="HellscryChakra">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="2" />
+          </prerequisite>
+           <cost> 
+               <essence cost="5" />    
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+          <source source="Infernals" />
+     </charm>	 
+     <charm id="Infernal.WaywardDivinityOversight" exalt="Infernal" group="HellscryChakra">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.HellscryChakra"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="-" text="(+1m to +3m)" />    
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm>	 
+     
+     <charm id="Infernal.EphemeralAbrasionCurse" exalt="Infernal" group="HellscryChakra">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.HellscryChakra"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="5" />    
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     
+     <charm id="Infernal.DemonicPrimacyofEssence" exalt="Infernal" group="DemonicPrimacy">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.HellscryChakra"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Servitude" visualize="true" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <source source="Infernals" />
+     </charm>     
+     <charm id="Infernal.AnonymityThroughPropriety" exalt="Infernal" group="DemonicPrimacy">     
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />
+               <charmReference id="Infernal.DemonicPrimacyofEssence"/>
+          </prerequisite>
+            <cost> 
+               <essence cost="8" />   
+               <willpower cost="1" />  
+          </cost>
+          <duration amount="1" unit="day"/>
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Messianic1" visualize="true" />
+          <source source="Infernals" />
+     </charm>     
+     <charm id="Infernal.UnquestionableYoziAuthority" exalt="Infernal" group="DemonicPrimacy">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />	   
+               <charmReference id="Infernal.DemonicPrimacyofEssence"/>
+          </prerequisite>
+            <cost> 
+               <essence cost="5" />    
+          </cost>
+          <duration duration="Indefinite"/>
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <source source="Infernals" />
+     </charm>   
+     <charm id="Infernal.SubliminationofOrdainedPurpose" exalt="Infernal" group="DemonicPrimacy">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />	   
+               <charmReference id="Infernal.DemonicPrimacyofEssence"/>
+          </prerequisite>
+            <cost> 
+               <essence cost="3" />   
+               <willpower cost="1" />  
+          </cost>
+          <duration duration="Instant"/>
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Servitude" visualize="true" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     
+     <charm id="Infernal.PenitentsLikeScatteredGrains" exalt="Infernal" group="DemonicPrimacy">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.DemonicPrimacyofEssence"/>
+          </prerequisite>
+            <cost> 
+               <essence cost="5" />    
+          </cost>
+          <duration duration="Indefinite"/>
+          <charmtype type="Simple" />
+          <source source="Infernals" />
+     </charm>
+          
+     <charm id="Infernal.TempleSelfApotheosis" exalt="Infernal" group="DemonicPrimacy">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />   
+               <charmReference id="Infernal.PenitentsLikeScatteredGrains"/>
+          </prerequisite>
+            <cost> 
+               <essence cost="-" text="(1 wp)" />   
+          </cost>
+          <duration duration="Permanent"/>
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="Messianic1" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     
+     
+</charmlist>

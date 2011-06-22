@@ -232,4 +232,9 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public ICharm[] getLearnedCharms() {
     return new ICharm[0];
   }
+  
+  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups()
+  {
+	  return null;
+  }
 }

@@ -8,7 +8,9 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.HealthConfiguration;
 import net.sf.anathema.character.impl.model.charm.special.OxBodyTechniqueConfiguration;
@@ -49,11 +51,12 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
         modelContext.getCharacterListening(),
         new FriendlyValueChangeChecker(),
         new FriendlyIncrementChecker());
-    health = new HealthConfiguration(endurance);
+    health = new HealthConfiguration(new IGenericTrait[] { endurance });
     configuration = new OxBodyTechniqueConfiguration(
         traitContext,
         null,
-        endurance,
+        null,
+        new ITraitType[] { endurance.getType() },
         health.getOxBodyLearnArbitrator(),
         new OxBodyTechniqueCharm(
             "Abyssal.Ox-BodyTechnique", AbilityType.Endurance, new LinkedHashMap<String, HealthLevelType[]>() { //$NON-NLS-1$
@@ -87,7 +90,8 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
     OxBodyTechniqueConfiguration secondConfiguration = new OxBodyTechniqueConfiguration(
         createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext(),
         null,
-        endurance,
+        null,
+        new ITraitType[] { endurance.getType() },
         health.getOxBodyLearnArbitrator(),
         new OxBodyTechniqueCharm(
             "Abyssal.Ox-BodyTechnique", AbilityType.Endurance, new LinkedHashMap<String, HealthLevelType[]>() { //$NON-NLS-1$

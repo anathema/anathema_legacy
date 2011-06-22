@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 
 public class ExaltTraitTemplateFactory implements ITraitTemplateFactory {
 
@@ -30,5 +31,9 @@ public class ExaltTraitTemplateFactory implements ITraitTemplateFactory {
 
   public ITraitTemplate createAbilityTemplate(AbilityType type) {
     return SimpleTraitTemplate.createEssenceLimitedTemplate(0);
+  }
+  
+  public ITraitTemplate createYoziTemplate(YoziType type) {
+	return SimpleTraitTemplate.createEssenceLimitedTemplate(0);
   }
 }

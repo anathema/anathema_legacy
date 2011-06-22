@@ -73,6 +73,10 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     }
     return groups.toArray(new IIdentifiedTraitTypeGroup[groups.size()]);
   }
+  
+  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups() {
+	    return null;
+	  }
 
   public ISpecialtiesConfiguration getSpecialtyConfiguration() {
     if (specialtyConfiguration == null) {

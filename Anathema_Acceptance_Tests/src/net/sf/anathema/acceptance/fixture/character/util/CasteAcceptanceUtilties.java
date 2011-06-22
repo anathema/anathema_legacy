@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.AbstractSupportedCharacterTypeVisitor;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.lunar.caste.LunarCaste;
+import net.sf.anathema.character.infernal.caste.InfernalCaste;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 
@@ -34,6 +35,10 @@ public class CasteAcceptanceUtilties {
       public void visitSidereal(ICharacterType visitedType) {
         casteType.add(SiderealCaste.valueOf(caste));
       }
+      
+      public void visitInfernal(ICharacterType visitedType) {
+          casteType.add(InfernalCaste.valueOf(caste));
+        }
 
       public void visitMortal(ICharacterType visitedType) {
         throw new IllegalArgumentException("Mortals have no caste"); //$NON-NLS-1$

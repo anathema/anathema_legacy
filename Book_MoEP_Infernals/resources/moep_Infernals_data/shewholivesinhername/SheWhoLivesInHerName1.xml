@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    SheWhoLivesInHerName1.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Sean C. Mattox (sean.mattox@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <charm id="Infernal.FactualDeterminationAnalysis" exalt="Infernal" group="FactualDetermination">          
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="2" />
+          </prerequisite>
+           <cost> 
+               <essence cost="2" />    
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.AnalyticalModellingIntuition" exalt="Infernal" group="FactualDetermination">         
+<!-- Can be purchased a total of 3 times-->	 
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.FactualDeterminationAnalysis"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="3" />    
+               <willpower cost="1" />    
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.CounterpointInquisitionDefence" exalt="Infernal" group="FactualDetermination">          
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />	   
+               <charmReference id="Infernal.AnalyticalModellingIntuition"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="3" />    
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+               <special primaryStep="9" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.UnshatteredTonguePerfection" exalt="Infernal" group="Unshattered">         
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.FactualDeterminationAnalysis"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="5" />      
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.CosmicTranscendenceofVirtue" exalt="Infernal" group="FactualDetermination">         
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.FactualDeterminationAnalysis"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.Essence-DissectingStare" exalt="Infernal" group="FactualDetermination">         
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.FactualDeterminationAnalysis"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="-" text="Special" />      
+          </cost>
+          <duration amount="1" unit="hour" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.Counter-ConceptualInterposition" exalt="Infernal" group="FactualDetermination">         
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.FactualDeterminationAnalysis"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="5" />      
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+		  <special primaryStep="2" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.Ego-InfusedPatternPrimacy" exalt="Infernal" group="Ego">         
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.Essence-DissectingStare"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.Pattern-ReassertingTouch" exalt="Infernal" group="Ego">         
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.Ego-InfusedPatternPrimacy"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="15" /> 
+               <willpower cost="1" />      
+          </cost>
+          <duration duration="UntilComplete" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.WholenessRightlyAssumed" exalt="Infernal" group="Ego">  
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.Ego-InfusedPatternPrimacy"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.WholenessRightlyAssumedLethal" exalt="Infernal" group="Ego">  
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.WholenessRightlyAssumed.Subeffects.Bashing"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm>
+     
+</charmlist>

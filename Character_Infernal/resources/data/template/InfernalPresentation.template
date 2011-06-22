@@ -1,0 +1,4 @@
+<presentation>
+  <color red="100" green="238" blue="100" />
+  <charmPresentation uses="template/InfernalCharmPresentation.template"/>
+</presentation>

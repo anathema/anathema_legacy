@@ -26,9 +26,10 @@
 <!ENTITY % Exalted.Common "Archery | MartialArts| Melee | Thrown | Athletics | Awareness | Dodge | Larceny | Stealth | Performance | Presence | Resistance | Survival | Bureaucracy | Linguistics | Ride | Sail | Socialize | Craft | Investigation | Lore | Medicine | Occult">
 <!ENTITY % Exalted.2nd "War | Integrity">
 <!ENTITY % Exalted.1st "Brawl | Endurance">
+<!ENTITY % Exalted.Yozis "Adorjan | Cecelyne | EbonDragon | Kimbery | Malfeas | SheWhoLivesInHerName">
 <!ENTITY % Exalted.Virtues "Compassion | Conviction | Temperance | Valor">
-<!ENTITY % Exalted.Traits "%Exalted.Common; | %Exalted.Attributes; | %Exalted.2nd; | %Exalted.1st; | %Exalted.Virtues;">
-<!ENTITY % NumbersThru.10 "1|2|3|4|5|6|7|8|9|10|Varies">
+<!ENTITY % Exalted.Traits "%Exalted.Common; | %Exalted.Attributes; | %Exalted.2nd; | %Exalted.1st; | %Exalted.Virtues; | %Exalted.Yozis;">
+<!ENTITY % NumbersThru.10 "0|1|2|3|4|5|6|7|8|9|10|Varies">
 <!ENTITY % Charm.Types "Simple | Supplemental | ExtraAction | Reflexive | Permanent | Special">
 <!ENTITY % Exalted.2nd.Speed "1|2|3|4|5|6|7|8">
 <!ENTITY % Exalted.2nd.Defense "-0|0|-1|-2|-3|-4|-5|-6">

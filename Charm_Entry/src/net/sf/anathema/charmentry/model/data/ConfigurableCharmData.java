@@ -125,6 +125,10 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   public ITextualDescription getName() {
     return name;
   }
+  
+  public List<String> getParentSubeffects() {
+	    throw new NotYetImplementedException();
+	  }
 
   public IComboRestrictions getComboRules() {
     throw new NotYetImplementedException();

@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 
 public interface ITraitTemplateFactory {
 
@@ -19,4 +20,6 @@ public interface ITraitTemplateFactory {
   public ITraitTemplate createAttributeTemplate(AttributeType type);
 
   public ITraitTemplate createAbilityTemplate(AbilityType type);
+  
+  public ITraitTemplate createYoziTemplate(YoziType type);
 }

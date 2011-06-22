@@ -20,6 +20,7 @@ import net.sf.anathema.character.impl.model.traits.creation.AttributeTypeGroupFa
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChecker;
+import net.sf.anathema.character.impl.model.traits.creation.YoziTypeGroupFactory;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.ITrait;
@@ -42,6 +43,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private final BackgroundConfiguration backgrounds;
   private final IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
   private final IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
+  private final IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups;
   private final SpecialtiesConfiguration specialtyConfiguration;
 
   public CoreTraitConfiguration(
@@ -54,6 +56,9 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(
         template.getCasteCollection(),
         template.getAttributeGroups());
+    this.yoziTraitGroups = new YoziTypeGroupFactory().createTraitGroups(
+        template.getCasteCollection(),
+        template.getYoziGroups());
     this.traitFactory = new DefaultTraitFactory(
         modelContext.getTraitContext(),
         template.getTraitTemplateCollection(),
@@ -68,6 +73,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addTraits(traitFactory.createTraits(VirtueType.values()));
     addTrait(traitFactory.createTrait(OtherTraitType.Willpower));
     addAttributes(template);
+    addYozis(template);
     IDefaultTrait willpower = TraitCollectionUtilities.getWillpower(this);
     IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(this);
     if (template.getAdditionalRules().getAdditionalTraitRules().isWillpowerVirtueBased()) {
@@ -111,7 +117,13 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredAbilityIncrementChecker(template, this);
     addFavorableTraits(abilityTraitGroups, incrementChecker);
   }
-
+  
+  private void addYozis(ICharacterTemplate template)
+  {
+	IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredYoziIncrementChecker(template, this);
+	addFavorableTraits(yoziTraitGroups, incrementChecker);
+  }
+  
   private void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker) {
     for (IIdentifiedCasteTraitTypeGroup traitGroup : traitGroups) {
       addTraits(favorableTraitFactory.createTraits(traitGroup,
@@ -140,6 +152,10 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
   public final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
     return attributeTraitGroups;
+  }
+  
+  public final IIdentifiedCasteTraitTypeGroup[] getYoziTypeGroups() {
+	return yoziTraitGroups;
   }
 
   public IIdentificate getAbilityGroupId(AbilityType abilityType) {

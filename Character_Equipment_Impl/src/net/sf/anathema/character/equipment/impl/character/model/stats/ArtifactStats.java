@@ -50,16 +50,18 @@ public class ArtifactStats extends AbstractStats implements IArtifactStats
 	    IEquipmentStats[] views;
 	    if (allowForeignAttunement())
 	    {
-	    	views = new IEquipmentStats[4];
+	    	views = new IEquipmentStats[5];
 	    	views[0] = new ArtifactStatsDecorator(this, ArtifactAttuneType.PartiallyAttuned, requireAttunement);
 		views[1] = new ArtifactStatsDecorator(this, ArtifactAttuneType.ExpensivePartiallyAttuned, requireAttunement);
 		views[2] = new ArtifactStatsDecorator(this, ArtifactAttuneType.FullyAttuned, requireAttunement);
 		views[3] = new ArtifactStatsDecorator(this, ArtifactAttuneType.UnharmoniouslyAttuned, requireAttunement);
+	    views[4] = new ArtifactStatsDecorator(this, ArtifactAttuneType.VitriolAttuned, requireAttunement);
 	    }
 	    else
 	    {
-	    	views = new IEquipmentStats[1];
+	    	views = new IEquipmentStats[2];
 	    	views[0] = new ArtifactStatsDecorator(this, ArtifactAttuneType.FullyAttuned, requireAttunement);
+		    views[1] = new ArtifactStatsDecorator(this, ArtifactAttuneType.VitriolAttuned, requireAttunement);
 	    }
 	    
 	    return views;

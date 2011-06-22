@@ -16,7 +16,6 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearn
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -70,11 +69,11 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerOxBodyTechnique(IOxBodyTechniqueCharm visited, ICharm charm, ILearningCharmGroup group) {
-    IGenericTrait relevantTrait = context.getTraitCollection().getTrait(visited.getRelevantTrait());
     OxBodyTechniqueConfiguration oxBodyTechniqueConfiguration = new OxBodyTechniqueConfiguration(
         context.getTraitContext(),
+        context.getTraitCollection(),
         charm,
-        relevantTrait,
+        visited.getRelevantTraits(),
         health.getOxBodyLearnArbitrator(),
         visited);
     addSpecialCharmConfiguration(charm, group, oxBodyTechniqueConfiguration);

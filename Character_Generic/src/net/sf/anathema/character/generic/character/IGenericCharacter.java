@@ -55,6 +55,8 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
   
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
+  
+  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups();
 
   public int getTotalExperiencePoints();
 

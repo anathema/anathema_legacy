@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 
@@ -17,5 +18,10 @@ public abstract class AbstractMultiLearnableCharm implements IMultiLearnableChar
 
   public void accept(ISpecialCharmVisitor visitor) {
     visitor.visitMultiLearnableCharm(this);
+  }
+  
+  public int getMinimumLearnCount(IGenericTraitCollection traitCollection)
+  {
+	  return 1;
   }
 }

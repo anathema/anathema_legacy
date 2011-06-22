@@ -17,6 +17,8 @@ public interface ICoreTraitConfiguration extends ITraitCollection {
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
 
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
+  
+  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups();
 
   public IFavorableTrait[] getAllAbilities();
 

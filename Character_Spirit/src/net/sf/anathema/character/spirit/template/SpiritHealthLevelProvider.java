@@ -3,7 +3,6 @@ package net.sf.anathema.character.spirit.template;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.health.IHealthLevelProvider;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
@@ -11,9 +10,9 @@ public class SpiritHealthLevelProvider implements IHealthLevelProvider
 {
 	ICoreTraitConfiguration traits;
 	
-	public SpiritHealthLevelProvider(ICharacterStatistics stats)
+	public SpiritHealthLevelProvider(ICoreTraitConfiguration traits)
 	{
-		this.traits = stats.getTraitConfiguration();
+		this.traits = traits;
 	}
 
 	@Override

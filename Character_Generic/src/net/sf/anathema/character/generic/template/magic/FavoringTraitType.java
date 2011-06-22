@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public enum FavoringTraitType implements IIdentificate {
@@ -40,7 +41,18 @@ public enum FavoringTraitType implements IIdentificate {
         public VirtueType[] getTraitTypes(IExaltedEdition edition) {
           return net.sf.anathema.character.generic.traits.types.VirtueType.values();
         }
-  };
+  },
+  YoziType() {
+	    @Override
+	    public void accept(IFavoringTraitTypeVisitor visitor) {
+	      visitor.visitYoziType(this);
+	    }
+
+	    @Override
+	    public YoziType[] getTraitTypes(IExaltedEdition edition) {
+	      return net.sf.anathema.character.generic.traits.types.YoziType.values();
+	    }
+	  };
 
   public String getId() {
     return name();

@@ -16,6 +16,8 @@ public interface ICharacterTemplate extends ICharacterExternalsTemplate {
   public IGroupedTraitType[] getAbilityGroups();
 
   public IGroupedTraitType[] getAttributeGroups();
+  
+  public IGroupedTraitType[] getYoziGroups();
 
   public IAdditionalRules getAdditionalRules();
 
@@ -31,7 +33,7 @@ public interface ICharacterTemplate extends ICharacterExternalsTemplate {
 
   public ITraitTemplateCollection getTraitTemplateCollection();
 
-  public ITraitType getToughnessControllingTraitType();
+  public ITraitType[] getToughnessControllingTraitTypes();
   
   public String[] getBaseHealthProviders();
 

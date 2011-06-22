@@ -1,0 +1,39 @@
+<exaltedCharacterTemplate characterType="Infernal" subtemplate="RevisedInfernal">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="template/InfernalAbilityGroup2nd.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <yoziGroups uses="template/InfernalYoziGroup2nd.template"/>
+    <essence uses="template/InfernalEssence.template" />
+    <traitCollection uses="template/InfernalTraitCollection2nd.template"/>
+    <magicTemplate uses="template/InfernalMagic2nd.template"/>
+    <presentation uses="template/InfernalPresentation.template"/>
+    <healthTemplate>
+      <toughnessControllingTrait type="Resistance"/>
+      <toughnessControllingTrait type="Stamina"/>
+    </healthTemplate>
+    <additionalRules>
+    	<revisedIntimacies value="true" />
+    	<willpowerVirtueBased value="false" />
+    </additionalRules>
+    <additionalTemplates>
+    	<template id="Infernal.Patron.Template"/>
+    	<template id="Infernal.Urge.Template"/>
+    </additionalTemplates>
+  </general>
+  <creation>
+    <bonusPointCosts uses="SolaroidDefaultBonusPointCost2nd.template" />
+    <creationPoints>
+      <attributeDots primary="8" secondary="6" tertiary="4" />
+      <abilityDots general="18" favored="10" favoredPicks="5" />
+      <backgroundDots count="7" />
+      <virtueDots count="5" />
+      <specialtyDots count="4" />
+      <bonusPoints count="18" />
+      <charmPicks favored="0" general="10" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/InfernalExperienceCost2nd.template" />
+  </experience>
+</exaltedCharacterTemplate>

@@ -9,10 +9,10 @@ import net.sf.anathema.character.model.health.IOxBodyTechniqueArbitrator;
 
 public class OxBodyTechniqueArbitrator implements IOxBodyTechniqueArbitrator {
   private final List<IOxBodyTechniqueConfiguration> oxBodyList = new ArrayList<IOxBodyTechniqueConfiguration>();
-  private final IGenericTrait controllingTrait;
+  private final IGenericTrait[] controllingTraits;
 
-  public OxBodyTechniqueArbitrator(IGenericTrait toughnessControllingTrait) {
-    this.controllingTrait = toughnessControllingTrait;
+  public OxBodyTechniqueArbitrator(IGenericTrait[] toughnessControllingTraits) {
+    this.controllingTraits = toughnessControllingTraits;
   }
 
   public void addOxBodyTechniqueConfiguration(IOxBodyTechniqueConfiguration oxBodyTechniqueConfiguration) {
@@ -21,9 +21,12 @@ public class OxBodyTechniqueArbitrator implements IOxBodyTechniqueArbitrator {
 
   public boolean isIncrementAllowed(int increment) {
     int oxBodyCount = 0;
+    int maxCount = Integer.MAX_VALUE;
+    for (IGenericTrait trait : controllingTraits)
+    	maxCount = Math.min(maxCount, trait.getCurrentValue());
     for (IOxBodyTechniqueConfiguration configuration : oxBodyList) {
       oxBodyCount += configuration.getCurrentLearnCount();
     }
-    return oxBodyCount + increment <= controllingTrait.getCurrentValue();
+    return oxBodyCount + increment <= maxCount;
   }
 }

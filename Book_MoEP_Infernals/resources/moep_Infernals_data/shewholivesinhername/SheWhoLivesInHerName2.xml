@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    SheWhoLivesInHerName1.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Sean C. Mattox (sean.mattox@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <charm id="Infernal.Mind-HandManipulation" exalt="Infernal" group="MindHand">         
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.Essence-DissectingStare"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="10" />      
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.UnseenForceApplication" exalt="Infernal" group="MindHand">  
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.Mind-HandManipulation"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.Principle-InvokingOnslaught" exalt="Infernal" group="MindHand">         
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.Mind-HandManipulation"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="1" text="(+1wp)" />      
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.ConstructiveConvergenceofPrinciples" exalt="Infernal" group="MindHand">         
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.Principle-InvokingOnslaught"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="20"  />   
+               <willpower cost="1"  />      
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+		  <special turntype="DramaticAction" /> 
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.Crystal-FireBarrierTechnique" exalt="Infernal" group="MindHand">  
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.Mind-HandManipulation"/>
+          </prerequisite>
+            <cost> 
+               <essence cost="5"  />   
+               <willpower cost="1"  />      
+          </cost>
+          <duration amount="1" unit="day" />
+          <charmtype type="Reflexive" /> 
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.AscendantObjectivityStance" exalt="Infernal" group="MindHand">  
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="4" />		   
+               <charmReference id="Infernal.Crystal-FireBarrierTechnique"/>
+          </prerequisite>
+            <cost> 
+               <essence cost="8"  />   
+               <willpower cost="1"  />      
+          </cost>
+          <duration amount="1" unit="day" />
+          <charmtype type="Simple" /> 
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.Tool-TranscendingConstructs" exalt="Infernal" group="MindHand">  
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.Mind-HandManipulation"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.ExperimentalAccelerationMastery" exalt="Infernal" group="MindHand">  
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.Tool-TranscendingConstructs"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+	 <charm id="Infernal.Will-CrushingForce" exalt="Infernal" group="MindHand">  
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.Mind-HandManipulation"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+</charmlist>

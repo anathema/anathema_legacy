@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.magic;
 
+import java.util.List;
 import java.util.Set;
 
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
@@ -41,6 +42,8 @@ public interface ICharmData extends IMagicData {
   public ICharmAttributeRequirement[] getAttributeRequirements();
 
   public Set<ICharm> getParentCharms();
+  
+  public List<String> getParentSubeffects();
 
   public ICharmTypeModel getCharmTypeModel();
 

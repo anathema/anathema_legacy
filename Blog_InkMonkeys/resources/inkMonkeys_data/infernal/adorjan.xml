@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    Adorjan.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Sean C. Mattox (sean.mattox@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">    	 
+	 <charm id="Infernal.ImpatientTempestLabour" exalt="Infernal" group="Wind">
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="2" />	   
+               <charmReference id="Infernal.Wind-BornStride"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="5" text="+" />    
+          </cost>
+          <duration amount="1" unit="hour" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+	 <charm id="Infernal.WindShearingHearts" exalt="Infernal" group="Wind">
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="2" />	   
+               <charmReference id="Infernal.JoyinViolenceApproach"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Overdrive" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+	 <charm id="Infernal.BehemothFetchExercise" exalt="Infernal" group="Typhoon">
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="2" />	   
+               <charmReference id="Infernal.ThousandfoldTyphooonHand"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="3" />     
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+		  <special primaryStep="9" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Knockback" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+	 <charm id="Infernal.Wind-DaughtersWrath" exalt="Infernal" group="Typhoon">
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="3" />	   
+               <charmReference id="Infernal.PellegrinasFury"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm>
+	 <charm id="Infernal.HungryWindHowling" exalt="Infernal" group="Wind">
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="5" />	   
+               <charmReference id="Infernal.MurderisMeat"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Overdrive" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+	 <charm id="Infernal.UnboundFreedomInfiltration" exalt="Infernal" group="Unimpeded">
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="3" />	   
+               <charmReference id="Infernal.GravityRebukingGrace"/>
+          </prerequisite>
+           <cost>  
+               <health cost="1" type="Aggravated" />  
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+	 <charm id="Infernal.Voice-DrinkingKiss" exalt="Infernal" group="Sacred">
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="3" />	   
+               <charmReference id="Infernal.SacredKamillasInhalation"/>  
+               <charmReference id="Infernal.EloquenceinUnspokenWords"/>
+          </prerequisite>
+           <cost>  
+               <essence cost="3" />  
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Crippling" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+	 <charm id="Infernal.EmbracingEmptyPassion" exalt="Infernal" group="Freedom">
+          <prerequisite>
+               <trait id="Adorjan" value="0" />
+               <essence value="3" />	   
+               <charmReference id="Infernal.Wind-CarriedPassion"/>
+          </prerequisite>
+           <cost>
+               <essence cost="-" text="(1wp)" />  
+		   </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>
+</charmlist>

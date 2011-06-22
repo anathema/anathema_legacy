@@ -12,6 +12,61 @@
      </runtime>
      <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="moepInfernalsCharms">
           <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/excellencies.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/malfeas/malfeas1.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/malfeas/malfeas2.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/malfeas/malfeas3.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/cecelyne/Cecelyne1.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/cecelyne/Cecelyne2.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/shewholivesinhername/SheWhoLivesInHerName1.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/shewholivesinhername/SheWhoLivesInHerName2.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/adorjan/Adorjan1.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/adorjan/Adorjan2.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="moep_Infernals_data/ebondragon/EbonDragon1.xml" />
+          </parameter>
+          <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="moep_Infernals_data/solar/occult.xml" />

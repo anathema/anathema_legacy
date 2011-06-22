@@ -21,6 +21,16 @@ public class TraitDependentMultiLearnableCharm extends AbstractMultiLearnableCha
     this.traitType = traitType;
     this.countModifier = modifier;
   }
+  
+  public int getModifier()
+  {
+	  return countModifier;
+  }
+  
+  public ITraitType getTraitType()
+  {
+	  return traitType;
+  }
 
   public int getAbsoluteLearnLimit() {
     return absoluteLearnLimit;

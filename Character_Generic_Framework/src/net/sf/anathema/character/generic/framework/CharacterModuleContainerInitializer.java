@@ -36,6 +36,7 @@ public class CharacterModuleContainerInitializer {
       add("net.sf.anathema.character.spirit.SpiritCharacterModule"); //$NON-NLS-1$
       //add("net.sf.anathema.character.ghost.GhostCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.sidereal.SiderealCharacterModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.infernal.InfernalCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.godblooded.GodBloodedCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.martialarts.MartialArtsCharacterModule"); //$NON-NLS-1$
     }

@@ -38,6 +38,11 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   public IGroupedTraitType[] getAttributeGroups() {
     return null;
   }
+  
+  @Override
+  public IGroupedTraitType[] getYoziGroups() {
+    return null;
+  }
 
   public IAdditionalRules getAdditionalRules() {
     return null;
@@ -78,7 +83,7 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
     return null;
   }
 
-  public ITraitType getToughnessControllingTraitType() {
+  public ITraitType[] getToughnessControllingTraitTypes() {
     return null;
   }
 

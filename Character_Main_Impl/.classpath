@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="src" path="/Character_Main"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -58,7 +58,7 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
       IGridDialogLayoutData labelAlignment) {
     super(factory, labelText, value, maxValue, trait);
     this.label = getLabelText() != null ? new JLabel(getLabelText()) : null;
-    this.displayComponent = getValueDisplay().getComponent();
+    this.displayComponent = maxValue > 0 ? getValueDisplay().getComponent() : null;
     this.dotAlignment = dotAlignment;
     this.labelAlignment = labelAlignment;
   }
@@ -75,7 +75,8 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
     }
     GridDialogLayoutData data = new GridDialogLayoutData();
     data.setHorizontalAlignment(dotAlignment);
-    panel.add(displayComponent, data);
+    if (displayComponent != null)
+    	panel.add(displayComponent, data);
   }
 
   public void delete() {

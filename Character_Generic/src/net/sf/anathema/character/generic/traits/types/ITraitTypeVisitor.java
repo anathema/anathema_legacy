@@ -14,6 +14,8 @@ public interface ITraitTypeVisitor {
   public void visitEssence(OtherTraitType type);
 
   public void visitWillpower(OtherTraitType type);
+  
+  public void visitYozi(YoziType type);
 
   public void visitBackground(IBackgroundTemplate template);
 

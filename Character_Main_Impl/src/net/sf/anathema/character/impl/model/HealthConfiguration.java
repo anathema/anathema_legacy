@@ -7,8 +7,6 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.health.IHealthLevelTypeVisitor;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.health.IHealthLevelProvider;
 import net.sf.anathema.character.model.health.IOxBodyTechniqueArbitrator;
@@ -21,17 +19,15 @@ public class HealthConfiguration implements IHealthConfiguration {
   private final List<IPainToleranceProvider> painResistanceProviders = new ArrayList<IPainToleranceProvider>();
   private final OxBodyTechniqueArbitrator arbitrator;
 
-  public HealthConfiguration(IGenericTrait toughnessControllingTrait)
+  public HealthConfiguration(IGenericTrait[] toughnessControllingTraits)
   {
-	  this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTrait);
+	  this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTraits);
   }
   
-  public HealthConfiguration(ICharacterStatistics statistics,
+  public HealthConfiguration(IGenericTrait[] toughnessControllingTraits,
 		  ICoreTraitConfiguration config,
 		  String[] providers) {
-	ITrait toughnessTrait = statistics.getTraitConfiguration().
-		getTrait(statistics.getCharacterTemplate().getToughnessControllingTraitType());
-    this.arbitrator = new OxBodyTechniqueArbitrator(toughnessTrait);
+    this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTraits);
     
     addHealthLevelProvider(new DyingStaminaHealthLevelProvider(config));
     
@@ -42,7 +38,7 @@ public class HealthConfiguration implements IHealthConfiguration {
 		try {
 			loadedClass = Class.forName(providerString);
 			IHealthLevelProvider provider = (IHealthLevelProvider)
-    			loadedClass.getConstructors()[0].newInstance(statistics);
+    			loadedClass.getConstructors()[0].newInstance(config);
 			addHealthLevelProvider(provider);
 		} catch (Exception e) {
 			e.printStackTrace();

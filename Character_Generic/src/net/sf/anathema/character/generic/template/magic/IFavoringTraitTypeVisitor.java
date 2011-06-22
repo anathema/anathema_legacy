@@ -7,4 +7,6 @@ public interface IFavoringTraitTypeVisitor {
   void visitAttributeType(FavoringTraitType visitedType);
   
   void visitVirtueType(FavoringTraitType visitedType);
+  
+  void visitYoziType(FavoringTraitType visitedType);
 }

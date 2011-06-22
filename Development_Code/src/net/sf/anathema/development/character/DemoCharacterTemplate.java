@@ -33,6 +33,11 @@ public class DemoCharacterTemplate implements ICharacterTemplate {
   public IGroupedTraitType[] getAbilityGroups() {
     return null;
   }
+  
+  @Override
+  public IGroupedTraitType[] getYoziGroups() {
+    return null;
+  }
 
   @Override
   public IAdditionalRules getAdditionalRules() {
@@ -89,7 +94,7 @@ public class DemoCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public ITraitType getToughnessControllingTraitType() {
+  public ITraitType[] getToughnessControllingTraitTypes() {
     return null;
   }
 

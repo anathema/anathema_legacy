@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    EbonDragon.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Sean C. Mattox (sean.mattox@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <charm id="Infernal.NakedWickedSouls" exalt="Infernal" group="Witness">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="2" />	
+			   <charmReference id="Infernal.WitnesstoDarkness"/> 
+          </prerequisite>
+          <cost>
+		   <essence cost="5" />
+		   </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>    
+     <charm id="Infernal.SweetAgonySavoured" exalt="Infernal" group="Life">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.Life-BlightingEmptinessAttack"/> 
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>   
+	 <charm id="Infernal.AgonyofUnwiseAdversity" exalt="Infernal" group="Seeing">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="2" />	
+			   <charmReference id="Infernal.SeeingisBlindness"/> 
+          </prerequisite>
+          <cost>
+		   <essence cost="3" />
+		   </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+		  <special primaryStep="1" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Crippling" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>   
+     <charm id="Infernal.AgonyofUnwiseAdversityCost" exalt="Infernal" group="Seeing">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.AgonyofUnwiseAdversity"/> 
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="BrokenWingedCrane" />
+     </charm> 
+     <charm id="Infernal.AgonyofUnwiseAdversityCounter" exalt="Infernal" group="Seeing">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.AgonyofUnwiseAdversity"/> 
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="BrokenWingedCrane" />
+     </charm>  
+	 <charm id="Infernal.VictoryinDefeat" exalt="Infernal" group="Loom">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.BroodingResentmentDefence"/> 
+          </prerequisite>
+          <cost>
+		   <essence cost="2" />
+		   </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>   
+	 <charm id="Infernal.MockingMurmursRetort" exalt="Infernal" group="Loom">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.BroodingResentmentDefence"/> 
+          </prerequisite>
+          <cost>
+		   <essence cost="6" />
+		   </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+		  <special primaryStep="2" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>  
+</charmlist>

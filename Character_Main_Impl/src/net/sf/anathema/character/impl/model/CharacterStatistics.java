@@ -9,6 +9,8 @@ import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration;
@@ -82,7 +84,7 @@ public class CharacterStatistics implements ICharacterStatistics {
     this.concept = initConcept();
     this.traitConfiguration = new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry());
     new CharacterTraitListening(traitConfiguration, context.getCharacterListening()).initListening();
-    this.health = new HealthConfiguration(this, traitConfiguration, template.getBaseHealthProviders());
+    this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration, template.getBaseHealthProviders());
     this.charms = new CharmConfiguration(health, context, generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
     this.essencePool = new EssencePoolConfiguration(
@@ -93,7 +95,7 @@ public class CharacterStatistics implements ICharacterStatistics {
     this.combos = new ComboConfiguration(charms, context.getComboLearnStrategy(), rules.getEdition());
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
     ICharacterType characterType = template.getTemplateType().getCharacterType();
-    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), characterType, rules.getEdition());
+    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template, rules.getEdition());
     this.spells.addChangeListener(new IChangeListener() {
       public void changeOccured() {
         context.getCharacterListening().fireCharacterChanged();
@@ -105,6 +107,14 @@ public class CharacterStatistics implements ICharacterStatistics {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
+  }
+  
+  private IGenericTrait[] getTraitArray(ITraitType[] types)
+  {
+	  IGenericTrait[] traits = new IGenericTrait[types.length];
+	  for (int i = 0; i != types.length; i++)
+		  traits[i] = traitConfiguration.getTrait(types[i]); 
+	  return traits;
   }
 
   private void initExperienceListening() {

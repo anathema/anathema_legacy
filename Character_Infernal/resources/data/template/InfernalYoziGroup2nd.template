@@ -1,0 +1,20 @@
+<yoziGroups>
+  <group id="Malfeas" casteId="Slayer">
+    <trait type="Malfeas" />
+  </group>
+  <group id="Cecelyne" casteId="Malefactor">
+    <trait type="Cecelyne" />
+  </group>
+  <group id="SheWhoLivesInHerName" casteId="Defiler">
+    <trait type="SheWhoLivesInHerName" />
+  </group>
+  <group id="Adorjan" casteId="Scourge">
+    <trait type="Adorjan" />
+  </group>
+  <group id="EbonDragon" casteId="Fiend">
+    <trait type="EbonDragon" />
+  </group>
+  <group id="Kimbery">
+    <trait type="Kimbery" />
+  </group>
+</yoziGroups>

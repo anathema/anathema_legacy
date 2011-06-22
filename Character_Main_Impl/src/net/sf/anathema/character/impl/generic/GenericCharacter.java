@@ -215,6 +215,11 @@ public class GenericCharacter implements IGenericCharacter {
   {
 	  return statistics.getTraitConfiguration().getAttributeTypeGroups();
   }
+  
+  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups()
+  {
+	  return statistics.getTraitConfiguration().getYoziTypeGroups();
+  }
 
   public int getSpentExperiencePoints() {
     return new ExperiencePointManagement(statistics).getTotalCosts();

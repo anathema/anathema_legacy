@@ -37,6 +37,7 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;
+  private final int TYPE_LONGFORM_CUTOFF = 20;
 
   public PdfGenericCharmTableEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
@@ -74,6 +75,8 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
 		  list = character.getAbilityTypeGroups();
 	  if (type == FavoringTraitType.AttributeType)
 		  list = character.getAttributeTypeGroups();
+	  if (type == FavoringTraitType.YoziType)
+		  list = character.getYoziTypeGroups();
 
 	  for (ITraitTypeGroup group : list)
 		  for (ITraitType trait : group.getAllGroupTypes())
@@ -118,6 +121,9 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
     directContent.setColorStroke(Color.BLACK);
     directContent.setColorFill(Color.BLACK);
     String text = resources.getString(abilityType.getId());
+    if (text.length() >= TYPE_LONGFORM_CUTOFF)
+    	text = resources.getString(abilityType.getId() + ".Short");    
+    
     float ascentPoint = baseFont.getAscentPoint(text, TableEncodingUtilities.FONT_SIZE);
     float descentPoint = baseFont.getDescentPoint(text, TableEncodingUtilities.FONT_SIZE);
     float templateWidth = baseFont.getWidthPoint(text, TableEncodingUtilities.FONT_SIZE);

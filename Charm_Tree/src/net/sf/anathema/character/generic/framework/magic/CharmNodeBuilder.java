@@ -36,6 +36,11 @@ public class CharmNodeBuilder {
         IIdentifiedRegularNode parentNode = NodeFactory.createChildlessNode(id);
         charmNodesById.put(id, parentNode);
       }
+      for (String label : charm.getRenderingPrerequisiteLabels())
+      {
+    	  IIdentifiedRegularNode parentNode = NodeFactory.createChildlessNode(label);
+          charmNodesById.put(label, parentNode);
+      }
     }
   }
 }

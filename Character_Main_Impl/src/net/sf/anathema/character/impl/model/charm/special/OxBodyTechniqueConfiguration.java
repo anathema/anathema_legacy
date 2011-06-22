@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
@@ -28,15 +29,19 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
 
   public OxBodyTechniqueConfiguration(
       ITraitContext context,
+      final IGenericTraitCollection collection,
       ICharm oxBodyTechnique,
-      final IGenericTrait relevantTrait,
+      final ITraitType[] relevantTraits,
       final IOxBodyTechniqueArbitrator arbitrator,
       IOxBodyTechniqueCharm properties) {
     this.oxBodyTechnique = oxBodyTechnique;
     incrementChecker = new IIncrementChecker() {
       public boolean isValidIncrement(int increment) {
+    	  int minTrait = Integer.MAX_VALUE;
+    	  for (ITraitType type : relevantTraits)
+    		  minTrait = Math.min(minTrait, collection.getTrait(type).getCurrentValue());
         return increment < 0
-            || (arbitrator.isIncrementAllowed(increment) && getCurrentLearnCount() + increment <= relevantTrait.getCurrentValue());
+            || (arbitrator.isIncrementAllowed(increment) && getCurrentLearnCount() + increment <= minTrait);
       }
     };
     Set<String> ids = properties.getHealthLevels().keySet();

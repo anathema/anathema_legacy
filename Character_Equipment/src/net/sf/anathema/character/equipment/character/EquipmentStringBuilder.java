@@ -87,6 +87,7 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
 	  default:
 	  case FullyAttuned:
 	  case UnharmoniouslyAttuned:
+	  case VitriolAttuned:
 		  return true;
 	  }
   }

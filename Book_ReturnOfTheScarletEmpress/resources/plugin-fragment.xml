@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6"
+"http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.returnofthescarletempress" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+     <runtime>
+          <library id="ReturnOfTheScarletEmpress" path="./" type="code">
+               <export prefix="*" />
+          </library>
+          <library id="ReturnOfTheScarletEmpressResources" path="./" type="resources">
+               <export prefix="*" />
+          </library>
+     </runtime>
+     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="ReturnOfTheScarletEmpressCharms">
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="RoSE_data/excellencies.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="RoSE_data/infernal/SheWhoLivesinHerName.xml" />
+          </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="RoSE_data/infernal/EbonDragon.xml" />
+          </parameter>
+     </extension>
+     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="ReturnOfTheScarletEmpressResources">
+          <parameter id="bundle" value="RoSE" />
+          <parameter id="bundle" value="Pages_RoSE" />
+          <parameter id="bundle" value="Charms_RoSE" />
+     </extension>
+</plugin-fragment>

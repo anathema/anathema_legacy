@@ -1,0 +1,24 @@
+<bonusPointCost uses="DefaultBonusPointCost2nd.template">
+  <attributes>
+    <generalAttribute>
+      <fixedCost cost="4" />
+    </generalAttribute>
+    <favoredAttribute>
+      <fixedCost cost="3" />
+    </favoredAttribute>
+  </attributes>
+  <advantages>    
+    <essence>
+      <fixedCost cost="10" />
+    </essence>
+  </advantages>
+  <charms>
+    <generalCharms>
+      <fixedCost cost="7" />
+    </generalCharms>
+    <favoredCharms>
+      <fixedCost cost="5" />
+    </favoredCharms>
+    <keywordCharms keyword="Knack" generalCost="6" favoredCost="6" />
+  </charms>  
+</bonusPointCost>

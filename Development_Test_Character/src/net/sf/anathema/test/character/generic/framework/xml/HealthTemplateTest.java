@@ -7,6 +7,6 @@ import net.sf.anathema.lib.testing.BasicTestCase;
 public class HealthTemplateTest extends BasicTestCase{
 
   public void testDefaultToughnessTrait() throws Exception {
-    assertEquals(AbilityType.Endurance, new GenericHealthTemplate().getToughnessControllingTrait());
+    assertEquals(AbilityType.Endurance, new GenericHealthTemplate().getToughnessControllingTraits()[0]);
   }  
 }

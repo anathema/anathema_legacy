@@ -7,18 +7,16 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.impl.magic.persistence.SpellBuilder;
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.magic.spells.ICircleTypeVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
 import net.sf.anathema.character.model.ISpellMapper;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
-import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.ChangeControl;
@@ -34,18 +32,18 @@ public class SpellConfiguration implements ISpellConfiguration {
   private final List<ISpell> spellsOtherEdition = new ArrayList<ISpell>();
   private final ICharmConfiguration charms;
   private final ISpellLearnStrategy strategy;
-  private final ICharacterType characterType;
+  private final ICharacterTemplate characterTemplate;
   private final IExaltedEdition edition;
   private final ISpellMapper spellMapper;
 
   public SpellConfiguration(
       ICharmConfiguration charms,
       ISpellLearnStrategy strategy,
-      ICharacterType characterType,
+      ICharacterTemplate template,
       IExaltedEdition edition) throws SpellException {
     this.charms = charms;
     this.strategy = strategy;
-    this.characterType = characterType;
+    this.characterTemplate = template;
     this.edition = edition;
     for (CircleType type : CircleType.values()) {
       spellsByCircle.put(type, new ArrayList<ISpell>());
@@ -128,40 +126,8 @@ public class SpellConfiguration implements ISpellConfiguration {
     if (creationLearnedList.contains(spell) || (experienced && experiencedLearnedList.contains(spell))) {
       return false;
     }
-    final boolean[] circleLearned = new boolean[1];
-    spell.getCircleType().accept(new ICircleTypeVisitor() {
-      public void visitTerrestrial(CircleType type) {
-        circleLearned[0] = isCharmLearned(characterType.getId() + ".TerrestrialCircleSorcery", experienced); //$NON-NLS-1$
-      }
-
-      public void visitCelestial(CircleType type) {
-        circleLearned[0] = isCharmLearned(characterType.getId() + ".CelestialCircleSorcery", experienced); //$NON-NLS-1$
-      }
-
-      public void visitSolar(CircleType type) {
-        circleLearned[0] = isCharmLearned(characterType.getId() + ".SolarCircleSorcery", experienced); //$NON-NLS-1$
-      }
-
-      public void visitShadowland(CircleType type) {
-        circleLearned[0] = isCharmLearned(characterType.getId() + ".ShadowlandsCircleNecromancy", experienced); //$NON-NLS-1$        
-      }
-
-      public void visitLabyrinth(CircleType type) {
-        circleLearned[0] = isCharmLearned(characterType.getId() + ".LabyrinthCircleNecromancy", experienced); //$NON-NLS-1$        
-      }
-
-      public void visitVoid(CircleType type) {
-        circleLearned[0] = isCharmLearned(characterType.getId() + ".VoidCircleNecromancy", experienced); //$NON-NLS-1$        
-      }
-    });
-    return circleLearned[0];
-  }
-
-  private boolean isCharmLearned(String charmId, boolean experienced) {
-    ICharm charm = charms.getCharmById(charmId);
-    ILearningCharmGroup group = charms.getGroup(charm);
-    boolean learned = group.isLearned(charm, false) || (experienced && group.isLearned(charm, true));
-    return learned;
+    ISpellMagicTemplate template = characterTemplate.getMagicTemplate().getSpellMagic();
+    return template.canLearnSpell(spell, charms.getLearnedCharms(true));
   }
 
   public ISpell[] getLearnedSpells() {

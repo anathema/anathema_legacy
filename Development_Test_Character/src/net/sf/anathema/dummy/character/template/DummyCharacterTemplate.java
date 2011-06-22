@@ -60,6 +60,11 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     }
     return abilityTypes;
   }
+  
+  @Override
+  public IGroupedTraitType[] getYoziGroups() {
+    return null;
+  }
 
   public ITemplateType getTemplateType() {
     return type;
@@ -164,8 +169,8 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     return traitTemplateCollection;
   }
 
-  public ITraitType getToughnessControllingTraitType() {
-    return AbilityType.Endurance;
+  public ITraitType[] getToughnessControllingTraitTypes() {
+    return new ITraitType[] { AbilityType.Endurance };
   }
 
   public IAdditionalTemplate[] getAdditionalTemplates() {

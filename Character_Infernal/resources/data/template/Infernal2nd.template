@@ -1,0 +1,34 @@
+<exaltedCharacterTemplate characterType="Infernal" subtemplate="default">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="template/InfernalAbilityGroup2nd.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <yoziGroups uses="template/InfernalYoziGroup2nd.template"/>
+    <essence uses="template/InfernalEssence.template" />
+    <traitCollection uses="template/InfernalTraitCollection2nd.template"/>
+    <magicTemplate uses="template/InfernalMagic2nd.template"/>
+    <presentation uses="template/InfernalPresentation.template"/>
+    <healthTemplate>
+      <toughnessControllingTrait type="Resistance"/>
+      <toughnessControllingTrait type="Stamina"/>
+    </healthTemplate>
+    <additionalTemplates>
+    	<template id="Infernal.Patron.Template"/>
+    	<template id="Infernal.Urge.Template"/>
+    </additionalTemplates>
+  </general>
+  <creation>
+    <bonusPointCosts uses="DefaultBonusPointCost2nd.template" />
+    <creationPoints>
+      <attributeDots primary="8" secondary="6" tertiary="4" />
+      <abilityDots general="18" favored="10" favoredPicks="5" />
+      <backgroundDots count="7" />
+      <virtueDots count="5" />
+      <bonusPoints count="15" />
+      <charmPicks favored="5" general="5" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/InfernalExperienceCost2nd.template" />
+  </experience>
+</exaltedCharacterTemplate>

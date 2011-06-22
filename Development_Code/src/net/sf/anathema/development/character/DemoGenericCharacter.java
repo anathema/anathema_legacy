@@ -277,6 +277,11 @@ public int getEssenceCap(boolean modified)
   {
 	  return null;
   }
+  
+  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups()
+  {
+	  return null;
+  }
 
   public void addSpecialtyTrait(ITraitType traitType) {
     specialtyTraitTypes.add(traitType);

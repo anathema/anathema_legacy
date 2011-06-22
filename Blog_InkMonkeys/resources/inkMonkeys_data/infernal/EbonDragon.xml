@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    EbonDragon.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Sean C. Mattox (sean.mattox@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms"> 	 	
+	 <charm id="Infernal.CorrosivePatternInfliction" exalt="Infernal" group="Loom">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.Loom-SnarlingDeception"/> 	
+          </prerequisite>
+           <cost>
+               <essence cost="2-10" /> 
+               <willpower cost="1" />    	   
+		   </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm> 		
+	 <charm id="Infernal.OurLittleSecret" exalt="Infernal" group="Witness">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="2" />	
+			   <charmReference id="Infernal.WitnesstoDarkness"/> 	
+          </prerequisite>
+           <cost>
+               <essence cost="4" /> 	   
+		   </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm> 		
+	 <charm id="Infernal.TheFaceintheDarkness" exalt="Infernal" group="Witness">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.OurLittleSecret"/> 	 
+			   <charmReference id="Infernal.1stExcellency.EbonDragon"/>
+          </prerequisite>
+           <cost>
+               <essence cost="5" /> 	   
+		   </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Crippling" visualize="true" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Overdrive" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>		
+	 <charm id="Infernal.Fervor-DrivenAntagonismTechnique" exalt="Infernal" group="Witness">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.WitnesstoDarkness"/> 	
+          </prerequisite>
+           <cost>
+               <essence cost="10" /> 
+               <willpower cost="2" /> 	   
+		   </cost>
+          <duration duration="SimpleOneMonth" />
+          <charmtype type="Simple" />
+		  <special speed="6" turntype="LongTick" /> 
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="Servitude" visualize="true" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm> 		
+	 <charm id="Infernal.GoldenYearsTarnishBlack" exalt="Infernal" group="Gold">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="2" />	
+			   <charmReference id="Infernal.WitnesstoDarkness"/> 	
+          </prerequisite>
+           <cost>
+               <essence cost="8" /> 
+               <willpower cost="2" /> 	   
+		   </cost>
+          <duration duration="SimpleOneMonth" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm> 	
+	 <charm id="Infernal.WeakMindsBelieveAnything" exalt="Infernal" group="Gold">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="2" />	
+			   <charmReference id="Infernal.GoldenYearsTarnishBlack"/> 	
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm> 		
+	 <charm id="Infernal.WantBecomesNeed" exalt="Infernal" group="Gold">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="2" />	
+			   <charmReference id="Infernal.GoldenYearsTarnishBlack"/> 	
+          </prerequisite>
+           <cost>
+               <essence cost="-" text="(+1m)" />  	   
+		   </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm> 		
+	 <charm id="Infernal.EverythingGetsWorse" exalt="Infernal" group="Gold">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="2" />	
+			   <charmReference id="Infernal.GoldenYearsTarnishBlack"/> 	
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm> 		
+	 <charm id="Infernal.BibleofBrokenTruths" exalt="Infernal" group="Gold">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.GoldenYearsTarnishBlack"/> 	
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm> 		
+	 <charm id="Infernal.MemoryPoisonMastery" exalt="Infernal" group="Gold">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.GoldenYearsTarnishBlack"/> 	
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm> 		
+	 <charm id="Infernal.TwistedYesterdaysCurse" exalt="Infernal" group="Gold">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.MemoryPoisonMastery"/> 	
+          </prerequisite>
+           <cost>
+               <essence cost="-" text="(+2m)" />  	   
+		   </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>		
+	 <charm id="Infernal.UnreasoningPrejudiceInfliction" exalt="Infernal" group="Gold">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.GoldenYearsTarnishBlack"/> 	
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="Servitude" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm> 			
+	 <charm id="Infernal.GloriesThatNeverWere" exalt="Infernal" group="Gold">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.UnreasoningPrejudiceInfliction"/> 	
+          </prerequisite>
+           <cost>
+               <essence cost="-" text="(+1m)" />    
+		   </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>			
+	 <charm id="Infernal.DarkClawsSeizeDarkHearts" exalt="Infernal" group="Gold">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="3" />	
+			   <charmReference id="Infernal.UnreasoningPrejudiceInfliction"/> 	
+          </prerequisite>
+           <cost>
+               <essence cost="6" /> 	   
+		   </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>	 			
+	 <charm id="Infernal.DragonsLairObtenebration" exalt="Infernal" group="Seeing">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="4" />	
+			   <charmReference id="Infernal.NoonasNightEvocation"/> 	
+          </prerequisite>
+           <cost>
+               <essence cost="-" text="(+10m)" /> 	   
+		   </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm> 			
+	 <charm id="Infernal.SeizingCoilAtemi" exalt="Infernal" group="Seeing">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="4" />	
+			   <charmReference id="Infernal.DragonsLairObtenebration"/> 	
+          </prerequisite>
+           <cost>
+               <essence cost="2" />  	   
+		   </cost>
+          <duration duration="EndOfClinch" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm>				
+	 <charm id="Infernal.WickedVoidReversal" exalt="Infernal" group="Seeing">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="4" />	
+			   <charmReference id="Infernal.SeizingCoilAtemi"/> 	
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Overdrive" visualize="true" />
+          <source source="InkMonkeys" />
+     </charm> 			
+	 <charm id="Infernal.SecondChancesSavored" exalt="Infernal" group="Seeing">
+          <prerequisite>
+               <trait id="EbonDragon" value="0" />
+               <essence value="4" />	
+			   <charmReference id="Infernal.KillFeintCleverness"/> 	
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="InkMonkeys" />
+     </charm> 	
+</charmlist>

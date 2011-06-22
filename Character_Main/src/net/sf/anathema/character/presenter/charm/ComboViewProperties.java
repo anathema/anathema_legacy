@@ -67,7 +67,7 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
             index,
             isSelected,
             cellHasFocus);
-        String tooltipString = charmInfoStringProvider.getInfoString((ICharm) value);
+        String tooltipString = charmInfoStringProvider.getInfoString((ICharm) value, null);
         renderComponent.setToolTipText(tooltipString);
         return renderComponent;
       }
@@ -96,7 +96,7 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
             index,
             isSelected,
             cellHasFocus);
-        String tooltipString = charmInfoStringProvider.getInfoString((ICharm) value);
+        String tooltipString = charmInfoStringProvider.getInfoString((ICharm) value, null);
         renderComponent.setToolTipText(tooltipString);
         return renderComponent;
       }

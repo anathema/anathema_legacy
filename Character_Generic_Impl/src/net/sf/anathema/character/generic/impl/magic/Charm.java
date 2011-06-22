@@ -35,6 +35,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -55,6 +56,7 @@ public class Charm extends Identificate implements ICharm {
 
   private final List<Set<ICharm>> alternatives = new ArrayList<Set<ICharm>>();
   private final List<Set<ICharm>> merges = new ArrayList<Set<ICharm>>();
+  private final List<String> requiredSubeffects = new ArrayList<String>();
   private final List<ICharm> parentCharms = new ArrayList<ICharm>();
   private final List<Charm> children = new ArrayList<Charm>();
   private final List<SelectiveCharmGroup> selectiveCharmGroups = new ArrayList<SelectiveCharmGroup>();
@@ -206,14 +208,28 @@ public class Charm extends Identificate implements ICharm {
   public Set<ICharm> getParentCharms() {
     return new HashSet<ICharm>(parentCharms);
   }
-
+  
+  private boolean isSubeffectReference(String id)
+  {
+	  return id.split("\\.").length == 4;
+  }
+  
   public void extractParentCharms(Map<String, Charm> charmsById) {
     if (parentCharms.size() > 0) {
       return;
     }
     for (final String parentId : prerequisisteList.getParentIDs()) {
-      Charm parentCharm = charmsById.get(parentId);
-      Ensure.ensureNotNull("Parent Charm " + parentId + " not defined for " + getId(), parentCharm); //$NON-NLS-1$//$NON-NLS-2$
+      String id = parentId;
+      
+      if (isSubeffectReference(parentId))
+      {
+    	  String[] split = parentId.split("\\.");
+    	  id = split[0] + "." + split[1];
+    	  requiredSubeffects.add(parentId);
+      }
+      
+      Charm parentCharm = charmsById.get(id);
+      Ensure.ensureNotNull("Parent Charm " + id + " not defined for " + getId(), parentCharm); //$NON-NLS-1$//$NON-NLS-2$
       parentCharms.add(parentCharm);
       parentCharm.addChild(this);
     }
@@ -225,14 +241,30 @@ public class Charm extends Identificate implements ICharm {
   public void addChild(Charm child) {
     children.add(child);
   }
+  
+  public List<String> getParentSubeffects()
+  {
+	  return requiredSubeffects;
+  }
 
   public Set<ICharm> getRenderingPrerequisiteCharms() {
     Set<ICharm> prerequisiteCharms = new HashSet<ICharm>();
     prerequisiteCharms.addAll(parentCharms);
     for (SelectiveCharmGroup charmGroup : selectiveCharmGroups) {
-      prerequisiteCharms.addAll(Arrays.asList(charmGroup.getAllGroupCharms()));
+      if (charmGroup.getLabel() == null)
+    	  prerequisiteCharms.addAll(Arrays.asList(charmGroup.getAllGroupCharms()));
     }
+    		
     return prerequisiteCharms;
+  }
+  
+  public Set<String> getRenderingPrerequisiteLabels() {
+	Set<String> prerequisiteLabels = new HashSet<String>();
+    for (SelectiveCharmGroup charmGroup : selectiveCharmGroups)
+    	if (charmGroup.getLabel() != null)
+    		prerequisiteLabels.add(charmGroup.getLabel());
+	    		
+	return prerequisiteLabels;
   }
 
   public Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {
@@ -320,21 +352,27 @@ public class Charm extends Identificate implements ICharm {
     	return true;
 
     basicCharacter.getCharacterType().getFavoringTraitType().accept(new IFavoringTraitTypeVisitor() {
-	    public void visitAbilityType(FavoringTraitType visitedType) {
-	      characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AbilityType;
-	    }
-	
-	    public void visitAttributeType(FavoringTraitType visitedType) {
-	      characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AttributeType;
-	    }
-	      
-	    public void visitVirtueType(FavoringTraitType visitedType) {
-	        characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof VirtueType;
-	      }
-	  });
-	  if (characterCanFavorMagicOfPrimaryType[0] == false) {
-	    return false;
-	  }
+      public void visitAbilityType(FavoringTraitType visitedType) {
+        characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AbilityType;
+      }
+
+      public void visitAttributeType(FavoringTraitType visitedType) {
+        characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AttributeType;
+      }
+      
+      public void visitYoziType(FavoringTraitType visitedType)
+      {
+    	characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof YoziType;
+      }
+
+	@Override
+	public void visitVirtueType(FavoringTraitType visitedType) {
+		characterCanFavorMagicOfPrimaryType[0] = false;
+	}
+    });
+    if (characterCanFavorMagicOfPrimaryType[0] == false) {
+      return false;
+    }
     IGenericTrait trait = traitCollection.getTrait(primaryTraitType);
     return trait instanceof IFavorableGenericTrait && ((IFavorableGenericTrait) trait).isCasteOrFavored();
   }

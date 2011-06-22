@@ -31,9 +31,11 @@ import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplat
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateType;
+import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.AllAttributeTraitTypeGroup;
+import net.sf.anathema.character.generic.traits.groups.AllYoziTraitTypeGroup;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
@@ -46,6 +48,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
 
   private static final String TAG_ABILITY_GROUPS = "abilityGroups"; //$NON-NLS-1$
   private static final String TAG_ATTRIBUTE_GROUPS = "attributeGroups"; //$NON-NLS-1$
+  private static final String TAG_YOZI_GROUPS = "yoziGroups"; //$NON-NLS-1$
   private static final String TAG_CREATION = "creation"; //$NON-NLS-1$
   private static final String TAG_CREATION_POINTS = "creationPoints"; //$NON-NLS-1$
   private static final String TAG_ESSENCE = "essence"; //$NON-NLS-1$
@@ -141,6 +144,22 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     GenericGroupedTraitTypeProvider abilityGroups = parser.parseTemplate(abilityGroupElement);
     characterTemplate.setAbilityGroups(abilityGroups.getTraitTypeGroups());
   }
+  
+  private void setYoziGroups(Element generalElement, GenericCharacterTemplate characterTemplate)
+  	throws PersistenceException
+  	{
+		Element yoziGroupElement = generalElement.element(TAG_YOZI_GROUPS);
+		if (yoziGroupElement == null) {
+		  characterTemplate.setYoziGroups(new IGroupedTraitType[0]);
+		  return;
+		}
+		IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
+		TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(
+		    registry,
+		    AllYoziTraitTypeGroup.getInstance());
+		GenericGroupedTraitTypeProvider yoziGroups = parser.parseTemplate(yoziGroupElement);
+		characterTemplate.setYoziGroups(yoziGroups.getTraitTypeGroups());
+	}
 
   private void setAttributeGroups(Element generalElement, GenericCharacterTemplate characterTemplate)
       throws PersistenceException {
@@ -224,6 +243,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     setAdditionalModelTemplates(generalElement, characterTemplate);
     setAdditionalRules(generalElement, characterTemplate);
     setToughnessControllingTrait(generalElement, characterTemplate);
+    setYoziGroups(generalElement, characterTemplate);
   }
 
   private void setEdition(Element generalElement, GenericCharacterTemplate characterTemplate) {
@@ -297,7 +317,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     }
     GenericMagicTemplateParser parser = new GenericMagicTemplateParser(
         registryCollection.getMagicTemplateRegistry(),
-        characterTemplate.getEdition());
+        characterTemplate);
     GenericMagicTemplate template = parser.parseTemplate(magicTemplateElement);
     characterTemplate.setMagicTemplate(template);
   }
