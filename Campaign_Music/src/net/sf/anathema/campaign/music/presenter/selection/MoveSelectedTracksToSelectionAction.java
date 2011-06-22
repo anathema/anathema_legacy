@@ -11,6 +11,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class MoveSelectedTracksToSelectionAction extends AbstractTrackSelectionAction {
 
+  private static final long serialVersionUID = -568689306616635933L;
   private final IMusicSelectionModel selectionModel;
 
   public MoveSelectedTracksToSelectionAction(

@@ -47,4 +47,9 @@ public class KnackEncoder implements IPdfContentBoxEncoder {
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     new KnackTableEncoder(resources, baseFont, collectPrintKnacks(character)).encodeTable(directContent, character, bounds);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

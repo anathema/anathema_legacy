@@ -10,31 +10,31 @@
 			<limitation type="Essence"/>
 			<minimum value="0"/>
 		</defaultTrait>
-		<specialTrait id="Lore" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+		<specialTrait id="Lore" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false" isFreebie="true">
 			<limitation type="Essence"/>
 			<minimum value="2"/>
 		</specialTrait>
-		<specialTrait id="Occult" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+		<specialTrait id="Occult" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false" isFreebie="true">
 			<limitation type="Essence"/>
 			<minimum value="2"/>
 		</specialTrait>
-		<allocationMinimumTraits count="2">
+		<allocationMinimumTraits count="2" isFreebie="true">
 		  <trait id="MartialArts" startValue="2"/>
 	 	  <trait id="Archery"/>
 	 	  <trait id="Melee"/>
 	      <trait id="Thrown"/>
 		</allocationMinimumTraits>
-		<allocationMinimumTraits count="1">
+		<allocationMinimumTraits count="1" isFreebie="true">
 	 	  <trait id="Bureaucracy"/>
 	      <trait id="Presence" startValue="1"/>
 	 	  <trait id="Socialize"/>  
 		</allocationMinimumTraits>		
-		<allocationMinimumTraits count="1">
+		<allocationMinimumTraits count="1" isFreebie="true">
 	 	  <trait id="Ride"/>
 	      <trait id="Sail" startValue="1"/>
 		</allocationMinimumTraits>
 		
-		<casteMinimumTraits caste="Journeys">
+		<casteMinimumTraits caste="Journeys" isFreebie="true">
 			<allocationMinimumTraits count="1">
 	 	  		<trait id="Athletics"/>
 	 	  		<trait id="Survival"/>
@@ -49,7 +49,7 @@
 			<specialTrait id="Linguistics" minimum="1"/>
 		</casteMinimumTraits>
 		
-		<casteMinimumTraits caste="Serenity">
+		<casteMinimumTraits caste="Serenity" isFreebie="true">
 			<allocationMinimumTraits count="1">
 	 	  		<trait id="Craft"/>
 	 	  		<trait id="Medicine"/>
@@ -66,7 +66,7 @@
 			</allocationMinimumTraits>
 		</casteMinimumTraits>
 		
-		<casteMinimumTraits caste="Battles">
+		<casteMinimumTraits caste="Battles" isFreebie="true">
 			<allocationMinimumTraits count="2">
 	 	  		<trait id="Archery"/>
 	 	  		<trait id="Melee"/>
@@ -75,7 +75,7 @@
 			<specialTrait id="War" minimum="2"/>
 		</casteMinimumTraits>
 		
-		<casteMinimumTraits caste="Secrets">
+		<casteMinimumTraits caste="Secrets" isFreebie="true">
 			<allocationMinimumTraits count="1">
 				<trait id="Awareness"/>
 				<trait id="Investigation"/>
@@ -90,7 +90,7 @@
 			<specialTrait id="Stealth" minimum="1"/>
 		</casteMinimumTraits>
 		
-		<casteMinimumTraits caste="Endings">
+		<casteMinimumTraits caste="Endings" isFreebie="true">
 			<allocationMinimumTraits count="1">
 				<trait id="Awareness"/>
 				<trait id="Dodge"/>
@@ -102,7 +102,7 @@
 		</casteMinimumTraits>
   </abilities>
     <essence startValue="3" lowerableState="Default">
-		<limitation type="Static" value="7"/>
+		<limitation type="Static" value="10"/>
 		<minimum value="3"/>
   </essence>
   <backgrounds>

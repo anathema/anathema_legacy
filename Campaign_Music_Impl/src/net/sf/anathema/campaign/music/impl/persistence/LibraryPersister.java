@@ -29,6 +29,8 @@ public class LibraryPersister {
 
   private ObjectSet<DbLibrary> getLibraryObjectSet(ObjectContainer db, final String name) {
     ObjectSet<DbLibrary> results = db.query(new Predicate<DbLibrary>() {
+      private static final long serialVersionUID = -6570413771357675149L;
+
       @Override
       public boolean match(DbLibrary candidate) {
         return candidate.getName().equals(name);
@@ -68,6 +70,8 @@ public class LibraryPersister {
 
   private DbMp3Track findTrack(ObjectContainer db, final Md5Checksum checkSum) {
     ObjectSet<DbMp3Track> results = db.query(new Predicate<DbMp3Track>() {
+      private static final long serialVersionUID = 6653186406942382226L;
+
       @Override
       public boolean match(DbMp3Track candidate) {
         return candidate.getCheckSum().equals(checkSum);

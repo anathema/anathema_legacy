@@ -18,6 +18,7 @@ import net.sf.anathema.lib.util.Identificate;
 
 public class ShowCascadesAction extends SmartAction {
 
+  private static final long serialVersionUID = 4514573380462292992L;
   private final IAnathemaModel anathemaModel;
   private final IResources resources;
 

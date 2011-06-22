@@ -70,8 +70,7 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
     return new OverviewCategory(overviewPanel, borderLabel, false);
   }
 
-  @SuppressWarnings("deprecation")
-public void setOverview(IOverviewCategory overviewView) {
+  public void setOverview(IOverviewCategory overviewView) {
     overviewPanel.removeAll();
     overviewPanel.add(overviewView.getComponent());
   }

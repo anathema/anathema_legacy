@@ -10,6 +10,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class PersistAppendSelectionAction extends AbstractPersistSelectionAction {
 
+  private static final long serialVersionUID = 1258918650740783186L;
+
   public PersistAppendSelectionAction(
       IActionAddableListView<IMusicSelection> selectionListView,
       IMusicSelectionModel selectionModel,

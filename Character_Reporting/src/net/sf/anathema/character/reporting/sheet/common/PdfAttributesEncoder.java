@@ -1,8 +1,18 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import net.disy.commons.core.predicate.IPredicate;
+import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -34,17 +44,42 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
     IGenericTraitCollection traitCollection = character.getTraitCollection();
-    encodeAttributes(directContent, bounds, attributeGroups, traitCollection);
+    IMagicStats[] excellencies = getExcellencies(character);
+    encodeAttributes(directContent, character, bounds, attributeGroups, traitCollection, excellencies);
+  }
+  
+  protected IMagicStats[] getExcellencies(IGenericCharacter character) {
+    List<IMagicStats> excellencies = new ArrayList<IMagicStats>();
+    FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
+    if (type == FavoringTraitType.AttributeType) {
+      for (IMagicStats stats : character.getGenericCharmStats()) {
+        String genericId = stats.getName().getId();
+        if (genericId.endsWith("Excellency")) {
+          excellencies.add(stats);
+        }
+      }
+      Collections.sort(excellencies, new Comparator<IMagicStats>(){
+        public int compare(IMagicStats a, IMagicStats b) {
+          String aId = a.getName().getId();
+          String bId = b.getName().getId();
+          return aId.compareTo(bId);
+        }
+      });
+    }
+    return excellencies.toArray(new IMagicStats[0]);
   }
 
-  public final void encodeAttributes(
-      PdfContentByte directContent,
-      Bounds contentBounds,
-      IGroupedTraitType[] attributeGroups,
-      IGenericTraitCollection traitCollection) {
+  public final void encodeAttributes(PdfContentByte directContent,
+                                     IGenericCharacter character,
+                                     Bounds contentBounds,
+                                     IGroupedTraitType[] attributeGroups,
+                                     IGenericTraitCollection traitCollection,
+                                     IMagicStats[] excellencies) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - groupSpacing;
     String groupId = null;
+    List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
+    // TODO: (2011-06-19) Add column headers [particularly for Excellencies]
     for (IGroupedTraitType groupedTraitType : attributeGroups) {
       if (!groupedTraitType.getGroupId().equals(groupId)) {
         groupId = groupedTraitType.getGroupId();
@@ -55,25 +90,38 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
       int value = traitCollection.getTrait(traitType).getCurrentValue();
       Position position = new Position(contentBounds.x, y);
       if (!encodeFavored) {
-        y -= smallTraitEncoder.encodeWithText(
-            directContent,
-            traitLabel,
-            position,
-            contentBounds.width,
-            value,
-            essenceMax);
+        y -= smallTraitEncoder.encodeWithText(directContent,
+                                              traitLabel,
+                                              position,
+                                              contentBounds.width,
+                                              value,
+                                              essenceMax);
       }
       else {
         boolean favored = traitCollection.getFavorableTrait(traitType).isCasteOrFavored();
-        y -= smallTraitEncoder.encodeWithTextAndRectangle(
-            directContent,
-            traitLabel,
-            position,
-            contentBounds.width,
-            value,
-            favored,
-            essenceMax);
+        boolean[] excellencyLearned = new boolean[excellencies.length];
+        for (int i = 0; i < excellencies.length; i++) {
+          final String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
+          excellencyLearned[i] = CollectionUtilities.find(allLearnedMagic, new IPredicate<IMagic>() {
+            public boolean evaluate(IMagic value) {
+              return charmId.equals(value.getId());
+            }
+          }) != null;
+        }
+        y -= smallTraitEncoder.encodeWithExcellencies(directContent,
+                                                      traitLabel,
+                                                      position,
+                                                      contentBounds.width,
+                                                      value,
+                                                      favored,
+                                                      excellencyLearned,
+                                                      essenceMax);
       }
     }
+  }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
   }
 }

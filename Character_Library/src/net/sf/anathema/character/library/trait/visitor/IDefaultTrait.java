@@ -9,6 +9,8 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 public interface IDefaultTrait extends ITrait, IModifiableBasicTrait, IModifiableGenericTrait, IModifiableCapTrait {
 
   public int getMinimalValue();
+  
+  public int getCalculationMinValue();
 
   public void resetCurrentValue();
 

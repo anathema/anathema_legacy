@@ -19,6 +19,7 @@ public class AllocationMinimumTraitTemplateParser
   private static final String ATTRIB_COUNT = "count"; //$NON-NLS-1$
   private static final String TAG_TRAIT = "trait"; //$NON-NLS-1$
   private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
+  private static final String TAG_FREEBIE = "isFreebie";
   private static final String ATTRIB_START_VALUE = "startValue";
   private final ITraitTypeGroup traitTypeGroup;
 
@@ -31,6 +32,7 @@ public class AllocationMinimumTraitTemplateParser
   throws PersistenceException {
     int count = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_COUNT);
     AllocationMinimumRestriction restriction = new AllocationMinimumRestriction(count, list);
+    restriction.setIsFreebie(ElementUtilities.getBooleanAttribute(element, TAG_FREEBIE, false));
     list.add(restriction);
     List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<GenericRestrictedTraitTemplate>();
     for (Element traitElement : ElementUtilities.elements(element, TAG_TRAIT)) {

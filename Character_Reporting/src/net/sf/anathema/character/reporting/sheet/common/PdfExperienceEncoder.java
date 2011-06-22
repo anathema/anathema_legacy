@@ -40,4 +40,9 @@ public class PdfExperienceEncoder implements IPdfContentBoxEncoder {
     Phrase phrase = new Phrase(experienceText, font);
     PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, FONT_SIZE + 6);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

@@ -38,6 +38,8 @@ public class TreeDemo extends SwingDemoCase {
         "#Demo").initPresentation(); //$NON-NLS-1$
     panel.add(createJScrollPane(repositoryTreeView));
     JButton charbutton = new JButton(new SmartAction("Add Character") { //$NON-NLS-1$
+          private static final long serialVersionUID = 4924793823538049366L;
+
           @Override
           protected void execute(Component parentComponent) {
             repositoryModel.addPrintNameFile(new PrintNameFile(null, "New Character", //$NON-NLS-1$
@@ -46,6 +48,8 @@ public class TreeDemo extends SwingDemoCase {
           }
         });
     JButton notebutton = new JButton(new SmartAction("Add Note") { //$NON-NLS-1$
+          private static final long serialVersionUID = 2437805002444053058L;
+
           @Override
           protected void execute(Component parentComponent) {
             repositoryModel.addPrintNameFile(new PrintNameFile(null, "New Note", "new", DemoRepositoryTreeModel.NOTE)); //$NON-NLS-1$ //$NON-NLS-2$

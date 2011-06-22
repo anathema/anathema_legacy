@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.impl.traits.alternate.ITraitRequirement;
 import net.sf.anathema.character.generic.impl.traits.alternate.TraitRequirementCollection;
 import net.sf.anathema.character.generic.traits.ITraitMinimum;
+import net.sf.anathema.character.generic.traits.ITraitType;
 
 public class AlternateRequirementTraitMinimum implements ITraitMinimum {
 
@@ -19,5 +20,10 @@ public class AlternateRequirementTraitMinimum implements ITraitMinimum {
     return requirementCollection.isStrictWithout(requirement, limitationContext.getTraitCollection())
         ? requirement.getFreeMinimum()
         : requirement.getStrictMinimum();
+  }
+  
+  public int getCalculationMinValue(ILimitationContext context, ITraitType type)
+  {
+	  return getMinimumValue(context);
   }
 }

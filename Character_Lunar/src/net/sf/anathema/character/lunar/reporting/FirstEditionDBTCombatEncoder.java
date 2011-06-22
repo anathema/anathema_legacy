@@ -82,4 +82,9 @@ public class FirstEditionDBTCombatEncoder implements IPdfContentBoxEncoder {
 	public String getHeaderKey() {
 		return "Combat";
 	}
+	
+	public boolean hasContent(IGenericCharacter character)
+	  {
+		  return true;
+	  }
 }

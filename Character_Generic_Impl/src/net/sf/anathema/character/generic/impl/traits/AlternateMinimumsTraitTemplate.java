@@ -33,4 +33,9 @@ public class AlternateMinimumsTraitTemplate extends AbstractTraitTemplate {
     }
     return defaultMinimum;
   }
+  
+  public int getCalculationMinValue(ILimitationContext context, ITraitType type)
+  {
+	  return getMinimumValue(context);
+  }
 }

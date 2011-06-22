@@ -40,7 +40,7 @@ public class ThaumaturgyModelPersister implements IAdditionalPersister
 		{
 			Element procedureElement = (Element)element;
 			Element artNameElement = procedureElement.element(TAG_ART_NAME);
-			Element procedureNameElement = procedureElement.element(TAG_ART_NAME);
+			Element procedureNameElement = procedureElement.element(TAG_PROCEDURE_NAME);
 			String artName = artNameElement.getText();
 			String procedureName = procedureNameElement.getText();
 			realModel.setCurrentArt(artName);

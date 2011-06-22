@@ -10,6 +10,10 @@ public interface IMinimumRestriction {
   public void clear();
 
   public int getStrictMinimumValue();
+  
+  public int getCalculationMinValue(ILimitationContext context, ITraitType traitType);
 
   public void addTraitType(ITraitType type);
+  
+  public void setIsFreebie(boolean isFreebie);
 }

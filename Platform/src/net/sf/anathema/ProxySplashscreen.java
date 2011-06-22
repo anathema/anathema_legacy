@@ -6,7 +6,7 @@ public class ProxySplashscreen implements ISplashscreen {
   private final ISplashscreen screen;
 
   {
-    if (AnathemaSplashscreen.isSplashScreenSupported()) { //$NON-NLS-1$ //$NON-NLS-2$
+    if (AnathemaSplashscreen.isSplashScreenSupported()) { 
       screen = new AnathemaSplashscreen();
     }
     else {

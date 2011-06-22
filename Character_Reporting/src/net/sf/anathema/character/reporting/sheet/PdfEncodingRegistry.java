@@ -21,6 +21,9 @@ public class PdfEncodingRegistry {
   private IPdfContentBoxEncoder intimaciesEncoder;
   private IPdfContentBoxEncoder possessionsEncoder;
   private IPdfContentBoxEncoder linguisticsEncoder;
+  private IPdfContentBoxEncoder mutationsEncoder;
+  private IPdfContentBoxEncoder thaumaturgyEncoder;
+  private IPdfContentBoxEncoder meritsAndFlawsEncoder;
 
   public PdfEncodingRegistry() {
     this.baseFont = new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
@@ -46,6 +49,18 @@ public class PdfEncodingRegistry {
   public void setIntimaciesEncoder(IPdfContentBoxEncoder intimaciesEncoder) {
     this.intimaciesEncoder = intimaciesEncoder;
   }
+  
+  public void setMutationsEncoder(IPdfContentBoxEncoder mutationsEncoder) {
+	    this.mutationsEncoder = mutationsEncoder;
+	  }
+  
+  public void setThaumaturgyEncoder(IPdfContentBoxEncoder thaumaturgyEncoder) {
+	    this.thaumaturgyEncoder = thaumaturgyEncoder;
+	  }
+  
+  public void setMeritsAndFlawsEncoder(IPdfContentBoxEncoder meritsAndFlawsEncoder) {
+	    this.meritsAndFlawsEncoder = meritsAndFlawsEncoder;
+	  }
 
   public IPdfContentBoxEncoder getWeaponContentEncoder() {
     return weaponContentEncoder;
@@ -66,6 +81,18 @@ public class PdfEncodingRegistry {
   public IPdfContentBoxEncoder getLinguisticsEncoder() {
     return linguisticsEncoder;
   }
+
+  public IPdfContentBoxEncoder getMutationsEncoder() {
+	    return mutationsEncoder;
+	  }
+  
+  public IPdfContentBoxEncoder getThaumaturgyEncoder() {
+	    return thaumaturgyEncoder;
+	  }
+  
+  public IPdfContentBoxEncoder getMeritsAndFlawsEncoder() {
+	    return meritsAndFlawsEncoder;
+	  }
 
   public void setPartEncoder(ICharacterType type, IExaltedEdition edition, IPdfPartEncoder partEncoder) {
     partEncoderTable.add(type, edition, partEncoder);

@@ -30,6 +30,7 @@ import net.sf.anathema.framework.presenter.DirectoryFileChooser;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AddMusicFolderAction extends SmartAction {
+  private static final long serialVersionUID = -509736641362821213L;
   private static final String ADD_MUSIC_FOLDER_DIRECTORY_CHOOSER_VALUE = "AddMusicFolder"; //$NON-NLS-1$
   private final ILibraryControl model;
   private final ILibraryControlView view;

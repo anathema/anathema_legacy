@@ -22,6 +22,7 @@ import net.sf.anathema.lib.workflow.wizard.selection.ObjectSelectionWizardPage;
 
 public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
 
+  private static final long serialVersionUID = -6862758539173646279L;
   private final IItemOperator itemOperator;
 
   public AbstractAnathemaItemAction(IAnathemaModel anathemaModel, IResources resources, IItemCreator creator) {

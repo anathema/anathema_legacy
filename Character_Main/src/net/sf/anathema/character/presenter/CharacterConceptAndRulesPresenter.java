@@ -86,6 +86,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
         motivation.getEditableDescription(),
         "Label.Motivation"); //$NON-NLS-1$    
     final SmartAction beginEditAction = new SmartAction(new BasicUi(resources).getEditIcon()) {
+      private static final long serialVersionUID = -1054675766697466937L;
+
       @Override
       protected void execute(Component parentComponent) {
         motivation.beginEdit();
@@ -94,6 +96,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     CharacterUI characterUI = new CharacterUI(resources);
     beginEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.BeginEdit.Tooltip")); //$NON-NLS-1$
     final SmartAction cancelEditAction = new SmartAction(characterUI.getCancelComboEditIcon()) {
+      private static final long serialVersionUID = 1455192549297256400L;
+
       @Override
       protected void execute(Component parentComponent) {
         motivation.cancelEdit();
@@ -101,6 +105,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     };
     cancelEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.Cancel.Tooltip")); //$NON-NLS-1$
     final SmartAction endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
+      private static final long serialVersionUID = 1191861661014239378L;
+
       @Override
       protected void execute(Component parentComponent) {
         motivation.endEdit();
@@ -108,6 +114,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     };
     endEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.EndEdit.Tooltip")); //$NON-NLS-1$
     final SmartAction endEditXPAction = new SmartAction(characterUI.getFinalizeXPIcon()) {
+      private static final long serialVersionUID = -6180499686275027958L;
+
       @Override
       protected void execute(Component parentComponent) {
         motivation.endEditXPSpending(resources.getString("CharacterConcept.Motivation.XPSpent")); //$NON-NLS-1$

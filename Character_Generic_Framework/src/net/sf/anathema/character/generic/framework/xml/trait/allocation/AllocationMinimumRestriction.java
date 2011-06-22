@@ -19,6 +19,7 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
   private final List<ITraitType> alternateTraitTypes = new ArrayList<ITraitType>();
   private ILimitationContext latestContext = null;
   private ITraitType latestTrait = null;
+  private boolean isFreebie;
 
   public AllocationMinimumRestriction(int dotCount, List<AllocationMinimumRestriction> siblings) {
     this.dotCount = dotCount;
@@ -41,6 +42,32 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
       }
     strictMinimumValue = remainingDots;
     return remainingDots == 0;
+  }
+  
+  public int getCalculationMinValue(ILimitationContext context, ITraitType traitType)
+  {
+	  if (!isFreebie)
+		  return 0;
+	  int traitDots = 0;
+	  int remainingDots = dotCount;
+	  for (ITraitType type : alternateTraitTypes)
+      {
+    	  int currentDots = context.getTraitCollection().getTrait(type).getCurrentValue();
+    	  int externalDots = getExternalClaims(context, type);
+    	  int claimedDots = Math.max(currentDots - externalDots, 0);
+    	  claimedDots = Math.min(claimedDots, remainingDots);
+    	  claimDots(context, type, claimedDots);
+    	  remainingDots -= claimedDots;
+    	  
+    	  if (type == traitType)
+    		  traitDots = claimedDots;
+      }
+      return traitDots + getExternalClaims(context, traitType);
+  }
+  
+  public void setIsFreebie(boolean value)
+  {
+	  isFreebie = value;
   }
   
   private void claimDots(ILimitationContext context, ITraitType type, int dots)

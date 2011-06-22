@@ -11,6 +11,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class RepositoryTreeCellRenderer extends ObjectUiTreeCellRenderer {
 
+  private static final long serialVersionUID = -4998699291443000229L;
   private final IResources resources;
 
   public RepositoryTreeCellRenderer(IObjectUi ui, IResources resources) {

@@ -79,4 +79,9 @@ public class FirstEditionLunarBeastformAttributesEncoder implements IPdfContentB
           maximum);
     }
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

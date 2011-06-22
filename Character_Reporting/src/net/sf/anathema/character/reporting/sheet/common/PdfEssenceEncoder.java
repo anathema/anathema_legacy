@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
+import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
@@ -37,17 +38,34 @@ public class PdfEssenceEncoder extends AbstractPdfEncoder implements IPdfContent
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    int value = character.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
-    Position essencePosition = new Position(bounds.x, bounds.y + bounds.height - largeTraitEncoder.getTraitHeight());
-    largeTraitEncoder.encodeDotsCenteredAndUngrouped(directContent, essencePosition, bounds.width, value, essenceMax);
-    float poolHeight = bounds.height - largeTraitEncoder.getTraitHeight() - IVoidStateFormatConstants.TEXT_PADDING;
+	String personalPool = null, peripheralPool = null;
+	try
+	{
+		personalPool = character.getPersonalPool();
+		peripheralPool = character.getPeripheralPool();
+	}
+	catch (ContractFailedException e) { }
+	int numberOfLines = (personalPool == null ? 0 : 1) + (peripheralPool == null ? 0 : 1);
+	float poolHeight = bounds.height - largeTraitEncoder.getTraitHeight() - IVoidStateFormatConstants.TEXT_PADDING;
     float poolLineHeight = poolHeight / 2;
-    Position personalPosition = new Position(bounds.x, essencePosition.y - poolLineHeight);
-    String personalLabel = resources.getString("Sheet.Essence.PersonalPool"); //$NON-NLS-1$
-    encodePool(directContent, personalLabel, character.getPersonalPool(), personalPosition, bounds.width);
-    Position peripheralPosition = new Position(bounds.x, essencePosition.y - 2 * poolLineHeight);
-    String peripheralLabel = resources.getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
-    encodePool(directContent, peripheralLabel, character.getPeripheralPool(), peripheralPosition, bounds.width);
+    int offset = (int) ((2 - numberOfLines) * (poolLineHeight / 2));
+    int value = character.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
+    Position essencePosition = new Position(bounds.x, bounds.y + bounds.height - largeTraitEncoder.getTraitHeight() - offset);
+    largeTraitEncoder.encodeDotsCenteredAndUngrouped(directContent, essencePosition, bounds.width, value, essenceMax);
+    
+    if (personalPool != null)
+    {
+	    Position personalPosition = new Position(bounds.x, essencePosition.y - poolLineHeight);
+	    String personalLabel = resources.getString("Sheet.Essence.PersonalPool"); //$NON-NLS-1$
+	    encodePool(directContent, personalLabel, personalPool, personalPosition, bounds.width);
+    }
+    
+    if (peripheralPool != null)
+    {
+	    Position peripheralPosition = new Position(bounds.x, essencePosition.y - (numberOfLines == 1 ? 1 : 2) * poolLineHeight);
+	    String peripheralLabel = resources.getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
+	    encodePool(directContent, peripheralLabel, peripheralPool, peripheralPosition, bounds.width);
+    }
   }
 
   private void encodePool(
@@ -68,5 +86,10 @@ public class PdfEssenceEncoder extends AbstractPdfEncoder implements IPdfContent
     drawMissingTextLine(directContent, lineStartPoint, lineLength);
     String totalString = poolValue + " " + resources.getString("Sheet.Essence.Total") + " / "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     drawText(directContent, totalString, lineStartPoint, PdfContentByte.ALIGN_RIGHT);
+  }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
   }
 }

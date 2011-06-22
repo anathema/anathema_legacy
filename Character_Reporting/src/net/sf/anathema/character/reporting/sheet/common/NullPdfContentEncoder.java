@@ -25,4 +25,9 @@ public class NullPdfContentEncoder implements IPdfContentBoxEncoder {
   public String getHeaderKey() {
     return headerKey;
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

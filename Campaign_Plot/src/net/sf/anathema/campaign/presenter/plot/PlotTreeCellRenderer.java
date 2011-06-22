@@ -18,6 +18,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class PlotTreeCellRenderer extends DefaultTreeCellRenderer {
 
+  private static final long serialVersionUID = -2035781364025451688L;
   private final Map<String, Icon> iconsByTimeUnitId = new HashMap<String, Icon>();
 
   public PlotTreeCellRenderer(IResources resources) {

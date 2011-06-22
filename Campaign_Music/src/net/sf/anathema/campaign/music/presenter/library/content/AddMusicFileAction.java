@@ -19,6 +19,7 @@ import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AddMusicFileAction extends SmartAction {
+  private static final long serialVersionUID = 8615290963297510380L;
   private final ILibraryControl model;
   private final ILibraryControlView view;
   private final IMusicSearchControl searchControl;

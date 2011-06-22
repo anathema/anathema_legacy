@@ -8,13 +8,16 @@ import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegi
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
 public class HealthTemplateParser extends AbstractXmlTemplateParser<GenericHealthTemplate> {
 
   private static final String TAG_TOUGHNESS_TRAIT = "toughnessControllingTrait"; //$NON-NLS-1$
+  private static final String TAG_BASE_PROVIDER = "usesBaseProvider";
   private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
+  private static final String ATTRIB_PATH = "path";
 
   public HealthTemplateParser(IXmlTemplateRegistry<GenericHealthTemplate> registry) {
     super(registry);
@@ -28,6 +31,7 @@ public class HealthTemplateParser extends AbstractXmlTemplateParser<GenericHealt
   public GenericHealthTemplate parseTemplate(Element element) throws PersistenceException {
     GenericHealthTemplate basicTemplate = getBasicTemplate(element);
     setToughnessControllingTrait(element, basicTemplate);
+    setBaseProviders(element, basicTemplate);
     return basicTemplate;
   }
 
@@ -42,5 +46,23 @@ public class HealthTemplateParser extends AbstractXmlTemplateParser<GenericHealt
 	ITraitType[] traitArray = new ITraitType[traits.size()];
 	traits.toArray(traitArray);
     basicTemplate.setToughnessControllingTraitTypes(traitArray);
+  }
+  
+  private void setBaseProviders(Element generalElement, GenericHealthTemplate template)
+  {
+	  List<String> baseHealthProviders = new ArrayList<String>();
+	  
+	  try
+	  {
+		  for (Object element : generalElement.elements(TAG_BASE_PROVIDER))
+			  baseHealthProviders.add(ElementUtilities.getRequiredAttrib((Element)element, ATTRIB_PATH));
+	  }
+	  catch (Exception e)
+	  {
+		  e.printStackTrace();
+	  }
+	  String[] providerArray = new String[baseHealthProviders.size()];
+	  baseHealthProviders.toArray(providerArray);
+	  template.setBaseProviders(providerArray);
   }
 }

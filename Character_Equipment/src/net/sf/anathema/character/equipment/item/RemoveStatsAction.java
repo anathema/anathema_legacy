@@ -17,6 +17,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class RemoveStatsAction extends SmartAction {
 
+  private static final long serialVersionUID = -3656719983328697948L;
   private final IObjectSelectionView<IExaltedRuleSet> ruleSetView;
   private final IEquipmentTemplateEditModel editModel;
   private final IActionAddableListView<IEquipmentStats> statsListView;

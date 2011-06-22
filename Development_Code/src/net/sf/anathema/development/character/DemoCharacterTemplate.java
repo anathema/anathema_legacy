@@ -118,8 +118,15 @@ public class DemoCharacterTemplate implements ICharacterTemplate {
     return templateType;
   }
   
-  public boolean isLegacy()
+  @Override
+public boolean isLegacy()
   {
 	  return false;
+  }
+  
+  @Override
+public String[] getBaseHealthProviders()
+  {
+	  return new String[0];
   }
 }

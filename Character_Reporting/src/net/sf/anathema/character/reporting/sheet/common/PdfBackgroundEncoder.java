@@ -60,4 +60,9 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
       yPosition -= LINE_HEIGHT;
     }
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

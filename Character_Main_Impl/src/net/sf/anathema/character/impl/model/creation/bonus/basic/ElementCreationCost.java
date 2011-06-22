@@ -5,17 +5,19 @@ import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 public class ElementCreationCost extends ReflectionEqualsObject {
 
   private final int bonusPointsSpent;
-  private final int extraDotsSpent;
+  private final int extraFavoredDotsSpent;
+  private final int extraGenericDotsSpent;
   private final int dotsSpent;
 
   public ElementCreationCost(int dotsSpent, int bonusPointsSpent)
   {
-	  this(dotsSpent, 0, bonusPointsSpent);
+	  this(dotsSpent, 0, 0, bonusPointsSpent);
   }
   
-  public ElementCreationCost(int dotsSpent, int extraDotsSpent, int bonusPointsSpent) {
+  public ElementCreationCost(int dotsSpent, int extraFavoredDotsSpent, int extraGenericDotsSpent, int bonusPointsSpent) {
     this.bonusPointsSpent = bonusPointsSpent;
-    this.extraDotsSpent = extraDotsSpent;
+    this.extraFavoredDotsSpent = extraFavoredDotsSpent;
+    this.extraGenericDotsSpent = extraGenericDotsSpent;
     this.dotsSpent = dotsSpent;
   }
 
@@ -23,9 +25,14 @@ public class ElementCreationCost extends ReflectionEqualsObject {
     return bonusPointsSpent;
   }
   
-  public int getExtraDotsSpent()
+  public int getExtraFavoredDotsSpent()
   {
-	  return extraDotsSpent;
+	  return extraFavoredDotsSpent;
+  }
+  
+  public int getExtraGenericDotsSpent()
+  {
+	  return extraGenericDotsSpent;
   }
 
   public int getDotsSpent() {
@@ -34,6 +41,7 @@ public class ElementCreationCost extends ReflectionEqualsObject {
 
   @Override
   public String toString() {
-    return getClass().getName() + "{" + dotsSpent + "," + extraDotsSpent + "," + bonusPointsSpent + "}"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return getClass().getName() + "{" + dotsSpent + "," + extraFavoredDotsSpent + "," +
+    	extraGenericDotsSpent + "," + bonusPointsSpent + "}"; //$NON-NLS-1$ //$NON-NLS-2$ 
   }
 }

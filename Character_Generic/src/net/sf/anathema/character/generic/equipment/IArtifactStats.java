@@ -6,6 +6,10 @@ public interface IArtifactStats extends IEquipmentStats
 {
 	public Integer getAttuneCost();
 	
+	public boolean allowForeignAttunement();
+	
+	public boolean requireAttunementToUse();
+	
 	public ArtifactAttuneType getAttuneType();
 	
 	public IEquipmentStats[] getViews();

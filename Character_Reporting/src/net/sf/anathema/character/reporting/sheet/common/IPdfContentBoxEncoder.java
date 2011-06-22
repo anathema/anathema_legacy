@@ -9,6 +9,8 @@ import com.lowagie.text.pdf.PdfContentByte;
 public interface IPdfContentBoxEncoder {
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException;
+  
+  public boolean hasContent(IGenericCharacter character);
 
   public String getHeaderKey();
 }

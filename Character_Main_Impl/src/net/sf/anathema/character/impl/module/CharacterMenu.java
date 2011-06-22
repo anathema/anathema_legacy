@@ -23,6 +23,8 @@ public class CharacterMenu implements IAnathemaMenu {
     IMenu menu = menubar.addMenu(resources.getString("CharacterMenu.Title")); //$NON-NLS-1$
     menu.setMnemonic('C');
     menu.addMenuItem(new SmartAction(resources.getString("CharacterMenu.ToExperienced.Title")) { //$NON-NLS-1$
+      private static final long serialVersionUID = -6647982875967092052L;
+
       {
         setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_MASK));
         new AbstractSelectedItemEnabler(model.getItemManagement(), this) {

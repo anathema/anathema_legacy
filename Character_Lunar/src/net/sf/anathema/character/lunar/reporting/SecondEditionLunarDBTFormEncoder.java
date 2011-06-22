@@ -127,4 +127,9 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
           maximum);
     }
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

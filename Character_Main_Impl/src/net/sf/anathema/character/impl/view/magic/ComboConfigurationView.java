@@ -50,6 +50,8 @@ public class ComboConfigurationView implements IComboConfigurationView {
   private boolean isNameEntered;
   private boolean isDescriptionEntered;
   private final JTaskPane comboPane = new JTaskPane() {
+    private static final long serialVersionUID = 289110425410988048L;
+
     @Override
     public Dimension getPreferredScrollableViewportSize() {
       return new Dimension(0, 0);
@@ -107,6 +109,8 @@ public class ComboConfigurationView implements IComboConfigurationView {
 
   private JButton createClearButton(Icon icon) {
     Action smartAction = new SmartAction(icon) {
+      private static final long serialVersionUID = -2774898496141408790L;
+
       @Override
       protected void execute(Component parentComponent) {
         fireComboCleared();
@@ -126,6 +130,8 @@ public class ComboConfigurationView implements IComboConfigurationView {
 
   private JButton createFinalizeComboButton(Icon icon) {
     Action smartAction = new SmartAction(icon) {
+      private static final long serialVersionUID = -3829623791941578824L;
+
       @Override
       protected void execute(Component parentComponent) {
         fireComboFinalized();

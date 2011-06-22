@@ -29,6 +29,8 @@ public class ItemTypeSelectionProperties implements IObjectSelectionProperties {
 
   public ListCellRenderer getCellRenderer() {
     return new ObjectUiListCellRenderer(ui) {
+      private static final long serialVersionUID = -3220572466818925411L;
+
       @Override
       public Component getListCellRendererComponent(
           JList list,

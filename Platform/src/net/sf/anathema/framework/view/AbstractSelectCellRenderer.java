@@ -9,6 +9,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractSelectCellRenderer<T> extends DefaultListCellRenderer {
 
+  private static final long serialVersionUID = 512344739558486209L;
   private final IResources resources;
 
   public AbstractSelectCellRenderer(IResources resources) {

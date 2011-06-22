@@ -31,10 +31,10 @@ public class SimpleDatabaseTester {
     db.close();
   }
 
-  @SuppressWarnings("rawtypes")
   private static void fillDatabase() {
     ObjectContainer db = Db4o.openFile("TestSimple.yap");
-    Map map = new HashedMap();
+    @SuppressWarnings("unchecked")
+    Map<Gender, Person> map = new HashedMap();
     Person sandra = new Person("Sandra", Gender.Female);
     map.put(Gender.Female, sandra);
     Person urs = new Person("Urs", Gender.Male);

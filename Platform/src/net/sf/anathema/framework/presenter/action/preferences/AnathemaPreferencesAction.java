@@ -11,6 +11,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaPreferencesAction extends SmartAction {
 
+  private static final long serialVersionUID = -7583368464399556246L;
+
   public static Action createMenuAction(IResources resources, IPreferencesElement[] elements) {
     SmartAction action = new AnathemaPreferencesAction(resources, elements);
     action.setName(resources.getString("AnathemaCore.Tools.Preferences.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$

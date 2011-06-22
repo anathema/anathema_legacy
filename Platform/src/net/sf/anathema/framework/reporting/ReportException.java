@@ -4,6 +4,8 @@ import net.sf.anathema.lib.exception.AnathemaException;
 
 public class ReportException extends AnathemaException {
 
+  private static final long serialVersionUID = 4158952534818455777L;
+
   public ReportException() {
     super();
   }

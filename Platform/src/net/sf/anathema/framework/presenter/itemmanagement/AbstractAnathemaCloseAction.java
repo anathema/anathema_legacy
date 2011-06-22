@@ -18,6 +18,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractAnathemaCloseAction extends SmartAction {
 
+  private static final long serialVersionUID = 231060390775642729L;
   private final IItemMangementModel management;
   private final IResources resources;
 

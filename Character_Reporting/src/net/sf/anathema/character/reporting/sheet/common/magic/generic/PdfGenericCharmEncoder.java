@@ -26,4 +26,9 @@ public class PdfGenericCharmEncoder implements IPdfContentBoxEncoder {
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     new PdfGenericCharmTableEncoder(resources, baseFont).encodeTable(directContent, character, bounds);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

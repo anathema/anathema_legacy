@@ -7,6 +7,8 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 public class ArtifactStats extends AbstractStats implements IArtifactStats
 {
 	int attuneCost;
+	boolean allowForeignAttunement;
+	boolean requireAttunement;
 	
 	public Integer getAttuneCost()
 	{
@@ -23,14 +25,45 @@ public class ArtifactStats extends AbstractStats implements IArtifactStats
 		return ArtifactAttuneType.FullyAttuned;
 	}
 	
+	public boolean allowForeignAttunement()
+	{
+		return allowForeignAttunement;
+	}
+	
+	public boolean requireAttunementToUse()
+	{
+		return requireAttunement;
+	}
+	
+	public void setAllowForeignAttunement(boolean value)
+	{
+		allowForeignAttunement = value;
+	}
+	
+	public void setRequireAttunement(boolean value)
+	{
+		requireAttunement = value;
+	}
+	
 	@Override
 	public IEquipmentStats[] getViews() {
-	    IEquipmentStats[] views = new IEquipmentStats[4];
-	    //views[0] = new ArtifactStatsDecorator(this, ArtifactAttuneType.Unattuned);
-	    views[0] = new ArtifactStatsDecorator(this, ArtifactAttuneType.PartiallyAttuned);
-	    views[1] = new ArtifactStatsDecorator(this, ArtifactAttuneType.FullyAttuned);
-	    views[2] = new ArtifactStatsDecorator(this, ArtifactAttuneType.UnharmoniouslyAttuned);
-	    views[3] = new ArtifactStatsDecorator(this, ArtifactAttuneType.VitriolAttuned);
+	    IEquipmentStats[] views;
+	    if (allowForeignAttunement())
+	    {
+	    	views = new IEquipmentStats[5];
+	    	views[0] = new ArtifactStatsDecorator(this, ArtifactAttuneType.PartiallyAttuned, requireAttunement);
+		views[1] = new ArtifactStatsDecorator(this, ArtifactAttuneType.ExpensivePartiallyAttuned, requireAttunement);
+		views[2] = new ArtifactStatsDecorator(this, ArtifactAttuneType.FullyAttuned, requireAttunement);
+		views[3] = new ArtifactStatsDecorator(this, ArtifactAttuneType.UnharmoniouslyAttuned, requireAttunement);
+	    views[4] = new ArtifactStatsDecorator(this, ArtifactAttuneType.VitriolAttuned, requireAttunement);
+	    }
+	    else
+	    {
+	    	views = new IEquipmentStats[2];
+	    	views[0] = new ArtifactStatsDecorator(this, ArtifactAttuneType.FullyAttuned, requireAttunement);
+		    views[1] = new ArtifactStatsDecorator(this, ArtifactAttuneType.VitriolAttuned, requireAttunement);
+	    }
+	    
 	    return views;
 	}
 

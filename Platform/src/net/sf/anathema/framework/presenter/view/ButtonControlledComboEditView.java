@@ -83,7 +83,7 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   public void addButtonListener(final IObjectValueChangedListener<V> listener) {
 	    addButton.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent e) {
-	        listener.valueChanged((V) comboBox.getSelectedObject());
+	        listener.valueChanged(comboBox.getSelectedObject());
 	      }
 	    });
 	  }

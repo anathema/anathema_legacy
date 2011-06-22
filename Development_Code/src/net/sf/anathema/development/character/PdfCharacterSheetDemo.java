@@ -17,8 +17,8 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.intimacies.IntimaciesEncoder;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
-import net.sf.anathema.character.reporting.sheet.page.PdfSecondPageEncoder;
+import net.sf.anathema.character.reporting.sheet.page.PdfOldStyleFirstPageEncoder;
+import net.sf.anathema.character.reporting.sheet.page.PdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.solar.reporting.SecondEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
@@ -55,13 +55,13 @@ public class PdfCharacterSheetDemo {
       IResources resources = createDemoResources();
       PdfPageConfiguration pageConfiguration = PdfPageConfiguration.create(document.getPageSize());
       PdfEncodingRegistry encodingRegistry = createEncodingRegistry(resources);
-      PdfFirstPageEncoder partEncoder = new PdfFirstPageEncoder(new SecondEditionSolarPartEncoder(
+      PdfOldStyleFirstPageEncoder partEncoder = new PdfOldStyleFirstPageEncoder(new SecondEditionSolarPartEncoder(
           resources,
           encodingRegistry,
           7), encodingRegistry, resources, 7, pageConfiguration);
       partEncoder.encode(document, directContent, character, description);
       document.newPage();
-      new PdfSecondPageEncoder(resources, encodingRegistry, pageConfiguration).encode(
+      new PdfMagicPageEncoder(resources, encodingRegistry, pageConfiguration, false).encode(
           document,
           directContent,
           character,

@@ -79,7 +79,7 @@ public class AnathemaSplashscreen implements ISplashscreen {
   }
 
   public static boolean isSplashScreenSupported() {
-		String osName = (String)AccessController.doPrivileged(new GetPropertyAction("os.name"));
-	    return !osName.contains("Mac OS X"); //$NON-NLS-1$ //$NON-NLS-2$
+		String osName = AccessController.doPrivileged(new GetPropertyAction("os.name"));
+	    return !osName.contains("Mac OS X"); //$NON-NLS-1$ 
   }
 }

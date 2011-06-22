@@ -23,6 +23,7 @@ public abstract class AbstractSetTraitFixture extends RowEntryFixture {
   }
 
   protected final IDefaultTrait getTrait() {
+    @SuppressWarnings("unchecked")
     ICharacter character = new CharacterSummary(summary).getCharacter();
     ICharacterStatistics statistics = character.getStatistics();
     ITrait trait = statistics.getTraitConfiguration().getTrait(getTraitType());

@@ -2,5 +2,5 @@ package net.sf.anathema.character.generic.equipment;
 
 public enum ArtifactAttuneType
 {
-	Unattuned, PartiallyAttuned, VitriolAttuned, FullyAttuned, UnharmoniouslyAttuned
+	Unattuned, PartiallyAttuned, ExpensivePartiallyAttuned,  VitriolAttuned, FullyAttuned, UnharmoniouslyAttuned
 }

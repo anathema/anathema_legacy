@@ -37,6 +37,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -343,8 +344,13 @@ public class Charm extends Identificate implements ICharm {
     if (getPrerequisites().length <= 0) {
       return false;
     }
+    	
     final boolean[] characterCanFavorMagicOfPrimaryType = new boolean[1];
     final ITraitType primaryTraitType = getPrimaryTraitType();
+    if (hasAttribute(new Identificate("MartialArts")) &&
+    	((IFavorableGenericTrait)traitCollection.getTrait(AbilityType.MartialArts)).isCasteOrFavored())
+    	return true;
+
     basicCharacter.getCharacterType().getFavoringTraitType().accept(new IFavoringTraitTypeVisitor() {
       public void visitAbilityType(FavoringTraitType visitedType) {
         characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AbilityType;
@@ -358,6 +364,11 @@ public class Charm extends Identificate implements ICharm {
       {
     	characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof YoziType;
       }
+
+	@Override
+	public void visitVirtueType(FavoringTraitType visitedType) {
+		characterCanFavorMagicOfPrimaryType[0] = false;
+	}
     });
     if (characterCanFavorMagicOfPrimaryType[0] == false) {
       return false;

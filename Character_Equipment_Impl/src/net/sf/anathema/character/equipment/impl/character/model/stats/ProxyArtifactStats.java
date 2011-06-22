@@ -37,6 +37,16 @@ public class ProxyArtifactStats extends AbstractStats implements IArtifactStats,
 		{
 			return delegate.getAttuneType();
 		}
+		
+	  public boolean allowForeignAttunement()
+	  {
+		  return delegate.allowForeignAttunement();
+	  }
+	  
+	  public boolean requireAttunementToUse()
+	  {
+		  return delegate.requireAttunementToUse();
+	  }
 
 	  @Override
 	  public boolean equals(Object obj) {
@@ -62,5 +72,11 @@ public class ProxyArtifactStats extends AbstractStats implements IArtifactStats,
 	  @Override
 	  public String getId() {
 	    return delegate.getId();
+	  }
+	  
+	  @Override
+	  public Object[] getApplicableMaterials()
+	  {
+		  return delegate.getApplicableMaterials();
 	  }
 }

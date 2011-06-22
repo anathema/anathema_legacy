@@ -6,6 +6,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class MeritsFlawsAvailableCellRenderer extends LegalityCheckListCellRenderer {
 
+  private static final long serialVersionUID = 3067328056975894485L;
   private final IMeritsFlawsModel model;
 
   public MeritsFlawsAvailableCellRenderer(IMeritsFlawsModel model, IResources resources) {

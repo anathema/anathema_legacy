@@ -34,6 +34,8 @@ public class LanguagePreferencesElement implements IPreferencesElement {
     final JLabel languageLabel = new JLabel(resources.getString("AnathemaCore.Tools.Preferences.Language") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
     languageBox = new JComboBox(SupportedLocale.values());
     languageBox.setRenderer(new DefaultListCellRenderer() {
+      private static final long serialVersionUID = -1135118366291569863L;
+
       @Override
       public Component getListCellRendererComponent(
           JList list,

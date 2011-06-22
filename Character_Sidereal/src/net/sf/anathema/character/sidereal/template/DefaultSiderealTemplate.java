@@ -138,4 +138,9 @@ public class DefaultSiderealTemplate extends AbstractCharacterTemplate {
   public IMagicTemplate getMagicTemplate() {
     return magicTemplate;
   }
+  
+  public String[] getBaseHealthProviders()
+  {
+	  return new String[0];
+  }
 }

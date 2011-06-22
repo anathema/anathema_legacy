@@ -9,6 +9,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class NewSelectionAction extends SmartAction {
 
+  private static final long serialVersionUID = -8213743358757844742L;
   private final IMusicSelectionModel selectionModel;
   private final String unnamedSelectionBase;
 

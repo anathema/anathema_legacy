@@ -125,6 +125,11 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
       {
     	throw new NotYetImplementedException();
       }
+      
+      public void informTraits(Object traits)
+      {
+    	throw new NotYetImplementedException();
+      }
     };
   }
 
@@ -196,5 +201,10 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   public boolean isLegacy()
   {
 	  return false;
+  }
+  
+  public String[] getBaseHealthProviders()
+  {
+	  return new String[0];
   }
 }

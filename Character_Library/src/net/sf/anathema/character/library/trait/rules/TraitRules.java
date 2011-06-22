@@ -46,6 +46,11 @@ public class TraitRules implements ITraitRules
     }
     return modifiedCreationRange.getLowerBound();
   }
+  
+  public int getCalculationMinValue()
+  {
+	 return template.getCalculationMinValue(limitationContext, traitType);
+  }
 
   public int getStartValue() {
     return template.getStartValue();

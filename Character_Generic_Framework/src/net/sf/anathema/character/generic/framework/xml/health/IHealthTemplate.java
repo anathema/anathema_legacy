@@ -5,5 +5,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 public interface IHealthTemplate {
 
   public ITraitType[] getToughnessControllingTraits();
+  
+  public String[] getBaseHealthProviders();
 
 }

@@ -10,6 +10,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaItemCloseAction extends AbstractAnathemaCloseAction {
 
+  private static final long serialVersionUID = -5895014585326937713L;
   private final IItem item;
 
   public static Action createForItem(IItemMangementModel model, IResources resources, IItem item) {

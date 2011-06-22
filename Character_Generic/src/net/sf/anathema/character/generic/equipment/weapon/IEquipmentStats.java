@@ -6,4 +6,6 @@ import net.sf.anathema.lib.util.IIdentificate;
 public interface IEquipmentStats extends IStats, IIdentificate {
   public boolean useAttunementModifiers();
   public void setUseAttunementModifiers(boolean value);
+  public Object[] getApplicableMaterials();
+  public void setApplicableMaterials(Object[] materials);
 }

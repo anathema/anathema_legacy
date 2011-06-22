@@ -4,6 +4,7 @@ import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
@@ -70,6 +71,8 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     }
     if (equipment instanceof IArtifactStats)
       return createArtifactString((IArtifactStats) equipment);
+    if (equipment instanceof ITraitModifyingStats)
+      return createTraitModifyingString((ITraitModifyingStats) equipment);
     throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong."); //$NON-NLS-1$
   }
   
@@ -79,6 +82,7 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
 	  {
 	  case Unattuned:
 	  case PartiallyAttuned:
+	  case ExpensivePartiallyAttuned:
 		  return false;
 	  default:
 	  case FullyAttuned:
@@ -105,6 +109,44 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     stringBuilder.append(getStatsString("MobilityPenalty", stats.getMobilityPenalty(), false)); //$NON-NLS-1$
     stringBuilder.append(getStatsString("Fatigue", stats.getFatigue(), false)); //$NON-NLS-1$
     return stringBuilder.toString();
+  }
+  
+  private String createTraitModifyingString(ITraitModifyingStats stats)
+  {
+	  StringBuilder stringBuilder = new StringBuilder();
+	  stringBuilder.append(stats.getName().getId());
+	  stringBuilder.append(":");
+	  if (stats.getDDVMod() != 0)
+		  stringBuilder.append(getStatsString("DDV", stats.getDDVMod(), true));
+	  if (stats.getPDVMod() != 0)
+		  stringBuilder.append(getStatsString("PDV", stats.getPDVMod(), true));
+	  if (stats.getMDDVMod() != 0)
+		  stringBuilder.append(getStatsString("MDDV", stats.getMDDVMod(), true));
+	  if (stats.getMPDVMod() != 0)
+		  stringBuilder.append(getStatsString("MPDV", stats.getMPDVMod(), true));
+	  if (stats.getMeleeSpeedMod() != 0)
+		  stringBuilder.append(getStatsString("MeleeSpeed", stats.getMeleeSpeedMod(), true));
+	  if (stats.getMeleeAccuracyMod() != 0)
+		  stringBuilder.append(getStatsString("MeleeAccuracy", stats.getMeleeAccuracyMod(), true));
+	  if (stats.getMeleeDamageMod() != 0)
+		  stringBuilder.append(getStatsString("MeleeDamage", stats.getMeleeDamageMod(), true));
+	  if (stats.getMeleeRateMod() != 0)
+		  stringBuilder.append(getStatsString("MeleeRate", stats.getMeleeRateMod(), true));
+	  if (stats.getRangedSpeedMod() != 0)
+		  stringBuilder.append(getStatsString("RangedSpeed", stats.getRangedSpeedMod(), true));
+	  if (stats.getRangedAccuracyMod() != 0)
+		  stringBuilder.append(getStatsString("RangedAccuracy", stats.getRangedAccuracyMod(), true));
+	  if (stats.getRangedDamageMod() != 0)
+		  stringBuilder.append(getStatsString("RangedDamage", stats.getRangedDamageMod(), true));
+	  if (stats.getRangedRateMod() != 0)
+		  stringBuilder.append(getStatsString("RangedRate", stats.getRangedRateMod(), true));
+	  if (stats.getJoinBattleMod() != 0)
+		  stringBuilder.append(getStatsString("JoinBattle", stats.getJoinBattleMod(), true));
+	  if (stats.getJoinDebateMod() != 0)
+		  stringBuilder.append(getStatsString("JoinDebate", stats.getJoinDebateMod(), true));
+	  if (stats.getJoinWarMod() != 0)
+		  stringBuilder.append(getStatsString("JoinWar", stats.getJoinWarMod(), true));
+	  return stringBuilder.toString();
   }
 
   private String createArmourString(IArmourStats armourStats) {

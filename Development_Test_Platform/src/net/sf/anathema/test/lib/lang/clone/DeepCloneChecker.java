@@ -11,6 +11,7 @@ import junit.framework.Assert;
 
 public class DeepCloneChecker {
 
+  @SuppressWarnings("serial")
   private List<Class<?>> checkEqualsClasses = new ArrayList<Class<?>>() {
     {
       add(Byte.class);

@@ -103,4 +103,9 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   {
 	  return false;
   }
+  
+  public String[] getBaseHealthProviders()
+  {
+	  return new String[0];
+  }
 }

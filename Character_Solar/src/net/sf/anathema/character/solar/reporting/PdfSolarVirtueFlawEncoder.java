@@ -91,4 +91,9 @@ public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
   private Font createFont(BaseFont baseFont) {
     return TableEncodingUtilities.createFont(baseFont);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

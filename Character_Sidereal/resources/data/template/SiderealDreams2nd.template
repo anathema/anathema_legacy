@@ -33,7 +33,7 @@
     <bonusPointCosts uses="template/SiderealBonusPointCost2nd.template" />
     <creationPoints>
       <attributeDots primary="8" secondary="6" tertiary="4"/>
-      <abilityDots general="27" favored="10" favoredPicks="4" />
+      <abilityDots general="15" favored="10" favoredPicks="4" />
       <backgroundDots count="10" />
       <virtueDots count="5" />
       <bonusPoints count="15" />

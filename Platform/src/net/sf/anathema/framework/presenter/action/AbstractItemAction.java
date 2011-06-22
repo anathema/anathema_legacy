@@ -16,6 +16,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractItemAction extends SmartAction {
 
+  private static final long serialVersionUID = -6505216092259346812L;
   private final IResources resources;
   private final IAnathemaModel anathemaModel;
 

@@ -32,6 +32,10 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
   public boolean hasSecondPage() {
     return false;
   }
+  
+  public boolean hasMagicPage() {
+	return false;
+  }
 
   public IPdfContentBoxEncoder getGreatCurseEncoder() {
     return registry.getLinguisticsEncoder(); //No Great Curse for Mortals

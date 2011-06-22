@@ -13,6 +13,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class MeritsFlawsSelectedCellRenderer extends DefaultListCellRenderer {
 
+  private static final long serialVersionUID = 1992736886421420171L;
   private final IResources resources;
   private final IMeritsFlawsModel model;
 

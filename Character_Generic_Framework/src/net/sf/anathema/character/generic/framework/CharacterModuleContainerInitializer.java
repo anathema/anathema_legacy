@@ -15,16 +15,17 @@ public class CharacterModuleContainerInitializer {
 
   private final Logger logger = Logger.getLogger(CharacterModuleContainerInitializer.class);
 
+  @SuppressWarnings("serial")
   private final List<String> moduleNameList = new ArrayList<String>() {
     {
       add("net.sf.anathema.character.reporting.CharacterReportingModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.equipment.impl.EquipmentCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.meritsflaws.MeritsFlawsModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.mutations.MutationsModule"); //$NON-NLS-1$
-      add("net.sf.anathema.character.thaumaturgy.ThaumaturgyModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.impl.specialties.SpecialtiesModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.craft.CraftModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.linguistics.LinguisticsModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.thaumaturgy.ThaumaturgyModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.intimacies.IntimaciesModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.mortal.MortalCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.abyssal.AbyssalCharacterModule"); //$NON-NLS-1$
@@ -32,8 +33,11 @@ public class CharacterModuleContainerInitializer {
       add("net.sf.anathema.character.db.DbCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.lunar.LunarCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.solar.SolarCharacterModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.spirit.SpiritCharacterModule"); //$NON-NLS-1$
+      //add("net.sf.anathema.character.ghost.GhostCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.sidereal.SiderealCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.infernal.InfernalCharacterModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.godblooded.GodBloodedCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.martialarts.MartialArtsCharacterModule"); //$NON-NLS-1$
     }
   };
@@ -49,6 +53,7 @@ public class CharacterModuleContainerInitializer {
 
   private void addModule(CharacterModuleContainer container, String moduleName) throws InitializationException {
     try {
+      @SuppressWarnings("unchecked")
       ICharacterModule< ? extends ICharacterModuleObject> module = (ICharacterModule< ? extends ICharacterModuleObject>) Class.forName(moduleName).newInstance();
       container.addCharacterGenericsModule(module);
     }

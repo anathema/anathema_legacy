@@ -9,6 +9,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AddLibraryAction extends SmartAction {
 
+  private static final long serialVersionUID = 2648480257056205563L;
   private final ILibraryControl libraryModel;
   private final String unknownLibraryBase;
 

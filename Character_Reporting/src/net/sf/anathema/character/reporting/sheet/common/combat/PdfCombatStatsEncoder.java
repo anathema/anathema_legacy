@@ -47,4 +47,9 @@ public class PdfCombatStatsEncoder extends AbstractPdfEncoder implements IPdfCon
       throws DocumentException {
     combatRulesEncoder.encodeTable(directContent, character, bounds);
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

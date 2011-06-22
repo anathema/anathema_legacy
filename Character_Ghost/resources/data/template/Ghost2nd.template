@@ -1,0 +1,33 @@
+<exaltedCharacterTemplate characterType="Ghost" subtemplate="default">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="template/GhostEssence.template" />
+    <traitCollection uses="trait/DefaultTraitCollection.template"/>
+    <magicTemplate uses="template/GhostMagic2nd.template"/>
+    <presentation uses="template/GhostPresentation2nd.template"/>
+    <healthTemplate>
+      <toughnessControllingTrait type="Resistance"/>
+    </healthTemplate>
+    <additionalTemplates>
+      <template id="Ghost.Age.Template" />
+      <template id="Ghost.Passions.Template" />
+      <template id="Ghost.Fetters.Template" />
+    </additionalTemplates>
+  </general>
+  <creation>
+    <bonusPointCosts uses="template/GhostBonusPointCost2nd.template" />
+    <creationPoints>
+      <attributeDots primary="6" secondary="5" tertiary="4"/>
+      <abilityDots general="25" favored="0"/>
+      <backgroundDots count="8" />
+      <virtueDots count="5" />
+      <bonusPoints count="21" />
+      <charmPicks favored="0" general="6" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/GhostExperienceCost2nd.template" />
+  </experience>
+</exaltedCharacterTemplate>

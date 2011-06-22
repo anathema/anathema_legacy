@@ -17,7 +17,9 @@ public abstract class AbstractArrayFieldSearchParameter<P> implements IExtendedS
 
   public Constraint configure(Query query) {
     return query.constrain(new Evaluation() {
-      public void evaluate(Candidate candidate) {
+      private static final long serialVersionUID = -4742377237041784269L;
+
+	  public void evaluate(Candidate candidate) {
         candidate.include(containsAllParameters(candidate));
       }
     });

@@ -20,6 +20,7 @@ public class AlternateMinimumTraitTemplateParser {
   private static final String ATTRIB_VALUE = "value"; //$NON-NLS-1$
   private static final String TAG_TRAIT = "trait"; //$NON-NLS-1$
   private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
+  private static final String TAG_FREEBIE = "isFreebie";
   private final ITraitTypeGroup traitTypeGroup;
 
   public AlternateMinimumTraitTemplateParser(ITraitTypeGroup traitTypeGroup) {
@@ -30,6 +31,7 @@ public class AlternateMinimumTraitTemplateParser {
     int count = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_COUNT);
     int value = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);
     AlternateMinimumRestriction restriction = new AlternateMinimumRestriction(count, value);
+    restriction.setIsFreebie(ElementUtilities.getBooleanAttribute(element, TAG_FREEBIE, false));
     List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<GenericRestrictedTraitTemplate>();
     for (Element traitElement : ElementUtilities.elements(element, TAG_TRAIT)) {
       IClonableTraitTemplate template = GenericTraitTemplateParser.parseTraitTemplate(traitElement);

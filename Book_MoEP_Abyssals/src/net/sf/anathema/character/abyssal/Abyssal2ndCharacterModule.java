@@ -81,7 +81,7 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
     	            new RaveningMouth(),
     	            new EssenceFlow(),
     	            new ApocalypticEvolution(),
-    	            new SupremePerfection()}); //$NON-NLS-1$
+    	            new SupremePerfection()}); 
     
     characterGenerics.getCharmProvider().setSpecialCharms(
             CharacterType.ABYSSAL,

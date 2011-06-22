@@ -15,7 +15,7 @@ public class GenericComboRulesBuilder extends ComboRulesBuilder implements IComb
   protected void buildRestrictionList(ComboRestrictions comboRules, Element restrictionElement) throws CharmException {
     super.buildRestrictionList(comboRules, restrictionElement);
     for (String charmId : GenericCharmUtilities.getAllReferencedGenericCharms(restrictionElement, type)) {
-      comboRules.addRestrictedCharmId(charmId ); //$NON-NLS-1$
+      comboRules.addRestrictedCharmId(charmId ); 
     }
   }
 

@@ -18,17 +18,21 @@
 			projectset="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Platform_Database,Platform_SvgTree" />
 		<buildAnathemaPlugin module.name="namegenerator" projectset="Namegenerator" />
 		<buildAnathemaPlugin module.name="character"
-			projectset="Character_Generic,Character_Generic_Impl,Character_Generic_Framework,Character_Reporting,Character_Library,Character_Craft,Character_Linguistics,Charm_Tree,Character_Intimacies,Character_Equipment,Character_Equipment_Impl,Character_MeritsFlaws,Character_Main,Character_Main_Impl" />
+			projectset="Character_Generic,Character_Generic_Impl,Character_Generic_Framework,Character_Reporting,Character_Library,Character_Craft,Character_Linguistics,Charm_Tree,Character_Intimacies,Character_Equipment,Character_Equipment_Impl,Character_MeritsFlaws,Character_Mutations,Character_Thaumaturgy,Character_Main,Character_Main_Impl" />
 		<buildAnathemaPlugin module.name="character_martialarts" projectset="Character_MartialArts" />
 		<buildAnathemaPlugin module.name="character_mortal" projectset="Character_Mortal" />
 		<buildAnathemaPlugin module.name="character_solar" projectset="Character_Solar" />
+		<buildAnathemaPlugin module.name="character_spirit" projectset="Character_Spirit" />
+		<buildAnathemaPlugin module.name="character_ghost" projectset="Character_Ghost" />
 		<buildAnathemaPlugin module.name="character_db" projectset="Character_Db" />
 		<buildAnathemaPlugin module.name="character_lunar" projectset="Character_Lunar" />
 		<buildAnathemaPlugin module.name="character_abyssal" projectset="Character_Abyssal" />
 		<buildAnathemaPlugin module.name="character_sidereal" projectset="Character_Sidereal" />
+		<buildAnathemaPlugin module.name="character_godblooded" projectset="Character_Godblooded" />
 		<buildAnathemaPlugin module.name="plot" projectset="Campaign_Plot" />
 		<buildAnathemaPlugin module.name="music" projectset="Campaign_Music,Campaign_Music_Impl" />
 		<buildAnathemaPlugin module.name="charmcascades" projectset="Charm_Cascades" />
+		<buildAnathemaPlugin module.name="charmentry" projectset="Charm_Entry" />
 		
 		<!-- Additional Sources -->
 		<buildAnathemaPlugin module.name="blog_inkmonkeys" projectset="Blog_InkMonkeys" />

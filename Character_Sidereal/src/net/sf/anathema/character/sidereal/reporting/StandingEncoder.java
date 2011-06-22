@@ -68,4 +68,9 @@ public class StandingEncoder extends AbstractPdfEncoder implements IPdfContentBo
   protected BaseFont getBaseFont() {
     return baseFont;
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

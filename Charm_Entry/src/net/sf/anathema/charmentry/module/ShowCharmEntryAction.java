@@ -24,6 +24,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class ShowCharmEntryAction extends SmartAction {
 
+  private static final long serialVersionUID = 224753938683474781L;
   private final IResources resources;
 
   public static Action createMenuAction(IResources resources) {

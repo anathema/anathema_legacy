@@ -20,6 +20,7 @@ public class MusicSelectionCellEditor extends AbstractDelegatingCellEditor {
   protected final EditorDelegate createDelegate(JComponent editorComponent) {
     final JTextField textField = (JTextField) editorComponent;
     return new EditorDelegate(this) {
+      private static final long serialVersionUID = -2343686002500042761L;
       private IMusicSelection musicSelection;
 
       @Override

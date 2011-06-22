@@ -14,10 +14,12 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArmourStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArtifactStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyShieldStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyTraitModifyingStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyWeaponStats;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
@@ -65,6 +67,8 @@ public class EquipmentItem implements IEquipmentItem {
         }
         if (input instanceof IArtifactStats)
           return new ProxyArtifactStats((IArtifactStats) input, material, ruleSet);
+        if (input instanceof ITraitModifyingStats)
+          return new ProxyTraitModifyingStats((ITraitModifyingStats)input, material, ruleSet);
         return new ProxyShieldStats((IShieldStats) input, material, ruleSet);
       }
     });

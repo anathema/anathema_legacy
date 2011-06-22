@@ -1,9 +1,14 @@
 package net.sf.anathema.character.reporting.sheet.util;
 
+import java.awt.Color;
+
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.util.Position;
 
+import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfTemplate;
 
 public class PdfTraitEncoder extends AbstractPdfEncoder {
 
@@ -153,6 +158,39 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     int squareWidth = dotSize + 2;
     Position usualTraitPosition = new Position(position.x + squareWidth, position.y);
     return encodeWithText(directContent, text, usualTraitPosition, width - squareWidth, value, dotCount);
+  }
+  
+  public int encodeWithExcellencies(PdfContentByte directContent,
+                                    String text,
+                                    Position position,
+                                    float width,
+                                    int value,
+                                    boolean favored,
+                                    boolean[] excellencyLearned,
+                                    int dotCount)
+  {
+    initDirectContent(directContent);
+    for (int i = excellencyLearned.length; i > 0; i--) {
+      String label = Integer.toString(i);
+      float labelWidth = getBaseFont().getWidthPoint(label, IVoidStateFormatConstants.FONT_SIZE);
+      
+      PdfTemplate template = directContent.createTemplate(labelWidth, height);
+      initDirectContent(template);
+      if (excellencyLearned[i - 1]) {
+        template.setColorFill(Color.BLACK);
+      }
+      else {
+        template.setColorFill(Color.LIGHT_GRAY);
+      }
+      template.beginText();
+      template.showTextAligned(PdfContentByte.ALIGN_LEFT, label, 0, 0, 0);
+      template.endText();
+      
+      directContent.addTemplate(template, position.x + width - labelWidth, position.y);
+      width -= labelWidth + SMALL_DOT_SPACING;
+    }
+    
+    return encodeWithTextAndRectangle(directContent, text, position, width, value, favored, dotCount);
   }
 
   @Override

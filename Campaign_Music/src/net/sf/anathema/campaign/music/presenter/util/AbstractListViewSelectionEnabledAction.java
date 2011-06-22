@@ -9,6 +9,7 @@ import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 
 public abstract class AbstractListViewSelectionEnabledAction<V> extends SmartAction {
 
+  private static final long serialVersionUID = 4608996635499443248L;
   private final IActionAddableListView<V> view;
 
   public AbstractListViewSelectionEnabledAction(Icon icon, IActionAddableListView<V> view) {

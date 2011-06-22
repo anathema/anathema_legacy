@@ -147,4 +147,9 @@ public class SecondEditionSocialCombatStatsEncoder implements IPdfContentBoxEnco
     encoder.addLabelledValue(directContent, 1, dodgeLabel, dodgeMDV);
     return encoder.getHeight() + 1;
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

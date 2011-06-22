@@ -52,6 +52,8 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   @Override
   public ListCellRenderer getLearnedMagicRenderer() {
     return new IdentificateListCellRenderer(getResources()) {
+      private static final long serialVersionUID = 6643949300795449115L;
+
       @Override
       public Component getListCellRendererComponent(
           JList list,
@@ -74,6 +76,8 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
 
   public ListCellRenderer getAvailableMagicRenderer() {
     return new LegalityCheckListCellRenderer(getResources()) {
+      private static final long serialVersionUID = -4341837486327899321L;
+
       @Override
       protected boolean isLegal(Object object) {
         return comboConfiguration.isComboLegal((ICharm) object);

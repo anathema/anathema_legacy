@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+    wyld.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Scott D. Olson (scottolson275@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist>
+	<!-- Spirit Wyld -->
+	<charm id="Spirit.WyldArmor" exalt="Spirit" group="Wyld">
+		<prerequisite>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+		   <essence cost="3" text="+2m per additional person"/>
+		</cost>
+		<duration amount="1" unit="day"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<source source="CompassWyld"/>
+	</charm>
+	<charm id="Spirit.WyldShield" exalt="Spirit" group="Wyld">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<essence cost="5" text="committed"/>
+			<willpower cost = "1"/>
+		</cost>
+		<duration amount="1" unit="day"/>
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<source source="CompassWyld"/>
+	</charm>
+	<charm id="Spirit.WyldBarrier" exalt="Spirit" group="Wyld">
+		<prerequisite>
+			<essence value="4"/>
+		</prerequisite>
+		<cost>
+			<essence cost="10"/>
+			<willpower cost = "2"/>
+		</cost>
+		<duration amount="1" unit="week"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<source source="CompassWyld"/>
+	</charm>
+	<charm id="Spirit.FortressofCreation" exalt="Spirit" group="Wyld">
+		<prerequisite>
+			<essence value="5"/>
+		</prerequisite>
+		<cost>
+			<essence cost="Varies" />
+			<willpower cost="Varies" />
+		</cost>
+		<duration amount="1" unit="day"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<source source="CompassWyld"/>
+	</charm>
+	<charm id="Spirit.VirtuousGuard" exalt="Spirit" group="Wyld">
+		<prerequisite>
+			<essence value="2"/>
+		</prerequisite>
+		<cost>
+			<essence cost="2" text="per person guarded"/>
+		</cost>
+		<duration amount="1" unit="day"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Obvious" visualize="true"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="CompassWyld"/>
+	</charm>
+</charmlist>

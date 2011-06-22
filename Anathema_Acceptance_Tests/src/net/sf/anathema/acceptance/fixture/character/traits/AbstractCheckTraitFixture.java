@@ -46,6 +46,7 @@ public abstract class AbstractCheckTraitFixture extends AbstractCharacterColumnF
   }
 
   protected ITrait getTrait() {
+    @SuppressWarnings("unchecked")
     ICharacter character = new CharacterSummary(summary).getCharacter();
     ICharacterStatistics statistics = character.getStatistics();
     return statistics.getTraitConfiguration().getTrait(getTraitType());

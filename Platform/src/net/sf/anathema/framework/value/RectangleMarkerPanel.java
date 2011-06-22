@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class RectangleMarkerPanel extends AbstractMarkerPanel {
+  private static final long serialVersionUID = 8081094439066347485L;
   private final Rectangle rectangleToDraw = new Rectangle();
 
   @Override

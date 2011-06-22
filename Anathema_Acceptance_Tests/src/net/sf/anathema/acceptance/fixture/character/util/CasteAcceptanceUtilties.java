@@ -43,6 +43,15 @@ public class CasteAcceptanceUtilties {
       public void visitMortal(ICharacterType visitedType) {
         throw new IllegalArgumentException("Mortals have no caste"); //$NON-NLS-1$
       }
+      
+      public void visitSpirit(ICharacterType visitedType) {
+          throw new IllegalArgumentException("Spirits have no caste"); //$NON-NLS-1$
+        }
+      
+      public void visitGhost(ICharacterType visitedType)
+      {
+    	  throw new IllegalArgumentException("Ghosts have no caste");
+      }
 
       public void visitSolar(ICharacterType visitedType) {
         casteType.add(SolarCaste.valueOf(caste));

@@ -16,7 +16,6 @@ public class CharacterSummary extends CharacterGenericsSummary {
   private static final String KEY_RESOURCES = "Resources"; //$NON-NLS-1$
   private static final String KEY_CHARACTER = "character"; //$NON-NLS-1$
 
-  @SuppressWarnings("unchecked")
   public CharacterSummary(Map<Object, Object> summary) {
     super(summary);
   }

@@ -16,7 +16,7 @@ public abstract class ThaumaturgyMagic extends DefaultTrait implements IThaumatu
 
   public ThaumaturgyMagic(String art, String procedure, int minValue, ITraitContext context,
 		  IGenericTraitCollection collection, IValueChangeChecker checker) {
-    super(new TraitRules(new TraitType(getName(art, procedure)), //$NON-NLS-1$
+    super(new TraitRules(new TraitType(getName(art, procedure)), 
         SimpleTraitTemplate.createStaticLimitedTemplate(minValue, ALLOWED_DOT_COUNT),
         context.getLimitationContext()), context, checker);
     this.art = art;

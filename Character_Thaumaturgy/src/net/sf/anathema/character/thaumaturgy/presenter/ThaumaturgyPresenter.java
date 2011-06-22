@@ -72,6 +72,7 @@ public class ThaumaturgyPresenter implements IPresenter {
 			  {
 				@Override
 				public void valueChanged(String newValue) {
+					model.clear();
 					model.setCurrentType(modeMap.get(newValue));
 					view.setCurrentMode(modeMap.get(newValue));
 					view.clear();
@@ -320,6 +321,7 @@ public class ThaumaturgyPresenter implements IPresenter {
     magicView.addDeleteListener(new IChangeListener() {
       public void changeOccured() {
     	model.removeMagic(magic);
+    	model.recalculate();
     	magicView.delete();
       }
     });

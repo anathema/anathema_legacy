@@ -49,6 +49,11 @@ public class InfernalUrgeEncoder implements IPdfContentBoxEncoder {
     PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
  
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return false;
+  }
 
   private Font createNameFont(BaseFont baseFont) {
     Font newFont = createFont(baseFont);

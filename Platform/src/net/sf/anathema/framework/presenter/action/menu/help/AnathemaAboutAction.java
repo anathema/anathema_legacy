@@ -13,6 +13,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaAboutAction extends SmartAction {
 
+  private static final long serialVersionUID = 7136443647218989729L;
   private final IResources resources;
 
   public static Action createMenuAction(IResources resources) {

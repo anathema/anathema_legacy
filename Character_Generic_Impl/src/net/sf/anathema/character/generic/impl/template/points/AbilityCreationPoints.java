@@ -28,9 +28,19 @@ public class AbilityCreationPoints extends ReflectionCloneableObject<IAbilityCre
     return defaultDotCount;
   }
   
-  public int getExtraDotCount()
+  public int getExtraFavoredDotCount()
   {
 	  return 0;
+  }
+  
+  public int getExtraGenericDotCount()
+  {
+	  return 0;
+  }
+  
+  public void informTraits(Object traits)
+  {
+	  //do nothing
   }
 
   @Override

@@ -7,12 +7,14 @@ import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration
 
 public interface IPdfPartEncoder {
   public static final int FONT_SIZE = IVoidStateFormatConstants.FONT_SIZE - 1;
-
+  
   public IPdfContentBoxEncoder getAnimaEncoder();
 
   public IPdfContentBoxEncoder getEssenceEncoder();
 
   public IPdfContentBoxEncoder getGreatCurseEncoder();
+  
+  public IPdfContentBoxEncoder getOverdriveEncoder();
 
   public IPdfContentBoxEncoder getCombatStatsEncoder();
 
@@ -21,8 +23,8 @@ public interface IPdfPartEncoder {
   public IPdfContentBoxEncoder getIntimaciesEncoder(PdfEncodingRegistry registry);
 
   public IPdfContentBoxEncoder getHealthAndMovementEncoder();
-
-  public boolean hasSecondPage();
+  
+  public boolean hasMagicPage();
 
   public float getWeaponryHeight();
 

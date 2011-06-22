@@ -69,7 +69,7 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <charmAttribute attribute="MartialArts"/>
+        <charmAttribute attribute="MartialArts"/>
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Exclusive" />
           <charmAttribute attribute="Obvious" visualize="true" />

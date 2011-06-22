@@ -50,7 +50,9 @@ public class EquipmentEditStatsPresenter implements IPresenter {
   public void initPresentation() {
     final EquipmentStringBuilder equipmentStringBuilder = new EquipmentStringBuilder(resources);
     ObjectUiListCellRenderer statsRenderer = new ObjectUiListCellRenderer(new EquipmentStatsUi(resources)) {
-      @Override
+		private static final long serialVersionUID = 1L;
+
+	@Override
       public Component getListCellRendererComponent(
           JList list,
           Object value,

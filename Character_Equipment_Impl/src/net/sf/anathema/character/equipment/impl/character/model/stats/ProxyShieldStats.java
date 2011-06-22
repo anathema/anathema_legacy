@@ -63,4 +63,10 @@ public class ProxyShieldStats extends AbstractStats implements IShieldStats, IPr
   public String getId() {
     return getName().getId();
   }
+  
+  @Override
+  public Object[] getApplicableMaterials()
+  {
+	  return delegate.getApplicableMaterials();
+  }
 }

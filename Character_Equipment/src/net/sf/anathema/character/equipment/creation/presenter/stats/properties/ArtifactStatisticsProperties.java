@@ -16,6 +16,14 @@ public class ArtifactStatisticsProperties extends AbstractEquipmentStatisticsPro
   public String getAttuneCostLabel() {
     return getLabelString("Equipment.Stats.Long.AttuneCost"); //$NON-NLS-1$
   }
+  
+  public String getRequireAttuneLabel() {
+	    return getLabelString("Equipment.Stats.Long.RequireAttune"); //$NON-NLS-1$
+	  }
+  
+  public String getForeignAttuneLabel() {
+	    return getLabelString("Equipment.Stats.Long.ForeignAttune"); //$NON-NLS-1$
+	  }
 
   @Override
   public IBasicMessage getDefaultMessage() {

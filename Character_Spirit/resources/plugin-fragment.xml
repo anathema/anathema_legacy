@@ -1,0 +1,93 @@
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
+<plugin-fragment id="net.sf.anathema.character.spirit" version="1.03" plugin-id="net.sf.anathema.character" plugin-version="1.03">
+	<runtime>		
+		<library id="spirit" path="./" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="spiritresources" path="./" type="resources">
+			<export prefix="*"/>
+		</library>
+	</runtime>
+	<extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="SpiritCharms">
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/excellencies.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/universal.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/blessings.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/divinations.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/sendings.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/divineWorks.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/eidola.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/relocations.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/enchantments.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/inhabitings.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/tantra.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/aegis.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/curses.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/edges.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Spirit"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/wyld.xml"/>
+	  </parameter>
+	  </extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="SpiritResources">
+		<parameter id="bundle" value="Spirit"/>	
+		<parameter id="bundle" value="Charms_Spirit"/>
+		<parameter id="bundle" value="Pages_Spirit"/>	
+	</extension>
+</plugin-fragment>

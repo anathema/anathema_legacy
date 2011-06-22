@@ -13,6 +13,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaCloseAction extends AbstractAnathemaCloseAction {
 
+  private static final long serialVersionUID = 6219742679646432771L;
+
   public static Action createMenuAction(IItemMangementModel model, IResources resources) {
     SmartAction action = new AnathemaCloseAction(model, resources);
     action.setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_W, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));

@@ -85,6 +85,8 @@ public class PlotView implements IPlotView {
 
   private void initHierarchyButtons(IPlotViewProperties properties) {
     SmartAction addAction = new SmartAction() {
+      private static final long serialVersionUID = 1112372805471188433L;
+
       @Override
       protected void execute(Component parentComponent) {
         listenerControl.fireAddRequested(TreeUtilities.getSelectedHierachyNode(tree));
@@ -94,6 +96,8 @@ public class PlotView implements IPlotView {
     addButton = new JButton(addAction);
 
     SmartAction removeAction = new SmartAction() {
+      private static final long serialVersionUID = 167702035567735387L;
+
       @Override
       protected void execute(Component parentComponent) {
         listenerControl.fireRemoveRequested(TreeUtilities.getSelectedHierachyNode(tree));
@@ -103,6 +107,8 @@ public class PlotView implements IPlotView {
     removeButton = new JButton(removeAction);
 
     SmartAction upAction = new SmartAction() {
+      private static final long serialVersionUID = -6261555855649984975L;
+
       @Override
       protected void execute(Component parentComponent) {
         DefaultMutableTreeNode node = TreeUtilities.getSelectedHierachyNode(tree);
@@ -115,6 +121,8 @@ public class PlotView implements IPlotView {
     upButton = new JButton(upAction);
 
     SmartAction downAction = new SmartAction() {
+      private static final long serialVersionUID = 8767113776923146733L;
+
       @Override
       protected void execute(Component parentComponent) {
         DefaultMutableTreeNode node = TreeUtilities.getSelectedHierachyNode(tree);

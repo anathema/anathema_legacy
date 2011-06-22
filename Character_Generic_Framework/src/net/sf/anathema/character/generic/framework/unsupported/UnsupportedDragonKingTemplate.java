@@ -65,4 +65,9 @@ public class UnsupportedDragonKingTemplate extends AbstractUnsupportedExaltTempl
       }
     };
   }
+  
+  public String[] getBaseHealthProviders()
+  {
+	  return new String[0];
+  }
 }

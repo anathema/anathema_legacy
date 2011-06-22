@@ -59,7 +59,6 @@ public class SelectableTraitView implements ISelectableTraitView {
     return panel;
   }
 
-  @SuppressWarnings("deprecation")
   public void addTo(JPanel panel) {
     panel.add(traitSelectionBox.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(valueDisplay.getComponent());

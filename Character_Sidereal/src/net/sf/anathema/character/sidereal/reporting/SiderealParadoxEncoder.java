@@ -68,4 +68,9 @@ public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IPdfCo
   public String getHeaderKey() {
     return "GreatCurse.Sidereal"; //$NON-NLS-1$
   }
+  
+  public boolean hasContent(IGenericCharacter character)
+  {
+	  return true;
+  }
 }

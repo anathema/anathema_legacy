@@ -4,6 +4,8 @@ import net.sf.anathema.lib.exception.AnathemaException;
 
 public class RepositoryException extends AnathemaException {
 
+  private static final long serialVersionUID = -4988611300519359780L;
+
   public RepositoryException() {
     super();
   }

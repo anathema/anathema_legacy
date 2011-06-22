@@ -67,6 +67,8 @@ public class MusicPlayerPresenter implements IPresenter {
     initPlayerModelListening();
     MusicUI musicUI = new MusicUI(resources);
     pauseAction = new SmartAction(musicUI.getPauseButtonIcon()) {
+      private static final long serialVersionUID = -8116745122433330752L;
+
       @Override
       protected void execute(Component parentComponent) {
         try {
@@ -79,6 +81,8 @@ public class MusicPlayerPresenter implements IPresenter {
       }
     };
     resumeAction = new SmartAction(musicUI.getResumeButtonIcon()) {
+      private static final long serialVersionUID = 4815188262326471020L;
+
       @Override
       protected void execute(Component parentComponent) {
         try {
@@ -92,6 +96,8 @@ public class MusicPlayerPresenter implements IPresenter {
     };
 
     playAction = new SmartAction(musicUI.getPlayButtonIcon()) {
+      private static final long serialVersionUID = -8530073924466518798L;
+
       @Override
       protected void execute(Component parentComponent) {
         try {
@@ -106,6 +112,8 @@ public class MusicPlayerPresenter implements IPresenter {
     view.setPlayAction(playAction);
 
     view.setStopAction(new SmartAction(musicUI.getStopButtonIcon()) {
+      private static final long serialVersionUID = 4822218505247692013L;
+
       @Override
       protected void execute(Component parentComponent) {
         try {

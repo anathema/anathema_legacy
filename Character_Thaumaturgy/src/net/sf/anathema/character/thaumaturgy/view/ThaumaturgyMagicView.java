@@ -41,18 +41,16 @@ public class ThaumaturgyMagicView extends AbstractTraitView implements IThaumatu
     artLabel = new JLabel(labelText);
   }
 
-  @SuppressWarnings({ "deprecation", "serial" })
-public void addComponents(JPanel panel) {
+  @SuppressWarnings("serial")
+  public void addComponents(JPanel panel) {
     this.traitPanel = panel;
     panel.add(artLabel);
-    if (procedureLabel != null)
-    {
-    	panel.add(separatorLabel);
+    if (procedureLabel != null) {
+    	panel.add(separatorLabel, GridDialogLayoutData.CENTER);
     	panel.add(procedureLabel, GridDialogLayoutData.FILL_HORIZONTAL);
     }
-    else
-    {
-    	panel.add(dummyLabel1);
+    else {
+    	panel.add(dummyLabel1, GridDialogLayoutData.CENTER);
     	panel.add(dummyLabel2, GridDialogLayoutData.FILL_HORIZONTAL);
     }
     panel.add(getValueDisplay().getComponent());
@@ -74,15 +72,18 @@ public void addComponents(JPanel panel) {
     control.fireChangedEvent();
   }
 
-@SuppressWarnings("deprecation")
-public void delete() {
-	traitPanel.remove(artLabel);
-	traitPanel.remove(separatorLabel);
-	traitPanel.remove(procedureLabel);
-	traitPanel.remove(dummyLabel1);
-	traitPanel.remove(dummyLabel2);
-	traitPanel.remove(getValueDisplay().getComponent());
-	traitPanel.remove(deleteButton);
+  public void delete() {
+    traitPanel.remove(artLabel);
+	if (procedureLabel != null) {
+	  traitPanel.remove(separatorLabel);
+	  traitPanel.remove(procedureLabel);
+	}
+	else {
+      traitPanel.remove(dummyLabel1);
+      traitPanel.remove(dummyLabel2);
+	}
+    traitPanel.remove(getValueDisplay().getComponent());
+    traitPanel.remove(deleteButton);
     traitPanel.revalidate();
     traitPanel.repaint();
   }

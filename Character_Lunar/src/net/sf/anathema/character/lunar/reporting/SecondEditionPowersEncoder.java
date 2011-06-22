@@ -109,4 +109,9 @@ public class SecondEditionPowersEncoder implements IPdfContentBoxEncoder
 	public String getHeaderKey() {
 		return "Lunar.Powers";
 	}
+	
+	public boolean hasContent(IGenericCharacter character)
+	  {
+		  return true;
+	  }
 }

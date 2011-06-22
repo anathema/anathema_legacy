@@ -110,4 +110,9 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
     clone.abilityCreationPoints = clone.abilityCreationPoints.clone();
     return clone;
   }
+  
+  public void informTraits(Object traits)
+  {
+	  //do nothing
+  }
 }

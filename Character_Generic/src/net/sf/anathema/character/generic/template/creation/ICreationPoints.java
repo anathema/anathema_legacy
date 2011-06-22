@@ -22,4 +22,6 @@ public interface ICreationPoints {
   public int getDefaultCreationCharmCount();
   
   public int getUniqueRequiredCreationCharmCount();
+  
+  public void informTraits(Object traits);
 }

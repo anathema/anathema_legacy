@@ -16,6 +16,8 @@ import com.l2fprod.common.swing.JTaskPane;
 public class TaskPaneView<V extends ITaskPaneGroupView> {
 
   private final JTaskPane taskPane = new JTaskPane() {
+    private static final long serialVersionUID = 7874326448380052763L;
+
     @Override
     public Dimension getPreferredScrollableViewportSize() {
       return new Dimension(0, 0);

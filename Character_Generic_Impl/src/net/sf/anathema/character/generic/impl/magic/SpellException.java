@@ -4,6 +4,8 @@ import net.sf.anathema.lib.exception.AnathemaException;
 
 public class SpellException extends AnathemaException {
 
+  private static final long serialVersionUID = 45583028978108805L;
+
   public SpellException() {
     super();
   }

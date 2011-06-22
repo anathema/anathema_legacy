@@ -7,6 +7,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
@@ -65,7 +66,7 @@ public class ProcedureEditView<V> extends ButtonControlledComboEditView<V> imple
 
   /** GridDialogLayout, 4 columns */
   public void addComponents(JPanel panel) {
-    panel.add(comboBox.getComponent(), GridDialogLayoutData.DEFAULT);
+    panel.add(comboBox.getComponent(), IGridDialogLayoutData.DEFAULT);
     procedureControl.addComponents(panel);
     panel.add(procedureBox.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(addButton, GridDialogLayoutData.RIGHT);

@@ -15,6 +15,7 @@ public class AttributeListFixture extends RowFixture {
   public Object[] query() throws Exception {
     ITraitType[] traitTypes = AttributeType.values();
     AcceptanceTrait[] traits = new AcceptanceTrait[traitTypes.length];
+    @SuppressWarnings("unchecked")
     ICharacter character = new CharacterSummary(summary).getCharacter();
     ICharacterStatistics statistics = character.getStatistics();
     ICoreTraitConfiguration traitConfiguration = statistics.getTraitConfiguration();

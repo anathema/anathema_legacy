@@ -18,6 +18,7 @@ import net.sf.anathema.lib.util.Identificate;
 
 public class ShowNameGeneratorAction extends SmartAction {
 
+  private static final long serialVersionUID = -7460286119466450674L;
   private final IAnathemaModel anathemaModel;
   private final IResources resources;
 

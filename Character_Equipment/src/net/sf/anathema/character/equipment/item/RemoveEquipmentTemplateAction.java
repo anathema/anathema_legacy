@@ -11,6 +11,7 @@ import net.sf.anathema.lib.gui.dialog.ConfigurableVetor;
 import net.sf.anathema.lib.resources.IResources;
 
 public class RemoveEquipmentTemplateAction extends SmartAction {
+  private static final long serialVersionUID = 2016184103012134620L;
   private final IEquipmentDatabaseManagement model;
   private final IEquipmentDatabaseView view;
   private final IResources resources;

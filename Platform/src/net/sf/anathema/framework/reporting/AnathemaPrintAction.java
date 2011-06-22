@@ -35,6 +35,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaPrintAction extends SmartAction {
 
+  private static final long serialVersionUID = 6219757317594446843L;
   private static final String PDF_EXTENSION = ".pdf"; //$NON-NLS-1$
 
   private static class PrintEnabledListener extends ItemManagementModelAdapter {

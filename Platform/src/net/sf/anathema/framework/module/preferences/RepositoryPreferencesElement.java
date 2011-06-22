@@ -92,6 +92,8 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   private JButton createBrowseButton() {
     return new JButton(new SmartAction(
         resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.BrowseButton")) { //$NON-NLS-1$
+          private static final long serialVersionUID = 5345542134478352427L;
+
           @Override
           protected void execute(Component parent) {
             File selectedDir = DirectoryFileChooser.createDirectoryChooser(

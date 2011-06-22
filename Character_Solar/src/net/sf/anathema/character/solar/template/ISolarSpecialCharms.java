@@ -20,6 +20,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 
 public interface ISolarSpecialCharms {
 
+  @SuppressWarnings("serial")
   public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE = new OxBodyTechniqueCharm(
       "Solar.Ox-BodyTechnique", AbilityType.Endurance,//$NON-NLS-1$
       new LinkedHashMap<String, HealthLevelType[]>() {
@@ -31,6 +32,7 @@ public interface ISolarSpecialCharms {
         }
       });
 
+  @SuppressWarnings("serial")
   public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE_SECOND_EDITION = new OxBodyTechniqueCharm(
       "Solar.Ox-BodyTechnique", AbilityType.Resistance,//$NON-NLS-1$
       new LinkedHashMap<String, HealthLevelType[]>() {

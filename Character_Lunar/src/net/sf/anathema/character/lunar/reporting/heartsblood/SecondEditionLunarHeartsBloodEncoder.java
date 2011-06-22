@@ -67,6 +67,7 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
     return stats.toArray(new IHeartsBloodStats[stats.size()]);
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   protected IStatsGroup<IHeartsBloodStats>[] createStatsGroups(IGenericCharacter character) {
 		  return new IStatsGroup[] {
@@ -98,4 +99,9 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
 	        encodeContentLine(table, statGroups, null);
 	      table.deleteLastRow();
 	}
+	
+	public boolean hasContent(IGenericCharacter character)
+	  {
+		  return true;
+	  }
 }
