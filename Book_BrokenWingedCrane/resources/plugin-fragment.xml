@@ -46,6 +46,11 @@
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="brokenWingedCrane_data/Heretic/Heretic.xml" />
           </parameter>
+          <parameter id="list">
+               <parameter id="type" value="Infernal" />
+               <parameter id="rules" value="SecondEdition" />
+               <parameter id="path" value="brokenWingedCrane_data/Excellencies.xml" />
+          </parameter>
      </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="BrokenWingedCraneResources">
           <parameter id="bundle" value="BrokenWingedCrane" />

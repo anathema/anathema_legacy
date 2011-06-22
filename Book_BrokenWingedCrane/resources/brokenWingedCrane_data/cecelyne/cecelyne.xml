@@ -34,39 +34,6 @@
           <charmtype type="Permanent" />
           <source source="BrokenWingedCrane" />
      </charm>
-     <charm id="Infernal.InevitabilityofLaw2" exalt="Infernal" group="DemonicPrimacy">
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="6" />
-               <charmReference id="Infernal.InevitabilityofLaw"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-     <charm id="Infernal.InevitabilityofLaw3" exalt="Infernal" group="DemonicPrimacy">
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="7" />
-               <charmReference id="Infernal.InevitabilityofLaw2"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-     <charm id="Infernal.InevitabilityofLaw4" exalt="Infernal" group="DemonicPrimacy">
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="9" />
-               <charmReference id="Infernal.InevitabilityofLaw3"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
      <charm id="Infernal.InarguableWord" exalt="Infernal" group="DemonicPrimacy">
           <prerequisite>
                <trait id="Cecelyne" value="0" />

@@ -66,33 +66,11 @@
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="BrokenWingedCrane" />
      </charm>
-     <charm id="Infernal.HollowMindPossession2" exalt="Infernal" group="HollowMind">
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="4" />		   
-               <charmReference id="Infernal.HollowMindPossession"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-     <charm id="Infernal.HollowMindPossession3" exalt="Infernal" group="HollowMind">
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="5" />		   
-               <charmReference id="Infernal.HollowMindPossession2"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
 	 <charm id="Infernal.Noumena-SeizingAssimilation" exalt="Infernal" group="HollowMind">
           <prerequisite>
                <trait id="SheWhoLivesInHerName" value="0" />
                <essence value="5" />		   
-               <charmReference id="Infernal.HollowMindPossession3"/>
+               <charmReference id="Infernal.HollowMindPossession.Subeffects.Repurchase3"/>
           </prerequisite>
            <cost >
 		   <essence cost="10" />
@@ -166,28 +144,6 @@
           <charmAttribute attribute="Social" visualize="true" />
           <source source="BrokenWingedCrane" />
      </charm>
-	 <charm id="Infernal.VoiceLikeCrystalFacets2" exalt="Infernal" group="Unshattered">
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="5" />		   
-               <charmReference id="Infernal.VoiceLikeCrystalFacets"/>
-          </prerequisite>
-           <cost  />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.VoiceLikeCrystalFacets3" exalt="Infernal" group="Unshattered">
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="7" />		   
-               <charmReference id="Infernal.VoiceLikeCrystalFacets2"/>
-          </prerequisite>
-           <cost  />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
 	 <charm id="Infernal.BroadcastAnnouncementPrana" exalt="Infernal" group="HollowMind">
           <prerequisite>
                <trait id="SheWhoLivesInHerName" value="0" />
@@ -221,17 +177,6 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="BrokenWingedCrane" />
      </charm>
-	 <charm id="Infernal.SpaceMonsterScream2" exalt="Infernal" group="Unshattered">
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="6" />		   
-               <charmReference id="Infernal.SpaceMonsterScream"/>	 
-          </prerequisite>
-           <cost  />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
 	 <charm id="Infernal.World-WhaleKeening" exalt="Infernal" group="Unshattered">
           <prerequisite>
                <trait id="SheWhoLivesInHerName" value="0" />
@@ -256,11 +201,8 @@
                <charmReference id="Infernal.Principle-InvokingOnslaught"/>	 	 
                <charmReference id="Infernal.AscendantObjectivityStance"/> 	 
                <charmReference id="Infernal.Will-CrushingForce"/>			 
-               <charmReference id="Infernal.WholenessRightlyAssumedCrippling"/>			 
-               <charmReference id="Infernal.WholenessRightlyAssumedSickness"/>			 
-               <charmReference id="Infernal.WholenessRightlyAssumedPoison"/>			 
-               <charmReference id="Infernal.WholenessRightlyAssumedBashing"/>			 
-               <charmReference id="Infernal.WholenessRightlyAssumedLethal"/>			   			   
+               <charmReference id="Infernal.WholenessRightlyAssumed.Subeffects.Repurchase5"/>			 
+               		   			   
           </prerequisite>
            <cost >
                <essence cost="15" />

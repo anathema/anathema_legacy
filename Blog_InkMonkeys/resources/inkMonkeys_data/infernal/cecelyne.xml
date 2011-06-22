@@ -115,48 +115,6 @@
           <charmAttribute attribute="Stackable" visualize="true" />
           <source source="InkMonkeys" />
      </charm>
-	 <charm id="Infernal.ScouringBanishmentTechnique2" exalt="Infernal" group="DemonicPrimacy">
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="3" />
-               <charmReference id="Infernal.ScouringBanishmentTechnique"/>
-          </prerequisite>
-          <cost> 
-               <essence cost="5" text="or (5m, 1wp)" />   
-          </cost>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-		  <special speed="5" />
-          <source source="InkMonkeys" />
-     </charm>
-	 <charm id="Infernal.ScouringBanishmentTechniquegods" exalt="Infernal" group="DemonicPrimacy">
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="4" />
-               <charmReference id="Infernal.ScouringBanishmentTechnique2"/>
-          </prerequisite>
-          <cost> 
-               <essence cost="5" text="or (5m, 1wp)" />   
-          </cost>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-		  <special speed="5" />
-          <source source="InkMonkeys" />
-     </charm>
-	 <charm id="Infernal.ScouringBanishmentTechniqueghosts" exalt="Infernal" group="DemonicPrimacy">
-          <prerequisite>
-               <trait id="Cecelyne" value="0" />
-               <essence value="4" />
-               <charmReference id="Infernal.ScouringBanishmentTechniquegods"/>
-          </prerequisite>
-          <cost> 
-               <essence cost="5" text="or (5m, 1wp)" />   
-          </cost>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-		  <special speed="5" />
-          <source source="InkMonkeys" />
-     </charm>
 	 <charm id="Infernal.InvestitureofUnholyWill" exalt="Infernal" group="DemonicPrimacy">
           <prerequisite>
                <trait id="Cecelyne" value="0" />

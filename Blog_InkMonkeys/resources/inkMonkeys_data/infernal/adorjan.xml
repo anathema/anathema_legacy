@@ -79,17 +79,6 @@
           <charmtype type="Permanent" />
           <source source="InkMonkeys" />
      </charm>
-	 <charm id="Infernal.Wind-DaughtersWrath2" exalt="Infernal" group="Typhoon">
-          <prerequisite>
-               <trait id="Adorjan" value="0" />
-               <essence value="4" />	   
-               <charmReference id="Infernal.Wind-DaughtersWrath"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="InkMonkeys" />
-     </charm>
 	 <charm id="Infernal.HungryWindHowling" exalt="Infernal" group="Wind">
           <prerequisite>
                <trait id="Adorjan" value="0" />
@@ -134,17 +123,6 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Crippling" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm>
-	 <charm id="Infernal.Voice-DrinkingKiss2" exalt="Infernal" group="Sacred">
-          <prerequisite>
-               <trait id="Adorjan" value="0" />
-               <essence value="4" />	   
-               <charmReference id="Infernal.Voice-DrinkingKiss"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
           <source source="InkMonkeys" />
      </charm>
 	 <charm id="Infernal.EmbracingEmptyPassion" exalt="Infernal" group="Freedom">

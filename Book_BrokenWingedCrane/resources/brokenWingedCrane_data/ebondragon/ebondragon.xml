@@ -36,29 +36,7 @@
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="BrokenWingedCrane" />
-     </charm> 
-     <charm id="Infernal.NakedWickedSouls2" exalt="Infernal" group="Witness">
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="4" />	
-			   <charmReference id="Infernal.NakedWickedSouls"/> 
-          </prerequisite>
-          <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm> 
-     <charm id="Infernal.NakedWickedSouls3" exalt="Infernal" group="Witness">
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="6" />	
-			   <charmReference id="Infernal.NakedWickedSouls2"/> 
-          </prerequisite>
-          <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>   
+     </charm>    
      <charm id="Infernal.SweetAgonySavoured" exalt="Infernal" group="Life">
           <prerequisite>
                <trait id="EbonDragon" value="0" />

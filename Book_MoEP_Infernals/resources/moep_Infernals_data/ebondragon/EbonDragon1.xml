@@ -184,29 +184,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Infernals" />
-     </charm>      
-	 <charm id="Infernal.SelfishnessisPower2" exalt="Infernal" group="Witness">          
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="3" />	
-			   <charmReference id="Infernal.SelfishnessisPower"/> 
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>      
-	 <charm id="Infernal.SelfishnessisPower3" exalt="Infernal" group="Witness">          
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="4" />	
-			   <charmReference id="Infernal.SelfishnessisPower2"/> 
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>   
+     </charm>  
 	 <charm id="Infernal.Life-BlightingEmptinessAttack" exalt="Infernal" group="Life">          
           <prerequisite>
                <trait id="EbonDragon" value="0" />
@@ -251,29 +229,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
           <source source="Infernals" />
-     </charm>   
-	 <charm id="Infernal.Life-DenyingHate2" exalt="Infernal" group="Life">          
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="4" />	
-			   <charmReference id="Infernal.Life-DenyingHate"/> 
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>    
-	 <charm id="Infernal.Life-DenyingHate3" exalt="Infernal" group="Life">          
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="7" />	
-			   <charmReference id="Infernal.Life-DenyingHate2"/> 
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>       
+     </charm>  
 	 <charm id="Infernal.Ever-HungryShadowAffliction" exalt="Infernal" group="Life">          
           <prerequisite>
                <trait id="EbonDragon" value="0" />
@@ -289,18 +245,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
           <source source="Infernals" />
-     </charm>     
-	 <charm id="Infernal.Ever-HungryShadowAffliction2" exalt="Infernal" group="Life">          
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="4" />	
-			   <charmReference id="Infernal.Ever-HungryShadowAffliction"/> 
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>   
+     </charm>    
 	 <charm id="Infernal.Despair-ChokedSpiritMaiming" exalt="Infernal" group="Life">          
           <prerequisite>
                <trait id="EbonDragon" value="0" />
@@ -355,18 +300,7 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Infernals" />
-     </charm>        
-	 <charm id="Infernal.SoulCrackExploitation2" exalt="Infernal" group="Nemesis">          
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="3" />	
-			   <charmReference id="Infernal.SoulCrackExploitation"/> 
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
+     </charm>    
 	 <charm id="Infernal.PuissanceMimicryIntuition" exalt="Infernal" group="Nemesis">          
           <prerequisite>
                <trait id="EbonDragon" value="0" />
@@ -382,29 +316,7 @@
           <charmAttribute attribute="Shaping" visualize="true" />
           <charmAttribute attribute="Stackable" visualize="true" />
           <source source="Infernals" />
-     </charm>         
-	 <charm id="Infernal.PuissanceMimicryIntuition2" exalt="Infernal" group="Nemesis">          
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="3" />	
-			   <charmReference id="Infernal.PuissanceMimicryIntuition"/> 
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>           
-	 <charm id="Infernal.PuissanceMimicryIntuition3" exalt="Infernal" group="Nemesis">          
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="4" />	
-			   <charmReference id="Infernal.PuissanceMimicryIntuition2"/> 
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm> 
+     </charm>   
 	 <charm id="Infernal.BlackMirrorShintai" exalt="Infernal" group="Nemesis">          
           <prerequisite>
                <trait id="EbonDragon" value="0" />
@@ -412,7 +324,7 @@
 			   <charmReference id="Infernal.ShadowSpiteCurse"/>
 			   <charmReference id="Infernal.SeeingisBlindness"/>
 			   <charmReference id="Infernal.SoulCrackExploitation"/>
-			   <charmReference id="Infernal.PuissanceMimicryIntuition3"/>
+			   <charmReference id="Infernal.PuissanceMimicryIntuition.Subeffects.Repurchase3"/>
           </prerequisite>
            <cost>
                <essence cost="5" />     
@@ -422,17 +334,6 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Shaping" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
-          <source source="Infernals" />
-     </charm>             
-	 <charm id="Infernal.BlackMirrorShintai2" exalt="Infernal" group="Nemesis">          
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="6" />	
-			   <charmReference id="Infernal.BlackMirrorShintai"/> 
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
           <source source="Infernals" />
      </charm> 
 	 <charm id="Infernal.CrackedCellCircumvention" exalt="Infernal" group="Loom">          

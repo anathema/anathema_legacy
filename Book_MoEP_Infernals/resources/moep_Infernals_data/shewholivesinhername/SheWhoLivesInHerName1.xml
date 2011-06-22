@@ -158,40 +158,7 @@
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="Infernals" />
      </charm>
-     <charm id="Infernal.WholenessRightlyAssumedCrippling" exalt="Infernal" group="Ego">  
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="3" />		   
-               <charmReference id="Infernal.Ego-InfusedPatternPrimacy"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
-     <charm id="Infernal.WholenessRightlyAssumedSickness" exalt="Infernal" group="Ego">  
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="3" />		   
-               <charmReference id="Infernal.Ego-InfusedPatternPrimacy"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
-     <charm id="Infernal.WholenessRightlyAssumedPoison" exalt="Infernal" group="Ego">  
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="3" />		   
-               <charmReference id="Infernal.Ego-InfusedPatternPrimacy"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
-     <charm id="Infernal.WholenessRightlyAssumedBashing" exalt="Infernal" group="Ego">  
+     <charm id="Infernal.WholenessRightlyAssumed" exalt="Infernal" group="Ego">  
           <prerequisite>
                <trait id="SheWhoLivesInHerName" value="0" />
                <essence value="3" />		   
@@ -206,7 +173,7 @@
           <prerequisite>
                <trait id="SheWhoLivesInHerName" value="0" />
                <essence value="3" />		   
-               <charmReference id="Infernal.WholenessRightlyAssumedBashing"/>
+               <charmReference id="Infernal.WholenessRightlyAssumed.Subeffects.Bashing"/>
           </prerequisite>
            <cost />
           <duration duration="Permanent" />

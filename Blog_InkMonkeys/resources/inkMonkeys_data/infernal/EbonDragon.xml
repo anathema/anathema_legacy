@@ -100,17 +100,6 @@
           <charmAttribute attribute="Servitude" visualize="true" />
           <charmAttribute attribute="Social" visualize="true" />
           <source source="InkMonkeys" />
-     </charm> 	
-	 <charm id="Infernal.Fervor-DrivenAntagonismTechnique2" exalt="Infernal" group="Witness">
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="4" />	
-			   <charmReference id="Infernal.Fervor-DrivenAntagonismTechnique"/> 	
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="InkMonkeys" />
      </charm> 		
 	 <charm id="Infernal.GoldenYearsTarnishBlack" exalt="Infernal" group="Gold">
           <prerequisite>
@@ -128,17 +117,6 @@
           <charmAttribute attribute="Emotion" visualize="true" />
           <charmAttribute attribute="Illusion" visualize="true" />
           <charmAttribute attribute="Social" visualize="true" />
-          <source source="InkMonkeys" />
-     </charm> 	
-	 <charm id="Infernal.GoldenYearsTarnishBlack2" exalt="Infernal" group="Gold">
-          <prerequisite>
-               <trait id="EbonDragon" value="0" />
-               <essence value="3" />	
-			   <charmReference id="Infernal.GoldenYearsTarnishBlack"/> 	
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
           <source source="InkMonkeys" />
      </charm> 	
 	 <charm id="Infernal.WeakMindsBelieveAnything" exalt="Infernal" group="Gold">

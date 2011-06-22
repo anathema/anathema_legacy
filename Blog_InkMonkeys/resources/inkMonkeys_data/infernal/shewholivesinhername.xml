@@ -95,18 +95,6 @@
           <charmAttribute attribute="Sorcerous" visualize="true" />
           <source source="Infernals" />
      </charm>
-	 <charm id="Infernal.OrbitalImpactStorm2" exalt="Infernal" group="MindHand">  
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="3" />		   
-               <charmReference id="Infernal.OrbitalImpactStorm"/>
-          </prerequisite>
-            <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" /> 
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="Infernals" />
-     </charm>
 	 <charm id="Infernal.PrecisionThought-ForceExercise" exalt="Infernal" group="MindHand">  
           <prerequisite>
                <trait id="SheWhoLivesInHerName" value="0" />

@@ -60,17 +60,6 @@
           <charmtype type="Permanent" />
           <source source="BrokenWingedCrane" />
      </charm>
-	 <charm id="Infernal.CrimsonWindRibbons2" exalt="Infernal" group="Wind">
-          <prerequisite>
-               <trait id="Adorjan" value="0" />
-               <essence value="4" />	   
-               <charmReference id="Infernal.CrimsonWindRibbons"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
 	 <charm id="Infernal.SplinteredGaleShintai" exalt="Infernal" group="Wind">
           <prerequisite>
                <trait id="Adorjan" value="0" />
@@ -89,40 +78,7 @@
           <charmAttribute attribute="Sorcerous" visualize="true" />
           <charmAttribute attribute="Stackable" visualize="true" />
           <source source="BrokenWingedCrane" />
-     </charm> 	 	 
-	 <charm id="Infernal.SplinteredGaleShintai2" exalt="Infernal" group="Wind">
-          <prerequisite>
-               <trait id="Adorjan" value="0" />
-               <essence value="4" />	   
-               <charmReference id="Infernal.SplinteredGaleShintai"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
      </charm> 
-	 <charm id="Infernal.SplinteredGaleShintai3" exalt="Infernal" group="Wind">
-          <prerequisite>
-               <trait id="Adorjan" value="0" />
-               <essence value="5" />	   
-               <charmReference id="Infernal.SplinteredGaleShintai2"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm> 
-	 <charm id="Infernal.SplinteredGaleShintai4" exalt="Infernal" group="Wind">
-          <prerequisite>
-               <trait id="Adorjan" value="0" />
-               <essence value="6" />	   
-               <charmReference id="Infernal.SplinteredGaleShintai2"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
 	 <charm id="Infernal.Sky-VaultingSurge" exalt="Infernal" group="Unimpeded">
           <prerequisite>
                <trait id="Adorjan" value="0" />

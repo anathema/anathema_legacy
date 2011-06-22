@@ -118,7 +118,7 @@
           <prerequisite>
                <trait id="EbonDragon" value="0" />
                <essence value="5" />	 
-			   <charmReference id="Infernal.PuissanceMimicryIntuition"/>
+			   <charmReference id="Infernal.PuissanceMimicryIntuition.Subeffects.Repurchase3"/>
           </prerequisite>
            <cost />
           <duration duration="Permanent" />
@@ -129,7 +129,7 @@
           <prerequisite>
                <trait id="EbonDragon" value="0" />
                <essence value="7" />	 
-			   <charmReference id="Infernal.PuissanceMimicryIntuition3"/>
+			   <charmReference id="Infernal.PuissanceMimicryIntuition.Subeffects.Repurchase3"/>
           </prerequisite>
            <cost />
           <duration duration="Permanent" />

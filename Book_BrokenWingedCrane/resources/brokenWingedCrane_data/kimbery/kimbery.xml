@@ -51,17 +51,6 @@
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="BrokenWingedCrane" />
      </charm>
-	 <charm id="Infernal.SpitefulSeaTincture2" exalt="Infernal" group="Mother">
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="3" />
-               <charmReference id="Infernal.SpitefulSeaTincture"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
 	 <charm id="Infernal.SeaWithinVeinsPrana" exalt="Infernal" group="Mother">
           <prerequisite>
                <trait id="Kimbery" value="0" />
@@ -73,51 +62,7 @@
           <charmtype type="Permanent" />
           <source source="BrokenWingedCrane" />
      </charm>
-	 <charm id="Infernal.SeaWithinVeinsPrana2" exalt="Infernal" group="Mother">
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="3" />
-               <charmReference id="Infernal.SeaWithinVeinsPrana"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.GreatMothersTearsResist" exalt="Infernal" group="Mother">	 
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="3" />
-               <charmReference id="Infernal.SpitefulSeaTincture"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.GreatMothersTearsBashing" exalt="Infernal" group="Mother">	 
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="3" />
-               <charmReference id="Infernal.SpitefulSeaTincture"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.GreatMothersTearsEmotion" exalt="Infernal" group="Mother">	 
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="3" />
-               <charmReference id="Infernal.SpitefulSeaTincture"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.GreatMothersTearsMutagenic" exalt="Infernal" group="Mother">	 
+	 <charm id="Infernal.GreatMothersTears" exalt="Infernal" group="Mother">	 
           <prerequisite>
                <trait id="Kimbery" value="0" />
                <essence value="3" />
@@ -143,17 +88,6 @@
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.IchorFluxTendrils2" exalt="Infernal" group="Mother">	 
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="3" />
-               <charmReference id="Infernal.IchorFluxTendrils"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
           <source source="BrokenWingedCrane" />
      </charm>
 	 <charm id="Infernal.TidalRenewalDiscipline" exalt="Infernal" group="Mother">	 
@@ -202,28 +136,6 @@
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="BrokenWingedCrane" />
      </charm>
-	 <charm id="Infernal.WhatLurksBeneath2" exalt="Infernal" group="Mother">	 
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="3" />
-               <charmReference id="Infernal.WhatLurksBeneath"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.WhatLurksBeneath3" exalt="Infernal" group="Mother">	 
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="5" />
-               <charmReference id="Infernal.WhatLurksBeneath2"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
      <charm id="Infernal.FathomlessPoisonHaven" exalt="Infernal" group="Mother">
           <prerequisite>
                <trait id="Kimbery" value="0" />
@@ -237,17 +149,6 @@
           <charmtype type="Reflexive" />		  
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.FathomlessPoisonHaven2" exalt="Infernal" group="Mother">	 
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="3" />
-               <charmReference id="Infernal.FathomlessPoisonHaven"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
           <source source="BrokenWingedCrane" />
      </charm>
      <charm id="Infernal.AcridSlipstreamAssist" exalt="Infernal" group="Mother">
@@ -264,17 +165,6 @@
           <charmtype type="Simple" />		  
           <charmAttribute attribute="Sea" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
-          <source source="BrokenWingedCrane" />
-     </charm>
-	 <charm id="Infernal.AcridSlipstreamAssist2" exalt="Infernal" group="Mother">	 
-          <prerequisite>
-               <trait id="Kimbery" value="0" />
-               <essence value="3" />
-               <charmReference id="Infernal.AcridSlipstreamAssist"/>
-          </prerequisite>
-          <cost/>
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
           <source source="BrokenWingedCrane" />
      </charm>
      <charm id="Infernal.IntolerableBurningTruths" exalt="Infernal" group="Intolerable">		 
@@ -351,8 +241,8 @@
           <prerequisite>
                <trait id="Kimbery" value="0" />
                <essence value="5" />
-               <charmReference id="Infernal.SeaWithinVeinsPrana2"/>
-               <charmReference id="Infernal.IchorFluxTendrils2"/>
+               <charmReference id="Infernal.SeaWithinVeinsPrana.Subeffects.Repurchase2"/>
+               <charmReference id="Infernal.IchorFluxTendrils.Subeffects.Repurchase2"/>
                <charmReference id="Infernal.SeaDissolvesHerself"/>
                <charmReference id="Infernal.AllThingsBetray"/>
           </prerequisite>

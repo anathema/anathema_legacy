@@ -77,16 +77,6 @@
           <charmAttribute attribute="Native" visualize="false" />
           <source source="BrokenWingedCrane" />
      </charm>
-     <charm id="Infernal.UnsurpassedDevil-Craft2" exalt="Infernal" group="Heretic">
-          <prerequisite>               
-               <essence value="5" />
-					<charmReference id="Infernal.UnsurpassedDevil-Craft" />
-          </prerequisite>
-          <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="BrokenWingedCrane" />
-     </charm>
      <charm id="Infernal.TriumphantHowloftheDevilTiger" exalt="Infernal" group="DevilTiger">
           <prerequisite>               
                <essence value="6" />
