@@ -92,5 +92,5 @@ public class BrowserControl {
   private static final String UNIX_PATH = "xdg-open"; //$NON-NLS-1$
 
   // The flag to display a url.
-  private static final String UNIX_FLAG = ""; //$NON-NLS-1$
+  //private static final String UNIX_FLAG = ""; //$NON-NLS-1$
 }
