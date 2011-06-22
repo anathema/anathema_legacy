@@ -8,7 +8,6 @@ import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsModel;
 import net.sf.anathema.character.meritsflaws.template.MeritsFlawsTemplate;
 import net.sf.anathema.character.reporting.sheet.util.AbstractLineTextEncoder;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Font;
