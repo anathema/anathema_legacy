@@ -19,7 +19,7 @@ public class CraftEncoder extends AbstractNamedTraitEncoder {
   private final int essenceMax;
 
   public CraftEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder encoder, int essenceMax) {
-    super(resources, baseFont, encoder, 8);
+    super(resources, baseFont, encoder, 9);
     this.essenceMax = essenceMax;
   }
 

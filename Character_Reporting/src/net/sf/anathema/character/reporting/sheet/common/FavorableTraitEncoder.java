@@ -106,7 +106,10 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
         public int compare(IMagicStats a, IMagicStats b) {
           String aId = a.getName().getId();
           String bId = b.getName().getId();
-          return aId.compareTo(bId);
+
+          Integer aIndex = new Integer(aId.substring(aId.lastIndexOf('.') + 1, aId.indexOf("Excellency") - 2));
+          Integer bIndex = new Integer(bId.substring(bId.lastIndexOf('.') + 1, bId.indexOf("Excellency") - 2));
+          return aIndex.compareTo(bIndex);
         }
       });
     }
@@ -226,7 +229,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     for (int i = 1; i <= nExcellencies; i++) {
       numbers.append(Integer.toString(i));
     }
-    String mobilityPenaltyText = numbers.toString() + " : " + resources.getString(getExcellencyCommentKey()); //$NON-NLS-1$
+    String mobilityPenaltyText = numbers.toString() + ": " + resources.getString(getExcellencyCommentKey()); //$NON-NLS-1$
     Position commentPosition = new Position(position.x, yPosition);
     drawComment(directContent, mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
     return 7;
