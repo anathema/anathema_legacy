@@ -1,7 +1,7 @@
 Anathema Version History
 (C) 2004 - 2008 by Sandra Sieroux and Urs Reupke
 (C) 2009 - 2011 by Urs Reupke, Sandra Sieroux, Scott Olson, Eric Astor, Paul Adams, Rob Rutherford
-                   Sean Mattox, and Dennis Fotheringham.
+                   Sean Mattox, Dennis Fotheringham, and Erin Martell.
 Exalted (C) 2001-2010 by White Wolf Publishing, Inc.
 
 http://anathema.sf.net

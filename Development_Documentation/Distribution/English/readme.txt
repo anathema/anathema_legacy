@@ -5,7 +5,8 @@
 Anathema Read Me
 (C) 2004-2008 by Sandra Sieroux and Urs Reupke
 (C) 2010-2011 by Urs Reupke, Sandra Sieroux, Paul Adams, Eric Astor,
-                 Douglas Fotheringham, Sean Mattox, Scott Olson, and Rob Rutherford
+                 Douglas Fotheringham, Sean Mattox, Scott Olson, Rob Rutherford,
+                 and Erin Martell.
 Exalted (C) 2001-2011 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
