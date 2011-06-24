@@ -15,6 +15,13 @@
 		<parameter id="path" value="data/arcanoi_common.xml"/>
 	  </parameter>
 	</extension>
+	<extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="GhostArcanoi">
+	  <parameter id="list">
+		<parameter id="type" value="Ghost"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/arcanoi_chains.xml"/>
+	  </parameter>
+	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="GhostResources">
 		<parameter id="bundle" value="Ghost"/>
 		<parameter id="bundle" value="Ghost_Arcanoi"/>	
