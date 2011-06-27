@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.charm.special.CharmTier;
 import net.sf.anathema.character.generic.impl.magic.charm.special.EssenceFixedMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TieredMultiLearnableCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
@@ -141,20 +142,22 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
                   IInfernalSpecialCharms.TOOL_TRANSCENDING_CONSTRUCTS};
 		  
 		  int yoziCount = YoziType.values().length;
-		  int generalSpecialCharmCount = 2;
+		  int generalSpecialCharmCount = 3;
 		  ISpecialCharm[] masterSet = new ISpecialCharm[baseSet.length + generalSpecialCharmCount*yoziCount];
 		  for (int i = 0; i != baseSet.length; i++) masterSet[i] = baseSet[i];
 		  
 		  for (int i = 0; i != yoziCount; i++)
 		  {
 			  ITraitType type = YoziType.values()[i];
-			  masterSet[baseSet.length + 2*i] = new EssenceFixedMultiLearnableCharm(
+			  masterSet[baseSet.length + generalSpecialCharmCount*i] = new EssenceFixedMultiLearnableCharm(
 				      "Infernal.1stExcellency." + type.getId(), //$NON-NLS-1$
 				      EssenceTemplate.SYSTEM_ESSENCE_MAX,
 				      OtherTraitType.Essence);
-			  masterSet[baseSet.length + 2*i + 1] = new TieredMultiLearnableCharm(
+			  masterSet[baseSet.length + generalSpecialCharmCount*i + 1] = new TieredMultiLearnableCharm(
 				      "Infernal.YoziBodyUnity." + type.getId(), //$NON-NLS-1$
 				      new CharmTier[] { new CharmTier(5), new CharmTier(7) });
+			  masterSet[baseSet.length + generalSpecialCharmCount*i + 2] = new TraitCapModifyingCharm(
+					  "Infernal.AscendancyMantle." + type.getId(), OtherTraitType.Essence, 1);
 		  }
 		  return masterSet;		  
 	  }

@@ -38,5 +38,15 @@
           <charmAttribute attribute="Native" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Infernals" />
-     </genericCharm>     
+     </genericCharm>
+      <alternatives>
+    <alternative>
+      <charmReference id="Infernal.AscendancyMantle.Adorjan"/>
+      <charmReference id="Infernal.AscendancyMantle.Cecelyne"/>
+      <charmReference id="Infernal.AscendancyMantle.EbonDragon"/>
+      <charmReference id="Infernal.AscendancyMantle.Kimbery"/>
+      <charmReference id="Infernal.AscendancyMantle.Malfeas"/>
+      <charmReference id="Infernal.AscendancyMantle.SheWhoLivesInHerName"/>
+    </alternative>
+  </alternatives>
 </charmlist>
