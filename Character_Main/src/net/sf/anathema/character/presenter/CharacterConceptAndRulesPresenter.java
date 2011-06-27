@@ -103,7 +103,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
         motivation.cancelEdit();
       }
     };
-    cancelEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.Cancel.Tooltip")); //$NON-NLS-1$
+    cancelEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.CancelEdit.Tooltip")); //$NON-NLS-1$
     final SmartAction endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
       private static final long serialVersionUID = 1191861661014239378L;
 
