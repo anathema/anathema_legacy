@@ -33,6 +33,7 @@ public class CharmCompiler {
   private final GenericCharmSetBuilder genericBuilder = new GenericCharmSetBuilder();
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
   private final CharmMergedBuilder mergedBuilder = new CharmMergedBuilder();
+  private final CharmRenameBuilder renameBuilder = new CharmRenameBuilder();
   private final IIdentificateRegistry<ICharacterType> registry;
   private final SAXReader reader;
 
@@ -78,10 +79,12 @@ public class CharmCompiler {
         buildGenericCharms(type, rules);
         buildCharmAlternatives(type, rules);
         buildCharmMerges(type, rules);
+        buildCharmRenames(type, rules);
       }
       buildStandardCharms(MARTIAL_ARTS, rules);
       buildCharmAlternatives(MARTIAL_ARTS, rules);
       buildCharmMerges(MARTIAL_ARTS, rules);
+      buildCharmRenames(MARTIAL_ARTS, rules);
     }
     for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
       extractParents(CharmCache.getInstance().getCharms(rules));
@@ -113,6 +116,14 @@ public class CharmCompiler {
       }
     }
   }
+  
+  private void buildCharmRenames(IIdentificate type, ExaltedRuleSet rules) {
+	    if (charmFileTable.contains(type, rules)) {
+	      for (Document charmDocument : charmFileTable.get(type, rules)) {
+	        CharmCache.getInstance().addCharmRenames(rules, renameBuilder.buildRenames(charmDocument));
+	      }
+	    }
+	  }
 
   private List<ICharm> buildCharms(IIdentificate type, IExaltedRuleSet rules, ICharmSetBuilder builder)
       throws PersistenceException {

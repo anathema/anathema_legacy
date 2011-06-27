@@ -21,6 +21,8 @@ public interface ICharmConfiguration extends IExtendedCharmLearnableArbitrator, 
   public ICharacterType[] getCharacterTypes(boolean includeAlienTypes);
 
   public ICharmIdMap getCharmIdMap();
+  
+  public String getCharmTrueName(String charmName);
 
   public ICharm[] getCreationLearnedCharms();
 

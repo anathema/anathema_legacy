@@ -2264,24 +2264,12 @@
 		<charmAttribute attribute="Touch" visualize="true"/>
 		<source source="SecondEdition" page="220"/>
 	</charm>
-	<charm id="Solar.Wonder-ForgingGenius4" exalt="Solar" group="Craft">
+	<charm id="Solar.Wonder-ForgingGenius" exalt="Solar" group="Craft">
 		<prerequisite>
 			<essence id="Essence" value="4"/>
 			<trait id="Craft" value="5"/>
 			<charmReference id="Solar.Crack-MendingTechnique"/>
 			<charmReference id="Solar.CraftsmanNeedsNoTools"/>
-		</prerequisite>
-		<cost>
-		</cost>
-		<duration duration="Permanent"/>
-		<charmtype type="Permanent"/>
-		<source source="OadenolsCodex" page="29"/>
-	</charm>
-	 <charm id="Solar.Wonder-ForgingGenius5" exalt="Solar" group="Craft">
-		<prerequisite>
-			<essence id="Essence" value="5"/>
-			<trait id="Craft" value="5"/>
-			<charmReference id="Solar.Wonder-ForgingGenius4"/>
 		</prerequisite>
 		<cost>
 		</cost>
@@ -3480,4 +3468,8 @@
 			<charmReference id="Solar.CallBladeThrown" />
 		</merged>
 	</merges>
+	<renames>
+		<rename from="Solar.Wonder-ForgingGenius4" to="Solar.Wonder-ForgingGenius.Subeffects.Repurchase1"/>
+		<rename from="Solar.Wonder-ForgingGenius5" to="Solar.Wonder-ForgingGenius.Subeffects.Repurchase2"/>
+	</renames>
 </charmlist>

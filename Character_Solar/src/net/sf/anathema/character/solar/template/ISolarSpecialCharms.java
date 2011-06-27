@@ -3,10 +3,12 @@ package net.sf.anathema.character.solar.template;
 import java.util.LinkedHashMap;
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
+import net.sf.anathema.character.generic.impl.magic.charm.special.CharmTier;
 import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.SubeffectCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
@@ -71,9 +73,10 @@ public interface ISolarSpecialCharms {
       "Solar.RighteousLionDefense", //$NON-NLS-1$
       2);
   
-  public static final IMultiLearnableCharm WONDER_FORGING_GENIUS = new StaticMultiLearnableCharm(
-      "Solar.Wonder-ForgingGenius", //$NON-NLS-1$
-      2);
+  public static final IMultiLearnableCharm WONDER_FORGING_GENIUS = new TieredMultiLearnableCharm(
+	      "Solar.Wonder-ForgingGenius", //$NON-NLS-1$
+	      AbilityType.Craft,
+	      new CharmTier[] { new CharmTier(5, 4), new CharmTier(5, 5) });
 
   public static final ISubeffectCharm ESSENCE_ARROW_ATTACK = new SubeffectCharm("Solar.EssenceArrowAttack", //$NON-NLS-1$
       new String[] { "FieryArrowAttack", "DazzlingFlare", "RighteousJudgementArrow" }, 0.5); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

@@ -17,10 +17,12 @@ public class CharmCache implements ICharmCache {
 
   private static final CharmCache instance = new CharmCache();
   private final Map<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>> charmSetsByRuleSet = new HashMap<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>>();
+  private final Map<IExaltedRuleSet, Map<String, String>> renameData = new HashMap<IExaltedRuleSet, Map<String, String>>();
 
   private CharmCache() {
     for (IExaltedRuleSet ruleset : ExaltedRuleSet.values()) {
       charmSetsByRuleSet.put(ruleset, new MultiEntryMap<IIdentificate, ICharm>());
+      renameData.put(ruleset, new HashMap<String, String>());
     }
   }
 
@@ -69,5 +71,25 @@ public class CharmCache implements ICharmCache {
       }
     }
     return allCharms;
+  }
+  
+  public void addCharmRenames(IExaltedRuleSet ruleSet, Map<String, String> mappings)
+  {
+	  if (mappings == null) return;
+	  Map<String, String> rulesetMap = renameData.get(ruleSet);
+	  rulesetMap.putAll(mappings);
+  }
+  
+  public String getCharmRename(IExaltedRuleSet rules, String name)
+  {
+	  String newName = name;
+	  do
+	  {
+		  name = newName;
+		  newName = renameData.get(rules).get(name);
+	  }
+	  while (newName != null);
+	  return name;
+	  
   }
 }

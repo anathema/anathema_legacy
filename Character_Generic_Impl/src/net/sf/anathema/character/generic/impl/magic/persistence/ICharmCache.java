@@ -6,4 +6,6 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ICharmCache {
   public ICharm[] getCharms(IIdentificate type, IExaltedRuleSet ruleset);
+  
+  public String getCharmRename(IExaltedRuleSet rules, String name);
 }

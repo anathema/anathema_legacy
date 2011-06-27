@@ -16,11 +16,18 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
+import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.traits.LowerableState;
+import net.sf.anathema.character.library.trait.DefaultTrait;
+import net.sf.anathema.character.library.trait.LimitedTrait;
+import net.sf.anathema.character.library.trait.TraitType;
+import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
@@ -39,6 +46,9 @@ import org.dom4j.Element;
 public class CharmConfigurationPersister {
 
   private final TextPersister textPersister = new TextPersister();
+  private final TraitPersister traitPersister = new TraitPersister();
+  private final String TAG_LEARN_COUNT = "LearnCount";
+  private ITraitContext context;
 
   public void save(Element parent, ICharacterStatistics statistics) {
     ICharacterTemplate template = statistics.getCharacterTemplate();
@@ -134,6 +144,7 @@ private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration c
     if (charmsElement == null) {
       return;
     }
+    context = statistics.getCharacterContext().getTraitContext();
     ICharmConfiguration charmConfiguration = statistics.getCharms();
     ISpecialCharmPersister specialPersister = createSpecialCharmPersister(charmConfiguration);
     for (Object groupObjectElement : charmsElement.elements(TAG_CHARMGROUP)) {
@@ -157,6 +168,8 @@ private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration c
     for (Object charmObjectElement : groupElement.elements()) {
       Element charmElement = (Element) charmObjectElement;
       String charmId = charmElement.attributeValue(ATTRIB_NAME);
+      String charmTrueName = charmConfiguration.getCharmTrueName(charmId);
+      charmId = parseTrueName(charmElement, charmTrueName);
       group.learnCharmNoParents(charmConfiguration.getCharmById(charmId), isExperienceLearned(charmElement), false);
       Element specialElement = charmElement.element(TAG_SPECIAL);
       if (specialElement != null) {
@@ -164,6 +177,27 @@ private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration c
         specialPersister.loadConfiguration(specialElement, specialConfiguration);
       }
     }
+  }
+  
+  private String parseTrueName(Element element, String name)
+  {
+	  String baseCharmName = "";
+	  String[] components = name.split("\\.");
+	  if (components.length > 3)
+	  {
+		  for (int i = 0; i != components.length - 2; i++)
+			  baseCharmName = baseCharmName + components[i] + (i == components.length - 3 ? "" : ".");
+		  int count = Integer.parseInt(components[components.length - 1].replace("Repurchase", ""));
+		  Element newElement = element.addElement(TAG_SPECIAL);
+		  DefaultTrait trait = new LimitedTrait(new TraitType(TAG_LEARN_COUNT),
+				  SimpleTraitTemplate.createEssenceLimitedTemplate(0, count, LowerableState.Default),
+				  null,
+				  context);
+		  traitPersister.saveTrait(newElement, TAG_LEARN_COUNT, trait);
+	  }
+	  else
+		  baseCharmName = name;
+	  return baseCharmName;
   }
 
   private boolean isExperienceLearned(Element charmElement) {

@@ -3,11 +3,13 @@ package net.sf.anathema.character.generic.impl.template.magic;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
@@ -61,5 +63,10 @@ public class CharmProvider implements ICharmProvider {
 
   public void addMartialArtsSpecialCharm(IExaltedEdition edition, ISpecialCharm charm) {
     martialArtsSpecialCharms.add(edition, charm);
+  }
+  
+  public String getCharmRename(IExaltedRuleSet rules, String name)
+  {
+	  return CharmCache.getInstance().getCharmRename(rules, name);
   }
 }

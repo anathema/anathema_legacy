@@ -257,8 +257,15 @@ public class CharmConfiguration implements ICharmConfiguration {
     }
     throw new IllegalArgumentException("Charm Id did not contain a valid character type"); //$NON-NLS-1$
   }
+  
+  public String getCharmTrueName(String charmId)
+  {
+	  return provider.getCharmRename(context.getBasicCharacterContext().getRuleSet(), charmId);  
+  }
 
-  public ICharm getCharmById(String charmId) {
+  public ICharm getCharmById(String charmId)
+  {
+	charmId = getCharmTrueName(charmId);
     ICharm charm = martialArtsCharmTree.getCharmById(charmId);
     if (charm != null) {
       return charm;
