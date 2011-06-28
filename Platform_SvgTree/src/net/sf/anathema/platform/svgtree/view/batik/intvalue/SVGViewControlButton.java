@@ -74,10 +74,6 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
             event.getClientX(),
             event.getClientY());
         boolean outOfButton = !calculator.getBounds(buttonGroup).contains(event.getClientX(), event.getClientY());
-        System.out.println(outOfDisplay + " " + outOfButton);
-        if (outOfDisplay)
-        	System.out.println(event.getClientX() + " " + event.getClientY() + " | " +
-        			bounds.x + " " + bounds.y + " " + bounds.width + " " + bounds.height);
         if (outOfDisplay && outOfButton) {
           removeFromView();
           evt.stopPropagation();
