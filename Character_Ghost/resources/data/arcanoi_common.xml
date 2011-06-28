@@ -138,7 +138,7 @@
                <essence value="1" />
           </prerequisite>
           <cost>
-               <essence cost="2"
+               <essence cost="2"/>
           </cost>
           <duration duration="Successes" unit="1 night"/>
           <charmtype type="Simple">
@@ -176,7 +176,7 @@
                <essence value="1" />
           </prerequisite>
           <cost>
-               <essence cost="1"
+               <essence cost="1"/>
           </cost>
 		<duration amount="1" unit="scene"/>
           <charmtype type="Simple">
@@ -204,7 +204,7 @@
                <essence value="1" />
           </prerequisite>
           <cost>
-               <essence cost="1"
+               <essence cost="1"/>
           </cost>
 		<duration amount="1" unit="action"/>
           <charmtype type="Simple"/>
