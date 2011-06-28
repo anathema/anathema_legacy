@@ -26,7 +26,6 @@ import net.sf.anathema.character.solar.generic.SupremePerfectionOf;
 import net.sf.anathema.character.solar.generic.DivineTranscendenceOf;
 import net.sf.anathema.character.solar.reporting.FirstEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.reporting.SecondEditionSolarPartEncoder;
-import net.sf.anathema.character.solar.template.ISolarSpecialCharms;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
@@ -57,11 +56,6 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
             new EssenceFlow(),
             new DivineTranscendenceOf(),
             new SupremePerfectionOf()});
-    characterGenerics.getCharmProvider().setSpecialCharms(
-        CharacterType.SOLAR,
-        ExaltedEdition.FirstEdition,
-        ISolarSpecialCharms.OX_BODY_TECHNIQUE,
-        ISolarSpecialCharms.ENVIRONMENTAL_HAZARD_RESISTING_MEDITATION);
     
     characterGenerics.getAdditionalTemplateParserRegistry().register(
         SolarVirtueFlawTemplate.ID,

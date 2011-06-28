@@ -1,9 +1,7 @@
 package net.sf.anathema.character.generic.impl.template.magic;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
@@ -21,13 +19,14 @@ import net.sf.anathema.lib.collection.Table;
 public class CharmProvider implements ICharmProvider {
 
   private final Table<IExaltedEdition, ICharacterType, ISpecialCharm[]> charmsByTypeByRuleSet = new Table<IExaltedEdition, ICharacterType, ISpecialCharm[]>();
+  private final Table<IExaltedEdition, ICharacterType, Boolean> dataCharmsPrepared = new Table<IExaltedEdition, ICharacterType, Boolean>();
   private final MultiEntryMap<IExaltedEdition, ISpecialCharm> martialArtsSpecialCharms = new MultiEntryMap<IExaltedEdition, ISpecialCharm>();
-  private final Map<ICharacterType, Boolean> dataCharmsPrepared = new HashMap<ICharacterType, Boolean>();
   
   public CharmProvider()
   {
-	  for (ICharacterType type : CharacterType.values())
-		  dataCharmsPrepared.put(type, false);
+	  for (IExaltedEdition edition : ExaltedEdition.values())
+		  for (ICharacterType type : CharacterType.values())
+			  dataCharmsPrepared.add(edition, type, false);
   }
 
   @Override
@@ -48,7 +47,7 @@ public class CharmProvider implements ICharmProvider {
   }
 
   public ISpecialCharm[] getSpecialCharms(ICharacterType characterType, IExaltedEdition edition) {
-	if (!dataCharmsPrepared.get(characterType))
+	if (!dataCharmsPrepared.get(edition, characterType))
 		prepareDataCharms(characterType, edition);
     ISpecialCharm[] specialCharms = charmsByTypeByRuleSet.get(edition, characterType);
     if (specialCharms == null)
@@ -93,7 +92,7 @@ public class CharmProvider implements ICharmProvider {
 		specialCharms.add(charm);
 	  ISpecialCharm[] charmArray = new ISpecialCharm[specialCharms.size()];
 	  specialCharms.toArray(charmArray);
-	  dataCharmsPrepared.put(type, true);
+	  dataCharmsPrepared.add(edition, type, true);
 	  charmsByTypeByRuleSet.add(edition, type, charmArray);
   }
 }
