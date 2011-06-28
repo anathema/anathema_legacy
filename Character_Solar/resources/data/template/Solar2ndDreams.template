@@ -14,6 +14,12 @@
     			<peripheralPool multiplier="10"/>
     		</multilearnablePool>
     	</additionalPools> 
+    	<forbiddenBackgrounds>
+    		<backgroundReference id="Contacts"/>
+    		<backgroundReference id="Followers"/>
+    		<backgroundReference id="Influence"/>
+    		<backgroundReference id="Resources"/>
+    	</forbiddenBackgrounds>
     </additionalRules>
     <additionalTemplates>
       <template id="SolarVirtueFlaw" />

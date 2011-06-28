@@ -15,6 +15,14 @@
     <healthTemplate>
       <toughnessControllingTrait type="Stamina"/>
     </healthTemplate>
+    <additionalRules>
+    	<forbiddenBackgrounds>
+    		<backgroundReference id="Contacts"/>
+    		<backgroundReference id="Followers"/>
+    		<backgroundReference id="Influence"/>
+    		<backgroundReference id="Resources"/>
+    	</forbiddenBackgrounds>
+    </additionalRules>
   </general>
   <creation>
     <bonusPointCosts uses="template/LunarBonusPointCost2nd.template" />

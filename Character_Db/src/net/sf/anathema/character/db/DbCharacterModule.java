@@ -54,6 +54,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final String BACKGROUND_ID_REPUTATION = "Reputation"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_RETAINERS = "Retainers"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SORCERY = "Sorcery"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_PANOPLY = "DBDreamsPanoply"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_SAVANT = "DBDreamsSavant"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_SIFU = "DBDreamsSifu"; //$NON-NLS-1$
   private static final TemplateType dynastTemplateType = new TemplateType(CharacterType.DB);
   private static final TemplateType tabernacleTemplateType = new TemplateType(CharacterType.DB, new Identificate(
       "SequesteredTabernacleSubtype")); //$NON-NLS-1$
@@ -93,6 +96,8 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   "DreamsSubtype")); //$NON-NLS-1$
   private static final TemplateType dreamsRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
   "DreamsRevisedSubtype")); //$NON-NLS-1$
+  
+  private static final TemplateType[] dreams = { dreamsTemplateType, dreamsRevisedTemplateType };
   
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -180,6 +185,10 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     addLookshyBackgrounds(backgroundRegistry);
     addCultBackgrounds(backgroundRegistry);
     addSorcery(backgroundRegistry);
+    
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_PANOPLY, dreams, ExaltedEdition.SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, dreams, ExaltedEdition.SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SIFU, dreams, ExaltedEdition.SecondEdition));
   }
 
   private void addCultBackgrounds(IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {

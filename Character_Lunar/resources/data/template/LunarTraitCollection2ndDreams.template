@@ -87,6 +87,55 @@
 			<limitation type="Static" value="5"/>
 			<minimum value="1"/>
 		</specialTrait>
+		
+		<specialTrait id="Allies" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="LunarDreamsArsenal" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="Backing" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="LunarDreamsCommand" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="LunarDreamsConnections" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="Familiar" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="Manse" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="LunarDreamsPanoply" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="LunarDreamsReputation" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="LunarDreamsSavant" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="LunarDreamsWealth" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="HeartsBlood" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
   </backgrounds>
   <essence startValue="3" lowerableState="Default">
 		<limitation type="Static" value="10"/>

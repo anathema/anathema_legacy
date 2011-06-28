@@ -48,7 +48,7 @@ public class PerkView implements IPerkView, IView {
   private final ActionAddableListView<IQualitySelection<IPerk>> selectedPerksView;
   private final IMeritsFlawsViewProperties properties;
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
+  @SuppressWarnings({ "unchecked" })
   public PerkView(IMeritsFlawsViewProperties properties) {
     this.properties = properties;
     perkList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

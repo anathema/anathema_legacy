@@ -107,6 +107,51 @@
 			<limitation type="Static" value="5"/>
 			<minimum value="1"/>
 		</specialTrait>
+		
+		<specialTrait id="Allies" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="SolarDreamsArsenal" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="Backing" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="SolarDreamsCommand" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="SolarDreamsConnections" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="Familiar" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="Manse" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="SolarDreamsPanoply" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="SolarDreamsReputation" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="SolarDreamsSavant" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
+		<specialTrait id="SolarDreamsWealth" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="6"/>
+			<minimum value="0"/>
+		</specialTrait>
   </backgrounds>
   <essence startValue="3" lowerableState="Default">
 		<limitation type="Static" value="10"/>
