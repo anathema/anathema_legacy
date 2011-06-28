@@ -308,7 +308,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     	return 0;
   }
   
-  private float encodeOverdrive(
+  /*private float encodeOverdrive(
 	      PdfContentByte directContent,
 	      IGenericCharacter character,
 	      float distanceFromTop,
@@ -322,7 +322,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
 	    }
 	    else
 	    	return 0;
-	  }
+	  }*/
 
   private float encodeIntimacies(
       PdfContentByte directContent,

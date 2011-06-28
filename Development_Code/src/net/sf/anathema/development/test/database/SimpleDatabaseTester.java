@@ -16,7 +16,7 @@ public class SimpleDatabaseTester {
     // queryDatabase();
   }
 
-  @SuppressWarnings( { "rawtypes", "unused" })
+  @SuppressWarnings( { "unused" })
   private static void queryDatabase() {
     ObjectContainer db = Db4o.openFile("TestSimple.yap");
     ObjectSet<Map> query = db.query(new Predicate<Map>() {

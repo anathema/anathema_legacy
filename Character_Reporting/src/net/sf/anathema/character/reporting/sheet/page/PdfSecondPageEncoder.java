@@ -1,19 +1,12 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
-import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.PADDING;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfVirtueEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionPersonalInfoEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -29,11 +22,8 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfSecondPageEncoder implements IPdfPageEncoder {
   public static final int CONTENT_HEIGHT = 755;
-  private final IResources resources;
-  private final int essenceMax;
   private final BaseFont baseFont;
 
-  private static final int ANIMA_HEIGHT = 128;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private final PdfEncodingRegistry registry;
@@ -47,8 +37,6 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       PdfPageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
     this.baseFont = registry.getBaseFont();
-    this.essenceMax = essenceMax;
-    this.resources = resources;
     this.registry = registry;
     this.pageConfiguration = pageConfiguration;
     this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
@@ -87,7 +75,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
     float armourHeight = encodeArmourAndSoak(directContent, character, distanceFromTop, 80);
     distanceFromTop += calculateBoxIncrement(armourHeight);
-    float massCombatHeight = encodeMassCombat(directContent, character, distanceFromTop, 120);
+    encodeMassCombat(directContent, character, distanceFromTop, 120);
     
     encodeCopyright(directContent);
   }

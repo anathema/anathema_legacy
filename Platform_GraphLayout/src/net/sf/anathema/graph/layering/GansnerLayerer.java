@@ -28,19 +28,19 @@ public class GansnerLayerer implements ILayerer {
 			return tail;
 		}
 		
-		public int getDelta() {
+		/*public int getDelta() {
 			return delta;
 		}
 		public void setDelta(int delta) {
 			this.delta = delta;
-		}
+		}*/
 		
 		public int getWeight() {
 			return weight;
 		}
-		public void setWeight(int weight) {
+		/*public void setWeight(int weight) {
 			this.weight = weight;
-		}
+		}*/
 		
 		public Integer getCutValue() {
 			return cutValue;
@@ -66,19 +66,19 @@ public class GansnerLayerer implements ILayerer {
 		public int hashCode() {
 			return head.hashCode() ^ tail.hashCode();
 		}
-		public boolean equals(GansnerEdge edge) {
+		/*public boolean equals(GansnerEdge edge) {
 			return (this.head == edge.getHead()) && (this.tail == edge.getTail());
-		}
+		}*/
 
 		public GansnerEdge(IRegularNode head, IRegularNode tail) {
 			this(head, tail, 1, 1, null);
 		}
-		public GansnerEdge(IRegularNode head, IRegularNode tail, int delta) {
+		/*public GansnerEdge(IRegularNode head, IRegularNode tail, int delta) {
 			this(head, tail, delta, 1, null);
 		}
 		public GansnerEdge(IRegularNode head, IRegularNode tail, int delta, int weight) {
 			this(head, tail, delta, weight, null);
-		}
+		}*/
 		public GansnerEdge(IRegularNode head, IRegularNode tail, int delta, int weight, Integer cutValue) {
 			this.head = head;
 			this.tail = tail;
@@ -129,7 +129,7 @@ public class GansnerLayerer implements ILayerer {
 			}
 		}
 		
-		Set<GansnerEdge> tree = feasibleTree(graph, incident);
+		feasibleTree(graph, incident);
 		GansnerEdge cutEdge = findCutEdge();
 		while (cutEdge != null) {
 			exchangeEdge(graph, incident, cutEdge);

@@ -22,7 +22,7 @@ public class WeightedObject<V> implements Comparable<WeightedObject<V>> {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof WeightedObject)) {
+    if (!(obj instanceof WeightedObject<?>)) {
       return false;
     }
     WeightedObject< ? > weightedObject = (WeightedObject< ? >) obj;

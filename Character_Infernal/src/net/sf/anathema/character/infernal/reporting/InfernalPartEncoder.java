@@ -7,11 +7,11 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class InfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
-  private final PdfEncodingRegistry registry;
+  //private final PdfEncodingRegistry registry;
 
   public InfernalPartEncoder(IResources resources, PdfEncodingRegistry registry, int essenceMax) {
     super(resources, registry, essenceMax);
-    this.registry = registry;
+    //this.registry = registry;
   }
 
   public IPdfContentBoxEncoder getGreatCurseEncoder() {

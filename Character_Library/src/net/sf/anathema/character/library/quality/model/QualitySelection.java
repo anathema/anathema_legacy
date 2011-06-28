@@ -23,7 +23,7 @@ public class QualitySelection<Q extends IQuality> implements IQualitySelection<Q
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof QualitySelection)) {
+    if (!(obj instanceof QualitySelection<?>)) {
       return false;
     }
     QualitySelection< ? > other = (QualitySelection< ? >) obj;

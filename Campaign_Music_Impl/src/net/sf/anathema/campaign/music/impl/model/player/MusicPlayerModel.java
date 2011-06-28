@@ -39,7 +39,6 @@ public class MusicPlayerModel implements IMusicPlayerModel {
         // Nothing to do
       }
 
-      @SuppressWarnings("rawtypes")
       public void progress(final int bytesread, final long microseconds, byte[] pcmdata, Map properties) {
         control.forAllDo(new IClosure<IMusicPlayerModelListener>() {
           public void execute(IMusicPlayerModelListener input) {
@@ -49,7 +48,6 @@ public class MusicPlayerModel implements IMusicPlayerModel {
         });
       }
 
-      @SuppressWarnings("rawtypes")
       public void opened(Object stream, final Map properties) {
         lengthInMilliseconds = getTimeLengthEstimation(properties);
         lengthInBytes = ((Integer) properties.get(PROP_LENGTH)).intValue();
@@ -151,7 +149,6 @@ public class MusicPlayerModel implements IMusicPlayerModel {
     initPlayer(mp3Track);
   }
 
-  @SuppressWarnings("rawtypes")
   private long getTimeLengthEstimation(Map properties) {
     long milliseconds = -1;
     int byteslength = -1;
