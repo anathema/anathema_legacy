@@ -9,20 +9,30 @@ import java.util.Map.Entry;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identificate;
 
 public class CharmCache implements ICharmCache {
 
   private static final CharmCache instance = new CharmCache();
   private final Map<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>> charmSetsByRuleSet = new HashMap<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>>();
+  private final Map<IExaltedRuleSet, Map<IIdentificate, List<ISpecialCharm>>> specialCharms = new HashMap<IExaltedRuleSet, Map<IIdentificate, List<ISpecialCharm>>>();
   private final Map<IExaltedRuleSet, Map<String, String>> renameData = new HashMap<IExaltedRuleSet, Map<String, String>>();
 
   private CharmCache() {
     for (IExaltedRuleSet ruleset : ExaltedRuleSet.values()) {
       charmSetsByRuleSet.put(ruleset, new MultiEntryMap<IIdentificate, ICharm>());
       renameData.put(ruleset, new HashMap<String, String>());
+      
+      Map<IIdentificate, List<ISpecialCharm>> list = new HashMap<IIdentificate, List<ISpecialCharm>>();
+      specialCharms.put(ruleset, list);
+      for (CharacterType type : CharacterType.values())
+    	  list.put(type, new ArrayList<ISpecialCharm>());  
+      list.put(new Identificate("MartialArts"), new ArrayList<ISpecialCharm>());
     }
   }
 
@@ -71,6 +81,20 @@ public class CharmCache implements ICharmCache {
       }
     }
     return allCharms;
+  }
+  
+  public ISpecialCharm[] getSpecialCharmData(IIdentificate type, IExaltedRuleSet ruleset) {
+	    List<ISpecialCharm> charmList = specialCharms.get(ruleset).get(type);
+	    return charmList.toArray(new ISpecialCharm[charmList.size()]);
+	  }
+  
+  public void addSpecialCharmData(IExaltedRuleSet ruleSet, IIdentificate type, List<ISpecialCharm> data)
+  {
+	  if (data == null)
+		  return;
+	  Map<IIdentificate, List<ISpecialCharm>> rulesetMap = specialCharms.get(ruleSet);
+	  List<ISpecialCharm> list = rulesetMap.get(type);
+	  list.addAll(data);
   }
   
   public void addCharmRenames(IExaltedRuleSet ruleSet, Map<String, String> mappings)

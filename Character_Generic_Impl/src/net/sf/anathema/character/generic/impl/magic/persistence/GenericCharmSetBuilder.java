@@ -17,6 +17,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericC
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -33,7 +34,7 @@ public class GenericCharmSetBuilder extends AbstractCharmSetBuilder {
   private ITraitType[] types;
 
   @Override
-  protected void buildCharms(Collection<Charm> allCharms, Element charmListElement) throws PersistenceException {
+  protected void buildCharms(Collection<Charm> allCharms, List<ISpecialCharm> specialCharms, Element charmListElement) throws PersistenceException {
     final List<Element> elements = ElementUtilities.elements(charmListElement, TAG_GENERIC_CHARM);
     final Map<Element, Set<String>> traitSets = new HashMap<Element, Set<String>>();
     if (elements.isEmpty()) {
@@ -56,7 +57,7 @@ public class GenericCharmSetBuilder extends AbstractCharmSetBuilder {
       genericsBuilder.setType(type);
       for (Element charmElementObject : elements) {
         if (!traitSets.containsKey(charmElementObject) || traitSets.get(charmElementObject).contains(type.getId())) {
-          createCharm(allCharms, genericsBuilder, charmElementObject); 
+          createCharm(allCharms, specialCharms, genericsBuilder, charmElementObject); 
         }
       }
     }

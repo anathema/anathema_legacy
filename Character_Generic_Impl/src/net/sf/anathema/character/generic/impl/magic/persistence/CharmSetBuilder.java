@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
 
 import java.util.Collection;
+import java.util.List;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder;
@@ -10,6 +11,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdString
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.AttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.CharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -25,9 +27,9 @@ public class CharmSetBuilder extends AbstractCharmSetBuilder {
       new CharmPrerequisiteBuilder());
 
   @Override
-  protected void buildCharms(Collection<Charm> allCharms, Element charmListElement) throws PersistenceException {
+  protected void buildCharms(Collection<Charm> allCharms, List<ISpecialCharm> specialCharms, Element charmListElement) throws PersistenceException {
     for (Element charmElementObject : ElementUtilities.elements(charmListElement, TAG_CHARM)) {
-      createCharm(allCharms, builder, charmElementObject);
+      createCharm(allCharms, specialCharms, builder, charmElementObject);
     }
   }
 }

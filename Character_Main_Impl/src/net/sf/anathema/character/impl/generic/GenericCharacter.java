@@ -54,6 +54,12 @@ public class GenericCharacter implements IGenericCharacter {
   public IGenericTraitCollection getTraitCollection() {
     return statistics.getTraitConfiguration();
   }
+  
+  public int getLearnCount(String charmName)
+  {
+	  IMultiLearnableCharm charm = (IMultiLearnableCharm) statistics.getCharms().getSpecialCharmConfiguration(charmName);
+	  return getLearnCount(charm);
+  }
 
   public int getLearnCount(IMultiLearnableCharm charm) {
     ICharmConfiguration charms = statistics.getCharms();

@@ -33,6 +33,7 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Stackable" visualize="true" />
+		<repurchases limitingTrait="Resistance"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<!-- NOTE:  Essence-Gathering Temper is in Core 2e charm set. -->

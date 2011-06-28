@@ -4,6 +4,9 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.AT
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COST;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
+
+import java.util.List;
+
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmAttributeBuilder;
@@ -15,6 +18,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.IComboRu
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.IAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ICharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ITraitPrerequisitesBuilder;
@@ -25,6 +29,7 @@ import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
@@ -44,6 +49,7 @@ public class CharmBuilder implements ICharmBuilder {
   private final GroupStringBuilder groupBuilder = new GroupStringBuilder();
   private final SourceBuilder sourceBuilder = new SourceBuilder();
   private final CharmAttributeBuilder attributeBuilder = new CharmAttributeBuilder();
+  private final SpecialCharmBuilder specialCharmBuilder = new SpecialCharmBuilder();
   private final IIdStringBuilder idBuilder;
   private final ITraitPrerequisitesBuilder traitsBuilder;
   private final IAttributeRequirementBuilder attributeRequirementsBuilder;
@@ -62,8 +68,13 @@ public class CharmBuilder implements ICharmBuilder {
     this.comboBuilder = comboBuilder;
     this.charmPrerequisiteBuilder = charmPrerequisiteBuilder;
   }
+  
+  public Charm buildCharm(Element charmElement) throws PersistenceException
+  {
+	  return buildCharm(charmElement, null);
+  }
 
-  public Charm buildCharm(Element charmElement) throws PersistenceException {
+  public Charm buildCharm(Element charmElement, List<ISpecialCharm> specialCharms) throws PersistenceException {
     String id = idBuilder.build(charmElement);
     try {
       ICharacterType characterType = getCharacterType(charmElement);
@@ -96,6 +107,9 @@ public class CharmBuilder implements ICharmBuilder {
         charm.addCharmAttribute(attribute);
       }
       loadSpecialLearning(charmElement, charm);
+      
+      ISpecialCharm special = specialCharmBuilder.readSpecialCharm(charmElement, id);
+      if (special != null) specialCharms.add(special);
       return charm;
     }
     catch (PersistenceException e) {

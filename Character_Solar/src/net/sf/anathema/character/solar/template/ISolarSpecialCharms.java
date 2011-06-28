@@ -34,61 +34,6 @@ public interface ISolarSpecialCharms {
         }
       });
 
-  @SuppressWarnings("serial")
-  public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE_SECOND_EDITION = new OxBodyTechniqueCharm(
-      "Solar.Ox-BodyTechnique", AbilityType.Resistance,//$NON-NLS-1$
-      new LinkedHashMap<String, HealthLevelType[]>() {
-        {
-          put("Category.-0", new HealthLevelType[] { HealthLevelType.ZERO }); //$NON-NLS-1$
-          put("Category.-1x2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.ONE }); //$NON-NLS-1$
-          put(
-              "Category.-1-2x2", new HealthLevelType[] { HealthLevelType.ONE, HealthLevelType.TWO, HealthLevelType.TWO }); //$NON-NLS-1$
-        }
-      });
-  
-  public static final ITraitCapModifyingCharm GLORY_TO_THE_MOST_HIGH = new TraitCapModifyingCharm(
-		  "Solar.GloryToTheMostHigh", OtherTraitType.Essence, 1);
-
-  public static final IMultiLearnableCharm GLORIOUS_SOLAR_SABER = new TraitDependentMultiLearnableCharm(
-      "Solar.GloriousSolarSaber", //$NON-NLS-1$
-      EssenceTemplate.SYSTEM_ESSENCE_MAX,
-      AbilityType.Melee);
-
-  public static final IMultiLearnableCharm CITY_MOVING_SECRETS = new TraitDependentMultiLearnableCharm(
-      "Solar.City-MovingSecrets", //$NON-NLS-1$
-      EssenceTemplate.SYSTEM_ESSENCE_MAX,
-      OtherTraitType.Essence);
-
-  public static final IMultiLearnableCharm IMMANENT_SOLAR_GLORY = new TraitDependentMultiLearnableCharm(
-      "Solar.ImmanentSolarGlory", //$NON-NLS-1$
-      EssenceTemplate.SYSTEM_ESSENCE_MAX,
-      OtherTraitType.Essence);
-
-  public static final IMultiLearnableCharm INVINCIBLE_ESSENCE_REINFORCEMENT = new TraitDependentMultiLearnableCharm(
-      "Solar.InvincibleEssenceReinforcement", //$NON-NLS-1$
-      EssenceTemplate.SYSTEM_ESSENCE_MAX,
-      AbilityType.Resistance);
-  
-  public static final IMultiLearnableCharm RIGHTEOUS_LION_DEFENSE = new StaticMultiLearnableCharm(
-      "Solar.RighteousLionDefense", //$NON-NLS-1$
-      2);
-  
-  public static final IMultiLearnableCharm WONDER_FORGING_GENIUS = new TieredMultiLearnableCharm(
-	      "Solar.Wonder-ForgingGenius", //$NON-NLS-1$
-	      AbilityType.Craft,
-	      new CharmTier[] { new CharmTier(5, 4), new CharmTier(5, 5) });
-
-  public static final ISubeffectCharm ESSENCE_ARROW_ATTACK = new SubeffectCharm("Solar.EssenceArrowAttack", //$NON-NLS-1$
-      new String[] { "FieryArrowAttack", "DazzlingFlare", "RighteousJudgementArrow" }, 0.5); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-
-  public static final ISubeffectCharm MASTER_HORSEMANS_TECHNIQUES = new SubeffectCharm(
-      "Solar.MasterHorseman'sTechniques", //$NON-NLS-1$
-      new String[] {
-          "HarmonySpiritsStyle", "Horse-SummoningWhistle", "MasterHorseman'sEye", "Speed-SustainingTechnique", "Spirit-SteadyingAssurances" }, 1); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
-
-  public static final IMultipleEffectCharm PHOENIX_RENEWAL_TACTIC = new MultipleEffectCharm(
-      "Solar.PhoenixRenewalTactic", new String[] { "Compassion", "Conviction", "Temperance", "Valor" }); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
-
   public static final IMultipleEffectCharm ENVIRONMENTAL_HAZARD_RESISTING_MEDITATION = new MultipleEffectCharm(
       "Solar.EnvironmentalHazard-ResistingMeditation", new String[] { "Wind", "Cold", "Heat", "Acid" }); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 }

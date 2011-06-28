@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -124,7 +125,7 @@ public class CharmCompiler {
 	      }
 	    }
 	  }
-
+  
   private List<ICharm> buildCharms(IIdentificate type, IExaltedRuleSet rules, ICharmSetBuilder builder)
       throws PersistenceException {
     List<ICharm> allCharms = new ArrayList<ICharm>();
@@ -144,10 +145,12 @@ public class CharmCompiler {
       Document charmDocument,
       ICharmSetBuilder builder) throws PersistenceException {
     CharmCache cache = CharmCache.getInstance();
-    ICharm[] charmArray = builder.buildCharms(charmDocument);
+    List<ISpecialCharm> specialCharms = new ArrayList<ISpecialCharm>();
+    ICharm[] charmArray = builder.buildCharms(charmDocument, specialCharms);
     for (ICharm charm : charmArray) {
       cache.addCharm(type, rules, charm);
     }
+    cache.addSpecialCharmData(rules, type, specialCharms);
     return charmArray;
   }
 

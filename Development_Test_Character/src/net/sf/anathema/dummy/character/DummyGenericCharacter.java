@@ -237,4 +237,9 @@ public class DummyGenericCharacter implements IGenericCharacter {
   {
 	  return null;
   }
+
+	@Override
+	public int getLearnCount(String charmName) {
+		return 0;
+	}
 }

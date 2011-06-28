@@ -338,4 +338,9 @@ public int getEssenceCap(boolean modified)
   public ICharm[] getLearnedCharms() {
     return new ICharm[0];
   }
+
+	@Override
+	public int getLearnCount(String charmName) {
+		return 0;
+	}
 }

@@ -36,8 +36,9 @@
           <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Abyssal Mirror - Apocalyptic Evolution of (Ability) -->
-		<charmAttribute attribute="Native" visualize="true" />
+		  <!-- NOTE:  Abyssal Mirror - Apocalyptic Evolution of (Ability) -->
+		  <charmAttribute attribute="Native" visualize="true" />
+		  <transcendence modifier="-1"/>
           <source source="LordsOfCreation" page="55" />
 		<source source="ScrollErrata" />
      </genericCharm>

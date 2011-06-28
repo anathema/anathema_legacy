@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.solar.template.ISolarSpecialCharms;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -17,6 +16,8 @@ public class NaturalSoak extends AbstractStats implements IArmourStats {
   private final IGenericTrait stamina;
   private final ICharacterType characterType;
   private final ICharacterModelContext context;
+  
+  private final String INVINCIBLE_ESSENCE_REINFORCEMENT = "Solar.InvincibleEssenceReinforcement";
 
   public NaturalSoak(ICharacterModelContext context) {
     this(context.getTraitCollection().getTrait(AttributeType.Stamina), context.getBasicCharacterContext().getCharacterType(), context);
@@ -39,7 +40,7 @@ public class NaturalSoak extends AbstractStats implements IArmourStats {
       return null;
     }
     
-    int ierCount = context.getMagicCollection().getLearnCount(ISolarSpecialCharms.INVINCIBLE_ESSENCE_REINFORCEMENT);
+    int ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
     if (ierCount == 0 || context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue() < 4) {
       return null;
     }
@@ -71,7 +72,7 @@ public class NaturalSoak extends AbstractStats implements IArmourStats {
       ierCount = 0;
 	}
 	else {
-      ierCount = context.getMagicCollection().getLearnCount(ISolarSpecialCharms.INVINCIBLE_ESSENCE_REINFORCEMENT);
+      ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
 	}
 	
     if (type == HealthType.Bashing || ierCount > 0) {

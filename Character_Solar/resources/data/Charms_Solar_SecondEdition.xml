@@ -194,6 +194,11 @@
 		<charmtype type="Supplemental"/>
 		<charmAttribute attribute="Combo-OK" visualize="true"/>
 		<charmAttribute attribute="Obvious" visualize="true"/>
+		<subeffects bpCost=".5">
+			<subeffect name="FieryArrowAttack"/>
+			<subeffect name="DazzlingFlare"/>
+			<subeffect name="RighteousJudgementArrow"/>
+		</subeffects>
 		<source source="SecondEdition" page="188"/>
 	</charm>
 	<charm id="Solar.PhantomArrowTechnique" exalt="Solar" group="Archery">
@@ -431,6 +436,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true"/>
 		<charmAttribute attribute="Holy" visualize="true"/>
 		<charmAttribute attribute="Obvious" visualize="true"/>
+		<repurchases limitingTrait="Melee"/>
 		<source source="SecondEdition" page="192"/>
 	</charm>
 	<charm id="Solar.IronRaptorTechnique" exalt="Solar" group="Melee">
@@ -904,6 +910,7 @@
 		</cost>
 		<duration duration="Permanent"/>
 		<charmtype type="Permanent"/>
+		<repurchases limit="2"/>
 		<source source="SecondEdition" page="199"/>
 	</charm>
 	<charm id="Solar.StubbornBoarDefense" exalt="Solar" group="Integrity">
@@ -927,6 +934,12 @@
 		</cost>
 		<duration duration="Permanent"/>
 		<charmtype type="Permanent"/>
+		<multiEffects>
+			<effect name="Compassion"/>
+			<effect name="Conviction"/>
+			<effect name="Temperance"/>
+			<effect name="Valor"/>
+		</multiEffects>
 		<source source="SecondEdition" page="200"/>
 	</charm>
 	<charm id="Solar.Temptation-ResistingStance" exalt="Solar" group="Integrity">
@@ -1481,6 +1494,20 @@
 		<duration duration="Permanent"/>
 		<charmtype type="Permanent"/>
 		<charmAttribute attribute="Stackable" visualize="true"/>
+		<OxBodyCharm ability="Resistance">
+			<OxBodyPick name="Category.-0">
+				<ZeroHealthLevel/>
+			</OxBodyPick>
+			<OxBodyPick name="Category.-1x2">
+				<OneHealthLevel/>
+				<OneHealthLevel/>
+			</OxBodyPick>
+			<OxBodyPick name="Category.-1-2x2">
+				<OneHealthLevel/>
+				<TwoHealthLevel/>
+				<TwoHealthLevel/>
+			</OxBodyPick>
+		</OxBodyCharm>
 		<source source="SecondEdition" page="208"/>
 	</charm>
 	<charm id="Solar.UnbreakableWarrior'sMastery" exalt="Solar" group="Resistance">
@@ -1710,6 +1737,7 @@
 		</cost>
 		<duration duration="Permanent"/>
 		<charmtype type="Permanent"/>
+		<repurchases limitingTrait="Essence"/>
 		<source source="SecondEdition" page="211"/>
 	</charm>
 	<charm id="Solar.Object-StrengtheningTouch" exalt="Solar" group="Craft">
@@ -2112,6 +2140,7 @@
 		<charmtype type="Permanent"/>
 		<charmAttribute attribute="Mirror" visualize="true"/>
 		<charmAttribute attribute="Native" visualize="true"/>
+		<repurchases limitingTrait="Essence"/>
 		<source source="SecondEdition" page="218"/>
 	</charm>
 	<charm id="Solar.TouchBlissfulRelease" exalt="Solar" group="Medicine">
@@ -2275,6 +2304,10 @@
 		</cost>
 		<duration duration="Permanent"/>
 		<charmtype type="Permanent"/>
+		<repurchases trait="Craft">
+			<repurchase essence="4" trait="5"/>
+			<repurchase essence="5" trait="5"/>
+		</repurchases>
 		<source source="OadenolsCodex" page="29"/>
 	</charm>
 	<charm id="Solar.Words-as-WorkshopMethod" exalt="Solar" group="Craft">
@@ -3097,6 +3130,12 @@
 		</cost>
 		<duration duration="Permanent"/>
 		<charmtype type="Permanent"/>
+		<subeffects bpCost="1">
+			<subeffect name="HarmonySpiritsStyle"/>
+			<subeffect name="Horse-SummoningWhistle"/>
+			<subeffect name="Speed-SustainingTechnique"/>
+			<subeffect name="Spirit-SteadyingAssurances"/>
+		</subeffects>
 		<source source="SecondEdition" page="234"/>
 	</charm>
 	<charm id="Solar.WorthyMountTechnique" exalt="Solar" group="Ride">

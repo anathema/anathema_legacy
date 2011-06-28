@@ -1,9 +1,12 @@
 package net.sf.anathema.character.generic.impl.template.magic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
@@ -19,6 +22,13 @@ public class CharmProvider implements ICharmProvider {
 
   private final Table<IExaltedEdition, ICharacterType, ISpecialCharm[]> charmsByTypeByRuleSet = new Table<IExaltedEdition, ICharacterType, ISpecialCharm[]>();
   private final MultiEntryMap<IExaltedEdition, ISpecialCharm> martialArtsSpecialCharms = new MultiEntryMap<IExaltedEdition, ISpecialCharm>();
+  private final Map<ICharacterType, Boolean> dataCharmsPrepared = new HashMap<ICharacterType, Boolean>();
+  
+  public CharmProvider()
+  {
+	  for (ICharacterType type : CharacterType.values())
+		  dataCharmsPrepared.put(type, false);
+  }
 
   @Override
   public ISpecialCharm[] getSpecialCharms(
@@ -38,10 +48,11 @@ public class CharmProvider implements ICharmProvider {
   }
 
   public ISpecialCharm[] getSpecialCharms(ICharacterType characterType, IExaltedEdition edition) {
+	if (!dataCharmsPrepared.get(characterType))
+		prepareDataCharms(characterType, edition);
     ISpecialCharm[] specialCharms = charmsByTypeByRuleSet.get(edition, characterType);
-    if (specialCharms == null) {
-      return new ISpecialCharm[0];
-    }
+    if (specialCharms == null)
+      specialCharms = new ISpecialCharm[0];
     return specialCharms;
   }
 
@@ -57,7 +68,8 @@ public class CharmProvider implements ICharmProvider {
     return set.toArray(new ISpecialCharm[set.size()]);
   }
 
-  public void setSpecialCharms(ICharacterType type, IExaltedEdition edition, ISpecialCharm... charms) {
+  public void setSpecialCharms(ICharacterType type, IExaltedEdition edition, ISpecialCharm... charms)
+  {
     charmsByTypeByRuleSet.add(edition, type, charms);
   }
 
@@ -68,5 +80,20 @@ public class CharmProvider implements ICharmProvider {
   public String getCharmRename(IExaltedRuleSet rules, String name)
   {
 	  return CharmCache.getInstance().getCharmRename(rules, name);
+  }
+  
+  private void prepareDataCharms(ICharacterType type, IExaltedEdition edition)
+  {
+	  List<ISpecialCharm> specialCharms = new ArrayList<ISpecialCharm>();
+	  ISpecialCharm[] base = charmsByTypeByRuleSet.get(edition, type);
+	  if (base != null)
+		  for (ISpecialCharm charm : base)
+			specialCharms.add(charm);
+	  for (ISpecialCharm charm : CharmCache.getInstance().getSpecialCharmData(type, edition.getDefaultRuleset()))
+		specialCharms.add(charm);
+	  ISpecialCharm[] charmArray = new ISpecialCharm[specialCharms.size()];
+	  specialCharms.toArray(charmArray);
+	  dataCharmsPrepared.put(type, true);
+	  charmsByTypeByRuleSet.add(edition, type, charmArray);
   }
 }
