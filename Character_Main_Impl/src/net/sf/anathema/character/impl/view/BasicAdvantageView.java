@@ -14,6 +14,7 @@ import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.sf.anathema.character.impl.view.advantage.BackgroundSelectionView;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
@@ -25,6 +26,7 @@ import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
+import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -88,12 +90,16 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
 
   public IButtonControlledComboEditView<Object> addBackgroundSelectionView(
 	      String labelText,
-	      ListCellRenderer renderer,
+	      ListCellRenderer backgroundRenderer,
+	      ITextFieldComboBoxEditor backgroundEditor,
+	      ITextFieldComboBoxEditor detailEditor,
 	      Icon addIcon) {
-	    ButtonControlledComboEditView<Object> objectSelectionView = new ButtonControlledComboEditView<Object>(
+	    ButtonControlledComboEditView<Object> objectSelectionView = new BackgroundSelectionView<Object>(
 	        addIcon,
 	        labelText,
-	        renderer);
+	        backgroundRenderer,
+	        backgroundEditor,
+	        detailEditor);
 	    backgroundSelectionPanel.add(objectSelectionView.getComponent());
 	    return objectSelectionView;
 	  }

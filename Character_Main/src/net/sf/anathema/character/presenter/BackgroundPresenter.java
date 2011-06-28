@@ -18,6 +18,7 @@ import net.sf.anathema.character.generic.framework.resources.BackgroundInternati
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.util.ProxyComboBoxEditor;
 import net.sf.anathema.character.model.background.IBackground;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
@@ -97,6 +98,18 @@ public class BackgroundPresenter implements IPresenter {
                   return super.getListCellRendererComponent(list, getDisplayObject(value), index, isSelected, cellHasFocus);
                 }
               },
+            new ProxyComboBoxEditor() {
+  		        @Override
+  		        public void setItem(Object anObject) {
+  		          super.setItem(anObject);
+  		        }
+  		      },
+  		    new ProxyComboBoxEditor() {
+    		        @Override
+    		        public void setItem(Object anObject) {
+    		          super.setItem(anObject);
+    		        }
+    		      },
             addIcon);
     view.addEditChangedListener(new IObjectValueChangedListener<String>() {
         public void valueChanged(String newBackgroundDescription) {

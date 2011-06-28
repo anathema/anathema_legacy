@@ -7,10 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.anathema.character.generic.backgrounds.IBackgroundInfo;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
@@ -34,16 +31,16 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class ThaumaturgyEncoder implements IPdfContentBoxEncoder
 {
-	private final IResources resources;
-	private final BaseFont baseFont;
+//	private final IResources resources;
+//	private final BaseFont baseFont;
 	private final Font boldFont;
 	private final Font regularFont;
 	private final PdfTraitEncoder traitEncoder;
 
 	public ThaumaturgyEncoder(IResources resources, BaseFont baseFont)
 	{
-		this.resources = resources;
-		this.baseFont = baseFont;
+	//	this.resources = resources;
+	//	this.baseFont = baseFont;
 		this.regularFont = TableEncodingUtilities.createFont(baseFont);
 		this.boldFont = TableEncodingUtilities.createFont(baseFont);
 		this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
@@ -125,13 +122,13 @@ public class ThaumaturgyEncoder implements IPdfContentBoxEncoder
 	    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, LINE_HEIGHT);
 	}
 	
-	private boolean hasArt(List<String> artList, IThaumaturgyMagic magic)
+	/*private boolean hasArt(List<String> artList, IThaumaturgyMagic magic)
 	{
 		for (String art : artList)
 			if (art.equals(magic.getArt()))
 				return true;
 		return false;
-	}
+	}*/
 
 	@Override
 	public String getHeaderKey() {

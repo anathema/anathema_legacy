@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration;
 import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
@@ -94,7 +93,6 @@ public class CharacterStatistics implements ICharacterStatistics {
     charms.initListening();
     this.combos = new ComboConfiguration(charms, context.getComboLearnStrategy(), rules.getEdition());
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
-    ICharacterType characterType = template.getTemplateType().getCharacterType();
     this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template, rules.getEdition());
     this.spells.addChangeListener(new IChangeListener() {
       public void changeOccured() {

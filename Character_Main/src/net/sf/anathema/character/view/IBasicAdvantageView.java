@@ -7,6 +7,7 @@ import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
+import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
@@ -19,6 +20,8 @@ public interface IBasicAdvantageView extends IInitializableContentView<IAdvantag
   public IButtonControlledComboEditView<Object> addBackgroundSelectionView(
 	      String labelText,
 	      ListCellRenderer renderer,
+	      ITextFieldComboBoxEditor backgroundEditor,
+	      ITextFieldComboBoxEditor detailEditor,
 	      Icon addIcon);
 	      
   /*public IButtonControlledObjectSelectionView<Object> addBackgroundSelectionView(
