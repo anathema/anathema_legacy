@@ -19,13 +19,13 @@ public class SimpleDatabaseTester {
   @SuppressWarnings( { "unused" })
   private static void queryDatabase() {
     ObjectContainer db = Db4o.openFile("TestSimple.yap");
-    ObjectSet<Map> query = db.query(new Predicate<Map>() {
+    ObjectSet<Map<?, ?>> query = db.query(new Predicate<Map<?, ?>>() {
       @Override
-      public boolean match(Map map) {
+      public boolean match(Map<?, ?> map) {
         return true;
       }
     });
-    Map map = query.get(0);
+    Map<?, ?> map = query.get(0);
     Person person = (Person) map.get(Gender.Female);
     System.out.println(person.getName());
     db.close();
