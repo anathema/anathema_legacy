@@ -134,4 +134,16 @@
 		<charmAttribute attribute="Mortal"/>
 		<source source="GodsAndElementals"/>
 	</charm>
+	<charm id="Spirit.MimicOfTongues" exalt="Spirit" group="Divinations">
+		<prerequisite>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<essence cost="3"/>
+		</cost>
+		<duration amount="1" unit="scene"/>
+		<charmtype type="Simple"/>
+		<charmAttribute attribute="Mortal"/>
+		<source source="GodsAndElementals"/>
+	</charm>
 </charmlist>
