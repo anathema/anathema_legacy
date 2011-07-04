@@ -19,6 +19,16 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/arcanoi_chains.xml"/>
 	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Ghost"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/arcanoi_essence.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Ghost"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/arcanoi_craftsman.xml"/>
+	  </parameter>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="GhostResources">
 		<parameter id="bundle" value="Ghost"/>
