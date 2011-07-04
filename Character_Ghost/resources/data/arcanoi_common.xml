@@ -46,7 +46,7 @@
                <essence cost="5" />
                <willpower cost="1" />
           </cost>
-          <duration duration="Successes" unit="hour"/>
+          <duration amount="1" unit="HourSuccess"/>
           <charmtype type="Simple">
           	<special speed="3" defense="-1"/>
           </charmtype>
@@ -61,7 +61,7 @@
           <cost>
                <essence cost="5" />
           </cost>
-          <duration duration="Successes" unit="6 ticks"/>
+          <duration amount="6" unit="TicksSuccess"/>
           <charmtype type="Simple">
           	<special speed="6" defense="0"/>
           </charmtype>
@@ -76,7 +76,7 @@
           <cost>
                <essence cost="2" />
           </cost>
-          <duration duration="Successes" unit="6 ticks"/>
+          <duration amount="6" unit="TicksSuccess"/>
           <charmtype type="Simple">
           	<special speed="6" defense="0"/>
           </charmtype>
@@ -91,7 +91,7 @@
                <essence cost="8" />
                <willpower cost="1"/>
           </cost>
-          <duration duration="Successes" unit="6 ticks"/>
+          <duration amount="6" unit="TicksSuccess"/>
           <charmtype type="Simple"/>
           <source source="GhostsAndDemons" />
      </charm>
@@ -103,7 +103,7 @@
           <cost>
                <essence cost="3" />
           </cost>
-          <duration duration="Successes" unit="1 action"/>
+          <duration amount="1" unit="ActionSucess"/>
           <charmtype type="Simple">
           	<special speed="6" defense="-1"/>
           </charmtype>
@@ -140,7 +140,7 @@
           <cost>
                <essence cost="2"/>
           </cost>
-          <duration duration="Successes" unit="1 night"/>
+          <duration amount="1" unit="NightSuccess"/>
           <charmtype type="Simple">
           	<special speed="3" defense="-0"/>
           </charmtype>
@@ -192,7 +192,7 @@
           <cost>
                <essence cost="2" />
           </cost>
-          <duration duration="Successes" unit="6 ticks"/>
+          <duration amount="6" unit="TicksSuccess"/>
           <charmtype type="Simple">
           	<special speed="6" defense="-2"/>
           </charmtype>
@@ -218,7 +218,7 @@
           <cost>
                <essence cost="3" />
           </cost>
-          <duration duration="Successes" unit="1 minute"/>
+          <duration amount="1" unit="MinuteSuccess"/>
           <charmtype type="Simple">
           	<special speed="6" defense="-2"/>
           </charmtype>

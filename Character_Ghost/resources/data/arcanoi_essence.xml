@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
 <!--
 
-    arcanoi_chains.xml - XML charm data for Anathema Plug-ins.
+    arcanoi_essence.xml - XML charm data for Anathema Plug-ins.
     Copyright (C) 2011  Scott Olson (scottolson275@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
@@ -21,31 +21,27 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <charm id="Ghost.SoulAnchor" exalt="Ghost" group="ChainsMonarchs">
+     <charm id="Ghost.Aura-ReadingTechnique" exalt="Ghost" group="EssenceThief">
           <prerequisite>
-               <trait id="Temperance" value="2" />
+               <trait id="Temperance" value="1" />
                <essence value="1" />
           </prerequisite>
           <cost>
                <essence cost="2" />
-               <willpower cost="1" />
           </cost>
-          <duration amount="10" unit="MinuteSuccess"/>
-          <charmtype type="Simple">
-          	<special speed="4" defense="-0"/>
-          </charmtype>
-          <charmAttribute attribute="Obvious" visualize="true" />
+          <duration duration="Scene" unit="1"/>
+          <charmtype type="Simple"/>
           <source source="GhostsAndDemons" />
      </charm>
-     <charm id="Ghost.MonarchsGloriousBrilliance" exalt="Ghost" group="ChainsMonarchs">
+     <charm id="Ghost.DeliciousEssenceScent" exalt="Ghost" group="EssenceThief">
           <prerequisite>
-               <trait id="Conviction" value="2" />
-               <essence value="2" />
+               <trait id="Temperence" value="1" />
+               <essence value="1" />
           </prerequisite>
           <cost>
                <essence cost="3" />
           </cost>
-          <duration amount="5" unit="tick"/>
+          <duration amount="1" unit="Scene"/>
           <charmtype type="Simple">
           	<special speed="5" defense="-1"/>
           </charmtype>
@@ -53,7 +49,7 @@
           <charmAttribute attribute="Crippling" visualize="true" />
           <source source="GhostsAndDemons" />
      </charm>
-     <charm id="Ghost.EssenceBinding" exalt="Ghost" group="ChainsMonarchs">
+     <charm id="Ghost.EssenceBinding" exalt="Ghost" group="EssenceThief">
           <prerequisite>
                <trait id="Conviction" value="2" />
                <essence value="2" />
@@ -62,12 +58,12 @@
           <cost>
                <essence cost="5" />
           </cost>
-          <duration amount="5" unit="TicksSuccess"/>
+          <duration duration="Successes" unit="5 ticks"/>
           <charmtype type="Simple"/>
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="GhostsAndDemons" />
      </charm>
-     <charm id="Ghost.SnareTheFleeingThief" exalt="Ghost" group="ChainsMonarchs">
+     <charm id="Ghost.SnareTheFleeingThief" exalt="Ghost" group="EssenceThief">
           <prerequisite>
                <trait id="Conviction" value="3" />
                <essence value="2" />
@@ -76,14 +72,14 @@
           <cost>
                <essence cost="2" />
           </cost>
-          <duration amount="1" unit="MinuteSuccess"/>
+          <duration duration="Successes" unit="1 minute"/>
           <charmtype type="Simple"/>
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Crippling" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="GhostsAndDemons" />
      </charm>
-     <charm id="Ghost.EssenceLassoForm" exalt="Ghost" group="ChainsMonarchs">
+     <charm id="Ghost.EssenceLassoForm" exalt="Ghost" group="EssenceThief">
           <prerequisite>
                <trait id="Conviction" value="3" />
                <essence value="2" />
@@ -92,12 +88,12 @@
           <cost>
                <essence cost="6" />
           </cost>
-          <duration amount="5" unit="tick"/>
+          <duration duration="Successes" unit="5 ticks"/>
           <charmtype type="Simple"/>
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="GhostsAndDemons" />
      </charm>
-     <charm id="Ghost.Net" exalt="Ghost" group="ChainsMonarchs">
+     <charm id="Ghost.Net" exalt="Ghost" group="EssenceThief">
           <prerequisite>
                <trait id="Conviction" value="3" />
                <essence value="3" />
@@ -105,7 +101,7 @@
           <cost>
                <essence cost="7" />
           </cost>
-          <duration amount="1" unit="minute"/>
+          <duration duration="1" unit="minute"/>
           <charmtype type="Simple"/>
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="GhostsAndDemons" />
