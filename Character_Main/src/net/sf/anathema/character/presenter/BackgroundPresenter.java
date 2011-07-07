@@ -104,12 +104,6 @@ public class BackgroundPresenter implements IPresenter {
   		          super.setItem(anObject);
   		        }
   		      },
-  		    new ProxyComboBoxEditor() {
-    		        @Override
-    		        public void setItem(Object anObject) {
-    		          super.setItem(anObject);
-    		        }
-    		      },
             addIcon);
     view.addEditChangedListener(new IObjectValueChangedListener<String>() {
         public void valueChanged(String newBackgroundDescription) {

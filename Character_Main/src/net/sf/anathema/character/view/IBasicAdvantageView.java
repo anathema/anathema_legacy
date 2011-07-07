@@ -21,14 +21,7 @@ public interface IBasicAdvantageView extends IInitializableContentView<IAdvantag
 	      String labelText,
 	      ListCellRenderer renderer,
 	      ITextFieldComboBoxEditor backgroundEditor,
-	      ITextFieldComboBoxEditor detailEditor,
 	      Icon addIcon);
-	      
-  /*public IButtonControlledObjectSelectionView<Object> addBackgroundSelectionView(
-      String labelText,
-      ITextFieldComboBoxEditor editor,
-      ListCellRenderer renderer,
-      Icon addIcon);*/
 
   public IRemovableTraitView< ? > addBackgroundView(Icon deleteIcon, String labelText, int creationValue, int maxValue);
 

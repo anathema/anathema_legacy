@@ -80,11 +80,13 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     return addBackground(new CustomizedBackgroundTemplate(customBackgroundName), description, loadIfExists);
   }
 
-  public IBackground addBackground(final IBackgroundTemplate backgroundType, String description, boolean loadIfExists) {
+  public IBackground addBackground(final IBackgroundTemplate backgroundType, final String description, boolean loadIfExists) {
     Ensure.ensureNotNull(backgroundType);
     IBackground foundBackground = new Predicate<IBackground>() {
       public boolean evaluate(IBackground listBackground) {
-        return ObjectUtilities.equals(backgroundType, listBackground.getType());
+        return ObjectUtilities.equals(backgroundType, listBackground.getType()) &&
+        	((description == null && listBackground.getDescription() == null) ||
+          	  description.equals(listBackground.getDescription()));
       }
     }.find(backgrounds);
     if (foundBackground != null)

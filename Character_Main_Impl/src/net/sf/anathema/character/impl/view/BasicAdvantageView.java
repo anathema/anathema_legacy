@@ -92,14 +92,12 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
 	      String labelText,
 	      ListCellRenderer backgroundRenderer,
 	      ITextFieldComboBoxEditor backgroundEditor,
-	      ITextFieldComboBoxEditor detailEditor,
 	      Icon addIcon) {
 	    ButtonControlledComboEditView<Object> objectSelectionView = new BackgroundSelectionView<Object>(
 	        addIcon,
 	        labelText,
 	        backgroundRenderer,
-	        backgroundEditor,
-	        detailEditor);
+	        backgroundEditor);
 	    backgroundSelectionPanel.add(objectSelectionView.getComponent());
 	    return objectSelectionView;
 	  }
