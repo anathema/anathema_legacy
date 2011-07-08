@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
+import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
@@ -11,6 +12,8 @@ public interface IPdfPartEncoder {
   public IPdfContentBoxEncoder getAnimaEncoder();
 
   public IPdfContentBoxEncoder getEssenceEncoder();
+  
+  public IPdfContentBoxEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey);
 
   public IPdfContentBoxEncoder getGreatCurseEncoder();
   

@@ -38,7 +38,7 @@ public class PdfExperienceEncoder implements IPdfContentBoxEncoder {
         new Integer(spentPoints),
         new Integer(totalPoints - spentPoints) });
     Phrase phrase = new Phrase(experienceText, font);
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, FONT_SIZE + 6);
+    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, FONT_SIZE + 4);
   }
   
   public boolean hasContent(IGenericCharacter character)

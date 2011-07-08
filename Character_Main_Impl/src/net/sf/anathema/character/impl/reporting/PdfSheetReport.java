@@ -21,6 +21,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.page.NewPdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfOldStyleFirstPageEncoder;
@@ -70,8 +71,9 @@ public class PdfSheetReport implements IITextReport {
       	encoderList.add(new PdfOldStyleFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
       if (character.getRules().getEdition() == ExaltedEdition.SecondEdition)
       {
-    	encoderList.add(new PdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-    	encoderList.add(new PdfSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+    	encoderList.add(new NewPdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+      //encoderList.add(new PdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+    	//encoderList.add(new PdfSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
       }
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
       if (partEncoder.hasMagicPage())
