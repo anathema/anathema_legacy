@@ -66,7 +66,7 @@
                <charmReference id="Ghost.SoulsteelShaper"/>
           </prerequisite>
           <cost>
-               <willpower cost="3" />
+               <essence cost="3" />
           </cost>
           <duration amount="1" unit="day"/>
           <charmtype type="Simple"/>
