@@ -54,17 +54,16 @@ public class GenericCharacter implements IGenericCharacter {
   public IGenericTraitCollection getTraitCollection() {
     return statistics.getTraitConfiguration();
   }
+
+  public int getLearnCount(IMultiLearnableCharm charm) {
+    return getLearnCount(charm.getCharmId());
+  }
   
   public int getLearnCount(String charmName)
   {
-	  IMultiLearnableCharm charm = (IMultiLearnableCharm) statistics.getCharms().getSpecialCharmConfiguration(charmName);
-	  return getLearnCount(charm);
-  }
-
-  public int getLearnCount(IMultiLearnableCharm charm) {
     ICharmConfiguration charms = statistics.getCharms();
     try {
-      IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charm.getCharmId());
+      IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charmName);
       return configuration.getCurrentLearnCount();
     }
     catch (IllegalArgumentException e) {

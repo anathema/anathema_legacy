@@ -3,16 +3,16 @@ package net.sf.anathema.character.reporting.sheet.first;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.reporting.sheet.common.movement.AbstractHealthAndMovemenTableEncoder;
+import net.sf.anathema.character.reporting.sheet.common.movement.AbstractHealthAndMovementTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class FirstEditionHealthAndMovemenTableEncoder extends AbstractHealthAndMovemenTableEncoder {
+public class FirstEditionHealthAndMovementTableEncoder extends AbstractHealthAndMovementTableEncoder {
 
-  public FirstEditionHealthAndMovemenTableEncoder(IResources resources, BaseFont baseFont) {
+  public FirstEditionHealthAndMovementTableEncoder(IResources resources, BaseFont baseFont) {
     super(resources, baseFont);
   }
 

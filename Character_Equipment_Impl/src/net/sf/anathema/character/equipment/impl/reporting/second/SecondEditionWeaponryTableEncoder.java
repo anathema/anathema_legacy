@@ -19,6 +19,11 @@ public class SecondEditionWeaponryTableEncoder extends AbstractWeaponryTableEnco
   }
 
   @Override
+  protected int getLineCount() {
+    return 10;
+  }
+
+  @Override
   protected SecondEditionSpeedWeaponStatsGroup createSpeedGroup(IGenericTraitCollection collection) {
     return new SecondEditionSpeedWeaponStatsGroup(getResources());
   }

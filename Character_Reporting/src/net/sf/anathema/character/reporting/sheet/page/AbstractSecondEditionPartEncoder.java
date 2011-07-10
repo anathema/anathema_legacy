@@ -11,6 +11,8 @@ import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionHealthAndMovementEncoder;
+import net.sf.anathema.character.reporting.sheet.second.SecondEditionHealthEncoder;
+import net.sf.anathema.character.reporting.sheet.second.SecondEditionMovementEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionSocialCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -85,6 +87,14 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
 
   public IPdfContentBoxEncoder getHealthAndMovementEncoder() {
     return new SecondEditionHealthAndMovementEncoder(resources, baseFont, symbolBaseFont);
+  }
+
+  public IPdfContentBoxEncoder getHealthEncoder() {
+    return new SecondEditionHealthEncoder(resources, baseFont, symbolBaseFont);
+  }
+
+  public IPdfContentBoxEncoder getMovementEncoder() {
+    return new SecondEditionMovementEncoder(resources, baseFont, symbolBaseFont);
   }
 
   public float getWeaponryHeight() {

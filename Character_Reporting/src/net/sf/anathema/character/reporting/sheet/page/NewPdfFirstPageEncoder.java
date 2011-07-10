@@ -86,35 +86,37 @@ public class NewPdfFirstPageEncoder implements IPdfPageEncoder {
     float greatCurseIncrement = (actualGreatCurseHeight != 0 ? calculateBoxIncrement(actualGreatCurseHeight) : 0);
     secondDistanceFromTop += greatCurseIncrement;
     // Second column - bottom-up
-    float willpowerHeight = encodeWillpowerDots(directContent, character, CONTENT_HEIGHT - 30, 30);
-    float willpowerIncrement = calculateBoxIncrement(willpowerHeight);
-    float meritsIncrement = 0;
+    float secondBottom = CONTENT_HEIGHT;
+    float languageHeight = encodeLinguistics(directContent, character, secondBottom - 60, 60);
+    secondBottom -= calculateBoxIncrement(languageHeight);
     // Second column - fill in (bottom-up) with merits & flaws, intimacies
+    float meritsIncrement = 0;
     if (hasMeritsAndFlaws(character)) {
-      float height = (CONTENT_HEIGHT - willpowerIncrement - secondDistanceFromTop - IVoidStateFormatConstants.PADDING) / 2f;
+      float height = (secondBottom - secondDistanceFromTop - IVoidStateFormatConstants.PADDING) / 2f;
       meritsIncrement = calculateBoxIncrement(encodeMeritsAndFlaws(directContent, character, 2,
-                                                                   CONTENT_HEIGHT - willpowerIncrement - height, height));
+                                                                   secondBottom - height, height));
     }
     encodeIntimacies(directContent, character, secondDistanceFromTop,
-                     CONTENT_HEIGHT - secondDistanceFromTop - meritsIncrement - willpowerIncrement);
+                     secondBottom - secondDistanceFromTop - meritsIncrement);
 
+    // Third column - top-down
+    float thirdDistanceFromTop = distanceFromTop;
+    float essenceHeight = encodeEssenceDots(directContent, character, thirdDistanceFromTop, 30);
+    float willpowerHeight = encodeWillpowerDots(directContent, character, thirdDistanceFromTop + virtueHeight - essenceHeight, essenceHeight);
+    thirdDistanceFromTop += virtueIncrement;
     // Third column - bottom-up
     float thirdBottom = CONTENT_HEIGHT;
-    float essenceHeight = encodeEssenceDots(directContent, character, thirdBottom - willpowerHeight, willpowerHeight);
-    thirdBottom -= calculateBoxIncrement(essenceHeight);
     float experienceHeight = encodeExperience(directContent, character, thirdBottom - 30, 30);
     thirdBottom -= calculateBoxIncrement(experienceHeight);
-    float languageHeight = encodeLinguistics(directContent, character, thirdBottom - 60, 60);
-    thirdBottom -= calculateBoxIncrement(languageHeight);
     // Third column - fill in (bottom-up) with backgrounds, mutations
     float mutationsIncrement = 0;
     if (hasMutations(character))
     {
-      float height = (thirdBottom - distanceFromTop - IVoidStateFormatConstants.PADDING) / 2f;
+      float height = (thirdBottom - thirdDistanceFromTop - IVoidStateFormatConstants.PADDING) / 2f;
       mutationsIncrement = calculateBoxIncrement(encodeMutations(directContent, character, 3, thirdBottom - height, height));
     }
     thirdBottom -= mutationsIncrement;
-    encodeBackgrounds(directContent, character, distanceFromTop, thirdBottom - distanceFromTop);
+    encodeBackgrounds(directContent, character, thirdDistanceFromTop, thirdBottom - thirdDistanceFromTop);
     
     encodeCopyright(directContent);
   }
@@ -194,7 +196,7 @@ public class NewPdfFirstPageEncoder implements IPdfPageEncoder {
       throws DocumentException {
     float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    IPdfContentBoxEncoder encoder = PdfAbilitiesEncoder.createWithCraftsAndSpecialties(baseFont, resources, essenceMax);
+    IPdfContentBoxEncoder encoder = PdfAbilitiesEncoder.createWithCraftsAndSpecialties(baseFont, resources, essenceMax, 11);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
   }
 
@@ -266,7 +268,7 @@ public class NewPdfFirstPageEncoder implements IPdfPageEncoder {
       IGenericCharacter character,
       float distanceFromTop,
       float height) throws DocumentException {
-    Bounds willpowerBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
+    Bounds willpowerBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IPdfContentBoxEncoder encoder = partEncoder.getDotsEncoder(OtherTraitType.Willpower, 10, "Willpower");
     boxEncoder.encodeBox(directContent, encoder, character, willpowerBounds);
     return height;
@@ -321,7 +323,7 @@ public class NewPdfFirstPageEncoder implements IPdfPageEncoder {
 	      float distanceFromTop,
 	      float height) throws DocumentException
   {
-	  Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
+	  Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
 	  IPdfContentBoxEncoder encoder = registry.getLinguisticsEncoder();
 	  boxEncoder.encodeBox(directContent, encoder, character, bounds);
 	  return height;

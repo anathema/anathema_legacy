@@ -56,6 +56,14 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
     return new FirstEditionHealthAndMovementEncoder(getResources(), getBaseFont(), symbolBaseFont);
   }
 
+  public IPdfContentBoxEncoder getHealthEncoder() {
+    return null;
+  }
+
+  public IPdfContentBoxEncoder getMovementEncoder() {
+    return null;
+  }
+
   public float getWeaponryHeight() {
     return 129;
   }

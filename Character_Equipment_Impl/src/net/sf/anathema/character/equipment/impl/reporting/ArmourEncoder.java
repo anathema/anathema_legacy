@@ -32,13 +32,13 @@ public class ArmourEncoder implements IPdfContentBoxEncoder {
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     float tableHeight = encoder.encodeTable(directContent, character, bounds);
     float remainingHeight = bounds.getHeight() - tableHeight;
-    float delimitingLineYPosition = bounds.getMinY() + remainingHeight - 1;
+    float delimitingLineYPosition = bounds.getMinY() + remainingHeight - 3;
     drawDelimiter(directContent, bounds, delimitingLineYPosition);
     Bounds shieldBounds = new Bounds(
         bounds.getMinX(),
-        delimitingLineYPosition - 12,
+        bounds.getMinY(),
         bounds.getWidth(),
-        remainingHeight - 2);
+        remainingHeight - 6);
     new ShieldTableEncoder(baseFont, resources).encodeTable(directContent, character, shieldBounds);
   }
 

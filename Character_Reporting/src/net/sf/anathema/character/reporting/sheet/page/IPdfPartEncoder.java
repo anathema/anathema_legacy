@@ -26,6 +26,10 @@ public interface IPdfPartEncoder {
   public IPdfContentBoxEncoder getIntimaciesEncoder(PdfEncodingRegistry registry);
 
   public IPdfContentBoxEncoder getHealthAndMovementEncoder();
+
+  public IPdfContentBoxEncoder getHealthEncoder();
+
+  public IPdfContentBoxEncoder getMovementEncoder();
   
   public boolean hasMagicPage();
 

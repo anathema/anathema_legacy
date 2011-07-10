@@ -59,7 +59,7 @@ public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourSta
 
   @Override
   protected int getLineCount() {
-    return 3;
+    return 5;
   }
 
   @Override

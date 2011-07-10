@@ -4,22 +4,23 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.reporting.sheet.common.movement.AbstractHealthAndMovemenTableEncoder;
+import net.sf.anathema.character.reporting.sheet.common.movement.AbstractHealthAndMovementTableEncoder;
+import net.sf.anathema.character.reporting.sheet.common.movement.AbstractMovementTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class SecondEditionHealthAndMovemenTableEncoder extends AbstractHealthAndMovemenTableEncoder {
+public class SecondEditionMovementTableEncoder extends AbstractMovementTableEncoder {
 
-  public SecondEditionHealthAndMovemenTableEncoder(IResources resources, BaseFont baseFont) {
+  public SecondEditionMovementTableEncoder(IResources resources, BaseFont baseFont) {
     super(resources, baseFont);
   }
 
   @Override
   protected final Float[] getMovementColumns() {
-    return new Float[] { 1f, PADDING, 1f, PADDING, 1f, 1f };
+    return new Float[] { 0.7f, 0.6f, PADDING, 1f, PADDING, 1f, PADDING, 1f, 1f };
   }
 
   @Override
@@ -29,6 +30,7 @@ public class SecondEditionHealthAndMovemenTableEncoder extends AbstractHealthAnd
 
   @Override
   protected final void addMovementHeader(PdfPTable table) {
+    table.addCell(createHeaderCell(getResources().getString("Sheet.Health.Levels"), 3)); //$NON-NLS-1$
     table.addCell(createHeaderCell(getResources().getString("Sheet.Movement.Move"), 2)); //$NON-NLS-1$
     table.addCell(createHeaderCell(getResources().getString("Sheet.Movement.Dash"), 2)); //$NON-NLS-1$
     table.addCell(createHeaderCell(getResources().getString("Sheet.Movement.Jump"), 3)); //$NON-NLS-1$
@@ -40,6 +42,9 @@ public class SecondEditionHealthAndMovemenTableEncoder extends AbstractHealthAnd
       HealthLevelType level,
       int painTolerance,
       IGenericTraitCollection collection) {
+    addHealthPenaltyCells(table, level, painTolerance);
+    addSpaceCells(table, 1);
+    
     int penalty = getPenalty(level, painTolerance);
     int dexValue = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
     int moveValue = dexValue + penalty;

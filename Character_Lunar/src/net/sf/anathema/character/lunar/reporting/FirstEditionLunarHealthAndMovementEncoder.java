@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
-import net.sf.anathema.character.reporting.sheet.first.FirstEditionHealthAndMovemenTableEncoder;
+import net.sf.anathema.character.reporting.sheet.first.FirstEditionHealthAndMovementTableEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -25,7 +25,7 @@ public class FirstEditionLunarHealthAndMovementEncoder extends FirstEditionHealt
 	@Override
 	protected final IPdfTableEncoder createTableEncoder()
 	{
-		return new FirstEditionHealthAndMovemenTableEncoder(getResources(), getBaseFont())
+		return new FirstEditionHealthAndMovementTableEncoder(getResources(), getBaseFont())
 		{
 			protected IGenericTraitCollection getTraits(IGenericCharacter character)
 			{
