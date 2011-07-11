@@ -15,11 +15,9 @@ import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfVirtueEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.NewSecondEditionPersonalInfoEncoder;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionPersonalInfoEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -67,21 +65,25 @@ public class NewPdfFirstPageEncoder implements IPdfPageEncoder {
       IGenericDescription description) throws DocumentException {
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     
-    int distanceFromTop = 0;
-    final int firstRowHeight = (characterType.isExaltType() ? 60 : 50);
+    float distanceFromTop = 0;
+    final float firstRowHeight = (characterType.isExaltType() ? 60 : 50);
     encodePersonalInfo(directContent, character, description, distanceFromTop, firstRowHeight);
 
     distanceFromTop += firstRowHeight + PADDING;
 
-    // First column - attributes & abilities
-    encodeFirstColumn(directContent, character, distanceFromTop);
+    // First column - top-down
+    float firstDistanceFromTop = distanceFromTop;
+    float attributeHeight = encodeAttributes(directContent, character, firstDistanceFromTop, 128);
+    firstDistanceFromTop += calculateBoxIncrement(attributeHeight);
+    // First column - fill in (bottom-up) with abilities
+    encodeAbilities(directContent, character, firstDistanceFromTop, CONTENT_HEIGHT - firstDistanceFromTop);
     
     // Second column - top-down
     float secondDistanceFromTop = distanceFromTop;
     float virtueHeight = encodeVirtues(directContent, secondDistanceFromTop, 72, character);
     float virtueIncrement = calculateBoxIncrement(virtueHeight);
     secondDistanceFromTop += virtueIncrement;
-    float estimatedGreatCurseHeight = (characterType.isExaltType() ? virtueHeight : 0);
+    float estimatedGreatCurseHeight = (characterType.isExaltType() ? 72 : 0);
     float actualGreatCurseHeight = encodeGreatCurse(directContent, character, secondDistanceFromTop, estimatedGreatCurseHeight);
     float greatCurseIncrement = (actualGreatCurseHeight != 0 ? calculateBoxIncrement(actualGreatCurseHeight) : 0);
     secondDistanceFromTop += greatCurseIncrement;
@@ -119,16 +121,6 @@ public class NewPdfFirstPageEncoder implements IPdfPageEncoder {
     encodeBackgrounds(directContent, character, thirdDistanceFromTop, thirdBottom - thirdDistanceFromTop);
     
     encodeCopyright(directContent);
-  }
-  
-  private int getColumn(int boxId)
-  {
-	  return boxId % 2 == 1 ? 3 : 2;
-  }
-  
-  private float getPosition(int position, float height, int id)
-  {
-	  return position + (id > 1 ? height : 0);
   }
 
   private void encodeCopyright(PdfContentByte directContent) throws DocumentException {
@@ -173,44 +165,37 @@ public class NewPdfFirstPageEncoder implements IPdfPageEncoder {
     return resources.getString("Sheet.Header." + key); //$NON-NLS-1$
   }
 
-  private void encodePersonalInfo(
+  private float encodePersonalInfo(
       PdfContentByte directContent,
       IGenericCharacter character,
       IGenericDescription description,
-      int distanceFromTop,
-      final int firstRowHeight) {
+      float distanceFromTop,
+      final float firstRowHeight) {
     Bounds infoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 3);
     String name = description.getName();
     String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
     Bounds infoContentBounds = boxEncoder.encodeBox(directContent, infoBounds, title);
     encodePersonalInfos(directContent, character, description, infoContentBounds);
+    return firstRowHeight;
   }
 
-  private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop, float height)
       throws DocumentException {
-    float attributeHeight = encodeAttributes(directContent, character, distanceFromTop);
-    encodeAbilities(directContent, character, distanceFromTop + attributeHeight + PADDING);
-  }
-
-  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop)
-      throws DocumentException {
-    float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
-    Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
+    Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 1);
     IPdfContentBoxEncoder encoder = PdfAbilitiesEncoder.createWithCraftsAndSpecialties(baseFont, resources, essenceMax, 11);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
   }
 
-  private float encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+  private float encodeAttributes(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop, float height)
       throws DocumentException {
-    float attributeHeight = 128;
-    Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
+    Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 1);
     IPdfContentBoxEncoder encoder = new PdfAttributesEncoder(
         baseFont,
         resources,
         essenceMax,
         partEncoder.isEncodeAttributeAsFavorable());
     boxEncoder.encodeBox(directContent, encoder, character, attributeBounds);
-    return attributeHeight;
+    return height;
   }
 
   private float calculateBoxIncrement(float height) {

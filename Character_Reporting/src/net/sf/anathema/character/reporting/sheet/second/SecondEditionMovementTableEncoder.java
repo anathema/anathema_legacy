@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.reporting.sheet.common.movement.AbstractHealthAndMovementTableEncoder;
 import net.sf.anathema.character.reporting.sheet.common.movement.AbstractMovementTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
