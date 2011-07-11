@@ -60,4 +60,9 @@ public class AggregatedTraitTemplate implements ITraitTemplate {
   {
 	  return getMinimumValue(context);
   }
+  
+  public String getTag()
+  {
+	  return null;
+  }
 }

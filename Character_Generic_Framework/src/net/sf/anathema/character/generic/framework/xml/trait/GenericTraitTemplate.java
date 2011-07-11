@@ -16,6 +16,12 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   private ITraitLimitation limitation;
   private boolean isRequiredFavored;
   private boolean isFreebie;
+  private String tag;
+  
+  public String getTag()
+  {
+	return tag;
+  }
 
   public ITraitLimitation getLimitation() {
     return limitation;
@@ -74,6 +80,11 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   public void setIsFreebie(boolean value)
   {
 	  isFreebie = value;
+  }
+  
+  public void setTag(String tag)
+  {
+	  this.tag = tag;
   }
   
   public int getCalculationMinValue(ILimitationContext context, ITraitType type)

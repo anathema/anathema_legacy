@@ -41,4 +41,9 @@ public class AlternateRequirementTraitTemplate extends AlternateRequirementTrait
   public boolean isRequiredFavored() {
     return false;
   }
+  
+  public String getTag()
+  {
+	  return null;
+  }
 }

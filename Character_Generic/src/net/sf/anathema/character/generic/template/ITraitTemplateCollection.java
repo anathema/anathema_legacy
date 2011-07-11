@@ -6,4 +6,6 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 public interface ITraitTemplateCollection {
 
   public ITraitTemplate getTraitTemplate(ITraitType traitType);
+  
+  public ITraitTemplate getDefaultTraitTemplate(ITraitType traitType);
 }

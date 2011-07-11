@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.impl.traits;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
+import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -11,6 +12,10 @@ public class ExaltTraitTemplateFactory implements ITraitTemplateFactory {
 
   public ITraitTemplate createBackgroundTemplate(IBackgroundTemplate template) {
     return SimpleTraitTemplate.createStaticLimitedTemplate(0, 5, template.getExperiencedState());
+  }
+  
+  public ITraitTemplate createDefaultBackgroundTemplate() {
+	return SimpleTraitTemplate.createStaticLimitedTemplate(0, 5, LowerableState.Default);
   }
 
   public ITraitTemplate createWillpowerTemplate() {

@@ -21,6 +21,11 @@ public class GenericTraitTemplatePool implements ICloneable<GenericTraitTemplate
     }
     return defaultTraitTemplate;
   }
+  
+  public GenericTraitTemplate getDefaultTemplate()
+  {
+	  return defaultTraitTemplate;
+  }
 
   public void setDefaultTemplate(GenericTraitTemplate template) {
     this.defaultTraitTemplate = template;

@@ -10,6 +10,8 @@ import net.sf.anathema.character.generic.traits.types.YoziType;
 public interface ITraitTemplateFactory {
 
   public ITraitTemplate createBackgroundTemplate(IBackgroundTemplate template);
+  
+  public ITraitTemplate createDefaultBackgroundTemplate();
 
   public ITraitTemplate createWillpowerTemplate();
 

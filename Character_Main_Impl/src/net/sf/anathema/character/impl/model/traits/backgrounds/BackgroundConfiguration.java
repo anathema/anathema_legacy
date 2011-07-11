@@ -48,7 +48,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
 	  {
 		  ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(background);
 		  if (traitTemplate.getStartValue() > 0)
-			  otherBackgroundsToInit.remove(addBackground(background, null, true));
+			  otherBackgroundsToInit.remove(addBackground(background, traitTemplate.getTag(), true));
 	  }
 	  //anything else should also be notified as going to the screen
 	  for (IBackground background : otherBackgroundsToInit)
@@ -86,7 +86,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
       public boolean evaluate(IBackground listBackground) {
         return ObjectUtilities.equals(backgroundType, listBackground.getType()) &&
         	((description == null && listBackground.getDescription() == null) ||
-          	  description.equals(listBackground.getDescription()));
+          	 (description != null && description.equals(listBackground.getDescription())));
       }
     }.find(backgrounds);
     if (foundBackground != null)
@@ -96,6 +96,8 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
       return loadIfExists ? foundBackground : null;
     }
     ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(backgroundType);
+    if (traitTemplate.getTag() != null && !traitTemplate.getTag().equals(description))
+    	traitTemplate = traitTemplates.getDefaultTraitTemplate(backgroundType);
     TraitRules rules = new TraitRules(backgroundType, traitTemplate, context.getLimitationContext());
     IBackground background = new Background(description, rules, context, new FriendlyValueChangeChecker());
     backgrounds.add(background);

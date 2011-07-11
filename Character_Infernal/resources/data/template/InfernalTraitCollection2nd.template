@@ -6,15 +6,18 @@
 		</defaultTrait>
   		<specialTrait id="Backing" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
 			<limitation type="Static" value="5"/>
-			<minimum value="1"/>
+			<minimum value="0"/>
+			<tag value="Patron"/>
 		</specialTrait>
 		<specialTrait id="Influence" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
 			<limitation type="Static" value="5"/>
-			<minimum value="1"/>
+			<minimum value="0"/>
+			<tag value="Patron"/>
 		</specialTrait>
 		<specialTrait id="Cult" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
 			<limitation type="Static" value="5"/>
-			<minimum value="1"/>
+			<minimum value="0"/>
+			<tag value="Patron"/>
 		</specialTrait>
   </backgrounds>
 </traitTemplates>

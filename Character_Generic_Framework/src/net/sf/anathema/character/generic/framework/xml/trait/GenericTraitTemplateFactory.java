@@ -23,6 +23,10 @@ public class GenericTraitTemplateFactory implements ITraitTemplateFactory, IClon
   public ITraitTemplate createBackgroundTemplate(IBackgroundTemplate template) {
     return backgroundPool.getTemplate(template);
   }
+  
+  public ITraitTemplate createDefaultBackgroundTemplate() {
+    return backgroundPool.getDefaultTemplate();
+  }
 
   public ITraitTemplate createWillpowerTemplate() {
     return willpowerTemplate;

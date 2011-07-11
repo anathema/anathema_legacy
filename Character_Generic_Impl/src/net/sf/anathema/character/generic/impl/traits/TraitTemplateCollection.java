@@ -56,4 +56,41 @@ public class TraitTemplateCollection implements ITraitTemplateCollection {
     });
     return traitTemplate[0];
   }
+  
+  public final ITraitTemplate getDefaultTraitTemplate(ITraitType traitType) {
+	    final ITraitTemplate[] traitTemplate = new ITraitTemplate[1];
+	    traitType.accept(new ITraitTypeVisitor() {
+	      public void visitBackground(IBackgroundTemplate template) {
+	        traitTemplate[0] = templateFactory.createDefaultBackgroundTemplate();
+	      }
+
+	      public void visitWillpower(OtherTraitType type) {
+	        }
+
+	      public void visitEssence(OtherTraitType type) {
+
+	      }
+
+	      public void visitVirtue(VirtueType type) {
+
+	      }
+
+	      public void visitAttribute(AttributeType type) {
+
+	      }
+
+	      public void visitAbility(AbilityType type) {
+
+	      }
+	      
+	      public void visitYozi(YoziType type) {
+
+	        }
+
+	      public void visitCustomTraitType(ITraitType visitedType) {
+
+	      }
+	    });
+	    return traitTemplate[0];
+	  }
 }
