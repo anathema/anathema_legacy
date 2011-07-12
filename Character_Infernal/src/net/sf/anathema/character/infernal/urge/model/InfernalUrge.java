@@ -14,12 +14,6 @@ public class InfernalUrge extends VirtueFlaw
 		super(context);
 	}
 	
-	@Override
-	protected String getLimitString()
-	{
-		  return "VirtueFlaw.Torment";
-	}
-	
 	public ITextualDescription getDescription()
 	{
 	    return description;
