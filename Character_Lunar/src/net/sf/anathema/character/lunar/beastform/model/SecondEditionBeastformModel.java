@@ -12,8 +12,6 @@ import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -66,23 +64,19 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
 
   private void createAttributes() {
     List<IBeastformAttribute> attributes = new ArrayList<IBeastformAttribute>();
-    ITraitContext traitContext = context.getTraitContext();
     attributes.add(new BeastformAttribute(
-    	ExaltedEdition.SecondEdition,
+    	context,
         context.getTraitCollection().getTrait(AttributeType.Strength),
-        traitContext,
         1,
         cost));
     attributes.add(new BeastformAttribute(
-    	ExaltedEdition.SecondEdition,
+    	context,
         context.getTraitCollection().getTrait(AttributeType.Dexterity),
-        traitContext,
         2,
         cost));
     attributes.add(new BeastformAttribute(
-    	ExaltedEdition.SecondEdition,
+    	context,
         context.getTraitCollection().getTrait(AttributeType.Stamina),
-        traitContext,
         1,
         cost));
     for (IBeastformAttribute attribute : attributes) {
@@ -92,20 +86,16 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
     attributes.clear();
     attributes.add(new SpiritFormAttribute(
         context.getTraitCollection().getTrait(AttributeType.Strength),
-        context,
-        traitContext));
+        context));
     attributes.add(new SpiritFormAttribute(
         context.getTraitCollection().getTrait(AttributeType.Dexterity),
-        context,
-        traitContext));
+        context));
     attributes.add(new SpiritFormAttribute(
         context.getTraitCollection().getTrait(AttributeType.Stamina),
-        context,
-        traitContext));
+        context));
     attributes.add(new SpiritFormAttribute(
-            context.getTraitCollection().getTrait(AttributeType.Appearance),
-            context,
-            traitContext));
+        context.getTraitCollection().getTrait(AttributeType.Appearance),
+        context));
     for (IBeastformAttribute attribute : attributes) {
     	spiritCollection.addBeastFormAttribute(attribute);
     }

@@ -1,9 +1,11 @@
 package net.sf.anathema.character.lunar.beastform.model;
 
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
+import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
@@ -27,6 +29,8 @@ public class BeastformAttribute implements IBeastformAttribute {
 	  return 12;
   }
 
+  private final String DEVESTATING_OGRE_ENHANCEMENT = "Lunar.DevastatingOgreEnhancement";
+  private final ICharacterModelContext context;
   private final IExaltedEdition edition;
   private final int pointCost;
   private final IGenericTrait baseTrait;
@@ -35,24 +39,25 @@ public class BeastformAttribute implements IBeastformAttribute {
 
   // TODO: Available dots limit max. value
   public BeastformAttribute(
-		  IExaltedEdition edition,
+	  final ICharacterModelContext context,
       final IGenericTrait baseTrait,
-      ITraitContext context,
       final int pointCost,
       final IBeastformGroupCost cost) {
-	  this.edition = edition;
+	this.context = context;
+	this.edition = context.getBasicCharacterContext().getRuleSet().getEdition();
+	ITraitContext traitContext = context.getTraitContext();
     ITraitTemplate template = SimpleTraitTemplate.createStaticLimitedTemplate(0, calculateMaxValue(pointCost));
-    TraitRules traitRules = new TraitRules(baseTrait.getType(), template, context.getLimitationContext());
+    TraitRules traitRules = new TraitRules(baseTrait.getType(), template, traitContext.getLimitationContext());
     IValueChangeChecker incrementChecker = new IValueChangeChecker() {
       public boolean isValidNewValue(int value) {
     	  if (BeastformAttribute.this.edition == ExaltedEdition.FirstEdition)
     		  return value >= baseTrait.getCurrentValue()
     		  	&& cost.getUnspentDots() >= pointCost * (value - additionalValue - baseTrait.getCurrentValue());
     	  else
-    		  return value == (baseTrait.getCurrentValue() + 1);
+    		  return value == (baseTrait.getCurrentValue() + (hasDOE() ? 2 : 1));
       }
     };
-    this.beastmanTrait = new DefaultTrait(traitRules, context, incrementChecker);
+    this.beastmanTrait = new DefaultTrait(traitRules, traitContext, incrementChecker);
     beastmanTrait.addCurrentValueListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         additionalValue = newValue - baseTrait.getCurrentValue();
@@ -60,6 +65,14 @@ public class BeastformAttribute implements IBeastformAttribute {
     });
     this.baseTrait = baseTrait;
     this.pointCost = pointCost;
+  }
+  
+  private boolean hasDOE()
+  {
+	  for (ICharm charm : context.getCharmContext().getCharmConfiguration().getLearnedCharms())
+			if (charm.getId().equals(DEVESTATING_OGRE_ENHANCEMENT))
+				return true;
+		return false;
   }
 
   public int getPointCost() {
@@ -76,6 +89,6 @@ public class BeastformAttribute implements IBeastformAttribute {
 
   public void recalculate() {
     beastmanTrait.setCurrentValue(baseTrait.getCurrentValue() +
-    		(edition == ExaltedEdition.SecondEdition ? 1 : additionalValue));
+    		(edition == ExaltedEdition.SecondEdition ? (hasDOE() ? 2 : 1) : additionalValue));
   }
 }

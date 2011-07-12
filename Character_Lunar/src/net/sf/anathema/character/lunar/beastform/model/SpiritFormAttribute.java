@@ -20,8 +20,9 @@ public class SpiritFormAttribute implements IBeastformAttribute
   // TODO: Available dots limit max. value
   public SpiritFormAttribute(
       final IGenericTrait baseTrait,
-      final ICharacterModelContext charContext,
-      ITraitContext context) {
+      final ICharacterModelContext charContext)
+  {
+	ITraitContext context = charContext.getTraitContext();
     ITraitTemplate template = SimpleTraitTemplate.createStaticLimitedTemplate(1, 12);
     TraitRules traitRules = new TraitRules(baseTrait.getType(), template, context.getLimitationContext());
     IValueChangeChecker incrementChecker = new IValueChangeChecker() {
