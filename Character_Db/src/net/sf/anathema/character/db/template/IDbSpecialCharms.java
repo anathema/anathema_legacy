@@ -1,17 +1,7 @@
 package net.sf.anathema.character.db.template;
 
-import java.util.LinkedHashMap;
-
-import net.sf.anathema.character.db.magic.ElementalMultipleEffectCharm;
-import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffectCharm;
-import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-
 public interface IDbSpecialCharms {
-  public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE = new OxBodyTechniqueCharm(
+  /*public static final IOxBodyTechniqueCharm OX_BODY_TECHNIQUE = new OxBodyTechniqueCharm(
       "Dragon-Blooded.Ox-BodyTechnique", AbilityType.Endurance, //$NON-NLS-1$
       new LinkedHashMap<String, HealthLevelType[]>() {
 		private static final long serialVersionUID = 4907232349336731364L;
@@ -43,5 +33,5 @@ public interface IDbSpecialCharms {
   public static final IMultipleEffectCharm ELEMENT_SHELTER_CREATION_TECHNIQUE = new ElementalMultipleEffectCharm(
       "Dragon-Blooded.ElementShelterCreationTechnique"); //$NON-NLS-1$
   public static final IMultipleEffectCharm EXTENSION_ELEMENT_DRAGONS_BLESSING = new ElementalMultipleEffectCharm(
-      "Dragon-Blooded.ExtensionElementDragon'sBlessing"); //$NON-NLS-1$
+      "Dragon-Blooded.ExtensionElementDragon'sBlessing"); //$NON-NLS-1$*/
 }

@@ -4,7 +4,6 @@ import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.magic.TerrestrialReinforcement;
 import net.sf.anathema.character.db.reporting.FirstEditionDbPartEncoder;
 import net.sf.anathema.character.db.reporting.SecondEditionDbPartEncoder;
-import net.sf.anathema.character.db.template.IDbSpecialCharms;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawModelFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawParser;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
@@ -108,21 +107,6 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
             new SecondExcellency(CharacterType.DB, ExaltedSourceBook.DragonBlooded2nd),
             new ThirdExcellency(CharacterType.DB, "3 m", ExaltedSourceBook.DragonBlooded2nd), //$NON-NLS-1$
             new TerrestrialReinforcement() });
-    characterGenerics.getCharmProvider().setSpecialCharms(
-        CharacterType.DB,
-        ExaltedEdition.FirstEdition,
-        IDbSpecialCharms.OX_BODY_TECHNIQUE);
-    characterGenerics.getCharmProvider().setSpecialCharms(
-        CharacterType.DB,
-        ExaltedEdition.SecondEdition,
-        IDbSpecialCharms.OX_BODY_TECHNIQUE_SECOND_EDITION,
-        IDbSpecialCharms.DRAGON_CLAW_ELEMENTAL_STRIKE,
-        IDbSpecialCharms.ELEMENT_PROTECTION_FORM,
-        IDbSpecialCharms.ELEMENT_SHELTER_CREATION_TECHNIQUE,
-        IDbSpecialCharms.ELEMENTAL_DEFENSE_TECHNIQUE,
-        IDbSpecialCharms.EXTENSION_ELEMENT_DRAGONS_BLESSING,
-        IDbSpecialCharms.TERRIFYING_ELEMENT_DRAGON_ROAR,
-        IDbSpecialCharms.UNASSAILABLE_BODY_OF_ELEMENT_DEFENSE);
     characterGenerics.getAdditionalTemplateParserRegistry().register(
         DbVirtueFlawTemplate.TEMPLATE_ID,
         new DbVirtueFlawParser());

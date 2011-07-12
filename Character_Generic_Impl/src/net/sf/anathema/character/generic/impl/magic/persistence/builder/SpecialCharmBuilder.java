@@ -6,6 +6,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.CharmTier;
+import net.sf.anathema.character.generic.impl.magic.charm.special.ElementalMultipleEffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.PrerequisiteModifyingCharm;
@@ -52,6 +53,8 @@ public class SpecialCharmBuilder
 	private static final String TAG_MULTI_EFFECT = "multiEffects";
 	private static final String TAG_EFFECT = "effect";
 	
+	private static final String TAG_ELEMENTAL = "elemental";
+	
 	private static final String TAG_SUBEFFECTS = "subeffects";
 	private static final String TAG_SUBEFFECT = "subeffect";
 	private static final String TAG_BP_COST = "bpCost";
@@ -64,6 +67,7 @@ public class SpecialCharmBuilder
 		specialCharm = specialCharm == null ? readTranscendenceCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readRepurchaseCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readMultiEffectCharm(charmElement, id) : specialCharm;
+		specialCharm = specialCharm == null ? readElementalCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readSubEffectCharm(charmElement, id) : specialCharm;
 		return specialCharm;
 	}
@@ -211,6 +215,14 @@ public class SpecialCharmBuilder
 		String[] effectArray = new String[effects.size()];
 		effects.toArray(effectArray);
 		return new MultipleEffectCharm(id, effectArray);
+	}
+	
+	private ISpecialCharm readElementalCharm(Element charmElement, String id)
+	{
+		Element elementalElement = charmElement.element(TAG_ELEMENTAL);
+		if (elementalElement == null)
+			return null;
+		return new ElementalMultipleEffectCharm(id);
 	}
 	
 	private ISpecialCharm readSubEffectCharm(Element charmElement, String id)

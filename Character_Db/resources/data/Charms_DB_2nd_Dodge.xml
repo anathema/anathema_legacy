@@ -94,7 +94,8 @@
  <charmAttribute attribute="Elemental" visualize="true"/>
  <charmAttribute attribute="Leader6" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
-  <source source="DragonBlooded2nd"/>
+ <elemental/>
+ <source source="DragonBlooded2nd"/>
 </charm>
 
 <charm id="Dragon-Blooded.SmolderingKarmaStrike" exalt="Dragon-Blooded" group="Dodge">
@@ -139,6 +140,7 @@
  <charmAttribute attribute="Elemental" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
  <charmAttribute attribute="Shaping" visualize="true"/>
-  <source source="DragonBlooded2nd"/>
+ <elemental/>
+ <source source="DragonBlooded2nd"/>
 </charm>
 </charmlist>

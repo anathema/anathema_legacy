@@ -1,10 +1,10 @@
-package net.sf.anathema.character.db.magic;
+package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.generic.IBasicCharacterData;
+import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
@@ -16,7 +16,7 @@ import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
 
   private final String charmId;
-  private final List<IElementalSubeffect> effectList = new ArrayList<IElementalSubeffect>();
+  private final List<ElementalSubeffect> effectList = new ArrayList<ElementalSubeffect>();
 
   public ElementalMultipleEffectCharm(String charmId) {
     this.charmId = charmId;
@@ -33,15 +33,15 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
   @Override
   public ISubeffect[] buildSubeffects(IBasicCharacterData data, ICharmLearnableArbitrator arbitrator, ICharm charm) {
     if (effectList.isEmpty()) {
-      for (DBAspect aspect : DBAspect.values()) {
-        effectList.add(new ElementalSubeffect(aspect, data, buildLearnCondition(aspect, data, arbitrator, charm)));
+      for (Elements element : Elements.values()) {
+        effectList.add(new ElementalSubeffect(element, data, buildLearnCondition(element, data, arbitrator, charm)));
       }
     }
     return effectList.toArray(new ISubeffect[effectList.size()]);
   }
 
   private ICondition buildLearnCondition(
-      final DBAspect aspect,
+      final Elements element,
       final IBasicCharacterData data,
       final ICharmLearnableArbitrator arbitrator,
       final ICharm charm) {
@@ -51,10 +51,10 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
         if (!data.getCharacterType().equals(CharacterType.DB)) {
           return learnable;
         }
-        if (aspect.equals(data.getCasteType())) {
+        if (element.equals(data.getCasteType())) {
           return learnable;
         }
-        for (IElementalSubeffect effect : effectList) {
+        for (ElementalSubeffect effect : effectList) {
           if (effect.isLearned() && effect.matches(data.getCasteType())) {
             return learnable;
           }
@@ -63,4 +63,18 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
       }
     };
   }
+  
+  private class ElementalSubeffect extends Subeffect
+  {
+	  private final Elements aspect;
+
+	  public ElementalSubeffect(Elements aspect, IBasicCharacterData data, ICondition learnable) {
+	    super(aspect.getId(), data, learnable);
+	    this.aspect = aspect;
+	  }
+
+	  public boolean matches(ICasteType casteType) {
+	    return aspect.equals(casteType);
+	  }
+	}
 }

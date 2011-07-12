@@ -10,7 +10,13 @@
  <duration duration="Permanent"/>
  <charmtype type="Permanent"/>
  <charmAttribute attribute="Stackable" visualize="true"/>
-  <source source="DragonBlooded2nd"/>
+ <oxbody trait="Resistance">
+	<pick name="Category.-1-2">
+		<OneHealthLevel/>
+		<TwoHealthLevel/>
+	</pick>
+ </oxbody>
+ <source source="DragonBlooded2nd"/>
 </charm>
 
 <charm id="Dragon-Blooded.StrengthStoneTechnique" exalt="Dragon-Blooded" group="Resistance">
@@ -85,6 +91,13 @@
   <charmAttribute attribute="Leader" visualize="true"/>
   <charmAttribute attribute="Obvious" visualize="true"/>
   <charmAttribute attribute="Stackable" visualize="true"/>
+  <multiEffects>
+   	<effect name="Air"/>
+   	<effect name="Earth"/>
+  	<effect name="Fire"/>
+   	<effect name="Water"/>
+   	<effect name="Wood"/>
+  </multiEffects>
   <source source="DragonBlooded2nd"/>
 </charm>
 

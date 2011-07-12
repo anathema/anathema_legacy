@@ -799,6 +799,12 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
+    <oxbody trait="Endurance">
+		<pick name="Category.-1-2">
+			<OneHealthLevel/>
+			<TwoHealthLevel/>
+		</pick>
+	</oxbody>
     <source source="DragonBlooded1st" page="195"/>
   </charm>
   <charm id="Dragon-Blooded.UnsleepingEarthMeditation" exalt="Dragon-Blooded" group="Endurance">

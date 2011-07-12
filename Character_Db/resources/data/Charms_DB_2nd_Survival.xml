@@ -100,7 +100,8 @@
  <charmAttribute attribute="Elemental" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
  <charmAttribute attribute="Shaping" visualize="true"/>
-  <source source="DragonBlooded2nd"/>
+ <elemental/>
+ <source source="DragonBlooded2nd"/>
 </charm>
 
 <charm id="Dragon-Blooded.ExtensionElementDragon'sBlessing" exalt="Dragon-Blooded" group="Survival">
@@ -117,7 +118,8 @@
  <duration amount="1" unit="day"/>
  <charmtype type="Reflexive"/>
  <charmAttribute attribute="Elemental" visualize="true"/>
-  <source source="DragonBlooded2nd"/>
+ <elemental/>
+ <source source="DragonBlooded2nd"/>
 </charm>
 
 <charm id="Dragon-Blooded.Nature'sHealingBounty" exalt="Dragon-Blooded" group="Survival">

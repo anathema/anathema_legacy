@@ -102,7 +102,8 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Elemental" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
-  <source source="DragonBlooded2nd"/>
+ <elemental/>
+ <source source="DragonBlooded2nd"/>
 </charm>
 
 <charm id="Dragon-Blooded.WarlordsConvocation" exalt="Dragon-Blooded" group="Presence">
