@@ -169,16 +169,4 @@
           <charmtype type="Permanent" />
           <source source="Infernals" />
      </charm>
-     <charm id="Infernal.WholenessRightlyAssumedLethal" exalt="Infernal" group="Ego">  
-          <prerequisite>
-               <trait id="SheWhoLivesInHerName" value="0" />
-               <essence value="3" />		   
-               <charmReference id="Infernal.WholenessRightlyAssumed.Subeffects.Bashing"/>
-          </prerequisite>
-           <cost />
-          <duration duration="Permanent" />
-          <charmtype type="Permanent" />
-          <source source="Infernals" />
-     </charm>
-     
 </charmlist>

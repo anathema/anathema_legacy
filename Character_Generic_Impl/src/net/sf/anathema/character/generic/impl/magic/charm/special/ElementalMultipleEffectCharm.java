@@ -77,4 +77,18 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
 	    return aspect.equals(casteType);
 	  }
 	}
+  
+  private enum Elements
+  {
+  	  Air, Earth, Fire, Water, Wood;
+
+  	  public String getId() {
+  	    return name();
+  	  }
+
+  	  @Override
+  	  public String toString() {
+  	    return name();
+  	  }
+  }
 }
