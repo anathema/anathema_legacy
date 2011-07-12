@@ -1,6 +1,7 @@
 package net.sf.anathema.character.meritsflaws.reporting;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.meritsflaws.model.MeritsFlawsAdditionalModel;
 import net.sf.anathema.character.meritsflaws.model.perk.IPerk;
@@ -23,7 +24,7 @@ public class MeritsAndFlawsEncoder extends AbstractLineTextEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "MeritsAndFlaws"; //$NON-NLS-1$
   }
 

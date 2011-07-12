@@ -7,6 +7,7 @@ import java.util.Locale;
 import javax.swing.Icon;
 
 import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.resources.DefaultStringProvider;
 import net.sf.anathema.lib.resources.FileStringProvider;
 import net.sf.anathema.lib.resources.IAnathemaImageProvider;
 import net.sf.anathema.lib.resources.IResources;
@@ -22,6 +23,7 @@ public class AnathemaResources implements IResources {
   public AnathemaResources() {
     try {
       stringHandler.add(new FileStringProvider("custom", getLocale())); //$NON-NLS-1$
+      stringHandler.add(new DefaultStringProvider("Literal")); //$NON-NLS-1$
     }
     catch (IOException ioException) {
       logger.error("Error loading custom properties.", ioException); //$NON-NLS-1$

@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.common.anima;
 import java.awt.Color;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
@@ -49,7 +50,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Anima"; //$NON-NLS-1$
   }
 
@@ -58,7 +59,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
     return baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
     float halfWidth = bounds.getHeight() / 2;
     Bounds animaPowerBounds = new Bounds(bounds.getMinX(), bounds.getCenterY(), bounds.getWidth(), halfWidth);
     Position lineStartPosition = encodeAnimaPowers(directContent, character, animaPowerBounds);

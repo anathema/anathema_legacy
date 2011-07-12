@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
@@ -49,7 +50,7 @@ public class ThaumaturgyEncoder implements IPdfContentBoxEncoder
 
 	@Override
 	public void encode(PdfContentByte directContent,
-			IGenericCharacter character, Bounds bounds)
+			IGenericCharacter character, IGenericDescription description, Bounds bounds)
 			throws DocumentException {
 		IThaumaturgyModel model = ((ThaumaturgyAdditionalModel)character.getAdditionalModel(ThaumaturgyTemplate.ID)).
 			getThaumaturgyModel();
@@ -131,7 +132,7 @@ public class ThaumaturgyEncoder implements IPdfContentBoxEncoder
 	}*/
 
 	@Override
-	public String getHeaderKey() {
+	public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
 		return "Thaumaturgy";
 	}
 	

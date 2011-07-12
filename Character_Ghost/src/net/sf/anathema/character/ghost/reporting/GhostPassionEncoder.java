@@ -1,6 +1,7 @@
 package net.sf.anathema.character.ghost.reporting;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.ghost.passions.GhostPassionsTemplate;
 import net.sf.anathema.character.ghost.passions.model.IGhostPassionsModel;
@@ -26,11 +27,11 @@ public class GhostPassionEncoder implements IPdfContentBoxEncoder {
 	    this.resources = resources;
 	  }
 
-	  public String getHeaderKey() {
+	  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
 	    return "Ghost.Passions"; //$NON-NLS-1$
 	  }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
 	  IGhostPassionsModel model = (IGhostPassionsModel) character.getAdditionalModel(GhostPassionsTemplate.ID);
 	  float groupSpacing = traitEncoder.getTraitHeight() / 2;
 	  float x = bounds.x;

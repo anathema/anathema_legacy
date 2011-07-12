@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
@@ -125,21 +126,56 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
 
   protected float encodeFixedBox(PdfContentByte directContent,
                                  IGenericCharacter character,
-                                 IPdfContentBoxEncoder encoder,
-                                 int column, int span,
-                                 float distanceFromTop, float height)
+                                 IGenericDescription description,
+                                 IPdfContentBoxEncoder encoder, int column,
+                                 int span, float distanceFromTop, float height)
       throws DocumentException {
     getBoxEncoder().encodeBox(directContent, encoder, character,
-                              calculateBounds(column, span, distanceFromTop, height));
+                              description, calculateBounds(column, span, distanceFromTop, height));
+    return height;
+  }
+
+  protected float encodeFixedBoxBottom(PdfContentByte directContent,
+                                       IGenericCharacter character,
+                                       IGenericDescription description,
+                                       IPdfContentBoxEncoder encoder, int column,
+                                       int span, float bottom, float height)
+      throws DocumentException {
+    getBoxEncoder().encodeBox(directContent, encoder, character,
+                              description, calculateBounds(column, span, bottom - height, height));
+    return height;
+  }
+  
+  protected float encodeVariableBox(PdfContentByte directContent,
+                                    IGenericCharacter character,
+                                    IGenericDescription description,
+                                    IPdfVariableContentBoxEncoder encoder, int column,
+                                    int span, float distanceFromTop, float maxHeight)
+      throws DocumentException {
+    float height = Math.min(maxHeight, encoder.getRequestedHeight(character));
+    encodeFixedBox(directContent, character, description, encoder, column,
+                   span, distanceFromTop, height);
+    return height;
+  }
+  
+  protected float encodeVariableBoxBottom(PdfContentByte directContent,
+                                          IGenericCharacter character,
+                                          IGenericDescription description,
+                                          IPdfVariableContentBoxEncoder encoder, int column,
+                                          int span, float bottom, float maxHeight)
+      throws DocumentException {
+    float height = Math.min(maxHeight, encoder.getRequestedHeight(character));
+    encodeFixedBoxBottom(directContent, character, description, encoder, column,
+                         span, bottom, height);
     return height;
   }
   
   protected void encodeNotes(PdfContentByte directContent,
                              IGenericCharacter character, int column, int span,
                              float distanceFromTop, float height,
-                             int textColumns) throws DocumentException {
+                             int textColumns, IGenericDescription description) throws DocumentException {
     IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(textColumns, "Notes");
-    encodeFixedBox(directContent, character, encoder,
-                   column, span, distanceFromTop, height);
+    encodeFixedBox(directContent, character, description,
+                   encoder, column, span, distanceFromTop, height);
   }
 }

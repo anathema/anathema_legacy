@@ -3,6 +3,7 @@ package net.sf.anathema.character.linguistics;
 import java.util.Iterator;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
 import net.sf.anathema.character.reporting.sheet.util.AbstractLineTextEncoder;
@@ -23,7 +24,7 @@ public class LinguisticsEncoder extends AbstractLineTextEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Languages"; //$NON-NLS-1$
   }
 

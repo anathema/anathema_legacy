@@ -1,10 +1,8 @@
 package net.sf.anathema.test.character;
 
-import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.dummy.character.trait.DummyGenericTraitCollection;
 import net.sf.anathema.lib.testing.BasicTestCase;
 

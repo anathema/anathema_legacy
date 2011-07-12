@@ -1,6 +1,7 @@
 package net.sf.anathema.character.sidereal.reporting;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfLineEncodingUtilities;
@@ -24,7 +25,7 @@ public class ResplendentDestinyEncoder extends AbstractPdfEncoder implements IPd
     this.lineHeight = fontSize * 1.5f;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
     int yPosition = (int) (bounds.getMaxY() - lineHeight);
     drawLabelledContent(directContent, getLabel("Label.College"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
@@ -55,7 +56,7 @@ public class ResplendentDestinyEncoder extends AbstractPdfEncoder implements IPd
     PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, minX, maxX, lineHeight, count);
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Sidereal.ResplendentDestiny"; //$NON-NLS-1$  
   }
 

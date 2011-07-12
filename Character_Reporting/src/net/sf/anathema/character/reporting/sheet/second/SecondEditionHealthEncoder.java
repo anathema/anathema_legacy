@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.sheet.common.movement.AbstractHealthAndMovementEncoder;
@@ -20,12 +21,12 @@ public class SecondEditionHealthEncoder extends AbstractHealthAndMovementEncoder
   }
 
   @Override
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Health"; //$NON-NLS-1$
   }
 
   @Override
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds)
       throws DocumentException {
     Bounds tableBounds = new Bounds(bounds.x, bounds.y + bounds.height - 94f, bounds.width, 94f);
     IPdfTableEncoder tableEncoder = createTableEncoder();

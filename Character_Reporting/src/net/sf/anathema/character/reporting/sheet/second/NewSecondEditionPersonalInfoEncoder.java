@@ -1,12 +1,14 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
+import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
@@ -15,7 +17,8 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
+public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder
+    implements IPdfVariableContentBoxEncoder {
 
   private final BaseFont baseFont;
   private final IResources resources;
@@ -25,20 +28,13 @@ public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
     this.resources = resources;
   }
 
-  public void encodePersonalInfos(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      Bounds infoBounds) {
+  public void encode(PdfContentByte directContent,
+                     IGenericCharacter character, IGenericDescription description,
+                     Bounds infoBounds) {
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     
-    int lines;
-    if (characterType.isExaltType()) {
-      lines = 4;
-    }
-    else {
-      lines = 3;
-    }
+    int lines = (characterType.isExaltType() ? 4 : 3);
+    
     float lineHeight = (infoBounds.height - TEXT_PADDING) / lines;
     float entryWidth = (infoBounds.width - 2*TEXT_PADDING) / 3;
     float shortEntryWidth = (infoBounds.width - 4*TEXT_PADDING) / 5;
@@ -117,5 +113,28 @@ public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
 
   protected final String getLabel(String key) {
     return resources.getString("Sheet.Label." + key) + ":"; //$NON-NLS-1$ //$NON-NLS-2$
+  }
+
+  @Override
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
+  }
+
+  @Override
+  public String getHeaderKey(IGenericCharacter character,
+                             IGenericDescription description) {
+    String name = description.getName();
+    if (StringUtilities.isNullOrTrimEmpty(name)) {
+      return "PersonalInfo"; //$NON-NLS-1$
+    }
+    else {
+      return name + ".Literal"; //$NON-NLS-1$
+    }
+  }
+
+  @Override
+  public float getRequestedHeight(IGenericCharacter character) {
+    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+    return (characterType.isExaltType() ? 60 : 50);
   }
 }

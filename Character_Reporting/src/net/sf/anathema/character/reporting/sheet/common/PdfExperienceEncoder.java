@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.common;
 import java.text.MessageFormat;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -25,11 +26,11 @@ public class PdfExperienceEncoder implements IPdfContentBoxEncoder {
     this.font = PdfTextEncodingUtilities.createFont(baseFont, FONT_SIZE);
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Experience"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
     int totalPoints = character.getTotalExperiencePoints();
     int spentPoints = character.getSpentExperiencePoints();
     String experienceMessage = resources.getString("Sheet.Experience.MessageFormat"); //$NON-NLS-1$

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.lunar.reporting;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -38,18 +39,18 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
     this.baseFont = baseFont;
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Lunar.WarForm"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) {
 	  
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
     IBeastformModel additionalModel = (IBeastformModel) character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
     encodeAttributes(directContent, bounds, attributeGroups, traitCollection);
     encodeNotes(directContent, bounds);
-    encodeMutations(directContent, bounds, character);
+    encodeMutations(directContent, bounds, character, description);
   }
   
   private final void encodeNotes(PdfContentByte directContent, Bounds bounds)
@@ -82,7 +83,7 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
   
   private final void encodeMutations(PdfContentByte directContent,
 		  Bounds bounds,
-		  IGenericCharacter character)
+		  IGenericCharacter character, IGenericDescription description)
   {
 	  final int horizontalSpacing = 15;
 	  final int verticalSpacing = 5;
@@ -93,11 +94,11 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
 			  bounds.height - 2 * verticalSpacing);
 	  IPdfContentBoxEncoder encoder = new GiftEncoder(baseFont, resources);
 	  try {
-		new PdfBoxEncoder(resources, baseFont).encodeBox(directContent, encoder, character, newBounds);
-	} catch (DocumentException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	    new PdfBoxEncoder(resources, baseFont).encodeBox(directContent, encoder, character, description, newBounds);
+	  } catch (DocumentException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	  }
   }
 
   private final void encodeAttributes(

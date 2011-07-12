@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfDotsEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEssenceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.combat.PdfCombatStatsEncoder;
@@ -99,6 +100,10 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
 
   public float getWeaponryHeight() {
     return 102;
+  }
+  
+  public IPdfVariableContentBoxEncoder[] getAdditionalFirstPageEncoders() {
+    return new IPdfVariableContentBoxEncoder[0];
   }
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {

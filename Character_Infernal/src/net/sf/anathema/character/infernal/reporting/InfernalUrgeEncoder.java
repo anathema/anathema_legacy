@@ -1,6 +1,7 @@
 package net.sf.anathema.character.infernal.reporting;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
 import net.sf.anathema.character.infernal.urge.model.IInfernalUrgeModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
@@ -32,20 +33,20 @@ public class InfernalUrgeEncoder implements IPdfContentBoxEncoder {
     this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "InfernalUrge.Title"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
 	IInfernalUrgeModel urge = ((IInfernalUrgeModel) character.getAdditionalModel(InfernalUrgeTemplate.ID));
     Bounds textBounds = traitEncoder.encode(directContent, bounds, urge.getVirtueFlaw().getLimitTrait().getCurrentValue());
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
-    String description = urge.getDescription().getText();
+    String urgeDescription = urge.getDescription().getText();
 
     Phrase phrase = new Phrase();
     phrase.add(new Chunk(resources.getString("InfernalUrge.Title"), nameFont));
     phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
-    phrase.add(new Chunk(description, font));
+    phrase.add(new Chunk(urgeDescription, font));
     PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
  
   }

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.util;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -50,8 +51,8 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
       PdfContentByte directContent,
       IPdfContentBoxEncoder encoder,
       IGenericCharacter character,
-      Bounds bounds) throws DocumentException {
-    encodeBox(directContent, encoder, standardBoxEncoder, character, bounds);
+      IGenericDescription description, Bounds bounds) throws DocumentException {
+    encodeBox(directContent, encoder, standardBoxEncoder, character, description, bounds);
   }
 
   public void encodeBox(
@@ -59,10 +60,10 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
       IPdfContentBoxEncoder encoder,
       IPdfBoxEncoder boxEncoder,
       IGenericCharacter character,
-      Bounds bounds) throws DocumentException {
-    String header = resources.getString("Sheet.Header." + encoder.getHeaderKey()); //$NON-NLS-1$
+      IGenericDescription description, Bounds bounds) throws DocumentException {
+    String header = resources.getString("Sheet.Header." + encoder.getHeaderKey(character, description)); //$NON-NLS-1$
     Bounds contentBounds = encodeBox(directContent, bounds, header, boxEncoder);
-    encoder.encode(directContent, character, contentBounds);
+    encoder.encode(directContent, character, description, contentBounds);
   }
 
   private Bounds calculateInsettedBounds(Bounds contentBounds) {

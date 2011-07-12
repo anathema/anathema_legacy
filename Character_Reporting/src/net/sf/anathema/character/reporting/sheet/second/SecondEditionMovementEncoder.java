@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
@@ -22,11 +23,11 @@ public class SecondEditionMovementEncoder implements IPdfContentBoxEncoder {
     this.baseFont = baseFont;
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Movement"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds)
       throws DocumentException {
     IPdfTableEncoder tableEncoder = createTableEncoder();
     tableEncoder.encodeTable(directContent, character, bounds);

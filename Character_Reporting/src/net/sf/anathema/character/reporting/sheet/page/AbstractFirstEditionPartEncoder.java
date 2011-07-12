@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.page;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatRulesTableEncoder;
@@ -66,6 +67,10 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
 
   public float getWeaponryHeight() {
     return 129;
+  }
+
+  public IPdfVariableContentBoxEncoder[] getAdditionalFirstPageEncoders() {
+    return new IPdfVariableContentBoxEncoder[0];
   }
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {

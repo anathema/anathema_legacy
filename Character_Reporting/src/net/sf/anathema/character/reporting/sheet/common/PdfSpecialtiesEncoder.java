@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
@@ -23,11 +24,11 @@ public class PdfSpecialtiesEncoder extends AbstractNamedTraitEncoder implements 
     super(resources, baseFont, PdfTraitEncoder.createSmallTraitEncoder(baseFont), lineCount);
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Specialties"; //$NON-NLS-1$
   }
   
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) {
     encode(directContent, character, new Position(bounds.getMinX(), bounds.getMaxY()), bounds.width);
   }
 

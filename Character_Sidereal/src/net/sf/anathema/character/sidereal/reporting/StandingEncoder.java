@@ -1,6 +1,7 @@
 package net.sf.anathema.character.sidereal.reporting;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
@@ -28,7 +29,7 @@ public class StandingEncoder extends AbstractPdfEncoder implements IPdfContentBo
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
     int yPosition = (int) (bounds.getMaxY() - lineHeight);
     drawLabelledContent(
         directContent,
@@ -56,7 +57,7 @@ public class StandingEncoder extends AbstractPdfEncoder implements IPdfContentBo
     return backgroundValue;
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Sidereal.Standing"; //$NON-NLS-1$
   }
 

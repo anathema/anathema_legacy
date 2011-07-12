@@ -2,6 +2,7 @@ package net.sf.anathema.character.abyssal.reporting;
 
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
@@ -36,11 +37,11 @@ public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IP
     return baseFont;
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "GreatCurse.Abyssal"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
     IVirtueFlaw resonance = ((IVirtueFlawModel) character.getAdditionalModel(AbyssalResonanceTemplate.ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(directContent, bounds, resonance.getLimitTrait().getCurrentValue());
     Font font = createFont(getBaseFont());
