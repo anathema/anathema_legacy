@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.reporting.first.weaponstats;
 
 import net.sf.anathema.character.equipment.impl.reporting.RateWeaponStatsGroup;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -9,8 +10,8 @@ import com.lowagie.text.pdf.PdfPTable;
 
 public class CoreRulesRateWeaponStatsGroup extends RateWeaponStatsGroup {
 
-  public CoreRulesRateWeaponStatsGroup(IResources resources) {
-    super(resources);
+  public CoreRulesRateWeaponStatsGroup(IResources resources, IEquipmentModifiers equipment) {
+    super(resources, equipment);
   }
 
   @Override

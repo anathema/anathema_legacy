@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.second.social;
 
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.social.ISocialCombatStats;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -8,8 +9,8 @@ import com.lowagie.text.pdf.PdfPTable;
 
 public class HonestyStatsGroup extends AbstractSocialCombatsValueStatsGroup {
 
-  public HonestyStatsGroup(IResources resources) {
-    super(resources, "Honesty"); //$NON-NLS-1$
+  public HonestyStatsGroup(IResources resources, IEquipmentModifiers equipment) {
+    super(resources, "Honesty", equipment); //$NON-NLS-1$
   }
 
   public void addContent(PdfPTable table, Font font, ISocialCombatStats stats) {
@@ -18,8 +19,9 @@ public class HonestyStatsGroup extends AbstractSocialCombatsValueStatsGroup {
       table.addCell(createFinalValueCell(font));
     }
     else {
+      int mpdv = Math.max(0, stats.getHonestyMDV() + equipment.getMPDVMod());
       table.addCell(createFinalValueCell(font, stats.getHonestyAttackValue()));
-      table.addCell(createFinalValueCell(font, stats.getHonestyMDV()));
+      table.addCell(createFinalValueCell(font, mpdv));
     }
   }
 

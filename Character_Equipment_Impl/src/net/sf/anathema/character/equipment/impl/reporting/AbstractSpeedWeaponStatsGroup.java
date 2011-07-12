@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -9,8 +10,11 @@ import com.lowagie.text.pdf.PdfPTable;
 
 public abstract class AbstractSpeedWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
-  public AbstractSpeedWeaponStatsGroup(IResources resources) {
+  private final IEquipmentModifiers equipment;
+	
+  public AbstractSpeedWeaponStatsGroup(IResources resources, IEquipmentModifiers equipment) {
     super(resources, "Speed"); //$NON-NLS-1$
+    this.equipment = equipment;
   }
 
   public int getColumnCount() {
@@ -22,9 +26,9 @@ public abstract class AbstractSpeedWeaponStatsGroup extends AbstractValueEquipme
       table.addCell(createFinalValueCell(font));
     }
     else {
-      table.addCell(createFinalValueCell(font, getSpeedValue(weapon)));
+      table.addCell(createFinalValueCell(font, getSpeedValue(weapon, equipment)));
     }
   }
 
-  protected abstract int getSpeedValue(IWeaponStats weapon);
+  protected abstract int getSpeedValue(IWeaponStats weapon, IEquipmentModifiers equipment);
 }

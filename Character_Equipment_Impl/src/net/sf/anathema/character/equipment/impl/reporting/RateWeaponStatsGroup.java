@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -9,8 +10,11 @@ import com.lowagie.text.pdf.PdfPTable;
 
 public class RateWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
-  public RateWeaponStatsGroup(IResources resources) {
+  private final IEquipmentModifiers equipment;
+  
+  public RateWeaponStatsGroup(IResources resources, IEquipmentModifiers equipment) {
     super(resources, "Rate"); //$NON-NLS-1$
+    this.equipment = equipment;
   }
 
   public int getColumnCount() {
@@ -22,7 +26,14 @@ public class RateWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeap
       table.addCell(createFinalValueCell(font));
     }
     else {
-      table.addCell(createFinalValueCell(font, weapon.getRate()));
+      table.addCell(createFinalValueCell(font, getRate(weapon)));
     }
+  }
+  
+  private int getRate(IWeaponStats weapon)
+  {
+	  int baseValue = weapon.getRate();
+	  baseValue += weapon.isRangedCombat() ? equipment.getRangedRateMod() : equipment.getMeleeRateMod();
+	  return baseValue;
   }
 }

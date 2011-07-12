@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.sheet.second.social;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.social.InvestigationSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PerformanceSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PresenceSocialAttack;
@@ -24,12 +25,13 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
   @SuppressWarnings("unchecked")
   @Override
   protected IStatsGroup<ISocialCombatStats>[] createStatsGroups(IGenericCharacter character) {
+	IEquipmentModifiers equipment = character.getEquipmentModifiers();
     return new IStatsGroup[] {
         new SocialCombatNameStatsGroup(resources),
-        new SocialSpeedStatsGroup(resources),
-        new HonestyStatsGroup(resources),
-        new DeceptionStatsGroup(resources),
-        new SocialRateStatsGroup(resources) };
+        new SocialSpeedStatsGroup(resources, equipment),
+        new HonestyStatsGroup(resources, equipment),
+        new DeceptionStatsGroup(resources, equipment),
+        new SocialRateStatsGroup(resources, equipment) };
   }
 
   @Override

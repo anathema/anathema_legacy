@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.impl.reporting.second.weaponstats;
 import net.sf.anathema.character.equipment.impl.reporting.AbstractDefenceWeaponStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.resources.IResources;
@@ -11,12 +12,13 @@ public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponS
 
   public SecondEditionDefenceWeaponStatsGroup(IResources resources,
 		  IGenericCharacter character,
-		  IGenericTraitCollection traitCollection) {
-    super(resources, character, traitCollection);
+		  IGenericTraitCollection traitCollection,
+		  IEquipmentModifiers equipment) {
+    super(resources, character, traitCollection, equipment);
   }
 
   @Override
-  protected int getDefenceValue(IWeaponStats weapon) {
+  protected int getDefenceValue(IWeaponStats weapon, IEquipmentModifiers equipment) {
     IGenericTraitCollection traitCollection = getTraitCollection();
     double finalValue = calculateFinalValue(
         weapon.getDefence(),
@@ -29,6 +31,6 @@ public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponS
     else {
       finalValue = Math.ceil(finalValue / 2);
     }
-    return (int) finalValue;
+    return (int) finalValue + equipment.getPDVMod();
   }
 }

@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.impl.reporting.second.weaponstats;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -14,10 +15,12 @@ import com.lowagie.text.pdf.PdfPTable;
 public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
   private final IGenericTraitCollection collection;
+  private final IEquipmentModifiers equipment;
 
-  public DamageWeaponStatsGroup(IResources resources, IGenericTraitCollection collection) {
+  public DamageWeaponStatsGroup(IResources resources, IGenericTraitCollection collection, IEquipmentModifiers equipment) {
     super(resources, "Damage"); //$NON-NLS-1$
     this.collection = collection;
+    this.equipment = equipment;
   }
 
   @Override
@@ -47,7 +50,8 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
       int finalValue = weaponValue;
       ITraitType damageTraitType = weapon.getDamageTraitType();
       if (damageTraitType != null) {
-        finalValue = calculateFinalValue(weaponValue, collection.getTrait(damageTraitType));
+        finalValue = calculateFinalValue(weaponValue, collection.getTrait(damageTraitType)) +
+        	(weapon.isRangedCombat() ? equipment.getRangedDamageMod() : equipment.getMeleeDamageMod());
         table.addCell(createEquipmentValueCell(font, weaponValue));
       }
       else {

@@ -8,6 +8,7 @@ import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.Ran
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.TagsStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -15,10 +16,12 @@ import com.lowagie.text.pdf.BaseFont;
 
 public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTableEncoder<IWeaponStats> {
   private final IResources resources;
+  protected final IEquipmentModifiers equipment;
 
-  public AbstractWeaponryTableEncoder(BaseFont baseFont, IResources resources) {
+  public AbstractWeaponryTableEncoder(BaseFont baseFont, IResources resources, IEquipmentModifiers equipment) {
     super(baseFont);
     this.resources = resources;
+    this.equipment = equipment;
   }
   
   protected IGenericTraitCollection getTraitCollection(IGenericCharacter character)
@@ -34,7 +37,7 @@ public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTabl
         new EquipmentNameStatsGroup<IWeaponStats>(resources),
         createSpeedGroup(traitCollection),
         createAccuracyGroup(character, traitCollection),
-        new DamageWeaponStatsGroup(resources, traitCollection),
+        new DamageWeaponStatsGroup(resources, traitCollection, equipment),
         createDefenceGroup(character, traitCollection),
         createRateGroup(character),
         new RangeWeaponStatsGroup(resources),

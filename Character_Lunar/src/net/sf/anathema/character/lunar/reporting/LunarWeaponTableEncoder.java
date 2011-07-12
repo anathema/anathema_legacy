@@ -15,7 +15,7 @@ public class LunarWeaponTableEncoder extends SecondEditionWeaponryTableEncoder
 	
 	public LunarWeaponTableEncoder(BaseFont baseFont, IResources resources, IGenericCharacter character)
 	{
-		super(baseFont, resources);
+		super(baseFont, resources, character.getEquipmentModifiers());
 		this.character = character;
 	}
 	

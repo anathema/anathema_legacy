@@ -23,11 +23,11 @@ public class TraitModifyingStatisticsPresenterPage extends
     addLabelledComponentRow(new String[] {
         getProperties().getDDVLabel(),
         getProperties().getPDVLabel(),
-        getProperties().getMPDVLabel(),
+        getProperties().getMDDVLabel(),
         getProperties().getMPDVLabel() }, new Component[] {
         initIntegerSpinner(getPageModel().getDDVModel()).getComponent(),
         initIntegerSpinner(getPageModel().getPDVModel()).getComponent(),
-        initIntegerSpinner(getPageModel().getMPDVModel()).getComponent(),
+        initIntegerSpinner(getPageModel().getMDDVModel()).getComponent(),
         initIntegerSpinner(getPageModel().getMPDVModel()).getComponent() });
     addLabelledComponentRow(new String[] {
             getProperties().getMeleeSpeedLabel(),

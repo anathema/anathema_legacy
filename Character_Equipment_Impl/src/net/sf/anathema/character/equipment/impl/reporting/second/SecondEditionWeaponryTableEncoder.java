@@ -8,14 +8,15 @@ import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.Sec
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.SecondEditionSpeedWeaponStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
 
 public class SecondEditionWeaponryTableEncoder extends AbstractWeaponryTableEncoder {
 
-  public SecondEditionWeaponryTableEncoder(BaseFont baseFont, IResources resources) {
-    super(baseFont, resources);
+  public SecondEditionWeaponryTableEncoder(BaseFont baseFont, IResources resources, IEquipmentModifiers equipment) {
+    super(baseFont, resources, equipment);
   }
 
   @Override
@@ -25,21 +26,21 @@ public class SecondEditionWeaponryTableEncoder extends AbstractWeaponryTableEnco
 
   @Override
   protected SecondEditionSpeedWeaponStatsGroup createSpeedGroup(IGenericTraitCollection collection) {
-    return new SecondEditionSpeedWeaponStatsGroup(getResources());
+    return new SecondEditionSpeedWeaponStatsGroup(getResources(), equipment);
   }
 
   @Override
   protected AbstractDefenceWeaponStatsGroup createDefenceGroup(IGenericCharacter character, IGenericTraitCollection traitCollection) {
-    return new SecondEditionDefenceWeaponStatsGroup(getResources(), character, traitCollection);
+    return new SecondEditionDefenceWeaponStatsGroup(getResources(), character, traitCollection, equipment);
   }
 
   @Override
   protected AccuracyWeaponStatsGroup createAccuracyGroup(IGenericCharacter character, IGenericTraitCollection traitCollection) {
-    return new AccuracyWeaponStatsGroup(getResources(), traitCollection);
+    return new AccuracyWeaponStatsGroup(getResources(), traitCollection, equipment);
   }
 
   @Override
   protected RateWeaponStatsGroup createRateGroup(IGenericCharacter character) {
-    return new RateWeaponStatsGroup(getResources());
+    return new RateWeaponStatsGroup(getResources(), equipment);
   }
 }

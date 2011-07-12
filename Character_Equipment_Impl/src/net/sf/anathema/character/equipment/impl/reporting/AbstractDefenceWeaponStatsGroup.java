@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.impl.reporting;
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -13,19 +14,23 @@ public abstract class AbstractDefenceWeaponStatsGroup extends AbstractValueEquip
 
   private final IGenericCharacter character;
   private final IGenericTraitCollection traitCollection;
+  private final IEquipmentModifiers equipment;
 
-  public AbstractDefenceWeaponStatsGroup(IResources resources, IGenericCharacter character) {
+  public AbstractDefenceWeaponStatsGroup(IResources resources, IGenericCharacter character, IEquipmentModifiers equipment) {
     super(resources, "Defence"); //$NON-NLS-1$
     this.character = character;
     this.traitCollection = null;
+    this.equipment = equipment;
   }
   
   public AbstractDefenceWeaponStatsGroup(IResources resources,
 		  IGenericCharacter character,
-		  IGenericTraitCollection traitCollection) {
+		  IGenericTraitCollection traitCollection,
+		  IEquipmentModifiers equipment) {
 	    super(resources, "Defence"); //$NON-NLS-1$
 	    this.character = character;
 	    this.traitCollection = traitCollection;
+	    this.equipment = equipment;
 	  }
 
   public int getColumnCount() {
@@ -43,12 +48,12 @@ public abstract class AbstractDefenceWeaponStatsGroup extends AbstractValueEquip
         table.addCell(createFinalValueCell(font, (Integer) null));
       }
       else {
-        table.addCell(createFinalValueCell(font, getDefenceValue(weapon)));
+        table.addCell(createFinalValueCell(font, getDefenceValue(weapon, equipment)));
       }
     }
   }
 
-  protected abstract int getDefenceValue(IWeaponStats weapon);
+  protected abstract int getDefenceValue(IWeaponStats weapon, IEquipmentModifiers equipment);
 
   protected final IGenericCharacter getCharacter() {
     return character;
