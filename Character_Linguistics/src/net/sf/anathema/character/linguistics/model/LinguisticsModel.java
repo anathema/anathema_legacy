@@ -62,8 +62,10 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   }
 
   private void updateLanguagePointAllowance() {
+	int currentPoints = languagePointsAllowed;
     languagePointsAllowed = context.getTraitCollection().getTrait(AbilityType.Linguistics).getCurrentValue() + 1;
-    pointControl.fireChangedEvent();
+    if (currentPoints != languagePointsAllowed)
+    	pointControl.fireChangedEvent();
   }
 
   private void updateBarbarianLanguageAllowance() {
@@ -137,6 +139,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   }
 
   public int getLanguagePointsAllowed() {
+	updateLanguagePointAllowance();
     return languagePointsAllowed;
   }
 
