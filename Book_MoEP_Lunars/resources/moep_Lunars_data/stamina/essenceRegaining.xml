@@ -67,6 +67,7 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
 		<!-- NOTE:  "Mirror" - Lunar/Wits & Lunar/Charisma -->
+		  <repurchases limitingTrait="Essence"/>
           <source source="Lunars2nd" />
           <source source="InkMonkeys" />
      </charm>

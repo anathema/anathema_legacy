@@ -821,20 +821,20 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <OxBodyCharm ability="Endurance">
-		<OxBodyPick name="Category.-0">
+    <oxbody trait="Endurance">
+		<pick name="Category.-0">
 			<ZeroHealthLevel/>
-		</OxBodyPick>
-		<OxBodyPick name="Category.-1x2">
+		</pick>
+		<pick name="Category.-1x2">
 			<OneHealthLevel/>
 			<OneHealthLevel/>
-		</OxBodyPick>
-		<OxBodyPick name="Category.-1-2x2">
+		</pick>
+		<pick name="Category.-1-2x2">
 			<OneHealthLevel/>
 			<TwoHealthLevel/>
 			<TwoHealthLevel/>
-		</OxBodyPick>
-	</OxBodyCharm>
+		</pick>
+	</oxbody>
     <source source="FirstEdition" page="170"/>
   </charm>
   <charm id="Solar.ArmoredScout'sInvigoration" exalt="Solar" group="Endurance">

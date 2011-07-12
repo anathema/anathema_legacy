@@ -44,8 +44,6 @@
 			<source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.ImpressionsOfStrength" exalt="Lunar" group="DamageEnhancement">
-          <!-- TODO:  Coding - Can buy additional alternative versions for - 1 for 2xp OR 1 for 1bp
-                Versions:  Ogre's Loving Caress, Rock-to-Pebbles Attitude, Undeniable Might, Birth of Flight, and Mighty Ram Practice. -->
           <prerequisite>
                <trait id="Strength" value="4" />
                <essence value="2" />
@@ -59,6 +57,13 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Fury-OK" visualize="true" />
           <charmAttribute attribute="Knockback" visualize="true" />
+		  <subeffects bpCost="1">
+			<subeffect name="OgresLovingCaress"/>
+			<subeffect name="RockToPebbleAttitude"/>
+			<subeffect name="UndeniableMight"/>
+			<subeffect name="BirthOfFlight"/>
+			<subeffect name="MightyRamPractice"/>
+		  </subeffects>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.ShellCrushingAtemi" exalt="Lunar" group="DamageEnhancement">

@@ -77,11 +77,17 @@ public class GenericCharacter implements IGenericCharacter {
       return 0;
     }
   }
-
-  public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue) {
-    ICharmConfiguration charms = statistics.getCharms();
-    IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(multiLearnableCharm.getCharmId());
-    configuration.setCurrentLearnCount(newValue);
+  
+  public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue)
+  {
+	  setLearnCount(multiLearnableCharm.getCharmId(), newValue);
+  }
+  
+  public void setLearnCount(String charmName, int newValue)
+  {
+	  ICharmConfiguration charms = statistics.getCharms();
+	  IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charmName);
+	  configuration.setCurrentLearnCount(newValue);
   }
 
   public boolean isLearned(IMagic magic) {

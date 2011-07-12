@@ -53,6 +53,16 @@
           </cost>
           <duration amount="1" unit="day" />
           <charmtype type="Simple" />
+          <subeffects bpCost="1">
+			<subeffect name="Demons"/>
+			<subeffect name="DragonKings"/>
+			<subeffect name="Elementals"/>
+			<subeffect name="Ghosts"/>
+			<subeffect name="Jadeborn"/>
+			<subeffect name="Lintha"/>
+			<subeffect name="Raksha"/>
+			<subeffect name="Custom"/>
+		  </subeffects>
           <source source="LordsOfCreation" />
 		  <source source="ScrollErrata" />
      </charm>

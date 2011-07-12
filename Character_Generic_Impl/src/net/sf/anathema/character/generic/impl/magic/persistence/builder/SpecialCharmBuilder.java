@@ -29,15 +29,14 @@ public class SpecialCharmBuilder
 	private static final String ATTRIB_MODIFIER = "modifier";
 	private static final String ATTRIB_TRAIT = "trait";
 	
-	private static final String TAG_OXBODY_CHARM = "OxBodyCharm";
-	private static final String TAG_OXBODY_PICK = "OxBodyPick";
+	private static final String TAG_OXBODY_CHARM = "oxbody";
+	private static final String TAG_OXBODY_PICK = "pick";
 	private static final String TAG_ZERO_HEALTH = "zeroHealthLevel";
 	private static final String TAG_ONE_HEALTH = "oneHealthLevel";
 	private static final String TAG_TWO_HEALTH = "twoHealthLevel";
 	private static final String TAG_FOUR_HEALTH = "fourHealthLevel";
 	private static final String TAG_INCAP_HEALTH = "incapHealthLevel";
 	private static final String TAG_DYING_HEALTH = "dyingHealthLevel";
-	private static final String ATTRIB_ABILITY = "ability";
 	
 	private static final String TAG_TRAIT_CAP_MODIFIER = "traitCapModifier";
 	
@@ -74,7 +73,7 @@ public class SpecialCharmBuilder
 		Element oxbodyElement = charmElement.element(TAG_OXBODY_CHARM);
 		if (oxbodyElement == null)
 			return null;
-		AbilityType ability = AbilityType.valueOf(oxbodyElement.attributeValue(ATTRIB_ABILITY));
+		ITraitType trait = getTrait(oxbodyElement.attributeValue(ATTRIB_TRAIT));
 		LinkedHashMap<String, HealthLevelType[]> healthPicks = new LinkedHashMap<String, HealthLevelType[]>();
 		for (Object pickObj : oxbodyElement.elements(TAG_OXBODY_PICK))
 		{
@@ -102,7 +101,7 @@ public class SpecialCharmBuilder
 			healthPicks.put(name, levels);
 		}
 		
-		return new OxBodyTechniqueCharm(id, ability, healthPicks);
+		return new OxBodyTechniqueCharm(id, trait, healthPicks);
 	}
 	
 	private ISpecialCharm readTraitCapModifierCharm(Element charmElement, String id)
@@ -111,6 +110,8 @@ public class SpecialCharmBuilder
 		if (traitCapModifierElement == null)
 			return null;
 		String traitString = traitCapModifierElement.attributeValue(ATTRIB_TRAIT);
+		if (traitString == null)
+			traitString = id.split("\\.")[2];
 		ITraitType trait = getTrait(traitString);
 		int modifier = Integer.parseInt(traitCapModifierElement.attributeValue(ATTRIB_MODIFIER));
 		return new TraitCapModifyingCharm(id, trait, modifier);

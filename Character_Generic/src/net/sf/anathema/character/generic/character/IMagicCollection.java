@@ -10,6 +10,8 @@ public interface IMagicCollection {
   public int getLearnCount(IMultiLearnableCharm multiLearnableCharm);
 
   public boolean isLearned(IMagic magic);
+  
+  public void setLearnCount(String charmName, int newValue);
 
   public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue);
 }

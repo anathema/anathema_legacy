@@ -249,4 +249,10 @@ public class DummyGenericCharacter implements IGenericCharacter {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void setLearnCount(String charmName, int newValue) {
+		// TODO Auto-generated method stub
+		
+	}
 }

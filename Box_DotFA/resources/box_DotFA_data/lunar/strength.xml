@@ -51,6 +51,12 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <subeffects bpCost="1">
+			<subeffect name="FastProgression"/>
+			<subeffect name="Fatal"/>
+			<subeffect name="Selectable"/>
+			<subeffect name="Custom"/>
+		  </subeffects>
           <source source="LordsOfCreation" />
      </charm>
      <charm id="Lunar.FriendOfThePlague" exalt="Lunar" group="DamageEnhancement">

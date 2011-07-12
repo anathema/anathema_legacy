@@ -83,9 +83,6 @@
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.AdderFangMethod" exalt="Lunar" group="Substance">
-          <!-- TODO:  Coding - Can buy additional alternative versions for - 1 for 4xp OR 1 for 2bp
-        Versions:  Luna's Spite (default), Chosen's Bane, Closing Eye Toxin, Night's Lure, and Still Water Infusion.  
-			Augmentable List. -->
           <prerequisite>
                <trait id="Stamina" value="5" />
                <essence value="4" />
@@ -96,13 +93,20 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Gift" visualize="true" />
           <charmAttribute attribute="Poison" visualize="true" />
+          <subeffects bpCost="2">
+			<subeffect name="LunasSpite"/>
+			<subeffect name="ChosensBane"/>
+			<subeffect name="ClosingEyeToxin"/>
+			<subeffect name="NightsLure"/>
+			<subeffect name="StillWaterInfusion"/>
+			<subeffect name="Custom1"/>
+			<subeffect name="Custom2"/>
+			<subeffect name="Custom3"/>
+		</subeffects>
           <source source="Lunars2nd" />
-			<source source="ScrollErrata" />
+		  <source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.CobraEyeMethod" exalt="Lunar" group="Substance">
-          <!-- TODO:  Coding -Can buy additional alternative versions for - 1 for 4xp OR 1 for 2bp
-        Versions:  Burning Tar, Foe-Softening Discharge, Soporific Nectar, Steel-Eater.
-			Augmentable List.-->
           <prerequisite>
                <trait id="Stamina" value="5" />
                <essence value="4" />
@@ -115,7 +119,16 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <subeffects bpCost="1">
+			<subeffect name="BurningTar"/>
+			<subeffect name="FoeSofteningDischarge"/>
+			<subeffect name="SoporificNectar"/>
+			<subeffect name="SteelEater"/>
+			<subeffect name="Custom1"/>
+			<subeffect name="Custom2"/>
+			<subeffect name="Custom3"/>
+		  </subeffects>
           <source source="Lunars2nd" />
-			<source source="ScrollErrata" />
+		  <source source="ScrollErrata" />
      </charm>
 </charmlist>

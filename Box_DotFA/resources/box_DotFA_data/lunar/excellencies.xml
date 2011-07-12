@@ -36,6 +36,7 @@
           <charmtype type="Permanent" />
           <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Mortal" />
+          <traitCapModifier modifier="1"/>
           <source source="LordsOfCreation" page="68" />
      </genericCharm>
 </charmlist>

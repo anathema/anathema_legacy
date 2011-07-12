@@ -35,6 +35,22 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Stackable" visualize="true" />
+          <oxbody trait="Stamina">
+			<pick name="Category.-1x2">
+				<OneHealthLevel/>
+				<OneHealthLevel/>
+				<DyingHealthLevel/>
+				<DyingHealthLevel/>
+			</pick>
+			<pick name="Category.-2x4">
+				<TwoHealthLevel/>
+				<TwoHealthLevel/>
+				<TwoHealthLevel/>
+				<TwoHealthLevel/>
+				<DyingHealthLevel/>
+				<DyingHealthLevel/>
+			</pick>
+		  </oxbody>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.SteadfastYeddimMeditation" exalt="Lunar" group="EnduranceCharms">

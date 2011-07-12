@@ -61,6 +61,7 @@
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="NotAlienLearnable"/>
     <source source="Lunars1st" page="124"/>
+    <repurchases limitingTrait="Essence"/>
     <ruleset name="PowerCombat">
       <source source="Player's Guide" page="206"/>
     </ruleset>
@@ -279,6 +280,18 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
+    <oxbody trait="Stamina">
+		<pick name="Category.-1x2">
+			<OneHealthLevel/>
+			<OneHealthLevel/>
+		</pick>
+		<pick name="Category.-2x4">
+			<TwoHealthLevel/>
+			<TwoHealthLevel/>
+			<TwoHealthLevel/>
+			<TwoHealthLevel/>
+		</pick>
+    </oxbody>
     <source source="Lunars1st" page="132"/>
   </charm>
   <charm id="Lunar.CrouchingTigerExercise" exalt="Lunar" group="BodyEnhancement">

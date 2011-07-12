@@ -20,7 +20,6 @@ import net.sf.anathema.character.lunar.beastform.model.gift.IGiftModel;
 import net.sf.anathema.character.lunar.beastform.model.gift.SecondEditionMutationModel;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
-import net.sf.anathema.character.lunar.template.ILunarSpecialCharms;
 import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -28,6 +27,7 @@ import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
 public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter implements IBeastformModel {
+  private final static String DEADLY_BEASTMAN_TRANSFORMATION = "Lunar.DeadlyBeastmanTransformation";
   private final ICharacterModelContext context;
   private final IntValueControl charmLearnControl = new IntValueControl();
   private final IBeastformGroupCost cost;
@@ -139,7 +139,7 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
 	  }
 
   public void setCharmLearnCount(int newValue) {
-    context.getMagicCollection().setLearnCount(ILunarSpecialCharms.DEADLY_BEASTMAN_TRANSFORMATION, newValue);
+    context.getMagicCollection().setLearnCount(DEADLY_BEASTMAN_TRANSFORMATION, newValue);
   }
 
   public int getCharmValue() {
