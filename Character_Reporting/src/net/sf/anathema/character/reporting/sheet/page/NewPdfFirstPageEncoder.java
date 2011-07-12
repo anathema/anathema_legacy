@@ -124,6 +124,8 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
     return height;
   }
 
+  // TODO: Clean up; this is written as an exception, with no
+  //       obvious exceptional behavior.
   private float encodePersonalInfo(PdfContentByte directContent,
                                    IGenericCharacter character,
                                    IGenericDescription description,

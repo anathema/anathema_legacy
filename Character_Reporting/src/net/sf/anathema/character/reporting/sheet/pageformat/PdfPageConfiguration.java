@@ -9,7 +9,7 @@ import com.lowagie.text.Rectangle;
 public class PdfPageConfiguration {
 
   public static final int COLUMN_SPACING = 10;
-  public static final int HORIZONTAL_MARGIN = 25;
+  public static final int HORIZONTAL_MARGIN = 20;
   public static final int VERTICAL_MARGIN = 15;
 
   public static PdfPageConfiguration create(Rectangle pageSize) {
