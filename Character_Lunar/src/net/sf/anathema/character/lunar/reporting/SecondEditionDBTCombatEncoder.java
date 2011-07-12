@@ -3,9 +3,8 @@ package net.sf.anathema.character.lunar.reporting;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
@@ -35,16 +34,15 @@ public class SecondEditionDBTCombatEncoder implements IPdfContentBoxEncoder {
 	    String stunningLabel = resources.getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
 	    IBeastformModel additionalModel = (IBeastformModel) character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
 	    IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
-	    int joinBattle = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
 	    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-	    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection, character.getEquipmentModifiers());
-	    int knockdownThreshold = CharacterUtilties.getTotalValue(
-	        traitCollection,
-	        AttributeType.Stamina,
-	        AbilityType.Resistance);
-	    int knockdownPool = CharacterUtilties.getKnockdownPool(character, traitCollection, null);
-	    int stunningThreshold = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina);
-	    int stunningPool = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
+	    IEquipmentModifiers equipment = character.getEquipmentModifiers();
+	    
+	    int joinBattle = CharacterUtilties.getJoinBattle(traitCollection, equipment);
+	    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection, equipment);
+	    int knockdownThreshold = CharacterUtilties.getKnockdownThreshold(traitCollection, equipment);
+	    int knockdownPool = CharacterUtilties.getKnockdownPool(character, traitCollection, equipment);
+	    int stunningThreshold = CharacterUtilties.getStunningThreshold(traitCollection, equipment);
+	    int stunningPool = CharacterUtilties.getStunningPool(traitCollection, equipment);
 
 	    String mobilityPenaltyLabel = "-" + resources.getString("Sheet.Combat.MobilityPenalty"); //$NON-NLS-1$ //$NON-NLS-2$
 	    String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$

@@ -117,10 +117,10 @@ public class CharacterUtilties {
 		  IEquipmentModifiers equipment) {
 	int dv = 0;
     int essenceValue = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
-    if (essenceValue > 1) {
+    if (essenceValue > 1)
       dv = getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge, OtherTraitType.Essence);
-    }
-    dv = getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge);
+    else
+      dv = getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge);
     dv += equipment.getDDVMod() + equipment.getMobilityPenalty();
     return Math.max(dv, 0);
   }
