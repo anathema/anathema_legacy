@@ -37,7 +37,7 @@ public class FirstEditionCombatValueEncoder implements IPdfContentEncoder {
         character.getTraitCollection(),
         AttributeType.Stamina,
         AbilityType.Resistance);
-    int knockdownPool = CharacterUtilties.getKnockdownPool(character);
+    int knockdownPool = CharacterUtilties.getKnockdownPool(character, null);
     int stunningThreshold = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Stamina);
     int stunningPool = CharacterUtilties.getTotalValue(
         character.getTraitCollection(),

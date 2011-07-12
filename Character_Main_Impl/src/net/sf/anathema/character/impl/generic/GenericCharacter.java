@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -45,10 +46,16 @@ public class GenericCharacter implements IGenericCharacter {
 
   private final ICharacterStatistics statistics;
   private final CharacterPoints characterPoints;
+  private final IEquipmentModifiers equipmentModifiers;
 
   public GenericCharacter(ICharacterStatistics statistics, IExperiencePointManagement experiencePointManagement) {
+	    this(statistics, experiencePointManagement, null);
+	  }
+  
+  public GenericCharacter(ICharacterStatistics statistics, IExperiencePointManagement experiencePointManagement, IEquipmentModifiers stats) {
     this.statistics = statistics;
     this.characterPoints = new CharacterPoints(statistics, experiencePointManagement);
+    this.equipmentModifiers = stats;
   }
 
   public IGenericTraitCollection getTraitCollection() {
@@ -151,6 +158,11 @@ public class GenericCharacter implements IGenericCharacter {
 
   public IAdditionalModel getAdditionalModel(String id) {
     return statistics.getExtendedConfiguration().getAdditionalModel(id);
+  }
+  
+  public IEquipmentModifiers getEquipmentModifiers()
+  {
+	  return equipmentModifiers;
   }
 
   public IConcept getConcept() {

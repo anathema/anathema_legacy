@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.impl.generic.EquipmentModifiers;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
@@ -65,7 +66,8 @@ public class PdfSheetReport implements IITextReport {
     try {
       int traitMax = Math.max(5, getEssenceMax(stattedCharacter));
       IPdfPartEncoder partEncoder = getPartEncoder(stattedCharacter);
-      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
+      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics(),
+    		  new EquipmentModifiers(stattedCharacter.getStatistics()));
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
       if (character.getRules().getEdition() == ExaltedEdition.FirstEdition)

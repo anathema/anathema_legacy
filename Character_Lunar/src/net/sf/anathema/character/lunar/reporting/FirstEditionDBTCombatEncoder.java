@@ -47,7 +47,7 @@ public class FirstEditionDBTCombatEncoder implements IPdfContentBoxEncoder {
     		traitCollection,
         AttributeType.Stamina,
         AbilityType.Resistance);
-    int knockdownPool = CharacterUtilties.getKnockdownPool(character, traitCollection);
+    int knockdownPool = CharacterUtilties.getKnockdownPool(character, traitCollection, null);
     int stunningThreshold = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina);
     int stunningPool = CharacterUtilties.getTotalValue(
     		traitCollection,

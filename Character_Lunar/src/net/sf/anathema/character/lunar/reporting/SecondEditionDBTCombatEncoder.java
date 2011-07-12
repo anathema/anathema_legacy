@@ -36,12 +36,12 @@ public class SecondEditionDBTCombatEncoder implements IPdfContentBoxEncoder {
 	    IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
 	    int joinBattle = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
 	    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-	    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection);
+	    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection, character.getEquipmentModifiers());
 	    int knockdownThreshold = CharacterUtilties.getTotalValue(
 	        traitCollection,
 	        AttributeType.Stamina,
 	        AbilityType.Resistance);
-	    int knockdownPool = CharacterUtilties.getKnockdownPool(character, traitCollection);
+	    int knockdownPool = CharacterUtilties.getKnockdownPool(character, traitCollection, null);
 	    int stunningThreshold = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina);
 	    int stunningPool = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
 

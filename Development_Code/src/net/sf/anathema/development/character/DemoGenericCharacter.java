@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -342,5 +343,11 @@ public int getEssenceCap(boolean modified)
 	@Override
 	public int getLearnCount(String charmName) {
 		return 0;
+	}
+
+	@Override
+	public IEquipmentModifiers getEquipmentModifiers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
