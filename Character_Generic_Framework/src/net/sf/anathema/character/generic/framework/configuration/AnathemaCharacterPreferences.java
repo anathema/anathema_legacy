@@ -5,6 +5,7 @@ import static net.sf.anathema.character.generic.framework.configuration.ICharact
 import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.RULESET_PREFERENCE;
 import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.PRINT_ZERO_BACKGROUNDS;
 import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.PRINT_ZERO_CRAFTS;
+import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.PRINT_ZERO_INTIMACIES;
 
 import java.util.prefs.Preferences;
 
@@ -35,5 +36,9 @@ public class AnathemaCharacterPreferences implements IAnathemaCharacterPreferenc
 
   public boolean printZeroCrafts() {
     return characterPreferences.getBoolean(PRINT_ZERO_CRAFTS, true);
+  }
+
+  public boolean printZeroIntimacies() {
+    return characterPreferences.getBoolean(PRINT_ZERO_INTIMACIES, true);
   }
 }

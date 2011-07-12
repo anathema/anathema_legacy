@@ -9,4 +9,5 @@ public interface ICharacterPreferencesConstants {
   public static final String DEFAULT_CHARMORDER = "TreeOrder"; //$NON-NLS-1$
   public static final String PRINT_ZERO_CRAFTS = "PrintZeroCrafts"; //$NON-NLS-1$
   public static final String PRINT_ZERO_BACKGROUNDS = "PrintZeroBackgrounds"; //$NON-NLS-1$
+  public static final String PRINT_ZERO_INTIMACIES = "PrintZeroIntimacies"; //$NON-NLS-1$
 }

@@ -11,6 +11,16 @@ import com.lowagie.text.pdf.BaseFont;
 
 public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
 
+  public static PdfAbilitiesEncoder createWithCraftsOnly(
+      BaseFont baseFont,
+      IResources resources,
+      int essenceMax) {
+    PdfAbilitiesEncoder pdfAbilitiesEncoder = new PdfAbilitiesEncoder(baseFont, resources, essenceMax);
+    PdfTraitEncoder traitEncoder = pdfAbilitiesEncoder.getTraitEncoder();
+    pdfAbilitiesEncoder.addNamedTraitEncoder(new CraftEncoder(resources, baseFont, traitEncoder, essenceMax));
+    return pdfAbilitiesEncoder;
+  }
+
   public static PdfAbilitiesEncoder createWithSpecialtiesOnly(
       BaseFont baseFont,
       IResources resources,

@@ -9,4 +9,6 @@ public interface IAnathemaCharacterPreferences {
   public boolean printZeroBackgrounds();
 
   public boolean printZeroCrafts();
+  
+  public boolean printZeroIntimacies();
 }

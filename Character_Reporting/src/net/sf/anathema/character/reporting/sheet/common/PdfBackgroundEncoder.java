@@ -15,6 +15,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
+  // TODO: Give this and PdfIntimacyEncoder a common base class, which may be more broadly useful.
 
   private final IResources resources;
   private final PdfTraitEncoder traitEncoder;
@@ -48,9 +49,9 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
   }
 
   private String getBackgroundName(IBackgroundInfo background) {
-	String backgroundName = background.getName(resources);
-	String description = background.getDescription();
-	return backgroundName + (description != null ? " (" + description + ")" : "");
+    String backgroundName = background.getName(resources);
+    String description = background.getDescription();
+    return backgroundName + (description != null ? " (" + description + ")" : "");
   }
 
   private void encodeEmptyLines(PdfContentByte directContent, Bounds bounds, float yPosition) {
@@ -61,8 +62,7 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
     }
   }
   
-  public boolean hasContent(IGenericCharacter character)
-  {
+  public boolean hasContent(IGenericCharacter character) {
 	  return true;
   }
 }

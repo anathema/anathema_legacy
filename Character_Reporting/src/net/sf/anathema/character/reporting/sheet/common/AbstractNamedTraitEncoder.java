@@ -31,6 +31,10 @@ public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder imple
   protected IResources getResources() {
     return resources;
   }
+  
+  protected int getLineCount() {
+    return lineCount;
+  }
 
   @Override
   protected BaseFont getBaseFont() {
@@ -44,7 +48,10 @@ public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder imple
       Position position,
       float width,
       int dotCount) {
-    int height = drawSubsectionHeader(directContent, title, position, width);
+    int height = 0;
+    if (title != null) {
+      height = drawSubsectionHeader(directContent, title, position, width);
+    }
     TraitInternationalizer internationalizer = new TraitInternationalizer(getResources());
     for (int index = 0; index < lineCount && index < traits.length; index++) {
       IValuedTraitReference trait = traits[index];
