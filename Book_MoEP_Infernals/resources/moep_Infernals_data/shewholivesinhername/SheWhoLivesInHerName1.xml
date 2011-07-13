@@ -37,7 +37,6 @@
           <source source="Infernals" />
      </charm>
      <charm id="Infernal.AnalyticalModellingIntuition" exalt="Infernal" group="FactualDetermination">         
-<!-- Can be purchased a total of 3 times-->	 
           <prerequisite>
                <trait id="SheWhoLivesInHerName" value="0" />
                <essence value="3" />		   
@@ -50,6 +49,7 @@
           <duration duration="Instant" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+          <repurchases limit="3"/>
           <source source="Infernals" />
      </charm>
      <charm id="Infernal.CounterpointInquisitionDefence" exalt="Infernal" group="FactualDetermination">          
@@ -83,6 +83,10 @@
           <charmAttribute attribute="Shaping" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
+          <repurchases>
+          	<repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>
      <charm id="Infernal.CosmicTranscendenceofVirtue" exalt="Infernal" group="FactualDetermination">         
@@ -95,6 +99,12 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+          <multiEffects>
+			<effect name="Compassion"/>
+			<effect name="Conviction"/>
+			<effect name="Temperance"/>
+			<effect name="Valor"/>
+		  </multiEffects>
           <source source="Infernals" />
      </charm>
      <charm id="Infernal.Essence-DissectingStare" exalt="Infernal" group="FactualDetermination">         
@@ -138,6 +148,11 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Shaping" visualize="true" />
+          <repurchases>
+          	<repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          	<repurchase essence="3"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>
      <charm id="Infernal.Pattern-ReassertingTouch" exalt="Infernal" group="Ego">         
@@ -167,6 +182,13 @@
            <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <multiEffects>
+          	<effect name="Crippling"/>
+          	<effect name="Sickness"/>
+          	<effect name="Poison"/>
+          	<effect name="Bashing"/>
+          	<effect name="Lethal" prereqEffect="Bashing"/>
+          </multiEffects>
           <source source="Infernals" />
      </charm>
 </charmlist>

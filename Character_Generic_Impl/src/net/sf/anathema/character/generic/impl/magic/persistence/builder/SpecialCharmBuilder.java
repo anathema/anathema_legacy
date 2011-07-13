@@ -1,14 +1,16 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.CharmTier;
+import net.sf.anathema.character.generic.impl.magic.charm.special.ComplexMultipleEffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.ElementalMultipleEffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.EssenceFixedMultiLearnableCharm;
-import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.PrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
@@ -60,6 +62,7 @@ public class SpecialCharmBuilder
 	
 	private static final String TAG_MULTI_EFFECT = "multiEffects";
 	private static final String TAG_EFFECT = "effect";
+	private static final String ATTRIB_PREREQ_EFFECT = "prereqEffect";
 	
 	private static final String TAG_ELEMENTAL = "elemental";
 	
@@ -87,7 +90,10 @@ public class SpecialCharmBuilder
 		Element oxbodyElement = charmElement.element(TAG_OXBODY_CHARM);
 		if (oxbodyElement == null)
 			return null;
-		ITraitType trait = getTrait(oxbodyElement.attributeValue(ATTRIB_TRAIT));
+		String[] traitNameList = oxbodyElement.attributeValue(ATTRIB_TRAIT).split(",");
+		ITraitType[] traitList = new ITraitType[traitNameList.length];
+		for (int i = 0; i != traitList.length; i++)
+			traitList[i] = getTrait(traitNameList[i]);
 		LinkedHashMap<String, HealthLevelType[]> healthPicks = new LinkedHashMap<String, HealthLevelType[]>();
 		for (Object pickObj : oxbodyElement.elements(TAG_OXBODY_PICK))
 		{
@@ -115,7 +121,7 @@ public class SpecialCharmBuilder
 			healthPicks.put(name, levels);
 		}
 		
-		return new OxBodyTechniqueCharm(id, trait, healthPicks);
+		return new OxBodyTechniqueCharm(id, traitList, healthPicks);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -239,15 +245,19 @@ public class SpecialCharmBuilder
 		if (multiEffectElement == null)
 			return null;
 		List<String> effects = new ArrayList<String>();
+		Map<String, String> prereqEffectMap = new HashMap<String, String>();
 		for (Object effectObj : multiEffectElement.elements(TAG_EFFECT))
 		{
 			Element effect = (Element)effectObj;
 			String name = effect.attributeValue(ATTRIB_NAME);
 			effects.add(name);
+			
+			String prereqEffect = effect.attributeValue(ATTRIB_PREREQ_EFFECT);
+			prereqEffectMap.put(name, prereqEffect);			
 		}
 		String[] effectArray = new String[effects.size()];
 		effects.toArray(effectArray);
-		return new MultipleEffectCharm(id, effectArray);
+		return new ComplexMultipleEffectCharm(id, effectArray, prereqEffectMap);
 	}
 	
 	private ISpecialCharm readElementalCharm(Element charmElement, String id)

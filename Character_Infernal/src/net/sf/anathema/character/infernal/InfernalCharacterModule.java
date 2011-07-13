@@ -12,9 +12,6 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.type.CharacterType;
 
 import net.sf.anathema.character.infernal.caste.InfernalCaste;
@@ -28,7 +25,6 @@ import net.sf.anathema.character.infernal.patron.InfernalPatronTemplate;
 import net.sf.anathema.character.infernal.patron.InfernalPatronViewFactory;
 import net.sf.anathema.character.infernal.patron.persistence.InfernalPatronPersisterFactory;
 import net.sf.anathema.character.infernal.reporting.InfernalPartEncoder;
-import net.sf.anathema.character.infernal.template.IInfernalSpecialCharms;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeModelFactory;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeParser;
 import net.sf.anathema.character.infernal.urge.InfernalUrgePersisterFactory;
@@ -60,11 +56,6 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
     		InfernalUrgeTemplate.ID,
             new InfernalUrgeParser());
     
-    characterGenerics.getCharmProvider().setSpecialCharms(
-            CharacterType.INFERNAL,
-            ExaltedEdition.SecondEdition,
-            getSpecialCharmArray(ExaltedEdition.SecondEdition));
-    
     characterGenerics.getGenericCharmStatsRegistry().register(
             CharacterType.INFERNAL,
             new IMagicStats[] { new FirstExcellency(CharacterType.INFERNAL, ExaltedSourceBook.Infernals, "1 m per die"), //$NON-NLS-1$
@@ -73,42 +64,6 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
                 new YoziInevitabilityTechnique(),
                 new EffortlessYoziDominance(),
                 new SoSpeaksYozi()});
-  }
-  
-  private ISpecialCharm[] getSpecialCharmArray(IExaltedEdition edition)
-  {
-	  if (edition == ExaltedEdition.SecondEdition)
-	  {
-		  ISpecialCharm baseSet[] = new ISpecialCharm[] {
-                  IInfernalSpecialCharms.WHOLENESS_RIGHTFULLY_ASSUMED,
-                  IInfernalSpecialCharms.HARDENED_DEVIL_BODY,
-                  IInfernalSpecialCharms.VIRIDIAN_LEGEND_EXOSKELETON,
-                  IInfernalSpecialCharms.ANALYTIC_MODELING_TECHNIQUE,
-                  IInfernalSpecialCharms.UNSHATTERED_TONGUE_PERFECTION,
-                  IInfernalSpecialCharms.CONSTRUCTIVE_CONVERGANCE_OF_PRINCIPLES,
-                  IInfernalSpecialCharms.ESSENCE_INFUSED_EGO_PRIMACY,
-                  IInfernalSpecialCharms.COSMIC_TRANSCENDENCE,
-                  IInfernalSpecialCharms.ORBITAL_IMPACT_STORM,
-                  IInfernalSpecialCharms.SCAR_WRIT_SAGA_SHIELD,
-                  IInfernalSpecialCharms.PATHETIC_DISTRACTION_REBUKE,
-                  IInfernalSpecialCharms.VITRIOLIC_CORNOA_ENDOWMENT,
-                  IInfernalSpecialCharms.KISSED_BY_HELLISH_NOON,
-                  IInfernalSpecialCharms.DEMON_EMPEROR_SHINTAI,
-                  IInfernalSpecialCharms.HOLLOW_MIND_POSESSION,
-                  IInfernalSpecialCharms.TRIUMPH_OF_THE_WILL,
-                  IInfernalSpecialCharms.EMBER_GIFT_REVOCATION,
-                  IInfernalSpecialCharms.VOICE_LIKE_CRYSTAL_FACETS,
-                  IInfernalSpecialCharms.SPACE_MONSTER_SCREAM,
-                  IInfernalSpecialCharms.TOOL_TRANSCENDING_CONSTRUCTS};
-		  
-		  int yoziCount = YoziType.values().length;
-		  int generalSpecialCharmCount = 0;
-		  ISpecialCharm[] masterSet = new ISpecialCharm[baseSet.length + generalSpecialCharmCount*yoziCount];
-		  for (int i = 0; i != baseSet.length; i++) masterSet[i] = baseSet[i];
-		  
-		  return masterSet;		  
-	  }
-	  return null;
   }
   
   @Override

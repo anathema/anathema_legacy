@@ -37,6 +37,10 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
+          <repurchases>
+          	<repurchase essence="2"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>
 	 <charm id="Infernal.UnseenForceApplication" exalt="Infernal" group="MindHand">  
@@ -83,6 +87,11 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          	<repurchase essence="5"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>
 	 <charm id="Infernal.Crystal-FireBarrierTechnique" exalt="Infernal" group="MindHand">  
@@ -129,6 +138,12 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Shaping" visualize="true" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          	<repurchase essence="6"/>
+          	<repurchase essence="7"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>
 	 <charm id="Infernal.ExperimentalAccelerationMastery" exalt="Infernal" group="MindHand">  

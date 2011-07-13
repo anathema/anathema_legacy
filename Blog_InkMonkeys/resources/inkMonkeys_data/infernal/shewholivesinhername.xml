@@ -93,6 +93,10 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
+          <repurchases>
+          	<repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>
 	 <charm id="Infernal.PrecisionThought-ForceExercise" exalt="Infernal" group="MindHand">  

@@ -34,6 +34,14 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Stackable" visualize="true" />
+          <oxbody trait="Resistance,Stamina">
+          	<pick name="Category.Infernal">
+          		<TwoHealthLevel/>
+          		<TwoHealthLevel/>
+          		<TwoHealthLevel/>
+          		<FourHealthLevel/>
+          	</pick>
+          </oxbody>
           <source source="Infernals" />
      </charm>
      <charm id="Infernal.ByPainReforged" exalt="Infernal" group="PainReforged">
@@ -84,6 +92,11 @@
           <cost/>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <repurchases>
+          	<repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>
      <charm id="Infernal.ViridianLegendExoskeleton" exalt="Infernal" group="PainReforged">
@@ -101,6 +114,10 @@
                <special speed="7" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>
      <charm id="Infernal.PatheticDistractionRebuke" exalt="Infernal" group="PainReforged">
@@ -116,6 +133,7 @@
           <charmtype type="Reflexive" />
                <special primaryStep="2" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+          <repurchases limit="2"/>
           <source source="Infernals" />
      </charm>
      <charm id="Infernal.InvulnerableWoundingFutility" exalt="Infernal" group="PainReforged">

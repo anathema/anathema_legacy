@@ -89,6 +89,10 @@
           <charmAttribute attribute="Form-type" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Sickness" visualize="true" />
+          <repurchases>
+          	<repurchase essence="5"/>
+          	<repurchase essence="6"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
      <charm id="Infernal.GeomanticRedistrictingOblation" exalt="Infernal" group="ColdFire">

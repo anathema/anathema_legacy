@@ -64,6 +64,11 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Native" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
+          <repurchases>
+          	<repurchase essence="4"/>
+          	<repurchase essence="4"/>
+          	<repurchase essence="5"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
 	 <charm id="Infernal.Noumena-SeizingAssimilation" exalt="Infernal" group="HollowMind">
@@ -142,6 +147,11 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Native" visualize="true" />
           <charmAttribute attribute="Social" visualize="true" />
+          <repurchases>
+          	<repurchase essence="4"/>
+          	<repurchase essence="5"/>
+          	<repurchase essence="7"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
 	 <charm id="Infernal.BroadcastAnnouncementPrana" exalt="Infernal" group="HollowMind">
@@ -175,6 +185,10 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Native" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <repurchases>
+          	<repurchase essence="5"/>
+          	<repurchase essence="6"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
 	 <charm id="Infernal.World-WhaleKeening" exalt="Infernal" group="Unshattered">

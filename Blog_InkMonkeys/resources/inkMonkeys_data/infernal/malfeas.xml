@@ -84,6 +84,7 @@
           <charmtype type="Reflexive" />
                <special primaryStep="1" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+          <repurchases limit="2"/>
           <source source="InkMonkeys" />
      </charm>
      <charm id="Infernal.ScreamsAsPrayersReminders" exalt="Infernal" group="InsignificantEmbers">
@@ -159,6 +160,10 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
+          <repurchases>
+          	<repurchase essence="4"/>
+          	<repurchase essence="6"/>
+          </repurchases>
           <source source="InkMonkeys" />
      </charm>
 </charmlist>
