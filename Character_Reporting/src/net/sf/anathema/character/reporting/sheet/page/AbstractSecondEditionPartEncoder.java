@@ -5,8 +5,8 @@ import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.common.NewPdfEssenceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfDotsEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfEssenceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatRulesTableEncoder;
@@ -60,7 +60,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
 	  }
   
   public IPdfContentBoxEncoder getEssenceEncoder() {
-	    return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
+	    return new NewPdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
 	  }
   
   public IPdfContentBoxEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {

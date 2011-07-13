@@ -3,6 +3,7 @@ package net.sf.anathema.character.abyssal.additional;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
+import net.sf.anathema.character.generic.impl.additional.ComplexAdditionalEssencePool;
 import net.sf.anathema.character.generic.impl.additional.DefaultAdditionalRules;
 import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
 import net.sf.anathema.character.generic.impl.additional.MultiLearnableCharmPool;
@@ -21,7 +22,11 @@ public class AdditionalAbyssalRules extends DefaultAdditionalRules {
   }
 
   public void addEssenceEngorgementTechniqueRules(IMultiLearnableCharm technique) {
-    addEssencePool(new MultiLearnableCharmPool(technique, new AdditionalEssencePool(0), new AdditionalEssencePool(10)));
+    addEssencePool(new MultiLearnableCharmPool(technique,
+                                               new AdditionalEssencePool(0), new AdditionalEssencePool(0),
+                                               new ComplexAdditionalEssencePool[] {
+                                               new ComplexAdditionalEssencePool("EssenceEngorgementTechnique", 10)
+                                               }));
   }
 
   private IAdditionalMagicLearnPool getPool(IBackgroundTemplate necromancyTemplate) {

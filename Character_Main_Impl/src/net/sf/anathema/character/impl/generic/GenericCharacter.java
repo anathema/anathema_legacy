@@ -41,6 +41,7 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.lib.util.IdentifiedInteger;
 
 public class GenericCharacter implements IGenericCharacter {
 
@@ -153,15 +154,33 @@ public class GenericCharacter implements IGenericCharacter {
   public String getPeripheralPool() {
     return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getPeripheralPool() : null;
   }
+  
+  public int getPeripheralPoolValue() {
+    return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getPeripheralPoolValue() : 0;
+  }
 
   public String getPersonalPool() {
     return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getPersonalPool() : null;
+  }
+  
+  public int getPersonalPoolValue() {
+    return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getPersonalPoolValue() : 0;
+  }
+
+  @Override
+  public IdentifiedInteger[] getComplexPools() {
+    if (getTemplate().getEssenceTemplate().isEssenceUser()) {
+      return statistics.getEssencePool().getComplexPools();
+    }
+    else {
+      return new IdentifiedInteger[0];
+    }
   }
 
   public IGenericTrait[] getBackgrounds() {
     return statistics.getTraitConfiguration().getBackgrounds().getBackgrounds();
   }
-
+  
   public IAdditionalModel getAdditionalModel(String id) {
     return statistics.getExtendedConfiguration().getAdditionalModel(id);
   }

@@ -31,6 +31,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.IdentifiedInteger;
 
 public class DummyGenericCharacter implements IGenericCharacter {
 
@@ -123,8 +124,20 @@ public class DummyGenericCharacter implements IGenericCharacter {
     return null;
   }
 
+  public int getPeripheralPoolValue() {
+    return 0;
+  }
+
   public String getPersonalPool() {
     return null;
+  }
+
+  public int getPersonalPoolValue() {
+    return 0;
+  }
+
+  public IdentifiedInteger[] getComplexPools() {
+    return new IdentifiedInteger[0];
   }
 
   public IGenericTrait[] getBackgrounds() {

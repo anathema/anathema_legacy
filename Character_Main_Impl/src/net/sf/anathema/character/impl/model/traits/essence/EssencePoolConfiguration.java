@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolStrategy;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.util.IdentifiedInteger;
 
 public class EssencePoolConfiguration implements IEssencePoolConfiguration {
 
@@ -38,6 +39,10 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     }
     return poolStrategy.getStandardPersonalPool() + " (" + poolStrategy.getExtendedPersonalPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
   }
+  
+  public int getPersonalPoolValue() {
+    return poolStrategy.getFullPersonalPool();
+  }
 
   public String getPeripheralPool() {
     Ensure.ensureTrue("No Peripheral Pool", hasPeripheralPool()); //$NON-NLS-1$
@@ -47,9 +52,21 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     return poolStrategy.getStandardPeripheralPool() + " (" + poolStrategy.getExtendedPeripheralPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
   }
   
+  public int getPeripheralPoolValue() {
+    return poolStrategy.getFullPeripheralPool();
+  }
+  
+  public IdentifiedInteger[] getComplexPools() {
+    return poolStrategy.getComplexPools();
+  }
+  
   public String getAttunedPool()
   {
-	return "" + poolStrategy.getAttunementExpenditures();
+    return "" + poolStrategy.getAttunementExpenditures();
+  }
+  
+  public int getAttunedPoolValue() {
+    return poolStrategy.getAttunementExpenditures();
   }
 
   public boolean isEssenceUser() {

@@ -16,6 +16,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.lib.util.IdentifiedInteger;
 
 public interface IGenericCharacter extends ILimitationContext, IMagicCollection, IGenericCharmConfiguration {
 
@@ -36,8 +37,14 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   public int getHealthLevelTypeCount(HealthLevelType type);
 
   public String getPeripheralPool();
+  
+  public int getPeripheralPoolValue();
 
   public String getPersonalPool();
+  
+  public int getPersonalPoolValue();
+  
+  public IdentifiedInteger[] getComplexPools();
 
   public IAdditionalModel getAdditionalModel(String templateId);
   

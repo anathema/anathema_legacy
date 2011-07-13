@@ -24,6 +24,7 @@ import net.sf.anathema.character.reporting.sheet.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.page.NewPdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.NewPdfSecondPageEncoder;
+import net.sf.anathema.character.reporting.sheet.page.NewPdfThirdPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfOldStyleFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
@@ -74,6 +75,7 @@ public class PdfSheetReport implements IITextReport {
       {
     	  encoderList.add(new NewPdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
         encoderList.add(new NewPdfSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+        encoderList.add(new NewPdfThirdPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
         //encoderList.add(new PdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
     	  //encoderList.add(new PdfSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
       }

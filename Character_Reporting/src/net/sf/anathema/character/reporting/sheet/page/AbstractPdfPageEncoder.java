@@ -153,9 +153,8 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
                                     int span, float distanceFromTop, float maxHeight)
       throws DocumentException {
     float height = Math.min(maxHeight, encoder.getRequestedHeight(character));
-    encodeFixedBox(directContent, character, description, encoder, column,
-                   span, distanceFromTop, height);
-    return height;
+    return encodeFixedBox(directContent, character, description, encoder, column,
+                          span, distanceFromTop, height);
   }
   
   protected float encodeVariableBoxBottom(PdfContentByte directContent,
@@ -165,17 +164,16 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
                                           int span, float bottom, float maxHeight)
       throws DocumentException {
     float height = Math.min(maxHeight, encoder.getRequestedHeight(character));
-    encodeFixedBoxBottom(directContent, character, description, encoder, column,
-                         span, bottom, height);
-    return height;
+    return encodeFixedBoxBottom(directContent, character, description, encoder, column,
+                                span, bottom, height);  
   }
   
-  protected void encodeNotes(PdfContentByte directContent,
+  protected float encodeNotes(PdfContentByte directContent,
                              IGenericCharacter character, int column, int span,
                              float distanceFromTop, float height,
                              int textColumns, IGenericDescription description) throws DocumentException {
     IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(textColumns, "Notes");
-    encodeFixedBox(directContent, character, description,
-                   encoder, column, span, distanceFromTop, height);
+    return encodeFixedBox(directContent, character, description,
+                          encoder, column, span, distanceFromTop, height);
   }
 }

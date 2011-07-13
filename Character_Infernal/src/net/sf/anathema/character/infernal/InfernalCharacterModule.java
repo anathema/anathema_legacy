@@ -95,7 +95,7 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
                   IInfernalSpecialCharms.SOUL_CRACK_EXPLOITATION,
                   IInfernalSpecialCharms.PUISSANCE_MIMICRY_INTUITION,
                   IInfernalSpecialCharms.BLACK_MIRROR_SHINTAI,
-                  IInfernalSpecialCharms.WHOLENESS_RIGHTFULLY_ASSUMED,
+//                  IInfernalSpecialCharms.WHOLENESS_RIGHTFULLY_ASSUMED,
                   IInfernalSpecialCharms.WAYWARD_DIVINITY_OVERSIGHT,
                   IInfernalSpecialCharms.ANONYMITY_THROUGH_PROPRIETY,
                   IInfernalSpecialCharms.UNQUESTIONABLE_YOZI_AUTHORITY,

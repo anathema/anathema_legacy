@@ -185,7 +185,7 @@ public interface IInfernalSpecialCharms
 	public static final IMultiLearnableCharm TOOL_TRANSCENDING_CONSTRUCTS = new TieredMultiLearnableCharm(
 		      "Infernal.Tool-TranscendingConstructs", //$NON-NLS-1$
 		      new CharmTier[] { new CharmTier(3), new CharmTier(4), new CharmTier(6), new CharmTier(7) });
-	public static final IMultipleEffectCharm WHOLENESS_RIGHTFULLY_ASSUMED = new WholenessRightlyAssumed("Infernal.WholenessRightlyAssumed");
+	//public static final IMultipleEffectCharm WHOLENESS_RIGHTFULLY_ASSUMED = new WholenessRightlyAssumed("Infernal.WholenessRightlyAssumed");
 	public static final IMultiLearnableCharm ORBITAL_IMPACT_STORM = new TieredMultiLearnableCharm(
 		      "Infernal.OrbitalImpactStorm", //$NON-NLS-1$
 		      new CharmTier[] { new CharmTier(2), new CharmTier(3) });

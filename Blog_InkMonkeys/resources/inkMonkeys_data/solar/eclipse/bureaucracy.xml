@@ -36,6 +36,7 @@
 		<!-- NOTE:  Abyssal Mirror - Essence Engorgement Technique -->
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="NotALienLearnable" />
+		<repurchases limitingTrait="Essence"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.ServantRewardingBenevolence" exalt="Solar" group="Bureaucracy">

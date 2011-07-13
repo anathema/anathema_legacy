@@ -35,6 +35,7 @@ import net.sf.anathema.dummy.character.additional.DemoIntimaciesModel;
 import net.sf.anathema.dummy.character.trait.DummyFavorableGenericTrait;
 import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.lib.util.IdentifiedInteger;
 
 public class DemoGenericCharacter implements IGenericCharacter {
 
@@ -153,10 +154,25 @@ public int getEssenceCap(boolean modified)
   public String getPeripheralPool() {
     return "25"; //$NON-NLS-1$
   }
+  
+  @Override
+  public int getPeripheralPoolValue() {
+    return 25;
+  }
 
   @Override
   public String getPersonalPool() {
     return "10"; //$NON-NLS-1$
+  }
+  
+  @Override
+  public int getPersonalPoolValue() {
+    return 10;
+  }
+
+  @Override
+  public IdentifiedInteger[] getComplexPools() {
+    return new IdentifiedInteger[0];
   }
 
   @Override

@@ -33,6 +33,7 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.presenter.charm.ObtainableCharmFilter;
 import net.sf.anathema.character.presenter.charm.SourceBookCharmFilter;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
@@ -172,9 +173,12 @@ private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration c
       charmId = parseTrueName(charmElement, charmTrueName);
       group.learnCharmNoParents(charmConfiguration.getCharmById(charmId), isExperienceLearned(charmElement), false);
       Element specialElement = charmElement.element(TAG_SPECIAL);
+      ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
       if (specialElement != null) {
-        ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
         specialPersister.loadConfiguration(specialElement, specialConfiguration);
+      }
+      else if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
+        
       }
     }
   }

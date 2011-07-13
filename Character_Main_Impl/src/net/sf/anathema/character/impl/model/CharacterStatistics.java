@@ -86,10 +86,9 @@ public class CharacterStatistics implements ICharacterStatistics {
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration, template.getBaseHealthProviders());
     this.charms = new CharmConfiguration(health, context, generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
-    this.essencePool = new EssencePoolConfiguration(
-        template.getEssenceTemplate(),
-        template.getAdditionalRules(),
-        context);
+    this.essencePool = new EssencePoolConfiguration(template.getEssenceTemplate(),
+                                                    template.getAdditionalRules(),
+                                                    context);
     charms.initListening();
     this.combos = new ComboConfiguration(charms, context.getComboLearnStrategy(), rules.getEdition());
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
