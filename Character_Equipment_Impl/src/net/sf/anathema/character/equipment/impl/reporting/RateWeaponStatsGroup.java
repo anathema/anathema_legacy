@@ -30,10 +30,12 @@ public class RateWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeap
     }
   }
   
-  private int getRate(IWeaponStats weapon)
+  private Integer getRate(IWeaponStats weapon)
   {
-	  int baseValue = weapon.getRate();
-	  baseValue += weapon.isRangedCombat() ? equipment.getRangedRateMod() : equipment.getMeleeRateMod();
+	  Integer baseValue = weapon.getRate();
+	  if (baseValue != null) {
+	    baseValue += weapon.isRangedCombat() ? equipment.getRangedRateMod() : equipment.getMeleeRateMod();
+	  }
 	  return baseValue;
   }
 }

@@ -58,6 +58,6 @@ public class VirtueFlaw implements IVirtueFlaw {
   }
 
   public boolean isFlawComplete() {
-    return !(root == null && name.isEmpty());
+    return !(root == null || name.isEmpty());
   }
 }
