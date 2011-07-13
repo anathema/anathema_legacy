@@ -7,6 +7,7 @@ import java.util.List;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.CharmTier;
 import net.sf.anathema.character.generic.impl.magic.charm.special.ElementalMultipleEffectCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.EssenceFixedMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.PrerequisiteModifyingCharm;
@@ -55,6 +56,8 @@ public class SpecialCharmBuilder
 	private static final String ATTRIB_LIMIT = "limit";
 	private static final String ATTRIB_ESSENCE = "essence";
 	
+	private static final String TAG_ESSENCE_FIXED_REPURCHASES = "essenceFixedRepurchases";
+	
 	private static final String TAG_MULTI_EFFECT = "multiEffects";
 	private static final String TAG_EFFECT = "effect";
 	
@@ -72,6 +75,7 @@ public class SpecialCharmBuilder
 		specialCharm = specialCharm == null ? readTraitCapModifierCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readTranscendenceCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readRepurchaseCharm(charmElement, id) : specialCharm;
+		specialCharm = specialCharm == null ? readEssenceFixedRepurchasesCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readMultiEffectCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readElementalCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readSubEffectCharm(charmElement, id) : specialCharm;
@@ -163,18 +167,18 @@ public class SpecialCharmBuilder
 		{
 			ITraitType trait = getTrait(limitingTraitString);
 			
-			int absoluteMax = EssenceTemplate.SYSTEM_ESSENCE_MAX;
-			String maxString = repurchaseElement.attributeValue(ATTRIB_ABSOLUTE_MAX);
-			try
-			{
-				absoluteMax = Integer.parseInt(maxString);
-			} catch (Exception e) { }
-			
 			int modifier = 0;
 			String modifierString = repurchaseElement.attributeValue(ATTRIB_MODIFIER);
 			try
 			{
 				modifier = Integer.parseInt(modifierString);
+			} catch (Exception e) { }
+			
+			int absoluteMax = EssenceTemplate.SYSTEM_ESSENCE_MAX + modifier;
+			String maxString = repurchaseElement.attributeValue(ATTRIB_ABSOLUTE_MAX);
+			try
+			{
+				absoluteMax = Integer.parseInt(maxString);
 			} catch (Exception e) { }
 			
 			return new TraitDependentMultiLearnableCharm(id, absoluteMax, trait, modifier);
@@ -219,6 +223,14 @@ public class SpecialCharmBuilder
 			tieredCharm = new TieredMultiLearnableCharm(id, trait, tierArray);
 		
 		return tieredCharm;
+	}
+	
+	private ISpecialCharm readEssenceFixedRepurchasesCharm(Element charmElement, String id)
+	{
+		Element repurchasesElement = charmElement.element(TAG_ESSENCE_FIXED_REPURCHASES);
+		if (repurchasesElement == null)
+			return null;
+		return new EssenceFixedMultiLearnableCharm(id, EssenceTemplate.SYSTEM_ESSENCE_MAX, OtherTraitType.Essence);
 	}
 	
 	private ISpecialCharm readMultiEffectCharm(Element charmElement, String id)

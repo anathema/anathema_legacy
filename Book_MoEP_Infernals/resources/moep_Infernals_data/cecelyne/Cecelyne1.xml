@@ -46,6 +46,11 @@
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>	 
      
@@ -94,6 +99,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Compulsion" visualize="true" />
           <charmAttribute attribute="Messianic1" visualize="true" />
+          <repurchases limitingTrait="Essence" modifier="-2"/>
           <source source="Infernals" />
      </charm>     
      <charm id="Infernal.UnquestionableYoziAuthority" exalt="Infernal" group="DemonicPrimacy">          

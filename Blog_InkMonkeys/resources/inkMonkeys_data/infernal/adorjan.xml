@@ -77,6 +77,10 @@
            <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="InkMonkeys" />
      </charm>
 	 <charm id="Infernal.HungryWindHowling" exalt="Infernal" group="Wind">
@@ -123,6 +127,10 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Crippling" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="InkMonkeys" />
      </charm>
 	 <charm id="Infernal.EmbracingEmptyPassion" exalt="Infernal" group="Freedom">

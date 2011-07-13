@@ -33,6 +33,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Stackable" visualize="true" />
+          <repurchases limitingTrait="Essence"/>
           <source source="Infernals" />
      </charm>
 	 <charm id="Infernal.Death-DealingJourney" exalt="Infernal" group="Wind">          
@@ -140,6 +141,11 @@
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Form-type" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <repurchases>
+          	<repurchase essence="4"/>
+          	<repurchase essence="5"/>
+          	<repurchase essence="6"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>
 	 <charm id="Infernal.Threat-MonitoringExcitement" exalt="Infernal" group="Wind">          
@@ -223,7 +229,6 @@
           <source source="Infernals" />
      </charm>             
 	 <charm id="Infernal.RunningtoForever" exalt="Infernal" group="Wind">     
-<!--Can be purchased twice -->     
           <prerequisite>
                <trait id="Adorjan" value="0" />
                <essence value="2" />	   
@@ -233,6 +238,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <source source="Infernals" />
+          <repurchases limit="2"/>
      </charm>            
 	 <charm id="Infernal.MurderisMeat" exalt="Infernal" group="Wind">     
           <prerequisite>
@@ -293,6 +299,11 @@
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          	<repurchase essence="5"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>         
 	 <charm id="Infernal.FasterThanSight" exalt="Infernal" group="Unimpeded">          

@@ -37,6 +37,7 @@
           <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Native" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+          <traitCapModifier trait="Essence" modifier="1"/>
           <source source="Infernals" />
      </genericCharm>
       <alternatives>

@@ -8,18 +8,12 @@ import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
 import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.impl.magic.charm.special.CharmTier;
-import net.sf.anathema.character.generic.impl.magic.charm.special.EssenceFixedMultiLearnableCharm;
-import net.sf.anathema.character.generic.impl.magic.charm.special.TieredMultiLearnableCharm;
-import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.type.CharacterType;
 
@@ -86,9 +80,6 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
 	  if (edition == ExaltedEdition.SecondEdition)
 	  {
 		  ISpecialCharm baseSet[] = new ISpecialCharm[] {
-                  IInfernalSpecialCharms.WINDBORN_STRIDE,
-                  IInfernalSpecialCharms.SCARLET_RAPTURE_SHINTAI,
-                  IInfernalSpecialCharms.EARTHSKIMMING_GALE_TREAD,
                   IInfernalSpecialCharms.SELFISHNESS_IS_POWER,
                   IInfernalSpecialCharms.LIFE_DENYING_HATE,
                   IInfernalSpecialCharms.EVER_HUNGRY_SHADOW_AFFLICTION,
@@ -96,11 +87,6 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
                   IInfernalSpecialCharms.PUISSANCE_MIMICRY_INTUITION,
                   IInfernalSpecialCharms.BLACK_MIRROR_SHINTAI,
 //                  IInfernalSpecialCharms.WHOLENESS_RIGHTFULLY_ASSUMED,
-                  IInfernalSpecialCharms.WAYWARD_DIVINITY_OVERSIGHT,
-                  IInfernalSpecialCharms.ANONYMITY_THROUGH_PROPRIETY,
-                  IInfernalSpecialCharms.UNQUESTIONABLE_YOZI_AUTHORITY,
-                  IInfernalSpecialCharms.SCORPION_TAILED_MIRAGE_TECHNIQUE,
-                  IInfernalSpecialCharms.RUNNING_TO_FOREVER,
                   IInfernalSpecialCharms.INTOLERABLE_BURNING_TRUTHS,
                   IInfernalSpecialCharms.HARDENED_DEVIL_BODY,
                   IInfernalSpecialCharms.VIRIDIAN_LEGEND_EXOSKELETON,
@@ -109,16 +95,10 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
                   IInfernalSpecialCharms.CONSTRUCTIVE_CONVERGANCE_OF_PRINCIPLES,
                   IInfernalSpecialCharms.ESSENCE_INFUSED_EGO_PRIMACY,
                   IInfernalSpecialCharms.COSMIC_TRANSCENDENCE,
-                  IInfernalSpecialCharms.WIND_DAUGHTERS_WRATH,
-                  IInfernalSpecialCharms.VOICE_DRINKING_KISS,
-                  IInfernalSpecialCharms.SCOURING_BANISHMENT_TECHNIQUE,
                   IInfernalSpecialCharms.FERVOR_DRIVEN_ANTAGONISM,
                   IInfernalSpecialCharms.GOLDEN_YEARS_TARNISH_BLACK,
                   IInfernalSpecialCharms.ORBITAL_IMPACT_STORM,
-                  IInfernalSpecialCharms.CRIMSON_WIND_RIBBONS,
-                  IInfernalSpecialCharms.SPLINTERED_GALE_SHINTAI,
                   IInfernalSpecialCharms.NAKED_WICKED_SOULS,
-                  IInfernalSpecialCharms.UNSURPASSED_DEVIL_CRAFT,
                   IInfernalSpecialCharms.SPITEFUL_SEA_TINCTURE,
                   IInfernalSpecialCharms.SEA_WITHIN_VEINS_PRANA,
                   IInfernalSpecialCharms.SCAR_WRIT_SAGA_SHIELD,
@@ -131,34 +111,19 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
                   IInfernalSpecialCharms.WHAT_LURKS_BENEATH,
                   IInfernalSpecialCharms.FATHOMLESS_POISON_HAVEN,
                   IInfernalSpecialCharms.ACID_SLIPSTREAM_ASSIST,
-                  IInfernalSpecialCharms.GIFT_OF_SILENCE,
                   IInfernalSpecialCharms.AGONY_OF_UNWISE_ADVERSITY,
                   IInfernalSpecialCharms.HOLLOW_MIND_POSESSION,
                   IInfernalSpecialCharms.TRIUMPH_OF_THE_WILL,
                   IInfernalSpecialCharms.EMBER_GIFT_REVOCATION,
                   IInfernalSpecialCharms.VOICE_LIKE_CRYSTAL_FACETS,
                   IInfernalSpecialCharms.SPACE_MONSTER_SCREAM,
-                  IInfernalSpecialCharms.INEVITABILITY_OF_LAW,
                   IInfernalSpecialCharms.TOOL_TRANSCENDING_CONSTRUCTS};
 		  
 		  int yoziCount = YoziType.values().length;
-		  int generalSpecialCharmCount = 3;
+		  int generalSpecialCharmCount = 0;
 		  ISpecialCharm[] masterSet = new ISpecialCharm[baseSet.length + generalSpecialCharmCount*yoziCount];
 		  for (int i = 0; i != baseSet.length; i++) masterSet[i] = baseSet[i];
 		  
-		  for (int i = 0; i != yoziCount; i++)
-		  {
-			  ITraitType type = YoziType.values()[i];
-			  masterSet[baseSet.length + generalSpecialCharmCount*i] = new EssenceFixedMultiLearnableCharm(
-				      "Infernal.1stExcellency." + type.getId(), //$NON-NLS-1$
-				      EssenceTemplate.SYSTEM_ESSENCE_MAX,
-				      OtherTraitType.Essence);
-			  masterSet[baseSet.length + generalSpecialCharmCount*i + 1] = new TieredMultiLearnableCharm(
-				      "Infernal.YoziBodyUnity." + type.getId(), //$NON-NLS-1$
-				      new CharmTier[] { new CharmTier(5), new CharmTier(7) });
-			  masterSet[baseSet.length + generalSpecialCharmCount*i + 2] = new TraitCapModifyingCharm(
-					  "Infernal.AscendancyMantle." + type.getId(), OtherTraitType.Essence, 1);
-		  }
 		  return masterSet;		  
 	  }
 	  return null;

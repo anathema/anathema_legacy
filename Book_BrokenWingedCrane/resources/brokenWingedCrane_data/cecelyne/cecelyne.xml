@@ -32,6 +32,12 @@
           <cost/>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <repurchases>
+          	<repurchase essence="5"/>
+          	<repurchase essence="6"/>
+          	<repurchase essence="7"/>
+          	<repurchase essence="9"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
      <charm id="Infernal.InarguableWord" exalt="Infernal" group="DemonicPrimacy">

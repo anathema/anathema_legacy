@@ -39,6 +39,7 @@
           <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+          <essenceFixedRepurchases/>
           <source source="Infernals" />
      </genericCharm>
      <genericCharm id="Infernal.2ndExcellency" exalt="Infernal">

@@ -34,6 +34,10 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <genericCharmAttribute attribute="Excellency" />
+          <repurchases>
+          	<repurchase essence="5"/>
+          	<repurchase essence="7"/>
+          </repurchases>
           <source source="ReturnEmpress" />
      </genericCharm>
      <genericCharm id="Infernal.EternalEssence" exalt="Infernal">

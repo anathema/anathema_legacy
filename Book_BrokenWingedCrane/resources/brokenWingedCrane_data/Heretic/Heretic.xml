@@ -75,6 +75,10 @@
           <charmAttribute attribute="Stackable" visualize="true" />
           <charmAttribute attribute="Heretical" visualize="true" />
           <charmAttribute attribute="Native" visualize="false" />
+          <repurchases>
+          	<repurchase essence="4"/>
+          	<repurchase essence="5"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
      <charm id="Infernal.TriumphantHowloftheDevilTiger" exalt="Infernal" group="DevilTiger">

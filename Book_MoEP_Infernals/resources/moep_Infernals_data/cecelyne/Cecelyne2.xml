@@ -62,6 +62,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
+          <repurchases limit="2"/>
           <source source="Infernals" />
      </charm>      
      <charm id="Infernal.Hell-WalkerTechnique" exalt="Infernal" group="TranscendentDesert">          

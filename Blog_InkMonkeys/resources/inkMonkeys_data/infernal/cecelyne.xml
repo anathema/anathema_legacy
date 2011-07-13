@@ -113,6 +113,12 @@
           <charmAttribute attribute="Shaping" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
           <charmAttribute attribute="Stackable" visualize="true" />
+          <repurchases>
+            <repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="InkMonkeys" />
      </charm>
 	 <charm id="Infernal.InvestitureofUnholyWill" exalt="Infernal" group="DemonicPrimacy">

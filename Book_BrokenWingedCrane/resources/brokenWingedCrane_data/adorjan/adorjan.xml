@@ -58,6 +58,10 @@
            <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
 	 <charm id="Infernal.SplinteredGaleShintai" exalt="Infernal" group="Wind">
@@ -77,6 +81,12 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
           <charmAttribute attribute="Stackable" visualize="true" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          	<repurchase essence="5"/>
+          	<repurchase essence="6"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm> 
 	 <charm id="Infernal.Sky-VaultingSurge" exalt="Infernal" group="Unimpeded">
@@ -169,6 +179,13 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Touch" visualize="true" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          	<repurchase essence="6"/>
+          	<repurchase essence="8"/>
+          	<repurchase essence="10"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm> 
 </charmlist>

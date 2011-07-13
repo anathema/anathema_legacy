@@ -20,7 +20,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 
 public interface IInfernalSpecialCharms
 {
-	//Heretic
+	/*//Heretic
 	public static final IMultiLearnableCharm UNSURPASSED_DEVIL_CRAFT = new TieredMultiLearnableCharm(
 		      "Infernal.UnsurpassedDevil-Craft", //$NON-NLS-1$
 		      new CharmTier[] { new CharmTier(4), new CharmTier(5) });
@@ -74,7 +74,7 @@ public interface IInfernalSpecialCharms
 		      new CharmTier[] { new CharmTier(2), new CharmTier(3), new CharmTier(4), new CharmTier(4) });
 	public static final IMultiLearnableCharm INEVITABILITY_OF_LAW = new TieredMultiLearnableCharm(
 		      "Infernal.InevitabilityofLaw", //$NON-NLS-1$
-		      new CharmTier[] { new CharmTier(5), new CharmTier(6), new CharmTier(7), new CharmTier(9) });
+		      new CharmTier[] { new CharmTier(5), new CharmTier(6), new CharmTier(7), new CharmTier(9) });*/
 	
 	//Ebon Dragon
 	public static final IMultiLearnableCharm SELFISHNESS_IS_POWER = new TieredMultiLearnableCharm(
