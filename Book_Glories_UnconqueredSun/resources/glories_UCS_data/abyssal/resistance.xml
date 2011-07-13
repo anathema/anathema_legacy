@@ -24,7 +24,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Resistance -->
-     <charm id="Abyssal.ResilientCorpseBody" exalt="Solar" group="Resistance">
+     <charm id="Abyssal.ResilientCorpseBody" exalt="Abyssal" group="Resistance">
 		<prerequisite>
 			<essence id="Essence" value="2"/>
 			<trait id="Resistance" value="3"/>

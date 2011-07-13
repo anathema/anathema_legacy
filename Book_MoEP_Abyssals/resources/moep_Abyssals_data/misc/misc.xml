@@ -93,11 +93,11 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
 		<charmAttribute attribute="Celestial" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
+        <charmAttribute attribute="Combo-Basic" visualize="true" />
 		<charmAttribute attribute="Exclusive" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Stackable" visualize="true" />
-          <charmAttribute attribute="Taint" visualize="true" />
-          <source source="Abyssals2nd" />
+        <charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Stackable" visualize="true" />
+        <charmAttribute attribute="Taint" visualize="true" />
+        <source source="Abyssals2nd" />
      </charm>
 </charmlist>

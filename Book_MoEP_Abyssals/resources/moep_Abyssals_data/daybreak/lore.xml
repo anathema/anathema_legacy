@@ -149,6 +149,7 @@
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Immanent Solar Glory -->
           <charmAttribute attribute="Native" visualize="true" />
+          <repurchases limitingTrait="Essence"/>
           <source source="Abyssals2nd" />
           <source source="InkMonkeys" />
      </charm>

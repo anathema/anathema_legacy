@@ -51,6 +51,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
+          <repurchases limit="2"/>
           <!-- NOTE:  Solar Mirror - Righteous Lion Defense -->
           <source source="Abyssals2nd" />
      </charm>

@@ -3,7 +3,6 @@ package net.sf.anathema.character.abyssal;
 import net.sf.anathema.character.abyssal.additional.AdditionalAbyssalRules;
 import net.sf.anathema.character.abyssal.additional.AdditionalLoyalAbyssalRules;
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
-import net.sf.anathema.character.abyssal.caste.IAbyssalSpecialCharms;
 import net.sf.anathema.character.abyssal.equipment.FangTemplate;
 import net.sf.anathema.character.abyssal.reporting.FirstEditionAbyssalPartEncoder;
 import net.sf.anathema.character.abyssal.template.LoyalAbyssalTemplate;
@@ -18,7 +17,9 @@ import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
+import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
@@ -33,6 +34,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
+  private static final String ESSENCE_ENGORGEMENT_TECHNIQUE = "Abyssal.EssenceEngorgementTechnique";
   public static final String BACKGROUND_ID_ABYSSAL_COMMAND = "AbyssalCommand"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_LIEGE = "Liege"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_NECROMANCY = "Necromancy"; //$NON-NLS-1$
@@ -44,14 +46,6 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    ISpecialCharm[] specialCharms = new ISpecialCharm[] {
-        IAbyssalSpecialCharms.OX_BODY_TECHNIQUE,
-        IAbyssalSpecialCharms.INSENSIBLE_CORPSE_TECHNIQUE,
-        IAbyssalSpecialCharms.ESSENCE_ENGORGEMENT_TECHNIQUE };
-    characterGenerics.getCharmProvider().setSpecialCharms(
-        CharacterType.ABYSSAL,
-        ExaltedEdition.FirstEdition,
-        specialCharms);
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.ABYSSAL,
         new CasteCollection(AbyssalCaste.values()));
@@ -67,19 +61,27 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
     initTemplate(
         templateRegistry, new LoyalAbyssalTemplate(
         charmProvider,
-        additionalLoyalAbyssalRules), additionalLoyalAbyssalRules);
+        additionalLoyalAbyssalRules), charmProvider, additionalLoyalAbyssalRules);
     initTemplate(templateRegistry, new RenegadeAbyssalTemplate(
         charmProvider,
-        additionalRenegadeAbyssalRules), additionalRenegadeAbyssalRules);
-    //templateRegistry.register(new UnsupportedAbyssal2ndTemplate(charmProvider));
+        additionalRenegadeAbyssalRules), charmProvider, additionalRenegadeAbyssalRules);
   }
 
   private void initTemplate(
       ITemplateRegistry templateRegistry,
       ICharacterTemplate template,
+      ICharmCache charmProvider,
       AdditionalAbyssalRules additionalRules) {
-    templateRegistry.register(template);    
-    additionalRules.addEssenceEngorgementTechniqueRules(IAbyssalSpecialCharms.ESSENCE_ENGORGEMENT_TECHNIQUE);
+    templateRegistry.register(template);
+    additionalRules.addEssenceEngorgementTechniqueRules(getEngorgement(charmProvider));
+  }
+  
+  private IMultiLearnableCharm getEngorgement(ICharmCache cache)
+  {
+	  for (ISpecialCharm charm : cache.getSpecialCharmData(CharacterType.ABYSSAL, ExaltedRuleSet.CoreRules))
+		  if (charm.getCharmId().equals(ESSENCE_ENGORGEMENT_TECHNIQUE))
+			  return (IMultiLearnableCharm) charm;
+	  return null;
   }
 
   @Override

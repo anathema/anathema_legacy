@@ -18,4 +18,9 @@ public class StaticMultiLearnableCharm extends AbstractMultiLearnableCharm {
   public int getMaximumLearnCount(IGenericTraitCollection traitCollection) {
     return learnCount;
   }
+  
+  public String toString()
+  {
+	  return "[" + getCharmId() + ";" + learnCount + "]";
+  }
 }

@@ -45,4 +45,12 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
       }
     };
   }
+  
+  public String toString()
+  {
+	  String list = "";
+	  for (String effect : effectIds)
+		  list += effect + (effect == effectIds[effectIds.length - 1] ? "" : ",");
+	  return "[" + getCharmId() + ";" + list + "]";
+  }
 }

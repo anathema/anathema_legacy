@@ -36,9 +36,10 @@
           <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Solar Mirror - Divine Trancendence of (Ability) -->
-		<charmAttribute attribute="Native" visualize="true" />
-		<source source="ScrollErrata" />
+		  <!-- NOTE:  Solar Mirror - Divine Trancendence of (Ability) -->
+		  <charmAttribute attribute="Native" visualize="true" />
+		  <transcendence modifier="-1"/>
+		  <source source="ScrollErrata" />
      </genericCharm>
      <genericCharm id="Abyssal.SupremePerfectionOf" exalt="Abyssal">
           <prerequisite>

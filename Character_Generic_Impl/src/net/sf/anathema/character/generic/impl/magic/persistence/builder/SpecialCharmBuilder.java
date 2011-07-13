@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffect
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.PrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.StaticPainToleranceCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.SubeffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
@@ -29,6 +30,7 @@ public class SpecialCharmBuilder
 	private static final String ATTRIB_NAME = "name";
 	private static final String ATTRIB_MODIFIER = "modifier";
 	private static final String ATTRIB_TRAIT = "trait";
+	private static final String ATTRIB_VALUE = "value";
 	
 	private static final String TAG_OXBODY_CHARM = "oxbody";
 	private static final String TAG_OXBODY_PICK = "pick";
@@ -38,6 +40,9 @@ public class SpecialCharmBuilder
 	private static final String TAG_FOUR_HEALTH = "fourHealthLevel";
 	private static final String TAG_INCAP_HEALTH = "incapHealthLevel";
 	private static final String TAG_DYING_HEALTH = "dyingHealthLevel";
+	
+	private static final String TAG_PAIN_TOLERANCE = "painTolerance";
+	private static final String TAG_LEVEL = "level";
 	
 	private static final String TAG_TRAIT_CAP_MODIFIER = "traitCapModifier";
 	
@@ -63,6 +68,7 @@ public class SpecialCharmBuilder
 	{
 		ISpecialCharm specialCharm = null;
 		specialCharm = specialCharm == null ? readOxBodyCharm(charmElement, id) : specialCharm;
+		specialCharm = specialCharm == null ? readPainToleranceCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readTraitCapModifierCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readTranscendenceCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readRepurchaseCharm(charmElement, id) : specialCharm;
@@ -106,6 +112,21 @@ public class SpecialCharmBuilder
 		}
 		
 		return new OxBodyTechniqueCharm(id, trait, healthPicks);
+	}
+	
+	@SuppressWarnings("unchecked")
+	private ISpecialCharm readPainToleranceCharm(Element charmElement, String id)
+	{
+		Element painToleranceElement = charmElement.element(TAG_PAIN_TOLERANCE);
+		if (painToleranceElement == null)
+			return null;
+		List elements = painToleranceElement.elements(TAG_LEVEL);
+		int[] levelArray = new int[elements.size()];
+		for (int i = 0; i != elements.size(); i++)
+			levelArray[i] = Integer.parseInt(((Element)elements.get(i)).attributeValue(ATTRIB_VALUE));
+				
+		return new StaticPainToleranceCharm(id, levelArray.length, levelArray);
+		
 	}
 	
 	private ISpecialCharm readTraitCapModifierCharm(Element charmElement, String id)

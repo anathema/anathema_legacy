@@ -852,6 +852,20 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
+    <oxbody trait="Endurance">
+		<pick name="Category.-0">
+			<ZeroHealthLevel/>
+		</pick>
+		<pick name="Category.-1x2">
+			<OneHealthLevel/>
+			<OneHealthLevel/>
+		</pick>
+		<pick name="Category.-1-2x2">
+			<OneHealthLevel/>
+			<TwoHealthLevel/>
+			<TwoHealthLevel/>
+		</pick>
+	</oxbody>
     <source source="Abyssals1st" page="174"/>
   </charm>
   <charm id="Abyssal.GhostArmorPrana" exalt="Abyssal" group="Endurance">
@@ -924,6 +938,11 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
+    <painTolerance>
+    	<level value="2"/>
+    	<level value="4"/>
+    	<level value="4"/>
+    </painTolerance>
     <source source="Abyssals1st" page="175"/>
   </charm>
   <charm id="Abyssal.TirelessSentinelTechnique" exalt="Abyssal" group="Endurance">
@@ -1378,6 +1397,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
+    <repurchases limitingTrait="Essence"/>
     <source source="Abyssals1st" page="184"/>
   </charm>
   <charm id="Abyssal.SuperiorPredatorStyle" exalt="Abyssal" group="Survival">

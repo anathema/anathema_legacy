@@ -201,6 +201,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Stackable" visualize="true" />
+          <repurchases limitingTrait="Resistance"/>
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.OxBodyTechnique" exalt="Abyssal" group="Resistance">
@@ -214,6 +215,20 @@
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Ox-Body Technique -->
           <charmAttribute attribute="Stackable" visualize="true" />
+          <oxbody trait="Resistance">
+			<pick name="Category.-0">
+				<ZeroHealthLevel/>
+			</pick>
+			<pick name="Category.-1x2">
+				<OneHealthLevel/>
+				<OneHealthLevel/>
+			</pick>
+			<pick name="Category.-1-2x2">
+				<OneHealthLevel/>
+				<TwoHealthLevel/>
+				<TwoHealthLevel/>
+			</pick>
+		  </oxbody>
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.PlagueKnowsItsMaster" exalt="Abyssal" group="Resistance">

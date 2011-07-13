@@ -153,6 +153,7 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Avatar3" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
+          <repurchases limit="2"/>
           <!-- NOTE:  Solar Mirror - Wonder-Forging Genius -->
           <source source="Abyssals2nd" />
      </charm>

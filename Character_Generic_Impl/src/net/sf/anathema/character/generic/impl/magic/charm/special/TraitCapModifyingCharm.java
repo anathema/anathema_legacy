@@ -39,4 +39,8 @@ public class TraitCapModifyingCharm implements ITraitCapModifyingCharm
 		return modifier;
 	}
 
+	public String toString()
+	{
+		return "[" + getCharmId() + ";mod " + traitType.getId() + "]"; 
+	}
 }

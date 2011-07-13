@@ -1,7 +1,11 @@
 package net.sf.anathema.character.martialarts;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffectCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
+import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
+import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 
 public interface IMartialArtsSpecialCharms {
 
@@ -40,4 +44,8 @@ public interface IMartialArtsSpecialCharms {
           "AlchemicalSoulsteel", //$NON-NLS-1$
           "AlchemicalAdamant" }); //$NON-NLS-1$
 
+  public static final IMultiLearnableCharm WRITHING_BLOOD_CHAIN_TECHNIQUE = new TraitDependentMultiLearnableCharm(
+	      "Abyssal.WrithingBloodChainTechnique", //$NON-NLS-1$
+	      EssenceTemplate.SYSTEM_ESSENCE_MAX,
+	      OtherTraitType.Essence, -2);
 }

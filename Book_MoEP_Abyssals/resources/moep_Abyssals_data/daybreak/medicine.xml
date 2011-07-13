@@ -90,6 +90,13 @@
           <charmAttribute attribute="Shaping" visualize="true" />
           <charmAttribute attribute="Sickness" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
+          <subeffects bpCost=".5">
+            <subeffect name="Disease1"/>
+            <subeffect name="Disease2"/>
+            <subeffect name="Disease3"/>
+            <subeffect name="Disease4"/>
+            <subeffect name="Disease5"/>
+		  </subeffects>
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.VenomBleedingAgony" exalt="Abyssal" group="Medicine">

@@ -153,6 +153,12 @@
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Essence Arrow Attack -->
           <charmAttribute attribute="Obvious" visualize="true" />
+          <subeffects bpCost=".5">
+			<subeffect name="BloodthirstyArrow"/>
+			<subeffect name="DreamShatteringSpite"/>
+			<subeffect name="HundredPacesBite"/>
+			<subeffect name="ImpositionOfAgony"/>
+		  </subeffects>
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.BanishedBowArsenal" exalt="Abyssal" group="Archery">
