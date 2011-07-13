@@ -16,7 +16,7 @@ public class ComboView implements IComboView {
   private JLabel label;
   private final Action deleteAction;
   private final Action editAction;
-  private Component editComponent;
+  //private Component editComponent;
   private Component deleteComponent;
 
   public ComboView(Action deleteAction, Action editAction) {
@@ -31,7 +31,7 @@ public class ComboView implements IComboView {
   public void initGui(String name, String description) {
     label = new JLabel(description);
     taskPaneGroup.add(label);
-    editComponent = taskPaneGroup.add(editAction);
+    taskPaneGroup.add(editAction);
     deleteComponent = taskPaneGroup.add(deleteAction);
     taskPaneGroup.setTitle(name);
   }
@@ -48,7 +48,7 @@ public class ComboView implements IComboView {
 
   public void setEditButtonsVisible(boolean enabled) {
     if (!enabled) {
-      taskPaneGroup.remove(editComponent);
+      //taskPaneGroup.remove(editComponent);
       taskPaneGroup.remove(deleteComponent);
       GuiUtilities.revalidateTree(taskPaneGroup);
     }

@@ -90,7 +90,7 @@ public class CharacterStatistics implements ICharacterStatistics {
                                                     template.getAdditionalRules(),
                                                     context);
     charms.initListening();
-    this.combos = new ComboConfiguration(charms, context.getComboLearnStrategy(), rules.getEdition());
+    this.combos = new ComboConfiguration(charms, context.getComboLearnStrategy(), rules.getEdition(), experiencePoints);
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
     this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template, rules.getEdition());
     this.spells.addChangeListener(new IChangeListener() {

@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.impl.model.charm.combo.FirstEditionComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.IComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.SecondEditionComboArbitrator;
+import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
@@ -23,17 +24,20 @@ public class ComboConfiguration implements IComboConfiguration {
 
   private final List<ICombo> creationComboList = new ArrayList<ICombo>();
   private final List<ICombo> experiencedComboList = new ArrayList<ICombo>();
+  private final IExperiencePointConfiguration experiencePoints;
   private final IComboArbitrator rules;
   private final ICombo editCombo = new Combo();
   private final GenericControl<IComboConfigurationListener> control = new GenericControl<IComboConfigurationListener>();
   private final ICharmConfiguration charmConfiguration;
   private final ComboIdProvider idProvider = new ComboIdProvider();
   private final IComboLearnStrategy learnStrategy;
+  private ICombo originalCombo;
 
   public ComboConfiguration(
       ICharmConfiguration charmConfiguration,
       IComboLearnStrategy learnStrategy,
-      IExaltedEdition edition) {
+      IExaltedEdition edition,
+      IExperiencePointConfiguration experiencePoints) {
     this.charmConfiguration = charmConfiguration;
     this.learnStrategy = learnStrategy;
     this.charmConfiguration.addCharmLearnListener(new CharmLearnAdapter() {
@@ -53,6 +57,7 @@ public class ComboConfiguration implements IComboConfiguration {
       }
     });
     this.rules = editionRules[0];
+    this.experiencePoints = experiencePoints;
   }
 
   public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {
@@ -97,6 +102,12 @@ public class ComboConfiguration implements IComboConfiguration {
 
   public void finalizeCombo() {
     learnStrategy.finalizeCombo(this);
+  }
+  
+  public void finalizeComboXP(String xpMessage)
+  {
+	  experiencePoints.addEntry(xpMessage, -1);
+	  finalizeCombo();
   }
 
   public void finalizeCombo(boolean experienced) {
@@ -204,16 +215,36 @@ public class ComboConfiguration implements IComboConfiguration {
 
   public void clearCombo() {
     editCombo.clear();
+    originalCombo = null;
     fireEndEditEvent();
   }
 
   public void beginComboEdit(ICombo combo) {
     editCombo.clear();
     editCombo.getValuesFrom(combo);
+    originalCombo = combo;
     fireBeginEditEvent(combo);
   }
 
   public boolean isLearnedOnCreation(ICombo combo) {
     return creationComboList.contains(combo);
+  }
+  
+  public boolean isAllowedToRemove(ICharm charm)
+  {
+	  if (originalCombo != null &&
+		  (!creationComboList.contains(originalCombo) || experiencePoints.getTotalExperiencePoints() != 0) &&
+		  originalCombo.contains(charm))
+		  return false;
+	  return true;
+  }
+  
+  public boolean canFinalizeWithXP()
+  {
+	  if (originalCombo == null || experiencePoints.getTotalExperiencePoints() == 0) return false;
+	  ICombo testCombo = new Combo();
+	  testCombo.getValuesFrom(editCombo);
+	  testCombo.removeCharms(originalCombo.getCharms());
+	  return testCombo.getCharms().length > 0;
   }
 }

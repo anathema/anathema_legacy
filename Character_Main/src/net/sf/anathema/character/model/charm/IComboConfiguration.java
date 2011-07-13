@@ -12,6 +12,8 @@ public interface IComboConfiguration {
   public void removeCharmsFromCombo(ICharm[] charms);
 
   public void finalizeCombo();
+  
+  public void finalizeComboXP(String xpMessage);
 
   public ICombo getEditCombo();
 
@@ -36,4 +38,8 @@ public interface IComboConfiguration {
   public void finalizeCombo(boolean experienced);
 
   public void setCrossPrerequisiteTypeComboAllowed(boolean allowed);
+  
+  public boolean isAllowedToRemove(ICharm charm);
+  
+  public boolean canFinalizeWithXP();
 }

@@ -228,6 +228,12 @@ public class ComboConfigurationPresenter implements IContentPresenter {
       public void comboFinalized() {
         comboConfiguration.finalizeCombo();
       }
+      
+      public void comboFinalizedXP() {
+    	  String comboName = comboConfiguration.getEditCombo().getName().getText();
+    	  comboName = comboName == null ? resources.getString("CardView.CharmConfiguration.ComboCreation.Combo") : "\"" + comboName + "\"";
+          comboConfiguration.finalizeComboXP(comboName + " " + resources.getString("CardView.CharmConfiguration.ComboCreation.Upgraded"));
+        }
 
       public void comboCleared() {
         comboConfiguration.clearCombo();

@@ -7,6 +7,8 @@ public interface IComboViewListener {
   public void charmRemoved(Object[] removedCharms);
 
   public void comboFinalized();
+  
+  public void comboFinalizedXP();
 
   public void comboCleared();
 }
