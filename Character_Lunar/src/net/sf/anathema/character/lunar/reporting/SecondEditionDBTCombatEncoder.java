@@ -44,13 +44,11 @@ public class SecondEditionDBTCombatEncoder implements IPdfContentBoxEncoder {
 	    int stunningThreshold = CharacterUtilties.getStunningThreshold(traitCollection, equipment);
 	    int stunningPool = CharacterUtilties.getStunningPool(traitCollection, equipment);
 
-	    String mobilityPenaltyLabel = "-" + resources.getString("Sheet.Combat.MobilityPenalty"); //$NON-NLS-1$ //$NON-NLS-2$
 	    String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$
 	    Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
 	    LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
 	    encoder.addLabelledValue(directContent, 0, joinLabel, joinBattle);
 	    encoder.addLabelledValue(directContent, 1, dodgeLabel, dodgeDV);
-	    encoder.addComment(directContent, mobilityPenaltyLabel, 1);
 	    
 	    upperLeftCorner = new Position(bounds.x, bounds.getMaxY() - 25);
 	    encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
