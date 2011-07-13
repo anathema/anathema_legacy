@@ -49,6 +49,10 @@
           <charmAttribute attribute="Poison" visualize="true" />
           <charmAttribute attribute="Stackable" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
+          <repurchases>
+          	<repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
 	 <charm id="Infernal.SeaWithinVeinsPrana" exalt="Infernal" group="Mother">
@@ -60,6 +64,7 @@
           <cost/>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <repurchases limit="2"/>
           <source source="BrokenWingedCrane" />
      </charm>
 	 <charm id="Infernal.GreatMothersTears" exalt="Infernal" group="Mother">	 
@@ -71,6 +76,12 @@
           <cost/>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <multiEffects>
+          	<effect name="PoisonImmunity"/>
+          	<effect name="KnockoutPoisons"/>
+          	<effect name="EmotionPoisons"/>
+          	<effect name="MutagenicPoisons"/>
+          </multiEffects>
           <source source="BrokenWingedCrane" />
      </charm>
      <charm id="Infernal.IchorFluxTendrils" exalt="Infernal" group="Mother">
@@ -88,6 +99,10 @@
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
+          <repurchases>
+          	<repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
 	 <charm id="Infernal.TidalRenewalDiscipline" exalt="Infernal" group="Mother">	 
@@ -134,6 +149,11 @@
           <charmAttribute attribute="Sorcerous" visualize="true" />
           <charmAttribute attribute="Sea" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
+          <repurchases>
+          	<repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          	<repurchase essence="5"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
      <charm id="Infernal.FathomlessPoisonHaven" exalt="Infernal" group="Mother">
@@ -149,6 +169,10 @@
           <charmtype type="Reflexive" />		  
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
+          <repurchases>
+          	<repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
      <charm id="Infernal.AcridSlipstreamAssist" exalt="Infernal" group="Mother">
@@ -165,6 +189,10 @@
           <charmtype type="Simple" />		  
           <charmAttribute attribute="Sea" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
+          <repurchases>
+          	<repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
      <charm id="Infernal.IntolerableBurningTruths" exalt="Infernal" group="Intolerable">		 
@@ -177,6 +205,13 @@
           <charmtype type="Permanent" />	  
           <charmAttribute attribute="Compulsion" visualize="true" />
           <charmAttribute attribute="Stackable" visualize="true" />
+          <multiEffects>
+			<effect name="MotherBeforeDaughter"/>
+			<effect name="TrustIsNaive"/>
+			<effect name="ExistenceisAgony"/>
+			<effect name="NeverForgive"/>
+			<effect name="HateSpringsEternal"/>
+		</multiEffects>
           <source source="BrokenWingedCrane" />
      </charm>
 	 <charm id="Infernal.RisingTideAscension" exalt="Infernal" group="Intolerable">	 

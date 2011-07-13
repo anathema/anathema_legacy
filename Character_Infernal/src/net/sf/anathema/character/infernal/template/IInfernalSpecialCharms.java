@@ -74,7 +74,7 @@ public interface IInfernalSpecialCharms
 		      new CharmTier[] { new CharmTier(2), new CharmTier(3), new CharmTier(4), new CharmTier(4) });
 	public static final IMultiLearnableCharm INEVITABILITY_OF_LAW = new TieredMultiLearnableCharm(
 		      "Infernal.InevitabilityofLaw", //$NON-NLS-1$
-		      new CharmTier[] { new CharmTier(5), new CharmTier(6), new CharmTier(7), new CharmTier(9) });*/
+		      new CharmTier[] { new CharmTier(5), new CharmTier(6), new CharmTier(7), new CharmTier(9) });
 	
 	//Ebon Dragon
 	public static final IMultiLearnableCharm SELFISHNESS_IS_POWER = new TieredMultiLearnableCharm(
@@ -130,7 +130,7 @@ public interface IInfernalSpecialCharms
 		      new CharmTier[] { new CharmTier(2), new CharmTier(3) });
 	public static final IMultiLearnableCharm ACID_SLIPSTREAM_ASSIST = new TieredMultiLearnableCharm(
 		      "Infernal.AcridSlipstreamAssist", //$NON-NLS-1$
-		      new CharmTier[] { new CharmTier(2), new CharmTier(3) });
+		      new CharmTier[] { new CharmTier(2), new CharmTier(3) });*/
 	
 	//Malfeas
 	  public static final IOxBodyTechniqueCharm HARDENED_DEVIL_BODY = new OxBodyTechniqueCharm(
@@ -185,7 +185,7 @@ public interface IInfernalSpecialCharms
 	public static final IMultiLearnableCharm TOOL_TRANSCENDING_CONSTRUCTS = new TieredMultiLearnableCharm(
 		      "Infernal.Tool-TranscendingConstructs", //$NON-NLS-1$
 		      new CharmTier[] { new CharmTier(3), new CharmTier(4), new CharmTier(6), new CharmTier(7) });
-	//public static final IMultipleEffectCharm WHOLENESS_RIGHTFULLY_ASSUMED = new WholenessRightlyAssumed("Infernal.WholenessRightlyAssumed");
+	public static final IMultipleEffectCharm WHOLENESS_RIGHTFULLY_ASSUMED = new WholenessRightlyAssumed("Infernal.WholenessRightlyAssumed");
 	public static final IMultiLearnableCharm ORBITAL_IMPACT_STORM = new TieredMultiLearnableCharm(
 		      "Infernal.OrbitalImpactStorm", //$NON-NLS-1$
 		      new CharmTier[] { new CharmTier(2), new CharmTier(3) });

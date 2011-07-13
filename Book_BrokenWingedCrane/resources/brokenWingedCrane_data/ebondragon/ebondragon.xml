@@ -35,6 +35,11 @@
           <duration duration="Indefinite" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+          <repurchases>
+            <repurchase essence="2"/>
+          	<repurchase essence="4"/>
+          	<repurchase essence="6"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>    
      <charm id="Infernal.SweetAgonySavoured" exalt="Infernal" group="Life">
@@ -65,6 +70,11 @@
           <charmAttribute attribute="Crippling" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
           <charmAttribute attribute="Stackable" visualize="true" />
+          <repurchases>
+            <repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          	<repurchase essence="3"/>
+          </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>   
      <charm id="Infernal.AgonyofUnwiseAdversityCost" exalt="Infernal" group="Seeing">

@@ -99,6 +99,10 @@
           <charmAttribute attribute="Emotion" visualize="true" />
           <charmAttribute attribute="Servitude" visualize="true" />
           <charmAttribute attribute="Social" visualize="true" />
+          <repurchases>
+            <repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="InkMonkeys" />
      </charm> 		
 	 <charm id="Infernal.GoldenYearsTarnishBlack" exalt="Infernal" group="Gold">
@@ -117,6 +121,10 @@
           <charmAttribute attribute="Emotion" visualize="true" />
           <charmAttribute attribute="Illusion" visualize="true" />
           <charmAttribute attribute="Social" visualize="true" />
+          <repurchases>
+            <repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          </repurchases>
           <source source="InkMonkeys" />
      </charm> 	
 	 <charm id="Infernal.WeakMindsBelieveAnything" exalt="Infernal" group="Gold">

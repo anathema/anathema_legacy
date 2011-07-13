@@ -183,6 +183,11 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>  
 	 <charm id="Infernal.Life-BlightingEmptinessAttack" exalt="Infernal" group="Life">          
@@ -228,6 +233,11 @@
 		  <special speed="4"  />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
+          <repurchases>
+            <repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          	<repurchase essence="7"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>  
 	 <charm id="Infernal.Ever-HungryShadowAffliction" exalt="Infernal" group="Life">          
@@ -244,6 +254,10 @@
 		  <special speed="5"  />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
+          <repurchases>
+            <repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>    
 	 <charm id="Infernal.Despair-ChokedSpiritMaiming" exalt="Infernal" group="Life">          
@@ -299,6 +313,10 @@
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+          <repurchases>
+            <repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>    
 	 <charm id="Infernal.PuissanceMimicryIntuition" exalt="Infernal" group="Nemesis">          
@@ -315,6 +333,11 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
           <charmAttribute attribute="Stackable" visualize="true" />
+          <repurchases>
+            <repurchase essence="3"/>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>   
 	 <charm id="Infernal.BlackMirrorShintai" exalt="Infernal" group="Nemesis">          
@@ -334,6 +357,10 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Shaping" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
+          <repurchases>
+            <repurchase essence="3"/>
+          	<repurchase essence="6"/>
+          </repurchases>
           <source source="Infernals" />
      </charm> 
 	 <charm id="Infernal.CrackedCellCircumvention" exalt="Infernal" group="Loom">          
