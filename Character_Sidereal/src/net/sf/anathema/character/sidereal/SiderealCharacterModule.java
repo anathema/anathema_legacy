@@ -19,7 +19,6 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
@@ -50,7 +49,6 @@ import net.sf.anathema.character.sidereal.paradox.SiderealParadoxViewFactory;
 import net.sf.anathema.character.sidereal.reporting.FirstEditionSiderealPartEncoder;
 import net.sf.anathema.character.sidereal.reporting.SecondEditionSiderealPartEncoder;
 import net.sf.anathema.character.sidereal.template.DefaultSiderealTemplate;
-import net.sf.anathema.character.sidereal.template.ISiderealSpecialCharms;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -87,18 +85,6 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    ISpecialCharm[] firstEditioncharms = new ISpecialCharm[] {
-        ISiderealSpecialCharms.OX_BODY_TECHNIQUE,
-        ISiderealSpecialCharms.WORLD_SHAPING_ARTISTIC_VISION };
-    ISpecialCharm[] secondEditioncharms = new ISpecialCharm[] {
-            ISiderealSpecialCharms.OX_BODY_TECHNIQUE_2ND,
-            ISiderealSpecialCharms.WORLD_SHAPING_ARTISTIC_VISION_2ND,
-            ISiderealSpecialCharms.MANY_MISSILES_BOW,
-            ISiderealSpecialCharms.MASQUE_OF_THE_UNCANNY,
-            ISiderealSpecialCharms.MIRROR_SHATTERING_METHOD,
-            ISiderealSpecialCharms.WALLS_OF_SALT_AND_ASH};
-    characterGenerics.getCharmProvider().setSpecialCharms(CharacterType.SIDEREAL, ExaltedEdition.FirstEdition, firstEditioncharms);
-    characterGenerics.getCharmProvider().setSpecialCharms(CharacterType.SIDEREAL, ExaltedEdition.SecondEdition, secondEditioncharms);
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.SIDEREAL,
         new CasteCollection(SiderealCaste.values()));

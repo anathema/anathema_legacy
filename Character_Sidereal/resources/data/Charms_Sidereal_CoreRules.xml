@@ -11,6 +11,11 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
+    <oxbody trait="Endurance">
+    	<pick name="Category.-0">
+    		<ZeroHealthLevel/>
+    	</pick>
+    </oxbody>
     <source source="Sidereals1st" page="132"/>
   </charm>
   <charm id="Sidereal.UnsweringJuggernautPrinciple" exalt="Sidereal" group="Endurance">
@@ -492,6 +497,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
+    <repurchases limit="3"/>
     <source source="Sidereals1st" page="144"/>
   </charm>
   <charm id="Sidereal.Destiny-KnittingEntanglement" exalt="Sidereal" group="Craft">

@@ -81,6 +81,12 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Compulsion" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <subeffects bpCost="1">
+			<subeffect name="GodsElementals"/>
+			<subeffect name="FairFolk"/>
+			<subeffect name="Undead"/>
+			<subeffect name="Demons"/>
+		  </subeffects>
           <source source="Sidereals2nd" />
      </charm>
      <charm id="Sidereal.MirrorShatteringMethod" exalt="Sidereal" group="Sail">
@@ -97,6 +103,11 @@
           <duration amount="5" unit="day" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Fate" visualize="true" />
+          <subeffects bpCost="1">
+			<subeffect name="YuShan"/>
+			<subeffect name="Underworld"/>
+			<subeffect name="Malfeas"/>
+		  </subeffects>
           <source source="Sidereals2nd" />
      </charm>
      <charm id="Sidereal.FiveOrdealsOdyssey" exalt="Sidereal" group="Sail">

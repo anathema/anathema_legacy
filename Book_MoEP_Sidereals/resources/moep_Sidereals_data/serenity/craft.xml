@@ -119,6 +119,7 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <repurchases limit="3"/>
           <source source="Sidereals2nd" />
      </charm>
      <charm id="Sidereal.PredestinedDeliveryShaping" exalt="Sidereal" group="Craft">

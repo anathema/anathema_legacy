@@ -33,6 +33,11 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Stackable" visualize="true" />
+          <oxbody trait="Resistance">
+    		<pick name="Category.-0">
+    			<ZeroHealthLevel/>
+    		</pick>
+    	  </oxbody>
           <source source="Sidereals2nd" />
      </charm>
      <charm id="Sidereal.WaterAndFireTreaty" exalt="Sidereal" group="Resistance">
