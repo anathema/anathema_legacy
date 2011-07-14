@@ -60,7 +60,7 @@ public class NewPdfSecondPageEncoder extends AbstractPdfPageEncoder {
       throws DocumentException {
     return encodeFixedBox(directContent, character, description,
                           getRegistry().getPossessionsEncoder(),
-                          2, 2, distanceFromTop, height);
+                          1, 3, distanceFromTop, height);
   }
 
   private float encodeArmourAndSoak(PdfContentByte directContent,
