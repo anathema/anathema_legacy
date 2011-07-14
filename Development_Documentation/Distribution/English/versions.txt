@@ -10,17 +10,46 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- Features --
+* Essence maximum raised to 10.
+* Added an option to upgrade combos for 1 XP, per errata.
+* Revised the character sheet layout, providing more space for items, weapons,
+  panoply, etc.
+* Added some significant enhancements to equipment handling. It is now possible
+  to specify attunement costs and current attunement state, which is noted on
+  the character sheet. It is also possible for items to affect other character
+  stats, such as Orichalcum Hearthstone Bracers adding to damage, etc..
+  Many other improvements as well!
+* Modified support for Backgrounds, so that they can now have an optional
+  descriptor field. This will hopefully finally clarify the ability to take
+  multiple Artifact picks!
+* Added Age stat, which determines a character's Essence cap.
+* Added a greyout of trait dots that are above the current maximum.
+* Added persistence for Limit.
 * Implemented removal of charms when character's statistics are adjusted to be
   below the prerequisites.
+* Numerous, high impact improvements to the charm tree viewer!
+* [2E] Added support for Infernals and their charms.
+* [2E] Added support for Spirits, Spirit charms, and God-blooded.
+* [2E] Added support for Thaumaturgy.
+* [2E] Added mechanical support for charms like Glory to the Most High and Divine
+  	   Transcendence.
+* [2E] Added mechanical support for Lunar DBT "upgrade" charms, like
+       Devestating Ogre Enhancement
+* [2E] Legendary background option added for Dreams characters.
+* [2E] Broken Dreams Lunars templates fixed!
+* [2E] Rules for Abyssal Appearance as Essence rises are now enforced.
 * [2E] Added support for backgrounds dots as a charm prerequisite, and implemented
        this for Abyssal Whispers and Dragon-Blooded Purity.
 * [2E] Adding support for charms which may explicitly be comboed with charms from
        other abilities (Elemental Bolt Attack being the poster child).
-* [2E] Added support for Spirits, Spirit charms, and God-blooded.
-* [2E] Added support for Infernals and their charms.
-* [2E] Added support for Thaumaturgy
-* Revised the character sheet layout, providing more space for items, weapons,
-  panoply, etc.
+       
+* Slightly underneath the hood, all "special" charms such as Ox-Body and so forth
+  are now specified via a data-driven method rather than in the code. This will
+  hopefully facilitate any modding and custom charm efforts greatly!
+* A system for specifying charm backward compatibility has been added, allowing
+  for characters to be imported correctly if we make significant modifications to
+  charm data. 
+* A vast multitude of miscellaneous bug fixes, both major and minor!
 
 ===------------------------------------------------------------------------------===
 			Release 2.0.1 "Calibration"
