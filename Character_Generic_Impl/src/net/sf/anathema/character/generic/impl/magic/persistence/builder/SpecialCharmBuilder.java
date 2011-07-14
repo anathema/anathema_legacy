@@ -25,6 +25,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.generic.traits.types.VirtueType;
 
 import org.dom4j.Element;
 
@@ -298,6 +299,7 @@ public class SpecialCharmBuilder
 		ITraitType trait = null;
 		trait = trait == null ? getAbilityType(value) : trait;
 		trait = trait == null ? getAttributeType(value) : trait;
+		trait = trait == null ? getVirtueType(value) : trait;
 		trait = trait == null ? getOtherType(value) : trait;
 		return trait;
 	}
@@ -319,6 +321,18 @@ public class SpecialCharmBuilder
 		try
 		{
 			return AttributeType.valueOf(value);
+		}
+		catch (Exception e)
+		{
+			return null;
+		}
+	}
+	
+	private VirtueType getVirtueType(String value)
+	{
+		try
+		{
+			return VirtueType.valueOf(value);
 		}
 		catch (Exception e)
 		{
