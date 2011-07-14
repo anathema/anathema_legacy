@@ -156,7 +156,7 @@
           <duration duration="Permanent"/>
           <charmtype type="Permanent"/>
           <charmAttribute attribute="Stackable" visualize="true" />
-          <oxbody ability="Conviction">
+          <oxbody trait="Conviction">
                <pick name="Category.-2x2">
                    <TwoHealthLevel/>
                    <TwoHealthLevel/>

@@ -8,7 +8,7 @@
     <magicTemplate uses="template/GhostMagic2nd.template"/>
     <presentation uses="template/GhostPresentation2nd.template"/>
     <healthTemplate>
-      <toughnessControllingTrait type="Resistance"/>
+      <toughnessControllingTrait type="Conviction"/>
     </healthTemplate>
     <additionalTemplates>
       <template id="Ghost.Age.Template" />
