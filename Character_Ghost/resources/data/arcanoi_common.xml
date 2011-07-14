@@ -156,6 +156,12 @@
           <duration duration="Permanent"/>
           <charmtype type="Permanent"/>
           <charmAttribute attribute="Stackable" visualize="true" />
+          <oxbody ability="Conviction">
+               <pick name="Category.-2x2">
+                   <TwoHealthLevel/>
+                   <TwoHealthLevel/>
+               </pick>
+          </oxbody>
           <source source="GhostsAndDemons" />
      </charm>
      <charm id="Ghost.PoleTheBlackDepths" exalt="Ghost" group="CommonArcanoi">
