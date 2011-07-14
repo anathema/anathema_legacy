@@ -74,19 +74,12 @@ public class NewPdfEssenceEncoder extends AbstractPdfEncoder implements
     int peripheralPool = character.getPeripheralPoolValue();
     IdentifiedInteger[] complexPools = character.getComplexPools();
     
-    int numberOfLines = (personalPool > 0 ? 1 : 0) + (peripheralPool > 0 ? 1 : 0);
-    for (IdentifiedInteger pool : complexPools) {
-      if (pool.getValue() > 0) {
-        numberOfLines++;
-      }
-    }
+    int numberOfLines = calculatePoolLines(character);
     float poolLineHeight = poolHeight / numberOfLines;
-    //float offset = (2 - numberOfLines) * (poolLineHeight / 2);
     int value = character.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
     Position essencePosition = new Position(bounds.x,
                                             bounds.getMaxY()
                                             - traitEncoder.getTraitHeight());
-    //                                      - offset);
     traitEncoder.encodeDotsCenteredAndUngrouped(directContent, essencePosition,
                                                 columnWidth, value, essenceMax);
 

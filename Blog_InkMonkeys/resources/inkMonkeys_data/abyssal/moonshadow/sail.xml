@@ -25,19 +25,24 @@
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
 	<!-- Sail -->
 	<charm id="Abyssal.FellCaptainsAdvantages" exalt="Abyssal" group="Sail">
-	<prerequisite>
-		<trait id="Sail" value="3" />
-		<essence value="3" />
-		<charmReference id="Abyssal.DarkWaterOdyssey" />
-	</prerequisite>
-	<cost />
-	<duration duration="Permanent" />
-	<charmtype type="Permanent" />
-	<charmAttribute attribute="Mirror" visualize="true" />
-	<!-- NOTE:  Solar Mirror - Immortal Captain's Advantages -->
-	<charmAttribute attribute="Native" visualize="true" />
-	<charmAttribute attribute="NotAlienLearnable" />
-	<source source="InkMonkeys" />
+		<prerequisite>
+			<trait id="Sail" value="3" />
+			<essence value="3" />
+			<charmReference id="Abyssal.DarkWaterOdyssey" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Immortal Captain's Advantages -->
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
+		<repurchases trait="Sail">
+			<repurchase essence="3" trait="3"/>
+			<repurchase essence="4" trait="3"/>
+			<repurchase essence="5" trait="3"/>
+		</repurchases>
+		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.TreacherousFlagDisplay" exalt="Solar" group="Sail">
 		<prerequisite>

@@ -52,6 +52,7 @@
 		<!-- NOTE:  Solar Mirror - Immanent Solar Glory -->
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="NotAlienLearnable" />
+		<repurchases limitingTrait="Essence"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.EverReadyKillersTools" exalt="Abyssal" group="War">

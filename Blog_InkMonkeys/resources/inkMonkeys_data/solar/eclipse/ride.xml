@@ -49,6 +49,11 @@
 		<charmAttribute attribute="Mount(Mundane)" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="NotAlienLearnable" />
+		<repurchases trait="Ride">
+			<repurchase essence="3" trait="3"/>
+			<repurchase essence="4" trait="3"/>
+			<repurchase essence="5" trait="3"/>
+		</repurchases>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.HorseSkidsTrick" exalt="Solar" group="Ride">

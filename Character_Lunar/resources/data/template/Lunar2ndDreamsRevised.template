@@ -16,6 +16,20 @@
     		<backgroundReference id="Influence"/>
     		<backgroundReference id="Resources"/>
     	</forbiddenBackgrounds>
+    	<additionalPools>
+   		<multilearnablePool>
+   			<charmReference id="Lunar.SilverLunarResolution"/>
+    		<otherPool id="SilverLunarResolution" multiplier="10"/>
+   		</multilearnablePool>
+   		<multilearnablePool>
+   			<charmReference id="Lunar.SilverLunarResolutionCharisma"/>
+    		<otherPool id="SilverLunarResolutionCharisma" multiplier="10"/>
+   		</multilearnablePool>
+   		<multilearnablePool>
+   			<charmReference id="Lunar.SilverLunarResolutionWits"/>
+    		<otherPool id="SilverLunarResolutionWits" multiplier="10"/>
+   		</multilearnablePool>
+    </additionalPools>
     </additionalRules>
     <additionalTemplates>
       <template id="Lunar.DeadlyBeastmanTransformation.Template" />

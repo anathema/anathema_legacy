@@ -11,4 +11,18 @@
     		<bonusModification thresholdLevel="4" fixedCost="2"/>
    		</costModifier>
    	</additionalCost>
+   	<additionalPools>
+   		<multilearnablePool>
+   			<charmReference id="Lunar.SilverLunarResolution"/>
+    		<otherPool id="SilverLunarResolution" multiplier="10"/>
+   		</multilearnablePool>
+   		<multilearnablePool>
+   			<charmReference id="Lunar.SilverLunarResolutionCharisma"/>
+    		<otherPool id="SilverLunarResolutionCharisma" multiplier="10"/>
+   		</multilearnablePool>
+   		<multilearnablePool>
+   			<charmReference id="Lunar.SilverLunarResolutionWits"/>
+    		<otherPool id="SilverLunarResolutionWits" multiplier="10"/>
+   		</multilearnablePool>
+    </additionalPools>
 </additionalRules>

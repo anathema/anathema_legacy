@@ -69,10 +69,10 @@
 		<cost />
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
-		<!-- NOTE:  "Mirror" - Lunar/Stamina & Lunar/Charisma -->
-		<repurchases limitingTrait="Essence"/>
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="NotAlienLearnable" />
+		<!-- NOTE:  "Mirror" - Lunar/Stamina & Lunar/Charisma -->
+		<repurchases limitingTrait="Essence"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Lunar.SilverAndGoldSpanTheHeavens" exalt="Lunar" group="Virtue">

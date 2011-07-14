@@ -10,10 +10,26 @@
     <additionalRules>
     	<additionalPools>
     		<multilearnablePool>
-    			<charmReference id="Solar.ImmanentSolarGlory"/>    			
-    			<peripheralPool multiplier="10"/>
+    			<charmReference id="Solar.ImmanentSolarGlory"/>
+    			<otherPool id="ImmanentSolarGlory" multiplier="10"/>
     		</multilearnablePool>
-    	</additionalPools> 
+    		<multilearnablePool>
+    			<charmReference id="Solar.ImmanentSolarGloryBureaucracy"/>
+    			<otherPool id="ImmanentSolarGloryBureaucracy" multiplier="10"/>
+    		</multilearnablePool>
+    		<multilearnablePool>
+    			<charmReference id="Solar.ImmanentSolarGloryLarceny"/>
+    			<otherPool id="ImmanentSolarGloryLarceny" multiplier="10"/>
+    		</multilearnablePool>
+    		<multilearnablePool>
+    			<charmReference id="Solar.ImmanentSolarGloryPerformance"/>
+    			<otherPool id="ImmanentSolarGloryPerformance" multiplier="10"/>
+    		</multilearnablePool>
+    		<multilearnablePool>
+    			<charmReference id="Solar.ImmanentSolarGloryWar"/>
+    			<otherPool id="ImmanentSolarGloryWar" multiplier="10"/>
+    		</multilearnablePool>
+    	</additionalPools>
     </additionalRules>
     <additionalTemplates>
       <template id="SolarVirtueFlaw" />

@@ -10,8 +10,24 @@
     <additionalRules>
     	<additionalPools>
     		<multilearnablePool>
-    			<charmReference id="Abyssal.EssenceEngorgementTechnique"/>    			
-    			<peripheralPool multiplier="10"/>
+    			<charmReference id="Abyssal.EssenceEngorgementTechnique"/>
+    			<otherPool id="EssenceEngorgementTechnique" multiplier="10"/>
+    		</multilearnablePool>
+    		<multilearnablePool>
+    			<charmReference id="Abyssal.EssenceEngorgementTechniqueBureaucracy"/>    			
+    			<otherPool id="EssenceEngorgementTechniqueBureraucracy" multiplier="10"/>
+    		</multilearnablePool>
+    		<multilearnablePool>
+    			<charmReference id="Abyssal.EssenceEngorgementTechniqueLarceny"/>    			
+    			<otherPool id="EssenceEngorgementTechniqueLarceny" multiplier="10"/>
+    		</multilearnablePool>
+    		<multilearnablePool>
+    			<charmReference id="Abyssal.EssenceEngorgementTechniquePerformance"/>    			
+    			<otherPool id="EssenceEngorgementTechniquePerformance" multiplier="10"/>
+    		</multilearnablePool>
+    		<multilearnablePool>
+    			<charmReference id="Abyssal.EssenceEngorgementTechniqueWar"/>    			
+    			<otherPool id="EssenceEngorgementTechniqueWar" multiplier="10"/>
     		</multilearnablePool>
     	</additionalPools> 
     </additionalRules>

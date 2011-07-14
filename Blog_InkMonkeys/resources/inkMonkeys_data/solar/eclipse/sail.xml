@@ -37,6 +37,11 @@
 		 <!-- NOTE:  Abyssal Mirror - Fell Captain's Advantages -->
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="NotAlienLearnable" />
+		<repurchases trait="Sail">
+			<repurchase essence="3" trait="3"/>
+			<repurchase essence="4" trait="3"/>
+			<repurchase essence="5" trait="3"/>
+		</repurchases>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.FlagOfAllNationsMethod" exalt="Solar" group="Sail">
