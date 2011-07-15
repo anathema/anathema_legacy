@@ -29,6 +29,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
         context,
         context.getTraitCollection(),
         context.getMagicCollection(),
+        context.getCharmContext().getCharmConfiguration(),
         additionalRules);
   }
 
@@ -54,6 +55,10 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
   
   public int getPeripheralPoolValue() {
     return poolStrategy.getFullPeripheralPool();
+  }
+  
+  public int getOverdrivePoolValue() {
+    return poolStrategy.getOverdrivePool();
   }
   
   public IdentifiedInteger[] getComplexPools() {

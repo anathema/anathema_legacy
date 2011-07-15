@@ -49,6 +49,9 @@ public class NewPdfEssenceEncoder extends AbstractPdfEncoder implements
     if (character.getPeripheralPoolValue() > 0) {
       lines++;
     }
+    if (character.getOverdrivePoolValue() > 0) {
+      lines++;
+    }
     for (IdentifiedInteger complexPool : character.getComplexPools()) {
       if (complexPool.getValue() > 0) {
         lines++;
@@ -72,6 +75,7 @@ public class NewPdfEssenceEncoder extends AbstractPdfEncoder implements
 
     int personalPool = character.getPersonalPoolValue();
     int peripheralPool = character.getPeripheralPoolValue();
+    int overdrivePool = character.getOverdrivePoolValue();
     IdentifiedInteger[] complexPools = character.getComplexPools();
     
     int numberOfLines = calculatePoolLines(character);
@@ -99,6 +103,15 @@ public class NewPdfEssenceEncoder extends AbstractPdfEncoder implements
       String peripheralLabel = resources.getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
       encodePool(directContent, peripheralLabel, peripheralPool,
                  peripheralPosition, columnWidth);
+      line++;
+    }
+
+    if (overdrivePool > 0) {
+      Position overdrivePosition = new Position(bounds.x,
+                                                 essencePosition.y - line * poolLineHeight);
+      String overdriveLabel = resources.getString("Sheet.Essence.OverdrivePool"); //$NON-NLS-1$
+      encodePool(directContent, overdriveLabel, overdrivePool,
+                 overdrivePosition, columnWidth);
       line++;
     }
     

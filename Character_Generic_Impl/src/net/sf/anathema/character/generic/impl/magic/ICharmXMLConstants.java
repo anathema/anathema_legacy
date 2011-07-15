@@ -41,7 +41,7 @@ public interface ICharmXMLConstants {
   public static final String TAG_MERGES = "merges"; //$NON-NLS-1$
   public static final String TAG_RENAMES = "renames"; //$NON-NLS-1$
   public static final String TAG_RENAME = "rename"; //$NON-NLS-1$
-  public static final String TAG_ATTRIBUTE = "charmAttribute"; //$NON-NLS-1$  
+  public static final String TAG_ATTRIBUTE = "charmAttribute"; //$NON-NLS-1$
   public static final String TAG_GENERIC_ATTRIBUTE = "genericCharmAttribute"; //$NON-NLS-1$  
   public static final String TAG_CASTE = "caste"; //$NON-NLS-1$
   public static final String TAG_CHARM = "charm"; //$NON-NLS-1$

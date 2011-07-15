@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_VALUE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_VISUALIZE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ATTRIBUTE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_ATTRIBUTE;
@@ -22,7 +23,13 @@ public class CharmAttributeBuilder {
     for (Element attributeElement : ElementUtilities.elements(rulesElement, TAG_ATTRIBUTE)) {
       String attributeId = attributeElement.attributeValue(ATTRIB_ATTRIBUTE);
       boolean visualizeAttribute = ElementUtilities.getBooleanAttribute(attributeElement, ATTRIB_VISUALIZE, false);
-      attributes.add(new CharmAttribute(attributeId, visualizeAttribute));
+      String value = attributeElement.attributeValue(ATTRIB_VALUE);
+      if (value == null || value.isEmpty()) {
+        attributes.add(new CharmAttribute(attributeId, visualizeAttribute));
+      }
+      else {
+        attributes.add(new CharmAttribute(attributeId, visualizeAttribute, value));
+      }
     }
     if (primaryPrerequisite != null) {
       final String id = primaryPrerequisite.getType().getId();

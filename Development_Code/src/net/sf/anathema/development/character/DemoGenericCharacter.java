@@ -169,6 +169,11 @@ public int getEssenceCap(boolean modified)
   public int getPersonalPoolValue() {
     return 10;
   }
+  
+  @Override
+  public int getOverdrivePoolValue() {
+    return 25;
+  }
 
   @Override
   public IdentifiedInteger[] getComplexPools() {

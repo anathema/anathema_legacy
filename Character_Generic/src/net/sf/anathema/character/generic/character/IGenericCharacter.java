@@ -44,6 +44,8 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   
   public int getPersonalPoolValue();
   
+  public int getOverdrivePoolValue();
+  
   public IdentifiedInteger[] getComplexPools();
 
   public IAdditionalModel getAdditionalModel(String templateId);

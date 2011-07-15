@@ -13,6 +13,8 @@ public interface IEssencePoolConfiguration {
   
   public int getPeripheralPoolValue();
   
+  public int getOverdrivePoolValue();
+  
   public IdentifiedInteger[] getComplexPools();
   
   public String getAttunedPool();

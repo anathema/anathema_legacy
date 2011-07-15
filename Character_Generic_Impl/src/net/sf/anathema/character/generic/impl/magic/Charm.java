@@ -337,6 +337,16 @@ public class Charm extends Identificate implements ICharm {
   public boolean hasAttribute(IIdentificate attribute) {
     return charmAttributes.contains(attribute);
   }
+  
+  public String getAttributeValue(IIdentificate attribute) {
+    int index = charmAttributes.indexOf(attribute);
+    if (index < 0) {
+      return null;
+    }
+    else {
+      return charmAttributes.get(index).getValue();
+    }
+  }
 
   public ICharmAttributeRequirement[] getAttributeRequirements() {
     return prerequisisteList.getAttributeRequirements();

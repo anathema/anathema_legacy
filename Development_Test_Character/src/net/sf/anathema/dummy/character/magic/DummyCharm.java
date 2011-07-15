@@ -170,6 +170,10 @@ public class DummyCharm extends Identificate implements ICharm {
   public boolean hasAttribute(IIdentificate attribute) {
     return false;
   }
+  
+  public String getAttributeValue(IIdentificate attribute) {
+    return null;
+  }
 
   public boolean isBlockedByAlternative(IMagicCollection magicCollection) {
     return false;

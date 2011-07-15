@@ -27,6 +27,8 @@ public interface ICharm extends ICharmData, IMagic {
   public Set<String> getRenderingPrerequisiteLabels();
 
   public boolean hasAttribute(IIdentificate attribute);
+  
+  public String getAttributeValue(IIdentificate attribute);
 
   public boolean hasChildren();
 }

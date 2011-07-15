@@ -16,6 +16,7 @@ public interface IExtendedCharmData extends ICharmData {
   public static final IIdentificate KNOCKBACK_ATTRIBUTE = new Identificate("Knockback"); //$NON-NLS-1$
   public static final IIdentificate MANDATE_ATTRIBUTE = new Identificate("Mandate"); //$NON-NLS-1$
   public static final IIdentificate OBVIOUS_ATTRIBUTE = new Identificate("Obvious"); //$NON-NLS-1$
+  public static final IIdentificate OVERDRIVE_ATTRIBUTE = new Identificate("Overdrive"); //$NON-NLS-1$
   public static final IIdentificate POISON_ATTRIBUTE = new Identificate("Poison"); //$NON-NLS-1$
   public static final IIdentificate SERVITUDE_ATTRIBUTE = new Identificate("Servitude"); //$NON-NLS-1$
   public static final IIdentificate SHAPING_ATTRIBUTE = new Identificate("Shaping"); //$NON-NLS-1$

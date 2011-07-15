@@ -21,6 +21,8 @@ public interface IEssencePoolStrategy {
   
   public int getUnmodifiedPeripheralPool();
   
+  public int getOverdrivePool();
+  
   public IdentifiedInteger[] getComplexPools();
   
   public int getAttunementExpenditures();

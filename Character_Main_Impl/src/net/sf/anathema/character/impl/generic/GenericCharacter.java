@@ -166,6 +166,10 @@ public class GenericCharacter implements IGenericCharacter {
   public int getPersonalPoolValue() {
     return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getPersonalPoolValue() : 0;
   }
+  
+  public int getOverdrivePoolValue() {
+    return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getOverdrivePoolValue() : 0;
+  }
 
   @Override
   public IdentifiedInteger[] getComplexPools() {

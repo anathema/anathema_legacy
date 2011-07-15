@@ -60,7 +60,6 @@ public class ComplexAdditionalEssencePool implements IIdentificate {
     parameter.setTraitCollection(traitCollection);
     parameter.setParameter(x);
     int pool = (Integer)expression.computeExpression(new IntegerInterpreter());
-    System.out.println("Queried pool " + getId() + " with parameter " + x + "; size = " + pool);
     return pool;
   }
 }

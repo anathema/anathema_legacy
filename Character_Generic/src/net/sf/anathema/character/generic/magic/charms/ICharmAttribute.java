@@ -5,4 +5,6 @@ import net.sf.anathema.lib.util.IIdentificate;
 public interface ICharmAttribute extends IIdentificate {
 
   public boolean isVisualized();
+  
+  public String getValue();
 }
