@@ -27,6 +27,8 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
+import com.eteks.parser.CompilationException;
+
 public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<GenericAdditionalRules> {
 
   private static final String TAG_REQUIRED_MAGIC = "requiredMagic"; //$NON-NLS-1$
@@ -45,6 +47,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String TAG_FORBIDDEN_BACKGROUNDS = "forbiddenBackgrounds"; //$NON-NLS-1$
   private static final String TAG_FIXED_VALUE = "fixedValue"; //$NON-NLS-1$
   private static final String ATTRIB_VALUE = "value"; //$NON-NLS-1$
+  private static final String ATTRIB_FORMULA = "formula"; //$NON-NLS-1$
   private static final String ATTRIB_POOL = "pool"; //$NON-NLS-1$
   private static final String TAG_ADDITIONAL_MAGIC = "additionalMagic"; //$NON-NLS-1$
   private static final String TAG_MAGIC_POOL = "magicPool"; //$NON-NLS-1$
@@ -232,16 +235,27 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       Element poolElement = (Element) poolObject;
       
       String poolID = ElementUtilities.getRequiredAttrib(poolElement, ATTRIB_ID);
-      int multiplier = ElementUtilities.getIntAttrib(poolElement, ATTRIB_MULTIPLIER, 0);
+      int multiplier = ElementUtilities.getIntAttrib(poolElement, ATTRIB_MULTIPLIER, Integer.MIN_VALUE);
       
-      ComplexAdditionalEssencePool pool = new ComplexAdditionalEssencePool(poolID, multiplier);
-      for (Element overrideElement : ElementUtilities.elements(poolElement, TAG_FIXED_VALUE)) {
-        int traitValue = ElementUtilities.getRequiredIntAttrib(overrideElement, ATTRIB_VALUE);
-        int poolValue = ElementUtilities.getRequiredIntAttrib(overrideElement, ATTRIB_POOL);
-        pool.setFixedValue(traitValue, poolValue);
+      try {
+        ComplexAdditionalEssencePool pool;
+        if (multiplier == Integer.MIN_VALUE) {
+          pool = new ComplexAdditionalEssencePool(poolID,
+                                                  ElementUtilities.getRequiredAttrib(poolElement, ATTRIB_FORMULA)); 
+        }
+        else {
+          pool = new ComplexAdditionalEssencePool(poolID, multiplier);
+        }
+        for (Element overrideElement : ElementUtilities.elements(poolElement, TAG_FIXED_VALUE)) {
+          int traitValue = ElementUtilities.getRequiredIntAttrib(overrideElement, ATTRIB_VALUE);
+          int poolValue = ElementUtilities.getRequiredIntAttrib(overrideElement, ATTRIB_POOL);
+          pool.setFixedValue(traitValue, poolValue);
+        }
+        complexPools.add(pool);
       }
-      
-      complexPools.add(pool);
+      catch (CompilationException e) {
+        throw new PersistenceException(e);
+      }
     }
     return complexPools.toArray(new ComplexAdditionalEssencePool[complexPools.size()]);
   }

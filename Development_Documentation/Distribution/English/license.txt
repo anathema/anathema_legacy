@@ -131,6 +131,7 @@ GNU GPL (This file)
 =========================
 Infonode Tabbed Panel is published under the GPL. 
 db4o is published under the GPL.
+JeksParser is published under the GPL.
 
 Individual Licenses:
 =========================

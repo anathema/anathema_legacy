@@ -17,7 +17,7 @@ public class MultiLearnableCharmPool implements IAdditionalEssencePool {
       IMultiLearnableCharm charm,
       AdditionalEssencePool personalPool,
       AdditionalEssencePool peripheralPool,
-      ComplexAdditionalEssencePool[] complexPools) {
+      ComplexAdditionalEssencePool... complexPools) {
     this.charm = charm;
     this.personalPool = personalPool;
     this.peripheralPool = peripheralPool;
@@ -37,7 +37,8 @@ public class MultiLearnableCharmPool implements IAdditionalEssencePool {
     IdentifiedInteger[] poolValues = new IdentifiedInteger[complexPools.length];
     for (int i = 0; i < complexPools.length; i++) {
       poolValues[i] = new IdentifiedInteger(complexPools[i].getId(),
-                                            complexPools[i].getPool(magicCollection.getLearnCount(charm)));
+                                            complexPools[i].getPool(traitCollection, magicCollection,
+                                                                    magicCollection.getLearnCount(charm)));
     }
     return poolValues;
   }

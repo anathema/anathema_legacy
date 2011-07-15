@@ -24,9 +24,7 @@ public class AdditionalAbyssalRules extends DefaultAdditionalRules {
   public void addEssenceEngorgementTechniqueRules(IMultiLearnableCharm technique) {
     addEssencePool(new MultiLearnableCharmPool(technique,
                                                new AdditionalEssencePool(0), new AdditionalEssencePool(0),
-                                               new ComplexAdditionalEssencePool[] {
-                                               new ComplexAdditionalEssencePool("EssenceEngorgementTechnique", 10)
-                                               }));
+                                               new ComplexAdditionalEssencePool("EssenceEngorgementTechnique", 10)));
   }
 
   private IAdditionalMagicLearnPool getPool(IBackgroundTemplate necromancyTemplate) {

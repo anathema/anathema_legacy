@@ -125,13 +125,13 @@ public class SpecialCharmBuilder
 		return new OxBodyTechniqueCharm(id, traitList, healthPicks);
 	}
 	
-	@SuppressWarnings("unchecked")
 	private ISpecialCharm readPainToleranceCharm(Element charmElement, String id)
 	{
 		Element painToleranceElement = charmElement.element(TAG_PAIN_TOLERANCE);
 		if (painToleranceElement == null)
 			return null;
-		List elements = painToleranceElement.elements(TAG_LEVEL);
+    @SuppressWarnings("unchecked")
+    List<Element> elements = painToleranceElement.elements(TAG_LEVEL);
 		int[] levelArray = new int[elements.size()];
 		for (int i = 0; i != elements.size(); i++)
 			levelArray[i] = Integer.parseInt(((Element)elements.get(i)).attributeValue(ATTRIB_VALUE));

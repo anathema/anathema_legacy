@@ -5,5 +5,6 @@
 	<classpathentry exported="true" kind="src" path="/Character_Generic"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Lib_Gui"/>
+	<classpathentry exported="true" kind="lib" path="/Thirdparty/JeksParser/jeksparser.jar" sourcepath="/Thirdparty/JeksParser/jeks_1.0.2.zip"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
