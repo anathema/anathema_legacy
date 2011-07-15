@@ -69,20 +69,27 @@ public class PdfSheetReport implements IITextReport {
     		  new EquipmentModifiers(stattedCharacter.getStatistics()));
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
+      boolean essenceBoxNeeded = false;
       if (character.getRules().getEdition() == ExaltedEdition.FirstEdition)
       	encoderList.add(new PdfOldStyleFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
       if (character.getRules().getEdition() == ExaltedEdition.SecondEdition)
       {
     	  encoderList.add(new NewPdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
         encoderList.add(new NewPdfSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-        encoderList.add(new NewPdfThirdPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-        //encoderList.add(new PdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-    	  //encoderList.add(new PdfSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+        
+        NewPdfThirdPageEncoder thirdEncoder = new NewPdfThirdPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration);
+        if (thirdEncoder.hasContent(character, description)) {
+          encoderList.add(new NewPdfThirdPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+        }
+        else {
+          essenceBoxNeeded = true;
+        }
       }
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
       if (partEncoder.hasMagicPage())
-    	encoderList.add(new PdfMagicPageEncoder(resources, encodingRegistry, configuration,
-    			character.getRules().getEdition() != ExaltedEdition.FirstEdition));
+        encoderList.add(new PdfMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration,
+                                                character.getRules().getEdition() != ExaltedEdition.FirstEdition,
+                                                essenceBoxNeeded));
       boolean isFirstPrinted = false;
       for (IPdfPageEncoder encoder : encoderList) {
         if (isFirstPrinted) {

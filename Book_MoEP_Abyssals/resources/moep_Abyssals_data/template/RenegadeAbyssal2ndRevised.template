@@ -7,29 +7,7 @@
     <traitCollection uses="template/AbyssalTraitCollection2nd.template" prefix="moep_Abyssals_"/>
     <magicTemplate uses="template/AbyssalMagic2nd.template" prefix="moep_Abyssals_" />
     <presentation uses="template/AbyssalPresentation2nd.template" prefix="moep_Abyssals_" />
-    <additionalRules>
-    	<additionalPools>
-    		<multilearnablePool>
-    			<charmReference id="Abyssal.EssenceEngorgementTechnique"/>
-    			<otherPool id="EssenceEngorgementTechnique" multiplier="10"/>
-    		</multilearnablePool>
-    		<multilearnablePool>
-    			<charmReference id="Abyssal.EssenceEngorgementTechniqueBureaucracy"/>    			
-    			<otherPool id="EssenceEngorgementTechniqueBureraucracy" multiplier="10"/>
-    		</multilearnablePool>
-    		<multilearnablePool>
-    			<charmReference id="Abyssal.EssenceEngorgementTechniqueLarceny"/>    			
-    			<otherPool id="EssenceEngorgementTechniqueLarceny" multiplier="10"/>
-    		</multilearnablePool>
-    		<multilearnablePool>
-    			<charmReference id="Abyssal.EssenceEngorgementTechniquePerformance"/>    			
-    			<otherPool id="EssenceEngorgementTechniquePerformance" multiplier="10"/>
-    		</multilearnablePool>
-    		<multilearnablePool>
-    			<charmReference id="Abyssal.EssenceEngorgementTechniqueWar"/>    			
-    			<otherPool id="EssenceEngorgementTechniqueWar" multiplier="10"/>
-    		</multilearnablePool>
-    	</additionalPools> 
+    <additionalRules uses="template/AbyssalAdditionalRules2nd.template" prefix="moep_Abyssals_">
     	<revisedIntimacies value="true" />
     	<willpowerVirtueBased value="false" />
     </additionalRules>

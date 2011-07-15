@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
@@ -15,35 +16,27 @@ import net.sf.anathema.character.reporting.sheet.common.magic.PdfMagicEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfMagicPageEncoder implements IPdfPageEncoder {
+public class PdfMagicPageEncoder extends AbstractPdfPageEncoder {
 
-  private final BaseFont baseFont;
-  private final PdfPageConfiguration configuration;
-  private final PdfBoxEncoder boxEncoder;
-  private final IResources resources;
-  private final PdfEncodingRegistry encodingRegistry;
   private final boolean pureMagic;
+  private final boolean essenceBoxNeeded;
 
   public PdfMagicPageEncoder(
-      IResources resources,
+      IPdfPartEncoder partEncoder,
       PdfEncodingRegistry encodingRegistry,
+      IResources resources,
       PdfPageConfiguration configuration,
-      boolean pureMagic) {
-    this.resources = resources;
-    this.encodingRegistry = encodingRegistry;
-    this.baseFont = encodingRegistry.getBaseFont();
-    this.configuration = configuration;
-    this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
+      boolean pureMagic, boolean essenceBoxNeeded) {
+    super(partEncoder, encodingRegistry, resources, configuration);
     this.pureMagic = pureMagic;
+    this.essenceBoxNeeded = essenceBoxNeeded;
   }
 
   public void encode(
@@ -64,6 +57,11 @@ public class PdfMagicPageEncoder implements IPdfPageEncoder {
 	    encodeExperience(directContent, character, description, distanceFromTop, experienceHeight);
 	    distanceFromTop += experienceHeight + IVoidStateFormatConstants.PADDING;
     }
+
+    if (essenceBoxNeeded) {
+      float essenceHeight = encodeEssence(directContent, character, description, distanceFromTop, CONTENT_HEIGHT);
+      distanceFromTop += calculateBoxIncrement(essenceHeight);
+    }
     float comboHeight = encodeCombos(directContent, character, distanceFromTop);
     if (comboHeight > 0) {
       distanceFromTop += comboHeight + IVoidStateFormatConstants.PADDING;
@@ -74,23 +72,23 @@ public class PdfMagicPageEncoder implements IPdfPageEncoder {
     	  distanceFromTop += genericCharmsHeight + IVoidStateFormatConstants.PADDING;
     }
 
-    float remainingHeight = configuration.getContentHeight() - distanceFromTop;
+    float remainingHeight = getPageConfiguration().getContentHeight() - distanceFromTop;
     List<IMagicStats> printMagic = PdfMagicEncoder.collectPrintMagic(character);
     encodeCharms(directContent, printMagic, distanceFromTop, remainingHeight);
     while (!printMagic.isEmpty()) {
       document.newPage();
-      encodeCharms(directContent, printMagic, 0, configuration.getContentHeight());
+      encodeCharms(directContent, printMagic, 0, getPageConfiguration().getContentHeight());
     }
   }
 
   private float encodeCombos(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop)
       throws DocumentException {
     Bounds restOfPage = new Bounds(
-        configuration.getLeftX(),
-        configuration.getLowerContentY(),
-        configuration.getContentWidth(),
-        configuration.getContentHeight() - distanceFromTop);
-    return new PdfComboEncoder(resources, baseFont).encodeCombos(directContent, character, restOfPage);
+        getPageConfiguration().getLeftX(),
+        getPageConfiguration().getLowerContentY(),
+        getPageConfiguration().getContentWidth(),
+        getPageConfiguration().getContentHeight() - distanceFromTop);
+    return new PdfComboEncoder(getResources(), getBaseFont()).encodeCombos(directContent, character, restOfPage);
   }
 
   private float encodeExperience(
@@ -98,9 +96,9 @@ public class PdfMagicPageEncoder implements IPdfPageEncoder {
       IGenericCharacter character,
       IGenericDescription description,
       float distanceFromTop, float height) throws DocumentException {
-    Bounds bounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    IPdfContentBoxEncoder encoder = new PdfExperienceEncoder(resources, baseFont);
-    boxEncoder.encodeBox(directContent, encoder, character, description, bounds);
+    Bounds bounds = getPageConfiguration().getThirdColumnRectangle(distanceFromTop, height);
+    IPdfContentBoxEncoder encoder = new PdfExperienceEncoder(getResources(), getBaseFont());
+    getBoxEncoder().encodeBox(directContent, encoder, character, description, bounds);
     return height;
   }
 
@@ -109,9 +107,9 @@ public class PdfMagicPageEncoder implements IPdfPageEncoder {
       IGenericCharacter character,
       IGenericDescription description,
       float distanceFromTop, float height) throws DocumentException {
-    Bounds bounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    IPdfContentBoxEncoder encoder = encodingRegistry.getLinguisticsEncoder();
-    boxEncoder.encodeBox(directContent, encoder, character, description, bounds);
+    Bounds bounds = getPageConfiguration().getThirdColumnRectangle(distanceFromTop, height);
+    IPdfContentBoxEncoder encoder = getRegistry().getLinguisticsEncoder();
+    getBoxEncoder().encodeBox(directContent, encoder, character, description, bounds);
     return height;
   }
 
@@ -120,9 +118,9 @@ public class PdfMagicPageEncoder implements IPdfPageEncoder {
       IGenericCharacter character,
       IGenericDescription description,
       float distanceFromTop, float height) throws DocumentException {
-    Bounds backgroundBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IPdfContentBoxEncoder encoder = new PdfBackgroundEncoder(resources, baseFont);
-    boxEncoder.encodeBox(directContent, encoder, character, description, backgroundBounds);
+    Bounds backgroundBounds = getPageConfiguration().getFirstColumnRectangle(distanceFromTop, height, 1);
+    IPdfContentBoxEncoder encoder = new PdfBackgroundEncoder(getResources(), getBaseFont());
+    getBoxEncoder().encodeBox(directContent, encoder, character, description, backgroundBounds);
     return height;
   }
 
@@ -131,34 +129,43 @@ public class PdfMagicPageEncoder implements IPdfPageEncoder {
       IGenericCharacter character,
       IGenericDescription description,
       float distanceFromTop, float height) throws DocumentException {
-    Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    IPdfContentBoxEncoder encoder = encodingRegistry.getPossessionsEncoder();
-    boxEncoder.encodeBox(directContent, encoder, character, description, bounds);
-    return height;
+    return encodeFixedBox(directContent, character, description,
+                          getRegistry().getPossessionsEncoder(),
+                          2, 1, distanceFromTop, height);
+  }
+
+  private float encodeEssence(PdfContentByte directContent,
+                              IGenericCharacter character,
+                              IGenericDescription description,
+                              float distanceFromTop, float height)
+      throws DocumentException {
+    // TODO: Eliminate unchecked casting
+    return encodeVariableBox(directContent, character, description,
+                             (IPdfVariableContentBoxEncoder) getPartEncoder().getEssenceEncoder(),
+                             1, 3, distanceFromTop, height);
   }
 
   private float encodeGenericCharms(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop)
       throws DocumentException {
 	if (character.getGenericCharmStats().length > 0)
 	{
-	    float height = 55 + character.getGenericCharmStats().length * 11;
-	    Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-	    IPdfContentBoxEncoder encoder = new PdfGenericCharmEncoder(resources, baseFont);
-	    boxEncoder.encodeBox(directContent, encoder, character, description, bounds);
-	    return height;
+	  float height = 55 + character.getGenericCharmStats().length * 11;
+	  return encodeFixedBox(directContent, character, description,
+	                        new PdfGenericCharmEncoder(getResources(), getBaseFont()),
+	                        1, 3, distanceFromTop, height);
 	}
 	else
 		return 0;
   }
 
-  private float encodeCharms(
-      PdfContentByte directContent,
-      List<IMagicStats> printMagic,
-      float distanceFromTop,
-      float height) throws DocumentException {
-    Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    IPdfContentBoxEncoder encoder = new PdfMagicEncoder(resources, baseFont, printMagic);
-    boxEncoder.encodeBox(directContent, encoder, null, null, bounds);
-    return height;
+  private float encodeCharms(PdfContentByte directContent,
+                             List<IMagicStats> printMagic,
+                             float distanceFromTop, float height)
+      throws DocumentException {
+    return encodeFixedBox(directContent, null, null,
+                          new PdfMagicEncoder(getResources(),
+                                              getBaseFont(),
+                                              printMagic),
+                          1, 3, distanceFromTop, height);
   }
 }

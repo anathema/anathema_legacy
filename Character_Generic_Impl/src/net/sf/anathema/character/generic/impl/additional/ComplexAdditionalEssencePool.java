@@ -6,6 +6,7 @@ import java.util.Map;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.impl.util.AnathemaExpressionParameter;
+import net.sf.anathema.character.generic.impl.util.AnathemaExpressionSyntax;
 import net.sf.anathema.lib.util.IIdentificate;
 
 import com.eteks.parser.CompilationException;
@@ -19,7 +20,8 @@ public class ComplexAdditionalEssencePool implements IIdentificate {
   private final CompiledExpression expression;
   private final Map<Integer, Integer> override = new HashMap<Integer, Integer>();
   private final AnathemaExpressionParameter parameter = new AnathemaExpressionParameter();
-  private final ExpressionParser parser = new ExpressionParser(parameter);
+  private final ExpressionParser parser = new ExpressionParser(new AnathemaExpressionSyntax(),
+                                                               parameter);
   
   public ComplexAdditionalEssencePool(String id, int multiplier) {
     this.id = id;
@@ -57,6 +59,8 @@ public class ComplexAdditionalEssencePool implements IIdentificate {
     
     parameter.setTraitCollection(traitCollection);
     parameter.setParameter(x);
-    return (Integer)expression.computeExpression(new IntegerInterpreter());
+    int pool = (Integer)expression.computeExpression(new IntegerInterpreter());
+    System.out.println("Queried pool " + getId() + " with parameter " + x + "; size = " + pool);
+    return pool;
   }
 }

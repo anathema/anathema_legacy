@@ -41,4 +41,9 @@ public class NewPdfThirdPageEncoder extends AbstractPdfPageEncoder {
                              (IPdfVariableContentBoxEncoder) getPartEncoder().getEssenceEncoder(),
                              1, 3, distanceFromTop, height);
   }
+  
+  public boolean hasContent(IGenericCharacter character,
+                            IGenericDescription description) {
+    return false;
+  }
 }

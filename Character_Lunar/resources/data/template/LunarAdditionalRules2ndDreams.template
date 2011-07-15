@@ -1,0 +1,8 @@
+<additionalRules uses="template/LunarAdditionalRules2nd.template">
+   	<forbiddenBackgrounds>
+   		<backgroundReference id="Contacts"/>
+   		<backgroundReference id="Followers"/>
+   		<backgroundReference id="Influence"/>
+   		<backgroundReference id="Resources"/>
+   	</forbiddenBackgrounds>
+</additionalRules>

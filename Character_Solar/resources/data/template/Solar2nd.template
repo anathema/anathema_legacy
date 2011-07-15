@@ -7,30 +7,7 @@
     <traitCollection uses="trait/DefaultTraitCollection.template"/>
     <magicTemplate uses="template/SolarMagic2nd.template"/>
     <presentation uses="template/SolarPresentation2nd.template"/>
-    <additionalRules>
-    	<additionalPools>
-    		<multilearnablePool>
-    			<charmReference id="Solar.ImmanentSolarGlory"/>
-    			<otherPool id="ImmanentSolarGlory" multiplier="10"/>
-    		</multilearnablePool>
-    		<multilearnablePool>
-    			<charmReference id="Solar.ImmanentSolarGloryBureaucracy"/>
-    			<otherPool id="ImmanentSolarGloryBureaucracy" multiplier="10"/>
-    		</multilearnablePool>
-    		<multilearnablePool>
-    			<charmReference id="Solar.ImmanentSolarGloryLarceny"/>
-    			<otherPool id="ImmanentSolarGloryLarceny" multiplier="10"/>
-    		</multilearnablePool>
-    		<multilearnablePool>
-    			<charmReference id="Solar.ImmanentSolarGloryPerformance"/>
-    			<otherPool id="ImmanentSolarGloryPerformance" multiplier="10"/>
-    		</multilearnablePool>
-    		<multilearnablePool>
-    			<charmReference id="Solar.ImmanentSolarGloryWar"/>
-    			<otherPool id="ImmanentSolarGloryWar" multiplier="10"/>
-    		</multilearnablePool>
-    	</additionalPools>
-    </additionalRules>
+    <additionalRules uses="template/SolarAdditionalRules2nd.template"/>
     <additionalTemplates>
       <template id="SolarVirtueFlaw" />
     </additionalTemplates>

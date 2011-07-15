@@ -7,29 +7,9 @@
     <traitCollection uses="template/LunarTraitCollection2ndDreams.template"/>
     <magicTemplate uses="template/LunarMagic2nd.template"/>
     <presentation uses="template/LunarPresentation.template"/>
-    <additionalRules>    	
+    <additionalRules uses="template/LunarAdditionalRules2ndDreams.template">    	
     	<revisedIntimacies value="true" />
     	<willpowerVirtueBased value="false" />
-    	<forbiddenBackgrounds>
-    		<backgroundReference id="Contacts"/>
-    		<backgroundReference id="Followers"/>
-    		<backgroundReference id="Influence"/>
-    		<backgroundReference id="Resources"/>
-    	</forbiddenBackgrounds>
-    	<additionalPools>
-   		<multilearnablePool>
-   			<charmReference id="Lunar.SilverLunarResolution"/>
-    		<otherPool id="SilverLunarResolution" multiplier="10"/>
-   		</multilearnablePool>
-   		<multilearnablePool>
-   			<charmReference id="Lunar.SilverLunarResolutionCharisma"/>
-    		<otherPool id="SilverLunarResolutionCharisma" multiplier="10"/>
-   		</multilearnablePool>
-   		<multilearnablePool>
-   			<charmReference id="Lunar.SilverLunarResolutionWits"/>
-    		<otherPool id="SilverLunarResolutionWits" multiplier="10"/>
-   		</multilearnablePool>
-    </additionalPools>
     </additionalRules>
     <additionalTemplates>
       <template id="Lunar.DeadlyBeastmanTransformation.Template" />

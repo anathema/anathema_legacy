@@ -1,0 +1,38 @@
+<additionalRules>
+	<additionalPools>
+    	<multilearnablePool>
+    		<charmReference id="Abyssal.EssenceEngorgementTechnique"/>
+    		<otherPool id="EssenceEngorgementTechnique" multiplier="10"/>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Abyssal.EssenceEngorgementTechniqueBureaucracy"/>    			
+    		<otherPool id="EssenceEngorgementTechniqueBureraucracy" multiplier="10"/>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Abyssal.EssenceEngorgementTechniqueLarceny"/>    			
+    		<otherPool id="EssenceEngorgementTechniqueLarceny" multiplier="10"/>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Abyssal.EssenceEngorgementTechniquePerformance"/>    			
+    		<otherPool id="EssenceEngorgementTechniquePerformance" multiplier="10"/>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Abyssal.EssenceEngorgementTechniqueWar"/>    			
+    		<otherPool id="EssenceEngorgementTechniqueWar" multiplier="10"/>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Abyssal.EssenceEngorgementTechniqueWar"/>    			
+    		<otherPool id="EssenceEngorgementTechniqueWar" multiplier="10"/>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Abyssal.FellCaptainsAdvantages"/>
+    		<otherPool id="FellCaptainsAdvantages" formula="=(Other.Essence + Ability.Sail + 5)*2^x">
+    			<fixedValue value="0" pool="0"/>
+    		</otherPool>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Abyssal.FellRidersAdvantages"/>
+    		<otherPool id="FellRidersAdvantages" formula="=(Other.Essence + Ability.Ride + 5)*2^(x - 1)"/>
+    	</multilearnablePool>
+    </additionalPools>
+</additionalRules>

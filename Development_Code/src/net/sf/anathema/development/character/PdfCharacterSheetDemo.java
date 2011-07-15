@@ -55,13 +55,14 @@ public class PdfCharacterSheetDemo {
       IResources resources = createDemoResources();
       PdfPageConfiguration pageConfiguration = PdfPageConfiguration.create(document.getPageSize());
       PdfEncodingRegistry encodingRegistry = createEncodingRegistry(resources);
-      PdfOldStyleFirstPageEncoder partEncoder = new PdfOldStyleFirstPageEncoder(new SecondEditionSolarPartEncoder(
-          resources,
-          encodingRegistry,
-          7), encodingRegistry, resources, 7, pageConfiguration);
-      partEncoder.encode(document, directContent, character, description);
+      int essenceMax = 7;
+      SecondEditionSolarPartEncoder partEncoder = new SecondEditionSolarPartEncoder(resources,
+                                                                                    encodingRegistry,
+                                                                                    essenceMax);
+      PdfOldStyleFirstPageEncoder pageEncoder = new PdfOldStyleFirstPageEncoder(partEncoder, encodingRegistry, resources, essenceMax, pageConfiguration);
+      pageEncoder.encode(document, directContent, character, description);
       document.newPage();
-      new PdfMagicPageEncoder(resources, encodingRegistry, pageConfiguration, false).encode(
+      new PdfMagicPageEncoder(partEncoder, encodingRegistry, resources, pageConfiguration, false, false).encode(
           document,
           directContent,
           character,
@@ -119,7 +120,7 @@ public class PdfCharacterSheetDemo {
     character.getIntimaciesModel().addEntry(new DemoIntimacy(longIntimacy, 0, character));
     ICharacterModelContext context = new CharacterModelContext(character);
     SolarVirtueFlawModel virtueFlawModel = new SolarVirtueFlawModel(context, new SolarVirtueFlawTemplate());
-    virtueFlawModel.getVirtueFlaw().getName().setText("Doll, doll, böse");
+    virtueFlawModel.getVirtueFlaw().getName().setText("Doll, doll, bï¿½se");
     virtueFlawModel.getVirtueFlaw().getLimitBreak().setText(
         "Oh nein nicht schon wieder. Diese verschissene Welt hat mich gar nicht verdient.");
     character.addAdditionalModel(virtueFlawModel);

@@ -15,28 +15,7 @@
     <healthTemplate>
       <toughnessControllingTrait type="Stamina"/>
     </healthTemplate>
-    <additionalRules>
-    	<forbiddenBackgrounds>
-    		<backgroundReference id="Contacts"/>
-    		<backgroundReference id="Followers"/>
-    		<backgroundReference id="Influence"/>
-    		<backgroundReference id="Resources"/>
-    	</forbiddenBackgrounds>
-    	<additionalPools>
-   		<multilearnablePool>
-   			<charmReference id="Lunar.SilverLunarResolution"/>
-    		<otherPool id="SilverLunarResolution" multiplier="10"/>
-   		</multilearnablePool>
-   		<multilearnablePool>
-   			<charmReference id="Lunar.SilverLunarResolutionCharisma"/>
-    		<otherPool id="SilverLunarResolutionCharisma" multiplier="10"/>
-   		</multilearnablePool>
-   		<multilearnablePool>
-   			<charmReference id="Lunar.SilverLunarResolutionWits"/>
-    		<otherPool id="SilverLunarResolutionWits" multiplier="10"/>
-   		</multilearnablePool>
-    </additionalPools>
-    </additionalRules>
+    <additionalRules uses="template/LunarAdditionalRules2ndDreams.template"/>
   </general>
   <creation>
     <bonusPointCosts uses="template/LunarBonusPointCost2nd.template" />

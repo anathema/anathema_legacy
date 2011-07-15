@@ -1,0 +1,34 @@
+<additionalRules>
+	<additionalPools>
+    	<multilearnablePool>
+    		<charmReference id="Solar.ImmanentSolarGlory"/>
+    		<otherPool id="ImmanentSolarGlory" multiplier="10"/>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Solar.ImmanentSolarGloryBureaucracy"/>
+    		<otherPool id="ImmanentSolarGloryBureaucracy" multiplier="10"/>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Solar.ImmanentSolarGloryLarceny"/>
+    		<otherPool id="ImmanentSolarGloryLarceny" multiplier="10"/>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Solar.ImmanentSolarGloryPerformance"/>
+    		<otherPool id="ImmanentSolarGloryPerformance" multiplier="10"/>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Solar.ImmanentSolarGloryWar"/>
+    		<otherPool id="ImmanentSolarGloryWar" multiplier="10"/>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Solar.ImmortalCaptainsAdvantages"/>
+    		<otherPool id="ImmortalCaptainsAdvantages" formula="=(Other.Essence + Ability.Sail + 5)*2^x">
+    			<fixedValue value="0" pool="0"/>
+    		</otherPool>
+    	</multilearnablePool>
+    	<multilearnablePool>
+    		<charmReference id="Solar.ImmortalRidersAdvantages"/>
+    		<otherPool id="ImmortalRidersAdvantages" formula="=(Other.Essence + Ability.Ride + 5)*2^(x - 1)"/>
+    	</multilearnablePool>
+   	</additionalPools>
+</additionalRules>
