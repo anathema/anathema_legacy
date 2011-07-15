@@ -28,6 +28,10 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   public void setCompulsiveCharmIds(String[] compulsiveCharmIds) {
     this.compulsiveCharmIds = compulsiveCharmIds;
   }
+  
+  public void addCompulsiveCharmIds(String[] compulsiveCharmIds) {
+    this.compulsiveCharmIds = ArrayUtilities.concat(this.compulsiveCharmIds, compulsiveCharmIds);
+  }
 
   @Override
   public String[] getCompulsiveCharmIDs() {
@@ -36,6 +40,10 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
 
   public void setAdditionalEssencePools(IAdditionalEssencePool[] pools) {
     this.essencePools = pools;
+  }
+
+  public void addAdditionalEssencePools(IAdditionalEssencePool[] pools) {
+    this.essencePools = ArrayUtilities.concat(this.essencePools, pools);
   }
 
   @Override
@@ -51,6 +59,10 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   public void setMagicPools(IAdditionalMagicLearnPool[] magicPools) {
     this.magicPools = magicPools;
   }
+  
+  public void addMagicPools(IAdditionalMagicLearnPool[] magicPools) {
+    this.magicPools = ArrayUtilities.concat(this.magicPools, magicPools);
+  }
 
   @Override
   public boolean isRejected(IBackgroundTemplate backgroundTemplate) {
@@ -59,6 +71,10 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
 
   public void setRejectedBackgrounds(String[] backgroundIds) {
     this.rejectedBackgroundIds = backgroundIds;
+  }
+  
+  public void addRejectedBackgrounds(String[] backgroundIds) {
+    this.rejectedBackgroundIds = ArrayUtilities.concat(this.rejectedBackgroundIds, rejectedBackgroundIds);
   }
   
   @Override

@@ -1,0 +1,28 @@
+<additionalRules uses="template/AdditionalFamiliarRules2nd.template">
+	<additionalPools>
+		<learnablePool>
+			<charmReference id="Infernal.SunHeartFurnaceSoul" type="Infernal" group="InsignificantEmbers"/>
+			<otherPool id="SunHeartFurnaceSoul" multiplier="10"/>
+		</learnablePool>
+		<learnablePool>
+			<charmReference id="Infernal.TranscendentDesertWithin" type="Infernal" group="HolyLand"/>
+			<otherPool id="TranscendentDesertWithin" multiplier="10"/>
+		</learnablePool>
+		<learnablePool>
+			<charmReference id="Infernal.FlamesLitWithin" type="Infernal" group="FactualDetermination"/>
+			<otherPool id="FlamesLitWithin" multiplier="10"/>
+		</learnablePool>
+		<learnablePool>
+			<charmReference id="Infernal.BeauteousCarnageIncentive" type="Infernal" group="Wind"/>
+			<otherPool id="BeauteousCarnageIncentive" multiplier="10"/>
+		</learnablePool>
+		<learnablePool>
+			<charmReference id="Infernal.SweetAgonySavoured" type="Infernal" group="Life"/>
+			<otherPool id="SweetAgonySavoured" multiplier="10"/>
+		</learnablePool>
+		<learnablePool>
+			<charmReference id="Infernal.RisingTideAscension" type="Infernal" group="Intolerable"/>
+			<otherPool id="RisingTideAscension" multiplier="10"/>
+		</learnablePool>
+	</additionalPools>
+</additionalRules>

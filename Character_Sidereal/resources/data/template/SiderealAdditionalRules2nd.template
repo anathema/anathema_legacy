@@ -1,4 +1,4 @@
-<additionalRules>
+<additionalRules uses="template/AdditionalFamiliarRules2nd.template">
    	<additionalCost>
    		<costModifier>
    			<backgroundReference id="Resources"/>   			

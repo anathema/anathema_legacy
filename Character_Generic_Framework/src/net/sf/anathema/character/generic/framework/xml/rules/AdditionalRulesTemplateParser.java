@@ -16,11 +16,14 @@ import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
 import net.sf.anathema.character.generic.impl.additional.BackgroundPool;
 import net.sf.anathema.character.generic.impl.additional.ComplexAdditionalEssencePool;
 import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
+import net.sf.anathema.character.generic.impl.additional.LearnableCharmPool;
 import net.sf.anathema.character.generic.impl.additional.MultiLearnableCharmPool;
 import net.sf.anathema.character.generic.impl.util.DefaultPointModification;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.util.IPointModification;
+import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -36,7 +39,9 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
   private static final Object VALUE_CHARM = "charm"; //$NON-NLS-1$
   private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
+  private static final String ATTRIB_GROUP = "group"; //$NON-NLS-1$
   private static final String TAG_ADDITIONAL_POOLS = "additionalPools"; //$NON-NLS-1$
+  private static final String TAG_LEARNABLE_POOL = "learnablePool"; //$NON-NLS-1$
   private static final String TAG_MULTI_LEARNABLE_POOL = "multilearnablePool"; //$NON-NLS-1$
   private static final String TAG_CHARM_REFERENCE = "charmReference"; //$NON-NLS-1$
   private static final String TAG_PERSONAL_POOL = "personalPool"; //$NON-NLS-1$
@@ -181,20 +186,35 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       return;
     }
     List<IAdditionalEssencePool> pools = new ArrayList<IAdditionalEssencePool>();
+    for (Element learnablePool : ElementUtilities.elements(additionalPoolsElement, TAG_LEARNABLE_POOL)) {
+      AdditionalEssencePool personalPool = parsePool(learnablePool, TAG_PERSONAL_POOL);
+      AdditionalEssencePool peripheralPool = parsePool(learnablePool, TAG_PERIPHERAL_POOL);
+      ComplexAdditionalEssencePool[] complexPools = parseComplexPools(learnablePool, TAG_OTHER_POOL);
+      Element charmReference = learnablePool.element(TAG_CHARM_REFERENCE);
+      if (charmReference != null) {
+        DummyCharm charm = new DummyCharm(ElementUtilities.getRequiredAttrib(charmReference, ATTRIB_ID));
+        charm.setGroupId(ElementUtilities.getRequiredAttrib(charmReference, ATTRIB_GROUP));
+        charm.setCharacterType(CharacterType.getById(ElementUtilities.getRequiredAttrib(charmReference, ATTRIB_TYPE)));
+        pools.add(new LearnableCharmPool(charm, personalPool, peripheralPool, complexPools));
+      }
+      else {
+        throw new ContractFailedException("CharmReference required."); //$NON-NLS-1$
+      }
+    }
     for (Element multiPool : ElementUtilities.elements(additionalPoolsElement, TAG_MULTI_LEARNABLE_POOL)) {
       AdditionalEssencePool personalPool = parsePool(multiPool, TAG_PERSONAL_POOL);
       AdditionalEssencePool peripheralPool = parsePool(multiPool, TAG_PERIPHERAL_POOL);
       ComplexAdditionalEssencePool[] complexPools = parseComplexPools(multiPool, TAG_OTHER_POOL);
       if (multiPool.element(TAG_CHARM_REFERENCE) != null) {
         final String charmId = ElementUtilities.getRequiredAttrib(multiPool.element(TAG_CHARM_REFERENCE), ATTRIB_ID);
-        
+
         ISpecialCharm charm = ArrayUtilities.getFirst(charms, new IPredicate<ISpecialCharm>() {
           public boolean evaluate(ISpecialCharm value) {
             return value.getCharmId().equals(charmId);
           }
         });
-        if (charm == null) {
-          System.out.println("Didn't find charm " + charmId);
+        if (!(charm instanceof IMultiLearnableCharm)) {
+          throw new ContractFailedException("No such multi-learnable Charm found."); //$NON-NLS-1$
         }
         pools.add(new MultiLearnableCharmPool((IMultiLearnableCharm) charm, personalPool, peripheralPool, complexPools));
       }
@@ -205,7 +225,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
         throw new ContractFailedException("Either CharmReference or BackgroundReference required."); //$NON-NLS-1$
       }
     }
-    basicTemplate.setAdditionalEssencePools(pools.toArray(new IAdditionalEssencePool[pools.size()]));
+    basicTemplate.addAdditionalEssencePools(pools.toArray(new IAdditionalEssencePool[pools.size()]));
   }
 
   private IBackgroundTemplate getBackgroundTemplate(Element parent) throws PersistenceException {

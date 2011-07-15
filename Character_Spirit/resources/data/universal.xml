@@ -29,6 +29,7 @@
 		<duration duration="Permanent"/>
 		<charmtype type="Permanent"/>
 		<charmAttribute attribute="Mortal"/>
+		<repurchases limitingTrait="Essence"/>
 		<source source="GodsAndElementals"/>
 	</charm>
 	<charm id="Spirit.HurryHome" exalt="Spirit" group="Universal">

@@ -129,7 +129,7 @@
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Native" visualize="true" />
-          <charmAttribute attribute="Overdrive" visualize="true" />
+          <charmAttribute attribute="Overdrive" value="15" visualize="true" />
           <source source="InkMonkeys" />
      </charm>
      <charm id="Infernal.DrivenBeyondDeath" exalt="Infernal" group="NightmareVigilance">

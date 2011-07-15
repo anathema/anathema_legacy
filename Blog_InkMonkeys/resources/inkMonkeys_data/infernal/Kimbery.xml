@@ -37,7 +37,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Native" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Overdrive" visualize="true" />
+          <charmAttribute attribute="Overdrive" value="20" visualize="true" />
           <charmAttribute attribute="Sea" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
           <source source="InkMonkeys" />
@@ -50,13 +50,13 @@
                <charmReference id="Infernal.IntolerableBurningTruths.Subeffect.HateSpringsEternal"/>
           </prerequisite>
           <cost> 
-               <essence cost="15" />   
+               <essence cost="5" />   
           </cost>
           <duration  duration="Instant" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Native" visualize="true" />
-          <charmAttribute attribute="Overdrive" visualize="true" />
+          <charmAttribute attribute="Overdrive" value="15" visualize="true" />
           <charmAttribute attribute="Reactor" visualize="true" />
           <source source="InkMonkeys" />
      </charm>

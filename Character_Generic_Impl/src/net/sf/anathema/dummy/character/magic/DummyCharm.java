@@ -27,7 +27,7 @@ import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -42,7 +42,7 @@ public class DummyCharm extends Identificate implements ICharm {
   private Set<ICharm> parentCharms;
   private Set<ICharm> learnFollowUpCharms = new HashSet<ICharm>();
   private List<ICharmAttributeRequirement> requirements = new ArrayList<ICharmAttributeRequirement>();
-  private CharacterType characterType;
+  private ICharacterType characterType;
   private String groupId;
   private IExaltedSourceBook source;
   private CostList temporaryCost;
@@ -96,11 +96,11 @@ public class DummyCharm extends Identificate implements ICharm {
     return requirements.toArray(new ICharmAttributeRequirement[requirements.size()]);
   }
 
-  public CharacterType getCharacterType() {
+  public ICharacterType getCharacterType() {
     return characterType;
   }
 
-  public void setCharacterType(CharacterType type) {
+  public void setCharacterType(ICharacterType type) {
     characterType = type;
   }
   

@@ -1,0 +1,8 @@
+<additionalRules>
+	<additionalPools>
+		<multilearnablePool>
+			<backgroundReference id="Familiar"/>
+			<otherPool id="Familiar" formula="=((x >= 3) ? 5 : 0)"/>
+		</multilearnablePool>
+	</additionalPools>
+</additionalRules>

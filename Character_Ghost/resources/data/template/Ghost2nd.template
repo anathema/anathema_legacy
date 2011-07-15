@@ -7,6 +7,7 @@
     <traitCollection uses="trait/DefaultTraitCollection.template"/>
     <magicTemplate uses="template/GhostMagic2nd.template"/>
     <presentation uses="template/GhostPresentation2nd.template"/>
+    <additionalRules uses="template/AdditionalFamiliarRules2nd.template"/>
     <healthTemplate>
       <toughnessControllingTrait type="Conviction"/>
     </healthTemplate>

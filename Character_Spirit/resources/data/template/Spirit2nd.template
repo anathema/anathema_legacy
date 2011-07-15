@@ -7,6 +7,14 @@
     <traitCollection uses="trait/DefaultTraitCollection.template"/>
     <magicTemplate uses="template/SpiritMagic2nd.template"/>
     <presentation uses="template/SpiritPresentation2nd.template"/>
+    <additionalRules uses="template/AdditionalFamiliarRules2nd.template">
+    	<additionalPools>
+    		<multilearnablePool>
+    			<charmReference id="Spirit.EssencePlethora"/>   			
+    			<personalPool multiplier="10"/>
+    		</multilearnablePool>
+    	</additionalPools>
+    </additionalRules>
     <healthTemplate>
       <usesBaseProvider path="net.sf.anathema.character.spirit.template.SpiritHealthLevelProvider"/>
       <toughnessControllingTrait type="Essence"/>

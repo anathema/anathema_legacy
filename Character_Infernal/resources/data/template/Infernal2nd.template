@@ -8,6 +8,7 @@
     <traitCollection uses="template/InfernalTraitCollection2nd.template"/>
     <magicTemplate uses="template/InfernalMagic2nd.template"/>
     <presentation uses="template/InfernalPresentation.template"/>
+    <additionalRules uses="template/InfernalAdditionalRules2nd.template"/>
     <healthTemplate>
       <toughnessControllingTrait type="Resistance"/>
       <toughnessControllingTrait type="Stamina"/>

@@ -1,4 +1,4 @@
-<additionalRules>
+<additionalRules uses="template/AdditionalFamiliarRules2nd.template">
 	<additionalPools>
     	<multilearnablePool>
     		<charmReference id="Solar.ImmanentSolarGlory"/>
