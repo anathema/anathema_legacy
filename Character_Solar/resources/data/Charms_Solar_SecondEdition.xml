@@ -3506,6 +3506,13 @@
 			<charmReference id="Solar.CallBlade" />
 			<charmReference id="Solar.CallBladeThrown" />
 		</merged>
+		<merged>
+			<charmReference id="Solar.ImmanentSolarGlory" />
+			<charmReference id="Solar.ImmanentSolarGloryWar" />
+			<charmReference id="Solar.ImmanentSolarGloryBureaucracy" />
+			<charmReference id="Solar.ImmanentSolarGloryLarceny" />
+			<charmReference id="Solar.ImmanentSolarGloryPerformance" />
+		</merged>
 	</merges>
 	<renames>
 		<rename from="Solar.Wonder-ForgingGenius4" to="Solar.Wonder-ForgingGenius.Subeffects.Repurchase1"/>

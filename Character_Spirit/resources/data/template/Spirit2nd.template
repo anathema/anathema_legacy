@@ -9,7 +9,7 @@
     <presentation uses="template/SpiritPresentation2nd.template"/>
     <healthTemplate>
       <usesBaseProvider path="net.sf.anathema.character.spirit.template.SpiritHealthLevelProvider"/>
-      <toughnessControllingTrait type="Resistance"/>
+      <toughnessControllingTrait type="Essence"/>
     </healthTemplate>
   </general>
   <creation>

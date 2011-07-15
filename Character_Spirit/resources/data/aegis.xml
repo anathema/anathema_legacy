@@ -86,6 +86,12 @@
 		<charmtype type="Permanent"/>
 		<charmAttribute attribute="Stackable" visualize="true"/>
 		<charmAttribute attribute="Mortal"/>
+        <oxbody trait="Essence">
+             <pick name="Category.-1-2">
+                 <OneHealthLevel/>
+                 <TwoHealthLevel/>
+             </pick>
+        </oxbody>
 		<source source="GodsAndElementals"/>
 	</charm>
 	<charm id="Spirit.SheathingTheMaterialForm" exalt="Spirit" group="Aegis">
