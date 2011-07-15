@@ -14,16 +14,18 @@ import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CraftEncoder extends AbstractNamedTraitEncoder {
+public class CraftEncoder extends AbstractNamedTraitEncoder implements INamedTraitEncoder {
 
+  private final int craftCount;
   private final int essenceMax;
 
-  public CraftEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder encoder, int essenceMax) {
-    super(resources, baseFont, encoder, 9);
+  public CraftEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder encoder, int essenceMax, int craftCount) {
+    super(resources, baseFont, encoder);
+    this.craftCount = craftCount;
     this.essenceMax = essenceMax;
   }
 
-  public int encode(PdfContentByte directContent, IGenericCharacter character, Position position, float width) {
+  public float encode(PdfContentByte directContent, IGenericCharacter character, Position position, float width, float height) {
     String title = getResources().getString("Sheet.AbilitySubHeader.Crafts"); //$NON-NLS-1$
     INamedGenericTrait[] traits = character.getSubTraits(AbilityType.Craft);
     if (!AnathemaCharacterPreferences.getDefaultPreferences().printZeroCrafts()) {
@@ -36,6 +38,11 @@ public class CraftEncoder extends AbstractNamedTraitEncoder {
       traits = nonZeroCrafts.toArray(new INamedGenericTrait[nonZeroCrafts.size()]);
     }
     IValuedTraitReference[] crafts = getTraitReferences(traits, AbilityType.Craft);
-    return drawNamedTraitSection(directContent, title, crafts, position, width, essenceMax);
+    if (craftCount > 0) {
+      return _drawNamedTraitSection(directContent, title, crafts, position, width, craftCount, essenceMax);
+    }
+    else {
+      return drawNamedTraitSection(directContent, title, crafts, position, width, height, essenceMax);
+    }
   }
 }

@@ -15,10 +15,11 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
   public static PdfAbilitiesEncoder createWithCraftsOnly(
       BaseFont baseFont,
       IResources resources,
-      int essenceMax) {
+      int essenceMax,
+      int craftCount) {
     PdfAbilitiesEncoder pdfAbilitiesEncoder = new PdfAbilitiesEncoder(baseFont, resources, essenceMax);
     PdfTraitEncoder traitEncoder = pdfAbilitiesEncoder.getTraitEncoder();
-    pdfAbilitiesEncoder.addNamedTraitEncoder(new CraftEncoder(resources, baseFont, traitEncoder, essenceMax));
+    pdfAbilitiesEncoder.addNamedTraitEncoder(new CraftEncoder(resources, baseFont, traitEncoder, essenceMax, craftCount));
     return pdfAbilitiesEncoder;
   }
 
@@ -37,10 +38,11 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
       BaseFont baseFont,
       IResources resources,
       int essenceMax,
+      int craftCount,
       int specialtyCount) {
     PdfAbilitiesEncoder pdfAbilitiesEncoder = new PdfAbilitiesEncoder(baseFont, resources, essenceMax);
     PdfTraitEncoder traitEncoder = pdfAbilitiesEncoder.getTraitEncoder();
-    pdfAbilitiesEncoder.addNamedTraitEncoder(new CraftEncoder(resources, baseFont, traitEncoder, essenceMax));
+    pdfAbilitiesEncoder.addNamedTraitEncoder(new CraftEncoder(resources, baseFont, traitEncoder, essenceMax, craftCount));
     pdfAbilitiesEncoder.addNamedTraitEncoder(new SpecialtiesEncoder(resources, baseFont, traitEncoder, specialtyCount));
     return pdfAbilitiesEncoder;
   }

@@ -2,13 +2,9 @@ package net.sf.anathema.character.reporting.sheet.page;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Document;
@@ -16,14 +12,12 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public class NewPdfThirdPageEncoder extends AbstractPdfPageEncoder {
-  private final int essenceMax;
 
   public NewPdfThirdPageEncoder(IPdfPartEncoder partEncoder,
                                  PdfEncodingRegistry registry,
                                  IResources resources, int essenceMax,
                                  PdfPageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
-    this.essenceMax = essenceMax;
   }
 
   public void encode(Document document, PdfContentByte directContent,

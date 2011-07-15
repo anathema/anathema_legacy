@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.util;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -32,8 +33,13 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
   }
 
   private Bounds calculateContentBoxBounds(Bounds bounds) {
-    int headerPadding = IPdfBoxEncoder.HEADER_HEIGHT / 2;
+    float headerPadding = IPdfBoxEncoder.HEADER_HEIGHT / 2;
     return new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - headerPadding);
+  }
+  
+  public float getRequestedHeight(IPdfVariableContentBoxEncoder encoder, IGenericCharacter character) {
+    float boxHeight = IPdfBoxEncoder.HEADER_HEIGHT / 2f + IPdfBoxEncoder.ARCSPACE;
+    return boxHeight + encoder.getRequestedHeight(character); 
   }
 
   private Bounds encodeBox(PdfContentByte directContent, Bounds bounds, String title, IPdfBoxEncoder boxEncoder) {

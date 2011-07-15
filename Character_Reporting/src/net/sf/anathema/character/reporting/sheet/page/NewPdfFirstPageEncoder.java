@@ -41,7 +41,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
 
     float distanceFromTop = 0;
     float firstRowHeight = encodePersonalInfo(directContent, character,
-                                              description, distanceFromTop, 60);
+                                              description, distanceFromTop, CONTENT_HEIGHT);
     distanceFromTop += calculateBoxIncrement(firstRowHeight);
 
     // First column - top-down
@@ -139,7 +139,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
     return encodeFixedBox(directContent, character, description,
                           PdfAbilitiesEncoder.createWithCraftsOnly(getBaseFont(),
                                                                    getResources(),
-                                                                   essenceMax),
+                                                                   essenceMax, -1),
                           1, 1, distanceFromTop, height);
   }
 
@@ -147,10 +147,8 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
                                   IGenericCharacter character, IGenericDescription description,
                                   float distanceFromTop, float height)
       throws DocumentException {
-    // TODO: Revise the Specialties box to gracefully add lines to fill up
-    //       the allotted space, rather than taking a hard-coded parameter.
     return encodeFixedBox(directContent, character, description,
-                          new PdfSpecialtiesEncoder(getResources(), getBaseFont(), 11),
+                          new PdfSpecialtiesEncoder(getResources(), getBaseFont()),
                           1, 2, distanceFromTop, height);
   }
 

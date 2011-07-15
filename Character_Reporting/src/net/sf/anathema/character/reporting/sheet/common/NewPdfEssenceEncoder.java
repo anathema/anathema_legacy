@@ -59,7 +59,7 @@ public class NewPdfEssenceEncoder extends AbstractPdfEncoder implements
 
   public float getRequestedHeight(IGenericCharacter character) {
     float height = traitEncoder.getTraitHeight() + IVoidStateFormatConstants.TEXT_PADDING;
-    height += calculatePoolLines(character) * IVoidStateFormatConstants.LINE_HEIGHT;
+    height += calculatePoolLines(character) * IVoidStateFormatConstants.BARE_LINE_HEIGHT;
     return height;    
   }
 

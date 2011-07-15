@@ -14,41 +14,49 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder implements INamedTraitEncoder {
+public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder {
   private static final int SUBSECTION_FONT_SIZE = 8;
   private final IResources resources;
   private final PdfTraitEncoder traitEncoder;
   private final BaseFont baseFont;
-  private final int lineCount;
 
-  public AbstractNamedTraitEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder traitEncoder, int lineCount) {
+  public AbstractNamedTraitEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder traitEncoder) {
     this.resources = resources;
     this.baseFont = baseFont;
     this.traitEncoder = traitEncoder;
-    this.lineCount = lineCount;
   }
 
   protected IResources getResources() {
     return resources;
-  }
-  
-  protected int getLineCount() {
-    return lineCount;
   }
 
   @Override
   protected BaseFont getBaseFont() {
     return baseFont;
   }
+  
+  protected int getLineCount(String title, float height) {
+    if (title != null) {
+      height -= SUBSECTION_FONT_SIZE * 1.5f;
+    }
+    return (int)(height / traitEncoder.getTraitHeight());
+  }
 
-  protected int drawNamedTraitSection(
-      PdfContentByte directContent,
-      String title,
-      IValuedTraitReference[] traits,
-      Position position,
-      float width,
-      int dotCount) {
-    int height = 0;
+  protected float drawNamedTraitSection(PdfContentByte directContent,
+                                        String title,
+                                        IValuedTraitReference[] traits,
+                                        Position position, float width,
+                                        float height, int dotCount) {
+    return _drawNamedTraitSection(directContent, title, traits, position,
+                                  width, getLineCount(title, height), dotCount);
+  }
+
+  protected float _drawNamedTraitSection(PdfContentByte directContent,
+                                        String title,
+                                        IValuedTraitReference[] traits,
+                                        Position position, float width,
+                                        int lineCount, int dotCount) {
+    float height = 0;
     if (title != null) {
       height = drawSubsectionHeader(directContent, title, position, width);
     }
@@ -69,10 +77,10 @@ public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder imple
     return height;
   }
 
-  private final int drawSubsectionHeader(PdfContentByte directContent, String text, Position position, float width) {
+  private final float drawSubsectionHeader(PdfContentByte directContent, String text, Position position, float width) {
     setSubsectionFont(directContent);
     drawText(directContent, text, new Position(position.x + width / 2, position.y), PdfContentByte.ALIGN_CENTER);
-    return (int) (SUBSECTION_FONT_SIZE * 1.5);
+    return SUBSECTION_FONT_SIZE * 1.5f;
   }
 
   protected final void setSubsectionFont(PdfContentByte directContent) {

@@ -60,19 +60,22 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
   public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
     Position position = new Position(bounds.getMinX(), bounds.getMaxY());
     float width = bounds.width;
-    float yPosition = encodeTraitGroups(directContent, character, position, width);
-    for (INamedTraitEncoder encoder : namedTraitEncoders) {
-      yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
-      yPosition -= encoder.encode(directContent, character, new Position(position.x, yPosition), width);
-    }
     
-    float bottom = bounds.getMinY() + 4;
+    float bottom = bounds.getMinY() + IVoidStateFormatConstants.TEXT_PADDING;
     int nExcellencies = getExcellencies(character).length;
     if (nExcellencies > 0) {
       bottom += encodeExcellencyCommentText(directContent, nExcellencies, position, bottom);
     }
     if (!markedTraitTypes.isEmpty()) {
       bottom += encodeMarkerCommentText(directContent, position, bottom);
+    }
+    
+    float yPosition = encodeTraitGroups(directContent, character, position, width);
+    float height = yPosition - bottom;
+    for (INamedTraitEncoder encoder : namedTraitEncoders) {
+      yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
+      yPosition -= encoder.encode(directContent, character, new Position(position.x, yPosition), width, height);
+      height -= IVoidStateFormatConstants.LINE_HEIGHT;
     }
   }
 

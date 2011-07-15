@@ -7,5 +7,5 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public interface INamedTraitEncoder {
 
-  public int encode(PdfContentByte directContent, IGenericCharacter character, Position position, float width);
+  public float encode(PdfContentByte directContent, IGenericCharacter character, Position position, float width, float height);
 }

@@ -20,19 +20,15 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfSpecialtiesEncoder extends AbstractNamedTraitEncoder implements IPdfContentBoxEncoder  {
 
-  public PdfSpecialtiesEncoder(IResources resources, BaseFont baseFont, int lineCount) {
-    super(resources, baseFont, PdfTraitEncoder.createSmallTraitEncoder(baseFont), lineCount);
+  public PdfSpecialtiesEncoder(IResources resources, BaseFont baseFont) {
+    super(resources, baseFont, PdfTraitEncoder.createSmallTraitEncoder(baseFont));
   }
 
   public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Specialties"; //$NON-NLS-1$
   }
-  
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) {
-    encode(directContent, character, new Position(bounds.getMinX(), bounds.getMaxY()), bounds.width);
-  }
 
-  public int encode(PdfContentByte directContent, IGenericCharacter character, Position position, float width) {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) {
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
     for (IIdentifiedTraitTypeGroup group : character.getAbilityTypeGroups()) {
       for (ITraitType traitType : group.getAllGroupTypes()) {
@@ -41,41 +37,28 @@ public class PdfSpecialtiesEncoder extends AbstractNamedTraitEncoder implements 
     }
     IValuedTraitReference[] specialties = references.toArray(new IValuedTraitReference[references.size()]);
     
-
+    int lineCount = getLineCount(null, bounds.height);
     IValuedTraitReference[] leftSpecialties = Arrays.copyOfRange(specialties,
-                                                                 0, Math.min(specialties.length, getLineCount()));
+                                                                 0, Math.min(specialties.length, lineCount));
     IValuedTraitReference[] rightSpecialties = Arrays.copyOfRange(specialties,
                                                                   leftSpecialties.length, specialties.length);
     
-    /*
-    IValuedTraitReference[] leftSpecialties = new IValuedTraitReference[(references.size() + 1) / 2];
-    IValuedTraitReference[] rightSpecialties = new IValuedTraitReference[references.size() / 2];
-    for (int i = 0; i < references.size(); i++) {
-      if (i % 2 == 0)
-      {
-        leftSpecialties[i / 2] = references.get(i);
-      }
-      else
-      {
-        rightSpecialties[i / 2] = references.get(i);
-      }
-    }
-    */
+    float columnWidth = (bounds.width - IVoidStateFormatConstants.PADDING) / 2f;
+    float columnHeight = bounds.height - IVoidStateFormatConstants.TEXT_PADDING / 2f;
+    float yPosition = bounds.getMaxY() - IVoidStateFormatConstants.BARE_LINE_HEIGHT;
     
-    float columnWidth = (width - IVoidStateFormatConstants.PADDING) / 2f;
-    float yPosition = position.y - IVoidStateFormatConstants.LINE_HEIGHT;
-    
-    float leftPosition = position.x;
+    float leftPosition = bounds.getMinX();
     drawNamedTraitSection(directContent, null, leftSpecialties,
-                          new Position(leftPosition, yPosition), columnWidth, 3);
+                          new Position(leftPosition, yPosition),
+                          columnWidth, columnHeight, 3);
 
     float rightPosition = leftPosition + columnWidth + IVoidStateFormatConstants.PADDING;
-    return drawNamedTraitSection(directContent, null, rightSpecialties,
-                                 new Position(rightPosition, yPosition), columnWidth, 3);
+    drawNamedTraitSection(directContent, null, rightSpecialties,
+                          new Position(rightPosition, yPosition),
+                          columnWidth, columnHeight, 3);
   }
   
-  public boolean hasContent(IGenericCharacter character)
-  {
+  public boolean hasContent(IGenericCharacter character) {
     return true;
   }
 }

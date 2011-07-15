@@ -152,7 +152,7 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
                                     IPdfVariableContentBoxEncoder encoder, int column,
                                     int span, float distanceFromTop, float maxHeight)
       throws DocumentException {
-    float height = Math.min(maxHeight, encoder.getRequestedHeight(character));
+    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(encoder, character));
     return encodeFixedBox(directContent, character, description, encoder, column,
                           span, distanceFromTop, height);
   }
@@ -163,7 +163,7 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
                                           IPdfVariableContentBoxEncoder encoder, int column,
                                           int span, float bottom, float maxHeight)
       throws DocumentException {
-    float height = Math.min(maxHeight, encoder.getRequestedHeight(character));
+    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(encoder, character));
     return encodeFixedBoxBottom(directContent, character, description, encoder, column,
                                 span, bottom, height);  
   }

@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
@@ -33,7 +34,7 @@ public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder
                      Bounds infoBounds) {
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     
-    int lines = (characterType.isExaltType() ? 4 : 3);
+    int lines = getNumberOfLines(characterType);
     
     float lineHeight = (infoBounds.height - TEXT_PADDING) / lines;
     float entryWidth = (infoBounds.width - 2*TEXT_PADDING) / 3;
@@ -98,6 +99,14 @@ public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder
                           getLabel("Anima"), animaContent, new Position(firstColumnX, fourthRowY), infoBounds.width); //$NON-NLS-1$
     }
   }
+  
+  private int getNumberOfLines(IGenericCharacter character) {
+    return getNumberOfLines(character.getTemplate().getTemplateType().getCharacterType());
+  }
+
+  private int getNumberOfLines(ICharacterType characterType) {
+    return (characterType.isExaltType() ? 4 : 3);
+  }
 
   private String getCasteString(ICasteType casteType) {
     if (casteType == null || casteType == ICasteType.NULL_CASTE_TYPE) {
@@ -134,7 +143,6 @@ public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder
 
   @Override
   public float getRequestedHeight(IGenericCharacter character) {
-    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    return (characterType.isExaltType() ? 60 : 50);
+    return getNumberOfLines(character) * IVoidStateFormatConstants.BARE_LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
   }
 }
