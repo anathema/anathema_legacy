@@ -2,33 +2,27 @@ package net.sf.anathema.character.reporting.sheet.common;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class NewPdfEssenceEncoder extends AbstractPdfEncoder implements
-    IPdfVariableContentBoxEncoder {
-
+public class NewPdfEssenceEncoder extends AbstractPdfEncoder
+    implements IPdfVariableContentBoxEncoder {
+  
   private BaseFont baseFont;
   private final IResources resources;
-  private PdfTraitEncoder traitEncoder;
-  private final int essenceMax;
+  private EssenceTableEncoder poolTable;
 
   public NewPdfEssenceEncoder(BaseFont baseFont, IResources resources,
-                              int essenceMax) {
+                              int essenceMax, String... specialRecoveryRows) {
     this.baseFont = baseFont;
     this.resources = resources;
-    this.essenceMax = essenceMax;
-    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
+    this.poolTable = new EssenceTableEncoder(this.resources, this.baseFont, essenceMax,
+                                             specialRecoveryRows);
   }
 
   @Override
@@ -40,102 +34,23 @@ public class NewPdfEssenceEncoder extends AbstractPdfEncoder implements
                              IGenericDescription description) {
     return "Essence"; //$NON-NLS-1$
   }
-  
-  private int calculatePoolLines(IGenericCharacter character) {
-    int lines = 0;
-    if (character.getPersonalPoolValue() > 0) {
-      lines++;
-    }
-    if (character.getPeripheralPoolValue() > 0) {
-      lines++;
-    }
-    if (character.getOverdrivePoolValue() > 0) {
-      lines++;
-    }
-    for (IdentifiedInteger complexPool : character.getComplexPools()) {
-      if (complexPool.getValue() > 0) {
-        lines++;
-      }
-    }
-    return lines;
-  }
 
-  public float getRequestedHeight(IGenericCharacter character) {
-    float height = traitEncoder.getTraitHeight() + IVoidStateFormatConstants.TEXT_PADDING;
-    height += calculatePoolLines(character) * IVoidStateFormatConstants.BARE_LINE_HEIGHT;
-    return height;    
+  public float getRequestedHeight(IGenericCharacter character, float width) {
+    try {
+      return poolTable.getTableHeight(character, width);
+    }
+    catch (DocumentException e) {
+      System.err.println(e.toString());
+      e.printStackTrace(System.err);
+      return 0;
+    }
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character,
                      IGenericDescription description, Bounds bounds)
       throws DocumentException {
-    float poolHeight = bounds.height - traitEncoder.getTraitHeight()
-                       - IVoidStateFormatConstants.TEXT_PADDING;
-    float columnWidth = (bounds.width - 3 * IVoidStateFormatConstants.PADDING) / 4f;
-
-    int personalPool = character.getPersonalPoolValue();
-    int peripheralPool = character.getPeripheralPoolValue();
-    int overdrivePool = character.getOverdrivePoolValue();
-    IdentifiedInteger[] complexPools = character.getComplexPools();
-    
-    int numberOfLines = calculatePoolLines(character);
-    float poolLineHeight = poolHeight / numberOfLines;
-    int value = character.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
-    Position essencePosition = new Position(bounds.x,
-                                            bounds.getMaxY()
-                                            - traitEncoder.getTraitHeight());
-    traitEncoder.encodeDotsCenteredAndUngrouped(directContent, essencePosition,
-                                                columnWidth, value, essenceMax);
-
-    int line = 1;
-    if (personalPool > 0) {
-      Position personalPosition = new Position(bounds.x,
-                                               essencePosition.y - line * poolLineHeight);
-      String personalLabel = resources.getString("Sheet.Essence.PersonalPool"); //$NON-NLS-1$
-      encodePool(directContent, personalLabel, personalPool,
-                 personalPosition, columnWidth);
-      line++;
-    }
-
-    if (peripheralPool > 0) {
-      Position peripheralPosition = new Position(bounds.x,
-                                                 essencePosition.y - line * poolLineHeight);
-      String peripheralLabel = resources.getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
-      encodePool(directContent, peripheralLabel, peripheralPool,
-                 peripheralPosition, columnWidth);
-      line++;
-    }
-
-    if (overdrivePool > 0) {
-      Position overdrivePosition = new Position(bounds.x,
-                                                 essencePosition.y - line * poolLineHeight);
-      String overdriveLabel = resources.getString("Sheet.Essence.OverdrivePool"); //$NON-NLS-1$
-      encodePool(directContent, overdriveLabel, overdrivePool,
-                 overdrivePosition, columnWidth);
-      line++;
-    }
-    
-    for (IdentifiedInteger complexPool : complexPools) {
-      String poolId = complexPool.getId();
-      int poolValue = complexPool.getValue();
-      if (poolValue > 0) {
-        Position poolPosition = new Position(bounds.x,
-                                             essencePosition.y - line * poolLineHeight);
-        String poolLabel = resources.getString("Sheet.Essence." + poolId); //$NON-NLS-1$
-        encodePool(directContent, poolLabel, poolValue, poolPosition, columnWidth);
-        line++;
-      }
-    }
-  }
-
-  private void encodePool(PdfContentByte directContent, String label,
-                          int poolValue, Position poolPosition, float width) {
-    drawText(directContent, label, poolPosition, PdfContentByte.ALIGN_LEFT);
-    Position rightPosition = new Position(poolPosition.x + width,
-                                          poolPosition.y);
-    String totalString = poolValue + " " + resources.getString("Sheet.Essence.Total"); //$NON-NLS-1$ //$NON-NLS-2$
-    drawText(directContent, totalString, rightPosition,
-             PdfContentByte.ALIGN_RIGHT);
+    Bounds poolBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height);
+    poolTable.encodeTable(directContent, character, poolBounds);
   }
 
   public boolean hasContent(IGenericCharacter character) {

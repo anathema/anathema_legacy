@@ -123,6 +123,18 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     }
     return bounds;
   }
+  
+  protected float getWidth(int column, int span) {
+    switch (column) {
+      case 1:
+        return getPageConfiguration().getFirstColumnRectangle(0, 0, span).width;
+      case 2:
+        return getPageConfiguration().getSecondColumnRectangle(0, 0, span).width;
+      case 3:
+        return getPageConfiguration().getThirdColumnRectangle(0, 0).width;
+    }
+    return 0;
+  }
 
   protected float encodeFixedBox(PdfContentByte directContent,
                                  IGenericCharacter character,
@@ -152,7 +164,7 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
                                     IPdfVariableContentBoxEncoder encoder, int column,
                                     int span, float distanceFromTop, float maxHeight)
       throws DocumentException {
-    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(encoder, character));
+    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(encoder, character, getWidth(column, span)));
     return encodeFixedBox(directContent, character, description, encoder, column,
                           span, distanceFromTop, height);
   }
@@ -163,7 +175,7 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
                                           IPdfVariableContentBoxEncoder encoder, int column,
                                           int span, float bottom, float maxHeight)
       throws DocumentException {
-    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(encoder, character));
+    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(encoder, character, getWidth(column, span)));
     return encodeFixedBoxBottom(directContent, character, description, encoder, column,
                                 span, bottom, height);  
   }

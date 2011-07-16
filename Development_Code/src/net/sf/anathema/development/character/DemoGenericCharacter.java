@@ -179,6 +179,11 @@ public int getEssenceCap(boolean modified)
   public IdentifiedInteger[] getComplexPools() {
     return new IdentifiedInteger[0];
   }
+  
+  @Override
+  public int getAttunedPoolValue() {
+    return 0;
+  }
 
   @Override
   public IExaltedRuleSet getRules() {

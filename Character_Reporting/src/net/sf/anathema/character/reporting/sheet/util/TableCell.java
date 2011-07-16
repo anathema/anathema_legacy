@@ -20,6 +20,13 @@ public class TableCell extends PdfPCell {
     setBorder(border);
   }
 
+  public TableCell(Phrase phrase, int border, int horizontalAlignment, int verticalAlignment) {
+    super(phrase);
+    setBorder(border);
+    setHorizontalAlignment(horizontalAlignment);
+    setVerticalAlignment(verticalAlignment);
+  }
+
   public TableCell(Image image) {
     this(new Phrase(new Chunk(image, 0, 0)), Rectangle.NO_BORDER);
     setHorizontalAlignment(Element.ALIGN_CENTER);

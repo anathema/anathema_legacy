@@ -143,6 +143,10 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public IdentifiedInteger[] getComplexPools() {
     return new IdentifiedInteger[0];
   }
+  
+  public int getAttunedPoolValue() {
+    return 0;
+  }
 
   public IGenericTrait[] getBackgrounds() {
     return new IGenericTrait[0];

@@ -11,7 +11,7 @@ public interface IVoidStateFormatConstants {
   public static final int COMMENT_FONT_SIZE = FONT_SIZE - 2;
   
   public static final float LINE_HEIGHT = 11f;
-  public static final float BARE_LINE_HEIGHT = 10f;
+  public static final float BARE_LINE_HEIGHT = 10.5f;
   public static final float PADDING = 10f;
   public static final float SMALL_SYMBOL_HEIGHT = FONT_SIZE;
   public static final float TEXT_PADDING = LINE_HEIGHT / 2f;

@@ -37,9 +37,9 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
     return new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - headerPadding);
   }
   
-  public float getRequestedHeight(IPdfVariableContentBoxEncoder encoder, IGenericCharacter character) {
+  public float getRequestedHeight(IPdfVariableContentBoxEncoder encoder, IGenericCharacter character, float width) {
     float boxHeight = IPdfBoxEncoder.HEADER_HEIGHT / 2f + IPdfBoxEncoder.ARCSPACE;
-    return boxHeight + encoder.getRequestedHeight(character); 
+    return boxHeight + encoder.getRequestedHeight(character, width); 
   }
 
   private Bounds encodeBox(PdfContentByte directContent, Bounds bounds, String title, IPdfBoxEncoder boxEncoder) {

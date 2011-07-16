@@ -180,6 +180,10 @@ public class GenericCharacter implements IGenericCharacter {
       return new IdentifiedInteger[0];
     }
   }
+  
+  public int getAttunedPoolValue() {
+    return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getAttunedPoolValue() : 0;
+  }
 
   public IGenericTrait[] getBackgrounds() {
     return statistics.getTraitConfiguration().getBackgrounds().getBackgrounds();

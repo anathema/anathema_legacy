@@ -30,17 +30,18 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
   }
 
   private static final int SMALL_DOT_SPACING = 2;
+  public static final int DOT_PADDING = 2;
 
   public static PdfTraitEncoder createLargeTraitEncoder(BaseFont baseFont) {
-    return new PdfTraitEncoder(baseFont, 14, 10);
+    return new PdfTraitEncoder(baseFont, 10 + 2*DOT_PADDING, 10);
   }
 
   public static PdfTraitEncoder createMediumTraitEncoder(BaseFont baseFont) {
-    return new PdfTraitEncoder(baseFont, 12, 8);
+    return new PdfTraitEncoder(baseFont, 8 + 2*DOT_PADDING, 8);
   }
 
   public static PdfTraitEncoder createSmallTraitEncoder(BaseFont baseFont) {
-    return new PdfTraitEncoder(baseFont, 10, 6);
+    return new PdfTraitEncoder(baseFont, 6 + 2*DOT_PADDING, 6);
   }
 
   private final int height;

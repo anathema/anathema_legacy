@@ -142,7 +142,7 @@ public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder
   }
 
   @Override
-  public float getRequestedHeight(IGenericCharacter character) {
+  public float getRequestedHeight(IGenericCharacter character, float width) {
     return getNumberOfLines(character) * IVoidStateFormatConstants.BARE_LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
   }
 }
