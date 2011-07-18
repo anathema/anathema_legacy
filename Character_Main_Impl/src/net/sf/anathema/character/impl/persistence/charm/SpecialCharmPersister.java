@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfi
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Element;
@@ -45,6 +46,10 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
         public void visitMultipleEffectCharm(IMultipleEffectCharm charm) {
           persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
         }
+        
+        public void visitUpgradableCharm(IUpgradableCharm charm) {
+          persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
+          }
         
         public void visitPrerequisiteModifyingCharm(IPrerequisiteModifyingCharm charm)
         {

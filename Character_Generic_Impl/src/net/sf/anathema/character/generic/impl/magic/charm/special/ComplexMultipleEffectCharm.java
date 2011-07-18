@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
@@ -21,8 +22,10 @@ public class ComplexMultipleEffectCharm extends MultipleEffectCharm
 		prereqEffectMap = prereqEffect;
 	}
 	
-	@Override
-	public ISubeffect[] buildSubeffects(IBasicCharacterData data, ICharmLearnableArbitrator arbitrator, ICharm charm) {
+	public ISubeffect[] buildSubeffects(IBasicCharacterData data,
+			IGenericTraitCollection traitCollection,
+			ICharmLearnableArbitrator arbitrator,
+			ICharm charm) {
 	  for (String id : effectIds) {
 		String prereqEffect = prereqEffectMap.get(id);
 	    effectList.add(new Subeffect(id, data, buildLearnCondition(arbitrator, charm, prereqEffect)));

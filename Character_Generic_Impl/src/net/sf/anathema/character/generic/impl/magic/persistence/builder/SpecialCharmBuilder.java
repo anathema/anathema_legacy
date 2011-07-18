@@ -19,6 +19,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.SubeffectCharm
 import net.sf.anathema.character.generic.impl.magic.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.UpgradableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -26,6 +27,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
@@ -35,6 +37,7 @@ public class SpecialCharmBuilder
 	private static final String ATTRIB_MODIFIER = "modifier";
 	private static final String ATTRIB_TRAIT = "trait";
 	private static final String ATTRIB_VALUE = "value";
+	private static final String ATTRIB_ESSENCE = "essence";
 	
 	private static final String TAG_OXBODY_CHARM = "oxbody";
 	private static final String TAG_OXBODY_PICK = "pick";
@@ -57,13 +60,19 @@ public class SpecialCharmBuilder
 	private static final String ATTRIB_ABSOLUTE_MAX = "absoluteMax";
 	private static final String ATTRIB_LIMITING_TRAIT = "limitingTrait";
 	private static final String ATTRIB_LIMIT = "limit";
-	private static final String ATTRIB_ESSENCE = "essence";
 	
 	private static final String TAG_ESSENCE_FIXED_REPURCHASES = "essenceFixedRepurchases";
 	
 	private static final String TAG_MULTI_EFFECT = "multiEffects";
 	private static final String TAG_EFFECT = "effect";
 	private static final String ATTRIB_PREREQ_EFFECT = "prereqEffect";
+	
+	private static final String TAG_UPGRADABLE = "upgradable";
+	private static final String TAG_UPGRADE = "upgrade";
+	private static final String ATTRIB_BP_COST = "bpCost";
+	private static final String ATTRIB_XP_COST = "xpCost";
+	private static final String ATTRIB_REQUIRES_BASE = "requiresBase";
+	private static final String ATTRIB_TRAIT_VALUE = "traitValue";
 	
 	private static final String TAG_ELEMENTAL = "elemental";
 	
@@ -81,6 +90,7 @@ public class SpecialCharmBuilder
 		specialCharm = specialCharm == null ? readRepurchaseCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readEssenceFixedRepurchasesCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readMultiEffectCharm(charmElement, id) : specialCharm;
+		specialCharm = specialCharm == null ? readUpgradableCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readElementalCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readSubEffectCharm(charmElement, id) : specialCharm;
 		return specialCharm;
@@ -259,6 +269,51 @@ public class SpecialCharmBuilder
 		String[] effectArray = new String[effects.size()];
 		effects.toArray(effectArray);
 		return new ComplexMultipleEffectCharm(id, effectArray, prereqEffectMap);
+	}
+	
+	private ISpecialCharm readUpgradableCharm(Element charmElement, String id)
+	{
+		Element upgradableElement = charmElement.element(TAG_UPGRADABLE);
+		if (upgradableElement == null)
+			return null;
+		boolean requiresBase =
+			ElementUtilities.getBooleanAttribute(upgradableElement, ATTRIB_REQUIRES_BASE, true);
+		List<String> upgrades = new ArrayList<String>();
+		Map<String, Integer> bpCosts = new HashMap<String, Integer>();
+		Map<String, Integer> xpCosts = new HashMap<String, Integer>();
+		Map<String, Integer> essenceMins = new HashMap<String, Integer>();
+		Map<String, Integer> traitMins = new HashMap<String, Integer>();
+		Map<String, ITraitType> traits = new HashMap<String, ITraitType>();
+		
+		for (Object upgradeObj : upgradableElement.elements(TAG_UPGRADE))
+		{
+			Element upgrade = (Element)upgradeObj;
+			String name = upgrade.attributeValue(ATTRIB_NAME);
+			upgrades.add(name);
+			
+			try
+			{
+				Integer bpCost = ElementUtilities.getIntAttrib(upgrade, ATTRIB_BP_COST, -1);
+				if (bpCost != -1) bpCosts.put(name, bpCost);
+			
+				Integer xpCost = ElementUtilities.getIntAttrib(upgrade, ATTRIB_XP_COST, 1);
+				xpCosts.put(name, xpCost);
+				
+				Integer essenceMin = ElementUtilities.getIntAttrib(upgrade, ATTRIB_ESSENCE, -1);
+				if (essenceMin != -1) essenceMins.put(name, essenceMin);
+				
+				Integer traitMin = ElementUtilities.getIntAttrib(upgrade, ATTRIB_TRAIT_VALUE, -1);
+				if (traitMin != -1) traitMins.put(name, essenceMin);
+				
+				String trait = upgrade.attributeValue(ATTRIB_TRAIT);
+				if (trait != null) traits.put(name, getTrait(trait));
+				
+			} catch (Exception e) { }
+		}
+		String[] upgradeArray = new String[upgrades.size()];
+		upgrades.toArray(upgradeArray);
+		return new UpgradableCharm(id, upgradeArray, requiresBase,
+				bpCosts, xpCosts, essenceMins, traitMins, traits);
 	}
 	
 	private ISpecialCharm readElementalCharm(Element charmElement, String id)

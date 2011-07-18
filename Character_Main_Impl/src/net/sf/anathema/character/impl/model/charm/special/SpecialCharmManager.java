@@ -16,6 +16,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearn
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -49,15 +50,22 @@ public class SpecialCharmManager implements ISpecialCharmManager {
 		  ICharm charm, ISpecialCharm specialCharm, ILearningCharmGroup group)
   {
 	  addSpecialCharmConfiguration(charm, group,
-			  new TraitCapModifyingCharmConfiguration(context, config, charm, (ITraitCapModifyingCharm) specialCharm));
+			  new TraitCapModifyingCharmConfiguration(context, config, charm, (ITraitCapModifyingCharm) specialCharm), true, true);
   }
   
   private void registerEffectMultilearnableCharm(IMultipleEffectCharm visited, ICharm charm, ILearningCharmGroup group) {
     addSpecialCharmConfiguration(
         charm,
         group,
-        new MultipleEffectCharmConfiguration(context, charm, visited, arbitrator));
+        new MultipleEffectCharmConfiguration(context, charm, visited, arbitrator), true, true);
   }
+  
+  private void registerUpgradableCharm(IUpgradableCharm visited, ICharm charm, ILearningCharmGroup group) {
+	    addSpecialCharmConfiguration(
+	        charm,
+	        group,
+	        new UpgradableCharmConfiguration(context, charm, visited, arbitrator), visited.requiresBase(), false);
+	  }
 
   private void registerMultiLearnableCharm(IMultiLearnableCharm visitedCharm, ICharm charm, ILearningCharmGroup group) {
     addSpecialCharmConfiguration(charm, group, new MultiLearnableCharmConfiguration(
@@ -65,7 +73,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
         config,
         charm,
         visitedCharm,
-        arbitrator));
+        arbitrator), true, true);
   }
 
   private void registerOxBodyTechnique(IOxBodyTechniqueCharm visited, ICharm charm, ILearningCharmGroup group) {
@@ -76,7 +84,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
         visited.getRelevantTraits(),
         health.getOxBodyLearnArbitrator(),
         visited);
-    addSpecialCharmConfiguration(charm, group, oxBodyTechniqueConfiguration);
+    addSpecialCharmConfiguration(charm, group, oxBodyTechniqueConfiguration, true, true);
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(oxBodyTechniqueConfiguration);
     health.addHealthLevelProvider(oxBodyTechniqueConfiguration.getHealthLevelProvider());
   }
@@ -118,6 +126,11 @@ public class SpecialCharmManager implements ISpecialCharmManager {
         registerSubeffectCharm(visitedCharm, charm, group);
       }
       
+      public void visitUpgradableCharm(IUpgradableCharm visitedCharm)
+      {
+    	registerUpgradableCharm(visitedCharm, charm, group);
+      }
+      
       public void visitPrerequisiteModifyingCharm(IPrerequisiteModifyingCharm visitedCharm)
       {
     	// do nothing
@@ -131,30 +144,36 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerSubeffectCharm(ISubeffectCharm visited, ICharm charm, ILearningCharmGroup group) {
-    addSpecialCharmConfiguration(charm, group, new SubeffectCharmConfiguration(context, charm, visited, arbitrator));
+    addSpecialCharmConfiguration(charm, group, new SubeffectCharmConfiguration(context, charm, visited, arbitrator), true, true);
   }
 
   private void addSpecialCharmConfiguration(
       final ICharm charm,
       final ILearningCharmGroup group,
-      final ISpecialCharmConfiguration configuration) {
+      final ISpecialCharmConfiguration configuration,
+      final boolean learnListener,
+      final boolean forgetAtZero) {
     if (specialConfigurationsByCharm.containsKey(charm)) {
       throw new IllegalArgumentException("Special configuration already defined for charm " + charm.getId()); //$NON-NLS-1$
     }
     specialConfigurationsByCharm.put(charm, configuration);
-    configuration.addSpecialCharmLearnListener(new ISpecialCharmLearnListener() {
-      public void learnCountChanged(int newValue) {
-        if (newValue == 0) {
-          group.forgetCharm(charm, group.isLearned(charm, true));
-        }
-        else {
-          if (!group.isLearned(charm)) {
-            group.toggleLearned(charm);
-          }
-          group.fireRecalculateRequested();
-        }
-      }
-    });
+    if (learnListener)
+	    configuration.addSpecialCharmLearnListener(new ISpecialCharmLearnListener() {
+	      public void learnCountChanged(int newValue) {
+	        if (newValue == 0) {
+	        	if (forgetAtZero)
+	        		group.forgetCharm(charm, group.isLearned(charm, true));
+	        	else
+	        		group.fireRecalculateRequested();
+	        }
+	        else {
+	          if (!group.isLearned(charm)) {
+	            group.toggleLearned(charm);
+	          }
+	          group.fireRecalculateRequested();
+	        }
+	      }
+	    });
     group.addCharmLearnListener(new CharmLearnAdapter() {
       @Override
       public void charmForgotten(ICharm forgottenCharm) {

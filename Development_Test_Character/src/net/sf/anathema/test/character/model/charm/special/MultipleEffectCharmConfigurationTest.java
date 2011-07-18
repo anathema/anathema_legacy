@@ -37,7 +37,7 @@ public class MultipleEffectCharmConfigurationTest {
   private IMultipleEffectCharm createCharm(Subeffect effect) {
     IMultipleEffectCharm charm = EasyMock.createMock(IMultipleEffectCharm.class);
     EasyMock.expect(
-        charm.buildSubeffects(isA(IBasicCharacterData.class), (ICharmLearnableArbitrator) isNull(), (ICharm) isNull()))
+        charm.buildSubeffects(isA(IBasicCharacterData.class), null, (ICharmLearnableArbitrator) isNull(), (ICharm) isNull()))
         .andReturn(new ISubeffect[] { effect });
     EasyMock.replay(charm);
     return charm;

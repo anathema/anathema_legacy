@@ -23,6 +23,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditiona
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.character.model.charm.special.IUpgradableCharmConfiguration;
 
 public class MagicCostCalculator {
 
@@ -126,6 +127,10 @@ public class MagicCostCalculator {
       return;
     }
     ISpecialCharmConfiguration specialCharmConfiguration = charms.getSpecialCharmConfiguration((ICharm) magic);
+    if (specialCharmConfiguration instanceof IUpgradableCharmConfiguration)
+    {
+    	bonusPointsSpentForCharms += ((IUpgradableCharmConfiguration)specialCharmConfiguration).getUpgradeBPCost();
+    }
     if (!(specialCharmConfiguration instanceof ISubeffectCharmConfiguration)) {
       return;
     }
@@ -177,6 +182,8 @@ public class MagicCostCalculator {
   private int handleSpecialCharm(ICharm charm) {
     ISpecialCharmConfiguration specialCharmConfiguration = charms.getSpecialCharmConfiguration(charm);
     if (specialCharmConfiguration != null) {
+    	if (specialCharmConfiguration instanceof IUpgradableCharmConfiguration)
+    		return 1;
       return specialCharmConfiguration.getCreationLearnCount();
     }
     return 1;

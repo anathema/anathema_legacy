@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
@@ -30,8 +31,10 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
     return charmId;
   }
 
-  @Override
-  public ISubeffect[] buildSubeffects(IBasicCharacterData data, ICharmLearnableArbitrator arbitrator, ICharm charm) {
+  public ISubeffect[] buildSubeffects(IBasicCharacterData data,
+		  IGenericTraitCollection traitCollection,
+		  ICharmLearnableArbitrator arbitrator,
+		  ICharm charm) {
     if (effectList.isEmpty()) {
       for (Elements element : Elements.values()) {
         effectList.add(new ElementalSubeffect(element, data, buildLearnCondition(element, data, arbitrator, charm)));
