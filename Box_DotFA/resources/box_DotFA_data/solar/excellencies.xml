@@ -28,7 +28,6 @@
           <prerequisite>
                <trait value="5" />
                <essence value="5" />
-				<genericCharmAttributeRequirement attribute="Excellency"/>
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
