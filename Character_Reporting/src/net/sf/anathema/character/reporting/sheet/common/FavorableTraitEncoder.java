@@ -175,6 +175,8 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
   }
 
   private void addGroupLabel(PdfContentByte directContent, IIdentifiedTraitTypeGroup group, Position position) {
+	if (getGroupNamePrefix() == null)
+		return;
     String groupId = group.getGroupId().getId();
     String resourceKey = group.getGroupId() instanceof ICasteType ? "Caste." + groupId : getGroupNamePrefix() + groupId; //$NON-NLS-1$
     String groupLabel = resources.getString(resourceKey);

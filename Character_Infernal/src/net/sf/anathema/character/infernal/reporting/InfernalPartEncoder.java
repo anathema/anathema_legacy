@@ -2,6 +2,7 @@ package net.sf.anathema.character.infernal.reporting;
 
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.page.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -21,6 +22,12 @@ public class InfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncode
   @Override
   public IPdfContentBoxEncoder getAnimaEncoder() {
     return new InfernalAnimaEncoderFactory(getResources(), getBaseFont(), getSymbolBaseFont()).createAnimaEncoder();
+  }
+  
+  public IPdfVariableContentBoxEncoder[] getAdditionalFirstPageEncoders()
+  {
+	return new IPdfVariableContentBoxEncoder[]
+	         { new InfernalYoziListEncoder(getBaseFont(), getResources())};
   }
 
   /*@Override
