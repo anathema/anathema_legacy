@@ -93,7 +93,7 @@
 		</cost>
 		<duration duration="Indefinite"/>
         <charmtype type="Simple">
-            <special speed="6" defense="-2"/>
+            <special defense="-2"/>
         </charmtype>
 		<charmAttribute attribute="Mortal"/>
 		<charmAttribute attribute="Obvious" visualize="true"/>

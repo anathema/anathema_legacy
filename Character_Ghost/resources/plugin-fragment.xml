@@ -39,6 +39,11 @@
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/arcanoi_clay.xml"/>
 	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Ghost"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/arcanoi_puppeteer.xml"/>
+	  </parameter>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="GhostResources">
 		<parameter id="bundle" value="Ghost"/>

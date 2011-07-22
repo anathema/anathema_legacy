@@ -144,7 +144,7 @@
           <cost>
                <essence cost="7" />
           </cost>
-          <duration duration="Instant" unit="month"/>
+          <duration duration="Instant"/>
           <charmtype type="Supplemental"/>
           <charmAttribute attribute="Moliation" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />

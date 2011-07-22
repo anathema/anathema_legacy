@@ -29,7 +29,7 @@
           <cost>
                <essence cost="2" />
           </cost>
-          <duration amount="Instant"/>
+          <duration duration="Instant"/>
           <charmtype type="Simple"/>
           <source source="GhostsAndDemons" />
      </charm>
@@ -65,120 +65,132 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="GhostsAndDemons" />
      </charm>
-     <charm id="Ghost.SteelingTheSpirit" exalt="Ghost" group="StringlessPuppeteer">
+     <charm id="Ghost.SixDemonBag" exalt="Ghost" group="StringlessPuppeteer">
           <prerequisite>
-               <trait id="Compassion" value="3" />
-               <essence value="3" />
-               <charmReference id="Ghost.YieldingSpiritForm"/>
+               <trait id="Compassion" value="2" />
+               <essence value="1" />
+               <charmReference id="Ghost.SpiritCatchingEyeTechnique"/>
+               <charmReference id="Ghost.SkinRidingPrana"/>
           </prerequisite>
           <cost>
-               <essence cost="7" />
+               <essence cost="5" text="3m to eject" />
                <willpower cost="1"/>
           </cost>
-          <duration amount="1" unit="DaySuccess"/>
+          <duration amount="1" unit="day"/>
           <charmtype type="Simple"/>
-          <charmAttribute attribute="Moliation" visualize="true" />
           <source source="GhostsAndDemons" />
      </charm>
-     <charm id="Ghost.GhostDevilForm" exalt="Ghost" group="StringlessPuppeteer">
+     <charm id="Ghost.MortalShadowingTechnique" exalt="Ghost" group="StringlessPuppeteer">
           <prerequisite>
                <trait id="Compassion" value="3" />
-               <essence value="2" />
-               <charmReference id="Ghost.SteelingTheSpirit"/>
-               <charmReference id="Ghost.NineTerrorsVisage"/>
+               <essence value="1" />
+               <charmReference id="Ghost.SoulWhisperingEmpathyDiscipline" />
           </prerequisite>
           <cost>
-               <essence cost="10"/>
+               <essence cost="7"/>
+               <willpower cost="1"/>
           </cost>
-          <duration amount="1" unit="scene"/>
+          <duration amount="1" unit="hour"/>
           <charmtype type="Simple"/>
-          <charmAttribute attribute="Moliation" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
           <source source="GhostsAndDemons" />
      </charm>
-     <charm id="Ghost.WeightedWithTheAnchorOfFlesh" exalt="Ghost" group="StringlessPuppeteer">
-          <prerequisite>
-               <trait id="Compassion" value="5" />
-               <essence value="3" />
-               <charmReference id="Ghost.GhostDevilForm"/>
-          </prerequisite>
-          <cost>
-               <essence cost="20" />
-               <willpower cost="2" />
-          </cost>
-          <duration amount="1" unit="hour" />
-          <charmtype type="Simple"/>
-          <charmAttribute attribute="Moliation" visualize="true" />
-          <source source="GhostsAndDemons" />
-     </charm> 
-     <charm id="Ghost.StolenWaxDiscipline" exalt="Ghost" group="StringlessPuppeteer">
+     <charm id="Ghost.IntangibleGuardianPresence" exalt="Ghost" group="StringlessPuppeteer">
           <prerequisite>
                <trait id="Compassion" value="2" />
                <essence value="3" />
-               <charmReference id="Ghost.WaxenGhostlyFlesh"/>
+               <charmReference id="Ghost.MortalShadowingTechnique"/>
           </prerequisite>
           <cost>
-               <essence cost="12" />
-               <willpower cost="1" />
           </cost>
-          <duration amount="1" unit="scene"/>
-          <charmtype type="Simple"/>
-          <charmAttribute attribute="Moliation" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Shaping" visualize="true" />
-          <charmAttribute attribute="Touch" visualize="true" />
+          <duration duration="Permanent"/>
+          <charmtype type="Permanent"/>
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <repurchases limitingTrait="Compassion"/>
           <source source="GhostsAndDemons" />
      </charm> 
-     <charm id="Ghost.BrokenMoldStrike" exalt="Ghost" group="StringlessPuppeteer">
+     <charm id="Ghost.PupeteersMasterfulHand" exalt="Ghost" group="StringlessPuppeteer">
           <prerequisite>
                <trait id="Compassion" value="3" />
-               <essence value="3" />
-               <charmReference id="Ghost.StolenWaxDiscipline"/>
+               <essence value="2" />
+               <charmReference id="Ghost.MortalShadowingTechnique"/>
           </prerequisite>
           <cost>
                <essence cost="7" />
+               <willpower cost="2" />
           </cost>
-          <duration duration="Instant" unit="month"/>
-          <charmtype type="Supplemental"/>
-          <charmAttribute attribute="Moliation" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Touch" visualize="true" />
+          <duration amount="1" unit="hour"/>
+          <charmtype type="Simple"/>
           <source source="GhostsAndDemons" />
      </charm> 
-     <charm id="Ghost.ShapingTheObedientServant" exalt="Ghost" group="StringlessPuppeteer">
+     <charm id="Ghost.NemissarysRide" exalt="Ghost" group="StringlessPuppeteer">
           <prerequisite>
-               <trait id="Compassion" value="3" />
-               <essence value="3" />
-               <charmReference id="Ghost.GhostDevilForm"/>
-               <charmReference id="Ghost.StolenWaxDiscipline"/>
+               <trait id="Compassion" value="2" />
+               <essence value="2" />
+               <charmReference id="Ghost.MortalShadowingTechnique"/>
           </prerequisite>
           <cost>
-               <essence cost="9" />
+               <essence cost="5" />
                <willpower cost="1" />
           </cost>
           <duration amount="1" unit="day"/>
           <charmtype type="Simple"/>
-          <charmAttribute attribute="Moliation" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Shaping" visualize="true" />
-          <charmAttribute attribute="Touch" visualize="true" />
           <source source="GhostsAndDemons" />
      </charm> 
-     <charm id="Ghost.PrisonOfTheNewForm" exalt="Ghost" group="StringlessPuppeteer">
+     <charm id="Ghost.TheEmbalmersArt" exalt="Ghost" group="StringlessPuppeteer">
           <prerequisite>
-               <trait id="Compassion" value="4" />
+               <trait id="Compassion" value="2" />
                <essence value="3" />
-               <charmReference id="Ghost.BrokenMoldStrike"/>
+               <charmReference id="Ghost.NemissarysRide"/>
           </prerequisite>
           <cost>
-               <essence cost="12" />
-               <willpower cost="1" />
+               <essence cost="15" />
+               <willpower cost="2" />
           </cost>
-          <duration amount="1" unit="WeekSuccess"/>
+          <duration duration="Indefinite"/>
           <charmtype type="Simple"/>
-          <charmAttribute attribute="Moliation" visualize="true" />
-          <charmAttribute attribute="Touch" visualize="true" />
           <source source="GhostsAndDemons" />
      </charm> 
+     <charm id="Ghost.InstaurationOfTheFleshlyVessel" exalt="Ghost" group="StringlessPuppeteer">
+          <prerequisite>
+               <trait id="Compassion" value="3" />
+               <essence value="4" />
+               <charmReference id="Ghost.TheEmbalmersArt"/>
+          </prerequisite>
+          <cost>
+               <essence cost="" text="Varies" />
+          </cost>
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.DeadFurCloakMethod" exalt="Ghost" group="StringlessPuppeteer">
+          <prerequisite>
+               <trait id="Compassion" value="3" />
+               <essence value="2" />
+               <charmReference id="Ghost.NemissarysRide"/>
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+               <willpower cost="1"/>
+          </cost>
+          <duration duration="Indefinite"/>
+          <charmtype type="Simple"/>
+          <source source="GhostsAndDemons" />
+     </charm> 
+     <charm id="Ghost.DriveTheNecroticCollossus" exalt="Ghost" group="StringlessPuppeteer">
+          <prerequisite>
+               <trait id="Compassion" value="3" />
+               <essence value="4" />
+               <charmReference id="Ghost.NemissarysRide"/>
+               <charmReference id="Ghost.DeadFurCloakMethod"/>
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1"/>
+          </cost>
+          <duration amount="1" unit="day"/>
+          <charmtype type="Simple"/>
+          <source source="GhostsAndDemons" />
+     </charm>
 </charmlist>
