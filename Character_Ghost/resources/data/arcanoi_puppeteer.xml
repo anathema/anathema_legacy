@@ -58,9 +58,7 @@
                <willpower cost="1"/>
           </cost>
           <duration amount="1" unit="hour"/>
-          <charmtype type="Reflexive">
-			  <special primaryStep="8"/>
-		  </charmtype>
+          <charmtype type="Simple"/>
           <charmAttribute attribute="Moliation" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="GhostsAndDemons" />
