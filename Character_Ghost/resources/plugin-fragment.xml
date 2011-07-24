@@ -47,6 +47,11 @@
 	  <parameter id="list">
 		<parameter id="type" value="Ghost"/>
 		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/arcanoi_merchant.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Ghost"/>
+		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/arcanoi_tangled.xml"/>
 	  </parameter>
 	</extension>
