@@ -53,7 +53,7 @@ public class CharmConfigurationPersister {
 
   public void save(Element parent, ICharacterStatistics statistics) {
     ICharacterTemplate template = statistics.getCharacterTemplate();
-    if (!template.getMagicTemplate().getCharmTemplate().knowsCharms(statistics.getRules())) {
+    if (!template.getMagicTemplate().getCharmTemplate().canLearnCharms(statistics.getRules())) {
       return;
     }
     Element charmsElement = parent.addElement(TAG_CHARMS);

@@ -21,7 +21,7 @@ public class InfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncode
 
   @Override
   public IPdfContentBoxEncoder getAnimaEncoder() {
-    return new InfernalAnimaEncoderFactory(getResources(), getBaseFont(), getSymbolBaseFont()).createAnimaEncoder();
+    return new InfernalAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
   }
   
   public IPdfVariableContentBoxEncoder[] getAdditionalFirstPageEncoders()

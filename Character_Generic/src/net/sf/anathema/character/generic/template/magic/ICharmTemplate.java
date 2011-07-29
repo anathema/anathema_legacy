@@ -12,7 +12,7 @@ public interface ICharmTemplate {
   
   public IUniqueRequiredCharmType getUniqueRequiredCharmType();
 
-  public boolean knowsCharms(IExaltedRuleSet rules);
+  public boolean canLearnCharms(IExaltedRuleSet rules);
 
   public boolean isAllowedAlienCharms(ICasteType caste);
 

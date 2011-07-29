@@ -17,9 +17,11 @@ public class ListUtils {
   
   public static void addBulletedListText(IResources resources, Chunk symbolChunk,
                                          IExaltedEdition edition, String resourceBase,
-                                         Phrase phrase) {
-    String header = getRequiredString(resources, resourceBase, edition);
-    phrase.add(header + "\n"); //$NON-NLS-1$
+                                         Phrase phrase, boolean showHeader) {
+    if (showHeader) {
+      String header = getRequiredString(resources, resourceBase, edition);
+      phrase.add(header + "\n"); //$NON-NLS-1$
+    }
     for (int power = 0; power < ListUtils.MAX_ITEMS_COUNT; power++) {
       String lineItem = getRequiredString(resources, resourceBase, edition, ListUtils.RESOURCE_ID[power]);
       if (lineItem != null) {

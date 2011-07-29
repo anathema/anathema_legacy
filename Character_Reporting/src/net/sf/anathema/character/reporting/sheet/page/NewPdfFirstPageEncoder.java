@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
@@ -37,8 +36,6 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
   public void encode(Document document, PdfContentByte directContent,
                      IGenericCharacter character,
                      IGenericDescription description) throws DocumentException {
-    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-
     float distanceFromTop = 0;
     float firstRowHeight = encodePersonalInfo(directContent, character,
                                               description, distanceFromTop, CONTENT_HEIGHT);
@@ -63,10 +60,10 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
                                        description, secondDistanceFromTop, 72);
     float virtueIncrement = calculateBoxIncrement(virtueHeight);
     secondDistanceFromTop += virtueIncrement;
-    if (characterType.isExaltType()) {
-      float actualGreatCurseHeight = encodeGreatCurse(directContent, character,
-                                                      description, secondDistanceFromTop, 85);
-      secondDistanceFromTop += calculateBoxIncrement(actualGreatCurseHeight);
+    float greatCurseHeight = encodeGreatCurse(directContent, character,
+                                                    description, secondDistanceFromTop, 85);
+    if (greatCurseHeight > 0) {
+      secondDistanceFromTop += calculateBoxIncrement(greatCurseHeight);
     }
     // Second column - fill in (bottom-up) with mutations, merits & flaws, intimacies
     float secondBottom = CONTENT_HEIGHT - calculateBoxIncrement(specialtyHeight);

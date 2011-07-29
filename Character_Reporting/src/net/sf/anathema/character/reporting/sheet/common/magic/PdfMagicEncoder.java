@@ -26,37 +26,45 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfMagicEncoder implements IPdfContentBoxEncoder
 {
-	static IIdentificate KNACK = new Identificate("Knack");
-
+  static IIdentificate KNACK = new Identificate("Knack");
+  
   public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
+    return collectPrintMagic(character, true);
+  }
+
+  public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character, final boolean includeSpells) {
     final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
     for (IMagicStats stats : character.getGenericCharmStats()) {
       printStats.add(stats);
     }
-    for (IMagic magic : character.getAllLearnedMagic()) {
-      magic.accept(new IMagicVisitor() {
-        public void visitCharm(ICharm charm) {
-          if (CharmUtilities.isGenericCharmFor(charm, character)) {
-            return;
-          }
-          if (charm.hasAttribute(KNACK))
-        	  return;
-          
-          if (character.isMultipleEffectCharm(charm)) {
-            String[] effects = character.getLearnedEffects(charm);
-            for (String effect : effects) {
-              printStats.add(new MultipleEffectCharmStats(charm, effect));
-            }
-          }
-          else {
-            printStats.add(new CharmStats(charm, character));
+    
+    IMagicVisitor statsCollector = new IMagicVisitor(){
+      public void visitCharm(ICharm charm) {
+        if (CharmUtilities.isGenericCharmFor(charm, character)) {
+          return;
+        }
+        if (charm.hasAttribute(KNACK))
+          return;
+        
+        if (character.isMultipleEffectCharm(charm)) {
+          String[] effects = character.getLearnedEffects(charm);
+          for (String effect : effects) {
+            printStats.add(new MultipleEffectCharmStats(charm, effect));
           }
         }
+        else {
+          printStats.add(new CharmStats(charm, character));
+        }
+      }
 
-        public void visitSpell(ISpell spell) {
+      public void visitSpell(ISpell spell) {
+        if (includeSpells) {
           printStats.add(new SpellStats(spell, character.getRules().getEdition()));
         }
-      });
+      }
+    };
+    for (IMagic magic : character.getAllLearnedMagic()) {
+      magic.accept(statsCollector);
     }
     return printStats;
   }

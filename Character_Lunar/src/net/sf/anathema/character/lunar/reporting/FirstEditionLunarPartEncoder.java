@@ -22,7 +22,7 @@ public class FirstEditionLunarPartEncoder extends AbstractFirstEditionExaltPdfPa
 
   @Override
   public IPdfContentBoxEncoder getAnimaEncoder() {
-    return new LunarAnimaEncoderFactory(getResources(), getBaseFont(), getSymbolBaseFont()).createAnimaEncoder();
+    return new LunarAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
   }
 
   @Override

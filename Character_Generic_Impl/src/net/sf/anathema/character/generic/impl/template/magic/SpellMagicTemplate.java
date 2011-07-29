@@ -13,19 +13,12 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
   private final CircleType[] necromancyCircles;
   private final ICharacterTemplate template;
 
-  public SpellMagicTemplate(CircleType[] sorceryCircles, CircleType[] necromancyCircles,
-		  ICharacterTemplate template) {
+  public SpellMagicTemplate(CircleType[] sorceryCircles,
+                            CircleType[] necromancyCircles,
+                            ICharacterTemplate template) {
     this.sorceryCircles = sorceryCircles;
     this.necromancyCircles = necromancyCircles;
     this.template = template;
-  }
-
-  public boolean knowsSorcery() {
-    return getSorceryCircles() != null && getSorceryCircles().length != 0;
-  }
-
-  public boolean knowsNecromancy() {
-    return getNecromancyCircles() != null && getNecromancyCircles().length != 0;
   }
 
   public CircleType[] getSorceryCircles() {
@@ -36,43 +29,78 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
     return necromancyCircles;
   }
 
-  public boolean knowsSpellMagic() {
-    return knowsNecromancy() || knowsSorcery();
+  public boolean canLearnSorcery() {
+    return getSorceryCircles() != null && getSorceryCircles().length != 0;
   }
 
-  @Override
-  public boolean canLearnSpell(ISpell spell, ICharm[] knownCharms)
-  {
-	  final String[] circleCharmName = new String[1];
-	  spell.getCircleType().accept(new ICircleTypeVisitor() {
-	      public void visitTerrestrial(CircleType type) {
-	        circleCharmName[0] = template.getTemplateType().getCharacterType().getId() + ".TerrestrialCircleSorcery"; //$NON-NLS-1$
-	      }
+  public boolean canLearnNecromancy() {
+    return getNecromancyCircles() != null && getNecromancyCircles().length != 0;
+  }
 
-	      public void visitCelestial(CircleType type) {
-	    	circleCharmName[0] = template.getTemplateType().getCharacterType().getId() + ".CelestialCircleSorcery"; //$NON-NLS-1$
-	      }
+  public boolean canLearnSpellMagic() {
+    return canLearnSorcery() || canLearnNecromancy();
+  }
 
-	      public void visitSolar(CircleType type) {
-	    	 circleCharmName[0] = template.getTemplateType().getCharacterType().getId() + ".SolarCircleSorcery"; //$NON-NLS-1$
-	      }
-
-	      public void visitShadowland(CircleType type) {
-	    	 circleCharmName[0] = template.getTemplateType().getCharacterType().getId() + ".ShadowlandsCircleNecromancy"; //$NON-NLS-1$        
-	      }
-
-	      public void visitLabyrinth(CircleType type) {
-	    	circleCharmName[0] = template.getTemplateType().getCharacterType().getId() + ".LabyrinthCircleNecromancy"; //$NON-NLS-1$        
-	      }
-
-	      public void visitVoid(CircleType type) {
-	    	circleCharmName[0] = template.getTemplateType().getCharacterType().getId() + ".VoidCircleNecromancy"; //$NON-NLS-1$        
-	      }
-	    });
-	  for (ICharm charm : knownCharms)
-		  if (charm.getId().equals(circleCharmName[0]))
-			  return true;
-	  return false;
+  protected boolean knowsCharm(String charm, ICharm[] knownCharms) {
+    for (ICharm knownCharm : knownCharms)
+        if (charm.equals(knownCharm.getId()))
+          return true;
+      return false;
   }
   
+  public boolean knowsSorcery(ICharm[] knownCharms) {
+    for (CircleType circle : sorceryCircles) {
+      if (knowsCharm(getInitiation(circle), knownCharms)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean knowsNecromancy(ICharm[] knownCharms) {
+    for (CircleType circle : necromancyCircles) {
+      if (knowsCharm(getInitiation(circle), knownCharms)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean knowsSpellMagic(ICharm[] knownCharms) {
+    return knowsSorcery(knownCharms) || knowsNecromancy(knownCharms);
+  }
+
+  public boolean canLearnSpell(ISpell spell, ICharm[] knownCharms) {
+	  return knowsCharm(getInitiation(spell.getCircleType()), knownCharms);
+  }
+  
+  public String getInitiation(CircleType type) {
+    final String[] initiation = new String[1];
+    type.accept(new ICircleTypeVisitor() {
+      public void visitTerrestrial(CircleType type) {
+        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".TerrestrialCircleSorcery"; //$NON-NLS-1$
+      }
+
+      public void visitCelestial(CircleType type) {
+        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".CelestialCircleSorcery"; //$NON-NLS-1$
+      }
+
+      public void visitSolar(CircleType type) {
+        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".SolarCircleSorcery"; //$NON-NLS-1$
+      }
+
+      public void visitShadowland(CircleType type) {
+        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".ShadowlandsCircleNecromancy"; //$NON-NLS-1$        
+      }
+
+      public void visitLabyrinth(CircleType type) {
+        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".LabyrinthCircleNecromancy"; //$NON-NLS-1$        
+      }
+
+      public void visitVoid(CircleType type) {
+        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".VoidCircleNecromancy"; //$NON-NLS-1$        
+      }
+    });
+    return initiation[0];
+  }
 }

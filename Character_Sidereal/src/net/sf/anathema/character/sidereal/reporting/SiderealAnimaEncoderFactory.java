@@ -14,11 +14,6 @@ public class SiderealAnimaEncoderFactory extends AbstractAnimaEncoderFactory {
   }
 
   @Override
-  protected int getAnimaPowerCount() {
-    return 3;
-  }
-
-  @Override
   protected IPdfTableEncoder getAnimaTableEncoder() {
     return new AnimaTableEncoder(getResources(), getBaseFont(), getFontSize(), new SiderealAnimaTableStealthProvider(
         getResources()));

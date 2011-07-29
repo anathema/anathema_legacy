@@ -349,7 +349,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         continue;
       }
       ICharmTemplate charmTemplate = getCharmTemplate(registry, type);
-      if (charmTemplate != null && charmTemplate.knowsCharms(rules)) {
+      if (charmTemplate != null && charmTemplate.canLearnCharms(rules)) {
         initCharacterType(charmTemplate, rules, type);
         characterTypes.add(type);
       }

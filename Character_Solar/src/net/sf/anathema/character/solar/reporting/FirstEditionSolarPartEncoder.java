@@ -17,6 +17,6 @@ public class FirstEditionSolarPartEncoder extends AbstractFirstEditionExaltPdfPa
 
   @Override
   public IPdfContentBoxEncoder getAnimaEncoder() {
-    return new SolarAnimaEncoderFactory(getResources(), getBaseFont(), getSymbolBaseFont()).createAnimaEncoder();
+    return new SolarAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
   }
 }

@@ -23,8 +23,8 @@ import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.page.NewPdfFirstPageEncoder;
+import net.sf.anathema.character.reporting.sheet.page.NewPdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.NewPdfSecondPageEncoder;
-import net.sf.anathema.character.reporting.sheet.page.NewPdfThirdPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfOldStyleFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
@@ -68,35 +68,31 @@ public class PdfSheetReport implements IITextReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics(),
     		  new EquipmentModifiers(stattedCharacter.getStatistics()));
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
+      IExaltedEdition edition = character.getRules().getEdition();
+      
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
-      boolean essenceBoxNeeded = false;
-      if (character.getRules().getEdition() == ExaltedEdition.FirstEdition)
+      if (edition == ExaltedEdition.FirstEdition)
       	encoderList.add(new PdfOldStyleFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-      if (character.getRules().getEdition() == ExaltedEdition.SecondEdition)
+      if (edition == ExaltedEdition.SecondEdition)
       {
     	  encoderList.add(new NewPdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
         encoderList.add(new NewPdfSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-        
-        NewPdfThirdPageEncoder thirdEncoder = new NewPdfThirdPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration);
-        if (thirdEncoder.hasContent(character, description)) {
-          encoderList.add(new NewPdfThirdPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-        }
-        else {
-          essenceBoxNeeded = true;
-        }
       }
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
-      if (partEncoder.hasMagicPage())
+      if (edition == ExaltedEdition.SecondEdition) {
+        encoderList.add(new NewPdfMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration));
+      }
+      else if (partEncoder.hasMagicPage()) {
         encoderList.add(new PdfMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration,
-                                                character.getRules().getEdition() != ExaltedEdition.FirstEdition,
-                                                essenceBoxNeeded));
-      boolean isFirstPrinted = false;
+                                                edition != ExaltedEdition.FirstEdition));
+      }
+      boolean firstPagePrinted = false;
       for (IPdfPageEncoder encoder : encoderList) {
-        if (isFirstPrinted) {
+        if (firstPagePrinted) {
           document.newPage();
         }
         else {
-          isFirstPrinted = true;
+          firstPagePrinted = true;
         }
         encoder.encode(document, directContent, character, description);
       }

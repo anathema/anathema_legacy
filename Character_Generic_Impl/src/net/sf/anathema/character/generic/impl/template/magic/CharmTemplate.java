@@ -59,7 +59,7 @@ public class CharmTemplate implements ICharmTemplate {
     return martialArtsRules;
   }
 
-  public boolean knowsCharms(IExaltedRuleSet rules) {
+  public boolean canLearnCharms(IExaltedRuleSet rules) {
     return charmSet.getCharms(rules).length > 0 || charmSet.getMartialArtsCharms(rules).length > 0;
   }
 

@@ -13,11 +13,6 @@ public class LunarAnimaEncoderFactory extends AbstractAnimaEncoderFactory {
   }
 
   @Override
-  protected int getAnimaPowerCount() {
-    return 4;
-  }
-
-  @Override
   protected IPdfTableEncoder getAnimaTableEncoder() {
     return new LunarAnimaTableEncoder(getResources(), getBaseFont(), getSymbolBaseFont(), getFontSize());
   }

@@ -31,6 +31,6 @@ public class FirstEditionSiderealPartEncoder extends AbstractFirstEditionExaltPd
 
   @Override
   public IPdfContentBoxEncoder getAnimaEncoder() {
-    return new SiderealAnimaEncoderFactory(getResources(), getBaseFont(), getSymbolBaseFont()).createAnimaEncoder();
+    return new SiderealAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
   }
 }

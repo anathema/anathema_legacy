@@ -17,6 +17,6 @@ public class SecondEditionAbyssalPartEncoder extends AbstractSecondEditionExaltP
 
   @Override
   public IPdfContentBoxEncoder getAnimaEncoder() {
-    return new Abyssal2ndAnimaEncoderFactory(getResources(), getBaseFont(), getSymbolBaseFont()).createAnimaEncoder();
+    return new Abyssal2ndAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
   }
 }

@@ -62,7 +62,7 @@ public class PdfCharacterSheetDemo {
       PdfOldStyleFirstPageEncoder pageEncoder = new PdfOldStyleFirstPageEncoder(partEncoder, encodingRegistry, resources, essenceMax, pageConfiguration);
       pageEncoder.encode(document, directContent, character, description);
       document.newPage();
-      new PdfMagicPageEncoder(partEncoder, encodingRegistry, resources, pageConfiguration, false, false).encode(
+      new PdfMagicPageEncoder(partEncoder, encodingRegistry, resources, pageConfiguration, false).encode(
           document,
           directContent,
           character,

@@ -84,7 +84,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         if (defaultTemplate == null) {
           continue;
         }
-        if (defaultTemplate.getMagicTemplate().getCharmTemplate().knowsCharms(edition.getDefaultRuleset())) {
+        if (defaultTemplate.getMagicTemplate().getCharmTemplate().canLearnCharms(edition.getDefaultRuleset())) {
           for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
             CharmTree charmTree = new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate(), ruleSet);
             ICharmGroup[] groups = charmTree.getAllCharmGroups();
@@ -130,7 +130,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         }
         selectionListener.setEdition(selectedRuleset.getEdition());
         final IIdentificate[] cascadeTypes = getCharmTreeMap(selectedRuleset).keySet().toArray(new IIdentificate[0]);
-        // TODO: Mach mich schön.
+        // TODO: Mach mich schï¿½n.
         Arrays.sort(cascadeTypes, new Comparator<IIdentificate>() {
           public int compare(IIdentificate o1, IIdentificate o2) {
             final boolean firstCharacterType = o1 instanceof ICharacterType;

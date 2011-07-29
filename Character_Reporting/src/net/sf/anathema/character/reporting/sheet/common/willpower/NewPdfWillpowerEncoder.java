@@ -6,11 +6,9 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.common.ListUtils;
-import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.PdfLineEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -72,7 +70,7 @@ public class NewPdfWillpowerEncoder implements IPdfContentBoxEncoder {
     ListUtils.addBulletedListText(resources, symbolChunk,
                                   character.getRules().getEdition(),
                                   "Sheet.WillpowerSpendingRules", //$NON-NLS-1$
-                                  spendingPhrase);
+                                  spendingPhrase, true);
     spendingPhrase.add("\n"); //$NON-NLS-1$
     String spendingNote = ListUtils.getRequiredString(resources, "Sheet.WillpowerSpendingNote", character.getRules().getEdition());
     spendingPhrase.add(spendingNote + "\n"); //$NON-NLS-1$
@@ -86,7 +84,7 @@ public class NewPdfWillpowerEncoder implements IPdfContentBoxEncoder {
     ListUtils.addBulletedListText(resources, symbolChunk,
                                   character.getRules().getEdition(),
                                   "Sheet.WillpowerRegainingRules", //$NON-NLS-1$
-                                  regainingPhrase);
+                                  regainingPhrase, true);
     PdfTextEncodingUtilities.encodeText(directContent, regainingPhrase,
                                         regainingBounds, lineHeight).getYLine();
   }

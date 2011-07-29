@@ -25,15 +25,15 @@ public class MagicPresenter implements IContentPresenter {
       ITemplateRegistry templateRegistry) {
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
-    if (charmTemplate.knowsCharms(statistics.getRules())) {
+    if (charmTemplate.canLearnCharms(statistics.getRules())) {
       subPresenters.add(new CharacterCharmSelectionPresenter(statistics, resources, templateRegistry, factory));
       subPresenters.add(new ComboConfigurationPresenter(resources, statistics, factory));
     }
     ISpellMagicTemplate spellMagic = statistics.getCharacterTemplate().getMagicTemplate().getSpellMagic();
-    if (spellMagic.knowsSorcery()) {
+    if (spellMagic.canLearnSorcery()) {
       subPresenters.add(new SorcerySpellPresenter(statistics, resources, factory));
     }
-    if (spellMagic.knowsNecromancy()) {
+    if (spellMagic.canLearnNecromancy()) {
       subPresenters.add(new NecromancyPresenter(statistics, resources, factory));
     }
   }

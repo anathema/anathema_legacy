@@ -17,9 +17,4 @@ public class SpiritAnimaEncoderFactory extends AbstractAnimaEncoderFactory {
   protected IPdfTableEncoder getAnimaTableEncoder() {
     return new AnimaTableEncoder(getResources(), getBaseFont(), getFontSize());
   }
-
-  @Override
-  protected int getAnimaPowerCount() {
-    return 3;
-  }
 }

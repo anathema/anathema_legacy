@@ -8,14 +8,11 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfMagicEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.PdfGenericCharmEncoder;
-import net.sf.anathema.character.reporting.sheet.common.willpower.NewPdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -28,17 +25,15 @@ import com.lowagie.text.pdf.PdfContentByte;
 public class PdfMagicPageEncoder extends AbstractPdfPageEncoder {
 
   private final boolean pureMagic;
-  private final boolean essenceBoxNeeded;
 
   public PdfMagicPageEncoder(
       IPdfPartEncoder partEncoder,
       PdfEncodingRegistry encodingRegistry,
       IResources resources,
       PdfPageConfiguration configuration,
-      boolean pureMagic, boolean essenceBoxNeeded) {
+      boolean pureMagic) {
     super(partEncoder, encodingRegistry, resources, configuration);
     this.pureMagic = pureMagic;
-    this.essenceBoxNeeded = essenceBoxNeeded;
   }
 
   public void encode(
@@ -60,14 +55,6 @@ public class PdfMagicPageEncoder extends AbstractPdfPageEncoder {
 	    distanceFromTop += experienceHeight + IVoidStateFormatConstants.PADDING;
     }
 
-    if (essenceBoxNeeded) {
-      float essenceHeight = encodeEssence(directContent, character, description,
-                                          distanceFromTop, CONTENT_HEIGHT);
-      float willpowerHeight = encodeWillpower(directContent, character, description,
-                                              distanceFromTop, 96.625f);
-      
-      distanceFromTop += calculateBoxIncrement(Math.max(essenceHeight, willpowerHeight));
-    }
     float comboHeight = encodeCombos(directContent, character, distanceFromTop);
     if (comboHeight > 0) {
       distanceFromTop += comboHeight + IVoidStateFormatConstants.PADDING;
@@ -138,27 +125,6 @@ public class PdfMagicPageEncoder extends AbstractPdfPageEncoder {
     return encodeFixedBox(directContent, character, description,
                           getRegistry().getPossessionsEncoder(),
                           2, 1, distanceFromTop, height);
-  }
-
-  private float encodeEssence(PdfContentByte directContent,
-                              IGenericCharacter character,
-                              IGenericDescription description,
-                              float distanceFromTop, float height)
-      throws DocumentException {
-    // TODO: Eliminate unchecked casting
-    return encodeVariableBox(directContent, character, description,
-                             (IPdfVariableContentBoxEncoder) getPartEncoder().getEssenceEncoder(),
-                             2, 2, distanceFromTop, height);
-  }
-
-  private float encodeWillpower(PdfContentByte directContent,
-                                IGenericCharacter character,
-                                IGenericDescription description,
-                                float distanceFromTop, float height)
-      throws DocumentException {
-    return encodeFixedBox(directContent, character, description,
-                          new NewPdfWillpowerEncoder(getResources(), getBaseFont(), getBaseFont()),
-                          1, 1, distanceFromTop, height);
   }
 
   private float encodeGenericCharms(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop)

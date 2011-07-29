@@ -117,7 +117,7 @@ public class CharacterPresenter implements IPresenter {
 
   private void initMagicPresentation() {
     final ICharacterTemplate characterTemplate = getStatistics().getCharacterTemplate();
-    if (!characterTemplate.getMagicTemplate().getCharmTemplate().knowsCharms(getStatistics().getRules())) {
+    if (!characterTemplate.getMagicTemplate().getCharmTemplate().canLearnCharms(getStatistics().getRules())) {
       return;
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title"); //$NON-NLS-1$

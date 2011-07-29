@@ -88,13 +88,13 @@ public class MagicTemplateParserTest extends BasicTestCase {
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     ICharmTemplate charmTemplate = template.getCharmTemplate();
     assertEquals(MartialArtsLevel.Mortal, charmTemplate.getMartialArtsRules().getStandardLevel());
-    assertFalse(charmTemplate.knowsCharms(ExaltedRuleSet.CoreRules));
+    assertFalse(charmTemplate.canLearnCharms(ExaltedRuleSet.CoreRules));
   }
 
   public void testMortalSpellTemplate() throws Exception {
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertFalse(template.getSpellMagic().knowsSpellMagic());
+    assertFalse(template.getSpellMagic().canLearnSpellMagic());
   }
 
   public void testParsesMaximumNecromancyCircle() throws Exception {

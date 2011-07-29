@@ -181,11 +181,13 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
   }
   
   protected float encodeNotes(PdfContentByte directContent,
-                             IGenericCharacter character, int column, int span,
-                             float distanceFromTop, float height,
-                             int textColumns, IGenericDescription description) throws DocumentException {
-    IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(textColumns, "Notes");
-    return encodeFixedBox(directContent, character, description,
-                          encoder, column, span, distanceFromTop, height);
+                              IGenericCharacter character,
+                              IGenericDescription description, String title,
+                              int column, int span, float distanceFromTop,
+                              float height, int textColumns)
+      throws DocumentException {
+    IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(textColumns, title);
+    return encodeFixedBox(directContent, character, description, encoder,
+                          column, span, distanceFromTop, height);
   }
 }

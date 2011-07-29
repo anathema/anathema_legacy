@@ -19,7 +19,7 @@ public class DummyCharmTemplate implements ICharmTemplate {
     return new ICharm[0];
   }
 
-  public boolean knowsCharms(IExaltedRuleSet rules) {
+  public boolean canLearnCharms(IExaltedRuleSet rules) {
     return false;
   }
 

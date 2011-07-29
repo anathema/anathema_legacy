@@ -35,19 +35,39 @@ import com.lowagie.text.pdf.PdfTemplate;
 
 public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
 
+  public static final int TYPE_LONGFORM_CUTOFF = 20;
+  
   private final IResources resources;
   private final BaseFont baseFont;
-  private final int TYPE_LONGFORM_CUTOFF = 20;
 
   public PdfGenericCharmTableEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
     this.baseFont = baseFont;
   }
+  
+  public float getRequestedHeight(IGenericCharacter character) {
+    float traitHeight = 0;
+    for (ITraitType trait : getTraits(character)) {
+      String text = resources.getString(trait.getId());
+      if (text.length() >= TYPE_LONGFORM_CUTOFF)
+        text = resources.getString(trait.getId() + ".Short");    
+      
+      float height = baseFont.getWidthPoint(text, TableEncodingUtilities.FONT_SIZE) + 5.794f;
+      if (height > traitHeight) {
+        traitHeight = height;
+      }
+    }
+    return traitHeight + character.getGenericCharmStats().length * IVoidStateFormatConstants.LINE_HEIGHT;
+  }
+  
+  public boolean hasContent(IGenericCharacter character) {
+    return character.getGenericCharmStats().length > 0;
+  }
 
   @Override
   protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException {
-	List<ITraitType> traits = getTraits(character);
+    List<ITraitType> traits = getTraits(character);
     Font font = TableEncodingUtilities.createFont(baseFont);
     PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, Color.BLACK);
     PdfTemplate notLearnedTemplate = createCharmDotTemplate(directContent, Color.WHITE);
@@ -55,13 +75,13 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
     table.setWidthPercentage(100);
     table.addCell(new TableCell(new Phrase(), Rectangle.NO_BORDER));
     for (ITraitType trait : traits)
-        table.addCell(createHeaderCell(directContent, trait));
+      table.addCell(createHeaderCell(directContent, trait));
     for (IMagicStats stats : character.getGenericCharmStats()) {
       Phrase charmPhrase = new Phrase(stats.getNameString(resources), font);
       table.addCell(new TableCell(charmPhrase, Rectangle.NO_BORDER));
       String genericId = stats.getName().getId();
       for (ITraitType trait : traits)
-          table.addCell(createGenericCell(character, trait, genericId, learnedTemplate, notLearnedTemplate));
+        table.addCell(createGenericCell(character, trait, genericId, learnedTemplate, notLearnedTemplate));
     }
     return table;
   }

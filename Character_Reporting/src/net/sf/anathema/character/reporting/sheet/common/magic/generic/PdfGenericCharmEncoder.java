@@ -6,30 +6,32 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
-public class PdfGenericCharmEncoder implements IPdfContentBoxEncoder {
+public class PdfGenericCharmEncoder implements IPdfVariableContentBoxEncoder {
 
-  private final IResources resources;
-  private final BaseFont baseFont;
+  private final PdfGenericCharmTableEncoder tableEncoder;
 
   public PdfGenericCharmEncoder(IResources resources, BaseFont baseFont) {
-    this.resources = resources;
-    this.baseFont = baseFont;
+    this.tableEncoder = new PdfGenericCharmTableEncoder(resources, baseFont);
   }
 
   public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "GenericCharms"; //$NON-NLS-1$
   }
 
+  @Override
+  public float getRequestedHeight(IGenericCharacter character, float width) {
+    return tableEncoder.getRequestedHeight(character);
+  }
+
   public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
-    new PdfGenericCharmTableEncoder(resources, baseFont).encodeTable(directContent, character, bounds);
+    tableEncoder.encodeTable(directContent, character, bounds);
   }
   
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+  public boolean hasContent(IGenericCharacter character) {
+	  return tableEncoder.hasContent(character);
   }
 }

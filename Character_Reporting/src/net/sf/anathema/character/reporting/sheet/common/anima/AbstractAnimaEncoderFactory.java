@@ -26,13 +26,10 @@ public abstract class AbstractAnimaEncoderFactory implements IAnimaEncoderFactor
         basefont,
         symbolBaseFont,
         IPdfPartEncoder.FONT_SIZE,
-        getAnimaPowerCount(),
         getAnimaTableEncoder());
   }
 
   protected abstract IPdfTableEncoder getAnimaTableEncoder();
-
-  protected abstract int getAnimaPowerCount();
 
   protected final float getFontSize() {
     return IPdfPartEncoder.FONT_SIZE;
