@@ -166,4 +166,8 @@ public abstract class AbstractMovementTableEncoder implements IPdfTableEncoder {
   protected final IResources getResources() {
     return resources;
   }
+  
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
+  }
 }

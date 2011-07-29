@@ -310,4 +310,8 @@ public abstract class AbstractHealthAndMovementTableEncoder implements IPdfTable
   protected final IResources getResources() {
     return resources;
   }
+  
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
+  }
 }

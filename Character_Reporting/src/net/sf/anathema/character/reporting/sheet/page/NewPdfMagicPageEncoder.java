@@ -20,6 +20,7 @@ import net.sf.anathema.character.reporting.sheet.common.magic.generic.PdfGeneric
 import net.sf.anathema.character.reporting.sheet.common.willpower.NewPdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -53,23 +54,30 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
 
     boolean restartPage = false;
     
-    // Sorcery & Thaumaturgy page (if necessary)
-    /*
+    // Magic page (if necessary) [for non-Charm magics]
     ISpellMagicTemplate spellTemplate = character.getTemplate().getMagicTemplate().getSpellMagic();
-    if (spellTemplate.knowsSorcery(character.getLearnedCharms())
-        || knowsThaumaturgy(character)) {
-      // Right-hand side: Spells & Procedures
-      // TODO: Encode Spells & Procedures
-      // Left-hand side: Degrees, Initiations, Notes
-      // TODO: Encode Degrees
+    boolean needsMagic = spellTemplate.knowsSorcery(character.getLearnedCharms());
+    if (!needsMagic) {
+      for (IPdfTableEncoder tableEncoder : getPartEncoder().getAdditionalMagicEncoders()) {
+        if (tableEncoder.hasContent(character)) {
+          needsMagic = true;
+          break;
+        }
+      }
+    }
+    if (needsMagic) {
+      // Left-hand side: Magic Sidebars (e.g. Thaumaturgical Degrees), Initiations, Notes
+      // TODO: Encode Sidebars
       // TODO: Encode Initiations
       encodeNotes(directContent, character, description,
                   getHeaderLabel("EnlightenmentNotes"), 1, 1,
                   distanceFromTop, CONTENT_HEIGHT - distanceFromTop, 1);
       
+      // Right-hand side: Magic
+      // TODO: Encode Magic
+      
       restartPage = true;
     }
-    */
 
     // Charm pages (if necessary)
     ICharmTemplate charmTemplate = character.getTemplate().getMagicTemplate().getCharmTemplate();

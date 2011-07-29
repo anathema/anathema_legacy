@@ -23,4 +23,8 @@ public abstract class AbstractTableEncoder implements IPdfTableEncoder {
     tableColumn.go();
     return table.getTotalHeight();
   }
+  
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
+  }
 }
