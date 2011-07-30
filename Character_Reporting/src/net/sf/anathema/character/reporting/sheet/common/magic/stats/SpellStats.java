@@ -2,7 +2,9 @@ package net.sf.anathema.character.reporting.sheet.common.magic.stats;
 
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.SpellSourceStringBuilder;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -16,7 +18,13 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
   }
 
   public String getGroupName(final IResources resources) {
-    return resources.getString("Sheet.Magic.Group.Sorcery"); //$NON-NLS-1$
+    CircleType circleType = getMagic().getCircleType();
+    if (circleType.isNecromancyCircle()) {
+      return resources.getString("Sheet.Magic.Group.Necromancy"); //$NON-NLS-1$
+    }
+    else {
+      return resources.getString("Sheet.Magic.Group.Sorcery"); //$NON-NLS-1$
+    }
   }
 
   public String getType(final IResources resources) {
@@ -42,5 +50,19 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
 
   public String getNameString(IResources resources) {
     return resources.getString(getMagic().getId());
+  }
+  
+  public int compareTo(IMagicStats stats) {
+    if (stats instanceof SpellStats) {
+      SpellStats spell = (SpellStats)stats;
+      int r = getMagic().getCircleType().compareTo(spell.getMagic().getCircleType());
+      if (r == 0) {
+        r = getMagic().getId().compareTo(spell.getMagic().getId());
+      }
+      return r;
+    }
+    else {
+      return 1;
+    }
   }
 }

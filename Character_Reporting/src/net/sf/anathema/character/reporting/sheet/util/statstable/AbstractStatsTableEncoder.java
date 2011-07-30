@@ -21,12 +21,18 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
   private final Font font;
   private final Font sectionFont;
   private final Font headerFont;
-
+  private final boolean suppressHeaderLine;
+  
   public AbstractStatsTableEncoder(BaseFont baseFont) {
+    this(baseFont, false);
+  }
+  
+  public AbstractStatsTableEncoder(BaseFont baseFont, boolean suppressHeaderLine) {
     this.headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
     this.font = TableEncodingUtilities.createFont(baseFont);
     this.sectionFont = new Font(font);
     this.sectionFont.setStyle(Font.BOLD);
+    this.suppressHeaderLine = suppressHeaderLine;
   }
 
   protected final Font getFont() {
@@ -39,13 +45,8 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable table = new PdfPTable(columnWidths);
     table.setTotalWidth(bounds.width);
-    for (int index = 0; index < groups.length; index++) {
-      Font usedFont = index == 0 ? font : headerFont;
-      table.addCell(createHeaderCell(
-          groups[index].getTitle(),
-          groups[index].getColumnCount(),
-          index != groups.length - 1,
-          usedFont));
+    if (!suppressHeaderLine) {
+      encodeHeaderLine(table, groups);
     }
     encodeContent(table, character, bounds);
     return table;
@@ -54,6 +55,17 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
   protected abstract void encodeContent(PdfPTable table, IGenericCharacter character, Bounds bounds);
 
   protected abstract IStatsGroup<T>[] createStatsGroups(IGenericCharacter character);
+  
+  protected final void encodeHeaderLine(PdfPTable table, IStatsGroup<T>[] groups) {
+    for (int index = 0; index < groups.length; index++) {
+      Font usedFont = index == 0 ? font : headerFont;
+      table.addCell(createHeaderCell(
+          groups[index].getTitle(),
+          groups[index].getColumnCount(),
+          index != groups.length - 1,
+          usedFont));
+    }
+  }
 
   protected final void encodeContentLine(PdfPTable table, IStatsGroup<T>[] groups, T stats) {
     for (int index = 0; index < groups.length; index++) {

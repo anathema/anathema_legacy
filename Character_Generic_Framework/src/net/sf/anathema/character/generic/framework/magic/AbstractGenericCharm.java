@@ -35,4 +35,13 @@ public abstract class AbstractGenericCharm implements IMagicStats {
   protected abstract String getId();
 
   protected abstract boolean isComboOk();
+  
+  public int compareTo(IMagicStats stats) {
+    if (stats instanceof AbstractGenericCharm) {
+      return this.getId().compareTo(stats.getName().getId());
+    }
+    else {
+      return -1;
+    }
+  }
 }

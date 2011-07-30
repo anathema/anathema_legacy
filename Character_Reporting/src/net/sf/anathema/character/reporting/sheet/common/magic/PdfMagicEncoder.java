@@ -15,6 +15,8 @@ import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.CharmStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MultipleEffectCharmStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.SpellStats;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -28,18 +30,33 @@ public class PdfMagicEncoder implements IPdfContentBoxEncoder
 {
   static IIdentificate KNACK = new Identificate("Knack");
   
+  public static List<IMagicStats> collectPrintCharms(final IGenericCharacter character) {
+    return collectPrintMagic(character, false, true);
+  }
+  
   public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
-    return collectPrintMagic(character, true);
+    return collectPrintMagic(character, true, true);
+  }
+  
+  public static List<IMagicStats> collectPrintSpells(final IGenericCharacter character) {
+    return collectPrintMagic(character, true, false);
   }
 
-  public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character, final boolean includeSpells) {
+  private static List<IMagicStats> collectPrintMagic(final IGenericCharacter character,
+                                                     final boolean includeSpells,
+                                                     final boolean includeCharms) {
     final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
-    for (IMagicStats stats : character.getGenericCharmStats()) {
-      printStats.add(stats);
+    if (includeCharms) {
+      for (IMagicStats stats : character.getGenericCharmStats()) {
+        printStats.add(stats);
+      }
     }
     
     IMagicVisitor statsCollector = new IMagicVisitor(){
       public void visitCharm(ICharm charm) {
+        if (!includeCharms) {
+          return;
+        }
         if (CharmUtilities.isGenericCharmFor(charm, character)) {
           return;
         }
@@ -69,26 +86,47 @@ public class PdfMagicEncoder implements IPdfContentBoxEncoder
     return printStats;
   }
 
-  private final IResources resources;
-  private final BaseFont baseFont;
-  private final List<IMagicStats> printMagic;
+  private final PdfMagicTableEncoder tableEncoder;
+  private final IPdfTableEncoder[] additionalTables;
+  private final String headerKey;
 
   public PdfMagicEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printMagic) {
-    this.resources = resources;
-    this.baseFont = baseFont;
-    this.printMagic = printMagic;
+    this(resources, baseFont, printMagic, new IPdfTableEncoder[0], false, "Charms"); //$NON-NLS-1$
+  }
+
+  public PdfMagicEncoder(IResources resources, BaseFont baseFont,
+                         List<IMagicStats> printMagic,
+                         IPdfTableEncoder[] additionalTables,
+                         boolean sectionHeaderLines,
+                         String headerKey) {
+    this.tableEncoder = new PdfMagicTableEncoder(resources, baseFont, printMagic, sectionHeaderLines);
+    this.additionalTables = additionalTables;
+    this.headerKey = headerKey;
   }
 
   public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
-    return "Charms"; //$NON-NLS-1$
+    return headerKey; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
-    new PdfMagicTableEncoder(resources, baseFont, printMagic).encodeTable(directContent, character, bounds);
+  public void encode(PdfContentByte directContent, IGenericCharacter character,
+                     IGenericDescription description, Bounds bounds)
+      throws DocumentException {
+    float top = bounds.getMinY();
+    for (IPdfTableEncoder additionalTable : additionalTables) {
+      if (additionalTable.hasContent(character)) {
+        Bounds tableBounds = new Bounds(bounds.getMinX(), top,
+                                        bounds.getWidth(), bounds.getMaxY() - top);
+        float tableHeight = additionalTable.encodeTable(directContent, character, tableBounds);
+        top += tableHeight + IVoidStateFormatConstants.PADDING;
+      }
+    }
+    
+    Bounds remainingBounds = new Bounds(bounds.getMinX(), top,
+                                        bounds.getWidth(), bounds.getMaxY() - top);
+    tableEncoder.encodeTable(directContent, character, remainingBounds);
   }
   
-  public boolean hasContent(IGenericCharacter character)
-  {
+  public boolean hasContent(IGenericCharacter character) {
 	  return true;
   }
 }

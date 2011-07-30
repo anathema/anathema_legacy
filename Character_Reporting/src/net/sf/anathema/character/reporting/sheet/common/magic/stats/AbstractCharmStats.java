@@ -3,10 +3,12 @@ package net.sf.anathema.character.reporting.sheet.common.magic.stats;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.generic.framework.magic.AbstractGenericCharm;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.lib.resources.IResources;
@@ -44,5 +46,25 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
       }
     }
     return details.toArray(new String[details.size()]);
+  }
+  
+  public int compareTo(IMagicStats stats) {
+    if (stats instanceof AbstractGenericCharm) {
+      return 1;
+    }
+    else if (stats instanceof AbstractCharmStats) {
+      /*
+      AbstractCharmStats charm = (AbstractCharmStats)stats;
+      int r = getMagic().getGroupId().compareTo(charm.getMagic().getGroupId());
+      if (r == 0) {
+        r = this.getName().getId().compareTo(charm.getName().getId());
+      }
+      return r;
+      */
+      return 0;
+    }
+    else {
+      return -1;
+    }
   }
 }

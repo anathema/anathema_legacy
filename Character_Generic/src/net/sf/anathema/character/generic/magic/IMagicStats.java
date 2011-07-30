@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public interface IMagicStats extends IStats {
+public interface IMagicStats extends IStats, Comparable<IMagicStats> {
 
   public IIdentificate getName();
 

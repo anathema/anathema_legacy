@@ -21,7 +21,7 @@ public class MagicTypeStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
   }
 
   public Float[] getColumnWeights() {
-    return new Float[] { 2.5f };
+    return new Float[] { 3f };
   }
 
   public String getTitle() {

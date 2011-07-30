@@ -65,15 +65,24 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
       }
     }
     if (needsMagic) {
-      // Left-hand side: Magic Sidebars (e.g. Thaumaturgical Degrees), Initiations, Notes
-      // TODO: Encode Sidebars
-      // TODO: Encode Initiations
-      encodeNotes(directContent, character, description,
-                  getHeaderLabel("EnlightenmentNotes"), 1, 1,
-                  distanceFromTop, CONTENT_HEIGHT - distanceFromTop, 1);
-      
       // Right-hand side: Magic
-      // TODO: Encode Magic
+      encodeMagic(directContent, character, description,
+                  distanceFromTop, CONTENT_HEIGHT - distanceFromTop);
+      
+      // Left-hand side: Magic Sidebars (e.g. Thaumaturgical Degrees), Initiations, Notes
+      float sidebarHeight = encodeSidebars(directContent, character, description,
+                                           distanceFromTop, CONTENT_HEIGHT - distanceFromTop);
+      if (sidebarHeight != 0) {
+        distanceFromTop += calculateBoxIncrement(sidebarHeight);
+      }
+      float initiationHeight = encodeInitiations(directContent, character, description,
+                                                 distanceFromTop, CONTENT_HEIGHT - distanceFromTop);
+      if (initiationHeight != 0) {
+        distanceFromTop += calculateBoxIncrement(initiationHeight);
+      }
+      encodeNotes(directContent, character, description,
+                  "EnlightenmentNotes", 1, 1,
+                  distanceFromTop, CONTENT_HEIGHT - distanceFromTop, 1);
       
       restartPage = true;
     }
@@ -110,11 +119,11 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
 
       // Charms, with overflow pages
       float remainingHeight = getPageConfiguration().getContentHeight() - distanceFromTop;
-      List<IMagicStats> printMagic = PdfMagicEncoder.collectPrintMagic(character, false);
-      encodeCharms(directContent, printMagic, distanceFromTop, remainingHeight);
-      while (!printMagic.isEmpty()) {
+      List<IMagicStats> printCharms = PdfMagicEncoder.collectPrintCharms(character);
+      encodeCharms(directContent, printCharms, distanceFromTop, remainingHeight);
+      while (!printCharms.isEmpty()) {
         document.newPage();
-        encodeCharms(directContent, printMagic, 0, getPageConfiguration().getContentHeight());
+        encodeCharms(directContent, printCharms, 0, getPageConfiguration().getContentHeight());
       }
     }
   }
@@ -199,14 +208,29 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
     }
   }
 
+  private float encodeMagic(PdfContentByte directContent,
+                            IGenericCharacter character,
+                            IGenericDescription description,
+                            float distanceFromTop, float height)
+      throws DocumentException {
+    return encodeFixedBox(directContent, character, description,
+                          new PdfMagicEncoder(getResources(),
+                                              getBaseFont(),
+                                              PdfMagicEncoder.collectPrintSpells(character),
+                                              getPartEncoder().getAdditionalMagicEncoders(),
+                                              true,
+                                              "Magic"), //$NON-NLS-1$
+                          2, 2, distanceFromTop, height);
+  }
+
   private float encodeCharms(PdfContentByte directContent,
-                             List<IMagicStats> printMagic,
+                             List<IMagicStats> printCharms,
                              float distanceFromTop, float height)
       throws DocumentException {
     return encodeFixedBox(directContent, null, null,
                           new PdfMagicEncoder(getResources(),
                                               getBaseFont(),
-                                              printMagic),
+                                              printCharms),
                           1, 3, distanceFromTop, height);
   }
   

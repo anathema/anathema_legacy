@@ -11,7 +11,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfHorizontalLineContentEncoder implements IPdfContentBoxEncoder {
 
-  private static final float LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
+  private static final float LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2f;
   private final int columnCount;
   private final String headerKey;
 
@@ -28,7 +28,8 @@ public class PdfHorizontalLineContentEncoder implements IPdfContentBoxEncoder {
     float columnWidth = (bounds.width - (columnCount - 1) * IVoidStateFormatConstants.TEXT_PADDING) / columnCount;
     for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
       float columnX = bounds.x + columnIndex * columnWidth + columnIndex * IVoidStateFormatConstants.TEXT_PADDING;
-      Bounds columnBounds = new Bounds(columnX, bounds.y, columnWidth, bounds.height);
+      Bounds columnBounds = new Bounds(columnX, bounds.y + IVoidStateFormatConstants.TEXT_PADDING / 2f,
+                                       columnWidth, bounds.height - IVoidStateFormatConstants.TEXT_PADDING / 2f);
       new HorizontalLineListEncoder().encodeLines(directContent, columnBounds, LINE_HEIGHT);
     }
   }
