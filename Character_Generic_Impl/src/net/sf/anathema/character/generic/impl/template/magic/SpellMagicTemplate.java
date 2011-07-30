@@ -50,7 +50,7 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
   
   public boolean knowsSorcery(ICharm[] knownCharms) {
     for (CircleType circle : sorceryCircles) {
-      if (knowsCharm(getInitiation(circle), knownCharms)) {
+      if (knowsSpellMagic(knownCharms, circle)) {
         return true;
       }
     }
@@ -59,7 +59,7 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
   
   public boolean knowsNecromancy(ICharm[] knownCharms) {
     for (CircleType circle : necromancyCircles) {
-      if (knowsCharm(getInitiation(circle), knownCharms)) {
+      if (knowsSpellMagic(knownCharms, circle)) {
         return true;
       }
     }
@@ -68,6 +68,10 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
   
   public boolean knowsSpellMagic(ICharm[] knownCharms) {
     return knowsSorcery(knownCharms) || knowsNecromancy(knownCharms);
+  }
+  
+  public boolean knowsSpellMagic(ICharm[] knownCharms, CircleType circle) {
+    return knowsCharm(getInitiation(circle), knownCharms);
   }
 
   public boolean canLearnSpell(ISpell spell, ICharm[] knownCharms) {

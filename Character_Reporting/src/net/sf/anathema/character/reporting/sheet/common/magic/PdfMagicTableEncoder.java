@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.sheet.common.magic;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import net.disy.commons.core.util.ObjectUtilities;

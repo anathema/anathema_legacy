@@ -22,5 +22,7 @@ public interface ISpellMagicTemplate {
   
   public boolean knowsSpellMagic(ICharm[] knownCharms);
   
+  public boolean knowsSpellMagic(ICharm[] knownCharms, CircleType circle);
+  
   public boolean canLearnSpell(ISpell spell, ICharm[] knownCharms);
 }

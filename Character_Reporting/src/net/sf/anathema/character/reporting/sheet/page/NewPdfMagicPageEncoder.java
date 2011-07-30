@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
+import net.sf.anathema.character.reporting.sheet.common.magic.PdfInitiationEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfMagicEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.sheet.common.willpower.NewPdfWillpowerEncoder;
@@ -221,6 +222,39 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
                                               true,
                                               "Magic"), //$NON-NLS-1$
                           2, 2, distanceFromTop, height);
+  }
+
+  private float encodeSidebars(PdfContentByte directContent,
+                               IGenericCharacter character,
+                               IGenericDescription description,
+                               float distanceFromTop, float maxHeight)
+      throws DocumentException {
+    float height = 0;
+    for (IPdfVariableContentBoxEncoder sidebar : getPartEncoder().getAdditionalMagicSidebarEncoders()) {
+      float sidebarHeight = encodeVariableBox(directContent, character, description,
+                                              sidebar,
+                                              1, 1,
+                                              distanceFromTop, maxHeight - height);
+      if (sidebarHeight != 0) {
+        height += calculateBoxIncrement(sidebarHeight);
+        distanceFromTop += calculateBoxIncrement(sidebarHeight);
+      }
+    }
+    
+    if (height != 0) {
+      height = removeBoxIncrement(height);
+    }
+    return height;
+  }
+
+  private float encodeInitiations(PdfContentByte directContent,
+                                  IGenericCharacter character,
+                                  IGenericDescription description,
+                                  float distanceFromTop, float maxHeight)
+      throws DocumentException {
+    return encodeVariableBox(directContent, character, description,
+                             new PdfInitiationEncoder(getResources(), getBaseFont()),
+                             1, 1, distanceFromTop, maxHeight);
   }
 
   private float encodeCharms(PdfContentByte directContent,

@@ -106,6 +106,10 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
   protected float calculateBoxIncrement(float height) {
     return height + IVoidStateFormatConstants.PADDING;
   }
+
+  protected float removeBoxIncrement(float height) {
+    return height - IVoidStateFormatConstants.PADDING;
+  }
   
   protected Bounds calculateBounds(int column, int span,
                                    float distanceFromTop, float height) {
