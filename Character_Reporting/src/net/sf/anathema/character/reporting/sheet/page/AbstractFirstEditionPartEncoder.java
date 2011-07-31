@@ -72,14 +72,6 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
   public IPdfVariableContentBoxEncoder[] getAdditionalFirstPageEncoders() {
     return new IPdfVariableContentBoxEncoder[0];
   }
-  
-  public IPdfVariableContentBoxEncoder[] getAdditionalMagicSidebarEncoders() {
-    return new IPdfVariableContentBoxEncoder[0];
-  }
-  
-  public IPdfTableEncoder[] getAdditionalMagicEncoders() {
-    return new IPdfTableEncoder[0];
-  }
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
     return new IPdfPageEncoder[0];

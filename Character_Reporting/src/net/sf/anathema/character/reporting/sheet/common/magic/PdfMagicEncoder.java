@@ -87,16 +87,16 @@ public class PdfMagicEncoder implements IPdfContentBoxEncoder
   }
 
   private final PdfMagicTableEncoder tableEncoder;
-  private final IPdfTableEncoder[] additionalTables;
+  private final List<IPdfTableEncoder> additionalTables;
   private final String headerKey;
 
   public PdfMagicEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printMagic) {
-    this(resources, baseFont, printMagic, new IPdfTableEncoder[0], false, "Charms"); //$NON-NLS-1$
+    this(resources, baseFont, printMagic, new ArrayList<IPdfTableEncoder>(), false, "Charms"); //$NON-NLS-1$
   }
 
   public PdfMagicEncoder(IResources resources, BaseFont baseFont,
                          List<IMagicStats> printMagic,
-                         IPdfTableEncoder[] additionalTables,
+                         List<IPdfTableEncoder> additionalTables,
                          boolean sectionHeaderLines,
                          String headerKey) {
     this.tableEncoder = new PdfMagicTableEncoder(resources, baseFont, printMagic, sectionHeaderLines);

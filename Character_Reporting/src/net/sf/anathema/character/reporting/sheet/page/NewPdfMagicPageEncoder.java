@@ -58,7 +58,7 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
     ISpellMagicTemplate spellTemplate = character.getTemplate().getMagicTemplate().getSpellMagic();
     boolean needsMagic = spellTemplate.knowsSorcery(character.getLearnedCharms());
     if (!needsMagic) {
-      for (IPdfTableEncoder tableEncoder : getPartEncoder().getAdditionalMagicEncoders()) {
+      for (IPdfTableEncoder tableEncoder : getRegistry().getAdditionalMagicEncoders()) {
         if (tableEncoder.hasContent(character)) {
           needsMagic = true;
           break;
@@ -218,7 +218,7 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
                           new PdfMagicEncoder(getResources(),
                                               getBaseFont(),
                                               PdfMagicEncoder.collectPrintSpells(character),
-                                              getPartEncoder().getAdditionalMagicEncoders(),
+                                              getRegistry().getAdditionalMagicEncoders(),
                                               true,
                                               "Magic"), //$NON-NLS-1$
                           2, 2, distanceFromTop, height);
@@ -230,7 +230,7 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
                                float distanceFromTop, float maxHeight)
       throws DocumentException {
     float height = 0;
-    for (IPdfVariableContentBoxEncoder sidebar : getPartEncoder().getAdditionalMagicSidebarEncoders()) {
+    for (IPdfVariableContentBoxEncoder sidebar : getRegistry().getAdditionalMagicSidebarEncoders()) {
       float sidebarHeight = encodeVariableBox(directContent, character, description,
                                               sidebar,
                                               1, 1,
