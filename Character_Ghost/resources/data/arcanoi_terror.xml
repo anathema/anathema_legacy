@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!--
+
+    arcanoi_terror.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Scott Olson (scottolson275@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <charm id="Ghost.CorpseFedRadiance" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="1" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration amount="1" unit="scene"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Pandemonium" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.BlackBreathOfTheAbyss" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="1" />
+               <essence value="2" />
+               <charmReference id="Ghost.CorpseFedRadiance"/>
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+          </cost>
+          <duration amount="1" unit="scene"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Pandemonium" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.PaintingTheSunsetPicture" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="2" />
+               <essence value="2" />
+               <charmReference id="Ghost.BlackBreathOfTheAbyss"/>
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+          </cost>
+          <duration amount="1" unit="scene"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Pandemonium" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.MidnightCanvasUnfurled" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="3" />
+               <essence value="2" />
+               <charmReference id="Ghost.PaintingTheSunsetPicture"/>
+          </prerequisite>
+          <cost>
+               <essence cost="5" text="(5m per additional sense)" />
+               <willpower cost="1"/>
+          </cost>
+          <duration amount="1" unit="scene"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Pandemonium" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.TheIchorCauldron" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="3" />
+               <essence value="2" />
+               <charmReference id="Ghost.MidnightCanvasUnfurled" />
+          </prerequisite>
+          <cost>
+               <essence cost="6"/>
+          </cost>
+          <duration amount="1" unit="hour"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Pandemonium" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.MessengerOfTheGrave" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="3" />
+               <essence value="2" />
+               <charmReference id="Ghost.TheIchorCauldron"/>
+          </prerequisite>
+          <cost>
+               <essence cost="4"/>
+               <willpower cost="1"/>
+          </cost>
+          <duration amount="1" unit="hour"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Pandemonium" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm> 
+     <charm id="Ghost.SixPlagueSummons" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="3" />
+               <essence value="3" />
+               <charmReference id="Ghost.MessengerOfTheGrave"/>
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+               <willpower cost="2" />
+          </cost>
+          <duration amount="1" unit="hour"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Pandemonium" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm> 
+     <charm id="Ghost.HandOfTheWind" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="1" />
+               <essence value="1" />
+               <charmReference id="Ghost.CorpseFedRadiance"/>
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Pandemonium" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm> 
+     <charm id="Ghost.StrikeOfDeadHands" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="2" />
+               <essence value="2" />
+               <charmReference id="Ghost.HandOfTheWind"/>
+          </prerequisite>
+          <cost>
+               <essence cost="" text="+5m"/>
+               <willpower cost="" text="+1wp"/>
+          </cost>
+          <duration duration="Permanent"/>
+          <charmtype type="Permanent"/>
+          <source source="GhostsAndDemons" />
+     </charm> 
+     <charm id="Ghost.FlyingTimeTechnique" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="3" />
+               <essence value="2" />
+               <charmReference id="Ghost.StrikeOfDeadHands"/>
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant"/>
+          <charmtype type="ExtraAction"/>
+          <charmAttribute attribute="Pandemonium" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.StaggeredDarkStarsMovement" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="4" />
+               <essence value="4" />
+               <charmReference id="Ghost.FlyingTimeTechnique"/>
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1"/>
+          </cost>
+          <duration duration="Instant"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Pandemonium" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm> 
+     <charm id="Ghost.HoursLikeAutumnLeaves" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="4" />
+               <essence value="5" />
+               <charmReference id="Ghost.StaggeredDarkStarsMovement"/>
+          </prerequisite>
+          <cost>
+               <essence cost="" (6m, 1wp per person)"/>
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Pandemonium" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.EbonGraspOfOblivion" exalt="Ghost" group="TerrorSpreadingArt">
+          <prerequisite>
+               <trait id="Conviction" value="3" />
+               <essence value="3" />
+               <charmReference id="Ghost.StrikeOfDeadHands"/>
+               <charmReference id="Ghost.BlackBreathOfTheAbyss"/>
+          </prerequisite>
+          <cost>
+               <essence cost="30" />
+               <willpower cost="3"/>
+          </cost>
+          <duration amount="1" unit="scene"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Pandemonium" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm>
+</charmlist>
