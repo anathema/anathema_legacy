@@ -196,7 +196,7 @@
                <charmReference id="Ghost.StaggeredDarkStarsMovement"/>
           </prerequisite>
           <cost>
-               <essence cost="" (6m, 1wp per person)"/>
+               <essence cost="" text="(6m, 1wp per person)"/>
           </cost>
           <duration duration="Instant" />
           <charmtype type="Simple"/>
