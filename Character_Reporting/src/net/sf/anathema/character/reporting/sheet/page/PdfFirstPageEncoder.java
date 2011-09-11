@@ -368,7 +368,6 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
   {
 	  Bounds bounds = null;
 	  int columns = 1;
-	  float position = distanceFromTop;
 	  switch (boxId)
 	  {
 	  case 0:
@@ -377,12 +376,10 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
 	  case 1:
 	  case 2:
 		  bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop + frameHeight, height, 2);
-		  position += height + PADDING;
 		  columns = 2;
 		  break;
 	  case 3:
 		  bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop + frameHeight, height);
-		  position += height + PADDING;
 		  break;
 	  case 4:
 		  return;

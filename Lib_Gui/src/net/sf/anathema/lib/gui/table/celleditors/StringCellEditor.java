@@ -6,7 +6,6 @@ import javax.swing.JTextField;
 
 // NOT_PUBLISHED
 public class StringCellEditor extends AbstractDelegatingCellEditor {
-	private static final long serialVersionUID = -3453009429361817177L;
 
 	@Override
 	protected final EditorDelegate createDelegate(JComponent editorComponent) {
