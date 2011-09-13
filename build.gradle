@@ -1,0 +1,11 @@
+subprojects {
+    apply plugin: 'java'
+}
+
+apply plugin: 'java'
+
+project(':Lib') {
+    dependencies {
+        compile project(':Lib_Thirdparty')
+    }
+}
