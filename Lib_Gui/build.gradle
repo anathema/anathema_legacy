@@ -4,4 +4,5 @@ dependencies {
 		"../Thirdparty/disy/disy-commons-swing-dialog.jar",
 		"../Thirdparty/XML/dom4j-1.5.jar"
     )
+	compile project(':Lib')
 }

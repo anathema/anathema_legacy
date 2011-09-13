@@ -13,17 +13,3 @@ subprojects {
 		}
 	}
 }
-
-apply plugin: 'java'
-
-project(':Lib') {
-    dependencies {
-        compile project(':Lib_Thirdparty')
-    }
-}
-
-project(':Lib_Gui') {
-    dependencies {
-        compile project(':Lib')
-    }
-}
