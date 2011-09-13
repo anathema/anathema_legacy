@@ -1,1 +1,1 @@
-include 'Lib_Thirdparty', 'Lib'
+include 'Lib_Thirdparty', 'Lib', 'Lib_Gui'

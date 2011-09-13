@@ -21,3 +21,9 @@ project(':Lib') {
         compile project(':Lib_Thirdparty')
     }
 }
+
+project(':Lib_Gui') {
+    dependencies {
+        compile project(':Lib')
+    }
+}

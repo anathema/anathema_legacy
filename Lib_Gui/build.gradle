@@ -1,0 +1,7 @@
+dependencies {
+	compile files(
+		"../Thirdparty/disy/disy-commons-swing-layout.jar",
+		"../Thirdparty/disy/disy-commons-swing-dialog.jar",
+		"../Thirdparty/XML/dom4j-1.5.jar"
+    )
+}
