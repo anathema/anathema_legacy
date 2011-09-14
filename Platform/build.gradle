@@ -6,9 +6,6 @@ dependencies {
           "../Thirdparty/Plugin/jpf.jar",
           "../Thirdparty/Plugin/jpf-boot.jar",
           "../Thirdparty/Reporting/itext-1.4.jar",
-          "../Thirdparty/disy/disy-commons-core.jar",
-          "../Thirdparty/disy/disy-commons-swing.jar",
-          "../Thirdparty/XML/dom4j-1.5.jar"
   )
   compile project(':Lib_Workflow')
   compile project(':Lib_Gui')
