@@ -1,0 +1,18 @@
+dependencies {
+  compile files(
+          "../ Thirdparty / Multimedia / basicplayer2.3.jar ",
+          "../Thirdparty/Development/jl1.0.jar",
+          "../Thirdparty/Jakarta/commons-logging-api.jar",
+          "../Thirdparty/Multimedia/javalayer.jar"
+  )
+  compile project(':Campaign_Music')
+  compile project(':Platform_Database')
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
+}
