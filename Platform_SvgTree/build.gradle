@@ -1,0 +1,10 @@
+dependencies {
+  compile files(
+          "../Thirdparty/XML/xml-apis-dom3.jar",
+          "../Thirdparty/XML/xml-apis-ext.jar",
+          "../Thirdparty/Graph/graphlayout.jar"
+  )
+  compile fileTree(dir: '../Thirdparty/SVG', include: '*.jar')
+  compile project(':Lib')
+  compile project(':Platform')
+}
