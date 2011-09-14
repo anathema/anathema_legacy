@@ -1,15 +1,30 @@
 subprojects {
-    apply plugin: 'java'
-	apply plugin: 'eclipse'
-	
-	sourceCompatibility=1.6
-	targetCompatibility=1.6
-	
-	sourceSets {
-		main {
-			java {
-				srcDir 'src'
-			}
-		}
-	}
+  apply plugin: 'java'
+  apply plugin: 'eclipse'
+
+  sourceCompatibility = 1.6
+  targetCompatibility = 1.6
+
+  if (!isDataPlugin(project)) {
+    sourceSets {
+      main {
+        java {
+          srcDir 'src'
+        }
+      }
+    }
+  }
+  else {
+    sourceSets {
+      main {
+        resources {
+          srcDir 'resources'
+        }
+      }
+    }
+  }
+}
+
+boolean isDataPlugin(project) {
+  project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
 }
