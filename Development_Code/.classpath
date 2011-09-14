@@ -36,7 +36,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-xml.jar" sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Lunar"/>
 	<classpathentry kind="src" path="/Character_Main_Impl"/>
-	<classpathentry kind="lib" path="/Thirdparty/GISterm/commons-collections-3.1.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar" sourcepath="/Thirdparty/Reporting/itext-src-1.4.zip"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_MeritsFlaws"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Intimacies"/>
@@ -48,5 +47,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Character"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/easymock.jar" sourcepath="/Thirdparty/Testing/easymock-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/Apache/commons-collections-3.2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

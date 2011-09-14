@@ -33,11 +33,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Campaign"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Character"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Platform"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Data"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Data_Impl"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Main"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Main_Impl"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Thirdparty"/>
