@@ -1,1 +1,1 @@
-include 'Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow'
+include 'Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow', 'Platform'
