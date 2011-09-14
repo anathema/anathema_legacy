@@ -1,0 +1,15 @@
+dependencies {
+  compile files(
+          "../Thirdparty/Multimedia/mp3spi1.9.2.jar",
+          "../Thirdparty/Multimedia/tritonus_share.jar",
+  )
+  compile project(':Platform')
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
+}

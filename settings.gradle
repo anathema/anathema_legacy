@@ -1,3 +1,4 @@
 include ('Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow',
         'Platform', 'Platform_Database', 'Platform_GraphLayout', 'Platform_SvgTree',
-        'Namegenerator')
+        'Namegenerator',
+        'Campaign_Music')
