@@ -76,21 +76,21 @@ public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder
     for (int i = 0; i < 5; i++) {
       shortColumnX[i] = infoBounds.x + i*(shortEntryWidth + TEXT_PADDING);
     }
-    String ageContent = null;
+    String ageContent = Integer.toString(character.getAge());
     drawLabelledContent(directContent,
-                        getLabel("Age"), ageContent, new Position(shortColumnX[0], thirdRowY), shortEntryWidth);
-    String sexContent = null;
+                        getLabel("Age"), ageContent, new Position(shortColumnX[0], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    String sexContent = description.getSex();
     drawLabelledContent(directContent,
-                        getLabel("Sex"), sexContent, new Position(shortColumnX[1], thirdRowY), shortEntryWidth);
-    String hairContent = null;
+                        getLabel("Sex"), sexContent, new Position(shortColumnX[1], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    String hairContent = description.getHair();
     drawLabelledContent(directContent,
-                        getLabel("Hair"), hairContent, new Position(shortColumnX[2], thirdRowY), shortEntryWidth);
-    String skinContent = null;
+                        getLabel("Hair"), hairContent, new Position(shortColumnX[2], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    String skinContent = description.getSkin();
     drawLabelledContent(directContent,
-                        getLabel("Skin"), skinContent, new Position(shortColumnX[3], thirdRowY), shortEntryWidth);
-    String eyesContent = null;
+                        getLabel("Skin"), skinContent, new Position(shortColumnX[3], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    String eyesContent = description.getEyes();
     drawLabelledContent(directContent,
-                        getLabel("Eyes"), eyesContent, new Position(shortColumnX[4], thirdRowY), shortEntryWidth);
+                        getLabel("Eyes"), eyesContent, new Position(shortColumnX[4], thirdRowY), shortEntryWidth); //$NON-NLS-1$
 
     if (characterType.isExaltType()) {
       float fourthRowY = thirdRowY - lineHeight;

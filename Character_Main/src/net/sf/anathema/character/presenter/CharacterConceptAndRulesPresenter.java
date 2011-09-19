@@ -32,8 +32,10 @@ import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -75,10 +77,17 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     return new SimpleViewContent(new ContentProperties(conceptHeader), view);
   }
   
-  private void initAgePresentation()
-  {
-	  view.addSpinner(resources.getString("Label.Age"),
-			  statistics.getCharacterConcept().getAgeSpinner());
+  private void initAgePresentation() {
+    IntegerSpinner ageSpinner = new IntegerSpinner(statistics.getCharacterConcept().getAge());
+    ageSpinner.setPreferredWidth(48);
+    ageSpinner.setStepSize(5);
+    
+	  view.addSpinner(resources.getString("Label.Age"), ageSpinner);
+    ageSpinner.addChangeListener(new IIntValueChangedListener() {
+      public void valueChanged(int newValue) {
+        statistics.getCharacterConcept().setAge(newValue);
+      }
+    });
   }
 
   private void initMotivationPresentation(final IMotivation motivation, boolean casteRow) {

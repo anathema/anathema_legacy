@@ -28,6 +28,8 @@ public interface ICharacterXmlConstants {
   public static final String TAG_DESCRIPTION = "Description"; //$NON-NLS-1$
   public static final String TAG_ESSENCE = "Essence"; //$NON-NLS-1$
   public static final String TAG_EXALTED_CHARACTER_ROOT = "ExaltedCharacter"; //$NON-NLS-1$
+  public static final String TAG_EYES = "Eyes"; //$NON-NLS-1$
+  public static final String TAG_HAIR = "Hair"; //$NON-NLS-1$
   public static final String TAG_MOTIVATION = "Motivation"; //$NON-NLS-1$
   public static final String TAG_NAME = "Name"; //$NON-NLS-1$
   public static final String TAG_NATURE = "Nature"; //$NON-NLS-1$
@@ -37,6 +39,8 @@ public interface ICharacterXmlConstants {
   public static final String TAG_PLAYER = "Player"; //$NON-NLS-1$
   public static final String TAG_RULES = "Rules"; //$NON-NLS-1$
   public static final String TAG_RULESET = "RuleSet"; //$NON-NLS-1$
+  public static final String TAG_SEX = "Sex"; //$NON-NLS-1$
+  public static final String TAG_SKIN = "Skin"; //$NON-NLS-1$
   public static final String TAG_SPECIAL = "Special"; //$NON-NLS-1$
   public static final String TAG_SPECIALTY = "Specialty"; //$NON-NLS-1$
   public static final String TAG_SPELL = "Spell"; //$NON-NLS-1$

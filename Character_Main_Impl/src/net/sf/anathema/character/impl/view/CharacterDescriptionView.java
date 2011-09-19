@@ -26,7 +26,7 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
     return addTextView(labelText, new LineTextView(TEXT_COLUMS));
   }
 
-  public ITextView addAreaView(String labelText, int rows) {
+  public ITextView addAreaView(final String labelText, int rows) {
     return addTextView(labelText, new AreaTextView(rows, TEXT_COLUMS));
   }
 

@@ -251,9 +251,8 @@ public class GenericCharacter implements IGenericCharacter {
 	  return modified ? essence.getModifiedMaximalValue() : essence.getUnmodifiedMaximalValue();
   }
   
-  public int getAge()
-  {
-	return statistics.getCharacterConcept().getAgeSpinner().getValue();
+  public int getAge() {
+    return statistics.getCharacterConcept().getAge();
   }
 
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {

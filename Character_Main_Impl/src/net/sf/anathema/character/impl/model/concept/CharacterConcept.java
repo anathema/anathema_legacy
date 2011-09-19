@@ -5,31 +5,30 @@ import net.sf.anathema.character.impl.model.TypedDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConcept;
-import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 
 public class CharacterConcept implements ICharacterConcept {
 
   private final ITypedDescription<ICasteType> caste = new TypedDescription<ICasteType>(ICasteType.NULL_CASTE_TYPE);
   private IWillpowerRegainingConcept willpowerRegaining;
-  private IntegerSpinner ageSpinner;
+  private int age = 0;
+
+  public CharacterConcept(IWillpowerRegainingConcept willpowerRegaining) {
+    this.willpowerRegaining = willpowerRegaining;
+  }
 
   public ITypedDescription<ICasteType> getCaste() {
     return caste;
   }
   
-  public IntegerSpinner getAgeSpinner()
-  {
-	  return ageSpinner;
-  }
-
-  public CharacterConcept(IWillpowerRegainingConcept willpowerRegaining) {
-    this.willpowerRegaining = willpowerRegaining;
-    this.ageSpinner = new IntegerSpinner(0);
-    ageSpinner.setPreferredWidth(48);
-    ageSpinner.setStepSize(5);
+  public int getAge() {
+	  return age;
   }
 
   public IWillpowerRegainingConcept getWillpowerRegainingConcept() {
     return willpowerRegaining;
+  }
+  
+  public void setAge(int age) {
+    this.age = age;
   }
 }

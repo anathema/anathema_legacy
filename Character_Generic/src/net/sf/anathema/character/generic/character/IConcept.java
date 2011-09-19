@@ -10,4 +10,6 @@ public interface IConcept {
   public String getWillpowerRegainingComment(IResources resources);
 
   public ICasteType getCasteType();
+  
+  public int getAge();
 }

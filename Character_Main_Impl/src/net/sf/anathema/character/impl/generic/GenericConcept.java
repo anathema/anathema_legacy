@@ -55,4 +55,8 @@ public class GenericConcept implements IConcept {
   public ICasteType getCasteType() {
     return characterConcept.getCaste().getType();
   }
+  
+  public int getAge() {
+    return characterConcept.getAge();
+  }
 }

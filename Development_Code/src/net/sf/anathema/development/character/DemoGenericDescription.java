@@ -9,6 +9,10 @@ public class DemoGenericDescription implements IGenericDescription {
   private String name;
   private String periphrase;
   private String appearance;
+  private String eyes;
+  private String hair;
+  private String sex;
+  private String skin;
   private String player;
   private String concept;
 
@@ -36,8 +40,44 @@ public class DemoGenericDescription implements IGenericDescription {
     return appearance;
   }
 
+  @Override
+  public String getEyes() {
+    return eyes;
+  }
+
+  @Override
+  public String getHair() {
+    return hair;
+  }
+
+  @Override
+  public String getSex() {
+    return sex;
+  }
+
+  @Override
+  public String getSkin() {
+    return skin;
+  }
+
   public void setAppearance(String appearance) {
     this.appearance = appearance;
+  }
+  
+  public void setEyes(String eyes) {
+    this.eyes = eyes;
+  }
+  
+  public void setHair(String hair) {
+    this.hair = hair;
+  }
+  
+  public void setSex(String sex) {
+    this.sex = sex;
+  }
+  
+  public void setSkin(String skin) {
+    this.skin = skin;
   }
 
   public void setCharacterization(String characterization) {

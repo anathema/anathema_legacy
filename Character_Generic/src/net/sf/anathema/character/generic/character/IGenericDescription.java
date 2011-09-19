@@ -10,6 +10,14 @@ public interface IGenericDescription {
 
   public String getPhysicalAppearance();
 
+  public String getEyes();
+
+  public String getHair();
+
+  public String getSex();
+
+  public String getSkin();
+
   public String getPlayer();
 
   public String getNotes();

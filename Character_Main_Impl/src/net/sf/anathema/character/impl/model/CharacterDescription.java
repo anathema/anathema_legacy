@@ -15,6 +15,11 @@ public class CharacterDescription implements ICharacterDescription {
   private final ITextualDescription player = new SimpleTextualDescription();
   private final ITextualDescription concept = new SimpleTextualDescription();
 
+  private final ITextualDescription eyes = new SimpleTextualDescription();
+  private final ITextualDescription hair = new SimpleTextualDescription();
+  private final ITextualDescription sex = new SimpleTextualDescription();
+  private final ITextualDescription skin = new SimpleTextualDescription();
+
   public ITextualDescription getName() {
     return nameDescription;
   }
@@ -35,6 +40,22 @@ public class CharacterDescription implements ICharacterDescription {
     return physicalDescription;
   }
 
+  public ITextualDescription getEyes() {
+    return eyes;
+  }
+
+  public ITextualDescription getHair() {
+    return hair;
+  }
+
+  public ITextualDescription getSex() {
+    return sex;
+  }
+
+  public ITextualDescription getSkin() {
+    return skin;
+  }
+
   public ITextualDescription getNotes() {
     return notes;
   }
@@ -45,6 +66,10 @@ public class CharacterDescription implements ICharacterDescription {
         periphraseDescription,
         characterization,
         physicalDescription,
+        eyes,
+        hair,
+        sex,
+        skin,
         notes,
         player,
         concept };
