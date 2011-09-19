@@ -22,7 +22,6 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
-  public static final float CONTENT_HEIGHT = 755;
   private final IResources resources;
   private final BaseFont baseFont;
 
@@ -49,10 +48,11 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
       throws DocumentException;
 
   protected void encodeCopyright(PdfContentByte directContent) throws DocumentException {
-    int lineHeight = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 2;
+    float lineHeight = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 2f;
     Font copyrightFont = new Font(getBaseFont(), IVoidStateFormatConstants.COMMENT_FONT_SIZE);
-    float copyrightHeight = getPageConfiguration().getPageHeight() - getPageConfiguration().getContentHeight();
-    Bounds firstColumnBounds = getPageConfiguration().getFirstColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
+    float copyrightHeight = getPageConfiguration().getLowerContentY();
+    
+    Bounds firstColumnBounds = getPageConfiguration().getFirstColumnRectangle(getContentHeight(), copyrightHeight, 1);
     Anchor voidstatePhrase = new Anchor("Inspired by Voidstate\nhttp://www.voidstate.com", copyrightFont); //$NON-NLS-1$
     voidstatePhrase.setReference("http://www.voidstate.com"); //$NON-NLS-1$
     PdfTextEncodingUtilities.encodeText(directContent, voidstatePhrase, firstColumnBounds, lineHeight);
@@ -60,13 +60,13 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     // TODO: Eliminate these hard-coded copyright dates; these should be in a properties file or something.
     Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92011\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$
     anathemaPhrase.setReference("http://anathema.sf.net"); //$NON-NLS-1$
-    Bounds anathemaBounds = getPageConfiguration().getSecondColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
+    Bounds anathemaBounds = getPageConfiguration().getSecondColumnRectangle(getContentHeight(), copyrightHeight, 1);
     PdfTextEncodingUtilities.encodeText(directContent, anathemaPhrase, anathemaBounds, lineHeight, Element.ALIGN_CENTER);
     Anchor whitewolfPhrase = new Anchor("Exalted \u00A92011 by White Wolf, Inc.\nhttp://www.white-wolf.com", //$NON-NLS-1$
         copyrightFont);
     whitewolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
     
-    Bounds whitewolfBounds = getPageConfiguration().getThirdColumnRectangle(CONTENT_HEIGHT, copyrightHeight);
+    Bounds whitewolfBounds = getPageConfiguration().getThirdColumnRectangle(getContentHeight(), copyrightHeight);
     PdfTextEncodingUtilities.encodeText(
         directContent,
         whitewolfPhrase,
@@ -91,6 +91,10 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     return pageConfiguration;
   }
   
+  public float getContentHeight() {
+    return pageConfiguration.getContentHeight();
+  }
+
   protected IPdfPartEncoder getPartEncoder() {
     return partEncoder;
   }

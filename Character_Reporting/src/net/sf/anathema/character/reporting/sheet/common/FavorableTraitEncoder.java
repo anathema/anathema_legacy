@@ -189,7 +189,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return ""; //$NON-NLS-1$
   }
 
-  private int encodeFavorableTrait(
+  private float encodeFavorableTrait(
       PdfContentByte directContent,
       String label,
       IFavorableGenericTrait trait,
@@ -200,7 +200,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return traitEncoder.encodeWithTextAndRectangle(directContent, label, position, width, value, favored, essenceMax);
   }
 
-  private int encodeFavorableTrait(
+  private float encodeFavorableTrait(
       PdfContentByte directContent,
       String label,
       IFavorableGenericTrait trait,
