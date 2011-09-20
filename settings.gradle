@@ -11,5 +11,5 @@ include('Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow',
         'Book_Glories_Luna', 'Book_Glories_Maidens', 'Book_Glories_UnconqueredSun',
          /*Book_MoEP_Abyssals,*/ 'Book_MoEP_Alchemicals', 'Book_MoEP_Infernals','Book_MoEP_Lunars', 'Book_MoEP_Sidereals',
         'Book_ReturnOfTheScarletEmpress', 'Book_ScrollOfExalts', 'Book_ScrollOfTheFallenRaces_Debris',
-        /*'Book_ScrollOfTheMonk',*/ 'Book_ScrollOfTheMonk_ImperfectLotus',
+        'Book_ScrollOfTheMonk', 'Book_ScrollOfTheMonk_ImperfectLotus',
         'Book_ThousandCorrectActions', 'Book_UnderTheRose', 'Box_DotFA')
