@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.IEditMotivationListener;
 import net.sf.anathema.character.model.concept.IMotivation;
@@ -78,14 +79,16 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
   
   private void initAgePresentation() {
-    IntegerSpinner ageSpinner = new IntegerSpinner(statistics.getCharacterConcept().getAge());
+    final IIntegerDescription age = statistics.getCharacterConcept().getAge();
+    
+    IntegerSpinner ageSpinner = new IntegerSpinner(age.getValue());
     ageSpinner.setPreferredWidth(48);
     ageSpinner.setStepSize(5);
     
 	  view.addSpinner(resources.getString("Label.Age"), ageSpinner);
     ageSpinner.addChangeListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
-        statistics.getCharacterConcept().setAge(newValue);
+        age.setValue(newValue);
       }
     });
   }

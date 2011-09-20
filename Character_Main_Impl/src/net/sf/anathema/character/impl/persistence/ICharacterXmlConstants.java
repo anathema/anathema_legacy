@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.persistence;
 
 public interface ICharacterXmlConstants {
 
+  public static final String ATTRIB_AGE = "age"; //$NON-NLS-1$
   public static final String ATTRIB_EXPERIENCE_LEARNED = "experienceLearned"; //$NON-NLS-1$
   public static final String ATTRIB_FAVORED = "favored"; //$NON-NLS-1$
   public static final String ATTRIB_EXPERIENCED = "experienced"; //$NON-NLS-1$

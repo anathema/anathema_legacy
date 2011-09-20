@@ -57,6 +57,6 @@ public class GenericConcept implements IConcept {
   }
   
   public int getAge() {
-    return characterConcept.getAge();
+    return characterConcept.getAge().getValue();
   }
 }

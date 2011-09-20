@@ -69,6 +69,11 @@ public class CharacterStatistics implements ICharacterStatistics {
       context.getCharacterListening().fireCasteChanged();
     }
   };
+  private final IChangeListener ageChangeListener = new IChangeListener() {
+    public void changeOccured() {
+      context.getCharacterListening().fireCharacterChanged();
+    }
+  };
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final ICoreTraitConfiguration traitConfiguration;
   private IMagicStats[] genericStats = new IMagicStats[0];
@@ -147,6 +152,7 @@ public class CharacterStatistics implements ICharacterStatistics {
     });
     CharacterConcept characterConcept = new CharacterConcept(willpowerConcept[0]);
     characterConcept.getCaste().addChangeListener(casteChangeListener);
+    characterConcept.getAge().addChangeListener(ageChangeListener);
     characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
       public void accept(INature nature) {
         nature.getDescription().addChangeListener(natureChangeListener);

@@ -252,7 +252,7 @@ public class GenericCharacter implements IGenericCharacter {
   }
   
   public int getAge() {
-    return statistics.getCharacterConcept().getAge();
+    return statistics.getCharacterConcept().getAge().getValue();
   }
 
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
