@@ -1,0 +1,15 @@
+dependencies {
+  compile files(
+          "../Thirdparty/Swing/l2fprod-common-tasks.jar"
+  )
+  compile project(':Character_Generic')
+  compile project(':Character_Reporting')
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
+}
