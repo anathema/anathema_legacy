@@ -6,6 +6,10 @@ include('Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow',
 
         'Campaign_Music', 'Campaign_Music_Impl',
         'Campaign_Plot',
+		
+		'Charm_Tree',
+		
+		'Character_Generic', 'Character_Generic_Impl', 'Character_Generic_Framework',
 
         'Blog_InkMonkeys', 'Book_BrokenWingedCrane',
         'Book_Glories_Luna', 'Book_Glories_Maidens', 'Book_Glories_UnconqueredSun',

@@ -1,0 +1,12 @@
+dependencies {
+  compile project(':Charm_Tree')
+  compile project(':Character_Generic')
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
+}
