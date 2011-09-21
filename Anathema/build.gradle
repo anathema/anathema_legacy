@@ -38,12 +38,14 @@ task buildJar(type: Jar) {
   from(sourceSets.main.classesDir){
     include '**/*'
   }
+  from(bootDir){
+    include '**/*'
+  }
 }
 
 task buildBootloader << {
 }
 
-compileBootloader.dependsOn prepare
 createProperties.dependsOn prepare
 buildJar.dependsOn prepare, compileBootloader, createProperties
 buildBootloader.dependsOn build, prepare, compileBootloader, createProperties, buildJar
