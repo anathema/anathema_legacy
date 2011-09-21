@@ -40,7 +40,7 @@ dependencies {
   compile project(':Book_MoEP_Lunars')
   compile project(':Book_MoEP_Sidereals')
   compile project(':Book_ScrollOfExalts')
-  compile project(':Book_ScrollOfFallenRaces_Debris')
+  compile project(':Book_ScrollOfTheFallenRaces_Debris')
   compile project(':Book_ScrollOfTheMonk')
   compile project(':Book_ScrollOfTheMonk_ImperfectLotus')
   compile project(':Book_ThousandCorrectActions')
