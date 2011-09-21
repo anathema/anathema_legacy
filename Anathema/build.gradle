@@ -1,3 +1,53 @@
+buildDir = new File('build')
+bootDir = new File(buildDir, 'boot')
+libraryDir = 'lib'
+
+task prepare << {
+  bootDir.mkdirs()
+}
+
+task compileBootloader << {
+}
+
+task createProperties << {
+  File propertiesFile = new File(bootDir, 'boot.properties')
+  propertiesFile.createNewFile()
+  def writer = propertiesFile.newWriter()
+  writer.write 'org.java.plugin.boot.applicationPlugin = net.sf.anathema.core'
+  writer.newLine()
+  writer.write 'org.java.plugin.PathResolver = net.sf.anathema.AnathemaPathResolver'
+  writer.close()
+}
+
+task buildJar(type: Jar) {
+  destinationDir = buildDir
+  archiveName = 'anathema.jar'
+  manifest {
+    attributes(
+            'Built-By': System.getProperty("user.name"),
+            'Main-Class': 'net.sf.anathema.AnathemaBootLoader',
+            'SplashScreen-Image': 'icons/core/AnathemaSplashNew.png',
+            'Class-Path': "$libraryDir/jpf.jar $libraryDir/jpf-boot.jar $libraryDir/commons-logging-api.jar"
+    )
+    //< section name = "net/sf/anathema/AnathemaBootLoader.class" / >
+  }
+  from('resources') {
+    include '**/*'
+    exclude '**/Thumbs.db'
+  }
+  from(sourceSets.main.classesDir){
+    include '**/*'
+  }
+}
+
+task buildBootloader << {
+}
+
+compileBootloader.dependsOn prepare
+createProperties.dependsOn prepare
+buildJar.dependsOn prepare, compileBootloader, createProperties
+buildBootloader.dependsOn build, prepare, compileBootloader, createProperties, buildJar
+
 dependencies {
    compile files(
           "../Thirdparty/Jakarta/commons-logging-api-1.0.2.jar",
