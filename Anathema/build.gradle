@@ -1,0 +1,66 @@
+dependencies {
+   compile files(
+          "../Thirdparty/Jakarta/commons-logging-api-1.0.2.jar",
+          "../Thirdparty/Plugin/jpf.jar",
+          "../Thirdparty/Plugin/jpf-boot.jar",
+  )
+  compile project(':Character_Main')
+  compile project(':Platform')
+  compile project(':Charm_Tree')
+  compile project(':Charm_Cascades')
+  compile project(':Campaign_Plot')
+  compile project(':Character_Abyssal')
+  compile project(':Character_Generic')
+  compile project(':Character_Generic_Impl')
+  compile project(':Character_Solar')
+  compile project(':Character_Db')
+  compile project(':Character_Sidereal')
+  compile project(':Character_Generic_Framework')
+  compile project(':Campaign_Music')
+  compile project(':Campaign_Music_Impl')
+  compile project(':Character_MeritsFlaws')
+  compile project(':Character_Library')
+  compile project(':Character_Lunar')
+  compile project(':Character_Main_Impl')
+  compile project(':Character_Intimacies')
+  compile project(':Character_Reporting')
+  compile project(':Character_Equipment')
+  compile project(':Character_Equipment_Impl')
+  compile project(':Character_Mortal')
+  compile project(':Character_Craft')
+  compile project(':Character_Linguistics')
+  compile project(':Character_MartialArts')
+  compile project(':Blog_InkMonkeys')
+  compile project(':Book_Glories_Luna')
+  compile project(':Book_Glories_Maidens')
+  compile project(':Book_Glories_UnconqueredSun')
+  compile project(':Book_MoEP_Abyssals')
+  compile project(':Book_MoEP_Alchemicals')
+  compile project(':Book_MoEP_Infernals')
+  compile project(':Book_MoEP_Lunars')
+  compile project(':Book_MoEP_Sidereals')
+  compile project(':Book_ScrollOfExalts')
+  compile project(':Book_ScrollOfFallenRaces_Debris')
+  compile project(':Book_ScrollOfTheMonk')
+  compile project(':Book_ScrollOfTheMonk_ImperfectLotus')
+  compile project(':Book_ThousandCorrectActions')
+  compile project(':Book_UnderTheRose')
+  compile project(':Box_DotFA')
+  compile project(':Namegenerator')
+  compile project(':Character_Mutations')
+  compile project(':Character_Godblooded')
+  compile project(':Character_Spirit')
+  compile project(':Charm_Entry')
+  compile project(':Character_Infernal')
+  compile project(':Book_BrokenWingedCrane')
+  compile project(':Book_ReturnOfTheScarletEmpress')
+  compile project(':Character_Ghost')
+
+}
+sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
+}
