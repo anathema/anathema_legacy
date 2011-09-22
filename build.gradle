@@ -25,8 +25,8 @@ subprojects {
 }
 
 version_major = 2
-version_minor = 1
-version_revision = 4
+version_minor = 0
+version_revision = 1
 
 task buildZip(type: Zip) {
   archiveName = "Anathema_v${version_major}.${version_minor}.${version_revision}.zip"
