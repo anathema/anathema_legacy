@@ -1,4 +1,5 @@
 propertiesDir = new File(buildDir, 'properties')
+dependenciesDir = new File(buildDir, 'dependencies')
 libraryDir = 'lib'
 
 task writeBootProperties {
@@ -41,6 +42,7 @@ dependencies {
           "../Thirdparty/Plugin/jpf-boot.jar",
   )
   compile project(':Platform')
+  compile project(':Lib')
   /*compile project(':Character_Main')
   compile project(':Charm_Tree')
   compile project(':Charm_Cascades')
@@ -92,6 +94,12 @@ dependencies {
   compile project(':Book_ReturnOfTheScarletEmpress')
   compile project(':Character_Ghost')  */
 }
+
+task collectDependencies(type: Copy) {
+  from configurations.compile.collect { it }
+  into dependenciesDir
+}
+
 sourceSets {
   main {
     resources {
