@@ -1,4 +1,3 @@
-buildDir = new File('build')
 propertiesDir = new File(buildDir, 'properties')
 libraryDir = 'lib'
 
