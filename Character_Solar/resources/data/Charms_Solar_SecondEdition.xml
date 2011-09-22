@@ -479,7 +479,6 @@
 		<prerequisite>
 			<essence id="Essence" value="1"/>
 			<trait id="Melee" value="2"/>
-			<charmAttributeRequirement attribute="ExcellencyMelee" count="1"/>
 		</prerequisite>
 		<cost>
 			<essence cost="2"/>
