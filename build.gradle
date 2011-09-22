@@ -3,7 +3,6 @@ subprojects {
   apply plugin: 'eclipse'
 
   sourceCompatibility = 1.6
-  targetCompatibility = 1.6
 
   if (!isDataPlugin(project)) {
     sourceSets {
@@ -23,6 +22,20 @@ subprojects {
       }
     }
   }
+}
+
+version_major = 2
+version_minor = 1
+version_revision = 4
+
+task buildZip(type: Zip) {
+  archiveName = "Anathema_v$version_major.$version_minor.${version_revision}.zip"
+  from(':Anathema/build'){
+    include 'anathema.jar'
+  }
+  //< fileset dir = "${files.dir}" includes = "**/*" / >
+  //< zipfileset dir = "${plugins.dir}/" prefix = "plugins" includes = "*" / >
+  //< zipfileset dir = "${libraries.dir}" prefix = "lib" includes = "*" / >
 }
 
 boolean isDataPlugin(project) {

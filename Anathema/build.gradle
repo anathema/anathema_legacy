@@ -1,16 +1,11 @@
 buildDir = new File('build')
-bootDir = new File(buildDir, 'boot')
+propertiesDir = new File(buildDir, 'properties')
 libraryDir = 'lib'
 
-task prepare << {
-  bootDir.mkdirs()
-}
-
-task compileBootloader << {
-}
-
-task createProperties << {
-  File propertiesFile = new File(bootDir, 'boot.properties')
+task writeBootProperties {
+  outputs.dir propertiesDir
+  propertiesDir.mkdirs()
+  File propertiesFile = new File(propertiesDir, 'boot.properties')
   propertiesFile.createNewFile()
   def writer = propertiesFile.newWriter()
   writer.write 'org.java.plugin.boot.applicationPlugin = net.sf.anathema.core'
@@ -19,9 +14,7 @@ task createProperties << {
   writer.close()
 }
 
-task buildJar(type: Jar) {
-  destinationDir = buildDir
-  archiveName = 'anathema.jar'
+jar {
   manifest {
     attributes(
             'Built-By': System.getProperty("user.name"),
@@ -31,14 +24,7 @@ task buildJar(type: Jar) {
     )
     //< section name = "net/sf/anathema/AnathemaBootLoader.class" / >
   }
-  from('resources') {
-    include '**/*'
-    exclude '**/Thumbs.db'
-  }
-  from(sourceSets.main.classesDir){
-    include '**/*'
-  }
-  from(bootDir){
+  from(propertiesDir) {
     include '**/*'
   }
 }
@@ -46,18 +32,17 @@ task buildJar(type: Jar) {
 task buildBootloader << {
 }
 
-createProperties.dependsOn prepare
-buildJar.dependsOn prepare, compileBootloader, createProperties
-buildBootloader.dependsOn build, prepare, compileBootloader, createProperties, buildJar
+jar.dependsOn writeBootProperties
+buildBootloader.dependsOn build
 
 dependencies {
-   compile files(
+  compile files(
           "../Thirdparty/Jakarta/commons-logging-api-1.0.2.jar",
           "../Thirdparty/Plugin/jpf.jar",
           "../Thirdparty/Plugin/jpf-boot.jar",
   )
-  compile project(':Character_Main')
   compile project(':Platform')
+  /*compile project(':Character_Main')
   compile project(':Charm_Tree')
   compile project(':Charm_Cascades')
   compile project(':Campaign_Plot')
@@ -106,8 +91,7 @@ dependencies {
   compile project(':Character_Infernal')
   compile project(':Book_BrokenWingedCrane')
   compile project(':Book_ReturnOfTheScarletEmpress')
-  compile project(':Character_Ghost')
-
+  compile project(':Character_Ghost')  */
 }
 sourceSets {
   main {
