@@ -22,11 +22,30 @@ subprojects {
       }
     }
   }
+
+  task collectTransitiveThirdpartyDependencies() << {
+    copy {
+      from configurations.compile.findAll { File dependency -> dependency.absolutePath.contains('Thirdparty') }
+      into dependenciesDir
+    }
+  }
 }
 
 version_major = 2
 version_minor = 0
 version_revision = 1
+
+
+task copyCorePlugin(type: Copy) {
+}
+
+
+task buildCoreJar(type: Jar) {
+}
+
+task buildCorePlugin << {
+}
+
 
 task buildZip(type: Zip) {
   archiveName = "Anathema_v${version_major}.${version_minor}.${version_revision}.zip"
@@ -49,8 +68,9 @@ task buildZip(type: Zip) {
   }
 }
 
-buildZip.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies'
-
+//buildCorePlugin.dependsOn ':Lib_Thirdparty:build', ':Lib_Thirdparty:collectDependencies'
+//buildCorePlugin.dependsOn copyCorePlugin, buildCoreJar;
+buildZip.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies'//, 'buildCorePlugin'
 boolean isDataPlugin(project) {
   project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
 }

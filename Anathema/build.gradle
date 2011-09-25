@@ -96,7 +96,7 @@ dependencies {
 }
 
 task collectDependencies(type: Copy) {
-  from configurations.compile.collect { it }
+  from configurations.compile.findAll { File dependency -> dependency.absolutePath.contains('Thirdparty') }
   into dependenciesDir
 }
 
