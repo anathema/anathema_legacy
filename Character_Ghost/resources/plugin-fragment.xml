@@ -57,6 +57,11 @@
 	  <parameter id="list">
 		<parameter id="type" value="Ghost"/>
 		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/arcanoi_constraint.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Ghost"/>
+		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/arcanoi_terror.xml"/>
 	  </parameter>
 	  <parameter id="list">
@@ -68,6 +73,11 @@
 		<parameter id="type" value="Ghost"/>
 		<parameter id="rules" value="SecondEdition"/>
 		<parameter id="path" value="data/arcanoi_honored.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Ghost"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/arcanoi_scholarly.xml"/>
 	  </parameter>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="GhostResources">
