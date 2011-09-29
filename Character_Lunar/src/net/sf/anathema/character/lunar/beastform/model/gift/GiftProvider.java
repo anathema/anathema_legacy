@@ -30,6 +30,8 @@ public class GiftProvider {
 	  gifts.add(new Gift("Fangs", 1));
 	  gifts.add(new Gift("FurFeathersLeavesScales", 1));
 	  gifts.add(new Gift("Hooves", 1));
+	  gifts.add(new Gift("Large", 1));
+	  gifts.add(new Gift("NightVision", 1));
 	  gifts.add(new Gift("SerpentineTongue", 1));
 	  gifts.add(new Gift("SkinHair", 1));
 	  gifts.add(new Gift("Small", 1));
@@ -41,11 +43,16 @@ public class GiftProvider {
 	  gifts.add(new Gift("FrogTongue", 2));
 	  gifts.add(new Gift("GazellesPace", 2));
 	  gifts.add(new Gift("Gills", 2));
+	  gifts.add(new Gift("Huge", 2));
+	  gifts.add(new Gift("ImpossibleJoints", 2));
+	  gifts.add(new Gift("Inexhaustable", 2));
+	  gifts.add(new Gift("ShortGestation", 2));
 	  gifts.add(new Gift("PrehensileTail", 2));
 	  gifts.add(new Gift("ScorpionsTail", 2));
 	  gifts.add(new Gift("TalonsTusksHorns", 2));
 	  gifts.add(new Gift("ThickSkin", 2));
 	  gifts.add(new Gift("Toxin", 2));
+	  gifts.add(new Gift("Tiny", 2));
 	  gifts.add(new Gift("AcidicPustules", 4));
 	  gifts.add(new Gift("ArmoredHide", 4));
 	  gifts.add(new Gift("CheetahsPace", 4));

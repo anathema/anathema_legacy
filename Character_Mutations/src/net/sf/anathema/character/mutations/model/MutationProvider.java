@@ -35,6 +35,9 @@ public class MutationProvider {
 	  Mutations.add(new Mutation("Fangs", MutationType.Pox));
 	  Mutations.add(new Mutation("FurFeathersLeavesScales", MutationType.Pox));
 	  Mutations.add(new Mutation("Hooves", MutationType.Pox));
+	  Mutations.add(new Mutation("Large", MutationType.Pox));
+	  Mutations.add(new Mutation("Longevity", MutationType.Pox));
+	  Mutations.add(new Mutation("NightVision", MutationType.Pox));
 	  Mutations.add(new Mutation("SerpentineTongue", MutationType.Pox));
 	  Mutations.add(new Mutation("SkinHair", MutationType.Pox));
 	  Mutations.add(new Mutation("Small", MutationType.Pox));
@@ -46,11 +49,17 @@ public class MutationProvider {
 	  Mutations.add(new Mutation("FrogTongue", MutationType.Affliction));
 	  Mutations.add(new Mutation("GazellesPace", MutationType.Affliction));
 	  Mutations.add(new Mutation("Gills", MutationType.Affliction));
+	  Mutations.add(new Mutation("Huge", MutationType.Affliction));
+	  Mutations.add(new Mutation("ImpossibleJoints", MutationType.Affliction));
+	  Mutations.add(new Mutation("Inexhaustible", MutationType.Affliction));
+	  Mutations.add(new Mutation("ShortGestation", MutationType.Affliction));
 	  Mutations.add(new Mutation("PrehensileTail", MutationType.Affliction));
 	  Mutations.add(new Mutation("ScorpionsTail", MutationType.Affliction));
 	  Mutations.add(new Mutation("TalonsTusksHorns", MutationType.Affliction));
 	  Mutations.add(new Mutation("ThickSkin", MutationType.Affliction));
 	  Mutations.add(new Mutation("Toxin", MutationType.Affliction));
+	  Mutations.add(new Mutation("Tiny", MutationType.Affliction));
+	  Mutations.add(new Mutation("WyldAssimilation", MutationType.Affliction));
 	  Mutations.add(new Mutation("AcidicPustules", MutationType.Blight));
 	  Mutations.add(new Mutation("ArmoredHide", MutationType.Blight));
 	  Mutations.add(new Mutation("CheetahsPace", MutationType.Blight));
