@@ -88,34 +88,10 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
     distanceFromTop += calculateBoxIncrement(healthHeight);
     float remainingHeight = PdfOldStyleFirstPageEncoder.CONTENT_HEIGHT - distanceFromTop;
     encodeCombatStats(directContent, character, description, distanceFromTop, remainingHeight);
-    encodeCopyright(directContent);
+    new CopyrightEncoder(baseFont, pageConfiguration, CONTENT_HEIGHT).encodeCopyright(directContent);
   }
 
-  private void encodeCopyright(PdfContentByte directContent) throws DocumentException {
-    int lineHeight = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 2;
-    Font copyrightFont = new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE);
-    float copyrightHeight = pageConfiguration.getPageHeight() - pageConfiguration.getContentHeight();
-    Bounds firstColumnBounds = pageConfiguration.getFirstColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
-    Anchor voidstatePhrase = new Anchor("Inspired by Voidstate\nhttp://www.voidstate.com", copyrightFont); //$NON-NLS-1$
-    voidstatePhrase.setReference("http://www.voidstate.com"); //$NON-NLS-1$
-    PdfTextEncodingUtilities.encodeText(directContent, voidstatePhrase, firstColumnBounds, lineHeight);
-    Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92007\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$
-    anathemaPhrase.setReference("http://anathema.sf.net"); //$NON-NLS-1$
-    Bounds anathemaBounds = pageConfiguration.getSecondColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
-    PdfTextEncodingUtilities.encodeText(directContent, anathemaPhrase, anathemaBounds, lineHeight, Element.ALIGN_CENTER);
-    Anchor whitewolfPhrase = new Anchor("Exalted \u00A92007 by White Wolf, Inc.\nhttp://www.white-wolf.com", //$NON-NLS-1$
-        copyrightFont);
-    whitewolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
-    Bounds whitewolfBounds = pageConfiguration.getThirdColumnRectangle(CONTENT_HEIGHT, copyrightHeight);
-    PdfTextEncodingUtilities.encodeText(
-        directContent,
-        whitewolfPhrase,
-        whitewolfBounds,
-        lineHeight,
-        Element.ALIGN_RIGHT);
-  }
-
-  private float encodeEssence(
+    private float encodeEssence(
       PdfContentByte directContent,
       IGenericCharacter character,
       IGenericDescription description,
