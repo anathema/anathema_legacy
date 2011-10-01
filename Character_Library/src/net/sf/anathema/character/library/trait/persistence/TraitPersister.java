@@ -80,7 +80,7 @@ public class TraitPersister {
     return traitElement;
   }
 
-  private final Element saveTrait(Element traitElement, IDefaultTrait trait) {
+  private Element saveTrait(Element traitElement, IDefaultTrait trait) {
     ElementUtilities.addAttribute(traitElement, ATTRIB_CREATION_VALUE, trait.getCreationValue());
     if (trait.getExperiencedValue() != ITraitRules.UNEXPERIENCED) {
       ElementUtilities.addAttribute(traitElement, ATTRIB_EXPERIENCED_VALUE, trait.getExperiencedValue());

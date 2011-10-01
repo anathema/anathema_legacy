@@ -83,7 +83,7 @@ public class TraitFavorization implements ITraitFavorization {
   }
 
   public void setCaste(boolean caste) {
-    if (caste == false && isCaste() == caste) {
+    if (!caste && isCaste() == caste) {
       return;
     }
     setFavorableState(caste ? FavorableState.Caste : (isCaste() ? FavorableState.Default : FavorableState.Favored));
@@ -97,7 +97,7 @@ public class TraitFavorization implements ITraitFavorization {
     favorableStateControl.addListener(listener);
   }
 
-  private final void fireFavorableStateChangedEvent() {
+  private void fireFavorableStateChangedEvent() {
     favorableStateControl.forAllDo(new IClosure<IFavorableStateChangedListener>() {
       public void execute(IFavorableStateChangedListener input) {
         input.favorableStateChanged(state);

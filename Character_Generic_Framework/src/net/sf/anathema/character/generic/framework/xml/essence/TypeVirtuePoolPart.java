@@ -18,7 +18,7 @@ public class TypeVirtuePoolPart implements IVirtuePoolPart {
     return new FactorizedTrait(getVirtue(virtues), multiplier);
   }
 
-  private final IGenericTrait getVirtue(IGenericTrait[] traits) {
+  private IGenericTrait getVirtue(IGenericTrait[] traits) {
     for (IGenericTrait trait : traits) {
       if (trait.getType() == virtueType) {
         return trait;

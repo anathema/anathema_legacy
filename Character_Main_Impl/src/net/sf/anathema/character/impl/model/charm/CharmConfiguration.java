@@ -222,7 +222,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       
       group.addCharmLearnListener(mergedListener);
     }
-    return newGroups.toArray(new LearningCharmGroup[0]);
+    return newGroups.toArray(new LearningCharmGroup[newGroups.size()]);
   }
   
   private String getSubeffectParent(String subeffect)
@@ -295,7 +295,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     for (ILearningCharmGroup group : getAllGroups()) {
       Collections.addAll(allLearnedCharms, group.getExperienceLearnedCharms());
     }
-    return allLearnedCharms.toArray(new ICharm[0]);
+    return allLearnedCharms.toArray(new ICharm[allLearnedCharms.size()]);
   }
 
   @Override
@@ -318,7 +318,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         Collections.addAll(allLearnedCharms, group.getExperienceLearnedCharms());
       }
     }
-    return allLearnedCharms.toArray(new ICharm[0]);
+    return allLearnedCharms.toArray(new ICharm[allLearnedCharms.size()]);
   }
 
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
@@ -433,7 +433,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     control.fireChangedEvent();
   }
 
-  private final ICharmLearnStrategy getLearnStrategy() {
+  private ICharmLearnStrategy getLearnStrategy() {
     return context.getCharmContext().getCharmLearnStrategy();
   }
 
@@ -564,7 +564,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     return group != null && group.isLearned(charm);
   }
 
-  private final ILearningCharmGroup getGroupById(ICharacterType characterType, String groupId) {
+  private ILearningCharmGroup getGroupById(ICharacterType characterType, String groupId) {
     List<ILearningCharmGroup> candidateGroups = new ArrayList<ILearningCharmGroup>();
     Collections.addAll(candidateGroups, getCharmGroups(characterType));
     Collections.addAll(candidateGroups, getMartialArtsGroups());

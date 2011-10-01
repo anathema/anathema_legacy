@@ -127,7 +127,7 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
     GuiUtilities.setEnabled(backgroundPanel, enabled);
   }
 
-  private final JComponent addTitledPanel(
+  private JComponent addTitledPanel(
       String title,
       JPanel container,
       JComponent component,
