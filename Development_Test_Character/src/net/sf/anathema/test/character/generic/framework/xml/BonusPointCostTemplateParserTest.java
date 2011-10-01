@@ -72,7 +72,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     }
 
     public void testMaximumFreeVirtueDotsChanged() throws Exception {
-        String xml = "<root><advantages><virtues><fixedCost cost=\"3\"/><maximumFreeRank rank=\"4\"/></virtues></advantages></root>"; //$NON-NLS-1$
+        String xml = "<root><advantages><virtues><fixedCost cost=\"3\"/><maximumFreeVirtueRank rank=\"4\"/></virtues></advantages></root>"; //$NON-NLS-1$
         GenericBonusPointCosts costs = parseXmlToCost(xml);
         assertEquals(3, costs.getVirtueCosts().getRatingCosts(1));
         assertEquals(4, costs.getMaximumFreeVirtueRank());
