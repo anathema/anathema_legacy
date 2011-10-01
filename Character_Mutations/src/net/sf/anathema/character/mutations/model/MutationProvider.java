@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 
 public class MutationProvider {
@@ -38,81 +37,107 @@ public class MutationProvider {
   
   private static List<IMutation> getSecondEditionMutations()
   {
-	  List<IMutation> mutations = new ArrayList<IMutation>();
-	  mutations.add(new Mutation("EnhancedSense", Pox, SecondEdition, 288));
-	  mutations.add(new Mutation("Claws", Pox, SecondEdition, 288));
-	  mutations.add(new Mutation("Fangs", Pox));
-	  mutations.add(new Mutation("FurFeathersLeavesScales", Pox));
-	  mutations.add(new Mutation("Hooves", Pox));
-	  mutations.add(new Mutation("Large", Pox));
-	  mutations.add(new Mutation("Longevity", Pox));
-	  mutations.add(new Mutation("NightVision", Pox));
-	  mutations.add(new Mutation("SerpentineTongue", Pox));
-	  mutations.add(new Mutation("SkinHair", Pox));
-	  mutations.add(new Mutation("Small", Pox));
-	  mutations.add(new Mutation("Tail", Pox));
-	  mutations.add(new Mutation("ThirdEye", Pox));
-	  mutations.add(new Mutation("WolfsPace", Pox));
-	  mutations.add(new Mutation("ElementalAdaptationAir", Pox));
-	  mutations.add(new Mutation("ElementalAdaptationFire", Pox));
-	  mutations.add(new Mutation("ElementalAdaptationWood", Pox));
-	  mutations.add(new Mutation("ElementalAdaptationWater", Pox));
-	  mutations.add(new Mutation("ChakraEye", Affliction));
-	  mutations.add(new Mutation("Chameleon", Affliction));
-	  mutations.add(new Mutation("ExaltedHealing", Affliction));
-	  mutations.add(new Mutation("FrogTongue", Affliction));
-	  mutations.add(new Mutation("GazellesPace", Affliction));
-	  mutations.add(new Mutation("Gills", Affliction));
-	  mutations.add(new Mutation("Huge", Affliction));
-	  mutations.add(new Mutation("ImpossibleJoints", Affliction));
-	  mutations.add(new Mutation("Inexhaustible", Affliction));
-	  mutations.add(new Mutation("ShortGestation", Affliction));
-	  mutations.add(new Mutation("PrehensileTail", Affliction));
-	  mutations.add(new Mutation("ScorpionsTail", Affliction));
-	  mutations.add(new Mutation("TalonsTusksHorns", Affliction));
-	  mutations.add(new Mutation("ThickSkin", Affliction));
-	  mutations.add(new Mutation("Toxin", Affliction));
-	  mutations.add(new Mutation("Tiny", Affliction));
-	  mutations.add(new Mutation("WyldAssimilation", Affliction));
-	  mutations.add(new Mutation("AcidicPustules", Blight));
-	  mutations.add(new Mutation("ArmoredHide", Blight));
-	  mutations.add(new Mutation("CheetahsPace", Blight));
-	  mutations.add(new Mutation("Glider", Blight));
-	  mutations.add(new Mutation("HideousMaw", Blight));
-	  mutations.add(new Mutation("LidlessDemonEye", Blight));
-	  mutations.add(new Mutation("PrehensileBodyHair", Blight));
-	  mutations.add(new Mutation("Quills", Blight));
-	  mutations.add(new Mutation("SerpentineHair", Blight));
-	  mutations.add(new Mutation("Tentacles", Blight));
-	  mutations.add(new Mutation("WallWalking", Blight));
-	  mutations.add(new Mutation("DragonsBreath", Abomination));
-	  mutations.add(new Mutation("Hive", Abomination));
-	  mutations.add(new Mutation("ExtraArmLegHead", Abomination));
-	  mutations.add(new Mutation("SerpentsBody", Abomination));
-	  mutations.add(new Mutation("SpiderLegs", Abomination));
-	  mutations.add(new Mutation("StoneBody", Abomination));
-	  mutations.add(new Mutation("TerrifyingMane", Abomination));
-	  mutations.add(new Mutation("Wings", Abomination));
-
-	  mutations.add(new Mutation("Atrophy", Deficiency));
-	  mutations.add(new Mutation("Allergy", Deficiency));
-	  mutations.add(new Mutation("Hungry", Deficiency));
-	  mutations.add(new Mutation("LostSenseHearing", Deficiency));
-	  mutations.add(new Mutation("LostSenseTouch", Deficiency));
-	  mutations.add(new Mutation("LostSenseSmellTaste", Deficiency));
-	  mutations.add(new Mutation("Rotundity", Deficiency));
-	  mutations.add(new Mutation("TemperatureSensitivity", Deficiency));
-	  mutations.add(new Mutation("Blindness", Debility));
-	  mutations.add(new Mutation("Deterioration", Debility));
-	  mutations.add(new Mutation("Fragile", Debility));
-	  mutations.add(new Mutation("Lame", Debility));
-	  mutations.add(new Mutation("SlowHealing", Debility));
-	  mutations.add(new Mutation("ShortLife", Deformity));
-	  mutations.add(new Mutation("SurrenderingFlesh", Deformity));
-	  mutations.add(new Mutation("Wracking", Deformity));
-	  
-	  return mutations;
+	  Mutations mutations = new Mutations();
+	  addPoxes(mutations);
+	  addAfflictions(mutations);
+	  addBlights(mutations);
+	  addAbominations(mutations);
+	  addDeficiencies(mutations);
+	  addDebilities(mutations);
+	  addDeformities(mutations);
+	  return mutations.asList();
   }
+
+private static void addDeformities(Mutations mutations) {
+	mutations.add("ShortLife", Deformity);
+	  mutations.add("SurrenderingFlesh", Deformity);
+	  mutations.add("Wracking", Deformity);
+}
+
+private static void addDebilities(Mutations mutations) {
+	mutations.add("Blindness", Debility);
+	  mutations.add("Deterioration", Debility);
+	  mutations.add("Fragile", Debility);
+	  mutations.add("Lame", Debility);
+	  mutations.add("SlowHealing", Debility);
+}
+
+private static void addDeficiencies(Mutations mutations) {
+	mutations.add("Atrophy", Deficiency);
+	  mutations.add("Allergy", Deficiency);
+	  mutations.add("Hungry", Deficiency);
+	  mutations.add("LostSenseHearing", Deficiency);
+	  mutations.add("LostSenseTouch", Deficiency);
+	  mutations.add("LostSenseSmellTaste", Deficiency);
+	  mutations.add("Rotundity", Deficiency);
+	  mutations.add("TemperatureSensitivity", Deficiency);
+}
+
+private static void addAbominations(Mutations mutations) {
+	mutations.add("DragonsBreath", Abomination);
+	  mutations.add("Hive", Abomination);
+	  mutations.add("ExtraArmLegHead", Abomination);
+	  mutations.add("SerpentsBody", Abomination);
+	  mutations.add("SpiderLegs", Abomination);
+	  mutations.add("StoneBody", Abomination);
+	  mutations.add("TerrifyingMane", Abomination);
+	  mutations.add("Wings", Abomination);
+}
+
+private static void addBlights(Mutations mutations) {
+	mutations.add("AcidicPustules", Blight);
+	  mutations.add("ArmoredHide", Blight);
+	  mutations.add("CheetahsPace", Blight);
+	  mutations.add("Glider", Blight);
+	  mutations.add("HideousMaw", Blight);
+	  mutations.add("LidlessDemonEye", Blight);
+	  mutations.add("PrehensileBodyHair", Blight);
+	  mutations.add("Quills", Blight);
+	  mutations.add("SerpentineHair", Blight);
+	  mutations.add("Tentacles", Blight);
+	  mutations.add("WallWalking", Blight);
+}
+
+private static void addAfflictions(Mutations mutations) {
+	mutations.add("ChakraEye", Affliction);
+	  mutations.add("Chameleon", Affliction);
+	  mutations.add("ExaltedHealing", Affliction);
+	  mutations.add("FrogTongue", Affliction);
+	  mutations.add("GazellesPace", Affliction);
+	  mutations.add("Gills", Affliction);
+	  mutations.add("Huge", Affliction);
+	  mutations.add("ImpossibleJoints", Affliction);
+	  mutations.add("Inexhaustible", Affliction);
+	  mutations.add("ShortGestation", Affliction);
+	  mutations.add("PrehensileTail", Affliction);
+	  mutations.add("ScorpionsTail", Affliction);
+	  mutations.add("TalonsTusksHorns", Affliction);
+	  mutations.add("ThickSkin", Affliction);
+	  mutations.add("Toxin", Affliction);
+	  mutations.add("Tiny", Affliction);
+	  mutations.add("WyldAssimilation", Affliction);
+}
+
+private static void addPoxes(Mutations mutations) {
+	mutations.add("EnhancedSense", Pox, SecondEdition, 288);
+	  mutations.add("Claws", Pox, SecondEdition, 288);
+	  mutations.add("Fangs", Pox);
+	  mutations.add("FurFeathersLeavesScales", Pox);
+	  mutations.add("Hooves", Pox);
+	  mutations.add("Large", Pox);
+	  mutations.add("Longevity", Pox);
+	  mutations.add("NightVision", Pox);
+	  mutations.add("SerpentineTongue", Pox);
+	  mutations.add("SkinHair", Pox);
+	  mutations.add("Small", Pox);
+	  mutations.add("Tail", Pox);
+	  mutations.add("ThirdEye", Pox);
+	  mutations.add("WolfsPace", Pox);
+	  mutations.add("ElementalAdaptationAir", Pox);
+	  mutations.add("ElementalAdaptationFire", Pox);
+	  mutations.add("ElementalAdaptationWood", Pox);
+	  mutations.add("ElementalAdaptationWater", Pox);
+}
   
   private static List<IMutation> getFirstEditionMutations()
   {
