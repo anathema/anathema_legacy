@@ -390,7 +390,7 @@ public class Charm extends Identificate implements ICharm {
 		characterCanFavorMagicOfPrimaryType[0] = false;
 	}
     });
-    if (characterCanFavorMagicOfPrimaryType[0] == false) {
+    if (!characterCanFavorMagicOfPrimaryType[0]) {
       return false;
     }
     IGenericTrait trait = traitCollection.getTrait(primaryTraitType);

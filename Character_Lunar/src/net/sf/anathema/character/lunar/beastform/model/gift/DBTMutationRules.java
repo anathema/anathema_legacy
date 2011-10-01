@@ -5,16 +5,12 @@ import net.sf.anathema.character.mutations.model.IMutationRules;
 
 public class DBTMutationRules implements IMutationRules
 {
-	private final String LARGE_MUTATION = "Large"; 
+	private final static String LARGE_MUTATION = "Large";
 
 	@Override
 	public boolean acceptMutation(IMutation mutation)
 	{
-		if (mutation.getId().equals(LARGE_MUTATION))
-			return false;
-		if (mutation.getCost() < 0)
-			return false;
-		return true;
-	}
+        return !mutation.getId().equals(LARGE_MUTATION) && mutation.getCost() >= 0;
+    }
 
 }

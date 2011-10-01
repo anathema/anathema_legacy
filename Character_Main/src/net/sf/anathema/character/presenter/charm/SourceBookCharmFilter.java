@@ -116,12 +116,8 @@ public class SourceBookCharmFilter implements ICharmFilter
 		List<IExaltedSourceBook> excludedSourceList = excludedMaterial.get(edition);
 		if (excludedSourceList == null)
 			excludedSourceList = prepareEdition(edition);
-		
-		if (!excludedSourceList.contains(charm.getSource()))
-			return true;
-		
-		return false;
-	}
+        return !excludedSourceList.contains(charm.getSource());
+    }
 	
 	@Override
 	public JPanel getFilterPreferencePanel(IResources resources)
@@ -196,11 +192,7 @@ public class SourceBookCharmFilter implements ICharmFilter
 					return false;
 				}
 			}
-			
-			if (node.attributeValue(ATTRIB_SHOWPREREQ).equals("true"))
-				includePrereqs = true;
-			else
-				includePrereqs = false;
+            includePrereqs = node.attributeValue(ATTRIB_SHOWPREREQ).equals("true");
 			
 			return true;
 		}
