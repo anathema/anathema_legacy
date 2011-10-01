@@ -25,7 +25,7 @@ public class Md5Checksum {
 
   @Override
   public String toString() {
-    StringBuffer stringBuffer = new StringBuffer();
+      StringBuilder stringBuffer = new StringBuilder();
     for (byte digestedByte : md5Bytes) {
       stringBuffer.append(Integer.toHexString(digestedByte).replaceAll("^f+", "-") + " "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }

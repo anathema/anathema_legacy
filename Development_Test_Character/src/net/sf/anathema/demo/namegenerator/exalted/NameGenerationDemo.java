@@ -16,7 +16,7 @@ public class NameGenerationDemo extends SwingDemoCase {
   }
 
   private void showNames(INameGenerator generator, int nameCount) {
-    StringBuffer allNames = new StringBuffer();
+      StringBuilder allNames = new StringBuilder();
     for (String name : generator.createNames(nameCount)) {
       allNames.append(name);
       allNames.append("\n"); //$NON-NLS-1$
