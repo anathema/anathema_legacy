@@ -61,7 +61,7 @@ public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IPdfCo
     		(character.getRules().getEdition() == ExaltedEdition.SecondEdition ?
     		 "2E." : "") + "RulesPages")); //$NON-NLS-1$
     Bounds infoBounds = new Bounds(bounds.x, bounds.y, bounds.width, textBounds.height - lineHeight);
-    encodeTextWithReducedLineHeight(directContent, textBounds, phrase);
+    encodeTextWithReducedLineHeight(directContent, infoBounds, phrase);
   }
 
   public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
