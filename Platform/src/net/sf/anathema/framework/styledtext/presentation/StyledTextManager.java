@@ -112,7 +112,7 @@ public class StyledTextManager implements IStyledTextManager {
   private TextFormat createTextFormat(AttributeSet attributeSet) {
     Font font = document.getFont(attributeSet);
     Boolean underlineAttribute = (Boolean) attributeSet.getAttribute(StyleConstants.Underline);
-    boolean notIsUnderline = underlineAttribute == null || !underlineAttribute.booleanValue();
+    boolean notIsUnderline = underlineAttribute == null || !underlineAttribute;
     return new TextFormat(FontStyle.getFrom(font), !notIsUnderline);
   }
 
