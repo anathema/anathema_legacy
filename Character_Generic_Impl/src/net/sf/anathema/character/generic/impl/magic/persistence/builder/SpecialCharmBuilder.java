@@ -82,8 +82,7 @@ public class SpecialCharmBuilder
 	
 	public ISpecialCharm readSpecialCharm(Element charmElement, String id)
 	{
-		ISpecialCharm specialCharm = null;
-		specialCharm = specialCharm == null ? readOxBodyCharm(charmElement, id) : specialCharm;
+		ISpecialCharm specialCharm = readOxBodyCharm(charmElement, id);
 		specialCharm = specialCharm == null ? readPainToleranceCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readTraitCapModifierCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readTranscendenceCharm(charmElement, id) : specialCharm;
@@ -144,7 +143,7 @@ public class SpecialCharmBuilder
     List<Element> elements = painToleranceElement.elements(TAG_LEVEL);
 		int[] levelArray = new int[elements.size()];
 		for (int i = 0; i != elements.size(); i++)
-			levelArray[i] = Integer.parseInt(((Element)elements.get(i)).attributeValue(ATTRIB_VALUE));
+			levelArray[i] = Integer.parseInt(elements.get(i).attributeValue(ATTRIB_VALUE));
 				
 		return new StaticPainToleranceCharm(id, levelArray.length, levelArray);
 		
@@ -231,18 +230,17 @@ public class SpecialCharmBuilder
 		
 		CharmTier[] tierArray = new CharmTier[tiers.size()];
 		tiers.toArray(tierArray);
-		
-		ISpecialCharm tieredCharm = null;
-		
-		if (trait == null)
-			tieredCharm = new TieredMultiLearnableCharm(id, tierArray);
-		else
-			tieredCharm = new TieredMultiLearnableCharm(id, trait, tierArray);
-		
-		return tieredCharm;
+        return createTieredCharm(id, trait, tierArray);
 	}
-	
-	private ISpecialCharm readEssenceFixedRepurchasesCharm(Element charmElement, String id)
+
+    private ISpecialCharm createTieredCharm(String id, ITraitType trait, CharmTier[] tierArray) {
+        if (trait == null)
+            return new TieredMultiLearnableCharm(id, tierArray);
+        else
+            return new TieredMultiLearnableCharm(id, trait, tierArray);
+    }
+
+    private ISpecialCharm readEssenceFixedRepurchasesCharm(Element charmElement, String id)
 	{
 		Element repurchasesElement = charmElement.element(TAG_ESSENCE_FIXED_REPURCHASES);
 		if (repurchasesElement == null)
@@ -351,8 +349,7 @@ public class SpecialCharmBuilder
 	
 	private ITraitType getTrait(String value)
 	{
-		ITraitType trait = null;
-		trait = trait == null ? getAbilityType(value) : trait;
+		ITraitType trait= getAbilityType(value);
 		trait = trait == null ? getAttributeType(value) : trait;
 		trait = trait == null ? getVirtueType(value) : trait;
 		trait = trait == null ? getOtherType(value) : trait;

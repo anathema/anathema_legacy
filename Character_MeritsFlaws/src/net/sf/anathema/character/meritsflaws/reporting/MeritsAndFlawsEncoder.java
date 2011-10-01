@@ -30,7 +30,7 @@ public class MeritsAndFlawsEncoder extends AbstractLineTextEncoder {
 
   @Override
   protected void addToPhrase(IGenericCharacter character, Font font, Phrase phrase) {
-    IMeritsFlawsModel model = (IMeritsFlawsModel)(((MeritsFlawsAdditionalModel) (character.getAdditionalModel(MeritsFlawsTemplate.ID))).getMeritsFlawsModel());
+    IMeritsFlawsModel model = ((MeritsFlawsAdditionalModel) (character.getAdditionalModel(MeritsFlawsTemplate.ID))).getMeritsFlawsModel();
     IQualitySelection<IPerk>[] perks = model.getSelectedQualities();
 	for (int index = 0; index < perks.length; index++)
 	{
@@ -51,7 +51,7 @@ public class MeritsAndFlawsEncoder extends AbstractLineTextEncoder {
   
   public boolean hasContent(IGenericCharacter character)
   {
-	  IMeritsFlawsModel model = (IMeritsFlawsModel)(((MeritsFlawsAdditionalModel) (character.getAdditionalModel(MeritsFlawsTemplate.ID))).getMeritsFlawsModel());
+	  IMeritsFlawsModel model = ((MeritsFlawsAdditionalModel) (character.getAdditionalModel(MeritsFlawsTemplate.ID))).getMeritsFlawsModel();
 	  return model.getSelectedQualities().length > 0;
   }
 }

@@ -26,7 +26,7 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
   @Override
   public Float[] getColumnWeights() {
     Float[] columnWidth = super.getColumnWeights();
-    columnWidth[getColumnCount() - 1] = new Float(0.7f);
+    columnWidth[getColumnCount() - 1] = 0.7f;
     return columnWidth;
   }
 
@@ -41,7 +41,7 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
       table.addCell(createFinalValueCell(font));
     }
     else if (weapon.inflictsNoDamage()) {
-      table.addCell(createEquipmentValueCell(font, (Integer) null));
+      table.addCell(createEquipmentValueCell(font, null));
       table.addCell(createFinalValueCell(font, (Integer) null));
       table.addCell(createFinalValueCell(font, (Integer) null));
     }
