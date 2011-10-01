@@ -44,8 +44,13 @@ public class MutationProvider {
 	  Mutations.add(new Mutation("Tail", MutationType.Pox));
 	  Mutations.add(new Mutation("ThirdEye", MutationType.Pox));
 	  Mutations.add(new Mutation("WolfsPace", MutationType.Pox));
+	  Mutations.add(new Mutation("ElementalAdaptationAir", MutationType.Pox));
+	  Mutations.add(new Mutation("ElementalAdaptationFire", MutationType.Pox));
+	  Mutations.add(new Mutation("ElementalAdaptationWood", MutationType.Pox));
+	  Mutations.add(new Mutation("ElementalAdaptationWater", MutationType.Pox));
 	  Mutations.add(new Mutation("ChakraEye", MutationType.Affliction));
 	  Mutations.add(new Mutation("Chameleon", MutationType.Affliction));
+	  Mutations.add(new Mutation("ExaltedHealing", MutationType.Affliction));
 	  Mutations.add(new Mutation("FrogTongue", MutationType.Affliction));
 	  Mutations.add(new Mutation("GazellesPace", MutationType.Affliction));
 	  Mutations.add(new Mutation("Gills", MutationType.Affliction));
@@ -71,14 +76,31 @@ public class MutationProvider {
 	  Mutations.add(new Mutation("SerpentineHair", MutationType.Blight));
 	  Mutations.add(new Mutation("Tentacles", MutationType.Blight));
 	  Mutations.add(new Mutation("WallWalking", MutationType.Blight));
+	  Mutations.add(new Mutation("DragonsBreath", MutationType.Abomination));
 	  Mutations.add(new Mutation("Hive", MutationType.Abomination));
 	  Mutations.add(new Mutation("ExtraArmLegHead", MutationType.Abomination));
 	  Mutations.add(new Mutation("SerpentsBody", MutationType.Abomination));
 	  Mutations.add(new Mutation("SpiderLegs", MutationType.Abomination));
+	  Mutations.add(new Mutation("StoneBody", MutationType.Abomination));
 	  Mutations.add(new Mutation("TerrifyingMane", MutationType.Abomination));
 	  Mutations.add(new Mutation("Wings", MutationType.Abomination));
-	  
+
 	  Mutations.add(new Mutation("Atrophy", MutationType.Deficiency));
+	  Mutations.add(new Mutation("Allergy", MutationType.Deficiency));
+	  Mutations.add(new Mutation("Hungry", MutationType.Deficiency));
+	  Mutations.add(new Mutation("LostSenseHearing", MutationType.Deficiency));
+	  Mutations.add(new Mutation("LostSenseTouch", MutationType.Deficiency));
+	  Mutations.add(new Mutation("LostSenseSmellTaste", MutationType.Deficiency));
+	  Mutations.add(new Mutation("Rotundity", MutationType.Deficiency));
+	  Mutations.add(new Mutation("TemperatureSensitivity", MutationType.Deficiency));
+	  Mutations.add(new Mutation("Blindness", MutationType.Debility));
+	  Mutations.add(new Mutation("Deterioration", MutationType.Debility));
+	  Mutations.add(new Mutation("Fragile", MutationType.Debility));
+	  Mutations.add(new Mutation("Lame", MutationType.Debility));
+	  Mutations.add(new Mutation("SlowHealing", MutationType.Debility));
+	  Mutations.add(new Mutation("ShortLife", MutationType.Deformity));
+	  Mutations.add(new Mutation("SurrenderingFlesh", MutationType.Deformity));
+	  Mutations.add(new Mutation("Wracking", MutationType.Deformity));
 	  
 	  return Mutations;
   }

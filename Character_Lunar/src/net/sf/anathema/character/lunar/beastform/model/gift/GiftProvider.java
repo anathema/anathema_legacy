@@ -38,6 +38,10 @@ public class GiftProvider {
 	  gifts.add(new Gift("Tail", 1));
 	  gifts.add(new Gift("ThirdEye", 1));
 	  gifts.add(new Gift("WolfsPace", 1));
+	  gifts.add(new Gift("ElementalAdaptationAir", 1));
+	  gifts.add(new Gift("ElementalAdaptationFire", 1));
+	  gifts.add(new Gift("ElementalAdaptationWater", 1));
+	  gifts.add(new Gift("ElementalAdaptationWood", 1));
 	  gifts.add(new Gift("ChakraEye", 2));
 	  gifts.add(new Gift("Chameleon", 2));
 	  gifts.add(new Gift("FrogTongue", 2));
@@ -64,10 +68,12 @@ public class GiftProvider {
 	  gifts.add(new Gift("SerpentineHair", 4));
 	  gifts.add(new Gift("Tentacles", 4));
 	  gifts.add(new Gift("WallWalking", 4));
+	  gifts.add(new Gift("DragonsBreath", 6));
 	  gifts.add(new Gift("Hive", 6));
 	  gifts.add(new Gift("ExtraArmLegHead", 6));
 	  gifts.add(new Gift("SerpentsBody", 6));
 	  gifts.add(new Gift("SpiderLegs", 6));
+	  gifts.add(new Gift("StoneBody", 6));
 	  gifts.add(new Gift("TerrifyingMane", 6));
 	  gifts.add(new Gift("Wings", 6));
 	  
