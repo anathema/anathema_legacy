@@ -22,12 +22,12 @@ public class TableEncodingUtilities {
   public static Float[] createStandardColumnWidths(int columnCount, final float value) {
     Float[] columnWeights = new Float[columnCount];
     for (int index = 0; index < columnWeights.length; index++) {
-      columnWeights[index] = new Float(value);
+      columnWeights[index] = value;
     }
     return columnWeights;
   }
 
-  public static final PdfPCell createContentCellTable(
+  public static PdfPCell createContentCellTable(
       Color borderColor,
       String text,
       Font font,
@@ -37,7 +37,7 @@ public class TableEncodingUtilities {
     return createContentCellTable(borderColor, text, font, borderWidth, border, alignment, true);
   }
 
-  public static final PdfPCell createContentCellTable(
+  public static PdfPCell createContentCellTable(
       Color borderColor,
       String text,
       Font font,
