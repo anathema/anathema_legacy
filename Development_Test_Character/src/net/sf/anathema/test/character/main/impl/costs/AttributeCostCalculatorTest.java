@@ -76,11 +76,11 @@ public class AttributeCostCalculatorTest extends BasicCharacterTestCase {
   private void assertAllPointsToSpendUsed(int[] dotsToSpend) {
     List<Integer> dotsToSpendList = new ArrayList<Integer>();
     for (int dot : dotsToSpend) {
-      dotsToSpendList.add(new Integer(dot));
+      dotsToSpendList.add(dot);
     }
     for (AttributeGroupType attributeGroupType : AttributeGroupType.values()) {
       TraitGroupCost attributePoints = calculator.getAttributePoints(attributeGroupType);
-      Integer groupDotsToSpend = new Integer(attributePoints.getPointsToSpend());
+      Integer groupDotsToSpend = attributePoints.getPointsToSpend();
       assertTrue("Not contains dotCount " + groupDotsToSpend, dotsToSpendList.contains(groupDotsToSpend)); //$NON-NLS-1$
       dotsToSpendList.remove(groupDotsToSpend);
     }
@@ -88,23 +88,21 @@ public class AttributeCostCalculatorTest extends BasicCharacterTestCase {
   }
 
   private IAttributeCreationPoints creationPoint;
-  private DefaultBonusPointCosts cost;
-  private AttributeCostCalculator calculator;
+    private AttributeCostCalculator calculator;
   private DummyCoreTraitConfiguration traitConfiguration;
-  private DummyAdditionalBonusPointManagment additionalBonusPointManagement;
 
-  @Override
+    @Override
   protected void setUp() throws Exception {
     super.setUp();
     this.creationPoint = new AttributeCreationPoints(6, 4, 2);
     this.traitConfiguration = new DummyCoreTraitConfiguration();
-    this.additionalBonusPointManagement = new DummyAdditionalBonusPointManagment();
+        DummyAdditionalBonusPointManagment additionalBonusPointManagement = new DummyAdditionalBonusPointManagment();
     addAttributesAndEssence(traitConfiguration);
-    this.cost = new DefaultBonusPointCosts();
+      DefaultBonusPointCosts cost = new DefaultBonusPointCosts();
     this.calculator = new AttributeCostCalculator(traitConfiguration,
     		creationPoint,
-    		cost,
-    		additionalBonusPointManagement);
+            cost,
+            additionalBonusPointManagement);
   }
 
   private void addAttributesAndEssence(DummyCoreTraitConfiguration coreTraits) {

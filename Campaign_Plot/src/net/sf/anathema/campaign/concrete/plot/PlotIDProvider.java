@@ -25,7 +25,7 @@ public class PlotIDProvider {
   }
 
   private void registerTimeUnit(IPlotTimeUnit timeUnit, int initialCount) {
-    timeUnitCount.put(timeUnit, new Integer(initialCount));
+    timeUnitCount.put(timeUnit, initialCount);
   }
 
   public void setIDNumberUsed(IPlotTimeUnit timeUnit, int idNumber) {
@@ -35,7 +35,7 @@ public class PlotIDProvider {
 
   public Integer getIDNumber(IPlotTimeUnit timeUnit) {
     Integer integer = timeUnitCount.get(timeUnit);
-    timeUnitCount.put(timeUnit, new Integer(integer.intValue() + 1));
+    timeUnitCount.put(timeUnit, integer + 1);
     return integer;
   }
 }

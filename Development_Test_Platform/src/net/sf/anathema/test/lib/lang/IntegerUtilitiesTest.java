@@ -24,8 +24,8 @@ public class IntegerUtilitiesTest {
 
   @Test
   public void testIsNullOrZero() throws Exception {
-    Assert.assertTrue(IntegerUtilities.isNullOrZero(new Integer(0)));
+    Assert.assertTrue(IntegerUtilities.isNullOrZero(0));
     Assert.assertTrue(IntegerUtilities.isNullOrZero(null));
-    Assert.assertFalse(IntegerUtilities.isNullOrZero(new Integer(2)));
+    Assert.assertFalse(IntegerUtilities.isNullOrZero(2));
   }
 }
