@@ -47,14 +47,13 @@ public class AttributeConfigurationPersister {
     		Element attributeElement = persister.saveTrait(groupElement, attribute.getType().getId(), attribute);
     		if (attribute instanceof DefaultTrait)
     		{
-    			final Element element = attributeElement;
-    			DefaultTrait attributeTrait = (DefaultTrait) attribute;
+                DefaultTrait attributeTrait = (DefaultTrait) attribute;
     			if (attributeTrait.getFavorization().isFavored()) {
       		      ElementUtilities.addAttribute(attributeElement, ATTRIB_FAVORED,
       		    		  attributeTrait.getFavorization().isFavored());
       		    }
 		        DefaultTraitReference reference = new DefaultTraitReference(attributeTrait);
-		        saveSpecialties(config, element, reference);
+		        saveSpecialties(config, attributeElement, reference);
     		}
     	}
     }
@@ -80,16 +79,14 @@ public class AttributeConfigurationPersister {
   private void loadAttributeGroup(Element element, ICoreTraitConfiguration configuration) throws PersistenceException {
     List<Element> attributeElements = ElementUtilities.elements(element);
     final ISpecialtiesConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
-    for (int index = 0; index < attributeElements.size(); index++) {
-      Element attributeElement = attributeElements.get(index);
-      AttributeType attributeType = AttributeType.valueOf(attributeElement.getName());
-      persister.restoreTrait(attributeElement, configuration.getTrait(attributeType));
-      final Element aelement = attributeElement;
-	  IFavorableTrait attribute = configuration.getFavorableTrait(attributeType);
-      if(ElementUtilities.getBooleanAttribute(attributeElement, ATTRIB_FAVORED, false))
-    	  attribute.getFavorization().setFavored(true);
-      loadSpecialties(aelement, specialtyConfiguration, new DefaultTraitReference(attribute));
-    }
+      for (Element attributeElement : attributeElements) {
+          AttributeType attributeType = AttributeType.valueOf(attributeElement.getName());
+          persister.restoreTrait(attributeElement, configuration.getTrait(attributeType));
+          IFavorableTrait attribute = configuration.getFavorableTrait(attributeType);
+          if (ElementUtilities.getBooleanAttribute(attributeElement, ATTRIB_FAVORED, false))
+              attribute.getFavorization().setFavored(true);
+          loadSpecialties(attributeElement, specialtyConfiguration, new DefaultTraitReference(attribute));
+      }
   }
   
   private void loadSpecialties(

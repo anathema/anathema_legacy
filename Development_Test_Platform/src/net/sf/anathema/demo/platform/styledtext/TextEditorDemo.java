@@ -52,9 +52,9 @@ public class TextEditorDemo extends SwingDemoCase {
       @Override
       protected void execute(Component parentComponent) {
         ITextPart[] parts = textConverter.getTextParts();
-        for (int index = 0; index < parts.length; index++) {
-          System.out.println(parts[index]);
-        }
+          for (ITextPart part : parts) {
+              System.out.println(part);
+          }
       }
     };
   }

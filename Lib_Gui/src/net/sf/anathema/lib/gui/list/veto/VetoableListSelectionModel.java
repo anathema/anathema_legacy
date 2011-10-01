@@ -85,12 +85,11 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
 
 	private synchronized boolean vetos() {
 		List<IVetor> cloneList = new ArrayList<IVetor>(vetors);
-		for (int index = 0; index < cloneList.size(); index++) {
-			IVetor vetor = cloneList.get(index);
-			if (vetor.vetos()) {
-				return true;
-			}
-		}
+        for (IVetor vetor : cloneList) {
+            if (vetor.vetos()) {
+                return true;
+            }
+        }
 		return false;
 	}
 }
