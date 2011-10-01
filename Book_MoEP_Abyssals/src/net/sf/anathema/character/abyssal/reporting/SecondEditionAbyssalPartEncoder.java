@@ -12,7 +12,7 @@ public class SecondEditionAbyssalPartEncoder extends AbstractSecondEditionExaltP
   }
 
   public IPdfContentBoxEncoder getGreatCurseEncoder() {
-    return new Abyssal2ndResonanceEncoder(getBaseFont(), getSymbolBaseFont(), getResources());
+    return new Abyssal2ndResonanceEncoder(getBaseFont(), getResources());
   }
 
   @Override
