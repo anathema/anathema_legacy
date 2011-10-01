@@ -25,7 +25,7 @@ public class StringFieldSearchParameter implements IExtendedSearchParameter {
           value = ""; //$NON-NLS-1$
         }
         value = value.toLowerCase();
-        candidate.include(value != null && value.indexOf(parameterization.toLowerCase().trim()) > -1);
+        candidate.include(value != null && value.contains(parameterization.toLowerCase().trim()));
       }
     });
   }
