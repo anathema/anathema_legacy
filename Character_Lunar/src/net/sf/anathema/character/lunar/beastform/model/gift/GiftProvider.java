@@ -76,7 +76,6 @@ public class GiftProvider {
 	  gifts.add("StoneBody", 6);
 	  gifts.add("TerrifyingMane", 6);
 	  gifts.add("Wings", 6);
-	  
 	  return gifts.asArray();
   }
   
