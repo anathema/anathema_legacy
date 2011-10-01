@@ -75,7 +75,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
     new CopyrightEncoder(baseFont, pageConfiguration, CONTENT_HEIGHT).encodeCopyright(directContent);
   }
 
-    private float calculateBoxIncrement(float height) {
+  private float calculateBoxIncrement(float height) {
     return height + IVoidStateFormatConstants.PADDING;
   }
   

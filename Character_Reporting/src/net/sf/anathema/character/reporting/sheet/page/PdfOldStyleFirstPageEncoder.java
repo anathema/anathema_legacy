@@ -87,7 +87,7 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
     new CopyrightEncoder(baseFont, pageConfiguration, CONTENT_HEIGHT).encodeCopyright(directContent);
   }
 
-    private float encodeEssence(
+  private float encodeEssence(
       PdfContentByte directContent,
       IGenericCharacter character,
       IGenericDescription description,

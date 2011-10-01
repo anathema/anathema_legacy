@@ -2,13 +2,12 @@ package net.sf.anathema.character.reporting.sheet.util;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
-
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
 public abstract class AbstractPdfEncoder {
 
@@ -69,11 +68,11 @@ public abstract class AbstractPdfEncoder {
   }
 
   protected final void drawLabelledContent(
-      PdfContentByte directContent,
-      String label,
-      String content,
-      Position position,
-      float width) {
+    PdfContentByte directContent,
+    String label,
+    String content,
+    Position position,
+    float width) {
     initDirectContentForText(directContent);
     directContent.beginText();
     directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, label, position.x, position.y, 0);
@@ -83,8 +82,7 @@ public abstract class AbstractPdfEncoder {
       directContent.endText();
       float lineWidth = position.x + width - contentX;
       drawMissingTextLine(directContent, new Position(contentX, position.y), lineWidth);
-    }
-    else {
+    } else {
       directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, content, contentX, position.y, 0);
       directContent.endText();
     }
@@ -96,7 +94,7 @@ public abstract class AbstractPdfEncoder {
     directContent.setLineWidth(0);
   }
 
-    protected void encodeTextWithReducedLineHeight(PdfContentByte directContent, Bounds textBounds, Phrase phrase) throws DocumentException {
-        PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
-    }
+  protected void encodeTextWithReducedLineHeight(PdfContentByte directContent, Bounds textBounds, Phrase phrase) throws DocumentException {
+    PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
+  }
 }

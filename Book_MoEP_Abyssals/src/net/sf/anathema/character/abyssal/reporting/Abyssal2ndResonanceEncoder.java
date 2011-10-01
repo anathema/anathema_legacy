@@ -19,6 +19,7 @@ import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
+
   private final BaseFont baseFont;
   private final VirtueFlawBoxEncoder traitEncoder;
   private final IResources resources;
@@ -47,20 +48,18 @@ public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IP
     phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.FlawedVirtue") + ": ", nameFont)); //$NON-NLS-1$ //$NON-NLS-2$
     if (resonance.isFlawComplete()) {
       phrase.add(resonance.getRoot().getId() + ".\n");
-    }
-    else {
+    } else {
       Font undefinedFont = new Font(font);
       undefinedFont.setStyle(Font.UNDERLINE);
       phrase.add(new Chunk("                                          ", undefinedFont)); //$NON-NLS-1$
       phrase.add(".\n");
     }
     phrase.add(resources.getString("Sheet.GreatCurse.ResonanceReference")); //$NON-NLS-1$
-      encodeTextWithReducedLineHeight(directContent, textBounds, phrase);
+    encodeTextWithReducedLineHeight(directContent, textBounds, phrase);
   }
 
-    public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 
   private Font createNameFont(BaseFont baseFont) {

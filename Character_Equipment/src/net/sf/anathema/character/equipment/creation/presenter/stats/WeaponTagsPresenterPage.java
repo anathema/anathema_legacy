@@ -64,7 +64,7 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
   }
 
   public boolean canFinish() {
-      return !isIllegalRangedWeapon();
+    return !isIllegalRangedWeapon();
   }
 
   private boolean isIllegalRangedWeapon() {
