@@ -6,7 +6,6 @@ import java.awt.Font;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
@@ -23,7 +22,7 @@ public class OverviewCategory implements IOverviewCategory, IView {
   public OverviewCategory(JComponent parent, String borderTitle, boolean useSmallFont) {
     TitledBorder titledBorder = new TitledBorder(borderTitle);
     if (useSmallFont) {
-      Font newFont = deriveSmallerFont(UIManager.getFont("TitledBorder.font"));
+      Font newFont = deriveSmallerFont(new BorderFontProvider().getFont());
       titledBorder.setTitleFont(newFont);
     }
     panel.setBorder(titledBorder);
