@@ -35,7 +35,7 @@ public class IntegerTableColumnSettings extends AbstractTableColumnSettings {
         int column) {
       Component renderComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
       if (value instanceof Integer) {
-        if (((Integer) value).intValue() < 0) {
+        if (((Integer) value) < 0) {
           renderComponent.setForeground(negativeColor);
         }
         else {

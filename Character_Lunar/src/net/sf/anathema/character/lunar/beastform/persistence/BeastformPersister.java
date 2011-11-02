@@ -38,7 +38,7 @@ public class BeastformPersister implements IAdditionalPersister {
 	if (beastformModel instanceof FirstEditionBeastformModel)
 		giftPersister.save(beastformElement, beastformModel.getGiftModel());
 	else
-		mutationPersister.save(beastformElement, ((SecondEditionBeastformModel)beastformModel).getMutationModel());
+		mutationPersister.save(beastformElement, beastformModel.getMutationModel());
   }
 
   private void saveAttributes(Element beastformElement, IBeastformModel beastformModel) {
@@ -68,7 +68,7 @@ public class BeastformPersister implements IAdditionalPersister {
 	  if (beastformModel instanceof FirstEditionBeastformModel)
 		  giftPersister.load(beastformElement, beastformModel.getGiftModel());
 	  else
-		  mutationPersister.load(beastformElement, ((SecondEditionBeastformModel)beastformModel).getMutationModel());
+		  mutationPersister.load(beastformElement, beastformModel.getMutationModel());
   }
 
   private void loadAttributes(Element beastformElement, IBeastformModel beastformModel) throws PersistenceException {

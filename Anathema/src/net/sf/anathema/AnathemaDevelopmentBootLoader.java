@@ -1,23 +1,21 @@
 package net.sf.anathema;
 
-import java.security.AccessController;
-import java.util.Collection;
-import java.util.Properties;
-
 import net.sf.anathema.initialization.InitializationException;
-
 import org.java.plugin.ObjectFactory;
 import org.java.plugin.PluginManager;
 import org.java.plugin.PluginManager.PluginLocation;
 import org.java.plugin.boot.DefaultPluginsCollector;
 import org.java.plugin.util.ExtendedProperties;
-
 import sun.security.action.GetPropertyAction;
+
+import java.security.AccessController;
+import java.util.Collection;
+import java.util.Properties;
 
 public class AnathemaDevelopmentBootLoader {
 
   public static void main(String[] arguments) throws Exception {
-    if (isSplashScreenSupported()) { 
+    if (isSplashScreenSupported()) {
       new AnathemaPrebootSplashscreen().displayStatusMessage("Collecting Plugins..."); //$NON-NLS-1$
     }
     ObjectFactory factory = ObjectFactory.newInstance();
@@ -25,11 +23,11 @@ public class AnathemaDevelopmentBootLoader {
     collectPlugins(manager);
     new Anathema(manager).startApplication();
   }
-	
+
   public static boolean isSplashScreenSupported() {
-	String osName = AccessController.doPrivileged(new GetPropertyAction("os.name"));
+    String osName = AccessController.doPrivileged(new GetPropertyAction("os.name"));
     return !osName.contains("Mac OS X"); //$NON-NLS-1$ 
-  }	
+  }
 
   private static void collectPlugins(PluginManager manager) throws InitializationException {
     try {
@@ -41,8 +39,7 @@ public class AnathemaDevelopmentBootLoader {
       Collection<PluginLocation> collection = collector.collectPluginLocations();
       PluginLocation[] locations = collection.toArray(new PluginLocation[collection.size()]);
       manager.publishPlugins(locations);
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       throw new InitializationException("An error occured while Anathema was collecting plugins.", e); //$NON-NLS-1$
     }
   }

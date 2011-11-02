@@ -27,7 +27,7 @@ public class DeepCloneChecker {
   };
 
   public void assertDeepClonedIgnoringTransientField(Object first, Object second) throws Exception {
-    Class< ? extends Object> classObject = first.getClass();
+    Class< ?> classObject = first.getClass();
     Assert.assertSame(classObject, second.getClass());
     Assert.assertNotSame(first, second);
     while (classObject != null) {
@@ -38,10 +38,9 @@ public class DeepCloneChecker {
 
   private void checkField(Field[] fields, Object first, Object second) throws Exception {
     AccessibleObject.setAccessible(fields, true);
-    for (int fieldIndex = 0; fieldIndex < fields.length; fieldIndex++) {
-      Field currentField = fields[fieldIndex];
-      checkField(currentField, currentField.get(first), currentField.get(second));
-    }
+      for (Field currentField : fields) {
+          checkField(currentField, currentField.get(first), currentField.get(second));
+      }
   }
 
   private void checkField(Field currentField, Object first, Object second) throws Exception {
@@ -53,7 +52,7 @@ public class DeepCloneChecker {
       Assert.assertNull("Must be null " + currentField, second); //$NON-NLS-1$
       return;
     }
-    Class< ? extends Object> firstClazz = first.getClass();
+    Class< ?> firstClazz = first.getClass();
     Assert.assertNotNull("Must not be null " + currentField, second); //$NON-NLS-1$
     Assert.assertSame(firstClazz, second.getClass());
     if (currentField.isEnumConstant() || checkEqualsClasses.contains(firstClazz)) {

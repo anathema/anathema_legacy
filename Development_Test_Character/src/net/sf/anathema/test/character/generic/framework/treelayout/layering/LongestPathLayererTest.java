@@ -59,7 +59,7 @@ public class LongestPathLayererTest extends BasicTestCase {
     for (IRegularNode node : acyclicGraph) {
       ISimpleNode[] children = node.getChildren();
       for (ISimpleNode child : children) {
-        ((IRegularNode) child).addParent(node);
+        child.addParent(node);
       }
     }
   }

@@ -1,5 +1,9 @@
 package net.sf.anathema.character.library.overview;
 
+import static net.sf.anathema.lib.workflow.labelledvalue.view.AbstractLabelledValueView.deriveSmallerFont;
+
+import java.awt.Font;
+
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
@@ -8,7 +12,6 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
-import net.sf.anathema.lib.workflow.labelledvalue.view.AbstractLabelledValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 
@@ -19,7 +22,8 @@ public class OverviewCategory implements IOverviewCategory, IView {
   public OverviewCategory(JComponent parent, String borderTitle, boolean useSmallFont) {
     TitledBorder titledBorder = new TitledBorder(borderTitle);
     if (useSmallFont) {
-      titledBorder.setTitleFont(AbstractLabelledValueView.deriveSmallerFont(titledBorder.getTitleFont()));
+      Font newFont = deriveSmallerFont(new BorderFontProvider().getFont());
+      titledBorder.setTitleFont(newFont);
     }
     panel.setBorder(titledBorder);
     parent.add(panel);

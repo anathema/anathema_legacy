@@ -81,7 +81,7 @@ public class SecondEditionLunarAdditionalPageEncoder implements IPdfPageEncoder 
   {
 	  for (IMagic magic : character.getAllLearnedMagic())
 		  if (magic instanceof ICharm &&
-			  ((ICharm)magic).getId().equals("Lunar.DeadlyBeastmanTransformation"))
+			  magic.getId().equals("Lunar.DeadlyBeastmanTransformation"))
 			  return true;
 	  return false;
   }

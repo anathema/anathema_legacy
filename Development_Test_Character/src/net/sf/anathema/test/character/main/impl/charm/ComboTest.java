@@ -34,15 +34,15 @@ public class ComboTest extends BasicTestCase {
     }
   }
 
-  protected final static ICharm createCharm(CharmType charmType, IComboRestrictions restrictions) {
+  protected static ICharm createCharm(CharmType charmType, IComboRestrictions restrictions) {
     return DummyCharmUtilities.createCharm(charmType, restrictions);
   }
 
-  protected final static ICharm createCharm(String duration, IComboRestrictions restrictions) {
+  protected static ICharm createCharm(String duration, IComboRestrictions restrictions) {
     return DummyCharmUtilities.createCharm(duration, restrictions);
   }
 
-  protected final static ICharm createCharm(IComboRestrictions restrictions) {
+  protected static ICharm createCharm(IComboRestrictions restrictions) {
     return createCharm(CharmType.Reflexive, restrictions);
   }
 

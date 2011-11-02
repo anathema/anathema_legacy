@@ -15,7 +15,7 @@ public class SimpleSyllableNameGenerator implements INameGenerator {
   public String[] createNames(int count) {
     String[] names = new String[count];
     for (int nameIndex = 0; nameIndex < names.length; nameIndex++) {
-      StringBuffer name = new StringBuffer();
+        StringBuilder name = new StringBuilder();
       int wordCount = wordCalculator.calculateNamePartCount();
       for (int wordIndex = 0; wordIndex < wordCount; wordIndex++) {
         if (wordIndex != 0) {

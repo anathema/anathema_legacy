@@ -10,8 +10,8 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.dummy.character.trait.DummyFavorableGenericTrait;
+import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-
 import org.dom4j.Element;
 import org.junit.Test;
 
@@ -19,13 +19,12 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
 
   private static final String ORIGINAL_TEMPLATE_ID = "original"; //$NON-NLS-1$
   private BonusPointCostTemplateParser parser;
-  private DummyXmlTemplateRegistry<GenericBonusPointCosts> registry;
   private GenericBonusPointCosts originalTemplate;
 
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    this.registry = new DummyXmlTemplateRegistry<GenericBonusPointCosts>();
+    DummyXmlTemplateRegistry<GenericBonusPointCosts> registry = new DummyXmlTemplateRegistry<GenericBonusPointCosts>();
     this.parser = new BonusPointCostTemplateParser(registry, MartialArtsLevel.Celestial);
     originalTemplate = new GenericBonusPointCosts();
     registry.register(ORIGINAL_TEMPLATE_ID, originalTemplate);
@@ -41,8 +40,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
 
   public void testNoFavoredAttributeCost() throws Exception {
     String xml = "<root><attributes><generalAttribute><fixedCost cost=\"4\" /></generalAttribute></attributes></root>"; //$NON-NLS-1$
-    Element element = DocumentUtilities.read(xml).getRootElement();
-    GenericBonusPointCosts costs = parser.parseTemplate(element);
+    GenericBonusPointCosts costs = parseXmlToCost(xml);
     assertEquals(4, costs.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, false)));
     assertEquals(4, costs.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, true)));
   }
@@ -57,8 +55,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
 
   public void testFavoredAttributeCostSpecified() throws Exception {
     String xml = "<root><attributes><generalAttribute><fixedCost cost=\"4\" /></generalAttribute><favoredAttribute><fixedCost cost=\"3\" /></favoredAttribute></attributes></root>"; //$NON-NLS-1$
-    Element element = DocumentUtilities.read(xml).getRootElement();
-    GenericBonusPointCosts costs = parser.parseTemplate(element);
+    GenericBonusPointCosts costs = parseXmlToCost(xml);
     assertEquals(4, costs.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, false)));
     assertEquals(3, costs.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, true)));
   }
@@ -69,16 +66,14 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
 
   public void testMaximumFreeVirtueDotsUnchanged() throws Exception {
     String xml = "<root><advantages><virtues><fixedCost cost=\"3\"/></virtues></advantages></root>"; //$NON-NLS-1$
-    Element element = DocumentUtilities.read(xml).getRootElement();
-    GenericBonusPointCosts costs = parser.parseTemplate(element);
+    GenericBonusPointCosts costs = parseXmlToCost(xml);
     assertEquals(3, costs.getVirtueCosts().getRatingCosts(1));
     assertEquals(3, costs.getMaximumFreeVirtueRank());
   }
 
   public void testMaximumFreeVirtueDotsChanged() throws Exception {
-    String xml = "<root><advantages><virtues><fixedCost cost=\"3\"/><maximumFreeRank rank=\"4\"/></virtues></advantages></root>"; //$NON-NLS-1$
-    Element element = DocumentUtilities.read(xml).getRootElement();
-    GenericBonusPointCosts costs = parser.parseTemplate(element);
+    String xml = "<root><advantages><virtues><fixedCost cost=\"3\"/><maximumFreeVirtueRank rank=\"4\"/></virtues></advantages></root>"; //$NON-NLS-1$
+    GenericBonusPointCosts costs = parseXmlToCost(xml);
     assertEquals(3, costs.getVirtueCosts().getRatingCosts(1));
     assertEquals(4, costs.getMaximumFreeVirtueRank());
   }
@@ -86,61 +81,12 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
   @Test
   public void testBasicCharmCostIsSetAndMartialArtsCostEquals() throws Exception {
     String xml = "<root><charms><generalCharms><fixedCost cost=\"7\" /></generalCharms><favoredCharms><fixedCost cost=\"5\" /></favoredCharms></charms></root>"; //$NON-NLS-1$
-    Element element = DocumentUtilities.read(xml).getRootElement();
-    GenericBonusPointCosts costs = parser.parseTemplate(element);
+    GenericBonusPointCosts costs = parseXmlToCost(xml);
     DummyCharm testCharm = new DummyCharm("test"); //$NON-NLS-1$
-    assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
-        return null;
-      }
-
-      public boolean isMagicFavored(IMagic magic) {
-        return false;
-      }
-
-      public boolean isOccultFavored() {
-        return false;
-      }
-    }));
-    assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
-        return null;
-      }
-
-      public boolean isMagicFavored(IMagic magic) {
-        return true;
-      }
-
-      public boolean isOccultFavored() {
-        return false;
-      }
-    }));
-    assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
-        return MartialArtsLevel.Celestial;
-      }
-
-      public boolean isMagicFavored(IMagic magic) {
-        return false;
-      }
-
-      public boolean isOccultFavored() {
-        return false;
-      }
-    }));
-    assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
-        return MartialArtsLevel.Celestial;
-      }
-
-      public boolean isMagicFavored(IMagic magic) {
-        return true;
-      }
-
-      public boolean isOccultFavored() {
-        return false;
-      }
-    }));
+    assertCosts7WhenItsNotFavored(costs, testCharm);
+    assertCosts5WhenItIsFavored(costs, testCharm);
+    assertCosts7WhenItsUnfavoredMartialArts(costs, testCharm);
+    assertCosts5WhenItsFavoredMartialArts(costs, testCharm);
     assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return MartialArtsLevel.Sidereal;
@@ -161,6 +107,59 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
 
       public boolean isMagicFavored(IMagic magic) {
         return true;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+  }
+
+  private GenericBonusPointCosts parseXmlToCost(String xml) throws AnathemaException {
+    Element element = DocumentUtilities.read(xml).getRootElement();
+    return parser.parseTemplate(element);
+  }
+
+  private void assertCosts5WhenItsFavoredMartialArts(GenericBonusPointCosts costs, DummyCharm testCharm) {
+    assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return MartialArtsLevel.Celestial;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return true;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+  }
+
+  private void assertCosts5WhenItIsFavored(GenericBonusPointCosts costs, DummyCharm testCharm) {
+    assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return null;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return true;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+  }
+
+  private void assertCosts7WhenItsNotFavored(GenericBonusPointCosts costs, DummyCharm testCharm) {
+    assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return null;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return false;
       }
 
       public boolean isOccultFavored() {
@@ -172,63 +171,14 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
   @Test
   public void testBasicCharmCostIsSetAndMartialArtsCostOverrides() throws Exception {
     String xml = "<root><charms><generalCharms><fixedCost cost=\"7\" /></generalCharms><favoredCharms><fixedCost cost=\"5\" /></favoredCharms><generalHighLevelMartialArtsCharms><fixedCost cost=\"10\"/></generalHighLevelMartialArtsCharms>" //$NON-NLS-1$
-        + "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"7\"/></favoredHighLevelMartialArtsCharms></charms></root>"; //$NON-NLS-1$
-    Element element = DocumentUtilities.read(xml).getRootElement();
-    GenericBonusPointCosts costs = parser.parseTemplate(element);
-    DummyCharm dummyCharm = new DummyCharm("test"); //$NON-NLS-1$
-    assertEquals(7, costs.getMagicCosts(dummyCharm, new ICostAnalyzer() {
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
-        return null;
-      }
-
-      public boolean isMagicFavored(IMagic magic) {
-        return false;
-      }
-
-      public boolean isOccultFavored() {
-        return false;
-      }
-    }));
-    assertEquals(5, costs.getMagicCosts(dummyCharm, new ICostAnalyzer() {
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
-        return null;
-      }
-
-      public boolean isMagicFavored(IMagic magic) {
-        return true;
-      }
-
-      public boolean isOccultFavored() {
-        return false;
-      }
-    }));
-    assertEquals(7, costs.getMagicCosts(dummyCharm, new ICostAnalyzer() {
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
-        return MartialArtsLevel.Celestial;
-      }
-
-      public boolean isMagicFavored(IMagic magic) {
-        return false;
-      }
-
-      public boolean isOccultFavored() {
-        return false;
-      }
-    }));
-    assertEquals(5, costs.getMagicCosts(dummyCharm, new ICostAnalyzer() {
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
-        return MartialArtsLevel.Celestial;
-      }
-
-      public boolean isMagicFavored(IMagic magic) {
-        return true;
-      }
-
-      public boolean isOccultFavored() {
-        return false;
-      }
-    }));
-    assertEquals(10, costs.getMagicCosts(dummyCharm, new ICostAnalyzer() {
+      + "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"7\"/></favoredHighLevelMartialArtsCharms></charms></root>"; //$NON-NLS-1$
+    GenericBonusPointCosts costs = parseXmlToCost(xml);
+    DummyCharm testCharm = new DummyCharm("test"); //$NON-NLS-1$
+    assertCosts7WhenItsNotFavored(costs, testCharm);
+    assertCosts5WhenItIsFavored(costs, testCharm);
+    assertCosts7WhenItsUnfavoredMartialArts(costs, testCharm);
+    assertCosts5WhenItsFavoredMartialArts(costs, testCharm);
+    assertEquals(10, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return MartialArtsLevel.Sidereal;
       }
@@ -241,13 +191,29 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
         return false;
       }
     }));
-    assertEquals(7, costs.getMagicCosts(dummyCharm, new ICostAnalyzer() {
+    assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return MartialArtsLevel.Sidereal;
       }
 
       public boolean isMagicFavored(IMagic magic) {
         return true;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+  }
+
+  private void assertCosts7WhenItsUnfavoredMartialArts(GenericBonusPointCosts costs, DummyCharm testCharm) {
+    assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return MartialArtsLevel.Celestial;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return false;
       }
 
       public boolean isOccultFavored() {

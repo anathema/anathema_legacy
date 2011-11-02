@@ -36,7 +36,7 @@ public class CheckBoxTableColumnSettings extends AbstractTableColumnSettings {
           int row,
           int column) {
         JCheckBox checkBox = new JCheckBox();
-        checkBox.setSelected(((Boolean) value).booleanValue());
+        checkBox.setSelected((Boolean) value);
         if (hasFocus && table.isCellEditable(row, column)) {
           checkBox.setForeground(UIManager.getColor("Table.focusCellForeground")); //$NON-NLS-1$
           checkBox.setBackground(UIManager.getColor("Table.focusCellBackground")); //$NON-NLS-1$

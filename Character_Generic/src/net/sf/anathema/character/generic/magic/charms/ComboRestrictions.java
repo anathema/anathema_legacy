@@ -56,20 +56,17 @@ public class ComboRestrictions implements IComboRestrictions {
   }
 
   public ITraitType[] getRestrictedTraitTypes() {
-    return restrictedTraitTypes.toArray(new ITraitType[0]);
+    return restrictedTraitTypes.toArray(new ITraitType[restrictedTraitTypes.size()]);
   }
 
   public boolean isComboAllowed(boolean isAllowedByDefault) {
-    return combosAllowed == null ? isAllowedByDefault : combosAllowed.booleanValue();
+    return combosAllowed == null ? isAllowedByDefault : combosAllowed;
   }
 
   public boolean isRestrictedCharm(ICharm charm) {
     if (restrictedCharmTypes.contains(charm.getCharmTypeModel().getCharmType())) {
       return true;
     }
-    if (restrictedCharmIds.contains(charm.getId())) {
-      return true;
-    }
-    return false;
+      return restrictedCharmIds.contains(charm.getId());
   }
 }

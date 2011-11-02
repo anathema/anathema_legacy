@@ -384,7 +384,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
 	  case 4:
 		  return;
 	  }
-	  IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(columns, "Notes");;
+	  IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(columns, "Notes");
 	  boxEncoder.encodeBox(directContent, encoder, character, description, bounds);	  
   }
   

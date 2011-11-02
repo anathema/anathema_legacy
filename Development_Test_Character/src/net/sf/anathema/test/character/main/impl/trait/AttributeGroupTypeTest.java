@@ -18,8 +18,8 @@ public class AttributeGroupTypeTest extends BasicTestCase {
 
   public void testGetById() throws Exception {
     AttributeGroupType[] groupTypes = AttributeGroupType.values();
-    for (int index = 0; index < groupTypes.length; index++) {
-      assertSame(groupTypes[index], AttributeGroupType.valueOf(groupTypes[index].getId()));
-    }
+      for (AttributeGroupType groupType : groupTypes) {
+          assertSame(groupType, AttributeGroupType.valueOf(groupType.getId()));
+      }
   }
 }

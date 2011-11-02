@@ -1,6 +1,11 @@
 package net.sf.anathema.character.sidereal.reporting;
 
-import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
+import com.lowagie.text.Chunk;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Font;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
@@ -8,9 +13,7 @@ import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -18,12 +21,7 @@ import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
+import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
 
 public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
@@ -63,7 +61,7 @@ public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IPdfCo
     		(character.getRules().getEdition() == ExaltedEdition.SecondEdition ?
     		 "2E." : "") + "RulesPages")); //$NON-NLS-1$
     Bounds infoBounds = new Bounds(bounds.x, bounds.y, bounds.width, textBounds.height - lineHeight);
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, infoBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
+    encodeTextWithReducedLineHeight(directContent, infoBounds, phrase);
   }
 
   public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {

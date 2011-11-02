@@ -25,9 +25,9 @@ public class AttributeTypeTest extends BasicTestCase {
 
   public void testGetById() throws Exception {
     AttributeType[] attributeTypes = AttributeType.values();
-    for (int index = 0; index < attributeTypes.length; index++) {
-      assertSame(attributeTypes[index], AttributeType.valueOf(attributeTypes[index].getId()));
-    }
+      for (AttributeType attributeType : attributeTypes) {
+          assertSame(attributeType, AttributeType.valueOf(attributeType.getId()));
+      }
   }
 
   public void testGetPhysicalGroup() throws Exception {

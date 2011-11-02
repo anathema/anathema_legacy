@@ -10,7 +10,7 @@ import net.disy.commons.core.util.StringUtilities;
 
 public class AnathemaStringUtilities extends StringUtilities {
 
-  public static final String EMPTY_STRING = new String(""); //$NON-NLS-1$
+  public static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
   public static String getFileNameRepresentation(String string) {
     String fileName = ""; //$NON-NLS-1$
@@ -102,7 +102,7 @@ public class AnathemaStringUtilities extends StringUtilities {
   }
 
   public static String concat(String[] values, String seperator) {
-    StringBuffer buffer = new StringBuffer();
+      StringBuilder buffer = new StringBuilder();
     for (int index = 0; index < values.length; index++) {
       buffer.append(values[index]);
       if (index < values.length - 1) {
