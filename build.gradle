@@ -37,18 +37,23 @@ version_major = 2
 version_minor = 0
 version_revision = 1
 
-def projectLibrary(String project){
+def projectLibrary(String project) {
   return zipTree("$project/build/libs/${project}.jar")
 }
 
 
-task buildCorePlugin(type: Jar) {
-  archiveName = "core.jar"
-  destinationDir = new File(buildDir, "plugins")
-  def projects = ['Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow', 'Platform', 'Platform_Database', 'Platform_SvgTree']
+def buildPlugin = {name, projects, task ->
+  task.archiveName = "${name}.jar"
+  task.destinationDir = new File(buildDir, "plugins")
   projects.each {
-    from projectLibrary(it)
+    task.from projectLibrary(it)
   }
+}
+
+task buildCorePlugin(type: Jar) {
+  def name = 'core'
+  def projects = ['Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow', 'Platform', 'Platform_Database', 'Platform_SvgTree']
+  buildPlugin name, projects, delegate
 }
 
 task buildZip(type: Zip) {
