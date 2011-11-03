@@ -20,7 +20,7 @@ jar {
             'Built-By': System.getProperty("user.name"),
             'Main-Class': 'net.sf.anathema.AnathemaBootLoader',
             'SplashScreen-Image': 'icons/core/AnathemaSplashNew.png',
-            'Class-Path': "$libraryDir/jpf.jar $libraryDir/jpf-boot.jar $libraryDir/commons-logging-api.jar"
+            'Class-Path': "$libraryDir/jpf.jar $libraryDir/jpf-boot.jar $libraryDir/commons-logging-api-1.0.2.jar"
     )
     //< section name = "net/sf/anathema/AnathemaBootLoader.class" / >
   }
