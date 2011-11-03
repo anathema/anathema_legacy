@@ -45,13 +45,10 @@ def projectLibrary(String project){
 task buildCorePlugin(type: Jar) {
   archiveName = "core.jar"
   destinationDir = new File(buildDir, "plugins")
-  from projectLibrary('Lib_Thirdparty')
-  from projectLibrary('Lib')
-  from projectLibrary('Lib_Gui')
-  from projectLibrary('Lib_Workflow')
-  from projectLibrary('Platform')
-  from projectLibrary('Platform_Database')
-  from projectLibrary('Platform_SvgTree')
+  def projects = ['Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow', 'Platform', 'Platform_Database', 'Platform_SvgTree']
+  projects.each {
+    from projectLibrary(it)
+  }
 }
 
 task buildZip(type: Zip) {
