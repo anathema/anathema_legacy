@@ -55,6 +55,9 @@ task buildZip(type: Zip) {
   into('lib') {
     from('Anathema/build/dependencies')
   }
+  into('plugins') {
+    from('build/plugins')
+  }
   from("/Development_Documentation/Distribution/English") {
     include '*.txt'
   }
@@ -70,6 +73,7 @@ task buildZip(type: Zip) {
   }
 }
 
+buildCorePlugin.dependsOn ':Platform_SvgTree:build'
 buildZip.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies', 'buildCorePlugin'
 boolean isDataPlugin(project) {
   project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
