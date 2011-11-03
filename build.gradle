@@ -1,3 +1,5 @@
+dependenciesDir = new File(buildDir, 'dependencies')
+
 subprojects {
   apply plugin: 'java'
   apply plugin: 'eclipse'
@@ -23,7 +25,7 @@ subprojects {
     }
   }
 
-  task collectTransitiveThirdpartyDependencies() << {
+  task collectTransitiveDependencies() << {
     copy {
       from configurations.compile.findAll { File dependency -> dependency.absolutePath.contains('Thirdparty') }
       into dependenciesDir
@@ -53,7 +55,7 @@ task buildZip(type: Zip) {
   destinationDir = buildDir
   from 'Anathema/build/libs'
   into('lib') {
-    from('Anathema/build/dependencies')
+    from('build/dependencies')
   }
   into('plugins') {
     from('build/plugins')
@@ -73,8 +75,9 @@ task buildZip(type: Zip) {
   }
 }
 
-buildCorePlugin.dependsOn ':Platform_SvgTree:build'
+buildCorePlugin.dependsOn ':Platform_SvgTree:build', ':Platform_SvgTree:collectTransitiveDependencies', ':Platform_Database:collectTransitiveDependencies'
 buildZip.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies', 'buildCorePlugin'
+
 boolean isDataPlugin(project) {
   project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
 }

@@ -1,18 +1,5 @@
 propertiesDir = new File(buildDir, 'properties')
-dependenciesDir = new File(buildDir, 'dependencies')
 libraryDir = 'lib'
-
-task writeBootProperties {
-  outputs.dir propertiesDir
-  propertiesDir.mkdirs()
-  File propertiesFile = new File(propertiesDir, 'boot.properties')
-  propertiesFile.createNewFile()
-  def writer = propertiesFile.newWriter()
-  writer.write 'org.java.plugin.boot.applicationPlugin = net.sf.anathema.core'
-  writer.newLine()
-  writer.write 'org.java.plugin.PathResolver = net.sf.anathema.AnathemaPathResolver'
-  writer.close()
-}
 
 jar {
   manifest {
@@ -22,7 +9,6 @@ jar {
             'SplashScreen-Image': 'icons/core/AnathemaSplashNew.png',
             'Class-Path': "$libraryDir/jpf.jar $libraryDir/jpf-boot.jar $libraryDir/commons-logging-api-1.0.2.jar"
     )
-    //< section name = "net/sf/anathema/AnathemaBootLoader.class" / >
   }
   from(propertiesDir) {
     include '**/*'
@@ -32,7 +18,6 @@ jar {
 task buildBootloader << {
 }
 
-jar.dependsOn writeBootProperties
 buildBootloader.dependsOn build
 
 dependencies {
@@ -43,56 +28,6 @@ dependencies {
   )
   compile project(':Platform')
   compile project(':Lib')
-  /*compile project(':Character_Main')
-  compile project(':Charm_Tree')
-  compile project(':Charm_Cascades')
-  compile project(':Campaign_Plot')
-  compile project(':Character_Abyssal')
-  compile project(':Character_Generic')
-  compile project(':Character_Generic_Impl')
-  compile project(':Character_Solar')
-  compile project(':Character_Db')
-  compile project(':Character_Sidereal')
-  compile project(':Character_Generic_Framework')
-  compile project(':Campaign_Music')
-  compile project(':Campaign_Music_Impl')
-  compile project(':Character_MeritsFlaws')
-  compile project(':Character_Library')
-  compile project(':Character_Lunar')
-  compile project(':Character_Main_Impl')
-  compile project(':Character_Intimacies')
-  compile project(':Character_Reporting')
-  compile project(':Character_Equipment')
-  compile project(':Character_Equipment_Impl')
-  compile project(':Character_Mortal')
-  compile project(':Character_Craft')
-  compile project(':Character_Linguistics')
-  compile project(':Character_MartialArts')
-  compile project(':Blog_InkMonkeys')
-  compile project(':Book_Glories_Luna')
-  compile project(':Book_Glories_Maidens')
-  compile project(':Book_Glories_UnconqueredSun')
-  compile project(':Book_MoEP_Abyssals')
-  compile project(':Book_MoEP_Alchemicals')
-  compile project(':Book_MoEP_Infernals')
-  compile project(':Book_MoEP_Lunars')
-  compile project(':Book_MoEP_Sidereals')
-  compile project(':Book_ScrollOfExalts')
-  compile project(':Book_ScrollOfTheFallenRaces_Debris')
-  compile project(':Book_ScrollOfTheMonk')
-  compile project(':Book_ScrollOfTheMonk_ImperfectLotus')
-  compile project(':Book_ThousandCorrectActions')
-  compile project(':Book_UnderTheRose')
-  compile project(':Box_DotFA')
-  compile project(':Namegenerator')
-  compile project(':Character_Mutations')
-  compile project(':Character_Godblooded')
-  compile project(':Character_Spirit')
-  compile project(':Charm_Entry')
-  compile project(':Character_Infernal')
-  compile project(':Book_BrokenWingedCrane')
-  compile project(':Book_ReturnOfTheScarletEmpress')
-  compile project(':Character_Ghost')  */
 }
 
 task collectDependencies(type: Copy) {
