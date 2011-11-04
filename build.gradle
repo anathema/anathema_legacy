@@ -46,13 +46,27 @@ def buildPlugin = {name, projects, task ->
   task.archiveName = "${name}.jar"
   task.destinationDir = new File(buildDir, "plugins")
   projects.each {
+    task.dependsOn (":$it:assemble")
+    task.dependsOn (":$it:collectTransitiveDependencies")
     task.from projectLibrary(it)
   }
 }
 
-task buildCorePlugin(type: Jar) {
+task buildCore(type: Jar) {
   def name = 'core'
   def projects = ['Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow', 'Platform', 'Platform_Database', 'Platform_SvgTree']
+  buildPlugin name, projects, delegate
+}
+
+task buildNamegenerator(type: Jar) {
+  def name = 'namegenerator'
+  def projects = ['Namegenerator']
+  buildPlugin name, projects, delegate
+}
+
+task buildCharacter(type:Jar){
+  def name = 'character'
+  def projects = ["Character_Generic","Character_Generic_Impl","Character_Generic_Framework","Character_Reporting","Character_Library","Character_Craft","Character_Linguistics","Charm_Tree","Character_Intimacies","Character_Equipment","Character_Equipment_Impl","Character_MeritsFlaws","Character_Mutations","Character_Thaumaturgy","Character_Main","Character_Main_Impl"]
   buildPlugin name, projects, delegate
 }
 
@@ -81,8 +95,7 @@ task buildZip(type: Zip) {
   }
 }
 
-buildCorePlugin.dependsOn ':Platform_SvgTree:build', ':Platform_SvgTree:collectTransitiveDependencies', ':Platform_Database:collectTransitiveDependencies'
-buildZip.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies', 'buildCorePlugin'
+buildZip.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies', 'buildCore', 'buildNamegenerator', 'buildCharacter'
 
 boolean isDataPlugin(project) {
   project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
