@@ -1,4 +1,3 @@
-
 def buildPlugin = {name, projects, task ->
   task.archiveName = "${name}.jar"
   task.destinationDir = new File(buildDir, "plugins")
@@ -27,8 +26,11 @@ task buildMusicPlugin(type: Jar) {
   buildPlugin name, projects, delegate
 }
 
-task buildNamegeneratorPlugin(type: Jar) {
-  def name = 'namegenerator'
-  def projects = ['Namegenerator']
-  buildPlugin name, projects, delegate
+def singleProjectPlugins = ['Namegenerator']
+singleProjectPlugins.each {
+  def name = it.toLowerCase();
+  def projects = [it]
+  task "build${it}Plugin"(type: Jar) {
+    buildPlugin name, projects, delegate
+  }
 }
