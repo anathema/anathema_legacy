@@ -41,39 +41,7 @@ def projectLibrary(String project) {
   return zipTree("$project/build/libs/${project}.jar")
 }
 
-def buildPlugin = {name, projects, task ->
-  task.archiveName = "${name}.jar"
-  task.destinationDir = new File(buildDir, "plugins")
-  projects.each {
-    task.dependsOn(":$it:assemble")
-    task.dependsOn(":$it:collectTransitiveDependencies")
-    task.from projectLibrary(it)
-  }
-}
-
-task buildCorePlugin(type: Jar) {
-  def name = 'core'
-  def projects = ['Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow', 'Platform', 'Platform_Database', 'Platform_SvgTree']
-  buildPlugin name, projects, delegate
-}
-
-task buildCharacterPlugin(type: Jar) {
-  def name = 'character'
-  def projects = ["Character_Generic", "Character_Generic_Impl", "Character_Generic_Framework", "Character_Reporting", "Character_Library", "Character_Craft", "Character_Linguistics", "Charm_Tree", "Character_Intimacies", "Character_Equipment", "Character_Equipment_Impl", "Character_MeritsFlaws", "Character_Mutations", "Character_Thaumaturgy", "Character_Main", "Character_Main_Impl"]
-  buildPlugin name, projects, delegate
-}
-
-task buildMusicPlugin(type: Jar) {
-  def name = 'music'
-  def projects = ["Campaign_Music", "Campaign_Music_Impl"]
-  buildPlugin name, projects, delegate
-}
-
-task buildNamegeneratorPlugin(type: Jar) {
-  def name = 'namegenerator'
-  def projects = ['Namegenerator']
-  buildPlugin name, projects, delegate
-}
+apply from: 'plugins.gradle'
 
 task buildZip(type: Zip) {
   archiveName = "Anathema_v${version_major}.${version_minor}.${version_revision}.zip"
