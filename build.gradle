@@ -53,16 +53,16 @@ task buildZip(type: Zip) {
   into('plugins') {
     from('build/plugins')
   }
-  from("/Development_Documentation/Distribution/English") {
+  from("Development_Documentation/Distribution/English") {
     include '*.txt'
   }
   into('doc/spanish') {
-    from("/Development_Documentation/Distribution/Spanish") {
+    from("Development_Documentation/Distribution/Spanish") {
       include '*.txt'
     }
   }
   into('doc/italian') {
-    from("/Development_Documentation/Distribution/Italian") {
+    from("Development_Documentation/Distribution/Italian") {
       include '*.txt'
     }
   }
