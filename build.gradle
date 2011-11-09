@@ -80,3 +80,7 @@ tasks.each {
 boolean isDataPlugin(project) {
   project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0-milestone-5'
+}
