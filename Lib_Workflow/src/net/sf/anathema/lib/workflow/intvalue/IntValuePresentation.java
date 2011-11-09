@@ -14,7 +14,7 @@ public class IntValuePresentation {
     integerSpinner.setMinimum(intValueModel.getMinimum());
     integerSpinner.setMaximum(intValueModel.getMaximum());
     integerSpinner.setValue(intValueModel.getValue());
-    // SpinnerListening umbedingt erst nach Initialisierung des Spinners durchführen, weil dieser
+    // SpinnerListening umbedingt erst nach Initialisierung des Spinners durchfuehren, weil dieser
     // sonst bei setMinimum potentiell den value auf Minimum setzt und der Startwert verloren geht.
     integerSpinner.addChangeListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
