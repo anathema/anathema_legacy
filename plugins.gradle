@@ -26,7 +26,8 @@ task buildMusicPlugin(type: Jar) {
   buildPlugin name, projects, delegate
 }
 
-def singleProjectPlugins = ['Namegenerator', "Character_MartialArts", 'Character_Mortal', 'Character_Solar', 'Character_Spirit', 'Character_Ghost', 'Character_Db', 'Character_Lunar', 'Character_Abyssal', 'Character_Sidereal', 'Character_Godblooded', 'Campaign_Plot', 'Charm_Cascades', 'Charm_Entry', 'Blog_InkMonkeys', 'Book_Glories_Luna', 'Book_Glories_Maidens', 'Book_Glories_UnconqueredSun', 'Book_MoEP_Abyssals', 'Book_MoEP_Infernals', 'Book_MoEP_Lunars', 'Book_MoEP_Sidereals', 'Book_ScrollOfExalts', 'Book_ScrollOfTheFallenRaces_Debris', 'Book_ScrollOfTheMonk', 'Book_ScrollOfTheMonk_ImperfectLotus', 'Book_ThousandCorrectActions', 'Book_UnderTheRose', 'Box_DotFA']
+//Ink Monkeys, Broken-Winged Crane not yet included
+def singleProjectPlugins = ['Namegenerator', "Character_MartialArts", 'Character_Mortal', 'Character_Solar', 'Character_Spirit', 'Character_Ghost', 'Character_Db', 'Character_Lunar', 'Character_Abyssal', 'Character_Sidereal', 'Character_Godblooded', 'Campaign_Plot', 'Charm_Cascades', 'Charm_Entry', 'Book_Glories_Luna', 'Book_Glories_Maidens', 'Book_Glories_UnconqueredSun', 'Book_MoEP_Abyssals', 'Book_MoEP_Infernals', 'Book_MoEP_Lunars', 'Book_MoEP_Sidereals', 'Book_ScrollOfExalts', 'Book_ScrollOfTheFallenRaces_Debris', 'Book_ScrollOfTheMonk', 'Book_ScrollOfTheMonk_ImperfectLotus', 'Book_ThousandCorrectActions', 'Book_UnderTheRose', 'Box_DotFA', 'Book_ReturnOfTheScarletEmpress', 'Book_BrokenWingedCrane', 'Blog_InkMonkeys']
 singleProjectPlugins.each {
   def name = it.toLowerCase();
   def projects = [it]

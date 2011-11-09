@@ -7,7 +7,7 @@ jar {
             'Built-By': System.getProperty("user.name"),
             'Main-Class': 'net.sf.anathema.AnathemaBootLoader',
             'SplashScreen-Image': 'icons/core/AnathemaSplashNew.png',
-            'Class-Path': "$libraryDir/jpf.jar $libraryDir/jpf-boot.jar $libraryDir/commons-logging-api-1.0.2.jar"
+            'Class-Path': "$libraryDir/jpf.jar $libraryDir/jpf-boot.jar $libraryDir/commons-logging-api.jar"
     )
   }
   from(propertiesDir) {
@@ -22,7 +22,7 @@ buildBootloader.dependsOn build
 
 dependencies {
   compile files(
-          "../Thirdparty/Jakarta/commons-logging-api-1.0.2.jar",
+          "../Thirdparty/Jakarta/commons-logging-api.jar",
           "../Thirdparty/Plugin/jpf.jar",
           "../Thirdparty/Plugin/jpf-boot.jar",
   )
