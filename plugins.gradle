@@ -26,7 +26,7 @@ task buildMusicPlugin(type: Jar) {
   buildPlugin name, projects, delegate
 }
 
-def singleProjectPlugins = ['Namegenerator', "Character_MartialArts"]
+def singleProjectPlugins = ['Namegenerator', "Character_MartialArts", 'Character_Mortal', 'Character_Solar', 'Character_Spirit', 'Character_Ghost', 'Character_Db', 'Character_Lunar', 'Character_Abyssal', 'Character_Sidereal', 'Character_Godblooded']
 singleProjectPlugins.each {
   def name = it.toLowerCase();
   def projects = [it]
