@@ -33,9 +33,22 @@ subprojects {
   }
 }
 
-version_major = 2
+configurations {
+  launch4j
+}
+
+dependencies {
+  launch4j files(
+          "./Thirdparty/Distribution/launch4j.jar",
+          "./Thirdparty/Distribution/xstream.jar"
+  )
+}
+
+version_major = 3
 version_minor = 0
-version_revision = 1
+version_revision = 0
+version_name = "Malfeas"
+versionString = "${version_major}.${version_minor}.${version_revision}"
 
 def projectLibrary(String project) {
   return zipTree("$project/build/libs/${project}.jar")
@@ -43,8 +56,15 @@ def projectLibrary(String project) {
 
 apply from: 'plugins.gradle'
 
+task buildWindowsExecutable << {
+  def exeVersion = "${versionString}.0"
+  def versionText = "$versionString $version_name"
+  ant.taskdef(name: 'launch4j', classname: 'net.sf.launch4j.ant.Launch4jTask', classpath: configurations.launch4j.asPath)
+  ant.launch4j(configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion:"$versionText", txtProductVersion:"$versionText")
+}
+
 task buildZip(type: Zip) {
-  archiveName = "Anathema_v${version_major}.${version_minor}.${version_revision}.zip"
+  archiveName = "Anathema_v${versionString}.zip"
   destinationDir = buildDir
   from 'Anathema/build/libs'
   into('lib') {
@@ -53,8 +73,11 @@ task buildZip(type: Zip) {
   into('plugins') {
     from('build/plugins')
   }
-  from("Development_Distribution/Linux"){
+  from("Development_Distribution/Linux") {
     include 'anathema.sh'
+  }
+  from("build/launcher") {
+    include 'anathema.exe'
   }
   from("Development_Documentation/Distribution/English") {
     include '*.txt'
@@ -71,7 +94,7 @@ task buildZip(type: Zip) {
   }
 }
 
-buildZip.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies'
+buildZip.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies', buildWindowsExecutable
 
 tasks.each {
   def isPluginTask = it.name.matches('build.*Plugin')
@@ -85,5 +108,5 @@ boolean isDataPlugin(project) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.0-milestone-5'
+  gradleVersion = '1.0-milestone-5'
 }
