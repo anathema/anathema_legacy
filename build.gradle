@@ -53,6 +53,9 @@ task buildZip(type: Zip) {
   into('plugins') {
     from('build/plugins')
   }
+  from("Development_Distribution/Linux"){
+    include 'anathema.sh'
+  }
   from("Development_Documentation/Distribution/English") {
     include '*.txt'
   }
