@@ -2,9 +2,9 @@ Building a plain zip
 --------------------
 Run ``gradlew buildZip``. Done.
 
-Building a windows installer
+Building a Windows installer
 ----------------------------
-> This will only work on windows.
+> This will only work on Windows.
 
 1. Install [NSIS](http://nsis.sourceforge.net/Download "Our installer-framework of choice").
 2. Install the [NSIS Access Control Plugin] (http://nsis.sourceforge.net/AccessControl_plug-in "We need it to grant permissions on the repository-folder.") by extracting the ZIP into your NSIS folder.
