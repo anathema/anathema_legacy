@@ -16,17 +16,17 @@ task buildCorePlugin(type: Jar) {
 
 task buildCharacterPlugin(type: Jar) {
   def name = 'character'
-  def projects = ["Character_Generic", "Character_Generic_Impl", "Character_Generic_Framework", "Character_Reporting", "Character_Library", "Character_Craft", "Character_Linguistics", "Charm_Tree", "Character_Intimacies", "Character_Equipment", "Character_Equipment_Impl", "Character_MeritsFlaws", "Character_Mutations", "Character_Thaumaturgy", "Character_Main", "Character_Main_Impl"]
+  def projects = ['Character_Generic', 'Character_Generic_Impl', 'Character_Generic_Framework', 'Character_Reporting', 'Character_Library', 'Character_Craft', 'Character_Linguistics', 'Charm_Tree', 'Character_Intimacies', 'Character_Equipment', 'Character_Equipment_Impl', 'Character_MeritsFlaws', 'Character_Mutations', 'Character_Thaumaturgy', 'Character_Main', 'Character_Main_Impl']
   buildPlugin name, projects, delegate
 }
 
 task buildMusicPlugin(type: Jar) {
   def name = 'music'
-  def projects = ["Campaign_Music", "Campaign_Music_Impl"]
+  def projects = ['Campaign_Music', 'Campaign_Music_Impl']
   buildPlugin name, projects, delegate
 }
 
-def singleProjectPlugins = ['Namegenerator', "Character_MartialArts", 'Character_Mortal', 'Character_Solar', 'Character_Spirit', 'Character_Ghost', 'Character_Db', 'Character_Lunar', 'Character_Abyssal', 'Character_Sidereal', 'Character_Godblooded', 'Campaign_Plot', 'Charm_Cascades', 'Charm_Entry', 'Book_Glories_Luna', 'Book_Glories_Maidens', 'Book_Glories_UnconqueredSun', 'Book_MoEP_Abyssals', 'Book_MoEP_Infernals', 'Book_MoEP_Lunars', 'Book_MoEP_Sidereals', 'Book_ScrollOfExalts', 'Book_ScrollOfTheFallenRaces_Debris', 'Book_ScrollOfTheMonk', 'Book_ScrollOfTheMonk_ImperfectLotus', 'Book_ThousandCorrectActions', 'Book_UnderTheRose', 'Box_DotFA', 'Book_ReturnOfTheScarletEmpress', 'Book_BrokenWingedCrane', 'Blog_InkMonkeys']
+def singleProjectPlugins = ['Namegenerator', 'Character_MartialArts', 'Character_Mortal', 'Character_Solar', 'Character_Spirit', 'Character_Ghost', 'Character_Db', 'Character_Lunar', 'Character_Abyssal', 'Character_Sidereal', 'Character_Godblooded', 'Campaign_Plot', 'Charm_Cascades', 'Charm_Entry', 'Book_Glories_Luna', 'Book_Glories_Maidens', 'Book_Glories_UnconqueredSun', 'Book_MoEP_Abyssals', 'Book_MoEP_Infernals', 'Book_MoEP_Lunars', 'Book_MoEP_Sidereals', 'Book_ScrollOfExalts', 'Book_ScrollOfTheFallenRaces_Debris', 'Book_ScrollOfTheMonk', 'Book_ScrollOfTheMonk_ImperfectLotus', 'Book_ThousandCorrectActions', 'Book_UnderTheRose', 'Box_DotFA', 'Book_ReturnOfTheScarletEmpress', 'Book_BrokenWingedCrane', 'Blog_InkMonkeys']
 singleProjectPlugins.each {
   def name = it.toLowerCase();
   def projects = [it]
