@@ -46,10 +46,6 @@ dependencies {
   nsis files("./Thirdparty/Ant/nsisant-1.2.jar")
 }
 
-version_major = 3
-version_minor = 0
-version_revision = 0
-version_name = "Malfeas"
 versionString = "${version_major}.${version_minor}.${version_revision}"
 
 def projectLibrary(String project) {
@@ -68,7 +64,7 @@ task buildWindowsExecutable << {
 
 task buildWindowsInstaller << {
   ant.taskdef(name: "nsis", classname: "net.sf.nsisant.Task", classpath: configurations.nsis.asPath)
-  ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "C:/dev/NSIS"){
+  ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsis_path}"){
     define(name:"RELEASE_VERSION", value: "$versionString")
     define(name:"VERSION", value: "${versionString}.0")
   }
@@ -105,8 +101,9 @@ task buildZip(type: Zip) {
   }
 }
 
-buildZip.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies', buildWindowsExecutable
-buildWindowsInstaller.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies', buildWindowsExecutable
+[buildZip, buildWindowsInstaller].each {
+  it.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies', buildWindowsExecutable
+}
 
 tasks.each {
   def isPluginTask = it.name.matches('build.*Plugin')
