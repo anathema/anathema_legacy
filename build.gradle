@@ -35,6 +35,7 @@ subprojects {
 
 configurations {
   launch4j
+  nsis
 }
 
 dependencies {
@@ -42,6 +43,7 @@ dependencies {
           "./Thirdparty/Distribution/launch4j.jar",
           "./Thirdparty/Distribution/xstream.jar"
   )
+  nsis files("./Thirdparty/Ant/nsisant-1.2.jar")
 }
 
 version_major = 3
@@ -57,10 +59,19 @@ def projectLibrary(String project) {
 apply from: 'plugins.gradle'
 
 task buildWindowsExecutable << {
+  mkdir("./build/launcher")
   def exeVersion = "${versionString}.0"
   def versionText = "$versionString $version_name"
   ant.taskdef(name: 'launch4j', classname: 'net.sf.launch4j.ant.Launch4jTask', classpath: configurations.launch4j.asPath)
   ant.launch4j(configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion:"$versionText", txtProductVersion:"$versionText")
+}
+
+task buildWindowsInstaller << {
+  ant.taskdef(name: "nsis", classname: "net.sf.nsisant.Task", classpath: configurations.nsis.asPath)
+  ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "C:/dev/NSIS"){
+    define(name:"RELEASE_VERSION", value: "$versionString")
+    define(name:"VERSION", value: "${versionString}.0")
+  }
 }
 
 task buildZip(type: Zip) {
@@ -95,11 +106,13 @@ task buildZip(type: Zip) {
 }
 
 buildZip.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies', buildWindowsExecutable
+buildWindowsInstaller.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies', buildWindowsExecutable
 
 tasks.each {
   def isPluginTask = it.name.matches('build.*Plugin')
   if (isPluginTask) {
     buildZip.dependsOn it
+    buildWindowsInstaller.dependsOn it
   }
 }
 
