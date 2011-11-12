@@ -158,6 +158,10 @@ public class DummyGenericCharacter implements IGenericCharacter {
 
   public IConcept getConcept() {
     return new IConcept() {
+      
+      public int getAge() {
+        return 0;
+      }
 
       public String getWillpowerRegainingConceptName() {
         return null;

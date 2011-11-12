@@ -158,12 +158,11 @@ public class MultiColumnSeriesReport implements IITextReport {
   }
 
   private String createSectionTitle(IItemDescription description, int[] sectionMarking) {
-    String prepend = new String();
+    String prepend = "";
     for (int mark : sectionMarking) {
       prepend = prepend.concat(mark + "."); //$NON-NLS-1$
     }
-    String finalTitle = prepend + " " + description.getName().getText(); //$NON-NLS-1$
-    return finalTitle;
+      return prepend + " " + description.getName().getText();
   }
 
   private TextElementArray createContentParagraph(IItemDescription description) {
@@ -182,9 +181,6 @@ public class MultiColumnSeriesReport implements IITextReport {
   }
 
   public boolean supports(IItem item) {
-    if (item == null) {
-      return false;
-    }
-    return item.getItemData() instanceof ISeries;
+      return item != null && item.getItemData() instanceof ISeries;
   }
 }

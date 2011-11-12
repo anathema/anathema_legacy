@@ -63,7 +63,7 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
     return createContentCellTable(Color.GRAY, text, font, 0.5f, value != null);
   }
 
-  private final String getStatsValueString(Integer value) {
+  private String getStatsValueString(Integer value) {
     if (value == null) {
       return " "; //$NON-NLS-1$
     }

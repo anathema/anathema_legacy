@@ -14,7 +14,7 @@ public class ListOrderedSetTest {
   public void testAddAll() throws Exception {
     Set<Integer> testSet = new ListOrderedSet<Integer>();
     Set<Integer> insertSet = new HashSet<Integer>();
-    Integer zero = new Integer(0);
+    Integer zero = 0;
     insertSet.add(zero);
     testSet.addAll(insertSet);
     Assert.assertTrue(testSet.contains(zero));

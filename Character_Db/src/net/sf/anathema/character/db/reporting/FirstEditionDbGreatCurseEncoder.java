@@ -8,9 +8,7 @@ import net.sf.anathema.character.generic.impl.traits.ValueWeightGenericTraitSort
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -44,7 +42,7 @@ public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implemen
     String aspectMessage = getAspectString(character);
     String message = resources.getString("Sheet.GreatCurse.Message", virtueMessage, aspectMessage); //$NON-NLS-1$
     Phrase phrase = new Phrase(message, TableEncodingUtilities.createFont(getBaseFont()));
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
+    encodeTextWithReducedLineHeight(directContent, bounds, phrase);
   }
 
   private String getVirtueString(IGenericCharacter character) {

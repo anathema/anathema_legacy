@@ -26,7 +26,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
 
-  private final String notes = "Sheet.Lunar.WarForm";
+  private final static String notes = "Sheet.Lunar.WarForm";
   private final static int PHYSICAL_MAX = 15;
   private final IResources resources;
   private final PdfTraitEncoder smallTraitEncoder;
@@ -53,7 +53,7 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
     encodeMutations(directContent, bounds, character, description);
   }
   
-  private final void encodeNotes(PdfContentByte directContent, Bounds bounds)
+  private void encodeNotes(PdfContentByte directContent, Bounds bounds)
   {
 	  final float offsetX = 0;
 	  final float offsetY = 42;
@@ -67,7 +67,7 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
 	  catch (DocumentException e) { }
   }
   
-  private final void writeLine(PdfContentByte directContent, String text,
+  private void writeLine(PdfContentByte directContent, String text,
 		  Bounds bounds, float offsetX, float offsetY) throws DocumentException
   {
 	  Font font = TableEncodingUtilities.createFont(baseFont);
@@ -81,7 +81,7 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
 			  newBounds, lineHeight);
   }
   
-  private final void encodeMutations(PdfContentByte directContent,
+  private void encodeMutations(PdfContentByte directContent,
 		  Bounds bounds,
 		  IGenericCharacter character, IGenericDescription description)
   {
@@ -101,7 +101,7 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
 	  }
   }
 
-  private final void encodeAttributes(
+  private void encodeAttributes(
       PdfContentByte directContent,
       Bounds contentBounds,
       IGroupedTraitType[] attributeGroups,

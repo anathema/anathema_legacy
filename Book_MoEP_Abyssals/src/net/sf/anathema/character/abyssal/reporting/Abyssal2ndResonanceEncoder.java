@@ -6,9 +6,7 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -22,11 +20,12 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
+
   private final BaseFont baseFont;
   private final VirtueFlawBoxEncoder traitEncoder;
   private final IResources resources;
 
-  public Abyssal2ndResonanceEncoder(BaseFont baseFont, BaseFont symbolBaseFont, IResources resources) {
+  public Abyssal2ndResonanceEncoder(BaseFont baseFont, IResources resources) {
     this.baseFont = baseFont;
     this.resources = resources;
     this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
@@ -50,20 +49,18 @@ public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IP
     phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.FlawedVirtue") + ": ", nameFont)); //$NON-NLS-1$ //$NON-NLS-2$
     if (resonance.isFlawComplete()) {
       phrase.add(resonance.getRoot().getId() + ".\n");
-    }
-    else {
+    } else {
       Font undefinedFont = new Font(font);
       undefinedFont.setStyle(Font.UNDERLINE);
       phrase.add(new Chunk("                                          ", undefinedFont)); //$NON-NLS-1$
       phrase.add(".\n");
     }
     phrase.add(resources.getString("Sheet.GreatCurse.ResonanceReference")); //$NON-NLS-1$
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
+    encodeTextWithReducedLineHeight(directContent, textBounds, phrase);
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 
   private Font createNameFont(BaseFont baseFont) {

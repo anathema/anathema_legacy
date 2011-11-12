@@ -35,10 +35,27 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     initNameLineView(0, presentation);
     initLineView("CharacterDescription.Label.Player", description.getPlayer(), presentation); //$NON-NLS-1$
     initLineView("Label.Concept", description.getConcept(), presentation); //$NON-NLS-1$
-    initAreaView("CharacterDescription.Label.Periphrasis", 2, description.getPeriphrase(), presentation); //$NON-NLS-1$
+    //initAreaView("CharacterDescription.Label.Periphrasis", 2, description.getPeriphrase(), presentation); //$NON-NLS-1$
     initAreaView("CharacterDescription.Label.Characterization", 7, description.getCharacterization(), presentation); //$NON-NLS-1$
+    addBlankLine();
+    addBlankLine();
     initAreaView(
         "CharacterDescription.Label.PhysicalDescription", 5, description.getPhysicalDescription(), presentation); //$NON-NLS-1$
+    initFieldsView(new String[] {
+                       "CharacterDescription.Label.Sex", //$NON-NLS-1$
+                       "CharacterDescription.Label.Hair", //$NON-NLS-1$
+                       "CharacterDescription.Label.Skin", //$NON-NLS-1$
+                       "CharacterDescription.Label.Eyes" //$NON-NLS-1$
+                       },
+                   new ITextualDescription[] {
+                       description.getSex(),
+                       description.getHair(),
+                       description.getSkin(),
+                       description.getEyes()
+                       },
+                   presentation);
+    addBlankLine();
+    addBlankLine();
     initAreaView("CharacterDescription.Label.Notes", 5, description.getNotes(), presentation); //$NON-NLS-1$
   }
 
@@ -46,6 +63,10 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     String title = resources.getString("CardView.CharacterDescription.Title");//$NON-NLS-1$
     ContentProperties tabProperties = new ContentProperties(title).needsScrollbar();
     return new ViewTabContent(descriptionView, tabProperties);
+  }
+  
+  private void addBlankLine() {
+    descriptionView.addBlankLine();
   }
 
   private void initNameLineView(int row, TextualPresentation presentation) {
@@ -61,6 +82,20 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
         resources.getString("CharacterDescription.Tooltip.ThresholdName"), //$NON-NLS-1$
         description.getName(),
         new ThresholdNameGenerator()), row);
+  }
+  
+  private void initFieldsView(String[] labelResourceKey,
+                              final ITextualDescription[] textualDescription,
+                              TextualPresentation presentation) {
+    String[] labelText = new String[labelResourceKey.length];
+    for (int i = 0; i < labelText.length; i++) {
+      labelText[i] = resources.getString(labelResourceKey[i]);
+    }
+    
+    ITextView[] textView = descriptionView.addFieldsView(labelText);
+    for (int i = 0; i < textView.length; i++) {
+      presentation.initView(textView[i], textualDescription[i]);
+    }
   }
 
   private void initLineView(

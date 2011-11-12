@@ -1,8 +1,8 @@
 package net.sf.anathema.character.model.concept;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 
 public interface ICharacterConcept {
 
@@ -10,5 +10,5 @@ public interface ICharacterConcept {
 
   public ITypedDescription<ICasteType> getCaste();
   
-  public IntegerSpinner getAgeSpinner();
+  public IIntegerDescription getAge();
 }

@@ -49,7 +49,7 @@ public class NewPdfSecondPageEncoder extends AbstractPdfPageEncoder {
     // Fill in remaining space with inventory
     float distanceFromTop = Math.max(leftDistanceFromTop, rightDistanceFromTop);
     encodeInventory(directContent, character,
-                    description, distanceFromTop, CONTENT_HEIGHT - distanceFromTop);
+                    description, distanceFromTop, getContentHeight() - distanceFromTop);
 
     encodeCopyright(directContent);
   }

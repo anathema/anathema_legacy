@@ -23,6 +23,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 
+// TODO: Convert to a variable-height encoder
 public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder;
@@ -40,8 +41,14 @@ public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
-	ISolarVirtueFlaw virtueFlaw = ((ISolarVirtueFlawModel) character.getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
-    Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
+    float boxPadding = 1f;
+
+    ISolarVirtueFlaw virtueFlaw = ((ISolarVirtueFlawModel) character.getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
+    //Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
+    float boxHeight = traitEncoder.encodeHeight(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
+    float boxInterval = boxHeight + boxPadding;
+    Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - boxInterval);
+
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     String name = virtueFlaw.getName().getText();
     String condition = virtueFlaw.getLimitBreak().getText();
@@ -93,8 +100,7 @@ public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
     return TableEncodingUtilities.createFont(baseFont);
   }
   
-  public boolean hasContent(IGenericCharacter character)
-  {
+  public boolean hasContent(IGenericCharacter character) {
 	  return true;
   }
 }

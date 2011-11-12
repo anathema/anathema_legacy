@@ -50,7 +50,7 @@ public class SecondEditionLunarSpiritFormEncoder implements IPdfContentBoxEncode
     encodeForm(directContent, bounds, additionalModel.getSpiritForm());
   }
   
-  private final void encodeForm(PdfContentByte directContent, Bounds bounds, String form)
+  private void encodeForm(PdfContentByte directContent, Bounds bounds, String form)
   {
 	  Font font = TableEncodingUtilities.createFont(baseFont);
 	  Bounds newBounds = new Bounds(
@@ -68,7 +68,7 @@ public class SecondEditionLunarSpiritFormEncoder implements IPdfContentBoxEncode
 	  catch (DocumentException e) { }
   }
   
-  private final void encodeAttributes(
+  private void encodeAttributes(
       PdfContentByte directContent,
       Bounds contentBounds,
       IGroupedTraitType[] attributeGroups,

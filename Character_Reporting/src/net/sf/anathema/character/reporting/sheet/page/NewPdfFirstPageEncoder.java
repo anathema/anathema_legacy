@@ -38,7 +38,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
                      IGenericDescription description) throws DocumentException {
     float distanceFromTop = 0;
     float firstRowHeight = encodePersonalInfo(directContent, character,
-                                              description, distanceFromTop, CONTENT_HEIGHT);
+                                              description, distanceFromTop, getContentHeight());
     distanceFromTop += calculateBoxIncrement(firstRowHeight);
 
     // First column - top-down
@@ -50,7 +50,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
                                           description, firstDistanceFromTop, 415);
     firstDistanceFromTop += calculateBoxIncrement(abilityHeight);
     // First column - fill in (bottom-up) with specialties
-    float specialtyHeight = CONTENT_HEIGHT - firstDistanceFromTop;
+    float specialtyHeight = getContentHeight() - firstDistanceFromTop;
     encodeSpecialties(directContent, character, description,
                       firstDistanceFromTop, specialtyHeight);
 
@@ -61,12 +61,12 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
     float virtueIncrement = calculateBoxIncrement(virtueHeight);
     secondDistanceFromTop += virtueIncrement;
     float greatCurseHeight = encodeGreatCurse(directContent, character,
-                                                    description, secondDistanceFromTop, 85);
+                                              description, secondDistanceFromTop, 85);
     if (greatCurseHeight > 0) {
       secondDistanceFromTop += calculateBoxIncrement(greatCurseHeight);
     }
     // Second column - fill in (bottom-up) with mutations, merits & flaws, intimacies
-    float secondBottom = CONTENT_HEIGHT - calculateBoxIncrement(specialtyHeight);
+    float secondBottom = getContentHeight() - calculateBoxIncrement(specialtyHeight);
     float reservedHeight = (secondBottom - secondDistanceFromTop) / 4f - IVoidStateFormatConstants.PADDING;
     if (hasMutations(character)) {
       float mutationsHeight = encodeMutations(directContent, character, description,
@@ -90,7 +90,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
                         description, thirdDistanceFromTop + virtueHeight - dotsHeight, dotsHeight);
     thirdDistanceFromTop += virtueIncrement;
     // Third column - bottom-up
-    float thirdBottom = CONTENT_HEIGHT;
+    float thirdBottom = getContentHeight();
     float experienceHeight = encodeExperience(directContent, character,
                                               description, thirdBottom - 30, 30);
     float experienceIncrement = calculateBoxIncrement(experienceHeight);

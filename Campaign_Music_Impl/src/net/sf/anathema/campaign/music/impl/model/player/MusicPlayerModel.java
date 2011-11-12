@@ -52,7 +52,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
       public void opened(Object stream,
                          @SuppressWarnings("rawtypes") final Map properties) {
         lengthInMilliseconds = getTimeLengthEstimation(properties);
-        lengthInBytes = ((Integer) properties.get(PROP_LENGTH)).intValue();
+        lengthInBytes = (Integer) properties.get(PROP_LENGTH);
         control.forAllDo(new IClosure<IMusicPlayerModelListener>() {
           public void execute(IMusicPlayerModelListener input) {
             input.trackOpenend(track, lengthInBytes, lengthInMilliseconds / 1000);
@@ -156,7 +156,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
     int byteslength = -1;
     if (properties != null) {
       if (properties.containsKey(PROP_LENGTH)) {
-        byteslength = ((Integer) properties.get(PROP_LENGTH)).intValue();
+        byteslength = (Integer) properties.get(PROP_LENGTH);
       }
       if (properties.containsKey("duration")) { //$NON-NLS-1$
         milliseconds = (int) ((Long) properties.get("duration")).longValue() / 1000; //$NON-NLS-1$
@@ -168,16 +168,16 @@ public class MusicPlayerModel implements IMusicPlayerModel {
         float samplerate = -1.0f;
         int framesize = -1;
         if (properties.containsKey("audio.samplesize.bits")) { //$NON-NLS-1$
-          bitspersample = ((Integer) properties.get("audio.samplesize.bits")).intValue(); //$NON-NLS-1$
+          bitspersample = (Integer) properties.get("audio.samplesize.bits"); //$NON-NLS-1$
         }
         if (properties.containsKey("audio.channels")) { //$NON-NLS-1$
-          channels = ((Integer) properties.get("audio.channels")).intValue(); //$NON-NLS-1$
+          channels = (Integer) properties.get("audio.channels"); //$NON-NLS-1$
         }
         if (properties.containsKey("audio.samplerate.hz")) { //$NON-NLS-1$
-          samplerate = ((Float) properties.get("audio.samplerate.hz")).floatValue(); //$NON-NLS-1$
+          samplerate = (Float) properties.get("audio.samplerate.hz"); //$NON-NLS-1$
         }
         if (properties.containsKey("audio.framesize.bytes")) { //$NON-NLS-1$
-          framesize = ((Integer) properties.get("audio.framesize.bytes")).intValue(); //$NON-NLS-1$
+          framesize = (Integer) properties.get("audio.framesize.bytes"); //$NON-NLS-1$
         }
         if (bitspersample > 0) {
           milliseconds = (int) (1000.0f * byteslength / (samplerate * channels * bitspersample / 8));

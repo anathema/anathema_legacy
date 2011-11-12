@@ -65,8 +65,7 @@ public class CharacterConceptAndRulesView extends
     return labelView;
   }
   
-  public void addSpinner(String labelText, IntegerSpinner spinner)
-  {
+  public void addSpinner(String labelText, IntegerSpinner spinner) {
 	  JLabel label = new JLabel(labelText);
 	  conceptPanel.add(label);
 	  conceptPanel.add(spinner.getComponent());

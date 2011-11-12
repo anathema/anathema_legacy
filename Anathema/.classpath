@@ -50,7 +50,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Box_DotFA"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Namegenerator"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Mutations"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Character_Thaumaturgy"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Godblooded"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Spirit"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Charm_Entry"/>

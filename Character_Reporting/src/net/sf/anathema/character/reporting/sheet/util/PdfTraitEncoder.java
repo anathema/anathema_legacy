@@ -44,11 +44,11 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return new PdfTraitEncoder(baseFont, 6 + 2*DOT_PADDING, 6);
   }
 
-  private final int height;
+  private final float height;
   private final int dotSize;
   private final BaseFont baseFont;
 
-  private PdfTraitEncoder(BaseFont baseFont, int height, int dotSize) {
+  private PdfTraitEncoder(BaseFont baseFont, float height, int dotSize) {
     this.baseFont = baseFont;
     this.height = height;
     this.dotSize = dotSize;
@@ -63,7 +63,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     }
   }
 
-  public int encodeDotsCenteredAndUngrouped(
+  public float encodeDotsCenteredAndUngrouped(
       PdfContentByte directContent,
       Position position,
       float width,
@@ -94,7 +94,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return dotCount * dotSize + (dotCount - 1) * dotSpacing + groupSpacing;
   }
 
-  private int encodeShapeCenteredAndUngrouped(
+  private float encodeShapeCenteredAndUngrouped(
       PdfContentByte directContent,
       Position position,
       float width,
@@ -113,7 +113,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return height;
   }
 
-  public int encodeSquaresCenteredAndUngrouped(
+  public float encodeSquaresCenteredAndUngrouped(
       PdfContentByte directContent,
       Position position,
       float width,
@@ -122,14 +122,14 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return encodeShapeCenteredAndUngrouped(directContent, position, width, value, dotCount, new Square());
   }
 
-  public int encodeWithLine(PdfContentByte directContent, Position position, float width, int value, int dotCount) {
+  public float encodeWithLine(PdfContentByte directContent, Position position, float width, int value, int dotCount) {
     initDirectContent(directContent);
     float dotsWidth = encodeGroupedDots(directContent, position, width, value, dotCount, SMALL_DOT_SPACING);
     drawMissingTextLine(directContent, position, width - dotsWidth - 5);
     return height;
   }
 
-  public int encodeWithText(
+  public float encodeWithText(
       PdfContentByte directContent,
       String text,
       Position position,
@@ -144,7 +144,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return height;
   }
 
-  public int encodeWithTextAndRectangle(
+  public float encodeWithTextAndRectangle(
       PdfContentByte directContent,
       String text,
       Position position,
@@ -160,14 +160,14 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return encodeWithText(directContent, text, usualTraitPosition, width - squareWidth, value, dotCount);
   }
   
-  public int encodeWithExcellencies(PdfContentByte directContent,
-                                    String text,
-                                    Position position,
-                                    float width,
-                                    int value,
-                                    boolean favored,
-                                    boolean[] excellencyLearned,
-                                    int dotCount)
+  public float encodeWithExcellencies(PdfContentByte directContent,
+                                      String text,
+                                      Position position,
+                                      float width,
+                                      int value,
+                                      boolean favored,
+                                      boolean[] excellencyLearned,
+                                      int dotCount)
   {
     initDirectContent(directContent);
     for (int i = excellencyLearned.length; i > 0; i--) {
@@ -198,7 +198,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return baseFont;
   }
 
-  public int getTraitHeight() {
+  public float getTraitHeight() {
     return height;
   }
 

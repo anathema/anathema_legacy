@@ -6,9 +6,15 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class DemoConcept implements IConcept {
 
+  private int age = 0;
   private ICasteType casteType = ICasteType.NULL_CASTE_TYPE;
   private String conceptText;
   private String willpowerRegainingConceptName;
+
+  @Override
+  public int getAge() {
+    return age;
+  }
 
   @Override
   public ICasteType getCasteType() {
@@ -22,6 +28,10 @@ public class DemoConcept implements IConcept {
   @Override
   public String getWillpowerRegainingConceptName() {
     return willpowerRegainingConceptName;
+  }
+  
+  public void setAge(int age) {
+    this.age = age;
   }
 
   public void setCasteType(ICasteType casteType) {

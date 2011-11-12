@@ -22,7 +22,7 @@ public class TableEncodingUtilities {
   public static Float[] createStandardColumnWidths(int columnCount, final float value) {
     Float[] columnWeights = new Float[columnCount];
     for (int index = 0; index < columnWeights.length; index++) {
-      columnWeights[index] = new Float(value);
+      columnWeights[index] = value;
     }
     return columnWeights;
   }

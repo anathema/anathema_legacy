@@ -142,7 +142,6 @@
 		<prerequisite>
 			<essence id="Essence" value="2"/>
 			<trait id="Archery" value="3"/>
-			<charmAttributeRequirement attribute="ExcellencyArchery" count="1"/>
 		</prerequisite>
 		<cost>
 			<essence cost="2" text="or 3 motes per attack"/>
@@ -479,7 +478,6 @@
 		<prerequisite>
 			<essence id="Essence" value="1"/>
 			<trait id="Melee" value="2"/>
-			<charmAttributeRequirement attribute="ExcellencyMelee" count="1"/>
 		</prerequisite>
 		<cost>
 			<essence cost="2"/>
@@ -597,7 +595,6 @@
 		<prerequisite>
 			<essence id="Essence" value="1"/>
 			<trait id="Thrown" value="1"/>
-			<charmAttributeRequirement attribute="ExcellencyThrown" count="1"/>
 		</prerequisite>
 		<cost>
 			<essence cost="2"/>

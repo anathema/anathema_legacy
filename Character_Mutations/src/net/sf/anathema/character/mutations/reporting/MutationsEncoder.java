@@ -31,7 +31,7 @@ public class MutationsEncoder extends AbstractLineTextEncoder {
 
   @Override
   protected void addToPhrase(IGenericCharacter character, Font font, Phrase phrase) {
-    IMutationsModel model = (IMutationsModel)(((MutationsAdditionalModel) (character.getAdditionalModel(MutationsTemplate.ID))).getModel());
+    IMutationsModel model = ((MutationsAdditionalModel) (character.getAdditionalModel(MutationsTemplate.ID))).getModel();
     IQualitySelection<IMutation>[] mutations = model.getSelectedQualities();
 	for (int index = 0; index < mutations.length; index++)
 	{
@@ -44,7 +44,7 @@ public class MutationsEncoder extends AbstractLineTextEncoder {
   
   public boolean hasContent(IGenericCharacter character)
   {
-	  IMutationsModel model = (IMutationsModel)(((MutationsAdditionalModel) (character.getAdditionalModel(MutationsTemplate.ID))).getModel());
+	  IMutationsModel model = ((MutationsAdditionalModel) (character.getAdditionalModel(MutationsTemplate.ID))).getModel();
 	  return model.getSelectedQualities().length > 0;
   }
 }

@@ -13,6 +13,14 @@ public interface ICharacterDescription {
 
   public ITextualDescription getPhysicalDescription();
 
+  public ITextualDescription getEyes();
+
+  public ITextualDescription getHair();
+
+  public ITextualDescription getSex();
+
+  public ITextualDescription getSkin();
+
   public ITextualDescription getNotes();
 
   public ITextualDescription getPlayer();

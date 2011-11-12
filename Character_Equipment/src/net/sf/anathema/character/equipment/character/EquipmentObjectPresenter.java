@@ -7,7 +7,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import net.disy.commons.core.model.BooleanModel;
-import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
@@ -76,7 +75,7 @@ public class EquipmentObjectPresenter implements IPresenter {
           model.setPrintEnabled(equipment, booleanModel.getValue());
           if (equipment instanceof IArtifactStats)
           {
-	          if (booleanModel.getValue() == true)
+	          if (booleanModel.getValue())
 	          {
 	        	  for (IEquipmentStats stats : attuneStatFlags.keySet())
 	        		  if (equipment != stats)
@@ -129,7 +128,7 @@ public class EquipmentObjectPresenter implements IPresenter {
 	  {
 		  match = false;
 		  for (Object matObj : equipment.getApplicableMaterials())
-			  if (model.getMaterial() == (MagicalMaterial)matObj)
+			  if (model.getMaterial() == matObj)
 				  match = true;
 		  if (!match) return false;
 	  }

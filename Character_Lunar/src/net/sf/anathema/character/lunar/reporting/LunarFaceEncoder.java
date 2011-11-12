@@ -90,7 +90,7 @@ public class LunarFaceEncoder extends AbstractTableEncoder implements IPdfConten
     table.addCell(createTextCell(String.valueOf(value), Element.ALIGN_RIGHT));
   }
 
-  private final PdfPCell createTextCell(String text, int alignment) {
+  private PdfPCell createTextCell(String text, int alignment) {
     PdfPCell cell = TableEncodingUtilities.createContentCellTable(
         Color.BLACK,
         text,

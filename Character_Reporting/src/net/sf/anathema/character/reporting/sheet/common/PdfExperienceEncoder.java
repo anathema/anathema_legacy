@@ -34,10 +34,9 @@ public class PdfExperienceEncoder implements IPdfContentBoxEncoder {
     int totalPoints = character.getTotalExperiencePoints();
     int spentPoints = character.getSpentExperiencePoints();
     String experienceMessage = resources.getString("Sheet.Experience.MessageFormat"); //$NON-NLS-1$
-    String experienceText = MessageFormat.format(experienceMessage, new Object[] {
-        new Integer(totalPoints),
-        new Integer(spentPoints),
-        new Integer(totalPoints - spentPoints) });
+    String experienceText = MessageFormat.format(experienceMessage, totalPoints,
+            spentPoints,
+            totalPoints - spentPoints);
     Phrase phrase = new Phrase(experienceText, font);
     PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, FONT_SIZE + 4);
   }

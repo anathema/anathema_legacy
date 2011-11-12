@@ -144,7 +144,7 @@ public class SpecialCharmBuilder
     List<Element> elements = painToleranceElement.elements(TAG_LEVEL);
 		int[] levelArray = new int[elements.size()];
 		for (int i = 0; i != elements.size(); i++)
-			levelArray[i] = Integer.parseInt(((Element)elements.get(i)).attributeValue(ATTRIB_VALUE));
+			levelArray[i] = Integer.parseInt(elements.get(i).attributeValue(ATTRIB_VALUE));
 				
 		return new StaticPainToleranceCharm(id, levelArray.length, levelArray);
 		
@@ -231,18 +231,17 @@ public class SpecialCharmBuilder
 		
 		CharmTier[] tierArray = new CharmTier[tiers.size()];
 		tiers.toArray(tierArray);
-		
-		ISpecialCharm tieredCharm = null;
-		
-		if (trait == null)
-			tieredCharm = new TieredMultiLearnableCharm(id, tierArray);
-		else
-			tieredCharm = new TieredMultiLearnableCharm(id, trait, tierArray);
-		
-		return tieredCharm;
+        return createTieredCharm(id, trait, tierArray);
 	}
-	
-	private ISpecialCharm readEssenceFixedRepurchasesCharm(Element charmElement, String id)
+
+    private ISpecialCharm createTieredCharm(String id, ITraitType trait, CharmTier[] tierArray) {
+        if (trait == null)
+            return new TieredMultiLearnableCharm(id, tierArray);
+        else
+            return new TieredMultiLearnableCharm(id, trait, tierArray);
+    }
+
+    private ISpecialCharm readEssenceFixedRepurchasesCharm(Element charmElement, String id)
 	{
 		Element repurchasesElement = charmElement.element(TAG_ESSENCE_FIXED_REPURCHASES);
 		if (repurchasesElement == null)

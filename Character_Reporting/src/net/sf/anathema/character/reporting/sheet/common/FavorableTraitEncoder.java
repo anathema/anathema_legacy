@@ -117,7 +117,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
         }
       });
     }
-    return excellencies.toArray(new IMagicStats[0]);
+    return excellencies.toArray(new IMagicStats[excellencies.size()]);
   }
 
   protected IGenericTraitCollection getTraitCollection(IGenericCharacter character) {
@@ -189,7 +189,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return ""; //$NON-NLS-1$
   }
 
-  private int encodeFavorableTrait(
+  private float encodeFavorableTrait(
       PdfContentByte directContent,
       String label,
       IFavorableGenericTrait trait,
@@ -200,7 +200,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return traitEncoder.encodeWithTextAndRectangle(directContent, label, position, width, value, favored, essenceMax);
   }
 
-  private int encodeFavorableTrait(
+  private float encodeFavorableTrait(
       PdfContentByte directContent,
       String label,
       IFavorableGenericTrait trait,
@@ -212,7 +212,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return traitEncoder.encodeWithExcellencies(directContent, label, position, width, value, favored, excellencyLearned, essenceMax);
   }
 
-  private final void encodeMarker(PdfContentByte directContent, Position markerPosition) {
+  private void encodeMarker(PdfContentByte directContent, Position markerPosition) {
     directContent.setLineWidth(1.0f);
     directContent.moveTo(markerPosition.x, markerPosition.y + 2);
     directContent.lineTo(markerPosition.x + 4, markerPosition.y + 2);

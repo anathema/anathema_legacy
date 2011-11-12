@@ -9,9 +9,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -54,7 +52,7 @@ public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IPdfC
     phrase.add(resources.getString("Sheet.GreatCurse.SocialPoolMessage", getMaxVirtueValue(character)) + "\n"); //$NON-NLS-1$ //$NON-NLS-2$    
     phrase.add(symbolChunk);
     phrase.add(resources.getString("Sheet.GreatCurse.VirtueDifficulty")); //$NON-NLS-1$
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
+    encodeTextWithReducedLineHeight(directContent, textBounds, phrase);
   }
   
   public boolean hasContent(IGenericCharacter character)

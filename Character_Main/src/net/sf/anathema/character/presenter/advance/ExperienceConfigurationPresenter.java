@@ -75,7 +75,7 @@ public class ExperienceConfigurationPresenter implements IContentPresenter {
         }
         int tableRowIndex = e.getFirstRow();
         IExperiencePointEntry entry = entriesByIndex.get(tableRowIndex);
-        entry.setExperiencePoints(((Integer) tableModel.getValueAt(tableRowIndex, VALUE_INDEX)).intValue());
+        entry.setExperiencePoints((Integer) tableModel.getValueAt(tableRowIndex, VALUE_INDEX));
         entry.getTextualDescription().setText((String) tableModel.getValueAt(tableRowIndex, DESCRIPTION_INDEX));
       }
     });

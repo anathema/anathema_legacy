@@ -47,7 +47,7 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
 
     // Essence & Willpower
     float essenceHeight = encodeEssence(directContent, character, description,
-                                        distanceFromTop, CONTENT_HEIGHT - distanceFromTop);
+                                        distanceFromTop, getContentHeight() - distanceFromTop);
     float willpowerHeight = encodeWillpower(directContent, character, description,
                                             distanceFromTop, 96.625f);
     distanceFromTop += calculateBoxIncrement(Math.max(essenceHeight, willpowerHeight));
@@ -68,22 +68,22 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
     if (needsMagic) {
       // Right-hand side: Magic
       encodeMagic(directContent, character, description,
-                  distanceFromTop, CONTENT_HEIGHT - distanceFromTop);
+                  distanceFromTop, getContentHeight() - distanceFromTop);
       
       // Left-hand side: Magic Sidebars (e.g. Thaumaturgical Degrees), Initiations, Notes
       float sidebarHeight = encodeSidebars(directContent, character, description,
-                                           distanceFromTop, CONTENT_HEIGHT - distanceFromTop);
+                                           distanceFromTop, getContentHeight() - distanceFromTop);
       if (sidebarHeight != 0) {
         distanceFromTop += calculateBoxIncrement(sidebarHeight);
       }
       float initiationHeight = encodeInitiations(directContent, character, description,
-                                                 distanceFromTop, CONTENT_HEIGHT - distanceFromTop);
+                                                 distanceFromTop, getContentHeight() - distanceFromTop);
       if (initiationHeight != 0) {
         distanceFromTop += calculateBoxIncrement(initiationHeight);
       }
       encodeNotes(directContent, character, description,
                   "EnlightenmentNotes", 1, 1,
-                  distanceFromTop, CONTENT_HEIGHT - distanceFromTop, 1);
+                  distanceFromTop, getContentHeight() - distanceFromTop, 1);
       
       restartPage = true;
     }
@@ -112,7 +112,7 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
       
       if (character.getTemplate().getEdition() == ExaltedEdition.SecondEdition) {
         float genericCharmsHeight = encodeGenericCharms(directContent, character, description,
-                                                        distanceFromTop, CONTENT_HEIGHT - distanceFromTop);
+                                                        distanceFromTop, getContentHeight() - distanceFromTop);
         if (genericCharmsHeight != 0) {
           distanceFromTop += genericCharmsHeight + IVoidStateFormatConstants.PADDING;
         }
@@ -123,9 +123,11 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
       List<IMagicStats> printCharms = PdfMagicEncoder.collectPrintCharms(character);
       encodeCharms(directContent, printCharms, distanceFromTop, remainingHeight);
       while (!printCharms.isEmpty()) {
+        encodeCopyright(directContent);
         document.newPage();
         encodeCharms(directContent, printCharms, 0, getPageConfiguration().getContentHeight());
       }
+      encodeCopyright(directContent);
     }
   }
 

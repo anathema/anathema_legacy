@@ -18,7 +18,7 @@ public class TotalArmour extends AbstractStats implements IArmourStats {
 
 	{
       for (HealthType healthType : HealthType.values()) {
-        put(healthType, new Integer(0));
+        put(healthType, 0);
       }
     }
   };
@@ -27,7 +27,7 @@ public class TotalArmour extends AbstractStats implements IArmourStats {
 
 	{
       for (HealthType healthType : HealthType.values()) {
-        put(healthType, new Integer(0));
+        put(healthType, 0);
       }
     }
   };

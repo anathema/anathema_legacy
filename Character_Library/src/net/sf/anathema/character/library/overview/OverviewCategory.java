@@ -1,5 +1,7 @@
 package net.sf.anathema.character.library.overview;
 
+import java.awt.Font;
+
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
@@ -19,7 +21,8 @@ public class OverviewCategory implements IOverviewCategory, IView {
   public OverviewCategory(JComponent parent, String borderTitle, boolean useSmallFont) {
     TitledBorder titledBorder = new TitledBorder(borderTitle);
     if (useSmallFont) {
-      titledBorder.setTitleFont(AbstractLabelledValueView.deriveSmallerFont(titledBorder.getTitleFont()));
+      Font newFont = AbstractLabelledValueView.deriveSmallerFont(new BorderFontProvider().getFont());
+      titledBorder.setTitleFont(newFont);
     }
     panel.setBorder(titledBorder);
     parent.add(panel);

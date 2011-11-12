@@ -51,7 +51,9 @@ public class AnathemaExpressionParameter implements ExpressionParameter {
           return YoziType.valueOf(name);
         }
       }
-      catch (IllegalArgumentException e) {;}
+      catch (IllegalArgumentException e) {
+          //nothing to do
+      }
     }
     else if (splitParameter.length == 1) {
       if (parameter.equals("x")) {

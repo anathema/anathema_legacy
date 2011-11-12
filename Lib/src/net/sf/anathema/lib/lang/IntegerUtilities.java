@@ -5,7 +5,7 @@ import java.util.List;
 public class IntegerUtilities {
 
   public static boolean isNullOrZero(Integer integer) {
-    return integer == null || integer.intValue() == 0;
+    return integer == null || integer == 0;
   }
 
   public static boolean isEven(int number) {

@@ -115,18 +115,14 @@ public class SecondEditionSiderealDetailsPageEncoder implements IPdfPageEncoder 
   
   private boolean isRonin(IGenericCharacter character)
   {
-	  if (character.getTemplate().getTemplateType().getSubType().getId().equals(roninType.getSubType().getId()) ||
-		  character.getTemplate().getTemplateType().getSubType().getId().equals(revisedRoninType.getSubType().getId()))
-		 return true;
-	  return false;
+      return character.getTemplate().getTemplateType().getSubType().getId().equals(roninType.getSubType().getId()) ||
+              character.getTemplate().getTemplateType().getSubType().getId().equals(revisedRoninType.getSubType().getId());
   }
   
   private boolean isFirstAge(IGenericCharacter character)
   {
-	  if (character.getTemplate().getTemplateType().getSubType().getId().equals(dreamsType.getSubType().getId()) ||
-		  character.getTemplate().getTemplateType().getSubType().getId().equals(revisedDreamsType.getSubType().getId()))
-		 return true;
-	  return false;
+      return character.getTemplate().getTemplateType().getSubType().getId().equals(dreamsType.getSubType().getId()) ||
+              character.getTemplate().getTemplateType().getSubType().getId().equals(revisedDreamsType.getSubType().getId());
   }
 
   private void encodeConnections(

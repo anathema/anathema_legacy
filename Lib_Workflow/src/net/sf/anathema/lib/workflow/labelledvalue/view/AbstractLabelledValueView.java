@@ -20,8 +20,7 @@ public abstract class AbstractLabelledValueView {
       sizeLabel.setFont(deriveSmallerFont(sizeLabel.getFont()));
     }
     sizeLabel.setFont(sizeLabel.getFont().deriveFont(Font.BOLD));
-    Dimension preferredlabelSize = sizeLabel.getPreferredSize();
-    return preferredlabelSize;
+    return sizeLabel.getPreferredSize();
   }
 
   protected static final JLabel createLabel(
