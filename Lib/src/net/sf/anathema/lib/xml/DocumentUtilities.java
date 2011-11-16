@@ -27,7 +27,7 @@ import org.xml.sax.EntityResolver;
 
 public class DocumentUtilities {
 
-  private static final String DEFAULT_ENCODING = "UTF-8"; //$NON-NLS-1$
+  private static final String DEFAULT_ENCODING = "ISO-8859-1"; //$NON-NLS-1$
 
   private DocumentUtilities() {
     // Nothing to do
