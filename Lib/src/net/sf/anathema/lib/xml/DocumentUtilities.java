@@ -27,7 +27,11 @@ import org.xml.sax.EntityResolver;
 
 public class DocumentUtilities {
 
-  private static final String DEFAULT_ENCODING = "UTF-8"; //$NON-NLS-1$
+  // Note that ENCODING must be the same as net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess.ENCODING
+  // otherwise the character name will not be parsed causing Anathema fail to load characters.
+  // Since PrintNameFile relies on this value this constant field should be public because
+  // this value is never effectively hidden anyway. 
+  public static final String DEFAULT_ENCODING = "UTF-8"; //$NON-NLS-1$
 
   private DocumentUtilities() {
     // Nothing to do

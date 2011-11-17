@@ -17,7 +17,9 @@ import org.apache.commons.io.FileUtils;
 
 public class PrintNameFileAccess implements IPrintNameFileAccess {
 
-  public static final String ENCODING = "ISO-8859-1"; //$NON-NLS-1$
+  // Note that ENCODING must be the same as net.sf.anathema.lib.xml.DocumentUtilities.DEFAULT_ENCODING
+  // otherwise the character name will not be parsed causing Anathema fail to load characters.
+  public static final String ENCODING = net.sf.anathema.lib.xml.DocumentUtilities.DEFAULT_ENCODING; //$NON-NLS-1$
   private static final Logger logger = Logger.getLogger(PrintNameFileAccess.class);
   private static final Pattern PRINT_NAME_PATTERN = Pattern.compile("repositoryPrintName=\"(.*?)\""); //$NON-NLS-1$
   private static final Pattern ID_PATTERN = Pattern.compile("repositoryId=\"(.*?)\""); //$NON-NLS-1$
