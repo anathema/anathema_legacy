@@ -59,6 +59,6 @@ public class PluginRepositoryCollector {
   }
 
   private String getFilePath(String string) throws MalformedURLException {
-	return new File(string).toURI().getPath();
+    return new File(string).toURI().getPath();
   }
 }
