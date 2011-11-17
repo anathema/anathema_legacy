@@ -26,11 +26,11 @@ public class PluginRepositoryCollector {
   }
   
   private static String getNativePath(URL url) {
-	try {
-		return url.toURI().getPath();
-	} catch (URISyntaxException e) {
-		return url.getPath();
-	}
+    try {
+      return url.toURI().getPath();
+    } catch (URISyntaxException e) {
+      return url.getPath();
+    }
   }
 
   private void addClassPath() throws IOException {
