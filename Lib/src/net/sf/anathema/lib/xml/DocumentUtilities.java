@@ -13,7 +13,6 @@ import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.Iterator;
-import java.util.Objects;
 
 import net.disy.commons.core.io.IOUtilities;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -187,7 +186,7 @@ public class DocumentUtilities {
       throw new NullPointerException("childName");
     }
     
-    if (Objects.equals(childName, element.getName())) {
+    if (childName.equals(element.getName())) {
       return element;
     }
     
