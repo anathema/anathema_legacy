@@ -1,0 +1,61 @@
+def appName = "Anathema"
+def appDir = "${build.dir}/${appName}.app"
+
+def executeOnMac = {Closure command ->
+  def os = System.getProperty("os.name").toLowerCase()
+  if (os.contains("mac os")) {
+    command.call()
+  }
+  else {
+    throw new GradleException("Blessing only works on Mac OS X.")
+  }
+}
+
+task delete(type: Delete) {
+  delete appDir
+}
+
+task prepare << {
+  new File("${appDir}/Contents/MacOS").mkdirs()
+  new File("${appDir}/Contents/Resources/Java").mkdirs()
+}
+
+task createSymlink << {
+  ['ln', '-s', "/System/Library/Frameworks/JavaVM.framework/Versions/Current/Resources/MacOS/JavaApplicationStub", "${app.dir}/Contents/MacOS/JavaApplicationStub"].execute().waitFor()
+}
+
+task copyContent(type: Copy) {
+  into("${appDir}/Contents/") {
+    from("/Development_Distribution/Mac/")
+    include 'Info.plist'
+    filter(ReplaceTokens, tokens: ["version-major": "${version.major}", "version-minor": "${version.minor}", "version-revision": "${version.revision}"])
+  }
+  into("${appDir}/Contents/Resources") {
+    from("/Development_Distribution/Mac/")
+    include 'sungear.icns'
+  }
+  into("${appDir}/Contents/Resources/Java") {
+    from 'Anathema/build/libs'
+  }
+  into("${appDir}/Contents/Resources/Java") {
+    from("Development_Documentation/Distribution/");
+    include '**/*.txt'
+  }
+  into("${appDir}/Contents/Resources/Java/lib") {
+    from("${buildDir}/dependencies/");
+  }
+  into("${appDir}/Contents/Resources/Java/plugins") {
+    from("${buildDir}/plugins/");
+  }
+}
+
+task bless << {
+  executeOnMac {
+    ["/Developer/Tools/SetFile", "-a", "B", new File(appDir).absolutePath].execute().waitFor()
+  }
+}
+
+task buildMacApplication << {
+}
+
+buildMacApplication.dependsOn delete, prepare, createSymlink, copyContent, bless

@@ -1,0 +1,84 @@
+def appDir = "${app.name}.app"
+def dmgName = "${app.name}_v${version.major}.${version.minor}.${version.revision}.dmg"
+def volumeName = "${app.name} ${version.major}.${version.minor}.${version.revision}"
+def mountdir = "/tmp"
+
+def executeOnMac = {Closure command ->
+  def os = System.getProperty("os.name").toLowerCase()
+  if (os.contains("mac os")) {
+    command.call()
+  }
+  else {
+    throw new GradleException("Blessing only works on Mac OS X.")
+  }
+}
+
+task deleteOldDmg(type: Delete) {
+  delete dmgName
+}
+
+task createTemporaryDiskImage << {
+  executeOnMac {
+    ["/usr/bin/hdiutil", "create", "-srcFolder", appDir, "-volname", volumeName, "-ov", "${app.name}-tmp.dmg", "-format", "UDRW"].execute().waitFor()
+  }
+}
+
+task attachTemporaryImage << {
+  executeOnMac {
+    ["/usr/bin/hdiutil", "attach", "${app.name}-tmp.dmg", "-mountroot", mountdir].execute().waitFor()
+  }
+}
+
+task copyComplementaryFiles(type: Copy) {
+  into("${mountdir}/${volumeName}/") {
+    from("/Development_Distribution/Mac/")
+    include 'background.tiff'
+    include 'VolumeIcon.icns'
+    rename '(.*)', '.$1'
+  }
+  into("${mountdir}/${volumeName}/") {
+    from("/Development_Distribution/Mac/")
+    include 'DS_Store'
+    rename '(.*)', '.$1'
+    filter(ReplaceTokens, tokens: ["version-major": "${version.major}", "version-minor": "${version.minor}", "version-revision": "${version.revision}"])
+  }
+}
+
+task indicateCustomIcon << {
+  executeOnMac {
+    ["/Developer/Tools/SetFile", "-a", "C", "${mountdir}/${volume.name}"].execute().waitFor()
+  }
+}
+
+task copyLicenseFiles(type: Copy) {
+  into("${mountdir}/${volume.name}/") {
+    from("${app.name}.app/Contents/Resources/Java/")
+    include 'license.txt'
+    rename 'license.txt', 'License.txt'
+  }
+}
+
+task createSymlinkToApplicationDirectory << {
+  ['ln', '-s', "/Applications", "${mountdir}/${volume.name}"].execute().waitFor()
+}
+
+task detachTemporaryImage << {
+  executeOnMac {
+    ["/usr/bin/hdiutil", "detach", "${mountdir}/${volume.name}"].execute().waitFor()
+  }
+}
+
+task compressToNewImage << {
+  executeOnMac {
+    ["/usr/bin/hdiutil", "convert", "${app.name}-tmp.dmg", "-format", "UDZO", "-o", dmgName].execute().waitFor()
+  }
+}
+
+task deleteTemporaryImage(type: Delete) {
+  delete "${app.name}-tmp.dmg"
+}
+
+task buildDmgOnMacOS {
+}
+
+buildDmgOnMacOS.dependsOn deleteOldDmg, createTemporaryDiskImage, attachTemporaryImage, copyComplementaryFiles, indicateCustomIcon, copyLicenseFiles, createSymlinkToApplicationDirectory, detachTemporaryImage, compressToNewImage, deleteTemporaryImage

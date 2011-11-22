@@ -1,0 +1,24 @@
+def appName = "Anathema"
+def appDir = "${app.name}.app"
+def dmgName = "${app.name}_v${version.major}.${version.minor}.${version.revision}.dmg"
+def mountdir = "/tmp"
+
+task copyDsStoreAsRequired(type: Copy) {
+  into("/Development_Distribution/Mac/") {
+    from("/Development_Distribution/Mac/")
+    include 'DS_Store'
+    rename 'DS_Store', 'DS_Store.tmp'
+    filter(ReplaceTokens, tokens: ["version-major": "${version.major}", "version-minor": "${version.minor}", "version-revision": "${version.revision}"])
+  }
+}
+
+task echoHint << {
+  def message = "MUST RUN: sudo Mac/finishDMG.sh '${appDir}' '${dmgName}' '${appName} ${version.major}.${version.minor}.${version.revision}' '${mountdir}/${appName}'"
+  ant.echo(message: message)
+}
+
+task buildDmgOnLinux << {
+}
+
+buildDmgOnLinux.dependsOn copyDsStoreAsRequired, echoHint
+
