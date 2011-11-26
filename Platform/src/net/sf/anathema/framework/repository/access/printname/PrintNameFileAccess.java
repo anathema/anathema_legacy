@@ -11,16 +11,24 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.apache.commons.io.FileUtils;
+import org.dom4j.Attribute;
+import org.dom4j.Document;
+import org.dom4j.Element;
 
 public class PrintNameFileAccess implements IPrintNameFileAccess {
-
-  public static final String ENCODING = "ISO-8859-1"; //$NON-NLS-1$
+  // Used for backward compatibility when all fails ...
+  public static final String COMPATIBILITY_ENCODING = "ISO-8859-1"; //$NON-NLS-1$
   private static final Logger logger = Logger.getLogger(PrintNameFileAccess.class);
-  private static final Pattern PRINT_NAME_PATTERN = Pattern.compile("repositoryPrintName=\"(.*?)\""); //$NON-NLS-1$
-  private static final Pattern ID_PATTERN = Pattern.compile("repositoryId=\"(.*?)\""); //$NON-NLS-1$
+  
+  private static final String PRINT_NAME_ATTR = "repositoryPrintName";
+  private static final String ID_ATTR = "repositoryId";
+  private static final Pattern PRINT_NAME_PATTERN = Pattern.compile(PRINT_NAME_ATTR + "=\"(.*?)\""); //$NON-NLS-1$
+  private static final Pattern ID_PATTERN = Pattern.compile(ID_ATTR + "=\"(.*?)\""); //$NON-NLS-1$
   private final IRepositoryFileResolver resolver;
   private final IItemMangementModel itemManagement;
 
@@ -73,17 +81,35 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
       return null;
     }
     try {
-      String string = FileUtils.readFileToString(file, ENCODING);
-      Matcher printNameMatcher = PRINT_NAME_PATTERN.matcher(string);
-      if (!printNameMatcher.find()) {
-        return null;
+      try {
+        Document doc = DocumentUtilities.read(file);
+        Element root = doc.getRootElement();
+        Attribute printNameAttr = root.attribute(PRINT_NAME_ATTR);
+        Attribute idNameAttr = root.attribute(ID_ATTR);
+        
+        String printName = printNameAttr != null ? printNameAttr.getValue() : null;
+        String idName = idNameAttr != null ? idNameAttr.getValue() : null;
+        
+        if (printName == null || idName == null) {
+          return null;
+        }
+        
+        return new PrintNameFile(file, printName, idName, itemType);
+      } catch (AnathemaException ex) {
+        // Fall-back to the old method 
+        String string = FileUtils.readFileToString(file, COMPATIBILITY_ENCODING);
+        Matcher printNameMatcher = PRINT_NAME_PATTERN.matcher(string);
+        if (!printNameMatcher.find()) {
+          return null;
+        }
+        Matcher idMatcher = ID_PATTERN.matcher(string);
+        if (!idMatcher.find()) {
+          return null;
+        }
+        
+        PrintNameFile printNameFile = new PrintNameFile(file, printNameMatcher.group(1), idMatcher.group(1), itemType);
+        return printNameFile;
       }
-      Matcher idMatcher = ID_PATTERN.matcher(string);
-      if (!idMatcher.find()) {
-        return null;
-      }
-      PrintNameFile printNameFile = new PrintNameFile(file, printNameMatcher.group(1), idMatcher.group(1), itemType);
-      return printNameFile;
     }
     catch (IOException e) {
       logger.debug(e);

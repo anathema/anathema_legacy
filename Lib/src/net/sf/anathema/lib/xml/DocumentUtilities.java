@@ -12,6 +12,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
+import java.util.Iterator;
 
 import net.disy.commons.core.io.IOUtilities;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -27,7 +28,8 @@ import org.xml.sax.EntityResolver;
 
 public class DocumentUtilities {
 
-  private static final String DEFAULT_ENCODING = "ISO-8859-1"; //$NON-NLS-1$
+  // We should save all documents in an encoding which can encode any valid string.
+  private static final String DEFAULT_ENCODING = "UTF-8"; //$NON-NLS-1$
 
   private DocumentUtilities() {
     // Nothing to do
@@ -158,5 +160,46 @@ public class DocumentUtilities {
           "Element '" + expectedRootElementName + "' expected, was:'" + rootElement.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
     return rootElement;
+  }
+  
+  /**
+   * Finds the first occurrence of an element in a document. This method searches
+   * the document recursively for the child element. This method uses a depth-first
+   * search and returns the first found element.
+   * 
+   * @param document the document to be searched for the element. Cannot be null.
+   * @param childName the name of the element to be searched for. Cannot be null.
+   * @return the found element or null if it could not be found
+   * 
+   * @throws NullPointerException thrown if any of the arguments is null
+   */
+  public static Element findElement(Document document, String childName) {
+    return findElement(document.getRootElement(), childName);
+  }
+  
+  private static Element findElement(Element element, String childName) {
+    if (element == null) {
+      throw new NullPointerException("element");
+    }
+    
+    if (childName == null) {
+      throw new NullPointerException("childName");
+    }
+    
+    if (childName.equals(element.getName())) {
+      return element;
+    }
+    
+    Iterator<?> children = element.elementIterator();
+    while (children.hasNext()) {
+      Object child = children.next();
+      if (child instanceof Element) {
+        Element result = findElement((Element)child, childName);
+        if (result != null) {
+          return result;
+        }
+      }
+    }
+    return null;
   }
 }
