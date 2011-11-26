@@ -56,14 +56,14 @@ public class AnathemaEnvironmentTest {
 
   @Test
   public void testWindowsLookAndFeel() throws Exception {
-    preferences.setForceMetalLookAndFeel(false);
+    preferences.setUserLookAndFeel(null);
     AnathemaEnvironment.initLookAndFeel(preferences);
     Assert.assertEquals(WindowsLookAndFeel.class, UIManager.getLookAndFeel().getClass());
   }
 
   @Test
   public void testForceMetalLookAndFeel() throws Exception {
-    preferences.setForceMetalLookAndFeel(true);
+    preferences.setUserLookAndFeel(MetalLookAndFeel.class.getName());
     AnathemaEnvironment.initLookAndFeel(preferences);
     Assert.assertEquals(MetalLookAndFeel.class, UIManager.getLookAndFeel().getClass());
   }
