@@ -3,6 +3,7 @@ package net.sf.anathema;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Enumeration;
 
@@ -23,11 +24,19 @@ public class PluginRepositoryCollector {
   private void addPluginsFolder() throws MalformedURLException {
     addResource(getFilePath("./plugins"));
   }
+  
+  private static String getNativePath(URL url) {
+    try {
+      return url.toURI().getPath();
+    } catch (URISyntaxException e) {
+      return url.getPath();
+    }
+  }
 
   private void addClassPath() throws IOException {
     Enumeration<URL> systemResources = ClassLoader.getSystemResources("."); //$NON-NLS-1$
     while (systemResources.hasMoreElements()) {
-      addResource(systemResources.nextElement().getPath());
+    	addResource(getNativePath(systemResources.nextElement()));
     }
   }
 
@@ -50,6 +59,6 @@ public class PluginRepositoryCollector {
   }
 
   private String getFilePath(String string) throws MalformedURLException {
-    return new File(string).toURI().toURL().getPath();
+    return new File(string).toURI().getPath();
   }
 }
