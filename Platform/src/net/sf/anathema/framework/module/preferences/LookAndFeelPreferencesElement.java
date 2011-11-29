@@ -50,15 +50,13 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   
   private void selectClass(String className) {
     assert SwingUtilities.isEventDispatchThread();
-    
+
     JTextField currentText = customLaf;
     JComboBox currentCombo = combo;
     if (currentCombo == null || currentText == null) {
       return;
     }
-    
-    currentText.setText(className);
-    
+
     int itemCount = currentCombo.getItemCount();
     int selectIndex = -1;
     for (int i = 0; i < itemCount; i++) {
@@ -69,10 +67,21 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
         break;
       }
     }
-    
+
+    if (selectIndex < 0) {
+      for (int i = 0; i < itemCount; i++) {
+        LookAndFeelItem item = (LookAndFeelItem)currentCombo.getItemAt(i);
+        if (item.getClassName() == null) {
+          selectIndex = i;
+        }
+      }
+    }
+
     if (selectIndex >= 0) {
       currentCombo.setSelectedIndex(selectIndex);
     }
+
+    currentText.setText(className);
   }
   
   private void selectCurrentSettings() {
