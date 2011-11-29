@@ -19,6 +19,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
@@ -161,13 +163,15 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     return new IDialogComponent() {
 
       public int getColumnCount() {
-        return 3;
+        return 2;
       }
 
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(label);
-        panel.add(combo);
-        panel.add(customLaf);
+        panel.add(combo, GridDialogLayoutDataUtilities.createHorizontalSpanData(columnCount - 1));
+        panel.add(customLaf, GridDialogLayoutDataUtilities.createHorizontalSpanData(
+            columnCount,
+            GridDialogLayoutData.FILL_HORIZONTAL));
       }
     };
   }
