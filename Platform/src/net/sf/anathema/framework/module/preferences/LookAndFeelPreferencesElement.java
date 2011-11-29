@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.event.DocumentEvent;
@@ -180,12 +181,16 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   public void addCompoment(IGridDialogPanel panel, IResources resources) {
     panel.add(getComponent(resources));
   }
-
-  public void savePreferences() {
+  
+  private String getSelectedClassName() {
     LookAndFeelItem currentSelected = selected;
-    String selectedClass = currentSelected != null 
+    return currentSelected != null 
         ? currentSelected.getClassName() 
         : getLookAndFeelClassName();
+  }
+
+  public void savePreferences() {
+    String selectedClass = getSelectedClassName();
         
     if (selectedClass != null) {
       SYSTEM_PREFERENCES.put(USER_LOOK_AND_FEEL_CLASSNAME, selectedClass);
@@ -214,7 +219,19 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
 
   @Override
   public boolean isValid() {
-    return true;
+    String className = getSelectedClassName();
+    if (className == null) {
+      return true;
+    }
+
+    Class<?> classOfLaf;
+    try {
+      classOfLaf = Class.forName(className);
+    } catch (ClassNotFoundException e) {
+      return false;
+    }
+
+    return classOfLaf.isAssignableFrom(LookAndFeel.class);
   }
 
   @Override
