@@ -1,9 +1,6 @@
 apply from: 'macBasics.gradle'
 
-def appDir = "${app.name}.app"
-def dmgName = "${app.name}_v${version.major}.${version.minor}.${version.revision}.dmg"
 def volumeName = "${app.name} ${version.major}.${version.minor}.${version.revision}"
-def mountdir = "/tmp"
 
 task deleteOldDmg(type: Delete) {
   delete dmgName

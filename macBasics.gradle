@@ -1,3 +1,8 @@
+def appName = "Anathema"
+def appDir = "${appName}.app"
+def dmgName = "${appName}_v${version.major}.${version.minor}.${version.revision}.dmg"
+def mountdir = "/tmp"
+
 def executeOnMac = {Closure command ->
   def os = System.getProperty("os.name").toLowerCase()
   if (os.contains("mac os")) {

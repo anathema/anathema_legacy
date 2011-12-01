@@ -1,8 +1,5 @@
 apply from: 'macBasics.gradle'
 
-def appName = "Anathema"
-def appDir = "${build.dir}/${appName}.app"
-
 task delete(type: Delete) {
   delete appDir
 }
