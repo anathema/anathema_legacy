@@ -13,6 +13,7 @@ import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.Iterator;
+import java.util.List;
 
 import net.disy.commons.core.io.IOUtilities;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -21,6 +22,8 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
+import org.dom4j.Node;
+import org.dom4j.XPath;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
@@ -161,45 +164,21 @@ public class DocumentUtilities {
     }
     return rootElement;
   }
-  
+
   /**
-   * Finds the first occurrence of an element in a document. This method searches
-   * the document recursively for the child element. This method uses a depth-first
-   * search and returns the first found element.
+   * Finds the first occurrence of an element in a document.
    * 
-   * @param document the document to be searched for the element. Cannot be null.
-   * @param childName the name of the element to be searched for. Cannot be null.
+   * @param document the document to be searched for the element. Must not be null.
+   * @param childName the name of the element to be searched for. Must not be null.
    * @return the found element or null if it could not be found
-   * 
    * @throws NullPointerException thrown if any of the arguments is null
    */
   public static Element findElement(Document document, String childName) {
-    return findElement(document.getRootElement(), childName);
-  }
-  
-  private static Element findElement(Element element, String childName) {
-    if (element == null) {
-      throw new NullPointerException("element");
+    XPath xpath = document.createXPath("//"+childName+"[1]");
+    Object result = xpath.evaluate(document.getRootElement());
+    if (result instanceof List) {
+      return null;
     }
-    
-    if (childName == null) {
-      throw new NullPointerException("childName");
-    }
-    
-    if (childName.equals(element.getName())) {
-      return element;
-    }
-    
-    Iterator<?> children = element.elementIterator();
-    while (children.hasNext()) {
-      Object child = children.next();
-      if (child instanceof Element) {
-        Element result = findElement((Element)child, childName);
-        if (result != null) {
-          return result;
-        }
-      }
-    }
-    return null;
+    return (Element) result;
   }
 }
