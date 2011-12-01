@@ -1,0 +1,9 @@
+def executeOnMac = {Closure command ->
+  def os = System.getProperty("os.name").toLowerCase()
+  if (os.contains("mac os")) {
+    command.call()
+  }
+  else {
+    throw new GradleException("This only works on Mac OS X.")
+  }
+}
