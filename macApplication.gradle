@@ -1,15 +1,4 @@
-def appName = "Anathema"
-def appDir = "${build.dir}/${appName}.app"
-
-def executeOnMac = {Closure command ->
-  def os = System.getProperty("os.name").toLowerCase()
-  if (os.contains("mac os")) {
-    command.call()
-  }
-  else {
-    throw new GradleException("Blessing only works on Mac OS X.")
-  }
-}
+apply from: 'macBasics.gradle'
 
 task delete(type: Delete) {
   delete appDir
