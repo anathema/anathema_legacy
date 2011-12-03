@@ -16,7 +16,7 @@ task buildCorePlugin(type: Jar) {
 
 task buildCharacterPlugin(type: Jar) {
   def name = 'character'
-  def projects = ['Character_Generic', 'Character_Generic_Impl', 'Character_Generic_Framework', 'Character_Reporting', 'Character_Library', 'Character_Craft', 'Character_Linguistics', 'Charm_Tree', 'Character_Intimacies', 'Character_Equipment', 'Character_Equipment_Impl', 'Character_MeritsFlaws', 'Character_Mutations', 'Character_Thaumaturgy', 'Character_Main', 'Character_Main_Impl']
+  def projects = ['Character_Generic', 'Character_Generic_Impl', 'Character_Generic_Framework', 'Character_Reporting', 'Character_Library', 'Character_Craft', 'Character_Linguistics', 'Charm_Tree', 'Character_Intimacies', 'Character_Equipment', 'Character_Equipment_Impl', 'Character_MeritsFlaws', 'Character_Mutations', 'Character_Main', 'Character_Main_Impl']
   buildPlugin name, projects, delegate
 }
 
