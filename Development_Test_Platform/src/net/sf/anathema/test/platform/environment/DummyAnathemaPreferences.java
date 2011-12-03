@@ -9,7 +9,7 @@ public class DummyAnathemaPreferences implements IAnathemaPreferences {
 
   private Locale locale;
   private int toolTipSeconds;
-  private boolean forceMetalPreference;
+  private String userLookAndFeel;
   private String repositoryLocation;
 
   public boolean initMaximized() {
@@ -27,8 +27,8 @@ public class DummyAnathemaPreferences implements IAnathemaPreferences {
     this.repositoryLocation = preference;
   }
 
-  public boolean isMetalLookAndFeelForced() {
-    return forceMetalPreference;
+  public String getUserLookAndFeel() {
+    return userLookAndFeel;
   }
 
   public Locale getPreferredLocale() {
@@ -47,7 +47,7 @@ public class DummyAnathemaPreferences implements IAnathemaPreferences {
     this.toolTipSeconds = toolTipSeconds;
   }
 
-  public void setForceMetalLookAndFeel(boolean preference) {
-    forceMetalPreference = preference;
+  public void setUserLookAndFeel(String preference) {
+    userLookAndFeel = preference;
   }
 }

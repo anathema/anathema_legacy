@@ -2,6 +2,8 @@ package net.sf.anathema.test.platform.configuration;
 
 import java.util.prefs.Preferences;
 
+import javax.swing.plaf.metal.MetalLookAndFeel;
+
 import net.sf.anathema.framework.configuration.AnathemaPreferences;
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 
@@ -49,13 +51,14 @@ public class AnathemaPreferencesTest {
 
   @Test
   public void testLookAndFeelDefault() throws Exception {
-    Assert.assertFalse(anathemaPreferences.isMetalLookAndFeelForced());
+    Assert.assertNull(anathemaPreferences.getUserLookAndFeel());
   }
 
   @Test
-  public void testForceMetalLookAndFeel() throws Exception {
-    preferences.putBoolean("ForceMetalLookAndFeel", true); //$NON-NLS-1$
-    Assert.assertTrue(anathemaPreferences.isMetalLookAndFeelForced());
+  public void testUserLookAndFeel() throws Exception {
+    String metalName = MetalLookAndFeel.class.getName();
+    preferences.put("UserLookAndFeel", metalName); //$NON-NLS-1$
+    Assert.assertEquals(metalName, anathemaPreferences.getUserLookAndFeel());
   }
 
   @Test
