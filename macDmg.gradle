@@ -78,12 +78,14 @@ task detachTemporaryImage << {
 
 task compressToNewImage << {
   executeOnMac {
-    ["/usr/bin/hdiutil", "convert", "${buildDir}/${appName}-tmp.dmg", "-format", "UDZO", "-o", "${buildDir}/${dmgName}"].execute().waitFor()
+    ["cp", "${buildDir}/${appName}-tmp.dmg", "${buildDir}/uncompressed.dmg"].execute().waitFor()
+    ["/usr/bin/hdiutil", "convert", "${buildDir}/uncompressed.dmg", "-format", "UDZO", "-o", "${buildDir}/${dmgName}"].execute().waitFor()
   }
 }
 
 task deleteTemporaryImage(type: Delete) {
   delete "${buildDir}/${appName}-tmp.dmg"
+  delete "${buildDir}/uncompressed.dmg"
 }
 
 task buildDmgOnMacOS {
