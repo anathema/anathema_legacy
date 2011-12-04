@@ -1,3 +1,5 @@
+> Gradle will set itself up properly during the first build on any system. It requires an active internet connection to do so.
+
 Building a plain zip
 --------------------
 > The windows executable will only be built on Windows systems.
