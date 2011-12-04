@@ -1,6 +1,6 @@
 def appName = "Anathema"
 def appDir = "${appName}.app"
-def dmgName = "${appName}_v${version.major}.${version.minor}.${version.revision}.dmg"
+def dmgName = "${appName}_v${version_major}.${version_minor}.${version_revision}.dmg"
 def mountdir = "/tmp"
 
 def executeOnMac = {Closure command ->

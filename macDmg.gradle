@@ -1,35 +1,53 @@
+import org.apache.tools.ant.filters.ReplaceTokens 
 apply from: 'macBasics.gradle'
 
-def volumeName = "${app.name} ${version.major}.${version.minor}.${version.revision}"
+def appName = "Anathema"
+def appDir = "${appName}.app"
+def dmgName = "${appName}_v${version_major}.${version_minor}.${version_revision}.dmg"
+def mountdir = "macDmgStagingDir"
+def volumeName = "${appName} ${version_major}.${version_minor}.${version_revision}"
+
+def executeOnMac = {Closure command ->
+  def os = System.getProperty("os.name").toLowerCase()
+  if (os.contains("mac os")) {
+    command.call()
+  }
+  else {
+    throw new GradleException("This only works on Mac OS X.")
+  }
+}
 
 task deleteOldDmg(type: Delete) {
-  delete dmgName
+  delete "${buildDir}/${dmgName}"
 }
 
 task createTemporaryDiskImage << {
   executeOnMac {
-    ["/usr/bin/hdiutil", "create", "-srcFolder", appDir, "-volname", volumeName, "-ov", "${app.name}-tmp.dmg", "-format", "UDRW"].execute().waitFor()
+    ["/usr/bin/hdiutil", "create", "-srcFolder", "${buildDir}/${appDir}", "-volname", volumeName, "-ov", "-format", "UDRW", "${buildDir}/${appName}-tmp.dmg"].execute().waitFor()
   }
 }
 
 task attachTemporaryImage << {
   executeOnMac {
-    ["/usr/bin/hdiutil", "attach", "${app.name}-tmp.dmg", "-mountroot", mountdir].execute().waitFor()
+    new File("${buildDir}/${mountdir}").mkdirs()
+    ["/usr/bin/hdiutil", "attach", "-mountroot", "${buildDir}/${mountdir}", "${buildDir}/${appName}-tmp.dmg"].execute().waitFor()
+    ["chmod", "777", "${buildDir}/${mountdir}/${volumeName}/.Trashes"].execute().waitFor()
   }
 }
 
 task copyComplementaryFiles(type: Copy) {
+  destinationDir buildDir
   into("${mountdir}/${volumeName}/") {
-    from("/Development_Distribution/Mac/")
+    from("Development_Distribution/Mac/")
     include 'background.tiff'
     include 'VolumeIcon.icns'
-    rename '(.*)', '.$1'
+    //rename '(.*)', '.$1'
   }
   into("${mountdir}/${volumeName}/") {
-    from("/Development_Distribution/Mac/")
+    from("Development_Distribution/Mac/")
     include 'DS_Store'
     rename '(.*)', '.$1'
-    filter(ReplaceTokens, tokens: ["version-major": "${version.major}", "version-minor": "${version.minor}", "version-revision": "${version.revision}"])
+    //filter(ReplaceTokens, tokens: ["version-major": "${version_major}", "version-minor": "${version_minor}", "version-revision": "${version_revision}"])
   }
 }
 
@@ -40,34 +58,42 @@ task indicateCustomIcon << {
 }
 
 task copyLicenseFiles(type: Copy) {
-  into("${mountdir}/${volume.name}/") {
-    from("${app.name}.app/Contents/Resources/Java/")
+  destinationDir buildDir
+  into("${mountdir}/${volumeName}/") {
+    from("${buildDir}/${appName}.app/Contents/Resources/Java/English")
     include 'license.txt'
     rename 'license.txt', 'License.txt'
   }
 }
 
 task createSymlinkToApplicationDirectory << {
-  ['ln', '-s', "/Applications", "${mountdir}/${volume.name}"].execute().waitFor()
+  ['ln', '-s', "/Applications", "${buildDir}/${mountdir}/${volumeName}"].execute().waitFor()
 }
 
 task detachTemporaryImage << {
   executeOnMac {
-    ["/usr/bin/hdiutil", "detach", "${mountdir}/${volume.name}"].execute().waitFor()
+    ["/usr/bin/hdiutil", "detach", "${buildDir}/${mountdir}/${volumeName}"].execute().waitFor()
   }
 }
 
 task compressToNewImage << {
   executeOnMac {
-    ["/usr/bin/hdiutil", "convert", "${app.name}-tmp.dmg", "-format", "UDZO", "-o", dmgName].execute().waitFor()
+    ["/usr/bin/hdiutil", "convert", "${buildDir}/${appName}-tmp.dmg", "-format", "UDZO", "-o", "${buildDir}/${dmgName}"].execute().waitFor()
   }
 }
 
 task deleteTemporaryImage(type: Delete) {
-  delete "${app.name}-tmp.dmg"
+  delete "${buildDir}/${appName}-tmp.dmg"
 }
 
 task buildDmgOnMacOS {
 }
 
-buildDmgOnMacOS.dependsOn deleteOldDmg, createTemporaryDiskImage, attachTemporaryImage, copyComplementaryFiles, indicateCustomIcon, copyLicenseFiles, createSymlinkToApplicationDirectory, detachTemporaryImage, compressToNewImage, deleteTemporaryImage
+
+attachTemporaryImage.dependsOn createTemporaryDiskImage
+compressToNewImage.dependsOn deleteOldDmg, detachTemporaryImage
+[copyComplementaryFiles, copyLicenseFiles, createSymlinkToApplicationDirectory].each {
+	it.dependsOn attachTemporaryImage
+	detachTemporaryImage.dependsOn it
+}
+buildDmgOnMacOS.dependsOn deleteOldDmg, createTemporaryDiskImage, attachTemporaryImage, copyComplementaryFiles/*, indicateCustomIcon*/, copyLicenseFiles, createSymlinkToApplicationDirectory, detachTemporaryImage, compressToNewImage, deleteTemporaryImage

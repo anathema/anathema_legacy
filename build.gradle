@@ -102,7 +102,7 @@ task buildZip(type: Zip) {
 }
 
 [buildZip, buildWindowsInstaller].each {
-  it.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies', buildWindowsExecutable
+  it.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies'//, buildWindowsExecutable
 }
 
 tasks.each {
