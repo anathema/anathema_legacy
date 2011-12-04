@@ -1,16 +1,30 @@
-apply from: 'macBasics.gradle'
+def appName = "Anathema"
+def appDir = "${appName}.app"
+def dmgName = "${appName}_v${version_major}.${version_minor}.${version_revision}.dmg"
+def mountdir = "/tmp"
+
+def executeOnMac = {Closure command ->
+  def os = System.getProperty("os.name").toLowerCase()
+  if (os.contains("mac os")) {
+    command.call()
+  }
+  else {
+    throw new GradleException("This only works on Mac OS X.")
+  }
+}
 
 task copyDsStoreAsRequired(type: Copy) {
-  into("/Development_Distribution/Mac/") {
-    from("/Development_Distribution/Mac/")
+  destinationDir buildDir
+  into("Development_Distribution/Mac/") {
+    from("Development_Distribution/Mac/")
     include 'DS_Store'
     rename 'DS_Store', 'DS_Store.tmp'
-    filter(ReplaceTokens, tokens: ["version-major": "${version.major}", "version-minor": "${version.minor}", "version-revision": "${version.revision}"])
+    //filter(ReplaceTokens, tokens: ["version-major": "${version.major}", "version-minor": "${version.minor}", "version-revision": "${version.revision}"])
   }
 }
 
 task echoHint << {
-  def message = "MUST RUN: sudo Mac/finishDMG.sh '${appDir}' '${dmgName}' '${appName} ${version.major}.${version.minor}.${version.revision}' '${mountdir}/${appName}'"
+  def message = "MUST RUN: sudo Mac/finishDMG.sh '${appDir}' '${dmgName}' '${appName} ${version_major}.${version_minor}.${version_revision}' '${mountdir}/${appName}'"
   ant.echo(message: message)
 }
 
