@@ -37,12 +37,12 @@ task attachTemporaryImage << {
 
 task copyComplementaryFiles(type: Copy) {
   destinationDir buildDir
-  into("${mountdir}/${volumeName}/") {
+ /*into("${mountdir}/${volumeName}/") {
     from("Development_Distribution/Mac/")
     include 'background.tiff'
     include 'VolumeIcon.icns'
     //rename '(.*)', '.$1'
-  }
+  }*/
   into("${mountdir}/${volumeName}/") {
     from("Development_Distribution/Mac/")
     include 'DS_Store'
