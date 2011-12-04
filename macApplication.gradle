@@ -55,13 +55,11 @@ task copyContent(type: Copy) {
   }
 }
 
-task bless << {
-  executeOnMac {
-    ["/Developer/Tools/SetFile", "-a", "B", new File(appDir).absolutePath].execute().waitFor()
-  }
-}
-
 task buildMacApplication << {
 }
 
+prepare.dependsOn delete
+[createSymlink, copyContent].each{
+	it.dependsOn prepare
+}
 buildMacApplication.dependsOn prepare, createSymlink, copyContent
