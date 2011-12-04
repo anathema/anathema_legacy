@@ -102,7 +102,7 @@ public class AnathemaStringUtilities extends StringUtilities {
   }
 
   public static String concat(String[] values, String seperator) {
-      StringBuilder buffer = new StringBuilder();
+    StringBuffer buffer = new StringBuffer();
     for (int index = 0; index < values.length; index++) {
       buffer.append(values[index]);
       if (index < values.length - 1) {

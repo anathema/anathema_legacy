@@ -1,0 +1,15 @@
+dependencies {
+  compile project(':Character_Generic_Framework')
+  compile project(':Character_Abyssal')
+  compile project(':Character_Reporting')
+  compile project(':Character_Equipment')
+  compile project(':Character_Solar')
+}
+
+sourceSets {
+  main {
+    java {
+      srcDir 'src'
+    }
+  }
+}

@@ -1,0 +1,44 @@
+propertiesDir = new File(buildDir, 'properties')
+libraryDir = 'lib'
+
+jar {
+  manifest {
+    attributes(
+            'Built-By': System.getProperty("user.name"),
+            'Main-Class': 'net.sf.anathema.AnathemaBootLoader',
+            'SplashScreen-Image': 'icons/core/AnathemaSplashNew.png',
+            'Class-Path': "$libraryDir/jpf.jar $libraryDir/jpf-boot.jar $libraryDir/commons-logging-api.jar"
+    )
+  }
+  from(propertiesDir) {
+    include '**/*'
+  }
+}
+
+task buildBootloader << {
+}
+
+buildBootloader.dependsOn build
+
+dependencies {
+  compile files(
+          "../Thirdparty/Jakarta/commons-logging-api.jar",
+          "../Thirdparty/Plugin/jpf.jar",
+          "../Thirdparty/Plugin/jpf-boot.jar",
+  )
+  compile project(':Platform')
+  compile project(':Lib')
+}
+
+task collectDependencies(type: Copy) {
+  from configurations.compile.findAll { File dependency -> dependency.absolutePath.contains('Thirdparty') }
+  into dependenciesDir
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
+}

@@ -1,0 +1,4 @@
+dependencies {
+  compile project(':Lib')
+  compile project(':Platform_SvgTree')
+}

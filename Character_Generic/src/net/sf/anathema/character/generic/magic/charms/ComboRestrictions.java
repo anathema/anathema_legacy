@@ -67,6 +67,6 @@ public class ComboRestrictions implements IComboRestrictions {
     if (restrictedCharmTypes.contains(charm.getCharmTypeModel().getCharmType())) {
       return true;
     }
-      return restrictedCharmIds.contains(charm.getId());
+    return restrictedCharmIds.contains(charm.getId());
   }
 }

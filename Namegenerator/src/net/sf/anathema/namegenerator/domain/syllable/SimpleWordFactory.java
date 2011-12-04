@@ -17,7 +17,7 @@ public class SimpleWordFactory implements IWordFactory {
   }
 
   public String createWord(int wordIndex) {
-      StringBuilder word = new StringBuilder();
+    StringBuffer word = new StringBuffer();
     int syllableCount = countCalculator.calculateNamePartCount();
     String lastSyllabal = null;
     for (int syllableIndex = 0; syllableIndex < syllableCount; syllableIndex++) {

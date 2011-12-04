@@ -25,7 +25,7 @@ import net.sf.anathema.test.character.BasicCharacterTestCase;
 
 public abstract class AbstractBonusPointTestCase extends BasicCharacterTestCase {
 
-  protected static void addAbilityAndEssence(DummyCoreTraitConfiguration coreTraits) {
+  protected final static void addAbilityAndEssence(DummyCoreTraitConfiguration coreTraits) {
     NullAdditionalRules additionalRules = new NullAdditionalRules();
     TraitTemplateCollection templateCollection = new TraitTemplateCollection(new ExaltTraitTemplateFactory());
     DummyTraitContext traitContext = new DummyTraitContext(coreTraits);

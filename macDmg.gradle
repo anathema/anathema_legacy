@@ -1,0 +1,78 @@
+import org.apache.tools.ant.filters.ReplaceTokens 
+
+def appName = "Anathema"
+def appDir = "${appName}.app"
+def dmgName = "${appName}_v${version_major}.${version_minor}.${version_revision}.dmg"
+def mountdir = "macDmgStagingDir"
+def volumeName = "${appName} ${version_major}.${version_minor}.${version_revision}"
+
+def executeOnMac = {Closure command ->
+  def os = System.getProperty("os.name").toLowerCase()
+  if (os.contains("mac os")) {
+    command.call()
+  }
+  else {
+    throw new GradleException("This only works on Mac OS X.")
+  }
+}
+
+task deleteOldDmg(type: Delete) {
+  delete "${buildDir}/${dmgName}"
+}
+
+task createTemporaryDiskImage << {
+  executeOnMac {
+    ["/usr/bin/hdiutil", "create", "-srcFolder", "${buildDir}/${appDir}", "-volname", volumeName, "-ov", "-format", "UDRW", "${buildDir}/${appName}-tmp.dmg"].execute().waitFor()
+  }
+}
+
+task attachTemporaryImage << {
+  executeOnMac {
+    new File("${buildDir}/${mountdir}").mkdirs()
+    ["/usr/bin/hdiutil", "attach", "-mountroot", "${buildDir}/${mountdir}", "${buildDir}/${appName}-tmp.dmg"].execute().waitFor()
+    ["chmod", "777", "${buildDir}/${mountdir}/${volumeName}/.Trashes"].execute().waitFor()
+  }
+}
+
+task copyLicenseFiles(type: Copy) {
+  destinationDir buildDir
+  into("${mountdir}/${volumeName}/") {
+    from("${buildDir}/${appName}.app/Contents/Resources/Java/English")
+    include 'license.txt'
+    rename 'license.txt', 'License.txt'
+  }
+}
+
+task createSymlinkToApplicationDirectory << {
+  ['ln', '-s', "/Applications", "${buildDir}/${mountdir}/${volumeName}"].execute().waitFor()
+}
+
+task detachTemporaryImage << {
+  executeOnMac {
+    ["/usr/bin/hdiutil", "detach", "${buildDir}/${mountdir}/${volumeName}"].execute().waitFor()
+  }
+}
+
+task compressToNewImage << {
+  executeOnMac {
+    ["cp", "${buildDir}/${appName}-tmp.dmg", "${buildDir}/uncompressed.dmg"].execute().waitFor()
+    ["/usr/bin/hdiutil", "convert", "${buildDir}/uncompressed.dmg", "-format", "UDZO", "-o", "${buildDir}/${dmgName}"].execute().waitFor()
+  }
+}
+
+task deleteTemporaryImage(type: Delete) {
+  delete "${buildDir}/${appName}-tmp.dmg"
+  delete "${buildDir}/uncompressed.dmg"
+}
+
+task buildDmgOnMacOS {
+}
+
+
+attachTemporaryImage.dependsOn createTemporaryDiskImage
+compressToNewImage.dependsOn deleteOldDmg, detachTemporaryImage
+[copyLicenseFiles, createSymlinkToApplicationDirectory].each {
+	it.dependsOn attachTemporaryImage
+	detachTemporaryImage.dependsOn it
+}
+buildDmgOnMacOS.dependsOn deleteOldDmg, createTemporaryDiskImage, attachTemporaryImage, copyLicenseFiles, createSymlinkToApplicationDirectory, detachTemporaryImage, compressToNewImage, deleteTemporaryImage

@@ -1,3 +1,5 @@
 .metadata/
 build/
 bin/
+.gradle/
+Anathema*.zip

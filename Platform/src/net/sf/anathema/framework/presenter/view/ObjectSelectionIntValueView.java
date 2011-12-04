@@ -9,7 +9,9 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
 
 public class ObjectSelectionIntValueView implements IIntValueDisplay {
 

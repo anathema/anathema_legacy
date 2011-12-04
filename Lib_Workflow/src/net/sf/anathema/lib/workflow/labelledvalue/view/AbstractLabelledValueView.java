@@ -14,16 +14,16 @@ import javax.swing.SwingConstants;
 
 public abstract class AbstractLabelledValueView {
 
-  private static Dimension createBoldSize(String text, boolean smallFontSize) {
+  private static final Dimension createBoldSize(String text, boolean smallFontSize) {
     JLabel sizeLabel = new JLabel(text);
     if (smallFontSize) {
       sizeLabel.setFont(deriveSmallerFont(sizeLabel.getFont()));
     }
     sizeLabel.setFont(sizeLabel.getFont().deriveFont(Font.BOLD));
-      return sizeLabel.getPreferredSize();
+    return sizeLabel.getPreferredSize();
   }
 
-  protected static JLabel createLabel(
+  protected static final JLabel createLabel(
       String text,
       String sizeText,
       int horizontalAlignment,
@@ -37,7 +37,7 @@ public abstract class AbstractLabelledValueView {
     return label;
   }
 
-  public static Font deriveSmallerFont(Font font) {
+  public static final Font deriveSmallerFont(Font font) {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     float fontSize = screenSize.width / 110;
     if (fontSize >= font.getSize()) {

@@ -29,7 +29,7 @@ public abstract class AbstractCasteTraitAlternative {
     return new ICasteTraitMinimum[] { new DynamicCasteMinimum(getCaste(), alternateRange) };
   }
 
-  private ITraitRequirement createRequirement(ITraitType type) {
+  private final ITraitRequirement createRequirement(ITraitType type) {
     return new TraitRequirement(getLowerFreeBound(), getLowerStrictBound(), type);
   }
 
