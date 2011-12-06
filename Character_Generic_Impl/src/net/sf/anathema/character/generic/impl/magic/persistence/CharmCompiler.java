@@ -58,9 +58,6 @@ public class CharmCompiler {
       list = new ArrayList<Document>();
       charmFileTable.add(type, ruleSet, list);
     }
-    if (resource == null) {
-      throw new CharmException("No resource given for " + typeString + "," + ruleString);
-    }
     try {
       list.add(reader.read(resource));
     }
