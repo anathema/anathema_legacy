@@ -27,12 +27,13 @@ public class Anathema implements Application {
   }
 
   private IAnathemaPreferences loadPreferences() {
-    ProxySplashscreen.getInstance().displayStatusMessage("Retrieving Preferences..."); //$NON-NLS-1$
+    String message = "Retrieving Preferences..."; //$NON-NLS-1$
+    displayStatus(message);
     return AnathemaPreferences.getDefaultPreferences();
   }
 
   private void prepareEnvironment(IAnathemaPreferences anathemaPreferences) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-    ProxySplashscreen.getInstance().displayStatusMessage("Preparing Environment..."); //$NON-NLS-1$
+    displayStatus("Preparing Environment..."); //$NON-NLS-1$
     AnathemaEnvironment.initLogging();
     AnathemaEnvironment.initLocale(anathemaPreferences);
     AnathemaEnvironment.initLookAndFeel(anathemaPreferences);
@@ -41,17 +42,21 @@ public class Anathema implements Application {
 
   private void showMainFrame(IAnathemaPreferences anathemaPreferences) {
     IWindow anathemaView = createView(anathemaPreferences);
-    ProxySplashscreen.getInstance().displayStatusMessage("Done."); //$NON-NLS-1$
+    displayStatus("Done.");
     anathemaView.showFrame();
   }
 
   private IWindow createView(IAnathemaPreferences anathemaPreferences) {
     try {
-      ProxySplashscreen.getInstance().displayStatusMessage("Starting Platform..."); //$NON-NLS-1$
+      displayStatus("Starting Platform..."); //$NON-NLS-1$
       return new AnathemaInitializer(manager, anathemaPreferences).initialize();
     } catch (InitializationException e) {
       e.printStackTrace();
       return new ErrorWindow(e);
     }
+  }
+
+  private void displayStatus(String message) {
+    ProxySplashscreen.getInstance().displayStatusMessage(message);
   }
 }
