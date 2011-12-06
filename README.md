@@ -5,7 +5,7 @@ Set Up
 ### Developing with IntelliJ IDEA ###
 1. Run ``gradlew idea`` to create the IDEA project files.
 2. Import the project into IDEA.
-3. In the 'Project Structure' Dialog (Ctrl+Alt+Shift+S), set the Project SDK to a SDK > 6.0 and the language version to 6.0.
+3. (If necessary,) open the 'Project Structure' Dialog (Ctrl+Alt+Shift+S) and set the Project SDK to a SDK > 6.0.
 
 Deployment
 ==========

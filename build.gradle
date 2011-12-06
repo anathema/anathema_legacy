@@ -1,5 +1,10 @@
-apply plugin: 'java'
 apply plugin: 'idea'
+idea {
+  project {
+    languageLevel = '1.6'
+  }
+}
+
 dependenciesDir = new File(buildDir, 'dependencies')
 
 subprojects {
