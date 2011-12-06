@@ -2,22 +2,19 @@
 
 Set Up
 ======
-Developing with IntelliJ IDEA
------------------------------
-1. Run ``gradlew idea`` to create the idea project files
-2. Import the project into idea
+### Developing with IntelliJ IDEA ###
+1. Run ``gradlew idea`` to create the IDEA project files.
+2. Import the project into IDEA.
 3. In the 'Project Structure' Dialog (Ctrl+Alt+Shift+S), set the Project SDK to a SDK > 6.0 and the language version to 6.0.
 
 Deployment
 ==========
-Building a plain zip
---------------------
+### Building a plain zip ###
 > The windows executable will only be built on Windows systems.
 
 Run ``gradlew buildZip``. Done.
 
-Building a Windows installer
-----------------------------
+### Building a Windows installer ###
 > This will only work on Windows.
 
 1. Install [NSIS](http://nsis.sourceforge.net/Download "Our installer-framework of choice").
@@ -25,8 +22,7 @@ Building a Windows installer
 3. In either your home directory or your clone of anathema, append a property ``nsis_path`` to ``gradle.properties``. Make it point to the NSIS folder, e.g. ``nsis_path=C:/dev/NSIS``.
 4. Run ``gradlew buildWindowsInstaller``.
 
-Building a Macintosh Disk Image
--------------------------------
+### Building a Macintosh Disk Image ###
 > This will only work on Mac OS X.
 
 1. Run ``gradlew buildZip`` to compile the distribution.
