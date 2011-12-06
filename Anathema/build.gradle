@@ -33,6 +33,7 @@ dependencies {
   runtime project(':Character_Generic_Framework')
   runtime project(':Campaign_Music_Impl')
   runtime project(':Character_Main_Impl')
+  runtime project(':Campaign_Plot')
   //These add missing character types for the boot loader
   runtime project(':Character_Mortal')
   runtime project(':Character_Infernal')
