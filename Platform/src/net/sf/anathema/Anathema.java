@@ -43,7 +43,7 @@ public class Anathema implements Application {
   private void showMainFrame(IAnathemaPreferences anathemaPreferences) {
     IWindow anathemaView = createView(anathemaPreferences);
     displayStatus("Done.");
-    anathemaView.showFrame();
+    anathemaView.show();
   }
 
   private IWindow createView(IAnathemaPreferences anathemaPreferences) {
