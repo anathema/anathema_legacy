@@ -1,11 +1,15 @@
 > Gradle will set itself up during the first build on any system. It requires an active internet connection to do so.
 
+Set Up
+======
 Developing with IntelliJ IDEA
 -----------------------------
 1. Run ``gradlew idea`` to create the idea project files
 2. Import the project into idea
 3. In the 'Project Structure' Dialog (Ctrl+Alt+Shift+S), set the Project SDK to a SDK > 6.0 and the language version to 6.0.
 
+Deployment
+==========
 Building a plain zip
 --------------------
 > The windows executable will only be built on Windows systems.
