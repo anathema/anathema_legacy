@@ -1,16 +1,16 @@
 package net.sf.anathema;
 
-import javax.swing.JOptionPane;
-
 import net.sf.anathema.framework.configuration.AnathemaPreferences;
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
-import net.sf.anathema.framework.view.IAnathemaView;
+import net.sf.anathema.framework.view.ErrorWindow;
+import net.sf.anathema.framework.view.IWindow;
 import net.sf.anathema.initialization.AnathemaInitializer;
 import net.sf.anathema.initialization.InitializationException;
-
 import org.java.plugin.PluginManager;
 import org.java.plugin.boot.Application;
+
+import javax.swing.*;
 
 public class Anathema implements Application {
 
@@ -21,29 +21,37 @@ public class Anathema implements Application {
   }
 
   public void startApplication() throws Exception {
+    IAnathemaPreferences anathemaPreferences = loadPreferences();
+    prepareEnvironment(anathemaPreferences);
+    showMainFrame(anathemaPreferences);
+  }
+
+  private IAnathemaPreferences loadPreferences() {
     ProxySplashscreen.getInstance().displayStatusMessage("Retrieving Preferences..."); //$NON-NLS-1$
-    IAnathemaPreferences anathemaPreferences = AnathemaPreferences.getDefaultPreferences();
+    return AnathemaPreferences.getDefaultPreferences();
+  }
+
+  private void prepareEnvironment(IAnathemaPreferences anathemaPreferences) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
     ProxySplashscreen.getInstance().displayStatusMessage("Preparing Environment..."); //$NON-NLS-1$
     AnathemaEnvironment.initLogging();
     AnathemaEnvironment.initLocale(anathemaPreferences);
     AnathemaEnvironment.initLookAndFeel(anathemaPreferences);
     AnathemaEnvironment.initTooltipManager(anathemaPreferences);
-    IAnathemaView anathemaView;
-    try {
-      ProxySplashscreen.getInstance().displayStatusMessage("Starting Platform..."); //$NON-NLS-1$
-      anathemaView = new AnathemaInitializer(manager, anathemaPreferences).initialize();
-    }
-    catch (InitializationException e) {
-      e.printStackTrace();
-      JOptionPane.showMessageDialog(
-          null,
-          e.getMessage() + "\n" + e.getStackTrace()[0].toString(), "Initialization Error", JOptionPane.ERROR_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
-      // TODO: Disy-Dialoge ohne I18n?
-      // UserDialog dialog = MessageDialogFactory.createMessageDialog(null, new Message(e.getMessage(), e));
-      // dialog.show();
-      return;
-    }
+  }
+
+  private void showMainFrame(IAnathemaPreferences anathemaPreferences) {
+    IWindow anathemaView = createView(anathemaPreferences);
     ProxySplashscreen.getInstance().displayStatusMessage("Done."); //$NON-NLS-1$
     anathemaView.showFrame();
+  }
+
+  private IWindow createView(IAnathemaPreferences anathemaPreferences) {
+    try {
+      ProxySplashscreen.getInstance().displayStatusMessage("Starting Platform..."); //$NON-NLS-1$
+      return new AnathemaInitializer(manager, anathemaPreferences).initialize();
+    } catch (InitializationException e) {
+      e.printStackTrace();
+      return new ErrorWindow(e);
+    }
   }
 }
