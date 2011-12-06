@@ -1,0 +1,8 @@
+dependencies {
+	compile files(
+		"../Thirdparty/disy/disy-commons-core.jar",
+		"../Thirdparty/disy/disy-commons-swing.jar",
+		"../Thirdparty/XML/dom4j-1.5.jar"
+    )
+	compile project(':Lib_Thirdparty')
+}

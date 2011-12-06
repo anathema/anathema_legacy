@@ -1,3 +1,9 @@
 .metadata/
 build/
 bin/
+.gradle/
+Anathema*.zip
+*.iml
+*.ipr
+*.iws
+out/

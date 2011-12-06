@@ -82,7 +82,8 @@ public class SpecialCharmBuilder
 	
 	public ISpecialCharm readSpecialCharm(Element charmElement, String id)
 	{
-		ISpecialCharm specialCharm = readOxBodyCharm(charmElement, id);
+		ISpecialCharm specialCharm = null;
+		specialCharm = specialCharm == null ? readOxBodyCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readPainToleranceCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readTraitCapModifierCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readTranscendenceCharm(charmElement, id) : specialCharm;
@@ -349,7 +350,8 @@ public class SpecialCharmBuilder
 	
 	private ITraitType getTrait(String value)
 	{
-		ITraitType trait= getAbilityType(value);
+		ITraitType trait = null;
+		trait = trait == null ? getAbilityType(value) : trait;
 		trait = trait == null ? getAttributeType(value) : trait;
 		trait = trait == null ? getVirtueType(value) : trait;
 		trait = trait == null ? getOtherType(value) : trait;

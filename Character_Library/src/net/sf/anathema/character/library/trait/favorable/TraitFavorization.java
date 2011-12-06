@@ -97,7 +97,7 @@ public class TraitFavorization implements ITraitFavorization {
     favorableStateControl.addListener(listener);
   }
 
-  private void fireFavorableStateChangedEvent() {
+  private final void fireFavorableStateChangedEvent() {
     favorableStateControl.forAllDo(new IClosure<IFavorableStateChangedListener>() {
       public void execute(IFavorableStateChangedListener input) {
         input.favorableStateChanged(state);

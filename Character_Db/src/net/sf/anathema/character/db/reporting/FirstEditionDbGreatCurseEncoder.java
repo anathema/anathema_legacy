@@ -1,9 +1,7 @@
 package net.sf.anathema.character.db.reporting;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
+import java.util.List;
+
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.traits.ValueWeightGenericTraitSorter;
@@ -15,7 +13,10 @@ import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.util.List;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 
 public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 

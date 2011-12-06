@@ -44,7 +44,7 @@ public class AnathemaEnvironment {
     Locale.setDefault(preferences.getPreferredLocale());
   }
 
-  public static boolean isDevelopment() {
+  public static final boolean isDevelopment() {
     return System.getProperty(SYSTEM_PROPERTY_DEVELOPMENT) != null;
   }
 }

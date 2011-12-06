@@ -1,0 +1,15 @@
+dependencies {
+  compile files(
+          "../Thirdparty/JeksParser/jeksparser.jar"
+  )
+  compile project(':Lib_Gui')
+  compile project(':Character_Generic')
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
+}
