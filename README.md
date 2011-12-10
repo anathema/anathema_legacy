@@ -7,6 +7,19 @@ Set Up
 2. Import the project into IDEA.
 3. (If necessary,) open the 'Project Structure' Dialog (Ctrl+Alt+Shift+S) and set the Project SDK to a SDK > 6.0.
 
+### Developing with Eclipse ###
+1. Run ``gradlew eclipseProject eclipseClasspath eclipseJdt`` to create the Eclipse project files.
+2. Import all projects into Eclipse.
+
+Development
+===========
+### Launching Anathema from an IDE ###
+Launch ``net.sf.anathema.AnathemaDevelopmentBootLoader``.
+
+### Adding a dependency ###
+1. Add the dependency entry to the modules ``build.gradle``.
+2. Run ``gradlew eclipseClasspath`` or ``gradlew ideaModule`` respectively.
+
 Deployment
 ==========
 ### Building a plain zip ###
