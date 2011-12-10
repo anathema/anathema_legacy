@@ -17,7 +17,7 @@ Development
 Launch ``net.sf.anathema.AnathemaDevelopmentBootLoader``.
 
 ### Adding a dependency ###
-1. Add the dependency entry to the modules ``build.gradle``.
+1. Add the dependency entry to the module's ``build.gradle``.
 2. Run ``gradlew eclipseClasspath`` or ``gradlew ideaModule`` respectively.
 
 Deployment
