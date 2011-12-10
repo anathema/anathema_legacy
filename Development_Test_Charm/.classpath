@@ -29,7 +29,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Charm_Entry"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Charm_Tree"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Code"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Development_Distribution"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Campaign"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Character"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Platform"/>
