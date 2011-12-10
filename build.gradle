@@ -8,9 +8,14 @@ idea {
 dependenciesDir = new File(buildDir, 'dependencies')
 
 subprojects {
-  apply plugin: 'java'
   apply plugin: 'eclipse'
   apply plugin: 'idea'
+
+  if(project.name=='Thirdparty'){
+    return
+  }
+
+  apply plugin: 'java'
 
   sourceCompatibility = 1.6
 

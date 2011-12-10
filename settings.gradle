@@ -1,4 +1,4 @@
-include('Anathema',
+include('Anathema', 'Thirdparty',
 
 		'Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow',
 
