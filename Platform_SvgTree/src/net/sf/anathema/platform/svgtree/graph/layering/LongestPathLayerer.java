@@ -1,8 +1,9 @@
 package net.sf.anathema.platform.svgtree.graph.layering;
 
+import net.sf.anathema.graph.layering.ILayerer;
+import net.sf.anathema.graph.nodes.IRegularNode;
+import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 
 public class LongestPathLayerer implements ILayerer {
 

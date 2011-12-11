@@ -1,5 +1,7 @@
 package net.sf.anathema.platform.svgtree.graph.ordering;
 
+import net.sf.anathema.graph.ordering.IStructureNode;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

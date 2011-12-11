@@ -1,19 +1,16 @@
 package net.sf.anathema.platform.svgtree.graph.ordering;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.nodes.ISimpleNode;
+import net.sf.anathema.graph.ordering.IVertexOrderer;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.lang.IntegerUtilities;
-import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 import net.sf.anathema.platform.svgtree.graph.nodes.WeightedNode;
 import net.sf.anathema.platform.svgtree.graph.nodes.WeightedNodeComparator;
 import net.sf.anathema.platform.svgtree.graph.util.BarycenterCalculator;
 import net.sf.anathema.platform.svgtree.graph.util.IncidentMatrixUtilities;
+
+import java.util.*;
 
 public abstract class AbstractVertexOrderer implements IVertexOrderer {
 

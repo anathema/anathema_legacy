@@ -1,21 +1,15 @@
 package net.sf.anathema.platform.svgtree.graph.hierarchy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.nodes.IRegularNode;
+import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.platform.svgtree.graph.graph.ProperHierarchicalGraph;
 import net.sf.anathema.platform.svgtree.graph.graph.SingleNodeGraph;
-import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
+
+import java.util.*;
 
 public class SubtreeSeparator {
 

@@ -1,6 +1,11 @@
 package net.sf.anathema.platform.svgtree.graph.graph;
 
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
+import net.sf.anathema.graph.graph.IGraphType;
+import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.nodes.ISimpleNode;
+
+import static net.sf.anathema.graph.graph.GraphType.Single;
+
 public class SingleNodeGraph implements IProperHierarchicalGraph {
 
   private final ISimpleNode node;
@@ -15,7 +20,7 @@ public class SingleNodeGraph implements IProperHierarchicalGraph {
   }
 
   public IGraphType getType() {
-    return GraphType.Single;
+    return Single;
   }
 
   public ISimpleNode[] getNodesByLayer(final int layer) {

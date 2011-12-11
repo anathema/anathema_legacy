@@ -3,8 +3,8 @@ package net.sf.anathema.platform.svgtree.graph.layering;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
+import net.sf.anathema.graph.nodes.IRegularNode;
+import net.sf.anathema.graph.nodes.ISimpleNode;
 
 public class TopologyBuilder {
 

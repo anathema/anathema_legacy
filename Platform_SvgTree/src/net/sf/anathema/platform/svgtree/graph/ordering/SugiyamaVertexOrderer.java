@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.svgtree.graph.ordering;
 
-import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
+import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.platform.svgtree.graph.nodes.WeightedNode;
 
 public class SugiyamaVertexOrderer extends AbstractVertexOrderer {

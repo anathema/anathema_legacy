@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 import net.disy.commons.core.util.ArrayUtilities;
-import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
+import net.sf.anathema.graph.nodes.IRegularNode;
+import net.sf.anathema.graph.nodes.ISimpleNode;
 
 public class TwoCommonParentsOptimizer {
 

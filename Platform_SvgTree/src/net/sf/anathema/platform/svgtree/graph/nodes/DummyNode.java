@@ -2,6 +2,7 @@ package net.sf.anathema.platform.svgtree.graph.nodes;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.graph.nodes.ISimpleNode;
 
 public class DummyNode implements ISimpleNode {
 

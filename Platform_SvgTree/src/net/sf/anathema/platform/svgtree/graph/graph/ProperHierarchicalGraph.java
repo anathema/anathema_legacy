@@ -1,14 +1,13 @@
 package net.sf.anathema.platform.svgtree.graph.graph;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
+import net.sf.anathema.graph.graph.GraphType;
+import net.sf.anathema.graph.graph.IGraphType;
+import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.platform.svgtree.graph.util.IncidentMatrixUtilities;
+
+import java.util.*;
 
 public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
   private final Map<Integer, List<ISimpleNode>> nodesByLayer = new HashMap<Integer, List<ISimpleNode>>();

@@ -1,5 +1,9 @@
 package net.sf.anathema.platform.svgtree.graph.nodes;
 
+import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
+import net.sf.anathema.graph.nodes.IRegularNode;
+import net.sf.anathema.graph.nodes.ISimpleNode;
+
 public class NodeFactory {
 
   public static IIdentifiedRegularNode createChildlessNode(String id) {
