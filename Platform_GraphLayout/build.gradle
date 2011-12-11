@@ -1,7 +1,3 @@
-repositories {
-  mavenCentral()
-}
-
 dependencies {
   compile files(
           "../Thirdparty/disy/disy-commons-core.jar"

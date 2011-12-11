@@ -3,12 +3,18 @@ dependencies {
   compile project(':Character_Reporting')
   compile project(':Character_Equipment')
   compile project(':Character_Equipment_Impl')
+  testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
 sourceSets {
   main {
     resources {
       srcDir 'resources'
+    }
+  }
+  test {
+    java {
+      srcDir 'test'
     }
   }
 }
