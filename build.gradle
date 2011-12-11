@@ -11,10 +11,10 @@ subprojects {
   apply plugin: 'eclipse'
   apply plugin: 'idea'
 
-  if(project.name=='Thirdparty'){
+  if (project.name == 'Thirdparty') {
     return
   }
-  
+
   repositories {
     mavenCentral()
   }
@@ -44,7 +44,7 @@ subprojects {
 
   task collectTransitiveDependencies() << {
     copy {
-      from configurations.compile.findAll { File dependency -> dependency.absolutePath.contains('Thirdparty') }
+      from configurations.compile.findAll { File dependency -> dependency.absolutePath.contains('Thirdparty') || dependency.absolutePath.contains('cache') }
       into dependenciesDir
     }
   }
@@ -81,14 +81,14 @@ task buildWindowsExecutable << {
   def exeVersion = "${versionString}.0"
   def versionText = "$versionString $version_name"
   ant.taskdef(name: 'launch4j', classname: 'net.sf.launch4j.ant.Launch4jTask', classpath: configurations.launch4j.asPath)
-  ant.launch4j(configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion:"$versionText", txtProductVersion:"$versionText")
+  ant.launch4j(configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion: "$versionText", txtProductVersion: "$versionText")
 }
 
 task buildWindowsInstaller << {
   ant.taskdef(name: "nsis", classname: "net.sf.nsisant.Task", classpath: configurations.nsis.asPath)
-  ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsis_path}"){
-    define(name:"RELEASE_VERSION", value: "$versionString")
-    define(name:"VERSION", value: "${versionString}.0")
+  ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsis_path}") {
+    define(name: "RELEASE_VERSION", value: "$versionString")
+    define(name: "VERSION", value: "${versionString}.0")
   }
 }
 
