@@ -33,7 +33,7 @@ public class ProperHierarchicalGraphTest extends BasicTestCase {
       new ProperHierarchicalGraph(new ISimpleNode[] { root, node }, 3);
       fail();
     }
-    catch (ContractFailedException e) {
+    catch (IllegalArgumentException e) {
       // nothing to do
     }
   }
