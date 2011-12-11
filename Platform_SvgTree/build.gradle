@@ -6,5 +6,13 @@ dependencies {
   compile fileTree(dir: '../Thirdparty/SVG', include: '*.jar')
   compile project(':Lib')
   compile project(':Platform')
-  compile project(':Platform_GraphLayout')
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+sourceSets {
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
 }
