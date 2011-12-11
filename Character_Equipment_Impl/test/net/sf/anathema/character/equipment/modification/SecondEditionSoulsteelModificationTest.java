@@ -9,12 +9,12 @@ import org.junit.Test;
 public class SecondEditionSoulsteelModificationTest extends AbstractSoulsteelModificationTest {
 
   @Test
-  public final void accuracyIncreasedForMeleeBy2() throws Exception {
+  public final void accuracyIncreasedBy2() throws Exception {
     assertAccuracyModification(3, 1, WeaponStatsType.Melee);
-    assertAccuracyModification(1, 1, WeaponStatsType.Bow);
-    assertAccuracyModification(1, 1, WeaponStatsType.Thrown);
-    assertAccuracyModification(1, 1, WeaponStatsType.Thrown_BowBonuses);
-    assertAccuracyModification(1, 1, WeaponStatsType.Flame);
+    assertAccuracyModification(3, 1, WeaponStatsType.Bow);
+    assertAccuracyModification(3, 1, WeaponStatsType.Thrown);
+    assertAccuracyModification(3, 1, WeaponStatsType.Thrown_BowBonuses);
+    assertAccuracyModification(3, 1, WeaponStatsType.Flame);
   }
 
   @Test

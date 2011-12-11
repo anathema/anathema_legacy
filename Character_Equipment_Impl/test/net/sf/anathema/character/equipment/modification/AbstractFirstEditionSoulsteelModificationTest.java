@@ -9,10 +9,10 @@ public abstract class AbstractFirstEditionSoulsteelModificationTest extends Abst
   @Test
   public final void accuracyIncreasedForMeleeBy1() throws Exception {
     assertAccuracyModification(2, 1, WeaponStatsType.Melee);
-    assertAccuracyModification(1, 1, WeaponStatsType.Bow);
-    assertAccuracyModification(1, 1, WeaponStatsType.Thrown);
-    assertAccuracyModification(1, 1, WeaponStatsType.Thrown_BowBonuses);
-    assertAccuracyModification(1, 1, WeaponStatsType.Flame);
+    assertAccuracyModification(3, 1, WeaponStatsType.Bow);
+    assertAccuracyModification(3, 1, WeaponStatsType.Thrown);
+    assertAccuracyModification(3, 1, WeaponStatsType.Thrown_BowBonuses);
+    assertAccuracyModification(3, 1, WeaponStatsType.Flame);
   }
 
   @Test
