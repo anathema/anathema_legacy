@@ -9,12 +9,19 @@ dependencies {
   compile 'com.lowagie:itext:1.4'
   compile project(':Lib_Workflow')
   compile project(':Lib_Gui')
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+  testCompile 'org.easymock:easymock:3.1'
 }
 
 sourceSets {
   main {
     resources {
       srcDir 'resources'
+    }
+  }
+  test {
+    java {
+      srcDir 'test'
     }
   }
 }
