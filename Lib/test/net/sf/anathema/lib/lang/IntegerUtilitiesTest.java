@@ -1,8 +1,6 @@
-package net.sf.anathema.test.lib.lang;
+package net.sf.anathema.lib.lang;
 
 import java.util.Arrays;
-
-import net.sf.anathema.lib.lang.IntegerUtilities;
 
 import org.junit.Assert;
 import org.junit.Test;

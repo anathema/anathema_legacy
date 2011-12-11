@@ -1,9 +1,7 @@
-package net.sf.anathema.test.lib.collection;
+package net.sf.anathema.lib.collection;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import net.sf.anathema.lib.collection.ListOrderedSet;
 
 import org.junit.Assert;
 import org.junit.Test;

@@ -1,9 +1,8 @@
-package net.sf.anathema.test.lib.xml;
+package net.sf.anathema.lib.xml;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
-import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.dom4j.Document;
 import org.dom4j.Element;
