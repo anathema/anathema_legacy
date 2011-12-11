@@ -9,4 +9,17 @@ sourceSets {
       srcDir 'resources'
     }
   }
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
+}
+
+configurations {
+  tests
+}
+
+artifacts {
+  tests testJar
 }
