@@ -53,8 +53,8 @@ public class RepositoryLocationResolverTest {
 
   @Test
   public void testSystemPropertyWithUserHomeWildcard() throws Exception {
-    System.setProperty(SYSTEM_PROPERTY_REPOSITORY, "%USER_HOME%" + "/Liebäs"); //$NON-NLS-1$ //$NON-NLS-2$
-    assertRepositoryLocation(getUserHomeSystemProperty() + "/Liebäs"); //$NON-NLS-1$ 
+    System.setProperty(SYSTEM_PROPERTY_REPOSITORY, "%USER_HOME%" + "/Liebaes"); //$NON-NLS-1$ //$NON-NLS-2$
+    assertRepositoryLocation(getUserHomeSystemProperty() + "/Liebaes"); //$NON-NLS-1$
   }
 
   @After
