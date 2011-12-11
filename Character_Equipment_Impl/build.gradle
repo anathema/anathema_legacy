@@ -6,6 +6,7 @@ dependencies {
   compile project(':Character_Library')
   compile project(':Character_Solar')
   testCompile group: 'junit', name: 'junit', version: '4.+'
+  testCompile 'easymock:easymock:2.0'
 }
 
 sourceSets {
