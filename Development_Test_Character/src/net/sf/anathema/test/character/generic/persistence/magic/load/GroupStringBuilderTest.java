@@ -1,19 +1,20 @@
 package net.sf.anathema.test.character.generic.persistence.magic.load;
 
+import static org.junit.Assert.assertEquals;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GroupStringBuilder;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
-import net.sf.anathema.lib.testing.BasicTestCase;
-import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.dom4j.Element;
+import org.junit.Test;
 
-public class GroupStringBuilderTest extends BasicTestCase {
+public class GroupStringBuilderTest {
 
   private GroupStringBuilder builder = new GroupStringBuilder();
 
+  @Test
   public void testBuildGroupFromAttribute() throws Exception {
     String xml = "<charm group=\"group\"/>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
@@ -21,21 +22,17 @@ public class GroupStringBuilderTest extends BasicTestCase {
     assertEquals("group", id); //$NON-NLS-1$
   }
 
+  @Test
   public void testBuildGroupFromPrimaryTrait() throws Exception {
     String xml = "<charm />"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     String id = builder.build(rootElement, new ValuedTraitType(AttributeType.Appearance, 5));
     assertEquals("Appearance", id); //$NON-NLS-1$
   }
-
+  @Test(expected=CharmException.class)
   public void testBuildGroupWithoutPrimaryTrait() throws Exception {
-    assertThrowsException(CharmException.class, new ExceptionConvertingBlock() {
-      @Override
-      public void executeExceptionThrowing() throws Exception {
         String xml = "<charm />"; //$NON-NLS-1$
         Element rootElement = DocumentUtilities.read(xml).getRootElement();
         builder.build(rootElement, null);
-      }
-    });
   }
 }

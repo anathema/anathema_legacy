@@ -13,4 +13,9 @@ sourceSets {
       srcDir 'resources'
     }
   }
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
 }

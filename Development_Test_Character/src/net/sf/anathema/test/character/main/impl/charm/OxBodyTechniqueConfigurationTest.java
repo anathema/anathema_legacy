@@ -3,6 +3,8 @@ package net.sf.anathema.test.character.main.impl.charm;
 import java.util.LinkedHashMap;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.dummy.DummyCasteType;
+import net.sf.anathema.character.generic.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -22,8 +24,6 @@ import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecke
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
-import net.sf.anathema.dummy.character.DummyCasteType;
-import net.sf.anathema.dummy.character.DummyCharacterModelContext;
 import net.sf.anathema.test.character.BasicCharacterTestCase;
 
 public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {

@@ -1,23 +1,23 @@
 package net.sf.anathema.test.character.generic.persistence.magic.load;
 
+import static org.junit.Assert.assertEquals;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.impl.magic.HealthCost;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.HealthCostBuilder;
 import net.sf.anathema.character.generic.magic.general.IHealthCost;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.testing.BasicTestCase;
-import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
 
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultElement;
+import org.junit.Before;
+import org.junit.Test;
 
-public class HealthCostBuilderTest extends BasicTestCase {
+public class HealthCostBuilderTest {
 
   private HealthCostBuilder builder;
 
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
+  @Before
+  public void setUp() throws Exception {
     builder = new HealthCostBuilder();
   }
 
@@ -26,21 +26,17 @@ public class HealthCostBuilderTest extends BasicTestCase {
     return element;
   }
 
+  @Test
   public void testNullElement() throws Exception {
     IHealthCost cost = builder.buildCost(null);
     assertEquals(HealthCost.NULL_HEALTH_COST, cost);
   }
-
+  @Test(expected=PersistenceException.class)
   public void testNoCostAttribute() throws Exception {
-    assertThrowsException(PersistenceException.class, new ExceptionConvertingBlock() {
-      @Override
-      public void executeExceptionThrowing() throws Exception {
         Element element = getHealthElement();
         builder.buildCost(element);
-      }
-    });
   }
-
+  @Test
   public void testCostAttributeOnly() throws Exception {
     Element healthElement = getHealthElement();
     healthElement.addAttribute("cost", "4"); //$NON-NLS-1$//$NON-NLS-2$
@@ -49,7 +45,7 @@ public class HealthCostBuilderTest extends BasicTestCase {
     assertEquals(null, cost.getText());
     assertEquals(HealthType.Lethal, cost.getType());
   }
-
+  @Test
   public void testCostAndTextAttributes() throws Exception {
     Element healthElement = getHealthElement();
     healthElement.addAttribute("cost", "4"); //$NON-NLS-1$//$NON-NLS-2$
@@ -60,7 +56,7 @@ public class HealthCostBuilderTest extends BasicTestCase {
     assertEquals(expected, cost.getText());
     assertEquals(HealthType.Lethal, cost.getType());
   }
-
+  @Test
   public void testCostAttributeAndTypeAttribute() throws Exception {
     Element healthElement = getHealthElement();
     healthElement.addAttribute("cost", "2"); //$NON-NLS-1$//$NON-NLS-2$

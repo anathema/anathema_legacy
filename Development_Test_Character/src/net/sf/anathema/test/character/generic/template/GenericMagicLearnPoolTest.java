@@ -1,11 +1,11 @@
 package net.sf.anathema.test.character.generic.template;
 
+import net.sf.anathema.character.generic.dummy.DummyGenericTraitCollection;
+import net.sf.anathema.character.generic.dummy.magic.DummySpell;
 import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.util.IPointModification;
-import net.sf.anathema.dummy.character.magic.DummySpell;
-import net.sf.anathema.dummy.character.trait.DummyGenericTraitCollection;
 
 import org.junit.Assert;
 import org.junit.Before;

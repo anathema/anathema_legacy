@@ -7,15 +7,28 @@ Set Up
 2. Import the project into IDEA.
 3. (If necessary,) open the 'Project Structure' Dialog (Ctrl+Alt+Shift+S) and set the Project SDK to a SDK > 6.0.
 
+### Developing with Eclipse ###
+1. Run ``gradlew eclipseProject eclipseClasspath eclipseJdt`` to create the Eclipse project files.
+2. Import all projects into Eclipse.
+
+Development
+===========
+### Launching Anathema from an IDE ###
+Launch ``net.sf.anathema.AnathemaDevelopmentBootLoader``.
+
+### Adding a dependency ###
+1. Add the dependency entry to the module's ``build.gradle``.
+2. Run ``gradlew eclipseClasspath`` or ``gradlew ideaModule`` respectively.
+
 Deployment
 ==========
 ### Building a plain zip ###
-> The windows executable will only be built on Windows systems.
+> This works on any operating system. However, the Windows executable will only be included on Windows systems.
 
 Run ``gradlew buildZip``. Done.
 
 ### Building a Windows installer ###
-> This will only work on Windows.
+> This only works on Windows.
 
 1. Install [NSIS](http://nsis.sourceforge.net/Download "Our installer-framework of choice").
 2. Install the [NSIS Access Control Plugin] (http://nsis.sourceforge.net/AccessControl_plug-in "We need it to grant permissions on the repository-folder.") by extracting the ZIP into your NSIS folder.
@@ -23,7 +36,7 @@ Run ``gradlew buildZip``. Done.
 4. Run ``gradlew buildWindowsInstaller``.
 
 ### Building a Macintosh Disk Image ###
-> This will only work on Mac OS X.
+> This only works on Mac OS X.
 
 1. Run ``gradlew buildZip`` to compile the distribution.
 2. Run ``gradlew -b macApplication.gradle buildMacApplication`` to build the Applicaton Folder.

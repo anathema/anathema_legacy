@@ -1,8 +1,18 @@
 dependencies {
-	compile files(
-		"../Thirdparty/disy/disy-commons-swing-layout.jar",
-		"../Thirdparty/disy/disy-commons-swing-dialog.jar",
-		"../Thirdparty/XML/dom4j-1.5.jar"
-    )
-	compile project(':Lib')
+  compile files(
+          "../Thirdparty/disy/disy-commons-swing-layout.jar",
+          "../Thirdparty/disy/disy-commons-swing-dialog.jar",
+          "../Thirdparty/XML/dom4j-1.5.jar"
+  )
+  compile project(':Lib')
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+  testCompile 'org.easymock:easymock:3.1'
+}
+
+sourceSets {
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
 }

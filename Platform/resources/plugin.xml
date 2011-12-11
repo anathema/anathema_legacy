@@ -4,9 +4,6 @@
 		<library id="core" path="./" type="code">
 			<export prefix="*"/>
 		</library>
-		<library id="graphlayout" path="${ANATHEMA_LIB}/graphlayout.jar" type="code">
-			<export prefix="*"/>
-		</library>
 		<library id="disyCore" path="${ANATHEMA_LIB}/disy-commons-core.jar" type="code">
 			<export prefix="*"/>
 		</library>

@@ -6,11 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
+import net.sf.anathema.character.equipment.dummy.DemoEquipmentAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.dummy.DummyFavorableGenericTrait;
+import net.sf.anathema.character.generic.dummy.DummyGenericTrait;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -28,12 +31,9 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.intimacies.presenter.DemoIntimaciesModel;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.solar.caste.SolarCaste;
-import net.sf.anathema.dummy.character.additional.DemoEquipmentAdditionalModel;
-import net.sf.anathema.dummy.character.additional.DemoIntimaciesModel;
-import net.sf.anathema.dummy.character.trait.DummyFavorableGenericTrait;
-import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 

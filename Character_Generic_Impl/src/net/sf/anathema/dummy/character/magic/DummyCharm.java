@@ -33,6 +33,8 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
+import static java.util.Collections.emptySet;
+
 public class DummyCharm extends Identificate implements ICharm {
 
   private ValuedTraitType essence;
@@ -156,7 +158,7 @@ public class DummyCharm extends Identificate implements ICharm {
   
   public Set<String> getRenderingPrerequisiteLabels()
   {
-	return null;
+	return emptySet();
   }
 
   public CostList getTemporaryCost() {

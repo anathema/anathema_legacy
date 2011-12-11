@@ -10,7 +10,7 @@ def buildPlugin = {name, projects, task ->
 
 task buildCorePlugin(type: Jar) {
   def name = 'core'
-  def projects = ['Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow', 'Platform', 'Platform_Database', 'Platform_SvgTree']
+  def projects = ['Lib_Thirdparty', 'Lib', 'Lib_Gui', 'Lib_Workflow', 'Platform', 'Platform_Database', 'Platform_GraphLayout', 'Platform_SvgTree']
   buildPlugin name, projects, delegate
 }
 

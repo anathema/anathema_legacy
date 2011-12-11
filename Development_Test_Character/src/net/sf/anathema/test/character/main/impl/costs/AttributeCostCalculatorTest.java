@@ -3,8 +3,13 @@ package net.sf.anathema.test.character.main.impl.costs;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.dummy.trait.DummyCoreTraitConfiguration;
+import net.sf.anathema.character.dummy.trait.DummyTraitContext;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.character.ILimitationContext;
+import net.sf.anathema.character.generic.dummy.DummyAdditionalBonusPointManagment;
+import net.sf.anathema.character.generic.dummy.DummyGenericCharacter;
+import net.sf.anathema.character.generic.dummy.template.DummyCharacterTemplate;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
@@ -28,11 +33,6 @@ import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.dummy.character.DummyAdditionalBonusPointManagment;
-import net.sf.anathema.dummy.character.DummyGenericCharacter;
-import net.sf.anathema.dummy.character.template.DummyCharacterTemplate;
-import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
-import net.sf.anathema.dummy.character.trait.DummyTraitContext;
 import net.sf.anathema.test.character.BasicCharacterTestCase;
 
 public class AttributeCostCalculatorTest extends BasicCharacterTestCase {

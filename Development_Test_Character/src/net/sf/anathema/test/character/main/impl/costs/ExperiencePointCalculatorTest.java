@@ -1,9 +1,9 @@
 package net.sf.anathema.test.character.main.impl.costs;
 
+import net.sf.anathema.character.dummy.trait.DummyBasicTrait;
 import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointCostCalculator;
-import net.sf.anathema.dummy.character.trait.DummyBasicTrait;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 import org.easymock.EasyMock;

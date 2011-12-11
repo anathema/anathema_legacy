@@ -1,6 +1,9 @@
 package net.sf.anathema.test.character.main.impl.trait;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.dummy.DummyCasteType;
+import net.sf.anathema.character.generic.dummy.DummyCharacterModelContext;
+import net.sf.anathema.character.generic.dummy.DummyGenericTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
@@ -21,9 +24,6 @@ import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.dummy.character.DummyCasteType;
-import net.sf.anathema.dummy.character.DummyCharacterModelContext;
-import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 import org.easymock.EasyMock;

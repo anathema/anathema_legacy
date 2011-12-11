@@ -1,7 +1,8 @@
 package net.sf.anathema.test.character.generic.magic.charms;
 
+import net.sf.anathema.character.generic.dummy.DummyBasicCharacterData;
+import net.sf.anathema.character.generic.dummy.DummyCondition;
 import net.sf.anathema.character.generic.impl.magic.charm.special.Subeffect;
-import net.sf.anathema.dummy.character.DummyBasicCharacterData;
 
 import org.junit.Assert;
 import org.junit.Test;

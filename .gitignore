@@ -7,3 +7,8 @@ Anathema*.zip
 *.ipr
 *.iws
 out/
+.classpath
+.project
+.settings/
+*.launch
+*.pdf

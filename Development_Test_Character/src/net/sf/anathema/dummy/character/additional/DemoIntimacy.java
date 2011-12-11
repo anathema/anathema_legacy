@@ -1,5 +1,7 @@
 package net.sf.anathema.dummy.character.additional;
 
+import net.sf.anathema.character.dummy.trait.DummyCoreTraitConfiguration;
+import net.sf.anathema.character.dummy.trait.DummyTraitContext;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
@@ -10,8 +12,6 @@ import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
-import net.sf.anathema.dummy.character.trait.DummyTraitContext;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 
 public class DemoIntimacy implements IIntimacy {

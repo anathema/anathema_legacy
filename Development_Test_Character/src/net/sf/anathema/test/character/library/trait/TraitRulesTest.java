@@ -1,10 +1,10 @@
 package net.sf.anathema.test.character.library.trait;
 
+import net.sf.anathema.character.generic.dummy.DummyLimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
-import net.sf.anathema.dummy.character.DummyLimitationContext;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 import org.easymock.EasyMock;

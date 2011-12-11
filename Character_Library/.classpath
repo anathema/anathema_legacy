@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Character_Reporting"/>
-	<classpathentry exported="true" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar" sourcepath="/Thirdparty/Swing/l2fprod-common-0.2dev-src.zip"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic"/>
-	<classpathentry kind="output" path="build/classes"/>
-</classpath>

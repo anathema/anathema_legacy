@@ -2,3 +2,19 @@ dependencies {
   compile project(':Lib')
   compile project(':Platform_SvgTree')
 }
+
+sourceSets {
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
+}
+
+configurations {
+  tests
+}
+
+artifacts {
+  tests testJar
+}
