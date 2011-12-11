@@ -1,5 +1,7 @@
 package net.sf.anathema.test.charm.entry.persistence;
 
+import static org.junit.Assert.*;
+
 import java.util.List;
 
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -15,34 +17,34 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
+import org.junit.Before;
+import org.junit.Test;
 
-public class PrerequisiteWriterTest extends BasicTestCase {
+public class PrerequisiteWriterTest {
   private PrerequisiteWriter writer;
   private Element element;
   private DummyCharm charm;
 
-  @Override
-  protected void setUp() throws Exception {
+  @Before
+  public void setUp() throws Exception {
     writer = new PrerequisiteWriter();
     element = DocumentFactory.getInstance().createElement("charm"); //$NON-NLS-1$    
     charm = new DummyCharm();
   }
-
+  
+  @Test(expected=PersistenceException.class)
   public void testNoPrerequisites() throws Exception {
-    assertThrowsException(PersistenceException.class, new ExceptionConvertingBlock() {
-      @Override
-      public void executeExceptionThrowing() throws Exception {
         writer.write(charm, element);
-      }
-    });
   }
 
+  @Test
   public void testEssencePrerequisite() throws Exception {
     charm.setEssence(new ValuedTraitType(OtherTraitType.Essence, 4));
     writer.write(charm, element);
     assertEquals(4, ElementUtilities.getRequiredIntAttrib(element.element("prerequisite").element("essence"), "value")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
   }
 
+  @Test
   public void testTraitPrerequisites() throws Exception {
     charm.setEssence(new ValuedTraitType(OtherTraitType.Essence, 4));
     charm.setPrerequisites(new ValuedTraitType[] {
@@ -57,6 +59,7 @@ public class PrerequisiteWriterTest extends BasicTestCase {
     assertEquals(3, ElementUtilities.getRequiredIntAttrib(traitPrerequisites.get(1), "value")); //$NON-NLS-1$
   }
 
+  @Test
   public void testCharmPrerequisites() throws Exception {
     String name1 = "aCharm"; //$NON-NLS-1$
     String name2 = "bCharm"; //$NON-NLS-1$

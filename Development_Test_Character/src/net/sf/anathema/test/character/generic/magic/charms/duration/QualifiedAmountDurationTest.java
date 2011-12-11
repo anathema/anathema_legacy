@@ -3,7 +3,7 @@ package net.sf.anathema.test.character.generic.magic.charms.duration;
 import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.testing.BasicTestCase;
-import net.sf.anathema.test.util.NullResources;
+import net.sf.anathema.test.character.NullResources;
 
 public class QualifiedAmountDurationTest extends BasicTestCase {
 
