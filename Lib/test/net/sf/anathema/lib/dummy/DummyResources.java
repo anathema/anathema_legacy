@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.swing.Icon;
 
+import net.disy.commons.swing.icon.EmptyIcon;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -32,7 +33,7 @@ public class DummyResources implements IResources {
   }
 
   public Icon getImageIcon(Class< ? > requestor, String relativePath) {
-    throw new NotYetImplementedException();
+    return new EmptyIcon();
   }
 
 }

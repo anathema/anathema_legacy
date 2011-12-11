@@ -4,31 +4,7 @@ import junit.framework.TestCase;
 
 import net.disy.commons.core.util.ISimpleBlock;
 
-public class BasicTestCase extends TestCase {
-
-  public static <T> void assertThrowsException(Class<T> exceptionClass, ISimpleBlock block) {
-    try {
-      block.execute();
-      fail("expected: " + exceptionClass.getName() + ", actual: no exception thrown"); //$NON-NLS-1$ //$NON-NLS-2$
-    }
-    catch (Exception thrown) {
-      assertIsAssignableFrom(exceptionClass, thrown.getClass());
-    }
-  }
-
-  public static <T> void assertThrowsException(Class<T> exceptionClass, ExceptionConvertingBlock block) {
-    try {
-      block.execute();
-      fail("expected: " + exceptionClass.getName() + ", actual: no exception thrown"); //$NON-NLS-1$ //$NON-NLS-2$
-    }
-    catch (Exception thrown) {
-      assertIsAssignableFrom(exceptionClass, thrown.getCause().getClass());
-    }
-  }
-
-  public static <T> void assertIsAssignableFrom(Class<T> expected, Class<?> actual) {
-    assertTrue("expected: " + expected + ", actual: " + actual, expected.isAssignableFrom(actual)); //$NON-NLS-1$ //$NON-NLS-2$
-  }
+public abstract class BasicTestCase extends TestCase {
 
   public static void assertEquals(Object[] expected, Object[] actual) {
     assertEquals(null, expected, actual);

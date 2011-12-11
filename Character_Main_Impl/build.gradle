@@ -4,6 +4,9 @@ dependencies {
   compile project(':Character_Equipment_Impl')
   testCompile group: 'junit', name: 'junit', version: '4.+'
   testCompile 'org.mockito:mockito-core:1.8.5'
+  testCompile project(path: ':Character_Generic', configuration: 'tests')
+  testCompile project(path: ':Character_Generic_Framework', configuration: 'tests')
+  testCompile project(path: ':Character_Generic_Impl', configuration: 'tests')
 }
 
 sourceSets {

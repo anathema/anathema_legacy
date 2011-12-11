@@ -1,27 +1,32 @@
 package net.sf.anathema.graph.util;
 
-import net.sf.anathema.lib.testing.BasicTestCase;
+import org.junit.Test;
 
-public class BarycenterCalculatorTest extends BasicTestCase {
+import static org.junit.Assert.assertEquals;
 
+public class BarycenterCalculatorTest {
+
+  @Test
   public void testUnconnectedNode() throws Exception {
-    boolean[] connections = new boolean[] { false };
+    boolean[] connections = new boolean[]{false};
     Double center = BarycenterCalculator.calculateVectorCenter(connections);
     assertEquals(null, center);
   }
 
+  @Test
   public void testConnectedNode() throws Exception {
-    boolean[] connections = new boolean[] { true };
+    boolean[] connections = new boolean[]{true};
     Double center = BarycenterCalculator.calculateVectorCenter(connections);
-    assertEquals(1.0, center);
+    assertEquals(new Double(1), center);
   }
 
+  @Test
   public void testOrderDependent() throws Exception {
-    boolean[] connections = new boolean[] { true, false };
+    boolean[] connections = new boolean[]{true, false};
     Double center = BarycenterCalculator.calculateVectorCenter(connections);
-    assertEquals(1.0, center);
-    boolean[] connections2 = new boolean[] { false, true };
+    assertEquals(new Double(1), center);
+    boolean[] connections2 = new boolean[]{false, true};
     Double center2 = BarycenterCalculator.calculateVectorCenter(connections2);
-    assertEquals(2.0, center2);
+    assertEquals(new Double(2), center2);
   }
 }

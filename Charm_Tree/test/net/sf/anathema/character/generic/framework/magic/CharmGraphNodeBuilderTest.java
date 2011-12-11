@@ -3,13 +3,16 @@ package net.sf.anathema.character.generic.framework.magic;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
-import net.sf.anathema.lib.testing.BasicTestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CharmGraphNodeBuilderTest extends BasicTestCase {
+import static org.junit.Assert.*;
 
+public class CharmGraphNodeBuilderTest
+{
+  @Test
   public void testExternalCharmSingleOccurence() throws Exception {
     String parentName = "ExternalParent";//$NON-NLS-1$
     DummyCharm externalParent = new DummyCharm(parentName);
@@ -29,6 +32,9 @@ public class CharmGraphNodeBuilderTest extends BasicTestCase {
     }
   }
 
+
+
+  @Test
   public void testExternalCharmMultipleOccurence() throws Exception {
     String parentName = "ExternalParent";//$NON-NLS-1$
     String firstChildName = "Child1"; //$NON-NLS-1$

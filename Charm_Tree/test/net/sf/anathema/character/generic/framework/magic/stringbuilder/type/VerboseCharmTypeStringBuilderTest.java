@@ -7,14 +7,17 @@ import net.sf.anathema.character.generic.impl.magic.charm.type.SimpleSpecialsMod
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 import net.sf.anathema.lib.dummy.DummyResources;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class VerboseCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuilderTest {
 
   private VerboseCharmTypeStringBuilder builder;
 
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
+  @Before
+  public void setUp() throws Exception {
     DummyResources resources = new DummyResources();
     resources.putString("CharmTreeView.ToolTip.Type", "Type"); //$NON-NLS-1$ //$NON-NLS-2$
     resources.putString("ExtraAction", "Extra Action"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -37,6 +40,7 @@ public class VerboseCharmTypeStringBuilderTest extends AbstractCharmTypeStringBu
     return builder;
   }
 
+  @Test
   public void testReflexiveModelSingleStep() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Reflexive);
@@ -45,6 +49,7 @@ public class VerboseCharmTypeStringBuilderTest extends AbstractCharmTypeStringBu
     assertEquals("Reflexive (Step 4)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testReflexiveModelDoubleStep() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Reflexive);
@@ -53,6 +58,7 @@ public class VerboseCharmTypeStringBuilderTest extends AbstractCharmTypeStringBu
     assertEquals("Reflexive (Step 1 or 2)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelTickDefaultDefense() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);
@@ -61,6 +67,7 @@ public class VerboseCharmTypeStringBuilderTest extends AbstractCharmTypeStringBu
     assertEquals("Simple (Speed 4)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelTickDefaultSpeed() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);
@@ -69,6 +76,7 @@ public class VerboseCharmTypeStringBuilderTest extends AbstractCharmTypeStringBu
     assertEquals("Simple (DV -0)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelTick() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);
@@ -77,6 +85,7 @@ public class VerboseCharmTypeStringBuilderTest extends AbstractCharmTypeStringBu
     assertEquals("Simple (Speed 3, DV -2)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelDefaultLongTick() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);
@@ -85,6 +94,7 @@ public class VerboseCharmTypeStringBuilderTest extends AbstractCharmTypeStringBu
     assertEquals("Simple (Speed 6 in long ticks)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelLongTick() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);
@@ -93,6 +103,7 @@ public class VerboseCharmTypeStringBuilderTest extends AbstractCharmTypeStringBu
     assertEquals("Simple (Speed 3 in long ticks)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelDramaticActionDefaultDefense() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);
@@ -101,6 +112,7 @@ public class VerboseCharmTypeStringBuilderTest extends AbstractCharmTypeStringBu
     assertEquals("Simple (Dramatic Action)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelDramaticAction() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);

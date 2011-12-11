@@ -6,7 +6,8 @@ dependencies {
   compile project(':Character_Library')
   compile project(':Character_Solar')
   testCompile group: 'junit', name: 'junit', version: '4.+'
-  testCompile 'org.easymock:easymock:3.1'
+  testCompile 'org.mockito:mockito-core:1.8.5'
+  testCompile project(path: ':Lib', configuration: 'tests')
 }
 
 sourceSets {

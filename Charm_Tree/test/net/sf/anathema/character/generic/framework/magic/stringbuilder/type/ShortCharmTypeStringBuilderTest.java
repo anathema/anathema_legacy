@@ -7,14 +7,17 @@ import net.sf.anathema.character.generic.impl.magic.charm.type.SimpleSpecialsMod
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 import net.sf.anathema.lib.dummy.DummyResources;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuilderTest {
 
   private ShortCharmTypeStringBuilder builder;
 
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
+  @Before
+  public void setUp() throws Exception {
     DummyResources resources = new DummyResources();
     resources.putString("CharmTreeView.ToolTip.Type", "Type"); //$NON-NLS-1$ //$NON-NLS-2$
     resources.putString("ExtraAction", "Extra Action"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -33,6 +36,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     return builder;
   }
 
+  @Test
   public void testReflexiveModelShortDoubleStep() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Reflexive);
@@ -41,6 +45,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     assertEquals("Reflexive (1/2)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testReflexiveModelShortSingleStep() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Reflexive);
@@ -49,6 +54,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     assertEquals("Reflexive (4)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelTickDefaultDefense() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);
@@ -57,6 +63,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     assertEquals("Simple (4, -1)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelTickDefaultSpeed() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);
@@ -65,6 +72,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     assertEquals("Simple (6, -0)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelTick() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);
@@ -73,6 +81,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     assertEquals("Simple (3, -2)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelLongTick() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);
@@ -81,6 +90,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     assertEquals("Simple (3 LT, -1)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelDefaultLongTick() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);
@@ -89,6 +99,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     assertEquals("Simple (6 LT, -1)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelDramaticActionDefaultDefense() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);
@@ -97,6 +108,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     assertEquals("Simple (DA, -1)", string); //$NON-NLS-1$
   }
 
+  @Test
   public void testSimpleModelDramaticAction() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.Simple);

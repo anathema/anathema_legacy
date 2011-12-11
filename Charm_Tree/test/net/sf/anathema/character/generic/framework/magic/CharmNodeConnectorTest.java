@@ -6,32 +6,37 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.NodeFactory;
-import net.sf.anathema.lib.testing.BasicTestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-public class CharmNodeConnectorTest extends BasicTestCase {
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+public class CharmNodeConnectorTest {
 
   private LinkedHashMap<String, IIdentifiedRegularNode> nodes;
   private ArrayList<ICharm> list;
 
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
+  @Before
+  public void setUp() throws Exception {
     nodes = new LinkedHashMap<String, IIdentifiedRegularNode>();
     list = new ArrayList<ICharm>();
   }
 
+  @Test
   public void testNoNodes() throws Exception {
     connectNodes();
   }
 
+  @Test
   public void testSingleParentOnlyChild() throws Exception {
     String parentName = "Parent";//$NON-NLS-1$
     String childName = "Child"; //$NON-NLS-1$
     DummyCharm parent = new DummyCharm(parentName);
-    DummyCharm child = new DummyCharm(childName, new ICharm[] { parent });
+    DummyCharm child = new DummyCharm(childName, new ICharm[]{parent});
     list.add(child);
     nodes.put(parentName, NodeFactory.createChildlessNode(parentName));
     nodes.put(childName, NodeFactory.createChildlessNode(childName));
@@ -42,13 +47,14 @@ public class CharmNodeConnectorTest extends BasicTestCase {
     assertEquals(parentName, ((IIdentifiedRegularNode) childNode.getParents()[0]).getId());
   }
 
+  @Test
   public void testSingleParentMultiChild() throws Exception {
     String parentName = "Parent";//$NON-NLS-1$
     String firstChildName = "Child1"; //$NON-NLS-1$
     String secondChildName = "Child2"; //$NON-NLS-1$
     DummyCharm parent = new DummyCharm(parentName);
-    DummyCharm firstChild = new DummyCharm(firstChildName, new ICharm[] { parent });
-    DummyCharm secondChild = new DummyCharm(secondChildName, new ICharm[] { parent });
+    DummyCharm firstChild = new DummyCharm(firstChildName, new ICharm[]{parent});
+    DummyCharm secondChild = new DummyCharm(secondChildName, new ICharm[]{parent});
     list.add(firstChild);
     list.add(secondChild);
     nodes.put(parentName, NodeFactory.createChildlessNode(parentName));
@@ -67,6 +73,7 @@ public class CharmNodeConnectorTest extends BasicTestCase {
     assertEquals(parentNode, secondChildNode.getParents()[0]);
   }
 
+  @Test
   public void testAttributeNodeConnection() throws Exception {
     String charmName = "One Attribute"; //$NON-NLS-1$
     DummyCharm charm = new DummyCharm(charmName);
