@@ -4,6 +4,8 @@ dependencies {
   compile project(':Character_Equipment')
   compile project(':Character_Equipment_Impl')
   testCompile group: 'junit', name: 'junit', version: '4.+'
+  testCompile project(path: ':Character_Generic', configuration: 'tests')
+  testCompile project(path: ':Lib', configuration: 'tests')
 }
 
 sourceSets {
