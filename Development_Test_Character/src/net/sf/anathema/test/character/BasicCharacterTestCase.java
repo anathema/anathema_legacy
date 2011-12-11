@@ -1,15 +1,15 @@
 package net.sf.anathema.test.character;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.dummy.DummyCharacterModelContext;
+import net.sf.anathema.character.generic.dummy.DummyGenericCharacter;
+import net.sf.anathema.character.generic.dummy.DummyGenericTrait;
+import net.sf.anathema.character.generic.dummy.template.DummyCharacterTemplate;
 import net.sf.anathema.character.generic.framework.CharacterModuleContainerInitializer;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.dummy.character.DummyCharacterModelContext;
-import net.sf.anathema.dummy.character.DummyGenericCharacter;
-import net.sf.anathema.dummy.character.template.DummyCharacterTemplate;
-import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.testing.BasicTestCase;

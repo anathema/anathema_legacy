@@ -1,5 +1,13 @@
 package net.sf.anathema.test.character.main.impl.costs;
 
+import net.sf.anathema.character.dummy.trait.DummyCoreTraitConfiguration;
+import net.sf.anathema.character.generic.dummy.DummyAdditionalBonusPointManagment;
+import net.sf.anathema.character.generic.dummy.DummyAdditionalSpellPointManagement;
+import net.sf.anathema.character.generic.dummy.DummyGenericCharacter;
+import net.sf.anathema.character.generic.dummy.magic.DummyCharmConfiguration;
+import net.sf.anathema.character.generic.dummy.magic.DummySpell;
+import net.sf.anathema.character.generic.dummy.magic.DummySpellConfiguration;
+import net.sf.anathema.character.generic.dummy.template.DummyCharacterTemplate;
 import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
@@ -8,14 +16,6 @@ import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.dummy.character.DummyAdditionalBonusPointManagment;
-import net.sf.anathema.dummy.character.DummyAdditionalSpellPointManagement;
-import net.sf.anathema.dummy.character.DummyGenericCharacter;
-import net.sf.anathema.dummy.character.magic.DummyCharmConfiguration;
-import net.sf.anathema.dummy.character.magic.DummySpell;
-import net.sf.anathema.dummy.character.magic.DummySpellConfiguration;
-import net.sf.anathema.dummy.character.template.DummyCharacterTemplate;
-import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
 
 public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
 

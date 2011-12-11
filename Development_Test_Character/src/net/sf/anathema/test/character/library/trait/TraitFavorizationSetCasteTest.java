@@ -1,16 +1,16 @@
 package net.sf.anathema.test.character.library.trait;
 
+import net.sf.anathema.character.dummy.trait.DummyDefaultTrait;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.dummy.DummyBasicCharacterData;
+import net.sf.anathema.character.generic.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
-import net.sf.anathema.dummy.character.DummyBasicCharacterData;
-import net.sf.anathema.dummy.character.DummyCasteType;
-import net.sf.anathema.dummy.character.trait.DummyDefaultTrait;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class TraitFavorizationSetCasteTest extends BasicTestCase {

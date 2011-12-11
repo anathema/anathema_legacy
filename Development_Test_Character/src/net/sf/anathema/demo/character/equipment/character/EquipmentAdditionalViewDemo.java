@@ -2,13 +2,13 @@ package net.sf.anathema.demo.character.equipment.character;
 
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.EquipmentAdditionalPresenter;
+import net.sf.anathema.character.equipment.dummy.DemoEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
 import net.sf.anathema.character.equipment.impl.character.model.natural.secondedition.Kick;
 import net.sf.anathema.character.equipment.impl.character.model.natural.secondedition.Punch;
 import net.sf.anathema.character.equipment.impl.character.view.EquipmentAdditionalView;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.demo.character.equipment.DemoCollectionFactory;
-import net.sf.anathema.dummy.character.additional.DemoEquipmentAdditionalModel;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import de.jdemo.extensions.SwingDemoCase;
 

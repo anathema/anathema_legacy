@@ -1,7 +1,7 @@
 package net.sf.anathema.acceptance.fixture.character.template;
 
+import net.sf.anathema.character.generic.dummy.DummyFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.dummy.character.trait.DummyFavorableGenericTrait;
 
 public class CheckBonusPointTemplateFixture extends AbstractTemplateColumnFixture {
 

@@ -2,7 +2,7 @@ package net.sf.anathema.acceptance.fixture.character.template;
 
 import net.sf.anathema.acceptance.fixture.character.util.AbstractCharacterColumnFixture;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
-import net.sf.anathema.dummy.character.magic.DummySpell;
+import net.sf.anathema.character.generic.dummy.magic.DummySpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 
 public class CheckSorceryBackgroundFixture extends AbstractCharacterColumnFixture {

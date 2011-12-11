@@ -1,5 +1,8 @@
 package net.sf.anathema.test.character.main.impl.charm;
 
+import net.sf.anathema.character.generic.dummy.magic.DummyLearnableArbitrator;
+import net.sf.anathema.character.generic.dummy.magic.DummyLearningCharmGroupContainer;
+import net.sf.anathema.character.generic.dummy.template.DummyCharmTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
@@ -15,9 +18,6 @@ import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStra
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
-import net.sf.anathema.dummy.character.magic.DummyLearnableArbitrator;
-import net.sf.anathema.dummy.character.magic.DummyLearningCharmGroupContainer;
-import net.sf.anathema.dummy.character.template.DummyCharmTemplate;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class LearningCharmGroupTest extends BasicTestCase {

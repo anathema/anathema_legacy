@@ -5,9 +5,9 @@ import java.awt.Color;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
-import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGIntValueView;
-import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGIntValueDisplay;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGCategorizedSpecialNodeView;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGIntValueDisplay;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGIntValueView;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGViewControlButton;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;

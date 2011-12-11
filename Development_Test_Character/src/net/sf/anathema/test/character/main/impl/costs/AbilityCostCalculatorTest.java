@@ -1,5 +1,7 @@
 package net.sf.anathema.test.character.main.impl.costs;
 
+import net.sf.anathema.character.dummy.trait.DummyCoreTraitConfiguration;
+import net.sf.anathema.character.generic.dummy.DummyAdditionalBonusPointManagment;
 import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
@@ -10,8 +12,6 @@ import net.sf.anathema.character.impl.model.creation.bonus.ability.AbilityCostCa
 import net.sf.anathema.character.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
-import net.sf.anathema.dummy.character.DummyAdditionalBonusPointManagment;
-import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
 
 public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
