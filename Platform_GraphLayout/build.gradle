@@ -1,6 +1,19 @@
+repositories {
+  mavenCentral()
+}
+
 dependencies {
-	compile files(
-		"../Thirdparty/disy/disy-commons-core.jar"
-    )
-	compile project(':Lib')
+  compile files(
+          "../Thirdparty/disy/disy-commons-core.jar"
+  )
+  compile project(':Lib')
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+sourceSets {
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
 }
