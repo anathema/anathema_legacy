@@ -6,6 +6,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.theories.Theories;
+import org.junit.experimental.theories.Theory;
 
 import javax.swing.*;
 import javax.swing.plaf.metal.MetalLookAndFeel;
@@ -51,10 +53,10 @@ public class AnathemaEnvironmentTest {
   }
 
   @Test
-  public void testWindowsLookAndFeel() throws Exception {
+  public void testSystemLookAndFeel() throws Exception {
     preferences.setForceMetalLookAndFeel(false);
     AnathemaEnvironment.initLookAndFeel(preferences);
-    Assert.assertEquals(WindowsLookAndFeel.class, UIManager.getLookAndFeel().getClass());
+    Assert.assertEquals(UIManager.getSystemLookAndFeelClassName(), UIManager.getLookAndFeel().getClass().getName());
   }
 
   @Test
