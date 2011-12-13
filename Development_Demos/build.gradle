@@ -29,6 +29,7 @@ dependencies {
 
 test {
   scanForTestClasses = false
+  exclude '**/*'
 }
 
 sourceSets {
