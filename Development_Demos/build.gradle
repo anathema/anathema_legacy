@@ -1,0 +1,22 @@
+dependencies {
+  testCompile project(':Lib')
+  testCompile project(':Lib_Workflow')
+  testCompile project(':Platform')  
+  testCompile project(':Anathema')
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+  testCompile 'org.mockito:mockito-core:1.8.5'
+  testCompile files('../Thirdparty/disy/disy-commons-swing.jar', 
+  '../Thirdparty/disy/disy-commons-core.jar',
+  '../Thirdparty/Testing/jdemo.jar',
+  )
+}
+  
+scanForTestClasses = false
+
+sourceSets {
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
+}
