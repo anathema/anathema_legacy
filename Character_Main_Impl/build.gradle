@@ -16,3 +16,11 @@ sourceSets {
     }
   }
 }
+
+configurations {
+  tests
+}
+
+artifacts {
+  tests testJar
+}

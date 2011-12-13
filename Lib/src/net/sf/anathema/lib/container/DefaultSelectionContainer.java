@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.container;
 
+import net.sf.anathema.lib.lang.ArrayFactory;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import net.sf.anathema.lib.lang.ArrayFactory;
 
 public class DefaultSelectionContainer<V> implements IGenericSelectionContainer<V> {
 
@@ -23,7 +23,9 @@ public class DefaultSelectionContainer<V> implements IGenericSelectionContainer<
 
   public void setValues(V[] values) {
     valueList.clear();
-    Collections.addAll(valueList, values);
+    if (values != null) {
+      Collections.addAll(valueList, values);
+    }
   }
 
   public V[] getValues() {
