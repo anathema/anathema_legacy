@@ -32,8 +32,8 @@ public class TextEditorDemo extends SwingDemoCase {
       new TextPart("Dieser Text ist fett.", new TextFormat(FontStyle.BOLD, false)), //$NON-NLS-1$
       new TextPart(" Gefolgt von einem kursiven Teil, ", new TextFormat(FontStyle.ITALIC, false)), //$NON-NLS-1$
       new TextPart("und einmal beides.\n", new TextFormat(FontStyle.BOLD_ITALIC, false)), //$NON-NLS-1$
-      new TextPart("Doch wir k�nnen auch schlicht und einfach..\n", new TextFormat(FontStyle.PLAIN, false)), //$NON-NLS-1$
-      new TextPart("Und unterstrichen f�r die besonderen Gelegenheiten..\n", new TextFormat(FontStyle.PLAIN, true)),}; //$NON-NLS-1$
+      new TextPart("Doch wir koennen auch schlicht und einfach..\n", new TextFormat(FontStyle.PLAIN, false)), //$NON-NLS-1$
+      new TextPart("Und unterstrichen fuer die besonderen Gelegenheiten..\n", new TextFormat(FontStyle.PLAIN, true)),}; //$NON-NLS-1$
     DefaultStyledDocument document = new DefaultStyledDocument();
     final StyledTextManager textConverter = new StyledTextManager(document);
     textConverter.setText(textParts);
