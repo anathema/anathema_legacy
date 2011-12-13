@@ -164,7 +164,7 @@ public class FavorableTraitTest extends AbstractTraitTest {
     assertEquals(6, first.getCurrentValue());
   }
 
-  // TODO Test für den SpecialtyContainer
+  // TODO Test for the SpecialtyContainer
   @Test
   public void testExperienceSpecialtyCount() throws Exception {
     ISubTraitContainer container = new SpecialtiesContainer(
