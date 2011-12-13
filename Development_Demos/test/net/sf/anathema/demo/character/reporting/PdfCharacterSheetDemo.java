@@ -116,7 +116,7 @@ public class PdfCharacterSheetDemo {
     character.getIntimaciesModel().addEntry(new DemoIntimacy(longIntimacy, 0, character));
     ICharacterModelContext context = new CharacterModelContext(character);
     SolarVirtueFlawModel virtueFlawModel = new SolarVirtueFlawModel(context, new SolarVirtueFlawTemplate());
-    virtueFlawModel.getVirtueFlaw().getName().setText("Doll, doll, b�se");
+    virtueFlawModel.getVirtueFlaw().getName().setText("Doll, doll, boese");
     virtueFlawModel.getVirtueFlaw().getLimitBreak().setText(
         "Oh nein nicht schon wieder. Diese verschissene Welt hat mich gar nicht verdient.");
     character.addAdditionalModel(virtueFlawModel);

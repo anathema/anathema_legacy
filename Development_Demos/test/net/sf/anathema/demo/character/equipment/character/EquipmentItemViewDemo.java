@@ -12,7 +12,7 @@ public class EquipmentItemViewDemo extends SwingDemoCase {
     EquipmentObjectView view = new EquipmentObjectView();
     view.setItemTitle("Title"); //$NON-NLS-1$
     view.setItemDescription("Ganz viel description"); //$NON-NLS-1$
-    view.addStats("Böse Waffe: Viel, viel Schaden"); //$NON-NLS-1$
+    view.addStats("Boese Waffe: Viel, viel Schaden"); //$NON-NLS-1$
     view.addStats("Abyssal-Waffe: Jetzt auch mit aggrevated Schaden."); //$NON-NLS-1$
     show(view.getTaskGroup());
   }

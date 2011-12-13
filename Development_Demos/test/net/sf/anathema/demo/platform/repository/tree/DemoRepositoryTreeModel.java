@@ -32,7 +32,7 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
     types.add(NOTE);
     printNameFiles.add(new PrintNameFile(null, "Amber Quaint", "Amber Quaint", CHARACTER)); //$NON-NLS-1$ //$NON-NLS-2$
     printNameFiles.add(new PrintNameFile(null, "Vedia Telperion", "Vedia Telperion", CHARACTER)); //$NON-NLS-1$ //$NON-NLS-2$
-    printNameFiles.add(new PrintNameFile(null, "Der Lessor ist scheiﬂe.", "Note1", NOTE)); //$NON-NLS-1$ //$NON-NLS-2$
+    printNameFiles.add(new PrintNameFile(null, "Der Lessor ist scheisse.", "Note1", NOTE)); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public IItemType[] getAllItemTypes() {
