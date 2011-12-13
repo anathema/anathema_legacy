@@ -1,4 +1,4 @@
-package net.sf.anathema.dummy.character.additional;
+package net.sf.anathema.demo.character.reporting;
 
 import net.sf.anathema.character.dummy.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.character.dummy.trait.DummyTraitContext;

@@ -26,4 +26,4 @@ include('Anathema', 'Thirdparty',
         'Book_ScrollOfTheMonk', 'Book_ScrollOfTheMonk_ImperfectLotus',
         'Book_ThousandCorrectActions', 'Book_UnderTheRose', 'Box_DotFA',
 		
-		'Development_Demos', 'Development_Test_Character', 'Anathema_Acceptance_Tests')
+		'Development_Demos', 'Development_Test_Character', 'Anathema_Acceptance_Tests', 'Development_Code')
