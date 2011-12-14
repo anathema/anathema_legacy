@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
 
+import net.disy.commons.core.io.FileUtilities;
 import net.disy.commons.core.util.Ensure;
-import net.disy.commons.core.util.FileUtilities;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
 import net.sf.anathema.framework.presenter.IItemMangementModel;

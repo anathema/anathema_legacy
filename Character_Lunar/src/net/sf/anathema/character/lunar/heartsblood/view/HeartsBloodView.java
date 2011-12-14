@@ -4,8 +4,8 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
@@ -17,7 +17,7 @@ public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryV
   private final JPanel selectionPanel = new JPanel(new GridDialogLayout(2, false));
 
   public JComponent getComponent() {
-    content.add(selectionPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    content.add(selectionPanel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
     return content;
   }
 

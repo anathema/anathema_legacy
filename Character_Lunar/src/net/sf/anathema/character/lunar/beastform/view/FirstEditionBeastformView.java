@@ -7,11 +7,11 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionListener;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnView;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
@@ -40,13 +40,13 @@ public class FirstEditionBeastformView implements IBeastformView {
       content.add(charmValuePanel);
       content.add(new EndOfLineMarkerComponent());
 	  attributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
-	  GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalSpanData(2);
+	  GridDialogLayoutData data = GridDialogLayoutDataFactory.createHorizontalSpanData(2);
 	  data.setHorizontalAlignment(GridAlignment.FILL);
 	  content.add(attributePanel, data);
 	  content.add(new EndOfLineMarkerComponent());
 	  giftPanel.setBorder(new TitledBorder(properties.getGiftsString()));
 	  content.add(giftPanel);
-	  content.add(overviewPanel, GridDialogLayoutDataUtilities.createTopData());
+	  content.add(overviewPanel, GridDialogLayoutDataFactory.createTopData());
 	  return content;
   }
 

@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.userdialog.AbstractDialogPage;
+import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
@@ -17,7 +17,7 @@ public class AboutDialogPage extends AbstractDialogPage {
   private final IResources resources;
 
   public AboutDialogPage(IResources resources) {
-    super(new BasicMessage(resources.getString("Help.AboutDialog.CreatedLabel"))); //$NON-NLS-1$
+    super(resources.getString("Help.AboutDialog.CreatedLabel")); //$NON-NLS-1$
     this.resources = resources;
   }
 

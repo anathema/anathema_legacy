@@ -5,9 +5,10 @@ import java.awt.Component;
 import javax.swing.Action;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.dialog.userdialog.DefaultUserDialogConfiguration;
+import net.disy.commons.swing.dialog.userdialog.DefaultDialogConfigurationBuilder;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfigurationFactory;
+import net.disy.commons.swing.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -30,9 +31,9 @@ public final class RepositoryViewAction extends SmartAction {
   @Override
   protected void execute(Component parentComponent) {
     RepositoryBrowserDialogPage page = new RepositoryBrowserDialogPage(resources, model);
-    UserDialog userDialog = new UserDialog(parentComponent, new DefaultUserDialogConfiguration(
-        page,
-        DialogButtonConfigurationFactory.createOnlyOkay()));
+    DefaultDialogConfigurationBuilder<IDialogPage> dialogBuilder = new DefaultDialogConfigurationBuilder<IDialogPage>(page);
+    dialogBuilder.setButtonConfiguration(DialogButtonConfigurationFactory.createOkOnly());
+    UserDialog userDialog = new UserDialog(parentComponent, dialogBuilder.build());
     userDialog.getDialog().setModal(true);
     userDialog.getDialog().setResizable(false);
     userDialog.show();

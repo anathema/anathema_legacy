@@ -1,9 +1,9 @@
 package net.sf.anathema.lib.gui.dialog;
 
-import net.disy.commons.swing.dialog.userdialog.buttons.AbstractDialogButtonConfiguration;
+import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
-public class YesNoDialogButtonConfiguration extends AbstractDialogButtonConfiguration {
+public class YesNoDialogButtonConfiguration extends DialogButtonConfiguration {
 
   private final IResources resources;
 

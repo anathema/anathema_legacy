@@ -5,9 +5,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.util.LayoutUtilities;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.impl.module.IToggleButtonPanel;
@@ -29,7 +29,7 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
 
   public IToggleButtonPanel addToggleButtonPanel() {
     ToggleButtonPanel panel = new ToggleButtonPanel();
-    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createFillNoGrab();
+    GridDialogLayoutData data = GridDialogLayoutDataFactory.createFillNoGrab();
     data.setGrabExcessVerticalSpace(true);
     data.setVerticalSpan(2);
     JComponent content = panel.getComponent();

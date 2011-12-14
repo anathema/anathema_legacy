@@ -9,7 +9,7 @@ import net.disy.commons.core.message.MessageType;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageUserDialogConfiguration;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
-import net.disy.commons.swing.dialog.userdialog.buttons.AbstractDialogButtonConfiguration;
+import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfiguration;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.presenter.SelectedItemActionEnabler;
 import net.sf.anathema.framework.repository.IItem;
@@ -43,7 +43,7 @@ public abstract class AbstractAnathemaCloseAction extends SmartAction {
     if (selectedItem.isDirty()) {
       String messageText = resources.getString("AnathemaCore.Tools.Close.DirtyQuestion"); //$NON-NLS-1$
       IMessage message = new Message(messageText, MessageType.WARNING);
-      AbstractDialogButtonConfiguration buttonConfiguration = new YesNoDialogButtonConfiguration(resources);
+      DialogButtonConfiguration buttonConfiguration = new YesNoDialogButtonConfiguration(resources);
       MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(message, buttonConfiguration);
       UserDialog userDialog = new UserDialog(parentComponent, configuration);
       userDialog.show();

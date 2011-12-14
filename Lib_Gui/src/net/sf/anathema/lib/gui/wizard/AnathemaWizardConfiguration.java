@@ -5,7 +5,7 @@ import javax.swing.Icon;
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ISimpleBlock;
 import net.disy.commons.swing.dialog.BasicDialogResources;
-import net.disy.commons.swing.dialog.userdialog.buttons.AbstractDialogButtonConfiguration;
+import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfiguration;
 import net.disy.commons.swing.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.disy.commons.swing.dialog.wizard.IBasicWizardConfiguration;
 import net.disy.commons.swing.dialog.wizard.IBasicWizardPage;
@@ -55,7 +55,7 @@ public class AnathemaWizardConfiguration implements IBasicWizardConfiguration {
   }
 
   public final IDialogButtonConfiguration getButtonConfiguration() {
-    return new AbstractDialogButtonConfiguration() {
+    return new DialogButtonConfiguration() {
       @Override
       public String getOkayButtonText() {
         return BasicDialogResources.WIZARD_FINISH_SMART;

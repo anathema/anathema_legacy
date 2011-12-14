@@ -7,9 +7,9 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionListener;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.campaign.music.impl.view.SimpleTabViewFactory;
 import net.sf.anathema.campaign.music.impl.view.categorization.MusicCategorizationView;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
@@ -19,8 +19,8 @@ import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationPr
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationView;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.campaign.music.view.search.ISearchComponent;
-import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.framework.view.util.ContentProperties;
+import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.framework.view.util.TabbedView;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
@@ -108,7 +108,7 @@ public class LibraryControlView implements ILibraryControlView, IView {
           factory.createTabView(searchPanel),
           new ContentProperties(viewProperties.getSearchString()));
     }
-    content.add(leftTabbedView.getComponent(), GridDialogLayoutDataUtilities.createHorizontalSpanData(
+    content.add(leftTabbedView.getComponent(), GridDialogLayoutDataFactory.createHorizontalSpanData(
         2,
         GridDialogLayoutData.FILL_BOTH));
     TabbedView rightTabbedView = new TabbedView(TabDirection.Up);
@@ -134,6 +134,6 @@ public class LibraryControlView implements ILibraryControlView, IView {
     searchPanel.add(searchButton);
     searchPanel.add(
         searchMusicCategorizationView.getContent(properties),
-        GridDialogLayoutDataUtilities.createHorizontalSpanData(2, GridDialogLayoutData.FILL_BOTH));
+        GridDialogLayoutDataFactory.createHorizontalSpanData(2, GridDialogLayoutData.FILL_BOTH));
   }
 }

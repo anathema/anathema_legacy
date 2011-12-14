@@ -7,7 +7,7 @@ import net.disy.commons.core.message.Message;
 import net.disy.commons.core.message.MessageType;
 import net.disy.commons.swing.dialog.message.MessageUserDialogConfiguration;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
-import net.disy.commons.swing.dialog.userdialog.buttons.AbstractDialogButtonConfiguration;
+import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfiguration;
 
 public class ConfigurableVetor {
 
@@ -25,7 +25,7 @@ public class ConfigurableVetor {
     IMessage message = new Message(messageText, MessageType.WARNING);
     MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(
         message,
-        new AbstractDialogButtonConfiguration() {
+        new DialogButtonConfiguration() {
           @Override
           public String getOkayButtonText() {
             return okButtonText;

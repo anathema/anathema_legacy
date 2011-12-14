@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 
 public class GroupedColumnPanel {
 
@@ -43,7 +44,7 @@ public class GroupedColumnPanel {
     GridDialogLayout layout = new GridDialogLayout(columns.length, false);
     layout.setHorizontalSpacing(15);
     container.setLayout(layout);
-    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createTopData();
+    GridDialogLayoutData data = GridDialogLayoutDataFactory.createTopData();
     for (JPanel column : columns) {
       container.add(column, data);
     }

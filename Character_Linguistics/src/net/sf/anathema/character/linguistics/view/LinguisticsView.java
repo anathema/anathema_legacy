@@ -6,10 +6,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
@@ -32,12 +32,12 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
 
   public JComponent getComponent() {
     mainPanel.add(selectionPanel);
-    GridDialogLayoutData entryData = GridDialogLayoutDataUtilities.createHorizontalFillNoGrab();
+    GridDialogLayoutData entryData = GridDialogLayoutDataFactory.createHorizontalFillNoGrab();
     entryData.setVerticalAlignment(GridAlignment.FILL);
     entryData.setGrabExcessVerticalSpace(true);
     mainPanel.add(new JScrollPane(entryPanel), entryData);
     panel.add(mainPanel, entryData);
-    panel.add(overviewPanel, GridDialogLayoutDataUtilities.createTopData());
+    panel.add(overviewPanel, GridDialogLayoutDataFactory.createTopData());
     return panel;
   }
 

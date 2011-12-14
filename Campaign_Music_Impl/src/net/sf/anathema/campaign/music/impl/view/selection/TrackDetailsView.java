@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.campaign.music.impl.view.categorization.MusicCategorizationView;
 import net.sf.anathema.campaign.music.presenter.ITrackDetailsProperties;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationProperties;
@@ -61,7 +61,7 @@ public class TrackDetailsView implements ITrackDetailsView {
       IMusicCategorizationProperties categoryProperties,
       ITrackDetailsProperties detailsProperties) {
     JPanel infoPlayerPanel = new JPanel(new GridDialogLayout(3, true));
-    infoPlayerPanel.add(createTrackInfoPanel(detailsProperties), GridDialogLayoutDataUtilities.createHorizontalSpanData(
+    infoPlayerPanel.add(createTrackInfoPanel(detailsProperties), GridDialogLayoutDataFactory.createHorizontalSpanData(
         2,
         GridDialogLayoutData.FILL_BOTH));
     infoPlayerPanel.add(playerPanel, GridDialogLayoutData.FILL_BOTH);
