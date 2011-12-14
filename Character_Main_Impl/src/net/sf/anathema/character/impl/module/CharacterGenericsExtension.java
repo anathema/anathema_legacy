@@ -13,7 +13,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterGenericsExtension implements ICharacterGenericsExtension, IAnathemaExtension {
 
-  public static ICharacterGenerics getCharacterGenerics(IAnathemaModel anathemaModel) {
+  public static final ICharacterGenerics getCharacterGenerics(IAnathemaModel anathemaModel) {
     IRegistry<String, IAnathemaExtension> extensionPointRegistry = anathemaModel.getExtensionPointRegistry();
     ICharacterGenericsExtension extension = (ICharacterGenericsExtension) extensionPointRegistry.get(ICharacterGenericsExtension.ID);
     return extension.getCharacterGenerics();

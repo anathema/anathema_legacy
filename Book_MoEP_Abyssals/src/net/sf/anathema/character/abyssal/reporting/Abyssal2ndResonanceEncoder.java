@@ -1,11 +1,5 @@
 package net.sf.anathema.character.abyssal.reporting;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
@@ -17,6 +11,13 @@ import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
+
+import com.lowagie.text.Chunk;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Font;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 
 public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 

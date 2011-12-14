@@ -2,22 +2,22 @@ package net.sf.anathema.namegenerator.domain.syllable;
 
 public class SimpleWordFactory implements IWordFactory {
 
-  private final ISyllabalFactory syllableFactory;
+  private final ISyllableFactory syllableFactory;
   private final ICountCalculator countCalculator;
   private final boolean upperCase;
 
-  public SimpleWordFactory(ISyllabalFactory syllableFactory, ICountCalculator countCalculator) {
+  public SimpleWordFactory(ISyllableFactory syllableFactory, ICountCalculator countCalculator) {
     this(syllableFactory, countCalculator, true);
   }
 
-  public SimpleWordFactory(ISyllabalFactory syllableFactory, ICountCalculator countCalculator, boolean upperCase) {
+  public SimpleWordFactory(ISyllableFactory syllableFactory, ICountCalculator countCalculator, boolean upperCase) {
     this.syllableFactory = syllableFactory;
     this.countCalculator = countCalculator;
     this.upperCase = upperCase;
   }
 
   public String createWord(int wordIndex) {
-      StringBuilder word = new StringBuilder();
+    StringBuffer word = new StringBuffer();
     int syllableCount = countCalculator.calculateNamePartCount();
     String lastSyllabal = null;
     for (int syllableIndex = 0; syllableIndex < syllableCount; syllableIndex++) {

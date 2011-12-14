@@ -1,2 +1,0 @@
-JDemo = 1.2
-EasyMock = 2.2

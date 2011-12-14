@@ -50,6 +50,9 @@
 		<library id="BatikDOM3API" path="${ANATHEMA_LIB}/xml-apis-dom3.jar" type="code">
 			<export prefix="*"/>
 		</library>
+        <library id="EteksJeks" path="${ANATHEMA_LIB}/jeksparser.jar" type="code">
+			<export prefix="*"/>
+		</library>
 		<library id="core" path="./" type="code">
 			<export prefix="*"/>
 		</library>

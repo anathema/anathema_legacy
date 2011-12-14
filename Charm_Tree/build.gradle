@@ -1,0 +1,22 @@
+dependencies {
+  compile files(          
+          "../Thirdparty/SVG/batik-anim.jar",
+          "../Thirdparty/XML/dom4j-1.5.jar"
+  )
+  compile project(':Platform_GraphLayout')
+  compile project(':Platform_SvgTree')
+  compile project(':Character_Generic')
+  compile project(':Character_Generic_Impl')
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+  testCompile project(path: ':Lib', configuration: 'tests')
+  testCompile project(path: ':Character_Generic', configuration: 'tests')
+  testCompile project(path: ':Character_Generic_Impl', configuration: 'tests')
+}
+
+sourceSets {
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
+}

@@ -1,0 +1,13 @@
+dependencies {
+  compile project(':Lib_Gui')
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+  testCompile 'org.easymock:easymock:3.1'
+}
+
+sourceSets {
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
+}

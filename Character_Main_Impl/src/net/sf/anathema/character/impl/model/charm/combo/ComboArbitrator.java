@@ -51,7 +51,7 @@ public abstract class ComboArbitrator implements IComboArbitrator {
 
   protected boolean specialRestrictionsApply(ICharm charm1, ICharm charm2) {
     IComboRestrictions comboRules = charm1.getComboRules();
-      return comboRules.isRestrictedCharm(charm2) || ArrayUtilities.contains(comboRules.getRestrictedTraitTypes(), charm2.getPrimaryTraitType());
+    return comboRules.isRestrictedCharm(charm2) || ArrayUtilities.contains(comboRules.getRestrictedTraitTypes(), charm2.getPrimaryTraitType());
   }
 
   private boolean handleComboRules(final ICharm charm1, final ICharm charm2) {

@@ -1,0 +1,31 @@
+dependencies {
+  compile files(
+          "../Thirdparty/JeksParser/jeksparser.jar"
+  )
+  compile project(':Lib_Gui')
+  compile project(':Character_Generic')
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+  testCompile group: 'org.mockito', name: 'mockito-core', version: '1.8.5'
+  testCompile project(path: ':Character_Generic', configuration: 'tests')
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
+}
+
+configurations {
+  tests
+}
+
+artifacts {
+  tests testJar
+}

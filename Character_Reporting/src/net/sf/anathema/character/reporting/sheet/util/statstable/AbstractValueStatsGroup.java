@@ -85,7 +85,7 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
     return "+"; //$NON-NLS-1$
   }
 
-  private PdfPCell createContentCellTable(
+  private final PdfPCell createContentCellTable(
       Color borderColor,
       String text,
       Font font,
@@ -101,7 +101,7 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
         enabled);
   }
 
-  private PdfPCell createContentCellTable(
+  private final PdfPCell createContentCellTable(
       Color borderColor,
       String text,
       Font font,
