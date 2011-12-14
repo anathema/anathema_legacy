@@ -9,12 +9,10 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequi
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import org.dom4j.Element;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-@Ignore("Wrong fixture - there is something odd with cost lists.")
 public class GenericCharmBuilderTest {
 
   GenericCharmBuilder builder = new GenericCharmBuilder(
