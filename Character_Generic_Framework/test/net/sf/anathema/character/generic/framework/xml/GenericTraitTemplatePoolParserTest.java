@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePoolParser;
@@ -7,11 +8,10 @@ import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimit
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 
-public class GenericTraitTemplatePoolParserTest extends BasicTestCase {
+public class GenericTraitTemplatePoolParserTest extends TestCase {
   private DummyXmlTemplateRegistry<GenericTraitTemplatePool> templateRegistry;
   private GenericTraitTemplatePoolParser abilityParser;
 

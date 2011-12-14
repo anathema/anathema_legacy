@@ -1,16 +1,16 @@
 package net.sf.anathema.character.generic.framework.xml;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.presentation.CharmPresentationPropertiesParser;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericCharmPresentationProperties;
 import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 
 import java.awt.*;
 
-public class CharmPresentationPropertiesParserTest extends BasicTestCase {
+public class CharmPresentationPropertiesParserTest extends TestCase {
 
   private final String xml = "<charmPresentation>" //$NON-NLS-1$
       + "<polygon>157.07742,9.777771</polygon>" //$NON-NLS-1$

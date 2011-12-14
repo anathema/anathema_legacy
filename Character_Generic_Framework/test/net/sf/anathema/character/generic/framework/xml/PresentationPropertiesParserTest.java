@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericCharmPresentationProperties;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
@@ -10,13 +11,12 @@ import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 
 import java.awt.*;
 
-public class PresentationPropertiesParserTest extends BasicTestCase {
+public class PresentationPropertiesParserTest extends TestCase {
 
   private DummyXmlTemplateRegistry<GenericPresentationTemplate> templateRegistry;
   private PresentationPropertiesParser parser;

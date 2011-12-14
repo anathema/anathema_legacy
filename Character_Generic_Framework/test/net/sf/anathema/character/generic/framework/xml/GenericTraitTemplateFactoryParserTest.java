@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.backgrounds.BackgroundRegistry;
@@ -11,11 +12,10 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 
-public class GenericTraitTemplateFactoryParserTest extends BasicTestCase {
+public class GenericTraitTemplateFactoryParserTest extends TestCase {
   String xml = "<traitTemplates >" //$NON-NLS-1$
       + "<backgrounds>" //$NON-NLS-1$
       + "<defaultTrait startValue=\"0\" lowerableState=\"LowerableRegain\">" //$NON-NLS-1$

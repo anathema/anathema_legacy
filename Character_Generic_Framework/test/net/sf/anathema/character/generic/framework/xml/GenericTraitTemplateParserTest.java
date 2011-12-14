@@ -1,16 +1,16 @@
 package net.sf.anathema.character.generic.framework.xml;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateParser;
 import net.sf.anathema.character.generic.impl.traits.limitation.EssenceBasedLimitation;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 
-public class GenericTraitTemplateParserTest extends BasicTestCase {
+public class GenericTraitTemplateParserTest extends TestCase {
 
   private static final String minimalBasicAttributes = "startValue=\"1\" lowerableState=\"Default\""; //$NON-NLS-1$
   private static final String minimalMinimumElement = "<minimum value=\"0\" />"; //$NON-NLS-1$;

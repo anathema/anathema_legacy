@@ -1,14 +1,14 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.testing.BasicTestCase;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class WeaponDamageModelTest extends BasicTestCase {
+public class WeaponDamageModelTest extends TestCase {
 
   private WeaponDamageModel damageModel;
 

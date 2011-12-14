@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.dummy.DummyGenericTrait;
 import net.sf.anathema.character.generic.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.essence.EssenceTemplateParser;
@@ -10,11 +11,10 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Document;
 
-public class EssenceTemplateParserTest extends BasicTestCase {
+public class EssenceTemplateParserTest extends TestCase {
 
   private static final String TESTID = "TestDocument"; //$NON-NLS-1$
 

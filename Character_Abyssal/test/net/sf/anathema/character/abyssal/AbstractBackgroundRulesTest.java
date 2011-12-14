@@ -1,5 +1,6 @@
 package net.sf.anathema.character.abyssal;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.dummy.DummyGenericTraitCollection;
@@ -9,9 +10,8 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
-import net.sf.anathema.lib.testing.BasicTestCase;
 
-public abstract class AbstractBackgroundRulesTest extends BasicTestCase {
+public abstract class AbstractBackgroundRulesTest extends TestCase {
 
   private IBackgroundTemplate backgroundTemplate;
   private DummyGenericTraitCollection traitCollection = new DummyGenericTraitCollection();

@@ -1,13 +1,13 @@
 package net.sf.anathema.character.generic.framework.xml;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.AlternateMinimumTraitTemplateParser;
 import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
-public class AlternateMinimumTraitTemplateParserTest extends BasicTestCase {
+public class AlternateMinimumTraitTemplateParserTest extends TestCase {
 
   public void test() throws Exception {
     String xml = "<alternateMinimumTraits count=\"1\" value=\"1\">" //$NON-NLS-1$

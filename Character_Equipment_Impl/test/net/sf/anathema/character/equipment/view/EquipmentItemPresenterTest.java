@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.view;
 
+import junit.framework.TestCase;
 import net.disy.commons.core.model.BooleanModel;
 import net.sf.anathema.character.equipment.character.EquipmentObjectPresenter;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
@@ -10,12 +11,11 @@ import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.framework.resources.AnathemaResources;
-import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.util.Identificate;
 
 import static org.mockito.Mockito.*;
 
-public class EquipmentItemPresenterTest extends BasicTestCase {
+public class EquipmentItemPresenterTest extends TestCase {
 
   private IEquipmentStringBuilder equipmentStringBuilder = new IEquipmentStringBuilder() {
     public String createString(IEquipmentItem item, IEquipmentStats equipment) {

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.view;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.equipment.character.EquipmentAdditionalPresenter;
 import net.sf.anathema.character.equipment.character.EquipmentObjectCellRenderer;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
@@ -8,12 +9,11 @@ import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalVi
 import net.sf.anathema.character.equipment.impl.character.view.MagicMaterialView;
 import net.sf.anathema.lib.dummy.DummyResources;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
-import net.sf.anathema.lib.testing.BasicTestCase;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class EquipmentAdditionalPresenterTest extends BasicTestCase {
+public class EquipmentAdditionalPresenterTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testInitPresentation() throws Exception {

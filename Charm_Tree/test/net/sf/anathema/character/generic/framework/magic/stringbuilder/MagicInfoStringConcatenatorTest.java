@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
+import junit.framework.TestCase;
 import net.sf.anathema.lib.dummy.DummyResources;
-import net.sf.anathema.lib.testing.BasicTestCase;
 
-public class MagicInfoStringConcatenatorTest extends BasicTestCase {
+public class MagicInfoStringConcatenatorTest extends TestCase {
 
   private MagicInfoStringConcatenator concatenator;
 

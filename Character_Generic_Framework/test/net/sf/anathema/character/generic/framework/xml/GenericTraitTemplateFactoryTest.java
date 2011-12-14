@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.framework.xml;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
-import net.sf.anathema.lib.testing.BasicTestCase;
 
-public class GenericTraitTemplateFactoryTest extends BasicTestCase {
+public class GenericTraitTemplateFactoryTest extends TestCase {
 
   public void testCloneWithWillpower() throws Exception {
     GenericTraitTemplateFactory templateFactory = new GenericTraitTemplateFactory();

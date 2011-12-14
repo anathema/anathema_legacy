@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.impl.magic.Cost;
 import net.sf.anathema.character.generic.magic.general.ICost;
 import net.sf.anathema.lib.dummy.DummyResources;
-import net.sf.anathema.lib.testing.BasicTestCase;
 
-public class EssenceCostStringBuilderTest extends BasicTestCase {
+public class EssenceCostStringBuilderTest extends TestCase {
 
   private CostStringBuilder builder;
 

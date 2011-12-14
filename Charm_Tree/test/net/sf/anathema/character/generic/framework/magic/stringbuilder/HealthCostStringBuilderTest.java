@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
+import junit.framework.TestCase;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.impl.magic.HealthCost;
 import net.sf.anathema.character.generic.magic.general.IHealthCost;
 import net.sf.anathema.lib.dummy.DummyResources;
-import net.sf.anathema.lib.testing.BasicTestCase;
 
-public class HealthCostStringBuilderTest extends BasicTestCase {
+public class HealthCostStringBuilderTest extends TestCase {
   private HealthCostStringBuilder builder;
 
   @Override
