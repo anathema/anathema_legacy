@@ -1,0 +1,24 @@
+dependencies {
+  compile project(':Character_Library')
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
+}
+
+configurations {
+  tests
+}
+
+artifacts {
+  tests testJar
+}

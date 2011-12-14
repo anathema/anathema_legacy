@@ -1,0 +1,4 @@
+dependencies {
+  compile project(':Platform_Database')
+  compile project(':Character_Generic_Framework')
+}

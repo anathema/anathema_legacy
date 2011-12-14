@@ -53,7 +53,7 @@ public class ComboView implements IComboView {
       GuiUtilities.revalidateTree(taskPaneGroup);
     }
     else {
-      // todo vom (04.04.2005) (sieroux): Komponenten einfügen falls noch nicht enthalten
+      // todo vom (04.04.2005) (sieroux): Komponenten einfuegen falls noch nicht enthalten
     }
   }
 }

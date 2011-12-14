@@ -80,7 +80,7 @@ public class CharmBuilder implements ICharmBuilder {
       ICharacterType characterType = getCharacterType(charmElement);
       ICostList temporaryCost;
       try {
-        temporaryCost = costListBuilder.buildTemporaryCostList(charmElement.element(TAG_COST));
+        temporaryCost = costListBuilder.buildCostList(charmElement.element(TAG_COST));
       }
       catch (PersistenceException e) {
         throw new CharmException("Error building costlist for charm " + id, e); //$NON-NLS-1$

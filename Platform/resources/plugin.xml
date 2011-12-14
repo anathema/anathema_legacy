@@ -4,9 +4,6 @@
 		<library id="core" path="./" type="code">
 			<export prefix="*"/>
 		</library>
-		<library id="graphlayout" path="${ANATHEMA_LIB}/graphlayout.jar" type="code">
-			<export prefix="*"/>
-		</library>
 		<library id="disyCore" path="${ANATHEMA_LIB}/disy-commons-core.jar" type="code">
 			<export prefix="*"/>
 		</library>
@@ -16,6 +13,9 @@
 		<library id="dom4j" path="${ANATHEMA_LIB}/dom4j-1.5.jar" type="code">
 			<export prefix="*"/>
 		</library>
+        <library id="jaxen" path="${ANATHEMA_LIB}/jaxen-1.1.3.jar" type="code">
+            <export prefix="*"/>
+        </library>
 		<library id="disySwingLayout" path="${ANATHEMA_LIB}/disy-commons-swing-layout.jar" type="code">
 			<export prefix="*"/>
 		</library>

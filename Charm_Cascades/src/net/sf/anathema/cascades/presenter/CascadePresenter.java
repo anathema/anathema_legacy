@@ -1,13 +1,5 @@
 package net.sf.anathema.cascades.presenter;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.sf.anathema.cascades.module.ICascadeViewFactory;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -35,6 +27,12 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 
+import java.awt.*;
+import java.util.*;
+import java.util.List;
+
+import static java.util.Arrays.sort;
+
 public class CascadePresenter extends AbstractCascadeSelectionPresenter implements ICascadePresenter {
 
   private CascadeCharmGroupChangeListener selectionListener;
@@ -42,7 +40,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules = new HashMap<IExaltedRuleSet, CharmTreeIdentificateMap>();
   private final CascadeCharmTreeViewProperties viewProperties;
   private final ICascadeView view;
-  private SourceBookCharmFilter sourceFilter; 
+  private SourceBookCharmFilter sourceFilter;
 
   public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory) {
     super(resources, generics.getTemplateRegistry());
@@ -59,10 +57,10 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     initCharacterTypeCharms(supportedCharmTypes, allCharmGroups);
     initMartialArts(supportedCharmTypes, allCharmGroups);
     createCharmTypeSelector(
-        supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]),
-        view,
-        "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
-    this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, getTemplateRegistry(),filterSet);
+      supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]),
+      view,
+      "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
+    this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, getTemplateRegistry(), filterSet);
     createCharmGroupSelector(view, selectionListener, allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]));
     initRules();
     initFilters();
@@ -113,8 +111,8 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
 
   private void initRules() {
     IChangeableJComboBox<IExaltedRuleSet> rulesComboBox = new ChangeableJComboBox<IExaltedRuleSet>(
-        ExaltedRuleSet.values(),
-        false);
+      ExaltedRuleSet.values(),
+      false);
     rulesComboBox.setRenderer(new IdentificateSelectCellRenderer("Ruleset.", getResources())); //$NON-NLS-1$
     view.addRuleSetComponent(rulesComboBox.getComponent(), getResources().getString("CharmCascades.RuleSetBox.Title")); //$NON-NLS-1$
     rulesComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedRuleSet>() {
@@ -129,24 +127,8 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
           return;
         }
         selectionListener.setEdition(selectedRuleset.getEdition());
-        final IIdentificate[] cascadeTypes = getCharmTreeMap(selectedRuleset).keySet().toArray(new IIdentificate[0]);
-        // TODO: Mach mich sch�n.
-        Arrays.sort(cascadeTypes, new Comparator<IIdentificate>() {
-          public int compare(IIdentificate o1, IIdentificate o2) {
-            final boolean firstCharacterType = o1 instanceof ICharacterType;
-            final boolean secondCharacterType = o2 instanceof CharacterType;
-            if (firstCharacterType) {
-              if (secondCharacterType) {
-                return ((ICharacterType) o1).compareTo((CharacterType) o2);
-              }
-              return -1;
-            }
-            if (secondCharacterType) {
-              return 1;
-            }
-            return 0;
-          }
-        });
+         IIdentificate[] cascadeTypes = getCharmTreeMap(selectedRuleset).keySet().toArray(new IIdentificate[0]);
+        sort(cascadeTypes, new ByCharacterType());
         view.fillCharmTypeBox(cascadeTypes);
         view.unselect();
         view.fillCharmGroupBox(new IIdentificate[0]);
@@ -154,11 +136,10 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     });
     rulesComboBox.setSelectedObject(AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset());
   }
-  
-  private void initFilters()
-  {
-	  sourceFilter = new SourceBookCharmFilter(selectedRuleset.getEdition()); 
-	  filterSet.add(sourceFilter);
+
+  private void initFilters() {
+    sourceFilter = new SourceBookCharmFilter(selectedRuleset.getEdition());
+    filterSet.add(sourceFilter);
   }
 
   private CharmTreeIdentificateMap getCharmTreeMap(IExaltedRuleSet ruleSet) {
@@ -168,7 +149,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
   private void initCharmTypeSelectionListening() {
     view.addCharmTypeSelectionListener(new IObjectValueChangedListener<IIdentificate>() {
       public void valueChanged(IIdentificate cascadeType) {
-    	  currentType = cascadeType;
+        currentType = cascadeType;
         handleTypeSelectionChange(cascadeType);
       }
     });
@@ -188,8 +169,25 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     view.fillCharmGroupBox(sortCharmGroups(allCharmGroups));
   }
 
-  public ICharmTree getCharmTree(IIdentificate type)
-  {
-	  return getCharmTreeMap(selectedRuleset).get(type);
+  public ICharmTree getCharmTree(IIdentificate type) {
+    return getCharmTreeMap(selectedRuleset).get(type);
+  }
+
+  private static class ByCharacterType implements Comparator<IIdentificate> {
+
+    public int compare(IIdentificate o1, IIdentificate o2) {
+      boolean firstCharacterType = o1 instanceof ICharacterType;
+      boolean secondCharacterType = o2 instanceof CharacterType;
+      if (firstCharacterType) {
+        if (secondCharacterType) {
+          return ((ICharacterType) o1).compareTo((CharacterType) o2);
+        }
+        return -1;
+      }
+      if (secondCharacterType) {
+        return 1;
+      }
+      return 0;
+    }
   }
 }

@@ -40,7 +40,7 @@ public class NotePresenter implements IPresenter {
     initDescriptionPresentation(resources.getString(getNameLabelKey()), view.addDescriptionView());
   }
 
-  private void initDescriptionPresentation(String nameLabel, IBasicItemDescriptionView descriptionView) {
+  private final void initDescriptionPresentation(String nameLabel, IBasicItemDescriptionView descriptionView) {
     new TextualPresentation().initView(descriptionView.addLineTextView(nameLabel), item.getDescription().getName());
     String summaryLabel = resources.getString(getContentLabelKey());
     DefaultStyledDocument document = new DefaultStyledDocument();

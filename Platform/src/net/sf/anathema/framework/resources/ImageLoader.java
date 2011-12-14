@@ -14,8 +14,9 @@ import net.disy.commons.core.io.IOUtilities;
 import net.sf.anathema.lib.logging.Logger;
 
 /**
- * ImageLoader stellt Methoden zur Verf�gung, mit der Images geladen werden
- * koennen. Es wird eine Klasse uebergeben und relativ zu dieser ein Pfad, von
+ * ImageLoader provides Methods to load images.
+ *
+ * Es wird eine Klasse uebergeben und relativ zu dieser ein Pfad, von
  * der das Bild geladen werden soll. Dies hat den Vorteil, dass der ImageLoader
  * Bilder auch aus JAR Dateien findet.
  * 

@@ -7,5 +7,5 @@ import org.dom4j.Element;
 
 public interface ICostListBuilder {
 
-  public ICostList buildTemporaryCostList(Element costListElement) throws PersistenceException;
+  public ICostList buildCostList(Element costListElement) throws PersistenceException;
 }

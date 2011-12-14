@@ -1,13 +1,5 @@
 package net.sf.anathema.character.equipment.character;
 
-import java.awt.Component;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.Icon;
-
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
@@ -25,6 +17,12 @@ import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class EquipmentAdditionalPresenter implements IPresenter {
 
   private final IResources resources;
@@ -33,9 +31,9 @@ public class EquipmentAdditionalPresenter implements IPresenter {
   private final Map<IEquipmentItem, IEquipmentObjectView> viewsByItem = new HashMap<IEquipmentItem, IEquipmentObjectView>();
 
   public EquipmentAdditionalPresenter(
-      IResources resources,
-      IEquipmentAdditionalModel model,
-      IEquipmentAdditionalView view) {
+    IResources resources,
+    IEquipmentAdditionalModel model,
+    IEquipmentAdditionalView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
@@ -67,13 +65,12 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String templateId) {
         MaterialComposition composition = templateId == null
-            ? MaterialComposition.None
-            : model.getMaterialComposition(templateId);
+          ? MaterialComposition.None
+          : model.getMaterialComposition(templateId);
         MagicalMaterial magicMaterial = null;
         if (composition == MaterialComposition.Variable) {
           magicMaterial = model.getDefaultMaterial();
-        }
-        else if (composition == MaterialComposition.Fixed) {
+        } else if (composition == MaterialComposition.Fixed) {
           magicMaterial = model.getMagicalMaterial(templateId);
         }
         view.getMagicMaterialView().setSelectedMaterial(magicMaterial, composition == MaterialComposition.Variable);
@@ -89,9 +86,9 @@ public class EquipmentAdditionalPresenter implements IPresenter {
 
   private SmartAction createRefreshAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {
     SmartAction refreshAction = new SmartAction(new EquipmentUI(resources).getRefreshIcon()) {
-		private static final long serialVersionUID = 1L;
+      private static final long serialVersionUID = 1L;
 
-	@Override
+      @Override
       protected void execute(Component parentComponent) {
         setObjects(equipmentTemplatePickList);
         model.refreshItems();
@@ -108,12 +105,12 @@ public class EquipmentAdditionalPresenter implements IPresenter {
   }
 
   private SmartAction createTemplateAddAction(
-      final IListObjectSelectionView<String> equipmentTemplatePickList,
-      final IMagicalMaterialView materialView) {
+    final IListObjectSelectionView<String> equipmentTemplatePickList,
+    final IMagicalMaterialView materialView) {
     final SmartAction addAction = new SmartAction(new BasicUi(resources).getRightArrowIcon()) {
-		private static final long serialVersionUID = 1L;
+      private static final long serialVersionUID = 1L;
 
-	@Override
+      @Override
       protected void execute(Component parentComponent) {
         model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject(), materialView.getSelectedMaterial());
       }
@@ -141,10 +138,10 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, resources, model.getAttuneTypes(selectedObject)).initPresentation();
     if (model.canBeRemoved(selectedObject)) {
       objectView.addAction(new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
-          removeIcon) {
-			private static final long serialVersionUID = 1L;
+        removeIcon) {
+        private static final long serialVersionUID = 1L;
 
-		@Override
+        @Override
         protected void execute(Component parentComponent) {
           model.removeItem(selectedObject);
         }

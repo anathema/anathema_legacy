@@ -76,7 +76,7 @@ public class ExperienceConfigurationView extends
     labelledIntValueView = new LabelledIntegerValueView(properties.getTotalString(), 0, false, 7);
     labelledIntValueView.addComponents(totalPanel);
     labelledIntValueView.getValueLabel().setHorizontalAlignment(SwingConstants.RIGHT);
-    // todo vom (02.07.2005) (sieroux): Hier muss eine besser L�sung her im Zusammenspiel mit der SmartTable
+    // todo vom (02.07.2005) (sieroux): Needs a better solution to work with SmartTable
     smartTablePanel.add(totalPanel, GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(smartTablePanel);
   }

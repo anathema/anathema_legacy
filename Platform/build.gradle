@@ -1,0 +1,35 @@
+dependencies {
+  compile files(
+          "../Thirdparty/Swing/l2fprod-common-directorychooser.jar",
+          "../Thirdparty/Jakarta/commons-io.jar",
+          "../Thirdparty/Swing/idw-gpl-1.4.0.jar",
+          "../Thirdparty/Plugin/jpf.jar",
+          "../Thirdparty/Plugin/jpf-boot.jar",
+  )
+  compile 'com.lowagie:itext:1.4'
+  compile project(':Lib_Workflow')
+  compile project(':Lib_Gui')
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+  testCompile 'org.easymock:easymock:3.1'
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
+}
+
+configurations {
+  tests
+}
+
+artifacts {
+  tests testJar
+}

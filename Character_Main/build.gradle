@@ -1,0 +1,29 @@
+dependencies {
+  compile files(
+          "../Thirdparty/Plugin/jpf.jar"
+  )
+  compile project(':Charm_Tree')
+  compile project(':Character_Library')
+  compile project(':Namegenerator')
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
+}
+
+configurations {
+  tests
+}
+
+artifacts {
+  tests testJar
+}

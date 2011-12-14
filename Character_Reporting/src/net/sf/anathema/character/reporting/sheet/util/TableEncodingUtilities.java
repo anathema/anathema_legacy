@@ -27,7 +27,7 @@ public class TableEncodingUtilities {
     return columnWeights;
   }
 
-  public static PdfPCell createContentCellTable(
+  public static final PdfPCell createContentCellTable(
       Color borderColor,
       String text,
       Font font,
@@ -37,7 +37,7 @@ public class TableEncodingUtilities {
     return createContentCellTable(borderColor, text, font, borderWidth, border, alignment, true);
   }
 
-  public static PdfPCell createContentCellTable(
+  public static final PdfPCell createContentCellTable(
       Color borderColor,
       String text,
       Font font,

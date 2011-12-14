@@ -4,9 +4,9 @@ import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.random.RandomUtilities;
 import net.sf.anathema.namegenerator.domain.general.INameTokenFactory;
 import net.sf.anathema.namegenerator.domain.general.RandomChoosingTokenFactory;
-import net.sf.anathema.namegenerator.domain.syllable.ISyllabalFactory;
+import net.sf.anathema.namegenerator.domain.syllable.ISyllableFactory;
 
-public class RealmSyllableFactory implements ISyllabalFactory {
+public class RealmSyllableFactory implements ISyllableFactory {
 
   private final INameTokenFactory uncleanFactory = new RandomChoosingTokenFactory(new String[] { "a", //$NON-NLS-1$
       "ba", //$NON-NLS-1$
@@ -100,16 +100,16 @@ public class RealmSyllableFactory implements ISyllabalFactory {
       "yu" //$NON-NLS-1$
   });
 
-  public String createToken(String lastSyllabal) {
-    String uncleanSyllabal = uncleanFactory.createToken();
-    if (lastSyllabal == null || lastSyllabal.length() == 0 || uncleanSyllabal.length() == 1) {
-      return uncleanSyllabal;
+  public String createToken(String lastSyllable) {
+    String uncleanSyllable = uncleanFactory.createToken();
+    if (lastSyllable == null || lastSyllable.length() == 0 || uncleanSyllable.length() == 1) {
+      return uncleanSyllable;
     }
-    char lastNameCharacter = AnathemaStringUtilities.lastCharater(lastSyllabal);
-    char lastUncleanCharacter = AnathemaStringUtilities.lastCharater(uncleanSyllabal);
+    char lastNameCharacter = AnathemaStringUtilities.lastCharater(lastSyllable);
+    char lastUncleanCharacter = AnathemaStringUtilities.lastCharater(uncleanSyllable);
     if (lastNameCharacter != lastUncleanCharacter || RandomUtilities.nextPercent() < 50) {
-      return uncleanSyllabal;
+      return uncleanSyllable;
     }
-    return AnathemaStringUtilities.cutOffLastCharacters(uncleanSyllabal, 1);
+    return AnathemaStringUtilities.cutOffLastCharacters(uncleanSyllable, 1);
   }
 }

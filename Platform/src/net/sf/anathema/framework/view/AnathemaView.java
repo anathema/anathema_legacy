@@ -65,7 +65,7 @@ public class AnathemaView implements IAnathemaView {
     return statusBar;
   }
 
-  public void showFrame() {
+  public void show() {
     JFrame mainFrame = initGui();
     GuiUtilities.displayOnScreenCenter(mainFrame, new Dimension(1024, 768));
   }

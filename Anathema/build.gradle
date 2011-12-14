@@ -1,0 +1,94 @@
+propertiesDir = new File(buildDir, 'properties')
+libraryDir = 'lib'
+
+jar {
+  manifest {
+    attributes(
+            'Built-By': System.getProperty("user.name"),
+            'Main-Class': 'net.sf.anathema.AnathemaBootLoader',
+            'SplashScreen-Image': 'icons/core/AnathemaSplashNew.png',
+            'Class-Path': "$libraryDir/jpf.jar $libraryDir/jpf-boot.jar $libraryDir/commons-logging-api.jar"
+    )
+  }
+  from(propertiesDir) {
+    include '**/*'
+  }
+}
+
+task buildBootloader << {
+}
+
+buildBootloader.dependsOn build
+
+dependencies {
+  compile files(
+          "../Thirdparty/Jakarta/commons-logging-api.jar",
+          "../Thirdparty/Plugin/jpf.jar",
+          "../Thirdparty/Plugin/jpf-boot.jar",
+  )
+  compile project(':Platform')
+  compile project(':Lib')
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+  testCompile project(path: ':Lib', configuration: 'tests')
+  testCompile project(path: ':Platform', configuration: 'tests')
+  //These add implementation details for the development bootloader (did we botch dependencies?)
+  runtime project(':Character_Generic_Impl')
+  runtime project(':Character_Generic_Framework')
+  runtime project(':Campaign_Music_Impl')
+  runtime project(':Character_Main_Impl')
+  runtime project(':Campaign_Plot')
+  //These add missing character types for the boot loader
+  runtime project(':Character_Mortal')
+  runtime project(':Character_Infernal')
+  runtime project(':Character_Godblooded')
+  //These are here to enable their charms
+  runtime project(':Character_Db')
+  runtime project(':Book_Glories_Maidens')
+  runtime project(':Book_BrokenWingedCrane')
+  runtime project(':Book_Glories_UnconqueredSun')
+  runtime project(':Book_ScrollOfTheFallenRaces_Debris')
+  runtime project(':Book_ThousandCorrectActions')
+  runtime project(':Book_Glories_Luna')
+  runtime project(':Book_UnderTheRose')
+  runtime project(':Character_MartialArts')
+  runtime project(':Book_MoEP_Infernals')
+  runtime project(':Character_Ghost')
+  runtime project(':Book_MoEP_Sidereals')
+  runtime project(':Book_ScrollOfExalts')
+  runtime project(':Book_ScrollOfTheMonk')
+  runtime project(':Book_MoEP_Alchemicals')
+  runtime project(':Book_ReturnOfTheScarletEmpress')
+  runtime project(':Box_DotFA')
+  runtime project(':Book_ScrollOfTheMonk_ImperfectLotus')
+  runtime project(':Character_Sidereal')
+  runtime project(':Character_Spirit')
+  runtime project(':Character_Abyssal')
+  runtime project(':Book_MoEP_Lunars')
+  runtime project(':Book_MoEP_Abyssals')
+  runtime project(':Character_Lunar')
+  runtime project(':Blog_InkMonkeys')
+  //These are here for their language and image resources
+  runtime project(':Character_Craft')
+  runtime project(':Character_Intimacies')
+  runtime project(':Character_Linguistics')
+  runtime project(':Character_MeritsFlaws')
+  runtime project(':Charm_Cascades')
+}
+
+task collectDependencies(type: Copy) {
+  from configurations.compile.findAll { File dependency -> dependency.absolutePath.contains('Thirdparty') }
+  into dependenciesDir
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
+  test {
+    java {
+      srcDir 'test'
+    }
+  }
+}
