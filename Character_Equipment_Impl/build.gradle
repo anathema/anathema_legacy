@@ -1,7 +1,4 @@
 dependencies {
-  compile files(
-          "../Thirdparty/Testing/junit.jar"
-  )
   compile project(':Character_Equipment')
   compile project(':Character_Library')
   compile project(':Character_Solar')
