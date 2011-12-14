@@ -13,11 +13,7 @@ public class CostListBuilder implements ICostListBuilder {
   private final CostBuilder costBuilder = new CostBuilder();
   private final HealthCostBuilder healthCostBuilder = new HealthCostBuilder();
 
-  public ICostList buildTemporaryCostList(Element costListElement) throws PersistenceException {
-    return buildCostList(costListElement);
-  }
-
-  private ICostList buildCostList(Element costListElement) throws PersistenceException {
+  public ICostList buildCostList(Element costListElement) throws PersistenceException {
     ICost essenceCost = costBuilder.buildCost(costListElement.element("essence")); //$NON-NLS-1$
     ICost willpowerCost = costBuilder.buildCost(costListElement.element("willpower")); //$NON-NLS-1$
     IHealthCost healthCost = healthCostBuilder.buildCost(costListElement.element("health")); //$NON-NLS-1$
