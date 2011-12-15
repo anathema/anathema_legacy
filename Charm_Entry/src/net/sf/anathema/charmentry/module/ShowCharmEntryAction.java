@@ -7,6 +7,7 @@ import javax.swing.Action;
 
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
+import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.disy.commons.swing.util.GuiUtilities;
@@ -47,8 +48,8 @@ public class ShowCharmEntryAction extends SmartAction {
       final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
       configuredDialog.setResizable(false);
       GuiUtilities.centerToParent(configuredDialog.getWindow());
-      configuredDialog.show();
-      if (dialog.isCanceled()) {
+      IDialogResult result = dialog.show();
+      if (result.isCanceled()) {
         return;
       }
       final ICharmEntryData entryData = model.getCharmData();

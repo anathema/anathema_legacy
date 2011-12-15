@@ -14,7 +14,7 @@ public class DummyLearnableArbitrator implements IExtendedCharmLearnableArbitrat
   }
 
   public boolean isLearnable(ICharm charm) {
-    return ArrayUtilities.contains(learnableCharmIds, charm.getId());
+    return ArrayUtilities.containsValue(learnableCharmIds, charm.getId());
   }
 
   public void addCharmLearnListener(ICharmLearnListener listener) {

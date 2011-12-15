@@ -19,7 +19,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
   private final JLabel latestVersionLabel = new JLabel("?.??"); //$NON-NLS-1$
 
   public UpdateDialogPage(IResources resources, final IUpdateChecker checker) {
-    super(new BasicMessage(resources.getString("Help.UpdateCheck.Checking"))); //$NON-NLS-1$
+    super(resources.getString("Help.UpdateCheck.Checking")); //$NON-NLS-1$
     this.resources = resources;
     this.checker = checker;
     checker.addDataChangedListener(new IChangeListener() {

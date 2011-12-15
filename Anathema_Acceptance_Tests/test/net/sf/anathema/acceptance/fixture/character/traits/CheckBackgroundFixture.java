@@ -28,7 +28,7 @@ public class CheckBackgroundFixture extends AbstractCharacterColumnFixture {
   }
 
   public boolean isAvailable() {
-    return ArrayUtilities.contains(getCharacterStatistics().getTraitConfiguration()
+    return ArrayUtilities.containsValue(getCharacterStatistics().getTraitConfiguration()
         .getBackgrounds()
         .getAllAvailableBackgroundTemplates(), getTraitType());
   }

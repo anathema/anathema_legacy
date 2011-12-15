@@ -3,8 +3,10 @@ package net.sf.anathema.lib.gui.wizard;
 import javax.swing.Icon;
 
 import net.disy.commons.core.util.Ensure;
-import net.disy.commons.core.util.ISimpleBlock;
-import net.disy.commons.swing.dialog.BasicDialogResources;
+import net.disy.commons.core.util.SimpleBlock;
+import net.disy.commons.swing.action.ActionConfiguration;
+import net.disy.commons.swing.action.IActionConfiguration;
+import net.disy.commons.swing.dialog.DisyCommonsSwingDialogMessages;
 import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfiguration;
 import net.disy.commons.swing.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.disy.commons.swing.dialog.wizard.IBasicWizardConfiguration;
@@ -15,7 +17,7 @@ import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 public class AnathemaWizardConfiguration implements IBasicWizardConfiguration {
 
   private final IAnathemaWizardPage startPage;
-  private final CheckInputListener inputListener = new CheckInputListener(new ISimpleBlock() {
+  private final CheckInputListener inputListener = new CheckInputListener(new SimpleBlock() {
     public void execute() {
       IWizardContainer wizardContainer = getContainer();
       if (wizardContainer == null) {
@@ -57,8 +59,8 @@ public class AnathemaWizardConfiguration implements IBasicWizardConfiguration {
   public final IDialogButtonConfiguration getButtonConfiguration() {
     return new DialogButtonConfiguration() {
       @Override
-      public String getOkayButtonText() {
-        return BasicDialogResources.WIZARD_FINISH_SMART;
+      public IActionConfiguration getOkActionConfiguration() {
+        return new ActionConfiguration(DisyCommonsSwingDialogMessages.WIZARD_FINISH);
       }
     };
   }

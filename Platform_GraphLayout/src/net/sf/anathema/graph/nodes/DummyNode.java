@@ -23,7 +23,7 @@ public class DummyNode implements ISimpleNode {
   }
 
   public boolean isParentOf(ISimpleNode potential) {
-    return ArrayUtilities.contains(this.child, potential);
+    return ArrayUtilities.containsValue(this.child, potential);
   }
 
   public ISimpleNode[] getParents() {

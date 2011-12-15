@@ -133,7 +133,7 @@ public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder
   public String getHeaderKey(IGenericCharacter character,
                              IGenericDescription description) {
     String name = description.getName();
-    if (StringUtilities.isNullOrTrimEmpty(name)) {
+    if (StringUtilities.isNullOrTrimmedEmpty(name)) {
       return "PersonalInfo"; //$NON-NLS-1$
     }
     else {

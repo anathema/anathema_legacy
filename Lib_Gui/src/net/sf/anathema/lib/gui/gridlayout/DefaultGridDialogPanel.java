@@ -2,22 +2,22 @@ package net.sf.anathema.lib.gui.gridlayout;
 
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
+import net.disy.commons.swing.layout.grid.GridDialogPanelBuilder;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 
 public class DefaultGridDialogPanel implements IGridDialogPanel {
 
-  private final GridDialogPanel panel;
+  private final GridDialogPanelBuilder panelBuilder;
 
   public DefaultGridDialogPanel() {
-    panel = new GridDialogPanel();
+    panelBuilder = new GridDialogPanelBuilder();
   }
 
   public void add(IDialogComponent component) {
-    panel.add(component);
+    panelBuilder.add(component);
   }
 
   public JPanel getComponent() {
-    return panel.getContent();
+    return panelBuilder.createPanel();
   }
 }

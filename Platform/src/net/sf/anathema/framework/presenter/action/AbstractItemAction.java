@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.disy.commons.swing.action.SmartAction;
+import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.disy.commons.swing.util.GuiUtilities;
@@ -30,8 +31,8 @@ public abstract class AbstractItemAction extends SmartAction {
     final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
     configuredDialog.setResizable(false);
     GuiUtilities.centerToParent(configuredDialog.getWindow());
-    configuredDialog.show();
-    return dialog.isCanceled();
+    IDialogResult result = dialog.show();
+    return result.isCanceled();
   }
 
   protected IAnathemaModel getAnathemaModel() {

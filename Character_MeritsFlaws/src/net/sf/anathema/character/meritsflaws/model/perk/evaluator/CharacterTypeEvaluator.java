@@ -15,7 +15,7 @@ public class CharacterTypeEvaluator implements ICharacterEvaluator {
   }
 
   public boolean evaluateCharacter(IBasicCharacterData characterData) {
-    return ArrayUtilities.contains(types, characterData.getCharacterType());
+    return ArrayUtilities.containsValue(types, characterData.getCharacterType());
   }
 
   @Override

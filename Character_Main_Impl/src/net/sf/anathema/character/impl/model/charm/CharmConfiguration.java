@@ -556,7 +556,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   public final boolean isCompulsiveCharm(ICharm charm) {
     String[] compulsiveCharmIDs = context.getAdditionalRules().getCompulsiveCharmIDs();
-    return ArrayUtilities.contains(compulsiveCharmIDs, charm.getId());
+    return ArrayUtilities.containsValue(compulsiveCharmIDs, charm.getId());
   }
 
   public final boolean isLearned(ICharm charm) {

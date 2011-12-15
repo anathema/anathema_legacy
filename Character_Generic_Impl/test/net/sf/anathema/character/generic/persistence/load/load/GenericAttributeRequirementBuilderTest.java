@@ -21,7 +21,7 @@ public class GenericAttributeRequirementBuilderTest {
     GenericAttributeRequirementBuilder builder = new GenericAttributeRequirementBuilder();
     builder.setType(AbilityType.Investigation);
     ICharmAttributeRequirement[] charmAttributeRequirements = builder.getCharmAttributeRequirements(rootElement);
-    assertTrue(ArrayUtilities.contains(charmAttributeRequirements, new CharmAttributeRequirement(new CharmAttribute(
+    assertTrue(ArrayUtilities.containsValue(charmAttributeRequirements, new CharmAttributeRequirement(new CharmAttribute(
       "genericInvestigation", //$NON-NLS-1$
       false), 1)));
   }
