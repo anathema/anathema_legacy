@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.module.preferences;
 
-import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.LOOK_AND_FEEL_PREFERENCE;
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.USER_LOOK_AND_FEEL_CLASSNAME;
 
 import java.awt.event.ActionEvent;
@@ -18,7 +17,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
@@ -198,19 +196,10 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     else {
       SYSTEM_PREFERENCES.remove(USER_LOOK_AND_FEEL_CLASSNAME);
     }
-    SYSTEM_PREFERENCES.remove(LOOK_AND_FEEL_PREFERENCE);
   }
 
   private static String getLookAndFeelClassName() {
-    String userClass = SYSTEM_PREFERENCES.get(USER_LOOK_AND_FEEL_CLASSNAME, null);
-    if (userClass == null) {
-      return SYSTEM_PREFERENCES.getBoolean(LOOK_AND_FEEL_PREFERENCE, false)
-          ? MetalLookAndFeel.class.getName()
-          : null;
-    }
-    else {
-      return userClass;
-    }
+    return SYSTEM_PREFERENCES.get(USER_LOOK_AND_FEEL_CLASSNAME, null);
   }
 
   public IIdentificate getCategory() {

@@ -1,14 +1,11 @@
 package net.sf.anathema.framework.configuration;
 
-import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.LOOK_AND_FEEL_PREFERENCE;
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.MAXIMIZE_PREFERENCE;
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.SYSTEM_PREFERENCES_NODE;
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.USER_LOOK_AND_FEEL_CLASSNAME;
 
 import java.util.Locale;
 import java.util.prefs.Preferences;
-
-import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import net.sf.anathema.framework.presenter.action.SupportedLocale;
 import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants;
@@ -36,16 +33,7 @@ public class AnathemaPreferences implements IAnathemaPreferences {
    * {@inheritDoc}
    */
   public String getUserLookAndFeel() {
-    String userLaf = systemPreferences.get(USER_LOOK_AND_FEEL_CLASSNAME, null);
-    // For backward compatibility we will check for the previously set metal L&F
-    if (userLaf == null && isMetalLookAndFeelForced()) {
-      userLaf = MetalLookAndFeel.class.getName();
-    }
-    return userLaf;
-  }
-
-  private boolean isMetalLookAndFeelForced() {
-    return systemPreferences.getBoolean(LOOK_AND_FEEL_PREFERENCE, false);
+    return systemPreferences.get(USER_LOOK_AND_FEEL_CLASSNAME, null);
   }
 
   public Locale getPreferredLocale() {

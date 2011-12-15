@@ -102,7 +102,7 @@
 		<parameter-def id="class" multiplicity="any"/>
 	</extension-point>
 	<extension-point id="Bootjobs">
-		<parameter-def id="class"/>
+		<parameter-def id="class" multiplicity="any"/>
 	</extension-point>
 	<extension-point id="Menubar">
 		<parameter-def id="class" multiplicity="any"/>
@@ -129,6 +129,8 @@
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="AnathemaCore">
 		<parameter id="class" value="net.sf.anathema.framework.module.ItemViewBootJob"/>
+		<parameter id="class" value="net.sf.anathema.framework.module.preferences.LookAndFeelNormalizerBootJob"/>
+		<parameter id="class" value="net.sf.anathema.framework.environment.LookAndFeelInitializerBootJob"/>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="anathema"/>
