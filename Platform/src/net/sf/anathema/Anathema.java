@@ -36,7 +36,6 @@ public class Anathema implements Application {
     displayStatus("Preparing Environment..."); //$NON-NLS-1$
     AnathemaEnvironment.initLogging();
     AnathemaEnvironment.initLocale(anathemaPreferences);
-    AnathemaEnvironment.initLookAndFeel(anathemaPreferences);
     AnathemaEnvironment.initTooltipManager(anathemaPreferences);
   }
 

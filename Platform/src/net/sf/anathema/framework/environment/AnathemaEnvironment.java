@@ -6,7 +6,6 @@ import java.util.Locale;
 import java.util.logging.LogManager;
 
 import javax.swing.ToolTipManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 
@@ -32,11 +31,7 @@ public class AnathemaEnvironment {
     ToolTipManager.sharedInstance().setDismissDelay(toolTipTime * 1000);
   }
 
-  public static void initLookAndFeel(IAnathemaPreferences anathemaPreferences)
-      throws ClassNotFoundException,
-      InstantiationException,
-      IllegalAccessException,
-      UnsupportedLookAndFeelException {
+  public static void initLookAndFeel(IAnathemaPreferences anathemaPreferences) {
     new LookAndFeelInitializer(anathemaPreferences).initialize();
   }
 
