@@ -9,9 +9,9 @@ public abstract class AbstractItemTypeViewProperties implements IItemTypeViewPro
 
   private final Icon icon;
   private final IItemType type;
-  private final IObjectUi ui;
+  private final IObjectUi<Object> ui;
 
-  public AbstractItemTypeViewProperties(IItemType type, Icon icon, IObjectUi ui) {
+  public AbstractItemTypeViewProperties(IItemType type, Icon icon, IObjectUi<Object> ui) {
     this.type = type;
     this.icon = icon;
     this.ui = ui;
@@ -21,7 +21,7 @@ public abstract class AbstractItemTypeViewProperties implements IItemTypeViewPro
     return icon;
   }
 
-  public IObjectUi getItemTypeUI() {
+  public IObjectUi<Object> getItemTypeUI() {
     return ui;
   }
 

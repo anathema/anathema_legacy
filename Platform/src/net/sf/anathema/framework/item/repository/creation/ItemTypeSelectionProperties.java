@@ -18,9 +18,9 @@ public class ItemTypeSelectionProperties implements IObjectSelectionProperties {
 
   private final IResources resources;
   private final ILegalityProvider<IItemType> provider;
-  private final IObjectUi ui;
+  private final IObjectUi<Object> ui;
 
-  public ItemTypeSelectionProperties(IResources resources, ILegalityProvider<IItemType> provider, IObjectUi ui) {
+  public ItemTypeSelectionProperties(IResources resources, ILegalityProvider<IItemType> provider, IObjectUi<Object> ui) {
     this.resources = resources;
     this.provider = provider;
     this.ui = ui;

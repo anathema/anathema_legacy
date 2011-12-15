@@ -9,7 +9,7 @@ import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class CharacterTypeUi implements IObjectUi {
+public class CharacterTypeUi implements IObjectUi<Object> {
 
   private final IResources resources;
   private final CharacterPrintNameFileScanner scanner;
@@ -40,5 +40,10 @@ public class CharacterTypeUi implements IObjectUi {
     ICharacterType characterType = scanner.getCharacterType(file);
     return new CharacterUI(resources).getSmallTypeIcon(characterType);
 
+  }
+
+  @Override
+  public String getToolTipText(Object value) {
+    return null;
   }
 }

@@ -5,6 +5,8 @@ import java.awt.Component;
 import net.disy.commons.core.message.IMessage;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.core.message.MessageType;
+import net.disy.commons.swing.action.ActionConfiguration;
+import net.disy.commons.swing.action.IActionConfiguration;
 import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.message.MessageUserDialogConfiguration;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
@@ -35,8 +37,8 @@ public class DiscardChangesVetor implements IVetor {
         message,
         new DialogButtonConfiguration() {
           @Override
-          public String getOkayButtonText() {
-            return resources.getString("Equipment.Creation.UnsavedChangesMessage.OKButton"); //$NON-NLS-1$
+          public IActionConfiguration getOkActionConfiguration() {
+            return new ActionConfiguration(resources.getString("Equipment.Creation.UnsavedChangesMessage.OKButton")); //$NON-NLS-1$
           }
         });
     UserDialog userDialog = new UserDialog(parentComponent, configuration);

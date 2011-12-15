@@ -169,7 +169,7 @@ public class EqualsBuilder {
      * @return <code>true</code> if the two Objects have tested equals.
      * @since 2.0
      */
-    public static boolean reflectionEquals(Object lhs, Object rhs, boolean testTransients, Class reflectUpToClass) {
+    public static boolean reflectionEquals(Object lhs, Object rhs, boolean testTransients, Class<?> reflectUpToClass) {
         if (lhs == rhs) {
             return true;
         }
@@ -180,9 +180,9 @@ public class EqualsBuilder {
         // class or in classes between the leaf and root.
         // If we are not testing transients or a subclass has no ivars, 
         // then a subclass can test equals to a superclass.
-        Class lhsClass = lhs.getClass();
-        Class rhsClass = rhs.getClass();
-        Class testClass;
+        Class<?> lhsClass = lhs.getClass();
+        Class<?> rhsClass = rhs.getClass();
+        Class<?> testClass;
         if (lhsClass.isInstance(rhs)) {
             testClass = lhsClass;
             if (!rhsClass.isInstance(lhs)) {
@@ -230,7 +230,7 @@ public class EqualsBuilder {
     private static void reflectionAppend(
         Object lhs,
         Object rhs,
-        Class clazz,
+        Class<?> clazz,
         EqualsBuilder builder,
         boolean useTransients) {
         Field[] fields = clazz.getDeclaredFields();
@@ -289,7 +289,7 @@ public class EqualsBuilder {
             this.setEquals(false);
             return this;
         }
-        Class lhsClass = lhs.getClass();
+        Class<?> lhsClass = lhs.getClass();
         if (!lhsClass.isArray()) {
             // The simple case, not an array, just test the element
             isEquals = lhs.equals(rhs);

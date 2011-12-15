@@ -82,7 +82,7 @@ public class AddMusicFolderAction extends SmartAction {
           resources.getString("Music.Actions.AddFolder.ProgressMonitor.DialogTitle")).run(new IInterruptableRunnableWithProgress() { //$NON-NLS-1$
             public void run(final IProgressMonitor monitor, IObservableCancelable cancelable) throws InterruptedException, InvocationTargetException {
               final List<IMp3Track> foundTracks = new ArrayList<IMp3Track>();
-              walker.walk(resources, monitor, new ITrackHandler() {
+              walker.walk(resources, monitor, cancelable, new ITrackHandler() {
                 public void handleMp3(IMp3Track mp3Item) {
                   foundTracks.add(mp3Item);
                   monitor.subTask(resources.getString("Music.Actions.AddFolder.ProgressMonitor.TracksFound") + ": " + foundTracks.size() + "."); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$

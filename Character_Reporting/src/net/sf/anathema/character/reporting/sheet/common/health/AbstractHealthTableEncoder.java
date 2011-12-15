@@ -237,7 +237,7 @@ public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
 
   private float[] createColumnWidth() {
     Float[] healthColumns = TableEncodingUtilities.createStandardColumnWidths(HEALTH_COLUMN_COUNT, 0.4f);
-    Float[] objectArray = ArrayUtilities.concat(HEALTH_LEVEL_COLUMNS, healthColumns);
+    Float[] objectArray = ArrayUtilities.concat(Float.class, HEALTH_LEVEL_COLUMNS, healthColumns);
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(objectArray);
   }
 

@@ -1,16 +1,17 @@
 package net.sf.anathema.platform.environment;
 
+import java.util.Locale;
+
+import javax.swing.ToolTipManager;
+import javax.swing.UIManager;
+import javax.swing.plaf.metal.MetalLookAndFeel;
+
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
-
-import javax.swing.*;
-import javax.swing.plaf.metal.MetalLookAndFeel;
-import java.util.Locale;
 
 public class AnathemaEnvironmentTest {
 

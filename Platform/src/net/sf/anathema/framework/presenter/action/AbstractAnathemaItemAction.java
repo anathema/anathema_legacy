@@ -64,7 +64,7 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
   protected ItemTypeSelectionProperties createSelectionProperties() {
     final ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
         .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
-    IObjectUi objectUi = new ItemTypeUi(getResources(), extension);
+    IObjectUi<Object> objectUi = new ItemTypeUi(getResources(), extension);
     return new ItemTypeSelectionProperties(getResources(), getLegalityProvider(), objectUi);
   }
 
