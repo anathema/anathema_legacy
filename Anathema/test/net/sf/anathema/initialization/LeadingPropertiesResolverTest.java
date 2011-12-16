@@ -33,6 +33,7 @@ public class LeadingPropertiesResolverTest {
 
   @Test
   public void testExtendedUserHomeString() throws Exception {
+
     assertParsesTo(PROPERTY_VALUE + "/und drinnen", WILDCARD + "/und drinnen"); //$NON-NLS-1$//$NON-NLS-2$
   }
 
