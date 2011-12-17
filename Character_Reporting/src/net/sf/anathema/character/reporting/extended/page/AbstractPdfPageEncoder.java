@@ -10,12 +10,12 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
@@ -25,12 +25,12 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
   private final IResources resources;
   private final BaseFont baseFont;
 
-  private final PdfEncodingRegistry registry;
+  private final ExtendedEncodingRegistry registry;
   private final PdfPageConfiguration pageConfiguration;
-  private final IPdfPartEncoder partEncoder;
+  private final IExtendedPartEncoder partEncoder;
   private final PdfBoxEncoder boxEncoder;
 
-  public AbstractPdfPageEncoder(IPdfPartEncoder partEncoder, PdfEncodingRegistry registry, IResources resources,
+  public AbstractPdfPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources,
                                 PdfPageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
     this.registry = registry;
@@ -66,7 +66,7 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     PdfTextEncodingUtilities.encodeText(directContent, whitewolfPhrase, whitewolfBounds, lineHeight, Element.ALIGN_RIGHT);
   }
 
-  protected PdfEncodingRegistry getRegistry() {
+  protected ExtendedEncodingRegistry getRegistry() {
     return registry;
   }
 
@@ -86,7 +86,7 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     return pageConfiguration.getContentHeight();
   }
 
-  protected IPdfPartEncoder getPartEncoder() {
+  protected IExtendedPartEncoder getPartEncoder() {
     return partEncoder;
   }
 

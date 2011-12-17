@@ -15,7 +15,7 @@ import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.extended.common.magic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.extended.common.magic.PdfInitiationEncoder;
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
 
-  public NewPdfMagicPageEncoder(IPdfPartEncoder partEncoder, PdfEncodingRegistry encodingRegistry, IResources resources,
+  public NewPdfMagicPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources,
                                 PdfPageConfiguration configuration) {
     super(partEncoder, encodingRegistry, resources, configuration);
   }

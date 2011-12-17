@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.FirstEditionMortalPartEncoder;
-import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.sheet.second.part.SecondEditionMortalPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -28,14 +28,14 @@ public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
+    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
     BaseFont baseFont = registry.getBaseFont();
     BaseFont symbolFont = registry.getSymbolBaseFont();
-    IPdfPartEncoder secondEditionMortalPartEncoder = new SecondEditionMortalPartEncoder(
+    ISimplePartEncoder secondEditionMortalPartEncoder = new SecondEditionMortalPartEncoder(
         resources,
         baseFont,
         symbolFont);
-    IPdfPartEncoder firstEditionMortalPartEncoder = new FirstEditionMortalPartEncoder(
+    ISimplePartEncoder firstEditionMortalPartEncoder = new FirstEditionMortalPartEncoder(
         resources,
         baseFont,
         symbolFont,

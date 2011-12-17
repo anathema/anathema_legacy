@@ -1,9 +1,9 @@
 package net.sf.anathema.character.reporting.extended.common.anima;
 
 import com.lowagie.text.pdf.BaseFont;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.extended.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.extended.page.IExtendedPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractAnimaEncoderFactory implements IAnimaEncoderFactory {
@@ -20,13 +20,13 @@ public abstract class AbstractAnimaEncoderFactory implements IAnimaEncoderFactor
 
   @Override
   public final IPdfContentBoxEncoder createAnimaEncoder() {
-    return new PdfAnimaEncoder(resources, basefont, symbolBaseFont, IPdfPartEncoder.FONT_SIZE, getAnimaTableEncoder());
+    return new PdfAnimaEncoder(resources, basefont, symbolBaseFont, IExtendedPartEncoder.FONT_SIZE, getAnimaTableEncoder());
   }
 
   protected abstract IPdfTableEncoder getAnimaTableEncoder();
 
   protected final float getFontSize() {
-    return IPdfPartEncoder.FONT_SIZE;
+    return IExtendedPartEncoder.FONT_SIZE;
   }
 
   protected final BaseFont getBaseFont() {

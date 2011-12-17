@@ -4,20 +4,20 @@ import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.extended.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.extended.page.IExtendedPartEncoder;
 import net.sf.anathema.lib.collection.Table;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PdfEncodingRegistry {
+public class ExtendedEncodingRegistry {
 
-  private final Table<ICharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<ICharacterType, IExaltedEdition,
-    IPdfPartEncoder>();
+  private final Table<ICharacterType, IExaltedEdition, IExtendedPartEncoder> partEncoderTable = new Table<ICharacterType, IExaltedEdition, IExtendedPartEncoder>();
+
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
   private IPdfContentBoxEncoder weaponContentEncoder;
@@ -31,7 +31,7 @@ public class PdfEncodingRegistry {
   private List<IPdfTableEncoder> magicEncoders = new ArrayList<IPdfTableEncoder>();
   private IPdfContentBoxEncoder meritsAndFlawsEncoder;
 
-  public PdfEncodingRegistry() {
+  public ExtendedEncodingRegistry() {
     this.baseFont = new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
     this.symbolBaseFont = new Font(Font.SYMBOL, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
   }
@@ -116,11 +116,11 @@ public class PdfEncodingRegistry {
     return meritsAndFlawsEncoder;
   }
 
-  public void setPartEncoder(ICharacterType type, IExaltedEdition edition, IPdfPartEncoder partEncoder) {
+  public void setPartEncoder(ICharacterType type, IExaltedEdition edition, IExtendedPartEncoder partEncoder) {
     partEncoderTable.add(type, edition, partEncoder);
   }
 
-  public IPdfPartEncoder getPartEncoder(ICharacterType type, IExaltedEdition edition) {
+  public IExtendedPartEncoder getPartEncoder(ICharacterType type, IExaltedEdition edition) {
     return partEncoderTable.get(type, edition);
   }
 

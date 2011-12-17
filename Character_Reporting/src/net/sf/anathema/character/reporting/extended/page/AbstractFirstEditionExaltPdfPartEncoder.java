@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.extended.page;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.PdfDotsEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfEssenceEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -11,7 +11,7 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
 
   private final int essenceMax;
 
-  public AbstractFirstEditionExaltPdfPartEncoder(IResources resources, PdfEncodingRegistry registry, int essenceMax) {
+  public AbstractFirstEditionExaltPdfPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
     super(resources, registry.getBaseFont(), registry.getSymbolBaseFont());
     this.essenceMax = essenceMax;
   }

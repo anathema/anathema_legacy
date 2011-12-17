@@ -9,10 +9,10 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.common.Bounds;
@@ -31,11 +31,11 @@ public class SecondEditionLunarAdditionalPageEncoder implements IPdfPageEncoder 
 
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
-  private final IPdfPartEncoder partEncoder;
+  private final ISimplePartEncoder partEncoder;
 
   public SecondEditionLunarAdditionalPageEncoder(
-      IPdfPartEncoder partEncoder,
-      PdfEncodingRegistry registry,
+      ISimplePartEncoder partEncoder,
+      SimpleEncodingRegistry registry,
       IResources resources,
       int essenceMax,
       PdfPageConfiguration pageConfiguration) {

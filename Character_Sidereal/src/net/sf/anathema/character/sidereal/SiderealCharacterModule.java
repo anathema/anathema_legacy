@@ -25,8 +25,8 @@ import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
 import net.sf.anathema.character.sidereal.additionalrules.AdditionalSiderealRules;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeModelFactory;
@@ -193,9 +193,9 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    IPdfPartEncoder firstEditionEncoder = new FirstEditionSiderealPartEncoder(resources, registry, ESSENCE_MAX);
-    IPdfPartEncoder secondEditionEncoder = new SecondEditionSiderealPartEncoder(resources, registry, ESSENCE_MAX);
+    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
+    ISimplePartEncoder firstEditionEncoder = new FirstEditionSiderealPartEncoder(resources, registry, ESSENCE_MAX);
+    ISimplePartEncoder secondEditionEncoder = new SecondEditionSiderealPartEncoder(resources, registry, ESSENCE_MAX);
     registry.setPartEncoder(CharacterType.SIDEREAL, ExaltedEdition.FirstEdition, firstEditionEncoder);
     registry.setPartEncoder(CharacterType.SIDEREAL, ExaltedEdition.SecondEdition, secondEditionEncoder);
   }

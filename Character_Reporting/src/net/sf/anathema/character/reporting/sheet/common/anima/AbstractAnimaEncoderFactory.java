@@ -1,9 +1,10 @@
 package net.sf.anathema.character.reporting.sheet.common.anima;
 
 import com.lowagie.text.pdf.BaseFont;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.extended.common.anima.PdfAnimaEncoder;
+import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractAnimaEncoderFactory implements IAnimaEncoderFactory {
@@ -20,15 +21,13 @@ public abstract class AbstractAnimaEncoderFactory implements IAnimaEncoderFactor
 
   @Override
   public final IPdfContentBoxEncoder createAnimaEncoder() {
-    return new PdfAnimaEncoder(resources, basefont, symbolBaseFont, IPdfPartEncoder.FONT_SIZE, getAnimaPowerCount(), getAnimaTableEncoder());
+    return new PdfAnimaEncoder(resources, basefont, symbolBaseFont, ISimplePartEncoder.FONT_SIZE, getAnimaTableEncoder());
   }
 
   protected abstract IPdfTableEncoder getAnimaTableEncoder();
 
-  protected abstract int getAnimaPowerCount();
-
   protected final float getFontSize() {
-    return IPdfPartEncoder.FONT_SIZE;
+    return ISimplePartEncoder.FONT_SIZE;
   }
 
   protected final BaseFont getBaseFont() {

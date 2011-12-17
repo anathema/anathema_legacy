@@ -50,8 +50,8 @@ import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawViewFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -221,10 +221,10 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    IPdfPartEncoder firstEditionEncoder = new FirstEditionLunarPartEncoder(resources, registry, ESSENCE_MAX);
+    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
+    ISimplePartEncoder firstEditionEncoder = new FirstEditionLunarPartEncoder(resources, registry, ESSENCE_MAX);
     registry.setPartEncoder(CharacterType.LUNAR, ExaltedEdition.FirstEdition, firstEditionEncoder);
-    IPdfPartEncoder secondEditionEncoder = new SecondEditionLunarPartEncoder(resources, registry, ESSENCE_MAX);
+    ISimplePartEncoder secondEditionEncoder = new SecondEditionLunarPartEncoder(resources, registry, ESSENCE_MAX);
     registry.setPartEncoder(CharacterType.LUNAR, ExaltedEdition.SecondEdition, secondEditionEncoder);
   }
 }

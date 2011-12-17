@@ -12,8 +12,8 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
 import net.sf.anathema.character.spirit.generic.DivineSubordination;
 import net.sf.anathema.character.spirit.generic.InfiniteMastery;
 import net.sf.anathema.character.spirit.reporting.SecondEditionSpiritPartEncoder;
@@ -44,8 +44,8 @@ public class SpiritCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    IPdfPartEncoder secondEditionEncoder = new SecondEditionSpiritPartEncoder(resources, registry, ESSENCE_MAX);
+    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
+    ISimplePartEncoder secondEditionEncoder = new SecondEditionSpiritPartEncoder(resources, registry, ESSENCE_MAX);
     registry.setPartEncoder(CharacterType.SPIRIT, ExaltedEdition.SecondEdition, secondEditionEncoder);
   }
 }

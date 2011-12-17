@@ -8,11 +8,11 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.PdfAbilitiesEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfVirtueEncoder;
@@ -32,10 +32,10 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
   private static final int ANIMA_HEIGHT = 128;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
-  private final PdfEncodingRegistry registry;
-  private final IPdfPartEncoder partEncoder;
+  private final ExtendedEncodingRegistry registry;
+  private final IExtendedPartEncoder partEncoder;
 
-  public PdfOldStyleFirstPageEncoder(IPdfPartEncoder partEncoder, PdfEncodingRegistry registry, IResources resources, int essenceMax,
+  public PdfOldStyleFirstPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax,
                                      PdfPageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
     this.baseFont = registry.getBaseFont();

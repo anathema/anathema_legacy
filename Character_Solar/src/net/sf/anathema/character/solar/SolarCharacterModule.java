@@ -19,15 +19,18 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.extended.page.IExtendedPartEncoder;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 import net.sf.anathema.character.solar.generic.EssenceFlow;
 import net.sf.anathema.character.solar.generic.InfiniteMastery;
 import net.sf.anathema.character.solar.generic.SupremePerfectionOf;
 import net.sf.anathema.character.solar.generic.DivineTranscendenceOf;
 import net.sf.anathema.character.solar.reporting.FirstEditionSolarPartEncoder;
-import net.sf.anathema.character.solar.reporting.SecondEditionSolarPartEncoder;
+import net.sf.anathema.character.solar.reporting.Simple2ndSolarPartEncoder;
+import net.sf.anathema.character.solar.reporting.extended.Extended2ndSolarPartEncoder;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
@@ -126,10 +129,21 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    IPdfPartEncoder secondEditionEncoder = new SecondEditionSolarPartEncoder(resources, registry, ESSENCE_MAX);
+    addSimpleSheet(resources, moduleObject);
+    addExtendedSheet(resources, moduleObject);
+  }
+
+  private void addExtendedSheet(IResources resources, CharacterReportingModuleObject moduleObject) {
+    ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
+    IExtendedPartEncoder secondEditionEncoder = new Extended2ndSolarPartEncoder(resources, registry, ESSENCE_MAX);
     registry.setPartEncoder(CharacterType.SOLAR, ExaltedEdition.SecondEdition, secondEditionEncoder);
-    IPdfPartEncoder firstEditionEncoder = new FirstEditionSolarPartEncoder(resources, registry, ESSENCE_MAX);
+  }
+
+  private void addSimpleSheet(IResources resources, CharacterReportingModuleObject moduleObject) {
+    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
+    ISimplePartEncoder secondEditionEncoder = new Simple2ndSolarPartEncoder(resources, registry, ESSENCE_MAX);
+    registry.setPartEncoder(CharacterType.SOLAR, ExaltedEdition.SecondEdition, secondEditionEncoder);
+    ISimplePartEncoder firstEditionEncoder = new FirstEditionSolarPartEncoder(resources, registry, ESSENCE_MAX);
     registry.setPartEncoder(CharacterType.SOLAR, ExaltedEdition.FirstEdition, firstEditionEncoder);
   }
 

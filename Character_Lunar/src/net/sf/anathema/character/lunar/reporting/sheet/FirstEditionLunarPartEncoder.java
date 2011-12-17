@@ -1,17 +1,17 @@
 package net.sf.anathema.character.lunar.reporting.sheet;
 
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionLunarPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {
 
-  private final PdfEncodingRegistry registry;
+  private final SimpleEncodingRegistry registry;
 
-  public FirstEditionLunarPartEncoder(IResources resources, PdfEncodingRegistry registry, int essenceMax) {
+  public FirstEditionLunarPartEncoder(IResources resources, SimpleEncodingRegistry registry, int essenceMax) {
     super(resources, registry, essenceMax);
     this.registry = registry;
   }

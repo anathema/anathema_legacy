@@ -2,14 +2,13 @@ package net.sf.anathema.character.reporting.extended.page;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.common.encoder.IBasicPdfPartEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 
-public interface IPdfPartEncoder extends IBasicPdfPartEncoder {
+public interface IExtendedPartEncoder extends IBasicPdfPartEncoder {
 
   public IPdfContentBoxEncoder getAnimaEncoder();
 
@@ -25,7 +24,7 @@ public interface IPdfPartEncoder extends IBasicPdfPartEncoder {
 
   public IPdfContentBoxEncoder getSocialCombatEncoder();
 
-  public IPdfContentBoxEncoder getIntimaciesEncoder(PdfEncodingRegistry registry);
+  public IPdfContentBoxEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry);
 
   public IPdfContentBoxEncoder getHealthAndMovementEncoder();
 

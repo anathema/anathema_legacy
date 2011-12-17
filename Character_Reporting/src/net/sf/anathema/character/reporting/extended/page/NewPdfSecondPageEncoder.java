@@ -6,12 +6,12 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class NewPdfSecondPageEncoder extends AbstractPdfPageEncoder {
 
-  public NewPdfSecondPageEncoder(IPdfPartEncoder partEncoder, PdfEncodingRegistry registry, IResources resources, int essenceMax,
+  public NewPdfSecondPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax,
                                  PdfPageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
   }

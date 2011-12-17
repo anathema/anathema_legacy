@@ -1,13 +1,13 @@
 package net.sf.anathema.character.reporting.extended.page;
 
 import com.lowagie.text.pdf.BaseFont;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.extended.common.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.extended.first.FirstEditionCombatRulesTableEncoder;
@@ -15,7 +15,7 @@ import net.sf.anathema.character.reporting.extended.first.FirstEditionCombatValu
 import net.sf.anathema.character.reporting.extended.first.FirstEditionHealthAndMovementEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder {
+public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;
@@ -49,7 +49,7 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
     return new PdfHorizontalLineContentEncoder(1, "MeritsFlaws"); //$NON-NLS-1$
   }
 
-  public IPdfContentBoxEncoder getIntimaciesEncoder(PdfEncodingRegistry registry) {
+  public IPdfContentBoxEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {
     return new PdfHorizontalLineContentEncoder(1, "Notes"); //$NON-NLS-1$
   }
 

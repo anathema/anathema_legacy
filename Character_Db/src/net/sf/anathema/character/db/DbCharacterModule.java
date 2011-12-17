@@ -32,8 +32,8 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.virtueflaw.persistence.DefaultVirtueFlawPersisterFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -243,10 +243,10 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    IPdfPartEncoder firstEditionDbPartEncoder = new FirstEditionDbPartEncoder(resources, registry, ESSENCE_MAX);
+    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
+    ISimplePartEncoder firstEditionDbPartEncoder = new FirstEditionDbPartEncoder(resources, registry, ESSENCE_MAX);
     registry.setPartEncoder(CharacterType.DB, ExaltedEdition.FirstEdition, firstEditionDbPartEncoder);
-    IPdfPartEncoder secondEditionDbPartEncoder = new SecondEditionDbPartEncoder(resources, registry, ESSENCE_MAX);
+    ISimplePartEncoder secondEditionDbPartEncoder = new SecondEditionDbPartEncoder(resources, registry, ESSENCE_MAX);
     registry.setPartEncoder(CharacterType.DB, ExaltedEdition.SecondEdition, secondEditionDbPartEncoder);
   }
 }

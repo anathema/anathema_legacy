@@ -14,7 +14,7 @@ import net.sf.anathema.character.mutations.reporting.sheet.MutationsEncoder;
 import net.sf.anathema.character.mutations.template.MutationsTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -36,11 +36,11 @@ public class MutationsModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     ICharacterModuleObjectMap moduleMap = generics.getModuleObjectMap();
     CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
+    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
     fillEncodingRegistry(resources, registry);
   }
   
-  private void fillEncodingRegistry(IResources resources, PdfEncodingRegistry registry) {
+  private void fillEncodingRegistry(IResources resources, SimpleEncodingRegistry registry) {
 	    BaseFont baseFont = registry.getBaseFont();
 	    registry.setMutationsEncoder(new MutationsEncoder(baseFont, resources));
 	  }

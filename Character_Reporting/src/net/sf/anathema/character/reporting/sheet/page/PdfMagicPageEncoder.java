@@ -9,11 +9,11 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
@@ -30,10 +30,10 @@ public class PdfMagicPageEncoder implements IPdfPageEncoder {
   private final PdfPageConfiguration configuration;
   private final PdfBoxEncoder boxEncoder;
   private final IResources resources;
-  private final PdfEncodingRegistry encodingRegistry;
+  private final SimpleEncodingRegistry encodingRegistry;
   private final boolean pureMagic;
 
-  public PdfMagicPageEncoder(IResources resources, PdfEncodingRegistry encodingRegistry, PdfPageConfiguration configuration, boolean pureMagic) {
+  public PdfMagicPageEncoder(IResources resources, SimpleEncodingRegistry encodingRegistry, PdfPageConfiguration configuration, boolean pureMagic) {
     this.resources = resources;
     this.encodingRegistry = encodingRegistry;
     this.baseFont = encodingRegistry.getBaseFont();

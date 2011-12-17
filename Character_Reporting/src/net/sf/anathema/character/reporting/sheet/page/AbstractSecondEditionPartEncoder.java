@@ -1,12 +1,12 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
 import com.lowagie.text.pdf.BaseFont;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.PdfEssenceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatRulesTableEncoder;
@@ -15,7 +15,7 @@ import net.sf.anathema.character.reporting.sheet.second.SecondEditionHealthAndMo
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionSocialCombatStatsEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncoder {
+public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;
@@ -71,7 +71,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
     return new SecondEditionSocialCombatStatsEncoder(resources, baseFont);
   }
 
-  public IPdfContentBoxEncoder getIntimaciesEncoder(PdfEncodingRegistry registry) {
+  public IPdfContentBoxEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry) {
     return registry.getIntimaciesEncoder();
   }
 

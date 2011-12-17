@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.second.part;
 
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.page.AbstractSecondEditionPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 

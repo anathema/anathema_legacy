@@ -7,11 +7,11 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.PdfAbilitiesEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfBackgroundEncoder;
@@ -24,7 +24,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
   private final int essenceMax;
 
-  public NewPdfFirstPageEncoder(IPdfPartEncoder partEncoder, PdfEncodingRegistry registry, IResources resources, int essenceMax,
+  public NewPdfFirstPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax,
                                 PdfPageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
     this.essenceMax = essenceMax;

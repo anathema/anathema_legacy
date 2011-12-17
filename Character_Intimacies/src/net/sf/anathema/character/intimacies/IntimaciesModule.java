@@ -9,7 +9,7 @@ import net.sf.anathema.character.intimacies.reporting.sheet.IntimaciesEncoder;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -31,7 +31,7 @@ public class IntimaciesModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
+    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
     registry.setIntimaciesEncoder(new IntimaciesEncoder(registry.getBaseFont()));
   }
 }

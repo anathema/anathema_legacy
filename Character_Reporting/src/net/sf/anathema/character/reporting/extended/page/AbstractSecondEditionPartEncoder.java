@@ -2,13 +2,13 @@ package net.sf.anathema.character.reporting.extended.page;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.NewPdfEssenceEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfDotsEncoder;
 import net.sf.anathema.character.reporting.extended.common.combat.PdfCombatStatsEncoder;
@@ -20,7 +20,7 @@ import net.sf.anathema.character.reporting.extended.second.SecondEditionMovement
 import net.sf.anathema.character.reporting.extended.second.SecondEditionSocialCombatStatsEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncoder {
+public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;
@@ -80,7 +80,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
     return new SecondEditionSocialCombatStatsEncoder(resources, baseFont);
   }
 
-  public IPdfContentBoxEncoder getIntimaciesEncoder(PdfEncodingRegistry registry) {
+  public IPdfContentBoxEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {
     return registry.getIntimaciesEncoder();
   }
 

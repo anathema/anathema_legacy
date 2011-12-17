@@ -1,7 +1,7 @@
 package net.sf.anathema.character.infernal.reporting;
 
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -9,7 +9,7 @@ public class InfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncode
 
   //private final PdfEncodingRegistry registry;
 
-  public InfernalPartEncoder(IResources resources, PdfEncodingRegistry registry, int essenceMax) {
+  public InfernalPartEncoder(IResources resources, SimpleEncodingRegistry registry, int essenceMax) {
     super(resources, registry, essenceMax);
     //this.registry = registry;
   }

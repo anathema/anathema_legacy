@@ -1,17 +1,17 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncoder {
 
-  private final PdfEncodingRegistry registry;
+  private final SimpleEncodingRegistry registry;
 
-  public FirstEditionMortalPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont, PdfEncodingRegistry registry) {
+  public FirstEditionMortalPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont, SimpleEncodingRegistry registry) {
     super(resources, baseFont, symbolBaseFont);
     this.registry = registry;
   }

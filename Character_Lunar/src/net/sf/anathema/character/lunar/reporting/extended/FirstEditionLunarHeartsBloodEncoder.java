@@ -12,7 +12,7 @@ import net.sf.anathema.character.lunar.reporting.stats.heartsblood.HeartsBloodNa
 import net.sf.anathema.character.lunar.reporting.stats.heartsblood.HeartsBloodStaminaStatsGroup;
 import net.sf.anathema.character.lunar.reporting.stats.heartsblood.HeartsBloodStrengthStatsGroup;
 import net.sf.anathema.character.lunar.reporting.stats.heartsblood.IHeartsBloodStats;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.util.AbstractFixedLineStatsTableEncoder;
 import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.common.Bounds;
@@ -23,8 +23,7 @@ import net.sf.anathema.lib.util.Identificate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsTableEncoder<IHeartsBloodStats> implements
-    IPdfContentBoxEncoder {
+public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsTableEncoder<IHeartsBloodStats> implements IPdfContentBoxEncoder {
 
   private final IResources resources;
 

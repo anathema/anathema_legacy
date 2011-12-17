@@ -28,8 +28,8 @@ import net.sf.anathema.character.ghost.passions.persistence.GhostPassionsPersist
 import net.sf.anathema.character.ghost.reporting.GhostPartEncoder;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -123,8 +123,8 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    IPdfPartEncoder secondEditionEncoder = new GhostPartEncoder(resources, registry, EssenceTemplate.SYSTEM_ESSENCE_MAX);
+    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
+    ISimplePartEncoder secondEditionEncoder = new GhostPartEncoder(resources, registry, EssenceTemplate.SYSTEM_ESSENCE_MAX);
     registry.setPartEncoder(CharacterType.GHOST, ExaltedEdition.SecondEdition, secondEditionEncoder);
   }
 }

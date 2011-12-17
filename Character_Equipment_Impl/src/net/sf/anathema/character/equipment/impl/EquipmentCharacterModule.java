@@ -18,7 +18,7 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -54,11 +54,11 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     ICharacterModuleObjectMap moduleMap = generics.getModuleObjectMap();
     CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
+    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
     fillEncodingRegistry(resources, registry);
   }
 
-  private void fillEncodingRegistry(IResources resources, PdfEncodingRegistry registry) {
+  private void fillEncodingRegistry(IResources resources, SimpleEncodingRegistry registry) {
     BaseFont baseFont = registry.getBaseFont();
     registry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(baseFont, resources)));
     registry.setWeaponContentEncoder(new WeaponryEncoder(resources, baseFont));
