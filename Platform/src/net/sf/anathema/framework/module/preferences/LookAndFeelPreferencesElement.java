@@ -18,11 +18,11 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.sf.anathema.framework.configuration.AnathemaPreferences;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
@@ -202,15 +202,7 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   }
 
   private static String getLookAndFeelClassName() {
-    String userClass = SYSTEM_PREFERENCES.get(USER_LOOK_AND_FEEL_CLASSNAME, null);
-    if (userClass == null) {
-      return SYSTEM_PREFERENCES.getBoolean(LOOK_AND_FEEL_PREFERENCE, false)
-          ? MetalLookAndFeel.class.getName()
-          : null;
-    }
-    else {
-      return userClass;
-    }
+    return AnathemaPreferences.getDefaultPreferences().getUserLookAndFeel();
   }
 
   public IIdentificate getCategory() {
