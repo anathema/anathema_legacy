@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.framework.resources.TraitInternationali
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.encoder.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.common.stats.NamedGenericTraitReference;
-import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 

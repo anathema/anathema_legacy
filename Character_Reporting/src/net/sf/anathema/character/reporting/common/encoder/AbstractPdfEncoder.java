@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.sheet.util;
+package net.sf.anathema.character.reporting.common.encoder;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Phrase;
@@ -8,6 +8,7 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
 
 public abstract class AbstractPdfEncoder {
 
@@ -91,6 +92,6 @@ public abstract class AbstractPdfEncoder {
   }
 
   protected void encodeTextWithReducedLineHeight(PdfContentByte directContent, Bounds textBounds, Phrase phrase) throws DocumentException {
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
+    PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2f);
   }
 }

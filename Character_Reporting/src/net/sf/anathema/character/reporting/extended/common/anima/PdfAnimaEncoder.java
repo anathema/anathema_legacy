@@ -13,10 +13,10 @@ import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.ListUtils;
 import net.sf.anathema.character.reporting.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.encoder.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfLineEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
@@ -28,8 +28,8 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
   private final int fontSize;
   private final float lineHeight;
   private final BaseFont baseFont;
-  private final BaseFont symbolBaseFont;
   private final IResources resources;
+  private final BaseFont symbolBaseFont;
   private final Chunk symbolChunk;
   private final IPdfTableEncoder tableEncoder;
 
@@ -40,7 +40,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
     this.fontSize = fontSize;
     this.lineHeight = fontSize * 1.5f;
     this.tableEncoder = encoder;
-    this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(baseFont);
+    this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
   public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
