@@ -11,7 +11,7 @@ import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.character.mutations.model.MutationsAdditionalModel;
 import net.sf.anathema.character.mutations.template.MutationsTemplate;
-import net.sf.anathema.character.reporting.common.encoder.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 

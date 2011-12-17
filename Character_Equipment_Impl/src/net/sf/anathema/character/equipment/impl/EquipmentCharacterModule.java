@@ -18,7 +18,7 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
 

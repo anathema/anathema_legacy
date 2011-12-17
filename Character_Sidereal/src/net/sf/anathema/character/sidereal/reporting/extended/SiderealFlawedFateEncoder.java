@@ -10,11 +10,11 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
-import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.common.boxes.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.common.encoder.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateTemplate;
 import net.sf.anathema.lib.resources.IResources;
 

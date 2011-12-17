@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.simple.PdfEncodingRegistry;
 import net.sf.anathema.character.thaumaturgy.model.ThaumaturgyModelFactory;
 import net.sf.anathema.character.thaumaturgy.persistence.ThaumaturgyPersisterFactory;
 import net.sf.anathema.character.thaumaturgy.reporting.ThaumaturgyEncoder;

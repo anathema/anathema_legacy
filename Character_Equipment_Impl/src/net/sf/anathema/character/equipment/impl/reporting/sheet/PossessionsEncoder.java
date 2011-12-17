@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.character.*;
-import net.sf.anathema.character.reporting.common.encoder.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Font;

@@ -12,7 +12,7 @@ import net.sf.anathema.character.lunar.beastform.model.FirstEditionBeastformMode
 import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.mutations.model.IMutation;
-import net.sf.anathema.character.reporting.common.encoder.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 

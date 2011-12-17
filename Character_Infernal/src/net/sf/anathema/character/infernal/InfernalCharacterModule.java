@@ -32,8 +32,8 @@ import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeViewFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 

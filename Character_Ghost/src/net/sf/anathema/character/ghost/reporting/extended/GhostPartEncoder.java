@@ -1,8 +1,8 @@
 package net.sf.anathema.character.ghost.reporting.extended;
 
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.page.AbstractSecondEditionExaltPdfPartEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class GhostPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {

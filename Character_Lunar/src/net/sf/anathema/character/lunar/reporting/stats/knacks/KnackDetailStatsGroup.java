@@ -3,7 +3,7 @@ package net.sf.anathema.character.lunar.reporting.stats.knacks;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.reporting.common.stats.AbstractTextStatsGroup;
+import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 

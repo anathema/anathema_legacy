@@ -1,6 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.sheet;
 
-import static net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants.PADDING;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
 import net.sf.anathema.character.equipment.impl.reporting.sheet.AbstractWeaponryTableEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.sheet.ArmourEncoder;
@@ -9,13 +9,13 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
-import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
-import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.common.encoder.PdfBoxEncoder;
-import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Document;

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.db.reporting;
 
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.AbstractFirstEditionExaltPdfPartEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.AbstractFirstEditionExaltPdfPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionDbPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {

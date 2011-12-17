@@ -2,10 +2,10 @@ package net.sf.anathema.character.lunar.reporting.extended;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.common.BoxEncodingUtils;
-import net.sf.anathema.character.reporting.common.encoder.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.common.encoder.IPdfBoxEncoder;
-import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoxEncodingUtils;
+import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfBoxEncoder;
 
 public class BeastformAttributeBoxEncoder extends AbstractPdfEncoder implements IPdfBoxEncoder {
 

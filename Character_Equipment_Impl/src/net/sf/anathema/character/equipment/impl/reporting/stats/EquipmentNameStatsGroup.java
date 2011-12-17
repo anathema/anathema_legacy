@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.reporting.stats;
 
 import net.sf.anathema.character.equipment.character.EquipmentObjectPresenter;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.reporting.common.stats.AbstractNameStatsGroup;
+import net.sf.anathema.character.reporting.pdf.content.stats.AbstractNameStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;

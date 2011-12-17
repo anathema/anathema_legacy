@@ -7,13 +7,13 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.model.SecondEditionBeastformModel;
-import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.common.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.common.encoder.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.common.Bounds;
-import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
@@ -60,8 +60,7 @@ public class SecondEditionLunarSpiritFormEncoder implements IPdfContentBoxEncode
 	  //font.setSize(IVoidStateFormatConstants.COMMENT_FONT_SIZE);
 	  try
 	  {
-		  PdfTextEncodingUtilities.encodeText(directContent, new Phrase(text, font),
-				  newBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
+		  PdfTextEncodingUtilities.encodeText(directContent, new Phrase(text, font), newBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
 	  }
 	  catch (DocumentException e) { }
   }

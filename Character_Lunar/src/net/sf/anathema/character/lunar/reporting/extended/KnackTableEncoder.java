@@ -7,9 +7,9 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.lunar.reporting.stats.knacks.IKnackStats;
 import net.sf.anathema.character.lunar.reporting.stats.knacks.KnackNameStatsGroup;
 import net.sf.anathema.character.lunar.reporting.stats.knacks.KnackSourceStatsGroup;
-import net.sf.anathema.character.reporting.common.encoder.AbstractStatsTableEncoder;
-import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
+import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;

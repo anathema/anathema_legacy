@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.linguistics.ILinguisticsAdditionalModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
-import net.sf.anathema.character.reporting.common.encoder.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 

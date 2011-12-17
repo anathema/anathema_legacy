@@ -12,10 +12,10 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.presenter.IRenownModel;
-import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
-import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;

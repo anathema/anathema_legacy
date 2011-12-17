@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting;
 
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
-import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 
 public class CharacterReportingModuleObject implements ICharacterModuleObject {
 

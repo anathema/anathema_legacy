@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalM
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.reporting.common.encoder.AbstractFixedLineStatsTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractFixedLineStatsTableEncoder;
 
 public abstract class AbstractEquipmentTableEncoder<T extends IEquipmentStats> extends
     AbstractFixedLineStatsTableEncoder<T> {

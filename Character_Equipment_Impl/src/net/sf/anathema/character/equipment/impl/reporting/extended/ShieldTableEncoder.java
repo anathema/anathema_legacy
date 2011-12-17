@@ -12,7 +12,7 @@ import net.sf.anathema.character.equipment.impl.reporting.stats.shields.RangedCo
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
-import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ShieldTableEncoder extends AbstractEquipmentTableEncoder<IShieldStats> {

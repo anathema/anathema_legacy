@@ -6,10 +6,10 @@ import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
-import net.sf.anathema.character.reporting.common.elements.TableCell;
-import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ResplendentDestinyTableEncoder extends AbstractTableEncoder {

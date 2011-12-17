@@ -13,14 +13,14 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.model.ILunarVirtueFlaw;
 import net.sf.anathema.character.lunar.virtueflaw.presenter.ILunarVirtueFlawModel;
-import net.sf.anathema.character.reporting.common.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.common.boxes.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.common.elements.Line;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.common.Bounds;
-import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Line;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
 public class SecondEditionLunarGreatCurseEncoder implements IPdfContentBoxEncoder {
 

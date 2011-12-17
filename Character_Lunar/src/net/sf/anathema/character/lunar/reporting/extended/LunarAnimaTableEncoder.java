@@ -7,10 +7,10 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.common.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.common.boxes.anima.AnimaTableEncoder;
-import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.common.stats.anima.*;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.anima.AnimaTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.content.stats.anima.*;
 import net.sf.anathema.lib.resources.IResources;
 
 public class LunarAnimaTableEncoder extends AnimaTableEncoder implements IPdfTableEncoder {

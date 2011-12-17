@@ -1,6 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.stats.knacks;
 
-import net.sf.anathema.character.reporting.common.stats.AbstractTextStatsGroup;
+import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;

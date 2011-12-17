@@ -10,7 +10,7 @@ import net.sf.anathema.character.linguistics.reporting.sheet.LinguisticsEncoder;
 import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 

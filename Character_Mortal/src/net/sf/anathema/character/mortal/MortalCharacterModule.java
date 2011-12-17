@@ -6,10 +6,10 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.FirstEditionMortalPartEncoder;
-import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionMortalPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.FirstEditionMortalPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SecondEditionMortalPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;

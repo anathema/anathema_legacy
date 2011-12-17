@@ -1,10 +1,10 @@
 package net.sf.anathema.character.sidereal.reporting.extended;
 
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
-import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.page.AbstractFirstEditionExaltPdfPartEncoder;
-import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractFirstEditionExaltPdfPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionSiderealPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {

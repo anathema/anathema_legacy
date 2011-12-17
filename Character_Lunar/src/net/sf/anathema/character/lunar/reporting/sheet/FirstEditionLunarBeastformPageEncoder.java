@@ -1,24 +1,24 @@
 package net.sf.anathema.character.lunar.reporting.sheet;
 
-import static net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants.PADDING;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.equipment.impl.reporting.sheet.ArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.sheet.WeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
-import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.common.boxes.PdfAbilitiesEncoder;
-import net.sf.anathema.character.reporting.common.boxes.PdfVirtueEncoder;
-import net.sf.anathema.character.reporting.common.boxes.PdfWillpowerEncoder;
-import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionPersonalInfoEncoder;
-import net.sf.anathema.character.reporting.common.encoder.PdfBoxEncoder;
-import net.sf.anathema.character.reporting.common.encoder.PdfHeaderBoxEncoder;
-import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.PdfAbilitiesEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.SimplePersonalInfoEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.PdfVirtueEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.PdfWillpowerEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfHeaderBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Document;
@@ -240,7 +240,7 @@ public class FirstEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
       IGenericCharacter character,
       IGenericDescription description,
       Bounds infoBounds) {
-    SecondEditionPersonalInfoEncoder encoder = new SecondEditionPersonalInfoEncoder(baseFont, resources);
+    SimplePersonalInfoEncoder encoder = new SimplePersonalInfoEncoder(baseFont, resources);
     encoder.encodePersonalInfos(directContent, character, description, infoBounds);
   }
 

@@ -28,8 +28,8 @@ import net.sf.anathema.character.ghost.passions.persistence.GhostPassionsPersist
 import net.sf.anathema.character.ghost.reporting.GhostPartEncoder;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;

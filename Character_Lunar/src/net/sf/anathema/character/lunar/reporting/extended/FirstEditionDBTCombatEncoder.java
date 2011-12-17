@@ -11,12 +11,12 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.common.encoder.LabelledValueEncoder;
-import net.sf.anathema.character.reporting.extended.first.FirstEditionCombatRulesTableEncoder;
-import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.common.Bounds;
-import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.FirstEditionCombatRulesTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionDBTCombatEncoder implements IPdfContentBoxEncoder {
