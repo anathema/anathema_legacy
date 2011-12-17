@@ -36,7 +36,11 @@ public class LookAndFeelInitializer {
     return success;
   }
 
-  public void initialize() {
+  public void initialize()
+      throws InstantiationException,
+      IllegalAccessException,
+      ClassNotFoundException,
+      UnsupportedLookAndFeelException {
 
     // This property was always set by this method, so I (kelemen@github.com) moved it forward.
     // Still I'm not sure that setting this property always is a good thing to do.
