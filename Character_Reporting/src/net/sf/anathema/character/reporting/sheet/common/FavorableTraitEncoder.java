@@ -19,7 +19,7 @@ import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.character.reporting.common.encoder.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.common.encoder.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -173,13 +173,13 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return ""; //$NON-NLS-1$
   }
 
-  private int encodeFavorableTrait(PdfContentByte directContent, String label, IFavorableGenericTrait trait, Position position, float width) {
+  private float encodeFavorableTrait(PdfContentByte directContent, String label, IFavorableGenericTrait trait, Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
     return traitEncoder.encodeWithTextAndRectangle(directContent, label, position, width, value, favored, essenceMax);
   }
 
-  private int encodeFavorableTrait(PdfContentByte directContent, String label, IFavorableGenericTrait trait, boolean[] excellencyLearned,
+  private float encodeFavorableTrait(PdfContentByte directContent, String label, IFavorableGenericTrait trait, boolean[] excellencyLearned,
                                    Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();

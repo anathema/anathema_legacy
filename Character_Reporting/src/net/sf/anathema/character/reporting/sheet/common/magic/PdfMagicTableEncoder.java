@@ -13,7 +13,7 @@ import net.sf.anathema.character.reporting.common.stats.magic.MagicDurationStats
 import net.sf.anathema.character.reporting.common.stats.magic.MagicNameStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.magic.MagicSourceStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.magic.MagicTypeStatsGroup;
-import net.sf.anathema.character.reporting.sheet.common.AbstractStatsTableEncoder;
+import net.sf.anathema.character.reporting.common.encoder.AbstractStatsTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;

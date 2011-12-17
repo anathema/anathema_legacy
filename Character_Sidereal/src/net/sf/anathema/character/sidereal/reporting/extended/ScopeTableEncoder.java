@@ -6,11 +6,11 @@ import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.elements.CellPadding;
 import net.sf.anathema.character.reporting.common.elements.TableList;
 import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 

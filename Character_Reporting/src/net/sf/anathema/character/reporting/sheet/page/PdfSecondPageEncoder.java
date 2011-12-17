@@ -1,7 +1,9 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
-import java.util.List;
-
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
@@ -17,13 +19,10 @@ import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfMagicEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.PdfGenericCharmEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.common.encoder.PdfBoxEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
+import java.util.List;
 
 public class PdfSecondPageEncoder implements IPdfPageEncoder {
 

@@ -1,7 +1,5 @@
 package net.sf.anathema.character.mutations;
 
-import com.lowagie.text.pdf.BaseFont;
-
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
@@ -10,10 +8,11 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.mutations.model.MutationsModelFactory;
 import net.sf.anathema.character.mutations.persistence.MutationPersisterFactory;
-import net.sf.anathema.character.mutations.reporting.sheet.MutationsEncoder;
+import net.sf.anathema.character.mutations.reporting.MutationsEncoder;
 import net.sf.anathema.character.mutations.template.MutationsTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -31,17 +30,14 @@ public class MutationsModule extends NullObjectCharacterModuleAdapter {
     persisterFactory.register(templateId, new MutationPersisterFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(new MutationsTemplate());
   }
-  
+
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     ICharacterModuleObjectMap moduleMap = generics.getModuleObjectMap();
     CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
-    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
-    fillEncodingRegistry(resources, registry);
+    SimpleEncodingRegistry simpleEncodingRegistry = moduleObject.getSimpleEncodingRegistry();
+    simpleEncodingRegistry.setMutationsEncoder(new MutationsEncoder(simpleEncodingRegistry.getBaseFont(), resources));
+    ExtendedEncodingRegistry extendedEncodingRegistry = moduleObject.getExtendedEncodingRegistry();
+    extendedEncodingRegistry.setMutationsEncoder(new MutationsEncoder(extendedEncodingRegistry.getBaseFont(), resources));
   }
-  
-  private void fillEncodingRegistry(IResources resources, SimpleEncodingRegistry registry) {
-	    BaseFont baseFont = registry.getBaseFont();
-	    registry.setMutationsEncoder(new MutationsEncoder(baseFont, resources));
-	  }
 }

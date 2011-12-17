@@ -6,7 +6,7 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.impl.reporting.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -59,12 +59,6 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> 
   }
 
   private PdfPCell createFilledContentCell(Font font, final String text) {
-    return TableEncodingUtilities.createContentCellTable(
-        Color.BLACK,
-        text,
-        font,
-        0.5f,
-        Rectangle.BOTTOM,
-        Element.ALIGN_LEFT);
+    return TableEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, Rectangle.BOTTOM, Element.ALIGN_LEFT);
   }
 }

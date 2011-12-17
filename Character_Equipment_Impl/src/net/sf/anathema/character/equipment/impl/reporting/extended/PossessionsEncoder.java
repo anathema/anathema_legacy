@@ -9,7 +9,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalM
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.extended.util.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.common.encoder.AbstractLineTextEncoder;
 
 public class PossessionsEncoder extends AbstractLineTextEncoder {
 

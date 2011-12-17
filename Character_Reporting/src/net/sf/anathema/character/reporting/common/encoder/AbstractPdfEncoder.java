@@ -6,9 +6,9 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
 
 public abstract class AbstractPdfEncoder {
 

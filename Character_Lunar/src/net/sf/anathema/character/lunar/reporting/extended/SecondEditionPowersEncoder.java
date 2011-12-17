@@ -10,10 +10,10 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.reporting.common.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
@@ -113,8 +113,7 @@ public class SecondEditionPowersEncoder implements IPdfContentBoxEncoder
 				  bounds.y + bounds.height - offsetY - totalHeight,
 				  bounds.x - offsetX,
 				  lineHeight);
-		  totalHeight += PdfTextEncodingUtilities.encodeText(directContent, new Phrase(" ", font),
-				  newBounds, lineHeight).getLinesWritten() * lineHeight;
+		  totalHeight += PdfTextEncodingUtilities.encodeText(directContent, new Phrase(" ", font), newBounds, lineHeight).getLinesWritten() * lineHeight;
 	  }
 	  return totalHeight;
   }

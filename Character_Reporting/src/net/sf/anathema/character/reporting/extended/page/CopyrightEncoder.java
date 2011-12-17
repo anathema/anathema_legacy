@@ -7,9 +7,9 @@ import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
 
 public class CopyrightEncoder {
 

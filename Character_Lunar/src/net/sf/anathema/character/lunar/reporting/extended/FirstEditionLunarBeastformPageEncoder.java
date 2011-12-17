@@ -11,6 +11,8 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.common.encoder.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.common.encoder.PdfHeaderBoxEncoder;
 import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.PdfAbilitiesEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfVirtueEncoder;
@@ -20,8 +22,6 @@ import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatCon
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.extended.second.SecondEditionPersonalInfoEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.extended.util.PdfBoxEncoder;
-import net.sf.anathema.character.reporting.extended.util.PdfHeaderBoxEncoder;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 

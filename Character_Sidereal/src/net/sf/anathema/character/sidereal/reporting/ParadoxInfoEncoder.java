@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.common.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 

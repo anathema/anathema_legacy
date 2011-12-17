@@ -21,8 +21,8 @@ import net.sf.anathema.character.reporting.sheet.common.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfVirtueEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPersonalInfoEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.common.encoder.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.common.PdfTextEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants.PADDING;

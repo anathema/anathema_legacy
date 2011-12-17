@@ -19,7 +19,7 @@ import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfMagicEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.PdfGenericCharmEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.common.encoder.PdfBoxEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.List;

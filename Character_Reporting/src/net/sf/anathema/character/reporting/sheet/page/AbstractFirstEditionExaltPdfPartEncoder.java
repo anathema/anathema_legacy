@@ -26,7 +26,7 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
     return essenceMax;
   }
 
-  public boolean hasMagicPage() {
+  public boolean hasSecondPage() {
     return true;
   }
 

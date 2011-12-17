@@ -6,7 +6,7 @@ import net.sf.anathema.character.meritsflaws.model.MeritsFlawsAdditionalModel;
 import net.sf.anathema.character.meritsflaws.model.perk.IPerk;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsModel;
 import net.sf.anathema.character.meritsflaws.template.MeritsFlawsTemplate;
-import net.sf.anathema.character.reporting.sheet.util.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.common.encoder.AbstractLineTextEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;

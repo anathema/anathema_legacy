@@ -1,9 +1,10 @@
-package net.sf.anathema.character.reporting.extended.util;
+package net.sf.anathema.character.reporting.common.encoder;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.encoder.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 
 public class VirtueFlawBoxEncoder {

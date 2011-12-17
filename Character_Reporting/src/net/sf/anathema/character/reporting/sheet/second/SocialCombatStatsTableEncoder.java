@@ -13,7 +13,7 @@ import net.sf.anathema.character.reporting.common.stats.social.HonestyStatsGroup
 import net.sf.anathema.character.reporting.common.stats.social.SocialCombatNameStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.social.SocialRateStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.social.SocialSpeedStatsGroup;
-import net.sf.anathema.character.reporting.sheet.util.AbstractFixedLineStatsTableEncoder;
+import net.sf.anathema.character.reporting.common.encoder.AbstractFixedLineStatsTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEncoder<ISocialCombatStats> {

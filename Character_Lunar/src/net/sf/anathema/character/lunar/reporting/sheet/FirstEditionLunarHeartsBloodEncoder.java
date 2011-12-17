@@ -12,7 +12,7 @@ import net.sf.anathema.character.lunar.reporting.stats.heartsblood.HeartsBloodSt
 import net.sf.anathema.character.lunar.reporting.stats.heartsblood.HeartsBloodStrengthStatsGroup;
 import net.sf.anathema.character.lunar.reporting.stats.heartsblood.IHeartsBloodStats;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.util.AbstractFixedLineStatsTableEncoder;
+import net.sf.anathema.character.reporting.common.encoder.AbstractFixedLineStatsTableEncoder;
 import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;

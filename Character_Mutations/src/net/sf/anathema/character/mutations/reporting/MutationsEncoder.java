@@ -1,4 +1,4 @@
-package net.sf.anathema.character.mutations.reporting.extended;
+package net.sf.anathema.character.mutations.reporting;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Font;
@@ -11,7 +11,7 @@ import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.character.mutations.model.MutationsAdditionalModel;
 import net.sf.anathema.character.mutations.template.MutationsTemplate;
-import net.sf.anathema.character.reporting.extended.util.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.common.encoder.AbstractLineTextEncoder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -30,20 +30,23 @@ public class MutationsEncoder extends AbstractLineTextEncoder {
 
   @Override
   protected void addToPhrase(IGenericCharacter character, Font font, Phrase phrase) {
-    IMutationsModel model = ((MutationsAdditionalModel) (character.getAdditionalModel(MutationsTemplate.ID))).getModel();
+    IMutationsModel model = getMutationModel(character);
     IQualitySelection<IMutation>[] mutations = model.getSelectedQualities();
-	for (int index = 0; index < mutations.length; index++)
-	{
-	  IIdentificate mutation = mutations[index].getQuality();
-	  String text = resources.getString("Mutations.Mutation." + mutation.getId()); //$NON-NLS-1$
-	  text += index + 1 < mutations.length ? ", " : ""; //$NON-NLS-1$ //$NON-NLS-2$
-	  phrase.add(new Chunk(text, font));
-	}
+    for (int index = 0; index < mutations.length; index++) {
+      IIdentificate mutation = mutations[index].getQuality();
+      String text = resources.getString("Mutations.Mutation." + mutation.getId()); //$NON-NLS-1$
+      text += index + 1 < mutations.length ? ", " : ""; //$NON-NLS-1$ //$NON-NLS-2$
+      phrase.add(new Chunk(text, font));
+    }
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  IMutationsModel model = ((MutationsAdditionalModel) (character.getAdditionalModel(MutationsTemplate.ID))).getModel();
-	  return model.getSelectedQualities().length > 0;
+
+  public boolean hasContent(IGenericCharacter character) {
+    IMutationsModel model = getMutationModel(character);
+    return model.getSelectedQualities().length > 0;
+  }
+
+  private IMutationsModel getMutationModel(IGenericCharacter character) {
+    MutationsAdditionalModel additionalModel = (MutationsAdditionalModel) character.getAdditionalModel(MutationsTemplate.ID);
+    return additionalModel.getModel();
   }
 }

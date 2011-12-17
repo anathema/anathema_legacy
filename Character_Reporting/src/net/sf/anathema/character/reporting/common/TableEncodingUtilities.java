@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.extended.util;
+package net.sf.anathema.character.reporting.common;
 
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;

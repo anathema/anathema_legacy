@@ -14,7 +14,7 @@ import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.common.encoder.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 

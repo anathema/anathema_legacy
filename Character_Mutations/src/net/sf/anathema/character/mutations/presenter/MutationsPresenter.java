@@ -20,25 +20,21 @@ public class MutationsPresenter implements IPresenter {
   private final IMutationsModel model;
   private final IResources resources;
 
-  public MutationsPresenter(
-      IMutationsView view,
-      IMutationsModel model,
-      IResources resources) {
+  public MutationsPresenter(IMutationsView view, IMutationsModel model, IResources resources) {
     this.view = view;
     this.model = model;
     this.resources = resources;
   }
-  
-  public IMutationsView getView()
-  {
-	  return view;
+
+  public IMutationsView getView() {
+    return view;
   }
 
   public void initPresentation() {
     final IMagicLearnView mutationView = view.addMutationsView(new MutationViewLearnProperties(resources, model));
 
     model.designOverview(view.createOverview(resources.getString("Mutations.Overview")), resources);
-    
+
     mutationView.addMagicViewListener(new IMagicViewListener() {
       @SuppressWarnings("unchecked")
       public void magicRemoved(Object[] removedMagic) {
@@ -67,38 +63,35 @@ public class MutationsPresenter implements IPresenter {
     updateMutationsViews(mutationView);
     updateOverview();
   }
-  
-  public void updateOverview()
-  {
-	model.updateOverview();
+
+  public void updateOverview() {
+    model.updateOverview();
   }
 
-   private void updateMutationsViews(final IMagicLearnView giftView) {
-	    setAvailableMutations(model, giftView);
-	    IQualitySelection<IMutation>[] selectedMutations = model.getSelectedQualities();
-	    giftView.setLearnedMagic(selectedMutations);
-	  }
-   
-   private void setAvailableMutations(final IQualityModel<IMutation> giftModel, final IMagicLearnView giftView) {
-	    IMutation[] availablePerks = giftModel.getAvailableQualities();
-	    IMutation[] sortedPerks = new IMutation[availablePerks.length];
-	    I18nedIdentificateSorter<IMutation> sorter = createSorter();
-	    sorter.sortAscending(availablePerks, sortedPerks, resources);
-	    giftView.setMagicOptions(sortedPerks);
-	  }
-   
-   private I18nedIdentificateSorter<IMutation> createSorter() {
-	    I18nedIdentificateSorter<IMutation> sorter = new I18nedIdentificateSorter<IMutation>() {
-	      @Override
-	      protected String getString(final IResources sorterResources, IMutation mutation) {
-	    	String typeString =
-	    		sorterResources.getString("Mutations.Type." + mutation.getType().getId());
-	    	String mutationString =
-	    		sorterResources.getString("Mutations.Mutation." //$NON-NLS-1$
-	    	            + mutation.getId());
-	        return "(" + typeString + ") " + mutationString;
-	      }
-	    };
-	    return sorter;
-	  }
+  private void updateMutationsViews(final IMagicLearnView giftView) {
+    setAvailableMutations(model, giftView);
+    IQualitySelection<IMutation>[] selectedMutations = model.getSelectedQualities();
+    giftView.setLearnedMagic(selectedMutations);
+  }
+
+  private void setAvailableMutations(final IQualityModel<IMutation> giftModel, final IMagicLearnView giftView) {
+    IMutation[] availablePerks = giftModel.getAvailableQualities();
+    IMutation[] sortedPerks = new IMutation[availablePerks.length];
+    I18nedIdentificateSorter<IMutation> sorter = createSorter();
+    sorter.sortAscending(availablePerks, sortedPerks, resources);
+    giftView.setMagicOptions(sortedPerks);
+  }
+
+  private I18nedIdentificateSorter<IMutation> createSorter() {
+    I18nedIdentificateSorter<IMutation> sorter = new I18nedIdentificateSorter<IMutation>() {
+      @Override
+      protected String getString(final IResources sorterResources, IMutation mutation) {
+        String typeString = sorterResources.getString("Mutations.Type." + mutation.getType().getId());
+        String mutationString = sorterResources.getString("Mutations.Mutation." //$NON-NLS-1$
+                                                          + mutation.getId());
+        return "(" + typeString + ") " + mutationString;
+      }
+    };
+    return sorter;
+  }
 }

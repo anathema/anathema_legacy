@@ -7,7 +7,7 @@ import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
-import net.sf.anathema.character.reporting.sheet.util.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.common.encoder.AbstractLineTextEncoder;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Font;

@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.presenter.IRenownModel;
+import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -90,13 +90,7 @@ public class LunarFaceEncoder extends AbstractTableEncoder implements IPdfConten
   }
 
   private final PdfPCell createTextCell(String text, int alignment) {
-    PdfPCell cell = TableEncodingUtilities.createContentCellTable(
-        Color.BLACK,
-        text,
-        font,
-        0.5f,
-        Rectangle.NO_BORDER,
-        alignment);
+    PdfPCell cell = TableEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, Rectangle.NO_BORDER, alignment);
     cell.setPadding(0);
     return cell;
   }

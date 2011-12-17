@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.reporting.stats.shields;
 
 import net.sf.anathema.character.equipment.impl.reporting.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Element;
@@ -22,12 +22,8 @@ public class RangedCombatShieldStatsGroup extends AbstractValueEquipmentStatsGro
   }
 
   public void addContent(PdfPTable table, Font font, IShieldStats shield) {
-    PdfPCell cell = TableEncodingUtilities.createContentCellTable(null, getResources().getString(
-        "Sheet.Equipment.Header.RangeBonus"), //$NON-NLS-1$
-        font,
-        0f,
-        Rectangle.NO_BORDER,
-        Element.ALIGN_LEFT);
+    PdfPCell cell = TableEncodingUtilities.createContentCellTable(null, getResources().getString("Sheet.Equipment.Header.RangeBonus"), //$NON-NLS-1$
+                                                                  font, 0f, Rectangle.NO_BORDER, Element.ALIGN_LEFT);
     table.addCell(cell);
     if (shield == null) {
       table.addCell(createFinalValueCell(font));

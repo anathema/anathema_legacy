@@ -14,8 +14,8 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.reporting.common.encoder.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.extended.util.VirtueFlawBoxEncoder;
+import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.common.encoder.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.common.*;
 import net.sf.anathema.lib.resources.IResources;
 

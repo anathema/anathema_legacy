@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
-import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
+import net.sf.anathema.character.reporting.common.encoder.LabelledValueEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionCombatValueEncoder implements IPdfContentEncoder {

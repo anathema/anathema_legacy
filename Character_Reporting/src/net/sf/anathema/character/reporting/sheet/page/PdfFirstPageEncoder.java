@@ -1,5 +1,12 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
+import com.lowagie.text.Anchor;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
@@ -14,17 +21,9 @@ import net.sf.anathema.character.reporting.sheet.common.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfVirtueEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPersonalInfoEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.common.encoder.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.common.PdfTextEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.Anchor;
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfFirstPageEncoder implements IPdfPageEncoder {
   public static final float CONTENT_HEIGHT = 755;
