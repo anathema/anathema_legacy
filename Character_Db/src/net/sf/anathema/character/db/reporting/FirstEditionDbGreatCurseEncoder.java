@@ -43,7 +43,7 @@ public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implemen
     String aspectMessage = getAspectString(character);
     String message = resources.getString("Sheet.GreatCurse.Message", virtueMessage, aspectMessage); //$NON-NLS-1$
     Phrase phrase = new Phrase(message, TableEncodingUtilities.createFont(getBaseFont()));
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
+    encodeTextWithReducedLineHeight(directContent, bounds, phrase);
   }
 
   private String getVirtueString(IGenericCharacter character) {

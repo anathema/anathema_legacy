@@ -35,8 +35,16 @@ public class MutationsModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     ICharacterModuleObjectMap moduleMap = generics.getModuleObjectMap();
     CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
+    registerSimpleEncoders(resources, moduleObject);
+    registerExtendedEncoders(resources, moduleObject);
+  }
+
+  private void registerSimpleEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
     SimpleEncodingRegistry simpleEncodingRegistry = moduleObject.getSimpleEncodingRegistry();
     simpleEncodingRegistry.setMutationsEncoder(new MutationsEncoder(simpleEncodingRegistry.getBaseFont(), resources));
+  }
+
+  private void registerExtendedEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
     ExtendedEncodingRegistry extendedEncodingRegistry = moduleObject.getExtendedEncodingRegistry();
     extendedEncodingRegistry.setMutationsEncoder(new MutationsEncoder(extendedEncodingRegistry.getBaseFont(), resources));
   }

@@ -16,35 +16,7 @@ public class NewPdfSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   public void encode(Document document, PdfContentByte directContent, IGenericCharacter character, IGenericDescription description) throws
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                                                                                    DocumentException {
+    DocumentException {
     // Left column (top-down)
     float leftDistanceFromTop = 0;
     float healthHeight = encodeHealth(directContent, character, description, leftDistanceFromTop, 175);

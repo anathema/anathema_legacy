@@ -4,6 +4,7 @@ import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.reporting.pdf.rendering.general.NullPdfContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
@@ -19,16 +20,16 @@ public class ExtendedEncodingRegistry {
 
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
-  private IPdfContentBoxEncoder weaponContentEncoder;
-  private IPdfContentBoxEncoder armourContentEncoder;
-  private IPdfContentBoxEncoder intimaciesEncoder;
-  private IPdfContentBoxEncoder possessionsEncoder;
-  private IPdfContentBoxEncoder linguisticsEncoder;
-  private IPdfContentBoxEncoder mutationsEncoder;
-  private IPdfContentBoxEncoder thaumaturgyEncoder;
+  private IPdfContentBoxEncoder weaponContentEncoder = new NullPdfContentEncoder("Weapons");
+  private IPdfContentBoxEncoder armourContentEncoder = new NullPdfContentEncoder("Armour");
+  private IPdfContentBoxEncoder intimaciesEncoder = new NullPdfContentEncoder("Intimacies");
+  private IPdfContentBoxEncoder possessionsEncoder = new NullPdfContentEncoder("Possessions");
+  private IPdfContentBoxEncoder linguisticsEncoder = new NullPdfContentEncoder("Linguistics");
+  private IPdfContentBoxEncoder mutationsEncoder = new NullPdfContentEncoder("Mutations");
+  private IPdfContentBoxEncoder thaumaturgyEncoder = new NullPdfContentEncoder("Thaumaturgy");
+  private IPdfContentBoxEncoder meritsAndFlawsEncoder = new NullPdfContentEncoder("Merits & Flaws");
   private List<IPdfVariableContentBoxEncoder> sidebarEncoders = new ArrayList<IPdfVariableContentBoxEncoder>();
   private List<IPdfTableEncoder> magicEncoders = new ArrayList<IPdfTableEncoder>();
-  private IPdfContentBoxEncoder meritsAndFlawsEncoder;
 
   public ExtendedEncodingRegistry() {
     this.baseFont = new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);

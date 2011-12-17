@@ -40,12 +40,12 @@ public class InfernalUrgeEncoder implements IPdfContentBoxEncoder {
 	IInfernalUrgeModel urge = ((IInfernalUrgeModel) character.getAdditionalModel(InfernalUrgeTemplate.ID));
     Bounds textBounds = traitEncoder.encode(directContent, bounds, urge.getVirtueFlaw().getLimitTrait().getCurrentValue());
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
-    String descriptionText = urge.getDescription().getText();
+    String urgeDescription = urge.getDescription().getText();
 
     Phrase phrase = new Phrase();
     phrase.add(new Chunk(resources.getString("InfernalUrge.Title"), nameFont));
     phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
-    phrase.add(new Chunk(descriptionText, font));
+    phrase.add(new Chunk(urgeDescription, font));
     PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
  
   }

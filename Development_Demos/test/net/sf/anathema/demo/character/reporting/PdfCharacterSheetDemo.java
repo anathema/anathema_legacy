@@ -20,7 +20,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
-import net.sf.anathema.character.intimacies.reporting.sheet.IntimaciesEncoder;
+import net.sf.anathema.character.intimacies.reporting.SimpleIntimaciesEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.PdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.PdfOldStyleFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
@@ -81,7 +81,7 @@ public class PdfCharacterSheetDemo {
         baseFont,
         resources)));
     encodingRegistry.setWeaponContentEncoder(new WeaponryEncoder(resources, baseFont));
-    encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(baseFont));
+    encodingRegistry.setIntimaciesEncoder(new SimpleIntimaciesEncoder(baseFont));
     return encodingRegistry;
   }
 

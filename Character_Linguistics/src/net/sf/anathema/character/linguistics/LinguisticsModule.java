@@ -6,10 +6,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
-import net.sf.anathema.character.linguistics.reporting.sheet.LinguisticsEncoder;
+import net.sf.anathema.character.linguistics.reporting.LinguisticsEncoder;
 import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -32,7 +33,17 @@ public class LinguisticsModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     ICharacterModuleObjectMap moduleMap = generics.getModuleObjectMap();
     CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
+    registerSimpleEncoder(resources, moduleObject);
+    registerExtendedEncoder(resources, moduleObject);
+  }
+
+  private void registerSimpleEncoder(IResources resources, CharacterReportingModuleObject moduleObject) {
     SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
+    registry.setLinguisticsEncoder(new LinguisticsEncoder(resources, registry.getBaseFont()));
+  }
+
+  private void registerExtendedEncoder(IResources resources, CharacterReportingModuleObject moduleObject) {
+    ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
     registry.setLinguisticsEncoder(new LinguisticsEncoder(resources, registry.getBaseFont()));
   }
 }
