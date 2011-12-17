@@ -14,8 +14,8 @@ import net.sf.anathema.character.reporting.extended.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.extended.common.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.extended.common.magic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.extended.common.magic.PdfMagicEncoder;
-import net.sf.anathema.character.reporting.extended.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.extended.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 

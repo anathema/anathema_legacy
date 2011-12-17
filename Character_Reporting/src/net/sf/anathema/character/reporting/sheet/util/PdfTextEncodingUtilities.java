@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.sheet.util;
 
 import java.awt.Color;
 
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.util.Bounds;
 
 import com.lowagie.text.DocumentException;

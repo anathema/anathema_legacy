@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.extended.common;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.util.IStats;
-import net.sf.anathema.character.reporting.extended.util.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.encoder.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.extended.util.TableCell;
 import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.stats.IStatsGroup;

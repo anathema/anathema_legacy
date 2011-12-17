@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
+import static net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundInfo;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;

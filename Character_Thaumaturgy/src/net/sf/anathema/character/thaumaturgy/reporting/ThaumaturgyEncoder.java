@@ -1,6 +1,6 @@
 package net.sf.anathema.character.thaumaturgy.reporting;
 
-import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
+import static net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
 
 import java.util.ArrayList;
 import java.util.HashMap;

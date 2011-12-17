@@ -8,8 +8,8 @@ import net.sf.anathema.character.reporting.sheet.common.combat.PdfCombatStatsEnc
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionHealthAndMovementEncoder;
-import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;

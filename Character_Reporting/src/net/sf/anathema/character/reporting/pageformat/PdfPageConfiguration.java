@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.extended.pageformat;
+package net.sf.anathema.character.reporting.pageformat;
 
 import com.lowagie.text.Rectangle;
 import net.sf.anathema.character.reporting.util.Bounds;

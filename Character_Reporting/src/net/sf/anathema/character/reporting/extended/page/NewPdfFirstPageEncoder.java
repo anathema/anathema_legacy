@@ -9,8 +9,8 @@ import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.*;
-import net.sf.anathema.character.reporting.extended.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.extended.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.extended.second.NewSecondEditionPersonalInfoEncoder;
 import net.sf.anathema.lib.resources.IResources;
 

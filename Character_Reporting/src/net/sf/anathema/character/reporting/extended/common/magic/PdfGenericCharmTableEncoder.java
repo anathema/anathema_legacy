@@ -14,8 +14,8 @@ import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
-import net.sf.anathema.character.reporting.extended.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.extended.util.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.encoder.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.extended.util.TableCell;
 import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -24,7 +24,6 @@ import net.sf.anathema.lib.resources.IResources;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.List;
 
 public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {

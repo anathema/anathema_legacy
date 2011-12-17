@@ -17,7 +17,7 @@ import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
 
-import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
+import static net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
 
 public class PdfIntimacyEncoder implements IPdfContentBoxEncoder {
   // TODO: Give this and PdfBackgroundEncoder a common base class, which may be more broadly useful.

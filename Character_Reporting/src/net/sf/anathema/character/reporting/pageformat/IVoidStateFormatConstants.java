@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.extended.pageformat;
+package net.sf.anathema.character.reporting.pageformat;
 
 import net.disy.commons.core.text.font.FontStyle;
 import net.sf.anathema.framework.styledtext.presentation.TextFormat;

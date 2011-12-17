@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.extended.util;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
+import net.sf.anathema.character.reporting.encoder.*;
 import net.sf.anathema.character.reporting.util.Bounds;
 
 public class StandardBoxEncoder extends AbstractPdfEncoder implements IPdfBoxEncoder {

@@ -6,7 +6,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public class NewPdfSecondPageEncoder extends AbstractPdfPageEncoder {

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.first;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.reporting.sheet.common.movement.AbstractHealthAndMovemenTableEncoder;
@@ -55,5 +55,10 @@ public class FirstEditionHealthAndMovemenTableEncoder extends AbstractHealthAndM
     int sprintValue = dexValue * 3 + 20;
     double factor = 1 + Math.max(0.3 * penalty, -0.9);
     return (int) (sprintValue * factor);
+  }
+
+  @Override
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

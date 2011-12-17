@@ -21,7 +21,7 @@ import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
+import static net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
 
 public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 

@@ -10,8 +10,8 @@ import net.sf.anathema.character.reporting.extended.common.combat.PdfCombatStats
 import net.sf.anathema.character.reporting.extended.first.FirstEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.extended.first.FirstEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.extended.first.FirstEditionHealthAndMovementEncoder;
-import net.sf.anathema.character.reporting.extended.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.util.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder {

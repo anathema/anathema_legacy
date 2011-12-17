@@ -7,7 +7,7 @@ import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.extended.second.SecondEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.extended.second.SecondEditionHealthAndMovementTableEncoder;
-import net.sf.anathema.character.reporting.extended.util.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionLunarHealthAndMovementEncoder extends SecondEditionHealthAndMovementEncoder

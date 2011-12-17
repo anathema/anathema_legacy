@@ -5,9 +5,9 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.*;
 import net.sf.anathema.character.reporting.extended.common.combat.PdfCombatStatsEncoder;
-import net.sf.anathema.character.reporting.extended.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.extended.second.*;
-import net.sf.anathema.character.reporting.extended.util.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncoder {

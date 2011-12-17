@@ -1,10 +1,11 @@
-package net.sf.anathema.character.reporting.extended.util;
+package net.sf.anathema.character.reporting.encoder;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.reporting.encoder.*;
 import net.sf.anathema.character.reporting.util.Bounds;
 
 public abstract class AbstractTableEncoder implements IPdfTableEncoder {

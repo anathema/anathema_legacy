@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.extended.common.anima;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.page.IPdfPartEncoder;
-import net.sf.anathema.character.reporting.extended.util.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractAnimaEncoderFactory implements IAnimaEncoderFactory {

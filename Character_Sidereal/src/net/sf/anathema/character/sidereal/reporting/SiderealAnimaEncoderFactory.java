@@ -2,9 +2,9 @@ package net.sf.anathema.character.sidereal.reporting;
 
 import com.lowagie.text.pdf.BaseFont;
 
+import net.sf.anathema.character.reporting.encoder.*;
 import net.sf.anathema.character.reporting.sheet.common.anima.AbstractAnimaEncoderFactory;
 import net.sf.anathema.character.reporting.sheet.common.anima.AnimaTableEncoder;
-import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SiderealAnimaEncoderFactory extends AbstractAnimaEncoderFactory {

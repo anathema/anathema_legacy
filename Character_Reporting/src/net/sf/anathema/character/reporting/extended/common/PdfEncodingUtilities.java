@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.extended.common;
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.reporting.extended.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 
 import java.awt.*;
 

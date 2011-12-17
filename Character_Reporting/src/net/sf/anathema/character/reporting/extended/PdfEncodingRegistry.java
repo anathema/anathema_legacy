@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.page.IPdfPartEncoder;
-import net.sf.anathema.character.reporting.extended.util.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
 import net.sf.anathema.lib.collection.Table;
 
 import java.awt.*;

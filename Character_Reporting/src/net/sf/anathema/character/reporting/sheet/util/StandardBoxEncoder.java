@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.util;
 
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.encoder.*;
+import net.sf.anathema.character.reporting.util.*;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
