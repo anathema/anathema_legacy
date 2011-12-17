@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.extended.page;
+package net.sf.anathema.character.reporting.common.encoder;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;

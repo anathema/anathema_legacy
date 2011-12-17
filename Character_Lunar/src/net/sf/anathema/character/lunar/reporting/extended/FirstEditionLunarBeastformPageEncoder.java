@@ -9,12 +9,12 @@ import net.sf.anathema.character.equipment.impl.reporting.extended.ArmourEncoder
 import net.sf.anathema.character.equipment.impl.reporting.extended.WeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfAbilitiesEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfVirtueEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfWillpowerEncoder;
-import net.sf.anathema.character.reporting.extended.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.extended.page.IPdfPartEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;

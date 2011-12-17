@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.sheet.page;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
