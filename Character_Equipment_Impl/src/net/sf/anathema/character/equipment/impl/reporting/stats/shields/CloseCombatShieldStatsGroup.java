@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.reporting.stats.shields;
 
 import net.sf.anathema.character.equipment.impl.reporting.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
-import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Element;

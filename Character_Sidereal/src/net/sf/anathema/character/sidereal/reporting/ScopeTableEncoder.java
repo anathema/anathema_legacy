@@ -5,7 +5,7 @@ import net.sf.anathema.character.reporting.common.elements.CellPadding;
 import net.sf.anathema.character.reporting.common.elements.TableList;
 import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
-import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 

@@ -8,6 +8,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.elements.Line;
 import net.sf.anathema.character.reporting.common.Bounds;
@@ -26,7 +27,8 @@ public abstract class AbstractLineTextEncoder extends AbstractPdfEncoder impleme
     this.baseFont = baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     Font font = TableEncodingUtilities.createFont(baseFont);
     Phrase phrase = new Phrase();
     addToPhrase(character, font, phrase);
@@ -38,10 +40,9 @@ public abstract class AbstractLineTextEncoder extends AbstractPdfEncoder impleme
       yPosition -= LINE_HEIGHT;
     }
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 
   protected abstract void addToPhrase(IGenericCharacter character, Font font, Phrase phrase);

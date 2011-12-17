@@ -1,7 +1,7 @@
 package net.sf.anathema.character.lunar.reporting.sheet;
 
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.BoxEncodingUtils;
+import net.sf.anathema.character.reporting.common.BoxEncodingUtils;
 import net.sf.anathema.character.reporting.common.encoder.IPdfBoxEncoder;
 import net.sf.anathema.character.reporting.common.*;
 

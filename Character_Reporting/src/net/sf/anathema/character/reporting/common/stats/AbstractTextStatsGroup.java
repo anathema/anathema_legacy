@@ -6,7 +6,7 @@ import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.util.IStats;
-import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 
 import java.awt.*;
 

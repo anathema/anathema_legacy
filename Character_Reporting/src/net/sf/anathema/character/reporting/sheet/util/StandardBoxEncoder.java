@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.sheet.util;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
+import net.sf.anathema.character.reporting.common.BoxEncodingUtils;
 import net.sf.anathema.character.reporting.common.encoder.IPdfBoxEncoder;
 import net.sf.anathema.character.reporting.common.Bounds;
 
@@ -25,11 +26,7 @@ public class StandardBoxEncoder extends AbstractPdfEncoder implements IPdfBoxEnc
     BoxEncodingUtils.add90DegreeArc(directContent, contentBounds.x, contentBounds.y, 180);
     directContent.moveTo(contentBounds.x + ARCSPACE, contentBounds.y);
     directContent.lineTo(contentBounds.x + contentBounds.width - ARCSPACE, contentBounds.y);
-    BoxEncodingUtils.add90DegreeArc(
-        directContent,
-        contentBounds.x + contentBounds.width - ARC_SIZE,
-        contentBounds.y,
-        270);
+    BoxEncodingUtils.add90DegreeArc(directContent, contentBounds.x + contentBounds.width - ARC_SIZE, contentBounds.y, 270);
     directContent.moveTo(contentBounds.getMaxX(), contentBounds.y + ARCSPACE);
     directContent.lineTo(contentBounds.getMaxX(), contentBounds.getMaxY() - ARCSPACE);
     BoxEncodingUtils.add90DegreeArc(directContent, contentBounds.getMaxX() - ARC_SIZE, contentBounds.getMaxY()
