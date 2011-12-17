@@ -1,6 +1,6 @@
 package net.sf.anathema.character.sidereal.reporting;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -20,7 +20,7 @@ public class SecondEditionAstrologyInfoEncoder implements IPdfContentBoxEncoder 
     this.basefont = baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
     int height = (int) SPACING;
     height += (int) new SecondEditionAstrologyTableEncoder(resources, basefont).encodeTable(directContent,
     		character, getBounds(bounds, 0, height)) + SPACING + 1;
@@ -52,7 +52,7 @@ public class SecondEditionAstrologyInfoEncoder implements IPdfContentBoxEncoder 
 			  bounds.height);
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Sidereal.Astrology"; //$NON-NLS-1$
   }
   

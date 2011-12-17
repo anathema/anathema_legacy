@@ -2,7 +2,7 @@ package net.sf.anathema.character.lunar.reporting.sheet;
 
 import java.awt.Color;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.presenter.IRenownModel;
@@ -32,11 +32,11 @@ public class LunarFaceEncoder extends AbstractTableEncoder implements IPdfConten
     this.font = TableEncodingUtilities.createFont(baseFont);
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Lunar.Face"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
     encodeTable(directContent, character, bounds);
   }
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.db.reporting;
 
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
@@ -35,7 +35,7 @@ public class SecondEditionDbGreatCurseEncoder implements IPdfContentBoxEncoder {
     return TableEncodingUtilities.createFont(baseFont);
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
 	IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) character.getAdditionalModel(DbVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
@@ -65,7 +65,7 @@ public class SecondEditionDbGreatCurseEncoder implements IPdfContentBoxEncoder {
     return resources.getString("Sheet.GreatCurse.UnknownAspectUnknownVirtue"); //$NON-NLS-1$
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "GreatCurse.Dragon-Blooded"; //$NON-NLS-1$
   }
   

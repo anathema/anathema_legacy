@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
@@ -32,11 +31,11 @@ public class PdfVirtueEncoder extends AbstractPdfEncoder implements IPdfContentB
     return baseFont;
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Virtues"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
     encodeVirtues(directContent, bounds, character.getTraitCollection());
   }
 

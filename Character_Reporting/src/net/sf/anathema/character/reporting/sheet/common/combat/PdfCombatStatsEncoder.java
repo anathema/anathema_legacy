@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.common.combat;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.encoder.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
@@ -33,11 +33,11 @@ public class PdfCombatStatsEncoder extends AbstractPdfEncoder implements IPdfCon
     this.combatValueEncoder = combatValueEncoder;
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Combat"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
     float height = combatValueEncoder.encode(directContent, character, bounds);
     Bounds ruleBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - height - PADDING);
     encodeRules(directContent, character, ruleBounds);

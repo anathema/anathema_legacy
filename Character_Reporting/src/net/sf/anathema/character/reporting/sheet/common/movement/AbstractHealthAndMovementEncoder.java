@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.sheet.common.movement;
 
 import java.awt.Color;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
@@ -35,11 +35,11 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     this.symbolBaseFont = symbolBaseFont;
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "MovementHealth"; //$NON-NLS-1$
   }
 
-  public final void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
+  public final void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds)
       throws DocumentException {
     Bounds tableBounds = new Bounds(bounds.x, bounds.y, (bounds.width * 0.66f), bounds.height);
     IPdfTableEncoder tableEncoder = createTableEncoder();

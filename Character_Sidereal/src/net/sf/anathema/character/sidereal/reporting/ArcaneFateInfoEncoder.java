@@ -9,7 +9,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
@@ -37,7 +37,7 @@ public class ArcaneFateInfoEncoder implements IPdfContentBoxEncoder {
     this.edition = edition;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
 	String rememberingResource = edition == ExaltedEdition.FirstEdition ?
 			"Sheet.ArcaneFate.Remembering" : "Sheet.ArcaneFate.Remembering2nd";
     Phrase phrase = new Phrase("", new Font(basefont, fontSize, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
@@ -61,7 +61,7 @@ public class ArcaneFateInfoEncoder implements IPdfContentBoxEncoder {
 	  return true;
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Sidereal.ArcaneFate"; //$NON-NLS-1$
   }
 

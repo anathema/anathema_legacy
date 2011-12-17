@@ -2,7 +2,7 @@ package net.sf.anathema.character.sidereal.reporting;
 
 import java.awt.Color;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
@@ -37,7 +37,7 @@ public class ParadoxInfoEncoder implements IPdfContentBoxEncoder {
     this.edition = edition;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
 	  String animaResource = edition == ExaltedEdition.FirstEdition ?
 			  "Sheet.Paradox.AnimaHigh" : "Sheet.Paradox.AnimaHigh2nd";
     Phrase phrase = new Phrase("", new Font(basefont, fontSize, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
@@ -58,7 +58,7 @@ public class ParadoxInfoEncoder implements IPdfContentBoxEncoder {
     PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, lineHeight);
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Sidereal.Paradox"; //$NON-NLS-1$
   }
   

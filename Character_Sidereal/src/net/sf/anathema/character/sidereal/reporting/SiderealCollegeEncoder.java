@@ -3,8 +3,7 @@ package net.sf.anathema.character.sidereal.reporting;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -54,7 +53,7 @@ public class SiderealCollegeEncoder extends FavorableTraitEncoder {
     return new SiderealCollegeTraitCollection(collegeModel);
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Sidereal.Colleges"; //$NON-NLS-1$
   }
 

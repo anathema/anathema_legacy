@@ -1,7 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.sheet;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -31,7 +30,7 @@ public class FirstEditionDBTCombatEncoder implements IPdfContentBoxEncoder {
     this.baseFont = baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) {
     String initiativeLabel = resources.getString("Sheet.Combat.BaseInitiative"); //$NON-NLS-1$
     String dodgePoolLabel = resources.getString("Sheet.Combat.DodgePool"); //$NON-NLS-1$
     String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
@@ -79,7 +78,7 @@ public class FirstEditionDBTCombatEncoder implements IPdfContentBoxEncoder {
   }
   
 	@Override
-	public String getHeaderKey() {
+	public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
 		return "Combat";
 	}
 	

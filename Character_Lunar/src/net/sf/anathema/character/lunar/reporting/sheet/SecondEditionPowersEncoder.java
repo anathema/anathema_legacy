@@ -1,6 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.sheet;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
@@ -35,7 +35,7 @@ public class SecondEditionPowersEncoder implements IPdfContentBoxEncoder
     this.isHorizontal = isHorizontal;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds)
   {
 	  int offsetX = 0, offsetY = isHorizontal ? 0 : 5;
 	  font = TableEncodingUtilities.createFont(baseFont);
@@ -106,7 +106,7 @@ public class SecondEditionPowersEncoder implements IPdfContentBoxEncoder
   }
 
 	@Override
-	public String getHeaderKey() {
+	public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
 		return "Lunar.Powers";
 	}
 	

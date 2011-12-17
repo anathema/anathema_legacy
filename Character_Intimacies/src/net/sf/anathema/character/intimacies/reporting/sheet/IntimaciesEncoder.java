@@ -2,7 +2,7 @@ package net.sf.anathema.character.intimacies.reporting.sheet;
 
 import java.util.Iterator;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
@@ -20,7 +20,7 @@ public class IntimaciesEncoder extends AbstractLineTextEncoder {
     super(baseFont);
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Intimacies"; //$NON-NLS-1$
   }
 

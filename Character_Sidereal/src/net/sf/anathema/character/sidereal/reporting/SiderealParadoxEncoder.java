@@ -1,7 +1,8 @@
 package net.sf.anathema.character.sidereal.reporting;
 
 import static net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
@@ -43,7 +44,7 @@ public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IPdfCo
     return baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
 	IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) character.getAdditionalModel(SiderealParadoxTemplate.ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     float lineHeight = (textBounds.height - TEXT_PADDING) / 2;
@@ -65,7 +66,7 @@ public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IPdfCo
     PdfTextEncodingUtilities.encodeText(directContent, phrase, infoBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "GreatCurse.Sidereal"; //$NON-NLS-1$
   }
   

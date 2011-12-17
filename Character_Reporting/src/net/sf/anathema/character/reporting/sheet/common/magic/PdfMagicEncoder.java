@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.sheet.common.magic;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -70,11 +70,11 @@ public class PdfMagicEncoder implements IPdfContentBoxEncoder
     this.printMagic = printMagic;
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Charms"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
     new PdfMagicTableEncoder(resources, baseFont, printMagic).encodeTable(directContent, character, bounds);
   }
   

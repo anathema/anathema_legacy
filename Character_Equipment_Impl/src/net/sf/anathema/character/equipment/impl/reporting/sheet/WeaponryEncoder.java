@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.reporting.sheet;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
@@ -31,11 +31,11 @@ public class WeaponryEncoder implements IPdfContentBoxEncoder {
 	    this.customEncoder = customEncoder;
 	  }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Weapons"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, final IGenericCharacter character, Bounds bounds)
+  public void encode(PdfContentByte directContent, final IGenericCharacter character, IGenericDescription description, Bounds bounds)
       throws DocumentException {
     final AbstractWeaponryTableEncoder[] encoder = new AbstractWeaponryTableEncoder[1];
     character.getRules().getEdition().accept(new IEditionVisitor() {

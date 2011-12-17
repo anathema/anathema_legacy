@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.reporting.sheet;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.reporting.sheet.util.AbstractLineTextEncoder;
 
 import com.lowagie.text.Chunk;
@@ -17,7 +17,7 @@ public class PossessionsEncoder extends AbstractLineTextEncoder {
     super(baseFont);
   }
 
-  public String getHeaderKey() {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Possessions"; //$NON-NLS-1$
   }
 
