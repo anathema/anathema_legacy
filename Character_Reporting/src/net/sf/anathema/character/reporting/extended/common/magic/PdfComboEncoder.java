@@ -1,18 +1,22 @@
 package net.sf.anathema.character.reporting.extended.common.magic;
 
-import com.lowagie.text.*;
+import com.lowagie.text.Chunk;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.extended.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfLineEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -20,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
+import static net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
 
 public class PdfComboEncoder {
 

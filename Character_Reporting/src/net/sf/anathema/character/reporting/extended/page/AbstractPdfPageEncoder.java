@@ -1,19 +1,23 @@
 package net.sf.anathema.character.reporting.extended.page;
 
-import com.lowagie.text.*;
+import com.lowagie.text.Anchor;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfHorizontalLineContentEncoder;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.extended.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {

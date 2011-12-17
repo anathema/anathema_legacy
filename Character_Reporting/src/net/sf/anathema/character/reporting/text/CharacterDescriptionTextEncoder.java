@@ -1,10 +1,5 @@
 package net.sf.anathema.character.reporting.text;
 
-import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.framework.reporting.ITextReportUtils;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
@@ -12,6 +7,10 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.MultiColumnText;
+import net.disy.commons.core.util.StringUtilities;
+import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.framework.reporting.ITextReportUtils;
+import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {
 

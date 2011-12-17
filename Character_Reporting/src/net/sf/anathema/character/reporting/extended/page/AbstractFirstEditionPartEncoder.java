@@ -1,17 +1,17 @@
 package net.sf.anathema.character.reporting.extended.page;
 
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.reporting.encoder.*;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.encoder.IPdfContentEncoder;
-import net.sf.anathema.character.reporting.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.extended.common.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.extended.first.FirstEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.extended.first.FirstEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.extended.first.FirstEditionHealthAndMovementEncoder;
-import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder {

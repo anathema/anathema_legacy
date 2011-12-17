@@ -1,18 +1,18 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import net.disy.commons.core.util.ContractFailedException;
-import net.sf.anathema.character.generic.character.*;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
+import net.disy.commons.core.util.ContractFailedException;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.lib.resources.IResources;
 
 public class PdfEssenceEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 

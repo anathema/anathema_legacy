@@ -12,15 +12,15 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.util.PdfEncodingUtilities;
+import net.sf.anathema.character.reporting.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.util.*;
+import net.sf.anathema.character.reporting.common.*;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
+import static net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
 
 public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 

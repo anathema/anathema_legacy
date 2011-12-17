@@ -1,5 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
@@ -7,14 +9,11 @@ import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.encoder.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
 public class SecondEditionCombatValueEncoder implements IPdfContentEncoder {
 

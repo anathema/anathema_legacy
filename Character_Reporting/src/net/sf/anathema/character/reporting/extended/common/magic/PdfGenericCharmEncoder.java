@@ -5,8 +5,8 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.encoder.IPdfVariableContentBoxEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 public class PdfGenericCharmEncoder implements IPdfVariableContentBoxEncoder {

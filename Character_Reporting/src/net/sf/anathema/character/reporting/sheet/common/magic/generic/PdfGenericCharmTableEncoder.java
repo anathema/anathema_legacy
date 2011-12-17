@@ -1,26 +1,5 @@
 package net.sf.anathema.character.reporting.sheet.common.magic.generic;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import net.disy.commons.core.predicate.IPredicate;
-import net.disy.commons.core.util.CollectionUtilities;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.encoder.AbstractTableEncoder;
-import net.sf.anathema.character.reporting.sheet.util.TableCell;
-import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
@@ -32,6 +11,26 @@ import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfTemplate;
+import net.disy.commons.core.predicate.IPredicate;
+import net.disy.commons.core.util.CollectionUtilities;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
+import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
 

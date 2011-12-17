@@ -16,12 +16,12 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.model.SecondEditionBeastformModel;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionLunarSpiritFormEncoder implements IPdfContentBoxEncoder {

@@ -25,7 +25,7 @@ import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfOldStyleFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfSecondPageEncoder;
-import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.IITextReport;
 import net.sf.anathema.framework.reporting.ReportException;

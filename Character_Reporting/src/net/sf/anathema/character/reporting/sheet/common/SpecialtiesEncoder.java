@@ -1,19 +1,18 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.stats.*;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class SpecialtiesEncoder extends AbstractNamedTraitEncoder {
 

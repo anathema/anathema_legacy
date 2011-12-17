@@ -1,11 +1,11 @@
 package net.sf.anathema.character.reporting.extended.page;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.encoder.IPdfVariableContentBoxEncoder;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 
 public interface IPdfPartEncoder {
   public static final int FONT_SIZE = IVoidStateFormatConstants.FONT_SIZE - 1;

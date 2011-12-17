@@ -8,10 +8,10 @@ import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatRulesTableEncoder;
-import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;

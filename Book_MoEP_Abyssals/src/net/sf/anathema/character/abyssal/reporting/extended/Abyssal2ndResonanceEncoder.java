@@ -15,7 +15,7 @@ import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder
 import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {

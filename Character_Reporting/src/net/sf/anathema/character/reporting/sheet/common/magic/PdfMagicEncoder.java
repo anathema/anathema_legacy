@@ -1,9 +1,10 @@
 package net.sf.anathema.character.reporting.sheet.common.magic;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.sf.anathema.character.generic.character.*;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -11,17 +12,16 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.stats.magic.CharmStats;
-import net.sf.anathema.character.reporting.stats.magic.MultipleEffectCharmStats;
-import net.sf.anathema.character.reporting.stats.magic.SpellStats;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.stats.magic.CharmStats;
+import net.sf.anathema.character.reporting.common.stats.magic.MultipleEffectCharmStats;
+import net.sf.anathema.character.reporting.common.stats.magic.SpellStats;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PdfMagicEncoder implements IPdfContentBoxEncoder
 {

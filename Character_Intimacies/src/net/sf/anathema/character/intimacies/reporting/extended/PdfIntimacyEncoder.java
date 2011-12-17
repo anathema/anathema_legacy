@@ -14,10 +14,10 @@ import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
 
-import static net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
+import static net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
 
 public class PdfIntimacyEncoder implements IPdfContentBoxEncoder {
   // TODO: Give this and PdfBackgroundEncoder a common base class, which may be more broadly useful.

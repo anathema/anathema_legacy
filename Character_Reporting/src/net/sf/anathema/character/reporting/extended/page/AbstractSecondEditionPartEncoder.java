@@ -2,12 +2,21 @@ package net.sf.anathema.character.reporting.extended.page;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.encoder.*;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.*;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.common.NewPdfEssenceEncoder;
+import net.sf.anathema.character.reporting.extended.common.PdfDotsEncoder;
 import net.sf.anathema.character.reporting.extended.common.combat.PdfCombatStatsEncoder;
-import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.extended.second.*;
+import net.sf.anathema.character.reporting.extended.second.SecondEditionCombatRulesTableEncoder;
+import net.sf.anathema.character.reporting.extended.second.SecondEditionCombatValueEncoder;
+import net.sf.anathema.character.reporting.extended.second.SecondEditionHealthAndMovementEncoder;
+import net.sf.anathema.character.reporting.extended.second.SecondEditionHealthEncoder;
+import net.sf.anathema.character.reporting.extended.second.SecondEditionMovementEncoder;
+import net.sf.anathema.character.reporting.extended.second.SecondEditionSocialCombatStatsEncoder;
+import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncoder {

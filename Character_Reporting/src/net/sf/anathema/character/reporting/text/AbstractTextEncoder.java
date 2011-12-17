@@ -1,10 +1,9 @@
 package net.sf.anathema.character.reporting.text;
 
-import net.sf.anathema.framework.reporting.ITextReportUtils;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Paragraph;
+import net.sf.anathema.framework.reporting.ITextReportUtils;
+import net.sf.anathema.lib.resources.IResources;
 
 public class AbstractTextEncoder {
   private final ITextReportUtils utils;

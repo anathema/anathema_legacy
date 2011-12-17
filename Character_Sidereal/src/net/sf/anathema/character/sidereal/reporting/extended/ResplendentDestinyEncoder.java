@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfLineEncodingUtilities;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ResplendentDestinyEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {

@@ -1,13 +1,12 @@
 package net.sf.anathema.character.reporting.sheet.util;
 
-import java.awt.Color;
-
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.util.Position;
-
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfTemplate;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.common.Position;
+
+import java.awt.*;
 
 public class PdfTraitEncoder extends AbstractPdfEncoder {
 

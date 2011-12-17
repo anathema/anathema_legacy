@@ -6,13 +6,13 @@ import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.model.ILunarVirtueFlaw;
 import net.sf.anathema.character.lunar.virtueflaw.presenter.ILunarVirtueFlawModel;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.elements.Line;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.common.elements.Line;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;

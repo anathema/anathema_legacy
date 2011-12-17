@@ -1,14 +1,5 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import net.disy.commons.core.util.ArrayUtilities;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.util.IStats;
-import net.sf.anathema.character.reporting.encoder.AbstractTableEncoder;
-import net.sf.anathema.character.reporting.sheet.util.TableCell;
-import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.util.Bounds;
-
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
@@ -16,6 +7,14 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
+import net.disy.commons.core.util.ArrayUtilities;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.util.IStats;
+import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.elements.TableCell;
 
 public abstract class AbstractStatsTableEncoder<T extends IStats> extends AbstractTableEncoder {
 

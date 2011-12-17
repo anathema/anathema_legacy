@@ -9,8 +9,8 @@ import net.sf.anathema.character.lunar.reporting.stats.knacks.IKnackStats;
 import net.sf.anathema.character.lunar.reporting.stats.knacks.KnackNameStatsGroup;
 import net.sf.anathema.character.lunar.reporting.stats.knacks.KnackSourceStatsGroup;
 import net.sf.anathema.character.reporting.sheet.common.AbstractStatsTableEncoder;
-import net.sf.anathema.character.reporting.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;

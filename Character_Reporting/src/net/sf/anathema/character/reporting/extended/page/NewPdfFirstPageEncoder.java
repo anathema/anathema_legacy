@@ -7,12 +7,18 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.encoder.*;
+import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.*;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.common.PdfAbilitiesEncoder;
+import net.sf.anathema.character.reporting.extended.common.PdfAttributesEncoder;
+import net.sf.anathema.character.reporting.extended.common.PdfBackgroundEncoder;
+import net.sf.anathema.character.reporting.extended.common.PdfExperienceEncoder;
+import net.sf.anathema.character.reporting.extended.common.PdfSpecialtiesEncoder;
+import net.sf.anathema.character.reporting.extended.common.PdfVirtueEncoder;
 import net.sf.anathema.character.reporting.extended.second.NewSecondEditionPersonalInfoEncoder;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {

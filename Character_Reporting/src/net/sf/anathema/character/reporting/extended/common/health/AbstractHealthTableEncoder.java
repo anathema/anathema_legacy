@@ -1,18 +1,26 @@
 package net.sf.anathema.character.reporting.extended.common.health;
 
-import com.lowagie.text.*;
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Image;
+import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.*;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.ColumnText;
+import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfTemplate;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.extended.util.TableCell;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.elements.TableCell;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;

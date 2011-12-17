@@ -3,7 +3,7 @@ package net.sf.anathema.character.lunar.reporting.stats.heartsblood;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-import net.sf.anathema.character.reporting.stats.AbstractNameStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.AbstractNameStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 public class HeartsBloodNameStatsGroup extends AbstractNameStatsGroup<IHeartsBloodStats> {

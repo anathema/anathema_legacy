@@ -2,7 +2,7 @@ package net.sf.anathema.character.lunar.reporting.extended;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.extended.common.anima.AbstractAnimaEncoderFactory;
-import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class LunarAnimaEncoderFactory extends AbstractAnimaEncoderFactory {

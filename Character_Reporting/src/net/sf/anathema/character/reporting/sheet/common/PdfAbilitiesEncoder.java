@@ -1,13 +1,13 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import net.sf.anathema.character.generic.character.*;
+import com.lowagie.text.pdf.BaseFont;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.pdf.BaseFont;
 
 public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
 

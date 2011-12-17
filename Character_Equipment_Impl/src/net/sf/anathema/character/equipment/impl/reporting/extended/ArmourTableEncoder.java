@@ -8,7 +8,7 @@ import net.sf.anathema.character.equipment.impl.reporting.stats.IEquipmentStatsG
 import net.sf.anathema.character.equipment.impl.reporting.stats.armour.*;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourStats> {

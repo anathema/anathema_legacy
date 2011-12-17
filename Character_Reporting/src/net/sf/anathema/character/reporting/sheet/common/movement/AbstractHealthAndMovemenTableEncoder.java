@@ -1,17 +1,5 @@
 package net.sf.anathema.character.reporting.sheet.common.movement;
 
-import java.awt.Color;
-
-import net.disy.commons.core.util.ArrayUtilities;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.sheet.util.TableCell;
-import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.BadElementException;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
@@ -25,6 +13,17 @@ import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfTemplate;
+import net.disy.commons.core.util.ArrayUtilities;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.health.HealthLevelType;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.*;
 
 public abstract class AbstractHealthAndMovemenTableEncoder implements IPdfTableEncoder {
   public static final int HEALTH_RECT_SIZE = 6;

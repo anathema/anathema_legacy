@@ -4,9 +4,9 @@ import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.encoder.*;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.page.IPdfPartEncoder;
 import net.sf.anathema.lib.collection.Table;
 

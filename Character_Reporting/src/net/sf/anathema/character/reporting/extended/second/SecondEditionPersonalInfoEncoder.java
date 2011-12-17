@@ -9,11 +9,11 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
+import static net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
 
 public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
 

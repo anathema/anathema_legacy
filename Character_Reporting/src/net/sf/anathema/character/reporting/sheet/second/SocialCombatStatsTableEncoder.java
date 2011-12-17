@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
+import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.social.InvestigationSocialAttack;
@@ -7,11 +8,13 @@ import net.sf.anathema.character.generic.impl.social.PerformanceSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PresenceSocialAttack;
 import net.sf.anathema.character.generic.social.ISocialCombatStats;
 import net.sf.anathema.character.reporting.sheet.util.AbstractFixedLineStatsTableEncoder;
-import net.sf.anathema.character.reporting.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.stats.social.*;
+import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.social.DeceptionStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.social.HonestyStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.social.SocialCombatNameStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.social.SocialRateStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.social.SocialSpeedStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.pdf.BaseFont;
 
 public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEncoder<ISocialCombatStats> {
 

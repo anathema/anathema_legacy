@@ -1,10 +1,9 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
-import net.sf.anathema.character.reporting.sheet.common.health.AbstractHealthTableEncoder;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
+import net.sf.anathema.character.reporting.sheet.common.health.AbstractHealthTableEncoder;
+import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionHealthTableEncoder extends AbstractHealthTableEncoder {
 

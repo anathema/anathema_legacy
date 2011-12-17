@@ -5,11 +5,11 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.encoder.*;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.encoder.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.Bounds;
 
 public class PdfCombatStatsEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 

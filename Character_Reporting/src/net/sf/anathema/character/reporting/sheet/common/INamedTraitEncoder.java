@@ -1,9 +1,8 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.util.Position;
-
 import com.lowagie.text.pdf.PdfContentByte;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.reporting.common.Position;
 
 public interface INamedTraitEncoder {
 

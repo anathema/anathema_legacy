@@ -1,19 +1,19 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.stats.*;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
+import net.sf.anathema.character.reporting.common.stats.NamedGenericTraitReference;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder implements INamedTraitEncoder {
   private static final int SUBSECTION_FONT_SIZE = 8;

@@ -1,12 +1,12 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import net.sf.anathema.character.generic.character.*;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.HorizontalLineListEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
-
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.util.HorizontalLineListEncoder;
+import net.sf.anathema.character.reporting.common.Bounds;
 
 public class PdfHorizontalLineContentEncoder implements IPdfContentBoxEncoder {
 

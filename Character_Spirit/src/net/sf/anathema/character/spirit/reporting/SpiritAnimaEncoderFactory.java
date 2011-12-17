@@ -2,7 +2,7 @@ package net.sf.anathema.character.spirit.reporting;
 
 import net.sf.anathema.character.reporting.sheet.common.anima.AbstractAnimaEncoderFactory;
 import net.sf.anathema.character.reporting.sheet.common.anima.AnimaTableEncoder;
-import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;

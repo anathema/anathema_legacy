@@ -10,11 +10,13 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.util.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.util.*;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.ListUtils;
+import net.sf.anathema.character.reporting.common.PdfEncodingUtilities;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;

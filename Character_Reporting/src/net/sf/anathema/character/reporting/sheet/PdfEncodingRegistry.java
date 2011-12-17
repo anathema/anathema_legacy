@@ -1,15 +1,14 @@
 package net.sf.anathema.character.reporting.sheet;
 
-import java.awt.Color;
-
+import com.lowagie.text.Font;
+import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.lib.collection.Table;
 
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.BaseFont;
+import java.awt.*;
 
 public class PdfEncodingRegistry {
 

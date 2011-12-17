@@ -1,6 +1,6 @@
 package net.sf.anathema.character.abyssal.reporting;
 
-import net.sf.anathema.character.reporting.stats.anima.AnimaTableStealthProvider;
+import net.sf.anathema.character.reporting.common.stats.anima.AnimaTableStealthProvider;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AbyssalAnimaTableStealthProvider extends AnimaTableStealthProvider {

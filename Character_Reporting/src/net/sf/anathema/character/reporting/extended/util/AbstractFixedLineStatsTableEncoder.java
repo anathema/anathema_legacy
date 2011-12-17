@@ -5,8 +5,8 @@ import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.extended.common.AbstractStatsTableEncoder;
-import net.sf.anathema.character.reporting.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
+import net.sf.anathema.character.reporting.common.Bounds;
 
 public abstract class AbstractFixedLineStatsTableEncoder<T extends IStats> extends AbstractStatsTableEncoder<T> {
 

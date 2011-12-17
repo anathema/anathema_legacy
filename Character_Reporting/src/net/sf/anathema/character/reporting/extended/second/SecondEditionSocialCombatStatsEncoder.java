@@ -13,15 +13,15 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.extended.util.LabelledValueEncoder;
-import net.sf.anathema.character.reporting.extended.util.TableCell;
 import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.second.*;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.second.SocialCombatStatsTableEncoder;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.elements.TableCell;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionSocialCombatStatsEncoder implements IPdfContentBoxEncoder {

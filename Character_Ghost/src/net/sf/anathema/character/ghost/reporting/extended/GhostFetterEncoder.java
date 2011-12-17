@@ -10,8 +10,8 @@ import net.sf.anathema.character.ghost.fetters.model.Fetter;
 import net.sf.anathema.character.ghost.fetters.model.IGhostFettersModel;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
 
 public class GhostFetterEncoder implements IPdfContentBoxEncoder {
 

@@ -6,9 +6,14 @@ import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.extended.common.AbstractStatsTableEncoder;
-import net.sf.anathema.character.reporting.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.stats.magic.*;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.magic.MagicCostStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.magic.MagicDetailsStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.magic.MagicDurationStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.magic.MagicNameStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.magic.MagicSourceStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.magic.MagicTypeStatsGroup;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;

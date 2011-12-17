@@ -1,15 +1,14 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.reporting.sheet.common.movement.AbstractHealthAndMovementTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class SecondEditionHealthAndMovementTableEncoder extends AbstractHealthAndMovementTableEncoder {
 

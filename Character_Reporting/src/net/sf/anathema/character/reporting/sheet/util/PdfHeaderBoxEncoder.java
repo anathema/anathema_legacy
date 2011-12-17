@@ -1,12 +1,12 @@
 package net.sf.anathema.character.reporting.sheet.util;
 
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.util.Bounds;
-
-import static net.sf.anathema.character.reporting.encoder.IPdfBoxEncoder.HEADER_HEIGHT;
-import static net.sf.anathema.character.reporting.encoder.IPdfBoxEncoder.ARCSPACE;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.common.Bounds;
+
+import static net.sf.anathema.character.reporting.common.encoder.IPdfBoxEncoder.ARCSPACE;
+import static net.sf.anathema.character.reporting.common.encoder.IPdfBoxEncoder.HEADER_HEIGHT;
 
 public class PdfHeaderBoxEncoder extends AbstractPdfEncoder {
   private static final int HEADER_FONT_PADDING = 3;

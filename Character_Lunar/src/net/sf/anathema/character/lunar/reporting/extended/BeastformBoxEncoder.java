@@ -4,8 +4,8 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.extended.util.BoxEncodingUtils;
-import net.sf.anathema.character.reporting.encoder.IPdfBoxEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.encoder.IPdfBoxEncoder;
+import net.sf.anathema.character.reporting.common.Bounds;
 
 public class BeastformBoxEncoder extends AbstractPdfEncoder implements IPdfBoxEncoder
 {

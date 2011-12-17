@@ -1,24 +1,23 @@
 package net.sf.anathema.character.reporting.sheet.common.magic;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.reporting.stats.magic.MagicCostStatsGroup;
-import net.sf.anathema.character.reporting.stats.magic.MagicDurationStatsGroup;
-import net.sf.anathema.character.reporting.stats.magic.MagicDetailsStatsGroup;
-import net.sf.anathema.character.reporting.stats.magic.MagicNameStatsGroup;
-import net.sf.anathema.character.reporting.stats.magic.MagicSourceStatsGroup;
 import net.sf.anathema.character.reporting.sheet.common.AbstractStatsTableEncoder;
-import net.sf.anathema.character.reporting.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.stats.magic.MagicTypeStatsGroup;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.magic.MagicCostStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.magic.MagicDetailsStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.magic.MagicDurationStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.magic.MagicNameStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.magic.MagicSourceStatsGroup;
+import net.sf.anathema.character.reporting.common.stats.magic.MagicTypeStatsGroup;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfPTable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats> {
 

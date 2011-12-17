@@ -12,13 +12,13 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.extended.page.IPdfPageEncoder;
-import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.extended.util.PdfBoxEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 
-import static net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants.PADDING;
+import static net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants.PADDING;
 
 public class SecondEditionSiderealDetailsPageEncoder implements IPdfPageEncoder {
 

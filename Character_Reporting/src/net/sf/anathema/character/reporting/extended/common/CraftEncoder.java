@@ -7,8 +7,8 @@ import net.sf.anathema.character.generic.framework.configuration.AnathemaCharact
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.stats.*;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;

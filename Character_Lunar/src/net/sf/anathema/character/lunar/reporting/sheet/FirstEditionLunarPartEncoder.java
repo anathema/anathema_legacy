@@ -4,7 +4,7 @@ import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.page.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPageEncoder;
-import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionLunarPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {

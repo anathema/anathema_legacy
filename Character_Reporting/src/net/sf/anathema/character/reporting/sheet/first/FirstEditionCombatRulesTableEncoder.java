@@ -1,15 +1,14 @@
 package net.sf.anathema.character.reporting.sheet.first;
 
-import net.sf.anathema.character.reporting.sheet.common.combat.AbstractCombatRulesTableEncoder;
-import net.sf.anathema.character.reporting.sheet.elements.TableList;
-import net.sf.anathema.character.reporting.sheet.util.TableCell;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
+import net.sf.anathema.character.reporting.sheet.common.combat.AbstractCombatRulesTableEncoder;
+import net.sf.anathema.character.reporting.common.elements.TableList;
+import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
 

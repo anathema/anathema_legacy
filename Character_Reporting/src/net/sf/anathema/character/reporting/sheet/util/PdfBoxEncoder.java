@@ -1,14 +1,14 @@
 package net.sf.anathema.character.reporting.sheet.util;
 
-import net.sf.anathema.character.generic.character.*;
-import net.sf.anathema.character.reporting.encoder.*;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.util.*;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.reporting.common.encoder.IPdfBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.lib.resources.IResources;
 
 public class PdfBoxEncoder extends AbstractPdfEncoder {
 

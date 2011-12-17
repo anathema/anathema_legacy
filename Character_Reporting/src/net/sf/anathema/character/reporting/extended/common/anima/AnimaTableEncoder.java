@@ -9,9 +9,14 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.encoder.AbstractTableEncoder;
-import net.sf.anathema.character.reporting.stats.anima.*;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.common.stats.anima.AnimaTableRangeProvider;
+import net.sf.anathema.character.reporting.common.stats.anima.AnimaTableStealthProvider;
+import net.sf.anathema.character.reporting.common.stats.anima.AnimaUtils;
+import net.sf.anathema.character.reporting.common.stats.anima.ColumnDescriptor;
+import net.sf.anathema.character.reporting.common.stats.anima.IAnimaTableRangeProvider;
+import net.sf.anathema.character.reporting.common.stats.anima.IAnimaTableStealthProvider;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;

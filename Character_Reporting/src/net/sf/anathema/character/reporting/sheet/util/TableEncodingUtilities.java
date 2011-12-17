@@ -1,15 +1,14 @@
 package net.sf.anathema.character.reporting.sheet.util;
 
-import java.awt.Color;
-
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
-
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+
+import java.awt.*;
 
 public class TableEncodingUtilities {
 

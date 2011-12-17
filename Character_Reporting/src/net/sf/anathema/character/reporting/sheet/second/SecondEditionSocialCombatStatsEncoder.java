@@ -1,20 +1,5 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
-import net.sf.anathema.character.generic.character.*;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
-import net.sf.anathema.character.generic.impl.CharacterUtilties;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
-import net.sf.anathema.character.reporting.sheet.util.TableCell;
-import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
@@ -23,6 +8,22 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.generic.impl.CharacterUtilties;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
+import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionSocialCombatStatsEncoder implements IPdfContentBoxEncoder {
 
