@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.extended.common;
+package net.sf.anathema.character.reporting.extended.boxes;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;

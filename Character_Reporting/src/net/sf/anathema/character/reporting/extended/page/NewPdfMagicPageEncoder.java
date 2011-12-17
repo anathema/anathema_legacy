@@ -19,8 +19,8 @@ import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBox
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.NewPdfWillpowerEncoder;
-import net.sf.anathema.character.reporting.extended.common.PdfInitiationEncoder;
+import net.sf.anathema.character.reporting.extended.boxes.NewPdfWillpowerEncoder;
+import net.sf.anathema.character.reporting.extended.boxes.PdfInitiationEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;

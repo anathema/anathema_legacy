@@ -9,7 +9,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.FirstEditionMortalPartEncoder;
 import net.sf.anathema.character.reporting.sheet.page.ISimplePartEncoder;
-import net.sf.anathema.character.reporting.sheet.second.part.SecondEditionMortalPartEncoder;
+import net.sf.anathema.character.reporting.sheet.second.SecondEditionMortalPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;

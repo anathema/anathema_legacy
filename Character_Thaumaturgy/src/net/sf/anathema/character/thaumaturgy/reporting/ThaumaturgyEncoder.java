@@ -9,7 +9,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.boxes.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.common.encoder.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;

@@ -17,7 +17,7 @@ import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBox
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.PdfSpecialtiesEncoder;
+import net.sf.anathema.character.reporting.extended.boxes.PdfSpecialtiesEncoder;
 import net.sf.anathema.character.reporting.extended.second.NewSecondEditionPersonalInfoEncoder;
 import net.sf.anathema.lib.resources.IResources;
 

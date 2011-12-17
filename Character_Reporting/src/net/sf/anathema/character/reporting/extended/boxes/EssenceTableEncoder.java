@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.extended.common;
+package net.sf.anathema.character.reporting.extended.boxes;
 
 import com.lowagie.text.BadElementException;
 import com.lowagie.text.DocumentException;

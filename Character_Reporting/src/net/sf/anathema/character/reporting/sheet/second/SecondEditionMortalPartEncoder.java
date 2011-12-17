@@ -1,8 +1,8 @@
-package net.sf.anathema.character.reporting.extended.second.part;
+package net.sf.anathema.character.reporting.sheet.second;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.extended.page.AbstractSecondEditionPartEncoder;
+import net.sf.anathema.character.reporting.sheet.page.AbstractSecondEditionPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionMortalPartEncoder extends AbstractSecondEditionPartEncoder {
