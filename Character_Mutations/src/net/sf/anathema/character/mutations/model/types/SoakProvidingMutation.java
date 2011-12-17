@@ -58,7 +58,7 @@ public class SoakProvidingMutation extends Mutation {
     for (IQualityPredicate predicate : prerequisiteList) {
       if (predicate instanceof QualityPrerequisite) {
         IQuality[] prerequisiteQualities = ((QualityPrerequisite) predicate).getPrerequisiteQualities();
-        return ArrayUtilities.contains(prerequisiteQualities, mutation);
+        return ArrayUtilities.containsValue(prerequisiteQualities, mutation);
       }
     }
     return false;

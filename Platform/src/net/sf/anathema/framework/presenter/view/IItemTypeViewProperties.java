@@ -13,5 +13,5 @@ public interface IItemTypeViewProperties {
 
   public String getLabelKey();
 
-  public IObjectUi getItemTypeUI();
+  public IObjectUi<Object> getItemTypeUI();
 }

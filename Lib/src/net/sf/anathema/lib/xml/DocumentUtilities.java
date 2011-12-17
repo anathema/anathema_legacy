@@ -12,7 +12,6 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
-import java.util.Iterator;
 import java.util.List;
 
 import net.disy.commons.core.io.IOUtilities;
@@ -22,7 +21,6 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
-import org.dom4j.Node;
 import org.dom4j.XPath;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;

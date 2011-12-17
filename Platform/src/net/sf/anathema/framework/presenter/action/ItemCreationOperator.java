@@ -4,8 +4,8 @@ import java.awt.Component;
 import java.lang.reflect.InvocationTargetException;
 
 import net.disy.commons.core.message.Message;
+import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
 import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.core.progress.IRunnableWithProgress;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.framework.item.IItemType;
@@ -35,8 +35,8 @@ public class ItemCreationOperator implements IItemOperator {
     final Object[] internationalizedType = new Object[] { resources.getString("ItemType." + item.getItemType() + ".PrintName") }; //$NON-NLS-1$ //$NON-NLS-2$
     String title = resources.getString("AnathemaCore.AddItem.Progress.Title", internationalizedType); //$NON-NLS-1$
     try {
-      new ProgressMonitorDialog(parentComponent, title).run(false, new IRunnableWithProgress() {
-        public void run(IProgressMonitor monitor) throws InterruptedException, InvocationTargetException {
+      new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptableRunnableWithProgress() {
+        public void run(IProgressMonitor monitor) throws InvocationTargetException {
           try {
             monitor.beginTask(
                 resources.getString("AnathemaCore.AddItem.Progress.Task.Model", internationalizedType), IProgressMonitor.UNKNOWN); //$NON-NLS-1$

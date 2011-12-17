@@ -6,9 +6,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.text.StyledDocument;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
@@ -41,7 +41,7 @@ public class BasicItemDescriptionView extends AbstractInitializableContentView<O
       }
 
       public void fillInto(JPanel panel, int columnCount) {
-        panel.add(new JLabel(labelName), GridDialogLayoutDataUtilities.createTopData());
+        panel.add(new JLabel(labelName), GridDialogLayoutDataFactory.createTopData());
         panel.add(textEditor.getComponent(), GridDialogLayoutData.FILL_BOTH);
       }
     });

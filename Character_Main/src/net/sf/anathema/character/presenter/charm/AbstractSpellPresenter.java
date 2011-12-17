@@ -187,7 +187,7 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
   private ISpell[] getCircleFilteredSpellList(ISpell[] spells) {
     List<ISpell> spellList = new ArrayList<ISpell>();
     for (ISpell spell : spells) {
-      if (ArrayUtilities.contains(getCircles(), spell.getCircleType())) {
+      if (ArrayUtilities.containsValue(getCircles(), spell.getCircleType())) {
         spellList.add(spell);
       }
     }

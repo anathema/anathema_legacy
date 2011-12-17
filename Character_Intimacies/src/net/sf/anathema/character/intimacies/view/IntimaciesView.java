@@ -4,10 +4,10 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
@@ -41,10 +41,10 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   }
 
   public JComponent getComponent() {
-    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createTopData();
+    GridDialogLayoutData data = GridDialogLayoutDataFactory.createTopData();
     data.setHorizontalAlignment(GridAlignment.FILL);
     mainPanel.add(entryPanel, data);
-    content.add(mainPanel, GridDialogLayoutDataUtilities.createTopData());
+    content.add(mainPanel, GridDialogLayoutDataFactory.createTopData());
     content.add(overviewPanel, data);
     return content;
   }

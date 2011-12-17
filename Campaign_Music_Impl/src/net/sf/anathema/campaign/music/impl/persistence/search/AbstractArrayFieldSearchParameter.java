@@ -28,7 +28,7 @@ public abstract class AbstractArrayFieldSearchParameter<P> implements IExtendedS
   protected boolean containsAllParameters(Candidate candidate) {
     P[] candidateValues = getCandidateValues(candidate);
     for (P parameter : parameterArray) {
-      if (!ArrayUtilities.contains(candidateValues, parameter)) {
+      if (!ArrayUtilities.containsValue(candidateValues, parameter)) {
         return false;
       }
     }

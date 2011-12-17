@@ -71,7 +71,7 @@ public class TwoCommonParentsOptimizer {
 
   private static boolean shareAllParents(ISimpleNode node, ISimpleNode otherNode) {
     for (ISimpleNode parent : node.getParents()) {
-      if (!ArrayUtilities.contains(otherNode.getParents(), parent)) {
+      if (!ArrayUtilities.containsValue(otherNode.getParents(), parent)) {
         return false;
       }
     }

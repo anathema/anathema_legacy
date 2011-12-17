@@ -18,8 +18,8 @@ public abstract class AbstractTextStatsGroup<T extends IStats> implements IStats
   }
 
   protected final PdfPCell createTextCell(Font font, String text) {
-    int border = StringUtilities.isNullOrTrimEmpty(text) ? Rectangle.BOTTOM : Rectangle.NO_BORDER;
-    if (StringUtilities.isNullOrTrimEmpty(text)) {
+    int border = StringUtilities.isNullOrTrimmedEmpty(text) ? Rectangle.BOTTOM : Rectangle.NO_BORDER;
+    if (StringUtilities.isNullOrTrimmedEmpty(text)) {
       text = " "; //$NON-NLS-1$
     }
     return TableEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, border, Element.ALIGN_LEFT);

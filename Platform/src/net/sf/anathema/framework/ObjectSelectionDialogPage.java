@@ -7,7 +7,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.userdialog.AbstractDialogPage;
+import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
 
 public class ObjectSelectionDialogPage extends AbstractDialogPage {
@@ -17,7 +17,7 @@ public class ObjectSelectionDialogPage extends AbstractDialogPage {
   private final IObjectSelectionProperties properties;
 
   public ObjectSelectionDialogPage(Object[] objects, IObjectSelectionProperties properties) {
-    super(properties.getDefaultMessage());
+    super(properties.getDefaultMessage().getText());
     this.properties = properties;
     this.comboBox = new JComboBox(objects);
   }

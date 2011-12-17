@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
@@ -121,7 +121,7 @@ public class ThaumaturgyView implements IThaumaturgyView, IView {
   }
 
   public JComponent getComponent() {
-    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createFillNoGrab();
+    GridDialogLayoutData data = GridDialogLayoutDataFactory.createFillNoGrab();
     data.setGrabExcessVerticalSpace(true);
     mainPanel.add(comboBox.getComponent());
     mainPanel.add(selectionPanel);

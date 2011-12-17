@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.disy.commons.core.progress.ICancelable;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.core.progress.ProgressUtilities;
 import net.disy.commons.core.util.Ensure;
@@ -31,7 +32,7 @@ public class MusicFolderWalker implements IMusicFolderWalker {
     return !file.isDirectory() && file.getAbsolutePath().endsWith(".mp3"); //$NON-NLS-1$
   }
 
-  public List<File> walk(IResources resources, IProgressMonitor monitor, ITrackHandler handler)
+  public List<File> walk(IResources resources, IProgressMonitor monitor, ICancelable cancelFlag, ITrackHandler handler)
       throws InterruptedException {
     monitor.beginTask(
         resources.getString("Music.Actions.AddFolder.ProgressMonitor.Preprocessing") + " '" + musicFolder + "'.", IProgressMonitor.UNKNOWN); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -42,7 +43,7 @@ public class MusicFolderWalker implements IMusicFolderWalker {
             ").", //$NON-NLS-1$
         trackCount);
     List<File> flawedFiles = new ArrayList<File>();
-    walkFile(monitor, "", handler, flawedFiles); //$NON-NLS-1$
+    walkFile(monitor, cancelFlag, "", handler, flawedFiles); //$NON-NLS-1$
     return flawedFiles;
   }
 
@@ -56,6 +57,7 @@ public class MusicFolderWalker implements IMusicFolderWalker {
 
   private void walkDirectory(
       IProgressMonitor monitor,
+      ICancelable cancelFlag,
       String relativePath,
       ITrackHandler handler,
       List<File> flawedFiles) throws InterruptedException {
@@ -64,15 +66,15 @@ public class MusicFolderWalker implements IMusicFolderWalker {
       String childRelativePath = StringUtilities.isNullOrEmpty(relativePath) ? child.getName() : relativePath
           + File.separator
           + child.getName();
-      walkFile(monitor, childRelativePath, handler, flawedFiles);
+      walkFile(monitor, cancelFlag, childRelativePath, handler, flawedFiles);
     }
   }
 
-  private void walkFile(IProgressMonitor monitor, String relativePath, ITrackHandler handler, List<File> flawedFiles)
+  private void walkFile(IProgressMonitor monitor, ICancelable cancelFlag, String relativePath, ITrackHandler handler, List<File> flawedFiles)
       throws InterruptedException {
     File file = new File(musicFolder, relativePath);
     if (file.isDirectory()) {
-      walkDirectory(monitor, relativePath, handler, flawedFiles);
+      walkDirectory(monitor, cancelFlag, relativePath, handler, flawedFiles);
     }
     if (isMp3File(file)) {
       try {
@@ -82,7 +84,7 @@ public class MusicFolderWalker implements IMusicFolderWalker {
       catch (Exception e) {
         flawedFiles.add(file);
       }
-      ProgressUtilities.checkInterrupted(monitor);
+      ProgressUtilities.checkInterrupted(cancelFlag);
       monitor.worked(1);
     }
   }

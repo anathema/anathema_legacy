@@ -3,8 +3,8 @@ package net.sf.anathema.lib.workflow.labelledvalue.view;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 
 public class LabelledIntegerValueView extends AbstractLabelledIntegerValueView {
 
@@ -15,7 +15,7 @@ public class LabelledIntegerValueView extends AbstractLabelledIntegerValueView {
   /** 2 Columns */
   public void addComponents(JPanel panel) {
     panel.add(titleLabel, GridDialogLayoutData.FILL_HORIZONTAL);
-    panel.add(valueLabel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    panel.add(valueLabel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
   }
 
   public JLabel getValueLabel() {
@@ -24,7 +24,7 @@ public class LabelledIntegerValueView extends AbstractLabelledIntegerValueView {
 
   public void addComponents(JPanel panel, int columnCount) {
     panel.add(titleLabel, GridDialogLayoutData.FILL_HORIZONTAL);
-    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalFillNoGrab();
+    GridDialogLayoutData data = GridDialogLayoutDataFactory.createHorizontalFillNoGrab();
     data.setHorizontalSpan(columnCount - 1);
     panel.add(valueLabel, data);
   }

@@ -79,7 +79,7 @@ public abstract class AbstractPdfEncoder {
     directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, label, position.x, position.y, 0);
     float labelWidth = getDefaultTextWidth(label);
     float contentX = position.x + labelWidth + 2;
-    if (StringUtilities.isNullOrTrimEmpty(content)) {
+    if (StringUtilities.isNullOrTrimmedEmpty(content)) {
       directContent.endText();
       float lineWidth = position.x + width - contentX;
       drawMissingTextLine(directContent, new Position(contentX, position.y), lineWidth);

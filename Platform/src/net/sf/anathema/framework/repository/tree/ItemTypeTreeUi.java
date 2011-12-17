@@ -9,10 +9,10 @@ import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesEx
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.resources.IResources;
 
-public class ItemTypeTreeUi implements IObjectUi {
+public class ItemTypeTreeUi implements IObjectUi<Object> {
 
   private final ItemTypeCreationViewPropertiesExtensionPoint extension;
-  private final IObjectUi itemtypeUi;
+  private final IObjectUi<Object> itemtypeUi;
 
   public ItemTypeTreeUi(IResources resources, ItemTypeCreationViewPropertiesExtensionPoint extension) {
     this.extension = extension;
@@ -37,5 +37,10 @@ public class ItemTypeTreeUi implements IObjectUi {
       return extension.get(((PrintNameFile) value).getItemType()).getItemTypeUI().getLabel(value);
     }
     return value.toString();
+  }
+
+  @Override
+  public String getToolTipText(Object value) {
+    return null;
   }
 }

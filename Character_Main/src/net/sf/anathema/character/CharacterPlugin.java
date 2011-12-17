@@ -1,16 +1,16 @@
 package net.sf.anathema.character;
 
+import static java.text.MessageFormat.format;
+
+import java.net.URL;
+
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
 import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
+
 import org.java.plugin.Plugin;
 import org.java.plugin.registry.Extension;
 import org.java.plugin.registry.Extension.Parameter;
-
-import java.net.URL;
-import java.text.MessageFormat;
-
-import static java.text.MessageFormat.format;
 
 public class CharacterPlugin extends Plugin {
 

@@ -110,7 +110,7 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
       final int firstRowHeight) {
     Bounds infoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
     String name = description.getName();
-    String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
+    String title = StringUtilities.isNullOrTrimmedEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
     Bounds infoContentBounds = boxEncoder.encodeBox(directContent, infoBounds, title);
     encodePersonalInfos(directContent, character, description, infoContentBounds);
   }

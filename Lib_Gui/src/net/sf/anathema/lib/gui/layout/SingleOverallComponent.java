@@ -4,8 +4,8 @@ import java.awt.Component;
 
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 
 public class SingleOverallComponent implements IDialogComponent {
@@ -21,7 +21,7 @@ public class SingleOverallComponent implements IDialogComponent {
   }
 
   public void fillInto(JPanel panel, int columnCount) {
-    panel.add(component, GridDialogLayoutDataUtilities.createHorizontalSpanData(columnCount, GridDialogLayoutData.FILL_HORIZONTAL));
+    panel.add(component, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount, GridDialogLayoutData.FILL_HORIZONTAL));
   }
 
 }

@@ -6,7 +6,7 @@ import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.resources.IResources;
 
-public class HealthTypeUi implements IObjectUi {
+public class HealthTypeUi implements IObjectUi<Object> {
 
   private final IResources resources;
 
@@ -24,5 +24,10 @@ public class HealthTypeUi implements IObjectUi {
     }
     HealthType healthType = (HealthType) value;
     return resources.getString("HealthType." + healthType.name() + ".Capitalized"); //$NON-NLS-1$//$NON-NLS-2$
+  }
+
+  @Override
+  public String getToolTipText(Object value) {
+    return null;
   }
 }

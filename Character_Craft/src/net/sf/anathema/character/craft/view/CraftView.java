@@ -4,10 +4,10 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
@@ -33,7 +33,7 @@ public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<Si
   }
 
   public JComponent getComponent() {
-    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalFillNoGrab();
+    GridDialogLayoutData data = GridDialogLayoutDataFactory.createHorizontalFillNoGrab();
     data.setVerticalAlignment(GridAlignment.BEGINNING);
     mainPanel.add(entryPanel, data);
     return mainPanel;

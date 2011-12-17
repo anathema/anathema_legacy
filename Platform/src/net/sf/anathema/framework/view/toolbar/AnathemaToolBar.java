@@ -43,8 +43,7 @@ public class AnathemaToolBar implements IAnathemaToolbar, IView {
   }
 
   private void setButtonSize(JButton button) {
-    Dimension dimension = new Dimension(button.getIcon().getIconWidth() + 4, button.getIcon().getIconHeight() + 4);
-    button.setPreferredSize(dimension);
+    Dimension dimension = button.getPreferredSize();
     button.setMinimumSize(dimension);
     button.setSize(dimension);
   }

@@ -16,7 +16,7 @@ public class WeaponDamageProperties extends AbstractProperties {
     return getLabelString("Equipment.Stats.Long.Damage"); //$NON-NLS-1$
   }
 
-  public IObjectUi getHealthTypeUi() {
+  public IObjectUi<Object> getHealthTypeUi() {
     return new HealthTypeUi(resources);
   }
 }

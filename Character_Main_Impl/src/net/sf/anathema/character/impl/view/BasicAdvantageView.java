@@ -9,10 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.impl.view.advantage.BackgroundSelectionView;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
@@ -63,7 +63,7 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
     essenceData.setVerticalAlignment(GridAlignment.END);
     addTitledPanel(properties.getEssenceTitle(), innerPanel, essencePanelView.getComponent(), essenceData);
     backgroundPanel = createBackgroundPanel(properties.getBackgroundTitle());
-    innerPanel.add(backgroundPanel, GridDialogLayoutDataUtilities.createHorizontalSpanData(
+    innerPanel.add(backgroundPanel, GridDialogLayoutDataFactory.createHorizontalSpanData(
         2,
         GridDialogLayoutData.FILL_HORIZONTAL));
   }

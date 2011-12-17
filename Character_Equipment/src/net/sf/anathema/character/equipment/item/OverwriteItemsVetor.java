@@ -5,9 +5,12 @@ import java.awt.Component;
 import net.disy.commons.core.message.IMessage;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.core.message.MessageType;
+import net.disy.commons.swing.action.ActionConfiguration;
+import net.disy.commons.swing.action.IActionConfiguration;
+import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.message.MessageUserDialogConfiguration;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
-import net.disy.commons.swing.dialog.userdialog.buttons.AbstractDialogButtonConfiguration;
+import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public class OverwriteItemsVetor {
@@ -25,15 +28,15 @@ public class OverwriteItemsVetor {
     IMessage message = new Message(messageText, MessageType.WARNING);
     MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(
         message,
-        new AbstractDialogButtonConfiguration() {
+        new DialogButtonConfiguration() {
           @Override
-          public String getOkayButtonText() {
-            return resources.getString("Equipment.Creation.OverwriteMessage.OKButton"); //$NON-NLS-1$
+          public IActionConfiguration getOkActionConfiguration() {
+            return new ActionConfiguration(resources.getString("Equipment.Creation.OverwriteMessage.OKButton")); //$NON-NLS-1$
           }
         });
     UserDialog userDialog = new UserDialog(parentComponent, configuration);
-    userDialog.show();
-    return userDialog.isCanceled();
+    IDialogResult result = userDialog.show();
+    return result.isCanceled();
   }
 
 }

@@ -7,9 +7,9 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
@@ -53,7 +53,7 @@ public class VirtueFlawView implements IVirtueFlawView {
   protected void fillIntoVirtueFlawPanel(final String labelText, final ITextView textView) {
     new LabelTextView(labelText, textView).addToStandardPanel(
         virtueFlawPanel,
-        GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+        GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
   }
 
   public void setEnabled(boolean enabled) {
@@ -81,7 +81,7 @@ public class VirtueFlawView implements IVirtueFlawView {
         labelText,
         renderer,
         new ITraitType[0]);
-    rootSelectionView.addTo(virtueFlawPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    rootSelectionView.addTo(virtueFlawPanel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
     return rootSelectionView;
   }
 }

@@ -8,9 +8,9 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
@@ -56,7 +56,7 @@ public class ArmourStatisticsPresenterPage extends
         JPanel internalPanel = new JPanel(new GridDialogLayout(2, false));
         internalPanel.add(linkToggleButton.getComponent());
         internalPanel.add(new JLabel(getProperties().getLinkSoakLabel()));
-        panel.add(internalPanel, GridDialogLayoutDataUtilities.createHorizontalSpanData(columnCount - 2));
+        panel.add(internalPanel, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount - 2));
       }
 
       public int getColumnCount() {

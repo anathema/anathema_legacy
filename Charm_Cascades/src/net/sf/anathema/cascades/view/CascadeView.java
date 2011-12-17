@@ -6,9 +6,9 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.lib.gui.IView;
@@ -36,7 +36,7 @@ public class CascadeView extends AbstractCascadeSelectionView implements ICascad
     panel.add(rulesPanel, GridDialogLayoutData.RIGHT);
     JComponent treeViewComponent = getCharmTreeView().getComponent();
     treeViewComponent.setBackground(Color.WHITE);
-    panel.add(treeViewComponent, GridDialogLayoutDataUtilities.createHorizontalSpanData(
+    panel.add(treeViewComponent, GridDialogLayoutDataFactory.createHorizontalSpanData(
         2,
         GridDialogLayoutData.FILL_BOTH));
     return panel;

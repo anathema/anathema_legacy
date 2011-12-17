@@ -37,6 +37,6 @@ public class TraitTypeGroup implements ITraitTypeGroup {
   }
 
   public final boolean contains(ITraitType traitType) {
-    return ArrayUtilities.contains(traitTypes, traitType);
+    return ArrayUtilities.containsValue(traitTypes, traitType);
   }
 }

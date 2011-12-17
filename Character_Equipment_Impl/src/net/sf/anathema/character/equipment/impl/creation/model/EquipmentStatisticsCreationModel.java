@@ -117,6 +117,6 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   }
 
   public boolean isNameUnique(String name) {
-    return !ArrayUtilities.contains(existingNames, name);
+    return !ArrayUtilities.containsValue(existingNames, name);
   }
 }

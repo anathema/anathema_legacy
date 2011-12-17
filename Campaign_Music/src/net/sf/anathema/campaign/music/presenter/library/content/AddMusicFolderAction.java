@@ -13,8 +13,9 @@ import javax.swing.event.ListSelectionListener;
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.core.message.MessageType;
+import net.disy.commons.core.progress.IInterruptableRunnableWithProgress;
+import net.disy.commons.core.progress.IObservableCancelable;
 import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.core.progress.IRunnableWithProgress;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
@@ -78,10 +79,10 @@ public class AddMusicFolderAction extends SmartAction {
     try {
       new ProgressMonitorDialog(
           parentComponent,
-          resources.getString("Music.Actions.AddFolder.ProgressMonitor.DialogTitle")).run(true, new IRunnableWithProgress() { //$NON-NLS-1$
-            public void run(final IProgressMonitor monitor) throws InterruptedException, InvocationTargetException {
+          resources.getString("Music.Actions.AddFolder.ProgressMonitor.DialogTitle")).run(new IInterruptableRunnableWithProgress() { //$NON-NLS-1$
+            public void run(final IProgressMonitor monitor, IObservableCancelable cancelable) throws InterruptedException, InvocationTargetException {
               final List<IMp3Track> foundTracks = new ArrayList<IMp3Track>();
-              walker.walk(resources, monitor, new ITrackHandler() {
+              walker.walk(resources, monitor, cancelable, new ITrackHandler() {
                 public void handleMp3(IMp3Track mp3Item) {
                   foundTracks.add(mp3Item);
                   monitor.subTask(resources.getString("Music.Actions.AddFolder.ProgressMonitor.TracksFound") + ": " + foundTracks.size() + "."); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$

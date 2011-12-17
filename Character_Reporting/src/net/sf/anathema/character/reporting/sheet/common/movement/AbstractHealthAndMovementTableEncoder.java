@@ -297,9 +297,9 @@ public abstract class AbstractHealthAndMovementTableEncoder implements IPdfTable
   }
 
   private float[] createColumnWidth() {
-    Float[] movementAndLevelColumns = ArrayUtilities.concat(getMovementColumns(), HEALTH_LEVEL_COLUMNS);
+    Float[] movementAndLevelColumns = ArrayUtilities.concat(Float.class, getMovementColumns(), HEALTH_LEVEL_COLUMNS);
     Float[] healthColumns = TableEncodingUtilities.createStandardColumnWidths(HEALTH_COLUMN_COUNT, 0.4f);
-    Float[] objectArray = ArrayUtilities.concat(movementAndLevelColumns, healthColumns);
+    Float[] objectArray = ArrayUtilities.concat(Float.class, movementAndLevelColumns, healthColumns);
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(objectArray);
   }
 

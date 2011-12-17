@@ -3,10 +3,8 @@ package net.sf.anathema.character.equipment.character;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import net.disy.commons.core.model.BooleanModel;
+import net.disy.commons.core.model.listener.IChangeListener;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
@@ -70,8 +68,8 @@ public class EquipmentObjectPresenter implements IPresenter {
       else
     	  otherStatFlags.put(equipment, booleanModel);
       booleanModel.setValue(true);
-      booleanModel.addChangeListener(new ChangeListener() {
-        public void stateChanged(ChangeEvent e) {
+      booleanModel.addChangeListener(new IChangeListener() {
+        public void stateChanged() {
           model.setPrintEnabled(equipment, booleanModel.getValue());
           if (equipment instanceof IArtifactStats)
           {

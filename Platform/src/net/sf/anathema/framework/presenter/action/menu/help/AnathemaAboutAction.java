@@ -5,8 +5,8 @@ import java.awt.Component;
 import javax.swing.Action;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.dialog.userdialog.DefaultUserDialogConfiguration;
-import net.disy.commons.swing.dialog.userdialog.IDialogPage;
+import net.disy.commons.swing.dialog.userdialog.DefaultDialogConfigurationBuilder;
+import net.disy.commons.swing.dialog.userdialog.page.IDialogPage;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfigurationFactory;
 import net.sf.anathema.lib.resources.IResources;
@@ -29,9 +29,9 @@ public class AnathemaAboutAction extends SmartAction {
   @Override
   protected void execute(Component parentComponent) {
     IDialogPage page = new AboutDialogPage(resources);
-    UserDialog dialog = new UserDialog(parentComponent, new DefaultUserDialogConfiguration(
-        page,
-        DialogButtonConfigurationFactory.createOnlyOkay()));
+    DefaultDialogConfigurationBuilder<IDialogPage> dialogBuilder = new DefaultDialogConfigurationBuilder<IDialogPage>(page);
+    dialogBuilder.setButtonConfiguration(DialogButtonConfigurationFactory.createOkOnly());
+    UserDialog dialog = new UserDialog(parentComponent, dialogBuilder.build());
     dialog.show();
   }
 }

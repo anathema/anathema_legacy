@@ -19,10 +19,10 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
 
 import net.disy.commons.core.util.Ensure;
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.util.ButtonPanelBuilder;
 import net.disy.commons.swing.layout.util.LayoutDirection;
 import net.sf.anathema.lib.gui.IView;
@@ -148,7 +148,7 @@ public class SmartTable implements IView {
 			panel.add(new EndOfLineMarkerComponent());
 		} else {
 			panel.add(createButtonPanel(actions),
-					GridDialogLayoutDataUtilities.createTopData());
+			    GridDialogLayoutDataFactory.createTopData());
 		}
 		return panel;
 	}
@@ -183,7 +183,7 @@ public class SmartTable implements IView {
 		JPanel buttonPanel = new JPanel(new GridDialogLayout(1, false));
 		for (Action action : additionalActions) {
 			buttonPanel.add(new JButton(action),
-					GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+			    GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
 		}
 		return buttonPanel;
 	}

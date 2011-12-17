@@ -97,6 +97,6 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
   }
 
   private boolean isSpellCircleGreaterThanMaximumCircle(CircleType type) {
-    return !ArrayUtilities.contains(type.getComparableCircles(), maximumCircle) || (maximumCircle.compareTo(type) < 0);
+    return !ArrayUtilities.containsValue(type.getComparableCircles(), maximumCircle) || (maximumCircle.compareTo(type) < 0);
   }
 }

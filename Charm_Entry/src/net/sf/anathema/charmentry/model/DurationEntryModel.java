@@ -35,7 +35,7 @@ public class DurationEntryModel implements IDurationEntryModel {
   }
 
   public void setUntilDuration(String newValue) {
-    if (StringUtilities.isNullOrTrimEmpty(newValue)) {
+    if (StringUtilities.isNullOrTrimmedEmpty(newValue)) {
       clearDuration();
       return;
     }
@@ -44,7 +44,7 @@ public class DurationEntryModel implements IDurationEntryModel {
   }
 
   public void setSimpleDuration(String newValue) {
-    if (StringUtilities.isNullOrTrimEmpty(newValue)) {
+    if (StringUtilities.isNullOrTrimmedEmpty(newValue)) {
       clearDuration();
       return;
     }
@@ -82,7 +82,7 @@ public class DurationEntryModel implements IDurationEntryModel {
   }
 
   private void setQualifiedAmountDuration() {
-    if (amount != null && !StringUtilities.isNullOrTrimEmpty(text)) {
+    if (amount != null && !StringUtilities.isNullOrTrimmedEmpty(text)) {
       charmData.setDuration(new QualifiedAmountDuration(amount, text));
     }
     control.fireChangedEvent();

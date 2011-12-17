@@ -10,7 +10,7 @@ public class IncidentMatrixUtilities {
     for (int upperLayerIndex = 0; upperLayerIndex < upperLayer.length; upperLayerIndex++) {
       ISimpleNode[] children = upperLayer[upperLayerIndex].getChildren();
       for (int lowerLayerIndex = 0; lowerLayerIndex < lowerLayer.length; lowerLayerIndex++) {
-        if (ArrayUtilities.contains(children, lowerLayer[lowerLayerIndex])) {
+        if (ArrayUtilities.containsValue(children, lowerLayer[lowerLayerIndex])) {
           matrix[upperLayerIndex][lowerLayerIndex] = true;
         }
       }

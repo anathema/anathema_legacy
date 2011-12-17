@@ -35,7 +35,7 @@ public class DefaultAdditionalRules implements IAdditionalRules {
   }
 
   public final boolean isRejected(IBackgroundTemplate backgroundTemplate) {
-    return ArrayUtilities.contains(rejectedBackgrounds, backgroundTemplate.getId());
+    return ArrayUtilities.containsValue(rejectedBackgrounds, backgroundTemplate.getId());
   }
   
   public boolean isRevisedIntimacies() {

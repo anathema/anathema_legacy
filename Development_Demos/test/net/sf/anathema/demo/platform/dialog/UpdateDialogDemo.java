@@ -2,7 +2,7 @@ package net.sf.anathema.demo.platform.dialog;
 
 import de.jdemo.extensions.SwingDemoCase;
 import de.jdemo.junit.DemoAsTestRunner;
-import net.disy.commons.swing.dialog.userdialog.IDialogPage;
+import net.disy.commons.swing.dialog.userdialog.page.IDialogPage;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.framework.presenter.action.menu.help.UpdateChecker;
 import net.sf.anathema.framework.presenter.action.menu.help.UpdateDialogPage;
