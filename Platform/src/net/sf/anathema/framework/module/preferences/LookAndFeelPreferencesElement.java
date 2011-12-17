@@ -1,5 +1,6 @@
 package net.sf.anathema.framework.module.preferences;
 
+import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.LOOK_AND_FEEL_PREFERENCE;
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.USER_LOOK_AND_FEEL_CLASSNAME;
 
 import java.awt.event.ActionEvent;
@@ -21,6 +22,7 @@ import javax.swing.event.DocumentListener;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.sf.anathema.framework.configuration.AnathemaPreferences;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
@@ -196,10 +198,11 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     else {
       SYSTEM_PREFERENCES.remove(USER_LOOK_AND_FEEL_CLASSNAME);
     }
+    SYSTEM_PREFERENCES.remove(LOOK_AND_FEEL_PREFERENCE);
   }
 
   private static String getLookAndFeelClassName() {
-    return SYSTEM_PREFERENCES.get(USER_LOOK_AND_FEEL_CLASSNAME, null);
+    return AnathemaPreferences.getDefaultPreferences().getUserLookAndFeel();
   }
 
   public IIdentificate getCategory() {
