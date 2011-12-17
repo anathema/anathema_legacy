@@ -7,8 +7,8 @@ import net.sf.anathema.character.generic.framework.configuration.AnathemaCharact
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.common.Position;
-import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.common.encoder.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class CraftEncoder extends AbstractNamedTraitEncoder {
     this.essenceMax = essenceMax;
   }
 
-  public int encode(PdfContentByte directContent, IGenericCharacter character, Position position, float width) {
+  public float encode(PdfContentByte directContent, IGenericCharacter character, Position position, float width, float height) {
     String title = getResources().getString("Sheet.AbilitySubHeader.Crafts"); //$NON-NLS-1$
     INamedGenericTrait[] traits = character.getSubTraits(AbilityType.Craft);
     if (!AnathemaCharacterPreferences.getDefaultPreferences().printZeroCrafts()) {

@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.reporting.common.encoder.FavorableTraitEncoder;
 import net.sf.anathema.character.reporting.common.encoder.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 

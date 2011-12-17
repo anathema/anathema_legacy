@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.common.Position;
-import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.common.encoder.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder {
     super(resources, baseFont, encoder, specialtyCount);
   }
 
-  public int encode(PdfContentByte directContent, IGenericCharacter character, Position position, float width) {
+  public float encode(PdfContentByte directContent, IGenericCharacter character, Position position, float width, float height) {
     String title = getResources().getString("Sheet.AbilitySubHeader.Specialties"); //$NON-NLS-1$
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
     for (IIdentifiedTraitTypeGroup group : character.getAbilityTypeGroups()) {

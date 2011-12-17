@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.sheet.common;
+package net.sf.anathema.character.reporting.common.encoder;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
@@ -16,10 +16,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
-import net.sf.anathema.character.reporting.common.encoder.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.common.encoder.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -61,19 +58,22 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
                      Bounds bounds) throws DocumentException {
     Position position = new Position(bounds.getMinX(), bounds.getMaxY());
     float width = bounds.width;
-    float yPosition = encodeTraitGroups(directContent, character, position, width);
-    for (INamedTraitEncoder encoder : namedTraitEncoders) {
-      yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
-      yPosition -= encoder.encode(directContent, character, new Position(position.x, yPosition), width);
-    }
 
-    float bottom = bounds.getMinY() + 4;
+    float bottom = bounds.getMinY() + IVoidStateFormatConstants.TEXT_PADDING;
     int nExcellencies = getExcellencies(character).length;
     if (nExcellencies > 0) {
       bottom += encodeExcellencyCommentText(directContent, nExcellencies, position, bottom);
     }
     if (!markedTraitTypes.isEmpty()) {
       bottom += encodeMarkerCommentText(directContent, position, bottom);
+    }
+
+    float yPosition = encodeTraitGroups(directContent, character, position, width);
+    float height = yPosition - bottom;
+    for (INamedTraitEncoder encoder : namedTraitEncoders) {
+      yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
+      yPosition -= encoder.encode(directContent, character, new Position(position.x, yPosition), width, height);
+      height -= IVoidStateFormatConstants.LINE_HEIGHT;
     }
   }
 
@@ -111,7 +111,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
         }
       });
     }
-    return excellencies.toArray(new IMagicStats[0]);
+    return excellencies.toArray(new IMagicStats[excellencies.size()]);
   }
 
   protected IGenericTraitCollection getTraitCollection(IGenericCharacter character) {
@@ -161,6 +161,9 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
   }
 
   private void addGroupLabel(PdfContentByte directContent, IIdentifiedTraitTypeGroup group, Position position) {
+    if (getGroupNamePrefix() == null) {
+      return;
+    }
     String groupId = group.getGroupId().getId();
     String resourceKey = group.getGroupId() instanceof ICasteType ? "Caste." + groupId : getGroupNamePrefix() + groupId; //$NON-NLS-1$
     String groupLabel = resources.getString(resourceKey);
@@ -180,13 +183,13 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
   }
 
   private float encodeFavorableTrait(PdfContentByte directContent, String label, IFavorableGenericTrait trait, boolean[] excellencyLearned,
-                                   Position position, float width) {
+                                     Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
     return traitEncoder.encodeWithExcellencies(directContent, label, position, width, value, favored, excellencyLearned, essenceMax);
   }
 
-  private final void encodeMarker(PdfContentByte directContent, Position markerPosition) {
+  private void encodeMarker(PdfContentByte directContent, Position markerPosition) {
     directContent.setLineWidth(1.0f);
     directContent.moveTo(markerPosition.x, markerPosition.y + 2);
     directContent.lineTo(markerPosition.x + 4, markerPosition.y + 2);

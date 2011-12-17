@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.common;
 
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.character.reporting.common.elements.Line;
 
 public class PdfLineEncodingUtilities {

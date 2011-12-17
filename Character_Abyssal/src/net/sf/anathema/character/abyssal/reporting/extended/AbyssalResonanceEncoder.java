@@ -11,11 +11,11 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.traits.ValueWeightGenericTraitSorter;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.reporting.common.boxes.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.common.encoder.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.common.*;
 import net.sf.anathema.lib.resources.IResources;
 

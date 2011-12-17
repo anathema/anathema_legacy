@@ -13,7 +13,6 @@ import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
-import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
 
 public abstract class AbstractStatsTableEncoder<T extends IStats> extends AbstractTableEncoder {

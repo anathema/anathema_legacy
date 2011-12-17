@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.common.encoder.AbstractStatsTableEncoder;
 
 public abstract class AbstractFixedLineStatsTableEncoder<T extends IStats> extends AbstractStatsTableEncoder<T> {
 
