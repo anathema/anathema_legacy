@@ -9,8 +9,8 @@ import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.extended.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.common.anima.AnimaTableEncoder;
-import net.sf.anathema.character.reporting.extended.common.anima.ColumnDescriptor;
 import net.sf.anathema.character.reporting.extended.util.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.stats.anima.*;
 import net.sf.anathema.lib.resources.IResources;
 
 public class LunarAnimaTableEncoder extends AnimaTableEncoder implements IPdfTableEncoder {

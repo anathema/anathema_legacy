@@ -3,8 +3,8 @@ package net.sf.anathema.character.db.reporting;
 import net.sf.anathema.character.db.DbCharacterModule;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.sheet.common.anima.AnimaTableRangeProvider;
-import net.sf.anathema.character.reporting.sheet.common.anima.IAnimaTableRangeProvider;
+import net.sf.anathema.character.reporting.stats.anima.*;
+import net.sf.anathema.character.reporting.stats.anima.IAnimaTableRangeProvider;
 
 public class DbAnimaTableRangeProvider extends AnimaTableRangeProvider implements IAnimaTableRangeProvider {
 

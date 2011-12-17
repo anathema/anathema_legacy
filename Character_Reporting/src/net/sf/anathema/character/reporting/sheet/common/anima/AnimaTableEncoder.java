@@ -5,6 +5,7 @@ import java.awt.Color;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.stats.anima.*;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 

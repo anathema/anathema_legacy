@@ -1,6 +1,6 @@
 package net.sf.anathema.character.sidereal.reporting;
 
-import net.sf.anathema.character.reporting.sheet.common.anima.AnimaTableStealthProvider;
+import net.sf.anathema.character.reporting.stats.anima.AnimaTableStealthProvider;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SiderealAnimaTableStealthProvider extends AnimaTableStealthProvider {

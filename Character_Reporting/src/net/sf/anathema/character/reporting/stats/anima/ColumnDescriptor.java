@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.extended.common.anima;
+package net.sf.anathema.character.reporting.stats.anima;
 
 public class ColumnDescriptor {
 

@@ -3,8 +3,8 @@ package net.sf.anathema.character.abyssal.reporting.extended;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.extended.common.anima.AbstractAnimaEncoderFactory;
 import net.sf.anathema.character.reporting.extended.common.anima.AnimaTableEncoder;
-import net.sf.anathema.character.reporting.extended.common.anima.AnimaTableStealthProvider;
 import net.sf.anathema.character.reporting.extended.util.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.stats.anima.*;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Abyssal2ndAnimaEncoderFactory extends AbstractAnimaEncoderFactory {
