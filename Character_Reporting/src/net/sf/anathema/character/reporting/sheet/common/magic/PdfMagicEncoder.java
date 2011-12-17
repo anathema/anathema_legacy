@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -12,11 +11,9 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.CharmStats;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.MultipleEffectCharmStats;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.SpellStats;
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.stats.magic.CharmStats;
+import net.sf.anathema.character.reporting.stats.magic.MultipleEffectCharmStats;
+import net.sf.anathema.character.reporting.stats.magic.SpellStats;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -28,105 +25,61 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfMagicEncoder implements IPdfContentBoxEncoder
 {
-  static IIdentificate KNACK = new Identificate("Knack");
-  
-  public static List<IMagicStats> collectPrintCharms(final IGenericCharacter character) {
-    return collectPrintMagic(character, false, true);
-  }
-  
-  public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
-    return collectPrintMagic(character, true, true);
-  }
-  
-  public static List<IMagicStats> collectPrintSpells(final IGenericCharacter character) {
-    return collectPrintMagic(character, true, false);
-  }
+	static IIdentificate KNACK = new Identificate("Knack");
 
-  private static List<IMagicStats> collectPrintMagic(final IGenericCharacter character,
-                                                     final boolean includeSpells,
-                                                     final boolean includeCharms) {
+  public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
     final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
-    if (includeCharms) {
-      for (IMagicStats stats : character.getGenericCharmStats()) {
-        printStats.add(stats);
-      }
+    for (IMagicStats stats : character.getGenericCharmStats()) {
+      printStats.add(stats);
     }
-    
-    IMagicVisitor statsCollector = new IMagicVisitor(){
-      public void visitCharm(ICharm charm) {
-        if (!includeCharms) {
-          return;
-        }
-        if (CharmUtilities.isGenericCharmFor(charm, character)) {
-          return;
-        }
-        if (charm.hasAttribute(KNACK))
-          return;
-        
-        if (character.isMultipleEffectCharm(charm)) {
-          String[] effects = character.getLearnedEffects(charm);
-          for (String effect : effects) {
-            printStats.add(new MultipleEffectCharmStats(charm, effect));
+    for (IMagic magic : character.getAllLearnedMagic()) {
+      magic.accept(new IMagicVisitor() {
+        public void visitCharm(ICharm charm) {
+          if (CharmUtilities.isGenericCharmFor(charm, character)) {
+            return;
+          }
+          if (charm.hasAttribute(KNACK))
+        	  return;
+          
+          if (character.isMultipleEffectCharm(charm)) {
+            String[] effects = character.getLearnedEffects(charm);
+            for (String effect : effects) {
+              printStats.add(new MultipleEffectCharmStats(charm, effect));
+            }
+          }
+          else {
+            printStats.add(new CharmStats(charm, character));
           }
         }
-        else {
-          printStats.add(new CharmStats(charm, character));
-        }
-      }
 
-      public void visitSpell(ISpell spell) {
-        if (includeSpells) {
+        public void visitSpell(ISpell spell) {
           printStats.add(new SpellStats(spell, character.getRules().getEdition()));
         }
-      }
-    };
-    for (IMagic magic : character.getAllLearnedMagic()) {
-      magic.accept(statsCollector);
+      });
     }
     return printStats;
   }
 
-  private final PdfMagicTableEncoder tableEncoder;
-  private final List<IPdfTableEncoder> additionalTables;
-  private final String headerKey;
+  private final IResources resources;
+  private final BaseFont baseFont;
+  private final List<IMagicStats> printMagic;
 
   public PdfMagicEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printMagic) {
-    this(resources, baseFont, printMagic, new ArrayList<IPdfTableEncoder>(), false, "Charms"); //$NON-NLS-1$
+    this.resources = resources;
+    this.baseFont = baseFont;
+    this.printMagic = printMagic;
   }
 
-  public PdfMagicEncoder(IResources resources, BaseFont baseFont,
-                         List<IMagicStats> printMagic,
-                         List<IPdfTableEncoder> additionalTables,
-                         boolean sectionHeaderLines,
-                         String headerKey) {
-    this.tableEncoder = new PdfMagicTableEncoder(resources, baseFont, printMagic, sectionHeaderLines);
-    this.additionalTables = additionalTables;
-    this.headerKey = headerKey;
+  public String getHeaderKey() {
+    return "Charms"; //$NON-NLS-1$
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
-    return headerKey; //$NON-NLS-1$
-  }
-
-  public void encode(PdfContentByte directContent, IGenericCharacter character,
-                     IGenericDescription description, Bounds bounds)
-      throws DocumentException {
-    float top = bounds.getMinY();
-    for (IPdfTableEncoder additionalTable : additionalTables) {
-      if (additionalTable.hasContent(character)) {
-        Bounds tableBounds = new Bounds(bounds.getMinX(), top,
-                                        bounds.getWidth(), bounds.getMaxY() - top);
-        float tableHeight = additionalTable.encodeTable(directContent, character, tableBounds);
-        top += tableHeight + IVoidStateFormatConstants.PADDING;
-      }
-    }
-    
-    Bounds remainingBounds = new Bounds(bounds.getMinX(), top,
-                                        bounds.getWidth(), bounds.getMaxY() - top);
-    tableEncoder.encodeTable(directContent, character, remainingBounds);
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+    new PdfMagicTableEncoder(resources, baseFont, printMagic).encodeTable(directContent, character, bounds);
   }
   
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(IGenericCharacter character)
+  {
 	  return true;
   }
 }

@@ -15,7 +15,7 @@ public class SecondEditionSiderealPartEncoder extends AbstractSecondEditionExalt
   }
 
   public IPdfContentBoxEncoder getGreatCurseEncoder() {
-      return new SiderealFlawedFateEncoder(getBaseFont(), getResources());
+      return new SiderealFlawedFateEncoder(getBaseFont(), getSymbolBaseFont(), getResources());
   }
 
   @Override
@@ -31,6 +31,6 @@ public class SecondEditionSiderealPartEncoder extends AbstractSecondEditionExalt
 
   @Override
   public IPdfContentBoxEncoder getAnimaEncoder() {
-    return new SiderealAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
+    return new SiderealAnimaEncoderFactory(getResources(), getBaseFont(), getSymbolBaseFont()).createAnimaEncoder();
   }
 }

@@ -19,6 +19,6 @@ public class SecondEditionSpiritPartEncoder extends AbstractSecondEditionExaltPd
 
   @Override
   public IPdfContentBoxEncoder getAnimaEncoder() {
-    return new SpiritAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
+    return new SpiritAnimaEncoderFactory(getResources(), getBaseFont(), getSymbolBaseFont()).createAnimaEncoder();
   }
 }

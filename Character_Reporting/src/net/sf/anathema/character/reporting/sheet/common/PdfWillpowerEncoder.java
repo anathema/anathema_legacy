@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
@@ -19,11 +18,11 @@ public class PdfWillpowerEncoder implements IPdfContentBoxEncoder {
     this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey() {
     return "Willpower"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds contentBounds) {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds) {
     float padding = IVoidStateFormatConstants.PADDING / 2f;
     float width = contentBounds.width - 2 * padding;
     float leftX = contentBounds.x + padding;

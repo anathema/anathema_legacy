@@ -1,7 +1,6 @@
 package net.sf.anathema.character.ghost.reporting;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.ghost.fetters.GhostFettersTemplate;
 import net.sf.anathema.character.ghost.fetters.model.Fetter;
 import net.sf.anathema.character.ghost.fetters.model.IGhostFettersModel;
@@ -21,11 +20,11 @@ public class GhostFetterEncoder implements IPdfContentBoxEncoder {
     this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey() {
     return "Ghost.Fetters"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
 	  IGhostFettersModel model = (IGhostFettersModel) character.getAdditionalModel(GhostFettersTemplate.ID);
 	  float groupSpacing = traitEncoder.getTraitHeight() / 2;
 	  float x = bounds.x;

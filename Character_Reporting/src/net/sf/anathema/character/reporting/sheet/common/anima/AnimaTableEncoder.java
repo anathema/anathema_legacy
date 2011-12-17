@@ -17,8 +17,6 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
 public class AnimaTableEncoder extends AbstractTableEncoder {
-  
-  public final static float TABLE_HEIGHT = 58f;
 
   private final IResources resources;
   private final Font headerFont;

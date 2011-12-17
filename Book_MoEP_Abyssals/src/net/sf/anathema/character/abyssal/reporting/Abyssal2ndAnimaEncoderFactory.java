@@ -15,6 +15,11 @@ public class Abyssal2ndAnimaEncoderFactory extends AbstractAnimaEncoderFactory {
   }
 
   @Override
+  protected int getAnimaPowerCount() {
+    return 2;
+  }
+
+  @Override
   protected IPdfTableEncoder getAnimaTableEncoder() {
     return new AnimaTableEncoder(getResources(), getBaseFont(), getFontSize(), new AnimaTableStealthProvider(getResources()));
   }

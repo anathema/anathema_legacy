@@ -1,9 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.util;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -33,13 +31,8 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
   }
 
   private Bounds calculateContentBoxBounds(Bounds bounds) {
-    float headerPadding = IPdfBoxEncoder.HEADER_HEIGHT / 2;
+    int headerPadding = IPdfBoxEncoder.HEADER_HEIGHT / 2;
     return new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - headerPadding);
-  }
-  
-  public float getRequestedHeight(IPdfVariableContentBoxEncoder encoder, IGenericCharacter character, float width) {
-    float boxHeight = IPdfBoxEncoder.HEADER_HEIGHT / 2f + IPdfBoxEncoder.ARCSPACE;
-    return boxHeight + encoder.getRequestedHeight(character, width); 
   }
 
   private Bounds encodeBox(PdfContentByte directContent, Bounds bounds, String title, IPdfBoxEncoder boxEncoder) {
@@ -57,8 +50,8 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
       PdfContentByte directContent,
       IPdfContentBoxEncoder encoder,
       IGenericCharacter character,
-      IGenericDescription description, Bounds bounds) throws DocumentException {
-    encodeBox(directContent, encoder, standardBoxEncoder, character, description, bounds);
+      Bounds bounds) throws DocumentException {
+    encodeBox(directContent, encoder, standardBoxEncoder, character, bounds);
   }
 
   public void encodeBox(
@@ -66,10 +59,10 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
       IPdfContentBoxEncoder encoder,
       IPdfBoxEncoder boxEncoder,
       IGenericCharacter character,
-      IGenericDescription description, Bounds bounds) throws DocumentException {
-    String header = resources.getString("Sheet.Header." + encoder.getHeaderKey(character, description)); //$NON-NLS-1$
+      Bounds bounds) throws DocumentException {
+    String header = resources.getString("Sheet.Header." + encoder.getHeaderKey()); //$NON-NLS-1$
     Bounds contentBounds = encodeBox(directContent, bounds, header, boxEncoder);
-    encoder.encode(directContent, character, description, contentBounds);
+    encoder.encode(directContent, character, contentBounds);
   }
 
   private Bounds calculateInsettedBounds(Bounds contentBounds) {

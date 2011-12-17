@@ -8,10 +8,10 @@ import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPer
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalViewFactory;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase;
-import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.ArmourTableEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.PossessionsEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.sheet.ArmourEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.sheet.ArmourTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.sheet.PossessionsEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.sheet.WeaponryEncoder;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;

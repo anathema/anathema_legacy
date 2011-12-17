@@ -10,7 +10,5 @@ public interface IPdfTableEncoder {
 
   public float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException;
-  
-  public boolean hasContent(IGenericCharacter character);
 
 }

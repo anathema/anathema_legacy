@@ -3,7 +3,6 @@ package net.sf.anathema.character.reporting.sheet.common.movement;
 import java.awt.Color;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
@@ -38,11 +37,11 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     this.symbolBaseFont = symbolBaseFont;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey() {
     return "MovementHealth"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds)
+  public final void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException {
     Bounds tableBounds = new Bounds(bounds.x, bounds.y, (bounds.width * 0.66f), bounds.height);
     IPdfTableEncoder tableEncoder = createTableEncoder();
@@ -54,7 +53,7 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
 
   protected abstract IPdfTableEncoder createTableEncoder();
 
-  protected void encodeText(PdfContentByte directContent, Bounds textBounds) throws DocumentException {
+  private void encodeText(PdfContentByte directContent, Bounds textBounds) throws DocumentException {
     Font headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
     Font commentFont = new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
     Font commentTitleFont = new Font(commentFont);
@@ -62,14 +61,14 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     Paragraph healthText = createHealthRulesPhrase(headerFont, commentFont, commentTitleFont);
     int leading = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 1;
     ColumnText text = PdfTextEncodingUtilities.encodeText(directContent, healthText, textBounds, leading);
-    int rectangleOffset = AbstractHealthAndMovementTableEncoder.HEALTH_RECT_SIZE + 1;
+    int rectangleOffset = AbstractHealthAndMovemenTableEncoder.HEALTH_RECT_SIZE + 1;
     final float additionalOffset = 2.5f;
     float rectYPosition = text.getYLine() - rectangleOffset - additionalOffset;
     float textYPosition = text.getYLine() - leading - additionalOffset;
     float xPosition = textBounds.x;
-    PdfTemplate rectTemplate = AbstractHealthAndMovementTableEncoder.createRectTemplate(directContent, Color.BLACK);
+    PdfTemplate rectTemplate = AbstractHealthAndMovemenTableEncoder.createRectTemplate(directContent, Color.BLACK);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate bashingTemplate = AbstractHealthAndMovementTableEncoder.createBashingTemplate(directContent, Color.GRAY);
+    PdfTemplate bashingTemplate = AbstractHealthAndMovemenTableEncoder.createBashingTemplate(directContent, Color.GRAY);
     directContent.addTemplate(bashingTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     final String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
@@ -77,14 +76,14 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     drawComment(directContent, bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(bashingString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate lethalTemplate = AbstractHealthAndMovementTableEncoder.createLethalTemplate(directContent, Color.GRAY);
+    PdfTemplate lethalTemplate = AbstractHealthAndMovemenTableEncoder.createLethalTemplate(directContent, Color.GRAY);
     directContent.addTemplate(lethalTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String lethalString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageLethal")); //$NON-NLS-1$
     drawComment(directContent, lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(lethalString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate aggravatedTemplate = AbstractHealthAndMovementTableEncoder.createAggravatedTemplate(
+    PdfTemplate aggravatedTemplate = AbstractHealthAndMovemenTableEncoder.createAggravatedTemplate(
         directContent,
         Color.GRAY);
     directContent.addTemplate(aggravatedTemplate, xPosition, rectYPosition);

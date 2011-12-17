@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.util.Bounds;
 
 import com.lowagie.text.DocumentException;
@@ -19,11 +18,11 @@ public class NullPdfContentEncoder implements IPdfContentBoxEncoder {
     this.headerKey = headerKey;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     // Nothing to do
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey() {
     return headerKey;
   }
   

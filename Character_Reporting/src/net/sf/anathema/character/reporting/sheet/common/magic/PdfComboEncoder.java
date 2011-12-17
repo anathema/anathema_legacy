@@ -1,30 +1,20 @@
 package net.sf.anathema.character.reporting.sheet.common.magic;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfLineEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfComboEncoder {
@@ -42,96 +32,37 @@ public class PdfComboEncoder {
     this.nameFont.setStyle(Font.BOLD);
   }
 
-  public float encodeCombos(PdfContentByte directContent, IGenericCharacter character, Bounds maxBounds)
+  public float encodeCombos(PdfContentByte directContent, IGenericCharacter character, Bounds restOfPage)
       throws DocumentException {
-    List<IGenericCombo> combos = new ArrayList<IGenericCombo>(Arrays.asList(character.getCombos()));
-    return encodeCombos(directContent, combos, maxBounds, false);
-  }
-
-  public float encodeCombos(PdfContentByte directContent, List<IGenericCombo> combos, Bounds maxBounds, boolean overflow)
-      throws DocumentException {
-    if (combos.isEmpty()) {
+    IGenericCombo[] combos = character.getCombos();
+    if (combos.length == 0) {
       return 0;
     }
-    
-    Bounds contentBounds = boxEncoder.calculateContentBounds(maxBounds);
-    ColumnText column = PdfTextEncodingUtilities.createColumn(directContent,
-                                                              contentBounds,
-                                                              LINE_HEIGHT,
-                                                              Element.ALIGN_LEFT);
-    addCombos(column, combos);
-
-    float yPosition = column.getYLine();
-    Bounds actualBoxBounds = calculateActualBoxBounds(maxBounds, yPosition);
-    String headerString;
-    if (overflow) {
-      headerString = resources.getString("Sheet.Header.CombosOverflow"); //$NON-NLS-1$
-    }
-    else {
-      headerString = resources.getString("Sheet.Header.Combos"); //$NON-NLS-1$
-    }
+    Bounds contentBounds = boxEncoder.calculateContentBounds(restOfPage);
+    Phrase phrase = createComboPhrase(combos);
+    float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, contentBounds, LINE_HEIGHT).getYLine();
+    Bounds actualBoxBounds = calculateActualBoxBounds(restOfPage, yPosition);
+    String headerString = resources.getString("Sheet.Header.Combos"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, actualBoxBounds, headerString);
     return actualBoxBounds.getHeight();
   }
 
-  public float encodeFixedCombos(PdfContentByte directContent, List<IGenericCombo> combos, Bounds bounds)
-      throws DocumentException {
-    Bounds contentBounds = boxEncoder.calculateContentBounds(bounds);
-    ColumnText column = PdfTextEncodingUtilities.createColumn(directContent,
-                                                              contentBounds,
-                                                              LINE_HEIGHT,
-                                                              Element.ALIGN_LEFT);
-    addCombos(column, combos);
-
-    float yPosition = column.getYLine();
-    int remainingLines = (int)((yPosition - contentBounds.getMinY()) / LINE_HEIGHT);
-    Position lineStartPosition = new Position(contentBounds.getMinX(),
-                                              yPosition - LINE_HEIGHT);
-    PdfLineEncodingUtilities.encodeHorizontalLines(directContent,
-                                                   lineStartPosition,
-                                                   contentBounds.getMinX(),
-                                                   contentBounds.getMaxX(),
-                                                   LINE_HEIGHT,
-                                                   remainingLines);
-    
-    String headerString = resources.getString("Sheet.Header.Combos"); //$NON-NLS-1$
-    boxEncoder.encodeBox(directContent, bounds, headerString);
-    return bounds.getHeight();
-  }
-  
-  private void addCombos(ColumnText columnText, List<IGenericCombo> combos) throws DocumentException {
-    while (!combos.isEmpty()) {
-      Phrase comboPhrase = createComboPhrase(combos.get(0));
-      
-      float yLine = columnText.getYLine();
-      columnText.addText(comboPhrase);
-      int status = columnText.go(true);
-      columnText.setYLine(yLine);
-      columnText.setText(comboPhrase);
-      if (ColumnText.hasMoreText(status)) {
-        break;
-      }
-      else {
-        columnText.go();
-        combos.remove(0);
-      }
-    }
-  }
-
-  private Phrase createComboPhrase(IGenericCombo combo) {
+  private Phrase createComboPhrase(IGenericCombo[] combos) {
     Phrase phrase = new Phrase();
-    
-    String printName = combo.getName() == null ? "???" : combo.getName(); //$NON-NLS-1$
-    phrase.add(new Chunk(printName + ": ", nameFont)); //$NON-NLS-1$
-    
-    String charmString = getCharmString(combo);
-    phrase.add(new Chunk(charmString, font));
-    
+    for (IGenericCombo combo : combos) {
+      if (!phrase.isEmpty()) {
+        phrase.add(new Chunk("\n", font)); //$NON-NLS-1$
+      }
+      String printName = combo.getName() == null ? "???" : combo.getName(); //$NON-NLS-1$
+      phrase.add(new Chunk(printName + ": ", nameFont)); //$NON-NLS-1$
+      String charmString = getCharmString(combo);
+      phrase.add(new Chunk(charmString, font));
+    }
     return phrase;
   }
 
   private Bounds calculateActualBoxBounds(Bounds restOfPage, float textEndY) {
-    float boxY = textEndY - IVoidStateFormatConstants.TEXT_PADDING;
+    float boxY = textEndY - 3;
     return new Bounds(restOfPage.x, boxY, restOfPage.width, restOfPage.getMaxY() - boxY);
   }
 

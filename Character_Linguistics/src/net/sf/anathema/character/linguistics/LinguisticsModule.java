@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
+import net.sf.anathema.character.linguistics.reporting.sheet.LinguisticsEncoder;
 import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;

@@ -22,7 +22,7 @@ public class TableEncodingUtilities {
   public static Float[] createStandardColumnWidths(int columnCount, final float value) {
     Float[] columnWeights = new Float[columnCount];
     for (int index = 0; index < columnWeights.length; index++) {
-      columnWeights[index] = value;
+      columnWeights[index] = new Float(value);
     }
     return columnWeights;
   }
@@ -74,12 +74,8 @@ public class TableEncodingUtilities {
     return new Font(baseFont, FONT_SIZE, Font.NORMAL, Color.BLACK);
   }
 
-  public static Font createBoldFont(BaseFont baseFont) {
-    return new Font(baseFont, FONT_SIZE + 1f, Font.BOLD, Color.BLACK);
-  }
-
   public static Font createHeaderFont(BaseFont baseFont) {
-    return new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 1f, Font.NORMAL, Color.BLACK);
+    return new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 1, Font.NORMAL, Color.BLACK);
   }
 
   public static Font createCommentFont(BaseFont baseFont) {

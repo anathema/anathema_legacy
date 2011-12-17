@@ -28,10 +28,12 @@ public class PdfTextEncodingUtilities {
     return encodeText(directContent, phrase, bounds, lineHeight, Element.ALIGN_LEFT);
   }
 
-  public static ColumnText encodeText(PdfContentByte directContent,
-                                      Phrase phrase, Bounds bounds,
-                                      float lineHeight, int alignment)
-      throws DocumentException {
+  public static ColumnText encodeText(
+      PdfContentByte directContent,
+      Phrase phrase,
+      Bounds bounds,
+      float lineHeight,
+      int alignment) throws DocumentException {
     ColumnText columnText = new ColumnText(directContent);
     float minX = bounds.getMinX();
     float minY = bounds.getMinY();
@@ -40,17 +42,6 @@ public class PdfTextEncodingUtilities {
     columnText.setSimpleColumn(phrase, minX, minY, maxX, maxY, lineHeight, alignment);
     columnText.go();
     return columnText;
-  }
 
-  public static ColumnText createColumn(PdfContentByte directContent,
-                                        Bounds bounds,
-                                        float lineHeight, int alignment) {
-    ColumnText columnText = new ColumnText(directContent);
-    float minX = bounds.getMinX();
-    float minY = bounds.getMinY();
-    float maxX = bounds.getMaxX();
-    float maxY = bounds.getMaxY();
-    columnText.setSimpleColumn(minX, minY, maxX, maxY, lineHeight, alignment);
-    return columnText;
   }
 }

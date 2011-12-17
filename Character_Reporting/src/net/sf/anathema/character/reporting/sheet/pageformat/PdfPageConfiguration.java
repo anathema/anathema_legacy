@@ -9,12 +9,11 @@ import com.lowagie.text.Rectangle;
 public class PdfPageConfiguration {
 
   public static final int COLUMN_SPACING = 10;
-  public static final int HORIZONTAL_MARGIN = 20;
-  public static final int TOP_MARGIN = 15;
-  public static final int BOTTOM_MARGIN = 22;
+  public static final int HORIZONTAL_MARGIN = 25;
+  public static final int VERTICAL_MARGIN = 15;
 
   public static PdfPageConfiguration create(Rectangle pageSize) {
-    return new PdfPageConfiguration(new Dimension((int) pageSize.width(), (int) pageSize.height()), TOP_MARGIN, BOTTOM_MARGIN, HORIZONTAL_MARGIN);
+    return new PdfPageConfiguration(new Dimension((int) pageSize.width(), (int) pageSize.height()), VERTICAL_MARGIN, HORIZONTAL_MARGIN);
   }
   
   private int pageWidth;
@@ -26,13 +25,13 @@ public class PdfPageConfiguration {
 
   private int marginTop;
 
-  private PdfPageConfiguration(Dimension pageSize, int topMargin, int bottomMargin, int horizontalMargin) {
+  private PdfPageConfiguration(Dimension pageSize, int verticalMargin, int horizontalMargin) {
     this.pageWidth = pageSize.width;
     this.pageHeight = pageSize.height;
     this.marginLeft = horizontalMargin;
     this.marginRight = horizontalMargin;
-    this.marginTop = topMargin;
-    this.marginBottom = bottomMargin;
+    this.marginTop = verticalMargin;
+    this.marginBottom = verticalMargin;
   }
 
   private Bounds getColumnRectangle(float spaceFromTop, float height, int columnCount, float leftColumnX) {
@@ -76,7 +75,7 @@ public class PdfPageConfiguration {
     return getColumnRectangle(spaceFromTop, height, 1, getLeftColumnX(2));
   }
 
-  public float getUpperContentY() {
+  public int getUpperContentY() {
     return pageHeight - marginTop;
   }
 
@@ -84,7 +83,7 @@ public class PdfPageConfiguration {
     return marginLeft;
   }
 
-  public float getPageHeight() {
+  public int getPageHeight() {
     return pageHeight;
   }
 }

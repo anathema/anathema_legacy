@@ -3,7 +3,6 @@ package net.sf.anathema.character.reporting.sheet.common;
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundInfo;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
@@ -16,7 +15,6 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
-  // TODO: Give this and PdfIntimacyEncoder a common base class, which may be more broadly useful.
 
   private final IResources resources;
   private final PdfTraitEncoder traitEncoder;
@@ -26,11 +24,11 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
     this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey() {
     return "Backgrounds"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     float yPosition = bounds.getMaxY() - LINE_HEIGHT;
     boolean printZeroBackgrounds = AnathemaCharacterPreferences.getDefaultPreferences().printZeroBackgrounds();
     for (IGenericTrait background : character.getBackgrounds()) {
@@ -50,9 +48,9 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
   }
 
   private String getBackgroundName(IBackgroundInfo background) {
-    String backgroundName = background.getName(resources);
-    String description = background.getDescription();
-    return backgroundName + (description != null ? " (" + description + ")" : "");
+	String backgroundName = background.getName(resources);
+	String description = background.getDescription();
+	return backgroundName + (description != null ? " (" + description + ")" : "");
   }
 
   private void encodeEmptyLines(PdfContentByte directContent, Bounds bounds, float yPosition) {
@@ -63,7 +61,8 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
     }
   }
   
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(IGenericCharacter character)
+  {
 	  return true;
   }
 }

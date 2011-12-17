@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.intimacies.reporting.sheet.IntimaciesEncoder;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
@@ -31,6 +32,6 @@ public class IntimaciesModule extends NullObjectCharacterModuleAdapter {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
     PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    registry.setIntimaciesEncoder(new PdfIntimacyEncoder(registry.getBaseFont()));
+    registry.setIntimaciesEncoder(new IntimaciesEncoder(registry.getBaseFont()));
   }
 }

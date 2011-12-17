@@ -10,7 +10,7 @@ import com.lowagie.text.pdf.BaseFont;
 
 public class PdfEncodingUtilities {
 
-  private static final String SYMBOL = "\u2022 "; //$NON-NLS-1$
+  private static final String SYMBOL = "\u00A8  "; //$NON-NLS-1$
   private static final int FONT_SIZE = IVoidStateFormatConstants.FONT_SIZE - 1;
 
   public static Chunk createCaretSymbolChunk(BaseFont basefont) {

@@ -14,16 +14,13 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INamedTraitEncoder {
-  
-  private final int specialtyCount;
+public class SpecialtiesEncoder extends AbstractNamedTraitEncoder {
 
   public SpecialtiesEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder encoder, int specialtyCount) {
-    super(resources, baseFont, encoder);
-    this.specialtyCount = specialtyCount;
+    super(resources, baseFont, encoder, specialtyCount);
   }
 
-  public float encode(PdfContentByte directContent, IGenericCharacter character, Position position, float width, float height) {
+  public int encode(PdfContentByte directContent, IGenericCharacter character, Position position, float width) {
     String title = getResources().getString("Sheet.AbilitySubHeader.Specialties"); //$NON-NLS-1$
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
     for (IIdentifiedTraitTypeGroup group : character.getAbilityTypeGroups()) {
@@ -32,11 +29,6 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
       }
     }
     IValuedTraitReference[] specialties = references.toArray(new IValuedTraitReference[references.size()]);
-    if (specialtyCount > 0) {
-      return _drawNamedTraitSection(directContent, title, specialties, position, width, specialtyCount, 3);
-    }
-    else {
-      return drawNamedTraitSection(directContent, title, specialties, position, width, height, 3);
-    }
+    return drawNamedTraitSection(directContent, title, specialties, position, width, 3);
   }
 }

@@ -1,10 +1,8 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfDotsEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -29,10 +27,6 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
 
   public IPdfContentBoxEncoder getEssenceEncoder() {
     return new PdfExperienceEncoder(getResources(), getBaseFont());
-  }
-
-  public IPdfContentBoxEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
-    return new PdfDotsEncoder(getBaseFont(), getResources(), trait, traitMax, traitHeaderKey);
   }
 
   public boolean hasSecondPage() {

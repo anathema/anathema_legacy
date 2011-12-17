@@ -4,6 +4,8 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
@@ -30,15 +32,17 @@ public class SecondEditionCombatValueEncoder implements IPdfContentEncoder {
     String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
     String stunningLabel = resources.getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
     IGenericTraitCollection traitCollection = character.getTraitCollection();
-    IEquipmentModifiers equipment = character.getEquipmentModifiers();
+    int joinBattle = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    
-    int joinBattle = CharacterUtilties.getJoinBattle(traitCollection, equipment);
-    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection, equipment);
-    int knockdownThreshold = CharacterUtilties.getKnockdownThreshold(traitCollection, equipment);
-    int knockdownPool = CharacterUtilties.getKnockdownPool(character, traitCollection, equipment);
-    int stunningThreshold = CharacterUtilties.getStunningThreshold(traitCollection, equipment);
-    int stunningPool = CharacterUtilties.getStunningPool(traitCollection, equipment);
+    IEquipmentModifiers equipmentModifiers = character.getEquipmentModifiers();
+    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection, equipmentModifiers);
+    int knockdownThreshold = CharacterUtilties.getTotalValue(
+        traitCollection,
+        AttributeType.Stamina,
+        AbilityType.Resistance);
+    int knockdownPool = CharacterUtilties.getKnockdownPool(character, equipmentModifiers);
+    int stunningThreshold = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina);
+    int stunningPool = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
 
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 4, upperLeftCorner, bounds.width, 3);
@@ -46,9 +50,9 @@ public class SecondEditionCombatValueEncoder implements IPdfContentEncoder {
     encoder.addLabelledValue(directContent, 1, dodgeLabel, dodgeDV);
     encoder.addLabelledValue(directContent, 2, knockdownLabel, knockdownThreshold, knockdownPool);
     encoder.addLabelledValue(directContent, 3, stunningLabel, stunningThreshold, stunningPool);
-    //String mobilityPenaltyLabel = "-" + resources.getString("Sheet.Combat.MobilityPenalty"); //$NON-NLS-1$ //$NON-NLS-2$
+    String mobilityPenaltyLabel = "-" + resources.getString("Sheet.Combat.MobilityPenalty"); //$NON-NLS-1$ //$NON-NLS-2$
     String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$
-    //encoder.addComment(directContent, mobilityPenaltyLabel, 1);
+    encoder.addComment(directContent, mobilityPenaltyLabel, 1);
     encoder.addComment(directContent, thresholdPoolLabel, 2);
     encoder.addComment(directContent, thresholdPoolLabel, 3);
     return encoder.getHeight();

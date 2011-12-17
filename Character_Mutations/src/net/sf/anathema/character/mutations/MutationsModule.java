@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.mutations.model.MutationsModelFactory;
 import net.sf.anathema.character.mutations.persistence.MutationPersisterFactory;
-import net.sf.anathema.character.mutations.reporting.MutationsEncoder;
+import net.sf.anathema.character.mutations.reporting.sheet.MutationsEncoder;
 import net.sf.anathema.character.mutations.template.MutationsTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;

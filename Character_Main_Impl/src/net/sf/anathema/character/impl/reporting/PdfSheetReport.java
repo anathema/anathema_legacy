@@ -13,7 +13,6 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.impl.generic.EquipmentModifiers;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
@@ -22,11 +21,10 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
-import net.sf.anathema.character.reporting.sheet.page.NewPdfFirstPageEncoder;
-import net.sf.anathema.character.reporting.sheet.page.NewPdfMagicPageEncoder;
-import net.sf.anathema.character.reporting.sheet.page.NewPdfSecondPageEncoder;
+import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfOldStyleFirstPageEncoder;
+import net.sf.anathema.character.reporting.sheet.page.PdfSecondPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.IITextReport;
@@ -65,34 +63,27 @@ public class PdfSheetReport implements IITextReport {
     try {
       int traitMax = Math.max(5, getEssenceMax(stattedCharacter));
       IPdfPartEncoder partEncoder = getPartEncoder(stattedCharacter);
-      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics(),
-    		  new EquipmentModifiers(stattedCharacter.getStatistics()));
+      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
-      IExaltedEdition edition = character.getRules().getEdition();
-      
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
-      if (edition == ExaltedEdition.FirstEdition)
+      if (character.getRules().getEdition() == ExaltedEdition.FirstEdition)
       	encoderList.add(new PdfOldStyleFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-      if (edition == ExaltedEdition.SecondEdition)
+      if (character.getRules().getEdition() == ExaltedEdition.SecondEdition)
       {
-    	  encoderList.add(new NewPdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-        encoderList.add(new NewPdfSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+    	encoderList.add(new PdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+    	encoderList.add(new PdfSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
       }
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
-      if (edition == ExaltedEdition.SecondEdition) {
-        encoderList.add(new NewPdfMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration));
-      }
-      else if (partEncoder.hasMagicPage()) {
-        encoderList.add(new PdfMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration,
-                                                edition != ExaltedEdition.FirstEdition));
-      }
-      boolean firstPagePrinted = false;
+      if (partEncoder.hasMagicPage())
+    	encoderList.add(new PdfMagicPageEncoder(resources, encodingRegistry, configuration,
+    			character.getRules().getEdition() != ExaltedEdition.FirstEdition));
+      boolean isFirstPrinted = false;
       for (IPdfPageEncoder encoder : encoderList) {
-        if (firstPagePrinted) {
+        if (isFirstPrinted) {
           document.newPage();
         }
         else {
-          firstPagePrinted = true;
+          isFirstPrinted = true;
         }
         encoder.encode(document, directContent, character, description);
       }

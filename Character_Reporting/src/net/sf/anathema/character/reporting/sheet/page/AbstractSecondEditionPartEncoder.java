@@ -1,19 +1,14 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
-import net.sf.anathema.character.reporting.sheet.common.IPdfVariableContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.common.NewPdfEssenceEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfDotsEncoder;
+import net.sf.anathema.character.reporting.sheet.common.PdfEssenceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionHealthAndMovementEncoder;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionHealthEncoder;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionMovementEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionSocialCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -60,12 +55,8 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
 	  }
   
   public IPdfContentBoxEncoder getEssenceEncoder() {
-	    return new NewPdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
+	    return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
 	  }
-  
-  public IPdfContentBoxEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
-      return new PdfDotsEncoder(getBaseFont(), getResources(), trait, traitMax, traitHeaderKey);
-    }
   
   public IPdfContentBoxEncoder getOverdriveEncoder()
   {
@@ -90,20 +81,8 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
     return new SecondEditionHealthAndMovementEncoder(resources, baseFont, symbolBaseFont);
   }
 
-  public IPdfContentBoxEncoder getHealthEncoder() {
-    return new SecondEditionHealthEncoder(resources, baseFont, symbolBaseFont);
-  }
-
-  public IPdfContentBoxEncoder getMovementEncoder() {
-    return new SecondEditionMovementEncoder(resources, baseFont, symbolBaseFont);
-  }
-
   public float getWeaponryHeight() {
     return 102;
-  }
-  
-  public IPdfVariableContentBoxEncoder[] getAdditionalFirstPageEncoders() {
-    return new IPdfVariableContentBoxEncoder[0];
   }
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {

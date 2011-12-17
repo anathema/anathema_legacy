@@ -17,6 +17,6 @@ public class FirstEditionDbPartEncoder extends AbstractFirstEditionExaltPdfPartE
 
   @Override
   public IPdfContentBoxEncoder getAnimaEncoder() {
-    return new DbAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
+    return new DbAnimaEncoderFactory(getResources(), getBaseFont(), getSymbolBaseFont()).createAnimaEncoder();
   }
 }

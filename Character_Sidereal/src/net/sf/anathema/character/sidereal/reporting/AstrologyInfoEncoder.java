@@ -1,7 +1,6 @@
 package net.sf.anathema.character.sidereal.reporting;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -20,12 +19,12 @@ public class AstrologyInfoEncoder implements IPdfContentBoxEncoder {
     this.basefont = baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     new AstrologyTableEncoder(resources, basefont).encodeTable(directContent, character, bounds);
 
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey() {
     return "Sidereal.Astrology"; //$NON-NLS-1$
   }
   

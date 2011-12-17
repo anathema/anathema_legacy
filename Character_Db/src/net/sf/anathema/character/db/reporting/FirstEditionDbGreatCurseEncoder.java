@@ -3,12 +3,13 @@ package net.sf.anathema.character.db.reporting;
 import java.util.List;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.traits.ValueWeightGenericTraitSorter;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -28,7 +29,7 @@ public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implemen
     this.resources = resources;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey() {
     return "GreatCurse.Dragon-Blooded"; //$NON-NLS-1$
   }
 
@@ -37,12 +38,12 @@ public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implemen
     return baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     String virtueMessage = getVirtueString(character);
     String aspectMessage = getAspectString(character);
     String message = resources.getString("Sheet.GreatCurse.Message", virtueMessage, aspectMessage); //$NON-NLS-1$
     Phrase phrase = new Phrase(message, TableEncodingUtilities.createFont(getBaseFont()));
-    encodeTextWithReducedLineHeight(directContent, bounds, phrase);
+    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
   }
 
   private String getVirtueString(IGenericCharacter character) {
