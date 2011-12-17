@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
+import net.sf.anathema.character.reporting.common.boxes.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.common.encoder.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.common.Bounds;

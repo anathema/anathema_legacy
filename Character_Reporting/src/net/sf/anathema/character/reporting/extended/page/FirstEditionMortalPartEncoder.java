@@ -2,11 +2,11 @@ package net.sf.anathema.character.reporting.extended.page;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.reporting.common.boxes.PdfBackgroundEncoder;
+import net.sf.anathema.character.reporting.common.boxes.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfDotsEncoder;
-import net.sf.anathema.character.reporting.extended.common.PdfExperienceEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncoder {

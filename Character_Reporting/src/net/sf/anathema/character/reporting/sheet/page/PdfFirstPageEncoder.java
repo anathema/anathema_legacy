@@ -18,10 +18,10 @@ import net.sf.anathema.character.reporting.common.encoder.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfAttributesEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfVirtueEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfWillpowerEncoder;
+import net.sf.anathema.character.reporting.common.boxes.PdfAbilitiesEncoder;
+import net.sf.anathema.character.reporting.common.boxes.PdfAttributesEncoder;
+import net.sf.anathema.character.reporting.common.boxes.PdfVirtueEncoder;
+import net.sf.anathema.character.reporting.common.boxes.PdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPersonalInfoEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -155,7 +155,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       throws DocumentException {
     float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    IPdfContentBoxEncoder encoder = PdfAbilitiesEncoder.createWithCraftsAndSpecialties(baseFont, resources, essenceMax);
+    IPdfContentBoxEncoder encoder = PdfAbilitiesEncoder.createWithCraftsAndSpecialties(baseFont, resources, essenceMax, 9, 9);
     boxEncoder.encodeBox(directContent, encoder, character, description, boxBounds);
   }
 

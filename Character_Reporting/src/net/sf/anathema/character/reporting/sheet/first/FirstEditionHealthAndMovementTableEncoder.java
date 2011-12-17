@@ -6,7 +6,7 @@ import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.reporting.sheet.common.movement.AbstractHealthAndMovementTableEncoder;
+import net.sf.anathema.character.reporting.common.boxes.movement.AbstractHealthAndMovementTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionHealthAndMovementTableEncoder extends AbstractHealthAndMovementTableEncoder {

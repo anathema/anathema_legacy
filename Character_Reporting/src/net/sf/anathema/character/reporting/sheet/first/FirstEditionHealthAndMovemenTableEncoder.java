@@ -7,10 +7,10 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.reporting.sheet.common.movement.AbstractHealthAndMovemenTableEncoder;
+import net.sf.anathema.character.reporting.common.boxes.movement.AbstractHealthAndMovementTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class FirstEditionHealthAndMovemenTableEncoder extends AbstractHealthAndMovemenTableEncoder {
+public class FirstEditionHealthAndMovemenTableEncoder extends AbstractHealthAndMovementTableEncoder {
 
   public FirstEditionHealthAndMovemenTableEncoder(IResources resources, BaseFont baseFont) {
     super(resources, baseFont);

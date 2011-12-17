@@ -7,7 +7,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
 import net.sf.anathema.character.reporting.common.elements.TableList;
-import net.sf.anathema.character.reporting.sheet.common.combat.AbstractCombatRulesTableEncoder;
+import net.sf.anathema.character.reporting.common.boxes.combat.AbstractCombatRulesTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {

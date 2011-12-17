@@ -1,10 +1,10 @@
 package net.sf.anathema.character.reporting.extended.page;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.reporting.common.boxes.PdfEssenceEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.PdfDotsEncoder;
-import net.sf.anathema.character.reporting.extended.common.PdfEssenceEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFirstEditionPartEncoder {

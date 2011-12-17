@@ -1,8 +1,8 @@
 package net.sf.anathema.character.spirit.reporting.extended;
 
+import net.sf.anathema.character.reporting.common.encoder.NullPdfContentEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.NullPdfContentEncoder;
 import net.sf.anathema.character.reporting.extended.page.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 

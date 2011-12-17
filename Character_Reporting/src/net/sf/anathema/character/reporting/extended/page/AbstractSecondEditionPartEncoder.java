@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.extended.page;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.reporting.common.boxes.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfPageEncoder;
@@ -11,7 +12,6 @@ import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguratio
 import net.sf.anathema.character.reporting.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.NewPdfEssenceEncoder;
 import net.sf.anathema.character.reporting.extended.common.PdfDotsEncoder;
-import net.sf.anathema.character.reporting.extended.common.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.extended.second.SecondEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.extended.second.SecondEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.extended.second.SecondEditionHealthAndMovementEncoder;

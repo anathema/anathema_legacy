@@ -1,7 +1,7 @@
 package net.sf.anathema.character.spirit.reporting;
 
-import net.sf.anathema.character.reporting.sheet.common.anima.AbstractAnimaEncoderFactory;
-import net.sf.anathema.character.reporting.sheet.common.anima.AnimaTableEncoder;
+import net.sf.anathema.character.reporting.common.boxes.anima.AbstractAnimaEncoderFactory;
+import net.sf.anathema.character.reporting.common.boxes.anima.AnimaTableEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 

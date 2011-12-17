@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.sheet.page;
 
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.PdfEssenceEncoder;
+import net.sf.anathema.character.reporting.common.boxes.PdfEssenceEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFirstEditionPartEncoder {
