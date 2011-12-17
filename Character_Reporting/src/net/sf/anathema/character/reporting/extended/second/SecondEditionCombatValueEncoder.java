@@ -7,10 +7,10 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
-import net.sf.anathema.character.reporting.extended.util.LabelledValueEncoder;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.extended.util.LabelledValueEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionCombatValueEncoder implements IPdfContentEncoder {
@@ -31,7 +31,7 @@ public class SecondEditionCombatValueEncoder implements IPdfContentEncoder {
     IGenericTraitCollection traitCollection = character.getTraitCollection();
     IEquipmentModifiers equipment = character.getEquipmentModifiers();
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    
+
     int joinBattle = CharacterUtilties.getJoinBattle(traitCollection, equipment);
     int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection, equipment);
     int knockdownThreshold = CharacterUtilties.getKnockdownThreshold(traitCollection, equipment);

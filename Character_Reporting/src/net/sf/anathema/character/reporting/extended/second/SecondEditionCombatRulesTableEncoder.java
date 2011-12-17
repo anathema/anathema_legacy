@@ -5,9 +5,9 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
-import net.sf.anathema.character.reporting.extended.common.combat.AbstractCombatRulesTableEncoder;
-import net.sf.anathema.character.reporting.common.elements.TableList;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.character.reporting.common.elements.TableList;
+import net.sf.anathema.character.reporting.extended.common.combat.AbstractCombatRulesTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionCombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
@@ -23,13 +23,13 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractCombatRulesTab
 
   @Override
   protected void addSecondCell(PdfPTable table) {
-    Phrase knockdownAndStunningPhrase = new Phrase(
-        getResources().getString("Sheet.Combat.Knockdown.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
-    knockdownAndStunningPhrase.add(new Chunk(
-        getResources().getString("Sheet.Combat.Knockdown.Second.Comment") + "\n\n", getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
-    knockdownAndStunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Stunning.Header") + "\n", getFont())); //$NON-NLS-1$ //$NON-NLS-2$
-    knockdownAndStunningPhrase.add(new Chunk(
-        getResources().getString("Sheet.Combat.Stunning.Second.Comment"), getCommentFont())); //$NON-NLS-1$
+    Phrase knockdownAndStunningPhrase = new Phrase(getResources().getString("Sheet.Combat.Knockdown.Header") + "\n",
+                                                   getFont()); //$NON-NLS-1$ //$NON-NLS-2$
+    knockdownAndStunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Knockdown.Second.Comment") + "\n\n",
+                                             getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
+    knockdownAndStunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Stunning.Header") + "\n",
+                                             getFont())); //$NON-NLS-1$ //$NON-NLS-2$
+    knockdownAndStunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Stunning.Second.Comment"), getCommentFont())); //$NON-NLS-1$
     table.addCell(createContentCell(knockdownAndStunningPhrase));
   }
 
@@ -58,15 +58,15 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractCombatRulesTab
     list.addCell(spaceCell);
     list.addCell(spaceCell);
     list.addCell(spaceCell);
-    TableCell rulesCommentCell = new TableCell(new Phrase(
-        getResources().getString("Sheet.Combat.Comment.Rules"), getCommentFont()), Rectangle.NO_BORDER); //$NON-NLS-1$
+    TableCell rulesCommentCell = new TableCell(new Phrase(getResources().getString("Sheet.Combat.Comment.Rules"), getCommentFont()),
+                                               Rectangle.NO_BORDER); //$NON-NLS-1$
     rulesCommentCell.setPadding(0);
     list.addCell(rulesCommentCell);
     return list.getTable();
   }
 
   private PdfPTable createCommonActionsTable() {
-    float[] columnWidths = new float[] { 5, 1.5f, 1.5f };
+    float[] columnWidths = new float[]{5, 1.5f, 1.5f};
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
     String header = getResources().getString("Sheet.Combat.CommonActions.Header"); //$NON-NLS-1$

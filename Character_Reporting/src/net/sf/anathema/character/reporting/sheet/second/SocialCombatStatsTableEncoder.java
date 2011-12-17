@@ -7,13 +7,13 @@ import net.sf.anathema.character.generic.impl.social.InvestigationSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PerformanceSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PresenceSocialAttack;
 import net.sf.anathema.character.generic.social.ISocialCombatStats;
-import net.sf.anathema.character.reporting.sheet.util.AbstractFixedLineStatsTableEncoder;
 import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.social.DeceptionStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.social.HonestyStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.social.SocialCombatNameStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.social.SocialRateStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.social.SocialSpeedStatsGroup;
+import net.sf.anathema.character.reporting.sheet.util.AbstractFixedLineStatsTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEncoder<ISocialCombatStats> {
@@ -28,12 +28,8 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
   @SuppressWarnings("unchecked")
   @Override
   protected IStatsGroup<ISocialCombatStats>[] createStatsGroups(IGenericCharacter character) {
-    return new IStatsGroup[] {
-        new SocialCombatNameStatsGroup(resources),
-        new SocialSpeedStatsGroup(resources),
-        new HonestyStatsGroup(resources),
-        new DeceptionStatsGroup(resources),
-        new SocialRateStatsGroup(resources) };
+    return new IStatsGroup[]{new SocialCombatNameStatsGroup(resources), new SocialSpeedStatsGroup(resources), new HonestyStatsGroup(resources),
+                             new DeceptionStatsGroup(resources), new SocialRateStatsGroup(resources)};
   }
 
   @Override
@@ -44,9 +40,7 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
   @Override
   protected ISocialCombatStats[] getPrintStats(IGenericCharacter character) {
     IGenericTraitCollection traitCollection = character.getTraitCollection();
-    return new ISocialCombatStats[] {
-        new PresenceSocialAttack(traitCollection),
-        new PerformanceSocialAttack(traitCollection),
-        new InvestigationSocialAttack(traitCollection) };
+    return new ISocialCombatStats[]{new PresenceSocialAttack(traitCollection), new PerformanceSocialAttack(traitCollection),
+                                    new InvestigationSocialAttack(traitCollection)};
   }
 }

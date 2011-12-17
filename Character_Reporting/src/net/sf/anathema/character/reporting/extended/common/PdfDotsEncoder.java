@@ -6,11 +6,11 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class PdfDotsEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
@@ -38,7 +38,8 @@ public class PdfDotsEncoder extends AbstractPdfEncoder implements IPdfContentBox
     return traitHeaderKey; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     float width = bounds.width - IVoidStateFormatConstants.PADDING;
     float leftX = bounds.x + IVoidStateFormatConstants.PADDING / 2f;
     int value = character.getTraitCollection().getTrait(trait).getCurrentValue();
@@ -46,9 +47,8 @@ public class PdfDotsEncoder extends AbstractPdfEncoder implements IPdfContentBox
     float yPosition = bounds.getMaxY() - entryHeight;
     traitEncoder.encodeDotsCenteredAndUngrouped(directContent, new Position(leftX, yPosition), width, value, traitMax);
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

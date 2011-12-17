@@ -8,9 +8,10 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
@@ -29,7 +30,8 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
     return "Backgrounds"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     float yPosition = bounds.getMaxY() - LINE_HEIGHT;
     boolean printZeroBackgrounds = AnathemaCharacterPreferences.getDefaultPreferences().printZeroBackgrounds();
     for (IGenericTrait background : character.getBackgrounds()) {
@@ -49,9 +51,9 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
   }
 
   private String getBackgroundName(IBackgroundInfo background) {
-	String backgroundName = background.getName(resources);
-	String description = background.getDescription();
-	return backgroundName + (description != null ? " (" + description + ")" : "");
+    String backgroundName = background.getName(resources);
+    String description = background.getDescription();
+    return backgroundName + (description != null ? " (" + description + ")" : "");
   }
 
   private void encodeEmptyLines(PdfContentByte directContent, Bounds bounds, float yPosition) {
@@ -61,9 +63,8 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
       yPosition -= LINE_HEIGHT;
     }
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

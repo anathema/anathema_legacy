@@ -7,12 +7,12 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.common.elements.Line;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.elements.Line;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 
 public abstract class AbstractLineTextEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
   private final static float LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;

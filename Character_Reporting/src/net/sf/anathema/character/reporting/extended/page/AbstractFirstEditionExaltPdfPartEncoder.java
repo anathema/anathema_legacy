@@ -23,18 +23,17 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
   public IPdfContentBoxEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
     return new PdfDotsEncoder(getBaseFont(), getResources(), trait, traitMax, traitHeaderKey);
   }
-  
-  public IPdfContentBoxEncoder getOverdriveEncoder()
-  {
-	return null;
+
+  public IPdfContentBoxEncoder getOverdriveEncoder() {
+    return null;
   }
 
   protected int getEssenceMax() {
     return essenceMax;
   }
-  
+
   public boolean hasMagicPage() {
-	return true;
+    return true;
   }
 
   protected final int getFontSize() {

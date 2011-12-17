@@ -20,7 +20,7 @@ public class MagicDurationStatsGroup extends AbstractTextStatsGroup<IMagicStats>
   }
 
   public Float[] getColumnWeights() {
-    return new Float[] { 3f };
+    return new Float[]{3f};
   }
 
   public String getTitle() {

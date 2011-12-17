@@ -2,8 +2,8 @@ package net.sf.anathema.character.reporting.sheet.util;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 
 import static net.sf.anathema.character.reporting.common.encoder.IPdfBoxEncoder.ARCSPACE;
 import static net.sf.anathema.character.reporting.common.encoder.IPdfBoxEncoder.HEADER_HEIGHT;
@@ -25,26 +25,14 @@ public class PdfHeaderBoxEncoder extends AbstractPdfEncoder {
   public void encodeHeaderBox(PdfContentByte directContent, Bounds bounds, String title) {
     setFillColorBlack(directContent);
     Bounds headerBounds = calculateHeaderBounds(bounds);
-    directContent.rectangle(
-        headerBounds.x + ARCSPACE,
-        headerBounds.y,
-        headerBounds.width - 2 * ARCSPACE,
-        headerBounds.height);
-    directContent.arc(headerBounds.x, headerBounds.y, headerBounds.x + 2 * ARCSPACE, headerBounds.y
-        + headerBounds.height, 0, 360);
-    directContent.arc(
-        headerBounds.getMaxX(),
-        headerBounds.y,
-        headerBounds.getMaxX() - 2 * ARCSPACE,
-        headerBounds.getMaxY(),
-        0,
-        360);
+    directContent.rectangle(headerBounds.x + ARCSPACE, headerBounds.y, headerBounds.width - 2 * ARCSPACE, headerBounds.height);
+    directContent.arc(headerBounds.x, headerBounds.y, headerBounds.x + 2 * ARCSPACE, headerBounds.y + headerBounds.height, 0, 360);
+    directContent.arc(headerBounds.getMaxX(), headerBounds.y, headerBounds.getMaxX() - 2 * ARCSPACE, headerBounds.getMaxY(), 0, 360);
     directContent.fillStroke();
     setFillColorWhite(directContent);
     directContent.setFontAndSize(baseFont, HEADER_FONT_SIZE);
     directContent.beginText();
-    directContent.showTextAligned(PdfContentByte.ALIGN_CENTER, title, (int) headerBounds.getCenterX(), headerBounds.y
-        + HEADER_FONT_PADDING, 0);
+    directContent.showTextAligned(PdfContentByte.ALIGN_CENTER, title, (int) headerBounds.getCenterX(), headerBounds.y + HEADER_FONT_PADDING, 0);
     directContent.endText();
   }
 

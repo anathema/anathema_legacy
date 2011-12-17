@@ -84,37 +84,12 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
     return "+"; //$NON-NLS-1$
   }
 
-  private final PdfPCell createContentCellTable(
-      Color borderColor,
-      String text,
-      Font font,
-      float borderWidth,
-      boolean enabled) {
-    return TableEncodingUtilities.createContentCellTable(
-        borderColor,
-        text,
-        font,
-        borderWidth,
-        Rectangle.BOX,
-        Element.ALIGN_RIGHT,
-        enabled);
+  private final PdfPCell createContentCellTable(Color borderColor, String text, Font font, float borderWidth, boolean enabled) {
+    return TableEncodingUtilities.createContentCellTable(borderColor, text, font, borderWidth, Rectangle.BOX, Element.ALIGN_RIGHT, enabled);
   }
 
-  private final PdfPCell createContentCellTable(
-      Color borderColor,
-      String text,
-      Font font,
-      float borderWidth,
-      int alignment,
-      boolean enabled) {
-    return TableEncodingUtilities.createContentCellTable(
-        borderColor,
-        text,
-        font,
-        borderWidth,
-        Rectangle.BOX,
-        alignment,
-        enabled);
+  private final PdfPCell createContentCellTable(Color borderColor, String text, Font font, float borderWidth, int alignment, boolean enabled) {
+    return TableEncodingUtilities.createContentCellTable(borderColor, text, font, borderWidth, Rectangle.BOX, alignment, enabled);
   }
 
   protected final int calculateFinalValue(final int weaponValue, IGenericTrait... traits) {

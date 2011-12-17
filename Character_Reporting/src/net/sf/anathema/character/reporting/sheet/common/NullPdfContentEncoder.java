@@ -5,6 +5,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 
 public class NullPdfContentEncoder implements IPdfContentBoxEncoder {
 
@@ -18,16 +19,16 @@ public class NullPdfContentEncoder implements IPdfContentBoxEncoder {
     this.headerKey = headerKey;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     // Nothing to do
   }
 
   public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return headerKey;
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

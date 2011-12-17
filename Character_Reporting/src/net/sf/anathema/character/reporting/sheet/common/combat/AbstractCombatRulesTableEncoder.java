@@ -8,10 +8,10 @@ import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractCombatRulesTableEncoder extends AbstractTableEncoder {
@@ -41,7 +41,7 @@ public abstract class AbstractCombatRulesTableEncoder extends AbstractTableEncod
   @Override
   protected final PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
     float cellPadding = 0.05f;
-    PdfPTable table = new PdfPTable(new float[] { 1f, cellPadding, 1.1f, cellPadding, 1f });
+    PdfPTable table = new PdfPTable(new float[]{1f, cellPadding, 1.1f, cellPadding, 1f});
     addFirstCell(table);
     table.addCell(createSpaceCell());
     addSecondCell(table);

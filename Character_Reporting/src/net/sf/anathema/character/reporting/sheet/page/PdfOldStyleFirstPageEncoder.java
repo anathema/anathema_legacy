@@ -10,10 +10,11 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfVirtueEncoder;
@@ -21,7 +22,6 @@ import net.sf.anathema.character.reporting.sheet.common.PdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPersonalInfoEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants.PADDING;
@@ -38,12 +38,8 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
   private final PdfEncodingRegistry registry;
   private final IPdfPartEncoder partEncoder;
 
-  public PdfOldStyleFirstPageEncoder(
-      IPdfPartEncoder partEncoder,
-      PdfEncodingRegistry registry,
-      IResources resources,
-      int essenceMax,
-      PdfPageConfiguration pageConfiguration) {
+  public PdfOldStyleFirstPageEncoder(IPdfPartEncoder partEncoder, PdfEncodingRegistry registry, IResources resources, int essenceMax,
+                                     PdfPageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
     this.baseFont = registry.getBaseFont();
     this.essenceMax = essenceMax;
@@ -53,11 +49,95 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
     this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
   }
 
-  public void encode(
-      Document document,
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description) throws DocumentException {
+  public void encode(Document document, PdfContentByte directContent, IGenericCharacter character, IGenericDescription description) throws
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                    DocumentException {
     int distanceFromTop = 0;
     final int firstRowHeight = 51;
     encodePersonalInfo(directContent, character, description, distanceFromTop, firstRowHeight);
@@ -77,8 +157,7 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
     float willpowerHeight = encodeWillpower(directContent, character, description, distanceFromTop, 43);
     float willpowerIncrement = calculateBoxIncrement(willpowerHeight);
     distanceFromTop += willpowerIncrement;
-    float intimaciesHeight = encodeIntimacies(directContent, character, description, distanceFromTop, socialCombatHeight
-        - willpowerIncrement);
+    float intimaciesHeight = encodeIntimacies(directContent, character, description, distanceFromTop, socialCombatHeight - willpowerIncrement);
     distanceFromTop += calculateBoxIncrement(intimaciesHeight);
     float weaponryHeight = encodeWeaponry(directContent, character, description, distanceFromTop, partEncoder.getWeaponryHeight());
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
@@ -104,23 +183,13 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
     Bounds anathemaBounds = pageConfiguration.getSecondColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
     PdfTextEncodingUtilities.encodeText(directContent, anathemaPhrase, anathemaBounds, lineHeight, Element.ALIGN_CENTER);
     Anchor whitewolfPhrase = new Anchor("Exalted \u00A92007 by White Wolf, Inc.\nhttp://www.white-wolf.com", //$NON-NLS-1$
-        copyrightFont);
+                                        copyrightFont);
     whitewolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
     Bounds whitewolfBounds = pageConfiguration.getThirdColumnRectangle(CONTENT_HEIGHT, copyrightHeight);
-    PdfTextEncodingUtilities.encodeText(
-        directContent,
-        whitewolfPhrase,
-        whitewolfBounds,
-        lineHeight,
-        Element.ALIGN_RIGHT);
+    PdfTextEncodingUtilities.encodeText(directContent, whitewolfPhrase, whitewolfBounds, lineHeight, Element.ALIGN_RIGHT);
   }
 
-  private float encodeEssence(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      float distanceFromTop,
-      float height) throws DocumentException {
+  private float encodeEssence(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop, float height) throws DocumentException {
     Bounds essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IPdfContentBoxEncoder encoder = partEncoder.getEssenceEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, description, essenceBounds);
@@ -131,12 +200,7 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
     return resources.getString("Sheet.Header." + key); //$NON-NLS-1$
   }
 
-  private void encodePersonalInfo(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      int distanceFromTop,
-      final int firstRowHeight) {
+  private void encodePersonalInfo(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, int distanceFromTop, final int firstRowHeight) {
     Bounds infoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
     String name = description.getName();
     String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
@@ -144,31 +208,22 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
     encodePersonalInfos(directContent, character, description, infoContentBounds);
   }
 
-  private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop)
-      throws DocumentException {
+  private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop) throws DocumentException {
     float attributeHeight = encodeAttributes(directContent, character, description, distanceFromTop);
     encodeAbilities(directContent, character, description, distanceFromTop + attributeHeight + PADDING);
   }
 
-  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character,
-                               IGenericDescription description,
-                               float distanceFromTop)
-      throws DocumentException {
+  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop) throws DocumentException {
     float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
     IPdfContentBoxEncoder encoder = PdfAbilitiesEncoder.createWithCraftsAndSpecialties(baseFont, resources, essenceMax);
     boxEncoder.encodeBox(directContent, encoder, character, description, boxBounds);
   }
 
-  private float encodeAttributes(PdfContentByte directContent, IGenericCharacter character,  IGenericDescription description, float distanceFromTop)
-      throws DocumentException {
+  private float encodeAttributes(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop) throws DocumentException {
     float attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
-    IPdfContentBoxEncoder encoder = new PdfAttributesEncoder(
-        baseFont,
-        resources,
-        essenceMax,
-        partEncoder.isEncodeAttributeAsFavorable());
+    IPdfContentBoxEncoder encoder = new PdfAttributesEncoder(baseFont, resources, essenceMax, partEncoder.isEncodeAttributeAsFavorable());
     boxEncoder.encodeBox(directContent, encoder, character, description, attributeBounds);
     return attributeHeight;
   }
@@ -177,127 +232,73 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
     return height + IVoidStateFormatConstants.PADDING;
   }
 
-  private void encodeAnima(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      float distanceFromTop,
-      float height) throws DocumentException {
+  private void encodeAnima(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop, float height) throws DocumentException {
     Bounds animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IPdfContentBoxEncoder encoder = partEncoder.getAnimaEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, description, animaBounds);
   }
 
-  private float encodeArmourAndSoak(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      float distanceFromTop,
-      float height) throws DocumentException {
+  private float encodeArmourAndSoak(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     IPdfContentBoxEncoder contentEncoder = registry.getArmourContentEncoder();
     boxEncoder.encodeBox(directContent, contentEncoder, character, description, bounds);
     return height;
   }
 
-  private float encodeSocialCombatStats(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      float distanceFromTop,
-      float height) throws DocumentException {
+  private float encodeSocialCombatStats(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IPdfContentBoxEncoder encoder = partEncoder.getSocialCombatEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, description, bounds);
     return height;
   }
 
-  private float encodeCombatStats(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      float distanceFromTop,
-      float height) throws DocumentException {
+  private float encodeCombatStats(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     IPdfContentBoxEncoder encoder = partEncoder.getCombatStatsEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, description, bounds);
     return height;
   }
 
-  private float encodeMovementAndHealth(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      float distanceFromTop,
-      float height) throws DocumentException {
+  private float encodeMovementAndHealth(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     IPdfContentBoxEncoder encoder = partEncoder.getHealthAndMovementEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, description, bounds);
     return height;
   }
 
-  private void encodePersonalInfos(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      Bounds infoBounds) {
+  private void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds infoBounds) {
     SecondEditionPersonalInfoEncoder encoder = new SecondEditionPersonalInfoEncoder(baseFont, resources);
     encoder.encodePersonalInfos(directContent, character, description, infoBounds);
   }
 
-  private float encodeVirtues(
-      PdfContentByte directContent,
-      float distanceFromTop,
-      float height,
-      IGenericCharacter character,
-      IGenericDescription description) throws DocumentException {
+  private float encodeVirtues(PdfContentByte directContent, float distanceFromTop, float height, IGenericCharacter character, IGenericDescription description) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     IPdfContentBoxEncoder encoder = new PdfVirtueEncoder(resources, baseFont);
     boxEncoder.encodeBox(directContent, encoder, character, description, bounds);
     return height;
   }
 
-  private float encodeWeaponry(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      float distanceFromTop,
-      float height) throws DocumentException {
+  private float encodeWeaponry(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     IPdfContentBoxEncoder weaponryEncoder = registry.getWeaponContentEncoder();
     boxEncoder.encodeBox(directContent, weaponryEncoder, character, description, bounds);
     return height;
   }
 
-  private float encodeWillpower(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      float distanceFromTop,
-      float height) throws DocumentException {
+  private float encodeWillpower(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop, float height) throws DocumentException {
     Bounds willpowerBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     boxEncoder.encodeBox(directContent, new PdfWillpowerEncoder(baseFont), character, description, willpowerBounds);
     return height;
   }
 
-  private float encodeGreatCurse(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      float distanceFromTop,
-      float height) throws DocumentException {
+  private float encodeGreatCurse(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     IPdfContentBoxEncoder encoder = partEncoder.getGreatCurseEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, description, bounds);
     return height;
   }
 
-  private float encodeIntimacies(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IGenericDescription description,
-      float distanceFromTop,
-      float height) throws DocumentException {
+  private float encodeIntimacies(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     IPdfContentBoxEncoder encoder = partEncoder.getIntimaciesEncoder(registry);
     boxEncoder.encodeBox(directContent, encoder, character, description, bounds);

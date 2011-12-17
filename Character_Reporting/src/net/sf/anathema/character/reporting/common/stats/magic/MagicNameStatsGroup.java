@@ -15,7 +15,7 @@ public class MagicNameStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
   }
 
   public Float[] getColumnWeights() {
-    return new Float[] { 6.0f };
+    return new Float[]{6.0f};
   }
 
   public void addContent(PdfPTable table, Font font, IMagicStats stats) {

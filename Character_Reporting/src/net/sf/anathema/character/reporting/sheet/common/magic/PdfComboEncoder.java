@@ -9,9 +9,9 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -32,8 +32,7 @@ public class PdfComboEncoder {
     this.nameFont.setStyle(Font.BOLD);
   }
 
-  public float encodeCombos(PdfContentByte directContent, IGenericCharacter character, Bounds restOfPage)
-      throws DocumentException {
+  public float encodeCombos(PdfContentByte directContent, IGenericCharacter character, Bounds restOfPage) throws DocumentException {
     IGenericCombo[] combos = character.getCombos();
     if (combos.length == 0) {
       return 0;

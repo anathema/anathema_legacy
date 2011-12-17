@@ -13,9 +13,10 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -41,13 +42,14 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
     return "Attributes"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
     IGenericTraitCollection traitCollection = character.getTraitCollection();
     IMagicStats[] excellencies = getExcellencies(character);
     encodeAttributes(directContent, character, bounds, attributeGroups, traitCollection, excellencies);
   }
-  
+
   protected IMagicStats[] getExcellencies(IGenericCharacter character) {
     List<IMagicStats> excellencies = new ArrayList<IMagicStats>();
     FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
@@ -58,7 +60,7 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
           excellencies.add(stats);
         }
       }
-      Collections.sort(excellencies, new Comparator<IMagicStats>(){
+      Collections.sort(excellencies, new Comparator<IMagicStats>() {
         public int compare(IMagicStats a, IMagicStats b) {
           String aId = a.getName().getId();
           String bId = b.getName().getId();
@@ -69,12 +71,8 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
     return excellencies.toArray(new IMagicStats[0]);
   }
 
-  public final void encodeAttributes(PdfContentByte directContent,
-                                     IGenericCharacter character,
-                                     Bounds contentBounds,
-                                     IGroupedTraitType[] attributeGroups,
-                                     IGenericTraitCollection traitCollection,
-                                     IMagicStats[] excellencies) {
+  public final void encodeAttributes(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds,
+                                     IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - groupSpacing;
     String groupId = null;
@@ -90,12 +88,7 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
       int value = traitCollection.getTrait(traitType).getCurrentValue();
       Position position = new Position(contentBounds.x, y);
       if (!encodeFavored) {
-        y -= smallTraitEncoder.encodeWithText(directContent,
-                                              traitLabel,
-                                              position,
-                                              contentBounds.width,
-                                              value,
-                                              essenceMax);
+        y -= smallTraitEncoder.encodeWithText(directContent, traitLabel, position, contentBounds.width, value, essenceMax);
       }
       else {
         boolean favored = traitCollection.getFavorableTrait(traitType).isCasteOrFavored();
@@ -108,20 +101,13 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
             }
           }) != null;
         }
-        y -= smallTraitEncoder.encodeWithExcellencies(directContent,
-                                                      traitLabel,
-                                                      position,
-                                                      contentBounds.width,
-                                                      value,
-                                                      favored,
-                                                      excellencyLearned,
+        y -= smallTraitEncoder.encodeWithExcellencies(directContent, traitLabel, position, contentBounds.width, value, favored, excellencyLearned,
                                                       essenceMax);
       }
     }
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

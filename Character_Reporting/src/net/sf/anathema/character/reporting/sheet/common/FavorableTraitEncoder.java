@@ -14,11 +14,12 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -56,7 +57,8 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return traitEncoder;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     Position position = new Position(bounds.getMinX(), bounds.getMaxY());
     float width = bounds.width;
     float yPosition = encodeTraitGroups(directContent, character, position, width);
@@ -64,7 +66,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
       yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
       yPosition -= encoder.encode(directContent, character, new Position(position.x, yPosition), width);
     }
-    
+
     float bottom = bounds.getMinY() + 4;
     int nExcellencies = getExcellencies(character).length;
     if (nExcellencies > 0) {
@@ -75,15 +77,11 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     }
   }
 
-  private float encodeTraitGroups(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      Position position,
-      float width) {
+  private float encodeTraitGroups(PdfContentByte directContent, IGenericCharacter character, Position position, float width) {
     IIdentifiedTraitTypeGroup[] groups = getIdentifiedTraitTypeGroups(character);
     IGenericTraitCollection traitCollection = getTraitCollection(character);
     IMagicStats[] excellencies = getExcellencies(character);
-    
+
     float yPosition = position.y;
     for (IIdentifiedTraitTypeGroup group : groups) {
       Position groupPosition = new Position(position.x, yPosition);
@@ -92,7 +90,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     }
     return yPosition;
   }
-  
+
   protected IMagicStats[] getExcellencies(IGenericCharacter character) {
     List<IMagicStats> excellencies = new ArrayList<IMagicStats>();
     if (shouldShowExcellencies(character)) {
@@ -102,7 +100,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
           excellencies.add(stats);
         }
       }
-      Collections.sort(excellencies, new Comparator<IMagicStats>(){
+      Collections.sort(excellencies, new Comparator<IMagicStats>() {
         public int compare(IMagicStats a, IMagicStats b) {
           String aId = a.getName().getId();
           String bId = b.getName().getId();
@@ -122,14 +120,8 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
 
   protected abstract IIdentifiedTraitTypeGroup[] getIdentifiedTraitTypeGroups(IGenericCharacter character);
 
-  private float encodeTraitGroup(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      IMagicStats[] excellencies,
-      IGenericTraitCollection traitCollection,
-      IIdentifiedTraitTypeGroup group,
-      Position position,
-      float width) {
+  private float encodeTraitGroup(PdfContentByte directContent, IGenericCharacter character, IMagicStats[] excellencies,
+                                 IGenericTraitCollection traitCollection, IIdentifiedTraitTypeGroup group, Position position, float width) {
     float height = 0;
     float groupLabelWidth = IVoidStateFormatConstants.LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
     float traitX = position.x + groupLabelWidth;
@@ -145,7 +137,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
       }
       IFavorableGenericTrait trait = traitCollection.getFavorableTrait(traitType);
       String label = resources.getString(getTraitTypePrefix() + traitType.getId());
-      
+
       if (shouldShowExcellencies(character)) {
         boolean[] excellencyLearned = new boolean[excellencies.length];
         for (int i = 0; i < excellencies.length; i++) {
@@ -156,13 +148,11 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
             }
           }) != null;
         }
-        
-        height += encodeFavorableTrait(directContent, label, trait, excellencyLearned,
-                                       new Position(traitX, yPosition), width - groupLabelWidth);
+
+        height += encodeFavorableTrait(directContent, label, trait, excellencyLearned, new Position(traitX, yPosition), width - groupLabelWidth);
       }
       else {
-        height += encodeFavorableTrait(directContent, label, trait,
-                                       new Position(traitX, yPosition), width - groupLabelWidth);
+        height += encodeFavorableTrait(directContent, label, trait, new Position(traitX, yPosition), width - groupLabelWidth);
       }
     }
     Position groupLabelPosition = new Position(groupLabelX, position.y - height / 2f);
@@ -183,24 +173,14 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return ""; //$NON-NLS-1$
   }
 
-  private int encodeFavorableTrait(
-      PdfContentByte directContent,
-      String label,
-      IFavorableGenericTrait trait,
-      Position position,
-      float width) {
+  private int encodeFavorableTrait(PdfContentByte directContent, String label, IFavorableGenericTrait trait, Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
     return traitEncoder.encodeWithTextAndRectangle(directContent, label, position, width, value, favored, essenceMax);
   }
 
-  private int encodeFavorableTrait(
-      PdfContentByte directContent,
-      String label,
-      IFavorableGenericTrait trait,
-      boolean[] excellencyLearned,
-      Position position,
-      float width) {
+  private int encodeFavorableTrait(PdfContentByte directContent, String label, IFavorableGenericTrait trait, boolean[] excellencyLearned,
+                                   Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
     return traitEncoder.encodeWithExcellencies(directContent, label, position, width, value, favored, excellencyLearned, essenceMax);
@@ -223,8 +203,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return 7;
   }
 
-  private float encodeExcellencyCommentText(PdfContentByte directContent, int nExcellencies,
-                                            Position position, float yPosition) {
+  private float encodeExcellencyCommentText(PdfContentByte directContent, int nExcellencies, Position position, float yPosition) {
     StringBuilder numbers = new StringBuilder();
     for (int i = 1; i <= nExcellencies; i++) {
       numbers.append(Integer.toString(i));
@@ -242,13 +221,12 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
   protected String getExcellencyCommentKey() {
     return null;
   }
-  
+
   protected boolean shouldShowExcellencies(IGenericCharacter character) {
     return false;
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

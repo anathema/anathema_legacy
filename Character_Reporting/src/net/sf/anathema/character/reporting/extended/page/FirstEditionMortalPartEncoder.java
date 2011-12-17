@@ -13,11 +13,7 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
 
   private final PdfEncodingRegistry registry;
 
-  public FirstEditionMortalPartEncoder(
-      IResources resources,
-      BaseFont baseFont,
-      BaseFont symbolBaseFont,
-      PdfEncodingRegistry registry) {
+  public FirstEditionMortalPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont, PdfEncodingRegistry registry) {
     super(resources, baseFont, symbolBaseFont);
     this.registry = registry;
   }
@@ -37,9 +33,9 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
   public boolean hasSecondPage() {
     return false;
   }
-  
+
   public boolean hasMagicPage() {
-	return false;
+    return false;
   }
 
   public IPdfContentBoxEncoder getGreatCurseEncoder() {

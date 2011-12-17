@@ -2,7 +2,7 @@ package net.sf.anathema.character.solar.reporting;
 
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.*;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.elements.Line;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;

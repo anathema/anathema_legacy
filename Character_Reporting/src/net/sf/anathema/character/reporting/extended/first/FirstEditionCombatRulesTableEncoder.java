@@ -5,9 +5,9 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
-import net.sf.anathema.character.reporting.extended.common.combat.AbstractCombatRulesTableEncoder;
-import net.sf.anathema.character.reporting.common.elements.TableList;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.character.reporting.common.elements.TableList;
+import net.sf.anathema.character.reporting.extended.common.combat.AbstractCombatRulesTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
@@ -41,18 +41,17 @@ public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTabl
   @Override
   protected void addSecondCell(PdfPTable table) {
     Phrase knockdownPhrase = new Phrase(getResources().getString("Sheet.Combat.Knockdown.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
-    knockdownPhrase.add(new Chunk(
-        "\n" + getResources().getString("Sheet.Combat.Knockdown.First.Comment"), getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
-    knockdownPhrase.add(new Chunk(
-        "\n\n" + getResources().getString("Sheet.Combat.Comment.First.Rules"), getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
+    knockdownPhrase.add(new Chunk("\n" + getResources().getString("Sheet.Combat.Knockdown.First.Comment"),
+                                  getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
+    knockdownPhrase.add(new Chunk("\n\n" + getResources().getString("Sheet.Combat.Comment.First.Rules"),
+                                  getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
     table.addCell(createContentCell(knockdownPhrase));
   }
 
   @Override
   protected void addThirdCell(PdfPTable table) {
     Phrase stunningPhrase = new Phrase(getResources().getString("Sheet.Combat.Stunning.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
-    stunningPhrase.add(new Chunk(
-        "\n" + getResources().getString("Sheet.Combat.Stunning.First.Comment"), getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
+    stunningPhrase.add(new Chunk("\n" + getResources().getString("Sheet.Combat.Stunning.First.Comment"), getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
     table.addCell(createContentCell(stunningPhrase));
   }
 }

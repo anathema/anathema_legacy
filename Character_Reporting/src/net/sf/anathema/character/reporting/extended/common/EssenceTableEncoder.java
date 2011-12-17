@@ -16,13 +16,13 @@ import com.lowagie.text.pdf.PdfTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
@@ -41,7 +41,7 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
   private PdfPCell internalSpaceCell;
   private PdfTraitEncoder traitEncoder;
   private String[] specialRecoveryRows;
-  
+
   private static final int HEADER_BORDER = Rectangle.NO_BORDER;
   private static final int INTERNAL_BORDER = Rectangle.BOX;
   private static final int LABEL_BORDER = Rectangle.BOX;
@@ -61,18 +61,17 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
   }
 
   protected Float[] getEssenceColumns() {
-    return new Float[] { 8f, 2f, 3f, (10f / 3f), PADDING, 6f, 2.5f, 2.5f};
+    return new Float[]{8f, 2f, 3f, (10f / 3f), PADDING, 6f, 2.5f, 2.5f};
   }
 
   private float[] createColumnWidth() {
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(getEssenceColumns());
   }
 
-  public final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
-      throws DocumentException {
+  public final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     return encodeTable(directContent, character, bounds, false);
   }
-  
+
   public final float getTableHeight(IGenericCharacter character, float width) throws DocumentException {
     int pools = 0;
     if (character.getPersonalPoolValue() > 0) {
@@ -89,14 +88,13 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
         pools++;
       }
     }
-    
+
     int lines = 1 + Math.max(pools, 5 + specialRecoveryRows.length);
-    return traitEncoder.getTraitHeight() + lines * IVoidStateFormatConstants.BARE_LINE_HEIGHT
-                                         + 1.75f * IVoidStateFormatConstants.TEXT_PADDING;
+    return traitEncoder.getTraitHeight() + lines * IVoidStateFormatConstants.BARE_LINE_HEIGHT + 1.75f * IVoidStateFormatConstants.TEXT_PADDING;
   }
 
-  protected final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds, boolean simulate)
-      throws DocumentException {
+  protected final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds,
+                                    boolean simulate) throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
     PdfPTable table = createTable(directContent, character);
     table.setWidthPercentage(100);
@@ -105,36 +103,33 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
     tableColumn.go(simulate);
     return table.getTotalHeight();
   }
-  
-  protected IGenericTraitCollection getTraits(IGenericCharacter character)
-  {
-	  return character.getTraitCollection();
+
+  protected IGenericTraitCollection getTraits(IGenericCharacter character) {
+    return character.getTraitCollection();
   }
 
-  protected final PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character)
-      throws DocumentException {
+  protected final PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character) throws DocumentException {
     float[] columnWidth = createColumnWidth();
     PdfPTable table = new PdfPTable(columnWidth);
     addEssenceHeader(table, createDots(directContent, character, DOTS_WIDTH));
     addEssencePoolRows(table, character);
     return table;
   }
-  
+
   protected final Image createDots(PdfContentByte directContent, IGenericCharacter character, float width) throws BadElementException {
     PdfTemplate dotsTemplate = directContent.createTemplate(width, traitEncoder.getTraitHeight());
     int value = character.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
-    traitEncoder.encodeDotsCenteredAndUngrouped(dotsTemplate, new Position(0, PdfTraitEncoder.DOT_PADDING),
-                                                width, value, essenceMax);
+    traitEncoder.encodeDotsCenteredAndUngrouped(dotsTemplate, new Position(0, PdfTraitEncoder.DOT_PADDING), width, value, essenceMax);
     return Image.getInstance(dotsTemplate);
   }
-  
+
   protected final void addEssenceHeader(PdfPTable table, Image firstCell) {
     PdfPCell headerCell = new TableCell(firstCell);
     headerCell.setColspan(4);
     table.addCell(headerCell);
     table.addCell(spaceCell);
     table.addCell(createBigHeaderCell(getResources().getString("Sheet.Essence.Regaining"), 3)); //$NON-NLS-1$
-    
+
     table.addCell(spaceCell);
     table.addCell(createHeaderCell(getResources().getString("Sheet.Essence.Total"), 1)); //$NON-NLS-1$
     table.addCell(createHeaderCell(getResources().getString("Sheet.Essence.Committed"), 1)); //$NON-NLS-1$
@@ -144,17 +139,17 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
     table.addCell(createHeaderCell(getResources().getString("Sheet.Essence.AtEase"), 1)); //$NON-NLS-1$
     table.addCell(createHeaderCell(getResources().getString("Sheet.Essence.Relaxed"), 1)); //$NON-NLS-1$
   }
-  
+
   private void addEssencePoolRows(PdfPTable table, IGenericCharacter character) {
     int personalPool = character.getPersonalPoolValue();
     int peripheralPool = character.getPeripheralPoolValue();
     int overdrivePool = character.getOverdrivePoolValue();
     IdentifiedInteger[] complexPools = character.getComplexPools();
-    
+
     int committed = character.getAttunedPoolValue();
     int peripheralCommitted = Math.min(peripheralPool, committed);
     int personalCommitted = committed - peripheralCommitted;
-    
+
     int row = 1;
     if (personalPool > 0) {
       String personalLabel = resources.getString("Sheet.Essence.PersonalPool"); //$NON-NLS-1$
@@ -170,7 +165,7 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
       String overdriveLabel = resources.getString("Sheet.Essence.OverdrivePool"); //$NON-NLS-1$
       addPoolRow(table, overdriveLabel, overdrivePool, null, row++);
     }
-    
+
     for (IdentifiedInteger complexPool : complexPools) {
       String poolId = complexPool.getId();
       int poolValue = complexPool.getValue();
@@ -179,28 +174,26 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
         addPoolRow(table, poolLabel, poolValue, null, row++);
       }
     }
-    
-    while(row <= 5 + specialRecoveryRows.length) {
+
+    while (row <= 5 + specialRecoveryRows.length) {
       addPoolRow(table, null, 0, null, row++);
     }
   }
-  
-  private void addPoolRow(PdfPTable table, String poolLabel, int poolCapacity, Integer poolCommitted,
-                          int rowNumber) {
+
+  private void addPoolRow(PdfPTable table, String poolLabel, int poolCapacity, Integer poolCommitted, int rowNumber) {
     if (poolLabel != null) {
       int poolAvailable = poolCapacity;
       if (poolCommitted != null) {
         poolAvailable -= poolCommitted;
       }
-      
-      PdfPCell labelCell = new TableCell(new Phrase(poolLabel, font), LABEL_BORDER,
-                                         Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
+
+      PdfPCell labelCell = new TableCell(new Phrase(poolLabel, font), LABEL_BORDER, Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
       table.addCell(labelCell);
-      
+
       PdfPCell totalCell = new TableCell(new Phrase(Integer.toString(poolCapacity) + " m", font), INTERNAL_BORDER, //$NON-NLS-1$
                                          Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
       table.addCell(totalCell);
-  
+
       PdfPCell committedCell;
       if (poolCommitted != null) {
         committedCell = new TableCell(new Phrase(poolCommitted.toString() + " m", font), INTERNAL_BORDER, //$NON-NLS-1$
@@ -211,8 +204,9 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
         committedCell.setBackgroundColor(Color.LIGHT_GRAY);
       }
       table.addCell(committedCell);
-  
-      PdfPCell availableCell = new TableCell(new Phrase("/ " + Integer.toString(poolAvailable) + " m", font), INTERNAL_BORDER, //$NON-NLS-1$ //$NON-NLS-2$
+
+      PdfPCell availableCell = new TableCell(new Phrase("/ " + Integer.toString(poolAvailable) + " m", font), INTERNAL_BORDER,
+      //$NON-NLS-1$ //$NON-NLS-2$
                                              Element.ALIGN_RIGHT, Element.ALIGN_MIDDLE);
       table.addCell(availableCell);
     }
@@ -226,12 +220,9 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
     table.addCell(spaceCell);
     if (rowNumber == 1) {
       String label = getResources().getString("Sheet.Essence.NaturalRecovery"); //$NON-NLS-1$
-      table.addCell(new TableCell(new Phrase(label, font), INTERNAL_BORDER,
-                                  Element.ALIGN_RIGHT, Element.ALIGN_MIDDLE));
-      table.addCell(new TableCell(new Phrase(Integer.valueOf(4).toString(), font), INTERNAL_BORDER,
-                                  Element.ALIGN_CENTER, Element.ALIGN_MIDDLE));
-      table.addCell(new TableCell(new Phrase(Integer.valueOf(8).toString(), font), INTERNAL_BORDER,
-                                  Element.ALIGN_CENTER, Element.ALIGN_MIDDLE));
+      table.addCell(new TableCell(new Phrase(label, font), INTERNAL_BORDER, Element.ALIGN_RIGHT, Element.ALIGN_MIDDLE));
+      table.addCell(new TableCell(new Phrase(Integer.valueOf(4).toString(), font), INTERNAL_BORDER, Element.ALIGN_CENTER, Element.ALIGN_MIDDLE));
+      table.addCell(new TableCell(new Phrase(Integer.valueOf(8).toString(), font), INTERNAL_BORDER, Element.ALIGN_CENTER, Element.ALIGN_MIDDLE));
     }
     else if (rowNumber - 6 >= specialRecoveryRows.length) {
       table.addCell(spaceCell);
@@ -257,12 +248,11 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
           label = getResources().getString(specialRecoveryRows[rowNumber - 6]);
           break;
       }
-      PdfPCell cell = new TableCell(new Phrase(label, font), INTERNAL_BORDER,
-                                    Element.ALIGN_RIGHT, Element.ALIGN_MIDDLE);
+      PdfPCell cell = new TableCell(new Phrase(label, font), INTERNAL_BORDER, Element.ALIGN_RIGHT, Element.ALIGN_MIDDLE);
       PdfPCell rowSpaceCell = internalSpaceCell;
       if (rowNumber >= 5) {
         cell.setBorderWidth(2f * cell.getBorderWidthTop());
-        
+
         rowSpaceCell = new PdfPCell(rowSpaceCell);
         rowSpaceCell.setBorderWidth(2f * rowSpaceCell.getBorderWidthTop());
       }
@@ -273,15 +263,13 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
   }
 
   protected final PdfPCell createHeaderCell(String text, int columnSpan) {
-    PdfPCell cell = new TableCell(new Phrase(text, font), HEADER_BORDER,
-                                  Element.ALIGN_CENTER, Element.ALIGN_BOTTOM);
+    PdfPCell cell = new TableCell(new Phrase(text, font), HEADER_BORDER, Element.ALIGN_CENTER, Element.ALIGN_BOTTOM);
     cell.setColspan(columnSpan);
     return cell;
   }
 
   protected final PdfPCell createBigHeaderCell(String text, int columnSpan) {
-    PdfPCell cell = new TableCell(new Phrase(text, boldFont), HEADER_BORDER,
-                                  Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
+    PdfPCell cell = new TableCell(new Phrase(text, boldFont), HEADER_BORDER, Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
     cell.setColspan(columnSpan);
     return cell;
   }
@@ -293,7 +281,7 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
   protected final IResources getResources() {
     return resources;
   }
-  
+
   public boolean hasContent(IGenericCharacter character) {
     return true;
   }

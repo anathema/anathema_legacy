@@ -6,10 +6,10 @@ import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
 
 public class CopyrightEncoder {
 
@@ -36,14 +36,9 @@ public class CopyrightEncoder {
     Bounds anathemaBounds = pageConfiguration.getSecondColumnRectangle(contentHeight, copyrightHeight, 1);
     PdfTextEncodingUtilities.encodeText(directContent, anathemaPhrase, anathemaBounds, lineHeight, Element.ALIGN_CENTER);
     Anchor whitewolfPhrase = new Anchor("Exalted \u00A92007 by White Wolf, Inc.\nhttp://www.white-wolf.com", //$NON-NLS-1$
-      copyrightFont);
+                                        copyrightFont);
     whitewolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
     Bounds whitewolfBounds = pageConfiguration.getThirdColumnRectangle(contentHeight, copyrightHeight);
-    PdfTextEncodingUtilities.encodeText(
-      directContent,
-      whitewolfPhrase,
-      whitewolfBounds,
-      lineHeight,
-      Element.ALIGN_RIGHT);
+    PdfTextEncodingUtilities.encodeText(directContent, whitewolfPhrase, whitewolfBounds, lineHeight, Element.ALIGN_RIGHT);
   }
 }

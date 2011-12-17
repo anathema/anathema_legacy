@@ -6,11 +6,11 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
+import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -36,28 +36,22 @@ public class PdfSpecialtiesEncoder extends AbstractNamedTraitEncoder implements 
       }
     }
     IValuedTraitReference[] specialties = references.toArray(new IValuedTraitReference[references.size()]);
-    
+
     int lineCount = getLineCount(null, bounds.height);
-    IValuedTraitReference[] leftSpecialties = Arrays.copyOfRange(specialties,
-                                                                 0, Math.min(specialties.length, lineCount));
-    IValuedTraitReference[] rightSpecialties = Arrays.copyOfRange(specialties,
-                                                                  leftSpecialties.length, specialties.length);
-    
+    IValuedTraitReference[] leftSpecialties = Arrays.copyOfRange(specialties, 0, Math.min(specialties.length, lineCount));
+    IValuedTraitReference[] rightSpecialties = Arrays.copyOfRange(specialties, leftSpecialties.length, specialties.length);
+
     float columnWidth = (bounds.width - IVoidStateFormatConstants.PADDING) / 2f;
     float columnHeight = bounds.height - IVoidStateFormatConstants.TEXT_PADDING / 2f;
     float yPosition = bounds.getMaxY() - IVoidStateFormatConstants.BARE_LINE_HEIGHT;
-    
+
     float leftPosition = bounds.getMinX();
-    drawNamedTraitSection(directContent, null, leftSpecialties,
-                          new Position(leftPosition, yPosition),
-                          columnWidth, columnHeight, 3);
+    drawNamedTraitSection(directContent, null, leftSpecialties, new Position(leftPosition, yPosition), columnWidth, columnHeight, 3);
 
     float rightPosition = leftPosition + columnWidth + IVoidStateFormatConstants.PADDING;
-    drawNamedTraitSection(directContent, null, rightSpecialties,
-                          new Position(rightPosition, yPosition),
-                          columnWidth, columnHeight, 3);
+    drawNamedTraitSection(directContent, null, rightSpecialties, new Position(rightPosition, yPosition), columnWidth, columnHeight, 3);
   }
-  
+
   public boolean hasContent(IGenericCharacter character) {
     return true;
   }

@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.common.NewPdfEssenceEncoder;
@@ -16,7 +17,6 @@ import net.sf.anathema.character.reporting.extended.second.SecondEditionHealthAn
 import net.sf.anathema.character.reporting.extended.second.SecondEditionHealthEncoder;
 import net.sf.anathema.character.reporting.extended.second.SecondEditionMovementEncoder;
 import net.sf.anathema.character.reporting.extended.second.SecondEditionSocialCombatStatsEncoder;
-import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncoder {
@@ -44,31 +44,29 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
   public final BaseFont getSymbolBaseFont() {
     return symbolBaseFont;
   }
-  
-  protected int getEssenceMax()
-  {
-	return essenceMax;
+
+  protected int getEssenceMax() {
+    return essenceMax;
   }
-  
+
   public boolean hasSecondPage() {
-	    return true;
-	  }
-  
+    return true;
+  }
+
   protected int getFontSize() {
-	    return FONT_SIZE;
-	  }
-  
+    return FONT_SIZE;
+  }
+
   public IPdfContentBoxEncoder getEssenceEncoder() {
-	    return new NewPdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
-	  }
-  
+    return new NewPdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
+  }
+
   public IPdfContentBoxEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
-      return new PdfDotsEncoder(getBaseFont(), getResources(), trait, traitMax, traitHeaderKey);
-    }
-  
-  public IPdfContentBoxEncoder getOverdriveEncoder()
-  {
-	  return null;
+    return new PdfDotsEncoder(getBaseFont(), getResources(), trait, traitMax, traitHeaderKey);
+  }
+
+  public IPdfContentBoxEncoder getOverdriveEncoder() {
+    return null;
   }
 
   public final IPdfContentBoxEncoder getCombatStatsEncoder() {
@@ -100,7 +98,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
   public float getWeaponryHeight() {
     return 102;
   }
-  
+
   public IPdfVariableContentBoxEncoder[] getAdditionalFirstPageEncoders() {
     return new IPdfVariableContentBoxEncoder[0];
   }

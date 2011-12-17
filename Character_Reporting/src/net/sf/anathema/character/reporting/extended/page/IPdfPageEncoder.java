@@ -8,9 +8,6 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 
 public interface IPdfPageEncoder {
 
-  public void encode(
-    Document document,
-    PdfContentByte directContent,
-    IGenericCharacter character,
-    IGenericDescription description) throws DocumentException;
+  public void encode(Document document, PdfContentByte directContent, IGenericCharacter character, IGenericDescription description) throws
+                                                                                                                                    DocumentException;
 }

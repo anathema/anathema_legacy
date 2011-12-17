@@ -7,9 +7,9 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.text.MessageFormat;
@@ -29,19 +29,17 @@ public class PdfExperienceEncoder implements IPdfContentBoxEncoder {
     return "Experience"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     int totalPoints = character.getTotalExperiencePoints();
     int spentPoints = character.getSpentExperiencePoints();
     String experienceMessage = resources.getString("Sheet.Experience.MessageFormat"); //$NON-NLS-1$
-    String experienceText = MessageFormat.format(experienceMessage, totalPoints,
-            spentPoints,
-            totalPoints - spentPoints);
+    String experienceText = MessageFormat.format(experienceMessage, totalPoints, spentPoints, totalPoints - spentPoints);
     Phrase phrase = new Phrase(experienceText, font);
     PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, FONT_SIZE + 4);
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

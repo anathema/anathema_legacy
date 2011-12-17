@@ -5,11 +5,11 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.common.stats.NamedGenericTraitReference;
-import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -38,13 +38,8 @@ public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder imple
     return baseFont;
   }
 
-  protected int drawNamedTraitSection(
-      PdfContentByte directContent,
-      String title,
-      IValuedTraitReference[] traits,
-      Position position,
-      float width,
-      int dotCount) {
+  protected int drawNamedTraitSection(PdfContentByte directContent, String title, IValuedTraitReference[] traits, Position position, float width,
+                                      int dotCount) {
     int height = drawSubsectionHeader(directContent, title, position, width);
     TraitInternationalizer internationalizer = new TraitInternationalizer(getResources());
     for (int index = 0; index < lineCount && index < traits.length; index++) {

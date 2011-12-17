@@ -11,18 +11,17 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
 
-public class PdfInitiationEncoder extends AbstractPdfEncoder
-    implements IPdfVariableContentBoxEncoder {
-  
+public class PdfInitiationEncoder extends AbstractPdfEncoder implements IPdfVariableContentBoxEncoder {
+
   private BaseFont baseFont;
   private Font textFont;
   private Font headerFont;
@@ -40,15 +39,14 @@ public class PdfInitiationEncoder extends AbstractPdfEncoder
     return baseFont;
   }
 
-  public String getHeaderKey(IGenericCharacter character,
-                             IGenericDescription description) {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return "Initiations"; //$NON-NLS-1$
   }
 
   public float getRequestedHeight(IGenericCharacter character, float width) {
     ISpellMagicTemplate spellMagicTemplate = character.getTemplate().getMagicTemplate().getSpellMagic();
     ICharm[] knownCharms = character.getLearnedCharms();
-    
+
     float height = 0;
     for (CircleType circle : CircleType.values()) {
       if (spellMagicTemplate.knowsSpellMagic(knownCharms, circle)) {
@@ -62,12 +60,11 @@ public class PdfInitiationEncoder extends AbstractPdfEncoder
     return height;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character,
-                     IGenericDescription description, Bounds bounds)
-      throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     ISpellMagicTemplate spellMagicTemplate = character.getTemplate().getMagicTemplate().getSpellMagic();
     ICharm[] knownCharms = character.getLearnedCharms();
-    
+
     Phrase phrase = new Phrase();
     for (CircleType circle : CircleType.values()) {
       if (spellMagicTemplate.knowsSpellMagic(knownCharms, circle)) {
@@ -78,16 +75,17 @@ public class PdfInitiationEncoder extends AbstractPdfEncoder
         phrase.add(new Chunk("\n", textFont)); //$NON-NLS-1$
       }
     }
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds,
-                                        IVoidStateFormatConstants.LINE_HEIGHT);
+    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, IVoidStateFormatConstants.LINE_HEIGHT);
   }
 
   protected boolean knowsCharm(String charm, IGenericCharacter character) {
     ICharm[] knownCharms = character.getLearnedCharms();
-    for (ICharm knownCharm : knownCharms)
-        if (charm.equals(knownCharm.getId()))
-          return true;
-      return false;
+    for (ICharm knownCharm : knownCharms) {
+      if (charm.equals(knownCharm.getId())) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public boolean hasContent(IGenericCharacter character) {

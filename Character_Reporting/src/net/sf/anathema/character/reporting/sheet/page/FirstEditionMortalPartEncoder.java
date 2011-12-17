@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
 import com.lowagie.text.pdf.BaseFont;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -11,11 +11,7 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
 
   private final PdfEncodingRegistry registry;
 
-  public FirstEditionMortalPartEncoder(
-      IResources resources,
-      BaseFont baseFont,
-      BaseFont symbolBaseFont,
-      PdfEncodingRegistry registry) {
+  public FirstEditionMortalPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont, PdfEncodingRegistry registry) {
     super(resources, baseFont, symbolBaseFont);
     this.registry = registry;
   }
@@ -31,9 +27,9 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
   public boolean hasSecondPage() {
     return false;
   }
-  
+
   public boolean hasMagicPage() {
-	return false;
+    return false;
   }
 
   public IPdfContentBoxEncoder getGreatCurseEncoder() {

@@ -19,15 +19,17 @@ public class ConceptTextEncoder extends AbstractTextEncoder {
   public void createParagraphs(MultiColumnText columnText, IGenericCharacter character) throws DocumentException {
     ICasteType casteType = character.getCasteType();
     if (casteType != ICasteType.NULL_CASTE_TYPE) {
-      Phrase castePhrase = createTextParagraph(createBoldTitle(getString("Sheet.Label.Caste." + character.getTemplate().getTemplateType().getCharacterType().getId()) + ": ")); //$NON-NLS-1$ //$NON-NLS-2$
+      Phrase castePhrase = createTextParagraph(createBoldTitle(getString("Sheet.Label.Caste." + character.getTemplate().getTemplateType()
+        .getCharacterType().getId()) + ": ")); //$NON-NLS-1$ //$NON-NLS-2$
       String casteId = casteType.getId();
       castePhrase.add(createTextChunk(casteId));
       columnText.addElement(castePhrase);
     }
     String willpowerRegainingConceptName = character.getConcept().getWillpowerRegainingConceptName();
     if (!StringUtilities.isNullOrTrimEmpty(willpowerRegainingConceptName)) {
-      String motivationLabel = getString(character.getRules().getEdition() == ExaltedEdition.SecondEdition
-          ? "Sheet.Label.Motivation" : "Sheet.Label.Nature"); //$NON-NLS-1$ //$NON-NLS-2$
+      String motivationLabel = getString(character.getRules().getEdition() == ExaltedEdition.SecondEdition ? "Sheet.Label.Motivation" : "Sheet" +
+                                                                                                                                        ".Label" +
+                                                                                                                                        ".Nature"); //$NON-NLS-1$ //$NON-NLS-2$
       Phrase willpowerRegainPhrase = createTextParagraph(createBoldTitle(motivationLabel + ": ")); //$NON-NLS-1$
       willpowerRegainPhrase.add(createTextChunk(willpowerRegainingConceptName));
       columnText.addElement(willpowerRegainPhrase);

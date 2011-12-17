@@ -4,7 +4,7 @@ import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.lib.collection.Table;
 
@@ -12,7 +12,8 @@ import java.awt.*;
 
 public class PdfEncodingRegistry {
 
-  private final Table<ICharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<ICharacterType, IExaltedEdition, IPdfPartEncoder>();
+  private final Table<ICharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<ICharacterType, IExaltedEdition,
+    IPdfPartEncoder>();
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
   private IPdfContentBoxEncoder weaponContentEncoder;
@@ -48,18 +49,18 @@ public class PdfEncodingRegistry {
   public void setIntimaciesEncoder(IPdfContentBoxEncoder intimaciesEncoder) {
     this.intimaciesEncoder = intimaciesEncoder;
   }
-  
+
   public void setMutationsEncoder(IPdfContentBoxEncoder mutationsEncoder) {
-	    this.mutationsEncoder = mutationsEncoder;
-	  }
-  
+    this.mutationsEncoder = mutationsEncoder;
+  }
+
   public void setThaumaturgyEncoder(IPdfContentBoxEncoder thaumaturgyEncoder) {
-	    this.thaumaturgyEncoder = thaumaturgyEncoder;
-	  }
-  
+    this.thaumaturgyEncoder = thaumaturgyEncoder;
+  }
+
   public void setMeritsAndFlawsEncoder(IPdfContentBoxEncoder meritsAndFlawsEncoder) {
-	    this.meritsAndFlawsEncoder = meritsAndFlawsEncoder;
-	  }
+    this.meritsAndFlawsEncoder = meritsAndFlawsEncoder;
+  }
 
   public IPdfContentBoxEncoder getWeaponContentEncoder() {
     return weaponContentEncoder;
@@ -82,16 +83,16 @@ public class PdfEncodingRegistry {
   }
 
   public IPdfContentBoxEncoder getMutationsEncoder() {
-	    return mutationsEncoder;
-	  }
-  
+    return mutationsEncoder;
+  }
+
   public IPdfContentBoxEncoder getThaumaturgyEncoder() {
-	    return thaumaturgyEncoder;
-	  }
-  
+    return thaumaturgyEncoder;
+  }
+
   public IPdfContentBoxEncoder getMeritsAndFlawsEncoder() {
-	    return meritsAndFlawsEncoder;
-	  }
+    return meritsAndFlawsEncoder;
+  }
 
   public void setPartEncoder(ICharacterType type, IExaltedEdition edition, IPdfPartEncoder partEncoder) {
     partEncoderTable.add(type, edition, partEncoder);

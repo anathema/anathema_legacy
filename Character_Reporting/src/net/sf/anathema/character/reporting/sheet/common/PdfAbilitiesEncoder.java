@@ -11,21 +11,14 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
 
-  public static PdfAbilitiesEncoder createWithSpecialtiesOnly(
-      BaseFont baseFont,
-      IResources resources,
-      int essenceMax,
-      int specialtyCount) {
+  public static PdfAbilitiesEncoder createWithSpecialtiesOnly(BaseFont baseFont, IResources resources, int essenceMax, int specialtyCount) {
     PdfAbilitiesEncoder pdfAbilitiesEncoder = new PdfAbilitiesEncoder(baseFont, resources, essenceMax);
     PdfTraitEncoder traitEncoder = pdfAbilitiesEncoder.getTraitEncoder();
     pdfAbilitiesEncoder.addNamedTraitEncoder(new SpecialtiesEncoder(resources, baseFont, traitEncoder, specialtyCount));
     return pdfAbilitiesEncoder;
   }
 
-  public static PdfAbilitiesEncoder createWithCraftsAndSpecialties(
-      BaseFont baseFont,
-      IResources resources,
-      int essenceMax) {
+  public static PdfAbilitiesEncoder createWithCraftsAndSpecialties(BaseFont baseFont, IResources resources, int essenceMax) {
     PdfAbilitiesEncoder pdfAbilitiesEncoder = new PdfAbilitiesEncoder(baseFont, resources, essenceMax);
     PdfTraitEncoder traitEncoder = pdfAbilitiesEncoder.getTraitEncoder();
     pdfAbilitiesEncoder.addNamedTraitEncoder(new CraftEncoder(resources, baseFont, traitEncoder, essenceMax));
@@ -34,15 +27,7 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
   }
 
   private PdfAbilitiesEncoder(BaseFont baseFont, IResources resources, int essenceMax) {
-    super(
-        baseFont,
-        resources,
-        essenceMax,
-        AbilityType.Athletics,
-        AbilityType.Dodge,
-        AbilityType.Larceny,
-        AbilityType.Ride,
-        AbilityType.Stealth);
+    super(baseFont, resources, essenceMax, AbilityType.Athletics, AbilityType.Dodge, AbilityType.Larceny, AbilityType.Ride, AbilityType.Stealth);
 
   }
 
@@ -69,7 +54,7 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
   protected String getExcellencyCommentKey() {
     return "Sheet.Comment.AbilityExcellency"; //$NON-NLS-1$
   }
-  
+
   @Override
   protected boolean shouldShowExcellencies(IGenericCharacter character) {
     return character.getTemplate().getMagicTemplate().getFavoringTraitType() == FavoringTraitType.AbilityType;

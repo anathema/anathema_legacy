@@ -36,7 +36,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
   public String[] getDetailKeys() {
     final String target = getMagic().getTarget();
     if (target != null) {
-      return new String[] { "Spells.Target." + target }; //$NON-NLS-1$
+      return new String[]{"Spells.Target." + target}; //$NON-NLS-1$
     }
     return new String[0];
   }
@@ -47,7 +47,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
 
   public int compareTo(IMagicStats stats) {
     if (stats instanceof SpellStats) {
-      SpellStats spell = (SpellStats)stats;
+      SpellStats spell = (SpellStats) stats;
       int r = getMagic().getCircleType().compareTo(spell.getMagic().getCircleType());
       if (r == 0) {
         r = getMagic().getId().compareTo(spell.getMagic().getId());

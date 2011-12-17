@@ -19,7 +19,7 @@ public abstract class AbstractNameStatsGroup<T extends IStats> extends AbstractT
   }
 
   public Float[] getColumnWeights() {
-    return new Float[] { new Float(6) };
+    return new Float[]{new Float(6)};
   }
 
   public void addContent(PdfPTable table, Font font, T stats) {

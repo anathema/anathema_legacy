@@ -9,6 +9,7 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.common.stats.anima.AnimaTableRangeProvider;
 import net.sf.anathema.character.reporting.common.stats.anima.AnimaTableStealthProvider;
@@ -16,13 +17,12 @@ import net.sf.anathema.character.reporting.common.stats.anima.AnimaUtils;
 import net.sf.anathema.character.reporting.common.stats.anima.ColumnDescriptor;
 import net.sf.anathema.character.reporting.common.stats.anima.IAnimaTableRangeProvider;
 import net.sf.anathema.character.reporting.common.stats.anima.IAnimaTableStealthProvider;
-import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
 
 public class AnimaTableEncoder extends AbstractTableEncoder {
-  
+
   public final static float TABLE_HEIGHT = 58f;
 
   private final IResources resources;
@@ -35,11 +35,7 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
     this(resources, baseFont, fontSize, new AnimaTableRangeProvider());
   }
 
-  public AnimaTableEncoder(
-      IResources resources,
-      BaseFont baseFont,
-      float fontSize,
-      IAnimaTableRangeProvider rangeProvider) {
+  public AnimaTableEncoder(IResources resources, BaseFont baseFont, float fontSize, IAnimaTableRangeProvider rangeProvider) {
     this.resources = resources;
     this.headerFont = new Font(baseFont, fontSize, Font.ITALIC, Color.BLACK);
     this.font = new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK);
@@ -47,11 +43,7 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
     this.stealthProvider = new AnimaTableStealthProvider(resources);
   }
 
-  public AnimaTableEncoder(
-      IResources resources,
-      BaseFont baseFont,
-      float fontSize,
-      IAnimaTableStealthProvider stealthProvider) {
+  public AnimaTableEncoder(IResources resources, BaseFont baseFont, float fontSize, IAnimaTableStealthProvider stealthProvider) {
     this.resources = resources;
     this.headerFont = new Font(baseFont, fontSize, Font.ITALIC, Color.BLACK);
     this.font = new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK);
@@ -102,9 +94,9 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
   }
 
   protected ColumnDescriptor[] getColumns() {
-    return new ColumnDescriptor[] { new ColumnDescriptor(0.15f, "Sheet.AnimaTable.Header.Motes"), //$NON-NLS-1$
-        new ColumnDescriptor(0.6f, "Sheet.AnimaTable.Header.BannerFlare"), //$NON-NLS-1$
-        new ColumnDescriptor(0.25f, "Sheet.AnimaTable.Header.Stealth") }; //$NON-NLS-1$
+    return new ColumnDescriptor[]{new ColumnDescriptor(0.15f, "Sheet.AnimaTable.Header.Motes"), //$NON-NLS-1$
+                                  new ColumnDescriptor(0.6f, "Sheet.AnimaTable.Header.BannerFlare"), //$NON-NLS-1$
+                                  new ColumnDescriptor(0.25f, "Sheet.AnimaTable.Header.Stealth")}; //$NON-NLS-1$
   }
 
   protected final PdfPCell createContentCell(String text) {

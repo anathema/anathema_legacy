@@ -7,10 +7,10 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.extended.common.movement.AbstractHealthAndMovementEncoder;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.extended.common.movement.AbstractHealthAndMovementEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionHealthEncoder extends AbstractHealthAndMovementEncoder {
@@ -25,8 +25,8 @@ public class SecondEditionHealthEncoder extends AbstractHealthAndMovementEncoder
   }
 
   @Override
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds)
-      throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     Bounds tableBounds = new Bounds(bounds.x, bounds.y + bounds.height - 94f, bounds.width, 94f);
     IPdfTableEncoder tableEncoder = createTableEncoder();
     tableEncoder.encodeTable(directContent, character, tableBounds);

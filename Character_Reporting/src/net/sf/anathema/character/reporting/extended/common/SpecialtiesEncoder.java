@@ -5,9 +5,9 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
+import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INamedTraitEncoder {
-  
+
   private final int specialtyCount;
 
   public SpecialtiesEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder encoder, int specialtyCount) {

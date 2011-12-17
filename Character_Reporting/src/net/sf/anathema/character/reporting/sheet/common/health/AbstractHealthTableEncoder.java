@@ -17,10 +17,10 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
@@ -29,7 +29,7 @@ public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
   public static final int HEALTH_RECT_SIZE = 6;
   private static final int HEALTH_COLUMN_COUNT = 15;
   protected static float PADDING = 0.3f;
-  private static final Float[] HEALTH_LEVEL_COLUMNS = new Float[] { 0.7f, 0.6f, PADDING };
+  private static final Float[] HEALTH_LEVEL_COLUMNS = new Float[]{0.7f, 0.6f, PADDING};
 
   private final IResources resources;
   private final Font font;
@@ -46,8 +46,7 @@ public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
     this.spaceCell.setBorder(Rectangle.NO_BORDER);
   }
 
-  public final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
-      throws DocumentException {
+  public final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
     PdfPTable table = createTable(directContent, character);
     table.setWidthPercentage(100);
@@ -56,10 +55,9 @@ public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
     tableColumn.go();
     return table.getTotalHeight();
   }
-  
-  protected IGenericTraitCollection getTraits(IGenericCharacter character)
-  {
-	  return character.getTraitCollection();
+
+  protected IGenericTraitCollection getTraits(IGenericCharacter character) {
+    return character.getTraitCollection();
   }
 
   private int getRowCount(HealthLevelType type) {
@@ -69,8 +67,7 @@ public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
     return 1;
   }
 
-  protected final PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character)
-      throws DocumentException {
+  protected final PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character) throws DocumentException {
     try {
       Image activeTemplate = Image.getInstance(createRectTemplate(directContent, Color.BLACK));
       Image passiveTemplate = Image.getInstance(createRectTemplate(directContent, Color.LIGHT_GRAY));
@@ -87,12 +84,7 @@ public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
     }
   }
 
-  private void addHealthTypeRows(
-      PdfPTable table,
-      IGenericCharacter character,
-      Image activeTemplate,
-      Image passiveTemplate,
-      HealthLevelType type) {
+  private void addHealthTypeRows(PdfPTable table, IGenericCharacter character, Image activeTemplate, Image passiveTemplate, HealthLevelType type) {
     int rowCount = getRowCount(type);
     for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
       if (rowIndex == 0) {
@@ -196,13 +188,7 @@ public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
     return Math.min(0, level.getIntValue() + painTolerance);
   }
 
-  private void addHealthCells(
-      PdfPTable table,
-      IGenericCharacter character,
-      HealthLevelType level,
-      int row,
-      Image activeImage,
-      Image passiveImage) {
+  private void addHealthCells(PdfPTable table, IGenericCharacter character, HealthLevelType level, int row, Image activeImage, Image passiveImage) {
     int naturalCount = getNaturalHealthLevels(level);
     if (row < naturalCount) {
       table.addCell(createHealthCell(activeImage));
@@ -247,7 +233,7 @@ public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
   protected final IResources getResources() {
     return resources;
   }
-  
+
   public boolean hasContent(IGenericCharacter character) {
     return true;
   }

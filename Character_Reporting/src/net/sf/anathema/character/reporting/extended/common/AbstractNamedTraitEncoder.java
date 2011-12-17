@@ -5,11 +5,11 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.character.reporting.common.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.common.stats.NamedGenericTraitReference;
-import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -35,28 +35,21 @@ public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder {
   protected BaseFont getBaseFont() {
     return baseFont;
   }
-  
+
   protected int getLineCount(String title, float height) {
     if (title != null) {
       height -= SUBSECTION_FONT_SIZE * 1.5f;
     }
-    return (int)(height / traitEncoder.getTraitHeight());
+    return (int) (height / traitEncoder.getTraitHeight());
   }
 
-  protected float drawNamedTraitSection(PdfContentByte directContent,
-                                        String title,
-                                        IValuedTraitReference[] traits,
-                                        Position position, float width,
+  protected float drawNamedTraitSection(PdfContentByte directContent, String title, IValuedTraitReference[] traits, Position position, float width,
                                         float height, int dotCount) {
-    return _drawNamedTraitSection(directContent, title, traits, position,
-                                  width, getLineCount(title, height), dotCount);
+    return _drawNamedTraitSection(directContent, title, traits, position, width, getLineCount(title, height), dotCount);
   }
 
-  protected float _drawNamedTraitSection(PdfContentByte directContent,
-                                        String title,
-                                        IValuedTraitReference[] traits,
-                                        Position position, float width,
-                                        int lineCount, int dotCount) {
+  protected float _drawNamedTraitSection(PdfContentByte directContent, String title, IValuedTraitReference[] traits, Position position,
+                                         float width, int lineCount, int dotCount) {
     float height = 0;
     if (title != null) {
       height = drawSubsectionHeader(directContent, title, position, width);

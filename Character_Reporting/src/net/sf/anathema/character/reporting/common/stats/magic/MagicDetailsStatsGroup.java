@@ -23,14 +23,11 @@ public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> 
       table.addCell(createTextCell(font, null));
     }
     else {
-      String[] details = ArrayUtilities.transform(
-          stats.getDetailKeys(),
-          String.class,
-          new ITransformer<String, String>() {
-            public String transform(String input) {
-              return resources.getString(input);
-            }
-          });
+      String[] details = ArrayUtilities.transform(stats.getDetailKeys(), String.class, new ITransformer<String, String>() {
+        public String transform(String input) {
+          return resources.getString(input);
+        }
+      });
       String detailText = AnathemaStringUtilities.concat(details, ", "); //$NON-NLS-1$
       if (StringUtilities.isNullOrEmpty(detailText)) {
         detailText = "-"; //$NON-NLS-1$
@@ -40,7 +37,7 @@ public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> 
   }
 
   public Float[] getColumnWeights() {
-    return new Float[] { 7f };
+    return new Float[]{7f};
   }
 
   public String getTitle() {

@@ -9,15 +9,15 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfLineEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.common.stats.anima.AnimaUtils;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.common.stats.anima.AnimaUtils;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfLineEncodingUtilities;
+import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
@@ -33,13 +33,8 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
   private final IPdfTableEncoder tableEncoder;
   private final int animaPowerCount;
 
-  public PdfAnimaEncoder(
-      IResources resources,
-      BaseFont baseFont,
-      BaseFont symbolBaseFont,
-      int fontSize,
-      int animaPowerCount,
-      IPdfTableEncoder encoder) {
+  public PdfAnimaEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont, int fontSize, int animaPowerCount,
+                         IPdfTableEncoder encoder) {
     this.resources = resources;
     this.baseFont = baseFont;
     this.symbolBaseFont = symbolBaseFont;
@@ -59,7 +54,8 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
     return baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     float halfWidth = bounds.getHeight() / 2;
     Bounds animaPowerBounds = new Bounds(bounds.getMinX(), bounds.getCenterY(), bounds.getWidth(), halfWidth);
     Position lineStartPosition = encodeAnimaPowers(directContent, character, animaPowerBounds);
@@ -73,20 +69,14 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
   private void encodeLines(PdfContentByte directContent, Bounds bounds, Position lineStartPosition) {
     float minX = bounds.getMinX();
     float maxX = bounds.getMaxX();
-    PdfLineEncodingUtilities.encodeHorizontalLines(
-        directContent,
-        lineStartPosition,
-        minX,
-        maxX,
-        lineHeight,
-        6 - animaPowerCount);
+    PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, minX, maxX, lineHeight, 6 - animaPowerCount);
   }
 
-  private Position encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
-      throws DocumentException {
+  private Position encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     Phrase phrase = new Phrase("", new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
     addAnimaPowerText(character, phrase);
-    String casteResourceKey = "Sheet.AnimaPower." + character.getCasteType().getId() + "." + character.getRules().getEdition().getId(); //$NON-NLS-1$ //$NON-NLS-2$
+    String casteResourceKey = "Sheet.AnimaPower." + character.getCasteType().getId() + "." + character.getRules().getEdition().getId();
+    //$NON-NLS-1$ //$NON-NLS-2$
     boolean isCastePowerDefined = resources.supportsKey(casteResourceKey);
     if (isCastePowerDefined) {
       phrase.add(symbolChunk);
@@ -115,9 +105,8 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
       phrase.add(resource + "\n"); //$NON-NLS-1$
     }
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

@@ -15,14 +15,14 @@ import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionSocialCombatStatsEncoder implements IPdfContentBoxEncoder {
@@ -43,7 +43,8 @@ public class SecondEditionSocialCombatStatsEncoder implements IPdfContentBoxEnco
     return "SocialCombat"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     float valueWidth = bounds.width;
     Bounds valueBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height);
     float valueHeight = encodeValues(directContent, valueBounds, character.getTraitCollection(), character.getEquipmentModifiers());
@@ -61,7 +62,7 @@ public class SecondEditionSocialCombatStatsEncoder implements IPdfContentBoxEnco
   }
 
   private void encodeDVTable(PdfContentByte directContent, Bounds bounds) throws DocumentException {
-    float[] columnWidths = new float[] { 4, 5 };
+    float[] columnWidths = new float[]{4, 5};
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
     String header = resources.getString("Sheet.SocialCombat.DVModifiers.Header"); //$NON-NLS-1$
@@ -93,7 +94,7 @@ public class SecondEditionSocialCombatStatsEncoder implements IPdfContentBoxEnco
   }
 
   private float encodeActionTable(PdfContentByte directContent, Bounds bounds) throws DocumentException {
-    float[] columnWidths = new float[] { 4, 2.5f, 2f };
+    float[] columnWidths = new float[]{4, 2.5f, 2f};
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
     String header = resources.getString("Sheet.SocialCombat.CommonActions.Header"); //$NON-NLS-1$
@@ -147,9 +148,8 @@ public class SecondEditionSocialCombatStatsEncoder implements IPdfContentBoxEnco
     encoder.addLabelledValue(directContent, 1, dodgeLabel, dodgeMDV);
     return encoder.getHeight() + 1;
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

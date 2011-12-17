@@ -18,7 +18,7 @@ public class SecondEditionHealthAndMovementTableEncoder extends AbstractHealthAn
 
   @Override
   protected final Float[] getMovementColumns() {
-    return new Float[] { 1f, PADDING, 1f, PADDING, 1f, 1f };
+    return new Float[]{1f, PADDING, 1f, PADDING, 1f, 1f};
   }
 
   @Override
@@ -34,20 +34,15 @@ public class SecondEditionHealthAndMovementTableEncoder extends AbstractHealthAn
   }
 
   @Override
-  protected final void addMovementCells(
-      PdfPTable table,
-      HealthLevelType level,
-      int painTolerance,
-      IGenericTraitCollection collection) {
+  protected final void addMovementCells(PdfPTable table, HealthLevelType level, int painTolerance, IGenericTraitCollection collection) {
     int penalty = getPenalty(level, painTolerance);
     int dexValue = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
     int moveValue = dexValue + penalty;
     table.addCell(createMovementCell(moveValue, 1));
     addSpaceCells(table, 1);
     table.addCell(createMovementCell(moveValue + 6, 2));
-    int verticalJump = collection.getTrait(AttributeType.Strength).getCurrentValue()
-        + collection.getTrait(AbilityType.Athletics).getCurrentValue()
-        + penalty;
+    int verticalJump = collection.getTrait(AttributeType.Strength).getCurrentValue() + collection.getTrait(AbilityType.Athletics).getCurrentValue()
+                       + penalty;
     addSpaceCells(table, 1);
     table.addCell(createMovementCell(verticalJump * 2, 0));
     table.addCell(createMovementCell(verticalJump, 0));

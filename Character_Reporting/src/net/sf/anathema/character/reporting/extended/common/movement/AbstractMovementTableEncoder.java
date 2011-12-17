@@ -13,10 +13,10 @@ import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
@@ -41,8 +41,7 @@ public abstract class AbstractMovementTableEncoder implements IPdfTableEncoder {
 
   protected abstract Float[] getMovementColumns();
 
-  public final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
-      throws DocumentException {
+  public final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
     PdfPTable table = createTable(directContent, character);
     table.setWidthPercentage(100);
@@ -51,14 +50,12 @@ public abstract class AbstractMovementTableEncoder implements IPdfTableEncoder {
     tableColumn.go();
     return table.getTotalHeight();
   }
-  
-  protected IGenericTraitCollection getTraits(IGenericCharacter character)
-  {
-	  return character.getTraitCollection();
+
+  protected IGenericTraitCollection getTraits(IGenericCharacter character) {
+    return character.getTraitCollection();
   }
 
-  protected final PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character)
-      throws DocumentException {
+  protected final PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character) throws DocumentException {
     float[] columnWidth = createColumnWidth();
     PdfPTable table = new PdfPTable(columnWidth);
     addMovementHeader(table);
@@ -68,14 +65,12 @@ public abstract class AbstractMovementTableEncoder implements IPdfTableEncoder {
     return table;
   }
 
-  private void addHealthTypeRows(
-      PdfPTable table,
-      IGenericCharacter character,
-      HealthLevelType type) {
-	  if (type == HealthLevelType.DYING)
-		  return;
-	  
-	  int painTolerance = character.getPainTolerance();
+  private void addHealthTypeRows(PdfPTable table, IGenericCharacter character, HealthLevelType type) {
+    if (type == HealthLevelType.DYING) {
+      return;
+    }
+
+    int painTolerance = character.getPainTolerance();
     if (type == HealthLevelType.INCAPACITATED) {
       addIncapacitatedMovement(table);
     }
@@ -134,20 +129,11 @@ public abstract class AbstractMovementTableEncoder implements IPdfTableEncoder {
 
   protected abstract void addMovementHeader(PdfPTable table);
 
-  protected abstract void addMovementCells(
-      PdfPTable table,
-      HealthLevelType level,
-      int painTolerance,
-      IGenericTraitCollection collection);
+  protected abstract void addMovementCells(PdfPTable table, HealthLevelType level, int painTolerance, IGenericTraitCollection collection);
 
   protected final PdfPCell createMovementCell(int value, int minValue) {
-    return TableEncodingUtilities.createContentCellTable(
-      Color.BLACK,
-      String.valueOf(Math.max(value, minValue)),
-      font,
-      0.5f,
-      Rectangle.BOX,
-      Element.ALIGN_CENTER);
+    return TableEncodingUtilities.createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX,
+                                                         Element.ALIGN_CENTER);
   }
 
   protected final int getPenalty(HealthLevelType level, int painTolerance) {
@@ -165,7 +151,7 @@ public abstract class AbstractMovementTableEncoder implements IPdfTableEncoder {
   protected final IResources getResources() {
     return resources;
   }
-  
+
   public boolean hasContent(IGenericCharacter character) {
     return true;
   }

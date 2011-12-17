@@ -10,11 +10,11 @@ import com.lowagie.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.util.IStats;
-import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.character.reporting.common.encoder.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
+import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 
 public abstract class AbstractStatsTableEncoder<T extends IStats> extends AbstractTableEncoder {
 
@@ -22,11 +22,11 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
   private final Font sectionFont;
   private final Font headerFont;
   private final boolean suppressHeaderLine;
-  
+
   public AbstractStatsTableEncoder(BaseFont baseFont) {
     this(baseFont, false);
   }
-  
+
   public AbstractStatsTableEncoder(BaseFont baseFont, boolean suppressHeaderLine) {
     this.headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
     this.font = TableEncodingUtilities.createFont(baseFont);
@@ -55,15 +55,11 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
   protected abstract void encodeContent(PdfPTable table, IGenericCharacter character, Bounds bounds);
 
   protected abstract IStatsGroup<T>[] createStatsGroups(IGenericCharacter character);
-  
+
   protected final void encodeHeaderLine(PdfPTable table, IStatsGroup<T>[] groups) {
     for (int index = 0; index < groups.length; index++) {
       Font usedFont = index == 0 ? font : headerFont;
-      table.addCell(createHeaderCell(
-          groups[index].getTitle(),
-          groups[index].getColumnCount(),
-          index != groups.length - 1,
-          usedFont));
+      table.addCell(createHeaderCell(groups[index].getTitle(), groups[index].getColumnCount(), index != groups.length - 1, usedFont));
     }
   }
 

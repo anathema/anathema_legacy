@@ -21,14 +21,13 @@ public class TableList {
 
   public TableList(Font font, CellPadding padding) {
     this.padding = padding;
-    this.table = new PdfPTable(new float[] { 1, 9 });
+    this.table = new PdfPTable(new float[]{1, 9});
     table.setWidthPercentage(100);
     this.font = font;
   }
-  
-  public void setIndex(int index)
-  {
-	  this.index = index;
+
+  public void setIndex(int index) {
+    this.index = index;
   }
 
   public void addHeader(Chunk chunk, boolean paddingTop) {

@@ -7,9 +7,9 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionMovementEncoder implements IPdfContentBoxEncoder {
@@ -26,8 +26,8 @@ public class SecondEditionMovementEncoder implements IPdfContentBoxEncoder {
     return "Movement"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds)
-      throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     IPdfTableEncoder tableEncoder = createTableEncoder();
     tableEncoder.encodeTable(directContent, character, bounds);
   }
@@ -47,9 +47,8 @@ public class SecondEditionMovementEncoder implements IPdfContentBoxEncoder {
   protected final IExaltedEdition getEdition() {
     return ExaltedEdition.SecondEdition;
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
+
+  public boolean hasContent(IGenericCharacter character) {
     return true;
   }
 }

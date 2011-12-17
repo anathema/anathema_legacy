@@ -18,16 +18,16 @@ public class NullPdfContentEncoder implements IPdfContentBoxEncoder {
     this.headerKey = headerKey;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     // Nothing to do
   }
 
   public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     return headerKey;
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

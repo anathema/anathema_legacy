@@ -8,8 +8,9 @@ import net.sf.anathema.character.reporting.common.Bounds;
 
 public interface IPdfContentBoxEncoder {
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException;
-  
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException;
+
   public boolean hasContent(IGenericCharacter character);
 
   public String getHeaderKey(IGenericCharacter character, IGenericDescription description);

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEssenceEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -17,18 +17,17 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
   public IPdfContentBoxEncoder getEssenceEncoder() {
     return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
   }
-  
-  public IPdfContentBoxEncoder getOverdriveEncoder()
-  {
-	return null;
+
+  public IPdfContentBoxEncoder getOverdriveEncoder() {
+    return null;
   }
 
   protected int getEssenceMax() {
     return essenceMax;
   }
-  
+
   public boolean hasMagicPage() {
-	return true;
+    return true;
   }
 
   protected final int getFontSize() {

@@ -5,7 +5,7 @@ import com.lowagie.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.reporting.extended.common.AbstractStatsTableEncoder;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.magic.MagicCostStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.magic.MagicDetailsStatsGroup;
@@ -13,7 +13,7 @@ import net.sf.anathema.character.reporting.common.stats.magic.MagicDurationStats
 import net.sf.anathema.character.reporting.common.stats.magic.MagicNameStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.magic.MagicSourceStatsGroup;
 import net.sf.anathema.character.reporting.common.stats.magic.MagicTypeStatsGroup;
-import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.extended.common.AbstractStatsTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -26,14 +26,11 @@ public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats>
   private List<IMagicStats> printStats = new ArrayList<IMagicStats>();
   private final boolean sectionHeaderLines;
 
-  public PdfMagicTableEncoder(IResources resources, BaseFont baseFont,
-                              List<IMagicStats> printStats) {
+  public PdfMagicTableEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printStats) {
     this(resources, baseFont, printStats, false);
   }
 
-  public PdfMagicTableEncoder(IResources resources, BaseFont baseFont,
-                              List<IMagicStats> printStats,
-                              boolean sectionHeaderLines) {
+  public PdfMagicTableEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printStats, boolean sectionHeaderLines) {
     super(baseFont, sectionHeaderLines);
     this.resources = resources;
     this.printStats = printStats;
@@ -43,12 +40,8 @@ public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats>
   @SuppressWarnings("unchecked")
   @Override
   protected IStatsGroup<IMagicStats>[] createStatsGroups(IGenericCharacter character) {
-    return new IStatsGroup[] {new MagicNameStatsGroup(resources),
-                              new MagicCostStatsGroup(resources),
-                              new MagicTypeStatsGroup(resources),
-                              new MagicDurationStatsGroup(resources),
-                              new MagicDetailsStatsGroup(resources),
-                              new MagicSourceStatsGroup(resources)};
+    return new IStatsGroup[]{new MagicNameStatsGroup(resources), new MagicCostStatsGroup(resources), new MagicTypeStatsGroup(resources),
+                             new MagicDurationStatsGroup(resources), new MagicDetailsStatsGroup(resources), new MagicSourceStatsGroup(resources)};
   }
 
   @Override

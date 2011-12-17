@@ -11,11 +11,11 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.common.stats.magic.MultipleEffectCharmStats;
 import net.sf.anathema.character.reporting.common.stats.magic.SpellStats;
-import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -23,9 +23,8 @@ import net.sf.anathema.lib.util.Identificate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PdfMagicEncoder implements IPdfContentBoxEncoder
-{
-	static IIdentificate KNACK = new Identificate("Knack");
+public class PdfMagicEncoder implements IPdfContentBoxEncoder {
+  static IIdentificate KNACK = new Identificate("Knack");
 
   public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
     final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
@@ -38,9 +37,10 @@ public class PdfMagicEncoder implements IPdfContentBoxEncoder
           if (CharmUtilities.isGenericCharmFor(charm, character)) {
             return;
           }
-          if (charm.hasAttribute(KNACK))
-        	  return;
-          
+          if (charm.hasAttribute(KNACK)) {
+            return;
+          }
+
           if (character.isMultipleEffectCharm(charm)) {
             String[] effects = character.getLearnedEffects(charm);
             for (String effect : effects) {
@@ -74,12 +74,12 @@ public class PdfMagicEncoder implements IPdfContentBoxEncoder
     return "Charms"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     new PdfMagicTableEncoder(resources, baseFont, printMagic).encodeTable(directContent, character, bounds);
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

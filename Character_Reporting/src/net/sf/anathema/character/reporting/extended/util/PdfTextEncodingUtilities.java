@@ -7,8 +7,8 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 
 import java.awt.*;
 
@@ -22,15 +22,12 @@ public class PdfTextEncodingUtilities {
     return new Font(baseFont, size, Font.NORMAL, Color.black);
   }
 
-  public static ColumnText encodeText(PdfContentByte directContent, Phrase phrase, Bounds bounds, float lineHeight)
-      throws DocumentException {
+  public static ColumnText encodeText(PdfContentByte directContent, Phrase phrase, Bounds bounds, float lineHeight) throws DocumentException {
     return encodeText(directContent, phrase, bounds, lineHeight, Element.ALIGN_LEFT);
   }
 
-  public static ColumnText encodeText(PdfContentByte directContent,
-                                      Phrase phrase, Bounds bounds,
-                                      float lineHeight, int alignment)
-      throws DocumentException {
+  public static ColumnText encodeText(PdfContentByte directContent, Phrase phrase, Bounds bounds, float lineHeight,
+                                      int alignment) throws DocumentException {
     ColumnText columnText = new ColumnText(directContent);
     float minX = bounds.getMinX();
     float minY = bounds.getMinY();
@@ -41,9 +38,7 @@ public class PdfTextEncodingUtilities {
     return columnText;
   }
 
-  public static ColumnText createColumn(PdfContentByte directContent,
-                                        Bounds bounds,
-                                        float lineHeight, int alignment) {
+  public static ColumnText createColumn(PdfContentByte directContent, Bounds bounds, float lineHeight, int alignment) {
     ColumnText columnText = new ColumnText(directContent);
     float minX = bounds.getMinX();
     float minY = bounds.getMinY();

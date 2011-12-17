@@ -11,12 +11,12 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.extended.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfLineEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.common.Bounds;
-import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -41,23 +41,18 @@ public class PdfComboEncoder {
     this.nameFont.setStyle(Font.BOLD);
   }
 
-  public float encodeCombos(PdfContentByte directContent, IGenericCharacter character, Bounds maxBounds)
-      throws DocumentException {
+  public float encodeCombos(PdfContentByte directContent, IGenericCharacter character, Bounds maxBounds) throws DocumentException {
     List<IGenericCombo> combos = new ArrayList<IGenericCombo>(Arrays.asList(character.getCombos()));
     return encodeCombos(directContent, combos, maxBounds, false);
   }
 
-  public float encodeCombos(PdfContentByte directContent, List<IGenericCombo> combos, Bounds maxBounds, boolean overflow)
-      throws DocumentException {
+  public float encodeCombos(PdfContentByte directContent, List<IGenericCombo> combos, Bounds maxBounds, boolean overflow) throws DocumentException {
     if (combos.isEmpty()) {
       return 0;
     }
-    
+
     Bounds contentBounds = boxEncoder.calculateContentBounds(maxBounds);
-    ColumnText column = PdfTextEncodingUtilities.createColumn(directContent,
-                                                              contentBounds,
-                                                              LINE_HEIGHT,
-                                                              Element.ALIGN_LEFT);
+    ColumnText column = PdfTextEncodingUtilities.createColumn(directContent, contentBounds, LINE_HEIGHT, Element.ALIGN_LEFT);
     addCombos(column, combos);
 
     float yPosition = column.getYLine();
@@ -73,35 +68,26 @@ public class PdfComboEncoder {
     return actualBoxBounds.getHeight();
   }
 
-  public float encodeFixedCombos(PdfContentByte directContent, List<IGenericCombo> combos, Bounds bounds)
-      throws DocumentException {
+  public float encodeFixedCombos(PdfContentByte directContent, List<IGenericCombo> combos, Bounds bounds) throws DocumentException {
     Bounds contentBounds = boxEncoder.calculateContentBounds(bounds);
-    ColumnText column = PdfTextEncodingUtilities.createColumn(directContent,
-                                                              contentBounds,
-                                                              LINE_HEIGHT,
-                                                              Element.ALIGN_LEFT);
+    ColumnText column = PdfTextEncodingUtilities.createColumn(directContent, contentBounds, LINE_HEIGHT, Element.ALIGN_LEFT);
     addCombos(column, combos);
 
     float yPosition = column.getYLine();
-    int remainingLines = (int)((yPosition - contentBounds.getMinY()) / LINE_HEIGHT);
-    Position lineStartPosition = new Position(contentBounds.getMinX(),
-                                              yPosition - LINE_HEIGHT);
-    PdfLineEncodingUtilities.encodeHorizontalLines(directContent,
-                                                   lineStartPosition,
-                                                   contentBounds.getMinX(),
-                                                   contentBounds.getMaxX(),
-                                                   LINE_HEIGHT,
+    int remainingLines = (int) ((yPosition - contentBounds.getMinY()) / LINE_HEIGHT);
+    Position lineStartPosition = new Position(contentBounds.getMinX(), yPosition - LINE_HEIGHT);
+    PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, contentBounds.getMinX(), contentBounds.getMaxX(), LINE_HEIGHT,
                                                    remainingLines);
-    
+
     String headerString = resources.getString("Sheet.Header.Combos"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, bounds, headerString);
     return bounds.getHeight();
   }
-  
+
   private void addCombos(ColumnText columnText, List<IGenericCombo> combos) throws DocumentException {
     while (!combos.isEmpty()) {
       Phrase comboPhrase = createComboPhrase(combos.get(0));
-      
+
       float yLine = columnText.getYLine();
       columnText.addText(comboPhrase);
       int status = columnText.go(true);
@@ -119,13 +105,13 @@ public class PdfComboEncoder {
 
   private Phrase createComboPhrase(IGenericCombo combo) {
     Phrase phrase = new Phrase();
-    
+
     String printName = combo.getName() == null ? "???" : combo.getName(); //$NON-NLS-1$
     phrase.add(new Chunk(printName + ": ", nameFont)); //$NON-NLS-1$
-    
+
     String charmString = getCharmString(combo);
     phrase.add(new Chunk(charmString, font));
-    
+
     return phrase;
   }
 

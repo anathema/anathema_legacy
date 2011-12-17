@@ -5,9 +5,9 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 
 public abstract class AbstractPdfEncoder {
 
@@ -67,12 +67,7 @@ public abstract class AbstractPdfEncoder {
     directContent.endText();
   }
 
-  protected final void drawLabelledContent(
-    PdfContentByte directContent,
-    String label,
-    String content,
-    Position position,
-    float width) {
+  protected final void drawLabelledContent(PdfContentByte directContent, String label, String content, Position position, float width) {
     initDirectContentForText(directContent);
     directContent.beginText();
     directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, label, position.x, position.y, 0);
@@ -82,7 +77,8 @@ public abstract class AbstractPdfEncoder {
       directContent.endText();
       float lineWidth = position.x + width - contentX;
       drawMissingTextLine(directContent, new Position(contentX, position.y), lineWidth);
-    } else {
+    }
+    else {
       directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, content, contentX, position.y, 0);
       directContent.endText();
     }

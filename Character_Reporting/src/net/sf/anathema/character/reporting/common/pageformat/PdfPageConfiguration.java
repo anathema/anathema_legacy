@@ -15,7 +15,7 @@ public class PdfPageConfiguration {
   public static PdfPageConfiguration create(Rectangle pageSize) {
     return new PdfPageConfiguration(new Dimension((int) pageSize.width(), (int) pageSize.height()), TOP_MARGIN, BOTTOM_MARGIN, HORIZONTAL_MARGIN);
   }
-  
+
   private int pageWidth;
   private int pageHeight;
   private int marginLeft;

@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.impl.reporting.sheet.WeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfVirtueEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfWillpowerEncoder;

@@ -17,10 +17,10 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.elements.TableCell;
+import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
@@ -29,7 +29,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements IPdfTable
   public static final int HEALTH_RECT_SIZE = 6;
   private static final int HEALTH_COLUMN_COUNT = 10;
   protected static float PADDING = 0.3f;
-  private static final Float[] HEALTH_LEVEL_COLUMNS = new Float[] { PADDING, 0.6f, 0.7f, PADDING };
+  private static final Float[] HEALTH_LEVEL_COLUMNS = new Float[]{PADDING, 0.6f, 0.7f, PADDING};
 
   private final IResources resources;
   private final Font font;
@@ -48,8 +48,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements IPdfTable
 
   protected abstract Float[] getMovementColumns();
 
-  public final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
-      throws DocumentException {
+  public final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
     PdfPTable table = createTable(directContent, character);
     table.setWidthPercentage(100);
@@ -58,10 +57,9 @@ public abstract class AbstractHealthAndMovementTableEncoder implements IPdfTable
     tableColumn.go();
     return table.getTotalHeight();
   }
-  
-  protected IGenericTraitCollection getTraits(IGenericCharacter character)
-  {
-	  return character.getTraitCollection();
+
+  protected IGenericTraitCollection getTraits(IGenericCharacter character) {
+    return character.getTraitCollection();
   }
 
   private int getRowCount(HealthLevelType type) {
@@ -71,8 +69,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements IPdfTable
     return 1;
   }
 
-  protected final PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character)
-      throws DocumentException {
+  protected final PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character) throws DocumentException {
     try {
       Image activeTemplate = Image.getInstance(createRectTemplate(directContent, Color.BLACK));
       Image passiveTemplate = Image.getInstance(createRectTemplate(directContent, Color.LIGHT_GRAY));
@@ -89,15 +86,11 @@ public abstract class AbstractHealthAndMovementTableEncoder implements IPdfTable
     }
   }
 
-  private void addHealthTypeRows(
-      PdfPTable table,
-      IGenericCharacter character,
-      Image activeTemplate,
-      Image passiveTemplate,
-      HealthLevelType type) {
-	  if (type == HealthLevelType.DYING)
-		  return;
-	  
+  private void addHealthTypeRows(PdfPTable table, IGenericCharacter character, Image activeTemplate, Image passiveTemplate, HealthLevelType type) {
+    if (type == HealthLevelType.DYING) {
+      return;
+    }
+
     int rowCount = getRowCount(type);
     for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
       if (rowIndex == 0) {
@@ -194,20 +187,11 @@ public abstract class AbstractHealthAndMovementTableEncoder implements IPdfTable
     return aggravatedStar;
   }
 
-  protected abstract void addMovementCells(
-      PdfPTable table,
-      HealthLevelType level,
-      int painTolerance,
-      IGenericTraitCollection collection);
+  protected abstract void addMovementCells(PdfPTable table, HealthLevelType level, int painTolerance, IGenericTraitCollection collection);
 
   protected final PdfPCell createMovementCell(int value, int minValue) {
-    return TableEncodingUtilities.createContentCellTable(
-        Color.BLACK,
-        String.valueOf(Math.max(value, minValue)),
-        font,
-        0.5f,
-        Rectangle.BOX,
-        Element.ALIGN_CENTER);
+    return TableEncodingUtilities.createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX,
+                                                         Element.ALIGN_CENTER);
   }
 
   private void addHealthPenaltyCells(PdfPTable table, HealthLevelType level, int painTolerance) {
@@ -235,13 +219,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements IPdfTable
     return Math.min(0, level.getIntValue() + painTolerance);
   }
 
-  private void addHealthCells(
-      PdfPTable table,
-      IGenericCharacter character,
-      HealthLevelType level,
-      int row,
-      Image activeImage,
-      Image passiveImage) {
+  private void addHealthCells(PdfPTable table, IGenericCharacter character, HealthLevelType level, int row, Image activeImage, Image passiveImage) {
     int naturalCount = getNaturalHealthLevels(level);
     if (row < naturalCount) {
       table.addCell(createHealthCell(activeImage));
@@ -252,8 +230,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements IPdfTable
     int additionalCount = 9;
     if (level == HealthLevelType.FOUR) {
       addSpaceCells(table, 1);
-      TableCell cell = new TableCell(
-          new Phrase(resources.getString("HealthLevelType.Dying.Short"), commentFont), Rectangle.BOTTOM); //$NON-NLS-1$
+      TableCell cell = new TableCell(new Phrase(resources.getString("HealthLevelType.Dying.Short"), commentFont), Rectangle.BOTTOM); //$NON-NLS-1$
       cell.setHorizontalAlignment(Element.ALIGN_CENTER);
       cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
       cell.setColspan(additionalCount - 1);
@@ -309,7 +286,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements IPdfTable
   protected final IResources getResources() {
     return resources;
   }
-  
+
   public boolean hasContent(IGenericCharacter character) {
     return true;
   }

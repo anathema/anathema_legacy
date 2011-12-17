@@ -10,7 +10,7 @@ import net.sf.anathema.character.lunar.heartsblood.presenter.IAnimalForm;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;
 import net.sf.anathema.character.lunar.reporting.stats.heartsblood.*;
 import net.sf.anathema.character.reporting.sheet.common.AbstractStatsTableEncoder;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.common.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.lib.resources.IResources;

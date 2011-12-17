@@ -20,12 +20,7 @@ public abstract class AbstractAnimaEncoderFactory implements IAnimaEncoderFactor
 
   @Override
   public final IPdfContentBoxEncoder createAnimaEncoder() {
-    return new PdfAnimaEncoder(
-        resources,
-        basefont,
-        symbolBaseFont,
-        IPdfPartEncoder.FONT_SIZE,
-        getAnimaTableEncoder());
+    return new PdfAnimaEncoder(resources, basefont, symbolBaseFont, IPdfPartEncoder.FONT_SIZE, getAnimaTableEncoder());
   }
 
   protected abstract IPdfTableEncoder getAnimaTableEncoder();

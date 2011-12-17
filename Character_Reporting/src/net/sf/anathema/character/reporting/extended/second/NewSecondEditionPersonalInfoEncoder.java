@@ -9,17 +9,16 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
-import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.encoder.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
 
-public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder
-    implements IPdfVariableContentBoxEncoder {
+public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder implements IPdfVariableContentBoxEncoder {
 
   private final BaseFont baseFont;
   private final IResources resources;
@@ -29,16 +28,14 @@ public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder
     this.resources = resources;
   }
 
-  public void encode(PdfContentByte directContent,
-                     IGenericCharacter character, IGenericDescription description,
-                     Bounds infoBounds) {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds infoBounds) {
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    
+
     int lines = getNumberOfLines(characterType);
-    
+
     float lineHeight = (infoBounds.height - TEXT_PADDING) / lines;
-    float entryWidth = (infoBounds.width - 2*TEXT_PADDING) / 3;
-    float shortEntryWidth = (infoBounds.width - 4*TEXT_PADDING) / 5;
+    float entryWidth = (infoBounds.width - 2 * TEXT_PADDING) / 3;
+    float shortEntryWidth = (infoBounds.width - 4 * TEXT_PADDING) / 5;
     float firstColumnX = infoBounds.x;
     float secondColumnX = firstColumnX + entryWidth + TEXT_PADDING;
     float thirdColumnX = secondColumnX + entryWidth + TEXT_PADDING;
@@ -49,57 +46,48 @@ public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder
     if (characterType.isExaltType()) {
       drawLabelledContent(directContent, conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), entryWidth);
       String casteContent = getCasteString(character.getConcept().getCasteType());
-      drawLabelledContent(
-          directContent,
-          getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
+      drawLabelledContent(directContent, getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, firstRowY),
+                          entryWidth); //$NON-NLS-1$
     }
     else {
-      drawLabelledContent(directContent, conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), 2*entryWidth + TEXT_PADDING);
+      drawLabelledContent(directContent, conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), 2 * entryWidth + TEXT_PADDING);
     }
     IExaltedRuleSet rules = character.getRules();
     String rulesContent = rules == null ? null : resources.getString("Ruleset." + rules.getId()); //$NON-NLS-1$
-    drawLabelledContent(directContent,
-                        getLabel("Rules"), rulesContent, new Position(thirdColumnX, firstRowY), entryWidth); //$NON-NLS-1$
+    drawLabelledContent(directContent, getLabel("Rules"), rulesContent, new Position(thirdColumnX, firstRowY), entryWidth); //$NON-NLS-1$
     /*drawLabelledContent(
         directContent,
         getLabel("Player"), description.getPlayer(), new Position(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$*/
 
     float secondRowY = firstRowY - lineHeight;
     String motivationContent = character.getConcept().getWillpowerRegainingComment(resources);
-    String motivationLabel = character.getRules().getEdition() == ExaltedEdition.SecondEdition
-        ? getLabel("Motivation") : getLabel("Nature"); //$NON-NLS-1$ //$NON-NLS-2$
-    drawLabelledContent(directContent,
-                        motivationLabel, motivationContent, new Position(firstColumnX, secondRowY), infoBounds.width);
+    String motivationLabel = character.getRules().getEdition() == ExaltedEdition.SecondEdition ? getLabel("Motivation") : getLabel("Nature");
+    //$NON-NLS-1$ //$NON-NLS-2$
+    drawLabelledContent(directContent, motivationLabel, motivationContent, new Position(firstColumnX, secondRowY), infoBounds.width);
 
     float thirdRowY = secondRowY - lineHeight;
     float[] shortColumnX = new float[5];
     for (int i = 0; i < 5; i++) {
-      shortColumnX[i] = infoBounds.x + i*(shortEntryWidth + TEXT_PADDING);
+      shortColumnX[i] = infoBounds.x + i * (shortEntryWidth + TEXT_PADDING);
     }
     String ageContent = Integer.toString(character.getAge());
-    drawLabelledContent(directContent,
-                        getLabel("Age"), ageContent, new Position(shortColumnX[0], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    drawLabelledContent(directContent, getLabel("Age"), ageContent, new Position(shortColumnX[0], thirdRowY), shortEntryWidth); //$NON-NLS-1$
     String sexContent = description.getSex();
-    drawLabelledContent(directContent,
-                        getLabel("Sex"), sexContent, new Position(shortColumnX[1], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    drawLabelledContent(directContent, getLabel("Sex"), sexContent, new Position(shortColumnX[1], thirdRowY), shortEntryWidth); //$NON-NLS-1$
     String hairContent = description.getHair();
-    drawLabelledContent(directContent,
-                        getLabel("Hair"), hairContent, new Position(shortColumnX[2], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    drawLabelledContent(directContent, getLabel("Hair"), hairContent, new Position(shortColumnX[2], thirdRowY), shortEntryWidth); //$NON-NLS-1$
     String skinContent = description.getSkin();
-    drawLabelledContent(directContent,
-                        getLabel("Skin"), skinContent, new Position(shortColumnX[3], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    drawLabelledContent(directContent, getLabel("Skin"), skinContent, new Position(shortColumnX[3], thirdRowY), shortEntryWidth); //$NON-NLS-1$
     String eyesContent = description.getEyes();
-    drawLabelledContent(directContent,
-                        getLabel("Eyes"), eyesContent, new Position(shortColumnX[4], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    drawLabelledContent(directContent, getLabel("Eyes"), eyesContent, new Position(shortColumnX[4], thirdRowY), shortEntryWidth); //$NON-NLS-1$
 
     if (characterType.isExaltType()) {
       float fourthRowY = thirdRowY - lineHeight;
       String animaContent = null;
-      drawLabelledContent(directContent,
-                          getLabel("Anima"), animaContent, new Position(firstColumnX, fourthRowY), infoBounds.width); //$NON-NLS-1$
+      drawLabelledContent(directContent, getLabel("Anima"), animaContent, new Position(firstColumnX, fourthRowY), infoBounds.width); //$NON-NLS-1$
     }
   }
-  
+
   private int getNumberOfLines(IGenericCharacter character) {
     return getNumberOfLines(character.getTemplate().getTemplateType().getCharacterType());
   }
@@ -130,8 +118,7 @@ public class NewSecondEditionPersonalInfoEncoder extends AbstractPdfEncoder
   }
 
   @Override
-  public String getHeaderKey(IGenericCharacter character,
-                             IGenericDescription description) {
+  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
     String name = description.getName();
     if (StringUtilities.isNullOrTrimEmpty(name)) {
       return "PersonalInfo"; //$NON-NLS-1$

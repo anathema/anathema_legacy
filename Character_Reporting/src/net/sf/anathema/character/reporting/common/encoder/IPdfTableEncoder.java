@@ -7,9 +7,8 @@ import net.sf.anathema.character.reporting.common.Bounds;
 
 public interface IPdfTableEncoder {
 
-  public float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
-      throws DocumentException;
-  
+  public float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException;
+
   public boolean hasContent(IGenericCharacter character);
 
 }

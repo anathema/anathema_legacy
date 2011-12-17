@@ -12,7 +12,7 @@ public class SocialCombatNameStatsGroup extends AbstractNameStatsGroup<ISocialCo
 
   @Override
   public Float[] getColumnWeights() {
-    return new Float[] { new Float(3) };
+    return new Float[]{new Float(3)};
   }
 
   @Override

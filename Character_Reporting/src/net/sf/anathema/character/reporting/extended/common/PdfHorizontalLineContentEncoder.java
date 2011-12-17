@@ -4,9 +4,9 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.extended.util.HorizontalLineListEncoder;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.extended.util.HorizontalLineListEncoder;
 
 public class PdfHorizontalLineContentEncoder implements IPdfContentBoxEncoder {
 
@@ -23,18 +23,18 @@ public class PdfHorizontalLineContentEncoder implements IPdfContentBoxEncoder {
     this.headerKey = headerKey;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     float columnWidth = (bounds.width - (columnCount - 1) * IVoidStateFormatConstants.TEXT_PADDING) / columnCount;
     for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
       float columnX = bounds.x + columnIndex * columnWidth + columnIndex * IVoidStateFormatConstants.TEXT_PADDING;
-      Bounds columnBounds = new Bounds(columnX, bounds.y + IVoidStateFormatConstants.TEXT_PADDING / 2f,
-                                       columnWidth, bounds.height - IVoidStateFormatConstants.TEXT_PADDING / 2f);
+      Bounds columnBounds = new Bounds(columnX, bounds.y + IVoidStateFormatConstants.TEXT_PADDING / 2f, columnWidth,
+                                       bounds.height - IVoidStateFormatConstants.TEXT_PADDING / 2f);
       new HorizontalLineListEncoder().encodeLines(directContent, columnBounds, LINE_HEIGHT);
     }
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

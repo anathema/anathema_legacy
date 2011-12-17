@@ -18,7 +18,7 @@ public class FirstEditionHealthAndMovemenTableEncoder extends AbstractHealthAndM
 
   @Override
   protected final Float[] getMovementColumns() {
-    return new Float[] { 1f, PADDING, 1f, PADDING, 1f };
+    return new Float[]{1f, PADDING, 1f, PADDING, 1f};
   }
 
   @Override
@@ -34,11 +34,7 @@ public class FirstEditionHealthAndMovemenTableEncoder extends AbstractHealthAndM
   }
 
   @Override
-  protected final void addMovementCells(
-      PdfPTable table,
-      HealthLevelType level,
-      int painTolerance,
-      IGenericTraitCollection collection) {
+  protected final void addMovementCells(PdfPTable table, HealthLevelType level, int painTolerance, IGenericTraitCollection collection) {
     int penalty = getPenalty(level, painTolerance);
     int dexValue = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
     int moveValue = 5;

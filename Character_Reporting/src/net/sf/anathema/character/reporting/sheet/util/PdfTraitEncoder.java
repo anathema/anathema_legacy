@@ -3,8 +3,8 @@ package net.sf.anathema.character.reporting.sheet.util;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfTemplate;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 
 import java.awt.*;
 
@@ -61,22 +61,11 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     }
   }
 
-  public int encodeDotsCenteredAndUngrouped(
-      PdfContentByte directContent,
-      Position position,
-      float width,
-      int value,
-      int dotCount) {
+  public int encodeDotsCenteredAndUngrouped(PdfContentByte directContent, Position position, float width, int value, int dotCount) {
     return encodeShapeCenteredAndUngrouped(directContent, position, width, value, dotCount, new Dot());
   }
 
-  private int encodeGroupedDots(
-      PdfContentByte directContent,
-      Position position,
-      float width,
-      int value,
-      int dotCount,
-      final int dotSpacing) {
+  private int encodeGroupedDots(PdfContentByte directContent, Position position, float width, int value, int dotCount, final int dotSpacing) {
     int groupSpacing = dotCount > 5 ? dotSize / 2 : 0;
     int spacecount = (int) Math.ceil((double) dotCount / 5);
     for (int dot = 0; dot < dotCount; dot++) {
@@ -92,13 +81,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return dotCount * dotSize + (dotCount - 1) * dotSpacing + groupSpacing;
   }
 
-  private int encodeShapeCenteredAndUngrouped(
-      PdfContentByte directContent,
-      Position position,
-      float width,
-      int value,
-      int dotCount,
-      IShape shape) {
+  private int encodeShapeCenteredAndUngrouped(PdfContentByte directContent, Position position, float width, int value, int dotCount, IShape shape) {
     initDirectContent(directContent);
     int dotWidth = dotCount * dotSize;
     final float dotSpacing = (width - dotWidth) / (dotCount + 1);
@@ -111,12 +94,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return height;
   }
 
-  public int encodeSquaresCenteredAndUngrouped(
-      PdfContentByte directContent,
-      Position position,
-      float width,
-      int value,
-      int dotCount) {
+  public int encodeSquaresCenteredAndUngrouped(PdfContentByte directContent, Position position, float width, int value, int dotCount) {
     return encodeShapeCenteredAndUngrouped(directContent, position, width, value, dotCount, new Square());
   }
 
@@ -127,13 +105,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return height;
   }
 
-  public int encodeWithText(
-      PdfContentByte directContent,
-      String text,
-      Position position,
-      float width,
-      int value,
-      int dotCount) {
+  public int encodeWithText(PdfContentByte directContent, String text, Position position, float width, int value, int dotCount) {
     initDirectContent(directContent);
     directContent.beginText();
     directContent.showTextAligned(PdfContentByte.ALIGN_LEFT, text, position.x, position.y, 0);
@@ -142,14 +114,8 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return height;
   }
 
-  public int encodeWithTextAndRectangle(
-      PdfContentByte directContent,
-      String text,
-      Position position,
-      float width,
-      int value,
-      boolean favored,
-      int dotCount) {
+  public int encodeWithTextAndRectangle(PdfContentByte directContent, String text, Position position, float width, int value, boolean favored,
+                                        int dotCount) {
     initDirectContent(directContent);
     directContent.rectangle(position.x, position.y, dotSize, dotSize);
     commitShape(directContent, favored);
@@ -157,21 +123,14 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     Position usualTraitPosition = new Position(position.x + squareWidth, position.y);
     return encodeWithText(directContent, text, usualTraitPosition, width - squareWidth, value, dotCount);
   }
-  
-  public int encodeWithExcellencies(PdfContentByte directContent,
-                                    String text,
-                                    Position position,
-                                    float width,
-                                    int value,
-                                    boolean favored,
-                                    boolean[] excellencyLearned,
-                                    int dotCount)
-  {
+
+  public int encodeWithExcellencies(PdfContentByte directContent, String text, Position position, float width, int value, boolean favored,
+                                    boolean[] excellencyLearned, int dotCount) {
     initDirectContent(directContent);
     for (int i = excellencyLearned.length; i > 0; i--) {
       String label = Integer.toString(i);
       float labelWidth = getBaseFont().getWidthPoint(label, IVoidStateFormatConstants.FONT_SIZE);
-      
+
       PdfTemplate template = directContent.createTemplate(labelWidth, height);
       initDirectContent(template);
       if (excellencyLearned[i - 1]) {
@@ -183,11 +142,11 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
       template.beginText();
       template.showTextAligned(PdfContentByte.ALIGN_LEFT, label, 0, 0, 0);
       template.endText();
-      
+
       directContent.addTemplate(template, position.x + width - labelWidth, position.y);
       width -= labelWidth + SMALL_DOT_SPACING;
     }
-    
+
     return encodeWithTextAndRectangle(directContent, text, position, width, value, favored, dotCount);
   }
 

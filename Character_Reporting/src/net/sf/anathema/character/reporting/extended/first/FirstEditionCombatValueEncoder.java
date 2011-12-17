@@ -6,10 +6,10 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
-import net.sf.anathema.character.reporting.extended.util.LabelledValueEncoder;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.extended.util.LabelledValueEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionCombatValueEncoder implements IPdfContentEncoder {
@@ -27,21 +27,12 @@ public class FirstEditionCombatValueEncoder implements IPdfContentEncoder {
     String dodgePoolLabel = resources.getString("Sheet.Combat.DodgePool"); //$NON-NLS-1$
     String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
     String stunningLabel = resources.getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
-    int initiative = CharacterUtilties.getTotalValue(
-        character.getTraitCollection(),
-        AttributeType.Dexterity,
-        AttributeType.Wits);
+    int initiative = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Dexterity, AttributeType.Wits);
     int dodgePool = CharacterUtilties.getDodgePool(character);
-    int knockdownThreshold = CharacterUtilties.getTotalValue(
-        character.getTraitCollection(),
-        AttributeType.Stamina,
-        AbilityType.Resistance);
+    int knockdownThreshold = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Stamina, AbilityType.Resistance);
     int knockdownPool = CharacterUtilties.getKnockdownPool(character, null);
     int stunningThreshold = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Stamina);
-    int stunningPool = CharacterUtilties.getTotalValue(
-        character.getTraitCollection(),
-        AttributeType.Stamina,
-        AbilityType.Resistance);
+    int stunningPool = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Stamina, AbilityType.Resistance);
     int stunningDuration = Math.max(0, 6 - stunningThreshold);
 
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());

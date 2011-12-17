@@ -3,10 +3,10 @@ package net.sf.anathema.character.reporting.sheet.util;
 import com.lowagie.text.Element;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.common.elements.Box;
 import net.sf.anathema.character.reporting.common.Bounds;
 import net.sf.anathema.character.reporting.common.Position;
+import net.sf.anathema.character.reporting.common.elements.Box;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 
 public class LabelledValueEncoder extends AbstractPdfEncoder {
 

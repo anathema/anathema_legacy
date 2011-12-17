@@ -12,15 +12,15 @@ import com.lowagie.text.pdf.PdfTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.reporting.common.Bounds;
+import net.sf.anathema.character.reporting.common.PdfEncodingUtilities;
+import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.common.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.common.Bounds;
-import net.sf.anathema.character.reporting.common.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.common.Position;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
@@ -41,8 +41,8 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     return "MovementHealth"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds)
-      throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
+                     Bounds bounds) throws DocumentException {
     Bounds tableBounds = new Bounds(bounds.x, bounds.y, (bounds.width * 0.66f), bounds.height);
     IPdfTableEncoder tableEncoder = createTableEncoder();
     tableEncoder.encodeTable(directContent, character, tableBounds);
@@ -83,9 +83,7 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     drawComment(directContent, lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(lethalString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate aggravatedTemplate = AbstractHealthAndMovementTableEncoder.createAggravatedTemplate(
-      directContent,
-      Color.GRAY);
+    PdfTemplate aggravatedTemplate = AbstractHealthAndMovementTableEncoder.createAggravatedTemplate(directContent, Color.GRAY);
     directContent.addTemplate(aggravatedTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String aggravatedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageAggravated")); //$NON-NLS-1$
@@ -125,17 +123,16 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     healthText.add(caretChunk);
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.DeathHeader"), commentTitleFont)); //$NON-NLS-1$
     healthText.add(seperator);
-    healthText.add(new Chunk(
-        resources.getString("Sheet." + getEdition().getId() + ".Health.Comment.DeathText"), commentFont)); //$NON-NLS-1$ //$NON-NLS-2$
+    healthText.add(new Chunk(resources.getString("Sheet." + getEdition().getId() + ".Health.Comment.DeathText"),
+                             commentFont)); //$NON-NLS-1$ //$NON-NLS-2$
     healthText.add(newLine);
     healthText.add(caretChunk);
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.MarkDamageHeader"), commentTitleFont)); //$NON-NLS-1$
     healthText.add(seperator);
     return healthText;
   }
-  
-  public boolean hasContent(IGenericCharacter character)
-  {
-	  return true;
+
+  public boolean hasContent(IGenericCharacter character) {
+    return true;
   }
 }

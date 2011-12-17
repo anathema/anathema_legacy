@@ -4,8 +4,8 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.common.encoder.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.common.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.common.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEssenceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatRulesTableEncoder;
@@ -39,27 +39,25 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
   public final BaseFont getSymbolBaseFont() {
     return symbolBaseFont;
   }
-  
-  protected int getEssenceMax()
-  {
-	return essenceMax;
+
+  protected int getEssenceMax() {
+    return essenceMax;
   }
-  
+
   public boolean hasSecondPage() {
-	    return true;
-	  }
-  
+    return true;
+  }
+
   protected int getFontSize() {
-	    return FONT_SIZE;
-	  }
-  
+    return FONT_SIZE;
+  }
+
   public IPdfContentBoxEncoder getEssenceEncoder() {
-	    return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
-	  }
-  
-  public IPdfContentBoxEncoder getOverdriveEncoder()
-  {
-	  return null;
+    return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
+  }
+
+  public IPdfContentBoxEncoder getOverdriveEncoder() {
+    return null;
   }
 
   public final IPdfContentBoxEncoder getCombatStatsEncoder() {

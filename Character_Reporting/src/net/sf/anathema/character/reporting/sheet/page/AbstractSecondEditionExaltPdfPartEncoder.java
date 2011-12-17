@@ -8,8 +8,8 @@ public abstract class AbstractSecondEditionExaltPdfPartEncoder extends AbstractS
   public AbstractSecondEditionExaltPdfPartEncoder(IResources resources, PdfEncodingRegistry registry, int essenceMax) {
     super(resources, registry.getBaseFont(), registry.getSymbolBaseFont(), essenceMax);
   }
-  
+
   public boolean hasMagicPage() {
-	return true;
+    return true;
   }
 }
