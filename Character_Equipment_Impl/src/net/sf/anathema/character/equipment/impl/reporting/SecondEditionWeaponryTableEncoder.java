@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.reporting.sheet;
+package net.sf.anathema.character.equipment.impl.reporting;
 
 import net.sf.anathema.character.equipment.impl.reporting.stats.weapons.*;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -10,13 +10,18 @@ import com.lowagie.text.pdf.BaseFont;
 
 public class SecondEditionWeaponryTableEncoder extends AbstractWeaponryTableEncoder {
 
-  public SecondEditionWeaponryTableEncoder(BaseFont baseFont, IResources resources) {
-    super(baseFont, resources);
+  public SecondEditionWeaponryTableEncoder(BaseFont baseFont, IResources resources, IEquipmentModifiers equipment) {
+    super(baseFont, resources, equipment);
   }
 
   @Override
-  protected SecondEditionSpeedWeaponStatsGroup createSpeedGroup(IGenericTraitCollection collection, IEquipmentModifiers equipmentModifiers) {
-    return new SecondEditionSpeedWeaponStatsGroup(getResources(), equipmentModifiers);
+  protected int getLineCount() {
+    return 10;
+  }
+
+  @Override
+  protected SecondEditionSpeedWeaponStatsGroup createSpeedGroup(IGenericTraitCollection collection) {
+    return new SecondEditionSpeedWeaponStatsGroup(getResources(), equipment);
   }
 
   @Override
@@ -26,11 +31,11 @@ public class SecondEditionWeaponryTableEncoder extends AbstractWeaponryTableEnco
 
   @Override
   protected AccuracyWeaponStatsGroup createAccuracyGroup(IGenericCharacter character, IGenericTraitCollection traitCollection) {
-    return new AccuracyWeaponStatsGroup(getResources(), traitCollection, character.getEquipmentModifiers());
+    return new AccuracyWeaponStatsGroup(getResources(), traitCollection, equipment);
   }
 
   @Override
   protected RateWeaponStatsGroup createRateGroup(IGenericCharacter character) {
-    return new RateWeaponStatsGroup(getResources(), character.getEquipmentModifiers());
+    return new RateWeaponStatsGroup(getResources(), equipment);
   }
 }

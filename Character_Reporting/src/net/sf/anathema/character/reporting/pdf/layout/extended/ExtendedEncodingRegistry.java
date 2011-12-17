@@ -14,7 +14,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExtendedEncodingRegistry {
+public class ExtendedEncodingRegistry implements IEncodingRegistry {
 
   private final Table<ICharacterType, IExaltedEdition, IExtendedPartEncoder> partEncoderTable = new Table<ICharacterType, IExaltedEdition, IExtendedPartEncoder>();
 
@@ -36,22 +36,27 @@ public class ExtendedEncodingRegistry {
     this.symbolBaseFont = new Font(Font.SYMBOL, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
   }
 
+  @Override
   public BaseFont getBaseFont() {
     return baseFont;
   }
 
+  @Override
   public BaseFont getSymbolBaseFont() {
     return symbolBaseFont;
   }
 
+  @Override
   public void setWeaponContentEncoder(IPdfContentBoxEncoder encoder) {
     this.weaponContentEncoder = encoder;
   }
 
+  @Override
   public void setArmourContentEncoder(IPdfContentBoxEncoder encoder) {
     this.armourContentEncoder = encoder;
   }
 
+  @Override
   public void setIntimaciesEncoder(IPdfContentBoxEncoder intimaciesEncoder) {
     this.intimaciesEncoder = intimaciesEncoder;
   }
@@ -64,6 +69,7 @@ public class ExtendedEncodingRegistry {
     this.thaumaturgyEncoder = thaumaturgyEncoder;
   }
 
+  @Override
   public void setMeritsAndFlawsEncoder(IPdfContentBoxEncoder meritsAndFlawsEncoder) {
     this.meritsAndFlawsEncoder = meritsAndFlawsEncoder;
   }
@@ -128,6 +134,7 @@ public class ExtendedEncodingRegistry {
     return partEncoderTable.contains(type, edition);
   }
 
+  @Override
   public void setPossessionsEncoder(IPdfContentBoxEncoder encoder) {
     this.possessionsEncoder = encoder;
   }

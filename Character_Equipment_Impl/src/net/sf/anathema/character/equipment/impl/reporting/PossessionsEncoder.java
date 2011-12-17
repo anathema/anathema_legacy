@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.reporting.sheet;
+package net.sf.anathema.character.equipment.impl.reporting;
 
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;

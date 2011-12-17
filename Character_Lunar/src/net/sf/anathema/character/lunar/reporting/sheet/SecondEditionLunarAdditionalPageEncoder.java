@@ -2,9 +2,9 @@ package net.sf.anathema.character.lunar.reporting.sheet;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-import net.sf.anathema.character.equipment.impl.reporting.sheet.AbstractWeaponryTableEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.sheet.ArmourEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.sheet.WeaponryEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.AbstractWeaponryTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.magic.ICharm;

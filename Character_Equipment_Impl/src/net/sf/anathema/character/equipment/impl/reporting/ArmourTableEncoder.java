@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.reporting.extended;
+package net.sf.anathema.character.equipment.impl.reporting;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
@@ -53,7 +53,7 @@ public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourSta
 
   @Override
   protected int getLineCount() {
-    return 5;
+    return 3;
   }
 
   @Override

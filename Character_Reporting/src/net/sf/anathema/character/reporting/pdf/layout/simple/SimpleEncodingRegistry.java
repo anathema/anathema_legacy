@@ -4,12 +4,13 @@ import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.reporting.pdf.layout.extended.IEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
 import net.sf.anathema.lib.collection.Table;
 
 import java.awt.*;
 
-public class SimpleEncodingRegistry {
+public class SimpleEncodingRegistry  implements IEncodingRegistry {
 
   private final Table<ICharacterType, IExaltedEdition, ISimplePartEncoder> partEncoderTable = new Table<ICharacterType, IExaltedEdition, ISimplePartEncoder>();
 

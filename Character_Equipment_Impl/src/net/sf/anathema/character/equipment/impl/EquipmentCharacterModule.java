@@ -8,22 +8,21 @@ import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPer
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalViewFactory;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase;
-import net.sf.anathema.character.equipment.impl.reporting.sheet.ArmourEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.sheet.ArmourTableEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.sheet.PossessionsEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.sheet.WeaponryEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.ArmourTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.PossessionsEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
-import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.pdf.layout.extended.IEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.db4o.ext.DatabaseFileLockedException;
-import com.lowagie.text.pdf.BaseFont;
 
 public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
 
@@ -52,16 +51,14 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    ICharacterModuleObjectMap moduleMap = generics.getModuleObjectMap();
-    CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
-    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
-    fillEncodingRegistry(resources, registry);
+    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
+    registerEncoders(resources, moduleObject.getExtendedEncodingRegistry());
+    registerEncoders(resources, moduleObject.getSimpleEncodingRegistry());
   }
 
-  private void fillEncodingRegistry(IResources resources, SimpleEncodingRegistry registry) {
-    BaseFont baseFont = registry.getBaseFont();
-    registry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(baseFont, resources)));
-    registry.setWeaponContentEncoder(new WeaponryEncoder(resources, baseFont));
-    registry.setPossessionsEncoder(new PossessionsEncoder(baseFont));
+  private void registerEncoders(IResources resources, IEncodingRegistry registry) {
+    registry.setArmourContentEncoder(new ArmourEncoder(resources, registry.getBaseFont(), new ArmourTableEncoder(registry.getBaseFont(), resources)));
+    registry.setWeaponContentEncoder(new WeaponryEncoder(resources, registry.getBaseFont()));
+    registry.setPossessionsEncoder(new PossessionsEncoder(registry.getBaseFont()));
   }
 }

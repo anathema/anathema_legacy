@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.reporting.extended;
+package net.sf.anathema.character.equipment.impl.reporting;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.equipment.impl.reporting.stats.EquipmentNameStatsGroup;

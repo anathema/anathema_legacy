@@ -1,7 +1,7 @@
 package net.sf.anathema.character.lunar.reporting.extended;
 
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.equipment.impl.reporting.extended.SecondEditionWeaponryTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.SecondEditionWeaponryTableEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;

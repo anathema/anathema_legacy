@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.reporting.sheet;
+package net.sf.anathema.character.equipment.impl.reporting;
 
 import net.sf.anathema.character.equipment.impl.reporting.stats.armour.FatigueStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.stats.armour.MobilityPenaltyStatsGroup;
