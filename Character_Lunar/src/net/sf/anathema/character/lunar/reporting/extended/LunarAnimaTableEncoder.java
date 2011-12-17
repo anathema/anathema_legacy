@@ -7,7 +7,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.extended.common.PdfEncodingUtilities;
+import net.sf.anathema.character.reporting.util.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.common.anima.AnimaTableEncoder;
 import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.stats.anima.*;

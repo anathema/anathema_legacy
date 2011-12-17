@@ -12,11 +12,11 @@ import net.sf.anathema.character.generic.impl.traits.ValueWeightGenericTraitSort
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.extended.common.PdfEncodingUtilities;
+import net.sf.anathema.character.reporting.util.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.extended.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.util.*;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.List;

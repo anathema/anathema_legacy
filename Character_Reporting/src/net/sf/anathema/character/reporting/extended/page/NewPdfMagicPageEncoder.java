@@ -10,8 +10,9 @@ import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
+import net.sf.anathema.character.reporting.encoder.*;
 import net.sf.anathema.character.reporting.extended.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.extended.common.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.character.reporting.extended.common.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.extended.common.magic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.extended.common.magic.PdfInitiationEncoder;
@@ -19,7 +20,6 @@ import net.sf.anathema.character.reporting.extended.common.magic.PdfMagicEncoder
 import net.sf.anathema.character.reporting.extended.common.willpower.NewPdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 

@@ -1,9 +1,10 @@
-package net.sf.anathema.character.reporting.extended.common;
+package net.sf.anathema.character.reporting.util;
+
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Phrase;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.lib.resources.IResources;
 
 public class ListUtils {
   

@@ -10,13 +10,11 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.extended.common.ListUtils;
-import net.sf.anathema.character.reporting.extended.common.PdfEncodingUtilities;
+import net.sf.anathema.character.reporting.util.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.util.*;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
@@ -67,9 +65,9 @@ public class NewPdfWillpowerEncoder implements IPdfContentBoxEncoder {
     Phrase spendingPhrase = new Phrase("", new Font(baseFont, fontSize, //$NON-NLS-1$
                                                     Font.NORMAL, Color.BLACK));
     ListUtils.addBulletedListText(resources, symbolChunk,
-                                  character.getRules().getEdition(),
-                                  "Sheet.WillpowerSpendingRules", //$NON-NLS-1$
-                                  spendingPhrase, true);
+      character.getRules().getEdition(),
+      "Sheet.WillpowerSpendingRules", //$NON-NLS-1$
+      spendingPhrase, true);
     spendingPhrase.add("\n"); //$NON-NLS-1$
     String spendingNote = ListUtils.getRequiredString(resources, "Sheet.WillpowerSpendingNote", character.getRules().getEdition());
     spendingPhrase.add(spendingNote + "\n"); //$NON-NLS-1$

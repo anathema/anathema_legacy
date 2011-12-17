@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.extended.common;
+package net.sf.anathema.character.reporting.stats;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
 

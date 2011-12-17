@@ -1,7 +1,8 @@
-package net.sf.anathema.character.reporting.extended.common;
+package net.sf.anathema.character.reporting.stats;
 
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.reporting.stats.*;
 
 public class NamedGenericTraitReference implements IValuedTraitReference {
 

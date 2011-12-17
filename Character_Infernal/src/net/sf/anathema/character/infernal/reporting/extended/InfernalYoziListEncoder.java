@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.reporting.extended.common.FavorableTraitEncoder;
-import net.sf.anathema.character.reporting.extended.common.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.encoder.IPdfVariableContentBoxEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class InfernalYoziListEncoder extends FavorableTraitEncoder implements IPdfVariableContentBoxEncoder

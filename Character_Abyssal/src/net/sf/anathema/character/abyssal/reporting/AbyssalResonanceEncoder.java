@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.impl.traits.ValueWeightGenericTraitSort
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
+import net.sf.anathema.character.reporting.util.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;

@@ -10,15 +10,13 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.extended.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.extended.common.ListUtils;
-import net.sf.anathema.character.reporting.extended.common.PdfEncodingUtilities;
+import net.sf.anathema.character.reporting.util.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.extended.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.extended.util.PdfLineEncodingUtilities;
 import net.sf.anathema.character.reporting.extended.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.util.*;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
@@ -78,9 +76,9 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
     // Add standard powers for character type
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     ListUtils.addBulletedListText(resources, symbolChunk,
-                                  character.getRules().getEdition(),
-                                  "Sheet.AnimaPower." + characterType.getId(), //$NON-NLS-1$
-                                  phrase, false);
+      character.getRules().getEdition(),
+      "Sheet.AnimaPower." + characterType.getId(), //$NON-NLS-1$
+      phrase, false);
     
     String casteResourceKey = "Sheet.AnimaPower." + character.getCasteType().getId() + "." + character.getRules().getEdition().getId(); //$NON-NLS-1$ //$NON-NLS-2$
     boolean isCastePowerDefined = resources.supportsKey(casteResourceKey);

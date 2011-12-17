@@ -1,7 +1,7 @@
 package net.sf.anathema.character.lunar.reporting.sheet;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
+import net.sf.anathema.character.reporting.util.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.common.anima.AnimaTableEncoder;
 import net.sf.anathema.character.reporting.stats.anima.ColumnDescriptor;
 import net.sf.anathema.character.reporting.encoder.IPdfTableEncoder;
