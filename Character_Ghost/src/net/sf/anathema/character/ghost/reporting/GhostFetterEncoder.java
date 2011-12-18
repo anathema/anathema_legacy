@@ -1,14 +1,13 @@
 package net.sf.anathema.character.ghost.reporting;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.ghost.fetters.GhostFettersTemplate;
 import net.sf.anathema.character.ghost.fetters.model.Fetter;
 import net.sf.anathema.character.ghost.fetters.model.IGhostFettersModel;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;

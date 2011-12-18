@@ -1,14 +1,10 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
-import net.sf.anathema.character.equipment.impl.reporting.first.FirstEditionWeaponryTableEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionWeaponryTableEncoder;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
@@ -42,14 +38,13 @@ public class WeaponryEncoder implements IPdfContentBoxEncoder {
   public void encode(PdfContentByte directContent, final IGenericCharacter character, IGenericDescription description, Bounds bounds)
       throws DocumentException {
     final AbstractWeaponryTableEncoder[] encoder = new AbstractWeaponryTableEncoder[1];
-    final IEquipmentModifiers equipment = character.getEquipmentModifiers();
     character.getRules().getEdition().accept(new IEditionVisitor() {
       public void visitFirstEdition(IExaltedEdition visitedEdition) {
-        encoder[0] = new FirstEditionWeaponryTableEncoder(baseFont, resources, equipment);
+        encoder[0] = new FirstEditionWeaponryTableEncoder(baseFont, resources, character.getEquipmentModifiers());
       }
 
       public void visitSecondEdition(IExaltedEdition visitedEdition) {
-        encoder[0] = new SecondEditionWeaponryTableEncoder(baseFont, resources, equipment);
+        encoder[0] = new SecondEditionWeaponryTableEncoder(baseFont, resources, character.getEquipmentModifiers());
       }
 
     });

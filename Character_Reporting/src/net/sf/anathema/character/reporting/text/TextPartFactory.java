@@ -1,10 +1,9 @@
 package net.sf.anathema.character.reporting.text;
 
-import net.sf.anathema.framework.reporting.ITextReportUtils;
-
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Font;
 import com.lowagie.text.Paragraph;
+import net.sf.anathema.framework.reporting.ITextReportUtils;
 
 public final class TextPartFactory {
 

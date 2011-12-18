@@ -2,8 +2,10 @@ package net.sf.anathema.character.db;
 
 import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.magic.TerrestrialReinforcement;
-import net.sf.anathema.character.db.reporting.FirstEditionDbPartEncoder;
-import net.sf.anathema.character.db.reporting.SecondEditionDbPartEncoder;
+import net.sf.anathema.character.db.reporting.Extended1stEditionDbPartEncoder;
+import net.sf.anathema.character.db.reporting.Extended2ndEditionDbPartEncoder;
+import net.sf.anathema.character.db.reporting.Simple1stEditionDbPartEncoder;
+import net.sf.anathema.character.db.reporting.Simple2ndEditionDbPartEncoder;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawModelFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawParser;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
@@ -21,24 +23,26 @@ import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroun
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.virtueflaw.persistence.DefaultVirtueFlawPersisterFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
+
+import static net.sf.anathema.character.generic.type.CharacterType.DB;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstEdition;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 
 public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
@@ -56,44 +60,44 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final String BACKGROUND_ID_PANOPLY = "DBDreamsPanoply"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SAVANT = "DBDreamsSavant"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SIFU = "DBDreamsSifu"; //$NON-NLS-1$
-  private static final TemplateType dynastTemplateType = new TemplateType(CharacterType.DB);
-  private static final TemplateType tabernacleTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType dynastTemplateType = new TemplateType(DB);
+  private static final TemplateType tabernacleTemplateType = new TemplateType(DB, new Identificate(
       "SequesteredTabernacleSubtype")); //$NON-NLS-1$
-  private static final TemplateType ketherRockTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType ketherRockTemplateType = new TemplateType(DB, new Identificate(
       "KetherRockSubtype")); //$NON-NLS-1$
-  private static final TemplateType pirateRealmTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType pirateRealmTemplateType = new TemplateType(DB, new Identificate(
       "PirateRealmSubtype")); //$NON-NLS-1$
-  private static final TemplateType pirateOutcasteTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType pirateOutcasteTemplateType = new TemplateType(DB, new Identificate(
       "PirateOutcasteSubtype")); //$NON-NLS-1$
   private static final TemplateType patricianOutcasteTemplateType = new TemplateType(
-      CharacterType.DB,
+      DB,
       new Identificate("PatricianOutcasteSubtype")); //$NON-NLS-1$
   private static final TemplateType lowerCasteOutcasteTemplateType = new TemplateType(
-      CharacterType.DB,
+      DB,
       new Identificate("LowerClassOutcasteSubtype")); //$NON-NLS-1$
-  private static final TemplateType lookshyNativeTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType lookshyNativeTemplateType = new TemplateType(DB, new Identificate(
       "LookshySubtype")); //$NON-NLS-1$
-  private static final TemplateType lookshyOutcasteTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType lookshyOutcasteTemplateType = new TemplateType(DB, new Identificate(
       "LookshyOutcasteSubtype")); //$NON-NLS-1$
-  private static final TemplateType lookshyRealmTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType lookshyRealmTemplateType = new TemplateType(DB, new Identificate(
       "LookshyRealmSubtype")); //$NON-NLS-1$
-  private static final TemplateType cherakiTemplateType = new TemplateType(CharacterType.DB, new Identificate("Cherak")); //$NON-NLS-1$
-  private static final TemplateType immaculateTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType cherakiTemplateType = new TemplateType(DB, new Identificate("Cherak")); //$NON-NLS-1$
+  private static final TemplateType immaculateTemplateType = new TemplateType(DB, new Identificate(
       "ImmaculateSubtype")); //$NON-NLS-1$
-  private static final TemplateType lookshyNativeRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType lookshyNativeRevisedTemplateType = new TemplateType(DB, new Identificate(
       "LookshyRevisedSubtype")); //$NON-NLS-1$
-  private static final TemplateType lookshyOutcasteRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType lookshyOutcasteRevisedTemplateType = new TemplateType(DB, new Identificate(
   "LookshyOutcasteRevisedSubtype")); //$NON-NLS-1$
-  private static final TemplateType lookshyRealmRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType lookshyRealmRevisedTemplateType = new TemplateType(DB, new Identificate(
   "LookshyRealmRevisedSubtype")); //$NON-NLS-1$
-  private static final TemplateType dynasticRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType dynasticRevisedTemplateType = new TemplateType(DB, new Identificate(
   "DynasticRevisedSubtype")); //$NON-NLS-1$
-  private static final TemplateType cherakiRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate("CherakRevisedSubtype")); //$NON-NLS-1$
-  private static final TemplateType immaculateRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType cherakiRevisedTemplateType = new TemplateType(DB, new Identificate("CherakRevisedSubtype")); //$NON-NLS-1$
+  private static final TemplateType immaculateRevisedTemplateType = new TemplateType(DB, new Identificate(
   "ImmaculateRevisedSubtype")); //$NON-NLS-1$
-  private static final TemplateType dreamsTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType dreamsTemplateType = new TemplateType(DB, new Identificate(
   "DreamsSubtype")); //$NON-NLS-1$
-  private static final TemplateType dreamsRevisedTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+  private static final TemplateType dreamsRevisedTemplateType = new TemplateType(DB, new Identificate(
   "DreamsRevisedSubtype")); //$NON-NLS-1$
   
   private static final TemplateType[] dreams = { dreamsTemplateType, dreamsRevisedTemplateType };
@@ -101,16 +105,16 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getGenericCharmStatsRegistry().register(
-        CharacterType.DB,
+        DB,
         new IMagicStats[] {
-            new FirstExcellency(CharacterType.DB, ExaltedSourceBook.DragonBlooded2nd, "1 m per 2 dice"), //$NON-NLS-1$
-            new SecondExcellency(CharacterType.DB, ExaltedSourceBook.DragonBlooded2nd),
-            new ThirdExcellency(CharacterType.DB, "3 m", ExaltedSourceBook.DragonBlooded2nd), //$NON-NLS-1$
+            new FirstExcellency(DB, ExaltedSourceBook.DragonBlooded2nd, "1 m per 2 dice"), //$NON-NLS-1$
+            new SecondExcellency(DB, ExaltedSourceBook.DragonBlooded2nd),
+            new ThirdExcellency(DB, "3 m", ExaltedSourceBook.DragonBlooded2nd), //$NON-NLS-1$
             new TerrestrialReinforcement() });
     characterGenerics.getAdditionalTemplateParserRegistry().register(
         DbVirtueFlawTemplate.TEMPLATE_ID,
         new DbVirtueFlawParser());
-    characterGenerics.getCasteCollectionRegistry().register(CharacterType.DB, new CasteCollection(DBAspect.values()));
+    characterGenerics.getCasteCollectionRegistry().register(DB, new CasteCollection(DBAspect.values()));
   }
 
   @Override
@@ -150,11 +154,11 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
     IBackgroundTemplate breedingTemplate = new CharacterTypeBackgroundTemplate(
         BACKGROUND_ID_BREEDING,
-        CharacterType.DB,
+        DB,
         LowerableState.Immutable);
     backgroundRegistry.add(breedingTemplate);
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, CharacterType.DB));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, CharacterType.DB));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, DB));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, DB));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_FAMILY, new ITemplateType[] {
         dynastTemplateType,
         lookshyNativeTemplateType,
@@ -164,15 +168,15 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
         dreamsRevisedTemplateType,
         lookshyNativeRevisedTemplateType,
         lookshyRealmRevisedTemplateType}));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HENCHMEN, CharacterType.DB));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, CharacterType.DB));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HENCHMEN, DB));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, DB));
     addLookshyBackgrounds(backgroundRegistry);
     addCultBackgrounds(backgroundRegistry);
     addSorcery(backgroundRegistry);
     
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_PANOPLY, dreams, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, dreams, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SIFU, dreams, ExaltedEdition.SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_PANOPLY, dreams, SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, dreams, SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SIFU, dreams, SecondEdition));
   }
 
   private void addCultBackgrounds(IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
@@ -190,7 +194,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
             lookshyOutcasteTemplateType,
             ketherRockTemplateType,
             tabernacleTemplateType },
-        ExaltedEdition.FirstEdition,
+        FirstEdition,
         LowerableState.Immutable);
     backgroundRegistry.add(sorceryBackground);
   }
@@ -241,12 +245,20 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
-        CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    IPdfPartEncoder firstEditionDbPartEncoder = new FirstEditionDbPartEncoder(resources, registry, ESSENCE_MAX);
-    registry.setPartEncoder(CharacterType.DB, ExaltedEdition.FirstEdition, firstEditionDbPartEncoder);
-    IPdfPartEncoder secondEditionDbPartEncoder = new SecondEditionDbPartEncoder(resources, registry, ESSENCE_MAX);
-    registry.setPartEncoder(CharacterType.DB, ExaltedEdition.SecondEdition, secondEditionDbPartEncoder);
+    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
+    addSimpleParts(resources, moduleObject);
+    addExtendedParts(resources, moduleObject);
+  }
+
+  private void addSimpleParts(IResources resources, CharacterReportingModuleObject moduleObject) {
+    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
+    registry.setPartEncoder(DB, FirstEdition, new Simple1stEditionDbPartEncoder(resources, registry, ESSENCE_MAX));
+    registry.setPartEncoder(DB, SecondEdition, new Simple2ndEditionDbPartEncoder(resources, registry, ESSENCE_MAX));
+  }
+
+  private void addExtendedParts(IResources resources, CharacterReportingModuleObject moduleObject) {
+    ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
+    registry.setPartEncoder(DB, FirstEdition, new Extended1stEditionDbPartEncoder(resources, registry, ESSENCE_MAX));
+    registry.setPartEncoder(DB, SecondEdition, new Extended2ndEditionDbPartEncoder(resources, registry, ESSENCE_MAX));
   }
 }

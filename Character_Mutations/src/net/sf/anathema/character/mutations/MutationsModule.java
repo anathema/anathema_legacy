@@ -1,7 +1,5 @@
 package net.sf.anathema.character.mutations;
 
-import com.lowagie.text.pdf.BaseFont;
-
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
@@ -14,7 +12,8 @@ import net.sf.anathema.character.mutations.reporting.MutationsEncoder;
 import net.sf.anathema.character.mutations.template.MutationsTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -31,17 +30,22 @@ public class MutationsModule extends NullObjectCharacterModuleAdapter {
     persisterFactory.register(templateId, new MutationPersisterFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(new MutationsTemplate());
   }
-  
+
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     ICharacterModuleObjectMap moduleMap = generics.getModuleObjectMap();
     CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
-    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    fillEncodingRegistry(resources, registry);
+    registerSimpleEncoders(resources, moduleObject);
+    registerExtendedEncoders(resources, moduleObject);
   }
-  
-  private void fillEncodingRegistry(IResources resources, PdfEncodingRegistry registry) {
-	    BaseFont baseFont = registry.getBaseFont();
-	    registry.setMutationsEncoder(new MutationsEncoder(baseFont, resources));
-	  }
+
+  private void registerSimpleEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
+    SimpleEncodingRegistry simpleEncodingRegistry = moduleObject.getSimpleEncodingRegistry();
+    simpleEncodingRegistry.setMutationsEncoder(new MutationsEncoder(simpleEncodingRegistry.getBaseFont(), resources));
+  }
+
+  private void registerExtendedEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
+    ExtendedEncodingRegistry extendedEncodingRegistry = moduleObject.getExtendedEncodingRegistry();
+    extendedEncodingRegistry.setMutationsEncoder(new MutationsEncoder(extendedEncodingRegistry.getBaseFont(), resources));
+  }
 }

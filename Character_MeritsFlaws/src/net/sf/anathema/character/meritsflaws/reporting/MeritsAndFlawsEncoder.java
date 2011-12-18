@@ -1,13 +1,12 @@
 package net.sf.anathema.character.meritsflaws.reporting;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.meritsflaws.model.MeritsFlawsAdditionalModel;
 import net.sf.anathema.character.meritsflaws.model.perk.IPerk;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsModel;
 import net.sf.anathema.character.meritsflaws.template.MeritsFlawsTemplate;
-import net.sf.anathema.character.reporting.sheet.util.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
@@ -30,7 +29,7 @@ public class MeritsAndFlawsEncoder extends AbstractLineTextEncoder {
 
   @Override
   protected void addToPhrase(IGenericCharacter character, Font font, Phrase phrase) {
-    IMeritsFlawsModel model = ((MeritsFlawsAdditionalModel) (character.getAdditionalModel(MeritsFlawsTemplate.ID))).getMeritsFlawsModel();
+    IMeritsFlawsModel model = (IMeritsFlawsModel)(((MeritsFlawsAdditionalModel) (character.getAdditionalModel(MeritsFlawsTemplate.ID))).getMeritsFlawsModel());
     IQualitySelection<IPerk>[] perks = model.getSelectedQualities();
 	for (int index = 0; index < perks.length; index++)
 	{
@@ -51,7 +50,7 @@ public class MeritsAndFlawsEncoder extends AbstractLineTextEncoder {
   
   public boolean hasContent(IGenericCharacter character)
   {
-	  IMeritsFlawsModel model = ((MeritsFlawsAdditionalModel) (character.getAdditionalModel(MeritsFlawsTemplate.ID))).getMeritsFlawsModel();
+	  IMeritsFlawsModel model = (IMeritsFlawsModel)(((MeritsFlawsAdditionalModel) (character.getAdditionalModel(MeritsFlawsTemplate.ID))).getMeritsFlawsModel());
 	  return model.getSelectedQualities().length > 0;
   }
 }

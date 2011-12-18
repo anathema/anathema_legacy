@@ -3,9 +3,8 @@ package net.sf.anathema.character.equipment.impl.reporting;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.sheet.util.AbstractLineTextEncoder;
+import net.sf.anathema.character.generic.character.*;
+import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Font;

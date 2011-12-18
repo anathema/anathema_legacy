@@ -7,6 +7,6 @@ import net.sf.anathema.lib.gui.IView;
 public interface IMutationsView extends IView {
 
   public IMagicLearnView addMutationsView(IMutationLearnViewProperties giftViewProperties);
-  
+
   public IOverviewCategory createOverview(String borderLabel);
 }

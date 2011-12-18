@@ -1,16 +1,15 @@
 package net.sf.anathema.character.solar.reporting;
 
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.elements.Line;
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.util.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.generic.character.*;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Line;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.character.solar.virtueflaw.model.ISolarVirtueFlaw;
 import net.sf.anathema.character.solar.virtueflaw.presenter.ISolarVirtueFlawModel;
@@ -23,7 +22,6 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 
-// TODO: Convert to a variable-height encoder
 public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder;
@@ -43,7 +41,7 @@ public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
   public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
     float boxPadding = 1f;
 
-    ISolarVirtueFlaw virtueFlaw = ((ISolarVirtueFlawModel) character.getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
+	ISolarVirtueFlaw virtueFlaw = ((ISolarVirtueFlawModel) character.getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
     //Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     float boxHeight = traitEncoder.encodeHeight(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     float boxInterval = boxHeight + boxPadding;

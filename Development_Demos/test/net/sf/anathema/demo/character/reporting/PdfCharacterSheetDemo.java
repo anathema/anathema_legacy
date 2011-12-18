@@ -20,12 +20,12 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
-import net.sf.anathema.character.intimacies.IntimaciesEncoder;
-import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.page.PdfMagicPageEncoder;
-import net.sf.anathema.character.reporting.sheet.page.PdfOldStyleFirstPageEncoder;
-import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.solar.reporting.SecondEditionSolarPartEncoder;
+import net.sf.anathema.character.intimacies.reporting.SimpleIntimaciesEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.PdfMagicPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.PdfOldStyleFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.solar.reporting.Simple2ndSolarPartEncoder;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.character.solar.virtueflaw.model.SolarVirtueFlawModel;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
@@ -51,15 +51,15 @@ public class PdfCharacterSheetDemo {
       DemoGenericDescription description = createDemoDescription();
       IResources resources = createDemoResources();
       PdfPageConfiguration pageConfiguration = PdfPageConfiguration.create(document.getPageSize());
-      PdfEncodingRegistry encodingRegistry = createEncodingRegistry(resources);
+      SimpleEncodingRegistry encodingRegistry = createEncodingRegistry(resources);
       int essenceMax = 7;
-      SecondEditionSolarPartEncoder partEncoder = new SecondEditionSolarPartEncoder(resources,
+      Simple2ndSolarPartEncoder partEncoder = new Simple2ndSolarPartEncoder(resources,
                                                                                     encodingRegistry,
                                                                                     essenceMax);
       PdfOldStyleFirstPageEncoder pageEncoder = new PdfOldStyleFirstPageEncoder(partEncoder, encodingRegistry, resources, essenceMax, pageConfiguration);
       pageEncoder.encode(document, directContent, character, description);
       document.newPage();
-      new PdfMagicPageEncoder(partEncoder, encodingRegistry, resources, pageConfiguration, false).encode(
+      new PdfMagicPageEncoder(resources, encodingRegistry, pageConfiguration, false).encode(
           document,
           directContent,
           character,
@@ -74,14 +74,14 @@ public class PdfCharacterSheetDemo {
     }
   }
 
-  private static PdfEncodingRegistry createEncodingRegistry(IResources resources) {
-    PdfEncodingRegistry encodingRegistry = new PdfEncodingRegistry();
+  private static SimpleEncodingRegistry createEncodingRegistry(IResources resources) {
+    SimpleEncodingRegistry encodingRegistry = new SimpleEncodingRegistry();
     BaseFont baseFont = encodingRegistry.getBaseFont();
     encodingRegistry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(
         baseFont,
         resources)));
     encodingRegistry.setWeaponContentEncoder(new WeaponryEncoder(resources, baseFont));
-    encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(baseFont));
+    encodingRegistry.setIntimaciesEncoder(new SimpleIntimaciesEncoder(baseFont));
     return encodingRegistry;
   }
 

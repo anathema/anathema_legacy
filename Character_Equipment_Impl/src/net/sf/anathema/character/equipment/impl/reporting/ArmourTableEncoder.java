@@ -1,21 +1,15 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
-import net.sf.anathema.character.equipment.impl.reporting.second.AbstractEquipmentTableEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.FatigueStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.HardnessStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.IArmourStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.MobilityPenaltyStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.SoakArmourStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.second.stats.EquipmentNameStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.second.stats.IEquipmentStatsGroup;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
+import net.sf.anathema.character.equipment.impl.reporting.stats.EquipmentNameStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.stats.IEquipmentStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.stats.armour.*;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.lib.resources.IResources;
 
 public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourStats> {
 
@@ -59,7 +53,7 @@ public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourSta
 
   @Override
   protected int getLineCount() {
-    return 5;
+    return 3;
   }
 
   @Override

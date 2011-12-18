@@ -16,10 +16,9 @@ public class MutationsBonusPointCalculator implements IAdditionalModelBonusPoint
   public void recalculate() {
     cost = 0;
     gain = 0;
-    for (IQualitySelection<IMutation> mutation : model.getSelectedQualities())
-    {
-    	cost += mutation.getPointValue() > 0 ? mutation.getPointValue() : 0;
-    	gain -= mutation.getPointValue() < 0 ? mutation.getPointValue() : 0;
+    for (IQualitySelection<IMutation> mutation : model.getSelectedQualities()) {
+      cost += mutation.getPointValue() > 0 ? mutation.getPointValue() : 0;
+      gain -= mutation.getPointValue() < 0 ? mutation.getPointValue() : 0;
     }
   }
 

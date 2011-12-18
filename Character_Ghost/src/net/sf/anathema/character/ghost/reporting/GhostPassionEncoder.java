@@ -1,16 +1,15 @@
 package net.sf.anathema.character.ghost.reporting;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.ghost.passions.GhostPassionsTemplate;
 import net.sf.anathema.character.ghost.passions.model.IGhostPassionsModel;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;

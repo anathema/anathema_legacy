@@ -14,18 +14,16 @@ import net.sf.anathema.lib.resources.IResources;
 public class MutationsViewFactory implements IAdditionalViewFactory {
 
   public IView createView(final IAdditionalModel model, final IResources resources, ICharacterType type) {
-	IMutationsViewProperties properties = new IMutationsViewProperties()
-	{
-		@Override
-		public String getMutationsString()
-		{
-			return resources.getString("Mutations.Label");
-		}
-	};
-	
-    IMutationsView view = new MutationsView(properties); 
+    IMutationsViewProperties properties = new IMutationsViewProperties() {
+      @Override
+      public String getMutationsString() {
+        return resources.getString("Mutations.Label");
+      }
+    };
+
+    IMutationsView view = new MutationsView(properties);
     new MutationsPresenter(view, ((MutationsAdditionalModel) model).getModel(), resources).initPresentation();
-    
+
     return view;
   }
 }

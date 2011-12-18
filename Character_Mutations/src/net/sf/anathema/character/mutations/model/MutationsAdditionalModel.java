@@ -9,8 +9,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public class MutationsAdditionalModel implements IAdditionalModel
-{
+public class MutationsAdditionalModel implements IAdditionalModel {
   private final IMutationsModel model;
   private final IAdditionalTemplate additionalTemplate;
 

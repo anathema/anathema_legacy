@@ -2,12 +2,10 @@ package net.sf.anathema.character.equipment.impl.reporting;
 
 import java.awt.Color;
 
-import net.sf.anathema.character.equipment.impl.reporting.second.ShieldTableEncoder;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.generic.character.*;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;

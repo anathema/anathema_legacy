@@ -1,17 +1,16 @@
 package net.sf.anathema.character.db.reporting;
 
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.util.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;

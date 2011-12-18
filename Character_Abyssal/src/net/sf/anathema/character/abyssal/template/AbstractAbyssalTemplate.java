@@ -25,57 +25,50 @@ import net.sf.anathema.character.generic.template.experience.IExperiencePointCos
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.type.CharacterType;
+
+import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 
 public abstract class AbstractAbyssalTemplate extends AbstractCharacterTemplate {
 
   private final IAdditionalRules additionalRules;
   private final IBonusPointCosts bonusCosts = new DefaultBonusPointCosts();
-  private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(
-      new AbyssalTraitTemplateFactory());
+  private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(new AbyssalTraitTemplateFactory());
   private DefaultMagicTemplate magicTemplate;
 
   public AbstractAbyssalTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules) {
-    CharmTemplate charmTemplate = new CharmTemplate(
-        MartialArtsLevel.Celestial,
-        charmProvider,
-        CharacterType.ABYSSAL,
-        ExaltedEdition.FirstEdition);
+    CharmTemplate charmTemplate = new CharmTemplate(MartialArtsLevel.Celestial, charmProvider, ABYSSAL, ExaltedEdition.FirstEdition);
     charmTemplate.setCasteAlienAllowed(AbyssalCaste.Moonshadow.getId());
-    ISpellMagicTemplate spellMagic = new SpellMagicTemplate(new CircleType[] {
-        CircleType.Terrestrial,
-        CircleType.Celestial }, CircleType.getNecromancyCircles(), this);
+    ISpellMagicTemplate spellMagic = new SpellMagicTemplate(new CircleType[]{CircleType.Terrestrial, CircleType.Celestial},
+                                                            CircleType.getNecromancyCircles(), this);
     this.magicTemplate = new DefaultMagicTemplate(charmTemplate, spellMagic);
     this.additionalRules = additionalRules;
   }
 
   public final IGroupedTraitType[] getAbilityGroups() {
-    return new IGroupedTraitType[] {
-        new GroupedTraitType(AbilityType.Archery, AbyssalCaste.Dusk.getId(), AbyssalCaste.Dusk.getId()),
-        new GroupedTraitType(AbilityType.Brawl, AbyssalCaste.Dusk.getId(), AbyssalCaste.Dusk.getId()),
-        new GroupedTraitType(AbilityType.MartialArts, AbyssalCaste.Dusk.getId(), AbyssalCaste.Dusk.getId()),
-        new GroupedTraitType(AbilityType.Melee, AbyssalCaste.Dusk.getId(), AbyssalCaste.Dusk.getId()),
-        new GroupedTraitType(AbilityType.Thrown, AbyssalCaste.Dusk.getId(), AbyssalCaste.Dusk.getId()),
-        new GroupedTraitType(AbilityType.Endurance, AbyssalCaste.Midnight.getId(), AbyssalCaste.Midnight.getId()),
-        new GroupedTraitType(AbilityType.Performance, AbyssalCaste.Midnight.getId(), AbyssalCaste.Midnight.getId()),
-        new GroupedTraitType(AbilityType.Presence, AbyssalCaste.Midnight.getId(), AbyssalCaste.Midnight.getId()),
-        new GroupedTraitType(AbilityType.Resistance, AbyssalCaste.Midnight.getId(), AbyssalCaste.Midnight.getId()),
-        new GroupedTraitType(AbilityType.Survival, AbyssalCaste.Midnight.getId(), AbyssalCaste.Midnight.getId()),
-        new GroupedTraitType(AbilityType.Craft, AbyssalCaste.Daybreak.getId(), AbyssalCaste.Midnight.getId()),
-        new GroupedTraitType(AbilityType.Investigation, AbyssalCaste.Daybreak.getId(), AbyssalCaste.Daybreak.getId()),
-        new GroupedTraitType(AbilityType.Lore, AbyssalCaste.Daybreak.getId(), AbyssalCaste.Daybreak.getId()),
-        new GroupedTraitType(AbilityType.Medicine, AbyssalCaste.Daybreak.getId(), AbyssalCaste.Daybreak.getId()),
-        new GroupedTraitType(AbilityType.Occult, AbyssalCaste.Daybreak.getId(), AbyssalCaste.Daybreak.getId()),
-        new GroupedTraitType(AbilityType.Athletics, AbyssalCaste.Day.getId(), AbyssalCaste.Day.getId()),
-        new GroupedTraitType(AbilityType.Awareness, AbyssalCaste.Day.getId(), AbyssalCaste.Day.getId()),
-        new GroupedTraitType(AbilityType.Dodge, AbyssalCaste.Day.getId(), AbyssalCaste.Day.getId()),
-        new GroupedTraitType(AbilityType.Larceny, AbyssalCaste.Day.getId(), AbyssalCaste.Day.getId()),
-        new GroupedTraitType(AbilityType.Stealth, AbyssalCaste.Day.getId(), AbyssalCaste.Day.getId()),
-        new GroupedTraitType(AbilityType.Bureaucracy, AbyssalCaste.Moonshadow.getId(), AbyssalCaste.Moonshadow.getId()),
-        new GroupedTraitType(AbilityType.Linguistics, AbyssalCaste.Moonshadow.getId(), AbyssalCaste.Moonshadow.getId()),
-        new GroupedTraitType(AbilityType.Ride, AbyssalCaste.Moonshadow.getId(), AbyssalCaste.Moonshadow.getId()),
-        new GroupedTraitType(AbilityType.Sail, AbyssalCaste.Moonshadow.getId(), AbyssalCaste.Moonshadow.getId()),
-        new GroupedTraitType(AbilityType.Socialize, AbyssalCaste.Moonshadow.getId(), AbyssalCaste.Moonshadow.getId()) };
+    return new IGroupedTraitType[]{new GroupedTraitType(AbilityType.Archery, AbyssalCaste.Dusk.getId(), AbyssalCaste.Dusk.getId()),
+                                   new GroupedTraitType(AbilityType.Brawl, AbyssalCaste.Dusk.getId(), AbyssalCaste.Dusk.getId()),
+                                   new GroupedTraitType(AbilityType.MartialArts, AbyssalCaste.Dusk.getId(), AbyssalCaste.Dusk.getId()),
+                                   new GroupedTraitType(AbilityType.Melee, AbyssalCaste.Dusk.getId(), AbyssalCaste.Dusk.getId()),
+                                   new GroupedTraitType(AbilityType.Thrown, AbyssalCaste.Dusk.getId(), AbyssalCaste.Dusk.getId()),
+                                   new GroupedTraitType(AbilityType.Endurance, AbyssalCaste.Midnight.getId(), AbyssalCaste.Midnight.getId()),
+                                   new GroupedTraitType(AbilityType.Performance, AbyssalCaste.Midnight.getId(), AbyssalCaste.Midnight.getId()),
+                                   new GroupedTraitType(AbilityType.Presence, AbyssalCaste.Midnight.getId(), AbyssalCaste.Midnight.getId()),
+                                   new GroupedTraitType(AbilityType.Resistance, AbyssalCaste.Midnight.getId(), AbyssalCaste.Midnight.getId()),
+                                   new GroupedTraitType(AbilityType.Survival, AbyssalCaste.Midnight.getId(), AbyssalCaste.Midnight.getId()),
+                                   new GroupedTraitType(AbilityType.Craft, AbyssalCaste.Daybreak.getId(), AbyssalCaste.Midnight.getId()),
+                                   new GroupedTraitType(AbilityType.Investigation, AbyssalCaste.Daybreak.getId(), AbyssalCaste.Daybreak.getId()),
+                                   new GroupedTraitType(AbilityType.Lore, AbyssalCaste.Daybreak.getId(), AbyssalCaste.Daybreak.getId()),
+                                   new GroupedTraitType(AbilityType.Medicine, AbyssalCaste.Daybreak.getId(), AbyssalCaste.Daybreak.getId()),
+                                   new GroupedTraitType(AbilityType.Occult, AbyssalCaste.Daybreak.getId(), AbyssalCaste.Daybreak.getId()),
+                                   new GroupedTraitType(AbilityType.Athletics, AbyssalCaste.Day.getId(), AbyssalCaste.Day.getId()),
+                                   new GroupedTraitType(AbilityType.Awareness, AbyssalCaste.Day.getId(), AbyssalCaste.Day.getId()),
+                                   new GroupedTraitType(AbilityType.Dodge, AbyssalCaste.Day.getId(), AbyssalCaste.Day.getId()),
+                                   new GroupedTraitType(AbilityType.Larceny, AbyssalCaste.Day.getId(), AbyssalCaste.Day.getId()),
+                                   new GroupedTraitType(AbilityType.Stealth, AbyssalCaste.Day.getId(), AbyssalCaste.Day.getId()),
+                                   new GroupedTraitType(AbilityType.Bureaucracy, AbyssalCaste.Moonshadow.getId(), AbyssalCaste.Moonshadow.getId()),
+                                   new GroupedTraitType(AbilityType.Linguistics, AbyssalCaste.Moonshadow.getId(), AbyssalCaste.Moonshadow.getId()),
+                                   new GroupedTraitType(AbilityType.Ride, AbyssalCaste.Moonshadow.getId(), AbyssalCaste.Moonshadow.getId()),
+                                   new GroupedTraitType(AbilityType.Sail, AbyssalCaste.Moonshadow.getId(), AbyssalCaste.Moonshadow.getId()), new GroupedTraitType(AbilityType.Socialize, AbyssalCaste.Moonshadow.getId(), AbyssalCaste.Moonshadow.getId())};
   }
 
   @Override
@@ -107,9 +100,8 @@ public abstract class AbstractAbyssalTemplate extends AbstractCharacterTemplate 
   public IMagicTemplate getMagicTemplate() {
     return magicTemplate;
   }
-  
-  public String[] getBaseHealthProviders()
-  {
-	  return new String[0];
+
+  public String[] getBaseHealthProviders() {
+    return new String[0];
   }
 }

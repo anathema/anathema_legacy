@@ -1,6 +1,6 @@
 package net.sf.anathema.character.thaumaturgy.reporting;
 
-import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.LINE_HEIGHT;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,12 +9,12 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.pdf.layout.extended.boxes.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.Position;
 import net.sf.anathema.character.thaumaturgy.ThaumaturgyAdditionalModel;
 import net.sf.anathema.character.thaumaturgy.model.IThaumaturgyMagic;
 import net.sf.anathema.character.thaumaturgy.model.IThaumaturgyModel;

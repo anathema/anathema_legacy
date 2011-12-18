@@ -1,10 +1,5 @@
 package net.sf.anathema.character.reporting.text;
 
-import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.framework.reporting.ITextReportUtils;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
@@ -12,6 +7,10 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.MultiColumnText;
+import net.disy.commons.core.util.StringUtilities;
+import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.framework.reporting.ITextReportUtils;
+import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {
 
@@ -26,12 +25,12 @@ public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {
       periphrasis.setAlignment(Element.ALIGN_CENTER);
       columnText.addElement(periphrasis);
     }
-    if (StringUtilities.isNullOrEmpty(description.getCharacterization())
-        && StringUtilities.isNullOrEmpty(description.getPhysicalAppearance())
-        && StringUtilities.isNullOrEmpty(description.getNotes())) {
+    if (StringUtilities.isNullOrEmpty(description.getCharacterization()) && StringUtilities.isNullOrEmpty(description.getPhysicalAppearance()) &&
+        StringUtilities.isNullOrEmpty(description.getNotes())) {
       return;
     }
-    Phrase descriptionPhrase = createTextParagraph(createBoldTitle(getString("TextDescription.Label.Description") + ": ")); //$NON-NLS-1$ //$NON-NLS-2$
+    Phrase descriptionPhrase = createTextParagraph(createBoldTitle(getString("TextDescription.Label.Description") + ": ")); //$NON-NLS-1$
+    // //$NON-NLS-2$
     boolean isFirst = true;
     if (!StringUtilities.isNullOrEmpty(description.getCharacterization())) {
       descriptionPhrase.add(createTextChunk(description.getCharacterization()));
@@ -57,11 +56,8 @@ public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {
     return paragraph;
   }
 
-  private void addTextualDescriptionPart(
-      MultiColumnText columnText,
-      Phrase potentialParentPhrase,
-      boolean isFirst,
-      Chunk chunk) throws DocumentException {
+  private void addTextualDescriptionPart(MultiColumnText columnText, Phrase potentialParentPhrase, boolean isFirst,
+                                         Chunk chunk) throws DocumentException {
     if (isFirst) {
       potentialParentPhrase.add(chunk);
       columnText.addElement(potentialParentPhrase);

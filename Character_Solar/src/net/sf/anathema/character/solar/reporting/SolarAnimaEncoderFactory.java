@@ -1,8 +1,8 @@
 package net.sf.anathema.character.solar.reporting;
 
-import net.sf.anathema.character.reporting.sheet.common.anima.AbstractAnimaEncoderFactory;
-import net.sf.anathema.character.reporting.sheet.common.anima.AnimaTableEncoder;
-import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.anima.AbstractAnimaEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.anima.AnimaTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
