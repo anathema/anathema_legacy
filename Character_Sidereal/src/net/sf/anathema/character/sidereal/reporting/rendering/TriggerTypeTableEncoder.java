@@ -18,7 +18,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class TriggerTypeTableEncoder extends AbstractTableEncoder {
+public class TriggerTypeTableEncoder extends AbstractTableEncoder<ReportContent> {
 
   private final IResources resources;
   private final Font font;

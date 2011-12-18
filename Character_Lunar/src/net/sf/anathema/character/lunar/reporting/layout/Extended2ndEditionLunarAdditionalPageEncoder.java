@@ -7,7 +7,6 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.lunar.reporting.rendering.SecondEditionLunarSpiritFormEncoder;
@@ -25,7 +24,7 @@ import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEnco
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
@@ -114,7 +113,7 @@ public class Extended2ndEditionLunarAdditionalPageEncoder implements IPdfPageEnc
   private float encodePanopoly(PdfContentByte directContent, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
-    IPdfTableEncoder armourTableEncoder = new LunarArmourTableEncoder(baseFont, resources);
+    ITableEncoder armourTableEncoder = new LunarArmourTableEncoder(baseFont, resources);
     IBoxContentEncoder contentEncoder = new ArmourEncoder(resources, baseFont, armourTableEncoder);
     boxEncoder.encodeBox(content, directContent, contentEncoder, bounds);
     return height;

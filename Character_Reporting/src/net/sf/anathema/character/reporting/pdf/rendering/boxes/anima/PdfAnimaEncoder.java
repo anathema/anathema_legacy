@@ -18,7 +18,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtil
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfLineEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -32,9 +32,9 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IBoxContentEn
   private final IResources resources;
   private final BaseFont symbolBaseFont;
   private final Chunk symbolChunk;
-  private final IPdfTableEncoder tableEncoder;
+  private final ITableEncoder tableEncoder;
 
-  public PdfAnimaEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont, int fontSize, IPdfTableEncoder encoder) {
+  public PdfAnimaEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont, int fontSize, ITableEncoder encoder) {
     this.resources = resources;
     this.baseFont = baseFont;
     this.symbolBaseFont = symbolBaseFont;

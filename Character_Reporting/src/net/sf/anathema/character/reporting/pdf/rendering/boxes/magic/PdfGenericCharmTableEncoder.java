@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
+public class PdfGenericCharmTableEncoder extends AbstractTableEncoder<ReportContent> {
 
   public static final int TYPE_LONGFORM_CUTOFF = 20;
 

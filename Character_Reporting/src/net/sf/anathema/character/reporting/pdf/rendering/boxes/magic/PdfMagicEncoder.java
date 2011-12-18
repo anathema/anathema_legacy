@@ -16,7 +16,7 @@ import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -84,14 +84,14 @@ public class PdfMagicEncoder implements IBoxContentEncoder {
   }
 
   private final PdfMagicTableEncoder tableEncoder;
-  private final List<IPdfTableEncoder> additionalTables;
+  private final List<ITableEncoder> additionalTables;
   private final String headerKey;
 
   public PdfMagicEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printMagic) {
-    this(resources, baseFont, printMagic, new ArrayList<IPdfTableEncoder>(), false, "Charms"); //$NON-NLS-1$
+    this(resources, baseFont, printMagic, new ArrayList<ITableEncoder>(), false, "Charms"); //$NON-NLS-1$
   }
 
-  public PdfMagicEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printMagic, List<IPdfTableEncoder> additionalTables,
+  public PdfMagicEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printMagic, List<ITableEncoder> additionalTables,
     boolean sectionHeaderLines, String headerKey) {
     this.tableEncoder = new PdfMagicTableEncoder(resources, baseFont, printMagic, sectionHeaderLines);
     this.additionalTables = additionalTables;
@@ -104,7 +104,7 @@ public class PdfMagicEncoder implements IBoxContentEncoder {
 
   public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     float top = graphics.getBounds().getMinY();
-    for (IPdfTableEncoder additionalTable : additionalTables) {
+    for (ITableEncoder additionalTable : additionalTables) {
       if (additionalTable.hasContent(reportContent)) {
         Bounds tableBounds = new Bounds(graphics.getBounds().getMinX(), top, graphics.getBounds().getWidth(), graphics.getBounds().getMaxY() - top);
         float tableHeight = additionalTable.encodeTable(graphics.getDirectContent(), reportContent, tableBounds);

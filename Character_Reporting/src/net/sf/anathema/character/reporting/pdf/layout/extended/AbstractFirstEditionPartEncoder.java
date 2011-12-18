@@ -9,7 +9,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.PdfHorizontalLi
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
@@ -40,7 +40,7 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
 
   public final IBoxContentEncoder getCombatStatsEncoder() {
     IPdfContentEncoder valueEncoder = new FirstEditionCombatValueEncoder(resources, baseFont);
-    IPdfTableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder(resources, baseFont);
+    ITableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder(resources, baseFont);
     return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
   }
 

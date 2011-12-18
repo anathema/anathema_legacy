@@ -14,7 +14,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.PdfDotsEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
@@ -71,7 +71,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
 
   public final IBoxContentEncoder getCombatStatsEncoder() {
     IPdfContentEncoder valueEncoder = new SecondEditionCombatValueEncoder(resources, baseFont);
-    IPdfTableEncoder rulesEncoder = new SecondEditionCombatRulesTableEncoder(resources, baseFont);
+    ITableEncoder rulesEncoder = new SecondEditionCombatRulesTableEncoder(resources, baseFont);
     return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
   }
 

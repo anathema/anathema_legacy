@@ -9,14 +9,14 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 
 public class PdfCombatStatsEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
 
   private final static float PADDING = 3;
 
   private final BaseFont baseFont;
-  private final IPdfTableEncoder combatRulesEncoder;
+  private final ITableEncoder combatRulesEncoder;
   private final IPdfContentEncoder combatValueEncoder;
 
   @Override
@@ -24,7 +24,7 @@ public class PdfCombatStatsEncoder extends AbstractPdfEncoder implements IBoxCon
     return baseFont;
   }
 
-  public PdfCombatStatsEncoder(IPdfTableEncoder combatRulesEncoder, IPdfContentEncoder combatValueEncoder, BaseFont baseFont) {
+  public PdfCombatStatsEncoder(ITableEncoder combatRulesEncoder, IPdfContentEncoder combatValueEncoder, BaseFont baseFont) {
     this.baseFont = baseFont;
     this.combatRulesEncoder = combatRulesEncoder;
     this.combatValueEncoder = combatValueEncoder;

@@ -17,7 +17,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfMagicEnc
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.ExtendedPdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
@@ -47,7 +47,7 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
     ISpellMagicTemplate spellTemplate = character.getTemplate().getMagicTemplate().getSpellMagic();
     boolean needsMagic = spellTemplate.knowsSorcery(character.getLearnedCharms());
     if (!needsMagic) {
-      for (IPdfTableEncoder tableEncoder : getRegistry().getAdditionalMagicEncoders()) {
+      for (ITableEncoder tableEncoder : getRegistry().getAdditionalMagicEncoders()) {
         if (tableEncoder.hasContent(content)) {
           needsMagic = true;
           break;

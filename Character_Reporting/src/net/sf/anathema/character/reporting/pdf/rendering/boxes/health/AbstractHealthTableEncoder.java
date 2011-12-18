@@ -20,13 +20,13 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
 
-public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
+public abstract class AbstractHealthTableEncoder implements ITableEncoder<ReportContent> {
   public static final int HEALTH_RECT_SIZE = 6;
   private static final int HEALTH_COLUMN_COUNT = 15;
   protected static float PADDING = 0.3f;

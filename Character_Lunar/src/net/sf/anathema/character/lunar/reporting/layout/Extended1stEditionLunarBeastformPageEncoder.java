@@ -27,7 +27,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfHeaderBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -162,7 +162,7 @@ public class Extended1stEditionLunarBeastformPageEncoder implements IPdfPageEnco
   private float encodeArmourAndSoak(PdfContentByte directContent, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfTableEncoder armourEncoder = new LunarArmourTableEncoder(baseFont, resources);
+    ITableEncoder armourEncoder = new LunarArmourTableEncoder(baseFont, resources);
     IBoxContentEncoder contentEncoder = new ArmourEncoder(resources, baseFont, armourEncoder);
     boxEncoder.encodeBox(content, directContent, contentEncoder, bounds);
     return height;

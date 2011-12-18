@@ -17,7 +17,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 
-public abstract class AbstractStatsTableEncoder<T extends IStats> extends AbstractTableEncoder {
+public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends AbstractTableEncoder<C> {
 
   private final Font font;
   private final Font sectionFont;
@@ -41,7 +41,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds) {
+  protected PdfPTable createTable(PdfContentByte directContent, C content, Bounds bounds) {
     IStatsGroup<T>[] groups = createStatsGroups(content);
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable table = new PdfPTable(columnWidths);
@@ -53,9 +53,9 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
     return table;
   }
 
-  protected abstract void encodeContent(PdfPTable table, ReportContent content, Bounds bounds);
+  protected abstract void encodeContent(PdfPTable table, C content, Bounds bounds);
 
-  protected abstract IStatsGroup<T>[] createStatsGroups(ReportContent content);
+  protected abstract IStatsGroup<T>[] createStatsGroups(C content);
 
   protected final void encodeHeaderLine(PdfPTable table, IStatsGroup<T>[] groups) {
     for (int index = 0; index < groups.length; index++) {

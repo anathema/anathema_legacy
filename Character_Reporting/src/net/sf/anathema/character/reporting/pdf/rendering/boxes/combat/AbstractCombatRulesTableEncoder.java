@@ -15,7 +15,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractT
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractCombatRulesTableEncoder extends AbstractTableEncoder {
+public abstract class AbstractCombatRulesTableEncoder extends AbstractTableEncoder<ReportContent> {
 
   private final IResources resources;
   private final Font commentFont;

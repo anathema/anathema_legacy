@@ -8,7 +8,7 @@ import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.FirstEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.FirstEditionHealthAndMovementTableEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionLunarHealthAndMovementEncoder extends FirstEditionHealthAndMovementEncoder
@@ -23,7 +23,7 @@ public class FirstEditionLunarHealthAndMovementEncoder extends FirstEditionHealt
 	}
 	
 	@Override
-	protected final IPdfTableEncoder createTableEncoder()
+	protected final ITableEncoder createTableEncoder()
 	{
 		return new FirstEditionHealthAndMovementTableEncoder(getResources(), getBaseFont())
 		{

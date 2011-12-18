@@ -1,4 +1,4 @@
-package net.sf.anathema.character.lunar.reporting.rendering.knacks;
+package net.sf.anathema.character.lunar.reporting.content.knacks;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -19,17 +19,6 @@ import java.util.List;
 public class KnackContent extends AbstractSubContent {
 
   private static IIdentificate KNACK = new Identificate("Knack");
-  public static List<IKnackStats> collectPrintKnacks(final IGenericCharacter character) {
-    final List<IKnackStats> printKnacks = new ArrayList<IKnackStats>();
-    ICharm[] charmSet = character.getLearnedCharms();
-    for (ICharm charm : charmSet) {
-      if (!charm.hasAttribute(KNACK)) {
-        continue;
-      }
-      printKnacks.add(new KnackStats(charm));
-    }
-    return printKnacks;
-  }
 
   private IGenericCharacter character;
 
@@ -44,11 +33,23 @@ public class KnackContent extends AbstractSubContent {
   }
 
   public List<IKnackStats> createPrintKnacks() {
-    return collectPrintKnacks(character);
+    final List<IKnackStats> printKnacks = new ArrayList<IKnackStats>();
+    ICharm[] charmSet = character.getLearnedCharms();
+    for (ICharm charm : charmSet) {
+      if (!charm.hasAttribute(KNACK)) {
+        continue;
+      }
+      printKnacks.add(new KnackStats(charm));
+    }
+    return printKnacks;
   }
 
   @Override
   public String getHeaderKey() {
     return "Lunar.Knacks";
+  }
+
+  public String getGroupLabel(IKnackStats stats) {
+    return  stats.getGroupName(getResources());
   }
 }

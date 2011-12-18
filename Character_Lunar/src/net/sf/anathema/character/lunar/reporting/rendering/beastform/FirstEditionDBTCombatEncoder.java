@@ -12,7 +12,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -68,7 +68,7 @@ public class FirstEditionDBTCombatEncoder implements IBoxContentEncoder {
     encoder.addComment(graphics.getDirectContent(), thresholdPoolLabel, 2);
     encoder.addComment(graphics.getDirectContent(), thresholdPoolDurationLabel, 3);
     
-    IPdfTableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder(resources, baseFont);
+    ITableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder(resources, baseFont);
     Bounds ruleBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, graphics.getBounds().width, graphics.getBounds().height - encoder.getHeight() - PADDING);
     try {
 		rulesEncoder.encodeTable(graphics.getDirectContent(), reportContent, ruleBounds);

@@ -18,7 +18,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
@@ -48,7 +48,7 @@ public class SocialCombatStatsEncoder implements IBoxContentEncoder {
     float valueHeight = encodeValues(graphics.getDirectContent(), valueBounds, reportContent.getCharacter().getTraitCollection(), equipment);
     Bounds attackTableBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, valueWidth, graphics.getBounds().height - valueHeight);
 
-    IPdfTableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources, baseFont);
+    ITableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources, baseFont);
     float attackHeight = tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, attackTableBounds);
     Bounds actionBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, valueWidth / 2f, attackTableBounds.height - attackHeight);
     encodeActionTable(graphics.getDirectContent(), actionBounds);

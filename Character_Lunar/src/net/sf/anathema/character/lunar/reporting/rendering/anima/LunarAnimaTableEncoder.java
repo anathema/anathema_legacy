@@ -1,11 +1,10 @@
 package net.sf.anathema.character.lunar.reporting.rendering.anima;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.anima.AnimaTableEncoder;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.ColumnDescriptor;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
@@ -15,7 +14,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class LunarAnimaTableEncoder extends AnimaTableEncoder implements IPdfTableEncoder {
+public class LunarAnimaTableEncoder extends AnimaTableEncoder {
 
   private final Chunk symbolChunk;
 

@@ -20,7 +20,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -29,7 +29,7 @@ import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.awt.*;
 
-public class EssenceTableEncoder implements IPdfTableEncoder {
+public class EssenceTableEncoder implements ITableEncoder<ReportContent> {
   protected static float PADDING = 1f;
   protected static float DOTS_WIDTH = 130f;
 

@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -26,7 +26,7 @@ public class Extended2ndEditionHealthEncoder extends AbstractHealthAndMovementEn
   public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     Bounds tableBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y + graphics.getBounds().height - 94f, graphics.getBounds().width,
       94f);
-    IPdfTableEncoder tableEncoder = createTableEncoder();
+    ITableEncoder tableEncoder = createTableEncoder();
     tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, tableBounds);
     float textHeight = tableBounds.getMinY() - graphics.getBounds().y - IVoidStateFormatConstants.TEXT_PADDING;
     Bounds textBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, graphics.getBounds().width, textHeight);
@@ -34,7 +34,7 @@ public class Extended2ndEditionHealthEncoder extends AbstractHealthAndMovementEn
   }
 
   @Override
-  protected IPdfTableEncoder createTableEncoder() {
+  protected ITableEncoder createTableEncoder() {
     return new SecondEditionHealthTableEncoder(getResources(), getBaseFont());
   }
 

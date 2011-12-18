@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.rendering.general.NullPdfContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.collection.Table;
 
 import java.awt.*;
@@ -30,7 +30,7 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
   private IBoxContentEncoder thaumaturgyEncoder = new NullPdfContentEncoder("Thaumaturgy");
   private IBoxContentEncoder meritsAndFlawsEncoder = new NullPdfContentEncoder("Merits & Flaws");
   private List<IVariableBoxContentEncoder> sidebarEncoders = new ArrayList<IVariableBoxContentEncoder>();
-  private List<IPdfTableEncoder> magicEncoders = new ArrayList<IPdfTableEncoder>();
+  private List<ITableEncoder> magicEncoders = new ArrayList<ITableEncoder>();
 
   public ExtendedEncodingRegistry() {
     this.baseFont = new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
@@ -79,7 +79,7 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
     sidebarEncoders.add(encoder);
   }
 
-  public void addAdditionalMagicEncoder(IPdfTableEncoder encoder) {
+  public void addAdditionalMagicEncoder(ITableEncoder encoder) {
     magicEncoders.add(encoder);
   }
 
@@ -115,7 +115,7 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
     return sidebarEncoders;
   }
 
-  public List<IPdfTableEncoder> getAdditionalMagicEncoders() {
+  public List<ITableEncoder> getAdditionalMagicEncoders() {
     return magicEncoders;
   }
 

@@ -18,7 +18,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class DestinyTypeTableEncoder extends AbstractTableEncoder {
+public class DestinyTypeTableEncoder extends AbstractTableEncoder<ReportContent> {
 
   private final IResources resources;
   private final Font font;

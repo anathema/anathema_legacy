@@ -20,7 +20,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class DurationTableEncoder extends AbstractTableEncoder {
+public class DurationTableEncoder extends AbstractTableEncoder<ReportContent> {
 
   private final IResources resources;
   private final Font font;

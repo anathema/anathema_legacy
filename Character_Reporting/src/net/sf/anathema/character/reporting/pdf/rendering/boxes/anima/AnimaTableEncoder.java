@@ -22,7 +22,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
 
-public class AnimaTableEncoder extends AbstractTableEncoder {
+public class AnimaTableEncoder extends AbstractTableEncoder<ReportContent> {
 
   public final static float TABLE_HEIGHT = 58f;
 

@@ -19,7 +19,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class SecondEditionAstrologyTableEncoder extends AbstractTableEncoder {
+public class SecondEditionAstrologyTableEncoder extends AbstractTableEncoder<ReportContent> {
 
   private final IResources resources;
   private final Font font;

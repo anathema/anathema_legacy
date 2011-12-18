@@ -18,7 +18,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
@@ -44,7 +44,7 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
   public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     Bounds tableBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, (graphics.getBounds().width * 0.66f),
       graphics.getBounds().height);
-    IPdfTableEncoder tableEncoder = createTableEncoder();
+    ITableEncoder tableEncoder = createTableEncoder();
     tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, tableBounds);
     float textX = tableBounds.getMaxX() + IVoidStateFormatConstants.TEXT_PADDING;
     Bounds textBounds = new Bounds(textX, graphics.getBounds().y, graphics.getBounds().x + graphics.getBounds().width - textX,
@@ -52,7 +52,7 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     encodeText(graphics.getDirectContent(), textBounds);
   }
 
-  protected abstract IPdfTableEncoder createTableEncoder();
+  protected abstract ITableEncoder createTableEncoder();
 
   protected void encodeText(PdfContentByte directContent, Bounds textBounds) throws DocumentException {
     Font headerFont = TableEncodingUtilities.createHeaderFont(baseFont);

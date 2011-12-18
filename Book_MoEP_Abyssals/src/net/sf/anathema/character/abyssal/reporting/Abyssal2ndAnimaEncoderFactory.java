@@ -5,7 +5,7 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.anima.AbstractAnimaEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.anima.AnimaTableEncoder;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.AnimaTableStealthProvider;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Abyssal2ndAnimaEncoderFactory extends AbstractAnimaEncoderFactory {
@@ -15,7 +15,7 @@ public class Abyssal2ndAnimaEncoderFactory extends AbstractAnimaEncoderFactory {
   }
 
   @Override
-  protected IPdfTableEncoder getAnimaTableEncoder() {
+  protected ITableEncoder getAnimaTableEncoder() {
     return new AnimaTableEncoder(getResources(), getBaseFont(), getFontSize(), new AnimaTableStealthProvider(getResources()));
   }
 }

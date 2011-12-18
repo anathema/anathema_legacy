@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Extended2ndEditionMovementEncoder implements IBoxContentEncoder {
@@ -25,7 +25,7 @@ public class Extended2ndEditionMovementEncoder implements IBoxContentEncoder {
   }
 
   public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    IPdfTableEncoder tableEncoder = createTableEncoder();
+    ITableEncoder tableEncoder = createTableEncoder();
     tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, graphics.getBounds());
   }
 
@@ -37,7 +37,7 @@ public class Extended2ndEditionMovementEncoder implements IBoxContentEncoder {
     return resources;
   }
 
-  protected IPdfTableEncoder createTableEncoder() {
+  protected ITableEncoder createTableEncoder() {
     return new Simple2ndEditionMovementTableEncoder(getResources(), getBaseFont());
   }
 

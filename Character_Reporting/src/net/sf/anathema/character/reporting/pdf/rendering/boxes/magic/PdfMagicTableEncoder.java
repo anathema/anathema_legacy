@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats> {
+public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats, ReportContent> {
 
   private final IResources resources;
   private List<IMagicStats> printStats = new ArrayList<IMagicStats>();

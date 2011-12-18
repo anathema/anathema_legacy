@@ -38,6 +38,8 @@ import net.sf.anathema.character.lunar.renown.RenownFactory;
 import net.sf.anathema.character.lunar.renown.RenownPersisterFactory;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.RenownViewFactory;
+import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
+import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContentFactory;
 import net.sf.anathema.character.lunar.reporting.layout.Extended1stEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.reporting.layout.Extended2ndEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.reporting.layout.Simple1stEditionLunarPartEncoder;
@@ -48,8 +50,8 @@ import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawViewFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -196,8 +198,13 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
+    registerContent(resources, moduleObject.getReportContentRegistry());
     registerSimpleReporting(resources, moduleObject.getSimpleEncodingRegistry());
     registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry());
+  }
+
+  private void registerContent(IResources resources, ReportContentRegistry contentRegistry) {
+    contentRegistry.addFactory(KnackContent.class, new KnackContentFactory(resources));
   }
 
   private void registerSimpleReporting(IResources resources, SimpleEncodingRegistry registry) {

@@ -23,7 +23,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class LunarFaceEncoder extends AbstractTableEncoder implements IBoxContentEncoder {
+public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implements IBoxContentEncoder {
 
   private final Font font;
   private final IResources resources;

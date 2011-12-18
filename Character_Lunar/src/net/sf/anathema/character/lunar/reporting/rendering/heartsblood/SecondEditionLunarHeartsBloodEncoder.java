@@ -26,7 +26,7 @@ import net.sf.anathema.lib.util.Identificate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEncoder<IHeartsBloodStats> implements IBoxContentEncoder {
+public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEncoder<IHeartsBloodStats, ReportContent> implements IBoxContentEncoder {
 
   private final IResources resources;
 

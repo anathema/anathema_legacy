@@ -6,7 +6,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
@@ -17,9 +17,9 @@ public class ArmourEncoder implements IBoxContentEncoder {
 
   private final BaseFont baseFont;
   private final IResources resources;
-  private final IPdfTableEncoder encoder;
+  private final ITableEncoder encoder;
 
-  public ArmourEncoder(IResources resources, BaseFont baseFont, IPdfTableEncoder encoder) {
+  public ArmourEncoder(IResources resources, BaseFont baseFont, ITableEncoder encoder) {
     this.resources = resources;
     this.baseFont = baseFont;
     this.encoder = encoder;

@@ -3,41 +3,31 @@ package net.sf.anathema.character.lunar.reporting.rendering.knacks;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
 import net.sf.anathema.character.lunar.reporting.content.stats.knacks.IKnackStats;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
-import net.sf.anathema.lib.resources.IResources;
 
-public class KnackTableEncoder extends AbstractStatsTableEncoder<IKnackStats> {
+public class KnackTableEncoder extends AbstractStatsTableEncoder<IKnackStats, KnackContent> {
 
-  private final IResources resources;
-
-  public KnackTableEncoder(IResources resources, BaseFont baseFont) {
+  public KnackTableEncoder(BaseFont baseFont) {
     super(baseFont);
-    this.resources = resources;
-  }
-
-  private KnackContent getContent(ReportContent content) {
-    return new KnackContent(resources, content.getCharacter());
   }
 
   @Override
-  protected IStatsGroup<IKnackStats>[] createStatsGroups(ReportContent content) {
-    KnackContent knackContent = getContent(content);
+  protected IStatsGroup<IKnackStats>[] createStatsGroups(KnackContent knackContent) {
     return knackContent.createStatsGroups();
   }
 
   @Override
-  protected void encodeContent(PdfPTable table, ReportContent content, Bounds bounds) {
-    float heightLimit = bounds.height - 3;
-    KnackContent knackContent = getContent(content);
-     boolean encodeLine = true;
-    String groupName = null;
+  protected void encodeContent(PdfPTable table, KnackContent knackContent, Bounds bounds) {
     IStatsGroup<IKnackStats>[] groups = knackContent.createStatsGroups();
+    float heightLimit = bounds.height - 3;
+    boolean encodeLine = true;
+    String groupName = null;
     for (IKnackStats stats : knackContent.createPrintKnacks()) {
-      String newGroupName = stats.getGroupName(resources);
+      String newGroupName = knackContent.getGroupLabel(stats);
       if (!ObjectUtilities.equals(groupName, newGroupName)) {
         groupName = newGroupName;
         encodeSectionLine(table, groupName);
