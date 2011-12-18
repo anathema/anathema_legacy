@@ -36,11 +36,11 @@ public class SimpleEssenceContent extends AbstractSubContent {
   }
 
   public boolean hasPeripheralPool() {
-    return getPeripheralPool() == null;
+    return getPeripheralPool() != null;
   }
 
   public boolean hasPersonalPool() {
-    return getPersonalPool() == null;
+    return getPersonalPool() != null;
   }
 
   public String getPersonalPool() {
