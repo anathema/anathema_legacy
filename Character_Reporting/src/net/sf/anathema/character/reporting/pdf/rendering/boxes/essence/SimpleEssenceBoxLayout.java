@@ -42,11 +42,7 @@ public class SimpleEssenceBoxLayout {
   }
 
   public Position getAvailabilityPositionRightAligned(Position poolPosition) {
-    return new Position(getAvailabilityXRightAligned(poolPosition), poolPosition.y);
-  }
-
-  private float getAvailabilityXRightAligned(Position poolPosition) {
-    return poolPosition.x + bounds.width;
+    return new Position(bounds.getMaxX(), poolPosition.y);
   }
 
   public float getAvailabilityLineLength() {
@@ -55,7 +51,7 @@ public class SimpleEssenceBoxLayout {
 
   public Position getAvailabilityLineStartPosition(Position poolPosition, String availableString) {
     float textWidth = textMetrics.getDefaultTextWidth(availableString);
-    float availabilityX = getAvailabilityXRightAligned(poolPosition) - textWidth - getAvailabilityLineLength();
+    float availabilityX = bounds.getMaxX() - textWidth - getAvailabilityLineLength();
     return new Position(availabilityX, poolPosition.y);
   }
 }

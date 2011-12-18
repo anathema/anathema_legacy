@@ -6,6 +6,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.essence.SimpleEssenceContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
@@ -34,19 +35,10 @@ public class SimpleEssenceBoxContentEncoder extends AbstractPdfEncoder implement
     return baseFont;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
-    return "Essence"; //$NON-NLS-1$
-  }
-
   public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    String personalPool = null;
-    String peripheralPool = null;
-    try {
-      personalPool = reportContent.getCharacter().getPersonalPool();
-      peripheralPool = reportContent.getCharacter().getPeripheralPool();
-    }
-    catch (ContractFailedException e) {
-    }
+    SimpleEssenceContent content = createContent(reportContent);
+    String personalPool = content.getPersonalPool();
+    String peripheralPool = content.getPeripheralPool();
     float traitHeight = largeTraitEncoder.getTraitHeight();
     int numberOfLines = (personalPool == null ? 0 : 1) + (peripheralPool == null ? 0 : 1);
     SimpleEssenceBoxLayout layout = new SimpleEssenceBoxLayout(this, graphics.getBounds(), traitHeight, numberOfLines);
@@ -78,7 +70,15 @@ public class SimpleEssenceBoxContentEncoder extends AbstractPdfEncoder implement
     drawText(directContent, totalString, lineStartPoint, ALIGN_RIGHT);
   }
 
+  public String getHeaderKey(ReportContent content) {
+    return createContent(content).getHeaderKey();
+  }
+
   public boolean hasContent(ReportContent content) {
-    return true;
+    return createContent(content).hasContent();
+  }
+
+  private SimpleEssenceContent createContent(ReportContent content) {
+    return content.createSubContent(SimpleEssenceContent.class);
   }
 }
