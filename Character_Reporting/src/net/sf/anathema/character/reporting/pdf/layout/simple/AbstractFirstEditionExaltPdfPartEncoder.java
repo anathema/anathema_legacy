@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.PdfEssenceEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -14,7 +14,7 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
   }
 
   public IBoxContentEncoder getEssenceEncoder() {
-    return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
+    return new SimpleEssenceBoxContentEncoder(getBaseFont(), getResources(), essenceMax);
   }
 
   public IBoxContentEncoder getOverdriveEncoder() {

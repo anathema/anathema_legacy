@@ -4,7 +4,7 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatValueEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.PdfEssenceEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.SecondEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -53,7 +53,7 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
   }
 
   public IBoxContentEncoder getEssenceEncoder() {
-    return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
+    return new SimpleEssenceBoxContentEncoder(getBaseFont(), getResources(), essenceMax);
   }
 
   public IBoxContentEncoder getOverdriveEncoder() {
