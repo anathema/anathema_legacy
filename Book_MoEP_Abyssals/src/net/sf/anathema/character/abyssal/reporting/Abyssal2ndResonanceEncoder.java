@@ -1,13 +1,12 @@
 package net.sf.anathema.character.abyssal.reporting;
 
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceTemplate;
-import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
@@ -40,7 +39,7 @@ public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IB
     return "GreatCurse.Abyssal"; //$NON-NLS-1$
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     IVirtueFlaw resonance = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(AbyssalResonanceTemplate.ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), resonance.getLimitTrait().getCurrentValue());
     Font font = createFont(getBaseFont());

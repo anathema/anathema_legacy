@@ -1,12 +1,11 @@
 package net.sf.anathema.character.infernal.reporting;
 
-import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
 import net.sf.anathema.character.infernal.urge.model.IInfernalUrgeModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
@@ -37,7 +36,7 @@ public class InfernalUrgeEncoder implements IBoxContentEncoder {
     return "InfernalUrge.Title"; //$NON-NLS-1$
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
 	IInfernalUrgeModel urge = ((IInfernalUrgeModel) reportContent.getCharacter().getAdditionalModel(InfernalUrgeTemplate.ID));
     Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), urge.getVirtueFlaw().getLimitTrait().getCurrentValue());
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;

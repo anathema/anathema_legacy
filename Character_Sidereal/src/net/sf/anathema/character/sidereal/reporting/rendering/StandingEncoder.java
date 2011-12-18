@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.sidereal.SiderealCharacterModule;
@@ -28,7 +28,7 @@ public class StandingEncoder extends AbstractPdfEncoder implements IBoxContentEn
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     int yPosition = (int) (graphics.getBounds().getMaxY() - lineHeight);
     drawLabelledContent(graphics.getDirectContent(),
         getLabel("Label.Allegiance"), null, new Position(graphics.getBounds().x, yPosition), graphics.getBounds().width); //$NON-NLS-1$

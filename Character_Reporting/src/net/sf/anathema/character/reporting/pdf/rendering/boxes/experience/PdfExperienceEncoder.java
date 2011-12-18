@@ -4,9 +4,8 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -29,7 +28,7 @@ public class PdfExperienceEncoder implements IBoxContentEncoder {
     return "Experience"; //$NON-NLS-1$
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     int totalPoints = reportContent.getCharacter().getTotalExperiencePoints();
     int spentPoints = reportContent.getCharacter().getSpentExperiencePoints();
     String experienceMessage = resources.getString("Sheet.Experience.MessageFormat"); //$NON-NLS-1$

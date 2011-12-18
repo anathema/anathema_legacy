@@ -9,7 +9,7 @@ import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -32,7 +32,7 @@ public class VirtueBoxContentEncoder extends AbstractPdfEncoder implements IBoxC
     return baseFont;
   }
 
-  public void encode(Graphics graphics, ReportContent content) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent content) throws DocumentException {
     VirtueContent virtueContent = getSubContent(content);
     encodeVirtues(graphics.getDirectContent(), graphics.getBounds(), virtueContent);
   }
@@ -53,12 +53,12 @@ public class VirtueBoxContentEncoder extends AbstractPdfEncoder implements IBoxC
   private void encodeVirtue(PdfContentByte directContent, NamedValue trait, Position position, float width) {
     float yPosition = position.y;
     yPosition -= IVoidStateFormatConstants.LINE_HEIGHT - 3;
-    String label = trait.name;
+    String label = trait.getLabel();
     float labelX = position.x + width / 2;
     drawText(directContent, label, new Position(labelX, yPosition), PdfContentByte.ALIGN_CENTER);
     yPosition -= traitEncoder.getTraitHeight() - 1;
     Position traitPosition = new Position(position.x, yPosition);
-    int value = trait.value;
+    int value = trait.getValue();
     traitEncoder.encodeDotsCenteredAndUngrouped(directContent, traitPosition, width, value, 5);
     yPosition -= traitEncoder.getTraitHeight() - 1;
     traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, new Position(position.x, yPosition), width, 0, 5);

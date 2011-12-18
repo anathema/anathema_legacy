@@ -2,11 +2,10 @@ package net.sf.anathema.character.sidereal.reporting.rendering;
 
 import java.awt.Color;
 
-import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
@@ -37,7 +36,7 @@ public class ParadoxInfoEncoder implements IBoxContentEncoder {
     this.edition = edition;
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
 	  String animaResource = edition == ExaltedEdition.FirstEdition ?
 			  "Sheet.Paradox.AnimaHigh" : "Sheet.Paradox.AnimaHigh2nd";
     Phrase phrase = new Phrase("", new Font(basefont, fontSize, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$

@@ -1,12 +1,11 @@
 package net.sf.anathema.character.ghost.reporting;
 
-import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.ghost.fetters.GhostFettersTemplate;
 import net.sf.anathema.character.ghost.fetters.model.Fetter;
 import net.sf.anathema.character.ghost.fetters.model.IGhostFettersModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 
@@ -24,7 +23,7 @@ public class GhostFetterEncoder implements IBoxContentEncoder {
     return "Ghost.Fetters"; //$NON-NLS-1$
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
 	  IGhostFettersModel model = (IGhostFettersModel) reportContent.getCharacter().getAdditionalModel(GhostFettersTemplate.ID);
 	  float groupSpacing = traitEncoder.getTraitHeight() / 2;
 	  float x = graphics.getBounds().x;

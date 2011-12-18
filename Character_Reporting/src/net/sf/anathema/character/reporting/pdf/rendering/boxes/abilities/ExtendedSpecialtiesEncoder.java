@@ -1,13 +1,12 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities;
 
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.AbstractNamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
@@ -29,7 +28,7 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
     return "Specialties"; //$NON-NLS-1$
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) {
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
     for (IIdentifiedTraitTypeGroup group : reportContent.getCharacter().getAbilityTypeGroups()) {
       for (ITraitType traitType : group.getAllGroupTypes()) {

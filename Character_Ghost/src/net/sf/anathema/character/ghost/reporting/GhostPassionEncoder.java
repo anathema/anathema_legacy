@@ -1,6 +1,5 @@
 package net.sf.anathema.character.ghost.reporting;
 
-import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.ghost.passions.GhostPassionsTemplate;
 import net.sf.anathema.character.ghost.passions.model.IGhostPassionsModel;
@@ -8,7 +7,7 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -30,7 +29,7 @@ public class GhostPassionEncoder implements IBoxContentEncoder {
 	    return "Ghost.Passions"; //$NON-NLS-1$
 	  }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
 	  IGhostPassionsModel model = (IGhostPassionsModel) reportContent.getCharacter().getAdditionalModel(GhostPassionsTemplate.ID);
 	  float groupSpacing = traitEncoder.getTraitHeight() / 2;
 	  float x = graphics.getBounds().x;

@@ -16,7 +16,7 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
@@ -56,7 +56,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return traitEncoder;
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     Position position = new Position(graphics.getBounds().getMinX(), graphics.getBounds().getMaxY());
     float width = graphics.getBounds().width;
 

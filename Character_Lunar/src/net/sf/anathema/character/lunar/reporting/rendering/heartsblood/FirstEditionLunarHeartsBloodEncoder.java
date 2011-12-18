@@ -3,7 +3,6 @@ package net.sf.anathema.character.lunar.reporting.rendering.heartsblood;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IAnimalForm;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;
@@ -12,7 +11,7 @@ import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.Heart
 import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodStrengthStatsGroup;
 import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.IHeartsBloodStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractFixedLineStatsTableEncoder;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
@@ -32,7 +31,7 @@ public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsT
     this.resources = resources;
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     encodeTable(graphics.getDirectContent(), reportContent, graphics.getBounds());
   }
 

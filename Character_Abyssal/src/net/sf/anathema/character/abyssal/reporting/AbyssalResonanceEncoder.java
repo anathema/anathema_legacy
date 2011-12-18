@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
@@ -44,7 +44,7 @@ public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IBoxC
     return "GreatCurse.Abyssal"; //$NON-NLS-1$
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), 0);
     Font font = TableEncodingUtilities.createFont(getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$

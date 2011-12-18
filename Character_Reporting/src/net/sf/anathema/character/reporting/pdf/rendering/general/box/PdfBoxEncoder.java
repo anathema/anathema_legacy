@@ -3,11 +3,10 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.box;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 public class PdfBoxEncoder extends AbstractPdfEncoder {
@@ -60,7 +59,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
     Bounds bounds) throws DocumentException {
     String header = resources.getString("Sheet.Header." + encoder.getHeaderKey(content)); //$NON-NLS-1$
     Bounds contentBounds = encodeBox(directContent, bounds, header, boxEncoder);
-    encoder.encode(new Graphics(directContent, contentBounds), content);
+    encoder.encode(new PdfGraphics(directContent, contentBounds), content);
   }
 
   private Bounds calculateInsettedBounds(Bounds contentBounds) {

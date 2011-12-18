@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
@@ -36,7 +35,7 @@ public class PdfDotsEncoder extends AbstractPdfEncoder implements IBoxContentEnc
     return traitHeaderKey; //$NON-NLS-1$
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     float width = graphics.getBounds().width - IVoidStateFormatConstants.PADDING;
     float leftX = graphics.getBounds().x + IVoidStateFormatConstants.PADDING / 2f;
     int value = reportContent.getCharacter().getTraitCollection().getTrait(trait).getCurrentValue();

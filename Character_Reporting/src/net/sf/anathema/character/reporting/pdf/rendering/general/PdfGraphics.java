@@ -3,11 +3,11 @@ package net.sf.anathema.character.reporting.pdf.rendering.general;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 
-public class Graphics {
+public class PdfGraphics {
   private final PdfContentByte directContent;
   private Bounds bounds;
 
-  public Graphics(PdfContentByte directContent, Bounds bounds) {
+  public PdfGraphics(PdfContentByte directContent, Bounds bounds) {
     this.directContent = directContent;
     this.bounds = bounds;
   }

@@ -5,13 +5,13 @@ import net.sf.anathema.character.generic.template.ITraitLimitation;
 
 public interface ILimitationContext {
 
-  public ITraitLimitation getEssenceLimitation();
+  ITraitLimitation getEssenceLimitation();
 
-  public ICasteType getCasteType();
+  ICasteType getCasteType();
 
-  public IGenericTraitCollection getTraitCollection();
+  IGenericTraitCollection getTraitCollection();
+
+  int getAge();
   
-  public int getAge();
-  
-  public int getEssenceCap(boolean modified);
+  int getEssenceCap(boolean modified);
 }

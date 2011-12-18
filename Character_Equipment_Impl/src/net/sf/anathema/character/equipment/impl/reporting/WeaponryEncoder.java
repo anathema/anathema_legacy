@@ -1,10 +1,9 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
-import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -35,7 +34,7 @@ public class WeaponryEncoder implements IBoxContentEncoder {
     return "Weapons"; //$NON-NLS-1$
   }
 
-  public void encode(Graphics graphics, final ReportContent content)
+  public void encode(PdfGraphics graphics, final ReportContent content)
       throws DocumentException {
     final AbstractWeaponryTableEncoder[] encoder = new AbstractWeaponryTableEncoder[1];
     content.getCharacter().getRules().getEdition().accept(new IEditionVisitor() {

@@ -4,18 +4,18 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.reporting.pdf.content.ISubContent;
+import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
+import net.sf.anathema.character.reporting.pdf.content.general.PrintTrait;
 import net.sf.anathema.lib.resources.IResources;
 
-public class VirtueContent implements ISubContent {
+public class VirtueContent extends AbstractSubContent {
 
   private IGenericCharacter character;
-  private IResources resources;
 
   public VirtueContent(IResources resources, IGenericCharacter character) {
+    super(resources);
     this.character = character;
-    this.resources = resources;
   }
 
   public NamedValue getUpperLeftVirtue() {
@@ -35,23 +35,22 @@ public class VirtueContent implements ISubContent {
   }
 
   private NamedValue getVirtue(VirtueType type) {
-    IGenericTrait trait = getVirtueCollection().getTrait(type);
-    String printName = resources.getString(trait.getType().getId());
-    return new NamedValue(printName, trait.getCurrentValue());
+    IGenericTraitCollection virtueCollection = getVirtueCollection();
+    IGenericTrait virtue = virtueCollection.getTrait(type);
+    IResources resources = getResources();
+    return new PrintTrait(resources, virtue);
+  }
+
+  private String getPrintName(VirtueType type) {
+    String typeId = type.getId();
+    return getStringFromResource(typeId);
   }
 
   private IGenericTraitCollection getVirtueCollection() {
     return character.getTraitCollection();
   }
 
-  public boolean hasContent() {
-    return true;
-  }
-
-  public String getHeader() {
-    return resources.getString("Sheet.Header." + getHeaderKey());
-  }
-
+  @Override
   public String getHeaderKey() {
     return "Virtues";
   }

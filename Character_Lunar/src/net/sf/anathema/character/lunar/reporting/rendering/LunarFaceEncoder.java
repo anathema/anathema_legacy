@@ -2,13 +2,12 @@ package net.sf.anathema.character.lunar.reporting.rendering;
 
 import java.awt.Color;
 
-import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.presenter.IRenownModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
@@ -38,7 +37,7 @@ public class LunarFaceEncoder extends AbstractTableEncoder implements IBoxConten
     return "Lunar.Face"; //$NON-NLS-1$
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     encodeTable(graphics.getDirectContent(), reportContent, graphics.getBounds());
   }
 

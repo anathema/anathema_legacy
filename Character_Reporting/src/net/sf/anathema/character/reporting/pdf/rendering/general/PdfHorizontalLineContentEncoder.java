@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.lowagie.text.DocumentException;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -22,7 +21,7 @@ public class PdfHorizontalLineContentEncoder implements IBoxContentEncoder {
     this.headerKey = headerKey;
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     float columnWidth = (graphics.getBounds().width - (columnCount - 1) * IVoidStateFormatConstants.TEXT_PADDING) / columnCount;
     for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
       float columnX = graphics.getBounds().x + columnIndex * columnWidth + columnIndex * IVoidStateFormatConstants.TEXT_PADDING;

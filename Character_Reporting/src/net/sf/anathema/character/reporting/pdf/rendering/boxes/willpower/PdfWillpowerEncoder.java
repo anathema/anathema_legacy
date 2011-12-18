@@ -1,11 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower;
 
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -22,7 +21,7 @@ public class PdfWillpowerEncoder implements IBoxContentEncoder {
     return "Willpower"; //$NON-NLS-1$
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) {
     float padding = IVoidStateFormatConstants.PADDING / 2f;
     float width = graphics.getBounds().width - 2 * padding;
     float leftX = graphics.getBounds().x + padding;

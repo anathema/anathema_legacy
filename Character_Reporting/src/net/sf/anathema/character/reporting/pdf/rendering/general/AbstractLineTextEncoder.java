@@ -26,7 +26,7 @@ public abstract class AbstractLineTextEncoder extends AbstractPdfEncoder impleme
     this.baseFont = baseFont;
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     Font font = TableEncodingUtilities.createFont(baseFont);
     Phrase phrase = new Phrase();
     addToPhrase(reportContent.getCharacter(), font, phrase);

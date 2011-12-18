@@ -1,12 +1,11 @@
 package net.sf.anathema.character.solar.reporting;
 
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Line;
@@ -40,7 +39,7 @@ public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
     return "GreatCurse.Solar"; //$NON-NLS-1$
   }
 
-  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
     float boxPadding = 1f;
 
 	ISolarVirtueFlaw virtueFlaw = ((ISolarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
