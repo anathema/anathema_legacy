@@ -4,6 +4,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
@@ -35,12 +36,12 @@ public class PdfDotsEncoder extends AbstractPdfEncoder implements IBoxContentEnc
     return traitHeaderKey; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    float width = graphics.getBounds().width - IVoidStateFormatConstants.PADDING;
-    float leftX = graphics.getBounds().x + IVoidStateFormatConstants.PADDING / 2f;
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    float width = bounds.width - IVoidStateFormatConstants.PADDING;
+    float leftX = bounds.x + IVoidStateFormatConstants.PADDING / 2f;
     int value = reportContent.getCharacter().getTraitCollection().getTrait(trait).getCurrentValue();
-    float entryHeight = Math.max(graphics.getBounds().height - IVoidStateFormatConstants.PADDING / 2f, traitEncoder.getTraitHeight());
-    float yPosition = graphics.getBounds().getMaxY() - entryHeight;
+    float entryHeight = Math.max(bounds.height - IVoidStateFormatConstants.PADDING / 2f, traitEncoder.getTraitHeight());
+    float yPosition = bounds.getMaxY() - entryHeight;
     traitEncoder.encodeDotsCenteredAndUngrouped(graphics.getDirectContent(), new Position(leftX, yPosition), width, value, traitMax);
   }
 

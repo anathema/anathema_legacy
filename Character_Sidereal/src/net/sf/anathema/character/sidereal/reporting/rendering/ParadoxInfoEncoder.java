@@ -5,6 +5,7 @@ import java.awt.Color;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
@@ -36,7 +37,7 @@ public class ParadoxInfoEncoder implements IBoxContentEncoder {
     this.edition = edition;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
 	  String animaResource = edition == ExaltedEdition.FirstEdition ?
 			  "Sheet.Paradox.AnimaHigh" : "Sheet.Paradox.AnimaHigh2nd";
     Phrase phrase = new Phrase("", new Font(basefont, fontSize, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
@@ -54,7 +55,7 @@ public class ParadoxInfoEncoder implements IBoxContentEncoder {
     phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendent") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendentImitation") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendentSupernatural") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, graphics.getBounds(), lineHeight);
+    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, bounds, lineHeight);
   }
 
   public String getHeaderKey(ReportContent reportContent) {

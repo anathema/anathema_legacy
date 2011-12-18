@@ -37,8 +37,8 @@ public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implem
     return "Lunar.Face"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    encodeTable(graphics.getDirectContent(), reportContent, graphics.getBounds());
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    encodeTable(graphics.getDirectContent(), reportContent, bounds);
   }
 
   @Override

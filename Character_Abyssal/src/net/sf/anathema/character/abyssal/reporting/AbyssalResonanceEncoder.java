@@ -44,8 +44,8 @@ public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IBoxC
     return "GreatCurse.Abyssal"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), 0);
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), bounds, 0);
     Font font = TableEncodingUtilities.createFont(getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
     phrase.add(symbolChunk);

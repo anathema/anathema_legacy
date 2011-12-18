@@ -35,8 +35,8 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
     this.resources = resources;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    encodeTable(graphics.getDirectContent(), reportContent, graphics.getBounds());
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    encodeTable(graphics.getDirectContent(), reportContent, bounds);
   }
 
   public String getHeaderKey(ReportContent reportContent) {

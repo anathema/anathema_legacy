@@ -42,15 +42,15 @@ public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IBoxCo
     return baseFont;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
 	IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(SiderealParadoxTemplate.ID)).getVirtueFlaw();
-    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), virtueFlaw.getLimitTrait().getCurrentValue());
+    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     float lineHeight = (textBounds.height - TEXT_PADDING) / 2;
     String effects = resources.getString("Sheet.GreatCurse.Sidereal.CurrentEffects") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
     drawLabelledContent(graphics.getDirectContent(),
         effects,
         null,
-        new Position(textBounds.x, textBounds.getMaxY() - lineHeight), graphics.getBounds().width);
+        new Position(textBounds.x, textBounds.getMaxY() - lineHeight), bounds.width);
 
     Font font = TableEncodingUtilities.createFont(getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
@@ -58,7 +58,7 @@ public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IBoxCo
     phrase.add(resources.getString("Sheet.GreatCurse.Sidereal." +
     		(reportContent.getCharacter().getRules().getEdition() == ExaltedEdition.SecondEdition ?
     		 "2E." : "") + "RulesPages")); //$NON-NLS-1$
-    Bounds infoBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, graphics.getBounds().width, textBounds.height - lineHeight);
+    Bounds infoBounds = new Bounds(bounds.x, bounds.y, bounds.width, textBounds.height - lineHeight);
     encodeTextWithReducedLineHeight(graphics.getDirectContent(), infoBounds, phrase);
   }
 

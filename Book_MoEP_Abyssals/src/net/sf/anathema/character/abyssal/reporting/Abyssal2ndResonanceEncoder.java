@@ -39,9 +39,9 @@ public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IB
     return "GreatCurse.Abyssal"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     IVirtueFlaw resonance = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(AbyssalResonanceTemplate.ID)).getVirtueFlaw();
-    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), resonance.getLimitTrait().getCurrentValue());
+    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), bounds, resonance.getLimitTrait().getCurrentValue());
     Font font = createFont(getBaseFont());
     Font nameFont = createNameFont(getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$

@@ -3,6 +3,7 @@ package net.sf.anathema.character.sidereal.reporting.rendering;
 import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
@@ -28,20 +29,20 @@ public class StandingEncoder extends AbstractPdfEncoder implements IBoxContentEn
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    int yPosition = (int) (graphics.getBounds().getMaxY() - lineHeight);
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    int yPosition = (int) (bounds.getMaxY() - lineHeight);
     drawLabelledContent(graphics.getDirectContent(),
-        getLabel("Label.Allegiance"), null, new Position(graphics.getBounds().x, yPosition), graphics.getBounds().width); //$NON-NLS-1$
+        getLabel("Label.Allegiance"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
     int salary = getBackground(reportContent.getCharacter(), SiderealCharacterModule.BACKGROUND_ID_SALARY);
     yPosition -= smallTraitEncoder.encodeWithText(graphics.getDirectContent(), resources.getString("Sheet.Sidereal.Standing.Salary"), //$NON-NLS-1$
-        new Position(graphics.getBounds().x, yPosition), graphics.getBounds().width,
+        new Position(bounds.x, yPosition), bounds.width,
         salary,
         5);
     int manse = getBackground(reportContent.getCharacter(), SiderealCharacterModule.BACKGROUND_ID_CELESTIAL_MANSE);
     smallTraitEncoder.encodeWithText(graphics.getDirectContent(), resources.getString("Sheet.Sidereal.Standing.Manse"), new Position( //$NON-NLS-1$
-      graphics.getBounds().x,
-        yPosition), graphics.getBounds().width, manse, 5);
+      bounds.x,
+        yPosition), bounds.width, manse, 5);
   }
 
   private int getBackground(IGenericCharacter character, String id) {

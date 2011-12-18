@@ -44,14 +44,14 @@ public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
     return "Lunar.WarForm"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) {
 	  
     IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
     IBeastformModel additionalModel = (IBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
-    encodeAttributes(graphics.getDirectContent(), graphics.getBounds(), attributeGroups, traitCollection);
-    encodeNotes(graphics.getDirectContent(), graphics.getBounds());
-    encodeMutations(graphics.getDirectContent(), graphics.getBounds(), reportContent);
+    encodeAttributes(graphics.getDirectContent(), bounds, attributeGroups, traitCollection);
+    encodeNotes(graphics.getDirectContent(), bounds);
+    encodeMutations(graphics.getDirectContent(), bounds, reportContent);
   }
   
   private final void encodeNotes(PdfContentByte directContent, Bounds bounds)

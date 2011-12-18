@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
@@ -60,7 +61,7 @@ public class PdfInitiationEncoder extends AbstractPdfEncoder implements IVariabl
     return height;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     ISpellMagicTemplate spellMagicTemplate = reportContent.getCharacter().getTemplate().getMagicTemplate().getSpellMagic();
     ICharm[] knownCharms = reportContent.getCharacter().getLearnedCharms();
 
@@ -74,7 +75,7 @@ public class PdfInitiationEncoder extends AbstractPdfEncoder implements IVariabl
         phrase.add(new Chunk("\n", textFont)); //$NON-NLS-1$
       }
     }
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, graphics.getBounds(), IVoidStateFormatConstants.LINE_HEIGHT);
+    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, bounds, IVoidStateFormatConstants.LINE_HEIGHT);
   }
 
   protected boolean knowsCharm(String charm, IGenericCharacter character) {

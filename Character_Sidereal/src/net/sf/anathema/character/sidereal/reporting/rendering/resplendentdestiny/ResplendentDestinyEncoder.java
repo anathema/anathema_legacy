@@ -25,27 +25,26 @@ public class ResplendentDestinyEncoder extends AbstractPdfEncoder implements IBo
     this.lineHeight = fontSize * 1.5f;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    int yPosition = (int) (graphics.getBounds().getMaxY() - lineHeight);
-    drawLabelledContent(graphics.getDirectContent(), getLabel("Label.College"), null, new Position(graphics.getBounds().x, yPosition), graphics
-      .getBounds().width); //$NON-NLS-1$
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    int yPosition = (int) (bounds.getMaxY() - lineHeight);
+    drawLabelledContent(graphics.getDirectContent(), getLabel("Label.College"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
-    drawLabelledContent(graphics.getDirectContent(), getLabel("Label.Name"), null, new Position(graphics.getBounds().x, yPosition), graphics.getBounds().width); //$NON-NLS-1$
-    yPosition -= lineHeight;
-    drawLabelledContent(graphics.getDirectContent(),
-        getLabel("Label.EffectDice"), null, new Position(graphics.getBounds().x, yPosition), graphics.getBounds().width); //$NON-NLS-1$
+    drawLabelledContent(graphics.getDirectContent(), getLabel("Label.Name"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
     drawLabelledContent(graphics.getDirectContent(),
-        getLabel("Label.Duration"), null, new Position(graphics.getBounds().x, yPosition), graphics.getBounds().width); //$NON-NLS-1$
+        getLabel("Label.EffectDice"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
-    drawLabelledContent(graphics.getDirectContent(), getLabel("Label.Effects"), null, new Position(graphics.getBounds().x, yPosition), graphics.getBounds().width); //$NON-NLS-1$
+    drawLabelledContent(graphics.getDirectContent(),
+        getLabel("Label.Duration"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
-    encodeLines(graphics.getDirectContent(), graphics.getBounds(), new Position(graphics.getBounds().x, yPosition), 4);
+    drawLabelledContent(graphics.getDirectContent(), getLabel("Label.Effects"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
+    yPosition -= lineHeight;
+    encodeLines(graphics.getDirectContent(), bounds, new Position(bounds.x, yPosition), 4);
     yPosition -= 4 * lineHeight;
     drawLabelledContent(graphics.getDirectContent(),
-        getLabel("Label.Trappings"), null, new Position(graphics.getBounds().x, yPosition), graphics.getBounds().width); //$NON-NLS-1$
+        getLabel("Label.Trappings"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
-    encodeLines(graphics.getDirectContent(), graphics.getBounds(), new Position(graphics.getBounds().x, yPosition), 5);
+    encodeLines(graphics.getDirectContent(), bounds, new Position(bounds.x, yPosition), 5);
   }
 
   private void encodeLines(PdfContentByte directContent, Bounds bounds, Position lineStartPosition, int count) {

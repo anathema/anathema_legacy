@@ -32,9 +32,9 @@ public class VirtueBoxContentEncoder extends AbstractPdfEncoder implements IBoxC
     return baseFont;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent content) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
     VirtueContent virtueContent = getSubContent(content);
-    encodeVirtues(graphics.getDirectContent(), graphics.getBounds(), virtueContent);
+    encodeVirtues(graphics.getDirectContent(), bounds, virtueContent);
   }
 
   private void encodeVirtues(PdfContentByte directContent, Bounds bounds, VirtueContent virtueContent) {

@@ -4,6 +4,7 @@ import net.sf.anathema.character.ghost.fetters.GhostFettersTemplate;
 import net.sf.anathema.character.ghost.fetters.model.Fetter;
 import net.sf.anathema.character.ghost.fetters.model.IGhostFettersModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -23,13 +24,13 @@ public class GhostFetterEncoder implements IBoxContentEncoder {
     return "Ghost.Fetters"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
 	  IGhostFettersModel model = (IGhostFettersModel) reportContent.getCharacter().getAdditionalModel(GhostFettersTemplate.ID);
 	  float groupSpacing = traitEncoder.getTraitHeight() / 2;
-	  float x = graphics.getBounds().x;
-	  float y = graphics.getBounds().getMaxY() - 2 * groupSpacing;
+	  float x = bounds.x;
+	  float y = bounds.getMaxY() - 2 * groupSpacing;
 	  int maximum = 5;
-	  float width = graphics.getBounds().getWidth() * 1 / 2;
+	  float width = bounds.getWidth() * 1 / 2;
 	  for (Fetter fetter : model.getFetters())
 	  {
 	      String traitLabel = fetter.getName();
@@ -42,10 +43,10 @@ public class GhostFetterEncoder implements IBoxContentEncoder {
 	          value,
 	          maximum);
 	      
-	      if (y < graphics.getBounds().getMinY())
+	      if (y < bounds.getMinY())
 	      {
-	    	  y = graphics.getBounds().getMaxY() - 2 * groupSpacing;
-	    	  x += graphics.getBounds().width / 2;
+	    	  y = bounds.getMaxY() - 2 * groupSpacing;
+	    	  x += bounds.width / 2;
 	      }
 	    }
   }

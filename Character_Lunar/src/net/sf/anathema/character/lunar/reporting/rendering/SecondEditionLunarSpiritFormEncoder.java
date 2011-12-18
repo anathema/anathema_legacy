@@ -40,13 +40,13 @@ public class SecondEditionLunarSpiritFormEncoder implements IBoxContentEncoder {
     return "Lunar.SpiritForm"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) {
     IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
     SecondEditionBeastformModel additionalModel = (SecondEditionBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate
       .TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getSpiritTraitCollection();
-    encodeAttributes(graphics.getDirectContent(), graphics.getBounds(), attributeGroups, traitCollection);
-    encodeForm(graphics.getDirectContent(), graphics.getBounds(), additionalModel.getSpiritForm());
+    encodeAttributes(graphics.getDirectContent(), bounds, attributeGroups, traitCollection);
+    encodeForm(graphics.getDirectContent(), bounds, additionalModel.getSpiritForm());
   }
   
   private void encodeForm(PdfContentByte directContent, Bounds bounds, String form)

@@ -41,12 +41,12 @@ public class ExtendedPdfWillpowerEncoder implements IBoxContentEncoder {
     return "Willpower"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float padding = IVoidStateFormatConstants.PADDING / 2f;
-    float width = graphics.getBounds().width - 2f * padding;
-    float leftX = graphics.getBounds().x + padding;
-    float height = graphics.getBounds().height - padding;
-    float topY = graphics.getBounds().getMaxY();
+    float width = bounds.width - 2f * padding;
+    float leftX = bounds.x + padding;
+    float height = bounds.height - padding;
+    float topY = bounds.getMaxY();
 
     int value = reportContent.getCharacter().getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
     float entryHeight = traitEncoder.getTraitHeight();

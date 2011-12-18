@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -21,13 +22,13 @@ public class PdfWillpowerEncoder implements IBoxContentEncoder {
     return "Willpower"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) {
     float padding = IVoidStateFormatConstants.PADDING / 2f;
-    float width = graphics.getBounds().width - 2 * padding;
-    float leftX = graphics.getBounds().x + padding;
+    float width = bounds.width - 2 * padding;
+    float leftX = bounds.x + padding;
     int value = reportContent.getCharacter().getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
-    float entryHeight = Math.max((graphics.getBounds().height - padding) / 2, traitEncoder.getTraitHeight());
-    float yPosition = graphics.getBounds().getMaxY() - entryHeight;
+    float entryHeight = Math.max((bounds.height - padding) / 2, traitEncoder.getTraitHeight());
+    float yPosition = bounds.getMaxY() - entryHeight;
     traitEncoder.encodeDotsCenteredAndUngrouped(graphics.getDirectContent(), new Position(leftX, yPosition), width, value, 10);
     yPosition -= entryHeight;
     traitEncoder.encodeSquaresCenteredAndUngrouped(graphics.getDirectContent(), new Position(leftX, yPosition), width, 0, 10);

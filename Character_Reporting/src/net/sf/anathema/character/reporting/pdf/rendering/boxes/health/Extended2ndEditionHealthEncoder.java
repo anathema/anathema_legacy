@@ -23,13 +23,13 @@ public class Extended2ndEditionHealthEncoder extends AbstractHealthAndMovementEn
   }
 
   @Override
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    Bounds tableBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y + graphics.getBounds().height - 94f, graphics.getBounds().width,
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    Bounds tableBounds = new Bounds(bounds.x, bounds.y + bounds.height - 94f, bounds.width,
       94f);
     ITableEncoder tableEncoder = createTableEncoder();
     tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, tableBounds);
-    float textHeight = tableBounds.getMinY() - graphics.getBounds().y - IVoidStateFormatConstants.TEXT_PADDING;
-    Bounds textBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, graphics.getBounds().width, textHeight);
+    float textHeight = tableBounds.getMinY() - bounds.y - IVoidStateFormatConstants.TEXT_PADDING;
+    Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, textHeight);
     encodeText(graphics.getDirectContent(), textBounds);
   }
 

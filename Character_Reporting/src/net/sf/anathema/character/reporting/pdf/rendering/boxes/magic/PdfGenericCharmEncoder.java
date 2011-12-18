@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -24,8 +25,8 @@ public class PdfGenericCharmEncoder implements IVariableBoxContentEncoder {
     return tableEncoder.getRequestedHeight(content);
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, graphics.getBounds());
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, bounds);
   }
 
   public boolean hasContent(ReportContent content) {

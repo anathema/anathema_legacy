@@ -5,6 +5,7 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -24,9 +25,9 @@ public class Extended2ndEditionMovementEncoder implements IBoxContentEncoder {
     return "Movement"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     ITableEncoder tableEncoder = createTableEncoder();
-    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, graphics.getBounds());
+    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, bounds);
   }
 
   protected final BaseFont getBaseFont() {

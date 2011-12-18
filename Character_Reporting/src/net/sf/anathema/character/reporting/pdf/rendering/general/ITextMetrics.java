@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 public interface ITextMetrics {
-  int getDefaultTextWidth(String text);
+  float getDefaultTextWidth(String text);
 
-  int getCommentTextWidth(String text);
+  float getCommentTextWidth(String text);
 }

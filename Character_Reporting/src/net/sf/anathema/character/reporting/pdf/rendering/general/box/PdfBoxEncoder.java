@@ -59,7 +59,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
     Bounds bounds) throws DocumentException {
     String header = resources.getString("Sheet.Header." + encoder.getHeaderKey(content)); //$NON-NLS-1$
     Bounds contentBounds = encodeBox(directContent, bounds, header, boxEncoder);
-    encoder.encode(new PdfGraphics(directContent, contentBounds), content);
+    encoder.encode(new PdfGraphics(directContent, baseFont), content, contentBounds);
   }
 
   private Bounds calculateInsettedBounds(Bounds contentBounds) {

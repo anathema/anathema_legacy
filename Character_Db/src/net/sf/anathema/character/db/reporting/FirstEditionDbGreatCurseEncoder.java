@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.impl.traits.ValueWeightGenericTraitSort
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
@@ -36,12 +37,12 @@ public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implemen
     return baseFont;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     String virtueMessage = getVirtueString(reportContent.getCharacter());
     String aspectMessage = getAspectString(reportContent.getCharacter());
     String message = resources.getString("Sheet.GreatCurse.Message", virtueMessage, aspectMessage); //$NON-NLS-1$
     Phrase phrase = new Phrase(message, TableEncodingUtilities.createFont(getBaseFont()));
-    encodeTextWithReducedLineHeight(graphics.getDirectContent(), graphics.getBounds(), phrase);
+    encodeTextWithReducedLineHeight(graphics.getDirectContent(), bounds, phrase);
   }
 
   private String getVirtueString(IGenericCharacter character) {

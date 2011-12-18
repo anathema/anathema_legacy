@@ -43,11 +43,11 @@ public class PdfAttributesEncoder implements IBoxContentEncoder {
     return "Attributes"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
     IGenericTraitCollection traitCollection = reportContent.getCharacter().getTraitCollection();
     IMagicStats[] excellencies = getExcellencies(reportContent.getCharacter());
-    encodeAttributes(graphics.getDirectContent(), reportContent.getCharacter(), graphics.getBounds(), attributeGroups, traitCollection,
+    encodeAttributes(graphics.getDirectContent(), reportContent.getCharacter(), bounds, attributeGroups, traitCollection,
       excellencies);
   }
 

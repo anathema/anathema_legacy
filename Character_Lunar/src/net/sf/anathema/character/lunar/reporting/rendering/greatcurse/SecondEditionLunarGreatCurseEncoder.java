@@ -39,16 +39,16 @@ public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
     return "GreatCurse.Lunar"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     ILunarVirtueFlaw virtueFlaw = ((ILunarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
-    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), virtueFlaw.getLimitTrait().getCurrentValue());
+    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     String name = virtueFlaw.getName().getText();
     String condition = virtueFlaw.getLimitBreak().getText();
     boolean nameDefined = !StringUtilities.isNullOrTrimEmpty(name);
     boolean conditionDefined = !StringUtilities.isNullOrEmpty(condition);
     if (!nameDefined && !conditionDefined) {
-      encodeLines(graphics.getDirectContent(), graphics.getBounds(), leading, textBounds.getMaxY());
+      encodeLines(graphics.getDirectContent(), bounds, leading, textBounds.getMaxY());
     }
     if (nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();
@@ -62,7 +62,7 @@ public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
       phrase.add(new Chunk(name, nameFont));
       ColumnText columnText = PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
       float baseLine = columnText.getYLine();
-      encodeLines(graphics.getDirectContent(), graphics.getBounds(), leading, baseLine);
+      encodeLines(graphics.getDirectContent(), bounds, leading, baseLine);
     }
     if (!nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();

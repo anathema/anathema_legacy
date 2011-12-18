@@ -11,6 +11,7 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
@@ -36,7 +37,7 @@ public class ArcaneFateInfoEncoder implements IBoxContentEncoder {
     this.edition = edition;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
 	String rememberingResource = edition == ExaltedEdition.FirstEdition ?
 			"Sheet.ArcaneFate.Remembering" : "Sheet.ArcaneFate.Remembering2nd";
     Phrase phrase = new Phrase("", new Font(basefont, fontSize, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
@@ -52,7 +53,7 @@ public class ArcaneFateInfoEncoder implements IBoxContentEncoder {
     phrase.add(resources.getString("Sheet.ArcaneFate.Stealth") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(symbolChunk);
     phrase.add(resources.getString(rememberingResource) + "\n"); //$NON-NLS-1$
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, graphics.getBounds(), lineHeight);
+    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, bounds, lineHeight);
   }
   
   public boolean hasContent(ReportContent content)

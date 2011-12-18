@@ -25,25 +25,25 @@ public class SecondEditionAstrologyInfoEncoder implements IBoxContentEncoder {
     this.basefont = baseFont;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent report) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent report, Bounds bounds) throws DocumentException {
     int height = (int) SPACING;
     height += (int) new SecondEditionAstrologyTableEncoder(resources, basefont).encodeTable(graphics.getDirectContent(), report,
-      getBounds(graphics.getBounds(), 0, height)) + SPACING + 1;
+      getBounds(bounds, 0, height)) + SPACING + 1;
     height += (int) new DestinyTypeTableEncoder(resources, basefont).encodeTable(graphics.getDirectContent(), report,
-      getBounds(graphics.getBounds(), 0, height)) + SPACING + 2;
+      getBounds(bounds, 0, height)) + SPACING + 2;
     height += (int) new ResplendentDestinyTableEncoder(resources, basefont).encodeTable(graphics.getDirectContent(), report,
-      getBounds(graphics.getBounds(), 0, height)) + SPACING + 2;
+      getBounds(bounds, 0, height)) + SPACING + 2;
 
-    int horizSpan = (int) (graphics.getBounds().width / 2);
+    int horizSpan = (int) (bounds.width / 2);
     height = (int) SPACING;
 
     height += (int) new TriggerTypeTableEncoder(resources, basefont).encodeTable(graphics.getDirectContent(), report,
-      getBounds(graphics.getBounds(), horizSpan, height)) + SPACING;
-    height += (int) new ScopeTableEncoder(resources, basefont).encodeTable(graphics.getDirectContent(), report, getBounds(graphics.getBounds(),
+      getBounds(bounds, horizSpan, height)) + SPACING;
+    height += (int) new ScopeTableEncoder(resources, basefont).encodeTable(graphics.getDirectContent(), report, getBounds(bounds,
       horizSpan, height)) + SPACING;
-    height += (int) new DurationTableEncoder(resources, basefont).encodeTable(graphics.getDirectContent(), report, getBounds(graphics.getBounds(),
+    height += (int) new DurationTableEncoder(resources, basefont).encodeTable(graphics.getDirectContent(), report, getBounds(bounds,
       horizSpan, height)) + SPACING;
-    height += (int) new FrequencyTableEncoder(resources, basefont).encodeTable(graphics.getDirectContent(), report, getBounds(graphics.getBounds(),
+    height += (int) new FrequencyTableEncoder(resources, basefont).encodeTable(graphics.getDirectContent(), report, getBounds(bounds,
       horizSpan, height)) + SPACING;
 
   }

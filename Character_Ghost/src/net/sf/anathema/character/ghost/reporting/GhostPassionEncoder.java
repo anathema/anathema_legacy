@@ -6,6 +6,7 @@ import net.sf.anathema.character.ghost.passions.model.IGhostPassionsModel;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -29,13 +30,13 @@ public class GhostPassionEncoder implements IBoxContentEncoder {
 	    return "Ghost.Passions"; //$NON-NLS-1$
 	  }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
 	  IGhostPassionsModel model = (IGhostPassionsModel) reportContent.getCharacter().getAdditionalModel(GhostPassionsTemplate.ID);
 	  float groupSpacing = traitEncoder.getTraitHeight() / 2;
-	  float x = graphics.getBounds().x;
-	  float y = graphics.getBounds().getMaxY() - 2 * groupSpacing;
+	  float x = bounds.x;
+	  float y = bounds.getMaxY() - 2 * groupSpacing;
 	  int maximum = 5;
-	  float width = graphics.getBounds().getWidth();
+	  float width = bounds.getWidth();
 	  for (VirtueType virtue : VirtueType.values())
 	  {
 		  ISubTraitContainer container = model.getPassionContainer(virtue);

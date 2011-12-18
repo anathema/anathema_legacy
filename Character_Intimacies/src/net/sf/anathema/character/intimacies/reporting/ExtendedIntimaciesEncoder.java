@@ -32,8 +32,8 @@ public class ExtendedIntimaciesEncoder implements IBoxContentEncoder {
     return "Intimacies"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    float yPosition = graphics.getBounds().getMaxY() - LINE_HEIGHT;
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    float yPosition = bounds.getMaxY() - LINE_HEIGHT;
     
     int maxValue = reportContent.getCharacter().getTraitCollection().getTrait(VirtueType.Conviction).getCurrentValue();
     boolean printZeroIntimacies = AnathemaCharacterPreferences.getDefaultPreferences().printZeroIntimacies();
@@ -42,18 +42,18 @@ public class ExtendedIntimaciesEncoder implements IBoxContentEncoder {
     IIntimaciesModel model = additionalModel.getIntimaciesModel();
     for (IIntimacy intimacy : model.getEntries()) {
       ITrait intimacyTrait = intimacy.getTrait();
-      if (yPosition < graphics.getBounds().getMinY()) {
+      if (yPosition < bounds.getMinY()) {
         return;
       }
       if (!printZeroIntimacies && intimacyTrait.getCurrentValue() == 0) {
         continue;
       }
       traitEncoder.encodeWithText(graphics.getDirectContent(), intimacy.getName(),
-                                  new Position(graphics.getBounds().x, yPosition), graphics.getBounds().width,
+                                  new Position(bounds.x, yPosition), bounds.width,
                                   intimacyTrait.getCurrentValue(), maxValue);
       yPosition -= LINE_HEIGHT;
     }
-    encodeEmptyLines(graphics.getDirectContent(), graphics.getBounds(), yPosition, maxValue);
+    encodeEmptyLines(graphics.getDirectContent(), bounds, yPosition, maxValue);
   }
 
   private void encodeEmptyLines(PdfContentByte directContent, Bounds bounds, float yPosition, int maxValue) {

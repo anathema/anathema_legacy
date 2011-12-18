@@ -5,6 +5,7 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -28,13 +29,13 @@ public class PdfExperienceEncoder implements IBoxContentEncoder {
     return "Experience"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     int totalPoints = reportContent.getCharacter().getTotalExperiencePoints();
     int spentPoints = reportContent.getCharacter().getSpentExperiencePoints();
     String experienceMessage = resources.getString("Sheet.Experience.MessageFormat"); //$NON-NLS-1$
     String experienceText = MessageFormat.format(experienceMessage, totalPoints, spentPoints, totalPoints - spentPoints);
     Phrase phrase = new Phrase(experienceText, font);
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, graphics.getBounds(), FONT_SIZE + 4);
+    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, bounds, FONT_SIZE + 4);
   }
 
   public boolean hasContent(ReportContent content) {

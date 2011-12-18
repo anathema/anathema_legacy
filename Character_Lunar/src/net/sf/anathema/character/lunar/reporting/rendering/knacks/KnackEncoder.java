@@ -8,7 +8,6 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.lib.resources.IResources;
 
 public class KnackEncoder implements IBoxContentEncoder {
 
@@ -29,11 +28,10 @@ public class KnackEncoder implements IBoxContentEncoder {
   }
 
   @Override
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     KnackContent knackContent = getKnackContent(reportContent);
     KnackTableEncoder encoder = new KnackTableEncoder(baseFont);
     PdfContentByte directContent = graphics.getDirectContent();
-    Bounds bounds = graphics.getBounds();
     encoder.encodeTable(directContent, knackContent, bounds);
   }
 

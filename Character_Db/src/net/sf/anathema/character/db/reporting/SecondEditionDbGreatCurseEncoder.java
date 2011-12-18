@@ -36,9 +36,9 @@ public class SecondEditionDbGreatCurseEncoder implements IBoxContentEncoder {
     return TableEncodingUtilities.createFont(baseFont);
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
 	IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(DbVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
-    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), virtueFlaw.getLimitTrait().getCurrentValue());
+    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     String virtue;
     ITraitType rootVirtue = virtueFlaw.getRoot();

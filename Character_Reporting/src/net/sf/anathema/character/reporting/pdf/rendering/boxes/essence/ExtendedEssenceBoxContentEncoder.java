@@ -4,6 +4,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
@@ -41,9 +42,9 @@ public class ExtendedEssenceBoxContentEncoder extends AbstractPdfEncoder impleme
     return content.createSubContent(ExtendedEssenceContent.class);
   }
 
-  public void encode(PdfGraphics graphics, ReportContent content) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
     ExtendedEssenceContent essenceContent = createEssenceContent(content);
-    poolTable.encodeTable(graphics.getDirectContent(), essenceContent, graphics.getBounds());
+    poolTable.encodeTable(graphics.getDirectContent(), essenceContent, bounds);
   }
 
   public boolean hasContent(ReportContent content) {

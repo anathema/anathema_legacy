@@ -21,12 +21,12 @@ public class PdfHorizontalLineContentEncoder implements IBoxContentEncoder {
     this.headerKey = headerKey;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    float columnWidth = (graphics.getBounds().width - (columnCount - 1) * IVoidStateFormatConstants.TEXT_PADDING) / columnCount;
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    float columnWidth = (bounds.width - (columnCount - 1) * IVoidStateFormatConstants.TEXT_PADDING) / columnCount;
     for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-      float columnX = graphics.getBounds().x + columnIndex * columnWidth + columnIndex * IVoidStateFormatConstants.TEXT_PADDING;
-      Bounds columnBounds = new Bounds(columnX, graphics.getBounds().y + IVoidStateFormatConstants.TEXT_PADDING / 2f, columnWidth,
-        graphics.getBounds().height - IVoidStateFormatConstants.TEXT_PADDING / 2f);
+      float columnX = bounds.x + columnIndex * columnWidth + columnIndex * IVoidStateFormatConstants.TEXT_PADDING;
+      Bounds columnBounds = new Bounds(columnX, bounds.y + IVoidStateFormatConstants.TEXT_PADDING / 2f, columnWidth,
+        bounds.height - IVoidStateFormatConstants.TEXT_PADDING / 2f);
       new HorizontalLineListEncoder().encodeLines(graphics.getDirectContent(), columnBounds, LINE_HEIGHT);
     }
   }

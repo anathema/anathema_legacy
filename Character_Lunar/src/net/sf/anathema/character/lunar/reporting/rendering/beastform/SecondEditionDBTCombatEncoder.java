@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
@@ -24,7 +25,7 @@ public class SecondEditionDBTCombatEncoder implements IBoxContentEncoder {
     this.baseFont = baseFont;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) {
     String joinLabel = resources.getString("Sheet.Combat.JoinBattle"); //$NON-NLS-1$
     String dodgeLabel = resources.getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
     String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
@@ -43,14 +44,14 @@ public class SecondEditionDBTCombatEncoder implements IBoxContentEncoder {
 
     String mobilityPenaltyLabel = "-" + resources.getString("Sheet.Combat.MobilityPenalty"); //$NON-NLS-1$ //$NON-NLS-2$
     String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$
-    Position upperLeftCorner = new Position(graphics.getBounds().x, graphics.getBounds().getMaxY());
-    LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, graphics.getBounds().width, 3);
+    Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
+    LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
     encoder.addLabelledValue(graphics.getDirectContent(), 0, joinLabel, joinBattle);
     encoder.addLabelledValue(graphics.getDirectContent(), 1, dodgeLabel, dodgeDV);
     encoder.addComment(graphics.getDirectContent(), mobilityPenaltyLabel, 1);
 
-    upperLeftCorner = new Position(graphics.getBounds().x, graphics.getBounds().getMaxY() - 25);
-    encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, graphics.getBounds().width, 3);
+    upperLeftCorner = new Position(bounds.x, bounds.getMaxY() - 25);
+    encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
 
     encoder.addLabelledValue(graphics.getDirectContent(), 0, knockdownLabel, knockdownThreshold, knockdownPool);
     encoder.addLabelledValue(graphics.getDirectContent(), 1, stunningLabel, stunningThreshold, stunningPool);

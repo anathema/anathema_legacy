@@ -22,13 +22,13 @@ public abstract class AbstractPdfEncoder implements ITextMetrics {
   }
 
   @Override
-  public final int getDefaultTextWidth(String text) {
-    return (int) getBaseFont().getWidthPoint(text, IVoidStateFormatConstants.FONT_SIZE);
+  public final float getDefaultTextWidth(String text) {
+    return getBaseFont().getWidthPoint(text, IVoidStateFormatConstants.FONT_SIZE);
   }
 
   @Override
-  public final int getCommentTextWidth(String text) {
-    return (int) getBaseFont().getWidthPoint(text, IVoidStateFormatConstants.COMMENT_FONT_SIZE);
+  public final float getCommentTextWidth(String text) {
+    return getBaseFont().getWidthPoint(text, IVoidStateFormatConstants.COMMENT_FONT_SIZE);
   }
 
   protected final void setFillColorBlack(PdfContentByte directContent) {

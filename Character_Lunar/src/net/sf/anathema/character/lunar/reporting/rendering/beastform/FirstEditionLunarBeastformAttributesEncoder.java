@@ -35,11 +35,11 @@ public class FirstEditionLunarBeastformAttributesEncoder implements IBoxContentE
     return "Attributes"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) {
     IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
     IBeastformModel additionalModel = (IBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
-    encodeAttributes(graphics.getDirectContent(), graphics.getBounds(), attributeGroups, traitCollection);
+    encodeAttributes(graphics.getDirectContent(), bounds, attributeGroups, traitCollection);
   }
 
   public final void encodeAttributes(

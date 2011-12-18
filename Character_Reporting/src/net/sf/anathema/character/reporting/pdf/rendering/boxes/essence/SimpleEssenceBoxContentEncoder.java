@@ -3,10 +3,10 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.essence;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
-import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.essence.SimpleEssenceContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
@@ -16,7 +16,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import static com.lowagie.text.pdf.PdfContentByte.ALIGN_RIGHT;
 
-public class SimpleEssenceBoxContentEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
+public class SimpleEssenceBoxContentEncoder implements IBoxContentEncoder {
 
   private BaseFont baseFont;
   private final IResources resources;
@@ -30,44 +30,39 @@ public class SimpleEssenceBoxContentEncoder extends AbstractPdfEncoder implement
     this.largeTraitEncoder = PdfTraitEncoder.createLargeTraitEncoder(baseFont);
   }
 
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
-  }
-
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     SimpleEssenceContent content = createContent(reportContent);
     String personalPool = content.getPersonalPool();
     String peripheralPool = content.getPeripheralPool();
     float traitHeight = largeTraitEncoder.getTraitHeight();
     int numberOfLines = (personalPool == null ? 0 : 1) + (peripheralPool == null ? 0 : 1);
-    SimpleEssenceBoxLayout layout = new SimpleEssenceBoxLayout(this, graphics.getBounds(), traitHeight, numberOfLines);
+    SimpleEssenceBoxLayout layout = new SimpleEssenceBoxLayout(graphics, bounds, traitHeight, numberOfLines);
     int value = reportContent.getCharacter().getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
     Position essencePosition = layout.getEssencePosition();
-    largeTraitEncoder.encodeDotsCenteredAndUngrouped(graphics.getDirectContent(), essencePosition, graphics.getBounds().width, value, essenceMax);
+    largeTraitEncoder.encodeDotsCenteredAndUngrouped(graphics.getDirectContent(), essencePosition, bounds.width, value, essenceMax);
 
     if (personalPool != null) {
       Position personalPosition = layout.getFirstPoolPosition();
       String personalLabel = resources.getString("Sheet.Essence.PersonalPool"); //$NON-NLS-1$
-      encodePool(graphics.getDirectContent(), personalLabel, personalPool, personalPosition, layout);
+      encodePool(graphics, personalLabel, personalPool, personalPosition, layout);
     }
 
     if (peripheralPool != null) {
       Position peripheralPosition = numberOfLines == 1 ? layout.getFirstPoolPosition() : layout.getSecondPoolPosition();
       String peripheralLabel = resources.getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
-      encodePool(graphics.getDirectContent(), peripheralLabel, peripheralPool, peripheralPosition, layout);
+      encodePool(graphics, peripheralLabel, peripheralPool, peripheralPosition, layout);
     }
   }
 
-  private void encodePool(PdfContentByte directContent, String label, String poolValue, Position poolPosition, SimpleEssenceBoxLayout layout) {
-    drawText(directContent, label, poolPosition, PdfContentByte.ALIGN_LEFT);
+  private void encodePool(PdfGraphics graphics, String label, String poolValue, Position poolPosition, SimpleEssenceBoxLayout layout) {
+    graphics.drawText(label, poolPosition, PdfContentByte.ALIGN_LEFT);
     String availableString = " " + resources.getString("Sheet.Essence.Available"); //$NON-NLS-1$ //$NON-NLS-2$
     Position availablePosition = layout.getAvailabilityPositionRightAligned(poolPosition);
-    drawText(directContent, availableString, availablePosition, ALIGN_RIGHT);
+    graphics.drawText(availableString, availablePosition, ALIGN_RIGHT);
     Position lineStartPoint = layout.getAvailabilityLineStartPosition(poolPosition, availableString);
-    drawMissingTextLine(directContent, lineStartPoint, layout.getAvailabilityLineLength());
+    graphics.drawMissingTextLine(lineStartPoint, layout.getAvailabilityLineLength());
     String totalString = poolValue + " " + resources.getString("Sheet.Essence.Total") + " / "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-    drawText(directContent, totalString, lineStartPoint, ALIGN_RIGHT);
+    graphics.drawText(totalString, lineStartPoint, ALIGN_RIGHT);
   }
 
   public String getHeaderKey(ReportContent content) {

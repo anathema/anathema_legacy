@@ -36,9 +36,9 @@ public class InfernalUrgeEncoder implements IBoxContentEncoder {
     return "InfernalUrge.Title"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
 	IInfernalUrgeModel urge = ((IInfernalUrgeModel) reportContent.getCharacter().getAdditionalModel(InfernalUrgeTemplate.ID));
-    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), urge.getVirtueFlaw().getLimitTrait().getCurrentValue());
+    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), bounds, urge.getVirtueFlaw().getLimitTrait().getCurrentValue());
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     String urgeDescription = urge.getDescription().getText();
 

@@ -34,10 +34,10 @@ public class PdfCombatStatsEncoder extends AbstractPdfEncoder implements IBoxCon
     return "Combat"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    float height = combatValueEncoder.encode(graphics.getDirectContent(), reportContent.getCharacter(), graphics.getBounds());
-    Bounds ruleBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, graphics.getBounds().width,
-      graphics.getBounds().height - height - PADDING);
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    float height = combatValueEncoder.encode(graphics.getDirectContent(), reportContent.getCharacter(), bounds);
+    Bounds ruleBounds = new Bounds(bounds.x, bounds.y, bounds.width,
+      bounds.height - height - PADDING);
     encodeRules(graphics.getDirectContent(), reportContent, ruleBounds);
   }
 

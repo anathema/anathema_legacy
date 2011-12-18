@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -28,7 +29,7 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
     return "Specialties"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) {
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
     for (IIdentifiedTraitTypeGroup group : reportContent.getCharacter().getAbilityTypeGroups()) {
       for (ITraitType traitType : group.getAllGroupTypes()) {
@@ -37,15 +38,15 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
     }
     IValuedTraitReference[] specialties = references.toArray(new IValuedTraitReference[references.size()]);
 
-    int lineCount = getLineCount(null, graphics.getBounds().height);
+    int lineCount = getLineCount(null, bounds.height);
     IValuedTraitReference[] leftSpecialties = Arrays.copyOfRange(specialties, 0, Math.min(specialties.length, lineCount));
     IValuedTraitReference[] rightSpecialties = Arrays.copyOfRange(specialties, leftSpecialties.length, specialties.length);
 
-    float columnWidth = (graphics.getBounds().width - IVoidStateFormatConstants.PADDING) / 2f;
-    float columnHeight = graphics.getBounds().height - IVoidStateFormatConstants.TEXT_PADDING / 2f;
-    float yPosition = graphics.getBounds().getMaxY() - IVoidStateFormatConstants.BARE_LINE_HEIGHT;
+    float columnWidth = (bounds.width - IVoidStateFormatConstants.PADDING) / 2f;
+    float columnHeight = bounds.height - IVoidStateFormatConstants.TEXT_PADDING / 2f;
+    float yPosition = bounds.getMaxY() - IVoidStateFormatConstants.BARE_LINE_HEIGHT;
 
-    float leftPosition = graphics.getBounds().getMinX();
+    float leftPosition = bounds.getMinX();
     drawNamedTraitSection(graphics.getDirectContent(), null, leftSpecialties, new Position(leftPosition, yPosition), columnWidth, columnHeight, 3);
 
     float rightPosition = leftPosition + columnWidth + IVoidStateFormatConstants.PADDING;

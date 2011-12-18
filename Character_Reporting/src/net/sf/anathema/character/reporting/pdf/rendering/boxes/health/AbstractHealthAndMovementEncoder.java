@@ -41,14 +41,14 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     return "MovementHealth"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    Bounds tableBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, (graphics.getBounds().width * 0.66f),
-      graphics.getBounds().height);
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    Bounds tableBounds = new Bounds(bounds.x, bounds.y, (bounds.width * 0.66f),
+      bounds.height);
     ITableEncoder tableEncoder = createTableEncoder();
     tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, tableBounds);
     float textX = tableBounds.getMaxX() + IVoidStateFormatConstants.TEXT_PADDING;
-    Bounds textBounds = new Bounds(textX, graphics.getBounds().y, graphics.getBounds().x + graphics.getBounds().width - textX,
-      graphics.getBounds().height - 2);
+    Bounds textBounds = new Bounds(textX, bounds.y, bounds.x + bounds.width - textX,
+      bounds.height - 2);
     encodeText(graphics.getDirectContent(), textBounds);
   }
 

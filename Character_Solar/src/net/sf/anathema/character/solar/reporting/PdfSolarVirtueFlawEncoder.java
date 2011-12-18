@@ -39,14 +39,14 @@ public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
     return "GreatCurse.Solar"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float boxPadding = 1f;
 
 	ISolarVirtueFlaw virtueFlaw = ((ISolarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
     //Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
-    float boxHeight = traitEncoder.encodeHeight(graphics.getDirectContent(), graphics.getBounds(), virtueFlaw.getLimitTrait().getCurrentValue());
+    float boxHeight = traitEncoder.encodeHeight(graphics.getDirectContent(), bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     float boxInterval = boxHeight + boxPadding;
-    Bounds textBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, graphics.getBounds().width, graphics.getBounds().height - boxInterval);
+    Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - boxInterval);
 
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     String name = virtueFlaw.getName().getText();
@@ -54,7 +54,7 @@ public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
     boolean nameDefined = !StringUtilities.isNullOrTrimEmpty(name);
     boolean conditionDefined = !StringUtilities.isNullOrEmpty(condition);
     if (!nameDefined && !conditionDefined) {
-      encodeLines(graphics.getDirectContent(), graphics.getBounds(), leading, textBounds.getMaxY());
+      encodeLines(graphics.getDirectContent(), bounds, leading, textBounds.getMaxY());
     }
     if (nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();
@@ -68,7 +68,7 @@ public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
       phrase.add(new Chunk(name, nameFont));
       ColumnText columnText = PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
       float baseLine = columnText.getYLine();
-      encodeLines(graphics.getDirectContent(), graphics.getBounds(), leading, baseLine);
+      encodeLines(graphics.getDirectContent(), bounds, leading, baseLine);
     }
     if (!nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();

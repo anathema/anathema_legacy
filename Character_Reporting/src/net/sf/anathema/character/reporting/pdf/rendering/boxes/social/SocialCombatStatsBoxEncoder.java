@@ -41,22 +41,22 @@ public class SocialCombatStatsBoxEncoder implements IBoxContentEncoder {
     return "SocialCombat"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     IEquipmentModifiers equipment = reportContent.getCharacter().getEquipmentModifiers();
-    float valueWidth = graphics.getBounds().width;
-    Bounds valueBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, valueWidth, graphics.getBounds().height);
+    float valueWidth = bounds.width;
+    Bounds valueBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height);
     float valueHeight = encodeValues(graphics.getDirectContent(), valueBounds, reportContent.getCharacter().getTraitCollection(), equipment);
-    Bounds attackTableBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, valueWidth, graphics.getBounds().height - valueHeight);
+    Bounds attackTableBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height - valueHeight);
 
     ITableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources, baseFont);
     float attackHeight = tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, attackTableBounds);
-    Bounds actionBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, valueWidth / 2f, attackTableBounds.height - attackHeight);
+    Bounds actionBounds = new Bounds(bounds.x, bounds.y, valueWidth / 2f, attackTableBounds.height - attackHeight);
     encodeActionTable(graphics.getDirectContent(), actionBounds);
-    final float center = graphics.getBounds().x + valueWidth / 2f;
-    Bounds commentBounds = new Bounds(center + 4, graphics.getBounds().y, valueWidth / 2f, attackTableBounds.height - attackHeight);
+    final float center = bounds.x + valueWidth / 2f;
+    Bounds commentBounds = new Bounds(center + 4, bounds.y, valueWidth / 2f, attackTableBounds.height - attackHeight);
     encodeDVTable(graphics.getDirectContent(), commentBounds);
-    graphics.getDirectContent().moveTo(center, graphics.getBounds().y + 6 * IVoidStateFormatConstants.COMMENT_FONT_SIZE);
-    graphics.getDirectContent().lineTo(center, graphics.getBounds().y + 3);
+    graphics.getDirectContent().moveTo(center, bounds.y + 6 * IVoidStateFormatConstants.COMMENT_FONT_SIZE);
+    graphics.getDirectContent().lineTo(center, bounds.y + 3);
   }
 
   private void encodeDVTable(PdfContentByte directContent, Bounds bounds) throws DocumentException {

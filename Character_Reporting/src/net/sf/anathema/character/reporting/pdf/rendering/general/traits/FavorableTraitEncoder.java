@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
@@ -56,11 +57,11 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return traitEncoder;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    Position position = new Position(graphics.getBounds().getMinX(), graphics.getBounds().getMaxY());
-    float width = graphics.getBounds().width;
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    Position position = new Position(bounds.getMinX(), bounds.getMaxY());
+    float width = bounds.width;
 
-    float bottom = graphics.getBounds().getMinY() + IVoidStateFormatConstants.TEXT_PADDING;
+    float bottom = bounds.getMinY() + IVoidStateFormatConstants.TEXT_PADDING;
     int nExcellencies = getExcellencies(reportContent.getCharacter()).length;
     if (nExcellencies > 0) {
       bottom += encodeExcellencyCommentText(graphics.getDirectContent(), nExcellencies, position, bottom);

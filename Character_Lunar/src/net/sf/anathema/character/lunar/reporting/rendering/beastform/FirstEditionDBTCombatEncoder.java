@@ -31,7 +31,7 @@ public class FirstEditionDBTCombatEncoder implements IBoxContentEncoder {
     this.baseFont = baseFont;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) {
     String initiativeLabel = resources.getString("Sheet.Combat.BaseInitiative"); //$NON-NLS-1$
     String dodgePoolLabel = resources.getString("Sheet.Combat.DodgePool"); //$NON-NLS-1$
     String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
@@ -55,8 +55,8 @@ public class FirstEditionDBTCombatEncoder implements IBoxContentEncoder {
         AbilityType.Resistance);
     int stunningDuration = Math.max(0, 6 - stunningThreshold);
 
-    Position upperLeftCorner = new Position(graphics.getBounds().x, graphics.getBounds().getMaxY());
-    LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 4, upperLeftCorner, graphics.getBounds().width, 3);
+    Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
+    LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 4, upperLeftCorner, bounds.width, 3);
     encoder.addLabelledValue(graphics.getDirectContent(), 0, initiativeLabel, initiative);
     encoder.addLabelledValue(graphics.getDirectContent(), 1, dodgePoolLabel, dodgePool);
     encoder.addLabelledValue(graphics.getDirectContent(), 2, knockdownLabel, knockdownThreshold, knockdownPool);
@@ -69,7 +69,7 @@ public class FirstEditionDBTCombatEncoder implements IBoxContentEncoder {
     encoder.addComment(graphics.getDirectContent(), thresholdPoolDurationLabel, 3);
     
     ITableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder(resources, baseFont);
-    Bounds ruleBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, graphics.getBounds().width, graphics.getBounds().height - encoder.getHeight() - PADDING);
+    Bounds ruleBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - encoder.getHeight() - PADDING);
     try {
 		rulesEncoder.encodeTable(graphics.getDirectContent(), reportContent, ruleBounds);
 	} catch (DocumentException e) {

@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
@@ -27,19 +28,19 @@ public class ExtendedPersonalInfoBoxEncoder extends AbstractPdfEncoder implement
     this.resources = resources;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) {
     ICharacterType characterType = reportContent.getCharacter().getTemplate().getTemplateType().getCharacterType();
 
     int lines = getNumberOfLines(characterType);
 
-    float lineHeight = (graphics.getBounds().height - TEXT_PADDING) / lines;
-    float entryWidth = (graphics.getBounds().width - 2 * TEXT_PADDING) / 3;
-    float shortEntryWidth = (graphics.getBounds().width - 4 * TEXT_PADDING) / 5;
-    float firstColumnX = graphics.getBounds().x;
+    float lineHeight = (bounds.height - TEXT_PADDING) / lines;
+    float entryWidth = (bounds.width - 2 * TEXT_PADDING) / 3;
+    float shortEntryWidth = (bounds.width - 4 * TEXT_PADDING) / 5;
+    float firstColumnX = bounds.x;
     float secondColumnX = firstColumnX + entryWidth + TEXT_PADDING;
     float thirdColumnX = secondColumnX + entryWidth + TEXT_PADDING;
 
-    float firstRowY = (int) (graphics.getBounds().getMaxY() - lineHeight);
+    float firstRowY = (int) (bounds.getMaxY() - lineHeight);
     String conceptContent = reportContent.getDescription().getConceptText();
     String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
     if (characterType.isExaltType()) {
@@ -66,12 +67,12 @@ public class ExtendedPersonalInfoBoxEncoder extends AbstractPdfEncoder implement
                              getLabel("Nature");
     //$NON-NLS-1$ //$NON-NLS-2$
     drawLabelledContent(graphics.getDirectContent(), motivationLabel, motivationContent, new Position(firstColumnX, secondRowY),
-      graphics.getBounds().width);
+      bounds.width);
 
     float thirdRowY = secondRowY - lineHeight;
     float[] shortColumnX = new float[5];
     for (int i = 0; i < 5; i++) {
-      shortColumnX[i] = graphics.getBounds().x + i * (shortEntryWidth + TEXT_PADDING);
+      shortColumnX[i] = bounds.x + i * (shortEntryWidth + TEXT_PADDING);
     }
     String ageContent = Integer.toString(reportContent.getCharacter().getAge());
     drawLabelledContent(graphics.getDirectContent(), getLabel("Age"), ageContent, new Position(shortColumnX[0], thirdRowY),
@@ -93,7 +94,7 @@ public class ExtendedPersonalInfoBoxEncoder extends AbstractPdfEncoder implement
       float fourthRowY = thirdRowY - lineHeight;
       String animaContent = null;
       drawLabelledContent(graphics.getDirectContent(), getLabel("Anima"), animaContent, new Position(firstColumnX, fourthRowY),
-        graphics.getBounds().width); //$NON-NLS-1$
+        bounds.width); //$NON-NLS-1$
     }
   }
 

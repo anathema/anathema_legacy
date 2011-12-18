@@ -53,13 +53,13 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IBoxContentEn
     return baseFont;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    float powerHeight = graphics.getBounds().getHeight() - AnimaTableEncoder.TABLE_HEIGHT - IVoidStateFormatConstants.TEXT_PADDING / 2f;
-    Bounds animaPowerBounds = new Bounds(graphics.getBounds().getMinX(), graphics.getBounds().getMaxY() - powerHeight,
-      graphics.getBounds().getWidth(), powerHeight);
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    float powerHeight = bounds.getHeight() - AnimaTableEncoder.TABLE_HEIGHT - IVoidStateFormatConstants.TEXT_PADDING / 2f;
+    Bounds animaPowerBounds = new Bounds(bounds.getMinX(), bounds.getMaxY() - powerHeight,
+      bounds.getWidth(), powerHeight);
     encodeAnimaPowers(graphics.getDirectContent(), reportContent.getCharacter(), animaPowerBounds);
 
-    Bounds animaTableBounds = new Bounds(graphics.getBounds().getMinX(), graphics.getBounds().getMinY(), graphics.getBounds().getWidth(),
+    Bounds animaTableBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(),
       AnimaTableEncoder.TABLE_HEIGHT);
     tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, animaTableBounds);
   }

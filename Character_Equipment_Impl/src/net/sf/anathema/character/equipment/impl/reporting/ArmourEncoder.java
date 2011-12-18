@@ -29,12 +29,12 @@ public class ArmourEncoder implements IBoxContentEncoder {
     return "ArmourSoak"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent content) throws DocumentException {
-    float tableHeight = encoder.encodeTable(graphics.getDirectContent(), content, graphics.getBounds());
-    float remainingHeight = graphics.getBounds().getHeight() - tableHeight;
-    float delimitingLineYPosition = graphics.getBounds().getMinY() + remainingHeight - 3;
-    drawDelimiter(graphics.getDirectContent(), graphics.getBounds(), delimitingLineYPosition);
-    Bounds shieldBounds = new Bounds(graphics.getBounds().getMinX(), graphics.getBounds().getMinY(), graphics.getBounds().getWidth(),
+  public void encode(PdfGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
+    float tableHeight = encoder.encodeTable(graphics.getDirectContent(), content, bounds);
+    float remainingHeight = bounds.getHeight() - tableHeight;
+    float delimitingLineYPosition = bounds.getMinY() + remainingHeight - 3;
+    drawDelimiter(graphics.getDirectContent(), bounds, delimitingLineYPosition);
+    Bounds shieldBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(),
         remainingHeight - 6);
     new ShieldTableEncoder(baseFont, resources).encodeTable(graphics.getDirectContent(), content, shieldBounds);
   }

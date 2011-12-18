@@ -102,17 +102,17 @@ public class PdfMagicEncoder implements IBoxContentEncoder {
     return headerKey; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    float top = graphics.getBounds().getMinY();
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    float top = bounds.getMinY();
     for (ITableEncoder additionalTable : additionalTables) {
       if (additionalTable.hasContent(reportContent)) {
-        Bounds tableBounds = new Bounds(graphics.getBounds().getMinX(), top, graphics.getBounds().getWidth(), graphics.getBounds().getMaxY() - top);
+        Bounds tableBounds = new Bounds(bounds.getMinX(), top, bounds.getWidth(), bounds.getMaxY() - top);
         float tableHeight = additionalTable.encodeTable(graphics.getDirectContent(), reportContent, tableBounds);
         top += tableHeight + IVoidStateFormatConstants.PADDING;
       }
     }
 
-    Bounds remainingBounds = new Bounds(graphics.getBounds().getMinX(), top, graphics.getBounds().getWidth(), graphics.getBounds().getMaxY() - top);
+    Bounds remainingBounds = new Bounds(bounds.getMinX(), top, bounds.getWidth(), bounds.getMaxY() - top);
     tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, remainingBounds);
   }
 

@@ -47,9 +47,9 @@ public class FirstEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
     return TableEncodingUtilities.createFont(baseFont);
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
-    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), virtueFlaw.getLimitTrait().getCurrentValue());
+    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     Phrase phrase = new Phrase();
     String virtue;

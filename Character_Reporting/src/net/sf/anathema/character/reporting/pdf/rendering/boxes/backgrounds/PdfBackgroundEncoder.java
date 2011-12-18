@@ -31,23 +31,23 @@ public class PdfBackgroundEncoder implements IBoxContentEncoder {
     return "Backgrounds"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    float yPosition = graphics.getBounds().getMaxY() - LINE_HEIGHT;
+  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    float yPosition = bounds.getMaxY() - LINE_HEIGHT;
     boolean printZeroBackgrounds = AnathemaCharacterPreferences.getDefaultPreferences().printZeroBackgrounds();
     for (IGenericTrait background : reportContent.getCharacter().getBackgrounds()) {
-      if (yPosition < graphics.getBounds().getMinY()) {
+      if (yPosition < bounds.getMinY()) {
         return;
       }
       if (!printZeroBackgrounds && background.getCurrentValue() == 0) {
         continue;
       }
       String backgroundName = getBackgroundName((IBackgroundInfo) background);
-      Position position = new Position(graphics.getBounds().x, yPosition);
+      Position position = new Position(bounds.x, yPosition);
       int value = background.getCurrentValue();
-      traitEncoder.encodeWithText(graphics.getDirectContent(), backgroundName, position, graphics.getBounds().width, value, 5);
+      traitEncoder.encodeWithText(graphics.getDirectContent(), backgroundName, position, bounds.width, value, 5);
       yPosition -= LINE_HEIGHT;
     }
-    encodeEmptyLines(graphics.getDirectContent(), graphics.getBounds(), yPosition);
+    encodeEmptyLines(graphics.getDirectContent(), bounds, yPosition);
   }
 
   private String getBackgroundName(IBackgroundInfo background) {
