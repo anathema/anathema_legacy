@@ -1,9 +1,6 @@
 package net.sf.anathema.character.impl.generic;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
@@ -42,6 +39,10 @@ import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfigu
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.lib.util.IdentifiedInteger;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class GenericCharacter implements IGenericCharacter {
 
@@ -143,7 +144,12 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   public String getPeripheralPool() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getPeripheralPool() : null;
+    try {
+      return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getPeripheralPool() : null;
+    }
+    catch (ContractFailedException e) {
+      return null;
+    }
   }
 
   public int getPeripheralPoolValue() {
@@ -151,7 +157,12 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   public String getPersonalPool() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getPersonalPool() : null;
+  try {
+      return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getPersonalPool() : null;
+    }
+    catch (ContractFailedException e) {
+      return null;
+    }
   }
 
   public int getPersonalPoolValue() {
@@ -271,8 +282,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   public boolean isMultipleEffectCharm(ICharm charm) {
     ISpecialCharmConfiguration charmConfiguration = statistics.getCharms().getSpecialCharmConfiguration(charm);
-    return charmConfiguration instanceof IMultipleEffectCharmConfiguration
-           && !(charmConfiguration instanceof ISubeffectCharmConfiguration);
+    return charmConfiguration instanceof IMultipleEffectCharmConfiguration && !(charmConfiguration instanceof ISubeffectCharmConfiguration);
   }
 
   public String[] getLearnedEffects(ICharm charm) {
