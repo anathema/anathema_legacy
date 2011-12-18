@@ -3,7 +3,6 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -13,7 +12,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAtt
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.ExtendedPersonalInfoBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.PdfVirtueEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -123,7 +122,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeVirtues(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, new PdfVirtueEncoder(getResources(), getBaseFont()), 2, 1, distanceFromTop, height);
+    return encodeFixedBox(directContent, content, new VirtueBoxContentEncoder(getResources(), getBaseFont()), 2, 1, distanceFromTop, height);
   }
 
   private float encodeWillpowerDots(PdfContentByte directContent, ReportContent content, float distanceFromTop,
