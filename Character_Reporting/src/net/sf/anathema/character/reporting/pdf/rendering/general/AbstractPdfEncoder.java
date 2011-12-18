@@ -9,7 +9,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
-public abstract class AbstractPdfEncoder {
+public abstract class AbstractPdfEncoder implements ITextMetrics {
 
   protected abstract BaseFont getBaseFont();
 
@@ -21,11 +21,13 @@ public abstract class AbstractPdfEncoder {
     directContent.setFontAndSize(getBaseFont(), IVoidStateFormatConstants.FONT_SIZE);
   }
 
-  protected final int getDefaultTextWidth(String text) {
+  @Override
+  public final int getDefaultTextWidth(String text) {
     return (int) getBaseFont().getWidthPoint(text, IVoidStateFormatConstants.FONT_SIZE);
   }
 
-  protected final int getCommentTextWidth(String text) {
+  @Override
+  public final int getCommentTextWidth(String text) {
     return (int) getBaseFont().getWidthPoint(text, IVoidStateFormatConstants.COMMENT_FONT_SIZE);
   }
 

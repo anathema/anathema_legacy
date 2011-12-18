@@ -11,8 +11,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
+
+import static com.lowagie.text.pdf.PdfContentByte.ALIGN_RIGHT;
 
 public class SimpleEssenceBoxContentEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
 
@@ -38,46 +39,43 @@ public class SimpleEssenceBoxContentEncoder extends AbstractPdfEncoder implement
   }
 
   public void encode(PdfGraphics graphics, ReportContent reportContent) throws DocumentException {
-    String personalPool = null, peripheralPool = null;
+    String personalPool = null;
+    String peripheralPool = null;
     try {
       personalPool = reportContent.getCharacter().getPersonalPool();
       peripheralPool = reportContent.getCharacter().getPeripheralPool();
     }
     catch (ContractFailedException e) {
     }
+    float traitHeight = largeTraitEncoder.getTraitHeight();
     int numberOfLines = (personalPool == null ? 0 : 1) + (peripheralPool == null ? 0 : 1);
-    float poolHeight = graphics.getBounds().height - largeTraitEncoder.getTraitHeight() - IVoidStateFormatConstants.TEXT_PADDING;
-    float poolLineHeight = poolHeight / 2;
-    int offset = (int) ((2 - numberOfLines) * (poolLineHeight / 2));
+    SimpleEssenceBoxLayout layout = new SimpleEssenceBoxLayout(this, graphics.getBounds(), traitHeight, numberOfLines);
     int value = reportContent.getCharacter().getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
-    Position essencePosition = new Position(graphics.getBounds().x, graphics.getBounds().y + graphics.getBounds().height - largeTraitEncoder
-      .getTraitHeight() - offset);
+    Position essencePosition = layout.getEssencePosition();
     largeTraitEncoder.encodeDotsCenteredAndUngrouped(graphics.getDirectContent(), essencePosition, graphics.getBounds().width, value, essenceMax);
 
     if (personalPool != null) {
-      Position personalPosition = new Position(graphics.getBounds().x, essencePosition.y - poolLineHeight);
+      Position personalPosition = layout.getFirstPoolPosition();
       String personalLabel = resources.getString("Sheet.Essence.PersonalPool"); //$NON-NLS-1$
-      encodePool(graphics.getDirectContent(), personalLabel, personalPool, personalPosition, graphics.getBounds().width);
+      encodePool(graphics.getDirectContent(), personalLabel, personalPool, personalPosition, layout);
     }
 
     if (peripheralPool != null) {
-      Position peripheralPosition = new Position(graphics.getBounds().x, essencePosition.y - (numberOfLines == 1 ? 1 : 2) * poolLineHeight);
+      Position peripheralPosition = numberOfLines == 1 ? layout.getFirstPoolPosition() : layout.getSecondPoolPosition();
       String peripheralLabel = resources.getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
-      encodePool(graphics.getDirectContent(), peripheralLabel, peripheralPool, peripheralPosition, graphics.getBounds().width);
+      encodePool(graphics.getDirectContent(), peripheralLabel, peripheralPool, peripheralPosition, layout);
     }
   }
 
-  private void encodePool(PdfContentByte directContent, String label, String poolValue, Position poolPosition, float width) {
+  private void encodePool(PdfContentByte directContent, String label, String poolValue, Position poolPosition, SimpleEssenceBoxLayout layout) {
     drawText(directContent, label, poolPosition, PdfContentByte.ALIGN_LEFT);
     String availableString = " " + resources.getString("Sheet.Essence.Available"); //$NON-NLS-1$ //$NON-NLS-2$
-    float availableTextWidth = getDefaultTextWidth(availableString);
-    Position availablePosition = new Position(poolPosition.x + width, poolPosition.y);
-    drawText(directContent, availableString, availablePosition, PdfContentByte.ALIGN_RIGHT);
-    float lineLength = 10;
-    Position lineStartPoint = new Position((int) (availablePosition.x - availableTextWidth - lineLength), poolPosition.y);
-    drawMissingTextLine(directContent, lineStartPoint, lineLength);
+    Position availablePosition = layout.getAvailabilityPositionRightAligned(poolPosition);
+    drawText(directContent, availableString, availablePosition, ALIGN_RIGHT);
+    Position lineStartPoint = layout.getAvailabilityLineStartPosition(poolPosition, availableString);
+    drawMissingTextLine(directContent, lineStartPoint, layout.getAvailabilityLineLength());
     String totalString = poolValue + " " + resources.getString("Sheet.Essence.Total") + " / "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-    drawText(directContent, totalString, lineStartPoint, PdfContentByte.ALIGN_RIGHT);
+    drawText(directContent, totalString, lineStartPoint, ALIGN_RIGHT);
   }
 
   public boolean hasContent(ReportContent content) {
