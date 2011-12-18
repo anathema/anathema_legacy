@@ -147,7 +147,7 @@ public class Extended2ndEditionLunarAdditionalPageEncoder implements IPdfPageEnc
   private void encodeKnacks(PdfContentByte directContent, ReportContent content, float distanceFromTop,
     int height) throws DocumentException {
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new KnackEncoder(resources, baseFont);
+    IBoxContentEncoder encoder = new KnackEncoder(baseFont);
     boxEncoder.encodeBox(content, directContent, encoder, bounds);
   }
 

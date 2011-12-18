@@ -15,40 +15,43 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContent;
+import net.sf.anathema.character.reporting.pdf.content.essence.pools.PoolRow;
+import net.sf.anathema.character.reporting.pdf.content.essence.recovery.RecoveryRow;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.awt.*;
+import java.util.List;
 
-public class EssenceTableEncoder implements ITableEncoder<ReportContent> {
+import static com.lowagie.text.Element.ALIGN_CENTER;
+import static com.lowagie.text.Element.ALIGN_MIDDLE;
+import static com.lowagie.text.Element.ALIGN_RIGHT;
+import static net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder.DOT_PADDING;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.BARE_LINE_HEIGHT;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
+
+public class EssenceTableEncoder implements ITableEncoder<ExtendedEssenceContent> {
   protected static float PADDING = 1f;
   protected static float DOTS_WIDTH = 130f;
 
-  private final IResources resources;
-  private final int essenceMax;
   private final Font font;
   private Font boldFont;
   private Font commentFont;
   private PdfPCell spaceCell;
   private PdfPCell internalSpaceCell;
   private PdfTraitEncoder traitEncoder;
-  private String[] specialRecoveryRows;
 
   private static final int HEADER_BORDER = Rectangle.NO_BORDER;
   private static final int INTERNAL_BORDER = Rectangle.BOX;
   private static final int LABEL_BORDER = Rectangle.BOX;
 
-  public EssenceTableEncoder(IResources resources, BaseFont baseFont, int essenceMax, String... specialRecoveryRows) {
-    this.resources = resources;
+  public EssenceTableEncoder(BaseFont baseFont) {
     this.font = TableEncodingUtilities.createFont(baseFont);
     this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
     this.boldFont = TableEncodingUtilities.createBoldFont(baseFont);
@@ -57,8 +60,6 @@ public class EssenceTableEncoder implements ITableEncoder<ReportContent> {
     this.internalSpaceCell = new PdfPCell(new Phrase(" ", font));
     this.internalSpaceCell.setBorder(INTERNAL_BORDER);
     this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
-    this.essenceMax = essenceMax;
-    this.specialRecoveryRows = specialRecoveryRows;
   }
 
   protected Float[] getEssenceColumns() {
@@ -69,33 +70,16 @@ public class EssenceTableEncoder implements ITableEncoder<ReportContent> {
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(getEssenceColumns());
   }
 
-  public final float encodeTable(PdfContentByte directContent, ReportContent content, Bounds bounds) throws DocumentException {
+  public final float encodeTable(PdfContentByte directContent, ExtendedEssenceContent content, Bounds bounds) throws DocumentException {
     return encodeTable(directContent, content, bounds, false);
   }
 
-  public final float getTableHeight(ReportContent content, float width) throws DocumentException {
-    IGenericCharacter character = content.getCharacter();
-    int pools = 0;
-    if (character.getPersonalPoolValue() > 0) {
-      pools++;
-    }
-    if (character.getPeripheralPoolValue() > 0) {
-      pools++;
-    }
-    if (character.getOverdrivePoolValue() > 0) {
-      pools++;
-    }
-    for (IdentifiedInteger pool : character.getComplexPools()) {
-      if (pool.getValue() > 0) {
-        pools++;
-      }
-    }
-
-    int lines = 1 + Math.max(pools, 5 + specialRecoveryRows.length);
-    return traitEncoder.getTraitHeight() + lines * IVoidStateFormatConstants.BARE_LINE_HEIGHT + 1.75f * IVoidStateFormatConstants.TEXT_PADDING;
+  public final float getTableHeight(ExtendedEssenceContent content, float width) throws DocumentException {
+    int lines = content.getOverallLineCount();
+    return traitEncoder.getTraitHeight() + lines * BARE_LINE_HEIGHT + 1.75f * TEXT_PADDING;
   }
 
-  protected final float encodeTable(PdfContentByte directContent, ReportContent content, Bounds bounds,
+  protected final float encodeTable(PdfContentByte directContent, ExtendedEssenceContent content, Bounds bounds,
     boolean simulate) throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
     PdfPTable table = createTable(directContent, content);
@@ -110,169 +94,93 @@ public class EssenceTableEncoder implements ITableEncoder<ReportContent> {
     return character.getTraitCollection();
   }
 
-  protected final PdfPTable createTable(PdfContentByte directContent, ReportContent content) throws DocumentException {
-    IGenericCharacter character = content .getCharacter();
+  protected final PdfPTable createTable(PdfContentByte directContent, ExtendedEssenceContent content) throws DocumentException {
     float[] columnWidth = createColumnWidth();
     PdfPTable table = new PdfPTable(columnWidth);
-    addEssenceHeader(table, createDots(directContent, character, DOTS_WIDTH));
-    addEssencePoolRows(table, character);
+    addEssenceHeader(table, createDots(directContent, content, DOTS_WIDTH), content);
+    addEssencePoolRows(table, content);
     return table;
   }
 
-  protected final Image createDots(PdfContentByte directContent, IGenericCharacter character, float width) throws BadElementException {
+  protected final Image createDots(PdfContentByte directContent, ExtendedEssenceContent content, float width) throws BadElementException {
     PdfTemplate dotsTemplate = directContent.createTemplate(width, traitEncoder.getTraitHeight());
-    int value = character.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
-    traitEncoder.encodeDotsCenteredAndUngrouped(dotsTemplate, new Position(0, PdfTraitEncoder.DOT_PADDING), width, value, essenceMax);
+    int value = content.getEssenceValue();
+    traitEncoder.encodeDotsCenteredAndUngrouped(dotsTemplate, new Position(0, DOT_PADDING), width, value, content.getEssenceMax());
     return Image.getInstance(dotsTemplate);
   }
 
-  protected final void addEssenceHeader(PdfPTable table, Image firstCell) {
+  private final void addEssenceHeader(PdfPTable table, Image firstCell, ExtendedEssenceContent content) {
     PdfPCell headerCell = new TableCell(firstCell);
     headerCell.setColspan(4);
     table.addCell(headerCell);
     table.addCell(spaceCell);
-    table.addCell(createBigHeaderCell(getResources().getString("Sheet.Essence.Regaining"), 3)); //$NON-NLS-1$
+    table.addCell(createBigHeaderCell(content.getRegainHeaderLabel(), 3));
 
     table.addCell(spaceCell);
-    table.addCell(createHeaderCell(getResources().getString("Sheet.Essence.Total"), 1)); //$NON-NLS-1$
-    table.addCell(createHeaderCell(getResources().getString("Sheet.Essence.Committed"), 1)); //$NON-NLS-1$
-    table.addCell(createHeaderCell(getResources().getString("Sheet.Essence.Available"), 1)); //$NON-NLS-1$
+    table.addCell(createHeaderCell(content.getEssenceTotalHeaderLabel(), 1));
+    table.addCell(createHeaderCell(content.getCommittedHeaderLabel(), 1));
+    table.addCell(createHeaderCell(content.getAvailableHeaderLabel(), 1));
     table.addCell(spaceCell);
     table.addCell(spaceCell);
-    table.addCell(createHeaderCell(getResources().getString("Sheet.Essence.AtEase"), 1)); //$NON-NLS-1$
-    table.addCell(createHeaderCell(getResources().getString("Sheet.Essence.Relaxed"), 1)); //$NON-NLS-1$
+    table.addCell(createHeaderCell(content.getAtEaseHeaderLabel(), 1));
+    table.addCell(createHeaderCell(content.getRelaxHeaderLabel(), 1));
   }
 
-  private void addEssencePoolRows(PdfPTable table, IGenericCharacter character) {
-    int personalPool = character.getPersonalPoolValue();
-    int peripheralPool = character.getPeripheralPoolValue();
-    int overdrivePool = character.getOverdrivePoolValue();
-    IdentifiedInteger[] complexPools = character.getComplexPools();
-
-    int committed = character.getAttunedPoolValue();
-    int peripheralCommitted = Math.min(peripheralPool, committed);
-    int personalCommitted = committed - peripheralCommitted;
-
-    int row = 1;
-    if (personalPool > 0) {
-      String personalLabel = resources.getString("Sheet.Essence.PersonalPool"); //$NON-NLS-1$
-      addPoolRow(table, personalLabel, personalPool, personalCommitted, row++);
-    }
-
-    if (peripheralPool > 0) {
-      String peripheralLabel = resources.getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
-      addPoolRow(table, peripheralLabel, peripheralPool, peripheralCommitted, row++);
-    }
-
-    if (overdrivePool > 0) {
-      String overdriveLabel = resources.getString("Sheet.Essence.OverdrivePool"); //$NON-NLS-1$
-      addPoolRow(table, overdriveLabel, overdrivePool, null, row++);
-    }
-
-    for (IdentifiedInteger complexPool : complexPools) {
-      String poolId = complexPool.getId();
-      int poolValue = complexPool.getValue();
-      if (poolValue > 0) {
-        String poolLabel = resources.getString("Sheet.Essence." + poolId); //$NON-NLS-1$
-        addPoolRow(table, poolLabel, poolValue, null, row++);
-      }
-    }
-
-    while (row <= 5 + specialRecoveryRows.length) {
-      addPoolRow(table, null, 0, null, row++);
+  private void addEssencePoolRows(PdfPTable table, ExtendedEssenceContent content) {
+    List<PoolRow> poolRows = content.getPoolRows();
+    List<RecoveryRow> recoveryRows = content.getRecoveryRows();
+    for (int index = 0; index < content.getNumberOfContentLines(); index++) {
+      addPoolCells(table, poolRows.get(index));
+      addSeparator(table);
+      addRecoveryCells(table, recoveryRows.get(index));
     }
   }
 
-  private void addPoolRow(PdfPTable table, String poolLabel, int poolCapacity, Integer poolCommitted, int rowNumber) {
-    if (poolLabel != null) {
-      int poolAvailable = poolCapacity;
-      if (poolCommitted != null) {
-        poolAvailable -= poolCommitted;
-      }
-
-      PdfPCell labelCell = new TableCell(new Phrase(poolLabel, font), LABEL_BORDER, Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
-      table.addCell(labelCell);
-
-      PdfPCell totalCell = new TableCell(new Phrase(Integer.toString(poolCapacity) + " m", font), INTERNAL_BORDER, //$NON-NLS-1$
-        Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
-      table.addCell(totalCell);
-
-      PdfPCell committedCell;
-      if (poolCommitted != null) {
-        committedCell = new TableCell(new Phrase(poolCommitted.toString() + " m", font), INTERNAL_BORDER, //$NON-NLS-1$
-          Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
-      }
-      else {
-        committedCell = new TableCell(new Phrase(" ", font), INTERNAL_BORDER); //$NON-NLS-1$
-        committedCell.setBackgroundColor(Color.LIGHT_GRAY);
-      }
-      table.addCell(committedCell);
-
-      PdfPCell availableCell = new TableCell(new Phrase("/ " + Integer.toString(poolAvailable) + " m", font), INTERNAL_BORDER,
-        //$NON-NLS-1$ //$NON-NLS-2$
-        Element.ALIGN_RIGHT, Element.ALIGN_MIDDLE);
-      table.addCell(availableCell);
-    }
-    else {
-      table.addCell(spaceCell);
-      table.addCell(spaceCell);
-      table.addCell(spaceCell);
-      table.addCell(spaceCell);
-    }
-
+  private void addSeparator(PdfPTable table) {
     table.addCell(spaceCell);
-    if (rowNumber == 1) {
-      String label = getResources().getString("Sheet.Essence.NaturalRecovery"); //$NON-NLS-1$
-      table.addCell(new TableCell(new Phrase(label, font), INTERNAL_BORDER, Element.ALIGN_RIGHT, Element.ALIGN_MIDDLE));
-      table.addCell(new TableCell(new Phrase(Integer.valueOf(4).toString(), font), INTERNAL_BORDER, Element.ALIGN_CENTER, Element.ALIGN_MIDDLE));
-      table.addCell(new TableCell(new Phrase(Integer.valueOf(8).toString(), font), INTERNAL_BORDER, Element.ALIGN_CENTER, Element.ALIGN_MIDDLE));
-    }
-    else if (rowNumber - 6 >= specialRecoveryRows.length) {
-      table.addCell(spaceCell);
-      table.addCell(spaceCell);
-      table.addCell(spaceCell);
-    }
-    else {
-      String label;
-      switch (rowNumber) {
-        case 2:
-          label = getResources().getString("Sheet.Essence.Hearthstones"); //$NON-NLS-1$
-          break;
-        case 3:
-          label = getResources().getString("Sheet.Essence.Cult"); //$NON-NLS-1$
-          break;
-        case 4:
-          label = ""; //$NON-NLS-1$
-          break;
-        case 5:
-          label = getResources().getString("Sheet.Essence.TotalPerHour"); //$NON-NLS-1$
-          break;
-        default:
-          label = getResources().getString(specialRecoveryRows[rowNumber - 6]);
-          break;
-      }
-      PdfPCell cell = new TableCell(new Phrase(label, font), INTERNAL_BORDER, Element.ALIGN_RIGHT, Element.ALIGN_MIDDLE);
-      PdfPCell rowSpaceCell = internalSpaceCell;
-      if (rowNumber >= 5) {
-        cell.setBorderWidth(2f * cell.getBorderWidthTop());
+  }
 
-        rowSpaceCell = new PdfPCell(rowSpaceCell);
-        rowSpaceCell.setBorderWidth(2f * rowSpaceCell.getBorderWidthTop());
-      }
-      table.addCell(cell);
-      table.addCell(rowSpaceCell);
-      table.addCell(rowSpaceCell);
+  private void addRecoveryCells(PdfPTable table, RecoveryRow recoveryRow) {
+    String label = recoveryRow.getLabel();
+    String atEase = recoveryRow.getAtEase() != null ? String.valueOf(recoveryRow.getAtEase()) : " ";
+    String relaxed = recoveryRow.getRelaxed() != null ? String.valueOf(recoveryRow.getRelaxed()) : " ";
+    table.addCell(markCell(recoveryRow, new TableCell(new Phrase(label, font), INTERNAL_BORDER, ALIGN_RIGHT, ALIGN_MIDDLE)));
+    table.addCell(markCell(recoveryRow, new TableCell(new Phrase(atEase, font), INTERNAL_BORDER, ALIGN_CENTER, ALIGN_MIDDLE)));
+    table.addCell(markCell(recoveryRow, new TableCell(new Phrase(relaxed, font), INTERNAL_BORDER, ALIGN_CENTER, ALIGN_MIDDLE)));
+  }
+
+  private TableCell markCell(RecoveryRow recoveryRow, TableCell cell) {
+    if (recoveryRow.isMarked()) {
+      cell.setBorderWidth(cell.getBorderWidthTop() * 2f);
     }
+    return cell;
+  }
+
+  private void addPoolCells(PdfPTable table, PoolRow poolRow) {
+    Phrase labelPhrase = new Phrase(poolRow.getLabel(), font);
+    table.addCell(new TableCell(labelPhrase, LABEL_BORDER, ALIGN_CENTER, ALIGN_MIDDLE));
+
+    Phrase capacityPhrase = new Phrase(poolRow.getCapacity(), font);
+    table.addCell(new TableCell(capacityPhrase, INTERNAL_BORDER, ALIGN_CENTER, ALIGN_MIDDLE));
+
+    Phrase committedPhrase = new Phrase(poolRow.getCommitted(), font);
+    PdfPCell committedCell = new TableCell(committedPhrase, INTERNAL_BORDER, ALIGN_CENTER, ALIGN_MIDDLE);
+    if (!poolRow.isCommitmentEnabled()) {
+      committedCell.setBackgroundColor(Color.LIGHT_GRAY);
+    }
+    table.addCell(committedCell);
+    Phrase availablePhrase = new Phrase(poolRow.getAvailable(), font);
+    table.addCell(new TableCell(availablePhrase, INTERNAL_BORDER, ALIGN_RIGHT, ALIGN_MIDDLE));
   }
 
   protected final PdfPCell createHeaderCell(String text, int columnSpan) {
-    PdfPCell cell = new TableCell(new Phrase(text, font), HEADER_BORDER, Element.ALIGN_CENTER, Element.ALIGN_BOTTOM);
+    PdfPCell cell = new TableCell(new Phrase(text, font), HEADER_BORDER, ALIGN_CENTER, Element.ALIGN_BOTTOM);
     cell.setColspan(columnSpan);
     return cell;
   }
 
   protected final PdfPCell createBigHeaderCell(String text, int columnSpan) {
-    PdfPCell cell = new TableCell(new Phrase(text, boldFont), HEADER_BORDER, Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
+    PdfPCell cell = new TableCell(new Phrase(text, boldFont), HEADER_BORDER, ALIGN_CENTER, ALIGN_MIDDLE);
     cell.setColspan(columnSpan);
     return cell;
   }
@@ -281,11 +189,7 @@ public class EssenceTableEncoder implements ITableEncoder<ReportContent> {
     return commentFont;
   }
 
-  protected final IResources getResources() {
-    return resources;
-  }
-
-  public boolean hasContent(ReportContent content) {
-    return true;
+  public boolean hasContent(ExtendedEssenceContent content) {
+    return content.hasContent();
   }
 }

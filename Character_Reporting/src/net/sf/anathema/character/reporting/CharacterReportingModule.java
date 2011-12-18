@@ -2,6 +2,10 @@ package net.sf.anathema.character.reporting;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleAdapter;
+import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
+import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
+import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContent;
+import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContent;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContentFactory;
 import net.sf.anathema.lib.resources.IResources;
@@ -19,6 +23,8 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
   }
 
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    moduleObject.getReportContentRegistry().addFactory(VirtueContent.class, new VirtueContentFactory(resources));
+    ReportContentRegistry registry = moduleObject.getReportContentRegistry();
+    registry.addFactory(VirtueContent.class, new VirtueContentFactory(resources));
+    registry.addFactory(ExtendedEssenceContent.class, new ExtendedEssenceContentFactory(resources));
   }
 }
