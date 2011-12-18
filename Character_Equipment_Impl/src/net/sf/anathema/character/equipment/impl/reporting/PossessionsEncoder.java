@@ -4,6 +4,7 @@ import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.character.*;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
 
 import com.lowagie.text.Chunk;
@@ -17,7 +18,7 @@ public class PossessionsEncoder extends AbstractLineTextEncoder {
     super(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Possessions"; //$NON-NLS-1$
   }
 

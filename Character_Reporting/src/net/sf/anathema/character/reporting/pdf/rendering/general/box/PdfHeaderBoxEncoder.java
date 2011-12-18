@@ -6,8 +6,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfBoxEncoder.ARCSPACE;
-import static net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfBoxEncoder.HEADER_HEIGHT;
+import static net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxEncoder.ARCSPACE;
+import static net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxEncoder.HEADER_HEIGHT;
 
 public class PdfHeaderBoxEncoder extends AbstractPdfEncoder {
   private static final int HEADER_FONT_PADDING = 3;

@@ -3,15 +3,15 @@ package net.sf.anathema.character.equipment.impl.reporting;
 import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
-public class WeaponryEncoder implements IPdfContentBoxEncoder {
+public class WeaponryEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;
@@ -31,29 +31,29 @@ public class WeaponryEncoder implements IPdfContentBoxEncoder {
 	    this.customEncoder = customEncoder;
 	  }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Weapons"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, final IGenericCharacter character, IGenericDescription description, Bounds bounds)
+  public void encode(Graphics graphics, final ReportContent content)
       throws DocumentException {
     final AbstractWeaponryTableEncoder[] encoder = new AbstractWeaponryTableEncoder[1];
-    character.getRules().getEdition().accept(new IEditionVisitor() {
+    content.getCharacter().getRules().getEdition().accept(new IEditionVisitor() {
       public void visitFirstEdition(IExaltedEdition visitedEdition) {
-        encoder[0] = new FirstEditionWeaponryTableEncoder(baseFont, resources, character.getEquipmentModifiers());
+        encoder[0] = new FirstEditionWeaponryTableEncoder(baseFont, resources, content.getCharacter().getEquipmentModifiers());
       }
 
       public void visitSecondEdition(IExaltedEdition visitedEdition) {
-        encoder[0] = new SecondEditionWeaponryTableEncoder(baseFont, resources, character.getEquipmentModifiers());
+        encoder[0] = new SecondEditionWeaponryTableEncoder(baseFont, resources, content.getCharacter().getEquipmentModifiers());
       }
 
     });
     if (customEncoder != null)
     	encoder[0] = customEncoder;
-    encoder[0].encodeTable(directContent, character, bounds);
+    encoder[0].encodeTable(graphics.getDirectContent(), content, graphics.getBounds());
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

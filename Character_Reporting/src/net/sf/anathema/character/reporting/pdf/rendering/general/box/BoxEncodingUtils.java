@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.box;
 
 import com.lowagie.text.pdf.PdfContentByte;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfBoxEncoder.ARC_SIZE;
+import static net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxEncoder.ARC_SIZE;
 
 public class BoxEncodingUtils {
 

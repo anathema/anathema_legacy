@@ -84,7 +84,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
   }
 
   private float encodeShapeCenteredAndUngrouped(PdfContentByte directContent, Position position, float width, int value, int dotCount,
-                                                IShape shape) {
+    IShape shape) {
     initDirectContent(directContent);
     int dotWidth = dotCount * dotSize;
     final float dotSpacing = (width - dotWidth) / (dotCount + 1);
@@ -118,7 +118,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
   }
 
   public float encodeWithTextAndRectangle(PdfContentByte directContent, String text, Position position, float width, int value, boolean favored,
-                                          int dotCount) {
+    int dotCount) {
     initDirectContent(directContent);
     directContent.rectangle(position.x, position.y, dotSize, dotSize);
     commitShape(directContent, favored);
@@ -128,7 +128,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
   }
 
   public float encodeWithExcellencies(PdfContentByte directContent, String text, Position position, float width, int value, boolean favored,
-                                      boolean[] excellencyLearned, int dotCount) {
+    boolean[] excellencyLearned, int dotCount) {
     initDirectContent(directContent);
     for (int i = excellencyLearned.length; i > 0; i--) {
       String label = Integer.toString(i);

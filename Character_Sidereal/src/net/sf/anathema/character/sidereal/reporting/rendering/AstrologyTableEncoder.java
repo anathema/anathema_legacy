@@ -1,6 +1,7 @@
 package net.sf.anathema.character.sidereal.reporting.rendering;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
@@ -30,7 +31,7 @@ public class AstrologyTableEncoder extends AbstractTableEncoder {
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
+  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds)
       throws DocumentException {
     TableList list = new TableList(font, new CellPadding(2, 0, 1, 1));
     TableCell spaceCell = new TableCell(new Phrase(" ", commentFont), Rectangle.NO_BORDER); //$NON-NLS-1$

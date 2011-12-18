@@ -5,8 +5,9 @@ import java.awt.Color;
 import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
@@ -16,9 +17,8 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
-public class ParadoxInfoEncoder implements IPdfContentBoxEncoder {
+public class ParadoxInfoEncoder implements IBoxContentEncoder {
 
   private final IExaltedEdition edition;
   private final BaseFont basefont;
@@ -37,7 +37,7 @@ public class ParadoxInfoEncoder implements IPdfContentBoxEncoder {
     this.edition = edition;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
 	  String animaResource = edition == ExaltedEdition.FirstEdition ?
 			  "Sheet.Paradox.AnimaHigh" : "Sheet.Paradox.AnimaHigh2nd";
     Phrase phrase = new Phrase("", new Font(basefont, fontSize, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
@@ -55,14 +55,14 @@ public class ParadoxInfoEncoder implements IPdfContentBoxEncoder {
     phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendent") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendentImitation") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendentSupernatural") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, lineHeight);
+    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, graphics.getBounds(), lineHeight);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Sidereal.Paradox"; //$NON-NLS-1$
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

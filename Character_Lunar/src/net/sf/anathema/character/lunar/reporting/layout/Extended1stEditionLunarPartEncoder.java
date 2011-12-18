@@ -2,7 +2,7 @@ package net.sf.anathema.character.lunar.reporting.layout;
 
 import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.FirstEditionLunarGreatCurseEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.anima.LunarAnimaEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
@@ -18,12 +18,12 @@ public class Extended1stEditionLunarPartEncoder extends AbstractFirstEditionExal
     this.registry = registry;
   }
 
-  public IPdfContentBoxEncoder getGreatCurseEncoder() {
+  public IBoxContentEncoder getGreatCurseEncoder() {
     return new FirstEditionLunarGreatCurseEncoder(getBaseFont(), getSymbolBaseFont(), getResources());
   }
 
   @Override
-  public IPdfContentBoxEncoder getAnimaEncoder() {
+  public IBoxContentEncoder getAnimaEncoder() {
     return new LunarAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
   }
 

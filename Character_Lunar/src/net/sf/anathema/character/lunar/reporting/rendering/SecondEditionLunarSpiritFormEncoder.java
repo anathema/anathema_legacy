@@ -6,7 +6,6 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
@@ -15,16 +14,18 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.model.SecondEditionBeastformModel;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SecondEditionLunarSpiritFormEncoder implements IPdfContentBoxEncoder {
+public class SecondEditionLunarSpiritFormEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
   private final PdfTraitEncoder smallTraitEncoder;
@@ -36,17 +37,17 @@ public class SecondEditionLunarSpiritFormEncoder implements IPdfContentBoxEncode
     this.baseFont = baseFont;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Lunar.SpiritForm"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) {
-    IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
-    SecondEditionBeastformModel additionalModel = (SecondEditionBeastformModel)
-    	character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
+  public void encode(Graphics graphics, ReportContent reportContent) {
+    IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
+    SecondEditionBeastformModel additionalModel = (SecondEditionBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate
+      .TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getSpiritTraitCollection();
-    encodeAttributes(directContent, bounds, attributeGroups, traitCollection);
-    encodeForm(directContent, bounds, additionalModel.getSpiritForm());
+    encodeAttributes(graphics.getDirectContent(), graphics.getBounds(), attributeGroups, traitCollection);
+    encodeForm(graphics.getDirectContent(), graphics.getBounds(), additionalModel.getSpiritForm());
   }
   
   private void encodeForm(PdfContentByte directContent, Bounds bounds, String form)
@@ -95,7 +96,7 @@ public class SecondEditionLunarSpiritFormEncoder implements IPdfContentBoxEncode
     }
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

@@ -1,24 +1,23 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.personal;
 
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
 
-public class ExtendedPersonalInfoBoxEncoder extends AbstractPdfEncoder implements IPdfVariableContentBoxEncoder {
+public class ExtendedPersonalInfoBoxEncoder extends AbstractPdfEncoder implements IVariableBoxContentEncoder {
 
   private final BaseFont baseFont;
   private final IResources resources;
@@ -28,63 +27,73 @@ public class ExtendedPersonalInfoBoxEncoder extends AbstractPdfEncoder implement
     this.resources = resources;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds infoBounds) {
-    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+  public void encode(Graphics graphics, ReportContent reportContent) {
+    ICharacterType characterType = reportContent.getCharacter().getTemplate().getTemplateType().getCharacterType();
 
     int lines = getNumberOfLines(characterType);
 
-    float lineHeight = (infoBounds.height - TEXT_PADDING) / lines;
-    float entryWidth = (infoBounds.width - 2 * TEXT_PADDING) / 3;
-    float shortEntryWidth = (infoBounds.width - 4 * TEXT_PADDING) / 5;
-    float firstColumnX = infoBounds.x;
+    float lineHeight = (graphics.getBounds().height - TEXT_PADDING) / lines;
+    float entryWidth = (graphics.getBounds().width - 2 * TEXT_PADDING) / 3;
+    float shortEntryWidth = (graphics.getBounds().width - 4 * TEXT_PADDING) / 5;
+    float firstColumnX = graphics.getBounds().x;
     float secondColumnX = firstColumnX + entryWidth + TEXT_PADDING;
     float thirdColumnX = secondColumnX + entryWidth + TEXT_PADDING;
 
-    float firstRowY = (int) (infoBounds.getMaxY() - lineHeight);
-    String conceptContent = description.getConceptText();
+    float firstRowY = (int) (graphics.getBounds().getMaxY() - lineHeight);
+    String conceptContent = reportContent.getDescription().getConceptText();
     String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
     if (characterType.isExaltType()) {
-      drawLabelledContent(directContent, conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), entryWidth);
-      String casteContent = getCasteString(character.getConcept().getCasteType());
-      drawLabelledContent(directContent, getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, firstRowY),
-                          entryWidth); //$NON-NLS-1$
+      drawLabelledContent(graphics.getDirectContent(), conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), entryWidth);
+      String casteContent = getCasteString(reportContent.getCharacter().getConcept().getCasteType());
+      drawLabelledContent(graphics.getDirectContent(), getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX,
+        firstRowY), entryWidth); //$NON-NLS-1$
     }
     else {
-      drawLabelledContent(directContent, conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), 2 * entryWidth + TEXT_PADDING);
+      drawLabelledContent(graphics.getDirectContent(), conceptLabel, conceptContent, new Position(firstColumnX, firstRowY),
+        2 * entryWidth + TEXT_PADDING);
     }
-    IExaltedRuleSet rules = character.getRules();
+    IExaltedRuleSet rules = reportContent.getCharacter().getRules();
     String rulesContent = rules == null ? null : resources.getString("Ruleset." + rules.getId()); //$NON-NLS-1$
-    drawLabelledContent(directContent, getLabel("Rules"), rulesContent, new Position(thirdColumnX, firstRowY), entryWidth); //$NON-NLS-1$
+    drawLabelledContent(graphics.getDirectContent(), getLabel("Rules"), rulesContent, new Position(thirdColumnX, firstRowY),
+      entryWidth); //$NON-NLS-1$
     /*drawLabelledContent(
         directContent,
         getLabel("Player"), description.getPlayer(), new Position(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$*/
 
     float secondRowY = firstRowY - lineHeight;
-    String motivationContent = character.getConcept().getWillpowerRegainingComment(resources);
-    String motivationLabel = character.getRules().getEdition() == ExaltedEdition.SecondEdition ? getLabel("Motivation") : getLabel("Nature");
+    String motivationContent = reportContent.getCharacter().getConcept().getWillpowerRegainingComment(resources);
+    String motivationLabel = reportContent.getCharacter().getRules().getEdition() == ExaltedEdition.SecondEdition ? getLabel("Motivation") :
+                             getLabel("Nature");
     //$NON-NLS-1$ //$NON-NLS-2$
-    drawLabelledContent(directContent, motivationLabel, motivationContent, new Position(firstColumnX, secondRowY), infoBounds.width);
+    drawLabelledContent(graphics.getDirectContent(), motivationLabel, motivationContent, new Position(firstColumnX, secondRowY),
+      graphics.getBounds().width);
 
     float thirdRowY = secondRowY - lineHeight;
     float[] shortColumnX = new float[5];
     for (int i = 0; i < 5; i++) {
-      shortColumnX[i] = infoBounds.x + i * (shortEntryWidth + TEXT_PADDING);
+      shortColumnX[i] = graphics.getBounds().x + i * (shortEntryWidth + TEXT_PADDING);
     }
-    String ageContent = Integer.toString(character.getAge());
-    drawLabelledContent(directContent, getLabel("Age"), ageContent, new Position(shortColumnX[0], thirdRowY), shortEntryWidth); //$NON-NLS-1$
-    String sexContent = description.getSex();
-    drawLabelledContent(directContent, getLabel("Sex"), sexContent, new Position(shortColumnX[1], thirdRowY), shortEntryWidth); //$NON-NLS-1$
-    String hairContent = description.getHair();
-    drawLabelledContent(directContent, getLabel("Hair"), hairContent, new Position(shortColumnX[2], thirdRowY), shortEntryWidth); //$NON-NLS-1$
-    String skinContent = description.getSkin();
-    drawLabelledContent(directContent, getLabel("Skin"), skinContent, new Position(shortColumnX[3], thirdRowY), shortEntryWidth); //$NON-NLS-1$
-    String eyesContent = description.getEyes();
-    drawLabelledContent(directContent, getLabel("Eyes"), eyesContent, new Position(shortColumnX[4], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    String ageContent = Integer.toString(reportContent.getCharacter().getAge());
+    drawLabelledContent(graphics.getDirectContent(), getLabel("Age"), ageContent, new Position(shortColumnX[0], thirdRowY),
+      shortEntryWidth); //$NON-NLS-1$
+    String sexContent = reportContent.getDescription().getSex();
+    drawLabelledContent(graphics.getDirectContent(), getLabel("Sex"), sexContent, new Position(shortColumnX[1], thirdRowY),
+      shortEntryWidth); //$NON-NLS-1$
+    String hairContent = reportContent.getDescription().getHair();
+    drawLabelledContent(graphics.getDirectContent(), getLabel("Hair"), hairContent, new Position(shortColumnX[2], thirdRowY),
+      shortEntryWidth); //$NON-NLS-1$
+    String skinContent = reportContent.getDescription().getSkin();
+    drawLabelledContent(graphics.getDirectContent(), getLabel("Skin"), skinContent, new Position(shortColumnX[3], thirdRowY),
+      shortEntryWidth); //$NON-NLS-1$
+    String eyesContent = reportContent.getDescription().getEyes();
+    drawLabelledContent(graphics.getDirectContent(), getLabel("Eyes"), eyesContent, new Position(shortColumnX[4], thirdRowY),
+      shortEntryWidth); //$NON-NLS-1$
 
     if (characterType.isExaltType()) {
       float fourthRowY = thirdRowY - lineHeight;
       String animaContent = null;
-      drawLabelledContent(directContent, getLabel("Anima"), animaContent, new Position(firstColumnX, fourthRowY), infoBounds.width); //$NON-NLS-1$
+      drawLabelledContent(graphics.getDirectContent(), getLabel("Anima"), animaContent, new Position(firstColumnX, fourthRowY),
+        graphics.getBounds().width); //$NON-NLS-1$
     }
   }
 
@@ -113,13 +122,13 @@ public class ExtendedPersonalInfoBoxEncoder extends AbstractPdfEncoder implement
   }
 
   @Override
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 
   @Override
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
-    String name = description.getName();
+  public String getHeaderKey(ReportContent content) {
+    String name = content.getDescription().getName();
     if (StringUtilities.isNullOrTrimEmpty(name)) {
       return "PersonalInfo"; //$NON-NLS-1$
     }
@@ -129,7 +138,7 @@ public class ExtendedPersonalInfoBoxEncoder extends AbstractPdfEncoder implement
   }
 
   @Override
-  public float getRequestedHeight(IGenericCharacter character, float width) {
-    return getNumberOfLines(character) * IVoidStateFormatConstants.BARE_LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
+  public float getRequestedHeight(ReportContent content, float width) {
+    return getNumberOfLines(content.getCharacter()) * IVoidStateFormatConstants.BARE_LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
   }
 }

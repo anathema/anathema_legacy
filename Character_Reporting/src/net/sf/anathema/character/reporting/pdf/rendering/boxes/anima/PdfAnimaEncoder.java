@@ -7,23 +7,24 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfLineEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
 
-public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
+public class PdfAnimaEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
 
   private final int fontSize;
   private final float lineHeight;
@@ -43,7 +44,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Anima"; //$NON-NLS-1$
   }
 
@@ -52,14 +53,15 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
     return baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds bounds) throws DocumentException {
-    float powerHeight = bounds.getHeight() - AnimaTableEncoder.TABLE_HEIGHT - IVoidStateFormatConstants.TEXT_PADDING / 2f;
-    Bounds animaPowerBounds = new Bounds(bounds.getMinX(), bounds.getMaxY() - powerHeight, bounds.getWidth(), powerHeight);
-    encodeAnimaPowers(directContent, character, animaPowerBounds);
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    float powerHeight = graphics.getBounds().getHeight() - AnimaTableEncoder.TABLE_HEIGHT - IVoidStateFormatConstants.TEXT_PADDING / 2f;
+    Bounds animaPowerBounds = new Bounds(graphics.getBounds().getMinX(), graphics.getBounds().getMaxY() - powerHeight,
+      graphics.getBounds().getWidth(), powerHeight);
+    encodeAnimaPowers(graphics.getDirectContent(), reportContent.getCharacter(), animaPowerBounds);
 
-    Bounds animaTableBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), AnimaTableEncoder.TABLE_HEIGHT);
-    tableEncoder.encodeTable(directContent, character, animaTableBounds);
+    Bounds animaTableBounds = new Bounds(graphics.getBounds().getMinX(), graphics.getBounds().getMinY(), graphics.getBounds().getWidth(),
+      AnimaTableEncoder.TABLE_HEIGHT);
+    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, animaTableBounds);
   }
 
   private void encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
@@ -68,8 +70,8 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
     // Add standard powers for character type
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     ListUtils.addBulletedListText(resources, symbolChunk, character.getRules().getEdition(), "Sheet.AnimaPower." + characterType.getId(),
-                                  //$NON-NLS-1$
-                                  phrase, false);
+      //$NON-NLS-1$
+      phrase, false);
 
     String casteResourceKey = "Sheet.AnimaPower." + character.getCasteType().getId() + "." + character.getRules().getEdition().getId();
     //$NON-NLS-1$ //$NON-NLS-2$
@@ -82,10 +84,10 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
     float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, lineHeight).getYLine();
     Position lineStartPosition = new Position((bounds.getMinX() + PdfEncodingUtilities.getCaretSymbolWidth(symbolBaseFont)), yPosition);
     PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, bounds.getMinX(), bounds.getMaxX(), lineHeight,
-                                                   1 + (int) ((yPosition - bounds.getMinY()) / lineHeight));
+      1 + (int) ((yPosition - bounds.getMinY()) / lineHeight));
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

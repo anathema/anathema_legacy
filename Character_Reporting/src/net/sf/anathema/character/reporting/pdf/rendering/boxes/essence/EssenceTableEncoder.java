@@ -16,11 +16,12 @@ import com.lowagie.text.pdf.PdfTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
@@ -68,11 +69,12 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(getEssenceColumns());
   }
 
-  public final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    return encodeTable(directContent, character, bounds, false);
+  public final float encodeTable(PdfContentByte directContent, ReportContent content, Bounds bounds) throws DocumentException {
+    return encodeTable(directContent, content, bounds, false);
   }
 
-  public final float getTableHeight(IGenericCharacter character, float width) throws DocumentException {
+  public final float getTableHeight(ReportContent content, float width) throws DocumentException {
+    IGenericCharacter character = content.getCharacter();
     int pools = 0;
     if (character.getPersonalPoolValue() > 0) {
       pools++;
@@ -93,10 +95,10 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
     return traitEncoder.getTraitHeight() + lines * IVoidStateFormatConstants.BARE_LINE_HEIGHT + 1.75f * IVoidStateFormatConstants.TEXT_PADDING;
   }
 
-  protected final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds,
-                                    boolean simulate) throws DocumentException {
+  protected final float encodeTable(PdfContentByte directContent, ReportContent content, Bounds bounds,
+    boolean simulate) throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
-    PdfPTable table = createTable(directContent, character);
+    PdfPTable table = createTable(directContent, content);
     table.setWidthPercentage(100);
     tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
     tableColumn.addElement(table);
@@ -108,7 +110,8 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
     return character.getTraitCollection();
   }
 
-  protected final PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character) throws DocumentException {
+  protected final PdfPTable createTable(PdfContentByte directContent, ReportContent content) throws DocumentException {
+    IGenericCharacter character = content .getCharacter();
     float[] columnWidth = createColumnWidth();
     PdfPTable table = new PdfPTable(columnWidth);
     addEssenceHeader(table, createDots(directContent, character, DOTS_WIDTH));
@@ -191,13 +194,13 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
       table.addCell(labelCell);
 
       PdfPCell totalCell = new TableCell(new Phrase(Integer.toString(poolCapacity) + " m", font), INTERNAL_BORDER, //$NON-NLS-1$
-                                         Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
+        Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
       table.addCell(totalCell);
 
       PdfPCell committedCell;
       if (poolCommitted != null) {
         committedCell = new TableCell(new Phrase(poolCommitted.toString() + " m", font), INTERNAL_BORDER, //$NON-NLS-1$
-                                      Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
+          Element.ALIGN_CENTER, Element.ALIGN_MIDDLE);
       }
       else {
         committedCell = new TableCell(new Phrase(" ", font), INTERNAL_BORDER); //$NON-NLS-1$
@@ -206,8 +209,8 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
       table.addCell(committedCell);
 
       PdfPCell availableCell = new TableCell(new Phrase("/ " + Integer.toString(poolAvailable) + " m", font), INTERNAL_BORDER,
-      //$NON-NLS-1$ //$NON-NLS-2$
-                                             Element.ALIGN_RIGHT, Element.ALIGN_MIDDLE);
+        //$NON-NLS-1$ //$NON-NLS-2$
+        Element.ALIGN_RIGHT, Element.ALIGN_MIDDLE);
       table.addCell(availableCell);
     }
     else {
@@ -282,7 +285,7 @@ public class EssenceTableEncoder implements IPdfTableEncoder {
     return resources;
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

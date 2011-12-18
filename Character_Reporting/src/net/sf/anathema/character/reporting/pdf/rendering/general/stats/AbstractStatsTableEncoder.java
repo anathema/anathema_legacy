@@ -10,9 +10,10 @@ import com.lowagie.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.util.IStats;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
-import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 
@@ -40,21 +41,21 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
-    IStatsGroup<T>[] groups = createStatsGroups(character);
+  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds) {
+    IStatsGroup<T>[] groups = createStatsGroups(content);
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable table = new PdfPTable(columnWidths);
     table.setTotalWidth(bounds.width);
     if (!suppressHeaderLine) {
       encodeHeaderLine(table, groups);
     }
-    encodeContent(table, character, bounds);
+    encodeContent(table, content, bounds);
     return table;
   }
 
-  protected abstract void encodeContent(PdfPTable table, IGenericCharacter character, Bounds bounds);
+  protected abstract void encodeContent(PdfPTable table, ReportContent content, Bounds bounds);
 
-  protected abstract IStatsGroup<T>[] createStatsGroups(IGenericCharacter character);
+  protected abstract IStatsGroup<T>[] createStatsGroups(ReportContent content);
 
   protected final void encodeHeaderLine(PdfPTable table, IStatsGroup<T>[] groups) {
     for (int index = 0; index < groups.length; index++) {

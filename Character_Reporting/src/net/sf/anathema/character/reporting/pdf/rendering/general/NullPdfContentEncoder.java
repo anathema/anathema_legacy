@@ -1,13 +1,11 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 
-public class NullPdfContentEncoder implements IPdfContentBoxEncoder {
+public class NullPdfContentEncoder implements IBoxContentEncoder {
 
   private final String headerKey;
 
@@ -19,16 +17,15 @@ public class NullPdfContentEncoder implements IPdfContentBoxEncoder {
     this.headerKey = headerKey;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds bounds) throws DocumentException {
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
     // Nothing to do
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return headerKey;
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

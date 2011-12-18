@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.anima;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LayoutUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -19,7 +19,7 @@ public abstract class AbstractAnimaEncoderFactory implements IAnimaEncoderFactor
   }
 
   @Override
-  public final IPdfContentBoxEncoder createAnimaEncoder() {
+  public final IBoxContentEncoder createAnimaEncoder() {
     return new PdfAnimaEncoder(resources, basefont, symbolBaseFont, LayoutUtilities.FONT_SIZE, getAnimaTableEncoder());
   }
 

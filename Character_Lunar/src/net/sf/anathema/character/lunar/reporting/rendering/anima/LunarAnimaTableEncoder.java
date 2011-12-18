@@ -1,6 +1,7 @@
 package net.sf.anathema.character.lunar.reporting.rendering.anima;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.anima.AnimaTableEncoder;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.ColumnDescriptor;
@@ -32,8 +33,8 @@ public class LunarAnimaTableEncoder extends AnimaTableEncoder implements IPdfTab
   }
 
   @Override
-  protected void addAnimaRow(PdfPTable table, int level, IGenericCharacter character, String descriptionPrefix) {
-    table.addCell(createRangeCell(level, character));
+  protected void addAnimaRow(PdfPTable table, int level, ReportContent content, String descriptionPrefix) {
+    table.addCell(createRangeCell(level, content.getCharacter()));
     table.addCell(createDescriptionCell(level, descriptionPrefix));
     table.addCell(createFormCell(level));
     table.addCell(createStealthCell(level));

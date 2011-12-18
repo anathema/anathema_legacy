@@ -4,8 +4,9 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.util.IStats;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 
 public abstract class AbstractFixedLineStatsTableEncoder<T extends IStats> extends AbstractStatsTableEncoder<T> {
 
@@ -14,9 +15,9 @@ public abstract class AbstractFixedLineStatsTableEncoder<T extends IStats> exten
   }
 
   @Override
-  protected void encodeContent(PdfPTable table, IGenericCharacter character, Bounds bounds) {
-    IStatsGroup<T>[] groups = createStatsGroups(character);
-    T[] printStats = getPrintStats(character);
+  protected void encodeContent(PdfPTable table, ReportContent content, Bounds bounds) {
+    IStatsGroup<T>[] groups = createStatsGroups(content);
+    T[] printStats = getPrintStats(content);
     int line = 0;
     while (line < getLineCount()) {
       T printStat = line < printStats.length ? printStats[line] : null;
@@ -27,5 +28,5 @@ public abstract class AbstractFixedLineStatsTableEncoder<T extends IStats> exten
 
   protected abstract int getLineCount();
 
-  protected abstract T[] getPrintStats(IGenericCharacter character);
+  protected abstract T[] getPrintStats(ReportContent content);
 }

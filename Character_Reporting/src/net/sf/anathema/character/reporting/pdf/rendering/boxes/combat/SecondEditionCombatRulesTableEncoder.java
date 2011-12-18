@@ -23,11 +23,11 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractCombatRulesTab
   @Override
   protected void addSecondCell(PdfPTable table) {
     Phrase knockdownAndStunningPhrase = new Phrase(getResources().getString("Sheet.Combat.Knockdown.Header") + "\n",
-                                                   getFont()); //$NON-NLS-1$ //$NON-NLS-2$
+      getFont()); //$NON-NLS-1$ //$NON-NLS-2$
     knockdownAndStunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Knockdown.Second.Comment") + "\n\n",
-                                             getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
+      getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
     knockdownAndStunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Stunning.Header") + "\n",
-                                             getFont())); //$NON-NLS-1$ //$NON-NLS-2$
+      getFont())); //$NON-NLS-1$ //$NON-NLS-2$
     knockdownAndStunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Stunning.Second.Comment"), getCommentFont())); //$NON-NLS-1$
     table.addCell(createContentCell(knockdownAndStunningPhrase));
   }
@@ -58,7 +58,7 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractCombatRulesTab
     list.addCell(spaceCell);
     list.addCell(spaceCell);
     TableCell rulesCommentCell = new TableCell(new Phrase(getResources().getString("Sheet.Combat.Comment.Rules"), getCommentFont()),
-                                               Rectangle.NO_BORDER); //$NON-NLS-1$
+      Rectangle.NO_BORDER); //$NON-NLS-1$
     rulesCommentCell.setPadding(0);
     list.addCell(rulesCommentCell);
     return list.getTable();

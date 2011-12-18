@@ -11,8 +11,9 @@ import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.Heart
 import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodStaminaStatsGroup;
 import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodStrengthStatsGroup;
 import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.IHeartsBloodStats;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractFixedLineStatsTableEncoder;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
@@ -21,9 +22,8 @@ import net.sf.anathema.lib.util.Identificate;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
-public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsTableEncoder<IHeartsBloodStats> implements IPdfContentBoxEncoder {
+public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsTableEncoder<IHeartsBloodStats> implements IBoxContentEncoder {
 
   private final IResources resources;
 
@@ -32,11 +32,11 @@ public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsT
     this.resources = resources;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
-    encodeTable(directContent, character, bounds);
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    encodeTable(graphics.getDirectContent(), reportContent, graphics.getBounds());
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Lunar.HeartsBlood"; //$NON-NLS-1$
   }
 
@@ -46,8 +46,8 @@ public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsT
   }
 
   @Override
-  protected IHeartsBloodStats[] getPrintStats(IGenericCharacter character) {
-    IHeartsBloodModel model = (IHeartsBloodModel) character.getAdditionalModel(HeartsBloodTemplate.TEMPLATE_ID);
+  protected IHeartsBloodStats[] getPrintStats(ReportContent content) {
+    IHeartsBloodModel model = (IHeartsBloodModel) content.getCharacter().getAdditionalModel(HeartsBloodTemplate.TEMPLATE_ID);
     List<IHeartsBloodStats> stats = new ArrayList<IHeartsBloodStats>();
     for (final IAnimalForm form : model.getEntries()) {
       stats.add(new IHeartsBloodStats() {
@@ -77,7 +77,7 @@ public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsT
 
   @SuppressWarnings("unchecked")
   @Override
-  protected IStatsGroup<IHeartsBloodStats>[] createStatsGroups(IGenericCharacter character) {
+  protected IStatsGroup<IHeartsBloodStats>[] createStatsGroups(ReportContent content) {
 	    return new IStatsGroup[] {
 	        new HeartsBloodNameStatsGroup(resources),
 	        new HeartsBloodStrengthStatsGroup(resources),
@@ -85,7 +85,7 @@ public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsT
 		  
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

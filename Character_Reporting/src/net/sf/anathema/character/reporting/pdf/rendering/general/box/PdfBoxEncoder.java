@@ -4,9 +4,10 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
 import net.sf.anathema.lib.resources.IResources;
 
 public class PdfBoxEncoder extends AbstractPdfEncoder {
@@ -16,7 +17,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
   private BaseFont baseFont;
   private final IResources resources;
   private final PdfHeaderBoxEncoder headerBoxEncoder;
-  private final IPdfBoxEncoder standardBoxEncoder;
+  private final IBoxEncoder standardBoxEncoder;
 
   public PdfBoxEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
@@ -31,16 +32,16 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
   }
 
   private Bounds calculateContentBoxBounds(Bounds bounds) {
-    float headerPadding = IPdfBoxEncoder.HEADER_HEIGHT / 2;
+    float headerPadding = IBoxEncoder.HEADER_HEIGHT / 2;
     return new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - headerPadding);
   }
 
-  public float getRequestedHeight(IPdfVariableContentBoxEncoder encoder, IGenericCharacter character, float width) {
-    float boxHeight = IPdfBoxEncoder.HEADER_HEIGHT / 2f + IPdfBoxEncoder.ARCSPACE;
-    return boxHeight + encoder.getRequestedHeight(character, width);
+  public float getRequestedHeight(IVariableBoxContentEncoder encoder, ReportContent content, float width) {
+    float boxHeight = IBoxEncoder.HEADER_HEIGHT / 2f + IBoxEncoder.ARCSPACE;
+    return boxHeight + encoder.getRequestedHeight(content, width);
   }
 
-  private Bounds encodeBox(PdfContentByte directContent, Bounds bounds, String title, IPdfBoxEncoder boxEncoder) {
+  private Bounds encodeBox(PdfContentByte directContent, Bounds bounds, String title, IBoxEncoder boxEncoder) {
     Bounds contentBounds = calculateContentBoxBounds(bounds);
     boxEncoder.encodeContentBox(directContent, contentBounds);
     headerBoxEncoder.encodeHeaderBox(directContent, bounds, title);
@@ -51,21 +52,20 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
     return encodeBox(directContent, bounds, title, standardBoxEncoder);
   }
 
-  public void encodeBox(PdfContentByte directContent, IPdfContentBoxEncoder encoder, IGenericCharacter character, IGenericDescription description,
-                        Bounds bounds) throws DocumentException {
-    encodeBox(directContent, encoder, standardBoxEncoder, character, description, bounds);
+  public void encodeBox(ReportContent content, PdfContentByte directContent, IBoxContentEncoder encoder, Bounds bounds) throws DocumentException {
+    encodeBox(directContent, encoder, standardBoxEncoder, content, bounds);
   }
 
-  public void encodeBox(PdfContentByte directContent, IPdfContentBoxEncoder encoder, IPdfBoxEncoder boxEncoder, IGenericCharacter character,
-                        IGenericDescription description, Bounds bounds) throws DocumentException {
-    String header = resources.getString("Sheet.Header." + encoder.getHeaderKey(character, description)); //$NON-NLS-1$
+  public void encodeBox(PdfContentByte directContent, IBoxContentEncoder encoder, IBoxEncoder boxEncoder, ReportContent content,
+    Bounds bounds) throws DocumentException {
+    String header = resources.getString("Sheet.Header." + encoder.getHeaderKey(content)); //$NON-NLS-1$
     Bounds contentBounds = encodeBox(directContent, bounds, header, boxEncoder);
-    encoder.encode(directContent, character, description, contentBounds);
+    encoder.encode(new Graphics(directContent, contentBounds), content);
   }
 
   private Bounds calculateInsettedBounds(Bounds contentBounds) {
     return new Bounds(contentBounds.x + CONTENT_INSET, contentBounds.y, calculateInsettedWidth(contentBounds.width),
-                      contentBounds.height - IPdfBoxEncoder.ARCSPACE);
+      contentBounds.height - IBoxEncoder.ARCSPACE);
   }
 
   public float calculateInsettedWidth(float width) {

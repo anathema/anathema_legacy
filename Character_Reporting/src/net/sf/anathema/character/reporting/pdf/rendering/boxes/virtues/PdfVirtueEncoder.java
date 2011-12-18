@@ -4,19 +4,20 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-public class PdfVirtueEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
+public class PdfVirtueEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
 
   private final PdfTraitEncoder traitEncoder;
   private final BaseFont baseFont;
@@ -33,13 +34,12 @@ public class PdfVirtueEncoder extends AbstractPdfEncoder implements IPdfContentB
     return baseFont;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Virtues"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds bounds) throws DocumentException {
-    encodeVirtues(directContent, bounds, character.getTraitCollection());
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    encodeVirtues(graphics.getDirectContent(), graphics.getBounds(), reportContent.getCharacter().getTraitCollection());
   }
 
   public void encodeVirtues(PdfContentByte directContent, Bounds bounds, IGenericTraitCollection collection) {
@@ -69,7 +69,7 @@ public class PdfVirtueEncoder extends AbstractPdfEncoder implements IPdfContentB
     traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, new Position(position.x, yPosition), width, 0, 5);
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

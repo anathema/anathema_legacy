@@ -1,18 +1,18 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 
 public interface IEncodingRegistry {
-  void setWeaponContentEncoder(IPdfContentBoxEncoder encoder);
+  void setWeaponContentEncoder(IBoxContentEncoder encoder);
 
-  void setArmourContentEncoder(IPdfContentBoxEncoder encoder);
+  void setArmourContentEncoder(IBoxContentEncoder encoder);
 
-  void setIntimaciesEncoder(IPdfContentBoxEncoder intimaciesEncoder);
+  void setIntimaciesEncoder(IBoxContentEncoder intimaciesEncoder);
 
-  void setMeritsAndFlawsEncoder(IPdfContentBoxEncoder meritsAndFlawsEncoder);
+  void setMeritsAndFlawsEncoder(IBoxContentEncoder meritsAndFlawsEncoder);
 
-  void setPossessionsEncoder(IPdfContentBoxEncoder encoder);
+  void setPossessionsEncoder(IBoxContentEncoder encoder);
 
   BaseFont getSymbolBaseFont();
 

@@ -8,6 +8,7 @@ import net.sf.anathema.character.equipment.impl.reporting.stats.IEquipmentStatsG
 import net.sf.anathema.character.equipment.impl.reporting.stats.armour.*;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -21,10 +22,11 @@ public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourSta
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
-    PdfPTable armourTable = super.createTable(directContent, character, bounds);
+  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds) {
+    IGenericCharacter character = content.getCharacter();
+    PdfPTable armourTable = super.createTable(directContent, content, bounds);
     IArmourStats totalArmour = getEquipmentModel(character).getTotalPrintArmour(getLineCount());
-    IEquipmentStatsGroup<IArmourStats>[] groups = createStatsGroups(character);
+    IEquipmentStatsGroup<IArmourStats>[] groups = createStatsGroups(content);
     for (int index = 0; index < groups.length; index++) {
       if (index != 0) {
         armourTable.addCell(createSpaceCell());
@@ -42,7 +44,7 @@ public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourSta
 
   @SuppressWarnings("unchecked")
   @Override
-  protected IEquipmentStatsGroup<IArmourStats>[] createStatsGroups(IGenericCharacter character) {
+  protected IEquipmentStatsGroup<IArmourStats>[] createStatsGroups(ReportContent content) {
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup<IArmourStats>(resources),
         new SoakArmourStatsGroup(resources),
@@ -57,7 +59,7 @@ public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourSta
   }
 
   @Override
-  protected IArmourStats[] getPrintStats(IGenericCharacter character) {
-    return getEquipmentModel(character).getPrintArmours();
+  protected IArmourStats[] getPrintStats(ReportContent content) {
+    return getEquipmentModel(content.getCharacter()).getPrintArmours();
   }
 }

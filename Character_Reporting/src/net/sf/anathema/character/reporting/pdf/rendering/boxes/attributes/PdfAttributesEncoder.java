@@ -6,16 +6,17 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -24,7 +25,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
+public class PdfAttributesEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
   private PdfTraitEncoder smallTraitEncoder;
@@ -38,16 +39,16 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Attributes"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds bounds) throws DocumentException {
-    IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
-    IGenericTraitCollection traitCollection = character.getTraitCollection();
-    IMagicStats[] excellencies = getExcellencies(character);
-    encodeAttributes(directContent, character, bounds, attributeGroups, traitCollection, excellencies);
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
+    IGenericTraitCollection traitCollection = reportContent.getCharacter().getTraitCollection();
+    IMagicStats[] excellencies = getExcellencies(reportContent.getCharacter());
+    encodeAttributes(graphics.getDirectContent(), reportContent.getCharacter(), graphics.getBounds(), attributeGroups, traitCollection,
+      excellencies);
   }
 
   protected IMagicStats[] getExcellencies(IGenericCharacter character) {
@@ -72,7 +73,7 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
   }
 
   public final void encodeAttributes(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds,
-                                     IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
+    IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - groupSpacing;
     String groupId = null;
@@ -102,12 +103,12 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
           }) != null;
         }
         y -= smallTraitEncoder.encodeWithExcellencies(directContent, traitLabel, position, contentBounds.width, value, favored, excellencyLearned,
-                                                      essenceMax);
+          essenceMax);
       }
     }
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

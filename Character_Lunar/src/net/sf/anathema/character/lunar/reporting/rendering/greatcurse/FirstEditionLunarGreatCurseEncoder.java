@@ -5,9 +5,11 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
@@ -19,9 +21,8 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
-public class FirstEditionLunarGreatCurseEncoder implements IPdfContentBoxEncoder {
+public class FirstEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder;
   private final Chunk symbolChunk;
@@ -47,9 +48,9 @@ public class FirstEditionLunarGreatCurseEncoder implements IPdfContentBoxEncoder
     return TableEncodingUtilities.createFont(baseFont);
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
-    IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) character.getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
-    Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
+    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), virtueFlaw.getLimitTrait().getCurrentValue());
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     Phrase phrase = new Phrase();
     String virtue;
@@ -68,14 +69,14 @@ public class FirstEditionLunarGreatCurseEncoder implements IPdfContentBoxEncoder
       phrase.add(symbolChunk);
       phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Lunar.Rules"), font)); //$NON-NLS-1$      
     }
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
+    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "GreatCurse.Lunar"; //$NON-NLS-1$
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

@@ -2,40 +2,40 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LayoutUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 
 public interface IExtendedPartEncoder extends LayoutUtilities {
 
-  public IPdfContentBoxEncoder getAnimaEncoder();
+  public IBoxContentEncoder getAnimaEncoder();
 
-  public IPdfContentBoxEncoder getEssenceEncoder();
+  public IBoxContentEncoder getEssenceEncoder();
 
-  public IPdfContentBoxEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey);
+  public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey);
 
-  public IPdfContentBoxEncoder getGreatCurseEncoder();
+  public IBoxContentEncoder getGreatCurseEncoder();
 
-  public IPdfContentBoxEncoder getOverdriveEncoder();
+  public IBoxContentEncoder getOverdriveEncoder();
 
-  public IPdfContentBoxEncoder getCombatStatsEncoder();
+  public IBoxContentEncoder getCombatStatsEncoder();
 
-  public IPdfContentBoxEncoder getSocialCombatEncoder();
+  public IBoxContentEncoder getSocialCombatEncoder();
 
-  public IPdfContentBoxEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry);
+  public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry);
 
-  public IPdfContentBoxEncoder getHealthAndMovementEncoder();
+  public IBoxContentEncoder getHealthAndMovementEncoder();
 
-  public IPdfContentBoxEncoder getHealthEncoder();
+  public IBoxContentEncoder getHealthEncoder();
 
-  public IPdfContentBoxEncoder getMovementEncoder();
+  public IBoxContentEncoder getMovementEncoder();
 
   public boolean hasMagicPage();
 
   public float getWeaponryHeight();
 
-  public IPdfVariableContentBoxEncoder[] getAdditionalFirstPageEncoders();
+  public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders();
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
 

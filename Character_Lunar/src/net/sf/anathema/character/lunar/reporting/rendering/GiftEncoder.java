@@ -7,6 +7,7 @@ import net.sf.anathema.character.lunar.beastform.model.FirstEditionBeastformMode
 import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.mutations.model.IMutation;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -25,7 +26,7 @@ public class GiftEncoder extends AbstractLineTextEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Lunar.Gifts"; //$NON-NLS-1$
   }
 

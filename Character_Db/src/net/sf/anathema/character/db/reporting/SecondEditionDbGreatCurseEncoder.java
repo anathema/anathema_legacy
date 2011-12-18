@@ -5,9 +5,11 @@ import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -17,9 +19,8 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
-public class SecondEditionDbGreatCurseEncoder implements IPdfContentBoxEncoder {
+public class SecondEditionDbGreatCurseEncoder implements IBoxContentEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder;
   private final Font font;
@@ -35,9 +36,9 @@ public class SecondEditionDbGreatCurseEncoder implements IPdfContentBoxEncoder {
     return TableEncodingUtilities.createFont(baseFont);
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
-	IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) character.getAdditionalModel(DbVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
-    Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+	IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(DbVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
+    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), virtueFlaw.getLimitTrait().getCurrentValue());
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     String virtue;
     ITraitType rootVirtue = virtueFlaw.getRoot();
@@ -47,10 +48,10 @@ public class SecondEditionDbGreatCurseEncoder implements IPdfContentBoxEncoder {
     else {
       virtue = resources.getString("Sheet.GreatCurse.UnknownVirtue"); //$NON-NLS-1$
     }
-    String aspect = getAspectString(character, rootVirtue != null);
+    String aspect = getAspectString(reportContent.getCharacter(), rootVirtue != null);
     String message = resources.getString("Sheet.GreatCurse.Message.SecondEdition", virtue, aspect); //$NON-NLS-1$
     Phrase phrase = new Phrase(message, font);
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
+    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
   }
 
   private String getAspectString(IGenericCharacter character, boolean isRootSelected) {
@@ -65,11 +66,11 @@ public class SecondEditionDbGreatCurseEncoder implements IPdfContentBoxEncoder {
     return resources.getString("Sheet.GreatCurse.UnknownAspectUnknownVirtue"); //$NON-NLS-1$
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "GreatCurse.Dragon-Blooded"; //$NON-NLS-1$
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

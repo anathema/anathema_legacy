@@ -2,8 +2,8 @@ package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Line;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 
 public class HorizontalLineListEncoder {
 

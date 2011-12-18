@@ -6,6 +6,7 @@ import net.sf.anathema.character.meritsflaws.model.MeritsFlawsAdditionalModel;
 import net.sf.anathema.character.meritsflaws.model.perk.IPerk;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsModel;
 import net.sf.anathema.character.meritsflaws.template.MeritsFlawsTemplate;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -23,7 +24,7 @@ public class MeritsAndFlawsEncoder extends AbstractLineTextEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "MeritsAndFlaws"; //$NON-NLS-1$
   }
 
@@ -48,9 +49,10 @@ public class MeritsAndFlawsEncoder extends AbstractLineTextEncoder {
 	  return resources.getString(string);
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
-	  IMeritsFlawsModel model = (IMeritsFlawsModel)(((MeritsFlawsAdditionalModel) (character.getAdditionalModel(MeritsFlawsTemplate.ID))).getMeritsFlawsModel());
+	  IMeritsFlawsModel model = (IMeritsFlawsModel)(((MeritsFlawsAdditionalModel) (content.getCharacter().getAdditionalModel(MeritsFlawsTemplate.ID)))
+                                                      .getMeritsFlawsModel());
 	  return model.getSelectedQualities().length > 0;
   }
 }

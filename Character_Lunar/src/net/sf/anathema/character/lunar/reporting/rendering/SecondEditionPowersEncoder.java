@@ -1,12 +1,13 @@
 package net.sf.anathema.character.lunar.reporting.rendering;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -19,7 +20,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class SecondEditionPowersEncoder implements IPdfContentBoxEncoder
+public class SecondEditionPowersEncoder implements IBoxContentEncoder
 {
   private static final String TERRIFYING_BEASTMAN_ALTERATION = "Lunar.TerrifyingBeastmanAlteration";
   private Font font;
@@ -39,37 +40,34 @@ public class SecondEditionPowersEncoder implements IPdfContentBoxEncoder
     this.isHorizontal = isHorizontal;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds)
+  public void encode(Graphics graphics, ReportContent reportContent)
   {
-	  tellMDV = hasTBA(character) ? 8 : 12;
+	  tellMDV = hasTBA(reportContent.getCharacter()) ? 8 : 12;
 
 	  int offsetX = 0, offsetY = isHorizontal ? 0 : 5;
 	  font = TableEncodingUtilities.createFont(baseFont);
 	  
 	  if (isHorizontal)
 	  {
-		  bounds = new Bounds(bounds.x, bounds.y, bounds.width / 2, bounds.height);
+        graphics.setBounds(new Bounds(graphics.getBounds().x, graphics.getBounds().y, graphics.getBounds().width / 2, graphics.getBounds().height));
 		  font.setSize(IVoidStateFormatConstants.COMMENT_FONT_SIZE);
 		  lineHeight -= 2;
 	  }
 	  
 	  try
 	  {
-		  offsetY += writePowerNotes(directContent, "Shapeshifting", bounds, offsetX, offsetY);
-		  if (!character.getTemplate().getTemplateType().equals(castelessType))
-			  offsetY += writePowerNotes(directContent, "Tattoos", bounds, offsetX, offsetY);
+		  offsetY += writePowerNotes(graphics.getDirectContent(), "Shapeshifting", graphics.getBounds(), offsetX, offsetY);
+		  if (!reportContent.getCharacter().getTemplate().getTemplateType().equals(castelessType))
+			  offsetY += writePowerNotes(graphics.getDirectContent(), "Tattoos", graphics.getBounds(), offsetX, offsetY);
 
 		  if (isHorizontal)
 		  {
-			  bounds = new Bounds(
-					  bounds.x + bounds.width,
-					  bounds.y,
-					  bounds.width,
-					  bounds.height);
+            graphics.setBounds(new Bounds(graphics.getBounds().x + graphics.getBounds().width, graphics.getBounds().y, graphics.getBounds().width,
+              graphics.getBounds().height));
 					  offsetY = 0;
 		  }
 		  
-		  offsetY += writePowerNotes(directContent, "Tell", bounds, offsetX, offsetY);
+		  offsetY += writePowerNotes(graphics.getDirectContent(), "Tell", graphics.getBounds(), offsetX, offsetY);
 	  }
 	  catch (DocumentException e) { }
   }
@@ -120,11 +118,11 @@ public class SecondEditionPowersEncoder implements IPdfContentBoxEncoder
   }
 
 	@Override
-	public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+	public String getHeaderKey(ReportContent reportContent) {
 		return "Lunar.Powers";
 	}
 	
-	public boolean hasContent(IGenericCharacter character)
+	public boolean hasContent(ReportContent content)
 	  {
 		  return true;
 	  }

@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
@@ -25,7 +26,9 @@ public class ExtendedPersonalInfoEncoder extends AbstractPdfEncoder {
     this.resources = resources;
   }
 
-  public void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds infoBounds) {
+  public void encodePersonalInfos(PdfContentByte directContent, ReportContent content, Bounds infoBounds) {
+    IGenericCharacter character = content.getCharacter();
+    IGenericDescription description = content.getDescription();
     float lineHeight = (infoBounds.height - TEXT_PADDING) / 3;
     float entryWidth = (infoBounds.width - TEXT_PADDING) / 2;
     float firstColumnX = infoBounds.x;
@@ -36,7 +39,7 @@ public class ExtendedPersonalInfoEncoder extends AbstractPdfEncoder {
     String rulesContent = rules == null ? null : resources.getString("Ruleset." + rules.getId()); //$NON-NLS-1$
     drawLabelledContent(directContent, getLabel("Rules"), rulesContent, new Position(firstColumnX, firstRowY), entryWidth); //$NON-NLS-1$
     drawLabelledContent(directContent, getLabel("Player"), description.getPlayer(), new Position(secondColumnX, firstRowY),
-                        entryWidth); //$NON-NLS-1$
+      entryWidth); //$NON-NLS-1$
 
     float secondRowY = firstRowY - lineHeight;
     String conceptContent = description.getConceptText();
@@ -46,7 +49,7 @@ public class ExtendedPersonalInfoEncoder extends AbstractPdfEncoder {
     if (characterType.isExaltType()) {
       String casteContent = getCasteString(character.getConcept().getCasteType());
       drawLabelledContent(directContent, getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, secondRowY),
-                          entryWidth); //$NON-NLS-1$
+        entryWidth); //$NON-NLS-1$
     }
 
     float thirdRowY = secondRowY - lineHeight;

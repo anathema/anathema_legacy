@@ -4,55 +4,54 @@ import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.ghost.fetters.GhostFettersTemplate;
 import net.sf.anathema.character.ghost.fetters.model.Fetter;
 import net.sf.anathema.character.ghost.fetters.model.IGhostFettersModel;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
-public class GhostFetterEncoder implements IPdfContentBoxEncoder {
+public class GhostFetterEncoder implements IBoxContentEncoder {
 
   private final PdfTraitEncoder traitEncoder;
   public GhostFetterEncoder(BaseFont baseFont) {
     this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Ghost.Fetters"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
-	  IGhostFettersModel model = (IGhostFettersModel) character.getAdditionalModel(GhostFettersTemplate.ID);
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+	  IGhostFettersModel model = (IGhostFettersModel) reportContent.getCharacter().getAdditionalModel(GhostFettersTemplate.ID);
 	  float groupSpacing = traitEncoder.getTraitHeight() / 2;
-	  float x = bounds.x;
-	  float y = bounds.getMaxY() - 2 * groupSpacing;
+	  float x = graphics.getBounds().x;
+	  float y = graphics.getBounds().getMaxY() - 2 * groupSpacing;
 	  int maximum = 5;
-	  float width = bounds.getWidth() * 1 / 2;
+	  float width = graphics.getBounds().getWidth() * 1 / 2;
 	  for (Fetter fetter : model.getFetters())
 	  {
 	      String traitLabel = fetter.getName();
 	      int value = fetter.getCurrentValue();
 	      Position position = new Position(x, y);
-	      y -= traitEncoder.encodeWithText(
-	          directContent,
+	      y -= traitEncoder.encodeWithText(graphics.getDirectContent(),
 	          traitLabel,
 	          position,
 	          width,
 	          value,
 	          maximum);
 	      
-	      if (y < bounds.getMinY())
+	      if (y < graphics.getBounds().getMinY())
 	      {
-	    	  y = bounds.getMaxY() - 2 * groupSpacing;
-	    	  x += bounds.width / 2;
+	    	  y = graphics.getBounds().getMaxY() - 2 * groupSpacing;
+	    	  x += graphics.getBounds().width / 2;
 	      }
 	    }
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

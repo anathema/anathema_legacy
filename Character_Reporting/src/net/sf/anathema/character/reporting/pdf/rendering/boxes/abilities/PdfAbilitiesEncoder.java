@@ -2,10 +2,10 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -27,7 +27,7 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
   }
 
   public static PdfAbilitiesEncoder createWithCraftsAndSpecialties(BaseFont baseFont, IResources resources, int essenceMax, int craftCount,
-                                                                   int specialtyCount) {
+    int specialtyCount) {
     PdfAbilitiesEncoder pdfAbilitiesEncoder = new PdfAbilitiesEncoder(baseFont, resources, essenceMax);
     PdfTraitEncoder traitEncoder = pdfAbilitiesEncoder.getTraitEncoder();
     pdfAbilitiesEncoder.addNamedTraitEncoder(new CraftEncoder(resources, baseFont, traitEncoder, essenceMax, craftCount));
@@ -40,7 +40,7 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
 
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Abilities"; //$NON-NLS-1$
   }
 

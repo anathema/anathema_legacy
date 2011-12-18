@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.anima;
 
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 
 public interface IAnimaEncoderFactory {
 
-  public IPdfContentBoxEncoder createAnimaEncoder();
+  public IBoxContentEncoder createAnimaEncoder();
 }

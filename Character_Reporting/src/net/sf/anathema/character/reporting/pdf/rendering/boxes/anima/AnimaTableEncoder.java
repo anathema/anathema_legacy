@@ -9,14 +9,15 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.AnimaTableRangeProvider;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.AnimaTableStealthProvider;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.AnimaUtils;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.ColumnDescriptor;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.IAnimaTableRangeProvider;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.IAnimaTableStealthProvider;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
@@ -52,23 +53,23 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
+  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds) {
     ColumnDescriptor[] columns = getColumns();
     PdfPTable table = new PdfPTable(getColumWidths(columns));
     table.setWidthPercentage(100);
     for (ColumnDescriptor column : columns) {
       table.addCell(createHeaderCell(getString(column.getHeaderKey())));
     }
-    ICharacterType type = character.getTemplate().getTemplateType().getCharacterType();
+    ICharacterType type = content.getCharacter().getTemplate().getTemplateType().getCharacterType();
     String descriptionPrefix = "Sheet.AnimaTable.Description." + type; //$NON-NLS-1$
     for (int index = 0; index < 5; index++) {
-      addAnimaRow(table, index, character, descriptionPrefix);
+      addAnimaRow(table, index, content, descriptionPrefix);
     }
     return table;
   }
 
-  protected void addAnimaRow(PdfPTable table, int level, IGenericCharacter character, String descriptionPrefix) {
-    table.addCell(createRangeCell(level, character));
+  protected void addAnimaRow(PdfPTable table, int level, ReportContent content, String descriptionPrefix) {
+    table.addCell(createRangeCell(level, content.getCharacter()));
     table.addCell(createDescriptionCell(level, descriptionPrefix));
     table.addCell(createStealthCell(level));
   }

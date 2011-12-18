@@ -6,8 +6,10 @@ import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.presenter.IRenownModel;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
@@ -22,7 +24,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class LunarFaceEncoder extends AbstractTableEncoder implements IPdfContentBoxEncoder {
+public class LunarFaceEncoder extends AbstractTableEncoder implements IBoxContentEncoder {
 
   private final Font font;
   private final IResources resources;
@@ -32,27 +34,27 @@ public class LunarFaceEncoder extends AbstractTableEncoder implements IPdfConten
     this.font = TableEncodingUtilities.createFont(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Lunar.Face"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
-    encodeTable(directContent, character, bounds);
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    encodeTable(graphics.getDirectContent(), reportContent, graphics.getBounds());
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
+  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds)
       throws DocumentException {
     PdfPTable table = new PdfPTable(new float[] { 6, 0.2f, 2.5f });
     table.setTotalWidth(bounds.width);
-    float lineOffset = encodeContent(table, character);
+    float lineOffset = encodeContent(table, content);
     float delimitingLineYPosition = bounds.getMaxY() - lineOffset - 1;
     drawDelimiter(directContent, bounds, delimitingLineYPosition);
     return table;
   }
 
-  protected float encodeContent(PdfPTable table, IGenericCharacter character) {
-    IRenownModel model = (IRenownModel) character.getAdditionalModel(RenownTemplate.TEMPLATE_ID);
+  protected float encodeContent(PdfPTable table, ReportContent content) {
+    IRenownModel model = (IRenownModel) content.getCharacter().getAdditionalModel(RenownTemplate.TEMPLATE_ID);
     ITrait[] traits = model.getAllTraits();
     for (ITrait trait : traits) {
       encodeRenownTraitLine(table, trait);
@@ -101,7 +103,7 @@ public class LunarFaceEncoder extends AbstractTableEncoder implements IPdfConten
     return cell;
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

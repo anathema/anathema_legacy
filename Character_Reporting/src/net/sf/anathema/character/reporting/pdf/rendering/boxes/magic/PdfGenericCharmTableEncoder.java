@@ -20,10 +20,11 @@ import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -44,9 +45,9 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
     this.baseFont = baseFont;
   }
 
-  public float getRequestedHeight(IGenericCharacter character) {
+  public float getRequestedHeight(ReportContent content) {
     float traitHeight = 0;
-    for (ITraitType trait : getTraits(character)) {
+    for (ITraitType trait : getTraits(content.getCharacter())) {
       String text = resources.getString(trait.getId());
       if (text.length() >= TYPE_LONGFORM_CUTOFF) {
         text = resources.getString(trait.getId() + ".Short");
@@ -57,15 +58,16 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
         traitHeight = height;
       }
     }
-    return traitHeight + character.getGenericCharmStats().length * IVoidStateFormatConstants.LINE_HEIGHT;
+    return traitHeight + content.getCharacter().getGenericCharmStats().length * IVoidStateFormatConstants.LINE_HEIGHT;
   }
 
-  public boolean hasContent(IGenericCharacter character) {
-    return character.getGenericCharmStats().length > 0;
+  public boolean hasContent(ReportContent content) {
+    return content.getCharacter().getGenericCharmStats().length > 0;
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds) throws DocumentException {
+    IGenericCharacter character = content.getCharacter();
     List<ITraitType> traits = getTraits(character);
     Font font = TableEncodingUtilities.createFont(baseFont);
     PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, Color.BLACK);
@@ -124,7 +126,7 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
   }
 
   private PdfPCell createGenericCell(IGenericCharacter character, ITraitType type, String genericId, PdfTemplate learnedTemplate,
-                                     PdfTemplate notLearnedTemplate) throws DocumentException {
+    PdfTemplate notLearnedTemplate) throws DocumentException {
     final String charmId = genericId + "." + type.getId(); //$NON-NLS-1$
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
     boolean isLearned = CollectionUtilities.find(allLearnedMagic, new IPredicate<IMagic>() {

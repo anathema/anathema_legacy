@@ -5,7 +5,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 
-public class StandardBoxEncoder extends AbstractPdfEncoder implements IPdfBoxEncoder {
+public class StandardBoxEncoder extends AbstractPdfEncoder implements IBoxEncoder {
 
   private final BaseFont baseFont;
 

@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionHealthAndMovementTableEncoder extends AbstractHealthAndMovementTableEncoder {
@@ -49,7 +50,7 @@ public class SecondEditionHealthAndMovementTableEncoder extends AbstractHealthAn
   }
 
   @Override
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

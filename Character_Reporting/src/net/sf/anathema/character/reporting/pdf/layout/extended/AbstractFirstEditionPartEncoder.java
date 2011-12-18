@@ -3,14 +3,14 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.FirstEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.FirstEditionCombatValueEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.FirstEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfHorizontalLineContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.PdfCombatStatsEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfVariableContentBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -38,29 +38,29 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
     return symbolBaseFont;
   }
 
-  public final IPdfContentBoxEncoder getCombatStatsEncoder() {
+  public final IBoxContentEncoder getCombatStatsEncoder() {
     IPdfContentEncoder valueEncoder = new FirstEditionCombatValueEncoder(resources, baseFont);
     IPdfTableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder(resources, baseFont);
     return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
   }
 
-  public IPdfContentBoxEncoder getSocialCombatEncoder() {
+  public IBoxContentEncoder getSocialCombatEncoder() {
     return new PdfHorizontalLineContentEncoder(1, "MeritsFlaws"); //$NON-NLS-1$
   }
 
-  public IPdfContentBoxEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {
+  public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {
     return new PdfHorizontalLineContentEncoder(1, "Notes"); //$NON-NLS-1$
   }
 
-  public IPdfContentBoxEncoder getHealthAndMovementEncoder() {
+  public IBoxContentEncoder getHealthAndMovementEncoder() {
     return new FirstEditionHealthAndMovementEncoder(getResources(), getBaseFont(), symbolBaseFont);
   }
 
-  public IPdfContentBoxEncoder getHealthEncoder() {
+  public IBoxContentEncoder getHealthEncoder() {
     return null;
   }
 
-  public IPdfContentBoxEncoder getMovementEncoder() {
+  public IBoxContentEncoder getMovementEncoder() {
     return null;
   }
 
@@ -68,8 +68,8 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
     return 129;
   }
 
-  public IPdfVariableContentBoxEncoder[] getAdditionalFirstPageEncoders() {
-    return new IPdfVariableContentBoxEncoder[0];
+  public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders() {
+    return new IVariableBoxContentEncoder[0];
   }
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
@@ -80,7 +80,7 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
     return false;
   }
 
-  public IPdfContentBoxEncoder getOverdriveEncoder() {
+  public IBoxContentEncoder getOverdriveEncoder() {
     return null;
   }
 }

@@ -5,10 +5,12 @@ import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.model.ILunarVirtueFlaw;
 import net.sf.anathema.character.lunar.virtueflaw.presenter.ILunarVirtueFlawModel;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Line;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
@@ -22,7 +24,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class SecondEditionLunarGreatCurseEncoder implements IPdfContentBoxEncoder {
+public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder;
   private final Font nameFont;
@@ -34,34 +36,34 @@ public class SecondEditionLunarGreatCurseEncoder implements IPdfContentBoxEncode
     this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "GreatCurse.Lunar"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
-    ILunarVirtueFlaw virtueFlaw = ((ILunarVirtueFlawModel) character.getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
-    Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
+    ILunarVirtueFlaw virtueFlaw = ((ILunarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
+    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), virtueFlaw.getLimitTrait().getCurrentValue());
     String name = virtueFlaw.getName().getText();
     String condition = virtueFlaw.getLimitBreak().getText();
     boolean nameDefined = !StringUtilities.isNullOrTrimEmpty(name);
     boolean conditionDefined = !StringUtilities.isNullOrEmpty(condition);
     if (!nameDefined && !conditionDefined) {
-      encodeLines(directContent, bounds, leading, textBounds.getMaxY());
+      encodeLines(graphics.getDirectContent(), graphics.getBounds(), leading, textBounds.getMaxY());
     }
     if (nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();
       phrase.add(new Chunk(name, nameFont));
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
+      PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
     }
     if (nameDefined && !conditionDefined) {
       Phrase phrase = new Phrase();
       phrase.add(new Chunk(name, nameFont));
-      ColumnText columnText = PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
+      ColumnText columnText = PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
       float baseLine = columnText.getYLine();
-      encodeLines(directContent, bounds, leading, baseLine);
+      encodeLines(graphics.getDirectContent(), graphics.getBounds(), leading, baseLine);
     }
     if (!nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();
@@ -70,7 +72,7 @@ public class SecondEditionLunarGreatCurseEncoder implements IPdfContentBoxEncode
       phrase.add(new Chunk("                                          ", undefinedFont)); //$NON-NLS-1$
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
+      PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
     }
   }
 
@@ -92,7 +94,7 @@ public class SecondEditionLunarGreatCurseEncoder implements IPdfContentBoxEncode
     return TableEncodingUtilities.createFont(baseFont);
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

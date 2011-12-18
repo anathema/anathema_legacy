@@ -10,22 +10,23 @@ import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
 
-public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
+public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;
@@ -37,18 +38,19 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     this.symbolBaseFont = symbolBaseFont;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "MovementHealth"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds bounds) throws DocumentException {
-    Bounds tableBounds = new Bounds(bounds.x, bounds.y, (bounds.width * 0.66f), bounds.height);
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    Bounds tableBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, (graphics.getBounds().width * 0.66f),
+      graphics.getBounds().height);
     IPdfTableEncoder tableEncoder = createTableEncoder();
-    tableEncoder.encodeTable(directContent, character, tableBounds);
+    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, tableBounds);
     float textX = tableBounds.getMaxX() + IVoidStateFormatConstants.TEXT_PADDING;
-    Bounds textBounds = new Bounds(textX, bounds.y, bounds.x + bounds.width - textX, bounds.height - 2);
-    encodeText(directContent, textBounds);
+    Bounds textBounds = new Bounds(textX, graphics.getBounds().y, graphics.getBounds().x + graphics.getBounds().width - textX,
+      graphics.getBounds().height - 2);
+    encodeText(graphics.getDirectContent(), textBounds);
   }
 
   protected abstract IPdfTableEncoder createTableEncoder();
@@ -124,7 +126,7 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.DeathHeader"), commentTitleFont)); //$NON-NLS-1$
     healthText.add(seperator);
     healthText.add(new Chunk(resources.getString("Sheet." + getEdition().getId() + ".Health.Comment.DeathText"),
-                             commentFont)); //$NON-NLS-1$ //$NON-NLS-2$
+      commentFont)); //$NON-NLS-1$ //$NON-NLS-2$
     healthText.add(newLine);
     healthText.add(caretChunk);
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.MarkDamageHeader"), commentTitleFont)); //$NON-NLS-1$
@@ -132,7 +134,7 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     return healthText;
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

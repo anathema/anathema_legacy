@@ -3,9 +3,11 @@ package net.sf.anathema.character.infernal.reporting;
 import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
 import net.sf.anathema.character.infernal.urge.model.IInfernalUrgeModel;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -16,9 +18,8 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
-public class InfernalUrgeEncoder implements IPdfContentBoxEncoder {
+public class InfernalUrgeEncoder implements IBoxContentEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder;
   private final IResources resources;
@@ -32,13 +33,13 @@ public class InfernalUrgeEncoder implements IPdfContentBoxEncoder {
     this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "InfernalUrge.Title"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
-	IInfernalUrgeModel urge = ((IInfernalUrgeModel) character.getAdditionalModel(InfernalUrgeTemplate.ID));
-    Bounds textBounds = traitEncoder.encode(directContent, bounds, urge.getVirtueFlaw().getLimitTrait().getCurrentValue());
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+	IInfernalUrgeModel urge = ((IInfernalUrgeModel) reportContent.getCharacter().getAdditionalModel(InfernalUrgeTemplate.ID));
+    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), urge.getVirtueFlaw().getLimitTrait().getCurrentValue());
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     String urgeDescription = urge.getDescription().getText();
 
@@ -46,11 +47,11 @@ public class InfernalUrgeEncoder implements IPdfContentBoxEncoder {
     phrase.add(new Chunk(resources.getString("InfernalUrge.Title"), nameFont));
     phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
     phrase.add(new Chunk(urgeDescription, font));
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
+    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
  
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return false;
   }

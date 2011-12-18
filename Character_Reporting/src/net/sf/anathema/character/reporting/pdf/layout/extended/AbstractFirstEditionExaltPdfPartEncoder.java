@@ -2,8 +2,8 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.PdfEssenceEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfDotsEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFirstEditionPartEncoder {
@@ -15,15 +15,15 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
     this.essenceMax = essenceMax;
   }
 
-  public IPdfContentBoxEncoder getEssenceEncoder() {
+  public IBoxContentEncoder getEssenceEncoder() {
     return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
   }
 
-  public IPdfContentBoxEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
+  public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
     return new PdfDotsEncoder(getBaseFont(), getResources(), trait, traitMax, traitHeaderKey);
   }
 
-  public IPdfContentBoxEncoder getOverdriveEncoder() {
+  public IBoxContentEncoder getOverdriveEncoder() {
     return null;
   }
 

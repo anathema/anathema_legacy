@@ -50,7 +50,7 @@ public class ThaumaturgyEncoder implements IPdfContentBoxEncoder
 
 	@Override
 	public void encode(PdfContentByte directContent,
-			IGenericCharacter character, IGenericDescription description, Bounds bounds)
+			ReportContent content, Bounds bounds)
 			throws DocumentException {
 		IThaumaturgyModel model = ((ThaumaturgyAdditionalModel)character.getAdditionalModel(ThaumaturgyTemplate.ID)).
 			getThaumaturgyModel();
@@ -132,11 +132,11 @@ public class ThaumaturgyEncoder implements IPdfContentBoxEncoder
 	}*/
 
 	@Override
-	public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+	public String getHeaderKey(ReportContent content) {
 		return "Thaumaturgy";
 	}
 	
-	public boolean hasContent(IGenericCharacter character)
+	public boolean hasContent(ReportContent content)
 	{
 		IThaumaturgyModel model = ((ThaumaturgyAdditionalModel)character.getAdditionalModel(ThaumaturgyTemplate.ID)).
 			getThaumaturgyModel();

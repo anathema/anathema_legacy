@@ -13,10 +13,11 @@ import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
@@ -41,9 +42,9 @@ public abstract class AbstractMovementTableEncoder implements IPdfTableEncoder {
 
   protected abstract Float[] getMovementColumns();
 
-  public final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public final float encodeTable(PdfContentByte directContent, ReportContent content, Bounds bounds) throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
-    PdfPTable table = createTable(directContent, character);
+    PdfPTable table = createTable(directContent, content);
     table.setWidthPercentage(100);
     tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
     tableColumn.addElement(table);
@@ -55,12 +56,12 @@ public abstract class AbstractMovementTableEncoder implements IPdfTableEncoder {
     return character.getTraitCollection();
   }
 
-  protected final PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character) throws DocumentException {
+  protected final PdfPTable createTable(PdfContentByte directContent, ReportContent content) throws DocumentException {
     float[] columnWidth = createColumnWidth();
     PdfPTable table = new PdfPTable(columnWidth);
     addMovementHeader(table);
     for (HealthLevelType type : HealthLevelType.values()) {
-      addHealthTypeRows(table, character, type);
+      addHealthTypeRows(table, content.getCharacter(), type);
     }
     return table;
   }
@@ -133,7 +134,7 @@ public abstract class AbstractMovementTableEncoder implements IPdfTableEncoder {
 
   protected final PdfPCell createMovementCell(int value, int minValue) {
     return TableEncodingUtilities.createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX,
-                                                         Element.ALIGN_CENTER);
+      Element.ALIGN_CENTER);
   }
 
   protected final int getPenalty(HealthLevelType level, int painTolerance) {
@@ -152,7 +153,7 @@ public abstract class AbstractMovementTableEncoder implements IPdfTableEncoder {
     return resources;
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

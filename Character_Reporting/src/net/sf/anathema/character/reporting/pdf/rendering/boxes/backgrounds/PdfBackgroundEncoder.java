@@ -5,18 +5,19 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundInfo;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.LINE_HEIGHT;
 
-public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
+public class PdfBackgroundEncoder implements IBoxContentEncoder {
   // TODO: Give this and PdfIntimacyEncoder a common base class, which may be more broadly useful.
 
   private final IResources resources;
@@ -27,28 +28,27 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
     this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Backgrounds"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds bounds) throws DocumentException {
-    float yPosition = bounds.getMaxY() - LINE_HEIGHT;
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    float yPosition = graphics.getBounds().getMaxY() - LINE_HEIGHT;
     boolean printZeroBackgrounds = AnathemaCharacterPreferences.getDefaultPreferences().printZeroBackgrounds();
-    for (IGenericTrait background : character.getBackgrounds()) {
-      if (yPosition < bounds.getMinY()) {
+    for (IGenericTrait background : reportContent.getCharacter().getBackgrounds()) {
+      if (yPosition < graphics.getBounds().getMinY()) {
         return;
       }
       if (!printZeroBackgrounds && background.getCurrentValue() == 0) {
         continue;
       }
       String backgroundName = getBackgroundName((IBackgroundInfo) background);
-      Position position = new Position(bounds.x, yPosition);
+      Position position = new Position(graphics.getBounds().x, yPosition);
       int value = background.getCurrentValue();
-      traitEncoder.encodeWithText(directContent, backgroundName, position, bounds.width, value, 5);
+      traitEncoder.encodeWithText(graphics.getDirectContent(), backgroundName, position, graphics.getBounds().width, value, 5);
       yPosition -= LINE_HEIGHT;
     }
-    encodeEmptyLines(directContent, bounds, yPosition);
+    encodeEmptyLines(graphics.getDirectContent(), graphics.getBounds(), yPosition);
   }
 
   private String getBackgroundName(IBackgroundInfo background) {
@@ -65,7 +65,7 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
     }
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

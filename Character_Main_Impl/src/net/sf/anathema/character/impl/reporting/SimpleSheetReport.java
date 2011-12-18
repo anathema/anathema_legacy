@@ -17,6 +17,8 @@ import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
@@ -76,7 +78,8 @@ public class SimpleSheetReport implements IITextReport {
         else {
           isFirstPrinted = true;
         }
-        encoder.encode(document, directContent, character, description);
+        ReportContent content = new ReportContent(getContentRegistry(), character, description);
+        encoder.encode(document, directContent, content);
       }
     }
     catch (Exception e) {
@@ -100,6 +103,12 @@ public class SimpleSheetReport implements IITextReport {
     ICharacterModuleObjectMap moduleObjectMap = characterGenerics.getModuleObjectMap();
     CharacterReportingModuleObject moduleObject = moduleObjectMap.getModuleObject(CharacterReportingModule.class);
     return moduleObject.getSimpleEncodingRegistry();
+  }
+
+  private ReportContentRegistry getContentRegistry() {
+    ICharacterModuleObjectMap moduleObjectMap = characterGenerics.getModuleObjectMap();
+    CharacterReportingModuleObject moduleObject = moduleObjectMap.getModuleObject(CharacterReportingModule.class);
+    return moduleObject.getReportContentRegistry();
   }
 
   public boolean supports(IItem item) {

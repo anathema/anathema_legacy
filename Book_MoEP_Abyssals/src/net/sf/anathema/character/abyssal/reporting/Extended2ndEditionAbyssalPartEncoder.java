@@ -1,6 +1,6 @@
 package net.sf.anathema.character.abyssal.reporting;
 
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -11,12 +11,12 @@ public class Extended2ndEditionAbyssalPartEncoder extends AbstractSecondEditionE
     super(resources, registry, essenceMax);
   }
 
-  public IPdfContentBoxEncoder getGreatCurseEncoder() {
+  public IBoxContentEncoder getGreatCurseEncoder() {
     return new Abyssal2ndResonanceEncoder(getBaseFont(), getResources());
   }
 
   @Override
-  public IPdfContentBoxEncoder getAnimaEncoder() {
+  public IBoxContentEncoder getAnimaEncoder() {
     return new Abyssal2ndAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
   }
 }

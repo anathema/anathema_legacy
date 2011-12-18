@@ -1,7 +1,7 @@
 package net.sf.anathema.character.spirit.reporting;
 
 import net.sf.anathema.character.reporting.pdf.rendering.general.NullPdfContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -13,12 +13,12 @@ public class Extended2ndEditionSpiritPartEncoder extends AbstractSecondEditionEx
   }
 
   // TODO: This should be properly edited out, not just nulled out.
-  public IPdfContentBoxEncoder getGreatCurseEncoder() {
+  public IBoxContentEncoder getGreatCurseEncoder() {
     return new NullPdfContentEncoder();
   }
 
   @Override
-  public IPdfContentBoxEncoder getAnimaEncoder() {
+  public IBoxContentEncoder getAnimaEncoder() {
     return new SpiritAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
   }
 }

@@ -1,17 +1,17 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import com.lowagie.text.pdf.BaseFont;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.PdfEssenceEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.SecondEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEncoder {
@@ -52,29 +52,29 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
     return FONT_SIZE;
   }
 
-  public IPdfContentBoxEncoder getEssenceEncoder() {
+  public IBoxContentEncoder getEssenceEncoder() {
     return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
   }
 
-  public IPdfContentBoxEncoder getOverdriveEncoder() {
+  public IBoxContentEncoder getOverdriveEncoder() {
     return null;
   }
 
-  public final IPdfContentBoxEncoder getCombatStatsEncoder() {
+  public final IBoxContentEncoder getCombatStatsEncoder() {
     IPdfContentEncoder valueEncoder = new SecondEditionCombatValueEncoder(resources, baseFont);
     IPdfTableEncoder rulesEncoder = new SecondEditionCombatRulesTableEncoder(resources, baseFont);
     return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
   }
 
-  public IPdfContentBoxEncoder getSocialCombatEncoder() {
+  public IBoxContentEncoder getSocialCombatEncoder() {
     return new SocialCombatStatsEncoder(resources, baseFont);
   }
 
-  public IPdfContentBoxEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry) {
+  public IBoxContentEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry) {
     return registry.getIntimaciesEncoder();
   }
 
-  public IPdfContentBoxEncoder getHealthAndMovementEncoder() {
+  public IBoxContentEncoder getHealthAndMovementEncoder() {
     return new SecondEditionHealthAndMovementEncoder(resources, baseFont, symbolBaseFont);
   }
 

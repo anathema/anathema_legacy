@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitEncoder;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
@@ -53,7 +54,7 @@ public class SiderealCollegeEncoder extends FavorableTraitEncoder {
     return new SiderealCollegeTraitCollection(collegeModel);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Sidereal.Colleges"; //$NON-NLS-1$
   }
 

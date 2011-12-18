@@ -2,19 +2,19 @@ package net.sf.anathema.character.sidereal.reporting.rendering;
 
 import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.sidereal.SiderealCharacterModule;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
-public class StandingEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
+public class StandingEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
 
   private final BaseFont baseFont;
   private final IResources resources;
@@ -28,22 +28,20 @@ public class StandingEncoder extends AbstractPdfEncoder implements IPdfContentBo
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
-    int yPosition = (int) (bounds.getMaxY() - lineHeight);
-    drawLabelledContent(
-        directContent,
-        getLabel("Label.Allegiance"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    int yPosition = (int) (graphics.getBounds().getMaxY() - lineHeight);
+    drawLabelledContent(graphics.getDirectContent(),
+        getLabel("Label.Allegiance"), null, new Position(graphics.getBounds().x, yPosition), graphics.getBounds().width); //$NON-NLS-1$
     yPosition -= lineHeight;
-    int salary = getBackground(character, SiderealCharacterModule.BACKGROUND_ID_SALARY);
-    yPosition -= smallTraitEncoder.encodeWithText(directContent, resources.getString("Sheet.Sidereal.Standing.Salary"), //$NON-NLS-1$
-        new Position(bounds.x, yPosition),
-        bounds.width,
+    int salary = getBackground(reportContent.getCharacter(), SiderealCharacterModule.BACKGROUND_ID_SALARY);
+    yPosition -= smallTraitEncoder.encodeWithText(graphics.getDirectContent(), resources.getString("Sheet.Sidereal.Standing.Salary"), //$NON-NLS-1$
+        new Position(graphics.getBounds().x, yPosition), graphics.getBounds().width,
         salary,
         5);
-    int manse = getBackground(character, SiderealCharacterModule.BACKGROUND_ID_CELESTIAL_MANSE);
-    smallTraitEncoder.encodeWithText(directContent, resources.getString("Sheet.Sidereal.Standing.Manse"), new Position( //$NON-NLS-1$
-        bounds.x,
-        yPosition), bounds.width, manse, 5);
+    int manse = getBackground(reportContent.getCharacter(), SiderealCharacterModule.BACKGROUND_ID_CELESTIAL_MANSE);
+    smallTraitEncoder.encodeWithText(graphics.getDirectContent(), resources.getString("Sheet.Sidereal.Standing.Manse"), new Position( //$NON-NLS-1$
+      graphics.getBounds().x,
+        yPosition), graphics.getBounds().width, manse, 5);
   }
 
   private int getBackground(IGenericCharacter character, String id) {
@@ -56,7 +54,7 @@ public class StandingEncoder extends AbstractPdfEncoder implements IPdfContentBo
     return backgroundValue;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Sidereal.Standing"; //$NON-NLS-1$
   }
 
@@ -69,7 +67,7 @@ public class StandingEncoder extends AbstractPdfEncoder implements IPdfContentBo
     return baseFont;
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

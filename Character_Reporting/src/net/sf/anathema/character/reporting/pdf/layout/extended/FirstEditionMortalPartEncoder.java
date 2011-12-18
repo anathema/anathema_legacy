@@ -4,8 +4,8 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.PdfExperienceEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfDotsEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncoder {
@@ -17,15 +17,15 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
     this.registry = registry;
   }
 
-  public IPdfContentBoxEncoder getAnimaEncoder() {
+  public IBoxContentEncoder getAnimaEncoder() {
     return new PdfBackgroundEncoder(getResources(), getBaseFont());
   }
 
-  public IPdfContentBoxEncoder getEssenceEncoder() {
+  public IBoxContentEncoder getEssenceEncoder() {
     return new PdfExperienceEncoder(getResources(), getBaseFont());
   }
 
-  public IPdfContentBoxEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
+  public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
     return new PdfDotsEncoder(getBaseFont(), getResources(), trait, traitMax, traitHeaderKey);
   }
 
@@ -37,7 +37,7 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
     return false;
   }
 
-  public IPdfContentBoxEncoder getGreatCurseEncoder() {
+  public IBoxContentEncoder getGreatCurseEncoder() {
     return registry.getLinguisticsEncoder(); //No Great Curse for Mortals
   }
 }

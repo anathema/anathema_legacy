@@ -31,7 +31,7 @@ public class TableEncodingUtilities {
   }
 
   public static final PdfPCell createContentCellTable(Color borderColor, String text, Font font, float borderWidth, int border, int alignment,
-                                                      boolean enabled) {
+    boolean enabled) {
     PdfPCell innerCell = new PdfPCell(new Phrase(text, font));
     innerCell.setBorderColor(borderColor);
     innerCell.setBorderWidth(borderWidth);

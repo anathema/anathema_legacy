@@ -17,10 +17,11 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
@@ -46,9 +47,9 @@ public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
     this.spaceCell.setBorder(Rectangle.NO_BORDER);
   }
 
-  public final float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public final float encodeTable(PdfContentByte directContent, ReportContent content, Bounds bounds) throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
-    PdfPTable table = createTable(directContent, character);
+    PdfPTable table = createTable(directContent, content);
     table.setWidthPercentage(100);
     tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
     tableColumn.addElement(table);
@@ -67,7 +68,7 @@ public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
     return 1;
   }
 
-  protected final PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character) throws DocumentException {
+  protected final PdfPTable createTable(PdfContentByte directContent, ReportContent content) throws DocumentException {
     try {
       Image activeTemplate = Image.getInstance(createRectTemplate(directContent, Color.BLACK));
       Image passiveTemplate = Image.getInstance(createRectTemplate(directContent, Color.LIGHT_GRAY));
@@ -75,7 +76,7 @@ public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
       PdfPTable table = new PdfPTable(columnWidth);
       addHeaders(table);
       for (HealthLevelType type : HealthLevelType.values()) {
-        addHealthTypeRows(table, character, activeTemplate, passiveTemplate, type);
+        addHealthTypeRows(table, content.getCharacter(), activeTemplate, passiveTemplate, type);
       }
       return table;
     }
@@ -234,7 +235,7 @@ public abstract class AbstractHealthTableEncoder implements IPdfTableEncoder {
     return resources;
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

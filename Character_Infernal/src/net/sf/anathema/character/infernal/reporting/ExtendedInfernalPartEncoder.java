@@ -1,10 +1,9 @@
 package net.sf.anathema.character.infernal.reporting;
 
-import net.sf.anathema.character.infernal.reporting.InfernalYoziListEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
@@ -16,18 +15,18 @@ public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPa
     //this.registry = registry;
   }
 
-  public IPdfContentBoxEncoder getGreatCurseEncoder() {
+  public IBoxContentEncoder getGreatCurseEncoder() {
     return new InfernalUrgeEncoder(getResources(), getBaseFont());
   }
 
   @Override
-  public IPdfContentBoxEncoder getAnimaEncoder() {
+  public IBoxContentEncoder getAnimaEncoder() {
     return new InfernalAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
   }
   
-  public IPdfVariableContentBoxEncoder[] getAdditionalFirstPageEncoders()
+  public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders()
   {
-	return new IPdfVariableContentBoxEncoder[]
+	return new IVariableBoxContentEncoder[]
 	         { new InfernalYoziListEncoder(getBaseFont(), getResources())};
   }
 

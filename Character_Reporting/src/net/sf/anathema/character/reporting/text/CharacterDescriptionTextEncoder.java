@@ -57,7 +57,7 @@ public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {
   }
 
   private void addTextualDescriptionPart(MultiColumnText columnText, Phrase potentialParentPhrase, boolean isFirst,
-                                         Chunk chunk) throws DocumentException {
+    Chunk chunk) throws DocumentException {
     if (isFirst) {
       potentialParentPhrase.add(chunk);
       columnText.addElement(potentialParentPhrase);

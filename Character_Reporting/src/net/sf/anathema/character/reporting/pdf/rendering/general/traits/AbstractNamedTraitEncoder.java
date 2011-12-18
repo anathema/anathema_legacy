@@ -5,11 +5,10 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.content.stats.NamedGenericTraitReference;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -44,12 +43,12 @@ public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder {
   }
 
   protected float drawNamedTraitSection(PdfContentByte directContent, String title, IValuedTraitReference[] traits, Position position, float width,
-                                        float height, int dotCount) {
+    float height, int dotCount) {
     return _drawNamedTraitSection(directContent, title, traits, position, width, getLineCount(title, height), dotCount);
   }
 
   protected float _drawNamedTraitSection(PdfContentByte directContent, String title, IValuedTraitReference[] traits, Position position,
-                                         float width, int lineCount, int dotCount) {
+    float width, int lineCount, int dotCount) {
     float height = 0;
     if (title != null) {
       height = drawSubsectionHeader(directContent, title, position, width);

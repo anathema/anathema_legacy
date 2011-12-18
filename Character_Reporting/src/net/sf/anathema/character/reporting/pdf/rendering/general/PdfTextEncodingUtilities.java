@@ -27,7 +27,7 @@ public class PdfTextEncodingUtilities {
   }
 
   public static ColumnText encodeText(PdfContentByte directContent, Phrase phrase, Bounds bounds, float lineHeight,
-                                      int alignment) throws DocumentException {
+    int alignment) throws DocumentException {
     ColumnText columnText = new ColumnText(directContent);
     float minX = bounds.getMinX();
     float minY = bounds.getMinY();

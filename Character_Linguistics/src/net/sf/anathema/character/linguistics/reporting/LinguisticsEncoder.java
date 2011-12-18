@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.linguistics.ILinguisticsAdditionalModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -24,7 +25,7 @@ public class LinguisticsEncoder extends AbstractLineTextEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Languages"; //$NON-NLS-1$
   }
 

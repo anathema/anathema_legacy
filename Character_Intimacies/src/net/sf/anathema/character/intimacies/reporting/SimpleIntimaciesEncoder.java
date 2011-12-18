@@ -7,6 +7,7 @@ import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
 
 import com.lowagie.text.Chunk;
@@ -20,7 +21,7 @@ public class SimpleIntimaciesEncoder extends AbstractLineTextEncoder {
     super(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Intimacies"; //$NON-NLS-1$
   }
 

@@ -2,15 +2,15 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.essence;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class ExtendedPdfEssenceEncoder extends AbstractPdfEncoder implements IPdfVariableContentBoxEncoder {
+public class ExtendedPdfEssenceEncoder extends AbstractPdfEncoder implements IVariableBoxContentEncoder {
 
   private BaseFont baseFont;
   private final IResources resources;
@@ -27,13 +27,13 @@ public class ExtendedPdfEssenceEncoder extends AbstractPdfEncoder implements IPd
     return baseFont;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Essence"; //$NON-NLS-1$
   }
 
-  public float getRequestedHeight(IGenericCharacter character, float width) {
+  public float getRequestedHeight(ReportContent content, float width) {
     try {
-      return poolTable.getTableHeight(character, width);
+      return poolTable.getTableHeight(content, width);
     }
     catch (DocumentException e) {
       System.err.println(e.toString());
@@ -42,13 +42,12 @@ public class ExtendedPdfEssenceEncoder extends AbstractPdfEncoder implements IPd
     }
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds bounds) throws DocumentException {
-    Bounds poolBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height);
-    poolTable.encodeTable(directContent, character, poolBounds);
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    Bounds poolBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, graphics.getBounds().width, graphics.getBounds().height);
+    poolTable.encodeTable(graphics.getDirectContent(), reportContent, poolBounds);
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

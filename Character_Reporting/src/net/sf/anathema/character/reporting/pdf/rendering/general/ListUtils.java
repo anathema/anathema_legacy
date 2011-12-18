@@ -15,7 +15,7 @@ public class ListUtils {
                                                           "Ninth", "Tenth"}; //$NON-NLS-1$ //$NON-NLS-2$
 
   public static void addBulletedListText(IResources resources, Chunk symbolChunk, IExaltedEdition edition, String resourceBase, Phrase phrase,
-                                         boolean showHeader) {
+    boolean showHeader) {
     if (showHeader) {
       String header = getRequiredString(resources, resourceBase, edition);
       phrase.add(header + "\n"); //$NON-NLS-1$

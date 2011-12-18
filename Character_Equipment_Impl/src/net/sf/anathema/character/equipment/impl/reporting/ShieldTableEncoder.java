@@ -9,6 +9,7 @@ import net.sf.anathema.character.equipment.impl.reporting.stats.IEquipmentStatsG
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -26,18 +27,18 @@ public class ShieldTableEncoder extends AbstractEquipmentTableEncoder<IShieldSta
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
-    IEquipmentStatsGroup<IShieldStats>[] groups = createStatsGroups(character);
+  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds) {
+    IEquipmentStatsGroup<IShieldStats>[] groups = createStatsGroups(content);
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable shieldTable = new PdfPTable(columnWidths);
     shieldTable.setTotalWidth(bounds.width);
-    encodeContent(shieldTable, character, bounds);
+    encodeContent(shieldTable, content, bounds);
     return shieldTable;
   }
 
   @SuppressWarnings("unchecked")
   @Override
-  protected IEquipmentStatsGroup<IShieldStats>[] createStatsGroups(IGenericCharacter character) {
+  protected IEquipmentStatsGroup<IShieldStats>[] createStatsGroups(ReportContent content) {
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup<IArmourStats>(resources),
         new CloseCombatShieldStatsGroup(resources),
@@ -52,7 +53,7 @@ public class ShieldTableEncoder extends AbstractEquipmentTableEncoder<IShieldSta
   }
 
   @Override
-  protected IShieldStats[] getPrintStats(IGenericCharacter character) {
-    return getEquipmentModel(character).getPrintShield();
+  protected IShieldStats[] getPrintStats(ReportContent content) {
+    return getEquipmentModel(content.getCharacter()).getPrintShield();
   }
 }

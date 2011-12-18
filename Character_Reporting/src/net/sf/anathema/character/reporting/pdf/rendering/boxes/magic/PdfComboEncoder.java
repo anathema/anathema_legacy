@@ -11,13 +11,14 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
+import net.sf.anathema.character.reporting.pdf.content.CharmPrintNameTransformer;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfLineEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pdf.content.CharmPrintNameTransformer;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -42,8 +43,8 @@ public class PdfComboEncoder {
     this.nameFont.setStyle(Font.BOLD);
   }
 
-  public float encodeCombos(PdfContentByte directContent, IGenericCharacter character, Bounds maxBounds) throws DocumentException {
-    List<IGenericCombo> combos = new ArrayList<IGenericCombo>(Arrays.asList(character.getCombos()));
+  public float encodeCombos(PdfContentByte directContent, ReportContent content, Bounds maxBounds) throws DocumentException {
+    List<IGenericCombo> combos = new ArrayList<IGenericCombo>(Arrays.asList(content.getCharacter().getCombos()));
     return encodeCombos(directContent, combos, maxBounds, false);
   }
 
@@ -78,7 +79,7 @@ public class PdfComboEncoder {
     int remainingLines = (int) ((yPosition - contentBounds.getMinY()) / LINE_HEIGHT);
     Position lineStartPosition = new Position(contentBounds.getMinX(), yPosition - LINE_HEIGHT);
     PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, contentBounds.getMinX(), contentBounds.getMaxX(), LINE_HEIGHT,
-                                                   remainingLines);
+      remainingLines);
 
     String headerString = resources.getString("Sheet.Header.Combos"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, bounds, headerString);

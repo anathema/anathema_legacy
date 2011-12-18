@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTableEncoder<IWeaponStats> {
@@ -27,7 +28,8 @@ public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTabl
 
   @SuppressWarnings("unchecked")
   @Override
-  protected IEquipmentStatsGroup<IWeaponStats>[] createStatsGroups(IGenericCharacter character) {
+  protected IEquipmentStatsGroup<IWeaponStats>[] createStatsGroups(ReportContent content) {
+    IGenericCharacter character = content.getCharacter();
     IGenericTraitCollection traitCollection = getTraitCollection(character);
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup<IWeaponStats>(resources),
@@ -58,7 +60,7 @@ public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTabl
   }
 
   @Override
-  protected IWeaponStats[] getPrintStats(IGenericCharacter character) {
-    return getEquipmentModel(character).getPrintWeapons(getResources());
+  protected IWeaponStats[] getPrintStats(ReportContent content) {
+    return getEquipmentModel(content.getCharacter()).getPrintWeapons(getResources());
   }
 }

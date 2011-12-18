@@ -7,17 +7,17 @@ import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -26,7 +26,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
+public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
 
   private final List<ITraitType> markedTraitTypes = new ArrayList<ITraitType>();
   private final List<INamedTraitEncoder> namedTraitEncoders = new ArrayList<INamedTraitEncoder>();
@@ -56,25 +56,24 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return traitEncoder;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds bounds) throws DocumentException {
-    Position position = new Position(bounds.getMinX(), bounds.getMaxY());
-    float width = bounds.width;
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    Position position = new Position(graphics.getBounds().getMinX(), graphics.getBounds().getMaxY());
+    float width = graphics.getBounds().width;
 
-    float bottom = bounds.getMinY() + IVoidStateFormatConstants.TEXT_PADDING;
-    int nExcellencies = getExcellencies(character).length;
+    float bottom = graphics.getBounds().getMinY() + IVoidStateFormatConstants.TEXT_PADDING;
+    int nExcellencies = getExcellencies(reportContent.getCharacter()).length;
     if (nExcellencies > 0) {
-      bottom += encodeExcellencyCommentText(directContent, nExcellencies, position, bottom);
+      bottom += encodeExcellencyCommentText(graphics.getDirectContent(), nExcellencies, position, bottom);
     }
     if (!markedTraitTypes.isEmpty()) {
-      bottom += encodeMarkerCommentText(directContent, position, bottom);
+      bottom += encodeMarkerCommentText(graphics.getDirectContent(), position, bottom);
     }
 
-    float yPosition = encodeTraitGroups(directContent, character, position, width);
+    float yPosition = encodeTraitGroups(graphics.getDirectContent(), reportContent.getCharacter(), position, width);
     float height = yPosition - bottom;
     for (INamedTraitEncoder encoder : namedTraitEncoders) {
       yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
-      yPosition -= encoder.encode(directContent, character, new Position(position.x, yPosition), width, height);
+      yPosition -= encoder.encode(graphics.getDirectContent(), reportContent.getCharacter(), new Position(position.x, yPosition), width, height);
       height -= IVoidStateFormatConstants.LINE_HEIGHT;
     }
   }
@@ -123,7 +122,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
   protected abstract IIdentifiedTraitTypeGroup[] getIdentifiedTraitTypeGroups(IGenericCharacter character);
 
   private float encodeTraitGroup(PdfContentByte directContent, IGenericCharacter character, IMagicStats[] excellencies,
-                                 IGenericTraitCollection traitCollection, IIdentifiedTraitTypeGroup group, Position position, float width) {
+    IGenericTraitCollection traitCollection, IIdentifiedTraitTypeGroup group, Position position, float width) {
     float height = 0;
     float groupLabelWidth = IVoidStateFormatConstants.LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
     float traitX = position.x + groupLabelWidth;
@@ -185,7 +184,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
   }
 
   private float encodeFavorableTrait(PdfContentByte directContent, String label, IFavorableGenericTrait trait, boolean[] excellencyLearned,
-                                     Position position, float width) {
+    Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
     return traitEncoder.encodeWithExcellencies(directContent, label, position, width, value, favored, excellencyLearned, essenceMax);
@@ -231,7 +230,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return false;
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

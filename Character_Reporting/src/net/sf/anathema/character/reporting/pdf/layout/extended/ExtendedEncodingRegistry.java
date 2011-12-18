@@ -5,8 +5,8 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.rendering.general.NullPdfContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
 import net.sf.anathema.lib.collection.Table;
 
@@ -16,19 +16,20 @@ import java.util.List;
 
 public class ExtendedEncodingRegistry implements IEncodingRegistry {
 
-  private final Table<ICharacterType, IExaltedEdition, IExtendedPartEncoder> partEncoderTable = new Table<ICharacterType, IExaltedEdition, IExtendedPartEncoder>();
+  private final Table<ICharacterType, IExaltedEdition, IExtendedPartEncoder> partEncoderTable = new Table<ICharacterType, IExaltedEdition,
+    IExtendedPartEncoder>();
 
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
-  private IPdfContentBoxEncoder weaponContentEncoder = new NullPdfContentEncoder("Weapons");
-  private IPdfContentBoxEncoder armourContentEncoder = new NullPdfContentEncoder("Armour");
-  private IPdfContentBoxEncoder intimaciesEncoder = new NullPdfContentEncoder("Intimacies");
-  private IPdfContentBoxEncoder possessionsEncoder = new NullPdfContentEncoder("Possessions");
-  private IPdfContentBoxEncoder linguisticsEncoder = new NullPdfContentEncoder("Linguistics");
-  private IPdfContentBoxEncoder mutationsEncoder = new NullPdfContentEncoder("Mutations");
-  private IPdfContentBoxEncoder thaumaturgyEncoder = new NullPdfContentEncoder("Thaumaturgy");
-  private IPdfContentBoxEncoder meritsAndFlawsEncoder = new NullPdfContentEncoder("Merits & Flaws");
-  private List<IPdfVariableContentBoxEncoder> sidebarEncoders = new ArrayList<IPdfVariableContentBoxEncoder>();
+  private IBoxContentEncoder weaponContentEncoder = new NullPdfContentEncoder("Weapons");
+  private IBoxContentEncoder armourContentEncoder = new NullPdfContentEncoder("Armour");
+  private IBoxContentEncoder intimaciesEncoder = new NullPdfContentEncoder("Intimacies");
+  private IBoxContentEncoder possessionsEncoder = new NullPdfContentEncoder("Possessions");
+  private IBoxContentEncoder linguisticsEncoder = new NullPdfContentEncoder("Linguistics");
+  private IBoxContentEncoder mutationsEncoder = new NullPdfContentEncoder("Mutations");
+  private IBoxContentEncoder thaumaturgyEncoder = new NullPdfContentEncoder("Thaumaturgy");
+  private IBoxContentEncoder meritsAndFlawsEncoder = new NullPdfContentEncoder("Merits & Flaws");
+  private List<IVariableBoxContentEncoder> sidebarEncoders = new ArrayList<IVariableBoxContentEncoder>();
   private List<IPdfTableEncoder> magicEncoders = new ArrayList<IPdfTableEncoder>();
 
   public ExtendedEncodingRegistry() {
@@ -47,34 +48,34 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
   }
 
   @Override
-  public void setWeaponContentEncoder(IPdfContentBoxEncoder encoder) {
+  public void setWeaponContentEncoder(IBoxContentEncoder encoder) {
     this.weaponContentEncoder = encoder;
   }
 
   @Override
-  public void setArmourContentEncoder(IPdfContentBoxEncoder encoder) {
+  public void setArmourContentEncoder(IBoxContentEncoder encoder) {
     this.armourContentEncoder = encoder;
   }
 
   @Override
-  public void setIntimaciesEncoder(IPdfContentBoxEncoder intimaciesEncoder) {
+  public void setIntimaciesEncoder(IBoxContentEncoder intimaciesEncoder) {
     this.intimaciesEncoder = intimaciesEncoder;
   }
 
-  public void setMutationsEncoder(IPdfContentBoxEncoder mutationsEncoder) {
+  public void setMutationsEncoder(IBoxContentEncoder mutationsEncoder) {
     this.mutationsEncoder = mutationsEncoder;
   }
 
-  public void setThaumaturgyEncoder(IPdfContentBoxEncoder thaumaturgyEncoder) {
+  public void setThaumaturgyEncoder(IBoxContentEncoder thaumaturgyEncoder) {
     this.thaumaturgyEncoder = thaumaturgyEncoder;
   }
 
   @Override
-  public void setMeritsAndFlawsEncoder(IPdfContentBoxEncoder meritsAndFlawsEncoder) {
+  public void setMeritsAndFlawsEncoder(IBoxContentEncoder meritsAndFlawsEncoder) {
     this.meritsAndFlawsEncoder = meritsAndFlawsEncoder;
   }
 
-  public void addAdditionalMagicSidebarEncoder(IPdfVariableContentBoxEncoder encoder) {
+  public void addAdditionalMagicSidebarEncoder(IVariableBoxContentEncoder encoder) {
     sidebarEncoders.add(encoder);
   }
 
@@ -82,35 +83,35 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
     magicEncoders.add(encoder);
   }
 
-  public IPdfContentBoxEncoder getWeaponContentEncoder() {
+  public IBoxContentEncoder getWeaponContentEncoder() {
     return weaponContentEncoder;
   }
 
-  public IPdfContentBoxEncoder getArmourContentEncoder() {
+  public IBoxContentEncoder getArmourContentEncoder() {
     return armourContentEncoder;
   }
 
-  public IPdfContentBoxEncoder getIntimaciesEncoder() {
+  public IBoxContentEncoder getIntimaciesEncoder() {
     return intimaciesEncoder;
   }
 
-  public IPdfContentBoxEncoder getPossessionsEncoder() {
+  public IBoxContentEncoder getPossessionsEncoder() {
     return possessionsEncoder;
   }
 
-  public IPdfContentBoxEncoder getLinguisticsEncoder() {
+  public IBoxContentEncoder getLinguisticsEncoder() {
     return linguisticsEncoder;
   }
 
-  public IPdfContentBoxEncoder getMutationsEncoder() {
+  public IBoxContentEncoder getMutationsEncoder() {
     return mutationsEncoder;
   }
 
-  public IPdfContentBoxEncoder getThaumaturgyEncoder() {
+  public IBoxContentEncoder getThaumaturgyEncoder() {
     return thaumaturgyEncoder;
   }
 
-  public List<IPdfVariableContentBoxEncoder> getAdditionalMagicSidebarEncoders() {
+  public List<IVariableBoxContentEncoder> getAdditionalMagicSidebarEncoders() {
     return sidebarEncoders;
   }
 
@@ -118,7 +119,7 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
     return magicEncoders;
   }
 
-  public IPdfContentBoxEncoder getMeritsAndFlawsEncoder() {
+  public IBoxContentEncoder getMeritsAndFlawsEncoder() {
     return meritsAndFlawsEncoder;
   }
 
@@ -135,11 +136,11 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
   }
 
   @Override
-  public void setPossessionsEncoder(IPdfContentBoxEncoder encoder) {
+  public void setPossessionsEncoder(IBoxContentEncoder encoder) {
     this.possessionsEncoder = encoder;
   }
 
-  public void setLinguisticsEncoder(IPdfContentBoxEncoder encoder) {
+  public void setLinguisticsEncoder(IBoxContentEncoder encoder) {
     this.linguisticsEncoder = encoder;
   }
 }

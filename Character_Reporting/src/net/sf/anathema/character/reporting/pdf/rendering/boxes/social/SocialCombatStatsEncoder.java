@@ -9,21 +9,22 @@ import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SocialCombatStatsEncoder implements IPdfContentBoxEncoder {
+public class SocialCombatStatsEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;
@@ -37,27 +38,26 @@ public class SocialCombatStatsEncoder implements IPdfContentBoxEncoder {
     this.font = TableEncodingUtilities.createFont(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "SocialCombat"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds bounds) throws DocumentException {
-    IEquipmentModifiers equipment = character.getEquipmentModifiers();
-    float valueWidth = bounds.width;
-    Bounds valueBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height);
-    float valueHeight = encodeValues(directContent, valueBounds, character.getTraitCollection(), equipment);
-    Bounds attackTableBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height - valueHeight);
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    IEquipmentModifiers equipment = reportContent.getCharacter().getEquipmentModifiers();
+    float valueWidth = graphics.getBounds().width;
+    Bounds valueBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, valueWidth, graphics.getBounds().height);
+    float valueHeight = encodeValues(graphics.getDirectContent(), valueBounds, reportContent.getCharacter().getTraitCollection(), equipment);
+    Bounds attackTableBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, valueWidth, graphics.getBounds().height - valueHeight);
 
     IPdfTableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources, baseFont);
-    float attackHeight = tableEncoder.encodeTable(directContent, character, attackTableBounds);
-    Bounds actionBounds = new Bounds(bounds.x, bounds.y, valueWidth / 2f, attackTableBounds.height - attackHeight);
-    encodeActionTable(directContent, actionBounds);
-    final float center = bounds.x + valueWidth / 2f;
-    Bounds commentBounds = new Bounds(center + 4, bounds.y, valueWidth / 2f, attackTableBounds.height - attackHeight);
-    encodeDVTable(directContent, commentBounds);
-    directContent.moveTo(center, bounds.y + 6 * IVoidStateFormatConstants.COMMENT_FONT_SIZE);
-    directContent.lineTo(center, bounds.y + 3);
+    float attackHeight = tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, attackTableBounds);
+    Bounds actionBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, valueWidth / 2f, attackTableBounds.height - attackHeight);
+    encodeActionTable(graphics.getDirectContent(), actionBounds);
+    final float center = graphics.getBounds().x + valueWidth / 2f;
+    Bounds commentBounds = new Bounds(center + 4, graphics.getBounds().y, valueWidth / 2f, attackTableBounds.height - attackHeight);
+    encodeDVTable(graphics.getDirectContent(), commentBounds);
+    graphics.getDirectContent().moveTo(center, graphics.getBounds().y + 6 * IVoidStateFormatConstants.COMMENT_FONT_SIZE);
+    graphics.getDirectContent().lineTo(center, graphics.getBounds().y + 3);
   }
 
   private void encodeDVTable(PdfContentByte directContent, Bounds bounds) throws DocumentException {
@@ -148,7 +148,7 @@ public class SocialCombatStatsEncoder implements IPdfContentBoxEncoder {
     return encoder.getHeight() + 1;
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

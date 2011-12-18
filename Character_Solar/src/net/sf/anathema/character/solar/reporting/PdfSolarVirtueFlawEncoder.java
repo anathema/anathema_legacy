@@ -2,10 +2,12 @@ package net.sf.anathema.character.solar.reporting;
 
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.*;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Line;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
@@ -22,7 +24,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
+public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder;
   private final Font nameFont;
@@ -34,18 +36,18 @@ public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
     this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "GreatCurse.Solar"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
     float boxPadding = 1f;
 
-	ISolarVirtueFlaw virtueFlaw = ((ISolarVirtueFlawModel) character.getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
+	ISolarVirtueFlaw virtueFlaw = ((ISolarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
     //Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
-    float boxHeight = traitEncoder.encodeHeight(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
+    float boxHeight = traitEncoder.encodeHeight(graphics.getDirectContent(), graphics.getBounds(), virtueFlaw.getLimitTrait().getCurrentValue());
     float boxInterval = boxHeight + boxPadding;
-    Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - boxInterval);
+    Bounds textBounds = new Bounds(graphics.getBounds().x, graphics.getBounds().y, graphics.getBounds().width, graphics.getBounds().height - boxInterval);
 
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     String name = virtueFlaw.getName().getText();
@@ -53,21 +55,21 @@ public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
     boolean nameDefined = !StringUtilities.isNullOrTrimEmpty(name);
     boolean conditionDefined = !StringUtilities.isNullOrEmpty(condition);
     if (!nameDefined && !conditionDefined) {
-      encodeLines(directContent, bounds, leading, textBounds.getMaxY());
+      encodeLines(graphics.getDirectContent(), graphics.getBounds(), leading, textBounds.getMaxY());
     }
     if (nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();
       phrase.add(new Chunk(name, nameFont));
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
+      PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
     }
     if (nameDefined && !conditionDefined) {
       Phrase phrase = new Phrase();
       phrase.add(new Chunk(name, nameFont));
-      ColumnText columnText = PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
+      ColumnText columnText = PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
       float baseLine = columnText.getYLine();
-      encodeLines(directContent, bounds, leading, baseLine);
+      encodeLines(graphics.getDirectContent(), graphics.getBounds(), leading, baseLine);
     }
     if (!nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();
@@ -76,7 +78,7 @@ public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
       phrase.add(new Chunk("                                          ", undefinedFont)); //$NON-NLS-1$
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
+      PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
     }
   }
 
@@ -98,7 +100,7 @@ public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
     return TableEncodingUtilities.createFont(baseFont);
   }
   
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
 	  return true;
   }
 }

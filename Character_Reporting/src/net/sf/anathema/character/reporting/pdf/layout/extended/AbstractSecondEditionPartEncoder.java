@@ -10,12 +10,12 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2n
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.SecondEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfVariableContentBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfDotsEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -57,41 +57,41 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
     return FONT_SIZE;
   }
 
-  public IPdfContentBoxEncoder getEssenceEncoder() {
+  public IBoxContentEncoder getEssenceEncoder() {
     return new ExtendedPdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
   }
 
-  public IPdfContentBoxEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
+  public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
     return new PdfDotsEncoder(getBaseFont(), getResources(), trait, traitMax, traitHeaderKey);
   }
 
-  public IPdfContentBoxEncoder getOverdriveEncoder() {
+  public IBoxContentEncoder getOverdriveEncoder() {
     return null;
   }
 
-  public final IPdfContentBoxEncoder getCombatStatsEncoder() {
+  public final IBoxContentEncoder getCombatStatsEncoder() {
     IPdfContentEncoder valueEncoder = new SecondEditionCombatValueEncoder(resources, baseFont);
     IPdfTableEncoder rulesEncoder = new SecondEditionCombatRulesTableEncoder(resources, baseFont);
     return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
   }
 
-  public IPdfContentBoxEncoder getSocialCombatEncoder() {
+  public IBoxContentEncoder getSocialCombatEncoder() {
     return new SocialCombatStatsBoxEncoder(resources, baseFont);
   }
 
-  public IPdfContentBoxEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {
+  public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {
     return registry.getIntimaciesEncoder();
   }
 
-  public IPdfContentBoxEncoder getHealthAndMovementEncoder() {
+  public IBoxContentEncoder getHealthAndMovementEncoder() {
     return new SecondEditionHealthAndMovementEncoder(resources, baseFont, symbolBaseFont);
   }
 
-  public IPdfContentBoxEncoder getHealthEncoder() {
+  public IBoxContentEncoder getHealthEncoder() {
     return new Extended2ndEditionHealthEncoder(resources, baseFont, symbolBaseFont);
   }
 
-  public IPdfContentBoxEncoder getMovementEncoder() {
+  public IBoxContentEncoder getMovementEncoder() {
     return new Extended2ndEditionMovementEncoder(resources, baseFont, symbolBaseFont);
   }
 
@@ -99,8 +99,8 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
     return 102;
   }
 
-  public IPdfVariableContentBoxEncoder[] getAdditionalFirstPageEncoders() {
-    return new IPdfVariableContentBoxEncoder[0];
+  public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders() {
+    return new IVariableBoxContentEncoder[0];
   }
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {

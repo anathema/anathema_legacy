@@ -7,9 +7,11 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.lunar.reporting.rendering.GiftEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
@@ -23,7 +25,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
+public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
 
   private final String notes = "Sheet.Lunar.WarForm";
   private final static int PHYSICAL_MAX = 15;
@@ -38,18 +40,18 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
     this.baseFont = baseFont;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Lunar.WarForm"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) {
+  public void encode(Graphics graphics, ReportContent reportContent) {
 	  
-    IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
-    IBeastformModel additionalModel = (IBeastformModel) character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
+    IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
+    IBeastformModel additionalModel = (IBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
-    encodeAttributes(directContent, bounds, attributeGroups, traitCollection);
-    encodeNotes(directContent, bounds);
-    encodeMutations(directContent, bounds, character, description);
+    encodeAttributes(graphics.getDirectContent(), graphics.getBounds(), attributeGroups, traitCollection);
+    encodeNotes(graphics.getDirectContent(), graphics.getBounds());
+    encodeMutations(graphics.getDirectContent(), graphics.getBounds(), reportContent);
   }
   
   private final void encodeNotes(PdfContentByte directContent, Bounds bounds)
@@ -81,7 +83,7 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
   
   private final void encodeMutations(PdfContentByte directContent,
 		  Bounds bounds,
-		  IGenericCharacter character, IGenericDescription description)
+		  ReportContent content)
   {
 	  final int horizontalSpacing = 15;
 	  final int verticalSpacing = 5;
@@ -90,9 +92,9 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
 			  bounds.y + verticalSpacing,
 			  bounds.getWidth() * 1 / 2 - horizontalSpacing,
 			  bounds.height - 2 * verticalSpacing);
-	  IPdfContentBoxEncoder encoder = new GiftEncoder(baseFont, resources);
+	  IBoxContentEncoder encoder = new GiftEncoder(baseFont, resources);
 	  try {
-		new PdfBoxEncoder(resources, baseFont).encodeBox(directContent, encoder, character, description, newBounds);
+		new PdfBoxEncoder(resources, baseFont).encodeBox(content, directContent, encoder, newBounds);
 	} catch (DocumentException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -127,7 +129,7 @@ public class SecondEditionLunarDBTFormEncoder implements IPdfContentBoxEncoder {
     }
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

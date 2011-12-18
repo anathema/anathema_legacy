@@ -5,8 +5,7 @@ import com.lowagie.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicCostStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicDetailsStatsGroup;
@@ -14,6 +13,8 @@ import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicDuration
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicNameStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicSourceStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicTypeStatsGroup;
+import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -39,15 +40,15 @@ public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats>
 
   @SuppressWarnings("unchecked")
   @Override
-  protected IStatsGroup<IMagicStats>[] createStatsGroups(IGenericCharacter character) {
+  protected IStatsGroup<IMagicStats>[] createStatsGroups(ReportContent content) {
     return new IStatsGroup[]{new MagicNameStatsGroup(resources), new MagicCostStatsGroup(resources), new MagicTypeStatsGroup(resources),
                              new MagicDurationStatsGroup(resources), new MagicDetailsStatsGroup(resources), new MagicSourceStatsGroup(resources)};
   }
 
   @Override
-  protected void encodeContent(PdfPTable table, IGenericCharacter character, Bounds bounds) {
+  protected void encodeContent(PdfPTable table, ReportContent content, Bounds bounds) {
     float heightLimit = bounds.height - 3;
-    IStatsGroup<IMagicStats>[] groups = createStatsGroups(character);
+    IStatsGroup<IMagicStats>[] groups = createStatsGroups(content);
     boolean encodeLine = true;
     String groupName = null;
     Collections.sort(printStats);

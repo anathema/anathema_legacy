@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.lunar.reporting.content.stats.knacks.IKnackStats;
 import net.sf.anathema.character.lunar.reporting.content.stats.knacks.KnackNameStatsGroup;
 import net.sf.anathema.character.lunar.reporting.content.stats.knacks.KnackSourceStatsGroup;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
@@ -30,16 +31,16 @@ public class KnackTableEncoder extends AbstractStatsTableEncoder<IKnackStats> {
 
   @SuppressWarnings("unchecked")
   @Override
-  protected IStatsGroup<IKnackStats>[] createStatsGroups(IGenericCharacter character) {
+  protected IStatsGroup<IKnackStats>[] createStatsGroups(ReportContent content) {
     return new IStatsGroup[] {
         new KnackNameStatsGroup(resources),
         new KnackSourceStatsGroup(resources) };
   }
 
   @Override
-  protected void encodeContent(PdfPTable table, IGenericCharacter character, Bounds bounds) {
+  protected void encodeContent(PdfPTable table, ReportContent content, Bounds bounds) {
     float heightLimit = bounds.height - 3;
-    IStatsGroup<IKnackStats>[] groups = createStatsGroups(character);
+    IStatsGroup<IKnackStats>[] groups = createStatsGroups(content);
     boolean encodeLine = true;
     String groupName = null;
     for (IKnackStats stats : printKnacks)

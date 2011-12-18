@@ -1,27 +1,27 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import net.sf.anathema.character.reporting.pdf.rendering.general.LayoutUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 
 public interface ISimplePartEncoder extends LayoutUtilities {
 
-  public IPdfContentBoxEncoder getAnimaEncoder();
+  public IBoxContentEncoder getAnimaEncoder();
 
-  public IPdfContentBoxEncoder getEssenceEncoder();
+  public IBoxContentEncoder getEssenceEncoder();
 
-  public IPdfContentBoxEncoder getGreatCurseEncoder();
+  public IBoxContentEncoder getGreatCurseEncoder();
 
-  public IPdfContentBoxEncoder getOverdriveEncoder();
+  public IBoxContentEncoder getOverdriveEncoder();
 
-  public IPdfContentBoxEncoder getCombatStatsEncoder();
+  public IBoxContentEncoder getCombatStatsEncoder();
 
-  public IPdfContentBoxEncoder getSocialCombatEncoder();
+  public IBoxContentEncoder getSocialCombatEncoder();
 
-  public IPdfContentBoxEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry);
+  public IBoxContentEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry);
 
-  public IPdfContentBoxEncoder getHealthAndMovementEncoder();
+  public IBoxContentEncoder getHealthAndMovementEncoder();
 
   public boolean hasSecondPage();
 

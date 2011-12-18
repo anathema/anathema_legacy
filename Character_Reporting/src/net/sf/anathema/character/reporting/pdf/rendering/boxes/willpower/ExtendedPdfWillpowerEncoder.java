@@ -5,23 +5,23 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
 
-public class ExtendedPdfWillpowerEncoder implements IPdfContentBoxEncoder {
+public class ExtendedPdfWillpowerEncoder implements IBoxContentEncoder {
 
   private PdfTraitEncoder traitEncoder;
   private final IResources resources;
@@ -38,24 +38,23 @@ public class ExtendedPdfWillpowerEncoder implements IPdfContentBoxEncoder {
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Willpower"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds contentBounds) throws DocumentException {
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
     float padding = IVoidStateFormatConstants.PADDING / 2f;
-    float width = contentBounds.width - 2f * padding;
-    float leftX = contentBounds.x + padding;
-    float height = contentBounds.height - padding;
-    float topY = contentBounds.getMaxY();
+    float width = graphics.getBounds().width - 2f * padding;
+    float leftX = graphics.getBounds().x + padding;
+    float height = graphics.getBounds().height - padding;
+    float topY = graphics.getBounds().getMaxY();
 
-    int value = character.getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
+    int value = reportContent.getCharacter().getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
     float entryHeight = traitEncoder.getTraitHeight();
     float yPosition = topY - entryHeight;
-    traitEncoder.encodeDotsCenteredAndUngrouped(directContent, new Position(leftX, yPosition), width, value, 10);
+    traitEncoder.encodeDotsCenteredAndUngrouped(graphics.getDirectContent(), new Position(leftX, yPosition), width, value, 10);
     yPosition -= entryHeight;
-    traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, new Position(leftX, yPosition), width, 0, 10);
+    traitEncoder.encodeSquaresCenteredAndUngrouped(graphics.getDirectContent(), new Position(leftX, yPosition), width, 0, 10);
     height -= 2f * entryHeight;
 
     yPosition -= lineHeight;
@@ -66,24 +65,27 @@ public class ExtendedPdfWillpowerEncoder implements IPdfContentBoxEncoder {
 
     Bounds spendingBounds = new Bounds(leftX, yPosition - height, columnWidth, height);
     Phrase spendingPhrase = new Phrase("", new Font(baseFont, fontSize, //$NON-NLS-1$
-                                                    Font.NORMAL, Color.BLACK));
-    ListUtils.addBulletedListText(resources, symbolChunk, character.getRules().getEdition(), "Sheet.WillpowerSpendingRules", //$NON-NLS-1$
-                                  spendingPhrase, true);
+      Font.NORMAL, Color.BLACK));
+    ListUtils.addBulletedListText(resources, symbolChunk, reportContent.getCharacter().getRules().getEdition(), "Sheet.WillpowerSpendingRules",
+    //$NON-NLS-1$
+      spendingPhrase, true);
     spendingPhrase.add("\n"); //$NON-NLS-1$
-    String spendingNote = ListUtils.getRequiredString(resources, "Sheet.WillpowerSpendingNote", character.getRules().getEdition());
+    String spendingNote = ListUtils.getRequiredString(resources, "Sheet.WillpowerSpendingNote", reportContent.getCharacter().getRules().getEdition
+      ());
     spendingPhrase.add(spendingNote + "\n"); //$NON-NLS-1$
-    PdfTextEncodingUtilities.encodeText(directContent, spendingPhrase, spendingBounds, lineHeight).getYLine();
+    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), spendingPhrase, spendingBounds, lineHeight).getYLine();
 
     float centerX = leftX + columnWidth + columnPadding;
     Bounds regainingBounds = new Bounds(centerX, yPosition - height, columnWidth, height);
     Phrase regainingPhrase = new Phrase("", new Font(baseFont, fontSize, //$NON-NLS-1$
-                                                     Font.NORMAL, Color.BLACK));
-    ListUtils.addBulletedListText(resources, symbolChunk, character.getRules().getEdition(), "Sheet.WillpowerRegainingRules", //$NON-NLS-1$
-                                  regainingPhrase, true);
-    PdfTextEncodingUtilities.encodeText(directContent, regainingPhrase, regainingBounds, lineHeight).getYLine();
+      Font.NORMAL, Color.BLACK));
+    ListUtils.addBulletedListText(resources, symbolChunk, reportContent.getCharacter().getRules().getEdition(), "Sheet.WillpowerRegainingRules",
+    //$NON-NLS-1$
+      regainingPhrase, true);
+    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), regainingPhrase, regainingBounds, lineHeight).getYLine();
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

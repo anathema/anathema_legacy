@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionCombatValueEncoder implements IPdfContentEncoder {

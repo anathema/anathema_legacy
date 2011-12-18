@@ -2,14 +2,13 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class PdfGenericCharmEncoder implements IPdfVariableContentBoxEncoder {
+public class PdfGenericCharmEncoder implements IVariableBoxContentEncoder {
 
   private final PdfGenericCharmTableEncoder tableEncoder;
 
@@ -17,21 +16,20 @@ public class PdfGenericCharmEncoder implements IPdfVariableContentBoxEncoder {
     this.tableEncoder = new PdfGenericCharmTableEncoder(resources, baseFont);
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "GenericCharms"; //$NON-NLS-1$
   }
 
   @Override
-  public float getRequestedHeight(IGenericCharacter character, float width) {
-    return tableEncoder.getRequestedHeight(character);
+  public float getRequestedHeight(ReportContent content, float width) {
+    return tableEncoder.getRequestedHeight(content);
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds bounds) throws DocumentException {
-    tableEncoder.encodeTable(directContent, character, bounds);
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, graphics.getBounds());
   }
 
-  public boolean hasContent(IGenericCharacter character) {
-    return tableEncoder.hasContent(character);
+  public boolean hasContent(ReportContent content) {
+    return tableEncoder.hasContent(content);
   }
 }

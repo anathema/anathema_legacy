@@ -6,20 +6,18 @@ import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.impl.traits.ValueWeightGenericTraitSorter;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
-public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
+public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
 
   private final BaseFont baseFont;
   private final IResources resources;
@@ -29,7 +27,7 @@ public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implemen
     this.resources = resources;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "GreatCurse.Dragon-Blooded"; //$NON-NLS-1$
   }
 
@@ -38,12 +36,12 @@ public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implemen
     return baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
-    String virtueMessage = getVirtueString(character);
-    String aspectMessage = getAspectString(character);
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    String virtueMessage = getVirtueString(reportContent.getCharacter());
+    String aspectMessage = getAspectString(reportContent.getCharacter());
     String message = resources.getString("Sheet.GreatCurse.Message", virtueMessage, aspectMessage); //$NON-NLS-1$
     Phrase phrase = new Phrase(message, TableEncodingUtilities.createFont(getBaseFont()));
-    encodeTextWithReducedLineHeight(directContent, bounds, phrase);
+    encodeTextWithReducedLineHeight(graphics.getDirectContent(), graphics.getBounds(), phrase);
   }
 
   private String getVirtueString(IGenericCharacter character) {
@@ -77,7 +75,7 @@ public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implemen
     return topVirtue.getCurrentValue() != runnerUpValue;
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

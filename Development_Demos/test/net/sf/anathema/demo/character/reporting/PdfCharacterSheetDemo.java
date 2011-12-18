@@ -21,6 +21,8 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.intimacies.reporting.SimpleIntimaciesEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.PdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.PdfOldStyleFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
@@ -53,17 +55,14 @@ public class PdfCharacterSheetDemo {
       PdfPageConfiguration pageConfiguration = PdfPageConfiguration.create(document.getPageSize());
       SimpleEncodingRegistry encodingRegistry = createEncodingRegistry(resources);
       int essenceMax = 7;
-      Simple2ndSolarPartEncoder partEncoder = new Simple2ndSolarPartEncoder(resources,
-                                                                                    encodingRegistry,
-                                                                                    essenceMax);
-      PdfOldStyleFirstPageEncoder pageEncoder = new PdfOldStyleFirstPageEncoder(partEncoder, encodingRegistry, resources, essenceMax, pageConfiguration);
-      pageEncoder.encode(document, directContent, character, description);
+      Simple2ndSolarPartEncoder partEncoder = new Simple2ndSolarPartEncoder(resources, encodingRegistry, essenceMax);
+      PdfOldStyleFirstPageEncoder pageEncoder = new PdfOldStyleFirstPageEncoder(partEncoder, encodingRegistry, resources, essenceMax,
+        pageConfiguration);
+      ReportContentRegistry contentRegistry = new ReportContentRegistry();
+      ReportContent content = new ReportContent(contentRegistry, character, description);
+      pageEncoder.encode(document, directContent, content);
       document.newPage();
-      new PdfMagicPageEncoder(resources, encodingRegistry, pageConfiguration, false).encode(
-          document,
-          directContent,
-          character,
-          description);
+      new PdfMagicPageEncoder(resources, encodingRegistry, pageConfiguration, false).encode(document, directContent, content);
       BrowserControl.displayUrl(outputStream.toURI().toURL());
     }
     catch (Exception de) {
@@ -77,9 +76,7 @@ public class PdfCharacterSheetDemo {
   private static SimpleEncodingRegistry createEncodingRegistry(IResources resources) {
     SimpleEncodingRegistry encodingRegistry = new SimpleEncodingRegistry();
     BaseFont baseFont = encodingRegistry.getBaseFont();
-    encodingRegistry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(
-        baseFont,
-        resources)));
+    encodingRegistry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(baseFont, resources)));
     encodingRegistry.setWeaponContentEncoder(new WeaponryEncoder(resources, baseFont));
     encodingRegistry.setIntimaciesEncoder(new SimpleIntimaciesEncoder(baseFont));
     return encodingRegistry;
@@ -100,12 +97,9 @@ public class PdfCharacterSheetDemo {
     character.addSpecialtyTrait(AbilityType.Bureaucracy);
     character.addSubbedTrait(AbilityType.Craft);
     character.setPainTolerance(3);
-    character.addCombo(new DemoGenericCombo("Combo 1", new ICharm[] {
-        new DummyCharm("FirstCharm.Id"),
-        new DummyCharm("SecondCharm.Id") }));
-    character.addCombo(new DemoGenericCombo("Combo Nummero 2", new ICharm[] {
-        new DummyCharm("Und noch eine Charm Id"),
-        new DummyCharm("Und noch eine") }));
+    character.addCombo(new DemoGenericCombo("Combo 1", new ICharm[]{new DummyCharm("FirstCharm.Id"), new DummyCharm("SecondCharm.Id")}));
+    character.addCombo(new DemoGenericCombo("Combo Nummero 2", new ICharm[]{new DummyCharm("Und noch eine Charm Id"),
+                                                                            new DummyCharm("Und noch eine")}));
     character.getEquipmentModel().addPrintArmour(new DemoNaturalArmour());
     character.getEquipmentModel().addPrintArmour(new DemoAlienArmour());
     character.getEquipmentModel().addPrintWeapon(new DemoRangeWeapon());
@@ -117,8 +111,7 @@ public class PdfCharacterSheetDemo {
     ICharacterModelContext context = new CharacterModelContext(character);
     SolarVirtueFlawModel virtueFlawModel = new SolarVirtueFlawModel(context, new SolarVirtueFlawTemplate());
     virtueFlawModel.getVirtueFlaw().getName().setText("Doll, doll, boese");
-    virtueFlawModel.getVirtueFlaw().getLimitBreak().setText(
-        "Oh nein nicht schon wieder. Diese verschissene Welt hat mich gar nicht verdient.");
+    virtueFlawModel.getVirtueFlaw().getLimitBreak().setText("Oh nein nicht schon wieder. Diese verschissene Welt hat mich gar nicht verdient.");
     character.addAdditionalModel(virtueFlawModel);
     return character;
   }

@@ -7,13 +7,12 @@ import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -30,7 +29,7 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
   private final PdfBoxEncoder boxEncoder;
 
   public AbstractPdfPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources,
-                                PdfPageConfiguration pageConfiguration) {
+    PdfPageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
     this.registry = registry;
     this.baseFont = registry.getBaseFont();
@@ -39,8 +38,7 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     this.boxEncoder = new PdfBoxEncoder(resources, getBaseFont());
   }
 
-  public abstract void encode(Document document, PdfContentByte directContent, IGenericCharacter character,
-                              IGenericDescription description) throws DocumentException;
+  public abstract void encode(Document document, PdfContentByte directContent, ReportContent content) throws DocumentException;
 
   protected void encodeCopyright(PdfContentByte directContent) throws DocumentException {
     float lineHeight = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 2f;
@@ -58,7 +56,7 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     Bounds anathemaBounds = getPageConfiguration().getSecondColumnRectangle(getContentHeight(), copyrightHeight, 1);
     PdfTextEncodingUtilities.encodeText(directContent, anathemaPhrase, anathemaBounds, lineHeight, Element.ALIGN_CENTER);
     Anchor whitewolfPhrase = new Anchor("Exalted \u00A92011 by White Wolf, Inc.\nhttp://www.white-wolf.com", //$NON-NLS-1$
-                                        copyrightFont);
+      copyrightFont);
     whitewolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
 
     Bounds whitewolfBounds = getPageConfiguration().getThirdColumnRectangle(getContentHeight(), copyrightHeight);
@@ -133,35 +131,33 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     return 0;
   }
 
-  protected float encodeFixedBox(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                                 IPdfContentBoxEncoder encoder, int column, int span, float distanceFromTop, float height) throws DocumentException {
-    getBoxEncoder().encodeBox(directContent, encoder, character, description, calculateBounds(column, span, distanceFromTop, height));
+  protected float encodeFixedBox(PdfContentByte directContent, ReportContent content, IBoxContentEncoder encoder, int column, int span,
+    float distanceFromTop, float height) throws DocumentException {
+    getBoxEncoder().encodeBox(content, directContent, encoder, calculateBounds(column, span, distanceFromTop, height));
     return height;
   }
 
-  protected float encodeFixedBoxBottom(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                                       IPdfContentBoxEncoder encoder, int column, int span, float bottom, float height) throws DocumentException {
-    getBoxEncoder().encodeBox(directContent, encoder, character, description, calculateBounds(column, span, bottom - height, height));
+  protected float encodeFixedBoxBottom(PdfContentByte directContent, ReportContent content, IBoxContentEncoder encoder, int column, int span,
+    float bottom, float height) throws DocumentException {
+    getBoxEncoder().encodeBox(content, directContent, encoder, calculateBounds(column, span, bottom - height, height));
     return height;
   }
 
-  protected float encodeVariableBox(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                                    IPdfVariableContentBoxEncoder encoder, int column, int span, float distanceFromTop,
-                                    float maxHeight) throws DocumentException {
-    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(encoder, character, getWidth(column, span)));
-    return encodeFixedBox(directContent, character, description, encoder, column, span, distanceFromTop, height);
+  protected float encodeVariableBox(PdfContentByte directContent, ReportContent content, IVariableBoxContentEncoder encoder, int column, int span,
+    float distanceFromTop, float maxHeight) throws DocumentException {
+    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(encoder, content, getWidth(column, span)));
+    return encodeFixedBox(directContent, content, encoder, column, span, distanceFromTop, height);
   }
 
-  protected float encodeVariableBoxBottom(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                                          IPdfVariableContentBoxEncoder encoder, int column, int span, float bottom,
-                                          float maxHeight) throws DocumentException {
-    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(encoder, character, getWidth(column, span)));
-    return encodeFixedBoxBottom(directContent, character, description, encoder, column, span, bottom, height);
+  protected float encodeVariableBoxBottom(PdfContentByte directContent, ReportContent content, IVariableBoxContentEncoder encoder, int column,
+    int span, float bottom, float maxHeight) throws DocumentException {
+    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(encoder, content, getWidth(column, span)));
+    return encodeFixedBoxBottom(directContent, content, encoder, column, span, bottom, height);
   }
 
-  protected float encodeNotes(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, String title, int column,
-                              int span, float distanceFromTop, float height, int textColumns) throws DocumentException {
-    IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(textColumns, title);
-    return encodeFixedBox(directContent, character, description, encoder, column, span, distanceFromTop, height);
+  protected float encodeNotes(PdfContentByte directContent, ReportContent content, String title, int column, int span, float distanceFromTop,
+    float height, int textColumns) throws DocumentException {
+    IBoxContentEncoder encoder = new PdfHorizontalLineContentEncoder(textColumns, title);
+    return encodeFixedBox(directContent, content, encoder, column, span, distanceFromTop, height);
   }
 }

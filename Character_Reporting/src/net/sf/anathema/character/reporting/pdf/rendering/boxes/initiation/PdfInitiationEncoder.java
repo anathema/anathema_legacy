@@ -5,22 +5,21 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfVariableContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
 
-public class PdfInitiationEncoder extends AbstractPdfEncoder implements IPdfVariableContentBoxEncoder {
+public class PdfInitiationEncoder extends AbstractPdfEncoder implements IVariableBoxContentEncoder {
 
   private BaseFont baseFont;
   private Font textFont;
@@ -39,11 +38,12 @@ public class PdfInitiationEncoder extends AbstractPdfEncoder implements IPdfVari
     return baseFont;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Initiations"; //$NON-NLS-1$
   }
 
-  public float getRequestedHeight(IGenericCharacter character, float width) {
+  public float getRequestedHeight(ReportContent content, float width) {
+    IGenericCharacter character = content.getCharacter();
     ISpellMagicTemplate spellMagicTemplate = character.getTemplate().getMagicTemplate().getSpellMagic();
     ICharm[] knownCharms = character.getLearnedCharms();
 
@@ -60,22 +60,21 @@ public class PdfInitiationEncoder extends AbstractPdfEncoder implements IPdfVari
     return height;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds bounds) throws DocumentException {
-    ISpellMagicTemplate spellMagicTemplate = character.getTemplate().getMagicTemplate().getSpellMagic();
-    ICharm[] knownCharms = character.getLearnedCharms();
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    ISpellMagicTemplate spellMagicTemplate = reportContent.getCharacter().getTemplate().getMagicTemplate().getSpellMagic();
+    ICharm[] knownCharms = reportContent.getCharacter().getLearnedCharms();
 
     Phrase phrase = new Phrase();
     for (CircleType circle : CircleType.values()) {
       if (spellMagicTemplate.knowsSpellMagic(knownCharms, circle)) {
         Chunk prefix = new Chunk(resources.getString("Initiation." + circle.getId()) + ": ", //$NON-NLS-1$ //$NON-NLS-2$
-                                 headerFont);
+          headerFont);
         phrase.add(prefix);
         // TODO: Actually show the sacrifice! (or at least a blank line or two)
         phrase.add(new Chunk("\n", textFont)); //$NON-NLS-1$
       }
     }
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, IVoidStateFormatConstants.LINE_HEIGHT);
+    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, graphics.getBounds(), IVoidStateFormatConstants.LINE_HEIGHT);
   }
 
   protected boolean knowsCharm(String charm, IGenericCharacter character) {
@@ -88,7 +87,7 @@ public class PdfInitiationEncoder extends AbstractPdfEncoder implements IPdfVari
     return false;
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     // TODO: Implement!
     return true;
   }

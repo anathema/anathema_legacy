@@ -41,16 +41,17 @@ public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTabl
   protected void addSecondCell(PdfPTable table) {
     Phrase knockdownPhrase = new Phrase(getResources().getString("Sheet.Combat.Knockdown.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
     knockdownPhrase.add(new Chunk("\n" + getResources().getString("Sheet.Combat.Knockdown.First.Comment"),
-                                  getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
+      getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
     knockdownPhrase.add(new Chunk("\n\n" + getResources().getString("Sheet.Combat.Comment.First.Rules"),
-                                  getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
+      getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
     table.addCell(createContentCell(knockdownPhrase));
   }
 
   @Override
   protected void addThirdCell(PdfPTable table) {
     Phrase stunningPhrase = new Phrase(getResources().getString("Sheet.Combat.Stunning.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
-    stunningPhrase.add(new Chunk("\n" + getResources().getString("Sheet.Combat.Stunning.First.Comment"), getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
+    stunningPhrase.add(new Chunk("\n" + getResources().getString("Sheet.Combat.Stunning.First.Comment"),
+      getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
     table.addCell(createContentCell(stunningPhrase));
   }
 }

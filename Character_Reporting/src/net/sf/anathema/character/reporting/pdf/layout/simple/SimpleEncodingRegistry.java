@@ -5,25 +5,26 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.collection.Table;
 
 import java.awt.*;
 
-public class SimpleEncodingRegistry  implements IEncodingRegistry {
+public class SimpleEncodingRegistry implements IEncodingRegistry {
 
-  private final Table<ICharacterType, IExaltedEdition, ISimplePartEncoder> partEncoderTable = new Table<ICharacterType, IExaltedEdition, ISimplePartEncoder>();
+  private final Table<ICharacterType, IExaltedEdition, ISimplePartEncoder> partEncoderTable = new Table<ICharacterType, IExaltedEdition,
+    ISimplePartEncoder>();
 
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
-  private IPdfContentBoxEncoder weaponContentEncoder;
-  private IPdfContentBoxEncoder armourContentEncoder;
-  private IPdfContentBoxEncoder intimaciesEncoder;
-  private IPdfContentBoxEncoder possessionsEncoder;
-  private IPdfContentBoxEncoder linguisticsEncoder;
-  private IPdfContentBoxEncoder mutationsEncoder;
-  private IPdfContentBoxEncoder thaumaturgyEncoder;
-  private IPdfContentBoxEncoder meritsAndFlawsEncoder;
+  private IBoxContentEncoder weaponContentEncoder;
+  private IBoxContentEncoder armourContentEncoder;
+  private IBoxContentEncoder intimaciesEncoder;
+  private IBoxContentEncoder possessionsEncoder;
+  private IBoxContentEncoder linguisticsEncoder;
+  private IBoxContentEncoder mutationsEncoder;
+  private IBoxContentEncoder thaumaturgyEncoder;
+  private IBoxContentEncoder meritsAndFlawsEncoder;
 
   public SimpleEncodingRegistry() {
     this.baseFont = new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
@@ -38,59 +39,59 @@ public class SimpleEncodingRegistry  implements IEncodingRegistry {
     return symbolBaseFont;
   }
 
-  public void setWeaponContentEncoder(IPdfContentBoxEncoder encoder) {
+  public void setWeaponContentEncoder(IBoxContentEncoder encoder) {
     this.weaponContentEncoder = encoder;
   }
 
-  public void setArmourContentEncoder(IPdfContentBoxEncoder encoder) {
+  public void setArmourContentEncoder(IBoxContentEncoder encoder) {
     this.armourContentEncoder = encoder;
   }
 
-  public void setIntimaciesEncoder(IPdfContentBoxEncoder intimaciesEncoder) {
+  public void setIntimaciesEncoder(IBoxContentEncoder intimaciesEncoder) {
     this.intimaciesEncoder = intimaciesEncoder;
   }
 
-  public void setMutationsEncoder(IPdfContentBoxEncoder mutationsEncoder) {
+  public void setMutationsEncoder(IBoxContentEncoder mutationsEncoder) {
     this.mutationsEncoder = mutationsEncoder;
   }
 
-  public void setThaumaturgyEncoder(IPdfContentBoxEncoder thaumaturgyEncoder) {
+  public void setThaumaturgyEncoder(IBoxContentEncoder thaumaturgyEncoder) {
     this.thaumaturgyEncoder = thaumaturgyEncoder;
   }
 
-  public void setMeritsAndFlawsEncoder(IPdfContentBoxEncoder meritsAndFlawsEncoder) {
+  public void setMeritsAndFlawsEncoder(IBoxContentEncoder meritsAndFlawsEncoder) {
     this.meritsAndFlawsEncoder = meritsAndFlawsEncoder;
   }
 
-  public IPdfContentBoxEncoder getWeaponContentEncoder() {
+  public IBoxContentEncoder getWeaponContentEncoder() {
     return weaponContentEncoder;
   }
 
-  public IPdfContentBoxEncoder getArmourContentEncoder() {
+  public IBoxContentEncoder getArmourContentEncoder() {
     return armourContentEncoder;
   }
 
-  public IPdfContentBoxEncoder getIntimaciesEncoder() {
+  public IBoxContentEncoder getIntimaciesEncoder() {
     return intimaciesEncoder;
   }
 
-  public IPdfContentBoxEncoder getPossessionsEncoder() {
+  public IBoxContentEncoder getPossessionsEncoder() {
     return possessionsEncoder;
   }
 
-  public IPdfContentBoxEncoder getLinguisticsEncoder() {
+  public IBoxContentEncoder getLinguisticsEncoder() {
     return linguisticsEncoder;
   }
 
-  public IPdfContentBoxEncoder getMutationsEncoder() {
+  public IBoxContentEncoder getMutationsEncoder() {
     return mutationsEncoder;
   }
 
-  public IPdfContentBoxEncoder getThaumaturgyEncoder() {
+  public IBoxContentEncoder getThaumaturgyEncoder() {
     return thaumaturgyEncoder;
   }
 
-  public IPdfContentBoxEncoder getMeritsAndFlawsEncoder() {
+  public IBoxContentEncoder getMeritsAndFlawsEncoder() {
     return meritsAndFlawsEncoder;
   }
 
@@ -106,11 +107,11 @@ public class SimpleEncodingRegistry  implements IEncodingRegistry {
     return partEncoderTable.contains(type, edition);
   }
 
-  public void setPossessionsEncoder(IPdfContentBoxEncoder encoder) {
+  public void setPossessionsEncoder(IBoxContentEncoder encoder) {
     this.possessionsEncoder = encoder;
   }
 
-  public void setLinguisticsEncoder(IPdfContentBoxEncoder encoder) {
+  public void setLinguisticsEncoder(IBoxContentEncoder encoder) {
     this.linguisticsEncoder = encoder;
   }
 }

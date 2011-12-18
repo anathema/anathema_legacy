@@ -2,17 +2,16 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class Extended2ndEditionMovementEncoder implements IPdfContentBoxEncoder {
+public class Extended2ndEditionMovementEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;
@@ -22,14 +21,13 @@ public class Extended2ndEditionMovementEncoder implements IPdfContentBoxEncoder 
     this.baseFont = baseFont;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Movement"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description,
-                     Bounds bounds) throws DocumentException {
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
     IPdfTableEncoder tableEncoder = createTableEncoder();
-    tableEncoder.encodeTable(directContent, character, bounds);
+    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, graphics.getBounds());
   }
 
   protected final BaseFont getBaseFont() {
@@ -48,7 +46,7 @@ public class Extended2ndEditionMovementEncoder implements IPdfContentBoxEncoder 
     return ExaltedEdition.SecondEdition;
   }
 
-  public boolean hasContent(IGenericCharacter character) {
+  public boolean hasContent(ReportContent content) {
     return true;
   }
 }

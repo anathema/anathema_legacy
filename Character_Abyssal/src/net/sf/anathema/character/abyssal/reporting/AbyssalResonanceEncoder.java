@@ -6,14 +6,14 @@ import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.impl.traits.ValueWeightGenericTraitSorter;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.Graphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
@@ -21,9 +21,8 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
-public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
+public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
   private final BaseFont baseFont;
   private final VirtueFlawBoxEncoder traitEncoder;
   private final IResources resources;
@@ -41,22 +40,22 @@ public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IPdfC
     return baseFont;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "GreatCurse.Abyssal"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description, Bounds bounds) throws DocumentException {
-    Bounds textBounds = traitEncoder.encode(directContent, bounds, 0);
+  public void encode(Graphics graphics, ReportContent reportContent) throws DocumentException {
+    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), graphics.getBounds(), 0);
     Font font = TableEncodingUtilities.createFont(getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.GreatCurse.SocialPoolMessage", getMaxVirtueValue(character)) + "\n"); //$NON-NLS-1$ //$NON-NLS-2$    
+    phrase.add(resources.getString("Sheet.GreatCurse.SocialPoolMessage", getMaxVirtueValue(reportContent.getCharacter())) + "\n"); //$NON-NLS-1$ //$NON-NLS-2$
     phrase.add(symbolChunk);
     phrase.add(resources.getString("Sheet.GreatCurse.VirtueDifficulty")); //$NON-NLS-1$
-    encodeTextWithReducedLineHeight(directContent, textBounds, phrase);
+    encodeTextWithReducedLineHeight(graphics.getDirectContent(), textBounds, phrase);
   }
   
-  public boolean hasContent(IGenericCharacter character)
+  public boolean hasContent(ReportContent content)
   {
 	  return true;
   }

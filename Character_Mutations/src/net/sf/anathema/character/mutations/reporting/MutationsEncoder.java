@@ -5,12 +5,12 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.character.mutations.model.MutationsAdditionalModel;
 import net.sf.anathema.character.mutations.template.MutationsTemplate;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -24,7 +24,7 @@ public class MutationsEncoder extends AbstractLineTextEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(IGenericCharacter character, IGenericDescription description) {
+  public String getHeaderKey(ReportContent reportContent) {
     return "Mutations"; //$NON-NLS-1$
   }
 
@@ -40,8 +40,8 @@ public class MutationsEncoder extends AbstractLineTextEncoder {
     }
   }
 
-  public boolean hasContent(IGenericCharacter character) {
-    IMutationsModel model = getMutationModel(character);
+  public boolean hasContent(ReportContent content) {
+    IMutationsModel model = getMutationModel(content.getCharacter());
     return model.getSelectedQualities().length > 0;
   }
 
