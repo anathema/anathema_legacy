@@ -62,7 +62,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
-    return new PdfDotsEncoder(getBaseFont(), getResources(), trait, traitMax, traitHeaderKey);
+    return new PdfDotsEncoder(trait, traitMax, traitHeaderKey);
   }
 
   public IBoxContentEncoder getOverdriveEncoder() {
@@ -72,7 +72,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   public final IBoxContentEncoder getCombatStatsEncoder() {
     IPdfContentEncoder valueEncoder = new SecondEditionCombatValueEncoder(resources, baseFont);
     ITableEncoder rulesEncoder = new SecondEditionCombatRulesTableEncoder(resources, baseFont);
-    return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
+    return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder);
   }
 
   public IBoxContentEncoder getSocialCombatEncoder() {

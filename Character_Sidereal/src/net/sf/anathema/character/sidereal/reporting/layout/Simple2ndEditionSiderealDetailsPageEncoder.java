@@ -5,7 +5,6 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -147,7 +146,7 @@ public class Simple2ndEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   }
 
   private float encodeResplendentDestiny(PdfContentByte directContent, Bounds boxBounds, ReportContent content) throws DocumentException {
-    IBoxContentEncoder encoder = new ResplendentDestinyEncoder(baseFont, fontSize, resources);
+    IBoxContentEncoder encoder = new ResplendentDestinyEncoder(fontSize, resources);
     boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
     return boxBounds.height;
   }

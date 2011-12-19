@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.social;
 
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.social.InvestigationSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PerformanceSocialAttack;

@@ -11,12 +11,12 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
 
-public class ExtendedPersonalInfoEncoder extends AbstractPdfEncoder {
+public class ExtendedPersonalInfoEncoder {
 
   private final BaseFont baseFont;
   private final IResources resources;
@@ -27,6 +27,7 @@ public class ExtendedPersonalInfoEncoder extends AbstractPdfEncoder {
   }
 
   public void encodePersonalInfos(PdfContentByte directContent, ReportContent content, Bounds infoBounds) {
+    SheetGraphics graphics = new SheetGraphics(directContent, baseFont);
     IGenericCharacter character = content.getCharacter();
     IGenericDescription description = content.getDescription();
     float lineHeight = (infoBounds.height - TEXT_PADDING) / 3;
@@ -37,18 +38,17 @@ public class ExtendedPersonalInfoEncoder extends AbstractPdfEncoder {
     float firstRowY = (int) (infoBounds.getMaxY() - lineHeight);
     IExaltedRuleSet rules = character.getRules();
     String rulesContent = rules == null ? null : resources.getString("Ruleset." + rules.getId()); //$NON-NLS-1$
-    drawLabelledContent(directContent, getLabel("Rules"), rulesContent, new Position(firstColumnX, firstRowY), entryWidth); //$NON-NLS-1$
-    drawLabelledContent(directContent, getLabel("Player"), description.getPlayer(), new Position(secondColumnX, firstRowY),
-      entryWidth); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Rules"), rulesContent, new Position(firstColumnX, firstRowY), entryWidth); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Player"), description.getPlayer(), new Position(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
 
     float secondRowY = firstRowY - lineHeight;
     String conceptContent = description.getConceptText();
     String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
-    drawLabelledContent(directContent, conceptLabel, conceptContent, new Position(firstColumnX, secondRowY), entryWidth);
+    graphics.drawLabelledContent(conceptLabel, conceptContent, new Position(firstColumnX, secondRowY), entryWidth);
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     if (characterType.isExaltType()) {
       String casteContent = getCasteString(character.getConcept().getCasteType());
-      drawLabelledContent(directContent, getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, secondRowY),
+      graphics.drawLabelledContent(getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, secondRowY),
         entryWidth); //$NON-NLS-1$
     }
 
@@ -57,7 +57,7 @@ public class ExtendedPersonalInfoEncoder extends AbstractPdfEncoder {
     String motivationLabel = character.getRules().getEdition() == ExaltedEdition.SecondEdition ? getLabel("Motivation") : getLabel("Nature");
     //$NON-NLS-1$ //$NON-NLS-2$
     Position motivationPosition = new Position(firstColumnX, thirdRowY);
-    drawLabelledContent(directContent, motivationLabel, motivationContent, motivationPosition, infoBounds.width);
+    graphics.drawLabelledContent(motivationLabel, motivationContent, motivationPosition, infoBounds.width);
   }
 
   private String getCasteString(ICasteType casteType) {
@@ -65,11 +65,6 @@ public class ExtendedPersonalInfoEncoder extends AbstractPdfEncoder {
       return null;
     }
     return resources.getString("Caste." + casteType.getId()); //$NON-NLS-1$
-  }
-
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
   }
 
   protected final String getLabel(String key) {

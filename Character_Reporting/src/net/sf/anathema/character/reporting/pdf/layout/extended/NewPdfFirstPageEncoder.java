@@ -97,7 +97,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodePersonalInfo(PdfContentByte directContent, ReportContent content, float distanceFromTop,
     float maxHeight) throws DocumentException {
-    return encodeVariableBox(directContent, content, new ExtendedPersonalInfoBoxEncoder(getBaseFont(), getResources()), 1, 3, distanceFromTop,
+    return encodeVariableBox(directContent, content, new ExtendedPersonalInfoBoxEncoder(getResources()), 1, 3, distanceFromTop,
       maxHeight);
   }
 

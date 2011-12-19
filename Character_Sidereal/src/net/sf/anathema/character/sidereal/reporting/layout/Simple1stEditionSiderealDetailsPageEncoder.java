@@ -4,8 +4,6 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
@@ -111,7 +109,7 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   private float encodeStanding(PdfContentByte directContent, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = STANDING_HEIGHT;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = new StandingEncoder(baseFont, fontSize, resources);
+    IBoxContentEncoder encoder = new StandingEncoder(fontSize, resources);
     boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
     return height;
   }
@@ -126,7 +124,7 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   }
 
   private float encodeResplendentDestiny(PdfContentByte directContent, Bounds boxBounds, ReportContent content) throws DocumentException {
-    IBoxContentEncoder encoder = new ResplendentDestinyEncoder(baseFont, fontSize, resources);
+    IBoxContentEncoder encoder = new ResplendentDestinyEncoder(fontSize, resources);
     boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
     return boxBounds.height;
   }

@@ -3,8 +3,8 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.traits;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.GraphicsTemplate;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
 import java.awt.*;

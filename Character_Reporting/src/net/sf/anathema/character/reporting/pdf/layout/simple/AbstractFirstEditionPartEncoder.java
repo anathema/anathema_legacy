@@ -40,7 +40,7 @@ public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEnco
   public final IBoxContentEncoder getCombatStatsEncoder() {
     IPdfContentEncoder valueEncoder = new FirstEditionCombatValueEncoder(resources, baseFont);
     ITableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder(resources, baseFont);
-    return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
+    return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder);
   }
 
   public IBoxContentEncoder getSocialCombatEncoder() {

@@ -11,12 +11,11 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfLineEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -24,7 +23,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
 
-public class PdfAnimaEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
+public class PdfAnimaEncoder implements IBoxContentEncoder {
 
   private final int fontSize;
   private final float lineHeight;
@@ -46,11 +45,6 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IBoxContentEn
 
   public String getHeaderKey(ReportContent reportContent) {
     return "Anima"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {

@@ -3,13 +3,13 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.box;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxEncoder.ARCSPACE;
 import static net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxEncoder.HEADER_HEIGHT;
 
-public class PdfHeaderBoxEncoder extends AbstractPdfEncoder {
+public class PdfHeaderBoxEncoder {
   private static final int HEADER_FONT_PADDING = 3;
   private static final int HEADER_FONT_SIZE = IVoidStateFormatConstants.HEADER_FONT_SIZE;
   private final BaseFont baseFont;
@@ -18,13 +18,9 @@ public class PdfHeaderBoxEncoder extends AbstractPdfEncoder {
     this.baseFont = baseFont;
   }
 
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
-  }
-
   public void encodeHeaderBox(PdfContentByte directContent, Bounds bounds, String title) {
-    setFillColorBlack(directContent);
+    SheetGraphics graphics = new SheetGraphics(directContent, baseFont);
+    graphics.setFillColorBlack();
     Bounds headerBounds = calculateHeaderBounds(bounds);
     directContent.rectangle(headerBounds.x + ARCSPACE, headerBounds.y, headerBounds.width - 2 * ARCSPACE, headerBounds.height);
     directContent.arc(headerBounds.x, headerBounds.y, headerBounds.x + 2 * ARCSPACE, headerBounds.y + headerBounds.height, 0, 360);

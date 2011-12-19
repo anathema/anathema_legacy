@@ -11,20 +11,17 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 
-public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
+public class FirstEditionDbGreatCurseEncoder implements IBoxContentEncoder {
 
-  private final BaseFont baseFont;
   private final IResources resources;
 
-  public FirstEditionDbGreatCurseEncoder(BaseFont baseFont, IResources resources) {
-    this.baseFont = baseFont;
+  public FirstEditionDbGreatCurseEncoder(IResources resources) {
     this.resources = resources;
   }
 
@@ -32,17 +29,12 @@ public class FirstEditionDbGreatCurseEncoder extends AbstractPdfEncoder implemen
     return "GreatCurse.Dragon-Blooded"; //$NON-NLS-1$
   }
 
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
-  }
-
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     String virtueMessage = getVirtueString(reportContent.getCharacter());
     String aspectMessage = getAspectString(reportContent.getCharacter());
     String message = resources.getString("Sheet.GreatCurse.Message", virtueMessage, aspectMessage); //$NON-NLS-1$
-    Phrase phrase = new Phrase(message, TableEncodingUtilities.createFont(getBaseFont()));
-    encodeTextWithReducedLineHeight(graphics.getDirectContent(), bounds, phrase);
+    Phrase phrase = new Phrase(message, TableEncodingUtilities.createFont(graphics.getBaseFont()));
+    graphics.encodeTextWithReducedLineHeight(bounds, phrase);
   }
 
   private String getVirtueString(IGenericCharacter character) {

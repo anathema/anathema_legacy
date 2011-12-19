@@ -13,10 +13,9 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
@@ -25,7 +24,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
 
-public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
+public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;
@@ -55,6 +54,7 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
   protected abstract ITableEncoder createTableEncoder();
 
   protected void encodeText(PdfContentByte directContent, Bounds textBounds) throws DocumentException {
+    SheetGraphics graphics = new SheetGraphics(directContent, baseFont);
     Font headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
     Font commentFont = new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
     Font commentTitleFont = new Font(commentFont);
@@ -74,29 +74,28 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     xPosition += rectangleOffset;
     final String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
     String bashingString = createSpacedString;
-    drawComment(directContent, bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
-    xPosition += getCommentTextWidth(bashingString);
+    graphics.drawComment(bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
+    xPosition += graphics.getCommentTextWidth(bashingString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
     PdfTemplate lethalTemplate = AbstractHealthAndMovementTableEncoder.createLethalTemplate(directContent, Color.GRAY);
     directContent.addTemplate(lethalTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String lethalString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageLethal")); //$NON-NLS-1$
-    drawComment(directContent, lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
-    xPosition += getCommentTextWidth(lethalString);
+    graphics.drawComment(lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
+    xPosition += graphics.getCommentTextWidth(lethalString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
     PdfTemplate aggravatedTemplate = AbstractHealthAndMovementTableEncoder.createAggravatedTemplate(directContent, Color.GRAY);
     directContent.addTemplate(aggravatedTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String aggravatedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageAggravated")); //$NON-NLS-1$
-    drawComment(directContent, aggravatedString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
-    xPosition += getCommentTextWidth(lethalString);
+    graphics.drawComment(aggravatedString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
+    xPosition += graphics.getCommentTextWidth(lethalString);
   }
 
   private String createSpacedString(final String string) {
     return " " + string + "   "; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  @Override
   protected final BaseFont getBaseFont() {
     return baseFont;
   }

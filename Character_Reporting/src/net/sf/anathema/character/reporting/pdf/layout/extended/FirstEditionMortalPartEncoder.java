@@ -26,7 +26,7 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
   }
 
   public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
-    return new PdfDotsEncoder(getBaseFont(), getResources(), trait, traitMax, traitHeaderKey);
+    return new PdfDotsEncoder(trait, traitMax, traitHeaderKey);
   }
 
   public boolean hasSecondPage() {

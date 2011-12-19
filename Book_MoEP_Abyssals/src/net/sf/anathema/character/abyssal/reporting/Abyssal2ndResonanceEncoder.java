@@ -9,7 +9,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
@@ -18,21 +17,14 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 
-public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
+public class Abyssal2ndResonanceEncoder implements IBoxContentEncoder {
 
-  private final BaseFont baseFont;
   private final VirtueFlawBoxEncoder traitEncoder;
   private final IResources resources;
 
-  public Abyssal2ndResonanceEncoder(BaseFont baseFont, IResources resources) {
-    this.baseFont = baseFont;
+  public Abyssal2ndResonanceEncoder(IResources resources) {
     this.resources = resources;
     this.traitEncoder = new VirtueFlawBoxEncoder();
-  }
-
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
   }
 
   public String getHeaderKey(ReportContent reportContent) {
@@ -42,8 +34,8 @@ public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IB
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     IVirtueFlaw resonance = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(AbyssalResonanceTemplate.ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(graphics, bounds, resonance.getLimitTrait().getCurrentValue());
-    Font font = createFont(getBaseFont());
-    Font nameFont = createNameFont(getBaseFont());
+    Font font = createFont(graphics.getBaseFont());
+    Font nameFont = createNameFont(graphics.getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
     phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.FlawedVirtue") + ": ", nameFont)); //$NON-NLS-1$ //$NON-NLS-2$
     if (resonance.isFlawComplete()) {
@@ -55,7 +47,7 @@ public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IB
       phrase.add(".\n");
     }
     phrase.add(resources.getString("Sheet.GreatCurse.ResonanceReference")); //$NON-NLS-1$
-    encodeTextWithReducedLineHeight(graphics.getDirectContent(), textBounds, phrase);
+    graphics.encodeTextWithReducedLineHeight(textBounds, phrase);
   }
   
   public boolean hasContent(ReportContent content) {

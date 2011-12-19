@@ -63,7 +63,7 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
   public final IBoxContentEncoder getCombatStatsEncoder() {
     IPdfContentEncoder valueEncoder = new SecondEditionCombatValueEncoder(resources, baseFont);
     ITableEncoder rulesEncoder = new SecondEditionCombatRulesTableEncoder(resources, baseFont);
-    return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
+    return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder);
   }
 
   public IBoxContentEncoder getSocialCombatEncoder() {

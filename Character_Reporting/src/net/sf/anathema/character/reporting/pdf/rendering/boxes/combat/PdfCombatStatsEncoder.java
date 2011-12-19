@@ -1,31 +1,22 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.combat;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 
-public class PdfCombatStatsEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
+public class PdfCombatStatsEncoder  implements IBoxContentEncoder {
 
   private final static float PADDING = 3;
 
-  private final BaseFont baseFont;
   private final ITableEncoder combatRulesEncoder;
   private final IPdfContentEncoder combatValueEncoder;
 
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
-  }
-
-  public PdfCombatStatsEncoder(ITableEncoder combatRulesEncoder, IPdfContentEncoder combatValueEncoder, BaseFont baseFont) {
-    this.baseFont = baseFont;
+  public PdfCombatStatsEncoder(ITableEncoder combatRulesEncoder, IPdfContentEncoder combatValueEncoder) {
     this.combatRulesEncoder = combatRulesEncoder;
     this.combatValueEncoder = combatValueEncoder;
   }

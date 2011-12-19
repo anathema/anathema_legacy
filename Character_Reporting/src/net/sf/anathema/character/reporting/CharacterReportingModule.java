@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleAdapter;
-import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContent;
 import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContentFactory;

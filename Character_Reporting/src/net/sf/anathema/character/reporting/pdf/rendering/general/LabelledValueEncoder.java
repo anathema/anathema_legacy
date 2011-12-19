@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Box;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
-public class LabelledValueEncoder extends AbstractPdfEncoder {
+public class LabelledValueEncoder {
 
   private final static float BOX_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
   private final static float BOX_WIDTH = 12;
@@ -36,28 +36,25 @@ public class LabelledValueEncoder extends AbstractPdfEncoder {
     return position.x + width / columnCount * (index + 1);
   }
 
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
-  }
-
   public void addComment(PdfContentByte directContent, String text, int column) {
+    SheetGraphics graphics = new SheetGraphics(directContent, baseFont);
     float rightX = getRightColumnX(column);
     commentPresent = true;
-    drawComment(directContent, text, new Position(rightX, commentLine), Element.ALIGN_RIGHT);
+    graphics.drawComment(text, new Position(rightX, commentLine), Element.ALIGN_RIGHT);
   }
 
   public void addLabelledValue(PdfContentByte directContent, int column, String text, int... values) {
+    SheetGraphics graphics = new SheetGraphics(directContent, baseFont);
     float rightX = getRightColumnX(column);
     float allBoxesWidth = BOX_WIDTH * values.length + (values.length - 1) * padding;
     Position textPosition = new Position(rightX - allBoxesWidth - padding, baseLine);
-    drawText(directContent, text, textPosition, Element.ALIGN_RIGHT);
+    graphics.drawText(text, textPosition, Element.ALIGN_RIGHT);
     for (int index = 0; index < values.length; index++) {
       float boxX = rightX - allBoxesWidth + (BOX_WIDTH + padding) * index;
       Bounds boxBounds = new Bounds(boxX, textPosition.y - 2, BOX_WIDTH, BOX_HEIGHT);
       new Box(boxBounds).encodeTotalType(directContent);
       Position valuePosition = new Position(boxBounds.getCenterX(), textPosition.getY());
-      drawText(directContent, String.valueOf(values[index]), valuePosition, Element.ALIGN_CENTER);
+      graphics.drawText(String.valueOf(values[index]), valuePosition, Element.ALIGN_CENTER);
     }
   }
 

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
@@ -82,7 +83,7 @@ public class SheetGraphics implements ITextMetrics {
   }
 
   public void encodeTextWithReducedLineHeight(Bounds textBounds, Phrase phrase) throws DocumentException {
-    PdfTextEncodingUtilities.encodeText(directContent,  phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2f);
+    PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2f);
   }
 
   private void addText(String text, Position position, int alignment, int rotation) {
@@ -112,7 +113,7 @@ public class SheetGraphics implements ITextMetrics {
     return new GraphicsTemplate(directContent, baseFont, width, height);
   }
 
-  private final void setFillColorBlack() {
+  public final void setFillColorBlack() {
      directContent.setRGBColorFill(0, 0, 0);
    }
 
@@ -130,5 +131,11 @@ public class SheetGraphics implements ITextMetrics {
 
   private void setFontSize(int fontSize) {
     directContent.setFontAndSize(baseFont, FONT_SIZE);
+  }
+
+  public Font createBoldFont() {
+    Font boldFont = new Font(baseFont);
+    boldFont.setStyle(Font.BOLD);
+    return boldFont;
   }
 }

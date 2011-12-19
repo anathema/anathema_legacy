@@ -13,11 +13,10 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContent
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
-public abstract class AbstractLineTextEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
+public abstract class AbstractLineTextEncoder implements IBoxContentEncoder {
   private final static float LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
   private final BaseFont baseFont;
 
-  @Override
   protected BaseFont getBaseFont() {
     return baseFont;
   }

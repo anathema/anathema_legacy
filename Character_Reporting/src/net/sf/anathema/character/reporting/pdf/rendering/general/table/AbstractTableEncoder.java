@@ -4,7 +4,6 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 
 public abstract class AbstractTableEncoder<C> implements ITableEncoder<C> {

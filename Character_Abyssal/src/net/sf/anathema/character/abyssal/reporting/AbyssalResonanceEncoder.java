@@ -12,7 +12,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -22,22 +21,15 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 
-public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
-  private final BaseFont baseFont;
+public class AbyssalResonanceEncoder  implements IBoxContentEncoder {
   private final VirtueFlawBoxEncoder traitEncoder;
   private final IResources resources;
   private final Chunk symbolChunk;
 
-  public AbyssalResonanceEncoder(BaseFont baseFont, BaseFont symbolBaseFont, IResources resources) {
-    this.baseFont = baseFont;
+  public AbyssalResonanceEncoder(BaseFont symbolBaseFont, IResources resources) {
     this.resources = resources;
     this.traitEncoder = new VirtueFlawBoxEncoder();
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
-  }
-
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
   }
 
   public String getHeaderKey(ReportContent reportContent) {
@@ -46,13 +38,13 @@ public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IBoxC
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     Bounds textBounds = traitEncoder.encode(graphics, bounds, 0);
-    Font font = TableEncodingUtilities.createFont(getBaseFont());
+    Font font = TableEncodingUtilities.createFont(graphics.getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
     phrase.add(symbolChunk);
     phrase.add(resources.getString("Sheet.GreatCurse.SocialPoolMessage", getMaxVirtueValue(reportContent.getCharacter())) + "\n"); //$NON-NLS-1$ //$NON-NLS-2$
     phrase.add(symbolChunk);
     phrase.add(resources.getString("Sheet.GreatCurse.VirtueDifficulty")); //$NON-NLS-1$
-    encodeTextWithReducedLineHeight(graphics.getDirectContent(), textBounds, phrase);
+    graphics.encodeTextWithReducedLineHeight(textBounds, phrase);
   }
   
   public boolean hasContent(ReportContent content)

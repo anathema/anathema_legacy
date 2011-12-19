@@ -2,13 +2,14 @@ package net.sf.anathema.character.lunar.reporting.rendering.beastform;
 
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoxEncodingUtils;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxEncoder;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class BeastformAttributeBoxEncoder extends AbstractPdfEncoder implements IBoxEncoder {
+public class BeastformAttributeBoxEncoder implements IBoxEncoder {
 
   private final BaseFont baseFont;
   private final float smallWidth;
@@ -20,14 +21,9 @@ public class BeastformAttributeBoxEncoder extends AbstractPdfEncoder implements 
     this.smallHeight = smallHeight - (HEADER_HEIGHT / 2);
   }
 
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
-  }
-
   public void encodeContentBox(PdfContentByte directContent, Bounds contentBounds) {
     float smallMaxX = contentBounds.x + smallWidth;
-    setFillColorBlack(directContent);
+    new SheetGraphics(directContent, baseFont).setFillColorBlack();
     directContent.setLineWidth(0.5f);
     directContent.moveTo(contentBounds.x, contentBounds.y + ARCSPACE);
     BoxEncodingUtils.add90DegreeArc(directContent, contentBounds.x, contentBounds.y, 180);

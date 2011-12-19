@@ -5,11 +5,10 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
-public class PdfBoxEncoder extends AbstractPdfEncoder {
+public class PdfBoxEncoder {
 
   public static final int CONTENT_INSET = 5;
 
@@ -69,10 +68,5 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
 
   public float calculateInsettedWidth(float width) {
     return width - 2 * CONTENT_INSET;
-  }
-
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
   }
 }

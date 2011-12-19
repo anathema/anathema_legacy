@@ -12,7 +12,7 @@ public class Simple1stEditionDbPartEncoder extends AbstractFirstEditionExaltPdfP
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new FirstEditionDbGreatCurseEncoder(getBaseFont(), getResources());
+    return new FirstEditionDbGreatCurseEncoder(getResources());
   }
 
   @Override

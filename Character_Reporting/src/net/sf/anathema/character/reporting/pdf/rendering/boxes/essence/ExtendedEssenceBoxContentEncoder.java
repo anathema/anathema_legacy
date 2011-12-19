@@ -5,11 +5,10 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 
-public class ExtendedEssenceBoxContentEncoder extends AbstractPdfEncoder implements IVariableBoxContentEncoder {
+public class ExtendedEssenceBoxContentEncoder implements IVariableBoxContentEncoder {
 
   private BaseFont baseFont;
   private ExtendedEssenceTableEncoder poolTable;
@@ -17,11 +16,6 @@ public class ExtendedEssenceBoxContentEncoder extends AbstractPdfEncoder impleme
   public ExtendedEssenceBoxContentEncoder(BaseFont baseFont) {
     this.baseFont = baseFont;
     this.poolTable = new ExtendedEssenceTableEncoder(this.baseFont);
-  }
-
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
   }
 
   public String getHeaderKey(ReportContent reportContent) {
