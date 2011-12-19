@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Line;
@@ -32,17 +32,17 @@ public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
   public SecondEditionLunarGreatCurseEncoder(BaseFont baseFont) {
     this.font = createFont(baseFont);
     this.nameFont = createNameFont(baseFont);
-    this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
+    this.traitEncoder = new VirtueFlawBoxEncoder();
   }
 
   public String getHeaderKey(ReportContent reportContent) {
     return "GreatCurse.Lunar"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     ILunarVirtueFlaw virtueFlaw = ((ILunarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
-    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), bounds, virtueFlaw.getLimitTrait().getCurrentValue());
+    Bounds textBounds = traitEncoder.encode(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     String name = virtueFlaw.getName().getText();
     String condition = virtueFlaw.getLimitBreak().getText();
     boolean nameDefined = !StringUtilities.isNullOrTrimEmpty(name);

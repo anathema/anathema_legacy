@@ -17,7 +17,7 @@ public class NullPdfContentEncoder implements IBoxContentEncoder {
     this.headerKey = headerKey;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     // Nothing to do
   }
 

@@ -2,7 +2,6 @@ package net.sf.anathema.character.intimacies.reporting;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
@@ -13,7 +12,7 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 
@@ -25,14 +24,14 @@ public class ExtendedIntimaciesEncoder implements IBoxContentEncoder {
   private final PdfTraitEncoder traitEncoder;
 
   public ExtendedIntimaciesEncoder(BaseFont baseFont) {
-    this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
+    this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
   public String getHeaderKey(ReportContent reportContent) {
     return "Intimacies"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float yPosition = bounds.getMaxY() - LINE_HEIGHT;
     
     int maxValue = reportContent.getCharacter().getTraitCollection().getTrait(VirtueType.Conviction).getCurrentValue();
@@ -48,18 +47,18 @@ public class ExtendedIntimaciesEncoder implements IBoxContentEncoder {
       if (!printZeroIntimacies && intimacyTrait.getCurrentValue() == 0) {
         continue;
       }
-      traitEncoder.encodeWithText(graphics.getDirectContent(), intimacy.getName(),
+      traitEncoder.encodeWithText(graphics, intimacy.getName(),
                                   new Position(bounds.x, yPosition), bounds.width,
                                   intimacyTrait.getCurrentValue(), maxValue);
       yPosition -= LINE_HEIGHT;
     }
-    encodeEmptyLines(graphics.getDirectContent(), bounds, yPosition, maxValue);
+    encodeEmptyLines(graphics, bounds, yPosition, maxValue);
   }
 
-  private void encodeEmptyLines(PdfContentByte directContent, Bounds bounds, float yPosition, int maxValue) {
+  private void encodeEmptyLines(SheetGraphics graphics, Bounds bounds, float yPosition, int maxValue) {
     while (yPosition > bounds.getMinY()) {
       Position position = new Position(bounds.x, yPosition);
-      traitEncoder.encodeWithLine(directContent, position, bounds.width, 0, maxValue);
+      traitEncoder.encodeWithLine(graphics, position, bounds.width, 0, maxValue);
       yPosition -= LINE_HEIGHT;
     }
   }

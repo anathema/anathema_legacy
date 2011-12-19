@@ -8,14 +8,15 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.content.stats.NamedGenericTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder {
-  private static final int SUBSECTION_FONT_SIZE = 8;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SUBSECTION_FONT_SIZE;
+
+public abstract class AbstractNamedTraitEncoder  {
   private final IResources resources;
   private final PdfTraitEncoder traitEncoder;
   private final BaseFont baseFont;
@@ -30,11 +31,6 @@ public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder {
     return resources;
   }
 
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
-  }
-
   protected int getLineCount(String title, float height) {
     if (title != null) {
       height -= SUBSECTION_FONT_SIZE * 1.5f;
@@ -42,16 +38,16 @@ public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder {
     return (int) (height / traitEncoder.getTraitHeight());
   }
 
-  protected float drawNamedTraitSection(PdfContentByte directContent, String title, IValuedTraitReference[] traits, Position position, float width,
+  protected float drawNamedTraitSection(SheetGraphics graphics, String title, IValuedTraitReference[] traits, Position position, float width,
     float height, int dotCount) {
-    return _drawNamedTraitSection(directContent, title, traits, position, width, getLineCount(title, height), dotCount);
+    return _drawNamedTraitSection(graphics, title, traits, position, width, getLineCount(title, height), dotCount);
   }
 
-  protected float _drawNamedTraitSection(PdfContentByte directContent, String title, IValuedTraitReference[] traits, Position position,
+  protected float _drawNamedTraitSection(SheetGraphics graphics, String title, IValuedTraitReference[] traits, Position position,
     float width, int lineCount, int dotCount) {
     float height = 0;
     if (title != null) {
-      height = drawSubsectionHeader(directContent, title, position, width);
+      height = drawSubsectionHeader(graphics, title, position, width);
     }
     TraitInternationalizer internationalizer = new TraitInternationalizer(getResources());
     for (int index = 0; index < lineCount && index < traits.length; index++) {
@@ -59,26 +55,26 @@ public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder {
       String name = internationalizer.getSheetName(trait);
       Position traitPosition = new Position(position.x, position.y - height);
       int value = trait.getValue();
-      traitEncoder.encodeWithText(directContent, name, traitPosition, width, value, dotCount);
+      traitEncoder.encodeWithText(graphics, name, traitPosition, width, value, dotCount);
       height += traitEncoder.getTraitHeight();
     }
     for (int index = traits.length; index < lineCount; index++) {
       Position traitPosition = new Position(position.x, position.y - height);
-      traitEncoder.encodeWithLine(directContent, traitPosition, width, 0, dotCount);
+      traitEncoder.encodeWithLine(graphics, traitPosition, width, 0, dotCount);
       height += traitEncoder.getTraitHeight();
     }
     return height;
   }
 
-  private final float drawSubsectionHeader(PdfContentByte directContent, String text, Position position, float width) {
-    setSubsectionFont(directContent);
-    drawText(directContent, text, new Position(position.x + width / 2, position.y), PdfContentByte.ALIGN_CENTER);
+  private final float drawSubsectionHeader(SheetGraphics graphics, String text, Position position, float width) {
+    setSubsectionFont(graphics);
+    graphics.drawText(text, new Position(position.x + width / 2, position.y), PdfContentByte.ALIGN_CENTER);
     return SUBSECTION_FONT_SIZE * 1.5f;
   }
 
-  protected final void setSubsectionFont(PdfContentByte directContent) {
-    directContent.setFontAndSize(getBaseFont(), SUBSECTION_FONT_SIZE);
-  }
+  protected final void setSubsectionFont(SheetGraphics graphics) {
+    graphics.setSubsectionFont();
+   }
 
   protected final IValuedTraitReference[] getTraitReferences(INamedGenericTrait[] traits, ITraitType type) {
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();

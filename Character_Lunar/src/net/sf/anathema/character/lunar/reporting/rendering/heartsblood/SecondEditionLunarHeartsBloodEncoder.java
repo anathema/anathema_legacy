@@ -16,7 +16,7 @@ import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.IHear
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -35,7 +35,7 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
     this.resources = resources;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     encodeTable(graphics.getDirectContent(), reportContent, bounds);
   }
 

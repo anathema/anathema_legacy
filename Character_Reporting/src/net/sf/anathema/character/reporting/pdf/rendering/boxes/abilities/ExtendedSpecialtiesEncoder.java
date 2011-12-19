@@ -7,7 +7,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.AbstractNamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
@@ -22,14 +22,14 @@ import java.util.List;
 public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implements IBoxContentEncoder {
 
   public ExtendedSpecialtiesEncoder(IResources resources, BaseFont baseFont) {
-    super(resources, baseFont, PdfTraitEncoder.createSmallTraitEncoder(baseFont));
+    super(resources, baseFont, PdfTraitEncoder.createSmallTraitEncoder());
   }
 
   public String getHeaderKey(ReportContent reportContent) {
     return "Specialties"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
     for (IIdentifiedTraitTypeGroup group : reportContent.getCharacter().getAbilityTypeGroups()) {
       for (ITraitType traitType : group.getAllGroupTypes()) {
@@ -47,10 +47,10 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
     float yPosition = bounds.getMaxY() - IVoidStateFormatConstants.BARE_LINE_HEIGHT;
 
     float leftPosition = bounds.getMinX();
-    drawNamedTraitSection(graphics.getDirectContent(), null, leftSpecialties, new Position(leftPosition, yPosition), columnWidth, columnHeight, 3);
+    drawNamedTraitSection(graphics, null, leftSpecialties, new Position(leftPosition, yPosition), columnWidth, columnHeight, 3);
 
     float rightPosition = leftPosition + columnWidth + IVoidStateFormatConstants.PADDING;
-    drawNamedTraitSection(graphics.getDirectContent(), null, rightSpecialties, new Position(rightPosition, yPosition), columnWidth, columnHeight, 3);
+    drawNamedTraitSection(graphics, null, rightSpecialties, new Position(rightPosition, yPosition), columnWidth, columnHeight, 3);
   }
 
   public boolean hasContent(ReportContent content) {

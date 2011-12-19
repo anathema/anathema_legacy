@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
@@ -31,7 +31,7 @@ public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IBoxC
   public AbyssalResonanceEncoder(BaseFont baseFont, BaseFont symbolBaseFont, IResources resources) {
     this.baseFont = baseFont;
     this.resources = resources;
-    this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
+    this.traitEncoder = new VirtueFlawBoxEncoder();
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
@@ -44,8 +44,8 @@ public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IBoxC
     return "GreatCurse.Abyssal"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), bounds, 0);
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    Bounds textBounds = traitEncoder.encode(graphics, bounds, 0);
     Font font = TableEncodingUtilities.createFont(getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
     phrase.add(symbolChunk);

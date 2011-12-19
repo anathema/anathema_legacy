@@ -21,10 +21,10 @@ import net.sf.anathema.character.reporting.pdf.content.essence.recovery.Recovery
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
-import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
 import java.util.List;
@@ -50,8 +50,10 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
   private static final int HEADER_BORDER = Rectangle.NO_BORDER;
   private static final int INTERNAL_BORDER = Rectangle.BOX;
   private static final int LABEL_BORDER = Rectangle.BOX;
+  private BaseFont baseFont;
 
   public ExtendedEssenceTableEncoder(BaseFont baseFont) {
+    this.baseFont = baseFont;
     this.font = TableEncodingUtilities.createFont(baseFont);
     this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
     this.boldFont = TableEncodingUtilities.createBoldFont(baseFont);
@@ -59,7 +61,7 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     this.spaceCell.setBorder(HEADER_BORDER);
     this.internalSpaceCell = new PdfPCell(new Phrase(" ", font));
     this.internalSpaceCell.setBorder(INTERNAL_BORDER);
-    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
+    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
   }
 
   protected Float[] getEssenceColumns() {
@@ -105,7 +107,8 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
   protected final Image createDots(PdfContentByte directContent, ExtendedEssenceContent content, float width) throws BadElementException {
     PdfTemplate dotsTemplate = directContent.createTemplate(width, traitEncoder.getTraitHeight());
     int value = content.getEssenceValue();
-    traitEncoder.encodeDotsCenteredAndUngrouped(dotsTemplate, new Position(0, DOT_PADDING), width, value, content.getEssenceMax());
+    traitEncoder.encodeDotsCenteredAndUngrouped(new SheetGraphics(dotsTemplate, baseFont), new Position(0, DOT_PADDING), width, value,
+      content.getEssenceMax());
     return Image.getInstance(dotsTemplate);
   }
 

@@ -168,7 +168,7 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
 
   private float encodeVirtues(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new VirtueBoxContentEncoder(resources, baseFont);
+    IBoxContentEncoder encoder = new VirtueBoxContentEncoder();
     boxEncoder.encodeBox(content, directContent, encoder, bounds);
     return height;
   }

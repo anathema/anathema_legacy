@@ -16,7 +16,7 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
   }
 
   public IBoxContentEncoder getEssenceEncoder() {
-    return new SimpleEssenceBoxContentEncoder(getBaseFont(), getResources(), essenceMax);
+    return new SimpleEssenceBoxContentEncoder();
   }
 
   public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {

@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
@@ -31,7 +31,7 @@ public class ExtendedPdfWillpowerEncoder implements IBoxContentEncoder {
   private final float lineHeight = 1.1f * fontSize;
 
   public ExtendedPdfWillpowerEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
-    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
+    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
     this.resources = resources;
     this.baseFont = baseFont;
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
@@ -41,7 +41,7 @@ public class ExtendedPdfWillpowerEncoder implements IBoxContentEncoder {
     return "Willpower"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float padding = IVoidStateFormatConstants.PADDING / 2f;
     float width = bounds.width - 2f * padding;
     float leftX = bounds.x + padding;
@@ -51,9 +51,9 @@ public class ExtendedPdfWillpowerEncoder implements IBoxContentEncoder {
     int value = reportContent.getCharacter().getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
     float entryHeight = traitEncoder.getTraitHeight();
     float yPosition = topY - entryHeight;
-    traitEncoder.encodeDotsCenteredAndUngrouped(graphics.getDirectContent(), new Position(leftX, yPosition), width, value, 10);
+    traitEncoder.encodeDotsCenteredAndUngrouped(graphics, new Position(leftX, yPosition), width, value, 10);
     yPosition -= entryHeight;
-    traitEncoder.encodeSquaresCenteredAndUngrouped(graphics.getDirectContent(), new Position(leftX, yPosition), width, 0, 10);
+    traitEncoder.encodeSquaresCenteredAndUngrouped(graphics, new Position(leftX, yPosition), width, 0, 10);
     height -= 2f * entryHeight;
 
     yPosition -= lineHeight;

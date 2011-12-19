@@ -6,7 +6,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 
 public class KnackEncoder implements IBoxContentEncoder {
@@ -28,7 +28,7 @@ public class KnackEncoder implements IBoxContentEncoder {
   }
 
   @Override
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     KnackContent knackContent = getKnackContent(reportContent);
     KnackTableEncoder encoder = new KnackTableEncoder(baseFont);
     PdfContentByte directContent = graphics.getDirectContent();

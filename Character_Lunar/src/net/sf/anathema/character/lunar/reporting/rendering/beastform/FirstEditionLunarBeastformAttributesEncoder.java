@@ -1,6 +1,7 @@
 package net.sf.anathema.character.lunar.reporting.rendering.beastform;
 
-import net.sf.anathema.character.generic.character.*;
+import com.lowagie.text.pdf.BaseFont;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
@@ -9,13 +10,10 @@ import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
 public class FirstEditionLunarBeastformAttributesEncoder implements IBoxContentEncoder {
 
@@ -28,25 +26,22 @@ public class FirstEditionLunarBeastformAttributesEncoder implements IBoxContentE
   public FirstEditionLunarBeastformAttributesEncoder(BaseFont baseFont, IResources resources, float smallWidth) {
     this.resources = resources;
     this.smallWidth = smallWidth;
-    this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
+    this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
   public String getHeaderKey(ReportContent reportContent) {
     return "Attributes"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
     IBeastformModel additionalModel = (IBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
-    encodeAttributes(graphics.getDirectContent(), bounds, attributeGroups, traitCollection);
+    encodeAttributes(graphics, bounds, attributeGroups, traitCollection);
   }
 
-  public final void encodeAttributes(
-      PdfContentByte directContent,
-      Bounds contentBounds,
-      IGroupedTraitType[] attributeGroups,
-      IGenericTraitCollection traitCollection) {
+  public final void encodeAttributes(SheetGraphics graphics, Bounds contentBounds, IGroupedTraitType[] attributeGroups,
+    IGenericTraitCollection traitCollection) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - groupSpacing;
     String groupId = null;
@@ -70,19 +65,11 @@ public class FirstEditionLunarBeastformAttributesEncoder implements IBoxContentE
       int value = traitCollection.getTrait(traitType).getCurrentValue();
       Position position = new Position(contentBounds.x, y);
       boolean favored = traitCollection.isFavoredOrCasteTrait(traitType);
-      y -= smallTraitEncoder.encodeWithTextAndRectangle(
-          directContent,
-          traitLabel,
-          position,
-          width,
-          value,
-          favored,
-          maximum);
+      y -= smallTraitEncoder.encodeWithTextAndRectangle(graphics, traitLabel, position, width, value, favored, maximum);
     }
   }
-  
-  public boolean hasContent(ReportContent content)
-  {
-	  return true;
+
+  public boolean hasContent(ReportContent content) {
+    return true;
   }
 }

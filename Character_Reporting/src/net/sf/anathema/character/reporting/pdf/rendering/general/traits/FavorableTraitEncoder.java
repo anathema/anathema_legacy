@@ -16,8 +16,7 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
@@ -27,7 +26,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implements IBoxContentEncoder {
+public abstract class FavorableTraitEncoder implements IBoxContentEncoder {
 
   private final List<ITraitType> markedTraitTypes = new ArrayList<ITraitType>();
   private final List<INamedTraitEncoder> namedTraitEncoders = new ArrayList<INamedTraitEncoder>();
@@ -40,7 +39,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     this.baseFont = baseFont;
     this.resources = resources;
     this.essenceMax = essenceMax;
-    this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
+    this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
     Collections.addAll(markedTraitTypes, markedTypes);
   }
 
@@ -48,38 +47,33 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     namedTraitEncoders.add(encoder);
   }
 
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
-  }
-
   protected PdfTraitEncoder getTraitEncoder() {
     return traitEncoder;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     Position position = new Position(bounds.getMinX(), bounds.getMaxY());
     float width = bounds.width;
 
     float bottom = bounds.getMinY() + IVoidStateFormatConstants.TEXT_PADDING;
     int nExcellencies = getExcellencies(reportContent.getCharacter()).length;
     if (nExcellencies > 0) {
-      bottom += encodeExcellencyCommentText(graphics.getDirectContent(), nExcellencies, position, bottom);
+      bottom += encodeExcellencyCommentText(graphics, nExcellencies, position, bottom);
     }
     if (!markedTraitTypes.isEmpty()) {
-      bottom += encodeMarkerCommentText(graphics.getDirectContent(), position, bottom);
+      bottom += encodeMarkerCommentText(graphics, position, bottom);
     }
 
-    float yPosition = encodeTraitGroups(graphics.getDirectContent(), reportContent.getCharacter(), position, width);
+    float yPosition = encodeTraitGroups(graphics, reportContent.getCharacter(), position, width);
     float height = yPosition - bottom;
     for (INamedTraitEncoder encoder : namedTraitEncoders) {
       yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
-      yPosition -= encoder.encode(graphics.getDirectContent(), reportContent.getCharacter(), new Position(position.x, yPosition), width, height);
+      yPosition -= encoder.encode(graphics, reportContent.getCharacter(), new Position(position.x, yPosition), width, height);
       height -= IVoidStateFormatConstants.LINE_HEIGHT;
     }
   }
 
-  private float encodeTraitGroups(PdfContentByte directContent, IGenericCharacter character, Position position, float width) {
+  private float encodeTraitGroups(SheetGraphics graphics, IGenericCharacter character, Position position, float width) {
     IIdentifiedTraitTypeGroup[] groups = getIdentifiedTraitTypeGroups(character);
     IGenericTraitCollection traitCollection = getTraitCollection(character);
     IMagicStats[] excellencies = getExcellencies(character);
@@ -87,7 +81,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     float yPosition = position.y;
     for (IIdentifiedTraitTypeGroup group : groups) {
       Position groupPosition = new Position(position.x, yPosition);
-      yPosition -= encodeTraitGroup(directContent, character, excellencies, traitCollection, group, groupPosition, width);
+      yPosition -= encodeTraitGroup(graphics, character, excellencies, traitCollection, group, groupPosition, width);
       yPosition -= IVoidStateFormatConstants.TEXT_PADDING;
     }
     return yPosition;
@@ -122,7 +116,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
 
   protected abstract IIdentifiedTraitTypeGroup[] getIdentifiedTraitTypeGroups(IGenericCharacter character);
 
-  private float encodeTraitGroup(PdfContentByte directContent, IGenericCharacter character, IMagicStats[] excellencies,
+  private float encodeTraitGroup(SheetGraphics graphics, IGenericCharacter character, IMagicStats[] excellencies,
     IGenericTraitCollection traitCollection, IIdentifiedTraitTypeGroup group, Position position, float width) {
     float height = 0;
     float groupLabelWidth = IVoidStateFormatConstants.LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
@@ -135,7 +129,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
       ITraitType traitType = traitTypes[index];
       float yPosition = position.y - (index + 1) * traitEncoder.getTraitHeight();
       if (markedTraitTypes.contains(traitType)) {
-        encodeMarker(directContent, new Position(markerX, yPosition + 1));
+        encodeMarker(graphics, new Position(markerX, yPosition + 1));
       }
       IFavorableGenericTrait trait = traitCollection.getFavorableTrait(traitType);
       String label = resources.getString(getTraitTypePrefix() + traitType.getId());
@@ -151,25 +145,25 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
           }) != null;
         }
 
-        height += encodeFavorableTrait(directContent, label, trait, excellencyLearned, new Position(traitX, yPosition), width - groupLabelWidth);
+        height += encodeFavorableTrait(graphics, label, trait, excellencyLearned, new Position(traitX, yPosition), width - groupLabelWidth);
       }
       else {
-        height += encodeFavorableTrait(directContent, label, trait, new Position(traitX, yPosition), width - groupLabelWidth);
+        height += encodeFavorableTrait(graphics, label, trait, new Position(traitX, yPosition), width - groupLabelWidth);
       }
     }
     Position groupLabelPosition = new Position(groupLabelX, position.y - height / 2f);
-    addGroupLabel(directContent, group, groupLabelPosition);
+    addGroupLabel(graphics, group, groupLabelPosition);
     return height;
   }
 
-  private void addGroupLabel(PdfContentByte directContent, IIdentifiedTraitTypeGroup group, Position position) {
+  private void addGroupLabel(SheetGraphics graphics, IIdentifiedTraitTypeGroup group, Position position) {
     if (getGroupNamePrefix() == null) {
       return;
     }
     String groupId = group.getGroupId().getId();
     String resourceKey = group.getGroupId() instanceof ICasteType ? "Caste." + groupId : getGroupNamePrefix() + groupId; //$NON-NLS-1$
     String groupLabel = resources.getString(resourceKey);
-    drawVerticalText(directContent, groupLabel, position, PdfContentByte.ALIGN_CENTER);
+    graphics.drawVerticalText(groupLabel, position, PdfContentByte.ALIGN_CENTER);
   }
 
   protected abstract String getGroupNamePrefix();
@@ -178,20 +172,21 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return ""; //$NON-NLS-1$
   }
 
-  private float encodeFavorableTrait(PdfContentByte directContent, String label, IFavorableGenericTrait trait, Position position, float width) {
+  private float encodeFavorableTrait(SheetGraphics graphics, String label, IFavorableGenericTrait trait, Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
-    return traitEncoder.encodeWithTextAndRectangle(directContent, label, position, width, value, favored, essenceMax);
+    return traitEncoder.encodeWithTextAndRectangle(graphics, label, position, width, value, favored, essenceMax);
   }
 
-  private float encodeFavorableTrait(PdfContentByte directContent, String label, IFavorableGenericTrait trait, boolean[] excellencyLearned,
+  private float encodeFavorableTrait(SheetGraphics graphics, String label, IFavorableGenericTrait trait, boolean[] excellencyLearned,
     Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
-    return traitEncoder.encodeWithExcellencies(directContent, label, position, width, value, favored, excellencyLearned, essenceMax);
+    return traitEncoder.encodeWithExcellencies(graphics, label, position, width, value, favored, excellencyLearned, essenceMax);
   }
 
-  private void encodeMarker(PdfContentByte directContent, Position markerPosition) {
+  private void encodeMarker(SheetGraphics graphics, Position markerPosition) {
+    PdfContentByte directContent = graphics.getDirectContent();
     directContent.setLineWidth(1.0f);
     directContent.moveTo(markerPosition.x, markerPosition.y + 2);
     directContent.lineTo(markerPosition.x + 4, markerPosition.y + 2);
@@ -200,22 +195,22 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     directContent.stroke();
   }
 
-  private float encodeMarkerCommentText(PdfContentByte directContent, Position position, float yPosition) {
-    encodeMarker(directContent, new Position(position.x, yPosition));
+  private float encodeMarkerCommentText(SheetGraphics graphics, Position position, float yPosition) {
+    encodeMarker(graphics, new Position(position.x, yPosition));
     String mobilityPenaltyText = " : " + resources.getString(getMarkerCommentKey()); //$NON-NLS-1$
     Position commentPosition = new Position(position.x + 5, yPosition);
-    drawComment(directContent, mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
+    graphics.drawComment(mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
     return 7;
   }
 
-  private float encodeExcellencyCommentText(PdfContentByte directContent, int nExcellencies, Position position, float yPosition) {
+  private float encodeExcellencyCommentText(SheetGraphics graphics, int nExcellencies, Position position, float yPosition) {
     StringBuilder numbers = new StringBuilder();
     for (int i = 1; i <= nExcellencies; i++) {
       numbers.append(Integer.toString(i));
     }
     String mobilityPenaltyText = numbers.toString() + ": " + resources.getString(getExcellencyCommentKey()); //$NON-NLS-1$
     Position commentPosition = new Position(position.x, yPosition);
-    drawComment(directContent, mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
+    graphics.drawComment(mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
     return 7;
   }
 

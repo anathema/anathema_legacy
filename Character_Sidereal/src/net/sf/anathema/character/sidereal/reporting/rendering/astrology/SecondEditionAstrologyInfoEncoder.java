@@ -4,7 +4,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.DestinyTypeTableEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.DurationTableEncoder;
@@ -25,7 +25,7 @@ public class SecondEditionAstrologyInfoEncoder implements IBoxContentEncoder {
     this.basefont = baseFont;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent report, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent report, Bounds bounds) throws DocumentException {
     int height = (int) SPACING;
     height += (int) new SecondEditionAstrologyTableEncoder(resources, basefont).encodeTable(graphics.getDirectContent(), report,
       getBounds(bounds, 0, height)) + SPACING + 1;

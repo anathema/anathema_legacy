@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -15,7 +14,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -36,19 +35,18 @@ public class PdfAttributesEncoder implements IBoxContentEncoder {
     this.resources = resources;
     this.essenceMax = essenceMax;
     this.encodeFavored = encodeFavored;
-    this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
+    this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
   public String getHeaderKey(ReportContent reportContent) {
     return "Attributes"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
     IGenericTraitCollection traitCollection = reportContent.getCharacter().getTraitCollection();
     IMagicStats[] excellencies = getExcellencies(reportContent.getCharacter());
-    encodeAttributes(graphics.getDirectContent(), reportContent.getCharacter(), bounds, attributeGroups, traitCollection,
-      excellencies);
+    encodeAttributes(graphics, reportContent.getCharacter(), bounds, attributeGroups, traitCollection, excellencies);
   }
 
   protected IMagicStats[] getExcellencies(IGenericCharacter character) {
@@ -72,7 +70,7 @@ public class PdfAttributesEncoder implements IBoxContentEncoder {
     return excellencies.toArray(new IMagicStats[0]);
   }
 
-  public final void encodeAttributes(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds,
+  public final void encodeAttributes(SheetGraphics graphics, IGenericCharacter character, Bounds contentBounds,
     IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - groupSpacing;
@@ -89,7 +87,7 @@ public class PdfAttributesEncoder implements IBoxContentEncoder {
       int value = traitCollection.getTrait(traitType).getCurrentValue();
       Position position = new Position(contentBounds.x, y);
       if (!encodeFavored) {
-        y -= smallTraitEncoder.encodeWithText(directContent, traitLabel, position, contentBounds.width, value, essenceMax);
+        y -= smallTraitEncoder.encodeWithText(graphics, traitLabel, position, contentBounds.width, value, essenceMax);
       }
       else {
         boolean favored = traitCollection.getFavorableTrait(traitType).isCasteOrFavored();
@@ -102,7 +100,7 @@ public class PdfAttributesEncoder implements IBoxContentEncoder {
             }
           }) != null;
         }
-        y -= smallTraitEncoder.encodeWithExcellencies(directContent, traitLabel, position, contentBounds.width, value, favored, excellencyLearned,
+        y -= smallTraitEncoder.encodeWithExcellencies(graphics, traitLabel, position, contentBounds.width, value, favored, excellencyLearned,
           essenceMax);
       }
     }

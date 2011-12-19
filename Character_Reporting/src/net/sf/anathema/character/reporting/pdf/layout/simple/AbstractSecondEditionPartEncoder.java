@@ -53,7 +53,7 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
   }
 
   public IBoxContentEncoder getEssenceEncoder() {
-    return new SimpleEssenceBoxContentEncoder(getBaseFont(), getResources(), essenceMax);
+    return new SimpleEssenceBoxContentEncoder();
   }
 
   public IBoxContentEncoder getOverdriveEncoder() {

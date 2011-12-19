@@ -5,7 +5,7 @@ import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
@@ -28,7 +28,7 @@ public class SiderealFlawedFateEncoder extends AbstractPdfEncoder implements IBo
   public SiderealFlawedFateEncoder(BaseFont baseFont, IResources resources) {
     this.baseFont = baseFont;
     this.resources = resources;
-    this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
+    this.traitEncoder = new VirtueFlawBoxEncoder();
     this.boldFont = new Font(baseFont);
     boldFont.setStyle(Font.BOLD);
   }
@@ -38,19 +38,10 @@ public class SiderealFlawedFateEncoder extends AbstractPdfEncoder implements IBo
     return baseFont;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
 	IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(SiderealFlawedFateTemplate.ID)).getVirtueFlaw();
-    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), bounds, virtueFlaw.getLimitTrait().getCurrentValue());
-    //float lineHeight = (textBounds.height - TEXT_PADDING) / 2;
-    /*String effects = resources.getString("Sheet.GreatCurse.Sidereal.CurrentEffects") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
-    drawLabelledContent(
-        directContent,
-        effects,
-        null,
-        new Position(textBounds.x, textBounds.getMaxY() - lineHeight),
-        bounds.width);*/
-
-    Font font = TableEncodingUtilities.createFont(getBaseFont());
+    Bounds textBounds = traitEncoder.encode(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
+     Font font = TableEncodingUtilities.createFont(getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
     phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Sidereal.LimitBreak") + ": ", boldFont)); //$NON-NLS-1$
     String fateString = resources.getString("Sheet.GreatCurse.Sidereal.FlawedFate." + reportContent.getCharacter().getCasteType().getId()) + "\n";

@@ -32,7 +32,7 @@ public class SimpleEssenceContent extends AbstractSubContent {
   }
 
   public int getNumberOfPoolLines() {
-    return (hasPersonalPool() ? 0 : 1) + (hasPeripheralPool() ? 0 : 1);
+    return (hasPersonalPool() ? 1 : 0) + (hasPeripheralPool() ? 1 : 0);
   }
 
   public boolean hasPeripheralPool() {

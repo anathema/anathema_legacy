@@ -23,7 +23,7 @@ public class PdfDotsEncoder extends AbstractPdfEncoder implements IBoxContentEnc
     this.baseFont = baseFont;
     this.traitMax = traitMax;
     this.trait = trait;
-    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
+    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
     this.traitHeaderKey = traitHeaderKey;
   }
 
@@ -36,13 +36,13 @@ public class PdfDotsEncoder extends AbstractPdfEncoder implements IBoxContentEnc
     return traitHeaderKey; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float width = bounds.width - IVoidStateFormatConstants.PADDING;
     float leftX = bounds.x + IVoidStateFormatConstants.PADDING / 2f;
     int value = reportContent.getCharacter().getTraitCollection().getTrait(trait).getCurrentValue();
     float entryHeight = Math.max(bounds.height - IVoidStateFormatConstants.PADDING / 2f, traitEncoder.getTraitHeight());
     float yPosition = bounds.getMaxY() - entryHeight;
-    traitEncoder.encodeDotsCenteredAndUngrouped(graphics.getDirectContent(), new Position(leftX, yPosition), width, value, traitMax);
+    traitEncoder.encodeDotsCenteredAndUngrouped(graphics, new Position(leftX, yPosition), width, value, traitMax);
   }
 
   public boolean hasContent(ReportContent content) {

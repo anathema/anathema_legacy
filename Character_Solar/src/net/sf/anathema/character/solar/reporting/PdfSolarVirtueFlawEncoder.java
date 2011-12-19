@@ -5,7 +5,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Line;
@@ -32,19 +32,18 @@ public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
   public PdfSolarVirtueFlawEncoder(BaseFont baseFont) {
     this.font = createFont(baseFont);
     this.nameFont = createNameFont(baseFont);
-    this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
+    this.traitEncoder = new VirtueFlawBoxEncoder();
   }
 
   public String getHeaderKey(ReportContent reportContent) {
     return "GreatCurse.Solar"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float boxPadding = 1f;
 
 	ISolarVirtueFlaw virtueFlaw = ((ISolarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
-    //Bounds textBounds = traitEncoder.encode(directContent, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
-    float boxHeight = traitEncoder.encodeHeight(graphics.getDirectContent(), bounds, virtueFlaw.getLimitTrait().getCurrentValue());
+float boxHeight = traitEncoder.encodeHeight(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     float boxInterval = boxHeight + boxPadding;
     Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - boxInterval);
 

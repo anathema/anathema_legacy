@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -29,7 +29,7 @@ public class ArmourEncoder implements IBoxContentEncoder {
     return "ArmourSoak"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
     float tableHeight = encoder.encodeTable(graphics.getDirectContent(), content, bounds);
     float remainingHeight = bounds.getHeight() - tableHeight;
     float delimitingLineYPosition = bounds.getMinY() + remainingHeight - 3;

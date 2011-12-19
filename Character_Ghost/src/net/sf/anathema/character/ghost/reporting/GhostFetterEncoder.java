@@ -6,7 +6,7 @@ import net.sf.anathema.character.ghost.fetters.model.IGhostFettersModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 
@@ -17,14 +17,14 @@ public class GhostFetterEncoder implements IBoxContentEncoder {
 
   private final PdfTraitEncoder traitEncoder;
   public GhostFetterEncoder(BaseFont baseFont) {
-    this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
+    this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
   public String getHeaderKey(ReportContent reportContent) {
     return "Ghost.Fetters"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
 	  IGhostFettersModel model = (IGhostFettersModel) reportContent.getCharacter().getAdditionalModel(GhostFettersTemplate.ID);
 	  float groupSpacing = traitEncoder.getTraitHeight() / 2;
 	  float x = bounds.x;
@@ -36,7 +36,7 @@ public class GhostFetterEncoder implements IBoxContentEncoder {
 	      String traitLabel = fetter.getName();
 	      int value = fetter.getCurrentValue();
 	      Position position = new Position(x, y);
-	      y -= traitEncoder.encodeWithText(graphics.getDirectContent(),
+	      y -= traitEncoder.encodeWithText(graphics,
 	          traitLabel,
 	          position,
 	          width,

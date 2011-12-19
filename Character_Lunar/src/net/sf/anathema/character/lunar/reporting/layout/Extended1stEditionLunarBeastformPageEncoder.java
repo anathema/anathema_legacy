@@ -199,7 +199,7 @@ public class Extended1stEditionLunarBeastformPageEncoder implements IPdfPageEnco
 
   private float encodeVirtues(PdfContentByte directContent, float distanceFromTop, float height, ReportContent content) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new VirtueBoxContentEncoder(resources, baseFont);
+    IBoxContentEncoder encoder = new VirtueBoxContentEncoder();
     boxEncoder.encodeBox(content, directContent, encoder, bounds);
     return height;
   }

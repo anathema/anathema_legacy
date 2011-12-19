@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
@@ -37,7 +37,7 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
     this.isHorizontal = isHorizontal;
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     tellMDV = hasTBA(reportContent.getCharacter()) ? 8 : 12;
 
     int offsetX = 0, offsetY = isHorizontal ? 0 : 5;

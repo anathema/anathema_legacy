@@ -122,7 +122,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeVirtues(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, new VirtueBoxContentEncoder(getResources(), getBaseFont()), 2, 1, distanceFromTop, height);
+    return encodeFixedBox(directContent, content, new VirtueBoxContentEncoder(), 2, 1, distanceFromTop, height);
   }
 
   private float encodeWillpowerDots(PdfContentByte directContent, ReportContent content, float distanceFromTop,

@@ -6,7 +6,7 @@ import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractPdfEncoder;
@@ -27,7 +27,7 @@ public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IB
   public Abyssal2ndResonanceEncoder(BaseFont baseFont, IResources resources) {
     this.baseFont = baseFont;
     this.resources = resources;
-    this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
+    this.traitEncoder = new VirtueFlawBoxEncoder();
   }
 
   @Override
@@ -39,9 +39,9 @@ public class Abyssal2ndResonanceEncoder extends AbstractPdfEncoder implements IB
     return "GreatCurse.Abyssal"; //$NON-NLS-1$
   }
 
-  public void encode(PdfGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     IVirtueFlaw resonance = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(AbyssalResonanceTemplate.ID)).getVirtueFlaw();
-    Bounds textBounds = traitEncoder.encode(graphics.getDirectContent(), bounds, resonance.getLimitTrait().getCurrentValue());
+    Bounds textBounds = traitEncoder.encode(graphics, bounds, resonance.getLimitTrait().getCurrentValue());
     Font font = createFont(getBaseFont());
     Font nameFont = createNameFont(getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
