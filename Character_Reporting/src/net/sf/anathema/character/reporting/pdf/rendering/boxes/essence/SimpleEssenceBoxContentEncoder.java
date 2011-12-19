@@ -14,6 +14,7 @@ import static com.lowagie.text.pdf.PdfContentByte.ALIGN_RIGHT;
 
 public class SimpleEssenceBoxContentEncoder implements IBoxContentEncoder {
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     SimpleEssenceContent content = createContent(reportContent);
     SimpleEssenceBoxLayout layout = new SimpleEssenceBoxLayout(graphics, bounds, content.getNumberOfPoolLines());
@@ -48,13 +49,10 @@ public class SimpleEssenceBoxContentEncoder implements IBoxContentEncoder {
 
   private void encodePool(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceBoxLayout layout, String label, String poolValue, Position poolPosition) {
     graphics.drawText(label, poolPosition, PdfContentByte.ALIGN_LEFT);
-    String availableString = content.getAvailableString();
-    Position availablePosition = layout.getAvailabilityPositionRightAligned(poolPosition);
-    graphics.drawText(availableString, availablePosition, ALIGN_RIGHT);
-    Position lineStartPoint = layout.getAvailabilityLineStartPosition(poolPosition, availableString);
-    graphics.drawMissingTextLine(lineStartPoint, layout.getMissingValueLineLength());
-    String totalString = content.getTotalString(poolValue);
-    graphics.drawText(totalString, lineStartPoint, ALIGN_RIGHT);
+    graphics.drawText(content.getAvailableText(), layout.getAvailablePositionRightAligned(poolPosition), ALIGN_RIGHT);
+    Position availableLineStart = layout.getAvailableLineStart(poolPosition, content.getAvailableText());
+    graphics.drawMissingTextLine(availableLineStart, layout.getMissingValueLineLength());
+    graphics.drawText(content.getTotalString(poolValue), availableLineStart, ALIGN_RIGHT);
   }
 
   public String getHeaderKey(ReportContent content) {

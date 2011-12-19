@@ -59,7 +59,7 @@ public class SimpleEssenceContent extends AbstractSubContent {
     return getResources().getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
   }
 
-  public String getAvailableString() {
+  public String getAvailableText() {
     return " " + getResources().getString("Sheet.Essence.Available"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
