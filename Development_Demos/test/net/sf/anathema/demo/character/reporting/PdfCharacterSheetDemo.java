@@ -26,7 +26,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.PdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.character.solar.reporting.Simple2ndSolarPartEncoder;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;

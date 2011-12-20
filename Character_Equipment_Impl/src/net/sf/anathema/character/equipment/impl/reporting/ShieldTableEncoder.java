@@ -6,16 +6,14 @@ import net.sf.anathema.character.equipment.impl.reporting.stats.shields.CloseCom
 import net.sf.anathema.character.equipment.impl.reporting.stats.shields.RangedCombatShieldStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.stats.EquipmentNameStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.stats.IEquipmentStatsGroup;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 
 public class ShieldTableEncoder extends AbstractEquipmentTableEncoder<IShieldStats> {

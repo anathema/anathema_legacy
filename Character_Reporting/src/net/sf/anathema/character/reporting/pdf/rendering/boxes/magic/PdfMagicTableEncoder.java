@@ -12,7 +12,7 @@ import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicDuration
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicNameStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicSourceStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicTypeStatsGroup;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 

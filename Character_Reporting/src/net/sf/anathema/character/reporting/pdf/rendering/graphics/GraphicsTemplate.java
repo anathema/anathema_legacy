@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.rendering.general;
+package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
 import com.lowagie.text.BadElementException;
 import com.lowagie.text.Image;

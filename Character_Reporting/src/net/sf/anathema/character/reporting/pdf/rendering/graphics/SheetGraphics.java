@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.rendering.general;
+package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
@@ -9,8 +9,10 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.ITextMetrics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
 import java.awt.*;

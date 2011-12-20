@@ -2,8 +2,8 @@ package net.sf.anathema.character.lunar.reporting.rendering.beastform;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoxEncodingUtils;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxEncoder;
 

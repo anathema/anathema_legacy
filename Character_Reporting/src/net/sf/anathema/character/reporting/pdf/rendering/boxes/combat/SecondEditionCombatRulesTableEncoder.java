@@ -3,15 +3,13 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.combat;
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.combat.CombatAction;
 import net.sf.anathema.character.reporting.pdf.content.combat.SecondEditionCombatStatsContent;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
-import net.sf.anathema.character.reporting.pdf.rendering.elements.TableList;
-import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableList;
 
 public class SecondEditionCombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
 
