@@ -46,6 +46,8 @@ import net.sf.anathema.character.sidereal.paradox.SiderealParadoxParser;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxPersisterFactory;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxViewFactory;
+import net.sf.anathema.character.sidereal.reporting.content.colleges.SiderealCollageContentFactory;
+import net.sf.anathema.character.sidereal.reporting.content.colleges.SiderealCollegeContent;
 import net.sf.anathema.character.sidereal.reporting.layout.Extended1stEditionSiderealPartEncoder;
 import net.sf.anathema.character.sidereal.reporting.layout.Extended2ndEditionSiderealPartEncoder;
 import net.sf.anathema.character.sidereal.reporting.layout.Simple1stEditionSiderealPartEncoder;
@@ -172,6 +174,7 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
+    moduleObject.getReportContentRegistry().addFactory(SiderealCollegeContent.class, new SiderealCollageContentFactory(resources));
     registerSimpleReporting(resources, moduleObject.getSimpleEncodingRegistry());
     registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry());
   }

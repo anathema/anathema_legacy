@@ -7,11 +7,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class SimpleInfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
-  //private final PdfEncodingRegistry registry;
-
   public SimpleInfernalPartEncoder(IResources resources, SimpleEncodingRegistry registry, int essenceMax) {
     super(resources, registry, essenceMax);
-    //this.registry = registry;
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
@@ -22,14 +19,4 @@ public class SimpleInfernalPartEncoder extends AbstractSecondEditionExaltPdfPart
   public IBoxContentEncoder getAnimaEncoder() {
     return new InfernalAnimaEncoderFactory(getResources(), getBaseFont(), getSymbolBaseFont()).createAnimaEncoder();
   }
-
-  /*@Override
-  public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[] { new SecondEditionLunarAdditionalPageEncoder(
-        this,
-        registry,
-        getResources(),
-        getEssenceMax(),
-        configuration) };
-  }*/
 }

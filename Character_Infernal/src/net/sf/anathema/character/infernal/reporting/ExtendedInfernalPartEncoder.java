@@ -27,7 +27,7 @@ public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPa
   public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders()
   {
 	return new IVariableBoxContentEncoder[]
-	         { new InfernalYoziListEncoder(getBaseFont(), getResources())};
+	         { new InfernalYoziListEncoder()};
   }
 
   /*@Override

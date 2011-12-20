@@ -66,8 +66,4 @@ public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEnco
   public boolean isEncodeAttributeAsFavorable() {
     return false;
   }
-
-  public IBoxContentEncoder getOverdriveEncoder() {
-    return null;
-  }
 }

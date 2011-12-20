@@ -4,6 +4,7 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
@@ -25,7 +26,8 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
     this.specialtyCount = specialtyCount;
   }
 
-  public float encode(SheetGraphics graphics, IGenericCharacter character, Position position, float width, float height) {
+  public float encode(SheetGraphics graphics, ReportContent content, Position position, float width, float height) {
+    IGenericCharacter character = content.getCharacter();
     String title = getResources().getString("Sheet.AbilitySubHeader.Specialties"); //$NON-NLS-1$
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
     for (IIdentifiedTraitTypeGroup group : character.getAbilityTypeGroups()) {

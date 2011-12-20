@@ -19,7 +19,7 @@ import net.sf.anathema.character.lunar.reporting.rendering.heartsblood.FirstEdit
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.PdfAbilitiesEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.SimplePersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.PdfWillpowerEncoder;
@@ -126,7 +126,7 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
     float remainingHeightRequired) throws DocumentException {
     float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop - remainingHeightRequired;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    IBoxContentEncoder encoder = PdfAbilitiesEncoder.createWithSpecialtiesOnly(baseFont, resources, essenceMax, 11);
+    IBoxContentEncoder encoder = AbilitiesBoxContentEncoder.createWithSpecialtiesOnly(baseFont, resources, essenceMax, 11);
     boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
   }
 

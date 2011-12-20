@@ -17,8 +17,4 @@ public class SecondEditionMortalPartEncoder extends AbstractSecondEditionPartEnc
   public IBoxContentEncoder getGreatCurseEncoder() {
     return null;
   }
-
-  public boolean hasMagicPage() {
-    return false;
-  }
 }

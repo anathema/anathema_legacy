@@ -13,8 +13,6 @@ public interface ISimplePartEncoder extends LayoutUtilities {
 
   public IBoxContentEncoder getGreatCurseEncoder();
 
-  public IBoxContentEncoder getOverdriveEncoder();
-
   public IBoxContentEncoder getCombatStatsEncoder();
 
   public IBoxContentEncoder getSocialCombatEncoder();

@@ -23,8 +23,8 @@ public class ReportContent {
     return description;
   }
 
-  public <C extends ISubContent> C createSubContent(Class<C> contentClass) {
-    IReportContentFactory<C> factory = registry.getFactory(contentClass);
+  public <C extends SubContent> C createSubContent(Class<C> contentClass) {
+    ReportContentFactory<C> factory = registry.getFactory(contentClass);
     return factory.create(character, description);
   }
 }

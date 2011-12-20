@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.ExtendedSpecialtiesEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.PdfAbilitiesEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.PdfExperienceEncoder;
@@ -102,7 +102,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeAbilities(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, PdfAbilitiesEncoder.createWithCraftsOnly(getBaseFont(), getResources(), essenceMax, -1), 1, 1,
+    return encodeFixedBox(directContent, content, AbilitiesBoxContentEncoder.createWithCraftsOnly(getBaseFont(), getResources(), essenceMax, -1), 1, 1,
       distanceFromTop, height);
   }
 

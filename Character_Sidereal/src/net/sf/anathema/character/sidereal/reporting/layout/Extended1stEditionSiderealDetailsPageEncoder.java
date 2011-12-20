@@ -10,13 +10,14 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.sidereal.reporting.content.colleges.SiderealCollegeContent;
 import net.sf.anathema.character.sidereal.reporting.rendering.ArcaneFateInfoEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.AstrologyInfoEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.ParadoxInfoEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.StandingEncoder;
-import net.sf.anathema.character.sidereal.reporting.rendering.colleges.SiderealCollegeEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.resplendentdestiny.ResplendentDestinyEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -157,7 +158,7 @@ public class Extended1stEditionSiderealDetailsPageEncoder implements IPdfPageEnc
   private float encodeColleges(PdfContentByte directContent, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = COLLEGE_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new SiderealCollegeEncoder(baseFont, resources, essenceMax);
+    IBoxContentEncoder encoder = new FavorableTraitBoxContentEncoder(SiderealCollegeContent.class);
     boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
     return height;
   }

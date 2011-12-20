@@ -17,10 +17,6 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
     return new SimpleEssenceBoxContentEncoder();
   }
 
-  public IBoxContentEncoder getOverdriveEncoder() {
-    return null;
-  }
-
   protected int getEssenceMax() {
     return essenceMax;
   }

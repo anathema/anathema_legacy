@@ -22,6 +22,8 @@ import net.sf.anathema.character.infernal.patron.InfernalPatronTemplate;
 import net.sf.anathema.character.infernal.patron.InfernalPatronViewFactory;
 import net.sf.anathema.character.infernal.patron.persistence.InfernalPatronPersisterFactory;
 import net.sf.anathema.character.infernal.reporting.ExtendedInfernalPartEncoder;
+import net.sf.anathema.character.infernal.reporting.InfernalYoziListContent;
+import net.sf.anathema.character.infernal.reporting.InfernalYoziListContentFactory;
 import net.sf.anathema.character.infernal.reporting.SimpleInfernalPartEncoder;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeModelFactory;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeParser;
@@ -40,11 +42,6 @@ import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.Second
 import static net.sf.anathema.character.generic.type.CharacterType.INFERNAL;
 
 public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
-
-  /*private static final TemplateType baseType = new TemplateType(INFERNAL, new Identificate(
-	  "default")); //$NON-NLS-1$*/
-
-  //private static final ITemplateType[] baseTemplates = new ITemplateType[] { baseType };
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -96,6 +93,7 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
+    moduleObject.getReportContentRegistry().addFactory(InfernalYoziListContent.class, new InfernalYoziListContentFactory(resources));
     addSimpleParts(resources, moduleObject);
   }
 

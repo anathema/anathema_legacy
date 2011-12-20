@@ -2,10 +2,10 @@ package net.sf.anathema.character.lunar.reporting.content.knacks;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.reporting.pdf.content.IReportContentFactory;
+import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.lib.resources.IResources;
 
-public class KnackContentFactory implements IReportContentFactory<KnackContent> {
+public class KnackContentFactory implements ReportContentFactory<KnackContent> {
 
   private IResources resources;
 

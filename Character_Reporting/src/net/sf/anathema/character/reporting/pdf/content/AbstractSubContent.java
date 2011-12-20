@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.content;
 
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractSubContent implements ISubContent  {
+public abstract class AbstractSubContent implements SubContent {
 
   private IResources resources;
 
