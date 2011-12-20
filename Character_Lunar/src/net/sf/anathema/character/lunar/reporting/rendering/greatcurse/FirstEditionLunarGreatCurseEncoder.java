@@ -71,7 +71,7 @@ public class FirstEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
     PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "GreatCurse.Lunar"; //$NON-NLS-1$
   }
   

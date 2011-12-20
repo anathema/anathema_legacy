@@ -18,7 +18,7 @@ public class PossessionsEncoder extends AbstractLineTextEncoder {
     super(baseFont);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Possessions"; //$NON-NLS-1$
   }
 

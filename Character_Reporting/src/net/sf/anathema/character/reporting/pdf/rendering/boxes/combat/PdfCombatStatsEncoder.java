@@ -21,7 +21,7 @@ public class PdfCombatStatsEncoder  implements IBoxContentEncoder {
     this.combatValueEncoder = combatValueEncoder;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Combat"; //$NON-NLS-1$
   }
 

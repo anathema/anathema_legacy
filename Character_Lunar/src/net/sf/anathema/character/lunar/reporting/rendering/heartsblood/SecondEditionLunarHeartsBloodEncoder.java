@@ -39,7 +39,7 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
     encodeTable(graphics.getDirectContent(), reportContent, bounds);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Lunar.HeartsBlood"; //$NON-NLS-1$
   }
 

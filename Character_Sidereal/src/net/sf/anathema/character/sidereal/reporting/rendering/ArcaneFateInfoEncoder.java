@@ -61,7 +61,7 @@ public class ArcaneFateInfoEncoder implements IBoxContentEncoder {
 	  return true;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Sidereal.ArcaneFate"; //$NON-NLS-1$
   }
 

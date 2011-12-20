@@ -38,7 +38,7 @@ public class PdfAttributesEncoder implements IBoxContentEncoder {
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Attributes"; //$NON-NLS-1$
   }
 

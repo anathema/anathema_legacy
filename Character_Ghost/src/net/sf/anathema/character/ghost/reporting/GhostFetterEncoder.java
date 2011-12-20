@@ -20,7 +20,7 @@ public class GhostFetterEncoder implements IBoxContentEncoder {
     this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Ghost.Fetters"; //$NON-NLS-1$
   }
 

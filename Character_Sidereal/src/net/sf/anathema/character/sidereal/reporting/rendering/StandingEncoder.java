@@ -1,7 +1,6 @@
 package net.sf.anathema.character.sidereal.reporting.rendering;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -47,7 +46,7 @@ public class StandingEncoder implements IBoxContentEncoder {
     return backgroundValue;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Sidereal.Standing"; //$NON-NLS-1$
   }
 

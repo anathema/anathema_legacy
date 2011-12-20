@@ -52,7 +52,7 @@ public class SiderealParadoxEncoder implements IBoxContentEncoder {
     graphics.encodeTextWithReducedLineHeight(infoBounds, phrase);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "GreatCurse.Sidereal"; //$NON-NLS-1$
   }
 

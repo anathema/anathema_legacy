@@ -18,8 +18,8 @@ public class ExtendedEssenceBoxContentEncoder implements IVariableBoxContentEnco
     this.poolTable = new ExtendedEssenceTableEncoder(this.baseFont);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
-    return createEssenceContent(reportContent).getHeader();
+  public String getHeaderKey(ReportContent content) {
+    return createEssenceContent(content).getHeader();
   }
 
   public float getRequestedHeight(ReportContent content, float width) {

@@ -9,6 +9,8 @@ import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceCo
 import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.essence.SimpleEssenceContent;
 import net.sf.anathema.character.reporting.pdf.content.essence.SimpleEssenceContentFactory;
+import net.sf.anathema.character.reporting.pdf.content.experience.ExperienceContent;
+import net.sf.anathema.character.reporting.pdf.content.experience.ExperienceContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContent;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContentFactory;
 import net.sf.anathema.lib.resources.IResources;
@@ -31,5 +33,6 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
     registry.addFactory(ExtendedEssenceContent.class, new ExtendedEssenceContentFactory(resources));
     registry.addFactory(SimpleEssenceContent.class, new SimpleEssenceContentFactory(resources));
     registry.addFactory(AbilitiesContent.class, new AbilitiesContentFactory(resources));
+    registry.addFactory(ExperienceContent.class, new ExperienceContentFactory(resources));
   }
 }

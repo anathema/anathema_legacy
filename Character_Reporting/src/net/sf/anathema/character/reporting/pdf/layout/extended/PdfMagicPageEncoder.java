@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.PdfExperienceEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfMagicEncoder;
@@ -73,7 +73,7 @@ public class PdfMagicPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeExperience(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = getPageConfiguration().getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = new PdfExperienceEncoder(getResources(), getBaseFont());
+    IBoxContentEncoder encoder = new ExperienceBoxContentEncoder();
     getBoxEncoder().encodeBox(content, directContent, encoder, bounds);
     return height;
   }

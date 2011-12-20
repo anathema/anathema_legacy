@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.PdfExperienceEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -20,7 +20,7 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
   }
 
   public IBoxContentEncoder getEssenceEncoder() {
-    return new PdfExperienceEncoder(getResources(), getBaseFont());
+    return new ExperienceBoxContentEncoder();
   }
 
   public boolean hasSecondPage() {

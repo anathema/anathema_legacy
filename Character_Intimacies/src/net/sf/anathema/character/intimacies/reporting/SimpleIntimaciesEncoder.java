@@ -21,7 +21,7 @@ public class SimpleIntimaciesEncoder extends AbstractLineTextEncoder {
     super(baseFont);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Intimacies"; //$NON-NLS-1$
   }
 

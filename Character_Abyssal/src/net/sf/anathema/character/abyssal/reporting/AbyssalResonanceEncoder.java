@@ -32,7 +32,7 @@ public class AbyssalResonanceEncoder  implements IBoxContentEncoder {
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "GreatCurse.Abyssal"; //$NON-NLS-1$
   }
 

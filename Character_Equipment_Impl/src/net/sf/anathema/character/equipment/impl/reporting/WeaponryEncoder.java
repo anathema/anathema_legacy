@@ -31,7 +31,7 @@ public class WeaponryEncoder implements IBoxContentEncoder {
 	    this.customEncoder = customEncoder;
 	  }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Weapons"; //$NON-NLS-1$
   }
 

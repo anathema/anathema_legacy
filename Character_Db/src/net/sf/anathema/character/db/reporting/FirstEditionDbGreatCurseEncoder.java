@@ -15,7 +15,6 @@ import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
 
 public class FirstEditionDbGreatCurseEncoder implements IBoxContentEncoder {
 
@@ -25,7 +24,7 @@ public class FirstEditionDbGreatCurseEncoder implements IBoxContentEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "GreatCurse.Dragon-Blooded"; //$NON-NLS-1$
   }
 

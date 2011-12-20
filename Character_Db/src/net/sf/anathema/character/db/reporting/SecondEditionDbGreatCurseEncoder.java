@@ -66,7 +66,7 @@ public class SecondEditionDbGreatCurseEncoder implements IBoxContentEncoder {
     return resources.getString("Sheet.GreatCurse.UnknownAspectUnknownVirtue"); //$NON-NLS-1$
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "GreatCurse.Dragon-Blooded"; //$NON-NLS-1$
   }
   

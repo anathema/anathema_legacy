@@ -43,7 +43,7 @@ public class PdfAnimaEncoder implements IBoxContentEncoder {
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Anima"; //$NON-NLS-1$
   }
 

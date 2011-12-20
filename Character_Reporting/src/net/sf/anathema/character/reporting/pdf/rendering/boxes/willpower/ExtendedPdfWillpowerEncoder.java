@@ -37,7 +37,7 @@ public class ExtendedPdfWillpowerEncoder implements IBoxContentEncoder {
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Willpower"; //$NON-NLS-1$
   }
 

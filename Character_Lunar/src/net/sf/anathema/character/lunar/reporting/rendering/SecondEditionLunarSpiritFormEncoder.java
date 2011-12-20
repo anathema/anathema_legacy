@@ -36,7 +36,7 @@ public class SecondEditionLunarSpiritFormEncoder implements IBoxContentEncoder {
     this.baseFont = baseFont;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Lunar.SpiritForm"; //$NON-NLS-1$
   }
 

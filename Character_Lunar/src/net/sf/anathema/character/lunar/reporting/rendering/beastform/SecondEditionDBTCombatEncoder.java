@@ -59,7 +59,7 @@ public class SecondEditionDBTCombatEncoder implements IBoxContentEncoder {
   }
 
   @Override
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Lunar.WarForm.CombatValues";
   }
 

@@ -25,7 +25,7 @@ public class ArmourEncoder implements IBoxContentEncoder {
     this.encoder = encoder;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "ArmourSoak"; //$NON-NLS-1$
   }
 

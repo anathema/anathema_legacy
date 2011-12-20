@@ -21,7 +21,7 @@ public class Extended2ndEditionMovementEncoder implements IBoxContentEncoder {
     this.baseFont = baseFont;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Movement"; //$NON-NLS-1$
   }
 

@@ -1,7 +1,6 @@
 package net.sf.anathema.character.sidereal.reporting.rendering.resplendentdestiny;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
@@ -49,7 +48,7 @@ public class ResplendentDestinyEncoder implements IBoxContentEncoder {
     PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, minX, maxX, lineHeight, count);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Sidereal.ResplendentDestiny"; //$NON-NLS-1$  
   }
 

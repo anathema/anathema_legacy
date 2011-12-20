@@ -26,7 +26,7 @@ public class PdfBackgroundEncoder implements IBoxContentEncoder {
     this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Backgrounds"; //$NON-NLS-1$
   }
 

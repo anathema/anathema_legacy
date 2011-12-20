@@ -25,7 +25,7 @@ public class LinguisticsEncoder extends AbstractLineTextEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Languages"; //$NON-NLS-1$
   }
 

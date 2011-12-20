@@ -16,7 +16,7 @@ public class PdfGenericCharmEncoder implements IVariableBoxContentEncoder {
     this.tableEncoder = new PdfGenericCharmTableEncoder(resources, baseFont);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "GenericCharms"; //$NON-NLS-1$
   }
 

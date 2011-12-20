@@ -26,7 +26,7 @@ public class GiftEncoder extends AbstractLineTextEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Lunar.Gifts"; //$NON-NLS-1$
   }
 

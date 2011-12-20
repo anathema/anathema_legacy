@@ -35,7 +35,7 @@ public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
     this.traitEncoder = new VirtueFlawBoxEncoder();
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "GreatCurse.Lunar"; //$NON-NLS-1$
   }
 

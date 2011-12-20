@@ -40,7 +40,7 @@ public class SiderealFlawedFateEncoder implements IBoxContentEncoder {
     graphics.encodeTextWithReducedLineHeight(textBounds, phrase);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "FlawedFate"; //$NON-NLS-1$
   }
   

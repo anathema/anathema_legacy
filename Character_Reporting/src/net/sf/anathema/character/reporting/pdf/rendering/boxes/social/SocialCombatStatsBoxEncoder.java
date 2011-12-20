@@ -37,7 +37,7 @@ public class SocialCombatStatsBoxEncoder implements IBoxContentEncoder {
     this.font = TableEncodingUtilities.createFont(baseFont);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "SocialCombat"; //$NON-NLS-1$
   }
 

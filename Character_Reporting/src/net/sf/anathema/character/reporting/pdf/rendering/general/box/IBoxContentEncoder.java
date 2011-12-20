@@ -11,5 +11,5 @@ public interface IBoxContentEncoder {
 
   public boolean hasContent(ReportContent content);
 
-  public String getHeaderKey(ReportContent reportContent);
+  public String getHeaderKey(ReportContent content);
 }

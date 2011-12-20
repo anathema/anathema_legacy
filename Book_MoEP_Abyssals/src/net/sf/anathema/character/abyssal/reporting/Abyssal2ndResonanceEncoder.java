@@ -27,7 +27,7 @@ public class Abyssal2ndResonanceEncoder implements IBoxContentEncoder {
     this.traitEncoder = new VirtueFlawBoxEncoder();
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "GreatCurse.Abyssal"; //$NON-NLS-1$
   }
 

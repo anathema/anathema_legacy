@@ -98,7 +98,7 @@ public class PdfMagicEncoder implements IBoxContentEncoder {
     this.headerKey = headerKey;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return headerKey; //$NON-NLS-1$
   }
 

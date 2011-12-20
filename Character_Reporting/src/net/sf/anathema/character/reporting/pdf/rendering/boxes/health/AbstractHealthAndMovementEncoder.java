@@ -36,7 +36,7 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
     this.symbolBaseFont = symbolBaseFont;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "MovementHealth"; //$NON-NLS-1$
   }
 

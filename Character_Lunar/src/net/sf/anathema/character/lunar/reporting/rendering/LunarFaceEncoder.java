@@ -33,7 +33,7 @@ public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implem
     this.font = TableEncodingUtilities.createFont(baseFont);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Lunar.Face"; //$NON-NLS-1$
   }
 

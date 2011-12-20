@@ -24,7 +24,7 @@ public class AstrologyInfoEncoder implements IBoxContentEncoder {
 
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Sidereal.Astrology"; //$NON-NLS-1$
   }
   

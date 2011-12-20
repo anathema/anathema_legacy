@@ -39,7 +39,7 @@ public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
     this.baseFont = baseFont;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Lunar.WarForm"; //$NON-NLS-1$
   }
 

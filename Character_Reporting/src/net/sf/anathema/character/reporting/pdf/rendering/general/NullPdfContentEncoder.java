@@ -21,7 +21,7 @@ public class NullPdfContentEncoder implements IBoxContentEncoder {
     // Nothing to do
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return headerKey;
   }
 

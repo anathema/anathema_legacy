@@ -79,7 +79,7 @@ public class FirstEditionDBTCombatEncoder implements IBoxContentEncoder {
   }
   
 	@Override
-	public String getHeaderKey(ReportContent reportContent) {
+	public String getHeaderKey(ReportContent content) {
 		return "Combat";
 	}
 	

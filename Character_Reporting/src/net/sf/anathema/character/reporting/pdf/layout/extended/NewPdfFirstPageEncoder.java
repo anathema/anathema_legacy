@@ -10,7 +10,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.Extende
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.PdfExperienceEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.ExtendedPersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -151,7 +151,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeExperience(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, new PdfExperienceEncoder(getResources(), getBaseFont()), 3, 1, distanceFromTop, height);
+    return encodeFixedBox(directContent, content, new ExperienceBoxContentEncoder(), 3, 1, distanceFromTop, height);
   }
 
   private boolean hasMutations(ReportContent content) {

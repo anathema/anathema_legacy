@@ -27,7 +27,7 @@ public class ExtendedIntimaciesEncoder implements IBoxContentEncoder {
     this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Intimacies"; //$NON-NLS-1$
   }
 

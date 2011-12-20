@@ -23,7 +23,7 @@ public class PdfDotsEncoder implements IBoxContentEncoder {
     this.traitHeaderKey = traitHeaderKey;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return traitHeaderKey; //$NON-NLS-1$
   }
 

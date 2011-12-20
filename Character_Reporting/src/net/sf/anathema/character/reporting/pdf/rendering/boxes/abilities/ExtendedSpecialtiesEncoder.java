@@ -25,7 +25,7 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
     super(resources, baseFont, PdfTraitEncoder.createSmallTraitEncoder());
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Specialties"; //$NON-NLS-1$
   }
 

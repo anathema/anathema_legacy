@@ -58,7 +58,7 @@ public class ParadoxInfoEncoder implements IBoxContentEncoder {
     PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, bounds, lineHeight);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Sidereal.Paradox"; //$NON-NLS-1$
   }
   

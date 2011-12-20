@@ -1,14 +1,18 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+
+import java.awt.*;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
@@ -114,8 +118,8 @@ public class SheetGraphics implements ITextMetrics {
   }
 
   public final void setFillColorBlack() {
-     directContent.setRGBColorFill(0, 0, 0);
-   }
+    directContent.setRGBColorFill(0, 0, 0);
+  }
 
   private final void setCommentFont() {
     setFontSize(COMMENT_FONT_SIZE);
@@ -137,5 +141,38 @@ public class SheetGraphics implements ITextMetrics {
     Font boldFont = new Font(baseFont);
     boldFont.setStyle(Font.BOLD);
     return boldFont;
+  }
+
+  public Font createTextFont() {
+    return createFont(FONT_SIZE);
+  }
+
+  public Font createFont(float size) {
+    return new Font(baseFont, size, Font.NORMAL, Color.black);
+  }
+
+  public ColumnText encodeText(Phrase phrase, Bounds bounds, float lineHeight) throws DocumentException {
+    return encodeText(phrase, bounds, lineHeight, Element.ALIGN_LEFT);
+  }
+
+  public ColumnText encodeText(Phrase phrase, Bounds bounds, float lineHeight, int alignment) throws DocumentException {
+    ColumnText columnText = new ColumnText(directContent);
+    float minX = bounds.getMinX();
+    float minY = bounds.getMinY();
+    float maxX = bounds.getMaxX();
+    float maxY = bounds.getMaxY();
+    columnText.setSimpleColumn(phrase, minX, minY, maxX, maxY, lineHeight, alignment);
+    columnText.go();
+    return columnText;
+  }
+
+  public ColumnText createColumn(Bounds bounds, float lineHeight, int alignment) {
+    ColumnText columnText = new ColumnText(directContent);
+    float minX = bounds.getMinX();
+    float minY = bounds.getMinY();
+    float maxX = bounds.getMaxX();
+    float maxY = bounds.getMaxY();
+    columnText.setSimpleColumn(minX, minY, maxX, maxY, lineHeight, alignment);
+    return columnText;
   }
 }

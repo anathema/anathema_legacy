@@ -24,7 +24,7 @@ public class MeritsAndFlawsEncoder extends AbstractLineTextEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "MeritsAndFlaws"; //$NON-NLS-1$
   }
 

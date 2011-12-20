@@ -25,7 +25,7 @@ public class GhostPassionEncoder implements IBoxContentEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Ghost.Passions"; //$NON-NLS-1$
   }
 

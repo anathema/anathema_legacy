@@ -24,7 +24,7 @@ public class MutationsEncoder extends AbstractLineTextEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Mutations"; //$NON-NLS-1$
   }
 

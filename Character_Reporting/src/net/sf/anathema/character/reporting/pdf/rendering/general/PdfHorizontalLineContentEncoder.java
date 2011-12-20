@@ -12,7 +12,7 @@ public class PdfHorizontalLineContentEncoder implements IBoxContentEncoder {
   private final int columnCount;
   private final String headerKey;
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return headerKey;
   }
 

@@ -29,7 +29,7 @@ public class FirstEditionLunarBeastformAttributesEncoder implements IBoxContentE
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Attributes"; //$NON-NLS-1$
   }
 

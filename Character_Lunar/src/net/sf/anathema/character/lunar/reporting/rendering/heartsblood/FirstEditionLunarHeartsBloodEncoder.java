@@ -36,7 +36,7 @@ public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsT
     encodeTable(graphics.getDirectContent(), reportContent, bounds);
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Lunar.HeartsBlood"; //$NON-NLS-1$
   }
 

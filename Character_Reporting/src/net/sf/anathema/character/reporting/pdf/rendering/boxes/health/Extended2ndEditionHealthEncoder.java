@@ -18,7 +18,7 @@ public class Extended2ndEditionHealthEncoder extends AbstractHealthAndMovementEn
   }
 
   @Override
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Health"; //$NON-NLS-1$
   }
 

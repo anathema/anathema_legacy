@@ -38,7 +38,7 @@ public class PdfInitiationEncoder implements IVariableBoxContentEncoder {
     return baseFont;
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Initiations"; //$NON-NLS-1$
   }
 

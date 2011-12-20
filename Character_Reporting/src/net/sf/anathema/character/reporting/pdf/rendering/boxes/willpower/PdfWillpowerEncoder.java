@@ -18,7 +18,7 @@ public class PdfWillpowerEncoder implements IBoxContentEncoder {
     this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "Willpower"; //$NON-NLS-1$
   }
 

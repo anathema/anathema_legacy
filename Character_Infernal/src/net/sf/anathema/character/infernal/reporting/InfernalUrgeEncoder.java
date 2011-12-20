@@ -32,7 +32,7 @@ public class InfernalUrgeEncoder implements IBoxContentEncoder {
     this.traitEncoder = new VirtueFlawBoxEncoder();
   }
 
-  public String getHeaderKey(ReportContent reportContent) {
+  public String getHeaderKey(ReportContent content) {
     return "InfernalUrge.Title"; //$NON-NLS-1$
   }
 
