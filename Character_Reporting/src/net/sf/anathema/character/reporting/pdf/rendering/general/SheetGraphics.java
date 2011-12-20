@@ -134,7 +134,7 @@ public class SheetGraphics implements ITextMetrics {
   }
 
   private void setFontSize(int fontSize) {
-    directContent.setFontAndSize(baseFont, FONT_SIZE);
+    directContent.setFontAndSize(baseFont, fontSize);
   }
 
   public Font createBoldFont() {
