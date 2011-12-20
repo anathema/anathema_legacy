@@ -18,8 +18,8 @@ public class PdfHeaderBoxEncoder {
     this.baseFont = baseFont;
   }
 
-  public void encodeHeaderBox(PdfContentByte directContent, Bounds bounds, String title) {
-    SheetGraphics graphics = new SheetGraphics(directContent, baseFont);
+  public void encodeHeaderBox(SheetGraphics graphics, Bounds bounds, String title) {
+    PdfContentByte directContent = graphics.getDirectContent();
     graphics.setFillColorBlack();
     Bounds headerBounds = calculateHeaderBounds(bounds);
     directContent.rectangle(headerBounds.x + ARCSPACE, headerBounds.y, headerBounds.width - 2 * ARCSPACE, headerBounds.height);

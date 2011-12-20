@@ -19,6 +19,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
@@ -78,8 +79,9 @@ public class SimpleSheetReport implements IITextReport {
         else {
           isFirstPrinted = true;
         }
+        SheetGraphics graphics = new SheetGraphics(directContent, encodingRegistry.getBaseFont(), encodingRegistry.getSymbolBaseFont());
         ReportContent content = new ReportContent(getContentRegistry(), character, description);
-        encoder.encode(document, directContent, content);
+        encoder.encode(document, graphics, content);
       }
     }
     catch (Exception e) {

@@ -20,9 +20,10 @@ public class BeastformAttributeBoxEncoder implements IBoxEncoder {
     this.smallHeight = smallHeight - (HEADER_HEIGHT / 2);
   }
 
-  public void encodeContentBox(PdfContentByte directContent, Bounds contentBounds) {
+  public void encodeContentBox(SheetGraphics graphics, Bounds contentBounds) {
+    PdfContentByte directContent = graphics.getDirectContent();
     float smallMaxX = contentBounds.x + smallWidth;
-    new SheetGraphics(directContent, baseFont).setFillColorBlack();
+    graphics.setFillColorBlack();
     directContent.setLineWidth(0.5f);
     directContent.moveTo(contentBounds.x, contentBounds.y + ARCSPACE);
     BoxEncodingUtils.add90DegreeArc(directContent, contentBounds.x, contentBounds.y, 180);
@@ -34,12 +35,10 @@ public class BeastformAttributeBoxEncoder implements IBoxEncoder {
     BoxEncodingUtils.add90DegreeArc(directContent, smallMaxX, contentBounds.getMaxY() - smallHeight - ARC_SIZE, 90);
     directContent.moveTo(smallMaxX + ARCSPACE, contentBounds.getMaxY() - smallHeight);
     directContent.lineTo(contentBounds.getMaxX() - ARCSPACE, contentBounds.getMaxY() - smallHeight);
-    BoxEncodingUtils.add90DegreeArc(directContent, contentBounds.getMaxX() - ARC_SIZE, contentBounds.getMaxY()
-        - smallHeight, 270);
+    BoxEncodingUtils.add90DegreeArc(directContent, contentBounds.getMaxX() - ARC_SIZE, contentBounds.getMaxY() - smallHeight, 270);
     directContent.moveTo(contentBounds.getMaxX(), contentBounds.getMaxY() + ARCSPACE - smallHeight);
     directContent.lineTo(contentBounds.getMaxX(), contentBounds.getMaxY() - ARCSPACE);
-    BoxEncodingUtils.add90DegreeArc(directContent, contentBounds.getMaxX() - ARC_SIZE, contentBounds.getMaxY()
-        - ARC_SIZE, 0);
+    BoxEncodingUtils.add90DegreeArc(directContent, contentBounds.getMaxX() - ARC_SIZE, contentBounds.getMaxY() - ARC_SIZE, 0);
     directContent.moveTo(contentBounds.getMinX() + ARCSPACE, contentBounds.getMaxY());
     BoxEncodingUtils.add90DegreeArc(directContent, contentBounds.x, contentBounds.getMaxY() - ARC_SIZE, 90);
     directContent.moveTo(contentBounds.x, contentBounds.getMaxY() - ARCSPACE);

@@ -22,10 +22,12 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 public class SheetGraphics implements ITextMetrics {
   private final PdfContentByte directContent;
   private final BaseFont baseFont;
+  private BaseFont symbolBaseFont;
 
-  public SheetGraphics(PdfContentByte directContent, BaseFont baseFont) {
+  public SheetGraphics(PdfContentByte directContent, BaseFont baseFont, BaseFont symbolBaseFont) {
     this.directContent = directContent;
     this.baseFont = baseFont;
+    this.symbolBaseFont = symbolBaseFont;
   }
 
   @Deprecated
@@ -115,7 +117,7 @@ public class SheetGraphics implements ITextMetrics {
   }
 
   public GraphicsTemplate createTemplate(float width, float height) {
-    return new GraphicsTemplate(directContent, baseFont, width, height);
+    return new GraphicsTemplate(directContent, baseFont, symbolBaseFont, width, height);
   }
 
   public final void setFillColorBlack() {
@@ -182,6 +184,6 @@ public class SheetGraphics implements ITextMetrics {
   }
 
   public Chunk createSymbolChunk() {
-    return  PdfEncodingUtilities.createCaretSymbolChunk(baseFont);
+    return  PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 }

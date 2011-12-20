@@ -12,7 +12,6 @@ import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContent;
@@ -21,6 +20,7 @@ import net.sf.anathema.character.reporting.pdf.content.essence.recovery.Recovery
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
+import net.sf.anathema.character.reporting.pdf.rendering.general.GraphicsTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
@@ -65,7 +65,7 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
   }
 
   protected Float[] getEssenceColumns() {
-    return new Float[]{8f, 2f, 3f, (10f / 3f), PADDING, 6f, 2.5f, 2.5f};
+    return new Float[] { 8f, 2f, 3f, (10f / 3f), PADDING, 6f, 2.5f, 2.5f };
   }
 
   private float[] createColumnWidth() {
@@ -73,8 +73,7 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
   }
 
   public final float encodeTable(SheetGraphics graphics, ExtendedEssenceContent content, Bounds bounds) throws DocumentException {
-    PdfContentByte directContent = graphics.getDirectContent();
-    return encodeTable(directContent, content, bounds, false);
+    return encodeTable(graphics, content, bounds, false);
   }
 
   public final float getTableHeight(ExtendedEssenceContent content, float width) throws DocumentException {
@@ -82,10 +81,10 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     return traitEncoder.getTraitHeight() + lines * BARE_LINE_HEIGHT + 1.75f * TEXT_PADDING;
   }
 
-  protected final float encodeTable(PdfContentByte directContent, ExtendedEssenceContent content, Bounds bounds,
-    boolean simulate) throws DocumentException {
-    ColumnText tableColumn = new ColumnText(directContent);
-    PdfPTable table = createTable(directContent, content);
+  protected final float encodeTable(SheetGraphics graphics, ExtendedEssenceContent content, Bounds bounds, boolean simulate)
+    throws DocumentException {
+    ColumnText tableColumn = new ColumnText(graphics.getDirectContent());
+    PdfPTable table = createTable(graphics, content);
     table.setWidthPercentage(100);
     tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
     tableColumn.addElement(table);
@@ -97,20 +96,19 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     return character.getTraitCollection();
   }
 
-  protected final PdfPTable createTable(PdfContentByte directContent, ExtendedEssenceContent content) throws DocumentException {
+  protected final PdfPTable createTable(SheetGraphics graphics, ExtendedEssenceContent content) throws DocumentException {
     float[] columnWidth = createColumnWidth();
     PdfPTable table = new PdfPTable(columnWidth);
-    addEssenceHeader(table, createDots(directContent, content, DOTS_WIDTH), content);
+    addEssenceHeader(table, createDots(graphics, content, DOTS_WIDTH), content);
     addEssencePoolRows(table, content);
     return table;
   }
 
-  protected final Image createDots(PdfContentByte directContent, ExtendedEssenceContent content, float width) throws BadElementException {
-    PdfTemplate dotsTemplate = directContent.createTemplate(width, traitEncoder.getTraitHeight());
+  protected final Image createDots(SheetGraphics graphics, ExtendedEssenceContent content, float width) throws BadElementException {
+    GraphicsTemplate template = graphics.createTemplate(width, traitEncoder.getTraitHeight());
     int value = content.getEssenceValue();
-    traitEncoder.encodeDotsCenteredAndUngrouped(new SheetGraphics(dotsTemplate, baseFont), new Position(0, DOT_PADDING), width, value,
-      content.getEssenceMax());
-    return Image.getInstance(dotsTemplate);
+    traitEncoder.encodeDotsCenteredAndUngrouped(template.getTemplateGraphics(), new Position(0, DOT_PADDING), width, value, content.getEssenceMax());
+    return template.getImageInstance();
   }
 
   private final void addEssenceHeader(PdfPTable table, Image firstCell, ExtendedEssenceContent content) {

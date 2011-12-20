@@ -16,6 +16,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfLineEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
@@ -42,18 +43,18 @@ public class PdfComboEncoder {
     this.nameFont.setStyle(Font.BOLD);
   }
 
-  public float encodeCombos(PdfContentByte directContent, ReportContent content, Bounds maxBounds) throws DocumentException {
+  public float encodeCombos(SheetGraphics graphics, ReportContent content, Bounds maxBounds) throws DocumentException {
     List<IGenericCombo> combos = new ArrayList<IGenericCombo>(Arrays.asList(content.getCharacter().getCombos()));
-    return encodeCombos(directContent, combos, maxBounds, false);
+    return encodeCombos(graphics, combos, maxBounds, false);
   }
 
-  public float encodeCombos(PdfContentByte directContent, List<IGenericCombo> combos, Bounds maxBounds, boolean overflow) throws DocumentException {
+  public float encodeCombos(SheetGraphics graphics, List<IGenericCombo> combos, Bounds maxBounds, boolean overflow) throws DocumentException {
     if (combos.isEmpty()) {
       return 0;
     }
 
     Bounds contentBounds = boxEncoder.calculateContentBounds(maxBounds);
-    ColumnText column = PdfTextEncodingUtilities.createColumn(directContent, contentBounds, LINE_HEIGHT, Element.ALIGN_LEFT);
+    ColumnText column = PdfTextEncodingUtilities.createColumn(graphics.getDirectContent(), contentBounds, LINE_HEIGHT, Element.ALIGN_LEFT);
     addCombos(column, combos);
 
     float yPosition = column.getYLine();
@@ -65,11 +66,12 @@ public class PdfComboEncoder {
     else {
       headerString = resources.getString("Sheet.Header.Combos"); //$NON-NLS-1$
     }
-    boxEncoder.encodeBox(directContent, actualBoxBounds, headerString);
+    boxEncoder.encodeBox(graphics, actualBoxBounds, headerString);
     return actualBoxBounds.getHeight();
   }
 
-  public float encodeFixedCombos(PdfContentByte directContent, List<IGenericCombo> combos, Bounds bounds) throws DocumentException {
+  public float encodeFixedCombos(SheetGraphics graphics, List<IGenericCombo> combos, Bounds bounds) throws DocumentException {
+    PdfContentByte directContent = graphics.getDirectContent();
     Bounds contentBounds = boxEncoder.calculateContentBounds(bounds);
     ColumnText column = PdfTextEncodingUtilities.createColumn(directContent, contentBounds, LINE_HEIGHT, Element.ALIGN_LEFT);
     addCombos(column, combos);
@@ -81,7 +83,7 @@ public class PdfComboEncoder {
       remainingLines);
 
     String headerString = resources.getString("Sheet.Header.Combos"); //$NON-NLS-1$
-    boxEncoder.encodeBox(directContent, bounds, headerString);
+    boxEncoder.encodeBox(graphics, bounds, headerString);
     return bounds.getHeight();
   }
 

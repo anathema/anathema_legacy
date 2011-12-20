@@ -24,6 +24,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.SimplePe
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfHeaderBoxEncoder;
@@ -58,55 +59,55 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
     this.symbolFont = registry.getSymbolBaseFont();
   }
 
-  public void encode(Document document, PdfContentByte directContent, ReportContent content) throws DocumentException {
+  public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
     int distanceFromTop = 0;
     final int firstRowHeight = 51;
-    encodePersonalInfo(directContent, content, distanceFromTop, firstRowHeight);
-    encodeEssence(directContent, content, distanceFromTop, firstRowHeight);
+    encodePersonalInfo(graphics, content, distanceFromTop, firstRowHeight);
+    encodeEssence(graphics, content, distanceFromTop, firstRowHeight);
 
     distanceFromTop += firstRowHeight + PADDING;
 
-    float abilityStartHeight = encodeAttributes(directContent, content, distanceFromTop) + distanceFromTop + PADDING;
-    encodeAnima(directContent, content, distanceFromTop, ANIMA_HEIGHT);
+    float abilityStartHeight = encodeAttributes(graphics, content, distanceFromTop) + distanceFromTop + PADDING;
+    encodeAnima(graphics, content, distanceFromTop, ANIMA_HEIGHT);
     float freeSpace = getOverlapFreeSpaceHeight();
     distanceFromTop += freeSpace;
     distanceFromTop += PADDING;
-    encodeVirtues(directContent, distanceFromTop, VIRTUE_HEIGHT, content);
+    encodeVirtues(graphics, distanceFromTop, VIRTUE_HEIGHT, content);
     distanceFromTop += calculateBoxIncrement(VIRTUE_HEIGHT);
 
-    float animalFormHeight = encodeAnimalForms(directContent, content, distanceFromTop, 115);
-    float willpowerHeight = encodeWillpower(directContent, content, distanceFromTop, 43);
+    float animalFormHeight = encodeAnimalForms(graphics, content, distanceFromTop, 115);
+    float willpowerHeight = encodeWillpower(graphics, content, distanceFromTop, 43);
     float willpowerIncrement = calculateBoxIncrement(willpowerHeight);
     distanceFromTop += willpowerIncrement;
-    float faceHeight = encodeFace(directContent, content, distanceFromTop, animalFormHeight - willpowerIncrement);
+    float faceHeight = encodeFace(graphics, content, distanceFromTop, animalFormHeight - willpowerIncrement);
     distanceFromTop += calculateBoxIncrement(faceHeight);
-    float weaponryHeight = encodeWeaponry(directContent, content, distanceFromTop, partEncoder.getWeaponryHeight());
+    float weaponryHeight = encodeWeaponry(graphics, content, distanceFromTop, partEncoder.getWeaponryHeight());
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
-    float armourHeight = encodeArmourAndSoak(directContent, content, distanceFromTop, 80);
+    float armourHeight = encodeArmourAndSoak(graphics, content, distanceFromTop, 80);
     distanceFromTop += calculateBoxIncrement(armourHeight);
-    float healthHeight = encodeMovementAndHealth(directContent, content, distanceFromTop, 99);
+    float healthHeight = encodeMovementAndHealth(graphics, content, distanceFromTop, 99);
     distanceFromTop += calculateBoxIncrement(healthHeight);
     float remainingHeight = Simple1stEditionLunarBeastformPageEncoder.CONTENT_HEIGHT - distanceFromTop;
-    encodeCombatStats(directContent, content, distanceFromTop, remainingHeight);
-    encodeAbilities(directContent, content, abilityStartHeight, remainingHeight + PADDING);
-    encodeGifts(directContent, content, distanceFromTop, remainingHeight);
+    encodeCombatStats(graphics, content, distanceFromTop, remainingHeight);
+    encodeAbilities(graphics, content, abilityStartHeight, remainingHeight + PADDING);
+    encodeGifts(graphics, content, distanceFromTop, remainingHeight);
   }
 
-  private void encodeGifts(PdfContentByte directContent, ReportContent content, int distanceFromTop,
+  private void encodeGifts(SheetGraphics graphics, ReportContent content, int distanceFromTop,
     float remainingHeight) throws DocumentException {
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, remainingHeight, 1);
     IBoxContentEncoder encoder = new GiftEncoder(baseFont, resources);
-    boxEncoder.encodeBox(content, directContent, encoder, bounds);
+    boxEncoder.encodeBox(content, graphics, encoder, bounds);
   }
 
   private float getOverlapFreeSpaceHeight() {
     return ANIMA_HEIGHT - VIRTUE_HEIGHT - PADDING;
   }
 
-  private float encodeEssence(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IBoxContentEncoder encoder = partEncoder.getEssenceEncoder();
-    boxEncoder.encodeBox(content, directContent, encoder, essenceBounds);
+    boxEncoder.encodeBox(content, graphics, encoder, essenceBounds);
     return height;
   }
 
@@ -114,32 +115,32 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
     return resources.getString("Sheet.Header." + key); //$NON-NLS-1$
   }
 
-  private void encodePersonalInfo(PdfContentByte directContent, ReportContent content, int distanceFromTop, final int firstRowHeight) {
+  private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, int distanceFromTop, final int firstRowHeight) {
     Bounds infoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
     String name = content.getDescription().getName();
     String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
-    Bounds infoContentBounds = boxEncoder.encodeBox(directContent, infoBounds, title);
-    encodePersonalInfos(directContent, content, infoContentBounds);
+    Bounds infoContentBounds = boxEncoder.encodeBox(graphics, infoBounds, title);
+    encodePersonalInfos(graphics, content, infoContentBounds);
   }
 
-  private void encodeAbilities(PdfContentByte directContent, ReportContent content, float distanceFromTop,
+  private void encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float remainingHeightRequired) throws DocumentException {
     float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop - remainingHeightRequired;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
     IBoxContentEncoder encoder = AbilitiesBoxContentEncoder.createWithSpecialtiesOnly(baseFont, resources, essenceMax, 11);
-    boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
+    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
-  private int encodeAttributes(PdfContentByte directContent, ReportContent content, int distanceFromTop) throws DocumentException {
+  private int encodeAttributes(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     int attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 2);
     float smallWidth = pageConfiguration.getColumnWidth();
     BeastformAttributeBoxEncoder beastBoxEncoder = new BeastformAttributeBoxEncoder(baseFont, smallWidth, getOverlapFreeSpaceHeight());
     FirstEditionLunarBeastformAttributesEncoder encoder = new FirstEditionLunarBeastformAttributesEncoder(baseFont, resources,
       boxEncoder.calculateInsettedWidth(smallWidth));
-    new PdfHeaderBoxEncoder(baseFont).encodeHeaderBox(directContent, attributeBounds, resources.getString("Sheet.Header." + encoder.getHeaderKey
+    new PdfHeaderBoxEncoder(baseFont).encodeHeaderBox(graphics, attributeBounds, resources.getString("Sheet.Header." + encoder.getHeaderKey
       (content))); //$NON-NLS-1$
-    boxEncoder.encodeBox(directContent, encoder, beastBoxEncoder, content, attributeBounds);
+    boxEncoder.encodeBox(graphics, encoder, beastBoxEncoder, content, attributeBounds);
     return attributeHeight;
   }
 
@@ -147,73 +148,73 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
     return height + IVoidStateFormatConstants.PADDING;
   }
 
-  private void encodeAnima(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private void encodeAnima(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IBoxContentEncoder encoder = partEncoder.getAnimaEncoder();
-    boxEncoder.encodeBox(content, directContent, encoder, animaBounds);
+    boxEncoder.encodeBox(content, graphics, encoder, animaBounds);
   }
 
-  private float encodeArmourAndSoak(PdfContentByte directContent, ReportContent content, float distanceFromTop,
+  private float encodeArmourAndSoak(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     IBoxContentEncoder contentEncoder = new ArmourEncoder(resources, baseFont, new LunarArmourTableEncoder(baseFont, resources));
-    boxEncoder.encodeBox(content, directContent, contentEncoder, bounds);
+    boxEncoder.encodeBox(content, graphics, contentEncoder, bounds);
     return height;
   }
 
-  private float encodeAnimalForms(PdfContentByte directContent, ReportContent content, float distanceFromTop,
+  private float encodeAnimalForms(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IBoxContentEncoder encoder = new FirstEditionLunarHeartsBloodEncoder(baseFont, resources);
-    boxEncoder.encodeBox(content, directContent, encoder, bounds);
+    boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }
 
-  private float encodeCombatStats(PdfContentByte directContent, ReportContent content, float distanceFromTop,
+  private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     FirstEditionDBTCombatEncoder encoder = new FirstEditionDBTCombatEncoder(resources, baseFont);
-    boxEncoder.encodeBox(content, directContent, encoder, bounds);
+    boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }
 
-  private float encodeMovementAndHealth(PdfContentByte directContent, ReportContent content, float distanceFromTop,
+  private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     IBoxContentEncoder encoder = new FirstEditionLunarHealthAndMovementEncoder(resources, baseFont, symbolFont, content.getCharacter());
-    boxEncoder.encodeBox(content, directContent, encoder, bounds);
+    boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }
 
-  private void encodePersonalInfos(PdfContentByte directContent, ReportContent content, Bounds infoBounds) {
+  private void encodePersonalInfos(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
     SimplePersonalInfoEncoder encoder = new SimplePersonalInfoEncoder(baseFont, resources);
-    encoder.encodePersonalInfos(directContent, content, infoBounds);
+    encoder.encodePersonalInfos(graphics, content, infoBounds);
   }
 
-  private float encodeVirtues(PdfContentByte directContent, float distanceFromTop, float height, ReportContent content) throws DocumentException {
+  private float encodeVirtues(SheetGraphics graphics, float distanceFromTop, float height, ReportContent content) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     IBoxContentEncoder encoder = new VirtueBoxContentEncoder();
-    boxEncoder.encodeBox(content, directContent, encoder, bounds);
+    boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }
 
-  private float encodeWeaponry(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     IBoxContentEncoder weaponryEncoder = new WeaponryEncoder(resources, baseFont, new LunarWeaponTableEncoder(baseFont, resources, content.getCharacter()));
-    boxEncoder.encodeBox(content, directContent, weaponryEncoder, bounds);
+    boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;
   }
 
-  private float encodeWillpower(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeWillpower(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds willpowerBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    boxEncoder.encodeBox(content, directContent, new SimpleWillpowerBoxContentEncoder(), willpowerBounds);
+    boxEncoder.encodeBox(content, graphics, new SimpleWillpowerBoxContentEncoder(), willpowerBounds);
     return height;
   }
 
-  private float encodeFace(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeFace(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     IBoxContentEncoder encoder = new LunarFaceEncoder(baseFont, resources);
-    boxEncoder.encodeBox(content, directContent, encoder, bounds);
+    boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }
 }

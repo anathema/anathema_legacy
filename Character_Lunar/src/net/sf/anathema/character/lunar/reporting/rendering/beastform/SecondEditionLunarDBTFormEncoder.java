@@ -49,38 +49,38 @@ public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
     IBeastformModel additionalModel = (IBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
     encodeAttributes(graphics, bounds, attributeGroups, traitCollection);
-    encodeNotes(graphics.getDirectContent(), bounds);
-    encodeMutations(graphics.getDirectContent(), bounds, reportContent);
+    encodeNotes(graphics, bounds);
+    encodeMutations(graphics, bounds, reportContent);
   }
 
-  private final void encodeNotes(PdfContentByte directContent, Bounds bounds) {
+  private final void encodeNotes(SheetGraphics graphics, Bounds bounds) {
     final float offsetX = 0;
     final float offsetY = 42;
     final int numNotes = 4;
     try {
       for (int i = 1; i <= numNotes; i++) {
-        writeLine(directContent, resources.getString(notes + ".Note" + i), bounds, offsetX, offsetY + lineHeight * (i - 1));
+        writeLine(graphics, resources.getString(notes + ".Note" + i), bounds, offsetX, offsetY + lineHeight * (i - 1));
       }
     }
     catch (DocumentException e) {
     }
   }
 
-  private final void writeLine(PdfContentByte directContent, String text, Bounds bounds, float offsetX, float offsetY) throws DocumentException {
+  private final void writeLine(SheetGraphics graphics, String text, Bounds bounds, float offsetX, float offsetY) throws DocumentException {
     Font font = TableEncodingUtilities.createFont(baseFont);
     Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y + bounds.height - offsetY, bounds.width / 2 - offsetX, lineHeight);
     font.setSize(IVoidStateFormatConstants.COMMENT_FONT_SIZE);
-    PdfTextEncodingUtilities.encodeText(directContent, new Phrase(text, font), newBounds, lineHeight);
+    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), new Phrase(text, font), newBounds, lineHeight);
   }
 
-  private final void encodeMutations(PdfContentByte directContent, Bounds bounds, ReportContent content) {
+  private final void encodeMutations(SheetGraphics graphics, Bounds bounds, ReportContent content) {
     final int horizontalSpacing = 15;
     final int verticalSpacing = 5;
     Bounds newBounds = new Bounds(bounds.x + bounds.getWidth() * 1 / 2 + horizontalSpacing, bounds.y + verticalSpacing,
       bounds.getWidth() * 1 / 2 - horizontalSpacing, bounds.height - 2 * verticalSpacing);
     IBoxContentEncoder encoder = new GiftEncoder(baseFont, resources);
     try {
-      new PdfBoxEncoder(resources, baseFont).encodeBox(content, directContent, encoder, newBounds);
+      new PdfBoxEncoder(resources, baseFont).encodeBox(content, graphics, encoder, newBounds);
     }
     catch (DocumentException e) {
       // TODO Auto-generated catch block

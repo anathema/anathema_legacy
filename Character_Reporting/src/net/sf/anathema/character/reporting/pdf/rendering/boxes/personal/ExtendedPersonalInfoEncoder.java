@@ -18,16 +18,13 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 
 public class ExtendedPersonalInfoEncoder {
 
-  private final BaseFont baseFont;
   private final IResources resources;
 
   public ExtendedPersonalInfoEncoder(BaseFont baseFont, IResources resources) {
-    this.baseFont = baseFont;
     this.resources = resources;
   }
 
-  public void encodePersonalInfos(PdfContentByte directContent, ReportContent content, Bounds infoBounds) {
-    SheetGraphics graphics = new SheetGraphics(directContent, baseFont);
+  public void encodePersonalInfos(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
     IGenericCharacter character = content.getCharacter();
     IGenericDescription description = content.getDescription();
     float lineHeight = (infoBounds.height - TEXT_PADDING) / 3;

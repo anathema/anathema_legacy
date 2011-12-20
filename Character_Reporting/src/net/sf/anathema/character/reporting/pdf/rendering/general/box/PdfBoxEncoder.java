@@ -12,14 +12,12 @@ public class PdfBoxEncoder {
 
   public static final int CONTENT_INSET = 5;
 
-  private BaseFont baseFont;
   private final IResources resources;
   private final PdfHeaderBoxEncoder headerBoxEncoder;
   private final IBoxEncoder standardBoxEncoder;
 
   public PdfBoxEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
-    this.baseFont = baseFont;
     this.headerBoxEncoder = new PdfHeaderBoxEncoder(baseFont);
     this.standardBoxEncoder = new StandardBoxEncoder(baseFont);
   }
@@ -39,26 +37,26 @@ public class PdfBoxEncoder {
     return boxHeight + encoder.getRequestedHeight(content, width);
   }
 
-  private Bounds encodeBox(PdfContentByte directContent, Bounds bounds, String title, IBoxEncoder boxEncoder) {
+  private Bounds encodeBox(SheetGraphics graphics, Bounds bounds, String title, IBoxEncoder boxEncoder) {
     Bounds contentBounds = calculateContentBoxBounds(bounds);
-    boxEncoder.encodeContentBox(directContent, contentBounds);
-    headerBoxEncoder.encodeHeaderBox(directContent, bounds, title);
+    boxEncoder.encodeContentBox(graphics, contentBounds);
+    headerBoxEncoder.encodeHeaderBox(graphics, bounds, title);
     return calculateInsettedBounds(contentBounds);
   }
 
-  public Bounds encodeBox(PdfContentByte directContent, Bounds bounds, String title) {
-    return encodeBox(directContent, bounds, title, standardBoxEncoder);
+  public Bounds encodeBox(SheetGraphics graphics, Bounds bounds, String title) {
+    return encodeBox(graphics, bounds, title, standardBoxEncoder);
   }
 
-  public void encodeBox(ReportContent content, PdfContentByte directContent, IBoxContentEncoder encoder, Bounds bounds) throws DocumentException {
-    encodeBox(directContent, encoder, standardBoxEncoder, content, bounds);
+  public void encodeBox(ReportContent content, SheetGraphics graphics, IBoxContentEncoder encoder, Bounds bounds) throws DocumentException {
+    encodeBox(graphics, encoder, standardBoxEncoder, content, bounds);
   }
 
-  public void encodeBox(PdfContentByte directContent, IBoxContentEncoder encoder, IBoxEncoder boxEncoder, ReportContent content,
+  public void encodeBox(SheetGraphics graphics, IBoxContentEncoder encoder, IBoxEncoder boxEncoder, ReportContent content,
     Bounds bounds) throws DocumentException {
     String header = resources.getString("Sheet.Header." + encoder.getHeaderKey(content)); //$NON-NLS-1$
-    Bounds contentBounds = encodeBox(directContent, bounds, header, boxEncoder);
-    encoder.encode(new SheetGraphics(directContent, baseFont), content, contentBounds);
+    Bounds contentBounds = encodeBox(graphics, bounds, header, boxEncoder);
+    encoder.encode(graphics, content, contentBounds);
   }
 
   private Bounds calculateInsettedBounds(Bounds contentBounds) {

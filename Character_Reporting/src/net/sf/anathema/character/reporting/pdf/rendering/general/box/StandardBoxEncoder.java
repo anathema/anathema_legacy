@@ -13,8 +13,8 @@ public class StandardBoxEncoder implements IBoxEncoder {
     this.baseFont = baseFont;
   }
 
-  public void encodeContentBox(PdfContentByte directContent, Bounds contentBounds) {
-    SheetGraphics graphics = new SheetGraphics(directContent, baseFont);
+  public void encodeContentBox(SheetGraphics graphics, Bounds contentBounds) {
+    PdfContentByte directContent = graphics.getDirectContent();
     graphics.setFillColorBlack();
     directContent.setLineWidth(0.5f);
     directContent.moveTo(contentBounds.x, contentBounds.y + ARCSPACE);

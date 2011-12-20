@@ -13,6 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBa
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.ExtendedPersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -28,29 +29,29 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
     this.essenceMax = essenceMax;
   }
 
-  public void encode(Document document, PdfContentByte directContent, ReportContent content) throws
+  public void encode(Document document, SheetGraphics graphics, ReportContent content) throws
 
     DocumentException {
     float distanceFromTop = 0;
-    float firstRowHeight = encodePersonalInfo(directContent, content, distanceFromTop, getContentHeight());
+    float firstRowHeight = encodePersonalInfo(graphics, content, distanceFromTop, getContentHeight());
     distanceFromTop += calculateBoxIncrement(firstRowHeight);
 
     // First column - top-down
     float firstDistanceFromTop = distanceFromTop;
-    float attributeHeight = encodeAttributes(directContent, content, firstDistanceFromTop, 117);
+    float attributeHeight = encodeAttributes(graphics, content, firstDistanceFromTop, 117);
     firstDistanceFromTop += calculateBoxIncrement(attributeHeight);
-    float abilityHeight = encodeAbilities(directContent, content, firstDistanceFromTop, 415);
+    float abilityHeight = encodeAbilities(graphics, content, firstDistanceFromTop, 415);
     firstDistanceFromTop += calculateBoxIncrement(abilityHeight);
     // First column - fill in (bottom-up) with specialties
     float specialtyHeight = getContentHeight() - firstDistanceFromTop;
-    encodeSpecialties(directContent, content, firstDistanceFromTop, specialtyHeight);
+    encodeSpecialties(graphics, content, firstDistanceFromTop, specialtyHeight);
 
     // Second column - top-down
     float secondDistanceFromTop = distanceFromTop;
-    float virtueHeight = encodeVirtues(directContent, content, secondDistanceFromTop, 72);
+    float virtueHeight = encodeVirtues(graphics, content, secondDistanceFromTop, 72);
     float virtueIncrement = calculateBoxIncrement(virtueHeight);
     secondDistanceFromTop += virtueIncrement;
-    float greatCurseHeight = encodeGreatCurse(directContent, content, secondDistanceFromTop, 85);
+    float greatCurseHeight = encodeGreatCurse(graphics, content, secondDistanceFromTop, 85);
     if (greatCurseHeight > 0) {
       secondDistanceFromTop += calculateBoxIncrement(greatCurseHeight);
     }
@@ -58,100 +59,100 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
     float secondBottom = getContentHeight() - calculateBoxIncrement(specialtyHeight);
     float reservedHeight = (secondBottom - secondDistanceFromTop) / 4f - IVoidStateFormatConstants.PADDING;
     if (hasMutations(content)) {
-      float mutationsHeight = encodeMutations(directContent, content, secondBottom - reservedHeight, reservedHeight);
+      float mutationsHeight = encodeMutations(graphics, content, secondBottom - reservedHeight, reservedHeight);
       secondBottom -= calculateBoxIncrement(mutationsHeight);
     }
     if (hasMeritsAndFlaws(content)) {
-      float meritsHeight = encodeMeritsAndFlaws(directContent, content, secondBottom - reservedHeight, reservedHeight);
+      float meritsHeight = encodeMeritsAndFlaws(graphics, content, secondBottom - reservedHeight, reservedHeight);
       secondBottom -= calculateBoxIncrement(meritsHeight);
     }
-    encodeIntimacies(directContent, content, secondDistanceFromTop, secondBottom - secondDistanceFromTop);
+    encodeIntimacies(graphics, content, secondDistanceFromTop, secondBottom - secondDistanceFromTop);
 
     // Third column - top-down (lining up with virtues)
     float thirdDistanceFromTop = distanceFromTop;
     float dotsHeight = 30;
-    encodeEssenceDots(directContent, content, thirdDistanceFromTop, dotsHeight);
-    encodeWillpowerDots(directContent, content, thirdDistanceFromTop + virtueHeight - dotsHeight, dotsHeight);
+    encodeEssenceDots(graphics, content, thirdDistanceFromTop, dotsHeight);
+    encodeWillpowerDots(graphics, content, thirdDistanceFromTop + virtueHeight - dotsHeight, dotsHeight);
     thirdDistanceFromTop += virtueIncrement;
     // Third column - bottom-up
     float thirdBottom = getContentHeight();
-    float experienceHeight = encodeExperience(directContent, content, thirdBottom - 30, 30);
+    float experienceHeight = encodeExperience(graphics, content, thirdBottom - 30, 30);
     float experienceIncrement = calculateBoxIncrement(experienceHeight);
     thirdBottom -= experienceIncrement;
     float languageHeight = specialtyHeight - experienceIncrement;
-    languageHeight = encodeLinguistics(directContent, content, thirdBottom - languageHeight, languageHeight);
+    languageHeight = encodeLinguistics(graphics, content, thirdBottom - languageHeight, languageHeight);
     thirdBottom -= calculateBoxIncrement(languageHeight);
-    float additionalIncrement = encodeAdditional(directContent, content, thirdDistanceFromTop, thirdBottom);
+    float additionalIncrement = encodeAdditional(graphics, content, thirdDistanceFromTop, thirdBottom);
     thirdBottom -= additionalIncrement;
     // Third column - fill in (bottom-up) with backgrounds
-    encodeBackgrounds(directContent, content, thirdDistanceFromTop, thirdBottom - thirdDistanceFromTop);
+    encodeBackgrounds(graphics, content, thirdDistanceFromTop, thirdBottom - thirdDistanceFromTop);
 
-    encodeCopyright(directContent);
+    encodeCopyright(graphics);
   }
 
-  private float encodeEssenceDots(PdfContentByte directContent, ReportContent content, float distanceFromTop,
+  private float encodeEssenceDots(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, getPartEncoder().getDotsEncoder(OtherTraitType.Essence, EssenceTemplate.SYSTEM_ESSENCE_MAX,
+    return encodeFixedBox(graphics, content, getPartEncoder().getDotsEncoder(OtherTraitType.Essence, EssenceTemplate.SYSTEM_ESSENCE_MAX,
       "Essence"), 3, 1, distanceFromTop, height);
   }
 
-  private float encodePersonalInfo(PdfContentByte directContent, ReportContent content, float distanceFromTop,
+  private float encodePersonalInfo(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float maxHeight) throws DocumentException {
-    return encodeVariableBox(directContent, content, new ExtendedPersonalInfoBoxEncoder(getResources()), 1, 3, distanceFromTop,
+    return encodeVariableBox(graphics, content, new ExtendedPersonalInfoBoxEncoder(getResources()), 1, 3, distanceFromTop,
       maxHeight);
   }
 
-  private float encodeAbilities(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, AbilitiesBoxContentEncoder.createWithCraftsOnly(getBaseFont(), getResources(), essenceMax, -1), 1, 1,
+  private float encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+    return encodeFixedBox(graphics, content, AbilitiesBoxContentEncoder.createWithCraftsOnly(getBaseFont(), getResources(), essenceMax, -1), 1, 1,
       distanceFromTop, height);
   }
 
-  private float encodeSpecialties(PdfContentByte directContent, ReportContent content, float distanceFromTop,
+  private float encodeSpecialties(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, new ExtendedSpecialtiesEncoder(getResources(), getBaseFont()), 1, 2, distanceFromTop, height);
+    return encodeFixedBox(graphics, content, new ExtendedSpecialtiesEncoder(getResources(), getBaseFont()), 1, 2, distanceFromTop, height);
   }
 
-  private float encodeAttributes(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, new PdfAttributesEncoder(getBaseFont(), getResources(), essenceMax,
+  private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+    return encodeFixedBox(graphics, content, new PdfAttributesEncoder(getBaseFont(), getResources(), essenceMax,
       getPartEncoder().isEncodeAttributeAsFavorable()), 1, 1, distanceFromTop, height);
   }
 
-  private float encodeBackgrounds(PdfContentByte directContent, ReportContent content, float distanceFromTop,
+  private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, new PdfBackgroundEncoder(getResources(), getBaseFont()), 3, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, content, new PdfBackgroundEncoder(getResources(), getBaseFont()), 3, 1, distanceFromTop, height);
   }
 
-  private float encodeVirtues(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, new VirtueBoxContentEncoder(), 2, 1, distanceFromTop, height);
+  private float encodeVirtues(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+    return encodeFixedBox(graphics, content, new VirtueBoxContentEncoder(), 2, 1, distanceFromTop, height);
   }
 
-  private float encodeWillpowerDots(PdfContentByte directContent, ReportContent content, float distanceFromTop,
+  private float encodeWillpowerDots(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, getPartEncoder().getDotsEncoder(OtherTraitType.Willpower, 10, "Willpower"), 3, 1,
+    return encodeFixedBox(graphics, content, getPartEncoder().getDotsEncoder(OtherTraitType.Willpower, 10, "Willpower"), 3, 1,
       distanceFromTop, height);
   }
 
-  private float encodeGreatCurse(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeGreatCurse(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     IBoxContentEncoder encoder = getPartEncoder().getGreatCurseEncoder();
     if (encoder != null) {
-      return encodeFixedBox(directContent, content, encoder, 2, 1, distanceFromTop, height);
+      return encodeFixedBox(graphics, content, encoder, 2, 1, distanceFromTop, height);
     }
     else {
       return 0;
     }
   }
 
-  private float encodeIntimacies(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, getPartEncoder().getIntimaciesEncoder(getRegistry()), 2, 1, distanceFromTop, height);
+  private float encodeIntimacies(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+    return encodeFixedBox(graphics, content, getPartEncoder().getIntimaciesEncoder(getRegistry()), 2, 1, distanceFromTop, height);
   }
 
-  private float encodeLinguistics(PdfContentByte directContent, ReportContent content, float distanceFromTop,
+  private float encodeLinguistics(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, getRegistry().getLinguisticsEncoder(), 3, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, content, getRegistry().getLinguisticsEncoder(), 3, 1, distanceFromTop, height);
   }
 
-  private float encodeExperience(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, new ExperienceBoxContentEncoder(), 3, 1, distanceFromTop, height);
+  private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+    return encodeFixedBox(graphics, content, new ExperienceBoxContentEncoder(), 3, 1, distanceFromTop, height);
   }
 
   private boolean hasMutations(ReportContent content) {
@@ -162,19 +163,19 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
     return getRegistry().getMeritsAndFlawsEncoder().hasContent(content);
   }
 
-  private float encodeMutations(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, getRegistry().getMutationsEncoder(), 2, 1, distanceFromTop, height);
+  private float encodeMutations(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+    return encodeFixedBox(graphics, content, getRegistry().getMutationsEncoder(), 2, 1, distanceFromTop, height);
   }
 
-  private float encodeMeritsAndFlaws(PdfContentByte directContent, ReportContent content, float distanceFromTop,
+  private float encodeMeritsAndFlaws(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, getRegistry().getMeritsAndFlawsEncoder(), 2, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, content, getRegistry().getMeritsAndFlawsEncoder(), 2, 1, distanceFromTop, height);
   }
 
-  private float encodeAdditional(PdfContentByte directContent, ReportContent content, float distanceFromTop, float bottom) throws DocumentException {
+  private float encodeAdditional(SheetGraphics graphics, ReportContent content, float distanceFromTop, float bottom) throws DocumentException {
     float increment = 0;
     for (IVariableBoxContentEncoder encoder : getPartEncoder().getAdditionalFirstPageEncoders()) {
-      float height = encodeVariableBoxBottom(directContent, content, encoder, 3, 1, bottom, bottom - distanceFromTop - increment);
+      float height = encodeVariableBoxBottom(graphics, content, encoder, 3, 1, bottom, bottom - distanceFromTop - increment);
       increment += calculateBoxIncrement(height);
     }
     return increment;

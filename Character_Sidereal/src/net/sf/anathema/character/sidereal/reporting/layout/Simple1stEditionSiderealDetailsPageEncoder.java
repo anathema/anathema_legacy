@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfHorizontalLineContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitBoxContentEncoder;
@@ -48,85 +49,85 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
     this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
   }
 
-  public void encode(Document document, PdfContentByte directContent, ReportContent content) throws 
+  public void encode(Document document, SheetGraphics graphics, ReportContent content) throws 
     DocumentException {
     int distanceFromTop = 0;
-    distanceFromTop += encodeColleges(directContent, content, distanceFromTop);
+    distanceFromTop += encodeColleges(graphics, content, distanceFromTop);
     distanceFromTop += PADDING;
-    distanceFromTop += encodeAstrology(directContent, content, distanceFromTop);
+    distanceFromTop += encodeAstrology(graphics, content, distanceFromTop);
     distanceFromTop += PADDING;
-    distanceFromTop += encodeArcaneFate(directContent, content, distanceFromTop);
+    distanceFromTop += encodeArcaneFate(graphics, content, distanceFromTop);
     distanceFromTop += PADDING;
     float remainingHeight = configuration.getContentHeight() - distanceFromTop;
-    encodeConnections(directContent, content, remainingHeight, distanceFromTop);
+    encodeConnections(graphics, content, remainingHeight, distanceFromTop);
 
     int centerDistanceFromTop = 0;
-    centerDistanceFromTop += encodeResplendentDestiny(directContent, getCenterDestinyBounds(centerDistanceFromTop), content);
+    centerDistanceFromTop += encodeResplendentDestiny(graphics, getCenterDestinyBounds(centerDistanceFromTop), content);
     centerDistanceFromTop += PADDING;
-    centerDistanceFromTop += encodeResplendentDestiny(directContent, getCenterDestinyBounds(centerDistanceFromTop), content);
+    centerDistanceFromTop += encodeResplendentDestiny(graphics, getCenterDestinyBounds(centerDistanceFromTop), content);
     centerDistanceFromTop += PADDING;
-    centerDistanceFromTop += encodeResplendentDestiny(directContent, getCenterDestinyBounds(centerDistanceFromTop), content);
+    centerDistanceFromTop += encodeResplendentDestiny(graphics, getCenterDestinyBounds(centerDistanceFromTop), content);
     centerDistanceFromTop += PADDING;
-    centerDistanceFromTop += encodeAcquaintances(directContent, content, centerDistanceFromTop);
+    centerDistanceFromTop += encodeAcquaintances(graphics, content, centerDistanceFromTop);
 
     int rightDistanceFromTop = 0;
-    rightDistanceFromTop += encodeResplendentDestiny(directContent, getRightDestinyBounds(rightDistanceFromTop), content);
+    rightDistanceFromTop += encodeResplendentDestiny(graphics, getRightDestinyBounds(rightDistanceFromTop), content);
     rightDistanceFromTop += PADDING;
-    rightDistanceFromTop += encodeResplendentDestiny(directContent, getRightDestinyBounds(rightDistanceFromTop), content);
+    rightDistanceFromTop += encodeResplendentDestiny(graphics, getRightDestinyBounds(rightDistanceFromTop), content);
     rightDistanceFromTop += PADDING;
-    rightDistanceFromTop += encodeParadox(directContent, content, rightDistanceFromTop);
+    rightDistanceFromTop += encodeParadox(graphics, content, rightDistanceFromTop);
     rightDistanceFromTop += PADDING;
-    rightDistanceFromTop += encodeStanding(directContent, content, rightDistanceFromTop);
+    rightDistanceFromTop += encodeStanding(graphics, content, rightDistanceFromTop);
     rightDistanceFromTop += PADDING;
-    rightDistanceFromTop += encodeConventions(directContent, content, rightDistanceFromTop);
+    rightDistanceFromTop += encodeConventions(graphics, content, rightDistanceFromTop);
     rightDistanceFromTop += PADDING;
 
   }
 
-  private void encodeConnections(PdfContentByte directContent, ReportContent content, float height, 
+  private void encodeConnections(SheetGraphics graphics, ReportContent content, float height, 
     int distanceFromTop) throws DocumentException {
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
     IBoxContentEncoder encoder = new PdfHorizontalLineContentEncoder(4, "Sidereal.Connections"); //$NON-NLS-1$
-    boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
+    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
-  private float encodeAcquaintances(PdfContentByte directContent, ReportContent content, int distanceFromTop) throws DocumentException {
+  private float encodeAcquaintances(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = 145;
     Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
     IBoxContentEncoder encoder = new PdfHorizontalLineContentEncoder(1, "Sidereal.Acquaintances"); //$NON-NLS-1$
-    boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
+    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
 
-  private float encodeConventions(PdfContentByte directContent, ReportContent content, 
+  private float encodeConventions(SheetGraphics graphics, ReportContent content, 
     int distanceFromTop) throws DocumentException {
     float height = THIRD_BLOCK_HEIGHT - STANDING_HEIGHT - PADDING;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
     IBoxContentEncoder encoder = new PdfHorizontalLineContentEncoder(2, "Sidereal.Conventions"); //$NON-NLS-1$
-    boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
+    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
 
-  private float encodeStanding(PdfContentByte directContent, ReportContent content, int distanceFromTop) throws DocumentException {
+  private float encodeStanding(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = STANDING_HEIGHT;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
     IBoxContentEncoder encoder = new StandingEncoder(fontSize, resources);
-    boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
+    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
 
-  private float encodeAstrology(PdfContentByte directContent, ReportContent content, 
+  private float encodeAstrology(SheetGraphics graphics, ReportContent content, 
     int distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
     IBoxContentEncoder encoder = new AstrologyInfoEncoder(baseFont, resources);
-    boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
+    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
 
-  private float encodeResplendentDestiny(PdfContentByte directContent, Bounds boxBounds, ReportContent content) throws DocumentException {
+  private float encodeResplendentDestiny(SheetGraphics graphics, Bounds boxBounds, ReportContent content) throws DocumentException {
     IBoxContentEncoder encoder = new ResplendentDestinyEncoder(fontSize, resources);
-    boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
+    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return boxBounds.height;
   }
 
@@ -138,29 +139,29 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
     return configuration.getSecondColumnRectangle(distanceFromTop, DESTINY_HEIGHT, 1);
   }
 
-  private float encodeParadox(PdfContentByte directContent, ReportContent content, 
+  private float encodeParadox(SheetGraphics graphics, ReportContent content, 
     int distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
     IBoxContentEncoder encoder = new ParadoxInfoEncoder(baseFont, symbolBaseFont, fontSize, resources, ExaltedEdition.FirstEdition);
-    boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
+    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
 
-  private float encodeArcaneFate(PdfContentByte directContent, ReportContent content, 
+  private float encodeArcaneFate(SheetGraphics graphics, ReportContent content,
     int distanceFromTop) throws DocumentException {
     float height = THIRD_BLOCK_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
     IBoxContentEncoder encoder = new ArcaneFateInfoEncoder(baseFont, symbolBaseFont, fontSize, resources, ExaltedEdition.FirstEdition);
-    boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
+    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
 
-  private float encodeColleges(PdfContentByte directContent, ReportContent content, int distanceFromTop) throws DocumentException {
+  private float encodeColleges(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = COLLEGE_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
     IBoxContentEncoder encoder = new FavorableTraitBoxContentEncoder(SiderealCollegeContent.class);
-    boxEncoder.encodeBox(content, directContent, encoder, boxBounds);
+    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
 }

@@ -22,7 +22,8 @@ public class CopyrightEncoder {
     this.contentHeight = contentHeight;
   }
 
-  public void encodeCopyright(PdfContentByte directContent) throws DocumentException {
+  public void encodeCopyright(SheetGraphics graphics) throws DocumentException {
+    PdfContentByte directContent = graphics.getDirectContent();
     int lineHeight = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 2;
     Font copyrightFont = new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE);
     float copyrightHeight = pageConfiguration.getPageHeight() - pageConfiguration.getContentHeight();

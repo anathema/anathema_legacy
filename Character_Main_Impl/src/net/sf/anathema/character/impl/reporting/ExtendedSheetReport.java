@@ -20,6 +20,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
@@ -63,6 +64,7 @@ public class ExtendedSheetReport implements IITextReport {
     PdfContentByte directContent = writer.getDirectContent();
     PdfPageConfiguration configuration = PdfPageConfiguration.create(pageSize.getRectangle());
     ExtendedEncodingRegistry encodingRegistry = getEncodingRegistry();
+    SheetGraphics graphics = new SheetGraphics(directContent, encodingRegistry.getBaseFont(), encodingRegistry.getSymbolBaseFont());
     try {
       int traitMax = Math.max(5, getEssenceMax(stattedCharacter));
       IExtendedPartEncoder partEncoder = getPartEncoder(stattedCharacter);
@@ -95,7 +97,7 @@ public class ExtendedSheetReport implements IITextReport {
           firstPagePrinted = true;
         }
         ReportContent content = new ReportContent(getContentRegistry(), character, description);
-        encoder.encode(document, directContent, content);
+        encoder.encode(document, graphics, content);
       }
     }
     catch (Exception e) {
