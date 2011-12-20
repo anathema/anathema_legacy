@@ -1,10 +1,10 @@
 package net.sf.anathema.character.lunar.reporting.rendering.beastform;
 
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -15,7 +15,6 @@ import net.sf.anathema.character.lunar.reporting.rendering.GiftEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
@@ -70,7 +69,7 @@ public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
     Font font = TableEncodingUtilities.createFont(baseFont);
     Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y + bounds.height - offsetY, bounds.width / 2 - offsetX, lineHeight);
     font.setSize(IVoidStateFormatConstants.COMMENT_FONT_SIZE);
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), new Phrase(text, font), newBounds, lineHeight);
+    graphics.encodeText(new Phrase(text, font), newBounds, lineHeight, Element.ALIGN_LEFT);
   }
 
   private final void encodeMutations(SheetGraphics graphics, Bounds bounds, ReportContent content) {

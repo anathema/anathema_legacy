@@ -26,6 +26,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.PdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.character.solar.reporting.Simple2ndSolarPartEncoder;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
@@ -59,15 +60,14 @@ public class PdfCharacterSheetDemo {
       PdfFirstPageEncoder pageEncoder = new PdfFirstPageEncoder(partEncoder, encodingRegistry, resources, essenceMax, pageConfiguration);
       ReportContentRegistry contentRegistry = new ReportContentRegistry();
       ReportContent content = new ReportContent(contentRegistry, character, description);
-      pageEncoder.encode(document, directContent, content);
+      SheetGraphics graphics = new SheetGraphics(directContent, encodingRegistry.getBaseFont(), encodingRegistry.getSymbolBaseFont());
+      pageEncoder.encode(document, graphics, content);
       document.newPage();
-      new PdfMagicPageEncoder(resources, encodingRegistry, pageConfiguration, false).encode(document, directContent, content);
+      new PdfMagicPageEncoder(resources, encodingRegistry, pageConfiguration, false).encode(document, graphics, content);
       BrowserControl.displayUrl(outputStream.toURI().toURL());
-    }
-    catch (Exception de) {
+    } catch (Exception de) {
       de.printStackTrace();
-    }
-    finally {
+    } finally {
       document.close();
     }
   }
@@ -96,9 +96,9 @@ public class PdfCharacterSheetDemo {
     character.addSpecialtyTrait(AbilityType.Bureaucracy);
     character.addSubbedTrait(AbilityType.Craft);
     character.setPainTolerance(3);
-    character.addCombo(new DemoGenericCombo("Combo 1", new ICharm[]{new DummyCharm("FirstCharm.Id"), new DummyCharm("SecondCharm.Id")}));
-    character.addCombo(new DemoGenericCombo("Combo Nummero 2", new ICharm[]{new DummyCharm("Und noch eine Charm Id"),
-                                                                            new DummyCharm("Und noch eine")}));
+    character.addCombo(new DemoGenericCombo("Combo 1", new ICharm[] { new DummyCharm("FirstCharm.Id"), new DummyCharm("SecondCharm.Id") }));
+    character
+      .addCombo(new DemoGenericCombo("Combo Nummero 2", new ICharm[] { new DummyCharm("Und noch eine Charm Id"), new DummyCharm("Und noch eine") }));
     character.getEquipmentModel().addPrintArmour(new DemoNaturalArmour());
     character.getEquipmentModel().addPrintArmour(new DemoAlienArmour());
     character.getEquipmentModel().addPrintWeapon(new DemoRangeWeapon());

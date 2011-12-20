@@ -90,7 +90,7 @@ public class SheetGraphics implements ITextMetrics {
   }
 
   public void encodeTextWithReducedLineHeight(Bounds textBounds, Phrase phrase) throws DocumentException {
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2f);
+    encodeText(phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2f, Element.ALIGN_LEFT);
   }
 
   private void addText(String text, Position position, int alignment, int rotation) {

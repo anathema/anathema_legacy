@@ -2,6 +2,7 @@ package net.sf.anathema.character.sidereal.reporting.rendering;
 
 import java.awt.Color;
 
+import com.lowagie.text.Element;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -9,7 +10,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
@@ -55,7 +55,7 @@ public class ParadoxInfoEncoder implements IBoxContentEncoder {
     phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendent") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendentImitation") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendentSupernatural") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, bounds, lineHeight);
+    graphics.encodeText(phrase, bounds, lineHeight, Element.ALIGN_LEFT);
   }
 
   public String getHeaderKey(ReportContent content) {

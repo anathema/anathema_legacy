@@ -1,5 +1,6 @@
 package net.sf.anathema.character.infernal.reporting;
 
+import com.lowagie.text.Element;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
 import net.sf.anathema.character.infernal.urge.model.IInfernalUrgeModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -8,7 +9,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -46,8 +46,7 @@ public class InfernalUrgeEncoder implements IBoxContentEncoder {
     phrase.add(new Chunk(resources.getString("InfernalUrge.Title"), nameFont));
     phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
     phrase.add(new Chunk(urgeDescription, font));
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
- 
+    graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
   }
   
   public boolean hasContent(ReportContent content)

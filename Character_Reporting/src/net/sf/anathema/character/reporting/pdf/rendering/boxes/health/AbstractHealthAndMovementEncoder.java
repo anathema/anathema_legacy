@@ -14,7 +14,6 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -52,7 +51,6 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
   protected abstract ITableEncoder createTableEncoder();
 
   protected void encodeText(SheetGraphics graphics, Bounds textBounds) throws DocumentException {
-    PdfContentByte directContent = graphics.getDirectContent();
     BaseFont baseFont = graphics.getBaseFont();
     Font headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
     Font commentFont = new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
@@ -60,31 +58,31 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
     commentTitleFont.setStyle(Font.BOLD);
     Paragraph healthText = createHealthRulesPhrase(headerFont, commentFont, commentTitleFont);
     int leading = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 1;
-    ColumnText text = PdfTextEncodingUtilities.encodeText(directContent, healthText, textBounds, leading);
+    ColumnText text = graphics.encodeText(healthText, textBounds, (float) leading, Element.ALIGN_LEFT);
     int rectangleOffset = AbstractHealthAndMovementTableEncoder.HEALTH_RECT_SIZE + 1;
     final float additionalOffset = 2.5f;
     float rectYPosition = text.getYLine() - rectangleOffset - additionalOffset;
     float textYPosition = text.getYLine() - leading - additionalOffset;
     float xPosition = textBounds.x;
-    PdfTemplate rectTemplate = AbstractHealthAndMovementTableEncoder.createRectTemplate(directContent, Color.BLACK);
-    directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate bashingTemplate = AbstractHealthAndMovementTableEncoder.createBashingTemplate(directContent, Color.GRAY);
-    directContent.addTemplate(bashingTemplate, xPosition, rectYPosition);
+    PdfTemplate rectTemplate = AbstractHealthAndMovementTableEncoder.createRectTemplate(graphics.getDirectContent(), Color.BLACK);
+    graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
+    PdfTemplate bashingTemplate = AbstractHealthAndMovementTableEncoder.createBashingTemplate(graphics.getDirectContent(), Color.GRAY);
+    graphics.getDirectContent().addTemplate(bashingTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     final String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
     String bashingString = createSpacedString;
     graphics.drawComment(bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += graphics.getCommentTextWidth(bashingString);
-    directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate lethalTemplate = AbstractHealthAndMovementTableEncoder.createLethalTemplate(directContent, Color.GRAY);
-    directContent.addTemplate(lethalTemplate, xPosition, rectYPosition);
+    graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
+    PdfTemplate lethalTemplate = AbstractHealthAndMovementTableEncoder.createLethalTemplate(graphics.getDirectContent(), Color.GRAY);
+    graphics.getDirectContent().addTemplate(lethalTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String lethalString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageLethal")); //$NON-NLS-1$
     graphics.drawComment(lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += graphics.getCommentTextWidth(lethalString);
-    directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate aggravatedTemplate = AbstractHealthAndMovementTableEncoder.createAggravatedTemplate(directContent, Color.GRAY);
-    directContent.addTemplate(aggravatedTemplate, xPosition, rectYPosition);
+    graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
+    PdfTemplate aggravatedTemplate = AbstractHealthAndMovementTableEncoder.createAggravatedTemplate(graphics.getDirectContent(), Color.GRAY);
+    graphics.getDirectContent().addTemplate(aggravatedTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String aggravatedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageAggravated")); //$NON-NLS-1$
     graphics.drawComment(aggravatedString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);

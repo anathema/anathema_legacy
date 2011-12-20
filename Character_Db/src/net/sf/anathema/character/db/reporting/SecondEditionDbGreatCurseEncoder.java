@@ -1,5 +1,6 @@
 package net.sf.anathema.character.db.reporting;
 
+import com.lowagie.text.Element;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
 import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -11,7 +12,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -51,7 +51,7 @@ public class SecondEditionDbGreatCurseEncoder implements IBoxContentEncoder {
     String aspect = getAspectString(reportContent.getCharacter(), rootVirtue != null);
     String message = resources.getString("Sheet.GreatCurse.Message.SecondEdition", virtue, aspect); //$NON-NLS-1$
     Phrase phrase = new Phrase(message, font);
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
+    graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
   }
 
   private String getAspectString(IGenericCharacter character, boolean isRootSelected) {

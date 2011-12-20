@@ -1,6 +1,7 @@
 package net.sf.anathema.character.lunar.reporting.rendering;
 
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -12,7 +13,6 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -50,9 +50,9 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
     }
 
     try {
-      offsetY += writePowerNotes(graphics.getDirectContent(), "Shapeshifting", bounds, offsetX, offsetY);
+      offsetY += writePowerNotes(graphics, "Shapeshifting", bounds, offsetX, offsetY);
       if (!reportContent.getCharacter().getTemplate().getTemplateType().equals(castelessType)) {
-        offsetY += writePowerNotes(graphics.getDirectContent(), "Tattoos", bounds, offsetX, offsetY);
+        offsetY += writePowerNotes(graphics, "Tattoos", bounds, offsetX, offsetY);
       }
 
       if (isHorizontal) {
@@ -61,7 +61,7 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
         offsetY = 0;
       }
 
-      offsetY += writePowerNotes(graphics.getDirectContent(), "Tell", bounds, offsetX, offsetY);
+      offsetY += writePowerNotes(graphics, "Tell", bounds, offsetX, offsetY);
     }
     catch (DocumentException e) {
     }
@@ -76,7 +76,7 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
     return false;
   }
 
-  private int writePowerNotes(PdfContentByte directContent, String power, Bounds bounds, int offsetX, int offsetY) throws DocumentException {
+  private int writePowerNotes(SheetGraphics graphics, String power, Bounds bounds, int offsetX, int offsetY) throws DocumentException {
     Font boldFont = new Font(font);
     boldFont.setStyle(Font.BOLD);
     String text = resources.getString(powerBase + power);
@@ -85,14 +85,14 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
     int totalHeight = 0;
     while (!text.startsWith("##")) {
       Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y, bounds.width - offsetX, bounds.height - offsetY - totalHeight);
-      totalHeight += PdfTextEncodingUtilities.encodeText(directContent, phrase, newBounds, lineHeight).getLinesWritten() * lineHeight;
+      totalHeight += graphics.encodeText(phrase, newBounds, lineHeight, Element.ALIGN_LEFT).getLinesWritten() * lineHeight;
       text = resources.getString(powerBase + power + (++index));
       text = text.replace("TELLMDV", "" + tellMDV);
       phrase = new Phrase(text, font);
     }
     if (!isHorizontal) {
       Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y + bounds.height - offsetY - totalHeight, bounds.x - offsetX, lineHeight);
-      totalHeight += PdfTextEncodingUtilities.encodeText(directContent, new Phrase(" ", font), newBounds, lineHeight).getLinesWritten() * lineHeight;
+      totalHeight += graphics.encodeText(new Phrase(" ", font), newBounds, lineHeight, Element.ALIGN_LEFT).getLinesWritten() * lineHeight;
     }
     return totalHeight;
   }

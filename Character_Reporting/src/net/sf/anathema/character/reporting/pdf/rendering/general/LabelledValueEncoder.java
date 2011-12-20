@@ -1,8 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.lowagie.text.Element;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Box;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;

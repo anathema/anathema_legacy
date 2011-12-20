@@ -1,5 +1,6 @@
 package net.sf.anathema.character.solar.reporting;
 
+import com.lowagie.text.Element;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
@@ -9,7 +10,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Line;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.character.solar.virtueflaw.model.ISolarVirtueFlaw;
@@ -60,12 +60,12 @@ float boxHeight = traitEncoder.encodeHeight(graphics, bounds, virtueFlaw.getLimi
       phrase.add(new Chunk(name, nameFont));
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
+      graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
     }
     if (nameDefined && !conditionDefined) {
       Phrase phrase = new Phrase();
       phrase.add(new Chunk(name, nameFont));
-      ColumnText columnText = PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
+      ColumnText columnText = graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
       float baseLine = columnText.getYLine();
       encodeLines(graphics.getDirectContent(), bounds, leading, baseLine);
     }
@@ -76,7 +76,7 @@ float boxHeight = traitEncoder.encodeHeight(graphics, bounds, virtueFlaw.getLimi
       phrase.add(new Chunk("                                          ", undefinedFont)); //$NON-NLS-1$
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
+      graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
     }
   }
 

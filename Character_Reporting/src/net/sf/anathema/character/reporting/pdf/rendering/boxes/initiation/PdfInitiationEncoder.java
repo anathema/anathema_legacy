@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.initiation;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -11,7 +12,6 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -74,7 +74,7 @@ public class PdfInitiationEncoder implements IVariableBoxContentEncoder {
         phrase.add(new Chunk("\n", textFont)); //$NON-NLS-1$
       }
     }
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, bounds, IVoidStateFormatConstants.LINE_HEIGHT);
+    graphics.encodeText(phrase, bounds, IVoidStateFormatConstants.LINE_HEIGHT, Element.ALIGN_LEFT);
   }
 
   protected boolean knowsCharm(String charm, IGenericCharacter character) {

@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.anima;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -14,7 +15,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfLineEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -49,18 +49,16 @@ public class PdfAnimaEncoder implements IBoxContentEncoder {
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float powerHeight = bounds.getHeight() - AnimaTableEncoder.TABLE_HEIGHT - IVoidStateFormatConstants.TEXT_PADDING / 2f;
-    Bounds animaPowerBounds = new Bounds(bounds.getMinX(), bounds.getMaxY() - powerHeight,
-      bounds.getWidth(), powerHeight);
-    encodeAnimaPowers(graphics.getDirectContent(), reportContent.getCharacter(), animaPowerBounds);
+    Bounds animaPowerBounds = new Bounds(bounds.getMinX(), bounds.getMaxY() - powerHeight, bounds.getWidth(), powerHeight);
+    encodeAnimaPowers(graphics, reportContent.getCharacter(), animaPowerBounds);
 
-    Bounds animaTableBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(),
-      AnimaTableEncoder.TABLE_HEIGHT);
+    Bounds animaTableBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), AnimaTableEncoder.TABLE_HEIGHT);
     tableEncoder.encodeTable(graphics, reportContent, animaTableBounds);
   }
 
-  private void encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  private void encodeAnimaPowers(SheetGraphics graphics, IGenericCharacter character, Bounds bounds) throws DocumentException {
     Phrase phrase = new Phrase("", new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
-
+    PdfContentByte directContent = graphics.getDirectContent();
     // Add standard powers for character type
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     ListUtils.addBulletedListText(resources, symbolChunk, character.getRules().getEdition(), "Sheet.AnimaPower." + characterType.getId(),
@@ -75,7 +73,7 @@ public class PdfAnimaEncoder implements IBoxContentEncoder {
       phrase.add(resources.getString(casteResourceKey) + "\n"); //$NON-NLS-1$
     }
     phrase.add(symbolChunk);
-    float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, lineHeight).getYLine();
+    float yPosition = graphics.encodeText(phrase, bounds, lineHeight, Element.ALIGN_LEFT).getYLine();
     Position lineStartPosition = new Position((bounds.getMinX() + PdfEncodingUtilities.getCaretSymbolWidth(symbolBaseFont)), yPosition);
     PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, bounds.getMinX(), bounds.getMaxX(), lineHeight,
       1 + (int) ((yPosition - bounds.getMinY()) / lineHeight));

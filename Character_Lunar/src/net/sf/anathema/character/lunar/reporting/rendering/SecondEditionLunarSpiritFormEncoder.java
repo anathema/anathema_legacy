@@ -1,6 +1,7 @@
 package net.sf.anathema.character.lunar.reporting.rendering;
 
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -16,7 +17,6 @@ import net.sf.anathema.character.lunar.beastform.model.SecondEditionBeastformMod
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
@@ -46,16 +46,15 @@ public class SecondEditionLunarSpiritFormEncoder implements IBoxContentEncoder {
       .TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getSpiritTraitCollection();
     encodeAttributes(graphics, bounds, attributeGroups, traitCollection);
-    encodeForm(graphics.getDirectContent(), bounds, additionalModel.getSpiritForm());
+    encodeForm(graphics, bounds, additionalModel.getSpiritForm());
   }
 
-  private void encodeForm(PdfContentByte directContent, Bounds bounds, String form) {
+  private void encodeForm(SheetGraphics graphics, Bounds bounds, String form) {
     Font font = TableEncodingUtilities.createFont(baseFont);
     Bounds newBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 50);
     String text = resources.getString("Sheet.Header.Lunar.SpiritForm") + ": " + form;
-    //font.setSize(IVoidStateFormatConstants.COMMENT_FONT_SIZE);
     try {
-      PdfTextEncodingUtilities.encodeText(directContent, new Phrase(text, font), newBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2);
+      graphics.encodeText(new Phrase(text, font), newBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2, Element.ALIGN_LEFT);
     }
     catch (DocumentException e) {
     }

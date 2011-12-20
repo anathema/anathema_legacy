@@ -1,5 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.rendering.greatcurse;
 
+import com.lowagie.text.Element;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
@@ -11,7 +12,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -68,7 +68,7 @@ public class FirstEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
       phrase.add(symbolChunk);
       phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Lunar.Rules"), font)); //$NON-NLS-1$      
     }
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, leading);
+    graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
   }
 
   public String getHeaderKey(ReportContent content) {

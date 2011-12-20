@@ -7,7 +7,6 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -15,7 +14,6 @@ import net.sf.anathema.character.reporting.pdf.content.magic.CharmPrintNameTrans
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfLineEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -32,15 +30,10 @@ public class PdfComboEncoder {
 
   private final IResources resources;
   private final PdfBoxEncoder boxEncoder;
-  private final Font font;
-  private final Font nameFont;
 
   public PdfComboEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
     this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
-    this.font = PdfTextEncodingUtilities.createTextFont(baseFont);
-    this.nameFont = new Font(font);
-    this.nameFont.setStyle(Font.BOLD);
   }
 
   public float encodeCombos(SheetGraphics graphics, ReportContent content, Bounds maxBounds) throws DocumentException {
@@ -54,8 +47,8 @@ public class PdfComboEncoder {
     }
 
     Bounds contentBounds = boxEncoder.calculateContentBounds(maxBounds);
-    ColumnText column = PdfTextEncodingUtilities.createColumn(graphics.getDirectContent(), contentBounds, LINE_HEIGHT, Element.ALIGN_LEFT);
-    addCombos(column, combos);
+    ColumnText column = graphics.createColumn(contentBounds, LINE_HEIGHT, Element.ALIGN_LEFT);
+    addCombos(graphics, column, combos);
 
     float yPosition = column.getYLine();
     Bounds actualBoxBounds = calculateActualBoxBounds(maxBounds, yPosition);
@@ -71,15 +64,14 @@ public class PdfComboEncoder {
   }
 
   public float encodeFixedCombos(SheetGraphics graphics, List<IGenericCombo> combos, Bounds bounds) throws DocumentException {
-    PdfContentByte directContent = graphics.getDirectContent();
     Bounds contentBounds = boxEncoder.calculateContentBounds(bounds);
-    ColumnText column = PdfTextEncodingUtilities.createColumn(directContent, contentBounds, LINE_HEIGHT, Element.ALIGN_LEFT);
-    addCombos(column, combos);
+    ColumnText column = graphics.createColumn(contentBounds, LINE_HEIGHT, Element.ALIGN_LEFT);
+    addCombos(graphics, column, combos);
 
     float yPosition = column.getYLine();
     int remainingLines = (int) ((yPosition - contentBounds.getMinY()) / LINE_HEIGHT);
     Position lineStartPosition = new Position(contentBounds.getMinX(), yPosition - LINE_HEIGHT);
-    PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, contentBounds.getMinX(), contentBounds.getMaxX(), LINE_HEIGHT,
+    PdfLineEncodingUtilities.encodeHorizontalLines(graphics.getDirectContent(), lineStartPosition, contentBounds.getMinX(), contentBounds.getMaxX(), LINE_HEIGHT,
       remainingLines);
 
     String headerString = resources.getString("Sheet.Header.Combos"); //$NON-NLS-1$
@@ -87,9 +79,9 @@ public class PdfComboEncoder {
     return bounds.getHeight();
   }
 
-  private void addCombos(ColumnText columnText, List<IGenericCombo> combos) throws DocumentException {
+  private void addCombos(SheetGraphics graphics, ColumnText columnText, List<IGenericCombo> combos) throws DocumentException {
     while (!combos.isEmpty()) {
-      Phrase comboPhrase = createComboPhrase(combos.get(0));
+      Phrase comboPhrase = createComboPhrase(graphics, combos.get(0));
 
       float yLine = columnText.getYLine();
       columnText.addText(comboPhrase);
@@ -106,14 +98,14 @@ public class PdfComboEncoder {
     }
   }
 
-  private Phrase createComboPhrase(IGenericCombo combo) {
+  private Phrase createComboPhrase(SheetGraphics graphics, IGenericCombo combo) {
     Phrase phrase = new Phrase();
 
     String printName = combo.getName() == null ? "???" : combo.getName(); //$NON-NLS-1$
-    phrase.add(new Chunk(printName + ": ", nameFont)); //$NON-NLS-1$
+    phrase.add(new Chunk(printName + ": ", graphics.createBoldFont())); //$NON-NLS-1$
 
     String charmString = getCharmString(combo);
-    phrase.add(new Chunk(charmString, font));
+    phrase.add(new Chunk(charmString, graphics.createTextFont()));
 
     return phrase;
   }

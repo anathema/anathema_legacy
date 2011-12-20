@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -15,7 +16,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ArcaneFateInfoEncoder implements IBoxContentEncoder {
@@ -53,7 +53,7 @@ public class ArcaneFateInfoEncoder implements IBoxContentEncoder {
     phrase.add(resources.getString("Sheet.ArcaneFate.Stealth") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(symbolChunk);
     phrase.add(resources.getString(rememberingResource) + "\n"); //$NON-NLS-1$
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, bounds, lineHeight);
+    graphics.encodeText(phrase, bounds, lineHeight, Element.ALIGN_LEFT);
   }
   
   public boolean hasContent(ReportContent content)

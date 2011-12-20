@@ -6,7 +6,6 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
@@ -18,7 +17,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBox
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfHorizontalLineContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
@@ -150,19 +148,19 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     Bounds firstColumnBounds = pageConfiguration.getFirstColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
     Anchor voidstatePhrase = new Anchor("Inspired by Voidstate\nhttp://www.voidstate.com", copyrightFont); //$NON-NLS-1$
     voidstatePhrase.setReference("http://www.voidstate.com"); //$NON-NLS-1$
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), voidstatePhrase, firstColumnBounds, lineHeight);
+    graphics.encodeText(voidstatePhrase, firstColumnBounds, (float) lineHeight, Element.ALIGN_LEFT);
 
     // TODO: Eliminate these hard-coded copyright dates; these should be in a properties file or something.
     Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92011\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$
     anathemaPhrase.setReference("http://anathema.sf.net"); //$NON-NLS-1$
     Bounds anathemaBounds = pageConfiguration.getSecondColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), anathemaPhrase, anathemaBounds, lineHeight, Element.ALIGN_CENTER);
+    graphics.encodeText(anathemaPhrase, anathemaBounds, (float) lineHeight, Element.ALIGN_CENTER);
     Anchor whitewolfPhrase = new Anchor("Exalted \u00A92011 by White Wolf, Inc.\nhttp://www.white-wolf.com", //$NON-NLS-1$
       copyrightFont);
     whitewolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
 
     Bounds whitewolfBounds = pageConfiguration.getThirdColumnRectangle(CONTENT_HEIGHT, copyrightHeight);
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), whitewolfPhrase, whitewolfBounds, lineHeight, Element.ALIGN_RIGHT);
+    graphics.encodeText(whitewolfPhrase, whitewolfBounds, (float) lineHeight, Element.ALIGN_RIGHT);
   }
 
   private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {

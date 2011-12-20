@@ -2,24 +2,18 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Font;
+import com.lowagie.text.Element;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.general.BulletList;
 import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.lib.resources.IResources;
-
-import java.awt.*;
 
 public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
 
@@ -60,14 +54,14 @@ public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
     Chunk symbolChunk = graphics.createSymbolChunk()  ;
     ListUtils.addBulletList(spendingPhrase, symbolChunk, willpowerSpendingRules.header, willpowerSpendingRules.items);
     spendingPhrase.add("\n" + content.getWillpowerSpendingNote() + "\n"); //$NON-NLS-1$
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), spendingPhrase, spendingBounds, lineHeight).getYLine();
+    graphics.encodeText(spendingPhrase, spendingBounds, lineHeight, Element.ALIGN_LEFT).getYLine();
 
     float centerX = leftX + columnWidth + columnPadding;
     Bounds regainingBounds = new Bounds(centerX, yPosition - height, columnWidth, height);
     Phrase regainingPhrase = new Phrase("", graphics.createCommentFont());   //$NON-NLS-1$
     BulletList willpowerRegainingRules = content.getWillpowerRegainingRules();
     ListUtils.addBulletList(regainingPhrase, symbolChunk, willpowerRegainingRules.header, willpowerRegainingRules.items);
-    PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), regainingPhrase, regainingBounds, lineHeight).getYLine();
+    graphics.encodeText(regainingPhrase, regainingBounds, lineHeight, Element.ALIGN_LEFT).getYLine();
   }
 
   public boolean hasContent(ReportContent content) {

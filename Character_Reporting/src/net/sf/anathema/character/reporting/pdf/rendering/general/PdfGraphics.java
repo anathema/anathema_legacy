@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
@@ -79,10 +80,6 @@ public class PdfGraphics implements ITextMetrics {
       directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, content, contentX, position.y, 0);
       directContent.endText();
     }
-  }
-
-  public void encodeTextWithReducedLineHeight(Bounds textBounds, Phrase phrase) throws DocumentException {
-    PdfTextEncodingUtilities.encodeText(directContent,  phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2f);
   }
 
   private void addText(String text, Position position, int alignment, int rotation) {

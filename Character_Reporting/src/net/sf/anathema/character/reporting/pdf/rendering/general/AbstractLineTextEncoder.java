@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -30,7 +31,7 @@ public abstract class AbstractLineTextEncoder implements IBoxContentEncoder {
     Phrase phrase = new Phrase();
     addToPhrase(reportContent.getCharacter(), font, phrase);
     Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 2);
-    float yPosition = PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), phrase, textBounds, LINE_HEIGHT).getYLine();
+    float yPosition = graphics.encodeText(phrase, textBounds, LINE_HEIGHT, Element.ALIGN_LEFT).getYLine();
     yPosition -= LINE_HEIGHT;
     while (yPosition > bounds.y) {
       Line.createHorizontalByCoordinate(new Position(bounds.x, yPosition), bounds.getMaxX()).encode(graphics
