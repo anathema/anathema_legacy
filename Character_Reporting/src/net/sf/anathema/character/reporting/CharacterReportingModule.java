@@ -17,6 +17,8 @@ import net.sf.anathema.character.reporting.pdf.content.experience.ExperienceCont
 import net.sf.anathema.character.reporting.pdf.content.experience.ExperienceContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContent;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContentFactory;
+import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContent;
+import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContentFactory;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterReportingModule extends CharacterModuleAdapter<CharacterReportingModuleObject> {
@@ -44,5 +46,6 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
     registry.addFactory(ExperienceContent.class, new ExperienceContentFactory(resources));
     registry.addFactory(SecondEditionCombatStatsContent.class, new SecondEditionCombatStatsContentFactory(resources));
     registry.addFactory(FirstEditionCombatStatsContent.class, new FirstEditionCombatStatsContentFactory(resources));
+    registry.addFactory(WillpowerContent.class, new WillpowerContentFactory(resources));
   }
 }

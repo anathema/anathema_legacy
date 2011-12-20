@@ -7,6 +7,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
@@ -41,17 +42,21 @@ public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
     return "Willpower"; //$NON-NLS-1$
   }
 
+  private WillpowerContent createContent(ReportContent content) {
+    return content.createSubContent(WillpowerContent.class);
+  }
+
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    WillpowerContent content = createContent(reportContent);
     float padding = IVoidStateFormatConstants.PADDING / 2f;
     float width = bounds.width - 2f * padding;
     float leftX = bounds.x + padding;
     float height = bounds.height - padding;
     float topY = bounds.getMaxY();
 
-    int value = reportContent.getCharacter().getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
     float entryHeight = traitEncoder.getTraitHeight();
     float yPosition = topY - entryHeight;
-    traitEncoder.encodeDotsCenteredAndUngrouped(graphics, new Position(leftX, yPosition), width, value, 10);
+    traitEncoder.encodeDotsCenteredAndUngrouped(graphics, new Position(leftX, yPosition), width, content.getWillpowerValue(), 10);
     yPosition -= entryHeight;
     traitEncoder.encodeSquaresCenteredAndUngrouped(graphics, new Position(leftX, yPosition), width, 0, 10);
     height -= 2f * entryHeight;
@@ -65,7 +70,7 @@ public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
     Bounds spendingBounds = new Bounds(leftX, yPosition - height, columnWidth, height);
     Phrase spendingPhrase = new Phrase("", new Font(baseFont, fontSize, //$NON-NLS-1$
       Font.NORMAL, Color.BLACK));
-    ListUtils.addBulletedListText(resources, symbolChunk, reportContent.getCharacter().getRules().getEdition(), "Sheet.WillpowerSpendingRules",
+    ListUtils.addBulletedListText(resources, symbolChunk, content.getEdition(), "Sheet.WillpowerSpendingRules",
     //$NON-NLS-1$
       spendingPhrase, true);
     spendingPhrase.add("\n"); //$NON-NLS-1$
