@@ -5,34 +5,46 @@ import com.lowagie.text.Phrase;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.lib.resources.IResources;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListUtils {
 
-  public final static int MAX_ITEMS_COUNT = 10;
-  public final static String[] RESOURCE_ID = new String[]{"First", "Second", //$NON-NLS-1$ //$NON-NLS-2$
-                                                          "Third", "Fourth", //$NON-NLS-1$ //$NON-NLS-2$
-                                                          "Fifth", "Sixth", //$NON-NLS-1$ //$NON-NLS-2$
-                                                          "Seventh", "Eighth", //$NON-NLS-1$ //$NON-NLS-2$
-                                                          "Ninth", "Tenth"}; //$NON-NLS-1$ //$NON-NLS-2$
+  public final static String[] RESOURCE_ID = new String[] { "First", "Second", //$NON-NLS-1$ //$NON-NLS-2$
+    "Third", "Fourth", //$NON-NLS-1$ //$NON-NLS-2$
+    "Fifth", "Sixth", //$NON-NLS-1$ //$NON-NLS-2$
+    "Seventh", "Eighth", //$NON-NLS-1$ //$NON-NLS-2$
+    "Ninth", "Tenth" }; //$NON-NLS-1$ //$NON-NLS-2$
 
   public static void addBulletedListText(IResources resources, Chunk symbolChunk, IExaltedEdition edition, String resourceBase, Phrase phrase,
     boolean showHeader) {
-    if (showHeader) {
-      String header = getRequiredString(resources, resourceBase, edition);
+    String header = showHeader ? getRequiredString(resources, edition, resourceBase) : null;
+    String[] items = getAvailableLineItems(resources, edition, resourceBase);
+    addBulletList(phrase, symbolChunk, header, items);
+  }
+
+  public static void addBulletList(Phrase phrase, Chunk symbolChunk, String header, String[] items) {
+    if (header != null) {
       phrase.add(header + "\n"); //$NON-NLS-1$
     }
-    for (int power = 0; power < ListUtils.MAX_ITEMS_COUNT; power++) {
-      String lineItem = getRequiredString(resources, resourceBase, edition, ListUtils.RESOURCE_ID[power]);
-      if (lineItem != null) {
-        phrase.add(symbolChunk);
-        phrase.add(lineItem + "\n"); //$NON-NLS-1$
-      }
-      else {
-        break;
-      }
+    for (String lineItem : items) {
+      phrase.add(symbolChunk);
+      phrase.add(lineItem + "\n"); //$NON-NLS-1$
     }
   }
 
-  public static String getRequiredString(IResources resources, String resourceBase, IExaltedEdition edition) {
+  public static String[] getAvailableLineItems(IResources resources, IExaltedEdition edition, String resourceBase) {
+    List<String> items = new ArrayList<String>();
+    for (String itemId : ListUtils.RESOURCE_ID) {
+      String lineItem = getRequiredString(resources, resourceBase, edition, itemId);
+      if (lineItem != null) {
+        items.add(lineItem);
+      }
+    }
+    return items.toArray(new String[items.size()]);
+  }
+
+  public static String getRequiredString(IResources resources, IExaltedEdition edition, String resourceBase) {
     return getRequiredString(resources, resourceBase, edition, null);
   }
 

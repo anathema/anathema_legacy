@@ -117,7 +117,7 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeWillpower(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, new ExtendedWillpowerBoxContentEncoder(getResources(), getBaseFont(), getBaseFont()), 3, 1,
+    return encodeFixedBox(directContent, content, new ExtendedWillpowerBoxContentEncoder(), 3, 1,
       distanceFromTop, height);
   }
 

@@ -239,7 +239,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
 
   private float encodeWillpower(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds willpowerBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    boxEncoder.encodeBox(content, directContent, new SimpleWillpowerBoxContentEncoder(baseFont), willpowerBounds);
+    boxEncoder.encodeBox(content, directContent, new SimpleWillpowerBoxContentEncoder(), willpowerBounds);
     return height;
   }
 

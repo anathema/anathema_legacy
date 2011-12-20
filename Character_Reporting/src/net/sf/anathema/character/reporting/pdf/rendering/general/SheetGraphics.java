@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general;
 
+import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
@@ -178,5 +179,9 @@ public class SheetGraphics implements ITextMetrics {
     float maxY = bounds.getMaxY();
     columnText.setSimpleColumn(minX, minY, maxX, maxY, lineHeight, alignment);
     return columnText;
+  }
+
+  public Chunk createSymbolChunk() {
+    return  PdfEncodingUtilities.createCaretSymbolChunk(baseFont);
   }
 }

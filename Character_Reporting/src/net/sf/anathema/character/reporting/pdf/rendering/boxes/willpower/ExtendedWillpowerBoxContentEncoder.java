@@ -5,8 +5,8 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.general.BulletList;
 import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
@@ -23,21 +23,6 @@ import java.awt.*;
 
 public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
 
-  private PdfTraitEncoder traitEncoder;
-  private final IResources resources;
-  private final BaseFont baseFont;
-  private final Chunk symbolChunk;
-
-  private final float fontSize = 5f;
-  private final float lineHeight = 1.1f * fontSize;
-
-  public ExtendedWillpowerBoxContentEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
-    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
-    this.resources = resources;
-    this.baseFont = baseFont;
-    this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
-  }
-
   public String getHeaderKey(ReportContent content) {
     return "Willpower"; //$NON-NLS-1$
   }
@@ -47,6 +32,8 @@ public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    float lineHeight = 1.1f * IVoidStateFormatConstants.COMMENT_FONT_SIZE;
+    PdfTraitEncoder traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
     WillpowerContent content = createContent(reportContent);
     float padding = IVoidStateFormatConstants.PADDING / 2f;
     float width = bounds.width - 2f * padding;
@@ -68,24 +55,18 @@ public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
     float columnWidth = (width - columnPadding) / 2f;
 
     Bounds spendingBounds = new Bounds(leftX, yPosition - height, columnWidth, height);
-    Phrase spendingPhrase = new Phrase("", new Font(baseFont, fontSize, //$NON-NLS-1$
-      Font.NORMAL, Color.BLACK));
-    ListUtils.addBulletedListText(resources, symbolChunk, content.getEdition(), "Sheet.WillpowerSpendingRules",
-    //$NON-NLS-1$
-      spendingPhrase, true);
-    spendingPhrase.add("\n"); //$NON-NLS-1$
-    String spendingNote = ListUtils.getRequiredString(resources, "Sheet.WillpowerSpendingNote", reportContent.getCharacter().getRules().getEdition
-      ());
-    spendingPhrase.add(spendingNote + "\n"); //$NON-NLS-1$
+    Phrase spendingPhrase = new Phrase("", graphics.createCommentFont());  //$NON-NLS-1$
+    BulletList willpowerSpendingRules = content.getWillpowerSpendingRules();
+    Chunk symbolChunk = graphics.createSymbolChunk()  ;
+    ListUtils.addBulletList(spendingPhrase, symbolChunk, willpowerSpendingRules.header, willpowerSpendingRules.items);
+    spendingPhrase.add("\n" + content.getWillpowerSpendingNote() + "\n"); //$NON-NLS-1$
     PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), spendingPhrase, spendingBounds, lineHeight).getYLine();
 
     float centerX = leftX + columnWidth + columnPadding;
     Bounds regainingBounds = new Bounds(centerX, yPosition - height, columnWidth, height);
-    Phrase regainingPhrase = new Phrase("", new Font(baseFont, fontSize, //$NON-NLS-1$
-      Font.NORMAL, Color.BLACK));
-    ListUtils.addBulletedListText(resources, symbolChunk, reportContent.getCharacter().getRules().getEdition(), "Sheet.WillpowerRegainingRules",
-    //$NON-NLS-1$
-      regainingPhrase, true);
+    Phrase regainingPhrase = new Phrase("", graphics.createCommentFont());   //$NON-NLS-1$
+    BulletList willpowerRegainingRules = content.getWillpowerRegainingRules();
+    ListUtils.addBulletList(regainingPhrase, symbolChunk, willpowerRegainingRules.header, willpowerRegainingRules.items);
     PdfTextEncodingUtilities.encodeText(graphics.getDirectContent(), regainingPhrase, regainingBounds, lineHeight).getYLine();
   }
 
