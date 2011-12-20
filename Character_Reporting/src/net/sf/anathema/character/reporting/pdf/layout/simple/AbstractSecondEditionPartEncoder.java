@@ -6,7 +6,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEdit
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.SecondEditionHealthAndMovementEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -63,7 +63,7 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
   }
 
   public IBoxContentEncoder getSocialCombatEncoder() {
-    return new SocialCombatStatsEncoder(resources, baseFont);
+    return new SocialCombatStatsBoxEncoder(resources, baseFont);
   }
 
   public IBoxContentEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry) {

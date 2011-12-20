@@ -1,10 +1,16 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.combat;
 
 import com.lowagie.text.Chunk;
+import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.combat.CombatAction;
+import net.sf.anathema.character.reporting.pdf.content.combat.SecondEditionCombatStatsContent;
+import net.sf.anathema.character.reporting.pdf.content.general.QualifiedText;
+import net.sf.anathema.character.reporting.pdf.content.general.TextType;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableList;
 import net.sf.anathema.lib.resources.IResources;
@@ -16,98 +22,77 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractCombatRulesTab
   }
 
   @Override
-  protected void addFirstCell(PdfPTable table) {
-    table.addCell(new TableCell(createCombatAttackList(), Rectangle.BOX));
+  protected void addFirstCell(ReportContent reportContent, PdfPTable table) {
+    SecondEditionCombatStatsContent content = reportContent.createSubContent(SecondEditionCombatStatsContent.class);
+    table.addCell(new TableCell(createCombatAttackList(content), Rectangle.BOX));
   }
 
   @Override
-  protected void addSecondCell(PdfPTable table) {
-    Phrase knockdownAndStunningPhrase = new Phrase(getResources().getString("Sheet.Combat.Knockdown.Header") + "\n",
-      getFont()); //$NON-NLS-1$ //$NON-NLS-2$
-    knockdownAndStunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Knockdown.Second.Comment") + "\n\n",
-      getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
-    knockdownAndStunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Stunning.Header") + "\n",
-      getFont())); //$NON-NLS-1$ //$NON-NLS-2$
-    knockdownAndStunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Stunning.Second.Comment"), getCommentFont())); //$NON-NLS-1$
+  protected void addSecondCell(ReportContent reportContent, PdfPTable table) {
+    SecondEditionCombatStatsContent content = reportContent.createSubContent(SecondEditionCombatStatsContent.class);
+    Phrase knockdownAndStunningPhrase = new Phrase("");
+    for (QualifiedText text : content.getKnockdownAndStunningTexts()) {
+      knockdownAndStunningPhrase.add(createChunk(text));
+    }
     table.addCell(createContentCell(knockdownAndStunningPhrase));
   }
 
   @Override
-  protected void addThirdCell(PdfPTable table) {
-    table.addCell(createCommonActionsTable());
+  protected void addThirdCell(ReportContent reportContent, PdfPTable table) {
+    SecondEditionCombatStatsContent content = reportContent.createSubContent(SecondEditionCombatStatsContent.class);
+    table.addCell(createCommonActionsTable(content));
   }
 
-  private PdfPTable createCombatAttackList() {
+  private PdfPTable createCombatAttackList(SecondEditionCombatStatsContent content) {
     TableList list = new TableList(getCommentFont());
-    list.addHeader(new Chunk(getResources().getString("Sheet.Combat.OrderAttackEvents"), getFont()), true); //$NON-NLS-1$
+    list.addHeader(new Chunk(content.getAttackHeader(), getFont()), true); //$NON-NLS-1$
     list.addHeader(new Chunk("\n", getCommentFont()), false); //$NON-NLS-1$
-    list.addHeader(new Chunk("\n", getCommentFont()), false); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.AttackList.DeclareAttack")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.AttackList.DeclareDefence")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.AttackList.AttackRoll")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.AttackList.AttackReroll")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.AttackList.SubstractPenalties")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.AttackList.DefenseReroll")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.AttackList.CalculateRawDamage")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.AttackList.RollDamage")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.AttackList.Counterattack")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.AttackList.ApplyDamage")); //$NON-NLS-1$
-    TableCell spaceCell = new TableCell(new Phrase(" ", getCommentFont()), Rectangle.NO_BORDER); //$NON-NLS-1$
-    spaceCell.setPadding(0);
-    list.addCell(spaceCell);
-    list.addCell(spaceCell);
-    list.addCell(spaceCell);
-    TableCell rulesCommentCell = new TableCell(new Phrase(getResources().getString("Sheet.Combat.Comment.Rules"), getCommentFont()),
-      Rectangle.NO_BORDER); //$NON-NLS-1$
-    rulesCommentCell.setPadding(0);
+    for (String attack : content.getAttacks()) {
+      list.addItem(attack);
+    }
+    list.addCell(createSpaceCell());
+    list.addCell(createSpaceCell());
+    list.addCell(createSpaceCell());
+    TableCell rulesCommentCell = new TableCell(new Phrase(content.getAttackComment(), getCommentFont()), Rectangle.NO_BORDER); //$NON-NLS-1$
     list.addCell(rulesCommentCell);
     return list.getTable();
   }
 
-  private PdfPTable createCommonActionsTable() {
-    float[] columnWidths = new float[]{5, 1.5f, 1.5f};
+  private TableCell createSpaceCell() {
+    return new TableCell(new Phrase(" ", getCommentFont()), Rectangle.NO_BORDER);
+  }
+
+  private PdfPTable createCommonActionsTable(SecondEditionCombatStatsContent content) {
+    float[] columnWidths = new float[] { 5f, 1.5f, 1.5f };
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
-    String header = getResources().getString("Sheet.Combat.CommonActions.Header"); //$NON-NLS-1$
+    String header = content.getActionHeader();
     final TableCell headerCell = createCommonActionsCell(new Phrase(header, getFont()));
     headerCell.setColspan(columnWidths.length);
     table.addCell(headerCell);
-    String actionSubheader = getResources().getString("Sheet.Combat.CommonActions.Action"); //$NON-NLS-1$
-    table.addCell(createCommonActionsCell(new Phrase(actionSubheader, getCommentFont())));
-    String speedSubheader = getResources().getString("Sheet.Combat.CommonActions.Speed"); //$NON-NLS-1$
-    table.addCell(createCommonActionsCell(new Phrase(speedSubheader, getCommentFont())));
-    String dvPenSubheader = getResources().getString("Sheet.Combat.CommonActions.DV"); //$NON-NLS-1$
-    table.addCell(createCommonActionsCell(new Phrase(dvPenSubheader, getCommentFont())));
-    table.addCell(createCommonActionsCell(new Phrase(" ", getCommentFont()))); //$NON-NLS-1$
-    table.addCell(createCommonActionsCell(new Phrase(" ", getCommentFont()))); //$NON-NLS-1$
-    table.addCell(createCommonActionsCell(new Phrase(" ", getCommentFont()))); //$NON-NLS-1$
-    addCommonActionsRow(table, "JoinBattle"); //$NON-NLS-1$
-    addCommonActionsRow(table, "ReadyWeapon"); //$NON-NLS-1$
-    addCommonActionsRow(table, "PhysicalAttack"); //$NON-NLS-1$
-    addCommonActionsRow(table, "CoordinateAttack"); //$NON-NLS-1$
-    addCommonActionsRow(table, "Aim"); //$NON-NLS-1$
-    addCommonActionsRow(table, "Guard"); //$NON-NLS-1$
-    addCommonActionsRow(table, "Move"); //$NON-NLS-1$
-    addCommonActionsRow(table, "Dash"); //$NON-NLS-1$
-    addCommonActionsRow(table, "Misc"); //$NON-NLS-1$
-    addCommonActionsRow(table, "Jump"); //$NON-NLS-1$
-    addCommonActionsRow(table, "Rise"); //$NON-NLS-1$
-    addCommonActionsRow(table, "Inactive"); //$NON-NLS-1$
+    for (CombatAction combatAction : content.getCombatActions()) {
+      addCommonActionsCell(table, combatAction.name);
+      addCommonActionsCell(table, combatAction.speed);
+      addCommonActionsCell(table, combatAction.dv);
+    }
     return table;
   }
 
-  private void addCommonActionsRow(PdfPTable table, String actionId) {
-    String actionName = getResources().getString("Sheet.Combat.CommonActions." + actionId + ".Name"); //$NON-NLS-1$//$NON-NLS-2$
-    table.addCell(createCommonActionsCell(new Phrase(actionName, getCommentFont())));
-    String actionSpeed = getResources().getString("Sheet.Combat.CommonActions." + actionId + ".Speed"); //$NON-NLS-1$//$NON-NLS-2$
-    table.addCell(createCommonActionsCell(new Phrase(actionSpeed, getCommentFont())));
-    String actionDV = getResources().getString("Sheet.Combat.CommonActions." + actionId + ".DV"); //$NON-NLS-1$//$NON-NLS-2$
-    table.addCell(createCommonActionsCell(new Phrase(actionDV, getCommentFont())));
+  private void addCommonActionsCell(PdfPTable table, String text) {
+    Phrase phrase = new Phrase(text, getCommentFont());
+    TableCell cell = new TableCell(phrase, Rectangle.NO_BORDER);
+    cell.setPadding(0);
+    table.addCell(cell);
   }
 
   private TableCell createCommonActionsCell(Phrase phrase) {
     TableCell cell = new TableCell(phrase, Rectangle.NO_BORDER);
     cell.setPadding(0);
     return cell;
+  }
+
+  private Chunk createChunk(QualifiedText text) {
+    Font font = text.type == TextType.Comment ? getCommentFont() : getFont();
+    return new Chunk(text.text, font);
   }
 }

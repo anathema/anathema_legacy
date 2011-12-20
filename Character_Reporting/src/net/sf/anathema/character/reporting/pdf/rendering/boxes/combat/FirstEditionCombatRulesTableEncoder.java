@@ -5,6 +5,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableList;
 import net.sf.anathema.lib.resources.IResources;
@@ -16,7 +17,7 @@ public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTabl
   }
 
   @Override
-  protected void addFirstCell(PdfPTable table) {
+  protected void addFirstCell(ReportContent reportContent, PdfPTable table) {
     TableCell cell = new TableCell(createCombatAttackList(), Rectangle.BOX);
     cell.setPaddingBottom(2f);
     table.addCell(cell);
@@ -38,7 +39,7 @@ public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTabl
   }
 
   @Override
-  protected void addSecondCell(PdfPTable table) {
+  protected void addSecondCell(ReportContent reportContent, PdfPTable table) {
     Phrase knockdownPhrase = new Phrase(getResources().getString("Sheet.Combat.Knockdown.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
     knockdownPhrase.add(new Chunk("\n" + getResources().getString("Sheet.Combat.Knockdown.First.Comment"),
       getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
@@ -48,7 +49,7 @@ public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTabl
   }
 
   @Override
-  protected void addThirdCell(PdfPTable table) {
+  protected void addThirdCell(ReportContent reportContent, PdfPTable table) {
     Phrase stunningPhrase = new Phrase(getResources().getString("Sheet.Combat.Stunning.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
     stunningPhrase.add(new Chunk("\n" + getResources().getString("Sheet.Combat.Stunning.First.Comment"),
       getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$

@@ -42,19 +42,19 @@ public abstract class AbstractCombatRulesTableEncoder extends AbstractTableEncod
   protected final PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds) {
     float cellPadding = 0.05f;
     PdfPTable table = new PdfPTable(new float[]{1f, cellPadding, 1.1f, cellPadding, 1f});
-    addFirstCell(table);
+    addFirstCell(content, table);
     table.addCell(createSpaceCell());
-    addSecondCell(table);
+    addSecondCell(content, table);
     table.addCell(createSpaceCell());
-    addThirdCell(table);
+    addThirdCell(content, table);
     return table;
   }
 
-  protected abstract void addFirstCell(PdfPTable table);
+  protected abstract void addFirstCell(ReportContent reportContent, PdfPTable table);
 
-  protected abstract void addSecondCell(PdfPTable table);
+  protected abstract void addSecondCell(ReportContent reportContent, PdfPTable table);
 
-  protected abstract void addThirdCell(PdfPTable table);
+  protected abstract void addThirdCell(ReportContent reportContent, PdfPTable table);
 
   private PdfPCell createSpaceCell() {
     return new TableCell(new Phrase(" ", font), Rectangle.NO_BORDER); //$NON-NLS-1$
