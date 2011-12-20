@@ -141,7 +141,7 @@ public class SocialCombatStatsBoxEncoder implements IBoxContentEncoder {
     int joinDebate = CharacterUtilties.getJoinDebate(traitCollection, equipment);
     int dodgeMDV = CharacterUtilties.getDodgeMdv(traitCollection, equipment);
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
-    LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
+    LabelledValueEncoder encoder = new LabelledValueEncoder(2, upperLeftCorner, bounds.width, 3);
     encoder.addLabelledValue(graphics, 0, joinLabel, joinDebate);
     encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeMDV);
     return encoder.getHeight() + 1;

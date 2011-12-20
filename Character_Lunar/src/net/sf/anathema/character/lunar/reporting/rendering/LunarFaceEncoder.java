@@ -42,13 +42,13 @@ public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implem
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds)
+  protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds)
       throws DocumentException {
     PdfPTable table = new PdfPTable(new float[] { 6, 0.2f, 2.5f });
     table.setTotalWidth(bounds.width);
     float lineOffset = encodeContent(table, content);
     float delimitingLineYPosition = bounds.getMaxY() - lineOffset - 1;
-    drawDelimiter(directContent, bounds, delimitingLineYPosition);
+    drawDelimiter(graphics.getDirectContent(), bounds, delimitingLineYPosition);
     return table;
   }
 

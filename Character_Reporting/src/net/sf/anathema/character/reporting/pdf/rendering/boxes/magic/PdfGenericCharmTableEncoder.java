@@ -23,6 +23,7 @@ import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -66,8 +67,9 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder<ReportCont
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds) throws DocumentException {
+  protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
     IGenericCharacter character = content.getCharacter();
+    PdfContentByte directContent = graphics.getDirectContent();
     List<ITraitType> traits = getTraits(character);
     Font font = TableEncodingUtilities.createFont(baseFont);
     PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, Color.BLACK);

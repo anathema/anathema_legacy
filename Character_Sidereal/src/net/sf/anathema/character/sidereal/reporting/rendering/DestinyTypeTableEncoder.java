@@ -3,6 +3,7 @@ package net.sf.anathema.character.sidereal.reporting.rendering;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
@@ -34,7 +35,7 @@ public class DestinyTypeTableEncoder extends AbstractTableEncoder<ReportContent>
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds)
+  protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds)
       throws DocumentException {
 	PdfPTable table = new PdfPTable(new float[] { 1f });
     

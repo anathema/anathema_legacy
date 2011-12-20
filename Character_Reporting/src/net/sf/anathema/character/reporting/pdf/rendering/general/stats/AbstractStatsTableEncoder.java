@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 
@@ -39,7 +40,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends Abs
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, C content, Bounds bounds) {
+  protected PdfPTable createTable(SheetGraphics graphics, C content, Bounds bounds) {
     IStatsGroup<T>[] groups = createStatsGroups(content);
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable table = new PdfPTable(columnWidths);

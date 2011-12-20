@@ -39,8 +39,8 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
   }
 
   public final IBoxContentEncoder getCombatStatsEncoder() {
-    IContentEncoder valueEncoder = new FirstEditionCombatValueEncoder(resources, baseFont);
-    ITableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder(resources, baseFont);
+    IContentEncoder valueEncoder = new FirstEditionCombatValueEncoder();
+    ITableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder();
     return new CombatStatsContentBoxEncoder(rulesEncoder, valueEncoder);
   }
 

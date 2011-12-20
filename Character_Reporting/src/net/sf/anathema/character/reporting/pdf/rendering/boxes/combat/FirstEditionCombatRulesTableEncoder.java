@@ -1,58 +1,44 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.combat;
 
 import com.lowagie.text.Chunk;
-import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.combat.FirstEditionCombatStatsContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableList;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
 
-  public FirstEditionCombatRulesTableEncoder(IResources resources, BaseFont baseFont) {
-    super(resources, baseFont);
-  }
-
   @Override
-  protected void addFirstCell(ReportContent reportContent, PdfPTable table) {
-    TableCell cell = new TableCell(createCombatAttackList(), Rectangle.BOX);
+  protected void addFirstCell(SheetGraphics graphics, ReportContent reportContent, PdfPTable table) {
+    FirstEditionCombatStatsContent content = reportContent.createSubContent(FirstEditionCombatStatsContent.class);
+    TableCell cell = new TableCell(createCombatAttackList(graphics, content), Rectangle.BOX);
     cell.setPaddingBottom(2f);
     table.addCell(cell);
   }
 
-  private PdfPTable createCombatAttackList() {
-    TableList list = new TableList(getCommentFont());
-    list.addHeader(new Chunk(getResources().getString("Sheet.Combat.Sequence"), getFont()), true); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.Sequence.AttackRoll")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.Sequence.SubtractPenalties")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.Sequence.DefenceRoll")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.Sequence.DetermineDamage")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.Sequence.CheckKnockdown")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.Sequence.ApplySoak")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.Sequence.RollDamage")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.Sequence.ApplyDamage")); //$NON-NLS-1$
-    list.addItem(getResources().getString("Sheet.Combat.Sequence.CheckStun")); //$NON-NLS-1$
+  private PdfPTable createCombatAttackList(SheetGraphics graphics, FirstEditionCombatStatsContent content) {
+    TableList list = new TableList(graphics.createCommentFont());
+    list.addHeader(new Chunk(content.getSequenceHeader(), graphics.createTextFont()), true);
+    for (String sequenceItem : content.getSequenceItems()) {
+      list.addItem(sequenceItem);
+    }
     return list.getTable();
   }
 
   @Override
-  protected void addSecondCell(ReportContent reportContent, PdfPTable table) {
-    Phrase knockdownPhrase = new Phrase(getResources().getString("Sheet.Combat.Knockdown.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
-    knockdownPhrase.add(new Chunk("\n" + getResources().getString("Sheet.Combat.Knockdown.First.Comment"),
-      getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
-    knockdownPhrase.add(new Chunk("\n\n" + getResources().getString("Sheet.Combat.Comment.First.Rules"),
-      getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
-    table.addCell(createContentCell(knockdownPhrase));
+  protected void addSecondCell(SheetGraphics graphics, ReportContent reportContent, PdfPTable table) {
+    FirstEditionCombatStatsContent content = reportContent.createSubContent(FirstEditionCombatStatsContent.class);
+    addAsCell(graphics, table, content.getKnockdownChunks());
   }
 
   @Override
-  protected void addThirdCell(ReportContent reportContent, PdfPTable table) {
-    Phrase stunningPhrase = new Phrase(getResources().getString("Sheet.Combat.Stunning.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
-    stunningPhrase.add(new Chunk("\n" + getResources().getString("Sheet.Combat.Stunning.First.Comment"),
-      getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
-    table.addCell(createContentCell(stunningPhrase));
+  protected void addThirdCell(SheetGraphics graphics, ReportContent reportContent, PdfPTable table) {
+    FirstEditionCombatStatsContent content = reportContent.createSubContent(FirstEditionCombatStatsContent.class);
+     addAsCell(graphics, table, content.getStunningChunks());
   }
 }

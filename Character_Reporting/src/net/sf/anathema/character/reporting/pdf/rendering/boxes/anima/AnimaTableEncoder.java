@@ -17,6 +17,7 @@ import net.sf.anathema.character.reporting.pdf.content.stats.anima.ColumnDescrip
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.IAnimaTableRangeProvider;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.IAnimaTableStealthProvider;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -53,7 +54,7 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportContent> {
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds) {
+  protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) {
     ColumnDescriptor[] columns = getColumns();
     PdfPTable table = new PdfPTable(getColumWidths(columns));
     table.setWidthPercentage(100);

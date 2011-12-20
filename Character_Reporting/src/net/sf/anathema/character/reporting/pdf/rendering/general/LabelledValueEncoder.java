@@ -13,7 +13,6 @@ public class LabelledValueEncoder {
   private final static float BOX_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
   private final static float BOX_WIDTH = 12;
 
-  private final BaseFont baseFont;
   private final int columnCount;
   private final Position position;
   private final float width;
@@ -22,8 +21,7 @@ public class LabelledValueEncoder {
   private final float padding;
   private boolean commentPresent = false;
 
-  public LabelledValueEncoder(BaseFont baseFont, int columnCount, Position position, float width, int padding) {
-    this.baseFont = baseFont;
+  public LabelledValueEncoder(int columnCount, Position position, float width, int padding) {
     this.columnCount = columnCount;
     this.position = position;
     this.width = width;

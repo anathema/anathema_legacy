@@ -13,11 +13,8 @@ import static net.sf.anathema.character.reporting.pdf.content.general.TextType.N
 
 public class SecondEditionCombatStatsContent extends AbstractCombatStatsContent {
 
-  private IGenericCharacter character;
-
   protected SecondEditionCombatStatsContent(IGenericCharacter character, IResources resources) {
-    super(resources);
-    this.character = character;
+    super(resources, character);
   }
 
   public String getJoinLabel() {
@@ -28,52 +25,12 @@ public class SecondEditionCombatStatsContent extends AbstractCombatStatsContent 
     return getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
   }
 
-  public String getKnockdownLabel() {
-    return getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
-  }
-
-  public String getStunningLabel() {
-    return getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
-  }
-
-  public String getThresholdPoolLabel() {
-    return getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$
-  }
-
   public int getJoinBattle() {
     return CharacterUtilties.getJoinBattle(getTraitCollection(), getEquipment());
   }
 
   public int getDodgeDv() {
     return CharacterUtilties.getDodgeDv(getCharacterType(), getTraitCollection(), getEquipment());
-  }
-
-  public int getKnockdownThreshold() {
-    return CharacterUtilties.getKnockdownThreshold(getTraitCollection(), getEquipment());
-  }
-
-  public int getKnockdownPool() {
-    return CharacterUtilties.getKnockdownPool(character, getTraitCollection(), getEquipment());
-  }
-
-  public int getStunningThreshold() {
-    return CharacterUtilties.getStunningThreshold(getTraitCollection(), getEquipment());
-  }
-
-  public int getStunningPool() {
-    return CharacterUtilties.getStunningPool(getTraitCollection(), getEquipment());
-  }
-
-  private ICharacterType getCharacterType() {
-    return character.getTemplate().getTemplateType().getCharacterType();
-  }
-
-  private IEquipmentModifiers getEquipment() {
-    return character.getEquipmentModifiers();
-  }
-
-  private IGenericTraitCollection getTraitCollection() {
-    return character.getTraitCollection();
   }
 
   public String[] getAttacks() {

@@ -1,12 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.combat;
 
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
-import net.sf.anathema.character.generic.impl.CharacterUtilties;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.combat.SecondEditionCombatStatsContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
@@ -14,14 +7,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
-import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionCombatValueEncoder implements IContentEncoder {
 
   public float encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     SecondEditionCombatStatsContent content = createContent(reportContent);
     Position upperLeft = new Position(bounds.x, bounds.getMaxY());
-    LabelledValueEncoder encoder = new LabelledValueEncoder(graphics.getBaseFont(), 4, upperLeft, bounds.width, 3);
+    LabelledValueEncoder encoder = new LabelledValueEncoder(4, upperLeft, bounds.width, 3);
     encoder.addLabelledValue(graphics, 0, content.getJoinLabel(), content.getJoinBattle());
     encoder.addLabelledValue(graphics, 1, content.getDodgeLabel(), content.getDodgeDv());
     encoder.addLabelledValue(graphics, 2, content.getKnockdownLabel(), content.getKnockdownThreshold(), content.getKnockdownPool());

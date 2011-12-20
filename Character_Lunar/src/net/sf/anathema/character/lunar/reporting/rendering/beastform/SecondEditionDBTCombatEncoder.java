@@ -45,13 +45,13 @@ public class SecondEditionDBTCombatEncoder implements IBoxContentEncoder {
     String mobilityPenaltyLabel = "-" + resources.getString("Sheet.Combat.MobilityPenalty"); //$NON-NLS-1$ //$NON-NLS-2$
     String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
-    LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
+    LabelledValueEncoder encoder = new LabelledValueEncoder(2, upperLeftCorner, bounds.width, 3);
     encoder.addLabelledValue(graphics, 0, joinLabel, joinBattle);
     encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeDV);
     encoder.addComment(graphics, mobilityPenaltyLabel, 1);
 
     upperLeftCorner = new Position(bounds.x, bounds.getMaxY() - 25);
-    encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
+    encoder = new LabelledValueEncoder(2, upperLeftCorner, bounds.width, 3);
 
     encoder.addLabelledValue(graphics, 0, knockdownLabel, knockdownThreshold, knockdownPool);
     encoder.addLabelledValue(graphics, 1, stunningLabel, stunningThreshold, stunningPool);

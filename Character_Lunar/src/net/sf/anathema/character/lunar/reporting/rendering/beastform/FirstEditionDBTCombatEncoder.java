@@ -46,7 +46,7 @@ public class FirstEditionDBTCombatEncoder implements IBoxContentEncoder {
     int stunningDuration = Math.max(0, 6 - stunningThreshold);
 
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
-    LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 4, upperLeftCorner, bounds.width, 3);
+    LabelledValueEncoder encoder = new LabelledValueEncoder(4, upperLeftCorner, bounds.width, 3);
     encoder.addLabelledValue(graphics, 0, initiativeLabel, initiative);
     encoder.addLabelledValue(graphics, 1, dodgePoolLabel, dodgePool);
     encoder.addLabelledValue(graphics, 2, knockdownLabel, knockdownThreshold, knockdownPool);
@@ -58,7 +58,7 @@ public class FirstEditionDBTCombatEncoder implements IBoxContentEncoder {
     encoder.addComment(graphics, thresholdPoolLabel, 2);
     encoder.addComment(graphics, thresholdPoolDurationLabel, 3);
 
-    ITableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder(resources, baseFont);
+    ITableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder();
     Bounds ruleBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - encoder.getHeight() - PADDING);
     try {
       rulesEncoder.encodeTable(graphics, reportContent, ruleBounds);

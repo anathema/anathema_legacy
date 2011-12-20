@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
@@ -27,7 +28,7 @@ public class ShieldTableEncoder extends AbstractEquipmentTableEncoder<IShieldSta
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds) {
+  protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) {
     IEquipmentStatsGroup<IShieldStats>[] groups = createStatsGroups(content);
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable shieldTable = new PdfPTable(columnWidths);

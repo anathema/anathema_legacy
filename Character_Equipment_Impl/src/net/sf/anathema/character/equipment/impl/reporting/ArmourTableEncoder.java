@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourStats> {
@@ -22,9 +23,9 @@ public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourSta
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, ReportContent content, Bounds bounds) {
+  protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) {
     IGenericCharacter character = content.getCharacter();
-    PdfPTable armourTable = super.createTable(directContent, content, bounds);
+    PdfPTable armourTable = super.createTable(graphics, content, bounds);
     IArmourStats totalArmour = getEquipmentModel(character).getTotalPrintArmour(getLineCount());
     IEquipmentStatsGroup<IArmourStats>[] groups = createStatsGroups(content);
     for (int index = 0; index < groups.length; index++) {
