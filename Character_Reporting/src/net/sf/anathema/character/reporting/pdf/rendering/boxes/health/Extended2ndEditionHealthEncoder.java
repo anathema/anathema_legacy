@@ -29,7 +29,7 @@ public class Extended2ndEditionHealthEncoder extends AbstractHealthAndMovementEn
     tableEncoder.encodeTable(graphics, reportContent, tableBounds);
     float textHeight = tableBounds.getMinY() - bounds.y - IVoidStateFormatConstants.TEXT_PADDING;
     Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, textHeight);
-    encodeText(graphics.getDirectContent(), textBounds);
+    encodeText(graphics, textBounds);
   }
 
   @Override

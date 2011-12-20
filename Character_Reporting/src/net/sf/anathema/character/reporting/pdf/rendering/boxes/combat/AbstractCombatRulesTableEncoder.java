@@ -55,7 +55,7 @@ public abstract class AbstractCombatRulesTableEncoder extends AbstractTableEncod
   }
 
   private final Chunk createChunk(SheetGraphics graphics, QualifiedText text) {
-    Font font = text.type == TextType.Comment ? graphics.createBoldFont() : graphics.createTextFont();
+    Font font = text.type == TextType.Comment ? graphics.createCommentFont() : graphics.createTextFont();
     return new Chunk(text.text, font);
   }
 }

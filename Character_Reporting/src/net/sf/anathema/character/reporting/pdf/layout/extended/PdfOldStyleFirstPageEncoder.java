@@ -10,7 +10,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.Abiliti
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.ExtendedPersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.PdfWillpowerEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -182,7 +182,7 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
 
   private float encodeWillpower(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds willpowerBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    boxEncoder.encodeBox(content, directContent, new PdfWillpowerEncoder(baseFont), willpowerBounds);
+    boxEncoder.encodeBox(content, directContent, new SimpleWillpowerBoxContentEncoder(baseFont), willpowerBounds);
     return height;
   }
 

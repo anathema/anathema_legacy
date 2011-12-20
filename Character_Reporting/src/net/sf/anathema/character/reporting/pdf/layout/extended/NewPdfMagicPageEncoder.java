@@ -14,7 +14,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.initiation.PdfIni
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfMagicEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.ExtendedPdfWillpowerEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.ExtendedWillpowerBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -117,7 +117,7 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeWillpower(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(directContent, content, new ExtendedPdfWillpowerEncoder(getResources(), getBaseFont(), getBaseFont()), 3, 1,
+    return encodeFixedBox(directContent, content, new ExtendedWillpowerBoxContentEncoder(getResources(), getBaseFont(), getBaseFont()), 3, 1,
       distanceFromTop, height);
   }
 

@@ -22,7 +22,7 @@ import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegis
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.SimplePersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.PdfWillpowerEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
@@ -206,7 +206,7 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
 
   private float encodeWillpower(PdfContentByte directContent, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds willpowerBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    boxEncoder.encodeBox(content, directContent, new PdfWillpowerEncoder(baseFont), willpowerBounds);
+    boxEncoder.encodeBox(content, directContent, new SimpleWillpowerBoxContentEncoder(baseFont), willpowerBounds);
     return height;
   }
 

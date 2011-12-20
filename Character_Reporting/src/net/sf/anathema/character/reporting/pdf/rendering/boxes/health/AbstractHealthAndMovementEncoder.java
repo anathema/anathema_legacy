@@ -46,13 +46,14 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
     tableEncoder.encodeTable(graphics, reportContent, tableBounds);
     float textX = tableBounds.getMaxX() + IVoidStateFormatConstants.TEXT_PADDING;
     Bounds textBounds = new Bounds(textX, bounds.y, bounds.x + bounds.width - textX, bounds.height - 2);
-    encodeText(graphics.getDirectContent(), textBounds);
+    encodeText(graphics, textBounds);
   }
 
   protected abstract ITableEncoder createTableEncoder();
 
-  protected void encodeText(PdfContentByte directContent, Bounds textBounds) throws DocumentException {
-    SheetGraphics graphics = new SheetGraphics(directContent, baseFont);
+  protected void encodeText(SheetGraphics graphics, Bounds textBounds) throws DocumentException {
+    PdfContentByte directContent = graphics.getDirectContent();
+    BaseFont baseFont = graphics.getBaseFont();
     Font headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
     Font commentFont = new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
     Font commentTitleFont = new Font(commentFont);
