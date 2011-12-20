@@ -45,11 +45,11 @@ public class SocialCombatStatsEncoder implements IBoxContentEncoder {
     IEquipmentModifiers equipment = reportContent.getCharacter().getEquipmentModifiers();
     float valueWidth = bounds.width;
     Bounds valueBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height);
-    float valueHeight = encodeValues(graphics.getDirectContent(), valueBounds, reportContent.getCharacter().getTraitCollection(), equipment);
+    float valueHeight = encodeValues(graphics, valueBounds, reportContent.getCharacter().getTraitCollection(), equipment);
     Bounds attackTableBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height - valueHeight);
 
     ITableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources, baseFont);
-    float attackHeight = tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, attackTableBounds);
+    float attackHeight = tableEncoder.encodeTable(graphics, reportContent, attackTableBounds);
     Bounds actionBounds = new Bounds(bounds.x, bounds.y, valueWidth / 2f, attackTableBounds.height - attackHeight);
     encodeActionTable(graphics.getDirectContent(), actionBounds);
     final float center = bounds.x + valueWidth / 2f;
@@ -135,15 +135,15 @@ public class SocialCombatStatsEncoder implements IBoxContentEncoder {
     return cell;
   }
 
-  private float encodeValues(PdfContentByte directContent, Bounds bounds, IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
+  private float encodeValues(SheetGraphics graphics, Bounds bounds, IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
     String joinLabel = resources.getString("Sheet.SocialCombat.JoinDebateBattle"); //$NON-NLS-1$
     String dodgeLabel = resources.getString("Sheet.SocialCombat.DodgeMDV"); //$NON-NLS-1$
     int joinDebate = CharacterUtilties.getJoinDebate(traitCollection, equipment);
     int dodgeMDV = CharacterUtilties.getDodgeMdv(traitCollection, equipment);
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
-    encoder.addLabelledValue(directContent, 0, joinLabel, joinDebate);
-    encoder.addLabelledValue(directContent, 1, dodgeLabel, dodgeMDV);
+    encoder.addLabelledValue(graphics, 0, joinLabel, joinDebate);
+    encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeMDV);
     return encoder.getHeight() + 1;
   }
 

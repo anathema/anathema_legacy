@@ -107,13 +107,13 @@ public class PdfMagicEncoder implements IBoxContentEncoder {
     for (ITableEncoder additionalTable : additionalTables) {
       if (additionalTable.hasContent(reportContent)) {
         Bounds tableBounds = new Bounds(bounds.getMinX(), top, bounds.getWidth(), bounds.getMaxY() - top);
-        float tableHeight = additionalTable.encodeTable(graphics.getDirectContent(), reportContent, tableBounds);
+        float tableHeight = additionalTable.encodeTable(graphics, reportContent, tableBounds);
         top += tableHeight + IVoidStateFormatConstants.PADDING;
       }
     }
 
     Bounds remainingBounds = new Bounds(bounds.getMinX(), top, bounds.getWidth(), bounds.getMaxY() - top);
-    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, remainingBounds);
+    tableEncoder.encodeTable(graphics, reportContent, remainingBounds);
   }
 
   public boolean hasContent(ReportContent content) {

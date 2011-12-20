@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.PdfCombatStatsEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.ExtendedEssenceBoxContentEncoder;
@@ -12,7 +12,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.SecondEdit
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.PdfDotsEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
@@ -70,9 +70,9 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   public final IBoxContentEncoder getCombatStatsEncoder() {
-    IPdfContentEncoder valueEncoder = new SecondEditionCombatValueEncoder(resources, baseFont);
+    IContentEncoder valueEncoder = new SecondEditionCombatValueEncoder();
     ITableEncoder rulesEncoder = new SecondEditionCombatRulesTableEncoder(resources, baseFont);
-    return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder);
+    return new CombatStatsContentBoxEncoder(rulesEncoder, valueEncoder);
   }
 
   public IBoxContentEncoder getSocialCombatEncoder() {

@@ -7,47 +7,31 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.combat.SecondEditionCombatStatsContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SecondEditionCombatValueEncoder implements IPdfContentEncoder {
+public class SecondEditionCombatValueEncoder implements IContentEncoder {
 
-  private final IResources resources;
-  private final BaseFont baseFont;
-
-  public SecondEditionCombatValueEncoder(IResources resources, BaseFont baseFont) {
-    this.resources = resources;
-    this.baseFont = baseFont;
-  }
-
-  public float encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
-    String joinLabel = resources.getString("Sheet.Combat.JoinBattle"); //$NON-NLS-1$
-    String dodgeLabel = resources.getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
-    String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
-    String stunningLabel = resources.getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
-    IGenericTraitCollection traitCollection = character.getTraitCollection();
-    IEquipmentModifiers equipment = character.getEquipmentModifiers();
-    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-
-    int joinBattle = CharacterUtilties.getJoinBattle(traitCollection, equipment);
-    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection, equipment);
-    int knockdownThreshold = CharacterUtilties.getKnockdownThreshold(traitCollection, equipment);
-    int knockdownPool = CharacterUtilties.getKnockdownPool(character, traitCollection, equipment);
-    int stunningThreshold = CharacterUtilties.getStunningThreshold(traitCollection, equipment);
-    int stunningPool = CharacterUtilties.getStunningPool(traitCollection, equipment);
-
-    Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
-    LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 4, upperLeftCorner, bounds.width, 3);
-    encoder.addLabelledValue(directContent, 0, joinLabel, joinBattle);
-    encoder.addLabelledValue(directContent, 1, dodgeLabel, dodgeDV);
-    encoder.addLabelledValue(directContent, 2, knockdownLabel, knockdownThreshold, knockdownPool);
-    encoder.addLabelledValue(directContent, 3, stunningLabel, stunningThreshold, stunningPool);
-    String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$
-    encoder.addComment(directContent, thresholdPoolLabel, 2);
-    encoder.addComment(directContent, thresholdPoolLabel, 3);
+  public float encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
+    SecondEditionCombatStatsContent content = createContent(reportContent);
+    Position upperLeft = new Position(bounds.x, bounds.getMaxY());
+    LabelledValueEncoder encoder = new LabelledValueEncoder(graphics.getBaseFont(), 4, upperLeft, bounds.width, 3);
+    encoder.addLabelledValue(graphics, 0, content.getJoinLabel(), content.getJoinBattle());
+    encoder.addLabelledValue(graphics, 1, content.getDodgeLabel(), content.getDodgeDv());
+    encoder.addLabelledValue(graphics, 2, content.getKnockdownLabel(), content.getKnockdownThreshold(), content.getKnockdownPool());
+    encoder.addLabelledValue(graphics, 3, content.getStunningLabel(), content.getStunningThreshold(), content.getStunningPool());
+    encoder.addComment(graphics, content.getThresholdPoolLabel(), 2);
+    encoder.addComment(graphics, content.getThresholdPoolLabel(), 3);
     return encoder.getHeight();
+  }
+  
+  private SecondEditionCombatStatsContent createContent(ReportContent content) {
+    return content.createSubContent(SecondEditionCombatStatsContent.class);
   }
 }

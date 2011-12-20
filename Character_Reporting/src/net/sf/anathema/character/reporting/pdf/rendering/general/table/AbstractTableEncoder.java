@@ -5,12 +5,14 @@ import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 
 public abstract class AbstractTableEncoder<C> implements ITableEncoder<C> {
 
   protected abstract PdfPTable createTable(PdfContentByte directContent, C content, Bounds bounds) throws DocumentException;
 
-  public float encodeTable(PdfContentByte directContent, C content, Bounds bounds) throws DocumentException {
+  public float encodeTable(SheetGraphics graphics, C content, Bounds bounds) throws DocumentException {
+    PdfContentByte directContent = graphics.getDirectContent();
     ColumnText tableColumn = new ColumnText(directContent);
     PdfPTable table = createTable(directContent, content, bounds);
     table.setWidthPercentage(100);

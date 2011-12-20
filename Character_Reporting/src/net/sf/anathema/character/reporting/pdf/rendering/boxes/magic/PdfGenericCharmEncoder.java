@@ -26,7 +26,7 @@ public class PdfGenericCharmEncoder implements IVariableBoxContentEncoder {
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, bounds);
+    tableEncoder.encodeTable(graphics, reportContent, bounds);
   }
 
   public boolean hasContent(ReportContent content) {

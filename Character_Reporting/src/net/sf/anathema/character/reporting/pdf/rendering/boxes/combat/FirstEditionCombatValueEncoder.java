@@ -6,13 +6,15 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class FirstEditionCombatValueEncoder implements IPdfContentEncoder {
+public class FirstEditionCombatValueEncoder implements IContentEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;
@@ -22,7 +24,9 @@ public class FirstEditionCombatValueEncoder implements IPdfContentEncoder {
     this.baseFont = baseFont;
   }
 
-  public float encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
+  public float encode(SheetGraphics graphics, ReportContent content, Bounds bounds) {
+    IGenericCharacter character = content.getCharacter();
+    PdfContentByte directContent = graphics.getDirectContent();
     String initiativeLabel = resources.getString("Sheet.Combat.BaseInitiative"); //$NON-NLS-1$
     String dodgePoolLabel = resources.getString("Sheet.Combat.DodgePool"); //$NON-NLS-1$
     String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
@@ -37,16 +41,16 @@ public class FirstEditionCombatValueEncoder implements IPdfContentEncoder {
 
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 4, upperLeftCorner, bounds.width, 3);
-    encoder.addLabelledValue(directContent, 0, initiativeLabel, initiative);
-    encoder.addLabelledValue(directContent, 1, dodgePoolLabel, dodgePool);
-    encoder.addLabelledValue(directContent, 2, knockdownLabel, knockdownThreshold, knockdownPool);
-    encoder.addLabelledValue(directContent, 3, stunningLabel, stunningThreshold, stunningPool, stunningDuration);
+    encoder.addLabelledValue(graphics, 0, initiativeLabel, initiative);
+    encoder.addLabelledValue(graphics, 1, dodgePoolLabel, dodgePool);
+    encoder.addLabelledValue(graphics, 2, knockdownLabel, knockdownThreshold, knockdownPool);
+    encoder.addLabelledValue(graphics, 3, stunningLabel, stunningThreshold, stunningPool, stunningDuration);
     String mobilityPenaltyLabel = "-" + resources.getString("Sheet.Combat.MobilityPenalty"); //$NON-NLS-1$ //$NON-NLS-2$
     String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$
     String thresholdPoolDurationLabel = resources.getString("Sheet.Combat.ThresholdPoolDuration"); //$NON-NLS-1$
-    encoder.addComment(directContent, mobilityPenaltyLabel, 1);
-    encoder.addComment(directContent, thresholdPoolLabel, 2);
-    encoder.addComment(directContent, thresholdPoolDurationLabel, 3);
+    encoder.addComment(graphics, mobilityPenaltyLabel, 1);
+    encoder.addComment(graphics, thresholdPoolLabel, 2);
+    encoder.addComment(graphics, thresholdPoolDurationLabel, 3);
     return encoder.getHeight();
   }
 }

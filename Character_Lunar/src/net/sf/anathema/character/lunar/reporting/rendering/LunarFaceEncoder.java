@@ -38,7 +38,7 @@ public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implem
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    encodeTable(graphics.getDirectContent(), reportContent, bounds);
+    encodeTable(graphics, reportContent, bounds);
   }
 
   @Override

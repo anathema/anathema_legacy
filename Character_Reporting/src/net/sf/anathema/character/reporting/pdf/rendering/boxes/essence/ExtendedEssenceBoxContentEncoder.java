@@ -38,7 +38,7 @@ public class ExtendedEssenceBoxContentEncoder implements IVariableBoxContentEnco
 
   public void encode(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
     ExtendedEssenceContent essenceContent = createEssenceContent(content);
-    poolTable.encodeTable(graphics.getDirectContent(), essenceContent, bounds);
+    poolTable.encodeTable(graphics, essenceContent, bounds);
   }
 
   public boolean hasContent(ReportContent content) {

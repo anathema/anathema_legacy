@@ -41,13 +41,11 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    Bounds tableBounds = new Bounds(bounds.x, bounds.y, (bounds.width * 0.66f),
-      bounds.height);
+    Bounds tableBounds = new Bounds(bounds.x, bounds.y, (bounds.width * 0.66f), bounds.height);
     ITableEncoder tableEncoder = createTableEncoder();
-    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, tableBounds);
+    tableEncoder.encodeTable(graphics, reportContent, tableBounds);
     float textX = tableBounds.getMaxX() + IVoidStateFormatConstants.TEXT_PADDING;
-    Bounds textBounds = new Bounds(textX, bounds.y, bounds.x + bounds.width - textX,
-      bounds.height - 2);
+    Bounds textBounds = new Bounds(textX, bounds.y, bounds.x + bounds.width - textX, bounds.height - 2);
     encodeText(graphics.getDirectContent(), textBounds);
   }
 

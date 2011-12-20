@@ -20,6 +20,7 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.elements.TableCell;
+import net.sf.anathema.character.reporting.pdf.rendering.general.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
@@ -49,7 +50,8 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
 
   protected abstract Float[] getMovementColumns();
 
-  public final float encodeTable(PdfContentByte directContent, ReportContent content, Bounds bounds) throws DocumentException {
+  public final float encodeTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
+    PdfContentByte directContent = graphics.getDirectContent();
     ColumnText tableColumn = new ColumnText(directContent);
     PdfPTable table = createTable(directContent, content);
     table.setWidthPercentage(100);

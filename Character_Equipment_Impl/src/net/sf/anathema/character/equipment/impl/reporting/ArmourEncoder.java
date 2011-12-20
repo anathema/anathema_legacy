@@ -30,13 +30,13 @@ public class ArmourEncoder implements IBoxContentEncoder {
   }
 
   public void encode(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
-    float tableHeight = encoder.encodeTable(graphics.getDirectContent(), content, bounds);
+    float tableHeight = encoder.encodeTable(graphics, content, bounds);
     float remainingHeight = bounds.getHeight() - tableHeight;
     float delimitingLineYPosition = bounds.getMinY() + remainingHeight - 3;
     drawDelimiter(graphics.getDirectContent(), bounds, delimitingLineYPosition);
     Bounds shieldBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(),
         remainingHeight - 6);
-    new ShieldTableEncoder(baseFont, resources).encodeTable(graphics.getDirectContent(), content, shieldBounds);
+    new ShieldTableEncoder(baseFont, resources).encodeTable(graphics, content, shieldBounds);
   }
 
   private void drawDelimiter(PdfContentByte directContent, Bounds bounds, float delimitingLineYPosition) {

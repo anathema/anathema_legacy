@@ -55,7 +55,7 @@ public class PdfAnimaEncoder implements IBoxContentEncoder {
 
     Bounds animaTableBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(),
       AnimaTableEncoder.TABLE_HEIGHT);
-    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, animaTableBounds);
+    tableEncoder.encodeTable(graphics, reportContent, animaTableBounds);
   }
 
   private void encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {

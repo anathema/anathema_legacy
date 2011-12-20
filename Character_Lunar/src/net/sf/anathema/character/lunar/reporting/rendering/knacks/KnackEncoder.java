@@ -32,7 +32,7 @@ public class KnackEncoder implements IBoxContentEncoder {
     KnackContent knackContent = getKnackContent(reportContent);
     KnackTableEncoder encoder = new KnackTableEncoder(baseFont);
     PdfContentByte directContent = graphics.getDirectContent();
-    encoder.encodeTable(directContent, knackContent, bounds);
+    encoder.encodeTable(graphics, knackContent, bounds);
   }
 
   @Override

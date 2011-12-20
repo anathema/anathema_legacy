@@ -20,7 +20,7 @@ public class AstrologyInfoEncoder implements IBoxContentEncoder {
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    new AstrologyTableEncoder(resources, basefont).encodeTable(graphics.getDirectContent(), reportContent, bounds);
+    new AstrologyTableEncoder(resources, basefont).encodeTable(graphics, reportContent, bounds);
 
   }
 

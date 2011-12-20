@@ -72,7 +72,8 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(getEssenceColumns());
   }
 
-  public final float encodeTable(PdfContentByte directContent, ExtendedEssenceContent content, Bounds bounds) throws DocumentException {
+  public final float encodeTable(SheetGraphics graphics, ExtendedEssenceContent content, Bounds bounds) throws DocumentException {
+    PdfContentByte directContent = graphics.getDirectContent();
     return encodeTable(directContent, content, bounds, false);
   }
 

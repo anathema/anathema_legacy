@@ -1,14 +1,14 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.PdfCombatStatsEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.SecondEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -57,9 +57,9 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
   }
 
   public final IBoxContentEncoder getCombatStatsEncoder() {
-    IPdfContentEncoder valueEncoder = new SecondEditionCombatValueEncoder(resources, baseFont);
+    IContentEncoder valueEncoder = new SecondEditionCombatValueEncoder();
     ITableEncoder rulesEncoder = new SecondEditionCombatRulesTableEncoder(resources, baseFont);
-    return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder);
+    return new CombatStatsContentBoxEncoder(rulesEncoder, valueEncoder);
   }
 
   public IBoxContentEncoder getSocialCombatEncoder() {

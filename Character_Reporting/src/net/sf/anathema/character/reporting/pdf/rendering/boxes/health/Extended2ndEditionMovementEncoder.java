@@ -27,7 +27,7 @@ public class Extended2ndEditionMovementEncoder implements IBoxContentEncoder {
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     ITableEncoder tableEncoder = createTableEncoder();
-    tableEncoder.encodeTable(graphics.getDirectContent(), reportContent, bounds);
+    tableEncoder.encodeTable(graphics, reportContent, bounds);
   }
 
   protected final BaseFont getBaseFont() {
