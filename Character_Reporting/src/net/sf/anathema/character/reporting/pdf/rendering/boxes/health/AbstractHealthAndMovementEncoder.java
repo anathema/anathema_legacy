@@ -54,11 +54,11 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
     commentTitleFont.setStyle(Font.BOLD);
     Paragraph healthText = createHealthRulesPhrase(graphics, headerFont, commentFont, commentTitleFont);
     int leading = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 1;
-    ColumnText text = graphics.encodeText(healthText, textBounds, (float) leading, Element.ALIGN_LEFT);
+    float yLine = graphics.encodeText(healthText, textBounds, (float) leading).getYLine();
     int rectangleOffset = AbstractHealthAndMovementTableEncoder.HEALTH_RECT_SIZE + 1;
     final float additionalOffset = 2.5f;
-    float rectYPosition = text.getYLine() - rectangleOffset - additionalOffset;
-    float textYPosition = text.getYLine() - leading - additionalOffset;
+    float rectYPosition = yLine - rectangleOffset - additionalOffset;
+    float textYPosition = yLine - leading - additionalOffset;
     float xPosition = textBounds.x;
     PdfTemplate rectTemplate = HealthTemplateFactory.createRectTemplate(graphics.getDirectContent(), Color.BLACK);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
