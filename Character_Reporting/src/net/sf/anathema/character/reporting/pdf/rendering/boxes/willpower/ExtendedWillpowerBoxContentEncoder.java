@@ -61,7 +61,7 @@ public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
     Phrase regainingPhrase = new Phrase("", graphics.createCommentFont());   //$NON-NLS-1$
     BulletList willpowerRegainingRules = content.getWillpowerRegainingRules();
     ListUtils.addBulletList(regainingPhrase, symbolChunk, willpowerRegainingRules.header, willpowerRegainingRules.items);
-    graphics.encodeText(regainingPhrase, regainingBounds, lineHeight, Element.ALIGN_LEFT).getYLine();
+    graphics.encodeText(regainingPhrase, regainingBounds, lineHeight).getYLine();
   }
 
   public boolean hasContent(ReportContent content) {

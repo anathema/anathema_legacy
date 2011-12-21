@@ -91,7 +91,7 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
     }
     if (!isHorizontal) {
       Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y + bounds.height - offsetY - totalHeight, bounds.x - offsetX, lineHeight);
-      totalHeight += graphics.encodeText(new Phrase(" ", font), newBounds, lineHeight, Element.ALIGN_LEFT).getLinesWritten() * lineHeight;
+      totalHeight += graphics.encodeText(new Phrase(" ", font), newBounds, lineHeight).getLinesWritten() * lineHeight;
     }
     return totalHeight;
   }

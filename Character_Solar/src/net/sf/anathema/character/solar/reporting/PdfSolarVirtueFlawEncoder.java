@@ -73,7 +73,7 @@ public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
       phrase.add(new Chunk("                                          ", undefinedFont)); //$NON-NLS-1$
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
+      graphics.encodeText(phrase, textBounds, leading);
     }
   }
 

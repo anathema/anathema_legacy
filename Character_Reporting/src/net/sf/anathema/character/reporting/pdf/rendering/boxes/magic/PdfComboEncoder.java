@@ -46,7 +46,7 @@ public class PdfComboEncoder {
     }
 
     Bounds contentBounds = boxEncoder.calculateContentBounds(maxBounds);
-    ColumnText column = graphics.createColumn(contentBounds, LINE_HEIGHT, Element.ALIGN_LEFT);
+    ColumnText column = graphics.createColumn(contentBounds, LINE_HEIGHT);
     addCombos(graphics, column, combos);
 
     float yPosition = column.getYLine();
@@ -64,7 +64,7 @@ public class PdfComboEncoder {
 
   public float encodeFixedCombos(SheetGraphics graphics, List<IGenericCombo> combos, Bounds bounds) throws DocumentException {
     Bounds contentBounds = boxEncoder.calculateContentBounds(bounds);
-    ColumnText column = graphics.createColumn(contentBounds, LINE_HEIGHT, Element.ALIGN_LEFT);
+    ColumnText column = graphics.createColumn(contentBounds, LINE_HEIGHT);
     addCombos(graphics, column, combos);
 
     float yPosition = column.getYLine();

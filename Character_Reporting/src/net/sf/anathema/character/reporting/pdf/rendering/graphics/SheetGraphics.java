@@ -17,6 +17,7 @@ import java.awt.*;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SUBSECTION_FONT_SIZE;
 
 public class SheetGraphics implements ITextMetrics {
@@ -92,10 +93,6 @@ public class SheetGraphics implements ITextMetrics {
     }
   }
 
-  public void encodeTextWithReducedLineHeight(Bounds textBounds, Phrase phrase) throws DocumentException {
-    encodeText(phrase, textBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2f, Element.ALIGN_LEFT);
-  }
-
   private void addText(String text, Position position, int alignment, int rotation) {
     initDirectContentForText();
     drawText(text, position, alignment, rotation);
@@ -161,28 +158,39 @@ public class SheetGraphics implements ITextMetrics {
     return new Font(baseFont, COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
   }
 
-  public ColumnText encodeText(Phrase phrase, Bounds bounds, float lineHeight) throws DocumentException {
-    return encodeText(phrase, bounds, lineHeight, Element.ALIGN_LEFT);
+  public void encodeTextWithReducedLineHeight(Bounds textBounds, Phrase phrase) throws DocumentException {
+    encodeText(phrase, textBounds, REDUCED_LINE_HEIGHT);
   }
 
-  public ColumnText encodeText(Phrase phrase, Bounds bounds, float lineHeight, int alignment) throws DocumentException {
-    ColumnText columnText = new ColumnText(directContent);
-    float minX = bounds.getMinX();
-    float minY = bounds.getMinY();
-    float maxX = bounds.getMaxX();
-    float maxY = bounds.getMaxY();
-    columnText.setSimpleColumn(phrase, minX, minY, maxX, maxY, lineHeight, alignment);
+  public ColumnText encodeText(Phrase phrase, Bounds bounds, float lineHeight) throws DocumentException {
+    ColumnText columnText = createSimpleColumn(bounds);
+    columnText.setLeading(lineHeight);
+    columnText.addText(phrase);
     columnText.go();
     return columnText;
   }
 
-  public ColumnText createColumn(Bounds bounds, float lineHeight, int alignment) {
+  public void encodeText(Phrase phrase, Bounds bounds, float lineHeight, int alignment) throws DocumentException {
+    ColumnText columnText = createSimpleColumn(bounds);
+    columnText.setLeading(lineHeight);
+    columnText.setAlignment(alignment);
+    columnText.addText(phrase);
+    columnText.go();
+  }
+
+  public ColumnText createColumn(Bounds bounds, float lineHeight) {
+    ColumnText columnText = createSimpleColumn(bounds);
+    columnText.setLeading(lineHeight);
+    return columnText;
+  }
+
+  private ColumnText createSimpleColumn(Bounds bounds) {
     ColumnText columnText = new ColumnText(directContent);
     float minX = bounds.getMinX();
     float minY = bounds.getMinY();
     float maxX = bounds.getMaxX();
     float maxY = bounds.getMaxY();
-    columnText.setSimpleColumn(minX, minY, maxX, maxY, lineHeight, alignment);
+    columnText.setSimpleColumn(minX, minY, maxX, maxY);
     return columnText;
   }
 
