@@ -148,7 +148,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     Bounds firstColumnBounds = pageConfiguration.getFirstColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
     Anchor voidstatePhrase = new Anchor("Inspired by Voidstate\nhttp://www.voidstate.com", copyrightFont); //$NON-NLS-1$
     voidstatePhrase.setReference("http://www.voidstate.com"); //$NON-NLS-1$
-    graphics.encodeText(voidstatePhrase, firstColumnBounds, (float) lineHeight, Element.ALIGN_LEFT);
+    graphics.encodeText(voidstatePhrase, firstColumnBounds, (float) lineHeight);
 
     // TODO: Eliminate these hard-coded copyright dates; these should be in a properties file or something.
     Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92011\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$

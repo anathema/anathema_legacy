@@ -66,7 +66,7 @@ public class PdfAnimaEncoder implements IBoxContentEncoder {
       phrase.add(resources.getString(casteResourceKey) + "\n"); //$NON-NLS-1$
     }
     phrase.add(symbolChunk);
-    float yPosition = graphics.encodeText(phrase, bounds, lineHeight, Element.ALIGN_LEFT).getYLine();
+    float yPosition = graphics.encodeText(phrase, bounds, lineHeight).getYLine();
     Position lineStartPosition = new Position((bounds.getMinX() + graphics.getCaretSymbolWidth()), yPosition);
     int lineCount = 1 + (int) ((yPosition - bounds.getMinY()) / lineHeight);
     new HorizontalLineEncoder().encodeLines(graphics, lineStartPosition, bounds.getMinX(), bounds.getMaxX(), lineHeight, lineCount);

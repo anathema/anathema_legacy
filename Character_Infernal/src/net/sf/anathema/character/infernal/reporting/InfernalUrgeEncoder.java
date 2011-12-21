@@ -46,7 +46,7 @@ public class InfernalUrgeEncoder implements IBoxContentEncoder {
     phrase.add(new Chunk(resources.getString("InfernalUrge.Title"), nameFont));
     phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
     phrase.add(new Chunk(urgeDescription, font));
-    graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
+    graphics.encodeText(phrase, textBounds, leading);
   }
   
   public boolean hasContent(ReportContent content)

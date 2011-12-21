@@ -49,7 +49,7 @@ public class ArcaneFateInfoEncoder implements IBoxContentEncoder {
     phrase.add(resources.getString("Sheet.ArcaneFate.Stealth") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(symbolChunk);
     phrase.add(resources.getString(rememberingResource) + "\n"); //$NON-NLS-1$
-    graphics.encodeText(phrase, bounds, lineHeight, Element.ALIGN_LEFT);
+    graphics.encodeText(phrase, bounds, lineHeight);
   }
   
   public boolean hasContent(ReportContent content)

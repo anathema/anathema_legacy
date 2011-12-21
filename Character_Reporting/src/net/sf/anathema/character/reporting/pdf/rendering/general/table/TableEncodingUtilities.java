@@ -12,7 +12,7 @@ import java.awt.*;
 
 public class TableEncodingUtilities {
 
-  public static final float FONT_SIZE = IVoidStateFormatConstants.FONT_SIZE - 0.5f;
+  public static final float TABLE_FONT_SIZE = IVoidStateFormatConstants.FONT_SIZE - 0.5f;
 
   public static Float[] createStandardColumnWeights(int columnCount) {
     return createStandardColumnWidths(columnCount, 1);
@@ -58,15 +58,15 @@ public class TableEncodingUtilities {
   }
 
   public static Font createFont(BaseFont baseFont) {
-    return new Font(baseFont, FONT_SIZE, Font.NORMAL, Color.BLACK);
+    return new Font(baseFont, TABLE_FONT_SIZE, Font.NORMAL, Color.BLACK);
   }
 
   public static Font createBoldFont(BaseFont baseFont) {
-    return new Font(baseFont, FONT_SIZE + 1f, Font.BOLD, Color.BLACK);
+    return new Font(baseFont, TABLE_FONT_SIZE + 1f, Font.BOLD, Color.BLACK);
   }
 
   public static Font createHeaderFont(BaseFont baseFont) {
-    return new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 1f, Font.NORMAL, Color.BLACK);
+    return new Font(baseFont, IVoidStateFormatConstants.SMALLER_FONT_SIZE - 1f, Font.NORMAL, Color.BLACK);
   }
 
   public static Font createCommentFont(BaseFont baseFont) {

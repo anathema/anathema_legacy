@@ -158,7 +158,7 @@ public class SheetGraphics implements ITextMetrics {
   }
 
   public Font createCommentFont() {
-    return new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
+    return new Font(baseFont, COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
   }
 
   public ColumnText encodeText(Phrase phrase, Bounds bounds, float lineHeight) throws DocumentException {

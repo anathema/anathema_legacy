@@ -58,13 +58,12 @@ public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
       phrase.add(new Chunk(name, nameFont));
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
+      graphics.encodeText(phrase, textBounds, leading);
     }
     if (nameDefined && !conditionDefined) {
       Phrase phrase = new Phrase();
       phrase.add(new Chunk(name, nameFont));
-      ColumnText columnText = graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
-      float baseLine = columnText.getYLine();
+      float baseLine = graphics.encodeText(phrase, textBounds, leading).getYLine();
       encodeLines(graphics, bounds, leading, baseLine);
     }
     if (!nameDefined && conditionDefined) {

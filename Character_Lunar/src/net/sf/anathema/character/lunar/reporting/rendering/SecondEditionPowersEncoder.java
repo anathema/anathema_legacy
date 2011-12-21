@@ -84,7 +84,7 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
     int totalHeight = 0;
     while (!text.startsWith("##")) {
       Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y, bounds.width - offsetX, bounds.height - offsetY - totalHeight);
-      totalHeight += graphics.encodeText(phrase, newBounds, lineHeight, Element.ALIGN_LEFT).getLinesWritten() * lineHeight;
+      totalHeight += graphics.encodeText(phrase, newBounds, lineHeight).getLinesWritten() * lineHeight;
       text = resources.getString(powerBase + power + (++index));
       text = text.replace("TELLMDV", "" + tellMDV);
       phrase = new Phrase(text, font);

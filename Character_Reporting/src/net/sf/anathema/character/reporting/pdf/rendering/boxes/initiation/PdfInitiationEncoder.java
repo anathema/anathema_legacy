@@ -74,7 +74,7 @@ public class PdfInitiationEncoder implements IVariableBoxContentEncoder {
         phrase.add(new Chunk("\n", textFont)); //$NON-NLS-1$
       }
     }
-    graphics.encodeText(phrase, bounds, IVoidStateFormatConstants.LINE_HEIGHT, Element.ALIGN_LEFT);
+    graphics.encodeText(phrase, bounds, IVoidStateFormatConstants.LINE_HEIGHT);
   }
 
   protected boolean knowsCharm(String charm, IGenericCharacter character) {

@@ -54,7 +54,7 @@ public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
     Chunk symbolChunk = graphics.createSymbolChunk()  ;
     ListUtils.addBulletList(spendingPhrase, symbolChunk, willpowerSpendingRules.header, willpowerSpendingRules.items);
     spendingPhrase.add("\n" + content.getWillpowerSpendingNote() + "\n"); //$NON-NLS-1$
-    graphics.encodeText(spendingPhrase, spendingBounds, lineHeight, Element.ALIGN_LEFT).getYLine();
+    graphics.encodeText(spendingPhrase, spendingBounds, lineHeight).getYLine();
 
     float centerX = leftX + columnWidth + columnPadding;
     Bounds regainingBounds = new Bounds(centerX, yPosition - height, columnWidth, height);

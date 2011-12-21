@@ -23,6 +23,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTrait
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.LINE_HEIGHT;
+
 public class SecondEditionLunarSpiritFormEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
@@ -53,7 +55,7 @@ public class SecondEditionLunarSpiritFormEncoder implements IBoxContentEncoder {
     Bounds newBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 50);
     String text = resources.getString("Sheet.Header.Lunar.SpiritForm") + ": " + form;
     try {
-      graphics.encodeText(new Phrase(text, font), newBounds, IVoidStateFormatConstants.LINE_HEIGHT - 2, Element.ALIGN_LEFT);
+      graphics.encodeText(new Phrase(text, font), newBounds, LINE_HEIGHT - 2);
     }
     catch (DocumentException e) {
     }

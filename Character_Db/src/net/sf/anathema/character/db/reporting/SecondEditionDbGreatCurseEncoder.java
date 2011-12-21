@@ -51,7 +51,7 @@ public class SecondEditionDbGreatCurseEncoder implements IBoxContentEncoder {
     String aspect = getAspectString(reportContent.getCharacter(), rootVirtue != null);
     String message = resources.getString("Sheet.GreatCurse.Message.SecondEdition", virtue, aspect); //$NON-NLS-1$
     Phrase phrase = new Phrase(message, font);
-    graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
+    graphics.encodeText(phrase, textBounds, leading);
   }
 
   private String getAspectString(IGenericCharacter character, boolean isRootSelected) {

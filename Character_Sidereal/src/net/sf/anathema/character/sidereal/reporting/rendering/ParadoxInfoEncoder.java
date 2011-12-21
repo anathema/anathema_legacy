@@ -50,7 +50,7 @@ public class ParadoxInfoEncoder implements IBoxContentEncoder {
     phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendent") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendentImitation") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendentSupernatural") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
-    graphics.encodeText(phrase, bounds, lineHeight, Element.ALIGN_LEFT);
+    graphics.encodeText(phrase, bounds, lineHeight);
   }
 
   public String getHeaderKey(ReportContent content) {

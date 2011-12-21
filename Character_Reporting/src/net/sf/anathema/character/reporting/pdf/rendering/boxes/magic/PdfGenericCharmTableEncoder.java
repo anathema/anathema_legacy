@@ -54,7 +54,7 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder<ReportCont
         text = resources.getString(trait.getId() + ".Short");
       }
 
-      float height = baseFont.getWidthPoint(text, TableEncodingUtilities.FONT_SIZE) + 5.794f;
+      float height = baseFont.getWidthPoint(text, TableEncodingUtilities.TABLE_FONT_SIZE) + 5.794f;
       if (height > traitHeight) {
         traitHeight = height;
       }
@@ -150,14 +150,14 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder<ReportCont
       text = resources.getString(abilityType.getId() + ".Short");
     }
 
-    float ascentPoint = baseFont.getAscentPoint(text, TableEncodingUtilities.FONT_SIZE);
-    float descentPoint = baseFont.getDescentPoint(text, TableEncodingUtilities.FONT_SIZE);
-    float templateWidth = baseFont.getWidthPoint(text, TableEncodingUtilities.FONT_SIZE);
+    float ascentPoint = baseFont.getAscentPoint(text, TableEncodingUtilities.TABLE_FONT_SIZE);
+    float descentPoint = baseFont.getDescentPoint(text, TableEncodingUtilities.TABLE_FONT_SIZE);
+    float templateWidth = baseFont.getWidthPoint(text, TableEncodingUtilities.TABLE_FONT_SIZE);
     float templateHeight = ascentPoint - descentPoint;
 
     PdfTemplate template = directContent.createTemplate(templateWidth, templateHeight);
     template.beginText();
-    template.setFontAndSize(baseFont, TableEncodingUtilities.FONT_SIZE);
+    template.setFontAndSize(baseFont, TableEncodingUtilities.TABLE_FONT_SIZE);
     template.showTextAligned(Element.ALIGN_LEFT, text, 0, -descentPoint, 0);
     template.endText();
     Image image = Image.getInstance(template);
