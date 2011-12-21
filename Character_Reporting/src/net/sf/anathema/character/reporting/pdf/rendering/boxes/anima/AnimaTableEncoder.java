@@ -63,12 +63,12 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportContent> {
     ICharacterType type = content.getCharacter().getTemplate().getTemplateType().getCharacterType();
     String descriptionPrefix = "Sheet.AnimaTable.Description." + type; //$NON-NLS-1$
     for (int index = 0; index < 5; index++) {
-      addAnimaRow(table, index, content, descriptionPrefix);
+      addAnimaRow(graphics, table, index, content, descriptionPrefix);
     }
     return table;
   }
 
-  protected void addAnimaRow(PdfPTable table, int level, ReportContent content, String descriptionPrefix) {
+  protected void addAnimaRow(SheetGraphics graphics, PdfPTable table, int level, ReportContent content, String descriptionPrefix) {
     table.addCell(createRangeCell(level, content.getCharacter()));
     table.addCell(createDescriptionCell(level, descriptionPrefix));
     table.addCell(createStealthCell(level));

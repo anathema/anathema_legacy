@@ -1,11 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import net.sf.anathema.character.reporting.pdf.rendering.general.LayoutUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 
-public interface ISimplePartEncoder extends LayoutUtilities {
+public interface ISimplePartEncoder {
 
   public IBoxContentEncoder getAnimaEncoder();
 

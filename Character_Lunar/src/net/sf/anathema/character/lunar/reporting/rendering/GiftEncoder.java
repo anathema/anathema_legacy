@@ -8,7 +8,7 @@ import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.LineFillingBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -17,12 +17,12 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 
-public class GiftEncoder extends AbstractLineTextEncoder {
+public class GiftEncoder extends LineFillingBoxContentEncoder {
 
   private final IResources resources;
 
   public GiftEncoder(BaseFont baseFont, IResources resources) {
-    super(baseFont);
+    super();
     this.resources = resources;
   }
 

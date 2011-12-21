@@ -1,6 +1,12 @@
 package net.sf.anathema.character.lunar.reporting.rendering.greatcurse;
 
+import com.lowagie.text.Chunk;
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.ColumnText;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.model.ILunarVirtueFlaw;
@@ -9,19 +15,10 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.Line;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-
-import com.lowagie.text.Chunk;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.ColumnText;
-import com.lowagie.text.pdf.PdfContentByte;
 
 public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
 
@@ -41,14 +38,15 @@ public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
-    ILunarVirtueFlaw virtueFlaw = ((ILunarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
+    ILunarVirtueFlaw virtueFlaw =
+      ((ILunarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     String name = virtueFlaw.getName().getText();
     String condition = virtueFlaw.getLimitBreak().getText();
     boolean nameDefined = !StringUtilities.isNullOrTrimEmpty(name);
     boolean conditionDefined = !StringUtilities.isNullOrEmpty(condition);
     if (!nameDefined && !conditionDefined) {
-      encodeLines(graphics.getDirectContent(), bounds, leading, textBounds.getMaxY());
+      encodeLines(graphics, bounds, leading, textBounds.getMaxY());
     }
     if (nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();
@@ -62,7 +60,7 @@ public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
       phrase.add(new Chunk(name, nameFont));
       ColumnText columnText = graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
       float baseLine = columnText.getYLine();
-      encodeLines(graphics.getDirectContent(), bounds, leading, baseLine);
+      encodeLines(graphics, bounds, leading, baseLine);
     }
     if (!nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();
@@ -75,10 +73,10 @@ public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
     }
   }
 
-  private void encodeLines(PdfContentByte directContent, Bounds bounds, float leading, float yPosition) {
+  private void encodeLines(SheetGraphics graphics, Bounds bounds, float leading, float yPosition) {
     yPosition -= leading;
     while (yPosition > bounds.getMinY()) {
-      Line.createHorizontalByCoordinate(new Position(bounds.x, yPosition), bounds.getMaxX()).encode(directContent);
+      graphics.createHorizontalLineByCoordinate(new Position(bounds.x, yPosition), bounds.getMaxX()).encode();
       yPosition -= leading;
     }
   }
@@ -92,9 +90,8 @@ public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
   private Font createFont(BaseFont baseFont) {
     return TableEncodingUtilities.createFont(baseFont);
   }
-  
-  public boolean hasContent(ReportContent content)
-  {
-	  return true;
+
+  public boolean hasContent(ReportContent content) {
+    return true;
   }
 }

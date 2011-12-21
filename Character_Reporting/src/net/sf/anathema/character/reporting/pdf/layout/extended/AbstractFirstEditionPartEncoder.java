@@ -5,7 +5,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.FirstEditi
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.FirstEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.FirstEditionHealthAndMovementEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfHorizontalLineContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
@@ -45,11 +45,11 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
   }
 
   public IBoxContentEncoder getSocialCombatEncoder() {
-    return new PdfHorizontalLineContentEncoder(1, "MeritsFlaws"); //$NON-NLS-1$
+    return new HorizontalLineBoxContentEncoder(1, "MeritsFlaws"); //$NON-NLS-1$
   }
 
   public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {
-    return new PdfHorizontalLineContentEncoder(1, "Notes"); //$NON-NLS-1$
+    return new HorizontalLineBoxContentEncoder(1, "Notes"); //$NON-NLS-1$
   }
 
   public IBoxContentEncoder getHealthAndMovementEncoder() {

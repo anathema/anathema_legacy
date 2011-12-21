@@ -8,7 +8,8 @@ public interface IVoidStateFormatConstants {
   public static final int HEADER_FONT_SIZE = 9;
   public static final int SUBSECTION_FONT_SIZE = 8;
   public static final int FONT_SIZE = 7;
-  public static final int COMMENT_FONT_SIZE = FONT_SIZE - 2;
+  public static final int SMALLER_FONT_SIZE = 6;
+  public static final int COMMENT_FONT_SIZE = 5;
 
   public static final float LINE_HEIGHT = 11f;
   public static final float BARE_LINE_HEIGHT = 10.5f;

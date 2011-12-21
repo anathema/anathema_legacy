@@ -77,7 +77,7 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
     distanceFromTop += calculateBoxIncrement(healthHeight);
     float remainingHeight = PdfOldStyleFirstPageEncoder.CONTENT_HEIGHT - distanceFromTop;
     encodeCombatStats(graphics, content, distanceFromTop, remainingHeight);
-    new CopyrightEncoder(baseFont, pageConfiguration, CONTENT_HEIGHT).encodeCopyright(graphics);
+    new CopyrightEncoder(pageConfiguration, CONTENT_HEIGHT).encodeCopyright(graphics);
   }
 
   private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {

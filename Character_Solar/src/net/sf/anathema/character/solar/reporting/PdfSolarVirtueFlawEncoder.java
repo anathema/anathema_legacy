@@ -1,27 +1,26 @@
 package net.sf.anathema.character.solar.reporting;
 
-import com.lowagie.text.Element;
-import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.Line;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
-import net.sf.anathema.character.solar.virtueflaw.model.ISolarVirtueFlaw;
-import net.sf.anathema.character.solar.virtueflaw.presenter.ISolarVirtueFlawModel;
-
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
+import net.disy.commons.core.util.StringUtilities;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.Line;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
+import net.sf.anathema.character.solar.virtueflaw.model.ISolarVirtueFlaw;
+import net.sf.anathema.character.solar.virtueflaw.presenter.ISolarVirtueFlawModel;
 
 public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
 
@@ -41,9 +40,8 @@ public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float boxPadding = 1f;
-
-	ISolarVirtueFlaw virtueFlaw = ((ISolarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
-float boxHeight = traitEncoder.encodeHeight(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
+    ISolarVirtueFlaw virtueFlaw = getVirtueFlawModel(reportContent);
+    float boxHeight = traitEncoder.encodeHeight(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     float boxInterval = boxHeight + boxPadding;
     Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - boxInterval);
 
@@ -53,7 +51,7 @@ float boxHeight = traitEncoder.encodeHeight(graphics, bounds, virtueFlaw.getLimi
     boolean nameDefined = !StringUtilities.isNullOrTrimEmpty(name);
     boolean conditionDefined = !StringUtilities.isNullOrEmpty(condition);
     if (!nameDefined && !conditionDefined) {
-      encodeLines(graphics.getDirectContent(), bounds, leading, textBounds.getMaxY());
+      encodeLines(graphics, bounds, leading, textBounds.getMaxY());
     }
     if (nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();
@@ -67,7 +65,7 @@ float boxHeight = traitEncoder.encodeHeight(graphics, bounds, virtueFlaw.getLimi
       phrase.add(new Chunk(name, nameFont));
       ColumnText columnText = graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
       float baseLine = columnText.getYLine();
-      encodeLines(graphics.getDirectContent(), bounds, leading, baseLine);
+      encodeLines(graphics, bounds, leading, baseLine);
     }
     if (!nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();
@@ -80,10 +78,14 @@ float boxHeight = traitEncoder.encodeHeight(graphics, bounds, virtueFlaw.getLimi
     }
   }
 
-  private void encodeLines(PdfContentByte directContent, Bounds bounds, float leading, float yPosition) {
+  private ISolarVirtueFlaw getVirtueFlawModel(ReportContent reportContent) {
+    return ((ISolarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
+  }
+
+  private void encodeLines(SheetGraphics graphics, Bounds bounds, float leading, float yPosition) {
     yPosition -= leading;
     while (yPosition > bounds.getMinY()) {
-      Line.createHorizontalByCoordinate(new Position(bounds.x, yPosition), bounds.getMaxX()).encode(directContent);
+      graphics.createHorizontalLineByCoordinate(new Position(bounds.x, yPosition), bounds.getMaxX()).encode();
       yPosition -= leading;
     }
   }
@@ -97,8 +99,8 @@ float boxHeight = traitEncoder.encodeHeight(graphics, bounds, virtueFlaw.getLimi
   private Font createFont(BaseFont baseFont) {
     return TableEncodingUtilities.createFont(baseFont);
   }
-  
+
   public boolean hasContent(ReportContent content) {
-	  return true;
+    return true;
   }
 }

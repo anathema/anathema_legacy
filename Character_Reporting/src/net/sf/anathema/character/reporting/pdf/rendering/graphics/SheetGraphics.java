@@ -11,8 +11,6 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.ITextMetrics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
 import java.awt.*;
@@ -22,6 +20,9 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SUBSECTION_FONT_SIZE;
 
 public class SheetGraphics implements ITextMetrics {
+
+  private static final String SYMBOL = "\u2022 "; //$NON-NLS-1$
+  private static final int SYMBOL_FONT_SIZE = FONT_SIZE - 1;
   private final PdfContentByte directContent;
   private final BaseFont baseFont;
   private BaseFont symbolBaseFont;
@@ -156,7 +157,7 @@ public class SheetGraphics implements ITextMetrics {
     return new Font(baseFont, size, Font.NORMAL, Color.black);
   }
 
-    public Font createCommentFont() {
+  public Font createCommentFont() {
     return new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
   }
 
@@ -186,6 +187,31 @@ public class SheetGraphics implements ITextMetrics {
   }
 
   public Chunk createSymbolChunk() {
-    return  PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
+    Font font = new Font(symbolBaseFont, SYMBOL_FONT_SIZE, Font.NORMAL, Color.BLACK);
+    return new Chunk(SYMBOL, font);
+  }
+
+  public float getCaretSymbolWidth() {
+    return symbolBaseFont.getWidthPoint(SYMBOL, SYMBOL_FONT_SIZE);
+  }
+
+  public Box createBox(Bounds bounds) {
+    return new Box(bounds, directContent);
+  }
+
+  public Line createHorizontalLineByCoordinate(Position startPoint, float endX) {
+    return new Line(directContent, startPoint, new Position(endX, startPoint.y));
+  }
+
+  public Line createHorizontalLineByLength(Position startPoint, float length) {
+    return createHorizontalLineByCoordinate(startPoint, startPoint.x + length);
+  }
+
+  public Line createVerticalLineByLength(Position startPoint, float length) {
+    return createVerticalLineByCoordinate(startPoint, startPoint.y + length);
+  }
+
+  public Line createVerticalLineByCoordinate(Position startPoint, float endY) {
+    return new Line(directContent, startPoint, new Position(startPoint.x, endY));
   }
 }

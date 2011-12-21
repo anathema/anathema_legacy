@@ -7,37 +7,28 @@ import java.awt.*;
 
 public class Line {
 
-  public static Line createHorizontalByCoordinate(Position startPoint, float endX) {
-    return new Line(startPoint, new Position(endX, startPoint.y));
-  }
-
-  public static Line createHorizontalByLength(Position startPoint, float length) {
-    return createHorizontalByCoordinate(startPoint, startPoint.x + length);
-  }
-
-  public static Line createVerticalByLength(Position startPoint, float length) {
-    return createVerticalByCoordinate(startPoint, startPoint.y + length);
-  }
-
-  public static Line createVerticalByCoordinate(Position startPoint, float endY) {
-    return new Line(startPoint, new Position(startPoint.x, endY));
-  }
-
+  private PdfContentByte directContent;
   private final Position startPoint;
   private final Position endPoint;
+  private  float lineWidth = 0f;
 
-  public Line(Position startPoint, Position endPoint) {
+  public Line(PdfContentByte directContent, Position startPoint, Position endPoint) {
+    this.directContent = directContent;
     this.startPoint = startPoint;
     this.endPoint = endPoint;
   }
-
-  public void encode(PdfContentByte directContent) {
-    encode(directContent, Color.BLACK);
+  
+  public void setLineWidth(float width) {
+    this.lineWidth = width;
   }
 
-  public void encode(PdfContentByte directContent, Color color) {
+  public void encode() {
+    encode(Color.BLACK);
+  }
+
+  public void encode(Color color) {
     directContent.setColorFill(color);
-    directContent.setLineWidth(0);
+    directContent.setLineWidth(lineWidth);
     directContent.moveTo(startPoint.x, startPoint.y);
     directContent.lineTo(endPoint.x, endPoint.y);
     directContent.stroke();

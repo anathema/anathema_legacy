@@ -2,8 +2,9 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfDotsEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFirstEditionPartEncoder {
@@ -20,7 +21,7 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
   }
 
   public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
-    return new PdfDotsEncoder(trait, traitMax, traitHeaderKey);
+    return new DotBoxContentEncoder(trait, traitMax, traitHeaderKey);
   }
 
   public IBoxContentEncoder getOverdriveEncoder() {
@@ -36,6 +37,6 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
   }
 
   protected final int getFontSize() {
-    return FONT_SIZE;
+    return IVoidStateFormatConstants.SMALLER_FONT_SIZE;
   }
 }

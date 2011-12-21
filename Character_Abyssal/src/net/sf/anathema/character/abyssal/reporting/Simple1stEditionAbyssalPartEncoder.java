@@ -12,7 +12,7 @@ public class Simple1stEditionAbyssalPartEncoder extends AbstractFirstEditionExal
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new AbyssalResonanceEncoder(getSymbolBaseFont(), getResources());
+    return new AbyssalResonanceEncoder(getResources());
   }
 
   @Override

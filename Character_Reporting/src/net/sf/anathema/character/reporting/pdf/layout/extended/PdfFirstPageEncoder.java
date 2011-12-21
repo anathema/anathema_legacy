@@ -16,7 +16,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.Experi
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.ExtendedPersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfHorizontalLineContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
@@ -309,7 +309,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       case 4:
         return;
     }
-    IBoxContentEncoder encoder = new PdfHorizontalLineContentEncoder(columns, "Notes");
+    IBoxContentEncoder encoder = new HorizontalLineBoxContentEncoder(columns, "Notes");
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
   }
 

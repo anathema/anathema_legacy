@@ -6,7 +6,7 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfHorizontalLineContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
@@ -50,7 +50,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
     distanceFromTop += calculateBoxIncrement(armourHeight);
     encodeMassCombat(graphics, content, distanceFromTop, 120);
 
-    new CopyrightEncoder(baseFont, pageConfiguration, CONTENT_HEIGHT).encodeCopyright(graphics);
+    new CopyrightEncoder(pageConfiguration, CONTENT_HEIGHT).encodeCopyright(graphics);
   }
 
   private float calculateBoxIncrement(float height) {
@@ -65,7 +65,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
 
   private float encodeMassCombat(SheetGraphics graphics, ReportContent content, float distanceFromTop, int height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder encoder = new PdfHorizontalLineContentEncoder(1, "MassCombat");
+    IBoxContentEncoder encoder = new HorizontalLineBoxContentEncoder(1, "MassCombat");
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }

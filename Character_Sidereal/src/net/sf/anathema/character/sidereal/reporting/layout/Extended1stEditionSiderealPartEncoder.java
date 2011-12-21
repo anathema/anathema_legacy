@@ -17,7 +17,7 @@ public class Extended1stEditionSiderealPartEncoder extends AbstractFirstEditionE
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new SiderealParadoxEncoder(getBaseFont(), getSymbolBaseFont(), getResources());
+    return new SiderealParadoxEncoder(getResources());
   }
 
   @Override

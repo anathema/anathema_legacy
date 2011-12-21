@@ -11,6 +11,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContent
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -49,7 +50,7 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
   }
 
   protected int getFontSize() {
-    return FONT_SIZE;
+    return IVoidStateFormatConstants.SMALLER_FONT_SIZE;
   }
 
   public IBoxContentEncoder getEssenceEncoder() {

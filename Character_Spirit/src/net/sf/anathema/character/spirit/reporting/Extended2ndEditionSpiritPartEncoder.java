@@ -1,6 +1,6 @@
 package net.sf.anathema.character.spirit.reporting;
 
-import net.sf.anathema.character.reporting.pdf.rendering.general.NullPdfContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.NullBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
@@ -14,7 +14,7 @@ public class Extended2ndEditionSpiritPartEncoder extends AbstractSecondEditionEx
 
   // TODO: This should be properly edited out, not just nulled out.
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new NullPdfContentEncoder();
+    return new NullBoxContentEncoder();
   }
 
   @Override

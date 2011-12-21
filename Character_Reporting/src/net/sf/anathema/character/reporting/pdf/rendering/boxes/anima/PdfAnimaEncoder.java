@@ -8,16 +8,16 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfLineEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -29,18 +29,14 @@ public class PdfAnimaEncoder implements IBoxContentEncoder {
   private final float lineHeight;
   private final BaseFont baseFont;
   private final IResources resources;
-  private final BaseFont symbolBaseFont;
-  private final Chunk symbolChunk;
   private final ITableEncoder tableEncoder;
 
-  public PdfAnimaEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont, int fontSize, ITableEncoder encoder) {
+  public PdfAnimaEncoder(IResources resources, BaseFont baseFont, int fontSize, ITableEncoder encoder) {
     this.resources = resources;
     this.baseFont = baseFont;
-    this.symbolBaseFont = symbolBaseFont;
     this.fontSize = fontSize;
     this.lineHeight = fontSize * 1.5f;
     this.tableEncoder = encoder;
-    this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
   public String getHeaderKey(ReportContent content) {
@@ -60,23 +56,20 @@ public class PdfAnimaEncoder implements IBoxContentEncoder {
     Phrase phrase = new Phrase("", new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
     PdfContentByte directContent = graphics.getDirectContent();
     // Add standard powers for character type
+    Chunk symbolChunk = graphics.createSymbolChunk();
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    ListUtils.addBulletedListText(resources, symbolChunk, character.getRules().getEdition(), "Sheet.AnimaPower." + characterType.getId(),
-      //$NON-NLS-1$
-      phrase, false);
-
-    String casteResourceKey = "Sheet.AnimaPower." + character.getCasteType().getId() + "." + character.getRules().getEdition().getId();
-    //$NON-NLS-1$ //$NON-NLS-2$
-    boolean isCastePowerDefined = resources.supportsKey(casteResourceKey);
-    if (isCastePowerDefined) {
+    IExaltedEdition edition = character.getRules().getEdition();
+    ListUtils.addBulletedListText(resources, symbolChunk, edition, "Sheet.AnimaPower." + characterType.getId(), phrase, false);  //$NON-NLS-1$
+    String casteResourceKey = "Sheet.AnimaPower." + character.getCasteType().getId() + "." + edition.getId(); //$NON-NLS-1$ //$NON-NLS-2$
+    if (resources.supportsKey(casteResourceKey)) {
       phrase.add(symbolChunk);
       phrase.add(resources.getString(casteResourceKey) + "\n"); //$NON-NLS-1$
     }
     phrase.add(symbolChunk);
     float yPosition = graphics.encodeText(phrase, bounds, lineHeight, Element.ALIGN_LEFT).getYLine();
-    Position lineStartPosition = new Position((bounds.getMinX() + PdfEncodingUtilities.getCaretSymbolWidth(symbolBaseFont)), yPosition);
-    PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, bounds.getMinX(), bounds.getMaxX(), lineHeight,
-      1 + (int) ((yPosition - bounds.getMinY()) / lineHeight));
+    Position lineStartPosition = new Position((bounds.getMinX() + graphics.getCaretSymbolWidth()), yPosition);
+    int lineCount = 1 + (int) ((yPosition - bounds.getMinY()) / lineHeight);
+    new HorizontalLineEncoder().encodeLines(graphics, lineStartPosition, bounds.getMinX(), bounds.getMaxX(), lineHeight, lineCount);
   }
 
   public boolean hasContent(ReportContent content) {

@@ -14,6 +14,6 @@ public class LunarAnimaEncoderFactory extends AbstractAnimaEncoderFactory {
 
   @Override
   protected ITableEncoder getAnimaTableEncoder() {
-    return new LunarAnimaTableEncoder(getResources(), getBaseFont(), getSymbolBaseFont(), getFontSize());
+    return new LunarAnimaTableEncoder(getResources(), getBaseFont(), getFontSize());
   }
 }

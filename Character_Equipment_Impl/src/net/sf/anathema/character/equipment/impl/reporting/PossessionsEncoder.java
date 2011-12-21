@@ -5,17 +5,17 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalM
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.LineFillingBoxContentEncoder;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 
-public class PossessionsEncoder extends AbstractLineTextEncoder {
+public class PossessionsEncoder extends LineFillingBoxContentEncoder {
 
   public PossessionsEncoder(BaseFont baseFont) {
-    super(baseFont);
+    super();
   }
 
   public String getHeaderKey(ReportContent content) {

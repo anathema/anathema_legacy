@@ -8,7 +8,7 @@ import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfHorizontalLineContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
@@ -156,7 +156,7 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
 
   protected float encodeNotes(SheetGraphics graphics, ReportContent content, String title, int column, int span, float distanceFromTop,
     float height, int textColumns) throws DocumentException {
-    IBoxContentEncoder encoder = new PdfHorizontalLineContentEncoder(textColumns, title);
+    IBoxContentEncoder encoder = new HorizontalLineBoxContentEncoder(textColumns, title);
     return encodeFixedBox(graphics, content, encoder, column, span, distanceFromTop, height);
   }
 }

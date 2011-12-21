@@ -12,9 +12,9 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.CharmPrintNameTransformer;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfLineEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
@@ -70,8 +70,8 @@ public class PdfComboEncoder {
     float yPosition = column.getYLine();
     int remainingLines = (int) ((yPosition - contentBounds.getMinY()) / LINE_HEIGHT);
     Position lineStartPosition = new Position(contentBounds.getMinX(), yPosition - LINE_HEIGHT);
-    PdfLineEncodingUtilities.encodeHorizontalLines(graphics.getDirectContent(), lineStartPosition, contentBounds.getMinX(), contentBounds.getMaxX(), LINE_HEIGHT,
-      remainingLines);
+    new HorizontalLineEncoder()
+      .encodeLines(graphics, lineStartPosition, contentBounds.getMinX(), contentBounds.getMaxX(), LINE_HEIGHT, remainingLines);
 
     String headerString = resources.getString("Sheet.Header.Combos"); //$NON-NLS-1$
     boxEncoder.encodeBox(graphics, bounds, headerString);

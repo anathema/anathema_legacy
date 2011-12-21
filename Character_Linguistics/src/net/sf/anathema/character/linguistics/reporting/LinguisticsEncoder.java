@@ -7,7 +7,7 @@ import net.sf.anathema.character.linguistics.ILinguisticsAdditionalModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.LineFillingBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -16,12 +16,12 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 
-public class LinguisticsEncoder extends AbstractLineTextEncoder {
+public class LinguisticsEncoder extends LineFillingBoxContentEncoder {
 
   private final IResources resources;
 
   public LinguisticsEncoder(IResources resources, BaseFont baseFont) {
-    super(baseFont);
+    super();
     this.resources = resources;
   }
 

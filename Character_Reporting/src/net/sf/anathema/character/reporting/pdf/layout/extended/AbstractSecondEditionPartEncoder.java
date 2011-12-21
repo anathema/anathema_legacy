@@ -10,12 +10,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2n
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.SecondEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfDotsEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -54,7 +55,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   protected int getFontSize() {
-    return FONT_SIZE;
+    return IVoidStateFormatConstants.SMALLER_FONT_SIZE;
   }
 
   public IBoxContentEncoder getEssenceEncoder() {
@@ -62,7 +63,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
-    return new PdfDotsEncoder(trait, traitMax, traitHeaderKey);
+    return new DotBoxContentEncoder(trait, traitMax, traitHeaderKey);
   }
 
   public IBoxContentEncoder getOverdriveEncoder() {

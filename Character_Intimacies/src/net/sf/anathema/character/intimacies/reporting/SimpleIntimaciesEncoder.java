@@ -8,17 +8,17 @@ import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.LineFillingBoxContentEncoder;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 
-public class SimpleIntimaciesEncoder extends AbstractLineTextEncoder {
+public class SimpleIntimaciesEncoder extends LineFillingBoxContentEncoder {
 
   public SimpleIntimaciesEncoder(BaseFont baseFont) {
-    super(baseFont);
+    super();
   }
 
   public String getHeaderKey(ReportContent content) {

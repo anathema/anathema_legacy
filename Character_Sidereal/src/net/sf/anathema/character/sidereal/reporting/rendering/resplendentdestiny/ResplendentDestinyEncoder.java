@@ -1,13 +1,12 @@
 package net.sf.anathema.character.sidereal.reporting.rendering.resplendentdestiny;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfLineEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ResplendentDestinyEncoder implements IBoxContentEncoder {
@@ -26,26 +25,23 @@ public class ResplendentDestinyEncoder implements IBoxContentEncoder {
     yPosition -= lineHeight;
     graphics.drawLabelledContent(getLabel("Label.Name"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
-    graphics.drawLabelledContent(getLabel("Label.EffectDice"), null, new Position(bounds.x, yPosition), 
-      bounds.width); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Label.EffectDice"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
-    graphics.drawLabelledContent(getLabel("Label.Duration"), null, new Position(bounds.x, yPosition), 
-      bounds.width); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Label.Duration"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
     graphics.drawLabelledContent(getLabel("Label.Effects"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
-    encodeLines(graphics.getDirectContent(), bounds, new Position(bounds.x, yPosition), 4);
+    encodeLines(graphics, bounds, new Position(bounds.x, yPosition), 4);
     yPosition -= 4 * lineHeight;
-    graphics.drawLabelledContent(getLabel("Label.Trappings"), null, new Position(bounds.x, yPosition), 
-      bounds.width); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Label.Trappings"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
-    encodeLines(graphics.getDirectContent(), bounds, new Position(bounds.x, yPosition), 5);
+    encodeLines(graphics, bounds, new Position(bounds.x, yPosition), 5);
   }
 
-  private void encodeLines(PdfContentByte directContent, Bounds bounds, Position lineStartPosition, int count) {
+  private void encodeLines(SheetGraphics graphics, Bounds bounds, Position lineStartPosition, int count) {
     float minX = bounds.getMinX();
     float maxX = bounds.getMaxX();
-    PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, minX, maxX, lineHeight, count);
+    new HorizontalLineEncoder().encodeLines(graphics, lineStartPosition, minX, maxX, lineHeight, count);
   }
 
   public String getHeaderKey(ReportContent content) {

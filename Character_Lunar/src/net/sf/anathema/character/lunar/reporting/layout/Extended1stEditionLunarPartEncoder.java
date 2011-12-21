@@ -19,7 +19,7 @@ public class Extended1stEditionLunarPartEncoder extends AbstractFirstEditionExal
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new FirstEditionLunarGreatCurseEncoder(getBaseFont(), getSymbolBaseFont(), getResources());
+    return new FirstEditionLunarGreatCurseEncoder(getBaseFont(), getResources());
   }
 
   @Override

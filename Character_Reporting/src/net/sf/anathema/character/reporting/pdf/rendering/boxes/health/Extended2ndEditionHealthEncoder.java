@@ -14,7 +14,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class Extended2ndEditionHealthEncoder extends AbstractHealthAndMovementEncoder {
 
   public Extended2ndEditionHealthEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
-    super(resources, baseFont, symbolBaseFont);
+    super(resources, baseFont);
   }
 
   @Override

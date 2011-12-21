@@ -12,11 +12,10 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -26,12 +25,10 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
 
   private final IResources resources;
   private final BaseFont baseFont;
-  private final BaseFont symbolBaseFont;
 
-  public AbstractHealthAndMovementEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
+  public AbstractHealthAndMovementEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
     this.baseFont = baseFont;
-    this.symbolBaseFont = symbolBaseFont;
   }
 
   public String getHeaderKey(ReportContent content) {
@@ -55,7 +52,7 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
     Font commentFont = new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
     Font commentTitleFont = new Font(commentFont);
     commentTitleFont.setStyle(Font.BOLD);
-    Paragraph healthText = createHealthRulesPhrase(headerFont, commentFont, commentTitleFont);
+    Paragraph healthText = createHealthRulesPhrase(graphics, headerFont, commentFont, commentTitleFont);
     int leading = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 1;
     ColumnText text = graphics.encodeText(healthText, textBounds, (float) leading, Element.ALIGN_LEFT);
     int rectangleOffset = AbstractHealthAndMovementTableEncoder.HEALTH_RECT_SIZE + 1;
@@ -63,9 +60,9 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
     float rectYPosition = text.getYLine() - rectangleOffset - additionalOffset;
     float textYPosition = text.getYLine() - leading - additionalOffset;
     float xPosition = textBounds.x;
-    PdfTemplate rectTemplate = AbstractHealthAndMovementTableEncoder.createRectTemplate(graphics.getDirectContent(), Color.BLACK);
+    PdfTemplate rectTemplate = HealthTemplateFactory.createRectTemplate(graphics.getDirectContent(), Color.BLACK);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate bashingTemplate = AbstractHealthAndMovementTableEncoder.createBashingTemplate(graphics.getDirectContent(), Color.GRAY);
+    PdfTemplate bashingTemplate = HealthTemplateFactory.createBashingTemplate(graphics.getDirectContent(), Color.GRAY);
     graphics.getDirectContent().addTemplate(bashingTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     final String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
@@ -73,14 +70,14 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
     graphics.drawComment(bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += graphics.getCommentTextWidth(bashingString);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate lethalTemplate = AbstractHealthAndMovementTableEncoder.createLethalTemplate(graphics.getDirectContent(), Color.GRAY);
+    PdfTemplate lethalTemplate = HealthTemplateFactory.createLethalTemplate(graphics.getDirectContent(), Color.GRAY);
     graphics.getDirectContent().addTemplate(lethalTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String lethalString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageLethal")); //$NON-NLS-1$
     graphics.drawComment(lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += graphics.getCommentTextWidth(lethalString);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate aggravatedTemplate = AbstractHealthAndMovementTableEncoder.createAggravatedTemplate(graphics.getDirectContent(), Color.GRAY);
+    PdfTemplate aggravatedTemplate = HealthTemplateFactory.createAggravatedTemplate(graphics.getDirectContent(), Color.GRAY);
     graphics.getDirectContent().addTemplate(aggravatedTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String aggravatedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageAggravated")); //$NON-NLS-1$
@@ -102,27 +99,26 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
 
   protected abstract IExaltedEdition getEdition();
 
-  private Paragraph createHealthRulesPhrase(Font headerFont, Font commentFont, Font commentTitleFont) {
+  private Paragraph createHealthRulesPhrase(SheetGraphics graphics, Font headerFont, Font commentFont, Font commentTitleFont) {
     Paragraph healthText = new Paragraph();
     healthText.setAlignment(Element.ALIGN_JUSTIFIED_ALL);
     final Chunk seperator = new Chunk(": ", commentTitleFont); //$NON-NLS-1$
     final Chunk newLine = new Chunk("\n", commentFont); //$NON-NLS-1$
     final Chunk header = new Chunk(resources.getString("Sheet.Health.Comment.Rules"), headerFont); //$NON-NLS-1$
-    final Chunk caretChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
     healthText.add(header);
     healthText.add(newLine);
-    healthText.add(caretChunk);
+    healthText.add(graphics.createSymbolChunk());
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.HealthHeader"), commentTitleFont)); //$NON-NLS-1$
     healthText.add(seperator);
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.HealthText"), commentFont)); //$NON-NLS-1$
     healthText.add(newLine);
-    healthText.add(caretChunk);
+    healthText.add(graphics.createSymbolChunk());
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.DeathHeader"), commentTitleFont)); //$NON-NLS-1$
     healthText.add(seperator);
     healthText.add(new Chunk(resources.getString("Sheet." + getEdition().getId() + ".Health.Comment.DeathText"),
       commentFont)); //$NON-NLS-1$ //$NON-NLS-2$
     healthText.add(newLine);
-    healthText.add(caretChunk);
+    healthText.add(graphics.createSymbolChunk());
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.MarkDamageHeader"), commentTitleFont)); //$NON-NLS-1$
     healthText.add(seperator);
     return healthText;

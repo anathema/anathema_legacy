@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.essence;
 
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.ITextMetrics;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.ITextMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;

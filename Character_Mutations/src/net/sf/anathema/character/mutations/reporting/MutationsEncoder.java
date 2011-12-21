@@ -11,16 +11,16 @@ import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.character.mutations.model.MutationsAdditionalModel;
 import net.sf.anathema.character.mutations.template.MutationsTemplate;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.LineFillingBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class MutationsEncoder extends AbstractLineTextEncoder {
+public class MutationsEncoder extends LineFillingBoxContentEncoder {
 
   private final IResources resources;
 
   public MutationsEncoder(BaseFont baseFont, IResources resources) {
-    super(baseFont);
+    super();
     this.resources = resources;
   }
 

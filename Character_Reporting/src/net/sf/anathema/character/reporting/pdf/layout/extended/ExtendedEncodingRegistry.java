@@ -4,7 +4,7 @@ import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.pdf.rendering.general.NullPdfContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.NullBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -21,14 +21,14 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
 
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
-  private IBoxContentEncoder weaponContentEncoder = new NullPdfContentEncoder("Weapons");
-  private IBoxContentEncoder armourContentEncoder = new NullPdfContentEncoder("Armour");
-  private IBoxContentEncoder intimaciesEncoder = new NullPdfContentEncoder("Intimacies");
-  private IBoxContentEncoder possessionsEncoder = new NullPdfContentEncoder("Possessions");
-  private IBoxContentEncoder linguisticsEncoder = new NullPdfContentEncoder("Linguistics");
-  private IBoxContentEncoder mutationsEncoder = new NullPdfContentEncoder("Mutations");
-  private IBoxContentEncoder thaumaturgyEncoder = new NullPdfContentEncoder("Thaumaturgy");
-  private IBoxContentEncoder meritsAndFlawsEncoder = new NullPdfContentEncoder("Merits & Flaws");
+  private IBoxContentEncoder weaponContentEncoder = new NullBoxContentEncoder("Weapons");
+  private IBoxContentEncoder armourContentEncoder = new NullBoxContentEncoder("Armour");
+  private IBoxContentEncoder intimaciesEncoder = new NullBoxContentEncoder("Intimacies");
+  private IBoxContentEncoder possessionsEncoder = new NullBoxContentEncoder("Possessions");
+  private IBoxContentEncoder linguisticsEncoder = new NullBoxContentEncoder("Linguistics");
+  private IBoxContentEncoder mutationsEncoder = new NullBoxContentEncoder("Mutations");
+  private IBoxContentEncoder thaumaturgyEncoder = new NullBoxContentEncoder("Thaumaturgy");
+  private IBoxContentEncoder meritsAndFlawsEncoder = new NullBoxContentEncoder("Merits & Flaws");
   private List<IVariableBoxContentEncoder> sidebarEncoders = new ArrayList<IVariableBoxContentEncoder>();
   private List<ITableEncoder> magicEncoders = new ArrayList<ITableEncoder>();
 

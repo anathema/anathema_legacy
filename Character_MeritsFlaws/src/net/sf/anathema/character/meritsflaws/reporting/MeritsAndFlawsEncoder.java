@@ -7,7 +7,7 @@ import net.sf.anathema.character.meritsflaws.model.perk.IPerk;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsModel;
 import net.sf.anathema.character.meritsflaws.template.MeritsFlawsTemplate;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.AbstractLineTextEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.LineFillingBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
@@ -15,12 +15,12 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 
-public class MeritsAndFlawsEncoder extends AbstractLineTextEncoder {
+public class MeritsAndFlawsEncoder extends LineFillingBoxContentEncoder {
 
   private final IResources resources;
 
   public MeritsAndFlawsEncoder(BaseFont baseFont, IResources resources) {
-    super(baseFont);
+    super();
     this.resources = resources;
   }
 

@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFirstEditionPartEncoder {
@@ -26,6 +27,6 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
   }
 
   protected final int getFontSize() {
-    return FONT_SIZE;
+    return IVoidStateFormatConstants.SMALLER_FONT_SIZE;
   }
 }

@@ -1,6 +1,11 @@
 package net.sf.anathema.character.lunar.reporting.rendering.greatcurse;
 
+import com.lowagie.text.Chunk;
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
@@ -8,33 +13,24 @@ import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.general.PdfEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.Chunk;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
 
 public class FirstEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder;
-  private final Chunk symbolChunk;
   private final Font font;
   private final Font nameFont;
   private final IResources resources;
 
-  public FirstEditionLunarGreatCurseEncoder(BaseFont baseFont, BaseFont symbolBaseFont, IResources resources) {
+  public FirstEditionLunarGreatCurseEncoder(BaseFont baseFont, IResources resources) {
     this.resources = resources;
     this.font = createFont(baseFont);
     this.nameFont = createNameFont(baseFont);
     this.traitEncoder = new VirtueFlawBoxEncoder();
-    this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
   private Font createNameFont(BaseFont baseFont) {
@@ -61,11 +57,11 @@ public class FirstEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
     }
     else {
       virtue = resources.getString("Sheet.GreatCurse.Lunar.Virtue"); //$NON-NLS-1$
-      phrase.add(symbolChunk);
+      phrase.add(graphics.createSymbolChunk());
     }
     phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Lunar.GainMessage", virtue) + "\n", font)); //$NON-NLS-1$//$NON-NLS-2$
     if (rootVirtue == null) {
-      phrase.add(symbolChunk);
+      phrase.add(graphics.createSymbolChunk());
       phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Lunar.Rules"), font)); //$NON-NLS-1$      
     }
     graphics.encodeText(phrase, textBounds, leading, Element.ALIGN_LEFT);
