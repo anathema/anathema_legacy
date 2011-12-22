@@ -9,6 +9,7 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
@@ -53,13 +54,13 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92011\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$
     anathemaPhrase.setReference("http://anathema.sf.net"); //$NON-NLS-1$
     Bounds anathemaBounds = getPageConfiguration().getSecondColumnRectangle(getContentHeight(), copyrightHeight, 1);
-    graphics.encodeText(anathemaPhrase, anathemaBounds, lineHeight, Element.ALIGN_CENTER);
+    graphics.encodeText(anathemaPhrase, anathemaBounds, lineHeight, HorizontalAlignment.Center);
     Anchor whitewolfPhrase = new Anchor("Exalted \u00A92011 by White Wolf, Inc.\nhttp://www.white-wolf.com", //$NON-NLS-1$
       copyrightFont);
     whitewolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
 
     Bounds whitewolfBounds = getPageConfiguration().getThirdColumnRectangle(getContentHeight(), copyrightHeight);
-    graphics.encodeText(whitewolfPhrase, whitewolfBounds, lineHeight, Element.ALIGN_RIGHT);
+    graphics.encodeText(whitewolfPhrase, whitewolfBounds, lineHeight, HorizontalAlignment.Right);
   }
 
   protected ExtendedEncodingRegistry getRegistry() {

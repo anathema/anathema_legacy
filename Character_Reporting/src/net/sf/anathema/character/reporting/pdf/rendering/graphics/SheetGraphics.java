@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -11,7 +10,6 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
 import java.awt.*;
 
@@ -163,28 +161,28 @@ public class SheetGraphics implements ITextMetrics {
   }
 
   public ColumnText encodeText(Phrase phrase, Bounds bounds, float lineHeight) throws DocumentException {
-    ColumnText columnText = createSimpleColumn(bounds);
+    ColumnText columnText = createColumn(bounds);
     columnText.setLeading(lineHeight);
     columnText.addText(phrase);
     columnText.go();
     return columnText;
   }
 
-  public void encodeText(Phrase phrase, Bounds bounds, float lineHeight, int alignment) throws DocumentException {
-    ColumnText columnText = createSimpleColumn(bounds);
+  public void encodeText(Phrase phrase, Bounds bounds, float lineHeight, HorizontalAlignment alignment) throws DocumentException {
+    ColumnText columnText = createColumn(bounds);
     columnText.setLeading(lineHeight);
-    columnText.setAlignment(alignment);
+    columnText.setAlignment(alignment.getPdfAlignment());
     columnText.addText(phrase);
     columnText.go();
   }
 
   public ColumnText createColumn(Bounds bounds, float lineHeight) {
-    ColumnText columnText = createSimpleColumn(bounds);
+    ColumnText columnText = createColumn(bounds);
     columnText.setLeading(lineHeight);
     return columnText;
   }
 
-  private ColumnText createSimpleColumn(Bounds bounds) {
+  private ColumnText createColumn(Bounds bounds) {
     ColumnText columnText = new ColumnText(directContent);
     float minX = bounds.getMinX();
     float minY = bounds.getMinY();
@@ -192,6 +190,10 @@ public class SheetGraphics implements ITextMetrics {
     float maxY = bounds.getMaxY();
     columnText.setSimpleColumn(minX, minY, maxX, maxY);
     return columnText;
+  }
+
+  private SimpleColumnBuilder createSimpleColumn(Bounds bounds) {
+    return new SimpleColumnBuilder(directContent, bounds);
   }
 
   public Chunk createSymbolChunk() {
