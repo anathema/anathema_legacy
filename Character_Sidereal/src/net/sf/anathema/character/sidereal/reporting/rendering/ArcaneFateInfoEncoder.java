@@ -2,7 +2,6 @@ package net.sf.anathema.character.sidereal.reporting.rendering;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -49,7 +48,7 @@ public class ArcaneFateInfoEncoder implements IBoxContentEncoder {
     phrase.add(resources.getString("Sheet.ArcaneFate.Stealth") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
     phrase.add(symbolChunk);
     phrase.add(resources.getString(rememberingResource) + "\n"); //$NON-NLS-1$
-    graphics.encodeText(phrase, bounds, lineHeight);
+    graphics.createSimpleColumn(bounds).withLeading(lineHeight).andTextPart(phrase).go();
   }
   
   public boolean hasContent(ReportContent content)

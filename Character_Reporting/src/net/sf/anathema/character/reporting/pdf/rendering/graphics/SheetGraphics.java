@@ -156,16 +156,8 @@ public class SheetGraphics implements ITextMetrics {
     return new Font(baseFont, COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
   }
 
-  public void encodeTextWithReducedLineHeight(Bounds textBounds, Phrase phrase) throws DocumentException {
-    encodeText(phrase, textBounds, REDUCED_LINE_HEIGHT);
-  }
-
-  public ColumnText encodeText(Phrase phrase, Bounds bounds, float lineHeight) throws DocumentException {
-    ColumnText columnText = createColumn(bounds);
-    columnText.setLeading(lineHeight);
-    columnText.addText(phrase);
-    columnText.go();
-    return columnText;
+  public SimpleColumnBuilder createSimpleColumn(Bounds bounds) {
+    return new SimpleColumnBuilder(directContent, bounds);
   }
 
   public ColumnText createColumn(Bounds bounds, float lineHeight) {
@@ -182,10 +174,6 @@ public class SheetGraphics implements ITextMetrics {
     float maxY = bounds.getMaxY();
     columnText.setSimpleColumn(minX, minY, maxX, maxY);
     return columnText;
-  }
-
-  public SimpleColumnBuilder createSimpleColumn(Bounds bounds) {
-    return new SimpleColumnBuilder(directContent, bounds);
   }
 
   public Chunk createSymbolChunk() {

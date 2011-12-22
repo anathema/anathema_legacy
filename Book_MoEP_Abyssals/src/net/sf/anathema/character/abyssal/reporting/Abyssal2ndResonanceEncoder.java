@@ -17,6 +17,8 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
+
 public class Abyssal2ndResonanceEncoder implements IBoxContentEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder;
@@ -47,7 +49,7 @@ public class Abyssal2ndResonanceEncoder implements IBoxContentEncoder {
       phrase.add(".\n");
     }
     phrase.add(resources.getString("Sheet.GreatCurse.ResonanceReference")); //$NON-NLS-1$
-    graphics.encodeTextWithReducedLineHeight(textBounds, phrase);
+    graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).go();
   }
   
   public boolean hasContent(ReportContent content) {

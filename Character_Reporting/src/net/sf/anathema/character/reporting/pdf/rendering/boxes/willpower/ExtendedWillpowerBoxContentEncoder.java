@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
 import com.lowagie.text.Phrase;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.general.BulletList;
@@ -54,14 +53,14 @@ public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
     Chunk symbolChunk = graphics.createSymbolChunk()  ;
     ListUtils.addBulletList(spendingPhrase, symbolChunk, willpowerSpendingRules.header, willpowerSpendingRules.items);
     spendingPhrase.add("\n" + content.getWillpowerSpendingNote() + "\n"); //$NON-NLS-1$
-    graphics.encodeText(spendingPhrase, spendingBounds, lineHeight).getYLine();
+    graphics.createSimpleColumn(spendingBounds).withLeading(lineHeight).andTextPart(spendingPhrase).go().getYLine();
 
     float centerX = leftX + columnWidth + columnPadding;
     Bounds regainingBounds = new Bounds(centerX, yPosition - height, columnWidth, height);
     Phrase regainingPhrase = new Phrase("", graphics.createCommentFont());   //$NON-NLS-1$
     BulletList willpowerRegainingRules = content.getWillpowerRegainingRules();
     ListUtils.addBulletList(regainingPhrase, symbolChunk, willpowerRegainingRules.header, willpowerRegainingRules.items);
-    graphics.encodeText(regainingPhrase, regainingBounds, lineHeight).getYLine();
+    graphics.createSimpleColumn(regainingBounds).withLeading(lineHeight).andTextPart(regainingPhrase).go().getYLine();
   }
 
   public boolean hasContent(ReportContent content) {

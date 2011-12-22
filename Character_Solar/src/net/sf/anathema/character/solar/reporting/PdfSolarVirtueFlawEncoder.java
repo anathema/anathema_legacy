@@ -2,12 +2,9 @@ package net.sf.anathema.character.solar.reporting;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.ColumnText;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
@@ -15,7 +12,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.Line;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
@@ -58,12 +54,12 @@ public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
       phrase.add(new Chunk(name, nameFont));
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      graphics.encodeText(phrase, textBounds, leading);
+      graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go();
     }
     if (nameDefined && !conditionDefined) {
       Phrase phrase = new Phrase();
       phrase.add(new Chunk(name, nameFont));
-      float baseLine = graphics.encodeText(phrase, textBounds, leading).getYLine();
+      float baseLine = graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go().getYLine();
       encodeLines(graphics, bounds, leading, baseLine);
     }
     if (!nameDefined && conditionDefined) {
@@ -73,7 +69,7 @@ public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
       phrase.add(new Chunk("                                          ", undefinedFont)); //$NON-NLS-1$
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      graphics.encodeText(phrase, textBounds, leading);
+      graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go();
     }
   }
 

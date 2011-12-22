@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.initiation;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -74,7 +73,7 @@ public class PdfInitiationEncoder implements IVariableBoxContentEncoder {
         phrase.add(new Chunk("\n", textFont)); //$NON-NLS-1$
       }
     }
-    graphics.encodeText(phrase, bounds, IVoidStateFormatConstants.LINE_HEIGHT);
+    graphics.createSimpleColumn(bounds).withLeading(IVoidStateFormatConstants.LINE_HEIGHT).andTextPart(phrase).go();
   }
 
   protected boolean knowsCharm(String charm, IGenericCharacter character) {

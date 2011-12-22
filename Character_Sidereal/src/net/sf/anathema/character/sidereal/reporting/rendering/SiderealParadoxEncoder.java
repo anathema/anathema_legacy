@@ -16,6 +16,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
 
 public class SiderealParadoxEncoder implements IBoxContentEncoder {
@@ -40,7 +41,7 @@ public class SiderealParadoxEncoder implements IBoxContentEncoder {
                                    (reportContent.getCharacter().getRules().getEdition() == ExaltedEdition.SecondEdition ? "2E." : "") +
                                    "RulesPages")); //$NON-NLS-1$
     Bounds infoBounds = new Bounds(bounds.x, bounds.y, bounds.width, textBounds.height - lineHeight);
-    graphics.encodeTextWithReducedLineHeight(infoBounds, phrase);
+    graphics.createSimpleColumn(infoBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).go();
   }
 
   public String getHeaderKey(ReportContent content) {

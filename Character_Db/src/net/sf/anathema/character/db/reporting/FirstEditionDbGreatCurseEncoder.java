@@ -16,6 +16,8 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Phrase;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
+
 public class FirstEditionDbGreatCurseEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
@@ -33,7 +35,7 @@ public class FirstEditionDbGreatCurseEncoder implements IBoxContentEncoder {
     String aspectMessage = getAspectString(reportContent.getCharacter());
     String message = resources.getString("Sheet.GreatCurse.Message", virtueMessage, aspectMessage); //$NON-NLS-1$
     Phrase phrase = new Phrase(message, TableEncodingUtilities.createFont(graphics.getBaseFont()));
-    graphics.encodeTextWithReducedLineHeight(bounds, phrase);
+    graphics.createSimpleColumn(bounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).go();
   }
 
   private String getVirtueString(IGenericCharacter character) {

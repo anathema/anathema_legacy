@@ -1,7 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.rendering;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -20,7 +19,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.LINE_HEIGHT;
@@ -55,7 +53,7 @@ public class SecondEditionLunarSpiritFormEncoder implements IBoxContentEncoder {
     Bounds newBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 50);
     String text = resources.getString("Sheet.Header.Lunar.SpiritForm") + ": " + form;
     try {
-      graphics.encodeText(new Phrase(text, font), newBounds, LINE_HEIGHT - 2);
+      graphics.createSimpleColumn(newBounds).withLeading(LINE_HEIGHT - 2).andTextPart(new Phrase(text, font)).go();
     }
     catch (DocumentException e) {
     }

@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.anima;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -66,7 +65,7 @@ public class PdfAnimaEncoder implements IBoxContentEncoder {
       phrase.add(resources.getString(casteResourceKey) + "\n"); //$NON-NLS-1$
     }
     phrase.add(symbolChunk);
-    float yPosition = graphics.encodeText(phrase, bounds, lineHeight).getYLine();
+    float yPosition = graphics.createSimpleColumn(bounds).withLeading(lineHeight).andTextPart(phrase).go().getYLine();
     Position lineStartPosition = new Position((bounds.getMinX() + graphics.getCaretSymbolWidth()), yPosition);
     int lineCount = 1 + (int) ((yPosition - bounds.getMinY()) / lineHeight);
     new HorizontalLineEncoder().encodeLines(graphics, lineStartPosition, bounds.getMinX(), bounds.getMaxX(), lineHeight, lineCount);

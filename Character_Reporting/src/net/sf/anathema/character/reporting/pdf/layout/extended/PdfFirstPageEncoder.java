@@ -16,7 +16,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.Extended
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
@@ -150,7 +149,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     Bounds firstColumnBounds = pageConfiguration.getFirstColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
     Anchor voidstatePhrase = new Anchor("Inspired by Voidstate\nhttp://www.voidstate.com", copyrightFont); //$NON-NLS-1$
     voidstatePhrase.setReference("http://www.voidstate.com"); //$NON-NLS-1$
-    graphics.encodeText(voidstatePhrase, firstColumnBounds, (float) lineHeight);
+    graphics.createSimpleColumn(firstColumnBounds).withLeading((float) lineHeight).andTextPart(voidstatePhrase).go();
 
     // TODO: Eliminate these hard-coded copyright dates; these should be in a properties file or something.
     Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92011\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$

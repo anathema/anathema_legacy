@@ -2,11 +2,9 @@ package net.sf.anathema.character.lunar.reporting.rendering.greatcurse;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.ColumnText;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.model.ILunarVirtueFlaw;
@@ -53,12 +51,12 @@ public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
       phrase.add(new Chunk(name, nameFont));
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      graphics.encodeText(phrase, textBounds, leading);
+      graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go();
     }
     if (nameDefined && !conditionDefined) {
       Phrase phrase = new Phrase();
       phrase.add(new Chunk(name, nameFont));
-      float baseLine = graphics.encodeText(phrase, textBounds, leading).getYLine();
+      float baseLine = graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go().getYLine();
       encodeLines(graphics, bounds, leading, baseLine);
     }
     if (!nameDefined && conditionDefined) {
@@ -68,7 +66,7 @@ public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
       phrase.add(new Chunk("                                          ", undefinedFont)); //$NON-NLS-1$
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      graphics.encodeText(phrase, textBounds, leading);
+      graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go();
     }
   }
 

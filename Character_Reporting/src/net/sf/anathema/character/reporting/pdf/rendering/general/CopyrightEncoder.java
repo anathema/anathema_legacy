@@ -4,7 +4,6 @@ import com.lowagie.text.Anchor;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 
@@ -29,7 +28,7 @@ public class CopyrightEncoder {
     Bounds firstColumnBounds = pageConfiguration.getFirstColumnRectangle(contentHeight, copyrightHeight, 1);
     Anchor voidStatePhrase = new Anchor("Inspired by Voidstate\nhttp://www.voidstate.com", copyrightFont); //$NON-NLS-1$
     voidStatePhrase.setReference("http://www.voidstate.com"); //$NON-NLS-1$
-    graphics.encodeText(voidStatePhrase, firstColumnBounds, FONT_SIZE);
+    graphics.createSimpleColumn(firstColumnBounds).withLeading((float) FONT_SIZE).andTextPart(voidStatePhrase).go();
     Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92007-2012\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$
     anathemaPhrase.setReference("http://anathema.sf.net"); //$NON-NLS-1$
     Bounds anathemaBounds = pageConfiguration.getSecondColumnRectangle(contentHeight, copyrightHeight, 1);

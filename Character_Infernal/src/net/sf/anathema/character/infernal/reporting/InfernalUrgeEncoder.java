@@ -1,6 +1,5 @@
 package net.sf.anathema.character.infernal.reporting;
 
-import com.lowagie.text.Element;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
 import net.sf.anathema.character.infernal.urge.model.IInfernalUrgeModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -46,7 +45,7 @@ public class InfernalUrgeEncoder implements IBoxContentEncoder {
     phrase.add(new Chunk(resources.getString("InfernalUrge.Title"), nameFont));
     phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
     phrase.add(new Chunk(urgeDescription, font));
-    graphics.encodeText(phrase, textBounds, leading);
+    graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go();
   }
   
   public boolean hasContent(ReportContent content)

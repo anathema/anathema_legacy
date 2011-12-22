@@ -2,7 +2,6 @@ package net.sf.anathema.character.lunar.reporting.rendering.greatcurse;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -64,7 +63,7 @@ public class FirstEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
       phrase.add(graphics.createSymbolChunk());
       phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Lunar.Rules"), font)); //$NON-NLS-1$      
     }
-    graphics.encodeText(phrase, textBounds, leading);
+    graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go();
   }
 
   public String getHeaderKey(ReportContent content) {

@@ -6,7 +6,6 @@ import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfTemplate;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -54,7 +53,7 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
     commentTitleFont.setStyle(Font.BOLD);
     Paragraph healthText = createHealthRulesPhrase(graphics, headerFont, commentFont, commentTitleFont);
     int leading = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 1;
-    float yLine = graphics.encodeText(healthText, textBounds, (float) leading).getYLine();
+    float yLine = graphics.createSimpleColumn(textBounds).withLeading((float) leading).andTextPart(healthText).go().getYLine();
     int rectangleOffset = AbstractHealthAndMovementTableEncoder.HEALTH_RECT_SIZE + 1;
     final float additionalOffset = 2.5f;
     float rectYPosition = yLine - rectangleOffset - additionalOffset;

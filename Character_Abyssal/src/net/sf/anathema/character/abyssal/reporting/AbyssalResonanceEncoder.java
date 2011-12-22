@@ -17,6 +17,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.util.List;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
+
 public class AbyssalResonanceEncoder  implements IBoxContentEncoder {
   private final VirtueFlawBoxEncoder traitEncoder;
   private final IResources resources;
@@ -38,7 +40,7 @@ public class AbyssalResonanceEncoder  implements IBoxContentEncoder {
     phrase.add(resources.getString("Sheet.GreatCurse.SocialPoolMessage", getMaxVirtueValue(reportContent.getCharacter())) + "\n"); //$NON-NLS-1$ //$NON-NLS-2$
     phrase.add(graphics.createSymbolChunk());
     phrase.add(resources.getString("Sheet.GreatCurse.VirtueDifficulty")); //$NON-NLS-1$
-    graphics.encodeTextWithReducedLineHeight(textBounds, phrase);
+    graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).go();
   }
   
   public boolean hasContent(ReportContent content)

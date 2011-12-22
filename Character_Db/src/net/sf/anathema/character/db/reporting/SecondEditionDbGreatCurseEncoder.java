@@ -1,6 +1,5 @@
 package net.sf.anathema.character.db.reporting;
 
-import com.lowagie.text.Element;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
 import net.sf.anathema.character.generic.character.*;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -51,7 +50,7 @@ public class SecondEditionDbGreatCurseEncoder implements IBoxContentEncoder {
     String aspect = getAspectString(reportContent.getCharacter(), rootVirtue != null);
     String message = resources.getString("Sheet.GreatCurse.Message.SecondEdition", virtue, aspect); //$NON-NLS-1$
     Phrase phrase = new Phrase(message, font);
-    graphics.encodeText(phrase, textBounds, leading);
+    graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go();
   }
 
   private String getAspectString(IGenericCharacter character, boolean isRootSelected) {

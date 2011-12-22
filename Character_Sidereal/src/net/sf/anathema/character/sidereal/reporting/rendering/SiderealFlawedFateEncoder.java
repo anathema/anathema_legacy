@@ -17,6 +17,8 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
+
 public class SiderealFlawedFateEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
@@ -36,8 +38,8 @@ public class SiderealFlawedFateEncoder implements IBoxContentEncoder {
     phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Sidereal.LimitBreak") + ": ", boldFont)); //$NON-NLS-1$
     String fateString = resources.getString("Sheet.GreatCurse.Sidereal.FlawedFate." + reportContent.getCharacter().getCasteType().getId()) + "\n";
     if (fateString.startsWith("#")) fateString = "\n";
-    phrase.add(fateString); 
-    graphics.encodeTextWithReducedLineHeight(textBounds, phrase);
+    phrase.add(fateString);
+    graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).go();
   }
 
   public String getHeaderKey(ReportContent content) {
