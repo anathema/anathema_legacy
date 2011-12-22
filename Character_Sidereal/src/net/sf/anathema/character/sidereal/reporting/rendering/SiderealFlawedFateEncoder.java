@@ -39,7 +39,7 @@ public class SiderealFlawedFateEncoder implements IBoxContentEncoder {
     String fateString = resources.getString("Sheet.GreatCurse.Sidereal.FlawedFate." + reportContent.getCharacter().getCasteType().getId()) + "\n";
     if (fateString.startsWith("#")) fateString = "\n";
     phrase.add(fateString);
-    graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).go();
+    graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode();
   }
 
   public String getHeaderKey(ReportContent content) {

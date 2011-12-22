@@ -49,7 +49,7 @@ public class Abyssal2ndResonanceEncoder implements IBoxContentEncoder {
       phrase.add(".\n");
     }
     phrase.add(resources.getString("Sheet.GreatCurse.ResonanceReference")); //$NON-NLS-1$
-    graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).go();
+    graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode();
   }
   
   public boolean hasContent(ReportContent content) {

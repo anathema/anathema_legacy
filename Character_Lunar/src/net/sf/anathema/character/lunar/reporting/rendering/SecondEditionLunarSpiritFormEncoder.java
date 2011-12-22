@@ -53,7 +53,7 @@ public class SecondEditionLunarSpiritFormEncoder implements IBoxContentEncoder {
     Bounds newBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 50);
     String text = resources.getString("Sheet.Header.Lunar.SpiritForm") + ": " + form;
     try {
-      graphics.createSimpleColumn(newBounds).withLeading(LINE_HEIGHT - 2).andTextPart(new Phrase(text, font)).go();
+      graphics.createSimpleColumn(newBounds).withLeading(LINE_HEIGHT - 2).andTextPart(new Phrase(text, font)).encode();
     }
     catch (DocumentException e) {
     }

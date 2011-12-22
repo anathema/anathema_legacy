@@ -53,14 +53,14 @@ public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
     Chunk symbolChunk = graphics.createSymbolChunk()  ;
     ListUtils.addBulletList(spendingPhrase, symbolChunk, willpowerSpendingRules.header, willpowerSpendingRules.items);
     spendingPhrase.add("\n" + content.getWillpowerSpendingNote() + "\n"); //$NON-NLS-1$
-    graphics.createSimpleColumn(spendingBounds).withLeading(lineHeight).andTextPart(spendingPhrase).go().getYLine();
+    graphics.createSimpleColumn(spendingBounds).withLeading(lineHeight).andTextPart(spendingPhrase).encode().getYLine();
 
     float centerX = leftX + columnWidth + columnPadding;
     Bounds regainingBounds = new Bounds(centerX, yPosition - height, columnWidth, height);
     Phrase regainingPhrase = new Phrase("", graphics.createCommentFont());   //$NON-NLS-1$
     BulletList willpowerRegainingRules = content.getWillpowerRegainingRules();
     ListUtils.addBulletList(regainingPhrase, symbolChunk, willpowerRegainingRules.header, willpowerRegainingRules.items);
-    graphics.createSimpleColumn(regainingBounds).withLeading(lineHeight).andTextPart(regainingPhrase).go().getYLine();
+    graphics.createSimpleColumn(regainingBounds).withLeading(lineHeight).andTextPart(regainingPhrase).encode().getYLine();
   }
 
   public boolean hasContent(ReportContent content) {

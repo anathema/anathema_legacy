@@ -2,10 +2,8 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.ColumnText;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -15,6 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SimpleColumn;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
@@ -46,7 +45,7 @@ public class PdfComboEncoder {
     }
 
     Bounds contentBounds = boxEncoder.calculateContentBounds(maxBounds);
-    ColumnText column = graphics.createColumn(contentBounds, LINE_HEIGHT);
+    SimpleColumn column = graphics.createSimpleColumn(contentBounds).withLeading(LINE_HEIGHT).get();
     addCombos(graphics, column, combos);
 
     float yPosition = column.getYLine();
@@ -64,7 +63,7 @@ public class PdfComboEncoder {
 
   public float encodeFixedCombos(SheetGraphics graphics, List<IGenericCombo> combos, Bounds bounds) throws DocumentException {
     Bounds contentBounds = boxEncoder.calculateContentBounds(bounds);
-    ColumnText column = graphics.createColumn(contentBounds, LINE_HEIGHT);
+    SimpleColumn column = graphics.createSimpleColumn(contentBounds).withLeading(LINE_HEIGHT).get();
     addCombos(graphics, column, combos);
 
     float yPosition = column.getYLine();
@@ -78,20 +77,20 @@ public class PdfComboEncoder {
     return bounds.getHeight();
   }
 
-  private void addCombos(SheetGraphics graphics, ColumnText columnText, List<IGenericCombo> combos) throws DocumentException {
+  private void addCombos(SheetGraphics graphics, SimpleColumn columnText, List<IGenericCombo> combos) throws DocumentException {
     while (!combos.isEmpty()) {
       Phrase comboPhrase = createComboPhrase(graphics, combos.get(0));
 
       float yLine = columnText.getYLine();
       columnText.addText(comboPhrase);
-      int status = columnText.go(true);
+      int status = columnText.simulate();
       columnText.setYLine(yLine);
       columnText.setText(comboPhrase);
-      if (ColumnText.hasMoreText(status)) {
+      if (SimpleColumn.hasMoreText(status)) {
         break;
       }
       else {
-        columnText.go();
+        columnText.encode();
         combos.remove(0);
       }
     }

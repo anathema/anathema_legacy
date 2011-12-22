@@ -6,7 +6,6 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
@@ -44,13 +43,9 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
   protected abstract Float[] getMovementColumns();
 
   public final float encodeTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
-    PdfContentByte directContent = graphics.getDirectContent();
-    ColumnText tableColumn = new ColumnText(directContent);
-    PdfPTable table = createTable(directContent, content);
+    PdfPTable table = createTable(content);
     table.setWidthPercentage(100);
-    tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
-    tableColumn.addElement(table);
-    tableColumn.go();
+    graphics.createSimpleColumn(bounds).withElement(table).encode();
     return table.getTotalHeight();
   }
 
@@ -58,7 +53,7 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
     return character.getTraitCollection();
   }
 
-  protected final PdfPTable createTable(PdfContentByte directContent, ReportContent content) throws DocumentException {
+  protected final PdfPTable createTable(ReportContent content) throws DocumentException {
     float[] columnWidth = createColumnWidth();
     PdfPTable table = new PdfPTable(columnWidth);
     addMovementHeader(table);

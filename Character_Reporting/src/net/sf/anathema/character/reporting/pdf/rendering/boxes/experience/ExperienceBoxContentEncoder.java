@@ -16,7 +16,7 @@ public class ExperienceBoxContentEncoder implements IBoxContentEncoder {
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     ExperienceContent content = createContent(reportContent);
     Phrase phrase = new Phrase(content.getExperienceText(), graphics.createTextFont());
-    graphics.createSimpleColumn(bounds).withLeading((float) (FONT_SIZE + 4)).andTextPart(phrase).go();
+    graphics.createSimpleColumn(bounds).withLeading((float) (FONT_SIZE + 4)).andTextPart(phrase).encode();
   }
 
   @Override

@@ -20,7 +20,7 @@ public abstract class LineFillingBoxContentEncoder implements IBoxContentEncoder
     Phrase phrase = new Phrase();
     addToPhrase(reportContent.getCharacter(), font, phrase);
     Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 2);
-    float yPosition = graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).go().getYLine();
+    float yPosition = graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode().getYLine();
     yPosition -= REDUCED_LINE_HEIGHT;
     while (yPosition > bounds.y) {
       graphics.createHorizontalLineByCoordinate(new Position(bounds.x, yPosition), bounds.getMaxX()).encode();

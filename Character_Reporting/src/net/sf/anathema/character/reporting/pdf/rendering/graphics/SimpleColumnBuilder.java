@@ -1,10 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import org.apache.batik.bridge.GVTBuilder;
 
 public class SimpleColumnBuilder {
 
@@ -24,13 +24,18 @@ public class SimpleColumnBuilder {
     return this;
   }
 
+  public SimpleColumnBuilder withElement(Element element) {
+    simpleColumn.addElement(element);
+    return this;
+  }
+
   public SimpleColumnBuilder andTextPart(Phrase phrase) {
     simpleColumn.addText(phrase);
     return this;
   }
 
-  public SimpleColumn go() throws DocumentException {
-    simpleColumn.go();
+  public SimpleColumn encode() throws DocumentException {
+    simpleColumn.encode();
     return simpleColumn;
   }
 

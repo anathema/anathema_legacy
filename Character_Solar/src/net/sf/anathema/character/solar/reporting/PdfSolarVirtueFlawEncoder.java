@@ -54,12 +54,12 @@ public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
       phrase.add(new Chunk(name, nameFont));
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go();
+      graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).encode();
     }
     if (nameDefined && !conditionDefined) {
       Phrase phrase = new Phrase();
       phrase.add(new Chunk(name, nameFont));
-      float baseLine = graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go().getYLine();
+      float baseLine = graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).encode().getYLine();
       encodeLines(graphics, bounds, leading, baseLine);
     }
     if (!nameDefined && conditionDefined) {
@@ -69,7 +69,7 @@ public class PdfSolarVirtueFlawEncoder implements IBoxContentEncoder {
       phrase.add(new Chunk("                                          ", undefinedFont)); //$NON-NLS-1$
       phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
       phrase.add(new Chunk(condition, font));
-      graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go();
+      graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).encode();
     }
   }
 

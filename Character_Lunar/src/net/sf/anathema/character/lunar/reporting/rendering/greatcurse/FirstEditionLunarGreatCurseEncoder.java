@@ -63,7 +63,7 @@ public class FirstEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
       phrase.add(graphics.createSymbolChunk());
       phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Lunar.Rules"), font)); //$NON-NLS-1$      
     }
-    graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).go();
+    graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).encode();
   }
 
   public String getHeaderKey(ReportContent content) {

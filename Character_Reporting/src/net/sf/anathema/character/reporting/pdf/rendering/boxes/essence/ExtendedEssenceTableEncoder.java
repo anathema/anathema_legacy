@@ -8,7 +8,6 @@ import com.lowagie.text.Image;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -71,23 +70,17 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(getEssenceColumns());
   }
 
-  public final float encodeTable(SheetGraphics graphics, ExtendedEssenceContent content, Bounds bounds) throws DocumentException {
-    return encodeTable(graphics, content, bounds, false);
-  }
 
   public final float getTableHeight(ExtendedEssenceContent content, float width) throws DocumentException {
     int lines = content.getOverallLineCount();
     return traitEncoder.getTraitHeight() + lines * BARE_LINE_HEIGHT + 1.75f * TEXT_PADDING;
   }
 
-  protected final float encodeTable(SheetGraphics graphics, ExtendedEssenceContent content, Bounds bounds, boolean simulate)
-    throws DocumentException {
-    ColumnText tableColumn = new ColumnText(graphics.getDirectContent());
+  @Override
+  public final float encodeTable(SheetGraphics graphics, ExtendedEssenceContent content, Bounds bounds) throws DocumentException {
     PdfPTable table = createTable(graphics, content);
     table.setWidthPercentage(100);
-    tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
-    tableColumn.addElement(table);
-    tableColumn.go(simulate);
+    graphics.createSimpleColumn(bounds).withElement(table).encode();
     return table.getTotalHeight();
   }
 

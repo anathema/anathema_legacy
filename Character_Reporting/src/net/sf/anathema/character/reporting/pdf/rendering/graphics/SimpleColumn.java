@@ -1,12 +1,17 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 
 public class SimpleColumn {
+
+  public static boolean hasMoreText(int status) {
+    return ColumnText.hasMoreText(status);
+  }
 
   private final ColumnText columnText;
 
@@ -17,6 +22,10 @@ public class SimpleColumn {
     float maxX = bounds.getMaxX();
     float maxY = bounds.getMaxY();
     columnText.setSimpleColumn(minX, minY, maxX, maxY);
+  }
+
+  public void addElement(Element element) {
+    columnText.addElement(element);
   }
 
   public void addText(Phrase phrase) {
@@ -47,11 +56,11 @@ public class SimpleColumn {
     return columnText.getLinesWritten();
   }
 
-  public int go() throws DocumentException {
+  public int encode() throws DocumentException {
     return columnText.go();
   }
 
-  public int go(boolean simulate) throws DocumentException {
-    return columnText.go(simulate);
+  public int simulate() throws DocumentException {
+    return columnText.go(true);
   }
 }

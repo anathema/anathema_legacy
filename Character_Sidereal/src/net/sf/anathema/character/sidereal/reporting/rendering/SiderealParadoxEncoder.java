@@ -41,7 +41,7 @@ public class SiderealParadoxEncoder implements IBoxContentEncoder {
                                    (reportContent.getCharacter().getRules().getEdition() == ExaltedEdition.SecondEdition ? "2E." : "") +
                                    "RulesPages")); //$NON-NLS-1$
     Bounds infoBounds = new Bounds(bounds.x, bounds.y, bounds.width, textBounds.height - lineHeight);
-    graphics.createSimpleColumn(infoBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).go();
+    graphics.createSimpleColumn(infoBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode();
   }
 
   public String getHeaderKey(ReportContent content) {

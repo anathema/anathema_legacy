@@ -83,14 +83,14 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
     int totalHeight = 0;
     while (!text.startsWith("##")) {
       Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y, bounds.width - offsetX, bounds.height - offsetY - totalHeight);
-      totalHeight += graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(phrase).go().getLinesWritten() * lineHeight;
+      totalHeight += graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(phrase).encode().getLinesWritten() * lineHeight;
       text = resources.getString(powerBase + power + (++index));
       text = text.replace("TELLMDV", "" + tellMDV);
       phrase = new Phrase(text, font);
     }
     if (!isHorizontal) {
       Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y + bounds.height - offsetY - totalHeight, bounds.x - offsetX, lineHeight);
-      totalHeight += graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(new Phrase(" ", font)).go().getLinesWritten() * lineHeight;
+      totalHeight += graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(new Phrase(" ", font)).encode().getLinesWritten() * lineHeight;
     }
     return totalHeight;
   }

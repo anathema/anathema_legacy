@@ -1,11 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
 import com.lowagie.text.Chunk;
-import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
@@ -15,7 +12,6 @@ import java.awt.*;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SUBSECTION_FONT_SIZE;
 
 public class SheetGraphics implements ITextMetrics {
@@ -158,22 +154,6 @@ public class SheetGraphics implements ITextMetrics {
 
   public SimpleColumnBuilder createSimpleColumn(Bounds bounds) {
     return new SimpleColumnBuilder(directContent, bounds);
-  }
-
-  public ColumnText createColumn(Bounds bounds, float lineHeight) {
-    ColumnText columnText = createColumn(bounds);
-    columnText.setLeading(lineHeight);
-    return columnText;
-  }
-
-  private ColumnText createColumn(Bounds bounds) {
-    ColumnText columnText = new ColumnText(directContent);
-    float minX = bounds.getMinX();
-    float minY = bounds.getMinY();
-    float maxX = bounds.getMaxX();
-    float maxY = bounds.getMaxY();
-    columnText.setSimpleColumn(minX, minY, maxX, maxY);
-    return columnText;
   }
 
   public Chunk createSymbolChunk() {

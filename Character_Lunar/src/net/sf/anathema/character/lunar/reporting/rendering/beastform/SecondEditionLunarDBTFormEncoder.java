@@ -68,7 +68,7 @@ public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
     Font font = TableEncodingUtilities.createFont(baseFont);
     Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y + bounds.height - offsetY, bounds.width / 2 - offsetX, lineHeight);
     font.setSize(IVoidStateFormatConstants.COMMENT_FONT_SIZE);
-    graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(new Phrase(text, font)).go();
+    graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(new Phrase(text, font)).encode();
   }
 
   private final void encodeMutations(SheetGraphics graphics, Bounds bounds, ReportContent content) {

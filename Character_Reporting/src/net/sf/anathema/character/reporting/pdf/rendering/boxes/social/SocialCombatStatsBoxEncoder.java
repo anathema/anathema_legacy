@@ -5,8 +5,6 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.ColumnText;
-import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
@@ -14,14 +12,15 @@ import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.lib.resources.IResources;
+
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
 
 public class SocialCombatStatsBoxEncoder implements IBoxContentEncoder {
 
@@ -51,15 +50,15 @@ public class SocialCombatStatsBoxEncoder implements IBoxContentEncoder {
     ITableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources, baseFont);
     float attackHeight = tableEncoder.encodeTable(graphics, reportContent, attackTableBounds);
     Bounds actionBounds = new Bounds(bounds.x, bounds.y, valueWidth / 2f, attackTableBounds.height - attackHeight);
-    encodeActionTable(graphics.getDirectContent(), actionBounds);
+    encodeActionTable(graphics, actionBounds);
     final float center = bounds.x + valueWidth / 2f;
     Bounds commentBounds = new Bounds(center + 4, bounds.y, valueWidth / 2f, attackTableBounds.height - attackHeight);
-    encodeDVTable(graphics.getDirectContent(), commentBounds);
-    graphics.getDirectContent().moveTo(center, bounds.y + 6 * IVoidStateFormatConstants.COMMENT_FONT_SIZE);
+    encodeDVTable(graphics, commentBounds);
+    graphics.getDirectContent().moveTo(center, bounds.y + 6 * COMMENT_FONT_SIZE);
     graphics.getDirectContent().lineTo(center, bounds.y + 3);
   }
 
-  private void encodeDVTable(PdfContentByte directContent, Bounds bounds) throws DocumentException {
+  private void encodeDVTable(SheetGraphics graphics, Bounds bounds) throws DocumentException {
     float[] columnWidths = new float[]{4, 5};
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
@@ -78,10 +77,7 @@ public class SocialCombatStatsBoxEncoder implements IBoxContentEncoder {
     createCommonDVRow(table, "Motivation"); //$NON-NLS-1$
     createCommonDVRow(table, "Virtue"); //$NON-NLS-1$
     createCommonDVRow(table, "Intimacy"); //$NON-NLS-1$
-    ColumnText tableColumn = new ColumnText(directContent);
-    tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
-    tableColumn.addElement(table);
-    tableColumn.go();
+    graphics.createSimpleColumn(bounds).withElement(table).encode();
   }
 
   private void createCommonDVRow(PdfPTable table, String sourceId) {
@@ -91,7 +87,7 @@ public class SocialCombatStatsBoxEncoder implements IBoxContentEncoder {
     table.addCell(createCommonActionsCell(new Phrase(dvModifier, commentFont)));
   }
 
-  private float encodeActionTable(PdfContentByte directContent, Bounds bounds) throws DocumentException {
+  private float encodeActionTable(SheetGraphics graphics, Bounds bounds) throws DocumentException {
     float[] columnWidths = new float[]{4, 2.5f, 2f};
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
@@ -113,10 +109,7 @@ public class SocialCombatStatsBoxEncoder implements IBoxContentEncoder {
     addCommonActionsRow(table, "Attack"); //$NON-NLS-1$
     addCommonActionsRow(table, "Monologue"); //$NON-NLS-1$
     addCommonActionsRow(table, "Misc"); //$NON-NLS-1$
-    ColumnText tableColumn = new ColumnText(directContent);
-    tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
-    tableColumn.addElement(table);
-    tableColumn.go();
+    graphics.createSimpleColumn(bounds).withElement(table).encode();
     return table.getTotalHeight();
   }
 
