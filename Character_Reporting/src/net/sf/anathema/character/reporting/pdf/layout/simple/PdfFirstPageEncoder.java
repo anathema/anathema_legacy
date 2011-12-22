@@ -3,7 +3,6 @@ package net.sf.anathema.character.reporting.pdf.layout.simple;
 import com.lowagie.text.Anchor;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 import net.disy.commons.core.util.StringUtilities;
@@ -92,12 +91,12 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
      Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92011\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$
     anathemaPhrase.setReference("http://anathema.sf.net"); //$NON-NLS-1$
     Bounds anathemaBounds = pageConfiguration.getSecondColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
-    graphics.encodeText(anathemaPhrase, anathemaBounds, lineHeight, HorizontalAlignment.Center);
+    graphics.createSimpleColumn(anathemaBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Center).andTextPart(anathemaPhrase).go();
     Anchor whitewolfPhrase = new Anchor("Exalted \u00A92011 by White Wolf, Inc.\nhttp://www.white-wolf.com", //$NON-NLS-1$
       copyrightFont);
     whitewolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
     Bounds whitewolfBounds = pageConfiguration.getThirdColumnRectangle(CONTENT_HEIGHT, copyrightHeight);
-    graphics.encodeText(whitewolfPhrase, whitewolfBounds, lineHeight, HorizontalAlignment.Right);
+    graphics.createSimpleColumn(whitewolfBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Right).andTextPart(whitewolfPhrase).go();
   }
 
   private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop,

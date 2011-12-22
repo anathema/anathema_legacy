@@ -14,7 +14,7 @@ public class SimpleColumnBuilder {
     this.simpleColumn = new SimpleColumn(directContent, bounds);
   }
 
-  public SimpleColumnBuilder withAlignment(HorizontalAlignment alignment) {
+  public SimpleColumnBuilder andAlignment(HorizontalAlignment alignment) {
     simpleColumn.setAlignment(alignment);
     return this;
   }
@@ -24,7 +24,7 @@ public class SimpleColumnBuilder {
     return this;
   }
 
-  public SimpleColumnBuilder addText(Phrase phrase) {
+  public SimpleColumnBuilder andTextPart(Phrase phrase) {
     simpleColumn.addText(phrase);
     return this;
   }

@@ -8,6 +8,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlig
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment.Center;
+import static net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment.Right;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
 
 public class CopyrightEncoder {
@@ -31,10 +33,10 @@ public class CopyrightEncoder {
     Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92007-2012\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$
     anathemaPhrase.setReference("http://anathema.sf.net"); //$NON-NLS-1$
     Bounds anathemaBounds = pageConfiguration.getSecondColumnRectangle(contentHeight, copyrightHeight, 1);
-    graphics.encodeText(anathemaPhrase, anathemaBounds, FONT_SIZE, HorizontalAlignment.Center);
+    graphics.createSimpleColumn(anathemaBounds).withLeading(FONT_SIZE).andAlignment(Center).andTextPart(anathemaPhrase).go();
     Anchor whiteWolfPhrase = new Anchor("Exalted \u00A92007 by White Wolf, Inc.\nhttp://www.white-wolf.com", copyrightFont); //$NON-NLS-1$
     whiteWolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
     Bounds whiteWolfBounds = pageConfiguration.getThirdColumnRectangle(contentHeight, copyrightHeight);
-    graphics.encodeText(whiteWolfPhrase, whiteWolfBounds, (float) FONT_SIZE, HorizontalAlignment.Right);
+    graphics.createSimpleColumn(whiteWolfBounds).withLeading(FONT_SIZE).andAlignment(Right).andTextPart(whiteWolfPhrase).go();
   }
 }

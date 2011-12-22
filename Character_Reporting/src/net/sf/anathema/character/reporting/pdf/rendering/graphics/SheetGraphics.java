@@ -168,14 +168,6 @@ public class SheetGraphics implements ITextMetrics {
     return columnText;
   }
 
-  public void encodeText(Phrase phrase, Bounds bounds, float lineHeight, HorizontalAlignment alignment) throws DocumentException {
-    ColumnText columnText = createColumn(bounds);
-    columnText.setLeading(lineHeight);
-    columnText.setAlignment(alignment.getPdfAlignment());
-    columnText.addText(phrase);
-    columnText.go();
-  }
-
   public ColumnText createColumn(Bounds bounds, float lineHeight) {
     ColumnText columnText = createColumn(bounds);
     columnText.setLeading(lineHeight);
@@ -192,7 +184,7 @@ public class SheetGraphics implements ITextMetrics {
     return columnText;
   }
 
-  private SimpleColumnBuilder createSimpleColumn(Bounds bounds) {
+  public SimpleColumnBuilder createSimpleColumn(Bounds bounds) {
     return new SimpleColumnBuilder(directContent, bounds);
   }
 
