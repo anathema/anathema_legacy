@@ -7,6 +7,8 @@ import com.lowagie.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Box;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Line;
 
 import java.awt.*;
 

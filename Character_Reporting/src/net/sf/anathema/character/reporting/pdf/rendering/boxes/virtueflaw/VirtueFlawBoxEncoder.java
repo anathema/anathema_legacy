@@ -6,6 +6,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
+
 public class VirtueFlawBoxEncoder {
 
   public Bounds encode(SheetGraphics graphics, Bounds bounds, int currentLimit) {
@@ -15,7 +17,7 @@ public class VirtueFlawBoxEncoder {
   public float encodeHeight(SheetGraphics graphics, Bounds bounds, int currentLimit) {
     PdfTraitEncoder traitEncoder    = PdfTraitEncoder.createMediumTraitEncoder();
     float traitBaseLine = bounds.getMaxY() - traitEncoder.getTraitHeight();
-    float padding = IVoidStateFormatConstants.PADDING / 2.0f;
+    float padding = PADDING / 2.0f;
     Position traitPosition = new Position(bounds.x + padding, traitBaseLine);
     return traitEncoder.encodeSquaresCenteredAndUngrouped(graphics, traitPosition, bounds.width - 2 * padding, currentLimit, 10);
   }

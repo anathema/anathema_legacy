@@ -3,8 +3,11 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.traits;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Dot;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTemplate;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.IShape;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Square;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
 import java.awt.*;
@@ -12,24 +15,6 @@ import java.awt.*;
 public class PdfTraitEncoder {
 
   public static final int LARGE_DOT_SIZE = 10;
-
-  private class Dot implements IShape {
-    public void encode(PdfContentByte directContent, Position lowerLeft, int dotIndex, int value) {
-      directContent.arc(lowerLeft.x, lowerLeft.y, lowerLeft.x + dotSize, lowerLeft.y + dotSize, 0, 360);
-      commitShape(directContent, dotIndex < value);
-    }
-  }
-
-  private interface IShape {
-    public void encode(PdfContentByte directContent, Position lowerLeft, int dotIndex, int value);
-  }
-
-  private class Square implements IShape {
-    public void encode(PdfContentByte directContent, Position lowerLeft, int dotIndex, int value) {
-      directContent.rectangle(lowerLeft.x, lowerLeft.y, dotSize, dotSize);
-      commitShape(directContent, dotIndex < value);
-    }
-  }
 
   public static final int SMALL_DOT_SPACING = 2;
   public static final int DOT_PADDING = 2;
@@ -68,7 +53,8 @@ public class PdfTraitEncoder {
   }
 
   public float encodeDotsCenteredAndUngrouped(SheetGraphics graphics, Position position, float width, int value, int dotCount) {
-    return encodeShapeCenteredAndUngrouped(graphics, position, width, value, dotCount, new Dot());
+    Dot dot = new Dot(graphics.getDirectContent(), dotSize);
+    return encodeShapeCenteredAndUngrouped(graphics, position, width, value, dotCount, dot);
   }
 
   private int encodeGroupedDots(SheetGraphics graphics, Position position, float width, int value, int dotCount, final int dotSpacing) {
@@ -83,31 +69,31 @@ public class PdfTraitEncoder {
       float rightEdgeX = position.x + width;
       float spaceNeededRight = currentGroupingSpace + (dotCount - dot) * (dotSize + dotSpacing);
       Position lowerLeft = new Position(rightEdgeX - spaceNeededRight, position.y);
-      new Dot().encode(directContent, lowerLeft, dot, value);
+      new Dot(directContent, dot).encode(lowerLeft, dot < value);
     }
     return dotCount * dotSize + (dotCount - 1) * dotSpacing + groupSpacing;
   }
 
   private float encodeShapeCenteredAndUngrouped(SheetGraphics graphics, Position position, float width, int value, int dotCount, IShape shape) {
-    PdfContentByte directContent = graphics.getDirectContent();
-    initDirectContent(graphics);
+    graphics.initDirectContentForGraphics();
     int dotWidth = dotCount * dotSize;
     final float dotSpacing = (width - dotWidth) / (dotCount + 1);
     float neededWidth = dotWidth + (dotCount - 1) * dotSpacing;
     float leftDotX = position.x + (width - neededWidth) / 2;
     for (int dot = 0; dot < dotCount; dot++) {
-      shape.encode(directContent, new Position(leftDotX, position.y), dot, value);
+      shape.encode(new Position(leftDotX, position.y), dot < value);
       leftDotX += dotSize + dotSpacing;
     }
     return height;
   }
 
   public float encodeSquaresCenteredAndUngrouped(SheetGraphics graphics, Position position, float width, int value, int dotCount) {
-    return encodeShapeCenteredAndUngrouped(graphics, position, width, value, dotCount, new Square());
+    Square square = new Square(graphics.getDirectContent(), dotSize);
+    return encodeShapeCenteredAndUngrouped(graphics, position, width, value, dotCount, square);
   }
 
   public float encodeWithLine(SheetGraphics graphics, Position position, float width, int value, int dotCount) {
-    initDirectContent(graphics);
+    graphics.initDirectContentForGraphics();;
     float dotsWidth = encodeGroupedDots(graphics, position, width, value, dotCount, SMALL_DOT_SPACING);
     graphics.drawMissingTextLine(position, width - dotsWidth - 5);
     return height;
@@ -115,7 +101,7 @@ public class PdfTraitEncoder {
 
   public float encodeWithText(SheetGraphics graphics, String text, Position position, float width, int value, int dotCount) {
     PdfContentByte directContent = graphics.getDirectContent();
-    initDirectContent(graphics);
+    graphics.initDirectContentForGraphics();;
     directContent.beginText();
     directContent.showTextAligned(PdfContentByte.ALIGN_LEFT, text, position.x, position.y, 0);
     directContent.endText();
@@ -126,7 +112,7 @@ public class PdfTraitEncoder {
   public float encodeWithTextAndRectangle(SheetGraphics graphics, String text, Position position, float width, int value, boolean favored,
     int dotCount) {
     PdfContentByte directContent = graphics.getDirectContent();
-    initDirectContent(graphics);
+    graphics.initDirectContentForGraphics();
     directContent.rectangle(position.x, position.y, dotSize, dotSize);
     commitShape(directContent, favored);
     int squareWidth = dotSize + 2;
@@ -136,7 +122,7 @@ public class PdfTraitEncoder {
 
   public float encodeWithExcellencies(SheetGraphics graphics, String text, Position position, float width, int value, boolean favored,
     boolean[] excellencyLearned, int dotCount) {
-    initDirectContent(graphics);
+    graphics.initDirectContentForGraphics();
     for (int i = excellencyLearned.length; i > 0; i--) {
       String label = Integer.toString(i);
       float labelWidth = graphics.getBaseFont().getWidthPoint(label, IVoidStateFormatConstants.FONT_SIZE);
@@ -165,7 +151,4 @@ public class PdfTraitEncoder {
     return height;
   }
 
-  private void initDirectContent(SheetGraphics graphics) {
-    graphics.initDirectContentForGraphics();;
-  }
 }
