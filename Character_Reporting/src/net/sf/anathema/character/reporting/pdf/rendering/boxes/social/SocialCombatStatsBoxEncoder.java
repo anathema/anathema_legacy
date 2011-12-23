@@ -18,6 +18,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Line;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
@@ -54,8 +55,9 @@ public class SocialCombatStatsBoxEncoder implements IBoxContentEncoder {
     final float center = bounds.x + valueWidth / 2f;
     Bounds commentBounds = new Bounds(center + 4, bounds.y, valueWidth / 2f, attackTableBounds.height - attackHeight);
     encodeDVTable(graphics, commentBounds);
-    graphics.getDirectContent().moveTo(center, bounds.y + 6 * COMMENT_FONT_SIZE);
-    graphics.getDirectContent().lineTo(center, bounds.y + 3);
+    Position lineStart = new Position(center, bounds.y + 3);
+    float lineEndY = bounds.y + 6 * COMMENT_FONT_SIZE;
+    graphics.createVerticalLineByCoordinate(lineStart, lineEndY).encode();
   }
 
   private void encodeDVTable(SheetGraphics graphics, Bounds bounds) throws DocumentException {
@@ -67,10 +69,10 @@ public class SocialCombatStatsBoxEncoder implements IBoxContentEncoder {
     headerCell.setColspan(columnWidths.length);
     headerCell.setPaddingTop(1.5f);
     table.addCell(headerCell);
-    String actionSubheader = resources.getString("Sheet.SocialCombat.DVModifiers.Source"); //$NON-NLS-1$
-    table.addCell(createCommonActionsCell(new Phrase(actionSubheader, commentFont)));
-    String speedSubheader = resources.getString("Sheet.SocialCombat.DVModifiers.Modifier"); //$NON-NLS-1$
-    table.addCell(createCommonActionsCell(new Phrase(speedSubheader, commentFont)));
+    String actionSubHeader = resources.getString("Sheet.SocialCombat.DVModifiers.Source"); //$NON-NLS-1$
+    table.addCell(createCommonActionsCell(new Phrase(actionSubHeader, commentFont)));
+    String speedSubHeader = resources.getString("Sheet.SocialCombat.DVModifiers.Modifier"); //$NON-NLS-1$
+    table.addCell(createCommonActionsCell(new Phrase(speedSubHeader, commentFont)));
     table.addCell(createCommonActionsCell(new Phrase(" ", commentFont))); //$NON-NLS-1$
     table.addCell(createCommonActionsCell(new Phrase(" ", commentFont))); //$NON-NLS-1$
     createCommonDVRow(table, "Appearance"); //$NON-NLS-1$
