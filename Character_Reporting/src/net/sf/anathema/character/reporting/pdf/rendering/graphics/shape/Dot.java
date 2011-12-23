@@ -3,27 +3,18 @@ package net.sf.anathema.character.reporting.pdf.rendering.graphics.shape;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
 
-public class Dot implements IShape {
+public class Dot extends AbstractShape {
 
-  private PdfContentByte directContent;
   private int dotSize;
 
   public Dot(PdfContentByte directContent, int dotSize) {
-    this.directContent = directContent;
+    super(directContent);
     this.dotSize = dotSize;
   }
 
-  public void encode(Position lowerLeft, boolean filled) {
-    directContent.arc(lowerLeft.x, lowerLeft.y, lowerLeft.x + dotSize, lowerLeft.y + dotSize, 0, 360);
-    commitShape(filled);
-  }
-
-  private void commitShape(boolean isFilled) {
-    if (isFilled) {
-      directContent.fillStroke();
-    }
-    else {
-      directContent.stroke();
-    }
+  protected void configureShape(Position lowerLeft) {
+    float upperRightX = lowerLeft.x + dotSize;
+    float upperRightY = lowerLeft.y + dotSize;
+    getDirectContent().arc(lowerLeft.x, lowerLeft.y, upperRightX, upperRightY, 0, 360);
   }
 }

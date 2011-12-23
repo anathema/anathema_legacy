@@ -15,14 +15,27 @@ public class Box {
     this.directContent = directContent;
   }
 
-  public void encode(float lineWidth) {
-    directContent.setColorStroke(Color.BLACK);
-    directContent.setLineWidth(lineWidth);
-    directContent.rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
+  public void outline() {
+   outline(0.8f);
+  }
+
+  public void outlineTotalType() {
+    outline(0.75f);
+  }
+
+  public void outline(float lineWidth) {
+    initializeGraphics(lineWidth);
     directContent.stroke();
   }
 
-  public void encodeTotalType() {
-    encode(0.75f);
+  public void fill() {
+    initializeGraphics(0.8f);
+    directContent.fillStroke();
+  }
+
+  private void initializeGraphics(float lineWidth) {
+    directContent.setColorStroke(Color.BLACK);
+    directContent.setLineWidth(lineWidth);
+    directContent.rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
   }
 }

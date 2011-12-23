@@ -104,7 +104,7 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
   }
 
   private final void addEssenceHeader(PdfPTable table, Image firstCell, ExtendedEssenceContent content) {
-    PdfPCell headerCell = new TableCell(firstCell);
+    TableCell headerCell = new TableCell(firstCell);
     headerCell.setColspan(4);
     table.addCell(headerCell);
     table.addCell(spaceCell);

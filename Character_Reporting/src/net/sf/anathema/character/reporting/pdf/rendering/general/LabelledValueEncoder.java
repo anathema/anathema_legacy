@@ -46,7 +46,7 @@ public class LabelledValueEncoder {
     for (int index = 0; index < values.length; index++) {
       float boxX = rightX - allBoxesWidth + (BOX_WIDTH + padding) * index;
       Bounds boxBounds = new Bounds(boxX, textPosition.y - 2, BOX_WIDTH, BOX_HEIGHT);
-      graphics.createBox(boxBounds).encodeTotalType();
+      graphics.createBox(boxBounds).outlineTotalType();
       Position valuePosition = new Position(boxBounds.getCenterX(), textPosition.getY());
       graphics.drawText(String.valueOf(values[index]), valuePosition, Element.ALIGN_CENTER);
     }

@@ -8,9 +8,11 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Box;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Dot;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Line;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Square;
 
-import java.awt.*;
+import java.awt.Color;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
@@ -50,30 +52,41 @@ public class SheetGraphics implements ITextMetrics {
   }
 
   public final void drawMissingTextLine(Position position, float length) {
-    setFillColorBlack();
-    directContent.setLineWidth(0);
+    initDirectContentForEnabledText();
     directContent.moveTo(position.x, position.y);
     directContent.lineTo(position.x + length, position.y);
     directContent.stroke();
   }
-
+  
   public final void drawComment(String text, Position position, int alignment) {
-    setFillColorBlack();
+    initDirectContentForEnabledText();
     setCommentFont();
-    directContent.setLineWidth(0);
-    drawText(text, position, alignment, 0);
+    writeConfiguredText(text, position, alignment, 0);
+  }
+
+  public final void drawDisabledText(String text, Position position, int alignment) {
+    initDirectContentForDisableText();
+    writeConfiguredText(text, position, alignment, 0);
   }
 
   public final void drawText(String text, Position position, int alignment) {
-    addText(text, position, alignment, 0);
+    initDirectContentForEnabledText();
+    writeConfiguredText(text, position, alignment, 0);
   }
 
   public final void drawVerticalText(String text, Position position, int alignment) {
-    addText(text, position, alignment, 90);
+    initDirectContentForEnabledText();
+    writeConfiguredText(text, position, alignment, 90);
+  }
+
+  private void writeConfiguredText(String text, Position position, int alignment, int rotation) {
+    directContent.beginText();
+    directContent.showTextAlignedKerned(alignment, text, position.x, position.y, rotation);
+    directContent.endText();
   }
 
   public final void drawLabelledContent(String label, String content, Position position, float width) {
-    initDirectContentForText();
+    initDirectContentForEnabledText();
     directContent.beginText();
     directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, label, position.x, position.y, 0);
     float labelWidth = getDefaultTextWidth(label);
@@ -88,28 +101,19 @@ public class SheetGraphics implements ITextMetrics {
       directContent.endText();
     }
   }
-
-  private void addText(String text, Position position, int alignment, int rotation) {
-    initDirectContentForText();
-    drawText(text, position, alignment, rotation);
+  
+  private void initDirectContentForEnabledText() {
+    initDirectContentForText(Color.BLACK);
   }
 
-  private void drawText(String text, Position position, int alignment, int rotation) {
-    directContent.beginText();
-    directContent.showTextAlignedKerned(alignment, text, position.x, position.y, rotation);
-    directContent.endText();
+  private void initDirectContentForDisableText() {
+    initDirectContentForText(Color.LIGHT_GRAY);
   }
 
-  private void initDirectContentForText() {
-    setFillColorBlack();
+  private void initDirectContentForText(Color color) {
+    directContent.setColorFill(color);
     setDefaultFont();
     directContent.setLineWidth(0);
-  }
-
-  public void initDirectContentForGraphics() {
-    setDefaultFont();
-    setFillColorBlack();
-    directContent.setLineWidth(0.8f);
   }
 
   public GraphicsTemplate createTemplate(float width, float height) {
@@ -117,7 +121,7 @@ public class SheetGraphics implements ITextMetrics {
   }
 
   public final void setFillColorBlack() {
-    directContent.setRGBColorFill(0, 0, 0);
+    directContent.setColorFill(Color.BLACK);
   }
 
   private final void setCommentFont() {
@@ -185,5 +189,13 @@ public class SheetGraphics implements ITextMetrics {
 
   public Line createVerticalLineByCoordinate(Position startPoint, float endY) {
     return new Line(directContent, startPoint, new Position(startPoint.x, endY));
+  }
+
+  public Square createSquare(int size) {
+    return new Square(directContent, size);
+  }
+
+  public Dot createDot(int size) {
+    return new Dot(directContent, size);
   }
 }

@@ -3,10 +3,10 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.traits;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Dot;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTemplate;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.IShape;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Dot;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Shape;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Square;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
@@ -43,22 +43,12 @@ public class PdfTraitEncoder {
     this.dotSize = dotSize;
   }
 
-  private void commitShape(PdfContentByte directContent, boolean isFilled) {
-    if (isFilled) {
-      directContent.fillStroke();
-    }
-    else {
-      directContent.stroke();
-    }
-  }
-
   public float encodeDotsCenteredAndUngrouped(SheetGraphics graphics, Position position, float width, int value, int dotCount) {
-    Dot dot = new Dot(graphics.getDirectContent(), dotSize);
-    return encodeShapeCenteredAndUngrouped(graphics, position, width, value, dotCount, dot);
+    Dot dot = graphics.createDot(dotSize);
+    return encodeShapeCenteredAndUngrouped(position, width, value, dotCount, dot);
   }
 
   private int encodeGroupedDots(SheetGraphics graphics, Position position, float width, int value, int dotCount, final int dotSpacing) {
-    PdfContentByte directContent = graphics.getDirectContent();
     int groupSpacing = dotCount > 5 ? dotSize / 2 : 0;
     int spacecount = (int) Math.ceil((double) dotCount / 5);
     for (int dot = 0; dot < dotCount; dot++) {
@@ -69,52 +59,45 @@ public class PdfTraitEncoder {
       float rightEdgeX = position.x + width;
       float spaceNeededRight = currentGroupingSpace + (dotCount - dot) * (dotSize + dotSpacing);
       Position lowerLeft = new Position(rightEdgeX - spaceNeededRight, position.y);
-      new Dot(directContent, dot).encode(lowerLeft, dot < value);
+      encodeShape(graphics.createDot(dotSize), lowerLeft, value, dot);
     }
     return dotCount * dotSize + (dotCount - 1) * dotSpacing + groupSpacing;
   }
 
-  private float encodeShapeCenteredAndUngrouped(SheetGraphics graphics, Position position, float width, int value, int dotCount, IShape shape) {
-    graphics.initDirectContentForGraphics();
+  private float encodeShapeCenteredAndUngrouped(Position position, float width, int value, int dotCount, Shape shape) {
     int dotWidth = dotCount * dotSize;
     final float dotSpacing = (width - dotWidth) / (dotCount + 1);
     float neededWidth = dotWidth + (dotCount - 1) * dotSpacing;
     float leftDotX = position.x + (width - neededWidth) / 2;
     for (int dot = 0; dot < dotCount; dot++) {
-      shape.encode(new Position(leftDotX, position.y), dot < value);
+      Position lowerLeft = new Position(leftDotX, position.y);
+      encodeShape(shape, lowerLeft, value, dot);
       leftDotX += dotSize + dotSpacing;
     }
     return height;
   }
 
   public float encodeSquaresCenteredAndUngrouped(SheetGraphics graphics, Position position, float width, int value, int dotCount) {
-    Square square = new Square(graphics.getDirectContent(), dotSize);
-    return encodeShapeCenteredAndUngrouped(graphics, position, width, value, dotCount, square);
+    Square square = graphics.createSquare(dotSize);
+    return encodeShapeCenteredAndUngrouped(position, width, value, dotCount, square);
   }
 
   public float encodeWithLine(SheetGraphics graphics, Position position, float width, int value, int dotCount) {
-    graphics.initDirectContentForGraphics();;
     float dotsWidth = encodeGroupedDots(graphics, position, width, value, dotCount, SMALL_DOT_SPACING);
     graphics.drawMissingTextLine(position, width - dotsWidth - 5);
     return height;
   }
 
   public float encodeWithText(SheetGraphics graphics, String text, Position position, float width, int value, int dotCount) {
-    PdfContentByte directContent = graphics.getDirectContent();
-    graphics.initDirectContentForGraphics();;
-    directContent.beginText();
-    directContent.showTextAligned(PdfContentByte.ALIGN_LEFT, text, position.x, position.y, 0);
-    directContent.endText();
+    graphics.drawText(text, position, PdfContentByte.ALIGN_LEFT);
     encodeGroupedDots(graphics, position, width, value, dotCount, SMALL_DOT_SPACING);
     return height;
   }
 
   public float encodeWithTextAndRectangle(SheetGraphics graphics, String text, Position position, float width, int value, boolean favored,
     int dotCount) {
-    PdfContentByte directContent = graphics.getDirectContent();
-    graphics.initDirectContentForGraphics();
-    directContent.rectangle(position.x, position.y, dotSize, dotSize);
-    commitShape(directContent, favored);
+    Square square = graphics.createSquare(dotSize);
+    encodeShape(square, position, favored);
     int squareWidth = dotSize + 2;
     Position usualTraitPosition = new Position(position.x + squareWidth, position.y);
     return encodeWithText(graphics, text, usualTraitPosition, width - squareWidth, value, dotCount);
@@ -122,23 +105,19 @@ public class PdfTraitEncoder {
 
   public float encodeWithExcellencies(SheetGraphics graphics, String text, Position position, float width, int value, boolean favored,
     boolean[] excellencyLearned, int dotCount) {
-    graphics.initDirectContentForGraphics();
     for (int i = excellencyLearned.length; i > 0; i--) {
       String label = Integer.toString(i);
       float labelWidth = graphics.getBaseFont().getWidthPoint(label, IVoidStateFormatConstants.FONT_SIZE);
       GraphicsTemplate encodingTemplate = graphics.createTemplate(labelWidth, height);
-      PdfTemplate template =  encodingTemplate.getTemplate();
-      encodingTemplate.getTemplateGraphics().initDirectContentForGraphics();
-      if (excellencyLearned[i - 1]) {
-        template.setColorFill(Color.BLACK);
-      }
+      SheetGraphics templateGraphics = encodingTemplate.getTemplateGraphics();
+      boolean hasExcellencyLearned = excellencyLearned[i - 1];
+      Position labelPosition = new Position(0, 0);
+      if (hasExcellencyLearned) {
+         templateGraphics.drawText(label, labelPosition, PdfContentByte.ALIGN_LEFT);
+       }
       else {
-        template.setColorFill(Color.LIGHT_GRAY);
+         templateGraphics.drawDisabledText(label, labelPosition, PdfContentByte.ALIGN_LEFT);
       }
-      template.beginText();
-      template.showTextAligned(PdfContentByte.ALIGN_LEFT, label, 0, 0, 0);
-      template.endText();
-
       float templateX = position.x + width - labelWidth;
       float templateY = position.y;
       encodingTemplate.addToParentAt(templateX, templateY);
@@ -147,8 +126,20 @@ public class PdfTraitEncoder {
     return encodeWithTextAndRectangle(graphics, text, position, width, value, favored, dotCount);
   }
 
+  private void encodeShape(Shape shape, Position lowerLeft, int value, int dot) {
+    encodeShape(shape, lowerLeft, dot < value);
+  }
+
+  private void encodeShape(Shape shape, Position lowerLeft, boolean filled) {
+    if (filled) {
+      shape.encodeFilled(lowerLeft);
+    }
+    else {
+      shape.encodeOutlined(lowerLeft);
+    }
+  }
+
   public float getTraitHeight() {
     return height;
   }
-
 }
