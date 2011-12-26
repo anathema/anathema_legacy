@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -32,11 +33,13 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   private LookAndFeelItem selected;
   private JComboBox combo;
   private JTextField customLaf;
+  private boolean allowCustom;
 
   public LookAndFeelPreferencesElement() {
     this.selected = null;
     this.combo = null;
     this.customLaf = null;
+    this.allowCustom = false;
   }
 
   private static boolean compareClassNames(String name1, String name2) {
@@ -54,17 +57,18 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   private void selectClass(String className) {
     assert SwingUtilities.isEventDispatchThread();
 
-    JTextField currentText = customLaf;
     JComboBox currentCombo = combo;
-    if (currentCombo == null || currentText == null) {
+    if (currentCombo == null) {
       return;
     }
 
+    selected = null;
     int itemCount = currentCombo.getItemCount();
     int selectIndex = -1;
+    String resolvedClassName = resolveLookAndFeelClassName(className);
     for (int i = 0; i < itemCount; i++) {
       LookAndFeelItem item = (LookAndFeelItem)currentCombo.getItemAt(i);
-      if (compareClassNames(className, item.getClassName())) {
+      if (compareClassNames(resolvedClassName, item.getClassName())) {
         selected = item;
         selectIndex = i;
         break;
@@ -84,7 +88,9 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
       currentCombo.setSelectedIndex(selectIndex);
     }
 
-    currentText.setText(className);
+    if (allowCustom && customLaf != null) {
+      customLaf.setText(selected != null ? selected.getClassName() : className);
+    }
   }
 
   private void selectCurrentSettings() {
@@ -102,58 +108,67 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     }
   }
 
-  private IDialogComponent getComponent(final IResources resources) {
-    final JLabel label = new JLabel(resources.getString("AnathemaCore.Tools.Preferences.LookAndFeelCaption")); //$NON-NLS-1$
-    customLaf = new JTextField(25);
-    combo = new JComboBox();
+  private void updateSelectedClassName() {
+    if (allowCustom) {
+      String className = selected != null ? selected.getClassName() : null;
+      customLaf.setText(className != null ? className : getLookAndFeelClassName());
+      customLaf.setEnabled(selected == null || selected.isCustom());
+    }
+  }
 
+  private IDialogComponent getComponent(final IResources resources) {
+    allowCustom = "true".equals(resources.getString("AnathemaCore.Tools.Preferences.AllowCustomLAF").trim().toLowerCase(Locale.US));
+    final JLabel label = new JLabel(resources.getString("AnathemaCore.Tools.Preferences.LookAndFeelCaption")); //$NON-NLS-1$
+
+    // This implementation is a bit nasty but I (kelemen@github.com) was not sure
+    // about the intended contract of some methods. So to be on the safe side,
+    // I simply mimicked the previous implementation.
+
+    combo = new JComboBox();
     combo.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        boolean enableEdit = false;
         selected = (LookAndFeelItem)combo.getSelectedItem();
-        if (selected != null) {
-          String className = selected.getClassName();
-          if (className != null) {
-            customLaf.setText(className);
-          }
-          else {
-            customLaf.setText(getLookAndFeelClassName());
-            selected = new LookAndFeelItem(resources, null, customLaf.getText().trim());
-            enableEdit = true;
-          }
+        if (selected != null && selected.getClassName() == null) {
+          selected = new LookAndFeelItem(resources, null, getLookAndFeelClassName());
         }
-        customLaf.setEnabled(enableEdit);
+        updateSelectedClassName();
       }
     });
 
-    customLaf.getDocument().addDocumentListener(new DocumentListener() {
-      private void onChange() {
-        LookAndFeelItem currentSelection = (LookAndFeelItem)combo.getSelectedItem();
-        if (currentSelection != null) {
-          if (currentSelection.getClassName() == null) {
-            selected = new LookAndFeelItem(resources, null, customLaf.getText().trim());
+    if (allowCustom) {
+      customLaf = new JTextField(25);
+
+      customLaf.getDocument().addDocumentListener(new DocumentListener() {
+        private void onChange() {
+          LookAndFeelItem currentSelection = (LookAndFeelItem)combo.getSelectedItem();
+          if (currentSelection != null) {
+            if (currentSelection.getClassName() == null) {
+              selected = new LookAndFeelItem(resources, null, customLaf.getText().trim());
+            }
           }
         }
-      }
-
-      @Override
-      public void removeUpdate(DocumentEvent arg0) {
-        onChange();
-      }
-
-      @Override
-      public void insertUpdate(DocumentEvent arg0) {
-        onChange();
-      }
-
-      @Override
-      public void changedUpdate(DocumentEvent arg0) {
-        onChange();
-      }
-    });
+  
+        @Override
+        public void removeUpdate(DocumentEvent arg0) {
+          onChange();
+        }
+  
+        @Override
+        public void insertUpdate(DocumentEvent arg0) {
+          onChange();
+        }
+  
+        @Override
+        public void changedUpdate(DocumentEvent arg0) {
+          onChange();
+        }
+      });
+    }
 
     List<LookAndFeelItem> items = new LinkedList<LookAndFeelItem>();
-    items.add(new LookAndFeelItem(resources));
+    if (allowCustom) {
+      items.add(new LookAndFeelItem(resources));
+    }
     for (UIManager.LookAndFeelInfo info: UIManager.getInstalledLookAndFeels()) {
       items.add(new LookAndFeelItem(resources, info.getName(), info.getClassName()));
     }
@@ -169,10 +184,15 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
 
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(label);
-        panel.add(combo, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount - 1));
-        panel.add(customLaf, GridDialogLayoutDataFactory.createHorizontalSpanData(
-            columnCount,
-            GridDialogLayoutData.FILL_HORIZONTAL));
+        if (allowCustom) {
+          panel.add(combo, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount - 1));
+          panel.add(customLaf, GridDialogLayoutDataFactory.createHorizontalSpanData(
+              columnCount,
+              GridDialogLayoutData.FILL_HORIZONTAL));
+        }
+        else {
+          panel.add(combo);
+        }
       }
     };
   }
@@ -204,6 +224,10 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   private static String getLookAndFeelClassName() {
     return AnathemaPreferences.getDefaultPreferences().getUserLookAndFeel();
   }
+  
+  private static String resolveLookAndFeelClassName(String className) {
+    return className != null ? className : UIManager.getSystemLookAndFeelClassName(); 
+  }
 
   public IIdentificate getCategory() {
     return SYSTEM_CATEGORY;
@@ -233,7 +257,9 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
       return false;
     }
 
-    return !compareClassNames(currentSelected.getClassName(), getLookAndFeelClassName());
+    return !compareClassNames(
+        resolveLookAndFeelClassName(currentSelected.getClassName()),
+        resolveLookAndFeelClassName(getLookAndFeelClassName()));
   }
 
   @Override
@@ -242,6 +268,7 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   }
 
   private static class LookAndFeelItem {
+    private final boolean custom;
     private final String name;
     private final String className;
 
@@ -250,10 +277,15 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     }
 
     public LookAndFeelItem(IResources resources, String name, String className) {
+      this.custom = name == null;
       this.name = name != null
           ? name
           : resources.getString("AnathemaCore.Tools.Preferences.CustomLookAndFeel"); //$NON-NLS-1$
       this.className = !"".equals(className) ? className : null;
+    }
+
+    public boolean isCustom() {
+      return custom;
     }
 
     public String getName() {
@@ -269,3 +301,4 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     }
   }
 }
+
