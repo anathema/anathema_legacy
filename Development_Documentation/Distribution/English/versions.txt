@@ -12,8 +12,7 @@ http://anathema.sf.net
 -- Features --
 * Essence maximum raised to 10.
 * Added an option to upgrade combos for 1 XP, per errata.
-* Revised the character sheet layout, providing more space for items, weapons,
-  panoply, etc.
+* Improvements to the character sheet
 * Added some significant enhancements to equipment handling. It is now possible
   to specify attunement costs and current attunement state, which is noted on
   the character sheet. It is also possible for items to affect other character
@@ -30,7 +29,6 @@ http://anathema.sf.net
 * Numerous, high impact improvements to the charm tree viewer!
 * [2E] Added support for Infernals and their charms.
 * [2E] Added support for Spirits, Spirit charms, and God-blooded.
-* [2E] Added support for Thaumaturgy.
 * [2E] Added mechanical support for charms like Glory to the Most High and Divine
   	   Transcendence.
 * [2E] Added mechanical support for Lunar DBT "upgrade" charms, like
