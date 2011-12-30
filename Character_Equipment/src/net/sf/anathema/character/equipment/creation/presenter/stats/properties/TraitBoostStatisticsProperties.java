@@ -44,11 +44,7 @@ public class TraitBoostStatisticsProperties extends AbstractEquipmentStatisticsP
   public String getMeleeRateLabel() {
 	    return getLabelString("Equipment.Stats.Long.MeleeRate"); //$NON-NLS-1$
 	  }
-  
-  public String getMeleeDefenseLabel() {
-	    return getLabelString("Equipment.Stats.Long.MeleeDefense"); //$NON-NLS-1$
-	  }
-  
+
   public String getRangedSpeedLabel() {
 	    return getLabelString("Equipment.Stats.Long.RangedSpeed"); //$NON-NLS-1$
 	  }
@@ -70,11 +66,11 @@ public class TraitBoostStatisticsProperties extends AbstractEquipmentStatisticsP
 	  }
 	
 	public String getJoinDebateLabel() {
-	    return getLabelString("Equipment.Stats.Long.JoinBattle"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.JoinDebate"); //$NON-NLS-1$
 	  }
 	
 	public String getJoinWarLabel() {
-	    return getLabelString("Equipment.Stats.Long.JoinBattle"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.JoinWar"); //$NON-NLS-1$
 	  }
 
   @Override
