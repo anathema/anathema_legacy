@@ -11,6 +11,7 @@ http://anathema.sf.net
 
 -- Features --
 * Essence maximum raised to 10.
+* Added Age stat, which determines a character's Essence cap.
 * Added an option to upgrade combos for 1 XP, per errata.
 * Improvements to the character sheet
 * Added some significant enhancements to equipment handling. It is now possible
@@ -21,7 +22,6 @@ http://anathema.sf.net
 * Modified support for Backgrounds, so that they can now have an optional
   descriptor field. This will hopefully finally clarify the ability to take
   multiple Artifact picks!
-* Added Age stat, which determines a character's Essence cap.
 * Added a greyout of trait dots that are above the current maximum.
 * Added persistence for Limit.
 * Implemented removal of charms when character's statistics are adjusted to be
