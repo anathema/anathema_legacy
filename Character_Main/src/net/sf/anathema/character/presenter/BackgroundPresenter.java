@@ -1,13 +1,5 @@
 package net.sf.anathema.character.presenter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.Icon;
-
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -27,6 +19,15 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import static java.text.MessageFormat.format;
 
 public class BackgroundPresenter implements IPresenter {
 
@@ -108,8 +109,8 @@ public class BackgroundPresenter implements IPresenter {
 
   private synchronized void addBackgroundView(final IBackground background) {
     Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
-    String backgroundString = background.getType().toString() + (background.getDescription() != null ?
-            " (" + background.getDescription() + ")" : "");
+    String description = background.getDescription() != null ? format(" ({0})", background.getDescription()) : "";
+    String backgroundString = background.getType().toString() + description;
     IRemovableTraitView<?> backgroundView = configurationView.addBackgroundView(deleteIcon, backgroundString,
             background.getCurrentValue(), background.getMaximalValue());
     new TraitPresenter(background, backgroundView).initPresentation();
