@@ -36,9 +36,6 @@ public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoi
 	panel.add(content, data);
 	panel.add(extra, data);
 	return panel;
-	/*content.remove(extra);
-	content.add(extra);
-    return content;*/
   }
 
   public void addStatisticsRow(String categoryLabel, Action action, String typeLabel, boolean isSelected) {
