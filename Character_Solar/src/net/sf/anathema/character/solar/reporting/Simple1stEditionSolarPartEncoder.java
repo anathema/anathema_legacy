@@ -12,7 +12,7 @@ public class Simple1stEditionSolarPartEncoder extends AbstractFirstEditionExaltP
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new PdfSolarVirtueFlawEncoder(getBaseFont());
+    return new SolarVirtueFlawContentBoxEncoder(getBaseFont());
   }
 
   @Override

@@ -12,7 +12,7 @@ public class Simple2ndSolarPartEncoder extends AbstractSecondEditionExaltPdfPart
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new PdfSolarVirtueFlawEncoder(getBaseFont());
+    return new SolarVirtueFlawContentBoxEncoder(getBaseFont());
   }
 
   @Override
