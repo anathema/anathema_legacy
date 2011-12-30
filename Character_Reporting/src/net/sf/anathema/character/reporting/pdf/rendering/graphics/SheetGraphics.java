@@ -11,12 +11,14 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Box;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Dot;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Line;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Square;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
 import java.awt.Color;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SUBSECTION_FONT_SIZE;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TABLE_FONT_SIZE;
 
 public class SheetGraphics implements ITextMetrics {
 
@@ -156,6 +158,10 @@ public class SheetGraphics implements ITextMetrics {
 
   public Font createCommentFont() {
     return new Font(baseFont, COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
+  }
+
+  public Font createTableFont() {
+    return new Font(baseFont, TABLE_FONT_SIZE, Font.NORMAL, Color.BLACK);
   }
 
   public SimpleColumnBuilder createSimpleColumn(Bounds bounds) {
