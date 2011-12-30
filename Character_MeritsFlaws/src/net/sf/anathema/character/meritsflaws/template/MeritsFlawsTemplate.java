@@ -13,10 +13,6 @@ public class MeritsFlawsTemplate extends Identificate implements IGlobalAddition
     super(ID);
   }
 
-  public int getMaximalBonusPointGain() {
-    return 10;
-  }
-
   public boolean supportsEdition(IExaltedEdition edition) {
     final boolean[] supported = new boolean[1];
     edition.accept(new IEditionVisitor() {
@@ -25,7 +21,7 @@ public class MeritsFlawsTemplate extends Identificate implements IGlobalAddition
       }
 
       public void visitSecondEdition(IExaltedEdition visitedEdition) {
-        supported[0] = true;
+        supported[0] = false;
       }
     });
     return supported[0];
