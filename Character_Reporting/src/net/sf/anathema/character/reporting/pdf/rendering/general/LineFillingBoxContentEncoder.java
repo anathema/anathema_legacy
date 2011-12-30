@@ -16,7 +16,7 @@ public abstract class LineFillingBoxContentEncoder implements IBoxContentEncoder
   private final static float REDUCED_LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    Font font = TableEncodingUtilities.createFont(graphics.getBaseFont());
+    Font font = TableEncodingUtilities.createTableFont(graphics.getBaseFont());
     Phrase phrase = new Phrase();
     addToPhrase(reportContent.getCharacter(), font, phrase);
     Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 2);

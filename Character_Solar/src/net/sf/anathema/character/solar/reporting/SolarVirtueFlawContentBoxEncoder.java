@@ -17,18 +17,17 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 
 public class SolarVirtueFlawContentBoxEncoder implements IBoxContentEncoder {
 
-  private final VirtueFlawBoxEncoder traitEncoder;
   private final Font nameFont;
   private final Font font;
 
   public SolarVirtueFlawContentBoxEncoder(BaseFont baseFont) {
-    this.font = createFont(baseFont);
+    this.font = TableEncodingUtilities.createTableFont(baseFont);
     this.nameFont = createNameFont(baseFont);
-    this.traitEncoder = new VirtueFlawBoxEncoder();
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     SolarVirtueFlawContent content = createContent(reportContent);
+    VirtueFlawBoxEncoder traitEncoder   = new VirtueFlawBoxEncoder();
     float traitHeight = traitEncoder.encodeHeight(graphics, bounds, content.getLimitValue());
     float traitInterval = traitHeight + 1f;
     Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - traitInterval);
@@ -81,13 +80,9 @@ public class SolarVirtueFlawContentBoxEncoder implements IBoxContentEncoder {
   }
 
   private Font createNameFont(BaseFont baseFont) {
-    Font newFont = createFont(baseFont);
+    Font newFont = TableEncodingUtilities.createTableFont(baseFont);
     newFont.setStyle(Font.BOLD);
     return newFont;
-  }
-
-  private Font createFont(BaseFont baseFont) {
-    return TableEncodingUtilities.createFont(baseFont);
   }
 
   private SolarVirtueFlawContent createContent(ReportContent content) {

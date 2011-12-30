@@ -63,6 +63,6 @@ public class Abyssal2ndResonanceEncoder implements IBoxContentEncoder {
   }
 
   private Font createFont(BaseFont baseFont) {
-    return TableEncodingUtilities.createFont(baseFont);
+    return TableEncodingUtilities.createTableFont(baseFont);
   }
 }

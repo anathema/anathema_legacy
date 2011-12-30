@@ -28,7 +28,7 @@ public class FrequencyTableEncoder extends AbstractTableEncoder<ReportContent> {
 
   public FrequencyTableEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
-    this.font = TableEncodingUtilities.createFont(baseFont);
+    this.font = TableEncodingUtilities.createTableFont(baseFont);
     this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
     this.boldCommentFont = TableEncodingUtilities.createCommentFont(baseFont);
     boldCommentFont.setStyle(Font.BOLD);

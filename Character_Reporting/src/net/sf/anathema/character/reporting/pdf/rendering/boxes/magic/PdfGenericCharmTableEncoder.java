@@ -71,7 +71,7 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder<ReportCont
     IGenericCharacter character = content.getCharacter();
     PdfContentByte directContent = graphics.getDirectContent();
     List<ITraitType> traits = getTraits(character);
-    Font font = TableEncodingUtilities.createFont(baseFont);
+    Font font = TableEncodingUtilities.createTableFont(baseFont);
     PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, Color.BLACK);
     PdfTemplate notLearnedTemplate = createCharmDotTemplate(directContent, Color.WHITE);
     PdfPTable table = new PdfPTable(createColumnWidths(traits.size() + 1));

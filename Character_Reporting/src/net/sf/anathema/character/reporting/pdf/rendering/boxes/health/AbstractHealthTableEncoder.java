@@ -38,7 +38,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
 
   public AbstractHealthTableEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
-    this.font = TableEncodingUtilities.createFont(baseFont);
+    this.font = TableEncodingUtilities.createTableFont(baseFont);
     this.headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
     this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
     this.spaceCell = new PdfPCell(new Phrase(" ", font)); //$NON-NLS-1$

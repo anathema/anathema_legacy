@@ -34,7 +34,7 @@ public class AbyssalResonanceEncoder  implements IBoxContentEncoder {
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     Bounds textBounds = traitEncoder.encode(graphics, bounds, 0);
-    Font font = TableEncodingUtilities.createFont(graphics.getBaseFont());
+    Font font = TableEncodingUtilities.createTableFont(graphics.getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
     phrase.add(graphics.createSymbolChunk());
     phrase.add(resources.getString("Sheet.GreatCurse.SocialPoolMessage", getMaxVirtueValue(reportContent.getCharacter())) + "\n"); //$NON-NLS-1$ //$NON-NLS-2$

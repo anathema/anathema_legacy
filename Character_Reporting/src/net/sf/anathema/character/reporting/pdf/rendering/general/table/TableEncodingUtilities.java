@@ -57,11 +57,11 @@ public class TableEncodingUtilities {
     return outerCell;
   }
 
-  public static Font createFont(BaseFont baseFont) {
+  public static Font createTableFont(BaseFont baseFont) {
     return new Font(baseFont, TABLE_FONT_SIZE, Font.NORMAL, Color.BLACK);
   }
 
-  public static Font createBoldFont(BaseFont baseFont) {
+  public static Font createBoldTableFont(BaseFont baseFont) {
     return new Font(baseFont, TABLE_FONT_SIZE + 1f, Font.BOLD, Color.BLACK);
   }
 

@@ -34,7 +34,7 @@ public class SiderealParadoxEncoder implements IBoxContentEncoder {
     String effects = resources.getString("Sheet.GreatCurse.Sidereal.CurrentEffects") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
     graphics.drawLabelledContent(effects, null, new Position(textBounds.x, textBounds.getMaxY() - lineHeight), bounds.width);
 
-    Font font = TableEncodingUtilities.createFont(graphics.getBaseFont());
+    Font font = TableEncodingUtilities.createTableFont(graphics.getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
     phrase.add(graphics.createSymbolChunk());
     phrase.add(resources.getString("Sheet.GreatCurse.Sidereal." +

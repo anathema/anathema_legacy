@@ -32,7 +32,7 @@ public class SecondEditionDbGreatCurseEncoder implements IBoxContentEncoder {
   }
 
   private Font createFont(BaseFont baseFont) {
-    return TableEncodingUtilities.createFont(baseFont);
+    return TableEncodingUtilities.createTableFont(baseFont);
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {

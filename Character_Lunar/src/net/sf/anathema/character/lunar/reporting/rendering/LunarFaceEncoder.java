@@ -30,7 +30,7 @@ public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implem
 
   public LunarFaceEncoder(BaseFont baseFont, IResources resources) {
     this.resources = resources;
-    this.font = TableEncodingUtilities.createFont(baseFont);
+    this.font = TableEncodingUtilities.createTableFont(baseFont);
   }
 
   public String getHeaderKey(ReportContent content) {

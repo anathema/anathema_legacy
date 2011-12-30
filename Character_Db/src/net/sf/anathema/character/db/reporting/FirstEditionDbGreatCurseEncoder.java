@@ -34,7 +34,7 @@ public class FirstEditionDbGreatCurseEncoder implements IBoxContentEncoder {
     String virtueMessage = getVirtueString(reportContent.getCharacter());
     String aspectMessage = getAspectString(reportContent.getCharacter());
     String message = resources.getString("Sheet.GreatCurse.Message", virtueMessage, aspectMessage); //$NON-NLS-1$
-    Phrase phrase = new Phrase(message, TableEncodingUtilities.createFont(graphics.getBaseFont()));
+    Phrase phrase = new Phrase(message, TableEncodingUtilities.createTableFont(graphics.getBaseFont()));
     graphics.createSimpleColumn(bounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode();
   }
 

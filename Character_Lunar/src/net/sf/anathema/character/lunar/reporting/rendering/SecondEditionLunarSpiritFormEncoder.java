@@ -49,7 +49,7 @@ public class SecondEditionLunarSpiritFormEncoder implements IBoxContentEncoder {
   }
 
   private void encodeForm(SheetGraphics graphics, Bounds bounds, String form) {
-    Font font = TableEncodingUtilities.createFont(baseFont);
+    Font font = TableEncodingUtilities.createTableFont(baseFont);
     Bounds newBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 50);
     String text = resources.getString("Sheet.Header.Lunar.SpiritForm") + ": " + form;
     try {

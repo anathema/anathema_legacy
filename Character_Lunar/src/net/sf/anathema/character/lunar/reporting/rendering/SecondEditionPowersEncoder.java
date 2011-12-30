@@ -39,7 +39,7 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
     tellMDV = hasTBA(reportContent.getCharacter()) ? 8 : 12;
 
     int offsetX = 0, offsetY = isHorizontal ? 0 : 5;
-    font = TableEncodingUtilities.createFont(baseFont);
+    font = TableEncodingUtilities.createTableFont(baseFont);
 
     if (isHorizontal) {
       bounds = new Bounds(bounds.x, bounds.y, bounds.width / 2, bounds.height);

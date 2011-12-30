@@ -25,7 +25,7 @@ public class AstrologyTableEncoder extends AbstractTableEncoder<ReportContent> {
 
   public AstrologyTableEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
-    this.font = TableEncodingUtilities.createFont(baseFont);
+    this.font = TableEncodingUtilities.createTableFont(baseFont);
     this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
   }
 

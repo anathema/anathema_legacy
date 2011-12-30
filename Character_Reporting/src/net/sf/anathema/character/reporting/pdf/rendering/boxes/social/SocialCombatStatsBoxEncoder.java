@@ -18,7 +18,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Line;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
@@ -34,7 +33,7 @@ public class SocialCombatStatsBoxEncoder implements IBoxContentEncoder {
     this.resources = resources;
     this.baseFont = baseFont;
     this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
-    this.font = TableEncodingUtilities.createFont(baseFont);
+    this.font = TableEncodingUtilities.createTableFont(baseFont);
   }
 
   public String getHeaderKey(ReportContent content) {

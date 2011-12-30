@@ -26,7 +26,7 @@ public class SecondEditionAstrologyTableEncoder extends AbstractTableEncoder<Rep
 
   public SecondEditionAstrologyTableEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
-    this.font = TableEncodingUtilities.createFont(baseFont);
+    this.font = TableEncodingUtilities.createTableFont(baseFont);
     this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
   }
 

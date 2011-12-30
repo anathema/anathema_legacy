@@ -52,9 +52,9 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
 
   public ExtendedEssenceTableEncoder(BaseFont baseFont) {
     this.baseFont = baseFont;
-    this.font = TableEncodingUtilities.createFont(baseFont);
+    this.font = TableEncodingUtilities.createTableFont(baseFont);
     this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
-    this.boldFont = TableEncodingUtilities.createBoldFont(baseFont);
+    this.boldFont = TableEncodingUtilities.createBoldTableFont(baseFont);
     this.spaceCell = new PdfPCell(new Phrase(" ", font)); //$NON-NLS-1$
     this.spaceCell.setBorder(HEADER_BORDER);
     this.internalSpaceCell = new PdfPCell(new Phrase(" ", font));

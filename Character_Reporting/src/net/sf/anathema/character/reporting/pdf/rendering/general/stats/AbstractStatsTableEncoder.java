@@ -28,7 +28,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends Abs
 
   public AbstractStatsTableEncoder(BaseFont baseFont, boolean suppressHeaderLine) {
     this.headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
-    this.font = TableEncodingUtilities.createFont(baseFont);
+    this.font = TableEncodingUtilities.createTableFont(baseFont);
     this.sectionFont = new Font(font);
     this.sectionFont.setStyle(Font.BOLD);
     this.suppressHeaderLine = suppressHeaderLine;

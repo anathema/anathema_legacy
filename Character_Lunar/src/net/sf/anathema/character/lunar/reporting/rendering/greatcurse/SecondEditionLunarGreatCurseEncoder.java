@@ -85,7 +85,7 @@ public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
   }
 
   private Font createFont(BaseFont baseFont) {
-    return TableEncodingUtilities.createFont(baseFont);
+    return TableEncodingUtilities.createTableFont(baseFont);
   }
 
   public boolean hasContent(ReportContent content) {
