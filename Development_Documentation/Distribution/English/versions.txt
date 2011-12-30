@@ -13,7 +13,7 @@ http://anathema.sf.net
 * Essence maximum raised to 10.
 * Added Age stat, which determines a character's Essence cap.
 * Added an option to upgrade combos for 1 XP, per errata.
-* Improvements to the character sheet
+* Character Sheet now lists excellencies in the abilities block
 * Added some significant enhancements to equipment handling. It is now possible
   to specify attunement costs and current attunement state, which is noted on
   the character sheet. It is also possible for items to affect other character
