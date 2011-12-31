@@ -13,7 +13,8 @@ public class BackgroundTextCompiler {
   }
 
   public String compileDisplayedText(IBackground background) {
+    Object backgroundName = displayer.getDisplayObject(background);
     String description = background.getDescription() != null ? format(" ({0})", background.getDescription()) : "";
-    return displayer.getDisplayObject(background) + description;
+    return backgroundName + description;
   }
 }
