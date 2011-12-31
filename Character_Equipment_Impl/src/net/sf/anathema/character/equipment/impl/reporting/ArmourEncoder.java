@@ -31,9 +31,10 @@ public class ArmourEncoder implements IBoxContentEncoder {
   public void encode(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
     float tableHeight = encoder.encodeTable(graphics, content, bounds);
     float remainingHeight = bounds.getHeight() - tableHeight;
-    float delimitingLineYPosition = bounds.getMinY() + remainingHeight - 3;
+    int padding = 1;
+    float delimitingLineYPosition = bounds.getMinY() + remainingHeight - padding;
     drawDelimiter(graphics.getDirectContent(), bounds, delimitingLineYPosition);
-    Bounds shieldBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), remainingHeight - 6);
+    Bounds shieldBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), remainingHeight - 2 * padding);
     new ShieldTableEncoder(baseFont, resources).encodeTable(graphics, content, shieldBounds);
   }
 
