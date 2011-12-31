@@ -1,14 +1,12 @@
 package net.sf.anathema.character.reporting.pdf.content.experience;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.content.SubContent;
+import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.text.MessageFormat;
 
-public class ExperienceContent extends AbstractSubContent {
+public class ExperienceContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 

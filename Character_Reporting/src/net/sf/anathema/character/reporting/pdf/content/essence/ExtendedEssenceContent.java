@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.content.essence;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
+import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.essence.pools.ComplexPoolRow;
 import net.sf.anathema.character.reporting.pdf.content.essence.pools.NullPoolRow;
 import net.sf.anathema.character.reporting.pdf.content.essence.pools.OverdrivePoolRow;
@@ -20,7 +20,7 @@ import net.sf.anathema.lib.util.IdentifiedInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExtendedEssenceContent extends AbstractSubContent {
+public class ExtendedEssenceContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 

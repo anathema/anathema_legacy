@@ -3,7 +3,7 @@ package net.sf.anathema.character.lunar.reporting.layout;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.equipment.impl.reporting.AbstractWeaponryTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.WeaponryTableEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -106,7 +106,7 @@ public class Simple2ndEditionLunarAdditionalPageEncoder implements IPdfPageEncod
   private float encodeArsenel(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
-    AbstractWeaponryTableEncoder weaponTableEncoder = new LunarWeaponTableEncoder(baseFont, resources, content.getCharacter());
+    WeaponryTableEncoder weaponTableEncoder = LunarWeaponTableEncoder.Create(baseFont);
     IBoxContentEncoder weaponryEncoder = new WeaponryEncoder(resources, baseFont, weaponTableEncoder);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;

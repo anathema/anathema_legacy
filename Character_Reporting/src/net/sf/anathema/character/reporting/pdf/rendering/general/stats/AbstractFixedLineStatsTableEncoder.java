@@ -18,14 +18,14 @@ public abstract class AbstractFixedLineStatsTableEncoder<T extends IStats> exten
     IStatsGroup<T>[] groups = createStatsGroups(content);
     T[] printStats = getPrintStats(content);
     int line = 0;
-    while (line < getLineCount()) {
+    while (line < getLineCount(content)) {
       T printStat = line < printStats.length ? printStats[line] : null;
       encodeContentLine(table, groups, printStat);
       line++;
     }
   }
 
-  protected abstract int getLineCount();
+  protected abstract int getLineCount(ReportContent content);
 
   protected abstract T[] getPrintStats(ReportContent content);
 }

@@ -199,7 +199,7 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder weaponryEncoder = new WeaponryEncoder(resources, baseFont, new LunarWeaponTableEncoder(baseFont, resources, content.getCharacter()));
+    IBoxContentEncoder weaponryEncoder = new WeaponryEncoder(resources, baseFont, LunarWeaponTableEncoder.Create(baseFont));
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;
   }

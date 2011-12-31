@@ -44,6 +44,8 @@ import net.sf.anathema.character.lunar.reporting.layout.Extended1stEditionLunarP
 import net.sf.anathema.character.lunar.reporting.layout.Extended2ndEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.reporting.layout.Simple1stEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.reporting.layout.Simple2ndEditionLunarPartEncoder;
+import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarWeaponryContent;
+import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarWeaponryContentFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawModelFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
@@ -205,6 +207,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private void registerContent(IResources resources, ReportContentRegistry contentRegistry) {
     contentRegistry.addFactory(KnackContent.class, new KnackContentFactory(resources));
+    contentRegistry.addFactory(LunarWeaponryContent.class, new LunarWeaponryContentFactory(resources));
   }
 
   private void registerSimpleReporting(IResources resources, SimpleEncodingRegistry registry) {

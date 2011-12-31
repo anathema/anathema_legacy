@@ -33,7 +33,7 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
   }
 
   @Override
-  protected int getLineCount() {
+  protected int getLineCount(ReportContent content) {
     return 3;
   }
 

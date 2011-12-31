@@ -105,7 +105,7 @@ public class Extended2ndEditionLunarAdditionalPageEncoder implements IPdfPageEnc
   private float encodeArsenel(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder weaponryEncoder = new WeaponryEncoder(resources, baseFont, new LunarWeaponTableEncoder(baseFont, resources, content.getCharacter()));
+    IBoxContentEncoder weaponryEncoder = new WeaponryEncoder(resources, baseFont, LunarWeaponTableEncoder.Create(baseFont));
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;
   }

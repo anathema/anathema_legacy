@@ -23,11 +23,6 @@ public abstract class AbstractSubContent implements SubContent {
     return true;
   }
 
-  @Override
-  public String getHeader() {
-    return getString("Sheet.Header." + getHeaderKey());
-  }
-
   protected String getString(String resourceKey) {
     return resources.getString(resourceKey);
   }

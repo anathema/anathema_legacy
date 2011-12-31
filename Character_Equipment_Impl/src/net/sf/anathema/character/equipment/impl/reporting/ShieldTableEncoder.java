@@ -1,11 +1,11 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
-import net.sf.anathema.character.equipment.impl.reporting.stats.armour.FatigueStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.stats.armour.MobilityPenaltyStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.stats.shields.CloseCombatShieldStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.stats.shields.RangedCombatShieldStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.stats.EquipmentNameStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.stats.IEquipmentStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.armour.FatigueStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.armour.MobilityPenaltyStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.shields.CloseCombatShieldStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.shields.RangedCombatShieldStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.EquipmentNameStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -47,7 +47,7 @@ public class ShieldTableEncoder extends AbstractEquipmentTableEncoder<IShieldSta
   }
 
   @Override
-  protected int getLineCount() {
+  protected int getLineCount(ReportContent content) {
     return 1;
   }
 

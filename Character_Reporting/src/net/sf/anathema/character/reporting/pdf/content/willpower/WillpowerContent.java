@@ -3,12 +3,12 @@ package net.sf.anathema.character.reporting.pdf.content.willpower;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
+import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.general.BulletList;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
 import net.sf.anathema.lib.resources.IResources;
 
-public class WillpowerContent extends AbstractSubContent {
+public class WillpowerContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 

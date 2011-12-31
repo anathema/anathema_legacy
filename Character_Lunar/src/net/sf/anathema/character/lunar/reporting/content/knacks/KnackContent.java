@@ -6,8 +6,7 @@ import net.sf.anathema.character.lunar.reporting.content.stats.knacks.IKnackStat
 import net.sf.anathema.character.lunar.reporting.content.stats.knacks.KnackNameStatsGroup;
 import net.sf.anathema.character.lunar.reporting.content.stats.knacks.KnackSourceStatsGroup;
 import net.sf.anathema.character.lunar.reporting.content.stats.knacks.KnackStats;
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -16,7 +15,7 @@ import net.sf.anathema.lib.util.Identificate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KnackContent extends AbstractSubContent {
+public class KnackContent extends AbstractSubBoxContent {
 
   private static IIdentificate KNACK = new Identificate("Knack");
 

@@ -2,10 +2,10 @@ package net.sf.anathema.character.reporting.pdf.content.essence;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
+import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SimpleEssenceContent extends AbstractSubContent {
+public class SimpleEssenceContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 

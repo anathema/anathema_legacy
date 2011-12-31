@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.reporting.pdf.content.SubContent;
+import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -18,14 +18,13 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public abstract class FavorableTraitContent implements SubContent {
+public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
-  private IResources resources;
 
   public FavorableTraitContent(IGenericCharacter character, IResources resources) {
+    super(resources);
     this.character = character;
-    this.resources = resources;
   }
 
   public abstract List<? extends ITraitType> getMarkedTraitTypes();
@@ -93,11 +92,7 @@ public abstract class FavorableTraitContent implements SubContent {
   public String getGroupLabel(IIdentificate groupId) {
     String groupIdAsString = groupId.getId();
     String resourceKey = groupId instanceof ICasteType ? "Caste." + groupIdAsString : getGroupNamePrefix() + groupIdAsString; //$NON-NLS-1$
-    return resources.getString(resourceKey);
-  }
-  
-  public String getHeader() {
-    return resources.getString(getHeaderKey());
+    return getString(resourceKey);
   }
 
   public boolean hasGroupLabel() {
@@ -107,13 +102,13 @@ public abstract class FavorableTraitContent implements SubContent {
   protected abstract String getGroupNamePrefix();
 
   public String getTraitLabel(ITraitType traitType) {
-    return resources.getString(getTraitTypePrefix() + traitType.getId());
+    return getString(getTraitTypePrefix() + traitType.getId());
   }
 
   protected abstract String getTraitTypePrefix();
 
   public String getMobilityPenaltyText() {
-    return  " : " + resources.getString(getMarkerCommentKey()); //$NON-NLS-1$
+    return  " : " + getString(getMarkerCommentKey()); //$NON-NLS-1$
   }
 
   public abstract String getMarkerCommentKey();
@@ -124,6 +119,6 @@ public abstract class FavorableTraitContent implements SubContent {
     for (int i = 1; i <= nExcellencies; i++) {
       numbers.append(Integer.toString(i));
     }
-    return numbers.toString() + ": " + resources.getString(getExcellencyCommentKey());
+    return numbers.toString() + ": " + getString(getExcellencyCommentKey());
   }
 }

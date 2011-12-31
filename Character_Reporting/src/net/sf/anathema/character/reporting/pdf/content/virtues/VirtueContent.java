@@ -4,12 +4,12 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
+import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
 import net.sf.anathema.character.reporting.pdf.content.general.PrintTrait;
 import net.sf.anathema.lib.resources.IResources;
 
-public class VirtueContent extends AbstractSubContent {
+public class VirtueContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 

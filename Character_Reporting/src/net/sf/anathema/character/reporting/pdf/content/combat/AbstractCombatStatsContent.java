@@ -5,10 +5,10 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
+import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractCombatStatsContent extends AbstractSubContent {
+public abstract class AbstractCombatStatsContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 

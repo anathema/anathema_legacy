@@ -4,10 +4,10 @@ import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
+import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
 
-public class Abyssal2ndResonanceContent extends AbstractSubContent {
+public class Abyssal2ndResonanceContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 

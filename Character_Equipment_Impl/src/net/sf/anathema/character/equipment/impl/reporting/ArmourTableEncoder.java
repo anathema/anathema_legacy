@@ -2,9 +2,9 @@ package net.sf.anathema.character.equipment.impl.reporting;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
-import net.sf.anathema.character.equipment.impl.reporting.stats.EquipmentNameStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.stats.IEquipmentStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.stats.armour.*;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.EquipmentNameStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.IEquipmentStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.armour.*;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -25,7 +25,7 @@ public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourSta
   protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) {
     IGenericCharacter character = content.getCharacter();
     PdfPTable armourTable = super.createTable(graphics, content, bounds);
-    IArmourStats totalArmour = getEquipmentModel(character).getTotalPrintArmour(getLineCount());
+    IArmourStats totalArmour = getEquipmentModel(character).getTotalPrintArmour(getLineCount(content));
     IEquipmentStatsGroup<IArmourStats>[] groups = createStatsGroups(content);
     for (int index = 0; index < groups.length; index++) {
       if (index != 0) {
@@ -54,7 +54,7 @@ public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourSta
   }
 
   @Override
-  protected int getLineCount() {
+  protected int getLineCount(ReportContent content) {
     return 3;
   }
 
