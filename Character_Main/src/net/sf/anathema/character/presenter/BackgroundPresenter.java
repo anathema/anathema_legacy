@@ -27,8 +27,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.text.MessageFormat.format;
-
 public class BackgroundPresenter implements IPresenter {
 
   private final IBackgroundConfiguration configuration;
@@ -109,8 +107,7 @@ public class BackgroundPresenter implements IPresenter {
 
   private synchronized void addBackgroundView(final IBackground background) {
     Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
-    String description = background.getDescription() != null ? format(" ({0})", background.getDescription()) : "";
-    String backgroundString = background.getType().toString() + description;
+    String backgroundString = new BackgroundTextCompiler(displayer).compileDisplayedText(background);
     IRemovableTraitView<?> backgroundView = configurationView.addBackgroundView(deleteIcon, backgroundString,
             background.getCurrentValue(), background.getMaximalValue());
     new TraitPresenter(background, backgroundView).initPresentation();

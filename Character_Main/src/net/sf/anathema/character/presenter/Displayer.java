@@ -12,7 +12,7 @@ public class Displayer {
     this.internationalizer = internationalizer;
   }
 
-  Object getDisplayObject(Object anObject) {
+  public Object getDisplayObject(Object anObject) {
     if (anObject instanceof IDefaultTrait) {
       anObject = ((IDefaultTrait) anObject).getType();
     }
