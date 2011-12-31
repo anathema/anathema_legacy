@@ -9,6 +9,8 @@ import net.sf.anathema.character.abyssal.generic.RaveningMouth;
 import net.sf.anathema.character.abyssal.generic.SupremePerfection;
 import net.sf.anathema.character.abyssal.reporting.Extended2ndEditionAbyssalPartEncoder;
 import net.sf.anathema.character.abyssal.reporting.Simple2ndEditionAbyssalPartEncoder;
+import net.sf.anathema.character.abyssal.reporting.content.Abyssal2ndResonanceContent;
+import net.sf.anathema.character.abyssal.reporting.content.Abyssal2ndResonanceContentFactory;
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceModelFactory;
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonancePersisterFactory;
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceTemplate;
@@ -109,6 +111,7 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
+    moduleObject.getReportContentRegistry().addFactory(Abyssal2ndResonanceContent.class, new Abyssal2ndResonanceContentFactory(resources));
     SimpleEncodingRegistry simpleRegistry = moduleObject.getSimpleEncodingRegistry();
     simpleRegistry.setPartEncoder(ABYSSAL, SecondEdition, new Simple2ndEditionAbyssalPartEncoder(resources, simpleRegistry, ESSENCE_MAX));
     ExtendedEncodingRegistry extendedRegistry = moduleObject.getExtendedEncodingRegistry();

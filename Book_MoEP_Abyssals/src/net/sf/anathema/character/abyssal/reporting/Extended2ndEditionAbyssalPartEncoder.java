@@ -12,7 +12,7 @@ public class Extended2ndEditionAbyssalPartEncoder extends AbstractSecondEditionE
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new Abyssal2ndResonanceEncoder(getResources());
+    return new Abyssal2ndResonanceEncoder();
   }
 
   @Override

@@ -31,4 +31,8 @@ public abstract class AbstractSubContent implements SubContent {
   protected String getString(String resourceKey) {
     return resources.getString(resourceKey);
   }
+
+  protected String getString(String resourceKey, Object... args) {
+    return resources.getString(resourceKey, args);
+  }
 }
