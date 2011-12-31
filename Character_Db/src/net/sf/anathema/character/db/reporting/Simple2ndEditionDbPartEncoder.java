@@ -13,7 +13,7 @@ public class Simple2ndEditionDbPartEncoder extends AbstractSecondEditionExaltPdf
 
   @Override
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new SecondEditionDbGreatCurseEncoder(getBaseFont(), getResources());
+    return new Db2ndEditionGreatCurseEncoder();
   }
 
   @Override
