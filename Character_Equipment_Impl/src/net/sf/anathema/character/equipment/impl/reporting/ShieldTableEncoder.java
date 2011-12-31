@@ -1,58 +1,28 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
-import net.sf.anathema.character.equipment.impl.reporting.content.stats.armour.FatigueStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.content.stats.armour.MobilityPenaltyStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.content.stats.shields.CloseCombatShieldStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.content.stats.shields.RangedCombatShieldStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.content.stats.EquipmentNameStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.content.stats.IEquipmentStatsGroup;
-import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfPTable;
+import net.sf.anathema.character.equipment.impl.reporting.content.ShieldContent;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfPTable;
-
-public class ShieldTableEncoder extends AbstractEquipmentTableEncoder<IShieldStats> {
-
-  private final IResources resources;
+public class ShieldTableEncoder extends EquipmentTableEncoder<IShieldStats, ShieldContent> {
 
   public ShieldTableEncoder(BaseFont baseFont, IResources resources) {
-    super(baseFont);
-    this.resources = resources;
+    super(ShieldContent.class, baseFont);
   }
 
   @Override
   protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) {
-    IEquipmentStatsGroup<IShieldStats>[] groups = createStatsGroups(content);
+    IStatsGroup<IShieldStats>[] groups = createStatsGroups(content);
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable shieldTable = new PdfPTable(columnWidths);
     shieldTable.setTotalWidth(bounds.width);
     encodeContent(shieldTable, content, bounds);
     return shieldTable;
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  protected IEquipmentStatsGroup<IShieldStats>[] createStatsGroups(ReportContent content) {
-    return new IEquipmentStatsGroup[] {
-        new EquipmentNameStatsGroup<IArmourStats>(resources),
-        new CloseCombatShieldStatsGroup(resources),
-        new RangedCombatShieldStatsGroup(resources),
-        new MobilityPenaltyStatsGroup(resources),
-        new FatigueStatsGroup(resources) };
-  }
-
-  @Override
-  protected int getLineCount(ReportContent content) {
-    return 1;
-  }
-
-  @Override
-  protected IShieldStats[] getPrintStats(ReportContent content) {
-    return getEquipmentModel(content.getCharacter()).getPrintShield();
   }
 }

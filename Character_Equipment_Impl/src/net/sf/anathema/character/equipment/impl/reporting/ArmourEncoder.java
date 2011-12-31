@@ -1,17 +1,16 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
-import java.awt.Color;
-
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.Color;
 
 public class ArmourEncoder implements IBoxContentEncoder {
 
@@ -34,8 +33,7 @@ public class ArmourEncoder implements IBoxContentEncoder {
     float remainingHeight = bounds.getHeight() - tableHeight;
     float delimitingLineYPosition = bounds.getMinY() + remainingHeight - 3;
     drawDelimiter(graphics.getDirectContent(), bounds, delimitingLineYPosition);
-    Bounds shieldBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(),
-        remainingHeight - 6);
+    Bounds shieldBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), remainingHeight - 6);
     new ShieldTableEncoder(baseFont, resources).encodeTable(graphics, content, shieldBounds);
   }
 
@@ -47,9 +45,8 @@ public class ArmourEncoder implements IBoxContentEncoder {
     directContent.stroke();
     directContent.setColorStroke(Color.BLACK);
   }
-  
-  public boolean hasContent(ReportContent content)
-  {
-	  return true;
+
+  public boolean hasContent(ReportContent content) {
+    return true;
   }
 }

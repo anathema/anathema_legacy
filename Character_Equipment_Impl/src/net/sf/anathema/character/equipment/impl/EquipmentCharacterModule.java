@@ -12,6 +12,10 @@ import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.ArmourTableEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.PossessionsEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContent;
+import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContentFactory;
+import net.sf.anathema.character.equipment.impl.reporting.content.ShieldContent;
+import net.sf.anathema.character.equipment.impl.reporting.content.ShieldContentFactory;
 import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry1stEditionContent;
 import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry1stEditionContentFactory;
 import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry2ndEditionContent;
@@ -23,7 +27,6 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -65,10 +68,13 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
   private void registerContent(ReportContentRegistry registry, IResources resources) {
   registry.addFactory(Weaponry1stEditionContent.class, new Weaponry1stEditionContentFactory(resources));
   registry.addFactory(Weaponry2ndEditionContent.class, new Weaponry2ndEditionContentFactory(resources));
+  registry.addFactory(ShieldContent.class, new ShieldContentFactory(resources));
+  registry.addFactory(ArmourContent.class, new ArmourContentFactory(resources));
   }
 
   private void registerEncoders(IResources resources, IEncodingRegistry registry) {
-    registry.setArmourContentEncoder(new ArmourEncoder(resources, registry.getBaseFont(), new ArmourTableEncoder(registry.getBaseFont(), resources)));
+    registry.setArmourContentEncoder(new ArmourEncoder(resources, registry.getBaseFont(), new ArmourTableEncoder(ArmourContent.class, registry
+      .getBaseFont())));
     registry.setWeaponContentEncoder(new WeaponryEncoder(resources, registry.getBaseFont()));
     registry.setPossessionsEncoder(new PossessionsEncoder(registry.getBaseFont()));
   }

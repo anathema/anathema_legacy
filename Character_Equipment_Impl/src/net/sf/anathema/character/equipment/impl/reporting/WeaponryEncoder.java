@@ -2,10 +2,6 @@ package net.sf.anathema.character.equipment.impl.reporting;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry1stEditionContent;
-import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry2ndEditionContent;
-import net.sf.anathema.character.generic.rules.IEditionVisitor;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -35,21 +31,14 @@ public class WeaponryEncoder implements IBoxContentEncoder {
   }
 
   public void encode(SheetGraphics graphics, final ReportContent content, Bounds bounds) throws DocumentException {
-    final WeaponryTableEncoder[] encoder = new WeaponryTableEncoder[1];
-    content.getCharacter().getRules().getEdition().accept(new IEditionVisitor() {
-      public void visitFirstEdition(IExaltedEdition visitedEdition) {
-        encoder[0] = new WeaponryTableEncoder(Weaponry1stEditionContent.class, baseFont);
-      }
+    WeaponryTableEncoder tableEncoder = createTableEncoder(content);
+    tableEncoder.encodeTable(graphics, content, bounds);
+  }
 
-      public void visitSecondEdition(IExaltedEdition visitedEdition) {
-        encoder[0] = new WeaponryTableEncoder(Weaponry2ndEditionContent.class, baseFont);
-      }
-
-    });
-    if (customEncoder != null) {
-      encoder[0] = customEncoder;
-    }
-    encoder[0].encodeTable(graphics, content, bounds);
+  private WeaponryTableEncoder createTableEncoder(ReportContent content) {
+    WeaponryContentClassFinder contentClassFinder = new WeaponryContentClassFinder();
+    content.getCharacter().getRules().getEdition().accept(contentClassFinder);
+    return new WeaponryTableEncoder(contentClassFinder.contentClass, baseFont);
   }
 
   public boolean hasContent(ReportContent content) {
