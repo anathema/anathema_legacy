@@ -1,54 +1,33 @@
 package net.sf.anathema.character.ghost.reporting;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.ghost.passions.GhostPassionsTemplate;
-import net.sf.anathema.character.ghost.passions.model.IGhostPassionsModel;
-import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.ghost.reporting.content.GhostPassionContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
-public class GhostPassionEncoder implements IBoxContentEncoder {
+public class GhostPassionEncoder extends AbstractBoxContentEncoder<GhostPassionContent> {
 
-  private final PdfTraitEncoder traitEncoder;
-  private final IResources resources;
+  private final PdfTraitEncoder traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
+  ;
 
-  public GhostPassionEncoder(BaseFont baseFont, IResources resources) {
-    this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
-    this.resources = resources;
-  }
-
-  public String getHeaderKey(ReportContent content) {
-    return "Ghost.Passions"; //$NON-NLS-1$
+  public GhostPassionEncoder() {
+    super(GhostPassionContent.class);
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    IGhostPassionsModel model = (IGhostPassionsModel) reportContent.getCharacter().getAdditionalModel(GhostPassionsTemplate.ID);
+    GhostPassionContent content = createContent(reportContent);
     float groupSpacing = traitEncoder.getTraitHeight() / 2;
     float x = bounds.x;
     float y = bounds.getMaxY() - 2 * groupSpacing;
-    int maximum = 5;
     float width = bounds.getWidth();
-    for (VirtueType virtue : VirtueType.values()) {
-      ISubTraitContainer container = model.getPassionContainer(virtue);
-      String virtueString = resources.getString(virtue.getId());
-      for (ISubTrait passion : container.getSubTraits()) {
-        String traitLabel = "(" + virtueString + ") " + passion.getName();
-        int value = passion.getCurrentValue();
-        Position position = new Position(x, y);
-        y -= traitEncoder.encodeWithText(graphics, traitLabel, position, width, value, maximum);
-      }
+    for (NamedValue passion : content.getPrintPassions()) {
+      Position position = new Position(x, y);
+      y -= traitEncoder.encode(graphics, passion, position, width, content.getTraitMaximum());
     }
-  }
-
-  public boolean hasContent(ReportContent content) {
-    return true;
   }
 }
