@@ -24,13 +24,13 @@ public class ComboConfiguration implements IComboConfiguration {
 
   private final List<ICombo> creationComboList = new ArrayList<ICombo>();
   private final List<ICombo> experiencedComboList = new ArrayList<ICombo>();
-  private final IExperiencePointConfiguration experiencePoints;
   private final IComboArbitrator rules;
   private final ICombo editCombo = new Combo();
   private final GenericControl<IComboConfigurationListener> control = new GenericControl<IComboConfigurationListener>();
   private final ComboIdProvider idProvider = new ComboIdProvider();
   private final IComboLearnStrategy learnStrategy;
-  private ICombo originalCombo;
+  private ExperienceComboEditingSupport experienceSupport;
+
 
   public ComboConfiguration(
           ICharmConfiguration charmConfiguration,
@@ -55,7 +55,7 @@ public class ComboConfiguration implements IComboConfiguration {
       }
     });
     this.rules = editionRules[0];
-    this.experiencePoints = experiencePoints;
+    this.experienceSupport = new ExperienceComboEditingSupport(experiencePoints, editCombo, this);
   }
 
   public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {
@@ -97,13 +97,13 @@ public class ComboConfiguration implements IComboConfiguration {
     editCombo.removeCharms(charms);
   }
 
-  public void finalizeCombo() {
-    learnStrategy.finalizeCombo(this);
+  public void finalizeComboXP(String xpMessage) {
+    experienceSupport.commitChanges(xpMessage);
+    finalizeCombo();
   }
 
-  public void finalizeComboXP(String xpMessage) {
-    experiencePoints.addEntry(xpMessage, -1);
-    finalizeCombo();
+  public void finalizeCombo() {
+    learnStrategy.finalizeCombo(this);
   }
 
   public void finalizeCombo(boolean experienced) {
@@ -209,14 +209,14 @@ public class ComboConfiguration implements IComboConfiguration {
 
   public void clearCombo() {
     editCombo.clear();
-    originalCombo = null;
+    experienceSupport.abortChange();
     fireEndEditEvent();
   }
 
   public void beginComboEdit(ICombo combo) {
     editCombo.clear();
     editCombo.getValuesFrom(combo);
-    originalCombo = combo;
+    experienceSupport.startChanging(combo);
     fireBeginEditEvent(combo);
   }
 
@@ -224,27 +224,13 @@ public class ComboConfiguration implements IComboConfiguration {
     return creationComboList.contains(combo);
   }
 
+  @Override
   public boolean isAllowedToRemove(ICharm charm) {
-    boolean hasSomeXp = experiencePoints.getTotalExperiencePoints() != 0;
-    if (isCurrentlyEditing() &&
-            (!isLearnedOnCreation(originalCombo) || hasSomeXp) &&
-            originalCombo.contains(charm))
-      return false;
-    return true;
+    return experienceSupport.isAllowedToRemove(charm);
   }
 
+  @Override
   public boolean canFinalizeWithXP() {
-    boolean hasNoXp = experiencePoints.getTotalExperiencePoints() == 0;
-    if (!isCurrentlyEditing() || hasNoXp) {
-      return false;
-    }
-    ICombo testCombo = new Combo();
-    testCombo.getValuesFrom(editCombo);
-    testCombo.removeCharms(originalCombo.getCharms());
-    return testCombo.getCharms().length > 0;
-  }
-
-  private boolean isCurrentlyEditing() {
-    return originalCombo != null;
+    return experienceSupport.canFinalizeWithXP();
   }
 }
