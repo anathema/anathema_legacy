@@ -1,58 +1,37 @@
 package net.sf.anathema.character.intimacies.reporting;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
-import net.sf.anathema.character.intimacies.model.IIntimacy;
-import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
-import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.intimacies.reporting.content.ExtendedIntimaciesContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.LINE_HEIGHT;
 
-public class ExtendedIntimaciesEncoder implements IBoxContentEncoder {
+public class ExtendedIntimaciesEncoder extends AbstractBoxContentEncoder<ExtendedIntimaciesContent> {
   // TODO: Give this and PdfBackgroundEncoder a common base class, which may be more broadly useful.
 
-  private final PdfTraitEncoder traitEncoder;
+  private final PdfTraitEncoder traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
 
-  public ExtendedIntimaciesEncoder(BaseFont baseFont) {
-    this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
-  }
-
-  public String getHeaderKey(ReportContent content) {
-    return "Intimacies"; //$NON-NLS-1$
+  public ExtendedIntimaciesEncoder() {
+    super(ExtendedIntimaciesContent.class);
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    ExtendedIntimaciesContent content = createContent(reportContent);
     float yPosition = bounds.getMaxY() - LINE_HEIGHT;
-    
-    int maxValue = reportContent.getCharacter().getTraitCollection().getTrait(VirtueType.Conviction).getCurrentValue();
-    boolean printZeroIntimacies = AnathemaCharacterPreferences.getDefaultPreferences().printZeroIntimacies();
-    
-    IIntimaciesAdditionalModel additionalModel = (IIntimaciesAdditionalModel) reportContent.getCharacter().getAdditionalModel(IntimaciesTemplate.ID);
-    IIntimaciesModel model = additionalModel.getIntimaciesModel();
-    for (IIntimacy intimacy : model.getEntries()) {
-      ITrait intimacyTrait = intimacy.getTrait();
+    for (NamedValue printIntimacy : content.getPrintIntimacies()) {
       if (yPosition < bounds.getMinY()) {
         return;
       }
-      if (!printZeroIntimacies && intimacyTrait.getCurrentValue() == 0) {
-        continue;
-      }
-      traitEncoder.encodeWithText(graphics, intimacy.getName(),
-                                  new Position(bounds.x, yPosition), bounds.width,
-                                  intimacyTrait.getCurrentValue(), maxValue);
+      traitEncoder.encode(graphics, printIntimacy, new Position(bounds.x, yPosition), bounds.width, content.getTraitMaxValue());
       yPosition -= LINE_HEIGHT;
     }
-    encodeEmptyLines(graphics, bounds, yPosition, maxValue);
+    encodeEmptyLines(graphics, bounds, yPosition, content.getTraitMaxValue());
   }
 
   private void encodeEmptyLines(SheetGraphics graphics, Bounds bounds, float yPosition, int maxValue) {
@@ -61,9 +40,5 @@ public class ExtendedIntimaciesEncoder implements IBoxContentEncoder {
       traitEncoder.encodeWithLine(graphics, position, bounds.width, 0, maxValue);
       yPosition -= LINE_HEIGHT;
     }
-  }
-  
-  public boolean hasContent(ReportContent content) {
-	  return true;
   }
 }

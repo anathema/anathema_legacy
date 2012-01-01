@@ -14,11 +14,11 @@ import net.sf.anathema.character.lunar.reporting.rendering.GiftEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -59,8 +59,7 @@ public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
       for (int i = 1; i <= numNotes; i++) {
         writeLine(graphics, resources.getString(notes + ".Note" + i), bounds, offsetX, offsetY + lineHeight * (i - 1));
       }
-    }
-    catch (DocumentException e) {
+    } catch (DocumentException e) {
     }
   }
 
@@ -74,13 +73,13 @@ public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
   private final void encodeMutations(SheetGraphics graphics, Bounds bounds, ReportContent content) {
     final int horizontalSpacing = 15;
     final int verticalSpacing = 5;
-    Bounds newBounds = new Bounds(bounds.x + bounds.getWidth() * 1 / 2 + horizontalSpacing, bounds.y + verticalSpacing,
-      bounds.getWidth() * 1 / 2 - horizontalSpacing, bounds.height - 2 * verticalSpacing);
-    IBoxContentEncoder encoder = new GiftEncoder(baseFont, resources);
+    Bounds newBounds =
+      new Bounds(bounds.x + bounds.getWidth() * 1 / 2 + horizontalSpacing, bounds.y + verticalSpacing, bounds.getWidth() * 1 / 2 - horizontalSpacing,
+        bounds.height - 2 * verticalSpacing);
+    IBoxContentEncoder encoder = new GiftEncoder();
     try {
       new PdfBoxEncoder(resources, baseFont).encodeBox(content, graphics, encoder, newBounds);
-    }
-    catch (DocumentException e) {
+    } catch (DocumentException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }

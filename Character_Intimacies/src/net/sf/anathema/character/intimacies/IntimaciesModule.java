@@ -7,9 +7,14 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.intimacies.reporting.ExtendedIntimaciesEncoder;
 import net.sf.anathema.character.intimacies.reporting.SimpleIntimaciesEncoder;
+import net.sf.anathema.character.intimacies.reporting.content.ExtendedIntimaciesContent;
+import net.sf.anathema.character.intimacies.reporting.content.ExtendedIntimaciesContentFactory;
+import net.sf.anathema.character.intimacies.reporting.content.SimpleIntimaciesContent;
+import net.sf.anathema.character.intimacies.reporting.content.SimpleIntimaciesContentFactory;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -32,17 +37,23 @@ public class IntimaciesModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
+    registerReportContent(moduleObject.getReportContentRegistry(), resources);
     registerSimpleIntimaciesEncoder(moduleObject);
     registerExtendedIntimaciesEncoder(moduleObject);
   }
 
+  private void registerReportContent(ReportContentRegistry registry, IResources resources) {
+    registry.addFactory(ExtendedIntimaciesContent.class, new ExtendedIntimaciesContentFactory(resources));
+    registry.addFactory(SimpleIntimaciesContent.class, new SimpleIntimaciesContentFactory(resources));
+  }
+
   private void registerSimpleIntimaciesEncoder(CharacterReportingModuleObject moduleObject) {
     SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
-    registry.setIntimaciesEncoder(new SimpleIntimaciesEncoder(registry.getBaseFont()));
+    registry.setIntimaciesEncoder(new SimpleIntimaciesEncoder());
   }
 
   private void registerExtendedIntimaciesEncoder(CharacterReportingModuleObject moduleObject) {
     ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
-    registry.setIntimaciesEncoder(new ExtendedIntimaciesEncoder(registry.getBaseFont()));
+    registry.setIntimaciesEncoder(new ExtendedIntimaciesEncoder());
   }
 }

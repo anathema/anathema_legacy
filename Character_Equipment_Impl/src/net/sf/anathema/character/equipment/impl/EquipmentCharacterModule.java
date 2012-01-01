@@ -13,6 +13,8 @@ import net.sf.anathema.character.equipment.impl.reporting.PossessionsEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContent;
 import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContentFactory;
+import net.sf.anathema.character.equipment.impl.reporting.content.PossessionsContent;
+import net.sf.anathema.character.equipment.impl.reporting.content.PossessionsContentFactory;
 import net.sf.anathema.character.equipment.impl.reporting.content.ShieldContent;
 import net.sf.anathema.character.equipment.impl.reporting.content.ShieldContentFactory;
 import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry1stEditionContent;
@@ -67,12 +69,13 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
     registry.addFactory(ShieldContent.class, new ShieldContentFactory(resources));
     registry.addFactory(ArmourContent.class, new ArmourContentFactory(resources));
     registry.addFactory(WeaponryContent.class, new WeaponryContentFactory(resources));
+    registry.addFactory(PossessionsContent.class, new PossessionsContentFactory(resources));
   }
 
   private void registerEncoders(IResources resources, IEncodingRegistry registry) {
     registry.setArmourContentEncoder(
       new ArmourEncoder(resources, registry.getBaseFont(), new ArmourTableEncoder(ArmourContent.class, registry.getBaseFont())));
     registry.setWeaponContentEncoder(new WeaponryEncoder(resources, registry.getBaseFont()));
-    registry.setPossessionsEncoder(new PossessionsEncoder(registry.getBaseFont()));
+    registry.setPossessionsEncoder(new PossessionsEncoder());
   }
 }

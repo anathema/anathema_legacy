@@ -38,6 +38,8 @@ import net.sf.anathema.character.lunar.renown.RenownFactory;
 import net.sf.anathema.character.lunar.renown.RenownPersisterFactory;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.RenownViewFactory;
+import net.sf.anathema.character.lunar.reporting.content.GiftContent;
+import net.sf.anathema.character.lunar.reporting.content.GiftContentFactory;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContentFactory;
 import net.sf.anathema.character.lunar.reporting.layout.Extended1stEditionLunarPartEncoder;
@@ -84,7 +86,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final TemplateType dreamsType = new TemplateType(LUNAR, new Identificate("Dreams")); //$NON-NLS-1$
   private static final TemplateType revisedDreamsType = new TemplateType(LUNAR, new Identificate("DreamsRevised")); //$NON-NLS-1$
 
-  private static final TemplateType[] dreams = {dreamsType, revisedDreamsType};
+  private static final TemplateType[] dreams = { dreamsType, revisedDreamsType };
 
   public static final String BACKGROUND_ID_ARSENAL = "LunarDreamsArsenal"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_COMMAND = "LunarDreamsCommand"; //$NON-NLS-1$
@@ -108,18 +110,15 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     editionMap.put(ExaltedEdition.FirstEdition, LunarCaste.getModernValues());
     editionMap.put(ExaltedEdition.SecondEdition, LunarCaste.values());
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
-    templateMap.put(castelessType, new ICasteType[]{});
-    templateMap.put(revisedCastelessType, new ICasteType[]{});
+    templateMap.put(castelessType, new ICasteType[] { });
+    templateMap.put(revisedCastelessType, new ICasteType[] { });
     templateMap.put(dreamsType, LunarCaste.getDreamsValues());
     templateMap.put(revisedDreamsType, LunarCaste.getDreamsValues());
     characterGenerics.getCasteCollectionRegistry().register(LUNAR, new CasteCollection(LunarCaste.values(), editionMap, templateMap));
-    characterGenerics.getGenericCharmStatsRegistry().register(LUNAR, new IMagicStats[]{new FirstExcellency(LUNAR, ExaltedSourceBook.Lunars2nd,
-      "1 m per die"), //$NON-NLS-1$
-                                                                                       new SecondExcellency(LUNAR, ExaltedSourceBook.Lunars2nd),
-                                                                                       new ThirdExcellency(LUNAR, "4 m",
-                                                                                         ExaltedSourceBook.Lunars2nd), //$NON-NLS-1$
-                                                                                       new InstinctiveUnity(), new FlawlessFocus(),
-                                                                                       new ImpossibleImprovement()});
+    characterGenerics.getGenericCharmStatsRegistry()
+      .register(LUNAR, new IMagicStats[] { new FirstExcellency(LUNAR, ExaltedSourceBook.Lunars2nd, "1 m per die"), //$NON-NLS-1$
+        new SecondExcellency(LUNAR, ExaltedSourceBook.Lunars2nd), new ThirdExcellency(LUNAR, "4 m", ExaltedSourceBook.Lunars2nd), //$NON-NLS-1$
+        new InstinctiveUnity(), new FlawlessFocus(), new ImpossibleImprovement() });
   }
 
   @Override
@@ -131,9 +130,12 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
 
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SOLAR_BOND, LUNAR));
     backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, LUNAR, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, new ITemplateType[]{castelessType,
-                                                                                                                                revisedCastelessType}, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TABOO, new ITemplateType[]{castelessType, revisedCastelessType}, ExaltedEdition.SecondEdition));
+    backgroundRegistry.add(
+      new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, new ITemplateType[] { castelessType, revisedCastelessType },
+        ExaltedEdition.SecondEdition));
+    backgroundRegistry.add(
+      new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TABOO, new ITemplateType[] { castelessType, revisedCastelessType },
+        ExaltedEdition.SecondEdition));
 
     backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, dreams, ExaltedEdition.SecondEdition));
     backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, dreams, ExaltedEdition.SecondEdition));
@@ -170,7 +172,8 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     registerVirtueFlaw(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
   }
 
-  private void registerVirtueFlaw(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry, IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
+  private void registerVirtueFlaw(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
+    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
     String templateId = LunarVirtueFlawTemplate.TEMPLATE_ID;
     additionalModelFactoryRegistry.register(templateId, new LunarVirtueFlawModelFactory());
     additionalViewFactoryRegistry.register(templateId, new LunarVirtueFlawViewFactory());
@@ -178,21 +181,24 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   }
 
-  private void registerRenown(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry, IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
+  private void registerRenown(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
+    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
     String templateId = RenownTemplate.TEMPLATE_ID;
     additionalModelFactoryRegistry.register(templateId, new RenownFactory());
     additionalViewFactoryRegistry.register(templateId, new RenownViewFactory());
     persisterFactory.register(templateId, new RenownPersisterFactory());
   }
 
-  private void registerHeartsblood(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry, IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
+  private void registerHeartsblood(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
+    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
     String templateId = HeartsBloodTemplate.TEMPLATE_ID;
     additionalModelFactoryRegistry.register(templateId, new HeartsBloodFactory());
     additionalViewFactoryRegistry.register(templateId, new HeartsBloodViewFactory());
     persisterFactory.register(templateId, new HeartsBloodPersisterFactory());
   }
 
-  private void registerBeastform(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry, IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
+  private void registerBeastform(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
+    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
     String templateId = BeastformTemplate.TEMPLATE_ID;
     additionalModelFactoryRegistry.register(templateId, new BeastformModelFactory());
     additionalViewFactoryRegistry.register(templateId, new BeastformViewFactory());
@@ -211,6 +217,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     contentRegistry.addFactory(KnackContent.class, new KnackContentFactory(resources));
     contentRegistry.addFactory(LunarWeaponryContent.class, new LunarWeaponryContentFactory(resources));
     contentRegistry.addFactory(LunarArmourContent.class, new LunarArmourContentFactory(resources));
+    contentRegistry.addFactory(GiftContent.class, new GiftContentFactory(resources));
   }
 
   private void registerSimpleReporting(IResources resources, SimpleEncodingRegistry registry) {

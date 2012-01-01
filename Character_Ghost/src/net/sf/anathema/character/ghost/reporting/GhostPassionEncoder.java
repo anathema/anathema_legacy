@@ -13,7 +13,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 public class GhostPassionEncoder extends AbstractBoxContentEncoder<GhostPassionContent> {
 
   private final PdfTraitEncoder traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
-  ;
 
   public GhostPassionEncoder() {
     super(GhostPassionContent.class);

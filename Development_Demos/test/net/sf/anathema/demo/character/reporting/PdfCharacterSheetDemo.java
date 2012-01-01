@@ -78,7 +78,7 @@ public class PdfCharacterSheetDemo {
     BaseFont baseFont = encodingRegistry.getBaseFont();
     encodingRegistry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(ArmourContent.class, baseFont)));
     encodingRegistry.setWeaponContentEncoder(new WeaponryEncoder(resources, baseFont));
-    encodingRegistry.setIntimaciesEncoder(new SimpleIntimaciesEncoder(baseFont));
+    encodingRegistry.setIntimaciesEncoder(new SimpleIntimaciesEncoder());
     return encodingRegistry;
   }
 

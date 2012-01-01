@@ -5,13 +5,15 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
-import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.mutations.model.MutationsModelFactory;
 import net.sf.anathema.character.mutations.persistence.MutationPersisterFactory;
+import net.sf.anathema.character.mutations.reporting.MutationContent;
+import net.sf.anathema.character.mutations.reporting.MutationContentFactory;
 import net.sf.anathema.character.mutations.reporting.MutationsEncoder;
 import net.sf.anathema.character.mutations.template.MutationsTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -33,19 +35,21 @@ public class MutationsModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    ICharacterModuleObjectMap moduleMap = generics.getModuleObjectMap();
-    CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
-    registerSimpleEncoders(resources, moduleObject);
-    registerExtendedEncoders(resources, moduleObject);
+    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
+    registerReportContent(moduleObject.getReportContentRegistry(), resources);
+    registerSimpleEncoders(moduleObject.getSimpleEncodingRegistry(), resources);
+    registerExtendedEncoders(moduleObject.getExtendedEncodingRegistry(), resources);
   }
 
-  private void registerSimpleEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
-    SimpleEncodingRegistry simpleEncodingRegistry = moduleObject.getSimpleEncodingRegistry();
-    simpleEncodingRegistry.setMutationsEncoder(new MutationsEncoder(simpleEncodingRegistry.getBaseFont(), resources));
+  private void registerReportContent(ReportContentRegistry registry, IResources resources) {
+    registry.addFactory(MutationContent.class, new MutationContentFactory(resources));
   }
 
-  private void registerExtendedEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
-    ExtendedEncodingRegistry extendedEncodingRegistry = moduleObject.getExtendedEncodingRegistry();
-    extendedEncodingRegistry.setMutationsEncoder(new MutationsEncoder(extendedEncodingRegistry.getBaseFont(), resources));
+  private void registerSimpleEncoders(SimpleEncodingRegistry registry, IResources resources) {
+    registry.setMutationsEncoder(new MutationsEncoder());
+  }
+
+  private void registerExtendedEncoders(ExtendedEncodingRegistry registry, IResources resources) {
+    registry.setMutationsEncoder(new MutationsEncoder());
   }
 }
