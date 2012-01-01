@@ -3,7 +3,7 @@ package net.sf.anathema.character.lunar.reporting.layout;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.equipment.impl.reporting.AbstractWeaponryTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.WeaponryTableEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -13,8 +13,7 @@ import net.sf.anathema.character.lunar.reporting.rendering.SecondEditionLunarSpi
 import net.sf.anathema.character.lunar.reporting.rendering.SecondEditionPowersEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.SecondEditionDBTCombatEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.SecondEditionLunarDBTFormEncoder;
-import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarArmourTableEncoder;
-import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarWeaponTableEncoder;
+import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarEquipmentEncoders;
 import net.sf.anathema.character.lunar.reporting.rendering.health.SecondEditionLunarHealthAndMovementEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.heartsblood.SecondEditionLunarHeartsBloodEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.knacks.KnackEncoder;
@@ -106,7 +105,7 @@ public class Simple2ndEditionLunarAdditionalPageEncoder implements IPdfPageEncod
   private float encodeArsenel(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
-    AbstractWeaponryTableEncoder weaponTableEncoder = new LunarWeaponTableEncoder(baseFont, resources, content.getCharacter());
+    WeaponryTableEncoder weaponTableEncoder = LunarEquipmentEncoders.CreateWeaponryEncoder(baseFont);
     IBoxContentEncoder weaponryEncoder = new WeaponryEncoder(resources, baseFont, weaponTableEncoder);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;
@@ -115,7 +114,7 @@ public class Simple2ndEditionLunarAdditionalPageEncoder implements IPdfPageEncod
   private float encodePanopoly(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder contentEncoder = new ArmourEncoder(resources, baseFont, new LunarArmourTableEncoder(baseFont, resources));
+    IBoxContentEncoder contentEncoder = new ArmourEncoder(resources, baseFont, LunarEquipmentEncoders.CreateArmourEncoder(baseFont));
     boxEncoder.encodeBox(content, graphics, contentEncoder, bounds);
     return height;
   }

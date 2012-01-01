@@ -13,6 +13,7 @@ import net.sf.anathema.character.equipment.dummy.DemoRangeWeapon;
 import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.ArmourTableEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContent;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
@@ -75,7 +76,7 @@ public class PdfCharacterSheetDemo {
   private static SimpleEncodingRegistry createEncodingRegistry(IResources resources) {
     SimpleEncodingRegistry encodingRegistry = new SimpleEncodingRegistry();
     BaseFont baseFont = encodingRegistry.getBaseFont();
-    encodingRegistry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(baseFont, resources)));
+    encodingRegistry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(ArmourContent.class, baseFont)));
     encodingRegistry.setWeaponContentEncoder(new WeaponryEncoder(resources, baseFont));
     encodingRegistry.setIntimaciesEncoder(new SimpleIntimaciesEncoder(baseFont));
     return encodingRegistry;

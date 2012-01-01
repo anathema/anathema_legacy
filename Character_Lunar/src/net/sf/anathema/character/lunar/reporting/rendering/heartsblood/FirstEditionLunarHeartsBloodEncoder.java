@@ -41,7 +41,7 @@ public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsT
   }
 
   @Override
-  protected int getLineCount() {
+  protected int getLineCount(ReportContent content) {
     return 11;
   }
 

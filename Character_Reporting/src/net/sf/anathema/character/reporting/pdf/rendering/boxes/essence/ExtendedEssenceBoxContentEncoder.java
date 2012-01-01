@@ -19,7 +19,7 @@ public class ExtendedEssenceBoxContentEncoder implements IVariableBoxContentEnco
   }
 
   public String getHeaderKey(ReportContent content) {
-    return createEssenceContent(content).getHeader();
+    return createEssenceContent(content).getHeaderKey();
   }
 
   public float getRequestedHeight(ReportContent content, float width) {

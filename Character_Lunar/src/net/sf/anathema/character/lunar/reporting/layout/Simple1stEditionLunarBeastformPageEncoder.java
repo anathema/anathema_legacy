@@ -11,8 +11,7 @@ import net.sf.anathema.character.lunar.reporting.rendering.LunarFaceEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.BeastformAttributeBoxEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.FirstEditionDBTCombatEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.FirstEditionLunarBeastformAttributesEncoder;
-import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarArmourTableEncoder;
-import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarWeaponTableEncoder;
+import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarEquipmentEncoders;
 import net.sf.anathema.character.lunar.reporting.rendering.health.FirstEditionLunarHealthAndMovementEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.heartsblood.FirstEditionLunarHeartsBloodEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -156,7 +155,7 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
   private float encodeArmourAndSoak(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder contentEncoder = new ArmourEncoder(resources, baseFont, new LunarArmourTableEncoder(baseFont, resources));
+    IBoxContentEncoder contentEncoder = new ArmourEncoder(resources, baseFont, LunarEquipmentEncoders.CreateArmourEncoder(baseFont));
     boxEncoder.encodeBox(content, graphics, contentEncoder, bounds);
     return height;
   }
@@ -199,7 +198,7 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder weaponryEncoder = new WeaponryEncoder(resources, baseFont, new LunarWeaponTableEncoder(baseFont, resources, content.getCharacter()));
+    IBoxContentEncoder weaponryEncoder = new WeaponryEncoder(resources, baseFont, LunarEquipmentEncoders.CreateWeaponryEncoder(baseFont));
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;
   }

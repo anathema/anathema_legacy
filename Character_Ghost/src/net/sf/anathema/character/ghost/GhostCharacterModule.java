@@ -24,8 +24,13 @@ import net.sf.anathema.character.ghost.passions.GhostPassionsViewFactory;
 import net.sf.anathema.character.ghost.passions.persistence.GhostPassionsPersisterFactory;
 import net.sf.anathema.character.ghost.reporting.ExtendedGhostPartEncoder;
 import net.sf.anathema.character.ghost.reporting.SimpleGhostPartEncoder;
+import net.sf.anathema.character.ghost.reporting.content.GhostFetterContent;
+import net.sf.anathema.character.ghost.reporting.content.GhostFetterContentFactory;
+import net.sf.anathema.character.ghost.reporting.content.GhostPassionContent;
+import net.sf.anathema.character.ghost.reporting.content.GhostPassionContentFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
@@ -49,7 +54,7 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final TemplateType heroicType = new TemplateType(GHOST);
   private static final TemplateType commonType = new TemplateType(GHOST, new Identificate("CommonGhost")); //$NON-NLS-1$
 
-  private final TemplateType[] trueGhosts = {heroicType, commonType};
+  private final TemplateType[] trueGhosts = { heroicType, commonType };
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -85,16 +90,16 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
     registerGhostAge(additionalModelFactoryRegistry);
   }
 
-  private void registerGhostPassions(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry, IRegistry<String,
-    IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
+  private void registerGhostPassions(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
+    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
     String templateId = GhostPassionsTemplate.ID;
     additionalModelFactoryRegistry.register(templateId, new GhostPassionsModelFactory());
     additionalViewFactoryRegistry.register(templateId, new GhostPassionsViewFactory());
     persisterFactory.register(templateId, new GhostPassionsPersisterFactory());
   }
 
-  private void registerGhostFetters(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry, IRegistry<String,
-    IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
+  private void registerGhostFetters(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
+    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
     String templateId = GhostFettersTemplate.ID;
     additionalModelFactoryRegistry.register(templateId, new GhostFettersModelFactory());
     additionalViewFactoryRegistry.register(templateId, new GhostFettersViewFactory());
@@ -109,8 +114,14 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
+    addReportContents(moduleObject.getReportContentRegistry(), resources);
     addSimpleParts(resources, moduleObject);
     addExtendedParts(resources, moduleObject);
+  }
+
+  private void addReportContents(ReportContentRegistry registry, IResources resources) {
+    registry.addFactory(GhostFetterContent.class, new GhostFetterContentFactory(resources));
+    registry.addFactory(GhostPassionContent.class, new GhostPassionContentFactory(resources));
   }
 
   private void addSimpleParts(IResources resources, CharacterReportingModuleObject moduleObject) {

@@ -30,7 +30,7 @@ public class SimpleWillpowerBoxContentEncoder implements IBoxContentEncoder {
   }
 
   public String getHeaderKey(ReportContent content) {
-    return createContent(content).getHeader();
+    return createContent(content).getHeaderKey();
   }
 
   private WillpowerContent createContent(ReportContent reportContent){

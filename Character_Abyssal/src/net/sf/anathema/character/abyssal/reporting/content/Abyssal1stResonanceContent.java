@@ -4,12 +4,12 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.traits.ValueWeightGenericTraitSorter;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
+import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.List;
 
-public class Abyssal1stResonanceContent extends AbstractSubContent{
+public class Abyssal1stResonanceContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
