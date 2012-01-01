@@ -135,8 +135,6 @@ public class IntegerInterpreter implements Interpreter {
     else if (binaryOperatorKey.equals (Syntax.OPERATOR_POWER))
       return (int)Math.pow(number1, number2);
     else if (binaryOperatorKey.equals (Syntax.OPERATOR_MODULO)) {
-      // Removed the pointless computations (kelemen@github.com).
-      // This will return the same value as the previous implementation.
       return number1 % number2;
     }
     else if (binaryOperatorKey.equals (Syntax.OPERATOR_REMAINDER))
