@@ -21,7 +21,7 @@ public class ExperienceComboEditingSupport implements ComboEditingRules {
 
   public boolean isAllowedToRemove(ICharm charm) {
     boolean hasSomeXp = experiencePoints.getTotalExperiencePoints() != 0;
-    if (isCurrentlyEditing() &&
+    if (isEditingACombo() &&
             (!learnTime.isLearnedOnCreation(originalCombo) || hasSomeXp) &&
             originalCombo.contains(charm))
       return false;
@@ -29,18 +29,7 @@ public class ExperienceComboEditingSupport implements ComboEditingRules {
   }
 
   public boolean canFinalizeWithXP() {
-    boolean hasNoXp = experiencePoints.getTotalExperiencePoints() == 0;
-    if (!isCurrentlyEditing() || hasNoXp) {
-      return false;
-    }
-    ICombo testCombo = new Combo();
-    testCombo.getValuesFrom(editCombo);
-    testCombo.removeCharms(originalCombo.getCharms());
-    return testCombo.getCharms().length > 0;
-  }
-
-  private boolean isCurrentlyEditing() {
-    return originalCombo != null;
+    return isEditingACombo() && haveCharmsBeenAddedToCombo();
   }
 
   public void startChanging(ICombo combo) {
@@ -53,5 +42,16 @@ public class ExperienceComboEditingSupport implements ComboEditingRules {
 
   public void abortChange() {
     this.originalCombo = null;
+  }
+
+  private boolean haveCharmsBeenAddedToCombo() {
+    ICombo testCombo = new Combo();
+    testCombo.getValuesFrom(editCombo);
+    testCombo.removeCharms(originalCombo.getCharms());
+    return testCombo.getCharms().length > 0;
+  }
+
+  private boolean isEditingACombo() {
+    return originalCombo != null;
   }
 }
