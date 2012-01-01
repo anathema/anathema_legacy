@@ -108,8 +108,8 @@ public class ComboConfigurationView implements IComboConfigurationView {
     comboPane.setBackground(viewPort.getBackground());
     comboScrollPane = new JScrollPane(comboPane);
     viewPort.add(comboScrollPane, GridDialogLayoutDataUtilities.createHorizontalSpanData(
-        5,
-        GridDialogLayoutData.FILL_BOTH));
+            5,
+            GridDialogLayoutData.FILL_BOTH));
     content = new JScrollPane(viewPort);
   }
 
@@ -135,40 +135,15 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   private JButton createFinalizeComboButton(Icon icon) {
-    Action smartAction = new SmartAction(icon) {
-      private static final long serialVersionUID = -3829623791941578824L;
-
-      @Override
-      protected void execute(Component parentComponent) {
-        fireComboFinalized(false);
-      }
-    };
+    Action smartAction = new FinalizeComboWithoutXp(icon);
     smartAction.setEnabled(false);
     return magicLearnView.addAdditionalAction(smartAction);
   }
-  
+
   private JButton createFinalizeXPComboButton(Icon icon) {
-	    Action smartAction = new SmartAction(icon) {
-	      private static final long serialVersionUID = -3829623791941578824L;
-
-	      @Override
-	      protected void execute(Component parentComponent) {
-	        fireComboFinalized(true);
-	      }
-	    };
-	    smartAction.setEnabled(false);
-	    return magicLearnView.addAdditionalAction(smartAction);
-	  }
-
-  private void fireComboFinalized(final boolean XP) {
-    comboViewListeners.forAllDo(new IClosure<IComboViewListener>() {
-      public void execute(IComboViewListener input) {
-    	  if (XP)
-    		  input.comboFinalizedXP();
-    	  else
-    		  input.comboFinalized();
-      }
-    });
+    Action smartAction = new FinalizeComboWithXp(icon);
+    smartAction.setEnabled(false);
+    return magicLearnView.addAdditionalAction(smartAction);
   }
 
   public void setAllCharms(Object[] charms) {
@@ -248,7 +223,39 @@ public class ComboConfigurationView implements IComboConfigurationView {
     clearButton.setIcon(editing ? properties.getCancelEditButtonIcon() : properties.getClearButtonIcon());
     clearButton.setToolTipText(editing ? properties.getCancelButtonEditToolTip() : properties.getClearButtonToolTip());
     finalizeButton.setToolTipText(editing
-        ? properties.getFinalizeButtonEditToolTip()
-        : properties.getFinalizeButtonToolTip());
+            ? properties.getFinalizeButtonEditToolTip()
+            : properties.getFinalizeButtonToolTip());
+  }
+
+  private class FinalizeComboWithXp extends SmartAction {
+    public FinalizeComboWithXp(Icon icon) {
+      super(icon);
+    }
+
+    @Override
+    protected void execute(Component parentComponent) {
+      IClosure<IComboViewListener> finalizeComboWithXp = new IClosure<IComboViewListener>() {
+        public void execute(IComboViewListener input) {
+          input.comboFinalizedXP();
+        }
+      };
+      comboViewListeners.forAllDo(finalizeComboWithXp);
+    }
+  }
+
+  private class FinalizeComboWithoutXp extends SmartAction {
+    public FinalizeComboWithoutXp(Icon icon) {
+      super(icon);
+    }
+
+    @Override
+    protected void execute(Component parentComponent) {
+      IClosure<IComboViewListener> finalizeCombo = new IClosure<IComboViewListener>() {
+        public void execute(IComboViewListener input) {
+          input.comboFinalized();
+        }
+      };
+      comboViewListeners.forAllDo(finalizeCombo);
+    }
   }
 }

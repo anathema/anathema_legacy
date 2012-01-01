@@ -29,17 +29,13 @@ import net.sf.anathema.lib.util.IIdentificate;
 public class MagicLearnView implements IMagicLearnView {
 
   private final GenericControl<IMagicViewListener> control = new GenericControl<IMagicViewListener>();
-  private JList learnOptionsList = new JList(new DefaultListModel())
-	{
-		private static final long serialVersionUID = 1L;
-
-		public String getToolTipText(MouseEvent evt) {
-	         int index = locationToIndex(evt.getPoint());
-	         Object item = getModel().getElementAt(index);
-	         String toolTip = properties.getToolTipText(item);
-	         return toolTip;
-	       }
-	}; 
+  private JList learnOptionsList = new JList(new DefaultListModel()) {
+    public String getToolTipText(MouseEvent evt) {
+      int index = locationToIndex(evt.getPoint());
+      Object item = getModel().getElementAt(index);
+      return properties.getToolTipText(item);
+    }
+  };
   private final JList learnedList = new JList(new DefaultListModel());
   private final List<JButton> endButtons = new ArrayList<JButton>();
   private IMagicLearnProperties properties;
@@ -47,7 +43,7 @@ public class MagicLearnView implements IMagicLearnView {
   private JButton addButton;
 
   public void init(final IMagicLearnProperties properties) {
-	this.properties = properties;	
+    this.properties = properties;
     learnOptionsList.setCellRenderer(properties.getAvailableMagicRenderer());
     learnOptionsList.setSelectionMode(properties.getAvailableListSelectionMode());
     learnedList.setCellRenderer(properties.getLearnedMagicRenderer());
@@ -58,8 +54,8 @@ public class MagicLearnView implements IMagicLearnView {
       }
     });
     JButton removeButton = createRemoveMagicButton(
-        properties.getRemoveButtonIcon(),
-        properties.getRemoveButtonToolTip());
+            properties.getRemoveButtonIcon(),
+            properties.getRemoveButtonToolTip());
     endButtons.add(removeButton);
     addSelectionListListener(createLearnedListListener(removeButton, learnedList));
   }
@@ -70,9 +66,9 @@ public class MagicLearnView implements IMagicLearnView {
 
   private JButton createAddMagicButton(Icon icon, String tooltip) {
     final SmartAction smartAction = new SmartAction(icon) {
-		private static final long serialVersionUID = 1L;
+      private static final long serialVersionUID = 1L;
 
-	@Override
+      @Override
       protected void execute(Component parentComponent) {
         fireMagicAdded(learnOptionsList.getSelectedValues());
       }
@@ -82,9 +78,9 @@ public class MagicLearnView implements IMagicLearnView {
 
   private JButton createRemoveMagicButton(Icon icon, String tooltip) {
     final SmartAction smartAction = new SmartAction(icon) {
-		private static final long serialVersionUID = 1L;
+      private static final long serialVersionUID = 1L;
 
-	@Override
+      @Override
       protected void execute(Component parentComponent) {
         fireMagicRemoved(learnedList.getSelectedValues());
       }
@@ -143,7 +139,9 @@ public class MagicLearnView implements IMagicLearnView {
     return button;
   }
 
-  /** Takes up 4 columns in GridDialogLayouted-Panel */
+  /**
+   * Takes up 4 columns in GridDialogLayouted-Panel
+   */
   public void addTo(JPanel panel) {
     if (boxPanel != null) {
       panel.add(boxPanel);
