@@ -88,7 +88,7 @@ public class PdfMagicPageEncoder extends AbstractPdfPageEncoder {
   private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds backgroundBounds = getPageConfiguration().getFirstColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new PdfBackgroundEncoder(getResources(), getBaseFont());
+    IBoxContentEncoder encoder = new PdfBackgroundEncoder(getResources());
     getBoxEncoder().encodeBox(content, graphics, encoder, backgroundBounds);
     return height;
   }

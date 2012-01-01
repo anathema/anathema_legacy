@@ -18,7 +18,7 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
   }
 
   public IBoxContentEncoder getAnimaEncoder() {
-    return new PdfBackgroundEncoder(getResources(), getBaseFont());
+    return new PdfBackgroundEncoder(getResources());
   }
 
   public IBoxContentEncoder getEssenceEncoder() {

@@ -1,16 +1,15 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundInfo;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.LINE_HEIGHT;
@@ -22,7 +21,7 @@ public class PdfBackgroundEncoder implements IBoxContentEncoder {
   private final IResources resources;
   private final PdfTraitEncoder traitEncoder;
 
-  public PdfBackgroundEncoder(IResources resources, BaseFont baseFont) {
+  public PdfBackgroundEncoder(IResources resources) {
     this.resources = resources;
     this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }

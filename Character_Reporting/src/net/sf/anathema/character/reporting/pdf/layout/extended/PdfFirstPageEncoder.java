@@ -220,7 +220,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
   private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder contentEncoder = new PdfBackgroundEncoder(resources, baseFont);
+    IBoxContentEncoder contentEncoder = new PdfBackgroundEncoder(resources);
     boxEncoder.encodeBox(content, graphics, contentEncoder, bounds);
     return height;
   }

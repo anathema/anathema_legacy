@@ -92,7 +92,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
   private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds backgroundBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new PdfBackgroundEncoder(resources, baseFont);
+    IBoxContentEncoder encoder = new PdfBackgroundEncoder(resources);
     boxEncoder.encodeBox(content, graphics, encoder, backgroundBounds);
     return height;
   }

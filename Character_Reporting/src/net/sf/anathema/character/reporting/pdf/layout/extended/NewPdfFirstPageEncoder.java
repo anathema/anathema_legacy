@@ -118,7 +118,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, new PdfBackgroundEncoder(getResources(), getBaseFont()), 3, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, content, new PdfBackgroundEncoder(getResources()), 3, 1, distanceFromTop, height);
   }
 
   private float encodeVirtues(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
