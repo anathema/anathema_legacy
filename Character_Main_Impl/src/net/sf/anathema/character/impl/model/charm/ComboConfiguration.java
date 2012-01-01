@@ -28,7 +28,6 @@ public class ComboConfiguration implements IComboConfiguration {
   private final IComboArbitrator rules;
   private final ICombo editCombo = new Combo();
   private final GenericControl<IComboConfigurationListener> control = new GenericControl<IComboConfigurationListener>();
-  private final ICharmConfiguration charmConfiguration;
   private final ComboIdProvider idProvider = new ComboIdProvider();
   private final IComboLearnStrategy learnStrategy;
   private ICombo originalCombo;
@@ -38,9 +37,8 @@ public class ComboConfiguration implements IComboConfiguration {
           IComboLearnStrategy learnStrategy,
           IExaltedEdition edition,
           IExperiencePointConfiguration experiencePoints) {
-    this.charmConfiguration = charmConfiguration;
     this.learnStrategy = learnStrategy;
-    this.charmConfiguration.addCharmLearnListener(new CharmLearnAdapter() {
+    charmConfiguration.addCharmLearnListener(new CharmLearnAdapter() {
       @Override
       public void charmForgotten(ICharm charm) {
         checkCombos(charm);
@@ -189,11 +187,11 @@ public class ComboConfiguration implements IComboConfiguration {
   }
 
   public ICombo[] getCreationCombos() {
-    return creationComboList.toArray(new ICombo[0]);
+    return creationComboList.toArray(new ICombo[creationComboList.size()]);
   }
 
   public ICombo[] getExperienceLearnedCombos() {
-    return experiencedComboList.toArray(new ICombo[0]);
+    return experiencedComboList.toArray(new ICombo[experiencedComboList.size()]);
   }
 
   public boolean isComboLegal(ICharm charm) {
