@@ -227,18 +227,26 @@ public class ComboConfiguration implements IComboConfiguration {
   }
 
   public boolean isAllowedToRemove(ICharm charm) {
-    if (originalCombo != null &&
-            (!creationComboList.contains(originalCombo) || experiencePoints.getTotalExperiencePoints() != 0) &&
+    boolean hasSomeXp = experiencePoints.getTotalExperiencePoints() != 0;
+    if (isCurrentlyEditing() &&
+            (!isLearnedOnCreation(originalCombo) || hasSomeXp) &&
             originalCombo.contains(charm))
       return false;
     return true;
   }
 
   public boolean canFinalizeWithXP() {
-    if (originalCombo == null || experiencePoints.getTotalExperiencePoints() == 0) return false;
+    boolean hasNoXp = experiencePoints.getTotalExperiencePoints() == 0;
+    if (!isCurrentlyEditing() || hasNoXp) {
+      return false;
+    }
     ICombo testCombo = new Combo();
     testCombo.getValuesFrom(editCombo);
     testCombo.removeCharms(originalCombo.getCharms());
     return testCombo.getCharms().length > 0;
+  }
+
+  private boolean isCurrentlyEditing() {
+    return originalCombo != null;
   }
 }
