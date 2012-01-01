@@ -1,65 +1,41 @@
 package net.sf.anathema.character.infernal.reporting;
 
-import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
-import net.sf.anathema.character.infernal.urge.model.IInfernalUrgeModel;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
+import net.sf.anathema.character.infernal.reporting.content.InfernalUrgeContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
-public class InfernalUrgeEncoder implements IBoxContentEncoder {
+import static net.sf.anathema.character.reporting.pdf.rendering.graphics.TextUtilities.createBoldFont;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
-  private final VirtueFlawBoxEncoder traitEncoder;
-  private final IResources resources;
-  private final Font nameFont;
-  private final Font font;
+public class InfernalUrgeEncoder extends AbstractBoxContentEncoder<InfernalUrgeContent> {
 
-  public InfernalUrgeEncoder(IResources resources, BaseFont baseFont) {
-    this.font = createFont(baseFont);
-    this.nameFont = createNameFont(baseFont);
-    this.resources = resources;
-    this.traitEncoder = new VirtueFlawBoxEncoder();
-  }
+  private final VirtueFlawBoxEncoder traitEncoder = new VirtueFlawBoxEncoder();
 
-  public String getHeaderKey(ReportContent content) {
-    return "InfernalUrge.Title"; //$NON-NLS-1$
+  public InfernalUrgeEncoder() {
+    super(InfernalUrgeContent.class);
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-	IInfernalUrgeModel urge = ((IInfernalUrgeModel) reportContent.getCharacter().getAdditionalModel(InfernalUrgeTemplate.ID));
-    Bounds textBounds = traitEncoder.encode(graphics, bounds, urge.getVirtueFlaw().getLimitTrait().getCurrentValue());
-    float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
-    String urgeDescription = urge.getDescription().getText();
-
+    InfernalUrgeContent content = createContent(reportContent);
+    Bounds textBounds = traitEncoder.encode(graphics, bounds, content.getLimitValue());
     Phrase phrase = new Phrase();
-    phrase.add(new Chunk(resources.getString("InfernalUrge.Title"), nameFont));
-    phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
-    phrase.add(new Chunk(urgeDescription, font));
-    graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).encode();
-  }
-  
-  public boolean hasContent(ReportContent content)
-  {
-	  return false;
+    phrase.add(new Chunk(content.getUrgeTitle(), createNameFont(graphics)));
+    phrase.add(new Chunk(content.getUrgeDescription(), createDefaultFont(graphics)));
+    graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode();
   }
 
-  private Font createNameFont(BaseFont baseFont) {
-    Font newFont = createFont(baseFont);
-    newFont.setStyle(Font.BOLD);
-    return newFont;
+  private Font createNameFont(SheetGraphics graphics) {
+    return createBoldFont(createDefaultFont(graphics));
   }
 
-  private Font createFont(BaseFont baseFont) {
-    return TableEncodingUtilities.createTableFont(baseFont);
+  private Font createDefaultFont(SheetGraphics graphics) {
+    return graphics.createTableFont();
   }
 }
