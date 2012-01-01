@@ -49,8 +49,7 @@ public class ComboView implements IComboView {
     if (!enabled) {
       taskPaneGroup.remove(deleteComponent);
       GuiUtilities.revalidateTree(taskPaneGroup);
-    }
-    else {
+    } else {
       // todo vom (04.04.2005) (sieroux): Komponenten einfuegen falls noch nicht enthalten
     }
   }

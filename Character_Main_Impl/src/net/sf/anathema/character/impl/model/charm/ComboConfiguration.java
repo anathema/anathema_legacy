@@ -34,10 +34,10 @@ public class ComboConfiguration implements IComboConfiguration {
   private ICombo originalCombo;
 
   public ComboConfiguration(
-      ICharmConfiguration charmConfiguration,
-      IComboLearnStrategy learnStrategy,
-      IExaltedEdition edition,
-      IExperiencePointConfiguration experiencePoints) {
+          ICharmConfiguration charmConfiguration,
+          IComboLearnStrategy learnStrategy,
+          IExaltedEdition edition,
+          IExperiencePointConfiguration experiencePoints) {
     this.charmConfiguration = charmConfiguration;
     this.learnStrategy = learnStrategy;
     this.charmConfiguration.addCharmLearnListener(new CharmLearnAdapter() {
@@ -68,7 +68,7 @@ public class ComboConfiguration implements IComboConfiguration {
     List<ICombo> deletionList = new ArrayList<ICombo>();
     for (ICombo combo : creationComboList) {
       if (combo.contains(charm)) {
-        combo.removeCharms(new ICharm[] { charm });
+        combo.removeCharms(new ICharm[]{charm});
         if (combo.getCharms().length < 2) {
           deletionList.add(combo);
         }
@@ -76,7 +76,7 @@ public class ComboConfiguration implements IComboConfiguration {
       }
     }
     if (editCombo.contains(charm)) {
-      removeCharmsFromCombo(new ICharm[] { charm });
+      removeCharmsFromCombo(new ICharm[]{charm});
     }
     for (ICombo combo : deletionList) {
       deleteCombo(combo);
@@ -86,8 +86,7 @@ public class ComboConfiguration implements IComboConfiguration {
   public void addCharmToCombo(ICharm charm) {
     if (rules.canBeAddedToCombo(getEditCombo(), charm)) {
       getEditCombo().addCharm(charm);
-    }
-    else {
+    } else {
       throw new IllegalArgumentException("The charm " + charm.getId() + " is illegal in this combo."); //$NON-NLS-1$ //$NON-NLS-2$
     }
   }
@@ -103,11 +102,10 @@ public class ComboConfiguration implements IComboConfiguration {
   public void finalizeCombo() {
     learnStrategy.finalizeCombo(this);
   }
-  
-  public void finalizeComboXP(String xpMessage)
-  {
-	  experiencePoints.addEntry(xpMessage, -1);
-	  finalizeCombo();
+
+  public void finalizeComboXP(String xpMessage) {
+    experiencePoints.addEntry(xpMessage, -1);
+    finalizeCombo();
   }
 
   public void finalizeCombo(boolean experienced) {
@@ -116,13 +114,11 @@ public class ComboConfiguration implements IComboConfiguration {
       combo.setId(idProvider.createId());
       if (experienced) {
         experiencedComboList.add(combo);
-      }
-      else {
+      } else {
         creationComboList.add(combo);
       }
       fireComboAdded(combo);
-    }
-    else {
+    } else {
       ICombo editedCombo = getComboById(combo.getId());
       editedCombo.getValuesFrom(combo);
       fireComboChanged(editedCombo);
@@ -208,7 +204,7 @@ public class ComboConfiguration implements IComboConfiguration {
     experiencedComboList.remove(combo);
     creationComboList.remove(combo);
     fireComboDeleted(combo);
-    if (combo.getId() == editCombo.getId()) {
+    if (combo.getId().equals(editCombo.getId())) {
       clearCombo();
     }
   }
@@ -229,22 +225,20 @@ public class ComboConfiguration implements IComboConfiguration {
   public boolean isLearnedOnCreation(ICombo combo) {
     return creationComboList.contains(combo);
   }
-  
-  public boolean isAllowedToRemove(ICharm charm)
-  {
-	  if (originalCombo != null &&
-		  (!creationComboList.contains(originalCombo) || experiencePoints.getTotalExperiencePoints() != 0) &&
-		  originalCombo.contains(charm))
-		  return false;
-	  return true;
+
+  public boolean isAllowedToRemove(ICharm charm) {
+    if (originalCombo != null &&
+            (!creationComboList.contains(originalCombo) || experiencePoints.getTotalExperiencePoints() != 0) &&
+            originalCombo.contains(charm))
+      return false;
+    return true;
   }
-  
-  public boolean canFinalizeWithXP()
-  {
-	  if (originalCombo == null || experiencePoints.getTotalExperiencePoints() == 0) return false;
-	  ICombo testCombo = new Combo();
-	  testCombo.getValuesFrom(editCombo);
-	  testCombo.removeCharms(originalCombo.getCharms());
-	  return testCombo.getCharms().length > 0;
+
+  public boolean canFinalizeWithXP() {
+    if (originalCombo == null || experiencePoints.getTotalExperiencePoints() == 0) return false;
+    ICombo testCombo = new Combo();
+    testCombo.getValuesFrom(editCombo);
+    testCombo.removeCharms(originalCombo.getCharms());
+    return testCombo.getCharms().length > 0;
   }
 }

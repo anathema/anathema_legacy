@@ -5,41 +5,41 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IComboConfiguration {
 
-  public void addCharmToCombo(ICharm charm);
+  void addCharmToCombo(ICharm charm);
 
-  public void addComboModelListener(IChangeListener listener);
+  void addComboModelListener(IChangeListener listener);
 
-  public void removeCharmsFromCombo(ICharm[] charms);
+  void removeCharmsFromCombo(ICharm[] charms);
 
-  public void finalizeCombo();
-  
-  public void finalizeComboXP(String xpMessage);
+  void finalizeCombo();
 
-  public ICombo getEditCombo();
+  void finalizeComboXP(String xpMessage);
 
-  public void addComboConfigurationListener(IComboConfigurationListener listener);
+  ICombo getEditCombo();
 
-  public ICombo[] getCurrentCombos();
+  void addComboConfigurationListener(IComboConfigurationListener listener);
 
-  public boolean isComboLegal(ICharm charm);
+  ICombo[] getCurrentCombos();
 
-  public void deleteCombo(ICombo combo);
+  boolean isComboLegal(ICharm charm);
 
-  public void clearCombo();
+  void deleteCombo(ICombo combo);
 
-  public void beginComboEdit(ICombo combo);
+  void clearCombo();
 
-  public boolean isLearnedOnCreation(ICombo combo);
+  void beginComboEdit(ICombo combo);
 
-  public ICombo[] getCreationCombos();
+  boolean isLearnedOnCreation(ICombo combo);
 
-  public ICombo[] getExperienceLearnedCombos();
+  ICombo[] getCreationCombos();
 
-  public void finalizeCombo(boolean experienced);
+  ICombo[] getExperienceLearnedCombos();
 
-  public void setCrossPrerequisiteTypeComboAllowed(boolean allowed);
-  
-  public boolean isAllowedToRemove(ICharm charm);
-  
-  public boolean canFinalizeWithXP();
+  void finalizeCombo(boolean experienced);
+
+  void setCrossPrerequisiteTypeComboAllowed(boolean allowed);
+
+  boolean isAllowedToRemove(ICharm charm);
+
+  boolean canFinalizeWithXP();
 }
