@@ -12,7 +12,7 @@ public class SimpleGhostPartEncoder extends AbstractSecondEditionExaltPdfPartEnc
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new GhostFetterEncoder(getBaseFont());
+    return new GhostFetterEncoder();
   }
 
   @Override

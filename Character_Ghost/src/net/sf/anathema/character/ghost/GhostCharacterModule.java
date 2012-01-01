@@ -24,8 +24,11 @@ import net.sf.anathema.character.ghost.passions.GhostPassionsViewFactory;
 import net.sf.anathema.character.ghost.passions.persistence.GhostPassionsPersisterFactory;
 import net.sf.anathema.character.ghost.reporting.ExtendedGhostPartEncoder;
 import net.sf.anathema.character.ghost.reporting.SimpleGhostPartEncoder;
+import net.sf.anathema.character.ghost.reporting.content.GhostFetterContent;
+import net.sf.anathema.character.ghost.reporting.content.GhostFetterContentFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
@@ -109,8 +112,13 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
+    addReportContents(moduleObject.getReportContentRegistry(), resources);
     addSimpleParts(resources, moduleObject);
     addExtendedParts(resources, moduleObject);
+  }
+
+  private void addReportContents(ReportContentRegistry registry, IResources resources) {
+    registry.addFactory(GhostFetterContent.class, new GhostFetterContentFactory(resources));
   }
 
   private void addSimpleParts(IResources resources, CharacterReportingModuleObject moduleObject) {

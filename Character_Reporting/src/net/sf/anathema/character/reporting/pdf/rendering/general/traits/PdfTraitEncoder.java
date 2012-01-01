@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.traits;
 
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfTemplate;
+import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -86,6 +87,10 @@ public class PdfTraitEncoder {
     float dotsWidth = encodeGroupedDots(graphics, position, width, value, dotCount, SMALL_DOT_SPACING);
     graphics.drawMissingTextLine(position, width - dotsWidth - 5);
     return height;
+  }
+  
+  public float encode(SheetGraphics graphics, NamedValue trait, Position position, float width, int dotCount) {
+    return encodeWithText(graphics, trait.getLabel(), position, width, trait.getValue(), dotCount);
   }
 
   public float encodeWithText(SheetGraphics graphics, String text, Position position, float width, int value, int dotCount) {

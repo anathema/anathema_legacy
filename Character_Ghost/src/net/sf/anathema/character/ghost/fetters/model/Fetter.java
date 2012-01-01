@@ -12,13 +12,9 @@ public class Fetter extends DefaultTrait {
   private final IGhostFettersModel model;
   private final String subTraitName;
 
-  public Fetter(String fetterName,
-		  ITraitContext context,
-		  IGhostFettersModel model)
-  {
+  public Fetter(String fetterName, ITraitContext context, IGhostFettersModel model) {
     super(new TraitRules(new TraitType("Fetter (" + fetterName + ")"), //$NON-NLS-1$
-        SimpleTraitTemplate.createStaticLimitedTemplate(0, 5),
-        context.getLimitationContext()), context, new FriendlyValueChangeChecker());
+      SimpleTraitTemplate.createStaticLimitedTemplate(0, 5), context.getLimitationContext()), context, new FriendlyValueChangeChecker());
     this.subTraitName = fetterName;
     this.model = model;
   }
@@ -26,7 +22,7 @@ public class Fetter extends DefaultTrait {
   public String getName() {
     return subTraitName;
   }
-  
+
   @Override
   public void setCurrentValue(int value) {
     int increment = value - getCurrentValue();
