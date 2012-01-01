@@ -16,6 +16,7 @@ import net.sf.anathema.lib.resources.IResources;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.LINE_HEIGHT;
 
 public class PdfBackgroundEncoder implements IBoxContentEncoder {
+  public static final int Maximum_Number_Of_Background_Dots = 6;
   // TODO: Give this and PdfIntimacyEncoder a common base class, which may be more broadly useful.
 
   private final IResources resources;
@@ -43,7 +44,7 @@ public class PdfBackgroundEncoder implements IBoxContentEncoder {
       String backgroundName = getBackgroundName((IBackgroundInfo) background);
       Position position = new Position(bounds.x, yPosition);
       int value = background.getCurrentValue();
-      traitEncoder.encodeWithText(graphics, backgroundName, position, bounds.width, value, 5);
+      traitEncoder.encodeWithText(graphics, backgroundName, position, bounds.width, value, Maximum_Number_Of_Background_Dots);
       yPosition -= LINE_HEIGHT;
     }
     encodeEmptyLines(graphics, bounds, yPosition);
@@ -58,7 +59,7 @@ public class PdfBackgroundEncoder implements IBoxContentEncoder {
   private void encodeEmptyLines(SheetGraphics graphics, Bounds bounds, float yPosition) {
     while (yPosition > bounds.getMinY()) {
       Position position = new Position(bounds.x, yPosition);
-      traitEncoder.encodeWithLine(graphics, position, bounds.width, 0, 5);
+      traitEncoder.encodeWithLine(graphics, position, bounds.width, 0, Maximum_Number_Of_Background_Dots);
       yPosition -= LINE_HEIGHT;
     }
   }
