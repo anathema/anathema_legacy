@@ -10,7 +10,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatBoxEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
@@ -169,7 +169,7 @@ public class SimpleMortalPageEncoder implements IPdfPageEncoder {
 
   private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder encoder = encoderRegistry.getById(SecondEditionCombatBoxEncoderFactory.ID).create(resources);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(CombatStatsContentBoxEncoder.ID, resources, content);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }

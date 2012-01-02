@@ -4,7 +4,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatBoxEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -60,7 +60,7 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder encoder = encoderRegistry.getById(SecondEditionCombatBoxEncoderFactory.ID).create(getResources());
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(CombatStatsContentBoxEncoder.ID, getResources(), content);
     return encodeFixedBox(graphics, content, encoder, 2, 2, distanceFromTop, height);
   }
 

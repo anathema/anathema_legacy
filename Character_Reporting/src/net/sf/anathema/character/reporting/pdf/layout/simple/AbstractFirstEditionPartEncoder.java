@@ -1,13 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.FirstEditionCombatRulesTableEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.FirstEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.FirstEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
@@ -22,12 +17,6 @@ public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEnco
 
   public final IResources getResources() {
     return resources;
-  }
-
-  public final IBoxContentEncoder getCombatStatsEncoder() {
-    IContentEncoder valueEncoder = new FirstEditionCombatValueEncoder();
-    ITableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder();
-    return new CombatStatsContentBoxEncoder(rulesEncoder, valueEncoder);
   }
 
   public IBoxContentEncoder getSocialCombatEncoder() {

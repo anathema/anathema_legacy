@@ -5,10 +5,10 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.content.combat.SecondEditionCombatStatsContent;
-import net.sf.anathema.character.reporting.pdf.content.combat.SecondEditionCombatStatsContentFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatBoxEncoderFactory;
+import net.sf.anathema.character.reporting.second.content.combat.CombatStatsContent;
+import net.sf.anathema.character.reporting.second.content.combat.CombatStatsContentFactory;
+import net.sf.anathema.character.reporting.second.rendering.combat.CombatBoxEncoderFactory;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionReportingModule extends NullObjectCharacterModuleAdapter {
@@ -20,10 +20,10 @@ public class SecondEditionReportingModule extends NullObjectCharacterModuleAdapt
   }
 
   private void addReportEncoders(BoxContentEncoderRegistry registry) {
-    registry.add(new SecondEditionCombatBoxEncoderFactory());
+    registry.add(new CombatBoxEncoderFactory());
   }
 
   private void addReportContents(IResources resources, ReportContentRegistry registry) {
-    registry.addFactory(SecondEditionCombatStatsContent.class, new SecondEditionCombatStatsContentFactory(resources));
+    registry.addFactory(CombatStatsContent.class, new CombatStatsContentFactory(resources));
   }
 }

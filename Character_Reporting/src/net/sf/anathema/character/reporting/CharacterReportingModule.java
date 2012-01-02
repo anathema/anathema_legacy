@@ -2,6 +2,8 @@ package net.sf.anathema.character.reporting;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleAdapter;
+import net.sf.anathema.character.reporting.pdf.content.BasicContent;
+import net.sf.anathema.character.reporting.pdf.content.BasicContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.content.abilities.AbilitiesContent;
 import net.sf.anathema.character.reporting.pdf.content.abilities.AbilitiesContentFactory;
@@ -47,5 +49,6 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
     registry.addFactory(AbilitiesContent.class, new AbilitiesContentFactory(resources));
     registry.addFactory(ExperienceContent.class, new ExperienceContentFactory(resources));
     registry.addFactory(WillpowerContent.class, new WillpowerContentFactory(resources));
+    registry.addFactory(BasicContent.class, new BasicContentFactory());
   }
 }

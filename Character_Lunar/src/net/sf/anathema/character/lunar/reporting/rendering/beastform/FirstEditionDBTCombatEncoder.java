@@ -7,10 +7,10 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
+import net.sf.anathema.character.reporting.first.rendering.combat.CombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.FirstEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -55,7 +55,7 @@ public class FirstEditionDBTCombatEncoder implements IBoxContentEncoder {
     encoder.addComment(graphics, thresholdPoolLabel, 2);
     encoder.addComment(graphics, thresholdPoolDurationLabel, 3);
 
-    ITableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder();
+    ITableEncoder rulesEncoder = new CombatRulesTableEncoder();
     Bounds ruleBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - encoder.getHeight() - PADDING);
     try {
       rulesEncoder.encodeTable(graphics, reportContent, ruleBounds);
