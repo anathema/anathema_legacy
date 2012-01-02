@@ -13,6 +13,6 @@ public class ElementalSubeffect extends Subeffect {
   }
 
   public boolean matches(ICasteType casteType) {
-    return element.equals(casteType);
+    return element.matches(casteType);
   }
 }
