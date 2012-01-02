@@ -1,9 +1,8 @@
 package net.sf.anathema.character.impl.reporting;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import com.lowagie.text.Document;
+import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -19,22 +18,22 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleSecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.simple.PdfFirstPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.simple.PdfSecondPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.IITextReport;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class SimpleSheetReport implements IITextReport {
 
@@ -50,7 +49,8 @@ public class SimpleSheetReport implements IITextReport {
 
   @Override
   public String toString() {
-    return resources.getString("CharacterModule.Reporting.SecondEdition.Name") + " (" + resources.getString("PageSize." + pageSize.name()) + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+    return resources.getString("CharacterModule.Reporting.SecondEdition.Name") + " (" + resources.getString("PageSize." + pageSize.name()) +
+      ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
   }
 
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
@@ -66,10 +66,10 @@ public class SimpleSheetReport implements IITextReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
-      encoderList.add(new PdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+      encoderList.add(new SimpleFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
       if (partEncoder.hasSecondPage()) {
-        encoderList.add(new PdfSecondPageEncoder(resources, encodingRegistry, configuration));
+        encoderList.add(new SimpleSecondPageEncoder(resources, encodingRegistry, configuration));
       }
       boolean isFirstPrinted = false;
       for (IPdfPageEncoder encoder : encoderList) {
@@ -83,8 +83,7 @@ public class SimpleSheetReport implements IITextReport {
         ReportContent content = new ReportContent(getContentRegistry(), character, description);
         encoder.encode(document, graphics, content);
       }
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       throw new ReportException(e);
     }
   }

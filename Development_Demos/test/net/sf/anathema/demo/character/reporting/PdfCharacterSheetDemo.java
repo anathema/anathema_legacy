@@ -24,9 +24,9 @@ import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.intimacies.reporting.SimpleIntimaciesEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.PdfFirstPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.simple.PdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.character.solar.reporting.Simple2ndSolarPartEncoder;
@@ -58,13 +58,13 @@ public class PdfCharacterSheetDemo {
       SimpleEncodingRegistry encodingRegistry = createEncodingRegistry(resources);
       int essenceMax = 7;
       Simple2ndSolarPartEncoder partEncoder = new Simple2ndSolarPartEncoder(resources, encodingRegistry, essenceMax);
-      PdfFirstPageEncoder pageEncoder = new PdfFirstPageEncoder(partEncoder, encodingRegistry, resources, essenceMax, pageConfiguration);
+      SimpleFirstPageEncoder pageEncoder = new SimpleFirstPageEncoder(partEncoder, encodingRegistry, resources, essenceMax, pageConfiguration);
       ReportContentRegistry contentRegistry = new ReportContentRegistry();
       ReportContent content = new ReportContent(contentRegistry, character, description);
       SheetGraphics graphics = new SheetGraphics(directContent, encodingRegistry.getBaseFont(), encodingRegistry.getSymbolBaseFont());
       pageEncoder.encode(document, graphics, content);
       document.newPage();
-      new PdfMagicPageEncoder(resources, encodingRegistry, pageConfiguration, false).encode(document, graphics, content);
+      new SimpleMagicPageEncoder(resources, encodingRegistry, pageConfiguration, false).encode(document, graphics, content);
       BrowserControl.displayUrl(outputStream.toURI().toURL());
     } catch (Exception de) {
       de.printStackTrace();

@@ -7,9 +7,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
-public class NewPdfSecondPageEncoder extends AbstractPdfPageEncoder {
+public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
 
-  public NewPdfSecondPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax,
+  public ExtendedSecondPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax,
     PdfPageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
   }
@@ -44,8 +44,7 @@ public class NewPdfSecondPageEncoder extends AbstractPdfPageEncoder {
     return encodeFixedBox(graphics, content, getRegistry().getPossessionsEncoder(), 1, 3, distanceFromTop, height);
   }
 
-  private float encodeArmourAndSoak(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeArmourAndSoak(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     return encodeFixedBox(graphics, content, getRegistry().getArmourContentEncoder(), 2, 2, distanceFromTop, height);
   }
 
@@ -54,8 +53,7 @@ public class NewPdfSecondPageEncoder extends AbstractPdfPageEncoder {
     return encodeFixedBox(graphics, content, getPartEncoder().getSocialCombatEncoder(), 1, 1, distanceFromTop, height);
   }
 
-  private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     return encodeFixedBox(graphics, content, getPartEncoder().getCombatStatsEncoder(), 2, 2, distanceFromTop, height);
   }
 

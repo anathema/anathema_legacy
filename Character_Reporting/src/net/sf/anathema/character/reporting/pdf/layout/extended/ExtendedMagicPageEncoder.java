@@ -15,9 +15,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEnc
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfMagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.ExtendedWillpowerBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
@@ -26,9 +26,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
+public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
-  public NewPdfMagicPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources,
+  public ExtendedMagicPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources,
     PdfPageConfiguration configuration) {
     super(partEncoder, encodingRegistry, resources, configuration);
   }
@@ -112,17 +112,15 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeVariableBox(graphics, content, (IVariableBoxContentEncoder) getPartEncoder().getEssenceEncoder(), 1, 2, distanceFromTop,
-      height);
+    return encodeVariableBox(graphics, content, (IVariableBoxContentEncoder) getPartEncoder().getEssenceEncoder(), 1, 2, distanceFromTop, height);
   }
 
   private float encodeWillpower(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, new ExtendedWillpowerBoxContentEncoder(), 3, 1,
-      distanceFromTop, height);
+    return encodeFixedBox(graphics, content, new ExtendedWillpowerBoxContentEncoder(), 3, 1, distanceFromTop, height);
   }
 
-  private float encodeCombos(SheetGraphics graphics, IGenericCharacter character, float distanceFromTop, float fixedHeight,
-    boolean sharesRow) throws DocumentException {
+  private float encodeCombos(SheetGraphics graphics, IGenericCharacter character, float distanceFromTop, float fixedHeight, boolean sharesRow)
+    throws DocumentException {
     List<IGenericCombo> combos = new ArrayList<IGenericCombo>(Arrays.asList(character.getCombos()));
     PdfComboEncoder comboEncoder = new PdfComboEncoder(getResources(), getBaseFont());
     if (sharesRow) {
@@ -149,8 +147,7 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
     return encodeFixedBox(graphics, content, getPartEncoder().getAnimaEncoder(), 3, 1, distanceFromTop, height);
   }
 
-  private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float maxHeight) throws DocumentException {
+  private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
     IVariableBoxContentEncoder encoder = new PdfGenericCharmEncoder(getResources(), getBaseFont());
     if (encoder.hasContent(content)) {
       return encodeVariableBox(graphics, content, encoder, 1, 3, distanceFromTop, maxHeight);
@@ -161,13 +158,13 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeMagic(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, new PdfMagicEncoder(getResources(), getBaseFont(), PdfMagicEncoder.collectPrintSpells(content),
-      getRegistry().getAdditionalMagicEncoders(), true, "Magic"), //$NON-NLS-1$
+    return encodeFixedBox(graphics, content,
+      new PdfMagicEncoder(getResources(), getBaseFont(), PdfMagicEncoder.collectPrintSpells(content), getRegistry().getAdditionalMagicEncoders(),
+        true, "Magic"), //$NON-NLS-1$
       2, 2, distanceFromTop, height);
   }
 
-  private float encodeSidebars(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float maxHeight) throws DocumentException {
+  private float encodeSidebars(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
     float height = 0;
     for (IVariableBoxContentEncoder sidebar : getRegistry().getAdditionalMagicSidebarEncoders()) {
       float sidebarHeight = encodeVariableBox(graphics, content, sidebar, 1, 1, distanceFromTop, maxHeight - height);
@@ -183,13 +180,12 @@ public class NewPdfMagicPageEncoder extends AbstractPdfPageEncoder {
     return height;
   }
 
-  private float encodeInitiations(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float maxHeight) throws DocumentException {
+  private float encodeInitiations(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
     return encodeVariableBox(graphics, content, new PdfInitiationEncoder(getResources(), getBaseFont()), 1, 1, distanceFromTop, maxHeight);
   }
 
-  private float encodeCharms(SheetGraphics graphics, ReportContent content, List<IMagicStats> printCharms, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeCharms(SheetGraphics graphics, ReportContent content, List<IMagicStats> printCharms, float distanceFromTop, float height)
+    throws DocumentException {
     return encodeFixedBox(graphics, content, new PdfMagicEncoder(getResources(), getBaseFont(), printCharms), 1, 3, distanceFromTop, height);
   }
 

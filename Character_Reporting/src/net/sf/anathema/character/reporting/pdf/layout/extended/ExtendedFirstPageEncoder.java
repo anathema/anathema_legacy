@@ -19,10 +19,10 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatCo
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
-public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
+public class ExtendedFirstPageEncoder extends AbstractPdfPageEncoder {
   private final int essenceMax;
 
-  public NewPdfFirstPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax,
+  public ExtendedFirstPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax,
     PdfPageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
     this.essenceMax = essenceMax;

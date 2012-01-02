@@ -12,9 +12,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.Experi
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfMagicEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -22,7 +22,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.util.List;
 
-public class PdfSecondPageEncoder implements IPdfPageEncoder {
+public class SimpleSecondPageEncoder implements IPdfPageEncoder {
 
   private final BaseFont baseFont;
   private final PdfPageConfiguration configuration;
@@ -30,7 +30,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
   private final IResources resources;
   private final SimpleEncodingRegistry encodingRegistry;
 
-  public PdfSecondPageEncoder(IResources resources, SimpleEncodingRegistry encodingRegistry, PdfPageConfiguration configuration) {
+  public SimpleSecondPageEncoder(IResources resources, SimpleEncodingRegistry encodingRegistry, PdfPageConfiguration configuration) {
     this.resources = resources;
     this.encodingRegistry = encodingRegistry;
     this.baseFont = encodingRegistry.getBaseFont();
@@ -89,16 +89,14 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
     return height;
   }
 
-  private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds backgroundBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
     IBoxContentEncoder encoder = new PdfBackgroundEncoder(resources);
     boxEncoder.encodeBox(content, graphics, encoder, backgroundBounds);
     return height;
   }
 
-  private float encodePossessions(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodePossessions(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
     IBoxContentEncoder encoder = encodingRegistry.getPossessionsEncoder();
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
@@ -118,8 +116,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
     }
   }
 
-  private float encodeCharms(SheetGraphics graphics, List<IMagicStats> printMagic, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeCharms(SheetGraphics graphics, List<IMagicStats> printMagic, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
     IBoxContentEncoder encoder = new PdfMagicEncoder(resources, baseFont, printMagic);
     boxEncoder.encodeBox(null, graphics, encoder, bounds);

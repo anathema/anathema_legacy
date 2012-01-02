@@ -19,13 +19,13 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.extended.Extended1stEditionFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.FirstEditionFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagic1stEditionPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.NewPdfFirstPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.NewPdfMagicPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.NewPdfSecondPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.PdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -73,18 +73,19 @@ public class ExtendedSheetReport implements IITextReport {
 
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
       if (edition == ExaltedEdition.FirstEdition) {
-        encoderList.add(new FirstEditionFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+        encoderList.add(new Extended1stEditionFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
       }
       if (edition == ExaltedEdition.SecondEdition) {
-        encoderList.add(new NewPdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-        encoderList.add(new NewPdfSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+        encoderList.add(new ExtendedFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+        encoderList.add(new ExtendedSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
       }
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
       if (edition == ExaltedEdition.SecondEdition) {
-        encoderList.add(new NewPdfMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration));
+        encoderList.add(new ExtendedMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration));
       }
       else if (partEncoder.hasMagicPage()) {
-        encoderList.add(new PdfMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration, edition != ExaltedEdition.FirstEdition));
+        encoderList.add(
+          new ExtendedMagic1stEditionPageEncoder(partEncoder, encodingRegistry, resources, configuration, edition != ExaltedEdition.FirstEdition));
       }
       boolean firstPagePrinted = false;
       for (IPdfPageEncoder encoder : encoderList) {
