@@ -40,7 +40,7 @@ public class Subeffect extends Identificate implements ISubeffect {
     if (this.learned == learned) {
       return;
     }
-    if (learned && !learnable.isFullfilled()) {
+    if (learned && !learnable.isFulfilled()) {
       return;
     }
     if (!data.isExperienced()) {

@@ -40,7 +40,7 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
 
   public final IBasicWizardPage getNextPage() {
     for (ICondition condition : followUpPagesByCondition.keySet()) {
-      if (condition.isFullfilled()) {
+      if (condition.isFulfilled()) {
     	  IBasicWizardPage page = followUpPagesByCondition.get(condition);
     	  if (page instanceof IAnathemaWizardPage)
     		  ((IAnathemaWizardPage)page).setPreviousPage(this);

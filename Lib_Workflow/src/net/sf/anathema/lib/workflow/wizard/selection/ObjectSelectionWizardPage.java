@@ -42,7 +42,7 @@ public class ObjectSelectionWizardPage<V> extends AbstractAnathemaWizardPage {
       }
       IAnathemaWizardPage followUpPage = wizardFactory.createPage(modelTemplateRegistry.get(type));
       addFollowupPage(followUpPage, inputListener, new ICondition() {
-        public boolean isFullfilled() {
+        public boolean isFulfilled() {
           return model.getSelectedObject() == type;
         }
       });

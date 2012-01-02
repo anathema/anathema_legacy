@@ -74,7 +74,7 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 			  final Integer traitMin,
 			  final ITraitType trait) {
 	    return new ICondition() {
-	      public boolean isFullfilled() {
+	      public boolean isFulfilled() {
 	        boolean learnable = arbitrator.isLearnable(charm) &&
 	        	(bpUpgradeAllowed || data.isExperienced());
 	        learnable = !learnable ? learnable :

@@ -29,7 +29,7 @@ public class SecondEditionCharmTypeEntryPage extends CharmTypeEntryPage {
         new SimpleSpecialEntryPage(getResources(), getModel(), getViewFactory()),
         inputListener,
         new ICondition() {
-          public boolean isFullfilled() {
+          public boolean isFulfilled() {
             return isSimpleCharm();
           }
         });
@@ -37,7 +37,7 @@ public class SecondEditionCharmTypeEntryPage extends CharmTypeEntryPage {
         new ReflexiveSpecialEntryPage(getResources(), getModel(), getViewFactory()),
         inputListener,
         new ICondition() {
-          public boolean isFullfilled() {
+          public boolean isFulfilled() {
             return isReflexiveWithModel();
           }
         });

@@ -39,7 +39,7 @@ public class ReflexiveSpecialEntryPage extends AbstractAnathemaWizardPage {
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addFollowupPage(new DurationEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
-      public boolean isFullfilled() {
+      public boolean isFulfilled() {
         return true;
       }
     });

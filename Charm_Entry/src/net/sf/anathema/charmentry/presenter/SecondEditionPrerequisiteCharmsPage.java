@@ -27,7 +27,7 @@ public class SecondEditionPrerequisiteCharmsPage extends PrerequisiteCharmsPage 
         new KeywordEntryPage(getResources(), getModel(), getViewFactory()),
         inputListener,
         new ICondition() {
-          public boolean isFullfilled() {
+          public boolean isFulfilled() {
             return true;
           }
         });

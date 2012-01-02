@@ -9,7 +9,6 @@ public class SelectiveCharmGroupTemplate {
   private final String label;
 
   public SelectiveCharmGroupTemplate(String[] groupCharmIds, int threshold, String label) {
-    Ensure.ensureTrue("Number of charms must be greater than threshold.", threshold < groupCharmIds.length); //$NON-NLS-1$
     Ensure.ensureTrue("No selective charm groups without charms.", groupCharmIds.length > 0); //$NON-NLS-1$
     this.groupCharmIds = groupCharmIds;
     this.threshold = threshold;
@@ -23,9 +22,8 @@ public class SelectiveCharmGroupTemplate {
   public int getThreshold() {
     return threshold;
   }
-  
-  public String getLabel()
-  {
-	return label;
+
+  public String getLabel() {
+    return label;
   }
 }
