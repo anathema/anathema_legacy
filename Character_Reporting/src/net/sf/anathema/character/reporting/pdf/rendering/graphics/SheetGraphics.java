@@ -21,7 +21,7 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 
 public class SheetGraphics implements ITextMetrics {
 
-  private static final String SYMBOL = "\u2022 "; //$NON-NLS-1$
+  private static final String SYMBOL = "\u00A8  "; //$NON-NLS-1$
   private static final int SYMBOL_FONT_SIZE = FONT_SIZE - 1;
   private final PdfContentByte directContent;
   private final BaseFont baseFont;
