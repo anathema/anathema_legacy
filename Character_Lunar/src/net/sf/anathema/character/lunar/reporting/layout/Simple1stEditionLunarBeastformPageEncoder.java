@@ -16,7 +16,9 @@ import net.sf.anathema.character.lunar.reporting.rendering.heartsblood.FirstEdit
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
@@ -38,9 +40,12 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
   private static final int VIRTUE_HEIGHT = 72;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
+  private BoxContentEncoderRegistry encoderRegistry;
   private final ISimplePartEncoder partEncoder;
 
-  public Simple1stEditionLunarBeastformPageEncoder(ISimplePartEncoder partEncoder, IResources resources, PdfPageConfiguration pageConfiguration) {
+  public Simple1stEditionLunarBeastformPageEncoder(BoxContentEncoderRegistry encoderRegistry, ISimplePartEncoder partEncoder, IResources resources,
+    PdfPageConfiguration pageConfiguration) {
+    this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;
@@ -93,7 +98,7 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
 
   private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = partEncoder.getEssenceEncoder();
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(SimpleEssenceBoxEncoderFactory.ID, resources, content);
     boxEncoder.encodeBox(content, graphics, encoder, essenceBounds);
     return height;
   }

@@ -11,6 +11,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoder
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.AbstractHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
@@ -50,7 +52,7 @@ public class SimpleMortalPageEncoder implements IPdfPageEncoder {
     float distanceFromTop = 0;
     final float firstRowHeight = 51;
     encodePersonalInfo(graphics, content, distanceFromTop, firstRowHeight);
-    encodeEssence(graphics, content, distanceFromTop, firstRowHeight);
+    encodeExperience(graphics, content, distanceFromTop, firstRowHeight);
 
     distanceFromTop += firstRowHeight + IVoidStateFormatConstants.PADDING;
 
@@ -101,9 +103,9 @@ public class SimpleMortalPageEncoder implements IPdfPageEncoder {
       .encode();
   }
 
-  private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = partEncoder.getEssenceEncoder();
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(ExperienceBoxEncoderFactory.ID, resources, content);
     boxEncoder.encodeBox(content, graphics, encoder, essenceBounds);
     return height;
   }
@@ -177,7 +179,7 @@ public class SimpleMortalPageEncoder implements IPdfPageEncoder {
   private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder encoder = partEncoder.getHealthAndMovementEncoder();
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(AbstractHealthAndMovementEncoder.ID, resources, content);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }

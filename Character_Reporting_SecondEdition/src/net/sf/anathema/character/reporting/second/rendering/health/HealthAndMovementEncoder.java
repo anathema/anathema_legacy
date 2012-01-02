@@ -1,19 +1,20 @@
-package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
+package net.sf.anathema.character.reporting.second.rendering.health;
 
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.AbstractHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class HealthAndMovement2ndEditionEncoder extends AbstractHealthAndMovementEncoder {
+public class HealthAndMovementEncoder extends AbstractHealthAndMovementEncoder {
 
-  public HealthAndMovement2ndEditionEncoder(IResources resources) {
+  public HealthAndMovementEncoder(IResources resources) {
     super(resources);
   }
 
   @Override
   protected ITableEncoder createTableEncoder() {
-    return new HealthAndMovement2ndEditionTableEncoder(getResources());
+    return new HealthAndMovementTableEncoder(getResources());
   }
 
   @Override

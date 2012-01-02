@@ -16,6 +16,15 @@ public class BoxContentEncoderRegistry {
     factoryById.add(factory.getId(), factory);
   }
 
+  public boolean hasEncoder(String id, ReportContent content) {
+    for (BoxContentEncoderFactory factory : factoryById.get(id)) {
+      if (factory.supports(content.createSubContent(BasicContent.class))) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public IBoxContentEncoder createEncoder(String id, IResources resource, ReportContent content) {
     for (BoxContentEncoderFactory factory : factoryById.get(id)) {
       if (factory.supports(content.createSubContent(BasicContent.class))) {

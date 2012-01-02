@@ -17,13 +17,9 @@ public interface IExtendedPartEncoder extends IWeaponryPartEncoder {
 
   public IBoxContentEncoder getGreatCurseEncoder();
 
-  public IBoxContentEncoder getOverdriveEncoder();
-
   public IBoxContentEncoder getSocialCombatEncoder();
 
   public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry);
-
-  public IBoxContentEncoder getHealthAndMovementEncoder();
 
   public IBoxContentEncoder getHealthEncoder();
 

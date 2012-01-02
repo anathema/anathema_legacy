@@ -19,6 +19,10 @@ public class BasicContent implements SubContent {
     return character.getTemplate().getEdition() == ExaltedEdition.SecondEdition;
   }
 
+  public boolean isExalt() {
+    return character.getTemplate().getTemplateType().getCharacterType().isExaltType();
+  }
+
   @Override
   public boolean hasContent() {
     return true;

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.FirstEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
@@ -25,10 +24,6 @@ public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEnco
 
   public IBoxContentEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry) {
     return new HorizontalLineBoxContentEncoder(1, "Notes"); //$NON-NLS-1$
-  }
-
-  public IBoxContentEncoder getHealthAndMovementEncoder() {
-    return new FirstEditionHealthAndMovementEncoder(getResources());
   }
 
   public float getWeaponryHeight() {

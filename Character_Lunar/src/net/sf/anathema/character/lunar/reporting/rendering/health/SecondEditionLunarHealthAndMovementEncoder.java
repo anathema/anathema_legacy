@@ -4,12 +4,12 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.HealthAndMovement2ndEditionEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.HealthAndMovement2ndEditionTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
+import net.sf.anathema.character.reporting.second.rendering.health.HealthAndMovementEncoder;
+import net.sf.anathema.character.reporting.second.rendering.health.HealthAndMovementTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SecondEditionLunarHealthAndMovementEncoder extends HealthAndMovement2ndEditionEncoder {
+public class SecondEditionLunarHealthAndMovementEncoder extends HealthAndMovementEncoder {
 
   public SecondEditionLunarHealthAndMovementEncoder(IResources resources) {
     super(resources);
@@ -17,7 +17,7 @@ public class SecondEditionLunarHealthAndMovementEncoder extends HealthAndMovemen
 
   @Override
   protected final ITableEncoder createTableEncoder() {
-    return new HealthAndMovement2ndEditionTableEncoder(getResources()) {
+    return new HealthAndMovementTableEncoder(getResources()) {
       protected IGenericTraitCollection getTraits(IGenericCharacter character) {
         return ((IBeastformModel) character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID)).getBeastTraitCollection();
       }

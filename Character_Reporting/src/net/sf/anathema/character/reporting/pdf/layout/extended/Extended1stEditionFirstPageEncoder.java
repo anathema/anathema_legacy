@@ -9,6 +9,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoder
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.AbstractHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
@@ -155,7 +156,7 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
   private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder encoder = partEncoder.getHealthAndMovementEncoder();
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(AbstractHealthAndMovementEncoder.ID, resources, content);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }

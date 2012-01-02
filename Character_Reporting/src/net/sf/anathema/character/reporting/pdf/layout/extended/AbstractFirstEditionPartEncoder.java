@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.FirstEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
@@ -35,10 +34,6 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
     return new HorizontalLineBoxContentEncoder(1, "Notes"); //$NON-NLS-1$
   }
 
-  public IBoxContentEncoder getHealthAndMovementEncoder() {
-    return new FirstEditionHealthAndMovementEncoder(getResources());
-  }
-
   public IBoxContentEncoder getHealthEncoder() {
     return null;
   }
@@ -61,9 +56,5 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
 
   public boolean isEncodeAttributeAsFavorable() {
     return false;
-  }
-
-  public IBoxContentEncoder getOverdriveEncoder() {
-    return null;
   }
 }

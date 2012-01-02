@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.ExtendedEssenceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionHealthEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionMovementEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.HealthAndMovement2ndEditionEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -35,10 +34,6 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
     return essenceMax;
   }
 
-  public boolean hasSecondPage() {
-    return true;
-  }
-
   protected int getFontSize() {
     return IVoidStateFormatConstants.SMALLER_FONT_SIZE;
   }
@@ -51,20 +46,12 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
     return new DotBoxContentEncoder(trait, traitMax, traitHeaderKey);
   }
 
-  public IBoxContentEncoder getOverdriveEncoder() {
-    return null;
-  }
-
   public IBoxContentEncoder getSocialCombatEncoder() {
     return new SocialCombatStatsBoxEncoder(resources);
   }
 
   public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {
     return registry.getIntimaciesEncoder();
-  }
-
-  public IBoxContentEncoder getHealthAndMovementEncoder() {
-    return new HealthAndMovement2ndEditionEncoder(resources);
   }
 
   public IBoxContentEncoder getHealthEncoder() {

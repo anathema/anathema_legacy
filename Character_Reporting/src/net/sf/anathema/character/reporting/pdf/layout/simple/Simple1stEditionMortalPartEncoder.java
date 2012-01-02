@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -16,10 +15,6 @@ public class Simple1stEditionMortalPartEncoder extends AbstractFirstEditionPartE
 
   public IBoxContentEncoder getAnimaEncoder() {
     return new PdfBackgroundEncoder(getResources());
-  }
-
-  public IBoxContentEncoder getEssenceEncoder() {
-    return new ExperienceBoxContentEncoder();
   }
 
   public boolean hasMagicPage() {

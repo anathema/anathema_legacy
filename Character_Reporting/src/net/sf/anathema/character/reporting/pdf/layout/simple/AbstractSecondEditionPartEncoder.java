@@ -1,7 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.HealthAndMovement2ndEditionEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
@@ -20,20 +18,12 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
     return resources;
   }
 
-  public IBoxContentEncoder getEssenceEncoder() {
-    return new SimpleEssenceBoxContentEncoder();
-  }
-
   public IBoxContentEncoder getSocialCombatEncoder() {
     return new SocialCombatStatsBoxEncoder(resources);
   }
 
   public IBoxContentEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry) {
     return registry.getIntimaciesEncoder();
-  }
-
-  public IBoxContentEncoder getHealthAndMovementEncoder() {
-    return new HealthAndMovement2ndEditionEncoder(resources);
   }
 
   public float getWeaponryHeight() {

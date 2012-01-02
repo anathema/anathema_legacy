@@ -11,6 +11,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoder
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.AbstractHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
@@ -103,9 +105,7 @@ public class SimpleFirstPageEncoder implements IPdfPageEncoder {
 
   private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = partEncoder.getEssenceEncoder();
-    boxEncoder.encodeBox(content, graphics, encoder, essenceBounds);
-    return height;
+    return encode(SimpleEssenceBoxEncoderFactory.ID, graphics, content, essenceBounds);
   }
 
   private String getHeaderLabel(String key) {
@@ -169,17 +169,13 @@ public class SimpleFirstPageEncoder implements IPdfPageEncoder {
 
   private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(CombatStatsContentBoxEncoder.ID, resources, content);
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
-    return height;
+    return encode(CombatStatsContentBoxEncoder.ID, graphics, content, bounds);
   }
 
   private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder encoder = partEncoder.getHealthAndMovementEncoder();
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
-    return height;
+    return encode(AbstractHealthAndMovementEncoder.ID, graphics, content, bounds);
   }
 
   private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
@@ -222,5 +218,11 @@ public class SimpleFirstPageEncoder implements IPdfPageEncoder {
     IBoxContentEncoder encoder = partEncoder.getIntimaciesEncoder(registry);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
+  }
+
+  private float encode(String encoderId, SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(encoderId, resources, content);
+    boxEncoder.encodeBox(content, graphics, encoder, bounds);
+    return bounds.getHeight();
   }
 }

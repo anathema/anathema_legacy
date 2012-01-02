@@ -7,6 +7,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.first.content.combat.CombatStatsContent;
 import net.sf.anathema.character.reporting.first.content.combat.CombatStatsContentFactory;
 import net.sf.anathema.character.reporting.first.rendering.combat.CombatBoxEncoderFactory;
+import net.sf.anathema.character.reporting.first.rendering.health.HealthAndMovementBoxEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -21,6 +22,7 @@ public class FirstEditionReportingModule extends NullObjectCharacterModuleAdapte
 
   private void addReportEncoders(BoxContentEncoderRegistry registry) {
     registry.add(new CombatBoxEncoderFactory());
+    registry.add(new HealthAndMovementBoxEncoderFactory());
   }
 
   private void addReportContents(IResources resources, ReportContentRegistry registry) {

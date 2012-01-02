@@ -59,6 +59,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -209,7 +210,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     registerContent(resources, moduleObject.getReportContentRegistry());
-    registerSimpleReporting(resources, moduleObject.getSimpleEncodingRegistry());
+    registerSimpleReporting(resources, moduleObject.getSimpleEncodingRegistry(), moduleObject.getEncoderRegistry());
     registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry());
   }
 
@@ -220,8 +221,8 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     contentRegistry.addFactory(GiftContent.class, new GiftContentFactory(resources));
   }
 
-  private void registerSimpleReporting(IResources resources, SimpleEncodingRegistry registry) {
-    registry.setPartEncoder(LUNAR, ExaltedEdition.FirstEdition, new Simple1stEditionLunarPartEncoder(resources));
+  private void registerSimpleReporting(IResources resources, SimpleEncodingRegistry registry, BoxContentEncoderRegistry encoderRegistry) {
+    registry.setPartEncoder(LUNAR, ExaltedEdition.FirstEdition, new Simple1stEditionLunarPartEncoder(encoderRegistry, resources));
     registry.setPartEncoder(LUNAR, ExaltedEdition.SecondEdition, new Simple2ndEditionLunarPartEncoder(resources, ESSENCE_MAX));
   }
 
