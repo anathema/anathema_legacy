@@ -6,14 +6,14 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Extended2ndEditionHealthEncoder extends AbstractHealthAndMovementEncoder {
 
-  public Extended2ndEditionHealthEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
+  public Extended2ndEditionHealthEncoder(IResources resources, BaseFont baseFont) {
     super(resources, baseFont);
   }
 

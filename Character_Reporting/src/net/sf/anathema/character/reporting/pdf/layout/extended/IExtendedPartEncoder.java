@@ -6,7 +6,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBo
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 
-public interface IExtendedPartEncoder {
+public interface IExtendedPartEncoder extends IWeaponryPartEncoder {
 
   public IBoxContentEncoder getAnimaEncoder();
 
@@ -31,8 +31,6 @@ public interface IExtendedPartEncoder {
   public IBoxContentEncoder getMovementEncoder();
 
   public boolean hasMagicPage();
-
-  public float getWeaponryHeight();
 
   public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders();
 

@@ -72,7 +72,7 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
   }
 
   public IBoxContentEncoder getHealthAndMovementEncoder() {
-    return new SecondEditionHealthAndMovementEncoder(resources, baseFont, symbolBaseFont);
+    return new SecondEditionHealthAndMovementEncoder(resources, baseFont);
   }
 
   public float getWeaponryHeight() {

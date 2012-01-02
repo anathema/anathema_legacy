@@ -7,7 +7,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionHealthAndMovementEncoder extends AbstractHealthAndMovementEncoder {
 
-  public FirstEditionHealthAndMovementEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
+  public FirstEditionHealthAndMovementEncoder(IResources resources, BaseFont baseFont) {
     super(resources, baseFont);
   }
 

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import com.lowagie.text.pdf.BaseFont;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.FirstEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.FirstEditionCombatValueEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.FirstEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -52,7 +52,7 @@ public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEnco
   }
 
   public IBoxContentEncoder getHealthAndMovementEncoder() {
-    return new FirstEditionHealthAndMovementEncoder(getResources(), getBaseFont(), symbolBaseFont);
+    return new FirstEditionHealthAndMovementEncoder(getResources(), getBaseFont());
   }
 
   public float getWeaponryHeight() {

@@ -1,10 +1,11 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
+import net.sf.anathema.character.reporting.pdf.layout.extended.IWeaponryPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 
-public interface ISimplePartEncoder {
+public interface ISimplePartEncoder extends IWeaponryPartEncoder {
 
   public IBoxContentEncoder getAnimaEncoder();
 
@@ -21,8 +22,6 @@ public interface ISimplePartEncoder {
   public IBoxContentEncoder getHealthAndMovementEncoder();
 
   public boolean hasSecondPage();
-
-  public float getWeaponryHeight();
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
 

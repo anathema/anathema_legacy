@@ -1,22 +1,15 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.essence;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public class ExtendedEssenceBoxContentEncoder implements IVariableBoxContentEncoder {
 
-  private BaseFont baseFont;
-  private ExtendedEssenceTableEncoder poolTable;
-
-  public ExtendedEssenceBoxContentEncoder(BaseFont baseFont) {
-    this.baseFont = baseFont;
-    this.poolTable = new ExtendedEssenceTableEncoder(this.baseFont);
-  }
+  private ExtendedEssenceTableEncoder poolTable = new ExtendedEssenceTableEncoder();
 
   public String getHeaderKey(ReportContent content) {
     return createEssenceContent(content).getHeaderKey();
@@ -26,8 +19,7 @@ public class ExtendedEssenceBoxContentEncoder implements IVariableBoxContentEnco
     try {
       ExtendedEssenceContent essenceContent = createEssenceContent(content);
       return poolTable.getTableHeight(essenceContent, width);
-    }
-    catch (DocumentException e) {
+    } catch (DocumentException e) {
       return 100;
     }
   }

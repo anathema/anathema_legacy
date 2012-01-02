@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.personal;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
@@ -19,11 +18,11 @@ public class ExtendedPersonalInfoEncoder {
 
   private final IResources resources;
 
-  public ExtendedPersonalInfoEncoder(BaseFont baseFont, IResources resources) {
+  public ExtendedPersonalInfoEncoder(IResources resources) {
     this.resources = resources;
   }
 
-  public void encodePersonalInfos(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
+  public void encodePersonalInfo(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
     IGenericCharacter character = content.getCharacter();
     IGenericDescription description = content.getDescription();
     float lineHeight = (infoBounds.height - TEXT_PADDING) / 3;

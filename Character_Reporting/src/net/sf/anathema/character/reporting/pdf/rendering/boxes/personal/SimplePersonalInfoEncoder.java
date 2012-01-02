@@ -25,7 +25,7 @@ public class SimplePersonalInfoEncoder {
     this.resources = resources;
   }
 
-  public void encodePersonalInfos(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
+  public void encodePersonalInfo(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
     IGenericCharacter character = content.getCharacter();
     IGenericDescription description = content.getDescription();
     float lineHeight = (infoBounds.height - TEXT_PADDING) / 3;
