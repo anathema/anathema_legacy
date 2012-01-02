@@ -8,7 +8,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class Simple1stEditionAbyssalPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {
 
   public Simple1stEditionAbyssalPartEncoder(IResources resources, SimpleEncodingRegistry registry, int essenceMax) {
-    super(resources, registry, essenceMax);
+    super(resources, essenceMax, registry.getBaseFont());
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
