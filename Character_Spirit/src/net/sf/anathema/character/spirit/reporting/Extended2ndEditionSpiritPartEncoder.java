@@ -23,6 +23,6 @@ public class Extended2ndEditionSpiritPartEncoder extends AbstractSecondEditionEx
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new SpiritAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
+    return new SpiritAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 }

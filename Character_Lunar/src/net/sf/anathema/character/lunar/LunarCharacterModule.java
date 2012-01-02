@@ -221,13 +221,13 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerSimpleReporting(IResources resources, SimpleEncodingRegistry registry) {
-    registry.setPartEncoder(LUNAR, ExaltedEdition.FirstEdition, new Simple1stEditionLunarPartEncoder(resources, registry.getBaseFont(),
-      ESSENCE_MAX));
-    registry.setPartEncoder(LUNAR, ExaltedEdition.SecondEdition, new Simple2ndEditionLunarPartEncoder(resources, registry, ESSENCE_MAX));
+    registry.setPartEncoder(LUNAR, ExaltedEdition.FirstEdition, new Simple1stEditionLunarPartEncoder(resources));
+    registry.setPartEncoder(LUNAR, ExaltedEdition.SecondEdition, new Simple2ndEditionLunarPartEncoder(resources, ESSENCE_MAX));
   }
 
   private void registerExtendedReporting(IResources resources, ExtendedEncodingRegistry registry) {
-    registry.setPartEncoder(LUNAR, ExaltedEdition.FirstEdition, new Extended1stEditionLunarPartEncoder(resources, registry, ESSENCE_MAX));
+    registry
+      .setPartEncoder(LUNAR, ExaltedEdition.FirstEdition, new Extended1stEditionLunarPartEncoder(resources, registry.getBaseFont(), ESSENCE_MAX));
     registry.setPartEncoder(LUNAR, ExaltedEdition.SecondEdition, new Extended2ndEditionLunarPartEncoder(resources, registry, ESSENCE_MAX));
   }
 }

@@ -2,7 +2,6 @@ package net.sf.anathema.demo.character.reporting;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.PageSize;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfWriter;
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
@@ -57,7 +56,7 @@ public class PdfCharacterSheetDemo {
       PdfPageConfiguration pageConfiguration = PdfPageConfiguration.create(document.getPageSize());
       SimpleEncodingRegistry encodingRegistry = createEncodingRegistry(resources);
       int essenceMax = 7;
-      Simple2ndSolarPartEncoder partEncoder = new Simple2ndSolarPartEncoder(resources, encodingRegistry, essenceMax);
+      Simple2ndSolarPartEncoder partEncoder = new Simple2ndSolarPartEncoder(resources);
       SimpleFirstPageEncoder pageEncoder = new SimpleFirstPageEncoder(partEncoder, encodingRegistry, resources, essenceMax, pageConfiguration);
       ReportContentRegistry contentRegistry = new ReportContentRegistry();
       ReportContent content = new ReportContent(contentRegistry, character, description);
@@ -75,9 +74,8 @@ public class PdfCharacterSheetDemo {
 
   private static SimpleEncodingRegistry createEncodingRegistry(IResources resources) {
     SimpleEncodingRegistry encodingRegistry = new SimpleEncodingRegistry();
-    BaseFont baseFont = encodingRegistry.getBaseFont();
-    encodingRegistry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(ArmourContent.class, baseFont)));
-    encodingRegistry.setWeaponContentEncoder(new WeaponryEncoder(resources, baseFont));
+    encodingRegistry.setArmourContentEncoder(new ArmourEncoder(new ArmourTableEncoder(ArmourContent.class)));
+    encodingRegistry.setWeaponContentEncoder(new WeaponryEncoder());
     encodingRegistry.setIntimaciesEncoder(new SimpleIntimaciesEncoder());
     return encodingRegistry;
   }

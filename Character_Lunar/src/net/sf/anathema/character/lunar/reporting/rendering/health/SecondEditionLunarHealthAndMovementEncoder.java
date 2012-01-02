@@ -1,6 +1,5 @@
 package net.sf.anathema.character.lunar.reporting.rendering.health;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
@@ -12,13 +11,13 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionLunarHealthAndMovementEncoder extends SecondEditionHealthAndMovementEncoder {
 
-  public SecondEditionLunarHealthAndMovementEncoder(IResources resources, BaseFont baseFont) {
-    super(resources, baseFont);
+  public SecondEditionLunarHealthAndMovementEncoder(IResources resources) {
+    super(resources);
   }
 
   @Override
   protected final ITableEncoder createTableEncoder() {
-    return new SecondEditionHealthAndMovementTableEncoder(getResources(), getBaseFont()) {
+    return new SecondEditionHealthAndMovementTableEncoder(getResources()) {
       protected IGenericTraitCollection getTraits(IGenericCharacter character) {
         return ((IBeastformModel) character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID)).getBeastTraitCollection();
       }

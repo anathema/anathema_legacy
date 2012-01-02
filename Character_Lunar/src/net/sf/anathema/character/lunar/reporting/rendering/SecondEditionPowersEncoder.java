@@ -3,19 +3,19 @@ package net.sf.anathema.character.lunar.reporting.rendering;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
+
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
 
 public class SecondEditionPowersEncoder implements IBoxContentEncoder {
   private static final String TERRIFYING_BEASTMAN_ALTERATION = "Lunar.TerrifyingBeastmanAlteration";
@@ -23,15 +23,13 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
   private float lineHeight = IVoidStateFormatConstants.LINE_HEIGHT - 2;
   private final String powerBase = "Sheet.Lunar.Powers.";
   private final IResources resources;
-  private final BaseFont baseFont;
   private final boolean isHorizontal;
   private int tellMDV;
 
   private static final TemplateType castelessType = new TemplateType(CharacterType.LUNAR, new Identificate("Casteless")); //$NON-NLS-1$
 
-  public SecondEditionPowersEncoder(IResources resources, BaseFont baseFont, boolean isHorizontal) {
+  public SecondEditionPowersEncoder(IResources resources, boolean isHorizontal) {
     this.resources = resources;
-    this.baseFont = baseFont;
     this.isHorizontal = isHorizontal;
   }
 
@@ -39,11 +37,11 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
     tellMDV = hasTBA(reportContent.getCharacter()) ? 8 : 12;
 
     int offsetX = 0, offsetY = isHorizontal ? 0 : 5;
-    font = TableEncodingUtilities.createTableFont(baseFont);
+    font = graphics.createTableFont();
 
     if (isHorizontal) {
       bounds = new Bounds(bounds.x, bounds.y, bounds.width / 2, bounds.height);
-      font.setSize(IVoidStateFormatConstants.COMMENT_FONT_SIZE);
+      font.setSize(COMMENT_FONT_SIZE);
       lineHeight -= 2;
     }
 
@@ -60,8 +58,7 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
       }
 
       offsetY += writePowerNotes(graphics, "Tell", bounds, offsetX, offsetY);
-    }
-    catch (DocumentException e) {
+    } catch (DocumentException e) {
     }
   }
 
@@ -90,7 +87,8 @@ public class SecondEditionPowersEncoder implements IBoxContentEncoder {
     }
     if (!isHorizontal) {
       Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y + bounds.height - offsetY - totalHeight, bounds.x - offsetX, lineHeight);
-      totalHeight += graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(new Phrase(" ", font)).encode().getLinesWritten() * lineHeight;
+      totalHeight +=
+        graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(new Phrase(" ", font)).encode().getLinesWritten() * lineHeight;
     }
     return totalHeight;
   }

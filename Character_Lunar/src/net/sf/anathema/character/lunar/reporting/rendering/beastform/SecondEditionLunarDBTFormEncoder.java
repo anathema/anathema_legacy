@@ -3,7 +3,6 @@ package net.sf.anathema.character.lunar.reporting.rendering.beastform;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -16,7 +15,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -27,14 +25,11 @@ public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
   private final String notes = "Sheet.Lunar.WarForm";
   private final static int PHYSICAL_MAX = 15;
   private final IResources resources;
-  private final PdfTraitEncoder smallTraitEncoder;
-  private final BaseFont baseFont;
+  private final PdfTraitEncoder smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   private final float lineHeight = IVoidStateFormatConstants.LINE_HEIGHT - 4;
 
-  public SecondEditionLunarDBTFormEncoder(BaseFont baseFont, IResources resources, float smallWidth) {
+  public SecondEditionLunarDBTFormEncoder(IResources resources) {
     this.resources = resources;
-    this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
-    this.baseFont = baseFont;
   }
 
   public String getHeaderKey(ReportContent content) {
@@ -64,7 +59,7 @@ public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
   }
 
   private final void writeLine(SheetGraphics graphics, String text, Bounds bounds, float offsetX, float offsetY) throws DocumentException {
-    Font font = TableEncodingUtilities.createTableFont(baseFont);
+    Font font = graphics.createTableFont();
     Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y + bounds.height - offsetY, bounds.width / 2 - offsetX, lineHeight);
     font.setSize(IVoidStateFormatConstants.COMMENT_FONT_SIZE);
     graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(new Phrase(text, font)).encode();
@@ -78,7 +73,7 @@ public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
         bounds.height - 2 * verticalSpacing);
     IBoxContentEncoder encoder = new GiftEncoder();
     try {
-      new PdfBoxEncoder(resources, baseFont).encodeBox(content, graphics, encoder, newBounds);
+      new PdfBoxEncoder(resources).encodeBox(content, graphics, encoder, newBounds);
     } catch (DocumentException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

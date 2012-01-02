@@ -15,7 +15,8 @@ public class ExtendedEssenceBoxContentEncoder implements IVariableBoxContentEnco
     return createEssenceContent(content).getHeaderKey();
   }
 
-  public float getRequestedHeight(ReportContent content, float width) {
+  @Override
+  public float getRequestedHeight(SheetGraphics graphics, ReportContent content, float width) {
     try {
       ExtendedEssenceContent essenceContent = createEssenceContent(content);
       return poolTable.getTableHeight(essenceContent, width);

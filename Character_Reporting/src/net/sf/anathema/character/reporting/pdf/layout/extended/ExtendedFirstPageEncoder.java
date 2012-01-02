@@ -99,8 +99,8 @@ public class ExtendedFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, AbilitiesBoxContentEncoder.createWithCraftsOnly(getBaseFont(), getResources(), essenceMax, -1), 1, 1,
-      distanceFromTop, height);
+    return encodeFixedBox(graphics, content, AbilitiesBoxContentEncoder.createWithCraftsOnly(getResources(), essenceMax, -1), 1, 1, distanceFromTop,
+      height);
   }
 
   private float encodeSpecialties(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -108,9 +108,9 @@ public class ExtendedFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content,
-      new PdfAttributesEncoder(getBaseFont(), getResources(), essenceMax, getPartEncoder().isEncodeAttributeAsFavorable()), 1, 1, distanceFromTop,
-      height);
+    return encodeFixedBox(graphics, content, new PdfAttributesEncoder(getResources(), essenceMax, getPartEncoder().isEncodeAttributeAsFavorable()),
+      1,
+      1, distanceFromTop, height);
   }
 
   private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {

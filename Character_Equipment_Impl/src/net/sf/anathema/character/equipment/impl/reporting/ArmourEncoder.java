@@ -1,26 +1,20 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Color;
 
 public class ArmourEncoder implements IBoxContentEncoder {
 
-  private final BaseFont baseFont;
-  private final IResources resources;
   private final ITableEncoder encoder;
 
-  public ArmourEncoder(IResources resources, BaseFont baseFont, ITableEncoder encoder) {
-    this.resources = resources;
-    this.baseFont = baseFont;
+  public ArmourEncoder(ITableEncoder encoder) {
     this.encoder = encoder;
   }
 
@@ -35,7 +29,7 @@ public class ArmourEncoder implements IBoxContentEncoder {
     float delimitingLineYPosition = bounds.getMinY() + remainingHeight - padding;
     drawDelimiter(graphics.getDirectContent(), bounds, delimitingLineYPosition);
     Bounds shieldBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), remainingHeight - 2 * padding);
-    new ShieldTableEncoder(baseFont, resources).encodeTable(graphics, content, shieldBounds);
+    new ShieldTableEncoder().encodeTable(graphics, content, shieldBounds);
   }
 
   private void drawDelimiter(PdfContentByte directContent, Bounds bounds, float delimitingLineYPosition) {

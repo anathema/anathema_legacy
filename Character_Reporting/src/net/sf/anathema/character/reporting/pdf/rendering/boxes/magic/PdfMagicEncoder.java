@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -14,9 +13,9 @@ import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MultipleEffectCharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -87,13 +86,13 @@ public class PdfMagicEncoder implements IBoxContentEncoder {
   private final List<ITableEncoder> additionalTables;
   private final String headerKey;
 
-  public PdfMagicEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printMagic) {
-    this(resources, baseFont, printMagic, new ArrayList<ITableEncoder>(), false, "Charms"); //$NON-NLS-1$
+  public PdfMagicEncoder(IResources resources, List<IMagicStats> printMagic) {
+    this(resources, printMagic, new ArrayList<ITableEncoder>(), false, "Charms"); //$NON-NLS-1$
   }
 
-  public PdfMagicEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printMagic, List<ITableEncoder> additionalTables,
-    boolean sectionHeaderLines, String headerKey) {
-    this.tableEncoder = new PdfMagicTableEncoder(resources, baseFont, printMagic, sectionHeaderLines);
+  public PdfMagicEncoder(IResources resources, List<IMagicStats> printMagic, List<ITableEncoder> additionalTables, boolean sectionHeaderLines,
+    String headerKey) {
+    this.tableEncoder = new PdfMagicTableEncoder(resources, printMagic, sectionHeaderLines);
     this.additionalTables = additionalTables;
     this.headerKey = headerKey;
   }

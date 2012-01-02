@@ -1,6 +1,5 @@
 package net.sf.anathema.character.spirit.reporting;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.anima.AbstractAnimaEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.anima.AnimaTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -8,12 +7,12 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class SpiritAnimaEncoderFactory extends AbstractAnimaEncoderFactory {
 
-  public SpiritAnimaEncoderFactory(IResources resources, BaseFont basefont) {
-    super(resources, basefont);
+  public SpiritAnimaEncoderFactory(IResources resources) {
+    super(resources);
   }
 
   @Override
   protected ITableEncoder getAnimaTableEncoder() {
-    return new AnimaTableEncoder(getResources(), getBaseFont(), getFontSize());
+    return new AnimaTableEncoder(getResources(), getFontSize());
   }
 }

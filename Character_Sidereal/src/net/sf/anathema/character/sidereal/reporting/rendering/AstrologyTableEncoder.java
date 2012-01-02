@@ -1,39 +1,30 @@
 package net.sf.anathema.character.sidereal.reporting.rendering;
 
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.Rectangle;
+import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.CellPadding;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableList;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableList;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class AstrologyTableEncoder extends AbstractTableEncoder<ReportContent> {
 
   private final IResources resources;
-  private final Font font;
-  private final Font commentFont;
 
-  public AstrologyTableEncoder(IResources resources, BaseFont baseFont) {
+  public AstrologyTableEncoder(IResources resources) {
     this.resources = resources;
-    this.font = TableEncodingUtilities.createTableFont(baseFont);
-    this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
   }
 
   @Override
-  protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds)
-      throws DocumentException {
-    TableList list = new TableList(font, new CellPadding(2, 0, 1, 1));
-    TableCell spaceCell = new TableCell(new Phrase(" ", commentFont), Rectangle.NO_BORDER); //$NON-NLS-1$
+  protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
+    TableList list = new TableList(graphics.createTableFont(), new CellPadding(2, 0, 1, 1));
+    TableCell spaceCell = new TableCell(new Phrase(" ", graphics.createCommentFont()), Rectangle.NO_BORDER); //$NON-NLS-1$
     spaceCell.setPadding(0);
 
     list.addItem(resources.getString("Sheet.Astrology.PlanningPhase")); //$NON-NLS-1$

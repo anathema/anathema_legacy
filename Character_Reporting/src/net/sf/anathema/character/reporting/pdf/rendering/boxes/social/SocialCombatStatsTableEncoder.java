@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.social;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.social.InvestigationSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PerformanceSocialAttack;
@@ -20,16 +19,15 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
 
   private final IResources resources;
 
-  public SocialCombatStatsTableEncoder(IResources resources, BaseFont baseFont) {
-    super(baseFont);
+  public SocialCombatStatsTableEncoder(IResources resources) {
     this.resources = resources;
   }
 
   @SuppressWarnings("unchecked")
   @Override
   protected IStatsGroup<ISocialCombatStats>[] createStatsGroups(ReportContent content) {
-    return new IStatsGroup[]{new SocialCombatNameStatsGroup(resources), new SocialSpeedStatsGroup(resources), new HonestyStatsGroup(resources),
-                             new DeceptionStatsGroup(resources), new SocialRateStatsGroup(resources)};
+    return new IStatsGroup[] { new SocialCombatNameStatsGroup(resources), new SocialSpeedStatsGroup(resources), new HonestyStatsGroup(
+      resources), new DeceptionStatsGroup(resources), new SocialRateStatsGroup(resources) };
   }
 
   @Override
@@ -40,7 +38,7 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
   @Override
   protected ISocialCombatStats[] getPrintStats(ReportContent content) {
     IGenericTraitCollection traitCollection = content.getCharacter().getTraitCollection();
-    return new ISocialCombatStats[]{new PresenceSocialAttack(traitCollection), new PerformanceSocialAttack(traitCollection),
-                                    new InvestigationSocialAttack(traitCollection)};
+    return new ISocialCombatStats[] { new PresenceSocialAttack(traitCollection), new PerformanceSocialAttack(
+      traitCollection), new InvestigationSocialAttack(traitCollection) };
   }
 }

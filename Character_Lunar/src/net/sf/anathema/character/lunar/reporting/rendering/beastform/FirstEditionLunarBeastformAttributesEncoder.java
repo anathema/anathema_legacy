@@ -1,6 +1,5 @@
 package net.sf.anathema.character.lunar.reporting.rendering.beastform;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -10,9 +9,9 @@ import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionLunarBeastformAttributesEncoder implements IBoxContentEncoder {
@@ -23,7 +22,7 @@ public class FirstEditionLunarBeastformAttributesEncoder implements IBoxContentE
   private final PdfTraitEncoder smallTraitEncoder;
   private final float smallWidth;
 
-  public FirstEditionLunarBeastformAttributesEncoder(BaseFont baseFont, IResources resources, float smallWidth) {
+  public FirstEditionLunarBeastformAttributesEncoder(IResources resources, float smallWidth) {
     this.resources = resources;
     this.smallWidth = smallWidth;
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();

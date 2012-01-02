@@ -11,12 +11,12 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class PdfInitiationEncoder implements IVariableBoxContentEncoder {
 
@@ -41,7 +41,8 @@ public class PdfInitiationEncoder implements IVariableBoxContentEncoder {
     return "Initiations"; //$NON-NLS-1$
   }
 
-  public float getRequestedHeight(ReportContent content, float width) {
+  @Override
+  public float getRequestedHeight(SheetGraphics graphics, ReportContent content, float width) {
     IGenericCharacter character = content.getCharacter();
     ISpellMagicTemplate spellMagicTemplate = character.getTemplate().getMagicTemplate().getSpellMagic();
     ICharm[] knownCharms = character.getLearnedCharms();

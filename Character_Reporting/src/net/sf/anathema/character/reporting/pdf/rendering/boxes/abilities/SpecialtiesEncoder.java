@@ -1,16 +1,15 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.AbstractNamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.INamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -21,8 +20,8 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
 
   private final int specialtyCount;
 
-  public SpecialtiesEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder encoder, int specialtyCount) {
-    super(resources, baseFont, encoder);
+  public SpecialtiesEncoder(IResources resources, PdfTraitEncoder encoder, int specialtyCount) {
+    super(resources, encoder);
     this.specialtyCount = specialtyCount;
   }
 

@@ -20,17 +20,17 @@ public class Extended2ndEditionLunarPartEncoder extends AbstractSecondEditionExa
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new SecondEditionLunarGreatCurseEncoder(baseFont);
+    return new SecondEditionLunarGreatCurseEncoder();
   }
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new LunarAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
+    return new LunarAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 
   @Override
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[] { new Lunar2ndEditionAdditionalPageEncoder(this, baseFont, getResources(), configuration) };
+    return new IPdfPageEncoder[] { new Lunar2ndEditionAdditionalPageEncoder(this, getResources(), configuration) };
   }
 
   @Override

@@ -11,7 +11,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Box;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Dot;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Line;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Square;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
 import java.awt.Color;
 
@@ -59,7 +58,7 @@ public class SheetGraphics implements ITextMetrics {
     directContent.lineTo(position.x + length, position.y);
     directContent.stroke();
   }
-  
+
   public final void drawComment(String text, Position position, int alignment) {
     initDirectContentForEnabledText();
     setCommentFont();
@@ -103,7 +102,7 @@ public class SheetGraphics implements ITextMetrics {
       directContent.endText();
     }
   }
-  
+
   private void initDirectContentForEnabledText() {
     initDirectContentForText(Color.BLACK);
   }
@@ -143,7 +142,7 @@ public class SheetGraphics implements ITextMetrics {
   }
 
   public Font createBoldFont() {
-    Font boldFont = new Font(baseFont);
+    Font boldFont = createTextFont();
     boldFont.setStyle(Font.BOLD);
     return boldFont;
   }

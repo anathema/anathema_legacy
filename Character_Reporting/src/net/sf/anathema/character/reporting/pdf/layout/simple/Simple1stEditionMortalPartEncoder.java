@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -10,8 +9,8 @@ public class Simple1stEditionMortalPartEncoder extends AbstractFirstEditionPartE
 
   private final SimpleEncodingRegistry registry;
 
-  public Simple1stEditionMortalPartEncoder(IResources resources, BaseFont baseFont, SimpleEncodingRegistry registry) {
-    super(resources, baseFont);
+  public Simple1stEditionMortalPartEncoder(IResources resources, SimpleEncodingRegistry registry) {
+    super(resources);
     this.registry = registry;
   }
 

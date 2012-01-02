@@ -1,26 +1,19 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
+
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SMALLER_FONT_SIZE;
 
 public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFirstEditionPartEncoder {
 
-  private final int essenceMax;
-
-  public AbstractFirstEditionExaltPdfPartEncoder(IResources resources, int essenceMax, BaseFont baseFont) {
-    super(resources, baseFont);
-    this.essenceMax = essenceMax;
+  public AbstractFirstEditionExaltPdfPartEncoder(IResources resources) {
+    super(resources);
   }
 
   public IBoxContentEncoder getEssenceEncoder() {
     return new SimpleEssenceBoxContentEncoder();
-  }
-
-  protected int getEssenceMax() {
-    return essenceMax;
   }
 
   public boolean hasSecondPage() {
@@ -28,6 +21,6 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
   }
 
   protected final int getFontSize() {
-    return IVoidStateFormatConstants.SMALLER_FONT_SIZE;
+    return SMALLER_FONT_SIZE;
   }
 }

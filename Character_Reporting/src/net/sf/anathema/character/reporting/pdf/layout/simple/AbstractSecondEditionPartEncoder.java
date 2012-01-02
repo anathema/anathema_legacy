@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatValueEncoder;
@@ -17,21 +16,13 @@ import net.sf.anathema.lib.resources.IResources;
 public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEncoder {
 
   private final IResources resources;
-  private final BaseFont baseFont;
-  private final int essenceMax;
 
-  public AbstractSecondEditionPartEncoder(IResources resources, BaseFont baseFont, int essenceMax) {
+  public AbstractSecondEditionPartEncoder(IResources resources) {
     this.resources = resources;
-    this.baseFont = baseFont;
-    this.essenceMax = essenceMax;
   }
 
   public final IResources getResources() {
     return resources;
-  }
-
-  protected int getEssenceMax() {
-    return essenceMax;
   }
 
   public boolean hasSecondPage() {
@@ -49,7 +40,7 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
   }
 
   public IBoxContentEncoder getSocialCombatEncoder() {
-    return new SocialCombatStatsBoxEncoder(resources, baseFont);
+    return new SocialCombatStatsBoxEncoder(resources);
   }
 
   public IBoxContentEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry) {
@@ -57,7 +48,7 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
   }
 
   public IBoxContentEncoder getHealthAndMovementEncoder() {
-    return new SecondEditionHealthAndMovementEncoder(resources, baseFont);
+    return new SecondEditionHealthAndMovementEncoder(resources);
   }
 
   public float getWeaponryHeight() {

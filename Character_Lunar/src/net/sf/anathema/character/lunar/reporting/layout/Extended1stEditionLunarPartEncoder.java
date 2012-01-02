@@ -19,12 +19,12 @@ public class Extended1stEditionLunarPartEncoder extends AbstractFirstEditionExal
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new FirstEditionLunarGreatCurseEncoder(baseFont, getResources());
+    return new FirstEditionLunarGreatCurseEncoder(getResources());
   }
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new LunarAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
+    return new LunarAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 
   @Override

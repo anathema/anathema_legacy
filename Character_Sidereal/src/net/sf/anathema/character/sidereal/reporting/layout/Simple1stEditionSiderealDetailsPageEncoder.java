@@ -2,7 +2,6 @@ package net.sf.anathema.character.sidereal.reporting.layout;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
@@ -30,17 +29,15 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   private final static float THIRD_BLOCK_HEIGHT = 145;
   private final static float STANDING_HEIGHT = 45;
   private final IResources resources;
-  private final BaseFont baseFont;
   private final PdfBoxEncoder boxEncoder;
   private final PdfPageConfiguration configuration;
   private final int fontSize;
 
-  public Simple1stEditionSiderealDetailsPageEncoder(IResources resources, BaseFont baseFont, int fontSize, PdfPageConfiguration configuration) {
+  public Simple1stEditionSiderealDetailsPageEncoder(IResources resources, int fontSize, PdfPageConfiguration configuration) {
     this.resources = resources;
-    this.baseFont = baseFont;
     this.fontSize = fontSize;
     this.configuration = configuration;
-    this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
+    this.boxEncoder = new PdfBoxEncoder(resources);
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
@@ -110,7 +107,7 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   private float encodeAstrology(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new AstrologyInfoEncoder(baseFont, resources);
+    IBoxContentEncoder encoder = new AstrologyInfoEncoder(resources);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
@@ -132,7 +129,7 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   private float encodeParadox(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = new ParadoxInfoEncoder(baseFont, fontSize, resources, ExaltedEdition.FirstEdition);
+    IBoxContentEncoder encoder = new ParadoxInfoEncoder(fontSize, resources, ExaltedEdition.FirstEdition);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
@@ -140,7 +137,7 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   private float encodeArcaneFate(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = THIRD_BLOCK_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new ArcaneFateInfoEncoder(baseFont, fontSize, resources, ExaltedEdition.FirstEdition);
+    IBoxContentEncoder encoder = new ArcaneFateInfoEncoder(fontSize, resources, ExaltedEdition.FirstEdition);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }

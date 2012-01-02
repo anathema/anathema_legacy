@@ -1,21 +1,17 @@
 package net.sf.anathema.character.lunar.reporting.rendering.beastform;
 
+import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoxEncodingUtils;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxEncoder;
-
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public class BeastformAttributeBoxEncoder implements IBoxEncoder {
 
-  private final BaseFont baseFont;
   private final float smallWidth;
   private float smallHeight;
 
-  public BeastformAttributeBoxEncoder(BaseFont baseFont, float smallWidth, float smallHeight) {
-    this.baseFont = baseFont;
+  public BeastformAttributeBoxEncoder(float smallWidth, float smallHeight) {
     this.smallWidth = smallWidth;
     this.smallHeight = smallHeight - (HEADER_HEIGHT / 2);
   }

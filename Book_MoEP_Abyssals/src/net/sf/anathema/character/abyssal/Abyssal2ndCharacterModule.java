@@ -70,19 +70,18 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     IRegistry<ICharacterType, IMagicStats[]> genericCharmRegistry = characterGenerics.getGenericCharmStatsRegistry();
-    genericCharmRegistry.register(ABYSSAL, new IMagicStats[]{new FirstExcellency(ABYSSAL, ExaltedSourceBook.SecondEdition, "1 m per die"),
-                                                             //$NON-NLS-1$
-                                                             new SecondExcellency(ABYSSAL, ExaltedSourceBook.SecondEdition),
-                                                             new ThirdExcellency(ABYSSAL, "4 m", ExaltedSourceBook.SecondEdition),
-                                                             new InfiniteMastery(), new RaveningMouth(), new EssenceFlow(),
-                                                             new ApocalypticEvolution(), new SupremePerfection()});
+    genericCharmRegistry.register(ABYSSAL, new IMagicStats[] { new FirstExcellency(ABYSSAL, ExaltedSourceBook.SecondEdition, "1 m per die"),
+      //$NON-NLS-1$
+      new SecondExcellency(ABYSSAL, ExaltedSourceBook.SecondEdition), new ThirdExcellency(ABYSSAL, "4 m",
+      ExaltedSourceBook.SecondEdition), new InfiniteMastery(), new RaveningMouth(), new EssenceFlow(), new ApocalypticEvolution(),
+      new SupremePerfection() });
 
     characterGenerics.getAdditionalTemplateParserRegistry().register(AbyssalResonanceTemplate.ID, new AbyssalResonanceParser());
 
     characterGenerics.getCasteCollectionRegistry().register(ABYSSAL, new CasteCollection(AbyssalCaste.values()));
 
-    IEquipmentAdditionalModelTemplate equipmentTemplate = (IEquipmentAdditionalModelTemplate) characterGenerics.getGlobalAdditionalTemplateRegistry
-      ().getById(IEquipmentAdditionalModelTemplate.ID);
+    IEquipmentAdditionalModelTemplate equipmentTemplate =
+      (IEquipmentAdditionalModelTemplate) characterGenerics.getGlobalAdditionalTemplateRegistry().getById(IEquipmentAdditionalModelTemplate.ID);
     equipmentTemplate.addNaturalWeaponTemplate(ABYSSAL, new FangTemplate());
   }
 
@@ -113,7 +112,7 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     moduleObject.getReportContentRegistry().addFactory(Abyssal2ndResonanceContent.class, new Abyssal2ndResonanceContentFactory(resources));
     SimpleEncodingRegistry simpleRegistry = moduleObject.getSimpleEncodingRegistry();
-    simpleRegistry.setPartEncoder(ABYSSAL, SecondEdition, new Simple2ndEditionAbyssalPartEncoder(resources, simpleRegistry, ESSENCE_MAX));
+    simpleRegistry.setPartEncoder(ABYSSAL, SecondEdition, new Simple2ndEditionAbyssalPartEncoder(resources, ESSENCE_MAX));
     ExtendedEncodingRegistry extendedRegistry = moduleObject.getExtendedEncodingRegistry();
     extendedRegistry.setPartEncoder(ABYSSAL, SecondEdition, new Extended2ndEditionAbyssalPartEncoder(resources, extendedRegistry, ESSENCE_MAX));
   }

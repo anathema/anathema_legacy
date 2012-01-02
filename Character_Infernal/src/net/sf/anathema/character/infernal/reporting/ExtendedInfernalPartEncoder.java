@@ -22,7 +22,7 @@ public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPa
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new InfernalAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
+    return new InfernalAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 
   public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders() {

@@ -4,7 +4,6 @@ import com.lowagie.text.Anchor;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
-import com.lowagie.text.pdf.BaseFont;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
@@ -26,7 +25,6 @@ public class SimpleFirstPageEncoder implements IPdfPageEncoder {
   public static final float CONTENT_HEIGHT = 755;
   private final IResources resources;
   private final int essenceMax;
-  private final BaseFont baseFont;
 
   private static final float ANIMA_HEIGHT = 128;
   private final PdfPageConfiguration pageConfiguration;
@@ -37,12 +35,11 @@ public class SimpleFirstPageEncoder implements IPdfPageEncoder {
   public SimpleFirstPageEncoder(ISimplePartEncoder partEncoder, SimpleEncodingRegistry registry, IResources resources, int essenceMax,
     PdfPageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
-    this.baseFont = registry.getBaseFont();
     this.essenceMax = essenceMax;
     this.resources = resources;
     this.registry = registry;
     this.pageConfiguration = pageConfiguration;
-    this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
+    this.boxEncoder = new PdfBoxEncoder(resources);
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
@@ -80,7 +77,7 @@ public class SimpleFirstPageEncoder implements IPdfPageEncoder {
 
   private void encodeCopyright(SheetGraphics graphics) throws DocumentException {
     float lineHeight = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 2;
-    Font copyrightFont = new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE);
+    Font copyrightFont = graphics.createCommentFont();
     float copyrightHeight = pageConfiguration.getPageHeight() - pageConfiguration.getContentHeight();
     Bounds firstColumnBounds = pageConfiguration.getFirstColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
     Anchor voidstatePhrase = new Anchor("Inspired by Voidstate\nhttp://www.voidstate.com", copyrightFont); //$NON-NLS-1$
@@ -127,14 +124,14 @@ public class SimpleFirstPageEncoder implements IPdfPageEncoder {
   private void encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    IBoxContentEncoder encoder = AbilitiesBoxContentEncoder.createWithCraftsAndSpecialties(baseFont, resources, essenceMax, 9, 9);
+    IBoxContentEncoder encoder = AbilitiesBoxContentEncoder.createWithCraftsAndSpecialties(resources, essenceMax, 9, 9);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
   private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
-    IBoxContentEncoder encoder = new PdfAttributesEncoder(baseFont, resources, essenceMax, partEncoder.isEncodeAttributeAsFavorable());
+    IBoxContentEncoder encoder = new PdfAttributesEncoder(resources, essenceMax, partEncoder.isEncodeAttributeAsFavorable());
     boxEncoder.encodeBox(content, graphics, encoder, attributeBounds);
     return attributeHeight;
   }

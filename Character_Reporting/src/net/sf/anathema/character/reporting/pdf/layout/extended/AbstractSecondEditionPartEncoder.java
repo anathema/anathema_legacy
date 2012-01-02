@@ -67,7 +67,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   public IBoxContentEncoder getSocialCombatEncoder() {
-    return new SocialCombatStatsBoxEncoder(resources, baseFont);
+    return new SocialCombatStatsBoxEncoder(resources);
   }
 
   public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {
@@ -75,11 +75,11 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   public IBoxContentEncoder getHealthAndMovementEncoder() {
-    return new SecondEditionHealthAndMovementEncoder(resources, baseFont);
+    return new SecondEditionHealthAndMovementEncoder(resources);
   }
 
   public IBoxContentEncoder getHealthEncoder() {
-    return new Extended2ndEditionHealthEncoder(resources, baseFont);
+    return new Extended2ndEditionHealthEncoder(resources);
   }
 
   public IBoxContentEncoder getMovementEncoder() {

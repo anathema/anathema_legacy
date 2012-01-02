@@ -43,7 +43,7 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
     this.resources = resources;
     this.registry = registry;
     this.pageConfiguration = pageConfiguration;
-    this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
+    this.boxEncoder = new PdfBoxEncoder(resources);
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws
@@ -108,14 +108,14 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
   private void encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    IBoxContentEncoder encoder = AbilitiesBoxContentEncoder.createWithCraftsAndSpecialties(baseFont, resources, essenceMax, 9, 9);
+    IBoxContentEncoder encoder = AbilitiesBoxContentEncoder.createWithCraftsAndSpecialties(resources, essenceMax, 9, 9);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
   private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
-    IBoxContentEncoder encoder = new PdfAttributesEncoder(baseFont, resources, essenceMax, partEncoder.isEncodeAttributeAsFavorable());
+    IBoxContentEncoder encoder = new PdfAttributesEncoder(resources, essenceMax, partEncoder.isEncodeAttributeAsFavorable());
     boxEncoder.encodeBox(content, graphics, encoder, attributeBounds);
     return attributeHeight;
   }

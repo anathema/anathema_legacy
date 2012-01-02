@@ -47,7 +47,7 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
   }
 
   public IBoxContentEncoder getHealthAndMovementEncoder() {
-    return new FirstEditionHealthAndMovementEncoder(getResources(), getBaseFont());
+    return new FirstEditionHealthAndMovementEncoder(getResources());
   }
 
   public IBoxContentEncoder getHealthEncoder() {

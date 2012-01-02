@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.box;
 
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -12,11 +11,6 @@ import static net.sf.anathema.character.reporting.pdf.rendering.general.box.IBox
 public class PdfHeaderBoxEncoder {
   private static final int HEADER_FONT_PADDING = 3;
   private static final int HEADER_FONT_SIZE = IVoidStateFormatConstants.HEADER_FONT_SIZE;
-  private final BaseFont baseFont;
-
-  public PdfHeaderBoxEncoder(BaseFont baseFont) {
-    this.baseFont = baseFont;
-  }
 
   public void encodeHeaderBox(SheetGraphics graphics, Bounds bounds, String title) {
     PdfContentByte directContent = graphics.getDirectContent();
@@ -27,7 +21,7 @@ public class PdfHeaderBoxEncoder {
     directContent.arc(headerBounds.getMaxX(), headerBounds.y, headerBounds.getMaxX() - 2 * ARCSPACE, headerBounds.getMaxY(), 0, 360);
     directContent.fillStroke();
     setFillColorWhite(directContent);
-    directContent.setFontAndSize(baseFont, HEADER_FONT_SIZE);
+    directContent.setFontAndSize(graphics.getBaseFont(), HEADER_FONT_SIZE);
     directContent.beginText();
     directContent.showTextAligned(PdfContentByte.ALIGN_CENTER, title, (int) headerBounds.getCenterX(), headerBounds.y + HEADER_FONT_PADDING, 0);
     directContent.endText();

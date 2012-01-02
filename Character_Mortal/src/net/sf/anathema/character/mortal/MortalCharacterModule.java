@@ -41,8 +41,7 @@ public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerSimpleParts(IResources resources, SimpleEncodingRegistry registry) {
-    BaseFont baseFont = registry.getBaseFont();
-    registry.setPartEncoder(MORTAL, SecondEdition, new Simple2ndEditionMortalPartEncoder(resources, baseFont, registry));
-    registry.setPartEncoder(MORTAL, FirstEdition, new Simple1stEditionMortalPartEncoder(resources, baseFont, registry));
+    registry.setPartEncoder(MORTAL, SecondEdition, new Simple2ndEditionMortalPartEncoder(resources, registry));
+    registry.setPartEncoder(MORTAL, FirstEdition, new Simple1stEditionMortalPartEncoder(resources, registry));
   }
 }

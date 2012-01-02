@@ -40,7 +40,7 @@ public class Extended1stEditionSiderealDetailsPageEncoder implements IPdfPageEnc
     this.baseFont = baseFont;
     this.fontSize = fontSize;
     this.configuration = configuration;
-    this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
+    this.boxEncoder = new PdfBoxEncoder(resources);
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
@@ -110,7 +110,7 @@ public class Extended1stEditionSiderealDetailsPageEncoder implements IPdfPageEnc
   private float encodeAstrology(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new AstrologyInfoEncoder(baseFont, resources);
+    IBoxContentEncoder encoder = new AstrologyInfoEncoder(resources);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
@@ -132,7 +132,7 @@ public class Extended1stEditionSiderealDetailsPageEncoder implements IPdfPageEnc
   private float encodeParadox(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = new ParadoxInfoEncoder(baseFont, fontSize, resources, ExaltedEdition.FirstEdition);
+    IBoxContentEncoder encoder = new ParadoxInfoEncoder(fontSize, resources, ExaltedEdition.FirstEdition);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
@@ -140,7 +140,7 @@ public class Extended1stEditionSiderealDetailsPageEncoder implements IPdfPageEnc
   private float encodeArcaneFate(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = THIRD_BLOCK_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new ArcaneFateInfoEncoder(baseFont, fontSize, resources, ExaltedEdition.FirstEdition);
+    IBoxContentEncoder encoder = new ArcaneFateInfoEncoder(fontSize, resources, ExaltedEdition.FirstEdition);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }

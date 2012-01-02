@@ -73,9 +73,8 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerEncoders(IResources resources, IEncodingRegistry registry) {
-    registry.setArmourContentEncoder(
-      new ArmourEncoder(resources, registry.getBaseFont(), new ArmourTableEncoder(ArmourContent.class, registry.getBaseFont())));
-    registry.setWeaponContentEncoder(new WeaponryEncoder(resources, registry.getBaseFont()));
+    registry.setArmourContentEncoder(new ArmourEncoder(new ArmourTableEncoder(ArmourContent.class)));
+    registry.setWeaponContentEncoder(new WeaponryEncoder());
     registry.setPossessionsEncoder(new PossessionsEncoder());
   }
 }

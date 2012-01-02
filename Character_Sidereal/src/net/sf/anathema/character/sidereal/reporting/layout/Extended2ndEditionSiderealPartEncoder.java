@@ -20,7 +20,7 @@ public class Extended2ndEditionSiderealPartEncoder extends AbstractSecondEdition
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new SiderealFlawedFateEncoder(baseFont, getResources());
+    return new SiderealFlawedFateEncoder(getResources());
   }
 
   @Override
@@ -30,6 +30,6 @@ public class Extended2ndEditionSiderealPartEncoder extends AbstractSecondEdition
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new SiderealAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
+    return new SiderealAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 }

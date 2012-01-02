@@ -17,6 +17,6 @@ public class Extended1stEditionSolarPartEncoder extends AbstractFirstEditionExal
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new SolarAnimaEncoderFactory(getResources(), getBaseFont()).createAnimaEncoder();
+    return new SolarAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 }

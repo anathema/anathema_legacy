@@ -19,8 +19,6 @@ import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackground
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstEdition;
-
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -35,6 +33,7 @@ import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegis
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 
 public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
@@ -52,8 +51,8 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getCasteCollectionRegistry().register(ABYSSAL, new CasteCollection(AbyssalCaste.values()));
-    IEquipmentAdditionalModelTemplate equipmentTemplate = (IEquipmentAdditionalModelTemplate) characterGenerics.getGlobalAdditionalTemplateRegistry
-      ().getById(IEquipmentAdditionalModelTemplate.ID);
+    IEquipmentAdditionalModelTemplate equipmentTemplate =
+      (IEquipmentAdditionalModelTemplate) characterGenerics.getGlobalAdditionalTemplateRegistry().getById(IEquipmentAdditionalModelTemplate.ID);
     equipmentTemplate.addNaturalWeaponTemplate(ABYSSAL, new FangTemplate());
   }
 
@@ -63,11 +62,11 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
     ITemplateRegistry templateRegistry = characterGenerics.getTemplateRegistry();
     initTemplate(templateRegistry, new LoyalAbyssalTemplate(charmProvider, additionalLoyalAbyssalRules), charmProvider, additionalLoyalAbyssalRules);
     initTemplate(templateRegistry, new RenegadeAbyssalTemplate(charmProvider, additionalRenegadeAbyssalRules), charmProvider,
-                 additionalRenegadeAbyssalRules);
+      additionalRenegadeAbyssalRules);
   }
 
   private void initTemplate(ITemplateRegistry templateRegistry, ICharacterTemplate template, ICharmCache charmProvider,
-                            AdditionalAbyssalRules additionalRules) {
+    AdditionalAbyssalRules additionalRules) {
     templateRegistry.register(template);
     additionalRules.addEssenceEngorgementTechniqueRules(getEngorgement(charmProvider));
   }
@@ -102,7 +101,7 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     moduleObject.getReportContentRegistry().addFactory(Abyssal1stResonanceContent.class, new Abyssal1stResonanceContentFactory(resources));
     SimpleEncodingRegistry simpleRegistry = moduleObject.getSimpleEncodingRegistry();
-    simpleRegistry.setPartEncoder(ABYSSAL, FirstEdition, new Simple1stEditionAbyssalPartEncoder(resources, simpleRegistry, ESSENCE_MAX));
+    simpleRegistry.setPartEncoder(ABYSSAL, FirstEdition, new Simple1stEditionAbyssalPartEncoder(resources));
     ExtendedEncodingRegistry extendedRegistry = moduleObject.getExtendedEncodingRegistry();
     extendedRegistry.setPartEncoder(ABYSSAL, FirstEdition, new Extended1stEditionAbyssalPartEncoder(resources, extendedRegistry, ESSENCE_MAX));
   }

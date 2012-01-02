@@ -8,11 +8,11 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -34,7 +34,7 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     this.baseFont = registry.getBaseFont();
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;
-    this.boxEncoder = new PdfBoxEncoder(resources, getBaseFont());
+    this.boxEncoder = new PdfBoxEncoder(resources);
   }
 
   public abstract void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException;
@@ -53,13 +53,15 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92011\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$
     anathemaPhrase.setReference("http://anathema.sf.net"); //$NON-NLS-1$
     Bounds anathemaBounds = getPageConfiguration().getSecondColumnRectangle(getContentHeight(), copyrightHeight, 1);
-    graphics.createSimpleColumn(anathemaBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Center).andTextPart(anathemaPhrase).encode();
+    graphics.createSimpleColumn(anathemaBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Center).andTextPart(anathemaPhrase).encode
+      ();
     Anchor whitewolfPhrase = new Anchor("Exalted \u00A92011 by White Wolf, Inc.\nhttp://www.white-wolf.com", //$NON-NLS-1$
       copyrightFont);
     whitewolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
 
     Bounds whitewolfBounds = getPageConfiguration().getThirdColumnRectangle(getContentHeight(), copyrightHeight);
-    graphics.createSimpleColumn(whitewolfBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Right).andTextPart(whitewolfPhrase).encode();
+    graphics.createSimpleColumn(whitewolfBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Right).andTextPart(whitewolfPhrase)
+      .encode();
   }
 
   protected ExtendedEncodingRegistry getRegistry() {
@@ -136,26 +138,26 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     return height;
   }
 
-  protected float encodeFixedBoxBottom(SheetGraphics graphics, ReportContent content, IBoxContentEncoder encoder, int column, int span,
-    float bottom, float height) throws DocumentException {
+  protected float encodeFixedBoxBottom(SheetGraphics graphics, ReportContent content, IBoxContentEncoder encoder, int column, int span, float bottom,
+    float height) throws DocumentException {
     getBoxEncoder().encodeBox(content, graphics, encoder, calculateBounds(column, span, bottom - height, height));
     return height;
   }
 
   protected float encodeVariableBox(SheetGraphics graphics, ReportContent content, IVariableBoxContentEncoder encoder, int column, int span,
     float distanceFromTop, float maxHeight) throws DocumentException {
-    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(encoder, content, getWidth(column, span)));
+    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(graphics, encoder, content, getWidth(column, span)));
     return encodeFixedBox(graphics, content, encoder, column, span, distanceFromTop, height);
   }
 
-  protected float encodeVariableBoxBottom(SheetGraphics graphics, ReportContent content, IVariableBoxContentEncoder encoder, int column,
-    int span, float bottom, float maxHeight) throws DocumentException {
-    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(encoder, content, getWidth(column, span)));
+  protected float encodeVariableBoxBottom(SheetGraphics graphics, ReportContent content, IVariableBoxContentEncoder encoder, int column, int span,
+    float bottom, float maxHeight) throws DocumentException {
+    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(graphics, encoder, content, getWidth(column, span)));
     return encodeFixedBoxBottom(graphics, content, encoder, column, span, bottom, height);
   }
 
-  protected float encodeNotes(SheetGraphics graphics, ReportContent content, String title, int column, int span, float distanceFromTop,
-    float height, int textColumns) throws DocumentException {
+  protected float encodeNotes(SheetGraphics graphics, ReportContent content, String title, int column, int span, float distanceFromTop, float height,
+    int textColumns) throws DocumentException {
     IBoxContentEncoder encoder = new HorizontalLineBoxContentEncoder(textColumns, title);
     return encodeFixedBox(graphics, content, encoder, column, span, distanceFromTop, height);
   }

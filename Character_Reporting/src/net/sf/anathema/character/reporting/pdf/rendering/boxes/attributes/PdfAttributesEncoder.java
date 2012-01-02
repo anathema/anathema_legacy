@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -14,9 +13,9 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class PdfAttributesEncoder implements IBoxContentEncoder {
   private final int essenceMax;
   private final boolean encodeFavored;
 
-  public PdfAttributesEncoder(BaseFont baseFont, IResources resources, int essenceMax, boolean encodeFavored) {
+  public PdfAttributesEncoder(IResources resources, int essenceMax, boolean encodeFavored) {
     this.resources = resources;
     this.essenceMax = essenceMax;
     this.encodeFavored = encodeFavored;
@@ -70,8 +69,8 @@ public class PdfAttributesEncoder implements IBoxContentEncoder {
     return excellencies.toArray(new IMagicStats[0]);
   }
 
-  public final void encodeAttributes(SheetGraphics graphics, IGenericCharacter character, Bounds contentBounds,
-    IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
+  public final void encodeAttributes(SheetGraphics graphics, IGenericCharacter character, Bounds contentBounds, IGroupedTraitType[] attributeGroups,
+    IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - groupSpacing;
     String groupId = null;
@@ -100,8 +99,8 @@ public class PdfAttributesEncoder implements IBoxContentEncoder {
             }
           }) != null;
         }
-        y -= smallTraitEncoder.encodeWithExcellencies(graphics, traitLabel, position, contentBounds.width, value, favored, excellencyLearned,
-          essenceMax);
+        y -= smallTraitEncoder
+          .encodeWithExcellencies(graphics, traitLabel, position, contentBounds.width, value, favored, excellencyLearned, essenceMax);
       }
     }
   }

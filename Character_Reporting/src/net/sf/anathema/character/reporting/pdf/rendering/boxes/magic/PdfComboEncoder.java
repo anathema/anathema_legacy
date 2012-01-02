@@ -3,7 +3,6 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -29,9 +28,9 @@ public class PdfComboEncoder {
   private final IResources resources;
   private final PdfBoxEncoder boxEncoder;
 
-  public PdfComboEncoder(IResources resources, BaseFont baseFont) {
+  public PdfComboEncoder(IResources resources) {
     this.resources = resources;
-    this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
+    this.boxEncoder = new PdfBoxEncoder(resources);
   }
 
   public float encodeCombos(SheetGraphics graphics, ReportContent content, Bounds maxBounds) throws DocumentException {
@@ -43,7 +42,6 @@ public class PdfComboEncoder {
     if (combos.isEmpty()) {
       return 0;
     }
-
     Bounds contentBounds = boxEncoder.calculateContentBounds(maxBounds);
     SimpleColumn column = graphics.createSimpleColumn(contentBounds).withLeading(LINE_HEIGHT).get();
     addCombos(graphics, column, combos);

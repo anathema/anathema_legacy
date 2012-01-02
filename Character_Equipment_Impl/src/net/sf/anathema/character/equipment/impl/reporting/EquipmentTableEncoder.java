@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.FixedLineStatsContent;
@@ -12,8 +11,7 @@ public class EquipmentTableEncoder<
 
   private Class<? extends CONTENT> contentClass;
 
-  public EquipmentTableEncoder(Class<? extends CONTENT> contentClass, BaseFont baseFont) {
-    super(baseFont);
+  public EquipmentTableEncoder(Class<? extends CONTENT> contentClass) {
     this.contentClass = contentClass;
   }
 

@@ -17,6 +17,6 @@ public class Extended1stEditionAbyssalPartEncoder extends AbstractFirstEditionEx
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new AbyssalAnimaEncoderFactory(getResources(), getBaseFont()).createAnimaEncoder();
+    return new AbyssalAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 }
