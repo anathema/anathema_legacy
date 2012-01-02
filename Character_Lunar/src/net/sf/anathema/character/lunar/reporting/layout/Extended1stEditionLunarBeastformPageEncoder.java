@@ -15,11 +15,10 @@ import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarEquipm
 import net.sf.anathema.character.lunar.reporting.rendering.health.FirstEditionLunarHealthAndMovementEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.heartsblood.FirstEditionLunarHeartsBloodEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.ExtendedPersonalInfoEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -35,11 +34,9 @@ import net.sf.anathema.lib.resources.IResources;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
 public class Extended1stEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
-  public static final int CONTENT_HEIGHT = 755;
   private final IResources resources;
   private final int essenceMax;
   private final BaseFont baseFont;
-  private final BaseFont symbolFont;
 
   private static final int ANIMA_HEIGHT = 128;
   private static final int VIRTUE_HEIGHT = 72;
@@ -47,15 +44,14 @@ public class Extended1stEditionLunarBeastformPageEncoder implements IPdfPageEnco
   private final PdfBoxEncoder boxEncoder;
   private final IExtendedPartEncoder partEncoder;
 
-  public Extended1stEditionLunarBeastformPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources,
-    int essenceMax, PdfPageConfiguration pageConfiguration) {
+  public Extended1stEditionLunarBeastformPageEncoder(IExtendedPartEncoder partEncoder, BaseFont baseFont, IResources resources, int essenceMax,
+    PdfPageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
-    this.baseFont = registry.getBaseFont();
+    this.baseFont = baseFont;
     this.essenceMax = essenceMax;
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;
     this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
-    this.symbolFont = registry.getSymbolBaseFont();
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
@@ -86,7 +82,7 @@ public class Extended1stEditionLunarBeastformPageEncoder implements IPdfPageEnco
     distanceFromTop += calculateBoxIncrement(armourHeight);
     float healthHeight = encodeMovementAndHealth(graphics, content, distanceFromTop, 99);
     distanceFromTop += calculateBoxIncrement(healthHeight);
-    float remainingHeight = Extended1stEditionLunarBeastformPageEncoder.CONTENT_HEIGHT - distanceFromTop;
+    float remainingHeight = IPdfPageEncoder.CONTENT_HEIGHT - distanceFromTop;
     encodeCombatStats(graphics, content, distanceFromTop, remainingHeight);
     encodeAbilities(graphics, content, abilityStartHeight, remainingHeight + PADDING);
     encodeGifts(graphics, content, distanceFromTop, remainingHeight);
@@ -118,7 +114,7 @@ public class Extended1stEditionLunarBeastformPageEncoder implements IPdfPageEnco
     String name = content.getDescription().getName();
     String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
     Bounds infoContentBounds = boxEncoder.encodeBox(graphics, infoBounds, title);
-    encodePersonalInfos(graphics, content, infoContentBounds);
+    encodePersonalInfo(graphics, content, infoContentBounds);
   }
 
   private void encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop, float remainingHeightRequired)
@@ -177,14 +173,14 @@ public class Extended1stEditionLunarBeastformPageEncoder implements IPdfPageEnco
   private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder encoder = new FirstEditionLunarHealthAndMovementEncoder(resources, baseFont, symbolFont, content.getCharacter());
+    IBoxContentEncoder encoder = new FirstEditionLunarHealthAndMovementEncoder(resources, baseFont);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }
 
-  private void encodePersonalInfos(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
-    ExtendedPersonalInfoEncoder encoder = new ExtendedPersonalInfoEncoder(baseFont, resources);
-    encoder.encodePersonalInfos(graphics, content, infoBounds);
+  private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
+    PersonalInfoEncoder encoder = new PersonalInfoEncoder(resources);
+    encoder.encodePersonalInfo(graphics, content, infoBounds);
   }
 
   private float encodeVirtues(SheetGraphics graphics, float distanceFromTop, float height, ReportContent content) throws DocumentException {

@@ -10,7 +10,7 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
   private final int essenceMax;
 
   public AbstractFirstEditionExaltPdfPartEncoder(IResources resources, SimpleEncodingRegistry registry, int essenceMax) {
-    super(resources, registry.getBaseFont(), registry.getSymbolBaseFont());
+    super(resources, registry.getBaseFont());
     this.essenceMax = essenceMax;
   }
 

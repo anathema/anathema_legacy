@@ -12,13 +12,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.Abiliti
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.ExtendedPersonalInfoEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -180,7 +180,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     String name = content.getDescription().getName();
     String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
     Bounds infoContentBounds = boxEncoder.encodeBox(graphics, infoBounds, title);
-    encodePersonalInfos(graphics, content, infoContentBounds);
+    encodePersonalInfo(graphics, content, infoContentBounds);
   }
 
   private void encodeFirstColumn(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
@@ -217,17 +217,16 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     return 0;
   }
 
-  private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IBoxContentEncoder contentEncoder = new PdfBackgroundEncoder(resources);
     boxEncoder.encodeBox(content, graphics, contentEncoder, bounds);
     return height;
   }
 
-  private void encodePersonalInfos(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
-    ExtendedPersonalInfoEncoder encoder = new ExtendedPersonalInfoEncoder(baseFont, resources);
-    encoder.encodePersonalInfos(graphics, content, infoBounds);
+  private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
+    PersonalInfoEncoder encoder = new PersonalInfoEncoder(resources);
+    encoder.encodePersonalInfo(graphics, content, infoBounds);
   }
 
   private float encodeVirtues(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -291,8 +290,8 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
   }
 
-  private void encodeNotes(SheetGraphics graphics, ReportContent content, int boxId, float distanceFromTop, float frameHeight,
-    float height) throws DocumentException {
+  private void encodeNotes(SheetGraphics graphics, ReportContent content, int boxId, float distanceFromTop, float frameHeight, float height)
+    throws DocumentException {
     Bounds bounds = null;
     int columns = 1;
     switch (boxId) {
@@ -326,26 +325,26 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     return registry.getThaumaturgyEncoder().hasContent(content);
   }
 
-  private void encodeMutations(SheetGraphics graphics, ReportContent content, int column, float distanceFromTop,
-    float height) throws DocumentException {
-    Bounds bounds = column == 2 ? pageConfiguration.getSecondColumnRectangle(distanceFromTop, height,
-      1) : pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
+  private void encodeMutations(SheetGraphics graphics, ReportContent content, int column, float distanceFromTop, float height)
+    throws DocumentException {
+    Bounds bounds = column == 2 ? pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1) :
+                    pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IBoxContentEncoder encoder = registry.getMutationsEncoder();
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
   }
 
-  private void encodeMeritsAndFlaws(SheetGraphics graphics, ReportContent content, int column, float distanceFromTop,
-    float height) throws DocumentException {
-    Bounds bounds = column == 2 ? pageConfiguration.getSecondColumnRectangle(distanceFromTop, height,
-      1) : pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
+  private void encodeMeritsAndFlaws(SheetGraphics graphics, ReportContent content, int column, float distanceFromTop, float height)
+    throws DocumentException {
+    Bounds bounds = column == 2 ? pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1) :
+                    pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IBoxContentEncoder encoder = registry.getMeritsAndFlawsEncoder();
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
   }
 
-  private void encodeThaumaturgy(SheetGraphics graphics, ReportContent content, int column, float distanceFromTop,
-    float height) throws DocumentException {
-    Bounds bounds = column == 2 ? pageConfiguration.getSecondColumnRectangle(distanceFromTop, height,
-      1) : pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
+  private void encodeThaumaturgy(SheetGraphics graphics, ReportContent content, int column, float distanceFromTop, float height)
+    throws DocumentException {
+    Bounds bounds = column == 2 ? pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1) :
+                    pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IBoxContentEncoder encoder = registry.getThaumaturgyEncoder();
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
   }

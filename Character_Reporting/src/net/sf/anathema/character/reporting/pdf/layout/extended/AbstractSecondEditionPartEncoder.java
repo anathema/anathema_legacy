@@ -24,26 +24,16 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
 
   private final IResources resources;
   private final BaseFont baseFont;
-  private final BaseFont symbolBaseFont;
   private final int essenceMax;
 
-  public AbstractSecondEditionPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont, int essenceMax) {
+  public AbstractSecondEditionPartEncoder(IResources resources, BaseFont baseFont, int essenceMax) {
     this.resources = resources;
     this.baseFont = baseFont;
-    this.symbolBaseFont = symbolBaseFont;
     this.essenceMax = essenceMax;
   }
 
   public final IResources getResources() {
     return resources;
-  }
-
-  public final BaseFont getBaseFont() {
-    return baseFont;
-  }
-
-  public final BaseFont getSymbolBaseFont() {
-    return symbolBaseFont;
   }
 
   protected int getEssenceMax() {
@@ -59,7 +49,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   public IBoxContentEncoder getEssenceEncoder() {
-    return new ExtendedEssenceBoxContentEncoder(getBaseFont());
+    return new ExtendedEssenceBoxContentEncoder();
   }
 
   public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
@@ -85,15 +75,15 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   public IBoxContentEncoder getHealthAndMovementEncoder() {
-    return new SecondEditionHealthAndMovementEncoder(resources, baseFont, symbolBaseFont);
+    return new SecondEditionHealthAndMovementEncoder(resources, baseFont);
   }
 
   public IBoxContentEncoder getHealthEncoder() {
-    return new Extended2ndEditionHealthEncoder(resources, baseFont, symbolBaseFont);
+    return new Extended2ndEditionHealthEncoder(resources, baseFont);
   }
 
   public IBoxContentEncoder getMovementEncoder() {
-    return new Extended2ndEditionMovementEncoder(resources, baseFont, symbolBaseFont);
+    return new Extended2ndEditionMovementEncoder(resources, baseFont);
   }
 
   public float getWeaponryHeight() {

@@ -11,7 +11,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContent
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -19,26 +18,16 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
 
   private final IResources resources;
   private final BaseFont baseFont;
-  private final BaseFont symbolBaseFont;
   private final int essenceMax;
 
-  public AbstractSecondEditionPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont, int essenceMax) {
+  public AbstractSecondEditionPartEncoder(IResources resources, BaseFont baseFont, int essenceMax) {
     this.resources = resources;
     this.baseFont = baseFont;
-    this.symbolBaseFont = symbolBaseFont;
     this.essenceMax = essenceMax;
   }
 
   public final IResources getResources() {
     return resources;
-  }
-
-  public final BaseFont getBaseFont() {
-    return baseFont;
-  }
-
-  public final BaseFont getSymbolBaseFont() {
-    return symbolBaseFont;
   }
 
   protected int getEssenceMax() {
@@ -47,10 +36,6 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
 
   public boolean hasSecondPage() {
     return true;
-  }
-
-  protected int getFontSize() {
-    return IVoidStateFormatConstants.SMALLER_FONT_SIZE;
   }
 
   public IBoxContentEncoder getEssenceEncoder() {
@@ -72,7 +57,7 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
   }
 
   public IBoxContentEncoder getHealthAndMovementEncoder() {
-    return new SecondEditionHealthAndMovementEncoder(resources, baseFont, symbolBaseFont);
+    return new SecondEditionHealthAndMovementEncoder(resources, baseFont);
   }
 
   public float getWeaponryHeight() {

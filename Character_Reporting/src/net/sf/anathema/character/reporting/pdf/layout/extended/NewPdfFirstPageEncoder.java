@@ -5,16 +5,16 @@ import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.ExtendedSpecialtiesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.ExtendedSpecialtiesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.ExtendedPersonalInfoBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
@@ -89,16 +89,13 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
     encodeCopyright(graphics);
   }
 
-  private float encodeEssenceDots(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getPartEncoder().getDotsEncoder(OtherTraitType.Essence, EssenceTemplate.SYSTEM_ESSENCE_MAX,
-      "Essence"), 3, 1, distanceFromTop, height);
+  private float encodeEssenceDots(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+    return encodeFixedBox(graphics, content, getPartEncoder().getDotsEncoder(OtherTraitType.Essence, EssenceTemplate.SYSTEM_ESSENCE_MAX, "Essence"),
+      3, 1, distanceFromTop, height);
   }
 
-  private float encodePersonalInfo(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float maxHeight) throws DocumentException {
-    return encodeVariableBox(graphics, content, new ExtendedPersonalInfoBoxEncoder(getResources()), 1, 3, distanceFromTop,
-      maxHeight);
+  private float encodePersonalInfo(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
+    return encodeVariableBox(graphics, content, new PersonalInfoBoxEncoder(getResources()), 1, 3, distanceFromTop, maxHeight);
   }
 
   private float encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -106,18 +103,17 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
       distanceFromTop, height);
   }
 
-  private float encodeSpecialties(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeSpecialties(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     return encodeFixedBox(graphics, content, new ExtendedSpecialtiesEncoder(getResources(), getBaseFont()), 1, 2, distanceFromTop, height);
   }
 
   private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, new PdfAttributesEncoder(getBaseFont(), getResources(), essenceMax,
-      getPartEncoder().isEncodeAttributeAsFavorable()), 1, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, content,
+      new PdfAttributesEncoder(getBaseFont(), getResources(), essenceMax, getPartEncoder().isEncodeAttributeAsFavorable()), 1, 1, distanceFromTop,
+      height);
   }
 
-  private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     return encodeFixedBox(graphics, content, new PdfBackgroundEncoder(getResources()), 3, 1, distanceFromTop, height);
   }
 
@@ -125,10 +121,9 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
     return encodeFixedBox(graphics, content, new VirtueBoxContentEncoder(), 2, 1, distanceFromTop, height);
   }
 
-  private float encodeWillpowerDots(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getPartEncoder().getDotsEncoder(OtherTraitType.Willpower, 10, "Willpower"), 3, 1,
-      distanceFromTop, height);
+  private float encodeWillpowerDots(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+    return encodeFixedBox(graphics, content, getPartEncoder().getDotsEncoder(OtherTraitType.Willpower, 10, "Willpower"), 3, 1, distanceFromTop,
+      height);
   }
 
   private float encodeGreatCurse(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -145,8 +140,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
     return encodeFixedBox(graphics, content, getPartEncoder().getIntimaciesEncoder(getRegistry()), 2, 1, distanceFromTop, height);
   }
 
-  private float encodeLinguistics(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeLinguistics(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     return encodeFixedBox(graphics, content, getRegistry().getLinguisticsEncoder(), 3, 1, distanceFromTop, height);
   }
 
@@ -166,8 +160,7 @@ public class NewPdfFirstPageEncoder extends AbstractPdfPageEncoder {
     return encodeFixedBox(graphics, content, getRegistry().getMutationsEncoder(), 2, 1, distanceFromTop, height);
   }
 
-  private float encodeMeritsAndFlaws(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeMeritsAndFlaws(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     return encodeFixedBox(graphics, content, getRegistry().getMeritsAndFlawsEncoder(), 2, 1, distanceFromTop, height);
   }
 

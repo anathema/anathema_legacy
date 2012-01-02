@@ -10,10 +10,10 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.character.sidereal.reporting.content.colleges.SiderealCollegeContent;
@@ -32,10 +32,8 @@ public class Extended2ndEditionSiderealDetailsPageEncoder implements IPdfPageEnc
   private final static float COLLEGE_HEIGHT = 312;
   private final static float DESTINY_HEIGHT = (COLLEGE_HEIGHT - PADDING) / 2;
   private final static float PARADOX_HEIGHT = 45;
-  private final int essenceMax;
   private final IResources resources;
   private final BaseFont baseFont;
-  private final BaseFont symbolBaseFont;
   private final PdfBoxEncoder boxEncoder;
   private final PdfPageConfiguration configuration;
   private final int fontSize;
@@ -45,19 +43,15 @@ public class Extended2ndEditionSiderealDetailsPageEncoder implements IPdfPageEnc
   private static final TemplateType dreamsType = new TemplateType(CharacterType.SIDEREAL, new Identificate("Dreams")); //$NON-NLS-1$
   private static final TemplateType revisedDreamsType = new TemplateType(CharacterType.SIDEREAL, new Identificate("RevisedDreams")); //$NON-NLS-1$
 
-  public Extended2ndEditionSiderealDetailsPageEncoder(IResources resources, int essenceMax, BaseFont baseFont, BaseFont symbolBaseFont, 
-    int fontSize, PdfPageConfiguration configuration) {
+  public Extended2ndEditionSiderealDetailsPageEncoder(IResources resources, BaseFont baseFont, int fontSize, PdfPageConfiguration configuration) {
     this.resources = resources;
-    this.essenceMax = essenceMax;
     this.baseFont = baseFont;
-    this.symbolBaseFont = symbolBaseFont;
     this.fontSize = fontSize;
     this.configuration = configuration;
     this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
   }
 
-  public void encode(Document document, SheetGraphics graphics, ReportContent content) throws 
-    DocumentException {
+  public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
     if (isRonin(content.getCharacter())) {
       return;
     }
@@ -96,17 +90,16 @@ public class Extended2ndEditionSiderealDetailsPageEncoder implements IPdfPageEnc
   }
 
   private boolean isRonin(IGenericCharacter character) {
-    return character.getTemplate().getTemplateType().getSubType().getId().equals(roninType.getSubType().getId()) || character.getTemplate()
-      .getTemplateType().getSubType().getId().equals(revisedRoninType.getSubType().getId());
+    return character.getTemplate().getTemplateType().getSubType().getId().equals(roninType.getSubType().getId()) ||
+      character.getTemplate().getTemplateType().getSubType().getId().equals(revisedRoninType.getSubType().getId());
   }
 
   private boolean isFirstAge(IGenericCharacter character) {
-    return character.getTemplate().getTemplateType().getSubType().getId().equals(dreamsType.getSubType().getId()) || character.getTemplate()
-      .getTemplateType().getSubType().getId().equals(revisedDreamsType.getSubType().getId());
+    return character.getTemplate().getTemplateType().getSubType().getId().equals(dreamsType.getSubType().getId()) ||
+      character.getTemplate().getTemplateType().getSubType().getId().equals(revisedDreamsType.getSubType().getId());
   }
 
-  private void encodeConnections(SheetGraphics graphics, ReportContent content, 
-    float distanceFromTop) throws DocumentException {
+  private void encodeConnections(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds;
     if (isFirstAge(content.getCharacter())) {
@@ -119,8 +112,7 @@ public class Extended2ndEditionSiderealDetailsPageEncoder implements IPdfPageEnc
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
-  private float encodeAcquaintances(SheetGraphics graphics, ReportContent content, float distanceFromTop, 
-    float height) throws DocumentException {
+  private float encodeAcquaintances(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
     IBoxContentEncoder encoder = new HorizontalLineBoxContentEncoder(1, "Sidereal.Acquaintances"); //$NON-NLS-1$
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);

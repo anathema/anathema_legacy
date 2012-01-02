@@ -57,7 +57,7 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final TemplateType dreamsSolarTemplateType = new TemplateType(SOLAR, new Identificate("Dreams")); //$NON-NLS-1$
   private static final TemplateType dreamsSolarRevisedTemplateType = new TemplateType(SOLAR, new Identificate("DreamsRevised")); //$NON-NLS-1$
 
-  private static final TemplateType[] dreams = {dreamsSolarTemplateType, dreamsSolarRevisedTemplateType};
+  private static final TemplateType[] dreams = { dreamsSolarTemplateType, dreamsSolarRevisedTemplateType };
 
   public static final String BACKGROUND_ID_ARSENAL = "SolarDreamsArsenal"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_COMMAND = "SolarDreamsCommand"; //$NON-NLS-1$
@@ -77,9 +77,9 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
     SecondExcellency secondExcellency = new SecondExcellency(SOLAR, ExaltedSourceBook.SecondEdition);
     ThirdExcellency thirdExcellency = new ThirdExcellency(SOLAR, "4 m", ExaltedSourceBook.SecondEdition);
     IRegistry<ICharacterType, IMagicStats[]> genericRegistery = characterGenerics.getGenericCharmStatsRegistry();
-    genericRegistery.register(SOLAR, new IMagicStats[]{firstExcellency, secondExcellency, thirdExcellency,
-                                                       new InfiniteMastery(), new EssenceFlow(), new DivineTranscendenceOf(),
-                                                       new SupremePerfectionOf()});
+    genericRegistery.register(SOLAR,
+      new IMagicStats[] { firstExcellency, secondExcellency, thirdExcellency, new InfiniteMastery(), new EssenceFlow(),
+        new DivineTranscendenceOf(), new SupremePerfectionOf() });
 
     characterGenerics.getAdditionalTemplateParserRegistry().register(SolarVirtueFlawTemplate.ID, new SolarVirtueFlawParser());
     characterGenerics.getCasteCollectionRegistry().register(SOLAR, new CasteCollection(SolarCaste.values()));
@@ -137,7 +137,7 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   private void registerExtendedEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
     ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
     registry.setPartEncoder(SOLAR, SecondEdition, new Extended2ndSolarPartEncoder(resources, registry, ESSENCE_MAX));
-    registry.setPartEncoder(SOLAR, FirstEdition, new Extended1stEditionSolarPartEncoder(resources, registry, ESSENCE_MAX));
+    registry.setPartEncoder(SOLAR, FirstEdition, new Extended1stEditionSolarPartEncoder(resources, registry.getBaseFont(), ESSENCE_MAX));
   }
 
   @Override

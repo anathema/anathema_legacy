@@ -1,8 +1,8 @@
 package net.sf.anathema.character.db.reporting;
 
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Simple1stEditionDbPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {
@@ -17,6 +17,6 @@ public class Simple1stEditionDbPartEncoder extends AbstractFirstEditionExaltPdfP
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new DbAnimaEncoderFactory(getResources(), getBaseFont(), getSymbolBaseFont()).createAnimaEncoder();
+    return new DbAnimaEncoderFactory(getResources(), getBaseFont()).createAnimaEncoder();
   }
 }

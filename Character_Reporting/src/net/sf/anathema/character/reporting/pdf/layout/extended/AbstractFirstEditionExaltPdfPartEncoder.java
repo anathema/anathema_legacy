@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
+import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
@@ -11,8 +12,8 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
 
   private final int essenceMax;
 
-  public AbstractFirstEditionExaltPdfPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
-    super(resources, registry.getBaseFont(), registry.getSymbolBaseFont());
+  public AbstractFirstEditionExaltPdfPartEncoder(IResources resources, BaseFont baseFont, int essenceMax) {
+    super(resources, baseFont);
     this.essenceMax = essenceMax;
   }
 
