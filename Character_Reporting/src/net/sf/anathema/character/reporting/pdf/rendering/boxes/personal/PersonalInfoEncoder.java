@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.personal;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
@@ -15,13 +14,11 @@ import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
 
-public class SimplePersonalInfoEncoder {
+public class PersonalInfoEncoder {
 
-  private final BaseFont baseFont;
   private final IResources resources;
 
-  public SimplePersonalInfoEncoder(BaseFont baseFont, IResources resources) {
-    this.baseFont = baseFont;
+  public PersonalInfoEncoder(IResources resources) {
     this.resources = resources;
   }
 
@@ -46,14 +43,14 @@ public class SimplePersonalInfoEncoder {
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     if (characterType.isExaltType()) {
       String casteContent = getCasteString(character.getConcept().getCasteType());
-      String casteLabel = getLabel("Caste." + characterType.getId());
-      graphics.drawLabelledContent(casteLabel, casteContent, new Position(secondColumnX, secondRowY), entryWidth); //$NON-NLS-1$
+      graphics.drawLabelledContent(getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, secondRowY),
+        entryWidth); //$NON-NLS-1$
     }
 
     float thirdRowY = secondRowY - lineHeight;
     String motivationContent = character.getConcept().getWillpowerRegainingComment(resources);
-    boolean isSecondEdition = character.getRules().getEdition() == ExaltedEdition.SecondEdition;
-    String motivationLabel = isSecondEdition ? getLabel("Motivation") : getLabel("Nature");  //$NON-NLS-1$ //$NON-NLS-2$
+    String motivationLabel = character.getRules().getEdition() == ExaltedEdition.SecondEdition ? getLabel("Motivation") : getLabel("Nature");
+    //$NON-NLS-1$ //$NON-NLS-2$
     Position motivationPosition = new Position(firstColumnX, thirdRowY);
     graphics.drawLabelledContent(motivationLabel, motivationContent, motivationPosition, infoBounds.width);
   }

@@ -10,7 +10,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.SimplePersonalInfoEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -180,8 +180,8 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
   }
 
   private void encodePersonalInfos(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
-    SimplePersonalInfoEncoder encoder = new SimplePersonalInfoEncoder(baseFont, resources);
-    encoder.encodePersonalInfo(graphics, content, infoBounds);
+    PersonalInfoBoxEncoder encoder = new PersonalInfoBoxEncoder(resources);
+    encoder.encode(graphics, content, infoBounds);
   }
 
   private float encodeVirtues(SheetGraphics graphics, float distanceFromTop, float height, ReportContent content) throws DocumentException {

@@ -12,7 +12,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.Abiliti
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.ExtendedPersonalInfoEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
@@ -225,7 +225,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
   }
 
   private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
-    ExtendedPersonalInfoEncoder encoder = new ExtendedPersonalInfoEncoder(resources);
+    PersonalInfoEncoder encoder = new PersonalInfoEncoder(resources);
     encoder.encodePersonalInfo(graphics, content, infoBounds);
   }
 

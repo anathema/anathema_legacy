@@ -26,7 +26,7 @@ public class Simple2ndEditionSiderealPartEncoder extends AbstractSecondEditionEx
 
   @Override
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[] { new Simple2ndEditionSiderealDetailsPageEncoder(getResources(), getEssenceMax(), baseFont, symbolBaseFont,
+    return new IPdfPageEncoder[] { new Simple2ndEditionSiderealDetailsPageEncoder(getResources(), baseFont,
       IVoidStateFormatConstants.SMALLER_FONT_SIZE, configuration) };
   }
 
