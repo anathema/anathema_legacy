@@ -17,8 +17,6 @@ public interface IMagicLearnProperties {
 
   public ListCellRenderer getLearnedMagicRenderer();
   
-  public String getToolTipText(Object obj);
-
   public boolean isMagicSelectionAvailable(Object selectedValue);
 
   public int getAvailableListSelectionMode();

@@ -36,6 +36,13 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
       private static final long serialVersionUID = 1L;
 
       @Override
+      public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+        JComponent component = (JComponent) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        component.setToolTipText(MutationViewLearnProperties.this.getToolTipText(value));
+        return component;
+      }
+
+      @Override
       protected boolean isLegal(Object object) {
         return model.isSelectable((IMutation) object);
       }
@@ -47,8 +54,7 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
     };
   }
 
-  @Override
-  public String getToolTipText(Object obj) {
+  private String getToolTipText(Object obj) {
     IMutation mutation = (IMutation) obj;
     final IExaltedSourceBook source = mutation.getSource();
 
@@ -101,7 +107,7 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
   private String getMutationString(IMutation mutation, boolean showType) {
     String typeString = getResources().getString("Mutations.Type." + mutation.getType().getId());
     String mutationString = getResources().getString("Mutations.Mutation." //$NON-NLS-1$
-                                                     + mutation.getId());
+            + mutation.getId());
     return (showType ? "(" + typeString + ") " : "") + mutationString;
   }
 
@@ -109,13 +115,6 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
     return new ListSelectionListener() {
       public void valueChanged(ListSelectionEvent e) {
         boolean enabled = !list.isSelectionEmpty();
-        /*for (Object object : list.getSelectedValues()) {
-          IQualitySelection<IGift> selection = (IQualitySelection<IGift>) object;
-          if (model.isCreationLearnedSelectionInExperiencedCharacter(selection)) {
-            enabled = false;
-            break;
-          }
-        }*/
         button.setEnabled(enabled);
       }
     };

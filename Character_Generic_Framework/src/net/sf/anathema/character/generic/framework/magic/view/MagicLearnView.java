@@ -1,24 +1,5 @@
 package net.sf.anathema.character.generic.framework.magic.view;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
-import javax.swing.Action;
-import javax.swing.DefaultListModel;
-import javax.swing.Icon;
-import javax.swing.JButton;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ListModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.sf.anathema.lib.control.GenericControl;
@@ -26,27 +7,24 @@ import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
 import net.sf.anathema.lib.util.IIdentificate;
 
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 public class MagicLearnView implements IMagicLearnView {
 
   private final GenericControl<IMagicViewListener> control = new GenericControl<IMagicViewListener>();
-  private JList learnOptionsList = new JList(new DefaultListModel()) {
-    public String getToolTipText(MouseEvent evt) {
-      int index = locationToIndex(evt.getPoint());
-      if (index == -1){
-        return "";
-      }
-      Object item = getModel().getElementAt(index);
-      return properties.getToolTipText(item);
-    }
-  };
+  private JList learnOptionsList = new JList(new DefaultListModel());
   private final JList learnedList = new JList(new DefaultListModel());
   private final List<JButton> endButtons = new ArrayList<JButton>();
-  private IMagicLearnProperties properties;
   private JPanel boxPanel;
   private JButton addButton;
 
   public void init(final IMagicLearnProperties properties) {
-    this.properties = properties;
     learnOptionsList.setCellRenderer(properties.getAvailableMagicRenderer());
     learnOptionsList.setSelectionMode(properties.getAvailableListSelectionMode());
     learnedList.setCellRenderer(properties.getLearnedMagicRenderer());
