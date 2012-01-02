@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 
 public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
@@ -48,35 +46,7 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
           final IBasicCharacterData data,
           final ICharmLearnableArbitrator arbitrator,
           final ICharm charm) {
-    return new ICondition() {
-      public boolean isFulfilled() {
-        boolean learnable = arbitrator.isLearnable(charm);
-        if (!data.getCharacterType().equals(CharacterType.DB)) {
-          return learnable;
-        }
-        if (element.equals(data.getCasteType())) {
-          return learnable;
-        }
-        for (ElementalSubeffect effect : effectList) {
-          if (effect.isLearned() && effect.matches(data.getCasteType())) {
-            return learnable;
-          }
-        }
-        return false;
-      }
-    };
+    return new ElementalCharmLearnCondition(effectList, arbitrator, charm, data, element);
   }
 
-  private class ElementalSubeffect extends Subeffect {
-    private final Element element;
-
-    public ElementalSubeffect(Element element, IBasicCharacterData data, ICondition learnable) {
-      super(element.name(), data, learnable);
-      this.element = element;
-    }
-
-    public boolean matches(ICasteType casteType) {
-      return element.equals(casteType);
-    }
-  }
 }
