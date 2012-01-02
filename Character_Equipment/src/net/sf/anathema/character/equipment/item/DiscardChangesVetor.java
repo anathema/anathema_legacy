@@ -25,7 +25,7 @@ public class DiscardChangesVetor implements IVetor {
   }
 
   public boolean vetos() {
-    if (!preCondition.isFullfilled()) {
+    if (!preCondition.isFulfilled()) {
       return false;
     }
     String messageText = resources.getString("Equipment.Creation.UnsavedChangesMessage.Text"); //$NON-NLS-1$

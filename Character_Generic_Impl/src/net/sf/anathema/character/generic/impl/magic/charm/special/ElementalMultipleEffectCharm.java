@@ -49,7 +49,7 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
           final ICharmLearnableArbitrator arbitrator,
           final ICharm charm) {
     return new ICondition() {
-      public boolean isFullfilled() {
+      public boolean isFulfilled() {
         boolean learnable = arbitrator.isLearnable(charm);
         if (!data.getCharacterType().equals(CharacterType.DB)) {
           return learnable;
@@ -79,5 +79,4 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
       return element.equals(casteType);
     }
   }
-
 }

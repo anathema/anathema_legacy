@@ -32,9 +32,9 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
 
   @Override
   public ISubeffect[] buildSubeffects(IBasicCharacterData data,
-		  IGenericTraitCollection traitCollection,
-		  ICharmLearnableArbitrator arbitrator,
-		  ICharm charm) {
+                                      IGenericTraitCollection traitCollection,
+                                      ICharmLearnableArbitrator arbitrator,
+                                      ICharm charm) {
     List<ISubeffect> effectList = new ArrayList<ISubeffect>();
     for (String id : effectIds) {
       effectList.add(new Subeffect(id, data, buildLearnCondition(arbitrator, charm)));
@@ -44,17 +44,18 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
 
   private ICondition buildLearnCondition(final ICharmLearnableArbitrator arbitrator, final ICharm charm) {
     return new ICondition() {
-      public boolean isFullfilled() {
+      public boolean isFulfilled() {
         return arbitrator.isLearnable(charm);
       }
     };
   }
-  
-  public String toString()
-  {
-	  String list = "";
-	  for (String effect : effectIds)
-		  list += effect + (effect == effectIds[effectIds.length - 1] ? "" : ",");
-	  return "[" + getCharmId() + ";" + list + "]";
+
+  public String toString() {
+    String list = "";
+    for (String effect : effectIds) {
+      boolean isLastEffect = effect == effectIds[effectIds.length - 1];
+      list += effect + (isLastEffect ? "" : ",");
+    }
+    return "[" + getCharmId() + ";" + list + "]";
   }
 }

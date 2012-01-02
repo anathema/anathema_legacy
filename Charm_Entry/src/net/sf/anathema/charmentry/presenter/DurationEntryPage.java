@@ -37,12 +37,12 @@ public class DurationEntryPage extends AbstractAnathemaWizardPage {
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addFollowupPage(new PrerequisitesEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
-      public boolean isFullfilled() {
+      public boolean isFulfilled() {
         return getPageModel().isDurationComplete();
       }
     });
     addFollowupPage(new QualifiedAmountDurationPage(resources, model, viewFactory), inputListener, new ICondition() {
-      public boolean isFullfilled() {
+      public boolean isFulfilled() {
         return qualifiedAmountDuration;
       }
     });

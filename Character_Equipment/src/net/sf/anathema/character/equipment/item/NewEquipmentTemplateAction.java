@@ -22,7 +22,7 @@ public final class NewEquipmentTemplateAction extends SmartAction {
   @Override
   protected void execute(Component parentComponent) {
     DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new ICondition() {
-      public boolean isFullfilled() {
+      public boolean isFulfilled() {
         return model.getTemplateEditModel().isDirty();
       }
     }, parentComponent);

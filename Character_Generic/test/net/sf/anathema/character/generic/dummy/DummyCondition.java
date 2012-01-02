@@ -7,7 +7,7 @@ public class DummyCondition implements ICondition {
   private boolean value;
 
   @Override
-  public boolean isFullfilled() {
+  public boolean isFulfilled() {
     return value;
   }
 

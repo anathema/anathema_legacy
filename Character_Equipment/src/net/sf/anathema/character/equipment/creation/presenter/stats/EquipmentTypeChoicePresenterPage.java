@@ -134,12 +134,12 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
   private void addPage(final EquipmentStatisticsType type, IAnathemaWizardPage page, CheckInputListener inputListener) {
     pagesByType.put(type, page);
     addFollowupPage(page, inputListener, new ICondition() {
-      public boolean isFullfilled() {
+      public boolean isFulfilled() {
         return !materialSpecific && model.isEquipmentTypeSelected(type);
       }
     });
     getMaterialsPage().appendPage(page, inputListener, new ICondition() {
-        public boolean isFullfilled() {
+        public boolean isFulfilled() {
             return model.isEquipmentTypeSelected(type);
           }
         });
@@ -150,7 +150,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
 	addFollowupPage(page, inputListener, new ICondition()
 	{
 		@Override
-		public boolean isFullfilled() {
+		public boolean isFulfilled() {
 			return materialSpecific && getMaterialsPage().canFlipToNextPage();
 		}	
 	});

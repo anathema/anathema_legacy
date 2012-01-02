@@ -45,7 +45,7 @@ public class EquipmentTemplateListPresenter implements IPresenter {
     });
     updateAvailableTemplates();
     view.getTemplateListView().addSelectionVetor(new DiscardChangesVetor(resources, new ICondition() {
-      public boolean isFullfilled() {
+      public boolean isFulfilled() {
         final IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
         return editModel.isDirty();
       }

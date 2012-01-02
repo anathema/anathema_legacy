@@ -33,7 +33,7 @@ public class CostEntryPage extends AbstractAnathemaWizardPage {
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addFollowupPage(new PrerequisiteCharmsPage(resources, model, viewFactory), inputListener, new ICondition() {
-      public boolean isFullfilled() {
+      public boolean isFulfilled() {
         return getPageModel().getEdition() == ExaltedEdition.FirstEdition;
       }
     });
@@ -41,7 +41,7 @@ public class CostEntryPage extends AbstractAnathemaWizardPage {
         new SecondEditionPrerequisiteCharmsPage(resources, model, viewFactory),
         inputListener,
         new ICondition() {
-          public boolean isFullfilled() {
+          public boolean isFulfilled() {
             return getPageModel().getEdition() == ExaltedEdition.SecondEdition;
           }
         });

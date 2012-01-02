@@ -111,7 +111,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
       return;
     }
     addFollowupPage(new WeaponTagsPresenterPage(resources, overallModel, viewFactory), inputListener, new ICondition() {
-      public boolean isFullfilled() {
+      public boolean isFulfilled() {
         return isInLegalState();
       }
     });

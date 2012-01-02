@@ -45,14 +45,14 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
         new SecondEditionCharmTypeEntryPage(resources, model, viewFactory),
         inputListener,
         new ICondition() {
-          public boolean isFullfilled() {
+          public boolean isFulfilled() {
             return isCharacterTypeSelected()
                 && isNameDefined()
                 && getPageModel().getEdition() == ExaltedEdition.SecondEdition;
           }
         });
     addFollowupPage(new CharmTypeEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
-      public boolean isFullfilled() {
+      public boolean isFulfilled() {
         return isCharacterTypeSelected()
             && isNameDefined()
             && getPageModel().getEdition() == ExaltedEdition.FirstEdition;

@@ -37,7 +37,7 @@ public class ComplexMultipleEffectCharm extends MultipleEffectCharm
 			final ICharm charm,
 			final String prereqEffect) {
 	  return new ICondition() {
-	    public boolean isFullfilled() {
+	    public boolean isFulfilled() {
 	      if (!arbitrator.isLearnable(charm))
 	    	  return false;
 	      
