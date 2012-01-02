@@ -10,12 +10,10 @@ import net.sf.anathema.lib.resources.IResources;
 public class Extended2ndEditionSpiritPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   private BaseFont baseFont;
-  private BaseFont symbolBaseFont;
 
   public Extended2ndEditionSpiritPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
     super(resources, registry, essenceMax);
     this.baseFont = registry.getBaseFont();
-    this.symbolBaseFont = registry.getSymbolBaseFont();
   }
 
   // TODO: This should be properly edited out, not just nulled out.
@@ -25,6 +23,6 @@ public class Extended2ndEditionSpiritPartEncoder extends AbstractSecondEditionEx
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new SpiritAnimaEncoderFactory(getResources(), baseFont, symbolBaseFont).createAnimaEncoder();
+    return new SpiritAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
   }
 }

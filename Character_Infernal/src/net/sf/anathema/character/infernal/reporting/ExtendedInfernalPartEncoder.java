@@ -10,12 +10,10 @@ import net.sf.anathema.lib.resources.IResources;
 public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   private BaseFont baseFont;
-  private BaseFont symbolBaseFont;
 
   public ExtendedInfernalPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
     super(resources, registry, essenceMax);
     this.baseFont = registry.getBaseFont();
-    this.symbolBaseFont = registry.getSymbolBaseFont();
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
@@ -24,7 +22,7 @@ public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPa
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new InfernalAnimaEncoderFactory(getResources(), baseFont, symbolBaseFont).createAnimaEncoder();
+    return new InfernalAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
   }
 
   public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders() {

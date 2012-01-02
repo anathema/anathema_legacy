@@ -24,7 +24,7 @@ public class Extended1stEditionLunarPartEncoder extends AbstractFirstEditionExal
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new LunarAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
+    return new LunarAnimaEncoderFactory(getResources(), getBaseFont()).createAnimaEncoder();
   }
 
   @Override

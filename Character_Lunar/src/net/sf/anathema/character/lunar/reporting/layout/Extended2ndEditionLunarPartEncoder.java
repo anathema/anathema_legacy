@@ -13,12 +13,10 @@ import net.sf.anathema.lib.resources.IResources;
 public class Extended2ndEditionLunarPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   private final BaseFont baseFont;
-  private BaseFont symbolBaseFont;
 
   public Extended2ndEditionLunarPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
     super(resources, registry, essenceMax);
     this.baseFont = registry.getBaseFont();
-    this.symbolBaseFont = registry.getSymbolBaseFont();
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
@@ -27,7 +25,7 @@ public class Extended2ndEditionLunarPartEncoder extends AbstractSecondEditionExa
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new LunarAnimaEncoderFactory(getResources(), baseFont, symbolBaseFont).createAnimaEncoder();
+    return new LunarAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
   }
 
   @Override

@@ -8,12 +8,10 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class Extended2ndSolarPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
   private BaseFont baseFont;
-  private BaseFont symbolBaseFont;
 
   public Extended2ndSolarPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
     super(resources, registry, essenceMax);
     this.baseFont = registry.getBaseFont();
-    this.baseFont = registry.getSymbolBaseFont();
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
@@ -22,6 +20,6 @@ public class Extended2ndSolarPartEncoder extends AbstractSecondEditionExaltPdfPa
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new SolarAnimaEncoderFactory(getResources(), baseFont, symbolBaseFont).createAnimaEncoder();
+    return new SolarAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
   }
 }

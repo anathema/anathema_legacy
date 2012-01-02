@@ -10,8 +10,8 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
 
   private final SimpleEncodingRegistry registry;
 
-  public FirstEditionMortalPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont, SimpleEncodingRegistry registry) {
-    super(resources, baseFont, symbolBaseFont);
+  public FirstEditionMortalPartEncoder(IResources resources, BaseFont baseFont, SimpleEncodingRegistry registry) {
+    super(resources, baseFont);
     this.registry = registry;
   }
 

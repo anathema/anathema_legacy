@@ -9,13 +9,11 @@ import net.sf.anathema.lib.resources.IResources;
 public abstract class AbstractAnimaEncoderFactory implements IAnimaEncoderFactory {
 
   private final IResources resources;
-  private final BaseFont symbolBaseFont;
   private final BaseFont basefont;
 
-  public AbstractAnimaEncoderFactory(IResources resources, BaseFont basefont, BaseFont symbolBaseFont) {
+  public AbstractAnimaEncoderFactory(IResources resources, BaseFont basefont) {
     this.resources = resources;
     this.basefont = basefont;
-    this.symbolBaseFont = symbolBaseFont;
   }
 
   @Override
@@ -35,9 +33,5 @@ public abstract class AbstractAnimaEncoderFactory implements IAnimaEncoderFactor
 
   protected final IResources getResources() {
     return resources;
-  }
-
-  protected final BaseFont getSymbolBaseFont() {
-    return symbolBaseFont;
   }
 }

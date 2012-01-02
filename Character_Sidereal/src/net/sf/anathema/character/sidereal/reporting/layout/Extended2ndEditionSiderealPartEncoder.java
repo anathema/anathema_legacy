@@ -13,12 +13,10 @@ import net.sf.anathema.lib.resources.IResources;
 public class Extended2ndEditionSiderealPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   private BaseFont baseFont;
-  private BaseFont symbolBaseFont;
 
   public Extended2ndEditionSiderealPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
     super(resources, registry, essenceMax);
     this.baseFont = registry.getBaseFont();
-    this.symbolBaseFont = registry.getSymbolBaseFont();
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
@@ -27,12 +25,11 @@ public class Extended2ndEditionSiderealPartEncoder extends AbstractSecondEdition
 
   @Override
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[] { new Extended2ndEditionSiderealDetailsPageEncoder(getResources(), getEssenceMax(), baseFont, symbolBaseFont,
-      getFontSize(), configuration) };
+    return new IPdfPageEncoder[] { new Extended2ndEditionSiderealDetailsPageEncoder(getResources(), baseFont, getFontSize(), configuration) };
   }
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new SiderealAnimaEncoderFactory(getResources(), baseFont, symbolBaseFont).createAnimaEncoder();
+    return new SiderealAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
   }
 }

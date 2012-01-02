@@ -17,12 +17,10 @@ public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEnco
 
   private final IResources resources;
   private final BaseFont baseFont;
-  private final BaseFont symbolBaseFont;
 
-  public AbstractFirstEditionPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
+  public AbstractFirstEditionPartEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
     this.baseFont = baseFont;
-    this.symbolBaseFont = symbolBaseFont;
   }
 
   public final IResources getResources() {
@@ -31,10 +29,6 @@ public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEnco
 
   public final BaseFont getBaseFont() {
     return baseFont;
-  }
-
-  public final BaseFont getSymbolBaseFont() {
-    return symbolBaseFont;
   }
 
   public final IBoxContentEncoder getCombatStatsEncoder() {

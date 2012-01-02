@@ -17,6 +17,6 @@ public class Extended1stEditionDbPartEncoder extends AbstractFirstEditionExaltPd
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new DbAnimaEncoderFactory(getResources(), getBaseFont(), getBaseFont()).createAnimaEncoder();
+    return new DbAnimaEncoderFactory(getResources(), getBaseFont()).createAnimaEncoder();
   }
 }
