@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.reporting;
+package net.sf.anathema.character.equipment.impl.reporting.rendering;
 
 import net.sf.anathema.character.equipment.impl.reporting.content.PossessionsContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LineFillingContentBoxEncoder;

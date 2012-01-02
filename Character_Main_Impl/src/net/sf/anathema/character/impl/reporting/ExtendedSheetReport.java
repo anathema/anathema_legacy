@@ -78,7 +78,7 @@ public class ExtendedSheetReport implements IITextReport {
           .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration));
       }
       if (edition == ExaltedEdition.SecondEdition) {
-        encoderList.add(new ExtendedFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+        encoderList.add(new ExtendedFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration));
         encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
       }
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));

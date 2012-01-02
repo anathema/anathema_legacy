@@ -5,9 +5,10 @@ import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.ExtendedSpecialtiesEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.AttributesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
@@ -20,11 +21,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfigurati
 import net.sf.anathema.lib.resources.IResources;
 
 public class ExtendedFirstPageEncoder extends AbstractPdfPageEncoder {
+  private BoxContentEncoderRegistry encoderRegistry;
   private final int essenceMax;
 
-  public ExtendedFirstPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax,
-    PdfPageConfiguration pageConfiguration) {
+  public ExtendedFirstPageEncoder(BoxContentEncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
+    IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
+    this.encoderRegistry = encoderRegistry;
     this.essenceMax = essenceMax;
   }
 
@@ -99,8 +102,7 @@ public class ExtendedFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, AbilitiesBoxContentEncoder.createWithCraftsOnly(getResources(), essenceMax, -1), 1, 1, distanceFromTop,
-      height);
+    return encodeFixedBox(graphics, content, AbilitiesBoxContentEncoder.createWithCraftsOnly(getResources(), -1), 1, 1, distanceFromTop, height);
   }
 
   private float encodeSpecialties(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -108,9 +110,8 @@ public class ExtendedFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, new PdfAttributesEncoder(getResources(), essenceMax, getPartEncoder().isEncodeAttributeAsFavorable()),
-      1,
-      1, distanceFromTop, height);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(AttributesEncoder.ID, getResources(), content);
+    return encodeFixedBox(graphics, content, encoder, 1, 1, distanceFromTop, height);
   }
 
   private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {

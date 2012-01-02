@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.reporting;
+package net.sf.anathema.character.equipment.impl.reporting.rendering;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;

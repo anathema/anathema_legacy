@@ -3,8 +3,7 @@ package net.sf.anathema.character.lunar.reporting.layout;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.rendering.ArmourEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.GiftEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.LunarFaceEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.BeastformAttributeBoxEncoder;
@@ -31,6 +30,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.reporting.pdf.content.EncoderIds.WEAPONRY_ID;
+import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
 public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
@@ -74,7 +75,7 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
     distanceFromTop += willpowerIncrement;
     float faceHeight = encodeFace(graphics, content, distanceFromTop, animalFormHeight - willpowerIncrement);
     distanceFromTop += calculateBoxIncrement(faceHeight);
-    float weaponryHeight = encodeWeaponry(graphics, content, distanceFromTop, partEncoder.getWeaponryHeight());
+    float weaponryHeight = encodeWeaponry(graphics, content, distanceFromTop);
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
     float armourHeight = encodeArmourAndSoak(graphics, content, distanceFromTop, 80);
     distanceFromTop += calculateBoxIncrement(armourHeight);
@@ -188,9 +189,10 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
     return height;
   }
 
-  private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
+    float height = encoderRegistry.getValue(WEAPONRY_ID, PreferredHeight, content);
+    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(WEAPONRY_ID, resources, content);
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder weaponryEncoder = new WeaponryEncoder(LunarEquipmentEncoders.CreateWeaponryEncoder());
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;
   }

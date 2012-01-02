@@ -19,16 +19,15 @@ import java.util.List;
 public class CraftEncoder extends AbstractNamedTraitEncoder implements INamedTraitEncoder {
 
   private final int craftCount;
-  private final int essenceMax;
 
-  public CraftEncoder(IResources resources, PdfTraitEncoder encoder, int essenceMax, int craftCount) {
+  public CraftEncoder(IResources resources, PdfTraitEncoder encoder, int craftCount) {
     super(resources, encoder);
     this.craftCount = craftCount;
-    this.essenceMax = essenceMax;
   }
 
   public float encode(SheetGraphics graphics, ReportContent content, Position position, float width, float height) {
     IGenericCharacter character = content.getCharacter();
+    int essenceMax = character.getEssenceLimitation().getAbsoluteLimit(character);
     String title = getResources().getString("Sheet.AbilitySubHeader.Crafts"); //$NON-NLS-1$
     INamedGenericTrait[] traits = character.getSubTraits(AbilityType.Craft);
     if (!AnathemaCharacterPreferences.getDefaultPreferences().printZeroCrafts()) {

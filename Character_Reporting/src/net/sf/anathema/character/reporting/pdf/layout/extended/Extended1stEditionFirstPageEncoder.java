@@ -7,7 +7,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.AttributesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.AbstractHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
@@ -22,6 +22,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatCo
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.reporting.pdf.content.EncoderIds.WEAPONRY_ID;
+import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
 public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
@@ -71,7 +73,7 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
     distanceFromTop += willpowerIncrement;
     float intimaciesHeight = encodeIntimacies(graphics, content, distanceFromTop, socialCombatHeight - willpowerIncrement);
     distanceFromTop += calculateBoxIncrement(intimaciesHeight);
-    float weaponryHeight = encodeWeaponry(graphics, content, distanceFromTop, partEncoder.getWeaponryHeight());
+    float weaponryHeight = encodeWeaponry(graphics, content, distanceFromTop);
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
     float armourHeight = encodeArmourAndSoak(graphics, content, distanceFromTop, 80);
     distanceFromTop += calculateBoxIncrement(armourHeight);
@@ -109,16 +111,20 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
   private void encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    IBoxContentEncoder encoder = AbilitiesBoxContentEncoder.createWithCraftsAndSpecialties(resources, essenceMax, 9, 9);
+    IBoxContentEncoder encoder = AbilitiesBoxContentEncoder.createWithCraftsAndSpecialties(resources, 9, 9);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
   private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
-    IBoxContentEncoder encoder = new PdfAttributesEncoder(resources, essenceMax, partEncoder.isEncodeAttributeAsFavorable());
-    boxEncoder.encodeBox(content, graphics, encoder, attributeBounds);
-    return attributeHeight;
+    return encode(AttributesEncoder.ID, graphics, content, attributeBounds);
+  }
+
+  private float encode(String encoderId, SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(encoderId, resources, content);
+    boxEncoder.encodeBox(content, graphics, encoder, bounds);
+    return bounds.getHeight();
   }
 
   private float calculateBoxIncrement(float height) {
@@ -173,9 +179,10 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
     return height;
   }
 
-  private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
+    float height = encoderRegistry.getValue(WEAPONRY_ID, PreferredHeight, content);
+    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(WEAPONRY_ID, resources, content);
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder weaponryEncoder = registry.getWeaponContentEncoder();
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;
   }

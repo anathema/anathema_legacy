@@ -1,24 +1,24 @@
-package net.sf.anathema.character.reporting.second.rendering.health;
+package net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes;
 
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractBoxContentEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.AbstractHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class HealthAndMovementBoxEncoderFactory extends AbstractBoxContentEncoderFactory {
+public class AttributesEncoderFactory extends AbstractBoxContentEncoderFactory {
 
-  public HealthAndMovementBoxEncoderFactory() {
-    super(AbstractHealthAndMovementEncoder.ID);
+  public AttributesEncoderFactory() {
+    super(AttributesEncoder.ID);
   }
 
   @Override
   public IBoxContentEncoder create(IResources resources, BasicContent content) {
-    return new HealthAndMovementEncoder(resources);
+    return new AttributesEncoder(resources, content.isOfType(CharacterType.LUNAR));
   }
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isSecondEdition();
+    return true;
   }
 }

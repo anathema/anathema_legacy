@@ -15,7 +15,6 @@ import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificBackgro
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificCharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
@@ -44,6 +43,7 @@ import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContentFactory;
 import net.sf.anathema.character.lunar.reporting.layout.Extended1stEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.reporting.layout.Extended2ndEditionLunarPartEncoder;
+import net.sf.anathema.character.lunar.reporting.layout.LunarWeaponryEncoderFactory;
 import net.sf.anathema.character.lunar.reporting.layout.Simple1stEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.reporting.layout.Simple2ndEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarArmourContent;
@@ -68,6 +68,8 @@ import net.sf.anathema.lib.util.Identificate;
 import java.util.HashMap;
 import java.util.Map;
 
+import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstEdition;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.LUNAR;
 
 public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
@@ -108,8 +110,8 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(LunarVirtueFlawTemplate.TEMPLATE_ID, new LunarVirtueFlawParser());
 
     Map<IExaltedEdition, ICasteType[]> editionMap = new HashMap<IExaltedEdition, ICasteType[]>();
-    editionMap.put(ExaltedEdition.FirstEdition, LunarCaste.getModernValues());
-    editionMap.put(ExaltedEdition.SecondEdition, LunarCaste.values());
+    editionMap.put(FirstEdition, LunarCaste.getModernValues());
+    editionMap.put(SecondEdition, LunarCaste.values());
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
     templateMap.put(castelessType, new ICasteType[] { });
     templateMap.put(revisedCastelessType, new ICasteType[] { });
@@ -126,28 +128,28 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD, LUNAR));
-    backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD_HUMAN, LUNAR, ExaltedEdition.FirstEdition));
-    backgroundRegistry.add(new EditionSpecificBackgroundTemplate(BACKGROUND_ID_RENOWN, ExaltedEdition.FirstEdition));
+    backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD_HUMAN, LUNAR, FirstEdition));
+    backgroundRegistry.add(new EditionSpecificBackgroundTemplate(BACKGROUND_ID_RENOWN, FirstEdition));
 
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SOLAR_BOND, LUNAR));
-    backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, LUNAR, ExaltedEdition.SecondEdition));
+    backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, LUNAR, SecondEdition));
     backgroundRegistry.add(
       new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, new ITemplateType[] { castelessType, revisedCastelessType },
-        ExaltedEdition.SecondEdition));
+        SecondEdition));
     backgroundRegistry.add(
       new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TABOO, new ITemplateType[] { castelessType, revisedCastelessType },
-        ExaltedEdition.SecondEdition));
+        SecondEdition));
 
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, dreams, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, dreams, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, dreams, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_HENCHMEN, dreams, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_PANOPLY, dreams, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_RETAINERS, dreams, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SALARY, dreams, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, dreams, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SIFU, dreams, ExaltedEdition.SecondEdition));
-    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_WEALTH, dreams, ExaltedEdition.SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, dreams, SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, dreams, SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, dreams, SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_HENCHMEN, dreams, SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_PANOPLY, dreams, SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_RETAINERS, dreams, SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SALARY, dreams, SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, dreams, SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SIFU, dreams, SecondEdition));
+    backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_WEALTH, dreams, SecondEdition));
   }
 
   @Override
@@ -211,7 +213,12 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     registerContent(resources, moduleObject.getReportContentRegistry());
     registerSimpleReporting(resources, moduleObject.getSimpleEncodingRegistry(), moduleObject.getEncoderRegistry());
-    registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry());
+    registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry(), moduleObject.getEncoderRegistry());
+    registerEncoder(moduleObject.getEncoderRegistry());
+  }
+
+  private void registerEncoder(BoxContentEncoderRegistry registry) {
+    registry.add(new LunarWeaponryEncoderFactory());
   }
 
   private void registerContent(IResources resources, ReportContentRegistry contentRegistry) {
@@ -222,13 +229,13 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerSimpleReporting(IResources resources, SimpleEncodingRegistry registry, BoxContentEncoderRegistry encoderRegistry) {
-    registry.setPartEncoder(LUNAR, ExaltedEdition.FirstEdition, new Simple1stEditionLunarPartEncoder(encoderRegistry, resources));
-    registry.setPartEncoder(LUNAR, ExaltedEdition.SecondEdition, new Simple2ndEditionLunarPartEncoder(resources, ESSENCE_MAX));
+    registry.setPartEncoder(LUNAR, FirstEdition, new Simple1stEditionLunarPartEncoder(encoderRegistry, resources));
+    registry.setPartEncoder(LUNAR, SecondEdition, new Simple2ndEditionLunarPartEncoder(encoderRegistry, resources, ESSENCE_MAX));
   }
 
-  private void registerExtendedReporting(IResources resources, ExtendedEncodingRegistry registry) {
+  private void registerExtendedReporting(IResources resources, ExtendedEncodingRegistry registry, BoxContentEncoderRegistry encoderRegistry) {
     registry
-      .setPartEncoder(LUNAR, ExaltedEdition.FirstEdition, new Extended1stEditionLunarPartEncoder(resources, registry.getBaseFont(), ESSENCE_MAX));
-    registry.setPartEncoder(LUNAR, ExaltedEdition.SecondEdition, new Extended2ndEditionLunarPartEncoder(resources, registry, ESSENCE_MAX));
+      .setPartEncoder(LUNAR, FirstEdition, new Extended1stEditionLunarPartEncoder(encoderRegistry, resources, registry.getBaseFont(), ESSENCE_MAX));
+    registry.setPartEncoder(LUNAR, SecondEdition, new Extended2ndEditionLunarPartEncoder(encoderRegistry, resources, registry, ESSENCE_MAX));
   }
 }

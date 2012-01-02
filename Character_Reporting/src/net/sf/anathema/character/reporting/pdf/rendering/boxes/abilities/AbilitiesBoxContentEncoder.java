@@ -7,10 +7,10 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AbilitiesBoxContentEncoder {
 
-  public static FavorableTraitBoxContentEncoder createWithCraftsOnly(IResources resources, int essenceMax, int craftCount) {
+  public static FavorableTraitBoxContentEncoder createWithCraftsOnly(IResources resources, int craftCount) {
     FavorableTraitBoxContentEncoder encoder = new FavorableTraitBoxContentEncoder(AbilitiesContent.class);
     PdfTraitEncoder traitEncoder = encoder.getTraitEncoder();
-    CraftEncoder craftEncoder = new CraftEncoder(resources, traitEncoder, essenceMax, craftCount);
+    CraftEncoder craftEncoder = new CraftEncoder(resources, traitEncoder, craftCount);
     encoder.addNamedTraitEncoder(craftEncoder);
     return encoder;
   }
@@ -22,11 +22,10 @@ public class AbilitiesBoxContentEncoder {
     return encoder;
   }
 
-  public static FavorableTraitBoxContentEncoder createWithCraftsAndSpecialties(IResources resources, int essenceMax, int craftCount,
-    int specialtyCount) {
+  public static FavorableTraitBoxContentEncoder createWithCraftsAndSpecialties(IResources resources, int craftCount, int specialtyCount) {
     FavorableTraitBoxContentEncoder encoder = new FavorableTraitBoxContentEncoder(AbilitiesContent.class);
     PdfTraitEncoder traitEncoder = encoder.getTraitEncoder();
-    encoder.addNamedTraitEncoder(new CraftEncoder(resources, traitEncoder, essenceMax, craftCount));
+    encoder.addNamedTraitEncoder(new CraftEncoder(resources, traitEncoder, craftCount));
     encoder.addNamedTraitEncoder(new SpecialtiesEncoder(resources, traitEncoder, specialtyCount));
     return encoder;
   }

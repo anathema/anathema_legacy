@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.pdf.layout.simple;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -27,14 +28,10 @@ public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEnco
   }
 
   public float getWeaponryHeight() {
-    return 129;
+    return IVoidStateFormatConstants.WEAPON_HEIGHT_FIRST_EDITION;
   }
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
     return new IPdfPageEncoder[0];
-  }
-
-  public boolean isEncodeAttributeAsFavorable() {
-    return false;
   }
 }

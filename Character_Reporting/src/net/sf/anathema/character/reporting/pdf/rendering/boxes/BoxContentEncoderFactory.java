@@ -7,7 +7,11 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface BoxContentEncoderFactory extends IIdentificate {
 
-  IBoxContentEncoder create(IResources resources);
+  IBoxContentEncoder create(IResources resources, BasicContent content);
 
   boolean supports(BasicContent content);
+
+  boolean hasAttribute(EncoderAttributeType type);
+
+  float getValue(BasicContent content, EncoderAttributeType type);
 }

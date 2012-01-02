@@ -10,6 +10,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.reporting.pdf.content.EncoderIds.WEAPONRY_ID;
+
 public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
 
   private BoxContentEncoderRegistry encoderRegistry;
@@ -73,6 +75,7 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getWeaponContentEncoder(), 2, 2, distanceFromTop, height);
+    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(WEAPONRY_ID, getResources(), content);
+    return encodeFixedBox(graphics, content, weaponryEncoder, 2, 2, distanceFromTop, height);
   }
 }

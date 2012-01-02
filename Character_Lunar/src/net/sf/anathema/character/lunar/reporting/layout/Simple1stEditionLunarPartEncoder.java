@@ -31,9 +31,4 @@ public class Simple1stEditionLunarPartEncoder extends AbstractFirstEditionExaltP
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
     return new IPdfPageEncoder[] { new Simple1stEditionLunarBeastformPageEncoder(encoderRegistry, this, getResources(), configuration) };
   }
-
-  @Override
-  public boolean isEncodeAttributeAsFavorable() {
-    return true;
-  }
 }

@@ -2,14 +2,12 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.NullBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.resources.IResources;
 
 public class BoxContentEncoderRegistry {
 
-  public static final NullBoxContentEncoder NULL_ENCODER = new NullBoxContentEncoder("Unknown");
   public final MultiEntryMap<String, BoxContentEncoderFactory> factoryById = new MultiEntryMap<String, BoxContentEncoderFactory>();
 
   public void add(BoxContentEncoderFactory factory) {
@@ -17,20 +15,32 @@ public class BoxContentEncoderRegistry {
   }
 
   public boolean hasEncoder(String id, ReportContent content) {
-    for (BoxContentEncoderFactory factory : factoryById.get(id)) {
-      if (factory.supports(content.createSubContent(BasicContent.class))) {
-        return true;
-      }
-    }
-    return false;
+    return !(findFactory(id, content) instanceof NullEncoderFactory);
   }
 
   public IBoxContentEncoder createEncoder(String id, IResources resource, ReportContent content) {
+    return findFactory(id, content).create(resource, createBasicContent(content));
+  }
+
+  public boolean hasAttribute(String id, EncoderAttributeType type, ReportContent content) {
+    return findFactory(id, content).hasAttribute(type);
+  }
+
+  public float getValue(String id, EncoderAttributeType type, ReportContent content) {
+    return findFactory(id, content).getValue(createBasicContent(content), type);
+  }
+
+  private BoxContentEncoderFactory findFactory(String id, ReportContent content) {
     for (BoxContentEncoderFactory factory : factoryById.get(id)) {
-      if (factory.supports(content.createSubContent(BasicContent.class))) {
-        return factory.create(resource);
+      BasicContent basicContent = createBasicContent(content);
+      if (factory.supports(basicContent)) {
+        return factory;
       }
     }
-    return NULL_ENCODER;
+    return new NullEncoderFactory(id);
+  }
+
+  private BasicContent createBasicContent(ReportContent content) {
+    return content.createSubContent(BasicContent.class);
   }
 }

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.lunar.reporting.rendering.equipment;
 
-import net.sf.anathema.character.equipment.impl.reporting.ArmourTableEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.WeaponryTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.rendering.ArmourTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.rendering.weaponry.WeaponryTableEncoder;
 
 public class LunarEquipmentEncoders {
 

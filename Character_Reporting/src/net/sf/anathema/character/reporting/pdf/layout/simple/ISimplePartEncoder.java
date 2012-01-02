@@ -16,6 +16,4 @@ public interface ISimplePartEncoder extends IWeaponryPartEncoder {
   public IBoxContentEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry);
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
-
-  public boolean isEncodeAttributeAsFavorable();
 }

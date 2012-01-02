@@ -67,7 +67,7 @@ public class SimpleExaltSheetReport implements IITextReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
-      encoderList.add(new SimpleFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration));
+      encoderList.add(new SimpleFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
       encoderList.add(new SimpleSecondPageEncoder(resources, encodingRegistry, configuration));
       boolean isFirstPrinted = false;

@@ -1,5 +1,6 @@
-package net.sf.anathema.character.equipment.impl.reporting;
+package net.sf.anathema.character.equipment.impl.reporting.rendering.weaponry;
 
+import net.sf.anathema.character.equipment.impl.reporting.rendering.EquipmentTableEncoder;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.FixedLineStatsContent;
 

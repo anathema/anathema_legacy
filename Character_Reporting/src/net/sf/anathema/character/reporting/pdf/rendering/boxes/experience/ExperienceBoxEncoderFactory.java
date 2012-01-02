@@ -1,12 +1,11 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.experience;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractBoxContentEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identificate;
 
-public class ExperienceBoxEncoderFactory extends Identificate implements BoxContentEncoderFactory {
+public class ExperienceBoxEncoderFactory extends AbstractBoxContentEncoderFactory {
 
   public final static String ID = ExperienceBoxEncoderFactory.class.getName();
 
@@ -15,7 +14,7 @@ public class ExperienceBoxEncoderFactory extends Identificate implements BoxCont
   }
 
   @Override
-  public IBoxContentEncoder create(IResources resources) {
+  public IBoxContentEncoder create(IResources resources, BasicContent content) {
     return new ExperienceBoxContentEncoder();
   }
 

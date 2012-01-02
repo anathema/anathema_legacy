@@ -2,9 +2,7 @@ package net.sf.anathema.character.lunar.reporting.layout;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
-import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.WeaponryTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.rendering.ArmourEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -19,6 +17,7 @@ import net.sf.anathema.character.lunar.reporting.rendering.knacks.KnackEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.IWeaponryPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -27,6 +26,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
 public class Lunar2ndEditionAdditionalPageEncoder implements IPdfPageEncoder {
@@ -34,9 +34,12 @@ public class Lunar2ndEditionAdditionalPageEncoder implements IPdfPageEncoder {
 
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
+  private BoxContentEncoderRegistry encoderRegistry;
   private final IWeaponryPartEncoder partEncoder;
 
-  public Lunar2ndEditionAdditionalPageEncoder(IWeaponryPartEncoder partEncoder, IResources resources, PdfPageConfiguration pageConfiguration) {
+  public Lunar2ndEditionAdditionalPageEncoder(BoxContentEncoderRegistry encoderRegistry, IWeaponryPartEncoder partEncoder, IResources resources,
+    PdfPageConfiguration pageConfiguration) {
+    this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;
@@ -50,7 +53,7 @@ public class Lunar2ndEditionAdditionalPageEncoder implements IPdfPageEncoder {
     if (DBT) {
       firstSet += PADDING;
       secondSet = firstSet;
-      firstSet += encodeArsenal(graphics, content, firstSet, partEncoder.getWeaponryHeight()) + PADDING;
+      firstSet += encodeArsenal(graphics, content, firstSet) + PADDING;
       firstSet += encodePanoply(graphics, content, firstSet, 80) + PADDING;
       firstSet += encodeMovementAndHealth(graphics, content, firstSet, 99);
 
@@ -90,10 +93,10 @@ public class Lunar2ndEditionAdditionalPageEncoder implements IPdfPageEncoder {
     return attributeHeight;
   }
 
-  private float encodeArsenal(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeArsenal(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
+    float height = encoderRegistry.getValue(LunarWeaponryEncoderFactory.ID, PreferredHeight, content);
+    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(LunarWeaponryEncoderFactory.ID, resources, content);
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
-    WeaponryTableEncoder weaponTableEncoder = LunarEquipmentEncoders.CreateWeaponryEncoder();
-    IBoxContentEncoder weaponryEncoder = new WeaponryEncoder(weaponTableEncoder);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;
   }
