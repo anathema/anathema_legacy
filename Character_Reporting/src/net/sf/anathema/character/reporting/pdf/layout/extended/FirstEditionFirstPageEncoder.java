@@ -22,7 +22,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
+public class FirstEditionFirstPageEncoder implements IPdfPageEncoder {
   public static final int CONTENT_HEIGHT = 755;
   private final IResources resources;
   private final int essenceMax;
@@ -34,7 +34,7 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
   private final ExtendedEncodingRegistry registry;
   private final IExtendedPartEncoder partEncoder;
 
-  public PdfOldStyleFirstPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax,
+  public FirstEditionFirstPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax,
     PdfPageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
     this.baseFont = registry.getBaseFont();
@@ -75,7 +75,7 @@ public class PdfOldStyleFirstPageEncoder implements IPdfPageEncoder {
     distanceFromTop += calculateBoxIncrement(armourHeight);
     float healthHeight = encodeMovementAndHealth(graphics, content, distanceFromTop, 99);
     distanceFromTop += calculateBoxIncrement(healthHeight);
-    float remainingHeight = PdfOldStyleFirstPageEncoder.CONTENT_HEIGHT - distanceFromTop;
+    float remainingHeight = FirstEditionFirstPageEncoder.CONTENT_HEIGHT - distanceFromTop;
     encodeCombatStats(graphics, content, distanceFromTop, remainingHeight);
     new CopyrightEncoder(pageConfiguration, CONTENT_HEIGHT).encodeCopyright(graphics);
   }

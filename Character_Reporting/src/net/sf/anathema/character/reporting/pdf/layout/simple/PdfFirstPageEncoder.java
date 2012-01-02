@@ -146,7 +146,9 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
   private void encodeAnima(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IBoxContentEncoder encoder = partEncoder.getAnimaEncoder();
-    boxEncoder.encodeBox(content, graphics, encoder, animaBounds);
+    if (encoder != null) {
+      boxEncoder.encodeBox(content, graphics, encoder, animaBounds);
+    }
   }
 
   private float encodeArmourAndSoak(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -207,6 +209,9 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
   private float encodeGreatCurse(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     IBoxContentEncoder encoder = partEncoder.getGreatCurseEncoder();
+    if (encoder == null) {
+      return 0;
+    }
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }

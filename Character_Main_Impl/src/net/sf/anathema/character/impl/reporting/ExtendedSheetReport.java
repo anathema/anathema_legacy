@@ -1,9 +1,8 @@
 package net.sf.anathema.character.impl.reporting;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import com.lowagie.text.Document;
+import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -20,25 +19,25 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.extended.FirstEditionFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.NewPdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.NewPdfMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.NewPdfSecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.PdfMagicPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.PdfOldStyleFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.IITextReport;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class ExtendedSheetReport implements IITextReport {
 
@@ -71,13 +70,13 @@ public class ExtendedSheetReport implements IITextReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       IExaltedEdition edition = character.getRules().getEdition();
-      
+
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
-      if (edition == ExaltedEdition.FirstEdition)
-      	encoderList.add(new PdfOldStyleFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-      if (edition == ExaltedEdition.SecondEdition)
-      {
-    	  encoderList.add(new NewPdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+      if (edition == ExaltedEdition.FirstEdition) {
+        encoderList.add(new FirstEditionFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+      }
+      if (edition == ExaltedEdition.SecondEdition) {
+        encoderList.add(new NewPdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
         encoderList.add(new NewPdfSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
       }
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
@@ -85,8 +84,7 @@ public class ExtendedSheetReport implements IITextReport {
         encoderList.add(new NewPdfMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration));
       }
       else if (partEncoder.hasMagicPage()) {
-        encoderList.add(new PdfMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration,
-                                                edition != ExaltedEdition.FirstEdition));
+        encoderList.add(new PdfMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration, edition != ExaltedEdition.FirstEdition));
       }
       boolean firstPagePrinted = false;
       for (IPdfPageEncoder encoder : encoderList) {
@@ -99,8 +97,7 @@ public class ExtendedSheetReport implements IITextReport {
         ReportContent content = new ReportContent(getContentRegistry(), character, description);
         encoder.encode(document, graphics, content);
       }
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       throw new ReportException(e);
     }
   }

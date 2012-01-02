@@ -6,11 +6,11 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.Experi
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncoder {
+public class Simple1stEditionMortalPartEncoder extends AbstractFirstEditionPartEncoder {
 
   private final SimpleEncodingRegistry registry;
 
-  public FirstEditionMortalPartEncoder(IResources resources, BaseFont baseFont, SimpleEncodingRegistry registry) {
+  public Simple1stEditionMortalPartEncoder(IResources resources, BaseFont baseFont, SimpleEncodingRegistry registry) {
     super(resources, baseFont);
     this.registry = registry;
   }

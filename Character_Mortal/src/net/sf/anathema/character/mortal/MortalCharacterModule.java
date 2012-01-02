@@ -3,15 +3,19 @@ package net.sf.anathema.character.mortal;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.layout.simple.FirstEditionMortalPartEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SecondEditionMortalPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.Extended1stEditionMortalPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.Extended2ndEditionMortalPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.simple.Simple1stEditionMortalPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.Simple2ndEditionMortalPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.resources.IResources;
+
+import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstEdition;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
+import static net.sf.anathema.character.generic.type.CharacterType.MORTAL;
 
 public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
 
@@ -26,11 +30,19 @@ public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
+    registerSimpleParts(resources, moduleObject.getSimpleEncodingRegistry());
+    registerExtendedParts(resources, moduleObject.getExtendedEncodingRegistry());
+  }
+
+  private void registerExtendedParts(IResources resources, ExtendedEncodingRegistry registry) {
     BaseFont baseFont = registry.getBaseFont();
-    ISimplePartEncoder secondEditionMortalPartEncoder = new SecondEditionMortalPartEncoder(resources, baseFont);
-    ISimplePartEncoder firstEditionMortalPartEncoder = new FirstEditionMortalPartEncoder(resources, baseFont, registry);
-    registry.setPartEncoder(CharacterType.MORTAL, ExaltedEdition.SecondEdition, secondEditionMortalPartEncoder);
-    registry.setPartEncoder(CharacterType.MORTAL, ExaltedEdition.FirstEdition, firstEditionMortalPartEncoder);
+    registry.setPartEncoder(MORTAL, SecondEdition, new Extended2ndEditionMortalPartEncoder(resources, baseFont));
+    registry.setPartEncoder(MORTAL, FirstEdition, new Extended1stEditionMortalPartEncoder(resources, baseFont, registry));
+  }
+
+  private void registerSimpleParts(IResources resources, SimpleEncodingRegistry registry) {
+    BaseFont baseFont = registry.getBaseFont();
+    registry.setPartEncoder(MORTAL, SecondEdition, new Simple2ndEditionMortalPartEncoder(resources, baseFont, registry));
+    registry.setPartEncoder(MORTAL, FirstEdition, new Simple1stEditionMortalPartEncoder(resources, baseFont, registry));
   }
 }
