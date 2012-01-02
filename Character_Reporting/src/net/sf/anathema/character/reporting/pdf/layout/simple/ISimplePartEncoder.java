@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import net.sf.anathema.character.reporting.pdf.layout.extended.IWeaponryPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.IWeaponryPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;

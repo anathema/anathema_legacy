@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.layout.extended;
+package net.sf.anathema.character.reporting.pdf.layout;
 
 public interface IWeaponryPartEncoder {
 

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.reporting.pdf.layout.IWeaponryPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
