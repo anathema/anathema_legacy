@@ -25,11 +25,6 @@ public class Simple2ndEditionMortalPartEncoder extends AbstractSecondEditionPart
   }
 
   @Override
-  public boolean hasSecondPage() {
-    return false;
-  }
-
-  @Override
   public IBoxContentEncoder getGreatCurseEncoder() {
     return registry.getLinguisticsEncoder(); //No Great Curse for Mortals
   }

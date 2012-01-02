@@ -16,10 +16,6 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
     return new SimpleEssenceBoxContentEncoder();
   }
 
-  public boolean hasSecondPage() {
-    return true;
-  }
-
   protected final int getFontSize() {
     return SMALLER_FONT_SIZE;
   }

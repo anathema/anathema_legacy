@@ -22,6 +22,7 @@ import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleSecondPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -35,13 +36,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SimpleSheetReport implements IITextReport {
+public class SimpleExaltSheetReport implements IITextReport {
 
   private final IResources resources;
   private final ICharacterGenerics characterGenerics;
   private final PageSize pageSize;
 
-  public SimpleSheetReport(IResources resources, ICharacterGenerics characterGenerics, PageSize pageSize) {
+  public SimpleExaltSheetReport(IResources resources, ICharacterGenerics characterGenerics, PageSize pageSize) {
     this.resources = resources;
     this.characterGenerics = characterGenerics;
     this.pageSize = pageSize;
@@ -66,11 +67,9 @@ public class SimpleSheetReport implements IITextReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
-      encoderList.add(new SimpleFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+      encoderList.add(new SimpleFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration));
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
-      if (partEncoder.hasSecondPage()) {
-        encoderList.add(new SimpleSecondPageEncoder(resources, encodingRegistry, configuration));
-      }
+      encoderList.add(new SimpleSecondPageEncoder(resources, encodingRegistry, configuration));
       boolean isFirstPrinted = false;
       for (IPdfPageEncoder encoder : encoderList) {
         if (isFirstPrinted) {
@@ -88,6 +87,10 @@ public class SimpleSheetReport implements IITextReport {
     }
   }
 
+  private BoxContentEncoderRegistry getEncoderRegistry() {
+    return getReportingModuleObject().getEncoderRegistry();
+  }
+
   private int getEssenceMax(ICharacter character) {
     return character.getStatistics().getTraitConfiguration().getTrait(OtherTraitType.Essence).getMaximalValue();
   }
@@ -101,14 +104,17 @@ public class SimpleSheetReport implements IITextReport {
   }
 
   private SimpleEncodingRegistry getEncodingRegistry() {
-    ICharacterModuleObjectMap moduleObjectMap = characterGenerics.getModuleObjectMap();
-    CharacterReportingModuleObject moduleObject = moduleObjectMap.getModuleObject(CharacterReportingModule.class);
+    CharacterReportingModuleObject moduleObject = getReportingModuleObject();
     return moduleObject.getSimpleEncodingRegistry();
   }
 
-  private ReportContentRegistry getContentRegistry() {
+  private CharacterReportingModuleObject getReportingModuleObject() {
     ICharacterModuleObjectMap moduleObjectMap = characterGenerics.getModuleObjectMap();
-    CharacterReportingModuleObject moduleObject = moduleObjectMap.getModuleObject(CharacterReportingModule.class);
+    return moduleObjectMap.getModuleObject(CharacterReportingModule.class);
+  }
+
+  private ReportContentRegistry getContentRegistry() {
+    CharacterReportingModuleObject moduleObject = getReportingModuleObject();
     return moduleObject.getReportContentRegistry();
   }
 
@@ -124,6 +130,6 @@ public class SimpleSheetReport implements IITextReport {
     if (!character.hasStatistics()) {
       return false;
     }
-    return getPartEncoder(character) != null;
+    return getPartEncoder(character) != null && character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isExaltType();
   }
 }

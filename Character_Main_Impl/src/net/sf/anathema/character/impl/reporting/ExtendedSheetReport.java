@@ -26,6 +26,7 @@ import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagic1stE
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -73,11 +74,12 @@ public class ExtendedSheetReport implements IITextReport {
 
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
       if (edition == ExaltedEdition.FirstEdition) {
-        encoderList.add(new Extended1stEditionFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+        encoderList
+          .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration));
       }
       if (edition == ExaltedEdition.SecondEdition) {
         encoderList.add(new ExtendedFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-        encoderList.add(new ExtendedSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+        encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
       }
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
       if (edition == ExaltedEdition.SecondEdition) {
@@ -117,6 +119,10 @@ public class ExtendedSheetReport implements IITextReport {
 
   private ExtendedEncodingRegistry getEncodingRegistry() {
     return getReportingModuleObject().getExtendedEncodingRegistry();
+  }
+
+  private BoxContentEncoderRegistry getEncoderRegistry() {
+    return getReportingModuleObject().getEncoderRegistry();
   }
 
   private ReportContentRegistry getContentRegistry() {

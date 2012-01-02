@@ -22,10 +22,6 @@ public class Simple1stEditionMortalPartEncoder extends AbstractFirstEditionPartE
     return new ExperienceBoxContentEncoder();
   }
 
-  public boolean hasSecondPage() {
-    return false;
-  }
-
   public boolean hasMagicPage() {
     return false;
   }

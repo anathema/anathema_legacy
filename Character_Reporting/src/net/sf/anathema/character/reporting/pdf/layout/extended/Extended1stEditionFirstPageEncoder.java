@@ -2,12 +2,13 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.PdfAttributesEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.FirstEditionCombatBoxEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
@@ -26,19 +27,18 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
   public static final int CONTENT_HEIGHT = 755;
   private final IResources resources;
   private final int essenceMax;
-  private final BaseFont baseFont;
 
   private static final int ANIMA_HEIGHT = 128;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private final ExtendedEncodingRegistry registry;
+  private BoxContentEncoderRegistry encoderRegistry;
   private final IExtendedPartEncoder partEncoder;
 
-  public Extended1stEditionFirstPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources,
-    int essenceMax,
-    PdfPageConfiguration pageConfiguration) {
+  public Extended1stEditionFirstPageEncoder(BoxContentEncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder,
+    ExtendedEncodingRegistry registry, IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
+    this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;
-    this.baseFont = registry.getBaseFont();
     this.essenceMax = essenceMax;
     this.resources = resources;
     this.registry = registry;
@@ -121,7 +121,7 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
   }
 
   private float calculateBoxIncrement(float height) {
-    return height + IVoidStateFormatConstants.PADDING;
+    return height + PADDING;
   }
 
   private void encodeAnima(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -147,7 +147,7 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
 
   private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder encoder = partEncoder.getCombatStatsEncoder();
+    IBoxContentEncoder encoder = encoderRegistry.getById(FirstEditionCombatBoxEncoderFactory.ID).create(resources);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }

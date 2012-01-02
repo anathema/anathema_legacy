@@ -13,15 +13,11 @@ public interface ISimplePartEncoder extends IWeaponryPartEncoder {
 
   public IBoxContentEncoder getGreatCurseEncoder();
 
-  public IBoxContentEncoder getCombatStatsEncoder();
-
   public IBoxContentEncoder getSocialCombatEncoder();
 
   public IBoxContentEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry);
 
   public IBoxContentEncoder getHealthAndMovementEncoder();
-
-  public boolean hasSecondPage();
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
 

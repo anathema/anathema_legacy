@@ -23,7 +23,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatCo
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SimpleFirstPageEncoder implements IPdfPageEncoder {
+public class SimpleMortalPageEncoder implements IPdfPageEncoder {
   public static final float CONTENT_HEIGHT = 755;
   private final IResources resources;
   private final int essenceMax;
@@ -35,7 +35,7 @@ public class SimpleFirstPageEncoder implements IPdfPageEncoder {
   private BoxContentEncoderRegistry encoderRegistry;
   private final ISimplePartEncoder partEncoder;
 
-  public SimpleFirstPageEncoder(BoxContentEncoderRegistry encoderRegistry, ISimplePartEncoder partEncoder, SimpleEncodingRegistry registry,
+  public SimpleMortalPageEncoder(BoxContentEncoderRegistry encoderRegistry, ISimplePartEncoder partEncoder, SimpleEncodingRegistry registry,
     IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;
@@ -74,7 +74,7 @@ public class SimpleFirstPageEncoder implements IPdfPageEncoder {
     distanceFromTop += calculateBoxIncrement(armourHeight);
     float healthHeight = encodeMovementAndHealth(graphics, content, distanceFromTop, 99);
     distanceFromTop += calculateBoxIncrement(healthHeight);
-    float remainingHeight = SimpleFirstPageEncoder.CONTENT_HEIGHT - distanceFromTop;
+    float remainingHeight = SimpleMortalPageEncoder.CONTENT_HEIGHT - distanceFromTop;
     encodeCombatStats(graphics, content, distanceFromTop, remainingHeight);
     encodeCopyright(graphics);
   }

@@ -2,19 +2,14 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatRulesTableEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.ExtendedEssenceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionHealthEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionMovementEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.SecondEditionHealthAndMovementEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.HealthAndMovement2ndEditionEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -60,12 +55,6 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
     return null;
   }
 
-  public final IBoxContentEncoder getCombatStatsEncoder() {
-    IContentEncoder valueEncoder = new SecondEditionCombatValueEncoder();
-    ITableEncoder rulesEncoder = new SecondEditionCombatRulesTableEncoder();
-    return new CombatStatsContentBoxEncoder(rulesEncoder, valueEncoder);
-  }
-
   public IBoxContentEncoder getSocialCombatEncoder() {
     return new SocialCombatStatsBoxEncoder(resources);
   }
@@ -75,7 +64,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   public IBoxContentEncoder getHealthAndMovementEncoder() {
-    return new SecondEditionHealthAndMovementEncoder(resources);
+    return new HealthAndMovement2ndEditionEncoder(resources);
   }
 
   public IBoxContentEncoder getHealthEncoder() {

@@ -3,15 +3,21 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.SecondEditionCombatBoxEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
 
-  public ExtendedSecondPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax,
-    PdfPageConfiguration pageConfiguration) {
+  private BoxContentEncoderRegistry encoderRegistry;
+
+  public ExtendedSecondPageEncoder(BoxContentEncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
+    IResources resources, PdfPageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
+    this.encoderRegistry = encoderRegistry;
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
@@ -54,7 +60,8 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getPartEncoder().getCombatStatsEncoder(), 2, 2, distanceFromTop, height);
+    IBoxContentEncoder encoder = encoderRegistry.getById(SecondEditionCombatBoxEncoderFactory.ID).create(getResources());
+    return encodeFixedBox(graphics, content, encoder, 2, 2, distanceFromTop, height);
   }
 
   private float encodeHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
