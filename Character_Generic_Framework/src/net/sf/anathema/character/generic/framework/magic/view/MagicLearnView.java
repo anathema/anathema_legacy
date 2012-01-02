@@ -32,6 +32,9 @@ public class MagicLearnView implements IMagicLearnView {
   private JList learnOptionsList = new JList(new DefaultListModel()) {
     public String getToolTipText(MouseEvent evt) {
       int index = locationToIndex(evt.getPoint());
+      if (index == -1){
+        return "";
+      }
       Object item = getModel().getElementAt(index);
       return properties.getToolTipText(item);
     }
