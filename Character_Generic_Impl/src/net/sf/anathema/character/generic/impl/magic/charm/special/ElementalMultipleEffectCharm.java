@@ -32,11 +32,11 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
   }
 
   public ISubeffect[] buildSubeffects(IBasicCharacterData data,
-		  IGenericTraitCollection traitCollection,
-		  ICharmLearnableArbitrator arbitrator,
-		  ICharm charm) {
+                                      IGenericTraitCollection traitCollection,
+                                      ICharmLearnableArbitrator arbitrator,
+                                      ICharm charm) {
     if (effectList.isEmpty()) {
-      for (Elements element : Elements.values()) {
+      for (Element element : Element.values()) {
         effectList.add(new ElementalSubeffect(element, data, buildLearnCondition(element, data, arbitrator, charm)));
       }
     }
@@ -44,10 +44,10 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
   }
 
   private ICondition buildLearnCondition(
-      final Elements element,
-      final IBasicCharacterData data,
-      final ICharmLearnableArbitrator arbitrator,
-      final ICharm charm) {
+          final Element element,
+          final IBasicCharacterData data,
+          final ICharmLearnableArbitrator arbitrator,
+          final ICharm charm) {
     return new ICondition() {
       public boolean isFullfilled() {
         boolean learnable = arbitrator.isLearnable(charm);
@@ -66,32 +66,18 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
       }
     };
   }
-  
-  private class ElementalSubeffect extends Subeffect
-  {
-	  private final Elements aspect;
 
-	  public ElementalSubeffect(Elements aspect, IBasicCharacterData data, ICondition learnable) {
-	    super(aspect.getId(), data, learnable);
-	    this.aspect = aspect;
-	  }
+  private class ElementalSubeffect extends Subeffect {
+    private final Element element;
 
-	  public boolean matches(ICasteType casteType) {
-	    return aspect.equals(casteType);
-	  }
-	}
-  
-  private enum Elements
-  {
-  	  Air, Earth, Fire, Water, Wood;
+    public ElementalSubeffect(Element element, IBasicCharacterData data, ICondition learnable) {
+      super(element.name(), data, learnable);
+      this.element = element;
+    }
 
-  	  public String getId() {
-  	    return name();
-  	  }
-
-  	  @Override
-  	  public String toString() {
-  	    return name();
-  	  }
+    public boolean matches(ICasteType casteType) {
+      return element.equals(casteType);
+    }
   }
+
 }
