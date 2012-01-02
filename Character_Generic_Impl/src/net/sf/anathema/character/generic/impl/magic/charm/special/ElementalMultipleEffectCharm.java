@@ -41,12 +41,7 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
     return effectList.toArray(new ISubeffect[effectList.size()]);
   }
 
-  private ICondition buildLearnCondition(
-          final Element element,
-          final IBasicCharacterData data,
-          final ICharmLearnableArbitrator arbitrator,
-          final ICharm charm) {
+  private ICondition buildLearnCondition(Element element, IBasicCharacterData data, ICharmLearnableArbitrator arbitrator, ICharm charm) {
     return new ElementalCharmLearnCondition(effectList, arbitrator, charm, data, element);
   }
-
 }

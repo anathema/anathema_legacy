@@ -7,8 +7,8 @@ import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 public class ElementalSubeffect extends Subeffect {
   private final Element element;
 
-  public ElementalSubeffect(Element element, IBasicCharacterData data, ICondition learnable) {
-    super(element.name(), data, learnable);
+  public ElementalSubeffect(Element element, IBasicCharacterData data, ICondition condition) {
+    super(element.name(), data, condition);
     this.element = element;
   }
 

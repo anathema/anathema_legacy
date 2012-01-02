@@ -28,7 +28,7 @@ public class ElementalCharmLearnCondition implements ICondition {
     if (!data.getCharacterType().equals(CharacterType.DB)) {
       return learnable;
     }
-    if (element.equals(data.getCasteType())) {
+    if (element.matches(data.getCasteType())) {
       return learnable;
     }
     for (ElementalSubeffect effect : effectList) {
