@@ -20,6 +20,6 @@ public class Extended2ndSolarPartEncoder extends AbstractSecondEditionExaltPdfPa
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new SolarAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
+    return new SolarAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 }

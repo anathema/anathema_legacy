@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -24,7 +23,6 @@ import java.util.List;
 
 public class SimpleMagicPageEncoder implements IPdfPageEncoder {
 
-  private final BaseFont baseFont;
   private final PdfPageConfiguration configuration;
   private final PdfBoxEncoder boxEncoder;
   private final IResources resources;
@@ -35,9 +33,8 @@ public class SimpleMagicPageEncoder implements IPdfPageEncoder {
     boolean pureMagic) {
     this.resources = resources;
     this.encodingRegistry = encodingRegistry;
-    this.baseFont = encodingRegistry.getBaseFont();
     this.configuration = configuration;
-    this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
+    this.boxEncoder = new PdfBoxEncoder(resources);
     this.pureMagic = pureMagic;
   }
 
@@ -77,7 +74,7 @@ public class SimpleMagicPageEncoder implements IPdfPageEncoder {
   private float encodeCombos(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     Bounds restOfPage = new Bounds(configuration.getLeftX(), configuration.getLowerContentY(), configuration.getContentWidth(),
       configuration.getContentHeight() - distanceFromTop);
-    return new PdfComboEncoder(resources, baseFont).encodeCombos(graphics, content, restOfPage);
+    return new PdfComboEncoder(resources).encodeCombos(graphics, content, restOfPage);
   }
 
   private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -112,7 +109,7 @@ public class SimpleMagicPageEncoder implements IPdfPageEncoder {
     if (content.getCharacter().getGenericCharmStats().length > 0) {
       float height = 55 + content.getCharacter().getGenericCharmStats().length * 11;
       Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-      IBoxContentEncoder encoder = new PdfGenericCharmEncoder(resources, baseFont);
+      IBoxContentEncoder encoder = new PdfGenericCharmEncoder(resources);
       boxEncoder.encodeBox(content, graphics, encoder, bounds);
       return height;
     }
@@ -123,7 +120,7 @@ public class SimpleMagicPageEncoder implements IPdfPageEncoder {
 
   private float encodeCharms(SheetGraphics graphics, List<IMagicStats> printMagic, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    IBoxContentEncoder encoder = new PdfMagicEncoder(resources, baseFont, printMagic);
+    IBoxContentEncoder encoder = new PdfMagicEncoder(resources, printMagic);
     boxEncoder.encodeBox(graphics, encoder, null, null, bounds);
     return height;
   }

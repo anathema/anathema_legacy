@@ -30,6 +30,6 @@ public class Extended1stEditionSiderealPartEncoder extends AbstractFirstEditionE
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new SiderealAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
+    return new SiderealAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 }

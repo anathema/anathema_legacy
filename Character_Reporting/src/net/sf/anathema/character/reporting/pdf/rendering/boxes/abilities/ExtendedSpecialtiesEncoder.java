@@ -7,10 +7,10 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.AbstractNamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -22,7 +22,7 @@ import java.util.List;
 public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implements IBoxContentEncoder {
 
   public ExtendedSpecialtiesEncoder(IResources resources, BaseFont baseFont) {
-    super(resources, baseFont, PdfTraitEncoder.createSmallTraitEncoder());
+    super(resources, PdfTraitEncoder.createSmallTraitEncoder());
   }
 
   public String getHeaderKey(ReportContent content) {

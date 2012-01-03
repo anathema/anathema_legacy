@@ -7,7 +7,6 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Image;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
@@ -23,34 +22,24 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.*;
+import java.awt.Color;
 
 public abstract class AbstractHealthAndMovementTableEncoder implements ITableEncoder<ReportContent> {
   public static final int HEALTH_RECT_SIZE = 6;
   private static final int HEALTH_COLUMN_COUNT = 10;
   protected static float PADDING = 0.3f;
-  private static final Float[] HEALTH_LEVEL_COLUMNS = new Float[]{PADDING, 0.6f, 0.7f, PADDING};
+  private static final Float[] HEALTH_LEVEL_COLUMNS = new Float[] { PADDING, 0.6f, 0.7f, PADDING };
 
   private final IResources resources;
-  private final Font font;
-  private Font headerFont;
-  private Font commentFont;
-  private PdfPCell spaceCell;
 
-  public AbstractHealthAndMovementTableEncoder(IResources resources, BaseFont baseFont) {
+  public AbstractHealthAndMovementTableEncoder(IResources resources) {
     this.resources = resources;
-    this.font = TableEncodingUtilities.createTableFont(baseFont);
-    this.headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
-    this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
-    this.spaceCell = new PdfPCell(new Phrase(" ", font)); //$NON-NLS-1$
-    this.spaceCell.setBorder(Rectangle.NO_BORDER);
   }
 
   protected abstract Float[] getMovementColumns();
 
   public final float encodeTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
-    PdfContentByte directContent = graphics.getDirectContent();
-    PdfPTable table = createTable(directContent, content);
+    PdfPTable table = createTable(graphics, content);
     table.setWidthPercentage(100);
     graphics.createSimpleColumn(bounds).withElement(table).encode();
     return table.getTotalHeight();
@@ -67,24 +56,25 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     return 1;
   }
 
-  protected final PdfPTable createTable(PdfContentByte directContent, ReportContent content) throws DocumentException {
+  protected final PdfPTable createTable(SheetGraphics graphics, ReportContent content) throws DocumentException {
     try {
+      PdfContentByte directContent = graphics.getDirectContent();
       Image activeTemplate = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, Color.BLACK));
       Image passiveTemplate = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, Color.LIGHT_GRAY));
       float[] columnWidth = createColumnWidth();
       PdfPTable table = new PdfPTable(columnWidth);
-      addHeaders(table);
+      addHeaders(graphics, table);
       for (HealthLevelType type : HealthLevelType.values()) {
-        addHealthTypeRows(table, content.getCharacter(), activeTemplate, passiveTemplate, type);
+        addHealthTypeRows(graphics, table, content.getCharacter(), activeTemplate, passiveTemplate, type);
       }
       return table;
-    }
-    catch (BadElementException e) {
+    } catch (BadElementException e) {
       throw new DocumentException(e);
     }
   }
 
-  private void addHealthTypeRows(PdfPTable table, IGenericCharacter character, Image activeTemplate, Image passiveTemplate, HealthLevelType type) {
+  private void addHealthTypeRows(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, Image activeTemplate, Image passiveTemplate,
+    HealthLevelType type) {
     if (type == HealthLevelType.DYING) {
       return;
     }
@@ -94,64 +84,67 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
       if (rowIndex == 0) {
         int painTolerance = character.getPainTolerance();
         if (type == HealthLevelType.INCAPACITATED) {
-          addIncapacitatedMovement(table);
+          addIncapacitatedMovement(graphics, table);
         }
         else {
-          addMovementCells(table, type, painTolerance, getTraits(character));
+          addMovementCells(graphics, table, type, painTolerance, getTraits(character));
         }
-        addHealthTypeCells(table, type, painTolerance);
+        addHealthTypeCells(graphics, table, type, painTolerance);
       }
       else {
-        addSpaceCells(table, getMovementColumns().length + HEALTH_LEVEL_COLUMNS.length);
+        addSpaceCells(graphics, table, getMovementColumns().length + HEALTH_LEVEL_COLUMNS.length);
       }
-      addHealthCells(table, character, type, rowIndex, activeTemplate, passiveTemplate);
+      addHealthCells(graphics, table, character, type, rowIndex, activeTemplate, passiveTemplate);
     }
   }
 
-  private void addHealthTypeCells(PdfPTable table, HealthLevelType type, int painTolerance) {
-    addSpaceCells(table, 1);
-    addHealthPenaltyCells(table, type, painTolerance);
-    addSpaceCells(table, 1);
+  private void addHealthTypeCells(SheetGraphics graphics, PdfPTable table, HealthLevelType type, int painTolerance) {
+    addSpaceCells(graphics, table, 1);
+    addHealthPenaltyCells(graphics, table, type, painTolerance);
+    addSpaceCells(graphics, table, 1);
   }
 
-  private void addIncapacitatedMovement(PdfPTable table) {
-    final Phrase commentPhrase = createIncapacitatedComment();
+  private void addIncapacitatedMovement(SheetGraphics graphics, PdfPTable table) {
+    final Phrase commentPhrase = createIncapacitatedComment(graphics);
     final TableCell cell = new TableCell(commentPhrase, Rectangle.NO_BORDER);
     cell.setColspan(getMovementColumns().length);
     cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
     table.addCell(cell);
   }
 
-  protected abstract Phrase createIncapacitatedComment();
+  protected abstract Phrase createIncapacitatedComment(SheetGraphics graphics);
 
-  protected final void addSpaceCells(PdfPTable table, int count) {
+  protected final void addSpaceCells(SheetGraphics graphics, PdfPTable table, int count) {
     for (int index = 0; index < count; index++) {
-      table.addCell(spaceCell);
+      table.addCell(createSpaceCell(graphics));
     }
   }
 
-  protected final PdfPCell createHeaderCell(String text, int columnSpan) {
-    PdfPCell cell = new PdfPCell(new Phrase(text, headerFont));
+  protected final PdfPCell createHeaderCell(SheetGraphics graphics, String text, int columnSpan) {
+    PdfPCell cell = new PdfPCell(new Phrase(text, createHeaderFont(graphics)));
     cell.setBorder(Rectangle.NO_BORDER);
     cell.setColspan(columnSpan);
     return cell;
   }
 
-  private void addHeaders(PdfPTable table) {
-    addMovementHeader(table);
-    table.addCell(createHeaderCell(resources.getString("Sheet.Health.Levels"), 13)); //$NON-NLS-1$
+  private void addHeaders(SheetGraphics graphics, PdfPTable table) {
+    addMovementHeader(graphics, table);
+    table.addCell(createHeaderCell(graphics, resources.getString("Sheet.Health.Levels"), 13)); //$NON-NLS-1$
   }
 
-  protected abstract void addMovementHeader(PdfPTable table);
+  protected abstract void addMovementHeader(SheetGraphics graphics, PdfPTable table);
 
-  protected abstract void addMovementCells(PdfPTable table, HealthLevelType level, int painTolerance, IGenericTraitCollection collection);
+  protected abstract void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance,
+    IGenericTraitCollection collection);
 
-  protected final PdfPCell createMovementCell(int value, int minValue) {
-    return TableEncodingUtilities.createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX,
-      Element.ALIGN_CENTER);
+  protected final PdfPCell createMovementCell(SheetGraphics graphics, int value, int minValue) {
+    Font font = createDefaultFont(graphics);
+    return TableEncodingUtilities
+      .createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX, Element.ALIGN_CENTER);
   }
 
-  private void addHealthPenaltyCells(PdfPTable table, HealthLevelType level, int painTolerance) {
+  private void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {
+    Font font = createDefaultFont(graphics);
     final String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
     final Phrase healthPenaltyPhrase = new Phrase(healthPenText, font);
     PdfPCell healthPdfPCell = new TableCell(healthPenaltyPhrase, Rectangle.NO_BORDER);
@@ -176,18 +169,21 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     return Math.min(0, level.getIntValue() + painTolerance);
   }
 
-  private void addHealthCells(PdfPTable table, IGenericCharacter character, HealthLevelType level, int row, Image activeImage, Image passiveImage) {
+  private void addHealthCells(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, HealthLevelType level, int row,
+    Image activeImage,
+    Image passiveImage) {
     int naturalCount = getNaturalHealthLevels(level);
     if (row < naturalCount) {
       table.addCell(createHealthCell(activeImage));
     }
     else {
-      addSpaceCells(table, 1);
+      addSpaceCells(graphics, table, 1);
     }
     int additionalCount = 9;
     if (level == HealthLevelType.FOUR) {
-      addSpaceCells(table, 1);
-      TableCell cell = new TableCell(new Phrase(resources.getString("HealthLevelType.Dying.Short"), commentFont), Rectangle.BOTTOM); //$NON-NLS-1$
+      addSpaceCells(graphics, table, 1);
+      TableCell cell =
+        new TableCell(new Phrase(resources.getString("HealthLevelType.Dying.Short"), createCommentFont(graphics)), Rectangle.BOTTOM); //$NON-NLS-1$
       cell.setHorizontalAlignment(Element.ALIGN_CENTER);
       cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
       cell.setColspan(additionalCount - 1);
@@ -195,7 +191,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
       return;
     }
     if (level == HealthLevelType.INCAPACITATED) {
-      addSpaceCells(table, 1);
+      addSpaceCells(graphics, table, 1);
       for (int index = 0; index < additionalCount - 1; index++) {
         if (index < character.getHealthLevelTypeCount(HealthLevelType.DYING)) {
           table.addCell(createHealthCell(activeImage));
@@ -236,12 +232,26 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(objectArray);
   }
 
-  protected final Font getCommentFont() {
-    return commentFont;
-  }
-
   protected final IResources getResources() {
     return resources;
+  }
+
+  private PdfPCell createSpaceCell(SheetGraphics graphics) {
+    PdfPCell spaceCell = new PdfPCell(new Phrase(" ", createDefaultFont(graphics))); //$NON-NLS-1$
+    spaceCell.setBorder(Rectangle.NO_BORDER);
+    return spaceCell;
+  }
+
+  protected Font createCommentFont(SheetGraphics graphics) {
+    return graphics.createCommentFont();
+  }
+
+  protected Font createHeaderFont(SheetGraphics graphics) {
+    return TableEncodingUtilities.createHeaderFont(graphics.getBaseFont());
+  }
+
+  protected Font createDefaultFont(SheetGraphics graphics) {
+    return graphics.createTableFont();
   }
 
   public boolean hasContent(ReportContent content) {

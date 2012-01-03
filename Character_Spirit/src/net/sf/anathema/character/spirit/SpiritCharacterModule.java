@@ -5,14 +5,12 @@ import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
 import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
 import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.character.spirit.generic.DivineSubordination;
 import net.sf.anathema.character.spirit.generic.InfiniteMastery;
@@ -20,6 +18,7 @@ import net.sf.anathema.character.spirit.reporting.Extended2ndEditionSpiritPartEn
 import net.sf.anathema.character.spirit.reporting.Simple2ndEditionSpiritPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.SPIRIT;
 
 public class SpiritCharacterModule extends NullObjectCharacterModuleAdapter {
@@ -31,8 +30,8 @@ public class SpiritCharacterModule extends NullObjectCharacterModuleAdapter {
     FirstExcellency firstExcellency = new FirstExcellency(SPIRIT, ExaltedSourceBook.SecondEdition, "1 m per die");
     SecondExcellency secondExcellency = new SecondExcellency(SPIRIT, ExaltedSourceBook.SecondEdition);
     ThirdExcellency thirdExcellency = new ThirdExcellency(SPIRIT, "4 m", ExaltedSourceBook.SecondEdition);
-    characterGenerics.getGenericCharmStatsRegistry().register(SPIRIT, new IMagicStats[]{firstExcellency, secondExcellency, thirdExcellency,
-                                                                                        new InfiniteMastery(), new DivineSubordination()});
+    characterGenerics.getGenericCharmStatsRegistry()
+      .register(SPIRIT, new IMagicStats[] { firstExcellency, secondExcellency, thirdExcellency, new InfiniteMastery(), new DivineSubordination() });
   }
 
   @Override
@@ -49,7 +48,7 @@ public class SpiritCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private void registerSimpleEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
     SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
-    registry.setPartEncoder(SPIRIT, SecondEdition, new Simple2ndEditionSpiritPartEncoder(resources, registry, ESSENCE_MAX));
+    registry.setPartEncoder(SPIRIT, SecondEdition, new Simple2ndEditionSpiritPartEncoder(resources, ESSENCE_MAX));
   }
 
   private void registerExtendedEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {

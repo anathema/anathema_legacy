@@ -9,14 +9,11 @@ import net.sf.anathema.character.meritsflaws.model.MeritsFlawsModelFactory;
 import net.sf.anathema.character.meritsflaws.persistence.MeritsFlawsPersisterFactory;
 import net.sf.anathema.character.meritsflaws.reporting.MeritsAndFlawsContent;
 import net.sf.anathema.character.meritsflaws.reporting.MeritsAndFlawsContentFactory;
-import net.sf.anathema.character.meritsflaws.reporting.MeritsAndFlawsEncoder;
+import net.sf.anathema.character.meritsflaws.reporting.MeritsAndFlawsEncoderFactory;
 import net.sf.anathema.character.meritsflaws.template.MeritsFlawsTemplate;
 import net.sf.anathema.character.meritsflaws.view.MeritsFlawsViewFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -37,20 +34,7 @@ public class MeritsFlawsModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    registerReportContent(moduleObject.getReportContentRegistry(), resources);
-    registerSimpleEncoders(moduleObject.getSimpleEncodingRegistry(), resources);
-    registerExtendedEncoders(moduleObject.getExtendedEncodingRegistry(), resources);
-  }
-
-  private void registerReportContent(ReportContentRegistry registry, IResources resources) {
-    registry.addFactory(MeritsAndFlawsContent.class, new MeritsAndFlawsContentFactory(resources));
-  }
-
-  private void registerSimpleEncoders(SimpleEncodingRegistry registry, IResources resources) {
-    registry.setMeritsAndFlawsEncoder(new MeritsAndFlawsEncoder());
-  }
-
-  private void registerExtendedEncoders(ExtendedEncodingRegistry registry, IResources resources) {
-    registry.setMeritsAndFlawsEncoder(new MeritsAndFlawsEncoder());
+    moduleObject.getReportContentRegistry().addFactory(MeritsAndFlawsContent.class, new MeritsAndFlawsContentFactory(resources));
+    moduleObject.getEncoderRegistry().add(new MeritsAndFlawsEncoderFactory());
   }
 }

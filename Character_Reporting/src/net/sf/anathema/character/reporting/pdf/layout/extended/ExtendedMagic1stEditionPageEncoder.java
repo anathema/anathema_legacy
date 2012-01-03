@@ -69,7 +69,7 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
     Bounds restOfPage =
       new Bounds(getPageConfiguration().getLeftX(), getPageConfiguration().getLowerContentY(), getPageConfiguration().getContentWidth(),
         getPageConfiguration().getContentHeight() - distanceFromTop);
-    return new PdfComboEncoder(getResources(), getBaseFont()).encodeCombos(graphics, content, restOfPage);
+    return new PdfComboEncoder(getResources()).encodeCombos(graphics, content, restOfPage);
   }
 
   private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -100,7 +100,7 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
   private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     if (content.getCharacter().getGenericCharmStats().length > 0) {
       float height = 55 + content.getCharacter().getGenericCharmStats().length * 11;
-      return encodeFixedBox(graphics, content, new PdfGenericCharmEncoder(getResources(), getBaseFont()), 1, 3, distanceFromTop, height);
+      return encodeFixedBox(graphics, content, new PdfGenericCharmEncoder(getResources()), 1, 3, distanceFromTop, height);
     }
     else {
       return 0;
@@ -109,6 +109,6 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeCharms(SheetGraphics graphics, ReportContent content, List<IMagicStats> printMagic, float distanceFromTop, float height)
     throws DocumentException {
-    return encodeFixedBox(graphics, content, new PdfMagicEncoder(getResources(), getBaseFont(), printMagic), 1, 3, distanceFromTop, height);
+    return encodeFixedBox(graphics, content, new PdfMagicEncoder(getResources(), printMagic), 1, 3, distanceFromTop, height);
   }
 }

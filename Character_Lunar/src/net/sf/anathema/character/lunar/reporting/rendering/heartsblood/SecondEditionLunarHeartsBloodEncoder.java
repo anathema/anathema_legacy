@@ -1,7 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.rendering.heartsblood;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IAnimalForm;
@@ -16,9 +15,9 @@ import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.IHear
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -30,8 +29,7 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
 
   private final IResources resources;
 
-  public SecondEditionLunarHeartsBloodEncoder(BaseFont baseFont, IResources resources) {
-    super(baseFont);
+  public SecondEditionLunarHeartsBloodEncoder(IResources resources) {
     this.resources = resources;
   }
 
@@ -75,13 +73,13 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
   @SuppressWarnings("unchecked")
   @Override
   protected IStatsGroup<IHeartsBloodStats>[] createStatsGroups(ReportContent content) {
-    return new IStatsGroup[]{new HeartsBloodNameStatsGroup(resources), new HeartsBloodStrengthStatsGroup(resources),
-                             new HeartsBloodDexterityStatsGroup(resources), new HeartsBloodStaminaStatsGroup(resources),
-                             new HeartsBloodAppearanceStatsGroup(resources), new HeartsBloodNotesStatsGroup(resources)};
+    return new IStatsGroup[] { new HeartsBloodNameStatsGroup(resources), new HeartsBloodStrengthStatsGroup(
+      resources), new HeartsBloodDexterityStatsGroup(resources), new HeartsBloodStaminaStatsGroup(resources), new HeartsBloodAppearanceStatsGroup(
+      resources), new HeartsBloodNotesStatsGroup(resources) };
   }
 
   @Override
-  protected void encodeContent(PdfPTable table, ReportContent content, Bounds bounds) {
+  protected void encodeContent(SheetGraphics graphics, PdfPTable table, ReportContent content, Bounds bounds) {
     float heightLimit = bounds.height - 3;
     IHeartsBloodStats[] statSet = getPrintStats(content);
     IStatsGroup<IHeartsBloodStats>[] statGroups = createStatsGroups(content);
@@ -89,11 +87,11 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
     //boolean encodeLine = true;
     for (IHeartsBloodStats stats : statSet) {
       if (table.getTotalHeight() < heightLimit) {
-        encodeContentLine(table, statGroups, stats);
+        encodeContentLine(graphics, table, statGroups, stats);
       }
     }
     while (table.getTotalHeight() < heightLimit) {
-      encodeContentLine(table, statGroups, null);
+      encodeContentLine(graphics, table, statGroups, null);
     }
     table.deleteLastRow();
   }

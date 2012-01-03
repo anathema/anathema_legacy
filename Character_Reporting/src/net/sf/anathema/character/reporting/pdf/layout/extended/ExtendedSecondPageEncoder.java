@@ -3,15 +3,23 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
+
 public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
 
-  public ExtendedSecondPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax,
-    PdfPageConfiguration pageConfiguration) {
+  private BoxContentEncoderRegistry encoderRegistry;
+
+  public ExtendedSecondPageEncoder(BoxContentEncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
+    IResources resources, PdfPageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
+    this.encoderRegistry = encoderRegistry;
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
@@ -50,11 +58,13 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeSocialCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getPartEncoder().getSocialCombatEncoder(), 1, 1, distanceFromTop, height);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.SOCIAL_COMBAT, EncoderIds.MERITS_AND_FLAWS);
+    return encodeFixedBox(graphics, content, encoder, 1, 1, distanceFromTop, height);
   }
 
   private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getPartEncoder().getCombatStatsEncoder(), 2, 2, distanceFromTop, height);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.COMBAT);
+    return encodeFixedBox(graphics, content, encoder, 2, 2, distanceFromTop, height);
   }
 
   private float encodeHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -66,6 +76,7 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getWeaponContentEncoder(), 2, 2, distanceFromTop, height);
+    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(getResources(), content, ARSENAL);
+    return encodeFixedBox(graphics, content, weaponryEncoder, 2, 2, distanceFromTop, height);
   }
 }

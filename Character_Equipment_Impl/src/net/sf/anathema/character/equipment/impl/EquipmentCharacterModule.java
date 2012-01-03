@@ -7,10 +7,6 @@ import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPer
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalViewFactory;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase;
-import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.ArmourTableEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.PossessionsEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContent;
 import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContentFactory;
 import net.sf.anathema.character.equipment.impl.reporting.content.PossessionsContent;
@@ -23,6 +19,10 @@ import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry2ndEdi
 import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry2ndEditionContentFactory;
 import net.sf.anathema.character.equipment.impl.reporting.content.WeaponryContent;
 import net.sf.anathema.character.equipment.impl.reporting.content.WeaponryContentFactory;
+import net.sf.anathema.character.equipment.impl.reporting.rendering.ArmourEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.rendering.ArmourTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.rendering.PossessionsEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.rendering.weaponry.WeaponryEncoderFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
@@ -30,6 +30,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -58,9 +59,14 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    registerEncoders(resources, moduleObject.getExtendedEncodingRegistry());
-    registerEncoders(resources, moduleObject.getSimpleEncodingRegistry());
+    registerEncoders(moduleObject.getExtendedEncodingRegistry());
+    registerEncoders(moduleObject.getSimpleEncodingRegistry());
     registerContent(moduleObject.getReportContentRegistry(), resources);
+    registerBoxEncoders(moduleObject.getEncoderRegistry());
+  }
+
+  private void registerBoxEncoders(BoxContentEncoderRegistry registry) {
+    registry.add(new WeaponryEncoderFactory());
   }
 
   private void registerContent(ReportContentRegistry registry, IResources resources) {
@@ -72,10 +78,8 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
     registry.addFactory(PossessionsContent.class, new PossessionsContentFactory(resources));
   }
 
-  private void registerEncoders(IResources resources, IEncodingRegistry registry) {
-    registry.setArmourContentEncoder(
-      new ArmourEncoder(resources, registry.getBaseFont(), new ArmourTableEncoder(ArmourContent.class, registry.getBaseFont())));
-    registry.setWeaponContentEncoder(new WeaponryEncoder(resources, registry.getBaseFont()));
+  private void registerEncoders(IEncodingRegistry registry) {
+    registry.setArmourContentEncoder(new ArmourEncoder(new ArmourTableEncoder(ArmourContent.class)));
     registry.setPossessionsEncoder(new PossessionsEncoder());
   }
 }

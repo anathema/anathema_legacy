@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.traits;
 
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
@@ -16,14 +15,12 @@ import java.util.List;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SUBSECTION_FONT_SIZE;
 
-public abstract class AbstractNamedTraitEncoder  {
+public abstract class AbstractNamedTraitEncoder {
   private final IResources resources;
   private final PdfTraitEncoder traitEncoder;
-  private final BaseFont baseFont;
 
-  public AbstractNamedTraitEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder traitEncoder) {
+  public AbstractNamedTraitEncoder(IResources resources, PdfTraitEncoder traitEncoder) {
     this.resources = resources;
-    this.baseFont = baseFont;
     this.traitEncoder = traitEncoder;
   }
 
@@ -43,8 +40,8 @@ public abstract class AbstractNamedTraitEncoder  {
     return _drawNamedTraitSection(graphics, title, traits, position, width, getLineCount(title, height), dotCount);
   }
 
-  protected float _drawNamedTraitSection(SheetGraphics graphics, String title, IValuedTraitReference[] traits, Position position,
-    float width, int lineCount, int dotCount) {
+  protected float _drawNamedTraitSection(SheetGraphics graphics, String title, IValuedTraitReference[] traits, Position position, float width,
+    int lineCount, int dotCount) {
     float height = 0;
     if (title != null) {
       height = drawSubsectionHeader(graphics, title, position, width);
@@ -74,7 +71,7 @@ public abstract class AbstractNamedTraitEncoder  {
 
   protected final void setSubsectionFont(SheetGraphics graphics) {
     graphics.setSubsectionFont();
-   }
+  }
 
   protected final IValuedTraitReference[] getTraitReferences(INamedGenericTrait[] traits, ITraitType type) {
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();

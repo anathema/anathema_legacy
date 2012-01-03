@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.box;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -12,13 +11,11 @@ public class PdfBoxEncoder {
   public static final int CONTENT_INSET = 5;
 
   private final IResources resources;
-  private final PdfHeaderBoxEncoder headerBoxEncoder;
-  private final IBoxEncoder standardBoxEncoder;
+  private final PdfHeaderBoxEncoder headerBoxEncoder = new PdfHeaderBoxEncoder();
+  private final IBoxEncoder standardBoxEncoder = new StandardBoxEncoder();
 
-  public PdfBoxEncoder(IResources resources, BaseFont baseFont) {
+  public PdfBoxEncoder(IResources resources) {
     this.resources = resources;
-    this.headerBoxEncoder = new PdfHeaderBoxEncoder(baseFont);
-    this.standardBoxEncoder = new StandardBoxEncoder(baseFont);
   }
 
   public Bounds calculateContentBounds(Bounds bounds) {
@@ -31,9 +28,9 @@ public class PdfBoxEncoder {
     return new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - headerPadding);
   }
 
-  public float getRequestedHeight(IVariableBoxContentEncoder encoder, ReportContent content, float width) {
+  public float getRequestedHeight(SheetGraphics graphics, IVariableBoxContentEncoder encoder, ReportContent content, float width) {
     float boxHeight = IBoxEncoder.HEADER_HEIGHT / 2f + IBoxEncoder.ARCSPACE;
-    return boxHeight + encoder.getRequestedHeight(content, width);
+    return boxHeight + encoder.getRequestedHeight(graphics, content, width);
   }
 
   private Bounds encodeBox(SheetGraphics graphics, Bounds bounds, String title, IBoxEncoder boxEncoder) {
@@ -51,8 +48,8 @@ public class PdfBoxEncoder {
     encodeBox(graphics, encoder, standardBoxEncoder, content, bounds);
   }
 
-  public void encodeBox(SheetGraphics graphics, IBoxContentEncoder encoder, IBoxEncoder boxEncoder, ReportContent content,
-    Bounds bounds) throws DocumentException {
+  public void encodeBox(SheetGraphics graphics, IBoxContentEncoder encoder, IBoxEncoder boxEncoder, ReportContent content, Bounds bounds)
+    throws DocumentException {
     String header = resources.getString("Sheet.Header." + encoder.getHeaderKey(content)); //$NON-NLS-1$
     Bounds contentBounds = encodeBox(graphics, bounds, header, boxEncoder);
     encoder.encode(graphics, content, contentBounds);

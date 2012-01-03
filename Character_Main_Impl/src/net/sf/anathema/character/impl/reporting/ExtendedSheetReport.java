@@ -20,12 +20,13 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.Extended1stEditionFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.Extended2ndEditionFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagic1stEditionPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -56,6 +57,7 @@ public class ExtendedSheetReport implements IITextReport {
     return "Extended Sheet" + " (" + resources.getString("PageSize." + pageSize.name()) + ")";
   }
 
+  @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     ICharacter stattedCharacter = (ICharacter) item.getItemData();
     document.setPageSize(pageSize.getRectangle());
@@ -73,11 +75,12 @@ public class ExtendedSheetReport implements IITextReport {
 
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
       if (edition == ExaltedEdition.FirstEdition) {
-        encoderList.add(new Extended1stEditionFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+        encoderList
+          .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration));
       }
       if (edition == ExaltedEdition.SecondEdition) {
-        encoderList.add(new ExtendedFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-        encoderList.add(new ExtendedSecondPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+        encoderList.add(new Extended2ndEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
+        encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
       }
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
       if (edition == ExaltedEdition.SecondEdition) {
@@ -119,6 +122,10 @@ public class ExtendedSheetReport implements IITextReport {
     return getReportingModuleObject().getExtendedEncodingRegistry();
   }
 
+  private BoxContentEncoderRegistry getEncoderRegistry() {
+    return getReportingModuleObject().getEncoderRegistry();
+  }
+
   private ReportContentRegistry getContentRegistry() {
     return getReportingModuleObject().getReportContentRegistry();
   }
@@ -128,6 +135,7 @@ public class ExtendedSheetReport implements IITextReport {
     return moduleObjectMap.getModuleObject(CharacterReportingModule.class);
   }
 
+  @Override
   public boolean supports(IItem item) {
     if (item == null) {
       return false;

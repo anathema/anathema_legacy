@@ -1,21 +1,20 @@
 package net.sf.anathema.character.lunar.reporting.rendering.beastform;
 
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
+import net.sf.anathema.character.reporting.first.rendering.combat.CombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.FirstEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionDBTCombatEncoder implements IBoxContentEncoder {
@@ -23,11 +22,9 @@ public class FirstEditionDBTCombatEncoder implements IBoxContentEncoder {
   private final static float PADDING = 3;
 
   private final IResources resources;
-  private final BaseFont baseFont;
 
-  public FirstEditionDBTCombatEncoder(IResources resources, BaseFont baseFont) {
+  public FirstEditionDBTCombatEncoder(IResources resources) {
     this.resources = resources;
-    this.baseFont = baseFont;
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
@@ -58,12 +55,11 @@ public class FirstEditionDBTCombatEncoder implements IBoxContentEncoder {
     encoder.addComment(graphics, thresholdPoolLabel, 2);
     encoder.addComment(graphics, thresholdPoolDurationLabel, 3);
 
-    ITableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder();
+    ITableEncoder rulesEncoder = new CombatRulesTableEncoder();
     Bounds ruleBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - encoder.getHeight() - PADDING);
     try {
       rulesEncoder.encodeTable(graphics, reportContent, ruleBounds);
-    }
-    catch (DocumentException e) {
+    } catch (DocumentException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }

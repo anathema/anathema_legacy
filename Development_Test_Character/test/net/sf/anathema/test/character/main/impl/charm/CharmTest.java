@@ -23,25 +23,17 @@ public class CharmTest {
 
   @Test
   public void testCharmNoSource() throws Exception {
-    IGenericTrait[] prerequisites = new IGenericTrait[]{new ValuedTraitType(AbilityType.Archery, 5)};
+    IGenericTrait[] prerequisites = new IGenericTrait[] { new ValuedTraitType(AbilityType.Archery, 5) };
     IGenericTrait essence = new ValuedTraitType(OtherTraitType.Essence, 3);
-    CharmPrerequisiteList prerequisiteList = new CharmPrerequisiteList(
-      prerequisites,
-      essence,
-      new String[0],
-      new SelectiveCharmGroupTemplate[0],
-      new ICharmAttributeRequirement[0]);
+    CharmPrerequisiteList prerequisiteList =
+      new CharmPrerequisiteList(prerequisites, essence, new String[0], new SelectiveCharmGroupTemplate[0], new ICharmAttributeRequirement[0]);
     CharmTypeModel model = new CharmTypeModel();
     model.setCharmType(CharmType.Simple);
     try {
-      new Charm(CharacterType.SOLAR, "ID", //$NON-NLS-1$
+      new Charm(CharacterType.SOLAR, "ATTRIBUTES", //$NON-NLS-1$
         "Group", //$NON-NLS-1$
-        prerequisiteList,
-        new CostList(null, null, null, null),
-        new ComboRestrictions(),
-        SimpleDuration.getDuration("Duration"), //$NON-NLS-1$
-        model,
-        null);
+        prerequisiteList, new CostList(null, null, null, null), new ComboRestrictions(), SimpleDuration.getDuration("Duration"), //$NON-NLS-1$
+        model, null);
       fail();
     } catch (ContractFailedException e) {
       // Nothing to do

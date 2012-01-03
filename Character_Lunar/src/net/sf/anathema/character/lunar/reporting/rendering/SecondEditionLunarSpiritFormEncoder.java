@@ -3,7 +3,6 @@ package net.sf.anathema.character.lunar.reporting.rendering;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
@@ -15,10 +14,9 @@ import net.sf.anathema.character.lunar.beastform.model.SecondEditionBeastformMod
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.LINE_HEIGHT;
@@ -26,13 +24,10 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 public class SecondEditionLunarSpiritFormEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
-  private final PdfTraitEncoder smallTraitEncoder;
-  private final BaseFont baseFont;
+  private final PdfTraitEncoder smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
 
-  public SecondEditionLunarSpiritFormEncoder(BaseFont baseFont, IResources resources, float smallWidth) {
+  public SecondEditionLunarSpiritFormEncoder(IResources resources) {
     this.resources = resources;
-    this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
-    this.baseFont = baseFont;
   }
 
   public String getHeaderKey(ReportContent content) {
@@ -41,21 +36,20 @@ public class SecondEditionLunarSpiritFormEncoder implements IBoxContentEncoder {
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
-    SecondEditionBeastformModel additionalModel = (SecondEditionBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate
-      .TEMPLATE_ID);
+    SecondEditionBeastformModel additionalModel =
+      (SecondEditionBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getSpiritTraitCollection();
     encodeAttributes(graphics, bounds, attributeGroups, traitCollection);
     encodeForm(graphics, bounds, additionalModel.getSpiritForm());
   }
 
   private void encodeForm(SheetGraphics graphics, Bounds bounds, String form) {
-    Font font = TableEncodingUtilities.createTableFont(baseFont);
+    Font font = graphics.createTableFont();
     Bounds newBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 50);
     String text = resources.getString("Sheet.Header.Lunar.SpiritForm") + ": " + form;
     try {
       graphics.createSimpleColumn(newBounds).withLeading(LINE_HEIGHT - 2).andTextPart(new Phrase(text, font)).encode();
-    }
-    catch (DocumentException e) {
+    } catch (DocumentException e) {
     }
   }
 
@@ -66,7 +60,8 @@ public class SecondEditionLunarSpiritFormEncoder implements IBoxContentEncoder {
     int maximum = EssenceTemplate.SYSTEM_ESSENCE_MAX;
     float width = contentBounds.getWidth();
     for (IGroupedTraitType groupedTraitType : attributeGroups) {
-      if (!groupedTraitType.getGroupId().equals(AttributeGroupType.Physical.name()) && !groupedTraitType.getTraitType().getId().equals(AttributeType.Appearance.name())) {
+      if (!groupedTraitType.getGroupId().equals(AttributeGroupType.Physical.name()) &&
+        !groupedTraitType.getTraitType().getId().equals(AttributeType.Appearance.name())) {
         continue;
       }
 

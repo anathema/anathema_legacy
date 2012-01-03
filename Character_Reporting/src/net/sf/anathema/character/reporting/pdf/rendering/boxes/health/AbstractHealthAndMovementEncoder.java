@@ -18,16 +18,14 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.*;
+import java.awt.Color;
 
 public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
-  private final BaseFont baseFont;
 
-  public AbstractHealthAndMovementEncoder(IResources resources, BaseFont baseFont) {
+  public AbstractHealthAndMovementEncoder(IResources resources) {
     this.resources = resources;
-    this.baseFont = baseFont;
   }
 
   public String getHeaderKey(ReportContent content) {
@@ -88,10 +86,6 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
     return " " + string + "   "; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  protected final BaseFont getBaseFont() {
-    return baseFont;
-  }
-
   protected final IResources getResources() {
     return resources;
   }
@@ -114,8 +108,8 @@ public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEnc
     healthText.add(graphics.createSymbolChunk());
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.DeathHeader"), commentTitleFont)); //$NON-NLS-1$
     healthText.add(seperator);
-    healthText.add(new Chunk(resources.getString("Sheet." + getEdition().getId() + ".Health.Comment.DeathText"),
-      commentFont)); //$NON-NLS-1$ //$NON-NLS-2$
+    healthText
+      .add(new Chunk(resources.getString("Sheet." + getEdition().getId() + ".Health.Comment.DeathText"), commentFont)); //$NON-NLS-1$ //$NON-NLS-2$
     healthText.add(newLine);
     healthText.add(graphics.createSymbolChunk());
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.MarkDamageHeader"), commentTitleFont)); //$NON-NLS-1$

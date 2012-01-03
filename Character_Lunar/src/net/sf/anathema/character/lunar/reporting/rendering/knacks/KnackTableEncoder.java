@@ -1,6 +1,5 @@
 package net.sf.anathema.character.lunar.reporting.rendering.knacks;
 
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
@@ -8,12 +7,9 @@ import net.sf.anathema.character.lunar.reporting.content.stats.knacks.IKnackStat
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public class KnackTableEncoder extends AbstractStatsTableEncoder<IKnackStats, KnackContent> {
-
-  public KnackTableEncoder(BaseFont baseFont) {
-    super(baseFont);
-  }
 
   @Override
   protected IStatsGroup<IKnackStats>[] createStatsGroups(KnackContent knackContent) {
@@ -21,7 +17,7 @@ public class KnackTableEncoder extends AbstractStatsTableEncoder<IKnackStats, Kn
   }
 
   @Override
-  protected void encodeContent(PdfPTable table, KnackContent knackContent, Bounds bounds) {
+  protected void encodeContent(SheetGraphics graphics, PdfPTable table, KnackContent knackContent, Bounds bounds) {
     IStatsGroup<IKnackStats>[] groups = knackContent.createStatsGroups();
     float heightLimit = bounds.height - 3;
     boolean encodeLine = true;
@@ -30,7 +26,7 @@ public class KnackTableEncoder extends AbstractStatsTableEncoder<IKnackStats, Kn
       String newGroupName = knackContent.getGroupLabel(stats);
       if (!ObjectUtilities.equals(groupName, newGroupName)) {
         groupName = newGroupName;
-        encodeSectionLine(table, groupName);
+        encodeSectionLine(graphics, table, groupName);
         encodeLine = table.getTotalHeight() < heightLimit;
         if (!encodeLine) {
           table.deleteLastRow();
@@ -38,7 +34,7 @@ public class KnackTableEncoder extends AbstractStatsTableEncoder<IKnackStats, Kn
         }
       }
       if (encodeLine) {
-        encodeContentLine(table, groups, stats);
+        encodeContentLine(graphics, table, groups, stats);
         encodeLine = table.getTotalHeight() < heightLimit;
         if (!encodeLine) {
           table.deleteLastRow();
@@ -47,7 +43,7 @@ public class KnackTableEncoder extends AbstractStatsTableEncoder<IKnackStats, Kn
       }
     }
     while (encodeLine) {
-      encodeContentLine(table, groups, null);
+      encodeContentLine(graphics, table, groups, null);
       encodeLine = table.getTotalHeight() < heightLimit;
     }
     table.deleteLastRow();

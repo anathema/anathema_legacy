@@ -122,7 +122,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
   private float encodeCombos(SheetGraphics graphics, IGenericCharacter character, float distanceFromTop, float fixedHeight, boolean sharesRow)
     throws DocumentException {
     List<IGenericCombo> combos = new ArrayList<IGenericCombo>(Arrays.asList(character.getCombos()));
-    PdfComboEncoder comboEncoder = new PdfComboEncoder(getResources(), getBaseFont());
+    PdfComboEncoder comboEncoder = new PdfComboEncoder(getResources());
     if (sharesRow) {
       float rowHeight = comboEncoder.encodeFixedCombos(graphics, combos, calculateBounds(1, 2, distanceFromTop, fixedHeight));
       float rowIncrement = calculateBoxIncrement(rowHeight);
@@ -148,7 +148,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
-    IVariableBoxContentEncoder encoder = new PdfGenericCharmEncoder(getResources(), getBaseFont());
+    IVariableBoxContentEncoder encoder = new PdfGenericCharmEncoder(getResources());
     if (encoder.hasContent(content)) {
       return encodeVariableBox(graphics, content, encoder, 1, 3, distanceFromTop, maxHeight);
     }
@@ -159,8 +159,8 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeMagic(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     return encodeFixedBox(graphics, content,
-      new PdfMagicEncoder(getResources(), getBaseFont(), PdfMagicEncoder.collectPrintSpells(content), getRegistry().getAdditionalMagicEncoders(),
-        true, "Magic"), //$NON-NLS-1$
+      new PdfMagicEncoder(getResources(), PdfMagicEncoder.collectPrintSpells(content), getRegistry().getAdditionalMagicEncoders(), true, "Magic"),
+      //$NON-NLS-1$
       2, 2, distanceFromTop, height);
   }
 
@@ -186,7 +186,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeCharms(SheetGraphics graphics, ReportContent content, List<IMagicStats> printCharms, float distanceFromTop, float height)
     throws DocumentException {
-    return encodeFixedBox(graphics, content, new PdfMagicEncoder(getResources(), getBaseFont(), printCharms), 1, 3, distanceFromTop, height);
+    return encodeFixedBox(graphics, content, new PdfMagicEncoder(getResources(), printCharms), 1, 3, distanceFromTop, height);
   }
 
   private boolean hasAnima() {

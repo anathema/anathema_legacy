@@ -16,26 +16,21 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.Virtue
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
 public class SecondEditionLunarGreatCurseEncoder implements IBoxContentEncoder {
 
-  private final VirtueFlawBoxEncoder traitEncoder;
-  private final Font nameFont;
-  private final Font font;
-
-  public SecondEditionLunarGreatCurseEncoder(BaseFont baseFont) {
-    this.font = createFont(baseFont);
-    this.nameFont = createNameFont(baseFont);
-    this.traitEncoder = new VirtueFlawBoxEncoder();
-  }
+  private final VirtueFlawBoxEncoder traitEncoder = new VirtueFlawBoxEncoder();
 
   public String getHeaderKey(ReportContent content) {
     return "GreatCurse.Lunar"; //$NON-NLS-1$
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
+    Font nameFont = createNameFont(graphics.getBaseFont());
+    Font font = createFont(graphics.getBaseFont());
+    float leading = REDUCED_LINE_HEIGHT;
     ILunarVirtueFlaw virtueFlaw =
       ((ILunarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());

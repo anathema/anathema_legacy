@@ -1,6 +1,5 @@
 package net.sf.anathema.character.lunar.reporting.rendering.beastform;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
@@ -10,19 +9,17 @@ import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionDBTCombatEncoder implements IBoxContentEncoder {
 
   private final IResources resources;
-  private final BaseFont baseFont;
 
-  public SecondEditionDBTCombatEncoder(IResources resources, BaseFont baseFont) {
+  public SecondEditionDBTCombatEncoder(IResources resources) {
     this.resources = resources;
-    this.baseFont = baseFont;
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {

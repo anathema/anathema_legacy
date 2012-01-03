@@ -3,39 +3,27 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.stats;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 
 public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends AbstractTableEncoder<C> {
 
-  private final Font font;
-  private final Font sectionFont;
-  private final Font headerFont;
   private final boolean suppressHeaderLine;
 
-  public AbstractStatsTableEncoder(BaseFont baseFont) {
-    this(baseFont, false);
+  public AbstractStatsTableEncoder() {
+    this(false);
   }
 
-  public AbstractStatsTableEncoder(BaseFont baseFont, boolean suppressHeaderLine) {
-    this.headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
-    this.font = TableEncodingUtilities.createTableFont(baseFont);
-    this.sectionFont = new Font(font);
-    this.sectionFont.setStyle(Font.BOLD);
+  public AbstractStatsTableEncoder(boolean suppressHeaderLine) {
     this.suppressHeaderLine = suppressHeaderLine;
-  }
-
-  protected final Font getFont() {
-    return font;
   }
 
   @Override
@@ -45,35 +33,35 @@ public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends Abs
     PdfPTable table = new PdfPTable(columnWidths);
     table.setTotalWidth(bounds.width);
     if (!suppressHeaderLine) {
-      encodeHeaderLine(table, groups);
+      encodeHeaderLine(graphics, table, groups);
     }
-    encodeContent(table, content, bounds);
+    encodeContent(graphics, table, content, bounds);
     return table;
   }
 
-  protected abstract void encodeContent(PdfPTable table, C content, Bounds bounds);
+  protected abstract void encodeContent(SheetGraphics graphics, PdfPTable table, C content, Bounds bounds);
 
   protected abstract IStatsGroup<T>[] createStatsGroups(C content);
 
-  protected final void encodeHeaderLine(PdfPTable table, IStatsGroup<T>[] groups) {
+  protected final void encodeHeaderLine(SheetGraphics graphics, PdfPTable table, IStatsGroup<T>[] groups) {
     for (int index = 0; index < groups.length; index++) {
-      Font usedFont = index == 0 ? font : headerFont;
+      Font usedFont = index == 0 ? createFont(graphics) : createHeaderFont(graphics);
       table.addCell(createHeaderCell(groups[index].getTitle(), groups[index].getColumnCount(), index != groups.length - 1, usedFont));
     }
   }
 
-  protected final void encodeContentLine(PdfPTable table, IStatsGroup<T>[] groups, T stats) {
+  protected final void encodeContentLine(SheetGraphics graphics, PdfPTable table, IStatsGroup<T>[] groups, T stats) {
     for (int index = 0; index < groups.length; index++) {
       if (index != 0) {
-        table.addCell(createSpaceCell());
+        table.addCell(createSpaceCell(graphics));
       }
-      groups[index].addContent(table, font, stats);
+      groups[index].addContent(table, createFont(graphics), stats);
     }
   }
 
-  protected final void encodeSectionLine(PdfPTable table, String sectionName) {
+  protected final void encodeSectionLine(SheetGraphics graphics, PdfPTable table, String sectionName) {
     int columnCount = table.getAbsoluteWidths().length;
-    Phrase phrase = new Phrase(sectionName, sectionFont);
+    Phrase phrase = new Phrase(sectionName, createSectionFont(graphics));
     PdfPCell cell = new TableCell(phrase, Rectangle.NO_BORDER);
     cell.setPaddingTop(3);
     cell.setPaddingLeft(0.75f);
@@ -92,8 +80,8 @@ public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends Abs
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(columnWidths);
   }
 
-  protected PdfPCell createSpaceCell() {
-    PdfPCell cell = new PdfPCell(new Phrase("", font)); //$NON-NLS-1$
+  protected PdfPCell createSpaceCell(SheetGraphics graphics) {
+    PdfPCell cell = new PdfPCell(new Phrase("", createFont(graphics))); //$NON-NLS-1$
     cell.setBorder(Rectangle.NO_BORDER);
     return cell;
   }
@@ -105,5 +93,19 @@ public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends Abs
     cell.setPaddingLeft(0);
     cell.setPaddingRight(0);
     return cell;
+  }
+
+  private Font createSectionFont(SheetGraphics graphics) {
+    Font sectionFont = createFont(graphics);
+    sectionFont.setStyle(Font.BOLD);
+    return sectionFont;
+  }
+
+  protected final Font createFont(SheetGraphics graphics) {
+    return graphics.createTableFont();
+  }
+
+  private Font createHeaderFont(SheetGraphics graphics) {
+    return TableEncodingUtilities.createHeaderFont(graphics.getBaseFont());
   }
 }

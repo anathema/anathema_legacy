@@ -10,25 +10,21 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBo
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.collection.Table;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExtendedEncodingRegistry implements IEncodingRegistry {
 
-  private final Table<ICharacterType, IExaltedEdition, IExtendedPartEncoder> partEncoderTable = new Table<ICharacterType, IExaltedEdition,
-    IExtendedPartEncoder>();
+  private final Table<ICharacterType, IExaltedEdition, IExtendedPartEncoder> partEncoderTable =
+    new Table<ICharacterType, IExaltedEdition, IExtendedPartEncoder>();
 
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
-  private IBoxContentEncoder weaponContentEncoder = new NullBoxContentEncoder("Weapons");
   private IBoxContentEncoder armourContentEncoder = new NullBoxContentEncoder("Armour");
-  private IBoxContentEncoder intimaciesEncoder = new NullBoxContentEncoder("Intimacies");
   private IBoxContentEncoder possessionsEncoder = new NullBoxContentEncoder("Possessions");
   private IBoxContentEncoder linguisticsEncoder = new NullBoxContentEncoder("Linguistics");
   private IBoxContentEncoder mutationsEncoder = new NullBoxContentEncoder("Mutations");
-  private IBoxContentEncoder thaumaturgyEncoder = new NullBoxContentEncoder("Thaumaturgy");
-  private IBoxContentEncoder meritsAndFlawsEncoder = new NullBoxContentEncoder("Merits & Flaws");
   private List<IVariableBoxContentEncoder> sidebarEncoders = new ArrayList<IVariableBoxContentEncoder>();
   private List<ITableEncoder> magicEncoders = new ArrayList<ITableEncoder>();
 
@@ -48,51 +44,16 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
   }
 
   @Override
-  public void setWeaponContentEncoder(IBoxContentEncoder encoder) {
-    this.weaponContentEncoder = encoder;
-  }
-
-  @Override
   public void setArmourContentEncoder(IBoxContentEncoder encoder) {
     this.armourContentEncoder = encoder;
-  }
-
-  @Override
-  public void setIntimaciesEncoder(IBoxContentEncoder intimaciesEncoder) {
-    this.intimaciesEncoder = intimaciesEncoder;
   }
 
   public void setMutationsEncoder(IBoxContentEncoder mutationsEncoder) {
     this.mutationsEncoder = mutationsEncoder;
   }
 
-  public void setThaumaturgyEncoder(IBoxContentEncoder thaumaturgyEncoder) {
-    this.thaumaturgyEncoder = thaumaturgyEncoder;
-  }
-
-  @Override
-  public void setMeritsAndFlawsEncoder(IBoxContentEncoder meritsAndFlawsEncoder) {
-    this.meritsAndFlawsEncoder = meritsAndFlawsEncoder;
-  }
-
-  public void addAdditionalMagicSidebarEncoder(IVariableBoxContentEncoder encoder) {
-    sidebarEncoders.add(encoder);
-  }
-
-  public void addAdditionalMagicEncoder(ITableEncoder encoder) {
-    magicEncoders.add(encoder);
-  }
-
-  public IBoxContentEncoder getWeaponContentEncoder() {
-    return weaponContentEncoder;
-  }
-
   public IBoxContentEncoder getArmourContentEncoder() {
     return armourContentEncoder;
-  }
-
-  public IBoxContentEncoder getIntimaciesEncoder() {
-    return intimaciesEncoder;
   }
 
   public IBoxContentEncoder getPossessionsEncoder() {
@@ -107,20 +68,12 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
     return mutationsEncoder;
   }
 
-  public IBoxContentEncoder getThaumaturgyEncoder() {
-    return thaumaturgyEncoder;
-  }
-
   public List<IVariableBoxContentEncoder> getAdditionalMagicSidebarEncoders() {
     return sidebarEncoders;
   }
 
   public List<ITableEncoder> getAdditionalMagicEncoders() {
     return magicEncoders;
-  }
-
-  public IBoxContentEncoder getMeritsAndFlawsEncoder() {
-    return meritsAndFlawsEncoder;
   }
 
   public void setPartEncoder(ICharacterType type, IExaltedEdition edition, IExtendedPartEncoder partEncoder) {

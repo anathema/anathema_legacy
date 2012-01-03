@@ -11,9 +11,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.BARE_LINE_HEIGHT;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
 
 public class PersonalInfoBoxEncoder implements IVariableBoxContentEncoder {
@@ -117,7 +117,7 @@ public class PersonalInfoBoxEncoder implements IVariableBoxContentEncoder {
   }
 
   @Override
-  public float getRequestedHeight(ReportContent content, float width) {
-    return getNumberOfLines(content.getCharacter()) * IVoidStateFormatConstants.BARE_LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
+  public float getRequestedHeight(SheetGraphics graphics, ReportContent content, float width) {
+    return getNumberOfLines(content.getCharacter()) * BARE_LINE_HEIGHT + TEXT_PADDING;
   }
 }

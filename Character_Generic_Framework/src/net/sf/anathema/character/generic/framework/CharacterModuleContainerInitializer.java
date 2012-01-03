@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.framework;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
 import net.sf.anathema.character.generic.framework.module.ICharacterModule;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
@@ -10,6 +7,9 @@ import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterModuleContainerInitializer {
 
@@ -40,11 +40,12 @@ public class CharacterModuleContainerInitializer {
       add("net.sf.anathema.character.infernal.InfernalCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.godblooded.GodBloodedCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.martialarts.MartialArtsCharacterModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.reporting.first.FirstEditionReportingModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.reporting.second.SecondEditionReportingModule"); //$NON-NLS-1$
     }
   };
 
-  public CharacterModuleContainer initContainer(IResources resources, IDataFileProvider dataFileProvider)
-      throws InitializationException {
+  public CharacterModuleContainer initContainer(IResources resources, IDataFileProvider dataFileProvider) throws InitializationException {
     CharacterModuleContainer container = new CharacterModuleContainer(resources, dataFileProvider);
     for (String moduleName : moduleNameList) {
       addModule(container, moduleName);
@@ -54,17 +55,14 @@ public class CharacterModuleContainerInitializer {
 
   private void addModule(CharacterModuleContainer container, String moduleName) throws InitializationException {
     try {
-      @SuppressWarnings("unchecked")
-      ICharacterModule< ? extends ICharacterModuleObject> module = (ICharacterModule< ? extends ICharacterModuleObject>) Class.forName(moduleName).newInstance();
+      @SuppressWarnings("unchecked") ICharacterModule<? extends ICharacterModuleObject> module =
+        (ICharacterModule<? extends ICharacterModuleObject>) Class.forName(moduleName).newInstance();
       container.addCharacterGenericsModule(module);
-    }
-    catch (ClassNotFoundException e) {
+    } catch (ClassNotFoundException e) {
       logger.info(moduleName + " not installed."); //$NON-NLS-1$
-    }
-    catch (InstantiationException e) {
+    } catch (InstantiationException e) {
       logger.error("Error initializing module " + moduleName, e); //$NON-NLS-1$
-    }
-    catch (IllegalAccessException e) {
+    } catch (IllegalAccessException e) {
       logger.error("Error initializing module " + moduleName, e); //$NON-NLS-1$
     }
   }

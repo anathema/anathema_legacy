@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.reporting.content;
 
-import net.sf.anathema.character.equipment.impl.reporting.WeaponryContentClassFinder;
+import net.sf.anathema.character.equipment.impl.reporting.rendering.weaponry.WeaponryContentClassFinder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;

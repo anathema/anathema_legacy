@@ -1,17 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.box;
 
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public class StandardBoxEncoder implements IBoxEncoder {
-
-  private final BaseFont baseFont;
-
-  public StandardBoxEncoder(BaseFont baseFont) {
-    this.baseFont = baseFont;
-  }
 
   public void encodeContentBox(SheetGraphics graphics, Bounds contentBounds) {
     PdfContentByte directContent = graphics.getDirectContent();

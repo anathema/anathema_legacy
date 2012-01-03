@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.magic.IMagicStats;
@@ -14,6 +13,7 @@ import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicSourceSt
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicTypeStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -26,12 +26,8 @@ public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats,
   private List<IMagicStats> printStats = new ArrayList<IMagicStats>();
   private final boolean sectionHeaderLines;
 
-  public PdfMagicTableEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printStats) {
-    this(resources, baseFont, printStats, false);
-  }
-
-  public PdfMagicTableEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printStats, boolean sectionHeaderLines) {
-    super(baseFont, sectionHeaderLines);
+  public PdfMagicTableEncoder(IResources resources, List<IMagicStats> printStats, boolean sectionHeaderLines) {
+    super(sectionHeaderLines);
     this.resources = resources;
     this.printStats = printStats;
     this.sectionHeaderLines = sectionHeaderLines;
@@ -40,12 +36,12 @@ public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats,
   @SuppressWarnings("unchecked")
   @Override
   protected IStatsGroup<IMagicStats>[] createStatsGroups(ReportContent content) {
-    return new IStatsGroup[]{new MagicNameStatsGroup(resources), new MagicCostStatsGroup(resources), new MagicTypeStatsGroup(resources),
-                             new MagicDurationStatsGroup(resources), new MagicDetailsStatsGroup(resources), new MagicSourceStatsGroup(resources)};
+    return new IStatsGroup[] { new MagicNameStatsGroup(resources), new MagicCostStatsGroup(resources), new MagicTypeStatsGroup(
+      resources), new MagicDurationStatsGroup(resources), new MagicDetailsStatsGroup(resources), new MagicSourceStatsGroup(resources) };
   }
 
   @Override
-  protected void encodeContent(PdfPTable table, ReportContent content, Bounds bounds) {
+  protected void encodeContent(SheetGraphics graphics, PdfPTable table, ReportContent content, Bounds bounds) {
     float heightLimit = bounds.height - 3;
     IStatsGroup<IMagicStats>[] groups = createStatsGroups(content);
     boolean encodeLine = true;
@@ -55,9 +51,9 @@ public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats,
       String newGroupName = stats.getGroupName(resources);
       if (!ObjectUtilities.equals(groupName, newGroupName)) {
         groupName = newGroupName;
-        encodeSectionLine(table, groupName);
+        encodeSectionLine(graphics, table, groupName);
         if (sectionHeaderLines) {
-          encodeHeaderLine(table, groups);
+          encodeHeaderLine(graphics, table, groups);
         }
         encodeLine = table.getTotalHeight() < heightLimit;
         if (!encodeLine) {
@@ -66,7 +62,7 @@ public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats,
         }
       }
       if (encodeLine) {
-        encodeContentLine(table, groups, stats);
+        encodeContentLine(graphics, table, groups, stats);
         encodeLine = table.getTotalHeight() < heightLimit;
         if (!encodeLine) {
           table.deleteLastRow();
@@ -76,7 +72,7 @@ public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats,
       }
     }
     while (encodeLine) {
-      encodeContentLine(table, groups, null);
+      encodeContentLine(graphics, table, groups, null);
       encodeLine = table.getTotalHeight() < heightLimit;
     }
     table.deleteLastRow();

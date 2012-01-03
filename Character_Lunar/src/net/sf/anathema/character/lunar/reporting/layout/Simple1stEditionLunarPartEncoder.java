@@ -3,7 +3,7 @@ package net.sf.anathema.character.lunar.reporting.layout;
 import net.sf.anathema.character.lunar.reporting.rendering.anima.LunarAnimaEncoderFactory;
 import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.FirstEditionLunarGreatCurseEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.AbstractFirstEditionExaltPdfPartEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -11,30 +11,24 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class Simple1stEditionLunarPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {
 
-  private final SimpleEncodingRegistry registry;
+  private BoxContentEncoderRegistry encoderRegistry;
 
-  public Simple1stEditionLunarPartEncoder(IResources resources, SimpleEncodingRegistry registry, int essenceMax) {
-    super(resources, registry, essenceMax);
-    this.registry = registry;
+  public Simple1stEditionLunarPartEncoder(BoxContentEncoderRegistry encoderRegistry, IResources resources) {
+    super(resources);
+    this.encoderRegistry = encoderRegistry;
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {
-    return new FirstEditionLunarGreatCurseEncoder(getBaseFont(), getResources());
+    return new FirstEditionLunarGreatCurseEncoder(getResources());
   }
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new LunarAnimaEncoderFactory(getResources(), getBaseFont()).createAnimaEncoder();
+    return new LunarAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 
   @Override
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[] { new Simple1stEditionLunarBeastformPageEncoder(this, registry.getBaseFont(), getResources(), getEssenceMax(),
-      configuration) };
-  }
-
-  @Override
-  public boolean isEncodeAttributeAsFavorable() {
-    return true;
+    return new IPdfPageEncoder[] { new Simple1stEditionLunarBeastformPageEncoder(encoderRegistry, this, getResources(), configuration) };
   }
 }

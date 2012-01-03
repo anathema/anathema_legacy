@@ -22,6 +22,6 @@ public class Extended2ndEditionDbPartEncoder extends AbstractSecondEditionExaltP
 
   @Override
   public IBoxContentEncoder getAnimaEncoder() {
-    return new DbAnimaEncoderFactory(getResources(), baseFont).createAnimaEncoder();
+    return new DbAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 }

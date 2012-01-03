@@ -8,7 +8,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class SimpleGhostPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   public SimpleGhostPartEncoder(IResources resources, SimpleEncodingRegistry registry, int essenceMax) {
-    super(resources, registry.getBaseFont(), essenceMax);
+    super(resources);
   }
 
   public IBoxContentEncoder getGreatCurseEncoder() {

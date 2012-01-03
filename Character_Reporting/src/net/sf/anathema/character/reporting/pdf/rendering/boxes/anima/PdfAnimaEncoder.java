@@ -2,10 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.anima;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -20,19 +17,15 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.*;
-
 public class PdfAnimaEncoder implements IBoxContentEncoder {
 
   private final int fontSize;
   private final float lineHeight;
-  private final BaseFont baseFont;
   private final IResources resources;
   private final ITableEncoder tableEncoder;
 
-  public PdfAnimaEncoder(IResources resources, BaseFont baseFont, int fontSize, ITableEncoder encoder) {
+  public PdfAnimaEncoder(IResources resources, int fontSize, ITableEncoder encoder) {
     this.resources = resources;
-    this.baseFont = baseFont;
     this.fontSize = fontSize;
     this.lineHeight = fontSize * 1.5f;
     this.tableEncoder = encoder;
@@ -52,8 +45,7 @@ public class PdfAnimaEncoder implements IBoxContentEncoder {
   }
 
   private void encodeAnimaPowers(SheetGraphics graphics, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    Phrase phrase = new Phrase("", new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
-    PdfContentByte directContent = graphics.getDirectContent();
+    Phrase phrase = new Phrase("", graphics.createFont(fontSize)); //$NON-NLS-1$
     // Add standard powers for character type
     Chunk symbolChunk = graphics.createSymbolChunk();
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
