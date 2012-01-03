@@ -10,7 +10,7 @@ public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEnco
 
   private final IResources resources;
 
-  public AbstractFirstEditionPartEncoder(IResources resources) {
+  protected AbstractFirstEditionPartEncoder(IResources resources) {
     this.resources = resources;
   }
 
@@ -18,14 +18,12 @@ public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEnco
     return resources;
   }
 
-  public IBoxContentEncoder getSocialCombatEncoder() {
-    return new HorizontalLineBoxContentEncoder(1, "MeritsFlaws"); //$NON-NLS-1$
-  }
-
+  @Override
   public IBoxContentEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry) {
     return new HorizontalLineBoxContentEncoder(1, "Notes"); //$NON-NLS-1$
   }
 
+  @Override
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
     return new IPdfPageEncoder[0];
   }

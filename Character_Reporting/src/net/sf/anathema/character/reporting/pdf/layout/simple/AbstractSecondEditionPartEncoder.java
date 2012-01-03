@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -10,7 +9,7 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
 
   private final IResources resources;
 
-  public AbstractSecondEditionPartEncoder(IResources resources) {
+  protected AbstractSecondEditionPartEncoder(IResources resources) {
     this.resources = resources;
   }
 
@@ -18,14 +17,12 @@ public abstract class AbstractSecondEditionPartEncoder implements ISimplePartEnc
     return resources;
   }
 
-  public IBoxContentEncoder getSocialCombatEncoder() {
-    return new SocialCombatStatsBoxEncoder(resources);
-  }
-
+  @Override
   public IBoxContentEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry) {
     return registry.getIntimaciesEncoder();
   }
 
+  @Override
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
     return new IPdfPageEncoder[0];
   }

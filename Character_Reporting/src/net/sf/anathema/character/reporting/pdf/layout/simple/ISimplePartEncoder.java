@@ -4,15 +4,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContent
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 
-public interface ISimplePartEncoder {
+interface ISimplePartEncoder {
 
-  public IBoxContentEncoder getAnimaEncoder();
+  IBoxContentEncoder getAnimaEncoder();
 
-  public IBoxContentEncoder getGreatCurseEncoder();
+  IBoxContentEncoder getGreatCurseEncoder();
 
-  public IBoxContentEncoder getSocialCombatEncoder();
+  IBoxContentEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry);
 
-  public IBoxContentEncoder getIntimaciesEncoder(SimpleEncodingRegistry registry);
-
-  public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
+  IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
 }
