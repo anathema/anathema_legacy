@@ -3,22 +3,22 @@ package net.sf.anathema.character.reporting.pdf.layout;
 import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
 
-public abstract class AbstractPageEncoder implements IPdfPageEncoder {
+public abstract class AbstractPageEncoder implements PageEncoder {
 
   private IResources resources;
-  private BoxContentEncoderRegistry encoderRegistry;
+  private EncoderRegistry encoderRegistry;
   private final PdfBoxEncoder boxEncoder;
 
-  protected AbstractPageEncoder(IResources resources, BoxContentEncoderRegistry encoderRegistry) {
+  protected AbstractPageEncoder(IResources resources, EncoderRegistry encoderRegistry) {
     this.resources = resources;
     this.encoderRegistry = encoderRegistry;
     this.boxEncoder = new PdfBoxEncoder(resources);

@@ -126,7 +126,7 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private void addSimpleParts(IResources resources, CharacterReportingModuleObject moduleObject) {
     SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
-    ISimplePartEncoder secondEditionEncoder = new SimpleGhostPartEncoder(resources, registry, SYSTEM_ESSENCE_MAX);
+    ISimplePartEncoder secondEditionEncoder = new SimpleGhostPartEncoder(resources);
     registry.setPartEncoder(GHOST, SecondEdition, secondEditionEncoder);
   }
 

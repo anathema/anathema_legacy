@@ -26,9 +26,9 @@ import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagic1stE
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.IITextReport;
@@ -73,7 +73,7 @@ public class ExtendedSheetReport implements IITextReport {
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       IExaltedEdition edition = character.getRules().getEdition();
 
-      List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
+      List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
       if (edition == ExaltedEdition.FirstEdition) {
         encoderList
           .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration));
@@ -91,7 +91,7 @@ public class ExtendedSheetReport implements IITextReport {
           new ExtendedMagic1stEditionPageEncoder(partEncoder, encodingRegistry, resources, configuration, edition != ExaltedEdition.FirstEdition));
       }
       boolean firstPagePrinted = false;
-      for (IPdfPageEncoder encoder : encoderList) {
+      for (PageEncoder encoder : encoderList) {
         if (firstPagePrinted) {
           document.newPage();
         }
@@ -122,7 +122,7 @@ public class ExtendedSheetReport implements IITextReport {
     return getReportingModuleObject().getExtendedEncodingRegistry();
   }
 
-  private BoxContentEncoderRegistry getEncoderRegistry() {
+  private EncoderRegistry getEncoderRegistry() {
     return getReportingModuleObject().getEncoderRegistry();
   }
 

@@ -4,18 +4,18 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.lunar.reporting.rendering.anima.LunarAnimaEncoderFactory;
 import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.FirstEditionLunarGreatCurseEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractFirstEditionExaltPdfPartEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Extended1stEditionLunarPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {
 
-  private BoxContentEncoderRegistry encoderRegistry;
+  private EncoderRegistry encoderRegistry;
   private BaseFont baseFont;
 
-  public Extended1stEditionLunarPartEncoder(BoxContentEncoderRegistry encoderRegistry, IResources resources, BaseFont baseFont, int essenceMax) {
+  public Extended1stEditionLunarPartEncoder(EncoderRegistry encoderRegistry, IResources resources, BaseFont baseFont, int essenceMax) {
     super(resources, baseFont, essenceMax);
     this.encoderRegistry = encoderRegistry;
     this.baseFont = baseFont;
@@ -31,8 +31,8 @@ public class Extended1stEditionLunarPartEncoder extends AbstractFirstEditionExal
   }
 
   @Override
-  public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[] { new Extended1stEditionLunarBeastformPageEncoder(encoderRegistry, this, baseFont, getResources(), getEssenceMax(),
+  public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
+    return new PageEncoder[] { new Extended1stEditionLunarBeastformPageEncoder(encoderRegistry, this, baseFont, getResources(), getEssenceMax(),
       configuration) };
   }
 }

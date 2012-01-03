@@ -59,7 +59,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -217,7 +217,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     registerEncoder(moduleObject.getEncoderRegistry());
   }
 
-  private void registerEncoder(BoxContentEncoderRegistry registry) {
+  private void registerEncoder(EncoderRegistry registry) {
     registry.add(new LunarWeaponryEncoderFactory());
   }
 
@@ -228,12 +228,12 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     contentRegistry.addFactory(GiftContent.class, new GiftContentFactory(resources));
   }
 
-  private void registerSimpleReporting(IResources resources, SimpleEncodingRegistry registry, BoxContentEncoderRegistry encoderRegistry) {
+  private void registerSimpleReporting(IResources resources, SimpleEncodingRegistry registry, EncoderRegistry encoderRegistry) {
     registry.setPartEncoder(LUNAR, FirstEdition, new Simple1stEditionLunarPartEncoder(encoderRegistry, resources));
     registry.setPartEncoder(LUNAR, SecondEdition, new Simple2ndEditionLunarPartEncoder(encoderRegistry, resources, ESSENCE_MAX));
   }
 
-  private void registerExtendedReporting(IResources resources, ExtendedEncodingRegistry registry, BoxContentEncoderRegistry encoderRegistry) {
+  private void registerExtendedReporting(IResources resources, ExtendedEncodingRegistry registry, EncoderRegistry encoderRegistry) {
     registry
       .setPartEncoder(LUNAR, FirstEdition, new Extended1stEditionLunarPartEncoder(encoderRegistry, resources, registry.getBaseFont(), ESSENCE_MAX));
     registry.setPartEncoder(LUNAR, SecondEdition, new Extended2ndEditionLunarPartEncoder(encoderRegistry, resources, registry, ESSENCE_MAX));

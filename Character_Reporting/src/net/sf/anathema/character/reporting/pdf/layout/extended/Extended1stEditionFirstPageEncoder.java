@@ -6,7 +6,7 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
@@ -15,8 +15,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncode
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -24,7 +24,7 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSEN
 import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
+public class Extended1stEditionFirstPageEncoder implements PageEncoder {
   public static final int CONTENT_HEIGHT = 755;
   private final IResources resources;
   private final int essenceMax;
@@ -33,11 +33,11 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private final ExtendedEncodingRegistry registry;
-  private BoxContentEncoderRegistry encoderRegistry;
+  private EncoderRegistry encoderRegistry;
   private final IExtendedPartEncoder partEncoder;
 
-  public Extended1stEditionFirstPageEncoder(BoxContentEncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder,
-    ExtendedEncodingRegistry registry, IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
+  public Extended1stEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
+    IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;
     this.essenceMax = essenceMax;

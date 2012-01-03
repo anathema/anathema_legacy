@@ -16,7 +16,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
@@ -26,7 +26,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncod
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfHeaderBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -34,17 +34,17 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSEN
 import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
+public class Simple1stEditionLunarBeastformPageEncoder implements PageEncoder {
   private final IResources resources;
 
   private static final int ANIMA_HEIGHT = 128;
   private static final int VIRTUE_HEIGHT = 72;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
-  private BoxContentEncoderRegistry encoderRegistry;
+  private EncoderRegistry encoderRegistry;
   private final ISimplePartEncoder partEncoder;
 
-  public Simple1stEditionLunarBeastformPageEncoder(BoxContentEncoderRegistry encoderRegistry, ISimplePartEncoder partEncoder, IResources resources,
+  public Simple1stEditionLunarBeastformPageEncoder(EncoderRegistry encoderRegistry, ISimplePartEncoder partEncoder, IResources resources,
     PdfPageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;

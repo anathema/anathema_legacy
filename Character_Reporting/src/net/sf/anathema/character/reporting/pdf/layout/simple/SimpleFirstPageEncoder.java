@@ -9,7 +9,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.AbstractPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
@@ -33,7 +33,7 @@ public class SimpleFirstPageEncoder extends AbstractPageEncoder {
   private final PdfBoxEncoder boxEncoder;
   private final ISimplePartEncoder partEncoder;
 
-  public SimpleFirstPageEncoder(BoxContentEncoderRegistry encoderRegistry, ISimplePartEncoder partEncoder, SimpleEncodingRegistry registry,
+  public SimpleFirstPageEncoder(EncoderRegistry encoderRegistry, ISimplePartEncoder partEncoder, SimpleEncodingRegistry registry,
     IResources resources, PdfPageConfiguration pageConfiguration) {
     super(resources, encoderRegistry);
     this.partEncoder = partEncoder;

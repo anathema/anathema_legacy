@@ -32,7 +32,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -66,7 +66,7 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
     registerBoxEncoders(moduleObject.getEncoderRegistry());
   }
 
-  private void registerBoxEncoders(BoxContentEncoderRegistry registry) {
+  private void registerBoxEncoders(EncoderRegistry registry) {
     registry.add(new ArsenalEncoderFactory());
     registry.add(new PanoplyEncoderFactory());
     registry.add(new PossessionsEncoderFactory());

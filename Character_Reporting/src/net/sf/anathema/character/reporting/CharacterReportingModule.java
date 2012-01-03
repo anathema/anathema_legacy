@@ -17,7 +17,7 @@ import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContent;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContent;
 import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContentFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.AttributesEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxEncoderFactory;
@@ -48,7 +48,7 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
   }
 
   private void addReportEncoders() {
-    BoxContentEncoderRegistry registry = moduleObject.getEncoderRegistry();
+    EncoderRegistry registry = moduleObject.getEncoderRegistry();
     registry.add(new AttributesEncoderFactory());
     registry.add(new ExperienceBoxEncoderFactory());
     registry.add(new NotesEncoderFactory());

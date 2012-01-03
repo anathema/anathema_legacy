@@ -4,7 +4,7 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.character.sidereal.reporting.rendering.SiderealFlawedFateEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.anima.SiderealAnimaEncoderFactory;
@@ -24,8 +24,8 @@ public class Extended2ndEditionSiderealPartEncoder extends AbstractSecondEdition
   }
 
   @Override
-  public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[] { new Extended2ndEditionSiderealDetailsPageEncoder(getResources(), baseFont, getFontSize(), configuration) };
+  public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
+    return new PageEncoder[] { new Extended2ndEditionSiderealDetailsPageEncoder(getResources(), baseFont, getFontSize(), configuration) };
   }
 
   @Override

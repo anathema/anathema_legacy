@@ -1,14 +1,14 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEncoder {
+public abstract class AbstractSimplePartEncoder implements ISimplePartEncoder {
 
   private final IResources resources;
 
-  protected AbstractFirstEditionPartEncoder(IResources resources) {
+  protected AbstractSimplePartEncoder(IResources resources) {
     this.resources = resources;
   }
 
@@ -17,7 +17,7 @@ public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEnco
   }
 
   @Override
-  public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[0];
+  public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
+    return new PageEncoder[0];
   }
 }

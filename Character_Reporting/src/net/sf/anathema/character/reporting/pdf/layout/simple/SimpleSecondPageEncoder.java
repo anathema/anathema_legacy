@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.AbstractPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEncoder;
@@ -30,7 +30,7 @@ public class SimpleSecondPageEncoder extends AbstractPageEncoder {
   private final IResources resources;
   private final SimpleEncodingRegistry encodingRegistry;
 
-  public SimpleSecondPageEncoder(BoxContentEncoderRegistry encoderRegistry, IResources resources, SimpleEncodingRegistry encodingRegistry,
+  public SimpleSecondPageEncoder(EncoderRegistry encoderRegistry, IResources resources, SimpleEncodingRegistry encodingRegistry,
     PdfPageConfiguration configuration) {
     super(resources, encoderRegistry);
     this.resources = resources;

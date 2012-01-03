@@ -16,7 +16,7 @@ import net.sf.anathema.character.lunar.reporting.rendering.heartsblood.FirstEdit
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
@@ -26,8 +26,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncod
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfHeaderBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -35,7 +35,7 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSEN
 import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class Extended1stEditionLunarBeastformPageEncoder implements IPdfPageEncoder {
+public class Extended1stEditionLunarBeastformPageEncoder implements PageEncoder {
   private final IResources resources;
   private final int essenceMax;
   private final BaseFont baseFont;
@@ -44,10 +44,10 @@ public class Extended1stEditionLunarBeastformPageEncoder implements IPdfPageEnco
   private static final int VIRTUE_HEIGHT = 72;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
-  private BoxContentEncoderRegistry encoderRegistry;
+  private EncoderRegistry encoderRegistry;
   private final IExtendedPartEncoder partEncoder;
 
-  public Extended1stEditionLunarBeastformPageEncoder(BoxContentEncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, BaseFont baseFont,
+  public Extended1stEditionLunarBeastformPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, BaseFont baseFont,
     IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;
@@ -86,7 +86,7 @@ public class Extended1stEditionLunarBeastformPageEncoder implements IPdfPageEnco
     distanceFromTop += calculateBoxIncrement(armourHeight);
     float healthHeight = encodeMovementAndHealth(graphics, content, distanceFromTop, 99);
     distanceFromTop += calculateBoxIncrement(healthHeight);
-    float remainingHeight = IPdfPageEncoder.CONTENT_HEIGHT - distanceFromTop;
+    float remainingHeight = PageEncoder.CONTENT_HEIGHT - distanceFromTop;
     encodeCombatStats(graphics, content, distanceFromTop, remainingHeight);
     encodeAbilities(graphics, content, abilityStartHeight, remainingHeight + PADDING);
     encodeGifts(graphics, content, distanceFromTop, remainingHeight);

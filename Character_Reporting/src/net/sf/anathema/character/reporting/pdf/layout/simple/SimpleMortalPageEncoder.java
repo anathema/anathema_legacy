@@ -9,7 +9,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.AbstractPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
@@ -34,7 +34,7 @@ public class SimpleMortalPageEncoder extends AbstractPageEncoder {
   private final PdfBoxEncoder boxEncoder;
   private final SimpleEncodingRegistry registry;
 
-  public SimpleMortalPageEncoder(BoxContentEncoderRegistry encoderRegistry, SimpleEncodingRegistry registry, IResources resources,
+  public SimpleMortalPageEncoder(EncoderRegistry encoderRegistry, SimpleEncodingRegistry registry, IResources resources,
     PdfPageConfiguration pageConfiguration) {
     super(resources, encoderRegistry);
     this.resources = resources;

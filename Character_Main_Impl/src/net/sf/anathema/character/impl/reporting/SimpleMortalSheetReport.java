@@ -17,9 +17,9 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleMortalPageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.IITextReport;
@@ -57,7 +57,7 @@ public class SimpleMortalSheetReport implements IITextReport {
       int traitMax = Math.max(5, getEssenceMax(stattedCharacter));
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
-      IPdfPageEncoder encoder = new SimpleMortalPageEncoder(getEncoderRegistry(), encodingRegistry, resources, configuration);
+      PageEncoder encoder = new SimpleMortalPageEncoder(getEncoderRegistry(), encodingRegistry, resources, configuration);
       SheetGraphics graphics = new SheetGraphics(directContent);
       ReportContent content = new ReportContent(getContentRegistry(), character, description);
       encoder.encode(document, graphics, content);
@@ -66,7 +66,7 @@ public class SimpleMortalSheetReport implements IITextReport {
     }
   }
 
-  private BoxContentEncoderRegistry getEncoderRegistry() {
+  private EncoderRegistry getEncoderRegistry() {
     return getReportingModuleObject().getEncoderRegistry();
   }
 
