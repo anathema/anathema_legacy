@@ -13,9 +13,13 @@ public class PriorityLayer extends Layer {
 		super(gapDimension, yPosition);
 	}
 	
+	private static boolean compareIntegers(Integer a, Integer b) {
+	  return a != null ? a.equals(b) : b == null;
+	}
+	
 	public void checkOverlaps() {
 		for (int i = 0; i < nodes.size() - 1; i++) {
-			assert getRightSideSlack(nodes.get(i)) == getLeftSideSlack(nodes.get(i + 1)) : "Bad slack calculation";
+			assert compareIntegers(getRightSideSlack(nodes.get(i)) ,getLeftSideSlack(nodes.get(i + 1))) : "Bad slack calculation";
 			if (getRightSideSlack(nodes.get(i)) < 0) {
 				String nodeID = "stand-in";
 				String nextNodeID = "stand-in";
