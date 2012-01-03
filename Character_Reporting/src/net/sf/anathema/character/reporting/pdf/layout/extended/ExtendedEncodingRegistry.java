@@ -26,7 +26,6 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
   private IBoxContentEncoder possessionsEncoder = new NullBoxContentEncoder("Possessions");
   private IBoxContentEncoder linguisticsEncoder = new NullBoxContentEncoder("Linguistics");
   private IBoxContentEncoder mutationsEncoder = new NullBoxContentEncoder("Mutations");
-  private IBoxContentEncoder meritsAndFlawsEncoder = new NullBoxContentEncoder("Merits & Flaws");
   private List<IVariableBoxContentEncoder> sidebarEncoders = new ArrayList<IVariableBoxContentEncoder>();
   private List<ITableEncoder> magicEncoders = new ArrayList<ITableEncoder>();
 
@@ -59,11 +58,6 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
     this.mutationsEncoder = mutationsEncoder;
   }
 
-  @Override
-  public void setMeritsAndFlawsEncoder(IBoxContentEncoder meritsAndFlawsEncoder) {
-    this.meritsAndFlawsEncoder = meritsAndFlawsEncoder;
-  }
-
   public IBoxContentEncoder getArmourContentEncoder() {
     return armourContentEncoder;
   }
@@ -90,10 +84,6 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
 
   public List<ITableEncoder> getAdditionalMagicEncoders() {
     return magicEncoders;
-  }
-
-  public IBoxContentEncoder getMeritsAndFlawsEncoder() {
-    return meritsAndFlawsEncoder;
   }
 
   public void setPartEncoder(ICharacterType type, IExaltedEdition edition, IExtendedPartEncoder partEncoder) {

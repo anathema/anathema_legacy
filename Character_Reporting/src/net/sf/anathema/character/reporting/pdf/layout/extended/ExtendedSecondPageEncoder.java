@@ -58,11 +58,12 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeSocialCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getPartEncoder().getSocialCombatEncoder(), 1, 1, distanceFromTop, height);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.SOCIAL_COMBAT, EncoderIds.MERITS_AND_FLAWS);
+    return encodeFixedBox(graphics, content, encoder, 1, 1, distanceFromTop, height);
   }
 
   private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(EncoderIds.COMBAT, getResources(), content);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.COMBAT);
     return encodeFixedBox(graphics, content, encoder, 2, 2, distanceFromTop, height);
   }
 
@@ -75,7 +76,7 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(ARSENAL, getResources(), content);
+    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(getResources(), content, ARSENAL);
     return encodeFixedBox(graphics, content, weaponryEncoder, 2, 2, distanceFromTop, height);
   }
 }

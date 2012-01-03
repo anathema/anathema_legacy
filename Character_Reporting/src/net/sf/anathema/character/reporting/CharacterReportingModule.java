@@ -21,6 +21,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoder
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.AttributesEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatEncoderFactory;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterReportingModule extends CharacterModuleAdapter<CharacterReportingModuleObject> {
@@ -45,6 +46,7 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
     registry.add(new AttributesEncoderFactory());
     registry.add(new ExperienceBoxEncoderFactory());
     registry.add(new SimpleEssenceBoxEncoderFactory());
+    registry.add(new SocialCombatEncoderFactory());
   }
 
   private void addReportContents(IResources resources) {

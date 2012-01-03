@@ -48,11 +48,6 @@ public class SimpleEncodingRegistry implements IEncodingRegistry {
     this.intimaciesEncoder = intimaciesEncoder;
   }
 
-  @Override
-  public void setMeritsAndFlawsEncoder(IBoxContentEncoder meritsAndFlawsEncoder) {
-
-  }
-
   public IBoxContentEncoder getArmourContentEncoder() {
     return armourContentEncoder;
   }

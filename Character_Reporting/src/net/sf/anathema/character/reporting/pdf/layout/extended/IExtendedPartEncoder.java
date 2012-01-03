@@ -16,8 +16,6 @@ public interface IExtendedPartEncoder {
 
   public IBoxContentEncoder getGreatCurseEncoder();
 
-  public IBoxContentEncoder getSocialCombatEncoder();
-
   public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry);
 
   public IBoxContentEncoder getHealthEncoder();
@@ -29,6 +27,4 @@ public interface IExtendedPartEncoder {
   public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders();
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
-
-  public boolean isEncodeAttributeAsFavorable();
 }

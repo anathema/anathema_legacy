@@ -26,10 +26,6 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
     return baseFont;
   }
 
-  public IBoxContentEncoder getSocialCombatEncoder() {
-    return new HorizontalLineBoxContentEncoder(1, "MeritsFlaws"); //$NON-NLS-1$
-  }
-
   public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {
     return new HorizontalLineBoxContentEncoder(1, "Notes"); //$NON-NLS-1$
   }

@@ -35,9 +35,4 @@ public class Extended1stEditionLunarPartEncoder extends AbstractFirstEditionExal
     return new IPdfPageEncoder[] { new Extended1stEditionLunarBeastformPageEncoder(encoderRegistry, this, baseFont, getResources(), getEssenceMax(),
       configuration) };
   }
-
-  @Override
-  public boolean isEncodeAttributeAsFavorable() {
-    return true;
-  }
 }

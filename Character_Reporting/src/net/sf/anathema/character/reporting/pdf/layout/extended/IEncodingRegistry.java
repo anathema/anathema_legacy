@@ -9,8 +9,6 @@ public interface IEncodingRegistry {
 
   void setIntimaciesEncoder(IBoxContentEncoder intimaciesEncoder);
 
-  void setMeritsAndFlawsEncoder(IBoxContentEncoder meritsAndFlawsEncoder);
-
   void setPossessionsEncoder(IBoxContentEncoder encoder);
 
   BaseFont getSymbolBaseFont();

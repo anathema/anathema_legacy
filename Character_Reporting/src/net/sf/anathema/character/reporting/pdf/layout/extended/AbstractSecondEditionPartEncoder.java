@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.ExtendedEssenceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionHealthEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionMovementEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatStatsBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
@@ -44,10 +43,6 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
 
   public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
     return new DotBoxContentEncoder(trait, traitMax, traitHeaderKey);
-  }
-
-  public IBoxContentEncoder getSocialCombatEncoder() {
-    return new SocialCombatStatsBoxEncoder(resources);
   }
 
   public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {

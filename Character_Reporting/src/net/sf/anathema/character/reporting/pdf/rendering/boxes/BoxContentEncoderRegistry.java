@@ -15,29 +15,31 @@ public class BoxContentEncoderRegistry {
   }
 
   public boolean hasEncoder(String id, ReportContent content) {
-    return !(findFactory(id, content) instanceof NullEncoderFactory);
+    return !(findFactory(content, id) instanceof NullEncoderFactory);
   }
 
-  public IBoxContentEncoder createEncoder(String id, IResources resource, ReportContent content) {
-    return findFactory(id, content).create(resource, createBasicContent(content));
+  public IBoxContentEncoder createEncoder(IResources resource, ReportContent content, String... ids) {
+    return findFactory(content, ids).create(resource, createBasicContent(content));
   }
 
-  public boolean hasAttribute(String id, EncoderAttributeType type, ReportContent content) {
-    return findFactory(id, content).hasAttribute(type);
+  public boolean hasAttribute(EncoderAttributeType type, ReportContent content, String id) {
+    return findFactory(content, id).hasAttribute(type);
   }
 
-  public float getValue(String id, EncoderAttributeType type, ReportContent content) {
-    return findFactory(id, content).getValue(createBasicContent(content), type);
+  public float getValue(EncoderAttributeType type, ReportContent content, String id) {
+    return findFactory(content, id).getValue(createBasicContent(content), type);
   }
 
-  private BoxContentEncoderFactory findFactory(String id, ReportContent content) {
-    for (BoxContentEncoderFactory factory : factoryById.get(id)) {
-      BasicContent basicContent = createBasicContent(content);
-      if (factory.supports(basicContent)) {
-        return factory;
+  private BoxContentEncoderFactory findFactory(ReportContent content, String... ids) {
+    for (String id : ids) {
+      for (BoxContentEncoderFactory factory : factoryById.get(id)) {
+        BasicContent basicContent = createBasicContent(content);
+        if (factory.supports(basicContent)) {
+          return factory;
+        }
       }
     }
-    return new NullEncoderFactory(id);
+    return new NullEncoderFactory(ids[0]);
   }
 
   private BasicContent createBasicContent(ReportContent content) {

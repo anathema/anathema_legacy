@@ -36,9 +36,4 @@ public class Extended2ndEditionLunarPartEncoder extends AbstractSecondEditionExa
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
     return new IPdfPageEncoder[] { new Lunar2ndEditionAdditionalPageEncoder(encoderRegistry, getResources(), configuration) };
   }
-
-  @Override
-  public boolean isEncodeAttributeAsFavorable() {
-    return true;
-  }
 }

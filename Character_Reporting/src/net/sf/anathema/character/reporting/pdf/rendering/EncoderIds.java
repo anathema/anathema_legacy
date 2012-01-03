@@ -14,4 +14,6 @@ public interface EncoderIds {
   String ESSENCE_SIMPLE = SimpleEssenceBoxContentEncoder.class.getName();
   String EXPERIENCE = ExperienceBoxContentEncoder.class.getName();
   String HEALTH_AND_MOVEMENT = AbstractHealthAndMovementEncoder.class.getName();
+  String MERITS_AND_FLAWS = "MeritsAndFlaws";
+  String SOCIAL_COMBAT = "SocialCombat";
 }

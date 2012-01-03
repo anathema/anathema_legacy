@@ -99,7 +99,7 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
 
   private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(EncoderIds.ESSENCE_SIMPLE, resources, content);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(resources, content, EncoderIds.ESSENCE_SIMPLE);
     boxEncoder.encodeBox(content, graphics, encoder, essenceBounds);
     return height;
   }
@@ -190,8 +190,8 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
   }
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    float height = encoderRegistry.getValue(ARSENAL, PreferredHeight, content);
-    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(ARSENAL, resources, content);
+    float height = encoderRegistry.getValue(PreferredHeight, content, ARSENAL);
+    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(resources, content, ARSENAL);
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;

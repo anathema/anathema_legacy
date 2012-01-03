@@ -120,7 +120,7 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
   }
 
   private float encode(String encoderId, SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(encoderId, resources, content);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(resources, content, encoderId);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return bounds.getHeight();
   }
@@ -145,14 +145,14 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
   private float encodeSocialCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = partEncoder.getSocialCombatEncoder();
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(resources, content, EncoderIds.SOCIAL_COMBAT, EncoderIds.MERITS_AND_FLAWS);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }
 
   private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(EncoderIds.COMBAT, resources, content);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(resources, content, EncoderIds.COMBAT);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }
@@ -160,7 +160,7 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
   private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(EncoderIds.HEALTH_AND_MOVEMENT, resources, content);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(resources, content, EncoderIds.HEALTH_AND_MOVEMENT);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }
@@ -178,8 +178,8 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
   }
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    float height = encoderRegistry.getValue(ARSENAL, PreferredHeight, content);
-    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(ARSENAL, resources, content);
+    float height = encoderRegistry.getValue(PreferredHeight, content, ARSENAL);
+    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(resources, content, ARSENAL);
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;

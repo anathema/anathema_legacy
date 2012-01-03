@@ -92,8 +92,8 @@ public class Lunar2ndEditionAdditionalPageEncoder implements IPdfPageEncoder {
   }
 
   private float encodeArsenal(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    float height = encoderRegistry.getValue(EncoderIds.ARSENAL_LUNAR, PreferredHeight, content);
-    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(EncoderIds.ARSENAL_LUNAR, resources, content);
+    float height = encoderRegistry.getValue(PreferredHeight, content, EncoderIds.ARSENAL_LUNAR);
+    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(resources, content, EncoderIds.ARSENAL_LUNAR);
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;

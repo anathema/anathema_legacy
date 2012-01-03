@@ -191,8 +191,8 @@ public class Extended1stEditionLunarBeastformPageEncoder implements IPdfPageEnco
   }
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    float height = encoderRegistry.getValue(ARSENAL, PreferredHeight, content);
-    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(ARSENAL, resources, content);
+    float height = encoderRegistry.getValue(PreferredHeight, content, ARSENAL);
+    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(resources, content, ARSENAL);
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return bounds.getHeight();

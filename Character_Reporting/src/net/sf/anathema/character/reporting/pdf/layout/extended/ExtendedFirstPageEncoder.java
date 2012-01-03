@@ -110,7 +110,7 @@ public class ExtendedFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(EncoderIds.ATTRIBUTES, getResources(), content);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.ATTRIBUTES);
     return encodeFixedBox(graphics, content, encoder, 1, 1, distanceFromTop, height);
   }
 
@@ -154,7 +154,11 @@ public class ExtendedFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private boolean hasMeritsAndFlaws(ReportContent content) {
-    return getRegistry().getMeritsAndFlawsEncoder().hasContent(content);
+    return encoderRegistry.hasEncoder(EncoderIds.MERITS_AND_FLAWS, content) && getMeritsAndFlawsEncoder(content).hasContent(content);
+  }
+
+  private IBoxContentEncoder getMeritsAndFlawsEncoder(ReportContent content) {
+    return encoderRegistry.createEncoder(getResources(), content, EncoderIds.MERITS_AND_FLAWS);
   }
 
   private float encodeMutations(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -162,7 +166,8 @@ public class ExtendedFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeMeritsAndFlaws(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getMeritsAndFlawsEncoder(), 2, 1, distanceFromTop, height);
+    IBoxContentEncoder encoder = getMeritsAndFlawsEncoder(content);
+    return encodeFixedBox(graphics, content, encoder, 2, 1, distanceFromTop, height);
   }
 
   private float encodeAdditional(SheetGraphics graphics, ReportContent content, float distanceFromTop, float bottom) throws DocumentException {
