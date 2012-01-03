@@ -185,12 +185,14 @@ private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration c
   
   private String parseTrueName(Element element, String name)
   {
-	  String baseCharmName = "";
+	  StringBuilder baseCharmName = new StringBuilder();
 	  String[] components = name.split("\\.");
 	  if (components.length > 3)
 	  {
-		  for (int i = 0; i != components.length - 2; i++)
-			  baseCharmName = baseCharmName + components[i] + (i == components.length - 3 ? "" : ".");
+		  for (int i = 0; i != components.length - 2; i++) {
+		    baseCharmName.append(components[i]);
+		    baseCharmName.append(i == components.length - 3 ? "" : ".");
+		  }
 		  int count = Integer.parseInt(components[components.length - 1].replace("Repurchase", ""));
 		  Element newElement = element.addElement(TAG_SPECIAL);
 		  DefaultTrait trait = new LimitedTrait(new TraitType(TAG_LEARN_COUNT),
@@ -199,9 +201,10 @@ private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration c
 				  context);
 		  traitPersister.saveTrait(newElement, TAG_LEARN_COUNT, trait);
 	  }
-	  else
-		  baseCharmName = name;
-	  return baseCharmName;
+	  else {
+	    baseCharmName.append(name);
+	  }
+	  return baseCharmName.toString();
   }
 
   private boolean isExperienceLearned(Element charmElement) {

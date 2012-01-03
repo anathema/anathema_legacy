@@ -12,15 +12,15 @@ public class RomanNumber {
   }
 
   private String calculateRomanValue(int arabic) {
-    String romanString = ""; //$NON-NLS-1$
+    StringBuilder result = new StringBuilder();
     int remainingValue = arabic;
     for (int index = ROMAN_VALUE.length - 1; index >= 0; index--) {
       while (ROMAN_VALUE[index] <= remainingValue) {
-        romanString += ROMAN_STRING[index];
+        result.append(ROMAN_STRING[index]);
         remainingValue -= ROMAN_VALUE[index];
       }
     }
-    return romanString;
+    return result.toString();
   }
 
   public String getRoman() {

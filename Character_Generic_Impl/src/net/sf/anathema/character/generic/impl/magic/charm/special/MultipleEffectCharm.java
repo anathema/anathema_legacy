@@ -55,10 +55,11 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
   }
 
   public String toString() {
-    String list = "";
+    StringBuilder list = new StringBuilder();
     for (String effect : effectIds) {
       boolean isLastEffect = strEquals(effect, effectIds[effectIds.length - 1]);
-      list += effect + (isLastEffect ? "" : ",");
+      list.append(effect);
+      list.append(isLastEffect ? "" : ",");
     }
     return "[" + getCharmId() + ";" + list + "]";
   }
