@@ -19,6 +19,7 @@ public class SecondEditionBeastformOverviewView implements IBeastformOverviewVie
   }
 
   public ILabelledAlotmentView getAttributeOverview() {
+    // attributeView is never set and therefore this method will always return null
     return attributeView;
   }
 
