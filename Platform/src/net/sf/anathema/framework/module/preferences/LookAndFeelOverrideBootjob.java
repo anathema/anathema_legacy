@@ -19,7 +19,7 @@ import net.sf.anathema.lib.resources.IResources;
  * was already set when boot jobs are being executed. However this is intended to be
  * an emergency task when an invalid Look and Feel makes Anathema unusable, so the
  * user should only set this property temporary.
- * <P>
+ * <p/>
  * This is also known to cause problems when it actually changes the Look and Feel but
  * there is nothing to about it. The user can always restart Anathema and remove the above
  * mentioned property. Starting Anathema with this "recovery" property will remove the
@@ -29,18 +29,43 @@ import net.sf.anathema.lib.resources.IResources;
 public class LookAndFeelOverrideBootjob implements IAnathemaBootJob {
   @Override
   public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
-    if ("true".equals(resources.getString("AnathemaCore.LookAndFeel.UseSystem").trim().toLowerCase(Locale.US))) {
-      IPreferencesElement.SYSTEM_PREFERENCES.remove(IAnathemaPreferencesConstants.USER_LOOK_AND_FEEL_CLASSNAME);
-      String currentName = UIManager.getLookAndFeel().getClass().getName();
-      String systemName = UIManager.getSystemLookAndFeelClassName();
-      if (systemName == null || !systemName.equals(currentName)) {
-        try {
-          UIManager.setLookAndFeel(systemName);
-        } catch (Exception ex) {
-          Logger.getLogger(LookAndFeelOverrideBootjob.class).error(
-              "Failed to revert to Look and Feel to the system Look and Feel", ex);
-        }
+    if (userRequestedLookAndFeelOverride(resources)) {
+      resetLookAndFeelPreference();
+      if (currentLookAndFeelIsNotSystemLookAndFeel()) {
+        setSystemLookAndFeel();
       }
     }
+  }
+
+  private boolean userRequestedLookAndFeelOverride(IResources resources) {
+    return "true".equals(resources.getString("AnathemaCore.LookAndFeel.UseSystem").trim().toLowerCase(Locale.US));
+  }
+
+  private void resetLookAndFeelPreference() {
+    IPreferencesElement.SYSTEM_PREFERENCES.remove(IAnathemaPreferencesConstants.USER_LOOK_AND_FEEL_CLASSNAME);
+  }
+
+  private boolean currentLookAndFeelIsNotSystemLookAndFeel() {
+    String currentName = getCurrentLookAndFeel();
+    String systemName = getSystemLookAndFeel();
+    return systemName == null || !systemName.equals(currentName);
+  }
+
+  private void setSystemLookAndFeel() {
+    String systemName = getSystemLookAndFeel();
+    try {
+      UIManager.setLookAndFeel(systemName);
+    } catch (Exception ex) {
+      Logger.getLogger(LookAndFeelOverrideBootjob.class).error(
+              "Failed to revert to Look and Feel to the system Look and Feel", ex);
+    }
+  }
+
+  private String getSystemLookAndFeel() {
+    return UIManager.getSystemLookAndFeelClassName();
+  }
+
+  private String getCurrentLookAndFeel() {
+    return UIManager.getLookAndFeel().getClass().getName();
   }
 }
