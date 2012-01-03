@@ -51,44 +51,47 @@ public class CharmEntryPropertiesPersister {
     String fileName = "../Character_Main/resources/language/CharmDuration.properties"; //$NON-NLS-1$
     File file = new File(fileName);
     BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-    writer.newLine();
-    String writeString;
-    if (duration instanceof UntilEventDuration) {
-      String event = ((UntilEventDuration) duration).getEvent();
-      writeString = createCamelCase("Charm.Event.", event) + "=" + event; //$NON-NLS-1$ //$NON-NLS-2$
-    }
-    else if (duration instanceof SimpleDuration) {
-      String text = ((SimpleDuration) duration).getText();
-      writeString = createCamelCase("Charm.Duration.", text) + "=" + text; //$NON-NLS-1$ //$NON-NLS-2$
-    }
-    else if (duration instanceof QualifiedAmountDuration) {
-      QualifiedAmountDuration amountDuration = (QualifiedAmountDuration) duration;
-      String amount = amountDuration.getAmount();
-      String unit = amountDuration.getUnit();
-      writeString = createCamelCase("Charm.Unit.", unit); //$NON-NLS-1$
-      try {
-        int intAmount = Integer.parseInt(amount);
-        String amountString = "Charm.Amount." + intAmount; //$NON-NLS-1$
-        if (!resources.supportsKey(amountString)) {
-          writer.write(amountString + " = " + intAmount); //$NON-NLS-1$
-        }
-        if (intAmount == 1) {
-          writeString += ".Singular"; //$NON-NLS-1$
-        }
+    try {
+      writer.newLine();
+      String writeString;
+      if (duration instanceof UntilEventDuration) {
+        String event = ((UntilEventDuration) duration).getEvent();
+        writeString = createCamelCase("Charm.Event.", event) + "=" + event; //$NON-NLS-1$ //$NON-NLS-2$
       }
-      catch (NumberFormatException e) {
-        writeString += ".Plural"; //$NON-NLS-1$
+      else if (duration instanceof SimpleDuration) {
+        String text = ((SimpleDuration) duration).getText();
+        writeString = createCamelCase("Charm.Duration.", text) + "=" + text; //$NON-NLS-1$ //$NON-NLS-2$
       }
-      writeString += "=" + unit; //$NON-NLS-1$
+      else if (duration instanceof QualifiedAmountDuration) {
+        QualifiedAmountDuration amountDuration = (QualifiedAmountDuration) duration;
+        String amount = amountDuration.getAmount();
+        String unit = amountDuration.getUnit();
+        writeString = createCamelCase("Charm.Unit.", unit); //$NON-NLS-1$
+        try {
+          int intAmount = Integer.parseInt(amount);
+          String amountString = "Charm.Amount." + intAmount; //$NON-NLS-1$
+          if (!resources.supportsKey(amountString)) {
+            writer.write(amountString + " = " + intAmount); //$NON-NLS-1$
+          }
+          if (intAmount == 1) {
+            writeString += ".Singular"; //$NON-NLS-1$
+          }
+        }
+        catch (NumberFormatException e) {
+          writeString += ".Plural"; //$NON-NLS-1$
+        }
+        writeString += "=" + unit; //$NON-NLS-1$
+      }
+      else {
+        throw new UnreachableCodeReachedException("Unknown Duration Type"); //$NON-NLS-1$
+      }
+      if (resources.supportsKey(writeString)) {
+        return;
+      }
+      writer.write(writeString);
+    } finally {
+      writer.close();
     }
-    else {
-      throw new UnreachableCodeReachedException("Unknown Duration Type"); //$NON-NLS-1$
-    }
-    if (resources.supportsKey(writeString)) {
-      return;
-    }
-    writer.write(writeString);
-    writer.close();
     return;
   }
 
