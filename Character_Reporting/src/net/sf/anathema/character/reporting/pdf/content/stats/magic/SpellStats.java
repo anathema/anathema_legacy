@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
+import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.SpellSourceStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagicStats;
@@ -50,16 +51,25 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
       throw new ClassCastException("Uncomparable elements.");
     }
 
-    if (stats instanceof SpellStats) {
-      SpellStats spell = (SpellStats) stats;
-      int r = getMagic().getCircleType().compareTo(spell.getMagic().getCircleType());
-      if (r == 0) {
-        r = getMagic().getId().compareTo(spell.getMagic().getId());
-      }
-      return r;
+    SpellStats spell = (SpellStats) stats;
+    int r = getMagic().getCircleType().compareTo(spell.getMagic().getCircleType());
+    if (r == 0) {
+      r = getMagic().getId().compareTo(spell.getMagic().getId());
     }
-    else {
-      return 1;
+    return r;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null || obj.getClass() != getClass()) {
+      return false;
     }
+
+    return compareTo((SpellStats)obj) == 0;
+  }
+
+  @Override
+  public int hashCode() {
+    return ObjectUtilities.getHashCode(getMagic().getCircleType(), getMagic().getId());
   }
 }
