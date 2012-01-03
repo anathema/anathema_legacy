@@ -20,17 +20,16 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatCo
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
-public class ExtendedFirstPageEncoder extends AbstractPdfPageEncoder {
+public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   private BoxContentEncoderRegistry encoderRegistry;
-  private final int essenceMax;
 
-  public ExtendedFirstPageEncoder(BoxContentEncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
-    IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
+  public Extended2ndEditionFirstPageEncoder(BoxContentEncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder,
+    ExtendedEncodingRegistry registry, IResources resources, PdfPageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;
-    this.essenceMax = essenceMax;
   }
 
+  @Override
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws
 
     DocumentException {
@@ -138,7 +137,8 @@ public class ExtendedFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeIntimacies(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getPartEncoder().getIntimaciesEncoder(getRegistry()), 2, 1, distanceFromTop, height);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.INTIMACIES_EXTENDED);
+    return encodeFixedBox(graphics, content, encoder, 2, 1, distanceFromTop, height);
   }
 
   private float encodeLinguistics(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {

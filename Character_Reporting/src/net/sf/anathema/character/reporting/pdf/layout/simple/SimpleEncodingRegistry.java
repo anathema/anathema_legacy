@@ -18,7 +18,6 @@ public class SimpleEncodingRegistry implements IEncodingRegistry {
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
   private IBoxContentEncoder armourContentEncoder;
-  private IBoxContentEncoder intimaciesEncoder;
   private IBoxContentEncoder possessionsEncoder;
   private IBoxContentEncoder linguisticsEncoder;
   private IBoxContentEncoder mutationsEncoder;
@@ -43,17 +42,8 @@ public class SimpleEncodingRegistry implements IEncodingRegistry {
     this.armourContentEncoder = encoder;
   }
 
-  @Override
-  public void setIntimaciesEncoder(IBoxContentEncoder intimaciesEncoder) {
-    this.intimaciesEncoder = intimaciesEncoder;
-  }
-
   public IBoxContentEncoder getArmourContentEncoder() {
     return armourContentEncoder;
-  }
-
-  public IBoxContentEncoder getIntimaciesEncoder() {
-    return intimaciesEncoder;
   }
 
   public IBoxContentEncoder getPossessionsEncoder() {

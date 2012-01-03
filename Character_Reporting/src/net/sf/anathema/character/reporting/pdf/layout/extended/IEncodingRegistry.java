@@ -7,8 +7,6 @@ public interface IEncodingRegistry {
 
   void setArmourContentEncoder(IBoxContentEncoder encoder);
 
-  void setIntimaciesEncoder(IBoxContentEncoder intimaciesEncoder);
-
   void setPossessionsEncoder(IBoxContentEncoder encoder);
 
   BaseFont getSymbolBaseFont();

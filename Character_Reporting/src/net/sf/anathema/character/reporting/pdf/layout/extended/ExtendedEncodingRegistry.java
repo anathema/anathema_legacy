@@ -22,7 +22,6 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
   private IBoxContentEncoder armourContentEncoder = new NullBoxContentEncoder("Armour");
-  private IBoxContentEncoder intimaciesEncoder = new NullBoxContentEncoder("Intimacies");
   private IBoxContentEncoder possessionsEncoder = new NullBoxContentEncoder("Possessions");
   private IBoxContentEncoder linguisticsEncoder = new NullBoxContentEncoder("Linguistics");
   private IBoxContentEncoder mutationsEncoder = new NullBoxContentEncoder("Mutations");
@@ -49,21 +48,12 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
     this.armourContentEncoder = encoder;
   }
 
-  @Override
-  public void setIntimaciesEncoder(IBoxContentEncoder intimaciesEncoder) {
-    this.intimaciesEncoder = intimaciesEncoder;
-  }
-
   public void setMutationsEncoder(IBoxContentEncoder mutationsEncoder) {
     this.mutationsEncoder = mutationsEncoder;
   }
 
   public IBoxContentEncoder getArmourContentEncoder() {
     return armourContentEncoder;
-  }
-
-  public IBoxContentEncoder getIntimaciesEncoder() {
-    return intimaciesEncoder;
   }
 
   public IBoxContentEncoder getPossessionsEncoder() {

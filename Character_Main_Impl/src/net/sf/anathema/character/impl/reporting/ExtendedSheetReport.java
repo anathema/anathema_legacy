@@ -20,8 +20,8 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.Extended1stEditionFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.Extended2ndEditionFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagic1stEditionPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
@@ -57,6 +57,7 @@ public class ExtendedSheetReport implements IITextReport {
     return "Extended Sheet" + " (" + resources.getString("PageSize." + pageSize.name()) + ")";
   }
 
+  @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     ICharacter stattedCharacter = (ICharacter) item.getItemData();
     document.setPageSize(pageSize.getRectangle());
@@ -78,7 +79,7 @@ public class ExtendedSheetReport implements IITextReport {
           .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration));
       }
       if (edition == ExaltedEdition.SecondEdition) {
-        encoderList.add(new ExtendedFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration));
+        encoderList.add(new Extended2ndEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
         encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
       }
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
@@ -134,6 +135,7 @@ public class ExtendedSheetReport implements IITextReport {
     return moduleObjectMap.getModuleObject(CharacterReportingModule.class);
   }
 
+  @Override
   public boolean supports(IItem item) {
     if (item == null) {
       return false;

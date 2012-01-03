@@ -8,23 +8,21 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfigurati
 
 public interface IExtendedPartEncoder {
 
-  public IBoxContentEncoder getAnimaEncoder();
+  IBoxContentEncoder getAnimaEncoder();
 
-  public IBoxContentEncoder getEssenceEncoder();
+  IBoxContentEncoder getEssenceEncoder();
 
-  public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey);
+  IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey);
 
-  public IBoxContentEncoder getGreatCurseEncoder();
+  IBoxContentEncoder getGreatCurseEncoder();
 
-  public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry);
+  IBoxContentEncoder getHealthEncoder();
 
-  public IBoxContentEncoder getHealthEncoder();
+  IBoxContentEncoder getMovementEncoder();
 
-  public IBoxContentEncoder getMovementEncoder();
+  boolean hasMagicPage();
 
-  public boolean hasMagicPage();
+  IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders();
 
-  public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders();
-
-  public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
+  IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
 }

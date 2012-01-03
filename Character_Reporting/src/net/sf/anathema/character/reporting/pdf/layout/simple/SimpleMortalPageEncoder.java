@@ -10,6 +10,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerBoxContentEncoder;
@@ -28,20 +29,16 @@ import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAtt
 public class SimpleMortalPageEncoder implements IPdfPageEncoder {
   public static final float CONTENT_HEIGHT = 755;
   private final IResources resources;
-  private final int essenceMax;
 
   private static final float ANIMA_HEIGHT = 128;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private final SimpleEncodingRegistry registry;
   private BoxContentEncoderRegistry encoderRegistry;
-  private final ISimplePartEncoder partEncoder;
 
-  public SimpleMortalPageEncoder(BoxContentEncoderRegistry encoderRegistry, ISimplePartEncoder partEncoder, SimpleEncodingRegistry registry,
-    IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
+  public SimpleMortalPageEncoder(BoxContentEncoderRegistry encoderRegistry, SimpleEncodingRegistry registry, IResources resources,
+    PdfPageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
-    this.partEncoder = partEncoder;
-    this.essenceMax = essenceMax;
     this.resources = resources;
     this.registry = registry;
     this.pageConfiguration = pageConfiguration;
@@ -149,7 +146,7 @@ public class SimpleMortalPageEncoder implements IPdfPageEncoder {
 
   private void encodeAnima(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = partEncoder.getAnimaEncoder();
+    IBoxContentEncoder encoder = new PdfBackgroundEncoder(resources);
     if (encoder != null) {
       boxEncoder.encodeBox(content, graphics, encoder, animaBounds);
     }
@@ -211,7 +208,7 @@ public class SimpleMortalPageEncoder implements IPdfPageEncoder {
 
   private float encodeGreatCurse(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = partEncoder.getGreatCurseEncoder();
+    IBoxContentEncoder encoder = registry.getLinguisticsEncoder();
     if (encoder == null) {
       return 0;
     }
@@ -221,9 +218,7 @@ public class SimpleMortalPageEncoder implements IPdfPageEncoder {
 
   private float encodeIntimacies(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = partEncoder.getIntimaciesEncoder(registry);
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
-    return height;
+    return encode(graphics, content, bounds, EncoderIds.INTIMACIES_SIMPLE, EncoderIds.NOTES);
   }
 
   private float encode(SheetGraphics graphics, ReportContent content, Bounds bounds, String... encoderIds) throws DocumentException {

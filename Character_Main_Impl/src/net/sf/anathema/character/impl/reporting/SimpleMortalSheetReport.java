@@ -49,6 +49,7 @@ public class SimpleMortalSheetReport implements IITextReport {
       ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
   }
 
+  @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     ICharacter stattedCharacter = (ICharacter) item.getItemData();
     document.setPageSize(pageSize.getRectangle());
@@ -61,7 +62,7 @@ public class SimpleMortalSheetReport implements IITextReport {
       ISimplePartEncoder partEncoder = getPartEncoder(stattedCharacter);
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
-      IPdfPageEncoder encoder = new SimpleMortalPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration);
+      IPdfPageEncoder encoder = new SimpleMortalPageEncoder(getEncoderRegistry(), encodingRegistry, resources, configuration);
       SheetGraphics graphics = new SheetGraphics(directContent, encodingRegistry.getBaseFont(), encodingRegistry.getSymbolBaseFont());
       ReportContent content = new ReportContent(getContentRegistry(), character, description);
       encoder.encode(document, graphics, content);
@@ -101,6 +102,7 @@ public class SimpleMortalSheetReport implements IITextReport {
     return moduleObjectMap.getModuleObject(CharacterReportingModule.class);
   }
 
+  @Override
   public boolean supports(IItem item) {
     if (item == null) {
       return false;

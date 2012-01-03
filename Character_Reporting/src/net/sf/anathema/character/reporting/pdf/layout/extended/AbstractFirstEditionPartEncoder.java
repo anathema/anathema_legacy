@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
@@ -13,7 +12,7 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
   private final IResources resources;
   private final BaseFont baseFont;
 
-  public AbstractFirstEditionPartEncoder(IResources resources, BaseFont baseFont) {
+  protected AbstractFirstEditionPartEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
     this.baseFont = baseFont;
   }
@@ -26,22 +25,22 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
     return baseFont;
   }
 
-  public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {
-    return new HorizontalLineBoxContentEncoder(1, "Notes"); //$NON-NLS-1$
-  }
-
+  @Override
   public IBoxContentEncoder getHealthEncoder() {
     return null;
   }
 
+  @Override
   public IBoxContentEncoder getMovementEncoder() {
     return null;
   }
 
+  @Override
   public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders() {
     return new IVariableBoxContentEncoder[0];
   }
 
+  @Override
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
     return new IPdfPageEncoder[0];
   }

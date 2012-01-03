@@ -46,6 +46,7 @@ public class SimpleFirstPageEncoder implements IPdfPageEncoder {
     this.boxEncoder = new PdfBoxEncoder(resources);
   }
 
+  @Override
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
     float distanceFromTop = 0;
     final float firstRowHeight = 51;
@@ -210,9 +211,7 @@ public class SimpleFirstPageEncoder implements IPdfPageEncoder {
 
   private float encodeIntimacies(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = partEncoder.getIntimaciesEncoder(registry);
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
-    return height;
+    return encode(graphics, content, bounds, EncoderIds.INTIMACIES_SIMPLE, EncoderIds.NOTES);
   }
 
   private float encode(SheetGraphics graphics, ReportContent content, Bounds bounds, String... encoderIds) throws DocumentException {

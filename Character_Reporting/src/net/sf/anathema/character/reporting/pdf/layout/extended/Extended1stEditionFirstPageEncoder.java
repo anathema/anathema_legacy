@@ -51,7 +51,7 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
 
     DocumentException {
     int distanceFromTop = 0;
-    final int firstRowHeight = 51;
+    int firstRowHeight = 51;
     encodePersonalInfo(graphics, content, distanceFromTop, firstRowHeight);
     encodeEssence(graphics, content, distanceFromTop, firstRowHeight);
 
@@ -200,7 +200,7 @@ public class Extended1stEditionFirstPageEncoder implements IPdfPageEncoder {
 
   private float encodeIntimacies(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = partEncoder.getIntimaciesEncoder(registry);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(resources, content, EncoderIds.NOTES);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }

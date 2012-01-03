@@ -37,30 +37,32 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
     return IVoidStateFormatConstants.SMALLER_FONT_SIZE;
   }
 
+  @Override
   public IBoxContentEncoder getEssenceEncoder() {
     return new ExtendedEssenceBoxContentEncoder();
   }
 
+  @Override
   public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
     return new DotBoxContentEncoder(trait, traitMax, traitHeaderKey);
   }
 
-  public IBoxContentEncoder getIntimaciesEncoder(ExtendedEncodingRegistry registry) {
-    return registry.getIntimaciesEncoder();
-  }
-
+  @Override
   public IBoxContentEncoder getHealthEncoder() {
     return new Extended2ndEditionHealthEncoder(resources);
   }
 
+  @Override
   public IBoxContentEncoder getMovementEncoder() {
     return new Extended2ndEditionMovementEncoder(resources, baseFont);
   }
 
+  @Override
   public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders() {
     return new IVariableBoxContentEncoder[0];
   }
 
+  @Override
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
     return new IPdfPageEncoder[0];
   }

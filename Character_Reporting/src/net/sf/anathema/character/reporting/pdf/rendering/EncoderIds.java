@@ -13,7 +13,10 @@ public interface EncoderIds {
   String COMBAT = CombatStatsContentBoxEncoder.class.getName();
   String ESSENCE_SIMPLE = SimpleEssenceBoxContentEncoder.class.getName();
   String EXPERIENCE = ExperienceBoxContentEncoder.class.getName();
+  String INTIMACIES_EXTENDED = "IntimaciesExtended";
+  String INTIMACIES_SIMPLE = "IntimaciesSimple";
   String HEALTH_AND_MOVEMENT = AbstractHealthAndMovementEncoder.class.getName();
   String MERITS_AND_FLAWS = "MeritsAndFlaws";
+  String NOTES = "Notes";
   String SOCIAL_COMBAT = "SocialCombat";
 }
