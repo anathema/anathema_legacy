@@ -10,10 +10,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.MagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfGenericCharmEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfMagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -59,7 +58,7 @@ public class SimpleSecondPageEncoder extends AbstractPageEncoder {
     }
 
     float remainingHeight = configuration.getContentHeight() - distanceFromTop;
-    List<IMagicStats> printMagic = PdfMagicEncoder.collectPrintMagic(content);
+    List<IMagicStats> printMagic = MagicEncoder.collectPrintMagic(content);
     encodeCharms(graphics, printMagic, distanceFromTop, remainingHeight);
     while (!printMagic.isEmpty()) {
       document.newPage();
@@ -68,8 +67,7 @@ public class SimpleSecondPageEncoder extends AbstractPageEncoder {
   }
 
   private float encodeCombos(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    Bounds restOfPage = new Bounds(configuration.getLeftX(), configuration.getLowerContentY(), configuration.getContentWidth(),
-            configuration.getContentHeight() - distanceFromTop);
+    Bounds restOfPage = new Bounds(configuration.getLeftX(), configuration.getLowerContentY(), configuration.getContentWidth(), configuration.getContentHeight() - distanceFromTop);
     return new PdfComboEncoder(resources).encodeCombos(graphics, content, restOfPage);
   }
 
@@ -109,7 +107,7 @@ public class SimpleSecondPageEncoder extends AbstractPageEncoder {
 
   private float encodeCharms(SheetGraphics graphics, List<IMagicStats> printMagic, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    ContentEncoder encoder = new PdfMagicEncoder(resources, printMagic);
+    ContentEncoder encoder = new MagicEncoder(resources, printMagic);
     boxEncoder.encodeBox(null, graphics, encoder, bounds);
     return height;
   }

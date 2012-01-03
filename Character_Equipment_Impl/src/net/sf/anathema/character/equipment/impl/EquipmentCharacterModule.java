@@ -42,18 +42,15 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) throws InitializationException {
-    File dataBaseFile = new File(characterGenerics.getDataFileProvider().getDataBaseDirectory(Db4OEquipmentDatabase.DATABASE_FOLDER),
-      Db4OEquipmentDatabase.DATABASE_FILE);
+    File dataBaseFile = new File(characterGenerics.getDataFileProvider().getDataBaseDirectory(Db4OEquipmentDatabase.DATABASE_FOLDER), Db4OEquipmentDatabase.DATABASE_FILE);
     IEquipmentTemplateProvider equipmentDatabase;
     try {
       equipmentDatabase = new Db4OEquipmentDatabase(dataBaseFile);
     } catch (DatabaseFileLockedException e) {
       throw new InitializationException("Equipment database locked.\nAnathema may already be running.", e); //$NON-NLS-1$
     }
-    characterGenerics.getAdditionalModelFactoryRegistry()
-      .register(IEquipmentAdditionalModelTemplate.ID, new EquipmentAdditionalModelFactory(equipmentDatabase));
-    characterGenerics.getAdditonalPersisterFactoryRegistry()
-      .register(IEquipmentAdditionalModelTemplate.ID, new EquipmentAdditionalPersisterFactory());
+    characterGenerics.getAdditionalModelFactoryRegistry().register(IEquipmentAdditionalModelTemplate.ID, new EquipmentAdditionalModelFactory(equipmentDatabase));
+    characterGenerics.getAdditonalPersisterFactoryRegistry().register(IEquipmentAdditionalModelTemplate.ID, new EquipmentAdditionalPersisterFactory());
     characterGenerics.getAdditionalViewFactoryRegistry().register(IEquipmentAdditionalModelTemplate.ID, new EquipmentAdditionalViewFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(new EquipmentAdditionalModelTemplate());
   }
@@ -61,7 +58,7 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    registerEncoders(moduleObject.getExtendedEncodingRegistry());
+    registerEncoders(resources, moduleObject.getExtendedEncodingRegistry());
     registerContent(moduleObject.getContentRegistry(), resources);
     registerBoxEncoders(moduleObject.getEncoderRegistry());
   }
@@ -81,8 +78,8 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
     registry.addFactory(PossessionsContent.class, new PossessionsContentFactory(resources));
   }
 
-  private void registerEncoders(IEncodingRegistry registry) {
-    registry.setArmourContentEncoder(new ArmourEncoder(new ArmourTableEncoder(ArmourContent.class)));
+  private void registerEncoders(IResources resources, IEncodingRegistry registry) {
+    registry.setArmourContentEncoder(new ArmourEncoder(resources, new ArmourTableEncoder(ArmourContent.class)));
     registry.setPossessionsEncoder(new PossessionsEncoder());
   }
 }

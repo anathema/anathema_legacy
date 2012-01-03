@@ -7,15 +7,19 @@ import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
-public class VirtueBoxContentEncoder implements ContentEncoder {
+public class VirtueEncoder extends AbstractBoxContentEncoder<VirtueContent> {
+
+  public VirtueEncoder() {
+    super(VirtueContent.class);
+  }
 
   public void encode(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
-    VirtueContent virtueContent = getSubContent(content);
+    VirtueContent virtueContent = createContent(content);
     encodeVirtues(graphics, bounds, virtueContent);
   }
 
@@ -45,17 +49,5 @@ public class VirtueBoxContentEncoder implements ContentEncoder {
     traitEncoder.encodeDotsCenteredAndUngrouped(graphics, traitPosition, width, value, 5);
     yPosition -= traitEncoder.getTraitHeight() - 1;
     traitEncoder.encodeSquaresCenteredAndUngrouped(graphics, new Position(position.x, yPosition), width, 0, 5);
-  }
-
-  public boolean hasContent(ReportContent content) {
-    return getSubContent(content).hasContent();
-  }
-
-  public String getHeaderKey(ReportContent content) {
-    return getSubContent(content).getHeaderKey();
-  }
-
-  protected VirtueContent getSubContent(ReportContent content) {
-    return content.createSubContent(VirtueContent.class);
   }
 }

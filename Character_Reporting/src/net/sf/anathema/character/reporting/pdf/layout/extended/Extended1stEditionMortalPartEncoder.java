@@ -30,7 +30,7 @@ public class Extended1stEditionMortalPartEncoder extends AbstractFirstEditionPar
 
   @Override
   public ContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
-    return new DotBoxContentEncoder(trait, traitMax, traitHeaderKey);
+    return new DotBoxContentEncoder(trait, traitMax, getResources(), traitHeaderKey);
   }
 
   @Override

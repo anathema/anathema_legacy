@@ -22,7 +22,7 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
   }
 
   public ContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
-    return new DotBoxContentEncoder(trait, traitMax, traitHeaderKey);
+    return new DotBoxContentEncoder(trait, traitMax, getResources(), traitHeaderKey);
   }
 
   public ContentEncoder getOverdriveEncoder() {

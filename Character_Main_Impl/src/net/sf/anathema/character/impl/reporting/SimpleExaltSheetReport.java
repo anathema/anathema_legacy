@@ -14,7 +14,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.FirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleSecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -58,7 +58,7 @@ public class SimpleExaltSheetReport implements IITextReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
-      encoderList.add(new SimpleFirstPageEncoder(getEncoderRegistry(), resources, configuration));
+      encoderList.add(new FirstPageEncoder(getEncoderRegistry(), resources, configuration));
       ReportContent content = new ReportContent(getContentRegistry(), character, description);
       Collections.addAll(encoderList, findAdditionalPages(configuration, content));
       encoderList.add(new SimpleSecondPageEncoder(getEncoderRegistry(), resources, configuration));

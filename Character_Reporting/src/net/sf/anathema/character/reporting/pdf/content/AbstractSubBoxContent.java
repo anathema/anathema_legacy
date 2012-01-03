@@ -7,4 +7,9 @@ public abstract class AbstractSubBoxContent extends AbstractSubContent implement
   protected AbstractSubBoxContent(IResources resources) {
     super(resources);
   }
+
+  @Override
+  public String getHeader() {
+    return getResources().getString("Sheet.Header." + getHeaderKey());
+  }
 }

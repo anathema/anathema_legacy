@@ -16,7 +16,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class PdfInitiationEncoder implements IVariableContentEncoder {
 
@@ -35,10 +35,6 @@ public class PdfInitiationEncoder implements IVariableContentEncoder {
 
   protected BaseFont getBaseFont() {
     return baseFont;
-  }
-
-  public String getHeaderKey(ReportContent content) {
-    return "Initiations"; //$NON-NLS-1$
   }
 
   @Override
@@ -60,6 +56,7 @@ public class PdfInitiationEncoder implements IVariableContentEncoder {
     return height;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     ISpellMagicTemplate spellMagicTemplate = reportContent.getCharacter().getTemplate().getMagicTemplate().getSpellMagic();
     ICharm[] knownCharms = reportContent.getCharacter().getLearnedCharms();
@@ -68,7 +65,7 @@ public class PdfInitiationEncoder implements IVariableContentEncoder {
     for (CircleType circle : CircleType.values()) {
       if (spellMagicTemplate.knowsSpellMagic(knownCharms, circle)) {
         Chunk prefix = new Chunk(resources.getString("Initiation." + circle.getId()) + ": ", //$NON-NLS-1$ //$NON-NLS-2$
-          headerFont);
+                headerFont);
         phrase.add(prefix);
         // TODO: Actually show the sacrifice! (or at least a blank line or two)
         phrase.add(new Chunk("\n", textFont)); //$NON-NLS-1$
@@ -87,6 +84,12 @@ public class PdfInitiationEncoder implements IVariableContentEncoder {
     return false;
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Initiations");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     // TODO: Implement!
     return true;

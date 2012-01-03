@@ -33,12 +33,9 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
     this.resources = resources;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     encodeTable(graphics, reportContent, bounds);
-  }
-
-  public String getHeaderKey(ReportContent content) {
-    return "Lunar.HeartsBlood"; //$NON-NLS-1$
   }
 
   protected IHeartsBloodStats[] getPrintStats(ReportContent content) {
@@ -46,22 +43,27 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
     List<IHeartsBloodStats> stats = new ArrayList<IHeartsBloodStats>();
     for (final IAnimalForm form : model.getEntries()) {
       stats.add(new IHeartsBloodStats() {
+        @Override
         public IIdentificate getName() {
           return new Identificate(form.getName());
         }
 
+        @Override
         public String getAppearanceString() {
           return String.valueOf(form.getAppearance());
         }
 
+        @Override
         public String getStaminaString() {
           return String.valueOf(form.getStamina());
         }
 
+        @Override
         public String getDexterityString() {
           return String.valueOf(form.getDexterity());
         }
 
+        @Override
         public String getStrengthString() {
           return String.valueOf(form.getStrength());
         }
@@ -73,9 +75,7 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
   @SuppressWarnings("unchecked")
   @Override
   protected IStatsGroup<IHeartsBloodStats>[] createStatsGroups(ReportContent content) {
-    return new IStatsGroup[] { new HeartsBloodNameStatsGroup(resources), new HeartsBloodStrengthStatsGroup(
-      resources), new HeartsBloodDexterityStatsGroup(resources), new HeartsBloodStaminaStatsGroup(resources), new HeartsBloodAppearanceStatsGroup(
-      resources), new HeartsBloodNotesStatsGroup(resources) };
+    return new IStatsGroup[]{new HeartsBloodNameStatsGroup(resources), new HeartsBloodStrengthStatsGroup(resources), new HeartsBloodDexterityStatsGroup(resources), new HeartsBloodStaminaStatsGroup(resources), new HeartsBloodAppearanceStatsGroup(resources), new HeartsBloodNotesStatsGroup(resources)};
   }
 
   @Override
@@ -96,6 +96,12 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
     table.deleteLastRow();
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Lunar.HeartsBlood");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

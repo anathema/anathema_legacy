@@ -42,10 +42,8 @@ public class PersonalInfoBoxEncoder implements IVariableContentEncoder {
     if (characterType.isExaltType()) {
       graphics.drawLabelledContent(conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), entryWidth);
       String casteContent = getCasteString(reportContent.getCharacter().getConcept().getCasteType());
-      graphics.drawLabelledContent(getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, firstRowY),
-        entryWidth); //$NON-NLS-1$
-    }
-    else {
+      graphics.drawLabelledContent(getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
+    } else {
       graphics.drawLabelledContent(conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), 2 * entryWidth + TEXT_PADDING);
     }
     IExaltedRuleSet rules = reportContent.getCharacter().getRules();
@@ -54,8 +52,7 @@ public class PersonalInfoBoxEncoder implements IVariableContentEncoder {
 
     float secondRowY = firstRowY - lineHeight;
     String motivationContent = reportContent.getCharacter().getConcept().getWillpowerRegainingComment(resources);
-    String motivationLabel =
-      reportContent.getCharacter().getRules().getEdition() == ExaltedEdition.SecondEdition ? getLabel("Motivation") : getLabel("Nature");
+    String motivationLabel = reportContent.getCharacter().getRules().getEdition() == ExaltedEdition.SecondEdition ? getLabel("Motivation") : getLabel("Nature");
     graphics.drawLabelledContent(motivationLabel, motivationContent, new Position(firstColumnX, secondRowY), bounds.width);
 
     float thirdRowY = secondRowY - lineHeight;
@@ -106,14 +103,9 @@ public class PersonalInfoBoxEncoder implements IVariableContentEncoder {
   }
 
   @Override
-  public String getHeaderKey(ReportContent content) {
+  public String getHeader(ReportContent content) {
     String name = content.getDescription().getName();
-    if (StringUtilities.isNullOrTrimmedEmpty(name)) {
-      return "PersonalInfo"; //$NON-NLS-1$
-    }
-    else {
-      return name + ".Literal"; //$NON-NLS-1$
-    }
+    return StringUtilities.isNullOrTrimmedEmpty(name) ? resources.getString("Sheet.Header.PersonalInfo") : name; //$NON-NLS-1$
   }
 
   @Override

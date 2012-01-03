@@ -19,7 +19,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
@@ -128,7 +128,7 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
     float smallWidth = configuration.getColumnWidth();
     AttributeBoundsEncoder beastBoxEncoder = new AttributeBoundsEncoder(smallWidth, getOverlapFreeSpaceHeight());
     FirstEditionLunarBeastformAttributesEncoder encoder = new FirstEditionLunarBeastformAttributesEncoder(resources, boxEncoder.calculateInsettedWidth(smallWidth));
-    new PdfHeaderBoxEncoder().encodeHeaderBox(graphics, attributeBounds, resources.getString("Sheet.Header." + encoder.getHeaderKey(content))); //$NON-NLS-1$
+    new PdfHeaderBoxEncoder().encodeHeaderBox(graphics, attributeBounds, encoder.getHeader(content)); //$NON-NLS-1$
     boxEncoder.encodeBox(graphics, encoder, beastBoxEncoder, content, attributeBounds);
     return attributeHeight;
   }
@@ -146,7 +146,7 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
   private float encodeArmourAndSoak(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 2);
     ITableEncoder armourEncoder = new ArmourTableEncoder(LunarArmourContent.class);
-    ContentEncoder contentEncoder = new ArmourEncoder(armourEncoder);
+    ContentEncoder contentEncoder = new ArmourEncoder(resources, armourEncoder);
     boxEncoder.encodeBox(content, graphics, contentEncoder, bounds);
     return bounds.getHeight();
   }
@@ -174,7 +174,7 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
 
   private float encodeVirtues(SheetGraphics graphics, float distanceFromTop, float height, ReportContent content) throws DocumentException {
     Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    ContentEncoder encoder = new VirtueBoxContentEncoder();
+    ContentEncoder encoder = new VirtueEncoder();
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return bounds.getHeight();
   }

@@ -27,6 +27,7 @@ public class FirstEditionDBTCombatEncoder implements ContentEncoder {
     this.resources = resources;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     String initiativeLabel = resources.getString("Sheet.Combat.BaseInitiative"); //$NON-NLS-1$
     String dodgePoolLabel = resources.getString("Sheet.Combat.DodgePool"); //$NON-NLS-1$
@@ -66,10 +67,11 @@ public class FirstEditionDBTCombatEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeaderKey(ReportContent content) {
-    return "Combat";
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Combat");
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

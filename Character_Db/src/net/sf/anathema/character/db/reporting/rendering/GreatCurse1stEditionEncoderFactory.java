@@ -15,7 +15,7 @@ public class GreatCurse1stEditionEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new GreatCurse1stEditionEncoder(resources);
+    return new GreatCurse1stEditionEncoder();
   }
 
   @Override

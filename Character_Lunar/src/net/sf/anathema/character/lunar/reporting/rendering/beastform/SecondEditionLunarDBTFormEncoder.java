@@ -32,10 +32,7 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Lunar.WarForm"; //$NON-NLS-1$
-  }
-
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
 
     IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
@@ -68,9 +65,7 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
   private final void encodeMutations(SheetGraphics graphics, Bounds bounds, ReportContent content) {
     final int horizontalSpacing = 15;
     final int verticalSpacing = 5;
-    Bounds newBounds =
-      new Bounds(bounds.x + bounds.getWidth() * 1 / 2 + horizontalSpacing, bounds.y + verticalSpacing, bounds.getWidth() * 1 / 2 - horizontalSpacing,
-        bounds.height - 2 * verticalSpacing);
+    Bounds newBounds = new Bounds(bounds.x + bounds.getWidth() * 1 / 2 + horizontalSpacing, bounds.y + verticalSpacing, bounds.getWidth() * 1 / 2 - horizontalSpacing, bounds.height - 2 * verticalSpacing);
     ContentEncoder encoder = new GiftEncoder();
     try {
       new PdfBoxEncoder(resources).encodeBox(content, graphics, encoder, newBounds);
@@ -80,8 +75,7 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
     }
   }
 
-  private final void encodeAttributes(SheetGraphics graphics, Bounds contentBounds, IGroupedTraitType[] attributeGroups,
-    IGenericTraitCollection traitCollection) {
+  private final void encodeAttributes(SheetGraphics graphics, Bounds contentBounds, IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - 2 * groupSpacing;
     int maximum = PHYSICAL_MAX;
@@ -99,6 +93,12 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
     }
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Lunar.WarForm");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

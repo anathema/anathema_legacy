@@ -7,19 +7,23 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.lib.resources.IResources;
 
 public class CombatStatsContentBoxEncoder implements ContentEncoder {
 
   private final static float PADDING = 3;
 
+  private IResources resources;
   private final ITableEncoder combatRulesEncoder;
   private final IContentEncoder combatValueEncoder;
 
-  public CombatStatsContentBoxEncoder(ITableEncoder combatRulesEncoder, IContentEncoder combatValueEncoder) {
+  public CombatStatsContentBoxEncoder(IResources resources, ITableEncoder combatRulesEncoder, IContentEncoder combatValueEncoder) {
+    this.resources = resources;
     this.combatRulesEncoder = combatRulesEncoder;
     this.combatValueEncoder = combatValueEncoder;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float height = combatValueEncoder.encode(graphics, reportContent, bounds);
     Bounds ruleBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - height - PADDING);
@@ -30,10 +34,12 @@ public class CombatStatsContentBoxEncoder implements ContentEncoder {
     combatRulesEncoder.encodeTable(graphics, content, bounds);
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Combat"; //$NON-NLS-1$
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Combat");
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

@@ -25,6 +25,7 @@ public class ArcaneFateInfoEncoder implements ContentEncoder {
     this.edition = edition;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     String rememberingResource = edition == ExaltedEdition.FirstEdition ? "Sheet.ArcaneFate.Remembering" : "Sheet.ArcaneFate.Remembering2nd";
     Chunk symbolChunk = graphics.createSymbolChunk();
@@ -44,12 +45,13 @@ public class ArcaneFateInfoEncoder implements ContentEncoder {
     graphics.createSimpleColumn(bounds).withLeading(lineHeight).andTextPart(phrase).encode();
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Sidereal.ArcaneFate");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }
-
-  public String getHeaderKey(ReportContent content) {
-    return "Sidereal.ArcaneFate"; //$NON-NLS-1$
-  }
-
 }

@@ -25,10 +25,7 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
     super(resources, PdfTraitEncoder.createSmallTraitEncoder());
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Specialties"; //$NON-NLS-1$
-  }
-
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
     for (IIdentifiedTraitTypeGroup group : reportContent.getCharacter().getAbilityTypeGroups()) {
@@ -53,6 +50,12 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
     drawNamedTraitSection(graphics, null, rightSpecialties, new Position(rightPosition, yPosition), columnWidth, columnHeight, 3);
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return getResources().getString("Sheet.Header.Specialties");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

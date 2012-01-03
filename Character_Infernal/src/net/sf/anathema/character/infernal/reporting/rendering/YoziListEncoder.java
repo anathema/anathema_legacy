@@ -7,7 +7,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableCo
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
-public class YoziListEncoder extends FavorableTraitBoxContentEncoder implements IVariableContentEncoder {
+public class YoziListEncoder extends FavorableTraitBoxContentEncoder<InfernalYoziListContent> implements IVariableContentEncoder {
   private final float lineHeight = 16;
 
   public YoziListEncoder() {

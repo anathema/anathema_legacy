@@ -22,6 +22,7 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
     this.resources = resources;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     String joinLabel = resources.getString("Sheet.Combat.JoinBattle"); //$NON-NLS-1$
     String dodgeLabel = resources.getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
@@ -56,11 +57,12 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeaderKey(ReportContent content) {
-    return "Lunar.WarForm.CombatValues";
-  }
-
   public boolean hasContent(ReportContent content) {
     return true;
+  }
+
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Lunar.WarForm.CombatValues");
   }
 }

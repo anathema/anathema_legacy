@@ -27,6 +27,7 @@ public class ParadoxEncoder implements ContentEncoder {
     this.resources = resources;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(SiderealParadoxTemplate.ID)).getVirtueFlaw();
     Bounds textBounds = new VirtueFlawBoxEncoder().encode(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
@@ -38,16 +39,18 @@ public class ParadoxEncoder implements ContentEncoder {
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
     phrase.add(graphics.createSymbolChunk());
     phrase.add(resources.getString("Sheet.GreatCurse.Sidereal." +
-      (reportContent.getCharacter().getRules().getEdition() == ExaltedEdition.SecondEdition ? "2E." : "") +
-      "RulesPages")); //$NON-NLS-1$
+            (reportContent.getCharacter().getRules().getEdition() == ExaltedEdition.SecondEdition ? "2E." : "") +
+            "RulesPages")); //$NON-NLS-1$
     Bounds infoBounds = new Bounds(bounds.x, bounds.y, bounds.width, textBounds.height - lineHeight);
     graphics.createSimpleColumn(infoBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode();
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "GreatCurse.Sidereal"; //$NON-NLS-1$
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.GreatCurse.Sidereal");
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

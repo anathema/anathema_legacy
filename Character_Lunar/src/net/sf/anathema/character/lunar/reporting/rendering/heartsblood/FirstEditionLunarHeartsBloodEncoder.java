@@ -29,12 +29,14 @@ public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsT
     this.resources = resources;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     encodeTable(graphics, reportContent, bounds);
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Lunar.HeartsBlood"; //$NON-NLS-1$
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Lunar.HeartsBlood");
   }
 
   @Override
@@ -48,22 +50,27 @@ public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsT
     List<IHeartsBloodStats> stats = new ArrayList<IHeartsBloodStats>();
     for (final IAnimalForm form : model.getEntries()) {
       stats.add(new IHeartsBloodStats() {
+        @Override
         public IIdentificate getName() {
           return new Identificate(form.getName());
         }
 
+        @Override
         public String getAppearanceString() {
           return String.valueOf(form.getAppearance());
         }
 
+        @Override
         public String getStaminaString() {
           return String.valueOf(form.getStamina());
         }
 
+        @Override
         public String getDexterityString() {
           return String.valueOf(form.getDexterity());
         }
 
+        @Override
         public String getStrengthString() {
           return String.valueOf(form.getStrength());
         }
@@ -75,11 +82,11 @@ public class FirstEditionLunarHeartsBloodEncoder extends AbstractFixedLineStatsT
   @SuppressWarnings("unchecked")
   @Override
   protected IStatsGroup<IHeartsBloodStats>[] createStatsGroups(ReportContent content) {
-    return new IStatsGroup[] { new HeartsBloodNameStatsGroup(resources), new HeartsBloodStrengthStatsGroup(
-      resources), new HeartsBloodStaminaStatsGroup(resources) };
+    return new IStatsGroup[]{new HeartsBloodNameStatsGroup(resources), new HeartsBloodStrengthStatsGroup(resources), new HeartsBloodStaminaStatsGroup(resources)};
 
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

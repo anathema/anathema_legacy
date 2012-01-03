@@ -19,6 +19,7 @@ public class ResplendentDestinyEncoder implements ContentEncoder {
     this.lineHeight = fontSize * 1.5f;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     int yPosition = (int) (bounds.getMaxY() - lineHeight);
     graphics.drawLabelledContent(getLabel("Label.College"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
@@ -44,14 +45,16 @@ public class ResplendentDestinyEncoder implements ContentEncoder {
     new HorizontalLineEncoder().encodeLines(graphics, lineStartPosition, minX, maxX, lineHeight, count);
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Sidereal.ResplendentDestiny"; //$NON-NLS-1$  
-  }
-
   protected final String getLabel(String key) {
     return resources.getString("Sheet.ResplendentDestiny." + key) + ":"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Sidereal.ResplendentDestiny");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

@@ -25,6 +25,7 @@ public class FlawedFateEncoder implements ContentEncoder {
     this.resources = resources;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     Font boldFont = graphics.createBoldFont();
     IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(SiderealFlawedFateTemplate.ID)).getVirtueFlaw();
@@ -40,10 +41,12 @@ public class FlawedFateEncoder implements ContentEncoder {
     graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode();
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "FlawedFate"; //$NON-NLS-1$
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.FlawedFate");
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

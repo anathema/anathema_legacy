@@ -9,19 +9,15 @@ import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerConten
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
-public class ExtendedWillpowerEncoder implements ContentEncoder {
+public class ExtendedWillpowerEncoder extends AbstractBoxContentEncoder<WillpowerContent> {
 
-  public String getHeaderKey(ReportContent content) {
-    return "Willpower"; //$NON-NLS-1$
-  }
-
-  private WillpowerContent createContent(ReportContent content) {
-    return content.createSubContent(WillpowerContent.class);
+  public ExtendedWillpowerEncoder() {
+    super(WillpowerContent.class);
   }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
@@ -61,9 +57,5 @@ public class ExtendedWillpowerEncoder implements ContentEncoder {
     BulletList willpowerRegainingRules = content.getWillpowerRegainingRules();
     ListUtils.addBulletList(regainingPhrase, symbolChunk, willpowerRegainingRules.header, willpowerRegainingRules.items);
     graphics.createSimpleColumn(regainingBounds).withLeading(lineHeight).andTextPart(regainingPhrase).encode().getYLine();
-  }
-
-  public boolean hasContent(ReportContent content) {
-    return true;
   }
 }

@@ -20,4 +20,5 @@ public interface EncoderIds {
   String SOCIAL_COMBAT = "SocialCombat";
   String WILLPOWER_SIMPLE = "WillpowerSimple";
   String WILLPOWER_EXTENDED = "WillpowerExtended";
+  String VIRTUES = "Virtues";
 }
