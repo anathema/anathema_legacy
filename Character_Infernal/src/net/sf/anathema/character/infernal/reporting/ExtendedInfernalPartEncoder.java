@@ -14,6 +14,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
+  // Should this field be removed?
   private BaseFont baseFont;
 
   public ExtendedInfernalPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {

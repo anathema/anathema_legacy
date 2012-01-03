@@ -17,6 +17,7 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
 
   private int toolTipTime = SYSTEM_PREFERENCES.getInt(TOOL_TIP_TIME_PREFERENCE, 10);
   private boolean dirty;
+  // Should this field be removed?
   boolean modificationAllowed = false;
   private IntegerSpinner spinner;
 
