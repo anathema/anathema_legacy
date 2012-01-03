@@ -37,6 +37,7 @@ public class NatureProvider implements INatureProvider {
     File natureFile = new File("./data/natures.xml"); //$NON-NLS-1$
     if (natureFile.exists()) {
       try {
+        // Shouldn't this stream to be closed?
         InputStream externalStream = new FileInputStream(natureFile);
         createNaturesFromStream(externalStream, true);
       }
