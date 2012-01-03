@@ -16,7 +16,7 @@ import net.sf.anathema.character.lunar.reporting.rendering.heartsblood.FirstEdit
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
@@ -44,10 +44,10 @@ public class Extended1stEditionLunarBeastformPageEncoder implements PageEncoder 
   private static final int VIRTUE_HEIGHT = 72;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
-  private BoxContentEncoderRegistry encoderRegistry;
+  private EncoderRegistry encoderRegistry;
   private final IExtendedPartEncoder partEncoder;
 
-  public Extended1stEditionLunarBeastformPageEncoder(BoxContentEncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, BaseFont baseFont,
+  public Extended1stEditionLunarBeastformPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, BaseFont baseFont,
     IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;

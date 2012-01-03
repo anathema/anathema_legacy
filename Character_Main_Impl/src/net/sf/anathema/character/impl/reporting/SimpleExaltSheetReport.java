@@ -22,7 +22,7 @@ import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleSecondPageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -87,7 +87,7 @@ public class SimpleExaltSheetReport implements IITextReport {
     }
   }
 
-  private BoxContentEncoderRegistry getEncoderRegistry() {
+  private EncoderRegistry getEncoderRegistry() {
     return getReportingModuleObject().getEncoderRegistry();
   }
 

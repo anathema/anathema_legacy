@@ -6,7 +6,7 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
@@ -33,11 +33,11 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private final ExtendedEncodingRegistry registry;
-  private BoxContentEncoderRegistry encoderRegistry;
+  private EncoderRegistry encoderRegistry;
   private final IExtendedPartEncoder partEncoder;
 
-  public Extended1stEditionFirstPageEncoder(BoxContentEncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder,
-    ExtendedEncodingRegistry registry, IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
+  public Extended1stEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
+    IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;
     this.essenceMax = essenceMax;

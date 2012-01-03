@@ -4,11 +4,11 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractFirstEditionPartEncoder implements ISimplePartEncoder {
+public abstract class AbstractSimplePartEncoder implements ISimplePartEncoder {
 
   private final IResources resources;
 
-  protected AbstractFirstEditionPartEncoder(IResources resources) {
+  protected AbstractSimplePartEncoder(IResources resources) {
     this.resources = resources;
   }
 

@@ -15,7 +15,7 @@ import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -40,7 +40,7 @@ public class IntimaciesModule extends NullObjectCharacterModuleAdapter {
     registerEncoders(moduleObject.getEncoderRegistry());
   }
 
-  private void registerEncoders(BoxContentEncoderRegistry registry) {
+  private void registerEncoders(EncoderRegistry registry) {
     registry.add(new SimpleIntimaciesEncoderFactory());
     registry.add(new ExtendedIntimaciesEncoderFactory());
   }

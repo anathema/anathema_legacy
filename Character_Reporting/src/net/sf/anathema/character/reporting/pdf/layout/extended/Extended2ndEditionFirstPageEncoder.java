@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.ExtendedSpecialtiesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
@@ -21,10 +21,10 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfigurati
 import net.sf.anathema.lib.resources.IResources;
 
 public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
-  private BoxContentEncoderRegistry encoderRegistry;
+  private EncoderRegistry encoderRegistry;
 
-  public Extended2ndEditionFirstPageEncoder(BoxContentEncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder,
-    ExtendedEncodingRegistry registry, IResources resources, PdfPageConfiguration pageConfiguration) {
+  public Extended2ndEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
+    IResources resources, PdfPageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;
   }

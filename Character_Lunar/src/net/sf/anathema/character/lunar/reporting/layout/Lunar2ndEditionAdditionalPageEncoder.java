@@ -17,7 +17,7 @@ import net.sf.anathema.character.lunar.reporting.rendering.heartsblood.SecondEdi
 import net.sf.anathema.character.lunar.reporting.rendering.knacks.KnackEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -34,10 +34,9 @@ public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
 
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
-  private BoxContentEncoderRegistry encoderRegistry;
+  private EncoderRegistry encoderRegistry;
 
-  public Lunar2ndEditionAdditionalPageEncoder(BoxContentEncoderRegistry encoderRegistry, IResources resources,
-    PdfPageConfiguration pageConfiguration) {
+  public Lunar2ndEditionAdditionalPageEncoder(EncoderRegistry encoderRegistry, IResources resources, PdfPageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;

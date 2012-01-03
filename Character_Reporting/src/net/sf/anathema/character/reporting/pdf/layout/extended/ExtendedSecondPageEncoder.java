@@ -4,7 +4,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -14,9 +14,9 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSEN
 
 public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
 
-  private BoxContentEncoderRegistry encoderRegistry;
+  private EncoderRegistry encoderRegistry;
 
-  public ExtendedSecondPageEncoder(BoxContentEncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
+  public ExtendedSecondPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
     IResources resources, PdfPageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;

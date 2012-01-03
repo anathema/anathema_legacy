@@ -16,7 +16,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
@@ -41,10 +41,10 @@ public class Simple1stEditionLunarBeastformPageEncoder implements PageEncoder {
   private static final int VIRTUE_HEIGHT = 72;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
-  private BoxContentEncoderRegistry encoderRegistry;
+  private EncoderRegistry encoderRegistry;
   private final ISimplePartEncoder partEncoder;
 
-  public Simple1stEditionLunarBeastformPageEncoder(BoxContentEncoderRegistry encoderRegistry, ISimplePartEncoder partEncoder, IResources resources,
+  public Simple1stEditionLunarBeastformPageEncoder(EncoderRegistry encoderRegistry, ISimplePartEncoder partEncoder, IResources resources,
     PdfPageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;

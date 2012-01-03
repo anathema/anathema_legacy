@@ -26,7 +26,7 @@ import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagic1stE
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -122,7 +122,7 @@ public class ExtendedSheetReport implements IITextReport {
     return getReportingModuleObject().getExtendedEncodingRegistry();
   }
 
-  private BoxContentEncoderRegistry getEncoderRegistry() {
+  private EncoderRegistry getEncoderRegistry() {
     return getReportingModuleObject().getEncoderRegistry();
   }
 

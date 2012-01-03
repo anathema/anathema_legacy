@@ -17,7 +17,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleMortalPageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -66,7 +66,7 @@ public class SimpleMortalSheetReport implements IITextReport {
     }
   }
 
-  private BoxContentEncoderRegistry getEncoderRegistry() {
+  private EncoderRegistry getEncoderRegistry() {
     return getReportingModuleObject().getEncoderRegistry();
   }
 

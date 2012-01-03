@@ -6,7 +6,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.resources.IResources;
 
-public class BoxContentEncoderRegistry {
+public class EncoderRegistry {
 
   public final MultiEntryMap<String, EncoderFactory> factoryById = new MultiEntryMap<String, EncoderFactory>();
 
