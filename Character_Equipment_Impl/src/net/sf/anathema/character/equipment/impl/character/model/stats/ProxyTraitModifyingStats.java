@@ -29,13 +29,18 @@ public class ProxyTraitModifyingStats extends AbstractStats implements ITraitMod
 
 	  @Override
 	  public boolean equals(Object obj) {
-	    if (!(obj instanceof ProxyTraitModifyingStats)) {
+	    if (obj == null || obj.getClass() != getClass()) {
 	      return false;
 	    }
 	    ProxyTraitModifyingStats other = (ProxyTraitModifyingStats) obj;
 	    return ObjectUtilities.equals(delegate, other.delegate)
 	        && ObjectUtilities.equals(material, other.material)
 	        && ObjectUtilities.equals(ruleSet, other.ruleSet);
+	  }
+
+	  @Override
+	  public int hashCode() {
+	    return ObjectUtilities.getHashCode(delegate, material, ruleSet);
 	  }
 
 	  @Override

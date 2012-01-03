@@ -46,6 +46,10 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
   }
 
   public int compareTo(IMagicStats stats) {
+    if (stats.getClass() != getClass()) {
+      throw new ClassCastException("Uncomparable elements.");
+    }
+
     if (stats instanceof SpellStats) {
       SpellStats spell = (SpellStats) stats;
       int r = getMagic().getCircleType().compareTo(spell.getMagic().getCircleType());
