@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml.health;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.lang.clone.ICloneable;
@@ -11,9 +12,12 @@ public class GenericHealthTemplate implements IHealthTemplate, ICloneable<Generi
 
   @Override
   public GenericHealthTemplate clone() {
-    GenericHealthTemplate healthTemplate = new GenericHealthTemplate();
-    healthTemplate.setToughnessControllingTraitTypes(toughnessTraitTypes);
-    healthTemplate.setBaseProviders(baseProviders);
+    GenericHealthTemplate healthTemplate;
+    try {
+      healthTemplate = (GenericHealthTemplate)super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new UnreachableCodeReachedException(e);
+    }
     return healthTemplate;
   }
 
