@@ -7,7 +7,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2n
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -58,8 +58,8 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   @Override
-  public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders() {
-    return new IVariableBoxContentEncoder[0];
+  public IVariableContentEncoder[] getAdditionalFirstPageEncoders() {
+    return new IVariableContentEncoder[0];
   }
 
   @Override

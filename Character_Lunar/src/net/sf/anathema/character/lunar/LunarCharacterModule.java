@@ -43,6 +43,8 @@ import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContentFactory;
 import net.sf.anathema.character.lunar.reporting.layout.Extended1stEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.reporting.layout.Extended2ndEditionLunarPartEncoder;
+import net.sf.anathema.character.lunar.reporting.layout.Lunar2ndEditionAdditionalPageFactory;
+import net.sf.anathema.character.lunar.reporting.layout.LunarBeastform1stEditionPageFactory;
 import net.sf.anathema.character.lunar.reporting.layout.LunarWeaponryEncoderFactory;
 import net.sf.anathema.character.lunar.reporting.layout.Simple1stEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.reporting.layout.Simple2ndEditionLunarPartEncoder;
@@ -215,6 +217,8 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     registerSimpleReporting(resources, moduleObject.getSimpleEncodingRegistry(), moduleObject.getEncoderRegistry());
     registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry(), moduleObject.getEncoderRegistry());
     registerEncoder(moduleObject.getEncoderRegistry());
+    moduleObject.getAdditionalPageRegistry().add(new LunarBeastform1stEditionPageFactory());
+    moduleObject.getAdditionalPageRegistry().add(new Lunar2ndEditionAdditionalPageFactory());
   }
 
   private void registerEncoder(EncoderRegistry registry) {

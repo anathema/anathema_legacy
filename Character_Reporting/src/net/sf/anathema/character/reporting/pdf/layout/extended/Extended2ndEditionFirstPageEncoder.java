@@ -14,7 +14,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.Experi
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -172,7 +172,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeAdditional(SheetGraphics graphics, ReportContent content, float distanceFromTop, float bottom) throws DocumentException {
     float increment = 0;
-    for (IVariableBoxContentEncoder encoder : getPartEncoder().getAdditionalFirstPageEncoders()) {
+    for (IVariableContentEncoder encoder : getPartEncoder().getAdditionalFirstPageEncoders()) {
       float height = encodeVariableBoxBottom(graphics, content, encoder, 3, 1, bottom, bottom - distanceFromTop - increment);
       increment += calculateBoxIncrement(height);
     }

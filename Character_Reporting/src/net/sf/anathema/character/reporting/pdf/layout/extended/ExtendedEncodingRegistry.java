@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.rendering.general.NullBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.collection.Table;
 
@@ -25,7 +25,7 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
   private ContentEncoder possessionsEncoder = new NullBoxContentEncoder("Possessions");
   private ContentEncoder linguisticsEncoder = new NullBoxContentEncoder("Linguistics");
   private ContentEncoder mutationsEncoder = new NullBoxContentEncoder("Mutations");
-  private List<IVariableBoxContentEncoder> sidebarEncoders = new ArrayList<IVariableBoxContentEncoder>();
+  private List<IVariableContentEncoder> sidebarEncoders = new ArrayList<IVariableContentEncoder>();
   private List<ITableEncoder> magicEncoders = new ArrayList<ITableEncoder>();
 
   public ExtendedEncodingRegistry() {
@@ -68,7 +68,7 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
     return mutationsEncoder;
   }
 
-  public List<IVariableBoxContentEncoder> getAdditionalMagicSidebarEncoders() {
+  public List<IVariableContentEncoder> getAdditionalMagicSidebarEncoders() {
     return sidebarEncoders;
   }
 

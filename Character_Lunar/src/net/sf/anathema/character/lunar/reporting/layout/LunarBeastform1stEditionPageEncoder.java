@@ -2,23 +2,23 @@ package net.sf.anathema.character.lunar.reporting.layout;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.ArmourEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.GiftEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.LunarFaceEncoder;
-import net.sf.anathema.character.lunar.reporting.rendering.beastform.BeastformAttributeBoundsEncoder;
+import net.sf.anathema.character.lunar.reporting.rendering.anima.LunarAnimaEncoderFactory;
+import net.sf.anathema.character.lunar.reporting.rendering.beastform.AttributeBoundsEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.FirstEditionDBTCombatEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.FirstEditionLunarBeastformAttributesEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarEquipmentEncoders;
 import net.sf.anathema.character.lunar.reporting.rendering.health.FirstEditionLunarHealthAndMovementEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.heartsblood.FirstEditionLunarHeartsBloodEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -35,24 +35,17 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSEN
 import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class Extended1stEditionLunarBeastformPageEncoder implements PageEncoder {
+public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
   private final IResources resources;
-  private final int essenceMax;
-  private final BaseFont baseFont;
 
   private static final int ANIMA_HEIGHT = 128;
   private static final int VIRTUE_HEIGHT = 72;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private EncoderRegistry encoderRegistry;
-  private final IExtendedPartEncoder partEncoder;
 
-  public Extended1stEditionLunarBeastformPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, BaseFont baseFont,
-    IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
+  public LunarBeastform1stEditionPageEncoder(EncoderRegistry encoderRegistry, IResources resources, PdfPageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
-    this.partEncoder = partEncoder;
-    this.baseFont = baseFont;
-    this.essenceMax = essenceMax;
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;
     this.boxEncoder = new PdfBoxEncoder(resources);
@@ -104,7 +97,7 @@ public class Extended1stEditionLunarBeastformPageEncoder implements PageEncoder 
 
   private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    ContentEncoder encoder = partEncoder.getEssenceEncoder();
+    ContentEncoder encoder = encoderRegistry.createEncoder(resources, content, EncoderIds.ESSENCE_SIMPLE);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return bounds.getHeight();
   }
@@ -118,8 +111,8 @@ public class Extended1stEditionLunarBeastformPageEncoder implements PageEncoder 
     String name = content.getDescription().getName();
     String title = StringUtilities.isNullOrTrimmedEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
     Bounds infoContentBounds = boxEncoder.encodeBox(graphics, infoBounds, title);
-    PersonalInfoEncoder encoder = new PersonalInfoEncoder(resources);
-    encoder.encodePersonalInfo(graphics, content, infoContentBounds);
+    PersonalInfoBoxEncoder encoder = new PersonalInfoBoxEncoder(resources);
+    encoder.encode(graphics, content, infoContentBounds);
   }
 
   private void encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop, float remainingHeightRequired)
@@ -134,7 +127,7 @@ public class Extended1stEditionLunarBeastformPageEncoder implements PageEncoder 
     int attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 2);
     float smallWidth = pageConfiguration.getColumnWidth();
-    BeastformAttributeBoundsEncoder beastBoxEncoder = new BeastformAttributeBoundsEncoder(smallWidth, getOverlapFreeSpaceHeight());
+    AttributeBoundsEncoder beastBoxEncoder = new AttributeBoundsEncoder(smallWidth, getOverlapFreeSpaceHeight());
     FirstEditionLunarBeastformAttributesEncoder encoder =
       new FirstEditionLunarBeastformAttributesEncoder(resources, boxEncoder.calculateInsettedWidth(smallWidth));
     new PdfHeaderBoxEncoder()
@@ -149,7 +142,7 @@ public class Extended1stEditionLunarBeastformPageEncoder implements PageEncoder 
 
   private void encodeAnima(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    ContentEncoder encoder = partEncoder.getAnimaEncoder();
+    ContentEncoder encoder = new LunarAnimaEncoderFactory(resources).createAnimaEncoder();
     boxEncoder.encodeBox(content, graphics, encoder, animaBounds);
   }
 

@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 
@@ -22,7 +22,7 @@ public interface IExtendedPartEncoder {
 
   boolean hasMagicPage();
 
-  IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders();
+  IVariableContentEncoder[] getAdditionalFirstPageEncoders();
 
   PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
 }

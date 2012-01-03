@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
@@ -36,8 +36,8 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
   }
 
   @Override
-  public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders() {
-    return new IVariableBoxContentEncoder[0];
+  public IVariableContentEncoder[] getAdditionalFirstPageEncoders() {
+    return new IVariableContentEncoder[0];
   }
 
   @Override

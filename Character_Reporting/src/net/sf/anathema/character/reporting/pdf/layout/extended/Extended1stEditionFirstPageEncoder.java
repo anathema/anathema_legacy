@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
@@ -166,8 +166,8 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
   }
 
   private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
-    PersonalInfoEncoder encoder = new PersonalInfoEncoder(resources);
-    encoder.encodePersonalInfo(graphics, content, infoBounds);
+    PersonalInfoBoxEncoder encoder = new PersonalInfoBoxEncoder(resources);
+    encoder.encode(graphics, content, infoBounds);
   }
 
   private float encodeVirtues(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
