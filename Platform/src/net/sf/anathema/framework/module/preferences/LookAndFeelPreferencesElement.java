@@ -34,9 +34,6 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   }
 
   private static boolean compareClassNames(String name1, String name2) {
-    if (name1 == name2) {
-      return true;
-    }
     if (name1 == null || name2 == null) {
       return false;
     }
