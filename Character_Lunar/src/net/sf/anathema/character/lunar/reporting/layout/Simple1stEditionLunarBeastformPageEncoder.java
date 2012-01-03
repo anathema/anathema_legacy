@@ -6,7 +6,7 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.ArmourEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.GiftEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.LunarFaceEncoder;
-import net.sf.anathema.character.lunar.reporting.rendering.beastform.BeastformAttributeBoundsEncoder2;
+import net.sf.anathema.character.lunar.reporting.rendering.beastform.BeastformAttributeBoundsEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.FirstEditionDBTCombatEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.FirstEditionLunarBeastformAttributesEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarEquipmentEncoders;
@@ -128,7 +128,7 @@ public class Simple1stEditionLunarBeastformPageEncoder implements IPdfPageEncode
     int attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 2);
     float smallWidth = pageConfiguration.getColumnWidth();
-    BeastformAttributeBoundsEncoder2 beastBoxEncoder = new BeastformAttributeBoundsEncoder2(smallWidth, getOverlapFreeSpaceHeight());
+    BeastformAttributeBoundsEncoder beastBoxEncoder = new BeastformAttributeBoundsEncoder(smallWidth, getOverlapFreeSpaceHeight());
     FirstEditionLunarBeastformAttributesEncoder encoder =
       new FirstEditionLunarBeastformAttributesEncoder(resources, boxEncoder.calculateInsettedWidth(smallWidth));
     new PdfHeaderBoxEncoder()
