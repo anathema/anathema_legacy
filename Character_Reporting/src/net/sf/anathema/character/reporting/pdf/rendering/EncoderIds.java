@@ -2,11 +2,13 @@ package net.sf.anathema.character.reporting.pdf.rendering;
 
 public interface EncoderIds {
 
+  String ANIMA = "Anima";
   String ARSENAL = "Arsenal";
   String ATTRIBUTES = "Attributes";
   String COMBAT = "Combat";
   String ESSENCE_SIMPLE = "EssenceSimple";
   String EXPERIENCE = "Experience";
+  String GREAT_CURSE = "GreatCurse";
   String INTIMACIES_EXTENDED = "IntimaciesExtended";
   String INTIMACIES_SIMPLE = "IntimaciesSimple";
   String LANGUAGES = "Languages";

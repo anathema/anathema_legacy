@@ -5,7 +5,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment.Center;
 import static net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment.Right;
@@ -13,10 +13,10 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 
 public class CopyrightEncoder {
 
-  private PdfPageConfiguration pageConfiguration;
+  private PageConfiguration pageConfiguration;
   private int contentHeight;
 
-  public CopyrightEncoder(PdfPageConfiguration pageConfiguration, int contentHeight) {
+  public CopyrightEncoder(PageConfiguration pageConfiguration, int contentHeight) {
     this.pageConfiguration = pageConfiguration;
     this.contentHeight = contentHeight;
   }

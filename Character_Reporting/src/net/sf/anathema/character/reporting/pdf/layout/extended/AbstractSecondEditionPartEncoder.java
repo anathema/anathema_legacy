@@ -10,7 +10,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartEncoder {
@@ -63,7 +63,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   @Override
-  public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
+  public PageEncoder[] getAdditionalPages(PageConfiguration configuration) {
     return new PageEncoder[0];
   }
 }

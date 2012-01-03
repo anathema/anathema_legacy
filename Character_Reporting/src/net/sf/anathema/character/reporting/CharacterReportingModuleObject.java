@@ -3,21 +3,15 @@ package net.sf.anathema.character.reporting;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.pages.PageRegistry;
 
 public class CharacterReportingModuleObject implements ICharacterModuleObject {
 
-  private final SimpleEncodingRegistry simpleEncodingRegistry = new SimpleEncodingRegistry();
   private final ExtendedEncodingRegistry extendedEncodingRegistry = new ExtendedEncodingRegistry();
   private final ReportContentRegistry contentRegistry = new ReportContentRegistry();
   private final EncoderRegistry encoderRegistry = new EncoderRegistry();
   private final PageRegistry additionalPageRegistry = new PageRegistry();
-
-  public SimpleEncodingRegistry getSimpleEncodingRegistry() {
-    return simpleEncodingRegistry;
-  }
 
   public ExtendedEncodingRegistry getExtendedEncodingRegistry() {
     return extendedEncodingRegistry;

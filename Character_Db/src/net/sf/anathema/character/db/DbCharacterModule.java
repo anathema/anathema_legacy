@@ -4,12 +4,13 @@ import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.magic.TerrestrialReinforcement;
 import net.sf.anathema.character.db.reporting.Extended1stEditionDbPartEncoder;
 import net.sf.anathema.character.db.reporting.Extended2ndEditionDbPartEncoder;
-import net.sf.anathema.character.db.reporting.Simple1stEditionDbPartEncoder;
-import net.sf.anathema.character.db.reporting.Simple2ndEditionDbPartEncoder;
 import net.sf.anathema.character.db.reporting.content.Db1stEditionGreatCurseContent;
 import net.sf.anathema.character.db.reporting.content.Db1stEditionGreatCurseContentFactory;
 import net.sf.anathema.character.db.reporting.content.Db2ndEditionGreatCurseContent;
 import net.sf.anathema.character.db.reporting.content.Db2ndEditionGreatCurseContentFactory;
+import net.sf.anathema.character.db.reporting.rendering.AnimaEncoderFactory;
+import net.sf.anathema.character.db.reporting.rendering.GreatCurse1stEditionEncoderFactory;
+import net.sf.anathema.character.db.reporting.rendering.GreatCurse2ndEditionEncoderFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawModelFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawParser;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
@@ -38,7 +39,6 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -197,7 +197,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     addContent(resources, moduleObject);
-    addSimpleParts(resources, moduleObject);
+    moduleObject.getEncoderRegistry().add(new GreatCurse1stEditionEncoderFactory());
+    moduleObject.getEncoderRegistry().add(new GreatCurse2ndEditionEncoderFactory());
+    moduleObject.getEncoderRegistry().add(new AnimaEncoderFactory());
     addExtendedParts(resources, moduleObject);
   }
 
@@ -205,12 +207,6 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     ReportContentRegistry registry = moduleObject.getContentRegistry();
     registry.addFactory(Db1stEditionGreatCurseContent.class, new Db1stEditionGreatCurseContentFactory(resources));
     registry.addFactory(Db2ndEditionGreatCurseContent.class, new Db2ndEditionGreatCurseContentFactory(resources));
-  }
-
-  private void addSimpleParts(IResources resources, CharacterReportingModuleObject moduleObject) {
-    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
-    registry.setPartEncoder(DB, FirstEdition, new Simple1stEditionDbPartEncoder(resources));
-    registry.setPartEncoder(DB, SecondEdition, new Simple2ndEditionDbPartEncoder(resources));
   }
 
   private void addExtendedParts(IResources resources, CharacterReportingModuleObject moduleObject) {

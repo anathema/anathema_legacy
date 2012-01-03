@@ -17,14 +17,14 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   private EncoderRegistry encoderRegistry;
 
   public Extended2ndEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
-    IResources resources, PdfPageConfiguration pageConfiguration) {
+    IResources resources, PageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;
   }

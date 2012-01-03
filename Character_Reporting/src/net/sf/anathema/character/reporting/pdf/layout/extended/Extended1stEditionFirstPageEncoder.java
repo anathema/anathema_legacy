@@ -17,7 +17,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncod
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
@@ -30,14 +30,14 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
   private final int essenceMax;
 
   private static final int ANIMA_HEIGHT = 128;
-  private final PdfPageConfiguration pageConfiguration;
+  private final PageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private final ExtendedEncodingRegistry registry;
   private EncoderRegistry encoderRegistry;
   private final IExtendedPartEncoder partEncoder;
 
   public Extended1stEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
-    IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration) {
+    IResources resources, int essenceMax, PageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;
     this.essenceMax = essenceMax;
@@ -131,7 +131,7 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
 
   private void encodeAnima(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    ContentEncoder encoder = partEncoder.getAnimaEncoder();
+    ContentEncoder encoder = partEncoder.getAnimaEncoder(content);
     boxEncoder.encodeBox(content, graphics, encoder, animaBounds);
   }
 

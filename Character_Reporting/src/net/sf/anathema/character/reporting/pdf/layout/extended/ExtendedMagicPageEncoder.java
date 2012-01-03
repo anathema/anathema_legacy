@@ -19,7 +19,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableCo
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import java.util.List;
 public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
   public ExtendedMagicPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources,
-    PdfPageConfiguration configuration) {
+    PageConfiguration configuration) {
     super(partEncoder, encodingRegistry, resources, configuration);
   }
 
@@ -83,10 +83,10 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
       // Combos, Anima, & Generic Charms
       float animaHeight = 0;
-      if (hasAnima()) {
+      if (hasAnima(content)) {
         animaHeight = encodeAnima(graphics, content, distanceFromTop, 128f);
       }
-      float comboHeight = encodeCombos(graphics, character, distanceFromTop, animaHeight, hasAnima());
+      float comboHeight = encodeCombos(graphics, character, distanceFromTop, animaHeight, hasAnima(content));
       if (comboHeight > 0) {
         distanceFromTop += comboHeight + IVoidStateFormatConstants.PADDING;
       }
@@ -144,7 +144,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeAnima(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getPartEncoder().getAnimaEncoder(), 3, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, content, getPartEncoder().getAnimaEncoder(content), 3, 1, distanceFromTop, height);
   }
 
   private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
@@ -189,7 +189,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
     return encodeFixedBox(graphics, content, new PdfMagicEncoder(getResources(), printCharms), 1, 3, distanceFromTop, height);
   }
 
-  private boolean hasAnima() {
-    return getPartEncoder().getAnimaEncoder() != null;
+  private boolean hasAnima(ReportContent content) {
+    return getPartEncoder().getAnimaEncoder(content) != null;
   }
 }

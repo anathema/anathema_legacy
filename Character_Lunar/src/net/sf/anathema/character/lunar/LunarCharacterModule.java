@@ -39,19 +39,20 @@ import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.RenownViewFactory;
 import net.sf.anathema.character.lunar.reporting.content.GiftContent;
 import net.sf.anathema.character.lunar.reporting.content.GiftContentFactory;
+import net.sf.anathema.character.lunar.reporting.content.equipment.LunarArmourContent;
+import net.sf.anathema.character.lunar.reporting.content.equipment.LunarArmourContentFactory;
+import net.sf.anathema.character.lunar.reporting.content.equipment.LunarWeaponryContent;
+import net.sf.anathema.character.lunar.reporting.content.equipment.LunarWeaponryContentFactory;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContentFactory;
-import net.sf.anathema.character.lunar.reporting.layout.Extended1stEditionLunarPartEncoder;
-import net.sf.anathema.character.lunar.reporting.layout.Extended2ndEditionLunarPartEncoder;
+import net.sf.anathema.character.lunar.reporting.Extended1stEditionLunarPartEncoder;
+import net.sf.anathema.character.lunar.reporting.Extended2ndEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.reporting.layout.Lunar2ndEditionAdditionalPageFactory;
 import net.sf.anathema.character.lunar.reporting.layout.LunarBeastform1stEditionPageFactory;
-import net.sf.anathema.character.lunar.reporting.layout.LunarWeaponryEncoderFactory;
-import net.sf.anathema.character.lunar.reporting.layout.Simple1stEditionLunarPartEncoder;
-import net.sf.anathema.character.lunar.reporting.layout.Simple2ndEditionLunarPartEncoder;
-import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarArmourContent;
-import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarArmourContentFactory;
-import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarWeaponryContent;
-import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarWeaponryContentFactory;
+import net.sf.anathema.character.lunar.reporting.rendering.equipment.FormArsenalEncoderFactory;
+import net.sf.anathema.character.lunar.reporting.rendering.anima.AnimaEncoderFactory;
+import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.GreatCurse1stEditionEncoderFactory;
+import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.GreatCurse2ndEditionEncoderFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawModelFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
@@ -60,7 +61,6 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -115,15 +115,15 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     editionMap.put(FirstEdition, LunarCaste.getModernValues());
     editionMap.put(SecondEdition, LunarCaste.values());
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
-    templateMap.put(castelessType, new ICasteType[] { });
-    templateMap.put(revisedCastelessType, new ICasteType[] { });
+    templateMap.put(castelessType, new ICasteType[]{});
+    templateMap.put(revisedCastelessType, new ICasteType[]{});
     templateMap.put(dreamsType, LunarCaste.getDreamsValues());
     templateMap.put(revisedDreamsType, LunarCaste.getDreamsValues());
     characterGenerics.getCasteCollectionRegistry().register(LUNAR, new CasteCollection(LunarCaste.values(), editionMap, templateMap));
     characterGenerics.getGenericCharmStatsRegistry()
-      .register(LUNAR, new IMagicStats[] { new FirstExcellency(LUNAR, ExaltedSourceBook.Lunars2nd, "1 m per die"), //$NON-NLS-1$
-        new SecondExcellency(LUNAR, ExaltedSourceBook.Lunars2nd), new ThirdExcellency(LUNAR, "4 m", ExaltedSourceBook.Lunars2nd), //$NON-NLS-1$
-        new InstinctiveUnity(), new FlawlessFocus(), new ImpossibleImprovement() });
+      .register(LUNAR, new IMagicStats[]{new FirstExcellency(LUNAR, ExaltedSourceBook.Lunars2nd, "1 m per die"), //$NON-NLS-1$
+              new SecondExcellency(LUNAR, ExaltedSourceBook.Lunars2nd), new ThirdExcellency(LUNAR, "4 m", ExaltedSourceBook.Lunars2nd), //$NON-NLS-1$
+              new InstinctiveUnity(), new FlawlessFocus(), new ImpossibleImprovement()});
   }
 
   @Override
@@ -214,15 +214,18 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     registerContent(resources, moduleObject.getContentRegistry());
-    registerSimpleReporting(resources, moduleObject.getSimpleEncodingRegistry(), moduleObject.getEncoderRegistry());
     registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry(), moduleObject.getEncoderRegistry());
     registerEncoder(moduleObject.getEncoderRegistry());
     moduleObject.getAdditionalPageRegistry().add(new LunarBeastform1stEditionPageFactory());
     moduleObject.getAdditionalPageRegistry().add(new Lunar2ndEditionAdditionalPageFactory());
+    moduleObject.getEncoderRegistry().add(new AnimaEncoderFactory());
+    moduleObject.getEncoderRegistry().add(new GreatCurse1stEditionEncoderFactory());
+    moduleObject.getEncoderRegistry().add(new GreatCurse2ndEditionEncoderFactory());
   }
 
   private void registerEncoder(EncoderRegistry registry) {
-    registry.add(new LunarWeaponryEncoderFactory());
+    registry.add(new AnimaEncoderFactory());
+    registry.add(new FormArsenalEncoderFactory());
   }
 
   private void registerContent(IResources resources, ReportContentRegistry contentRegistry) {
@@ -230,11 +233,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     contentRegistry.addFactory(LunarWeaponryContent.class, new LunarWeaponryContentFactory(resources));
     contentRegistry.addFactory(LunarArmourContent.class, new LunarArmourContentFactory(resources));
     contentRegistry.addFactory(GiftContent.class, new GiftContentFactory(resources));
-  }
-
-  private void registerSimpleReporting(IResources resources, SimpleEncodingRegistry registry, EncoderRegistry encoderRegistry) {
-    registry.setPartEncoder(LUNAR, FirstEdition, new Simple1stEditionLunarPartEncoder(encoderRegistry, resources));
-    registry.setPartEncoder(LUNAR, SecondEdition, new Simple2ndEditionLunarPartEncoder(encoderRegistry, resources, ESSENCE_MAX));
   }
 
   private void registerExtendedReporting(IResources resources, ExtendedEncodingRegistry registry, EncoderRegistry encoderRegistry) {

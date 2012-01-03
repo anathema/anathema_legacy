@@ -3,9 +3,6 @@
 "http://jpf.sourceforge.net/plugin_0_6.dtd">
 <plugin-fragment id="net.sf.anathema.character.moepAbyssals" version="1.10" plugin-id="net.sf.anathema.character" plugin-version="1.03">
 	<runtime>
-		<library id="moepAbyssals" path="./" type="code">
-			<export prefix="*" />
-		</library>
 		<library id="moepAbyssalsResources" path="./" type="resources">
 			<export prefix="*" />
 		</library>

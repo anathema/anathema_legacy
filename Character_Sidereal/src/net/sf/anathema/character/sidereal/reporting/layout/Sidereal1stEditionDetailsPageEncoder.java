@@ -11,8 +11,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncod
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
-import net.sf.anathema.character.sidereal.reporting.content.colleges.SiderealCollegeContent;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
+import net.sf.anathema.character.sidereal.reporting.content.SiderealCollegeContent;
 import net.sf.anathema.character.sidereal.reporting.rendering.ArcaneFateInfoEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.AstrologyInfoEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.ParadoxInfoEncoder;
@@ -30,10 +30,10 @@ public class Sidereal1stEditionDetailsPageEncoder implements PageEncoder {
   private final static float STANDING_HEIGHT = 45;
   private final IResources resources;
   private final PdfBoxEncoder boxEncoder;
-  private final PdfPageConfiguration configuration;
+  private final PageConfiguration configuration;
   private final int fontSize;
 
-  public Sidereal1stEditionDetailsPageEncoder(IResources resources, int fontSize, PdfPageConfiguration configuration) {
+  public Sidereal1stEditionDetailsPageEncoder(IResources resources, int fontSize, PageConfiguration configuration) {
     this.resources = resources;
     this.fontSize = fontSize;
     this.configuration = configuration;

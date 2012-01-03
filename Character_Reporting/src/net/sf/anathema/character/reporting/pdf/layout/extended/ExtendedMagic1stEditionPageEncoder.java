@@ -14,7 +14,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfMagicEnc
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
   private final boolean pureMagic;
 
   public ExtendedMagic1stEditionPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources,
-    PdfPageConfiguration configuration, boolean pureMagic) {
+    PageConfiguration configuration, boolean pureMagic) {
     super(partEncoder, encodingRegistry, resources, configuration);
     this.pureMagic = pureMagic;
   }

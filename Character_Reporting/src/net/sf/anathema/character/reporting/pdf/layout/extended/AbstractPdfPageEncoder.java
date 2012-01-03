@@ -15,7 +15,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlig
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractPdfPageEncoder implements PageEncoder {
@@ -23,12 +23,12 @@ public abstract class AbstractPdfPageEncoder implements PageEncoder {
   private final BaseFont baseFont;
 
   private final ExtendedEncodingRegistry registry;
-  private final PdfPageConfiguration pageConfiguration;
+  private final PageConfiguration pageConfiguration;
   private final IExtendedPartEncoder partEncoder;
   private final PdfBoxEncoder boxEncoder;
 
   public AbstractPdfPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources,
-    PdfPageConfiguration pageConfiguration) {
+    PageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
     this.registry = registry;
     this.baseFont = registry.getBaseFont();
@@ -76,7 +76,7 @@ public abstract class AbstractPdfPageEncoder implements PageEncoder {
     return baseFont;
   }
 
-  protected PdfPageConfiguration getPageConfiguration() {
+  protected PageConfiguration getPageConfiguration() {
     return pageConfiguration;
   }
 

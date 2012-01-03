@@ -1,5 +1,9 @@
 package net.sf.anathema.character.abyssal.reporting;
 
+import net.sf.anathema.character.abyssal.reporting.rendering.Anima1stEditionEncoderFactory;
+import net.sf.anathema.character.abyssal.reporting.rendering.Resonance1stEditionEncoder;
+import net.sf.anathema.character.reporting.pdf.content.BasicContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -12,11 +16,12 @@ public class Extended1stEditionAbyssalPartEncoder extends AbstractFirstEditionEx
   }
 
   public ContentEncoder getGreatCurseEncoder() {
-    return new AbyssalResonanceEncoder();
+    return new Resonance1stEditionEncoder();
   }
 
   @Override
-  public ContentEncoder getAnimaEncoder() {
-    return new AbyssalAnimaEncoderFactory(getResources()).createAnimaEncoder();
+  public ContentEncoder getAnimaEncoder(ReportContent reportContent) {
+    BasicContent content = reportContent.createSubContent(BasicContent.class);
+    return new Anima1stEditionEncoderFactory().create(getResources(), content);
   }
 }

@@ -13,32 +13,29 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ESSENCE_SIMPLE;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
 public class SimpleFirstPageEncoder extends AbstractPageEncoder {
-  public static final float CONTENT_HEIGHT = 755;
-  private final IResources resources;
-
   private static final float ANIMA_HEIGHT = 128;
-  private final PdfPageConfiguration pageConfiguration;
+  public static final int ATTRIBUTE_HEIGHT = 128;
+  private final IResources resources;
+  private final PageConfiguration configuration;
   private final PdfBoxEncoder boxEncoder;
-  private final ISimplePartEncoder partEncoder;
 
-  public SimpleFirstPageEncoder(EncoderRegistry encoderRegistry, ISimplePartEncoder partEncoder, SimpleEncodingRegistry registry,
-    IResources resources, PdfPageConfiguration pageConfiguration) {
-    super(resources, encoderRegistry);
-    this.partEncoder = partEncoder;
+  public SimpleFirstPageEncoder(EncoderRegistry encoders, IResources resources, PageConfiguration configuration) {
+    super(resources, encoders);
     this.resources = resources;
-    this.pageConfiguration = pageConfiguration;
+    this.configuration = configuration;
     this.boxEncoder = new PdfBoxEncoder(resources);
   }
 
@@ -49,13 +46,13 @@ public class SimpleFirstPageEncoder extends AbstractPageEncoder {
     encodePersonalInfo(graphics, content, distanceFromTop, firstRowHeight);
     encodeEssence(graphics, content, distanceFromTop, firstRowHeight);
 
-    distanceFromTop += firstRowHeight + IVoidStateFormatConstants.PADDING;
+    distanceFromTop += firstRowHeight + PADDING;
 
     encodeFirstColumn(graphics, content, distanceFromTop);
     encodeAnima(graphics, content, distanceFromTop, ANIMA_HEIGHT);
     float virtueHeight = encodeVirtues(graphics, distanceFromTop, 72, content);
     distanceFromTop += calculateBoxIncrement(virtueHeight);
-    float greatCurseHeigth = ANIMA_HEIGHT - virtueHeight - IVoidStateFormatConstants.PADDING;
+    float greatCurseHeigth = ANIMA_HEIGHT - virtueHeight - PADDING;
     encodeGreatCurse(graphics, content, distanceFromTop, greatCurseHeigth);
     distanceFromTop += calculateBoxIncrement(greatCurseHeigth);
 
@@ -71,138 +68,120 @@ public class SimpleFirstPageEncoder extends AbstractPageEncoder {
     distanceFromTop += calculateBoxIncrement(armourHeight);
     float healthHeight = encodeMovementAndHealth(graphics, content, distanceFromTop, 99);
     distanceFromTop += calculateBoxIncrement(healthHeight);
-    float remainingHeight = SimpleFirstPageEncoder.CONTENT_HEIGHT - distanceFromTop;
+    float remainingHeight = CONTENT_HEIGHT - distanceFromTop;
     encodeCombat(graphics, content, distanceFromTop, remainingHeight);
     encodeCopyright(graphics);
+  }
+
+  private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, float distanceFromTop, float firstRowHeight) {
+    Bounds infoBounds = configuration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
+    String name = content.getDescription().getName();
+    String title = StringUtilities.isNullOrTrimmedEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
+    Bounds infoContentBounds = boxEncoder.encodeBox(graphics, infoBounds, title);
+    PersonalInfoBoxEncoder encoder = new PersonalInfoBoxEncoder(resources);
+    encoder.encode(graphics, content, infoContentBounds);
+  }
+
+  private float encodeVirtues(SheetGraphics graphics, float distanceFromTop, float height, ReportContent content) throws DocumentException {
+    Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
+    ContentEncoder encoder = new VirtueBoxContentEncoder();
+    boxEncoder.encodeBox(content, graphics, encoder, bounds);
+    return height;
   }
 
   private void encodeCopyright(SheetGraphics graphics) throws DocumentException {
     float lineHeight = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 2;
     Font copyrightFont = graphics.createCommentFont();
-    float copyrightHeight = pageConfiguration.getPageHeight() - pageConfiguration.getContentHeight();
-    Bounds firstColumnBounds = pageConfiguration.getFirstColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
+    float copyrightHeight = configuration.getPageHeight() - configuration.getContentHeight();
+    Bounds firstColumnBounds = configuration.getFirstColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
     Anchor voidstatePhrase = new Anchor("Inspired by Voidstate\nhttp://www.voidstate.com", copyrightFont); //$NON-NLS-1$
     voidstatePhrase.setReference("http://www.voidstate.com"); //$NON-NLS-1$
     graphics.createSimpleColumn(firstColumnBounds).withLeading(lineHeight).andTextPart(voidstatePhrase).encode();
 
     Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92011\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$
     anathemaPhrase.setReference("http://anathema.sf.net"); //$NON-NLS-1$
-    Bounds anathemaBounds = pageConfiguration.getSecondColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
-    graphics.createSimpleColumn(anathemaBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Center).andTextPart(anathemaPhrase).encode
-      ();
+    Bounds anathemaBounds = configuration.getSecondColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
+    graphics.createSimpleColumn(anathemaBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Center).andTextPart(anathemaPhrase).encode();
     Anchor whitewolfPhrase = new Anchor("Exalted \u00A92011 by White Wolf, Inc.\nhttp://www.white-wolf.com", //$NON-NLS-1$
-      copyrightFont);
+            copyrightFont);
     whitewolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
-    Bounds whitewolfBounds = pageConfiguration.getThirdColumnRectangle(CONTENT_HEIGHT, copyrightHeight);
-    graphics.createSimpleColumn(whitewolfBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Right).andTextPart(whitewolfPhrase)
-      .encode();
+    Bounds whitewolfBounds = configuration.getThirdColumnRectangle(CONTENT_HEIGHT, copyrightHeight);
+    graphics.createSimpleColumn(whitewolfBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Right).andTextPart(whitewolfPhrase).encode();
   }
 
   private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    Bounds essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    return encodeBox(graphics, content, essenceBounds, EncoderIds.ESSENCE_SIMPLE);
+    Bounds essenceBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
+    return encodeBox(graphics, content, essenceBounds, ESSENCE_SIMPLE);
   }
 
   private String getHeaderLabel(String key) {
     return resources.getString("Sheet.Header." + key); //$NON-NLS-1$
   }
 
-  private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, float distanceFromTop, float firstRowHeight) {
-    Bounds infoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
-    String name = content.getDescription().getName();
-    String title = StringUtilities.isNullOrTrimmedEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
-    Bounds infoContentBounds = boxEncoder.encodeBox(graphics, infoBounds, title);
-    encodePersonalInfo(graphics, content, infoContentBounds);
-  }
-
   private void encodeFirstColumn(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float attributeHeight = encodeAttributes(graphics, content, distanceFromTop);
-    encodeAbilities(graphics, content, distanceFromTop + attributeHeight + IVoidStateFormatConstants.PADDING);
+    encodeAbilities(graphics, content, distanceFromTop + attributeHeight + PADDING);
   }
 
   private void encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
-    Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
+    Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
     ContentEncoder encoder = AbilitiesBoxContentEncoder.createWithCraftsAndSpecialties(resources, 9, 9);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
   private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    float attributeHeight = 128;
-    Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
+    Bounds attributeBounds = configuration.getFirstColumnRectangle(distanceFromTop, (float) ATTRIBUTE_HEIGHT, 1);
     return encodeBox(graphics, content, attributeBounds, EncoderIds.ATTRIBUTES);
   }
 
-  private float calculateBoxIncrement(float height) {
-    return height + IVoidStateFormatConstants.PADDING;
-  }
-
   private void encodeAnima(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    Bounds animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    ContentEncoder encoder = partEncoder.getAnimaEncoder();
-    if (encoder != null) {
-      boxEncoder.encodeBox(content, graphics, encoder, animaBounds);
-    }
+    Bounds animaBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
+    encodeOptionalBox(graphics, content, animaBounds, EncoderIds.ANIMA);
   }
 
-  private float encodeArmourAndSoak(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    return encodeBox(graphics, content, bounds, EncoderIds.PANOPLY);
-  }
-
-  private float encodeSocialCombatOrMeritsAndFlaws(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height)
-    throws DocumentException {
-    Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
+  private float encodeSocialCombatOrMeritsAndFlaws(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+    Bounds bounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
     return encodeBox(graphics, content, bounds, EncoderIds.SOCIAL_COMBAT, EncoderIds.MERITS_AND_FLAWS);
   }
 
+  private float encodeArmourAndSoak(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+    Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 2);
+    return encodeBox(graphics, content, bounds, EncoderIds.PANOPLY);
+  }
+
   private float encodeCombat(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
+    Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 2);
     return encodeBox(graphics, content, bounds, EncoderIds.COMBAT);
   }
 
-  private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
-    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
+  private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+    Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 2);
     return encodeBox(graphics, content, bounds, EncoderIds.HEALTH_AND_MOVEMENT);
-  }
-
-  private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
-    PersonalInfoBoxEncoder encoder = new PersonalInfoBoxEncoder(resources);
-    encoder.encode(graphics, content, infoBounds);
-  }
-
-  private float encodeVirtues(SheetGraphics graphics, float distanceFromTop, float height, ReportContent content) throws DocumentException {
-    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    ContentEncoder encoder = new VirtueBoxContentEncoder();
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
-    return height;
   }
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float height = getPreferredEncoderHeight(content, ARSENAL);
-    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
+    Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 2);
     return encodeBox(graphics, content, bounds, ARSENAL);
   }
 
   private float encodeWillpower(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    Bounds willpowerBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    boxEncoder.encodeBox(content, graphics, new SimpleWillpowerEncoder(), willpowerBounds);
-    return height;
+    Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
+    return encodeBox(graphics, content, bounds, EncoderIds.WILLPOWER_SIMPLE);
   }
 
   private float encodeGreatCurse(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    ContentEncoder encoder = partEncoder.getGreatCurseEncoder();
-    if (encoder == null) {
-      return 0;
-    }
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
-    return height;
+    Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
+    return encodeOptionalBox(graphics, content, bounds, EncoderIds.GREAT_CURSE);
   }
 
   private float encodeIntimacies(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
+    Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
     return encodeBox(graphics, content, bounds, EncoderIds.INTIMACIES_SIMPLE, EncoderIds.NOTES);
+  }
+
+  private float calculateBoxIncrement(float height) {
+    return height + PADDING;
   }
 }
