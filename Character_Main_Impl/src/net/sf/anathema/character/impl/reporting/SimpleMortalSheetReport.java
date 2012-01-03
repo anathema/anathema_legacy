@@ -7,10 +7,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
@@ -18,7 +15,6 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleMortalPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
@@ -59,7 +55,6 @@ public class SimpleMortalSheetReport implements IITextReport {
     SimpleEncodingRegistry encodingRegistry = getEncodingRegistry();
     try {
       int traitMax = Math.max(5, getEssenceMax(stattedCharacter));
-      ISimplePartEncoder partEncoder = getPartEncoder(stattedCharacter);
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       IPdfPageEncoder encoder = new SimpleMortalPageEncoder(getEncoderRegistry(), encodingRegistry, resources, configuration);
@@ -77,14 +72,6 @@ public class SimpleMortalSheetReport implements IITextReport {
 
   private int getEssenceMax(ICharacter character) {
     return character.getStatistics().getTraitConfiguration().getTrait(OtherTraitType.Essence).getMaximalValue();
-  }
-
-  private ISimplePartEncoder getPartEncoder(ICharacter character) {
-    SimpleEncodingRegistry encodingRegistry = getEncodingRegistry();
-    ICharacterTemplate characterTemplate = character.getStatistics().getCharacterTemplate();
-    ICharacterType characterType = characterTemplate.getTemplateType().getCharacterType();
-    IExaltedEdition edition = characterTemplate.getEdition();
-    return encodingRegistry.getPartEncoder(characterType, edition);
   }
 
   private SimpleEncodingRegistry getEncodingRegistry() {
@@ -115,6 +102,6 @@ public class SimpleMortalSheetReport implements IITextReport {
     if (!character.hasStatistics()) {
       return false;
     }
-    return getPartEncoder(character) != null && !character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isExaltType();
+    return !character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isExaltType();
   }
 }
