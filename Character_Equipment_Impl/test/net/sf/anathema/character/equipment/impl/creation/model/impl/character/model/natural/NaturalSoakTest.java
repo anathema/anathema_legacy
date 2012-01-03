@@ -48,8 +48,8 @@ public class NaturalSoakTest {
         return null;
       }
     });
-    Assert.assertEquals(new Integer(0), naturalSoak.getSoak(HealthType.Lethal));
-    Assert.assertEquals(new Integer(2), naturalSoak.getSoak(HealthType.Bashing));
+    Assert.assertEquals(Integer.valueOf(0), naturalSoak.getSoak(HealthType.Lethal));
+    Assert.assertEquals(Integer.valueOf(2), naturalSoak.getSoak(HealthType.Bashing));
   }
 
   @Test

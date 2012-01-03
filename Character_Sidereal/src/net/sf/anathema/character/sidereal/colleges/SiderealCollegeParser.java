@@ -57,7 +57,7 @@ public class SiderealCollegeParser implements IAdditionalTemplateParser
 		return new SiderealCollegeTemplate(points, bonusCosts, experienceCosts);
 	}
 
-	private class CollegeBonusPointCost extends DefaultBonusPointCosts implements ICollegeBonusPointCosts
+	private static class CollegeBonusPointCost extends DefaultBonusPointCosts implements ICollegeBonusPointCosts
 	{
 		final int favoredCost, generalCost;
 
@@ -75,7 +75,7 @@ public class SiderealCollegeParser implements IAdditionalTemplateParser
 
 	}
 
-	private class CollegeExperienceCost extends DefaultExperienceCosts implements ICollegeExperienceCosts
+	private static class CollegeExperienceCost extends DefaultExperienceCosts implements ICollegeExperienceCosts
 	{
 		final int baseCost, multiple;
 

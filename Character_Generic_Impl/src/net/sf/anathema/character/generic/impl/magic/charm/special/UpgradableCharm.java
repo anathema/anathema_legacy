@@ -110,7 +110,7 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 		  return requiresBase;
 	  }
 	  
-	  private class Upgrade extends Subeffect
+	  private static class Upgrade extends Subeffect
 	  {
 		  private int bpCost;
 		  private int xpCost;

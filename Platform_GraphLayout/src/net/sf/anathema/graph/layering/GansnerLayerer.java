@@ -10,7 +10,7 @@ import net.sf.anathema.lib.collection.MultiEntryMap;
 
 public class GansnerLayerer implements ILayerer {
 
-	private class GansnerEdge implements Comparable<GansnerEdge> {
+	private static class GansnerEdge implements Comparable<GansnerEdge> {
 		// Note: this class has a natural ordering that is inconsistent with equals
 		
 		IRegularNode head;
