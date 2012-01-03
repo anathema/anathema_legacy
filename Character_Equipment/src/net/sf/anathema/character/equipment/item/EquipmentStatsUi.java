@@ -15,7 +15,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.IResources;
 
-public final class EquipmentStatsUi implements IObjectUi {
+public final class EquipmentStatsUi implements IObjectUi<Object> {
 
   private final EquipmentUI equipmentUI;
   private final IResources resources;
@@ -64,5 +64,10 @@ public final class EquipmentStatsUi implements IObjectUi {
     if (value instanceof ITraitModifyingStats)
         return equipmentUI.getStandardIcon(EquipmentStatisticsType.TraitModifying);
     throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong."); //$NON-NLS-1$
+  }
+
+  @Override
+  public String getToolTipText(Object value) {
+    return null;
   }
 }

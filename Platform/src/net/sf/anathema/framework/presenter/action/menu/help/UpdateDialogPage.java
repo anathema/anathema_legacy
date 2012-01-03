@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.userdialog.AbstractDialogPage;
+import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -19,7 +19,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
   private final JLabel latestVersionLabel = new JLabel("?.??"); //$NON-NLS-1$
 
   public UpdateDialogPage(IResources resources, final IUpdateChecker checker) {
-    super(new BasicMessage(resources.getString("Help.UpdateCheck.Checking"))); //$NON-NLS-1$
+    super(resources.getString("Help.UpdateCheck.Checking")); //$NON-NLS-1$
     this.resources = resources;
     this.checker = checker;
     checker.addDataChangedListener(new IChangeListener() {

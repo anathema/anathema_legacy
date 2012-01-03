@@ -62,7 +62,7 @@ public class MultiValuePerk extends Quality implements IPerk {
   }
 
   public boolean isLegalFor(ICharacterType characterType) {
-    return ArrayUtilities.contains(legalTypes, characterType);
+    return ArrayUtilities.containsValue(legalTypes, characterType);
   }
 
   public void setSpecialFixedCost(IFixedPerkCost cost) {

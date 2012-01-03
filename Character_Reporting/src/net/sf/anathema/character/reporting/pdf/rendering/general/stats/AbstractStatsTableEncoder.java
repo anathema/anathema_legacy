@@ -73,9 +73,9 @@ public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends Abs
     Float[] columnWidths = new Float[0];
     for (IStatsGroup<T> group : groups) {
       if (columnWidths.length != 0) {
-        columnWidths = ArrayUtilities.concat(columnWidths, new Float(0.2));
+        columnWidths = ArrayUtilities.concat(Float.class, columnWidths, new Float(0.2));
       }
-      columnWidths = ArrayUtilities.concat(columnWidths, group.getColumnWeights());
+      columnWidths = ArrayUtilities.concat(Float.class, columnWidths, group.getColumnWeights());
     }
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(columnWidths);
   }

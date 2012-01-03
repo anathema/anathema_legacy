@@ -91,11 +91,11 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   }
 
   public boolean isPredefinedLanguage(Object object) {
-    return ArrayUtilities.contains(languages, object);
+    return ArrayUtilities.containsValue(languages, object);
   }
 
   public void selectBarbarianLanguage(String customName) {
-    if (StringUtilities.isNullOrTrimEmpty(customName)) {
+    if (StringUtilities.isNullOrTrimmedEmpty(customName)) {
       this.selection = null;
       fireEntryChanged();
     }

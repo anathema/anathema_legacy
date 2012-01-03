@@ -14,7 +14,7 @@ public class LoadItemWizardProperties implements IObjectSelectionProperties {
   private final IResources resources;
   private final ListCellRenderer renderer;
 
-  public LoadItemWizardProperties(IResources resources, IObjectUi ui) {
+  public LoadItemWizardProperties(IResources resources, IObjectUi<Object> ui) {
     this.resources = resources;
     this.renderer = new ObjectUiListCellRenderer(ui);
   }

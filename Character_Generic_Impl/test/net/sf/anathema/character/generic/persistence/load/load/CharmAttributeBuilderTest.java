@@ -21,6 +21,6 @@ public class CharmAttributeBuilderTest {
     ICharmAttribute[] attribute = new CharmAttributeBuilder().buildCharmAttributes(rootElement, new ValuedTraitType(
         AbilityType.Brawl,
         3));
-    assertTrue(ArrayUtilities.contains(attribute, new CharmAttribute("testBrawl", false))); //$NON-NLS-1$
+    assertTrue(ArrayUtilities.containsValue(attribute, new CharmAttribute("testBrawl", false))); //$NON-NLS-1$
   }
 }

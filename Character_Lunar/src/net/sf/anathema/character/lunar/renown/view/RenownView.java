@@ -4,9 +4,9 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.widgets.HorizontalLine;
 import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
@@ -31,7 +31,7 @@ public class RenownView implements IView {
     mainPanel.add(totalPanel);
     mainPanel.add(facePanel);
     content.add(mainPanel);
-    content.add(overviewPanel, GridDialogLayoutDataUtilities.createTopData());
+    content.add(overviewPanel, GridDialogLayoutDataFactory.createTopData());
     return content;
   }
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.charmentry.model;
 
-import net.disy.commons.core.util.ISimpleBlock;
+import net.disy.commons.core.util.SimpleBlock;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -23,7 +23,7 @@ public class PrerequisiteEntryModel implements IPrerequisitesModel {
 
   public PrerequisiteEntryModel(IHeaderDataModel headerModel, IConfigurableCharmData charmData) {
     this.charmData = charmData;
-    headerModel.addModelListener(new CheckInputListener(new ISimpleBlock() {
+    headerModel.addModelListener(new CheckInputListener(new SimpleBlock() {
       public void execute() {
         control.fireChangedEvent();
       }

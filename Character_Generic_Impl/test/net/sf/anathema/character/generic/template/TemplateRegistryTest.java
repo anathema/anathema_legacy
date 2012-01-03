@@ -58,9 +58,9 @@ public class TemplateRegistryTest {
     registry.register(otherTemplate);
     registry.register(unsupportedTemplate);
     ICharacterExternalsTemplate[] allSupportedTemplates = registry.getAllSupportedTemplates(CharacterType.MORTAL);
-    assertTrue(ArrayUtilities.contains(allSupportedTemplates, defaultTemplate));
-    assertTrue(ArrayUtilities.contains(allSupportedTemplates, otherTemplate));
-    assertFalse(ArrayUtilities.contains(allSupportedTemplates, unsupportedTemplate));
+    assertTrue(ArrayUtilities.containsValue(allSupportedTemplates, defaultTemplate));
+    assertTrue(ArrayUtilities.containsValue(allSupportedTemplates, otherTemplate));
+    assertFalse(ArrayUtilities.containsValue(allSupportedTemplates, unsupportedTemplate));
   }
 
   @Test

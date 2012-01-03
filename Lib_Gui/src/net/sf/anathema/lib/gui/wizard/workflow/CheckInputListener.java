@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.wizard.workflow;
 
-import net.disy.commons.core.util.ISimpleBlock;
+import net.disy.commons.core.util.SimpleBlock;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -10,9 +10,9 @@ public class CheckInputListener implements
     IBooleanValueChangedListener,
     IObjectValueChangedListener<String> {
 
-  private final ISimpleBlock executionBlock;
+  private final SimpleBlock executionBlock;
 
-  public CheckInputListener(ISimpleBlock executionBlock) {
+  public CheckInputListener(SimpleBlock executionBlock) {
     this.executionBlock = executionBlock;
   }
 

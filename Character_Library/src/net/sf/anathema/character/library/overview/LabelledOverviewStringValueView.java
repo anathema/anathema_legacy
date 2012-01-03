@@ -2,8 +2,8 @@ package net.sf.anathema.character.library.overview;
 
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.AbstractLabelledValueView;
 
@@ -20,7 +20,7 @@ public class LabelledOverviewStringValueView extends AbstractLabelledValueView i
   /** GridDialogLayout, 2 columns */
   public void addComponents(JPanel panel) {
     panel.add(titleLabel, createGrabData());
-    panel.add(valueLabel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    panel.add(valueLabel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
   }
 
   private GridDialogLayoutData createGrabData() {
@@ -35,7 +35,7 @@ public class LabelledOverviewStringValueView extends AbstractLabelledValueView i
 
   public void addComponents(JPanel panel, int columnCount) {
     panel.add(titleLabel, createGrabData());
-    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalFillNoGrab();
+    GridDialogLayoutData data = GridDialogLayoutDataFactory.createHorizontalFillNoGrab();
     data.setHorizontalSpan(columnCount - 1);
     panel.add(valueLabel, data);
   }

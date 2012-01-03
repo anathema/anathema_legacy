@@ -7,6 +7,6 @@ public class CheckCompulsiveCharmsFixture extends AbstractTemplateColumnFixture 
 
   public boolean isCompulsive() {
     String[] compulsiveCharmIDs = getTemplate().getAdditionalRules().getCompulsiveCharmIDs();
-    return ArrayUtilities.contains(compulsiveCharmIDs, id);
+    return ArrayUtilities.containsValue(compulsiveCharmIDs, id);
   }
 }

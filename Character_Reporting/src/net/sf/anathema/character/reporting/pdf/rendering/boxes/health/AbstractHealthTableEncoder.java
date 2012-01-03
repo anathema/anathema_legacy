@@ -27,7 +27,7 @@ import java.awt.Color;
 public abstract class AbstractHealthTableEncoder implements ITableEncoder<ReportContent> {
   private static final int HEALTH_COLUMN_COUNT = 15;
   private static float PADDING = 0.3f;
-  private static final Float[] HEALTH_LEVEL_COLUMNS = new Float[] { 0.7f, 0.6f, PADDING };
+  private static final Float[] HEALTH_LEVEL_COLUMNS = new Float[]{0.7f, 0.6f, PADDING};
   private final IResources resources;
 
   public AbstractHealthTableEncoder(IResources resources) {
@@ -52,7 +52,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
     return 1;
   }
 
-  private final PdfPTable createTable(SheetGraphics graphics, ReportContent content) throws DocumentException {
+  private PdfPTable createTable(SheetGraphics graphics, ReportContent content) throws DocumentException {
     try {
       PdfContentByte directContent = graphics.getDirectContent();
       Image activeTemplate = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, Color.BLACK));
@@ -70,13 +70,12 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
   }
 
   private void addHealthTypeRows(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, Image activeTemplate, Image passiveTemplate,
-    HealthLevelType type) {
+                                 HealthLevelType type) {
     int rowCount = getRowCount(type);
     for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
       if (rowIndex == 0) {
         addHealthTypeCells(graphics, table, type, character.getPainTolerance());
-      }
-      else {
+      } else {
         addSpaceCells(graphics, table, HEALTH_LEVEL_COLUMNS.length);
       }
       addHealthCells(graphics, table, character, type, rowIndex, activeTemplate, passiveTemplate);
@@ -117,8 +116,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
     if (level == HealthLevelType.INCAPACITATED || level == HealthLevelType.DYING) {
       healthPdfPCell.setColspan(2);
       table.addCell(healthPdfPCell);
-    }
-    else {
+    } else {
       table.addCell(healthPdfPCell);
       String painToleranceText = " "; //$NON-NLS-1$
       if (painTolerance > 0) {
@@ -136,13 +134,12 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
   }
 
   private void addHealthCells(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, HealthLevelType level, int row,
-    Image activeImage,
-    Image passiveImage) {
+                              Image activeImage,
+                              Image passiveImage) {
     int naturalCount = getNaturalHealthLevels(level);
     if (row < naturalCount) {
       table.addCell(createHealthCell(activeImage));
-    }
-    else {
+    } else {
       addSpaceCells(graphics, table, 1);
     }
     int additionalCount = HEALTH_COLUMN_COUNT - 1;
@@ -150,8 +147,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
       int boxesDrawn = naturalCount + row * additionalCount + index;
       if (character.getHealthLevelTypeCount(level) > boxesDrawn) {
         table.addCell(createHealthCell(activeImage));
-      }
-      else {
+      } else {
         table.addCell(createHealthCell(passiveImage));
       }
     }
@@ -171,7 +167,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
 
   private float[] createColumnWidth() {
     Float[] healthColumns = TableEncodingUtilities.createStandardColumnWidths(HEALTH_COLUMN_COUNT, 0.4f);
-    Float[] objectArray = ArrayUtilities.concat(HEALTH_LEVEL_COLUMNS, healthColumns);
+    Float[] objectArray = ArrayUtilities.concat(Float.class, HEALTH_LEVEL_COLUMNS, healthColumns);
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(objectArray);
   }
 

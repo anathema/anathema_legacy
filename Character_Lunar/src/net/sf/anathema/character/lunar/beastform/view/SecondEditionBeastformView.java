@@ -9,10 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionListener;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnView;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
@@ -63,7 +63,7 @@ public class SecondEditionBeastformView implements IBeastformView
 	  giftPanel.setBorder(new TitledBorder(properties.getGiftsString()));
 	  JPanel mutationPanel = new JPanel(new GridDialogLayout(2, false));
 	  mutationPanel.add(giftPanel);
-	  mutationPanel.add(overviewPanel, GridDialogLayoutDataUtilities.createTopData());
+	  mutationPanel.add(overviewPanel, GridDialogLayoutDataFactory.createTopData());
 	  beastmanPanel.add(mutationPanel);
 	  beastmanPanel.setBorder(BorderFactory.createTitledBorder(properties.getDBTBoxString()));
 

@@ -35,7 +35,7 @@ public class SolarVirtueFlawContent extends AbstractSubBoxContent {
   }
 
   public boolean isNameDefined() {
-    return !StringUtilities.isNullOrTrimEmpty(getVirtueFlawName());
+    return !StringUtilities.isNullOrTrimmedEmpty(getVirtueFlawName());
   }
 
   public boolean isConditionDefined() {

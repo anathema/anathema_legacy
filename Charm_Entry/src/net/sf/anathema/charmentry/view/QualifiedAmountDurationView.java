@@ -10,9 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.util.ToggleComponentEnabler;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.charmentry.presenter.view.IAmountDurationEntryView;
@@ -51,7 +51,7 @@ public class QualifiedAmountDurationView implements IAmountDurationEntryView {
       ITraitType[] types) {
     JRadioButton radioButton = createRadioButton(""); //$NON-NLS-1$
     ObjectSelectionView<ITraitType> view = new ObjectSelectionView<ITraitType>(label, renderer, false, types);
-    view.addTo(panel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    view.addTo(panel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
     JComboBox comboBox = view.getComboBox();
     ToggleComponentEnabler.connect(radioButton, comboBox);
     return view;

@@ -21,7 +21,7 @@ public class CheckCharmFixture extends AbstractCheckCharmFisture {
 
   public boolean isLearnedOnCreation() {
     ICharm charm = getCharm();
-    return ArrayUtilities.contains(getCharacterStatistics().getCharms().getCreationLearnedCharms(), charm);
+    return ArrayUtilities.containsValue(getCharacterStatistics().getCharms().getCreationLearnedCharms(), charm);
   }
 
   public boolean hasAttribute() {
@@ -31,7 +31,7 @@ public class CheckCharmFixture extends AbstractCheckCharmFisture {
 
   public boolean isLearnedOnExperience() {
     ICharm charm = getCharm();
-    return ArrayUtilities.contains(getCharacterStatistics().getCharms().getExperienceLearnedCharms(), charm);
+    return ArrayUtilities.containsValue(getCharacterStatistics().getCharms().getExperienceLearnedCharms(), charm);
   }
 
   public int learnCount() {

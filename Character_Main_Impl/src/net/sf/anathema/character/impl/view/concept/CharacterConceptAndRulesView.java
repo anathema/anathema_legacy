@@ -12,8 +12,8 @@ import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.toolbar.ToolBarUtilities;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
@@ -38,8 +38,8 @@ public class CharacterConceptAndRulesView extends
     conceptPanel.setBorder(new TitledBorder(properties.getConceptTitle()));
     rulesPanel.setBorder(new TitledBorder(properties.getRulesTitle()));
     panel.setLayout(new GridDialogLayout(1, false));
-    panel.add(conceptPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
-    panel.add(rulesPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    panel.add(conceptPanel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
+    panel.add(rulesPanel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
   }
 
   public <V> IObjectSelectionView<V> addObjectSelectionView(
@@ -50,7 +50,7 @@ public class CharacterConceptAndRulesView extends
     ObjectSelectionView<V> selectionView = new ObjectSelectionView<V>(labelText, renderer, editable, objects);
     selectionView.getComboBox().getEditor().getEditorComponent().setEnabled(true);
     selectionView.setDisabledLabelColor(Color.DARK_GRAY);
-    selectionView.addTo(conceptPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    selectionView.addTo(conceptPanel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
     addButtonPanel();
     return selectionView;
   }

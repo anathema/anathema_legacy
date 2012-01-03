@@ -7,8 +7,8 @@ import java.lang.reflect.InvocationTargetException;
 import javax.swing.Action;
 
 import net.disy.commons.core.message.Message;
+import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
 import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.core.progress.IRunnableWithProgress;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
@@ -83,8 +83,8 @@ public class StartDatabaseAction extends SmartAction {
   protected void execute(final Component parentComponent) {
     try {
       String title = properties.getProgressMonitorTitle();
-      new ProgressMonitorDialog(parentComponent, title).run(false, new IRunnableWithProgress() {
-        public void run(IProgressMonitor monitor) throws InterruptedException, InvocationTargetException {
+      new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptableRunnableWithProgress() {
+        public void run(IProgressMonitor monitor) throws InvocationTargetException {
           try {
             monitor.beginTask(properties.getProgressTaskTitle(), IProgressMonitor.UNKNOWN);
             IItemType itemType = anathemaModel.getItemTypeRegistry().getById(properties.getItemTypeId());

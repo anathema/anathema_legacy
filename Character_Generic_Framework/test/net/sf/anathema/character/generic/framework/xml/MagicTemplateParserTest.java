@@ -113,9 +113,9 @@ public class MagicTemplateParserTest {
       + "</magicTemplate>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertTrue(ArrayUtilities.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Shadowlands));
-    assertTrue(ArrayUtilities.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Labyrinth));
-    assertFalse(ArrayUtilities.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Void));
+    assertTrue(ArrayUtilities.containsValue(template.getSpellMagic().getNecromancyCircles(), CircleType.Shadowlands));
+    assertTrue(ArrayUtilities.containsValue(template.getSpellMagic().getNecromancyCircles(), CircleType.Labyrinth));
+    assertFalse(ArrayUtilities.containsValue(template.getSpellMagic().getNecromancyCircles(), CircleType.Void));
   }
 
   @Test

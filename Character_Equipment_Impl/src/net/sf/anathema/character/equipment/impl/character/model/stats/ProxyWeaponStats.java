@@ -64,14 +64,14 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   private WeaponStatsType getWeaponStatsType() {
-    if (ArrayUtilities.contains(getTags(), WeaponTag.BowType)) {
+    if (ArrayUtilities.containsValue(getTags(), WeaponTag.BowType)) {
       return WeaponStatsType.Bow;
     }
-    if (ArrayUtilities.contains(getTags(), WeaponTag.FlameType)) {
+    if (ArrayUtilities.containsValue(getTags(), WeaponTag.FlameType)) {
       return WeaponStatsType.Flame;
     }
-    if (ArrayUtilities.contains(getTags(), WeaponTag.Thrown)) {
-      if (ArrayUtilities.contains(getTags(), WeaponTag.BowBonuses)) {
+    if (ArrayUtilities.containsValue(getTags(), WeaponTag.Thrown)) {
+      if (ArrayUtilities.containsValue(getTags(), WeaponTag.BowBonuses)) {
         return WeaponStatsType.Thrown_BowBonuses;
       } else {
         return WeaponStatsType.Thrown;  

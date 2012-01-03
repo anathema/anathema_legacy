@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.module.preferences;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.configuration.AnathemaPreferences;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
@@ -211,8 +211,8 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     public void fillInto(JPanel panel, int columnCount) {
       panel.add(label);
       if (allowCustom) {
-        panel.add(combo, GridDialogLayoutDataUtilities.createHorizontalSpanData(columnCount - 1));
-        panel.add(customLaf, GridDialogLayoutDataUtilities.createHorizontalSpanData(
+        panel.add(combo, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount - 1));
+        panel.add(customLaf, GridDialogLayoutDataFactory.createHorizontalSpanData(
                 columnCount,
                 GridDialogLayoutData.FILL_HORIZONTAL));
       } else {

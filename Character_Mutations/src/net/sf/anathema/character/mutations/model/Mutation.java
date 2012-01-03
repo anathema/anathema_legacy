@@ -71,7 +71,7 @@ public class Mutation extends Quality implements IMutation {
     for (IQualityPredicate predicate : prerequisiteList) {
       if (predicate instanceof QualityPrerequisite) {
         IQuality[] prerequisiteQualities = ((QualityPrerequisite) predicate).getPrerequisiteQualities();
-        return ArrayUtilities.contains(prerequisiteQualities, gift);
+        return ArrayUtilities.containsValue(prerequisiteQualities, gift);
       }
     }
     return false;

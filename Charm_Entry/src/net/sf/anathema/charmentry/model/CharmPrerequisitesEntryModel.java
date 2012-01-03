@@ -3,7 +3,7 @@ package net.sf.anathema.charmentry.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.disy.commons.core.util.ISimpleBlock;
+import net.disy.commons.core.util.SimpleBlock;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -25,7 +25,7 @@ public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryMod
       IPrerequisitesModel prerequisiteModel,
       IConfigurableCharmData charmData) {
     this.charmData = charmData;
-    final CheckInputListener changeListener = new CheckInputListener(new ISimpleBlock() {
+    final CheckInputListener changeListener = new CheckInputListener(new SimpleBlock() {
       public void execute() {
         control.fireChangedEvent();
       }

@@ -4,7 +4,7 @@ import javax.swing.Icon;
 
 import net.disy.commons.swing.ui.IObjectUi;
 
-public class SimpleItemTypeUi implements IObjectUi {
+public class SimpleItemTypeUi implements IObjectUi<Object> {
 
   private final Icon icon;
 
@@ -18,5 +18,10 @@ public class SimpleItemTypeUi implements IObjectUi {
 
   public String getLabel(Object file) {
     return file.toString();
+  }
+
+  @Override
+  public String getToolTipText(Object value) {
+    return null;
   }
 }

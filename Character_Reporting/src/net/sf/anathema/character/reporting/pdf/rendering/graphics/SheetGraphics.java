@@ -104,7 +104,7 @@ public class SheetGraphics implements ITextMetrics {
     directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, label, position.x, position.y, 0);
     float labelWidth = getDefaultTextWidth(label);
     float contentX = position.x + labelWidth + 2;
-    if (StringUtilities.isNullOrTrimEmpty(content)) {
+    if (StringUtilities.isNullOrTrimmedEmpty(content)) {
       directContent.endText();
       float lineWidth = position.x + width - contentX;
       drawMissingTextLine(new Position(contentX, position.y), lineWidth);
@@ -137,11 +137,11 @@ public class SheetGraphics implements ITextMetrics {
     directContent.setColorFill(Color.BLACK);
   }
 
-  private final void setCommentFont() {
+  private void setCommentFont() {
     setFontSize(COMMENT_FONT_SIZE);
   }
 
-  private final void setDefaultFont() {
+  private void setDefaultFont() {
     setFontSize(FONT_SIZE);
   }
 

@@ -5,6 +5,7 @@ import java.awt.Font;
 
 import javax.swing.border.TitledBorder;
 
+@SuppressWarnings("serial") // Will not be serialized
 public class FontTitledBorder extends TitledBorder {
   
   public FontTitledBorder(String title){

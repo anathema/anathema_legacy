@@ -5,9 +5,9 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
@@ -46,7 +46,7 @@ public class GhostFettersConfigurationView implements IGhostFettersConfiguration
 	  }
 
   public JComponent getComponent() {
-    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createFillNoGrab();
+    GridDialogLayoutData data = GridDialogLayoutDataFactory.createFillNoGrab();
     data.setGrabExcessVerticalSpace(true);
     fetterPanel.add(new JScrollPane(fetterListPanel), data);
     mainPanel.add(fetterPanel, data);

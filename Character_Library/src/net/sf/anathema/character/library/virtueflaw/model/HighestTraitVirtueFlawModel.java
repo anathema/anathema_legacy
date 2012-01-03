@@ -29,7 +29,7 @@ public class HighestTraitVirtueFlawModel extends VirtueFlawModel {
       @Override
       public void configuredChangeOccured() {
         ITraitType[] flawVirtueTypes = getFlawVirtueTypes();
-        if (!ArrayUtilities.contains(flawVirtueTypes, getVirtueFlaw().getRoot())) {
+        if (!ArrayUtilities.containsValue(flawVirtueTypes, getVirtueFlaw().getRoot())) {
           getVirtueFlaw().setRoot(sorter.sortDescending(virtues).get(0).getType());
         }
       }

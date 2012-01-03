@@ -7,8 +7,8 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
@@ -59,18 +59,18 @@ public class LabelTextView implements ITextView {
   }
 
   public void addToStandardPanel(JPanel panel) {
-    panel.add(label, GridDialogLayoutDataUtilities.createTopData());
+    panel.add(label, GridDialogLayoutDataFactory.createTopData());
     panel.add(textView.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
   }
 
   public void addToStandardPanel(JPanel panel, GridDialogLayoutData textFieldData) {
-    panel.add(label, GridDialogLayoutDataUtilities.createTopData());
+    panel.add(label, GridDialogLayoutDataFactory.createTopData());
     panel.add(textView.getComponent(), textFieldData);
   }
 
   public void addToStandardPanel(JPanel panel, int columnCount) {
-    panel.add(label, GridDialogLayoutDataUtilities.createTopData());
-    panel.add(textView.getComponent(), GridDialogLayoutDataUtilities.createHorizontalSpanData(
+    panel.add(label, GridDialogLayoutDataFactory.createTopData());
+    panel.add(textView.getComponent(), GridDialogLayoutDataFactory.createHorizontalSpanData(
         columnCount,
         GridDialogLayoutData.FILL_HORIZONTAL));
   }

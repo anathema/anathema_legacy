@@ -14,9 +14,9 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
@@ -39,7 +39,7 @@ public class NameGeneratorView implements INameGeneratorView {
   };
 
   public NameGeneratorView() {
-    content.add(firstColumn, GridDialogLayoutDataUtilities.createTopData());
+    content.add(firstColumn, GridDialogLayoutDataFactory.createTopData());
     content.add(createSecondColumn(), GridDialogLayoutData.FILL_BOTH);
   }
 
