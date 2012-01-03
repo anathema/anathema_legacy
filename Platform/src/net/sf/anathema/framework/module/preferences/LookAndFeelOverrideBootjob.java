@@ -1,9 +1,5 @@
 package net.sf.anathema.framework.module.preferences;
 
-import java.util.Locale;
-
-import javax.swing.UIManager;
-
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
@@ -12,8 +8,10 @@ import net.sf.anathema.initialization.IAnathemaBootJob;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
+import javax.swing.*;
+
 /**
- * Removes the Look and Feel settings if the "AnathemaCore.LookAndFeel.UseSystem" property
+ * Removes the Look and Feel settings if the "overrideLookAndFeel" system property
  * is set to "true". This boot job will also revert the current Look and Feel to the
  * system Look And Feel. This may introduce visual artifacts since the Look and Feel
  * was already set when boot jobs are being executed. However this is intended to be
@@ -29,7 +27,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class LookAndFeelOverrideBootjob implements IAnathemaBootJob {
   @Override
   public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
-    if (userRequestedLookAndFeelOverride(resources)) {
+    if (userRequestedLookAndFeelOverride()) {
       resetLookAndFeelPreference();
       if (currentLookAndFeelIsNotSystemLookAndFeel()) {
         setSystemLookAndFeel();
@@ -37,8 +35,8 @@ public class LookAndFeelOverrideBootjob implements IAnathemaBootJob {
     }
   }
 
-  private boolean userRequestedLookAndFeelOverride(IResources resources) {
-    return "true".equals(resources.getString("AnathemaCore.LookAndFeel.UseSystem").trim().toLowerCase(Locale.US));
+  private boolean userRequestedLookAndFeelOverride() {
+    return System.getProperty("overrideLookAndFeel", "false").equals("true");
   }
 
   private void resetLookAndFeelPreference() {
