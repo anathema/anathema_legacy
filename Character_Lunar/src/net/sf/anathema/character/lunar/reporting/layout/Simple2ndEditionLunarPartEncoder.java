@@ -29,6 +29,6 @@ public class Simple2ndEditionLunarPartEncoder extends AbstractSecondEditionExalt
 
   @Override
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[] { new Lunar2ndEditionAdditionalPageEncoder(encoderRegistry, this, getResources(), configuration) };
+    return new IPdfPageEncoder[] { new Lunar2ndEditionAdditionalPageEncoder(encoderRegistry, getResources(), configuration) };
   }
 }

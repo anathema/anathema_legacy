@@ -10,8 +10,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public class CombatStatsContentBoxEncoder implements IBoxContentEncoder {
 
-  public static final String ID = CombatStatsContentBoxEncoder.class.getName();
-
   private final static float PADDING = 3;
 
   private final ITableEncoder combatRulesEncoder;

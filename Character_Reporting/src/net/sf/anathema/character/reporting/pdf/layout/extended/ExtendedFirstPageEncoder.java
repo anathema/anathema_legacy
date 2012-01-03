@@ -5,10 +5,10 @@ import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.ExtendedSpecialtiesEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.AttributesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
@@ -110,7 +110,7 @@ public class ExtendedFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(AttributesEncoder.ID, getResources(), content);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(EncoderIds.ATTRIBUTES, getResources(), content);
     return encodeFixedBox(graphics, content, encoder, 1, 1, distanceFromTop, height);
   }
 

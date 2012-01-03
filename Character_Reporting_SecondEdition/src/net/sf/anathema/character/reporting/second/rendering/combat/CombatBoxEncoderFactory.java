@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.second.rendering.combat;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
+import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractBoxContentEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -11,7 +12,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class CombatBoxEncoderFactory extends AbstractBoxContentEncoderFactory {
 
   public CombatBoxEncoderFactory() {
-    super(CombatStatsContentBoxEncoder.ID);
+    super(EncoderIds.COMBAT);
   }
 
   @Override

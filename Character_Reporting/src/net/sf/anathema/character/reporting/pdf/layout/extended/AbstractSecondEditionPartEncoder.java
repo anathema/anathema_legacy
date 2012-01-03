@@ -62,19 +62,11 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
     return new Extended2ndEditionMovementEncoder(resources, baseFont);
   }
 
-  public float getWeaponryHeight() {
-    return 102;
-  }
-
   public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders() {
     return new IVariableBoxContentEncoder[0];
   }
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
     return new IPdfPageEncoder[0];
-  }
-
-  public boolean isEncodeAttributeAsFavorable() {
-    return false;
   }
 }

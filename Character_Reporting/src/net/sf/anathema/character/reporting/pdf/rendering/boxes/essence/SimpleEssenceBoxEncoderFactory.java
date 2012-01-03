@@ -1,16 +1,15 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.essence;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
+import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractBoxContentEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SimpleEssenceBoxEncoderFactory extends AbstractBoxContentEncoderFactory {
 
-  public static final String ID = SimpleEssenceBoxEncoderFactory.class.getName();
-
   public SimpleEssenceBoxEncoderFactory() {
-    super(ID);
+    super(EncoderIds.ESSENCE_SIMPLE);
   }
 
   @Override

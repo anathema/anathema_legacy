@@ -22,8 +22,6 @@ import java.awt.Color;
 
 public abstract class AbstractHealthAndMovementEncoder implements IBoxContentEncoder {
 
-  public static final String ID = AbstractHealthAndMovementEncoder.class.getName();
-
   private final IResources resources;
 
   public AbstractHealthAndMovementEncoder(IResources resources) {

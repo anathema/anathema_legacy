@@ -42,19 +42,11 @@ public abstract class AbstractFirstEditionPartEncoder implements IExtendedPartEn
     return null;
   }
 
-  public float getWeaponryHeight() {
-    return 129;
-  }
-
   public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders() {
     return new IVariableBoxContentEncoder[0];
   }
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
     return new IPdfPageEncoder[0];
-  }
-
-  public boolean isEncodeAttributeAsFavorable() {
-    return false;
   }
 }

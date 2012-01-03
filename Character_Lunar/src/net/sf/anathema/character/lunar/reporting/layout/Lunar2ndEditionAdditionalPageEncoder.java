@@ -6,6 +6,7 @@ import net.sf.anathema.character.equipment.impl.reporting.rendering.ArmourEncode
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.lunar.reporting.rendering.EncoderIds;
 import net.sf.anathema.character.lunar.reporting.rendering.SecondEditionLunarSpiritFormEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.SecondEditionPowersEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.SecondEditionDBTCombatEncoder;
@@ -15,7 +16,6 @@ import net.sf.anathema.character.lunar.reporting.rendering.health.SecondEditionL
 import net.sf.anathema.character.lunar.reporting.rendering.heartsblood.SecondEditionLunarHeartsBloodEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.knacks.KnackEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.layout.IWeaponryPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
@@ -35,12 +35,10 @@ public class Lunar2ndEditionAdditionalPageEncoder implements IPdfPageEncoder {
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private BoxContentEncoderRegistry encoderRegistry;
-  private final IWeaponryPartEncoder partEncoder;
 
-  public Lunar2ndEditionAdditionalPageEncoder(BoxContentEncoderRegistry encoderRegistry, IWeaponryPartEncoder partEncoder, IResources resources,
+  public Lunar2ndEditionAdditionalPageEncoder(BoxContentEncoderRegistry encoderRegistry, IResources resources,
     PdfPageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
-    this.partEncoder = partEncoder;
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;
     this.boxEncoder = new PdfBoxEncoder(resources);
@@ -94,8 +92,8 @@ public class Lunar2ndEditionAdditionalPageEncoder implements IPdfPageEncoder {
   }
 
   private float encodeArsenal(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    float height = encoderRegistry.getValue(LunarWeaponryEncoderFactory.ID, PreferredHeight, content);
-    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(LunarWeaponryEncoderFactory.ID, resources, content);
+    float height = encoderRegistry.getValue(EncoderIds.ARSENAL_LUNAR, PreferredHeight, content);
+    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(EncoderIds.ARSENAL_LUNAR, resources, content);
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;

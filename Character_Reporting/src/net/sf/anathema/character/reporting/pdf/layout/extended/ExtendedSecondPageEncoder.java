@@ -3,14 +3,14 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStatsContentBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.reporting.pdf.content.EncoderIds.WEAPONRY_ID;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
 
 public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
 
@@ -62,7 +62,7 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(CombatStatsContentBoxEncoder.ID, getResources(), content);
+    IBoxContentEncoder encoder = encoderRegistry.createEncoder(EncoderIds.COMBAT, getResources(), content);
     return encodeFixedBox(graphics, content, encoder, 2, 2, distanceFromTop, height);
   }
 
@@ -75,7 +75,7 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(WEAPONRY_ID, getResources(), content);
+    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(ARSENAL, getResources(), content);
     return encodeFixedBox(graphics, content, weaponryEncoder, 2, 2, distanceFromTop, height);
   }
 }

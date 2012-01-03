@@ -25,8 +25,6 @@ import java.util.List;
 
 public class AttributesEncoder implements IBoxContentEncoder {
 
-  public static final String ID = AttributesEncoder.class.getName();
-
   private final IResources resources;
   private PdfTraitEncoder smallTraitEncoder;
   private final boolean encodeFavored;
