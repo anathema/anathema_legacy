@@ -22,7 +22,9 @@ public class LookAndFeelOverrideBootjobTest {
 
   @After
   public void tearDown() throws Exception {
-    SYSTEM_PREFERENCES.put(USER_LOOK_AND_FEEL_CLASSNAME, previousSetting);
+    if (previousSetting != null) {
+      SYSTEM_PREFERENCES.put(USER_LOOK_AND_FEEL_CLASSNAME, previousSetting);
+    }
   }
 
   @Test
