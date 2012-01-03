@@ -8,15 +8,15 @@ import net.sf.anathema.character.generic.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.favorable.*;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import org.easymock.EasyMock;
 import org.junit.Test;
 
 import static org.junit.Assert.assertSame;
+import static org.mockito.Mockito.*;
 
 public class TraitFavorizationSetFavoredTest {
 
   private IDefaultTrait archeryTrait = new DummyDefaultTrait(AbilityType.Archery);
-  private IFavorableStateChangedListener listener = EasyMock.createStrictMock(IFavorableStateChangedListener.class);
+  private IFavorableStateChangedListener listener = mock(IFavorableStateChangedListener.class);
 
   private TraitFavorization createFriendlyTraitFavorization() {
     return createTraitFavorization(new FriendlyIncrementChecker());
@@ -75,10 +75,9 @@ public class TraitFavorizationSetFavoredTest {
   public void testEventOnSetFavoredOnDefault() throws Exception {
     TraitFavorization favorization = createFriendlyTraitFavorization();
     favorization.addFavorableStateChangedListener(listener);
-    listener.favorableStateChanged(FavorableState.Favored);
-    EasyMock.replay();
     favorization.setFavored(true);
-    EasyMock.verify();
+    verify(listener).favorableStateChanged(FavorableState.Favored);
+    verifyNoMoreInteractions(listener);
   }
 
   @Test
@@ -86,10 +85,9 @@ public class TraitFavorizationSetFavoredTest {
     TraitFavorization favorization = createFriendlyTraitFavorization();
     favorization.setFavored(true);
     favorization.addFavorableStateChangedListener(listener);
-    listener.favorableStateChanged(FavorableState.Default);
-    EasyMock.replay();
     favorization.setFavored(false);
-    EasyMock.verify();
+    verify(listener).favorableStateChanged(FavorableState.Default);
+    verifyNoMoreInteractions(listener);
   }
 
   @Test
@@ -98,9 +96,8 @@ public class TraitFavorizationSetFavoredTest {
     favorization.setFavored(true);
     assertSame(FavorableState.Favored, favorization.getFavorableState());
     favorization.addFavorableStateChangedListener(listener);
-    EasyMock.replay();
     favorization.setFavored(true);
-    EasyMock.verify();
+    verifyZeroInteractions(listener);
   }
 
   @Test
@@ -109,9 +106,8 @@ public class TraitFavorizationSetFavoredTest {
     favorization.setCaste(true);
     assertSame(FavorableState.Caste, favorization.getFavorableState());
     favorization.addFavorableStateChangedListener(listener);
-    EasyMock.replay();
     favorization.setFavored(true);
-    EasyMock.verify();
+    verifyZeroInteractions(listener);
   }
 
   @Test
@@ -119,9 +115,8 @@ public class TraitFavorizationSetFavoredTest {
     TraitFavorization favorization = createFriendlyTraitFavorization();
     assertSame(FavorableState.Default, favorization.getFavorableState());
     favorization.addFavorableStateChangedListener(listener);
-    EasyMock.replay();
     favorization.setFavored(false);
-    EasyMock.verify();
+    verifyZeroInteractions(listener);
   }
 
   @Test
@@ -130,8 +125,7 @@ public class TraitFavorizationSetFavoredTest {
     favorization.setCaste(true);
     assertSame(FavorableState.Caste, favorization.getFavorableState());
     favorization.addFavorableStateChangedListener(listener);
-    EasyMock.replay();
     favorization.setFavored(false);
-    EasyMock.verify();
+    verifyZeroInteractions(listener);
   }
 }
