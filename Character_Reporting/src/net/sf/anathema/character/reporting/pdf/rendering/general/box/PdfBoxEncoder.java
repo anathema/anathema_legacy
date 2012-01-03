@@ -28,7 +28,7 @@ public class PdfBoxEncoder {
     return new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - headerPadding);
   }
 
-  public float getRequestedHeight(SheetGraphics graphics, IVariableBoxContentEncoder encoder, ReportContent content, float width) {
+  public float getRequestedHeight(SheetGraphics graphics, IVariableContentEncoder encoder, ReportContent content, float width) {
     float boxHeight = BoundsEncoder.HEADER_HEIGHT / 2f + BoundsEncoder.ARC_SPACE;
     return boxHeight + encoder.getRequestedHeight(graphics, content, width);
   }

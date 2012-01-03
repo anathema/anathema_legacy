@@ -3,11 +3,11 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
-public class PdfGenericCharmEncoder implements IVariableBoxContentEncoder {
+public class PdfGenericCharmEncoder implements IVariableContentEncoder {
 
   private final PdfGenericCharmTableEncoder tableEncoder;
 

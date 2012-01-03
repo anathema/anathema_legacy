@@ -5,8 +5,6 @@ import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.SecondEdit
 import net.sf.anathema.character.reporting.pdf.layout.simple.AbstractSimplePartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Simple2ndEditionLunarPartEncoder extends AbstractSimplePartEncoder {
@@ -25,10 +23,5 @@ public class Simple2ndEditionLunarPartEncoder extends AbstractSimplePartEncoder 
   @Override
   public ContentEncoder getAnimaEncoder() {
     return new LunarAnimaEncoderFactory(getResources()).createAnimaEncoder();
-  }
-
-  @Override
-  public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new PageEncoder[] { new Lunar2ndEditionAdditionalPageEncoder(encoderRegistry, getResources(), configuration) };
   }
 }

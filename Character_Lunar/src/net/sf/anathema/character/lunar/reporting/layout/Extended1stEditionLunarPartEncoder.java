@@ -32,7 +32,6 @@ public class Extended1stEditionLunarPartEncoder extends AbstractFirstEditionExal
 
   @Override
   public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new PageEncoder[] { new Extended1stEditionLunarBeastformPageEncoder(encoderRegistry, this, baseFont, getResources(), getEssenceMax(),
-      configuration) };
+    return new PageEncoder[] { new LunarBeastform1stEditionPageEncoder(encoderRegistry, getResources(), configuration) };
   }
 }

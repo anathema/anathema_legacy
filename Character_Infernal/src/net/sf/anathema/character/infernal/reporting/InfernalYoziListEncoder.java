@@ -2,11 +2,11 @@ package net.sf.anathema.character.infernal.reporting;
 
 import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
-public class InfernalYoziListEncoder extends FavorableTraitBoxContentEncoder implements IVariableBoxContentEncoder {
+public class InfernalYoziListEncoder extends FavorableTraitBoxContentEncoder implements IVariableContentEncoder {
   private final float lineHeight = 16;
 
   public InfernalYoziListEncoder() {

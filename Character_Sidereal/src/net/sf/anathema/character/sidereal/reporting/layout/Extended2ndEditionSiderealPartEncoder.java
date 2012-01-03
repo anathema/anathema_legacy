@@ -25,7 +25,7 @@ public class Extended2ndEditionSiderealPartEncoder extends AbstractSecondEdition
 
   @Override
   public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new PageEncoder[] { new Extended2ndEditionSiderealDetailsPageEncoder(getResources(), baseFont, getFontSize(), configuration) };
+    return new PageEncoder[] { new Sidereal2ndEditionDetailsPageEncoder(getResources(), getFontSize(), configuration) };
   }
 
   @Override

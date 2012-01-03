@@ -2,7 +2,6 @@ package net.sf.anathema.character.sidereal.reporting.layout;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -27,13 +26,12 @@ import net.sf.anathema.lib.util.Identificate;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class Extended2ndEditionSiderealDetailsPageEncoder implements PageEncoder {
+public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
 
   private final static float COLLEGE_HEIGHT = 312;
   private final static float DESTINY_HEIGHT = (COLLEGE_HEIGHT - PADDING) / 2;
   private final static float PARADOX_HEIGHT = 45;
   private final IResources resources;
-  private final BaseFont baseFont;
   private final PdfBoxEncoder boxEncoder;
   private final PdfPageConfiguration configuration;
   private final int fontSize;
@@ -43,9 +41,8 @@ public class Extended2ndEditionSiderealDetailsPageEncoder implements PageEncoder
   private static final TemplateType dreamsType = new TemplateType(CharacterType.SIDEREAL, new Identificate("Dreams")); //$NON-NLS-1$
   private static final TemplateType revisedDreamsType = new TemplateType(CharacterType.SIDEREAL, new Identificate("RevisedDreams")); //$NON-NLS-1$
 
-  public Extended2ndEditionSiderealDetailsPageEncoder(IResources resources, BaseFont baseFont, int fontSize, PdfPageConfiguration configuration) {
+  public Sidereal2ndEditionDetailsPageEncoder(IResources resources, int fontSize, PdfPageConfiguration configuration) {
     this.resources = resources;
-    this.baseFont = baseFont;
     this.fontSize = fontSize;
     this.configuration = configuration;
     this.boxEncoder = new PdfBoxEncoder(resources);
@@ -61,15 +58,12 @@ public class Extended2ndEditionSiderealDetailsPageEncoder implements PageEncoder
     encodeAstrology(graphics, content, distanceFromTop);
     distanceFromTop += collegeHeight + PADDING;
 
-    //distanceFromTop += PADDING;
     if (!isFirstAge(content.getCharacter())) {
       encodeArcaneFate(graphics, content, distanceFromTop);
     }
     encodeConnections(graphics, content, distanceFromTop);
     distanceFromTop += encodeParadoxHelp(graphics, content, distanceFromTop);
     distanceFromTop += PADDING;
-    //float remainingHeight = configuration.getContentHeight() - distanceFromTop;
-    //
 
     float centerDistance = distanceFromTop;
     encodeResplendentDestiny(graphics, getLeftDestinyBounds(distanceFromTop), content);
@@ -83,10 +77,6 @@ public class Extended2ndEditionSiderealDetailsPageEncoder implements PageEncoder
     encodeResplendentDestiny(graphics, getLeftDestinyBounds(distanceFromTop), content);
     encodeResplendentDestiny(graphics, getCenterDestinyBounds(distanceFromTop), content);
     encodeResplendentDestiny(graphics, getRightDestinyBounds(distanceFromTop), content);
-    //rightDistanceFromTop += encodeParadox(graphics, character, rightDistanceFromTop);
-    //rightDistanceFromTop += encodeStanding(graphics, character, rightDistanceFromTop);
-    //rightDistanceFromTop += encodeConventions(graphics, character, rightDistanceFromTop);
-
   }
 
   private boolean isRonin(IGenericCharacter character) {

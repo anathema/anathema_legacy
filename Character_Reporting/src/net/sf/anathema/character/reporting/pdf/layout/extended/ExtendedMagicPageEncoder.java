@@ -15,7 +15,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEnc
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfMagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.ExtendedWillpowerEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -112,7 +112,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeVariableBox(graphics, content, (IVariableBoxContentEncoder) getPartEncoder().getEssenceEncoder(), 1, 2, distanceFromTop, height);
+    return encodeVariableBox(graphics, content, (IVariableContentEncoder) getPartEncoder().getEssenceEncoder(), 1, 2, distanceFromTop, height);
   }
 
   private float encodeWillpower(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -148,7 +148,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
-    IVariableBoxContentEncoder encoder = new PdfGenericCharmEncoder(getResources());
+    IVariableContentEncoder encoder = new PdfGenericCharmEncoder(getResources());
     if (encoder.hasContent(content)) {
       return encodeVariableBox(graphics, content, encoder, 1, 3, distanceFromTop, maxHeight);
     }
@@ -166,7 +166,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeSidebars(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
     float height = 0;
-    for (IVariableBoxContentEncoder sidebar : getRegistry().getAdditionalMagicSidebarEncoders()) {
+    for (IVariableContentEncoder sidebar : getRegistry().getAdditionalMagicSidebarEncoders()) {
       float sidebarHeight = encodeVariableBox(graphics, content, sidebar, 1, 1, distanceFromTop, maxHeight - height);
       if (sidebarHeight != 0) {
         height += calculateBoxIncrement(sidebarHeight);

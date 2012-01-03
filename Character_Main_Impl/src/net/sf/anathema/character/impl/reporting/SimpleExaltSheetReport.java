@@ -68,7 +68,8 @@ public class SimpleExaltSheetReport implements IITextReport {
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
       encoderList.add(new SimpleFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
-      Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
+      ReportContent content = new ReportContent(getContentRegistry(), character, description);
+      Collections.addAll(encoderList, findAdditionalPages(configuration, content));
       encoderList.add(new SimpleSecondPageEncoder(getEncoderRegistry(), resources, encodingRegistry, configuration));
       boolean isFirstPrinted = false;
       for (PageEncoder encoder : encoderList) {
@@ -79,12 +80,15 @@ public class SimpleExaltSheetReport implements IITextReport {
           isFirstPrinted = true;
         }
         SheetGraphics graphics = new SheetGraphics(directContent);
-        ReportContent content = new ReportContent(getContentRegistry(), character, description);
         encoder.encode(document, graphics, content);
       }
     } catch (Exception e) {
       throw new ReportException(e);
     }
+  }
+
+  private PageEncoder[] findAdditionalPages(PdfPageConfiguration configuration, ReportContent content) {
+    return getReportingModuleObject().getAdditionalPageRegistry().createEncoders(configuration, getEncoderRegistry(), resources, content);
   }
 
   private EncoderRegistry getEncoderRegistry() {

@@ -25,7 +25,7 @@ public class Extended1stEditionSiderealPartEncoder extends AbstractFirstEditionE
 
   @Override
   public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new PageEncoder[] { new Extended1stEditionSiderealDetailsPageEncoder(getResources(), getBaseFont(), getFontSize(), configuration) };
+    return new PageEncoder[] { new Sidereal1stEditionDetailsPageEncoder(getResources(), getFontSize(), configuration) };
   }
 
   @Override

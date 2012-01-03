@@ -1,7 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractSimplePartEncoder implements ISimplePartEncoder {
@@ -14,10 +12,5 @@ public abstract class AbstractSimplePartEncoder implements ISimplePartEncoder {
 
   public final IResources getResources() {
     return resources;
-  }
-
-  @Override
-  public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new PageEncoder[0];
   }
 }

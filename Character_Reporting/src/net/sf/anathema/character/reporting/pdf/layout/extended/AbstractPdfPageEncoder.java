@@ -9,7 +9,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -144,13 +144,13 @@ public abstract class AbstractPdfPageEncoder implements PageEncoder {
     return height;
   }
 
-  protected float encodeVariableBox(SheetGraphics graphics, ReportContent content, IVariableBoxContentEncoder encoder, int column, int span,
+  protected float encodeVariableBox(SheetGraphics graphics, ReportContent content, IVariableContentEncoder encoder, int column, int span,
     float distanceFromTop, float maxHeight) throws DocumentException {
     float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(graphics, encoder, content, getWidth(column, span)));
     return encodeFixedBox(graphics, content, encoder, column, span, distanceFromTop, height);
   }
 
-  protected float encodeVariableBoxBottom(SheetGraphics graphics, ReportContent content, IVariableBoxContentEncoder encoder, int column, int span,
+  protected float encodeVariableBoxBottom(SheetGraphics graphics, ReportContent content, IVariableContentEncoder encoder, int column, int span,
     float bottom, float maxHeight) throws DocumentException {
     float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(graphics, encoder, content, getWidth(column, span)));
     return encodeFixedBoxBottom(graphics, content, encoder, column, span, bottom, height);

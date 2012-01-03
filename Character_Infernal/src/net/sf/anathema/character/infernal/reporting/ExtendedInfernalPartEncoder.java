@@ -4,7 +4,7 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
@@ -25,7 +25,7 @@ public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPa
     return new InfernalAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 
-  public IVariableBoxContentEncoder[] getAdditionalFirstPageEncoders() {
-    return new IVariableBoxContentEncoder[] { new InfernalYoziListEncoder() };
+  public IVariableContentEncoder[] getAdditionalFirstPageEncoders() {
+    return new IVariableContentEncoder[] { new InfernalYoziListEncoder() };
   }
 }

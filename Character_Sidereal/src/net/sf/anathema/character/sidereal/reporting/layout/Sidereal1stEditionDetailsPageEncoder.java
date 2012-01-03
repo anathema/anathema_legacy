@@ -22,7 +22,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class Simple1stEditionSiderealDetailsPageEncoder implements PageEncoder {
+public class Sidereal1stEditionDetailsPageEncoder implements PageEncoder {
 
   private final static float COLLEGE_HEIGHT = 312;
   private final static float DESTINY_HEIGHT = (COLLEGE_HEIGHT - PADDING) / 2;
@@ -33,7 +33,7 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements PageEncoder {
   private final PdfPageConfiguration configuration;
   private final int fontSize;
 
-  public Simple1stEditionSiderealDetailsPageEncoder(IResources resources, int fontSize, PdfPageConfiguration configuration) {
+  public Sidereal1stEditionDetailsPageEncoder(IResources resources, int fontSize, PdfPageConfiguration configuration) {
     this.resources = resources;
     this.fontSize = fontSize;
     this.configuration = configuration;
