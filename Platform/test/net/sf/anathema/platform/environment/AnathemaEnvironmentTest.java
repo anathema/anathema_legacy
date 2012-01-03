@@ -5,8 +5,6 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
 
 import javax.swing.*;
 import javax.swing.plaf.metal.MetalLookAndFeel;
@@ -52,14 +50,14 @@ public class AnathemaEnvironmentTest {
   }
 
   @Test
-  public void testSystemLookAndFeel() throws Exception {
+  public void initializesToSystemLookAndFeelIfNoneIsSet() throws Exception {
     preferences.setUserLookAndFeel(null);
     AnathemaEnvironment.initLookAndFeel(preferences);
     Assert.assertEquals(UIManager.getSystemLookAndFeelClassName(), UIManager.getLookAndFeel().getClass().getName());
   }
 
   @Test
-  public void testForceMetalLookAndFeel() throws Exception {
+  public void initializesToSetLookAndFeel() throws Exception {
     preferences.setUserLookAndFeel(MetalLookAndFeel.class.getName());
     AnathemaEnvironment.initLookAndFeel(preferences);
     Assert.assertEquals(MetalLookAndFeel.class, UIManager.getLookAndFeel().getClass());
