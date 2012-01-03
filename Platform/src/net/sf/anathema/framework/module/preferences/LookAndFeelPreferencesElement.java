@@ -1,25 +1,5 @@
 package net.sf.anathema.framework.module.preferences;
 
-import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.LOOK_AND_FEEL_PREFERENCE;
-import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.USER_LOOK_AND_FEEL_CLASSNAME;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.LookAndFeel;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
 import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
@@ -28,6 +8,17 @@ import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElemen
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
+
+import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+
+import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.USER_LOOK_AND_FEEL_CLASSNAME;
 
 public class LookAndFeelPreferencesElement implements IPreferencesElement {
   private LookAndFeelItem selected;
@@ -46,11 +37,9 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     if (name1 == name2) {
       return true;
     }
-
     if (name1 == null || name2 == null) {
       return false;
     }
-
     return name1.equals(name2);
   }
 
@@ -211,14 +200,12 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
 
   public void savePreferences() {
     String selectedClass = getSelectedClassName();
-
     if (selectedClass != null) {
       SYSTEM_PREFERENCES.put(USER_LOOK_AND_FEEL_CLASSNAME, selectedClass);
     }
     else {
       SYSTEM_PREFERENCES.remove(USER_LOOK_AND_FEEL_CLASSNAME);
     }
-    SYSTEM_PREFERENCES.remove(LOOK_AND_FEEL_PREFERENCE);
   }
 
   private static String getLookAndFeelClassName() {
@@ -256,7 +243,6 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     if (currentSelected == null) {
       return false;
     }
-
     return !compareClassNames(
         resolveLookAndFeelClassName(currentSelected.getClassName()),
         resolveLookAndFeelClassName(getLookAndFeelClassName()));
@@ -301,4 +287,3 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     }
   }
 }
-

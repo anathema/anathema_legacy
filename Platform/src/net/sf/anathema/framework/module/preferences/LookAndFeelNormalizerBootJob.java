@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.module.preferences;
 
-import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.LOOK_AND_FEEL_PREFERENCE;
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.USER_LOOK_AND_FEEL_CLASSNAME;
 import static net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement.SYSTEM_PREFERENCES;
 
@@ -20,6 +19,8 @@ import net.sf.anathema.lib.resources.IResources;
  * "ForceMetalLookAndFeel" (it will still remove "ForceMetalLookAndFeel").
  */
 public class LookAndFeelNormalizerBootJob implements IAnathemaBootJob {
+  private static final String LOOK_AND_FEEL_PREFERENCE = "ForceMetalLookAndFeel"; //$NON-NLS-1$
+
   @Override
   public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
     String storedClassName = SYSTEM_PREFERENCES.get(USER_LOOK_AND_FEEL_CLASSNAME, null);

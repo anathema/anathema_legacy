@@ -5,7 +5,6 @@ public interface IAnathemaPreferencesConstants {
   public final String DEFAULT_LOCALE = "English"; //$NON-NLS-1$
   public final String DEFAULT_REPOSITORY_LOCATION = "./repository/"; //$NON-NLS-1$  
   public final String LOCALE_PREFERENCE = "Locale"; //$NON-NLS-1$
-  public final String LOOK_AND_FEEL_PREFERENCE = "ForceMetalLookAndFeel"; //$NON-NLS-1$
   public final String USER_LOOK_AND_FEEL_CLASSNAME = "UserLookAndFeel"; //$NON-NLS-1$
   public final String MAXIMIZE_PREFERENCE = "Maximize"; //$NON-NLS-1$
   public final String OPEN_PDF_PREFERENCE = "OpenPdf"; //$NON-NLS-1$
