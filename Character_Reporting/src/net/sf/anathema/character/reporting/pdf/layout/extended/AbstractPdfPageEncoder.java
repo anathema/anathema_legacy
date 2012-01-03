@@ -13,12 +13,12 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBo
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
+public abstract class AbstractPdfPageEncoder implements PageEncoder {
   private final IResources resources;
   private final BaseFont baseFont;
 

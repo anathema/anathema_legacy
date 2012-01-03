@@ -24,7 +24,7 @@ import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleFirstPageEnco
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleSecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.IITextReport;
@@ -66,12 +66,12 @@ public class SimpleExaltSheetReport implements IITextReport {
       ISimplePartEncoder partEncoder = getPartEncoder(stattedCharacter);
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
-      List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
+      List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
       encoderList.add(new SimpleFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
       encoderList.add(new SimpleSecondPageEncoder(getEncoderRegistry(), resources, encodingRegistry, configuration));
       boolean isFirstPrinted = false;
-      for (IPdfPageEncoder encoder : encoderList) {
+      for (PageEncoder encoder : encoderList) {
         if (isFirstPrinted) {
           document.newPage();
         }

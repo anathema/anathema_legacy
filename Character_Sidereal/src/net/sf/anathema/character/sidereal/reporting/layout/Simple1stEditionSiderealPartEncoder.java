@@ -2,7 +2,7 @@ package net.sf.anathema.character.sidereal.reporting.layout;
 
 import net.sf.anathema.character.reporting.pdf.layout.simple.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.character.sidereal.reporting.rendering.SiderealParadoxEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.anima.SiderealAnimaEncoderFactory;
@@ -19,8 +19,8 @@ public class Simple1stEditionSiderealPartEncoder extends AbstractFirstEditionExa
   }
 
   @Override
-  public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[] { new Simple1stEditionSiderealDetailsPageEncoder(getResources(), getFontSize(), configuration) };
+  public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
+    return new PageEncoder[] { new Simple1stEditionSiderealDetailsPageEncoder(getResources(), getFontSize(), configuration) };
   }
 
   @Override

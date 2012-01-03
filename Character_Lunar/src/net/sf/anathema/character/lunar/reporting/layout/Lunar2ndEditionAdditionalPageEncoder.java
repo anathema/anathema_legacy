@@ -22,14 +22,14 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class Lunar2ndEditionAdditionalPageEncoder implements IPdfPageEncoder {
+public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
   private final IResources resources;
 
   private final PdfPageConfiguration pageConfiguration;

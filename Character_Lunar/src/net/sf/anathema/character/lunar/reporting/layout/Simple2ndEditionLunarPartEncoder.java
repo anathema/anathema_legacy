@@ -5,7 +5,7 @@ import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.SecondEdit
 import net.sf.anathema.character.reporting.pdf.layout.simple.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -28,7 +28,7 @@ public class Simple2ndEditionLunarPartEncoder extends AbstractSecondEditionExalt
   }
 
   @Override
-  public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[] { new Lunar2ndEditionAdditionalPageEncoder(encoderRegistry, getResources(), configuration) };
+  public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
+    return new PageEncoder[] { new Lunar2ndEditionAdditionalPageEncoder(encoderRegistry, getResources(), configuration) };
   }
 }

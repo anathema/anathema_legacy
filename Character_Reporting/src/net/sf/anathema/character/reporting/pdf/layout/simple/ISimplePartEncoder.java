@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 
 public interface ISimplePartEncoder {
@@ -10,5 +10,5 @@ public interface ISimplePartEncoder {
 
   ContentEncoder getGreatCurseEncoder();
 
-  IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
+  PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
 }

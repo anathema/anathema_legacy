@@ -5,7 +5,7 @@ import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.FirstEditi
 import net.sf.anathema.character.reporting.pdf.layout.simple.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -28,7 +28,7 @@ public class Simple1stEditionLunarPartEncoder extends AbstractFirstEditionExaltP
   }
 
   @Override
-  public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
-    return new IPdfPageEncoder[] { new Simple1stEditionLunarBeastformPageEncoder(encoderRegistry, this, getResources(), configuration) };
+  public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
+    return new PageEncoder[] { new Simple1stEditionLunarBeastformPageEncoder(encoderRegistry, this, getResources(), configuration) };
   }
 }

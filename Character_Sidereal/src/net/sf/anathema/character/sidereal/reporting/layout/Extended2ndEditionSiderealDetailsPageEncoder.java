@@ -14,7 +14,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.character.sidereal.reporting.content.colleges.SiderealCollegeContent;
 import net.sf.anathema.character.sidereal.reporting.rendering.ArcaneFateInfoEncoder;
@@ -27,7 +27,7 @@ import net.sf.anathema.lib.util.Identificate;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class Extended2ndEditionSiderealDetailsPageEncoder implements IPdfPageEncoder {
+public class Extended2ndEditionSiderealDetailsPageEncoder implements PageEncoder {
 
   private final static float COLLEGE_HEIGHT = 312;
   private final static float DESTINY_HEIGHT = (COLLEGE_HEIGHT - PADDING) / 2;
