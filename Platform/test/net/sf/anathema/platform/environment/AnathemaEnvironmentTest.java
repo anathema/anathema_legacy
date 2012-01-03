@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.environment;
 
-import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import org.junit.After;
 import org.junit.Assert;
@@ -54,14 +53,14 @@ public class AnathemaEnvironmentTest {
 
   @Test
   public void testSystemLookAndFeel() throws Exception {
-    preferences.setForceMetalLookAndFeel(false);
+    preferences.setUserLookAndFeel(null);
     AnathemaEnvironment.initLookAndFeel(preferences);
     Assert.assertEquals(UIManager.getSystemLookAndFeelClassName(), UIManager.getLookAndFeel().getClass().getName());
   }
 
   @Test
   public void testForceMetalLookAndFeel() throws Exception {
-    preferences.setForceMetalLookAndFeel(true);
+    preferences.setUserLookAndFeel(MetalLookAndFeel.class.getName());
     AnathemaEnvironment.initLookAndFeel(preferences);
     Assert.assertEquals(MetalLookAndFeel.class, UIManager.getLookAndFeel().getClass());
   }
