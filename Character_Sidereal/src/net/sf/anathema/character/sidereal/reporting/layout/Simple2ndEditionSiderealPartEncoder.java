@@ -1,7 +1,7 @@
 package net.sf.anathema.character.sidereal.reporting.layout;
 
 import net.sf.anathema.character.reporting.pdf.layout.simple.AbstractSecondEditionExaltPdfPartEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -15,7 +15,7 @@ public class Simple2ndEditionSiderealPartEncoder extends AbstractSecondEditionEx
     super(resources);
   }
 
-  public IBoxContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder() {
     return new SiderealFlawedFateEncoder(getResources());
   }
 
@@ -26,7 +26,7 @@ public class Simple2ndEditionSiderealPartEncoder extends AbstractSecondEditionEx
   }
 
   @Override
-  public IBoxContentEncoder getAnimaEncoder() {
+  public ContentEncoder getAnimaEncoder() {
     return new SiderealAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 }

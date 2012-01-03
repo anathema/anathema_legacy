@@ -171,7 +171,7 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getReportContentRegistry().addFactory(SiderealCollegeContent.class, new SiderealCollageContentFactory(resources));
+    moduleObject.getContentRegistry().addFactory(SiderealCollegeContent.class, new SiderealCollageContentFactory(resources));
     registerSimpleReporting(resources, moduleObject.getSimpleEncodingRegistry());
     registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry());
   }

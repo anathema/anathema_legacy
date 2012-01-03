@@ -127,7 +127,7 @@ public class ExtendedSheetReport implements IITextReport {
   }
 
   private ReportContentRegistry getContentRegistry() {
-    return getReportingModuleObject().getReportContentRegistry();
+    return getReportingModuleObject().getContentRegistry();
   }
 
   private CharacterReportingModuleObject getReportingModuleObject() {

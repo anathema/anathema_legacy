@@ -4,10 +4,10 @@ import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
-public class KnackEncoder implements IBoxContentEncoder {
+public class KnackEncoder implements ContentEncoder {
 
   private KnackContent getKnackContent(ReportContent reportContent) {
     return reportContent.createSubContent(KnackContent.class);

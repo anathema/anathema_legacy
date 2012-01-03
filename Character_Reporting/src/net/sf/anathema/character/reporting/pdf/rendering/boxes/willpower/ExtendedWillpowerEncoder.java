@@ -9,12 +9,12 @@ import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerConten
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
-public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
+public class ExtendedWillpowerEncoder implements ContentEncoder {
 
   public String getHeaderKey(ReportContent content) {
     return "Willpower"; //$NON-NLS-1$
@@ -50,7 +50,7 @@ public class ExtendedWillpowerBoxContentEncoder implements IBoxContentEncoder {
     Bounds spendingBounds = new Bounds(leftX, yPosition - height, columnWidth, height);
     Phrase spendingPhrase = new Phrase("", graphics.createCommentFont());  //$NON-NLS-1$
     BulletList willpowerSpendingRules = content.getWillpowerSpendingRules();
-    Chunk symbolChunk = graphics.createSymbolChunk()  ;
+    Chunk symbolChunk = graphics.createSymbolChunk();
     ListUtils.addBulletList(spendingPhrase, symbolChunk, willpowerSpendingRules.header, willpowerSpendingRules.items);
     spendingPhrase.add("\n" + content.getWillpowerSpendingNote() + "\n"); //$NON-NLS-1$
     graphics.createSimpleColumn(spendingBounds).withLeading(lineHeight).andTextPart(spendingPhrase).encode().getYLine();

@@ -6,12 +6,12 @@ import net.sf.anathema.character.db.reporting.content.Db2ndEditionGreatCurseCont
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
-public class Db2ndEditionGreatCurseEncoder implements IBoxContentEncoder {
+public class Db2ndEditionGreatCurseEncoder implements ContentEncoder {
 
   private VirtueFlawBoxEncoder traitEncoder = new VirtueFlawBoxEncoder();
 

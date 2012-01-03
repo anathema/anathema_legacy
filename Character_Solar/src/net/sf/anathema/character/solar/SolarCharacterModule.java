@@ -123,7 +123,7 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getReportContentRegistry().addFactory(SolarVirtueFlawContent.class, new SolarVirtueFlawContentFactory(resources));
+    moduleObject.getContentRegistry().addFactory(SolarVirtueFlawContent.class, new SolarVirtueFlawContentFactory(resources));
     registerSimpleEncoders(resources, moduleObject);
     registerExtendedEncoders(resources, moduleObject);
   }

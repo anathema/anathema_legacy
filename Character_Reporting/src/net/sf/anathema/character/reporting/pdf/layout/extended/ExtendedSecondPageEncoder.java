@@ -5,7 +5,7 @@ import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.BoxContentEncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
@@ -58,12 +58,12 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeSocialCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop,
     float height) throws DocumentException {
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.SOCIAL_COMBAT, EncoderIds.MERITS_AND_FLAWS);
+    ContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.SOCIAL_COMBAT, EncoderIds.MERITS_AND_FLAWS);
     return encodeFixedBox(graphics, content, encoder, 1, 1, distanceFromTop, height);
   }
 
   private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.COMBAT);
+    ContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.COMBAT);
     return encodeFixedBox(graphics, content, encoder, 2, 2, distanceFromTop, height);
   }
 
@@ -76,7 +76,7 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder weaponryEncoder = encoderRegistry.createEncoder(getResources(), content, ARSENAL);
+    ContentEncoder weaponryEncoder = encoderRegistry.createEncoder(getResources(), content, ARSENAL);
     return encodeFixedBox(graphics, content, weaponryEncoder, 2, 2, distanceFromTop, height);
   }
 }

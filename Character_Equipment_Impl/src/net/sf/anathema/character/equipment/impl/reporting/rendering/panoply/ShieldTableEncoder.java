@@ -1,7 +1,8 @@
-package net.sf.anathema.character.equipment.impl.reporting.rendering;
+package net.sf.anathema.character.equipment.impl.reporting.rendering.panoply;
 
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.ShieldContent;
+import net.sf.anathema.character.equipment.impl.reporting.rendering.EquipmentTableEncoder;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;

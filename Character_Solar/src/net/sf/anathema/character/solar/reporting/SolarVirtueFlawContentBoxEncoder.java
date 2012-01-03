@@ -4,21 +4,20 @@ import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
-public class SolarVirtueFlawContentBoxEncoder implements IBoxContentEncoder {
+public class SolarVirtueFlawContentBoxEncoder implements ContentEncoder {
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     SolarVirtueFlawContent content = createContent(reportContent);
-    VirtueFlawBoxEncoder traitEncoder   = new VirtueFlawBoxEncoder();
+    VirtueFlawBoxEncoder traitEncoder = new VirtueFlawBoxEncoder();
     float traitHeight = traitEncoder.encodeHeight(graphics, bounds, content.getLimitValue());
     float traitInterval = traitHeight + 1f;
     Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - traitInterval);

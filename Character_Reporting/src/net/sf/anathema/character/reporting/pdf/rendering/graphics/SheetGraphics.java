@@ -21,11 +21,23 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 
 public class SheetGraphics implements ITextMetrics {
 
+  private static BaseFont createDefaultSymbolBaseFont() {
+    return new Font(Font.SYMBOL, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(false);
+  }
+
+  private static BaseFont createDefaultBaseFont() {
+    return new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
+  }
+
   private static final String SYMBOL = "\u00A8  "; //$NON-NLS-1$
   private static final int SYMBOL_FONT_SIZE = FONT_SIZE - 1;
   private final PdfContentByte directContent;
   private final BaseFont baseFont;
-  private BaseFont symbolBaseFont;
+  private final BaseFont symbolBaseFont;
+
+  public SheetGraphics(PdfContentByte directContent) {
+    this(directContent, createDefaultBaseFont(), createDefaultSymbolBaseFont());
+  }
 
   public SheetGraphics(PdfContentByte directContent, BaseFont baseFont, BaseFont symbolBaseFont) {
     this.directContent = directContent;

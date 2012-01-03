@@ -91,7 +91,7 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    addReportContent(resources, moduleObject.getReportContentRegistry());
+    addReportContent(resources, moduleObject.getContentRegistry());
     addSimpleParts(resources, moduleObject);
   }
 

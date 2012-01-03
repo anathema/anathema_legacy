@@ -72,7 +72,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final TemplateType pirateOutcasteTemplateType = new TemplateType(DB, new Identificate("PirateOutcasteSubtype")); //$NON-NLS-1$
   private static final TemplateType patricianOutcasteTemplateType = new TemplateType(DB, new Identificate("PatricianOutcasteSubtype")); //$NON-NLS-1$
   private static final TemplateType lowerCasteOutcasteTemplateType = new TemplateType(DB, new Identificate("LowerClassOutcasteSubtype"));
-    //$NON-NLS-1$
+  //$NON-NLS-1$
   private static final TemplateType lookshyNativeTemplateType = new TemplateType(DB, new Identificate("LookshySubtype")); //$NON-NLS-1$
   private static final TemplateType lookshyOutcasteTemplateType = new TemplateType(DB, new Identificate("LookshyOutcasteSubtype")); //$NON-NLS-1$
   private static final TemplateType lookshyRealmTemplateType = new TemplateType(DB, new Identificate("LookshyRealmSubtype")); //$NON-NLS-1$
@@ -80,9 +80,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final TemplateType immaculateTemplateType = new TemplateType(DB, new Identificate("ImmaculateSubtype")); //$NON-NLS-1$
   private static final TemplateType lookshyNativeRevisedTemplateType = new TemplateType(DB, new Identificate("LookshyRevisedSubtype")); //$NON-NLS-1$
   private static final TemplateType lookshyOutcasteRevisedTemplateType = new TemplateType(DB, new Identificate("LookshyOutcasteRevisedSubtype"));
-    //$NON-NLS-1$
+  //$NON-NLS-1$
   private static final TemplateType lookshyRealmRevisedTemplateType = new TemplateType(DB, new Identificate("LookshyRealmRevisedSubtype"));
-    //$NON-NLS-1$
+  //$NON-NLS-1$
   private static final TemplateType dynasticRevisedTemplateType = new TemplateType(DB, new Identificate("DynasticRevisedSubtype")); //$NON-NLS-1$
   private static final TemplateType cherakiRevisedTemplateType = new TemplateType(DB, new Identificate("CherakRevisedSubtype")); //$NON-NLS-1$
   private static final TemplateType immaculateRevisedTemplateType = new TemplateType(DB, new Identificate("ImmaculateRevisedSubtype")); //$NON-NLS-1$
@@ -202,7 +202,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void addContent(IResources resources, CharacterReportingModuleObject moduleObject) {
-    ReportContentRegistry registry = moduleObject.getReportContentRegistry();
+    ReportContentRegistry registry = moduleObject.getContentRegistry();
     registry.addFactory(Db1stEditionGreatCurseContent.class, new Db1stEditionGreatCurseContentFactory(resources));
     registry.addFactory(Db2ndEditionGreatCurseContent.class, new Db2ndEditionGreatCurseContentFactory(resources));
   }

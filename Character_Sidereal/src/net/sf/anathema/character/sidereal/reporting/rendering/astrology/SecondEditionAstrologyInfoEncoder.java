@@ -3,7 +3,7 @@ package net.sf.anathema.character.sidereal.reporting.rendering.astrology;
 import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.sidereal.reporting.rendering.DestinyTypeTableEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.DurationTableEncoder;
@@ -13,7 +13,7 @@ import net.sf.anathema.character.sidereal.reporting.rendering.TriggerTypeTableEn
 import net.sf.anathema.character.sidereal.reporting.rendering.resplendentdestiny.ResplendentDestinyTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SecondEditionAstrologyInfoEncoder implements IBoxContentEncoder {
+public class SecondEditionAstrologyInfoEncoder implements ContentEncoder {
 
   private final IResources resources;
   private final float SPACING = 5;

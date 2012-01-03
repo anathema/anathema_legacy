@@ -3,7 +3,7 @@ package net.sf.anathema.character.sidereal.reporting.layout;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.character.sidereal.reporting.rendering.SiderealParadoxEncoder;
@@ -19,7 +19,7 @@ public class Extended1stEditionSiderealPartEncoder extends AbstractFirstEditionE
     this.baseFont = registry.getBaseFont();
   }
 
-  public IBoxContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder() {
     return new SiderealParadoxEncoder(getResources());
   }
 
@@ -29,7 +29,7 @@ public class Extended1stEditionSiderealPartEncoder extends AbstractFirstEditionE
   }
 
   @Override
-  public IBoxContentEncoder getAnimaEncoder() {
+  public ContentEncoder getAnimaEncoder() {
     return new SiderealAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 }

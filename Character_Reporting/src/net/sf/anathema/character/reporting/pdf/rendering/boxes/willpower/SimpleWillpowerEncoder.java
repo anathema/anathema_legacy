@@ -4,16 +4,16 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class SimpleWillpowerBoxContentEncoder implements IBoxContentEncoder {
+public class SimpleWillpowerEncoder implements ContentEncoder {
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
-    PdfTraitEncoder traitEncoder   = PdfTraitEncoder.createMediumTraitEncoder();
+    PdfTraitEncoder traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
     WillpowerContent content = createContent(reportContent);
     float padding = PADDING / 2f;
     float width = bounds.width - 2 * padding;
@@ -33,7 +33,7 @@ public class SimpleWillpowerBoxContentEncoder implements IBoxContentEncoder {
     return createContent(content).getHeaderKey();
   }
 
-  private WillpowerContent createContent(ReportContent reportContent){
+  private WillpowerContent createContent(ReportContent reportContent) {
     return reportContent.createSubContent(WillpowerContent.class);
   }
 }

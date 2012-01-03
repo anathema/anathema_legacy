@@ -6,11 +6,11 @@ import net.sf.anathema.lib.util.Identificate;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class AbstractBoxContentEncoderFactory extends Identificate implements BoxContentEncoderFactory {
+public abstract class AbstractEncoderFactory extends Identificate implements EncoderFactory {
 
   private Map<EncoderAttributeType, EncoderAttributeValue> attributesByType = new HashMap<EncoderAttributeType, EncoderAttributeValue>();
 
-  public AbstractBoxContentEncoderFactory(String id) {
+  public AbstractEncoderFactory(String id) {
     super(id);
   }
 

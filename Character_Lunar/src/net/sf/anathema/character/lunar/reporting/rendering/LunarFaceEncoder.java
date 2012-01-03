@@ -13,7 +13,7 @@ import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.presenter.IRenownModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -21,7 +21,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Color;
 
-public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implements IBoxContentEncoder {
+public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implements ContentEncoder {
 
   private final IResources resources;
 

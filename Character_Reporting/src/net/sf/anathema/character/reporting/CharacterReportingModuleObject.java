@@ -21,7 +21,7 @@ public class CharacterReportingModuleObject implements ICharacterModuleObject {
     return extendedEncodingRegistry;
   }
 
-  public ReportContentRegistry getReportContentRegistry() {
+  public ReportContentRegistry getContentRegistry() {
     return reportContentRegistry;
   }
 
