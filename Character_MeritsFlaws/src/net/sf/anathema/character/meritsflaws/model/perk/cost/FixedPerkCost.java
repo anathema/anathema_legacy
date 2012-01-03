@@ -29,8 +29,8 @@ public class FixedPerkCost implements IFixedPerkCost {
     }
     
     FixedPerkCost other = (FixedPerkCost)obj;
-    if (evaluator == null && other.evaluator == null) {
-      return true;
+    if (evaluator == null) {
+      return other.evaluator == null;
     }
     return evaluator.equals(other.evaluator);
   }
