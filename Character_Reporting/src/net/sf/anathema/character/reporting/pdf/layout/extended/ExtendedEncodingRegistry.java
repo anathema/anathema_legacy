@@ -5,7 +5,7 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.rendering.general.NullBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.collection.Table;
@@ -21,10 +21,10 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
 
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
-  private IBoxContentEncoder armourContentEncoder = new NullBoxContentEncoder("Armour");
-  private IBoxContentEncoder possessionsEncoder = new NullBoxContentEncoder("Possessions");
-  private IBoxContentEncoder linguisticsEncoder = new NullBoxContentEncoder("Linguistics");
-  private IBoxContentEncoder mutationsEncoder = new NullBoxContentEncoder("Mutations");
+  private ContentEncoder armourContentEncoder = new NullBoxContentEncoder("Armour");
+  private ContentEncoder possessionsEncoder = new NullBoxContentEncoder("Possessions");
+  private ContentEncoder linguisticsEncoder = new NullBoxContentEncoder("Linguistics");
+  private ContentEncoder mutationsEncoder = new NullBoxContentEncoder("Mutations");
   private List<IVariableBoxContentEncoder> sidebarEncoders = new ArrayList<IVariableBoxContentEncoder>();
   private List<ITableEncoder> magicEncoders = new ArrayList<ITableEncoder>();
 
@@ -44,27 +44,27 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
   }
 
   @Override
-  public void setArmourContentEncoder(IBoxContentEncoder encoder) {
+  public void setArmourContentEncoder(ContentEncoder encoder) {
     this.armourContentEncoder = encoder;
   }
 
-  public void setMutationsEncoder(IBoxContentEncoder mutationsEncoder) {
+  public void setMutationsEncoder(ContentEncoder mutationsEncoder) {
     this.mutationsEncoder = mutationsEncoder;
   }
 
-  public IBoxContentEncoder getArmourContentEncoder() {
+  public ContentEncoder getArmourContentEncoder() {
     return armourContentEncoder;
   }
 
-  public IBoxContentEncoder getPossessionsEncoder() {
+  public ContentEncoder getPossessionsEncoder() {
     return possessionsEncoder;
   }
 
-  public IBoxContentEncoder getLinguisticsEncoder() {
+  public ContentEncoder getLinguisticsEncoder() {
     return linguisticsEncoder;
   }
 
-  public IBoxContentEncoder getMutationsEncoder() {
+  public ContentEncoder getMutationsEncoder() {
     return mutationsEncoder;
   }
 
@@ -89,11 +89,11 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
   }
 
   @Override
-  public void setPossessionsEncoder(IBoxContentEncoder encoder) {
+  public void setPossessionsEncoder(ContentEncoder encoder) {
     this.possessionsEncoder = encoder;
   }
 
-  public void setLinguisticsEncoder(IBoxContentEncoder encoder) {
+  public void setLinguisticsEncoder(ContentEncoder encoder) {
     this.linguisticsEncoder = encoder;
   }
 }

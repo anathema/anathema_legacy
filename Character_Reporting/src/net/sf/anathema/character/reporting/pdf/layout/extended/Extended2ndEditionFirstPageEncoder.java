@@ -13,7 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBa
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -109,7 +109,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.ATTRIBUTES);
+    ContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.ATTRIBUTES);
     return encodeFixedBox(graphics, content, encoder, 1, 1, distanceFromTop, height);
   }
 
@@ -127,7 +127,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeGreatCurse(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder encoder = getPartEncoder().getGreatCurseEncoder();
+    ContentEncoder encoder = getPartEncoder().getGreatCurseEncoder();
     if (encoder != null) {
       return encodeFixedBox(graphics, content, encoder, 2, 1, distanceFromTop, height);
     }
@@ -137,7 +137,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeIntimacies(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.INTIMACIES_EXTENDED);
+    ContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.INTIMACIES_EXTENDED);
     return encodeFixedBox(graphics, content, encoder, 2, 1, distanceFromTop, height);
   }
 
@@ -157,7 +157,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
     return encoderRegistry.hasEncoder(EncoderIds.MERITS_AND_FLAWS, content) && getMeritsAndFlawsEncoder(content).hasContent(content);
   }
 
-  private IBoxContentEncoder getMeritsAndFlawsEncoder(ReportContent content) {
+  private ContentEncoder getMeritsAndFlawsEncoder(ReportContent content) {
     return encoderRegistry.createEncoder(getResources(), content, EncoderIds.MERITS_AND_FLAWS);
   }
 
@@ -166,7 +166,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeMeritsAndFlaws(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    IBoxContentEncoder encoder = getMeritsAndFlawsEncoder(content);
+    ContentEncoder encoder = getMeritsAndFlawsEncoder(content);
     return encodeFixedBox(graphics, content, encoder, 2, 1, distanceFromTop, height);
   }
 

@@ -5,8 +5,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxEncoder.ARCSPACE;
-import static net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxEncoder.HEADER_HEIGHT;
+import static net.sf.anathema.character.reporting.pdf.rendering.general.box.BoundsEncoder.ARC_SPACE;
+import static net.sf.anathema.character.reporting.pdf.rendering.general.box.BoundsEncoder.HEADER_HEIGHT;
 
 public class PdfHeaderBoxEncoder {
   private static final int HEADER_FONT_PADDING = 3;
@@ -16,9 +16,9 @@ public class PdfHeaderBoxEncoder {
     PdfContentByte directContent = graphics.getDirectContent();
     graphics.setFillColorBlack();
     Bounds headerBounds = calculateHeaderBounds(bounds);
-    directContent.rectangle(headerBounds.x + ARCSPACE, headerBounds.y, headerBounds.width - 2 * ARCSPACE, headerBounds.height);
-    directContent.arc(headerBounds.x, headerBounds.y, headerBounds.x + 2 * ARCSPACE, headerBounds.y + headerBounds.height, 0, 360);
-    directContent.arc(headerBounds.getMaxX(), headerBounds.y, headerBounds.getMaxX() - 2 * ARCSPACE, headerBounds.getMaxY(), 0, 360);
+    directContent.rectangle(headerBounds.x + ARC_SPACE, headerBounds.y, headerBounds.width - 2 * ARC_SPACE, headerBounds.height);
+    directContent.arc(headerBounds.x, headerBounds.y, headerBounds.x + 2 * ARC_SPACE, headerBounds.y + headerBounds.height, 0, 360);
+    directContent.arc(headerBounds.getMaxX(), headerBounds.y, headerBounds.getMaxX() - 2 * ARC_SPACE, headerBounds.getMaxY(), 0, 360);
     directContent.fillStroke();
     setFillColorWhite(directContent);
     directContent.setFontAndSize(graphics.getBaseFont(), HEADER_FONT_SIZE);

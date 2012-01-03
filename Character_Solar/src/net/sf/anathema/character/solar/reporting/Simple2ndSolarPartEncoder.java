@@ -1,7 +1,7 @@
 package net.sf.anathema.character.solar.reporting;
 
 import net.sf.anathema.character.reporting.pdf.layout.simple.AbstractSecondEditionExaltPdfPartEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Simple2ndSolarPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
@@ -10,12 +10,12 @@ public class Simple2ndSolarPartEncoder extends AbstractSecondEditionExaltPdfPart
     super(resources);
   }
 
-  public IBoxContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder() {
     return new SolarVirtueFlawContentBoxEncoder();
   }
 
   @Override
-  public IBoxContentEncoder getAnimaEncoder() {
+  public ContentEncoder getAnimaEncoder() {
     return new SolarAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 }

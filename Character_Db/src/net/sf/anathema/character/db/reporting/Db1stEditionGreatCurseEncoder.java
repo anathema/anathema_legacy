@@ -5,13 +5,13 @@ import com.lowagie.text.Phrase;
 import net.sf.anathema.character.db.reporting.content.Db1stEditionGreatCurseContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
-public class Db1stEditionGreatCurseEncoder implements IBoxContentEncoder {
+public class Db1stEditionGreatCurseEncoder implements ContentEncoder {
 
   private final IResources resources;
 

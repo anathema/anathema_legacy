@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.reporting.rendering.weaponry;
+package net.sf.anathema.character.equipment.impl.reporting.rendering.arsenal;
 
 import net.sf.anathema.character.equipment.impl.reporting.content.AbstractWeaponryContent;
 import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry1stEditionContent;

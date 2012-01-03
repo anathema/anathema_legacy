@@ -6,13 +6,13 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.sidereal.SiderealCharacterModule;
 import net.sf.anathema.lib.resources.IResources;
 
-public class StandingEncoder implements IBoxContentEncoder {
+public class StandingEncoder implements ContentEncoder {
 
   private final IResources resources;
   private final float lineHeight;

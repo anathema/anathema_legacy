@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import com.lowagie.text.pdf.BaseFont;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Extended2ndEditionMortalPartEncoder extends AbstractSecondEditionPartEncoder {
@@ -10,11 +10,11 @@ public class Extended2ndEditionMortalPartEncoder extends AbstractSecondEditionPa
     super(resources, baseFont, 3);
   }
 
-  public IBoxContentEncoder getAnimaEncoder() {
+  public ContentEncoder getAnimaEncoder() {
     return null;
   }
 
-  public IBoxContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder() {
     return null;
   }
 

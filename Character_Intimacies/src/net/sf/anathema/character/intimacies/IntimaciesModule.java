@@ -36,7 +36,7 @@ public class IntimaciesModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    registerReportContent(moduleObject.getReportContentRegistry(), resources);
+    registerReportContent(moduleObject.getContentRegistry(), resources);
     registerEncoders(moduleObject.getEncoderRegistry());
   }
 

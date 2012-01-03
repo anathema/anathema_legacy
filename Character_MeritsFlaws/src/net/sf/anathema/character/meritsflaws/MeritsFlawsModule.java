@@ -34,7 +34,7 @@ public class MeritsFlawsModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getReportContentRegistry().addFactory(MeritsAndFlawsContent.class, new MeritsAndFlawsContentFactory(resources));
+    moduleObject.getContentRegistry().addFactory(MeritsAndFlawsContent.class, new MeritsAndFlawsContentFactory(resources));
     moduleObject.getEncoderRegistry().add(new MeritsAndFlawsEncoderFactory());
   }
 }

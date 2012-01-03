@@ -69,7 +69,7 @@ public class SimpleExaltSheetReport implements IITextReport {
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
       encoderList.add(new SimpleFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
-      encoderList.add(new SimpleSecondPageEncoder(resources, encodingRegistry, configuration));
+      encoderList.add(new SimpleSecondPageEncoder(getEncoderRegistry(), resources, encodingRegistry, configuration));
       boolean isFirstPrinted = false;
       for (IPdfPageEncoder encoder : encoderList) {
         if (isFirstPrinted) {
@@ -78,7 +78,7 @@ public class SimpleExaltSheetReport implements IITextReport {
         else {
           isFirstPrinted = true;
         }
-        SheetGraphics graphics = new SheetGraphics(directContent, encodingRegistry.getBaseFont(), encodingRegistry.getSymbolBaseFont());
+        SheetGraphics graphics = new SheetGraphics(directContent);
         ReportContent content = new ReportContent(getContentRegistry(), character, description);
         encoder.encode(document, graphics, content);
       }
@@ -115,7 +115,7 @@ public class SimpleExaltSheetReport implements IITextReport {
 
   private ReportContentRegistry getContentRegistry() {
     CharacterReportingModuleObject moduleObject = getReportingModuleObject();
-    return moduleObject.getReportContentRegistry();
+    return moduleObject.getContentRegistry();
   }
 
   public boolean supports(IItem item) {

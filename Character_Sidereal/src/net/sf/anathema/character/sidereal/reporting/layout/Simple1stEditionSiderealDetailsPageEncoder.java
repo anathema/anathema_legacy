@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -76,14 +76,14 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
 
   private void encodeConnections(SheetGraphics graphics, ReportContent content, float height, int distanceFromTop) throws DocumentException {
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    IBoxContentEncoder encoder = new HorizontalLineBoxContentEncoder(4, "Sidereal.Connections"); //$NON-NLS-1$
+    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(4, "Sidereal.Connections"); //$NON-NLS-1$
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
   private float encodeAcquaintances(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = 145;
     Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new HorizontalLineBoxContentEncoder(1, "Sidereal.Acquaintances"); //$NON-NLS-1$
+    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(1, "Sidereal.Acquaintances"); //$NON-NLS-1$
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
@@ -91,7 +91,7 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   private float encodeConventions(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = THIRD_BLOCK_HEIGHT - STANDING_HEIGHT - PADDING;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = new HorizontalLineBoxContentEncoder(2, "Sidereal.Conventions"); //$NON-NLS-1$
+    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(2, "Sidereal.Conventions"); //$NON-NLS-1$
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
@@ -99,7 +99,7 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   private float encodeStanding(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = STANDING_HEIGHT;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = new StandingEncoder(fontSize, resources);
+    ContentEncoder encoder = new StandingEncoder(fontSize, resources);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
@@ -107,13 +107,13 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   private float encodeAstrology(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new AstrologyInfoEncoder(resources);
+    ContentEncoder encoder = new AstrologyInfoEncoder(resources);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
 
   private float encodeResplendentDestiny(SheetGraphics graphics, Bounds boxBounds, ReportContent content) throws DocumentException {
-    IBoxContentEncoder encoder = new ResplendentDestinyEncoder(fontSize, resources);
+    ContentEncoder encoder = new ResplendentDestinyEncoder(fontSize, resources);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return boxBounds.height;
   }
@@ -129,7 +129,7 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   private float encodeParadox(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = new ParadoxInfoEncoder(fontSize, resources, ExaltedEdition.FirstEdition);
+    ContentEncoder encoder = new ParadoxInfoEncoder(fontSize, resources, ExaltedEdition.FirstEdition);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
@@ -137,7 +137,7 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   private float encodeArcaneFate(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = THIRD_BLOCK_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new ArcaneFateInfoEncoder(fontSize, resources, ExaltedEdition.FirstEdition);
+    ContentEncoder encoder = new ArcaneFateInfoEncoder(fontSize, resources, ExaltedEdition.FirstEdition);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
@@ -145,7 +145,7 @@ public class Simple1stEditionSiderealDetailsPageEncoder implements IPdfPageEncod
   private float encodeColleges(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = COLLEGE_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new FavorableTraitBoxContentEncoder(SiderealCollegeContent.class);
+    ContentEncoder encoder = new FavorableTraitBoxContentEncoder(SiderealCollegeContent.class);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }

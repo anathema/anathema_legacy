@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.box;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
 
-public abstract class AbstractBoxContentEncoder<C extends SubBoxContent> implements IBoxContentEncoder {
+public abstract class AbstractBoxContentEncoder<C extends SubBoxContent> implements ContentEncoder {
 
   private Class<C> contentClass;
 

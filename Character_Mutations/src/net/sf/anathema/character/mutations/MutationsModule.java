@@ -15,7 +15,6 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -36,17 +35,12 @@ public class MutationsModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    registerReportContent(moduleObject.getReportContentRegistry(), resources);
-    registerSimpleEncoders(moduleObject.getSimpleEncodingRegistry(), resources);
+    registerReportContent(moduleObject.getContentRegistry(), resources);
     registerExtendedEncoders(moduleObject.getExtendedEncodingRegistry(), resources);
   }
 
   private void registerReportContent(ReportContentRegistry registry, IResources resources) {
     registry.addFactory(MutationContent.class, new MutationContentFactory(resources));
-  }
-
-  private void registerSimpleEncoders(SimpleEncodingRegistry registry, IResources resources) {
-    registry.setMutationsEncoder(new MutationsEncoder());
   }
 
   private void registerExtendedEncoders(ExtendedEncodingRegistry registry, IResources resources) {

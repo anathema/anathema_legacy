@@ -3,10 +3,10 @@ package net.sf.anathema.character.reporting.pdf.rendering.general;
 import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
-public class NullBoxContentEncoder implements IBoxContentEncoder {
+public class NullBoxContentEncoder implements ContentEncoder {
 
   private final String headerKey;
 

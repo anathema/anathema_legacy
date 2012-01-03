@@ -23,6 +23,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEss
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.notes.NotesEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.ExtendedWillpowerEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoderFactory;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterReportingModule extends CharacterModuleAdapter<CharacterReportingModuleObject> {
@@ -52,10 +54,12 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
     registry.add(new NotesEncoderFactory());
     registry.add(new SimpleEssenceBoxEncoderFactory());
     registry.add(new SocialCombatEncoderFactory());
+    registry.add(new SimpleWillpowerEncoderFactory());
+    registry.add(new ExtendedWillpowerEncoderFactory());
   }
 
   private void addReportContents(IResources resources) {
-    ReportContentRegistry registry = moduleObject.getReportContentRegistry();
+    ReportContentRegistry registry = moduleObject.getContentRegistry();
     registry.addFactory(VirtueContent.class, new VirtueContentFactory(resources));
     registry.addFactory(ExtendedEssenceContent.class, new ExtendedEssenceContentFactory(resources));
     registry.addFactory(SimpleEssenceContent.class, new SimpleEssenceContentFactory(resources));

@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Extended1stEditionMortalPartEncoder extends AbstractFirstEditionPartEncoder {
@@ -17,15 +17,15 @@ public class Extended1stEditionMortalPartEncoder extends AbstractFirstEditionPar
     this.registry = registry;
   }
 
-  public IBoxContentEncoder getAnimaEncoder() {
+  public ContentEncoder getAnimaEncoder() {
     return new PdfBackgroundEncoder(getResources());
   }
 
-  public IBoxContentEncoder getEssenceEncoder() {
+  public ContentEncoder getEssenceEncoder() {
     return new ExperienceBoxContentEncoder();
   }
 
-  public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
+  public ContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
     return new DotBoxContentEncoder(trait, traitMax, traitHeaderKey);
   }
 
@@ -37,7 +37,7 @@ public class Extended1stEditionMortalPartEncoder extends AbstractFirstEditionPar
     return false;
   }
 
-  public IBoxContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder() {
     return registry.getLinguisticsEncoder(); //No Great Curse for Mortals
   }
 }

@@ -211,7 +211,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    registerContent(resources, moduleObject.getReportContentRegistry());
+    registerContent(resources, moduleObject.getContentRegistry());
     registerSimpleReporting(resources, moduleObject.getSimpleEncodingRegistry(), moduleObject.getEncoderRegistry());
     registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry(), moduleObject.getEncoderRegistry());
     registerEncoder(moduleObject.getEncoderRegistry());

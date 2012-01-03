@@ -110,7 +110,7 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getReportContentRegistry().addFactory(Abyssal2ndResonanceContent.class, new Abyssal2ndResonanceContentFactory(resources));
+    moduleObject.getContentRegistry().addFactory(Abyssal2ndResonanceContent.class, new Abyssal2ndResonanceContentFactory(resources));
     SimpleEncodingRegistry simpleRegistry = moduleObject.getSimpleEncodingRegistry();
     simpleRegistry.setPartEncoder(ABYSSAL, SecondEdition, new Simple2ndEditionAbyssalPartEncoder(resources, ESSENCE_MAX));
     ExtendedEncodingRegistry extendedRegistry = moduleObject.getExtendedEncodingRegistry();

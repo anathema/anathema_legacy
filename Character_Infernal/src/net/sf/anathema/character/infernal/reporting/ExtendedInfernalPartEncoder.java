@@ -3,7 +3,7 @@ package net.sf.anathema.character.infernal.reporting;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -16,12 +16,12 @@ public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPa
     this.baseFont = registry.getBaseFont();
   }
 
-  public IBoxContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder() {
     return new InfernalUrgeEncoder();
   }
 
   @Override
-  public IBoxContentEncoder getAnimaEncoder() {
+  public ContentEncoder getAnimaEncoder() {
     return new InfernalAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 

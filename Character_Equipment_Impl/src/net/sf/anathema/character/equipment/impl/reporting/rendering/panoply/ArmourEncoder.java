@@ -1,16 +1,16 @@
-package net.sf.anathema.character.equipment.impl.reporting.rendering;
+package net.sf.anathema.character.equipment.impl.reporting.rendering.panoply;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import java.awt.Color;
 
-public class ArmourEncoder implements IBoxContentEncoder {
+public class ArmourEncoder implements ContentEncoder {
 
   private final ITableEncoder encoder;
 

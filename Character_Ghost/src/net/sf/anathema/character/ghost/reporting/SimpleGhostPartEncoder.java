@@ -2,7 +2,7 @@ package net.sf.anathema.character.ghost.reporting;
 
 import net.sf.anathema.character.reporting.pdf.layout.simple.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SimpleGhostPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
@@ -11,12 +11,12 @@ public class SimpleGhostPartEncoder extends AbstractSecondEditionExaltPdfPartEnc
     super(resources);
   }
 
-  public IBoxContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder() {
     return new GhostFetterEncoder();
   }
 
   @Override
-  public IBoxContentEncoder getAnimaEncoder() {
+  public ContentEncoder getAnimaEncoder() {
     return new GhostPassionEncoder();
   }
 }

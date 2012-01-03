@@ -10,14 +10,14 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.traits.FavorableTraitContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavorableTraitBoxContentEncoder implements IBoxContentEncoder {
+public class FavorableTraitBoxContentEncoder implements ContentEncoder {
 
   private final List<INamedTraitEncoder> namedTraitEncoders = new ArrayList<INamedTraitEncoder>();
   private final PdfTraitEncoder traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
@@ -147,7 +147,7 @@ public class FavorableTraitBoxContentEncoder implements IBoxContentEncoder {
   public boolean hasContent(ReportContent content) {
     return createContent(content).hasContent();
   }
-  
+
   @Override
   public String getHeaderKey(ReportContent content) {
     return createContent(content).getHeaderKey();

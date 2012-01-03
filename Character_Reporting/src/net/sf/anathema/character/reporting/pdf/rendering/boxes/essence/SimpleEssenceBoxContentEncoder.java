@@ -6,13 +6,13 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.essence.SimpleEssenceContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import static com.lowagie.text.pdf.PdfContentByte.ALIGN_RIGHT;
 
-public class SimpleEssenceBoxContentEncoder implements IBoxContentEncoder {
+public class SimpleEssenceBoxContentEncoder implements ContentEncoder {
 
   @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
@@ -47,7 +47,8 @@ public class SimpleEssenceBoxContentEncoder implements IBoxContentEncoder {
     }
   }
 
-  private void encodePool(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceBoxLayout layout, String label, String poolValue, Position poolPosition) {
+  private void encodePool(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceBoxLayout layout, String label, String poolValue,
+    Position poolPosition) {
     graphics.drawText(label, poolPosition, PdfContentByte.ALIGN_LEFT);
     graphics.drawText(content.getAvailableText(), layout.getAvailablePositionRightAligned(poolPosition), ALIGN_RIGHT);
     Position availableLineStart = layout.getAvailableLineStart(poolPosition, content.getAvailableText());

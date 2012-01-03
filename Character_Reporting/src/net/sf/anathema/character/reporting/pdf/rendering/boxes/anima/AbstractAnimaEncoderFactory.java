@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.anima;
 
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -15,7 +15,7 @@ public abstract class AbstractAnimaEncoderFactory implements IAnimaEncoderFactor
   }
 
   @Override
-  public final IBoxContentEncoder createAnimaEncoder() {
+  public final ContentEncoder createAnimaEncoder() {
     return new PdfAnimaEncoder(resources, SMALLER_FONT_SIZE, getAnimaTableEncoder());
   }
 

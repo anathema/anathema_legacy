@@ -2,15 +2,15 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.resources.IResources;
 
 public class BoxContentEncoderRegistry {
 
-  public final MultiEntryMap<String, BoxContentEncoderFactory> factoryById = new MultiEntryMap<String, BoxContentEncoderFactory>();
+  public final MultiEntryMap<String, EncoderFactory> factoryById = new MultiEntryMap<String, EncoderFactory>();
 
-  public void add(BoxContentEncoderFactory factory) {
+  public void add(EncoderFactory factory) {
     factoryById.add(factory.getId(), factory);
   }
 
@@ -18,7 +18,7 @@ public class BoxContentEncoderRegistry {
     return !(findFactory(content, id) instanceof NullEncoderFactory);
   }
 
-  public IBoxContentEncoder createEncoder(IResources resource, ReportContent content, String... ids) {
+  public ContentEncoder createEncoder(IResources resource, ReportContent content, String... ids) {
     return findFactory(content, ids).create(resource, createBasicContent(content));
   }
 
@@ -30,9 +30,9 @@ public class BoxContentEncoderRegistry {
     return findFactory(content, id).getValue(createBasicContent(content), type);
   }
 
-  private BoxContentEncoderFactory findFactory(ReportContent content, String... ids) {
+  private EncoderFactory findFactory(ReportContent content, String... ids) {
     for (String id : ids) {
-      for (BoxContentEncoderFactory factory : factoryById.get(id)) {
+      for (EncoderFactory factory : factoryById.get(id)) {
         BasicContent basicContent = createBasicContent(content);
         if (factory.supports(basicContent)) {
           return factory;

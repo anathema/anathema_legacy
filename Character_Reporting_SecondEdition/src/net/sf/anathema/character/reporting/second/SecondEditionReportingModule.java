@@ -16,7 +16,7 @@ public class SecondEditionReportingModule extends NullObjectCharacterModuleAdapt
 
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    addReportContents(resources, moduleObject.getReportContentRegistry());
+    addReportContents(resources, moduleObject.getContentRegistry());
     addReportEncoders(moduleObject.getEncoderRegistry());
   }
 

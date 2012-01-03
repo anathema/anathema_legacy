@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.reporting.rendering.weaponry;
+package net.sf.anathema.character.equipment.impl.reporting.rendering.arsenal;
 
 import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.equipment.impl.reporting.content.WeaponryContent;

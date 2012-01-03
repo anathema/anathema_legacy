@@ -3,7 +3,7 @@ package net.sf.anathema.character.db.reporting;
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Extended2ndEditionDbPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
@@ -16,12 +16,12 @@ public class Extended2ndEditionDbPartEncoder extends AbstractSecondEditionExaltP
   }
 
   @Override
-  public IBoxContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder() {
     return new Db2ndEditionGreatCurseEncoder();
   }
 
   @Override
-  public IBoxContentEncoder getAnimaEncoder() {
+  public ContentEncoder getAnimaEncoder() {
     return new DbAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 }

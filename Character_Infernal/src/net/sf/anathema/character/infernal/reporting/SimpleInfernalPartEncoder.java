@@ -2,7 +2,7 @@ package net.sf.anathema.character.infernal.reporting;
 
 import net.sf.anathema.character.reporting.pdf.layout.simple.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SimpleInfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
@@ -11,12 +11,12 @@ public class SimpleInfernalPartEncoder extends AbstractSecondEditionExaltPdfPart
     super(resources);
   }
 
-  public IBoxContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder() {
     return new InfernalUrgeEncoder();
   }
 
   @Override
-  public IBoxContentEncoder getAnimaEncoder() {
+  public ContentEncoder getAnimaEncoder() {
     return new InfernalAnimaEncoderFactory(getResources()).createAnimaEncoder();
   }
 }

@@ -114,7 +114,7 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    addReportContents(moduleObject.getReportContentRegistry(), resources);
+    addReportContents(moduleObject.getContentRegistry(), resources);
     addSimpleParts(resources, moduleObject);
     addExtendedParts(resources, moduleObject);
   }

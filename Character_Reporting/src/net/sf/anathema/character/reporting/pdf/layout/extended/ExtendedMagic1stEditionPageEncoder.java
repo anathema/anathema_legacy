@@ -11,7 +11,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.Experi
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfMagicEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
@@ -74,21 +74,21 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = getPageConfiguration().getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = new ExperienceBoxContentEncoder();
+    ContentEncoder encoder = new ExperienceBoxContentEncoder();
     getBoxEncoder().encodeBox(content, graphics, encoder, bounds);
     return height;
   }
 
   private float encodeLanguages(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = getPageConfiguration().getThirdColumnRectangle(distanceFromTop, height);
-    IBoxContentEncoder encoder = getRegistry().getLinguisticsEncoder();
+    ContentEncoder encoder = getRegistry().getLinguisticsEncoder();
     getBoxEncoder().encodeBox(content, graphics, encoder, bounds);
     return height;
   }
 
   private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds backgroundBounds = getPageConfiguration().getFirstColumnRectangle(distanceFromTop, height, 1);
-    IBoxContentEncoder encoder = new PdfBackgroundEncoder(getResources());
+    ContentEncoder encoder = new PdfBackgroundEncoder(getResources());
     getBoxEncoder().encodeBox(content, graphics, encoder, backgroundBounds);
     return height;
   }

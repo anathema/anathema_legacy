@@ -4,7 +4,7 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -17,15 +17,15 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
     this.essenceMax = essenceMax;
   }
 
-  public IBoxContentEncoder getEssenceEncoder() {
+  public ContentEncoder getEssenceEncoder() {
     return new SimpleEssenceBoxContentEncoder();
   }
 
-  public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
+  public ContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
     return new DotBoxContentEncoder(trait, traitMax, traitHeaderKey);
   }
 
-  public IBoxContentEncoder getOverdriveEncoder() {
+  public ContentEncoder getOverdriveEncoder() {
     return null;
   }
 

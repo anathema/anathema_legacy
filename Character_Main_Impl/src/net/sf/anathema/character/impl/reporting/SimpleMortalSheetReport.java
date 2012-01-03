@@ -58,7 +58,7 @@ public class SimpleMortalSheetReport implements IITextReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       IPdfPageEncoder encoder = new SimpleMortalPageEncoder(getEncoderRegistry(), encodingRegistry, resources, configuration);
-      SheetGraphics graphics = new SheetGraphics(directContent, encodingRegistry.getBaseFont(), encodingRegistry.getSymbolBaseFont());
+      SheetGraphics graphics = new SheetGraphics(directContent);
       ReportContent content = new ReportContent(getContentRegistry(), character, description);
       encoder.encode(document, graphics, content);
     } catch (Exception e) {
@@ -81,7 +81,7 @@ public class SimpleMortalSheetReport implements IITextReport {
 
   private ReportContentRegistry getContentRegistry() {
     CharacterReportingModuleObject moduleObject = getReportingModuleObject();
-    return moduleObject.getReportContentRegistry();
+    return moduleObject.getContentRegistry();
   }
 
   private CharacterReportingModuleObject getReportingModuleObject() {

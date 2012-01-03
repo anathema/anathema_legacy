@@ -6,7 +6,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.ExtendedE
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionHealthEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -38,22 +38,22 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   @Override
-  public IBoxContentEncoder getEssenceEncoder() {
+  public ContentEncoder getEssenceEncoder() {
     return new ExtendedEssenceBoxContentEncoder();
   }
 
   @Override
-  public IBoxContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
+  public ContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
     return new DotBoxContentEncoder(trait, traitMax, traitHeaderKey);
   }
 
   @Override
-  public IBoxContentEncoder getHealthEncoder() {
+  public ContentEncoder getHealthEncoder() {
     return new Extended2ndEditionHealthEncoder(resources);
   }
 
   @Override
-  public IBoxContentEncoder getMovementEncoder() {
+  public ContentEncoder getMovementEncoder() {
     return new Extended2ndEditionMovementEncoder(resources, baseFont);
   }
 

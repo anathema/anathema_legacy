@@ -13,14 +13,14 @@ import net.sf.anathema.character.lunar.reporting.rendering.GiftEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
+public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
 
   private final String notes = "Sheet.Lunar.WarForm";
   private final static int PHYSICAL_MAX = 15;
@@ -71,7 +71,7 @@ public class SecondEditionLunarDBTFormEncoder implements IBoxContentEncoder {
     Bounds newBounds =
       new Bounds(bounds.x + bounds.getWidth() * 1 / 2 + horizontalSpacing, bounds.y + verticalSpacing, bounds.getWidth() * 1 / 2 - horizontalSpacing,
         bounds.height - 2 * verticalSpacing);
-    IBoxContentEncoder encoder = new GiftEncoder();
+    ContentEncoder encoder = new GiftEncoder();
     try {
       new PdfBoxEncoder(resources).encodeBox(content, graphics, encoder, newBounds);
     } catch (DocumentException e) {

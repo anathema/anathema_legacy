@@ -8,7 +8,7 @@ import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment;
@@ -132,13 +132,13 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
     return 0;
   }
 
-  protected float encodeFixedBox(SheetGraphics graphics, ReportContent content, IBoxContentEncoder encoder, int column, int span,
-    float distanceFromTop, float height) throws DocumentException {
+  protected float encodeFixedBox(SheetGraphics graphics, ReportContent content, ContentEncoder encoder, int column, int span, float distanceFromTop,
+    float height) throws DocumentException {
     getBoxEncoder().encodeBox(content, graphics, encoder, calculateBounds(column, span, distanceFromTop, height));
     return height;
   }
 
-  protected float encodeFixedBoxBottom(SheetGraphics graphics, ReportContent content, IBoxContentEncoder encoder, int column, int span, float bottom,
+  protected float encodeFixedBoxBottom(SheetGraphics graphics, ReportContent content, ContentEncoder encoder, int column, int span, float bottom,
     float height) throws DocumentException {
     getBoxEncoder().encodeBox(content, graphics, encoder, calculateBounds(column, span, bottom - height, height));
     return height;
@@ -158,7 +158,7 @@ public abstract class AbstractPdfPageEncoder implements IPdfPageEncoder {
 
   protected float encodeNotes(SheetGraphics graphics, ReportContent content, String title, int column, int span, float distanceFromTop, float height,
     int textColumns) throws DocumentException {
-    IBoxContentEncoder encoder = new HorizontalLineBoxContentEncoder(textColumns, title);
+    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(textColumns, title);
     return encodeFixedBox(graphics, content, encoder, column, span, distanceFromTop, height);
   }
 }
