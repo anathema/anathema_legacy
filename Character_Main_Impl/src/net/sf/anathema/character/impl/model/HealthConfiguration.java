@@ -19,30 +19,26 @@ public class HealthConfiguration implements IHealthConfiguration {
   private final List<IPainToleranceProvider> painResistanceProviders = new ArrayList<IPainToleranceProvider>();
   private final OxBodyTechniqueArbitrator arbitrator;
 
-  public HealthConfiguration(IGenericTrait[] toughnessControllingTraits)
-  {
-	  this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTraits);
-  }
-  
-  public HealthConfiguration(IGenericTrait[] toughnessControllingTraits,
-		  ICoreTraitConfiguration config,
-		  String[] providers) {
+  public HealthConfiguration(IGenericTrait[] toughnessControllingTraits) {
     this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTraits);
-    
+  }
+
+  public HealthConfiguration(IGenericTrait[] toughnessControllingTraits,
+                             ICoreTraitConfiguration config,
+                             String[] providers) {
+    this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTraits);
     addHealthLevelProvider(new DyingStaminaHealthLevelProvider(config));
-    
     if (providers == null) return;
-    for (String providerString : providers)
-    {
-    	Class<?> loadedClass;
-		try {
-			loadedClass = Class.forName(providerString);
-			IHealthLevelProvider provider = (IHealthLevelProvider)
-    			loadedClass.getConstructors()[0].newInstance(config);
-			addHealthLevelProvider(provider);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+    for (String providerString : providers) {
+      Class<?> loadedClass;
+      try {
+        loadedClass = Class.forName(providerString);
+        IHealthLevelProvider provider = (IHealthLevelProvider)
+                loadedClass.getConstructors()[0].newInstance(config);
+        addHealthLevelProvider(provider);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
   }
 
@@ -84,10 +80,9 @@ public class HealthConfiguration implements IHealthConfiguration {
       public void visitIncapacitated(HealthLevelType visitedType) {
         basicCount[0] = 1;
       }
-      
-      public void visitDying(HealthLevelType visitedType)
-      {
-    	  basicCount[0] = 0;
+
+      public void visitDying(HealthLevelType visitedType) {
+        basicCount[0] = 0;
       }
     });
     return basicCount[0];
@@ -104,22 +99,19 @@ public class HealthConfiguration implements IHealthConfiguration {
     }
     return painToleranceLevel;
   }
-  
-  private class DyingStaminaHealthLevelProvider implements IHealthLevelProvider
-  {
-	  private final ICoreTraitConfiguration traits;
-	  
-	  public DyingStaminaHealthLevelProvider(ICoreTraitConfiguration config)
-	  {
-		  this.traits = config;
-	  }
 
-		@Override
-		public int getHealthLevelTypeCount(HealthLevelType type) {
-			if (type == HealthLevelType.DYING)
-				return traits.getTrait(AttributeType.Stamina).getCurrentValue();
-			return 0;
-		}
-	  
+  private class DyingStaminaHealthLevelProvider implements IHealthLevelProvider {
+    private final ICoreTraitConfiguration traits;
+
+    public DyingStaminaHealthLevelProvider(ICoreTraitConfiguration config) {
+      this.traits = config;
+    }
+
+    @Override
+    public int getHealthLevelTypeCount(HealthLevelType type) {
+      if (type == HealthLevelType.DYING)
+        return traits.getTrait(AttributeType.Stamina).getCurrentValue();
+      return 0;
+    }
   }
 }

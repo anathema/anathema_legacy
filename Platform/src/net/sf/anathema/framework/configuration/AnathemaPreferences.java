@@ -1,14 +1,12 @@
 package net.sf.anathema.framework.configuration;
 
-import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.LOOK_AND_FEEL_PREFERENCE;
-import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.MAXIMIZE_PREFERENCE;
-import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.SYSTEM_PREFERENCES_NODE;
+import net.sf.anathema.framework.presenter.action.SupportedLocale;
+import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants;
 
 import java.util.Locale;
 import java.util.prefs.Preferences;
 
-import net.sf.anathema.framework.presenter.action.SupportedLocale;
-import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants;
+import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.*;
 
 public class AnathemaPreferences implements IAnathemaPreferences {
 
@@ -29,8 +27,8 @@ public class AnathemaPreferences implements IAnathemaPreferences {
     return systemPreferences.getBoolean(MAXIMIZE_PREFERENCE, false);
   }
 
-  public boolean isMetalLookAndFeelForced() {
-    return systemPreferences.getBoolean(LOOK_AND_FEEL_PREFERENCE, false);
+  public String getUserLookAndFeel() {
+    return systemPreferences.get(USER_LOOK_AND_FEEL_CLASSNAME, null);
   }
 
   public Locale getPreferredLocale() {
