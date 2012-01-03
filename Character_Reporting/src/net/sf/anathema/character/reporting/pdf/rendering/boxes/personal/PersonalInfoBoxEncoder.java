@@ -108,7 +108,7 @@ public class PersonalInfoBoxEncoder implements IVariableContentEncoder {
   @Override
   public String getHeaderKey(ReportContent content) {
     String name = content.getDescription().getName();
-    if (StringUtilities.isNullOrTrimEmpty(name)) {
+    if (StringUtilities.isNullOrTrimmedEmpty(name)) {
       return "PersonalInfo"; //$NON-NLS-1$
     }
     else {

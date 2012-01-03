@@ -6,12 +6,17 @@ import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.lib.resources.IResources;
 
 @SuppressWarnings("unchecked")
-public abstract class AbstractSelectObjectUi<V> implements IObjectUi {
+public abstract class AbstractSelectObjectUi<V> implements IObjectUi<Object> {
 
   private final IResources resources;
 
   public AbstractSelectObjectUi(IResources resources) {
     this.resources = resources;
+  }
+  
+  @Override
+  public String getToolTipText(Object value) {
+    return null;
   }
 
   public Icon getIcon(Object value) {

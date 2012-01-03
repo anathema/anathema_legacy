@@ -7,9 +7,8 @@ import java.util.Map;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.userdialog.AbstractDialogPage;
+import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.infonode.tabbedpanel.Tab;
 import net.infonode.tabbedpanel.TabbedPanel;
@@ -26,7 +25,7 @@ public class AnathemaPreferencesPage extends AbstractDialogPage {
   private final Map<String, IGridDialogPanel> panelsByName = new HashMap<String, IGridDialogPanel>();
 
   public AnathemaPreferencesPage(IResources resources, IPreferencesElement[] elements) {
-    super(new BasicMessage(resources.getString("AnathemaCore.Tools.Preferences.Instruction"))); //$NON-NLS-1$
+    super(resources.getString("AnathemaCore.Tools.Preferences.Instruction")); //$NON-NLS-1$
     this.resources = resources;
     this.elements = elements;
   }

@@ -26,12 +26,9 @@ public class ConceptTextEncoder extends AbstractTextEncoder {
       columnText.addElement(castePhrase);
     }
     String willpowerRegainingConceptName = character.getConcept().getWillpowerRegainingConceptName();
-    if (!StringUtilities.isNullOrTrimEmpty(willpowerRegainingConceptName)) {
-      String motivationLabel = getString(character.getRules().getEdition() == ExaltedEdition.SecondEdition ? "Sheet.Label.Motivation" : "Sheet" +
-                                                                                                                                        ".Label" +
-                                                                                                                                        ".Nature");
-
-                                                                                                                                         //$NON-NLS-1$ //$NON-NLS-2$
+    if (!StringUtilities.isNullOrTrimmedEmpty(willpowerRegainingConceptName)) {
+      String motivationLabel = getString(character.getRules().getEdition() == ExaltedEdition.SecondEdition
+          ? "Sheet.Label.Motivation" : "Sheet.Label.Nature"); //$NON-NLS-1$ //$NON-NLS-2$
       Phrase willpowerRegainPhrase = createTextParagraph(createBoldTitle(motivationLabel + ": ")); //$NON-NLS-1$
       willpowerRegainPhrase.add(createTextChunk(willpowerRegainingConceptName));
       columnText.addElement(willpowerRegainPhrase);

@@ -10,7 +10,7 @@ public class IdStringBuilder implements IIdStringBuilder {
 
   public String build(Element element) throws CharmException {
     final String value = element.attributeValue(ICharmXMLConstants.ATTRIB_ID);
-    if (StringUtilities.isNullOrTrimEmpty(value)) {
+    if (StringUtilities.isNullOrTrimmedEmpty(value)) {
       throw new CharmException("Id must not be empty."); //$NON-NLS-1$
     }
     return value;

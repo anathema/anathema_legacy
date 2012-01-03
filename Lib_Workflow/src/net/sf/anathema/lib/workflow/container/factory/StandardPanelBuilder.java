@@ -6,8 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.border.TitledPanel;
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.disy.commons.swing.util.ToggleComponentEnabler;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
@@ -45,9 +45,9 @@ public class StandardPanelBuilder {
       }
 
       public void fillInto(JPanel panel, int columnCount) {
-        panel.add(checkBoxView.getComponent(), GridDialogLayoutDataUtilities.createTopData());
+        panel.add(checkBoxView.getComponent(), GridDialogLayoutDataFactory.createTopData());
         JComponent textContent = textView.getComponent();
-        panel.add(textContent, GridDialogLayoutDataUtilities.createHorizontalSpanData(
+        panel.add(textContent, GridDialogLayoutDataFactory.createHorizontalSpanData(
             columnCount - 1,
             GridDialogLayoutData.FILL_HORIZONTAL));
       }

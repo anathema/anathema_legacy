@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.view.concept.IWillpowerConditionView;
 
 public class WillpowerConditionView implements IWillpowerConditionView {
@@ -27,8 +27,8 @@ public class WillpowerConditionView implements IWillpowerConditionView {
   }
 
   public void addToStandardPanel(JPanel panel) {
-    panel.add(headerLabel, GridDialogLayoutDataUtilities.createTopData());
-    panel.add(conditionLabel, GridDialogLayoutDataUtilities.createFillNoGrab());
+    panel.add(headerLabel, GridDialogLayoutDataFactory.createTopData());
+    panel.add(conditionLabel, GridDialogLayoutDataFactory.createFillNoGrab());
   }
 
   public void setEnabled(boolean enabled) {

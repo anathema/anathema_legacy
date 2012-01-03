@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.impl.item.model;
 
 import java.awt.Component;
 
+import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
@@ -84,8 +85,8 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
     EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, editModel, viewFactory);
     WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
-    dialog.show();
-    if (dialog.isCanceled()) {
+    IDialogResult result = dialog.show();
+    if (result.isCanceled()) {
       return null;
     }
     return createStats(model);

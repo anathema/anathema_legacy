@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.Armo
 import net.sf.anathema.character.lunar.reporting.rendering.GiftEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.LunarFaceEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.anima.LunarAnimaEncoderFactory;
-import net.sf.anathema.character.lunar.reporting.rendering.beastform.BeastformAttributeBoundsEncoder;
+import net.sf.anathema.character.lunar.reporting.rendering.beastform.AttributeBoundsEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.FirstEditionDBTCombatEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.FirstEditionLunarBeastformAttributesEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarEquipmentEncoders;
@@ -109,7 +109,7 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
   private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, int distanceFromTop, final int firstRowHeight) {
     Bounds infoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
     String name = content.getDescription().getName();
-    String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
+    String title = StringUtilities.isNullOrTrimmedEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
     Bounds infoContentBounds = boxEncoder.encodeBox(graphics, infoBounds, title);
     PersonalInfoBoxEncoder encoder = new PersonalInfoBoxEncoder(resources);
     encoder.encode(graphics, content, infoContentBounds);
@@ -127,7 +127,7 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
     int attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 2);
     float smallWidth = pageConfiguration.getColumnWidth();
-    BeastformAttributeBoundsEncoder beastBoxEncoder = new BeastformAttributeBoundsEncoder(smallWidth, getOverlapFreeSpaceHeight());
+    AttributeBoundsEncoder beastBoxEncoder = new AttributeBoundsEncoder(smallWidth, getOverlapFreeSpaceHeight());
     FirstEditionLunarBeastformAttributesEncoder encoder =
       new FirstEditionLunarBeastformAttributesEncoder(resources, boxEncoder.calculateInsettedWidth(smallWidth));
     new PdfHeaderBoxEncoder()

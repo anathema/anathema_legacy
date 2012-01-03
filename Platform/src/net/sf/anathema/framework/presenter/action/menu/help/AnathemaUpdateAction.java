@@ -5,8 +5,8 @@ import java.awt.Component;
 import javax.swing.Action;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.dialog.userdialog.IDialogPage;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
+import net.disy.commons.swing.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 

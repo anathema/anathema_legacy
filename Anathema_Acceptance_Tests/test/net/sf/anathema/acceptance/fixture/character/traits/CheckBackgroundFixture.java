@@ -21,14 +21,16 @@ public class CheckBackgroundFixture extends AbstractCharacterColumnFixture {
   }
 
   protected final ITrait getTrait() {
-    @SuppressWarnings("unchecked") ICharacter character = new CharacterSummary(summary).getCharacter();
+    @SuppressWarnings("unchecked")
+    ICharacter character = new CharacterSummary(summary).getCharacter();
     ICharacterStatistics statistics = character.getStatistics();
     return statistics.getTraitConfiguration().getTrait(getTraitType());
   }
 
   public boolean isAvailable() {
-    return ArrayUtilities
-      .contains(getCharacterStatistics().getTraitConfiguration().getBackgrounds().getAllAvailableBackgroundTemplates(), getTraitType());
+    return ArrayUtilities.containsValue(getCharacterStatistics().getTraitConfiguration()
+        .getBackgrounds()
+        .getAllAvailableBackgroundTemplates(), getTraitType());
   }
 
   private IBackgroundTemplate getTraitType() {

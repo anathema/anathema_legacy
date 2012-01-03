@@ -36,7 +36,7 @@ public class SecondEditionLunarGreatCurseEncoder implements ContentEncoder {
     Bounds textBounds = traitEncoder.encode(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     String name = virtueFlaw.getName().getText();
     String condition = virtueFlaw.getLimitBreak().getText();
-    boolean nameDefined = !StringUtilities.isNullOrTrimEmpty(name);
+    boolean nameDefined = !StringUtilities.isNullOrTrimmedEmpty(name);
     boolean conditionDefined = !StringUtilities.isNullOrEmpty(condition);
     if (!nameDefined && !conditionDefined) {
       encodeLines(graphics, bounds, leading, textBounds.getMaxY());

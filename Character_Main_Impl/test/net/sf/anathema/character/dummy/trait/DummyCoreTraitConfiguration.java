@@ -53,7 +53,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   public boolean containsAllTraits(AttributeGroupType attributeGroupType, ITrait[] traits) {
     for (ITrait trait : traits) {
-      if (!ArrayUtilities.contains(getAllTraits(attributeGroupType), trait)) {
+      if (!ArrayUtilities.containsValue(getAllTraits(attributeGroupType), trait)) {
         return false;
       }
     }

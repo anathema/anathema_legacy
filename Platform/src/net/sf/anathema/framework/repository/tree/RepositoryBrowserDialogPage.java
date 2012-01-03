@@ -4,7 +4,7 @@ import javax.swing.JComponent;
 
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.userdialog.AbstractDialogPage;
+import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
@@ -16,7 +16,7 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
   private final IAnathemaModel model;
 
   public RepositoryBrowserDialogPage(IResources resources, IAnathemaModel model) {
-    super(new BasicMessage(resources.getString("AnathemaCore.Tools.RepositoryView.DialogMessage"))); //$NON-NLS-1$
+    super(resources.getString("AnathemaCore.Tools.RepositoryView.DialogMessage")); //$NON-NLS-1$
     this.resources = resources;
     this.model = model;
   }

@@ -128,7 +128,7 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder<ReportCont
     PdfTemplate notLearnedTemplate) throws DocumentException {
     final String charmId = genericId + "." + type.getId(); //$NON-NLS-1$
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
-    boolean isLearned = CollectionUtilities.find(allLearnedMagic, new IPredicate<IMagic>() {
+    boolean isLearned = CollectionUtilities.getFirst(allLearnedMagic, new IPredicate<IMagic>() {
       public boolean evaluate(IMagic value) {
         return charmId.equals(value.getId());
       }

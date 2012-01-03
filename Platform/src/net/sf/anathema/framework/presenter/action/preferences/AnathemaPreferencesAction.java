@@ -6,6 +6,7 @@ import javax.swing.Action;
 import javax.swing.JOptionPane;
 
 import net.disy.commons.swing.action.SmartAction;
+import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -35,10 +36,10 @@ public class AnathemaPreferencesAction extends SmartAction {
     boolean confirmed = false;
     boolean dirty = false;
     while (!confirmed) {
-      userDialog.show();
+      IDialogResult result = userDialog.show();
       confirmed = true;
       
-      if (userDialog.isCanceled()) {
+      if (result.isCanceled()) {
         for (IPreferencesElement element : elements) {
           if (element.isDirty()) {
             element.reset();

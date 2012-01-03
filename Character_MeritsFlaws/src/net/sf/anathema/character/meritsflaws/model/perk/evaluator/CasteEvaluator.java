@@ -14,7 +14,7 @@ public class CasteEvaluator implements ICharacterEvaluator {
   }
 
   public boolean evaluateCharacter(IBasicCharacterData characterData) {
-    return ArrayUtilities.contains(casteNames, characterData.getCasteType().getId());
+    return ArrayUtilities.containsValue(casteNames, characterData.getCasteType().getId());
   }
 
   @Override

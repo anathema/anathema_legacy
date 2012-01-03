@@ -15,9 +15,10 @@ import javax.swing.KeyStroke;
 
 import net.disy.commons.core.io.IOUtilities;
 import net.disy.commons.core.message.Message;
+import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
 import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.core.progress.IRunnableWithProgress;
 import net.disy.commons.swing.action.SmartAction;
+import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.framework.IAnathemaModel;
@@ -101,9 +102,8 @@ public class AnathemaPrintAction extends SmartAction {
     }
     try {
       new ProgressMonitorDialog(parentComponent, resources.getString("Anathema.Reporting.Print.Progress.Title")).run( //$NON-NLS-1$
-          false,
-          new IRunnableWithProgress() {
-            public void run(IProgressMonitor monitor) throws InterruptedException, InvocationTargetException {
+          new INonInterruptableRunnableWithProgress() {
+            public void run(IProgressMonitor monitor) throws InvocationTargetException {
               try {
                 performPrint(monitor, item, selectedReport, selectedFile);
               }
@@ -171,8 +171,8 @@ public class AnathemaPrintAction extends SmartAction {
         "Anathema.Reporting.PrintSelection.Message", "Anathema.Reporting.PrintSelection.Title"); //$NON-NLS-1$ //$NON-NLS-2$
     ObjectSelectionDialogPage dialogPage = new ObjectSelectionDialogPage(reports, properties);
     UserDialog userDialog = new UserDialog(parentComponent, dialogPage);
-    userDialog.show();
-    if (userDialog.isCanceled()) {
+    IDialogResult result = userDialog.show();
+    if (result.isCanceled()) {
       return null;
     }
     return (IReport) dialogPage.getSelectedObject();

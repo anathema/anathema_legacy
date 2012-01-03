@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.DefaultListSelectionModel;
 
-import net.disy.commons.core.util.ISimpleBlock;
+import net.disy.commons.core.util.SimpleBlock;
 import net.sf.anathema.lib.gui.list.ListSelectionMode;
 
 public class VetoableListSelectionModel extends DefaultListSelectionModel {
@@ -26,7 +26,7 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
 
 	@Override
 	public void addSelectionInterval(final int index0, final int index1) {
-		executeVetoable(new ISimpleBlock() {
+		executeVetoable(new SimpleBlock() {
 			public void execute() {
 				VetoableListSelectionModel.super.addSelectionInterval(index0,
 						index1);
@@ -34,7 +34,7 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
 		});
 	}
 
-	private synchronized void executeVetoable(ISimpleBlock block) {
+	private synchronized void executeVetoable(SimpleBlock block) {
 		if (alreadyAsked) {
 			block.execute();
 			return;
@@ -56,7 +56,7 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
 		if (getMaxSelectionIndex() == -1) {
 			return;
 		}
-		executeVetoable(new ISimpleBlock() {
+		executeVetoable(new SimpleBlock() {
 			public void execute() {
 				VetoableListSelectionModel.super.removeSelectionInterval(
 						index0, index1);
@@ -70,7 +70,7 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
 
 	@Override
 	public void setSelectionInterval(final int index0, final int index1) {
-		executeVetoable(new ISimpleBlock() {
+		executeVetoable(new SimpleBlock() {
 			public void execute() {
 				VetoableListSelectionModel.super.setSelectionInterval(index0,
 						index1);

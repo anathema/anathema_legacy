@@ -21,7 +21,7 @@ public class AnathemaStatusBar implements IAnathemaStatusBar {
   }
 
   public void setLatestMessage(IBasicMessage message) {
-    label.setIcon(message == null ? null : MessageTypeUi.getSmallIcon(message.getType()));
+    label.setIcon(message == null ? null : MessageTypeUi.getInstance().getIcon(message.getType()));
     label.setText(message == null ? "  " : message.getText()); //$NON-NLS-1$
     label.revalidate();
   }

@@ -7,9 +7,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.border.TitledPanel;
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.campaign.music.impl.view.SimpleTabViewFactory;
 import net.sf.anathema.campaign.music.impl.view.player.MusicPlayerView;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
@@ -21,8 +21,8 @@ import net.sf.anathema.campaign.music.presenter.selection.player.IMusicPlayerVie
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationProperties;
 import net.sf.anathema.campaign.music.view.selection.IMusicSelectionView;
 import net.sf.anathema.campaign.music.view.selection.ITrackDetailsView;
-import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.framework.view.util.ContentProperties;
+import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.framework.view.util.TabbedView;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
@@ -85,7 +85,7 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
       JLabel label = new JLabel(selectionProperties.getNoDecoderString() + ".", SwingConstants.CENTER); //$NON-NLS-1$
       trackDetailsView.setPlayerComponent(new TitledPanel(playerProperties.getPlayerBorderString(), label));
     }
-    panel.add(selectionActionsView.getComponent(), GridDialogLayoutDataUtilities.createHorizontalSpanData(
+    panel.add(selectionActionsView.getComponent(), GridDialogLayoutDataFactory.createHorizontalSpanData(
         2,
         GridDialogLayoutData.FILL_BOTH));
     TabbedView tracksView = new TabbedView(TabDirection.Down);

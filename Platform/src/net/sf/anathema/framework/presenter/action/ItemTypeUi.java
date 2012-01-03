@@ -7,7 +7,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.lib.resources.IResources;
 
-public class ItemTypeUi implements IObjectUi {
+public class ItemTypeUi implements IObjectUi<Object> {
   private final ItemTypeCreationViewPropertiesExtensionPoint extension;
   private final IResources resources;
 
@@ -22,5 +22,10 @@ public class ItemTypeUi implements IObjectUi {
 
   public String getLabel(Object value) {
     return resources.getString(extension.get((IItemType) value).getLabelKey());
+  }
+
+  @Override
+  public String getToolTipText(Object value) {
+    return null;
   }
 }

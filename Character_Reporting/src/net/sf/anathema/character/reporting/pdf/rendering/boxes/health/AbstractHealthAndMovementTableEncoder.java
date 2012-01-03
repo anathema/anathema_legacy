@@ -28,7 +28,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
   public static final int HEALTH_RECT_SIZE = 6;
   private static final int HEALTH_COLUMN_COUNT = 10;
   protected static float PADDING = 0.3f;
-  private static final Float[] HEALTH_LEVEL_COLUMNS = new Float[] { PADDING, 0.6f, 0.7f, PADDING };
+  private static final Float[] HEALTH_LEVEL_COLUMNS = new Float[]{PADDING, 0.6f, 0.7f, PADDING};
 
   private final IResources resources;
 
@@ -74,7 +74,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
   }
 
   private void addHealthTypeRows(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, Image activeTemplate, Image passiveTemplate,
-    HealthLevelType type) {
+                                 HealthLevelType type) {
     if (type == HealthLevelType.DYING) {
       return;
     }
@@ -85,13 +85,11 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
         int painTolerance = character.getPainTolerance();
         if (type == HealthLevelType.INCAPACITATED) {
           addIncapacitatedMovement(graphics, table);
-        }
-        else {
+        } else {
           addMovementCells(graphics, table, type, painTolerance, getTraits(character));
         }
         addHealthTypeCells(graphics, table, type, painTolerance);
-      }
-      else {
+      } else {
         addSpaceCells(graphics, table, getMovementColumns().length + HEALTH_LEVEL_COLUMNS.length);
       }
       addHealthCells(graphics, table, character, type, rowIndex, activeTemplate, passiveTemplate);
@@ -135,12 +133,12 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
   protected abstract void addMovementHeader(SheetGraphics graphics, PdfPTable table);
 
   protected abstract void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance,
-    IGenericTraitCollection collection);
+                                           IGenericTraitCollection collection);
 
   protected final PdfPCell createMovementCell(SheetGraphics graphics, int value, int minValue) {
     Font font = createDefaultFont(graphics);
     return TableEncodingUtilities
-      .createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX, Element.ALIGN_CENTER);
+            .createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX, Element.ALIGN_CENTER);
   }
 
   private void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {
@@ -151,8 +149,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     if (level == HealthLevelType.INCAPACITATED) {
       healthPdfPCell.setColspan(2);
       table.addCell(healthPdfPCell);
-    }
-    else {
+    } else {
       table.addCell(healthPdfPCell);
       String painToleranceText = " "; //$NON-NLS-1$
       if (painTolerance > 0) {
@@ -170,20 +167,19 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
   }
 
   private void addHealthCells(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, HealthLevelType level, int row,
-    Image activeImage,
-    Image passiveImage) {
+                              Image activeImage,
+                              Image passiveImage) {
     int naturalCount = getNaturalHealthLevels(level);
     if (row < naturalCount) {
       table.addCell(createHealthCell(activeImage));
-    }
-    else {
+    } else {
       addSpaceCells(graphics, table, 1);
     }
     int additionalCount = 9;
     if (level == HealthLevelType.FOUR) {
       addSpaceCells(graphics, table, 1);
       TableCell cell =
-        new TableCell(new Phrase(resources.getString("HealthLevelType.Dying.Short"), createCommentFont(graphics)), Rectangle.BOTTOM); //$NON-NLS-1$
+              new TableCell(new Phrase(resources.getString("HealthLevelType.Dying.Short"), createCommentFont(graphics)), Rectangle.BOTTOM); //$NON-NLS-1$
       cell.setHorizontalAlignment(Element.ALIGN_CENTER);
       cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
       cell.setColspan(additionalCount - 1);
@@ -195,8 +191,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
       for (int index = 0; index < additionalCount - 1; index++) {
         if (index < character.getHealthLevelTypeCount(HealthLevelType.DYING)) {
           table.addCell(createHealthCell(activeImage));
-        }
-        else {
+        } else {
           table.addCell(createHealthCell(passiveImage));
         }
       }
@@ -206,8 +201,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
       int value = naturalCount + row * additionalCount + index + 1;
       if (value <= character.getHealthLevelTypeCount(level)) {
         table.addCell(createHealthCell(activeImage));
-      }
-      else {
+      } else {
         table.addCell(createHealthCell(passiveImage));
       }
     }
@@ -226,9 +220,9 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
   }
 
   private float[] createColumnWidth() {
-    Float[] movementAndLevelColumns = ArrayUtilities.concat(getMovementColumns(), HEALTH_LEVEL_COLUMNS);
+    Float[] movementAndLevelColumns = ArrayUtilities.concat(Float.class, getMovementColumns(), HEALTH_LEVEL_COLUMNS);
     Float[] healthColumns = TableEncodingUtilities.createStandardColumnWidths(HEALTH_COLUMN_COUNT, 0.4f);
-    Float[] objectArray = ArrayUtilities.concat(movementAndLevelColumns, healthColumns);
+    Float[] objectArray = ArrayUtilities.concat(Float.class, movementAndLevelColumns, healthColumns);
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(objectArray);
   }
 

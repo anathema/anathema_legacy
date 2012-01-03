@@ -6,12 +6,12 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoundsEncod
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoxEncodingUtils;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
-public class BeastformAttributeBoundsEncoder implements BoundsEncoder {
+public class AttributeBoundsEncoder implements BoundsEncoder {
 
   private final float smallWidth;
   private float smallHeight;
 
-  public BeastformAttributeBoundsEncoder(float smallWidth, float smallHeight) {
+  public AttributeBoundsEncoder(float smallWidth, float smallHeight) {
     this.smallWidth = smallWidth;
     this.smallHeight = smallHeight - (HEADER_HEIGHT / 2);
   }

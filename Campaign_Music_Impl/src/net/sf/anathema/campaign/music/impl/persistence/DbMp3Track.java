@@ -75,7 +75,7 @@ public final class DbMp3Track implements IMp3Track {
 
   @Override
   public String toString() {
-    return StringUtilities.isNullOrTrimEmpty(getGivenName()) ? "Unknown" : getGivenName(); //$NON-NLS-1$
+    return StringUtilities.isNullOrTrimmedEmpty(getGivenName()) ? "Unknown" : getGivenName(); //$NON-NLS-1$
   }
 
   @Override

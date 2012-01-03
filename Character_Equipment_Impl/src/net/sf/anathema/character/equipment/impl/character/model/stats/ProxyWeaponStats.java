@@ -31,7 +31,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
     this.material = material;
     this.ruleSet = ruleSet;
   }
-  
+
   public IWeaponStats getUnderlying() {
     return this.delegate;
   }
@@ -42,9 +42,8 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
       return false;
     }
     ProxyWeaponStats other = (ProxyWeaponStats) obj;
-    return ObjectUtilities.equals(delegate, other.delegate)
-        && ObjectUtilities.equals(material, other.material)
-        && ObjectUtilities.equals(ruleSet, other.ruleSet);
+    return ObjectUtilities.equals(delegate, other.delegate) && ObjectUtilities.equals(material, other.material) &&
+      ObjectUtilities.equals(ruleSet, other.ruleSet);
   }
 
   @Override
@@ -64,17 +63,18 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   private WeaponStatsType getWeaponStatsType() {
-    if (ArrayUtilities.contains(getTags(), WeaponTag.BowType)) {
+    if (ArrayUtilities.containsValue(getTags(), WeaponTag.BowType)) {
       return WeaponStatsType.Bow;
     }
-    if (ArrayUtilities.contains(getTags(), WeaponTag.FlameType)) {
+    if (ArrayUtilities.containsValue(getTags(), WeaponTag.FlameType)) {
       return WeaponStatsType.Flame;
     }
-    if (ArrayUtilities.contains(getTags(), WeaponTag.Thrown)) {
-      if (ArrayUtilities.contains(getTags(), WeaponTag.BowBonuses)) {
+    if (ArrayUtilities.containsValue(getTags(), WeaponTag.Thrown)) {
+      if (ArrayUtilities.containsValue(getTags(), WeaponTag.BowBonuses)) {
         return WeaponStatsType.Thrown_BowBonuses;
-      } else {
-        return WeaponStatsType.Thrown;  
+      }
+      else {
+        return WeaponStatsType.Thrown;
       }
     }
     return WeaponStatsType.Melee;
@@ -137,10 +137,9 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   public String getId() {
     return getName().getId();
   }
-  
+
   @Override
-  public Object[] getApplicableMaterials()
-  {
-	  return delegate.getApplicableMaterials();
+  public Object[] getApplicableMaterials() {
+    return delegate.getApplicableMaterials();
   }
 }

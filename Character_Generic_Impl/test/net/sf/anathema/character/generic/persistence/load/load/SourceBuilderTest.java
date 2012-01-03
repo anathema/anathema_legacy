@@ -1,14 +1,13 @@
 package net.sf.anathema.character.generic.persistence.load.load;
 
+import static org.junit.Assert.assertArrayEquals;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBuilder;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.lib.xml.DocumentUtilities;
+
 import org.dom4j.Element;
 import org.junit.Test;
-
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 public class SourceBuilderTest {
 

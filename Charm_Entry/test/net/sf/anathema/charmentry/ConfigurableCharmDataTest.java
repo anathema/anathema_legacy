@@ -26,8 +26,8 @@ public class ConfigurableCharmDataTest {
 		data.addPrerequisite(unwanted);
 		data.addPrerequisite(expected);
 		assertEquals(1, data.getPrerequisites().length);
-		assertTrue(ArrayUtilities.contains(data.getPrerequisites(), expected));
-		assertFalse(ArrayUtilities.contains(data.getPrerequisites(), unwanted));
+		assertTrue(ArrayUtilities.containsValue(data.getPrerequisites(), expected));
+		assertFalse(ArrayUtilities.containsValue(data.getPrerequisites(), unwanted));
 	}
 
 	@Test
@@ -37,8 +37,8 @@ public class ConfigurableCharmDataTest {
 		data.setPrimaryPrerequisite(unwanted);
 		data.setPrimaryPrerequisite(expected);
 		assertEquals(1, data.getPrerequisites().length);
-		assertTrue(ArrayUtilities.contains(data.getPrerequisites(), expected));
-		assertFalse(ArrayUtilities.contains(data.getPrerequisites(), unwanted));
+		assertTrue(ArrayUtilities.containsValue(data.getPrerequisites(), expected));
+		assertFalse(ArrayUtilities.containsValue(data.getPrerequisites(), unwanted));
 		assertEquals(expected.getType(), data.getPrimaryTraitType());
 	}
 
@@ -48,7 +48,7 @@ public class ConfigurableCharmDataTest {
 		data.addPrerequisite(unwanted);
 		data.removePrerequisite(unwanted);
 		assertEquals(0, data.getPrerequisites().length);
-		assertFalse(ArrayUtilities.contains(data.getPrerequisites(), unwanted));
+		assertFalse(ArrayUtilities.containsValue(data.getPrerequisites(), unwanted));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -57,7 +57,7 @@ public class ConfigurableCharmDataTest {
 		data.setPrimaryPrerequisite(expected);
 		data.removePrerequisite(expected);
 		assertEquals(1, data.getPrerequisites().length);
-		assertTrue(ArrayUtilities.contains(data.getPrerequisites(), expected));
+		assertTrue(ArrayUtilities.containsValue(data.getPrerequisites(), expected));
 	}
 
 	@Test

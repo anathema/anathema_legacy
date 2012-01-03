@@ -68,7 +68,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
     boolean[] excellencyLearned = new boolean[excellencies.length];
     for (int i = 0; i < excellencies.length; i++) {
       final String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
-      excellencyLearned[i] = CollectionUtilities.find(allLearnedMagic, new IPredicate<IMagic>() {
+      excellencyLearned[i] = CollectionUtilities.getFirst(allLearnedMagic, new IPredicate<IMagic>() {
         public boolean evaluate(IMagic value) {
           return charmId.equals(value.getId());
         }

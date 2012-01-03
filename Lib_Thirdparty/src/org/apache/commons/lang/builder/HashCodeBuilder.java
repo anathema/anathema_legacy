@@ -290,13 +290,13 @@ public class HashCodeBuilder {
       int multiplierNonZeroOddNumber,
       Object object,
       boolean testTransients,
-      Class reflectUpToClass) {
+      Class<?> reflectUpToClass) {
 
     if (object == null) {
       throw new IllegalArgumentException("The object to build a hash code for must not be null");
     }
     HashCodeBuilder builder = new HashCodeBuilder(initialNonZeroOddNumber, multiplierNonZeroOddNumber);
-    Class clazz = object.getClass();
+    Class<?> clazz = object.getClass();
     reflectionAppend(object, clazz, builder, testTransients);
     while (clazz.getSuperclass() != null && clazz != reflectUpToClass) {
       clazz = clazz.getSuperclass();
@@ -315,7 +315,7 @@ public class HashCodeBuilder {
    * @param builder the builder to append to
    * @param useTransients whether to use transient fields
    */
-  private static void reflectionAppend(Object object, Class clazz, HashCodeBuilder builder, boolean useTransients) {
+  private static void reflectionAppend(Object object, Class<?> clazz, HashCodeBuilder builder, boolean useTransients) {
     Field[] fields = clazz.getDeclaredFields();
     AccessibleObject.setAccessible(fields, true);
     for (int i = 0; i < fields.length; i++) {
