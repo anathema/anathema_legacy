@@ -75,7 +75,8 @@ public class AnathemaPresenter {
   private void runBootJobs() throws InitializationException {
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_BOOTJOBS)) {
       for (Parameter parameter : extension.getParameters(PARAM_CLASS)) {
-        instantiate(parameter, pluginManager, IAnathemaBootJob.class).run(resources, model, view);
+        IAnathemaBootJob job = instantiate(parameter, pluginManager, IAnathemaBootJob.class);
+        job.run(resources, model, view);
       }
     }
   }
