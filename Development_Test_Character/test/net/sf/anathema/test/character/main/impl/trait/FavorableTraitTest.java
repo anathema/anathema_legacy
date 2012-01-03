@@ -39,6 +39,8 @@ public class FavorableTraitTest extends BasicCharacterTestCase {
   private ProxyTraitValueStrategy valueStrategy;
   private DefaultTrait first;
   private DummyCharacterModelContext modelContext;
+  private DefaultTrait objectUnderTest;
+  private IIntValueChangedListener intListener;
 
   @Before
   public void setUp() throws Exception {
@@ -52,8 +54,10 @@ public class FavorableTraitTest extends BasicCharacterTestCase {
     this.abilityStateListener = EasyMock.createStrictMock(IFavorableStateChangedListener.class);
   }
 
-  private DefaultTrait objectUnderTest;
-  private IIntValueChangedListener intListener;
+  protected DefaultTrait createObjectUnderTest() {
+    ICharacterModelContext context = createModelContextWithEssence2(valueStrategy);
+    return createObjectUnderTest(context);
+  }
 
   @Test
   public void testSetAbilityToFavored() throws Exception {
@@ -111,11 +115,6 @@ public class FavorableTraitTest extends BasicCharacterTestCase {
   public void testUnderrunCreationValueMinimum() throws Exception {
     first.setCurrentValue(-1);
     assertEquals(0, first.getCreationValue());
-  }
-
-  protected DefaultTrait createObjectUnderTest() {
-    ICharacterModelContext context = createModelContextWithEssence2(valueStrategy);
-    return createObjectUnderTest(context);
   }
 
   private DefaultTrait createObjectUnderTest(ICharacterModelContext context) {
@@ -194,15 +193,5 @@ public class FavorableTraitTest extends BasicCharacterTestCase {
     assertEquals(2, specialty.getCurrentValue());
     assertEquals(2, container.getCreationDotTotal());
     assertEquals(0, container.getExperienceDotTotal());
-  }
-
-
-  @Test
-  public void testSetValueInRange() throws Exception {
-    intListener.valueChanged(3);
-    EasyMock.replay(intListener);
-    objectUnderTest.setCurrentValue(3);
-    assertEquals(3, objectUnderTest.getCreationValue());
-    EasyMock.verify(intListener);
   }
 }
