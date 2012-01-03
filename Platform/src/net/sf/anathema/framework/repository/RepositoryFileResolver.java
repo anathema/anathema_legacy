@@ -47,6 +47,8 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
 
   private void createNonExistentFolder(File typeFolder) {
     if (!typeFolder.exists()) {
+      // mkdir may fail, perhaps the client should be somehow notified
+      // of this failure.
       typeFolder.mkdir();
     }
   }
