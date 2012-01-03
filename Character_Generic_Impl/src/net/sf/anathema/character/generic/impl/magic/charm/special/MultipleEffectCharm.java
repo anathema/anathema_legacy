@@ -49,11 +49,15 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
       }
     };
   }
+  
+  private static boolean strEquals(String a, String b) {
+    return a != null ? a.equals(b) : b == null;
+  }
 
   public String toString() {
     String list = "";
     for (String effect : effectIds) {
-      boolean isLastEffect = effect == effectIds[effectIds.length - 1];
+      boolean isLastEffect = strEquals(effect, effectIds[effectIds.length - 1]);
       list += effect + (isLastEffect ? "" : ",");
     }
     return "[" + getCharmId() + ";" + list + "]";
