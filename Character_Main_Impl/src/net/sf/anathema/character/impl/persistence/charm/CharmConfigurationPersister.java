@@ -48,7 +48,7 @@ public class CharmConfigurationPersister {
 
   private final TextPersister textPersister = new TextPersister();
   private final TraitPersister traitPersister = new TraitPersister();
-  private final String TAG_LEARN_COUNT = "LearnCount";
+  private static final String TAG_LEARN_COUNT = "LearnCount";
   private ITraitContext context;
 
   public void save(Element parent, ICharacterStatistics statistics) {

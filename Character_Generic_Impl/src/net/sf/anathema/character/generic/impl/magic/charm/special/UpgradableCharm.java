@@ -17,7 +17,7 @@ import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 
 public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableCharm
 {
-	private final int NO_BP_UPGRADE = -1;
+	private static final int NO_BP_UPGRADE = -1;
 	
 	List<Upgrade> upgradeList = new ArrayList<Upgrade>();
 	private final Map<String, Integer> bpCosts;

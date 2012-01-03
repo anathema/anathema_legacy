@@ -30,8 +30,8 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
   
   private final int[] baseFreeFetterDotsPerAge = { 5, 4, 4, 3, 3, 2 };
   
-  private final int fetterXPMultiplier = 3;
-  private final int fetterBonusPointCost = 3;
+  private static final int FETTER_XP_MULTIPLIER = 3;
+  private static final int FETTER_BONUS_POINT_COST = 3;
   private final int maxFreeRating;
 
   public AdditionalModelType getAdditionalModelType() {
@@ -111,7 +111,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 		  dots -= freeDotsSpent;
 		  bonusPointDots += dots;
 	  }
-	  return fetterBonusPointCost * bonusPointDots;
+	  return FETTER_BONUS_POINT_COST * bonusPointDots;
   }
   
   public int getXPSpent()
@@ -119,7 +119,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 	  int xpMult = 0;
 	  for (Fetter fetter : fetters)
 		  xpMult += getXPMultiplier(fetter);
-	  return fetterXPMultiplier * xpMult;
+	  return FETTER_XP_MULTIPLIER * xpMult;
   }
   
   public IAdditionalModelBonusPointCalculator getBonusPointCalculator()

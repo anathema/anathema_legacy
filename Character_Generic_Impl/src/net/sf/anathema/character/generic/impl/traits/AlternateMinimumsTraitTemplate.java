@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 
 public class AlternateMinimumsTraitTemplate extends AbstractTraitTemplate {
 
-  private final int defaultMinimum = 0;
+  private static final int DEFAULT_MINIMUM = 0;
   private final int demandedMinimum;
   private final ValuedTraitType alternativeType;
   private final ITraitLimitation limitation = new EssenceBasedLimitation();
@@ -31,7 +31,7 @@ public class AlternateMinimumsTraitTemplate extends AbstractTraitTemplate {
     if (trait.getCurrentValue() < alternativeType.getCurrentValue()) {
       return demandedMinimum;
     }
-    return defaultMinimum;
+    return DEFAULT_MINIMUM;
   }
   
   public int getCalculationMinValue(ILimitationContext context, ITraitType type)

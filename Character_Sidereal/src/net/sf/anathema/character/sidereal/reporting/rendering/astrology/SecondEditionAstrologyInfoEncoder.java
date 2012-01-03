@@ -16,7 +16,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class SecondEditionAstrologyInfoEncoder implements ContentEncoder {
 
   private final IResources resources;
-  private final float SPACING = 5;
+  private static final float SPACING = 5;
 
   public SecondEditionAstrologyInfoEncoder(IResources resources) {
     this.resources = resources;
