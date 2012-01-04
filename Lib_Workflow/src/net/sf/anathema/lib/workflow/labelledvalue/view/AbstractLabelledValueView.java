@@ -18,10 +18,10 @@ public abstract class AbstractLabelledValueView {
   }
 
   protected static JLabel createLabel(
-      String text,
-      String sizeText,
-      int horizontalAlignment,
-      boolean adjustFontSize) {
+          String text,
+          String sizeText,
+          int horizontalAlignment,
+          boolean adjustFontSize) {
     JLabel label = new JLabel(text);
     label.setPreferredSize(createBoldSize(sizeText, adjustFontSize));
     if (adjustFontSize) {
@@ -32,12 +32,20 @@ public abstract class AbstractLabelledValueView {
   }
 
   public static Font deriveSmallerFont(Font font) {
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    Dimension screenSize = getScreenSize();
     float fontSize = screenSize.width / 110;
     if (fontSize >= font.getSize()) {
       return font;
     }
     return font.deriveFont(fontSize);
+  }
+
+  private static Dimension getScreenSize() {
+    if (!GraphicsEnvironment.isHeadless()) {
+      return Toolkit.getDefaultToolkit().getScreenSize();
+    } else {
+      return new Dimension(1024, 768);
+    }
   }
 
   protected final JLabel titleLabel;
