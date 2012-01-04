@@ -28,7 +28,6 @@ Launch ``net.sf.anathema.AnathemaDevelopmentBootLoader``.
 3. Add a ``build.gradle``, naming the dependencies.
 4. Mention your module name (=folder name) in ``settings.gradle``.
 5. In ``plugins.gradle``, add your project to a fitting plugin or the list of 'single-module plugins'.
-6. In ``Anathema\build.gradle``, add your project as a runtime dependency.
 4. Run ``gradlew eclipseProject eclipseClasspath eclipseJdt`` or ``gradlew idea``.
 5. (Only with eclipse,) import the projects.
 
