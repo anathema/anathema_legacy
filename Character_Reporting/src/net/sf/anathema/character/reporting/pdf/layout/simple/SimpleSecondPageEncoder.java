@@ -22,6 +22,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.util.List;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
+
 public class SimpleSecondPageEncoder extends AbstractPageEncoder {
 
   private final PageConfiguration configuration;
@@ -32,28 +34,29 @@ public class SimpleSecondPageEncoder extends AbstractPageEncoder {
     super(resources, encoders);
     this.resources = resources;
     this.configuration = configuration;
-    this.boxEncoder = new PdfBoxEncoder(resources);
+    this.boxEncoder = new PdfBoxEncoder();
   }
 
+  @Override
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
     float distanceFromTop = 0;
     float languageHeight = 60;
     float backgroundHeight = 104;
-    float experienceHeight = backgroundHeight - languageHeight - IVoidStateFormatConstants.PADDING;
+    float experienceHeight = backgroundHeight - languageHeight - PADDING;
     encodeBackgrounds(graphics, content, distanceFromTop, backgroundHeight);
     encodePossessions(graphics, content, distanceFromTop, backgroundHeight);
     encodeLanguages(graphics, content, distanceFromTop, languageHeight);
-    distanceFromTop += languageHeight + IVoidStateFormatConstants.PADDING;
+    distanceFromTop += languageHeight + PADDING;
     encodeExperience(graphics, content, distanceFromTop, experienceHeight);
-    distanceFromTop += experienceHeight + IVoidStateFormatConstants.PADDING;
+    distanceFromTop += experienceHeight + PADDING;
     float comboHeight = encodeCombos(graphics, content, distanceFromTop);
     if (comboHeight > 0) {
-      distanceFromTop += comboHeight + IVoidStateFormatConstants.PADDING;
+      distanceFromTop += comboHeight + PADDING;
     }
     if (content.getCharacter().getTemplate().getEdition() == ExaltedEdition.SecondEdition) {
       float genericCharmsHeight = encodeGenericCharms(graphics, content, distanceFromTop);
       if (genericCharmsHeight != 0) {
-        distanceFromTop += genericCharmsHeight + IVoidStateFormatConstants.PADDING;
+        distanceFromTop += genericCharmsHeight + PADDING;
       }
     }
 

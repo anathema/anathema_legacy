@@ -33,7 +33,7 @@ public abstract class AbstractPdfPageEncoder implements PageEncoder {
     this.baseFont = registry.getBaseFont();
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;
-    this.boxEncoder = new PdfBoxEncoder(resources);
+    this.boxEncoder = new PdfBoxEncoder();
   }
 
   public abstract void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException;

@@ -30,7 +30,7 @@ public class PdfComboEncoder {
 
   public PdfComboEncoder(IResources resources) {
     this.resources = resources;
-    this.boxEncoder = new PdfBoxEncoder(resources);
+    this.boxEncoder = new PdfBoxEncoder();
   }
 
   public float encodeCombos(SheetGraphics graphics, ReportContent content, Bounds maxBounds) throws DocumentException {
@@ -51,8 +51,7 @@ public class PdfComboEncoder {
     String headerString;
     if (overflow) {
       headerString = resources.getString("Sheet.Header.CombosOverflow"); //$NON-NLS-1$
-    }
-    else {
+    } else {
       headerString = resources.getString("Sheet.Header.Combos"); //$NON-NLS-1$
     }
     boxEncoder.encodeBox(graphics, actualBoxBounds, headerString);
@@ -67,8 +66,7 @@ public class PdfComboEncoder {
     float yPosition = column.getYLine();
     int remainingLines = (int) ((yPosition - contentBounds.getMinY()) / LINE_HEIGHT);
     Position lineStartPosition = new Position(contentBounds.getMinX(), yPosition - LINE_HEIGHT);
-    new HorizontalLineEncoder()
-      .encodeLines(graphics, lineStartPosition, contentBounds.getMinX(), contentBounds.getMaxX(), LINE_HEIGHT, remainingLines);
+    new HorizontalLineEncoder().encodeLines(graphics, lineStartPosition, contentBounds.getMinX(), contentBounds.getMaxX(), LINE_HEIGHT, remainingLines);
 
     String headerString = resources.getString("Sheet.Header.Combos"); //$NON-NLS-1$
     boxEncoder.encodeBox(graphics, bounds, headerString);
@@ -86,8 +84,7 @@ public class PdfComboEncoder {
       columnText.setText(comboPhrase);
       if (SimpleColumn.hasMoreText(status)) {
         break;
-      }
-      else {
+      } else {
         columnText.encode();
         combos.remove(0);
       }

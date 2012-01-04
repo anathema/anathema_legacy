@@ -16,11 +16,11 @@ import net.sf.anathema.lib.resources.IResources;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.BARE_LINE_HEIGHT;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
 
-public class PersonalInfoBoxEncoder implements IVariableContentEncoder {
+public class PersonalInfoEncoder implements IVariableContentEncoder {
 
   private final IResources resources;
 
-  public PersonalInfoBoxEncoder(IResources resources) {
+  public PersonalInfoEncoder(IResources resources) {
     this.resources = resources;
   }
 

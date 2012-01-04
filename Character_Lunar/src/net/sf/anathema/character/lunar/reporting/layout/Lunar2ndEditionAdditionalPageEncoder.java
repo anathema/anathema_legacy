@@ -41,7 +41,7 @@ public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
     this.encoderRegistry = encoderRegistry;
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;
-    this.boxEncoder = new PdfBoxEncoder(resources);
+    this.boxEncoder = new PdfBoxEncoder();
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
