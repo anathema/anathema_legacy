@@ -32,8 +32,8 @@ dependencies {
   testCompile project(path: ':Lib', configuration: 'tests')
   testCompile project(path: ':Platform', configuration: 'tests')
   //For development, all projects need to be on the classpath at runtime.
-  project.parent.allprojects.each {
-      if ((!it.name.equalsIgnoreCase("anathema")&&!it.name.equals("Thirdparty"))){
+  project.parent.subprojects.each {
+      if ((it.name != "Anathema" && it.name != "Thirdparty")){
         runtime project(":${it.name}")
       }
   }
