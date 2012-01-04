@@ -41,10 +41,7 @@ public class LookAndFeelInitializer {
       IllegalAccessException,
       ClassNotFoundException,
       UnsupportedLookAndFeelException {
-
-    // This property was always set by this method, so I (kelemen@github.com) moved it forward.
-    // Still I'm not sure that setting this property always is a good thing to do.
-    System.getProperties().put("swing.addon", "com.l2fprod.common.swing.plaf.aqua.AquaLookAndFeelAddons"); //$NON-NLS-1$//$NON-NLS-2$
+    makeCombosLookBetterOnAnyLookAndFeel();
 
     // Try to use the value in the settings if it was set.
     String lookAndFeelClassName = anathemaPreferences.getUserLookAndFeel();
@@ -57,6 +54,10 @@ public class LookAndFeelInitializer {
       // In case we have failed again, use the current look and feel
       // which is still better than a crash.
     }
+  }
+
+  private void makeCombosLookBetterOnAnyLookAndFeel() {
+    System.getProperties().put("swing.addon", "com.l2fprod.common.swing.plaf.aqua.AquaLookAndFeelAddons"); //$NON-NLS-1$//$NON-NLS-2$
   }
 
   private static boolean isAqua(String lookAndFeelClassName) {
