@@ -1,5 +1,6 @@
 package net.sf.anathema.test.character.main.impl.charm;
 
+import net.sf.anathema.character.dummy.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.dummy.DummyCharacterModelContext;
@@ -35,6 +36,7 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
   private IFavorableDefaultTrait endurance;
   private IOxBodyTechniqueConfiguration configuration;
   private HealthConfiguration health;
+  private final DummyCoreTraitConfiguration collection = new DummyCoreTraitConfiguration();
 
   @SuppressWarnings("serial")
   @Before
@@ -56,19 +58,14 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
       new FriendlyValueChangeChecker(),
       new FriendlyIncrementChecker());
     health = new HealthConfiguration(new IGenericTrait[]{endurance});
+    collection.addTestTrait(endurance);
     configuration = new OxBodyTechniqueConfiguration(
       traitContext,
-      null,
+            collection,
       null,
       new ITraitType[]{endurance.getType()},
       health.getOxBodyLearnArbitrator(),
-      new OxBodyTechniqueCharm(
-        "Abyssal.Ox-BodyTechnique", AbilityType.Endurance, new LinkedHashMap<String, HealthLevelType[]>() { //$NON-NLS-1$
-        {
-          this.put("OxBody0", new HealthLevelType[]{HealthLevelType.ZERO}); //$NON-NLS-1$
-          this.put("OxBody1", new HealthLevelType[]{HealthLevelType.ONE}); //$NON-NLS-1$
-        }
-      }));
+      createObtCharm());
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(configuration);
     health.addHealthLevelProvider(configuration.getHealthLevelProvider());
   }
@@ -95,17 +92,11 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
     @SuppressWarnings("serial")
     OxBodyTechniqueConfiguration secondConfiguration = new OxBodyTechniqueConfiguration(
       createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext(),
-      null,
+      collection,
       null,
       new ITraitType[]{endurance.getType()},
       health.getOxBodyLearnArbitrator(),
-      new OxBodyTechniqueCharm(
-        "Abyssal.Ox-BodyTechnique", AbilityType.Endurance, new LinkedHashMap<String, HealthLevelType[]>() { //$NON-NLS-1$
-        {
-          this.put("OxBody0", new HealthLevelType[]{HealthLevelType.ZERO}); //$NON-NLS-1$
-          this.put("OxBody1", new HealthLevelType[]{HealthLevelType.ONE}); //$NON-NLS-1$
-        }
-      }));
+      createObtCharm());
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(secondConfiguration);
     health.addHealthLevelProvider(secondConfiguration.getHealthLevelProvider());
     endurance.setCurrentValue(2);
@@ -113,5 +104,15 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
     assertEquals(2, configuration.getCategories()[0].getCreationValue());
     secondConfiguration.getCategories()[0].setCurrentValue(1);
     assertEquals(0, secondConfiguration.getCategories()[0].getCreationValue());
+  }
+
+  private OxBodyTechniqueCharm createObtCharm() {
+    return new OxBodyTechniqueCharm(
+            "Abyssal.Ox-BodyTechnique", AbilityType.Endurance, new LinkedHashMap<String, HealthLevelType[]>() { //$NON-NLS-1$
+      {
+        this.put("OxBody0", new HealthLevelType[]{HealthLevelType.ZERO}); //$NON-NLS-1$
+        this.put("OxBody1", new HealthLevelType[]{HealthLevelType.ONE}); //$NON-NLS-1$
+      }
+    });
   }
 }

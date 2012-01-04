@@ -13,7 +13,7 @@
     <charmtype type="Permanent"/>
     <oxbody trait="Endurance">
     	<pick name="Category.-0">
-    		<ZeroHealthLevel/>
+    		<zeroHealthLevel/>
     	</pick>
     </oxbody>
     <source source="Sidereals1st" page="132"/>

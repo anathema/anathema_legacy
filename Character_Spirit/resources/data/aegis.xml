@@ -88,8 +88,8 @@
 		<charmAttribute attribute="Mortal"/>
         <oxbody trait="Essence">
              <pick name="Category.-1-2">
-                 <OneHealthLevel/>
-                 <TwoHealthLevel/>
+                 <oneHealthLevel/>
+                 <twoHealthLevel/>
              </pick>
         </oxbody>
 		<source source="GodsAndElementals"/>

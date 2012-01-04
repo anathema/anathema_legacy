@@ -158,8 +158,8 @@
           <charmAttribute attribute="Stackable" visualize="true" />
           <oxbody trait="Conviction">
                <pick name="Category.-2x2">
-                   <TwoHealthLevel/>
-                   <TwoHealthLevel/>
+                   <twoHealthLevel/>
+                   <twoHealthLevel/>
                </pick>
           </oxbody>
           <source source="GhostsAndDemons" />

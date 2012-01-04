@@ -25,27 +25,38 @@ import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.test.character.BasicCharacterTestCase;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class FavorableTraitTest extends AbstractTraitTest {
+public class FavorableTraitTest extends BasicCharacterTestCase {
 
   private IIncrementChecker incrementChecker;
   private IFavorableStateChangedListener abilityStateListener;
   private ProxyTraitValueStrategy valueStrategy;
   private DefaultTrait first;
   private DummyCharacterModelContext modelContext;
+  private DefaultTrait objectUnderTest;
+  private IIntValueChangedListener intListener;
 
   @Before
   public void setUp() throws Exception {
+    objectUnderTest = createObjectUnderTest();
+    this.intListener = EasyMock.createStrictMock(IIntValueChangedListener.class);
+    objectUnderTest.addCreationPointListener(intListener);
     this.valueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
     this.incrementChecker = EasyMock.createStrictMock(IIncrementChecker.class);
     this.modelContext = createModelContextWithEssence2(valueStrategy);
     first = createObjectUnderTest(modelContext);
     this.abilityStateListener = EasyMock.createStrictMock(IFavorableStateChangedListener.class);
+  }
+
+  protected DefaultTrait createObjectUnderTest() {
+    ICharacterModelContext context = createModelContextWithEssence2(valueStrategy);
+    return createObjectUnderTest(context);
   }
 
   @Test
@@ -94,41 +105,33 @@ public class FavorableTraitTest extends AbstractTraitTest {
     EasyMock.verify(abilityStateListener);
   }
 
-  @Override
   @Test
   public void testExceedCreationValueMaximum() throws Exception {
     first.setCurrentValue(6);
     assertEquals(5, first.getCreationValue());
   }
 
-  @Override
   @Test
   public void testUnderrunCreationValueMinimum() throws Exception {
     first.setCurrentValue(-1);
     assertEquals(0, first.getCreationValue());
   }
 
-  @Override
-  protected DefaultTrait createObjectUnderTest() {
-    ICharacterModelContext context = createModelContextWithEssence2(valueStrategy);
-    return createObjectUnderTest(context);
-  }
-
   private DefaultTrait createObjectUnderTest(ICharacterModelContext context) {
     ITraitTemplate archeryTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
     ITraitContext traitContext = context.getTraitContext();
     FavorableTraitRules rules = new FavorableTraitRules(
-      AbilityType.Archery,
-      archeryTemplate,
-      traitContext.getLimitationContext());
+            AbilityType.Archery,
+            archeryTemplate,
+            traitContext.getLimitationContext());
     return new DefaultTrait(
-      rules,
-      new ICasteType[]{new DummyCasteType()},
-      traitContext,
-      context.getBasicCharacterContext(),
-      context.getCharacterListening(),
-      new FriendlyValueChangeChecker(),
-      incrementChecker);
+            rules,
+            new ICasteType[]{new DummyCasteType()},
+            traitContext,
+            context.getBasicCharacterContext(),
+            context.getCharacterListening(),
+            new FriendlyValueChangeChecker(),
+            incrementChecker);
   }
 
   @Test
@@ -168,8 +171,8 @@ public class FavorableTraitTest extends AbstractTraitTest {
   @Test
   public void testExperienceSpecialtyCount() throws Exception {
     ISubTraitContainer container = new SpecialtiesContainer(
-      new DefaultTraitReference(first),
-      modelContext.getTraitContext());
+            new DefaultTraitReference(first),
+            modelContext.getTraitContext());
     ISubTrait specialty = container.addSubTrait("TestSpecialty"); //$NON-NLS-1$
     specialty.setCreationValue(1);
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());

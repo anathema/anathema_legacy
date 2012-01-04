@@ -13,6 +13,5 @@ public class OverviewCategory_Test {
   public void canCreateBorderOnJava7(){
     JComponent parent = new JPanel();
     new OverviewCategory(parent, "Title", true);
-    
   }
 }
