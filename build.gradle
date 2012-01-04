@@ -1,148 +1,166 @@
 apply plugin: 'idea'
 idea {
-  project {
-    languageLevel = '1.6'
-  }
+    project {
+        languageLevel = '1.6'
+    }
 }
 
 dependenciesDir = new File(buildDir, 'dependencies')
 
 subprojects {
-  apply plugin: 'eclipse'
-  apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
 
-  if (project.name == 'Thirdparty') {
-    return
-  }
+    if (project.name == 'Thirdparty') {
+        return
+    }
 
-  repositories {
-    mavenCentral()
-  }
+    repositories {
+        mavenCentral()
+    }
 
-  apply plugin: 'java'
+    apply plugin: 'java'
 
-  sourceCompatibility = 1.6
+    sourceCompatibility = 1.6
 
-  if (!isDataPlugin(project)) {
-    sourceSets {
-      main {
-        java {
-          srcDir 'src'
+    if (!isDataPlugin(project)) {
+        sourceSets {
+            main {
+                java {
+                    srcDir 'src'
+                }
+            }
         }
-      }
     }
-  }
-  else {
-    sourceSets {
-      main {
-        resources {
-          srcDir 'resources'
+    else {
+        sourceSets {
+            main {
+                resources {
+                    srcDir 'resources'
+                }
+            }
         }
-      }
     }
-  }
 
-  task collectTransitiveDependencies() << {
-    copy {
-      from configurations.compile.findAll { File dependency -> dependency.absolutePath.contains('Thirdparty') || dependency.absolutePath.contains('cache') }
-      into dependenciesDir
+    task collectTransitiveDependencies() << {
+        copy {
+            from configurations.compile.findAll { File dependency -> dependency.absolutePath.contains('Thirdparty') || dependency.absolutePath.contains('cache') }
+            into dependenciesDir
+        }
     }
-  }
 
-  task testJar(type: Jar, dependsOn: testClasses) {
-    baseName = "test-${project.archivesBaseName}"
-    from sourceSets.test.classes
-  }
+    task testJar(type: Jar, dependsOn: testClasses) {
+        baseName = "test-${project.archivesBaseName}"
+        from sourceSets.test.classes
+    }
 }
 
 configurations {
-  launch4j
-  nsis
+    launch4j
+    nsis
 }
 
 dependencies {
-  launch4j files(
-          "./Thirdparty/Distribution/launch4j.jar",
-          "./Thirdparty/Distribution/xstream.jar"
-  )
-  nsis files("./Thirdparty/Ant/nsisant-1.2.jar")
+    launch4j files(
+            "./Thirdparty/Distribution/launch4j.jar",
+            "./Thirdparty/Distribution/xstream.jar"
+    )
+    nsis files("./Thirdparty/Ant/nsisant-1.2.jar")
 }
 
 versionString = "${version_major}.${version_minor}.${version_revision}"
 
 def projectLibrary(String project) {
-  return zipTree("$project/build/libs/${project}.jar")
+    return zipTree("$project/build/libs/${project}.jar")
 }
 
 apply from: 'plugins.gradle'
 
 task buildWindowsExecutable << {
-  mkdir("./build/launcher")
-  def exeVersion = "${versionString}.0"
-  def versionText = "$versionString $version_name"
-  ant.taskdef(name: 'launch4j', classname: 'net.sf.launch4j.ant.Launch4jTask', classpath: configurations.launch4j.asPath)
-  ant.launch4j(configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion: "$versionText", txtProductVersion: "$versionText")
+    mkdir("./build/launcher")
+    def exeVersion = "${versionString}.0"
+    def versionText = "$versionString $version_name"
+    ant.taskdef(name: 'launch4j', classname: 'net.sf.launch4j.ant.Launch4jTask', classpath: configurations.launch4j.asPath)
+    ant.launch4j(configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion: "$versionText", txtProductVersion: "$versionText")
 }
 
 task buildWindowsInstaller << {
-  ant.taskdef(name: "nsis", classname: "net.sf.nsisant.Task", classpath: configurations.nsis.asPath)
-  ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsis_path}") {
-    define(name: "RELEASE_VERSION", value: "$versionString")
-    define(name: "VERSION", value: "${versionString}.0")
-  }
+    ant.taskdef(name: "nsis", classname: "net.sf.nsisant.Task", classpath: configurations.nsis.asPath)
+    ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsis_path}") {
+        define(name: "RELEASE_VERSION", value: "$versionString")
+        define(name: "VERSION", value: "${versionString}.0")
+    }
 }
 
 task buildZip(type: Zip) {
-  archiveName = "Anathema_v${versionString}.zip"
-  destinationDir = buildDir
-  from 'Anathema/build/libs'
-  into('lib') {
-    from('build/dependencies')
-  }
-  into('plugins') {
-    from('build/plugins')
-  }
-  from("Development_Distribution/Linux") {
-    include 'anathema.sh'
-  }
-  from("build/launcher") {
-    include 'anathema.exe'
-  }
-  from("Development_Documentation/Distribution/English") {
-    include '*.txt'
-  }
-  into('doc/spanish') {
-    from("Development_Documentation/Distribution/Spanish") {
-      include '*.txt'
+    archiveName = "Anathema_v${versionString}.zip"
+    destinationDir = buildDir
+    from 'Anathema/build/libs'
+    into('lib') {
+        from('build/dependencies')
     }
-  }
-  into('doc/italian') {
-    from("Development_Documentation/Distribution/Italian") {
-      include '*.txt'
+    into('plugins') {
+        from('build/plugins')
     }
-  }
+    from("Development_Distribution/Linux") {
+        include 'anathema.sh'
+    }
+    from("build/launcher") {
+        include 'anathema.exe'
+    }
+    from("Development_Documentation/Distribution/English") {
+        include '*.txt'
+    }
+    into('doc/spanish') {
+        from("Development_Documentation/Distribution/Spanish") {
+            include '*.txt'
+        }
+    }
+    into('doc/italian') {
+        from("Development_Documentation/Distribution/Italian") {
+            include '*.txt'
+        }
+    }
 }
 
 [buildZip, buildWindowsInstaller].each {
-  it.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies'
-  def os = System.getProperty("os.name").toLowerCase()
-  if (os.contains("windows")) {
-    it.dependsOn buildWindowsExecutable
-  }
+    it.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies'
+    def os = System.getProperty("os.name").toLowerCase()
+    if (os.contains("windows")) {
+        it.dependsOn buildWindowsExecutable
+    }
 }
 
 tasks.each {
-  def isPluginTask = it.name.matches('build.*Plugin')
-  if (isPluginTask) {
-    buildZip.dependsOn it
-    buildWindowsInstaller.dependsOn it
-  }
+    def isPluginTask = it.name.matches('build.*Plugin')
+    if (isPluginTask) {
+        buildZip.dependsOn it
+        buildWindowsInstaller.dependsOn it
+    }
 }
 
 boolean isDataPlugin(project) {
-  project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
+    project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '1.0-milestone-5'
+    gradleVersion = '1.0-milestone-5'
+}
+
+task createModule() {
+    if (project.hasProperty('moduleName')) {
+        if (new File(moduleName).exists()) {
+            throw new org.gradle.api.tasks.StopExecutionException("Module $moduleName already exists.")
+        }
+        mkdir moduleName
+        mkdir "$moduleName/src"
+        mkdir "$moduleName/resources"
+        mkdir "$moduleName/test"
+        new File("$moduleName/build.gradle").withWriter { out ->
+            out.println "dependencies{}"
+            out.println "sourceSets{}"
+            out.println "configurations{}"
+            out.println "artifacts{}"
+        }
+    }
 }

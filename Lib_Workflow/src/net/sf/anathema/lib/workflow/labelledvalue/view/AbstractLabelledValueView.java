@@ -1,20 +1,14 @@
 package net.sf.anathema.lib.workflow.labelledvalue.view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Toolkit;
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
 public abstract class AbstractLabelledValueView {
 
-  private static final Dimension createBoldSize(String text, boolean smallFontSize) {
+  private static Dimension createBoldSize(String text, boolean smallFontSize) {
     JLabel sizeLabel = new JLabel(text);
     if (smallFontSize) {
       sizeLabel.setFont(deriveSmallerFont(sizeLabel.getFont()));
@@ -23,11 +17,11 @@ public abstract class AbstractLabelledValueView {
     return sizeLabel.getPreferredSize();
   }
 
-  protected static final JLabel createLabel(
-      String text,
-      String sizeText,
-      int horizontalAlignment,
-      boolean adjustFontSize) {
+  protected static JLabel createLabel(
+          String text,
+          String sizeText,
+          int horizontalAlignment,
+          boolean adjustFontSize) {
     JLabel label = new JLabel(text);
     label.setPreferredSize(createBoldSize(sizeText, adjustFontSize));
     if (adjustFontSize) {
@@ -37,13 +31,16 @@ public abstract class AbstractLabelledValueView {
     return label;
   }
 
-  public static final Font deriveSmallerFont(Font font) {
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    float fontSize = screenSize.width / 110;
+  public static Font deriveSmallerFont(Font font) {
+    float fontSize = getScreenWidth() / 110;
     if (fontSize >= font.getSize()) {
       return font;
     }
     return font.deriveFont(fontSize);
+  }
+
+  private static float getScreenWidth() {
+    return Toolkit.getDefaultToolkit().getScreenSize().width;
   }
 
   protected final JLabel titleLabel;
@@ -70,6 +67,7 @@ public abstract class AbstractLabelledValueView {
       component.setFont(component.getFont().deriveFont(style));
     }
   }
+
 
   protected Collection<JComponent> getComponents() {
     List<JComponent> components = new ArrayList<JComponent>();
