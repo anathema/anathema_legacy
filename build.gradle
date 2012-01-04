@@ -148,6 +148,9 @@ task wrapper(type: Wrapper) {
 }
 
 task createModule(){
+    if (!hasProperty('moduleName')){
+        return
+    }
     if (new File(moduleName).exists()){
         throw new org.gradle.api.tasks.StopExecutionException("Module $moduleName already exists.")
     }
