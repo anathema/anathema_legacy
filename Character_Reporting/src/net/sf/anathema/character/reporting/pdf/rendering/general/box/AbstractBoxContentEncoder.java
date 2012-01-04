@@ -11,12 +11,14 @@ public abstract class AbstractBoxContentEncoder<C extends SubBoxContent> impleme
     this.contentClass = contentClass;
   }
 
-  public final String getHeaderKey(ReportContent content) {
-    return createContent(content).getHeaderKey();
-  }
-
+  @Override
   public final boolean hasContent(ReportContent content) {
     return createContent(content).hasContent();
+  }
+
+  @Override
+  public String getHeader(ReportContent content) {
+    return createContent(content).getHeader();
   }
 
   protected final C createContent(ReportContent content) {

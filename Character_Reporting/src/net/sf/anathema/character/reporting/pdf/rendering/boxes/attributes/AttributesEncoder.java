@@ -35,10 +35,7 @@ public class AttributesEncoder implements ContentEncoder {
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Attributes"; //$NON-NLS-1$
-  }
-
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
     IGenericTraitCollection traitCollection = reportContent.getCharacter().getTraitCollection();
@@ -57,6 +54,7 @@ public class AttributesEncoder implements ContentEncoder {
         }
       }
       Collections.sort(excellencies, new Comparator<IMagicStats>() {
+        @Override
         public int compare(IMagicStats a, IMagicStats b) {
           String aId = a.getName().getId();
           String bId = b.getName().getId();
@@ -67,8 +65,7 @@ public class AttributesEncoder implements ContentEncoder {
     return excellencies.toArray(new IMagicStats[0]);
   }
 
-  public final void encodeAttributes(SheetGraphics graphics, IGenericCharacter character, Bounds contentBounds, IGroupedTraitType[] attributeGroups,
-    IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
+  public final void encodeAttributes(SheetGraphics graphics, IGenericCharacter character, Bounds contentBounds, IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
     int essenceMax = character.getEssenceLimitation().getAbsoluteLimit(character);
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - groupSpacing;
@@ -86,24 +83,29 @@ public class AttributesEncoder implements ContentEncoder {
       Position position = new Position(contentBounds.x, y);
       if (!encodeFavored) {
         y -= smallTraitEncoder.encodeWithText(graphics, traitLabel, position, contentBounds.width, value, essenceMax);
-      }
-      else {
+      } else {
         boolean favored = traitCollection.getFavorableTrait(traitType).isCasteOrFavored();
         boolean[] excellencyLearned = new boolean[excellencies.length];
         for (int i = 0; i < excellencies.length; i++) {
           final String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
           excellencyLearned[i] = CollectionUtilities.getFirst(allLearnedMagic, new IPredicate<IMagic>() {
+            @Override
             public boolean evaluate(IMagic value) {
               return charmId.equals(value.getId());
             }
           }) != null;
         }
-        y -= smallTraitEncoder
-          .encodeWithExcellencies(graphics, traitLabel, position, contentBounds.width, value, favored, excellencyLearned, essenceMax);
+        y -= smallTraitEncoder.encodeWithExcellencies(graphics, traitLabel, position, contentBounds.width, value, favored, excellencyLearned, essenceMax);
       }
     }
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Attributes");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

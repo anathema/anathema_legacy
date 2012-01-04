@@ -18,14 +18,17 @@ public class NullBoxContentEncoder implements ContentEncoder {
     this.headerKey = headerKey;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     // Nothing to do
   }
 
-  public String getHeaderKey(ReportContent content) {
+  @Override
+  public String getHeader(ReportContent content) {
     return headerKey;
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

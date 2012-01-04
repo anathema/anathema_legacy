@@ -17,8 +17,8 @@ public class Extended2ndEditionHealthEncoder extends AbstractHealthAndMovementEn
   }
 
   @Override
-  public String getHeaderKey(ReportContent content) {
-    return "Health"; //$NON-NLS-1$
+  public String getHeader(ReportContent content) {
+    return getResources().getString("Sheet.Header.Health");
   }
 
   @Override

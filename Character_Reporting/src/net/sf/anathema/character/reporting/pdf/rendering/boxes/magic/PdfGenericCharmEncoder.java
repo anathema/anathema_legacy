@@ -10,13 +10,16 @@ import net.sf.anathema.lib.resources.IResources;
 public class PdfGenericCharmEncoder implements IVariableContentEncoder {
 
   private final PdfGenericCharmTableEncoder tableEncoder;
+  private IResources resources;
 
   public PdfGenericCharmEncoder(IResources resources) {
+    this.resources = resources;
     this.tableEncoder = new PdfGenericCharmTableEncoder(resources);
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "GenericCharms"; //$NON-NLS-1$
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.GenericCharms");
   }
 
   @Override
@@ -24,10 +27,12 @@ public class PdfGenericCharmEncoder implements IVariableContentEncoder {
     return tableEncoder.getRequestedHeight(graphics, content);
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     tableEncoder.encodeTable(graphics, reportContent, bounds);
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return tableEncoder.hasContent(content);
   }

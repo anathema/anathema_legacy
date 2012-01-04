@@ -5,9 +5,10 @@ import net.sf.anathema.character.abyssal.additional.AdditionalLoyalAbyssalRules;
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
 import net.sf.anathema.character.abyssal.equipment.FangTemplate;
 import net.sf.anathema.character.abyssal.reporting.Extended1stEditionAbyssalPartEncoder;
-import net.sf.anathema.character.abyssal.reporting.Simple1stEditionAbyssalPartEncoder;
 import net.sf.anathema.character.abyssal.reporting.content.Abyssal1stResonanceContent;
 import net.sf.anathema.character.abyssal.reporting.content.Abyssal1stResonanceContentFactory;
+import net.sf.anathema.character.abyssal.reporting.rendering.Anima1stEditionEncoderFactory;
+import net.sf.anathema.character.abyssal.reporting.rendering.Resonance1stEditionEncoderFactory;
 import net.sf.anathema.character.abyssal.template.LoyalAbyssalTemplate;
 import net.sf.anathema.character.abyssal.template.RenegadeAbyssalTemplate;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
@@ -29,7 +30,6 @@ import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -52,7 +52,7 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getCasteCollectionRegistry().register(ABYSSAL, new CasteCollection(AbyssalCaste.values()));
     IEquipmentAdditionalModelTemplate equipmentTemplate =
-      (IEquipmentAdditionalModelTemplate) characterGenerics.getGlobalAdditionalTemplateRegistry().getById(IEquipmentAdditionalModelTemplate.ID);
+            (IEquipmentAdditionalModelTemplate) characterGenerics.getGlobalAdditionalTemplateRegistry().getById(IEquipmentAdditionalModelTemplate.ID);
     equipmentTemplate.addNaturalWeaponTemplate(ABYSSAL, new FangTemplate());
   }
 
@@ -62,11 +62,11 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
     ITemplateRegistry templateRegistry = characterGenerics.getTemplateRegistry();
     initTemplate(templateRegistry, new LoyalAbyssalTemplate(charmProvider, additionalLoyalAbyssalRules), charmProvider, additionalLoyalAbyssalRules);
     initTemplate(templateRegistry, new RenegadeAbyssalTemplate(charmProvider, additionalRenegadeAbyssalRules), charmProvider,
-      additionalRenegadeAbyssalRules);
+            additionalRenegadeAbyssalRules);
   }
 
   private void initTemplate(ITemplateRegistry templateRegistry, ICharacterTemplate template, ICharmCache charmProvider,
-    AdditionalAbyssalRules additionalRules) {
+                            AdditionalAbyssalRules additionalRules) {
     templateRegistry.register(template);
     additionalRules.addEssenceEngorgementTechniqueRules(getEngorgement(charmProvider));
   }
@@ -100,9 +100,9 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     moduleObject.getContentRegistry().addFactory(Abyssal1stResonanceContent.class, new Abyssal1stResonanceContentFactory(resources));
-    SimpleEncodingRegistry simpleRegistry = moduleObject.getSimpleEncodingRegistry();
-    simpleRegistry.setPartEncoder(ABYSSAL, FirstEdition, new Simple1stEditionAbyssalPartEncoder(resources));
     ExtendedEncodingRegistry extendedRegistry = moduleObject.getExtendedEncodingRegistry();
     extendedRegistry.setPartEncoder(ABYSSAL, FirstEdition, new Extended1stEditionAbyssalPartEncoder(resources, extendedRegistry, ESSENCE_MAX));
+    moduleObject.getEncoderRegistry().add(new Anima1stEditionEncoderFactory());
+    moduleObject.getEncoderRegistry().add(new Resonance1stEditionEncoderFactory());
   }
 }

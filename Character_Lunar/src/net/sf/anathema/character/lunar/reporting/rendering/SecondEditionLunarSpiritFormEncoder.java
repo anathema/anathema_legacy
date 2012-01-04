@@ -30,14 +30,10 @@ public class SecondEditionLunarSpiritFormEncoder implements ContentEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Lunar.SpiritForm"; //$NON-NLS-1$
-  }
-
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
-    SecondEditionBeastformModel additionalModel =
-      (SecondEditionBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
+    SecondEditionBeastformModel additionalModel = (SecondEditionBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getSpiritTraitCollection();
     encodeAttributes(graphics, bounds, attributeGroups, traitCollection);
     encodeForm(graphics, bounds, additionalModel.getSpiritForm());
@@ -53,15 +49,13 @@ public class SecondEditionLunarSpiritFormEncoder implements ContentEncoder {
     }
   }
 
-  private void encodeAttributes(SheetGraphics graphics, Bounds contentBounds, IGroupedTraitType[] attributeGroups,
-    IGenericTraitCollection traitCollection) {
+  private void encodeAttributes(SheetGraphics graphics, Bounds contentBounds, IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - 2 * groupSpacing;
     int maximum = EssenceTemplate.SYSTEM_ESSENCE_MAX;
     float width = contentBounds.getWidth();
     for (IGroupedTraitType groupedTraitType : attributeGroups) {
-      if (!groupedTraitType.getGroupId().equals(AttributeGroupType.Physical.name()) &&
-        !groupedTraitType.getTraitType().getId().equals(AttributeType.Appearance.name())) {
+      if (!groupedTraitType.getGroupId().equals(AttributeGroupType.Physical.name()) && !groupedTraitType.getTraitType().getId().equals(AttributeType.Appearance.name())) {
         continue;
       }
 
@@ -73,6 +67,12 @@ public class SecondEditionLunarSpiritFormEncoder implements ContentEncoder {
     }
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Lunar.SpiritForm");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

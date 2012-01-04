@@ -28,10 +28,7 @@ public class FirstEditionLunarBeastformAttributesEncoder implements ContentEncod
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Attributes"; //$NON-NLS-1$
-  }
-
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
     IBeastformModel additionalModel = (IBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
@@ -39,8 +36,7 @@ public class FirstEditionLunarBeastformAttributesEncoder implements ContentEncod
     encodeAttributes(graphics, bounds, attributeGroups, traitCollection);
   }
 
-  public final void encodeAttributes(SheetGraphics graphics, Bounds contentBounds, IGroupedTraitType[] attributeGroups,
-    IGenericTraitCollection traitCollection) {
+  public final void encodeAttributes(SheetGraphics graphics, Bounds contentBounds, IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - groupSpacing;
     String groupId = null;
@@ -53,8 +49,7 @@ public class FirstEditionLunarBeastformAttributesEncoder implements ContentEncod
         if (groupId.equals(AttributeGroupType.Physical.name())) {
           maximum = PHYSICAL_MAX;
           width = contentBounds.width - 3;
-        }
-        else {
+        } else {
           maximum = STANDARD_MAX;
           width = smallWidth;
         }
@@ -68,7 +63,13 @@ public class FirstEditionLunarBeastformAttributesEncoder implements ContentEncod
     }
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
+  }
+
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Attributes");
   }
 }

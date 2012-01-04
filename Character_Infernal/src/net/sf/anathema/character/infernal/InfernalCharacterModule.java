@@ -22,21 +22,17 @@ import net.sf.anathema.character.infernal.patron.InfernalPatronTemplate;
 import net.sf.anathema.character.infernal.patron.InfernalPatronViewFactory;
 import net.sf.anathema.character.infernal.patron.persistence.InfernalPatronPersisterFactory;
 import net.sf.anathema.character.infernal.reporting.ExtendedInfernalPartEncoder;
-import net.sf.anathema.character.infernal.reporting.InfernalYoziListContent;
-import net.sf.anathema.character.infernal.reporting.InfernalYoziListContentFactory;
-import net.sf.anathema.character.infernal.reporting.SimpleInfernalPartEncoder;
 import net.sf.anathema.character.infernal.reporting.content.InfernalUrgeContent;
 import net.sf.anathema.character.infernal.reporting.content.InfernalUrgeContentFactory;
-import net.sf.anathema.character.infernal.urge.InfernalUrgeModelFactory;
-import net.sf.anathema.character.infernal.urge.InfernalUrgeParser;
-import net.sf.anathema.character.infernal.urge.InfernalUrgePersisterFactory;
-import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
-import net.sf.anathema.character.infernal.urge.InfernalUrgeViewFactory;
+import net.sf.anathema.character.infernal.reporting.content.InfernalYoziListContent;
+import net.sf.anathema.character.infernal.reporting.content.InfernalYoziListContentFactory;
+import net.sf.anathema.character.infernal.reporting.rendering.AnimaEncoderFactory;
+import net.sf.anathema.character.infernal.reporting.rendering.UrgeEncoderFactory;
+import net.sf.anathema.character.infernal.urge.*;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -51,10 +47,10 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(InfernalPatronTemplate.ID, new InfernalPatronParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(InfernalUrgeTemplate.ID, new InfernalUrgeParser());
     characterGenerics.getGenericCharmStatsRegistry()
-      .register(INFERNAL, new IMagicStats[] { new FirstExcellency(INFERNAL, ExaltedSourceBook.Infernals, "1 m per die"), //$NON-NLS-1$
-        new SecondExcellency(INFERNAL,
-          ExaltedSourceBook.Infernals), new YoziMythosExultant(), new YoziInevitabilityTechnique(), new EffortlessYoziDominance(),
-        new SoSpeaksYozi() });
+      .register(INFERNAL, new IMagicStats[]{new FirstExcellency(INFERNAL, ExaltedSourceBook.Infernals, "1 m per die"), //$NON-NLS-1$
+              new SecondExcellency(INFERNAL,
+                      ExaltedSourceBook.Infernals), new YoziMythosExultant(), new YoziInevitabilityTechnique(), new EffortlessYoziDominance(),
+              new SoSpeaksYozi()});
   }
 
   @Override
@@ -92,17 +88,14 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     addReportContent(resources, moduleObject.getContentRegistry());
-    addSimpleParts(resources, moduleObject);
+    moduleObject.getEncoderRegistry().add(new UrgeEncoderFactory());
+    moduleObject.getEncoderRegistry().add(new AnimaEncoderFactory());
+    addExtendedParts(resources, moduleObject);
   }
 
   private void addReportContent(IResources resources, ReportContentRegistry registry) {
     registry.addFactory(InfernalYoziListContent.class, new InfernalYoziListContentFactory(resources));
     registry.addFactory(InfernalUrgeContent.class, new InfernalUrgeContentFactory(resources));
-  }
-
-  private void addSimpleParts(IResources resources, CharacterReportingModuleObject moduleObject) {
-    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
-    registry.setPartEncoder(INFERNAL, SecondEdition, new SimpleInfernalPartEncoder(resources, registry, EssenceTemplate.SYSTEM_ESSENCE_MAX));
   }
 
   private void addExtendedParts(IResources resources, CharacterReportingModuleObject moduleObject) {

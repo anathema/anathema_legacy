@@ -23,6 +23,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEss
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.notes.NotesEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.ExtendedWillpowerEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoderFactory;
 import net.sf.anathema.lib.resources.IResources;
@@ -56,6 +57,7 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
     registry.add(new SocialCombatEncoderFactory());
     registry.add(new SimpleWillpowerEncoderFactory());
     registry.add(new ExtendedWillpowerEncoderFactory());
+    registry.add(new VirtueEncoderFactory());
   }
 
   private void addReportContents(IResources resources) {

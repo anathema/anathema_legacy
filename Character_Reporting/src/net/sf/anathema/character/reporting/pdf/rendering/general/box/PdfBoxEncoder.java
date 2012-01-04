@@ -48,16 +48,14 @@ public class PdfBoxEncoder {
     encodeBox(graphics, encoder, standardBoxEncoder, content, bounds);
   }
 
-  public void encodeBox(SheetGraphics graphics, ContentEncoder encoder, BoundsEncoder boxEncoder, ReportContent content, Bounds bounds)
-    throws DocumentException {
-    String header = resources.getString("Sheet.Header." + encoder.getHeaderKey(content)); //$NON-NLS-1$
+  public void encodeBox(SheetGraphics graphics, ContentEncoder encoder, BoundsEncoder boxEncoder, ReportContent content, Bounds bounds) throws DocumentException {
+    String header = encoder.getHeader(content);
     Bounds contentBounds = encodeBox(graphics, bounds, header, boxEncoder);
     encoder.encode(graphics, content, contentBounds);
   }
 
   private Bounds calculateInsettedBounds(Bounds contentBounds) {
-    return new Bounds(contentBounds.x + CONTENT_INSET, contentBounds.y, calculateInsettedWidth(contentBounds.width),
-      contentBounds.height - BoundsEncoder.ARC_SPACE);
+    return new Bounds(contentBounds.x + CONTENT_INSET, contentBounds.y, calculateInsettedWidth(contentBounds.width), contentBounds.height - BoundsEncoder.ARC_SPACE);
   }
 
   public float calculateInsettedWidth(float width) {

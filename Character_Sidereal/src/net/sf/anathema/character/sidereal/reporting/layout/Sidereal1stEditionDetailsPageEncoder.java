@@ -10,9 +10,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
-import net.sf.anathema.character.sidereal.reporting.content.colleges.SiderealCollegeContent;
+import net.sf.anathema.character.sidereal.reporting.content.SiderealCollegeContent;
 import net.sf.anathema.character.sidereal.reporting.rendering.ArcaneFateInfoEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.AstrologyInfoEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.ParadoxInfoEncoder;
@@ -30,10 +30,10 @@ public class Sidereal1stEditionDetailsPageEncoder implements PageEncoder {
   private final static float STANDING_HEIGHT = 45;
   private final IResources resources;
   private final PdfBoxEncoder boxEncoder;
-  private final PdfPageConfiguration configuration;
+  private final PageConfiguration configuration;
   private final int fontSize;
 
-  public Sidereal1stEditionDetailsPageEncoder(IResources resources, int fontSize, PdfPageConfiguration configuration) {
+  public Sidereal1stEditionDetailsPageEncoder(IResources resources, int fontSize, PageConfiguration configuration) {
     this.resources = resources;
     this.fontSize = fontSize;
     this.configuration = configuration;
@@ -76,14 +76,14 @@ public class Sidereal1stEditionDetailsPageEncoder implements PageEncoder {
 
   private void encodeConnections(SheetGraphics graphics, ReportContent content, float height, int distanceFromTop) throws DocumentException {
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(4, "Sidereal.Connections"); //$NON-NLS-1$
+    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(4, resources, "Sidereal.Connections"); //$NON-NLS-1$
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
   private float encodeAcquaintances(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = 145;
     Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(1, "Sidereal.Acquaintances"); //$NON-NLS-1$
+    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(1, resources, "Sidereal.Acquaintances"); //$NON-NLS-1$
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
@@ -91,7 +91,7 @@ public class Sidereal1stEditionDetailsPageEncoder implements PageEncoder {
   private float encodeConventions(SheetGraphics graphics, ReportContent content, int distanceFromTop) throws DocumentException {
     float height = THIRD_BLOCK_HEIGHT - STANDING_HEIGHT - PADDING;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(2, "Sidereal.Conventions"); //$NON-NLS-1$
+    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(2, resources, "Sidereal.Conventions"); //$NON-NLS-1$
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }

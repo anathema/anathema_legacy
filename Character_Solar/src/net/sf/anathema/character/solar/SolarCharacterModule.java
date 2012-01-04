@@ -19,7 +19,6 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 import net.sf.anathema.character.solar.generic.DivineTranscendenceOf;
 import net.sf.anathema.character.solar.generic.EssenceFlow;
@@ -27,10 +26,10 @@ import net.sf.anathema.character.solar.generic.InfiniteMastery;
 import net.sf.anathema.character.solar.generic.SupremePerfectionOf;
 import net.sf.anathema.character.solar.reporting.Extended1stEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.reporting.Extended2ndSolarPartEncoder;
-import net.sf.anathema.character.solar.reporting.Simple1stEditionSolarPartEncoder;
-import net.sf.anathema.character.solar.reporting.Simple2ndSolarPartEncoder;
-import net.sf.anathema.character.solar.reporting.SolarVirtueFlawContent;
-import net.sf.anathema.character.solar.reporting.SolarVirtueFlawContentFactory;
+import net.sf.anathema.character.solar.reporting.content.VirtueFlawContent;
+import net.sf.anathema.character.solar.reporting.content.VirtueFlawContentFactory;
+import net.sf.anathema.character.solar.reporting.rendering.AnimaEncoderFactory;
+import net.sf.anathema.character.solar.reporting.rendering.VirtueFlawEncoderFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
@@ -78,8 +77,8 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
     ThirdExcellency thirdExcellency = new ThirdExcellency(SOLAR, "4 m", ExaltedSourceBook.SecondEdition);
     IRegistry<ICharacterType, IMagicStats[]> genericRegistery = characterGenerics.getGenericCharmStatsRegistry();
     genericRegistery.register(SOLAR,
-      new IMagicStats[] { firstExcellency, secondExcellency, thirdExcellency, new InfiniteMastery(), new EssenceFlow(),
-        new DivineTranscendenceOf(), new SupremePerfectionOf() });
+            new IMagicStats[]{firstExcellency, secondExcellency, thirdExcellency, new InfiniteMastery(), new EssenceFlow(),
+                    new DivineTranscendenceOf(), new SupremePerfectionOf()});
 
     characterGenerics.getAdditionalTemplateParserRegistry().register(SolarVirtueFlawTemplate.ID, new SolarVirtueFlawParser());
     characterGenerics.getCasteCollectionRegistry().register(SOLAR, new CasteCollection(SolarCaste.values()));
@@ -123,15 +122,10 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getContentRegistry().addFactory(SolarVirtueFlawContent.class, new SolarVirtueFlawContentFactory(resources));
-    registerSimpleEncoders(resources, moduleObject);
+    moduleObject.getContentRegistry().addFactory(VirtueFlawContent.class, new VirtueFlawContentFactory(resources));
+    moduleObject.getEncoderRegistry().add(new VirtueFlawEncoderFactory());
+    moduleObject.getEncoderRegistry().add(new AnimaEncoderFactory());
     registerExtendedEncoders(resources, moduleObject);
-  }
-
-  private void registerSimpleEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
-    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
-    registry.setPartEncoder(SOLAR, SecondEdition, new Simple2ndSolarPartEncoder(resources));
-    registry.setPartEncoder(SOLAR, FirstEdition, new Simple1stEditionSolarPartEncoder(resources));
   }
 
   private void registerExtendedEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {

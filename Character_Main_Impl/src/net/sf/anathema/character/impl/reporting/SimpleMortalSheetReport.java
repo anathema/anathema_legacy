@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
@@ -15,12 +14,11 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleMortalPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.IITextReport;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -51,13 +49,11 @@ public class SimpleMortalSheetReport implements IITextReport {
     document.setPageSize(pageSize.getRectangle());
     document.open();
     PdfContentByte directContent = writer.getDirectContent();
-    PdfPageConfiguration configuration = PdfPageConfiguration.create(pageSize.getRectangle());
-    SimpleEncodingRegistry encodingRegistry = getEncodingRegistry();
+    PageConfiguration configuration = PageConfiguration.create(pageSize.getRectangle());
     try {
-      int traitMax = Math.max(5, getEssenceMax(stattedCharacter));
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
-      PageEncoder encoder = new SimpleMortalPageEncoder(getEncoderRegistry(), encodingRegistry, resources, configuration);
+      PageEncoder encoder = new SimpleMortalPageEncoder(getEncoderRegistry(), resources, configuration);
       SheetGraphics graphics = new SheetGraphics(directContent);
       ReportContent content = new ReportContent(getContentRegistry(), character, description);
       encoder.encode(document, graphics, content);
@@ -68,15 +64,6 @@ public class SimpleMortalSheetReport implements IITextReport {
 
   private EncoderRegistry getEncoderRegistry() {
     return getReportingModuleObject().getEncoderRegistry();
-  }
-
-  private int getEssenceMax(ICharacter character) {
-    return character.getStatistics().getTraitConfiguration().getTrait(OtherTraitType.Essence).getMaximalValue();
-  }
-
-  private SimpleEncodingRegistry getEncodingRegistry() {
-    CharacterReportingModuleObject moduleObject = getReportingModuleObject();
-    return moduleObject.getSimpleEncodingRegistry();
   }
 
   private ReportContentRegistry getContentRegistry() {

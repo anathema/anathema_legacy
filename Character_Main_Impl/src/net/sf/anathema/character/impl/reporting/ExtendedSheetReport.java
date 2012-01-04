@@ -29,7 +29,7 @@ import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEnco
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.IITextReport;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -63,7 +63,7 @@ public class ExtendedSheetReport implements IITextReport {
     document.setPageSize(pageSize.getRectangle());
     document.open();
     PdfContentByte directContent = writer.getDirectContent();
-    PdfPageConfiguration configuration = PdfPageConfiguration.create(pageSize.getRectangle());
+    PageConfiguration configuration = PageConfiguration.create(pageSize.getRectangle());
     ExtendedEncodingRegistry encodingRegistry = getEncodingRegistry();
     SheetGraphics graphics = new SheetGraphics(directContent, encodingRegistry.getBaseFont(), encodingRegistry.getSymbolBaseFont());
     try {

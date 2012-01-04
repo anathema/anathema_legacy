@@ -13,13 +13,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
-import net.sf.anathema.character.sidereal.reporting.content.colleges.SiderealCollegeContent;
+import net.sf.anathema.character.sidereal.reporting.content.SiderealCollegeContent;
 import net.sf.anathema.character.sidereal.reporting.rendering.ArcaneFateInfoEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.ParadoxInfoEncoder;
-import net.sf.anathema.character.sidereal.reporting.rendering.SiderealParadoxEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.astrology.SecondEditionAstrologyInfoEncoder;
+import net.sf.anathema.character.sidereal.reporting.rendering.greatcurse.ParadoxEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.resplendentdestiny.ResplendentDestinyEncoder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
@@ -33,7 +33,7 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
   private final static float PARADOX_HEIGHT = 45;
   private final IResources resources;
   private final PdfBoxEncoder boxEncoder;
-  private final PdfPageConfiguration configuration;
+  private final PageConfiguration configuration;
   private final int fontSize;
 
   private static final TemplateType roninType = new TemplateType(CharacterType.SIDEREAL, new Identificate("Ronin")); //$NON-NLS-1$
@@ -41,7 +41,7 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
   private static final TemplateType dreamsType = new TemplateType(CharacterType.SIDEREAL, new Identificate("Dreams")); //$NON-NLS-1$
   private static final TemplateType revisedDreamsType = new TemplateType(CharacterType.SIDEREAL, new Identificate("RevisedDreams")); //$NON-NLS-1$
 
-  public Sidereal2ndEditionDetailsPageEncoder(IResources resources, int fontSize, PdfPageConfiguration configuration) {
+  public Sidereal2ndEditionDetailsPageEncoder(IResources resources, int fontSize, PageConfiguration configuration) {
     this.resources = resources;
     this.fontSize = fontSize;
     this.configuration = configuration;
@@ -80,13 +80,11 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
   }
 
   private boolean isRonin(IGenericCharacter character) {
-    return character.getTemplate().getTemplateType().getSubType().getId().equals(roninType.getSubType().getId()) ||
-      character.getTemplate().getTemplateType().getSubType().getId().equals(revisedRoninType.getSubType().getId());
+    return character.getTemplate().getTemplateType().getSubType().getId().equals(roninType.getSubType().getId()) || character.getTemplate().getTemplateType().getSubType().getId().equals(revisedRoninType.getSubType().getId());
   }
 
   private boolean isFirstAge(IGenericCharacter character) {
-    return character.getTemplate().getTemplateType().getSubType().getId().equals(dreamsType.getSubType().getId()) ||
-      character.getTemplate().getTemplateType().getSubType().getId().equals(revisedDreamsType.getSubType().getId());
+    return character.getTemplate().getTemplateType().getSubType().getId().equals(dreamsType.getSubType().getId()) || character.getTemplate().getTemplateType().getSubType().getId().equals(revisedDreamsType.getSubType().getId());
   }
 
   private void encodeConnections(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
@@ -94,17 +92,16 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
     Bounds boxBounds;
     if (isFirstAge(content.getCharacter())) {
       boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 2);
-    }
-    else {
+    } else {
       boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
     }
-    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(4, "Sidereal.Connections"); //$NON-NLS-1$
+    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(4, resources, "Sidereal.Connections"); //$NON-NLS-1$
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
   private float encodeAcquaintances(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(1, "Sidereal.Acquaintances"); //$NON-NLS-1$
+    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(1, resources, "Sidereal.Acquaintances"); //$NON-NLS-1$
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }
@@ -112,7 +109,7 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
   private float encodeParadox(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float height = PARADOX_HEIGHT;
     Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    ContentEncoder encoder = new SiderealParadoxEncoder(resources);
+    ContentEncoder encoder = new ParadoxEncoder(resources);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
     return height;
   }

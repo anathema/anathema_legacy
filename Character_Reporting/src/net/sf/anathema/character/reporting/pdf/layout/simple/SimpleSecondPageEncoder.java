@@ -10,31 +10,27 @@ import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.MagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfGenericCharmEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfMagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.List;
 
 public class SimpleSecondPageEncoder extends AbstractPageEncoder {
 
-  private final PdfPageConfiguration configuration;
+  private final PageConfiguration configuration;
   private final PdfBoxEncoder boxEncoder;
   private final IResources resources;
-  private final SimpleEncodingRegistry encodingRegistry;
 
-  public SimpleSecondPageEncoder(EncoderRegistry encoderRegistry, IResources resources, SimpleEncodingRegistry encodingRegistry,
-    PdfPageConfiguration configuration) {
-    super(resources, encoderRegistry);
+  public SimpleSecondPageEncoder(EncoderRegistry encoders, IResources resources, PageConfiguration configuration) {
+    super(resources, encoders);
     this.resources = resources;
-    this.encodingRegistry = encodingRegistry;
     this.configuration = configuration;
     this.boxEncoder = new PdfBoxEncoder(resources);
   }
@@ -62,7 +58,7 @@ public class SimpleSecondPageEncoder extends AbstractPageEncoder {
     }
 
     float remainingHeight = configuration.getContentHeight() - distanceFromTop;
-    List<IMagicStats> printMagic = PdfMagicEncoder.collectPrintMagic(content);
+    List<IMagicStats> printMagic = MagicEncoder.collectPrintMagic(content);
     encodeCharms(graphics, printMagic, distanceFromTop, remainingHeight);
     while (!printMagic.isEmpty()) {
       document.newPage();
@@ -71,16 +67,13 @@ public class SimpleSecondPageEncoder extends AbstractPageEncoder {
   }
 
   private float encodeCombos(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    Bounds restOfPage = new Bounds(configuration.getLeftX(), configuration.getLowerContentY(), configuration.getContentWidth(),
-      configuration.getContentHeight() - distanceFromTop);
+    Bounds restOfPage = new Bounds(configuration.getLeftX(), configuration.getLowerContentY(), configuration.getContentWidth(), configuration.getContentHeight() - distanceFromTop);
     return new PdfComboEncoder(resources).encodeCombos(graphics, content, restOfPage);
   }
 
   private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    ContentEncoder encoder = new ExperienceBoxContentEncoder();
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
-    return height;
+    return encodeBox(graphics, content, bounds, EncoderIds.EXPERIENCE);
   }
 
   private float encodeLanguages(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -107,15 +100,14 @@ public class SimpleSecondPageEncoder extends AbstractPageEncoder {
       ContentEncoder encoder = new PdfGenericCharmEncoder(resources);
       boxEncoder.encodeBox(content, graphics, encoder, bounds);
       return height;
-    }
-    else {
+    } else {
       return 0;
     }
   }
 
   private float encodeCharms(SheetGraphics graphics, List<IMagicStats> printMagic, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    ContentEncoder encoder = new PdfMagicEncoder(resources, printMagic);
+    ContentEncoder encoder = new MagicEncoder(resources, printMagic);
     boxEncoder.encodeBox(null, graphics, encoder, bounds);
     return height;
   }

@@ -9,8 +9,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEn
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartEncoder {
@@ -44,7 +44,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
 
   @Override
   public ContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
-    return new DotBoxContentEncoder(trait, traitMax, traitHeaderKey);
+    return new DotBoxContentEncoder(trait, traitMax, resources, traitHeaderKey);
   }
 
   @Override
@@ -63,7 +63,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   @Override
-  public PageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
+  public PageEncoder[] getAdditionalPages(PageConfiguration configuration) {
     return new PageEncoder[0];
   }
 }

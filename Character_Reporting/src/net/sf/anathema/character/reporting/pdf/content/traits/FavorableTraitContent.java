@@ -108,7 +108,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
   protected abstract String getTraitTypePrefix();
 
   public String getMobilityPenaltyText() {
-    return  " : " + getString(getMarkerCommentKey()); //$NON-NLS-1$
+    return " : " + getString(getMarkerCommentKey()); //$NON-NLS-1$
   }
 
   public abstract String getMarkerCommentKey();

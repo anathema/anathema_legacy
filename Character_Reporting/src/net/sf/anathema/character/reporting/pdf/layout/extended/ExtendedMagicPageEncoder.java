@@ -11,15 +11,15 @@ import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.initiation.PdfInitiationEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.MagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfGenericCharmEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfMagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.ExtendedWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -28,8 +28,7 @@ import java.util.List;
 
 public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
-  public ExtendedMagicPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources,
-    PdfPageConfiguration configuration) {
+  public ExtendedMagicPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources, PageConfiguration configuration) {
     super(partEncoder, encodingRegistry, resources, configuration);
   }
 
@@ -83,10 +82,10 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
       // Combos, Anima, & Generic Charms
       float animaHeight = 0;
-      if (hasAnima()) {
+      if (hasAnima(content)) {
         animaHeight = encodeAnima(graphics, content, distanceFromTop, 128f);
       }
-      float comboHeight = encodeCombos(graphics, character, distanceFromTop, animaHeight, hasAnima());
+      float comboHeight = encodeCombos(graphics, character, distanceFromTop, animaHeight, hasAnima(content));
       if (comboHeight > 0) {
         distanceFromTop += comboHeight + IVoidStateFormatConstants.PADDING;
       }
@@ -100,7 +99,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
       // Charms, with overflow pages
       float remainingHeight = getPageConfiguration().getContentHeight() - distanceFromTop;
-      List<IMagicStats> printCharms = PdfMagicEncoder.collectPrintCharms(content);
+      List<IMagicStats> printCharms = MagicEncoder.collectPrintCharms(content);
       encodeCharms(graphics, content, printCharms, distanceFromTop, remainingHeight);
       while (!printCharms.isEmpty()) {
         encodeCopyright(graphics);
@@ -119,8 +118,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
     return encodeFixedBox(graphics, content, new ExtendedWillpowerEncoder(), 3, 1, distanceFromTop, height);
   }
 
-  private float encodeCombos(SheetGraphics graphics, IGenericCharacter character, float distanceFromTop, float fixedHeight, boolean sharesRow)
-    throws DocumentException {
+  private float encodeCombos(SheetGraphics graphics, IGenericCharacter character, float distanceFromTop, float fixedHeight, boolean sharesRow) throws DocumentException {
     List<IGenericCombo> combos = new ArrayList<IGenericCombo>(Arrays.asList(character.getCombos()));
     PdfComboEncoder comboEncoder = new PdfComboEncoder(getResources());
     if (sharesRow) {
@@ -132,36 +130,32 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
       float overflowHeight = comboEncoder.encodeCombos(graphics, combos, restOfPage, true);
       if (overflowHeight > 0) {
         return calculateBoxIncrement(rowHeight) + overflowHeight;
-      }
-      else {
+      } else {
         return rowHeight;
       }
-    }
-    else {
+    } else {
       Bounds restOfPage = calculateBounds(1, 3, distanceFromTop, getPageConfiguration().getContentHeight() - distanceFromTop);
       return comboEncoder.encodeCombos(graphics, combos, restOfPage, false);
     }
   }
 
   private float encodeAnima(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getPartEncoder().getAnimaEncoder(), 3, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, content, getPartEncoder().getAnimaEncoder(content), 3, 1, distanceFromTop, height);
   }
 
   private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
     IVariableContentEncoder encoder = new PdfGenericCharmEncoder(getResources());
     if (encoder.hasContent(content)) {
       return encodeVariableBox(graphics, content, encoder, 1, 3, distanceFromTop, maxHeight);
-    }
-    else {
+    } else {
       return 0f;
     }
   }
 
   private float encodeMagic(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content,
-      new PdfMagicEncoder(getResources(), PdfMagicEncoder.collectPrintSpells(content), getRegistry().getAdditionalMagicEncoders(), true, "Magic"),
-      //$NON-NLS-1$
-      2, 2, distanceFromTop, height);
+    return encodeFixedBox(graphics, content, new MagicEncoder(getResources(), MagicEncoder.collectPrintSpells(content), getRegistry().getAdditionalMagicEncoders(), true, "Magic"),
+            //$NON-NLS-1$
+            2, 2, distanceFromTop, height);
   }
 
   private float encodeSidebars(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
@@ -184,12 +178,11 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
     return encodeVariableBox(graphics, content, new PdfInitiationEncoder(getResources(), getBaseFont()), 1, 1, distanceFromTop, maxHeight);
   }
 
-  private float encodeCharms(SheetGraphics graphics, ReportContent content, List<IMagicStats> printCharms, float distanceFromTop, float height)
-    throws DocumentException {
-    return encodeFixedBox(graphics, content, new PdfMagicEncoder(getResources(), printCharms), 1, 3, distanceFromTop, height);
+  private float encodeCharms(SheetGraphics graphics, ReportContent content, List<IMagicStats> printCharms, float distanceFromTop, float height) throws DocumentException {
+    return encodeFixedBox(graphics, content, new MagicEncoder(getResources(), printCharms), 1, 3, distanceFromTop, height);
   }
 
-  private boolean hasAnima() {
-    return getPartEncoder().getAnimaEncoder() != null;
+  private boolean hasAnima(ReportContent content) {
+    return getPartEncoder().getAnimaEncoder(content) != null;
   }
 }

@@ -24,16 +24,17 @@ public class StandingEncoder implements ContentEncoder {
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     int yPosition = (int) (bounds.getMaxY() - lineHeight);
     graphics.drawLabelledContent(getLabel("Label.Allegiance"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
     int salary = getBackground(reportContent.getCharacter(), SiderealCharacterModule.BACKGROUND_ID_SALARY);
     yPosition -= smallTraitEncoder.encodeWithText(graphics, resources.getString("Sheet.Sidereal.Standing.Salary"), //$NON-NLS-1$
-      new Position(bounds.x, yPosition), bounds.width, salary, 5);
+            new Position(bounds.x, yPosition), bounds.width, salary, 5);
     int manse = getBackground(reportContent.getCharacter(), SiderealCharacterModule.BACKGROUND_ID_CELESTIAL_MANSE);
     smallTraitEncoder.encodeWithText(graphics, resources.getString("Sheet.Sidereal.Standing.Manse"), new Position( //$NON-NLS-1$
-      bounds.x, yPosition), bounds.width, manse, 5);
+            bounds.x, yPosition), bounds.width, manse, 5);
   }
 
   private int getBackground(IGenericCharacter character, String id) {
@@ -46,14 +47,16 @@ public class StandingEncoder implements ContentEncoder {
     return backgroundValue;
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Sidereal.Standing"; //$NON-NLS-1$
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Sidereal.Standing");
   }
 
   protected final String getLabel(String key) {
     return resources.getString("Sheet.Sidereal.Standing." + key) + ":"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

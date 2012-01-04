@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import com.lowagie.text.pdf.BaseFont;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -10,14 +11,17 @@ public class Extended2ndEditionMortalPartEncoder extends AbstractSecondEditionPa
     super(resources, baseFont, 3);
   }
 
-  public ContentEncoder getAnimaEncoder() {
+  @Override
+  public ContentEncoder getAnimaEncoder(ReportContent reportContent) {
     return null;
   }
 
+  @Override
   public ContentEncoder getGreatCurseEncoder() {
     return null;
   }
 
+  @Override
   public boolean hasMagicPage() {
     return false;
   }

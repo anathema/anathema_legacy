@@ -12,28 +12,23 @@ import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.ghost.age.GhostAgeModelFactory;
 import net.sf.anathema.character.ghost.age.GhostAgeParser;
 import net.sf.anathema.character.ghost.age.GhostAgeTemplate;
-import net.sf.anathema.character.ghost.fetters.GhostFettersModelFactory;
-import net.sf.anathema.character.ghost.fetters.GhostFettersParser;
-import net.sf.anathema.character.ghost.fetters.GhostFettersPersisterFactory;
-import net.sf.anathema.character.ghost.fetters.GhostFettersTemplate;
-import net.sf.anathema.character.ghost.fetters.GhostFettersViewFactory;
+import net.sf.anathema.character.ghost.fetters.*;
 import net.sf.anathema.character.ghost.passions.GhostPassionsModelFactory;
 import net.sf.anathema.character.ghost.passions.GhostPassionsParser;
 import net.sf.anathema.character.ghost.passions.GhostPassionsTemplate;
 import net.sf.anathema.character.ghost.passions.GhostPassionsViewFactory;
 import net.sf.anathema.character.ghost.passions.persistence.GhostPassionsPersisterFactory;
 import net.sf.anathema.character.ghost.reporting.ExtendedGhostPartEncoder;
-import net.sf.anathema.character.ghost.reporting.SimpleGhostPartEncoder;
 import net.sf.anathema.character.ghost.reporting.content.GhostFetterContent;
 import net.sf.anathema.character.ghost.reporting.content.GhostFetterContentFactory;
 import net.sf.anathema.character.ghost.reporting.content.GhostPassionContent;
 import net.sf.anathema.character.ghost.reporting.content.GhostPassionContentFactory;
+import net.sf.anathema.character.ghost.reporting.rendering.FetterEncoderFactory;
+import net.sf.anathema.character.ghost.reporting.rendering.PassionEncoderFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.ISimplePartEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleEncodingRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -115,19 +110,14 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     addReportContents(moduleObject.getContentRegistry(), resources);
-    addSimpleParts(resources, moduleObject);
+    moduleObject.getEncoderRegistry().add(new FetterEncoderFactory());
+    moduleObject.getEncoderRegistry().add(new PassionEncoderFactory());
     addExtendedParts(resources, moduleObject);
   }
 
   private void addReportContents(ReportContentRegistry registry, IResources resources) {
     registry.addFactory(GhostFetterContent.class, new GhostFetterContentFactory(resources));
     registry.addFactory(GhostPassionContent.class, new GhostPassionContentFactory(resources));
-  }
-
-  private void addSimpleParts(IResources resources, CharacterReportingModuleObject moduleObject) {
-    SimpleEncodingRegistry registry = moduleObject.getSimpleEncodingRegistry();
-    ISimplePartEncoder secondEditionEncoder = new SimpleGhostPartEncoder(resources);
-    registry.setPartEncoder(GHOST, SecondEdition, secondEditionEncoder);
   }
 
   private void addExtendedParts(IResources resources, CharacterReportingModuleObject moduleObject) {

@@ -33,6 +33,7 @@ public class SecondEditionPowersEncoder implements ContentEncoder {
     this.isHorizontal = isHorizontal;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     tellMDV = hasTBA(reportContent.getCharacter()) ? 8 : 12;
 
@@ -87,17 +88,17 @@ public class SecondEditionPowersEncoder implements ContentEncoder {
     }
     if (!isHorizontal) {
       Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y + bounds.height - offsetY - totalHeight, bounds.x - offsetX, lineHeight);
-      totalHeight +=
-        graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(new Phrase(" ", font)).encode().getLinesWritten() * lineHeight;
+      totalHeight += graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(new Phrase(" ", font)).encode().getLinesWritten() * lineHeight;
     }
     return totalHeight;
   }
 
   @Override
-  public String getHeaderKey(ReportContent content) {
-    return "Lunar.Powers";
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Lunar.Powers");
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

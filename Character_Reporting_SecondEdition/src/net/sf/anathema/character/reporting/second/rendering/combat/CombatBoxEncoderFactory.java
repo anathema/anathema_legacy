@@ -19,7 +19,7 @@ public class CombatBoxEncoderFactory extends AbstractEncoderFactory {
   public ContentEncoder create(IResources resources, BasicContent content) {
     IContentEncoder valueEncoder = new CombatValueEncoder();
     ITableEncoder rulesEncoder = new CombatRulesTableEncoder();
-    return new CombatStatsContentBoxEncoder(rulesEncoder, valueEncoder);
+    return new CombatStatsContentBoxEncoder(resources, rulesEncoder, valueEncoder);
   }
 
   @Override

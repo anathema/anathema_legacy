@@ -21,10 +21,12 @@ public class Extended2ndEditionMovementEncoder implements ContentEncoder {
     this.baseFont = baseFont;
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Movement"; //$NON-NLS-1$
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Movement");
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     ITableEncoder tableEncoder = createTableEncoder();
     tableEncoder.encodeTable(graphics, reportContent, bounds);
@@ -46,6 +48,7 @@ public class Extended2ndEditionMovementEncoder implements ContentEncoder {
     return ExaltedEdition.SecondEdition;
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

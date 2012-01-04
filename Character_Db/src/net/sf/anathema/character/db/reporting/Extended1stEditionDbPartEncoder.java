@@ -1,5 +1,9 @@
 package net.sf.anathema.character.db.reporting;
 
+import net.sf.anathema.character.db.reporting.rendering.AnimaEncoderFactory;
+import net.sf.anathema.character.db.reporting.rendering.GreatCurse1stEditionEncoder;
+import net.sf.anathema.character.reporting.pdf.content.BasicContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -12,11 +16,12 @@ public class Extended1stEditionDbPartEncoder extends AbstractFirstEditionExaltPd
   }
 
   public ContentEncoder getGreatCurseEncoder() {
-    return new Db1stEditionGreatCurseEncoder(getResources());
+    return new GreatCurse1stEditionEncoder();
   }
 
   @Override
-  public ContentEncoder getAnimaEncoder() {
-    return new DbAnimaEncoderFactory(getResources()).createAnimaEncoder();
+  public ContentEncoder getAnimaEncoder(ReportContent reportContent) {
+    BasicContent content = reportContent.createSubContent(BasicContent.class);
+    return new AnimaEncoderFactory().create(getResources(), content);
   }
 }

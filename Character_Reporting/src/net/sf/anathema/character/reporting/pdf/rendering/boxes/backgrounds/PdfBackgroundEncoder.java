@@ -26,10 +26,7 @@ public class PdfBackgroundEncoder implements ContentEncoder {
     this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Backgrounds"; //$NON-NLS-1$
-  }
-
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float yPosition = bounds.getMaxY() - LINE_HEIGHT;
     boolean printZeroBackgrounds = AnathemaCharacterPreferences.getDefaultPreferences().printZeroBackgrounds();
@@ -63,6 +60,12 @@ public class PdfBackgroundEncoder implements ContentEncoder {
     }
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Backgrounds");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

@@ -1,5 +1,8 @@
 package net.sf.anathema.character.ghost.reporting;
 
+import net.sf.anathema.character.ghost.reporting.rendering.FetterEncoder;
+import net.sf.anathema.character.ghost.reporting.rendering.PassionEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -11,12 +14,13 @@ public class ExtendedGhostPartEncoder extends AbstractSecondEditionExaltPdfPartE
     super(resources, registry, essenceMax);
   }
 
+  @Override
   public ContentEncoder getGreatCurseEncoder() {
-    return new GhostFetterEncoder();
+    return new FetterEncoder();
   }
 
   @Override
-  public ContentEncoder getAnimaEncoder() {
-    return new GhostPassionEncoder();
+  public ContentEncoder getAnimaEncoder(ReportContent reportContent) {
+    return new PassionEncoder();
   }
 }

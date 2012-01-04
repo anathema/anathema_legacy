@@ -4,7 +4,7 @@ import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class PageRegistry {
     factories.add(factory);
   }
 
-  public PageEncoder[] createEncoders(PdfPageConfiguration configuration, EncoderRegistry encoderRegistry, IResources resources,
+  public PageEncoder[] createEncoders(PageConfiguration configuration, EncoderRegistry encoderRegistry, IResources resources,
     ReportContent content) {
     return findFactory(content).create(encoderRegistry, resources, configuration);
   }

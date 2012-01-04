@@ -3,15 +3,16 @@ package net.sf.anathema.character.lunar.reporting.layout;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.ArmourEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.ArmourTableEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.lunar.reporting.content.equipment.LunarArmourContent;
 import net.sf.anathema.character.lunar.reporting.rendering.EncoderIds;
 import net.sf.anathema.character.lunar.reporting.rendering.SecondEditionLunarSpiritFormEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.SecondEditionPowersEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.SecondEditionDBTCombatEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.SecondEditionLunarDBTFormEncoder;
-import net.sf.anathema.character.lunar.reporting.rendering.equipment.LunarEquipmentEncoders;
 import net.sf.anathema.character.lunar.reporting.rendering.health.SecondEditionLunarHealthAndMovementEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.heartsblood.SecondEditionLunarHeartsBloodEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.knacks.KnackEncoder;
@@ -22,8 +23,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PdfPageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
@@ -32,11 +33,11 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
   private final IResources resources;
 
-  private final PdfPageConfiguration pageConfiguration;
+  private final PageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private EncoderRegistry encoderRegistry;
 
-  public Lunar2ndEditionAdditionalPageEncoder(EncoderRegistry encoderRegistry, IResources resources, PdfPageConfiguration pageConfiguration) {
+  public Lunar2ndEditionAdditionalPageEncoder(EncoderRegistry encoderRegistry, IResources resources, PageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;
@@ -56,8 +57,7 @@ public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
 
       secondSet += encodeCombatStats(graphics, content, secondSet) + PADDING;
       encodePowers(graphics, content, secondSet, firstSet - secondSet, false);
-    }
-    else {
+    } else {
       encodePowers(graphics, content, secondSet, firstSet, true);
     }
 
@@ -100,14 +100,13 @@ public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
 
   private float encodePanoply(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
-    ITableEncoder armourTableEncoder = LunarEquipmentEncoders.CreateArmourEncoder();
-    ContentEncoder contentEncoder = new ArmourEncoder(armourTableEncoder);
+    ITableEncoder armourTableEncoder = new ArmourTableEncoder(LunarArmourContent.class);
+    ContentEncoder contentEncoder = new ArmourEncoder(resources, armourTableEncoder);
     boxEncoder.encodeBox(content, graphics, contentEncoder, bounds);
     return height;
   }
 
-  private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
     ContentEncoder encoder = new SecondEditionLunarHealthAndMovementEncoder(resources);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
@@ -122,10 +121,8 @@ public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
     return height;
   }
 
-  private void encodePowers(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height, boolean isHorizontal)
-    throws DocumentException {
-    Bounds bounds = isHorizontal ? pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2) :
-                    pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
+  private void encodePowers(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height, boolean isHorizontal) throws DocumentException {
+    Bounds bounds = isHorizontal ? pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2) : pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     SecondEditionPowersEncoder encoder = new SecondEditionPowersEncoder(resources, isHorizontal);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
   }

@@ -10,21 +10,20 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.traits.FavorableTraitContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavorableTraitBoxContentEncoder implements ContentEncoder {
+public class FavorableTraitBoxContentEncoder<C extends FavorableTraitContent> extends AbstractBoxContentEncoder<C> {
 
   private final List<INamedTraitEncoder> namedTraitEncoders = new ArrayList<INamedTraitEncoder>();
   private final PdfTraitEncoder traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
-  private final Class<? extends FavorableTraitContent> contentClass;
 
-  public FavorableTraitBoxContentEncoder(Class<? extends FavorableTraitContent> contentClass) {
-    this.contentClass = contentClass;
+  public FavorableTraitBoxContentEncoder(Class<C> contentClass) {
+    super(contentClass);
   }
 
   public final void addNamedTraitEncoder(INamedTraitEncoder encoder) {
@@ -67,8 +66,7 @@ public class FavorableTraitBoxContentEncoder implements ContentEncoder {
     return yPosition;
   }
 
-  private float encodeTraitGroup(SheetGraphics graphics, FavorableTraitContent content, IIdentifiedTraitTypeGroup group, Position position,
-    float width) {
+  private float encodeTraitGroup(SheetGraphics graphics, FavorableTraitContent content, IIdentifiedTraitTypeGroup group, Position position, float width) {
     float height = 0;
     float groupLabelWidth = IVoidStateFormatConstants.LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
     float traitX = position.x + groupLabelWidth;
@@ -87,8 +85,7 @@ public class FavorableTraitBoxContentEncoder implements ContentEncoder {
       if (content.shouldShowExcellencies()) {
         boolean[] excellencyLearned = content.hasExcellenciesLearned(traitType);
         height += encodeFavorableTrait(graphics, content, label, trait, excellencyLearned, new Position(traitX, yPosition), width - groupLabelWidth);
-      }
-      else {
+      } else {
         height += encodeFavorableTrait(graphics, content, label, trait, new Position(traitX, yPosition), width - groupLabelWidth);
       }
     }
@@ -105,15 +102,13 @@ public class FavorableTraitBoxContentEncoder implements ContentEncoder {
     graphics.drawVerticalText(groupLabel, position, PdfContentByte.ALIGN_CENTER);
   }
 
-  private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, IFavorableGenericTrait trait,
-    Position position, float width) {
+  private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, IFavorableGenericTrait trait, Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
     return traitEncoder.encodeWithTextAndRectangle(graphics, label, position, width, value, favored, content.getEssenceMax());
   }
 
-  private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, IFavorableGenericTrait trait,
-    boolean[] excellencyLearned, Position position, float width) {
+  private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, IFavorableGenericTrait trait, boolean[] excellencyLearned, Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
     return traitEncoder.encodeWithExcellencies(graphics, label, position, width, value, favored, excellencyLearned, content.getEssenceMax());
@@ -142,18 +137,5 @@ public class FavorableTraitBoxContentEncoder implements ContentEncoder {
     Position commentPosition = new Position(position.x, yPosition);
     graphics.drawComment(mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
     return 7;
-  }
-
-  public boolean hasContent(ReportContent content) {
-    return createContent(content).hasContent();
-  }
-
-  @Override
-  public String getHeaderKey(ReportContent content) {
-    return createContent(content).getHeaderKey();
-  }
-
-  private FavorableTraitContent createContent(ReportContent content) {
-    return content.createSubContent(contentClass);
   }
 }

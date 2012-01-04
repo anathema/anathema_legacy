@@ -19,7 +19,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEnco
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implements ContentEncoder {
 
@@ -29,17 +29,14 @@ public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implem
     this.resources = resources;
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Lunar.Face"; //$NON-NLS-1$
-  }
-
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     encodeTable(graphics, reportContent, bounds);
   }
 
   @Override
   protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
-    PdfPTable table = new PdfPTable(new float[] { 6, 0.2f, 2.5f });
+    PdfPTable table = new PdfPTable(new float[]{6, 0.2f, 2.5f});
     table.setTotalWidth(bounds.width);
     float lineOffset = encodeContent(graphics, table, content);
     float delimitingLineYPosition = bounds.getMaxY() - lineOffset - 1;
@@ -56,10 +53,10 @@ public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implem
     float height = table.getTotalHeight();
     int currentRank = model.getFace().getCurrentValue();
     String totalString = resources.getString("Lunar.Renown.FaceLabel") + " " //$NON-NLS-1$//$NON-NLS-2$
-      + currentRank + ": " //$NON-NLS-1$
-      + resources.getString("Lunar.Renown.Rank." + currentRank) //$NON-NLS-1$
-      + " / " //$NON-NLS-1$
-      + resources.getString("Lunar.Renown.RenownTotal"); //$NON-NLS-1$
+            + currentRank + ": " //$NON-NLS-1$
+            + resources.getString("Lunar.Renown.Rank." + currentRank) //$NON-NLS-1$
+            + " / " //$NON-NLS-1$
+            + resources.getString("Lunar.Renown.RenownTotal"); //$NON-NLS-1$
     encodeRenownLine(graphics, table, totalString, model.calculateTotalRenown());
     return height;
   }
@@ -100,6 +97,12 @@ public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implem
     return graphics.createTableFont();
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Lunar.Face");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }
