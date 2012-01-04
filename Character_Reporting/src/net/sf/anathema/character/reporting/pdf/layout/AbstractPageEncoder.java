@@ -24,13 +24,17 @@ public abstract class AbstractPageEncoder implements PageEncoder {
     this.boxEncoder = new PdfBoxEncoder();
   }
 
-  protected final float encodeBox(SheetGraphics graphics, ReportContent content, Bounds bounds, String... encoderIds) throws DocumentException {
-    ContentEncoder encoder = encoderRegistry.createEncoder(resources, content, encoderIds);
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
-    return bounds.getHeight();
+  protected final float encodeBox(SheetGraphics graphics, ReportContent content, Bounds bounds, String... encoderIds) {
+    try {
+      ContentEncoder encoder = encoderRegistry.createEncoder(resources, content, encoderIds);
+      boxEncoder.encodeBox(content, graphics, encoder, bounds);
+      return bounds.getHeight();
+    } catch (DocumentException e) {
+      throw new RuntimeException(e);
+    }
   }
 
-  protected final float encodeOptionalBox(SheetGraphics graphics, ReportContent content, Bounds bounds, String encoderId) throws DocumentException {
+  protected final float encodeOptionalBox(SheetGraphics graphics, ReportContent content, Bounds bounds, String encoderId) {
     if (!encoderRegistry.hasEncoder(encoderId, content)) {
       return 0;
     }
