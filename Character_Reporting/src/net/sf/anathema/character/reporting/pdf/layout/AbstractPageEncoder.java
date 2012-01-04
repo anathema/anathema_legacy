@@ -21,7 +21,7 @@ public abstract class AbstractPageEncoder implements PageEncoder {
   protected AbstractPageEncoder(IResources resources, EncoderRegistry encoderRegistry) {
     this.resources = resources;
     this.encoderRegistry = encoderRegistry;
-    this.boxEncoder = new PdfBoxEncoder(resources);
+    this.boxEncoder = new PdfBoxEncoder();
   }
 
   protected final float encodeBox(SheetGraphics graphics, ReportContent content, Bounds bounds, String... encoderIds) throws DocumentException {

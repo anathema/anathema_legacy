@@ -5,7 +5,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.traits.Favorabl
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class AbilitiesBoxContentEncoder {
+public class AbilitiesEncoder {
 
   public static FavorableTraitBoxContentEncoder createWithCraftsOnly(IResources resources, int craftCount) {
     FavorableTraitBoxContentEncoder encoder = new FavorableTraitBoxContentEncoder(AbilitiesContent.class);

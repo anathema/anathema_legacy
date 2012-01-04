@@ -7,8 +7,8 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
@@ -43,7 +43,7 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
     this.resources = resources;
     this.registry = registry;
     this.pageConfiguration = pageConfiguration;
-    this.boxEncoder = new PdfBoxEncoder(resources);
+    this.boxEncoder = new PdfBoxEncoder();
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws
@@ -108,7 +108,7 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
   private void encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    ContentEncoder encoder = AbilitiesBoxContentEncoder.createWithCraftsAndSpecialties(resources, 9, 9);
+    ContentEncoder encoder = AbilitiesEncoder.createWithCraftsAndSpecialties(resources, 9, 9);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
@@ -163,7 +163,7 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
   }
 
   private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
-    PersonalInfoBoxEncoder encoder = new PersonalInfoBoxEncoder(resources);
+    PersonalInfoEncoder encoder = new PersonalInfoEncoder(resources);
     encoder.encode(graphics, content, infoBounds);
   }
 

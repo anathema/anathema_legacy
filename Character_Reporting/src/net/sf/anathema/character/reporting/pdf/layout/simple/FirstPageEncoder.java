@@ -7,11 +7,7 @@ import net.sf.anathema.character.reporting.pdf.layout.AbstractPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
@@ -29,15 +25,11 @@ public class FirstPageEncoder extends AbstractPageEncoder {
   private static final int WILLPOWER_HEIGHT = 43;
   private static final int ARMOUR_HEIGHT = 80;
   private static final int HEALTH_HEIGHT = 99;
-  private final IResources resources;
   private final PageConfiguration configuration;
-  private final PdfBoxEncoder boxEncoder;
 
   public FirstPageEncoder(EncoderRegistry encoders, IResources resources, PageConfiguration configuration) {
     super(resources, encoders);
-    this.resources = resources;
     this.configuration = configuration;
-    this.boxEncoder = new PdfBoxEncoder(resources);
   }
 
   @Override
@@ -75,14 +67,12 @@ public class FirstPageEncoder extends AbstractPageEncoder {
 
   private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, float distanceFromTop, float firstRowHeight) throws DocumentException {
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
-    PersonalInfoBoxEncoder encoder = new PersonalInfoBoxEncoder(resources);
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
+    encodeBox(graphics, content, bounds, EncoderIds.PERSONAL_INFO);
   }
 
   private void encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, CONTENT_HEIGHT - distanceFromTop, 1);
-    ContentEncoder encoder = AbilitiesBoxContentEncoder.createWithCraftsAndSpecialties(resources, 9, 9);
-    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
+    Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, CONTENT_HEIGHT - distanceFromTop, 1);
+    encodeBox(graphics, content, bounds, EncoderIds.ABILITIES_WITH_CRAFTS_AND_SPECIALTIES);
   }
 
   private float encodeVirtues(SheetGraphics graphics, float distanceFromTop, float height, ReportContent content) throws DocumentException {

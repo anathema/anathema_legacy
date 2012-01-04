@@ -45,7 +45,7 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
     this.resources = resources;
     this.fontSize = fontSize;
     this.configuration = configuration;
-    this.boxEncoder = new PdfBoxEncoder(resources);
+    this.boxEncoder = new PdfBoxEncoder();
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {

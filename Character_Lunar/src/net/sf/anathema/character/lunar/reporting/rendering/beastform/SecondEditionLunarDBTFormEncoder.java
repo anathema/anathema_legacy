@@ -43,10 +43,10 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
     encodeMutations(graphics, bounds, reportContent);
   }
 
-  private final void encodeNotes(SheetGraphics graphics, Bounds bounds) {
-    final float offsetX = 0;
-    final float offsetY = 42;
-    final int numNotes = 4;
+  private void encodeNotes(SheetGraphics graphics, Bounds bounds) {
+    float offsetX = 0;
+    float offsetY = 42;
+    int numNotes = 4;
     try {
       for (int i = 1; i <= numNotes; i++) {
         writeLine(graphics, resources.getString(notes + ".Note" + i), bounds, offsetX, offsetY + lineHeight * (i - 1));
@@ -55,27 +55,26 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
     }
   }
 
-  private final void writeLine(SheetGraphics graphics, String text, Bounds bounds, float offsetX, float offsetY) throws DocumentException {
+  private void writeLine(SheetGraphics graphics, String text, Bounds bounds, float offsetX, float offsetY) throws DocumentException {
     Font font = graphics.createTableFont();
     Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y + bounds.height - offsetY, bounds.width / 2 - offsetX, lineHeight);
     font.setSize(IVoidStateFormatConstants.COMMENT_FONT_SIZE);
     graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(new Phrase(text, font)).encode();
   }
 
-  private final void encodeMutations(SheetGraphics graphics, Bounds bounds, ReportContent content) {
-    final int horizontalSpacing = 15;
-    final int verticalSpacing = 5;
+  private void encodeMutations(SheetGraphics graphics, Bounds bounds, ReportContent content) {
+    int horizontalSpacing = 15;
+    int verticalSpacing = 5;
     Bounds newBounds = new Bounds(bounds.x + bounds.getWidth() * 1 / 2 + horizontalSpacing, bounds.y + verticalSpacing, bounds.getWidth() * 1 / 2 - horizontalSpacing, bounds.height - 2 * verticalSpacing);
     ContentEncoder encoder = new GiftEncoder();
     try {
-      new PdfBoxEncoder(resources).encodeBox(content, graphics, encoder, newBounds);
+      new PdfBoxEncoder().encodeBox(content, graphics, encoder, newBounds);
     } catch (DocumentException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
 
-  private final void encodeAttributes(SheetGraphics graphics, Bounds contentBounds, IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection) {
+  private void encodeAttributes(SheetGraphics graphics, Bounds contentBounds, IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - 2 * groupSpacing;
     int maximum = PHYSICAL_MAX;

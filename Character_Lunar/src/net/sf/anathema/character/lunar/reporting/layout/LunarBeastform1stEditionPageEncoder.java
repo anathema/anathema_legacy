@@ -17,8 +17,8 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -48,7 +48,7 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
     this.encoders = encoders;
     this.resources = resources;
     this.configuration = configuration;
-    this.boxEncoder = new PdfBoxEncoder(resources);
+    this.boxEncoder = new PdfBoxEncoder();
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
@@ -111,14 +111,14 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
     String name = content.getDescription().getName();
     String title = StringUtilities.isNullOrTrimmedEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
     Bounds infoContentBounds = boxEncoder.encodeBox(graphics, infoBounds, title);
-    PersonalInfoBoxEncoder encoder = new PersonalInfoBoxEncoder(resources);
+    PersonalInfoEncoder encoder = new PersonalInfoEncoder(resources);
     encoder.encode(graphics, content, infoContentBounds);
   }
 
   private void encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop, float remainingHeightRequired) throws DocumentException {
     float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop - remainingHeightRequired;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    ContentEncoder encoder = AbilitiesBoxContentEncoder.createWithSpecialtiesOnly(resources, 11);
+    ContentEncoder encoder = AbilitiesEncoder.createWithSpecialtiesOnly(resources, 11);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
@@ -127,7 +127,7 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
     Bounds attributeBounds = configuration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 2);
     float smallWidth = configuration.getColumnWidth();
     AttributeBoundsEncoder beastBoxEncoder = new AttributeBoundsEncoder(smallWidth, getOverlapFreeSpaceHeight());
-    FirstEditionLunarBeastformAttributesEncoder encoder = new FirstEditionLunarBeastformAttributesEncoder(resources, boxEncoder.calculateInsettedWidth(smallWidth));
+    FirstEditionLunarBeastformAttributesEncoder encoder = new FirstEditionLunarBeastformAttributesEncoder(resources, boxEncoder.calculateWidthWithinInset(smallWidth));
     new PdfHeaderBoxEncoder().encodeHeaderBox(graphics, attributeBounds, encoder.getHeader(content)); //$NON-NLS-1$
     boxEncoder.encodeBox(graphics, encoder, beastBoxEncoder, content, attributeBounds);
     return attributeHeight;
