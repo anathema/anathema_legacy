@@ -3,12 +3,16 @@ package net.sf.anathema.character.reporting.pdf.layout.simple;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.layout.AbstractPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.LayoutField;
+import net.sf.anathema.character.reporting.pdf.layout.Body;
+import net.sf.anathema.character.reporting.pdf.layout.Footer;
+import net.sf.anathema.character.reporting.pdf.layout.RegisteredEncoderList;
+import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
+import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ABILITIES_WITH_CRAFTS_AND_SPECIALTIES;
@@ -28,7 +32,8 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.SOCIA
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.VIRTUES;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.WILLPOWER_SIMPLE;
 
-public class FirstPageEncoder extends AbstractPageEncoder {
+public class FirstPageEncoder implements PageEncoder {
+
   private static final float ANIMA_HEIGHT = 128;
   private static final int ATTRIBUTE_HEIGHT = 128;
   private static final int FIRST_ROW_HEIGHT = 51;
@@ -37,34 +42,48 @@ public class FirstPageEncoder extends AbstractPageEncoder {
   private static final int WILLPOWER_HEIGHT = 43;
   private static final int ARMOUR_HEIGHT = 80;
   private static final int HEALTH_HEIGHT = 99;
+  private EncoderRegistry encoders;
+  private IResources resources;
   private final PageConfiguration configuration;
 
   public FirstPageEncoder(EncoderRegistry encoders, IResources resources, PageConfiguration configuration) {
-    super(resources, encoders);
+    this.encoders = encoders;
+    this.resources = resources;
     this.configuration = configuration;
   }
 
   @Override
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
-    LayoutField personalInfo = encodeBox(graphics, content, createStartField(FIRST_ROW_HEIGHT, 2), PERSONAL_INFO);
-    LayoutField essence = encodeBox(graphics, content, personalInfo.placeOnRightSide(), ESSENCE_SIMPLE);
-    LayoutField attributes = encodeBox(graphics, content, personalInfo.placeBelowWithHeight(ATTRIBUTE_HEIGHT), ATTRIBUTES);
-    encodeBox(graphics, content, attributes.fillRemainingColumnBelow(), ABILITIES_WITH_CRAFTS_AND_SPECIALTIES);
-    LayoutField anima = encodeBox(graphics, content, essence.placeBelowWithHeight(ANIMA_HEIGHT), ANIMA);
-    LayoutField social = encodeBox(graphics, content, anima.placeBelowWithHeight(SOCIAL_COMBAT_HEIGHT), SOCIAL_COMBAT, MERITS_AND_FLAWS);
-    LayoutField virtues = encodeBox(graphics, content, attributes.placeOnRightSideWithHeight(VIRTUE_HEIGHT), VIRTUES);
-    LayoutField greatCurse = encodeBox(graphics, content, virtues.placeBelowBottomAlignedTo(anima), GREAT_CURSE);
-    LayoutField willpower = encodeBox(graphics, content, greatCurse.placeBelowWithHeight(WILLPOWER_HEIGHT), WILLPOWER_SIMPLE);
-    LayoutField intimacies = encodeBox(graphics, content, willpower.placeBelowBottomAlignedTo(social), INTIMACIES_SIMPLE, NOTES);
-    float preferredArsenalHeight = getPreferredEncoderHeight(content, ARSENAL);
-    LayoutField arsenal = encodeBox(graphics, content, intimacies.placeDoubleColumnBelowWithHeight(preferredArsenalHeight), ARSENAL);
-    LayoutField panoply = encodeBox(graphics, content, arsenal.placeDoubleColumnBelowWithHeight(ARMOUR_HEIGHT), PANOPLY);
-    LayoutField health = encodeBox(graphics, content, panoply.placeDoubleColumnBelowWithHeight(HEALTH_HEIGHT), HEALTH_AND_MOVEMENT);
-    encodeBox(graphics, content, health.fillRemainingDoubleColumnBelow(), COMBAT);
+    SheetPage page = createPage(graphics, content);
+    Body body = createBody();
+    LayoutField personalInfo = page.place(PERSONAL_INFO).atStartOf(body).withHeight(FIRST_ROW_HEIGHT).spanningTwoColumns().now();
+    LayoutField essence = page.place(ESSENCE_SIMPLE).rightOf(personalInfo).withSameHeight().now();
+    LayoutField attributes = page.place(ATTRIBUTES).below(personalInfo).withHeight(ATTRIBUTE_HEIGHT).now();
+    page.place(ABILITIES_WITH_CRAFTS_AND_SPECIALTIES).below(attributes).fillToBottomOfPage().now();
+    LayoutField anima = page.place(ANIMA).below(essence).withHeight(ANIMA_HEIGHT).now();
+    LayoutField social = page.place(SOCIAL_COMBAT, MERITS_AND_FLAWS).below(anima).withHeight(SOCIAL_COMBAT_HEIGHT).now();
+    LayoutField virtues = page.place(VIRTUES).rightOf(attributes).withHeight(VIRTUE_HEIGHT).now();
+    LayoutField greatCurse = page.place(GREAT_CURSE).below(virtues).alignBottomTo(anima).now();
+    LayoutField willpower = page.place(WILLPOWER_SIMPLE).below(greatCurse).withHeight(WILLPOWER_HEIGHT).now();
+    LayoutField intimacies = page.place(INTIMACIES_SIMPLE, NOTES).below(willpower).alignBottomTo(social).now();
+    float preferredArsenalHeight = page.getPreferredEncoderHeight(ARSENAL);
+    LayoutField arsenal = page.place(ARSENAL).below(intimacies).withHeight(preferredArsenalHeight).spanningTwoColumns().now();
+    LayoutField panoply = page.place(PANOPLY).below(arsenal).withHeight(ARMOUR_HEIGHT).spanningTwoColumns().now();
+    LayoutField health = page.place(HEALTH_AND_MOVEMENT).below(panoply).withHeight(HEALTH_HEIGHT).spanningTwoColumns().now();
+    page.place(COMBAT).below(health).fillToBottomOfPage().spanningTwoColumns().now();
     new CopyrightEncoder(configuration, CONTENT_HEIGHT).encodeCopyright(graphics);
   }
 
-  private LayoutField createStartField(float height, int columnSpan) {
-    return LayoutField.CreateUpperLeftFieldWithHeightAndColumnSpan(configuration, height, columnSpan, CONTENT_HEIGHT);
+  private Body createBody() {
+    return new Body(configuration, CONTENT_HEIGHT);
+  }
+  
+  private Footer createFooter() {
+    return  new Footer(configuration, CONTENT_HEIGHT);
+  }
+
+  private SheetPage createPage(SheetGraphics graphics, ReportContent content) {
+    RegisteredEncoderList registeredEncoderList = new RegisteredEncoderList(resources, encoders);
+    return new SheetPage(registeredEncoderList, content, graphics);
   }
 }
