@@ -36,10 +36,10 @@
           <charmAttribute attribute="Stackable" visualize="true" />
           <oxbody trait="Resistance,Stamina">
           	<pick name="Category.Infernal">
-          		<TwoHealthLevel/>
-          		<TwoHealthLevel/>
-          		<TwoHealthLevel/>
-          		<FourHealthLevel/>
+          		<twoHealthLevel/>
+          		<twoHealthLevel/>
+          		<twoHealthLevel/>
+          		<fourHealthLevel/>
           	</pick>
           </oxbody>
           <source source="Infernals" />

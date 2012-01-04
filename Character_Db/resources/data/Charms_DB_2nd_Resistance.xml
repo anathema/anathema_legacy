@@ -12,8 +12,8 @@
  <charmAttribute attribute="Stackable" visualize="true"/>
  <oxbody trait="Resistance">
 	<pick name="Category.-1-2">
-		<OneHealthLevel/>
-		<TwoHealthLevel/>
+		<oneHealthLevel/>
+		<twoHealthLevel/>
 	</pick>
  </oxbody>
  <source source="DragonBlooded2nd"/>

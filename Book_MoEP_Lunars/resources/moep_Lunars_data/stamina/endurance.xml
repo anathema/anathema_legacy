@@ -37,18 +37,18 @@
           <charmAttribute attribute="Stackable" visualize="true" />
           <oxbody trait="Stamina">
 			<pick name="Category.-1x2">
-				<OneHealthLevel/>
-				<OneHealthLevel/>
-				<DyingHealthLevel/>
-				<DyingHealthLevel/>
+				<oneHealthLevel/>
+				<oneHealthLevel/>
+				<dyingHealthLevel/>
+				<dyingHealthLevel/>
 			</pick>
 			<pick name="Category.-2x4">
-				<TwoHealthLevel/>
-				<TwoHealthLevel/>
-				<TwoHealthLevel/>
-				<TwoHealthLevel/>
-				<DyingHealthLevel/>
-				<DyingHealthLevel/>
+				<twoHealthLevel/>
+				<twoHealthLevel/>
+				<twoHealthLevel/>
+				<twoHealthLevel/>
+				<dyingHealthLevel/>
+				<dyingHealthLevel/>
 			</pick>
 		  </oxbody>
           <source source="Lunars2nd" />
