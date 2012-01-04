@@ -6,6 +6,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -23,6 +24,14 @@ public abstract class AbstractPageEncoder implements PageEncoder {
     this.encoderRegistry = encoderRegistry;
     this.boxEncoder = new PdfBoxEncoder();
   }
+
+  protected final LayoutField encodeBox(SheetGraphics graphics, ReportContent content, LayoutField layout, String... encoderIds) {
+    GraphicsTemplate template = layout.createRenderTemplate(graphics);
+    encodeBox(template.getTemplateGraphics(), content, layout.createRenderBounds(), encoderIds);
+    layout.addTemplateToParent(template);
+    return layout;
+  }
+
 
   protected final float encodeBox(SheetGraphics graphics, ReportContent content, Bounds bounds, String... encoderIds) {
     try {
