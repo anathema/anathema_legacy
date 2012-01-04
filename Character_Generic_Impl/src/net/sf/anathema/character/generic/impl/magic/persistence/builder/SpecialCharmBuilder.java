@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
-import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.*;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -13,20 +12,11 @@ import java.util.*;
 
 public class SpecialCharmBuilder
 {
-	private static final String ATTRIB_NAME = "name";
+	public static final String ATTRIB_NAME = "name";
 	private static final String ATTRIB_MODIFIER = "modifier";
-	private static final String ATTRIB_TRAIT = "trait";
+	public static final String ATTRIB_TRAIT = "trait";
 	private static final String ATTRIB_VALUE = "value";
 	private static final String ATTRIB_ESSENCE = "essence";
-
-	private static final String TAG_OXBODY_CHARM = "oxbody";
-	private static final String TAG_OXBODY_PICK = "pick";
-	private static final String TAG_ZERO_HEALTH = "zeroHealthLevel";
-	private static final String TAG_ONE_HEALTH = "oneHealthLevel";
-	private static final String TAG_TWO_HEALTH = "twoHealthLevel";
-	private static final String TAG_FOUR_HEALTH = "fourHealthLevel";
-	private static final String TAG_INCAP_HEALTH = "incapHealthLevel";
-	private static final String TAG_DYING_HEALTH = "dyingHealthLevel";
 
 	private static final String TAG_PAIN_TOLERANCE = "painTolerance";
 	private static final String TAG_LEVEL = "level";
@@ -59,11 +49,12 @@ public class SpecialCharmBuilder
 	private static final String TAG_SUBEFFECTS = "subeffects";
 	private static final String TAG_SUBEFFECT = "subeffect";
 	private static final String TAG_BP_COST = "bpCost";
-  private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();
+    private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();
+    private final OxBodyCharmBuilder oxBodyCharmBuilder = new OxBodyCharmBuilder();
 
   public ISpecialCharm readSpecialCharm(Element charmElement, String id)
 	{
-		ISpecialCharm specialCharm = readOxBodyCharm(charmElement, id);
+		ISpecialCharm specialCharm = oxBodyCharmBuilder.readOxBodyCharm(charmElement, id);
 		specialCharm = specialCharm == null ? readPainToleranceCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readTraitCapModifierCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readTranscendenceCharm(charmElement, id) : specialCharm;
@@ -74,44 +65,6 @@ public class SpecialCharmBuilder
 		specialCharm = specialCharm == null ? readElementalCharm(charmElement, id) : specialCharm;
 		specialCharm = specialCharm == null ? readSubEffectCharm(charmElement, id) : specialCharm;
 		return specialCharm;
-	}
-
-	private ISpecialCharm readOxBodyCharm(Element charmElement, String id)
-	{
-		Element oxbodyElement = charmElement.element(TAG_OXBODY_CHARM);
-		if (oxbodyElement == null)
-			return null;
-		String[] traitNameList = oxbodyElement.attributeValue(ATTRIB_TRAIT).split(",");
-		ITraitType[] traitList = new ITraitType[traitNameList.length];
-		for (int i = 0; i != traitList.length; i++)
-			traitList[i] = traitTypeFinder.getTrait(traitNameList[i]);
-		LinkedHashMap<String, HealthLevelType[]> healthPicks = new LinkedHashMap<String, HealthLevelType[]>();
-		for (Object pickObj : oxbodyElement.elements(TAG_OXBODY_PICK))
-		{
-			Element pick = (Element)pickObj;
-			String name = pick.attributeValue(ATTRIB_NAME);
-			List<HealthLevelType> healthLevels = new ArrayList<HealthLevelType>();
-			for (Object levelObj : pick.elements())
-			{
-				Element levelElement = (Element)levelObj;
-				if (levelElement.getName().equals(TAG_ZERO_HEALTH))
-					healthLevels.add(HealthLevelType.ZERO);
-				if (levelElement.getName().equals(TAG_ONE_HEALTH))
-					healthLevels.add(HealthLevelType.ONE);
-				if (levelElement.getName().equals(TAG_TWO_HEALTH))
-					healthLevels.add(HealthLevelType.TWO);
-				if (levelElement.getName().equals(TAG_FOUR_HEALTH))
-					healthLevels.add(HealthLevelType.FOUR);
-				if (levelElement.getName().equals(TAG_INCAP_HEALTH))
-					healthLevels.add(HealthLevelType.INCAPACITATED);
-				if (levelElement.getName().equals(TAG_DYING_HEALTH))
-					healthLevels.add(HealthLevelType.DYING);
-			}
-			HealthLevelType[] levels = new HealthLevelType[healthLevels.size()];
-			healthLevels.toArray(levels);
-			healthPicks.put(name, levels);
-		}
-		return new OxBodyTechniqueCharm(id, traitList, healthPicks);
 	}
 
 	private ISpecialCharm readPainToleranceCharm(Element charmElement, String id)
