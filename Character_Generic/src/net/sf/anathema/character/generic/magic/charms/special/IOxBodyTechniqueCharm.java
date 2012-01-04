@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface IOxBodyTechniqueCharm extends ISpecialCharm {
 
-  public abstract ITraitType[] getRelevantTraits();
+  ITraitType[] getRelevantTraits();
 
-  public abstract Map<String, HealthLevelType[]> getHealthLevels();
+  Map<String, HealthLevelType[]> getHealthLevels();
 }
