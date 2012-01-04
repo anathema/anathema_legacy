@@ -148,6 +148,9 @@ task wrapper(type: Wrapper) {
 }
 
 task createModule(){
+    if (new File(moduleName).exists()){
+        throw new org.gradle.api.tasks.StopExecutionException("Module $moduleName already exists.")
+    }
     mkdir moduleName
     mkdir "$moduleName/src"
     mkdir "$moduleName/resources"
