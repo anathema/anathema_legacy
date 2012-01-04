@@ -32,20 +32,15 @@ public abstract class AbstractLabelledValueView {
   }
 
   public static Font deriveSmallerFont(Font font) {
-    Dimension screenSize = getScreenSize();
-    float fontSize = screenSize.width / 110;
+    float fontSize = getScreenWidth() / 110;
     if (fontSize >= font.getSize()) {
       return font;
     }
     return font.deriveFont(fontSize);
   }
 
-  private static Dimension getScreenSize() {
-    if (!GraphicsEnvironment.isHeadless()) {
-      return Toolkit.getDefaultToolkit().getScreenSize();
-    } else {
-      return new Dimension(1024, 768);
-    }
+  private static float getScreenWidth() {
+    return Toolkit.getDefaultToolkit().getScreenSize().width;
   }
 
   protected final JLabel titleLabel;
@@ -66,6 +61,13 @@ public abstract class AbstractLabelledValueView {
       component.setForeground(color);
     }
   }
+
+  public void setFontStyle(int style) {
+    for (JComponent component : getComponents()) {
+      component.setFont(component.getFont().deriveFont(style));
+    }
+  }
+
 
   protected Collection<JComponent> getComponents() {
     List<JComponent> components = new ArrayList<JComponent>();
