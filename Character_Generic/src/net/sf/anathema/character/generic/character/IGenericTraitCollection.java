@@ -6,11 +6,11 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface IGenericTraitCollection {
 
-  public IGenericTrait getTrait(ITraitType type);
+  IGenericTrait getTrait(ITraitType type);
 
-  public IGenericTrait[] getTraits(ITraitType[] traitTypes);
+  IGenericTrait[] getTraits(ITraitType[] traitTypes);
 
-  public IFavorableGenericTrait getFavorableTrait(ITraitType type);
+  IFavorableGenericTrait getFavorableTrait(ITraitType type);
 
-  public boolean isFavoredOrCasteTrait(ITraitType type);
+  boolean isFavoredOrCasteTrait(ITraitType type);
 }

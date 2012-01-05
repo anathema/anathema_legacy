@@ -9,6 +9,7 @@ import net.infonode.tabbedpanel.TabDropDownListVisiblePolicy;
 import net.infonode.tabbedpanel.TabbedPanel;
 import net.infonode.tabbedpanel.TabbedPanelProperties;
 import net.infonode.tabbedpanel.titledtab.TitledTab;
+import net.infonode.util.Direction;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.widgets.RevalidatingScrollPane;
 
@@ -16,7 +17,8 @@ public class TabbedView implements IView {
 
   private static void initTabbedPaneProperties(TabbedPanelProperties paneProperties, TabDirection tabDirection) {
     paneProperties.removeSuperObject(paneProperties);
-    paneProperties.setTabAreaOrientation(tabDirection.getDirection());
+    Direction direction = tabDirection.getDirection();
+    paneProperties.setTabAreaOrientation(direction);
     paneProperties.setTabReorderEnabled(false);
     paneProperties.setTabDeselectable(false);
     paneProperties.setEnsureSelectedTabVisible(true);
