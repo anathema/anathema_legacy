@@ -79,7 +79,7 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
     distanceFromTop += calculateBoxIncrement(armourHeight);
     float healthHeight = encodeMovementAndHealth(graphics, content, distanceFromTop, 99);
     distanceFromTop += calculateBoxIncrement(healthHeight);
-    float remainingHeight = PageEncoder.CONTENT_HEIGHT - distanceFromTop;
+    float remainingHeight = PageEncoder.FIXED_CONTENT_HEIGHT - distanceFromTop;
     encodeCombatStats(graphics, content, distanceFromTop, remainingHeight);
     encodeAbilities(graphics, content, abilityStartHeight, remainingHeight + PADDING);
     encodeGifts(graphics, content, distanceFromTop, remainingHeight);
@@ -116,7 +116,7 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
   }
 
   private void encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop, float remainingHeightRequired) throws DocumentException {
-    float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop - remainingHeightRequired;
+    float abilitiesHeight = FIXED_CONTENT_HEIGHT - distanceFromTop - remainingHeightRequired;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
     ContentEncoder encoder = AbilitiesEncoder.createWithSpecialtiesOnly(resources, 11);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);

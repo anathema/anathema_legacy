@@ -7,6 +7,7 @@ public interface EncoderIds {
   String ANIMA = "Anima";
   String ARSENAL = "Arsenal";
   String ATTRIBUTES = "Attributes";
+  String BACKGROUNDS = "Backgrounds";
   String COMBAT = "Combat";
   String ESSENCE_SIMPLE = "EssenceSimple";
   String EXPERIENCE = "Experience";

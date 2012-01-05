@@ -15,14 +15,14 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ABILITIES_WITH_CRAFTS_AND_SPECIALTIES;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ANIMA;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ATTRIBUTES;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.BACKGROUNDS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.COMBAT;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ESSENCE_SIMPLE;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.GREAT_CURSE;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.EXPERIENCE;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.HEALTH_AND_MOVEMENT;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.INTIMACIES_SIMPLE;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.LANGUAGES;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.MERITS_AND_FLAWS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.NOTES;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.PANOPLY;
@@ -31,7 +31,7 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.SOCIA
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.VIRTUES;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.WILLPOWER_SIMPLE;
 
-public class FirstPageEncoder implements PageEncoder {
+public class MortalPageEncoder implements PageEncoder {
 
   private static final float ANIMA_HEIGHT = 128;
   private static final int ATTRIBUTE_HEIGHT = 128;
@@ -45,7 +45,7 @@ public class FirstPageEncoder implements PageEncoder {
   private IResources resources;
   private final PageConfiguration configuration;
 
-  public FirstPageEncoder(EncoderRegistry encoders, IResources resources, PageConfiguration configuration) {
+  public MortalPageEncoder(EncoderRegistry encoders, IResources resources, PageConfiguration configuration) {
     this.encoders = encoders;
     this.resources = resources;
     this.configuration = configuration;
@@ -56,14 +56,14 @@ public class FirstPageEncoder implements PageEncoder {
     SheetPage page = createPage(graphics, content);
     Body body = createBody();
     LayoutField personalInfo = page.place(PERSONAL_INFO).atStartOf(body).withHeight(FIRST_ROW_HEIGHT).spanningTwoColumns().now();
-    LayoutField essence = page.place(ESSENCE_SIMPLE).rightOf(personalInfo).withSameHeight().now();
+    LayoutField experience = page.place(EXPERIENCE).rightOf(personalInfo).withSameHeight().now();
     LayoutField attributes = page.place(ATTRIBUTES).below(personalInfo).withHeight(ATTRIBUTE_HEIGHT).now();
     page.place(ABILITIES_WITH_CRAFTS_AND_SPECIALTIES).below(attributes).fillToBottomOfPage().now();
-    LayoutField anima = page.place(ANIMA).below(essence).withHeight(ANIMA_HEIGHT).now();
-    LayoutField social = page.place(SOCIAL_COMBAT, MERITS_AND_FLAWS).below(anima).withHeight(SOCIAL_COMBAT_HEIGHT).now();
+    LayoutField backgrounds = page.place(BACKGROUNDS).below(experience).withHeight(ANIMA_HEIGHT).now();
+    LayoutField social = page.place(SOCIAL_COMBAT, MERITS_AND_FLAWS).below(backgrounds).withHeight(SOCIAL_COMBAT_HEIGHT).now();
     LayoutField virtues = page.place(VIRTUES).rightOf(attributes).withHeight(VIRTUE_HEIGHT).now();
-    LayoutField greatCurse = page.place(GREAT_CURSE).below(virtues).alignBottomTo(anima).now();
-    LayoutField willpower = page.place(WILLPOWER_SIMPLE).below(greatCurse).withHeight(WILLPOWER_HEIGHT).now();
+    LayoutField languages = page.place(LANGUAGES).below(virtues).alignBottomTo(backgrounds).now();
+    LayoutField willpower = page.place(WILLPOWER_SIMPLE).below(languages).withHeight(WILLPOWER_HEIGHT).now();
     LayoutField intimacies = page.place(INTIMACIES_SIMPLE, NOTES).below(willpower).alignBottomTo(social).now();
     float preferredArsenalHeight = page.getPreferredEncoderHeight(ARSENAL);
     LayoutField arsenal = page.place(ARSENAL).below(intimacies).withHeight(preferredArsenalHeight).spanningTwoColumns().now();
