@@ -23,13 +23,13 @@ import java.util.List;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class SimpleSecondPageEncoder extends AbstractPageEncoder {
+public class SecondPageEncoder extends AbstractPageEncoder {
 
   private final PageConfiguration configuration;
   private final PdfBoxEncoder boxEncoder;
   private final IResources resources;
 
-  public SimpleSecondPageEncoder(EncoderRegistry encoders, IResources resources, PageConfiguration configuration) {
+  public SecondPageEncoder(EncoderRegistry encoders, IResources resources, PageConfiguration configuration) {
     super(resources, encoders);
     this.resources = resources;
     this.configuration = configuration;
@@ -73,12 +73,12 @@ public class SimpleSecondPageEncoder extends AbstractPageEncoder {
     return new PdfComboEncoder(resources).encodeCombos(graphics, content, restOfPage);
   }
 
-  private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) {
     Bounds bounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
     return encodeBox(graphics, content, bounds, EncoderIds.EXPERIENCE);
   }
 
-  private float encodeLanguages(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeLanguages(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) {
     Bounds bounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
     return encodeBox(graphics, content, bounds, EncoderIds.LANGUAGES);
   }
@@ -90,7 +90,7 @@ public class SimpleSecondPageEncoder extends AbstractPageEncoder {
     return height;
   }
 
-  private float encodePossessions(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodePossessions(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) {
     Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
     return encodeBox(graphics, content, bounds, EncoderIds.POSSESSIONS);
   }

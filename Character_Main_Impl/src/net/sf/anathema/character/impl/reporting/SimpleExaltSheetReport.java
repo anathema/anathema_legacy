@@ -15,7 +15,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.FirstPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleSecondPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.SecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
@@ -29,6 +29,8 @@ import net.sf.anathema.lib.resources.IResources;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static java.text.MessageFormat.format;
 
 public class SimpleExaltSheetReport implements IITextReport {
 
@@ -44,10 +46,12 @@ public class SimpleExaltSheetReport implements IITextReport {
 
   @Override
   public String toString() {
-    return resources.getString("CharacterModule.Reporting.SecondEdition.Name") + " (" + resources.getString("PageSize." + pageSize.name()) +
-            ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+    String name = resources.getString("CharacterModule.Reporting.SecondEdition.Name");
+    String pageFormat = resources.getString("PageSize." + pageSize.name());
+    return format("{0} ({1})", name, pageFormat);
   }
 
+  @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     ICharacter stattedCharacter = (ICharacter) item.getItemData();
     document.setPageSize(pageSize.getRectangle());
@@ -61,7 +65,7 @@ public class SimpleExaltSheetReport implements IITextReport {
       encoderList.add(new FirstPageEncoder(getEncoderRegistry(), resources, configuration));
       ReportContent content = new ReportContent(getContentRegistry(), character, description);
       Collections.addAll(encoderList, findAdditionalPages(configuration, content));
-      encoderList.add(new SimpleSecondPageEncoder(getEncoderRegistry(), resources, configuration));
+      encoderList.add(new SecondPageEncoder(getEncoderRegistry(), resources, configuration));
       boolean isFirstPrinted = false;
       for (PageEncoder encoder : encoderList) {
         if (isFirstPrinted) {
@@ -95,6 +99,7 @@ public class SimpleExaltSheetReport implements IITextReport {
     return moduleObject.getContentRegistry();
   }
 
+  @Override
   public boolean supports(IItem item) {
     if (item == null) {
       return false;
