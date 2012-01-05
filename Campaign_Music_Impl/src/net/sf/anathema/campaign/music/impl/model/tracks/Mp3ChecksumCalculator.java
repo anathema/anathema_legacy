@@ -45,7 +45,7 @@ public class Mp3ChecksumCalculator {
     if (!hasFrontV2) {
       return 0;
     }
-    boolean footer = ((fileData[5] / 16) % 2 == 1);
+    boolean footer = ((fileData[5] / 16) % 2 != 0);
     int dataSize = ((fileData[6] * 128 + fileData[7]) * 128 + fileData[8]) * 128 + fileData[9];
     int v2Size = 10 + dataSize + (footer ? 10 : 0);
     return v2Size;
