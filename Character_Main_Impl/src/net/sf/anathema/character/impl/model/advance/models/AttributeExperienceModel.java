@@ -44,4 +44,14 @@ public class AttributeExperienceModel extends AbstractIntegerValueModel {
 	    }
 	    return traitConfiguration.getFavorableTraits(attributeTypes.toArray(new ITraitType[attributeTypes.size()]));
 	  }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
 }

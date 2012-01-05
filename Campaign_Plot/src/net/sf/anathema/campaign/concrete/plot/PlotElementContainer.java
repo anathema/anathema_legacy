@@ -142,4 +142,14 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
     children.add(index, plotElement);
     fireChildInsertedEvent(plotElement, index);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
 }

@@ -36,4 +36,14 @@ public class TemplateTypeBackgroundTemplate extends AbstractBackgroundTemplate {
   public LowerableState getExperiencedState() {
     return experiencedState;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
 }

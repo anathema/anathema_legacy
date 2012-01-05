@@ -99,4 +99,14 @@ public class IdentifiedRegularNode extends Identificate implements IIdentifiedRe
   public String toString() {
     return getId() + " (Layer:" + getLayer() + ")"; //$NON-NLS-1$//$NON-NLS-2$
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
 }

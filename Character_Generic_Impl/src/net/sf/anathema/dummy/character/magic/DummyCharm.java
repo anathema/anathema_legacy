@@ -243,4 +243,14 @@ public class DummyCharm extends Identificate implements ICharm {
   public boolean hasChildren() {
     return false;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
 }

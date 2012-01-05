@@ -24,4 +24,14 @@ public class FavoredCharmModel extends AbstractSpendingModel {
   public int getAlotment() {
     return creationPoints.getFavoredCreationCharmCount();
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
 }

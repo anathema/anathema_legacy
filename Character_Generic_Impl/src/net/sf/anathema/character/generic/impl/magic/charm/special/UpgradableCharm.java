@@ -109,6 +109,16 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 	  {
 		  return requiresBase;
 	  }
+
+	  @Override
+	  public boolean equals(Object obj) {
+	    return super.equals(obj);
+	  }
+
+	  @Override
+	  public int hashCode() {
+	    return super.hashCode();
+	  }
 	  
 	  private static class Upgrade extends Subeffect
 	  {
@@ -131,6 +141,16 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 		{
 			return xpCost;
 		}
+
+  	  @Override
+  	  public boolean equals(Object obj) {
+  	    return super.equals(obj);
+  	  }
+  
+  	  @Override
+  	  public int hashCode() {
+  	    return super.hashCode();
+  	  }
 		  
 	  }
 }

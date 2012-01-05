@@ -89,4 +89,14 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
   {
 	  return statistics.getCharms().getSpecialCharmConfiguration(charm) != null;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
 }

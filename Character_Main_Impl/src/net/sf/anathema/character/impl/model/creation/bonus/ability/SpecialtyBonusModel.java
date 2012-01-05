@@ -24,4 +24,14 @@ public class SpecialtyBonusModel extends AbstractSpendingModel {
   public int getAlotment() {
     return creationPoints.getSpecialtyCreationPoints();
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
 }

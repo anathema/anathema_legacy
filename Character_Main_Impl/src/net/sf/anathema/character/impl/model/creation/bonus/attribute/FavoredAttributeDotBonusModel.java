@@ -25,4 +25,14 @@ public class FavoredAttributeDotBonusModel extends AbstractSpendingModel {
   public int getAlotment() {
     return creationPoints.getAttributeCreationPoints().getExtraFavoredDotCount();
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
 }

@@ -40,4 +40,14 @@ public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
     ITraitTypeGroup[] groups = configuration.getAbilityTypeGroups();
     return TraitTypeGroup.getAllTraitTypes(groups);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
 }

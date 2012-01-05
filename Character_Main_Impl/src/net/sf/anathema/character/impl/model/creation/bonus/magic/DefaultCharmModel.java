@@ -65,4 +65,14 @@ public class DefaultCharmModel extends AbstractAdditionalSpendingModel {
   public int getRequiredSize() {
     return 3;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
 }
