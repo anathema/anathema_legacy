@@ -19,7 +19,7 @@ public class PriorityLayer extends Layer {
 	
 	public void checkOverlaps() {
 		for (int i = 0; i < nodes.size() - 1; i++) {
-			assert compareIntegers(getRightSideSlack(nodes.get(i)) ,getLeftSideSlack(nodes.get(i + 1))) : "Bad slack calculation";
+			assert compareIntegers(getRightSideSlack(nodes.get(i)), getLeftSideSlack(nodes.get(i + 1))) : "Bad slack calculation";
 			if (getRightSideSlack(nodes.get(i)) < 0) {
 				String nodeID = "stand-in";
 				String nextNodeID = "stand-in";
