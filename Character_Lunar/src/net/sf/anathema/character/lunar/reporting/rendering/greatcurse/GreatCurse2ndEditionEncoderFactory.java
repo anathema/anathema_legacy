@@ -15,8 +15,8 @@ public class GreatCurse2ndEditionEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new GreatCurse2ndEditionEncoder();
-   }
+    return new GreatCurse2ndEditionEncoder(resources);
+  }
 
   @Override
   public boolean supports(BasicContent content) {

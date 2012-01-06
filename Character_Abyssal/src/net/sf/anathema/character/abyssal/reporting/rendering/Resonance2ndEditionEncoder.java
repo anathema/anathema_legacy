@@ -8,14 +8,18 @@ import net.sf.anathema.character.abyssal.reporting.content.Abyssal2ndResonanceCo
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
-public class Resonance2ndEditionEncoder implements ContentEncoder {
+public class Resonance2ndEditionEncoder extends AbstractBoxContentEncoder<Abyssal2ndResonanceContent> {
 
   private final VirtueFlawBoxEncoder traitEncoder = new VirtueFlawBoxEncoder();
+
+  public Resonance2ndEditionEncoder() {
+    super(Abyssal2ndResonanceContent.class);
+  }
 
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     Abyssal2ndResonanceContent content = createContent(reportContent);
@@ -25,8 +29,7 @@ public class Resonance2ndEditionEncoder implements ContentEncoder {
     if (content.isComplete()) {
       phrase.add(new Chunk(content.getFlawedVirtue()));
       phrase.add(".\n");  //$NON-NLS-1$
-    }
-    else {
+    } else {
       phrase.add(new Chunk("                                          ", createUndefinedFont(graphics))); //$NON-NLS-1$
       phrase.add(".\n");
     }
@@ -48,17 +51,5 @@ public class Resonance2ndEditionEncoder implements ContentEncoder {
     Font newFont = createDefaultFont(graphics);
     newFont.setStyle(Font.UNDERLINE);
     return newFont;
-  }
-
-  private Abyssal2ndResonanceContent createContent(ReportContent content) {
-    return content.createSubContent(Abyssal2ndResonanceContent.class);
-  }
-
-  public String getHeaderKey(ReportContent content) {
-    return createContent(content).getHeaderKey();
-  }
-
-  public boolean hasContent(ReportContent content) {
-    return createContent(content).hasContent();
   }
 }

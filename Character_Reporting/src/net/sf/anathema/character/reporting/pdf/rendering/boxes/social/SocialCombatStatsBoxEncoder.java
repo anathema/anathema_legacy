@@ -28,10 +28,7 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
     this.resources = resources;
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "SocialCombat"; //$NON-NLS-1$
-  }
-
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     IEquipmentModifiers equipment = reportContent.getCharacter().getEquipmentModifiers();
     float valueWidth = bounds.width;
@@ -54,7 +51,7 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
   private void encodeDVTable(SheetGraphics graphics, Bounds bounds) throws DocumentException {
     Font font = graphics.createTableFont();
     Font commentFont = graphics.createCommentFont();
-    float[] columnWidths = new float[] { 4, 5 };
+    float[] columnWidths = new float[]{4, 5};
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
     String header = resources.getString("Sheet.SocialCombat.DVModifiers.Header"); //$NON-NLS-1$
@@ -86,7 +83,7 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
   private float encodeActionTable(SheetGraphics graphics, Bounds bounds) throws DocumentException {
     Font font = graphics.createTableFont();
     Font commentFont = graphics.createCommentFont();
-    float[] columnWidths = new float[] { 4, 2.5f, 2f };
+    float[] columnWidths = new float[]{4, 2.5f, 2f};
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
     String header = resources.getString("Sheet.SocialCombat.CommonActions.Header"); //$NON-NLS-1$
@@ -139,6 +136,12 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
     return encoder.getHeight() + 1;
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.SocialCombat");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

@@ -136,7 +136,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   @Test
-  public void testGeneralDotsUsedForFavoredAbiltiesOverFavoredDots() throws Exception {
+  public void testGeneralDotsUsedForFavoredAbilitiesOverFavoredDots() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 4, 5);
     IFavorableDefaultTrait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
     IFavorableDefaultTrait secondFavored = setFavoredAbilityTo(AbilityType.Occult, 3);
@@ -163,7 +163,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   @Test
-  public void testFavoredDotsForFavoredAbilitesLessThan3() throws Exception {
+  public void testFavoredDotsForFavoredAbilitiesLessThan3() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
     IFavorableDefaultTrait favoredAbility = setFavoredAbilityTo(AbilityType.Melee, 3);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
@@ -183,7 +183,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   @Test
-  public void testGeneralDotsForUnfavoredAbiltyLessThan3() throws Exception {
+  public void testGeneralDotsForUnfavoredAbilityLessThan3() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
     IFavorableTrait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 3);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
@@ -203,7 +203,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   @Test
-  public void testBonusPointsForFavoredAbliltyAbove3() throws Exception {
+  public void testBonusPointsForFavoredAbilityAbove3() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
     IFavorableTrait favoredAbility = setFavoredAbilityTo(AbilityType.Melee, 4);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
@@ -223,7 +223,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   @Test
-  public void testRaiseUnfavoredAbliltyAbove3() throws Exception {
+  public void testRaiseUnfavoredAbilityAbove3() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
     IFavorableTrait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 4);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);

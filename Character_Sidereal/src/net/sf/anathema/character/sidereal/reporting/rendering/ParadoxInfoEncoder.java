@@ -25,6 +25,7 @@ public class ParadoxInfoEncoder implements ContentEncoder {
     this.edition = edition;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     String animaResource = edition == ExaltedEdition.FirstEdition ? "Sheet.Paradox.AnimaHigh" : "Sheet.Paradox.AnimaHigh2nd";
     Phrase phrase = new Phrase("", graphics.createFont(fontSize)); //$NON-NLS-1$
@@ -46,10 +47,12 @@ public class ParadoxInfoEncoder implements ContentEncoder {
     graphics.createSimpleColumn(bounds).withLeading(lineHeight).andTextPart(phrase).encode();
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Sidereal.Paradox"; //$NON-NLS-1$
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Sidereal.Paradox");
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

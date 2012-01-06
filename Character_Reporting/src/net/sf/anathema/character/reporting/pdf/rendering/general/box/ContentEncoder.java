@@ -7,9 +7,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public interface ContentEncoder {
 
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException;
+  void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException;
 
-  public boolean hasContent(ReportContent content);
+  boolean hasContent(ReportContent content);
 
-  public String getHeaderKey(ReportContent content);
+  String getHeader(ReportContent content);
 }

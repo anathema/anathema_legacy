@@ -192,18 +192,6 @@ public class Charm extends Identificate implements ICharm {
     return mergedCharms;
   }
 
-  public boolean isFreeByMerged(IMagicCollection magicCollection) {
-    for (Set<ICharm> merged : merges) {
-      for (ICharm charm : merged) {
-        boolean isThis = charm.getId().equals(getId());
-        if (!isThis && magicCollection.isLearned(charm)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
   public Set<ICharm> getParentCharms() {
     return new HashSet<ICharm>(parentCharms);
   }

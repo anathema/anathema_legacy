@@ -42,12 +42,8 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
     return effectList.toArray(new ISubeffect[effectList.size()]);
   }
 
-  private ICondition buildLearnCondition(final ICharmLearnableArbitrator arbitrator, final ICharm charm) {
-    return new ICondition() {
-      public boolean isFulfilled() {
-        return arbitrator.isLearnable(charm);
-      }
-    };
+  private ICondition buildLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm) {
+    return new ArbitratorLearnCondition(arbitrator, charm);
   }
   
   private static boolean strEquals(String a, String b) {

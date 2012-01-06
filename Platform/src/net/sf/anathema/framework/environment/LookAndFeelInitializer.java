@@ -15,51 +15,60 @@ public class LookAndFeelInitializer {
   public LookAndFeelInitializer(IAnathemaPreferences anathemaPreferences) {
     this.anathemaPreferences = anathemaPreferences;
   }
-  
-  private static boolean trySetLookAndFeel(String lafClassName) {
-    boolean success = false;
-    try {
-      if (isAqua(lafClassName)) {
-        System.setProperty(AQUA_USE_SCREEN_MENU_BAR, "true"); //$NON-NLS-1$
-        System.setProperty(AQUA_APPLICATION_NAME, "Anathema"); //$NON-NLS-1$ //$NON-NLS-2$
-      }
-
-      UIManager.setLookAndFeel(lafClassName);
-      success = true;
-    } catch (Exception e) {
-      // Simply ignore all the exceptions and return that it was not possible.
-      // We don't want to crash for not being able to set the L&F.
-      Logger logger = Logger.getLogger(LookAndFeelInitializer.class);
-      logger.warn("Failed to use the Look and Feel: " + lafClassName, e); //$NON-NLS-1$
-    }
-    
-    return success;
-  }
 
   public void initialize()
-      throws InstantiationException,
-      IllegalAccessException,
-      ClassNotFoundException,
-      UnsupportedLookAndFeelException {
+          throws InstantiationException,
+          IllegalAccessException,
+          ClassNotFoundException,
+          UnsupportedLookAndFeelException {
+    makeCombosLookBetterOnAnyLookAndFeel();
+    String lookAndFeelClassName = getLookAndFeelToUse();
+    setLookAndFeel(lookAndFeelClassName);
+  }
 
-    // This property was always set by this method, so I (kelemen@github.com) moved it forward.
-    // Still I'm not sure that setting this property always is a good thing to do.
+  private void makeCombosLookBetterOnAnyLookAndFeel() {
     System.getProperties().put("swing.addon", "com.l2fprod.common.swing.plaf.aqua.AquaLookAndFeelAddons"); //$NON-NLS-1$//$NON-NLS-2$
+  }
 
-    // Try to use the value in the settings if it was set.
+  private String getLookAndFeelToUse() {
     String lookAndFeelClassName = anathemaPreferences.getUserLookAndFeel();
     if (lookAndFeelClassName == null) {
       lookAndFeelClassName = UIManager.getSystemLookAndFeelClassName();
     }
+    return lookAndFeelClassName;
+  }
 
-    if (!trySetLookAndFeel(lookAndFeelClassName)) {
-      trySetLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-      // In case we have failed again, use the current look and feel
-      // which is still better than a crash.
+  private void setLookAndFeel(String lookAndFeelClassName) {
+    boolean successfullySet = trySetLookAndFeel(lookAndFeelClassName);
+    if (!successfullySet) {
+      fallBackToSystemLookAndFeel();
+    }
+  }
+
+  private void fallBackToSystemLookAndFeel() {
+    trySetLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+  }
+
+  private boolean trySetLookAndFeel(String lafClassName) {
+    try {
+      if (isAqua(lafClassName)) {
+        integrateMenuWithMacOS();
+      }
+      UIManager.setLookAndFeel(lafClassName);
+      return true;
+    } catch (Exception e) {
+      Logger logger = Logger.getLogger(LookAndFeelInitializer.class);
+      logger.warn("Failed to use the Look and Feel: " + lafClassName, e); //$NON-NLS-1$
+      return false;
     }
   }
 
   private static boolean isAqua(String lookAndFeelClassName) {
     return lookAndFeelClassName.contains(AQUA_LOOK_AND_FEEL_CLASSNAME);
+  }
+
+  private void integrateMenuWithMacOS() {
+    System.setProperty(AQUA_USE_SCREEN_MENU_BAR, "true"); //$NON-NLS-1$
+    System.setProperty(AQUA_APPLICATION_NAME, "Anathema"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 }

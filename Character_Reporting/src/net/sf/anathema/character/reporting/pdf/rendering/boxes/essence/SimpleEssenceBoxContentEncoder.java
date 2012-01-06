@@ -6,18 +6,22 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.essence.SimpleEssenceContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import static com.lowagie.text.pdf.PdfContentByte.ALIGN_RIGHT;
 
-public class SimpleEssenceBoxContentEncoder implements ContentEncoder {
+public class SimpleEssenceBoxContentEncoder extends AbstractBoxContentEncoder<SimpleEssenceContent> {
+
+  public SimpleEssenceBoxContentEncoder() {
+    super(SimpleEssenceContent.class);
+  }
 
   @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     SimpleEssenceContent content = createContent(reportContent);
-    SimpleEssenceBoxLayout layout = new SimpleEssenceBoxLayout(graphics, bounds, content.getNumberOfPoolLines());
+    SimpleEssenceBoxLayout layout = new SimpleEssenceBoxLayout(graphics.getTextMetrics(), bounds, content.getNumberOfPoolLines());
     encodeEssenceTrait(graphics, content, layout);
     encodePersonalPool(graphics, content, layout);
     encodePeripheralPool(graphics, content, layout);
@@ -47,24 +51,11 @@ public class SimpleEssenceBoxContentEncoder implements ContentEncoder {
     }
   }
 
-  private void encodePool(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceBoxLayout layout, String label, String poolValue,
-    Position poolPosition) {
+  private void encodePool(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceBoxLayout layout, String label, String poolValue, Position poolPosition) {
     graphics.drawText(label, poolPosition, PdfContentByte.ALIGN_LEFT);
     graphics.drawText(content.getAvailableText(), layout.getAvailablePositionRightAligned(poolPosition), ALIGN_RIGHT);
     Position availableLineStart = layout.getAvailableLineStart(poolPosition, content.getAvailableText());
     graphics.drawMissingTextLine(availableLineStart, layout.getMissingValueLineLength());
     graphics.drawText(content.getTotalString(poolValue), availableLineStart, ALIGN_RIGHT);
-  }
-
-  public String getHeaderKey(ReportContent content) {
-    return createContent(content).getHeaderKey();
-  }
-
-  public boolean hasContent(ReportContent content) {
-    return createContent(content).hasContent();
-  }
-
-  private SimpleEssenceContent createContent(ReportContent content) {
-    return content.createSubContent(SimpleEssenceContent.class);
   }
 }

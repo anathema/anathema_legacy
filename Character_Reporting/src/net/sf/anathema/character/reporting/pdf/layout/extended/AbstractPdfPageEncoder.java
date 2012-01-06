@@ -14,8 +14,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncod
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractPdfPageEncoder implements PageEncoder {
@@ -27,14 +27,13 @@ public abstract class AbstractPdfPageEncoder implements PageEncoder {
   private final IExtendedPartEncoder partEncoder;
   private final PdfBoxEncoder boxEncoder;
 
-  public AbstractPdfPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources,
-    PageConfiguration pageConfiguration) {
+  public AbstractPdfPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, PageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
     this.registry = registry;
     this.baseFont = registry.getBaseFont();
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;
-    this.boxEncoder = new PdfBoxEncoder(resources);
+    this.boxEncoder = new PdfBoxEncoder();
   }
 
   public abstract void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException;
@@ -53,15 +52,13 @@ public abstract class AbstractPdfPageEncoder implements PageEncoder {
     Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92011\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$
     anathemaPhrase.setReference("http://anathema.sf.net"); //$NON-NLS-1$
     Bounds anathemaBounds = getPageConfiguration().getSecondColumnRectangle(getContentHeight(), copyrightHeight, 1);
-    graphics.createSimpleColumn(anathemaBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Center).andTextPart(anathemaPhrase).encode
-      ();
+    graphics.createSimpleColumn(anathemaBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Center).andTextPart(anathemaPhrase).encode();
     Anchor whitewolfPhrase = new Anchor("Exalted \u00A92011 by White Wolf, Inc.\nhttp://www.white-wolf.com", //$NON-NLS-1$
-      copyrightFont);
+            copyrightFont);
     whitewolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
 
     Bounds whitewolfBounds = getPageConfiguration().getThirdColumnRectangle(getContentHeight(), copyrightHeight);
-    graphics.createSimpleColumn(whitewolfBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Right).andTextPart(whitewolfPhrase)
-      .encode();
+    graphics.createSimpleColumn(whitewolfBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Right).andTextPart(whitewolfPhrase).encode();
   }
 
   protected ExtendedEncodingRegistry getRegistry() {
@@ -129,33 +126,28 @@ public abstract class AbstractPdfPageEncoder implements PageEncoder {
     return 0;
   }
 
-  protected float encodeFixedBox(SheetGraphics graphics, ReportContent content, ContentEncoder encoder, int column, int span, float distanceFromTop,
-    float height) throws DocumentException {
+  protected float encodeFixedBox(SheetGraphics graphics, ReportContent content, ContentEncoder encoder, int column, int span, float distanceFromTop, float height) throws DocumentException {
     getBoxEncoder().encodeBox(content, graphics, encoder, calculateBounds(column, span, distanceFromTop, height));
     return height;
   }
 
-  protected float encodeFixedBoxBottom(SheetGraphics graphics, ReportContent content, ContentEncoder encoder, int column, int span, float bottom,
-    float height) throws DocumentException {
+  protected float encodeFixedBoxBottom(SheetGraphics graphics, ReportContent content, ContentEncoder encoder, int column, int span, float bottom, float height) throws DocumentException {
     getBoxEncoder().encodeBox(content, graphics, encoder, calculateBounds(column, span, bottom - height, height));
     return height;
   }
 
-  protected float encodeVariableBox(SheetGraphics graphics, ReportContent content, IVariableContentEncoder encoder, int column, int span,
-    float distanceFromTop, float maxHeight) throws DocumentException {
+  protected float encodeVariableBox(SheetGraphics graphics, ReportContent content, IVariableContentEncoder encoder, int column, int span, float distanceFromTop, float maxHeight) throws DocumentException {
     float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(graphics, encoder, content, getWidth(column, span)));
     return encodeFixedBox(graphics, content, encoder, column, span, distanceFromTop, height);
   }
 
-  protected float encodeVariableBoxBottom(SheetGraphics graphics, ReportContent content, IVariableContentEncoder encoder, int column, int span,
-    float bottom, float maxHeight) throws DocumentException {
+  protected float encodeVariableBoxBottom(SheetGraphics graphics, ReportContent content, IVariableContentEncoder encoder, int column, int span, float bottom, float maxHeight) throws DocumentException {
     float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(graphics, encoder, content, getWidth(column, span)));
     return encodeFixedBoxBottom(graphics, content, encoder, column, span, bottom, height);
   }
 
-  protected float encodeNotes(SheetGraphics graphics, ReportContent content, String title, int column, int span, float distanceFromTop, float height,
-    int textColumns) throws DocumentException {
-    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(textColumns, title);
+  protected float encodeNotes(SheetGraphics graphics, ReportContent content, String title, int column, int span, float distanceFromTop, float height, int textColumns) throws DocumentException {
+    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(textColumns, resources, title);
     return encodeFixedBox(graphics, content, encoder, column, span, distanceFromTop, height);
   }
 }

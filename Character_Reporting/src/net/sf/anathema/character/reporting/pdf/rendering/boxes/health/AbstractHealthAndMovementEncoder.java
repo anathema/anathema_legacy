@@ -18,7 +18,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.Color;
+import java.awt.*;
 
 public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder {
 
@@ -28,10 +28,7 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     this.resources = resources;
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "MovementHealth"; //$NON-NLS-1$
-  }
-
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     Bounds tableBounds = new Bounds(bounds.x, bounds.y, (bounds.width * 0.66f), bounds.height);
     ITableEncoder tableEncoder = createTableEncoder();
@@ -65,21 +62,21 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     final String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
     String bashingString = createSpacedString;
     graphics.drawComment(bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
-    xPosition += graphics.getCommentTextWidth(bashingString);
+    xPosition += graphics.getTextMetrics().getCommentTextWidth(bashingString);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
     PdfTemplate lethalTemplate = HealthTemplateFactory.createLethalTemplate(graphics.getDirectContent(), Color.GRAY);
     graphics.getDirectContent().addTemplate(lethalTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String lethalString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageLethal")); //$NON-NLS-1$
     graphics.drawComment(lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
-    xPosition += graphics.getCommentTextWidth(lethalString);
+    xPosition += graphics.getTextMetrics().getCommentTextWidth(lethalString);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
     PdfTemplate aggravatedTemplate = HealthTemplateFactory.createAggravatedTemplate(graphics.getDirectContent(), Color.GRAY);
     graphics.getDirectContent().addTemplate(aggravatedTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String aggravatedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageAggravated")); //$NON-NLS-1$
     graphics.drawComment(aggravatedString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
-    xPosition += graphics.getCommentTextWidth(lethalString);
+    xPosition += graphics.getTextMetrics().getCommentTextWidth(lethalString);
   }
 
   private String createSpacedString(final String string) {
@@ -108,8 +105,7 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     healthText.add(graphics.createSymbolChunk());
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.DeathHeader"), commentTitleFont)); //$NON-NLS-1$
     healthText.add(seperator);
-    healthText
-      .add(new Chunk(resources.getString("Sheet." + getEdition().getId() + ".Health.Comment.DeathText"), commentFont)); //$NON-NLS-1$ //$NON-NLS-2$
+    healthText.add(new Chunk(resources.getString("Sheet." + getEdition().getId() + ".Health.Comment.DeathText"), commentFont)); //$NON-NLS-1$ //$NON-NLS-2$
     healthText.add(newLine);
     healthText.add(graphics.createSymbolChunk());
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.MarkDamageHeader"), commentTitleFont)); //$NON-NLS-1$
@@ -117,6 +113,12 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     return healthText;
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.MovementHealth");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

@@ -29,7 +29,7 @@ public class NullEncoderFactory extends Identificate implements EncoderFactory {
   }
 
   @Override
-  public float getValue(BasicContent content, EncoderAttributeType type) {
+  public float getValue(EncodingMetrics metrics, EncoderAttributeType type) {
     throw new UnsupportedOperationException();
   }
 }

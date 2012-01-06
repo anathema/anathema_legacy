@@ -18,6 +18,6 @@ public class PanoplyEncoderFactory extends GlobalEncoderFactory {
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new ArmourEncoder(new ArmourTableEncoder(ArmourContent.class));
+    return new ArmourEncoder(resources, new ArmourTableEncoder(ArmourContent.class));
   }
 }

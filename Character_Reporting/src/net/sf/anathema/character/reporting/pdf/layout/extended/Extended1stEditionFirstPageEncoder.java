@@ -7,17 +7,18 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
@@ -36,20 +37,19 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
   private EncoderRegistry encoderRegistry;
   private final IExtendedPartEncoder partEncoder;
 
-  public Extended1stEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
-    IResources resources, int essenceMax, PageConfiguration pageConfiguration) {
+  public Extended1stEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, int essenceMax, PageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;
     this.essenceMax = essenceMax;
     this.resources = resources;
     this.registry = registry;
     this.pageConfiguration = pageConfiguration;
-    this.boxEncoder = new PdfBoxEncoder(resources);
+    this.boxEncoder = new PdfBoxEncoder();
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws
 
-    DocumentException {
+          DocumentException {
     int distanceFromTop = 0;
     int firstRowHeight = 51;
     encodePersonalInfo(graphics, content, distanceFromTop, firstRowHeight);
@@ -109,7 +109,7 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
   private void encodeAbilities(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     float abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    ContentEncoder encoder = AbilitiesBoxContentEncoder.createWithCraftsAndSpecialties(resources, 9, 9);
+    ContentEncoder encoder = AbilitiesEncoder.createWithCraftsAndSpecialties(resources, 9, 9);
     boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
   }
 
@@ -142,8 +142,7 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
     return height;
   }
 
-  private float encodeSocialCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeSocialCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     ContentEncoder encoder = encoderRegistry.createEncoder(resources, content, EncoderIds.SOCIAL_COMBAT, EncoderIds.MERITS_AND_FLAWS);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
@@ -157,8 +156,7 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
     return height;
   }
 
-  private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+  private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     ContentEncoder encoder = encoderRegistry.createEncoder(resources, content, EncoderIds.HEALTH_AND_MOVEMENT);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
@@ -166,19 +164,21 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
   }
 
   private void encodePersonalInfo(SheetGraphics graphics, ReportContent content, Bounds infoBounds) {
-    PersonalInfoBoxEncoder encoder = new PersonalInfoBoxEncoder(resources);
+    PersonalInfoEncoder encoder = new PersonalInfoEncoder(resources);
     encoder.encode(graphics, content, infoBounds);
   }
 
   private float encodeVirtues(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    ContentEncoder encoder = new VirtueBoxContentEncoder();
+    ContentEncoder encoder = new VirtueEncoder();
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    float height = encoderRegistry.getValue(PreferredHeight, content, ARSENAL);
+    EncodingMetrics metrics = EncodingMetrics.From(graphics, content);
+    ;
+    float height = encoderRegistry.getValue(PreferredHeight, metrics, ARSENAL);
     ContentEncoder weaponryEncoder = encoderRegistry.createEncoder(resources, content, ARSENAL);
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);

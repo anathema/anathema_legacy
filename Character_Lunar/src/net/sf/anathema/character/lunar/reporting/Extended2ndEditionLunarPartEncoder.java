@@ -10,8 +10,8 @@ import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEdi
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Extended2ndEditionLunarPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
@@ -19,15 +19,14 @@ public class Extended2ndEditionLunarPartEncoder extends AbstractSecondEditionExa
   private final BaseFont baseFont;
   private EncoderRegistry encoderRegistry;
 
-  public Extended2ndEditionLunarPartEncoder(EncoderRegistry encoderRegistry, IResources resources, ExtendedEncodingRegistry registry,
-    int essenceMax) {
+  public Extended2ndEditionLunarPartEncoder(EncoderRegistry encoderRegistry, IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
     super(resources, registry, essenceMax);
     this.encoderRegistry = encoderRegistry;
     this.baseFont = registry.getBaseFont();
   }
 
   public ContentEncoder getGreatCurseEncoder() {
-    return new GreatCurse2ndEditionEncoder();
+    return new GreatCurse2ndEditionEncoder(getResources());
   }
 
   @Override
@@ -38,6 +37,6 @@ public class Extended2ndEditionLunarPartEncoder extends AbstractSecondEditionExa
 
   @Override
   public PageEncoder[] getAdditionalPages(PageConfiguration configuration) {
-    return new PageEncoder[] { new Lunar2ndEditionAdditionalPageEncoder(encoderRegistry, getResources(), configuration) };
+    return new PageEncoder[]{new Lunar2ndEditionAdditionalPageEncoder(encoderRegistry, getResources(), configuration)};
   }
 }

@@ -5,15 +5,15 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ISubeffect extends IIdentificate {
 
-  public boolean isLearned();
+  boolean isLearned();
 
-  public boolean isCreationLearned();
+  boolean isCreationLearned();
 
-  public void addChangeListener(IChangeListener listener);
+  void addChangeListener(IChangeListener listener);
 
-  public void setLearned(boolean learned);
+  void setLearned(boolean learned);
 
-  public void setCreationLearned(boolean creationLearned);
+  void setCreationLearned(boolean creationLearned);
 
-  public void setExperienceLearned(boolean experienceLearned);
+  void setExperienceLearned(boolean experienceLearned);
 }

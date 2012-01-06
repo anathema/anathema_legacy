@@ -15,15 +15,18 @@ public class AstrologyInfoEncoder implements ContentEncoder {
     this.resources = resources;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     new AstrologyTableEncoder(resources).encodeTable(graphics, reportContent, bounds);
 
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Sidereal.Astrology"; //$NON-NLS-1$
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Sidereal.Astrology");
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

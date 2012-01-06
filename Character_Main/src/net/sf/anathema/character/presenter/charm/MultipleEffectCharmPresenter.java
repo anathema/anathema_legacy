@@ -26,7 +26,8 @@ public class MultipleEffectCharmPresenter implements IPresenter {
 
   public void initPresentation() {
     for (final ISubeffect subeffect : model.getEffects()) {
-      String label = resources.getString(model.getCharm().getId() + ".Subeffects." + subeffect.getId()); //$NON-NLS-1$
+      String key = model.getCharm().getId() + ".Subeffects." + subeffect.getId();
+      String label = resources.getString(key);
       final IBooleanValueView display = view.addSubeffect(label);
       subeffect.addChangeListener(new IChangeListener() {
         public void changeOccured() {

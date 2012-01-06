@@ -31,10 +31,7 @@ public class GenericAnimaEncoder implements ContentEncoder {
     this.tableEncoder = encoder;
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Anima"; //$NON-NLS-1$
-  }
-
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     float powerHeight = bounds.getHeight() - AnimaTableEncoder.TABLE_HEIGHT - IVoidStateFormatConstants.TEXT_PADDING / 2f;
     Bounds animaPowerBounds = new Bounds(bounds.getMinX(), bounds.getMaxY() - powerHeight, bounds.getWidth(), powerHeight);
@@ -63,7 +60,13 @@ public class GenericAnimaEncoder implements ContentEncoder {
     new HorizontalLineEncoder().encodeLines(graphics, lineStartPosition, bounds.getMinX(), bounds.getMaxX(), lineHeight, lineCount);
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
+  }
+
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Anima");
   }
 }

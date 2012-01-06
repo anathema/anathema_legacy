@@ -6,11 +6,9 @@ import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.traits.FavorableTraitContent;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

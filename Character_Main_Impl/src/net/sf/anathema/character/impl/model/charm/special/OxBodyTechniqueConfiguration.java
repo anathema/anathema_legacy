@@ -6,6 +6,7 @@ import java.util.Set;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
@@ -44,12 +45,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
             || (arbitrator.isIncrementAllowed(increment) && getCurrentLearnCount() + increment <= minTrait);
       }
     };
-    Set<String> ids = properties.getHealthLevels().keySet();
-    List<OxBodyCategory> categoryList = new ArrayList<OxBodyCategory>(ids.size());
-    for (String id : ids) {
-      categoryList.add(new OxBodyCategory(context, properties.getHealthLevels().get(id), id, incrementChecker));
-    }
-    categories = categoryList.toArray(new OxBodyCategory[categoryList.size()]);
+    categories = createOxBodyCategories(context, properties);
     for (OxBodyCategory category : categories) {
       category.addCurrentValueListener(new IIntValueChangedListener() {
         public void valueChanged(int newValue) {
@@ -58,6 +54,17 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
       });
     }
     this.healthLevelProvider = new OxBodyTechniqueHealthLevelProvider(categories);
+  }
+
+  private OxBodyCategory[] createOxBodyCategories(ITraitContext context, IOxBodyTechniqueCharm properties) {
+    Set<String> ids = properties.getHealthLevels().keySet();
+    List<OxBodyCategory> categoryList = new ArrayList<OxBodyCategory>();
+    for (String id : ids) {
+      HealthLevelType[] levels = properties.getHealthLevels().get(id);
+      OxBodyCategory category = new OxBodyCategory(context, levels, id, incrementChecker);
+      categoryList.add(category);
+    }
+    return categoryList.toArray(new OxBodyCategory[categoryList.size()]);
   }
 
   @Override

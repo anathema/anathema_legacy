@@ -22,6 +22,7 @@ public class SecondEditionAstrologyInfoEncoder implements ContentEncoder {
     this.resources = resources;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent report, Bounds bounds) throws DocumentException {
     int height = (int) SPACING;
     height += (int) new SecondEditionAstrologyTableEncoder(resources).encodeTable(graphics, report, getBounds(bounds, 0, height)) + SPACING + 1;
@@ -42,10 +43,12 @@ public class SecondEditionAstrologyInfoEncoder implements ContentEncoder {
     return new Bounds(bounds.x + offsetX, bounds.y - offsetY, bounds.width / 2 - SPACING, bounds.height);
   }
 
-  public String getHeaderKey(ReportContent report) {
-    return "Sidereal.Astrology"; //$NON-NLS-1$
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Sidereal.Astrology");
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

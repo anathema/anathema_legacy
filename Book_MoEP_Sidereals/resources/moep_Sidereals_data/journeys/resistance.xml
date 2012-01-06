@@ -35,7 +35,7 @@
           <charmAttribute attribute="Stackable" visualize="true" />
           <oxbody trait="Resistance">
     		<pick name="Category.-0">
-    			<ZeroHealthLevel/>
+    			<zeroHealthLevel/>
     		</pick>
     	  </oxbody>
           <source source="Sidereals2nd" />

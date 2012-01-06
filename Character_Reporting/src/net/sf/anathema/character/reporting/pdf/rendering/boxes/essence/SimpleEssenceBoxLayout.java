@@ -2,18 +2,18 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.essence;
 
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.ITextMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.TextMetrics;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
 
 public class SimpleEssenceBoxLayout {
 
-  private ITextMetrics textMetrics;
+  private TextMetrics textMetrics;
   private Bounds bounds;
   private int numberOfLines;
 
-  public SimpleEssenceBoxLayout(ITextMetrics textMetrics, Bounds bounds, int numberOfLines) {
+  public SimpleEssenceBoxLayout(TextMetrics textMetrics, Bounds bounds, int numberOfLines) {
     this.textMetrics = textMetrics;
     this.bounds = bounds;
     this.numberOfLines = numberOfLines;

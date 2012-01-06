@@ -1493,16 +1493,16 @@
 		<charmAttribute attribute="Stackable" visualize="true"/>
 		<oxbody trait="Resistance">
 			<pick name="Category.-0">
-				<ZeroHealthLevel/>
+				<zeroHealthLevel/>
 			</pick>
 			<pick name="Category.-1x2">
-				<OneHealthLevel/>
-				<OneHealthLevel/>
+				<oneHealthLevel/>
+				<oneHealthLevel/>
 			</pick>
 			<pick name="Category.-1-2x2">
-				<OneHealthLevel/>
-				<TwoHealthLevel/>
-				<TwoHealthLevel/>
+				<oneHealthLevel/>
+				<twoHealthLevel/>
+				<twoHealthLevel/>
 			</pick>
 		</oxbody>
 		<source source="SecondEdition" page="208"/>

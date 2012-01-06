@@ -13,5 +13,5 @@ public interface EncoderFactory extends IIdentificate {
 
   boolean hasAttribute(EncoderAttributeType type);
 
-  float getValue(BasicContent content, EncoderAttributeType type);
+  float getValue(EncodingMetrics metrics, EncoderAttributeType type);
 }

@@ -35,9 +35,9 @@ public class GreatCurse1stEditionEncoder implements ContentEncoder {
     return graphics.createTableFont();
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    IVirtueFlaw virtueFlaw =
-      ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
+    IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     float leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
     Phrase phrase = new Phrase();
@@ -48,8 +48,7 @@ public class GreatCurse1stEditionEncoder implements ContentEncoder {
       String name = virtueFlaw.getName().getText();
       phrase.add(new Chunk(name + "\n", createNameFont(graphics))); //$NON-NLS-1$
       virtue = resources.getString(rootVirtue.getId());
-    }
-    else {
+    } else {
       virtue = resources.getString("Sheet.GreatCurse.Lunar.Virtue"); //$NON-NLS-1$
       phrase.add(graphics.createSymbolChunk());
     }
@@ -61,10 +60,12 @@ public class GreatCurse1stEditionEncoder implements ContentEncoder {
     graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).encode();
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "GreatCurse.Lunar"; //$NON-NLS-1$
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.GreatCurse.Lunar");
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

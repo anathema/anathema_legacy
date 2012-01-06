@@ -8,14 +8,19 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.solar.reporting.content.VirtueFlawContent;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
-public class VirtueFlawEncoder implements ContentEncoder {
+public class VirtueFlawEncoder extends AbstractBoxContentEncoder<VirtueFlawContent> {
 
+  public VirtueFlawEncoder() {
+    super(VirtueFlawContent.class);
+  }
+
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     VirtueFlawContent content = createContent(reportContent);
     VirtueFlawBoxEncoder traitEncoder = new VirtueFlawBoxEncoder();
@@ -43,8 +48,7 @@ public class VirtueFlawEncoder implements ContentEncoder {
     graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode();
   }
 
-  private void encodeOnlyNameDefined(SheetGraphics graphics, Bounds bounds, VirtueFlawContent content, Bounds textBounds)
-    throws DocumentException {
+  private void encodeOnlyNameDefined(SheetGraphics graphics, Bounds bounds, VirtueFlawContent content, Bounds textBounds) throws DocumentException {
     Phrase phrase = new Phrase();
     phrase.add(new Chunk(content.getVirtueFlawName(), createNameFont(graphics)));
     float baseLine = graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode().getYLine();
@@ -77,17 +81,5 @@ public class VirtueFlawEncoder implements ContentEncoder {
 
   private Font createConditionFont(SheetGraphics graphics) {
     return graphics.createTableFont();
-  }
-
-  private VirtueFlawContent createContent(ReportContent content) {
-    return content.createSubContent(VirtueFlawContent.class);
-  }
-
-  public boolean hasContent(ReportContent content) {
-    return createContent(content).hasContent();
-  }
-
-  public String getHeaderKey(ReportContent content) {
-    return createContent(content).getHeaderKey();
   }
 }

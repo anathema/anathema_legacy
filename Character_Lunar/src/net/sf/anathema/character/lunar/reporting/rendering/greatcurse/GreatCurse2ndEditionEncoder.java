@@ -16,23 +16,30 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.Virtue
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
 public class GreatCurse2ndEditionEncoder implements ContentEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder = new VirtueFlawBoxEncoder();
+  private IResources resources;
 
-  public String getHeaderKey(ReportContent content) {
-    return "GreatCurse.Lunar"; //$NON-NLS-1$
+  public GreatCurse2ndEditionEncoder(IResources resources) {
+    this.resources = resources;
   }
 
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.GreatCurse.Lunar");
+  }
+
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     Font nameFont = createNameFont(graphics.getBaseFont());
     Font font = createFont(graphics.getBaseFont());
     float leading = REDUCED_LINE_HEIGHT;
-    ILunarVirtueFlaw virtueFlaw =
-      ((ILunarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
+    ILunarVirtueFlaw virtueFlaw = ((ILunarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     String name = virtueFlaw.getName().getText();
     String condition = virtueFlaw.getLimitBreak().getText();
@@ -83,6 +90,7 @@ public class GreatCurse2ndEditionEncoder implements ContentEncoder {
     return TableEncodingUtilities.createTableFont(baseFont);
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

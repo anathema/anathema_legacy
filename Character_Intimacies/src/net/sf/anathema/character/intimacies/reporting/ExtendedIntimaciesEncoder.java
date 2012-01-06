@@ -13,7 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.LINE_HEIGHT;
 
 public class ExtendedIntimaciesEncoder extends AbstractBoxContentEncoder<ExtendedIntimaciesContent> {
-  // TODO: Give this and PdfBackgroundEncoder a common base class, which may be more broadly useful.
+  // TODO: Give this and BackgroundsEncoder a common base class, which may be more broadly useful.
 
   private final PdfTraitEncoder traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
 

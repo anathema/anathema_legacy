@@ -9,7 +9,9 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.Position;
@@ -35,10 +37,7 @@ public class AttributesEncoder implements ContentEncoder {
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   }
 
-  public String getHeaderKey(ReportContent content) {
-    return "Attributes"; //$NON-NLS-1$
-  }
-
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
     IGenericTraitCollection traitCollection = reportContent.getCharacter().getTraitCollection();
@@ -57,6 +56,7 @@ public class AttributesEncoder implements ContentEncoder {
         }
       }
       Collections.sort(excellencies, new Comparator<IMagicStats>() {
+        @Override
         public int compare(IMagicStats a, IMagicStats b) {
           String aId = a.getName().getId();
           String bId = b.getName().getId();
@@ -67,9 +67,8 @@ public class AttributesEncoder implements ContentEncoder {
     return excellencies.toArray(new IMagicStats[0]);
   }
 
-  public final void encodeAttributes(SheetGraphics graphics, IGenericCharacter character, Bounds contentBounds, IGroupedTraitType[] attributeGroups,
-    IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
-    int essenceMax = character.getEssenceLimitation().getAbsoluteLimit(character);
+  public final void encodeAttributes(SheetGraphics graphics, IGenericCharacter character, Bounds contentBounds, IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
+    int traitMax = getTraitMax(character, attributeGroups);
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - groupSpacing;
     String groupId = null;
@@ -85,25 +84,36 @@ public class AttributesEncoder implements ContentEncoder {
       int value = traitCollection.getTrait(traitType).getCurrentValue();
       Position position = new Position(contentBounds.x, y);
       if (!encodeFavored) {
-        y -= smallTraitEncoder.encodeWithText(graphics, traitLabel, position, contentBounds.width, value, essenceMax);
-      }
-      else {
+        y -= smallTraitEncoder.encodeWithText(graphics, traitLabel, position, contentBounds.width, value, traitMax);
+      } else {
         boolean favored = traitCollection.getFavorableTrait(traitType).isCasteOrFavored();
         boolean[] excellencyLearned = new boolean[excellencies.length];
         for (int i = 0; i < excellencies.length; i++) {
           final String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
           excellencyLearned[i] = CollectionUtilities.getFirst(allLearnedMagic, new IPredicate<IMagic>() {
+            @Override
             public boolean evaluate(IMagic value) {
               return charmId.equals(value.getId());
             }
           }) != null;
         }
-        y -= smallTraitEncoder
-          .encodeWithExcellencies(graphics, traitLabel, position, contentBounds.width, value, favored, excellencyLearned, essenceMax);
+        y -= smallTraitEncoder.encodeWithExcellencies(graphics, traitLabel, position, contentBounds.width, value, favored, excellencyLearned, traitMax);
       }
     }
   }
 
+  public int getTraitMax(IGenericCharacter character, IGroupedTraitType[] groups) {
+    ITraitType traitType = groups[0].getTraitType();
+    ITraitTemplate template = character.getTemplate().getTraitTemplateCollection().getTraitTemplate(traitType);
+    return template.getLimitation().getAbsoluteLimit(character);
+  }
+
+  @Override
+  public String getHeader(ReportContent content) {
+    return resources.getString("Sheet.Header.Attributes");
+  }
+
+  @Override
   public boolean hasContent(ReportContent content) {
     return true;
   }

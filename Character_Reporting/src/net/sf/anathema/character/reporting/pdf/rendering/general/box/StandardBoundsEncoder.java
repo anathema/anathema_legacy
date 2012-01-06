@@ -6,6 +6,11 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public class StandardBoundsEncoder implements BoundsEncoder {
 
+  public static float getAdditionalBoxHeight() {
+    return BoundsEncoder.HEADER_HEIGHT / 2f + BoundsEncoder.ARC_SPACE;
+  }
+
+  @Override
   public void encodeBoxBounds(SheetGraphics graphics, Bounds contentBounds) {
     PdfContentByte directContent = graphics.getDirectContent();
     graphics.setFillColorBlack();

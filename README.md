@@ -21,13 +21,11 @@ Launch ``net.sf.anathema.AnathemaDevelopmentBootLoader``.
 2. Run ``gradlew eclipseClasspath`` or ``gradlew ideaModule`` respectively.
 
 ### Adding a new module ###
-1. Create a folder for your module.
-2. Create source-folders inside, e.g. ``src``, ``resources`` or ``test``.
-3. Add a ``build.gradle``, naming the dependencies.
-4. Mention your module name (=folder name) in ``settings.gradle``.
-5. In ``plugins.gradle``, add your project to a fitting plugin or the list of 'single-module plugins'.
+1. Run ``gradlew createModule -PmoduleName=MODULENAME``
+2. In ``settings.gradle``, add your module name.
+3. In ``plugins.gradle``, add your module to a fitting plugin or the list of 'single-module plugins'.
 4. Run ``gradlew eclipseProject eclipseClasspath eclipseJdt`` or ``gradlew idea``.
-5. (Only with eclipse,) import the projects.
+5. (Only with eclipse,) import the project.
 
 Deployment
 ==========

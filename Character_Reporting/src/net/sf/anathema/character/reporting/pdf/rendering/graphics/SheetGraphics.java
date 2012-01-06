@@ -12,14 +12,14 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Dot;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Line;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Square;
 
-import java.awt.Color;
+import java.awt.*;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SUBSECTION_FONT_SIZE;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TABLE_FONT_SIZE;
 
-public class SheetGraphics implements ITextMetrics {
+public class SheetGraphics {
 
   private static BaseFont createDefaultSymbolBaseFont() {
     return new Font(Font.SYMBOL, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(false);
@@ -54,14 +54,8 @@ public class SheetGraphics implements ITextMetrics {
     return baseFont;
   }
 
-  @Override
-  public final float getDefaultTextWidth(String text) {
-    return baseFont.getWidthPoint(text, FONT_SIZE);
-  }
-
-  @Override
-  public final float getCommentTextWidth(String text) {
-    return baseFont.getWidthPoint(text, COMMENT_FONT_SIZE);
+  public TextMetrics getTextMetrics() {
+    return new SheetTextMetrics(getBaseFont());
   }
 
   public final void drawMissingTextLine(Position position, float length) {
@@ -102,14 +96,13 @@ public class SheetGraphics implements ITextMetrics {
     initDirectContentForEnabledText();
     directContent.beginText();
     directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, label, position.x, position.y, 0);
-    float labelWidth = getDefaultTextWidth(label);
+    float labelWidth = getTextMetrics().getDefaultTextWidth(label);
     float contentX = position.x + labelWidth + 2;
     if (StringUtilities.isNullOrTrimmedEmpty(content)) {
       directContent.endText();
       float lineWidth = position.x + width - contentX;
       drawMissingTextLine(new Position(contentX, position.y), lineWidth);
-    }
-    else {
+    } else {
       directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, content, contentX, position.y, 0);
       directContent.endText();
     }
