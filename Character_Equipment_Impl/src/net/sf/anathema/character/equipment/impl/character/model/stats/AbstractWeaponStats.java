@@ -23,7 +23,7 @@ public abstract class AbstractWeaponStats extends AbstractStats implements IWeap
   private Integer rate;
   private int speed;
   private boolean inflictsNoDamage;
-  private final List<String> tags;
+  private final List<Object> tags; // Stores String or WeaponTag
 
   public AbstractWeaponStats(ICollectionFactory collectionFactory) {
     this.tags = collectionFactory.createList();

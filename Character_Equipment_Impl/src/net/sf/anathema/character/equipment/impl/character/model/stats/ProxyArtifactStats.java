@@ -50,7 +50,7 @@ public class ProxyArtifactStats extends AbstractStats implements IArtifactStats,
 
 	  @Override
 	  public boolean equals(Object obj) {
-	    if (!(obj instanceof ProxyArtifactStats)) {
+	    if (obj == null || obj.getClass() != getClass()) {
 	      return false;
 	    }
 	    ProxyArtifactStats other = (ProxyArtifactStats) obj;
@@ -59,10 +59,10 @@ public class ProxyArtifactStats extends AbstractStats implements IArtifactStats,
 	        && ObjectUtilities.equals(ruleSet, other.ruleSet);
 	  }
 
-	  /*@Override
+	  @Override
 	  public int hashCode() {
-	    return delegate.hashCode();
-	  }*/
+	    return ObjectUtilities.getHashCode(delegate, material, ruleSet);
+	  }
 	  
 	  @Override
 	  public IEquipmentStats[] getViews() {

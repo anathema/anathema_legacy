@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.abilitygroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -11,7 +12,8 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public class GenericGroupedTraitTypeProvider implements ICloneable<GenericGroupedTraitTypeProvider> {
 
-  private final List<IGroupedTraitType> groupedTraitTypes = new ArrayList<IGroupedTraitType>();
+  // This is volatile instead of final to allow clone to be implemented
+  private volatile List<IGroupedTraitType> groupedTraitTypes = new ArrayList<IGroupedTraitType>();
   private final ITraitTypeGroup traitTypeGroup;
 
   public GenericGroupedTraitTypeProvider(ITraitTypeGroup traitTypeGroup) {
@@ -31,8 +33,14 @@ public class GenericGroupedTraitTypeProvider implements ICloneable<GenericGroupe
 
   @Override
   public GenericGroupedTraitTypeProvider clone() {
-    GenericGroupedTraitTypeProvider clone = new GenericGroupedTraitTypeProvider(traitTypeGroup);
-    clone.groupedTraitTypes.addAll(groupedTraitTypes);
+    GenericGroupedTraitTypeProvider clone;
+    try {
+      clone = (GenericGroupedTraitTypeProvider)super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new UnreachableCodeReachedException(e);
+    }
+    
+    clone.groupedTraitTypes = new ArrayList<IGroupedTraitType>(groupedTraitTypes);
     return clone;
   }
 }

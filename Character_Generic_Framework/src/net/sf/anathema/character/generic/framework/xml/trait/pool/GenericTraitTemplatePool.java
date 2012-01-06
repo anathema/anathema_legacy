@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.trait.pool;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.IClonableTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
@@ -12,7 +13,8 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 public class GenericTraitTemplatePool implements ICloneable<GenericTraitTemplatePool> {
 
   private GenericTraitTemplate defaultTraitTemplate;
-  private final Map<ITraitType, IClonableTraitTemplate> specialTraitTemplates = new HashMap<ITraitType, IClonableTraitTemplate>();
+  // This is volatile instead of final to allow clone to be implemented
+  private volatile Map<ITraitType, IClonableTraitTemplate> specialTraitTemplates = new HashMap<ITraitType, IClonableTraitTemplate>();
 
   public ITraitTemplate getTemplate(ITraitType traitType) {
     ITraitTemplate template = specialTraitTemplates.get(traitType);
@@ -37,7 +39,14 @@ public class GenericTraitTemplatePool implements ICloneable<GenericTraitTemplate
 
   @Override
   public GenericTraitTemplatePool clone() {
-    GenericTraitTemplatePool clone = new GenericTraitTemplatePool();
+    GenericTraitTemplatePool clone;
+    try {
+      clone = (GenericTraitTemplatePool)super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new UnreachableCodeReachedException(e);
+    }
+    clone.specialTraitTemplates = new HashMap<ITraitType, IClonableTraitTemplate>(4 * specialTraitTemplates.size() / 3 + 1);
+    
     if (defaultTraitTemplate != null) {
       clone.defaultTraitTemplate = defaultTraitTemplate.clone();
     }

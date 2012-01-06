@@ -19,7 +19,7 @@ public class Identificate implements IIdentificate {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof Identificate)) {
+    if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
     Identificate other = (Identificate) obj;

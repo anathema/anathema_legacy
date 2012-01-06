@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
@@ -14,13 +15,15 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class Combo implements ICombo {
+  
+  // Final fields were turned to volatile to allow clone to be implemented
 
-  private final ChangeControl control = new ChangeControl();
-  private final List<ICharm> charmList = new ArrayList<ICharm>();
+  private volatile ChangeControl control = new ChangeControl();
+  private volatile List<ICharm> charmList = new ArrayList<ICharm>();
   private ICharm extraActionCharm = null;
   private ICharm simpleCharm = null;
-  private final ITextualDescription name = new SimpleTextualDescription();
-  private final ITextualDescription description = new SimpleTextualDescription();
+  private volatile ITextualDescription name = new SimpleTextualDescription();
+  private volatile ITextualDescription description = new SimpleTextualDescription();
   private Integer id = null;
 
   public ICharm[] getCharms() {
@@ -59,8 +62,18 @@ public class Combo implements ICombo {
   }
 
   @Override
-  public ICombo clone() {
-    Combo clone = new Combo();
+  public Combo clone() {
+    Combo clone;
+    try {
+      clone = (Combo)super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new UnreachableCodeReachedException(e);
+    }
+    clone.control = new ChangeControl();
+    clone.charmList = new ArrayList<ICharm>(charmList.size());
+    clone.name = new SimpleTextualDescription();
+    clone.description = new SimpleTextualDescription();
+    
     copyCombo(this, clone);
     return clone;
   }

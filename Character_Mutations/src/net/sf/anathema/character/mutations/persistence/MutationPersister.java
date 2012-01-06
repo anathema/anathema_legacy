@@ -38,7 +38,7 @@ public class MutationPersister extends AbstractQualityPersister<IMutation> {
   private void loadMutation(IQualityModel<IMutation> model, Element element) throws PersistenceException {
     String giftId = element.attributeValue(ATTRIB_ID);
     //backward compatability
-    giftId.replaceAll("DeadlyBeastmanTransformation.Gift", "Mutations.Mutation");
+    giftId = giftId.replace("DeadlyBeastmanTransformation.Gift", "Mutations.Mutation");
     IMutationsModel mutationModel = (IMutationsModel) model;
     final int value = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);
     final boolean creationActive = ElementUtilities.getBooleanAttribute(element, ATTRIB_CREATION_ACTIVE, true);

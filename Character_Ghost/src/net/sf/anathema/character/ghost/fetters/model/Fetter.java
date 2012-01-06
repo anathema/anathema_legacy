@@ -36,10 +36,17 @@ public class Fetter extends DefaultTrait {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof Fetter)) {
+    if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
     Fetter other = (Fetter) obj;
     return super.equals(obj) && other.getName().equals(getName());
+  }
+  
+  @Override
+  public int hashCode() {
+    int hash = 13 * super.hashCode();
+    hash += 5 * getName().hashCode();
+    return hash;
   }
 }

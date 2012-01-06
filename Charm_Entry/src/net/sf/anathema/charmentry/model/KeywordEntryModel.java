@@ -36,6 +36,10 @@ public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribu
     super.removeEntry(entry);
     charmData.removeAttribute(entry);
   }
+  
+  private static boolean strEquals(String a, String b) {
+    return a != null ? a.equals(b) : b == null;
+  }
 
   @Override
   protected boolean isEntryAllowed() {
@@ -43,7 +47,7 @@ public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribu
       return false;
     }
     for (ICharmAttribute attribute : getEntries()) {
-      if (attribute.getId() == keyword.getId()) {
+      if (strEquals(attribute.getId(), keyword.getId())) {
         return false;
       }
     }

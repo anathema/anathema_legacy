@@ -32,10 +32,17 @@ public class CharmGroup extends Identificate implements ICharmGroup {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof CharmGroup)) {
+    if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
     CharmGroup other = (CharmGroup) obj;
     return super.equals(obj) && other.getCharacterType() == getCharacterType();
+  }
+  
+  @Override
+  public int hashCode() {
+    int hash = 7 * super.hashCode();
+    hash += 11 * System.identityHashCode(getCharacterType());
+    return hash;
   }
 }

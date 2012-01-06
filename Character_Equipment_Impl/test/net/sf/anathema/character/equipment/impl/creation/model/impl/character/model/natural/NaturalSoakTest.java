@@ -12,6 +12,8 @@ import net.sf.anathema.character.generic.type.ICharacterTypeVisitor;
 import org.junit.Assert;
 import org.junit.Test;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 public class NaturalSoakTest {
 
   @Test
@@ -34,8 +36,10 @@ public class NaturalSoakTest {
 
       @Override
       public int compareTo(CharacterType o) {
-        // Nothing to do
-        return 0;
+        // Since returning an arbitrary value would cause
+        // surprising result, the compareTo must not be used.
+        throw new NotImplementedException();
+        
       }
 
       @Override
