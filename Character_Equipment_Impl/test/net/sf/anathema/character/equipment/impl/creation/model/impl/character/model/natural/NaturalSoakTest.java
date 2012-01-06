@@ -37,7 +37,6 @@ public class NaturalSoakTest {
         // Since returning an arbitrary value would cause
         // surprising result, the compareTo must not be used.
         throw new UnsupportedOperationException();
-        
       }
 
       @Override
