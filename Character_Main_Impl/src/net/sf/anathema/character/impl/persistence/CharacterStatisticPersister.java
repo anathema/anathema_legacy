@@ -101,8 +101,6 @@ public class CharacterStatisticPersister {
       experiencePersister.load(statisticsElement, statistics.getExperiencePoints());
       willpowerPersister.load(statisticsElement, statistics.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
       additonalModelPersister.load(statisticsElement, statistics.getExtendedConfiguration().getAdditionalModels());
-      
-      statistics.getCharacterContext().setFullyLoaded(true);
     }
     catch (CharmException e) {
       throw new PersistenceException(e);
