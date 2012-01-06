@@ -17,6 +17,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueEncoder;
@@ -180,7 +181,9 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
   }
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    float height = encoders.getValue(PreferredHeight, content, ARSENAL);
+    EncodingMetrics metrics = EncodingMetrics.From(graphics, content);
+    ;
+    float height = encoders.getValue(PreferredHeight, metrics, ARSENAL);
     ContentEncoder weaponryEncoder = encoders.createEncoder(resources, content, ARSENAL);
     Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 2);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);

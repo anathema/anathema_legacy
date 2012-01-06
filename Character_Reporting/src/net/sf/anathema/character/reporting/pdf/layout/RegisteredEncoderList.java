@@ -5,6 +5,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTemplate;
@@ -47,7 +48,7 @@ public class RegisteredEncoderList {
     return encodeBox(graphics, content, bounds, encoderId);
   }
 
-  public float getPreferredEncoderHeight(ReportContent content, String encoderId) {
-    return encoderRegistry.getValue(PreferredHeight, content, encoderId);
+  public float getPreferredEncoderHeight(EncodingMetrics metrics, String encoderId) {
+    return encoderRegistry.getValue(PreferredHeight, metrics, encoderId);
   }
 }

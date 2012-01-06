@@ -8,6 +8,7 @@ import net.sf.anathema.character.reporting.pdf.layout.RegisteredEncoderList;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
@@ -78,7 +79,8 @@ public class FirstPageEncoder implements PageEncoder {
   }
 
   private SheetPage createPage(SheetGraphics graphics, ReportContent content) {
+    EncodingMetrics metrics = EncodingMetrics.From(graphics, content);
     RegisteredEncoderList registeredEncoderList = new RegisteredEncoderList(resources, encoders);
-    return new SheetPage(registeredEncoderList, content, graphics);
+    return new SheetPage(registeredEncoderList, metrics, graphics);
   }
 }

@@ -62,21 +62,21 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     final String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
     String bashingString = createSpacedString;
     graphics.drawComment(bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
-    xPosition += graphics.getCommentTextWidth(bashingString);
+    xPosition += graphics.getTextMetrics().getCommentTextWidth(bashingString);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
     PdfTemplate lethalTemplate = HealthTemplateFactory.createLethalTemplate(graphics.getDirectContent(), Color.GRAY);
     graphics.getDirectContent().addTemplate(lethalTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String lethalString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageLethal")); //$NON-NLS-1$
     graphics.drawComment(lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
-    xPosition += graphics.getCommentTextWidth(lethalString);
+    xPosition += graphics.getTextMetrics().getCommentTextWidth(lethalString);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
     PdfTemplate aggravatedTemplate = HealthTemplateFactory.createAggravatedTemplate(graphics.getDirectContent(), Color.GRAY);
     graphics.getDirectContent().addTemplate(aggravatedTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String aggravatedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageAggravated")); //$NON-NLS-1$
     graphics.drawComment(aggravatedString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
-    xPosition += graphics.getCommentTextWidth(lethalString);
+    xPosition += graphics.getTextMetrics().getCommentTextWidth(lethalString);
   }
 
   private String createSpacedString(final String string) {

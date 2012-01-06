@@ -1,10 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.layout;
 
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.field.FieldBuilder;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
 import net.sf.anathema.character.reporting.pdf.layout.field.Placement;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public class SheetPage {
@@ -18,17 +18,17 @@ public class SheetPage {
 
     @Override
     public LayoutField encode(LayoutField field) {
-      return encoderList.encodeBox(graphics, content, field, encoderIds);
-     }
+      return encoderList.encodeBox(graphics, metrics.getContent(), field, encoderIds);
+    }
   }
 
   private final RegisteredEncoderList encoderList;
-  private final ReportContent content;
+  private final EncodingMetrics metrics;
   private final SheetGraphics graphics;
 
-  public SheetPage(RegisteredEncoderList encoderList, ReportContent content, SheetGraphics graphics) {
+  public SheetPage(RegisteredEncoderList encoderList, EncodingMetrics metrics, SheetGraphics graphics) {
     this.encoderList = encoderList;
-    this.content = content;
+    this.metrics = metrics;
     this.graphics = graphics;
   }
 
@@ -37,6 +37,6 @@ public class SheetPage {
   }
 
   public float getPreferredEncoderHeight(String encoderId) {
-    return encoderList.getPreferredEncoderHeight(content, encoderId);
+    return encoderList.getPreferredEncoderHeight(metrics, encoderId);
   }
 }
