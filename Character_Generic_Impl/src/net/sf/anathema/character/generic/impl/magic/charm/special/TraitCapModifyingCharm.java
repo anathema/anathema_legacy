@@ -4,43 +4,36 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisit
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
-public class TraitCapModifyingCharm implements ITraitCapModifyingCharm
-{
-	private final String charmId;
-	private final ITraitType traitType;
-	private final int modifier;
-	
-	public TraitCapModifyingCharm(String charmId, ITraitType trait, int modifier)
-	{
-		this.charmId = charmId;
-		this.traitType = trait;
-		this.modifier = modifier;
-	}
+public class TraitCapModifyingCharm implements ITraitCapModifyingCharm {
+  private final String charmId;
+  private final ITraitType traitType;
+  private final int modifier;
 
-	@Override
-	public void accept(ISpecialCharmVisitor visitor)
-	{
-		visitor.visitTraitCapModifyingCharm(this);
-	}
+  public TraitCapModifyingCharm(String charmId, ITraitType trait, int modifier) {
+    this.charmId = charmId;
+    this.traitType = trait;
+    this.modifier = modifier;
+  }
 
-	@Override
-	public String getCharmId()
-	{
-		return charmId;
-	}
-	
-	public ITraitType getTraitType()
-	{
-		return traitType;
-	}
-	
-	public int getModifier()
-	{
-		return modifier;
-	}
+  @Override
+  public void accept(ISpecialCharmVisitor visitor) {
+    visitor.visitTraitCapModifyingCharm(this);
+  }
 
-	public String toString()
-	{
-		return "[" + getCharmId() + ";mod " + traitType.getId() + "]"; 
-	}
+  @Override
+  public String getCharmId() {
+    return charmId;
+  }
+
+  public ITraitType getTraitType() {
+    return traitType;
+  }
+
+  public int getModifier() {
+    return modifier;
+  }
+
+  public String toString() {
+    return "[" + getCharmId() + ";mod " + traitType.getId() + "]";
+  }
 }
