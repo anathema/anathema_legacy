@@ -42,14 +42,4 @@ public class AttributeBonusModel extends AbstractSpendingModel {
   public int getAlotment() {
     return creationPoints.getAttributeCreationPoints().getCount(priority == null ? AttributeGroupPriority.Primary : priority);
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
 }

@@ -15,14 +15,4 @@ public class ElementalSubeffect extends Subeffect {
   public boolean matches(ICasteType casteType) {
     return element.matches(casteType);
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
 }

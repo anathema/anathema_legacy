@@ -31,14 +31,4 @@ public class EquipmentAdditionalModelTemplate extends Identificate implements
   public void addNaturalWeaponTemplate(ICharacterType type, IEquipmentTemplate template) {
     templatesByType.put(type, template);
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
 }

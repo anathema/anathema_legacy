@@ -28,14 +28,4 @@ public class EditionSpecificTemplateTypeBackgroundTemplate extends TemplateTypeB
   public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition requestEdition) {
     return super.acceptsTemplate(templateType, edition) && this.edition == requestEdition;
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
 }

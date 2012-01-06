@@ -23,14 +23,4 @@ public class MiscellaneousExperienceModel extends AbstractIntegerValueModel {
     total += statistics.getExperiencePoints().getExtraSpendings();
     return total;
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
 }

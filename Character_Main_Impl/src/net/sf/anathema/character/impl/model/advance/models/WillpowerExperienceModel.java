@@ -22,14 +22,4 @@ public class WillpowerExperienceModel extends AbstractIntegerValueModel {
   private int getWillpowerCosts() {
     return calculator.getWillpowerCosts(TraitCollectionUtilities.getWillpower(traitConfiguration));
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
 }

@@ -35,14 +35,4 @@ public class PlotElement extends PlotElementContainer implements IPlotElement {
   public void setClean() {
     itemDescription.setClean();
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
 }

@@ -117,14 +117,4 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
   public void addChangeListener(IChangeListener listener) {
     collegeValueChangeControl.addChangeListener(listener);
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
 }

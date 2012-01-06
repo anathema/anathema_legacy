@@ -17,14 +17,4 @@ public class EssenceExperienceModel extends AbstractIntegerValueModel {
   public Integer getValue() {
     return calculator.getEssenceCosts(TraitCollectionUtilities.getEssence(traitCollection));
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
 }

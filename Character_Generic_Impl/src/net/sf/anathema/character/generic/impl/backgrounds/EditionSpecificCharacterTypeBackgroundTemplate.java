@@ -23,14 +23,4 @@ public class EditionSpecificCharacterTypeBackgroundTemplate extends CharacterTyp
   public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition) {
     return super.acceptsTemplate(templateType, edition) && edition == allowedEdition;
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
 }

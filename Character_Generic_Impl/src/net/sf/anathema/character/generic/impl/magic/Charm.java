@@ -433,14 +433,4 @@ public class Charm extends Identificate implements ICharm {
     }
     return clone;
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
 }

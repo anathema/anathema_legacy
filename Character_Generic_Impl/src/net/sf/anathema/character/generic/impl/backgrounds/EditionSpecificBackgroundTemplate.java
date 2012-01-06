@@ -15,14 +15,4 @@ public class EditionSpecificBackgroundTemplate extends CalculatedLowerableBackgr
   public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition) {
     return this.allowedEdition == edition;
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
 }
