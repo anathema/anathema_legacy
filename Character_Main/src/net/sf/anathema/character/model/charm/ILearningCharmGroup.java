@@ -6,31 +6,31 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 
 public interface ILearningCharmGroup extends ICharmGroup, IBasicLearnCharmGroup {
 
-  public void toggleLearned(ICharm charm);
+  void toggleLearned(ICharm charm);
 
-  public void addCharmLearnListener(ICharmLearnListener listener);
+  void addCharmLearnListener(ICharmLearnListener listener);
 
-  public ICharm[] getCreationLearnedCharms();
+  ICharm[] getCreationLearnedCharms();
 
-  public void learnCharm(ICharm charm, boolean experienced);
+  void learnCharm(ICharm charm, boolean experienced);
 
-  public void learnCharmNoParents(ICharm charm, boolean experienced, boolean announce);
+  void learnCharmNoParents(ICharm charm, boolean experienced, boolean announce);
 
-  public boolean isUnlearnable(ICharm charm);
+  boolean isUnlearnable(ICharm charm);
   
-  public boolean isUnlearnableWithoutConsequences(ICharm charm);
+  boolean isUnlearnableWithoutConsequences(ICharm charm);
 
-  public ICharm[] getExperienceLearnedCharms();
+  ICharm[] getExperienceLearnedCharms();
 
-  public void forgetCharm(ICharm child, boolean experienced);
+  void forgetCharm(ICharm child, boolean experienced);
 
-  public void forgetAll();
+  void forgetAll();
 
-  public boolean hasLearnedCharms();
+  boolean hasLearnedCharms();
 
-  public ICharm[] getCoreCharms();
+  ICharm[] getCoreCharms();
 
-  public void unlearnExclusives();
+  void unlearnExclusives();
 
-  public void fireRecalculateRequested();
+  void fireRecalculateRequested();
 }

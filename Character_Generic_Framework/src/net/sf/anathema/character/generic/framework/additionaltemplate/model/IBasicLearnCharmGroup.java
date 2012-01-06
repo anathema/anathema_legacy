@@ -4,11 +4,11 @@ import net.sf.anathema.character.generic.magic.ICharm;
 
 public interface IBasicLearnCharmGroup {
 
-  public boolean isLearned(ICharm charm);
+  boolean isLearned(ICharm charm);
 
-  public boolean isLearned(ICharm charm, boolean experienced);
+  boolean isLearned(ICharm charm, boolean experienced);
 
-  public void toggleLearnedOnCreation(ICharm charm);
+  void toggleLearnedOnCreation(ICharm charm);
 
-  public void toggleExperienceLearnedCharm(ICharm charm);
+  void toggleExperienceLearnedCharm(ICharm charm);
 }
