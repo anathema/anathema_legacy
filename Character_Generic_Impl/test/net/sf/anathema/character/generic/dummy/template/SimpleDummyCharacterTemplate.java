@@ -2,6 +2,9 @@ package net.sf.anathema.character.generic.dummy.template;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
+import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
+import net.sf.anathema.character.generic.impl.template.essence.NullEssenceTemplate;
+import net.sf.anathema.character.generic.impl.template.magic.CustomizableMagicTemplate;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
@@ -13,11 +16,17 @@ import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
+import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.util.Identificate;
+
+import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
 
@@ -32,20 +41,20 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   }
 
   public IGroupedTraitType[] getAbilityGroups() {
-    return null;
+    return new IGroupedTraitType[0];
   }
 
   public IGroupedTraitType[] getAttributeGroups() {
-    return null;
+    return new IGroupedTraitType[0];
   }
-  
+
   @Override
   public IGroupedTraitType[] getYoziGroups() {
-    return null;
+    return new IGroupedTraitType[0];
   }
 
   public IAdditionalRules getAdditionalRules() {
-    return null;
+    return new NullAdditionalRules();
   }
 
   public IBonusPointCosts getBonusPointCosts() {
@@ -57,11 +66,11 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   }
 
   public ICreationPoints getCreationPoints() {
-    return null;
+    return new TestCreationPoints();
   }
 
   public IEssenceTemplate getEssenceTemplate() {
-    return null;
+    return new NullEssenceTemplate();
   }
 
   public IExperiencePointCosts getExperienceCost() {
@@ -80,32 +89,33 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   }
 
   public ITraitTemplateCollection getTraitTemplateCollection() {
-    return null;
+    ITraitTemplateCollection collection = mock(ITraitTemplateCollection.class);
+    when(collection.getTraitTemplate(isA(ITraitType.class))).thenReturn(createStaticLimitedTemplate(0, 5));
+    return collection;
   }
 
   public ITraitType[] getToughnessControllingTraitTypes() {
-    return null;
+    return new ITraitType[0];
   }
 
   public IAdditionalTemplate[] getAdditionalTemplates() {
-    return null;
+    return new IAdditionalTemplate[0];
   }
 
   public IMagicTemplate getMagicTemplate() {
-    return null;
+    ICharmTemplate charmTemplate = new DummyCharmTemplate();
+    return new CustomizableMagicTemplate(null, charmTemplate, null);
   }
 
   public IExaltedEdition getEdition() {
     return edition;
   }
-  
-  public boolean isLegacy()
-  {
-	  return false;
+
+  public boolean isLegacy() {
+    return false;
   }
-  
-  public String[] getBaseHealthProviders()
-  {
-	  return new String[0];
+
+  public String[] getBaseHealthProviders() {
+    return new String[0];
   }
 }

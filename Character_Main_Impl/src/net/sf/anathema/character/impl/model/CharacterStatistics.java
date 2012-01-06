@@ -79,7 +79,7 @@ public class CharacterStatistics implements ICharacterStatistics {
   private IMagicStats[] genericStats = new IMagicStats[0];
 
   public CharacterStatistics(final ICharacterTemplate template, ICharacterGenerics generics, IExaltedRuleSet rules)
-      throws SpellException {
+          throws SpellException {
     Ensure.ensureArgumentNotNull(template);
     Ensure.ensureArgumentNotNull(generics);
     Ensure.ensureArgumentNotNull(rules);
@@ -92,8 +92,8 @@ public class CharacterStatistics implements ICharacterStatistics {
     this.charms = new CharmConfiguration(health, context, generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
     this.essencePool = new EssencePoolConfiguration(template.getEssenceTemplate(),
-                                                    template.getAdditionalRules(),
-                                                    context);
+            template.getAdditionalRules(),
+            context);
     charms.initListening();
     this.combos = new ComboConfiguration(charms, context.getComboLearnStrategy(), rules.getEdition(), experiencePoints, this);
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
@@ -110,13 +110,12 @@ public class CharacterStatistics implements ICharacterStatistics {
       }
     });
   }
-  
-  private IGenericTrait[] getTraitArray(ITraitType[] types)
-  {
-	  IGenericTrait[] traits = new IGenericTrait[types.length];
-	  for (int i = 0; i != types.length; i++)
-		  traits[i] = traitConfiguration.getTrait(types[i]); 
-	  return traits;
+
+  private IGenericTrait[] getTraitArray(ITraitType[] types) {
+    IGenericTrait[] traits = new IGenericTrait[types.length];
+    for (int i = 0; i != types.length; i++)
+      traits[i] = traitConfiguration.getTrait(types[i]);
+    return traits;
   }
 
   private void initExperienceListening() {
