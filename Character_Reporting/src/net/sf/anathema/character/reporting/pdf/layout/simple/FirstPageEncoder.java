@@ -66,8 +66,7 @@ public class FirstPageEncoder implements PageEncoder {
     LayoutField greatCurse = page.place(GREAT_CURSE).below(virtues).alignBottomTo(anima).now();
     LayoutField willpower = page.place(WILLPOWER_SIMPLE).below(greatCurse).withHeight(WILLPOWER_HEIGHT).now();
     LayoutField intimacies = page.place(INTIMACIES_SIMPLE, NOTES).below(willpower).alignBottomTo(social).now();
-    float preferredArsenalHeight = page.getPreferredEncoderHeight(ARSENAL);
-    LayoutField arsenal = page.place(ARSENAL).below(intimacies).withHeight(preferredArsenalHeight).spanningTwoColumns().now();
+    LayoutField arsenal = page.place(ARSENAL).below(intimacies).withPreferredHeight().spanningTwoColumns().now();
     LayoutField panoply = page.place(PANOPLY).below(arsenal).withHeight(ARMOUR_HEIGHT).spanningTwoColumns().now();
     LayoutField health = page.place(HEALTH_AND_MOVEMENT).below(panoply).withHeight(HEALTH_HEIGHT).spanningTwoColumns().now();
     page.place(COMBAT).below(health).fillToBottomOfPage().spanningTwoColumns().now();

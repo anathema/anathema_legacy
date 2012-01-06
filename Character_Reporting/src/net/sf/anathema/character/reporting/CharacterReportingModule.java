@@ -13,6 +13,8 @@ import net.sf.anathema.character.reporting.pdf.content.essence.SimpleEssenceCont
 import net.sf.anathema.character.reporting.pdf.content.essence.SimpleEssenceContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.experience.ExperienceContent;
 import net.sf.anathema.character.reporting.pdf.content.experience.ExperienceContentFactory;
+import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmContent;
+import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContent;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContent;
@@ -68,12 +70,13 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
 
   private void addReportContents(IResources resources) {
     ReportContentRegistry registry = moduleObject.getContentRegistry();
-    registry.addFactory(VirtueContent.class, new VirtueContentFactory(resources));
+    registry.addFactory(AbilitiesContent.class, new AbilitiesContentFactory(resources));
+    registry.addFactory(BasicContent.class, new BasicContentFactory());
     registry.addFactory(ExtendedEssenceContent.class, new ExtendedEssenceContentFactory(resources));
     registry.addFactory(SimpleEssenceContent.class, new SimpleEssenceContentFactory(resources));
-    registry.addFactory(AbilitiesContent.class, new AbilitiesContentFactory(resources));
     registry.addFactory(ExperienceContent.class, new ExperienceContentFactory(resources));
+    registry.addFactory(GenericCharmContent.class, new GenericCharmContentFactory(resources));
     registry.addFactory(WillpowerContent.class, new WillpowerContentFactory(resources));
-    registry.addFactory(BasicContent.class, new BasicContentFactory());
+    registry.addFactory(VirtueContent.class, new VirtueContentFactory(resources));
   }
 }

@@ -48,7 +48,7 @@ public class RegisteredEncoderList {
     return encodeBox(graphics, content, bounds, encoderId);
   }
 
-  public float getPreferredEncoderHeight(EncodingMetrics metrics, String encoderId) {
-    return encoderRegistry.getValue(PreferredHeight, metrics, encoderId);
+  public float getPreferredEncoderHeight(EncodingMetrics metrics, String... encoderIds) {
+    return encoderRegistry.getValue(PreferredHeight, metrics, encoderIds);
   }
 }

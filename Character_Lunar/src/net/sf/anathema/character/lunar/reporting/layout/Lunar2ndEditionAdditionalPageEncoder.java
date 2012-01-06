@@ -93,7 +93,6 @@ public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
 
   private float encodeArsenal(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     EncodingMetrics metrics = EncodingMetrics.From(graphics, content);
-    ;
     float height = encoderRegistry.getValue(PreferredHeight, metrics, ARSENAL_LUNAR);
     ContentEncoder weaponryEncoder = encoderRegistry.createEncoder(resources, content, ARSENAL_LUNAR);
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
