@@ -20,9 +20,9 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
 
   public MultipleEffectCharmConfiguration(
       ICharacterModelContext context,
-      final ICharm charm,
+      ICharm charm,
       IMultipleEffectCharm visited,
-      final ICharmLearnableArbitrator arbitrator) {
+      ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
     this.subeffects = visited.buildSubeffects(context.getBasicCharacterContext(),
     		context.getTraitCollection(), arbitrator, charm);

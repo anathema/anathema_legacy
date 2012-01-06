@@ -18,8 +18,6 @@ public interface ICharm extends ICharmData, IMagic {
   
   public Set<ICharm> getMergedCharms();
   
-  public boolean isFreeByMerged(IMagicCollection magicCollection);
-
   public boolean isTreeRoot();
 
   public Set<ICharm> getRenderingPrerequisiteCharms();

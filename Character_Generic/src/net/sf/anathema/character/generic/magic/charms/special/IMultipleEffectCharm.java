@@ -7,9 +7,9 @@ import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 
 public interface IMultipleEffectCharm extends ISpecialCharm {
 
-  public ISubeffect[] buildSubeffects(
-      IBasicCharacterData basicCharacterContext,
-      IGenericTraitCollection traitCollection,
-      ICharmLearnableArbitrator arbitrator,
-      ICharm charm);
+  ISubeffect[] buildSubeffects(
+          IBasicCharacterData basicCharacterContext,
+          IGenericTraitCollection traitCollection,
+          ICharmLearnableArbitrator arbitrator,
+          ICharm charm);
 }

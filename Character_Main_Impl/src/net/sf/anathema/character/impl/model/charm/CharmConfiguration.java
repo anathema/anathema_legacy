@@ -140,7 +140,8 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   private void initSpecialCharmConfigurations() {
     ICharmIdMap charmIdMap = getCharmIdMap();
-    for (ISpecialCharm specialCharm : getSpecialCharms()) {
+    ISpecialCharm[] specialCharms = getSpecialCharms();
+    for (ISpecialCharm specialCharm : specialCharms) {
       ICharm charm = charmIdMap.getCharmById(specialCharm.getCharmId());
       if (charm == null) {
         continue;
