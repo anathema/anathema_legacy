@@ -25,15 +25,13 @@ public class ComplexMultipleEffectCharm extends MultipleEffectCharm {
                                       ICharmLearnableArbitrator arbitrator,
                                       ICharm charm) {
     for (String id : effectIds) {
-      String prereqEffect = prereqEffectMap.get(id);
-      effectList.add(new Subeffect(id, data, buildLearnCondition(arbitrator, charm, prereqEffect)));
+      String prerequisiteEffect = prereqEffectMap.get(id);
+      effectList.add(new Subeffect(id, data, buildLearnCondition(arbitrator, charm, prerequisiteEffect)));
     }
     return effectList.toArray(new ISubeffect[effectList.size()]);
   }
 
-  private ICondition buildLearnCondition(final ICharmLearnableArbitrator arbitrator,
-                                         final ICharm charm,
-                                         final String prereqEffect) {
+  private ICondition buildLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm, String prereqEffect) {
     return new PrerequisiteLearnCondition(this, arbitrator, charm, prereqEffect);
   }
 }
