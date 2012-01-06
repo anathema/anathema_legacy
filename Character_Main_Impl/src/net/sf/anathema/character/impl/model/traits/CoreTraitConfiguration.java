@@ -38,7 +38,6 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public class CoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
 
-  private final DefaultTraitFactory traitFactory;
   private final FavorableTraitFactory favorableTraitFactory;
   private final BackgroundConfiguration backgrounds;
   private final IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
@@ -59,10 +58,10 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     this.yoziTraitGroups = new YoziTypeGroupFactory().createTraitGroups(
         template.getCasteCollection(),
         template.getYoziGroups());
-    this.traitFactory = new DefaultTraitFactory(
-        modelContext.getTraitContext(),
-        template.getTraitTemplateCollection(),
-        template.getAdditionalRules().getAdditionalTraitRules());
+    DefaultTraitFactory traitFactory = new DefaultTraitFactory(
+            modelContext.getTraitContext(),
+            template.getTraitTemplateCollection(),
+            template.getAdditionalRules().getAdditionalTraitRules());
     this.favorableTraitFactory = new FavorableTraitFactory(
         modelContext.getTraitContext(),
         template.getTraitTemplateCollection(),
