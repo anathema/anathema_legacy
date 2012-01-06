@@ -42,20 +42,7 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
     return effectList.toArray(new ISubeffect[effectList.size()]);
   }
 
-  private ICondition buildLearnCondition(final ICharmLearnableArbitrator arbitrator, final ICharm charm) {
-    return new ICondition() {
-      public boolean isFulfilled() {
-        return arbitrator.isLearnable(charm);
-      }
-    };
-  }
-
-  public String toString() {
-    String list = "";
-    for (String effect : effectIds) {
-      boolean isLastEffect = effect == effectIds[effectIds.length - 1];
-      list += effect + (isLastEffect ? "" : ",");
-    }
-    return "[" + getCharmId() + ";" + list + "]";
+  private ICondition buildLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm) {
+    return new ArbitratorLearnCondition(arbitrator, charm);
   }
 }
