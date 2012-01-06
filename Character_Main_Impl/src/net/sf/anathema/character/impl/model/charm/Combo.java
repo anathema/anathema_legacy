@@ -16,19 +16,36 @@ import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescri
 public class Combo implements ICombo {
 
   private final ChangeControl control = new ChangeControl();
-  private final List<ICharm> charmList = new ArrayList<ICharm>();
+  private final List<ICharm> creationCharmList = new ArrayList<ICharm>();
+  private final List<ICharm> experiencedCharmList = new ArrayList<ICharm>();
   private ICharm extraActionCharm = null;
   private ICharm simpleCharm = null;
   private final ITextualDescription name = new SimpleTextualDescription();
   private final ITextualDescription description = new SimpleTextualDescription();
   private Integer id = null;
 
-  public ICharm[] getCharms() {
-    return charmList.toArray(new ICharm[0]);
+  public ICharm[] getCharms()
+  {
+	  ArrayList<ICharm> charms = new ArrayList<ICharm>();
+	  charms.addAll(creationCharmList);
+	  charms.addAll(experiencedCharmList);
+      return charms.toArray(new ICharm[0]);
+  }
+  
+  public ICharm[] getCreationCharms()
+  {
+	  return creationCharmList.toArray(new ICharm[0]);
+  }
+  
+  public ICharm[] getExperiencedCharms()
+  {
+	  return experiencedCharmList.toArray(new ICharm[0]);
   }
 
-  public void addCharm(ICharm charm) {
-    charmList.add(charm);
+  public void addCharm(ICharm charm, boolean experienced)
+  {
+	List<ICharm> targetList = experienced ? experiencedCharmList : creationCharmList;
+    targetList.add(charm);
     if (charm.getCharmTypeModel().getCharmType() == CharmType.Simple) {
       simpleCharm = charm;
     }
@@ -48,7 +65,8 @@ public class Combo implements ICombo {
 
   public void removeCharms(ICharm[] charms) {
     List<ICharm> removal = Arrays.asList(charms);
-    charmList.removeAll(removal);
+    creationCharmList.removeAll(removal);
+    experiencedCharmList.removeAll(removal);
     if (simpleCharm != null && removal.contains(simpleCharm)) {
       simpleCharm = null;
     }
@@ -71,9 +89,12 @@ public class Combo implements ICombo {
   }
 
   private void copyCombo(ICombo source, Combo destination) {
-    for (ICharm charm : source.getCharms()) {
-      destination.addCharm(charm);
+    for (ICharm charm : source.getCreationCharms()) {
+      destination.addCharm(charm, false);
     }
+    for (ICharm charm : source.getExperiencedCharms()) {
+        destination.addCharm(charm, true);
+      }
     if (source.getId() != null) {
       destination.setId(source.getId());
     }
@@ -85,7 +106,8 @@ public class Combo implements ICombo {
     id = null;
     name.setText(""); //$NON-NLS-1$
     description.setText(""); //$NON-NLS-1$
-    removeCharms(charmList.toArray(new ICharm[0]));
+    removeCharms(creationCharmList.toArray(new ICharm[0]));
+    removeCharms(experiencedCharmList.toArray(new ICharm[0]));
   }
 
   public ITextualDescription getName() {
@@ -97,7 +119,8 @@ public class Combo implements ICombo {
   }
 
   public boolean contains(ICharm charm) {
-    return charmList.contains(charm);
+    return creationCharmList.contains(charm) ||
+    	   experiencedCharmList.contains(charm);
   }
 
   public Integer getId() {
