@@ -105,13 +105,13 @@ public class FavorableTraitBoxContentEncoder<C extends FavorableTraitContent> ex
   private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, IFavorableGenericTrait trait, Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
-    return traitEncoder.encodeWithTextAndRectangle(graphics, label, position, width, value, favored, content.getEssenceMax());
+    return traitEncoder.encodeWithTextAndRectangle(graphics, label, position, width, value, favored, content.getTraitMax());
   }
 
   private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, IFavorableGenericTrait trait, boolean[] excellencyLearned, Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
-    return traitEncoder.encodeWithExcellencies(graphics, label, position, width, value, favored, excellencyLearned, content.getEssenceMax());
+    return traitEncoder.encodeWithExcellencies(graphics, label, position, width, value, favored, excellencyLearned, content.getTraitMax());
   }
 
   private void encodeMarker(SheetGraphics graphics, Position markerPosition) {

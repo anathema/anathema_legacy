@@ -23,4 +23,5 @@ public interface IVoidStateFormatConstants {
   public static final TextFormat DEFAULT_TEXT_FORMAT = new TextFormat(FontStyle.PLAIN, false, FONT_SIZE);
   int WEAPON_HEIGHT_FIRST_EDITION = 129;
   int WEAPON_HEIGHT_SECOND_EDITION = 102;
+  int TYPE_LONG_FORM_CUTOFF = 20;
 }

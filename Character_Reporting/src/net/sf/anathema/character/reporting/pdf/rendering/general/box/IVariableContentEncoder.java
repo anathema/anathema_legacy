@@ -5,5 +5,5 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public interface IVariableContentEncoder extends ContentEncoder {
 
-  public float getRequestedHeight(SheetGraphics graphics, ReportContent content, float width);
+  float getRequestedHeight(SheetGraphics graphics, ReportContent content, float width);
 }

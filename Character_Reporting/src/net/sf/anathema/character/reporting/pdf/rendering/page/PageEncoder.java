@@ -7,7 +7,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public interface PageEncoder {
 
-  static final int CONTENT_HEIGHT = 755;
+  static final int FIXED_CONTENT_HEIGHT = 755;
 
   void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException;
 }

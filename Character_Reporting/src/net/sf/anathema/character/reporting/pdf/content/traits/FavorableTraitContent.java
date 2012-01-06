@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
@@ -79,8 +80,11 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   public abstract String getExcellencyCommentKey();
 
-  public int getEssenceMax() {
-    return character.getEssenceLimitation().getAbsoluteLimit(character);
+  public int getTraitMax() {
+    IIdentifiedTraitTypeGroup group = getIdentifiedTraitTypeGroups()[0];
+    ITraitType traitType = group.getAllGroupTypes()[0];
+    ITraitTemplate template = character.getTemplate().getTraitTemplateCollection().getTraitTemplate(traitType);
+    return template.getLimitation().getAbsoluteLimit(character);
   }
 
   public boolean hasContent() {

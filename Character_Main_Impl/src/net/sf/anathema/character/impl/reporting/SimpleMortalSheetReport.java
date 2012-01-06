@@ -14,7 +14,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SimpleMortalPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.simple.MortalPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
@@ -53,7 +53,7 @@ public class SimpleMortalSheetReport implements IITextReport {
     try {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
-      PageEncoder encoder = new SimpleMortalPageEncoder(getEncoderRegistry(), resources, configuration);
+      PageEncoder encoder = new MortalPageEncoder(getEncoderRegistry(), resources, configuration);
       SheetGraphics graphics = new SheetGraphics(directContent);
       ReportContent content = new ReportContent(getContentRegistry(), character, description);
       encoder.encode(document, graphics, content);

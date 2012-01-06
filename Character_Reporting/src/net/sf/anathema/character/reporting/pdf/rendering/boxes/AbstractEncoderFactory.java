@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes;
 
-import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.lib.util.Identificate;
 
 import java.util.HashMap;
@@ -24,7 +23,7 @@ public abstract class AbstractEncoderFactory extends Identificate implements Enc
   }
 
   @Override
-  public float getValue(BasicContent content, EncoderAttributeType type) {
-    return attributesByType.get(type).getValue(content);
+  public float getValue(EncodingMetrics metrics, EncoderAttributeType type) {
+    return attributesByType.get(type).getValue(metrics);
   }
 }

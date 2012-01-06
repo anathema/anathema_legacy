@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.lunar.reporting.content.equipment.LunarArmourContent;
-import net.sf.anathema.character.lunar.reporting.rendering.EncoderIds;
 import net.sf.anathema.character.lunar.reporting.rendering.SecondEditionLunarSpiritFormEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.SecondEditionPowersEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.beastform.SecondEditionDBTCombatEncoder;
@@ -19,6 +18,7 @@ import net.sf.anathema.character.lunar.reporting.rendering.knacks.KnackEncoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -27,6 +27,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.lunar.reporting.rendering.EncoderIds.ARSENAL_LUNAR;
 import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
@@ -91,8 +92,10 @@ public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
   }
 
   private float encodeArsenal(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    float height = encoderRegistry.getValue(PreferredHeight, content, EncoderIds.ARSENAL_LUNAR);
-    ContentEncoder weaponryEncoder = encoderRegistry.createEncoder(resources, content, EncoderIds.ARSENAL_LUNAR);
+    EncodingMetrics metrics = EncodingMetrics.From(graphics, content);
+    ;
+    float height = encoderRegistry.getValue(PreferredHeight, metrics, ARSENAL_LUNAR);
+    ContentEncoder weaponryEncoder = encoderRegistry.createEncoder(resources, content, ARSENAL_LUNAR);
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
     return height;

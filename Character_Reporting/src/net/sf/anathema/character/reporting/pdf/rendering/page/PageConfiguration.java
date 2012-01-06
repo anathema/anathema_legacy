@@ -35,7 +35,11 @@ public class PageConfiguration {
   }
 
   private Bounds getColumnRectangle(float spaceFromTop, float height, int columnCount, float leftColumnX) {
-    return new Bounds(leftColumnX, getUpperContentY() - spaceFromTop - height, getColumnWidth(columnCount), height);
+    return new Bounds(leftColumnX, getY(spaceFromTop, height), getColumnWidth(columnCount), height);
+  }
+
+  public float getY(float spaceFromTop, float height) {
+    return getUpperContentY() - spaceFromTop - height;
   }
 
   public float getColumnWidth() {

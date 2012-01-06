@@ -9,14 +9,12 @@ import net.sf.anathema.character.reporting.pdf.layout.AbstractPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.PdfBackgroundEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.GenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.MagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -24,13 +22,13 @@ import java.util.List;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class SimpleSecondPageEncoder extends AbstractPageEncoder {
+public class SecondPageEncoder extends AbstractPageEncoder {
 
   private final PageConfiguration configuration;
   private final PdfBoxEncoder boxEncoder;
   private final IResources resources;
 
-  public SimpleSecondPageEncoder(EncoderRegistry encoders, IResources resources, PageConfiguration configuration) {
+  public SecondPageEncoder(EncoderRegistry encoders, IResources resources, PageConfiguration configuration) {
     super(resources, encoders);
     this.resources = resources;
     this.configuration = configuration;
@@ -74,33 +72,32 @@ public class SimpleSecondPageEncoder extends AbstractPageEncoder {
     return new PdfComboEncoder(resources).encodeCombos(graphics, content, restOfPage);
   }
 
-  private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) {
     Bounds bounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
     return encodeBox(graphics, content, bounds, EncoderIds.EXPERIENCE);
   }
 
-  private float encodeLanguages(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeLanguages(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) {
     Bounds bounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
     return encodeBox(graphics, content, bounds, EncoderIds.LANGUAGES);
   }
 
   private float encodeBackgrounds(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds backgroundBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    ContentEncoder encoder = new PdfBackgroundEncoder(resources);
-    boxEncoder.encodeBox(content, graphics, encoder, backgroundBounds);
-    return height;
+    return encodeBox(graphics, content, backgroundBounds, EncoderIds.BACKGROUNDS);
   }
 
-  private float encodePossessions(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodePossessions(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) {
     Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
     return encodeBox(graphics, content, bounds, EncoderIds.POSSESSIONS);
   }
 
   private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
+
     if (content.getCharacter().getGenericCharmStats().length > 0) {
       float height = 55 + content.getCharacter().getGenericCharmStats().length * 11;
       Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-      ContentEncoder encoder = new PdfGenericCharmEncoder(resources);
+      ContentEncoder encoder = new GenericCharmEncoder(resources);
       boxEncoder.encodeBox(content, graphics, encoder, bounds);
       return height;
     } else {

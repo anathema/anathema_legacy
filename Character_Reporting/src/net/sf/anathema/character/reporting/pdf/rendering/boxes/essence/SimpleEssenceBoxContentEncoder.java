@@ -21,7 +21,7 @@ public class SimpleEssenceBoxContentEncoder extends AbstractBoxContentEncoder<Si
   @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
     SimpleEssenceContent content = createContent(reportContent);
-    SimpleEssenceBoxLayout layout = new SimpleEssenceBoxLayout(graphics, bounds, content.getNumberOfPoolLines());
+    SimpleEssenceBoxLayout layout = new SimpleEssenceBoxLayout(graphics.getTextMetrics(), bounds, content.getNumberOfPoolLines());
     encodeEssenceTrait(graphics, content, layout);
     encodePersonalPool(graphics, content, layout);
     encodePeripheralPool(graphics, content, layout);
