@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfi
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 
 public interface IMultipleEffectCharmConfiguration extends ISpecialCharmConfiguration {
-  public ISubeffect[] getEffects();
+  ISubeffect[] getEffects();
 
-  public ISubeffect getEffectById(String id);
+  ISubeffect getEffectById(String id);
 }
