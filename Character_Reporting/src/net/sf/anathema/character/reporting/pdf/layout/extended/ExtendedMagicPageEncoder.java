@@ -11,9 +11,9 @@ import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.initiation.PdfInitiationEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.GenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.MagicEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.ExtendedWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -120,7 +120,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeCombos(SheetGraphics graphics, IGenericCharacter character, float distanceFromTop, float fixedHeight, boolean sharesRow) throws DocumentException {
     List<IGenericCombo> combos = new ArrayList<IGenericCombo>(Arrays.asList(character.getCombos()));
-    PdfComboEncoder comboEncoder = new PdfComboEncoder(getResources());
+    ComboEncoder comboEncoder = new ComboEncoder(getResources());
     if (sharesRow) {
       float rowHeight = comboEncoder.encodeFixedCombos(graphics, combos, calculateBounds(1, 2, distanceFromTop, fixedHeight));
       float rowIncrement = calculateBoxIncrement(rowHeight);
