@@ -214,7 +214,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   private void initViewListening(final IComboConfigurationView comboView) {
     comboView.addComboViewListener(new IComboViewListener() {
       public void charmAdded(Object addedCharm) {
-        comboConfiguration.addCharmToCombo((ICharm) addedCharm);
+        comboConfiguration.addCharmToCombo((ICharm) addedCharm, statistics.isExperienced());
       }
 
       public void charmRemoved(Object[] removedCharms) {
@@ -232,7 +232,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
       public void comboFinalizedXP() {
     	  String comboName = comboConfiguration.getEditCombo().getName().getText();
     	  comboName = comboName == null ? resources.getString("CardView.CharmConfiguration.ComboCreation.Combo") : "\"" + comboName + "\"";
-          comboConfiguration.finalizeComboXP(comboName + " " + resources.getString("CardView.CharmConfiguration.ComboCreation.Upgraded"));
+          comboConfiguration.finalizeComboUpgrade(comboName);
         }
 
       public void comboCleared() {

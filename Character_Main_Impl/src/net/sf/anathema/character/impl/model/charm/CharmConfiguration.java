@@ -27,11 +27,14 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.IUnsupportedTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -95,9 +98,11 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   private ICharmTemplate getNativeCharmTemplate(ITemplateRegistry registry) {
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
-    return registry.getTemplate(
-            basicCharacterContext.getTemplateType(),
-            basicCharacterContext.getRuleSet().getEdition()).getMagicTemplate().getCharmTemplate();
+    ITemplateType templateType = basicCharacterContext.getTemplateType();
+    IExaltedEdition edition = basicCharacterContext.getRuleSet().getEdition();
+    ICharacterTemplate template = registry.getTemplate(templateType, edition);
+    IMagicTemplate magicTemplate = template.getMagicTemplate();
+    return magicTemplate.getCharmTemplate();
   }
 
   public void addCharmLearnListener(ICharmLearnListener listener) {
@@ -399,18 +404,23 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private void verifyCharms() {
-    if (!context.isFullyLoaded())
+    if (!context.isFullyLoaded()) {
       return;
-
-    List<ICharm> unlearning = new ArrayList<ICharm>();
-
-    for (ICharm charm : this.getLearnedCharms(true))
-      if (!isLearnable(charm) && isUnlearnable(charm))
-        unlearning.add(charm);
-
-    for (ICharm charm : unlearning)
-      learningCharmGroupContainer.getLearningCharmGroup(charm).forgetCharm(charm,
-              !learningCharmGroupContainer.getLearningCharmGroup(charm).isLearned(charm, false));
+    }
+    List<ICharm> charmsToUnlearn = new ArrayList<ICharm>();
+    for (ICharm charm : this.getLearnedCharms(true)) {
+      boolean prerequisitesForCharmAreNoLongerMet = !isLearnable(charm);
+      boolean charmCanBeUnlearned = isUnlearnable(charm);
+      if (prerequisitesForCharmAreNoLongerMet && charmCanBeUnlearned) {
+        charmsToUnlearn.add(charm);
+      }
+    }
+    for (ICharm charm : charmsToUnlearn) {
+      ILearningCharmGroup group = learningCharmGroupContainer.getLearningCharmGroup(charm);
+      boolean learnedAtCreation = group.isLearned(charm, false);
+      boolean learnedWithExperience = !learnedAtCreation;
+      group.forgetCharm(charm, learnedWithExperience);
+    }
   }
 
   public void addLearnableListener(IChangeListener listener) {

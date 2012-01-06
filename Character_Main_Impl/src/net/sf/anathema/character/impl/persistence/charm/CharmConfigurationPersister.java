@@ -132,11 +132,17 @@ private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration c
           String.valueOf(!comboConfiguration.isLearnedOnCreation(combo)));
       textPersister.saveTextualDescription(comboElement, TAG_NAME, combo.getName());
       textPersister.saveTextualDescription(comboElement, TAG_DESCRIPTION, combo.getDescription());
-      for (ICharm charm : combo.getCharms()) {
+      for (ICharm charm : combo.getCreationCharms()) {
         Element charmElement = comboElement.addElement(TAG_CHARM);
         charmElement.addAttribute(ATTRIB_NAME, charm.getId());
         charmElement.addAttribute(ATTRIB_TYPE, charm.getCharacterType().getId());
       }
+      for (ICharm charm : combo.getExperiencedCharms()) {
+          Element charmElement = comboElement.addElement(TAG_CHARM);
+          charmElement.addAttribute(ATTRIB_NAME, charm.getId());
+          charmElement.addAttribute(ATTRIB_TYPE, charm.getCharacterType().getId());
+          charmElement.addAttribute(ATTRIB_EXPERIENCE_LEARNED, "true");
+        }
     }
   }
 
@@ -211,7 +217,7 @@ private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration c
     return ElementUtilities.getBooleanAttribute(charmElement, ATTRIB_EXPERIENCE_LEARNED, false);
   }
 
-  private void loadCombos(Element parent, IComboConfiguration comboConfiguration, ICharmIdMap charms) {
+  private void loadCombos(Element parent, IComboConfiguration comboConfiguration, ICharmIdMap charms) throws PersistenceException {
     Element combosElement = parent.element(TAG_COMBOS);
     if (combosElement == null) {
       return;
@@ -219,15 +225,16 @@ private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration c
     for (Object comboElementObject : combosElement.elements(TAG_COMBO)) {
       Element comboElement = (Element) comboElementObject;
       ICombo combo = comboConfiguration.getEditCombo();
-      boolean experienceLearned = isExperienceLearned(comboElement);
+      boolean comboExperienceLearned = isExperienceLearned(comboElement);
       textPersister.restoreTextualDescription(comboElement, TAG_NAME, combo.getName());
       textPersister.restoreTextualDescription(comboElement, TAG_DESCRIPTION, combo.getDescription());
       for (Object charmElementObject : comboElement.elements(TAG_CHARM)) {
         Element charmElement = (Element) charmElementObject;
+        boolean charmExperiencedLearned = isExperienceLearned(charmElement);
         ICharm comboCharm = charms.getCharmById(charmElement.attributeValue(ATTRIB_NAME));
-        comboConfiguration.addCharmToCombo(comboCharm);
+        comboConfiguration.addCharmToCombo(comboCharm, charmExperiencedLearned);
       }
-      comboConfiguration.finalizeCombo(experienceLearned);
+      comboConfiguration.finalizeCombo(comboExperienceLearned);
     }
   }
   
