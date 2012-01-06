@@ -12,4 +12,6 @@ public abstract class AbstractSubBoxContent extends AbstractSubContent implement
   public String getHeader() {
     return getResources().getString("Sheet.Header." + getHeaderKey());
   }
+
+  public abstract String getHeaderKey();
 }

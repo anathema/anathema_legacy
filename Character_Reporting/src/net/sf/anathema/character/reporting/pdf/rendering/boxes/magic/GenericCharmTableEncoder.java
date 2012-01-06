@@ -21,7 +21,9 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmContent;
 import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
@@ -41,28 +43,17 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
     this.resources = resources;
   }
 
-  public float getRequestedHeight(SheetGraphics graphics, ReportContent content) {
-    int genericCharmCount = content.getCharacter().getGenericCharmStats().length;
-    if (genericCharmCount == 0) {
-      return 0;
-    }
-    float traitHeight = 0;
-    for (ITraitType trait : getTraits(content.getCharacter())) {
-      String text = resources.getString(trait.getId());
-      if (text.length() >= IVoidStateFormatConstants.TYPE_LONG_FORM_CUTOFF) {
-        text = resources.getString(trait.getId() + ".Short");
-      }
+  public float getRequestedHeight(SheetGraphics graphics, ReportContent reportContent) {
+    EncodingMetrics metrics = EncodingMetrics.From(graphics, reportContent);
+    return new PreferredGenericCharmHeight().getValue(metrics);
+  }
 
-      float height = graphics.getTextMetrics().getTableTextWidth(text) + 5.794f;
-      if (height > traitHeight) {
-        traitHeight = height;
-      }
-    }
-    return traitHeight + genericCharmCount * IVoidStateFormatConstants.LINE_HEIGHT;
+  private GenericCharmContent createContent(ReportContent content) {
+    return content.createSubContent(GenericCharmContent.class);
   }
 
   public boolean hasContent(ReportContent content) {
-    return content.getCharacter().getGenericCharmStats().length > 0;
+    return createContent(content).hasContent();
   }
 
   @Override

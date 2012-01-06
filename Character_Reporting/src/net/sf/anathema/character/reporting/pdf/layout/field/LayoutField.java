@@ -9,7 +9,7 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 
 public class LayoutField {
 
-  public static LayoutField CreateUpperLeftFieldWithHeightAndColumnSpan(Body body, float height, int  columnSpan) {
+  public static LayoutField CreateUpperLeftFieldWithHeightAndColumnSpan(Body body, float height, int columnSpan) {
     return new LayoutField(body, columnSpan, 0, height, 0);
   }
 
@@ -28,11 +28,11 @@ public class LayoutField {
   }
 
   public Bounds createRenderBounds() {
-    return new Bounds(0, 0, getWidth(), getAlignedHeight());
+    return new Bounds(0, 0, getWidth(), height);
   }
 
   public GraphicsTemplate createRenderTemplate(SheetGraphics graphics) {
-    return graphics.createTemplate(getWidth(), getAlignedHeight());
+    return graphics.createTemplate(getWidth(), height);
   }
 
   public void addTemplateToParent(GraphicsTemplate template) {
@@ -52,7 +52,11 @@ public class LayoutField {
   }
 
   public float getFromTopBelow() {
-    return fromTop + height + PADDING;
+    return getBottomFromTop() + PADDING;
+  }
+
+  public float getBottomFromTop() {
+    return fromTop + height;
   }
 
   public float getAlignedHeight() {
@@ -79,7 +83,7 @@ public class LayoutField {
     return columnIndex + columnSpan;
   }
 
-  public LayoutField createForFromTopAndHeightAndColumnSpanAndColumnIndex(float fromTop, float height, int columnSpan, int columnIndex) {
-    return new LayoutField(body, columnSpan, columnIndex, height, fromTop);
+  public LayoutField createForFromTopAndHeightAndColumnSpanAndColumnIndex(float newFromTop, float newHeight, int newColumnSpan, int newColumnIndex) {
+    return new LayoutField(body, newColumnSpan, newColumnIndex, newHeight, newFromTop);
   }
 }

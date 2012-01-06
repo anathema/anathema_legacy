@@ -2,9 +2,11 @@ package net.sf.anathema.character.reporting.pdf.layout.field;
 
 public interface HeightWithoutParent {
 
-  ColumnSpan withHeight(float height);
+  ColumnSpan withPreferredHeight();
+
+  ColumnSpan withHeight(float layoutHeight);
 
   ColumnSpan fillToBottomOfPage();
 
-  ColumnSpan alignBottomTo(LayoutField parent);
+  ColumnSpan alignBottomTo(LayoutField field);
 }
