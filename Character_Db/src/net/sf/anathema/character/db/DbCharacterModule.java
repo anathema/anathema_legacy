@@ -23,6 +23,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
 import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
 import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
@@ -49,6 +50,7 @@ import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstE
 import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.DB;
 
+@CharacterModule
 public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private static final int ESSENCE_MAX = EssenceTemplate.DB_ESSENCE_MAX;
@@ -89,15 +91,15 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final TemplateType dreamsTemplateType = new TemplateType(DB, new Identificate("DreamsSubtype")); //$NON-NLS-1$
   private static final TemplateType dreamsRevisedTemplateType = new TemplateType(DB, new Identificate("DreamsRevisedSubtype")); //$NON-NLS-1$
 
-  private static final TemplateType[] dreams = { dreamsTemplateType, dreamsRevisedTemplateType };
+  private static final TemplateType[] dreams = {dreamsTemplateType, dreamsRevisedTemplateType};
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getGenericCharmStatsRegistry()
-      .register(DB, new IMagicStats[] { new FirstExcellency(DB, ExaltedSourceBook.DragonBlooded2nd, "1 m per 2 dice"), //$NON-NLS-1$
-        new SecondExcellency(DB, ExaltedSourceBook.DragonBlooded2nd), new ThirdExcellency(DB, "3 m",
-        ExaltedSourceBook.DragonBlooded2nd), //$NON-NLS-1$
-        new TerrestrialReinforcement() });
+            .register(DB, new IMagicStats[]{new FirstExcellency(DB, ExaltedSourceBook.DragonBlooded2nd, "1 m per 2 dice"), //$NON-NLS-1$
+                    new SecondExcellency(DB, ExaltedSourceBook.DragonBlooded2nd), new ThirdExcellency(DB, "3 m",
+                    ExaltedSourceBook.DragonBlooded2nd), //$NON-NLS-1$
+                    new TerrestrialReinforcement()});
     characterGenerics.getAdditionalTemplateParserRegistry().register(DbVirtueFlawTemplate.TEMPLATE_ID, new DbVirtueFlawParser());
     characterGenerics.getCasteCollectionRegistry().register(DB, new CasteCollection(DBAspect.values()));
   }
@@ -142,8 +144,8 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, DB));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, DB));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_FAMILY,
-      new ITemplateType[] { dynastTemplateType, lookshyNativeTemplateType, lookshyRealmTemplateType, dynasticRevisedTemplateType,
-        dreamsTemplateType, dreamsRevisedTemplateType, lookshyNativeRevisedTemplateType, lookshyRealmRevisedTemplateType }));
+            new ITemplateType[]{dynastTemplateType, lookshyNativeTemplateType, lookshyRealmTemplateType, dynasticRevisedTemplateType,
+                    dreamsTemplateType, dreamsRevisedTemplateType, lookshyNativeRevisedTemplateType, lookshyRealmRevisedTemplateType}));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HENCHMEN, DB));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, DB));
     addLookshyBackgrounds(backgroundRegistry);
@@ -156,28 +158,28 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void addCultBackgrounds(IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
-    ITemplateType[] cultTemplates = new ITemplateType[] { ketherRockTemplateType, tabernacleTemplateType };
+    ITemplateType[] cultTemplates = new ITemplateType[]{ketherRockTemplateType, tabernacleTemplateType};
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ILLUMINATION, cultTemplates));
   }
 
   private void addSorcery(IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
     TemplateTypeBackgroundTemplate sorceryBackground = new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SORCERY,
-      new ITemplateType[] { dynastTemplateType, lookshyNativeTemplateType, lookshyRealmTemplateType, lookshyOutcasteTemplateType,
-        ketherRockTemplateType, tabernacleTemplateType },
-      FirstEdition, LowerableState.Immutable);
+            new ITemplateType[]{dynastTemplateType, lookshyNativeTemplateType, lookshyRealmTemplateType, lookshyOutcasteTemplateType,
+                    ketherRockTemplateType, tabernacleTemplateType},
+            FirstEdition, LowerableState.Immutable);
     backgroundRegistry.add(sorceryBackground);
   }
 
   private void addLookshyBackgrounds(IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
     ITemplateType[] lookshyTemplateTypes =
-      new ITemplateType[] { lookshyNativeTemplateType, lookshyRealmTemplateType, lookshyOutcasteTemplateType, lookshyNativeRevisedTemplateType,
-        lookshyRealmRevisedTemplateType, lookshyOutcasteRevisedTemplateType, dreamsTemplateType, dreamsRevisedTemplateType };
+            new ITemplateType[]{lookshyNativeTemplateType, lookshyRealmTemplateType, lookshyOutcasteTemplateType, lookshyNativeRevisedTemplateType,
+                    lookshyRealmRevisedTemplateType, lookshyOutcasteRevisedTemplateType, dreamsTemplateType, dreamsRevisedTemplateType};
     ITemplateType[] retainerTemplateTypes =
-      new ITemplateType[] { dynastTemplateType, immaculateTemplateType, cherakiTemplateType, lookshyNativeTemplateType, lookshyRealmTemplateType,
-        lookshyOutcasteTemplateType, pirateOutcasteTemplateType, pirateRealmTemplateType, patricianOutcasteTemplateType,
-        lowerCasteOutcasteTemplateType, dynasticRevisedTemplateType, immaculateRevisedTemplateType, cherakiRevisedTemplateType,
-        lookshyNativeRevisedTemplateType, lookshyRealmRevisedTemplateType, lookshyOutcasteRevisedTemplateType, dreamsTemplateType,
-        dreamsRevisedTemplateType };
+            new ITemplateType[]{dynastTemplateType, immaculateTemplateType, cherakiTemplateType, lookshyNativeTemplateType, lookshyRealmTemplateType,
+                    lookshyOutcasteTemplateType, pirateOutcasteTemplateType, pirateRealmTemplateType, patricianOutcasteTemplateType,
+                    lowerCasteOutcasteTemplateType, dynasticRevisedTemplateType, immaculateRevisedTemplateType, cherakiRevisedTemplateType,
+                    lookshyNativeRevisedTemplateType, lookshyRealmRevisedTemplateType, lookshyOutcasteRevisedTemplateType, dreamsTemplateType,
+                    dreamsRevisedTemplateType};
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, lookshyTemplateTypes));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_RETAINERS, retainerTemplateTypes));
   }

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleAdapter;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.BasicContentFactory;
@@ -25,6 +26,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.Attrib
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.BackgroundsEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.GenericCharmEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.notes.NotesEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatEncoderFactory;
@@ -33,6 +35,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.Extende
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoderFactory;
 import net.sf.anathema.lib.resources.IResources;
 
+@CharacterModule
 public class CharacterReportingModule extends CharacterModuleAdapter<CharacterReportingModuleObject> {
 
   private CharacterReportingModuleObject moduleObject;
@@ -59,6 +62,7 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
     registry.add(new AttributesEncoderFactory());
     registry.add(new BackgroundsEncoderFactory());
     registry.add(new ExperienceBoxEncoderFactory());
+    registry.add(new GenericCharmEncoderFactory());
     registry.add(new NotesEncoderFactory());
     registry.add(new PersonalInfoEncoderFactory());
     registry.add(new SimpleEssenceBoxEncoderFactory());

@@ -3,12 +3,14 @@ package net.sf.anathema.character.impl.specialties;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.presenter.specialty.SpecialtiesModelFactory;
 import net.sf.anathema.character.presenter.specialty.SpecialtiesTemplate;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
+@CharacterModule
 public class SpecialtiesModule extends NullObjectCharacterModuleAdapter {
 
   @Override

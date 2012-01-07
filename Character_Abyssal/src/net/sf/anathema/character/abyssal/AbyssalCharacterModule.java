@@ -14,6 +14,7 @@ import net.sf.anathema.character.abyssal.template.RenegadeAbyssalTemplate;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
@@ -36,6 +37,7 @@ import net.sf.anathema.lib.resources.IResources;
 import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 
+@CharacterModule
 public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
   private static final String ESSENCE_ENGORGEMENT_TECHNIQUE = "Abyssal.EssenceEngorgementTechnique";

@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
 import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
 import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
@@ -20,6 +21,7 @@ import net.sf.anathema.lib.resources.IResources;
 import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.SPIRIT;
 
+@CharacterModule
 public class SpiritCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
@@ -30,7 +32,7 @@ public class SpiritCharacterModule extends NullObjectCharacterModuleAdapter {
     SecondExcellency secondExcellency = new SecondExcellency(SPIRIT, ExaltedSourceBook.SecondEdition);
     ThirdExcellency thirdExcellency = new ThirdExcellency(SPIRIT, "4 m", ExaltedSourceBook.SecondEdition);
     characterGenerics.getGenericCharmStatsRegistry()
-      .register(SPIRIT, new IMagicStats[] { firstExcellency, secondExcellency, thirdExcellency, new InfiniteMastery(), new DivineSubordination() });
+            .register(SPIRIT, new IMagicStats[]{firstExcellency, secondExcellency, thirdExcellency, new InfiniteMastery(), new DivineSubordination()});
   }
 
   @Override

@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
 import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
@@ -39,6 +40,7 @@ import net.sf.anathema.lib.resources.IResources;
 import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.INFERNAL;
 
+@CharacterModule
 public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
@@ -47,10 +49,10 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(InfernalPatronTemplate.ID, new InfernalPatronParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(InfernalUrgeTemplate.ID, new InfernalUrgeParser());
     characterGenerics.getGenericCharmStatsRegistry()
-      .register(INFERNAL, new IMagicStats[]{new FirstExcellency(INFERNAL, ExaltedSourceBook.Infernals, "1 m per die"), //$NON-NLS-1$
-              new SecondExcellency(INFERNAL,
-                      ExaltedSourceBook.Infernals), new YoziMythosExultant(), new YoziInevitabilityTechnique(), new EffortlessYoziDominance(),
-              new SoSpeaksYozi()});
+            .register(INFERNAL, new IMagicStats[]{new FirstExcellency(INFERNAL, ExaltedSourceBook.Infernals, "1 m per die"), //$NON-NLS-1$
+                    new SecondExcellency(INFERNAL,
+                            ExaltedSourceBook.Infernals), new YoziMythosExultant(), new YoziInevitabilityTechnique(), new EffortlessYoziDominance(),
+                    new SoSpeaksYozi()});
   }
 
   @Override
@@ -69,7 +71,7 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerInfernalPatron(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
-    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
+                                      IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
     String templateId = InfernalPatronTemplate.ID;
     additionalModelFactoryRegistry.register(templateId, new InfernalPatronModelFactory());
     additionalViewFactoryRegistry.register(templateId, new InfernalPatronViewFactory());
@@ -77,7 +79,7 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerInfernalUrge(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
-    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
+                                    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
     String templateId = InfernalUrgeTemplate.ID;
     additionalModelFactoryRegistry.register(templateId, new InfernalUrgeModelFactory());
     additionalViewFactoryRegistry.register(templateId, new InfernalUrgeViewFactory());
