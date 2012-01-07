@@ -32,7 +32,7 @@ public class ExperienceComboEditingSupportTest {
   public void allowsDebtWhenFinalizingCombos() throws Exception {
     Combo originalCombo = new Combo();
     support.startChanging(originalCombo);
-    editedCombo.addCharm(charmNotInCombo);
+    editedCombo.addCharm(charmNotInCombo, true);
     assertThat(support.canFinalizeWithXP(), is(true));
   }
 }

@@ -230,7 +230,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   /**
-   * @parame experienced true to learn whether the charm is learned on experience, false if interested in creation
+   * @param experienced true to learn whether the charm is learned on experience, false if interested in creation
    *         learning.
    */
   public boolean isLearned(ICharm charm, boolean experienced) {

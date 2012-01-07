@@ -19,6 +19,10 @@ public interface ICombo extends Cloneable {
   public ITextualDescription getDescription();
 
   public ICharm[] getCharms();
+  
+  public ICharm[] getCreationCharms();
+  
+  public ICharm[] getExperiencedCharms();
 
   public boolean contains(ICharm charm);
 
@@ -28,5 +32,5 @@ public interface ICombo extends Cloneable {
 
   public void getValuesFrom(ICombo combo);
 
-  public void addCharm(ICharm charm);
+  public void addCharm(ICharm charm, boolean experienced);
 }

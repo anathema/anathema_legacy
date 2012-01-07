@@ -20,8 +20,8 @@ public class ComboExperienceModel extends AbstractIntegerValueModel {
 
   private int getComboCosts() {
     int experienceCosts = 0;
-    for (ICombo combo : statistics.getCombos().getExperienceLearnedCombos()) {
-      experienceCosts += calculator.getComboCosts(combo.getCharms());
+    for (ICombo combo : statistics.getCombos().getCurrentCombos()) {
+      experienceCosts += calculator.getComboCosts(combo.getExperiencedCharms());
     }
     return experienceCosts;
   }

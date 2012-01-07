@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.impl.model.charm.combo.FirstEditionComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.IComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.SecondEditionComboArbitrator;
+import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -36,7 +37,8 @@ public class ComboConfiguration implements IComboConfiguration {
           ICharmConfiguration charmConfiguration,
           IComboLearnStrategy learnStrategy,
           IExaltedEdition edition,
-          IExperiencePointConfiguration experiencePoints) {
+          IExperiencePointConfiguration experience,
+          ICharacterStatistics characterStatistics) {
     this.learnStrategy = learnStrategy;
     charmConfiguration.addCharmLearnListener(new CharmLearnAdapter() {
       @Override
@@ -55,7 +57,8 @@ public class ComboConfiguration implements IComboConfiguration {
       }
     });
     this.rules = editionRules[0];
-    this.experienceSupport = new ExperienceComboEditingSupport(experiencePoints, editCombo, this);
+    this.experienceSupport = new ExperienceComboEditingSupport(characterStatistics, experience,
+    		editCombo, this);
   }
 
   public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {
@@ -81,9 +84,9 @@ public class ComboConfiguration implements IComboConfiguration {
     }
   }
 
-  public void addCharmToCombo(ICharm charm) {
+  public void addCharmToCombo(ICharm charm, boolean experienced) {
     if (rules.canBeAddedToCombo(getEditCombo(), charm)) {
-      getEditCombo().addCharm(charm);
+      getEditCombo().addCharm(charm, experienced);
     } else {
       throw new IllegalArgumentException("The charm " + charm.getId() + " is illegal in this combo."); //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -97,7 +100,7 @@ public class ComboConfiguration implements IComboConfiguration {
     editCombo.removeCharms(charms);
   }
 
-  public void finalizeComboXP(String xpMessage) {
+  public void finalizeComboUpgrade(String xpMessage) {
     experienceSupport.commitChanges(xpMessage);
     finalizeCombo();
   }

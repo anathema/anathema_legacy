@@ -55,6 +55,11 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
     }
     return comboConfiguration.isComboLegal((ICharm) object);
   }
+  
+  public boolean isRemoveButtonEnabled(ICharm charm)
+  {
+	  return charm != null && comboConfiguration.isAllowedToRemove(charm);
+  }
 
   @Override
   public ListCellRenderer getLearnedMagicRenderer() {

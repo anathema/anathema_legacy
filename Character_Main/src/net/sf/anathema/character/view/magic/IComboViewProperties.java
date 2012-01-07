@@ -3,6 +3,7 @@ package net.sf.anathema.character.view.magic;
 import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnProperties;
+import net.sf.anathema.character.generic.magic.ICharm;
 
 public interface IComboViewProperties extends IMagicLearnProperties {
 
@@ -27,6 +28,8 @@ public interface IComboViewProperties extends IMagicLearnProperties {
   String getFinalizeButtonEditToolTip();
 
   String getCancelButtonEditToolTip();
+  
+  boolean isRemoveButtonEnabled(ICharm charm);
 
   boolean canFinalizeWithXP();
 }
