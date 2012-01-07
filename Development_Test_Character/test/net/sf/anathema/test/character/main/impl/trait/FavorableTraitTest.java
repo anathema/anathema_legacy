@@ -148,14 +148,6 @@ public class FavorableTraitTest {
   }
 
   @Test
-  public void testSetValueTo6OnExperiencedCharacterWithHighEssence() throws Exception {
-    valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
-    modelContext.getCharacter().addTrait(new DummyGenericTrait(OtherTraitType.Essence, 6));
-    trait.setCurrentValue(6);
-    assertEquals(6, trait.getCurrentValue());
-  }
-
-  @Test
   public void testExperienceSpecialtyCount() throws Exception {
     ISubTraitContainer container = new SpecialtiesContainer(
             new DefaultTraitReference(trait),
