@@ -32,7 +32,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class FavorableTraitTest extends BasicCharacterTestCase {
+public class FavorableTraitTest {
 
   private IIncrementChecker incrementChecker = EasyMock.createStrictMock(IIncrementChecker.class);
   private IFavorableStateChangedListener abilityStateListener = EasyMock.createStrictMock(IFavorableStateChangedListener.class);
@@ -43,7 +43,7 @@ public class FavorableTraitTest extends BasicCharacterTestCase {
   @Before
   public void createTrait() throws Exception {
     this.valueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
-    this.modelContext = createModelContextWithEssence2(valueStrategy);
+    this.modelContext = new BasicCharacterTestCase().createModelContextWithEssence2(valueStrategy);
     this.trait = createObjectUnderTest(modelContext);
   }
 
@@ -171,7 +171,7 @@ public class FavorableTraitTest extends BasicCharacterTestCase {
 
   @Test
   public void testCreationSpecialtyDuringExperienced() throws Exception {
-    ICharacterModelContext context = createModelContextWithEssence2(new ExperiencedTraitValueStrategy());
+    ICharacterModelContext context = new BasicCharacterTestCase().createModelContextWithEssence2(new ExperiencedTraitValueStrategy());
     ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(trait), context.getTraitContext());
     ISubTrait specialty = container.addSubTrait("TestSpecialty"); //$NON-NLS-1$
     specialty.setCreationValue(2);

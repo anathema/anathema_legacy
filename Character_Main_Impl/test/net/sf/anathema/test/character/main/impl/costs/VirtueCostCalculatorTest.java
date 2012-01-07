@@ -17,7 +17,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class VirtueCostCalculatorTest extends BasicCharacterTestCase {
+public class VirtueCostCalculatorTest {
 
   private VirtueCostCalculator calculator;
   private IDefaultTrait[] virtues;
@@ -26,7 +26,7 @@ public class VirtueCostCalculatorTest extends BasicCharacterTestCase {
   public void setUp() throws Exception {
     IBonusPointCosts cost = new DefaultBonusPointCosts();
     TraitTemplateCollection traitTemplates = new TraitTemplateCollection(new ExaltTraitTemplateFactory());
-    ITraitContext traitContext = createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext();
+    ITraitContext traitContext = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext();
     this.virtues = new DefaultTraitFactory(traitContext, traitTemplates, new NullAdditionalRules()).createTraits(VirtueType.values());
     this.calculator = new VirtueCostCalculator(virtues, 5, cost);
   }

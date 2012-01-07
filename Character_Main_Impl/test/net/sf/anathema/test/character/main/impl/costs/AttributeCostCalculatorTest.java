@@ -30,7 +30,6 @@ import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.test.character.BasicCharacterTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -40,7 +39,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class AttributeCostCalculatorTest extends BasicCharacterTestCase {
+public class AttributeCostCalculatorTest {
 
   private static final int ATTRIBUTE_BONUS_POINT_COST = 4;
 

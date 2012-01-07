@@ -1,6 +1,5 @@
 package net.sf.anathema.test.character.main.impl.costs;
 
-import net.sf.anathema.test.character.BasicCharacterTestCase;
 import net.sf.anathema.character.dummy.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.character.dummy.trait.DummyTraitContext;
 import net.sf.anathema.character.generic.IBasicCharacterData;
@@ -23,7 +22,7 @@ import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactor
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 
-public abstract class AbstractBonusPointTestCase extends BasicCharacterTestCase {
+public abstract class AbstractBonusPointTestCase {
 
   protected static void addAbilityAndEssence(DummyCoreTraitConfiguration coreTraits) {
     NullAdditionalRules additionalRules = new NullAdditionalRules();
