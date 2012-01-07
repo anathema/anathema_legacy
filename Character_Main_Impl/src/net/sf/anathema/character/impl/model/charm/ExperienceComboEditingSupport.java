@@ -15,13 +15,8 @@ public class ExperienceComboEditingSupport implements ComboEditingRules {
   private ComboLearnTime learnTime;
   private ICombo originalCombo;
 
-  
-  public ExperienceComboEditingSupport(IExperiencePointConfiguration experiencePoints, ICombo editCombo, ComboLearnTime learnTime) {
-    this(null, experiencePoints, editCombo, learnTime);
-  }
-  
   public ExperienceComboEditingSupport(ICharacterStatistics statistics,
-		  IExperiencePointConfiguration experiencePoints, ICombo editCombo, ComboLearnTime learnTime) {
+                                       IExperiencePointConfiguration experiencePoints, ICombo editCombo, ComboLearnTime learnTime) {
     this.experiencePoints = experiencePoints;
     this.statistics = statistics;
     this.editCombo = editCombo;
@@ -29,17 +24,13 @@ public class ExperienceComboEditingSupport implements ComboEditingRules {
   }
 
   public boolean isAllowedToRemove(ICharm charm) {
-	boolean isExperienced = statistics == null ? experiencePoints.getTotalExperiencePoints() != 0 :
-		statistics.isExperienced();
-    if (isEditingACombo() &&
-            (!learnTime.isLearnedOnCreation(originalCombo) || isExperienced) &&
-            originalCombo.contains(charm))
-      return false;
-    return true;
+    return !(isEditingACombo() &&
+            (!learnTime.isLearnedOnCreation(originalCombo) || isExperienced()) &&
+            originalCombo.contains(charm));
   }
 
   public boolean canFinalizeWithXP() {
-    return isEditingACombo() && haveCharmsBeenAddedToCombo();
+    return isExperienced() && isEditingACombo() && haveCharmsBeenAddedToCombo();
   }
 
   public void startChanging(ICombo combo) {
@@ -63,5 +54,9 @@ public class ExperienceComboEditingSupport implements ComboEditingRules {
 
   private boolean isEditingACombo() {
     return originalCombo != null;
+  }
+
+  private boolean isExperienced() {
+    return statistics.isExperienced();
   }
 }
