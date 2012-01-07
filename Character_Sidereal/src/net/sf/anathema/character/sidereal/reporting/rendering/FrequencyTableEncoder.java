@@ -7,8 +7,8 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.CellPadding;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
@@ -43,7 +43,7 @@ public class FrequencyTableEncoder extends AbstractTableEncoder<ReportContent> {
     list.addCell(spaceCell);
     list.addCell(spaceCell);
 
-    PdfPTable table = new PdfPTable(new float[] { 1f });
+    PdfPTable table = new PdfPTable(new float[]{1f});
     table.addCell(new TableCell(list.getTable(), Rectangle.BOX));
     return table;
   }

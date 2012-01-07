@@ -14,12 +14,12 @@ import net.sf.anathema.character.reporting.pdf.content.stats.anima.AnimaUtils;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.ColumnDescriptor;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.IAnimaTableRangeProvider;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.IAnimaTableStealthProvider;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class AnimaTableEncoder extends AbstractTableEncoder<ReportContent> {
 
@@ -91,9 +91,9 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportContent> {
   }
 
   protected ColumnDescriptor[] getColumns() {
-    return new ColumnDescriptor[] { new ColumnDescriptor(0.15f, "Sheet.AnimaTable.Header.Motes"), //$NON-NLS-1$
-      new ColumnDescriptor(0.6f, "Sheet.AnimaTable.Header.BannerFlare"), //$NON-NLS-1$
-      new ColumnDescriptor(0.25f, "Sheet.AnimaTable.Header.Stealth") }; //$NON-NLS-1$
+    return new ColumnDescriptor[]{new ColumnDescriptor(0.15f, "Sheet.AnimaTable.Header.Motes"), //$NON-NLS-1$
+            new ColumnDescriptor(0.6f, "Sheet.AnimaTable.Header.BannerFlare"), //$NON-NLS-1$
+            new ColumnDescriptor(0.25f, "Sheet.AnimaTable.Header.Stealth")}; //$NON-NLS-1$
   }
 
   protected final PdfPCell createContentCell(SheetGraphics graphics, String text) {

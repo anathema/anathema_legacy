@@ -6,12 +6,12 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.AbstractPageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.GenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.MagicEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -57,19 +57,12 @@ public class SecondPageEncoder extends AbstractPageEncoder {
         distanceFromTop += genericCharmsHeight + PADDING;
       }
     }
-
-    float remainingHeight = configuration.getContentHeight() - distanceFromTop;
-    List<IMagicStats> printMagic = MagicEncoder.collectPrintMagic(content);
-    encodeCharms(graphics, printMagic, distanceFromTop, remainingHeight);
-    while (!printMagic.isEmpty()) {
-      document.newPage();
-      encodeCharms(graphics, printMagic, 0, configuration.getContentHeight());
-    }
+    encodeCharms(document, graphics, content, distanceFromTop);
   }
 
   private float encodeCombos(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     Bounds restOfPage = new Bounds(configuration.getLeftX(), configuration.getLowerContentY(), configuration.getContentWidth(), configuration.getContentHeight() - distanceFromTop);
-    return new PdfComboEncoder(resources).encodeCombos(graphics, content, restOfPage);
+    return new ComboEncoder(resources).encodeCombos(graphics, content, restOfPage);
   }
 
   private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) {
@@ -93,7 +86,6 @@ public class SecondPageEncoder extends AbstractPageEncoder {
   }
 
   private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-
     if (content.getCharacter().getGenericCharmStats().length > 0) {
       float height = 55 + content.getCharacter().getGenericCharmStats().length * 11;
       Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
@@ -102,6 +94,16 @@ public class SecondPageEncoder extends AbstractPageEncoder {
       return height;
     } else {
       return 0;
+    }
+  }
+
+  private void encodeCharms(Document document, SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
+    float remainingHeight = configuration.getContentHeight() - distanceFromTop;
+    List<IMagicStats> printMagic = MagicEncoder.collectPrintMagic(content);
+    encodeCharms(graphics, printMagic, distanceFromTop, remainingHeight);
+    while (!printMagic.isEmpty()) {
+      document.newPage();
+      encodeCharms(graphics, printMagic, 0, configuration.getContentHeight());
     }
   }
 

@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.impl.reporting.rendering.EquipmentTab
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public class ArmourTableEncoder extends EquipmentTableEncoder<IArmourStats, ArmourContent> {
@@ -29,8 +29,7 @@ public class ArmourTableEncoder extends EquipmentTableEncoder<IArmourStats, Armo
       IStatsGroup<IArmourStats> group = groups[index];
       if (group instanceof IArmourStatsGroup) {
         ((IArmourStatsGroup) group).addTotal(armourTable, createFont(graphics), totalArmour);
-      }
-      else {
+      } else {
         group.addContent(armourTable, createFont(graphics), totalArmour);
       }
     }

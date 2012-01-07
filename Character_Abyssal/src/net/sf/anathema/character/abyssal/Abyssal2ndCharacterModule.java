@@ -2,21 +2,13 @@ package net.sf.anathema.character.abyssal;
 
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
 import net.sf.anathema.character.abyssal.equipment.FangTemplate;
-import net.sf.anathema.character.abyssal.generic.ApocalypticEvolution;
-import net.sf.anathema.character.abyssal.generic.EssenceFlow;
-import net.sf.anathema.character.abyssal.generic.InfiniteMastery;
-import net.sf.anathema.character.abyssal.generic.RaveningMouth;
-import net.sf.anathema.character.abyssal.generic.SupremePerfection;
+import net.sf.anathema.character.abyssal.generic.*;
 import net.sf.anathema.character.abyssal.reporting.Extended2ndEditionAbyssalPartEncoder;
 import net.sf.anathema.character.abyssal.reporting.content.Abyssal2ndResonanceContent;
 import net.sf.anathema.character.abyssal.reporting.content.Abyssal2ndResonanceContentFactory;
 import net.sf.anathema.character.abyssal.reporting.rendering.Anima2ndEditionEncoderFactory;
 import net.sf.anathema.character.abyssal.reporting.rendering.Resonance2ndEditionEncoderFactory;
-import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceModelFactory;
-import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceParser;
-import net.sf.anathema.character.abyssal.resonance.AbyssalResonancePersisterFactory;
-import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceTemplate;
-import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceViewFactory;
+import net.sf.anathema.character.abyssal.resonance.*;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -26,6 +18,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
 import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
 import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
@@ -46,6 +39,7 @@ import net.sf.anathema.lib.util.Identificate;
 import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 
+@CharacterModule
 public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
 

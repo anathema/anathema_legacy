@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.rendering;
+package net.sf.anathema.character.reporting.pdf.rendering.extent;
 
 public class Position {
 

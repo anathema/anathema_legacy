@@ -2,14 +2,11 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
-import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
-import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.AbstractNamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.INamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
@@ -46,8 +43,7 @@ public class CraftEncoder extends AbstractNamedTraitEncoder implements INamedTra
     IValuedTraitReference[] crafts = getTraitReferences(traits, AbilityType.Craft);
     if (craftCount > 0) {
       return _drawNamedTraitSection(graphics, title, crafts, position, width, craftCount, traitMax);
-    }
-    else {
+    } else {
       return drawNamedTraitSection(graphics, title, crafts, position, width, height, traitMax);
     }
   }

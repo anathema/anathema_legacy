@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.first;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
@@ -12,6 +13,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
+@CharacterModule
 public class FirstEditionReportingModule extends NullObjectCharacterModuleAdapter {
 
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {

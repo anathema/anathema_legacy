@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics.shape;
 
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 
 import java.awt.*;
 
@@ -16,7 +16,7 @@ public class Box {
   }
 
   public void outline() {
-   outline(0.8f);
+    outline(0.8f);
   }
 
   public void outlineTotalType() {

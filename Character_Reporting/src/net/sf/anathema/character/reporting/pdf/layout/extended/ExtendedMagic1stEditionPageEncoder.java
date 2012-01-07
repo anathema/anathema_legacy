@@ -5,12 +5,12 @@ import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.BackgroundsEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.GenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.MagicEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.PdfComboEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -66,7 +66,7 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeCombos(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     Bounds restOfPage = new Bounds(getPageConfiguration().getLeftX(), getPageConfiguration().getLowerContentY(), getPageConfiguration().getContentWidth(), getPageConfiguration().getContentHeight() - distanceFromTop);
-    return new PdfComboEncoder(getResources()).encodeCombos(graphics, content, restOfPage);
+    return new ComboEncoder(getResources()).encodeCombos(graphics, content, restOfPage);
   }
 
   private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {

@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.impl.reporting.rendering.EquipmentTab
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public class ShieldTableEncoder extends EquipmentTableEncoder<IShieldStats, ShieldContent> {

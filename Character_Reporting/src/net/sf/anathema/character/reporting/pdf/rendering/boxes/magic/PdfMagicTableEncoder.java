@@ -11,7 +11,7 @@ import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicDuration
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicNameStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicSourceStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicTypeStatsGroup;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
@@ -36,8 +36,7 @@ public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats,
   @SuppressWarnings("unchecked")
   @Override
   protected IStatsGroup<IMagicStats>[] createStatsGroups(ReportContent content) {
-    return new IStatsGroup[] { new MagicNameStatsGroup(resources), new MagicCostStatsGroup(resources), new MagicTypeStatsGroup(
-      resources), new MagicDurationStatsGroup(resources), new MagicDetailsStatsGroup(resources), new MagicSourceStatsGroup(resources) };
+    return new IStatsGroup[]{new MagicNameStatsGroup(resources), new MagicCostStatsGroup(resources), new MagicTypeStatsGroup(resources), new MagicDurationStatsGroup(resources), new MagicDetailsStatsGroup(resources), new MagicSourceStatsGroup(resources)};
   }
 
   @Override

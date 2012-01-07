@@ -1,17 +1,14 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.traits;
 
 import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfTemplate;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
-import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Dot;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Shape;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Square;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-
-import java.awt.*;
 
 public class PdfTraitEncoder {
 
@@ -88,7 +85,7 @@ public class PdfTraitEncoder {
     graphics.drawMissingTextLine(position, width - dotsWidth - 5);
     return height;
   }
-  
+
   public float encode(SheetGraphics graphics, NamedValue trait, Position position, float width, int dotCount) {
     return encodeWithText(graphics, trait.getLabel(), position, width, trait.getValue(), dotCount);
   }
@@ -99,8 +96,7 @@ public class PdfTraitEncoder {
     return height;
   }
 
-  public float encodeWithTextAndRectangle(SheetGraphics graphics, String text, Position position, float width, int value, boolean favored,
-    int dotCount) {
+  public float encodeWithTextAndRectangle(SheetGraphics graphics, String text, Position position, float width, int value, boolean favored, int dotCount) {
     Square square = graphics.createSquare(dotSize);
     encodeShape(square, position, favored);
     int squareWidth = dotSize + 2;
@@ -108,8 +104,7 @@ public class PdfTraitEncoder {
     return encodeWithText(graphics, text, usualTraitPosition, width - squareWidth, value, dotCount);
   }
 
-  public float encodeWithExcellencies(SheetGraphics graphics, String text, Position position, float width, int value, boolean favored,
-    boolean[] excellencyLearned, int dotCount) {
+  public float encodeWithExcellencies(SheetGraphics graphics, String text, Position position, float width, int value, boolean favored, boolean[] excellencyLearned, int dotCount) {
     for (int i = excellencyLearned.length; i > 0; i--) {
       String label = Integer.toString(i);
       float labelWidth = graphics.getBaseFont().getWidthPoint(label, IVoidStateFormatConstants.FONT_SIZE);
@@ -118,10 +113,9 @@ public class PdfTraitEncoder {
       boolean hasExcellencyLearned = excellencyLearned[i - 1];
       Position labelPosition = new Position(0, 0);
       if (hasExcellencyLearned) {
-         templateGraphics.drawText(label, labelPosition, PdfContentByte.ALIGN_LEFT);
-       }
-      else {
-         templateGraphics.drawDisabledText(label, labelPosition, PdfContentByte.ALIGN_LEFT);
+        templateGraphics.drawText(label, labelPosition, PdfContentByte.ALIGN_LEFT);
+      } else {
+        templateGraphics.drawDisabledText(label, labelPosition, PdfContentByte.ALIGN_LEFT);
       }
       float templateX = position.x + width - labelWidth;
       float templateY = position.y;
@@ -138,8 +132,7 @@ public class PdfTraitEncoder {
   private void encodeShape(Shape shape, Position lowerLeft, boolean filled) {
     if (filled) {
       shape.encodeFilled(lowerLeft);
-    }
-    else {
+    } else {
       shape.encodeOutlined(lowerLeft);
     }
   }

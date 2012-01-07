@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.table;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfPTable;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public abstract class AbstractTableEncoder<C> implements ITableEncoder<C> {
