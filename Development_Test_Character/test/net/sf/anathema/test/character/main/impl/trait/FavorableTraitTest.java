@@ -34,41 +34,29 @@ import static org.junit.Assert.*;
 
 public class FavorableTraitTest extends BasicCharacterTestCase {
 
-  private IIncrementChecker incrementChecker;
-  private IFavorableStateChangedListener abilityStateListener;
+  private IIncrementChecker incrementChecker = EasyMock.createStrictMock(IIncrementChecker.class);
+  private IFavorableStateChangedListener abilityStateListener = EasyMock.createStrictMock(IFavorableStateChangedListener.class);
   private ProxyTraitValueStrategy valueStrategy;
-  private DefaultTrait first;
+  private DefaultTrait trait;
   private DummyCharacterModelContext modelContext;
-  private DefaultTrait objectUnderTest;
-  private IIntValueChangedListener intListener;
 
   @Before
-  public void setUp() throws Exception {
-    objectUnderTest = createObjectUnderTest();
-    this.intListener = EasyMock.createStrictMock(IIntValueChangedListener.class);
-    objectUnderTest.addCreationPointListener(intListener);
+  public void createTrait() throws Exception {
     this.valueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
-    this.incrementChecker = EasyMock.createStrictMock(IIncrementChecker.class);
     this.modelContext = createModelContextWithEssence2(valueStrategy);
-    first = createObjectUnderTest(modelContext);
-    this.abilityStateListener = EasyMock.createStrictMock(IFavorableStateChangedListener.class);
-  }
-
-  protected DefaultTrait createObjectUnderTest() {
-    ICharacterModelContext context = createModelContextWithEssence2(valueStrategy);
-    return createObjectUnderTest(context);
+    this.trait = createObjectUnderTest(modelContext);
   }
 
   @Test
   public void testSetAbilityToFavored() throws Exception {
     allowOneFavoredIncrement();
-    first.getFavorization().addFavorableStateChangedListener(abilityStateListener);
-    assertEquals(0, first.getCreationValue());
+    trait.getFavorization().addFavorableStateChangedListener(abilityStateListener);
+    assertEquals(0, trait.getCreationValue());
     abilityStateListener.favorableStateChanged(FavorableState.Favored);
     EasyMock.replay(abilityStateListener);
-    first.getFavorization().setFavorableState(FavorableState.Favored);
+    trait.getFavorization().setFavorableState(FavorableState.Favored);
     EasyMock.verify(abilityStateListener);
-    assertEquals(1, first.getCreationValue());
+    assertEquals(1, trait.getCreationValue());
   }
 
   private void allowOneFavoredIncrement() {
@@ -80,41 +68,41 @@ public class FavorableTraitTest extends BasicCharacterTestCase {
   public void testSetAbiltyToFavoredUnallowed() throws Exception {
     EasyMock.expect(incrementChecker.isValidIncrement(1)).andReturn(false);
     EasyMock.replay(incrementChecker);
-    first.getFavorization().setFavorableState(FavorableState.Favored);
+    trait.getFavorization().setFavorableState(FavorableState.Favored);
     EasyMock.verify(incrementChecker);
-    assertSame(FavorableState.Default, first.getFavorization().getFavorableState());
-    assertEquals(0, first.getCreationValue());
+    assertSame(FavorableState.Default, trait.getFavorization().getFavorableState());
+    assertEquals(0, trait.getCreationValue());
   }
 
   @Test
   public void testSetFavoredAbiltyCreationValueBelow1() throws Exception {
     allowOneFavoredIncrement();
-    first.getFavorization().setFavorableState(FavorableState.Favored);
-    assertTrue(first.getFavorization().isFavored());
-    first.setCurrentValue(0);
-    assertEquals(1, first.getCreationValue());
+    trait.getFavorization().setFavorableState(FavorableState.Favored);
+    assertTrue(trait.getFavorization().isFavored());
+    trait.setCurrentValue(0);
+    assertEquals(1, trait.getCreationValue());
   }
 
   @Test
   public void testCasteAbilityNotSetToFavored() throws Exception {
-    first.getFavorization().setFavorableState(FavorableState.Caste);
+    trait.getFavorization().setFavorableState(FavorableState.Caste);
     EasyMock.replay(abilityStateListener);
-    first.getFavorization().addFavorableStateChangedListener(abilityStateListener);
-    first.getFavorization().setFavorableState(FavorableState.Favored);
-    assertSame(FavorableState.Caste, first.getFavorization().getFavorableState());
+    trait.getFavorization().addFavorableStateChangedListener(abilityStateListener);
+    trait.getFavorization().setFavorableState(FavorableState.Favored);
+    assertSame(FavorableState.Caste, trait.getFavorization().getFavorableState());
     EasyMock.verify(abilityStateListener);
   }
 
   @Test
   public void testExceedCreationValueMaximum() throws Exception {
-    first.setCurrentValue(6);
-    assertEquals(5, first.getCreationValue());
+    trait.setCurrentValue(6);
+    assertEquals(5, trait.getCreationValue());
   }
 
   @Test
   public void testUnderrunCreationValueMinimum() throws Exception {
-    first.setCurrentValue(-1);
-    assertEquals(0, first.getCreationValue());
+    trait.setCurrentValue(-1);
+    assertEquals(0, trait.getCreationValue());
   }
 
   private DefaultTrait createObjectUnderTest(ICharacterModelContext context) {
@@ -137,41 +125,40 @@ public class FavorableTraitTest extends BasicCharacterTestCase {
   @Test
   public void testSetExperiencedToCreationValue() throws Exception {
     modelContext.getCharacter().addTrait(new DummyGenericTrait(OtherTraitType.Essence, 2));
-    first.setCurrentValue(2);
+    trait.setCurrentValue(2);
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
-    first.setCurrentValue(3);
+    trait.setCurrentValue(3);
     final int[] holder = new int[1];
-    first.addCurrentValueListener(new IIntValueChangedListener() {
+    trait.addCurrentValueListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         holder[0] = newValue;
       }
     });
-    first.setCurrentValue(0);
+    trait.setCurrentValue(0);
     assertEquals(2, holder[0]);
-    assertEquals(ITraitRules.UNEXPERIENCED, first.getExperiencedValue());
+    assertEquals(ITraitRules.UNEXPERIENCED, trait.getExperiencedValue());
   }
 
   @Test
   public void testSetValueTo6OnExperiencedCharacterWithoutHighEssence() throws Exception {
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
     modelContext.getCharacter().addTrait(new DummyGenericTrait(OtherTraitType.Essence, 2));
-    first.setCurrentValue(6);
-    assertEquals(5, first.getCurrentValue());
+    trait.setCurrentValue(6);
+    assertEquals(5, trait.getCurrentValue());
   }
 
   @Test
   public void testSetValueTo6OnExperiencedCharacterWithHighEssence() throws Exception {
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
     modelContext.getCharacter().addTrait(new DummyGenericTrait(OtherTraitType.Essence, 6));
-    first.setCurrentValue(6);
-    assertEquals(6, first.getCurrentValue());
+    trait.setCurrentValue(6);
+    assertEquals(6, trait.getCurrentValue());
   }
 
-  // TODO Test for the SpecialtyContainer
   @Test
   public void testExperienceSpecialtyCount() throws Exception {
     ISubTraitContainer container = new SpecialtiesContainer(
-            new DefaultTraitReference(first),
+            new DefaultTraitReference(trait),
             modelContext.getTraitContext());
     ISubTrait specialty = container.addSubTrait("TestSpecialty"); //$NON-NLS-1$
     specialty.setCreationValue(1);
@@ -185,7 +172,7 @@ public class FavorableTraitTest extends BasicCharacterTestCase {
   @Test
   public void testCreationSpecialtyDuringExperienced() throws Exception {
     ICharacterModelContext context = createModelContextWithEssence2(new ExperiencedTraitValueStrategy());
-    ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(first), context.getTraitContext());
+    ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(trait), context.getTraitContext());
     ISubTrait specialty = container.addSubTrait("TestSpecialty"); //$NON-NLS-1$
     specialty.setCreationValue(2);
     assertEquals(2, specialty.getCreationValue());

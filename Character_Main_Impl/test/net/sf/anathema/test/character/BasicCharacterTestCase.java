@@ -7,9 +7,10 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 
 public abstract class BasicCharacterTestCase {
 
-  protected final DummyCharacterModelContext createModelContextWithEssence2(final ITraitValueStrategy valueStrategy) {
+  protected DummyCharacterModelContext createModelContextWithEssence2(ITraitValueStrategy valueStrategy) {
     DummyCharacterModelContext modelContext = new DummyCharacterModelContext(valueStrategy);
-    modelContext.getCharacter().addTrait(new DummyGenericTrait(OtherTraitType.Essence, 2));
+    DummyGenericTrait essence = new DummyGenericTrait(OtherTraitType.Essence, 2);
+    modelContext.getCharacter().addTrait(essence);
     return modelContext;
   }
 }
