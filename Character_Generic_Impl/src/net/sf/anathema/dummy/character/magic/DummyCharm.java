@@ -19,7 +19,6 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.ListOrderedSet;
-import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -99,7 +98,7 @@ public class DummyCharm extends Identificate implements ICharm {
   }
 
   public List<String> getParentSubeffects() {
-    throw new NotYetImplementedException();
+    return new ArrayList<String>();
   }
 
   public IComboRestrictions getComboRules() {
@@ -175,10 +174,6 @@ public class DummyCharm extends Identificate implements ICharm {
     return new HashSet<ICharm>();
   }
 
-  public boolean isFreeByMerged(IMagicCollection magicCollection) {
-    return false;
-  }
-
   public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
     if (prerequisites.length <= 0) {
       return false;
@@ -198,10 +193,6 @@ public class DummyCharm extends Identificate implements ICharm {
 
   public void setGroupId(String expectedGroup) {
     this.groupId = expectedGroup;
-  }
-
-  public void setSource(IExaltedSourceBook source) {
-    this.source = source;
   }
 
   public IExaltedSourceBook getSource() {
@@ -224,16 +215,12 @@ public class DummyCharm extends Identificate implements ICharm {
     this.prerequisites = prerequisites;
   }
 
-  public void setCharmTypeModel(CharmTypeModel model) {
-    this.model = model;
-  }
-
   public CharmTypeModel getCharmTypeModel() {
     return model;
   }
 
   public ICharmAttribute[] getAttributes() {
-    return attributes.toArray(new ICharmAttribute[0]);
+    return attributes.toArray(new ICharmAttribute[attributes.size()]);
   }
 
   public void addKeyword(CharmAttribute attribute) {

@@ -4,17 +4,17 @@ import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
 public interface ITraitValueStrategy {
 
-  public int getMinimalValue(IBasicTrait trait);
+  int getMinimalValue(IBasicTrait trait);
 
-  public int getCurrentValue(IBasicTrait trait);
+  int getCurrentValue(IBasicTrait trait);
 
-  public void setValue(IModifiableBasicTrait trait, int value);
+  void setValue(IModifiableBasicTrait trait, int value);
 
-  public void notifyOnCreationValueChange(int value, IntValueControl currentValueControl);
+  void notifyOnCreationValueChange(int value, IntValueControl currentValueControl);
 
-  public void notifyOnLearnedValueChange(int value, IntValueControl currentValueControl);
+  void notifyOnLearnedValueChange(int value, IntValueControl currentValueControl);
 
-  public void resetCurrentValue(IModifiableBasicTrait trait);
+  void resetCurrentValue(IModifiableBasicTrait trait);
 
-  public int getCalculationValue(IModifiableBasicTrait trait);
+  int getCalculationValue(IModifiableBasicTrait trait);
 }

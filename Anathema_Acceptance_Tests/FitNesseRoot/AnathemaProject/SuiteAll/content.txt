@@ -25,7 +25,6 @@
 !path ../Character_MeritsFlaws/build/classes
 !path ../Charm_Tree/build/classes
 !path ../Charm_Cascades/build/classes
-!path ../Development_Test_Character/build/classes
 !path ../Platform/build/classes
 !path ../Platform_SvgTree/build/classes
 !path ../Lib/build/classes

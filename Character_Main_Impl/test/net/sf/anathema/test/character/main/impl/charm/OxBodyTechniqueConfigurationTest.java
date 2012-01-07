@@ -31,7 +31,7 @@ import java.util.LinkedHashMap;
 
 import static org.junit.Assert.assertEquals;
 
-public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
+public class OxBodyTechniqueConfigurationTest {
 
   private IFavorableDefaultTrait endurance;
   private IOxBodyTechniqueConfiguration configuration;
@@ -42,30 +42,30 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
   @Before
   public void setUp() throws Exception {
     ITraitValueStrategy strategy = new CreationTraitValueStrategy();
-    DummyCharacterModelContext modelContext = createModelContextWithEssence2(strategy);
+    DummyCharacterModelContext modelContext = new BasicCharacterTestCase().createModelContextWithEssence2(strategy);
     ITraitTemplate enduranceTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
     ITraitContext traitContext = modelContext.getTraitContext();
     FavorableTraitRules enduranceRules = new FavorableTraitRules(
-      AbilityType.Endurance,
-      enduranceTemplate,
-      traitContext.getLimitationContext());
+            AbilityType.Endurance,
+            enduranceTemplate,
+            traitContext.getLimitationContext());
     endurance = new DefaultTrait(
-      enduranceRules,
-      new ICasteType[]{new DummyCasteType()},
-      traitContext,
-      modelContext.getBasicCharacterContext(),
-      modelContext.getCharacterListening(),
-      new FriendlyValueChangeChecker(),
-      new FriendlyIncrementChecker());
+            enduranceRules,
+            new ICasteType[]{new DummyCasteType()},
+            traitContext,
+            modelContext.getBasicCharacterContext(),
+            modelContext.getCharacterListening(),
+            new FriendlyValueChangeChecker(),
+            new FriendlyIncrementChecker());
     health = new HealthConfiguration(new IGenericTrait[]{endurance});
     collection.addTestTrait(endurance);
     configuration = new OxBodyTechniqueConfiguration(
-      traitContext,
+            traitContext,
             collection,
-      null,
-      new ITraitType[]{endurance.getType()},
-      health.getOxBodyLearnArbitrator(),
-      createObtCharm());
+            null,
+            new ITraitType[]{endurance.getType()},
+            health.getOxBodyLearnArbitrator(),
+            createObtCharm());
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(configuration);
     health.addHealthLevelProvider(configuration.getHealthLevelProvider());
   }
@@ -91,12 +91,12 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
   public void testTwoOxBodyTechniques() {
     @SuppressWarnings("serial")
     OxBodyTechniqueConfiguration secondConfiguration = new OxBodyTechniqueConfiguration(
-      createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext(),
-      collection,
-      null,
-      new ITraitType[]{endurance.getType()},
-      health.getOxBodyLearnArbitrator(),
-      createObtCharm());
+            new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext(),
+            collection,
+            null,
+            new ITraitType[]{endurance.getType()},
+            health.getOxBodyLearnArbitrator(),
+            createObtCharm());
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(secondConfiguration);
     health.addHealthLevelProvider(secondConfiguration.getHealthLevelProvider());
     endurance.setCurrentValue(2);

@@ -25,7 +25,6 @@ dependencies {
   testCompile project(':Character_Db')
   testCompile project(':Character_Infernal')
   testCompile project(':Character_MeritsFlaws')
-  testCompile project(path: ':Development_Test_Character', configuration:'tests')
   testCompile group: 'junit', name: 'junit', version: '4.+'
   testCompile files('../Thirdparty/disy/disy-commons-core.jar',
           '../Thirdparty/Testing/fitnesse.jar'
