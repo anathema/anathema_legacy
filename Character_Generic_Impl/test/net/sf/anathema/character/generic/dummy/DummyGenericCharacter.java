@@ -65,7 +65,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
   
   public int getEssenceCap(boolean modified)
   {
-	  return 0;
+	  return 7;
   }
 
   public void addTrait(IGenericTrait trait) {

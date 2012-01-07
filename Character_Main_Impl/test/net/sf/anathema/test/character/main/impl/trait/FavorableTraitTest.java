@@ -17,23 +17,23 @@ import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
-import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.test.character.BasicCharacterTestCase;
-import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class FavorableTraitTest {
 
-  private IIncrementChecker incrementChecker = EasyMock.createStrictMock(IIncrementChecker.class);
-  private IFavorableStateChangedListener abilityStateListener = EasyMock.createStrictMock(IFavorableStateChangedListener.class);
+  private IIncrementChecker incrementChecker = Mockito.mock(IIncrementChecker.class);
+  private IFavorableStateChangedListener abilityStateListener = Mockito.mock(IFavorableStateChangedListener.class);
   private ProxyTraitValueStrategy valueStrategy;
   private DefaultTrait trait;
   private DummyCharacterModelContext modelContext;
@@ -50,24 +50,19 @@ public class FavorableTraitTest {
     allowOneFavoredIncrement();
     trait.getFavorization().addFavorableStateChangedListener(abilityStateListener);
     assertEquals(0, trait.getCreationValue());
-    abilityStateListener.favorableStateChanged(FavorableState.Favored);
-    EasyMock.replay(abilityStateListener);
     trait.getFavorization().setFavorableState(FavorableState.Favored);
-    EasyMock.verify(abilityStateListener);
+    verify(abilityStateListener).favorableStateChanged(FavorableState.Favored);
     assertEquals(1, trait.getCreationValue());
   }
 
   private void allowOneFavoredIncrement() {
-    EasyMock.expect(incrementChecker.isValidIncrement(1)).andReturn(true);
-    EasyMock.replay(incrementChecker);
+    when(incrementChecker.isValidIncrement(1)).thenReturn(true);
   }
 
   @Test
   public void testSetAbiltyToFavoredUnallowed() throws Exception {
-    EasyMock.expect(incrementChecker.isValidIncrement(1)).andReturn(false);
-    EasyMock.replay(incrementChecker);
+    when(incrementChecker.isValidIncrement(1)).thenReturn(false);
     trait.getFavorization().setFavorableState(FavorableState.Favored);
-    EasyMock.verify(incrementChecker);
     assertSame(FavorableState.Default, trait.getFavorization().getFavorableState());
     assertEquals(0, trait.getCreationValue());
   }
@@ -84,11 +79,10 @@ public class FavorableTraitTest {
   @Test
   public void testCasteAbilityNotSetToFavored() throws Exception {
     trait.getFavorization().setFavorableState(FavorableState.Caste);
-    EasyMock.replay(abilityStateListener);
     trait.getFavorization().addFavorableStateChangedListener(abilityStateListener);
     trait.getFavorization().setFavorableState(FavorableState.Favored);
     assertSame(FavorableState.Caste, trait.getFavorization().getFavorableState());
-    EasyMock.verify(abilityStateListener);
+    verifyZeroInteractions(abilityStateListener);
   }
 
   @Test
@@ -121,7 +115,7 @@ public class FavorableTraitTest {
   }
 
   @Test
-  public void testSetExperiencedToCreationValue() throws Exception {
+  public void creationValueIsLowerBoundForExperiencedValue() throws Exception {
     trait.setCurrentValue(2);
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
     trait.setCurrentValue(3);
@@ -133,7 +127,6 @@ public class FavorableTraitTest {
     });
     trait.setCurrentValue(0);
     assertEquals(2, holder[0]);
-    assertEquals(ITraitRules.UNEXPERIENCED, trait.getExperiencedValue());
   }
 
   @Test

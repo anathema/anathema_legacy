@@ -16,23 +16,22 @@ import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.test.character.BasicCharacterTestCase;
-import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
 
 public class FavorableTrait_HighEssenceTest {
 
-  private IIncrementChecker incrementChecker = EasyMock.createStrictMock(IIncrementChecker.class);
+  private IIncrementChecker incrementChecker = Mockito.mock(IIncrementChecker.class);
   private ProxyTraitValueStrategy valueStrategy;
   private DefaultTrait trait;
-  private DummyCharacterModelContext modelContext;
 
   @Before
   public void createTrait() throws Exception {
     this.valueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
-    this.modelContext = new BasicCharacterTestCase().createModelContextWithEssence6(valueStrategy);
+    DummyCharacterModelContext modelContext = new BasicCharacterTestCase().createModelContextWithEssence6(valueStrategy);
     this.trait = createObjectUnderTest(modelContext);
   }
 
