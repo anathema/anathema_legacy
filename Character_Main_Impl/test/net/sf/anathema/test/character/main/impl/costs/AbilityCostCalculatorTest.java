@@ -43,6 +43,9 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   private static void assertEmptyCosts(AbilityCostCalculator calculator, IFavorableTrait ability) {
     FavorableTraitCost[] abilityCost = calculator.getCosts(ability);
+    if (ability.getType()==AbilityType.Craft){
+      return;
+    }
     assertEquals("Ability " + ability, 0, abilityCost[0].getBonusCost()); //$NON-NLS-1$
     assertEquals("Ability " + ability, 0, abilityCost[0].getFavoredPointCost()); //$NON-NLS-1$
     assertEquals("Ability " + ability, 0, abilityCost[0].getGeneralPointCost()); //$NON-NLS-1$
