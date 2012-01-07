@@ -38,10 +38,11 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final ICharmProvider charmProvider = new CharmProvider();
   private final CharacterModuleObjectMap moduleObjectMap = new CharacterModuleObjectMap();
   private final IDataFileProvider dataFileProvider;
+  private final CharacterReflections characterReflections = new DefaultCharacterReflections();
 
   public CharacterGenerics(IDataFileProvider dataFileProvider) {
     this.additionalPersisterRegistry = new Registry<String, IAdditionalPersisterFactory>(
-        new NullAdditionalPersisterFactory());
+            new NullAdditionalPersisterFactory());
     this.dataFileProvider = dataFileProvider;
   }
 
@@ -96,5 +97,9 @@ public class CharacterGenerics implements ICharacterGenerics {
 
   public IDataFileProvider getDataFileProvider() {
     return dataFileProvider;
+  }
+
+  public CharacterReflections getCharacterReflections() {
+    return characterReflections;
   }
 }

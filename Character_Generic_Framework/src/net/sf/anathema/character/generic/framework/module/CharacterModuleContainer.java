@@ -13,14 +13,14 @@ public class CharacterModuleContainer {
   private final IResources resources;
 
   public CharacterModuleContainer(IResources resources, IDataFileProvider dataFileProvider)
-      throws InitializationException {
+          throws InitializationException {
     this.resources = resources;
     this.characterGenerics = new CharacterGenerics(dataFileProvider);
     addCharacterGenericsModule(new BasicExaltCharacterModule());
   }
 
-  public void addCharacterGenericsModule(ICharacterModule< ? extends ICharacterModuleObject> module)
-      throws InitializationException {
+  public void addCharacterGenericsModule(ICharacterModule<? extends ICharacterModuleObject> module)
+          throws InitializationException {
     module.initModuleObject();
     module.registerCommonData(characterGenerics);
     module.addBackgroundTemplates(characterGenerics);
