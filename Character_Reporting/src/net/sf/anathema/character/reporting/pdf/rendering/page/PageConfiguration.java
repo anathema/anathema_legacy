@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.page;
 
 import com.lowagie.text.Rectangle;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 
 import java.awt.*;
 

@@ -2,8 +2,8 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower;
 
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContent;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;

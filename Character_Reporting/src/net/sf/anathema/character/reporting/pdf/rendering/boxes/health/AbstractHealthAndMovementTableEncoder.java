@@ -15,14 +15,14 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.Color;
+import java.awt.*;
 
 public abstract class AbstractHealthAndMovementTableEncoder implements ITableEncoder<ReportContent> {
   public static final int HEALTH_RECT_SIZE = 6;
@@ -73,8 +73,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     }
   }
 
-  private void addHealthTypeRows(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, Image activeTemplate, Image passiveTemplate,
-                                 HealthLevelType type) {
+  private void addHealthTypeRows(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, Image activeTemplate, Image passiveTemplate, HealthLevelType type) {
     if (type == HealthLevelType.DYING) {
       return;
     }
@@ -132,13 +131,11 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
 
   protected abstract void addMovementHeader(SheetGraphics graphics, PdfPTable table);
 
-  protected abstract void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance,
-                                           IGenericTraitCollection collection);
+  protected abstract void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance, IGenericTraitCollection collection);
 
   protected final PdfPCell createMovementCell(SheetGraphics graphics, int value, int minValue) {
     Font font = createDefaultFont(graphics);
-    return TableEncodingUtilities
-            .createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX, Element.ALIGN_CENTER);
+    return TableEncodingUtilities.createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX, Element.ALIGN_CENTER);
   }
 
   private void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {
@@ -166,9 +163,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     return Math.min(0, level.getIntValue() + painTolerance);
   }
 
-  private void addHealthCells(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, HealthLevelType level, int row,
-                              Image activeImage,
-                              Image passiveImage) {
+  private void addHealthCells(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, HealthLevelType level, int row, Image activeImage, Image passiveImage) {
     int naturalCount = getNaturalHealthLevels(level);
     if (row < naturalCount) {
       table.addCell(createHealthCell(activeImage));
@@ -178,8 +173,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     int additionalCount = 9;
     if (level == HealthLevelType.FOUR) {
       addSpaceCells(graphics, table, 1);
-      TableCell cell =
-              new TableCell(new Phrase(resources.getString("HealthLevelType.Dying.Short"), createCommentFont(graphics)), Rectangle.BOTTOM); //$NON-NLS-1$
+      TableCell cell = new TableCell(new Phrase(resources.getString("HealthLevelType.Dying.Short"), createCommentFont(graphics)), Rectangle.BOTTOM); //$NON-NLS-1$
       cell.setHorizontalAlignment(Element.ALIGN_CENTER);
       cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
       cell.setColspan(additionalCount - 1);

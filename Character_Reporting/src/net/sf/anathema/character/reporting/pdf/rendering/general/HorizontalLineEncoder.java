@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general;
 
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public class HorizontalLineEncoder {
@@ -14,8 +14,7 @@ public class HorizontalLineEncoder {
     }
   }
 
-  public void encodeLines(SheetGraphics graphics, Position lineStartPosition, float minX, float maxX, float lineHeight,
-    int lineCount) {
+  public void encodeLines(SheetGraphics graphics, Position lineStartPosition, float minX, float maxX, float lineHeight, int lineCount) {
     if (lineCount <= 0) {
       return;
     }

@@ -12,7 +12,7 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.presenter.IRenownModel;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;

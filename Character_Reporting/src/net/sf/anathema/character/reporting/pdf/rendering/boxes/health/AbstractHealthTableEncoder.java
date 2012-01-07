@@ -15,14 +15,14 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.Color;
+import java.awt.*;
 
 public abstract class AbstractHealthTableEncoder implements ITableEncoder<ReportContent> {
   private static final int HEALTH_COLUMN_COUNT = 15;
@@ -69,8 +69,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
     }
   }
 
-  private void addHealthTypeRows(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, Image activeTemplate, Image passiveTemplate,
-                                 HealthLevelType type) {
+  private void addHealthTypeRows(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, Image activeTemplate, Image passiveTemplate, HealthLevelType type) {
     int rowCount = getRowCount(type);
     for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
       if (rowIndex == 0) {
@@ -133,9 +132,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
     return Math.min(0, level.getIntValue() + painTolerance);
   }
 
-  private void addHealthCells(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, HealthLevelType level, int row,
-                              Image activeImage,
-                              Image passiveImage) {
+  private void addHealthCells(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, HealthLevelType level, int row, Image activeImage, Image passiveImage) {
     int naturalCount = getNaturalHealthLevels(level);
     if (row < naturalCount) {
       table.addCell(createHealthCell(activeImage));

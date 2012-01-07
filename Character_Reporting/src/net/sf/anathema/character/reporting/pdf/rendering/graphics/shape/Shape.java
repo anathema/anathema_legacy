@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics.shape;
 
-import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 
 public interface Shape {
 

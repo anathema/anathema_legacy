@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.field;
 
 import net.sf.anathema.character.reporting.pdf.layout.Body;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 

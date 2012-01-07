@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.content.stats.NamedGenericTraitReference;
-import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -35,13 +35,11 @@ public abstract class AbstractNamedTraitEncoder {
     return (int) (height / traitEncoder.getTraitHeight());
   }
 
-  protected float drawNamedTraitSection(SheetGraphics graphics, String title, IValuedTraitReference[] traits, Position position, float width,
-    float height, int dotCount) {
+  protected float drawNamedTraitSection(SheetGraphics graphics, String title, IValuedTraitReference[] traits, Position position, float width, float height, int dotCount) {
     return _drawNamedTraitSection(graphics, title, traits, position, width, getLineCount(title, height), dotCount);
   }
 
-  protected float _drawNamedTraitSection(SheetGraphics graphics, String title, IValuedTraitReference[] traits, Position position, float width,
-    int lineCount, int dotCount) {
+  protected float _drawNamedTraitSection(SheetGraphics graphics, String title, IValuedTraitReference[] traits, Position position, float width, int lineCount, int dotCount) {
     float height = 0;
     if (title != null) {
       height = drawSubsectionHeader(graphics, title, position, width);

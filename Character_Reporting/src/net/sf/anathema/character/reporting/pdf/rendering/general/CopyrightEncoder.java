@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.general;
 import com.lowagie.text.Anchor;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 
@@ -21,7 +21,7 @@ public class CopyrightEncoder {
     this.contentHeight = contentHeight;
   }
 
-   // TODO: Eliminate these hard-coded copyright dates; these should be in a properties file or something.
+  // TODO: Eliminate these hard-coded copyright dates; these should be in a properties file or something.
   public void encodeCopyright(SheetGraphics graphics) throws DocumentException {
     Font copyrightFont = graphics.createCommentFont();
     float copyrightHeight = pageConfiguration.getPageHeight() - pageConfiguration.getContentHeight();

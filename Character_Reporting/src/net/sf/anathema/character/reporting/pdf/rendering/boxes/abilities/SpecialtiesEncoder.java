@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
-import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.AbstractNamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.INamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
@@ -37,8 +37,7 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
     IValuedTraitReference[] specialties = references.toArray(new IValuedTraitReference[references.size()]);
     if (specialtyCount > 0) {
       return _drawNamedTraitSection(graphics, title, specialties, position, width, specialtyCount, 3);
-    }
-    else {
+    } else {
       return drawNamedTraitSection(graphics, title, specialties, position, width, height, 3);
     }
   }

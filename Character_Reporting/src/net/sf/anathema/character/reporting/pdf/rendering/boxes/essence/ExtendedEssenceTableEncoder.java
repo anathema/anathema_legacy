@@ -14,8 +14,8 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContent;
 import net.sf.anathema.character.reporting.pdf.content.essence.pools.PoolRow;
 import net.sf.anathema.character.reporting.pdf.content.essence.recovery.RecoveryRow;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
@@ -23,7 +23,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTempla
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.List;
 
 import static com.lowagie.text.Element.ALIGN_CENTER;
@@ -44,7 +44,7 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
   private static final int LABEL_BORDER = Rectangle.BOX;
 
   protected Float[] getEssenceColumns() {
-    return new Float[] { 8f, 2f, 3f, (10f / 3f), PADDING, 6f, 2.5f, 2.5f };
+    return new Float[]{8f, 2f, 3f, (10f / 3f), PADDING, 6f, 2.5f, 2.5f};
   }
 
   private float[] createColumnWidth() {

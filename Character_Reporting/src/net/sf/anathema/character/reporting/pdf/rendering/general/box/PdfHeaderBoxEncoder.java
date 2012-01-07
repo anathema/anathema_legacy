@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.box;
 
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 

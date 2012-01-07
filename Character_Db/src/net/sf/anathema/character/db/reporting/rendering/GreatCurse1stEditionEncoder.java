@@ -4,7 +4,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Phrase;
 import net.sf.anathema.character.db.reporting.content.Db1stEditionGreatCurseContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 

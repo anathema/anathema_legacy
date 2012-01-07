@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics.shape;
 
 import com.lowagie.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.pdf.rendering.Position;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 
 import java.awt.*;
 
@@ -10,14 +10,14 @@ public class Line {
   private PdfContentByte directContent;
   private final Position startPoint;
   private final Position endPoint;
-  private  float lineWidth = 0f;
+  private float lineWidth = 0f;
 
   public Line(PdfContentByte directContent, Position startPoint, Position endPoint) {
     this.directContent = directContent;
     this.startPoint = startPoint;
     this.endPoint = endPoint;
   }
-  
+
   public void setLineWidth(float width) {
     this.lineWidth = width;
   }

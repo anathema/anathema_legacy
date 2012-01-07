@@ -12,11 +12,11 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.rendering.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
@@ -70,8 +70,7 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
     int painTolerance = character.getPainTolerance();
     if (type == HealthLevelType.INCAPACITATED) {
       addIncapacitatedMovement(table);
-    }
-    else {
+    } else {
       addMovementCells(table, type, painTolerance, getTraits(character));
     }
   }
@@ -85,8 +84,7 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
     if (level == HealthLevelType.INCAPACITATED || level == HealthLevelType.DYING) {
       healthPdfPCell.setColspan(2);
       table.addCell(healthPdfPCell);
-    }
-    else {
+    } else {
       table.addCell(healthPdfPCell);
       String painToleranceText = " "; //$NON-NLS-1$
       if (painTolerance > 0) {
@@ -129,8 +127,7 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
   protected abstract void addMovementCells(PdfPTable table, HealthLevelType level, int painTolerance, IGenericTraitCollection collection);
 
   protected final PdfPCell createMovementCell(int value, int minValue) {
-    return TableEncodingUtilities.createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX,
-      Element.ALIGN_CENTER);
+    return TableEncodingUtilities.createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX, Element.ALIGN_CENTER);
   }
 
   protected final int getPenalty(HealthLevelType level, int painTolerance) {
