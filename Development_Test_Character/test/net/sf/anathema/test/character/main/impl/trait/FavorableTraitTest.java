@@ -3,13 +3,11 @@ package net.sf.anathema.test.character.main.impl.trait;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.dummy.DummyCharacterModelContext;
-import net.sf.anathema.character.generic.dummy.DummyGenericTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrategy;
@@ -124,7 +122,6 @@ public class FavorableTraitTest {
 
   @Test
   public void testSetExperiencedToCreationValue() throws Exception {
-    modelContext.getCharacter().addTrait(new DummyGenericTrait(OtherTraitType.Essence, 2));
     trait.setCurrentValue(2);
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
     trait.setCurrentValue(3);
@@ -142,7 +139,6 @@ public class FavorableTraitTest {
   @Test
   public void testSetValueTo6OnExperiencedCharacterWithoutHighEssence() throws Exception {
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
-    modelContext.getCharacter().addTrait(new DummyGenericTrait(OtherTraitType.Essence, 2));
     trait.setCurrentValue(6);
     assertEquals(5, trait.getCurrentValue());
   }
