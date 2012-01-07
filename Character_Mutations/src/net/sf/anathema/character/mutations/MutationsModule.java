@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.mutations.model.MutationsModelFactory;
 import net.sf.anathema.character.mutations.persistence.MutationPersisterFactory;
@@ -18,6 +19,7 @@ import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingR
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
+@CharacterModule
 public class MutationsModule extends NullObjectCharacterModuleAdapter {
 
   @Override

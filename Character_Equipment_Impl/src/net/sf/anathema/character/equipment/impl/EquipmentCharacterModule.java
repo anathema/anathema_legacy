@@ -7,18 +7,7 @@ import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPer
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalViewFactory;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase;
-import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContent;
-import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContentFactory;
-import net.sf.anathema.character.equipment.impl.reporting.content.PossessionsContent;
-import net.sf.anathema.character.equipment.impl.reporting.content.PossessionsContentFactory;
-import net.sf.anathema.character.equipment.impl.reporting.content.ShieldContent;
-import net.sf.anathema.character.equipment.impl.reporting.content.ShieldContentFactory;
-import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry1stEditionContent;
-import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry1stEditionContentFactory;
-import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry2ndEditionContent;
-import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry2ndEditionContentFactory;
-import net.sf.anathema.character.equipment.impl.reporting.content.WeaponryContent;
-import net.sf.anathema.character.equipment.impl.reporting.content.WeaponryContentFactory;
+import net.sf.anathema.character.equipment.impl.reporting.content.*;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.arsenal.ArsenalEncoderFactory;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.ArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.ArmourTableEncoder;
@@ -27,6 +16,7 @@ import net.sf.anathema.character.equipment.impl.reporting.rendering.possessions.
 import net.sf.anathema.character.equipment.impl.reporting.rendering.possessions.PossessionsEncoderFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
@@ -38,6 +28,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.io.File;
 
+@CharacterModule
 public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override

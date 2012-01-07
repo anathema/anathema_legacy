@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleAdapter;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.BasicContentFactory;
@@ -34,6 +35,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.Extende
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoderFactory;
 import net.sf.anathema.lib.resources.IResources;
 
+@CharacterModule
 public class CharacterReportingModule extends CharacterModuleAdapter<CharacterReportingModuleObject> {
 
   private CharacterReportingModuleObject moduleObject;

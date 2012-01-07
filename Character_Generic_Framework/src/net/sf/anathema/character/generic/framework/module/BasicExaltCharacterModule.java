@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
+@CharacterModule
 public class BasicExaltCharacterModule extends NullObjectCharacterModuleAdapter {
 
   public static final String BACKGROUND_ID_FACE = "Face"; //$NON-NLS-1$

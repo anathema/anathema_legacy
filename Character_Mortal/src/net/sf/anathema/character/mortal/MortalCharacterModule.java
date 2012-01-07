@@ -2,6 +2,7 @@ package net.sf.anathema.character.mortal;
 
 import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
@@ -14,6 +15,7 @@ import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstE
 import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.MORTAL;
 
+@CharacterModule
 public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override

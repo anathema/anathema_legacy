@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
+import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -38,6 +39,7 @@ import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.Second
 import static net.sf.anathema.character.generic.impl.traits.EssenceTemplate.SYSTEM_ESSENCE_MAX;
 import static net.sf.anathema.character.generic.type.CharacterType.GHOST;
 
+@CharacterModule
 public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final String BACKGROUND_ID_AGE = "Age"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_ANCESTOR_CULT = "AncestorCult"; //$NON-NLS-1$
@@ -49,7 +51,7 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final TemplateType heroicType = new TemplateType(GHOST);
   private static final TemplateType commonType = new TemplateType(GHOST, new Identificate("CommonGhost")); //$NON-NLS-1$
 
-  private final TemplateType[] trueGhosts = { heroicType, commonType };
+  private final TemplateType[] trueGhosts = {heroicType, commonType};
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -86,7 +88,7 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerGhostPassions(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
-    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
+                                     IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
     String templateId = GhostPassionsTemplate.ID;
     additionalModelFactoryRegistry.register(templateId, new GhostPassionsModelFactory());
     additionalViewFactoryRegistry.register(templateId, new GhostPassionsViewFactory());
@@ -94,7 +96,7 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerGhostFetters(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
-    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
+                                    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry, IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
     String templateId = GhostFettersTemplate.ID;
     additionalModelFactoryRegistry.register(templateId, new GhostFettersModelFactory());
     additionalViewFactoryRegistry.register(templateId, new GhostFettersViewFactory());
