@@ -21,7 +21,7 @@ public class CharacterModuleContainer {
 
   public void addCharacterGenericsModule(ICharacterModule<? extends ICharacterModuleObject> module)
           throws InitializationException {
-    module.initModuleObject();
+    module.initModuleObject(characterGenerics);
     module.registerCommonData(characterGenerics);
     module.addBackgroundTemplates(characterGenerics);
     module.addCharacterTemplates(characterGenerics);

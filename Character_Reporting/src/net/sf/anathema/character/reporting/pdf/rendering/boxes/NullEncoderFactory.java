@@ -25,11 +25,11 @@ public class NullEncoderFactory extends Identificate implements EncoderFactory {
 
   @Override
   public boolean hasAttribute(EncoderAttributeType type) {
-    return false;
+    return true;
   }
 
   @Override
   public float getValue(EncodingMetrics metrics, EncoderAttributeType type) {
-    throw new UnsupportedOperationException();
+    return 30;
   }
 }

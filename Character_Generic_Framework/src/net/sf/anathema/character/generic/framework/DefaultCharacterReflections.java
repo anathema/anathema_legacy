@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.framework;
 
 import com.google.common.collect.Sets;
-import net.sf.anathema.character.generic.framework.module.CharacterModule;
+import net.sf.anathema.character.StartupModule;
+import net.sf.anathema.lib.logging.Logger;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanner;
 import org.reflections.scanners.TypeAnnotationsScanner;
-import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
 import org.reflections.util.FilterBuilder;
 import sun.net.www.ParseUtil;
@@ -18,24 +18,27 @@ import java.util.Set;
 
 public class DefaultCharacterReflections implements CharacterReflections {
 
+  private static final Logger logger = Logger.getLogger(DefaultCharacterReflections.class);
+
   private Reflections reflections;
 
   public DefaultCharacterReflections() {
     ConfigurationBuilder configuration = createConfiguration();
-    Reflections reflections = new Reflections(configuration);
+    this.reflections = new Reflections(configuration);
   }
 
   public Set<Class<?>> getTypesAnnotatedWith(Class<? extends Annotation> annotation) {
-    return reflections.getTypesAnnotatedWith(CharacterModule.class, false);
+    return reflections.getTypesAnnotatedWith(annotation);
   }
 
   private ConfigurationBuilder createConfiguration() {
     final String[] prefixes = new String[]{"net.sf.anathema.character"};
     return new ConfigurationBuilder() {
       {
+        addUrls(new StartupModule().findClassPaths());
         for (String prefix : prefixes) {
-          addUrls(ClasspathHelper.forPackage(prefix, getContextClassLoader(), getStaticClassLoader()));
-          addUrls(forPackagesInIde(prefix, getContextClassLoader(), getStaticClassLoader()));
+          // addUrls(ClasspathHelper.forPackage(prefix));
+          //addUrls(forPackagesInIde(prefix, getContextClassLoader(), getStaticClassLoader()));
         }
         FilterBuilder prefixFilter = new FilterBuilder();
         for (String prefix : prefixes) {
@@ -56,14 +59,16 @@ public class DefaultCharacterReflections implements CharacterReflections {
   }
 
   public Set<URL> forPackagesInIde(String name, ClassLoader... classLoaders) {
-    final Set<URL> result = Sets.newHashSet();
-    final String resourceName = name.replace(".", "/");
+    Set<URL> result = Sets.newHashSet();
+    String resourceName = name.replace(".", "/");
+    logger.error("ResourceName: " + resourceName);
     String encodedResourceName = createUrlCompareString(resourceName);
     for (ClassLoader classLoader : classLoaders) {
       try {
-        final Enumeration<URL> urls = classLoader.getResources(resourceName);
+        Enumeration<URL> urls = classLoader.getResources(resourceName);
         while (urls.hasMoreElements()) {
-          final URL url = urls.nextElement();
+          URL url = urls.nextElement();
+          logger.error("External form of URL: " + url.toExternalForm());
           String urlCompareString = createUrlCompareString(url.toExternalForm());
           int index = urlCompareString.lastIndexOf(encodedResourceName);
           if (index != -1) {
@@ -71,7 +76,7 @@ public class DefaultCharacterReflections implements CharacterReflections {
           }
         }
       } catch (IOException e) {
-        e.printStackTrace();
+        logger.error(e);
       }
     }
     return result;

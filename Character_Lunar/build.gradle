@@ -1,16 +1,16 @@
 dependencies {
-  compile 'com.google.guava:guava:11.0'
-  compile project(':Character_Library')
-  compile project(':Character_Equipment_Impl')
-  compile project(':Character_Mutations')
-  compile project(':Character_Reporting_FirstEdition')
-  compile project(':Character_Reporting_SecondEdition')
+    compile 'com.google.guava:guava:10.0'
+    compile project(':Character_Library')
+    compile project(':Character_Equipment_Impl')
+    compile project(':Character_Mutations')
+    compile project(':Character_Reporting_FirstEdition')
+    compile project(':Character_Reporting_SecondEdition')
 }
 
 sourceSets {
-  main {
-    resources {
-      srcDir 'resources'
+    main {
+        resources {
+            srcDir 'resources'
+        }
     }
-  }
 }
