@@ -16,6 +16,12 @@ subprojects {
     }
 
     repositories {
+        maven {
+            url 'https://github.com/anathema/anathema-thirdparty/raw/master/snapshots/'
+        }
+        maven {
+            url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
+        }
         mavenCentral()
     }
 

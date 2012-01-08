@@ -1,15 +1,13 @@
 dependencies {
-  compile files(
-          "../Thirdparty/disy/disy-commons-core.jar"
-  )
-  compile project(':Lib')
-  testCompile group: 'junit', name: 'junit', version: '4.+'
+    compile 'net.disy.commons:disy-commons-core:5.0.0-SNAPSHOT'
+    compile project(':Lib')
+    testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
 sourceSets {
-  test {
-    java {
-      srcDir 'test'
+    test {
+        java {
+            srcDir 'test'
+        }
     }
-  }
 }
