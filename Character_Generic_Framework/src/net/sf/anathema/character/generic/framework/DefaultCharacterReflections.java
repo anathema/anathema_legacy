@@ -13,7 +13,6 @@ import sun.net.www.ParseUtil;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.net.URL;
-import java.util.Enumeration;
 import java.util.Set;
 
 public class DefaultCharacterReflections implements CharacterReflections {
@@ -35,45 +34,34 @@ public class DefaultCharacterReflections implements CharacterReflections {
     final String[] prefixes = new String[]{"net.sf.anathema.character"};
     return new ConfigurationBuilder() {
       {
-        addUrls(new StartupModule().findClassPaths());
+        Set<URL> allUrls = new StartupModule().findClassPaths();
+        addUrls(allUrls);
         for (String prefix : prefixes) {
           // addUrls(ClasspathHelper.forPackage(prefix));
-          //addUrls(forPackagesInIde(prefix, getContextClassLoader(), getStaticClassLoader()));
+          addUrls(forPackagesInIde(prefix, allUrls));
         }
         FilterBuilder prefixFilter = new FilterBuilder();
         for (String prefix : prefixes) {
           prefixFilter.include(FilterBuilder.prefix(prefix));
         }
         filterInputsBy(prefixFilter);
-        setScanners(new Scanner[]{new TypeAnnotationsScanner()});
+        setScanners(new Scanner[]{new TypeAnnotationsScanner(), new CharmFileScanner()});
       }
     };
   }
 
-  private ClassLoader getContextClassLoader() {
-    return Thread.currentThread().getContextClassLoader();
-  }
-
-  private ClassLoader getStaticClassLoader() {
-    return Reflections.class.getClassLoader();
-  }
-
-  public Set<URL> forPackagesInIde(String name, ClassLoader... classLoaders) {
+  public Set<URL> forPackagesInIde(String name, Set<URL> allUrls) {
     Set<URL> result = Sets.newHashSet();
     String resourceName = name.replace(".", "/");
     logger.error("ResourceName: " + resourceName);
     String encodedResourceName = createUrlCompareString(resourceName);
-    for (ClassLoader classLoader : classLoaders) {
+    for (URL url : allUrls) {
       try {
-        Enumeration<URL> urls = classLoader.getResources(resourceName);
-        while (urls.hasMoreElements()) {
-          URL url = urls.nextElement();
-          logger.error("External form of URL: " + url.toExternalForm());
-          String urlCompareString = createUrlCompareString(url.toExternalForm());
-          int index = urlCompareString.lastIndexOf(encodedResourceName);
-          if (index != -1) {
-            result.add(new URL(urlCompareString.substring(0, index)));
-          }
+        logger.error("External form of URL: " + url.toExternalForm());
+        String urlCompareString = createUrlCompareString(url.toExternalForm());
+        int index = urlCompareString.lastIndexOf(encodedResourceName);
+        if (index != -1) {
+          result.add(new URL(urlCompareString.substring(0, index)));
         }
       } catch (IOException e) {
         logger.error(e);
