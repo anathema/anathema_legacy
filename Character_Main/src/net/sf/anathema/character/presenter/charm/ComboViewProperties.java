@@ -28,6 +28,10 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
     this.charmInfoStringProvider = new CharmInfoStringBuilder(getResources());
     this.comboConfiguration = comboConfiguration;
   }
+  
+  public boolean canFinalize() {
+	    return comboConfiguration.canFinalize();
+	  }
 
   public boolean canFinalizeWithXP() {
     return comboConfiguration.canFinalizeWithXP();

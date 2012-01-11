@@ -31,5 +31,7 @@ public interface IComboViewProperties extends IMagicLearnProperties {
   
   boolean isRemoveButtonEnabled(ICharm charm);
 
+  boolean canFinalize();
+  
   boolean canFinalizeWithXP();
 }

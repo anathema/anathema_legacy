@@ -28,6 +28,11 @@ public class ExperienceComboEditingSupport implements ComboEditingRules {
             (!learnTime.isLearnedOnCreation(originalCombo) || isExperienced()) &&
             originalCombo.contains(charm));
   }
+  
+  public boolean canFinalize()
+  {
+	  return !learnTime.isLearnedOnCreation(originalCombo) || !isExperienced();
+  }
 
   public boolean canFinalizeWithXP() {
     return isExperienced() && isEditingACombo() && haveCharmsBeenAddedToCombo();

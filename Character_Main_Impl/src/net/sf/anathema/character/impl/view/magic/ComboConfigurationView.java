@@ -88,21 +88,24 @@ public class ComboConfigurationView implements IComboConfigurationView {
     learnedListModel.addListDataListener(new ListDataListener() {
       public void intervalAdded(ListDataEvent e) {
         learnedListModelSize = learnedListModel.getSize();
-        finalizeButton.setEnabled(learnedListModelSize > 1);
+        finalizeButton.setEnabled(learnedListModelSize > 1 &&
+        		viewProperties.canFinalize());
         finalizeXPButton.setEnabled(viewProperties.canFinalizeWithXP());
         clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);
       }
 
       public void intervalRemoved(ListDataEvent e) {
         learnedListModelSize = learnedListModel.getSize();
-        finalizeButton.setEnabled(learnedListModelSize > 1);
+        finalizeButton.setEnabled(learnedListModelSize > 1 &&
+        		viewProperties.canFinalize());
         finalizeXPButton.setEnabled(viewProperties.canFinalizeWithXP());
         clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);
       }
 
       public void contentsChanged(ListDataEvent e) {
         learnedListModelSize = learnedListModel.getSize();
-        finalizeButton.setEnabled(learnedListModelSize > 1);
+        finalizeButton.setEnabled(learnedListModelSize > 1 &&
+        		viewProperties.canFinalize());
         finalizeXPButton.setEnabled(viewProperties.canFinalizeWithXP());
         clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);
       }

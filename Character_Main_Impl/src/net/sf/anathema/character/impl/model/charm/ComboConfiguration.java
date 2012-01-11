@@ -217,9 +217,9 @@ public class ComboConfiguration implements IComboConfiguration {
   }
 
   public void beginComboEdit(ICombo combo) {
+    experienceSupport.startChanging(combo);
     editCombo.clear();
     editCombo.getValuesFrom(combo);
-    experienceSupport.startChanging(combo);
     fireBeginEditEvent(combo);
   }
 
@@ -232,6 +232,11 @@ public class ComboConfiguration implements IComboConfiguration {
     return experienceSupport.isAllowedToRemove(charm);
   }
 
+  @Override
+  public boolean canFinalize() {
+    return experienceSupport.canFinalize();
+  }
+  
   @Override
   public boolean canFinalizeWithXP() {
     return experienceSupport.canFinalizeWithXP();
