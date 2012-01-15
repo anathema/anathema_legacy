@@ -5,6 +5,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
@@ -71,7 +72,7 @@ public class CharmBuilder implements ICharmBuilder {
   
   public Charm buildCharm(Element charmElement) throws PersistenceException
   {
-	  return buildCharm(charmElement, null);
+	  return buildCharm(charmElement, new ArrayList<ISpecialCharm>());
   }
 
   public Charm buildCharm(Element charmElement, List<ISpecialCharm> specialCharms) throws PersistenceException {
