@@ -10,7 +10,7 @@ import org.dom4j.Element;
 
 public interface ICharmBuilder {
 
-  public Charm buildCharm(Element charmElement) throws PersistenceException;
+  Charm buildCharm(Element charmElement) throws PersistenceException;
 	
-  public Charm buildCharm(Element charmElement, List<ISpecialCharm> specialCharms) throws PersistenceException;
+  Charm buildCharm(Element charmElement, List<ISpecialCharm> specialCharms) throws PersistenceException;
 }
