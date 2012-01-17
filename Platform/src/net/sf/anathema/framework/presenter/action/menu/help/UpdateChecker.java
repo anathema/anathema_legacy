@@ -16,6 +16,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class UpdateChecker implements IUpdateChecker {
 
+  public static final String Update_Url = "http://anathema.github.com/version/version.txt";
   private final IResources resources;
   private final ChangeControl control = new ChangeControl();
   private IMessageData data;
@@ -72,12 +73,11 @@ public class UpdateChecker implements IUpdateChecker {
     DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ENGLISH);
     Date currentVersionDate = dateFormat.parse(resources.getString("Anathema.Version.Built")); //$NON-NLS-1$
     Date remoteVersionDate = dateFormat.parse(string);
-    boolean b = currentVersionDate.compareTo(remoteVersionDate) < 0;
-    return b;
+    return currentVersionDate.compareTo(remoteVersionDate) < 0;
   }
 
   private String getVersionData() throws IOException {
-    URL url = new URL("http://anathema.sf.net/version/version.txt"); //$NON-NLS-1$
+    URL url = new URL(Update_Url); //$NON-NLS-1$
     BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
     String response = in.readLine();
     in.close();
