@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -11,6 +8,11 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCha
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static net.sf.anathema.lib.lang.AnathemaStringUtilities.bothNullOrEquals;
 
 public class MultipleEffectCharm implements IMultipleEffectCharm {
 
@@ -45,15 +47,11 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
   private ICondition buildLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm) {
     return new ArbitratorLearnCondition(arbitrator, charm);
   }
-  
-  private static boolean strEquals(String a, String b) {
-    return a != null ? a.equals(b) : b == null;
-  }
 
   public String toString() {
     StringBuilder list = new StringBuilder();
     for (String effect : effectIds) {
-      boolean isLastEffect = strEquals(effect, effectIds[effectIds.length - 1]);
+      boolean isLastEffect = bothNullOrEquals(effect, effectIds[effectIds.length - 1]);
       list.append(effect);
       list.append(isLastEffect ? "" : ",");
     }

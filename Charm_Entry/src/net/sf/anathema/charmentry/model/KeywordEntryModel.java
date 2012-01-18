@@ -9,6 +9,8 @@ import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.IKeywordEntryModel;
 import net.sf.anathema.lib.util.IIdentificate;
 
+import static net.sf.anathema.lib.lang.AnathemaStringUtilities.bothNullOrEquals;
+
 public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribute> implements IKeywordEntryModel {
 
   private IIdentificate keyword;
@@ -37,17 +39,13 @@ public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribu
     charmData.removeAttribute(entry);
   }
   
-  private static boolean strEquals(String a, String b) {
-    return a != null ? a.equals(b) : b == null;
-  }
-
   @Override
   protected boolean isEntryAllowed() {
     if (keyword == null) {
       return false;
     }
     for (ICharmAttribute attribute : getEntries()) {
-      if (strEquals(attribute.getId(), keyword.getId())) {
+      if (bothNullOrEquals(attribute.getId(), keyword.getId())) {
         return false;
       }
     }
