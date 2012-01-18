@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
+import com.google.common.base.Joiner;
 import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Phrase;
@@ -14,7 +15,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncod
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SimpleColumn;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -111,6 +111,6 @@ public class ComboEncoder {
   private String getCharmString(IGenericCombo combo) {
     CharmPrintNameTransformer transformer = new CharmPrintNameTransformer(resources);
     String[] charmNames = ArrayUtilities.transform(combo.getCharms(), String.class, transformer);
-    return AnathemaStringUtilities.concat(charmNames, ", "); //$NON-NLS-1$
+    return Joiner.on(", ").join(charmNames);
   }
 }

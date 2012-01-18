@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
+import com.google.common.base.Joiner;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ArrayUtilities;
@@ -7,7 +8,6 @@ import net.disy.commons.core.util.ITransformer;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
@@ -28,7 +28,7 @@ public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> 
           return resources.getString(input);
         }
       });
-      String detailText = AnathemaStringUtilities.concat(details, ", "); //$NON-NLS-1$
+      String detailText = Joiner.on(", ").join(details);
       if (StringUtilities.isNullOrEmpty(detailText)) {
         detailText = "-"; //$NON-NLS-1$
       }

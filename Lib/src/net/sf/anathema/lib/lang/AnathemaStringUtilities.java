@@ -90,15 +90,4 @@ public class AnathemaStringUtilities extends StringUtilities {
     String firstCharacter = string.substring(0, 1);
     return string.replaceFirst(firstCharacter, firstCharacter.toUpperCase());
   }
-
-  public static String concat(String[] values, String seperator) {
-    StringBuilder builder = new StringBuilder();
-    for (int index = 0; index < values.length; index++) {
-      builder.append(values[index]);
-      if (index < values.length - 1) {
-        builder.append(seperator);
-      }
-    }
-    return builder.toString();
-  }
 }

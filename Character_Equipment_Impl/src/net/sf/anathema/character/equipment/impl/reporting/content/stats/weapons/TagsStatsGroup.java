@@ -2,12 +2,12 @@ package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons
 
 import java.awt.Color;
 
+import com.google.common.base.Joiner;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -49,7 +49,7 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> 
           return resources.getString("Weapons.Tags." + input.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
         }
       });
-      String valueString = values.length == 0 ? " " : AnathemaStringUtilities.concat(values, ","); //$NON-NLS-1$ //$NON-NLS-2$
+      String valueString = values.length == 0 ? " " : Joiner.on(",").join(values);
       table.addCell(createFilledContentCell(font, valueString));
     }
   }
