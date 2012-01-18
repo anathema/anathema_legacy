@@ -25,8 +25,7 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
 
   private File getItemFolder(IItemType type, String id) {
     File typeFolder = getExistingItemTypeFolder(type);
-    File itemFolder = new File(typeFolder, id);
-    return itemFolder;
+    return new File(typeFolder, id);
   }
 
   public File getExistingItemFolder(IItemType type, String id) {
