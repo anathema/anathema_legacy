@@ -13,7 +13,7 @@ import org.apache.batik.swing.gvt.JGVTComponent;
 
 public class RightClickMagnifyInteractor extends InteractorAdapter {
 	
-  private static final float MAX_ZOOM_DETERMINANT = .65f;
+  public static final float MAX_ZOOM_DETERMINANT = .65f;
   private final IBoundsCalculator calculator;
   private boolean finished = true;
   private int yStart;
