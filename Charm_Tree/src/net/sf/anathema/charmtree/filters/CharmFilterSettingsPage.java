@@ -3,7 +3,6 @@ package net.sf.anathema.charmtree.filters;
 import java.util.List;
 
 import javax.swing.JComponent;
-import javax.swing.JList;
 import javax.swing.JPanel;
 
 import net.disy.commons.core.message.IBasicMessage;
@@ -15,9 +14,6 @@ public class CharmFilterSettingsPage extends AbstractDialogPage
 {
 	private IResources resources;
 	private List<ICharmFilter> filters;
-	// These two fields are completely unused.
-	JList allowedList;
-	JList excludedList;
 
 	public CharmFilterSettingsPage(IResources resources, List<ICharmFilter> filters) {
 		super(resources.getString("CharmFilters.Instructions"));
@@ -44,5 +40,4 @@ public class CharmFilterSettingsPage extends AbstractDialogPage
 	public String getTitle() {
 		return resources.getString("CharmFilters.Filters");
 	}
-
 }
