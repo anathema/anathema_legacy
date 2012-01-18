@@ -45,6 +45,8 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
   }
 
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(String charmId) {
+    // specialCharmConfiguration is never set and therefore this condition is
+    // always false.
     if (specialCharmConfiguration != null && charmId.equals(specialCharmConfiguration.getCharm().getId())) {
       return specialCharmConfiguration;
     }
