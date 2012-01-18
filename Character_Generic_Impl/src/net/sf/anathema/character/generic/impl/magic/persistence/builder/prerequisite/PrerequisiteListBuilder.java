@@ -4,6 +4,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.AT
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_VALUE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ESSENCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_SELECTIVE_CHARM_GROUP;
+import static net.sf.anathema.character.generic.traits.types.OtherTraitType.Essence;
 
 import java.util.List;
 
@@ -59,8 +60,7 @@ public class PrerequisiteListBuilder {
     catch (NumberFormatException e) {
       throw new CharmException("Bad value on essence prerequisite."); //$NON-NLS-1$
     }
-    IGenericTrait essence = new ValuedTraitType(OtherTraitType.Essence, minValue);
-    return essence;
+    return new ValuedTraitType(Essence, minValue);
   }
 
   private SelectiveCharmGroupTemplate[] buildSelectiveCharmGroups(Element prerequisiteListElement)
