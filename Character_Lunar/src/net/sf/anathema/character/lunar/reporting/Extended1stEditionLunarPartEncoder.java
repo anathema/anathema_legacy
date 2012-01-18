@@ -16,13 +16,10 @@ import net.sf.anathema.lib.resources.IResources;
 public class Extended1stEditionLunarPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {
 
   private EncoderRegistry encoderRegistry;
-  // Should this field be removed?
-  private BaseFont baseFont;
 
   public Extended1stEditionLunarPartEncoder(EncoderRegistry encoderRegistry, IResources resources, BaseFont baseFont, int essenceMax) {
     super(resources, baseFont, essenceMax);
     this.encoderRegistry = encoderRegistry;
-    this.baseFont = baseFont;
   }
 
   public ContentEncoder getGreatCurseEncoder() {

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.infernal.reporting;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.infernal.reporting.rendering.AnimaEncoderFactory;
 import net.sf.anathema.character.infernal.reporting.rendering.UrgeEncoder;
 import net.sf.anathema.character.infernal.reporting.rendering.YoziListEncoder;
@@ -14,12 +13,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
-  // Should this field be removed?
-  private BaseFont baseFont;
-
   public ExtendedInfernalPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
     super(resources, registry, essenceMax);
-    this.baseFont = registry.getBaseFont();
   }
 
   public ContentEncoder getGreatCurseEncoder() {
