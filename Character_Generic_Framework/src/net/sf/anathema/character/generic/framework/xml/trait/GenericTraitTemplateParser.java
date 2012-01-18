@@ -71,11 +71,10 @@ public class GenericTraitTemplateParser {
 			throw new PersistenceException(e);
 		}
     	defaultTraitTemplate.setMinimumValue(minimumClass.getMinimum());
-    	GenericRestrictedTraitTemplate restrictedTemplate = new GenericRestrictedTraitTemplate(
-    			defaultTraitTemplate,
-    			minimumClass,
-    			type);
-    	return restrictedTemplate;    	
+      return new GenericRestrictedTraitTemplate(
+              defaultTraitTemplate,
+              minimumClass,
+              type);
     }
     
    	defaultTraitTemplate.setMinimumValue(Integer.parseInt(minimumValueElement.attributeValue(ATTRIB_VALUE)));
