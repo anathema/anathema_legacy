@@ -1,3 +1,4 @@
+archivesBaseName= 'anathema'
 propertiesDir = new File(buildDir, 'properties')
 libraryDir = 'lib'
 
