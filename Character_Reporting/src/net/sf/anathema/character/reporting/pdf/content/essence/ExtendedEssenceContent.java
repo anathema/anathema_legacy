@@ -66,7 +66,7 @@ public class ExtendedEssenceContent extends AbstractSubBoxContent {
 
   private void addComplexPools(List<PoolRow> rows) {
     for (IdentifiedInteger complexPool : character.getComplexPools()) {
-      ComplexPoolRow poolRow = new ComplexPoolRow(getResources(), character, complexPool);
+      ComplexPoolRow poolRow = new ComplexPoolRow(getResources(), complexPool);
       addPool(rows, poolRow);
     }
   }
