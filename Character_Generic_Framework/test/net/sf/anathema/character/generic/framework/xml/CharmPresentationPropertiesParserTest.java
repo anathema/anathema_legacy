@@ -12,7 +12,7 @@ import java.awt.*;
 
 public class CharmPresentationPropertiesParserTest extends TestCase {
 
-  private final String xml = "<charmPresentation>" //$NON-NLS-1$
+  private static final String XML = "<charmPresentation>" //$NON-NLS-1$
       + "<polygon>157.07742,9.777771</polygon>" //$NON-NLS-1$
       + "<charmDimension width=\"150\" height=\"75\"/>" //$NON-NLS-1$
       + "<gapDimension width=\"25\" height=\"50\"/>" //$NON-NLS-1$
@@ -34,7 +34,7 @@ public class CharmPresentationPropertiesParserTest extends TestCase {
   }
 
   public void testParsePolygonString() throws Exception {
-    GenericCharmPresentationProperties presentationProperties = parseXml(xml);
+    GenericCharmPresentationProperties presentationProperties = parseXml(XML);
     assertEquals("157.07742,9.777771", presentationProperties.getNodeFramePolygonString()); //$NON-NLS-1$
   }
 
@@ -44,7 +44,7 @@ public class CharmPresentationPropertiesParserTest extends TestCase {
   }
 
   public void testParseCharmDimension() throws Exception {
-    GenericCharmPresentationProperties presentationProperties = parseXml(xml);
+    GenericCharmPresentationProperties presentationProperties = parseXml(XML);
     assertEquals(new Dimension(150, 75), presentationProperties.getNodeDimension());
   }
 
@@ -59,7 +59,7 @@ public class CharmPresentationPropertiesParserTest extends TestCase {
   }
 
   public void testParseGapDimension() throws Exception {
-    GenericCharmPresentationProperties presentationProperties = parseXml(xml);
+    GenericCharmPresentationProperties presentationProperties = parseXml(XML);
     assertEquals(new Dimension(25, 50), presentationProperties.getGapDimension());
   }
 
@@ -74,7 +74,7 @@ public class CharmPresentationPropertiesParserTest extends TestCase {
   }
 
   public void testParseLineDimension() throws Exception {
-    GenericCharmPresentationProperties presentationProperties = parseXml(xml);
+    GenericCharmPresentationProperties presentationProperties = parseXml(XML);
     assertEquals(new Dimension(25, 75), presentationProperties.getVerticalLineDimension());
   }
 
@@ -89,7 +89,7 @@ public class CharmPresentationPropertiesParserTest extends TestCase {
   }
 
   public void testNoIsolateSingles() throws Exception {
-    GenericCharmPresentationProperties properties = parseXml(xml);
+    GenericCharmPresentationProperties properties = parseXml(XML);
     assertFalse(properties.isolateSingles());
   }
 

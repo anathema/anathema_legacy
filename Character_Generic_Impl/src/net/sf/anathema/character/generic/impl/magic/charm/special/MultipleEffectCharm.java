@@ -45,4 +45,18 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
   private ICondition buildLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm) {
     return new ArbitratorLearnCondition(arbitrator, charm);
   }
+  
+  private static boolean strEquals(String a, String b) {
+    return a != null ? a.equals(b) : b == null;
+  }
+
+  public String toString() {
+    StringBuilder list = new StringBuilder();
+    for (String effect : effectIds) {
+      boolean isLastEffect = strEquals(effect, effectIds[effectIds.length - 1]);
+      list.append(effect);
+      list.append(isLastEffect ? "" : ",");
+    }
+    return "[" + getCharmId() + ";" + list + "]";
+  }
 }

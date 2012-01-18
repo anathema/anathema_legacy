@@ -28,7 +28,7 @@ public class AdditionalBonusPointPoolCalculator {
 
   public void spendPoints(int pointsToSpent) {
     Ensure.ensureTrue("Too many bonuspoints spent.", pointsSpent <= getRemainingPoints()); //$NON-NLS-1$
-    pointsToSpent += pointsToSpent;
+    pointsSpent += pointsToSpent;
   }
 
   public int getRemainingPoints() {

@@ -30,6 +30,7 @@ public abstract class AbstractDelegatingCellEditor extends AbstractCellEditor im
     }
     catch (Exception exception) {
       // ignore problems - we don't know wether an action listener can be registered at all
+      // Shouldn't this be reported somehow?
     }
   }
 

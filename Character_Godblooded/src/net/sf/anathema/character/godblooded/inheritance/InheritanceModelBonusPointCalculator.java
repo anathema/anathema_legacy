@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 public class InheritanceModelBonusPointCalculator implements IAdditionalModelBonusPointCalculator
 {
 	private final ICharacterModelContext context;
-	private final String INHERITANCE_STRING = "Inheritance";	
+	private static final String INHERITANCE_STRING = "Inheritance";	
 	int inheritanceBonusArray[] = { 0, 6, 12, 18, 24, 30 };
 	
 	public InheritanceModelBonusPointCalculator(ICharacterModelContext context)

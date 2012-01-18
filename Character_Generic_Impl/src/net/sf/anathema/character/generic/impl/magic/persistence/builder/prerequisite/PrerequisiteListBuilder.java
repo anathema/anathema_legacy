@@ -21,7 +21,7 @@ import org.dom4j.Element;
 
 public class PrerequisiteListBuilder {
 	
-  private final String ATTRIB_LABEL = "label";
+  private static final String ATTRIB_LABEL = "label";
 
   private final ITraitPrerequisitesBuilder traitBuilder;
   private final IAttributeRequirementBuilder attributeBuilder;

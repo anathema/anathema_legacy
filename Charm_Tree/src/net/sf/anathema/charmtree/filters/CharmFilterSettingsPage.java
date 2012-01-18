@@ -15,6 +15,7 @@ public class CharmFilterSettingsPage extends AbstractDialogPage
 {
 	private IResources resources;
 	private List<ICharmFilter> filters;
+	// These two fields are completely unused.
 	JList allowedList;
 	JList excludedList;
 

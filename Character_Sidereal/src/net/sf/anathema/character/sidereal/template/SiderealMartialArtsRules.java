@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 
 public class SiderealMartialArtsRules implements IMartialArtsRules
 {
-	private final int MAX_CREATION_SMA = 3;
+	private static final int MAX_CREATION_SMA = 3;
 	
   public void setHighLevelAtCreation(boolean highLevelAtCreation)
   {

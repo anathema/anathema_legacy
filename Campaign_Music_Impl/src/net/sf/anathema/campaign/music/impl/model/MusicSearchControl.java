@@ -51,8 +51,10 @@ public class MusicSearchControl implements IMusicSearchControl {
 
   public void executeSearch(Map<ISearchParameter, String> constraintsByParameter) {
     List<IExtendedSearchParameter> parameterList = new ArrayList<IExtendedSearchParameter>();
-    for (ISearchParameter parameter : constraintsByParameter.keySet()) {
-      parameterList.add(new StringFieldSearchParameter(parameter.getFieldName(), constraintsByParameter.get(parameter)));
+    for (Map.Entry<ISearchParameter, String> keyValue : constraintsByParameter.entrySet()) {
+      ISearchParameter parameter = keyValue.getKey();
+      String value = keyValue.getValue();
+      parameterList.add(new StringFieldSearchParameter(parameter.getFieldName(), value));
     }
     IMusicEvent[] selectedMoods = musicCategorizationModel.getEventsModel().getSelectedValues();
     if (selectedMoods.length > 0) {

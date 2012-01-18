@@ -12,7 +12,7 @@ public class Md5Checksum {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof Md5Checksum)) {
+    if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
     return Arrays.equals(md5Bytes, ((Md5Checksum) obj).md5Bytes);
@@ -20,12 +20,12 @@ public class Md5Checksum {
 
   @Override
   public int hashCode() {
-    return md5Bytes.hashCode();
+    return Arrays.hashCode(md5Bytes);
   }
 
   @Override
   public String toString() {
-    StringBuffer stringBuffer = new StringBuffer();
+    StringBuilder stringBuffer = new StringBuilder();
     for (byte digestedByte : md5Bytes) {
       stringBuffer.append(Integer.toHexString(digestedByte).replaceAll("^f+", "-") + " "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }

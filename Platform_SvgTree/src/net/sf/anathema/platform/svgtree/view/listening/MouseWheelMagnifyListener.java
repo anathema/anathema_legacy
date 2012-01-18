@@ -12,7 +12,7 @@ public class MouseWheelMagnifyListener implements MouseWheelListener {
 
   private final IBoundsCalculator calculator;
   
-  private final float MAX_ZOOM_DETERMINANT = .65f;
+  private static final float MAX_ZOOM_DETERMINANT = .65f;
 
   public MouseWheelMagnifyListener(IBoundsCalculator boundsCalculator) {
     this.calculator = boundsCalculator;

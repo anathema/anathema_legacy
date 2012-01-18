@@ -39,7 +39,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   private ITraitReference currentType;
   
   //reference to the Lunar generic charm which grants the ability to take attribute specialties
-  private final String flawlessFocus = "Lunar.FlawlessFocus.";
+  private static final String FLAWLESS_FOCUS = "Lunar.FlawlessFocus.";
 
   public SpecialtiesConfiguration(
       ITraitCollection traitCollection,
@@ -138,7 +138,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
 		   {
 			   boolean hasFocus = false;
 			   for (ICharm charm : context.getCharmContext().getCharmConfiguration().getLearnedCharms())
-				   if (charm.getId().equals(flawlessFocus + trait))
+				   if (charm.getId().equals(FLAWLESS_FOCUS + trait))
 					   hasFocus = true;
 			   if (!hasFocus)
 			   {

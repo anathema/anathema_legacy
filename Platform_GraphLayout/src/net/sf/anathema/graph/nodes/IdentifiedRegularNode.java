@@ -11,7 +11,7 @@ import net.sf.anathema.lib.util.Identificate;
 
 public class IdentifiedRegularNode extends Identificate implements IIdentifiedRegularNode {
 
-  private final class NodeIndexComparator implements Comparator<ISimpleNode> {
+  private static final class NodeIndexComparator implements Comparator<ISimpleNode> {
     private final ISimpleNode[] orderedNodes;
 
     private NodeIndexComparator(ISimpleNode[] orderedNodes) {

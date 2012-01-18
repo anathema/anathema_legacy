@@ -17,7 +17,7 @@ import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 
 public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableCharm
 {
-	private final int NO_BP_UPGRADE = -1;
+	private static final int NO_BP_UPGRADE = -1;
 	
 	List<Upgrade> upgradeList = new ArrayList<Upgrade>();
 	private final Map<String, Integer> bpCosts;
@@ -109,8 +109,18 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 	  {
 		  return requiresBase;
 	  }
+
+	  @Override
+	  public boolean equals(Object obj) {
+	    return super.equals(obj);
+	  }
+
+	  @Override
+	  public int hashCode() {
+	    return super.hashCode();
+	  }
 	  
-	  private class Upgrade extends Subeffect
+	  private static class Upgrade extends Subeffect
 	  {
 		  private int bpCost;
 		  private int xpCost;
@@ -131,6 +141,5 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 		{
 			return xpCost;
 		}
-		  
 	  }
 }

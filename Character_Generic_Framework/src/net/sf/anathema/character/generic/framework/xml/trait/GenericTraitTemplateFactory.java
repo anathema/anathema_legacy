@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml.trait;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
 import net.sf.anathema.character.generic.impl.traits.ITraitTemplateFactory;
@@ -79,7 +80,12 @@ public class GenericTraitTemplateFactory implements ITraitTemplateFactory, IClon
 
   @Override
   public GenericTraitTemplateFactory clone() {
-    GenericTraitTemplateFactory clone = new GenericTraitTemplateFactory();
+    GenericTraitTemplateFactory clone;
+    try {
+      clone = (GenericTraitTemplateFactory)super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new UnreachableCodeReachedException(e);
+    }
     clone.abilitiesPool = abilitiesPool == null ? null : abilitiesPool.clone();
     clone.attributesPool = attributesPool == null ? null : attributesPool.clone();
     clone.backgroundPool = backgroundPool == null ? null : backgroundPool.clone();

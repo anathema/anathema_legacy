@@ -7,16 +7,27 @@ import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualityPredicate;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.library.quality.presenter.IQualityType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.IIdentificate;
 
-public abstract class Quality extends Identificate implements IQuality {
+public abstract class Quality implements IQuality, IIdentificate {
 
+  private final String id;
   private final List<IQualityPredicate> prerequisites = new ArrayList<IQualityPredicate>();
   private final IQualityType type;
 
   public Quality(String id, IQualityType type) {
-    super(id);
+    this.id = id;
     this.type = type;
+  }
+
+  @Override
+  public final String getId() {
+    return id;
+  }
+
+  @Override
+  public String toString() {
+    return id;
   }
 
   protected final List<IQualityPredicate> getPrerequisiteList() {

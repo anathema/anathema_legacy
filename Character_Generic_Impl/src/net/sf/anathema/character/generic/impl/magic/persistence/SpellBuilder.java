@@ -24,7 +24,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 public class SpellBuilder {
-  private static ISpell[] spells;
+  private ISpell[] spells;
   private final ICostListBuilder costListBuilder = new CostListBuilder();
   private final SourceBuilder sourceBuilder = new SourceBuilder();
   private final static SpellBuilder instance = new SpellBuilder();

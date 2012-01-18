@@ -19,7 +19,7 @@ public class CasteEvaluator implements ICharacterEvaluator {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof CasteEvaluator)) {
+    if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
     return Arrays.equals(this.casteNames, ((CasteEvaluator) obj).casteNames);
@@ -27,6 +27,6 @@ public class CasteEvaluator implements ICharacterEvaluator {
 
   @Override
   public int hashCode() {
-    return casteNames.hashCode() * 17;
+    return Arrays.hashCode(casteNames) * 17;
   }
 }

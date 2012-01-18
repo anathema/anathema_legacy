@@ -22,8 +22,8 @@ public class BeastformTraitCollection extends AbstractTraitCollection implements
     return attributesByType.get(traitType);
   }
 
-  public int getTraitPointCost(IDefaultTrait trait) {
+  public <T extends IBeastformAttribute & IDefaultTrait> int getTraitPointCost(T trait) {
     Ensure.ensureArgumentTrue("Trait not in collection.", contains(trait.getType())); //$NON-NLS-1$
-    return ((BeastformAttribute) trait).getPointCost();
+    return trait.getPointCost();
   }
 }

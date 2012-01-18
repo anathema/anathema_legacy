@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.xml;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
@@ -48,7 +49,8 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   private IGroupedTraitType[] yoziGroups;
   private GenericPresentationTemplate presentationTemplate;
   private ICasteCollection casteCollection = new CasteCollection(new ICasteType[0]);
-  private final List<IAdditionalTemplate> additionalTemplates = new ArrayList<IAdditionalTemplate>();
+  // This is volatile instead of final to allow clone to be implemented
+  private volatile List<IAdditionalTemplate> additionalTemplates = new ArrayList<IAdditionalTemplate>();
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private IExaltedEdition edition;
   private boolean isLegacy;
@@ -179,11 +181,17 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
 
   @Override
   public GenericCharacterTemplate clone() {
-    GenericCharacterTemplate clone = new GenericCharacterTemplate();
-    clone.abilityGroups = abilityGroups;
-    clone.attributeGroups = attributeGroups;
-    clone.templateType = templateType;
-    clone.traitTemplateCollection = traitTemplateCollection;
+    GenericCharacterTemplate clone;
+    try {
+      clone = (GenericCharacterTemplate)super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new UnreachableCodeReachedException(e);
+    }
+    clone.additionalRules = new GenericAdditionalRules();
+    clone.casteCollection = new CasteCollection(new ICasteType[0]);
+    clone.additionalTemplates = new ArrayList<IAdditionalTemplate>();
+    clone.healthTemplate = new GenericHealthTemplate();
+
     if (bonusPointCosts != null) {
       clone.bonusPointCosts = bonusPointCosts.clone();
     }

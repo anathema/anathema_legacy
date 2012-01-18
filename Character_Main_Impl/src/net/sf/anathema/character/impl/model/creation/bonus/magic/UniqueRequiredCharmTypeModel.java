@@ -32,6 +32,4 @@ public class UniqueRequiredCharmTypeModel extends AbstractSpendingModel
 	{
 		return Math.min(calculator.getUniqueRequiredCharmTypePicksSpent(), getAlotment());
 	}
-
-
 }

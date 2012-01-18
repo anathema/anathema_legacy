@@ -57,15 +57,18 @@ public class GenericTraitTemplateParser {
     
     if (usesId != null)
     {
-    	IExtendedMinimum minimumClass = null;
+    	IExtendedMinimum minimumClass;
 		try {
 			minimumClass = (IExtendedMinimum) Class.forName(usesId).newInstance();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
+			throw new PersistenceException(e);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
+			throw new PersistenceException(e);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			throw new PersistenceException(e);
 		}
     	defaultTraitTemplate.setMinimumValue(minimumClass.getMinimum());
     	GenericRestrictedTraitTemplate restrictedTemplate = new GenericRestrictedTraitTemplate(

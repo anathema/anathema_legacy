@@ -19,6 +19,7 @@ public class CharmIO {
   public void writeCharmInternal(ICharmEntryData charmData) throws IOException, DocumentException {
     ICharacterType type = charmData.getCoreData().getCharacterType();
     File file = new File(createFileName(charmData, type));
+    // Shouldn't the FileInputStream be closed?
     Document document = new SAXReader().read(new FileInputStream(file));
     try {
       new CharmWriter().writeCharm(charmData.getCoreData(), document.getRootElement());
