@@ -33,8 +33,7 @@ public class MusicSearchControl implements IMusicSearchControl {
   }
 
   public IMp3Track[] getTracks(String libraryName) {
-    IMp3Track[] tracks = persister.getTracksFromLibrary(libraryName);
-    return tracks;
+    return persister.getTracksFromLibrary(libraryName);
   }
 
   public ISearchParameter[] getSearchParameters() {
