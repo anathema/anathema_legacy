@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -29,7 +28,7 @@ public class HeaderDataModel implements IHeaderDataModel {
       public void valueChanged(String newValue) {
         final ICharacterType type = charmData.getCharacterType();
         if (type != null) {
-          charmData.setId(CharmUtilities.createIDFromName(type, newValue));
+          charmData.setId(CharmIdGenerator.createIDFromName(type, newValue));
         }
       }
     });
@@ -66,7 +65,7 @@ public class HeaderDataModel implements IHeaderDataModel {
     charmData.setCharacterType(type);
     final String text = charmData.getName().getText();
     if (text != null) {
-      charmData.setId(CharmUtilities.createIDFromName(type, text));
+      charmData.setId(CharmIdGenerator.createIDFromName(type, text));
     }
     control.fireChangedEvent();
   }
