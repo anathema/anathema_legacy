@@ -20,7 +20,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class CharmEntryPropertiesPersister {
 
   public void writeCharmPageProperty(ICharacterType itype, String key, IExaltedSourceBook book, int page)
-      throws IOException {
+          throws IOException {
     CharacterType type = (CharacterType) itype;
     String fileName = "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + "_Pages.properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //;
     File file = new File(fileName);
@@ -31,20 +31,22 @@ public class CharmEntryPropertiesPersister {
   }
 
   public void writeCharmNameProperty(ICharacterType itype, IExaltedEdition edition, String key, String value)
-      throws IOException {
+          throws IOException {
     CharacterType type = (CharacterType) itype;
-    String fileName = null;
-    if (edition == ExaltedEdition.SecondEdition) {
-      fileName = "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + "_" + edition.getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$;
-    }
-    else {
-      fileName = "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
-    }
+    String fileName = getFileName(edition, type);
     File file = new File(fileName);
     BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
     writer.newLine();
     writer.write(key + "=" + value); //$NON-NLS-1$
     writer.close();
+  }
+
+  private String getFileName(IExaltedEdition edition, CharacterType type) {
+    if (edition == ExaltedEdition.SecondEdition) {
+      return "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + "_" + edition.getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$;
+    } else {
+      return "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
+    }
   }
 
   public void writeDurationProperty(IResources resources, IDuration duration) throws IOException {
@@ -57,12 +59,10 @@ public class CharmEntryPropertiesPersister {
       if (duration instanceof UntilEventDuration) {
         String event = ((UntilEventDuration) duration).getEvent();
         writeString = createCamelCase("Charm.Event.", event) + "=" + event; //$NON-NLS-1$ //$NON-NLS-2$
-      }
-      else if (duration instanceof SimpleDuration) {
+      } else if (duration instanceof SimpleDuration) {
         String text = ((SimpleDuration) duration).getText();
         writeString = createCamelCase("Charm.Duration.", text) + "=" + text; //$NON-NLS-1$ //$NON-NLS-2$
-      }
-      else if (duration instanceof QualifiedAmountDuration) {
+      } else if (duration instanceof QualifiedAmountDuration) {
         QualifiedAmountDuration amountDuration = (QualifiedAmountDuration) duration;
         String amount = amountDuration.getAmount();
         String unit = amountDuration.getUnit();
@@ -76,13 +76,11 @@ public class CharmEntryPropertiesPersister {
           if (intAmount == 1) {
             writeString += ".Singular"; //$NON-NLS-1$
           }
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
           writeString += ".Plural"; //$NON-NLS-1$
         }
         writeString += "=" + unit; //$NON-NLS-1$
-      }
-      else {
+      } else {
         throw new UnreachableCodeReachedException("Unknown Duration Type"); //$NON-NLS-1$
       }
       if (resources.supportsKey(writeString)) {
@@ -92,7 +90,6 @@ public class CharmEntryPropertiesPersister {
     } finally {
       writer.close();
     }
-    return;
   }
 
   private String createCamelCase(String prefix, String string) {
