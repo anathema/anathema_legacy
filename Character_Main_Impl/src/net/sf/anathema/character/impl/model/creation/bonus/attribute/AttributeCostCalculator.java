@@ -216,7 +216,6 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
 	@Override
 	protected int getCostFactor(IFavorableDefaultTrait trait)
 	{
-	    int costFactor = costs.getAttributeCosts(trait);
-	    return costFactor;
+      return costs.getAttributeCosts(trait);
 	}
 }
