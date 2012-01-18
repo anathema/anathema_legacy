@@ -20,9 +20,6 @@ public class NatureProvider implements INatureProvider {
   private final List<INatureType> natures = new ArrayList<INatureType>();
   private static final INatureProvider instance = new NatureProvider();
   private static final String TAG_NATURE = "nature"; //$NON-NLS-1$
-  private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
-  protected static final String ATTRIB_TEXT = "text"; //$NON-NLS-1$
-  protected static final String TAG_WILLPOWER = "willpower"; //$NON-NLS-1$
   private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
 
   private NatureProvider() {
@@ -81,12 +78,7 @@ public class NatureProvider implements INatureProvider {
   }
 
   private INatureType buildNature(final Element element) {
-    String condition = null;
-    Element willpowerElement = element.element(TAG_WILLPOWER);
-    if (willpowerElement != null) {
-      condition = willpowerElement.attributeValue(ATTRIB_TEXT);
-    }
-    return new NatureType(element.attributeValue(ATTRIB_ID), element.attributeValue(ATTRIB_NAME), condition);
+    return new NatureType(element.attributeValue(ATTRIB_ID));
   }
 
   public INatureType[] getNatures() {
@@ -99,7 +91,7 @@ public class NatureProvider implements INatureProvider {
         return nature;
       }
     }
-    final NatureType natureType = new NatureType(id, id, null);
+    final NatureType natureType = new NatureType(id);
     natures.add(natureType);
     return natureType;
   }
