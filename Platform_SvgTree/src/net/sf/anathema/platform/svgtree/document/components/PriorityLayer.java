@@ -12,30 +12,8 @@ public class PriorityLayer extends Layer {
 	public PriorityLayer(Dimension gapDimension, int yPosition) {
 		super(gapDimension, yPosition);
 	}
-	
-	private static boolean compareIntegers(Integer a, Integer b) {
-	  return a != null ? a.equals(b) : b == null;
-	}
-	
-	public void checkOverlaps() {
-		for (int i = 0; i < nodes.size() - 1; i++) {
-			assert compareIntegers(getRightSideSlack(nodes.get(i)), getLeftSideSlack(nodes.get(i + 1))) : "Bad slack calculation";
-			if (getRightSideSlack(nodes.get(i)) < 0) {
-				String nodeID = "stand-in";
-				String nextNodeID = "stand-in";
-				if (nodes.get(i) instanceof VisualizableNode) {
-					nodeID = ((VisualizableNode)nodes.get(i)).getContentNode().getId();
-				}
-				if (nodes.get(i + 1) instanceof VisualizableNode) {
-					nextNodeID = ((VisualizableNode)nodes.get(i + 1)).getContentNode().getId();
-				}
-				System.out.println("Slack between " + nodeID + " and " + nextNodeID + " = " + getRightSideSlack(nodes.get(i)));
-				
-			}
-		}
-	}
 
-	public void positionNode(IVisualizableNode node) {
+  public void positionNode(IVisualizableNode node) {
 		setNodeOnNextFreePositionWithoutChecking(node);
 	}
 	
