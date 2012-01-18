@@ -27,19 +27,6 @@ public class AnathemaStringUtilities extends StringUtilities {
     return fileName.toString();
   }
 
-  public static String getStringRepresentation(Object[] objects) {
-    StringBuilder result = new StringBuilder();
-    result.append("["); //$NON-NLS-1$
-    for (int index = 0; index < objects.length; index++) {
-      result.append(objects[index]);
-      if (index < objects.length - 1) { 
-        result.append(","); //$NON-NLS-1$
-      }
-    }
-    result.append("]"); //$NON-NLS-1$
-    return result.toString();
-  }
-
   public static List<Integer> allIndicesOf(String string, char character) {
     List<Integer> indexList = new ArrayList<Integer>();
     for (int index = string.indexOf(character, 0); index != -1; index = string.indexOf(character, ++index)) {
