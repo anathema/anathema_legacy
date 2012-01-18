@@ -2,15 +2,26 @@ package net.sf.anathema.framework.repository;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.IIdentificate;
 
-public class ItemType extends Identificate implements IItemType {
+public class ItemType implements IItemType, IIdentificate {
 
+  private final String id;
   private IRepositoryConfiguration repositoryConfiguration;
 
   public ItemType(String id, IRepositoryConfiguration configuration) {
-    super(id);
+    this.id = id;
     this.repositoryConfiguration = configuration;
+  }
+
+  @Override
+  public final String getId() {
+    return id;
+  }
+
+  @Override
+  public String toString() {
+    return id;
   }
 
   public boolean supportsRepository() {

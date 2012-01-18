@@ -7,6 +7,7 @@ import net.sf.anathema.lib.util.IdentifiedInteger;
 public class ComplexPoolRow extends AbstractPoolRow {
 
   private IResources resources;
+  // Should this field be removed?
   private IGenericCharacter character;
   private IdentifiedInteger complexPool;
 

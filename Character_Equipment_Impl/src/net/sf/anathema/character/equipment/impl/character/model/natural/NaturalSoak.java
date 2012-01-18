@@ -17,7 +17,7 @@ public class NaturalSoak extends AbstractStats implements IArmourStats {
   private final ICharacterType characterType;
   private final ICharacterModelContext context;
   
-  private final String INVINCIBLE_ESSENCE_REINFORCEMENT = "Solar.InvincibleEssenceReinforcement";
+  private static final String INVINCIBLE_ESSENCE_REINFORCEMENT = "Solar.InvincibleEssenceReinforcement";
 
   public NaturalSoak(ICharacterModelContext context) {
     this(context.getTraitCollection().getTrait(AttributeType.Stamina), context.getBasicCharacterContext().getCharacterType(), context);

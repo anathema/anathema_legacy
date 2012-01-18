@@ -61,6 +61,13 @@ public class BrowserControl {
             // Command failed, start up the browser
             // cmd = 'netscape http://www.javaworld.com'
             cmd = UNIX_PATH + " " + url; //$NON-NLS-1$
+            // FIXME: "p" is not used anymore
+            // Besides this, if the subprocess tries to write to its stdout or stderr
+            // it will likely deadlock. As noted in the documentation of the
+            // Process class, the getErrorStream() and getOutputStream()
+            // must be drained or else there is a risk for a deadlock.
+            // The ProcessBuilder class can actually help with merging sterr into stdout.
+            // This is true of course for every Runtime.exec in Anathema.
             p = Runtime.getRuntime().exec(cmd);
           }
         }

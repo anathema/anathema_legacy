@@ -6,12 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.graph.util.IncidentMatrixUtilities;
 
-public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
-  private final Map<Integer, List<ISimpleNode>> nodesByLayer = new HashMap<Integer, List<ISimpleNode>>();
+public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Cloneable {
+  // This is volatile instead of final to allow clone to be implemented
+  private volatile Map<Integer, List<ISimpleNode>> nodesByLayer = new HashMap<Integer, List<ISimpleNode>>();
   private final int deepestLayer;
   private final ISimpleNode[] allNodes;
   private final IGraphType type;
@@ -143,7 +145,15 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
 
   @Override
   public ProperHierarchicalGraph clone() {
-    return new ProperHierarchicalGraph(allNodes, deepestLayer, type);
+    ProperHierarchicalGraph clone;
+    try {
+      clone = (ProperHierarchicalGraph)super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new UnreachableCodeReachedException(e);
+    }
+    ProperHierarchicalGraph tmpCopy = new ProperHierarchicalGraph(allNodes, deepestLayer, type);
+    clone.nodesByLayer = tmpCopy.nodesByLayer;
+    return clone;
   }
 
   public boolean containsRoot(final int layer) {

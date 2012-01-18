@@ -16,9 +16,13 @@ public abstract class AbstractItemView implements IItemView {
     this.name = name;
     this.icon = icon;
   }
+  
+  private static boolean strEquals(String a, String b) {
+    return a != null ? a.equals(b) : b == null;
+  }
 
   public final void setName(String name) {
-    if (this.name == name) {
+    if (strEquals(name, this.name)) {
       return;
     }
     this.name = name;

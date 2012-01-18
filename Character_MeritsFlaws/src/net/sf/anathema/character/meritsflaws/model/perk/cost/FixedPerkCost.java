@@ -1,5 +1,7 @@
 package net.sf.anathema.character.meritsflaws.model.perk.cost;
 
+import java.util.Arrays;
+
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.meritsflaws.model.perk.evaluator.ICharacterEvaluator;
 
@@ -22,14 +24,19 @@ public class FixedPerkCost implements IFixedPerkCost {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof FixedPerkCost)) {
+    if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
-    return this.evaluator == ((FixedPerkCost) obj).evaluator;
+    
+    FixedPerkCost other = (FixedPerkCost)obj;
+    if (evaluator == null) {
+      return other.evaluator == null;
+    }
+    return evaluator.equals(other.evaluator);
   }
 
   @Override
   public int hashCode() {
-    return evaluator.hashCode() + 3 * fixedCosts.hashCode();
+    return evaluator.hashCode() + 3 * Arrays.hashCode(fixedCosts);
   }
 }

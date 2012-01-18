@@ -59,7 +59,7 @@ public class PriorityLayoutGraphVisualizer extends AbstractCascadeVisualizer {
   // to each other as possible without overlapping their edges
   // Instead of giving the entire map as argument, just give the relevant leaves?
 
-  private final int ITERATIONS = 5;
+  private static final int ITERATIONS = 5;
 
   public PriorityLayoutGraphVisualizer(IProperHierarchicalGraph graph, ITreePresentationProperties properties) {
     super(properties, graph);

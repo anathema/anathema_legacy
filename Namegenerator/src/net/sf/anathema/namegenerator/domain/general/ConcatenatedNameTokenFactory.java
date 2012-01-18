@@ -11,7 +11,7 @@ public class ConcatenatedNameTokenFactory implements INameTokenFactory {
   }
 
   public String createToken() {
-    StringBuffer token = new StringBuffer();
+    StringBuilder token = new StringBuilder();
     boolean isFirstToken = true;
     for (INameTokenFactory factory : tokenFactories) {
       String tokenPart = factory.createToken();

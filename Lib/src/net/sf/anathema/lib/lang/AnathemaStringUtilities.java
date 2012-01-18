@@ -13,28 +13,31 @@ public class AnathemaStringUtilities extends StringUtilities {
   public static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
   public static String getFileNameRepresentation(String string) {
-    String fileName = ""; //$NON-NLS-1$
+    StringBuilder fileName = new StringBuilder(string.length());
     for (int index = 0; index < string.length(); index++) {
       char character = string.charAt(index);
       if (Character.isJavaIdentifierPart(character)) {
-        fileName += character;
+        fileName.append(character);
       }
     }
     if (isNullOrEmpty(string)) {
-      fileName = "None"; //$NON-NLS-1$
+      fileName.setLength(0);
+      fileName.append("None"); //$NON-NLS-1$
     }
-    return fileName;
+    return fileName.toString();
   }
 
   public static String getStringRepresentation(Object[] objects) {
-    String objectString = ""; //$NON-NLS-1$
+    StringBuilder result = new StringBuilder();
+    result.append("["); //$NON-NLS-1$
     for (int index = 0; index < objects.length; index++) {
-      objectString += objects[index];
-      if (index < objects.length - 1) {
-        objectString += ","; //$NON-NLS-1$
+      result.append(objects[index]);
+      if (index < objects.length - 1) { 
+        result.append(","); //$NON-NLS-1$
       }
     }
-    return "[" + objectString + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+    result.append("]"); //$NON-NLS-1$
+    return result.toString();
   }
 
   public static List<Integer> allIndicesOf(String string, char character) {

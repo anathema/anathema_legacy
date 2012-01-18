@@ -3,13 +3,14 @@ package net.sf.anathema.graph.layering;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 
 public class GansnerLayerer implements ILayerer {
 
-	private class GansnerEdge implements Comparable<GansnerEdge> {
+	private static class GansnerEdge implements Comparable<GansnerEdge> {
 		// Note: this class has a natural ordering that is inconsistent with equals
 		
 		IRegularNode head;
@@ -61,6 +62,16 @@ public class GansnerLayerer implements ILayerer {
 		public int compareTo(GansnerEdge o) {
 			// TODO Auto-generated method stub
 			return this.getSlack() - o.getSlack();
+		}
+
+		public boolean equals(Object obj) {
+		  // Notice that equals is inconsistent with compareTo
+		  if (obj == null || obj.getClass() != getClass()) {
+		    return false;
+		  }
+
+		  GansnerEdge other = (GansnerEdge)obj;
+		  return head.equals(other.head) && tail.equals(other.tail);
 		}
 		
 		public int hashCode() {

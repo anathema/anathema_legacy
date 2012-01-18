@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.impl.traits.limitation;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 
@@ -33,6 +34,10 @@ public class AgeBasedLimitation implements ITraitLimitation
 	@Override
 	public AgeBasedLimitation clone()
 	{
-	  return this;
+	  try {
+      return (AgeBasedLimitation)super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new UnreachableCodeReachedException(e);
+    }
 	}
 }

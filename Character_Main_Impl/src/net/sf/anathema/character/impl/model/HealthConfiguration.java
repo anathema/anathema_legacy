@@ -100,7 +100,7 @@ public class HealthConfiguration implements IHealthConfiguration {
     return painToleranceLevel;
   }
 
-  private class DyingStaminaHealthLevelProvider implements IHealthLevelProvider {
+  private static class DyingStaminaHealthLevelProvider implements IHealthLevelProvider {
     private final ICoreTraitConfiguration traits;
 
     public DyingStaminaHealthLevelProvider(ICoreTraitConfiguration config) {
