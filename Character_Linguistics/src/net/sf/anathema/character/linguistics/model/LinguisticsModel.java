@@ -2,9 +2,11 @@ package net.sf.anathema.character.linguistics.model;
 
 import java.util.Arrays;
 
+import com.google.common.base.Objects;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.Ensure;
-import net.disy.commons.core.util.ObjectUtilities;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ConfigurableCharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -14,7 +16,6 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
-import net.sf.anathema.lib.collection.Predicate;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -104,11 +105,12 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
 
   public void selectLanguage(final IIdentificate language) {
     Ensure.ensureNotNull(language);
-    IIdentificate foundLanguage = new Predicate<IIdentificate>() {
-      public boolean evaluate(IIdentificate selectedLanguage) {
-        return ObjectUtilities.equals(language, selectedLanguage);
+    IIdentificate foundLanguage = Iterables.find(getEntries(), new Predicate<IIdentificate>() {
+      @Override
+      public boolean apply(IIdentificate selectedLanguage) {
+        return Objects.equal(language, selectedLanguage);
       }
-    }.find(getEntries());
+    }, null);
     if (foundLanguage != null) {
       return;
     }
@@ -117,11 +119,11 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   }
 
   public IIdentificate getPredefinedLanguageById(final String id) {
-    return new Predicate<IIdentificate>() {
-      public boolean evaluate(IIdentificate definedLanuage) {
-        return ObjectUtilities.equals(id, definedLanuage.getId());
+    return Iterables.find(Arrays.asList(languages), new Predicate<IIdentificate>(){
+      public boolean apply(IIdentificate definedLanuage) {
+        return Objects.equal(id, definedLanuage.getId());
       }
-    }.find(Arrays.asList(languages));
+    },null);
   }
 
   public void addCharacterChangedListener(IChangeListener listener) {
