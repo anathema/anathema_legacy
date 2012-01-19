@@ -61,7 +61,6 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     builder.append(sourceStringBuilder.createSourceString(charm));
     builder.append("</body></html>"); //$NON-NLS-1$
     return builder.toString();
-
   }
 
   private StringBuilder createKeywordLine(ICharm charm) {
