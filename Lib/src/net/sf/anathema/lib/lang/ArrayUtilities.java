@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.collection.Predicate;
+import net.disy.commons.core.predicate.IPredicate;
 
 public class ArrayUtilities {
 
@@ -50,7 +50,7 @@ public class ArrayUtilities {
     return true;
   }
 
-  public static <T> T find(Predicate<T> predicate, T[] inputArray) {
+  public static <T> T find(IPredicate<T> predicate, T[] inputArray) {
     for (T input : inputArray) {
       if (predicate.evaluate(input)) {
         return input;

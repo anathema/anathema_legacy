@@ -1,16 +1,16 @@
 package net.sf.anathema.character.generic.framework.xml.magic;
 
+import net.disy.commons.core.predicate.IPredicate;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
-import net.sf.anathema.lib.collection.Predicate;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericMagicTemplate extends ReflectionCloneableObject<GenericMagicTemplate> implements IMagicTemplate {
 
-  private Predicate<IMagic> predicate;
+  private IPredicate<IMagic> predicate;
   private ICharmTemplate charmTemplate;
   private ISpellMagicTemplate spellTemplate;
   private FavoringTraitType favoringTraitType = FavoringTraitType.AbilityType;
@@ -31,7 +31,7 @@ public class GenericMagicTemplate extends ReflectionCloneableObject<GenericMagic
     return favoringTraitType;
   }
 
-  public void setFreePicksPredicate(Predicate<IMagic> predicate) {
+  public void setFreePicksPredicate(IPredicate<IMagic> predicate) {
     this.predicate = predicate;
   }
 
