@@ -4,18 +4,6 @@
 		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
 	</requires>
 	<runtime>
-		<library id="MP3SPI" path="${ANATHEMA_LIB}/mp3spi1.9.2.jar" type="code">
-			<export prefix="*"/>
-		</library>
-		<library id="tritonus" path="${ANATHEMA_LIB}/tritonus_share.jar" type="code">
-			<export prefix="*"/>
-		</library>
-		<library id="basicplayer" path="${ANATHEMA_LIB}/basicplayer2.3.jar" type="code">
-			<export prefix="*"/>
-		</library>
-		<library id="javalayer" path="${ANATHEMA_LIB}/javalayer.jar" type="code">
-			<export prefix="*"/>
-		</library>
 		<library id="core" path="./" type="code">
 			<export prefix="*"/>
 		</library>

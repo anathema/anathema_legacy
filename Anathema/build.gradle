@@ -8,18 +8,26 @@ jar {
       'Built-By': System.getProperty("user.name"),
       'Main-Class': 'net.sf.anathema.AnathemaBootLoader',
       'SplashScreen-Image': 'icons/core/AnathemaSplashNew.png',
-      'Class-Path': "$libraryDir/jpf.jar $libraryDir/jpf-boot.jar $libraryDir/commons-logging-api.jar"
     )
   }
   from(propertiesDir) {
     include '**/*'
   }
+  doFirst {
+    manifest.attributes(['Class-Path': createClassPath()])
+  }
+}
+
+private String createClassPath() {
+    StringBuilder path = new StringBuilder()
+    dependenciesDir.eachFile{ File jar ->
+        path.append("$libraryDir/${jar.name} ")
+    }
+    return path.toString().trim()
 }
 
 task buildBootloader << {
 }
-
-buildBootloader.dependsOn build
 
 dependencies {
   compile files(
@@ -34,16 +42,28 @@ dependencies {
   testCompile project(path: ':Platform', configuration: 'tests')
   //For development, all projects need to be on the classpath at runtime.
   project.parent.subprojects.each {
-      if ((it.name != "Anathema" && it.name != "Thirdparty")){
+      if (isNotSelfOrThirdparty(it)){
         runtime project(":${it.name}")
       }
   }
+}
+
+private boolean isNotSelfOrThirdparty(project) {
+    return project.name != "Anathema" && project.name != "Thirdparty"
 }
 
 task collectDependencies(type: Copy) {
   from configurations.compile.findAll { File dependency -> dependency.absolutePath.contains('Thirdparty') }
   into dependenciesDir
 }
+
+buildBootloader.dependsOn build
+project.parent.subprojects.each {
+    if (isNotSelfOrThirdparty(it)){
+      jar.dependsOn ":${it.name}:collectTransitiveDependencies"
+    }
+}
+
 
 sourceSets {
   main {
