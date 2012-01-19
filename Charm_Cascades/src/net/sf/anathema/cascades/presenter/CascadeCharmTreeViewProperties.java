@@ -3,7 +3,7 @@ package net.sf.anathema.cascades.presenter;
 import java.awt.Cursor;
 import java.util.Map;
 
-import net.disy.commons.core.predicate.IPredicate;
+import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -55,8 +55,8 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
     String[] idParts = charmId.split("\\."); //$NON-NLS-1$
     ICharacterType characterTypeId = CharacterType.getById(idParts[0]);
     ICharm[] charms = CharmCache.getInstance().getCharms(characterTypeId, rules);
-    return ArrayUtilities.find(new IPredicate<ICharm>() {
-      public boolean evaluate(ICharm candidate) {
+    return ArrayUtilities.find(new Predicate<ICharm> () {
+      public boolean apply(ICharm candidate) {
         return candidate.getId().equals(charmId);
       }
     }, charms);

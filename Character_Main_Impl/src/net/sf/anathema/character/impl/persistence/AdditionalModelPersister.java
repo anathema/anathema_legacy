@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.persistence;
 
-import net.disy.commons.core.predicate.IPredicate;
+import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
@@ -43,8 +43,8 @@ public class AdditionalModelPersister {
   }
 
   private IAdditionalModel findModel(IAdditionalModel[] additionalModels, final String templateId) {
-    return ArrayUtilities.find(new IPredicate<IAdditionalModel>() {
-      public boolean evaluate(IAdditionalModel input) {
+    return ArrayUtilities.find(new Predicate<IAdditionalModel>() {
+      public boolean apply(IAdditionalModel input) {
         return input.getTemplateId().equals(templateId);
       }
     }, additionalModels);
