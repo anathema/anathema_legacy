@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.compare;
 
-import net.disy.commons.core.util.ObjectUtilities;
+import com.google.common.base.Objects;
 
 public class WeightedObject<V> implements Comparable<WeightedObject<V>> {
 
@@ -26,7 +26,7 @@ public class WeightedObject<V> implements Comparable<WeightedObject<V>> {
       return false;
     }
     WeightedObject< ? > weightedObject = (WeightedObject< ? >) obj;
-    return weight == weightedObject.getWeight() && ObjectUtilities.equals(value, weightedObject.getValue());
+    return weight == weightedObject.getWeight() && Objects.equal(value, weightedObject.getValue());
   }
 
   @Override

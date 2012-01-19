@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import net.disy.commons.core.util.StringUtilities;
+import com.google.common.base.Strings;
 
-public class AnathemaStringUtilities extends StringUtilities {
+public class AnathemaStringUtilities {
 
   public static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
@@ -20,7 +20,7 @@ public class AnathemaStringUtilities extends StringUtilities {
         fileName.append(character);
       }
     }
-    if (isNullOrEmpty(string)) {
+    if (Strings.isNullOrEmpty(string)) {
       fileName.setLength(0);
       fileName.append("None"); //$NON-NLS-1$
     }
