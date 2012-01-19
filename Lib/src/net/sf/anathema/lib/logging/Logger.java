@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.logging;
 
+import com.google.common.base.Strings;
+
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
-
-import net.disy.commons.core.util.StringUtilities;
 
 public class Logger {
 
@@ -85,7 +85,7 @@ public class Logger {
   }
 
   private void printMessage(String prefix, String message) {
-    if (!StringUtilities.isNullOrEmpty(message)) {
+    if (!Strings.isNullOrEmpty(message)) {
       printStream.println(prefix + message);
     }
   }

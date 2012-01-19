@@ -1,13 +1,13 @@
 package net.sf.anathema.lib.resources;
 
+import com.google.common.io.Closeables;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.Properties;
-
-import net.disy.commons.core.io.IOUtilities;
 
 public class FileStringProvider implements IStringResourceHandler {
 
@@ -21,7 +21,7 @@ public class FileStringProvider implements IStringResourceHandler {
         properties.load(stream);
       }
       finally {
-        IOUtilities.close(stream);
+        Closeables.closeQuietly(stream);
       }
     }
   }
