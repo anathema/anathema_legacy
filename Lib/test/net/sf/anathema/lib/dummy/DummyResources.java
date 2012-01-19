@@ -1,16 +1,16 @@
 package net.sf.anathema.lib.dummy;
 
-import java.awt.Image;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.Icon;
 
-import net.disy.commons.swing.icon.EmptyIcon;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.resources.IResources;
 
 public class DummyResources implements IResources {
+  public static final Icon ANY_ICON = new EmptyIcon();
   private final Map<String, String> stringMap = new HashMap<String, String>();
 
   public boolean supportsKey(String key) {
@@ -33,7 +33,6 @@ public class DummyResources implements IResources {
   }
 
   public Icon getImageIcon(Class< ? > requestor, String relativePath) {
-    return new EmptyIcon();
+    return ANY_ICON;
   }
-
 }
