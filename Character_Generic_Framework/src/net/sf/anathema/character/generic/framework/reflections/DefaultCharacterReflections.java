@@ -5,6 +5,7 @@ import org.reflections.util.ConfigurationBuilder;
 
 import java.lang.annotation.Annotation;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class DefaultCharacterReflections implements CharacterReflections {
 
@@ -19,8 +20,13 @@ public class DefaultCharacterReflections implements CharacterReflections {
     return reflections.getTypesAnnotatedWith(annotation, false);
   }
 
+  public Set<String> getResourcesMatching(String namepattern) {
+    Pattern pattern = Pattern.compile(namepattern);
+    return reflections.getResources(pattern);
+  }
+
   private ConfigurationBuilder createConfiguration() {
-    String[] prefixes = new String[]{"net.sf.anathema.character"};
+    String[] prefixes = new String[]{"net.sf.anathema.character", "data.charms"};
     return createIdeCompatibleConfiguration(prefixes);
   }
 

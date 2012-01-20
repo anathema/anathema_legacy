@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.reflections;
 
+import org.reflections.scanners.ResourcesScanner;
 import org.reflections.scanners.TypeAnnotationsScanner;
 import org.reflections.util.ConfigurationBuilder;
 import org.reflections.util.FilterBuilder;
@@ -36,6 +37,6 @@ public class IdeCompatibleConfiguration extends ConfigurationBuilder {
   }
 
   private void addScanners() {
-    setScanners(new TypeAnnotationsScanner());
+    setScanners(new TypeAnnotationsScanner(), new ResourcesScanner());
   }
 }
