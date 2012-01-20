@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.framework;
+package net.sf.anathema.character.generic.framework.reflections;
 
 import java.lang.annotation.Annotation;
 import java.util.Set;
