@@ -10,9 +10,9 @@ public class Logger {
 
   private static final String DEBUG_PREFIX = "[DEBUG] "; //$NON-NLS-1$
   private static final String ERROR_PREFIX = "[ERROR] "; //$NON-NLS-1$
+  private static final String WARN_PREFIX = "[WARN] "; //$NON-NLS-1$
   private static final String INFO_PREFIX = "[INFO] "; //$NON-NLS-1$
   private static final Map<Class< ? >, Logger> loggers = new HashMap<Class< ? >, Logger>();
-  private static final String WARN_PREFIX = "[WARN] "; //$NON-NLS-1$
 
   public synchronized static Logger getLogger(Class< ? > logClass) {
     if (loggers.containsKey(logClass)) {
@@ -29,14 +29,7 @@ public class Logger {
     // nothing to do
   }
 
-  public void debug(String message) {
-    debug(message, null);
-  }
-
   public void debug(String message, Throwable throwable) {
-    if (!isDebug()) {
-      return;
-    }
     printMessage(DEBUG_PREFIX, message);
     printThrowable(DEBUG_PREFIX, throwable);
   }
@@ -50,9 +43,6 @@ public class Logger {
   }
 
   public void error(String message, Throwable exception) {
-    if (!isError()) {
-      return;
-    }
     printMessage(ERROR_PREFIX, message);
     printThrowable(ERROR_PREFIX, exception);
   }
@@ -62,26 +52,7 @@ public class Logger {
   }
 
   public void info(String message) {
-    if (!isInfo()) {
-      return;
-    }
     printMessage(INFO_PREFIX, message);
-  }
-
-  private boolean isDebug() {
-    return true;
-  }
-
-  private boolean isError() {
-    return true;
-  }
-
-  private boolean isInfo() {
-    return true;
-  }
-
-  private boolean isWarn() {
-    return true;
   }
 
   private void printMessage(String prefix, String message) {
@@ -99,16 +70,10 @@ public class Logger {
   }
 
   public void warn(String message) {
-    if (!isWarn()) {
-      return;
-    }
     printMessage(WARN_PREFIX, message);
   }
 
   public void warn(String message, Throwable exception) {
-    if (!isWarn()) {
-      return;
-    }
     printMessage(WARN_PREFIX, message);
     printThrowable(WARN_PREFIX, exception);
   }

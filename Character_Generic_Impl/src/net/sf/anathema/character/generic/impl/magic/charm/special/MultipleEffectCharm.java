@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
+import com.google.common.base.Objects;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -11,8 +12,6 @@ import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static net.sf.anathema.lib.lang.AnathemaStringUtilities.bothNullOrEquals;
 
 public class MultipleEffectCharm implements IMultipleEffectCharm {
 
@@ -51,7 +50,7 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
   public String toString() {
     StringBuilder list = new StringBuilder();
     for (String effect : effectIds) {
-      boolean isLastEffect = bothNullOrEquals(effect, effectIds[effectIds.length - 1]);
+      boolean isLastEffect = Objects.equal(effect, effectIds[effectIds.length - 1]);
       list.append(effect);
       list.append(isLastEffect ? "" : ",");
     }

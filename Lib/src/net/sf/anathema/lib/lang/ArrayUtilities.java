@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 
@@ -43,7 +44,7 @@ public class ArrayUtilities {
       return false;
     }
     for (int index = 0; index < first.length; index++) {
-      if (!AnathemaStringUtilities.bothNullOrEquals(first[index], second[index])) {
+      if (!Objects.equal(first[index], second[index])) {
         return false;
       }
     }

@@ -1,5 +1,6 @@
 package net.sf.anathema.charmentry.model;
 
+import com.google.common.base.Objects;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
@@ -8,8 +9,6 @@ import net.sf.anathema.character.library.removableentry.model.AbstractRemovableE
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.IKeywordEntryModel;
 import net.sf.anathema.lib.util.IIdentificate;
-
-import static net.sf.anathema.lib.lang.AnathemaStringUtilities.bothNullOrEquals;
 
 public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribute> implements IKeywordEntryModel {
 
@@ -45,7 +44,7 @@ public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribu
       return false;
     }
     for (ICharmAttribute attribute : getEntries()) {
-      if (bothNullOrEquals(attribute.getId(), keyword.getId())) {
+      if (Objects.equal(attribute.getId(), keyword.getId())) {
         return false;
       }
     }

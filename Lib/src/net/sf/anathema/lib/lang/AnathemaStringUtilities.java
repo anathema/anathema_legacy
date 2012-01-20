@@ -71,14 +71,7 @@ public class AnathemaStringUtilities {
     return lineBreaks;
   }
 
-  public static boolean bothNullOrEquals(Object first, Object second) {
-    if (first == null) {
-      return second == null;
-    }
-    return first.equals(second);
-  }
-
-  public static char lastCharater(String string) {
+  public static char lastCharacter(String string) {
     return string.charAt(string.length() - 1);
   }
 

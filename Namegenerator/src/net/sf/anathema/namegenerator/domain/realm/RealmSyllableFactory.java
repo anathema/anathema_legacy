@@ -105,8 +105,8 @@ public class RealmSyllableFactory implements ISyllableFactory {
     if (lastSyllable == null || lastSyllable.length() == 0 || uncleanSyllable.length() == 1) {
       return uncleanSyllable;
     }
-    char lastNameCharacter = AnathemaStringUtilities.lastCharater(lastSyllable);
-    char lastUncleanCharacter = AnathemaStringUtilities.lastCharater(uncleanSyllable);
+    char lastNameCharacter = AnathemaStringUtilities.lastCharacter(lastSyllable);
+    char lastUncleanCharacter = AnathemaStringUtilities.lastCharacter(uncleanSyllable);
     if (lastNameCharacter != lastUncleanCharacter || RandomUtilities.nextPercent() < 50) {
       return uncleanSyllable;
     }
