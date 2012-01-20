@@ -11,10 +11,6 @@ public class DefaultValueHashMap<K, V> implements Map<K, V> {
   private final Map<K, V> map = new HashMap<K, V>();
   private final V defaultValue;
 
-  public DefaultValueHashMap() {
-    defaultValue = null;
-  }
-
   public DefaultValueHashMap(V defaultValue) {
     this.defaultValue = defaultValue;
   }
