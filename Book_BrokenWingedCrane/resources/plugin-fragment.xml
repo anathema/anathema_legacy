@@ -10,48 +10,6 @@
                <export prefix="*" />
           </library>
      </runtime>
-     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="BrokenWingedCraneCharms">
-          <parameter id="list">
-               <parameter id="type" value="Infernal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="brokenWingedCrane_data/malfeas/malfeas.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Infernal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="brokenWingedCrane_data/cecelyne/cecelyne.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Infernal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="brokenWingedCrane_data/SheWhoLivesinHerName/SheWhoLivesinHerName.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Infernal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="brokenWingedCrane_data/adorjan/adorjan.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Infernal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="brokenWingedCrane_data/ebondragon/ebondragon.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Infernal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="brokenWingedCrane_data/kimbery/kimbery.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Infernal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="brokenWingedCrane_data/Heretic/Heretic.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Infernal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="brokenWingedCrane_data/Excellencies.xml" />
-          </parameter>
-     </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="BrokenWingedCraneResources">
           <parameter id="bundle" value="BrokenWingedCrane" />
           <parameter id="bundle" value="Pages_BrokenWingedCrane" />

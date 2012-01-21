@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../charms.dtd">
+<!--
+
+    SheWhoLivesInHerName.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Sean C. Mattox (sean.mattox@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <charm id="Infernal.FlamesLitWithin" exalt="Infernal" group="FactualDetermination">
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.AnalyticalModellingIntuition"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>
+	 <charm id="Infernal.TidingsofaBitterSeason" exalt="Infernal" group="FactualDetermination">
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.CounterpointInquisitionDefence"/>
+          </prerequisite>
+           <cost >
+		   <essence cost="-" text="(3m, 1wp)" />
+		   </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>
+	 <charm id="Infernal.HollowMindPossession" exalt="Infernal" group="HollowMind">
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="4" />		   
+               <charmReference id="Infernal.AnalyticalModellingIntuition"/>
+          </prerequisite>
+           <cost >
+		   <essence cost="5" />
+		   <willpower cost="1" />
+		   </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <repurchases>
+          	<repurchase essence="4"/>
+          	<repurchase essence="4"/>
+          	<repurchase essence="5"/>
+          </repurchases>
+          <source source="BrokenWingedCrane" />
+     </charm>
+	 <charm id="Infernal.Noumena-SeizingAssimilation" exalt="Infernal" group="HollowMind">
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="5" />		   
+               <charmReference id="Infernal.HollowMindPossession.Subeffects.Repurchase3"/>
+          </prerequisite>
+           <cost >
+		   <essence cost="10" />
+		   <willpower cost="1" />
+		   </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Blasphemy" visualize="true" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>
+	 <charm id="Infernal.MindSpiderCurse" exalt="Infernal" group="HollowMind">
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="4" />		   
+               <charmReference id="Infernal.HollowMindPossession"/>
+          </prerequisite>
+           <cost >
+		   <essence cost="7" />
+		   <willpower cost="1" />
+		   </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Servitude" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>
+	 <charm id="Infernal.DisembodiedVoiceTintinnabula" exalt="Infernal" group="Unshattered">
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.UnshatteredTonguePerfection"/>
+          </prerequisite>
+           <cost >
+		   <essence cost="1" />
+		   <willpower cost="1" />
+		   </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>
+	 <charm id="Infernal.InterlocutionMetamorphosisProphecy" exalt="Infernal" group="Unshattered">
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.DisembodiedVoiceTintinnabula"/>
+          </prerequisite>
+           <cost >
+		   <essence cost="5" />
+		   <willpower cost="1" />
+		   </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>
+	 <charm id="Infernal.VoiceLikeCrystalFacets" exalt="Infernal" group="Unshattered">
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="4" />		   
+               <charmReference id="Infernal.DisembodiedVoiceTintinnabula"/>
+          </prerequisite>
+           <cost >
+		   <essence cost="-" text="(1wp per target)" />
+		   </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <repurchases>
+          	<repurchase essence="4"/>
+          	<repurchase essence="5"/>
+          	<repurchase essence="7"/>
+          </repurchases>
+          <source source="BrokenWingedCrane" />
+     </charm>
+	 <charm id="Infernal.BroadcastAnnouncementPrana" exalt="Infernal" group="HollowMind">
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="5" />		   
+               <charmReference id="Infernal.VoiceLikeCrystalFacets"/>	   
+               <charmReference id="Infernal.Noumena-SeizingAssimilation"/>
+          </prerequisite>
+           <cost >
+		   <essence cost="10" />
+		   </cost>
+          <duration  amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>
+	 <charm id="Infernal.SpaceMonsterScream" exalt="Infernal" group="Unshattered">
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="5" />		   
+               <charmReference id="Infernal.VoiceLikeCrystalFacets"/>	 
+          </prerequisite>
+           <cost >
+               <essence cost="10" />
+               <willpower cost="1" />
+               <health cost="1" type="Aggravated" />  
+		   </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <repurchases>
+          	<repurchase essence="5"/>
+          	<repurchase essence="6"/>
+          </repurchases>
+          <source source="BrokenWingedCrane" />
+     </charm>
+	 <charm id="Infernal.World-WhaleKeening" exalt="Infernal" group="Unshattered">
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="5" />		   
+               <charmReference id="Infernal.SpaceMonsterScream"/>	 
+          </prerequisite>
+           <cost >
+               <essence cost="5" />
+		   </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>
+	 <charm id="Infernal.HeuristicLogosShintai" exalt="Infernal" group="Ego">
+          <prerequisite>
+               <trait id="SheWhoLivesInHerName" value="0" />
+               <essence value="5" />		   
+               <charmReference id="Infernal.Counter-ConceptualInterposition"/>	 
+               <charmReference id="Infernal.Principle-InvokingOnslaught"/>	 	 
+               <charmReference id="Infernal.AscendantObjectivityStance"/> 	 
+               <charmReference id="Infernal.Will-CrushingForce"/>			 
+               <charmReference id="Infernal.WholenessRightlyAssumed.Subeffects.Repurchase5"/>			 
+               		   			   
+          </prerequisite>
+           <cost >
+               <essence cost="15" />
+               <willpower cost="1" />
+		   </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="blasphemy" visualize="true" />
+          <charmAttribute attribute="Form-type" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="BrokenWingedCrane" />
+     </charm>
+</charmlist>
