@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.sun.org.apache.xpath.internal.FoundIndex;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
 import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
@@ -53,6 +54,7 @@ public class CharacterPlugin extends Plugin {
 
   private void getCharmFilesFromReflection(AnathemaReflections reflections, CharmCompiler charmCompiler) throws Exception {
     Set<String> charmFiles = reflections.getResourcesMatching(Charm_File_Recognition_Pattern);
+    System.out.println("Found "+ charmFiles.size() +" data files:");
     System.out.println(charmFiles);
     Pattern pattern = Pattern.compile(Charm_Data_Extraction_Pattern);
     for (String charmFile : charmFiles) {

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../../charms.dtd">
+<!--
+
+    Charms_Solar_SecondEdition_MoepAbySail.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Sail -->
+     <charm id="Solar.CrewInspiringCharisma" exalt="Solar" group="Sail">
+          <prerequisite>
+               <trait id="Sail" value="3" />
+               <essence value="2" />
+               <charmReference id="Solar.SaltyDogMethod" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Ruthless Captain Efficiency -->
+          <source source="Abyssals2nd" />
+     </charm>
+     <charm id="Solar.OceanicOmniscienceIntuition" exalt="Solar" group="Sail">
+          <prerequisite>
+               <trait id="Sail" value="5" />
+               <essence value="3" />
+               <charmReference id="Solar.SaltyDogMethod" />
+               <charmAttributeRequirement attribute="ExcellencySail" count="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration event="Disembarking" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Abyssal Mirror - Sea-Scanning Glare -->
+          <source source="Abyssals2nd" />
+     </charm>
+</charmlist>
