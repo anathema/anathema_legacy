@@ -26,6 +26,7 @@ public class CharacterPlugin extends Plugin {
   private static final String PLUGIN_ID = "net.sf.anathema.character"; //$NON-NLS-1$
   private static final String Charm_File_Recognition_Pattern = "Charms.*\\.xml";
   //matches stuff like data/charms/solar/Charms_Solar_SecondEdition_Occult.xml
+  //the pattern is data/charms/REST_OF_PATH/Charms_TYPE_EDITION_ANYTHING.xml
   private static final String Charm_Data_Extraction_Pattern = ".*/Charms_(.*?)_(.*?)(?:_.*)?\\.xml";
 
   @Override
