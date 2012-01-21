@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../charms.dtd">
+<!--
+
+    DarkMessiah.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2009  Scott D. Olson (scott.d.olson@comcast.net)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+      <charm id="Lunar.TreasureAsTrashMisdirection" exalt="Lunar" group="Interaction">
+		<prerequisite>
+			<trait id="Manipulation" value="2" />
+			<essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyManipulation" count="1" />
+		</prerequisite>
+		<cost>
+			<essence cost="2" />
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Illusion" visualize="true" />
+		<charmAttribute attribute="Stackable" visualize="true" />
+		<source source="GloriesLuna" />
+	</charm>
+	<charm id="Lunar.InexplicableLunarWonders" exalt="Lunar" group="Interaction">
+		<prerequisite>
+			<trait id="Manipulation" value="4" />
+			<essence value="3" />			
+			<charmReference id="Lunar.TreasureAsTrashMisdirection" /> 
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="(+2m)" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Illusion" visualize="true" />
+		<source source="GloriesLuna" />
+	</charm>
+	<!-- Social Unit Charms -->
+     <charm id="Lunar.GnawingMouseMalaise" exalt="Lunar" group="SocialUnit">
+          <prerequisite>
+               <trait id="Manipulation" value="4" />
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyManipulation" count="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+               <special speed="6" turntype="LongTick" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="Mandate" visualize="true" />
+          <source source="GloriesLuna" />
+     </charm>
+</charmlist>
