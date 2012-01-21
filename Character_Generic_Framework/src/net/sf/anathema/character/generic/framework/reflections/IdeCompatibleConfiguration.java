@@ -23,7 +23,6 @@ public class IdeCompatibleConfiguration extends ConfigurationBuilder {
   private void addUrls() {
     for (String prefix : prefixes) {
       addUrls(forPackage(prefix, classLoaders));
-      addUrls(forPackagesInIde(prefix, classLoaders));
     }
   }
 
