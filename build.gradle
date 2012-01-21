@@ -6,6 +6,7 @@ idea {
 }
 
 dependenciesDir = new File(buildDir, 'dependencies')
+pluginsDir = new File(buildDir, 'plugins')
 
 subprojects {
     apply plugin: 'eclipse'
