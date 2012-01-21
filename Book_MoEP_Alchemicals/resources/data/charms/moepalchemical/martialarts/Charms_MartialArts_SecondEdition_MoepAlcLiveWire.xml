@@ -1,9 +1,9 @@
 <?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
 <!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
-"../charms.dtd">
+"../../charms.dtd">
 <!--
 
-    liveWire.xml - XML charm data for Anathema plug-ins.
+    Charms_MartialArts_SecondEdition_MoepAlcLiveWire.xml - XML charm data for Anathema plug-ins.
     Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
 
     This program is free software; you can redistribute it and/or modify
