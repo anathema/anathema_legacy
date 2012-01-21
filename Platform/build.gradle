@@ -6,6 +6,8 @@ dependencies {
           "../Thirdparty/Plugin/jpf.jar",
           "../Thirdparty/Plugin/jpf-boot.jar",
   )
+  compile 'org.reflections:reflections:0.9.6'
+  compile 'org.slf4j:slf4j-simple:1.6.4'
   compile 'com.lowagie:itext:1.4'
   compile project(':Lib_Workflow')
   compile project(':Lib_Gui')

@@ -8,10 +8,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.sf.anathema.ProxySplashscreen;
-import net.sf.anathema.character.generic.framework.reflections.DefaultCharacterReflections;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
 import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
 
+import net.sf.anathema.initialization.reflections.AnathemaReflections;
+import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
 import org.java.plugin.Plugin;
 import org.java.plugin.registry.Extension;
 import org.java.plugin.registry.Extension.Parameter;
@@ -45,12 +46,12 @@ public class CharacterPlugin extends Plugin {
         registerCharmFile(charmCompiler, typeString, ruleString, pathString);
       }
     }
-    DefaultCharacterReflections reflections = new DefaultCharacterReflections();
+    AnathemaReflections reflections = new DefaultAnathemaReflections();
     getCharmFilesFromReflection(reflections, charmCompiler);
     charmCompiler.buildCharms();
   }
 
-  private void getCharmFilesFromReflection(DefaultCharacterReflections reflections, CharmCompiler charmCompiler) throws Exception {
+  private void getCharmFilesFromReflection(AnathemaReflections reflections, CharmCompiler charmCompiler) throws Exception {
     Set<String> charmFiles = reflections.getResourcesMatching(Charm_File_Recognition_Pattern);
     System.out.println(charmFiles);
     Pattern pattern = Pattern.compile(Charm_Data_Extraction_Pattern);

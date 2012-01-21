@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.framework.reflections;
+package net.sf.anathema.initialization.reflections;
 
 import org.reflections.Reflections;
 import org.reflections.util.ConfigurationBuilder;
@@ -7,19 +7,21 @@ import java.lang.annotation.Annotation;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-public class DefaultCharacterReflections implements CharacterReflections {
+public class DefaultAnathemaReflections implements AnathemaReflections {
 
   private Reflections reflections;
 
-  public DefaultCharacterReflections() {
+  public DefaultAnathemaReflections() {
     ConfigurationBuilder configuration = createConfiguration();
     this.reflections = new Reflections(configuration);
   }
 
+  @Override
   public Set<Class<?>> getTypesAnnotatedWith(Class<? extends Annotation> annotation) {
     return reflections.getTypesAnnotatedWith(annotation, false);
   }
 
+  @Override
   public Set<String> getResourcesMatching(String namepattern) {
     Pattern pattern = Pattern.compile(namepattern);
     return reflections.getResources(pattern);
