@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../../charms.dtd">
+<!--
+
+    Charms_Solar_SecondEdition_GloUcsCraft.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2009 Scott D. Olson (scott.d.olson@comcast.net)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Craft -->
+     <charm id="Solar.PeerlessParagonOfAir" exalt="Solar" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="4" />
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="GloriesUCS" />
+     </charm>
+     <charm id="Solar.PeerlessParagonOfEarth" exalt="Solar" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="4" />
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="GloriesUCS" />
+     </charm>
+     <charm id="Solar.PeerlessParagonOfFire" exalt="Solar" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="4" />
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="GloriesUCS" />
+     </charm>
+     <charm id="Solar.PeerlessParagonOfWater" exalt="Solar" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="4" />
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="GloriesUCS" />
+     </charm>
+     <charm id="Solar.PeerlessParagonOfWood" exalt="Solar" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="4" />
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="GloriesUCS" />
+     </charm>
+     <charm id="Solar.PeerlessParagonOfFate" exalt="Solar" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="4" />
+               <essence value="3" />
+               <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="GloriesUCS" />
+     </charm>
+     <charm id="Solar.PeerlessParagonOfGlamour" exalt="Solar" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="4" />
+               <essence value="3" />
+               <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="GloriesUCS" />
+     </charm>
+     <charm id="Solar.PeerlessParagonOfGenesis" exalt="Solar" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="4" />
+               <essence value="4" />
+               <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="GloriesUCS" />
+     </charm>
+     <charm id="Solar.PeerlessParagonOfMagitech" exalt="Solar" group="Craft">
+          <prerequisite>
+               <trait id="Craft" value="4" />
+               <essence value="4" />
+               <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="GloriesUCS" />
+     </charm>
+</charmlist>
