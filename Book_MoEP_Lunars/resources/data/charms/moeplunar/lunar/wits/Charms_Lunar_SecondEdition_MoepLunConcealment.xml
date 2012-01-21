@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../../../charms.dtd">
+<!--
+
+    concealment.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Concealment Charms -->
+     <charm id="Lunar.TheSpidersTrapDoor" exalt="Lunar" group="Concealment">
+          <prerequisite>
+               <trait id="Wits" value="4" />
+               <essence value="2" />
+               <charmAttributeRequirement attribute="ExcellencyWits" count="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.ThievingMagpiePrana" exalt="Lunar" group="Concealment">
+          <prerequisite>
+               <trait id="Wits" value="4" />
+               <essence value="2" />
+               <charmReference id="Lunar.TheSpidersTrapDoor" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.ManyPocketsMeditation" exalt="Lunar" group="Concealment">
+          <prerequisite>
+               <trait id="Wits" value="3" />
+               <essence value="3" />
+               <charmReference id="Lunar.ThievingMagpiePrana" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple">
+               <special speed="5" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.SecureDenPrana" exalt="Lunar" group="Concealment">
+          <prerequisite>
+               <trait id="Wits" value="4" />
+               <essence value="4" />
+               <charmReference id="Lunar.ManyPocketsMeditation" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple">
+               <special speed="7" defense="-3" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.InvisibleWarrenCreation" exalt="Lunar" group="Concealment">
+          <prerequisite>
+               <trait id="Wits" value="5" />
+               <essence value="5" />
+               <charmReference id="Lunar.SecureDenPrana" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <charmAttribute attribute="War" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.RatsInTheBasementStyle" exalt="Lunar" group="Concealment">
+          <prerequisite>
+               <trait id="Wits" value="4" />
+               <essence value="3" />
+               <charmReference id="Lunar.TheSpidersTrapDoor" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple">
+               <special speed="6" turntype="DramaticAction" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Lunars2nd" />
+     </charm>
+</charmlist>
