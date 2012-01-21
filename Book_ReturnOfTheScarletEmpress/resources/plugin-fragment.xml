@@ -10,23 +10,6 @@
                <export prefix="*" />
           </library>
      </runtime>
-     <extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="ReturnOfTheScarletEmpressCharms">
-          <parameter id="list">
-               <parameter id="type" value="Infernal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="RoSE_data/excellencies.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Infernal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="RoSE_data/infernal/SheWhoLivesinHerName.xml" />
-          </parameter>
-          <parameter id="list">
-               <parameter id="type" value="Infernal" />
-               <parameter id="rules" value="SecondEdition" />
-               <parameter id="path" value="RoSE_data/infernal/EbonDragon.xml" />
-          </parameter>
-     </extension>
      <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="ReturnOfTheScarletEmpressResources">
           <parameter id="bundle" value="RoSE" />
           <parameter id="bundle" value="Pages_RoSE" />
