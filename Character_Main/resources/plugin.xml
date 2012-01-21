@@ -83,16 +83,4 @@
 		<parameter id="bundle" value="Traits"/>
 		<parameter id="bundle" value="Weapons"/>
 	</extension>
-	<extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="UntypedCharms">
-	   <parameter id="list">
-		<parameter id="type" value="DragonKing"/>
-		<parameter id="rules" value="CoreRules"/>
-		<parameter id="path" value="data/Charms_DragonKing_CoreRules.xml"/>
-	  </parameter>
-	  <parameter id="list">
-		<parameter id="type" value="DragonKing"/>
-		<parameter id="rules" value="PowerCombat"/>
-		<parameter id="path" value="data/Charms_DragonKing_PowerCombat.xml"/>
-	  </parameter>
-	</extension>
 </plugin>

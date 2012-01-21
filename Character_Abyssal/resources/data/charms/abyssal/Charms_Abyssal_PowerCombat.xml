@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<charmlist>
+  <charm id="Abyssal.ExquisiteRelicBow" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.RelicArrowMethod"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple"/>
+	<source source="PlayersGuide" page="206"/>    
+  </charm>
+  <charm id="Abyssal.PiercingGhostBarb" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.SplinterVoid"/>
+      <charmReference id="Abyssal.PulsePrey"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="PlayersGuide" page="206"/>
+  </charm>  
+  <charm id="Abyssal.InescapableIronGrip" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.DeadMan'sGrasp"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="5"/>
+      
+    </cost>
+    <duration event="Released"/>
+    <charmtype type="Supplemental"/>
+    <source source="PlayersGuide" page="206"/>    
+  </charm>  
+  <charm id="Abyssal.RapaciousLampreyTechnique" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.DeadMan'sGrasp"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="2"/>
+      
+    </cost>
+    <duration amount="1" unit="turn"/>
+    <charmtype type="Reflexive"/>
+    <source source="PlayersGuide" page="206"/>
+  </charm>
+  <charm id="Abyssal.ResplendentShadowBlade" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.VoidSheathTechnique"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>  
+  <charm id="Abyssal.ElegantFlowingDeflection" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="1" text="per 2 dice"/>
+      
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>  
+ <charm id="Abyssal.Pain-EatingFocus" exalt="Abyssal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="1"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="1"/>
+      
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="PlayersGuide" page="207"/>
+  </charm>
+  <charm id="Abyssal.BoneArsenalMethod" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.IvoryBlossomCarapace"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="Varies"/>
+      
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>
+  <charm id="Abyssal.FlowingWoundDefense" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.CrimsonPetalArmor"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="5"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="PlayersGuide" page="209"/>
+  </charm>
+  <charm id="Abyssal.CrimsonPetalArmor" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.IvoryBlossomCarapace"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="1" text="per 1B/1L"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>
+  <charm id="Abyssal.InauspiciousShadowPlate" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Void-BanishedMail"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple"/>
+    <source source="PlayersGuide" page="209"/>
+  </charm>
+  <charm id="Abyssal.MistOverIce" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.ShadowRacesLight"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="3"/>
+      
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="PlayersGuide" page="206"/>
+  </charm>
+  <alternatives>
+    <alternative>
+      <charmReference id="Abyssal.EnhancedDexterityDiscipline"/>
+      <charmReference id="Abyssal.EnhancedStrengthDiscipline"/>
+    </alternative>
+  </alternatives>
+</charmlist>
