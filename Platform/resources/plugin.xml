@@ -20,9 +20,6 @@
 			<parameter-def id="development" type="boolean" multiplicity="none-or-one"/>
 		</parameter-def>
 	</extension-point>
-	<extension-point id="PreferenceElements" >
-		<parameter-def id="class" multiplicity="any"/>
-	</extension-point>
 	<extension-point id="Bootjobs">
 		<parameter-def id="class" multiplicity="any"/>
 	</extension-point>
