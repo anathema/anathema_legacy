@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
 <!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
-        "C:\dev\repos\anathema\Box_DotFA\resources\data\charms\charms.dtd">
+        "../../../charms.dtd">
 <!--
 
     martialarts.xml - XML charm data for Anathema plug-ins.

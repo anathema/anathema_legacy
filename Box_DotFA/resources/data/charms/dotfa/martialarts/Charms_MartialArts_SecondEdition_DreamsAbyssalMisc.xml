@@ -1,6 +1,6 @@
 <?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
 <!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
-        "C:\dev\repos\anathema\Box_DotFA\resources\data\charms\charms.dtd">
+        "../../charms.dtd">
 <!--
 
     misc.xml - XML charm data for Anathema plug-ins.

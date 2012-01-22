@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="charmreview-xmlns.xsl"?>
 <!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
-        "C:\dev\repos\anathema\Book_MoEP_Abyssals\resources\data\charms\charms.dtd">
+        "../charms.dtd">
 <!--
 
     Charms_Abyssal_SecondEdition_MoepAbyExcellencies.xml - XML charm data for Anathema Plug-ins.
