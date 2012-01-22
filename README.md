@@ -45,5 +45,5 @@ Run ``gradlew buildZip``. Done.
 > This only works on Mac OS X.
 
 1. Run ``gradlew buildZip`` to compile the distribution.
-2. Run ``gradlew -b macApplication.gradle buildMacApplication`` to build the Applicaton Folder.
+2. Run ``gradlew -b macApplication.gradle buildMacApplication`` to build the Application Folder.
 3. Run ``gradlew -b macDmg.gradle buildDmgOnMacOS`` to build the Disk Image.
