@@ -1,7 +1,5 @@
 package net.sf.anathema.initialization;
 
-import java.util.Collection;
-
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.messaging.IAnathemaMessageContainer;
@@ -11,36 +9,25 @@ import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElemen
 import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
 import net.sf.anathema.framework.view.IAnathemaView;
-import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
-import net.sf.anathema.initialization.plugin.IClassLoaderProvider;
-import net.sf.anathema.initialization.plugin.IPluginConstants;
-import net.sf.anathema.initialization.reflections.AnathemaReflections;
-import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
-import org.java.plugin.registry.Extension;
-import org.java.plugin.registry.Extension.Parameter;
+import java.util.Collection;
 
 public class AnathemaPresenter {
 
-  private static final String PARAM_CLASS = "class"; //$NON-NLS-1$
-  private static final String EXTENSION_POINT_REPORT_FACTORIES = "ReportFactories"; //$NON-NLS-1$
   private final IAnathemaModel model;
   private final IAnathemaView view;
   private final IResources resources;
   private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
-  private final IAnathemaPluginManager pluginManager;
-  private final ReflectionsInstantiater instantiater;
+  private final Instantiater instantiater;
 
   public AnathemaPresenter(
-          IAnathemaPluginManager pluginManager,
-          AnathemaReflections reflections, IAnathemaModel model,
+          IAnathemaModel model,
           IAnathemaView view,
           IResources resources,
-          Collection<IItemTypeConfiguration> itemTypeConfigurations) {
-    this.pluginManager = pluginManager;
-    this.instantiater = new ReflectionsInstantiater(reflections);
+          Collection<IItemTypeConfiguration> itemTypeConfigurations, Instantiater instantiater) {
+    this.instantiater = instantiater;
     this.model = model;
     this.view = view;
     this.resources = resources;
@@ -89,13 +76,9 @@ public class AnathemaPresenter {
   }
 
   private void initializeReports() throws InitializationException {
-    for (Extension extension : pluginManager.getExtension(
-            IPluginConstants.PLUGIN_CORE,
-            EXTENSION_POINT_REPORT_FACTORIES)) {
-      for (Parameter parameter : extension.getParameters(PARAM_CLASS)) {
-        IReportFactory reportFactory = instantiate(parameter, pluginManager, IReportFactory.class);
-        model.getReportRegistry().addReports(reportFactory.createReport(resources, model.getExtensionPointRegistry()));
-      }
+    Collection<IReportFactory> factories = instantiater.instantiateAll(ReportFactory.class);
+    for (IReportFactory factory : factories) {
+      model.getReportRegistry().addReports(factory.createReport(resources, model.getExtensionPointRegistry()));
     }
   }
 
@@ -110,17 +93,6 @@ public class AnathemaPresenter {
     Collection<IAnathemaTool> tools = instantiater.instantiateAll(Tool.class);
     for (IAnathemaTool tool : tools) {
       tool.add(resources, model, view.getToolbar());
-    }
-  }
-
-  private <T> T instantiate(Parameter classParameter, IClassLoaderProvider provider, Class<T> clazz)
-          throws InitializationException {
-    String className = classParameter.valueAsString();
-    try {
-      return clazz.cast(Class.forName(className, true, provider.getClassLoader(classParameter.getDeclaringExtension()))
-              .newInstance());
-    } catch (Throwable e) {
-      throw new InitializationException("Failed to load required class " + className + ".", e); //$NON-NLS-1$ //$NON-NLS-2$
     }
   }
 }

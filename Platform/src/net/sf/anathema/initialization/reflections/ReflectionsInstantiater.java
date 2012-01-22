@@ -3,12 +3,13 @@ package net.sf.anathema.initialization.reflections;
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 import net.sf.anathema.initialization.InitializationException;
+import net.sf.anathema.initialization.Instantiater;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;
 import java.util.Set;
 
-public class ReflectionsInstantiater {
+public class ReflectionsInstantiater implements Instantiater {
 
   private AnathemaReflections reflections;
 
@@ -16,6 +17,7 @@ public class ReflectionsInstantiater {
     this.reflections = reflections;
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public <T> Collection<T> instantiateAll(Class<? extends Annotation> annotation) throws InitializationException {
     Set<Class<?>> pluginClasses = reflections.getTypesAnnotatedWith(annotation);

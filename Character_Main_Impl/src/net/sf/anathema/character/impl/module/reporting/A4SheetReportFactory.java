@@ -1,7 +1,9 @@
 package net.sf.anathema.character.impl.module.reporting;
 
 import net.sf.anathema.character.impl.reporting.PageSize;
+import net.sf.anathema.initialization.ReportFactory;
 
+@ReportFactory
 public class A4SheetReportFactory extends AbstractCharacterReportFactory {
 
   @Override

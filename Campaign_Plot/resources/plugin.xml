@@ -19,10 +19,6 @@
 			<parameter id="class" value="net.sf.anathema.campaign.module.SeriesTypeConfiguration"/>
 		</parameter>
 	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="ReportFactories" id="ReportFactories">
-		<parameter id="class" value="net.sf.anathema.campaign.module.reporting.NoteReportFactory"/>
-		<parameter id="class" value="net.sf.anathema.campaign.module.reporting.SeriesReportFactory"/>
-	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="Campaign"/>
 	</extension>

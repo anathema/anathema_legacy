@@ -51,7 +51,7 @@ public class AnathemaInitializer {
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
     IAnathemaModel anathemaModel = initModel(resources);
     IAnathemaView view = initView(resources);
-    new AnathemaPresenter(pluginManager, reflections, anathemaModel, view, resources, itemTypeCollection.getItemTypes()).initPresentation();
+    new AnathemaPresenter(anathemaModel, view, resources, itemTypeCollection.getItemTypes(), new ReflectionsInstantiater(reflections)).initPresentation();
     return view;
 
   }
