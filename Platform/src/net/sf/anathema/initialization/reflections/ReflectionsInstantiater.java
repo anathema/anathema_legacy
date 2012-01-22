@@ -1,8 +1,8 @@
-package net.sf.anathema.initialization;
+package net.sf.anathema.initialization.reflections;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
-import net.sf.anathema.initialization.reflections.AnathemaReflections;
+import net.sf.anathema.initialization.InitializationException;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;
@@ -16,6 +16,7 @@ public class ReflectionsInstantiater {
     this.reflections = reflections;
   }
 
+  @SuppressWarnings("unchecked")
   public <T> Collection<T> instantiateAll(Class<? extends Annotation> annotation) throws InitializationException {
     Set<Class<?>> pluginClasses = reflections.getTypesAnnotatedWith(annotation);
     return Collections2.transform(pluginClasses, new Function<Class<?>, T>() {

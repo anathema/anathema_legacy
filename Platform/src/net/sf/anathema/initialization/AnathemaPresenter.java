@@ -15,6 +15,7 @@ import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IClassLoaderProvider;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
+import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 

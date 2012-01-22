@@ -16,13 +16,14 @@ import net.sf.anathema.initialization.plugin.Plugin;
 import net.sf.anathema.initialization.plugin.Startable;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
+import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.lib.resources.IResources;
 
 import org.java.plugin.PluginManager;
 import org.java.plugin.registry.Extension;
 import org.java.plugin.registry.Extension.Parameter;
 
-import java.util.Set;
+import java.util.Collection;
 
 public class AnathemaInitializer {
 
@@ -56,18 +57,13 @@ public class AnathemaInitializer {
   }
 
   private void initializePlugins(AnathemaReflections reflections) throws InitializationException {
-    try {
-      Set<Class<?>> pluginClasses = reflections.getTypesAnnotatedWith(Plugin.class);
-      for (Class<?> pluginClass : pluginClasses) {
-        Startable startablePlugin = (Startable) pluginClass.newInstance();
+    Collection<Startable> startablePlugins = new ReflectionsInstantiater(reflections).instantiateAll(Plugin.class);
+    for (Startable startablePlugin : startablePlugins) {
+      try {
         startablePlugin.doStart(reflections);
+      } catch (Exception e) {
+        throw new InitializationException("Failed to start plugin.", e);
       }
-    } catch (InstantiationException e) {
-      throw new InitializationException("Failed to load plugin.", e);
-    } catch (IllegalAccessException e) {
-      throw new InitializationException("Failed to load plugin.", e);
-    } catch (Exception e) {
-      throw new InitializationException("Failed to start plugin.", e);
     }
   }
 
