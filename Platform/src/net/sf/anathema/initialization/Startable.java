@@ -1,4 +1,4 @@
-package net.sf.anathema.initialization.plugin;
+package net.sf.anathema.initialization;
 
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
 

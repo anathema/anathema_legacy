@@ -33,11 +33,7 @@ task buildBootloader << {
 }
 
 dependencies {
-  compile files(
-    "../Thirdparty/Jakarta/commons-logging-api.jar",
-    "../Thirdparty/Plugin/jpf.jar",
-    "../Thirdparty/Plugin/jpf-boot.jar",
-    )
+  compile files("../Thirdparty/Jakarta/commons-logging-api.jar")
   compile project(':Platform')
   compile project(':Lib')
   testCompile group: 'junit', name: 'junit', version: '4.+'

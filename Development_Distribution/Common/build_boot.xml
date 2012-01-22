@@ -11,7 +11,7 @@
 				<attribute name="Built-By" value="${user.name}" />
 				<attribute name="Main-Class" value="net.sf.anathema.AnathemaBootLoader" />
 				<attribute name="SplashScreen-Image" value="icons/core/AnathemaSplashNew.png" />
-				<attribute name="Class-Path" value="${library.dir}/jpf.jar ${library.dir}/jpf-boot.jar ${library.dir}/commons-logging-api.jar" />
+				<attribute name="Class-Path" value="${library.dir}/commons-logging-api.jar" />
 				<section name="net/sf/anathema/AnathemaBootLoader.class" />
 			</manifest>
 			<fileset dir="${boot.dir}" includes="**/*" />

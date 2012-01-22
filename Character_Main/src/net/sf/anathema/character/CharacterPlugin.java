@@ -10,13 +10,13 @@ import java.util.regex.Pattern;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
 
-import net.sf.anathema.initialization.plugin.Plugin;
-import net.sf.anathema.initialization.plugin.Startable;
+import net.sf.anathema.initialization.Plugin;
+import net.sf.anathema.initialization.Startable;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.lib.logging.Logger;
 
 @Plugin
-public class CharacterPlugin implements Startable{
+public class CharacterPlugin implements Startable {
 
   private static final Logger logger = Logger.getLogger(CharacterPlugin.class);
 

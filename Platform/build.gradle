@@ -2,10 +2,7 @@ dependencies {
   compile files(
           "../Thirdparty/Swing/l2fprod-common-directorychooser.jar",
           "../Thirdparty/Jakarta/commons-io.jar",
-          "../Thirdparty/Swing/idw-gpl-1.4.0.jar",
-          "../Thirdparty/Plugin/jpf.jar",
-          "../Thirdparty/Plugin/jpf-boot.jar",
-  )
+          "../Thirdparty/Swing/idw-gpl-1.4.0.jar")
   compile 'org.reflections:reflections:0.9.6'
   compile 'org.slf4j:slf4j-simple:1.6.4'
   compile 'com.lowagie:itext:1.4'

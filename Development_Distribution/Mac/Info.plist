@@ -70,8 +70,6 @@
 			<string>$JAVAROOT/lib/idw-gpl-1.4.0.jar</string>
 			<string>$JAVAROOT/lib/itext-1.4.jar</string>
 			<string>$JAVAROOT/lib/javalayer.jar</string>
-			<string>$JAVAROOT/lib/jpf-boot.jar</string>
-			<string>$JAVAROOT/lib/jpf.jar</string>
 			<string>$JAVAROOT/lib/l2fprod-common-directorychooser.jar</string>
 			<string>$JAVAROOT/lib/l2fprod-common-tasks.jar</string>
 			<string>$JAVAROOT/lib/mp3spi1.9.2.jar</string>

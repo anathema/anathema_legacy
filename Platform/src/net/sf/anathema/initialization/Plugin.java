@@ -1,4 +1,4 @@
-package net.sf.anathema.initialization.plugin;
+package net.sf.anathema.initialization;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
