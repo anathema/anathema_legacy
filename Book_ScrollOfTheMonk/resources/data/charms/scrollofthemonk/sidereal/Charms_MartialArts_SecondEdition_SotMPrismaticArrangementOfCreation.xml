@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../../charms.dtd">
+<!--
+
+    PrismaticArrangementOfCreation.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Prismatic Arrangement of Creation Style -->
+     <charm id="Sidereal.DeadlyStarmetalOffensive" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration amount="5" unit="action" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.OrichalcumSheathingStance" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="5" unit="action" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" secondaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.FlickeringMoonsilverApproach" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+          </cost>
+          <duration amount="5" unit="scene" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.FiveJadeFury" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+          </cost>
+          <duration amount="5" unit="action" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Knockback" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.FourMagicalMaterialsForm" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <!-- Prerequisite of "One complete Celestial Style" doesn't seem to be modeled in XML. -->
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Sidereal.DeadlyStarmetalOffensive" />
+               <charmReference id="Sidereal.OrichalcumSheathingStance" />
+               <charmReference id="Sidereal.FlickeringMoonsilverApproach" />
+               <charmReference id="Sidereal.FiveJadeFury" />
+          </prerequisite>
+          <cost>
+               <essence cost="15" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple">
+               <special speed="3" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Form" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.CharmRedirectionTechnique" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="7" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.SequentialCharmDisruption" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+               <charmReference id="Sidereal.CharmRedirectionTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" text="cost of charms affected" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.SpellShatteringPalm" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="12" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="5" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.AstrologyInterruptionMethod" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.SoulFireShaperForm" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <!-- Prerequisite of "One complete Celestial Style" doesn't seem to be modeled in XML. -->
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Sidereal.SequentialCharmDisruption" />
+               <charmReference id="Sidereal.SpellShatteringPalm" />
+               <charmReference id="Sidereal.AstrologyInterruptionMethod" />
+          </prerequisite>
+          <cost>
+               <essence cost="15" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple">
+               <special speed="6" defense="-3" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Form" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.GodWays" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <!-- Need to see how this is modeled in 1st Edition Exalted -->
+     <charm id="Sidereal.TypeExaltWays" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <health cost="1" type="Lethal" />
+          </cost>
+          <duration amount="5" unit="action" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.GamesOfDivinityForm" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <!-- Prerequisite of "One complete Celestial Style" doesn't seem to be modeled in XML. -->
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Sidereal.GodWays" />
+               <charmReference id="Sidereal.TypeExaltWays" />
+          </prerequisite>
+          <cost>
+               <essence cost="7" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="Form" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.DemesneEmulationPractice" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+               <willpower cost="1" />
+               <health cost="1" type="Lethal" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.DemesneAndManseForm" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <!-- Prerequisite of "One complete Celestial Style" doesn't seem to be modeled in XML. -->
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Sidereal.DemesneEmulationPractice" />
+          </prerequisite>
+          <cost>
+               <essence cost="12" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple">
+               <special speed="6" defense="-2" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Form" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.PrismaticArrangementOfCreationForm" exalt="Solar" group="PrismaticArrangementOfCreationStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+               <charmReference id="Sidereal.FourMagicalMaterialsForm" />
+               <charmReference id="Sidereal.SoulFireShaperForm" />
+               <charmReference id="Sidereal.GamesOfDivinityForm" />
+               <charmReference id="Sidereal.DemesneAndManseForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple">
+               <special speed="3" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+</charmlist>

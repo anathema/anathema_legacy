@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../../charms.dtd">
+<!--
+
+    NightBreeze.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Night Breeze Style -->
+     <charm id="Terrestrial.CrosswindOffense" exalt="Dragon-Blooded" group="NightBreezeStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="3" />
+               <trait id="Thrown" value="2" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Terrestrial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Terrestrial.ShepherdTheLeaf" exalt="Dragon-Blooded" group="NightBreezeStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="3" />
+               <trait id="Thrown" value="2" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Terrestrial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Terrestrial.LeafOnTheBreezeRhythm" exalt="Dragon-Blooded" group="NightBreezeStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="4" />
+               <essence value="2" />
+               <charmReference id="Terrestrial.CrosswindOffense" />
+               <charmReference id="Terrestrial.ShepherdTheLeaf" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="MartialArts" unit="action" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Terrestrial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Terrestrial.NightBreezeForm" exalt="Dragon-Blooded" group="NightBreezeStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="4" />
+               <essence value="3" />
+               <charmReference id="Terrestrial.LeafOnTheBreezeRhythm" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple">
+               <special speed="4" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Terrestrial" />
+          <charmAttribute attribute="Form" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Terrestrial.KatabaticLeapDefense" exalt="Dragon-Blooded" group="NightBreezeStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="4" />
+               <essence value="3" />
+               <charmReference id="Terrestrial.NightBreezeForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration event="NextAction" />
+          <charmtype type="Reflexive">
+               <special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Terrestrial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Terrestrial.ThousandHailstoneMorning" exalt="Dragon-Blooded" group="NightBreezeStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="4" />
+               <essence value="3" />
+               <charmReference id="Terrestrial.NightBreezeForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="4" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+               <special speed="5" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Terrestrial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Terrestrial.WindNeedleTraining" exalt="Dragon-Blooded" group="NightBreezeStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="3" />
+               <charmReference id="Terrestrial.KatabaticLeapDefense" />
+               <charmReference id="Terrestrial.ThousandHailstoneMorning" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+               <special speed="5" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Terrestrial" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+</charmlist>
