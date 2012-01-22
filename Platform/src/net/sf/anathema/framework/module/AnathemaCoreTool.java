@@ -10,8 +10,10 @@ import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
 import net.sf.anathema.framework.reporting.AnathemaPrintAction;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
+import net.sf.anathema.initialization.Tool;
 import net.sf.anathema.lib.resources.IResources;
 
+@Tool
 public class AnathemaCoreTool implements IAnathemaTool {
 
   public void add(IResources resources, IAnathemaModel model, IAnathemaToolbar toolbar) {

@@ -17,7 +17,4 @@
 		<parameter id="bundle" value="MusicModule"/>
 		<parameter id="bundle" value="MusicView"/>
 	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="Toolbar" id="Toolbar">
-		<parameter id="class" value="net.sf.anathema.campaign.music.impl.module.StartDatabaseTool"/>
-	</extension>
 </plugin>

@@ -26,14 +26,8 @@
 	<extension-point id="ReportFactories">
 		<parameter-def id="class" multiplicity="any"/>
 	</extension-point>
-	<extension-point id="Toolbar">
-		<parameter-def id="class" multiplicity="any"/>
-	</extension-point>
 	<extension plugin-id="net.sf.anathema.core"	point-id="Menubar" id="Menubar">
 		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreMenu"/>
-	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="Toolbar" id="Toolbar">
-		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreTool"/>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="anathema"/>

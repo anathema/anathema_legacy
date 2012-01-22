@@ -20,7 +20,4 @@
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="Cascades"/>
 	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="Toolbar" id="Toolbar">
-		<parameter id="class" value="net.sf.anathema.cascades.module.ShowCharmCascadesTool"/>
-	</extension>
 </plugin>
