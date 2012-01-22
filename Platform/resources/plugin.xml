@@ -20,15 +20,9 @@
 			<parameter-def id="development" type="boolean" multiplicity="none-or-one"/>
 		</parameter-def>
 	</extension-point>
-	<extension-point id="Menubar">
-		<parameter-def id="class" multiplicity="any"/>
-	</extension-point>
 	<extension-point id="ReportFactories">
 		<parameter-def id="class" multiplicity="any"/>
 	</extension-point>
-	<extension plugin-id="net.sf.anathema.core"	point-id="Menubar" id="Menubar">
-		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreMenu"/>
-	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="anathema"/>
 		<parameter id="bundle" value="About"/>

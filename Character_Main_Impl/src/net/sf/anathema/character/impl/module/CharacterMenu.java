@@ -15,8 +15,10 @@ import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.IMenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
+import net.sf.anathema.initialization.Menu;
 import net.sf.anathema.lib.resources.IResources;
 
+@Menu
 public class CharacterMenu implements IAnathemaMenu {
 
   public void add(IResources resources, final IAnathemaModel model, IMenuBar menubar) {

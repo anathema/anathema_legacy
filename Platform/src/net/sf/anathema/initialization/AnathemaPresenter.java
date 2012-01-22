@@ -25,7 +25,6 @@ import org.java.plugin.registry.Extension.Parameter;
 public class AnathemaPresenter {
 
   private static final String PARAM_CLASS = "class"; //$NON-NLS-1$
-  private static final String EXTENSION_POINT_MENUBAR = "Menubar"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_REPORT_FACTORIES = "ReportFactories"; //$NON-NLS-1$
   private final IAnathemaModel model;
   private final IAnathemaView view;
@@ -101,17 +100,15 @@ public class AnathemaPresenter {
   }
 
   private void initializeMenus() throws InitializationException {
-    for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_MENUBAR)) {
-      for (Parameter parameter : extension.getParameters(PARAM_CLASS)) {
-        IAnathemaMenu menu = instantiate(parameter, pluginManager, IAnathemaMenu.class);
-        menu.add(resources, model, view.getMenuBar());
-      }
+    Collection<IAnathemaMenu> menus = instantiater.instantiateAll(Menu.class);
+    for (IAnathemaMenu menu : menus) {
+      menu.add(resources, model, view.getMenuBar());
     }
   }
 
   private void initializeTools() throws InitializationException {
-    Collection<IAnathemaTool> jobs = instantiater.instantiateAll(Tool.class);
-    for (IAnathemaTool tool : jobs) {
+    Collection<IAnathemaTool> tools = instantiater.instantiateAll(Tool.class);
+    for (IAnathemaTool tool : tools) {
       tool.add(resources, model, view.getToolbar());
     }
   }

@@ -20,9 +20,11 @@ import net.sf.anathema.framework.reporting.AnathemaPrintAction;
 import net.sf.anathema.framework.repository.tree.RepositoryViewAction;
 import net.sf.anathema.framework.view.IMenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
+import net.sf.anathema.initialization.Menu;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
+@Menu
 public class AnathemaCoreMenu implements IAnathemaMenu {
 
   public void add(IResources resources, IAnathemaModel model, IMenuBar menubar) {
