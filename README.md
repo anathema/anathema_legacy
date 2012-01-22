@@ -13,7 +13,7 @@ Set Up
 
 Development
 ===========
-### Launching Anathema from an IDE ###
+### Launching Anathema###
 Launch ``net.sf.anathema.AnathemaBootLoader``.
 
 ### Adding a dependency ###
@@ -23,7 +23,6 @@ Launch ``net.sf.anathema.AnathemaBootLoader``.
 ### Adding a new module ###
 1. Run ``gradlew createModule -PmoduleName=MODULENAME``
 2. In ``settings.gradle``, add your module name.
-3. In ``plugins.gradle``, add your module to a fitting plugin or the list of 'single-module plugins'.
 4. Run ``gradlew eclipseProject eclipseClasspath eclipseJdt`` or ``gradlew idea``.
 5. (Only with eclipse,) import the project.
 
