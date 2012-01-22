@@ -44,7 +44,6 @@ public class AnathemaInitializer {
 
   public IAnathemaView initialize() throws InitializationException {
     initializePlugins();
-
     IResources resources = initResources();
     ProxySplashscreen.getInstance().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
