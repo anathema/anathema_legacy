@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../../charms.dtd">
+<!--
+
+    excellencies.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Sidereal Excellencies -->
+     <genericCharm id="Sidereal.1stExcellency" exalt="Sidereal">
+          <prerequisite>
+               <trait value="1" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" text="per die" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" secondaryStep="2" />
+          </charmtype>
+          <combo>
+               <restrictions>
+                    <genericCharmReference id="Sidereal.3rdExcellency" />
+               </restrictions>
+          </combo>
+          <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="Mortal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="SecondEdition" />
+     </genericCharm>
+     <genericCharm id="Sidereal.2ndExcellency" exalt="Sidereal">
+          <prerequisite>
+               <trait value="1" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" text="per success" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" secondaryStep="2" />
+          </charmtype>
+          <combo>
+               <restrictions>
+                    <genericCharmReference id="Sidereal.3rdExcellency" />
+               </restrictions>
+          </combo>
+          <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="Mortal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="SecondEdition" />
+     </genericCharm>
+     <genericCharm id="Sidereal.3rdExcellency" exalt="Sidereal">
+          <prerequisite>
+               <trait value="1" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="4" secondaryStep="6" />
+          </charmtype>
+          <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="Mortal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="SecondEdition" />
+     </genericCharm>
+     <!-- Unique Sidereal Excellencies -->
+     <genericCharm id="Sidereal.EssenceAuspicious" exalt="Sidereal">
+          <prerequisite>
+               <trait value="4" />
+               <essence value="3" />
+               <genericCharmAttributeRequirement attribute="Excellency" />
+          </prerequisite>
+          <cost>
+               <essence cost="1" text="+1m for each decrease" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" secondaryStep="2" />
+          </charmtype>
+          <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Mortal" />
+          <source source="Sidereals2nd" />
+     </genericCharm>
+     <genericCharm id="Sidereal.PropitiousAbilityAlignment" exalt="Sidereal">
+          <prerequisite>
+               <trait value="4" />
+               <essence value="3" />
+               <genericCharmAttributeRequirement attribute="Excellency" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" text="+2m per reduction" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="Mortal" />
+          <source source="Sidereals2nd" />
+     </genericCharm>
+</charmlist>
