@@ -4,7 +4,6 @@ import net.disy.commons.core.exception.CentralExceptionHandling;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
-import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import net.sf.anathema.framework.exception.CentralExceptionHandler;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.resources.AnathemaResources;
@@ -33,18 +32,19 @@ public class AnathemaInitializer {
   private final AnathemaPluginManager pluginManager;
   private final ItemTypeConfigurationCollection itemTypeCollection;
   private final AnathemaExtensionCollection extensionCollection;
+  private final AnathemaReflections reflections;
 
   public AnathemaInitializer(PluginManager manager, IAnathemaPreferences anathemaPreferences)
           throws InitializationException {
+    this.reflections = new DefaultAnathemaReflections();
     this.pluginManager = new AnathemaPluginManager(manager);
     pluginManager.activatePlugins();
-    this.itemTypeCollection = new ItemTypeConfigurationCollection(pluginManager, AnathemaEnvironment.isDevelopment());
+    this.itemTypeCollection = new ItemTypeConfigurationCollection(new ReflectionsInstantiater(reflections));
     this.extensionCollection = new AnathemaExtensionCollection(pluginManager);
     this.anathemaPreferences = anathemaPreferences;
   }
 
   public IAnathemaView initialize() throws InitializationException {
-    AnathemaReflections reflections = new DefaultAnathemaReflections();
     initializePlugins(reflections);
     IResources resources = initResources();
     ProxySplashscreen.getInstance().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$

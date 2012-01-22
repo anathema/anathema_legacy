@@ -18,14 +18,6 @@
 		<parameter id="id" value="net.sf.anathema.character.generic.framework.ICharacterGenericsExtension"/>
 	  </parameter>
 	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
-		<parameter id="type">
-			<parameter id="class" value="net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration"/>
-		</parameter>
-		<parameter id="type">
-			<parameter id="class" value="net.sf.anathema.character.equipment.impl.module.EquipmentDatabaseItemTypeConfiguration"/>
-		</parameter>
-	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="Backgrounds"/>
 		<parameter id="bundle" value="Character"/>

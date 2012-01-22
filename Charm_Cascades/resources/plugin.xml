@@ -12,11 +12,6 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
-		<parameter id="type">
-			<parameter id="class" value="net.sf.anathema.cascades.module.CharmCascadeItemTypeConfiguration"/>
-		</parameter>
-	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="Cascades"/>
 	</extension>
