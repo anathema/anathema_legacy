@@ -1,5 +1,6 @@
 package net.sf.anathema.initialization;
 
+import com.google.common.base.Function;
 import net.disy.commons.core.exception.CentralExceptionHandling;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IAnathemaModel;
@@ -9,8 +10,6 @@ import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.view.AnathemaView;
 import net.sf.anathema.framework.view.IAnathemaView;
-import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
-import net.sf.anathema.initialization.plugin.IPluginConstants;
 import net.sf.anathema.initialization.plugin.Plugin;
 import net.sf.anathema.initialization.plugin.Startable;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
@@ -18,27 +17,22 @@ import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
 import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.lib.resources.IResources;
 
-import org.java.plugin.PluginManager;
-import org.java.plugin.registry.Extension;
-import org.java.plugin.registry.Extension.Parameter;
-
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
+import static com.google.common.collect.Collections2.transform;
 
 public class AnathemaInitializer {
 
-  private static final String EXTENSION_POINT_RESOURCES = "AnathemaResources"; //$NON-NLS-1$
-  private static final String PARAM_BUNDLE = "bundle"; //$NON-NLS-1$
   private final IAnathemaPreferences anathemaPreferences;
-  private final AnathemaPluginManager pluginManager;
   private final ItemTypeConfigurationCollection itemTypeCollection;
   private final AnathemaExtensionCollection extensionCollection;
   private final AnathemaReflections reflections;
 
-  public AnathemaInitializer(PluginManager manager, IAnathemaPreferences anathemaPreferences)
+  public AnathemaInitializer(IAnathemaPreferences anathemaPreferences)
           throws InitializationException {
     this.reflections = new DefaultAnathemaReflections();
-    this.pluginManager = new AnathemaPluginManager(manager);
-    pluginManager.activatePlugins();
     this.itemTypeCollection = new ItemTypeConfigurationCollection(new ReflectionsInstantiater(reflections));
     this.extensionCollection = new AnathemaExtensionCollection(new ReflectionsInstantiater(reflections));
     this.anathemaPreferences = anathemaPreferences;
@@ -82,13 +76,26 @@ public class AnathemaInitializer {
   }
 
   private IResources initResources() {
-    ProxySplashscreen.getInstance().displayStatusMessage("Loading Resources..."); //$NON-NLS-1$
     AnathemaResources resources = new AnathemaResources();
-    for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_RESOURCES)) {
-      for (Parameter param : extension.getParameters(PARAM_BUNDLE)) {
-        resources.addResourceBundle(param.valueAsString(), pluginManager.getClassLoader(extension));
-      }
+    ProxySplashscreen.getInstance().displayStatusMessage("Loading Resources..."); //$NON-NLS-1$
+    Set<String> resourcesInPaths = reflections.getResourcesMatching(".*\\.properties");
+    Collection<String> bundlesInPackages = transform(resourcesInPaths, new ToBundleName());
+    for (String resource : new HashSet<String>(bundlesInPackages)) {
+      resources.addResourceBundle(resource, getClass().getClassLoader());
     }
     return resources;
+  }
+
+  private static class ToBundleName implements Function<String, String> {
+    @Override
+    public String apply(String input) {
+      String resourceName = input.replace("/", ".").replace(".properties", "");
+      boolean isInternationalizationFile = resourceName.matches(".*_..");
+      if (isInternationalizationFile) {
+        return resourceName.substring(0, resourceName.lastIndexOf("_"));
+      } else {
+        return resourceName;
+      }
+    }
   }
 }

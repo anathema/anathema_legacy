@@ -8,7 +8,4 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="GodBloodedResources">
-		<parameter id="bundle" value="GodBlooded"/>	
-	</extension>
 </plugin-fragment>

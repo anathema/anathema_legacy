@@ -8,9 +8,4 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="LunarResources">
-		<parameter id="bundle" value="Lunar"/>
-		<parameter id="bundle" value="Charms_Lunar"/>
-		<parameter id="bundle" value="Charms_Lunar_Pages"/>
-	</extension>
 </plugin-fragment>

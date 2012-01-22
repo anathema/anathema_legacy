@@ -10,9 +10,4 @@
                <export prefix="*" />
           </library>
      </runtime>
-     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="Glories_UnconqueredSunResources">
-          <parameter id="bundle" value="Glories_UnconqueredSun" />
-          <parameter id="bundle" value="Pages_Glories_UnconqueredSun" />
-          <parameter id="bundle" value="Charms_Glories_UnconqueredSun" />
-     </extension>
 </plugin-fragment>

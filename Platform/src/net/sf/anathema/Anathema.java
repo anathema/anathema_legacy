@@ -14,10 +14,7 @@ import javax.swing.*;
 
 public class Anathema implements Application {
 
-  private final PluginManager manager;
-
   public Anathema(PluginManager manager) {
-    this.manager = manager;
   }
 
   public void startApplication() throws Exception {
@@ -49,7 +46,7 @@ public class Anathema implements Application {
   private IWindow createView(IAnathemaPreferences anathemaPreferences) {
     try {
       displayStatus("Starting Platform..."); //$NON-NLS-1$
-      return new AnathemaInitializer(manager, anathemaPreferences).initialize();
+      return new AnathemaInitializer(anathemaPreferences).initialize();
     } catch (InitializationException e) {
       e.printStackTrace();
       return new ErrorWindow(e);

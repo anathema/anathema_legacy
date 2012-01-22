@@ -16,7 +16,7 @@ import net.sf.anathema.lib.resources.StringProvider;
 
 public class AnathemaResources implements IResources {
 
-  private final Logger logger = Logger.getLogger(AnathemaResources.class);
+  private static final Logger logger = Logger.getLogger(AnathemaResources.class);
   private final IAnathemaImageProvider imageProvider = new ImageProvider("icons"); //$NON-NLS-1$
   private final MultiSourceStringProvider stringHandler = new MultiSourceStringProvider();
 
@@ -31,7 +31,7 @@ public class AnathemaResources implements IResources {
   }
 
   public void addResourceBundle(String bundleName, ClassLoader classLoader) {
-    stringHandler.add(new StringProvider("language." + bundleName, getLocale(), classLoader)); //$NON-NLS-1$    
+    stringHandler.add(new StringProvider(bundleName, getLocale(), classLoader)); //$NON-NLS-1$
   }
 
   public boolean supportsKey(String key) {

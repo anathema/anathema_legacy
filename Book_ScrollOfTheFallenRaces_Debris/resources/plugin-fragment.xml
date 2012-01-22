@@ -10,9 +10,4 @@
                <export prefix="*" />
           </library>
      </runtime>
-     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="DebrisFromTheFallenRacesResources">
-          <parameter id="bundle" value="DebrisFromTheFallenRaces" />
-          <parameter id="bundle" value="Pages_DebrisFromTheFallenRaces" />
-          <parameter id="bundle" value="Charms_DebrisFromTheFallenRaces" />
-     </extension>
 </plugin-fragment>

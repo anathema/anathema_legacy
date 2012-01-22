@@ -8,12 +8,4 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="MartialArtsResources">
-		<!--<parameter id="bundle" value="Charms_MartialArts"/>-->
-		<parameter id="bundle" value="MartialArts"/>
-		<parameter id="bundle" value="Charms_MartialArts_Pages"/>
-		<parameter id="bundle" value="Charms_MartialArts_SecondEdition"/>
-		<parameter id="bundle" value="Charms_ElementalDragonStyles"/>
-		<parameter id="bundle" value="Pages_ElementalDragonStyles"/>
-	</extension>
 </plugin-fragment>

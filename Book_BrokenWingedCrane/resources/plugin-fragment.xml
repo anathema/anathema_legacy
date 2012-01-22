@@ -10,9 +10,4 @@
                <export prefix="*" />
           </library>
      </runtime>
-     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="BrokenWingedCraneResources">
-          <parameter id="bundle" value="BrokenWingedCrane" />
-          <parameter id="bundle" value="Pages_BrokenWingedCrane" />
-          <parameter id="bundle" value="Charms_BrokenWingedCrane" />
-     </extension>
 </plugin-fragment>

@@ -7,9 +7,4 @@
 			<export prefix="*" />
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="moepAbyssalsResources">
-		<parameter id="bundle" value="moepAbyssals" />
-		<parameter id="bundle" value="Pages_moepAbyssals" />
-		<parameter id="bundle" value="Charms_moepAbyssals" />
-	</extension>
 </plugin-fragment>

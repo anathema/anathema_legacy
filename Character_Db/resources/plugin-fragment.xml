@@ -10,10 +10,4 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="DBResources">
-		<parameter id="bundle" value="Charms_Dragon-Blooded"/>
-		<parameter id="bundle" value="Charms_Dragon-Blooded_Pages"/>
-		<parameter id="bundle" value="Charms_Dragon-Blooded_SecondEdition"/>
-		<parameter id="bundle" value="Dragon-Blooded"/>
-	</extension>
 </plugin-fragment>

@@ -5,11 +5,4 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension-point id="AnathemaResources">
-		<parameter-def id="bundle" multiplicity="any"/>
-	</extension-point>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
-		<parameter id="bundle" value="anathema"/>
-		<parameter id="bundle" value="About"/>
-	</extension>
 </plugin>

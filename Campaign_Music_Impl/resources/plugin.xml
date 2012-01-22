@@ -8,8 +8,4 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
-		<parameter id="bundle" value="MusicModule"/>
-		<parameter id="bundle" value="MusicView"/>
-	</extension>
 </plugin>

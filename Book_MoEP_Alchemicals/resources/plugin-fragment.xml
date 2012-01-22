@@ -10,9 +10,4 @@
                <export prefix="*" />
           </library>
      </runtime>
-     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="moepAlchemicalsResources">
-          <parameter id="bundle" value="moepAlchemicals" />
-          <parameter id="bundle" value="Pages_moepAlchemicals" />
-          <parameter id="bundle" value="Charms_moepAlchemicals" />
-     </extension>
 </plugin-fragment>

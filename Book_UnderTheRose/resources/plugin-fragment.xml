@@ -10,9 +10,4 @@
                <export prefix="*" />
           </library>
      </runtime>
-     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="UnderTheRoseResources">
-          <parameter id="bundle" value="UnderTheRose" />
-          <parameter id="bundle" value="Pages_UnderTheRose" />
-          <parameter id="bundle" value="Charms_UnderTheRose" />
-     </extension>
 </plugin-fragment>

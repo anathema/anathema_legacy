@@ -10,9 +10,4 @@
                <export prefix="*" />
           </library>
      </runtime>
-     <extension plugin-id="net.sf.anathema.core" point-id="AnathemaResources" id="Glories_LunaResources">
-          <parameter id="bundle" value="Glories_Luna" />
-          <parameter id="bundle" value="Pages_Glories_Luna" />
-          <parameter id="bundle" value="Charms_Glories_Luna" />
-     </extension>
 </plugin-fragment>

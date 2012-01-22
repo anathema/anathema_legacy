@@ -8,9 +8,4 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="SiderealResources">
-		<parameter id="bundle" value="Sidereal"/>
-		<parameter id="bundle" value="Charms_Sidereal"/>
-		<parameter id="bundle" value="Charms_Sidereal_Pages"/>
-	</extension>
 </plugin-fragment>

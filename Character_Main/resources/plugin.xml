@@ -12,35 +12,4 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
-		<parameter id="bundle" value="Backgrounds"/>
-		<parameter id="bundle" value="Character"/>
-		<parameter id="bundle" value="CharacterControl"/>
-		<parameter id="bundle" value="CharacterModule"/>
-		<parameter id="bundle" value="CharacterSheet"/>
-		<parameter id="bundle" value="CharmDuration"/>
-		<parameter id="bundle" value="CharmFilters"/>
-		<parameter id="bundle" value="Charmgroups"/>
-		<parameter id="bundle" value="Charms_DragonKing"/>
-		<parameter id="bundle" value="CharmTreeView"/>
-		<parameter id="bundle" value="Craft"/>
-		<parameter id="bundle" value="Equipment"/>
-		<parameter id="bundle" value="Equipment_Database"/>
-		<parameter id="bundle" value="Health"/>
-		<parameter id="bundle" value="Intimacies"/>
-		<parameter id="bundle" value="Linguistics"/>
-		<parameter id="bundle" value="MeritsFlaws"/>
-		<parameter id="bundle" value="Mutations"/>
-		<!-- Thaumaturgy temporarily removed, pending a rewrite for the new character sheet -->
-		<!-- <parameter id="bundle" value="Thaumaturgy"/> -->
-		<parameter id="bundle" value="Natures"/>
-		<parameter id="bundle" value="Overview"/>
-		<parameter id="bundle" value="Sourcebooks"/>
-		<parameter id="bundle" value="Spells_Necromancy"/>
-		<parameter id="bundle" value="Spells_Pages"/>
-		<parameter id="bundle" value="Spells_Sorcery"/>
-		<parameter id="bundle" value="TextSheet"/>
-		<parameter id="bundle" value="Traits"/>
-		<parameter id="bundle" value="Weapons"/>
-	</extension>
 </plugin>

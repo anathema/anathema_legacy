@@ -8,8 +8,4 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="GhostResources">
-		<parameter id="bundle" value="Ghost"/>
-		<parameter id="bundle" value="Ghost_Arcanoi"/>	
-	</extension>
 </plugin-fragment>

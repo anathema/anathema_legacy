@@ -8,10 +8,4 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="SolarResources">
-		<parameter id="bundle" value="Charms_Solar"/>
-		<parameter id="bundle" value="Charms_Solar_Pages"/>
-		<parameter id="bundle" value="Charms_Solar_SecondEdition"/>
-		<parameter id="bundle" value="Solar"/>	
-	</extension>
 </plugin-fragment>

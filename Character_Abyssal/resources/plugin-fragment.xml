@@ -8,9 +8,4 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="AbyssalResources">
-		<parameter id="bundle" value="Abyssal"/>
-		<parameter id="bundle" value="Charms_Abyssal"/>
-		<parameter id="bundle" value="Charms_Abyssal_Pages"/>
-	</extension>
 </plugin-fragment>
