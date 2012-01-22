@@ -43,20 +43,20 @@ public class AnathemaInitializer {
   }
 
   public IAnathemaView initialize() throws InitializationException {
-    initializePlugins();
+    AnathemaReflections reflections = new DefaultAnathemaReflections();
+    initializePlugins(reflections);
     IResources resources = initResources();
     ProxySplashscreen.getInstance().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
     IAnathemaModel anathemaModel = initModel(resources);
     IAnathemaView view = initView(resources);
-    new AnathemaPresenter(pluginManager, anathemaModel, view, resources, itemTypeCollection.getItemTypes()).initPresentation();
+    new AnathemaPresenter(pluginManager, reflections, anathemaModel, view, resources, itemTypeCollection.getItemTypes()).initPresentation();
     return view;
 
   }
 
-  private void initializePlugins() throws InitializationException {
+  private void initializePlugins(AnathemaReflections reflections) throws InitializationException {
     try {
-      AnathemaReflections reflections = new DefaultAnathemaReflections();
       Set<Class<?>> pluginClasses = reflections.getTypesAnnotatedWith(Plugin.class);
       for (Class<?> pluginClass : pluginClasses) {
         Startable startablePlugin = (Startable) pluginClass.newInstance();

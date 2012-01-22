@@ -59,7 +59,7 @@ public class RepositoryItemDeletionPresenter implements IPresenter {
     action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.DeleteToolTip")); //$NON-NLS-1$
     treeView.addActionButton(action);
     repositoryModel.addTreeSelectionChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         action.setEnabled(repositoryModel.canSelectionBeDeleted());
       }
     });

@@ -16,7 +16,7 @@ public class CheckInputListener implements
     this.executionBlock = executionBlock;
   }
 
-  public void changeOccured() {
+  public void changeOccurred() {
     executionBlock.execute();
   }
 

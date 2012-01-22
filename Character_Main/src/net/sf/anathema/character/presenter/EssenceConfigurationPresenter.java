@@ -45,7 +45,7 @@ public class EssenceConfigurationPresenter implements IPresenter {
       final IValueView<String> peripheralView = createPeripheralPoolView();
       final IValueView<String> attunementView = addPool("EssencePool.Name.Attunement", essence.getAttunedPool());
       essence.addPoolChangeListener(new IChangeListener() {
-        public void changeOccured() {
+        public void changeOccurred() {
           personalView.setValue(essence.getPersonalPool());
           listenToPeripheralChanges(peripheralView);
           attunementView.setValue(essence.getAttunedPool());

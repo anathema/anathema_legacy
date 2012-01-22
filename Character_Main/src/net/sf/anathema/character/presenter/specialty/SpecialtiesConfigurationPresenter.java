@@ -101,7 +101,7 @@ public class SpecialtiesConfigurationPresenter implements IPresenter {
       }
     });
     specialtyManagement.addSelectionChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         specialtySelectionView.setButtonEnabled(specialtyManagement.isEntryComplete());
       }
     });
@@ -195,7 +195,7 @@ public class SpecialtiesConfigurationPresenter implements IPresenter {
         specialty.getMaximalValue());
     new TraitPresenter(specialty, specialtyView).initPresentation();
     specialtyView.addDeleteListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         getSpecialtyContainer(traitReference).removeSubTrait(specialty);
       }
     });

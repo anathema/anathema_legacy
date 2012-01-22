@@ -27,7 +27,7 @@ public class WeaponDamageModelTest extends TestCase {
     IChangeListener changeListener = mock(IChangeListener.class);
     damageModel.addHealthTypeChangeListener(changeListener);
     damageModel.setHealthType(HealthType.Aggravated);
-    verify(changeListener).changeOccured();
+    verify(changeListener).changeOccurred();
   }
 
   public void testEventOnIntValueChange() throws Exception {

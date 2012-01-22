@@ -85,7 +85,7 @@ public class EquipmentDatabasePresenter implements IPresenter {
       }
     });
     model.getTemplateEditModel().addCompositionChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         MaterialComposition materialComposition = model.getTemplateEditModel().getMaterialComposition();
         compositionView.setSelectedObject(materialComposition);
         materialView.setEnabled(materialComposition.requiresMaterial());
@@ -97,7 +97,7 @@ public class EquipmentDatabasePresenter implements IPresenter {
       }
     });
     model.getTemplateEditModel().addMagicalMaterialChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         materialView.setSelectedObject(model.getTemplateEditModel().getMagicalMaterial());
       }
     });

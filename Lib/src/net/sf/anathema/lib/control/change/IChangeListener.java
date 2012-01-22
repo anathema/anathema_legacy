@@ -4,5 +4,5 @@ import java.util.EventListener;
 
 public interface IChangeListener extends EventListener {
 
-  public void changeOccured();
+  public void changeOccurred();
 }

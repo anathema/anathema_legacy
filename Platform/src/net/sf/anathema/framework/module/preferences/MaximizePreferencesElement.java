@@ -1,8 +1,11 @@
 package net.sf.anathema.framework.module.preferences;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.MAXIMIZE_PREFERENCE;
+
+import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.lib.util.IIdentificate;
 
+@PreferenceElement
 public class MaximizePreferencesElement extends AbstractCheckBoxPreferencesElement {
 
   private boolean maximize = SYSTEM_PREFERENCES.getBoolean(MAXIMIZE_PREFERENCE, false);

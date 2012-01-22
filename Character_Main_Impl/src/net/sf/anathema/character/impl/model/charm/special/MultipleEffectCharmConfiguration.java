@@ -28,7 +28,7 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
     		context.getTraitCollection(), arbitrator, charm);
     for (ISubeffect subeffect : subeffects) {
       subeffect.addChangeListener(new IChangeListener() {
-        public void changeOccured() {
+        public void changeOccurred() {
           fireLearnCountChanged();
         }
       });

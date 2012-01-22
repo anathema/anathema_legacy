@@ -21,11 +21,6 @@
 		<parameter id="id" value="net.sf.anathema.character.generic.framework.ICharacterGenericsExtension"/>
 	  </parameter>
 	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="PreferenceElements" id="PreferenceElements">
-		<parameter id="class" value="net.sf.anathema.character.impl.module.preferences.RulesetPreferenceElement"/>
-		<parameter id="class" value="net.sf.anathema.character.impl.module.preferences.PrintZeroCraftsPreferencesElement"/>
-		<parameter id="class" value="net.sf.anathema.character.impl.module.preferences.PrintZeroBackgroundsPreferencesElement"/>
-	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="Bootjob">
 		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterPerformanceBootJob"/>
 	</extension>

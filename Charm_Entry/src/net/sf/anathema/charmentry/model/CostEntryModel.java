@@ -15,7 +15,7 @@ public class CostEntryModel implements ICostEntryModel {
   public CostEntryModel(ICharmTypeEntryModel model, final IConfigurableCharmData charmData) {
     this.charmData = charmData;
     model.addModelListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         if (charmData.getCharmTypeModel().getCharmType() == CharmType.Permanent) {
           setEssenceCostValue(BLANK);
           setEssenceCostText(BLANK);

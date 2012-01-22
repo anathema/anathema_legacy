@@ -72,7 +72,7 @@ public class MeritsFlawsPresenter implements IPresenter {
       }
     });
     model.addModelChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         IQualitySelection<IPerk>[] selectedPerks = model.getSelectedQualities();
         setAvailablePerks(meritsView);
         meritsView.setSelectedPerks(selectedPerks);
@@ -106,7 +106,7 @@ public class MeritsFlawsPresenter implements IPresenter {
   }
 
   private I18nedIdentificateSorter<IPerk> createSorter() {
-    I18nedIdentificateSorter<IPerk> sorter = new I18nedIdentificateSorter<IPerk>() {
+    return new I18nedIdentificateSorter<IPerk>() {
       @Override
       protected String getString(final IResources sorterResources, IPerk perk) {
         return sorterResources.getString(perk.getType().getId() + "." //$NON-NLS-1$
@@ -115,7 +115,6 @@ public class MeritsFlawsPresenter implements IPresenter {
             + perk.getId());
       }
     };
-    return sorter;
   }
 
   private IQualitySelection<IPerk> createMultiValuePerkSelection(MultiValuePerk perk, IPerkDetailsView detailsView) {
@@ -140,7 +139,7 @@ public class MeritsFlawsPresenter implements IPresenter {
 
   private void setDetailsView(final IPerkView meritsView, final IPerkDetailsView detailsView) {
     detailsView.addChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         meritsView.setAddEnabled(detailsView.isComplete());
       }
     });

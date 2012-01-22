@@ -19,7 +19,7 @@ public class LunarVirtueFlawPresenter extends VirtueFlawPresenter {
     ITextView nameView = super.initNamePresentation(virtueFlaw);
     nameView.setEnabled(false);
     virtueFlaw.addRootChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         virtueFlaw.getName().setText(getResources().getString("Lunar.VirtueFlaw.Name." + virtueFlaw.getRoot().getId())); //$NON-NLS-1$
       }
     });

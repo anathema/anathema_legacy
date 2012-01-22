@@ -92,7 +92,7 @@ public class PrerequisitesEntryPage extends AbstractAnathemaWizardPage {
       }
     });
     getPageModel().addModelListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         primaryView.setSelectableTraits(getPageModel().getPrimaryPrerequisiteTypes());
         if (getPageModel().getPrimaryPrerequisite() != null) {
           primaryView.setValue(getPageModel().getPrimaryPrerequisite().getCurrentValue());
@@ -113,7 +113,7 @@ public class PrerequisitesEntryPage extends AbstractAnathemaWizardPage {
       }
     });
     getPageModel().addModelListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         traitView.setValue(getPageModel().getEssenceMinimum());
       }
     });

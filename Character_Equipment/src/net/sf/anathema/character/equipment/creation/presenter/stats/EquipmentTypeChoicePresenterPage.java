@@ -125,7 +125,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
 					@Override
 					public void itemStateChanged(ItemEvent e) {
 						materialSpecific = e.getStateChange() == ItemEvent.DESELECTED;
-						inputListener.changeOccured();
+						inputListener.changeOccurred();
 					}
     			}, !materialSpecific);
     }

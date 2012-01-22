@@ -33,17 +33,17 @@ public class MusicSelectionPresenter implements IPresenter {
 
   public void initPresentation() {
     selectionModel.addCurrentSelectionChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateTrackList();
       }
     });
     selectionModel.getTrackDetailModel().addChangeDetailListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         refreshTrackList();
       }
     });
     selectionModel.addSelectionsChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateSelectionList();
       }
     });

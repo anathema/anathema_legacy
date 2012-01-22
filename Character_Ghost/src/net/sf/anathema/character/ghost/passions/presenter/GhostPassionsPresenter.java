@@ -122,7 +122,7 @@ public class GhostPassionsPresenter implements IPresenter {
       }
     });
     model.addSelectionChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
     	  passionSelectionView.setButtonEnabled(!model.isExperienced() && model.isEntryComplete());
       }
     });
@@ -242,7 +242,7 @@ public class GhostPassionsPresenter implements IPresenter {
         passion.getMaximalValue());
     new TraitPresenter(passion, passionView).initPresentation();
     passionView.addDeleteListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         getPassionContainer(traitReference).removeSubTrait(passion);
         updateOverviewData();
       }

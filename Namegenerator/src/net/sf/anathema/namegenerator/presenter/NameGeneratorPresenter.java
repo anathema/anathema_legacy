@@ -55,12 +55,12 @@ public class NameGeneratorPresenter implements IPresenter {
 
   private void initSelectedGeneratorTypePresentation() {
     view.addGeneratorTypeChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         model.setGeneratorType((IIdentificate) view.getSelectedGeneratorType());
       }
     });
     model.addGeneratorTypeChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         view.setSelectedGeneratorType(model.getSelectedGeneratorType());
       }
     });

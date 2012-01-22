@@ -52,7 +52,7 @@ public class PrerequisiteCharmsPage extends AbstractAnathemaWizardPage {
     final ISelectionContainerView<ICharm> charmView = view.addPrerequisiteCharmView(new IdentificateListCellRenderer(
         resources));
     charmView.addSelectionChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         Object[] selectedValues = charmView.getSelectedValues();
         ICharm[] charms = new ICharm[selectedValues.length];
         ArrayUtilities.copyAll(selectedValues, charms);
@@ -60,7 +60,7 @@ public class PrerequisiteCharmsPage extends AbstractAnathemaWizardPage {
       }
     });
     getPageModel().addModelListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         try {
           charmView.populate(getPageModel().getAvailableCharms());
         }

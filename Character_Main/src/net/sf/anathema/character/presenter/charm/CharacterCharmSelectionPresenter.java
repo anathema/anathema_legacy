@@ -144,7 +144,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       }
     });
     charms.addLearnableListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         setCharmVisuals();
       }
     });
@@ -172,7 +172,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   private void initCasteListening() {
     final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
     caste.addChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         boolean alienCharms = statistics.getCharacterTemplate()
             .getMagicTemplate()
             .getCharmTemplate()
@@ -256,7 +256,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private ICharmLearnListener createCharmLearnListener(final ICharmSelectionView selectionView) {
-    ICharmLearnListener charmLearnListener = new CharmLearnAdapter() {
+    return new CharmLearnAdapter() {
       @Override
       public void charmLearned(ICharm charm) {
         setCharmVisuals(charm, selectionView);
@@ -279,7 +279,6 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         Toolkit.getDefaultToolkit().beep();
       }
     };
-    return charmLearnListener;
   }
 
   private void showSpecialViews() {

@@ -47,7 +47,7 @@ public class MusicPlayerPresenter implements IPresenter {
     }
     final ITrackDetailModel trackDetailModel = selectionModel.getTrackDetailModel();
     trackDetailModel.addTrackChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         IMp3Track selectedTrack = trackDetailModel.getSelectedTrack();
         if (selectedTrack != null) {
           try {

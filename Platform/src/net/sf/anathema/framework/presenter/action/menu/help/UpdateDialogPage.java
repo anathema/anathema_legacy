@@ -23,7 +23,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
     this.resources = resources;
     this.checker = checker;
     checker.addDataChangedListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateLatestVersionLabel();
       }
     });

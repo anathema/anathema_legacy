@@ -14,6 +14,7 @@ import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IClassLoaderProvider;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
+import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -27,7 +28,7 @@ public class AnathemaPresenter {
   private static final String EXTENSION_POINT_TOOLBAR = "Toolbar"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_MENUBAR = "Menubar"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_REPORT_FACTORIES = "ReportFactories"; //$NON-NLS-1$
-  private static final String EXTENSION_POINT_PREFERENCE_ELEMENTS = "PreferenceElements"; //$NON-NLS-1$
+  private AnathemaReflections reflections;
   private final IAnathemaModel model;
   private final IAnathemaView view;
   private final IResources resources;
@@ -35,12 +36,13 @@ public class AnathemaPresenter {
   private final IAnathemaPluginManager pluginManager;
 
   public AnathemaPresenter(
-      IAnathemaPluginManager pluginManager,
-      IAnathemaModel model,
-      IAnathemaView view,
-      IResources resources,
-      Collection<IItemTypeConfiguration> itemTypeConfigurations) {
+          IAnathemaPluginManager pluginManager,
+          AnathemaReflections reflections, IAnathemaModel model,
+          IAnathemaView view,
+          IResources resources,
+          Collection<IItemTypeConfiguration> itemTypeConfigurations) {
     this.pluginManager = pluginManager;
+    this.reflections = reflections;
     this.model = model;
     this.view = view;
     this.resources = resources;
@@ -65,7 +67,7 @@ public class AnathemaPresenter {
 
   private void init(final IAnathemaMessageContainer messageContainer) {
     messageContainer.addChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         view.getStatusBar().setLatestMessage(messageContainer.getLatestMessage());
       }
     });
@@ -83,21 +85,17 @@ public class AnathemaPresenter {
 
   private void initializePreferences() throws InitializationException {
     PreferencesElementsExtensionPoint extensionPoint = (PreferencesElementsExtensionPoint) model.getExtensionPointRegistry()
-        .get(PreferencesElementsExtensionPoint.ID);
-    for (Extension extension : pluginManager.getExtension(
-        IPluginConstants.PLUGIN_CORE,
-        EXTENSION_POINT_PREFERENCE_ELEMENTS)) {
-      for (Parameter parameter : extension.getParameters(PARAM_CLASS)) {
-        IPreferencesElement element = instantiate(parameter, pluginManager, IPreferencesElement.class);
-        extensionPoint.addPreferencesElement(element);
-      }
+            .get(PreferencesElementsExtensionPoint.ID);
+    Collection<IPreferencesElement> elements = new ReflectionsInstantiater(reflections).instantiateAll(PreferenceElement.class);
+    for (IPreferencesElement element : elements) {
+      extensionPoint.addPreferencesElement(element);
     }
   }
 
   private void initializeReports() throws InitializationException {
     for (Extension extension : pluginManager.getExtension(
-        IPluginConstants.PLUGIN_CORE,
-        EXTENSION_POINT_REPORT_FACTORIES)) {
+            IPluginConstants.PLUGIN_CORE,
+            EXTENSION_POINT_REPORT_FACTORIES)) {
       for (Parameter parameter : extension.getParameters(PARAM_CLASS)) {
         IReportFactory reportFactory = instantiate(parameter, pluginManager, IReportFactory.class);
         model.getReportRegistry().addReports(reportFactory.createReport(resources, model.getExtensionPointRegistry()));
@@ -124,13 +122,12 @@ public class AnathemaPresenter {
   }
 
   private <T> T instantiate(Parameter classParameter, IClassLoaderProvider provider, Class<T> clazz)
-      throws InitializationException {
+          throws InitializationException {
     String className = classParameter.valueAsString();
     try {
       return clazz.cast(Class.forName(className, true, provider.getClassLoader(classParameter.getDeclaringExtension()))
-          .newInstance());
-    }
-    catch (Throwable e) {
+              .newInstance());
+    } catch (Throwable e) {
       throw new InitializationException("Failed to load required class " + className + ".", e); //$NON-NLS-1$ //$NON-NLS-2$
     }
   }

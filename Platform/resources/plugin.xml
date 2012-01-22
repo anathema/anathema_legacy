@@ -41,14 +41,6 @@
 	<extension plugin-id="net.sf.anathema.core"	point-id="Toolbar" id="Toolbar">
 		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreTool"/>
 	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="PreferenceElements" id="PreferenceElements">
-		<parameter id="class" value="net.sf.anathema.framework.module.preferences.LookAndFeelPreferencesElement"/>
-		<parameter id="class" value="net.sf.anathema.framework.module.preferences.MaximizePreferencesElement"/>
-		<parameter id="class" value="net.sf.anathema.framework.module.preferences.OpenPdfPreferencesElement"/>
-		<parameter id="class" value="net.sf.anathema.framework.module.preferences.LanguagePreferencesElement"/>
-		<parameter id="class" value="net.sf.anathema.framework.module.preferences.ToolTipTimePreferencesElement"/>
-		<parameter id="class" value="net.sf.anathema.framework.module.preferences.RepositoryPreferencesElement"/>
-	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="AnathemaCore">
 		<parameter id="class" value="net.sf.anathema.framework.module.ItemViewBootJob"/>
 		<parameter id="class" value="net.sf.anathema.framework.module.preferences.LookAndFeelNormalizerBootJob"/>

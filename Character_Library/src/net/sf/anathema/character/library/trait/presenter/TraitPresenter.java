@@ -33,7 +33,7 @@ public class TraitPresenter implements IPresenter {
     trait.accept(new ITraitVisitor() {
       public void visitDefaultTrait(final IDefaultTrait visitedTrait) {
         visitedTrait.addRangeListener(new IChangeListener() {
-          public void changeOccured() {
+          public void changeOccurred() {
             view.setMaximum(visitedTrait.getMaximalValue());
           }
         });

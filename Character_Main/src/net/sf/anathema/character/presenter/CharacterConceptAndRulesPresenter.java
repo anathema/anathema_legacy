@@ -216,7 +216,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
       }
     });
     natureType.addChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateNature(natureView, willpowerConditionLabel, natureType.getType());
       }
     });
@@ -277,7 +277,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
       }
     });
     caste.addChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         casteView.setSelectedObject(caste.getType());
       }
     });

@@ -31,7 +31,7 @@ public class LoadActionEnabler {
     adjustEnabled();
     repository.addRefreshListener(new IChangeListener() {
       @Override
-      public void changeOccured() {
+      public void changeOccurred() {
         adjustEnabled();
       }
     });

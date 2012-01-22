@@ -69,7 +69,7 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
     final ILabelledAlotmentView experienceMaximumView = experienceOverview.addAlotmentView(
         resources.getString("Intimacies.Overview.Maximum"), 2); //$NON-NLS-1$
     model.addModelChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
       }
     });

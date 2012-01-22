@@ -30,7 +30,7 @@ public class AnathemaSaveAction extends SmartAction {
   private static final long serialVersionUID = -6656021137710724695L;
   private IItem currentItem;
   private final IChangeListener changeListener = new IChangeListener() {
-    public void changeOccured() {
+    public void changeOccurred() {
       AnathemaSaveAction.this.setEnabled(currentItem.isDirty());
     }
   };
