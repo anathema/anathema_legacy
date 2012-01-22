@@ -100,7 +100,7 @@ task buildZip(type: Zip) {
     into('lib') {
         from('build/dependencies')
     }
-    into('plugins') {
+    into('lib') {
         from('build/plugins')
     }
     from("Development_Distribution/Linux") {
