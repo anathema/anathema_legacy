@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+        "C:\dev\repos\anathema\Box_DotFA\resources\data\charms\charms.dtd">
+<!--
+
+    awareness.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Awareness -->
+     <charm id="Solar.FallingSunEyes" exalt="Solar" group="Awareness">
+          <prerequisite>
+               <trait id="Awareness" value="5" />
+               <essence value="5" />
+				<charmReference id="Solar.EyeUnconqueredSun" />
+          </prerequisite>
+          <cost>
+               <essence cost="3" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Reflexive">
+			<special primaryStep="1" />
+		</charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Holy" visualize="true" />
+		<charmAttribute attribute="Illusion" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="Shaping" visualize="true" />
+		<charmAttribute attribute="Touch" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.EverWatchfulSentinelDedication" exalt="Solar" group="Awareness">
+          <prerequisite>
+               <trait id="Awareness" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.SurpriseAnticipationMethod" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.OmniscientEarsApproach" exalt="Solar" group="Awareness">
+	<!-- NOTE:  Solar/Linguistics "Mirror" - The Ever-Vigilant Scribe -->
+          <prerequisite>
+               <trait id="Awareness" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.UnsurpassedHearingandTouchDiscipline" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+     </charm>
+</charmlist>

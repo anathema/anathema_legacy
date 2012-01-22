@@ -1,0 +1,137 @@
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+        "C:\dev\repos\anathema\Box_DotFA\resources\data\charms\charms.dtd">
+<!--
+
+    day.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Day Ability Charms -->
+	<charm id="Abyssal.NimbleGhostGrace" exalt="Abyssal" group="Athletics">
+		<prerequisite>
+			<trait id="Athletics" value="5" />
+			<essence value="4" />
+			<charmReference id="Abyssal.RaitonsNimblePerch" />
+			<charmAttributeRequirement attribute="ExcellencyAthletics" count="1" />
+		</prerequisite>
+		<cost>
+			<essence cost="6" />
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Simple">
+			<special speed="4" defense="-0" />
+		</charmtype>
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Unparalleled Acumen Meditation -->
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Abyssal.OblivionsTriumph" exalt="Abyssal" group="Athletics">
+		<prerequisite>
+			<trait id="Athletics" value="5" />
+			<essence value="5" />
+			<charmReference id="Abyssal.CorpseMightSurge" />
+		</prerequisite>
+		<cost>
+			<essence cost="7" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Unconquered Might -->
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Abyssal.DeathDrawsNear" exalt="Abyssal" group="Athletics">
+		<prerequisite>
+			<trait id="Athletics" value="5" />
+			<essence value="5" />
+			<charmReference id="Abyssal.ShadowRacesTheLight" />
+		</prerequisite>
+		<cost>
+			<essence cost="Varies" text="3-8m" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Goodspeed Steps -->
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Abyssal.SwifterThanAScream" exalt="Abyssal" group="Athletics">
+		<prerequisite>
+			<trait id="Athletics" value="7" />
+			<essence value="7" />
+			<charmReference id="Abyssal.DeathDrawsNear" />
+		</prerequisite>
+		<cost>
+			<essence cost="7" />
+				<willpower cost="1" />
+		</cost>
+		<duration amount="1" unit="scene" />
+		<charmtype type="Simple">
+			<special speed="4" />
+		</charmtype>
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
+			<charmAttribute attribute="Mirror" visualize="true" />
+			<!-- NOTE:  Solar Mirror - Speed of Light Approach -->
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+	
+	<charm id="Abyssal.ThousandfoldShadowDance" exalt="Abyssal" group="Dodge">
+		<prerequisite>
+			<trait id="Dodge" value="5" />
+			<essence value="4" />
+			<charmReference id="Abyssal.FlickeringWispTechnique" />
+		</prerequisite>
+		<cost>
+			<essence cost="Varies" text="+3m or +3m, 1wp" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Thousandfold Shadow Dance -->
+		<source source="ScrollErrata" />
+	</charm>
+	<charm id="Abyssal.ShadowFadesAtDawn" exalt="Abyssal" group="Dodge">
+		<prerequisite>
+			<trait id="Dodge" value="5" />
+			<essence value="5" />
+			<charmReference id="Abyssal.FlickeringWispTechnique" />
+			<charmReference id="Abyssal.FoeShamingDefense" />
+		</prerequisite>
+		<cost>
+			<essence cost="Varies" text="+4m"/>
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+          <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Solar Mirror - Divine Witness of Utter Safety -->
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="ScrollErrata" />
+	</charm>
+</charmlist>

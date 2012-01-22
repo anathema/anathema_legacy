@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+        "C:\dev\repos\anathema\Box_DotFA\resources\data\charms\charms.dtd">
+<!--
+
+    archery.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Archery -->
+     <charm id="Solar.LambentBoltOfAnnihilation" exalt="Solar" group="Archery">
+          <prerequisite>
+               <trait id="Archery" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.EssenceArrowAttack" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Howling Shadows of the Void -->
+          <charmAttribute attribute="Obvious" visualize="true" />
+<source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.GoldenArtilleristMethod" exalt="Solar" group="Archery">
+          <prerequisite>
+               <trait id="Archery" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.PhantomArrowTechnique" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Uncanny Extermination Instinct -->
+          <charmAttribute attribute="Obvious" visualize="true" />
+<source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.BoundlessArrowOfTheSun" exalt="Solar" group="Archery">
+          <prerequisite>
+               <trait id="Archery" value="7" />
+               <essence value="7" />
+               <charmReference id="Solar.AccuracyWithoutDistance" />
+          </prerequisite>
+          <cost>
+               <essence cost="Varies" text="(+9m, 1wp)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<!-- NOTE:  Abyssal Mirror - Caught in Oblivion's Eye -->
+          <charmAttribute attribute="Obvious" visualize="true" />
+<source source="LordsOfCreation" />
+          <source source="ScrollErrata" />
+     </charm>
+</charmlist>

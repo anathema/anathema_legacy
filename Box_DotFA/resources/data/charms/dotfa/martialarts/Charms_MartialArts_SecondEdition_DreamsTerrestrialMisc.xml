@@ -1,0 +1,50 @@
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../../charms.dtd">
+<!--
+
+    misc.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Miscellaneous Charms -->
+	 <charm id="Dragon-Blooded.DrowningInUnderstandingKata" exalt="Dragon-Blooded" group="TerrestrialInitiation">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+				<!-- TODO:  net.disy.commons.core.util.ContractFailedException: Charm with id 'Dragon-Blooded.Tiger-and-BearUnity not found. -->
+               <charmReference id="Dragon-Blooded.Tiger-and-BearUnity" />
+               <!-- TODO:  One complete Celestial Style. -->
+          </prerequisite>
+          <cost>
+               <essence cost="25" />
+               <willpower cost="5" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+	    <charmAttribute attribute="Celestial"/>
+          <charmAttribute attribute="Enlightening" visualize="true" />
+          <charmAttribute attribute="Martyr" visualize="true" />
+	    <charmAttribute attribute="NoStyle"/>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <charmAttribute attribute="Training" visualize="true" />
+	    <charmAttribute attribute="Unrestricted"/>
+          <source source="LordsOfCreation" />
+     </charm>
+</charmlist>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+        "C:\dev\repos\anathema\Box_DotFA\resources\data\charms\charms.dtd">
+<!--
+
+    performance.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Performance -->
+     <charm id="Solar.InfatuationGatheringIdolMethodology" exalt="Solar" group="Performance">
+          <prerequisite>
+               <trait id="Performance" value="5" />
+               <essence value="4" />
+               <charmReference id="Solar.Heart-CompellingMethod" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+		<charmAttribute attribute="Emotion" visualize="true" />
+		<charmAttribute attribute="Illusion" visualize="true" />
+          <source source="LordsOfCreation" />
+			<source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.CastOutBeyondRegard" exalt="Solar" group="Performance">
+          <prerequisite>
+               <trait id="Performance" value="8" />
+               <essence value="8" />
+               <charmReference id="Solar.CatchingTheSunsGlance" />
+          </prerequisite>
+          <cost>
+               <essence cost="40" />
+               <willpower cost="2" />
+          </cost>
+          <duration amount="1" unit="performance" />
+          <charmtype type="Simple">
+			<special speed="7" turntype="LongTick" defense="-3" />
+		</charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="Shaping" visualize="true" />
+          <source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+     </charm>
+     <charm id="Solar.CatchingTheSunsGlance" exalt="Solar" group="Performance">
+          <prerequisite>
+               <trait id="Performance" value="7" />
+               <essence value="7" />
+               <charmAttributeRequirement attribute="ExcellencyPerformance" count="1" />
+			<charmReference id="Solar.RespectCommandingAttitude" />
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+               <willpower cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple">
+			<special speed="7" turntype="LongTick" defense="-3" />
+		</charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+			<charmAttribute attribute="Native" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+			<charmAttribute attribute="Shaping" visualize="true" />
+          <source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+     </charm>
+</charmlist>
