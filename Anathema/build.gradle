@@ -1,6 +1,4 @@
 archivesBaseName= 'anathema'
-propertiesDir = new File(buildDir, 'properties')
-libraryDir = 'lib'
 
 jar {
   manifest {
@@ -10,12 +8,6 @@ jar {
       'SplashScreen-Image': 'icons/core/AnathemaSplashNew.png'
     )
   }
-  from(propertiesDir) {
-    include '**/*'
-  }
-}
-
-task buildBootloader << {
 }
 
 dependencies {
@@ -31,33 +23,10 @@ private boolean isNotSelfOrThirdparty(project) {
     return project.name != "Anathema" && project.name != "Thirdparty"
 }
 
-task collectDependencies(type: Copy) {
-  from configurations.compile.findAll { File dependency -> dependency.absolutePath.contains('Thirdparty') }
-  into dependenciesDir
-}
-
-buildBootloader.dependsOn build
-project.parent.subprojects.each {
-    if (isNotSelfOrThirdparty(it)){
-      jar.dependsOn ":${it.name}:collectTransitiveDependencies"
-    }
-}
-project.parent.tasks.each {
-    def isPluginTask = it.name.matches('build.*Plugin')
-    if (isPluginTask) {
-        jar.dependsOn it
-    }
-}
-
 sourceSets {
   main {
     resources {
       srcDir 'resources'
-    }
-  }
-  test {
-    java {
-      srcDir 'test'
     }
   }
 }

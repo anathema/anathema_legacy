@@ -125,7 +125,7 @@ task buildZip(type: Zip) {
 }
 
 [buildZip, buildWindowsInstaller].each {
-    it.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies'
+    it.dependsOn ':Anathema:jar'
     def os = System.getProperty("os.name").toLowerCase()
     if (os.contains("windows")) {
         it.dependsOn buildWindowsExecutable
