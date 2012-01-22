@@ -20,9 +20,6 @@
 			<parameter-def id="development" type="boolean" multiplicity="none-or-one"/>
 		</parameter-def>
 	</extension-point>
-	<extension-point id="Bootjobs">
-		<parameter-def id="class" multiplicity="any"/>
-	</extension-point>
 	<extension-point id="Menubar">
 		<parameter-def id="class" multiplicity="any"/>
 	</extension-point>
@@ -37,11 +34,6 @@
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="Toolbar" id="Toolbar">
 		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreTool"/>
-	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="AnathemaCore">
-		<parameter id="class" value="net.sf.anathema.framework.module.ItemViewBootJob"/>
-		<parameter id="class" value="net.sf.anathema.framework.module.preferences.LookAndFeelNormalizerBootJob"/>
-		<parameter id="class" value="net.sf.anathema.framework.module.preferences.LookAndFeelOverrideBootjob"/>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="anathema"/>

@@ -21,12 +21,6 @@
 		<parameter id="id" value="net.sf.anathema.character.generic.framework.ICharacterGenericsExtension"/>
 	  </parameter>
 	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="Bootjob">
-		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterPerformanceBootJob"/>
-	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="DatabaseJob">
-		<parameter id="class" value="net.sf.anathema.character.equipment.impl.module.DatabaseConversionBootJob"/>
-	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
 		<parameter id="type">
 			<parameter id="class" value="net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration"/>

@@ -4,6 +4,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.view.IAnathemaView;
+import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
@@ -24,6 +25,7 @@ import javax.swing.*;
  * previously set probably corrupted Look and Feel settings and this is the actual goal
  * of this task.
  */
+@BootJob
 public class LookAndFeelOverrideBootjob implements IAnathemaBootJob {
   @Override
   public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {

@@ -15,12 +15,14 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.view.IAnathemaView;
+import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.database.DatabaseUtils;
 
 import com.db4o.ObjectContainer;
 
+@BootJob
 public class DatabaseConversionBootJob implements IAnathemaBootJob {
 
   @Override

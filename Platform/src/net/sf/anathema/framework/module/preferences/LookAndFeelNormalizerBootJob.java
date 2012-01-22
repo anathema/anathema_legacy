@@ -7,6 +7,7 @@ import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.IAnathemaView;
+import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -18,6 +19,7 @@ import net.sf.anathema.lib.resources.IResources;
  * nevertheless by other means "UserLookAndFeel" will not be update regardless the value of
  * "ForceMetalLookAndFeel" (it will still remove "ForceMetalLookAndFeel").
  */
+@BootJob
 public class LookAndFeelNormalizerBootJob implements IAnathemaBootJob {
   private static final String LOOK_AND_FEEL_PREFERENCE = "ForceMetalLookAndFeel"; //$NON-NLS-1$
 

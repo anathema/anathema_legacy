@@ -25,16 +25,15 @@ import org.java.plugin.registry.Extension.Parameter;
 public class AnathemaPresenter {
 
   private static final String PARAM_CLASS = "class"; //$NON-NLS-1$
-  private static final String EXTENSION_POINT_BOOTJOBS = "Bootjobs"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_TOOLBAR = "Toolbar"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_MENUBAR = "Menubar"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_REPORT_FACTORIES = "ReportFactories"; //$NON-NLS-1$
-  private AnathemaReflections reflections;
   private final IAnathemaModel model;
   private final IAnathemaView view;
   private final IResources resources;
   private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
   private final IAnathemaPluginManager pluginManager;
+  private final ReflectionsInstantiater instantiater;
 
   public AnathemaPresenter(
           IAnathemaPluginManager pluginManager,
@@ -43,7 +42,7 @@ public class AnathemaPresenter {
           IResources resources,
           Collection<IItemTypeConfiguration> itemTypeConfigurations) {
     this.pluginManager = pluginManager;
-    this.reflections = reflections;
+    this.instantiater = new ReflectionsInstantiater(reflections);
     this.model = model;
     this.view = view;
     this.resources = resources;
@@ -76,18 +75,16 @@ public class AnathemaPresenter {
   }
 
   private void runBootJobs() throws InitializationException {
-    for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_BOOTJOBS)) {
-      for (Parameter parameter : extension.getParameters(PARAM_CLASS)) {
-        IAnathemaBootJob job = instantiate(parameter, pluginManager, IAnathemaBootJob.class);
-        job.run(resources, model, view);
-      }
+    Collection<IAnathemaBootJob> jobs = instantiater.instantiateAll(BootJob.class);
+    for (IAnathemaBootJob bootJob : jobs) {
+      bootJob.run(resources, model, view);
     }
   }
 
   private void initializePreferences() throws InitializationException {
     PreferencesElementsExtensionPoint extensionPoint = (PreferencesElementsExtensionPoint) model.getExtensionPointRegistry()
             .get(PreferencesElementsExtensionPoint.ID);
-    Collection<IPreferencesElement> elements = new ReflectionsInstantiater(reflections).instantiateAll(PreferenceElement.class);
+    Collection<IPreferencesElement> elements = instantiater.instantiateAll(PreferenceElement.class);
     for (IPreferencesElement element : elements) {
       extensionPoint.addPreferencesElement(element);
     }
