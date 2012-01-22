@@ -5,9 +5,11 @@ import java.util.List;
 
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
+import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResources;
 
+@Extension(id="net.sf.anathema.framework.module.PreferencesElementsExtensionPoint")
 public class PreferencesElementsExtensionPoint implements IAnathemaExtension {
 
   public static final String ID = PreferencesElementsExtensionPoint.class.getName();

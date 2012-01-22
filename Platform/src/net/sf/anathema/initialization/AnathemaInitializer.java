@@ -40,7 +40,7 @@ public class AnathemaInitializer {
     this.pluginManager = new AnathemaPluginManager(manager);
     pluginManager.activatePlugins();
     this.itemTypeCollection = new ItemTypeConfigurationCollection(new ReflectionsInstantiater(reflections));
-    this.extensionCollection = new AnathemaExtensionCollection(pluginManager);
+    this.extensionCollection = new AnathemaExtensionCollection(new ReflectionsInstantiater(reflections));
     this.anathemaPreferences = anathemaPreferences;
   }
 

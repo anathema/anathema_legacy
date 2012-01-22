@@ -5,31 +5,11 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension-point id="AnathemaExtensions">
-		<parameter-def id="type" multiplicity="any">
-			<parameter-def id="class" multiplicity="one"/>
-			<parameter-def id="id" multiplicity="one"/>
-		</parameter-def>
-	</extension-point>
 	<extension-point id="AnathemaResources">
 		<parameter-def id="bundle" multiplicity="any"/>
 	</extension-point>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="anathema"/>
 		<parameter id="bundle" value="About"/>
-	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaExtensions" id="AnathemaExtensions">
-	  <parameter id="type">
-		<parameter id="class" value="net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint"/>
-		<parameter id="id" value="net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint"/>
-	  </parameter>
-	  <parameter id="type">
-		<parameter id="class" value="net.sf.anathema.framework.presenter.menu.MenuExtensionPoint"/>
-		<parameter id="id" value="Menu.Extra"/>
-	  </parameter>
-	  <parameter id="type">
-		<parameter id="class" value="net.sf.anathema.framework.module.PreferencesElementsExtensionPoint"/>
-		<parameter id="id" value="net.sf.anathema.framework.module.PreferencesElementsExtensionPoint"/>
-	  </parameter>
 	</extension>
 </plugin>
