@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!--
+
+    arcanoi_tamer.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Scott Olson (scottolson275@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <charm id="Ghost.TasteTheDemonWind" exalt="Ghost" group="SavageTamer">
+          <prerequisite>
+               <trait id="Valor" value="1" />
+               <essence value="1" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Instant"/>
+          <charmtype type="Simple"/>
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.CallTheRaveningHound" exalt="Ghost" group="SavageTamer">
+          <prerequisite>
+               <trait id="Valor" value="2" />
+               <essence value="1" />
+               <charmReference id="Ghost.TasteTheDemonWind"/>
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant"/>
+          <charmtype type="Simple">
+          	<special speed="4" defense="-1"/>
+          </charmtype>
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.FerociousPredatorBeacon" exalt="Ghost" group="SavageTamer">
+          <prerequisite>
+               <trait id="Valor" value="4" />
+               <essence value="3" />
+               <charmReference id="Ghost.CallTheRaveningHound"/>
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+               <willpower cost="1" text="(1xp or 2xp to extend)"/>
+          </cost>
+          <duration amount="1" unit="hour"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.DiversionOfTheSavageHunter" exalt="Ghost" group="SavageTamer">
+          <prerequisite>
+               <trait id="Valor" value="2" />
+               <essence value="1" />
+               <charmReference id="Ghost.CallTheRaveningHound"/>
+          </prerequisite>
+          <cost>
+               <essence cost="12" />
+          </cost>
+          <duration amount="1" unit="scene"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.TameTheWickedAppetite" exalt="Ghost" group="SavageTamer">
+          <prerequisite>
+               <trait id="Valor" value="2" />
+               <essence value="2" />
+               <charmReference id="Ghost.DiversionOfTheSavageHunter"/>
+          </prerequisite>
+          <cost>
+               <essence cost="8"/>
+          </cost>
+          <duration amount="1" unit="scene"/>
+          <charmtype type="Simple">
+          	<special speed="3" defense="-0"/>
+          </charmtype>
+          <source source="GhostsAndDemons" />
+     </charm>
+     <charm id="Ghost.CommandTheHungryDevil" exalt="Ghost" group="SavageTamer">
+          <prerequisite>
+               <trait id="Valor" value="3" />
+               <essence value="2" />
+               <charmReference id="Ghost.CallTheRaveningHound"/>
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm> 
+     <charm id="Ghost.DustCommandsLitany" exalt="Ghost" group="SavageTamer">
+          <prerequisite>
+               <trait id="Valor" value="2" />
+               <essence value="3" />
+               <charmReference id="Ghost.CommandTheHungryDevil"/>
+          </prerequisite>
+          <cost>
+               <essence cost="12" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Compulsion" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm> 
+     <charm id="Ghost.GhostlyHarnessExercise" exalt="Ghost" group="SavageTamer">
+          <prerequisite>
+               <trait id="Valor" value="3" />
+               <essence value="3" />
+               <charmReference id="Ghost.CommandTheHungryDevil"/>
+               <charmReference id="Ghost.TameTheWickedAppetite"/>
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="month"/>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Servitude" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm> 
+     <charm id="Ghost.SpiritHandlingLeash" exalt="Ghost" group="SavageTamer">
+          <prerequisite>
+               <trait id="Valor" value="3" />
+               <essence value="3" />
+               <charmReference id="Ghost.GhostlyHarnessExercise"/>
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+               <willpower cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="GhostsAndDemons" />
+     </charm> 
+</charmlist>
