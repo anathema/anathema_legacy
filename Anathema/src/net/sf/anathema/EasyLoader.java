@@ -7,9 +7,6 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static com.google.common.collect.Collections2.transform;
-import static com.google.common.collect.Lists.newArrayList;
-
 public class EasyLoader extends URLClassLoader {
 
   public EasyLoader(File file) throws MalformedURLException {
@@ -24,12 +21,24 @@ public class EasyLoader extends URLClassLoader {
   }
 
   private static URL[] allJarFilesInDirectory(File folder) {
-    ArrayList<File> files = newArrayList(folder.listFiles());
-    Collection<URL> urls = transform(files, new ToURL());
+    Collection<URL> urls = new ArrayList<URL>();
+    for (File file : folder.listFiles()) {
+      urls.add(fileToUrl(file));
+    }
     return urls.toArray(new URL[urls.size()]);
   }
 
   private static URL[] singleFile(File file) throws MalformedURLException {
-    return new URL[]{new ToURL().apply(file)};
+    return new URL[]{fileToUrl(file)};
+  }
+
+  private static URL fileToUrl(File input) {
+    try {
+      return input.toURI().toURL();
+    } catch (MalformedURLException e) {
+      throw new RuntimeException("Could not load all files.", e);
+    } catch (NullPointerException e) {
+      throw new RuntimeException("Could not load all files.", e);
+    }
   }
 }

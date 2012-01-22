@@ -7,39 +7,18 @@ jar {
     attributes(
       'Built-By': System.getProperty("user.name"),
       'Main-Class': 'net.sf.anathema.AnathemaBootLoader',
-      'SplashScreen-Image': 'icons/core/AnathemaSplashNew.png',
+      'SplashScreen-Image': 'icons/core/AnathemaSplashNew.png'
     )
   }
   from(propertiesDir) {
     include '**/*'
   }
-  doFirst {
-    manifest.attributes(['Class-Path': 'lib/guava-10.0.jar lib/jsr305-1.3.9.jar'])
-  }
-}
-
-private String createClassPath() {
-    StringBuilder path = new StringBuilder()
-    dependenciesDir.eachFile{ File jar ->
-        path.append("$libraryDir/${jar.name} ")
-    }
-    pluginsDir.eachFile{ File jar ->
-        path.append("plugins/${jar.name} ")
-    }
-    return path.toString().trim()
 }
 
 task buildBootloader << {
 }
 
 dependencies {
-  compile files("../Thirdparty/Jakarta/commons-logging-api.jar")
-  compile project(':Platform')
-  compile project(':Lib')
-  compile 'com.google.guava:guava:10.0'
-  testCompile group: 'junit', name: 'junit', version: '4.+'
-  testCompile project(path: ':Lib', configuration: 'tests')
-  testCompile project(path: ':Platform', configuration: 'tests')
   //For development, all projects need to be on the classpath at runtime.
   project.parent.subprojects.each {
       if (isNotSelfOrThirdparty(it)){
