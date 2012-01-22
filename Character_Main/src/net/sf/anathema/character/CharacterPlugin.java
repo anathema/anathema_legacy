@@ -20,12 +20,6 @@ import org.java.plugin.registry.Extension.Parameter;
 
 public class CharacterPlugin extends Plugin {
 
-  private static final String PARAM_PATH = "path"; //$NON-NLS-1$
-  private static final String PARAM_RULES = "rules"; //$NON-NLS-1$
-  private static final String PARAM_TYPE = "type"; //$NON-NLS-1$
-  private static final String PARAM_LIST = "list"; //$NON-NLS-1$
-  private static final String EXTENSION_POINT_CHARM_LIST = "CharmList"; //$NON-NLS-1$
-  private static final String PLUGIN_ID = "net.sf.anathema.character"; //$NON-NLS-1$
   private static final String Charm_File_Recognition_Pattern = "Charms.*\\.xml";
   //matches stuff like data/charms/solar/Charms_Solar_SecondEdition_Occult.xml
   //the pattern is data/charms/REST_OF_PATH/Charms_TYPE_EDITION_ANYTHING.xml
@@ -36,17 +30,6 @@ public class CharacterPlugin extends Plugin {
     ProxySplashscreen.getInstance().displayStatusMessage("Compiling Charm Sets...");
     AnathemaPluginManager manager = new AnathemaPluginManager(getManager());
     CharmCompiler charmCompiler = new CharmCompiler();
-    for (Extension extension : manager.getExtension(PLUGIN_ID, EXTENSION_POINT_CHARM_LIST)) {
-      for (Parameter listParameter : extension.getParameters(PARAM_LIST)) {
-        Parameter typeParameter = listParameter.getSubParameter(PARAM_TYPE);
-        Parameter rules = listParameter.getSubParameter(PARAM_RULES);
-        Parameter path = listParameter.getSubParameter(PARAM_PATH);
-        String typeString = typeParameter.valueAsString();
-        String ruleString = rules.valueAsString();
-        String pathString = path.valueAsString();
-        registerCharmFile(charmCompiler, typeString, ruleString, pathString);
-      }
-    }
     AnathemaReflections reflections = new DefaultAnathemaReflections();
     getCharmFilesFromReflection(reflections, charmCompiler);
     charmCompiler.buildCharms();

@@ -12,13 +12,6 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension-point id="CharmList">
-		<parameter-def id="list" multiplicity="any">
-			<parameter-def id="type" multiplicity="one"/>
-			<parameter-def id="rules" multiplicity="one"/>
-			<parameter-def id="path" multiplicity="one"/>
-		</parameter-def>
-	</extension-point>	
 	<extension plugin-id="net.sf.anathema.core"	point-id="Menubar" id="Menubar">
 		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterMenu"/>
 	</extension>
