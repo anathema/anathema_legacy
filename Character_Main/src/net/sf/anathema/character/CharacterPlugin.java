@@ -13,9 +13,12 @@ import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
 import net.sf.anathema.initialization.plugin.Plugin;
 import net.sf.anathema.initialization.plugin.Startable;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
+import net.sf.anathema.lib.logging.Logger;
 
 @Plugin
 public class CharacterPlugin implements Startable{
+
+  private static final Logger logger = Logger.getLogger(CharacterPlugin.class);
 
   private static final String Charm_File_Recognition_Pattern = "Charms.*\\.xml";
   //matches stuff like data/charms/solar/Charms_Solar_SecondEdition_Occult.xml
@@ -32,8 +35,8 @@ public class CharacterPlugin implements Startable{
 
   private void getCharmFilesFromReflection(AnathemaReflections reflections, CharmCompiler charmCompiler) throws Exception {
     Set<String> charmFiles = reflections.getResourcesMatching(Charm_File_Recognition_Pattern);
-    System.out.println("Found "+ charmFiles.size() +" data files:");
-    System.out.println(charmFiles);
+    logger.info("Found "+ charmFiles.size() +" data files.");
+    logger.debug(charmFiles.toString());
     Pattern pattern = Pattern.compile(Charm_Data_Extraction_Pattern);
     for (String charmFile : charmFiles) {
       Matcher matcher = pattern.matcher(charmFile);
