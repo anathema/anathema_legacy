@@ -1,0 +1,112 @@
+<charmlist>
+
+<charm id="Dragon-Blooded.All-EncompassingEarthSense" exalt="Dragon-Blooded" group="Awareness">
+ <prerequisite>
+  <trait id="Awareness" value="2"/>
+  <essence value="2"/>
+  <charmAttributeRequirement attribute="ExcellencyAwareness" count="1"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="2"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
+ <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.FeelingDragon'sBones" exalt="Dragon-Blooded" group="Awareness">
+ <prerequisite>
+  <trait id="Awareness" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.All-EncompassingEarthSense"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="2"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.EntombedMindTechnique" exalt="Dragon-Blooded" group="Awareness">
+ <prerequisite>
+  <trait id="Awareness" value="4"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.FeelingDragon'sBones"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="5"/>
+  
+ </cost>
+ <duration amount="Successes" unit="hour"/>
+ <charmtype type="Simple">
+      <special speed="5" turntype="LongTick" />
+ </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Crippling" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Sense-RidingTechnique" exalt="Dragon-Blooded" group="Awareness">
+ <prerequisite>
+  <trait id="Awareness" value="3"/>
+  <essence value="2"/>
+  <charmAttributeRequirement attribute="ExcellencyAwareness" count="1"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="5"/>
+  
+ </cost>
+ <duration event="Disrupted"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Shaping" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Sense-DestroyingMethod" exalt="Dragon-Blooded" group="Awareness">
+ <prerequisite>
+  <trait id="Awareness" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.Sense-RidingTechnique"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="4"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="Essence" unit="action"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Crippling" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.EssenceDisruptionAttack" exalt="Dragon-Blooded" group="Awareness">
+ <prerequisite>
+  <trait id="Awareness" value="5"/>
+  <essence value="4"/>
+  <charmReference id="Dragon-Blooded.Sense-DestroyingMethod"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="3" text="or more"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="Essencex5" unit="tick"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Shaping" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+</charmlist>

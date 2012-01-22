@@ -1,0 +1,188 @@
+<charmlist>
+<charm id="Dragon-Blooded.InfectionBanishingPrana" exalt="Dragon-Blooded" group="Medicine">
+ <prerequisite>
+  <trait id="Medicine" value="2"/>
+  <essence value="2"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Touch" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.DreadInfectionStrike" exalt="Dragon-Blooded" group="Medicine">
+ <prerequisite>
+  <trait id="Medicine" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.InfectionBanishingPrana"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="2"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1"/>
+    </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Sickness" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.DiseaseBanishingTechnique" exalt="Dragon-Blooded" group="Medicine">
+ <prerequisite>
+  <trait id="Medicine" value="4"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.InfectionBanishingPrana"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="4"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Touch" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.WoundClosingTouch" exalt="Dragon-Blooded" group="Medicine">
+ <prerequisite>
+  <trait id="Medicine" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.DiseaseBanishingTechnique"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="2" text="per lhl converted"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Touch" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.GrievousWoundAlterationEnergy" exalt="Dragon-Blooded" group="Medicine">
+ <prerequisite>
+  <trait id="Medicine" value="5"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.WoundClosingTouch"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="3" text="and"/>
+   <willpower cost="1" text="per ahl converted"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Touch" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.MadnessAnalyzingStare" exalt="Dragon-Blooded" group="Medicine">
+ <prerequisite>
+  <trait id="Medicine" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.InfectionBanishingPrana"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="3"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.PurityMindMethod" exalt="Dragon-Blooded" group="Medicine">
+ <prerequisite>
+  <trait id="Medicine" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.WoundClosingTouch"/>
+  <charmReference id="Dragon-Blooded.MadnessAnalyzingStare"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="5"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Touch" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.VerdantCurtainSerenity" exalt="Dragon-Blooded" group="Medicine">
+ <prerequisite>
+  <trait id="Medicine" value="5"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.MadnessAnalyzingStare"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="5"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="2"/>
+    </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.JadeCrucibleMethod" exalt="Dragon-Blooded" group="Medicine">
+ <prerequisite>
+  <trait id="Medicine" value="5"/>
+  <essence value="4"/>
+  <charmReference id="Dragon-Blooded.GrievousWoundAlterationEnergy"/>
+  <charmReference id="Dragon-Blooded.PurityMindMethod"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="Special"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.MostBeneficentSeedFiveDragons" exalt="Dragon-Blooded" group="Medicine">
+ <prerequisite>
+  <trait id="Medicine" value="5"/>
+  <essence value="5"/>
+  <charmReference id="Dragon-Blooded.JadeCrucibleMethod"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="8"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+</charmlist>
