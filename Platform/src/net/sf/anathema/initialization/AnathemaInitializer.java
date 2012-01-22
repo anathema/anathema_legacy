@@ -12,11 +12,17 @@ import net.sf.anathema.framework.view.AnathemaView;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
+import net.sf.anathema.initialization.plugin.Plugin;
+import net.sf.anathema.initialization.plugin.Startable;
+import net.sf.anathema.initialization.reflections.AnathemaReflections;
+import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
 import net.sf.anathema.lib.resources.IResources;
 
 import org.java.plugin.PluginManager;
 import org.java.plugin.registry.Extension;
 import org.java.plugin.registry.Extension.Parameter;
+
+import java.util.Set;
 
 public class AnathemaInitializer {
 
@@ -28,7 +34,7 @@ public class AnathemaInitializer {
   private final AnathemaExtensionCollection extensionCollection;
 
   public AnathemaInitializer(PluginManager manager, IAnathemaPreferences anathemaPreferences)
-      throws InitializationException {
+          throws InitializationException {
     this.pluginManager = new AnathemaPluginManager(manager);
     pluginManager.activatePlugins();
     this.itemTypeCollection = new ItemTypeConfigurationCollection(pluginManager, AnathemaEnvironment.isDevelopment());
@@ -37,6 +43,8 @@ public class AnathemaInitializer {
   }
 
   public IAnathemaView initialize() throws InitializationException {
+    initializePlugins();
+
     IResources resources = initResources();
     ProxySplashscreen.getInstance().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
@@ -47,12 +55,29 @@ public class AnathemaInitializer {
 
   }
 
+  private void initializePlugins() throws InitializationException {
+    try {
+      AnathemaReflections reflections = new DefaultAnathemaReflections();
+      Set<Class<?>> pluginClasses = reflections.getTypesAnnotatedWith(Plugin.class);
+      for (Class<?> pluginClass : pluginClasses) {
+        Startable startablePlugin = (Startable) pluginClass.newInstance();
+        startablePlugin.doStart(reflections);
+      }
+    } catch (InstantiationException e) {
+      throw new InitializationException("Failed to load plugin.", e);
+    } catch (IllegalAccessException e) {
+      throw new InitializationException("Failed to load plugin.", e);
+    } catch (Exception e) {
+      throw new InitializationException("Failed to start plugin.", e);
+    }
+  }
+
   private IAnathemaModel initModel(IResources resources) throws InitializationException {
     ProxySplashscreen.getInstance().displayStatusMessage("Creating Model..."); //$NON-NLS-1$
     return new AnathemaModelInitializer(
-        anathemaPreferences,
-        itemTypeCollection.getItemTypes(),
-        extensionCollection.getExtensionsById()).initializeModel(resources);
+            anathemaPreferences,
+            itemTypeCollection.getItemTypes(),
+            extensionCollection.getExtensionsById()).initializeModel(resources);
   }
 
   private IAnathemaView initView(IResources resources) {

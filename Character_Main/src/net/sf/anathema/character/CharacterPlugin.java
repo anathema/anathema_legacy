@@ -7,18 +7,15 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.sun.org.apache.xpath.internal.FoundIndex;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
-import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
 
+import net.sf.anathema.initialization.plugin.Plugin;
+import net.sf.anathema.initialization.plugin.Startable;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
-import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
-import org.java.plugin.Plugin;
-import org.java.plugin.registry.Extension;
-import org.java.plugin.registry.Extension.Parameter;
 
-public class CharacterPlugin extends Plugin {
+@Plugin
+public class CharacterPlugin implements Startable{
 
   private static final String Charm_File_Recognition_Pattern = "Charms.*\\.xml";
   //matches stuff like data/charms/solar/Charms_Solar_SecondEdition_Occult.xml
@@ -26,11 +23,9 @@ public class CharacterPlugin extends Plugin {
   private static final String Charm_Data_Extraction_Pattern = ".*/Charms_(.*?)_(.*?)(?:_.*)?\\.xml";
 
   @Override
-  protected void doStart() throws Exception {
+  public void doStart(AnathemaReflections reflections) throws Exception {
     ProxySplashscreen.getInstance().displayStatusMessage("Compiling Charm Sets...");
-    AnathemaPluginManager manager = new AnathemaPluginManager(getManager());
     CharmCompiler charmCompiler = new CharmCompiler();
-    AnathemaReflections reflections = new DefaultAnathemaReflections();
     getCharmFilesFromReflection(reflections, charmCompiler);
     charmCompiler.buildCharms();
   }
@@ -55,10 +50,5 @@ public class CharacterPlugin extends Plugin {
       throw new Exception(format("No resource found at {0} for {1}, {2}.", pathString, typeString, ruleString));
     }
     charmCompiler.registerCharmFile(typeString, ruleString, resource);
-  }
-
-  @Override
-  protected void doStop() throws Exception {
-    // nothing to do
   }
 }
