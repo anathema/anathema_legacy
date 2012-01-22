@@ -21,7 +21,7 @@ public class AnathemaDevelopmentBootLoader {
     ObjectFactory factory = ObjectFactory.newInstance();
     PluginManager manager = factory.createManager(factory.createRegistry(), new AnathemaPathResolver());
     collectPlugins(manager);
-    new Anathema(manager).startApplication();
+    new Anathema().startApplication();
   }
 
   public static boolean isSplashScreenSupported() {

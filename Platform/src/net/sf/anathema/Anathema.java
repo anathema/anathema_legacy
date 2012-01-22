@@ -7,15 +7,11 @@ import net.sf.anathema.framework.view.ErrorWindow;
 import net.sf.anathema.framework.view.IWindow;
 import net.sf.anathema.initialization.AnathemaInitializer;
 import net.sf.anathema.initialization.InitializationException;
-import org.java.plugin.PluginManager;
 import org.java.plugin.boot.Application;
 
 import javax.swing.*;
 
 public class Anathema implements Application {
-
-  public Anathema(PluginManager manager) {
-  }
 
   public void startApplication() throws Exception {
     IAnathemaPreferences anathemaPreferences = loadPreferences();
