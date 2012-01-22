@@ -14,7 +14,7 @@ Set Up
 Development
 ===========
 ### Launching Anathema from an IDE ###
-Launch ``net.sf.anathema.AnathemaDevelopmentBootLoader``.
+Launch ``net.sf.anathema.AnathemaBootLoader``.
 
 ### Adding a dependency ###
 1. Add the dependency entry to the module's ``build.gradle``.

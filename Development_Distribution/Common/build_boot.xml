@@ -3,7 +3,7 @@
 
 	<property file="../directories.properties" />
 
-	<target name="Build" depends="Prepare, Compile Bootloader, Create Properties, Build JAR" />
+	<target name="Build" depends="Prepare, Compile Bootloader, Build JAR" />
 
 	<target name="Build JAR">
 		<jar destfile="${build.dir}/anathema.jar">
@@ -17,13 +17,6 @@
 			<fileset dir="${boot.dir}" includes="**/*" />
 			<fileset dir="${workspace.dir}/Anathema/resources" includes="**/*" excludes="**/Thumbs.db" />
 		</jar>
-	</target>
-
-	<target name="Create Properties" depends="Prepare">
-		<propertyfile file="${boot.dir}/boot.properties">
-			<entry key="org.java.plugin.boot.applicationPlugin" value="net.sf.anathema.core" />
-			<entry key="org.java.plugin.PathResolver" value="net.sf.anathema.AnathemaPathResolver" />
-		</propertyfile>
 	</target>
 
 	<target name="Compile Bootloader" depends="Prepare">
