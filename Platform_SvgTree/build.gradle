@@ -1,8 +1,5 @@
 dependencies {
-  compile files(
-          "../Thirdparty/XML/xml-apis-dom3.jar",
-          "../Thirdparty/XML/xml-apis-ext.jar"
-  )
+  compile 'xml-apis:xml-apis-ext:1.3.04'
   compile fileTree(dir: '../Thirdparty/SVG', include: '*.jar')
   compile project(':Lib')
   compile project(':Platform')
