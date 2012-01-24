@@ -29,13 +29,7 @@ public class AnathemaModelInitializer {
   }
 
   public IAnathemaModel initializeModel(IResources resources) throws InitializationException {
-    AnathemaModel model;
-    try {
-      model = new AnathemaModel(createRepositoryFolder(), resources);
-    }
-    catch (RepositoryException e) {
-      throw new InitializationException("Failed to create repository folder.\nPlease check read/write permissions.", e); //$NON-NLS-1$
-    }
+    AnathemaModel model = createModel(resources);
     for (ExtensionWithId extension : extensions) {
       extension.register(model, resources);
     }
@@ -46,6 +40,15 @@ public class AnathemaModelInitializer {
       itemTypeConfiguration.initModel(model);
     }
     return model;
+  }
+
+  private AnathemaModel createModel(IResources resources) throws InitializationException {
+    try {
+      return new AnathemaModel(createRepositoryFolder(), resources);
+    }
+    catch (RepositoryException e) {
+      throw new InitializationException("Failed to create repository folder.\nPlease check read/write permissions.", e); //$NON-NLS-1$
+    }
   }
 
   private File createRepositoryFolder() throws RepositoryException {
