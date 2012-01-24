@@ -37,8 +37,7 @@ public class AnathemaModelInitializer {
       throw new InitializationException("Failed to create repository folder.\nPlease check read/write permissions.", e); //$NON-NLS-1$
     }
     for (ExtensionWithId extension : extensions) {
-      extension.extension.initialize(resources, model.getRepository());
-      model.getExtensionPointRegistry().register(extension.id, extension.extension);
+      extension.register(model, resources);
     }
     for (IItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());
