@@ -66,7 +66,7 @@ public class AnathemaInitializer {
     return new AnathemaModelInitializer(
             anathemaPreferences,
             itemTypeCollection.getItemTypes(),
-            extensionCollection.getExtensionsById()).initializeModel(resources);
+            extensionCollection).initializeModel(resources);
   }
 
   private IAnathemaView initView(IResources resources) {

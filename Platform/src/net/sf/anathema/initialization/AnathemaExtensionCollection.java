@@ -1,25 +1,24 @@
 package net.sf.anathema.initialization;
 
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 
-public class AnathemaExtensionCollection {
+public class AnathemaExtensionCollection implements Iterable<ExtensionWithId> {
 
-  private final Map<String, IAnathemaExtension> extensionsById = new LinkedHashMap<String, IAnathemaExtension>();
+  private final List<ExtensionWithId> extensions = new ArrayList<ExtensionWithId>();
 
   public AnathemaExtensionCollection(Instantiater instantiater) throws InitializationException {
-    Collection<IAnathemaExtension> extensions = instantiater.instantiateAll(Extension.class);
-    for (IAnathemaExtension extension : extensions) {
+    Collection<IAnathemaExtension> registeredExtensions = instantiater.instantiateAll(Extension.class);
+    for (IAnathemaExtension extension : registeredExtensions) {
       Extension annotation = extension.getClass().getAnnotation(Extension.class);
       String id = annotation.id();
-      extensionsById.put(id, extension);
+      extensions.add(new ExtensionWithId(id, extension));
     }
   }
 
-  public Map<String, IAnathemaExtension> getExtensionsById() {
-    return extensionsById;
+  @Override
+  public Iterator<ExtensionWithId> iterator() {
+    return extensions.iterator();
   }
 }
