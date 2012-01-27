@@ -61,18 +61,23 @@
 			<string>$JAVAROOT/lib/commons-io.jar</string>
 			<string>$JAVAROOT/lib/commons-logging-api.jar</string>
 			<string>$JAVAROOT/lib/db4o-6.0-java5.jar</string>
-			<string>$JAVAROOT/lib/disy-commons-core.jar</string>
-			<string>$JAVAROOT/lib/disy-commons-swing-dialog.jar</string>
-			<string>$JAVAROOT/lib/disy-commons-swing-layout.jar</string>
-			<string>$JAVAROOT/lib/disy-commons-swing.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-core-5.0.0-SNAPSHOT.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-swing-dialog-5.0.0-SNAPSHOT.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-swing-layout-5.0.0-SNAPSHOT.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-swing-5.0.0-SNAPSHOT.jar</string>
+			<string>$JAVAROOT/lib/dom4j-1.5.jar</string>
 			<string>$JAVAROOT/lib/graphlayout.jar</string>
 			<string>$JAVAROOT/lib/idw-gpl-1.4.0.jar</string>
 			<string>$JAVAROOT/lib/itext-1.4.jar</string>
 			<string>$JAVAROOT/lib/javalayer.jar</string>
+			<string>$JAVAROOT/lib/jpf-boot.jar</string>
+			<string>$JAVAROOT/lib/jpf.jar</string>
 			<string>$JAVAROOT/lib/l2fprod-common-directorychooser.jar</string>
 			<string>$JAVAROOT/lib/l2fprod-common-tasks.jar</string>
 			<string>$JAVAROOT/lib/mp3spi1.9.2.jar</string>
 			<string>$JAVAROOT/lib/tritonus_share.jar</string>
+			<string>$JAVAROOT/lib/xml-apis-dom3.jar</string>
+			<string>$JAVAROOT/lib/xml-apis-ext.jar</string>
 			</array>
 		<key>Properties</key>
 		<dict>

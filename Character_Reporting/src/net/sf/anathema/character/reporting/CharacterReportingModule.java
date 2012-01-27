@@ -41,8 +41,8 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
   private CharacterReportingModuleObject moduleObject;
 
   @Override
-  public void initModuleObject() {
-    this.moduleObject = new CharacterReportingModuleObject();
+  public void initModuleObject(ICharacterGenerics characterGenerics) {
+    this.moduleObject = new CharacterReportingModuleObject(characterGenerics.getInstantiater());
   }
 
   @Override

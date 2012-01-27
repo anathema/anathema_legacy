@@ -12,35 +12,38 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 
 public interface ICharacterGenerics {
 
-  public IIdentificateRegistry<IBackgroundTemplate> getBackgroundRegistry();
+  IIdentificateRegistry<IBackgroundTemplate> getBackgroundRegistry();
 
-  public ITemplateRegistry getTemplateRegistry();
+  ITemplateRegistry getTemplateRegistry();
 
-  public IRegistry<String, IAdditionalModelFactory> getAdditionalModelFactoryRegistry();
+  IRegistry<String, IAdditionalModelFactory> getAdditionalModelFactoryRegistry();
 
-  public IRegistry<String, IAdditionalViewFactory> getAdditionalViewFactoryRegistry();
+  IRegistry<String, IAdditionalViewFactory> getAdditionalViewFactoryRegistry();
 
-  public IRegistry<String, IAdditionalPersisterFactory> getAdditonalPersisterFactoryRegistry();
+  IRegistry<String, IAdditionalPersisterFactory> getAdditonalPersisterFactoryRegistry();
 
-  public IIdentificateRegistry<IGlobalAdditionalTemplate> getGlobalAdditionalTemplateRegistry();
+  IIdentificateRegistry<IGlobalAdditionalTemplate> getGlobalAdditionalTemplateRegistry();
 
-  public ICharacterTemplateRegistryCollection getCharacterTemplateRegistries();
+  ICharacterTemplateRegistryCollection getCharacterTemplateRegistries();
 
-  public IRegistry<ICharacterType, ICasteCollection> getCasteCollectionRegistry();
+  IRegistry<ICharacterType, ICasteCollection> getCasteCollectionRegistry();
 
-  public IRegistry<String, IAdditionalTemplateParser> getAdditionalTemplateParserRegistry();
+  IRegistry<String, IAdditionalTemplateParser> getAdditionalTemplateParserRegistry();
 
-  public ICharmProvider getCharmProvider();
+  ICharmProvider getCharmProvider();
 
-  public ICharacterModuleObjectMap getModuleObjectMap();
+  ICharacterModuleObjectMap getModuleObjectMap();
 
-  public IDataFileProvider getDataFileProvider();
+  IDataFileProvider getDataFileProvider();
 
-  public IRegistry<ICharacterType, IMagicStats[]> getGenericCharmStatsRegistry();
+  IRegistry<ICharacterType, IMagicStats[]> getGenericCharmStatsRegistry();
+
+  Instantiater getInstantiater();
 }

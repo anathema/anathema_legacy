@@ -7,7 +7,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface ICharacterModule<M extends ICharacterModuleObject> {
 
-  public void initModuleObject();
+  public void initModuleObject(ICharacterGenerics characterGenerics);
 
   public void addCharacterTemplates(ICharacterGenerics characterGenerics);
 

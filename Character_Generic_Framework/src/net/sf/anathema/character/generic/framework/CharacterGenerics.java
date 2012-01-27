@@ -17,6 +17,7 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -84,6 +85,11 @@ public class CharacterGenerics implements ICharacterGenerics {
   @Override
   public IRegistry<ICharacterType, IMagicStats[]> getGenericCharmStatsRegistry() {
     return genericCharmRegistry;
+  }
+
+  @Override
+  public Instantiater getInstantiater() {
+    return null;  //To change body of implemented methods use File | Settings | File Templates.
   }
 
   public ICharmProvider getCharmProvider() {
