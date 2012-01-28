@@ -14,8 +14,8 @@ public class ExtensionWithId {
     this.extension = extension;
   }
 
-  public void register(AnathemaModel model, IResources resources) throws InitializationException {
-    extension.initialize(resources, model.getRepository());
+  public void register(AnathemaModel model, IResources resources, Instantiater instantiater) throws InitializationException {
+    extension.initialize(resources, model.getRepository(), instantiater);
     model.getExtensionPointRegistry().register(id, extension);
   }
 }

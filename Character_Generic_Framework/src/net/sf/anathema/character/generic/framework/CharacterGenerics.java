@@ -39,8 +39,10 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final ICharmProvider charmProvider = new CharmProvider();
   private final CharacterModuleObjectMap moduleObjectMap = new CharacterModuleObjectMap();
   private final IDataFileProvider dataFileProvider;
+  private final Instantiater instantiater;
 
-  public CharacterGenerics(IDataFileProvider dataFileProvider) {
+  public CharacterGenerics(IDataFileProvider dataFileProvider, Instantiater instantiater) {
+    this.instantiater = instantiater;
     this.additionalPersisterRegistry = new Registry<String, IAdditionalPersisterFactory>(
             new NullAdditionalPersisterFactory());
     this.dataFileProvider = dataFileProvider;
@@ -89,7 +91,7 @@ public class CharacterGenerics implements ICharacterGenerics {
 
   @Override
   public Instantiater getInstantiater() {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return instantiater;
   }
 
   public ICharmProvider getCharmProvider() {

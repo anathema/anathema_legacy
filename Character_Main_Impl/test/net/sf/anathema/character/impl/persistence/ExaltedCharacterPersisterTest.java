@@ -49,7 +49,7 @@ public class ExaltedCharacterPersisterTest {
   }
 
   private ICharacterGenerics createCharacterGenerics() {
-    ICharacterGenerics generics = new CharacterGenerics(null);
+    ICharacterGenerics generics = new CharacterGenerics(null, null);
     generics.getTemplateRegistry().register(template);
     return generics;
   }

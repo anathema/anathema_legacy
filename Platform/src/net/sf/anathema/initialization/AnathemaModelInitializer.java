@@ -18,20 +18,22 @@ public class AnathemaModelInitializer {
   private final IAnathemaPreferences anathemaPreferences;
   private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
   private Iterable<ExtensionWithId> extensions;
+  private Instantiater instantiater;
 
   public AnathemaModelInitializer(
-      IAnathemaPreferences anathemaPreferences,
-      Collection<IItemTypeConfiguration> itemTypeConfigurations,
-      Iterable<ExtensionWithId> extensions) {
+          IAnathemaPreferences anathemaPreferences,
+          Collection<IItemTypeConfiguration> itemTypeConfigurations,
+          Iterable<ExtensionWithId> extensions, Instantiater instantiater) {
     this.anathemaPreferences = anathemaPreferences;
     this.itemTypeConfigurations = itemTypeConfigurations;
     this.extensions = extensions;
+    this.instantiater = instantiater;
   }
 
   public IAnathemaModel initializeModel(IResources resources) throws InitializationException {
     AnathemaModel model = createModel(resources);
     for (ExtensionWithId extension : extensions) {
-      extension.register(model, resources);
+      extension.register(model, resources, instantiater);
     }
     for (IItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());
