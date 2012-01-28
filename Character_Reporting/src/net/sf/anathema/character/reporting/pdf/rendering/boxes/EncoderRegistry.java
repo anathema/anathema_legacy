@@ -43,7 +43,7 @@ public class EncoderRegistry {
 
   private EncoderFactory findFactory(ReportContent content, String... ids) {
     for (String id : ids) {
-      for (EncoderFactory factory : getFactoriesByIdWithoutReflection().get(id)) {
+      for (EncoderFactory factory : getFactoriesByIdViaReflection().get(id)) {
         BasicContent basicContent = createBasicContent(content);
         if (factory.supports(basicContent)) {
           return factory;
