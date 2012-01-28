@@ -7,8 +7,6 @@ import net.sf.anathema.character.abyssal.equipment.FangTemplate;
 import net.sf.anathema.character.abyssal.reporting.Extended1stEditionAbyssalPartEncoder;
 import net.sf.anathema.character.abyssal.reporting.content.Abyssal1stResonanceContent;
 import net.sf.anathema.character.abyssal.reporting.content.Abyssal1stResonanceContentFactory;
-import net.sf.anathema.character.abyssal.reporting.rendering.Anima1stEditionEncoderFactory;
-import net.sf.anathema.character.abyssal.reporting.rendering.Resonance1stEditionEncoderFactory;
 import net.sf.anathema.character.abyssal.template.LoyalAbyssalTemplate;
 import net.sf.anathema.character.abyssal.template.RenegadeAbyssalTemplate;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
@@ -104,7 +102,5 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
     moduleObject.getContentRegistry().addFactory(Abyssal1stResonanceContent.class, new Abyssal1stResonanceContentFactory(resources));
     ExtendedEncodingRegistry extendedRegistry = moduleObject.getExtendedEncodingRegistry();
     extendedRegistry.setPartEncoder(ABYSSAL, FirstEdition, new Extended1stEditionAbyssalPartEncoder(resources, extendedRegistry, ESSENCE_MAX));
-    moduleObject.getEncoderRegistry().add(new Anima1stEditionEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new Resonance1stEditionEncoderFactory());
   }
 }

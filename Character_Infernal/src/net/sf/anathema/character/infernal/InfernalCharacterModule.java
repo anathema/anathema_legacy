@@ -27,8 +27,6 @@ import net.sf.anathema.character.infernal.reporting.content.InfernalUrgeContent;
 import net.sf.anathema.character.infernal.reporting.content.InfernalUrgeContentFactory;
 import net.sf.anathema.character.infernal.reporting.content.InfernalYoziListContent;
 import net.sf.anathema.character.infernal.reporting.content.InfernalYoziListContentFactory;
-import net.sf.anathema.character.infernal.reporting.rendering.AnimaEncoderFactory;
-import net.sf.anathema.character.infernal.reporting.rendering.UrgeEncoderFactory;
 import net.sf.anathema.character.infernal.urge.*;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
@@ -90,8 +88,6 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     addReportContent(resources, moduleObject.getContentRegistry());
-    moduleObject.getEncoderRegistry().add(new UrgeEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new AnimaEncoderFactory());
     addExtendedParts(resources, moduleObject);
   }
 

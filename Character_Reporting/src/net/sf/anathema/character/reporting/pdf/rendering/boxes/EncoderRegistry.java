@@ -14,15 +14,10 @@ import java.util.Collection;
 public class EncoderRegistry {
 
   private static final Logger logger = Logger.getLogger(EncoderRegistry.class);
-  private final MultiEntryMap<String, EncoderFactory> factoryById = new MultiEntryMap<String, EncoderFactory>();
   private Instantiater instantiater;
 
   public EncoderRegistry(Instantiater instantiater) {
     this.instantiater = instantiater;
-  }
-
-  public void add(EncoderFactory factory) {
-    factoryById.add(factory.getId(), factory);
   }
 
   public boolean hasEncoder(String id, ReportContent content) {
@@ -51,10 +46,6 @@ public class EncoderRegistry {
       }
     }
     return new NullEncoderFactory(ids[0]);
-  }
-
-  private MultiEntryMap<String, EncoderFactory> getFactoriesByIdWithoutReflection() {
-    return factoryById;
   }
 
   private MultiEntryMap<String, EncoderFactory> getFactoriesByIdViaReflection() {

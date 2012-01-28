@@ -20,19 +20,6 @@ import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContent;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContent;
 import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContentFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.AbilitiesWithCraftAndSpecialtiesEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes.AttributesEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.BackgroundsEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.SimpleEssenceBoxEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.GenericCharmEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.notes.NotesEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.social.SocialCombatEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.ExtendedWillpowerEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoderFactory;
 import net.sf.anathema.lib.resources.IResources;
 
 @CharacterModule
@@ -53,23 +40,6 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     addReportContents(resources);
-    addReportEncoders();
-  }
-
-  private void addReportEncoders() {
-    EncoderRegistry registry = moduleObject.getEncoderRegistry();
-    registry.add(new AbilitiesWithCraftAndSpecialtiesEncoderFactory());
-    registry.add(new AttributesEncoderFactory());
-    registry.add(new BackgroundsEncoderFactory());
-    registry.add(new ExperienceBoxEncoderFactory());
-    registry.add(new GenericCharmEncoderFactory());
-    registry.add(new NotesEncoderFactory());
-    registry.add(new PersonalInfoEncoderFactory());
-    registry.add(new SimpleEssenceBoxEncoderFactory());
-    registry.add(new SocialCombatEncoderFactory());
-    registry.add(new SimpleWillpowerEncoderFactory());
-    registry.add(new ExtendedWillpowerEncoderFactory());
-    registry.add(new VirtueEncoderFactory());
   }
 
   private void addReportContents(IResources resources) {

@@ -6,8 +6,6 @@ import net.sf.anathema.character.abyssal.generic.*;
 import net.sf.anathema.character.abyssal.reporting.Extended2ndEditionAbyssalPartEncoder;
 import net.sf.anathema.character.abyssal.reporting.content.Abyssal2ndResonanceContent;
 import net.sf.anathema.character.abyssal.reporting.content.Abyssal2ndResonanceContentFactory;
-import net.sf.anathema.character.abyssal.reporting.rendering.Anima2ndEditionEncoderFactory;
-import net.sf.anathema.character.abyssal.reporting.rendering.Resonance2ndEditionEncoderFactory;
 import net.sf.anathema.character.abyssal.resonance.*;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
@@ -105,8 +103,6 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
     moduleObject.getContentRegistry().addFactory(Abyssal2ndResonanceContent.class, new Abyssal2ndResonanceContentFactory(resources));
     ExtendedEncodingRegistry extendedRegistry = moduleObject.getExtendedEncodingRegistry();
     extendedRegistry.setPartEncoder(ABYSSAL, SecondEdition, new Extended2ndEditionAbyssalPartEncoder(resources, extendedRegistry, ESSENCE_MAX));
-    moduleObject.getEncoderRegistry().add(new Anima2ndEditionEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new Resonance2ndEditionEncoderFactory());
   }
 
   @Override
