@@ -5,6 +5,7 @@ dependencies {
           "../Thirdparty/XML/jaxen-1.1.3.jar"
   )
   compile 'dom4j:dom4j:1.6.1'
+  compile 'xml-apis:xml-apis:1.3.04' //dom4j doesn't need these, but pulls an older version anyway
   compile project(':Lib_Thirdparty')
   testCompile 'junit:junit:4.+'
 }
