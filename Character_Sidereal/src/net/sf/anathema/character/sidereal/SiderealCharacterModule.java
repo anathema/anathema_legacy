@@ -43,9 +43,6 @@ import net.sf.anathema.character.sidereal.reporting.content.SiderealCollageConte
 import net.sf.anathema.character.sidereal.reporting.content.SiderealCollegeContent;
 import net.sf.anathema.character.sidereal.reporting.layout.Sidereal1stEditionDetailsPageFactory;
 import net.sf.anathema.character.sidereal.reporting.layout.Sidereal2ndEditionDetailsPageFactory;
-import net.sf.anathema.character.sidereal.reporting.rendering.anima.AnimaEncoderFactory;
-import net.sf.anathema.character.sidereal.reporting.rendering.greatcurse.FlawedFateEncoderFactory;
-import net.sf.anathema.character.sidereal.reporting.rendering.greatcurse.ParadoxEncoderFactory;
 import net.sf.anathema.character.sidereal.template.DefaultSiderealTemplate;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -168,9 +165,6 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     moduleObject.getContentRegistry().addFactory(SiderealCollegeContent.class, new SiderealCollageContentFactory(resources));
-    moduleObject.getEncoderRegistry().add(new AnimaEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new FlawedFateEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new ParadoxEncoderFactory());
     registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry());
     moduleObject.getAdditionalPageRegistry().add(new Sidereal1stEditionDetailsPageFactory());
     moduleObject.getAdditionalPageRegistry().add(new Sidereal2ndEditionDetailsPageFactory());

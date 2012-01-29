@@ -15,7 +15,6 @@ import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingR
 import net.sf.anathema.character.spirit.generic.DivineSubordination;
 import net.sf.anathema.character.spirit.generic.InfiniteMastery;
 import net.sf.anathema.character.spirit.reporting.Extended2ndEditionSpiritPartEncoder;
-import net.sf.anathema.character.spirit.reporting.SpiritAnimaEncoderFactory;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
@@ -43,7 +42,6 @@ public class SpiritCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getEncoderRegistry().add(new SpiritAnimaEncoderFactory());
     registerExtendedEncoders(resources, moduleObject);
   }
 

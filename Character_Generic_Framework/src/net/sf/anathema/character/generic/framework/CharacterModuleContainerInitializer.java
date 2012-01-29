@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.framework.module.CharacterModuleContain
 import net.sf.anathema.character.generic.framework.module.ICharacterModule;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
 import net.sf.anathema.initialization.InitializationException;
+import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
@@ -44,9 +45,14 @@ public class CharacterModuleContainerInitializer {
       add("net.sf.anathema.character.reporting.second.SecondEditionReportingModule"); //$NON-NLS-1$
     }
   };
+  private Instantiater instantiater;
+
+  public CharacterModuleContainerInitializer(Instantiater instantiater) {
+    this.instantiater = instantiater;
+  }
 
   public CharacterModuleContainer initContainer(IResources resources, IDataFileProvider dataFileProvider) throws InitializationException {
-    CharacterModuleContainer container = new CharacterModuleContainer(resources, dataFileProvider);
+    CharacterModuleContainer container = new CharacterModuleContainer(resources, dataFileProvider,instantiater);
     for (String moduleName : moduleNameList) {
       addModule(container, moduleName);
     }

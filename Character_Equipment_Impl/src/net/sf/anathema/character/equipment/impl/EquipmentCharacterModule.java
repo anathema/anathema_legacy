@@ -8,12 +8,9 @@ import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalVie
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase;
 import net.sf.anathema.character.equipment.impl.reporting.content.*;
-import net.sf.anathema.character.equipment.impl.reporting.rendering.arsenal.ArsenalEncoderFactory;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.ArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.ArmourTableEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.PanoplyEncoderFactory;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.possessions.PossessionsEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.rendering.possessions.PossessionsEncoderFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
@@ -22,7 +19,6 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -51,13 +47,6 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     registerEncoders(resources, moduleObject.getExtendedEncodingRegistry());
     registerContent(moduleObject.getContentRegistry(), resources);
-    registerBoxEncoders(moduleObject.getEncoderRegistry());
-  }
-
-  private void registerBoxEncoders(EncoderRegistry registry) {
-    registry.add(new ArsenalEncoderFactory());
-    registry.add(new PanoplyEncoderFactory());
-    registry.add(new PossessionsEncoderFactory());
   }
 
   private void registerContent(ReportContentRegistry registry, IResources resources) {

@@ -10,7 +10,6 @@ import net.sf.anathema.character.meritsflaws.model.MeritsFlawsModelFactory;
 import net.sf.anathema.character.meritsflaws.persistence.MeritsFlawsPersisterFactory;
 import net.sf.anathema.character.meritsflaws.reporting.MeritsAndFlawsContent;
 import net.sf.anathema.character.meritsflaws.reporting.MeritsAndFlawsContentFactory;
-import net.sf.anathema.character.meritsflaws.reporting.MeritsAndFlawsEncoderFactory;
 import net.sf.anathema.character.meritsflaws.template.MeritsFlawsTemplate;
 import net.sf.anathema.character.meritsflaws.view.MeritsFlawsViewFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -37,6 +36,5 @@ public class MeritsFlawsModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     moduleObject.getContentRegistry().addFactory(MeritsAndFlawsContent.class, new MeritsAndFlawsContentFactory(resources));
-    moduleObject.getEncoderRegistry().add(new MeritsAndFlawsEncoderFactory());
   }
 }

@@ -24,8 +24,6 @@ import net.sf.anathema.character.ghost.reporting.content.GhostFetterContent;
 import net.sf.anathema.character.ghost.reporting.content.GhostFetterContentFactory;
 import net.sf.anathema.character.ghost.reporting.content.GhostPassionContent;
 import net.sf.anathema.character.ghost.reporting.content.GhostPassionContentFactory;
-import net.sf.anathema.character.ghost.reporting.rendering.FetterEncoderFactory;
-import net.sf.anathema.character.ghost.reporting.rendering.PassionEncoderFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
@@ -112,8 +110,6 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     addReportContents(moduleObject.getContentRegistry(), resources);
-    moduleObject.getEncoderRegistry().add(new FetterEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new PassionEncoderFactory());
     addExtendedParts(resources, moduleObject);
   }
 

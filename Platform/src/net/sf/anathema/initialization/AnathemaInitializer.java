@@ -27,12 +27,14 @@ public class AnathemaInitializer {
   private final ItemTypeConfigurationCollection itemTypeCollection;
   private final AnathemaExtensionCollection extensionCollection;
   private final AnathemaReflections reflections;
+  private final ReflectionsInstantiater instantiater;
 
   public AnathemaInitializer(IAnathemaPreferences anathemaPreferences)
           throws InitializationException {
     this.reflections = new DefaultAnathemaReflections();
-    this.itemTypeCollection = new ItemTypeConfigurationCollection(new ReflectionsInstantiater(reflections));
-    this.extensionCollection = new AnathemaExtensionCollection(new ReflectionsInstantiater(reflections));
+    this.instantiater = new ReflectionsInstantiater(reflections);
+    this.itemTypeCollection = new ItemTypeConfigurationCollection(instantiater);
+    this.extensionCollection = new AnathemaExtensionCollection(instantiater);
     this.anathemaPreferences = anathemaPreferences;
   }
 
@@ -43,7 +45,7 @@ public class AnathemaInitializer {
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
     IAnathemaModel anathemaModel = initModel(resources);
     IAnathemaView view = initView(resources);
-    new AnathemaPresenter(anathemaModel, view, resources, itemTypeCollection.getItemTypes(), new ReflectionsInstantiater(reflections)).initPresentation();
+    new AnathemaPresenter(anathemaModel, view, resources, itemTypeCollection.getItemTypes(), instantiater).initPresentation();
     return view;
 
   }
@@ -64,7 +66,7 @@ public class AnathemaInitializer {
     return new AnathemaModelInitializer(
             anathemaPreferences,
             itemTypeCollection.getItemTypes(),
-            extensionCollection.getExtensionsById()).initializeModel(resources);
+            extensionCollection, instantiater).initializeModel(resources);
   }
 
   private IAnathemaView initView(IResources resources) {

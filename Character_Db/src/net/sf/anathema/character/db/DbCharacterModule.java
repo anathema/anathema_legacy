@@ -8,9 +8,6 @@ import net.sf.anathema.character.db.reporting.content.Db1stEditionGreatCurseCont
 import net.sf.anathema.character.db.reporting.content.Db1stEditionGreatCurseContentFactory;
 import net.sf.anathema.character.db.reporting.content.Db2ndEditionGreatCurseContent;
 import net.sf.anathema.character.db.reporting.content.Db2ndEditionGreatCurseContentFactory;
-import net.sf.anathema.character.db.reporting.rendering.AnimaEncoderFactory;
-import net.sf.anathema.character.db.reporting.rendering.GreatCurse1stEditionEncoderFactory;
-import net.sf.anathema.character.db.reporting.rendering.GreatCurse2ndEditionEncoderFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawModelFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawParser;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
@@ -199,9 +196,6 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     addContent(resources, moduleObject);
-    moduleObject.getEncoderRegistry().add(new GreatCurse1stEditionEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new GreatCurse2ndEditionEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new AnimaEncoderFactory());
     addExtendedParts(resources, moduleObject);
   }
 
