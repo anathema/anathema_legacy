@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.impl.template.points;
 
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 
 public class MultiplyRatingCosts implements ICurrentRatingCosts {
 

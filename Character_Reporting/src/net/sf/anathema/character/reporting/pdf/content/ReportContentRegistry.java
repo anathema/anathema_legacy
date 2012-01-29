@@ -17,7 +17,7 @@ public class ReportContentRegistry {
 
   public <C extends SubContent> ReportContentFactory<C> getFactory(Class<C> contentClass) {
     try {
-      Collection<ReportContentFactory> contentFactories = instantiater.instantiateAll(RegisteredReportContent.class, IResources.class, resources);
+      Collection<ReportContentFactory> contentFactories = instantiater.instantiateAll(RegisteredReportContent.class, resources);
       for (ReportContentFactory factory : contentFactories) {
         RegisteredReportContent annotation = factory.getClass().getAnnotation(RegisteredReportContent.class);
         if (annotation.produces().equals(contentClass)) {
