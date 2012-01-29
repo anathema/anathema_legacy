@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.traits.FavorableTraitContent;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
@@ -53,6 +52,11 @@ public class SiderealCollegeContent extends FavorableTraitContent {
     return new SiderealCollegeTraitCollection(collegeModel);
   }
 
+  @Override
+  public int getTraitMax() {
+    return 5;
+  }
+
   private ISiderealCollegeModel getCollegeModel() {
     return (ISiderealCollegeModel) getCharacter().getAdditionalModel(SiderealCollegeTemplate.ID);
   }
@@ -64,8 +68,8 @@ public class SiderealCollegeContent extends FavorableTraitContent {
 
   @Override
   public String getGroupNamePrefix() {
-    return "Sheet.Colleges.Houses." +
-    (getCharacter().getTemplate().getEdition() == ExaltedEdition.SecondEdition ? "2E." : ""); //$NON-NLS-1$
+    String editionString = getCharacter().getTemplate().getEdition() == ExaltedEdition.SecondEdition ? "2E." : "";
+    return "Sheet.Colleges.Houses." + editionString;
   }
 
   @Override
