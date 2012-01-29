@@ -84,10 +84,6 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
     return partEncoderTable.get(type, edition);
   }
 
-  public boolean hasPartEncoder(ICharacterType type, IExaltedEdition edition) {
-    return partEncoderTable.contains(type, edition);
-  }
-
   @Override
   public void setPossessionsEncoder(ContentEncoder encoder) {
     this.possessionsEncoder = encoder;
