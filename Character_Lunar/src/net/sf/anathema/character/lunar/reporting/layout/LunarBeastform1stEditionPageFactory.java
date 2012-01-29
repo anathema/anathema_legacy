@@ -6,8 +6,10 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.pages.PageFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.pages.RegisteredAdditionalPage;
 import net.sf.anathema.lib.resources.IResources;
 
+@RegisteredAdditionalPage
 public class LunarBeastform1stEditionPageFactory implements PageFactory {
 
   @Override

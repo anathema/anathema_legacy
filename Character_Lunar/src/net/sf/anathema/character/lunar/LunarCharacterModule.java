@@ -48,8 +48,6 @@ import net.sf.anathema.character.lunar.reporting.content.equipment.LunarWeaponry
 import net.sf.anathema.character.lunar.reporting.content.equipment.LunarWeaponryContentFactory;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContentFactory;
-import net.sf.anathema.character.lunar.reporting.layout.Lunar2ndEditionAdditionalPageFactory;
-import net.sf.anathema.character.lunar.reporting.layout.LunarBeastform1stEditionPageFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawModelFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
@@ -213,8 +211,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     registerContent(resources, moduleObject.getContentRegistry());
     registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry(), moduleObject.getEncoderRegistry());
-    moduleObject.getAdditionalPageRegistry().add(new LunarBeastform1stEditionPageFactory());
-    moduleObject.getAdditionalPageRegistry().add(new Lunar2ndEditionAdditionalPageFactory());
   }
 
   private void registerContent(IResources resources, ReportContentRegistry contentRegistry) {

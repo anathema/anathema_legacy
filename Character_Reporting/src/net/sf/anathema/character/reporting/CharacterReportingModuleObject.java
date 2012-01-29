@@ -9,13 +9,16 @@ import net.sf.anathema.initialization.Instantiater;
 
 public class CharacterReportingModuleObject implements ICharacterModuleObject {
 
-  private final ExtendedEncodingRegistry extendedEncodingRegistry = new ExtendedEncodingRegistry();
-  private final ReportContentRegistry contentRegistry = new ReportContentRegistry();
+  private final ExtendedEncodingRegistry extendedEncodingRegistry;
+  private final ReportContentRegistry contentRegistry;
   private final EncoderRegistry encoderRegistry;
-  private final PageRegistry additionalPageRegistry = new PageRegistry();
+  private final PageRegistry additionalPageRegistry;
 
   public CharacterReportingModuleObject(Instantiater instantiater) {
     this.encoderRegistry = new EncoderRegistry(instantiater);
+    this.extendedEncodingRegistry = new ExtendedEncodingRegistry();
+    this.contentRegistry = new ReportContentRegistry();
+    this.additionalPageRegistry = new PageRegistry(instantiater);
   }
 
   public ExtendedEncodingRegistry getExtendedEncodingRegistry() {

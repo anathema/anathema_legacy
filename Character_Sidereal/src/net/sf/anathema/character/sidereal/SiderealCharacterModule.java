@@ -41,8 +41,6 @@ import net.sf.anathema.character.sidereal.reporting.Extended1stEditionSiderealPa
 import net.sf.anathema.character.sidereal.reporting.Extended2ndEditionSiderealPartEncoder;
 import net.sf.anathema.character.sidereal.reporting.content.SiderealCollageContentFactory;
 import net.sf.anathema.character.sidereal.reporting.content.SiderealCollegeContent;
-import net.sf.anathema.character.sidereal.reporting.layout.Sidereal1stEditionDetailsPageFactory;
-import net.sf.anathema.character.sidereal.reporting.layout.Sidereal2ndEditionDetailsPageFactory;
 import net.sf.anathema.character.sidereal.template.DefaultSiderealTemplate;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -166,8 +164,6 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     moduleObject.getContentRegistry().addFactory(SiderealCollegeContent.class, new SiderealCollageContentFactory(resources));
     registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry());
-    moduleObject.getAdditionalPageRegistry().add(new Sidereal1stEditionDetailsPageFactory());
-    moduleObject.getAdditionalPageRegistry().add(new Sidereal2ndEditionDetailsPageFactory());
   }
 
   private void registerExtendedReporting(IResources resources, ExtendedEncodingRegistry registry) {
