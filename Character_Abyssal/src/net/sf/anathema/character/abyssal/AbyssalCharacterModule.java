@@ -5,8 +5,6 @@ import net.sf.anathema.character.abyssal.additional.AdditionalLoyalAbyssalRules;
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
 import net.sf.anathema.character.abyssal.equipment.FangTemplate;
 import net.sf.anathema.character.abyssal.reporting.Extended1stEditionAbyssalPartEncoder;
-import net.sf.anathema.character.abyssal.reporting.content.Abyssal1stResonanceContent;
-import net.sf.anathema.character.abyssal.reporting.content.Abyssal1stResonanceContentFactory;
 import net.sf.anathema.character.abyssal.template.LoyalAbyssalTemplate;
 import net.sf.anathema.character.abyssal.template.RenegadeAbyssalTemplate;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
@@ -99,7 +97,6 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getContentRegistry().addFactory(Abyssal1stResonanceContent.class, new Abyssal1stResonanceContentFactory(resources));
     ExtendedEncodingRegistry extendedRegistry = moduleObject.getExtendedEncodingRegistry();
     extendedRegistry.setPartEncoder(ABYSSAL, FirstEdition, new Extended1stEditionAbyssalPartEncoder(resources, extendedRegistry, ESSENCE_MAX));
   }

@@ -17,7 +17,6 @@ import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IEncodingRegistry;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
@@ -46,16 +45,6 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     registerEncoders(resources, moduleObject.getExtendedEncodingRegistry());
-    registerContent(moduleObject.getContentRegistry(), resources);
-  }
-
-  private void registerContent(ReportContentRegistry registry, IResources resources) {
-    registry.addFactory(Weaponry1stEditionContent.class, new Weaponry1stEditionContentFactory(resources));
-    registry.addFactory(Weaponry2ndEditionContent.class, new Weaponry2ndEditionContentFactory(resources));
-    registry.addFactory(ShieldContent.class, new ShieldContentFactory(resources));
-    registry.addFactory(ArmourContent.class, new ArmourContentFactory(resources));
-    registry.addFactory(WeaponryContent.class, new WeaponryContentFactory(resources));
-    registry.addFactory(PossessionsContent.class, new PossessionsContentFactory(resources));
   }
 
   private void registerEncoders(IResources resources, IEncodingRegistry registry) {

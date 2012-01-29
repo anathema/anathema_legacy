@@ -27,8 +27,6 @@ import net.sf.anathema.character.solar.generic.InfiniteMastery;
 import net.sf.anathema.character.solar.generic.SupremePerfectionOf;
 import net.sf.anathema.character.solar.reporting.Extended1stEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.reporting.Extended2ndSolarPartEncoder;
-import net.sf.anathema.character.solar.reporting.content.VirtueFlawContent;
-import net.sf.anathema.character.solar.reporting.content.VirtueFlawContentFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
@@ -122,7 +120,6 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getContentRegistry().addFactory(VirtueFlawContent.class, new VirtueFlawContentFactory(resources));
     registerExtendedEncoders(resources, moduleObject);
   }
 

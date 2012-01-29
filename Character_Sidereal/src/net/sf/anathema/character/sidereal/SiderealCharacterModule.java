@@ -39,8 +39,6 @@ import net.sf.anathema.character.sidereal.generic.PropitiousAlignment;
 import net.sf.anathema.character.sidereal.paradox.*;
 import net.sf.anathema.character.sidereal.reporting.Extended1stEditionSiderealPartEncoder;
 import net.sf.anathema.character.sidereal.reporting.Extended2ndEditionSiderealPartEncoder;
-import net.sf.anathema.character.sidereal.reporting.content.SiderealCollageContentFactory;
-import net.sf.anathema.character.sidereal.reporting.content.SiderealCollegeContent;
 import net.sf.anathema.character.sidereal.template.DefaultSiderealTemplate;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -162,7 +160,6 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getContentRegistry().addFactory(SiderealCollegeContent.class, new SiderealCollageContentFactory(resources));
     registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry());
   }
 

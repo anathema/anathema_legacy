@@ -23,14 +23,9 @@ import net.sf.anathema.character.infernal.patron.InfernalPatronTemplate;
 import net.sf.anathema.character.infernal.patron.InfernalPatronViewFactory;
 import net.sf.anathema.character.infernal.patron.persistence.InfernalPatronPersisterFactory;
 import net.sf.anathema.character.infernal.reporting.ExtendedInfernalPartEncoder;
-import net.sf.anathema.character.infernal.reporting.content.InfernalUrgeContent;
-import net.sf.anathema.character.infernal.reporting.content.InfernalUrgeContentFactory;
-import net.sf.anathema.character.infernal.reporting.content.InfernalYoziListContent;
-import net.sf.anathema.character.infernal.reporting.content.InfernalYoziListContentFactory;
 import net.sf.anathema.character.infernal.urge.*;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -87,13 +82,7 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    addReportContent(resources, moduleObject.getContentRegistry());
     addExtendedParts(resources, moduleObject);
-  }
-
-  private void addReportContent(IResources resources, ReportContentRegistry registry) {
-    registry.addFactory(InfernalYoziListContent.class, new InfernalYoziListContentFactory(resources));
-    registry.addFactory(InfernalUrgeContent.class, new InfernalUrgeContentFactory(resources));
   }
 
   private void addExtendedParts(IResources resources, CharacterReportingModuleObject moduleObject) {

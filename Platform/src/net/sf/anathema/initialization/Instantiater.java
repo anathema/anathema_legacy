@@ -6,4 +6,6 @@ import java.util.Collection;
 public interface Instantiater {
   @SuppressWarnings("unchecked")
   <T> Collection<T> instantiateAll(Class<? extends Annotation> annotation) throws InitializationException;
+
+  <T, P> Collection<T> instantiateAll(Class<? extends Annotation> annotation, Class<P> parameterClass, P parameter) throws InitializationException;
 }

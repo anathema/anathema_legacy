@@ -40,21 +40,12 @@ import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.RenownViewFactory;
 import net.sf.anathema.character.lunar.reporting.Extended1stEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.reporting.Extended2ndEditionLunarPartEncoder;
-import net.sf.anathema.character.lunar.reporting.content.GiftContent;
-import net.sf.anathema.character.lunar.reporting.content.GiftContentFactory;
-import net.sf.anathema.character.lunar.reporting.content.equipment.LunarArmourContent;
-import net.sf.anathema.character.lunar.reporting.content.equipment.LunarArmourContentFactory;
-import net.sf.anathema.character.lunar.reporting.content.equipment.LunarWeaponryContent;
-import net.sf.anathema.character.lunar.reporting.content.equipment.LunarWeaponryContentFactory;
-import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
-import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContentFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawModelFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawViewFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
@@ -209,15 +200,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    registerContent(resources, moduleObject.getContentRegistry());
     registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry(), moduleObject.getEncoderRegistry());
-  }
-
-  private void registerContent(IResources resources, ReportContentRegistry contentRegistry) {
-    contentRegistry.addFactory(KnackContent.class, new KnackContentFactory(resources));
-    contentRegistry.addFactory(LunarWeaponryContent.class, new LunarWeaponryContentFactory(resources));
-    contentRegistry.addFactory(LunarArmourContent.class, new LunarArmourContentFactory(resources));
-    contentRegistry.addFactory(GiftContent.class, new GiftContentFactory(resources));
   }
 
   private void registerExtendedReporting(IResources resources, ExtendedEncodingRegistry registry, EncoderRegistry encoderRegistry) {

@@ -15,7 +15,6 @@ public class ExtendedIntimaciesContentFactory implements ReportContentFactory<Ex
   }
 
   @Override
-
   public ExtendedIntimaciesContent create(IGenericCharacter character, IGenericDescription description) {
     return new ExtendedIntimaciesContent(resources, character);
   }

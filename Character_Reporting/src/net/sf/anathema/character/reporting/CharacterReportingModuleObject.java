@@ -17,7 +17,7 @@ public class CharacterReportingModuleObject implements ICharacterModuleObject {
   public CharacterReportingModuleObject(Instantiater instantiater) {
     this.encoderRegistry = new EncoderRegistry(instantiater);
     this.extendedEncodingRegistry = new ExtendedEncodingRegistry();
-    this.contentRegistry = new ReportContentRegistry();
+    this.contentRegistry = new ReportContentRegistry(instantiater);
     this.additionalPageRegistry = new PageRegistry(instantiater);
   }
 

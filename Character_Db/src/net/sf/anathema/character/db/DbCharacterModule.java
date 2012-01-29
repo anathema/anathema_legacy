@@ -4,10 +4,6 @@ import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.magic.TerrestrialReinforcement;
 import net.sf.anathema.character.db.reporting.Extended1stEditionDbPartEncoder;
 import net.sf.anathema.character.db.reporting.Extended2ndEditionDbPartEncoder;
-import net.sf.anathema.character.db.reporting.content.Db1stEditionGreatCurseContent;
-import net.sf.anathema.character.db.reporting.content.Db1stEditionGreatCurseContentFactory;
-import net.sf.anathema.character.db.reporting.content.Db2ndEditionGreatCurseContent;
-import net.sf.anathema.character.db.reporting.content.Db2ndEditionGreatCurseContentFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawModelFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawParser;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
@@ -35,7 +31,6 @@ import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.library.virtueflaw.persistence.DefaultVirtueFlawPersisterFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
@@ -195,14 +190,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    addContent(resources, moduleObject);
     addExtendedParts(resources, moduleObject);
-  }
-
-  private void addContent(IResources resources, CharacterReportingModuleObject moduleObject) {
-    ReportContentRegistry registry = moduleObject.getContentRegistry();
-    registry.addFactory(Db1stEditionGreatCurseContent.class, new Db1stEditionGreatCurseContentFactory(resources));
-    registry.addFactory(Db2ndEditionGreatCurseContent.class, new Db2ndEditionGreatCurseContentFactory(resources));
   }
 
   private void addExtendedParts(IResources resources, CharacterReportingModuleObject moduleObject) {

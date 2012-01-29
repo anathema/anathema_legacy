@@ -6,8 +6,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
-import net.sf.anathema.character.linguistics.reporting.LinguisticsContent;
-import net.sf.anathema.character.linguistics.reporting.LinguisticsContentFactory;
 import net.sf.anathema.character.linguistics.reporting.LinguisticsEncoder;
 import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -33,7 +31,6 @@ public class LinguisticsModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getContentRegistry().addFactory(LinguisticsContent.class, new LinguisticsContentFactory(resources));
     moduleObject.getExtendedEncodingRegistry().setLinguisticsEncoder(new LinguisticsEncoder());
   }
 }
