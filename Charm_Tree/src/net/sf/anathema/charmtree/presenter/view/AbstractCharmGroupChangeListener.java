@@ -10,7 +10,6 @@ import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 
 import java.util.List;
 import java.util.Set;
@@ -26,11 +25,10 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   private IIdentificate currentType;
 
   public AbstractCharmGroupChangeListener(
-          ISvgTreeView charmTreeView,
           ITemplateRegistry templateRegistry,
           ICharmGroupArbitrator arbitrator,
-          List<ICharmFilter> charmFilterSet, IExaltedEdition edition) {
-    this.charmTreeRenderer = new SvgCharmTreeRenderer(charmTreeView);
+          List<ICharmFilter> charmFilterSet, IExaltedEdition edition, CharmTreeRenderer treeRenderer) {
+    this.charmTreeRenderer = treeRenderer;
     this.templateRegistry = templateRegistry;
     this.arbitrator = arbitrator;
     this.charmFilterSet = charmFilterSet;

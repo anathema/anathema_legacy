@@ -12,21 +12,23 @@ import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 
 public interface ICascadeSelectionView {
 
-  public ISvgTreeView getCharmTreeView();
+  ISvgTreeView getCharmTreeView();
 
-  public void addDocumentLoadedListener(IDocumentLoadedListener listener);
+  CharmTreeRenderer getCharmTreeRenderer();
 
-  public void addCharmTypeSelector(String title, IIdentificate[] types, ListCellRenderer renderer);
+  void addDocumentLoadedListener(IDocumentLoadedListener listener);
 
-  public void addCharmTypeSelectionListener(IObjectValueChangedListener<IIdentificate> selectionListener);
+  void addCharmTypeSelector(String title, IIdentificate[] types, ListCellRenderer renderer);
+
+  void addCharmTypeSelectionListener(IObjectValueChangedListener<IIdentificate> selectionListener);
   
-  public void addCharmFilterButton(SmartAction action, String titleText, String buttonText);
+  void addCharmFilterButton(SmartAction action, String titleText, String buttonText);
 
-  public void fillCharmGroupBox(IIdentificate[] charmGroups);
+  void fillCharmGroupBox(IIdentificate[] charmGroups);
 
-  public void fillCharmTypeBox(IIdentificate[] cascadeTypes);
+  void fillCharmTypeBox(IIdentificate[] cascadeTypes);
 
-  public void addCharmGroupSelector(
+  void addCharmGroupSelector(
       String title,
       ListCellRenderer renderer,
       ICharmGroupChangeListener selectionListener,

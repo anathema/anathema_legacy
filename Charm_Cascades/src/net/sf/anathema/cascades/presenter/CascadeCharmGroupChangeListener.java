@@ -23,7 +23,7 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
           CascadeCharmTreeViewProperties viewProperties,
           ITemplateRegistry templateRegistry,
           List<ICharmFilter> charmFilterSet) {
-    super(cascadeView.getCharmTreeView(), templateRegistry, new FriendlyCharmGroupArbitrator(), charmFilterSet, ExaltedEdition.FirstEdition);
+    super(templateRegistry, new FriendlyCharmGroupArbitrator(), charmFilterSet, ExaltedEdition.FirstEdition, cascadeView.getCharmTreeRenderer());
     this.cascadeView = cascadeView;
     this.viewProperties = viewProperties;
     this.templateRegistry = templateRegistry;

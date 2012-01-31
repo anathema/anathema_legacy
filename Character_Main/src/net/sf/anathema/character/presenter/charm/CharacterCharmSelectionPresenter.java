@@ -1,32 +1,10 @@
 package net.sf.anathema.character.presenter.charm;
 
-import java.awt.Color;
-
-import java.awt.Toolkit;
-import java.awt.event.HierarchyEvent;
-import java.awt.event.HierarchyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import javax.swing.ToolTipManager;
-
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
-import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
+import net.sf.anathema.character.generic.magic.charms.special.*;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -55,6 +33,16 @@ import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGCategorizedSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGToggleButtonSpecialNodeView;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPresenter implements IContentPresenter {
 
   private final ICharmTreeViewProperties viewProperties;
@@ -66,10 +54,10 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   private final IMagicViewFactory viewFactory;
 
   public CharacterCharmSelectionPresenter(
-      final ICharacterStatistics statistics,
-      final IResources resources,
-      final ITemplateRegistry templateRegistry,
-      final IMagicViewFactory factory) {
+          final ICharacterStatistics statistics,
+          final IResources resources,
+          final ITemplateRegistry templateRegistry,
+          final IMagicViewFactory factory) {
     super(resources, templateRegistry);
     this.viewFactory = factory;
     IPresentationProperties presentationProperties = statistics.getCharacterTemplate().getPresentationProperties();
@@ -82,17 +70,16 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   public void initPresentation() {
     final ICharmConfiguration charms = getCharmConfiguration();
     boolean alienCharms = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(
-        statistics.getCharacterConcept().getCaste().getType());
+            statistics.getCharacterConcept().getCaste().getType());
     createCharmTypeSelector(getCurrentCharmTypes(alienCharms), view, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
     initFilters(charms);
     this.charmSelectionChangeListener = new CharacterCharmGroupChangeListener(
-        view.getCharmTreeView(),
-        getTemplateRegistry(),
-        getCharmConfiguration(),
-        filterSet,
-        statistics.getRules().getEdition());
+            getTemplateRegistry(),
+            getCharmConfiguration(),
+            filterSet,
+            statistics.getRules().getEdition(), view.getCharmTreeRenderer());
     initSpecialCharmViews();
-    initCharmTypeSelectionListening(charms);
+    initCharmTypeSelectionListening();
     initCasteListening();
     createCharmGroupSelector(view, charmSelectionChangeListener, charms.getAllGroups());
     createFilterButton(view);
@@ -102,22 +89,21 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
           return;
         }
         ILearningCharmGroup charmGroup = statistics.getCharms().getGroup(statistics.getCharms().getCharmById(charmId));
-        
+
         charmGroup.toggleLearned(charms.getCharmById(charmId));
       }
     });
     initCharmLearnListening(charms);
-    view.getCharmTreeView().getComponent().addHierarchyListener(new HierarchyListener()
-    {
+    view.getCharmTreeView().getComponent().addHierarchyListener(new HierarchyListener() {
 
-		@Override
-		public void hierarchyChanged(HierarchyEvent arg0) {
-			if ((arg0.getChangeFlags() & HierarchyEvent.SHOWING_CHANGED) != 0 &&
-				view.getCharmTreeView().getComponent().isShowing())
-				refresh();
-			
-		}
-    	
+      @Override
+      public void hierarchyChanged(HierarchyEvent arg0) {
+        if ((arg0.getChangeFlags() & HierarchyEvent.SHOWING_CHANGED) != 0 &&
+                view.getCharmTreeView().getComponent().isShowing())
+          refresh();
+
+      }
+
     });
     view.getCharmTreeView().getComponent().addMouseListener(new MouseAdapter() {
       @Override
@@ -150,18 +136,15 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     });
     view.initGui();
   }
-  
-  private void initFilters(ICharmConfiguration charms)
-  {
-	  if (charms.getCharmFilters() == null)
-	  {
-		  filterSet.add(new ObtainableCharmFilter(statistics.getCharms()));
-		  filterSet.add(new SourceBookCharmFilter(statistics.getRules().getEdition(),
-				  statistics.getCharms()));
-		  statistics.getCharms().setCharmFilters(filterSet);
-	  }
-	  else
-		  filterSet = charms.getCharmFilters();	  
+
+  private void initFilters(ICharmConfiguration charms) {
+    if (charms.getCharmFilters() == null) {
+      filterSet.add(new ObtainableCharmFilter(statistics.getCharms()));
+      filterSet.add(new SourceBookCharmFilter(statistics.getRules().getEdition(),
+              statistics.getCharms()));
+      statistics.getCharms().setCharmFilters(filterSet);
+    } else
+      filterSet = charms.getCharmFilters();
   }
 
   public IViewContent getTabContent() {
@@ -174,9 +157,9 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     caste.addChangeListener(new IChangeListener() {
       public void changeOccurred() {
         boolean alienCharms = statistics.getCharacterTemplate()
-            .getMagicTemplate()
-            .getCharmTemplate()
-            .isAllowedAlienCharms(caste.getType());
+                .getMagicTemplate()
+                .getCharmTemplate()
+                .isAllowedAlienCharms(caste.getType());
         ICharmConfiguration charmConfiguration = getCharmConfiguration();
         if (!alienCharms) {
           charmConfiguration.unlearnAllAlienCharms();
@@ -193,17 +176,16 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     types.add(MartialArtsUtilities.MARTIAL_ARTS);
     return types.toArray(new IIdentificate[types.size()]);
   }
-  
-  private void refresh()
-  {
-	  handleTypeSelectionChange(currentType);
-	  charmSelectionChangeListener.reselect();
+
+  private void refresh() {
+    handleTypeSelectionChange(currentType);
+    charmSelectionChangeListener.reselect();
   }
 
-  private void initCharmTypeSelectionListening(final ICharmConfiguration charms) {
+  private void initCharmTypeSelectionListening() {
     view.addCharmTypeSelectionListener(new IObjectValueChangedListener<IIdentificate>() {
       public void valueChanged(final IIdentificate cascadeType) {
-    	  currentType = cascadeType;
+        currentType = cascadeType;
         handleTypeSelectionChange(cascadeType);
       }
     });
@@ -213,7 +195,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     ICharmGroup[] allCharmGroups = new ICharmGroup[0];
     if (cascadeType != null) {
       allCharmGroups = sortCharmGroups(getCharmConfiguration()
-    		  .getCharmGroups(cascadeType));
+              .getCharmGroups(cascadeType));
     }
     view.fillCharmGroupBox(allCharmGroups);
     showSpecialViews();
@@ -303,45 +285,42 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     charm.accept(new ISpecialCharmVisitor() {
       public void visitMultiLearnableCharm(final IMultiLearnableCharm visitedCharm) {
         SVGCategorizedSpecialNodeView multiLearnableCharmView = viewFactory.createMultiLearnableCharmView(
-            visitedCharm,
-            getCharmWidth(),
-            characterColor);
+                visitedCharm,
+                getCharmWidth(),
+                characterColor);
         IMultiLearnableCharmConfiguration model = (IMultiLearnableCharmConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
-            visitedCharm.getCharmId());
+                visitedCharm.getCharmId());
         new MultiLearnableCharmPresenter(getResources(), multiLearnableCharmView, model).initPresentation();
         specialCharmViews.add(multiLearnableCharmView);
       }
 
       public void visitOxBodyTechnique(final IOxBodyTechniqueCharm visited) {
         SVGCategorizedSpecialNodeView oxBodyTechniqueView = viewFactory.createMultiLearnableCharmView(
-            visited,
-            getCharmWidth(),
-            characterColor);
+                visited,
+                getCharmWidth(),
+                characterColor);
         ICharm originalCharm = statistics.getCharms().getCharmById(visited.getCharmId());
         IOxBodyTechniqueConfiguration model = (IOxBodyTechniqueConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
-            visited.getCharmId());
+                visited.getCharmId());
         new OxBodyTechniquePresenter(getResources(), oxBodyTechniqueView, model).initPresentation();
         if ((originalCharm.hasChildren() || originalCharm.isTreeRoot()) && model.getCategories().length > 1) {
           specialCharmViews.add(viewFactory.createViewControlButton(
-              oxBodyTechniqueView,
-              getCharmWidth(),
-              getResources().getString("CharmTreeView.Ox-Body.HealthLevels"))); //$NON-NLS-1$
-        }
-        else {
+                  oxBodyTechniqueView,
+                  getCharmWidth(),
+                  getResources().getString("CharmTreeView.Ox-Body.HealthLevels"))); //$NON-NLS-1$
+        } else {
           specialCharmViews.add(oxBodyTechniqueView);
         }
       }
-      
-      public void visitPrerequisiteModifyingCharm(final IPrerequisiteModifyingCharm visited)
-      {
-    	  // Nothing to do
+
+      public void visitPrerequisiteModifyingCharm(final IPrerequisiteModifyingCharm visited) {
+        // Nothing to do
       }
-      
-      public void visitTraitCapModifyingCharm(final ITraitCapModifyingCharm visited)
-      {
-    	  // Nothing to do
+
+      public void visitTraitCapModifyingCharm(final ITraitCapModifyingCharm visited) {
+        // Nothing to do
       }
-      
+
       public void visitPainToleranceCharm(final IPainToleranceCharm visited) {
         // Nothing to do
       }
@@ -353,40 +332,38 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       public void visitMultipleEffectCharm(final IMultipleEffectCharm visited) {
         createMultipleEffectCharmView(visited, visited.getCharmId() + ".ControlButton"); //$NON-NLS-1$
       }
-      
-      public void visitUpgradableCharm(final IUpgradableCharm visited)
-      {
-    	  createMultipleEffectCharmView(visited, visited.getCharmId() + ".ControlButton"); //$NON-NLS-1$  
+
+      public void visitUpgradableCharm(final IUpgradableCharm visited) {
+        createMultipleEffectCharmView(visited, visited.getCharmId() + ".ControlButton"); //$NON-NLS-1$
       }
     });
   }
 
   private void createMultipleEffectCharmView(final IMultipleEffectCharm visited, final String labelKey) {
     SVGToggleButtonSpecialNodeView subeffectView = viewFactory.createSubeffectCharmView(
-        visited,
-        getCharmWidth(),
-        characterColor);
+            visited,
+            getCharmWidth(),
+            characterColor);
     ICharm originalCharm = getCharmConfiguration().getCharmById(visited.getCharmId());
     IMultipleEffectCharmConfiguration model = (IMultipleEffectCharmConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
-        visited.getCharmId());
+            visited.getCharmId());
     new MultipleEffectCharmPresenter(getResources(), subeffectView, model).initPresentation();
     if ((originalCharm.hasChildren() || originalCharm.isTreeRoot()) && model.getEffects().length > 1) {
       specialCharmViews.add(viewFactory.createViewControlButton(
-          subeffectView,
-          getCharmWidth(),
-          getResources().getString(labelKey)));
-    }
-    else {
+              subeffectView,
+              getCharmWidth(),
+              getResources().getString(labelKey)));
+    } else {
       specialCharmViews.add(subeffectView);
     }
   }
 
   private double getCharmWidth() {
     return statistics.getCharacterTemplate()
-        .getPresentationProperties()
-        .getCharmPresentationProperties()
-        .getNodeDimension()
-        .getWidth();
+            .getPresentationProperties()
+            .getCharmPresentationProperties()
+            .getNodeDimension()
+            .getWidth();
   }
 
   private ICharmConfiguration getCharmConfiguration() {
