@@ -19,17 +19,17 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   private final ITemplateRegistry templateRegistry;
   private final ICharmGroupArbitrator arbitrator;
+  private final CharmTreeRenderer charmTreeRenderer;
   protected final List<ICharmFilter> charmFilterSet;
   private ICharmGroup currentGroup;
   private IIdentificate currentType;
-  private final CharmTreeRenderer charmTreeRenderer;
 
   public AbstractCharmGroupChangeListener(
           ISvgTreeView charmTreeView,
           ITemplateRegistry templateRegistry,
           ICharmGroupArbitrator arbitrator,
           List<ICharmFilter> charmFilterSet) {
-    charmTreeRenderer = new CharmTreeRenderer(charmTreeView);
+    this.charmTreeRenderer = new SvgCharmTreeRenderer(charmTreeView);
     this.templateRegistry = templateRegistry;
     this.arbitrator = arbitrator;
     this.charmFilterSet = charmFilterSet;
@@ -69,8 +69,8 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   private void loadCharmTree(ICharmGroup charmGroup, IIdentificate type) {
     boolean resetView = !(currentGroup == charmGroup && currentType != null && currentType.getId().equals(type.getId()));
-    currentGroup = charmGroup;
-    currentType = type;
+    this.currentGroup = charmGroup;
+    this.currentType = type;
     modifyCharmVisuals(type);
     if (charmGroup == null) {
       charmTreeRenderer.clearView();
