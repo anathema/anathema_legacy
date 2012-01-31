@@ -1,7 +1,6 @@
 dependencies {
     testCompile project(':Lib')
     testCompile project(':Lib_Gui')
-    testCompile project(':Lib_Thirdparty')
     testCompile project(':Lib_Workflow')
     testCompile project(':Platform')
     testCompile project(':Charm_Entry')

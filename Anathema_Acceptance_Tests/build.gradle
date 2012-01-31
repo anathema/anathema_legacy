@@ -2,7 +2,6 @@ dependencies {
     testCompile 'net.disy.commons:disy-commons-core:5.0.0-SNAPSHOT'
     testCompile project(':Lib')
     testCompile project(':Lib_Gui')
-    testCompile project(':Lib_Thirdparty')
     testCompile project(':Lib_Workflow')
     testCompile project(':Platform')
     testCompile project(':Charm_Entry')

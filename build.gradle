@@ -51,7 +51,7 @@ subprojects {
 
     task collectTransitiveDependencies() << {
         copy {
-            from configurations.compile.findAll { File dependency -> (dependency.absolutePath.contains('Thirdparty') || dependency.absolutePath.contains('cache')) && !dependency.absolutePath.contains("Lib_Thirdparty") }
+            from configurations.compile.findAll { File dependency -> (dependency.absolutePath.contains('Thirdparty') || dependency.absolutePath.contains('cache')) }
             into dependenciesDir
         }
     }

@@ -5,6 +5,9 @@ dependencies {
     testCompile project(path: ':Lib', configuration: 'tests')
     testCompile project(path: ':Character_Generic', configuration: 'tests')
     testCompile project(path: ':Character_Generic_Impl', configuration: 'tests')
+    compile files(
+            "../Thirdparty/JeksParser/jeksparser.jar",
+    )
 }
 
 sourceSets {
