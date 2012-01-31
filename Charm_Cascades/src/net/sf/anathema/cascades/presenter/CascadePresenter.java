@@ -57,9 +57,9 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     initCharacterTypeCharms(supportedCharmTypes, allCharmGroups);
     initMartialArts(supportedCharmTypes, allCharmGroups);
     createCharmTypeSelector(
-      supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]),
-      view,
-      "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
+            supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]),
+            view,
+            "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
     this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, getTemplateRegistry(), filterSet);
     createCharmGroupSelector(view, selectionListener, allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]));
     initRules();
@@ -111,8 +111,8 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
 
   private void initRules() {
     IChangeableJComboBox<IExaltedRuleSet> rulesComboBox = new ChangeableJComboBox<IExaltedRuleSet>(
-      ExaltedRuleSet.values(),
-      false);
+            ExaltedRuleSet.values(),
+            false);
     rulesComboBox.setRenderer(new IdentificateSelectCellRenderer("Ruleset.", getResources())); //$NON-NLS-1$
     view.addRuleSetComponent(rulesComboBox.getComponent(), getResources().getString("CharmCascades.RuleSetBox.Title")); //$NON-NLS-1$
     rulesComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedRuleSet>() {
@@ -127,7 +127,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
           return;
         }
         selectionListener.setEdition(selectedRuleset.getEdition());
-         IIdentificate[] cascadeTypes = getCharmTreeMap(selectedRuleset).keySet().toArray(new IIdentificate[0]);
+        IIdentificate[] cascadeTypes = getCharmTreeMap(selectedRuleset).keySet().toArray(new IIdentificate[0]);
         sort(cascadeTypes, new ByCharacterType());
         view.fillCharmTypeBox(cascadeTypes);
         view.unselect();

@@ -2,7 +2,6 @@ package net.sf.anathema.character.presenter.charm;
 
 import java.util.List;
 
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -14,16 +13,13 @@ import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 
 public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 
-  private final IExaltedEdition edition;
-
   public CharacterCharmGroupChangeListener(
-      ISvgTreeView view,
-      ITemplateRegistry templateRegistry,
-      ICharmGroupArbitrator arbitrator,
-      List<ICharmFilter> charmFilterSet,
-      IExaltedEdition edition) {
-    super(view, templateRegistry, arbitrator, charmFilterSet);
-    this.edition = edition;
+          ISvgTreeView view,
+          ITemplateRegistry templateRegistry,
+          ICharmGroupArbitrator arbitrator,
+          List<ICharmFilter> charmFilterSet,
+          IExaltedEdition edition) {
+    super(view, templateRegistry, arbitrator, charmFilterSet, edition);
   }
 
   @Override
@@ -32,21 +28,7 @@ public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeL
   }
 
   @Override
-  protected IExaltedEdition getEdition() {
-    return edition;
-  }
-
-  @Override
   public ILearningCharmGroup getCurrentGroup() {
     return (ILearningCharmGroup) super.getCurrentGroup();
   }
-
-	@Override
-	protected boolean filterCharm(ICharm charm, boolean isAncestor)
-	{
-		for (ICharmFilter filter : charmFilterSet)
-			if (!filter.acceptsCharm(charm,isAncestor))
-				return false;
-		return true;
-	}
 }

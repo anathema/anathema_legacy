@@ -21,6 +21,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   private final ICharmGroupArbitrator arbitrator;
   private final CharmTreeRenderer charmTreeRenderer;
   protected final List<ICharmFilter> charmFilterSet;
+  private IExaltedEdition edition;
   private ICharmGroup currentGroup;
   private IIdentificate currentType;
 
@@ -28,11 +29,12 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
           ISvgTreeView charmTreeView,
           ITemplateRegistry templateRegistry,
           ICharmGroupArbitrator arbitrator,
-          List<ICharmFilter> charmFilterSet) {
+          List<ICharmFilter> charmFilterSet, IExaltedEdition edition) {
     this.charmTreeRenderer = new SvgCharmTreeRenderer(charmTreeView);
     this.templateRegistry = templateRegistry;
     this.arbitrator = arbitrator;
     this.charmFilterSet = charmFilterSet;
+    this.edition = edition;
   }
 
   public final void valueChanged(Object cascade, Object type) {
@@ -63,9 +65,20 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return true;
   }
 
-  protected abstract boolean filterCharm(ICharm charm, boolean isAncestor);
+  private boolean filterCharm(ICharm charm, boolean isAncestor) {
+    for (ICharmFilter filter : charmFilterSet)
+      if (!filter.acceptsCharm(charm, isAncestor))
+        return false;
+    return true;
+  }
 
-  protected abstract IExaltedEdition getEdition();
+  protected IExaltedEdition getEdition() {
+    return edition;
+  }
+
+  public void setEdition(IExaltedEdition edition) {
+    this.edition = edition;
+  }
 
   private void loadCharmTree(ICharmGroup charmGroup, IIdentificate type) {
     boolean resetView = !(currentGroup == charmGroup && currentType != null && currentType.getId().equals(type.getId()));
