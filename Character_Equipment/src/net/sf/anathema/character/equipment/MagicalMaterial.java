@@ -44,7 +44,7 @@ public enum MagicalMaterial implements IIdentificate {
 		public void visitInfernal(ICharacterType type) {
 			types[0] = new ArtifactAttuneType[] { ArtifactAttuneType.Unattuned, 
 					ArtifactAttuneType.PartiallyAttuned, ArtifactAttuneType.VitriolAttuned,
-					ArtifactAttuneType.FullyAttuned };
+					ArtifactAttuneType.UnharmoniouslyAttuned };
 		}
 
 		@Override
