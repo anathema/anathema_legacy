@@ -94,18 +94,28 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       }
     });
     initCharmLearnListening(charms);
-    view.getCharmTreeView().getComponent().addHierarchyListener(new HierarchyListener() {
-
-      @Override
-      public void hierarchyChanged(HierarchyEvent arg0) {
-        if ((arg0.getChangeFlags() & HierarchyEvent.SHOWING_CHANGED) != 0 &&
-                view.getCharmTreeView().getComponent().isShowing())
-          refresh();
-
+    reloadCharmGraphAfterFiltering();
+    resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
+    view.addDocumentLoadedListener(new IDocumentLoadedListener() {
+      public void documentLoaded() {
+        setCharmVisuals();
       }
-
     });
-    view.getCharmTreeView().getComponent().addMouseListener(new MouseAdapter() {
+    view.addDocumentLoadedListener(new IDocumentLoadedListener() {
+      public void documentLoaded() {
+        showSpecialViews();
+      }
+    });
+    charms.addLearnableListener(new IChangeListener() {
+      public void changeOccurred() {
+        setCharmVisuals();
+      }
+    });
+    view.initGui();
+  }
+
+  private void resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea() {
+    getCharmComponent().addMouseListener(new MouseAdapter() {
       @Override
       public void mouseExited(final MouseEvent e) {
         for (ISVGSpecialNodeView charmView : specialCharmViews) {
@@ -119,22 +129,18 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         ToolTipManager.sharedInstance().setEnabled(true);
       }
     });
-    view.addDocumentLoadedListener(new IDocumentLoadedListener() {
-      public void documentLoaded() {
-        setCharmVisuals();
+  }
+
+  private void reloadCharmGraphAfterFiltering() {
+    getCharmComponent().addHierarchyListener(new HierarchyListener() {
+
+      @Override
+      public void hierarchyChanged(HierarchyEvent arg0) {
+        if ((arg0.getChangeFlags() & HierarchyEvent.SHOWING_CHANGED) != 0 && getCharmComponent().isShowing()) {
+          refresh();
+        }
       }
     });
-    view.getCharmTreeView().addDocumentLoadedListener(new IDocumentLoadedListener() {
-      public void documentLoaded() {
-        showSpecialViews();
-      }
-    });
-    charms.addLearnableListener(new IChangeListener() {
-      public void changeOccurred() {
-        setCharmVisuals();
-      }
-    });
-    view.initGui();
   }
 
   private void initFilters(ICharmConfiguration charms) {
@@ -145,6 +151,10 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       statistics.getCharms().setCharmFilters(filterSet);
     } else
       filterSet = charms.getCharmFilters();
+  }
+
+  private JComponent getCharmComponent() {
+    return view.getCharmTreeView().getComponent();
   }
 
   public IViewContent getTabContent() {
