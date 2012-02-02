@@ -21,12 +21,12 @@ import java.awt.*;
 
 public abstract class AbstractCascadeSelectionView implements ICascadeSelectionView {
 
+  private final JPanel selectionPanel = new JPanel(new GridDialogLayout(3, false));
   private IChangeableJComboBox<IIdentificate> groupComboBox;
   private IChangeableJComboBox<IIdentificate> typeComboBox;
-  private final JPanel selectionPanel;
   private final ISvgTreeView charmTreeView;
+    
   public AbstractCascadeSelectionView(ISvgTreeViewProperties treeProperties) {
-    this.selectionPanel = new JPanel(new GridDialogLayout(3, false));
     this.charmTreeView = new SvgTreeView(treeProperties);
   }
 
@@ -62,7 +62,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
       ListCellRenderer renderer,
       final ICharmGroupChangeListener selectionListener,
       Dimension preferredSize) {
-    final JPanel panel = new JPanel(new BorderLayout());
+    JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
     groupComboBox = new ChangeableJComboBox<IIdentificate>(null, false);
     groupComboBox.setSelectedObject(null);
@@ -78,8 +78,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   @Override
-  public void addCharmFilterButton(SmartAction action, String titleText, String buttonText)
-  {
+  public void addCharmFilterButton(SmartAction action, String titleText, String buttonText) {
 	  JPanel buttonPanel = new JPanel();
 	  JButton filterButton = new JButton();
 	  filterButton.setAction(action);
