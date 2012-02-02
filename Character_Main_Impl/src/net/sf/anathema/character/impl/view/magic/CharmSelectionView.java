@@ -1,10 +1,5 @@
 package net.sf.anathema.character.impl.view.magic;
 
-import java.awt.Color;
-
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
@@ -12,6 +7,9 @@ import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
 import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class CharmSelectionView extends AbstractCascadeSelectionView implements ICharmSelectionView {
 
@@ -41,5 +39,10 @@ public class CharmSelectionView extends AbstractCascadeSelectionView implements 
 
   public void setSpecialCharmViewVisible(ISVGSpecialNodeView charmView, boolean visible) {
     getCharmTreeView().getSpecialViewManager().setVisible(charmView, visible);
+  }
+
+  @Override
+  public JComponent getCharmComponent() {
+    return getCharmTreeView().getComponent();
   }
 }

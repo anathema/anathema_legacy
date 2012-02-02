@@ -154,7 +154,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private JComponent getCharmComponent() {
-    return view.getCharmTreeView().getComponent();
+    return view.getCharmComponent();
   }
 
   public IViewContent getTabContent() {
