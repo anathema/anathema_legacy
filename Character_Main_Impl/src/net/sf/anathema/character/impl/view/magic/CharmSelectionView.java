@@ -19,24 +19,29 @@ public class CharmSelectionView extends AbstractCascadeSelectionView implements 
     super(treeProperties);
   }
 
+  @Override
   public void initGui() {
     content.add(getSelectionComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
     content.add(getCharmTreeView().getComponent(), GridDialogLayoutData.FILL_BOTH);
   }
 
+  @Override
   public void addCharmSelectionListener(INodeSelectionListener listener) {
     getCharmTreeView().addNodeSelectionListener(listener);
   }
 
+  @Override
   public void setCharmVisuals(String charmId, Color fillColor, int opacity) {
     getCharmTreeView().setNodeBackgroundColor(charmId, fillColor);
     getCharmTreeView().setNodeAlpha(charmId, opacity);
   }
 
+  @Override
   public JComponent getComponent() {
     return content;
   }
 
+  @Override
   public void setSpecialCharmViewVisible(ISVGSpecialNodeView charmView, boolean visible) {
     getCharmTreeView().getSpecialViewManager().setVisible(charmView, visible);
   }

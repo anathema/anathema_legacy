@@ -1,18 +1,14 @@
 package net.sf.anathema.charmtree.presenter.view;
 
-import java.awt.Dimension;
-
-import javax.swing.ListCellRenderer;
-
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
+
+import javax.swing.*;
+import java.awt.*;
 
 public interface ICascadeSelectionView {
-
-  ISvgTreeView getCharmTreeView();
 
   CharmTreeRenderer getCharmTreeRenderer();
 
