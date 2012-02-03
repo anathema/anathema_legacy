@@ -14,16 +14,14 @@ import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGCategorizedSpecia
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGToggleButtonSpecialNodeView;
 
 import java.awt.*;
-import java.util.List;
 
-public class SpecialCharmViewInitializer implements ISpecialCharmVisitor {
-  private List<ISVGSpecialNodeView> specialCharmViews;
-  private IResources resources;
-  private ICharacterStatistics statistics;
-  private IMagicViewFactory viewFactory;
+public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
+  private final IResources resources;
+  private final ICharacterStatistics statistics;
+  private final IMagicViewFactory viewFactory;
+  private ISVGSpecialNodeView createdView;
 
-  public SpecialCharmViewInitializer(List<ISVGSpecialNodeView> specialCharmViews, IResources resources, ICharacterStatistics statistics, IMagicViewFactory viewFactory) {
-    this.specialCharmViews = specialCharmViews;
+  public SpecialCharmViewBuilder(IResources resources, ICharacterStatistics statistics, IMagicViewFactory viewFactory) {
     this.resources = resources;
     this.statistics = statistics;
     this.viewFactory = viewFactory;
@@ -102,14 +100,15 @@ public class SpecialCharmViewInitializer implements ISpecialCharmVisitor {
   }
 
   private void addButtonForCharmConfiguration(String labelKey, ISVGSpecialNodeView subeffectView) {
-    specialCharmViews.add(viewFactory.createViewControlButton(
+    ISVGSpecialNodeView viewControlButton = viewFactory.createViewControlButton(
             subeffectView,
             getCharmWidth(),
-            resources.getString(labelKey)));
+            resources.getString(labelKey));
+    addViewDirectly(viewControlButton);
   }
 
   private void addViewDirectly(ISVGSpecialNodeView view) {
-    specialCharmViews.add(view);
+    this.createdView = view;
   }
 
   private boolean requiresMoreThanOneLine(ISpecialCharm visitedCharm, IOxBodyTechniqueConfiguration model) {
@@ -148,5 +147,9 @@ public class SpecialCharmViewInitializer implements ISpecialCharmVisitor {
   @SuppressWarnings("unchecked")
   private <T> T getModelFormCharm(ISpecialCharm visitedCharm) {
     return (T) getCharmConfiguration().getSpecialCharmConfiguration(visitedCharm.getCharmId());
+  }
+
+  public ISVGSpecialNodeView getResult() {
+    return createdView;
   }
 }

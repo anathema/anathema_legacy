@@ -53,8 +53,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
           IMagicViewFactory factory) {
     super(resources, templateRegistry);
     this.viewFactory = factory;
-    this.viewProperties = new CharacterCharmTreeViewProperties(resources, statistics.getCharms());
     this.statistics = statistics;
+    this.viewProperties = new CharacterCharmTreeViewProperties(resources, getCharmConfiguration());
     this.view = factory.createCharmSelectionView(viewProperties);
   }
 
@@ -69,7 +69,11 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
             getCharmConfiguration(),
             filterSet,
             statistics.getRules().getEdition(), view.getCharmTreeRenderer());
-    initSpecialCharmViews();
+    for (ISpecialCharm charm : getCharmConfiguration().getSpecialCharms()) {
+      SpecialCharmViewBuilder builder = new SpecialCharmViewBuilder(getResources(), statistics, viewFactory);
+      charm.accept(builder);
+      specialCharmViews.add(builder.getResult());
+    }
     initCharmTypeSelectionListening();
     initCasteListening();
     createCharmGroupSelector(view, charmSelectionChangeListener, charms.getAllGroups());
@@ -79,7 +83,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         if (viewProperties.isRequirementNode(charmId)) {
           return;
         }
-        ILearningCharmGroup charmGroup = statistics.getCharms().getGroup(statistics.getCharms().getCharmById(charmId));
+        ILearningCharmGroup charmGroup = getCharmConfiguration().getGroup(getCharmConfiguration().getCharmById(charmId));
 
         charmGroup.toggleLearned(charms.getCharmById(charmId));
       }
@@ -136,10 +140,10 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
 
   private void initFilters(ICharmConfiguration charms) {
     if (charms.getCharmFilters() == null) {
-      filterSet.add(new ObtainableCharmFilter(statistics.getCharms()));
+      filterSet.add(new ObtainableCharmFilter(getCharmConfiguration()));
       filterSet.add(new SourceBookCharmFilter(statistics.getRules().getEdition(),
-              statistics.getCharms()));
-      statistics.getCharms().setCharmFilters(filterSet);
+              getCharmConfiguration()));
+      getCharmConfiguration().setCharmFilters(filterSet);
     } else
       filterSet = charms.getCharmFilters();
   }
@@ -274,16 +278,6 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       boolean isVisible = isVisible(group, charm);
       view.setSpecialCharmViewVisible(charmView, isVisible);
     }
-  }
-
-  private void initSpecialCharmViews() {
-    for (ISpecialCharm charm : getCharmConfiguration().getSpecialCharms()) {
-      addSpecialCharmControl(charm);
-    }
-  }
-
-  private void addSpecialCharmControl(ISpecialCharm charm) {
-    charm.accept(new SpecialCharmViewInitializer(specialCharmViews, getResources(), statistics, viewFactory));
   }
 
   private ICharmConfiguration getCharmConfiguration() {
