@@ -39,11 +39,11 @@ import java.util.List;
 public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPresenter implements IContentPresenter {
 
   private final ICharmTreeViewProperties viewProperties;
-  private CharacterCharmGroupChangeListener charmSelectionChangeListener;
   private final ICharacterStatistics statistics;
   private final ICharmSelectionView view;
   private final SpecialCharmViewPresenter specialCharmViewPresenter;
   private final DelegatingCharmGroupInformer groupInformer;
+  private CharacterCharmGroupChangeListener charmSelectionChangeListener;
 
   public CharacterCharmSelectionPresenter(
           ICharacterStatistics statistics,
