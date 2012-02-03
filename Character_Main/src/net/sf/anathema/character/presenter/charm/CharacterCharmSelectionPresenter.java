@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
@@ -25,10 +24,10 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
-import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComponent;
+import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
 import java.awt.event.MouseAdapter;
@@ -41,10 +40,10 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
 
   private final ICharmTreeViewProperties viewProperties;
   private CharacterCharmGroupChangeListener charmSelectionChangeListener;
-  private final List<ISVGSpecialNodeView> specialCharmViews = new ArrayList<ISVGSpecialNodeView>();
   private final ICharacterStatistics statistics;
   private final ICharmSelectionView view;
-  private final IMagicViewFactory viewFactory;
+  private final SpecialCharmViewPresenter specialCharmViewPresenter;
+  private final DelegatingCharmGroupInformer groupInformer;
 
   public CharacterCharmSelectionPresenter(
           ICharacterStatistics statistics,
@@ -52,10 +51,11 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
           ITemplateRegistry templateRegistry,
           IMagicViewFactory factory) {
     super(resources, templateRegistry);
-    this.viewFactory = factory;
     this.statistics = statistics;
     this.viewProperties = new CharacterCharmTreeViewProperties(resources, getCharmConfiguration());
     this.view = factory.createCharmSelectionView(viewProperties);
+    this.groupInformer = new DelegatingCharmGroupInformer();
+    this.specialCharmViewPresenter = new SpecialCharmViewPresenter(factory, statistics, view, resources, groupInformer);
   }
 
   public void initPresentation() {
@@ -69,11 +69,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
             getCharmConfiguration(),
             filterSet,
             statistics.getRules().getEdition(), view.getCharmTreeRenderer());
-    for (ISpecialCharm charm : getCharmConfiguration().getSpecialCharms()) {
-      SpecialCharmViewBuilder builder = new SpecialCharmViewBuilder(getResources(), statistics, viewFactory);
-      charm.accept(builder);
-      specialCharmViews.add(builder.getResult());
-    }
+    groupInformer.setInformer(charmSelectionChangeListener);
+    specialCharmViewPresenter.initializeSpecialCharmViews();
     initCharmTypeSelectionListening();
     initCasteListening();
     createCharmGroupSelector(view, charmSelectionChangeListener, charms.getAllGroups());
@@ -98,7 +95,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     });
     view.addDocumentLoadedListener(new IDocumentLoadedListener() {
       public void documentLoaded() {
-        showSpecialViews();
+        specialCharmViewPresenter.showSpecialViews();
       }
     });
     charms.addLearnableListener(new IChangeListener() {
@@ -113,15 +110,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     getCharmComponent().addMouseListener(new MouseAdapter() {
       @Override
       public void mouseExited(final MouseEvent e) {
-        for (ISVGSpecialNodeView charmView : specialCharmViews) {
-          ICharm charm = getCharmConfiguration().getCharmById(charmView.getNodeId());
-          boolean isVisible = isVisible(charmSelectionChangeListener.getCurrentGroup(), charm);
-          if (isVisible) {
-            charmView.reset();
-          }
-        }
-        ToolTipManager.sharedInstance().setEnabled(false);
-        ToolTipManager.sharedInstance().setEnabled(true);
+        specialCharmViewPresenter.resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
       }
     });
   }
@@ -203,15 +192,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
               .getCharmGroups(cascadeType));
     }
     view.fillCharmGroupBox(allCharmGroups);
-    showSpecialViews();
-  }
-
-  private boolean isVisible(final ILearningCharmGroup group, final ICharm charm) {
-    if (group == null) {
-      return false;
-    }
-    boolean isOfGroupType = charm.getCharacterType() == group.getCharacterType();
-    return isOfGroupType && charm.getGroupId().equals(group.getId());
+    specialCharmViewPresenter.showSpecialViews();
   }
 
   private void initCharmLearnListening(final ICharmConfiguration charmConfiguration) {
@@ -223,7 +204,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
 
   private void setCharmVisuals(final ICharm charm, final ICharmSelectionView selectionView) {
     ICharmConfiguration charmConfiguration = getCharmConfiguration();
-    ILearningCharmGroup selectedGroup = charmSelectionChangeListener.getCurrentGroup();
+    ICharmGroup selectedGroup = groupInformer.getCurrentGroup();
     if (selectedGroup == null || !charm.getGroupId().equals(selectedGroup.getId())) {
       return;
     }
@@ -233,7 +214,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private void setCharmVisuals() {
-    ILearningCharmGroup group = charmSelectionChangeListener.getCurrentGroup();
+    ICharmGroup group = groupInformer.getCurrentGroup();
     if (group == null) {
       return;
     }
@@ -268,18 +249,6 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     };
   }
 
-  private void showSpecialViews() {
-    ILearningCharmGroup group = charmSelectionChangeListener.getCurrentGroup();
-    if (group == null) {
-      return;
-    }
-    for (ISVGSpecialNodeView charmView : specialCharmViews) {
-      ICharm charm = getCharmConfiguration().getCharmById(charmView.getNodeId());
-      boolean isVisible = isVisible(group, charm);
-      view.setSpecialCharmViewVisible(charmView, isVisible);
-    }
-  }
-
   private ICharmConfiguration getCharmConfiguration() {
     return statistics.getCharms();
   }
@@ -287,4 +256,5 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   private Color getCharacterColor() {
     return statistics.getCharacterTemplate().getPresentationProperties().getColor();
   }
+
 }

@@ -14,7 +14,7 @@ import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationPro
 import java.util.List;
 import java.util.Set;
 
-public abstract class AbstractCharmGroupChangeListener implements ICharmGroupChangeListener {
+public abstract class AbstractCharmGroupChangeListener implements ICharmGroupChangeListener, CharmGroupInformer {
 
   private final ITemplateRegistry templateRegistry;
   private final ICharmGroupArbitrator arbitrator;
@@ -94,6 +94,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     }
   }
 
+  @Override
   public ICharmGroup getCurrentGroup() {
     return currentGroup;
   }
