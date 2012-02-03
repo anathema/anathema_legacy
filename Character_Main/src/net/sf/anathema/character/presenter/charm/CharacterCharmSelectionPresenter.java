@@ -4,9 +4,8 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.special.*;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
@@ -42,22 +41,19 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
 
   private final ICharmTreeViewProperties viewProperties;
   private CharacterCharmGroupChangeListener charmSelectionChangeListener;
-  private final Color characterColor;
   private final List<ISVGSpecialNodeView> specialCharmViews = new ArrayList<ISVGSpecialNodeView>();
   private final ICharacterStatistics statistics;
   private final ICharmSelectionView view;
   private final IMagicViewFactory viewFactory;
 
   public CharacterCharmSelectionPresenter(
-          final ICharacterStatistics statistics,
-          final IResources resources,
-          final ITemplateRegistry templateRegistry,
-          final IMagicViewFactory factory) {
+          ICharacterStatistics statistics,
+          IResources resources,
+          ITemplateRegistry templateRegistry,
+          IMagicViewFactory factory) {
     super(resources, templateRegistry);
     this.viewFactory = factory;
-    IPresentationProperties presentationProperties = statistics.getCharacterTemplate().getPresentationProperties();
     this.viewProperties = new CharacterCharmTreeViewProperties(resources, statistics.getCharms());
-    this.characterColor = presentationProperties.getColor();
     this.statistics = statistics;
     this.view = factory.createCharmSelectionView(viewProperties);
   }
@@ -175,7 +171,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     });
   }
 
-  private IIdentificate[] getCurrentCharmTypes(final boolean alienCharms) {
+  private IIdentificate[] getCurrentCharmTypes(boolean alienCharms) {
     List<IIdentificate> types = new ArrayList<IIdentificate>();
     Collections.addAll(types, getCharmConfiguration().getCharacterTypes(alienCharms));
     types.add(MartialArtsUtilities.MARTIAL_ARTS);
@@ -196,7 +192,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     });
   }
 
-  protected void handleTypeSelectionChange(final IIdentificate cascadeType) {
+  protected void handleTypeSelectionChange(IIdentificate cascadeType) {
     ICharmGroup[] allCharmGroups = new ICharmGroup[0];
     if (cascadeType != null) {
       allCharmGroups = sortCharmGroups(getCharmConfiguration()
@@ -227,7 +223,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     if (selectedGroup == null || !charm.getGroupId().equals(selectedGroup.getId())) {
       return;
     }
-    Color fillColor = charmConfiguration.isLearned(charm) ? characterColor : Color.WHITE;
+    Color fillColor = charmConfiguration.isLearned(charm) ? getCharacterColor() : Color.WHITE;
     int opacity = charmConfiguration.isLearnable(charm) ? 255 : 70;
     selectionView.setCharmVisuals(charm.getId(), fillColor, opacity);
   }
@@ -287,10 +283,14 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private void addSpecialCharmControl(ISpecialCharm charm) {
-    charm.accept(new SpecialCharmViewInitializer(specialCharmViews, getResources(), statistics, viewFactory, characterColor));
+    charm.accept(new SpecialCharmViewInitializer(specialCharmViews, getResources(), statistics, viewFactory));
   }
 
   private ICharmConfiguration getCharmConfiguration() {
     return statistics.getCharms();
+  }
+
+  private Color getCharacterColor() {
+    return statistics.getCharacterTemplate().getPresentationProperties().getColor();
   }
 }
