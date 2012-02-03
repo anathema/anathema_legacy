@@ -29,67 +29,56 @@ public class SpecialCharmViewInitializer implements ISpecialCharmVisitor {
     this.viewFactory = viewFactory;
   }
 
-  public void visitMultiLearnableCharm(final IMultiLearnableCharm visitedCharm) {
-    SVGCategorizedSpecialNodeView multiLearnableCharmView = viewFactory.createMultiLearnableCharmView(
-            visitedCharm,
-            getCharmWidth(),
-            getCharacterColor());
-    IMultiLearnableCharmConfiguration model = (IMultiLearnableCharmConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
-            visitedCharm.getCharmId());
-    new MultiLearnableCharmPresenter(resources, multiLearnableCharmView, model).initPresentation();
-    addViewDirectly(multiLearnableCharmView);
+  public void visitMultiLearnableCharm(IMultiLearnableCharm visitedCharm) {
+    SVGCategorizedSpecialNodeView specialView = createViewForCharm(visitedCharm);
+    IMultiLearnableCharmConfiguration model = getModelFormCharm(visitedCharm);
+    new MultiLearnableCharmPresenter(resources, specialView, model).initPresentation();
+    addViewDirectly(specialView);
   }
 
-  public void visitOxBodyTechnique(final IOxBodyTechniqueCharm visited) {
-    SVGCategorizedSpecialNodeView oxBodyTechniqueView = viewFactory.createMultiLearnableCharmView(
-            visited,
-            getCharmWidth(),
-            getCharacterColor());
-    ICharm originalCharm = statistics.getCharms().getCharmById(visited.getCharmId());
-    IOxBodyTechniqueConfiguration model = (IOxBodyTechniqueConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
-            visited.getCharmId());
-    new OxBodyTechniquePresenter(resources, oxBodyTechniqueView, model).initPresentation();
-    if (requiresMoreThanOneLine(originalCharm, model)) {
-      addButtonForCharmConfiguration("CharmTreeView.Ox-Body.HealthLevels", oxBodyTechniqueView);
+  public void visitOxBodyTechnique(IOxBodyTechniqueCharm visitedCharm) {
+    SVGCategorizedSpecialNodeView specialView = createViewForCharm(visitedCharm);
+    IOxBodyTechniqueConfiguration model = getModelFormCharm(visitedCharm);
+    new OxBodyTechniquePresenter(resources, specialView, model).initPresentation();
+    if (requiresMoreThanOneLine(visitedCharm, model)) {
+      addButtonForCharmConfiguration("CharmTreeView.Ox-Body.HealthLevels", specialView);
     } else {
-      addViewDirectly(oxBodyTechniqueView);
+      addViewDirectly(specialView);
     }
   }
 
-  public void visitPrerequisiteModifyingCharm(final IPrerequisiteModifyingCharm visited) {
+  public void visitPrerequisiteModifyingCharm(IPrerequisiteModifyingCharm visited) {
     // Nothing to do
   }
 
-  public void visitTraitCapModifyingCharm(final ITraitCapModifyingCharm visited) {
+  public void visitTraitCapModifyingCharm(ITraitCapModifyingCharm visited) {
     // Nothing to do
   }
 
-  public void visitPainToleranceCharm(final IPainToleranceCharm visited) {
+  public void visitPainToleranceCharm(IPainToleranceCharm visited) {
     // Nothing to do
   }
 
-  public void visitSubeffectCharm(final ISubeffectCharm visited) {
+  public void visitSubeffectCharm(ISubeffectCharm visited) {
     createMultipleEffectCharmView(visited, "CharmTreeView.SubeffectCharm.ButtonLabel"); //$NON-NLS-1$
   }
 
-  public void visitMultipleEffectCharm(final IMultipleEffectCharm visited) {
+  public void visitMultipleEffectCharm(IMultipleEffectCharm visited) {
     createMultipleEffectCharmView(visited, visited.getCharmId() + ".ControlButton"); //$NON-NLS-1$
   }
 
-  public void visitUpgradableCharm(final IUpgradableCharm visited) {
+  public void visitUpgradableCharm(IUpgradableCharm visited) {
     createMultipleEffectCharmView(visited, visited.getCharmId() + ".ControlButton"); //$NON-NLS-1$
   }
 
-  private void createMultipleEffectCharmView(final IMultipleEffectCharm visited, final String labelKey) {
+  private void createMultipleEffectCharmView(IMultipleEffectCharm visitedCharm, final String labelKey) {
     SVGToggleButtonSpecialNodeView subeffectView = viewFactory.createSubeffectCharmView(
-            visited,
+            visitedCharm,
             getCharmWidth(),
             getCharacterColor());
-    ICharm originalCharm = getCharmConfiguration().getCharmById(visited.getCharmId());
-    IMultipleEffectCharmConfiguration model = (IMultipleEffectCharmConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
-            visited.getCharmId());
+    IMultipleEffectCharmConfiguration model = getModelFormCharm(visitedCharm);
     new MultipleEffectCharmPresenter(resources, subeffectView, model).initPresentation();
-    if (requiredMoreThanOneLine(originalCharm, model)) {
+    if (requiredMoreThanOneLine(visitedCharm, model)) {
       addButtonForCharmConfiguration(labelKey, subeffectView);
     } else {
       addViewDirectly(subeffectView);
@@ -123,12 +112,18 @@ public class SpecialCharmViewInitializer implements ISpecialCharmVisitor {
     specialCharmViews.add(view);
   }
 
-  private boolean requiresMoreThanOneLine(ICharm originalCharm, IOxBodyTechniqueConfiguration model) {
+  private boolean requiresMoreThanOneLine(ISpecialCharm visitedCharm, IOxBodyTechniqueConfiguration model) {
+    ICharm originalCharm = findOriginalCharm(visitedCharm);
     return otherCharmsAreRenderedBeneath(originalCharm) && hasMoreThanOneCategory(model);
   }
 
-  private boolean requiredMoreThanOneLine(ICharm originalCharm, IMultipleEffectCharmConfiguration model) {
+  private boolean requiredMoreThanOneLine(ISpecialCharm visitedCharm, IMultipleEffectCharmConfiguration model) {
+    ICharm originalCharm = findOriginalCharm(visitedCharm);
     return otherCharmsAreRenderedBeneath(originalCharm) && hasMoreThanOneEffect(model);
+  }
+
+  private ICharm findOriginalCharm(ISpecialCharm visitedCharm) {
+    return getCharmConfiguration().getCharmById(visitedCharm.getCharmId());
   }
 
   private boolean hasMoreThanOneEffect(IMultipleEffectCharmConfiguration model) {
@@ -141,5 +136,17 @@ public class SpecialCharmViewInitializer implements ISpecialCharmVisitor {
 
   private boolean otherCharmsAreRenderedBeneath(ICharm originalCharm) {
     return (originalCharm.hasChildren() || originalCharm.isTreeRoot());
+  }
+
+  private SVGCategorizedSpecialNodeView createViewForCharm(ISpecialCharm visitedCharm) {
+    return viewFactory.createMultiLearnableCharmView(
+            visitedCharm,
+            getCharmWidth(),
+            getCharacterColor());
+  }
+
+  @SuppressWarnings("unchecked")
+  private <T> T getModelFormCharm(ISpecialCharm visitedCharm) {
+    return (T) getCharmConfiguration().getSpecialCharmConfiguration(visitedCharm.getCharmId());
   }
 }
