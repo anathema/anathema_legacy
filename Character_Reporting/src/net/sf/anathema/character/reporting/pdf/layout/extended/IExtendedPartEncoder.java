@@ -16,7 +16,7 @@ public interface IExtendedPartEncoder {
 
   ContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey);
 
-  ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry);
+  ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content);
 
   ContentEncoder getHealthEncoder();
 

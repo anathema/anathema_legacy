@@ -5,7 +5,7 @@ import net.sf.anathema.character.abyssal.reporting.rendering.Resonance1stEdition
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractFirstEditionExaltPdfPartEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -15,7 +15,7 @@ public class Extended1stEditionAbyssalPartEncoder extends AbstractFirstEditionEx
     super(resources);
   }
 
-  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
+  public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content) {
     return new Resonance1stEditionEncoder();
   }
 

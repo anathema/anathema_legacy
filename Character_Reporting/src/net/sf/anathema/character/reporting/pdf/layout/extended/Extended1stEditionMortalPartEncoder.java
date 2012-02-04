@@ -2,6 +2,8 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.BackgroundsEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
@@ -35,7 +37,7 @@ public class Extended1stEditionMortalPartEncoder extends AbstractFirstEditionPar
   }
 
   @Override
-  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
-    return registry.getLinguisticsEncoder(); //No Great Curse for Mortals
+  public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content) {
+    return encoderRegistry.createEncoder(getResources(), content, EncoderIds.LANGUAGES);//No Great Curse for Mortals
   }
 }

@@ -3,7 +3,7 @@ package net.sf.anathema.character.solar.reporting;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.solar.reporting.rendering.AnimaEncoderFactory;
 import net.sf.anathema.character.solar.reporting.rendering.VirtueFlawEncoder;
@@ -16,7 +16,7 @@ public class Extended2ndSolarPartEncoder extends AbstractSecondEditionExaltPdfPa
   }
 
   @Override
-  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
+  public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content) {
     return new VirtueFlawEncoder();
   }
 

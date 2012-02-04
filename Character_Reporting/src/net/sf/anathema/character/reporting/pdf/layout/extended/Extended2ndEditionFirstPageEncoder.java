@@ -124,7 +124,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeGreatCurse(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    ContentEncoder encoder = getPartEncoder().getGreatCurseEncoder(getRegistry());
+    ContentEncoder encoder = getPartEncoder().getGreatCurseEncoder(encoderRegistry, content);
     if (encoder != null) {
       return encodeFixedBox(graphics, content, encoder, 2, 1, distanceFromTop, height);
     } else {
@@ -138,7 +138,8 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeLinguistics(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getLinguisticsEncoder(), 3, 1, distanceFromTop, height);
+    ContentEncoder linguisticsEncoder = encoderRegistry.createEncoder(getResources(),content, EncoderIds.LANGUAGES);
+    return encodeFixedBox(graphics, content, linguisticsEncoder, 3, 1, distanceFromTop, height);
   }
 
   private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {

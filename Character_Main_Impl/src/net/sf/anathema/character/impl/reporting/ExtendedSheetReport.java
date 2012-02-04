@@ -70,7 +70,7 @@ public class ExtendedSheetReport implements IITextReport {
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
       if (edition == ExaltedEdition.FirstEdition) {
         encoderList
-                .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration));
+                .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
       }
       if (edition == ExaltedEdition.SecondEdition) {
         encoderList.add(new Extended2ndEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
@@ -81,7 +81,7 @@ public class ExtendedSheetReport implements IITextReport {
         encoderList.add(new ExtendedMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration));
       } else if (partEncoder.hasMagicPage()) {
         encoderList.add(
-                new ExtendedMagic1stEditionPageEncoder(partEncoder, encodingRegistry, resources, configuration, edition != ExaltedEdition.FirstEdition));
+                new ExtendedMagic1stEditionPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration, edition != ExaltedEdition.FirstEdition));
       }
       boolean firstPagePrinted = false;
       for (PageEncoder encoder : encoderList) {
@@ -137,9 +137,6 @@ public class ExtendedSheetReport implements IITextReport {
       return false;
     }
     ICharacter character = (ICharacter) itemData;
-    if (!character.hasStatistics()) {
-      return false;
-    }
-    return getPartEncoder(character) != null;
+    return character.hasStatistics() && getPartEncoder(character) != null;
   }
 }

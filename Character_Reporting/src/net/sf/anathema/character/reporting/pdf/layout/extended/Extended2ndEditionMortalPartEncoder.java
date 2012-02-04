@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -16,7 +17,7 @@ public class Extended2ndEditionMortalPartEncoder extends AbstractSecondEditionPa
   }
 
   @Override
-  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
+  public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content) {
     return null;
   }
 

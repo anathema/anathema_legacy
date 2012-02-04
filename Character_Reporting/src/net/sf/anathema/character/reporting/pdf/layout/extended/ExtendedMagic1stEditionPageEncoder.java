@@ -5,6 +5,8 @@ import com.lowagie.text.DocumentException;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.BackgroundsEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ComboEncoder;
@@ -21,10 +23,12 @@ import java.util.List;
 
 public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
 
+  private final EncoderRegistry encoderRegistry;
   private final boolean pureMagic;
 
-  public ExtendedMagic1stEditionPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources, PageConfiguration configuration, boolean pureMagic) {
+  public ExtendedMagic1stEditionPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources, PageConfiguration configuration, boolean pureMagic) {
     super(partEncoder, encodingRegistry, resources, configuration);
+    this.encoderRegistry = encoderRegistry;
     this.pureMagic = pureMagic;
   }
 
@@ -78,7 +82,7 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeLanguages(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = getPageConfiguration().getThirdColumnRectangle(distanceFromTop, height);
-    ContentEncoder encoder = getRegistry().getLinguisticsEncoder();
+    ContentEncoder encoder = encoderRegistry.createEncoder(getResources(),content, EncoderIds.LANGUAGES);
     getBoxEncoder().encodeBox(content, graphics, encoder, bounds);
     return height;
   }

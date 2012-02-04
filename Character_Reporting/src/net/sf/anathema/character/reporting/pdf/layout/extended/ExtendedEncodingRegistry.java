@@ -23,7 +23,6 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
   private final BaseFont symbolBaseFont;
   private ContentEncoder armourContentEncoder = new NullBoxContentEncoder("Armour");
   private ContentEncoder possessionsEncoder = new NullBoxContentEncoder("Possessions");
-  private ContentEncoder linguisticsEncoder = new NullBoxContentEncoder("Linguistics");
   private ContentEncoder mutationsEncoder = new NullBoxContentEncoder("Mutations");
   private List<IVariableContentEncoder> sidebarEncoders = new ArrayList<IVariableContentEncoder>();
   private List<ITableEncoder> magicEncoders = new ArrayList<ITableEncoder>();
@@ -60,10 +59,6 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
     return possessionsEncoder;
   }
 
-  public ContentEncoder getLinguisticsEncoder() {
-    return linguisticsEncoder;
-  }
-
   public ContentEncoder getMutationsEncoder() {
     return mutationsEncoder;
   }
@@ -87,9 +82,5 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
   @Override
   public void setPossessionsEncoder(ContentEncoder encoder) {
     this.possessionsEncoder = encoder;
-  }
-
-  public void setLinguisticsEncoder(ContentEncoder encoder) {
-    this.linguisticsEncoder = encoder;
   }
 }

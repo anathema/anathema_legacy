@@ -3,7 +3,6 @@ package net.sf.anathema.character.sidereal.reporting;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
@@ -19,7 +18,7 @@ public class Extended2ndEditionSiderealPartEncoder extends AbstractSecondEdition
     super(resources);
   }
 
-  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
+  public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content) {
     return new FlawedFateEncoder(getResources());
   }
 

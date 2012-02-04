@@ -6,7 +6,6 @@ import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.GreatCurse
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractFirstEditionExaltPdfPartEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
@@ -19,7 +18,7 @@ public class Extended1stEditionLunarPartEncoder extends AbstractFirstEditionExal
     super(resources);
   }
 
-  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
+  public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content) {
     return new GreatCurse1stEditionEncoder(getResources());
   }
 
