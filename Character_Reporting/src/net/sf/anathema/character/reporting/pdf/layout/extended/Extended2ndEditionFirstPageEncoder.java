@@ -147,7 +147,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private boolean hasMutations(ReportContent content) {
-    return getRegistry().getMutationsEncoder().hasContent(content);
+    return getMutationsEncoder(content).hasContent(content);
   }
 
   private boolean hasMeritsAndFlaws(ReportContent content) {
@@ -159,7 +159,12 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeMutations(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getMutationsEncoder(), 2, 1, distanceFromTop, height);
+    ContentEncoder mutationsEncoder = getMutationsEncoder(content);
+    return encodeFixedBox(graphics, content, mutationsEncoder, 2, 1, distanceFromTop, height);
+  }
+
+  private ContentEncoder getMutationsEncoder(ReportContent content) {
+    return encoderRegistry.createEncoder(getResources(), content, EncoderIds.MUTATIONS);
   }
 
   private float encodeMeritsAndFlaws(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {

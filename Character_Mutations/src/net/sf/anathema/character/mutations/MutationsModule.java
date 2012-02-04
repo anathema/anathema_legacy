@@ -8,13 +8,8 @@ import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.mutations.model.MutationsModelFactory;
 import net.sf.anathema.character.mutations.persistence.MutationPersisterFactory;
-import net.sf.anathema.character.mutations.reporting.MutationsEncoder;
 import net.sf.anathema.character.mutations.template.MutationsTemplate;
-import net.sf.anathema.character.reporting.CharacterReportingModule;
-import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
 
 @CharacterModule
 public class MutationsModule extends NullObjectCharacterModuleAdapter {
@@ -29,16 +24,5 @@ public class MutationsModule extends NullObjectCharacterModuleAdapter {
     IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
     persisterFactory.register(templateId, new MutationPersisterFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(new MutationsTemplate());
-  }
-
-  @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    registerExtendedEncoders(moduleObject.getExtendedEncodingRegistry());
-  }
-
-
-  private void registerExtendedEncoders(ExtendedEncodingRegistry registry) {
-    registry.setMutationsEncoder(new MutationsEncoder());
   }
 }

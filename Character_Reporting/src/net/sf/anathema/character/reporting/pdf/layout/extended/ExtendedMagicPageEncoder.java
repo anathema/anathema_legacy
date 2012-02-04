@@ -24,6 +24,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
@@ -46,7 +47,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
     ISpellMagicTemplate spellTemplate = character.getTemplate().getMagicTemplate().getSpellMagic();
     boolean needsMagic = spellTemplate.knowsSorcery(character.getLearnedCharms());
     if (!needsMagic) {
-      for (ITableEncoder tableEncoder : getRegistry().getAdditionalMagicEncoders()) {
+      for (ITableEncoder tableEncoder : getAdditionalMagicEncoders()) {
         if (tableEncoder.hasContent(content)) {
           needsMagic = true;
           break;
@@ -110,6 +111,12 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
     }
   }
 
+  private List<ITableEncoder> getAdditionalMagicEncoders() {
+    //Returned an empty List from the Extended Encoding Registry 
+    //return getRegistry().getAdditionalMagicEncoders();
+    return Collections.emptyList();
+  }
+
   private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     return encodeVariableBox(graphics, content, (IVariableContentEncoder) getPartEncoder().getEssenceEncoder(), 1, 2, distanceFromTop, height);
   }
@@ -153,14 +160,14 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeMagic(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, new MagicEncoder(getResources(), MagicEncoder.collectPrintSpells(content), getRegistry().getAdditionalMagicEncoders(), true, "Magic"),
+    return encodeFixedBox(graphics, content, new MagicEncoder(getResources(), MagicEncoder.collectPrintSpells(content), getAdditionalMagicEncoders(), true, "Magic"),
             //$NON-NLS-1$
             2, 2, distanceFromTop, height);
   }
 
   private float encodeSidebars(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
     float height = 0;
-    for (IVariableContentEncoder sidebar : getRegistry().getAdditionalMagicSidebarEncoders()) {
+    for (IVariableContentEncoder sidebar : getAdditionalMagicSidebarEncoders()) {
       float sidebarHeight = encodeVariableBox(graphics, content, sidebar, 1, 1, distanceFromTop, maxHeight - height);
       if (sidebarHeight != 0) {
         height += calculateBoxIncrement(sidebarHeight);
@@ -172,6 +179,12 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
       height = removeBoxIncrement(height);
     }
     return height;
+  }
+
+  private List<IVariableContentEncoder> getAdditionalMagicSidebarEncoders() {
+    //Returned an empty list from the registry
+    //return getRegistry().getAdditionalMagicSidebarEncoders();
+    return Collections.emptyList();
   }
 
   private float encodeInitiations(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
