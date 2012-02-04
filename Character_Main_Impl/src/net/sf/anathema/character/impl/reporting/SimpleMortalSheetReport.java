@@ -54,7 +54,7 @@ public class SimpleMortalSheetReport implements IITextReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       PageEncoder encoder = new MortalPageEncoder(getEncoderRegistry(), resources, configuration);
-      SheetGraphics graphics = new SheetGraphics(directContent);
+      SheetGraphics graphics = SheetGraphics.WithSymbolBaseFontInCodepage1252(directContent);
       ReportContent content = new ReportContent(getContentRegistry(), character, description);
       encoder.encode(document, graphics, content);
     } catch (Exception e) {

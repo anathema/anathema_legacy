@@ -63,8 +63,7 @@ public class ExtendedSheetReport implements IITextReport {
     document.open();
     PdfContentByte directContent = writer.getDirectContent();
     PageConfiguration configuration = PageConfiguration.create(pageSize.getRectangle());
-    ExtendedEncodingRegistry encodingRegistry = getEncodingRegistry();
-    SheetGraphics graphics = new SheetGraphics(directContent, encodingRegistry.getBaseFont(), encodingRegistry.getSymbolBaseFont());
+    SheetGraphics graphics = SheetGraphics.WithSymbolBaseFontInSpecialEncoding(directContent);
     try {
       IExtendedPartEncoder partEncoder = getPartEncoder(stattedCharacter);
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());

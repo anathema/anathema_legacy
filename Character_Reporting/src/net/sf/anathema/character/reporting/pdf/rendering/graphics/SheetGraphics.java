@@ -12,7 +12,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Dot;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Line;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Square;
 
-import java.awt.*;
+import java.awt.Color;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
@@ -21,23 +21,41 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 
 public class SheetGraphics {
 
-  private static BaseFont createDefaultSymbolBaseFont() {
-    return new Font(Font.SYMBOL, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(false);
+  public static SheetGraphics WithSymbolBaseFontInSpecialEncoding(PdfContentByte directContent) {
+    BaseFont baseFont = createDefaultBaseFont();
+    BaseFont symbolFont = createSymbolBaseFontInSpecialEncoding();
+    return new SheetGraphics(directContent, baseFont, symbolFont);
+  }
+
+  public static SheetGraphics WithSymbolBaseFontInCodepage1252(PdfContentByte directContent) {
+    BaseFont baseFont = createDefaultBaseFont();
+    BaseFont symbolFont = createSymbolBaseFontWithCodepage1252();
+    return new SheetGraphics(directContent, baseFont, symbolFont);
+  }
+
+  private static BaseFont createSymbolBaseFontInSpecialEncoding() {
+    return createSymbolFont().getCalculatedBaseFont(true);
+  }
+
+  private static BaseFont createSymbolBaseFontWithCodepage1252() {
+    return createSymbolFont().getCalculatedBaseFont(false);
   }
 
   private static BaseFont createDefaultBaseFont() {
     return new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
   }
 
+  private static Font createSymbolFont() {
+    return new Font(Font.SYMBOL, 7, Font.NORMAL, Color.BLACK);
+  }
+
   private static final String SYMBOL = "\u00A8  "; //$NON-NLS-1$
   private static final int SYMBOL_FONT_SIZE = FONT_SIZE - 1;
   private final PdfContentByte directContent;
-  private final BaseFont baseFont;
-  private final BaseFont symbolBaseFont;
 
-  public SheetGraphics(PdfContentByte directContent) {
-    this(directContent, createDefaultBaseFont(), createDefaultSymbolBaseFont());
-  }
+  private final BaseFont baseFont;
+
+  private final BaseFont symbolBaseFont;
 
   public SheetGraphics(PdfContentByte directContent, BaseFont baseFont, BaseFont symbolBaseFont) {
     this.directContent = directContent;

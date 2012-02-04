@@ -73,7 +73,7 @@ public class SimpleExaltSheetReport implements IITextReport {
         } else {
           isFirstPrinted = true;
         }
-        SheetGraphics graphics = new SheetGraphics(directContent);
+        SheetGraphics graphics = SheetGraphics.WithSymbolBaseFontInCodepage1252(directContent);
         encoder.encode(document, graphics, content);
       }
     } catch (Exception e) {
