@@ -6,12 +6,17 @@ import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.GreatCurse
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.RegisteredPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
+import static net.sf.anathema.character.generic.type.CharacterType.LUNAR;
+
+@RegisteredPartEncoder(characterType = LUNAR, edition = SecondEdition)
 public class Extended2ndEditionLunarPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   public Extended2ndEditionLunarPartEncoder(IResources resources) {
