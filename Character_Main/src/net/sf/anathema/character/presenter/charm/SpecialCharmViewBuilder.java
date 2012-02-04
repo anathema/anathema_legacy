@@ -1,30 +1,39 @@
 package net.sf.anathema.character.presenter.charm;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.special.*;
+import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
-import net.sf.anathema.character.view.magic.IMagicViewFactory;
+import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewContainer;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGCategorizedSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGToggleButtonSpecialNodeView;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
   private final IResources resources;
   private final ICharacterStatistics statistics;
-  private final IMagicViewFactory viewFactory;
+  private final ISpecialCharmViewContainer factory;
   private ISVGSpecialNodeView createdView;
 
-  public SpecialCharmViewBuilder(IResources resources, ICharacterStatistics statistics, IMagicViewFactory viewFactory) {
+  public SpecialCharmViewBuilder(IResources resources, ICharacterStatistics statistics, ISpecialCharmViewContainer factory) {
     this.resources = resources;
     this.statistics = statistics;
-    this.viewFactory = viewFactory;
+    this.factory = factory;
   }
 
   public void visitMultiLearnableCharm(IMultiLearnableCharm visitedCharm) {
@@ -70,7 +79,7 @@ public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
   }
 
   private void createMultipleEffectCharmView(IMultipleEffectCharm visitedCharm, final String labelKey) {
-    SVGToggleButtonSpecialNodeView subeffectView = viewFactory.createSubeffectCharmView(
+    SVGToggleButtonSpecialNodeView subeffectView = factory.createSubeffectCharmView(
             visitedCharm,
             getCharmWidth(),
             getCharacterColor());
@@ -100,7 +109,7 @@ public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
   }
 
   private void addButtonForCharmConfiguration(String labelKey, ISVGSpecialNodeView subeffectView) {
-    ISVGSpecialNodeView viewControlButton = viewFactory.createViewControlButton(
+    ISVGSpecialNodeView viewControlButton = factory.createViewControlButton(
             subeffectView,
             getCharmWidth(),
             resources.getString(labelKey));
@@ -138,7 +147,7 @@ public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
   }
 
   private SVGCategorizedSpecialNodeView createViewForCharm(ISpecialCharm visitedCharm) {
-    return viewFactory.createMultiLearnableCharmView(
+    return factory.createMultiLearnableCharmView(
             visitedCharm,
             getCharmWidth(),
             getCharacterColor());
