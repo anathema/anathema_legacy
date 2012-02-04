@@ -11,11 +11,11 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class Extended1stEditionAbyssalPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {
 
-  public Extended1stEditionAbyssalPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
-    super(resources, registry.getBaseFont(), essenceMax);
+  public Extended1stEditionAbyssalPartEncoder(IResources resources) {
+    super(resources);
   }
 
-  public ContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
     return new Resonance1stEditionEncoder();
   }
 

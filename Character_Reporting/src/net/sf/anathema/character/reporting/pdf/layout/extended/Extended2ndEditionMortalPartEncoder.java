@@ -8,7 +8,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class Extended2ndEditionMortalPartEncoder extends AbstractSecondEditionPartEncoder {
 
   public Extended2ndEditionMortalPartEncoder(IResources resources, BaseFont baseFont) {
-    super(resources, baseFont, 3);
+    super(resources);
   }
 
   @Override
@@ -17,7 +17,7 @@ public class Extended2ndEditionMortalPartEncoder extends AbstractSecondEditionPa
   }
 
   @Override
-  public ContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
     return null;
   }
 

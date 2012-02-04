@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.infernal.caste.InfernalCaste;
 import net.sf.anathema.character.infernal.generic.EffortlessYoziDominance;
@@ -87,6 +86,6 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private void addExtendedParts(IResources resources, CharacterReportingModuleObject moduleObject) {
     ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
-    registry.setPartEncoder(INFERNAL, SecondEdition, new ExtendedInfernalPartEncoder(resources, registry, EssenceTemplate.SYSTEM_ESSENCE_MAX));
+    registry.setPartEncoder(INFERNAL, SecondEdition, new ExtendedInfernalPartEncoder(resources));
   }
 }

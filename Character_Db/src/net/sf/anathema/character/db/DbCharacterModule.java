@@ -195,7 +195,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private void addExtendedParts(IResources resources, CharacterReportingModuleObject moduleObject) {
     ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
-    registry.setPartEncoder(DB, FirstEdition, new Extended1stEditionDbPartEncoder(resources, registry, ESSENCE_MAX));
-    registry.setPartEncoder(DB, SecondEdition, new Extended2ndEditionDbPartEncoder(resources, registry, ESSENCE_MAX));
+    registry.setPartEncoder(DB, FirstEdition, new Extended1stEditionDbPartEncoder(resources));
+    registry.setPartEncoder(DB, SecondEdition, new Extended2ndEditionDbPartEncoder(resources));
   }
 }

@@ -193,7 +193,7 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
 
   private float encodeGreatCurse(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    ContentEncoder encoder = partEncoder.getGreatCurseEncoder();
+    ContentEncoder encoder = partEncoder.getGreatCurseEncoder(registry);
     boxEncoder.encodeBox(content, graphics, encoder, bounds);
     return height;
   }

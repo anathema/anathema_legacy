@@ -10,12 +10,12 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class Extended2ndEditionSpiritPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
-  public Extended2ndEditionSpiritPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
-    super(resources, registry, essenceMax);
+  public Extended2ndEditionSpiritPartEncoder(IResources resources) {
+    super(resources);
   }
 
   // TODO: This should be properly edited out, not just nulled out.
-  public ContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
     return new NullBoxContentEncoder();
   }
 

@@ -205,7 +205,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private void registerExtendedReporting(IResources resources, ExtendedEncodingRegistry registry, EncoderRegistry encoderRegistry) {
     registry
-            .setPartEncoder(LUNAR, FirstEdition, new Extended1stEditionLunarPartEncoder(encoderRegistry, resources, registry.getBaseFont(), ESSENCE_MAX));
-    registry.setPartEncoder(LUNAR, SecondEdition, new Extended2ndEditionLunarPartEncoder(encoderRegistry, resources, registry, ESSENCE_MAX));
+            .setPartEncoder(LUNAR, FirstEdition, new Extended1stEditionLunarPartEncoder(resources));
+    registry.setPartEncoder(LUNAR, SecondEdition, new Extended2ndEditionLunarPartEncoder(resources));
   }
 }

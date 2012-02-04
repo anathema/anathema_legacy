@@ -164,7 +164,7 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerExtendedReporting(IResources resources, ExtendedEncodingRegistry registry) {
-    registry.setPartEncoder(SIDEREAL, ExaltedEdition.FirstEdition, new Extended1stEditionSiderealPartEncoder(resources, registry, ESSENCE_MAX));
-    registry.setPartEncoder(SIDEREAL, ExaltedEdition.SecondEdition, new Extended2ndEditionSiderealPartEncoder(resources, registry, ESSENCE_MAX));
+    registry.setPartEncoder(SIDEREAL, ExaltedEdition.FirstEdition, new Extended1stEditionSiderealPartEncoder(resources));
+    registry.setPartEncoder(SIDEREAL, ExaltedEdition.SecondEdition, new Extended2ndEditionSiderealPartEncoder(resources));
   }
 }

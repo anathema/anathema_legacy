@@ -11,11 +11,11 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class Extended1stEditionDbPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {
 
-  public Extended1stEditionDbPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
-    super(resources, registry.getBaseFont(), essenceMax);
+  public Extended1stEditionDbPartEncoder(IResources resources) {
+    super(resources);
   }
 
-  public ContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
     return new GreatCurse1stEditionEncoder();
   }
 

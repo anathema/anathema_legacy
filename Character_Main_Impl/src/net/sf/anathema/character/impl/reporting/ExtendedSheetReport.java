@@ -19,17 +19,11 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.Extended1stEditionFirstPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.Extended2ndEditionFirstPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagic1stEditionPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.*;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.IITextReport;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -76,26 +70,24 @@ public class ExtendedSheetReport implements IITextReport {
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
       if (edition == ExaltedEdition.FirstEdition) {
         encoderList
-          .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration));
+                .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, traitMax, configuration));
       }
       if (edition == ExaltedEdition.SecondEdition) {
         encoderList.add(new Extended2ndEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
         encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
       }
-      Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
+      Collections.addAll(encoderList, partEncoder.getAdditionalPages(getEncoderRegistry(), configuration));
       if (edition == ExaltedEdition.SecondEdition) {
         encoderList.add(new ExtendedMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration));
-      }
-      else if (partEncoder.hasMagicPage()) {
+      } else if (partEncoder.hasMagicPage()) {
         encoderList.add(
-          new ExtendedMagic1stEditionPageEncoder(partEncoder, encodingRegistry, resources, configuration, edition != ExaltedEdition.FirstEdition));
+                new ExtendedMagic1stEditionPageEncoder(partEncoder, encodingRegistry, resources, configuration, edition != ExaltedEdition.FirstEdition));
       }
       boolean firstPagePrinted = false;
       for (PageEncoder encoder : encoderList) {
         if (firstPagePrinted) {
           document.newPage();
-        }
-        else {
+        } else {
           firstPagePrinted = true;
         }
         ReportContent content = new ReportContent(getContentRegistry(), character, description);

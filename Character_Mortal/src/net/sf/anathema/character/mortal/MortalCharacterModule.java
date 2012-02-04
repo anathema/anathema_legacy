@@ -35,6 +35,6 @@ public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
   private void registerExtendedParts(IResources resources, ExtendedEncodingRegistry registry) {
     BaseFont baseFont = registry.getBaseFont();
     registry.setPartEncoder(MORTAL, SecondEdition, new Extended2ndEditionMortalPartEncoder(resources, baseFont));
-    registry.setPartEncoder(MORTAL, FirstEdition, new Extended1stEditionMortalPartEncoder(resources, baseFont, registry));
+    registry.setPartEncoder(MORTAL, FirstEdition, new Extended1stEditionMortalPartEncoder(resources));
   }
 }

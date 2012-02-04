@@ -125,8 +125,8 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private void registerExtendedEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
     ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
-    registry.setPartEncoder(SOLAR, SecondEdition, new Extended2ndSolarPartEncoder(resources, registry, ESSENCE_MAX));
-    registry.setPartEncoder(SOLAR, FirstEdition, new Extended1stEditionSolarPartEncoder(resources, registry.getBaseFont(), ESSENCE_MAX));
+    registry.setPartEncoder(SOLAR, SecondEdition, new Extended2ndSolarPartEncoder(resources));
+    registry.setPartEncoder(SOLAR, FirstEdition, new Extended1stEditionSolarPartEncoder(resources));
   }
 
   @Override

@@ -124,7 +124,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeGreatCurse(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    ContentEncoder encoder = getPartEncoder().getGreatCurseEncoder();
+    ContentEncoder encoder = getPartEncoder().getGreatCurseEncoder(getRegistry());
     if (encoder != null) {
       return encodeFixedBox(graphics, content, encoder, 2, 1, distanceFromTop, height);
     } else {

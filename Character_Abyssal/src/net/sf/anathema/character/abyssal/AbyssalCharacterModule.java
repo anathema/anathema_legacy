@@ -98,6 +98,6 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     ExtendedEncodingRegistry extendedRegistry = moduleObject.getExtendedEncodingRegistry();
-    extendedRegistry.setPartEncoder(ABYSSAL, FirstEdition, new Extended1stEditionAbyssalPartEncoder(resources, extendedRegistry, ESSENCE_MAX));
+    extendedRegistry.setPartEncoder(ABYSSAL, FirstEdition, new Extended1stEditionAbyssalPartEncoder(resources));
   }
 }

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.ExtendedEssenceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionHealthEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionMovementEncoder;
@@ -16,21 +16,13 @@ import net.sf.anathema.lib.resources.IResources;
 public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartEncoder {
 
   private final IResources resources;
-  private final BaseFont baseFont;
-  private final int essenceMax;
 
-  public AbstractSecondEditionPartEncoder(IResources resources, BaseFont baseFont, int essenceMax) {
+  public AbstractSecondEditionPartEncoder(IResources resources) {
     this.resources = resources;
-    this.baseFont = baseFont;
-    this.essenceMax = essenceMax;
   }
 
   public final IResources getResources() {
     return resources;
-  }
-
-  protected int getEssenceMax() {
-    return essenceMax;
   }
 
   protected int getFontSize() {
@@ -54,7 +46,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
 
   @Override
   public ContentEncoder getMovementEncoder() {
-    return new Extended2ndEditionMovementEncoder(resources, baseFont);
+    return new Extended2ndEditionMovementEncoder(resources);
   }
 
   @Override
@@ -63,7 +55,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   @Override
-  public PageEncoder[] getAdditionalPages(PageConfiguration configuration) {
+  public PageEncoder[] getAdditionalPages(EncoderRegistry encoderRegistry, PageConfiguration configuration) {
     return new PageEncoder[0];
   }
 }

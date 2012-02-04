@@ -4,8 +4,6 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -21,28 +19,23 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.*;
 
+import static com.lowagie.text.Element.*;
+import static com.lowagie.text.Rectangle.BOX;
+import static com.lowagie.text.Rectangle.NO_BORDER;
+
 public abstract class AbstractMovementTableEncoder implements ITableEncoder<ReportContent> {
   protected static float PADDING = 0.3f;
 
   private final IResources resources;
-  private final Font font;
-  private Font headerFont;
-  private Font commentFont;
-  private PdfPCell spaceCell;
 
-  public AbstractMovementTableEncoder(IResources resources, BaseFont baseFont) {
+  public AbstractMovementTableEncoder(IResources resources) {
     this.resources = resources;
-    this.font = TableEncodingUtilities.createTableFont(baseFont);
-    this.headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
-    this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
-    this.spaceCell = new PdfPCell(new Phrase(" ", font)); //$NON-NLS-1$
-    this.spaceCell.setBorder(Rectangle.NO_BORDER);
   }
 
   protected abstract Float[] getMovementColumns();
 
   public final float encodeTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
-    PdfPTable table = createTable(content);
+    PdfPTable table = createTable(graphics, content);
     table.setWidthPercentage(100);
     graphics.createSimpleColumn(bounds).withElement(table).encode();
     return table.getTotalHeight();
@@ -52,35 +45,35 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
     return character.getTraitCollection();
   }
 
-  protected final PdfPTable createTable(ReportContent content) throws DocumentException {
+  protected final PdfPTable createTable(SheetGraphics graphics, ReportContent content) {
     float[] columnWidth = createColumnWidth();
     PdfPTable table = new PdfPTable(columnWidth);
-    addMovementHeader(table);
+    addMovementHeader(graphics, table);
     for (HealthLevelType type : HealthLevelType.values()) {
-      addHealthTypeRows(table, content.getCharacter(), type);
+      addHealthTypeRows(graphics, table, content.getCharacter(), type);
     }
     return table;
   }
 
-  private void addHealthTypeRows(PdfPTable table, IGenericCharacter character, HealthLevelType type) {
+  private void addHealthTypeRows(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, HealthLevelType type) {
     if (type == HealthLevelType.DYING) {
       return;
     }
 
     int painTolerance = character.getPainTolerance();
     if (type == HealthLevelType.INCAPACITATED) {
-      addIncapacitatedMovement(table);
+      addIncapacitatedMovement(graphics, table);
     } else {
-      addMovementCells(table, type, painTolerance, getTraits(character));
+      addMovementCells(graphics, table, type, painTolerance, getTraits(character));
     }
   }
 
-  protected void addHealthPenaltyCells(PdfPTable table, HealthLevelType level, int painTolerance) {
-    final String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
-    final Phrase healthPenaltyPhrase = new Phrase(healthPenText, font);
-    PdfPCell healthPdfPCell = new TableCell(healthPenaltyPhrase, Rectangle.NO_BORDER);
-    healthPdfPCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
-    healthPdfPCell.setVerticalAlignment(Element.ALIGN_CENTER);
+  protected void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {
+    String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
+    Phrase healthPenaltyPhrase = new Phrase(healthPenText, createFont(graphics));
+    PdfPCell healthPdfPCell = new TableCell(healthPenaltyPhrase, NO_BORDER);
+    healthPdfPCell.setHorizontalAlignment(ALIGN_RIGHT);
+    healthPdfPCell.setVerticalAlignment(ALIGN_CENTER);
     if (level == HealthLevelType.INCAPACITATED || level == HealthLevelType.DYING) {
       healthPdfPCell.setColspan(2);
       table.addCell(healthPdfPCell);
@@ -88,46 +81,54 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
       table.addCell(healthPdfPCell);
       String painToleranceText = " "; //$NON-NLS-1$
       if (painTolerance > 0) {
-        final int value = getPenalty(level, painTolerance);
+        int value = getPenalty(level, painTolerance);
         painToleranceText = "(" + (value == 0 ? "-" : "") + value + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
       }
-      final TableCell painToleranceCell = new TableCell(new Phrase(painToleranceText, font), Rectangle.NO_BORDER);
-      painToleranceCell.setHorizontalAlignment(Element.ALIGN_LEFT);
-      painToleranceCell.setVerticalAlignment(Element.ALIGN_CENTER);
+      TableCell painToleranceCell = new TableCell(new Phrase(painToleranceText, createFont(graphics)), NO_BORDER);
+      painToleranceCell.setHorizontalAlignment(ALIGN_LEFT);
+      painToleranceCell.setVerticalAlignment(ALIGN_CENTER);
       table.addCell(painToleranceCell);
     }
   }
 
-  private void addIncapacitatedMovement(PdfPTable table) {
-    final Phrase commentPhrase = createIncapacitatedComment();
-    final TableCell cell = new TableCell(commentPhrase, Rectangle.NO_BORDER);
+  private void addIncapacitatedMovement(SheetGraphics graphics, PdfPTable table) {
+    Phrase commentPhrase = createIncapacitatedComment(graphics);
+    TableCell cell = new TableCell(commentPhrase, NO_BORDER);
     cell.setColspan(getMovementColumns().length);
-    cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+    cell.setHorizontalAlignment(ALIGN_RIGHT);
     cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
     table.addCell(cell);
   }
 
-  protected abstract Phrase createIncapacitatedComment();
+  protected abstract Phrase createIncapacitatedComment(SheetGraphics graphics);
 
-  protected final void addSpaceCells(PdfPTable table, int count) {
+  protected final void addSpaceCells(SheetGraphics graphics, PdfPTable table, int count) {
+    PdfPCell spaceCell = new PdfPCell(new Phrase(" ", createFont(graphics))); //$NON-NLS-1$
+    spaceCell.setBorder(NO_BORDER);
     for (int index = 0; index < count; index++) {
       table.addCell(spaceCell);
     }
   }
 
-  protected final PdfPCell createHeaderCell(String text, int columnSpan) {
-    PdfPCell cell = new PdfPCell(new Phrase(text, headerFont));
-    cell.setBorder(Rectangle.NO_BORDER);
+  private Font createFont(SheetGraphics graphics) {
+    return graphics.createTableFont();
+  }
+
+  protected final PdfPCell createHeaderCell(SheetGraphics graphics, String text, int columnSpan) {
+    PdfPCell cell = new PdfPCell(new Phrase(text, getHeaderFont(graphics)));
+    cell.setBorder(NO_BORDER);
     cell.setColspan(columnSpan);
     return cell;
   }
 
-  protected abstract void addMovementHeader(PdfPTable table);
+  protected abstract void addMovementHeader(SheetGraphics graphics, PdfPTable table);
 
-  protected abstract void addMovementCells(PdfPTable table, HealthLevelType level, int painTolerance, IGenericTraitCollection collection);
+  protected abstract void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance, IGenericTraitCollection collection);
 
-  protected final PdfPCell createMovementCell(int value, int minValue) {
-    return TableEncodingUtilities.createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX, Element.ALIGN_CENTER);
+  protected final PdfPCell createMovementCell(SheetGraphics graphics, int value, int minValue) {
+    Font font = createFont(graphics);
+    String valueText = String.valueOf(Math.max(value, minValue));
+    return TableEncodingUtilities.createContentCellTable(Color.BLACK, valueText, font, 0.5f, BOX, ALIGN_CENTER);
   }
 
   protected final int getPenalty(HealthLevelType level, int painTolerance) {
@@ -138,8 +139,12 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(getMovementColumns());
   }
 
-  protected final Font getCommentFont() {
-    return commentFont;
+  protected final Font getCommentFont(SheetGraphics graphics) {
+    return graphics.createCommentFont();
+  }
+
+  private Font getHeaderFont(SheetGraphics graphics) {
+    return graphics.createCommentFont();
   }
 
   protected final IResources getResources() {

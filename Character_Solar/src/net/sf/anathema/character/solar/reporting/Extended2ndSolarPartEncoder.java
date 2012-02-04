@@ -1,6 +1,5 @@
 package net.sf.anathema.character.solar.reporting;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
@@ -12,12 +11,12 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class Extended2ndSolarPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
-  public Extended2ndSolarPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
-    super(resources, registry, essenceMax);
+  public Extended2ndSolarPartEncoder(IResources resources) {
+    super(resources);
   }
 
   @Override
-  public ContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
     return new VirtueFlawEncoder();
   }
 

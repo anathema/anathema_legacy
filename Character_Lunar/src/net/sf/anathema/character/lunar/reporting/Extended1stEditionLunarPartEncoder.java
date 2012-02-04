@@ -1,30 +1,25 @@
 package net.sf.anathema.character.lunar.reporting;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.lunar.reporting.layout.LunarBeastform1stEditionPageEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.anima.AnimaEncoderFactory;
 import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.GreatCurse1stEditionEncoder;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractFirstEditionExaltPdfPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Extended1stEditionLunarPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {
 
-  private EncoderRegistry encoderRegistry;
-  private BaseFont baseFont;
-
-  public Extended1stEditionLunarPartEncoder(EncoderRegistry encoderRegistry, IResources resources, BaseFont baseFont, int essenceMax) {
-    super(resources, baseFont, essenceMax);
-    this.encoderRegistry = encoderRegistry;
-    this.baseFont = baseFont;
+  public Extended1stEditionLunarPartEncoder(IResources resources) {
+    super(resources);
   }
 
-  public ContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
     return new GreatCurse1stEditionEncoder(getResources());
   }
 
@@ -35,7 +30,7 @@ public class Extended1stEditionLunarPartEncoder extends AbstractFirstEditionExal
   }
 
   @Override
-  public PageEncoder[] getAdditionalPages(PageConfiguration configuration) {
-    return new PageEncoder[] { new LunarBeastform1stEditionPageEncoder(encoderRegistry, getResources(), configuration) };
+  public PageEncoder[] getAdditionalPages(EncoderRegistry encoderRegistry, PageConfiguration configuration) {
+    return new PageEncoder[]{new LunarBeastform1stEditionPageEncoder(encoderRegistry, getResources(), configuration)};
   }
 }

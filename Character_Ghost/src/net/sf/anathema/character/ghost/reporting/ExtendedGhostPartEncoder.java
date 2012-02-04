@@ -10,12 +10,12 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class ExtendedGhostPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
-  public ExtendedGhostPartEncoder(IResources resources, ExtendedEncodingRegistry registry, int essenceMax) {
-    super(resources, registry, essenceMax);
+  public ExtendedGhostPartEncoder(IResources resources) {
+    super(resources);
   }
 
   @Override
-  public ContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
     return new FetterEncoder();
   }
 

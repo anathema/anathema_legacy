@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.BackgroundsEncoder;
@@ -11,11 +10,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class Extended1stEditionMortalPartEncoder extends AbstractFirstEditionPartEncoder {
 
-  private final ExtendedEncodingRegistry registry;
-
-  public Extended1stEditionMortalPartEncoder(IResources resources, BaseFont baseFont, ExtendedEncodingRegistry registry) {
-    super(resources, baseFont);
-    this.registry = registry;
+  public Extended1stEditionMortalPartEncoder(IResources resources) {
+    super(resources);
   }
 
   @Override
@@ -39,7 +35,7 @@ public class Extended1stEditionMortalPartEncoder extends AbstractFirstEditionPar
   }
 
   @Override
-  public ContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder(ExtendedEncodingRegistry registry) {
     return registry.getLinguisticsEncoder(); //No Great Curse for Mortals
   }
 }

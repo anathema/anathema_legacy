@@ -47,6 +47,6 @@ public class SpiritCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private void registerExtendedEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
     ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
-    registry.setPartEncoder(SPIRIT, SecondEdition, new Extended2ndEditionSpiritPartEncoder(resources, registry, ESSENCE_MAX));
+    registry.setPartEncoder(SPIRIT, SecondEdition, new Extended2ndEditionSpiritPartEncoder(resources));
   }
 }

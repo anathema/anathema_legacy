@@ -29,7 +29,6 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 
 import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
-import static net.sf.anathema.character.generic.impl.traits.EssenceTemplate.SYSTEM_ESSENCE_MAX;
 import static net.sf.anathema.character.generic.type.CharacterType.GHOST;
 
 @CharacterModule
@@ -109,6 +108,6 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private void addExtendedParts(IResources resources, CharacterReportingModuleObject moduleObject) {
     ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
-    registry.setPartEncoder(GHOST, SecondEdition, new ExtendedGhostPartEncoder(resources, registry, SYSTEM_ESSENCE_MAX));
+    registry.setPartEncoder(GHOST, SecondEdition, new ExtendedGhostPartEncoder(resources));
   }
 }
