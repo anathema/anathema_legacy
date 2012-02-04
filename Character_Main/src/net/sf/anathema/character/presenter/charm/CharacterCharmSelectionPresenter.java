@@ -55,7 +55,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     this.viewProperties = new CharacterCharmTreeViewProperties(resources, getCharmConfiguration());
     this.view = factory.createCharmSelectionView(viewProperties);
     this.groupInformer = new DelegatingCharmGroupInformer();
-    this.specialCharmViewPresenter = new SpecialCharmViewPresenter(factory, statistics, view, resources, groupInformer);
+    this.specialCharmViewPresenter = new SpecialCharmViewPresenter(statistics, view, resources, groupInformer);
   }
 
   public void initPresentation() {
