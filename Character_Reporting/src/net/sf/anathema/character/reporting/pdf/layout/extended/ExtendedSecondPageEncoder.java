@@ -17,7 +17,7 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   private EncoderRegistry encoderRegistry;
 
   public ExtendedSecondPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
-    IResources resources, PageConfiguration pageConfiguration) {
+                                   IResources resources, PageConfiguration pageConfiguration) {
     super(partEncoder, registry, resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;
   }
@@ -49,7 +49,8 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeInventory(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getPossessionsEncoder(), 1, 3, distanceFromTop, height);
+    ContentEncoder possessionsEncoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.POSSESSIONS);
+    return encodeFixedBox(graphics, content, possessionsEncoder, 1, 3, distanceFromTop, height);
   }
 
   private float encodeArmourAndSoak(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {

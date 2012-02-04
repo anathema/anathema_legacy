@@ -7,10 +7,9 @@ import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPer
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalViewFactory;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase;
-import net.sf.anathema.character.equipment.impl.reporting.content.*;
+import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContent;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.ArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.ArmourTableEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.rendering.possessions.PossessionsEncoder;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
@@ -49,6 +48,5 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private void registerEncoders(IResources resources, IEncodingRegistry registry) {
     registry.setArmourContentEncoder(new ArmourEncoder(resources, new ArmourTableEncoder(ArmourContent.class)));
-    registry.setPossessionsEncoder(new PossessionsEncoder());
   }
 }

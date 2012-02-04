@@ -95,7 +95,8 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodePossessions(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getPossessionsEncoder(), 2, 1, distanceFromTop, height);
+    ContentEncoder possessionsEncoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.POSSESSIONS);
+    return encodeFixedBox(graphics, content, possessionsEncoder, 2, 1, distanceFromTop, height);
   }
 
   private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {

@@ -7,8 +7,6 @@ public interface IEncodingRegistry {
 
   void setArmourContentEncoder(ContentEncoder encoder);
 
-  void setPossessionsEncoder(ContentEncoder encoder);
-
   BaseFont getSymbolBaseFont();
 
   BaseFont getBaseFont();
