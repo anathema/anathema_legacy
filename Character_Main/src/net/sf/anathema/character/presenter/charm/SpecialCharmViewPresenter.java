@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
-import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
+import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewContainer;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 
@@ -17,18 +17,17 @@ import java.util.List;
 public class SpecialCharmViewPresenter {
   private final List<ISVGSpecialNodeView> specialCharmViews = new ArrayList<ISVGSpecialNodeView>();
   private ICharacterStatistics statistics;
-  private ICharmSelectionView view;
+  private ISpecialCharmViewContainer view;
   private IResources resources;
   private CharmGroupInformer charmGroupInformer;
 
-  public SpecialCharmViewPresenter(ICharacterStatistics statistics, ICharmSelectionView view, IResources resources, CharmGroupInformer charmGroupInformer) {
+  public SpecialCharmViewPresenter(ICharacterStatistics statistics, ISpecialCharmViewContainer view, IResources resources) {
     this.statistics = statistics;
     this.view = view;
     this.resources = resources;
-    this.charmGroupInformer = charmGroupInformer;
   }
 
-  public void initializeSpecialCharmViews() {
+  public void initPresentation() {
     for (ISpecialCharm charm : getCharmConfiguration().getSpecialCharms()) {
       SpecialCharmViewBuilder builder = new SpecialCharmViewBuilder(resources, statistics, view);
       charm.accept(builder);
@@ -71,5 +70,9 @@ public class SpecialCharmViewPresenter {
 
   private ICharmConfiguration getCharmConfiguration() {
     return statistics.getCharms();
+  }
+
+  public void setInformer(CharmGroupInformer informer) {
+    this.charmGroupInformer = informer;
   }
 }

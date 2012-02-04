@@ -58,26 +58,17 @@ public class CharmSelectionView extends AbstractCascadeSelectionView implements 
   }
 
   @Override
-  public SVGCategorizedSpecialNodeView createMultiLearnableCharmView(
-          final ISpecialCharm charm,
-          final double width,
-          final Color color) {
+  public SVGCategorizedSpecialNodeView createMultiLearnableCharmView(ISpecialCharm charm, double width, Color color) {
     return new SVGCategorizedSpecialNodeView(charm.getCharmId(), width, color, EssenceTemplate.SYSTEM_ESSENCE_MAX);
   }
 
   @Override
-  public SVGToggleButtonSpecialNodeView createSubeffectCharmView(
-          final IMultipleEffectCharm charm,
-          final double width,
-          final Color color) {
+  public SVGToggleButtonSpecialNodeView createSubeffectCharmView(IMultipleEffectCharm charm, double width, Color color) {
     return new SVGToggleButtonSpecialNodeView(charm.getCharmId(), width, color);
   }
 
   @Override
-  public ISVGSpecialNodeView createViewControlButton(
-          final ISVGSpecialNodeView view,
-          final double width,
-          final String label) {
+  public ISVGSpecialNodeView createViewControlButton(ISVGSpecialNodeView view, double width, String label) {
     return new SVGViewControlButton(view, width, label);
   }
 }

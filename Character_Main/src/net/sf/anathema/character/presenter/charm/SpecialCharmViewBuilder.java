@@ -1,27 +1,36 @@
 package net.sf.anathema.character.presenter.charm;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.special.*;
+import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
-import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewFactory;
+import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewContainer;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGCategorizedSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGToggleButtonSpecialNodeView;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
   private final IResources resources;
   private final ICharacterStatistics statistics;
-  private final ISpecialCharmViewFactory factory;
+  private final ISpecialCharmViewContainer factory;
   private ISVGSpecialNodeView createdView;
 
-  public SpecialCharmViewBuilder(IResources resources, ICharacterStatistics statistics, ISpecialCharmViewFactory factory) {
+  public SpecialCharmViewBuilder(IResources resources, ICharacterStatistics statistics, ISpecialCharmViewContainer factory) {
     this.resources = resources;
     this.statistics = statistics;
     this.factory = factory;

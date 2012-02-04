@@ -8,13 +8,12 @@ import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGToggleButtonSpeci
 
 import java.awt.Color;
 
-public interface ISpecialCharmViewFactory {
+public interface ISpecialCharmViewContainer {
   SVGCategorizedSpecialNodeView createMultiLearnableCharmView(ISpecialCharm charm, double width, Color color);
 
-  SVGToggleButtonSpecialNodeView createSubeffectCharmView(
-          IMultipleEffectCharm visited,
-          double charmWidth,
-          Color characterColor);
+  SVGToggleButtonSpecialNodeView createSubeffectCharmView(IMultipleEffectCharm charm, double width, Color color);
 
   ISVGSpecialNodeView createViewControlButton(ISVGSpecialNodeView view, double width, String label);
+
+  void setSpecialCharmViewVisible(ISVGSpecialNodeView charmView, boolean visible);
 }
