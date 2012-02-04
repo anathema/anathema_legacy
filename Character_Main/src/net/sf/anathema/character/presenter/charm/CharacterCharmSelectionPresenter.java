@@ -53,7 +53,12 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     this.statistics = statistics;
     this.viewProperties = new CharacterCharmTreeViewProperties(resources, getCharmConfiguration());
     this.view = factory.createCharmSelectionView(viewProperties);
-    this.specialCharmViewPresenter = new SpecialCharmViewPresenter(statistics, view, resources);
+    this.charmSelectionChangeListener = new CharacterCharmGroupChangeListener(
+            getTemplateRegistry(),
+            getCharmConfiguration(),
+            filterSet,
+            statistics.getRules().getEdition(), view.getCharmTreeRenderer());
+    this.specialCharmViewPresenter = new SpecialCharmViewPresenter(statistics, view, resources, charmSelectionChangeListener);
   }
 
   public void initPresentation() {
@@ -62,12 +67,6 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
             statistics.getCharacterConcept().getCaste().getType());
     createCharmTypeSelector(getCurrentCharmTypes(alienCharms), view, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
     initFilters(charms);
-    this.charmSelectionChangeListener = new CharacterCharmGroupChangeListener(
-            getTemplateRegistry(),
-            getCharmConfiguration(),
-            filterSet,
-            statistics.getRules().getEdition(), view.getCharmTreeRenderer());
-    specialCharmViewPresenter.setInformer(charmSelectionChangeListener);
     specialCharmViewPresenter.initPresentation();
     initCharmTypeSelectionListening();
     initCasteListening();
