@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.framework.module.object.ICharacterModul
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
@@ -19,7 +18,13 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.*;
+import net.sf.anathema.character.reporting.pdf.layout.extended.Extended1stEditionFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.Extended2ndEditionFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagic1stEditionPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
@@ -61,7 +66,6 @@ public class ExtendedSheetReport implements IITextReport {
     ExtendedEncodingRegistry encodingRegistry = getEncodingRegistry();
     SheetGraphics graphics = new SheetGraphics(directContent, encodingRegistry.getBaseFont(), encodingRegistry.getSymbolBaseFont());
     try {
-      int traitMax = Math.max(5, getEssenceMax(stattedCharacter));
       IExtendedPartEncoder partEncoder = getPartEncoder(stattedCharacter);
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
@@ -70,7 +74,7 @@ public class ExtendedSheetReport implements IITextReport {
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
       if (edition == ExaltedEdition.FirstEdition) {
         encoderList
-                .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
+                .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
       }
       if (edition == ExaltedEdition.SecondEdition) {
         encoderList.add(new Extended2ndEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
@@ -96,10 +100,6 @@ public class ExtendedSheetReport implements IITextReport {
     } catch (Exception e) {
       throw new ReportException(e);
     }
-  }
-
-  private int getEssenceMax(ICharacter character) {
-    return character.getStatistics().getTraitConfiguration().getTrait(OtherTraitType.Essence).getMaximalValue();
   }
 
   private IExtendedPartEncoder getPartEncoder(ICharacter character) {

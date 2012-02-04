@@ -54,7 +54,8 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeArmourAndSoak(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getArmourContentEncoder(), 2, 2, distanceFromTop, height);
+    ContentEncoder armourContentEncoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.PANOPLY);
+    return encodeFixedBox(graphics, content, armourContentEncoder, 2, 2, distanceFromTop, height);
   }
 
   private float encodeSocialCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop,

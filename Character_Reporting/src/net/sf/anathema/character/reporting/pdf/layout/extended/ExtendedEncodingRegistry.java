@@ -21,7 +21,6 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
 
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
-  private ContentEncoder armourContentEncoder = new NullBoxContentEncoder("Armour");
   private ContentEncoder mutationsEncoder = new NullBoxContentEncoder("Mutations");
   private List<IVariableContentEncoder> sidebarEncoders = new ArrayList<IVariableContentEncoder>();
   private List<ITableEncoder> magicEncoders = new ArrayList<ITableEncoder>();
@@ -41,17 +40,8 @@ public class ExtendedEncodingRegistry implements IEncodingRegistry {
     return symbolBaseFont;
   }
 
-  @Override
-  public void setArmourContentEncoder(ContentEncoder encoder) {
-    this.armourContentEncoder = encoder;
-  }
-
   public void setMutationsEncoder(ContentEncoder mutationsEncoder) {
     this.mutationsEncoder = mutationsEncoder;
-  }
-
-  public ContentEncoder getArmourContentEncoder() {
-    return armourContentEncoder;
   }
 
   public ContentEncoder getMutationsEncoder() {

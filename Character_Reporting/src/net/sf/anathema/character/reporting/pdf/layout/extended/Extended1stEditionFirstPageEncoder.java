@@ -32,15 +32,13 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
   private static final int ANIMA_HEIGHT = 128;
   private final PageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
-  private final ExtendedEncodingRegistry registry;
   private EncoderRegistry encoderRegistry;
   private final IExtendedPartEncoder partEncoder;
 
-  public Extended1stEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, PageConfiguration pageConfiguration) {
+  public Extended1stEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration pageConfiguration) {
     this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;
     this.resources = resources;
-    this.registry = registry;
     this.pageConfiguration = pageConfiguration;
     this.boxEncoder = new PdfBoxEncoder();
   }
@@ -133,7 +131,7 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
 
   private float encodeArmourAndSoak(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    ContentEncoder contentEncoder = registry.getArmourContentEncoder();
+    ContentEncoder contentEncoder = encoderRegistry.createEncoder(resources, content, EncoderIds.PANOPLY);
     boxEncoder.encodeBox(content, graphics, contentEncoder, bounds);
     return height;
   }
