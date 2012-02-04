@@ -76,12 +76,11 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     createCharmGroupSelector(view, charmSelectionChangeListener, charms.getAllGroups());
     createFilterButton(view);
     view.addCharmSelectionListener(new INodeSelectionListener() {
-      public void nodeSelected(final String charmId) {
+      public void nodeSelected(String charmId) {
         if (viewProperties.isRequirementNode(charmId)) {
           return;
         }
         ILearningCharmGroup charmGroup = getCharmConfiguration().getGroup(getCharmConfiguration().getCharmById(charmId));
-
         charmGroup.toggleLearned(charms.getCharmById(charmId));
       }
     });
@@ -109,7 +108,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   private void resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea() {
     getCharmComponent().addMouseListener(new MouseAdapter() {
       @Override
-      public void mouseExited(final MouseEvent e) {
+      public void mouseExited(MouseEvent e) {
         specialCharmViewPresenter.resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
       }
     });
@@ -178,7 +177,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
 
   private void initCharmTypeSelectionListening() {
     view.addCharmTypeSelectionListener(new IObjectValueChangedListener<IIdentificate>() {
-      public void valueChanged(final IIdentificate cascadeType) {
+      public void valueChanged(IIdentificate cascadeType) {
         currentType = cascadeType;
         handleTypeSelectionChange(cascadeType);
       }
@@ -195,14 +194,14 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     specialCharmViewPresenter.showSpecialViews();
   }
 
-  private void initCharmLearnListening(final ICharmConfiguration charmConfiguration) {
+  private void initCharmLearnListening(ICharmConfiguration charmConfiguration) {
     ICharmLearnListener charmLearnListener = createCharmLearnListener(view);
     for (ILearningCharmGroup group : charmConfiguration.getAllGroups()) {
       group.addCharmLearnListener(charmLearnListener);
     }
   }
 
-  private void setCharmVisuals(final ICharm charm, final ICharmSelectionView selectionView) {
+  private void setCharmVisuals(ICharm charm, ICharmSelectionView selectionView) {
     ICharmConfiguration charmConfiguration = getCharmConfiguration();
     ICharmGroup selectedGroup = groupInformer.getCurrentGroup();
     if (selectedGroup == null || !charm.getGroupId().equals(selectedGroup.getId())) {
