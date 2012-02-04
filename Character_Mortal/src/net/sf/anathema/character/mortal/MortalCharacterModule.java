@@ -1,6 +1,5 @@
 package net.sf.anathema.character.mortal;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
@@ -33,7 +32,6 @@ public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerExtendedParts(IResources resources, ExtendedEncodingRegistry registry) {
-    BaseFont baseFont = registry.getBaseFont();
     registry.setPartEncoder(MORTAL, SecondEdition, new Extended2ndEditionMortalPartEncoder(resources));
     registry.setPartEncoder(MORTAL, FirstEdition, new Extended1stEditionMortalPartEncoder(resources));
   }

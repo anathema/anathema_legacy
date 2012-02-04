@@ -4,7 +4,6 @@ import com.lowagie.text.Anchor;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
@@ -20,17 +19,13 @@ import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractPdfPageEncoder implements PageEncoder {
   private final IResources resources;
-  private final BaseFont baseFont;
 
-  private final ExtendedEncodingRegistry registry;
   private final PageConfiguration pageConfiguration;
   private final IExtendedPartEncoder partEncoder;
   private final PdfBoxEncoder boxEncoder;
 
-  public AbstractPdfPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, PageConfiguration pageConfiguration) {
+  public AbstractPdfPageEncoder(IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
-    this.registry = registry;
-    this.baseFont = registry.getBaseFont();
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;
     this.boxEncoder = new PdfBoxEncoder();
@@ -40,7 +35,7 @@ public abstract class AbstractPdfPageEncoder implements PageEncoder {
 
   protected void encodeCopyright(SheetGraphics graphics) throws DocumentException {
     float lineHeight = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 2f;
-    Font copyrightFont = new Font(getBaseFont(), IVoidStateFormatConstants.COMMENT_FONT_SIZE);
+    Font copyrightFont = graphics.createCommentFont();
     float copyrightHeight = getPageConfiguration().getLowerContentY();
 
     Bounds firstColumnBounds = getPageConfiguration().getFirstColumnRectangle(getContentHeight(), copyrightHeight, 1);
@@ -61,16 +56,8 @@ public abstract class AbstractPdfPageEncoder implements PageEncoder {
     graphics.createSimpleColumn(whitewolfBounds).withLeading(lineHeight).andAlignment(HorizontalAlignment.Right).andTextPart(whitewolfPhrase).encode();
   }
 
-  protected ExtendedEncodingRegistry getRegistry() {
-    return registry;
-  }
-
   protected IResources getResources() {
     return resources;
-  }
-
-  protected BaseFont getBaseFont() {
-    return baseFont;
   }
 
   protected PageConfiguration getPageConfiguration() {

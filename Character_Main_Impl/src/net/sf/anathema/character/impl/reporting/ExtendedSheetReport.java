@@ -77,15 +77,15 @@ public class ExtendedSheetReport implements IITextReport {
                 .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
       }
       if (edition == ExaltedEdition.SecondEdition) {
-        encoderList.add(new Extended2ndEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
-        encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration));
+        encoderList.add(new Extended2ndEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
+        encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
       }
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(getEncoderRegistry(), configuration));
       if (edition == ExaltedEdition.SecondEdition) {
-        encoderList.add(new ExtendedMagicPageEncoder(partEncoder, encodingRegistry, resources, configuration));
+        encoderList.add(new ExtendedMagicPageEncoder(partEncoder, resources, configuration));
       } else if (partEncoder.hasMagicPage()) {
         encoderList.add(
-                new ExtendedMagic1stEditionPageEncoder(getEncoderRegistry(), partEncoder, encodingRegistry, resources, configuration, edition != ExaltedEdition.FirstEdition));
+                new ExtendedMagic1stEditionPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration, edition != ExaltedEdition.FirstEdition));
       }
       boolean firstPagePrinted = false;
       for (PageEncoder encoder : encoderList) {

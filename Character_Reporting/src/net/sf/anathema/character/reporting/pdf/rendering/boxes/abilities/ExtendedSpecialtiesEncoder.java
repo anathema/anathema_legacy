@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -21,7 +20,7 @@ import java.util.List;
 
 public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implements ContentEncoder {
 
-  public ExtendedSpecialtiesEncoder(IResources resources, BaseFont baseFont) {
+  public ExtendedSpecialtiesEncoder(IResources resources) {
     super(resources, PdfTraitEncoder.createSmallTraitEncoder());
   }
 

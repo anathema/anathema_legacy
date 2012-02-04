@@ -4,7 +4,6 @@ import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
@@ -16,25 +15,17 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.*;
-
 public class PdfInitiationEncoder implements IVariableContentEncoder {
 
-  private BaseFont baseFont;
   private Font textFont;
   private Font headerFont;
   private final IResources resources;
 
-  public PdfInitiationEncoder(IResources resources, BaseFont baseFont) {
-    this.baseFont = baseFont;
-    this.textFont = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 0.5f, Font.NORMAL, Color.BLACK);
+  public PdfInitiationEncoder(IResources resources, SheetGraphics graphics) {
+    this.textFont = graphics.createTableFont();
     this.headerFont = new Font(textFont);
     this.headerFont.setStyle(Font.BOLD);
     this.resources = resources;
-  }
-
-  protected BaseFont getBaseFont() {
-    return baseFont;
   }
 
   @Override

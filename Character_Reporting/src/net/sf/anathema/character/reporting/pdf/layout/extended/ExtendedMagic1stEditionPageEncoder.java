@@ -26,8 +26,8 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
   private final EncoderRegistry encoderRegistry;
   private final boolean pureMagic;
 
-  public ExtendedMagic1stEditionPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources, PageConfiguration configuration, boolean pureMagic) {
-    super(partEncoder, encodingRegistry, resources, configuration);
+  public ExtendedMagic1stEditionPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration configuration, boolean pureMagic) {
+    super(partEncoder, resources, configuration);
     this.encoderRegistry = encoderRegistry;
     this.pureMagic = pureMagic;
   }

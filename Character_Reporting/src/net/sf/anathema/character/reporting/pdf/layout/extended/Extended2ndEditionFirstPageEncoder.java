@@ -23,8 +23,8 @@ import net.sf.anathema.lib.resources.IResources;
 public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   private EncoderRegistry encoderRegistry;
 
-  public Extended2ndEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, PageConfiguration pageConfiguration) {
-    super(partEncoder, registry, resources, pageConfiguration);
+  public Extended2ndEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration pageConfiguration) {
+    super(partEncoder, resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;
   }
 
@@ -103,7 +103,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeSpecialties(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, new ExtendedSpecialtiesEncoder(getResources(), getBaseFont()), 1, 2, distanceFromTop, height);
+    return encodeFixedBox(graphics, content, new ExtendedSpecialtiesEncoder(getResources()), 1, 2, distanceFromTop, height);
   }
 
   private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {

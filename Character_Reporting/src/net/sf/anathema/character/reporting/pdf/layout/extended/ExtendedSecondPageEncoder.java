@@ -16,9 +16,8 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
 
   private EncoderRegistry encoderRegistry;
 
-  public ExtendedSecondPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
-                                   IResources resources, PageConfiguration pageConfiguration) {
-    super(partEncoder, registry, resources, pageConfiguration);
+  public ExtendedSecondPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration pageConfiguration) {
+    super(partEncoder, resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;
   }
 
@@ -59,7 +58,7 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeSocialCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+                                        float height) throws DocumentException {
     ContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.SOCIAL_COMBAT, EncoderIds.MERITS_AND_FLAWS);
     return encodeFixedBox(graphics, content, encoder, 1, 1, distanceFromTop, height);
   }

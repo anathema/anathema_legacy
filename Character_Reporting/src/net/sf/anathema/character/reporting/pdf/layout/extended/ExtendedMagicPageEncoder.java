@@ -29,8 +29,8 @@ import java.util.List;
 
 public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
-  public ExtendedMagicPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources, PageConfiguration configuration) {
-    super(partEncoder, encodingRegistry, resources, configuration);
+  public ExtendedMagicPageEncoder(IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration configuration) {
+    super(partEncoder, resources, configuration);
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
@@ -188,7 +188,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeInitiations(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
-    return encodeVariableBox(graphics, content, new PdfInitiationEncoder(getResources(), getBaseFont()), 1, 1, distanceFromTop, maxHeight);
+    return encodeVariableBox(graphics, content, new PdfInitiationEncoder(getResources(), graphics), 1, 1, distanceFromTop, maxHeight);
   }
 
   private float encodeCharms(SheetGraphics graphics, ReportContent content, List<IMagicStats> printCharms, float distanceFromTop, float height) throws DocumentException {
