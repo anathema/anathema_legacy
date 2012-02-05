@@ -17,6 +17,7 @@ public class CharacterModuleContainer {
           throws InitializationException {
     this.resources = resources;
     this.characterGenerics = new CharacterGenerics(dataFileProvider, instantiater);
+    initializeBasicModuleSoOtherModulesCanDependOnIt();
   }
 
   public void addCharacterGenericsModule(ICharacterModule<? extends ICharacterModuleObject> module)
@@ -32,5 +33,9 @@ public class CharacterModuleContainer {
 
   public ICharacterGenerics getCharacterGenerics() {
     return characterGenerics;
+  }
+
+  private void initializeBasicModuleSoOtherModulesCanDependOnIt() throws InitializationException {
+    addCharacterGenericsModule(new BasicExaltCharacterModule());
   }
 }
