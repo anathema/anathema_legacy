@@ -1,6 +1,9 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 
@@ -24,8 +27,9 @@ public class TableCell extends PdfPCell {
   }
 
   public TableCell(Image image) {
-    this(new Phrase(new Chunk(image, 0, 0)), Rectangle.NO_BORDER);
+    super(image);
     setHorizontalAlignment(Element.ALIGN_CENTER);
     setVerticalAlignment(Element.ALIGN_MIDDLE);
+    setBorder(Rectangle.NO_BORDER);
   }
 }
