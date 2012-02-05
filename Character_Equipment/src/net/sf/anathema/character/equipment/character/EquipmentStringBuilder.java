@@ -25,8 +25,7 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     String key = EquipmentObjectPresenter.EQUIPMENT_NAME_PREFIX + weapon.getName().getId();
     if (resources.supportsKey(key)) {
       stringBuilder.append(resources.getString(key));
-    }
-    else {
+    } else {
       stringBuilder.append(new WeaponStatsNameStringFactory(resources).create(item, weapon));
     }
     stringBuilder.append(":"); //$NON-NLS-1$
@@ -34,8 +33,7 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     stringBuilder.append(getStatsString("Accuracy", weapon.getAccuracy(), true)); //$NON-NLS-1$
     if (weapon.inflictsNoDamage()) {
       stringBuilder.append(" " + resources.getString("Equipment.Stats.Short.Damage") + ":-"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-    }
-    else {
+    } else {
       stringBuilder.append(getStatsString("Damage", weapon.getDamage(), weapon.getDamageTraitType() != null)); //$NON-NLS-1$
       stringBuilder.append(resources.getString("HealthType." + weapon.getDamageType().getId() + ".Short")); //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -58,8 +56,8 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
   }
 
   public String createString(IEquipmentItem item, IEquipmentStats equipment) {
-	if (item != null && equipment != null)
-		equipment.setUseAttunementModifiers(checkAttunement(item.getAttunementState()));
+    if (item != null && equipment != null)
+      equipment.setUseAttunementModifiers(checkAttunement(item.getAttunementState()));
     if (equipment instanceof IWeaponStats) {
       return createWeaponString(item, (IWeaponStats) equipment);
     }
@@ -75,29 +73,25 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
       return createTraitModifyingString((ITraitModifyingStats) equipment);
     throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong."); //$NON-NLS-1$
   }
-  
-  private boolean checkAttunement(ArtifactAttuneType state)
-  {
-	  switch (state)
-	  {
-	  case Unattuned:
-	  case PartiallyAttuned:
-	  case ExpensivePartiallyAttuned:
-		  return false;
-	  default:
-	  case FullyAttuned:
-	  case UnharmoniouslyAttuned:
-	  case VitriolAttuned:
-		  return true;
-	  }
+
+  private boolean checkAttunement(ArtifactAttuneType state) {
+    switch (state) {
+      case Unattuned:
+      case PartiallyAttuned:
+      case ExpensivePartiallyAttuned:
+        return false;
+      default:
+      case FullyAttuned:
+      case UnharmoniouslyAttuned:
+        return true;
+    }
   }
-  
-  private String createArtifactString(IArtifactStats stats)
-  {
-	  StringBuilder stringBuilder = new StringBuilder();
-	  stringBuilder.append(getStatsString(stats.getAttuneType().name(), stats.getAttuneCost(), false));
-	  stringBuilder.append("m");
-	  return stringBuilder.toString();
+
+  private String createArtifactString(IArtifactStats stats) {
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append(getStatsString(stats.getAttuneType().name(), stats.getAttuneCost(), false));
+    stringBuilder.append("m");
+    return stringBuilder.toString();
   }
 
   private String createShieldString(IShieldStats stats) {
@@ -110,43 +104,42 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     stringBuilder.append(getStatsString("Fatigue", stats.getFatigue(), false)); //$NON-NLS-1$
     return stringBuilder.toString();
   }
-  
-  private String createTraitModifyingString(ITraitModifyingStats stats)
-  {
-	  StringBuilder stringBuilder = new StringBuilder();
-	  stringBuilder.append(stats.getName().getId());
-	  stringBuilder.append(":");
-	  if (stats.getDDVMod() != 0)
-		  stringBuilder.append(getStatsString("DDV", stats.getDDVMod(), true));
-	  if (stats.getPDVMod() != 0)
-		  stringBuilder.append(getStatsString("PDV", stats.getPDVMod(), true));
-	  if (stats.getMDDVMod() != 0)
-		  stringBuilder.append(getStatsString("MDDV", stats.getMDDVMod(), true));
-	  if (stats.getMPDVMod() != 0)
-		  stringBuilder.append(getStatsString("MPDV", stats.getMPDVMod(), true));
-	  if (stats.getMeleeSpeedMod() != 0)
-		  stringBuilder.append(getStatsString("MeleeSpeed", stats.getMeleeSpeedMod(), true));
-	  if (stats.getMeleeAccuracyMod() != 0)
-		  stringBuilder.append(getStatsString("MeleeAccuracy", stats.getMeleeAccuracyMod(), true));
-	  if (stats.getMeleeDamageMod() != 0)
-		  stringBuilder.append(getStatsString("MeleeDamage", stats.getMeleeDamageMod(), true));
-	  if (stats.getMeleeRateMod() != 0)
-		  stringBuilder.append(getStatsString("MeleeRate", stats.getMeleeRateMod(), true));
-	  if (stats.getRangedSpeedMod() != 0)
-		  stringBuilder.append(getStatsString("RangedSpeed", stats.getRangedSpeedMod(), true));
-	  if (stats.getRangedAccuracyMod() != 0)
-		  stringBuilder.append(getStatsString("RangedAccuracy", stats.getRangedAccuracyMod(), true));
-	  if (stats.getRangedDamageMod() != 0)
-		  stringBuilder.append(getStatsString("RangedDamage", stats.getRangedDamageMod(), true));
-	  if (stats.getRangedRateMod() != 0)
-		  stringBuilder.append(getStatsString("RangedRate", stats.getRangedRateMod(), true));
-	  if (stats.getJoinBattleMod() != 0)
-		  stringBuilder.append(getStatsString("JoinBattle", stats.getJoinBattleMod(), true));
-	  if (stats.getJoinDebateMod() != 0)
-		  stringBuilder.append(getStatsString("JoinDebate", stats.getJoinDebateMod(), true));
-	  if (stats.getJoinWarMod() != 0)
-		  stringBuilder.append(getStatsString("JoinWar", stats.getJoinWarMod(), true));
-	  return stringBuilder.toString();
+
+  private String createTraitModifyingString(ITraitModifyingStats stats) {
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append(stats.getName().getId());
+    stringBuilder.append(":");
+    if (stats.getDDVMod() != 0)
+      stringBuilder.append(getStatsString("DDV", stats.getDDVMod(), true));
+    if (stats.getPDVMod() != 0)
+      stringBuilder.append(getStatsString("PDV", stats.getPDVMod(), true));
+    if (stats.getMDDVMod() != 0)
+      stringBuilder.append(getStatsString("MDDV", stats.getMDDVMod(), true));
+    if (stats.getMPDVMod() != 0)
+      stringBuilder.append(getStatsString("MPDV", stats.getMPDVMod(), true));
+    if (stats.getMeleeSpeedMod() != 0)
+      stringBuilder.append(getStatsString("MeleeSpeed", stats.getMeleeSpeedMod(), true));
+    if (stats.getMeleeAccuracyMod() != 0)
+      stringBuilder.append(getStatsString("MeleeAccuracy", stats.getMeleeAccuracyMod(), true));
+    if (stats.getMeleeDamageMod() != 0)
+      stringBuilder.append(getStatsString("MeleeDamage", stats.getMeleeDamageMod(), true));
+    if (stats.getMeleeRateMod() != 0)
+      stringBuilder.append(getStatsString("MeleeRate", stats.getMeleeRateMod(), true));
+    if (stats.getRangedSpeedMod() != 0)
+      stringBuilder.append(getStatsString("RangedSpeed", stats.getRangedSpeedMod(), true));
+    if (stats.getRangedAccuracyMod() != 0)
+      stringBuilder.append(getStatsString("RangedAccuracy", stats.getRangedAccuracyMod(), true));
+    if (stats.getRangedDamageMod() != 0)
+      stringBuilder.append(getStatsString("RangedDamage", stats.getRangedDamageMod(), true));
+    if (stats.getRangedRateMod() != 0)
+      stringBuilder.append(getStatsString("RangedRate", stats.getRangedRateMod(), true));
+    if (stats.getJoinBattleMod() != 0)
+      stringBuilder.append(getStatsString("JoinBattle", stats.getJoinBattleMod(), true));
+    if (stats.getJoinDebateMod() != 0)
+      stringBuilder.append(getStatsString("JoinDebate", stats.getJoinDebateMod(), true));
+    if (stats.getJoinWarMod() != 0)
+      stringBuilder.append(getStatsString("JoinWar", stats.getJoinWarMod(), true));
+    return stringBuilder.toString();
   }
 
   private String createArmourString(IArmourStats armourStats) {

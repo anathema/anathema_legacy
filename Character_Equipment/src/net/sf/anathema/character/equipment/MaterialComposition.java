@@ -26,6 +26,12 @@ public enum MaterialComposition implements IIdentificate {
     public boolean requiresMaterial() {
       return false;
     }
+  },
+  MalfeanMaterials() {
+    @Override
+    public boolean requiresMaterial() {
+      return false;
+    }
   };
 
   public String getId() {
