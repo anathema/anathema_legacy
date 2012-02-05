@@ -1,10 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import com.db4o.query.Predicate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
@@ -13,14 +9,17 @@ import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
-import com.db4o.query.Predicate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.ExpensivePartiallyAttuned;
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.PartiallyAttuned;
+import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.FullyAttuned;
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unattuned;
+import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.UnharmoniouslyAttuned;
+import static net.sf.anathema.character.generic.type.CharacterType.INFERNAL;
 
 public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
@@ -123,9 +122,9 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   }
 
   private ArtifactAttuneType[] createMalfeanMaterialsAttunementOptions() {
-    if (characterType != CharacterType.INFERNAL) {
-      return new ArtifactAttuneType[]{Unattuned, ExpensivePartiallyAttuned};
+    if (characterType != INFERNAL) {
+      return new ArtifactAttuneType[]{Unattuned, UnharmoniouslyAttuned};
     }
-    return new ArtifactAttuneType[]{Unattuned, PartiallyAttuned};
+    return new ArtifactAttuneType[]{Unattuned, FullyAttuned};
   }
 }
