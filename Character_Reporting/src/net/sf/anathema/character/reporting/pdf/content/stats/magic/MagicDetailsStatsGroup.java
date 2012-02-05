@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.disy.commons.core.util.StringUtilities;
@@ -21,8 +21,7 @@ public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> 
   public void addContent(PdfPTable table, Font font, IMagicStats stats) {
     if (stats == null) {
       table.addCell(createTextCell(font, null));
-    }
-    else {
+    } else {
       String[] details = ArrayUtilities.transform(stats.getDetailKeys(), String.class, new ITransformer<String, String>() {
         public String transform(String input) {
           return resources.getString(input);

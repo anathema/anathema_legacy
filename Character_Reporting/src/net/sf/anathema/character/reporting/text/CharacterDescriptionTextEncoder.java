@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.text;
 
-import com.lowagie.text.*;
-import com.lowagie.text.pdf.MultiColumnText;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.MultiColumnText;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.framework.reporting.ITextReportUtils;

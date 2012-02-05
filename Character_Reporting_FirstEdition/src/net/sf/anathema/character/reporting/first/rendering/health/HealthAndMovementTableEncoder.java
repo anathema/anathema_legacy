@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.first.rendering.health;
 
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -18,7 +18,7 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
 
   @Override
   protected final Float[] getMovementColumns() {
-    return new Float[] { 1f, PADDING, 1f, PADDING, 1f };
+    return new Float[]{1f, PADDING, 1f, PADDING, 1f};
   }
 
   @Override
@@ -35,7 +35,7 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
 
   @Override
   protected final void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance,
-    IGenericTraitCollection collection) {
+                                        IGenericTraitCollection collection) {
     int penalty = getPenalty(level, painTolerance);
     int dexValue = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
     int moveValue = 5;

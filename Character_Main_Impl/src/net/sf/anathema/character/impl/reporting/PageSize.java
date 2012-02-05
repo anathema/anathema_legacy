@@ -1,10 +1,10 @@
 package net.sf.anathema.character.impl.reporting;
 
-import com.lowagie.text.Rectangle;
+import com.itextpdf.text.Rectangle;
 
 public enum PageSize {
 
-  A4(com.lowagie.text.PageSize.A4), Letter(com.lowagie.text.PageSize.LETTER);
+  A4(com.itextpdf.text.PageSize.A4), Letter(com.itextpdf.text.PageSize.LETTER);
 
   private final Rectangle size;
 

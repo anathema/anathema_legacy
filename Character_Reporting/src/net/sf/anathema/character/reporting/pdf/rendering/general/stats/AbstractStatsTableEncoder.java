@@ -1,10 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.stats;
 
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;

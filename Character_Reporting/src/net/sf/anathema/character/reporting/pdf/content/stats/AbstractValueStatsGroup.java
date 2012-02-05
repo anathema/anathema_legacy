@@ -1,15 +1,14 @@
 package net.sf.anathema.character.reporting.pdf.content.stats;
 
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfPCell;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
-
-import java.awt.*;
 
 public abstract class AbstractValueStatsGroup<T extends IStats> implements IStatsGroup<T> {
 
@@ -36,7 +35,7 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
   }
 
   protected final PdfPCell createFinalValueCell(Font font) {
-    return createContentCellTable(Color.BLACK, " ", font, 0.75f, true); //$NON-NLS-1$
+    return createContentCellTable(BaseColor.BLACK, " ", font, 0.75f, true); //$NON-NLS-1$
   }
 
   protected final PdfPCell createFinalValueCell(Font font, Integer value) {
@@ -45,21 +44,21 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
 
   protected final PdfPCell createFinalValueCell(Font font, String text) {
     String content = text != null ? text : " "; //$NON-NLS-1$
-    return createContentCellTable(Color.BLACK, content, font, 0.75f, text != null);
+    return createContentCellTable(BaseColor.BLACK, content, font, 0.75f, text != null);
   }
 
   protected final PdfPCell createFinalValueCell(Font font, String text, int alignment) {
     String content = text != null ? text : " "; //$NON-NLS-1$
-    return createContentCellTable(Color.BLACK, content, font, 0.75f, alignment, text != null);
+    return createContentCellTable(BaseColor.BLACK, content, font, 0.75f, alignment, text != null);
   }
 
   protected final PdfPCell createEmptyValueCell(Font font) {
-    return createContentCellTable(Color.GRAY, " ", font, 0.5f, true); //$NON-NLS-1$
+    return createContentCellTable(BaseColor.GRAY, " ", font, 0.5f, true); //$NON-NLS-1$
   }
 
   protected final PdfPCell createEquipmentValueCell(Font font, Integer value) {
     String text = getStatsValueString(value);
-    return createContentCellTable(Color.GRAY, text, font, 0.5f, value != null);
+    return createContentCellTable(BaseColor.GRAY, text, font, 0.5f, value != null);
   }
 
   private final String getStatsValueString(Integer value) {
@@ -84,11 +83,11 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
     return "+"; //$NON-NLS-1$
   }
 
-  private final PdfPCell createContentCellTable(Color borderColor, String text, Font font, float borderWidth, boolean enabled) {
+  private final PdfPCell createContentCellTable(BaseColor borderColor, String text, Font font, float borderWidth, boolean enabled) {
     return TableEncodingUtilities.createContentCellTable(borderColor, text, font, borderWidth, Rectangle.BOX, Element.ALIGN_RIGHT, enabled);
   }
 
-  private final PdfPCell createContentCellTable(Color borderColor, String text, Font font, float borderWidth, int alignment, boolean enabled) {
+  private final PdfPCell createContentCellTable(BaseColor borderColor, String text, Font font, float borderWidth, int alignment, boolean enabled) {
     return TableEncodingUtilities.createContentCellTable(borderColor, text, font, borderWidth, Rectangle.BOX, alignment, enabled);
   }
 

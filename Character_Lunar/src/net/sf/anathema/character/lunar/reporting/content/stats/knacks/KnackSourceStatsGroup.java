@@ -1,10 +1,9 @@
 package net.sf.anathema.character.lunar.reporting.content.stats.knacks;
 
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class KnackSourceStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
 
@@ -20,7 +19,7 @@ public class KnackSourceStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
   }
 
   public Float[] getColumnWeights() {
-    return new Float[] { 2.0f };
+    return new Float[]{2.0f};
   }
 
   public String getTitle() {

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.intimacies.reporting;
 
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.intimacies.reporting.content.ExtendedIntimaciesContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;

@@ -1,7 +1,7 @@
 package net.sf.anathema.campaign.reporting;
 
-import com.lowagie.text.*;
-import com.lowagie.text.pdf.*;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
@@ -139,8 +139,7 @@ public class MultiColumnSeriesReport implements IITextReport {
     return paragraph;
   }
 
-  @SuppressWarnings("unchecked")
-  private HashMap<Object, Object> getAttributeMap(Chunk title) {
+  private HashMap<String, Object> getAttributeMap(Chunk title) {
     return title.getAttributes();
   }
 

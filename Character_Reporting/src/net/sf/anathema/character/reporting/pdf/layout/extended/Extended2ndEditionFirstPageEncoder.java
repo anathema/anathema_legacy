@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -138,7 +138,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeLinguistics(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    ContentEncoder linguisticsEncoder = encoderRegistry.createEncoder(getResources(),content, EncoderIds.LANGUAGES);
+    ContentEncoder linguisticsEncoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.LANGUAGES);
     return encodeFixedBox(graphics, content, linguisticsEncoder, 3, 1, distanceFromTop, height);
   }
 

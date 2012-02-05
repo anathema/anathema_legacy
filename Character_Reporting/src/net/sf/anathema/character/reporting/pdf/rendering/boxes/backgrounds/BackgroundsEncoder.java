@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds;
 
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundInfo;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.traits.IGenericTrait;

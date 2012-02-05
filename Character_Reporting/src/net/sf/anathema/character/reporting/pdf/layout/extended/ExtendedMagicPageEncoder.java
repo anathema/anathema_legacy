@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IGenericCombo;

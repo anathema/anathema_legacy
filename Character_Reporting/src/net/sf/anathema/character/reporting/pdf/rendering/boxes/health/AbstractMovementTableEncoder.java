@@ -1,11 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -17,11 +14,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.*;
-
-import static com.lowagie.text.Element.*;
-import static com.lowagie.text.Rectangle.BOX;
-import static com.lowagie.text.Rectangle.NO_BORDER;
+import static com.itextpdf.text.Element.*;
+import static com.itextpdf.text.Rectangle.BOX;
+import static com.itextpdf.text.Rectangle.NO_BORDER;
 
 public abstract class AbstractMovementTableEncoder implements ITableEncoder<ReportContent> {
   protected static float PADDING = 0.3f;
@@ -128,7 +123,7 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
   protected final PdfPCell createMovementCell(SheetGraphics graphics, int value, int minValue) {
     Font font = createFont(graphics);
     String valueText = String.valueOf(Math.max(value, minValue));
-    return TableEncodingUtilities.createContentCellTable(Color.BLACK, valueText, font, 0.5f, BOX, ALIGN_CENTER);
+    return TableEncodingUtilities.createContentCellTable(BaseColor.BLACK, valueText, font, 0.5f, BOX, ALIGN_CENTER);
   }
 
   protected final int getPenalty(HealthLevelType level, int painTolerance) {

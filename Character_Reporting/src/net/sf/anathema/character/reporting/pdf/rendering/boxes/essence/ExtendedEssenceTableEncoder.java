@@ -1,14 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.essence;
 
-import com.lowagie.text.BadElementException;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Image;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContent;
@@ -23,12 +17,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTempla
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 
-import java.awt.*;
 import java.util.List;
 
-import static com.lowagie.text.Element.ALIGN_CENTER;
-import static com.lowagie.text.Element.ALIGN_MIDDLE;
-import static com.lowagie.text.Element.ALIGN_RIGHT;
+import static com.itextpdf.text.Element.*;
 import static net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder.DOT_PADDING;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.BARE_LINE_HEIGHT;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
@@ -143,7 +134,7 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     Phrase committedPhrase = new Phrase(poolRow.getCommitted(), font);
     PdfPCell committedCell = new TableCell(committedPhrase, INTERNAL_BORDER, ALIGN_CENTER, ALIGN_MIDDLE);
     if (!poolRow.isCommitmentEnabled()) {
-      committedCell.setBackgroundColor(Color.LIGHT_GRAY);
+      committedCell.setBackgroundColor(BaseColor.LIGHT_GRAY);
     }
     table.addCell(committedCell);
     Phrase availablePhrase = new Phrase(poolRow.getAvailable(), font);

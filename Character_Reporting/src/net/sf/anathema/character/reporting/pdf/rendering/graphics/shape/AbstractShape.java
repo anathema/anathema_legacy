@@ -1,9 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics.shape;
 
-import com.lowagie.text.pdf.PdfContentByte;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
-
-import java.awt.*;
 
 public abstract class AbstractShape implements Shape {
   protected PdfContentByte directContent;
@@ -33,7 +32,7 @@ public abstract class AbstractShape implements Shape {
   }
 
   private void configureDirectContent() {
-    directContent.setColorFill(Color.BLACK);
+    directContent.setColorFill(BaseColor.BLACK);
     directContent.setLineWidth(0.8f);
   }
 }

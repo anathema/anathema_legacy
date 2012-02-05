@@ -1,24 +1,16 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfTemplate;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfTemplate;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
-
-import java.awt.*;
 
 public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder {
 
@@ -41,9 +33,8 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
   protected abstract ITableEncoder createTableEncoder();
 
   protected void encodeText(SheetGraphics graphics, Bounds textBounds) throws DocumentException {
-    BaseFont baseFont = graphics.getBaseFont();
-    Font headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
-    Font commentFont = new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
+    Font headerFont = graphics.createCommentFont();
+    Font commentFont = graphics.createCommentFont();
     Font commentTitleFont = new Font(commentFont);
     commentTitleFont.setStyle(Font.BOLD);
     Paragraph healthText = createHealthRulesPhrase(graphics, headerFont, commentFont, commentTitleFont);
@@ -54,9 +45,9 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     float rectYPosition = yLine - rectangleOffset - additionalOffset;
     float textYPosition = yLine - leading - additionalOffset;
     float xPosition = textBounds.x;
-    PdfTemplate rectTemplate = HealthTemplateFactory.createRectTemplate(graphics.getDirectContent(), Color.BLACK);
+    PdfTemplate rectTemplate = HealthTemplateFactory.createRectTemplate(graphics.getDirectContent(), BaseColor.BLACK);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate bashingTemplate = HealthTemplateFactory.createBashingTemplate(graphics.getDirectContent(), Color.GRAY);
+    PdfTemplate bashingTemplate = HealthTemplateFactory.createBashingTemplate(graphics.getDirectContent(), BaseColor.GRAY);
     graphics.getDirectContent().addTemplate(bashingTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     final String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
@@ -64,14 +55,14 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     graphics.drawComment(bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += graphics.getTextMetrics().getCommentTextWidth(bashingString);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate lethalTemplate = HealthTemplateFactory.createLethalTemplate(graphics.getDirectContent(), Color.GRAY);
+    PdfTemplate lethalTemplate = HealthTemplateFactory.createLethalTemplate(graphics.getDirectContent(), BaseColor.GRAY);
     graphics.getDirectContent().addTemplate(lethalTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String lethalString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageLethal")); //$NON-NLS-1$
     graphics.drawComment(lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += graphics.getTextMetrics().getCommentTextWidth(lethalString);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate aggravatedTemplate = HealthTemplateFactory.createAggravatedTemplate(graphics.getDirectContent(), Color.GRAY);
+    PdfTemplate aggravatedTemplate = HealthTemplateFactory.createAggravatedTemplate(graphics.getDirectContent(), BaseColor.GRAY);
     graphics.getDirectContent().addTemplate(aggravatedTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String aggravatedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageAggravated")); //$NON-NLS-1$

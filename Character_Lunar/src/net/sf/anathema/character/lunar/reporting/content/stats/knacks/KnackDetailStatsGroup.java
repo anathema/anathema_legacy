@@ -1,14 +1,13 @@
 package net.sf.anathema.character.lunar.reporting.content.stats.knacks;
 
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class KnackDetailStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
 
@@ -21,16 +20,15 @@ public class KnackDetailStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
   public void addContent(PdfPTable table, Font font, IKnackStats stats) {
     if (stats == null) {
       table.addCell(createTextCell(font, null));
-    }
-    else {
+    } else {
       String[] details = ArrayUtilities.transform(
-          stats.getDetailString(resources),
-          String.class,
-          new ITransformer<String, String>() {
-            public String transform(String input) {
-              return resources.getString(input);
-            }
-          });
+              stats.getDetailString(resources),
+              String.class,
+              new ITransformer<String, String>() {
+                public String transform(String input) {
+                  return resources.getString(input);
+                }
+              });
       String detailText = AnathemaStringUtilities.concat(details, ", "); //$NON-NLS-1$
       if (StringUtilities.isNullOrEmpty(detailText)) {
         detailText = "-"; //$NON-NLS-1$
@@ -40,7 +38,7 @@ public class KnackDetailStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
   }
 
   public Float[] getColumnWeights() {
-    return new Float[] { 7f };
+    return new Float[]{7f};
   }
 
   public String getTitle() {

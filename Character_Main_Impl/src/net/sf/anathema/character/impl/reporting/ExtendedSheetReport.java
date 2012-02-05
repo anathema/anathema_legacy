@@ -1,8 +1,8 @@
 package net.sf.anathema.character.impl.reporting;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfWriter;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -18,13 +18,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.Extended1stEditionFirstPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.Extended2ndEditionFirstPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagic1stEditionPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.*;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;

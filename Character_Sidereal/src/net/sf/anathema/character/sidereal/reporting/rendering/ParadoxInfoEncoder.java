@@ -1,8 +1,8 @@
 package net.sf.anathema.character.sidereal.reporting.rendering;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Phrase;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;

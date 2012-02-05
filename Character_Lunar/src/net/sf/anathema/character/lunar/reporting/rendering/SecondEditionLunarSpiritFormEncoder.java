@@ -1,8 +1,8 @@
 package net.sf.anathema.character.lunar.reporting.rendering;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Phrase;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;

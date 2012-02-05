@@ -1,7 +1,7 @@
 package net.sf.anathema.character.lunar.reporting.layout;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.ArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.panoply.ArmourTableEncoder;

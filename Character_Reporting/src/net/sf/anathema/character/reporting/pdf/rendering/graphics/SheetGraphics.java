@@ -1,9 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfContentByte;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -12,12 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Dot;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Line;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Square;
 
-import java.awt.Color;
-
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SUBSECTION_FONT_SIZE;
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TABLE_FONT_SIZE;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.*;
 
 public class SheetGraphics {
 
@@ -42,11 +38,11 @@ public class SheetGraphics {
   }
 
   private static BaseFont createDefaultBaseFont() {
-    return new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
+    return new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL, BaseColor.BLACK).getCalculatedBaseFont(true);
   }
 
   private static Font createSymbolFont() {
-    return new Font(Font.SYMBOL, 7, Font.NORMAL, Color.BLACK);
+    return new Font(Font.FontFamily.SYMBOL, 7, Font.NORMAL, BaseColor.BLACK);
   }
 
   private static final String SYMBOL = "\u00A8  "; //$NON-NLS-1$
@@ -127,14 +123,14 @@ public class SheetGraphics {
   }
 
   private void initDirectContentForEnabledText() {
-    initDirectContentForText(Color.BLACK);
+    initDirectContentForText(BaseColor.BLACK);
   }
 
   private void initDirectContentForDisableText() {
-    initDirectContentForText(Color.LIGHT_GRAY);
+    initDirectContentForText(BaseColor.LIGHT_GRAY);
   }
 
-  private void initDirectContentForText(Color color) {
+  private void initDirectContentForText(BaseColor color) {
     directContent.setColorFill(color);
     setDefaultFont();
     directContent.setLineWidth(0);
@@ -145,7 +141,7 @@ public class SheetGraphics {
   }
 
   public final void setFillColorBlack() {
-    directContent.setColorFill(Color.BLACK);
+    directContent.setColorFill(BaseColor.BLACK);
   }
 
   private void setCommentFont() {
@@ -175,15 +171,15 @@ public class SheetGraphics {
   }
 
   public Font createFont(float size) {
-    return new Font(baseFont, size, Font.NORMAL, Color.black);
+    return new Font(baseFont, size, Font.NORMAL, BaseColor.BLACK);
   }
 
   public Font createCommentFont() {
-    return new Font(baseFont, COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
+    return new Font(baseFont, COMMENT_FONT_SIZE, Font.NORMAL, BaseColor.BLACK);
   }
 
   public Font createTableFont() {
-    return new Font(baseFont, TABLE_FONT_SIZE, Font.NORMAL, Color.BLACK);
+    return new Font(baseFont, TABLE_FONT_SIZE, Font.NORMAL, BaseColor.BLACK);
   }
 
   public SimpleColumnBuilder createSimpleColumn(Bounds bounds) {
@@ -191,7 +187,7 @@ public class SheetGraphics {
   }
 
   public Chunk createSymbolChunk() {
-    Font font = new Font(symbolBaseFont, SYMBOL_FONT_SIZE, Font.NORMAL, Color.BLACK);
+    Font font = new Font(symbolBaseFont, SYMBOL_FONT_SIZE, Font.NORMAL, BaseColor.BLACK);
     return new Chunk(SYMBOL, font);
   }
 

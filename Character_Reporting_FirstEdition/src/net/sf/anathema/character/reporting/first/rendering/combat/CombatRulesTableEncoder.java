@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.first.rendering.combat;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.first.content.combat.CombatStatsContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.AbstractCombatRulesTableEncoder;

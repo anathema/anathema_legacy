@@ -1,9 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics.shape;
 
-import com.lowagie.text.pdf.PdfContentByte;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
-
-import java.awt.*;
 
 public class Line {
 
@@ -23,10 +22,10 @@ public class Line {
   }
 
   public void encode() {
-    encode(Color.BLACK);
+    encode(BaseColor.BLACK);
   }
 
-  public void encode(Color color) {
+  public void encode(BaseColor color) {
     directContent.setColorFill(color);
     directContent.setLineWidth(lineWidth);
     directContent.moveTo(startPoint.x, startPoint.y);

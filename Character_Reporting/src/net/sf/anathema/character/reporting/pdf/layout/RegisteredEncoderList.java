@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.layout;
 
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.text;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.MultiColumnText;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.MultiColumnText;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.resources.BackgroundInternationalizer;

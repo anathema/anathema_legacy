@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.reporting.rendering.panoply;
 
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContent;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.armour.IArmourStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.EquipmentTableEncoder;

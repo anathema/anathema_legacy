@@ -1,10 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
-import com.lowagie.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.BaseFont;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TABLE_FONT_SIZE;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.*;
 
 public class SheetTextMetrics implements TextMetrics {
 

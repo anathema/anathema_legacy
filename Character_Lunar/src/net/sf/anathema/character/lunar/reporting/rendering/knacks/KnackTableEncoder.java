@@ -1,6 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.rendering.knacks;
 
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
 import net.sf.anathema.character.lunar.reporting.content.stats.knacks.IKnackStats;

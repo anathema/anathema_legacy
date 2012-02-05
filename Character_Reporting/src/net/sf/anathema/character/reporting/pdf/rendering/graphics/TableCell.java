@@ -1,12 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.Element;
-import com.lowagie.text.Image;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 
 public class TableCell extends PdfPCell {
 

@@ -1,17 +1,11 @@
 package net.sf.anathema.character.lunar.reporting.rendering.heartsblood;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IAnimalForm;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;
-import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodAppearanceStatsGroup;
-import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodDexterityStatsGroup;
-import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodNameStatsGroup;
-import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodNotesStatsGroup;
-import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodStaminaStatsGroup;
-import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodStrengthStatsGroup;
-import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.IHeartsBloodStats;
+import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.*;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.lowagie.text.Anchor;
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Font;
+import com.itextpdf.text.Anchor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;

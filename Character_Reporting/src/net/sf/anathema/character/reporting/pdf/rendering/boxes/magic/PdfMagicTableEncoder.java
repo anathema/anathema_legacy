@@ -1,16 +1,11 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicCostStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicDetailsStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicDurationStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicNameStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicSourceStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicTypeStatsGroup;
+import net.sf.anathema.character.reporting.pdf.content.stats.magic.*;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;

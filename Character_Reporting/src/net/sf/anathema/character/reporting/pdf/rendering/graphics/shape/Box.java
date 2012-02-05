@@ -1,9 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics.shape;
 
-import com.lowagie.text.pdf.PdfContentByte;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-
-import java.awt.*;
 
 public class Box {
 
@@ -34,7 +33,7 @@ public class Box {
   }
 
   private void initializeGraphics(float lineWidth) {
-    directContent.setColorStroke(Color.BLACK);
+    directContent.setColorStroke(BaseColor.BLACK);
     directContent.setLineWidth(lineWidth);
     directContent.rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
   }

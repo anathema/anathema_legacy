@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;

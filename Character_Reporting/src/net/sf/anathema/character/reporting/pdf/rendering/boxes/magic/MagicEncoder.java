@@ -1,13 +1,9 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.generic.magic.*;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MultipleEffectCharmStats;

@@ -1,10 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.ColumnText;
-import com.lowagie.text.pdf.PdfContentByte;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.ColumnText;
+import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 
 public class SimpleColumn {

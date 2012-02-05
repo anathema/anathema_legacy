@@ -1,15 +1,14 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats.armour;
 
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IDefensiveStats;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.PdfPTable;
-
 public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<IDefensiveStats> implements
-    IArmourStatsGroup {
+        IArmourStatsGroup {
 
   public MobilityPenaltyStatsGroup(IResources resources) {
     super(resources, "MobilityPenalty"); //$NON-NLS-1$
@@ -22,8 +21,7 @@ public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<
   public void addContent(PdfPTable table, Font font, IDefensiveStats stats) {
     if (stats == null) {
       table.addCell(createEmptyValueCell(font));
-    }
-    else {
+    } else {
       table.addCell(createEquipmentValueCell(font, stats.getMobilityPenalty()));
     }
   }

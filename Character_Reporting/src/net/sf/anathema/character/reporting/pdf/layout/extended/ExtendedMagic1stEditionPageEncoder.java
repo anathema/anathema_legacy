@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -82,7 +82,7 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeLanguages(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = getPageConfiguration().getThirdColumnRectangle(distanceFromTop, height);
-    ContentEncoder encoder = encoderRegistry.createEncoder(getResources(),content, EncoderIds.LANGUAGES);
+    ContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.LANGUAGES);
     getBoxEncoder().encodeBox(content, graphics, encoder, bounds);
     return height;
   }

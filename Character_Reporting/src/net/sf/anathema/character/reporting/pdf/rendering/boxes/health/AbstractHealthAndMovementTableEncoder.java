@@ -1,15 +1,9 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
-import com.lowagie.text.BadElementException;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Image;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -21,8 +15,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEnco
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.lib.resources.IResources;
-
-import java.awt.*;
 
 public abstract class AbstractHealthAndMovementTableEncoder implements ITableEncoder<ReportContent> {
   public static final int HEALTH_RECT_SIZE = 6;
@@ -59,8 +51,8 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
   protected final PdfPTable createTable(SheetGraphics graphics, ReportContent content) throws DocumentException {
     try {
       PdfContentByte directContent = graphics.getDirectContent();
-      Image activeTemplate = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, Color.BLACK));
-      Image passiveTemplate = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, Color.LIGHT_GRAY));
+      Image activeTemplate = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, BaseColor.BLACK));
+      Image passiveTemplate = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, BaseColor.LIGHT_GRAY));
       float[] columnWidth = createColumnWidth();
       PdfPTable table = new PdfPTable(columnWidth);
       addHeaders(graphics, table);
@@ -135,7 +127,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
 
   protected final PdfPCell createMovementCell(SheetGraphics graphics, int value, int minValue) {
     Font font = createDefaultFont(graphics);
-    return TableEncodingUtilities.createContentCellTable(Color.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX, Element.ALIGN_CENTER);
+    return TableEncodingUtilities.createContentCellTable(BaseColor.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX, Element.ALIGN_CENTER);
   }
 
   private void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {

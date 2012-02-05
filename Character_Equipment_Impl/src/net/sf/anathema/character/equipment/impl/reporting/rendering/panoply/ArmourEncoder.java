@@ -1,15 +1,14 @@
 package net.sf.anathema.character.equipment.impl.reporting.rendering.panoply;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.PdfContentByte;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
-
-import java.awt.*;
 
 public class ArmourEncoder implements ContentEncoder {
 
@@ -39,10 +38,10 @@ public class ArmourEncoder implements ContentEncoder {
   private void drawDelimiter(PdfContentByte directContent, Bounds bounds, float delimitingLineYPosition) {
     directContent.moveTo(bounds.getMinX() + 3, delimitingLineYPosition);
     directContent.lineTo(bounds.getMaxX() - 3, delimitingLineYPosition);
-    directContent.setColorStroke(Color.GRAY);
+    directContent.setColorStroke(BaseColor.GRAY);
     directContent.setLineWidth(0.75f);
     directContent.stroke();
-    directContent.setColorStroke(Color.BLACK);
+    directContent.setColorStroke(BaseColor.BLACK);
   }
 
   public boolean hasContent(ReportContent content) {

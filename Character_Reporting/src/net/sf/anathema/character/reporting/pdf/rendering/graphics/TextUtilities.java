@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
-import com.lowagie.text.Font;
+import com.itextpdf.text.Font;
 
 public class TextUtilities {
 

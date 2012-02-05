@@ -1,10 +1,10 @@
 package net.sf.anathema.campaign.reporting;
 
-import com.lowagie.text.*;
-import com.lowagie.text.pdf.PdfAction;
-import com.lowagie.text.pdf.PdfPageEventHelper;
-import com.lowagie.text.pdf.PdfPageLabels;
-import com.lowagie.text.pdf.PdfWriter;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfAction;
+import com.itextpdf.text.pdf.PdfPageEventHelper;
+import com.itextpdf.text.pdf.PdfPageLabels;
+import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.framework.reporting.ITextReportUtils;
 
 import java.util.ArrayList;

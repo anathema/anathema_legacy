@@ -1,14 +1,13 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfTemplate;
-
-import java.awt.*;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfTemplate;
 
 public class HealthTemplateFactory {
   public static final int HEALTH_RECT_SIZE = 6;
 
-  public static PdfTemplate createRectTemplate(PdfContentByte directContent, final Color strokeColor) {
+  public static PdfTemplate createRectTemplate(PdfContentByte directContent, BaseColor strokeColor) {
     PdfTemplate activeHealthRect = directContent.createTemplate(HEALTH_RECT_SIZE, HEALTH_RECT_SIZE);
     activeHealthRect.setLineWidth(1f);
     activeHealthRect.setColorStroke(strokeColor);
@@ -17,7 +16,7 @@ public class HealthTemplateFactory {
     return activeHealthRect;
   }
 
-  public static PdfTemplate createBashingTemplate(PdfContentByte directContent, final Color strokeColor) {
+  public static PdfTemplate createBashingTemplate(PdfContentByte directContent, BaseColor strokeColor) {
     PdfTemplate bashingSlash = directContent.createTemplate(HEALTH_RECT_SIZE, HEALTH_RECT_SIZE);
     bashingSlash.setLineWidth(1f);
     bashingSlash.setColorStroke(strokeColor);
@@ -27,7 +26,7 @@ public class HealthTemplateFactory {
     return bashingSlash;
   }
 
-  public static PdfTemplate createLethalTemplate(PdfContentByte directContent, final Color strokeColor) {
+  public static PdfTemplate createLethalTemplate(PdfContentByte directContent, BaseColor strokeColor) {
     PdfTemplate lethalCross = directContent.createTemplate(HEALTH_RECT_SIZE, HEALTH_RECT_SIZE);
     lethalCross.addTemplate(createBashingTemplate(directContent, strokeColor), 0, 0);
     lethalCross.setLineWidth(1f);
@@ -38,7 +37,7 @@ public class HealthTemplateFactory {
     return lethalCross;
   }
 
-  public static PdfTemplate createAggravatedTemplate(PdfContentByte directContent, final Color strokeColor) {
+  public static PdfTemplate createAggravatedTemplate(PdfContentByte directContent, BaseColor strokeColor) {
     PdfTemplate aggravatedStar = directContent.createTemplate(HEALTH_RECT_SIZE, HEALTH_RECT_SIZE);
     aggravatedStar.addTemplate(createLethalTemplate(directContent, strokeColor), 0, 0);
     aggravatedStar.setLineWidth(1f);

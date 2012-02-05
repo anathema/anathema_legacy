@@ -1,6 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.rendering.beastform;
 
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.second.rendering.health;
 
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -19,7 +19,7 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
 
   @Override
   protected final Float[] getMovementColumns() {
-    return new Float[] { 1f, PADDING, 1f, PADDING, 1f, 1f };
+    return new Float[]{1f, PADDING, 1f, PADDING, 1f, 1f};
   }
 
   @Override
@@ -36,7 +36,7 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
 
   @Override
   protected final void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance,
-    IGenericTraitCollection collection) {
+                                        IGenericTraitCollection collection) {
     int penalty = getPenalty(level, painTolerance);
     int dexValue = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
     int moveValue = dexValue + penalty;
@@ -44,7 +44,7 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
     addSpaceCells(graphics, table, 1);
     table.addCell(createMovementCell(graphics, moveValue + 6, 2));
     int verticalJump =
-      collection.getTrait(AttributeType.Strength).getCurrentValue() + collection.getTrait(AbilityType.Athletics).getCurrentValue() + penalty;
+            collection.getTrait(AttributeType.Strength).getCurrentValue() + collection.getTrait(AbilityType.Athletics).getCurrentValue() + penalty;
     addSpaceCells(graphics, table, 1);
     table.addCell(createMovementCell(graphics, verticalJump * 2, 0));
     table.addCell(createMovementCell(graphics, verticalJump, 0));

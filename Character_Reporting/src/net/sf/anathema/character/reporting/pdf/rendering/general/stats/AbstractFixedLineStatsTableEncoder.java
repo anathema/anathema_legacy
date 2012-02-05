@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.stats;
 
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;

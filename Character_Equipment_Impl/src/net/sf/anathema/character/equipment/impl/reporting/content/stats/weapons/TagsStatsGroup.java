@@ -1,7 +1,11 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons;
 
-import java.awt.Color;
-
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.IEquipmentStatsGroup;
@@ -10,12 +14,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEnco
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
-
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
 
 public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> {
   private final String title;
@@ -35,14 +33,13 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> 
   }
 
   public Float[] getColumnWeights() {
-    return new Float[] { new Float(1.7) };
+    return new Float[]{new Float(1.7)};
   }
 
   public void addContent(PdfPTable table, Font font, IWeaponStats weapon) {
     if (weapon == null) {
       table.addCell(createEmptyNameCell(font));
-    }
-    else {
+    } else {
       IIdentificate[] tags = weapon.getTags();
       String[] values = ArrayUtilities.transform(tags, String.class, new ITransformer<IIdentificate, String>() {
         public String transform(IIdentificate input) {
@@ -59,6 +56,6 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> 
   }
 
   private PdfPCell createFilledContentCell(Font font, final String text) {
-    return TableEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, Rectangle.BOTTOM, Element.ALIGN_LEFT);
+    return TableEncodingUtilities.createContentCellTable(BaseColor.BLACK, text, font, 0.5f, Rectangle.BOTTOM, Element.ALIGN_LEFT);
   }
 }

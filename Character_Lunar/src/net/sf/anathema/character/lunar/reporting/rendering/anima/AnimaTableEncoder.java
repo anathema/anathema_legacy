@@ -1,9 +1,9 @@
 package net.sf.anathema.character.lunar.reporting.rendering.anima;
 
-import com.lowagie.text.Element;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.ColumnDescriptor;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -17,10 +17,10 @@ public class AnimaTableEncoder extends net.sf.anathema.character.reporting.pdf.r
 
   @Override
   protected ColumnDescriptor[] getColumns() {
-    return new ColumnDescriptor[] { new ColumnDescriptor(0.135f, "Sheet.AnimaTable.Header.Motes"), //$NON-NLS-1$
-      new ColumnDescriptor(0.495f, "Sheet.AnimaTable.Header.BannerFlare"), //$NON-NLS-1$
-      new ColumnDescriptor(0.145f, "Sheet.AnimaTable.Header.FormsLocked"), //$NON-NLS-1$
-      new ColumnDescriptor(0.225f, "Sheet.AnimaTable.Header.Stealth") }; //$NON-NLS-1$
+    return new ColumnDescriptor[]{new ColumnDescriptor(0.135f, "Sheet.AnimaTable.Header.Motes"), //$NON-NLS-1$
+            new ColumnDescriptor(0.495f, "Sheet.AnimaTable.Header.BannerFlare"), //$NON-NLS-1$
+            new ColumnDescriptor(0.145f, "Sheet.AnimaTable.Header.FormsLocked"), //$NON-NLS-1$
+            new ColumnDescriptor(0.225f, "Sheet.AnimaTable.Header.Stealth")}; //$NON-NLS-1$
   }
 
   @Override

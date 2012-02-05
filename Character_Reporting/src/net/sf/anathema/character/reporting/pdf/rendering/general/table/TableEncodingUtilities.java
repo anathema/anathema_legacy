@@ -1,14 +1,13 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.table;
 
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-
-import java.awt.*;
 
 public class TableEncodingUtilities {
 
@@ -24,11 +23,11 @@ public class TableEncodingUtilities {
     return columnWeights;
   }
 
-  public static final PdfPCell createContentCellTable(Color borderColor, String text, Font font, float borderWidth, int border, int alignment) {
+  public static final PdfPCell createContentCellTable(BaseColor borderColor, String text, Font font, float borderWidth, int border, int alignment) {
     return createContentCellTable(borderColor, text, font, borderWidth, border, alignment, true);
   }
 
-  public static final PdfPCell createContentCellTable(Color borderColor, String text, Font font, float borderWidth, int border, int alignment,
+  public static final PdfPCell createContentCellTable(BaseColor borderColor, String text, Font font, float borderWidth, int border, int alignment,
                                                       boolean enabled) {
     PdfPCell innerCell = new PdfPCell(new Phrase(text, font));
     innerCell.setBorderColor(borderColor);
@@ -41,7 +40,7 @@ public class TableEncodingUtilities {
       innerCell.setPaddingRight(0);
     }
     if (!enabled) {
-      innerCell.setBackgroundColor(Color.LIGHT_GRAY);
+      innerCell.setBackgroundColor(BaseColor.LIGHT_GRAY);
     }
 
     PdfPTable cellTable = new PdfPTable(1);
@@ -56,11 +55,11 @@ public class TableEncodingUtilities {
   }
 
   public static Font createTableFont(BaseFont baseFont) {
-    return new Font(baseFont, IVoidStateFormatConstants.TABLE_FONT_SIZE, Font.NORMAL, Color.BLACK);
+    return new Font(baseFont, IVoidStateFormatConstants.TABLE_FONT_SIZE, Font.NORMAL, BaseColor.BLACK);
   }
 
   public static Font createBoldTableFont(BaseFont baseFont) {
-    return new Font(baseFont, IVoidStateFormatConstants.TABLE_FONT_SIZE + 1f, Font.BOLD, Color.BLACK);
+    return new Font(baseFont, IVoidStateFormatConstants.TABLE_FONT_SIZE + 1f, Font.BOLD, BaseColor.BLACK);
   }
 
   public static Font createHeaderFont(BaseFont baseFont) {
@@ -68,6 +67,6 @@ public class TableEncodingUtilities {
   }
 
   public static Font createCommentFont(BaseFont baseFont) {
-    return new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
+    return new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE, Font.NORMAL, BaseColor.BLACK);
   }
 }
