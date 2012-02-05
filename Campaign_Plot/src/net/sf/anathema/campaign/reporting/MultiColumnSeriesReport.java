@@ -1,7 +1,7 @@
 package net.sf.anathema.campaign.reporting;
 
-import java.util.HashMap;
-
+import com.lowagie.text.*;
+import com.lowagie.text.pdf.*;
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
@@ -12,19 +12,7 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.TextElementArray;
-import com.lowagie.text.pdf.MultiColumnText;
-import com.lowagie.text.pdf.PdfAction;
-import com.lowagie.text.pdf.PdfOutline;
-import com.lowagie.text.pdf.PdfPageEventHelper;
-import com.lowagie.text.pdf.PdfWriter;
+import java.util.HashMap;
 
 public class MultiColumnSeriesReport implements IITextReport {
 
@@ -61,9 +49,9 @@ public class MultiColumnSeriesReport implements IITextReport {
     try {
       String seriesTitle = rootElement.getDescription().getName().getText();
       new PdfOutline(
-          rootOutline,
-          new PdfAction(PdfAction.FIRSTPAGE),
-          resources.getString("SeriesReport.Header.TableOfContents")); //$NON-NLS-1$
+              rootOutline,
+              new PdfAction(PdfAction.FIRSTPAGE),
+              resources.getString("SeriesReport.Header.TableOfContents")); //$NON-NLS-1$
       document.newPage();
       String synopsis = resources.getString("SeriesReport.Header.Synopsis");//$NON-NLS-1$
       Paragraph synopsisParagraph = createTitleParagraph(synopsis, 13);
@@ -77,20 +65,19 @@ public class MultiColumnSeriesReport implements IITextReport {
       int storyNumber = 1;
       for (IPlotElement story : rootElement.getChildren()) {
         document.newPage();
-        String storyTitle = createSectionTitle(story.getDescription(), new int[] { storyNumber });
+        String storyTitle = createSectionTitle(story.getDescription(), new int[]{storyNumber});
         Paragraph storyTitleParagraph = createTitleParagraph(storyTitle, 13);
         document.add(storyTitleParagraph);
         PdfOutline storyOutline = addOutline(rootOutline, storyTitle);
         MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
         columnText.addRegularColumns(document.left(), document.right(), 20, 2);
-        addTextAndChildren(columnText, story, storyOutline, new int[] { storyNumber++ });
+        addTextAndChildren(columnText, story, storyOutline, new int[]{storyNumber++});
         writeColumnText(document, columnText);
       }
       contentTable.performPrint(seriesTitle, resources.getString("SeriesReport.Header.TableOfContents"), //$NON-NLS-1$
-          document,
-          writer);
-    }
-    catch (DocumentException e) {
+              document,
+              writer);
+    } catch (DocumentException e) {
       e.printStackTrace();
     }
   }
@@ -104,10 +91,10 @@ public class MultiColumnSeriesReport implements IITextReport {
   }
 
   private void addTextAndChildren(
-      MultiColumnText columnText,
-      IPlotElement element,
-      PdfOutline elementOutline,
-      int[] elementTitleNumbers) throws DocumentException {
+          MultiColumnText columnText,
+          IPlotElement element,
+          PdfOutline elementOutline,
+          int[] elementTitleNumbers) throws DocumentException {
     columnText.addElement(createContentParagraph(element.getDescription()));
     int episodeNumber = 1;
     for (IPlotElement episode : element.getChildren()) {
@@ -116,11 +103,11 @@ public class MultiColumnSeriesReport implements IITextReport {
   }
 
   private void addSubElement(
-      MultiColumnText columnText,
-      IPlotElement element,
-      PdfOutline parentOutline,
-      int[] superElementNumbers,
-      int thisElementNumber) throws DocumentException {
+          MultiColumnText columnText,
+          IPlotElement element,
+          PdfOutline parentOutline,
+          int[] superElementNumbers,
+          int thisElementNumber) throws DocumentException {
     int[] titleNumbers = extendArray(superElementNumbers, thisElementNumber);
     String elementTitle = createSectionTitle(element.getDescription(), titleNumbers);
     Paragraph elementTitleParagraph = createTitleParagraph(elementTitle, 9);
@@ -148,7 +135,7 @@ public class MultiColumnSeriesReport implements IITextReport {
     getAttributeMap(title).put(Chunk.GENERICTAG, titleString);
     Paragraph paragraph = new Paragraph(title);
     paragraph.setAlignment(Element.ALIGN_JUSTIFIED);
-    paragraph.setLeading(font.size() * 1.2f);
+    paragraph.setLeading(font.getSize() * 1.2f);
     return paragraph;
   }
 
@@ -162,7 +149,7 @@ public class MultiColumnSeriesReport implements IITextReport {
     for (int mark : sectionMarking) {
       prepend = prepend.concat(mark + "."); //$NON-NLS-1$
     }
-      return prepend + " " + description.getName().getText();
+    return prepend + " " + description.getName().getText();
   }
 
   private TextElementArray createContentParagraph(IItemDescription description) {
@@ -181,6 +168,6 @@ public class MultiColumnSeriesReport implements IITextReport {
   }
 
   public boolean supports(IItem item) {
-      return item != null && item.getItemData() instanceof ISeries;
+    return item != null && item.getItemData() instanceof ISeries;
   }
 }

@@ -1,13 +1,12 @@
 package net.sf.anathema.framework.reporting;
 
-import java.awt.Color;
-
-import net.disy.commons.core.text.font.FontStyle;
-import net.sf.anathema.framework.styledtext.model.ITextFormat;
-
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.Paragraph;
+import net.disy.commons.core.text.font.FontStyle;
+import net.sf.anathema.framework.styledtext.model.ITextFormat;
+
+import java.awt.*;
 
 public class ITextReportUtils {
 
@@ -15,7 +14,7 @@ public class ITextReportUtils {
     Font font = createDefaultFont(10, style);
     Paragraph paragraph = new Paragraph(text, font);
     paragraph.setAlignment(alignment);
-    paragraph.setLeading(font.size() * 1.2f);
+    paragraph.setLeading(font.getSize() * 1.2f);
     return paragraph;
   }
 

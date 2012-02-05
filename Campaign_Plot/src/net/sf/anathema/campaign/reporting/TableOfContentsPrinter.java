@@ -1,19 +1,14 @@
 package net.sf.anathema.campaign.reporting;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.sf.anathema.framework.reporting.ITextReportUtils;
-
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Paragraph;
+import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfAction;
 import com.lowagie.text.pdf.PdfPageEventHelper;
 import com.lowagie.text.pdf.PdfPageLabels;
 import com.lowagie.text.pdf.PdfWriter;
+import net.sf.anathema.framework.reporting.ITextReportUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TableOfContentsPrinter {
   private final ITextReportUtils reportUtils = new ITextReportUtils();
@@ -25,30 +20,30 @@ public class TableOfContentsPrinter {
   }
 
   public void performPrint(String seriesTitle, String tableTitle, Document document, PdfWriter writer)
-      throws DocumentException {
+          throws DocumentException {
     final int lastContentPage = writer.getPageNumber();
     writer.setPageEvent(null);
     writer.setPageEvent(new PdfPageEventHelper() {
       @Override
       public void onEndPage(PdfWriter currentWriter, Document currentDocument) {
         seriesUtils.printPageNumber(currentWriter, currentDocument, new RomanNumber(currentWriter.getPageNumber()
-            - lastContentPage).getLowerCaseRoman());
+                - lastContentPage).getLowerCaseRoman());
       }
     });
     Paragraph titleParagraph = reportUtils.createNewParagraph(seriesTitle, Element.ALIGN_CENTER, Font.BOLD);
-    titleParagraph.font().setSize(15);
+    titleParagraph.getFont().setSize(15);
     document.add(titleParagraph);
     Paragraph tocParagraph = reportUtils.createNewParagraph(tableTitle, Element.ALIGN_CENTER, Font.BOLD);
-    tocParagraph.font().setSize(13);
+    tocParagraph.getFont().setSize(13);
     document.add(tocParagraph);
     float yCoordinate = document.top() - 35;
     yCoordinate -= 15;
     for (ContentEntry entry : entryList) {
       seriesUtils.textLine(writer.getDirectContent(), yCoordinate, document.left(), document.right(), ".", //$NON-NLS-1$
-          reportUtils.createDefaultFont(11, Font.NORMAL),
-          entry.getText(),
-          entry.getPageAsString(),
-          PdfAction.gotoLocalPage(entry.getText(), false));
+              reportUtils.createDefaultFont(11, Font.NORMAL),
+              entry.getText(),
+              entry.getPageAsString(),
+              PdfAction.gotoLocalPage(entry.getText(), false));
       yCoordinate -= 15;
       if (yCoordinate < document.bottom()) {
         document.newPage();

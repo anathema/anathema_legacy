@@ -1,16 +1,16 @@
 dependencies {
-    compile files(
-            "../Thirdparty/Swing/l2fprod-common-directorychooser.jar",
-            "../Thirdparty/Swing/idw-gpl-1.4.0.jar",
-    )
-    compile 'commons-io:commons-io:2.1'
-    compile 'org.reflections:reflections:0.9.6'
-    compile 'org.slf4j:slf4j-simple:1.6.4'
-    compile 'com.lowagie:itext:1.4'
-    compile project(':Lib_Workflow')
-    compile project(':Lib_Gui')
-    testCompile 'junit:junit:4.+'
-    testCompile 'org.easymock:easymock:3.1'
+  compile files(
+      "../Thirdparty/Swing/l2fprod-common-directorychooser.jar",
+      "../Thirdparty/Swing/idw-gpl-1.4.0.jar",
+  )
+  compile 'commons-io:commons-io:2.1'
+  compile 'org.reflections:reflections:0.9.6'
+  compile 'org.slf4j:slf4j-simple:1.6.4'
+  compile 'com.lowagie:itext:2.1.7'
+  compile project(':Lib_Workflow')
+  compile project(':Lib_Gui')
+  testCompile 'junit:junit:4.+'
+  testCompile 'org.easymock:easymock:3.1'
 }
 
 sourceSets {

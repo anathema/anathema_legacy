@@ -1,11 +1,6 @@
 package net.sf.anathema.character.reporting.text;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.Phrase;
+import com.lowagie.text.*;
 import com.lowagie.text.pdf.MultiColumnText;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericDescription;
@@ -26,7 +21,7 @@ public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {
       columnText.addElement(periphrasis);
     }
     if (StringUtilities.isNullOrEmpty(description.getCharacterization()) && StringUtilities.isNullOrEmpty(description.getPhysicalAppearance()) &&
-        StringUtilities.isNullOrEmpty(description.getNotes())) {
+            StringUtilities.isNullOrEmpty(description.getNotes())) {
       return;
     }
     Phrase descriptionPhrase = createTextParagraph(createBoldTitle(getString("TextDescription.Label.Description") + ": ")); //$NON-NLS-1$
@@ -52,17 +47,16 @@ public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {
     Font font = getUtils().createDefaultFont(11, Font.BOLD);
     Paragraph paragraph = new Paragraph(name, font);
     paragraph.setAlignment(Element.ALIGN_JUSTIFIED);
-    paragraph.setLeading(font.size() * 1.2f);
+    paragraph.setLeading(font.getSize() * 1.2f);
     return paragraph;
   }
 
   private void addTextualDescriptionPart(MultiColumnText columnText, Phrase potentialParentPhrase, boolean isFirst,
-    Chunk chunk) throws DocumentException {
+                                         Chunk chunk) throws DocumentException {
     if (isFirst) {
       potentialParentPhrase.add(chunk);
       columnText.addElement(potentialParentPhrase);
-    }
-    else {
+    } else {
       Paragraph descriptionParagraph = createTextParagraph(chunk);
       descriptionParagraph.setFirstLineIndent(5f);
       columnText.addElement(descriptionParagraph);
