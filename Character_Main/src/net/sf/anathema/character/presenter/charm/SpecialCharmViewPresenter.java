@@ -32,13 +32,17 @@ public class SpecialCharmViewPresenter {
     for (ISpecialCharm charm : getCharmConfiguration().getSpecialCharms()) {
       SpecialCharmViewBuilder builder = new SpecialCharmViewBuilder(resources, statistics, view);
       charm.accept(builder);
-      specialCharmViews.add(builder.getResult());
+      ISVGSpecialNodeView nodeView = builder.getResult();
+      if (nodeView != null) {
+        specialCharmViews.add(nodeView);
+      }
     }
   }
 
   public void resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea() {
     for (ISVGSpecialNodeView charmView : specialCharmViews) {
-      ICharm charm = getCharmConfiguration().getCharmById(charmView.getNodeId());
+      String nodeId = charmView.getNodeId();
+      ICharm charm = getCharmConfiguration().getCharmById(nodeId);
       boolean isVisible = isVisible(charm);
       if (isVisible) {
         charmView.reset();
@@ -54,7 +58,8 @@ public class SpecialCharmViewPresenter {
       return;
     }
     for (ISVGSpecialNodeView charmView : specialCharmViews) {
-      ICharm charm = getCharmConfiguration().getCharmById(charmView.getNodeId());
+      String nodeId = charmView.getNodeId();
+      ICharm charm = getCharmConfiguration().getCharmById(nodeId);
       boolean isVisible = isVisible(charm);
       view.setSpecialCharmViewVisible(charmView, isVisible);
     }
