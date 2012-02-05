@@ -4,12 +4,16 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.*;
-import net.sf.anathema.framework.reporting.ITextReportUtils;
+import com.itextpdf.text.pdf.ColumnText;
+import com.itextpdf.text.pdf.PdfAction;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfTemplate;
+import com.itextpdf.text.pdf.PdfWriter;
+import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 
 public class SeriesReportUtils {
 
-  private final ITextReportUtils reportUtils = new ITextReportUtils();
+  private final PdfReportUtils reportUtils = new PdfReportUtils();
 
   public void printPageNumber(PdfWriter writer, Document document, String pageNumber) {
     PdfContentByte directContent = writer.getDirectContent();

@@ -1,18 +1,5 @@
 package net.sf.anathema.framework.reporting;
 
-import java.awt.Component;
-import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-
-import javax.swing.Action;
-import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
-
 import net.disy.commons.core.io.IOUtilities;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
@@ -34,6 +21,18 @@ import net.sf.anathema.lib.control.BrowserControl;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
+import javax.swing.Action;
+import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
+import java.awt.Component;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+
 public class AnathemaPrintAction extends SmartAction {
 
   private static final long serialVersionUID = 6219757317594446843L;
@@ -51,12 +50,11 @@ public class AnathemaPrintAction extends SmartAction {
 
     @Override
     public void itemSelected(IItem item) {
-      IReport[] reports = reportRegistry.getReports(item);
+      Report[] reports = reportRegistry.getReports(item);
       action.setEnabled(reports.length > 0);
     }
   }
 
-  private final ITextReportPrinter itextPrinter = new ITextReportPrinter();
   private final IAnathemaModel anathemaModel;
   private final IResources resources;
 
@@ -88,7 +86,7 @@ public class AnathemaPrintAction extends SmartAction {
     if (item == null) {
       return;
     }
-    final IReport selectedReport = selectReport(parentComponent, item);
+    final Report selectedReport = selectReport(parentComponent, item);
     if (selectedReport == null) {
       return;
     }
@@ -102,34 +100,29 @@ public class AnathemaPrintAction extends SmartAction {
     }
     try {
       new ProgressMonitorDialog(parentComponent, resources.getString("Anathema.Reporting.Print.Progress.Title")).run( //$NON-NLS-1$
-          new INonInterruptableRunnableWithProgress() {
-            public void run(IProgressMonitor monitor) throws InvocationTargetException {
-              try {
-                performPrint(monitor, item, selectedReport, selectedFile);
-              }
-              catch (ReportException e) {
-                throw new InvocationTargetException(e);
-              }
-              catch (IOException e) {
-                throw new InvocationTargetException(e);
-              }
-            }
-          });
+              new INonInterruptableRunnableWithProgress() {
+                public void run(IProgressMonitor monitor) throws InvocationTargetException {
+                  try {
+                    performPrint(monitor, item, selectedReport, selectedFile);
+                  } catch (ReportException e) {
+                    throw new InvocationTargetException(e);
+                  } catch (IOException e) {
+                    throw new InvocationTargetException(e);
+                  }
+                }
+              });
       if (OpenPdfPreferencesElement.openDocumentAfterPrint()) {
         BrowserControl.displayUrl(selectedFile.toURI().toURL());
       }
-    }
-    catch (InvocationTargetException e) {
+    } catch (InvocationTargetException e) {
       String errorMessage;
       if (e.getTargetException() instanceof FileNotFoundException) {
         errorMessage = resources.getString("Anathema.Reporting.Message.PrintError.FileOpen"); //$NON-NLS-1$
-      }
-      else {
+      } else {
         errorMessage = resources.getString("Anathema.Reporting.Message.PrintError"); //$NON-NLS-1$
       }
       MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(errorMessage, e.getCause()));
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       String errorMessage = resources.getString("Anathema.Reporting.Message.PrintError"); //$NON-NLS-1$
       MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(errorMessage, e.getCause()));
     }
@@ -139,42 +132,41 @@ public class AnathemaPrintAction extends SmartAction {
     String message = resources.getString("Anathema.Reporting.PrintAction.OverwriteMessage"); //$NON-NLS-1$
     String title = resources.getString("Anathema.Reporting.PrintAction.OverwriteTitle"); //$NON-NLS-1$
     return !selectedFile.exists()
-        || JOptionPane.showConfirmDialog(parentComponent, message, title, JOptionPane.YES_NO_OPTION) != 1;
+            || JOptionPane.showConfirmDialog(parentComponent, message, title, JOptionPane.YES_NO_OPTION) != 1;
   }
 
-  private void performPrint(IProgressMonitor monitor, IItem item, IReport selectedReport, File selectedFile)
-      throws IOException,
-      ReportException {
+  private void performPrint(IProgressMonitor monitor, IItem item, Report selectedReport, File selectedFile)
+          throws IOException,
+          ReportException {
     monitor.beginTask(resources.getString("Anathema.Reporting.Print.Progress.Task"), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
     FileOutputStream stream = null;
     try {
       stream = new FileOutputStream(selectedFile);
-      itextPrinter.printReport(item, (IITextReport) selectedReport, stream);
-    }
-    finally {
+      selectedReport.print(item, stream);
+    } finally {
       IOUtilities.close(stream);
     }
   }
 
-  private IReport selectReport(Component parentComponent, IItem item) {
+  private Report selectReport(Component parentComponent, IItem item) {
     IReportRegistry reportRegistry = anathemaModel.getReportRegistry();
-    IReport[] reports = reportRegistry.getReports(item);
+    Report[] reports = reportRegistry.getReports(item);
     if (reports.length == 1) {
       return reports[0];
     }
     return selectReport(parentComponent, reports);
   }
 
-  private IReport selectReport(Component parentComponent, IReport[] reports) {
+  private Report selectReport(Component parentComponent, Report[] reports) {
     IObjectSelectionProperties properties = new DefaultObjectSelectionProperties(
-        resources,
-        "Anathema.Reporting.PrintSelection.Message", "Anathema.Reporting.PrintSelection.Title"); //$NON-NLS-1$ //$NON-NLS-2$
+            resources,
+            "Anathema.Reporting.PrintSelection.Message", "Anathema.Reporting.PrintSelection.Title"); //$NON-NLS-1$ //$NON-NLS-2$
     ObjectSelectionDialogPage dialogPage = new ObjectSelectionDialogPage(reports, properties);
     UserDialog userDialog = new UserDialog(parentComponent, dialogPage);
     IDialogResult result = userDialog.show();
     if (result.isCanceled()) {
       return null;
     }
-    return (IReport) dialogPage.getSelectedObject();
+    return (Report) dialogPage.getSelectedObject();
   }
 }

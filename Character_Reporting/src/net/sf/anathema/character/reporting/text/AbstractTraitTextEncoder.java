@@ -6,12 +6,12 @@ import com.itextpdf.text.pdf.MultiColumnText;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.framework.reporting.ITextReportUtils;
+import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractTraitTextEncoder extends AbstractTextEncoder {
 
-  public AbstractTraitTextEncoder(ITextReportUtils utils, IResources resources) {
+  public AbstractTraitTextEncoder(PdfReportUtils utils, IResources resources) {
     super(utils, resources);
   }
 

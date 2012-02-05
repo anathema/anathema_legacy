@@ -1,17 +1,21 @@
 package net.sf.anathema.campaign.reporting;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfAction;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfPageLabels;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.framework.reporting.ITextReportUtils;
+import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TableOfContentsPrinter {
-  private final ITextReportUtils reportUtils = new ITextReportUtils();
+  private final PdfReportUtils reportUtils = new PdfReportUtils();
   private final List<ContentEntry> entryList = new ArrayList<ContentEntry>();
   private final SeriesReportUtils seriesUtils = new SeriesReportUtils();
 

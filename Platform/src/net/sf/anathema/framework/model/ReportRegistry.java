@@ -1,32 +1,32 @@
 package net.sf.anathema.framework.model;
 
+import net.sf.anathema.framework.reporting.IReportRegistry;
+import net.sf.anathema.framework.reporting.Report;
+import net.sf.anathema.framework.repository.IItem;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.sf.anathema.framework.reporting.IReport;
-import net.sf.anathema.framework.reporting.IReportRegistry;
-import net.sf.anathema.framework.repository.IItem;
-
 public class ReportRegistry implements IReportRegistry {
 
-  private final List<IReport> reports = new ArrayList<IReport>();
+  private final List<Report> reports = new ArrayList<Report>();
 
   public ReportRegistry() {
     super();
   }
 
-  public void addReports(IReport... newReports) {
+  public void addReports(Report... newReports) {
     Collections.addAll(this.reports, newReports);
   }
 
-  public IReport[] getReports(IItem item) {
-    List<IReport> supportedReports = new ArrayList<IReport>();
-    for (IReport report : reports) {
+  public Report[] getReports(IItem item) {
+    List<Report> supportedReports = new ArrayList<Report>();
+    for (Report report : reports) {
       if (report.supports(item)) {
         supportedReports.add(report);
       }
     }
-    return supportedReports.toArray(new IReport[supportedReports.size()]);
+    return supportedReports.toArray(new Report[supportedReports.size()]);
   }
 }

@@ -3,12 +3,12 @@ package net.sf.anathema.character.reporting.text;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.framework.reporting.ITextReportUtils;
+import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AttributeTextEncoder extends AbstractTraitTextEncoder {
 
-  public AttributeTextEncoder(ITextReportUtils utils, IResources resources) {
+  public AttributeTextEncoder(PdfReportUtils utils, IResources resources) {
     super(utils, resources);
   }
 

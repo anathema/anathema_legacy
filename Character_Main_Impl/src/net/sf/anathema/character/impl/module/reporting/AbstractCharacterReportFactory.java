@@ -7,7 +7,7 @@ import net.sf.anathema.character.impl.reporting.SimpleExaltSheetReport;
 import net.sf.anathema.character.impl.reporting.SimpleMortalSheetReport;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.initialization.IReportFactory;
-import net.sf.anathema.framework.reporting.IReport;
+import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -20,11 +20,11 @@ public abstract class AbstractCharacterReportFactory implements IReportFactory {
 
   protected abstract PageSize getPageSize();
 
-  public IReport[] createReport(IResources resources, IRegistry<String, IAnathemaExtension> extensionPointRegistry) {
+  public Report[] createReport(IResources resources, IRegistry<String, IAnathemaExtension> extensionPointRegistry) {
     ICharacterGenerics characterGenerics = getCharacterGenerics(extensionPointRegistry);
-    return new IReport[] { new SimpleExaltSheetReport(resources, characterGenerics, getPageSize()), new SimpleMortalSheetReport(resources,
-      characterGenerics, getPageSize())
-      //new ExtendedSheetReport(resources, characterGenerics, getPageSize())
+    return new Report[]{new SimpleExaltSheetReport(resources, characterGenerics, getPageSize()), new SimpleMortalSheetReport(resources,
+            characterGenerics, getPageSize())
+            //new ExtendedSheetReport(resources, characterGenerics, getPageSize())
     };
   }
 }

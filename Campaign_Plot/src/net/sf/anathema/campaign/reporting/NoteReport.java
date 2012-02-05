@@ -1,19 +1,24 @@
 package net.sf.anathema.campaign.reporting;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
-import net.sf.anathema.framework.reporting.IITextReport;
-import net.sf.anathema.framework.reporting.ITextReportUtils;
 import net.sf.anathema.framework.reporting.ReportException;
+import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
+import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 
-public class NoteReport implements IITextReport {
+public class NoteReport extends AbstractPdfReport {
 
-  private final ITextReportUtils reportUtils = new ITextReportUtils();
+  private final PdfReportUtils reportUtils = new PdfReportUtils();
 
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     if (!supports(item)) {

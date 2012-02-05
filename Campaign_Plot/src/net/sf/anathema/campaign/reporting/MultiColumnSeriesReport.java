@@ -1,22 +1,33 @@
 package net.sf.anathema.campaign.reporting;
 
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.TextElementArray;
+import com.itextpdf.text.pdf.MultiColumnText;
+import com.itextpdf.text.pdf.PdfAction;
+import com.itextpdf.text.pdf.PdfOutline;
+import com.itextpdf.text.pdf.PdfPageEventHelper;
+import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
-import net.sf.anathema.framework.reporting.IITextReport;
-import net.sf.anathema.framework.reporting.ITextReportUtils;
 import net.sf.anathema.framework.reporting.ReportException;
+import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
+import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.HashMap;
 
-public class MultiColumnSeriesReport implements IITextReport {
+public class MultiColumnSeriesReport extends AbstractPdfReport {
 
-  private final ITextReportUtils reportUtils = new ITextReportUtils();
+  private final PdfReportUtils reportUtils = new PdfReportUtils();
   private final SeriesReportUtils seriesUtils = new SeriesReportUtils();
   private final TableOfContentsPrinter contentTable = new TableOfContentsPrinter();
   private final IResources resources;

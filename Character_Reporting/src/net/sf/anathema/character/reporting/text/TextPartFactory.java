@@ -3,14 +3,14 @@ package net.sf.anathema.character.reporting.text;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
-import net.sf.anathema.framework.reporting.ITextReportUtils;
+import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 
 public final class TextPartFactory {
 
   private static final int STANDARD_FONT_SIZE = 8;
-  private final ITextReportUtils utils;
+  private final PdfReportUtils utils;
 
-  public TextPartFactory(ITextReportUtils utils) {
+  public TextPartFactory(PdfReportUtils utils) {
     this.utils = utils;
   }
 
