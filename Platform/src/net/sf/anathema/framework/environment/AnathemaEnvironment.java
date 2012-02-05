@@ -11,7 +11,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 
 public class AnathemaEnvironment {
-  private static final String SYSTEM_PROPERTY_DEVELOPMENT = "development"; //$NON-NLS-1$
 
   public static void initLogging() {
     System.setProperty("org.apache.commons.logging.simplelog.defaultlog", "error"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -19,8 +18,7 @@ public class AnathemaEnvironment {
     InputStream logPropertyInputStream = new ByteArrayInputStream(propertyString.getBytes());
     try {
       LogManager.getLogManager().readConfiguration(logPropertyInputStream);
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
@@ -33,18 +31,14 @@ public class AnathemaEnvironment {
   }
 
   public static void initLookAndFeel(IAnathemaPreferences anathemaPreferences)
-      throws ClassNotFoundException,
-      InstantiationException,
-      IllegalAccessException,
-      UnsupportedLookAndFeelException {
+          throws ClassNotFoundException,
+          InstantiationException,
+          IllegalAccessException,
+          UnsupportedLookAndFeelException {
     new LookAndFeelInitializer(anathemaPreferences).initialize();
   }
 
   public static void initLocale(IAnathemaPreferences preferences) {
     Locale.setDefault(preferences.getPreferredLocale());
-  }
-
-  public static final boolean isDevelopment() {
-    return System.getProperty(SYSTEM_PROPERTY_DEVELOPMENT) != null;
   }
 }
