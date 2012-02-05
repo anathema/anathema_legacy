@@ -45,6 +45,9 @@ public class BackgroundPool implements IAdditionalEssencePool {
   }
 
   private int getCurrentValue(IGenericTraitCollection traitCollection) {
+    if(template == null){
+      return 0;
+    }
     IGenericTrait background = traitCollection.getTrait(template);
     if (background == null) {
       return 0;
