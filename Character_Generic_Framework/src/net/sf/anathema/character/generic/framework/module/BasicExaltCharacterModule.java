@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
 @CharacterModule
-public class BasicExaltCharacterModule extends NullObjectCharacterModuleAdapter {
+public final class BasicExaltCharacterModule extends NullObjectCharacterModuleAdapter {
 
   public static final String BACKGROUND_ID_FACE = "Face"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_MANSE = "Manse"; //$NON-NLS-1$

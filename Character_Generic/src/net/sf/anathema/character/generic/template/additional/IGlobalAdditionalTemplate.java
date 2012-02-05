@@ -4,5 +4,5 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 
 public interface IGlobalAdditionalTemplate extends IAdditionalTemplate {
 
-  public boolean supportsEdition(IExaltedEdition edition);
+  boolean supportsEdition(IExaltedEdition edition);
 }

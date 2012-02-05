@@ -10,14 +10,13 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterModuleContainer {
 
-  private CharacterGenerics characterGenerics;
+  private final CharacterGenerics characterGenerics;
   private final IResources resources;
 
   public CharacterModuleContainer(IResources resources, IDataFileProvider dataFileProvider, Instantiater instantiater)
           throws InitializationException {
     this.resources = resources;
     this.characterGenerics = new CharacterGenerics(dataFileProvider, instantiater);
-    addCharacterGenericsModule(new BasicExaltCharacterModule());
   }
 
   public void addCharacterGenericsModule(ICharacterModule<? extends ICharacterModuleObject> module)

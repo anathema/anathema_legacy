@@ -3,10 +3,8 @@ package net.sf.anathema.character.abyssal;
 import net.sf.anathema.character.abyssal.additional.AdditionalAbyssalRules;
 import net.sf.anathema.character.abyssal.additional.AdditionalLoyalAbyssalRules;
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
-import net.sf.anathema.character.abyssal.equipment.FangTemplate;
 import net.sf.anathema.character.abyssal.template.LoyalAbyssalTemplate;
 import net.sf.anathema.character.abyssal.template.RenegadeAbyssalTemplate;
-import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
@@ -41,9 +39,6 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getCasteCollectionRegistry().register(ABYSSAL, new CasteCollection(AbyssalCaste.values()));
-    IEquipmentAdditionalModelTemplate equipmentTemplate =
-            (IEquipmentAdditionalModelTemplate) characterGenerics.getGlobalAdditionalTemplateRegistry().getById(IEquipmentAdditionalModelTemplate.ID);
-    equipmentTemplate.addNaturalWeaponTemplate(ABYSSAL, new FangTemplate());
   }
 
   @Override

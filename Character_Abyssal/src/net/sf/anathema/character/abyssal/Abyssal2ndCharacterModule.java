@@ -1,7 +1,6 @@
 package net.sf.anathema.character.abyssal;
 
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
-import net.sf.anathema.character.abyssal.equipment.FangTemplate;
 import net.sf.anathema.character.abyssal.generic.ApocalypticEvolution;
 import net.sf.anathema.character.abyssal.generic.EssenceFlow;
 import net.sf.anathema.character.abyssal.generic.InfiniteMastery;
@@ -12,7 +11,6 @@ import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceParser;
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonancePersisterFactory;
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceTemplate;
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceViewFactory;
-import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
@@ -68,9 +66,6 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
     characterGenerics.getAdditionalTemplateParserRegistry().register(AbyssalResonanceTemplate.ID, new AbyssalResonanceParser());
 
     characterGenerics.getCasteCollectionRegistry().register(ABYSSAL, new CasteCollection(AbyssalCaste.values()));
-
-    IEquipmentAdditionalModelTemplate equipmentTemplate = (IEquipmentAdditionalModelTemplate) characterGenerics.getGlobalAdditionalTemplateRegistry().getById(IEquipmentAdditionalModelTemplate.ID);
-    equipmentTemplate.addNaturalWeaponTemplate(ABYSSAL, new FangTemplate());
   }
 
   @Override
