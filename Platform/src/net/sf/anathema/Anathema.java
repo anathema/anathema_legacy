@@ -12,6 +12,8 @@ import javax.swing.*;
 
 public class Anathema {
 
+  /*Called by the boot loader using reflection.*/
+  @SuppressWarnings("UnusedDeclaration")
   public void startApplication() throws Exception {
     IAnathemaPreferences anathemaPreferences = loadPreferences();
     prepareEnvironment(anathemaPreferences);
@@ -19,8 +21,7 @@ public class Anathema {
   }
 
   private IAnathemaPreferences loadPreferences() {
-    String message = "Retrieving Preferences..."; //$NON-NLS-1$
-    displayStatus(message);
+    displayStatus("Retrieving Preferences...");
     return AnathemaPreferences.getDefaultPreferences();
   }
 
