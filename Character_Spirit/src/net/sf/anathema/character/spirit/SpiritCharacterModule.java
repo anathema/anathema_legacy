@@ -7,23 +7,14 @@ import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.reporting.CharacterReportingModule;
-import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.spirit.generic.DivineSubordination;
 import net.sf.anathema.character.spirit.generic.InfiniteMastery;
-import net.sf.anathema.character.spirit.reporting.Extended2ndEditionSpiritPartEncoder;
-import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.SPIRIT;
 
 @CharacterModule
 public class SpiritCharacterModule extends NullObjectCharacterModuleAdapter {
-
-  private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -37,16 +28,5 @@ public class SpiritCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     registerParsedTemplate(characterGenerics, "template/Spirit2nd.template"); //$NON-NLS-1$
-  }
-
-  @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    registerExtendedEncoders(resources, moduleObject);
-  }
-
-  private void registerExtendedEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
-    ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
-    registry.setPartEncoder(SPIRIT, SecondEdition, new Extended2ndEditionSpiritPartEncoder(resources));
   }
 }

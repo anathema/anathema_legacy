@@ -13,22 +13,20 @@ import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.ghost.age.GhostAgeModelFactory;
 import net.sf.anathema.character.ghost.age.GhostAgeParser;
 import net.sf.anathema.character.ghost.age.GhostAgeTemplate;
-import net.sf.anathema.character.ghost.fetters.*;
+import net.sf.anathema.character.ghost.fetters.GhostFettersModelFactory;
+import net.sf.anathema.character.ghost.fetters.GhostFettersParser;
+import net.sf.anathema.character.ghost.fetters.GhostFettersPersisterFactory;
+import net.sf.anathema.character.ghost.fetters.GhostFettersTemplate;
+import net.sf.anathema.character.ghost.fetters.GhostFettersViewFactory;
 import net.sf.anathema.character.ghost.passions.GhostPassionsModelFactory;
 import net.sf.anathema.character.ghost.passions.GhostPassionsParser;
 import net.sf.anathema.character.ghost.passions.GhostPassionsTemplate;
 import net.sf.anathema.character.ghost.passions.GhostPassionsViewFactory;
 import net.sf.anathema.character.ghost.passions.persistence.GhostPassionsPersisterFactory;
-import net.sf.anathema.character.ghost.reporting.ExtendedGhostPartEncoder;
-import net.sf.anathema.character.reporting.CharacterReportingModule;
-import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.GHOST;
 
 @CharacterModule
@@ -98,16 +96,5 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   private void registerGhostAge(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry) {
     String templateId = GhostAgeTemplate.ID;
     additionalModelFactoryRegistry.register(templateId, new GhostAgeModelFactory());
-  }
-
-  @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    addExtendedParts(resources, moduleObject);
-  }
-
-  private void addExtendedParts(IResources resources, CharacterReportingModuleObject moduleObject) {
-    ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
-    registry.setPartEncoder(GHOST, SecondEdition, new ExtendedGhostPartEncoder(resources));
   }
 }

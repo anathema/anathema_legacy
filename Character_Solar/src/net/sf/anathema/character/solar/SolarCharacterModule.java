@@ -13,37 +13,27 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.CharacterReportingModule;
-import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 import net.sf.anathema.character.solar.generic.DivineTranscendenceOf;
 import net.sf.anathema.character.solar.generic.EssenceFlow;
 import net.sf.anathema.character.solar.generic.InfiniteMastery;
 import net.sf.anathema.character.solar.generic.SupremePerfectionOf;
-import net.sf.anathema.character.solar.reporting.Extended1stEditionSolarPartEncoder;
-import net.sf.anathema.character.solar.reporting.Extended2ndSolarPartEncoder;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawViewFactory;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstEdition;
 import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.SOLAR;
 
 @CharacterModule
 public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
-
-  private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
 
   @SuppressWarnings("unused")
   private static final TemplateType solarTemplateType = new TemplateType(SOLAR);
@@ -115,18 +105,6 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
     backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, dreams, SecondEdition));
     backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SIFU, dreams, SecondEdition));
     backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_WEALTH, dreams, SecondEdition));
-  }
-
-  @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    registerExtendedEncoders(resources, moduleObject);
-  }
-
-  private void registerExtendedEncoders(IResources resources, CharacterReportingModuleObject moduleObject) {
-    ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
-    registry.setPartEncoder(SOLAR, SecondEdition, new Extended2ndSolarPartEncoder(resources));
-    registry.setPartEncoder(SOLAR, FirstEdition, new Extended1stEditionSolarPartEncoder(resources));
   }
 
   @Override
