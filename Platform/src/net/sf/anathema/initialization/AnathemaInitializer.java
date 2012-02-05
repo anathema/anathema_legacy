@@ -51,7 +51,7 @@ public class AnathemaInitializer {
   }
 
   private void initializePlugins(AnathemaReflections reflections) throws InitializationException {
-    Collection<Startable> startablePlugins = new ReflectionsInstantiater(reflections).instantiateAll(Plugin.class);
+    Collection<Startable> startablePlugins = instantiater.instantiateAll(Plugin.class);
     for (Startable startablePlugin : startablePlugins) {
       try {
         startablePlugin.doStart(reflections);
