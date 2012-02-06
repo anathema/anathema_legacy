@@ -10,6 +10,7 @@ import net.sf.anathema.character.reporting.pdf.content.magic.CharmPrintNameTrans
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoxBoundsFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SimpleColumn;
@@ -42,7 +43,7 @@ public class ExtendedComboEncoder {
     if (combos.isEmpty()) {
       return 0;
     }
-    Bounds contentBounds = boxEncoder.calculateContentBounds(maxBounds);
+    Bounds contentBounds = BoxBoundsFactory.calculateContentBounds(maxBounds);
     SimpleColumn column = graphics.createSimpleColumn(contentBounds).withLeading(LINE_HEIGHT).get();
     addCombos(graphics, column, combos);
 
@@ -59,7 +60,7 @@ public class ExtendedComboEncoder {
   }
 
   public float encodeFixedCombos(SheetGraphics graphics, List<IGenericCombo> combos, Bounds bounds) throws DocumentException {
-    Bounds contentBounds = boxEncoder.calculateContentBounds(bounds);
+    Bounds contentBounds = BoxBoundsFactory.calculateContentBounds(bounds);
     SimpleColumn column = graphics.createSimpleColumn(contentBounds).withLeading(LINE_HEIGHT).get();
     addCombos(graphics, column, combos);
 

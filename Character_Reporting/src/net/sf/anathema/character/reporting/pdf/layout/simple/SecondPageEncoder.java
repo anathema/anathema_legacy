@@ -16,6 +16,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ComboEncode
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.GenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.MagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoxBoundsFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -83,7 +84,7 @@ public class SecondPageEncoder extends AbstractPageEncoder {
   private float encodeCombos(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     ComboEncoder encoder = new ComboEncoder();
     Bounds restOfPage = new Bounds(configuration.getLeftX(), configuration.getLowerContentY(), configuration.getContentWidth(), configuration.getContentHeight() - distanceFromTop);
-    Bounds maxContentBounds = boxEncoder.calculateContentBounds(restOfPage);
+    Bounds maxContentBounds = BoxBoundsFactory.calculateContentBounds(restOfPage);
     float yPosition = encoder.encode(graphics, content, maxContentBounds);
     Bounds actualBoxBounds = encoder.calculateActualBoxBounds(restOfPage, yPosition);
     boxEncoder.encodeBox(graphics, actualBoxBounds, encoder.getHeader(content));
