@@ -11,7 +11,7 @@ public class LayoutFieldBuilder implements Height, Placement, ColumnSpan {
   private float fromTop;
   private int columnSpan = SPANS_ONE_COLUMN;
   private int columnIndex = FIRST_COLUMN;
-  private float height;
+  private HeightStrategy heightStrategy;
   private FieldEncoder encoder;
 
   public LayoutFieldBuilder(FieldEncoder encoder) {
@@ -49,28 +49,24 @@ public class LayoutFieldBuilder implements Height, Placement, ColumnSpan {
 
   @Override
   public ColumnSpan withPreferredHeight() {
-    return withHeight(encoder.getPreferredHeight());
+    this.heightStrategy = new PreferredHeight(encoder);
+    return this;
   }
 
   @Override
   public ColumnSpan withHeight(float layoutHeight) {
-    this.height = layoutHeight;
-    if (this.height == 0.0) {
-      this.fromTop = alignField.getBottomFromTop();
-    }
+    this.heightStrategy = new StaticHeight(layoutHeight);
     return this;
   }
 
   @Override
   public ColumnSpan fillToBottomOfPage() {
-    this.height = alignField.getRemainingColumnHeight();
-    return this;
+    return withHeight(alignField.getRemainingColumnHeight());
   }
 
   @Override
   public ColumnSpan alignBottomTo(LayoutField field) {
-    this.height = this.alignField.getHeightToBottomFrom(field);
-    return this;
+    return withHeight(alignField.getHeightToBottomFrom(field));
   }
 
   @Override
@@ -92,6 +88,6 @@ public class LayoutFieldBuilder implements Height, Placement, ColumnSpan {
   }
 
   private LayoutField buildField() {
-    return alignField.createForFromTopAndHeightAndColumnSpanAndColumnIndex(fromTop, height, columnSpan, columnIndex);
+    return alignField.createForFromTopAndHeightAndColumnSpanAndColumnIndex(fromTop, heightStrategy, columnSpan, columnIndex);
   }
 }
