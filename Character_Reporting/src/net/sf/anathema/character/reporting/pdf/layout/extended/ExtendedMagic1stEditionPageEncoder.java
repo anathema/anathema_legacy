@@ -9,7 +9,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.BackgroundsEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ComboEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ExtendedComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.GenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.MagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -70,7 +70,7 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeCombos(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     Bounds restOfPage = new Bounds(getPageConfiguration().getLeftX(), getPageConfiguration().getLowerContentY(), getPageConfiguration().getContentWidth(), getPageConfiguration().getContentHeight() - distanceFromTop);
-    return new ComboEncoder(getResources()).encodeCombos(graphics, content, restOfPage);
+    return new ExtendedComboEncoder(getResources()).encodeCombos(graphics, content, restOfPage);
   }
 
   private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
