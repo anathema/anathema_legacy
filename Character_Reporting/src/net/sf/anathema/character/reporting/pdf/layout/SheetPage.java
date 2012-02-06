@@ -38,6 +38,7 @@ public class SheetPage {
   }
 
   public Placement place(String... encoderIds) {
-    return new LayoutFieldBuilder(new SheetFieldEncoder(encoderIds));
+    SheetFieldEncoder fieldEncoder = new SheetFieldEncoder(encoderIds);
+    return new LayoutFieldBuilder(fieldEncoder);
   }
 }
