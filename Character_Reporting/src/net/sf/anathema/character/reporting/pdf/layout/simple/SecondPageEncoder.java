@@ -81,8 +81,13 @@ public class SecondPageEncoder extends AbstractPageEncoder {
   }
 
   private float encodeCombos(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
+    ComboEncoder encoder = new ComboEncoder();
     Bounds restOfPage = new Bounds(configuration.getLeftX(), configuration.getLowerContentY(), configuration.getContentWidth(), configuration.getContentHeight() - distanceFromTop);
-    return new ComboEncoder(resources).encodeCombos(graphics, content, restOfPage);
+    Bounds maxContentBounds = boxEncoder.calculateContentBounds(restOfPage);
+    float yPosition = encoder.encode(graphics, content, maxContentBounds);
+    Bounds actualBoxBounds = encoder.calculateActualBoxBounds(restOfPage, yPosition);
+    boxEncoder.encodeBox(graphics, actualBoxBounds, encoder.getHeader(content));
+    return actualBoxBounds.getHeight();
   }
 
   private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {

@@ -7,11 +7,9 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.combo.ComboContent;
 import net.sf.anathema.character.reporting.pdf.content.combo.DisplayCombo;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SimpleColumn;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.lib.resources.IResources;
 
 import java.util.List;
 
@@ -19,26 +17,26 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 
 public class ComboEncoder {
 
-  private final IResources resources;
-  private final PdfBoxEncoder boxEncoder;
-
-  public ComboEncoder(IResources resources) {
-    this.resources = resources;
-    this.boxEncoder = new PdfBoxEncoder();
+  public String getHeader(ReportContent reportContent) {
+    return createContent(reportContent).getHeader();
   }
 
-  public float encodeCombos(SheetGraphics graphics, ReportContent reportContent, Bounds maxBounds) throws DocumentException {
-    ComboContent content = reportContent.createSubContent(ComboContent.class);
-    if (!content.hasContent()) {
+  public boolean hasContent(ReportContent reportContent) {
+    return createContent(reportContent).hasContent();
+  }
+
+  public ComboContent createContent(ReportContent reportContent) {
+    return reportContent.createSubContent(ComboContent.class);
+  }
+
+  public float encode(SheetGraphics graphics, ReportContent reportContent, Bounds maxContentBounds) throws DocumentException {
+    if (!hasContent(reportContent)) {
       return 0;
     }
-    Bounds maxContentBounds = boxEncoder.calculateContentBounds(maxBounds);
+    ComboContent content = createContent(reportContent);
     SimpleColumn column = graphics.createSimpleColumn(maxContentBounds).withLeading(LINE_HEIGHT).get();
     addCombos(graphics, column, content);
-    float yPosition = column.getYLine();
-    Bounds actualBoxBounds = calculateActualBoxBounds(maxBounds, yPosition);
-    boxEncoder.encodeBox(graphics, actualBoxBounds, content.getHeader());
-    return actualBoxBounds.getHeight();
+    return column.getYLine();
   }
 
   private void addCombos(SheetGraphics graphics, SimpleColumn columnText, ComboContent content) throws DocumentException {
@@ -66,7 +64,7 @@ public class ComboEncoder {
     return phrase;
   }
 
-  private Bounds calculateActualBoxBounds(Bounds restOfPage, float textEndY) {
+  public Bounds calculateActualBoxBounds(Bounds restOfPage, float textEndY) {
     float boxY = textEndY - IVoidStateFormatConstants.TEXT_PADDING;
     return new Bounds(restOfPage.x, boxY, restOfPage.width, restOfPage.getMaxY() - boxY);
   }
