@@ -1,19 +1,9 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats;
 
-import java.awt.Component;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.Action;
-
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.IPageContent;
-import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentTypeChoiceProperties;
 import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
@@ -25,18 +15,23 @@ import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 
+import javax.swing.Action;
+import java.awt.Component;
+import java.util.HashMap;
+import java.util.Map;
+
 public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage {
 
   private final Map<EquipmentStatisticsType, IAnathemaWizardPage> pagesByType = new HashMap<EquipmentStatisticsType, IAnathemaWizardPage>();
   private final EquipmentTypeChoiceProperties properties;
   private final BasicMessage defaultMessage;
   private final IResources resources;
-  private final IEquipmentTemplateEditModel editModel;
+  //private final IEquipmentTemplateEditModel editModel;
   private final IEquipmentStatisticsCreationModel model;
   private final IEquipmentStatisticsCreationViewFactory viewFactory;
   private MaterialTypesPresenterPage materialsPage;
-  private CheckInputListener inputListener;
-  private boolean materialSpecific;
+  //private CheckInputListener inputListener;
+  //private boolean materialSpecific;
   private IEquipmentTypeChoiceView view;
 
   public EquipmentTypeChoicePresenterPage(
@@ -49,11 +44,10 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     this.resources = resources;
     this.model = model;
     this.viewFactory = viewFactory;
-    this.editModel = editModel;
-    
-    materialSpecific = model.getApplicableMaterialsModel().getValidMaterials().length > 0 &&
+    //this.editModel = editModel;
+/*    materialSpecific = model.getApplicableMaterialsModel().getValidMaterials().length > 0 &&
     	model.getApplicableMaterialsModel().getValidMaterials().length !=
-    	MagicalMaterial.values().length;
+    	MagicalMaterial.values().length;*/
   }
 
   public boolean canFinish() {
@@ -63,13 +57,12 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
   @Override
   protected void initModelListening(CheckInputListener inputListener) {
     model.addEquipmentTypeChangeListener(inputListener);
-    this.inputListener = inputListener;
+    //this.inputListener = inputListener;
   }
 
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
-	
-	addMaterialPage(getMaterialsPage(), inputListener);
+	//addMaterialPage(getMaterialsPage(), inputListener);
     addPage(
         EquipmentStatisticsType.CloseCombat,
         new CloseCombatStatisticsPresenterPage(resources, model, viewFactory),
@@ -96,12 +89,12 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
         inputListener);
   }
   
-  private MaterialTypesPresenterPage getMaterialsPage()
+  /*private MaterialTypesPresenterPage getMaterialsPage()
   {
 	  if (materialsPage == null)
 		  materialsPage = new MaterialTypesPresenterPage(resources, model, viewFactory);
 	  return materialsPage;
-  }
+  }*/
 
   @Override
   protected void initPageContent() {
@@ -115,7 +108,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     view.addHorizontalLine();
     addStatisticsTypeRow(properties.getOtherLabel(), EquipmentStatisticsType.TraitModifying);
     addStatisticsTypeRow("", EquipmentStatisticsType.Artifact);
-    if (editModel != null && 
+   /* if (editModel != null &&
     	editModel.getMaterialComposition() == MaterialComposition.Variable)
     {
     	//view.addHorizontalLine();
@@ -128,24 +121,24 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
 						inputListener.changeOccured();
 					}
     			}, !materialSpecific);
-    }
+    }*/
   }
 
   private void addPage(final EquipmentStatisticsType type, IAnathemaWizardPage page, CheckInputListener inputListener) {
     pagesByType.put(type, page);
     addFollowupPage(page, inputListener, new ICondition() {
       public boolean isFulfilled() {
-        return !materialSpecific && model.isEquipmentTypeSelected(type);
+        /*   return !materialSpecific && model.isEquipmentTypeSelected(type);
+   }
+ });
+ getMaterialsPage().appendPage(page, inputListener, new ICondition() {
+     public boolean isFulfilled() {*/
+        return model.isEquipmentTypeSelected(type);
       }
     });
-    getMaterialsPage().appendPage(page, inputListener, new ICondition() {
-        public boolean isFulfilled() {
-            return model.isEquipmentTypeSelected(type);
-          }
-        });
   }
   
-  private void addMaterialPage(IAnathemaWizardPage page, CheckInputListener inputListener)
+  /*private void addMaterialPage(IAnathemaWizardPage page, CheckInputListener inputListener)
   {
 	addFollowupPage(page, inputListener, new ICondition()
 	{
@@ -154,9 +147,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
 			return materialSpecific && getMaterialsPage().canFlipToNextPage();
 		}	
 	});
-  }
-  
-  
+  }*/
 
   private void addStatisticsTypeRow(String label, final EquipmentStatisticsType type) {
     Action action = new SmartAction(properties.getIcon(type)) {
