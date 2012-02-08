@@ -156,7 +156,7 @@ Section -post SEC0006
     WriteRegStr HKLM "${REGKEY}" Path $INSTDIR
     SetOutPath $INSTDIR
     CreateDirectory $INSTDIR\repository
-    AccessControl::GrantOnFile "$INSTDIR\repository" "(BU)" "GenericRead + GenericWrite"
+    AccessControl::GrantOnFile "$INSTDIR\repository" "(S-1-5-32-545)" "FullAccess"
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory $SMPROGRAMS\$StartMenuGroup
