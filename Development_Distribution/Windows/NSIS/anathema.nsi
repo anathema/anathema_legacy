@@ -99,11 +99,15 @@ Section $(SEC0001_NAME) SEC0001
     File ..\..\..\build\plugins\character.jar
     File ..\..\..\build\plugins\character_abyssal.jar
     File ..\..\..\build\plugins\character_db.jar
+    File ..\..\..\build\plugins\character_ghost.jar
+    File ..\..\..\build\plugins\character_godblooded.jar
+    File ..\..\..\build\plugins\character_infernal.jar
     File ..\..\..\build\plugins\character_lunar.jar
     File ..\..\..\build\plugins\character_martialarts.jar
     File ..\..\..\build\plugins\character_mortal.jar
     File ..\..\..\build\plugins\character_sidereal.jar
     File ..\..\..\build\plugins\character_solar.jar
+    File ..\..\..\build\plugins\character_spirit.jar
     File ..\..\..\build\plugins\namegenerator.jar
     WriteRegStr HKLM "${REGKEY}\Components" "Character Management" 1
 SectionEnd
@@ -189,6 +193,7 @@ done${UNSECTION_ID}:
 # Uninstaller sections
 Section /o "-un.$(SEC0005_NAME)" UNSEC0005
     Delete /REBOOTOK $INSTDIR\plugins\box_dotfa.jar
+    Delete /REBOOTOK $INSTDIR\plugins\book_brokenwingedcrane.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_undertherose.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_thousandcorrectactions.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_scrollofthemonk_imperfectlotus.jar
@@ -226,11 +231,15 @@ SectionEnd
 
 Section /o "-un.$(SEC0001_NAME)" UNSEC0001
     Delete /REBOOTOK $INSTDIR\plugins\namegenerator.jar
+    Delete /REBOOTOK $INSTDIR\plugins\character_spirit.jar
     Delete /REBOOTOK $INSTDIR\plugins\character_solar.jar
     Delete /REBOOTOK $INSTDIR\plugins\character_sidereal.jar
     Delete /REBOOTOK $INSTDIR\plugins\character_mortal.jar
     Delete /REBOOTOK $INSTDIR\plugins\character_martialarts.jar
     Delete /REBOOTOK $INSTDIR\plugins\character_lunar.jar
+    Delete /REBOOTOK $INSTDIR\plugins\character_infernal.jar
+    Delete /REBOOTOK $INSTDIR\plugins\character_godblooded.jar
+    Delete /REBOOTOK $INSTDIR\plugins\character_ghost.jar
     Delete /REBOOTOK $INSTDIR\plugins\character_db.jar
     Delete /REBOOTOK $INSTDIR\plugins\character_abyssal.jar
     Delete /REBOOTOK $INSTDIR\plugins\character.jar
