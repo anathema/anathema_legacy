@@ -12,8 +12,8 @@ http://anathema.sf.net
 -- Features --
 * Essence maximum raised to 10.
 * Added Age stat, which determines a character's Essence cap.
-* Added an option to upgrade combos for 1 XP, per errata.
-* Character Sheet now lists excellencies in the abilities block
+* [2E] Added an option to upgrade combos for 1 XP, per errata.
+* [2E] Character Sheet now lists excellencies in the abilities block
 * Added some significant enhancements to equipment handling. It is now possible
   to specify attunement costs and current attunement state, which is noted on
   the character sheet. It is also possible for items to affect other character
@@ -48,6 +48,13 @@ http://anathema.sf.net
   for characters to be imported correctly if we make significant modifications to
   charm data. 
 * A vast multitude of miscellaneous bug fixes, both major and minor!
+
+===------------------------------------------------------------------------------===
+			Release 2.0.2 "Calibration"
+===------------------------------------------------------------------------------===
+
+-- Bugs Fixed (Attila Kelemen) --
+* Anathema runs on Java 7
 
 ===------------------------------------------------------------------------------===
 			Release 2.0.1 "Calibration"

@@ -4,10 +4,10 @@
 
 Anathema Read Me
 (C) 2004-2008 by Sandra Sieroux and Urs Reupke
-(C) 2010-2011 by Urs Reupke, Sandra Sieroux, Paul Adams, Eric Astor,
+(C) 2010-2012 by Urs Reupke, Sandra Sieroux, Paul Adams, Eric Astor,
                  Douglas Fotheringham, Sean Mattox, Scott Olson, Rob Rutherford,
                  and Erin Martell.
-Exalted (C) 2001-2011 by White Wolf Publishing, Inc.
+Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
@@ -112,11 +112,6 @@ but it appears to be quite elusive. Please contact us should you encounter this 
 
 -"Start Maximized" doesn't work on some Linux systems.
 
-The new (as of Ink Monkeys 35) rules on modifying Combos are supported to a limited degree:
-Combos created at character creation cannot be modified, and the program does not charge the
-character 1 xp for modifying combos, but the program allows the modification to happen.  If
-a combo is modified, please deduct 1 xp to follow this rule.
-
 Note: the Dreams of the First Age Solar templates give 2 more bonus dots than the the rules
 do, to allow the player to place the free manse and free cult dots that they automatically get.
 Also, the Solar types that get 1 or 2 dots of an Ability of their choice from a selection of
@@ -145,14 +140,9 @@ Visit the Anathema website at http://anathema.sf.net
 
 Anathema is open source, and thus, you have free access
 to the source code. If you think something is at odds, or have
-a great idea for a new feature or another improvement, just 
-implement it and send it to us for reviewing and integration.
-
-If you are interested in seeing Anathema in your native language,
-please contact us.
-
-If you're interested in becoming a member of the Anathema
-development team, please contact us, at anathema-developers@lists.sourceforge.net.
+a great idea for a new feature or another improvement, fork the repo
+https://github.com/anathema/anathema
+and send us a pull request.
 
 ===------------------------------------------------------------------------------===
 		IX - Thanks
