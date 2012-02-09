@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.traits.creation;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.lib.util.IIdentificate;
 
-import net.sf.anathema.character.generic.traits.types.YoziType;;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 
 public class YoziTypeGroupFactory extends AbstractTraitTypeGroupFactory {
 
