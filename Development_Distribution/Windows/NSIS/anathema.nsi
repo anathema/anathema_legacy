@@ -195,6 +195,7 @@ Section /o "-un.$(SEC0005_NAME)" UNSEC0005
     Delete /REBOOTOK $INSTDIR\plugins\box_dotfa.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_brokenwingedcrane.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_undertherose.jar
+    Delete /REBOOTOK $INSTDIR\plugins\book_returnofthescarletempress.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_thousandcorrectactions.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_scrollofthemonk_imperfectlotus.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_scrollofthemonk.jar
@@ -207,15 +208,12 @@ Section /o "-un.$(SEC0005_NAME)" UNSEC0005
     Delete /REBOOTOK $INSTDIR\plugins\book_glories_unconqueredsun.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_glories_maidens.jar
     Delete /REBOOTOK $INSTDIR\plugins\book_glories_luna.jar
-    Delete /REBOOTOK $INSTDIR\plugins\blog_inkmonkeys_vol20_22.jar
-    Delete /REBOOTOK $INSTDIR\plugins\blog_inkmonkeys_vol10_11.jar
-    Delete /REBOOTOK $INSTDIR\plugins\blog_inkmonkeys_vol8.jar
     Delete /REBOOTOK $INSTDIR\plugins\blog_inkmonkeys.jar
     DeleteRegValue HKLM "${REGKEY}\Components" Sourcebooks
 SectionEnd
 
 Section /o "-un.$(SEC0004_NAME)" UNSEC0004
-    Delete /REBOOTOK $INSTDIR\plugins\plot.jar
+    Delete /REBOOTOK $INSTDIR\plugins\campaign_plot.jar
     DeleteRegValue HKLM "${REGKEY}\Components" "Plot Management"
 SectionEnd
 
@@ -225,7 +223,7 @@ Section /o "-un.$(SEC0003_NAME)" UNSEC0003
 SectionEnd
 
 Section /o "-un.$(SEC0002_NAME)" UNSEC0002
-    Delete /REBOOTOK $INSTDIR\plugins\charmcascades.jar
+    Delete /REBOOTOK $INSTDIR\plugins\charm_cascades.jar
     DeleteRegValue HKLM "${REGKEY}\Components" "Charm Cascades"
 SectionEnd
 
