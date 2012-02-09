@@ -43,7 +43,6 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   public final void valueChanged(final Object cascade, final Object type) {
     try {
       loadCharmTree((ICharmGroup) cascade, (IIdentificate) type);
-      return;
     }
     catch (DocumentException e) {
       e.printStackTrace();
@@ -65,7 +64,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     }
     return charmsToDisplay;
   }
-  
+
   protected boolean filterAncestors(ICharm charm)
   {
 	  for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms())
@@ -75,13 +74,12 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 	  }
 	  return true;
   }
-  
+
   protected abstract boolean filterCharm(ICharm charm, boolean isAncestor);
 
   protected abstract IExaltedEdition getEdition();
 
   private void loadCharmTree(final ICharmGroup charmGroup, final IIdentificate type) throws DocumentException {
-	boolean resetView = !(currentGroup == charmGroup && currentType != null && currentType.getId().equals(type.getId()));
     currentGroup = charmGroup;
     currentType = type;
     modifyCharmVisuals(type);
@@ -89,6 +87,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
       charmTreeView.loadCascade(null, true);
     }
     else {
+      boolean resetView = !(currentGroup == charmGroup && currentType != null && currentType.getId().equals(type.getId()));
       ITreePresentationProperties presentationProperties = templateRegistry.getDefaultTemplate(
           charmGroup.getCharacterType(),
           getEdition()).getPresentationProperties().getCharmPresentationProperties();
@@ -103,7 +102,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   }
 
   protected abstract void modifyCharmVisuals(IIdentificate type);
-  
+
   public void reselect()
   {
 	  valueChanged(getCurrentGroup(), currentType);
