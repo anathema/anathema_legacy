@@ -24,7 +24,7 @@ public abstract class AbstractComboRules implements IComboRules {
   
   protected final boolean selectAbilitiesRuleApplied(ICharm charm1, ICharm charm2)
   {
-	return selectAbilitiesCombo(charm1, charm2);
+	return selectAbilitiesCombo(charm1, charm2) || selectAbilitiesCombo(charm2, charm1);
   }
 
   protected final boolean isAbilityAttributeCombo(ICharm charm1, ICharm charm2) {
