@@ -4,7 +4,7 @@
     <abilityGroups uses="template/InfernalAbilityGroup2nd.template" />
     <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
     <yoziGroups uses="template/InfernalYoziGroup2nd.template"/>
-    <essence uses="template/InfernalEssence.template" />
+    <essence uses="DefaultEssence.template" />
     <traitCollection uses="template/InfernalTraitCollection2nd.template"/>
     <magicTemplate uses="template/InfernalMagic2nd.template"/>
     <presentation uses="template/InfernalPresentation.template"/>
