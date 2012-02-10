@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
@@ -31,11 +32,11 @@ import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplat
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.AllAttributeTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.AllYoziTraitTypeGroup;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
@@ -149,8 +150,13 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   	throws PersistenceException
   	{
 		Element yoziGroupElement = generalElement.element(TAG_YOZI_GROUPS);
-		if (yoziGroupElement == null) {
-		  characterTemplate.setYoziGroups(new IGroupedTraitType[0]);
+		if (yoziGroupElement == null)
+		{
+		  GenericGroupedTraitTypeProvider provider = new GenericGroupedTraitTypeProvider(AllYoziTraitTypeGroup.getInstance());
+		  List<String> emptyList = new ArrayList<String>();
+		  for (YoziType yozi : YoziType.values())
+			  provider.addGroupedAbilityType(yozi.getId(), yozi.getId(), null, emptyList);
+		  characterTemplate.setYoziGroups(provider.getTraitTypeGroups());
 		  return;
 		}
 		IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
