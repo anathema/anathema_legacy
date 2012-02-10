@@ -48,7 +48,7 @@ public class SeriesReportUtils {
       float cw = ColumnText.getWidth(new Phrase(connect, font));
       int rep = (int) (widthRemaining / cw);
       if (rep > 0) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int k = 0; k < rep; ++k) {
           sb.append(connect);
         }

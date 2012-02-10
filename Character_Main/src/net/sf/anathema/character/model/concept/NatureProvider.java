@@ -1,5 +1,11 @@
 package net.sf.anathema.character.model.concept;
 
+import net.sf.anathema.lib.exception.PersistenceException;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,21 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import net.sf.anathema.lib.exception.PersistenceException;
-
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
+import static org.apache.commons.io.IOUtils.closeQuietly;
 
 public class NatureProvider implements INatureProvider {
 
   private final List<INatureType> natures = new ArrayList<INatureType>();
   private static final INatureProvider instance = new NatureProvider();
   private static final String TAG_NATURE = "nature"; //$NON-NLS-1$
-  private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
-  protected static final String ATTRIB_TEXT = "text"; //$NON-NLS-1$
-  protected static final String TAG_WILLPOWER = "willpower"; //$NON-NLS-1$
   private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
 
   private NatureProvider() {
@@ -36,17 +34,18 @@ public class NatureProvider implements INatureProvider {
   public void init() throws PersistenceException {
     File natureFile = new File("./data/natures.xml"); //$NON-NLS-1$
     if (natureFile.exists()) {
+      InputStream externalStream = null;
       try {
-        InputStream externalStream = new FileInputStream(natureFile);
+        externalStream = new FileInputStream(natureFile);
         createNaturesFromStream(externalStream, true);
-      }
-      catch (FileNotFoundException e) {
+      } catch (FileNotFoundException e) {
         // Nothing to do
       }
+      closeQuietly(externalStream);
     }
     String language = Locale.getDefault().getLanguage();
     InputStream i18nNatureStream = NatureProvider.class.getClassLoader().getResourceAsStream(
-        "data/natures_" + language + ".xml"); //$NON-NLS-1$ //$NON-NLS-2$
+            "data/natures_" + language + ".xml"); //$NON-NLS-1$ //$NON-NLS-2$
     if (i18nNatureStream != null) {
       createNaturesFromStream(i18nNatureStream, false);
     }
@@ -62,8 +61,7 @@ public class NatureProvider implements INatureProvider {
       for (Object elementObject : root.elements(TAG_NATURE)) {
         createNatureFromElementObject(replace, elementObject);
       }
-    }
-    catch (DocumentException e) {
+    } catch (DocumentException e) {
       throw new PersistenceException("Error while parsing natures.xml", e); //$NON-NLS-1$
     }
   }
@@ -80,12 +78,7 @@ public class NatureProvider implements INatureProvider {
   }
 
   private INatureType buildNature(final Element element) {
-    String condition = null;
-    Element willpowerElement = element.element(TAG_WILLPOWER);
-    if (willpowerElement != null) {
-      condition = willpowerElement.attributeValue(ATTRIB_TEXT);
-    }
-    return new NatureType(element.attributeValue(ATTRIB_ID), element.attributeValue(ATTRIB_NAME), condition);
+    return new NatureType(element.attributeValue(ATTRIB_ID));
   }
 
   public INatureType[] getNatures() {
@@ -98,7 +91,7 @@ public class NatureProvider implements INatureProvider {
         return nature;
       }
     }
-    final NatureType natureType = new NatureType(id, id, null);
+    final NatureType natureType = new NatureType(id);
     natures.add(natureType);
     return natureType;
   }

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.progress.ICancelable;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.core.progress.ProgressUtilities;
@@ -13,7 +14,6 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.campaign.music.model.libary.IMusicFolderWalker;
 import net.sf.anathema.campaign.music.model.libary.ITrackHandler;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
-import net.sf.anathema.lib.collection.Predicate;
 import net.sf.anathema.lib.resources.IResources;
 
 public class MusicFolderWalker implements IMusicFolderWalker {
@@ -48,7 +48,7 @@ public class MusicFolderWalker implements IMusicFolderWalker {
   }
 
   private int getTrackCount() {
-    return FileUtilities.getFileCount(musicFolder, true, new Predicate<File>() {
+    return FileUtilities.getFileCount(musicFolder, true, new IPredicate<File>() {
       public boolean evaluate(File file) {
         return isMp3File(file);
       }

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.abyssal;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -34,7 +35,11 @@ public class AbyssalAppearanceLimitation implements ITraitLimitation {
 
   @Override
   public AbyssalAppearanceLimitation clone() {
-    return this;
+    try {
+      return (AbyssalAppearanceLimitation)super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new UnreachableCodeReachedException(e);
+    }
   }
 
 }

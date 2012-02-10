@@ -7,7 +7,6 @@ import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
 public class SecondEditionBeastformOverviewView implements IBeastformOverviewView {
   private final OverviewCategory category;
-  private ILabelledAlotmentView attributeView;
   private ILabelledAlotmentView giftView;
   private final JPanel content = new JPanel();
 
@@ -19,7 +18,7 @@ public class SecondEditionBeastformOverviewView implements IBeastformOverviewVie
   }
 
   public ILabelledAlotmentView getAttributeOverview() {
-    return attributeView;
+    return null;
   }
 
   public ILabelledAlotmentView getGiftOverview() {

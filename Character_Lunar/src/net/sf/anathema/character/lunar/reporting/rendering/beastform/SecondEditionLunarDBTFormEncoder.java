@@ -22,11 +22,11 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
 
-  private final String notes = "Sheet.Lunar.WarForm";
+  private static final String NOTES = "Sheet.Lunar.WarForm";
   private final static int PHYSICAL_MAX = 15;
   private final IResources resources;
   private final PdfTraitEncoder smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
-  private final float lineHeight = IVoidStateFormatConstants.LINE_HEIGHT - 4;
+  private static final float LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 4;
 
   public SecondEditionLunarDBTFormEncoder(IResources resources) {
     this.resources = resources;
@@ -49,7 +49,7 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
     int numNotes = 4;
     try {
       for (int i = 1; i <= numNotes; i++) {
-        writeLine(graphics, resources.getString(notes + ".Note" + i), bounds, offsetX, offsetY + lineHeight * (i - 1));
+        writeLine(graphics, resources.getString(NOTES + ".Note" + i), bounds, offsetX, offsetY + LINE_HEIGHT * (i - 1));
       }
     } catch (DocumentException e) {
     }
@@ -57,9 +57,9 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
 
   private void writeLine(SheetGraphics graphics, String text, Bounds bounds, float offsetX, float offsetY) throws DocumentException {
     Font font = graphics.createTableFont();
-    Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y + bounds.height - offsetY, bounds.width / 2 - offsetX, lineHeight);
+    Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y + bounds.height - offsetY, bounds.width / 2 - offsetX, LINE_HEIGHT);
     font.setSize(IVoidStateFormatConstants.COMMENT_FONT_SIZE);
-    graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(new Phrase(text, font)).encode();
+    graphics.createSimpleColumn(newBounds).withLeading(LINE_HEIGHT).andTextPart(new Phrase(text, font)).encode();
   }
 
   private void encodeMutations(SheetGraphics graphics, Bounds bounds, ReportContent content) {

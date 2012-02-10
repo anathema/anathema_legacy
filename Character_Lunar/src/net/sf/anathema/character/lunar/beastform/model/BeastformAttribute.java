@@ -29,7 +29,7 @@ public class BeastformAttribute implements IBeastformAttribute {
 	  return 12;
   }
 
-  private final String DEVESTATING_OGRE_ENHANCEMENT = "Lunar.DevastatingOgreEnhancement";
+  private static final String DEVESTATING_OGRE_ENHANCEMENT = "Lunar.DevastatingOgreEnhancement";
   private final ICharacterModelContext context;
   private final IExaltedEdition edition;
   private final int pointCost;

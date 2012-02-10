@@ -155,7 +155,7 @@ public class IntValueDisplay implements IIntValueDisplay {
   }
 
   private void updateIcons(double xPosition) {
-    if (xPosition < activeImage.getIconWidth() / 3) {
+    if (xPosition < (double)activeImage.getIconWidth() / 3.0) {
       fireValueChangedEvent(0);
       return;
     }

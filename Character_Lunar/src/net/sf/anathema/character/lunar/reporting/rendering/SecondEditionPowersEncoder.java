@@ -21,7 +21,7 @@ public class SecondEditionPowersEncoder implements ContentEncoder {
   private static final String TERRIFYING_BEASTMAN_ALTERATION = "Lunar.TerrifyingBeastmanAlteration";
   private Font font;
   private float lineHeight = IVoidStateFormatConstants.LINE_HEIGHT - 2;
-  private final String powerBase = "Sheet.Lunar.Powers.";
+  private static final String POWER_BASE = "Sheet.Lunar.Powers.";
   private final IResources resources;
   private final boolean isHorizontal;
   private int tellMDV;
@@ -75,14 +75,14 @@ public class SecondEditionPowersEncoder implements ContentEncoder {
   private int writePowerNotes(SheetGraphics graphics, String power, Bounds bounds, int offsetX, int offsetY) throws DocumentException {
     Font boldFont = new Font(font);
     boldFont.setStyle(Font.BOLD);
-    String text = resources.getString(powerBase + power);
+    String text = resources.getString(POWER_BASE + power);
     Phrase phrase = new Phrase(text, boldFont);
     int index = 0;
     int totalHeight = 0;
     while (!text.startsWith("##")) {
       Bounds newBounds = new Bounds(bounds.x + offsetX, bounds.y, bounds.width - offsetX, bounds.height - offsetY - totalHeight);
       totalHeight += graphics.createSimpleColumn(newBounds).withLeading(lineHeight).andTextPart(phrase).encode().getLinesWritten() * lineHeight;
-      text = resources.getString(powerBase + power + (++index));
+      text = resources.getString(POWER_BASE + power + (++index));
       text = text.replace("TELLMDV", "" + tellMDV);
       phrase = new Phrase(text, font);
     }

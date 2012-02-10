@@ -1,10 +1,10 @@
 package net.sf.anathema.character.lunar.reporting.content.stats.knacks;
 
+import com.google.common.base.Joiner;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
@@ -31,7 +31,7 @@ public class KnackDetailStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
               return resources.getString(input);
             }
           });
-      String detailText = AnathemaStringUtilities.concat(details, ", "); //$NON-NLS-1$
+      String detailText = Joiner.on(", ").join(details);
       if (StringUtilities.isNullOrEmpty(detailText)) {
         detailText = "-"; //$NON-NLS-1$
       }

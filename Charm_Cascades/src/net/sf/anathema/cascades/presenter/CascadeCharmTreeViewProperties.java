@@ -3,6 +3,7 @@ package net.sf.anathema.cascades.presenter;
 import java.awt.Cursor;
 import java.util.Map;
 
+import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -11,7 +12,6 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmTreeViewProperties;
-import net.sf.anathema.lib.collection.Predicate;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -55,12 +55,11 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
     String[] idParts = charmId.split("\\."); //$NON-NLS-1$
     ICharacterType characterTypeId = CharacterType.getById(idParts[0]);
     ICharm[] charms = CharmCache.getInstance().getCharms(characterTypeId, rules);
-    ICharm charm = ArrayUtilities.find(new Predicate<ICharm>() {
-      public boolean evaluate(ICharm candidate) {
+    return ArrayUtilities.find(new Predicate<ICharm> () {
+      public boolean apply(ICharm candidate) {
         return candidate.getId().equals(charmId);
       }
     }, charms);
-    return charm;
   }
 
   public void setCharmType(IIdentificate type) {

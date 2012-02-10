@@ -23,25 +23,27 @@ public class SpecialCharmStringBuilder implements ISpecialCharmStringBuilder
 	@Override
 	public String createDetailsString(ICharm charm, ISpecialCharm details)
 	{
-		  String results = "";
+	    StringBuilder results = new StringBuilder(128);
 		  if (details instanceof AbstractMultiLearnableCharm)
 		  {
-			  results = resources.getString("CharmTreeView.ToolTip.Repurchases");
-			  results += IMagicStringBuilderConstants.ColonSpace;
+		    results.append(resources.getString("CharmTreeView.ToolTip.Repurchases"));
+		    results.append(IMagicStringBuilderConstants.ColonSpace);
 			  if (details instanceof StaticMultiLearnableCharm)
 			  {
 				  StaticMultiLearnableCharm special = (StaticMultiLearnableCharm) details;
-				  results += resources.getString("CharmTreeView.ToolTip.Repurchases.Static" + special.getAbsoluteLearnLimit());
+				  results.append(resources.getString("CharmTreeView.ToolTip.Repurchases.Static" + special.getAbsoluteLearnLimit()));
 			  }
 			  if (details instanceof TraitDependentMultiLearnableCharm)
 			  {
 				  TraitDependentMultiLearnableCharm special = (TraitDependentMultiLearnableCharm) details;
-				  results += "(";
-				  results += resources.getString(special.getTraitType().getId());
-				  if (special.getModifier() != 0)
-					  results += special.getModifier();
-				  results += ")" + IMagicStringBuilderConstants.Space;
-				  results += resources.getString("CharmTreeView.ToolTip.Repurchases.Times");
+				  results.append("(");
+				  results.append(resources.getString(special.getTraitType().getId()));
+				  if (special.getModifier() != 0) {
+				    results.append(special.getModifier());
+				  }
+				  results.append(")");
+				  results.append(IMagicStringBuilderConstants.Space);
+				  results.append(resources.getString("CharmTreeView.ToolTip.Repurchases.Times"));
 			  }
 			  if (details instanceof EssenceFixedMultiLearnableCharm)
 				  return "";
@@ -56,27 +58,32 @@ public class SpecialCharmStringBuilder implements ISpecialCharmStringBuilder
 						  continue;
 					  if (tier == last && tier != second)
 					  {
-						  results += resources.getString("CharmTreeView.ToolTip.Repurchases.And");
-						  results += IMagicStringBuilderConstants.Space;
+					    results.append(resources.getString("CharmTreeView.ToolTip.Repurchases.And"));
+					    results.append(IMagicStringBuilderConstants.Space);
 					  }
-					  if (tier == second || tiers.length <= 3)
-						  results += resources.getString("Essence") + IMagicStringBuilderConstants.Space;
-					  results += tier.getEssence();
+					  if (tier == second || tiers.length <= 3) {
+					    results.append(resources.getString("Essence"));
+					    results.append(IMagicStringBuilderConstants.Space);
+					  }
+					  results.append(tier.getEssence());
 					  
 					  if (tier.getTrait() > 0)
 					  {
-						  results += "/";
-						  if (tier == second)
-							  results += resources.getString(charm.getPrimaryTraitType().getId()) + IMagicStringBuilderConstants.Space;
-						  results += tier.getTrait();
+					    results.append("/");
+						  if (tier == second) {
+						    results.append(resources.getString(charm.getPrimaryTraitType().getId()));
+						    results.append(IMagicStringBuilderConstants.Space);
+						  }
+						  results.append(tier.getTrait());
 					  }
-					  if (tier != last)
-						  results += IMagicStringBuilderConstants.CommaSpace;
+					  if (tier != last) {
+					    results.append(IMagicStringBuilderConstants.CommaSpace);
+					  }
 				  }
 			  }
-			  results += HtmlLineBreak;
+			  results.append(HtmlLineBreak);
 		  }
-		  return results;
+		  return results.toString();
 	}
 
 }

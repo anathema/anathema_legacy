@@ -57,22 +57,12 @@ public class GenericTraitTemplateParser {
     
     if (usesId != null)
     {
-    	IExtendedMinimum minimumClass = null;
-		try {
-			minimumClass = (IExtendedMinimum) Class.forName(usesId).newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+      IExtendedMinimum minimumClass = getMinimumClass(usesId);
     	defaultTraitTemplate.setMinimumValue(minimumClass.getMinimum());
-    	GenericRestrictedTraitTemplate restrictedTemplate = new GenericRestrictedTraitTemplate(
-    			defaultTraitTemplate,
-    			minimumClass,
-    			type);
-    	return restrictedTemplate;    	
+      return new GenericRestrictedTraitTemplate(
+              defaultTraitTemplate,
+              minimumClass,
+              type);
     }
     
    	defaultTraitTemplate.setMinimumValue(Integer.parseInt(minimumValueElement.attributeValue(ATTRIB_VALUE)));
@@ -84,7 +74,19 @@ public class GenericTraitTemplateParser {
     
     return defaultTraitTemplate;
   }
-  
+
+  private static IExtendedMinimum getMinimumClass(String usesId) throws PersistenceException {
+    try {
+        return (IExtendedMinimum) Class.forName(usesId).newInstance();
+    } catch (InstantiationException e) {
+        throw new PersistenceException(e);
+    } catch (IllegalAccessException e) {
+        throw new PersistenceException(e);
+    } catch (ClassNotFoundException e) {
+        throw new PersistenceException(e);
+    }
+  }
+
   public static GenericTraitTemplate parseTraitTemplateSoft(Element traitElement) throws PersistenceException {
 	    GenericTraitTemplate defaultTraitTemplate = new GenericTraitTemplate();
 	    int startValue = ElementUtilities.getIntAttrib(traitElement, ATTRIB_START_VALUE, 0);

@@ -9,12 +9,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringReader;
-import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.List;
 
-import net.disy.commons.core.io.IOUtilities;
+import com.google.common.io.Closeables;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
 
@@ -43,7 +42,7 @@ public class DocumentUtilities {
       save(document, outputStream);
     }
     finally {
-      IOUtilities.close(outputStream);
+      Closeables.closeQuietly(outputStream);
     }
   }
 
@@ -65,10 +64,6 @@ public class DocumentUtilities {
     }
   }
 
-  private static void save(Document document, String encoding, Writer writer) throws IOException {
-    save(document, new XMLWriter(writer, createOutputFormat(encoding)));
-  }
-
   private static OutputFormat createOutputFormat() {
     return createOutputFormat(DEFAULT_ENCODING);
   }
@@ -79,27 +74,6 @@ public class DocumentUtilities {
     return format;
   }
 
-  public static String asString(Document document) {
-    return asString(document, DEFAULT_ENCODING);
-  }
-
-  public static String asString(Document document, String encoding) {
-    StringWriter writer = new StringWriter();
-    try {
-      DocumentUtilities.save(document, encoding, writer);
-      return writer.toString();
-    }
-    catch (IOException e) {
-      // throw new RuntimeException(e); // JDK1.4
-      RuntimeException runtimeException = new RuntimeException(e.toString());
-      runtimeException.fillInStackTrace();
-      throw runtimeException;
-    }
-    finally {
-      IOUtilities.close(writer);
-    }
-  }
-
   public static Document read(String source) throws AnathemaException {
     return read(new StringReader(source));
   }
@@ -107,8 +81,7 @@ public class DocumentUtilities {
   public static Document read(Reader reader) throws AnathemaException {
     try {
       SAXReader saxReader = new SAXReader();
-      Document document = saxReader.read(reader);
-      return document;
+      return saxReader.read(reader);
     }
     catch (DocumentException exception) {
       throw new AnathemaException(exception);
@@ -122,7 +95,7 @@ public class DocumentUtilities {
       return read(inputStream);
     }
     finally {
-      IOUtilities.close(inputStream);
+      Closeables.closeQuietly(inputStream);
     }
   }
 
@@ -133,8 +106,7 @@ public class DocumentUtilities {
   public static Document read(InputStream inputStream, String systemId) throws PersistenceException {
     try {
       SAXReader saxReader = new SAXReader();
-      Document document = saxReader.read(inputStream, systemId);
-      return document;
+      return saxReader.read(inputStream, systemId);
     }
     catch (DocumentException exception) {
       throw new PersistenceException(exception);
@@ -146,8 +118,7 @@ public class DocumentUtilities {
     try {
       SAXReader saxReader = new SAXReader();
       saxReader.setEntityResolver(resolver);
-      Document document = saxReader.read(inputStream, systemId);
-      return document;
+      return saxReader.read(inputStream, systemId);
     }
     catch (DocumentException exception) {
       throw new AnathemaException(exception);

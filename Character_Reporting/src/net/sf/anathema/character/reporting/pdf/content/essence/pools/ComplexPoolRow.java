@@ -7,12 +7,10 @@ import net.sf.anathema.lib.util.IdentifiedInteger;
 public class ComplexPoolRow extends AbstractPoolRow {
 
   private IResources resources;
-  private IGenericCharacter character;
   private IdentifiedInteger complexPool;
 
-  public ComplexPoolRow(IResources resources, IGenericCharacter character, IdentifiedInteger pool) {
+  public ComplexPoolRow(IResources resources, IdentifiedInteger pool) {
     this.resources = resources;
-    this.character = character;
     this.complexPool = pool;
   }
 

@@ -1,5 +1,6 @@
 package net.sf.anathema.charmentry.model;
 
+import com.google.common.base.Objects;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
@@ -36,14 +37,14 @@ public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribu
     super.removeEntry(entry);
     charmData.removeAttribute(entry);
   }
-
+  
   @Override
   protected boolean isEntryAllowed() {
     if (keyword == null) {
       return false;
     }
     for (ICharmAttribute attribute : getEntries()) {
-      if (attribute.getId() == keyword.getId()) {
+      if (Objects.equal(attribute.getId(), keyword.getId())) {
         return false;
       }
     }

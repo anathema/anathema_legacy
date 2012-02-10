@@ -50,7 +50,7 @@ public class CharmTypeBuilderTest {
     ICharmTypeModel model = builder.build(element);
     assertTrue(IReflexiveSpecialsModel.class.isInstance(model.getSpecialsModel()));
     IReflexiveSpecialsModel specialModel = (IReflexiveSpecialsModel) model.getSpecialsModel();
-    assertEquals(new Integer(5), specialModel.getPrimaryStep());
+    assertEquals(Integer.valueOf(5), specialModel.getPrimaryStep());
   }
 
   @Test
@@ -60,8 +60,8 @@ public class CharmTypeBuilderTest {
     ICharmTypeModel model = builder.build(element);
     assertTrue(IReflexiveSpecialsModel.class.isInstance(model.getSpecialsModel()));
     IReflexiveSpecialsModel specialModel = (IReflexiveSpecialsModel) model.getSpecialsModel();
-    assertEquals(new Integer(5), specialModel.getPrimaryStep());
-    assertEquals(new Integer(7), specialModel.getSecondaryStep());
+    assertEquals(Integer.valueOf(5), specialModel.getPrimaryStep());
+    assertEquals(Integer.valueOf(7), specialModel.getSecondaryStep());
   }
 
   @Test

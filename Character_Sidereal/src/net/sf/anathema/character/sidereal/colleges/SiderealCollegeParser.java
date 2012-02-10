@@ -17,13 +17,13 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 
 public class SiderealCollegeParser implements IAdditionalTemplateParser
 {
-	private final String ATTRIB_GENERAL = "general";
-	private final String ATTRIB_FAVORED = "favored";
-	private final String ATTRIB_VALUE = "value";
-	private final String TAG_BONUS_GENERAL = "bonusGeneral";
-	private final String TAG_BONUS_FAVORED = "bonusFavored";
-	private final String TAG_XP_BASE = "experienceBase";
-	private final String TAG_XP_MULTIPLE = "experienceMultiple";
+	private static final String ATTRIB_GENERAL = "general";
+	private static final String ATTRIB_FAVORED = "favored";
+	private static final String ATTRIB_VALUE = "value";
+	private static final String TAG_BONUS_GENERAL = "bonusGeneral";
+	private static final String TAG_BONUS_FAVORED = "bonusFavored";
+	private static final String TAG_XP_BASE = "experienceBase";
+	private static final String TAG_XP_MULTIPLE = "experienceMultiple";
 
 	@Override
 	public IAdditionalTemplate parse(Element element)
@@ -57,7 +57,7 @@ public class SiderealCollegeParser implements IAdditionalTemplateParser
 		return new SiderealCollegeTemplate(points, bonusCosts, experienceCosts);
 	}
 
-	private class CollegeBonusPointCost extends DefaultBonusPointCosts implements ICollegeBonusPointCosts
+	private static class CollegeBonusPointCost extends DefaultBonusPointCosts implements ICollegeBonusPointCosts
 	{
 		final int favoredCost, generalCost;
 
@@ -75,7 +75,7 @@ public class SiderealCollegeParser implements IAdditionalTemplateParser
 
 	}
 
-	private class CollegeExperienceCost extends DefaultExperienceCosts implements ICollegeExperienceCosts
+	private static class CollegeExperienceCost extends DefaultExperienceCosts implements ICollegeExperienceCosts
 	{
 		final int baseCost, multiple;
 

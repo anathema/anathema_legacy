@@ -4,10 +4,10 @@ import java.awt.Component;
 
 import javax.swing.JComponent;
 
+import com.google.common.base.Joiner;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.IPresenter;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
@@ -48,7 +48,7 @@ public class NameGeneratorPresenter implements IPresenter {
       @Override
       protected void execute(Component parentComponent) {
         String[] generatedNames = model.generateNames(50);
-        view.setResult(AnathemaStringUtilities.concat(generatedNames, "\n")); //$NON-NLS-1$
+        view.setResult(Joiner.on("\n").join(generatedNames)); //$NON-NLS-1$
       }
     });
   }

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.impl.traits.limitation;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -23,6 +24,10 @@ public class EssenceBasedLimitation implements ITraitLimitation {
 
   @Override
   public EssenceBasedLimitation clone() {
-    return this;
+    try {
+      return (EssenceBasedLimitation)super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new UnreachableCodeReachedException(e);
+    }
   }
 }

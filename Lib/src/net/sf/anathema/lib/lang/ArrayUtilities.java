@@ -4,8 +4,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.lib.collection.Predicate;
+import com.google.common.base.Objects;
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 
 public class ArrayUtilities {
 
@@ -30,7 +31,7 @@ public class ArrayUtilities {
   }
 
   public static Integer[] createIntegerArray(int minimalValue, int maximalValue) {
-    Ensure.ensureArgumentTrue("MinimalValue must be lower than mximalValue", minimalValue < maximalValue); //$NON-NLS-1$
+    Preconditions.checkState(minimalValue < maximalValue, "MinimalValue must be lower than mximalValue"); //$NON-NLS-1$
     Integer[] ranks = new Integer[maximalValue - minimalValue + 1];
     for (int index = 0; index < ranks.length; index++) {
       ranks[index] = minimalValue + index;
@@ -38,20 +39,12 @@ public class ArrayUtilities {
     return ranks;
   }
 
-  private static int[] createInvertedIndexArray(int length) {
-    int[] indexArray = new int[length];
-    for (int index = 0; index < length; index++) {
-      indexArray[index] = length - 1 - index;
-    }
-    return indexArray;
-  }
-
   public static boolean equals(Object[] first, Object[] second) {
     if (first.length != second.length) {
       return false;
     }
     for (int index = 0; index < first.length; index++) {
-      if (!AnathemaStringUtilities.bothNullOrEquals(first[index], second[index])) {
+      if (!Objects.equal(first[index], second[index])) {
         return false;
       }
     }
@@ -60,7 +53,7 @@ public class ArrayUtilities {
 
   public static <T> T find(Predicate<T> predicate, T[] inputArray) {
     for (T input : inputArray) {
-      if (predicate.evaluate(input)) {
+      if (predicate.apply(input)) {
         return input;
       }
     }
@@ -74,12 +67,6 @@ public class ArrayUtilities {
       }
     }
     throw new IllegalArgumentException("Value not contained in array: " + value); //$NON-NLS-1$
-  }
-
-  public static void invert(Object[] array) {
-    int[] indices = createIndexArray(array.length);
-    int[] invertedIndices = createInvertedIndexArray(array.length);
-    reorder(array, indices, invertedIndices);
   }
 
   public static int max(int[] array) {

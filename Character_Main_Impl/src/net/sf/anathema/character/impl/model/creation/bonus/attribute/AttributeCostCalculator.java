@@ -44,7 +44,7 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
   private final TraitGroup[] traitGroups;
   private final IBonusPointCosts costs;
   private final List<List<TraitGroup>> priorityPermutations = new ArrayList<List<TraitGroup>>();
-  private final int sortingBonusCostScaleFactor = 1000;
+  private static final int SORTING_BONUS_COST_SCALE_FACTOR = 1000;
 
   public AttributeCostCalculator(
       ICoreTraitConfiguration traitConfiguration,
@@ -150,7 +150,7 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
 	      }
 	      wastedFreeDots += freePointsLeft * freePointsLeft;
 	  }
-	  return sortingBonusCostScaleFactor * bonusCost + wastedFreeDots;
+	  return SORTING_BONUS_COST_SCALE_FACTOR * bonusCost + wastedFreeDots;
   }
 
   private ElementCreationCost handleAttribute(IDefaultTrait attribute, int freeDots, int extraFavoredDots, int extraGenericDots,
@@ -216,7 +216,6 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
 	@Override
 	protected int getCostFactor(IFavorableDefaultTrait trait)
 	{
-	    int costFactor = costs.getAttributeCosts(trait);
-	    return costFactor;
+      return costs.getAttributeCosts(trait);
 	}
 }

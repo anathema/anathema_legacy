@@ -12,7 +12,7 @@ import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 public class SpiritAttributeCreationPoints extends ReflectionCloneableObject<IAttributeCreationPoints>
 	implements IAttributeCreationPoints
 {
-	private final String CULT_STRING = "Cult";
+	private static final String CULT_STRING = "Cult";
 	
 	ICoreTraitConfiguration traits;
 

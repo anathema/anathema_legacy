@@ -39,6 +39,15 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
   }
 
   @Override
+  public boolean equals(Object obj) {
+    if (obj == null || obj.getClass() != getClass()) {
+      return false;
+    }
+
+    return getType().getId().equals(((AbstractFavorableTrait)obj).getType().getId());
+  }
+
+  @Override
   public int hashCode() {
     return getType().getId().hashCode();
   }

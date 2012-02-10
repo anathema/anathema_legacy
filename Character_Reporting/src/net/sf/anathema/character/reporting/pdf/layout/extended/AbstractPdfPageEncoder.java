@@ -102,19 +102,16 @@ public abstract class AbstractPdfPageEncoder implements PageEncoder {
   }
 
   protected Bounds calculateBounds(int column, int span, float distanceFromTop, float height) {
-    Bounds bounds = null;
     switch (column) {
       case 1:
-        bounds = getPageConfiguration().getFirstColumnRectangle(distanceFromTop, height, span);
-        break;
+        return getPageConfiguration().getFirstColumnRectangle(distanceFromTop, height, span);
       case 2:
-        bounds = getPageConfiguration().getSecondColumnRectangle(distanceFromTop, height, span);
-        break;
+        return getPageConfiguration().getSecondColumnRectangle(distanceFromTop, height, span);
       case 3:
-        bounds = getPageConfiguration().getThirdColumnRectangle(distanceFromTop, height);
-        break;
+        return getPageConfiguration().getThirdColumnRectangle(distanceFromTop, height);
+      default:
+        return null;
     }
-    return bounds;
   }
 
   protected float getWidth(int column, int span) {

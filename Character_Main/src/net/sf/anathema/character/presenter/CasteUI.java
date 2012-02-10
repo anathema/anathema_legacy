@@ -1,15 +1,15 @@
 package net.sf.anathema.character.presenter;
 
-import java.awt.Component;
-import java.awt.Graphics;
-
 import javax.swing.Icon;
 
+import net.disy.commons.swing.icon.EmptyIcon;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.lib.resources.AbstractUI;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.*;
 
 public class CasteUI extends AbstractUI {
 
@@ -27,19 +27,6 @@ public class CasteUI extends AbstractUI {
   }
 
   public Icon getEmptyIcon() {
-    return new Icon() {
-
-      public void paintIcon(Component c, Graphics g, int x, int y) {
-        // Nothing to do
-      }
-
-      public int getIconWidth() {
-        return 16;
-      }
-
-      public int getIconHeight() {
-        return 16;
-      }
-    };
+    return new EmptyIcon(new Dimension(16, 16));
   }
 }

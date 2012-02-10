@@ -1,10 +1,11 @@
 package net.sf.anathema.framework.view.item;
 
-import javax.swing.Icon;
-
+import com.google.common.base.Objects;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
+
+import javax.swing.*;
 
 public abstract class AbstractItemView implements IItemView {
 
@@ -16,9 +17,9 @@ public abstract class AbstractItemView implements IItemView {
     this.name = name;
     this.icon = icon;
   }
-
+  
   public final void setName(String name) {
-    if (this.name == name) {
+    if (Objects.equal(name, this.name)) {
       return;
     }
     this.name = name;

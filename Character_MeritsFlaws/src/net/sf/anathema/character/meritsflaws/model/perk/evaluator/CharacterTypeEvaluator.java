@@ -20,7 +20,7 @@ public class CharacterTypeEvaluator implements ICharacterEvaluator {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof CharacterTypeEvaluator)) {
+    if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
     return Arrays.equals(this.types, ((CharacterTypeEvaluator) obj).types);
@@ -28,6 +28,6 @@ public class CharacterTypeEvaluator implements ICharacterEvaluator {
 
   @Override
   public int hashCode() {
-    return types.hashCode() * 11;
+    return Arrays.hashCode(types) * 11;
   }
 }

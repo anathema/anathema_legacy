@@ -7,7 +7,7 @@ import java.util.Vector;
 import javax.swing.AbstractListModel;
 import javax.swing.MutableComboBoxModel;
 
-import net.disy.commons.core.util.ObjectUtilities;
+import com.google.common.base.Objects;
 
 public class UnselectingComboBoxModel extends AbstractListModel implements MutableComboBoxModel, Serializable {
   private static final long serialVersionUID = -1300185569514469592L;
@@ -29,7 +29,7 @@ public class UnselectingComboBoxModel extends AbstractListModel implements Mutab
   }
 
   public void setSelectedItem(Object anObject) {
-    if (!ObjectUtilities.equals(selectedObject, anObject)) {
+    if (!Objects.equal(selectedObject, anObject)) {
       selectedObject = anObject;
       fireContentsChanged(this, -1, -1);
     }

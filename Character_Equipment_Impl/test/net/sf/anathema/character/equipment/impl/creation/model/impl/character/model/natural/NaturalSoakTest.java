@@ -34,8 +34,9 @@ public class NaturalSoakTest {
 
       @Override
       public int compareTo(CharacterType o) {
-        // Nothing to do
-        return 0;
+        // Since returning an arbitrary value would cause
+        // surprising result, the compareTo must not be used.
+        throw new UnsupportedOperationException();
       }
 
       @Override
@@ -44,8 +45,8 @@ public class NaturalSoakTest {
         return null;
       }
     });
-    Assert.assertEquals(new Integer(0), naturalSoak.getSoak(HealthType.Lethal));
-    Assert.assertEquals(new Integer(2), naturalSoak.getSoak(HealthType.Bashing));
+    Assert.assertEquals(Integer.valueOf(0), naturalSoak.getSoak(HealthType.Lethal));
+    Assert.assertEquals(Integer.valueOf(2), naturalSoak.getSoak(HealthType.Bashing));
   }
 
   @Test

@@ -31,6 +31,7 @@ public class LayerCrossingMinimizer {
     if (crossingCount == 0 || permutableNodeCount == 2) {
       return;
     }
+    // This is a dead store. Was it the intention to use the return value?
     crossingCount = tryIndexSwapping(changeableLayerIndex, crossingCount, originalIndices);
   }
 

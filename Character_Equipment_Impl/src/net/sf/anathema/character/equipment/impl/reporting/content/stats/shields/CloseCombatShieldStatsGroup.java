@@ -13,7 +13,7 @@ import com.lowagie.text.pdf.PdfPTable;
 
 public class CloseCombatShieldStatsGroup extends AbstractValueEquipmentStatsGroup<IShieldStats> {
 
-  private final String valuePrefix = ""; //$NON-NLS-1$
+  private static final String VALUE_PREFIX = ""; //$NON-NLS-1$
 
   public CloseCombatShieldStatsGroup(IResources resources) {
     super(resources, "CloseCombatShield"); //$NON-NLS-1$
@@ -43,6 +43,6 @@ public class CloseCombatShieldStatsGroup extends AbstractValueEquipmentStatsGrou
 
   @Override
   protected String getZeroPrefix() {
-    return valuePrefix;
+    return VALUE_PREFIX;
   }
 }

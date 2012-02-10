@@ -9,7 +9,7 @@ Anathema*.zip
 out/
 .classpath
 .project
-repository/
+/repository/
 .settings/
 *.launch
 *.pdf

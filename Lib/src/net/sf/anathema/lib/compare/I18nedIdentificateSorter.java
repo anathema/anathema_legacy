@@ -3,14 +3,14 @@ package net.sf.anathema.lib.compare;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class I18nedIdentificateSorter<T extends IIdentificate> {
 
   public T[] sortAscending(T[] originalGroup, T[] emptyArray, final IResources resources) {
-    Ensure.ensureTrue("Arrays must be of equal length", originalGroup.length == emptyArray.length); //$NON-NLS-1$
+    Preconditions.checkState(originalGroup.length == emptyArray.length, "Arrays must be of equal length"); //$NON-NLS-1$
     System.arraycopy(originalGroup, 0, emptyArray, 0, emptyArray.length);
     Arrays.sort(emptyArray, new Comparator<T>() {
       public int compare(T group1, T group2) {

@@ -7,11 +7,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import net.sf.anathema.lib.logging.Logger;
-
 public class StringProvider implements IStringResourceHandler {
-
-  protected Logger logger = Logger.getLogger(getClass());
   private ResourceBundle resourceBundle;
   private final List<String> keyList = new ArrayList<String>();
 

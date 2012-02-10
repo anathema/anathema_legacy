@@ -28,22 +28,22 @@ public final class EquipmentStatsUi implements IObjectUi<Object> {
   public String getLabel(Object value) {
 	IEquipmentStats stats = (IEquipmentStats)value;
 	String name = stats.getName().getId();
-	String materialString = "";
+	StringBuilder materialString = new StringBuilder();
 	Object[] materialSet = stats.getApplicableMaterials();
 	if (materialSet != null)
 	{
-		materialString = " (";
+	  materialString.append(" (");
 		Object finalObj = materialSet[materialSet.length - 1];
 		for (Object matObj : materialSet)
 		{
 			String m = resources.getString("MagicMaterial." + 
 					((MagicalMaterial)matObj).name());
-			materialString += m;
-			materialString += matObj != finalObj ? ", " : "";
+			materialString.append(m);
+			materialString.append(matObj != finalObj ? ", " : "");
 		}
-		materialString += ")";
+		materialString.append(")");
 	}
-    return name + materialString;
+    return name + materialString.toString();
   }
 
   public Icon getIcon(Object value) {

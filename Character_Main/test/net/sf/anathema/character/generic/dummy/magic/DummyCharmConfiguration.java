@@ -22,7 +22,6 @@ import java.util.List;
 public class DummyCharmConfiguration implements ICharmConfiguration {
 
   private ICharm[] charms = new ICharm[0];
-  private ISpecialCharmConfiguration specialCharmConfiguration;
 
   public void addLearnableListener(IChangeListener listener) {
     throw new NotYetImplementedException();
@@ -45,9 +44,6 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
   }
 
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(String charmId) {
-    if (specialCharmConfiguration != null && charmId.equals(specialCharmConfiguration.getCharm().getId())) {
-      return specialCharmConfiguration;
-    }
     return null;
   }
 
@@ -118,9 +114,6 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
   }
 
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
-    if (specialCharmConfiguration != null && charm.getId().equals(specialCharmConfiguration.getCharm().getId())) {
-      return specialCharmConfiguration;
-    }
     return null;
   }
 

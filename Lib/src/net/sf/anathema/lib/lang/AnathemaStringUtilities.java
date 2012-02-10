@@ -6,35 +6,25 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import net.disy.commons.core.util.StringUtilities;
+import com.google.common.base.Strings;
 
-public class AnathemaStringUtilities extends StringUtilities {
+public class AnathemaStringUtilities {
 
   public static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
   public static String getFileNameRepresentation(String string) {
-    String fileName = ""; //$NON-NLS-1$
+    StringBuilder fileName = new StringBuilder(string.length());
     for (int index = 0; index < string.length(); index++) {
       char character = string.charAt(index);
       if (Character.isJavaIdentifierPart(character)) {
-        fileName += character;
+        fileName.append(character);
       }
     }
-    if (isNullOrEmpty(string)) {
-      fileName = "None"; //$NON-NLS-1$
+    if (Strings.isNullOrEmpty(string)) {
+      fileName.setLength(0);
+      fileName.append("None"); //$NON-NLS-1$
     }
-    return fileName;
-  }
-
-  public static String getStringRepresentation(Object[] objects) {
-    String objectString = ""; //$NON-NLS-1$
-    for (int index = 0; index < objects.length; index++) {
-      objectString += objects[index];
-      if (index < objects.length - 1) {
-        objectString += ","; //$NON-NLS-1$
-      }
-    }
-    return "[" + objectString + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+    return fileName.toString();
   }
 
   public static List<Integer> allIndicesOf(String string, char character) {
@@ -81,14 +71,7 @@ public class AnathemaStringUtilities extends StringUtilities {
     return lineBreaks;
   }
 
-  public static boolean bothNullOrEquals(Object first, Object second) {
-    if (first == null) {
-      return second == null;
-    }
-    return first.equals(second);
-  }
-
-  public static char lastCharater(String string) {
+  public static char lastCharacter(String string) {
     return string.charAt(string.length() - 1);
   }
 
@@ -99,16 +82,5 @@ public class AnathemaStringUtilities extends StringUtilities {
   public static String capitalizeFirstCharacter(String string) {
     String firstCharacter = string.substring(0, 1);
     return string.replaceFirst(firstCharacter, firstCharacter.toUpperCase());
-  }
-
-  public static String concat(String[] values, String seperator) {
-    StringBuilder builder = new StringBuilder();
-    for (int index = 0; index < values.length; index++) {
-      builder.append(values[index]);
-      if (index < values.length - 1) {
-        builder.append(seperator);
-      }
-    }
-    return builder.toString();
   }
 }

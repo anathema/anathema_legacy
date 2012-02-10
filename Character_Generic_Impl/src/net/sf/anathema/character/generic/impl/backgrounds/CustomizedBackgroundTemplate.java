@@ -14,19 +14,6 @@ public class CustomizedBackgroundTemplate extends AbstractBackgroundTemplate {
     return true;
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (!(obj instanceof CustomizedBackgroundTemplate)) {
-      return false;
-    }
-    return super.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
-
   public LowerableState getExperiencedState() {
     return LowerableState.LowerableRegain;
   }

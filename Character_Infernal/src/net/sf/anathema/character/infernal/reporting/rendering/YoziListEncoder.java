@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.traits.Favorabl
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public class YoziListEncoder extends FavorableTraitBoxContentEncoder<InfernalYoziListContent> implements IVariableContentEncoder {
-  private final float lineHeight = 16;
+  private static final float LINE_HEIGHT = 16;
 
   public YoziListEncoder() {
     super(InfernalYoziListContent.class);
@@ -16,6 +16,6 @@ public class YoziListEncoder extends FavorableTraitBoxContentEncoder<InfernalYoz
 
   @Override
   public float getRequestedHeight(SheetGraphics graphics, ReportContent content, float width) {
-    return lineHeight * YoziType.values().length;
+    return LINE_HEIGHT * YoziType.values().length;
   }
 }

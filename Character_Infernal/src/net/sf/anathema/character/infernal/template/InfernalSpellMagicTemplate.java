@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.traits.types.YoziType;
 
 public class InfernalSpellMagicTemplate extends SpellMagicTemplate {
   
-  final private String necromancyInitiation = "Infernal.UltimateDarknessInternalization"; //$NON-NLS-1$
+  private static final String NECROMANCY_INITIATION = "Infernal.UltimateDarknessInternalization"; //$NON-NLS-1$
   
   public InfernalSpellMagicTemplate(CircleType[] sorceryCircles,
                                     CircleType[] necromancyCircles,
@@ -64,7 +64,7 @@ public class InfernalSpellMagicTemplate extends SpellMagicTemplate {
   }
   
   protected boolean knowsNecromancyInitiation(ICharm[] knownCharms) {
-    return knowsCharm(necromancyInitiation, knownCharms);
+    return knowsCharm(NECROMANCY_INITIATION, knownCharms);
   }
   
   @Override
