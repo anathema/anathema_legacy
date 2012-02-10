@@ -53,7 +53,7 @@ public class SecondEditionStarmetalModificationTest extends AbstractEquipmentMod
 
   @Test
   public void soakUnmodified() {
-    assertSoakUnmodified();
+    assertLethalSoakUnmodified();
   }
 
   @Test

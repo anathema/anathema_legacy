@@ -44,7 +44,7 @@ public class SecondEditionMoonsilverModificationTest extends AbstractEquipmentMo
 
   @Test
   public void soakUnmodified() {
-    assertSoakUnmodified();
+    assertLethalSoakUnmodified();
   }
 
   @Test

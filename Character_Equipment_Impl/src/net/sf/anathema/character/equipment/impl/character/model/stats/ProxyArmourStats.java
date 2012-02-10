@@ -53,7 +53,7 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
 
   public Integer getSoak(HealthType type) {
     Integer soak = delegate.getSoak(type);
-    return getModifiedValue(new SoakModification(material, ruleSet), soak);
+    return getModifiedValue(new SoakModification(material, ruleSet, type), soak);
   }
 
   public IIdentificate getName() {

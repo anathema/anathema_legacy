@@ -12,6 +12,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SoakModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SpeedModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
+import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 import org.junit.Assert;
@@ -60,13 +61,21 @@ public abstract class AbstractEquipmentModificationTest {
     assertSpeedModification(1, 1, WeaponStatsType.Flame);
   }
 
-  protected final void assertSoakModification(int expected, int original) {
-    SoakModification modification = new SoakModification(getMagicMaterial(), getRuleSet());
+  protected final void assertSoakModification(int expected, int original, HealthType type) {
+    SoakModification modification = new SoakModification(getMagicMaterial(), getRuleSet(), type);
     Assert.assertEquals(expected, modification.getModifiedValue(original));
   }
 
-  protected final void assertSoakUnmodified() {
-    assertSoakModification(1, 1);
+  protected final void assertLethalSoakUnmodified() {
+    assertSoakModification(1, 1, HealthType.Lethal);
+  }
+
+  protected final void assertBashingSoakUnmodified() {
+    assertSoakModification(1, 1, HealthType.Bashing);
+  }
+
+  protected final void assertAggravatedSoakUnmodified() {
+    assertSoakModification(1, 1, HealthType.Aggravated);
   }
 
   protected final void assertHardnessModification(int expected, int original) {
@@ -81,7 +90,7 @@ public abstract class AbstractEquipmentModificationTest {
   protected final void assertMobilityPenaltyUnmodified() {
     assertMobilityPenaltyModification(1, 1);
   }
-  
+
   protected final void assertFatigueUnmodified() {
     assertFatigueModification(1, 1);
   }

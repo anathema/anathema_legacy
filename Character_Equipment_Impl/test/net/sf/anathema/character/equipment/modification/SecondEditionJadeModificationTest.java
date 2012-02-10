@@ -57,7 +57,7 @@ public class SecondEditionJadeModificationTest extends AbstractEquipmentModifica
 
   @Test
   public void soakUnmodified() {
-    assertSoakUnmodified();
+    assertLethalSoakUnmodified();
   }
 
   @Test

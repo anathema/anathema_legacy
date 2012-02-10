@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.modification;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
+import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import org.junit.Test;
@@ -39,8 +40,18 @@ public class SecondEditionAdamantModificiationTest extends AbstractEquipmentModi
   }
 
   @Test
-  public void soakIncreasedBy3() {
-    assertSoakModification(4, 1);
+  public void lethalSoakIncreasedBy3() {
+    assertSoakModification(4, 1, HealthType.Lethal);
+  }
+
+  @Test
+  public void bashingSoakUnmodified() {
+    assertSoakModification(1, 1, HealthType.Bashing);
+  }
+
+  @Test
+  public void aggravatedSoakUnmodified() {
+    assertSoakModification(1, 1, HealthType.Aggravated);
   }
 
   @Test

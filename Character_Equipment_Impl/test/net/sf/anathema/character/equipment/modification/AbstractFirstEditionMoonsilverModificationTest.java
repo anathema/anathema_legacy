@@ -50,7 +50,7 @@ public abstract class AbstractFirstEditionMoonsilverModificationTest extends Abs
 
   @Test
   public void soakUnmodified() {
-    assertSoakUnmodified();
+    assertLethalSoakUnmodified();
   }
 
   @Test

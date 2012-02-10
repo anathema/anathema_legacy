@@ -49,7 +49,7 @@ public abstract class AbstractFirstEditionJadeModificationTest extends AbstractE
 
   @Test
   public void soakUnmodified() {
-    assertSoakUnmodified();
+    assertLethalSoakUnmodified();
   }
 
   @Test

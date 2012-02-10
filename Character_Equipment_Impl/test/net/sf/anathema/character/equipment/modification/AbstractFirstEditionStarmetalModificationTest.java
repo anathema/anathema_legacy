@@ -43,7 +43,7 @@ public abstract class AbstractFirstEditionStarmetalModificationTest extends Abst
 
   @Test
   public void soakUnmodified() {
-    assertSoakUnmodified();
+    assertLethalSoakUnmodified();
   }
 
   @Test
