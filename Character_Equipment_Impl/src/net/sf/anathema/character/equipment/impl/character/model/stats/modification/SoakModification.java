@@ -14,7 +14,9 @@ public class SoakModification implements IArmourStatsModification {
     if (material.isOrichalcumBased() || material.isSoulsteelBased()) {
       return input + 2;
     }
-    
+    if (material.isAdamantBased()) {
+      return input + 3;
+    }
     return input;
   }
 }

@@ -14,6 +14,9 @@ public class MobilityPenaltyModification implements IArmourStatsModification {
     if (magicMaterial.isMoonsilverBased()) {
       return 0;
     }
+    if (magicMaterial.isAdamantBased()) {
+      return original - 1;
+    }
     return original;
   }
 }
