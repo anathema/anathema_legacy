@@ -35,11 +35,7 @@ public abstract class AbstractSoulsteelModificationTest extends AbstractEquipmen
   public void soakIncreasedBy2() throws Exception {
     assertSoakModification(3, 1, HealthType.Lethal);
     assertSoakModification(3, 1, HealthType.Bashing);
-  }
-
-  @Test
-  public void aggravatedSoakUnmodified() {
-    assertSoakModification(1, 1, HealthType.Aggravated);
+    assertSoakModification(3, 1, HealthType.Aggravated);
   }
 
   @Test

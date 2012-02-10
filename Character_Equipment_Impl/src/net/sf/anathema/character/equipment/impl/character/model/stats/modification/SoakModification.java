@@ -18,13 +18,10 @@ public class SoakModification implements IArmourStatsModification {
   }
 
   public int getModifiedValue(int input) {
-    if (healthType == HealthType.Aggravated) {
-      return input;
-    }
     if (material.isOrichalcumBased() || material.isSoulsteelBased()) {
       return input + 2;
     }
-    if (material.isAdamantBased() && ruleSet == ExaltedRuleSet.SecondEdition && healthType == HealthType.Lethal) {
+    if (material.isAdamantBased() && ruleSet == ExaltedRuleSet.SecondEdition && healthType != HealthType.Bashing) {
       return input + 3;
     }
     return input;
