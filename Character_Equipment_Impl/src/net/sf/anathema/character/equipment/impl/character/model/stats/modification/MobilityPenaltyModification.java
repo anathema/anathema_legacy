@@ -4,14 +4,14 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 
 public class MobilityPenaltyModification implements IArmourStatsModification {
 
-  private final MagicalMaterial magicMaterial;
+  private final BaseMaterial magicMaterial;
 
   public MobilityPenaltyModification(MagicalMaterial magicMaterial) {
-    this.magicMaterial = magicMaterial;
+    this.magicMaterial = new BaseMaterial(magicMaterial);
   }
 
   public int getModifiedValue(int original) {
-    if (magicMaterial == MagicalMaterial.Moonsilver) {
+    if (magicMaterial.isMoonsilverBased()) {
       return 0;
     }
     return original;

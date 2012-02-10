@@ -6,27 +6,27 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class DamageModification implements IStatsModification {
 
-  private final MagicalMaterial material;
   private final IExaltedRuleSet ruleSet;
+  private BaseMaterial material;
 
   public DamageModification(MagicalMaterial material, IExaltedRuleSet ruleSet) {
-    this.material = material;
+    this.material = new BaseMaterial(material);
     this.ruleSet = ruleSet;
   }
 
   public int getModifiedValue(int input, WeaponStatsType type) {
     boolean isSecondEdition = ruleSet == ExaltedRuleSet.SecondEdition;
-    if (material == MagicalMaterial.Starmetal) {
+    if (material.isStarmetalBased()) {
       if (type == WeaponStatsType.Melee && isSecondEdition) {
         return input + 3;
       } else {
         return input + 2;
       }
     }
-    if (material == MagicalMaterial.Jade && type == WeaponStatsType.Melee && isSecondEdition) {
+    if (material.isJadeBased() && type == WeaponStatsType.Melee && isSecondEdition) {
       return input + 1;
     }
-    if (material == MagicalMaterial.Orichalcum && type.isRanged() && isSecondEdition) {
+    if (material.isOrichalcumBased() && type.isRanged() && isSecondEdition) {
       return input + 1;
     }
     return input;

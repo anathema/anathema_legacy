@@ -6,11 +6,11 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class RangeModification implements IStatsModification {
 
-  private final MagicalMaterial material;
   private final IExaltedRuleSet ruleSet;
+  private BaseMaterial material;
 
   public RangeModification(MagicalMaterial material, IExaltedRuleSet ruleSet) {
-    this.material = material;
+    this.material = new BaseMaterial(material);
     this.ruleSet = ruleSet;
   }
 
@@ -26,10 +26,10 @@ public class RangeModification implements IStatsModification {
   }
 
   private int getModificationFactor() {
-    if (material == MagicalMaterial.Moonsilver) {
+    if (material.isMoonsilverBased()) {
       return 2;
     }
-    if (material == MagicalMaterial.Jade || material == MagicalMaterial.Orichalcum) {
+    if (material.isJadeBased() || material.isOrichalcumBased()) {
       return 1;
     }
     return 0;

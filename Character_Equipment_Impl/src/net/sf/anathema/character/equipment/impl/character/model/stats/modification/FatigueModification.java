@@ -4,14 +4,14 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 
 public class FatigueModification implements IArmourStatsModification {
 
-  private final MagicalMaterial magicMaterial;
+  private final BaseMaterial magicMaterial;
 
   public FatigueModification(MagicalMaterial magicMaterial) {
-    this.magicMaterial = magicMaterial;
+    this.magicMaterial = new BaseMaterial(magicMaterial);
   }
 
   public int getModifiedValue(int original) {
-    if (magicMaterial == MagicalMaterial.Jade) {
+    if (magicMaterial.isJadeBased()) {
       return 0;
     }
     return original;

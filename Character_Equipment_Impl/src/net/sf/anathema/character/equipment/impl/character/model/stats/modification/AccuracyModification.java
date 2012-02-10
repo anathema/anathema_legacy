@@ -6,37 +6,34 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class AccuracyModification implements IStatsModification {
 
-  private final MagicalMaterial material;
   private final IExaltedRuleSet ruleSet;
+  private BaseMaterial material;
 
   public AccuracyModification(MagicalMaterial material, IExaltedRuleSet ruleSet) {
-    this.material = material;
+    this.material = new BaseMaterial(material);
     this.ruleSet = ruleSet;
   }
 
-  /* (non-Javadoc)
-   * @see net.sf.anathema.character.equipment.impl.character.model.stats.modification.IStatsModification#getModifiedValue(int, net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType)
-   */
   public int getModifiedValue(int input, WeaponStatsType type) {
     boolean isSecondEdition = ruleSet.getEdition() == ExaltedEdition.SecondEdition;
-    if (material == MagicalMaterial.Soulsteel) {
+    if (material.isSoulsteelBased()) {
       if (isSecondEdition || type.isRanged()) {
         return input + 2;
       } else {
         return input + 1;
       }
     }
-    if (material == MagicalMaterial.Orichalcum) {
+    if (material.isOrichalcumBased()) {
       return input + 1;
     }
-    if (material == MagicalMaterial.Moonsilver) {
+    if (material.isMoonsilverBased()) {
       if (type.isRanged()) {
         return input + 1;
       } else {
         return input + 2;
       }
     }
-    if (material == MagicalMaterial.Starmetal && isSecondEdition) {
+    if (material.isStarmetalBased() && isSecondEdition) {
       return input + 1;
     }
     return input;

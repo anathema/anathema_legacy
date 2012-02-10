@@ -4,14 +4,14 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 
 public class SoakModification implements IArmourStatsModification {
 
-  private final MagicalMaterial magicMaterial;
+  private BaseMaterial material;
 
   public SoakModification(MagicalMaterial magicMaterial) {
-    this.magicMaterial = magicMaterial;
+    this.material = new BaseMaterial(magicMaterial);
   }
 
   public int getModifiedValue(int input) {
-    if (magicMaterial == MagicalMaterial.Orichalcum || magicMaterial == MagicalMaterial.Soulsteel) {
+    if (material.isOrichalcumBased() || material.isSoulsteelBased()) {
       return input + 2;
     }
     

@@ -46,7 +46,7 @@ public abstract class AbstractSoulsteelModificationTest extends AbstractEquipmen
   }
 
   @Override
-  protected final MagicalMaterial getMagicMaterial() {
+  protected MagicalMaterial getMagicMaterial() {
     return MagicalMaterial.Soulsteel;
   }
 }

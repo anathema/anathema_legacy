@@ -8,14 +8,16 @@ public class SpeedModification implements IStatsModification {
 
   private final MagicalMaterial material;
   private final IExaltedRuleSet ruleSet;
+  private BaseMaterial baseMaterial;
 
   public SpeedModification(MagicalMaterial material, IExaltedRuleSet ruleSet) {
     this.material = material;
+    this.baseMaterial = new BaseMaterial(material);
     this.ruleSet = ruleSet;
   }
 
   public int getModifiedValue(int input, WeaponStatsType type) {
-    if (material == MagicalMaterial.Jade && ruleSet == ExaltedRuleSet.SecondEdition) {
+    if (baseMaterial.isJadeBased() && ruleSet == ExaltedRuleSet.SecondEdition) {
       return Math.max(1, input - 1);
     }
     if (material == MagicalMaterial.Jade && type == WeaponStatsType.Melee) {

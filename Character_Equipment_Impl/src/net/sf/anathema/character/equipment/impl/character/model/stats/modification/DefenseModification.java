@@ -6,19 +6,19 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class DefenseModification implements IStatsModification {
 
-  private final MagicalMaterial material;
   private final IExaltedRuleSet ruleSet;
+  private BaseMaterial material;
 
   public DefenseModification(MagicalMaterial material, IExaltedRuleSet ruleSet) {
-    this.material = material;
+    this.material = new BaseMaterial(material);
     this.ruleSet = ruleSet;
   }
 
   public int getModifiedValue(int input, WeaponStatsType type) {
-    if (material == MagicalMaterial.Orichalcum) {
+    if (material.isOrichalcumBased()) {
       return input + 1;
     }
-    if (material == MagicalMaterial.Moonsilver && ruleSet.getEdition() == ExaltedEdition.SecondEdition) {
+    if (material.isMoonsilverBased() && ruleSet.getEdition() == ExaltedEdition.SecondEdition) {
       return input + 2;
     }
     return input;

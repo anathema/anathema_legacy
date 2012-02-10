@@ -9,9 +9,11 @@ public class RateModification implements IStatsModification {
 
   private final MagicalMaterial material;
   private final IExaltedRuleSet ruleSet;
+  private BaseMaterial baseMaterial;
 
   public RateModification(MagicalMaterial material, IExaltedRuleSet ruleSet) {
     this.material = material;
+    this.baseMaterial = new BaseMaterial(material);
     this.ruleSet = ruleSet;
   }
 
@@ -19,7 +21,7 @@ public class RateModification implements IStatsModification {
     if (material == MagicalMaterial.Jade && type.isRanged() && ruleSet.getEdition() == ExaltedEdition.FirstEdition) {
       return input + 1;
     }
-    if (material == MagicalMaterial.Orichalcum && type == WeaponStatsType.Melee && ruleSet != ExaltedRuleSet.CoreRules) {
+    if (baseMaterial.isOrichalcumBased() && type == WeaponStatsType.Melee && ruleSet != ExaltedRuleSet.CoreRules) {
       return input + 1;
     }
     return input;

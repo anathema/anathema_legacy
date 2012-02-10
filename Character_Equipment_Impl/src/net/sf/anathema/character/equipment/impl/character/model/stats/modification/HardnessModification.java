@@ -6,17 +6,17 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class HardnessModification implements IArmourStatsModification {
 
-  private final MagicalMaterial magicMaterial;
   private final IExaltedRuleSet ruleSet;
+  private BaseMaterial material;
 
   public HardnessModification(MagicalMaterial magicMaterial, IExaltedRuleSet ruleSet) {
-    this.magicMaterial = magicMaterial;
+    this.material = new BaseMaterial(magicMaterial);
     this.ruleSet = ruleSet;
   }
 
   public int getModifiedValue(int original) {
-    if ((magicMaterial == MagicalMaterial.Orichalcum || magicMaterial == MagicalMaterial.Soulsteel || magicMaterial == MagicalMaterial.Starmetal)
-        && ruleSet == ExaltedRuleSet.SecondEdition) {
+    if ((material.isOrichalcumBased() || material.isSoulsteelBased() || material.isStarmetalBased())
+            && ruleSet == ExaltedRuleSet.SecondEdition) {
       return original + 1;
     }
     return original;
