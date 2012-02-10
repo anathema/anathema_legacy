@@ -24,7 +24,7 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
     this.material = material;
     this.ruleSet = ruleSet;
   }
-  
+
   public IArmourStats getUnderlying() {
     return this.delegate;
   }
@@ -48,12 +48,12 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
 
   public Integer getMobilityPenalty() {
     Integer mobilityPenalty = delegate.getMobilityPenalty();
-    return getModifiedValue(new MobilityPenaltyModification(material), mobilityPenalty);
+    return getModifiedValue(new MobilityPenaltyModification(material, ruleSet), mobilityPenalty);
   }
 
   public Integer getSoak(HealthType type) {
     Integer soak = delegate.getSoak(type);
-    return getModifiedValue(new SoakModification(material), soak);
+    return getModifiedValue(new SoakModification(material, ruleSet), soak);
   }
 
   public IIdentificate getName() {
@@ -67,8 +67,8 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
     }
     ProxyArmourStats other = (ProxyArmourStats) obj;
     return ObjectUtilities.equals(delegate, other.delegate)
-        && ObjectUtilities.equals(material, other.material)
-        && ObjectUtilities.equals(ruleSet, other.ruleSet);
+            && ObjectUtilities.equals(material, other.material)
+            && ObjectUtilities.equals(ruleSet, other.ruleSet);
   }
 
   @Override
@@ -80,10 +80,9 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
   public String getId() {
     return getName().getId();
   }
-  
+
   @Override
-  public Object[] getApplicableMaterials()
-  {
-	  return delegate.getApplicableMaterials();
+  public Object[] getApplicableMaterials() {
+    return delegate.getApplicableMaterials();
   }
 }
