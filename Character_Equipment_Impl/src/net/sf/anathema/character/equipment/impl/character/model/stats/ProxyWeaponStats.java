@@ -10,6 +10,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RangeModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RateModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SpeedModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.TagsModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -109,7 +110,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   public IIdentificate[] getTags() {
-    return delegate.getTags();
+    return new TagsModification(material, ruleSet).getModifiedValue(delegate.getTags());
   }
 
   public ITraitType getTraitType() {
