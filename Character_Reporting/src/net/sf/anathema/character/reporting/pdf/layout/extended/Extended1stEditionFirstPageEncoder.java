@@ -13,6 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueEnc
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoxBoundsFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -170,7 +171,8 @@ public class Extended1stEditionFirstPageEncoder implements PageEncoder {
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     EncodingMetrics metrics = EncodingMetrics.From(graphics, content);
-    float height = encoderRegistry.getPreferredHeight(metrics, ARSENAL);
+    float contentWidth = BoxBoundsFactory.getContentWidth(pageConfiguration, 2);
+    float height = encoderRegistry.getPreferredHeight(metrics, contentWidth, ARSENAL);
     ContentEncoder weaponryEncoder = encoderRegistry.createEncoder(resources, content, ARSENAL);
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);

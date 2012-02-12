@@ -11,5 +11,5 @@ public interface EncoderFactory extends IIdentificate {
 
   boolean supports(BasicContent content);
 
-  float getPreferredHeight(EncodingMetrics metrics);
+  float getPreferredHeight(EncodingMetrics metrics, float width);
 }

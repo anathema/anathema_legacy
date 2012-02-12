@@ -24,7 +24,7 @@ public class NullEncoderFactory extends Identificate implements EncoderFactory {
   }
 
   @Override
-  public float getPreferredHeight(EncodingMetrics metrics) {
+  public float getPreferredHeight(EncodingMetrics metrics, float width) {
     return 30;
   }
 }

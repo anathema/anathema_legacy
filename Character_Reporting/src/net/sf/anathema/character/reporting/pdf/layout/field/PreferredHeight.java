@@ -9,7 +9,7 @@ public class PreferredHeight implements HeightStrategy {
   }
 
   @Override
-  public float getHeight(float layoutWidth) {
-    return encoder.getPreferredHeight();
+  public float getHeight(float contentWidth) {
+    return encoder.getPreferredHeight(contentWidth);
   }
 }

@@ -186,7 +186,8 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
 
   private float encodeWeaponry(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     EncodingMetrics metrics = EncodingMetrics.From(graphics, content);
-    float height = encoders.getPreferredHeight(metrics, ARSENAL);
+    float contentWidth = BoxBoundsFactory.getContentWidth(configuration, 2);
+    float height = encoders.getPreferredHeight(metrics, contentWidth, ARSENAL);
     ContentEncoder weaponryEncoder = encoders.createEncoder(resources, content, ARSENAL);
     Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 2);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);

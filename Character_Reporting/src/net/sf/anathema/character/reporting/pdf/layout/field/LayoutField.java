@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.pdf.layout.field;
 
 import net.sf.anathema.character.reporting.pdf.layout.Body;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoxBoundsFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
@@ -84,7 +85,7 @@ public class LayoutField {
   }
 
   public LayoutField createForFromTopAndHeightAndColumnSpanAndColumnIndex(float newFromTop, HeightStrategy heightStrategy, int newColumnSpan, int newColumnIndex) {
-    float newWidth = body.configuration.getColumnWidth(newColumnSpan);
+    float newWidth = BoxBoundsFactory.getContentWidth(body.configuration, newColumnSpan);
     float newHeight = heightStrategy.getHeight(newWidth);
     return new LayoutField(body, newColumnSpan, newColumnIndex, newHeight, newFromTop);
   }

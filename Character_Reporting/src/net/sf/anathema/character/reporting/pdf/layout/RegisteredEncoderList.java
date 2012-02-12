@@ -39,14 +39,7 @@ public class RegisteredEncoderList {
     }
   }
 
-  public float encodeOptionalBox(SheetGraphics graphics, ReportContent content, Bounds bounds, String encoderId) {
-    if (!encoderRegistry.hasEncoder(encoderId, content)) {
-      return 0;
-    }
-    return encodeBox(graphics, content, bounds, encoderId);
-  }
-
-  public float getPreferredEncoderHeight(EncodingMetrics metrics, String... encoderIds) {
-    return encoderRegistry.getPreferredHeight(metrics, encoderIds);
+  public float getPreferredEncoderHeight(EncodingMetrics metrics, float width, String... encoderIds) {
+    return encoderRegistry.getPreferredHeight(metrics, width, encoderIds);
   }
 }

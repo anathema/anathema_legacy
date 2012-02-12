@@ -4,20 +4,20 @@ import net.sf.anathema.lib.util.Identificate;
 
 public abstract class AbstractEncoderFactory extends Identificate implements EncoderFactory {
 
-  private EncoderAttributeValue preferredHeight;
+  private PreferredHeight preferredHeight;
 
   public AbstractEncoderFactory(String id) {
     super(id);
   }
 
-  protected void setPreferredHeight(EncoderAttributeValue value) {
+  protected void setPreferredHeight(PreferredHeight value) {
     this.preferredHeight = value;
   }
 
   @Override
-  public float getPreferredHeight(EncodingMetrics metrics) {
+  public float getPreferredHeight(EncodingMetrics metrics, float width) {
     if (preferredHeight == null) {
-      return new NullEncoderFactory(null).getPreferredHeight(metrics);
+      return new NullEncoderFactory(null).getPreferredHeight(metrics, width);
     }
     return preferredHeight.getValue(metrics);
   }

@@ -22,8 +22,8 @@ public class SheetPage {
     }
 
     @Override
-    public float getPreferredHeight() {
-      return encoderList.getPreferredEncoderHeight(metrics, encoderIds);
+    public float getPreferredHeight(float contentWidth) {
+      return encoderList.getPreferredEncoderHeight(metrics, contentWidth, encoderIds);
     }
   }
 

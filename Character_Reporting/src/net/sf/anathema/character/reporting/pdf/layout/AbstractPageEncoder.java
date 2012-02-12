@@ -3,7 +3,6 @@ package net.sf.anathema.character.reporting.pdf.layout;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
@@ -23,13 +22,5 @@ public abstract class AbstractPageEncoder implements PageEncoder {
 
   protected final float encodeBox(SheetGraphics graphics, ReportContent content, Bounds bounds, String... encoderIds) {
     return layoutEncoder.encodeBox(graphics, content, bounds, encoderIds);
-  }
-
-  protected final float encodeOptionalBox(SheetGraphics graphics, ReportContent content, Bounds bounds, String encoderId) {
-    return layoutEncoder.encodeOptionalBox(graphics, content, bounds, encoderId);
-  }
-
-  protected final float getPreferredEncoderHeight(EncodingMetrics metrics, String encoderId) {
-    return layoutEncoder.getPreferredEncoderHeight(metrics, encoderId);
   }
 }
