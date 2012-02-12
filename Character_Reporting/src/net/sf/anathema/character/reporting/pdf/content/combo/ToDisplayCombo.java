@@ -5,7 +5,6 @@ import com.google.common.base.Joiner;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.pdf.content.magic.CharmPrintNameTransformer;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.annotation.Nullable;
