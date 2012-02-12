@@ -83,7 +83,9 @@ public class LayoutField {
     return columnIndex + columnSpan;
   }
 
-  public LayoutField createForFromTopAndHeightAndColumnSpanAndColumnIndex(float newFromTop, float newHeight, int newColumnSpan, int newColumnIndex) {
+  public LayoutField createForFromTopAndHeightAndColumnSpanAndColumnIndex(float newFromTop, HeightStrategy heightStrategy, int newColumnSpan, int newColumnIndex) {
+    float newWidth = body.configuration.getColumnWidth(newColumnSpan);
+    float newHeight = heightStrategy.getHeight(newWidth);
     return new LayoutField(body, newColumnSpan, newColumnIndex, newHeight, newFromTop);
   }
 }

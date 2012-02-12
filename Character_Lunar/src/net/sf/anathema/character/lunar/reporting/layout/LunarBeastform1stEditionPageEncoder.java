@@ -22,6 +22,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.Personal
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.SimpleWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoxBoundsFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfHeaderBoxEncoder;
@@ -128,10 +129,14 @@ public class LunarBeastform1stEditionPageEncoder implements PageEncoder {
     Bounds attributeBounds = configuration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 2);
     float smallWidth = configuration.getColumnWidth();
     AttributeBoundsEncoder beastBoxEncoder = new AttributeBoundsEncoder(smallWidth, getOverlapFreeSpaceHeight());
-    FirstEditionLunarBeastformAttributesEncoder encoder = new FirstEditionLunarBeastformAttributesEncoder(resources, boxEncoder.calculateWidthWithinInset(smallWidth));
+    FirstEditionLunarBeastformAttributesEncoder encoder = new FirstEditionLunarBeastformAttributesEncoder(resources, insetWidth(smallWidth));
     new PdfHeaderBoxEncoder().encodeHeaderBox(graphics, attributeBounds, encoder.getHeader(content)); //$NON-NLS-1$
     boxEncoder.encodeBox(graphics, encoder, beastBoxEncoder, content, attributeBounds);
     return attributeHeight;
+  }
+
+  private float insetWidth(float smallWidth) {
+    return BoxBoundsFactory.insetWidth(smallWidth);
   }
 
   private float calculateBoxIncrement(float height) {
