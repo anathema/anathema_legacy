@@ -46,7 +46,7 @@ public class SimpleExaltSheetReport extends AbstractPdfReport {
 
   @Override
   public String toString() {
-    return resources.getString("CharacterModule.Reporting.SecondEdition.Name");
+    return resources.getString("CharacterModule.Reporting.Sheet.Name");
   }
 
   @Override

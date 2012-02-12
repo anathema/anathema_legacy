@@ -41,7 +41,7 @@ public class SimpleMortalSheetReport extends AbstractPdfReport {
 
   @Override
   public String toString() {
-    return resources.getString("CharacterModule.Reporting.SecondEdition.Name"); //$NON-NLS-1$
+    return resources.getString("CharacterModule.Reporting.Sheet.Name"); //$NON-NLS-1$
   }
 
   @Override
