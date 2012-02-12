@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
+import com.google.common.base.Joiner;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
@@ -112,6 +113,6 @@ public class ExtendedComboEncoder {
   private String getCharmString(IGenericCombo combo) {
     CharmPrintNameTransformer transformer = new CharmPrintNameTransformer(resources);
     String[] charmNames = ArrayUtilities.transform(combo.getCharms(), String.class, transformer);
-    return AnathemaStringUtilities.concat(charmNames, ", "); //$NON-NLS-1$
+    return Joiner.on(", ").join(charmNames); //$NON-NLS-1$
   }
 }

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content.combo;
 
 import com.google.common.base.Function;
+import com.google.common.base.Joiner;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.pdf.content.magic.CharmPrintNameTransformer;
@@ -32,6 +33,6 @@ public class ToDisplayCombo implements Function<IGenericCombo, DisplayCombo> {
   private String getCharmString(IGenericCombo combo) {
     CharmPrintNameTransformer transformer = new CharmPrintNameTransformer(resources);
     String[] charmNames = ArrayUtilities.transform(combo.getCharms(), String.class, transformer);
-    return AnathemaStringUtilities.concat(charmNames, ", "); //$NON-NLS-1$
+    return Joiner.on(", ").join(charmNames); //$NON-NLS-1$
   }
 }
