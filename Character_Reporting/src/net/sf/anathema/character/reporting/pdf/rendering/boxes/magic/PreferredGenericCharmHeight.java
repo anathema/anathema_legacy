@@ -12,7 +12,7 @@ public class PreferredGenericCharmHeight implements PreferredHeight {
   private static final float PADDING = 5.794f;
 
   @Override
-  public float getValue(EncodingMetrics metrics) {
+  public float getValue(EncodingMetrics metrics, float width) {
     GenericCharmContent content = createContent(metrics.getContent());
     if (!content.hasContent()) {
       return 0;

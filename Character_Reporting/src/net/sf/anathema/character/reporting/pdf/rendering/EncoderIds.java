@@ -9,6 +9,7 @@ public interface EncoderIds {
   String ATTRIBUTES = "Attributes";
   String BACKGROUNDS = "Backgrounds";
   String COMBAT = "Combat";
+  String COMBOS = "Combos";
   String ESSENCE_SIMPLE = "EssenceSimple";
   String EXPERIENCE = "Experience";
   String GENERIC_CHARMS = "GenericCharms";

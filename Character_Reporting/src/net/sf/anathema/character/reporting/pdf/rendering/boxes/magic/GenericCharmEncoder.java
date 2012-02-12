@@ -24,7 +24,7 @@ public class GenericCharmEncoder implements IVariableContentEncoder {
 
   @Override
   public float getRequestedHeight(SheetGraphics graphics, ReportContent content, float width) {
-    return tableEncoder.getRequestedHeight(graphics, content);
+    return tableEncoder.getRequestedHeight(graphics, width, content);
   }
 
   @Override

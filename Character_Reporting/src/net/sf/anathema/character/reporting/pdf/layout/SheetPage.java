@@ -18,6 +18,9 @@ public class SheetPage {
 
     @Override
     public LayoutField encode(LayoutField field) {
+      if (field.isInvisible())  {
+        return field;
+      }
       return encoderList.encodeBox(graphics, metrics.getContent(), field, encoderIds);
     }
 

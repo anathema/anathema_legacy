@@ -26,6 +26,7 @@ import net.sf.anathema.lib.resources.IResources;
 import java.util.List;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.BACKGROUNDS;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.COMBOS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.EXPERIENCE;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.LANGUAGES;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.POSSESSIONS;
@@ -65,14 +66,10 @@ public class SecondPageEncoder extends AbstractPageEncoder {
     LayoutField backgrounds = page.place(BACKGROUNDS).atStartOf(body).withHeight(BACKGROUND_HEIGHT).now();
     LayoutField possessions = page.place(POSSESSIONS).rightOf(backgrounds).withSameHeight().now();
     LayoutField languages = page.place(LANGUAGES).rightOf(possessions).withHeight(LANGUAGE_HEIGHT).now();
-    LayoutField experience = page.place(EXPERIENCE).below(languages).alignBottomTo(backgrounds).now();
-
-    float distanceFromTop = BACKGROUND_HEIGHT + PADDING;
-    float comboHeight = encodeCombos(graphics, content, distanceFromTop);
-    if (comboHeight > 0) {
-      distanceFromTop += comboHeight + PADDING;
-    }
-    if (content.getCharacter().getTemplate().getEdition() == ExaltedEdition.SecondEdition) {
+    page.place(EXPERIENCE).below(languages).alignBottomTo(backgrounds).now();
+    LayoutField combos = page.place(COMBOS).below(backgrounds).withPreferredHeight().spanningThreeColumns().now();
+    float distanceFromTop = combos.getBottomFromTop() + PADDING;
+     if (content.getCharacter().getTemplate().getEdition() == ExaltedEdition.SecondEdition) {
       float genericCharmsHeight = encodeGenericCharms(graphics, content, distanceFromTop);
       if (genericCharmsHeight != 0) {
         distanceFromTop += genericCharmsHeight + PADDING;
@@ -85,7 +82,7 @@ public class SecondPageEncoder extends AbstractPageEncoder {
     ComboEncoder encoder = new ComboEncoder();
     Bounds restOfPage = new Bounds(configuration.getLeftX(), configuration.getLowerContentY(), configuration.getContentWidth(), configuration.getContentHeight() - distanceFromTop);
     Bounds maxContentBounds = BoxBoundsFactory.calculateContentBounds(restOfPage);
-    float yPosition = encoder.encode(graphics, content, maxContentBounds);
+    float yPosition = encoder.encodeCombos(graphics, content, maxContentBounds);
     if (yPosition == 0) {
       return 0;
     }

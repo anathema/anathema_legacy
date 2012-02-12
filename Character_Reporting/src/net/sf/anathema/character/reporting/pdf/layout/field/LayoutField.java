@@ -87,6 +87,13 @@ public class LayoutField {
   public LayoutField createForFromTopAndHeightAndColumnSpanAndColumnIndex(float newFromTop, HeightStrategy heightStrategy, int newColumnSpan, int newColumnIndex) {
     float newWidth = BoxBoundsFactory.getContentWidth(body.configuration, newColumnSpan);
     float newHeight = heightStrategy.getHeight(newWidth);
+    if (newHeight == 0) {
+      return new LayoutField(body, newColumnSpan, newColumnIndex, newHeight, getBottomFromTop());
+    }
     return new LayoutField(body, newColumnSpan, newColumnIndex, newHeight, newFromTop);
+  }
+
+  public boolean isInvisible() {
+    return height == 0;
   }
 }

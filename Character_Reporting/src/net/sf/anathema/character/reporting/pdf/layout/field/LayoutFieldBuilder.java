@@ -82,6 +82,12 @@ public class LayoutFieldBuilder implements Height, Placement, ColumnSpan {
   }
 
   @Override
+  public Encoders spanningThreeColumns() {
+    this.columnSpan = 3;
+    return this;
+  }
+
+  @Override
   public LayoutField now() {
     LayoutField field = buildField();
     return encoder.encode(field);

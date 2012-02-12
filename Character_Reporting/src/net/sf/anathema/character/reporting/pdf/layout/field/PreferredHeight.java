@@ -13,6 +13,9 @@ public class PreferredHeight implements HeightStrategy {
   @Override
   public float getHeight(float contentWidth) {
     float preferredContentHeight = encoder.getPreferredHeight(contentWidth);
+    if (preferredContentHeight == 0) {
+      return 0;
+    }
     return BoxBoundsFactory.getBoxHeight(preferredContentHeight);
   }
 }

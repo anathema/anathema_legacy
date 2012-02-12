@@ -19,6 +19,6 @@ public abstract class AbstractEncoderFactory extends Identificate implements Enc
     if (preferredHeight == null) {
       return new NullEncoderFactory(null).getPreferredHeight(metrics, width);
     }
-    return preferredHeight.getValue(metrics);
+    return preferredHeight.getValue(metrics, width);
   }
 }
