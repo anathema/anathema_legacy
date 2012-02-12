@@ -135,7 +135,7 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   }
 
   @Override
-  public void addCompoment(IGridDialogPanel panel, IResources resources) {
+  public void addComponent(IGridDialogPanel panel, IResources resources) {
     panel.add(getComponent(resources));
   }
 

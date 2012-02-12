@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.impl.generic.GenericDescription;
+import net.sf.anathema.framework.module.preferences.PageSizePreference;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -23,6 +24,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
+import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -30,29 +32,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static java.text.MessageFormat.format;
-
 public class SimpleExaltSheetReport extends AbstractPdfReport {
 
   private final IResources resources;
   private final ICharacterGenerics characterGenerics;
-  private final PageSize pageSize;
+  private final PageSizePreference pageSizePreference;
 
-  public SimpleExaltSheetReport(IResources resources, ICharacterGenerics characterGenerics, PageSize pageSize) {
+  public SimpleExaltSheetReport(IResources resources, ICharacterGenerics characterGenerics, PageSizePreference pageSizePreference) {
     this.resources = resources;
     this.characterGenerics = characterGenerics;
-    this.pageSize = pageSize;
+    this.pageSizePreference = pageSizePreference;
   }
 
   @Override
   public String toString() {
-    String name = resources.getString("CharacterModule.Reporting.SecondEdition.Name");
-    String pageFormat = resources.getString("PageSize." + pageSize.name());
-    return format("{0} ({1})", name, pageFormat);
+    return resources.getString("CharacterModule.Reporting.SecondEdition.Name");
   }
 
   @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
+    PageSize pageSize = pageSizePreference.getPageSize();
     ICharacter stattedCharacter = (ICharacter) item.getItemData();
     document.setPageSize(pageSize.getRectangle());
     document.open();

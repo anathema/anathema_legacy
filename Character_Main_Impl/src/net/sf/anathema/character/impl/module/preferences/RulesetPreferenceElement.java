@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.framework.module.preferences.LabelledPreferenceComboBox;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
@@ -20,7 +21,7 @@ public class RulesetPreferenceElement extends AbstractCharacterPreferencesElemen
   private boolean dirty;
   private LabelledPreferenceComboBox box;
 
-  public void addCompoment(IGridDialogPanel panel, IResources resources) {
+  public void addComponent(IGridDialogPanel panel, IResources resources) {
     panel.add(getComponent(resources));
   }
 

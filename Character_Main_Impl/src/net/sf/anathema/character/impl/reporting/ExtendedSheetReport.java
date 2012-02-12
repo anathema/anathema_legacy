@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericDescription;
+import net.sf.anathema.framework.module.preferences.PageSizePreference;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -32,6 +33,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
+import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -43,21 +45,22 @@ public class ExtendedSheetReport extends AbstractPdfReport {
 
   private final IResources resources;
   private final ICharacterGenerics characterGenerics;
-  private final PageSize pageSize;
+  private final PageSizePreference pageSizePreference;
 
-  public ExtendedSheetReport(IResources resources, ICharacterGenerics characterGenerics, PageSize pageSize) {
+  public ExtendedSheetReport(IResources resources, ICharacterGenerics characterGenerics, PageSizePreference pageSizePreference) {
     this.resources = resources;
     this.characterGenerics = characterGenerics;
-    this.pageSize = pageSize;
+    this.pageSizePreference = pageSizePreference;
   }
 
   @Override
   public String toString() {
-    return "Extended Sheet" + " (" + resources.getString("PageSize." + pageSize.name()) + ")";
+    return "Extended Sheet";
   }
 
   @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
+    PageSize pageSize = pageSizePreference.getPageSize();
     ICharacter stattedCharacter = (ICharacter) item.getItemData();
     document.setPageSize(pageSize.getRectangle());
     document.open();
