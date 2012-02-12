@@ -1,0 +1,69 @@
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../../charms.dtd">
+<!--
+
+    Charms_Abyssal_SecondEdition_InkOccult.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Occult -->
+	<charm id="Abyssal.DancingOnTheGravesOfGiants" exalt="Abyssal" group="Occult">
+		<prerequisite>
+			<trait id="Occult" value="4" />
+			<essence value="3" />
+			<charmReference id="Abyssal.GodSlayingTorment" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Abyssal.BlackPariahsCurse" exalt="Abyssal" group="Occult">
+		<prerequisite>
+			<trait id="Occult" value="5" />
+			<essence value="3" />
+			<charmReference id="Abyssal.CorpusRendingBlow" />
+		</prerequisite>
+		<cost>
+			<essence cost="1" text="or 3m"/>
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Shaping" visualize="true" />
+		<charmAttribute attribute="Touch" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Abyssal.BlackPariahsCurse2" exalt="Abyssal" group="Occult">
+		<prerequisite>
+			<trait id="Occult" value="5" />
+			<essence value="5" />
+			<charmReference id="Abyssal.CorpusRendingBlow" />
+		</prerequisite>
+		<cost>
+			<essence cost="1" text="or 3m"/>
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Shaping" visualize="true" />
+		<charmAttribute attribute="Touch" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+</charmlist>

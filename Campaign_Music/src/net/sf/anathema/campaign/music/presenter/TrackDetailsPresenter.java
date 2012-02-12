@@ -28,7 +28,7 @@ public class TrackDetailsPresenter implements IPresenter {
 
   public void initPresentation() {
     trackDetailModel.addTrackChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateTrackInfo(trackDetailModel.getSelectedTrack());
       }
     });

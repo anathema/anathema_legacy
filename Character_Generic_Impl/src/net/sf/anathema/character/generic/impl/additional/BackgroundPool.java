@@ -38,8 +38,8 @@ public class BackgroundPool implements IAdditionalEssencePool {
     IdentifiedInteger[] poolValues = new IdentifiedInteger[complexPools.length];
     for (int i = 0; i < complexPools.length; i++) {
       poolValues[i] = new IdentifiedInteger(complexPools[i].getId(),
-                                            complexPools[i].getPool(traitCollection, magicCollection,
-                                                                    getCurrentValue(traitCollection)));
+                                            complexPools[i].getPool(traitCollection,
+                                                    getCurrentValue(traitCollection)));
     }
     return poolValues;
   }

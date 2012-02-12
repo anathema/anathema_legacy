@@ -2,15 +2,6 @@ package net.sf.anathema.character.db;
 
 import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.magic.TerrestrialReinforcement;
-import net.sf.anathema.character.db.reporting.Extended1stEditionDbPartEncoder;
-import net.sf.anathema.character.db.reporting.Extended2ndEditionDbPartEncoder;
-import net.sf.anathema.character.db.reporting.content.Db1stEditionGreatCurseContent;
-import net.sf.anathema.character.db.reporting.content.Db1stEditionGreatCurseContentFactory;
-import net.sf.anathema.character.db.reporting.content.Db2ndEditionGreatCurseContent;
-import net.sf.anathema.character.db.reporting.content.Db2ndEditionGreatCurseContentFactory;
-import net.sf.anathema.character.db.reporting.rendering.AnimaEncoderFactory;
-import net.sf.anathema.character.db.reporting.rendering.GreatCurse1stEditionEncoderFactory;
-import net.sf.anathema.character.db.reporting.rendering.GreatCurse2ndEditionEncoderFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawModelFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawParser;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
@@ -30,20 +21,14 @@ import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplat
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.library.virtueflaw.persistence.DefaultVirtueFlawPersisterFactory;
-import net.sf.anathema.character.reporting.CharacterReportingModule;
-import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 
 import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstEdition;
@@ -53,7 +38,6 @@ import static net.sf.anathema.character.generic.type.CharacterType.DB;
 @CharacterModule
 public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
-  private static final int ESSENCE_MAX = EssenceTemplate.DB_ESSENCE_MAX;
   public static final String BACKGROUND_ID_ARSENAL = "Arsenal"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_BREEDING = "Breeding"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_FAMILY = "Family"; //$NON-NLS-1$
@@ -193,27 +177,5 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     additionalViewFactoryRegistry.register(templateId, new DbVirtueFlawViewFactory());
     IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
     persisterFactory.register(templateId, new DefaultVirtueFlawPersisterFactory());
-  }
-
-  @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    addContent(resources, moduleObject);
-    moduleObject.getEncoderRegistry().add(new GreatCurse1stEditionEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new GreatCurse2ndEditionEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new AnimaEncoderFactory());
-    addExtendedParts(resources, moduleObject);
-  }
-
-  private void addContent(IResources resources, CharacterReportingModuleObject moduleObject) {
-    ReportContentRegistry registry = moduleObject.getContentRegistry();
-    registry.addFactory(Db1stEditionGreatCurseContent.class, new Db1stEditionGreatCurseContentFactory(resources));
-    registry.addFactory(Db2ndEditionGreatCurseContent.class, new Db2ndEditionGreatCurseContentFactory(resources));
-  }
-
-  private void addExtendedParts(IResources resources, CharacterReportingModuleObject moduleObject) {
-    ExtendedEncodingRegistry registry = moduleObject.getExtendedEncodingRegistry();
-    registry.setPartEncoder(DB, FirstEdition, new Extended1stEditionDbPartEncoder(resources, registry, ESSENCE_MAX));
-    registry.setPartEncoder(DB, SecondEdition, new Extended2ndEditionDbPartEncoder(resources, registry, ESSENCE_MAX));
   }
 }

@@ -11,6 +11,7 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.namegenerator.exalted.ExaltedNameGeneratorModel;
@@ -21,6 +22,7 @@ import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
 import net.sf.anathema.namegenerator.view.NameGeneratorView;
 
+@ItemTypeConfiguration
 public final class NameGeneratorItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
 
   public static final String NAME_GENERATOR_ITEM_TYPE_ID = "NameGenerator"; //$NON-NLS-1$

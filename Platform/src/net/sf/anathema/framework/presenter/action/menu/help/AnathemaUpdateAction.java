@@ -33,7 +33,7 @@ public class AnathemaUpdateAction extends SmartAction {
     final UserDialog dialog = new UserDialog(parentComponent, page);
     dialog.getDialog().setModal(false);
     updateChecker.addDataChangedListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         dialog.updateDescription();
         dialog.getDialogControl().checkInputValid();
       }

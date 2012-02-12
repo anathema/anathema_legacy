@@ -1,8 +1,8 @@
 package net.sf.anathema.character.impl.reporting;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfWriter;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -73,7 +73,7 @@ public class SimpleExaltSheetReport implements IITextReport {
         } else {
           isFirstPrinted = true;
         }
-        SheetGraphics graphics = new SheetGraphics(directContent);
+        SheetGraphics graphics = SheetGraphics.WithSymbolBaseFontInCodepage1252(directContent);
         encoder.encode(document, graphics, content);
       }
     } catch (Exception e) {

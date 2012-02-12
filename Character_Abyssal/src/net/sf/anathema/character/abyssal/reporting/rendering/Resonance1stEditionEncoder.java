@@ -1,7 +1,7 @@
 package net.sf.anathema.character.abyssal.reporting.rendering;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Phrase;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
 import net.sf.anathema.character.abyssal.reporting.content.Abyssal1stResonanceContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;

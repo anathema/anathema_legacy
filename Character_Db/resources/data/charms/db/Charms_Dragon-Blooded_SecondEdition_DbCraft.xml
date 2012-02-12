@@ -1,0 +1,112 @@
+<charmlist>
+
+<charm id="Dragon-Blooded.ShapingHandStyle" exalt="Dragon-Blooded" group="Craft">
+ <prerequisite>
+  <trait id="Craft" value="2"/>
+  <essence value="1"/>
+  <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="2"/>
+  
+ </cost>
+ <duration duration="Indefinite" />
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.Stone-CarvingFingersForm" exalt="Dragon-Blooded" group="Craft">
+ <prerequisite>
+  <trait id="Craft" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.ShapingHandStyle"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1" text="per cubic yard"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction"/>
+ </charmtype>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Shaping" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.PerfectClimbingAttitude" exalt="Dragon-Blooded" group="Craft">
+ <prerequisite>
+  <trait id="Craft" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.Stone-CarvingFingersForm"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+  <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+
+<charm id="Dragon-Blooded.Flaw-FindingExamination" exalt="Dragon-Blooded" group="Craft">
+ <prerequisite>
+  <trait id="Craft" value="3"/>
+  <essence value="1"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1" text="for touch or 3m for sight"/>
+   <willpower cost="1" text="to repair"/>
+  
+ </cost>
+ <duration amount="1" unit="minute"/>
+ <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction"/>
+ </charmtype>
+  <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <charmAttribute attribute="Leader" visualize="true"/>
+  <charmAttribute attribute="War" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.CharmLesserUnmaking" exalt="Dragon-Blooded" group="Craft">
+ <prerequisite>
+  <trait id="Craft" value="5"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.Flaw-FindingExamination"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="5"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+  <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <charmAttribute attribute="Shaping" visualize="true"/>
+  <charmAttribute attribute="Touch" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.CharmGreaterUnmaking" exalt="Dragon-Blooded" group="Craft">
+ <prerequisite>
+  <trait id="Craft" value="5"/>
+  <essence value="4"/>
+  <charmReference id="Dragon-Blooded.CharmLesserUnmaking"/>
+ </prerequisite>
+ <cost>
+ </cost>
+ <duration duration="Permanent"/>
+ <charmtype type="Permanent"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+
+</charmlist>

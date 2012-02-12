@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.box;
 
-import com.lowagie.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfContentByte;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.general.box.BoundsEncoder.ARC_SIZE;
 

@@ -1,13 +1,9 @@
 package net.sf.anathema.character.lunar.reporting.rendering;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.presenter.IRenownModel;
@@ -18,8 +14,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractT
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
-
-import java.awt.*;
 
 public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implements ContentEncoder {
 
@@ -64,10 +58,10 @@ public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implem
   private void drawDelimiter(PdfContentByte directContent, Bounds bounds, float delimitingLineYPosition) {
     directContent.moveTo(bounds.getMinX() + 3, delimitingLineYPosition);
     directContent.lineTo(bounds.getMaxX() - 3, delimitingLineYPosition);
-    directContent.setColorStroke(Color.GRAY);
+    directContent.setColorStroke(BaseColor.GRAY);
     directContent.setLineWidth(0.5f);
     directContent.stroke();
-    directContent.setColorStroke(Color.BLACK);
+    directContent.setColorStroke(BaseColor.BLACK);
   }
 
   private void encodeRenownTraitLine(SheetGraphics graphics, PdfPTable table, ITrait trait) {
@@ -82,7 +76,7 @@ public class LunarFaceEncoder extends AbstractTableEncoder<ReportContent> implem
   }
 
   private final PdfPCell createTextCell(SheetGraphics graphics, String text, int alignment) {
-    PdfPCell cell = TableEncodingUtilities.createContentCellTable(Color.BLACK, text, createFont(graphics), 0.5f, Rectangle.NO_BORDER, alignment);
+    PdfPCell cell = TableEncodingUtilities.createContentCellTable(BaseColor.BLACK, text, createFont(graphics), 0.5f, Rectangle.NO_BORDER, alignment);
     cell.setPadding(0);
     return cell;
   }

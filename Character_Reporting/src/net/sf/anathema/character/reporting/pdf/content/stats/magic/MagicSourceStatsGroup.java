@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
 import net.sf.anathema.lib.resources.IResources;

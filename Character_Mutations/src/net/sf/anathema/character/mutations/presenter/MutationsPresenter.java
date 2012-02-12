@@ -50,12 +50,12 @@ public class MutationsPresenter implements IPresenter {
       }
     });
     model.addModelChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateMutationsViews(mutationView);
       }
     });
     model.addOverviewChangedListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateMutationsViews(mutationView);
         updateOverview();
       }
@@ -83,7 +83,7 @@ public class MutationsPresenter implements IPresenter {
   }
 
   private I18nedIdentificateSorter<IMutation> createSorter() {
-    I18nedIdentificateSorter<IMutation> sorter = new I18nedIdentificateSorter<IMutation>() {
+    return new I18nedIdentificateSorter<IMutation>() {
       @Override
       protected String getString(final IResources sorterResources, IMutation mutation) {
         String typeString = sorterResources.getString("Mutations.Type." + mutation.getType().getId());
@@ -92,6 +92,5 @@ public class MutationsPresenter implements IPresenter {
         return "(" + typeString + ") " + mutationString;
       }
     };
-    return sorter;
   }
 }

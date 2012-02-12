@@ -1,11 +1,10 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons;
 
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class CoreRulesRateWeaponStatsGroup extends RateWeaponStatsGroup {
 

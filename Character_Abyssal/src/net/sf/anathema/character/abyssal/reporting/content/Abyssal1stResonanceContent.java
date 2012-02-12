@@ -34,7 +34,7 @@ public class Abyssal1stResonanceContent extends AbstractSubBoxContent {
     return sortedVirtues.get(0).getCurrentValue();
   }
 
-  public Object getVirtueDifficultyLabel() {
+  public String getVirtueDifficultyLabel() {
     return getString("Sheet.GreatCurse.VirtueDifficulty");
   }
 }

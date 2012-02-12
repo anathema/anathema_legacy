@@ -23,7 +23,7 @@ public class SelectionContainerPresenter<V> implements IPresenter {
 
   public void initPresentation() {
     view.addSelectionChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         Object[] selectedValues = view.getSelectedValues();
         V[] valueArray = arrayFactory.createArray(selectedValues.length);
         ArrayUtilities.copyAll(selectedValues, valueArray);
@@ -31,7 +31,7 @@ public class SelectionContainerPresenter<V> implements IPresenter {
       }
     });
     model.addChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         V[] values = model.getSelectedValues();
         if (values == null) {
           values = arrayFactory.createArray(0);

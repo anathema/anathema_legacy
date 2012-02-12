@@ -1,0 +1,224 @@
+<charmlist>
+<charm id="Dragon-Blooded.HeavenGracedRidingTechnique" exalt="Dragon-Blooded" group="Ride">
+ <prerequisite>
+  <trait id="Ride" value="2"/>
+  <essence value="1"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="action" />
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+   <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.EbonySpurTechnique" exalt="Dragon-Blooded" group="Ride">
+ <prerequisite>
+  <trait id="Ride" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.HeavenGracedRidingTechnique"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1" text="per 2 damage dice"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Supplemental"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
+   <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.ChargeOneHundredGenerals" exalt="Dragon-Blooded" group="Ride">
+ <prerequisite>
+  <trait id="Ride" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.EbonySpurTechnique"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1" text="per mount/rider pair or 5m per point of Magnitude"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="charge"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="War" visualize="true"/>
+   <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.IrresistiblePenetratingCharge" exalt="Dragon-Blooded" group="Ride">
+ <prerequisite>
+  <trait id="Ride" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.ChargeOneHundredGenerals"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="3" text="per point of Magnitude"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="charge" /> <!-- Added to CharmDuration -->
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="War" visualize="true"/>
+   <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.GreatHeartCompanion" exalt="Dragon-Blooded" group="Ride">
+ <prerequisite>
+  <trait id="Ride" value="2"/>
+  <essence value="2"/>
+  <charmAttributeRequirement attribute="ExcellencyRide" count="1"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="4"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+   <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.ElementalHalo'sMercy" exalt="Dragon-Blooded" group="Ride">
+ <prerequisite>
+  <trait id="Ride" value="2"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.GreatHeartCompanion"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="3"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Reflexive"/>
+   <source source="DragonBlooded2nd"/>
+</charm>
+
+<!-- TODO:  The following charms are "sub-effects" of Dragon-Blooded.FiveDragonHorsemanPrana -->
+
+<charm id="Dragon-Blooded.FiveDragonHorsemanPranaAir" exalt="Dragon-Blooded" group="Ride">
+ <prerequisite>
+  <trait id="Ride" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.ElementalHalo'sMercy"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="10"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+   <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.FiveDragonHorsemanPranaEarth" exalt="Dragon-Blooded" group="Ride">
+ <prerequisite>
+  <trait id="Ride" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.ElementalHalo'sMercy"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="10"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+   <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.FiveDragonHorsemanPranaFire" exalt="Dragon-Blooded" group="Ride">
+ <prerequisite>
+  <trait id="Ride" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.ElementalHalo'sMercy"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="10"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+   <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.FiveDragonHorsemanPranaWater" exalt="Dragon-Blooded" group="Ride">
+ <prerequisite>
+  <trait id="Ride" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.ElementalHalo'sMercy"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="10"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+   <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.FiveDragonHorsemanPranaWood" exalt="Dragon-Blooded" group="Ride">
+ <prerequisite>
+  <trait id="Ride" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.ElementalHalo'sMercy"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="10"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+   <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.DanceJadeBridle" exalt="Dragon-Blooded" group="Ride">
+ <prerequisite>
+  <trait id="Ride" value="5"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.GreatHeartCompanion"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="10"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration duration="Special"/>
+ <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction"/>
+ </charmtype>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Servitude" visualize="true"/>
+   <source source="DragonBlooded2nd"/>
+</charm>
+</charmlist>

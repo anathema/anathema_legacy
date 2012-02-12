@@ -70,7 +70,7 @@ public class SecondEditionCharmTypeEntryPage extends CharmTypeEntryPage {
       }
     });
     getPageModel().addModelListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         final boolean available = getPageModel().isSpecialModelAvailable();
         if (!available) {
           button.setSelected(false);

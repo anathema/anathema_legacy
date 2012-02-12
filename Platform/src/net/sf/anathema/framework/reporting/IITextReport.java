@@ -1,9 +1,8 @@
 package net.sf.anathema.framework.reporting;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.framework.repository.IItem;
-
-import com.lowagie.text.Document;
-import com.lowagie.text.pdf.PdfWriter;
 
 public interface IITextReport extends IReport {
 

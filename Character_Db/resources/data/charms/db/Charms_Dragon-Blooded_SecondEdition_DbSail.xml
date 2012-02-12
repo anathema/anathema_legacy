@@ -1,0 +1,101 @@
+<charmlist>
+<charm id="Dragon-Blooded.HurricanePredictingGlance" exalt="Dragon-Blooded" group="Sail">
+ <prerequisite>
+  <trait id="Sail" value="2"/>
+  <essence value="1"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.SevenSeasWindLuringChanty" exalt="Dragon-Blooded" group="Sail">
+ <prerequisite>
+  <trait id="Sail" value="2"/>
+  <essence value="1"/>
+  <charmReference id="Dragon-Blooded.HurricanePredictingGlance"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="5"/>
+  
+ </cost>
+ <duration amount="1" unit="hour"/>
+ <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.StormOutrunningTechnique" exalt="Dragon-Blooded" group="Sail">
+ <prerequisite>
+  <trait id="Sail" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.HurricanePredictingGlance"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="3"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.FinePassageNegotiatingStyle" exalt="Dragon-Blooded" group="Sail">
+ <prerequisite>
+  <trait id="Sail" value="4"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.HurricanePredictingGlance"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="3"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.SturdyBulkheadConcentration" exalt="Dragon-Blooded" group="Sail">
+ <prerequisite>
+  <trait id="Sail" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.FinePassageNegotiatingStyle"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="3"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.DeckStridingTechnique" exalt="Dragon-Blooded" group="Sail">
+ <prerequisite>
+  <trait id="Sail" value="3"/> <!-- is text=" (or 5)" legal, or what should I do??? -->
+  <essence value="2"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="3" text="or 6 motes"/>
+  
+ </cost>
+ <duration amount="1" unit="scene"/>
+ <charmtype type="Reflexive"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Leader4" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+ <charmAttribute attribute="Touch" visualize="true"/>
+  <source source="DragonBlooded2nd"/>
+</charm>
+</charmlist>

@@ -6,15 +6,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
-import net.sf.anathema.character.linguistics.reporting.LinguisticsContent;
-import net.sf.anathema.character.linguistics.reporting.LinguisticsContentFactory;
-import net.sf.anathema.character.linguistics.reporting.LinguisticsEncoder;
-import net.sf.anathema.character.linguistics.reporting.LinguisticsEncoderFactory;
 import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
-import net.sf.anathema.character.reporting.CharacterReportingModule;
-import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
 
 @CharacterModule
 public class LinguisticsModule extends NullObjectCharacterModuleAdapter {
@@ -29,13 +22,5 @@ public class LinguisticsModule extends NullObjectCharacterModuleAdapter {
     IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
     persisterFactory.register(templateId, new LinguisticsPersisterFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(new LinguisticsTemplate());
-  }
-
-  @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getContentRegistry().addFactory(LinguisticsContent.class, new LinguisticsContentFactory(resources));
-    moduleObject.getEncoderRegistry().add(new LinguisticsEncoderFactory());
-    moduleObject.getExtendedEncodingRegistry().setLinguisticsEncoder(new LinguisticsEncoder());
   }
 }

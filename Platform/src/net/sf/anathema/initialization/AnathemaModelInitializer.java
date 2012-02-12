@@ -1,12 +1,7 @@
 package net.sf.anathema.initialization;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.Map;
-
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
-import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.model.AnathemaModel;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.repository.RepositoryException;
@@ -15,33 +10,30 @@ import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.resources.IResources;
 
+import java.io.File;
+import java.util.Collection;
+
 public class AnathemaModelInitializer {
 
   private final IAnathemaPreferences anathemaPreferences;
   private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
-  private final Map<String, IAnathemaExtension> extensionById;
+  private Iterable<ExtensionWithId> extensions;
+  private Instantiater instantiater;
 
   public AnathemaModelInitializer(
-      IAnathemaPreferences anathemaPreferences,
-      Collection<IItemTypeConfiguration> itemTypeConfigurations,
-      Map<String, IAnathemaExtension> extensionById) {
+          IAnathemaPreferences anathemaPreferences,
+          Collection<IItemTypeConfiguration> itemTypeConfigurations,
+          Iterable<ExtensionWithId> extensions, Instantiater instantiater) {
     this.anathemaPreferences = anathemaPreferences;
     this.itemTypeConfigurations = itemTypeConfigurations;
-    this.extensionById = extensionById;
+    this.extensions = extensions;
+    this.instantiater = instantiater;
   }
 
   public IAnathemaModel initializeModel(IResources resources) throws InitializationException {
-    AnathemaModel model;
-    try {
-      model = new AnathemaModel(createRepositoryFolder(), resources);
-    }
-    catch (RepositoryException e) {
-      throw new InitializationException("Failed to create repository folder.\nPlease check read/write permissions.", e); //$NON-NLS-1$
-    }
-    for (Map.Entry<String, IAnathemaExtension> entry : extensionById.entrySet()) {
-      IAnathemaExtension extension = entry.getValue();
-      extension.initialize(resources, model.getRepository());
-      model.getExtensionPointRegistry().register(entry.getKey(), extension);
+    AnathemaModel model = createModel(resources);
+    for (ExtensionWithId extension : extensions) {
+      extension.register(model, resources, instantiater);
     }
     for (IItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());
@@ -50,6 +42,15 @@ public class AnathemaModelInitializer {
       itemTypeConfiguration.initModel(model);
     }
     return model;
+  }
+
+  private AnathemaModel createModel(IResources resources) throws InitializationException {
+    try {
+      return new AnathemaModel(createRepositoryFolder(), resources);
+    }
+    catch (RepositoryException e) {
+      throw new InitializationException("Failed to create repository folder.\nPlease check read/write permissions.", e); //$NON-NLS-1$
+    }
   }
 
   private File createRepositoryFolder() throws RepositoryException {

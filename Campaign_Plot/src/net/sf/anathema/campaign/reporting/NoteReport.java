@@ -1,5 +1,8 @@
 package net.sf.anathema.campaign.reporting;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.MultiColumnText;
+import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.reporting.IITextReport;
@@ -7,15 +10,6 @@ import net.sf.anathema.framework.reporting.ITextReportUtils;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
-
-import com.lowagie.text.Chunk;
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.pdf.MultiColumnText;
-import com.lowagie.text.pdf.PdfWriter;
 
 public class NoteReport implements IITextReport {
 
@@ -39,8 +33,7 @@ public class NoteReport implements IITextReport {
       }
       columnText.addElement(paragraph);
       document.add(columnText);
-    }
-    catch (DocumentException e) {
+    } catch (DocumentException e) {
       e.printStackTrace();
     }
   }

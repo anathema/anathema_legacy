@@ -71,7 +71,7 @@ public class InfernalPatronPresenter implements IPresenter {
         updateView(yoziView, yozi.getFavorization().getFavorableState());
       }
       /*yozi.addChangeListener(new IChangeListener() {
-        public void changeOccured() {
+        public void changeOccurred() {
           setOverviewData(favoredView, generalView, bonusView, experienceView);
         }
       });*/

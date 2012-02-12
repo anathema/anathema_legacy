@@ -77,12 +77,12 @@ public class FirstEditionBeastformPresenter implements IPresenter {
       }
     });
     giftModel.addModelChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateGiftViews(giftModel, giftView);
       }
     });
     giftModel.addOverviewChangedListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateGiftViews(giftModel, giftView);
         updateOverview();
       }
@@ -115,14 +115,13 @@ public class FirstEditionBeastformPresenter implements IPresenter {
   }
 
   private I18nedIdentificateSorter<IGift> createSorter() {
-    I18nedIdentificateSorter<IGift> sorter = new I18nedIdentificateSorter<IGift>() {
+    return new I18nedIdentificateSorter<IGift>() {
       @Override
       protected String getString(final IResources sorterResources, IGift gift) {
         return sorterResources.getString("DeadlyBeastmanTransformation.Gift." //$NON-NLS-1$
             + gift.getId());
       }
     };
-    return sorter;
   }
 
   private void initAttributePresentation() {

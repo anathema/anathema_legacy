@@ -127,7 +127,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
       }
     });
     getPageModel().addChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         sourceView.setObjects(sourceModel.getLegalSources());
       }
     });

@@ -69,7 +69,7 @@ public class ObjectSelectionWizardPage<V> extends AbstractAnathemaWizardPage {
       }
     });
     model.addListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         listView.setSelectedObject(model.getSelectedObject());
       }
     });

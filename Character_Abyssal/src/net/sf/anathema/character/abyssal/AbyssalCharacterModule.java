@@ -3,15 +3,8 @@ package net.sf.anathema.character.abyssal;
 import net.sf.anathema.character.abyssal.additional.AdditionalAbyssalRules;
 import net.sf.anathema.character.abyssal.additional.AdditionalLoyalAbyssalRules;
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
-import net.sf.anathema.character.abyssal.equipment.FangTemplate;
-import net.sf.anathema.character.abyssal.reporting.Extended1stEditionAbyssalPartEncoder;
-import net.sf.anathema.character.abyssal.reporting.content.Abyssal1stResonanceContent;
-import net.sf.anathema.character.abyssal.reporting.content.Abyssal1stResonanceContentFactory;
-import net.sf.anathema.character.abyssal.reporting.rendering.Anima1stEditionEncoderFactory;
-import net.sf.anathema.character.abyssal.reporting.rendering.Resonance1stEditionEncoderFactory;
 import net.sf.anathema.character.abyssal.template.LoyalAbyssalTemplate;
 import net.sf.anathema.character.abyssal.template.RenegadeAbyssalTemplate;
-import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
@@ -22,24 +15,17 @@ import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.reporting.CharacterReportingModule;
-import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
-import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 
 @CharacterModule
 public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
-  private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
   private static final String ESSENCE_ENGORGEMENT_TECHNIQUE = "Abyssal.EssenceEngorgementTechnique";
   public static final String BACKGROUND_ID_ABYSSAL_COMMAND = "AbyssalCommand"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_LIEGE = "Liege"; //$NON-NLS-1$
@@ -53,9 +39,6 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getCasteCollectionRegistry().register(ABYSSAL, new CasteCollection(AbyssalCaste.values()));
-    IEquipmentAdditionalModelTemplate equipmentTemplate =
-            (IEquipmentAdditionalModelTemplate) characterGenerics.getGlobalAdditionalTemplateRegistry().getById(IEquipmentAdditionalModelTemplate.ID);
-    equipmentTemplate.addNaturalWeaponTemplate(ABYSSAL, new FangTemplate());
   }
 
   @Override
@@ -96,15 +79,5 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SPIES, ABYSSAL));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_UNDERWORLD_MANSE, ABYSSAL));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_WHISPERS, ABYSSAL));
-  }
-
-  @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getContentRegistry().addFactory(Abyssal1stResonanceContent.class, new Abyssal1stResonanceContentFactory(resources));
-    ExtendedEncodingRegistry extendedRegistry = moduleObject.getExtendedEncodingRegistry();
-    extendedRegistry.setPartEncoder(ABYSSAL, FirstEdition, new Extended1stEditionAbyssalPartEncoder(resources, extendedRegistry, ESSENCE_MAX));
-    moduleObject.getEncoderRegistry().add(new Anima1stEditionEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new Resonance1stEditionEncoderFactory());
   }
 }

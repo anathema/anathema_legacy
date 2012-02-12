@@ -8,11 +8,11 @@ import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 
 public interface ICascadeView extends ICascadeSelectionView {
 
-  public void setCharmVisuals(String id, Color color);
+  void setCharmVisuals(String id, Color color);
 
-  public void setBackgroundColor(Color color);
+  void setBackgroundColor(Color color);
 
-  public void addRuleSetComponent(JComponent component, String borderTitle);
+  void addRuleSetComponent(JComponent component, String borderTitle);
 
-  public void unselect();
+  void unselect();
 }

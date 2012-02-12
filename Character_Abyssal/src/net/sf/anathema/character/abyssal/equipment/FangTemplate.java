@@ -2,11 +2,15 @@ package net.sf.anathema.character.abyssal.equipment;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
+import net.sf.anathema.character.equipment.impl.character.model.RegisteredNaturalWeapon;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
+import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
+
+@RegisteredNaturalWeapon(characterType = ABYSSAL)
 public class FangTemplate implements IEquipmentTemplate {
 
   private static final SecondEditionFangStats SECOND_EDITION_FANG_STATS = new SecondEditionFangStats();

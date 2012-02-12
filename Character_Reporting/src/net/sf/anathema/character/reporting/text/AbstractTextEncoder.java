@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.text;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.Paragraph;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Paragraph;
 import net.sf.anathema.framework.reporting.ITextReportUtils;
 import net.sf.anathema.lib.resources.IResources;
 

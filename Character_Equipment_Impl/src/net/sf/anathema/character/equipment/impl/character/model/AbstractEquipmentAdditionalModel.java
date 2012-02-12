@@ -32,7 +32,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   private final IExaltedRuleSet ruleSet;
   private final IEquipmentPrintModel printModel;
   private final IChangeListener itemChangePropagator = new IChangeListener() {
-    public void changeOccured() {
+    public void changeOccurred() {
       modelChangeControl.fireChangedEvent();
     }
   };
@@ -70,7 +70,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
 
   protected abstract IEquipmentTemplate loadEquipmentTemplate(String templateId);
 
-  private final IEquipmentItem addEquipmentObjectFor(final IEquipmentTemplate template, final MagicalMaterial material) {
+  private IEquipmentItem addEquipmentObjectFor(final IEquipmentTemplate template, final MagicalMaterial material) {
     final IEquipmentItem item = new EquipmentItem(template, ruleSet, material);
     equipmentItems.add(item);
     return initItem(item);

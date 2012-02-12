@@ -30,7 +30,7 @@ public class MultipleEffectCharmPresenter implements IPresenter {
       String label = resources.getString(key);
       final IBooleanValueView display = view.addSubeffect(label);
       subeffect.addChangeListener(new IChangeListener() {
-        public void changeOccured() {
+        public void changeOccurred() {
           display.setSelected(subeffect.isLearned());
         }
       });

@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../../charms.dtd">
+<!--
+
+    malfeas1.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Sean C. Mattox (sean.mattox@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <charm id="Infernal.TranscendentDesertCreature" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="2" />
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm>	 
+     <charm id="Infernal.Sand-SlipTrick" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.TranscendentDesertCreature"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="Infernals" />
+     </charm>     
+     <charm id="Infernal.Scorpion-TailedMirageTechnique" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.Sand-SlipTrick"/>
+			   <charmReference id="Infernal.1stExcellency.Cecelyne"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="6" text="(Or 4m)" />   
+               <willpower cost="1" />  
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="ExtraAction" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <repurchases limit="2"/>
+          <source source="Infernals" />
+     </charm>      
+     <charm id="Infernal.Hell-WalkerTechnique" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.Sand-SlipTrick"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="20" />   
+               <willpower cost="1" />  
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="Infernals" />
+     </charm>      
+     <charm id="Infernal.Stone-FlayerTouch" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.TranscendentDesertCreature"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="1" text="or 1m, 1wp" />   
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Infernals" />
+     </charm>       
+     <charm id="Infernal.SandThroughFingersDefense" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.TranscendentDesertCreature"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="3" />   
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+               <special primaryStep="2" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Infernals" />
+     </charm>     
+     <charm id="Infernal.Soul-SieveTransmutation" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.SandThroughFingersDefense"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="-" text="(5m, 1 wp)" />   
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Infernals" />
+     </charm>      
+     <charm id="Infernal.Soul-SandDevilShintai" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="4" />		   
+               <charmReference id="Infernal.Soul-SieveTransmutation"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm>           
+     <charm id="Infernal.UntouchableInfinitudeReflection" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.TranscendentDesertCreature"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="4" />   
+               <willpower cost="1" />   
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Infernals" />
+     </charm>           
+     <charm id="Infernal.Counter-PronouncementofEnthymemicLaw" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.UntouchableInfinitudeReflection"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="5" />     
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Reflexive" />
+		  <special primaryStep="2" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Servitude" visualize="true" />
+          <source source="Infernals" />
+     </charm>            
+     <charm id="Infernal.SandstrikeBlast" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="2" />		   
+               <charmReference id="Infernal.UntouchableInfinitudeReflection"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="1" text="or 3m (or 3m, 1wp)" />     
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+		  <special speed="4"  defense="0"/>
+		  <special primaryStep="2" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Messianic1" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="Infernals" />
+     </charm>           
+     <charm id="Infernal.Dune-BurstOnslaught" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.SandstrikeBlast"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="-" text="(5m)" />     
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+		  <special primaryStep="2" />
+          <charmAttribute attribute="Messianic2" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Infernals" />
+     </charm>           
+     <charm id="Infernal.HolyLandInfliction" exalt="Infernal" group="HolyLand">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.TranscendentDesertCreature"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="15" />   
+               <willpower cost="1" />   
+          </cost>
+          <duration duration="UntilStopped" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="Infernals" />
+     </charm>             
+     <charm id="Infernal.Dune-DrownedOasisRitual" exalt="Infernal" group="HolyLand">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="4" />		   
+               <charmReference id="Infernal.HolyLandInfliction"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="10" />   
+               <willpower cost="1" />   
+          </cost>
+          <duration duration="UntilComplete" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Messianic2" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="Infernals" />
+     </charm>                
+     <charm id="Infernal.KnowingtheDesolateHeart" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.HellscryChakra"/>	   
+               <charmReference id="Infernal.TranscendentDesertCreature"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="3" />   
+               <willpower cost="1" />   
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <source source="Infernals" />
+     </charm>	 
+     <charm id="Infernal.LocustManaPlague" exalt="Infernal" group="Locust">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.TranscendentDesertCreature"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="15" text="(or 2m)" />   
+               <willpower cost="1" />   
+          </cost>
+          <duration amount="1" unit="Day" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Desecration" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="Infernals" />
+     </charm>        
+     <charm id="Infernal.SpawningPitSanctification" exalt="Infernal" group="Locust">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="5" />		   
+               <charmReference id="Infernal.LocustManaPlague"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="20" />   
+               <willpower cost="1" />   
+          </cost>
+          <duration amount="1" unit="Century" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="Infernals" />
+     </charm>        
+     <charm id="Infernal.VerdantEmptinessEndowment" exalt="Infernal" group="VerdantEmptiness">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.TranscendentDesertCreature"/>
+			   <charmReference id="Infernal.1stExcellency.Cecelyne"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="10" />   
+               <willpower cost="1" />   
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <charmAttribute attribute="Training" visualize="true" />
+          <source source="Infernals" />
+     </charm>       
+     <charm id="Infernal.BestowalofAccursedFortune" exalt="Infernal" group="VerdantEmptiness">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.VerdantEmptinessEndowment"/>
+			   <charmReference id="Infernal.InevitabilityTechnique.Cecelyne"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="10" />   
+               <willpower cost="1" />   
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <charmAttribute attribute="Training" visualize="true" />
+          <source source="Infernals" />
+     </charm>      
+     <charm id="Infernal.ScouredPerfectionofForm" exalt="Infernal" group="VerdantEmptiness">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.VerdantEmptinessEndowment"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Desecration" visualize="true" />
+          <source source="Infernals" />
+     </charm>   
+     <charm id="Infernal.AsYouWish" exalt="Infernal" group="VerdantEmptiness">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.VerdantEmptinessEndowment"/>
+			   <charmReference id="Infernal.PenitentsLikeScatteredGrains"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm>        
+     <charm id="Infernal.WitheredSoulWastes" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.TranscendentDesertCreature"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="10" />   
+               <willpower cost="1" />   
+          </cost>
+          <duration amount="1" unit="day" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Infernals" />
+     </charm> 
+     <charm id="Infernal.FootprintsLikeHeraldsFocus" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.WitheredSoulWastes"/>
+          </prerequisite>
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm> 
+     <charm id="Infernal.EndlessTormentEmanation" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.WitheredSoulWastes"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="15" />   
+               <willpower cost="1" />   
+          </cost>
+          <duration amount="1" unit="Week" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Sorcerous" visualize="true" />
+          <source source="Infernals" />
+     </charm> 
+     <charm id="Infernal.Sand-ScouredSocietyInfliction" exalt="Infernal" group="TranscendentDesert">          
+          <prerequisite>
+               <trait id="Cecelyne" value="0" />
+               <essence value="3" />		   
+               <charmReference id="Infernal.EndlessTormentEmanation"/>
+          </prerequisite>
+           <cost> 
+               <essence cost="12" />   
+               <willpower cost="1" />   
+          </cost>
+          <duration amount="1" unit="Month" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+</charmlist>

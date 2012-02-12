@@ -1,15 +1,11 @@
 package net.sf.anathema.character.sidereal.reporting.rendering.astrology;
 
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.sidereal.reporting.rendering.DestinyTypeTableEncoder;
-import net.sf.anathema.character.sidereal.reporting.rendering.DurationTableEncoder;
-import net.sf.anathema.character.sidereal.reporting.rendering.FrequencyTableEncoder;
-import net.sf.anathema.character.sidereal.reporting.rendering.ScopeTableEncoder;
-import net.sf.anathema.character.sidereal.reporting.rendering.TriggerTypeTableEncoder;
+import net.sf.anathema.character.sidereal.reporting.rendering.*;
 import net.sf.anathema.character.sidereal.reporting.rendering.resplendentdestiny.ResplendentDestinyTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 

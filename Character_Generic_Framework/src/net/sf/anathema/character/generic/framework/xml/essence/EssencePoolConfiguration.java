@@ -7,7 +7,7 @@ import java.util.List;
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 
 public class EssencePoolConfiguration implements IEssencePoolConfiguration {
 

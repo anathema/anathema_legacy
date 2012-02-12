@@ -92,7 +92,7 @@ public class QualifiedAmountDurationPage extends AbstractAnathemaWizardPage {
       }
     });
     view.addTypeChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         abilityBox.setSelectedObject(null);
         attributeBox.setSelectedObject(null);
         virtueBox.setSelectedObject(null);

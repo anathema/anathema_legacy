@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -24,12 +24,13 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
-  public ExtendedMagicPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources, PageConfiguration configuration) {
-    super(partEncoder, encodingRegistry, resources, configuration);
+  public ExtendedMagicPageEncoder(IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration configuration) {
+    super(partEncoder, resources, configuration);
   }
 
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
@@ -46,7 +47,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
     ISpellMagicTemplate spellTemplate = character.getTemplate().getMagicTemplate().getSpellMagic();
     boolean needsMagic = spellTemplate.knowsSorcery(character.getLearnedCharms());
     if (!needsMagic) {
-      for (ITableEncoder tableEncoder : getRegistry().getAdditionalMagicEncoders()) {
+      for (ITableEncoder tableEncoder : getAdditionalMagicEncoders()) {
         if (tableEncoder.hasContent(content)) {
           needsMagic = true;
           break;
@@ -110,6 +111,12 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
     }
   }
 
+  private List<ITableEncoder> getAdditionalMagicEncoders() {
+    //Returned an empty List from the Extended Encoding Registry 
+    //return getRegistry().getAdditionalMagicEncoders();
+    return Collections.emptyList();
+  }
+
   private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     return encodeVariableBox(graphics, content, (IVariableContentEncoder) getPartEncoder().getEssenceEncoder(), 1, 2, distanceFromTop, height);
   }
@@ -153,14 +160,14 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeMagic(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, new MagicEncoder(getResources(), MagicEncoder.collectPrintSpells(content), getRegistry().getAdditionalMagicEncoders(), true, "Magic"),
+    return encodeFixedBox(graphics, content, new MagicEncoder(getResources(), MagicEncoder.collectPrintSpells(content), getAdditionalMagicEncoders(), true, "Magic"),
             //$NON-NLS-1$
             2, 2, distanceFromTop, height);
   }
 
   private float encodeSidebars(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
     float height = 0;
-    for (IVariableContentEncoder sidebar : getRegistry().getAdditionalMagicSidebarEncoders()) {
+    for (IVariableContentEncoder sidebar : getAdditionalMagicSidebarEncoders()) {
       float sidebarHeight = encodeVariableBox(graphics, content, sidebar, 1, 1, distanceFromTop, maxHeight - height);
       if (sidebarHeight != 0) {
         height += calculateBoxIncrement(sidebarHeight);
@@ -174,8 +181,14 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
     return height;
   }
 
+  private List<IVariableContentEncoder> getAdditionalMagicSidebarEncoders() {
+    //Returned an empty list from the registry
+    //return getRegistry().getAdditionalMagicSidebarEncoders();
+    return Collections.emptyList();
+  }
+
   private float encodeInitiations(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight) throws DocumentException {
-    return encodeVariableBox(graphics, content, new PdfInitiationEncoder(getResources(), getBaseFont()), 1, 1, distanceFromTop, maxHeight);
+    return encodeVariableBox(graphics, content, new PdfInitiationEncoder(getResources(), graphics), 1, 1, distanceFromTop, maxHeight);
   }
 
   private float encodeCharms(SheetGraphics graphics, ReportContent content, List<IMagicStats> printCharms, float distanceFromTop, float height) throws DocumentException {

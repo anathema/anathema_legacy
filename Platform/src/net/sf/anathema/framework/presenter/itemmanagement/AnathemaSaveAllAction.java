@@ -27,7 +27,7 @@ public class AnathemaSaveAllAction extends SmartAction {
   private static final long serialVersionUID = 5438516323175076524L;
   private IItem currentItem;
   private final IChangeListener changeListener = new IChangeListener() {
-    public void changeOccured() {
+    public void changeOccurred() {
       setSaveAllEnabled();
     }
   };

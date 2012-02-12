@@ -37,8 +37,8 @@ public class LearnableCharmPool implements IAdditionalEssencePool {
     IdentifiedInteger[] poolValues = new IdentifiedInteger[complexPools.length];
     for (int i = 0; i < complexPools.length; i++) {
       poolValues[i] = new IdentifiedInteger(complexPools[i].getId(),
-                                            complexPools[i].getPool(traitCollection, magicCollection,
-                                                                    magicCollection.isLearned(charm) ? 1 : 0));
+                                            complexPools[i].getPool(traitCollection,
+                                                    magicCollection.isLearned(charm) ? 1 : 0));
     }
     return poolValues;
   }

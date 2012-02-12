@@ -2,9 +2,11 @@ package net.sf.anathema.character.abyssal.reporting.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.lib.resources.IResources;
 
+@RegisteredReportContent(produces = Abyssal1stResonanceContent.class)
 public class Abyssal1stResonanceContentFactory implements ReportContentFactory<Abyssal1stResonanceContent>{
 
   private IResources resources;

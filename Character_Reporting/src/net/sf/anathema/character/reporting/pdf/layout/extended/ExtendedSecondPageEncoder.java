@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
@@ -16,9 +16,8 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
 
   private EncoderRegistry encoderRegistry;
 
-  public ExtendedSecondPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry,
-    IResources resources, PageConfiguration pageConfiguration) {
-    super(partEncoder, registry, resources, pageConfiguration);
+  public ExtendedSecondPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration pageConfiguration) {
+    super(partEncoder, resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;
   }
 
@@ -49,15 +48,17 @@ public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeInventory(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getPossessionsEncoder(), 1, 3, distanceFromTop, height);
+    ContentEncoder possessionsEncoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.POSSESSIONS);
+    return encodeFixedBox(graphics, content, possessionsEncoder, 1, 3, distanceFromTop, height);
   }
 
   private float encodeArmourAndSoak(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getArmourContentEncoder(), 2, 2, distanceFromTop, height);
+    ContentEncoder armourContentEncoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.PANOPLY);
+    return encodeFixedBox(graphics, content, armourContentEncoder, 2, 2, distanceFromTop, height);
   }
 
   private float encodeSocialCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop,
-    float height) throws DocumentException {
+                                        float height) throws DocumentException {
     ContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.SOCIAL_COMBAT, EncoderIds.MERITS_AND_FLAWS);
     return encodeFixedBox(graphics, content, encoder, 1, 1, distanceFromTop, height);
   }

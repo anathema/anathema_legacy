@@ -31,7 +31,7 @@ public class WeaponDamagePresenter implements IPresenter {
     integerSpinner.setMinimum(0);
     view.setObjects(HealthType.values());
     model.addHealthTypeChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateHealthTypeInView();
       }
     });

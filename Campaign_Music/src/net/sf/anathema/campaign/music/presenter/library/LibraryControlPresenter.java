@@ -49,12 +49,12 @@ public class LibraryControlPresenter implements IPresenter {
       }
     });
     selectionModel.addCurrentSelectionChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         refreshTrackView();
       }
     });
     selectionModel.getTrackDetailModel().addChangeDetailListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         refreshTrackView();
       }
     });

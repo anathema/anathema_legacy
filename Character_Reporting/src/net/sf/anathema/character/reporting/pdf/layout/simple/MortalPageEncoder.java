@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.Body;
 import net.sf.anathema.character.reporting.pdf.layout.RegisteredEncoderList;
@@ -15,22 +15,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ABILITIES_WITH_CRAFTS_AND_SPECIALTIES;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ATTRIBUTES;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.BACKGROUNDS;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.COMBAT;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.EXPERIENCE;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.HEALTH_AND_MOVEMENT;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.INTIMACIES_SIMPLE;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.LANGUAGES;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.MERITS_AND_FLAWS;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.NOTES;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.PANOPLY;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.PERSONAL_INFO;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.SOCIAL_COMBAT;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.VIRTUES;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.WILLPOWER_SIMPLE;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.*;
 
 public class MortalPageEncoder implements PageEncoder {
 

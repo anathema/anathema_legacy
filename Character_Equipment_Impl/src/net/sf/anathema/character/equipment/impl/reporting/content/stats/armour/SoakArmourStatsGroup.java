@@ -1,12 +1,11 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats.armour;
 
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmourStats> implements IArmourStatsGroup {
 
@@ -21,8 +20,7 @@ public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmo
       table.addCell(createEmptyValueCell(font));
       table.addCell(createEmptyValueCell(font));
       table.addCell(createEmptyValueCell(font));
-    }
-    else {
+    } else {
       table.addCell(createEquipmentValueCell(font, armour.getSoak(HealthType.Bashing)));
       table.addCell(createEquipmentValueCell(font, armour.getSoak(HealthType.Lethal)));
       table.addCell(createEquipmentValueCell(font, armour.getSoak(HealthType.Aggravated)));

@@ -1,5 +1,8 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons;
 
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
@@ -7,10 +10,6 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
@@ -39,22 +38,19 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
       table.addCell(createEmptyValueCell(font));
       table.addCell(createFinalValueCell(font));
       table.addCell(createFinalValueCell(font));
-    }
-    else if (weapon.inflictsNoDamage()) {
+    } else if (weapon.inflictsNoDamage()) {
       table.addCell(createEquipmentValueCell(font, null));
       table.addCell(createFinalValueCell(font, (Integer) null));
       table.addCell(createFinalValueCell(font, (Integer) null));
-    }
-    else {
+    } else {
       final int weaponValue = weapon.getDamage();
       int finalValue = weaponValue;
       ITraitType damageTraitType = weapon.getDamageTraitType();
       if (damageTraitType != null) {
         finalValue = calculateFinalValue(weaponValue, collection.getTrait(damageTraitType)) +
-        	(weapon.isRangedCombat() ? equipment.getRangedDamageMod() : equipment.getMeleeDamageMod());
+                (weapon.isRangedCombat() ? equipment.getRangedDamageMod() : equipment.getMeleeDamageMod());
         table.addCell(createEquipmentValueCell(font, weaponValue));
-      }
-      else {
+      } else {
         table.addCell(createEquipmentValueCell(font, null));
       }
       table.addCell(createFinalValueCell(font, finalValue));

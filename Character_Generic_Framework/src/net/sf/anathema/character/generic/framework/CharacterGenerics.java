@@ -17,6 +17,7 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -38,8 +39,10 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final ICharmProvider charmProvider = new CharmProvider();
   private final CharacterModuleObjectMap moduleObjectMap = new CharacterModuleObjectMap();
   private final IDataFileProvider dataFileProvider;
+  private final Instantiater instantiater;
 
-  public CharacterGenerics(IDataFileProvider dataFileProvider) {
+  public CharacterGenerics(IDataFileProvider dataFileProvider, Instantiater instantiater) {
+    this.instantiater = instantiater;
     this.additionalPersisterRegistry = new Registry<String, IAdditionalPersisterFactory>(
             new NullAdditionalPersisterFactory());
     this.dataFileProvider = dataFileProvider;
@@ -84,6 +87,11 @@ public class CharacterGenerics implements ICharacterGenerics {
   @Override
   public IRegistry<ICharacterType, IMagicStats[]> getGenericCharmStatsRegistry() {
     return genericCharmRegistry;
+  }
+
+  @Override
+  public Instantiater getInstantiater() {
+    return instantiater;
   }
 
   public ICharmProvider getCharmProvider() {

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.page;
 
-import com.lowagie.text.Rectangle;
+import com.itextpdf.text.Rectangle;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 
 import java.awt.*;
@@ -13,7 +13,7 @@ public class PageConfiguration {
   public static final int BOTTOM_MARGIN = 22;
 
   public static PageConfiguration create(Rectangle pageSize) {
-    return new PageConfiguration(new Dimension((int) pageSize.width(), (int) pageSize.height()), TOP_MARGIN, BOTTOM_MARGIN, HORIZONTAL_MARGIN);
+    return new PageConfiguration(new Dimension((int) pageSize.getWidth(), (int) pageSize.getHeight()), TOP_MARGIN, BOTTOM_MARGIN, HORIZONTAL_MARGIN);
   }
 
   private int pageWidth;

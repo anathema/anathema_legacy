@@ -15,10 +15,12 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.database.StartDatabaseAction;
 
+@ItemTypeConfiguration
 public final class MusicDatabaseItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
 
   public static final String MUSIC_DATABASE_ITEM_TYPE_ID = "MusicDatabase"; //$NON-NLS-1$

@@ -1,11 +1,5 @@
 package net.sf.anathema.cascades.view;
 
-import java.awt.Color;
-
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
@@ -13,6 +7,10 @@ import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
 
 public class CascadeView extends AbstractCascadeSelectionView implements ICascadeView, IView {
 
@@ -23,6 +21,7 @@ public class CascadeView extends AbstractCascadeSelectionView implements ICascad
     super(treeProperties);
   }
 
+  @Override
   public JComponent getComponent() {
     if (content == null) {
       content = initGui();
@@ -42,15 +41,18 @@ public class CascadeView extends AbstractCascadeSelectionView implements ICascad
     return panel;
   }
 
+  @Override
   public void addRuleSetComponent(JComponent component, String borderTitle) {
     rulesPanel.add(component);
     rulesPanel.setBorder(new TitledBorder(borderTitle));
   }
 
+  @Override
   public void setCharmVisuals(String id, Color color) {
     getCharmTreeView().setNodeBackgroundColor(id, color);
   }
 
+  @Override
   public void setBackgroundColor(Color color) {
     getCharmTreeView().setCanvasBackground(color);
   }

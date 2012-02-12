@@ -40,7 +40,7 @@ public class ItemSelectionWizardPageFactory implements IWizardFactory {
         printNameFiles,
         new LenientLegalityProvider<PrintNameFile>());
     model.addListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         ((ConfigurableFileProvider) template).setFile(model.getSelectedObject().getFile());
       }
     });

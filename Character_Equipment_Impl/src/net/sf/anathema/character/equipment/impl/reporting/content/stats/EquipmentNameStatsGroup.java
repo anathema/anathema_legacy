@@ -1,15 +1,14 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats;
 
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.character.EquipmentObjectPresenter;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractNameStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.PdfPTable;
-
 public final class EquipmentNameStatsGroup<T extends IEquipmentStats> extends AbstractNameStatsGroup<T> implements
-    IEquipmentStatsGroup<T> {
+        IEquipmentStatsGroup<T> {
 
   private final IResources resources;
 
@@ -27,8 +26,7 @@ public final class EquipmentNameStatsGroup<T extends IEquipmentStats> extends Ab
   public void addContent(PdfPTable table, Font font, T stats) {
     if (stats == null) {
       table.addCell(createTextCell(font, "")); //$NON-NLS-1$
-    }
-    else {
+    } else {
       String name = stats.getName().getId();
       String resourceKey = getResourceBase() + name;
       if (resources.supportsKey(resourceKey)) {

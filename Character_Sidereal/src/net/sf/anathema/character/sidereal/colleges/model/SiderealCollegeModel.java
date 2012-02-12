@@ -32,7 +32,7 @@ public class SiderealCollegeModel implements ISiderealCollegeModel {
   private final ChangeControl bonusControl = new ChangeControl();
 
   private final IChangeListener houseChangeListener = new IChangeListener() {
-    public void changeOccured() {
+    public void changeOccurred() {
       bonusControl.fireChangedEvent();
     }
   };

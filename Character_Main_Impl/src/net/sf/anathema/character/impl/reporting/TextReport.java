@@ -1,28 +1,21 @@
 package net.sf.anathema.character.impl.reporting;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.MultiColumnText;
+import com.itextpdf.text.pdf.PdfWriter;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.reporting.text.AbilityTextEncoder;
-import net.sf.anathema.character.reporting.text.AttributeTextEncoder;
-import net.sf.anathema.character.reporting.text.BackgroundsTextEncoder;
-import net.sf.anathema.character.reporting.text.CharacterDescriptionTextEncoder;
-import net.sf.anathema.character.reporting.text.ConceptTextEncoder;
-import net.sf.anathema.character.reporting.text.TextPartFactory;
-import net.sf.anathema.character.reporting.text.VirtueTextEncoder;
+import net.sf.anathema.character.reporting.text.*;
 import net.sf.anathema.framework.reporting.IITextReport;
 import net.sf.anathema.framework.reporting.ITextReportUtils;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.MultiColumnText;
-import com.lowagie.text.pdf.PdfWriter;
 
 public class TextReport implements IITextReport {
 
@@ -61,8 +54,7 @@ public class TextReport implements IITextReport {
         // new CharmTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
       }
       writeColumnText(document, columnText);
-    }
-    catch (DocumentException e) {
+    } catch (DocumentException e) {
       e.printStackTrace();
     }
   }

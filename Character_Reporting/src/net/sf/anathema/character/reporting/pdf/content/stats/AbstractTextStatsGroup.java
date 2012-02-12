@@ -1,14 +1,13 @@
 package net.sf.anathema.character.reporting.pdf.content.stats;
 
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfPCell;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-
-import java.awt.*;
 
 public abstract class AbstractTextStatsGroup<T extends IStats> implements IStatsGroup<T> {
 
@@ -21,6 +20,6 @@ public abstract class AbstractTextStatsGroup<T extends IStats> implements IStats
     if (StringUtilities.isNullOrTrimmedEmpty(text)) {
       text = " "; //$NON-NLS-1$
     }
-    return TableEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, border, Element.ALIGN_LEFT);
+    return TableEncodingUtilities.createContentCellTable(BaseColor.BLACK, text, font, 0.5f, border, Element.ALIGN_LEFT);
   }
 }

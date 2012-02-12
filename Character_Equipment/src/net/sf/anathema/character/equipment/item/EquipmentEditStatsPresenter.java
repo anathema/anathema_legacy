@@ -73,7 +73,7 @@ public class EquipmentEditStatsPresenter implements IPresenter {
     view.setStatsListHeader(resources.getString("Equipment.Creation.Stats")); //$NON-NLS-1$
     final IObjectSelectionView<IExaltedRuleSet> ruleSetView = initRuleSetPresentation(statsListView);
     model.getTemplateEditModel().addStatsChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateStatListContent(ruleSetView.getSelectedObject(), statsListView);
       }
     });

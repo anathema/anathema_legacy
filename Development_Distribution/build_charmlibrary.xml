@@ -7,6 +7,6 @@
 	<property file="directories.properties" />
 	
 	<target name="Build Charm Library" depends="Purge">
-		<buildPlugin module.name="charmlibrary" projectset="Lib_Thirdparty,Lib,Lib_Gui,Platform_SvgTree,Character_Generic,Character_Generic_Impl" />
+		<buildPlugin module.name="charmlibrary" projectset="Lib,Lib_Gui,Platform_SvgTree,Character_Generic,Character_Generic_Impl" />
 	</target>
 </project>

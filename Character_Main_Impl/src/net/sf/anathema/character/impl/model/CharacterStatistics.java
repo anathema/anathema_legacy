@@ -60,17 +60,17 @@ public class CharacterStatistics implements ICharacterStatistics {
     }
   };
   private final IChangeListener natureChangeListener = new IChangeListener() {
-    public void changeOccured() {
+    public void changeOccurred() {
       context.getCharacterListening().fireCharacterChanged();
     }
   };
   private final IChangeListener casteChangeListener = new IChangeListener() {
-    public void changeOccured() {
+    public void changeOccurred() {
       context.getCharacterListening().fireCasteChanged();
     }
   };
   private final IChangeListener ageChangeListener = new IChangeListener() {
-    public void changeOccured() {
+    public void changeOccurred() {
       context.getCharacterListening().fireCharacterChanged();
     }
   };
@@ -99,13 +99,13 @@ public class CharacterStatistics implements ICharacterStatistics {
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
     this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template, rules.getEdition());
     this.spells.addChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
     initExperienceListening();
     extendedConfiguration.addAdditionalModelChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         context.getCharacterListening().fireCharacterChanged();
       }
     });

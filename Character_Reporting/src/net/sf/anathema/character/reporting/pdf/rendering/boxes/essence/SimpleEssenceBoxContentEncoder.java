@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.essence;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.PdfContentByte;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.essence.SimpleEssenceContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -10,7 +10,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBox
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
-import static com.lowagie.text.pdf.PdfContentByte.ALIGN_RIGHT;
+import static com.itextpdf.text.pdf.PdfContentByte.ALIGN_RIGHT;
 
 public class SimpleEssenceBoxContentEncoder extends AbstractBoxContentEncoder<SimpleEssenceContent> {
 

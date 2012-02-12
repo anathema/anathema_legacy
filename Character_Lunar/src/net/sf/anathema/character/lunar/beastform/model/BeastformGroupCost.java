@@ -30,7 +30,7 @@ public class BeastformGroupCost implements IBeastformGroupCost {
     IQualityModel<?> listenModel = model.getGiftModel();
     listenModel = listenModel == null ? model.getMutationModel() : listenModel;
     listenModel.addModelChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         calculateDots(model.getGiftModel() != null ? model.getGiftModel() : model.getMutationModel(), model.getCharmValue());
       }
     });

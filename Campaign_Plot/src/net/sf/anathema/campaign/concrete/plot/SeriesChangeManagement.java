@@ -38,7 +38,7 @@ public class SeriesChangeManagement implements IChangeManagement {
   }
 
   private final IChangeListener listener = new IChangeListener() {
-    public void changeOccured() {
+    public void changeOccurred() {
       setDirty();
     }
   };

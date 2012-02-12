@@ -21,6 +21,7 @@ import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.repository.RepositoryException;
+import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.IStringResolver;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
@@ -28,6 +29,7 @@ import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
+@PreferenceElement
 public class RepositoryPreferencesElement implements IPreferencesElement {
 
   private static final String REPOSITORY_PREFERENCE_DIRECTORY_CHOOSER_VALUE = "RepositoryPreference"; //$NON-NLS-1$

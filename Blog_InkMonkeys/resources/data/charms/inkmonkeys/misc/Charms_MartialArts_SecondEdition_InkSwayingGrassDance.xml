@@ -1,0 +1,181 @@
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../../charms.dtd">
+<!--
+
+    Charms_MartialArts_SecondEdition_InkSwayingGrassDance.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Swaying Grass Dance Style -->
+	<charm id="Terrestrial.JubilantBattleProposition" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="2" />
+			<trait id="Performance" value="2" />
+			<essence value="2" />
+		</prerequisite>
+		<cost>
+			<essence cost="3" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
+		<charmAttribute attribute="Terrestrial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Terrestrial.SweepingMeadowAwarenessPractice" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="3" />
+			<trait id="Performance" value="2" />
+			<essence value="2" />
+		</prerequisite>
+		<cost>
+			<essence cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="2" />
+		</charmtype>
+		<charmAttribute attribute="Terrestrial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Terrestrial.SwayingGrassDanceForm" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="2" />
+			<charmReference id="Terrestrial.JubilantBattleProposition" />
+			<charmReference id="Terrestrial.SweepingMeadowAwarenessPractice" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration amount="1" unit="scene" />
+		<charmtype type="Simple">
+			<special speed="4" defense="-1" />
+		</charmtype>
+		<charmAttribute attribute="Terrestrial" />
+		<charmAttribute attribute="Form" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Terrestrial.TeethInTheGrassStrike" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="3" />
+			<charmReference id="Terrestrial.SwayingGrassDanceForm" />
+		</prerequisite>
+		<cost>
+			<essence cost="4" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Simple">
+			<special speed="5" defense="-1" />
+		</charmtype>
+		<charmAttribute attribute="Terrestrial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Illusion" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Terrestrial.RollingWithTheWindMethod" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="3" />
+			<charmReference id="Terrestrial.SwayingGrassDanceForm" />
+		</prerequisite>
+		<cost>
+			<essence cost="2" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="9" />
+		</charmtype>
+		<charmAttribute attribute="Terrestrial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Counterattack" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Terrestrial.InescapableTumbleweedPrana" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Terrestrial.TeethInTheGrassStrike" />
+			<charmReference id="Terrestrial.RollingWithTheWindMethod" />
+		</prerequisite>
+		<cost>
+			<essence cost="1" />
+			<willpower cost="1" />
+		</cost>
+		<duration event="NextAction" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Terrestrial" />
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Terrestrial.WhirlingRhythmRevolution" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Terrestrial.InescapableTumbleweedPrana" />
+		</prerequisite>
+		<cost>
+			<essence cost="4" />
+			<willpower cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="ExtraAction" />
+		<charmAttribute attribute="Terrestrial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Terrestrial.GrassReapingPosture" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Terrestrial.InescapableTumbleweedPrana" />
+		</prerequisite>
+		<cost>
+			<essence cost="3" />
+			<willpower cost="1" />
+		</cost>
+		<duration event="Broken" />
+		<charmtype type="Simple">
+			<special speed="5" defense="-1" />
+		</charmtype>
+		<charmAttribute attribute="Terrestrial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Terrestrial.SerenadingTheReed" exalt="Dragon-Blooded" group="SwayingGrassDanceStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Terrestrial.WhirlingRhythmRevolution" />
+			<charmReference id="Terrestrial.GrassReapingPosture" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration duration="Indefinite" />
+		<charmtype type="Simple">
+			<special speed="3" defense="-1" />
+		</charmtype>
+		<charmAttribute attribute="Terrestrial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+</charmlist>

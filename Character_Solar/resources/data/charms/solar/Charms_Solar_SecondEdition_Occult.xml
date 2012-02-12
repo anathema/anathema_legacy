@@ -1,0 +1,182 @@
+<charmlist>
+  <charm id="Solar.TerrestrialCircleSorcery" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Occult" value="3"/>
+    </prerequisite>
+    <cost>
+      
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition"/>
+  </charm>
+  
+  <charm id="Solar.CelestialCircleSorcery" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Occult" value="4"/>
+      <charmReference id="Solar.TerrestrialCircleSorcery"/>
+    </prerequisite>
+    <cost>
+      
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition"/>
+  </charm>
+  
+  <charm id="Solar.SolarCircleSorcery" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="5"/>
+      <trait id="Occult" value="5"/>
+      <charmReference id="Solar.CelestialCircleSorcery"/>
+    </prerequisite>
+    <cost>
+      
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition"/>
+  </charm>
+  
+  <charm id="Solar.ShadowlandsCircleNecromancy" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Occult" value="3"/>
+    </prerequisite>
+    <cost>
+      
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="BlackTreatise"/>
+  </charm>
+  
+  <charm id="Solar.LabyrinthCircleNecromancy" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Occult" value="4"/>
+      <charmReference id="Solar.ShadowlandsCircleNecromancy"/>
+    </prerequisite>
+    <cost>
+      
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+     <source source="BlackTreatise"/>
+  </charm>
+      
+  <charm id="Solar.Spirit-DetectingGlance" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Occult" value="2"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="3"/>
+      
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition"/>
+  </charm>
+  
+  <charm id="Solar.Spirit-CuttingAttack" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Occult" value="2"/>
+      <charmReference id="Solar.Spirit-DetectingGlance"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="1"/>
+      
+    </cost>
+    <combo allAbilities="true"/>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition"/>
+  </charm>
+  
+  <charm id="Solar.Ghost-EatingTechnique" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Occult" value="4"/>
+      <charmReference id="Solar.Spirit-CuttingAttack"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="2"/>
+      
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="10"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition"/>
+  </charm>
+  
+  <charm id="Solar.Spirit-RepellingDiagram" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Occult" value="5"/>
+      <charmReference id="Solar.Spirit-CuttingAttack"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="10"/>
+      
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Compulsion" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition"/>
+  </charm>
+  
+  <charm id="Solar.All-EncompassingSorcerer'sSight" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Occult" value="5"/>
+      <charmReference id="Solar.Spirit-DetectingGlance"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="6"/>
+      
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1"/>
+    </charmtype>
+    <source source="SecondEdition"/>
+  </charm>
+  
+  <charm id="Solar.Sorcerer'sBurningChakram" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Occult" value="5"/>
+      <charmReference id="Solar.All-EncompassingSorcerer'sSight"/>
+    </prerequisite>
+    <cost>
+      
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition"/>
+  </charm>
+</charmlist>

@@ -1,10 +1,12 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.BackgroundsEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ComboEncoder;
@@ -21,10 +23,12 @@ import java.util.List;
 
 public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
 
+  private final EncoderRegistry encoderRegistry;
   private final boolean pureMagic;
 
-  public ExtendedMagic1stEditionPageEncoder(IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry encodingRegistry, IResources resources, PageConfiguration configuration, boolean pureMagic) {
-    super(partEncoder, encodingRegistry, resources, configuration);
+  public ExtendedMagic1stEditionPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration configuration, boolean pureMagic) {
+    super(partEncoder, resources, configuration);
+    this.encoderRegistry = encoderRegistry;
     this.pureMagic = pureMagic;
   }
 
@@ -78,7 +82,7 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
 
   private float encodeLanguages(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = getPageConfiguration().getThirdColumnRectangle(distanceFromTop, height);
-    ContentEncoder encoder = getRegistry().getLinguisticsEncoder();
+    ContentEncoder encoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.LANGUAGES);
     getBoxEncoder().encodeBox(content, graphics, encoder, bounds);
     return height;
   }
@@ -91,7 +95,8 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodePossessions(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getPossessionsEncoder(), 2, 1, distanceFromTop, height);
+    ContentEncoder possessionsEncoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.POSSESSIONS);
+    return encodeFixedBox(graphics, content, possessionsEncoder, 2, 1, distanceFromTop, height);
   }
 
   private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {

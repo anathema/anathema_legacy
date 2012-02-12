@@ -78,7 +78,7 @@ public class GhostFettersPresenter implements IPresenter {
       }
     });
     model.addSelectionChangeListener(new IChangeListener() {
-        public void changeOccured() {
+        public void changeOccurred() {
       	  fetterSelectionView.setButtonEnabled(model.isEntryComplete());
         }
       });
@@ -162,7 +162,7 @@ public class GhostFettersPresenter implements IPresenter {
         fetter.getMaximalValue());
     new TraitPresenter(fetter, fetterView).initPresentation();
     fetterView.addDeleteListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
     	model.removeFetter(fetter);
     	viewsByFetter.get(fetter).delete();
         updateOverviewData();

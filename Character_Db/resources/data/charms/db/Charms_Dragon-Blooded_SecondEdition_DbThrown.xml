@@ -1,0 +1,134 @@
+<charmlist>
+ 
+  <charm id="Dragon-Blooded.LoyalWeapon" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="3"/>
+      <essence value="2"/>
+      <charmAttributeRequirement attribute="ExcellencyThrown" count="1"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="1"/>
+      
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+     <charmAttribute attribute="Combo-OK" visualize="true"/>
+     <charmAttribute attribute="Leader4" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+   
+  <charm id="Dragon-Blooded.PersistentHornetAttack" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Dragon-Blooded.LoyalWeapon"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="3"/>
+      
+    </cost>
+    <duration amount="Essence" unit="action" />
+    <charmtype type="Simple"/>
+     <charmAttribute attribute="Combo-OK" visualize="true"/>
+     <charmAttribute attribute="Leader6" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  
+   <charm id="Dragon-Blooded.InvisiblyHiddenChakramMethod" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Dragon-Blooded.PersistentHornetAttack"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="2" text="per weapon"/>
+      
+    </cost>
+    <duration duration="Instant" />
+    <charmtype type="Reflexive"/>
+     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  
+  <charm id="Dragon-Blooded.WhirlwindShieldForm" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="3"/>
+      <essence value="2"/>
+      <charmAttributeRequirement attribute="ExcellencyThrown" count="1"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="3" text="+1 per ally protected"/>
+      
+    </cost>
+    <duration amount="1" unit="scene" />
+    <charmtype type="Simple"/>
+     <charmAttribute attribute="Combo-OK" visualize="true"/>
+     <charmAttribute attribute="Leader" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  
+  <charm id="Dragon-Blooded.VengefulGustCounterattack" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Dragon-Blooded.WhirlwindShieldForm"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="2" text="or 4 motes"/>
+      
+    </cost>
+    <duration duration="Instant" />
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Counterattack" visualize="true"/>
+     <charmAttribute attribute="Leader5" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  
+  <charm id="Dragon-Blooded.DeadlyBladesFiveDragon" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Dragon-Blooded.PersistentHornetAttack"/>
+      <charmReference id="Dragon-Blooded.VengefulGustCounterattack"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="3" text="per weapon"/>
+      
+    </cost>
+    <duration event="UntilThrown" />
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Elemental" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+     <charmAttribute attribute="Stackable" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  
+  <charm id="Dragon-Blooded.ElementalArmorTechnique" exalt="Dragon-Blooded" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Dragon-Blooded.VengefulGustCounterattack"/>
+    </prerequisite>
+    <cost>
+      
+        <essence cost="1" text="or 2 motes per 1B/1L of soak"/>
+      
+    </cost>
+    <duration amount="1" unit="scene" />
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Elemental" visualize="true"/>
+    <charmAttribute attribute="Leader" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Stackable" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  
+</charmlist>

@@ -1,14 +1,13 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons;
 
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
@@ -29,8 +28,7 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
     if (weapon == null) {
       table.addCell(createEmptyValueCell(font));
       table.addCell(createFinalValueCell(font));
-    }
-    else {
+    } else {
       int weaponValue = weapon.getAccuracy();
       table.addCell(createEquipmentValueCell(font, weaponValue));
       int calculateFinalValue = getFinalValue(weapon, weaponValue, equipment);
@@ -40,8 +38,8 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
 
   protected int getFinalValue(IWeaponStats weapon, int weaponValue, IEquipmentModifiers equipment) {
     return calculateFinalValue(
-        weaponValue,
-        collection.getTrait(AttributeType.Dexterity),
-        collection.getTrait(weapon.getTraitType()));
+            weaponValue,
+            collection.getTrait(AttributeType.Dexterity),
+            collection.getTrait(weapon.getTraitType()));
   }
 }

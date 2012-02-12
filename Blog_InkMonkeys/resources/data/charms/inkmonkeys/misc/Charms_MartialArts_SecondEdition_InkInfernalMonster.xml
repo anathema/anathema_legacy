@@ -1,0 +1,407 @@
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../../charms.dtd">
+<!--
+
+    Charms_Sidereal_SecondEdition_InkMisc.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2010  Paul R Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Miscellaneous Charms  -->
+	<!-- TODO:  Coding:  When appropriate will need to change Solar -> Infernal. -->
+	<charm id="Celestial.SmolderingRageBeast" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="3" />
+			<essence value="2" />
+			<charmReference id="Celestial.RetributionWillFollow" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Compulsion" visualize="true" />
+		<charmAttribute attribute="Emotion" visualize="true" />
+		<charmAttribute attribute="Rage" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.AllConsumingRampageRelease" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="2" />
+			<essence value="2" />
+			<charmReference id="Celestial.RetributionWillFollow" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.FearlessFrenzyAttitude" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="2" />
+			<essence value="2" />
+			<charmReference id="Celestial.RetributionWillFollow" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.FuryIsFreedom" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="3" />
+			<essence value="3" />
+			<charmReference id="Celestial.RetributionWillFollow" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="(+[1ahl, 2 Limit])" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.UntamedApocalypseShintai" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.SmolderingRageBeast" />
+			<charmReference id="Celestial.AllConsumingRampageRelease" />
+			<charmReference id="Celestial.FearlessFrenzyAttitude" />
+			<charmReference id="Celestial.FuryIsFreedom" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.ImpatientSlaughterSpeed" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="2" />
+			<charmReference id="Celestial.RagingBehemothCharge" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial"/>
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.BoundingBeastAdvance" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="3" />
+			<essence value="2" />
+			<charmReference id="Celestial.RagingBehemothCharge" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.LeapingSmashTechnique" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="3" />
+			<essence value="2" />
+			<charmReference id="Celestial.BoundingBeastAdvance" />
+		</prerequisite>
+		<cost>
+			<essence cost="2" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
+			<special primaryStep="1" />
+		</charmtype>
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.ShockAndAweSlam" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="2" />
+			<charmReference id="Celestial.LeapingSmashTechnique" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="(+4)"/>
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.NowhereToRun" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="3" />
+			<charmReference id="Celestial.LeapingSmashTechnique" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.NowhereToHide" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="4" />
+			<essence value="3" />
+			<charmReference id="Celestial.LeapingSmashTechnique" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="Sorcerous" visualize="true" />
+		<charmAttribute attribute="Stackable" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.BloodHeraldsDeath" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.NowhereToHide" />
+		</prerequisite>
+		<cost>
+			<essence cost="10" />
+			<willpower cost="1" />
+		</cost>
+		<duration amount="1" unit="week" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Sorcerous" visualize="true" />
+		<charmAttribute attribute="Stackable" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.EternalMonstrousHunt" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="4" />
+			<charmReference id="Celestial.BloodHeraldsDeath" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.ArmageddonNightmareDuel" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="4" />
+			<charmReference id="Celestial.BloodHeraldsDeath" />
+		</prerequisite>
+		<cost>
+			<essence cost="0" text=" or (15m, 1wp)"/>
+		</cost>
+		<duration amount="MA" unit="minutes" />
+		<charmtype type="Reflexive" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Sorcerous" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.DeathDevouringSadism" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="5" />
+			<charmReference id="Celestial.ArmageddonNightmareDuel" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.PostTraumaticBrutalityRoar" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.NowhereToRun" />
+			<charmReference id="Celestial.NowhereToHide" />
+		</prerequisite>
+		<cost>
+			<essence cost="15" />
+			<willpower cost="1" />
+		</cost>
+		<duration amount="1" unit="week" />
+		<charmtype type="Simple" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Combo-OK" visualize="true" />
+		<charmAttribute attribute="Emotion" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="Sorcerous" visualize="true" />
+		<charmAttribute attribute="Stackable" visualize="true" />
+		<charmAttribute attribute="War" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.RabbleTerrorizingPuissance" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.PostTraumaticBrutalityRoar" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="War" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.PanickedSoldierStampede" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.PostTraumaticBrutalityRoar" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="(+1wp)" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" visualize="true" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="War" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.RankParalyzingHorrorInfliction" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="4" />
+			<charmReference id="Celestial.PostTraumaticBrutalityRoar" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="War" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.FearOfForetoldFury" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="4" />
+			<charmReference id="Celestial.PostTraumaticBrutalityRoar" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="(+1wp)" />
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Obvious" visualize="true" />
+		<charmAttribute attribute="War" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.UnthinkableShiningHorror" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.InfernalMonsterForm" />
+		</prerequisite>
+		<cost>
+			<essence cost="-" text="(+1m)"/>
+		</cost>
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Emotion" visualize="true" />
+		<charmAttribute attribute="FormEnhancing" visualize="true" />
+		<charmAttribute attribute="Monstrous" visualize="true" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
+		<!-- TODO:  Solar Akuma Only! -->
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.MoonBeastMonster" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.InfernalMonsterForm" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
+		<!-- TODO:  Lunar Akuma Only! -->
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.FallenStarFury" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.InfernalMonsterForm" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Fate" visualize="true" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
+		<charmAttribute attribute="Shaping" visualize="true" />
+		<!-- TODO:  Sidereal Akuma Only! -->
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.DragonSpawnedDemonMonster" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="3" />
+			<charmReference id="Celestial.InfernalMonsterForm" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="NotAlienLearnable" />
+		<!-- TODO:  Terrestrial Akuma Only! -->
+		<source source="InkMonkeys" />
+	</charm>
+	<charm id="Celestial.SanityDevouringNightTerror" exalt="Solar" group="InfernalMonsterStyle">
+		<prerequisite>
+			<trait id="MartialArts" value="5" />
+			<essence value="4" />
+			<charmReference id="Celestial.ArmageddonNightmareDuel" />
+		</prerequisite>
+		<cost />
+		<duration duration="Permanent" />
+		<charmtype type="Permanent" />
+		<charmAttribute attribute="Celestial" />
+		<charmAttribute attribute="Illusion" visualize="true" />
+		<source source="InkMonkeys" />
+	</charm>
+</charmlist>

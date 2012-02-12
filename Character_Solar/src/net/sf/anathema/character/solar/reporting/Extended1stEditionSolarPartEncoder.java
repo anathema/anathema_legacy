@@ -1,21 +1,26 @@
 package net.sf.anathema.character.solar.reporting;
 
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractFirstEditionExaltPdfPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.RegisteredPartEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.solar.reporting.rendering.AnimaEncoderFactory;
 import net.sf.anathema.character.solar.reporting.rendering.VirtueFlawEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstEdition;
+import static net.sf.anathema.character.generic.type.CharacterType.SOLAR;
+
+@RegisteredPartEncoder(characterType = SOLAR, edition = FirstEdition)
 public class Extended1stEditionSolarPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {
 
-  public Extended1stEditionSolarPartEncoder(IResources resources, BaseFont baseFont, int essenceMax) {
-    super(resources, baseFont, essenceMax);
+  public Extended1stEditionSolarPartEncoder(IResources resources) {
+    super(resources);
   }
 
-  public ContentEncoder getGreatCurseEncoder() {
+  public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content) {
     return new VirtueFlawEncoder();
   }
 

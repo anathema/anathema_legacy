@@ -1,32 +1,30 @@
 package net.sf.anathema.charmtree.presenter.view;
 
-import java.awt.Dimension;
-
-import javax.swing.ListCellRenderer;
-
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
+
+import javax.swing.*;
+import java.awt.*;
 
 public interface ICascadeSelectionView {
 
-  public ISvgTreeView getCharmTreeView();
+  CharmTreeRenderer getCharmTreeRenderer();
 
-  public void addDocumentLoadedListener(IDocumentLoadedListener listener);
+  void addDocumentLoadedListener(IDocumentLoadedListener listener);
 
-  public void addCharmTypeSelector(String title, IIdentificate[] types, ListCellRenderer renderer);
+  void addCharmTypeSelector(String title, IIdentificate[] types, ListCellRenderer renderer);
 
-  public void addCharmTypeSelectionListener(IObjectValueChangedListener<IIdentificate> selectionListener);
+  void addCharmTypeSelectionListener(IObjectValueChangedListener<IIdentificate> selectionListener);
   
-  public void addCharmFilterButton(SmartAction action, String titleText, String buttonText);
+  void addCharmFilterButton(SmartAction action, String titleText, String buttonText);
 
-  public void fillCharmGroupBox(IIdentificate[] charmGroups);
+  void fillCharmGroupBox(IIdentificate[] charmGroups);
 
-  public void fillCharmTypeBox(IIdentificate[] cascadeTypes);
+  void fillCharmTypeBox(IIdentificate[] cascadeTypes);
 
-  public void addCharmGroupSelector(
+  void addCharmGroupSelector(
       String title,
       ListCellRenderer renderer,
       ICharmGroupChangeListener selectionListener,

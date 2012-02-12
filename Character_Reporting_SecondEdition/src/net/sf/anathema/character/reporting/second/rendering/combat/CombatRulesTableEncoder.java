@@ -1,9 +1,9 @@
 package net.sf.anathema.character.reporting.second.rendering.combat;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.combat.CombatAction;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.AbstractCombatRulesTableEncoder;
@@ -43,7 +43,7 @@ public class CombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
     list.addCell(createSpaceCell(graphics));
     list.addCell(createSpaceCell(graphics));
     TableCell rulesCommentCell =
-      new TableCell(new Phrase(content.getAttackComment(), graphics.createCommentFont()), Rectangle.NO_BORDER); //$NON-NLS-1$
+            new TableCell(new Phrase(content.getAttackComment(), graphics.createCommentFont()), Rectangle.NO_BORDER); //$NON-NLS-1$
     list.addCell(rulesCommentCell);
     return list.getTable();
   }
@@ -53,7 +53,7 @@ public class CombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
   }
 
   private PdfPTable createCommonActionsTable(SheetGraphics graphics, CombatStatsContent content) {
-    float[] columnWidths = new float[] { 5f, 1.5f, 1.5f };
+    float[] columnWidths = new float[]{5f, 1.5f, 1.5f};
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
     String header = content.getActionHeader();

@@ -2,8 +2,10 @@ package net.sf.anathema.character.impl.module.preferences;
 
 import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.PRINT_ZERO_CRAFTS;
 import net.sf.anathema.framework.module.preferences.AbstractCheckBoxPreferencesElement;
+import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.lib.util.IIdentificate;
 
+@PreferenceElement
 public class PrintZeroCraftsPreferencesElement extends AbstractCheckBoxPreferencesElement implements
     ICharacterPreferencesElement {
 

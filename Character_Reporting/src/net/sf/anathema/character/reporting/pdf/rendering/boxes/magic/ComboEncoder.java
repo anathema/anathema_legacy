@@ -1,9 +1,9 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
 import com.google.common.base.Joiner;
-import com.lowagie.text.Chunk;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Phrase;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -15,6 +15,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncod
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SimpleColumn;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;

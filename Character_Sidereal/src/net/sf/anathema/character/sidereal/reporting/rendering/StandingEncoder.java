@@ -1,6 +1,6 @@
 package net.sf.anathema.character.sidereal.reporting.rendering;
 
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;

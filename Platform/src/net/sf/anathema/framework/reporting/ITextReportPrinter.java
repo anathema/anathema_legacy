@@ -1,12 +1,11 @@
 package net.sf.anathema.framework.reporting;
 
-import java.io.OutputStream;
-
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.framework.repository.IItem;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.PdfWriter;
+import java.io.OutputStream;
 
 public class ITextReportPrinter {
 
@@ -20,8 +19,7 @@ public class ITextReportPrinter {
       document.addCreator("Anathema"); //$NON-NLS-1$
       document.open();
       report.performPrint(item, document, writer);
-    }
-    catch (DocumentException de) {
+    } catch (DocumentException de) {
       throw new ReportException(de);
     }
     document.close();

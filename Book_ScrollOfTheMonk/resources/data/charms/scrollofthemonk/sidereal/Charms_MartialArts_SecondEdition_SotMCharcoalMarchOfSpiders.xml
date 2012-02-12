@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.6//EN"
+"../../charms.dtd">
+<!--
+
+    CharcoalMarchOfSpiders.xml - XML charm data for Anathema plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Charcoal March of Spiders Style -->
+     <charm id="Sidereal.UnnaturalManyStepStride" exalt="Solar" group="CharcoalMarchOfSpidersStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="6" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple">
+               <special speed="4" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Emotion" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.DanceOfTheHungrySpider" exalt="Solar" group="CharcoalMarchOfSpidersStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+               <charmReference id="Sidereal.UnnaturalManyStepStride" />
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+          </cost>
+          <duration amount="5" unit="action" />
+          <charmtype type="Reflexive">
+               <special primaryStep="1" secondaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.MawOfDrippingVenom" exalt="Solar" group="CharcoalMarchOfSpidersStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.RainOfUnseenThreads" exalt="Solar" group="CharcoalMarchOfSpidersStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+          </prerequisite>
+          <cost>
+               <essence cost="8" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="ExtraAction" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.NestOfLivingStrands" exalt="Solar" group="CharcoalMarchOfSpidersStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="5" />
+               <essence value="4" />
+               <charmReference id="Sidereal.RainOfUnseenThreads" />
+          </prerequisite>
+          <cost>
+               <essence cost="15" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple">
+               <special speed="6" defense="-2" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Crippling" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.CharcoalMarchOfSpidersForm" exalt="Solar" group="CharcoalMarchOfSpidersStyle">
+          <prerequisite>
+               <!-- Prerequisite of "One complete Celestial Style" doesn't seem to be modeled in XML. -->
+               <trait id="MartialArts" value="5" />
+               <essence value="5" />
+               <charmReference id="Sidereal.DanceOfTheHungrySpider" />
+               <charmReference id="Sidereal.MawOfDrippingVenom" />
+               <charmReference id="Sidereal.NestOfLivingStrands" />
+          </prerequisite>
+          <cost>
+               <essence cost="12" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Form" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.CannibalisticHeritageTechnique" exalt="Solar" group="CharcoalMarchOfSpidersStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="6" />
+               <essence value="6" />
+               <charmReference id="Sidereal.CharcoalMarchOfSpidersForm" />
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="5" />
+          </charmtype>
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.ThumbnailSpiderMarch" exalt="Solar" group="CharcoalMarchOfSpidersStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="6" />
+               <essence value="6" />
+               <charmReference id="Sidereal.CannibalisticHeritageTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="12" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="ExtraAction" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.JumpingSpiderStrike" exalt="Solar" group="CharcoalMarchOfSpidersStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="6" />
+               <essence value="6" />
+               <charmReference id="Sidereal.CannibalisticHeritageTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.WaterSpiderBite" exalt="Solar" group="CharcoalMarchOfSpidersStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="6" />
+               <essence value="6" />
+               <charmReference id="Sidereal.CannibalisticHeritageTechnique" />
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Crippling" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.PatternSpiderTouch" exalt="Solar" group="CharcoalMarchOfSpidersStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="6" />
+               <essence value="6" />
+               <charmReference id="Sidereal.ThumbnailSpiderMarch" />
+               <charmReference id="Sidereal.JumpingSpiderStrike" />
+               <charmReference id="Sidereal.WaterSpiderBite" />
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+               <willpower cost="1" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+     <charm id="Sidereal.GrandmotherSpiderMastery" exalt="Solar" group="CharcoalMarchOfSpidersStyle">
+          <prerequisite>
+               <trait id="MartialArts" value="6" />
+               <essence value="7" />
+               <charmReference id="Sidereal.PatternSpiderTouch" />
+          </prerequisite>
+          <cost>
+               <essence cost="20" />
+               <willpower cost="1" />
+          </cost>
+          <duration amount="1" unit="action" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Sidereal" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="ScrollMonk" />
+     </charm>
+</charmlist>

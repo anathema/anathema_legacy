@@ -13,8 +13,8 @@ Set Up
 
 Development
 ===========
-### Launching Anathema from an IDE ###
-Launch ``net.sf.anathema.AnathemaDevelopmentBootLoader``.
+### Launching Anathema###
+Launch ``net.sf.anathema.AnathemaBootLoader``.
 
 ### Adding a dependency ###
 1. Add the dependency entry to the module's ``build.gradle``.
@@ -23,7 +23,6 @@ Launch ``net.sf.anathema.AnathemaDevelopmentBootLoader``.
 ### Adding a new module ###
 1. Run ``gradlew createModule -PmoduleName=MODULENAME``
 2. In ``settings.gradle``, add your module name.
-3. In ``plugins.gradle``, add your module to a fitting plugin or the list of 'single-module plugins'.
 4. Run ``gradlew eclipseProject eclipseClasspath eclipseJdt`` or ``gradlew idea``.
 5. (Only with eclipse,) import the project.
 
@@ -46,5 +45,5 @@ Run ``gradlew buildZip``. Done.
 > This only works on Mac OS X.
 
 1. Run ``gradlew buildZip`` to compile the distribution.
-2. Run ``gradlew -b macApplication.gradle buildMacApplication`` to build the Applicaton Folder.
+2. Run ``gradlew -b macApplication.gradle buildMacApplication`` to build the Application Folder.
 3. Run ``gradlew -b macDmg.gradle buildDmgOnMacOS`` to build the Disk Image.

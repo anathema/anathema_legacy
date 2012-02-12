@@ -1,10 +1,9 @@
 package net.sf.anathema.character.lunar.reporting.content.stats.heartsblood;
 
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
-
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class HeartsBloodNotesStatsGroup extends AbstractTextStatsGroup<IHeartsBloodStats> {
 
@@ -20,7 +19,7 @@ public class HeartsBloodNotesStatsGroup extends AbstractTextStatsGroup<IHeartsBl
   }
 
   public Float[] getColumnWeights() {
-    return new Float[] { 5f };
+    return new Float[]{5f};
   }
 
   public String getTitle() {

@@ -15,14 +15,14 @@ public class GlobalChangeAdapter<T> implements
   }
 
   public void valueChanged(T newValue) {
-    listener.changeOccured();
+    listener.changeOccurred();
   }
 
   public void valueChanged(int newValue) {
-    listener.changeOccured();    
+    listener.changeOccurred();
   }
 
   public void valueChanged(boolean newValue) {
-    listener.changeOccured();    
+    listener.changeOccurred();
   }
 }

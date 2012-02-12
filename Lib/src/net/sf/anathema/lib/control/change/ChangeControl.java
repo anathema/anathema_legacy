@@ -13,7 +13,7 @@ public class ChangeControl {
 
   public void fireChangedEvent() {
     for (IChangeListener listener : cloneListeners()) {
-      listener.changeOccured();
+      listener.changeOccurred();
     }
   }
 

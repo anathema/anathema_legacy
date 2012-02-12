@@ -17,7 +17,6 @@ import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificCharact
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateType;
@@ -38,34 +37,12 @@ import net.sf.anathema.character.lunar.renown.RenownFactory;
 import net.sf.anathema.character.lunar.renown.RenownPersisterFactory;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.RenownViewFactory;
-import net.sf.anathema.character.lunar.reporting.Extended1stEditionLunarPartEncoder;
-import net.sf.anathema.character.lunar.reporting.Extended2ndEditionLunarPartEncoder;
-import net.sf.anathema.character.lunar.reporting.content.GiftContent;
-import net.sf.anathema.character.lunar.reporting.content.GiftContentFactory;
-import net.sf.anathema.character.lunar.reporting.content.equipment.LunarArmourContent;
-import net.sf.anathema.character.lunar.reporting.content.equipment.LunarArmourContentFactory;
-import net.sf.anathema.character.lunar.reporting.content.equipment.LunarWeaponryContent;
-import net.sf.anathema.character.lunar.reporting.content.equipment.LunarWeaponryContentFactory;
-import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
-import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContentFactory;
-import net.sf.anathema.character.lunar.reporting.layout.Lunar2ndEditionAdditionalPageFactory;
-import net.sf.anathema.character.lunar.reporting.layout.LunarBeastform1stEditionPageFactory;
-import net.sf.anathema.character.lunar.reporting.rendering.anima.AnimaEncoderFactory;
-import net.sf.anathema.character.lunar.reporting.rendering.equipment.FormArsenalEncoderFactory;
-import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.GreatCurse1stEditionEncoderFactory;
-import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.GreatCurse2ndEditionEncoderFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawModelFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawViewFactory;
-import net.sf.anathema.character.reporting.CharacterReportingModule;
-import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 
 import java.util.HashMap;
@@ -78,7 +55,6 @@ import static net.sf.anathema.character.generic.type.CharacterType.LUNAR;
 @CharacterModule
 public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
 
-  private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
   public static final String BACKGROUND_ID_HEARTS_BLOOD = "HeartsBlood"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_HEARTS_BLOOD_HUMAN = "HeartsBloodHuman"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_RENOWN = "Renown"; //$NON-NLS-1$
@@ -210,36 +186,5 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     additionalModelFactoryRegistry.register(templateId, new BeastformModelFactory());
     additionalViewFactoryRegistry.register(templateId, new BeastformViewFactory());
     persisterFactory.register(templateId, new BeastformPersisterFactory());
-  }
-
-  @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    registerContent(resources, moduleObject.getContentRegistry());
-    registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry(), moduleObject.getEncoderRegistry());
-    registerEncoder(moduleObject.getEncoderRegistry());
-    moduleObject.getAdditionalPageRegistry().add(new LunarBeastform1stEditionPageFactory());
-    moduleObject.getAdditionalPageRegistry().add(new Lunar2ndEditionAdditionalPageFactory());
-    moduleObject.getEncoderRegistry().add(new AnimaEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new GreatCurse1stEditionEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new GreatCurse2ndEditionEncoderFactory());
-  }
-
-  private void registerEncoder(EncoderRegistry registry) {
-    registry.add(new AnimaEncoderFactory());
-    registry.add(new FormArsenalEncoderFactory());
-  }
-
-  private void registerContent(IResources resources, ReportContentRegistry contentRegistry) {
-    contentRegistry.addFactory(KnackContent.class, new KnackContentFactory(resources));
-    contentRegistry.addFactory(LunarWeaponryContent.class, new LunarWeaponryContentFactory(resources));
-    contentRegistry.addFactory(LunarArmourContent.class, new LunarArmourContentFactory(resources));
-    contentRegistry.addFactory(GiftContent.class, new GiftContentFactory(resources));
-  }
-
-  private void registerExtendedReporting(IResources resources, ExtendedEncodingRegistry registry, EncoderRegistry encoderRegistry) {
-    registry
-            .setPartEncoder(LUNAR, FirstEdition, new Extended1stEditionLunarPartEncoder(encoderRegistry, resources, registry.getBaseFont(), ESSENCE_MAX));
-    registry.setPartEncoder(LUNAR, SecondEdition, new Extended2ndEditionLunarPartEncoder(encoderRegistry, resources, registry, ESSENCE_MAX));
   }
 }

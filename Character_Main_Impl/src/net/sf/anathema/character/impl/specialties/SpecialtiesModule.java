@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.presenter.specialty.SpecialtiesModelFactory;
 import net.sf.anathema.character.presenter.specialty.SpecialtiesTemplate;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
 
 @CharacterModule
 public class SpecialtiesModule extends NullObjectCharacterModuleAdapter {
@@ -21,10 +20,5 @@ public class SpecialtiesModule extends NullObjectCharacterModuleAdapter {
     IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry = characterGenerics.getAdditionalViewFactoryRegistry();
     additionalViewFactoryRegistry.register(templateId, new SpecialtiesViewFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(new SpecialtiesTemplate());
-  }
-
-  @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    // included in PdfFirstPageEncoder
   }
 }

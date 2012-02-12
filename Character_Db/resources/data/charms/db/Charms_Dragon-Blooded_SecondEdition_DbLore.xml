@@ -1,0 +1,115 @@
+<charmlist>
+<charm id="Dragon-Blooded.ElementalConcentrationTrance" exalt="Dragon-Blooded" group="Lore">
+ <prerequisite>
+  <trait id="Lore" value="2"/>
+  <essence value="1"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="5"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration amount="1" unit="day"/>
+ <charmtype type="Simple"/>
+ <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.EternalMindMeditation" exalt="Dragon-Blooded" group="Lore">
+ <prerequisite>
+  <trait id="Lore" value="3"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.ElementalConcentrationTrance"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="2"/>
+   <willpower cost="1"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.ElementalEmpowermentMeditation" exalt="Dragon-Blooded" group="Lore">
+ <prerequisite>
+  <trait id="Lore" value="4"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.ElementalConcentrationTrance"/>
+ </prerequisite>
+ <cost>
+  
+   <willpower cost="1" text="or more"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.ElementalSuccorMethod" exalt="Dragon-Blooded" group="Lore">
+ <prerequisite>
+  <trait id="Lore" value="5"/>
+  <essence value="3"/>
+  <charmReference id="Dragon-Blooded.ElementalEmpowermentMeditation"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="5" text="per lhl or 2m per hl"/>
+   <willpower cost="1" text="per lhl"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-Basic" visualize="true"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.ElementalBoltAttack" exalt="Dragon-Blooded" group="Lore">
+ <prerequisite>
+  <trait id="Lore" value="2"/>
+  <essence value="2"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1" text="per 2L"/>
+  
+ </cost>
+ <combo selectAbilities="Archery,Athletics,Thrown"/>
+ <duration duration="Instant"/>
+ <charmtype type="Simple"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Combo-AltCore-Archery"/>
+ <charmAttribute attribute="Combo-AltCore-Athletics"/>
+ <charmAttribute attribute="Combo-AltCore-Thrown"/>
+ <charmAttribute attribute="Cooperative" visualize="true"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Leader" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+ <source source="DragonBlooded2nd"/>
+</charm>
+
+<charm id="Dragon-Blooded.ElementalBurstTechnique" exalt="Dragon-Blooded" group="Lore">
+ <prerequisite>
+  <trait id="Lore" value="3"/>
+  <essence value="2"/>
+  <charmReference id="Dragon-Blooded.ElementalBoltAttack"/>
+ </prerequisite>
+ <cost>
+  
+   <essence cost="1" text="per 1L"/>
+  
+ </cost>
+ <duration duration="Instant"/>
+ <charmtype type="Permanent"/>
+ <charmAttribute attribute="Combo-OK" visualize="true"/>
+ <charmAttribute attribute="Cooperative" visualize="true"/>
+ <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Obvious" visualize="true"/>
+ <source source="DragonBlooded2nd"/>
+</charm>
+</charmlist>

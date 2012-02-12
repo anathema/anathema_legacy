@@ -79,7 +79,7 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
       }
     });
     model.addListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         refreshList(list);
       }
     });

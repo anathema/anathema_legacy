@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics.shape;
 
-import com.lowagie.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 
 public class Dot extends AbstractShape {

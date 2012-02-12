@@ -1,9 +1,9 @@
 package net.sf.anathema.character.sidereal.reporting.rendering;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.CellPadding;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;

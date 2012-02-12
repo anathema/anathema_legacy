@@ -229,9 +229,8 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   }
 
   private IBackgroundTemplate getBackgroundTemplate(Element parent) throws PersistenceException {
-    final String backgroundId = ElementUtilities.getRequiredAttrib(parent.element(TAG_BACKGROUND_REFERENCE), ATTRIB_ID);
-    IBackgroundTemplate background = backgroundRegistry.getById(backgroundId);
-    return background;
+    String backgroundId = ElementUtilities.getRequiredAttrib(parent.element(TAG_BACKGROUND_REFERENCE), ATTRIB_ID);
+    return backgroundRegistry.getById(backgroundId);
   }
 
   private AdditionalEssencePool parsePool(Element parent, String elementName) throws PersistenceException {

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes;
 
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.DocumentException;
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;

@@ -1,23 +1,27 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.initialization.InitializationException;
+import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.util.Identificate;
 
+import java.util.Collection;
+import java.util.Collections;
+
 public class EquipmentAdditionalModelTemplate extends Identificate implements
-    IGlobalAdditionalTemplate,
-    IEquipmentAdditionalModelTemplate {
+        IGlobalAdditionalTemplate,
+        IEquipmentAdditionalModelTemplate {
 
-  public final Map<ICharacterType, IEquipmentTemplate> templatesByType = new HashMap<ICharacterType, IEquipmentTemplate>();
+  private Instantiater instantiater;
 
-  public EquipmentAdditionalModelTemplate() {
+  public EquipmentAdditionalModelTemplate(Instantiater instantiater) {
     super(ID);
+    this.instantiater = instantiater;
   }
 
   public boolean supportsEdition(IExaltedEdition edition) {
@@ -25,10 +29,21 @@ public class EquipmentAdditionalModelTemplate extends Identificate implements
   }
 
   public IEquipmentTemplate getNaturalWeaponTemplate(ICharacterType characterType) {
-    return templatesByType.get(characterType);
+    Collection<IEquipmentTemplate> templates = gatherTemplates();
+    for (IEquipmentTemplate template : templates) {
+      if (template.getClass().getAnnotation(RegisteredNaturalWeapon.class).characterType() == characterType) {
+        return template;
+      }
+    }
+    return null;
   }
 
-  public void addNaturalWeaponTemplate(ICharacterType type, IEquipmentTemplate template) {
-    templatesByType.put(type, template);
+  private Collection<IEquipmentTemplate> gatherTemplates() {
+    try {
+      return instantiater.instantiateAll(RegisteredNaturalWeapon.class);
+    } catch (InitializationException e) {
+      Logger.getLogger(EquipmentAdditionalModel.class).error("Could not collect additional natural weapons.", e);
+      return Collections.emptyList();
+    }
   }
 }

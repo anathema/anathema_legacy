@@ -1,6 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.rendering.heartsblood;
 
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IAnimalForm;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;

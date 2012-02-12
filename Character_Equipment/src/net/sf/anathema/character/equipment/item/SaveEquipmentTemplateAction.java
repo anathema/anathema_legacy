@@ -16,7 +16,7 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
   private final IResources resources;
   private final IEquipmentDatabaseManagement model;
   private final IChangeListener changeListener = new IChangeListener() {
-    public void changeOccured() {
+    public void changeOccurred() {
       updateEnabled();
     }
   };

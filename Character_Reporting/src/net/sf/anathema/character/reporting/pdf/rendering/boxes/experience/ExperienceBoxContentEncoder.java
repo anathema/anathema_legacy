@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.experience;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Phrase;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.experience.ExperienceContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.social;
 
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.social.ISocialCombatStats;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -15,8 +15,7 @@ public class HonestyStatsGroup extends AbstractSocialCombatsValueStatsGroup {
     if (stats == null) {
       table.addCell(createFinalValueCell(font));
       table.addCell(createFinalValueCell(font));
-    }
-    else {
+    } else {
       table.addCell(createFinalValueCell(font, stats.getHonestyAttackValue()));
       table.addCell(createFinalValueCell(font, stats.getHonestyMDV()));
     }

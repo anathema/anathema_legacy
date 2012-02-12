@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -23,8 +23,8 @@ import net.sf.anathema.lib.resources.IResources;
 public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   private EncoderRegistry encoderRegistry;
 
-  public Extended2ndEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, ExtendedEncodingRegistry registry, IResources resources, PageConfiguration pageConfiguration) {
-    super(partEncoder, registry, resources, pageConfiguration);
+  public Extended2ndEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration pageConfiguration) {
+    super(partEncoder, resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;
   }
 
@@ -103,7 +103,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeSpecialties(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, new ExtendedSpecialtiesEncoder(getResources(), getBaseFont()), 1, 2, distanceFromTop, height);
+    return encodeFixedBox(graphics, content, new ExtendedSpecialtiesEncoder(getResources()), 1, 2, distanceFromTop, height);
   }
 
   private float encodeAttributes(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -124,7 +124,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeGreatCurse(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    ContentEncoder encoder = getPartEncoder().getGreatCurseEncoder();
+    ContentEncoder encoder = getPartEncoder().getGreatCurseEncoder(encoderRegistry, content);
     if (encoder != null) {
       return encodeFixedBox(graphics, content, encoder, 2, 1, distanceFromTop, height);
     } else {
@@ -138,7 +138,8 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeLinguistics(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getLinguisticsEncoder(), 3, 1, distanceFromTop, height);
+    ContentEncoder linguisticsEncoder = encoderRegistry.createEncoder(getResources(), content, EncoderIds.LANGUAGES);
+    return encodeFixedBox(graphics, content, linguisticsEncoder, 3, 1, distanceFromTop, height);
   }
 
   private float encodeExperience(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
@@ -146,7 +147,7 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private boolean hasMutations(ReportContent content) {
-    return getRegistry().getMutationsEncoder().hasContent(content);
+    return getMutationsEncoder(content).hasContent(content);
   }
 
   private boolean hasMeritsAndFlaws(ReportContent content) {
@@ -158,7 +159,12 @@ public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeMutations(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, getRegistry().getMutationsEncoder(), 2, 1, distanceFromTop, height);
+    ContentEncoder mutationsEncoder = getMutationsEncoder(content);
+    return encodeFixedBox(graphics, content, mutationsEncoder, 2, 1, distanceFromTop, height);
+  }
+
+  private ContentEncoder getMutationsEncoder(ReportContent content) {
+    return encoderRegistry.createEncoder(getResources(), content, EncoderIds.MUTATIONS);
   }
 
   private float encodeMeritsAndFlaws(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {

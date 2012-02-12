@@ -1,10 +1,10 @@
 package net.sf.anathema.character.lunar.reporting.rendering.greatcurse;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.model.ILunarVirtueFlaw;

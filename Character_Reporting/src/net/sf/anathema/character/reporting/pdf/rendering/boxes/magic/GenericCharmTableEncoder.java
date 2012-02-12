@@ -1,16 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.Image;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfTemplate;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -30,7 +21,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -62,8 +52,8 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
     PdfContentByte directContent = graphics.getDirectContent();
     List<ITraitType> traits = getTraits(character);
     Font font = graphics.createTableFont();
-    PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, Color.BLACK);
-    PdfTemplate notLearnedTemplate = createCharmDotTemplate(directContent, Color.WHITE);
+    PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, BaseColor.BLACK);
+    PdfTemplate notLearnedTemplate = createCharmDotTemplate(directContent, BaseColor.WHITE);
     PdfPTable table = new PdfPTable(createColumnWidths(traits.size() + 1));
     table.setWidthPercentage(100);
     table.addCell(new TableCell(new Phrase(), Rectangle.NO_BORDER));
@@ -104,12 +94,12 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
     return traits;
   }
 
-  private PdfTemplate createCharmDotTemplate(PdfContentByte directContent, Color color) {
+  private PdfTemplate createCharmDotTemplate(PdfContentByte directContent, BaseColor color) {
     float lineWidth = 0.75f;
     float templateSize = IVoidStateFormatConstants.SMALL_SYMBOL_HEIGHT - 1 + 2 * lineWidth;
     PdfTemplate template = directContent.createTemplate(templateSize, templateSize);
     template.setColorFill(color);
-    template.setColorStroke(Color.BLACK);
+    template.setColorStroke(BaseColor.BLACK);
     template.setLineWidth(lineWidth);
     float radius = templateSize / 2 - lineWidth;
     template.circle(templateSize / 2, templateSize / 2, radius);
@@ -132,8 +122,8 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
   }
 
   private PdfPCell createHeaderCell(SheetGraphics graphics, PdfContentByte directContent, ITraitType abilityType) throws DocumentException {
-    directContent.setColorStroke(Color.BLACK);
-    directContent.setColorFill(Color.BLACK);
+    directContent.setColorStroke(BaseColor.BLACK);
+    directContent.setColorFill(BaseColor.BLACK);
     String text = resources.getString(abilityType.getId());
     if (text.length() >= IVoidStateFormatConstants.TYPE_LONG_FORM_CUTOFF) {
       text = resources.getString(abilityType.getId() + ".Short");

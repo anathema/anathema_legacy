@@ -15,7 +15,7 @@
 
 	<target name="Build Plugins">
 		<buildAnathemaPlugin module.name="core"
-			projectset="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Platform_Database,Platform_SvgTree" />
+			projectset="Lib,Lib_Gui,Lib_Workflow,Platform,Platform_Database,Platform_SvgTree" />
 		<buildAnathemaPlugin module.name="namegenerator" projectset="Namegenerator" />
 		<buildAnathemaPlugin module.name="character"
 			projectset="Character_Generic,Character_Generic_Impl,Character_Generic_Framework,Character_Reporting,Character_Library,Character_Craft,Character_Linguistics,Charm_Tree,Character_Intimacies,Character_Equipment,Character_Equipment_Impl,Character_MeritsFlaws,Character_Mutations,Character_Main,Character_Main_Impl" />

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../../../charms.dtd">
+<!--
+
+    dodge.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2007  Paul R. Adams (pauladams@hotmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <!-- Dodge -->
+     <charm id="Sidereal.Absence" exalt="Sidereal" group="Dodge">
+          <prerequisite>
+               <trait id="Dodge" value="2" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.DuckFate" exalt="Sidereal" group="Dodge">
+          <prerequisite>
+               <trait id="Dodge" value="3" />
+               <essence value="2" />
+               <charmReference id="Sidereal.Absence" />
+          </prerequisite>
+          <cost>
+               <essence cost="10" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive">
+               <special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.AvoidanceKata" exalt="Sidereal" group="Dodge">
+          <prerequisite>
+               <trait id="Dodge" value="3" />
+               <essence value="3" />
+               <charmReference id="Sidereal.DuckFate" />
+          </prerequisite>
+          <cost>
+               <essence cost="2" />
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.TroubleReductionStrategy" exalt="Sidereal" group="Dodge">
+          <prerequisite>
+               <trait id="Dodge" value="4" />
+               <essence value="2" />
+               <charmReference id="Sidereal.DuckFate" />
+          </prerequisite>
+          <cost>
+               <essence cost="5" />
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Virtue-Compassion" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+     <charm id="Sidereal.NeighborhoodRelocationScheme" exalt="Sidereal" group="Dodge">
+          <prerequisite>
+               <trait id="Dodge" value="5" />
+               <essence value="4" />
+               <charmReference id="Sidereal.AvoidanceKata" />
+               <charmReference id="Sidereal.TroubleReductionStrategy" />
+          </prerequisite>
+          <cost>
+               <essence cost="15" />
+               <willpower cost="1" />
+               <health cost="2" type="Bashing" text="+2 bhl per hour" />
+          </cost>
+          <duration duration="Indefinite" />
+          <charmtype type="Simple">
+               <special speed="6" defense="-2" />
+          </charmtype>
+          <charmAttribute attribute="Illusion" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="PrayerStrip" visualize="true" />
+          <source source="Sidereals2nd" />
+     </charm>
+</charmlist>

@@ -1,5 +1,0 @@
-dependencies {
-	compile files(
-		"../Thirdparty/JeksParser/jeksparser.jar",
-    )
-}

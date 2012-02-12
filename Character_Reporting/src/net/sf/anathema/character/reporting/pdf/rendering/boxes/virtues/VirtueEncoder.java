@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues;
 
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.PdfContentByte;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContent;

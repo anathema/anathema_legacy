@@ -3,6 +3,8 @@ package net.sf.anathema.acceptance.fixture.character;
 import net.sf.anathema.character.generic.framework.CharacterModuleContainerInitializer;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
 import net.sf.anathema.framework.resources.AnathemaResources;
+import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
+import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.test.character.DemoDataFileProvider;
@@ -21,7 +23,7 @@ public class SetupCharacterPlatformFixture extends Fixture {
     CharacterModuleContainer container;
     try {
       characterSummary.registerCharmFiles();
-      container = new CharacterModuleContainerInitializer().initContainer(resources, dataFileProvider);
+      container = new CharacterModuleContainerInitializer(new ReflectionsInstantiater(new DefaultAnathemaReflections())).initContainer(resources, dataFileProvider);
     }
     catch (Exception e) {
       throw new RuntimeException("Failed to initialize Character Sub-Modules.", e); //$NON-NLS-1$

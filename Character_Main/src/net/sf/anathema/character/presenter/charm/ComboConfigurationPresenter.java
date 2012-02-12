@@ -205,7 +205,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
   private void initComboModelListening(final IComboConfigurationView comboView) {
     comboConfiguration.addComboModelListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateCharmListsInView(comboView);
       }
     });

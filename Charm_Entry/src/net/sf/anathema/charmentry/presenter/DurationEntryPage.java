@@ -71,7 +71,7 @@ public class DurationEntryPage extends AbstractAnathemaWizardPage {
     });
     final JRadioButton amountButton = view.addRadioButton(properties.getQualifiedAmountDurationString());
     view.addTypeChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         qualifiedAmountDuration = amountButton.isSelected();
         getPageModel().clearDuration();
         simpleDurationView.setText(null);

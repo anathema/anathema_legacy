@@ -62,7 +62,7 @@ public class CharmCompiler {
       list.add(reader.read(resource));
     }
     catch (DocumentException e) {
-      throw new CharmException(e);
+      throw new CharmException(resource.toExternalForm(), e);
     }
   }
 

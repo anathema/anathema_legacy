@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.impl.util.AnathemaExpressionParameter;
 import net.sf.anathema.character.generic.impl.util.AnathemaExpressionSyntax;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -21,18 +20,16 @@ public class ComplexAdditionalEssencePool implements IIdentificate {
   private final Map<Integer, Integer> override = new HashMap<Integer, Integer>();
   private final AnathemaExpressionParameter parameter = new AnathemaExpressionParameter();
   private final ExpressionParser parser = new ExpressionParser(new AnathemaExpressionSyntax(),
-                                                               parameter);
-  
+          parameter);
+
   public ComplexAdditionalEssencePool(String id, int multiplier) {
     this.id = id;
     CompiledExpression expression = null;
     try {
       expression = parser.compileExpression("=x*" + multiplier);
-    }
-    catch (CompilationException e) {
+    } catch (CompilationException e) {
       assert false : e;
-    }
-    finally {
+    } finally {
       this.expression = expression;
     }
   }
@@ -41,7 +38,7 @@ public class ComplexAdditionalEssencePool implements IIdentificate {
     this.id = id;
     this.expression = parser.compileExpression(formula);
   }
-  
+
   public String getId() {
     return id;
   }
@@ -50,16 +47,12 @@ public class ComplexAdditionalEssencePool implements IIdentificate {
     override.put(value, pool);
   }
 
-  public int getPool(IGenericTraitCollection traitCollection,
-                     IMagicCollection magicCollection,
-                     int x) {
+  public int getPool(IGenericTraitCollection traitCollection, int x) {
     if (override.containsKey(x)) {
       return override.get(x);
     }
-    
     parameter.setTraitCollection(traitCollection);
     parameter.setParameter(x);
-    int pool = (Integer)expression.computeExpression(new IntegerInterpreter());
-    return pool;
+    return (Integer) expression.computeExpression(new IntegerInterpreter());
   }
 }

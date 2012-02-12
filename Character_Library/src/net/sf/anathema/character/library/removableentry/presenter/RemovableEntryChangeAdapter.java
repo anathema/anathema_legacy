@@ -10,7 +10,7 @@ public final class RemovableEntryChangeAdapter<T> implements IRemovableEntryList
   }
 
   public void entryAdded(T entry) {
-    listener.changeOccured();
+    listener.changeOccurred();
   }
 
   public void entryAllowed(boolean complete) {
@@ -18,6 +18,6 @@ public final class RemovableEntryChangeAdapter<T> implements IRemovableEntryList
   }
 
   public void entryRemoved(T entry) {
-    listener.changeOccured();
+    listener.changeOccurred();
   }
 }

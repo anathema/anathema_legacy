@@ -59,7 +59,7 @@ public class MusicSearchPresenter implements IPresenter {
 
   private void initListening() {
     searchControl.addSearchResultChangedListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         controlView.getTrackListView().setObjects(searchControl.getSearchResult());
         controlView.getTrackListView().setListTitle(
             resources.getString("Music.Labels.LibraryTrackView.SearchResultsTitle")); //$NON-NLS-1$

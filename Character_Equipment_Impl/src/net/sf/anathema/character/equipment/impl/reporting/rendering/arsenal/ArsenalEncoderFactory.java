@@ -4,9 +4,11 @@ import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.GlobalEncoderFactory;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
+@RegisteredEncoderFactory
 public class ArsenalEncoderFactory extends GlobalEncoderFactory {
 
   public ArsenalEncoderFactory() {

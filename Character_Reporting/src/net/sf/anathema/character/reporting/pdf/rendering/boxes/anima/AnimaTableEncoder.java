@@ -1,25 +1,19 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.anima;
 
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
-import net.sf.anathema.character.reporting.pdf.content.stats.anima.AnimaTableRangeProvider;
-import net.sf.anathema.character.reporting.pdf.content.stats.anima.AnimaTableStealthProvider;
-import net.sf.anathema.character.reporting.pdf.content.stats.anima.AnimaUtils;
-import net.sf.anathema.character.reporting.pdf.content.stats.anima.ColumnDescriptor;
-import net.sf.anathema.character.reporting.pdf.content.stats.anima.IAnimaTableRangeProvider;
-import net.sf.anathema.character.reporting.pdf.content.stats.anima.IAnimaTableStealthProvider;
+import net.sf.anathema.character.reporting.pdf.content.stats.anima.*;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
-
-import java.awt.*;
 
 public class AnimaTableEncoder extends AbstractTableEncoder<ReportContent> {
 
@@ -118,10 +112,10 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportContent> {
   }
 
   private Font createFont(SheetGraphics graphics) {
-    return new Font(graphics.getBaseFont(), this.fontSize, Font.NORMAL, Color.BLACK);
+    return new Font(graphics.getBaseFont(), this.fontSize, Font.NORMAL, BaseColor.BLACK);
   }
 
   private Font createHeaderFont(SheetGraphics graphics) {
-    return new Font(graphics.getBaseFont(), this.fontSize, Font.ITALIC, Color.BLACK);
+    return new Font(graphics.getBaseFont(), this.fontSize, Font.ITALIC, BaseColor.BLACK);
   }
 }

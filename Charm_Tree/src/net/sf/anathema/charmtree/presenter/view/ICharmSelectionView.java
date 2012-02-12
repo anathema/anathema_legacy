@@ -1,18 +1,18 @@
 package net.sf.anathema.charmtree.presenter.view;
 
-import java.awt.Color;
-
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
-import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 
-public interface ICharmSelectionView extends ICascadeSelectionView, IView {
+import javax.swing.JComponent;
+import java.awt.Color;
 
-  public void addCharmSelectionListener(INodeSelectionListener listener);
+public interface ICharmSelectionView extends ICascadeSelectionView, IView, ISpecialCharmViewContainer {
 
-  public void setCharmVisuals(String charmId, Color fillColor, int opacity);
+  void addCharmSelectionListener(INodeSelectionListener listener);
 
-  public void initGui();
+  void setCharmVisuals(String charmId, Color fillColor, int opacity);
 
-  public void setSpecialCharmViewVisible(ISVGSpecialNodeView charmView, boolean visible);
+  void initGui();
+
+  JComponent getCharmComponent();
 }

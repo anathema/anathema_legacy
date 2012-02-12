@@ -1,99 +1,45 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.lowagie.text.Font;
-import com.lowagie.text.pdf.BaseFont;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.pdf.rendering.general.NullBoxContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
-import net.sf.anathema.lib.collection.Table;
+import net.sf.anathema.initialization.InitializationException;
+import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
 
-public class ExtendedEncodingRegistry implements IEncodingRegistry {
+public class ExtendedEncodingRegistry {
 
-  private final Table<ICharacterType, IExaltedEdition, IExtendedPartEncoder> partEncoderTable =
-    new Table<ICharacterType, IExaltedEdition, IExtendedPartEncoder>();
+  private Instantiater instantiater;
+  private IResources resources;
 
-  private final BaseFont baseFont;
-  private final BaseFont symbolBaseFont;
-  private ContentEncoder armourContentEncoder = new NullBoxContentEncoder("Armour");
-  private ContentEncoder possessionsEncoder = new NullBoxContentEncoder("Possessions");
-  private ContentEncoder linguisticsEncoder = new NullBoxContentEncoder("Linguistics");
-  private ContentEncoder mutationsEncoder = new NullBoxContentEncoder("Mutations");
-  private List<IVariableContentEncoder> sidebarEncoders = new ArrayList<IVariableContentEncoder>();
-  private List<ITableEncoder> magicEncoders = new ArrayList<ITableEncoder>();
-
-  public ExtendedEncodingRegistry() {
-    this.baseFont = new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
-    this.symbolBaseFont = new Font(Font.SYMBOL, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
-  }
-
-  @Override
-  public BaseFont getBaseFont() {
-    return baseFont;
-  }
-
-  @Override
-  public BaseFont getSymbolBaseFont() {
-    return symbolBaseFont;
-  }
-
-  @Override
-  public void setArmourContentEncoder(ContentEncoder encoder) {
-    this.armourContentEncoder = encoder;
-  }
-
-  public void setMutationsEncoder(ContentEncoder mutationsEncoder) {
-    this.mutationsEncoder = mutationsEncoder;
-  }
-
-  public ContentEncoder getArmourContentEncoder() {
-    return armourContentEncoder;
-  }
-
-  public ContentEncoder getPossessionsEncoder() {
-    return possessionsEncoder;
-  }
-
-  public ContentEncoder getLinguisticsEncoder() {
-    return linguisticsEncoder;
-  }
-
-  public ContentEncoder getMutationsEncoder() {
-    return mutationsEncoder;
-  }
-
-  public List<IVariableContentEncoder> getAdditionalMagicSidebarEncoders() {
-    return sidebarEncoders;
-  }
-
-  public List<ITableEncoder> getAdditionalMagicEncoders() {
-    return magicEncoders;
-  }
-
-  public void setPartEncoder(ICharacterType type, IExaltedEdition edition, IExtendedPartEncoder partEncoder) {
-    partEncoderTable.add(type, edition, partEncoder);
+  public ExtendedEncodingRegistry(Instantiater instantiater) {
+    this.instantiater = instantiater;
   }
 
   public IExtendedPartEncoder getPartEncoder(ICharacterType type, IExaltedEdition edition) {
-    return partEncoderTable.get(type, edition);
+    Collection<IExtendedPartEncoder> encoders = createEncoders();
+    for (IExtendedPartEncoder encoder : encoders) {
+      RegisteredPartEncoder annotation = encoder.getClass().getAnnotation(RegisteredPartEncoder.class);
+      if (annotation.characterType() == type && annotation.edition() == edition) {
+        return encoder;
+      }
+    }
+    return null;
   }
 
-  public boolean hasPartEncoder(ICharacterType type, IExaltedEdition edition) {
-    return partEncoderTable.contains(type, edition);
+  private Collection<IExtendedPartEncoder> createEncoders() {
+    try {
+      return instantiater.instantiateAll(RegisteredPartEncoder.class, resources);
+    } catch (InitializationException e) {
+      Logger.getLogger(ExtendedEncodingRegistry.class).error("Could not instantiate part encoders.", e);
+      return Collections.emptyList();
+    }
   }
 
-  @Override
-  public void setPossessionsEncoder(ContentEncoder encoder) {
-    this.possessionsEncoder = encoder;
-  }
-
-  public void setLinguisticsEncoder(ContentEncoder encoder) {
-    this.linguisticsEncoder = encoder;
+  public void setResources(IResources resources) {
+    this.resources = resources;
   }
 }

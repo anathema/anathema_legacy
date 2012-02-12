@@ -78,17 +78,16 @@ public class VirtueFlawPresenter implements IPresenter {
               int index,
               boolean isSelected,
               boolean cellHasFocus) {
-            Component listCellRendererComponent = super.getListCellRendererComponent(
+            return super.getListCellRendererComponent(
                 list,
                 value,
                 index,
                 isSelected,
                 cellHasFocus);
-            return listCellRendererComponent;
           }
         });
     virtueFlaw.addRootChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         rootView.setSelectedObject(virtueFlaw.getRoot());
       }
     });

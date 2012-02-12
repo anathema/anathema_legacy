@@ -78,7 +78,7 @@ public class SiderealCollegePresenter implements IPresenter {
         collegeView.setButtonState(college.getFavorization().isCasteOrFavored(), false);
       }
       house.addChangeListener(new IChangeListener() {
-        public void changeOccured() {
+        public void changeOccurred() {
           setOverviewData(favoredView, generalView, bonusView, experienceView);
         }
       });

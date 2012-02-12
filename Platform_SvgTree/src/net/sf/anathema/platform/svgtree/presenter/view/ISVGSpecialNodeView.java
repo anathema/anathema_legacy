@@ -7,11 +7,11 @@ import org.w3c.dom.svg.SVGGElement;
 
 public interface ISVGSpecialNodeView {
 
-  public String getNodeId();
+  String getNodeId();
 
-  public SVGGElement initGui(SVGOMDocument document, IBoundsCalculator boundsCalculator);
+  SVGGElement initGui(SVGOMDocument document, IBoundsCalculator boundsCalculator);
 
-  public void setVisible(boolean visible);
+  void setVisible(boolean visible);
 
-  public void reset();
+  void reset();
 }

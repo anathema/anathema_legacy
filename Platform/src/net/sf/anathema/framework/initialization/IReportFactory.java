@@ -7,5 +7,5 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface IReportFactory {
 
-  public IReport[] createReport(IResources resources, IRegistry<String, IAnathemaExtension> extensionPointRegistry);
+  IReport[] createReport(IResources resources, IRegistry<String, IAnathemaExtension> extensionPointRegistry);
 }

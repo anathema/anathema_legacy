@@ -22,7 +22,7 @@ public class DurationEntryModel implements IDurationEntryModel {
   public DurationEntryModel(final ICharmTypeEntryModel typeModel, final IConfigurableCharmData charmData) {
     this.charmData = charmData;
     typeModel.addModelListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         if (typeModel.getCharmType() == CharmType.Permanent) {
           setSimpleDuration("Permanent"); //$NON-NLS-1$
         }
@@ -54,10 +54,6 @@ public class DurationEntryModel implements IDurationEntryModel {
 
   public boolean isDurationComplete() {
     return charmData.getDuration() != null;
-  }
-
-  public void checkDuration() {
-    control.fireChangedEvent();
   }
 
   public void clearDuration() {

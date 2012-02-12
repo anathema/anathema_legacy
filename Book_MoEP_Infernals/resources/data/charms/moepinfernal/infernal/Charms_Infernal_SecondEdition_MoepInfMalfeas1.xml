@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
+<!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
+"../../charms.dtd">
+<!--
+
+    Malfeas.xml - XML charm data for Anathema Plug-ins.
+    Copyright (C) 2011  Sean C. Mattox (sean.mattox@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<charmlist xmlns="http://anathema.sourceforge.net/charms">
+     <charm id="Infernal.HardenedDevilBody" exalt="Infernal" group="PainReforged">
+          <!-- Coding:  Each purchase of this charm (up to a maximum of Min(Resistance, Stamina) times)
+           3x-2 levels AND 1x-4 level -->
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="1" />
+          </prerequisite>
+          <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Stackable" visualize="true" />
+          <oxbody trait="Resistance,Stamina">
+          	<pick name="Category.Infernal">
+          		<twoHealthLevel/>
+          		<twoHealthLevel/>
+          		<twoHealthLevel/>
+          		<fourHealthLevel/>
+          	</pick>
+          </oxbody>
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.ByPainReforged" exalt="Infernal" group="PainReforged">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="2" />
+          </prerequisite>
+          <cost>  
+               <health cost="1" type="Bashing" />  
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.PurityOfMadnessDefense" exalt="Infernal" group="PainReforged">
+	 <!-- costs 1 limit-->
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="2" />
+               <charmReference id="Infernal.ByPainReforged"/>
+          </prerequisite>
+          <cost/>
+          <duration duration="Instant" />
+          <charmtype type="Simple" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.BlightInternalizationTranscendence" exalt="Infernal" group="PainReforged">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="2" />
+               <charmReference id="Infernal.ByPainReforged"/>
+          </prerequisite>
+          <cost>  
+               <essence cost="1" />  
+          </cost>
+          <duration amount="1" unit="Season" />
+          <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.ScarWritSagaShield" exalt="Infernal" group="PainReforged">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="2" />
+               <charmReference id="Infernal.ByPainReforged"/>
+          </prerequisite>
+          <cost/>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <repurchases>
+          	<repurchase essence="2"/>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          </repurchases>
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.ViridianLegendExoskeleton" exalt="Infernal" group="PainReforged">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="3" />
+               <charmReference id="Infernal.ScarWritSagaShield"/>
+          </prerequisite>
+          <cost>  
+               <essence cost="10" />   
+               <willpower cost="1" />  
+          </cost>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple" />
+               <special speed="7" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          </repurchases>
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.PatheticDistractionRebuke" exalt="Infernal" group="PainReforged">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="2" />
+               <charmReference id="Infernal.ByPainReforged"/>
+          </prerequisite>
+          <cost>  
+               <essence cost="3" /> 
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+               <special primaryStep="2" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <repurchases limit="2"/>
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.InvulnerableWoundingFutility" exalt="Infernal" group="PainReforged">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="2" />
+               <charmReference id="Infernal.PatheticDistractionRebuke"/>
+          </prerequisite>
+          <cost>  
+               <essence cost="3" /> 
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+               <special primaryStep="9" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Counterattack" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.AblationOfBrassAndFire" exalt="Infernal" group="PainReforged">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="2" />
+               <charmReference id="Infernal.InvulnerableWoundingFutility"/>
+          </prerequisite>
+          <cost>  
+               <essence cost="4" /> 
+          </cost>
+          <duration duration="Instant" />
+          <charmtype type="Reflexive" />
+               <special primaryStep="2" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.NightmareFugueVigilance" exalt="Infernal" group="NightmareVigilance">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="2" />
+               <charmReference id="Infernal.ByPainReforged"/>
+          </prerequisite>
+          <cost/>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.ByAgonyEmpowered" exalt="Infernal" group="NightmareVigilance">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="3" />
+               <charmReference id="Infernal.NightmareFugueVigilance"/>
+          </prerequisite>
+          <cost/>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.ImperviousPrimacyMantle" exalt="Infernal" group="NightmareVigilance">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="3" />
+               <charmReference id="Infernal.NightmareFugueVigilance"/>
+          </prerequisite>
+          <cost>  
+               <essence cost="-" text="(4m per scene)" /> 
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.SolipsisticRejectionOfImpossibilities" exalt="Infernal" group="NightmareVigilance">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="3" />
+               <charmReference id="Infernal.NightmareFugueVigilance"/>
+          </prerequisite>
+          <cost>  
+               <essence cost="-" text="(1+ Limit)" /> 
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <source source="Infernals" />
+     </charm>
+     <charm id="Infernal.CrownedWithFury" exalt="Infernal" group="NightmareVigilance">
+          <prerequisite>
+               <trait id="Malfeas" value="0" />
+               <essence value="3" />
+               <charmReference id="Infernal.NightmareFugueVigilance"/>
+          </prerequisite>
+          <cost/>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Social" visualize="true" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+          <source source="Infernals" />
+     </charm>
+     
+</charmlist>

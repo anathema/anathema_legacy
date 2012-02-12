@@ -6,6 +6,7 @@ idea {
 }
 
 dependenciesDir = new File(buildDir, 'dependencies')
+pluginsDir = new File(buildDir, 'plugins')
 
 subprojects {
     apply plugin: 'eclipse'
@@ -16,6 +17,12 @@ subprojects {
     }
 
     repositories {
+        maven {
+            url 'https://github.com/anathema/anathema-thirdparty/raw/master/snapshots/'
+        }
+        maven {
+            url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
+        }
         mavenCentral()
     }
 
@@ -44,7 +51,7 @@ subprojects {
 
     task collectTransitiveDependencies() << {
         copy {
-            from configurations.compile.findAll { File dependency -> dependency.absolutePath.contains('Thirdparty') || dependency.absolutePath.contains('cache') }
+            from configurations.compile.findAll { File dependency -> (dependency.absolutePath.contains('Thirdparty') || dependency.absolutePath.contains('cache')) }
             into dependenciesDir
         }
     }
@@ -99,7 +106,7 @@ task buildZip(type: Zip) {
     into('lib') {
         from('build/dependencies')
     }
-    into('plugins') {
+    into('lib') {
         from('build/plugins')
     }
     from("Development_Distribution/Linux") {
@@ -124,7 +131,7 @@ task buildZip(type: Zip) {
 }
 
 [buildZip, buildWindowsInstaller].each {
-    it.dependsOn ':Anathema:buildBootloader', ':Anathema:collectDependencies'
+    it.dependsOn ':Anathema:jar'
     def os = System.getProperty("os.name").toLowerCase()
     if (os.contains("windows")) {
         it.dependsOn buildWindowsExecutable

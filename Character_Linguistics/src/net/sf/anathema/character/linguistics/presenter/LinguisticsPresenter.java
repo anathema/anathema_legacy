@@ -67,7 +67,7 @@ public class LinguisticsPresenter implements IPresenter {
       }
     });
     model.addCharacterChangedListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         updateOverview(familyView, totalView, barbarianView);
       }
     });

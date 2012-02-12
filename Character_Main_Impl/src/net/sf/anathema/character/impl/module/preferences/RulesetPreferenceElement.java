@@ -9,9 +9,11 @@ import java.awt.event.ActionListener;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
+import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 
+@PreferenceElement
 public class RulesetPreferenceElement extends AbstractCharacterPreferencesElement {
 
   private ExaltedRuleSet ruleset = ExaltedRuleSet.valueOf(CHARACTER_PREFERENCES.get(RULESET_PREFERENCE, DEFAULT_RULESET));

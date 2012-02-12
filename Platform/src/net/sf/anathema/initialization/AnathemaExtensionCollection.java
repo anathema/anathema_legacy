@@ -1,35 +1,24 @@
 package net.sf.anathema.initialization;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 import net.sf.anathema.framework.extension.IAnathemaExtension;
-import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
 
-import org.java.plugin.registry.Extension.Parameter;
+public class AnathemaExtensionCollection implements Iterable<ExtensionWithId> {
 
-public class AnathemaExtensionCollection extends AbstractInitializationCollection<IAnathemaExtension> {
+  private final List<ExtensionWithId> extensions = new ArrayList<ExtensionWithId>();
 
-  private static final String PARAM_ID = "id"; //$NON-NLS-1$
-  private final Map<String, IAnathemaExtension> extensionsById = new LinkedHashMap<String, IAnathemaExtension>();
-
-  public AnathemaExtensionCollection(IAnathemaPluginManager pluginManager) throws InitializationException {
-    collectContent(pluginManager);
+  public AnathemaExtensionCollection(Instantiater instantiater) throws InitializationException {
+    Collection<IAnathemaExtension> registeredExtensions = instantiater.instantiateAll(Extension.class);
+    for (IAnathemaExtension extension : registeredExtensions) {
+      Extension annotation = extension.getClass().getAnnotation(Extension.class);
+      String id = annotation.id();
+      extensions.add(new ExtensionWithId(id, extension));
+    }
   }
 
   @Override
-  protected void addItemForTypeParameter(Parameter typeParameter, IAnathemaExtension item) {
-    Parameter subParameter = typeParameter.getSubParameter(PARAM_ID);
-    String id = subParameter.valueAsString();
-    extensionsById.put(id, item);
-  }
-
-  public Map<String, IAnathemaExtension> getExtensionsById() {
-    return extensionsById;
-  }
-
-  @Override
-  protected String getExtensionPointId() {
-    return "AnathemaExtensions"; //$NON-NLS-1$
+  public Iterator<ExtensionWithId> iterator() {
+    return extensions.iterator();
   }
 }

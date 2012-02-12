@@ -1,22 +1,15 @@
 package net.sf.anathema;
 
-import java.security.AccessController;
-
-import org.java.plugin.boot.Boot;
-
-import sun.security.action.GetPropertyAction;
+import java.io.File;
+import java.lang.reflect.Method;
 
 public class AnathemaBootLoader {
 
   public static void main(String[] arguments) throws Exception {
-    if (isSplashScreenSupported()) { 
-      new AnathemaPrebootSplashscreen().displayStatusMessage("Collecting Plugins..."); //$NON-NLS-1$
-    }
-    Boot.main(arguments);
-  }
-  
-  public static boolean isSplashScreenSupported() {
-	String osName = AccessController.doPrivileged(new GetPropertyAction("os.name"));
-    return !osName.contains("Mac OS X"); //$NON-NLS-1$ 
+    EasyLoader loader = new EasyLoader(new File("./lib"));
+    Class<?> aClass = loader.loadClass("net.sf.anathema.Anathema");
+    Object instance = aClass.newInstance();
+    Method method = aClass.getMethod("startApplication");
+    method.invoke(instance);
   }
 }

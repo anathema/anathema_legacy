@@ -18,14 +18,10 @@ import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.reporting.CharacterReportingModule;
-import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.sidereal.additionalrules.AdditionalSiderealRules;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeModelFactory;
@@ -33,30 +29,27 @@ import net.sf.anathema.character.sidereal.colleges.SiderealCollegeParser;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeViewFactory;
 import net.sf.anathema.character.sidereal.colleges.persistence.SiderealCollegePersisterFactory;
-import net.sf.anathema.character.sidereal.flawedfate.*;
+import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateModelFactory;
+import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateParser;
+import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFatePersisterFactory;
+import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateTemplate;
+import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateViewFactory;
 import net.sf.anathema.character.sidereal.generic.EssenceAuspicious;
 import net.sf.anathema.character.sidereal.generic.PropitiousAlignment;
-import net.sf.anathema.character.sidereal.paradox.*;
-import net.sf.anathema.character.sidereal.reporting.Extended1stEditionSiderealPartEncoder;
-import net.sf.anathema.character.sidereal.reporting.Extended2ndEditionSiderealPartEncoder;
-import net.sf.anathema.character.sidereal.reporting.content.SiderealCollageContentFactory;
-import net.sf.anathema.character.sidereal.reporting.content.SiderealCollegeContent;
-import net.sf.anathema.character.sidereal.reporting.layout.Sidereal1stEditionDetailsPageFactory;
-import net.sf.anathema.character.sidereal.reporting.layout.Sidereal2ndEditionDetailsPageFactory;
-import net.sf.anathema.character.sidereal.reporting.rendering.anima.AnimaEncoderFactory;
-import net.sf.anathema.character.sidereal.reporting.rendering.greatcurse.FlawedFateEncoderFactory;
-import net.sf.anathema.character.sidereal.reporting.rendering.greatcurse.ParadoxEncoderFactory;
+import net.sf.anathema.character.sidereal.paradox.SiderealParadoxModelFactory;
+import net.sf.anathema.character.sidereal.paradox.SiderealParadoxParser;
+import net.sf.anathema.character.sidereal.paradox.SiderealParadoxPersisterFactory;
+import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
+import net.sf.anathema.character.sidereal.paradox.SiderealParadoxViewFactory;
 import net.sf.anathema.character.sidereal.template.DefaultSiderealTemplate;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 
 import static net.sf.anathema.character.generic.type.CharacterType.SIDEREAL;
 
 @CharacterModule
 public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
-  private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
   public static final String BACKGROUND_ID_ACQUAINTANCES = "Acquaintances"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_CONNECTIONS = "Connections"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_CELESTIAL_MANSE = "CelestialManse"; //$NON-NLS-1$
@@ -162,22 +155,5 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
     additionalModelFactoryRegistry.register(templateId, new SiderealParadoxModelFactory());
     additionalViewFactoryRegistry.register(templateId, new SiderealParadoxViewFactory());
     persisterFactory.register(templateId, new SiderealParadoxPersisterFactory());
-  }
-
-  @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
-    moduleObject.getContentRegistry().addFactory(SiderealCollegeContent.class, new SiderealCollageContentFactory(resources));
-    moduleObject.getEncoderRegistry().add(new AnimaEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new FlawedFateEncoderFactory());
-    moduleObject.getEncoderRegistry().add(new ParadoxEncoderFactory());
-    registerExtendedReporting(resources, moduleObject.getExtendedEncodingRegistry());
-    moduleObject.getAdditionalPageRegistry().add(new Sidereal1stEditionDetailsPageFactory());
-    moduleObject.getAdditionalPageRegistry().add(new Sidereal2ndEditionDetailsPageFactory());
-  }
-
-  private void registerExtendedReporting(IResources resources, ExtendedEncodingRegistry registry) {
-    registry.setPartEncoder(SIDEREAL, ExaltedEdition.FirstEdition, new Extended1stEditionSiderealPartEncoder(resources, registry, ESSENCE_MAX));
-    registry.setPartEncoder(SIDEREAL, ExaltedEdition.SecondEdition, new Extended2ndEditionSiderealPartEncoder(resources, registry, ESSENCE_MAX));
   }
 }

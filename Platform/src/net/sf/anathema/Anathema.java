@@ -7,19 +7,13 @@ import net.sf.anathema.framework.view.ErrorWindow;
 import net.sf.anathema.framework.view.IWindow;
 import net.sf.anathema.initialization.AnathemaInitializer;
 import net.sf.anathema.initialization.InitializationException;
-import org.java.plugin.PluginManager;
-import org.java.plugin.boot.Application;
 
 import javax.swing.*;
 
-public class Anathema implements Application {
+public class Anathema {
 
-  private final PluginManager manager;
-
-  public Anathema(PluginManager manager) {
-    this.manager = manager;
-  }
-
+  /*Called by the boot loader using reflection.*/
+  @SuppressWarnings("UnusedDeclaration")
   public void startApplication() throws Exception {
     IAnathemaPreferences anathemaPreferences = loadPreferences();
     prepareEnvironment(anathemaPreferences);
@@ -27,8 +21,7 @@ public class Anathema implements Application {
   }
 
   private IAnathemaPreferences loadPreferences() {
-    String message = "Retrieving Preferences..."; //$NON-NLS-1$
-    displayStatus(message);
+    displayStatus("Retrieving Preferences...");
     return AnathemaPreferences.getDefaultPreferences();
   }
 
@@ -49,7 +42,7 @@ public class Anathema implements Application {
   private IWindow createView(IAnathemaPreferences anathemaPreferences) {
     try {
       displayStatus("Starting Platform..."); //$NON-NLS-1$
-      return new AnathemaInitializer(manager, anathemaPreferences).initialize();
+      return new AnathemaInitializer(anathemaPreferences).initialize();
     } catch (InitializationException e) {
       e.printStackTrace();
       return new ErrorWindow(e);

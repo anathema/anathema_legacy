@@ -18,7 +18,7 @@ public class ClearSelectionAction extends SmartAction {
     setToolTipText(resources.getString("Music.Actions.ClearSelection.Tooltip")); //$NON-NLS-1$
     this.selectionModel = selectionModel;
     selectionModel.addCurrentSelectionChangeListener(new IChangeListener() {
-      public void changeOccured() {
+      public void changeOccurred() {
         setEnabled(selectionModel.getCurrentSelection().getContent().length != 0);
       }
     });
