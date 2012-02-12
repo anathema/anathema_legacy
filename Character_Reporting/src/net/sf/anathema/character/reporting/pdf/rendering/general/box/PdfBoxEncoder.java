@@ -16,7 +16,7 @@ public class PdfBoxEncoder {
   }
 
   private Bounds encodeBox(SheetGraphics graphics, Bounds bounds, String title, BoundsEncoder boxEncoder) {
-    Bounds contentBounds = BoxBoundsFactory.calculateBoxBounds(bounds);
+    Bounds contentBounds = BoxBoundsFactory.calculateBoxRenderBounds(bounds);
     boxEncoder.encodeBoxBounds(graphics, contentBounds);
     headerBoxEncoder.encodeHeaderBox(graphics, bounds, title);
     return BoxBoundsFactory.calculateContentBounds(bounds);

@@ -1,5 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.layout.field;
 
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoxBoundsFactory;
+
 public class PreferredHeight implements HeightStrategy {
 
   private FieldEncoder encoder;
@@ -10,6 +12,7 @@ public class PreferredHeight implements HeightStrategy {
 
   @Override
   public float getHeight(float contentWidth) {
-    return encoder.getPreferredHeight(contentWidth);
+    float preferredContentHeight = encoder.getPreferredHeight(contentWidth);
+    return BoxBoundsFactory.getBoxHeight(preferredContentHeight);
   }
 }

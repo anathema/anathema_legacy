@@ -3,6 +3,9 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.box;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.general.box.BoundsEncoder.ARC_SPACE;
+import static net.sf.anathema.character.reporting.pdf.rendering.general.box.BoundsEncoder.HEADER_HEIGHT;
+
 public class BoxBoundsFactory {
 
   public static final int CONTENT_INSET = 5;
@@ -13,21 +16,28 @@ public class BoxBoundsFactory {
   }
 
   public static Bounds calculateContentBounds(Bounds bounds) {
-    Bounds contentBoxBounds = calculateBoxBounds(bounds);
+    Bounds contentBoxBounds = calculateBoxRenderBounds(bounds);
     return insetBounds(contentBoxBounds);
   }
 
-  public static Bounds calculateBoxBounds(Bounds bounds) {
-    float headerPadding = BoundsEncoder.HEADER_HEIGHT / 2;
-    return new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - headerPadding);
+  public static Bounds calculateBoxRenderBounds(Bounds bounds) {
+    return new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - ARC_SPACE);
   }
 
   private static Bounds insetBounds(Bounds bounds) {
-    return new Bounds(bounds.x + CONTENT_INSET, bounds.y, insetWidth(bounds.width), bounds.height - BoundsEncoder.ARC_SPACE);
+    return new Bounds(bounds.x + CONTENT_INSET, bounds.y, insetWidth(bounds.width), bounds.height - ARC_SPACE);
   }
 
   public static float insetWidth(float width) {
     float widthOfInsets = 2 * CONTENT_INSET;
     return width - widthOfInsets;
+  }
+
+  public static float getContentHeight(float boxHeight) {
+    return boxHeight - HEADER_HEIGHT;
+  }
+
+  public static float getBoxHeight(float contentHeight) {
+    return contentHeight + HEADER_HEIGHT;
   }
 }
