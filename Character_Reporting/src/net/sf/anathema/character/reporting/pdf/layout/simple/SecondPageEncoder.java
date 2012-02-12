@@ -28,6 +28,7 @@ import java.util.List;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.BACKGROUNDS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.COMBOS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.EXPERIENCE;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.GENERIC_CHARMS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.LANGUAGES;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.POSSESSIONS;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
@@ -68,39 +69,9 @@ public class SecondPageEncoder extends AbstractPageEncoder {
     LayoutField languages = page.place(LANGUAGES).rightOf(possessions).withHeight(LANGUAGE_HEIGHT).now();
     page.place(EXPERIENCE).below(languages).alignBottomTo(backgrounds).now();
     LayoutField combos = page.place(COMBOS).below(backgrounds).withPreferredHeight().spanningThreeColumns().now();
-    float distanceFromTop = combos.getBottomFromTop() + PADDING;
-     if (content.getCharacter().getTemplate().getEdition() == ExaltedEdition.SecondEdition) {
-      float genericCharmsHeight = encodeGenericCharms(graphics, content, distanceFromTop);
-      if (genericCharmsHeight != 0) {
-        distanceFromTop += genericCharmsHeight + PADDING;
-      }
-    }
+    LayoutField genericCharms = page.place(GENERIC_CHARMS).below(combos).withPreferredHeight().spanningThreeColumns().now();
+    float distanceFromTop = genericCharms.getBottomFromTop() + PADDING;
     encodeCharms(document, graphics, content, distanceFromTop);
-  }
-
-  private float encodeCombos(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    ComboEncoder encoder = new ComboEncoder();
-    Bounds restOfPage = new Bounds(configuration.getLeftX(), configuration.getLowerContentY(), configuration.getContentWidth(), configuration.getContentHeight() - distanceFromTop);
-    Bounds maxContentBounds = BoxBoundsFactory.calculateContentBounds(restOfPage);
-    float yPosition = encoder.encodeCombos(graphics, content, maxContentBounds);
-    if (yPosition == 0) {
-      return 0;
-    }
-    Bounds actualBoxBounds = encoder.calculateActualBoxBounds(restOfPage, yPosition);
-    boxEncoder.encodeBox(graphics, actualBoxBounds, encoder.getHeader(content));
-    return actualBoxBounds.getHeight();
-  }
-
-  private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    if (content.getCharacter().getGenericCharmStats().length > 0) {
-      float height = 55 + content.getCharacter().getGenericCharmStats().length * 11;
-      Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-      ContentEncoder encoder = new GenericCharmEncoder(resources);
-      boxEncoder.encodeBox(content, graphics, encoder, bounds);
-      return height;
-    } else {
-      return 0;
-    }
   }
 
   private void encodeCharms(Document document, SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
