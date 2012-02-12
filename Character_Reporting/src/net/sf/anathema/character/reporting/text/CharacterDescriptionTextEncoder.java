@@ -1,15 +1,20 @@
 package net.sf.anathema.character.reporting.text;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.framework.reporting.ITextReportUtils;
+import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {
 
-  public CharacterDescriptionTextEncoder(ITextReportUtils utils, IResources resources) {
+  public CharacterDescriptionTextEncoder(PdfReportUtils utils, IResources resources) {
     super(utils, resources);
   }
 

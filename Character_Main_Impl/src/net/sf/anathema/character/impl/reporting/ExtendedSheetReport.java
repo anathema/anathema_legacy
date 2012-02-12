@@ -18,14 +18,20 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.*;
+import net.sf.anathema.character.reporting.pdf.layout.extended.Extended1stEditionFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.Extended2ndEditionFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagic1stEditionPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.framework.itemdata.model.IItemData;
-import net.sf.anathema.framework.reporting.IITextReport;
 import net.sf.anathema.framework.reporting.ReportException;
+import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -33,7 +39,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ExtendedSheetReport implements IITextReport {
+public class ExtendedSheetReport extends AbstractPdfReport {
 
   private final IResources resources;
   private final ICharacterGenerics characterGenerics;

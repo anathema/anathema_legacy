@@ -7,12 +7,12 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.framework.reporting.ITextReportUtils;
+import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ConceptTextEncoder extends AbstractTextEncoder {
 
-  public ConceptTextEncoder(ITextReportUtils utils, IResources resources) {
+  public ConceptTextEncoder(PdfReportUtils utils, IResources resources) {
     super(utils, resources);
   }
 

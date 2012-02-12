@@ -21,8 +21,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.framework.itemdata.model.IItemData;
-import net.sf.anathema.framework.reporting.IITextReport;
 import net.sf.anathema.framework.reporting.ReportException;
+import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -32,7 +32,7 @@ import java.util.List;
 
 import static java.text.MessageFormat.format;
 
-public class SimpleExaltSheetReport implements IITextReport {
+public class SimpleExaltSheetReport extends AbstractPdfReport {
 
   private final IResources resources;
   private final ICharacterGenerics characterGenerics;
