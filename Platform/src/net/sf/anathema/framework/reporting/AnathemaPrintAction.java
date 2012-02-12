@@ -17,7 +17,6 @@ import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
-import net.sf.anathema.lib.control.BrowserControl;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -25,6 +24,7 @@ import javax.swing.Action;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -112,7 +112,7 @@ public class AnathemaPrintAction extends SmartAction {
                 }
               });
       if (OpenPdfPreferencesElement.openDocumentAfterPrint()) {
-        BrowserControl.displayUrl(selectedFile.toURI().toURL());
+        Desktop.getDesktop().open(selectedFile);
       }
     } catch (InvocationTargetException e) {
       String errorMessage;
