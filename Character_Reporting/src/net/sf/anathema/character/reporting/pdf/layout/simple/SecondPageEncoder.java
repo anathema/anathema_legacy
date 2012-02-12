@@ -86,6 +86,9 @@ public class SecondPageEncoder extends AbstractPageEncoder {
     Bounds restOfPage = new Bounds(configuration.getLeftX(), configuration.getLowerContentY(), configuration.getContentWidth(), configuration.getContentHeight() - distanceFromTop);
     Bounds maxContentBounds = BoxBoundsFactory.calculateContentBounds(restOfPage);
     float yPosition = encoder.encode(graphics, content, maxContentBounds);
+    if (yPosition == 0) {
+      return 0;
+    }
     Bounds actualBoxBounds = encoder.calculateActualBoxBounds(restOfPage, yPosition);
     boxEncoder.encodeBox(graphics, actualBoxBounds, encoder.getHeader(content));
     return actualBoxBounds.getHeight();
