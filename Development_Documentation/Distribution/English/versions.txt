@@ -11,7 +11,7 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- Bugfixes --
-* Age-based Essence-caps now are as written.
+* Age-based Essence-caps now are as written. (Kotonaru)
 
 ===------------------------------------------------------------------------------===
 			Release 3.0.1
