@@ -17,6 +17,7 @@ import net.sf.anathema.framework.presenter.menu.IMenuExtensionPoint;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.presenter.menu.MenuExtensionPoint;
 import net.sf.anathema.framework.reporting.AnathemaPrintAction;
+import net.sf.anathema.framework.reporting.AnathemaQuickPrintAction;
 import net.sf.anathema.framework.repository.tree.RepositoryViewAction;
 import net.sf.anathema.framework.view.IMenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
@@ -37,6 +38,7 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     mainMenu.addMenuItem(AnathemaSaveAllAction.createMenuAction(model, resources));
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaPrintAction.createMenuAction(model, resources));
+    mainMenu.addMenuItem(AnathemaQuickPrintAction.createMenuAction(model, resources));
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaExitAction.createMenuAction(resources));
     IMenu helpMenu = menubar.getHelpMenu();
