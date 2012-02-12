@@ -17,6 +17,7 @@ Thanks to the guys from the WW-forum for all of these.
 * [2E] Calculates essence pools for Infernals correctly
 * [2E] Eclipses can learn Infernal Charms
 * [2E] It's "Eye of the Tempest" now
+* [2E] Calculates XP cost for Infernals mostly correct. Spells are still wrong.
 * Characters can change off the Eclipse caste during creation
 * Does not print craft dots repeatedly.
 
