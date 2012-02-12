@@ -54,7 +54,7 @@ public class SimpleMortalSheetReport extends AbstractPdfReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       PageEncoder encoder = new MortalPageEncoder(getEncoderRegistry(), resources, configuration);
-      SheetGraphics graphics = SheetGraphics.WithSymbolBaseFontInCodepage1252(directContent);
+      SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
       ReportContent content = new ReportContent(getContentRegistry(), character, description);
       encoder.encode(document, graphics, content);
     } catch (Exception e) {

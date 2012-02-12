@@ -11,11 +11,9 @@ public class GraphicsTemplate {
   private PdfTemplate template;
   private BaseFont baseFont;
   private PdfContentByte parent;
-  private BaseFont symbolBaseFont;
 
-  public GraphicsTemplate(PdfContentByte parent, BaseFont baseFont, BaseFont symbolBaseFont, float width, float height) {
+  public GraphicsTemplate(PdfContentByte parent, BaseFont baseFont, float width, float height) {
     this.parent = parent;
-    this.symbolBaseFont = symbolBaseFont;
     this.template = parent.createTemplate(width, height);
     this.baseFont = baseFont;
   }
@@ -26,7 +24,7 @@ public class GraphicsTemplate {
   }
 
   public SheetGraphics getTemplateGraphics() {
-    return new SheetGraphics(template, baseFont, symbolBaseFont);
+    return new SheetGraphics(template, baseFont);
   }
 
   public void addToParentAt(float templateX, float templateY) {

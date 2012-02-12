@@ -73,7 +73,7 @@ public class SimpleExaltSheetReport extends AbstractPdfReport {
         } else {
           isFirstPrinted = true;
         }
-        SheetGraphics graphics = SheetGraphics.WithSymbolBaseFontInCodepage1252(directContent);
+        SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
         encoder.encode(document, graphics, content);
       }
     } catch (Exception e) {

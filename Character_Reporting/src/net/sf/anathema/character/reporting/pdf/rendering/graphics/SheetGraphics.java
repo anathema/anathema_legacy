@@ -13,50 +13,29 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Dot;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Line;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.shape.Square;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.*;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SUBSECTION_FONT_SIZE;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TABLE_FONT_SIZE;
 
 public class SheetGraphics {
 
-  public static SheetGraphics WithSymbolBaseFontInSpecialEncoding(PdfContentByte directContent) {
-    BaseFont baseFont = createDefaultBaseFont();
-    BaseFont symbolFont = createSymbolBaseFontInSpecialEncoding();
-    return new SheetGraphics(directContent, baseFont, symbolFont);
-  }
-
-  public static SheetGraphics WithSymbolBaseFontInCodepage1252(PdfContentByte directContent) {
-    BaseFont baseFont = createDefaultBaseFont();
-    BaseFont symbolFont = createSymbolBaseFontWithCodepage1252();
-    return new SheetGraphics(directContent, baseFont, symbolFont);
-  }
-
-  private static BaseFont createSymbolBaseFontInSpecialEncoding() {
-    return createSymbolFont().getCalculatedBaseFont(true);
-  }
-
-  private static BaseFont createSymbolBaseFontWithCodepage1252() {
-    return createSymbolFont().getCalculatedBaseFont(false);
+  public static SheetGraphics WithHelvetica(PdfContentByte directContent) {
+    return new SheetGraphics(directContent, createDefaultBaseFont());
   }
 
   private static BaseFont createDefaultBaseFont() {
     return new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL, BaseColor.BLACK).getCalculatedBaseFont(true);
   }
 
-  private static Font createSymbolFont() {
-    return new Font(Font.FontFamily.SYMBOL, 7, Font.NORMAL, BaseColor.BLACK);
-  }
-
-  private static final String SYMBOL = "\u00A8  "; //$NON-NLS-1$
+  private static final String SYMBOL = "\u2022  "; //$NON-NLS-1$
   private static final int SYMBOL_FONT_SIZE = FONT_SIZE - 1;
   private final PdfContentByte directContent;
-
   private final BaseFont baseFont;
 
-  private final BaseFont symbolBaseFont;
-
-  public SheetGraphics(PdfContentByte directContent, BaseFont baseFont, BaseFont symbolBaseFont) {
+  public SheetGraphics(PdfContentByte directContent, BaseFont baseFont) {
     this.directContent = directContent;
     this.baseFont = baseFont;
-    this.symbolBaseFont = symbolBaseFont;
   }
 
   @Deprecated
@@ -137,7 +116,7 @@ public class SheetGraphics {
   }
 
   public GraphicsTemplate createTemplate(float width, float height) {
-    return new GraphicsTemplate(directContent, baseFont, symbolBaseFont, width, height);
+    return new GraphicsTemplate(directContent, baseFont, width, height);
   }
 
   public final void setFillColorBlack() {
@@ -187,12 +166,12 @@ public class SheetGraphics {
   }
 
   public Chunk createSymbolChunk() {
-    Font font = new Font(symbolBaseFont, SYMBOL_FONT_SIZE, Font.NORMAL, BaseColor.BLACK);
+    Font font = new Font(baseFont, SYMBOL_FONT_SIZE, Font.NORMAL, BaseColor.BLACK);
     return new Chunk(SYMBOL, font);
   }
 
   public float getCaretSymbolWidth() {
-    return symbolBaseFont.getWidthPoint(SYMBOL, SYMBOL_FONT_SIZE);
+    return baseFont.getWidthPoint(SYMBOL, SYMBOL_FONT_SIZE);
   }
 
   public Box createBox(Bounds bounds) {

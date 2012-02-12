@@ -63,7 +63,7 @@ public class ExtendedSheetReport extends AbstractPdfReport {
     document.open();
     PdfContentByte directContent = writer.getDirectContent();
     PageConfiguration configuration = PageConfiguration.create(pageSize.getRectangle());
-    SheetGraphics graphics = SheetGraphics.WithSymbolBaseFontInSpecialEncoding(directContent);
+    SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
     try {
       IExtendedPartEncoder partEncoder = getPartEncoder(stattedCharacter);
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
