@@ -5,8 +5,23 @@ Anathema Version History
 Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 
 http://anathema.sf.net
+
 ===------------------------------------------------------------------------------===
-			Release 3.0.0 "Malfeas" Release
+			Release 3.0.1
+===------------------------------------------------------------------------------===
+
+-- Bugfixes --
+Thanks to the guys from the WW-forum for all of these.
+* [2E] Grants material boni for Adamant and Vitriolic materials
+* [2E] Elemental Bolt can now be comboed with Loyal Weapon
+* [2E] Calculates essence pools for Infernals correctly
+* [2E] Eclipses can learn Infernal Charms
+* [2E] It's "Eye of the Tempest" now
+* Characters can change off the Eclipse caste during creation
+* Does not print craft dots repeatedly.
+
+===------------------------------------------------------------------------------===
+			Release 3.0.0 "Malfeas"
 ===------------------------------------------------------------------------------===
 
 -- Features --
@@ -50,14 +65,14 @@ http://anathema.sf.net
 * A vast multitude of miscellaneous bug fixes, both major and minor!
 
 ===------------------------------------------------------------------------------===
-			Release 2.0.2 "Calibration"
+			Release 2.0.2
 ===------------------------------------------------------------------------------===
 
 -- Bugs Fixed (Attila Kelemen) --
 * Anathema runs on Java 7
 
 ===------------------------------------------------------------------------------===
-			Release 2.0.1 "Calibration"
+			Release 2.0.1
 ===------------------------------------------------------------------------------===
 
 -- Features --
@@ -85,7 +100,7 @@ http://anathema.sf.net
 * [2E] Assorted bugs and data-entry errors fixed.
 
 ===------------------------------------------------------------------------------===
-			Release 1.5.1 "Lookshy"
+			Release 1.5.1
 ===------------------------------------------------------------------------------===
 
 -- Features --
@@ -106,7 +121,7 @@ http://anathema.sf.net
        manse and free cult dots that they automatically get.
 
 ===------------------------------------------------------------------------------===
-			Release 1.4.2 "Great Forks"
+			Release 1.4.2
 ===------------------------------------------------------------------------------===
 
 -- Features --
