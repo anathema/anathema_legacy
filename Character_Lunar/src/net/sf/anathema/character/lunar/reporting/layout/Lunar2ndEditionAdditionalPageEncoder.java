@@ -28,7 +28,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.lunar.reporting.rendering.EncoderIds.ARSENAL_LUNAR;
-import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
 public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
@@ -93,7 +92,7 @@ public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
 
   private float encodeArsenal(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
     EncodingMetrics metrics = EncodingMetrics.From(graphics, content);
-    float height = encoderRegistry.getValue(PreferredHeight, metrics, ARSENAL_LUNAR);
+    float height = encoderRegistry.getPreferredHeight(metrics, ARSENAL_LUNAR);
     ContentEncoder weaponryEncoder = encoderRegistry.createEncoder(resources, content, ARSENAL_LUNAR);
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
     boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);

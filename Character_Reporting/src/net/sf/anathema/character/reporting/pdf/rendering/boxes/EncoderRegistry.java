@@ -28,12 +28,8 @@ public class EncoderRegistry {
     return findFactory(content, ids).create(resource, createBasicContent(content));
   }
 
-  public boolean hasAttribute(EncoderAttributeType type, ReportContent content, String id) {
-    return findFactory(content, id).hasAttribute(type);
-  }
-
-  public float getValue(EncoderAttributeType type, EncodingMetrics metrics, String... ids) {
-    return findFactory(metrics.getContent(), ids).getValue(metrics, type);
+  public float getPreferredHeight(EncodingMetrics metrics, String... ids) {
+    return findFactory(metrics.getContent(), ids).getPreferredHeight(metrics);
   }
 
   private EncoderFactory findFactory(ReportContent content, String... ids) {

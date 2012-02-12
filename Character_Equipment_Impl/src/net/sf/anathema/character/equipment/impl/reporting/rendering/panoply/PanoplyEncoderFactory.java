@@ -4,7 +4,6 @@ import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContent;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.arsenal.PreferredWeaponryHeight;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.GlobalEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -15,7 +14,7 @@ public class PanoplyEncoderFactory extends GlobalEncoderFactory {
 
   public PanoplyEncoderFactory() {
     super(EncoderIds.PANOPLY);
-    setAttribute(EncoderAttributeType.PreferredHeight, new PreferredWeaponryHeight());
+    setPreferredHeight(new PreferredWeaponryHeight());
   }
 
   @Override

@@ -12,8 +12,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTempla
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType.PreferredHeight;
-
 public class RegisteredEncoderList {
   private final IResources resources;
   private final EncoderRegistry encoderRegistry;
@@ -49,6 +47,6 @@ public class RegisteredEncoderList {
   }
 
   public float getPreferredEncoderHeight(EncodingMetrics metrics, String... encoderIds) {
-    return encoderRegistry.getValue(PreferredHeight, metrics, encoderIds);
+    return encoderRegistry.getPreferredHeight(metrics, encoderIds);
   }
 }

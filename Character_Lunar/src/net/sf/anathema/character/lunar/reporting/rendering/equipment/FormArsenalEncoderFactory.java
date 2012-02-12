@@ -7,7 +7,6 @@ import net.sf.anathema.character.lunar.reporting.content.equipment.LunarWeaponry
 import net.sf.anathema.character.lunar.reporting.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -17,7 +16,7 @@ public class FormArsenalEncoderFactory extends AbstractEncoderFactory {
 
   public FormArsenalEncoderFactory() {
     super(EncoderIds.ARSENAL_LUNAR);
-    setAttribute(EncoderAttributeType.PreferredHeight, new PreferredWeaponryHeight());
+    setPreferredHeight(new PreferredWeaponryHeight());
   }
 
   @Override
