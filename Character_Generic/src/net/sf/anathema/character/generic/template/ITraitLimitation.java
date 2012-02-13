@@ -5,7 +5,7 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public interface ITraitLimitation extends ICloneable<ITraitLimitation> {
 
-  public int getAbsoluteLimit(ILimitationContext limitationContext);
+  int getAbsoluteLimit(ILimitationContext limitationContext);
 
-  public int getCurrentMaximum(ILimitationContext limitationContext, boolean modified);
+  int getCurrentMaximum(ILimitationContext limitationContext, boolean modified);
 }

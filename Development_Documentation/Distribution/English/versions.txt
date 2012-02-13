@@ -79,14 +79,14 @@ Thanks to the guys from the WW-forum for all of these.
 * A vast multitude of miscellaneous bug fixes, both major and minor!
 
 ===------------------------------------------------------------------------------===
-			Release 2.0.2 "Calibration"
+			Release 2.0.2
 ===------------------------------------------------------------------------------===
 
 -- Bugs Fixed (Attila Kelemen) --
 * Anathema runs on Java 7
 
 ===------------------------------------------------------------------------------===
-			Release 2.0.1 "Calibration"
+			Release 2.0.1
 ===------------------------------------------------------------------------------===
 
 -- Features --
@@ -114,7 +114,7 @@ Thanks to the guys from the WW-forum for all of these.
 * [2E] Assorted bugs and data-entry errors fixed.
 
 ===------------------------------------------------------------------------------===
-			Release 1.5.1 "Lookshy"
+			Release 1.5.1
 ===------------------------------------------------------------------------------===
 
 -- Features --
@@ -135,7 +135,7 @@ Thanks to the guys from the WW-forum for all of these.
        manse and free cult dots that they automatically get.
 
 ===------------------------------------------------------------------------------===
-			Release 1.4.2 "Great Forks"
+			Release 1.4.2
 ===------------------------------------------------------------------------------===
 
 -- Features --
