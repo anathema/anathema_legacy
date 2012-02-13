@@ -42,7 +42,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   private JTextField repositoryTextField;
   private IResources resources;
 
-  public void addCompoment(IGridDialogPanel panel, IResources resource) {
+  public void addComponent(IGridDialogPanel panel, IResources resource) {
     this.resources = resource;
     panel.add(getComponent());
   }

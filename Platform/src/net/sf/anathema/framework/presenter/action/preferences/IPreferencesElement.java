@@ -24,5 +24,5 @@ public interface IPreferencesElement {
 
   public void reset();
 
-  public void addCompoment(IGridDialogPanel panel, IResources resources);
+  public void addComponent(IGridDialogPanel panel, IResources resources);
 }

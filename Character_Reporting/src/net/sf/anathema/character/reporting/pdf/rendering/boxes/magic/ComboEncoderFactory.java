@@ -8,16 +8,16 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredEncoderFactory
-public class GenericCharmEncoderFactory extends AbstractEncoderFactory {
+public class ComboEncoderFactory extends AbstractEncoderFactory {
 
-  public GenericCharmEncoderFactory() {
-    super(EncoderIds.GENERIC_CHARMS);
-    setPreferredHeight(new PreferredGenericCharmHeight());
+  public ComboEncoderFactory() {
+    super(EncoderIds.COMBOS);
+    setPreferredHeight(new PreferredComboHeight());
   }
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new GenericCharmEncoder(resources);
+    return new ComboEncoder();
   }
 
   @Override

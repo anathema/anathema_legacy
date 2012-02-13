@@ -28,7 +28,7 @@ public class LanguagePreferencesElement implements IPreferencesElement {
   private boolean dirty;
   private JComboBox languageBox;
 
-  public void addCompoment(IGridDialogPanel panel, IResources resources) {
+  public void addComponent(IGridDialogPanel panel, IResources resources) {
     panel.add(getComponent(resources));
   }
 

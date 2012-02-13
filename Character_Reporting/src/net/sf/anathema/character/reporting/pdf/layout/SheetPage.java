@@ -18,12 +18,15 @@ public class SheetPage {
 
     @Override
     public LayoutField encode(LayoutField field) {
+      if (field.isInvisible())  {
+        return field;
+      }
       return encoderList.encodeBox(graphics, metrics.getContent(), field, encoderIds);
     }
 
     @Override
-    public float getPreferredHeight() {
-      return encoderList.getPreferredEncoderHeight(metrics, encoderIds);
+    public float getPreferredHeight(float contentWidth) {
+      return encoderList.getPreferredEncoderHeight(metrics, contentWidth, encoderIds);
     }
   }
 

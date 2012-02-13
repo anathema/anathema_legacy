@@ -58,13 +58,6 @@ public class AnathemaPrintAction extends SmartAction {
   private final IAnathemaModel anathemaModel;
   private final IResources resources;
 
-  public static Action createToolAction(IAnathemaModel model, IResources resources) {
-    SmartAction action = new AnathemaPrintAction(model, resources);
-    action.setToolTipText(resources.getString("Anathema.Reporting.Menu.PrintItem.Tooltip")); //$NON-NLS-1$
-    action.setIcon(new PlatformUI(resources).getPDFTaskBarIcon());
-    return action;
-  }
-
   public static Action createMenuAction(IAnathemaModel model, IResources resources) {
     SmartAction action = new AnathemaPrintAction(model, resources);
     action.setName(resources.getString("Anathema.Reporting.Menu.PrintItem.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$

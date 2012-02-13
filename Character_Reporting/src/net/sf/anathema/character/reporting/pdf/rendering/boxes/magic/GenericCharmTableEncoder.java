@@ -33,9 +33,9 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
     this.resources = resources;
   }
 
-  public float getRequestedHeight(SheetGraphics graphics, ReportContent reportContent) {
+  public float getRequestedHeight(SheetGraphics graphics, float width, ReportContent reportContent) {
     EncodingMetrics metrics = EncodingMetrics.From(graphics, reportContent);
-    return new PreferredGenericCharmHeight().getValue(metrics);
+    return new PreferredGenericCharmHeight().getValue(metrics, width);
   }
 
   private GenericCharmContent createContent(ReportContent content) {

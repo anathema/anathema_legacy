@@ -5,4 +5,6 @@ public interface ColumnSpan extends Encoders {
   Encoders spanningOneColumn();
 
   Encoders spanningTwoColumns();
+
+  Encoders spanningThreeColumns();
 }

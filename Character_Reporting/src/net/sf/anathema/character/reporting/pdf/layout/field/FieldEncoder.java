@@ -4,5 +4,5 @@ public interface FieldEncoder {
 
   LayoutField encode(LayoutField field);
 
-  float getPreferredHeight();
+  float getPreferredHeight(float contentWidth);
 }

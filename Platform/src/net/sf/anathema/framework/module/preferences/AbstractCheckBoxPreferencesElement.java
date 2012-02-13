@@ -19,7 +19,7 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
   private boolean dirty = false;
   private JCheckBox checkBox;
 
-  public void addCompoment(IGridDialogPanel panel, IResources resources) {
+  public void addComponent(IGridDialogPanel panel, IResources resources) {
     panel.add(getComponent(resources));
   }
 

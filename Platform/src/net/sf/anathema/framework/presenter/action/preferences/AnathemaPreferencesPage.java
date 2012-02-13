@@ -46,7 +46,7 @@ public class AnathemaPreferencesPage extends AbstractDialogPage {
         createCategoryTab(panel, category);
         panelsByName.put(category, new DefaultGridDialogPanel());
       }
-      element.addCompoment(panelsByName.get(category), resources);
+      element.addComponent(panelsByName.get(category), resources);
     }
     for (String key : tabsByName.keySet()) {
       Tab tab = tabsByName.get(key);

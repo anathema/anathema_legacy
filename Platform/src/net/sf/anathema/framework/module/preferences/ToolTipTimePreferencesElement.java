@@ -21,7 +21,7 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
   private boolean dirty;
   private IntegerSpinner spinner;
 
-  public void addCompoment(IGridDialogPanel panel, IResources resources) {
+  public void addComponent(IGridDialogPanel panel, IResources resources) {
     panel.add(getComponent(resources));
   }
 

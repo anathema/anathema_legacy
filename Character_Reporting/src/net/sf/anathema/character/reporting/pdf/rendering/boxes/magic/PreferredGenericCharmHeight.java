@@ -2,23 +2,21 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmContent;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeValue;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.StandardBoundsEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.PreferredHeight;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
-public class PreferredGenericCharmHeight implements EncoderAttributeValue {
+public class PreferredGenericCharmHeight implements PreferredHeight {
 
   private static final float PADDING = 5.794f;
 
   @Override
-  public float getValue(EncodingMetrics metrics) {
+  public float getValue(EncodingMetrics metrics, float width) {
     GenericCharmContent content = createContent(metrics.getContent());
     if (!content.hasContent()) {
       return 0;
     }
-    float boxHeight = StandardBoundsEncoder.getAdditionalBoxHeight();
-    return boxHeight + getPreferredContentHeight(metrics);
+    return getPreferredContentHeight(metrics);
   }
 
   private float getPreferredContentHeight(EncodingMetrics metrics) {

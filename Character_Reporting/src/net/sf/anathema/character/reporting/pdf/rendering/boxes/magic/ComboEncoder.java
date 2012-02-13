@@ -7,6 +7,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.combo.ComboContent;
 import net.sf.anathema.character.reporting.pdf.content.combo.DisplayCombo;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SimpleColumn;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -14,29 +15,31 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatCo
 import java.util.List;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.LINE_HEIGHT;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class ComboEncoder {
+public class ComboEncoder extends AbstractBoxContentEncoder<ComboContent> {
+
+  public ComboEncoder() {
+    super(ComboContent.class);
+  }
+
+  @Override
+  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+    encodeCombos(graphics, reportContent, bounds);
+  }
 
   public String getHeader(ReportContent reportContent) {
     return createContent(reportContent).getHeader();
   }
 
-  public boolean hasContent(ReportContent reportContent) {
-    return createContent(reportContent).hasContent();
-  }
-
-  public ComboContent createContent(ReportContent reportContent) {
-    return reportContent.createSubContent(ComboContent.class);
-  }
-
-  public float encode(SheetGraphics graphics, ReportContent reportContent, Bounds maxContentBounds) throws DocumentException {
+  public float encodeCombos(SheetGraphics graphics, ReportContent reportContent, Bounds maxContentBounds) throws DocumentException {
     if (!hasContent(reportContent)) {
       return 0;
     }
     ComboContent content = createContent(reportContent);
     SimpleColumn column = graphics.createSimpleColumn(maxContentBounds).withLeading(LINE_HEIGHT).get();
     addCombos(graphics, column, content);
-    return column.getYLine();
+    return (maxContentBounds.height - column.getYLine()) + PADDING;
   }
 
   private void addCombos(SheetGraphics graphics, SimpleColumn columnText, ComboContent content) throws DocumentException {

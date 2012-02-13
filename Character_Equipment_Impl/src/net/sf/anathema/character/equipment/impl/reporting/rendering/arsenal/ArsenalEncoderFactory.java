@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.impl.reporting.rendering.arsenal;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderAttributeType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.GlobalEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -13,7 +12,7 @@ public class ArsenalEncoderFactory extends GlobalEncoderFactory {
 
   public ArsenalEncoderFactory() {
     super(EncoderIds.ARSENAL);
-    setAttribute(EncoderAttributeType.PreferredHeight, new PreferredWeaponryHeight());
+    setPreferredHeight(new PreferredWeaponryHeight());
   }
 
   @Override

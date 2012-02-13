@@ -9,7 +9,7 @@ public class StaticHeight implements HeightStrategy {
   }
 
   @Override
-  public float getHeight(float layoutWidth) {
+  public float getHeight(float contentWidth) {
     return height;
   }
 }
