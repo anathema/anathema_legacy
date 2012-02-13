@@ -13,6 +13,28 @@ http://anathema.sf.net
 * Reworked much of the tech behind the scenes
 
 ===------------------------------------------------------------------------------===
+			Release 3.0.2
+===------------------------------------------------------------------------------===
+
+-- Bugfixes --
+* Age-based Essence-caps now are as written. (Kotonaru)
+
+===------------------------------------------------------------------------------===
+			Release 3.0.1
+===------------------------------------------------------------------------------===
+
+-- Bugfixes --
+Thanks to the guys from the WW-forum for all of these.
+* [2E] Grants material boni for Adamant and Vitriolic materials
+* [2E] Elemental Bolt can now be comboed with Loyal Weapon
+* [2E] Calculates essence pools for Infernals correctly
+* [2E] Eclipses can learn Infernal Charms
+* [2E] It's "Eye of the Tempest" now
+* [2E] Calculates XP cost for Infernals mostly correct. Spells are still wrong.
+* Characters can change off the Eclipse caste during creation
+* Does not print craft dots repeatedly.
+
+===------------------------------------------------------------------------------===
 			Release 3.0.0 "Malfeas"
 ===------------------------------------------------------------------------------===
 
