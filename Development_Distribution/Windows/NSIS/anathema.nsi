@@ -46,7 +46,6 @@ Var StartMenuGroup
 # Installer pages
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE ..\..\..\Development_Documentation\Distribution\English\license.txt
-!insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MULTIUSER_PAGE_INSTALLMODE
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_STARTMENU Application $StartMenuGroup
@@ -82,81 +81,17 @@ Section -Anathema SEC0000
     SetOutPath $INSTDIR\lib
     SetOverwrite on
     File /r ..\..\..\build\dependencies\*
+    File /r ..\..\..\build\plugins\*
     SetOutPath $INSTDIR
     File ..\..\..\Anathema\build\libs\Anathema.jar
-        File ..\..\..\build\launcher\anathema.exe
+    File ..\..\..\build\launcher\anathema.exe
     File /r ..\..\..\Development_Documentation\Distribution\English\*
     SetOutPath $INSTDIR\docs
     File /r ..\..\..\Development_Documentation\Distribution\*
-    SetOutPath $INSTDIR\plugins
-    File ..\..\..\build\plugins\core.jar
     WriteRegStr HKLM "${REGKEY}\Components" Anathema 1
 SectionEnd
 
-Section $(SEC0001_NAME) SEC0001
-    SetOutPath $INSTDIR\plugins
-    SetOverwrite on
-    File ..\..\..\build\plugins\character.jar
-    File ..\..\..\build\plugins\character_abyssal.jar
-    File ..\..\..\build\plugins\character_db.jar
-    File ..\..\..\build\plugins\character_ghost.jar
-    File ..\..\..\build\plugins\character_godblooded.jar
-    File ..\..\..\build\plugins\character_infernal.jar
-    File ..\..\..\build\plugins\character_lunar.jar
-    File ..\..\..\build\plugins\character_martialarts.jar
-    File ..\..\..\build\plugins\character_mortal.jar
-    File ..\..\..\build\plugins\character_sidereal.jar
-    File ..\..\..\build\plugins\character_solar.jar
-    File ..\..\..\build\plugins\character_spirit.jar
-    File ..\..\..\build\plugins\namegenerator.jar
-    WriteRegStr HKLM "${REGKEY}\Components" "Character Management" 1
-SectionEnd
-
-Section $(SEC0002_NAME) SEC0002
-    SetOutPath $INSTDIR\plugins
-    SetOverwrite on
-    File ..\..\..\build\plugins\charm_cascades.jar
-    WriteRegStr HKLM "${REGKEY}\Components" "Charm Cascades" 1
-SectionEnd
-
-Section $(SEC0003_NAME) SEC0003
-    SetOutPath $INSTDIR\plugins
-    SetOverwrite on
-    File ..\..\..\build\plugins\music.jar
-    WriteRegStr HKLM "${REGKEY}\Components" "Music Database" 1
-SectionEnd
-
-Section $(SEC0004_NAME) SEC0004
-    SetOutPath $INSTDIR\plugins
-    SetOverwrite on
-    File ..\..\..\build\plugins\campaign_plot.jar
-    WriteRegStr HKLM "${REGKEY}\Components" "Plot Management" 1
-SectionEnd
-
-Section $(SEC0005_NAME) SEC0005
-    SetOutPath $INSTDIR\plugins
-    SetOverwrite on
-    File ..\..\..\build\plugins\blog_inkmonkeys.jar
-    File ..\..\..\build\plugins\book_glories_luna.jar
-    File ..\..\..\build\plugins\book_glories_maidens.jar
-    File ..\..\..\build\plugins\book_glories_unconqueredsun.jar
-    File ..\..\..\build\plugins\book_moep_abyssals.jar
-    File ..\..\..\build\plugins\book_moep_infernals.jar
-    File ..\..\..\build\plugins\book_moep_lunars.jar
-    File ..\..\..\build\plugins\book_moep_sidereals.jar
-    File ..\..\..\build\plugins\book_scrollofexalts.jar
-    File ..\..\..\build\plugins\book_scrollofthefallenraces_debris.jar
-    File ..\..\..\build\plugins\book_scrollofthemonk.jar
-    File ..\..\..\build\plugins\book_scrollofthemonk_imperfectlotus.jar
-    File ..\..\..\build\plugins\book_thousandcorrectactions.jar
-    File ..\..\..\build\plugins\book_undertherose.jar
-    File ..\..\..\build\plugins\book_returnofthescarletempress.jar
-    File ..\..\..\build\plugins\book_brokenwingedcrane.jar
-    File ..\..\..\build\plugins\box_dotfa.jar
-    WriteRegStr HKLM "${REGKEY}\Components" Sourcebooks 1
-SectionEnd
-
-Section -post SEC0006
+Section -post SEC0001
     WriteRegStr HKLM "${REGKEY}" Path $INSTDIR
     SetOutPath $INSTDIR
     CreateDirectory $INSTDIR\repository
@@ -191,67 +126,13 @@ done${UNSECTION_ID}:
 !macroend
 
 # Uninstaller sections
-Section /o "-un.$(SEC0005_NAME)" UNSEC0005
-    Delete /REBOOTOK $INSTDIR\plugins\box_dotfa.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_brokenwingedcrane.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_undertherose.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_returnofthescarletempress.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_thousandcorrectactions.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_scrollofthemonk_imperfectlotus.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_scrollofthemonk.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_scrollofthefallenraces_debris.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_scrollofexalts.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_moep_sidereals.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_moep_lunars.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_moep_infernals.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_moep_abyssals.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_glories_unconqueredsun.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_glories_maidens.jar
-    Delete /REBOOTOK $INSTDIR\plugins\book_glories_luna.jar
-    Delete /REBOOTOK $INSTDIR\plugins\blog_inkmonkeys.jar
-    DeleteRegValue HKLM "${REGKEY}\Components" Sourcebooks
-SectionEnd
-
-Section /o "-un.$(SEC0004_NAME)" UNSEC0004
-    Delete /REBOOTOK $INSTDIR\plugins\campaign_plot.jar
-    DeleteRegValue HKLM "${REGKEY}\Components" "Plot Management"
-SectionEnd
-
-Section /o "-un.$(SEC0003_NAME)" UNSEC0003
-    Delete /REBOOTOK $INSTDIR\plugins\music.jar
-    DeleteRegValue HKLM "${REGKEY}\Components" "Music Database"
-SectionEnd
-
-Section /o "-un.$(SEC0002_NAME)" UNSEC0002
-    Delete /REBOOTOK $INSTDIR\plugins\charm_cascades.jar
-    DeleteRegValue HKLM "${REGKEY}\Components" "Charm Cascades"
-SectionEnd
-
-Section /o "-un.$(SEC0001_NAME)" UNSEC0001
-    Delete /REBOOTOK $INSTDIR\plugins\namegenerator.jar
-    Delete /REBOOTOK $INSTDIR\plugins\character_spirit.jar
-    Delete /REBOOTOK $INSTDIR\plugins\character_solar.jar
-    Delete /REBOOTOK $INSTDIR\plugins\character_sidereal.jar
-    Delete /REBOOTOK $INSTDIR\plugins\character_mortal.jar
-    Delete /REBOOTOK $INSTDIR\plugins\character_martialarts.jar
-    Delete /REBOOTOK $INSTDIR\plugins\character_lunar.jar
-    Delete /REBOOTOK $INSTDIR\plugins\character_infernal.jar
-    Delete /REBOOTOK $INSTDIR\plugins\character_godblooded.jar
-    Delete /REBOOTOK $INSTDIR\plugins\character_ghost.jar
-    Delete /REBOOTOK $INSTDIR\plugins\character_db.jar
-    Delete /REBOOTOK $INSTDIR\plugins\character_abyssal.jar
-    Delete /REBOOTOK $INSTDIR\plugins\character.jar
-    DeleteRegValue HKLM "${REGKEY}\Components" "Character Management"
-SectionEnd
-
 Section /o -un.Anathema UNSEC0000
-    Delete /REBOOTOK $INSTDIR\plugins\core.jar
     RmDir /r /REBOOTOK $INSTDIR
     RmDir /r /REBOOTOK $INSTDIR\lib
     DeleteRegValue HKLM "${REGKEY}\Components" Anathema
 SectionEnd
 
-Section -un.post UNSEC0006
+Section -un.post UNSEC0001
     DeleteRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\$(^UninstallLink).lnk"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk"
@@ -282,58 +163,14 @@ Function un.onInit
     !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuGroup
     !insertmacro MULTIUSER_UNINIT
     !insertmacro SELECT_UNSECTION Anathema ${UNSEC0000}
-    !insertmacro SELECT_UNSECTION "Character Management" ${UNSEC0001}
-    !insertmacro SELECT_UNSECTION "Charm Cascades" ${UNSEC0002}
-    !insertmacro SELECT_UNSECTION "Music Database" ${UNSEC0003}
-    !insertmacro SELECT_UNSECTION "Plot Management" ${UNSEC0004}
-    !insertmacro SELECT_UNSECTION Sourcebooks ${UNSEC0005}
 FunctionEnd
 
 # Section Descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-!insertmacro MUI_DESCRIPTION_TEXT ${SEC0001} $(SEC0001_DESC)
-!insertmacro MUI_DESCRIPTION_TEXT ${SEC0002} $(SEC0002_DESC)
-!insertmacro MUI_DESCRIPTION_TEXT ${SEC0003} $(SEC0003_DESC)
-!insertmacro MUI_DESCRIPTION_TEXT ${SEC0004} $(SEC0004_DESC)
-!insertmacro MUI_DESCRIPTION_TEXT ${SEC0005} $(SEC0005_DESC)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 # Installer Language Strings
-# TODO Update the Language Strings with the appropriate translations.
 
 LangString ^UninstallLink ${LANG_ENGLISH} "Uninstall $(^Name)"
 LangString ^UninstallLink ${LANG_SPANISH} "Desinstalar $(^Name)"
 LangString ^UninstallLink ${LANG_ITALIAN} "Disinstallare $(^Name)"
-
-LangString SEC0001_NAME ${LANG_ENGLISH} "Character Management"
-LangString SEC0001_DESC ${LANG_ENGLISH} "Adds the 'Character' item and related options."
-LangString SEC0002_NAME ${LANG_ENGLISH} "Charm Cascades"
-LangString SEC0002_DESC ${LANG_ENGLISH} "Stand-alone charm-viewer. Requires 'Character Management' for charm data."
-LangString SEC0003_NAME ${LANG_ENGLISH} "Music Database"
-LangString SEC0003_DESC ${LANG_ENGLISH} "Music management"
-LangString SEC0004_NAME ${LANG_ENGLISH} "Plot Management"
-LangString SEC0004_DESC ${LANG_ENGLISH} "Adds the 'Note' and 'Series' items."
-LangString SEC0005_NAME ${LANG_ENGLISH} "Additional Sourcebooks"
-LangString SEC0005_DESC ${LANG_ENGLISH} "Adds material from official sourcebooks. Requires 'Character Management' for display."
-
-LangString SEC0001_NAME ${LANG_SPANISH} "Manejo de Personajes"
-LangString SEC0001_DESC ${LANG_SPANISH} "Agrega el articulo 'Personaje' y las opciones relacionadas."
-LangString SEC0002_NAME ${LANG_SPANISH} "Cascadas de Encantamientos"
-LangString SEC0002_DESC ${LANG_SPANISH} "Visualizador-de-Encantamientos Independiente. Requiere 'Manejo de Personajes' para los datos de encantamientos."
-LangString SEC0003_NAME ${LANG_SPANISH} "Base de Datos de Musica"
-LangString SEC0003_DESC ${LANG_SPANISH} "Manejo de Musica"
-LangString SEC0004_NAME ${LANG_SPANISH} "Manejo de Series"
-LangString SEC0004_DESC ${LANG_SPANISH} "Agrega los articulos 'Nota' y 'Series'."
-LangString SEC0005_NAME ${LANG_SPANISH} "Additional Sourcebooks"
-LangString SEC0005_DESC ${LANG_SPANISH} "Adds material from official sourcebooks. Requires 'Character Management' for display."
-
-LangString SEC0001_NAME ${LANG_ITALIAN} "Gestione Personaggi"
-LangString SEC0001_DESC ${LANG_ITALIAN} "Aggiunge l'oggetto 'Personaggio' e le relative opzioni."
-LangString SEC0002_NAME ${LANG_ITALIAN} "Cascate di Prodigi"
-LangString SEC0002_DESC ${LANG_ITALIAN} "Un visualizzatore interno di alberi di Prodigi. Richiede 'Gestione Personaggi' per i dati dei Prodigi."
-LangString SEC0003_NAME ${LANG_ITALIAN} "Database Musicale"
-LangString SEC0003_DESC ${LANG_ITALIAN} "Gestione Musicale delle colonne sonore"
-LangString SEC0004_NAME ${LANG_ITALIAN} "Gestione Trama"
-LangString SEC0004_DESC ${LANG_ITALIAN} "Aggiunge gli oggetti relativi a 'Note' e 'Serie'."
-LangString SEC0005_NAME ${LANG_ITALIAN} "Additional Sourcebooks"
-LangString SEC0005_DESC ${LANG_ITALIAN} "Adds material from official sourcebooks. Requires 'Character Management' for display."
