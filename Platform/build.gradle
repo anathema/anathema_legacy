@@ -13,6 +13,20 @@ dependencies {
   testCompile 'org.easymock:easymock:3.1'
 }
 
+processResources {
+    String versionDate = new Date().format('MM/dd/yy')
+    String versionString = project.parent.versionString
+    String versionName = version_name
+    // work-around for filter corrupting binary resources
+    from("./resources") {
+        include '**/*.properties'
+        filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [VersionString: versionString, VersionName: versionName, VersionDate: versionDate])
+    }
+    from("./resources") {
+        exclude '**/*.properties'
+    }
+}
+
 sourceSets {
   main {
     resources {
