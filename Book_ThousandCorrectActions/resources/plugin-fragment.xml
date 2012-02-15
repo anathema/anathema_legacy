@@ -21,6 +21,11 @@
                <parameter id="rules" value="SecondEdition" />
                <parameter id="path" value="thousand_data/zenith/integrity.xml" />
           </parameter>
+         <parameter id="list">
+             <parameter id="type" value="Abyssal" />
+             <parameter id="rules" value="SecondEdition" />
+             <parameter id="path" value="thousand_data/midnight/integrity.xml" />
+         </parameter>
           <parameter id="list">
                <parameter id="type" value="Solar" />
                <parameter id="rules" value="SecondEdition" />
