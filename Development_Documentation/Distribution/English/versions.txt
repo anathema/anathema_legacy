@@ -13,9 +13,10 @@ http://anathema.sf.net
 -- Bugfixes --
 Once more, thanks to the unblinking eyes of the people the WW-forum.
 * Age-based Essence-caps now are as written
-* Added (Abyssal/Integrity) "Dark Will Triumphant" from the Thousand Actions
-* Updated (Solar/Medicine) "Science of Mutation" to the current errata
-* Corrected prerequisites of (Abyssal/Melee) "Savage Shade Style", allowing it to be comboed
+* [2E] Terrestrials have a their limit break printed
+* [2E] Added (Abyssal/Integrity) "Dark Will Triumphant" from the Thousand Actions
+* [2E] Updated (Solar/Medicine) "Science of Mutation" to the current errata
+* [2E] Corrected prerequisites of (Abyssal/Melee) "Savage Shade Style", allowing it to be comboed
 
 ===------------------------------------------------------------------------------===
 			Release 3.0.1
