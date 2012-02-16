@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -14,6 +13,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableCo
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.generic.type.CharacterType.GHOST;
+import static net.sf.anathema.character.generic.type.CharacterType.SPIRIT;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.BARE_LINE_HEIGHT;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
 
@@ -40,7 +41,7 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     float firstRowY = (int) (bounds.getMaxY() - lineHeight);
     String conceptContent = reportContent.getDescription().getConceptText();
     String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
-    if (isExaltButNoSpirit(characterType)) {
+    if (isTrueExaltNotJustAnEssenceUser(characterType)) {
       graphics.drawLabelledContent(conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), entryWidth);
       String casteContent = getCasteString(reportContent.getCharacter().getConcept().getCasteType());
       graphics.drawLabelledContent(getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
@@ -72,7 +73,7 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     String eyesContent = reportContent.getDescription().getEyes();
     graphics.drawLabelledContent(getLabel("Eyes"), eyesContent, new Position(shortColumnX[4], thirdRowY), shortEntryWidth); //$NON-NLS-1$
 
-    if (isExaltButNoSpirit(characterType)) {
+    if (isTrueExaltNotJustAnEssenceUser(characterType)) {
       float fourthRowY = thirdRowY - lineHeight;
       String animaContent = null;
       graphics.drawLabelledContent(getLabel("Anima"), animaContent, new Position(firstColumnX, fourthRowY), bounds.width); //$NON-NLS-1$
@@ -84,11 +85,11 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
   }
 
   private int getNumberOfLines(ICharacterType characterType) {
-    return (isExaltButNoSpirit(characterType) ? 4 : 3);
+    return (isTrueExaltNotJustAnEssenceUser(characterType) ? 4 : 3);
   }
 
-  private boolean isExaltButNoSpirit(ICharacterType characterType) {
-    return characterType.isExaltType() && CharacterType.SPIRIT != characterType;
+  private boolean isTrueExaltNotJustAnEssenceUser(ICharacterType characterType) {
+    return characterType.isExaltType() && SPIRIT != characterType && GHOST != characterType;
   }
 
   private String getCasteString(ICasteType casteType) {
