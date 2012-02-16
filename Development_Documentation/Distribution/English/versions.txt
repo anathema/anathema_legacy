@@ -14,6 +14,7 @@ http://anathema.sf.net
 Once more, thanks to the unblinking eyes of the people the WW-forum.
 * Age-based Essence-caps now are as written
 * [2E] Terrestrials have a their limit break printed
+* [2E] Spirits don't try to print Anima and Caste info
 * [2E] Added (Abyssal/Integrity) "Dark Will Triumphant" from the Thousand Actions
 * [2E] Updated (Solar/Medicine) "Science of Mutation" to the current errata
 * [2E] Corrected prerequisites of (Abyssal/Melee) "Savage Shade Style", allowing it to be comboed

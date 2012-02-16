@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -39,7 +40,7 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     float firstRowY = (int) (bounds.getMaxY() - lineHeight);
     String conceptContent = reportContent.getDescription().getConceptText();
     String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
-    if (characterType.isExaltType()) {
+    if (isExaltButNoSpirit(characterType)) {
       graphics.drawLabelledContent(conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), entryWidth);
       String casteContent = getCasteString(reportContent.getCharacter().getConcept().getCasteType());
       graphics.drawLabelledContent(getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
@@ -71,7 +72,7 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     String eyesContent = reportContent.getDescription().getEyes();
     graphics.drawLabelledContent(getLabel("Eyes"), eyesContent, new Position(shortColumnX[4], thirdRowY), shortEntryWidth); //$NON-NLS-1$
 
-    if (characterType.isExaltType()) {
+    if (isExaltButNoSpirit(characterType)) {
       float fourthRowY = thirdRowY - lineHeight;
       String animaContent = null;
       graphics.drawLabelledContent(getLabel("Anima"), animaContent, new Position(firstColumnX, fourthRowY), bounds.width); //$NON-NLS-1$
@@ -83,7 +84,11 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
   }
 
   private int getNumberOfLines(ICharacterType characterType) {
-    return (characterType.isExaltType() ? 4 : 3);
+    return (isExaltButNoSpirit(characterType) ? 4 : 3);
+  }
+
+  private boolean isExaltButNoSpirit(ICharacterType characterType) {
+    return characterType.isExaltType() && CharacterType.SPIRIT != characterType;
   }
 
   private String getCasteString(ICasteType casteType) {
