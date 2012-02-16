@@ -2,7 +2,6 @@ package net.sf.anathema.initialization.reflections;
 
 import com.google.common.collect.Sets;
 import net.sf.anathema.lib.logging.Logger;
-import sun.net.www.ParseUtil;
 
 import java.io.IOException;
 import java.net.URI;
@@ -39,13 +38,5 @@ public class EncodingClasspathHelper {
       }
     }
     return result;
-  }
-
-  private static String deconstructUrlCompareString(String partialUrl) {
-    return ParseUtil.decode(partialUrl);
-  }
-
-  private static String createUrlCompareString(String partialUrlsString) {
-    return ParseUtil.encodePath(partialUrlsString);
   }
 }
