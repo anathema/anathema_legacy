@@ -36,6 +36,7 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
   private static final String TAG_ESSENCE = "essence"; //$NON-NLS-1$
   private static final String TAG_MAGIC = "magic"; //$NON-NLS-1$
   private static final String TAG_CHARMS = "charms"; //$NON-NLS-1$
+  private static final String TAG_SPELLS = "spells"; //$NON-NLS-1$
   private static final String TAG_KEYWORD_CHARMS = "keywordCharms";
   private static final String TAG_MARTIAL_ARTS = "highLevelMartialArts"; //$NON-NLS-1$
   private static final String TAG_BACKGROUNDS = "backgrounds";
@@ -90,6 +91,15 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     int favoredMartialArtsCost = ElementUtilities.getRequiredIntAttrib(martialArts, ATTRIB_FAVORED);
     int generalMartialArtsCost = ElementUtilities.getRequiredIntAttrib(martialArts, ATTRIB_GENERAL);
     costs.setMartialArtsCosts(favoredMartialArtsCost, generalMartialArtsCost);
+    
+    Element spells = magic.element(TAG_SPELLS);
+    if (spells != null)
+    {
+    	int gCost = ElementUtilities.getIntAttrib(spells, ATTRIB_GENERAL, generalCost);
+    	int fCost = ElementUtilities.getIntAttrib(spells, ATTRIB_FAVORED, favoredCost);
+    	costs.setSpellCosts(fCost, gCost);
+    }
+    
   }
 
   private void setAdvantageCosts(Element element, GenericExperiencePointCosts costs) throws PersistenceException {
