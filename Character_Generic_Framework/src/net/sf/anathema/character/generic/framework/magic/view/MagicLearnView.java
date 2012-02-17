@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework.magic.view;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
@@ -128,9 +129,9 @@ public class MagicLearnView implements IMagicLearnView {
       panel.add(boxPanel);
       panel.add(new EndOfLineMarkerComponent());
     }
-    panel.add(createScrollPane(learnOptionsList));
+    panel.add(createScrollPane(learnOptionsList), GridDialogLayoutData.FILL_BOTH);
     panel.add(addButton);
-    panel.add(createScrollPane(learnedList));
+    panel.add(createScrollPane(learnedList), GridDialogLayoutData.FILL_BOTH);
     JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
     for (JButton button : endButtons) {
       buttonPanel.add(button);
