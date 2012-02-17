@@ -21,7 +21,8 @@ public class ExtraActionCharmComboRules extends AbstractComboRules {
         boolean samePrerequisite = haveSamePrerequisite(extraActionCharm, otherCharm);
         boolean attributePrerequisites = haveAttributePrerequisites(extraActionCharm, otherCharm);
         boolean abilityAttributeCombo = crossPrerequisite && isAbilityAttributeCombo(extraActionCharm, otherCharm);
-        legal[0] = allAbilitiesRule || selectAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
+        boolean noTraitPrerequisiteCombo = hasNoTraitPrerequisites(extraActionCharm);
+        legal[0] = allAbilitiesRule || selectAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo || noTraitPrerequisiteCombo;
       }
 
       public void visitExtraAction(CharmType visitedType) {
@@ -38,7 +39,8 @@ public class ExtraActionCharmComboRules extends AbstractComboRules {
         boolean samePrerequisite = haveSamePrerequisite(extraActionCharm, otherCharm);
         boolean attributePrerequisites = haveAttributePrerequisites(extraActionCharm, otherCharm);
         boolean abilityAttributeCombo = crossPrerequisite && isAbilityAttributeCombo(extraActionCharm, otherCharm);
-        legal[0] = allAbilitiesRule || selectAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
+        boolean noTraitPrerequisiteCombo = hasNoTraitPrerequisites(extraActionCharm);
+        legal[0] = allAbilitiesRule || selectAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo || noTraitPrerequisiteCombo;
       }
 
       public void visitPermanent(CharmType visitedType) {
