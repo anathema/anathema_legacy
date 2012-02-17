@@ -36,6 +36,13 @@
 		<source source="FirstEdition" page="218" edition="FirstEdition"/>
 		<source source="SecondEdition" page="252" edition="SecondEdition"/>
 	</spell>
+	<spell id="Terrestrial.SlaveSpawnSummons" circle="Terrestrial">
+		<cost>
+			<essence cost="20" text="or more"/>
+		</cost>
+		<target target="DemonFirstCircle"/>
+		<source source="Infernals" page="165" edition="SecondEdition"/>
+	</spell>
 	<spell id="Terrestrial.EmeraldCountermagic" circle="Terrestrial">
 		<cost>
 			<essence cost="10" text="or 20 motes"/>
@@ -107,6 +114,13 @@
 		<target target="DemonSecondCircle"/>
 		<source source="FirstEdition" page="220" edition="FirstEdition"/>
 		<source source="SecondEdition" page="255" edition="SecondEdition"/>
+	</spell>
+	<spell id="Celestial.FiendVassalConscription" circle="Celestial">
+		<cost>
+			<essence cost="30" text="or more"/>
+		</cost>
+		<target target="DemonSecondCircle"/>
+		<source source="Infernals" page="165" edition="SecondEdition"/>
 	</spell>
 	<spell id="Celestial.DolorousReflection" circle="Celestial">
 		<cost>
