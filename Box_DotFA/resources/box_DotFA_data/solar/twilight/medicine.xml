@@ -57,8 +57,8 @@
      </charm>
      <charm id="Solar.ScienceOfMutation" exalt="Solar" group="Medicine">
           <prerequisite>
-               <trait id="Medicine" value="7" />
-               <essence value="7" />
+               <trait id="Medicine" value="5" />
+               <essence value="4" />
                <charmReference id="Solar.Wholeness-RestoringMeditation" />
           </prerequisite>
           <cost>
@@ -71,7 +71,10 @@
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Stackable" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Touch" visualize="true" />
           <source source="LordsOfCreation" />
+         <source source="ScrollErrata" />
      </charm>
 	<charm id="Solar.MindSoothingAnodyne" exalt="Solar" group="Medicine">
 		<!-- NOTE:  Solar/Presence "Mirror" - Hastening Nights End -->

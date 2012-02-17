@@ -26,6 +26,7 @@
      <!-- Melee -->
      <charm id="Abyssal.SavageShadeStyle" exalt="Abyssal" group="Melee">
           <prerequisite>
+               <trait id="Melee" value="2" />
                <essence value="1" />
           </prerequisite>
           <cost>

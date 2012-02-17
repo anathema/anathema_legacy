@@ -21,7 +21,6 @@ public class Extended2ndEditionSpiritPartEncoder extends AbstractSecondEditionEx
 
   @Override
   public ContentEncoder getAnimaEncoder(ReportContent reportContent) {
-    BasicContent content = reportContent.createSubContent(BasicContent.class);
-    return new SpiritAnimaEncoderFactory().create(getResources(), content);
+    return null;
   }
 }

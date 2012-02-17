@@ -7,6 +7,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFa
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.generic.type.CharacterType.DB;
+
 public class GreatCurse2ndEditionEncoderFactory extends AbstractEncoderFactory {
 
   public GreatCurse2ndEditionEncoderFactory() {
@@ -20,6 +22,6 @@ public class GreatCurse2ndEditionEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isFirstEdition() && content.isOfType(CharacterType.DB);
+    return content.isSecondEdition() && content.isOfType(DB);
   }
 }
