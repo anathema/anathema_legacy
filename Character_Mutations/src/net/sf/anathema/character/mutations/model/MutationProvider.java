@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.SecondEdition;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.Infernals;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.Lunars2nd;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.CompassWyld;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.CompassWest;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.CompassEast;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.LandsOfCreation;
 import static net.sf.anathema.character.mutations.model.MutationType.Abomination;
 import static net.sf.anathema.character.mutations.model.MutationType.Affliction;
 import static net.sf.anathema.character.mutations.model.MutationType.Blight;
@@ -51,97 +57,142 @@ public class MutationProvider {
   }
 
   private static void addDeformities(Mutations mutations) {
-    mutations.add("ShortLife", Deformity);
-    mutations.add("SurrenderingFlesh", Deformity);
-    mutations.add("Wracking", Deformity);
+    mutations.add("AuraOfPower", Deformity, Infernals, 63);
+    mutations.add("CreatureOfDarkness", Deformity, Infernals, 64);
+    mutations.add("Decomposing", Deformity, SecondEdition, 289);
+    mutations.add("MagicalPlagueCarrier", Deformity, Lunars2nd, 209);
+    mutations.add("OngoingMutation", Deformity, LandsOfCreation, 131);
+    mutations.add("PlagueCarrier", Deformity, SecondEdition, 290);
+    mutations.add("ShortLife", Deformity, CompassWyld, 148);
+    mutations.add("SurrenderingFlesh", Deformity, CompassWyld, 148);
+    mutations.add("WalkingBlasphemy", Deformity, Infernals, 64);
+    mutations.add("Wracking", Deformity, CompassWyld, 148);
   }
 
   private static void addDebilities(Mutations mutations) {
-    mutations.add("Blindness", Debility);
-    mutations.add("Deterioration", Debility);
-    mutations.add("Fragile", Debility);
-    mutations.add("Lame", Debility);
-    mutations.add("SlowHealing", Debility);
+    mutations.add("Blindness", Debility, CompassWyld, 147);
+    mutations.add("Deterioration", Debility, CompassWyld, 147);
+    mutations.add("Delusion", Debility, CompassWyld, 149);
+    mutations.add("Diet", Debility, SecondEdition, 289);
+    mutations.add("EyesOfWickedMadness", Debility, Infernals, 64);
+    mutations.add("Fragile", Debility, CompassWyld, 147);
+    mutations.add("HeartsBloodAddiction", Debility, Lunars2nd, 208);
+    mutations.add("Lame", Debility, CompassWyld, 147);
+    mutations.add("SlowHealing", Debility, CompassWyld, 147);
+    mutations.add("WyldAddiction", Debility, SecondEdition, 289);
   }
 
   private static void addDeficiencies(Mutations mutations) {
-    mutations.add("Atrophy", Deficiency);
-    mutations.add("Allergy", Deficiency);
-    mutations.add("Hungry", Deficiency);
-    mutations.add("LostSenseHearing", Deficiency);
-    mutations.add("LostSenseTouch", Deficiency);
-    mutations.add("LostSenseSmellTaste", Deficiency);
-    mutations.add("Rotundity", Deficiency);
-    mutations.add("TemperatureSensitivity", Deficiency);
+    mutations.add("Allergy", Deficiency, CompassWyld, 146);
+    mutations.add("Atrophy", Deficiency, SecondEdition, 288);
+    mutations.add("DisgustingScent", Deficiency, Lunars2nd, 207);
+    mutations.add("DisturbingVoice", Deficiency, Lunars2nd, 207);
+    mutations.add("Hungry", Deficiency, CompassWyld, 146);
+    mutations.add("LostSenseHearing", Deficiency, CompassWyld, 146);
+    mutations.add("LostSenseTouch", Deficiency, CompassWyld, 146);
+    mutations.add("LostSenseSmellTaste", Deficiency, CompassWyld, 146);
+    mutations.add("MoodSwings", Deficiency, SecondEdition, 288);
+    mutations.add("Rotundity", Deficiency, CompassWyld, 146);
+    mutations.add("SecondMouth", Deficiency, Lunars2nd, 207);
+    mutations.add("TemperatureSensitivity", Deficiency, CompassWyld, 146);
+    mutations.add("Ugly", Deficiency, SecondEdition, 289);
   }
 
   private static void addAbominations(Mutations mutations) {
-    mutations.add("DragonsBreath", Abomination);
-    mutations.add("Hive", Abomination);
-    mutations.add("ExtraArmLegHead", Abomination);
-    mutations.add("SerpentsBody", Abomination);
-    mutations.add("SpiderLegs", Abomination);
-    mutations.add("StoneBody", Abomination);
-    mutations.add("TerrifyingMane", Abomination);
-    mutations.add("Wings", Abomination);
+	  mutations.add("AwakenedEssence", Abomination, Infernals, 64);
+	  mutations.add("DragonsBreath", Abomination, CompassWyld, 148);
+	  mutations.add("FishBody", Abomination, CompassWest, 152);
+	  mutations.add("FogCarrier", Abomination, CompassWest, 152);
+	  mutations.add("Gargantuan", Abomination, LandsOfCreation, 131);
+	  mutations.add("Hive", Abomination, SecondEdition, 290);
+	  mutations.add("ImmortalFlesh", Abomination, LandsOfCreation, 131);
+	  mutations.add("ExtraArmLegHead", Abomination, SecondEdition, 290);
+	  mutations.add("OrdinationOfLies", Abomination, Infernals, 64);
+	  mutations.add("OrdinationOfPain", Abomination, Infernals, 64);
+	  mutations.add("SerpentsBody", Abomination, Lunars2nd, 209);
+	  mutations.add("SpiderLegs", Abomination, Lunars2nd, 209);
+	  mutations.add("StoneBody", Abomination, CompassWyld, 148);
+	  mutations.add("TerrifyingMane", Abomination, Lunars2nd, 209);
+	  mutations.add("Wings", Abomination, SecondEdition, 290);
   }
 
   private static void addBlights(Mutations mutations) {
-    mutations.add("AcidicPustules", Blight);
-    mutations.add("ArmoredHide", Blight);
-    mutations.add("CheetahsPace", Blight);
-    mutations.add("Glider", Blight);
-    mutations.add("HideousMaw", Blight);
-    mutations.add("LidlessDemonEye", Blight);
-    mutations.add("PrehensileBodyHair", Blight);
-    mutations.add("Quills", Blight);
-    mutations.add("SerpentineHair", Blight);
-    mutations.add("Tentacles", Blight);
-    mutations.add("WallWalking", Blight);
+    mutations.add("AcidicPustules", Blight, Lunars2nd, 208);
+    mutations.add("ArmoredHide", Blight, SecondEdition, 289);
+    mutations.add("CheetahsPace", Blight, Lunars2nd, 208);
+    mutations.add("EnlightenedEssence", Blight, CompassWyld, 148);
+    mutations.add("Giant", Blight, CompassWyld, 148);
+    mutations.add("Glider", Blight, SecondEdition, 289);
+    mutations.add("HideousMaw", Blight, Lunars2nd, 208);
+    mutations.add("LidlessDemonEye", Blight, Lunars2nd, 208);
+    mutations.add("Miniscule", Blight, CompassWyld, 148);
+    mutations.add("PrehensileBodyHair", Blight, Lunars2nd, 208);
+    mutations.add("Quills", Blight, SecondEdition, 289);
+    mutations.add("SerpentineHair", Blight, Lunars2nd, 208);
+    mutations.add("Tentacles", Blight, SecondEdition, 289);
+    mutations.add("WallWalking", Blight, SecondEdition, 289);
   }
 
   private static void addAfflictions(Mutations mutations) {
-    mutations.add("ChakraEye", Affliction);
-    mutations.add("Chameleon", Affliction);
-    mutations.add("ExaltedHealing", Affliction);
-    mutations.add("FrogTongue", Affliction);
-    mutations.add("GazellesPace", Affliction);
-    mutations.add("Gills", Affliction);
-    mutations.add("Huge", Affliction);
-    mutations.add("ImpossibleJoints", Affliction);
-    mutations.add("Inexhaustible", Affliction);
-    mutations.add("ShortGestation", Affliction);
-    mutations.add("PrehensileTail", Affliction);
-    mutations.add("ScorpionsTail", Affliction);
-    mutations.add("TalonsTusksHorns", Affliction);
-    mutations.add("ThickSkin", Affliction);
-    mutations.add("Toxin", Affliction);
-    mutations.add("Tiny", Affliction);
-    mutations.add("WyldAssimilation", Affliction);
+    mutations.add("Brachiation", Affliction, CompassEast, 149);
+    mutations.add("ChakraEye", Affliction, Lunars2nd, 207);
+    mutations.add("Chameleon", Affliction, SecondEdition, 289);
+    mutations.add("ExaltedHealing", Affliction, CompassWyld, 146);
+    mutations.add("EyesOfWickedMadness", Affliction, Infernals, 64);
+    mutations.add("FrogTongue", Affliction, SecondEdition, 289);
+    mutations.add("GazellesPace", Affliction, Lunars2nd, 207);
+    mutations.add("Gills", Affliction, SecondEdition, 289);
+    mutations.add("GreatHooves", Affliction, Lunars2nd, 207);
+    mutations.add("Huge", Affliction, CompassWyld, 146);
+    mutations.add("ImpossibleJoints", Affliction, CompassWyld, 146);
+    mutations.add("Inexhaustible", Affliction, CompassWyld, 146);
+    mutations.add("MagicalAttunement", Affliction, Infernals, 64);
+    mutations.add("MarkOfInfernalFavor", Affliction, Infernals, 64);
+    mutations.add("Omnidexterity", Affliction, CompassEast, 149);
+    mutations.add("PrehensileTail", Affliction, SecondEdition, 289);
+    mutations.add("ScorpionsTail", Affliction, Lunars2nd, 207);
+    mutations.add("SharkSight", Affliction, CompassWest, 152);
+    mutations.add("ShortGestation", Affliction, CompassWyld, 147);
+    mutations.add("TalonsTusksHorns", Affliction, Lunars2nd, 208);
+    mutations.add("ThickSkin", Affliction, Lunars2nd, 208);
+    mutations.add("Tiny", Affliction, CompassWyld, 147);
+    mutations.add("Toxin", Affliction, SecondEdition, 289);
+    mutations.add("WyldAssimilation", Affliction, CompassWyld, 147);
   }
 
   private static void addPoxes(Mutations mutations) {
-    mutations.add("EnhancedSense", Pox, SecondEdition, 288);
+    mutations.add("BioLuimsnescene", Pox, CompassWest, 152);
+    mutations.add("BlurredFate", Pox, Infernals, 63);
+    mutations.add("Brachiation", Pox, CompassEast, 149);
+    mutations.add("ChangingColoration", Pox, CompassWest, 152);
     mutations.add("Claws", Pox, SecondEdition, 288);
-    mutations.add("Fangs", Pox);
-    mutations.add("FurFeathersLeavesScales", Pox);
-    mutations.add("Hooves", Pox);
-    mutations.add("Large", Pox);
-    mutations.add("Longevity", Pox);
-    mutations.add("NightVision", Pox);
-    mutations.add("SerpentineTongue", Pox);
-    mutations.add("SkinHair", Pox);
-    mutations.add("Small", Pox);
-    mutations.add("Tail", Pox);
-    mutations.add("ThirdEye", Pox);
-    mutations.add("WolfsPace", Pox);
-    mutations.add("ElementalAdaptationAir", Pox);
-    mutations.add("ElementalAdaptationFire", Pox);
-    mutations.add("ElementalAdaptationWood", Pox);
-    mutations.add("ElementalAdaptationWater", Pox);
+    mutations.add("EnhancedSense", Pox, SecondEdition, 288);
+    mutations.add("Fangs", Pox, SecondEdition, 288);
+    mutations.add("ElementalAdaptationAir", Pox, CompassWyld, 145);
+    mutations.add("ElementalAdaptationFire", Pox, CompassWyld, 145);
+    mutations.add("ElementalAdaptationWater", Pox, CompassWyld, 145);
+    mutations.add("ElementalAdaptationWood", Pox, CompassWyld, 145);
+    mutations.add("EnhancedSensesFogsense", Pox, CompassWest, 152);
+    mutations.add("FurFeathersLeavesScales", Pox, SecondEdition, 288);
+    mutations.add("Gatekeeper", Pox, Infernals, 64);
+    mutations.add("Hooves", Pox, Lunars2nd, 207);
+    mutations.add("KinSense", Pox, LandsOfCreation, 131);
+    mutations.add("Large", Pox, CompassWyld, 144);
+    mutations.add("Longevity", Pox, CompassWyld, 144);
+    mutations.add("MouthTentacles", Pox, CompassWest, 152);
+    mutations.add("NightVision", Pox, CompassWyld, 144);
+    mutations.add("SerpentineTongue", Pox, Lunars2nd, 207);
+    mutations.add("SkinHair", Pox, SecondEdition, 288);
+    mutations.add("Small", Pox, CompassWyld, 144);
+    mutations.add("Sonar", Pox, CompassWest, 152);
+    mutations.add("Tail", Pox, SecondEdition, 288);
+    mutations.add("ThirdEye", Pox, Lunars2nd, 207);
+    mutations.add("WolfsPace", Pox, Lunars2nd, 207);
   }
 
   private static List<IMutation> getFirstEditionMutations() {
     return null;
   }
 }
+
+
