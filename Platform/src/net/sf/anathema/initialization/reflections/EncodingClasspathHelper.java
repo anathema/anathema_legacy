@@ -2,51 +2,52 @@ package net.sf.anathema.initialization.reflections;
 
 import com.google.common.collect.Sets;
 import net.sf.anathema.lib.logging.Logger;
-import sun.net.www.ParseUtil;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Set;
 
 public class EncodingClasspathHelper {
-
   private static final Logger logger = Logger.getLogger(EncodingClasspathHelper.class);
 
+  private static URL removeTrailingPath(URL url, String trailingPath) throws URISyntaxException, MalformedURLException {
+    URI uri = url.toURI();
+    String specificPart = uri.getSchemeSpecificPart();
+    if (specificPart == null) {
+      return null;
+    }
+    int index = specificPart.lastIndexOf(trailingPath);
+    if (index < 0) {
+      return null;
+    }
+    String partialPart = specificPart.substring(0, index);
+    URI trimmedUri = new URI(uri.getScheme(), partialPart, uri.getFragment());
+    return trimmedUri.toURL();
+  }
 
   public static Set<URL> forPackage(String name, ClassLoader... classLoaders) {
     Set<URL> result = Sets.newHashSet();
     String resourceName = name.replace(".", "/");
-    String encodedResourceName = createUrlCompareString(resourceName);
     for (ClassLoader classLoader : classLoaders) {
       try {
         Enumeration<URL> urls = classLoader.getResources(resourceName);
         while (urls.hasMoreElements()) {
           URL url = urls.nextElement();
-          String urlCompareString = createUrlCompareString(url.toExternalForm());
-          int index = urlCompareString.lastIndexOf(encodedResourceName);
-          if (index != -1) {
-            String partialUrl = urlCompareString.substring(0, index);
-            if (partialUrl.contains("!")) {
-              String jarUrl = deconstructUrlCompareString(partialUrl);
-              result.add(new URL(jarUrl));
-            } else {
-              result.add(new URL(partialUrl));
-            }
+          URL trimmedUrl = removeTrailingPath(url, resourceName);
+          if (trimmedUrl != null) {
+            result.add(trimmedUrl);
           }
         }
       } catch (IOException e) {
         logger.error("Could not resolve URL.", e);
+      } catch (URISyntaxException e) {
+        logger.error("URL could not be converted to URI.", e);
       }
     }
     return result;
-  }
-
-  private static String deconstructUrlCompareString(String partialUrl) {
-    return ParseUtil.decode(partialUrl);
-  }
-
-  private static String createUrlCompareString(String partialUrlsString) {
-    return ParseUtil.encodePath(partialUrlsString);
   }
 }
