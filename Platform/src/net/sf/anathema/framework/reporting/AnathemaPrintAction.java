@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import java.awt.Component;
 import java.awt.Desktop;
+import java.awt.Event;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -65,7 +66,7 @@ public class AnathemaPrintAction extends SmartAction {
   }
 
   private AnathemaPrintAction(final IAnathemaModel anathemaModel, IResources resources) {
-    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() | Event.SHIFT_MASK));
     this.anathemaModel = anathemaModel;
     this.resources = resources;
     PrintEnabledListener listener = new PrintEnabledListener(anathemaModel.getReportRegistry(), this);

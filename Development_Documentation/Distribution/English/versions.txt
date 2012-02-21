@@ -11,6 +11,8 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 * Reworked much of the tech behind the scenes
+* The toolbar PDF icon now triggers a "quick print" that opens a character sheet without any dialogs
+* New preference: Paper format
 
 ===------------------------------------------------------------------------------===
 			Release 3.0.2

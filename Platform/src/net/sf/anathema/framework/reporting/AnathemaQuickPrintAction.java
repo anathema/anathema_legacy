@@ -64,7 +64,7 @@ public class AnathemaQuickPrintAction extends SmartAction {
   }
 
   private AnathemaQuickPrintAction(final IAnathemaModel anathemaModel, IResources resources) {
-    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() | Event.SHIFT_MASK));
+    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
     this.anathemaModel = anathemaModel;
     this.resources = resources;
     PrintEnabledListener listener = new PrintEnabledListener(this);
