@@ -3,6 +3,6 @@
     <charms favored="8" general="10">
     	<highLevelMartialArts favored="8" general="10"/>
     </charms>
-    <spells favored="9" general="9"/>
+    <spells cost="9"/>
   </magic>
 </experiencePointCost>

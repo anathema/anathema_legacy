@@ -95,9 +95,8 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     Element spells = magic.element(TAG_SPELLS);
     if (spells != null)
     {
-    	int gCost = ElementUtilities.getIntAttrib(spells, ATTRIB_GENERAL, generalCost);
-    	int fCost = ElementUtilities.getIntAttrib(spells, ATTRIB_FAVORED, favoredCost);
-    	costs.setSpellCosts(fCost, gCost);
+    	int cost = ElementUtilities.getIntAttrib(spells, ATTRIB_COST, 0);
+    	costs.setSpellCost(cost);
     }
     
   }
