@@ -155,6 +155,11 @@
 			<parameter id="rules" value="SecondEdition" />
 			<parameter id="path" value="moep_Abyssals_data/misc/misc.xml" />
 		</parameter>
+		<parameter id="list">
+			<parameter id="type" value="Abyssal" />
+			<parameter id="rules" value="SecondEdition" />
+			<parameter id="path" value="moep_Abyssals_data/misc/Merges.xml" />
+		</parameter>
 		<!-- Solar List -->
 		<parameter id="list">
 			<parameter id="type" value="Solar" />
