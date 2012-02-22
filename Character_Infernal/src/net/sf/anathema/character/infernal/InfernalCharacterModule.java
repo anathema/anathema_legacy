@@ -44,12 +44,13 @@ import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.Second
 import static net.sf.anathema.character.generic.type.CharacterType.INFERNAL;
 
 @CharacterModule
-public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
+public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter
+{
   public static final String BACKGROUND_ID_UNWOVEN_COADJUTOR = "UnwovenCoadjutor"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_DEMONIC_FAMILIAR = "DemonicFamiliar"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_PAST_LIVES = "PastLives"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_SAVANT = "InfernalSavant"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SPIES = "Spies"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_PASTLIFE = "PastLife"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SAVANT = "Savant"; //$NON-NLS-1$
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -93,15 +94,16 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter {
     additionalViewFactoryRegistry.register(templateId, new InfernalUrgeViewFactory());
     persisterFactory.register(templateId, new InfernalUrgePersisterFactory());
   }
-
+  
   @Override
-  public void addBackgroundTemplates(ICharacterGenerics generics) {
-    IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_UNWOVEN_COADJUTOR, INFERNAL));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_DEMONIC_FAMILIAR, INFERNAL));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_PASTLIFE, INFERNAL));
-    //backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, INFERNAL));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SPIES, INFERNAL));
+  public void addBackgroundTemplates(ICharacterGenerics generics)
+  {
+	  IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
+	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_UNWOVEN_COADJUTOR, INFERNAL));
+	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_DEMONIC_FAMILIAR, INFERNAL));
+	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, INFERNAL));
+	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_PAST_LIVES, INFERNAL));
+	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SPIES, INFERNAL));
   }
 
   @Override
