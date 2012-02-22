@@ -13,5 +13,6 @@ public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
     registerParsedTemplate(characterGenerics, "HeroicMortal2nd.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "Mortal.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "Mortal2nd.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "EnlightenedMortal2nd.template"); //$NON-NLS-1$
   }
 }

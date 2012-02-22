@@ -3,5 +3,5 @@
 	<charmTemplate charmType="Spirit">
 		<martialArts level="Mortal"/>
 	</charmTemplate>
-	<spellTemplate maximumSorceryCircle="None" maximumNecromancyCircle="None"/>
+	<spellTemplate maximumSorceryCircle="Celestial" maximumNecromancyCircle="Labyrinth"/>
 </magicTemplate>		
