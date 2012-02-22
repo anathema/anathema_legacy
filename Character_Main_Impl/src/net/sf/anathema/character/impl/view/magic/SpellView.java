@@ -18,6 +18,7 @@ import javax.swing.event.ListSelectionListener;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
@@ -68,7 +69,7 @@ public class SpellView implements ISpellView {
 
   public void initGui(IIdentificate[] circles) {
     JComponent selectionPanel = createSelectionPanel(circles);
-    GridDialogLayoutData data = GridDialogLayoutDataFactory.createHorizontalFillNoGrab();
+    IGridDialogLayoutData data = GridDialogLayoutData.FILL_BOTH;
     content.add(selectionPanel, data);
     detailPanel.setBorder(new TitledBorder(properties.getDetailTitle()));
     content.add(detailPanel, data);
