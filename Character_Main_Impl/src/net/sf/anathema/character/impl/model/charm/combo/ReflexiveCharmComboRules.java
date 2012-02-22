@@ -17,24 +17,28 @@ public class ReflexiveCharmComboRules extends AbstractComboRules {
       public void visitSimple(CharmType visitedType) {
         legal[0] = haveAbilityPrerequisites(reflexiveCharm, otherCharm)
             || haveAttributePrerequisites(reflexiveCharm, otherCharm)
+            || hasNoTraitPrerequisites(reflexiveCharm)
             || crossPrerequisite;
       }
 
       public void visitExtraAction(CharmType visitedType) {
         legal[0] = haveAbilityPrerequisites(reflexiveCharm, otherCharm)
             || haveAttributePrerequisites(reflexiveCharm, otherCharm)
+            || hasNoTraitPrerequisites(reflexiveCharm)
             || crossPrerequisite;
       }
 
       public void visitReflexive(CharmType visitedType) {
         legal[0] = haveAbilityPrerequisites(reflexiveCharm, otherCharm)
             || haveAttributePrerequisites(reflexiveCharm, otherCharm)
+            || hasNoTraitPrerequisites(reflexiveCharm)
             || crossPrerequisite;
       }
 
       public void visitSupplemental(CharmType visitedType) {
         legal[0] = haveAbilityPrerequisites(reflexiveCharm, otherCharm)
             || haveAttributePrerequisites(reflexiveCharm, otherCharm)
+            || hasNoTraitPrerequisites(reflexiveCharm)
             || crossPrerequisite;
       }
 

@@ -114,6 +114,10 @@
           <duration duration="Indefinite"/>
           <charmtype type="Simple" />
           <charmAttribute attribute="Compulsion" visualize="true" />
+          <repurchases>
+          	<repurchase essence="3"/>
+          	<repurchase essence="4"/>
+          </repurchases>
           <source source="Infernals" />
      </charm>   
      <charm id="Infernal.SubliminationofOrdainedPurpose" exalt="Infernal" group="DemonicPrimacy">          

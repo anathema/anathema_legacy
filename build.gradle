@@ -86,7 +86,7 @@ apply from: 'plugins.gradle'
 task buildWindowsExecutable << {
     mkdir("./build/launcher")
     def exeVersion = "${versionString}.0"
-    def versionText = "$versionString $version_name"
+    def versionText = "$versionString \"$version_name\""
     ant.taskdef(name: 'launch4j', classname: 'net.sf.launch4j.ant.Launch4jTask', classpath: configurations.launch4j.asPath)
     ant.launch4j(configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion: "$versionText", txtProductVersion: "$versionText")
 }

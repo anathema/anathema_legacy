@@ -170,8 +170,7 @@
      <charm id="Infernal.SandstrikeBlast" exalt="Infernal" group="TranscendentDesert">          
           <prerequisite>
                <trait id="Cecelyne" value="0" />
-               <essence value="2" />		   
-               <charmReference id="Infernal.UntouchableInfinitudeReflection"/>
+               <essence value="2" />
           </prerequisite>
            <cost> 
                <essence cost="1" text="or 3m (or 3m, 1wp)" />     

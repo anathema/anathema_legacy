@@ -29,6 +29,7 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   private int favoredCharmCost;
   private int generalHighLevelCharmCost;
   private int favoredHighLevelCharmCost;
+  private int spellCost;
   private MartialArtsLevel standardMartialArtsLevel;
   private int backgroundCosts;
   private Map<String, Integer> keywordGeneralCosts;
@@ -47,7 +48,7 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   }
 
   public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
-    return getCharmCosts(spell.isFavored(basicCharacter, traitCollection), null);
+    return spellCost != 0 ? spellCost : getCharmCosts(spell.isFavored(basicCharacter, traitCollection), null);
   }
 
   public int getCharmCosts(ICharm charm, ICostAnalyzer costMapping) {
@@ -128,6 +129,11 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
     this.generalCharmCost = generalCharmCost;
     this.keywordFavoredCosts = keywordFavoredCost;
     this.keywordGeneralCosts = keywordGeneralCost;
+  }
+  
+  public void setSpellCost(int spellCost)
+  {
+	  this.spellCost = spellCost;
   }
 
   @Override

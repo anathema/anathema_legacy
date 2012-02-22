@@ -4,13 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.lib.control.GenericControl;
 
 public class CharacterListenerMapping {
 
-  private final Map<ITraitType, TraitListener> traitListeners = new HashMap<ITraitType, TraitListener>();
+  private final Map<ITrait, TraitListener> traitListeners = new HashMap<ITrait, TraitListener>();
   private final GenericControl<ICharacterChangeListener> control;
 
   public CharacterListenerMapping(GenericControl<ICharacterChangeListener> control) {
@@ -18,22 +17,20 @@ public class CharacterListenerMapping {
   }
 
   public void addTraitListening(ITrait trait) {
-    ITraitType traitType = trait.getType();
-    if (traitListeners.containsKey(traitType)) {
+    if (traitListeners.containsKey(trait)) {
       return;
     }
-    TraitListener traitListener = new TraitListener(control, traitType);
-    traitListeners.put(traitType, traitListener);
+    TraitListener traitListener = new TraitListener(control, trait.getType());
+    traitListeners.put(trait, traitListener);
     trait.addCurrentValueListener(traitListener);
   }
 
   public void removeTraitListening(ITrait trait) {
-    ITraitType traitType = trait.getType();
-    if (!traitListeners.containsKey(traitType)) {
+    if (!traitListeners.containsKey(trait)) {
       return;
     }
-    TraitListener traitListener = traitListeners.get(traitType);
+    TraitListener traitListener = traitListeners.get(trait);
     trait.removeCurrentValueListener(traitListener);
-    traitListeners.remove(traitType);
+    traitListeners.remove(trait);
   }
 }
