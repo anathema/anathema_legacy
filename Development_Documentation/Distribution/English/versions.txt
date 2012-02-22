@@ -12,16 +12,20 @@ http://anathema.sf.net
 
 -- Bugfixes --
 Once more, thanks to the unblinking eyes of the people the WW-forum.
-* Age-based Essence-caps now are as written
+* Age-based Essence-caps now work as written
+* Multiple Backgrounds of a single type now factor into BP/XP
 * [2E] Terrestrials have a their limit break printed
 * [2E] Spirits don't try to print Anima and Caste info
 * [2E] (Solar/Medicine) "Science of Mutation" adheres to the current errata
 * [2E] (Abyssal/Melee) "Savage Shade Style" now requires Melee 2 and can be comboed
-* [2E] Offers "Unwoven coadjutor" and "Demonic Familiar" in the pre-defined list of Infernal backgrounds
+* [2E] Offers specials in the pre-defined list of Infernal backgrounds
 * [2E] Calculates XP cost for Infernal Spells correctly
 * [2E] Allows Infernal Charms to be comboed freely
 * [2E] Added (Abyssal/Integrity) "Dark Will Triumphant" from the Thousand Actions
-* [2E] Added "Slave-Spawn Summons" and "Fiend-Vassal Conscription" spells.
+* [2E] Added "Slave-Spawn Summons" and "Fiend-Vassal Conscription" spells
+* [2E] Made repurchases for "Essence Engorgement Technique" match its Solar mirror
+* [2E] Added re-purchase for "Unquestionable Yozi Authority"
+* [2E] Fixed prerequisites for "Sandstrike Blast"
 
 ===------------------------------------------------------------------------------===
 			Release 3.0.1
