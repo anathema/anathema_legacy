@@ -17,6 +17,7 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.presenter.charm.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.charm.SourceBookCharmFilter;
 import net.sf.anathema.charmtree.presenter.AbstractCascadeSelectionPresenter;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
@@ -140,6 +141,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
   private void initFilters() {
     sourceFilter = new SourceBookCharmFilter(selectedRuleset.getEdition());
     filterSet.add(sourceFilter);
+    filterSet.add(new EssenceLevelCharmFilter());
   }
 
   private CharmTreeIdentificateMap getCharmTreeMap(IExaltedRuleSet ruleSet) {

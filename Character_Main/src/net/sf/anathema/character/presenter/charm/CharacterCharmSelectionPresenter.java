@@ -128,6 +128,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       filterSet.add(new ObtainableCharmFilter(getCharmConfiguration()));
       filterSet.add(new SourceBookCharmFilter(statistics.getRules().getEdition(),
               getCharmConfiguration()));
+	  filterSet.add(new EssenceLevelCharmFilter());
       getCharmConfiguration().setCharmFilters(filterSet);
     } else
       filterSet = charms.getCharmFilters();

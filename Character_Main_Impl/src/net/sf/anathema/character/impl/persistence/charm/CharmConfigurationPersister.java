@@ -34,6 +34,7 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.presenter.charm.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.charm.ObtainableCharmFilter;
 import net.sf.anathema.character.presenter.charm.SourceBookCharmFilter;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
@@ -245,6 +246,7 @@ private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration c
 	  filterSet.add(new ObtainableCharmFilter(config));
 	  filterSet.add(new SourceBookCharmFilter(statistics.getRules().getEdition(),
 			  config));
+	  filterSet.add(new EssenceLevelCharmFilter());
 	  
 	  Element charmFilterNode = parent.element(TAG_CHARMFILTERS);
 	  if (charmFilterNode != null)
