@@ -48,6 +48,9 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter
 {
   public static final String BACKGROUND_ID_UNWOVEN_COADJUTOR = "UnwovenCoadjutor"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_DEMONIC_FAMILIAR = "DemonicFamiliar"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_PAST_LIVES = "PastLives"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_SAVANT = "InfernalSavant"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_SPIES = "Spies"; //$NON-NLS-1$
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -98,6 +101,9 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter
 	  IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
 	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_UNWOVEN_COADJUTOR, INFERNAL));
 	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_DEMONIC_FAMILIAR, INFERNAL));
+	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, INFERNAL));
+	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_PAST_LIVES, INFERNAL));
+	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SPIES, INFERNAL));
   }
 
   @Override
