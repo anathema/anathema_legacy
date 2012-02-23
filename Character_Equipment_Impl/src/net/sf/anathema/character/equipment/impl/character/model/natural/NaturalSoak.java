@@ -60,7 +60,7 @@ public class NaturalSoak extends AbstractStats implements IArmourStats {
     if (type == HealthType.Aggravated) {
       return null;
     }
-    if (!characterType.isExaltType() && type == HealthType.Lethal) {
+    if (!characterType.isEssenceUser() && type == HealthType.Lethal) {
       return 0;
     }
     return getExaltedSoak(type);

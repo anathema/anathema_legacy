@@ -23,7 +23,7 @@ public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponS
         weapon.getDefence(),
         traitCollection.getTrait(AttributeType.Dexterity),
         traitCollection.getTrait(weapon.getTraitType()));
-    boolean isMortal = !getCharacter().getTemplate().getTemplateType().getCharacterType().isExaltType();
+    boolean isMortal = !getCharacter().getTemplate().getTemplateType().getCharacterType().isEssenceUser();
     if (isMortal) {
       finalValue = Math.floor(finalValue / 2);
     }

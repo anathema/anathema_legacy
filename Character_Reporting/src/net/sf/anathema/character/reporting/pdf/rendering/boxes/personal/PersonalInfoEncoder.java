@@ -89,7 +89,7 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
   }
 
   private boolean isTrueExaltNotJustAnEssenceUser(ICharacterType characterType) {
-    return characterType.isExaltType() && SPIRIT != characterType && GHOST != characterType;
+    return characterType.isExaltType() && !characterType.isEssenceUser();
   }
 
   private String getCasteString(ICasteType casteType) {

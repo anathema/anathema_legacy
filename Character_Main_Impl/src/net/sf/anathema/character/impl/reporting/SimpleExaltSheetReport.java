@@ -111,6 +111,6 @@ public class SimpleExaltSheetReport extends AbstractPdfReport {
     if (!character.hasStatistics()) {
       return false;
     }
-    return character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isExaltType();
+    return character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isEssenceUser();
   }
 }

@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.type;
 import org.junit.Test;
 
 import static java.util.Arrays.asList;
+import static net.sf.anathema.character.generic.type.CharacterType.DRAGON_KING;
 import static net.sf.anathema.character.generic.type.CharacterType.GHOST;
 import static net.sf.anathema.character.generic.type.CharacterType.SPIRIT;
 import static net.sf.anathema.character.generic.type.CharacterType.getAllExaltTypes;
@@ -39,6 +40,11 @@ public class CharacterTypeTest {
   @Test
   public void includesGhostsAsEssenceUsers() throws Exception {
     assertThat(CharacterType.getAllEssenceUsers(), hasItem((ICharacterType) GHOST));
+  }
+
+  @Test
+  public void includesDragonKingsAsEssenceUsers() throws Exception {
+    assertThat(CharacterType.getAllEssenceUsers(), hasItem((ICharacterType) DRAGON_KING));
   }
 
   @Test

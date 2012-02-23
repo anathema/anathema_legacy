@@ -1,15 +1,13 @@
 package net.sf.anathema.character.generic.type;
 
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import net.disy.commons.core.util.ArrayUtilities;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-
-import static java.util.Arrays.asList;
 import static net.disy.commons.core.util.ArrayUtilities.containsValue;
 
 public enum CharacterType implements ICharacterType {
@@ -149,7 +147,9 @@ public enum CharacterType implements ICharacterType {
   }
 
   public static Iterable<ICharacterType> getAllEssenceUsers() {
-    return Lists.asList(SPIRIT, GHOST, getAllExaltTypes());
+    List<ICharacterType> list = Lists.<ICharacterType>newArrayList(SPIRIT, GHOST, DRAGON_KING);
+    Collections.addAll(list, getAllExaltTypes());
+    return list;
   }
 
   public boolean isEssenceUser() {

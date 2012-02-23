@@ -22,6 +22,6 @@ public class ComboEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isExalt();
+    return content.isEssenceUser();
   }
 }

@@ -28,6 +28,11 @@ public class NaturalSoakTest {
       }
 
       @Override
+      public boolean isEssenceUser() {
+        return false;
+      }
+
+      @Override
       public String getId() {
         return "Mortal"; //$NON-NLS-1$
       }
@@ -41,7 +46,6 @@ public class NaturalSoakTest {
 
       @Override
       public FavoringTraitType getFavoringTraitType() {
-        // TODO Auto-generated method stub
         return null;
       }
     });
@@ -63,6 +67,11 @@ public class NaturalSoakTest {
       }
 
       @Override
+      public boolean isEssenceUser() {
+        return true;
+      }
+
+      @Override
       public String getId() {
         return "Mortal"; //$NON-NLS-1$
       }
@@ -75,7 +84,44 @@ public class NaturalSoakTest {
 
       @Override
       public FavoringTraitType getFavoringTraitType() {
-        // TODO Auto-generated method stub
+        return null;
+      }
+    });
+    Assert.assertEquals(new Integer(1), naturalSoak.getSoak(HealthType.Lethal));
+    Assert.assertEquals(new Integer(2), naturalSoak.getSoak(HealthType.Bashing));
+  }
+
+  @Test
+  public void testSoakForEssenceUsers() {
+    NaturalSoak naturalSoak = new NaturalSoak(new ValuedTraitType(AttributeType.Stamina, 2), new ICharacterType() {
+      @Override
+      public void accept(ICharacterTypeVisitor abstractSupportedCharacterTypeVisitor) {
+        // Nothing to do
+      }
+
+      @Override
+      public boolean isExaltType() {
+        return false;
+      }
+
+      @Override
+      public boolean isEssenceUser() {
+        return true;
+      }
+
+      @Override
+      public String getId() {
+        return "Mortal"; //$NON-NLS-1$
+      }
+
+      @Override
+      public int compareTo(CharacterType o) {
+        // Nothing to do
+        return 0;
+      }
+
+      @Override
+      public FavoringTraitType getFavoringTraitType() {
         return null;
       }
     });
