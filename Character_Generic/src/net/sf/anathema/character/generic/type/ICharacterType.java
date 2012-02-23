@@ -5,9 +5,11 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ICharacterType extends IIdentificate, Comparable<CharacterType> {
 
-  public void accept(ICharacterTypeVisitor visitor);
+  void accept(ICharacterTypeVisitor visitor);
 
-  public boolean isExaltType();
+  boolean isExaltType();
 
-  public FavoringTraitType getFavoringTraitType();
+  boolean isEssenceUser();
+
+  FavoringTraitType getFavoringTraitType();
 }
