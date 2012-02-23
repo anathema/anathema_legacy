@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.content.essence.pools;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 

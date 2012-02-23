@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.impl.magic;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class CharmUtilities {
 

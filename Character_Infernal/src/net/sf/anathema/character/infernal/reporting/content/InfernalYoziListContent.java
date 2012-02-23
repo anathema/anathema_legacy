@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.traits.FavorableTraitContent;
 import net.sf.anathema.lib.resources.IResources;
 

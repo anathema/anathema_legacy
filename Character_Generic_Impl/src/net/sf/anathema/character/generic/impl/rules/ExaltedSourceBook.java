@@ -27,7 +27,7 @@ public enum ExaltedSourceBook implements IExaltedSourceBook {
  UnderRose(ExaltedEdition.SecondEdition), ContagionLaw(ExaltedEdition.SecondEdition), ScrollErrata(ExaltedEdition.SecondEdition),
  GodsAndElementals(ExaltedEdition.SecondEdition), GhostsAndDemons(ExaltedEdition.SecondEdition),
  CompassWyld(ExaltedEdition.SecondEdition), BrokenWingedCrane(ExaltedEdition.SecondEdition), LostDead(ExaltedEdition.SecondEdition),
- CompassAutochthonia(ExaltedEdition.SecondEdition);
+ CompassAutochthonia(ExaltedEdition.SecondEdition),  CompassWest(ExaltedEdition.SecondEdition), CompassEast(ExaltedEdition.SecondEdition);
 
   private final IExaltedEdition edition;
 

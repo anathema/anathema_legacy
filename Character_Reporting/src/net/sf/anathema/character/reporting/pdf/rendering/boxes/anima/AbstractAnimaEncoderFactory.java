@@ -1,15 +1,12 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.anima;
 
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.type.CharacterType;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SMALLER_FONT_SIZE;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.resources.IResources;
-
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SMALLER_FONT_SIZE;
 
 public abstract class AbstractAnimaEncoderFactory extends AbstractEncoderFactory {
 
