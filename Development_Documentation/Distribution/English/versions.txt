@@ -16,6 +16,7 @@ http://anathema.sf.net
 * [Dirk Walter] Added missing Mutations from many sources
 * [Dirk Walter] Magic views adapt to window size
 * Added (Infernal/SWLIHN) "Force-Suppression Barrier"
+* Added (Infernal/Martial Arts) "Roots of the Brass Lotus". No special rules though.
 
 
 ===------------------------------------------------------------------------------===
