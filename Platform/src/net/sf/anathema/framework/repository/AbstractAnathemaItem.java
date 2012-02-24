@@ -17,10 +17,15 @@ public abstract class AbstractAnathemaItem implements IItem {
   private final GenericControl<IItemListener> repositoryItemListeners = new GenericControl<IItemListener>();
 
   public AbstractAnathemaItem(IItemType type) {
-    Ensure.ensureArgumentTrue("Use second constructor for nonpersisted items.", type.supportsRepository()); //$NON-NLS-1$
+    Ensure.ensureArgumentTrue("Use second constructor for non-persisted items.", type.supportsRepository()); //$NON-NLS-1$
     this.itemType = type;
     this.repositoryLocation = new RepositoryLocation(this);
-    this.identificate = repositoryLocation;
+    this.identificate = new IIdentificate() {
+      @Override
+      public String getId() {
+        return repositoryLocation.getId();
+      }
+    };
   }
 
   public AbstractAnathemaItem(IItemType type, IIdentificate identificate) {
@@ -51,10 +56,6 @@ public abstract class AbstractAnathemaItem implements IItem {
 
   public final synchronized String getId() {
     return identificate.getId();
-  }
-
-  public String getIdProposal() {
-    return printName == null ? getItemType().getId() + DEFAULT_PRINT_NAME : printName;
   }
 
   public String getDisplayName() {

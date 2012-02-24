@@ -2,23 +2,24 @@ package net.sf.anathema.framework.repository;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
-import net.sf.anathema.lib.util.IIdentificate;
 
-public interface IItem extends IIdentificate, IChangeManagement {
+public interface IItem extends IChangeManagement {
 
-  public static final String DEFAULT_PRINT_NAME = "Unnamed"; //$NON-NLS-1$
+  String DEFAULT_PRINT_NAME = "Unnamed"; //$NON-NLS-1$
 
-  public IItemData getItemData();
+  IItemData getItemData();
 
-  public IItemType getItemType();
+  IItemType getItemType();
 
-  public IItemRepositoryLocation getRepositoryLocation();
+  IItemRepositoryLocation getRepositoryLocation();
 
-  public String getDisplayName();
+  String getDisplayName();
 
-  public void setPrintName(String printName);
+  void setPrintName(String printName);
 
-  public void addItemListener(IItemListener listener);
+  void addItemListener(IItemListener listener);
 
-  public void removeItemListener(IItemListener listener);
+  void removeItemListener(IItemListener listener);
+  
+  String getId();
 }
