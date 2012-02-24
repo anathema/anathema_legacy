@@ -11,7 +11,7 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- Features --
-* Reworked much of the tech behind the scenes: If you have custom plugins, they need to be reworked.
+* Reworked much of the tech behind the scenes: If you have custom plugins, they need to be rebuilt.
 * The toolbar PDF icon now triggers a "quick print" that opens a character sheet without any dialogs
 * New preference: Paper format
 * [Dirk Walter] Magic views adapt to window size
