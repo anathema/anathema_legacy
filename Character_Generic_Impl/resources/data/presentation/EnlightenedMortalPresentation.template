@@ -1,0 +1,4 @@
+<presentation>
+  <color red="177" green="177" blue="253" />
+  <charmPresentation uses="presentation/EnlightenedMortalCharmPresentation.template"/>
+</presentation>

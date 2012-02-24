@@ -122,7 +122,6 @@
 		<charm id="Spirit.CelestialCircleSorcery" exalt="Spirit" group="Universal">
 		<prerequisite>
 			<essence value="5"/>
-			<charmReference id="Spirit.TerrestrialCircleSorcery" />
 		</prerequisite>
 		<cost/>
 		<duration duration="Permanent"/>
@@ -142,7 +141,6 @@
      <charm id="Spirit.LabyrinthCircleNecromancy" exalt="Spirit" group="Universal">
           <prerequisite>
                <essence value="5" />
-               <charmReference id="Spirit.ShadowlandsCircleNecromancy" />
           </prerequisite>
           <cost />
           <duration duration="Instant" />
