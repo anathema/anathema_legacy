@@ -22,8 +22,8 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   private String[] rejectedBackgroundIds = new String[0];
   private IAdditionalEssencePool[] essencePools = new IAdditionalEssencePool[0];
   private IAdditionalMagicLearnPool[] magicPools = new IAdditionalMagicLearnPool[0];
-  private final Map<String, ITraitCostModifier> backgroundCostModifiers = new DefaultValueHashMap<String, ITraitCostModifier>(
-      new DefaultTraitCostModifier());
+  private Map<String, ITraitCostModifier> backgroundCostModifiers = new DefaultValueHashMap<String, ITraitCostModifier>(
+	      new DefaultTraitCostModifier());
 
   public void setCompulsiveCharmIds(String[] compulsiveCharmIds) {
     this.compulsiveCharmIds = compulsiveCharmIds;
@@ -116,6 +116,8 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
     try {
       GenericAdditionalRules clonedRules;
       clonedRules = (GenericAdditionalRules) super.clone();
+      clonedRules.backgroundCostModifiers = new DefaultValueHashMap<String, ITraitCostModifier>(
+    	      new DefaultTraitCostModifier());
       clonedRules.backgroundCostModifiers.putAll(backgroundCostModifiers);
       return clonedRules;
     }
