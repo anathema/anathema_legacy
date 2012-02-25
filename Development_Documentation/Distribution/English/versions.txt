@@ -20,6 +20,7 @@ http://anathema.sf.net
 -- Bugfixes --
 * Linux-shell-script works once again.
 * Solars don't pay extra for "Mentor" background any longer, might fix a number of background cost issues.
+* No more ugly error when trying to add an unnamed background.
 * [2E] Added (Infernal/SWLIHN) "Force-Suppression Barrier"
 * [2E] Added (Infernal/Martial Arts) "Roots of the Brass Lotus". No special rules though.
 * [2E] Favored "High level" MA charms now cost 12 XP, as they should
