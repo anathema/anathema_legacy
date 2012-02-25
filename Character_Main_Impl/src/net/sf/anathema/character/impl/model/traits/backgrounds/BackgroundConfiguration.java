@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.model.traits.backgrounds;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import net.disy.commons.core.util.Ensure;
@@ -22,7 +19,8 @@ import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BackgroundConfiguration implements IBackgroundConfiguration {
 
