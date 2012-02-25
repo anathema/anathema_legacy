@@ -9,9 +9,6 @@ import java.awt.SplashScreen;
 import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
-import java.security.AccessController;
-
-import sun.security.action.GetPropertyAction;
 
 public class AnathemaSplashscreen implements ISplashscreen {
   private final static Rectangle2D.Double textAreaRectangle = new Rectangle2D.Double(93, 318, 454, 19);
@@ -21,7 +18,7 @@ public class AnathemaSplashscreen implements ISplashscreen {
   private Font font;
 
   public AnathemaSplashscreen() {
-    if (!isSplashScreenSupported() || !hasSplashscreen()) {
+    if (!hasSplashscreen()) {
       return;
     }
     Color startColor = new Color(12, 28, 59);
@@ -39,9 +36,6 @@ public class AnathemaSplashscreen implements ISplashscreen {
   }
 
   public void displayStatusMessage(String message) {
-    if (!isSplashScreenSupported()) {
-      return;
-    }
     if (isSplashscreenVisible()) {
       return;
     }
@@ -59,9 +53,6 @@ public class AnathemaSplashscreen implements ISplashscreen {
   }
 
   public void displayVersion(String string) {
-    if (!isSplashScreenSupported()) {
-      return;
-    }
     if (isSplashscreenVisible()) {
       return;
     }
@@ -76,10 +67,5 @@ public class AnathemaSplashscreen implements ISplashscreen {
 
   private boolean hasSplashscreen() {
     return SplashScreen.getSplashScreen() != null;
-  }
-
-  public static boolean isSplashScreenSupported() {
-		String osName = AccessController.doPrivileged(new GetPropertyAction("os.name"));
-	    return !osName.contains("Mac OS X"); //$NON-NLS-1$ 
   }
 }
