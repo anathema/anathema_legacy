@@ -2,6 +2,7 @@ package net.sf.anathema.character.sidereal.presentation;
 
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericCharmPresentationProperties;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 public class SiderealCharmPresentationProperties extends GenericCharmPresentationProperties {
@@ -11,5 +12,6 @@ public class SiderealCharmPresentationProperties extends GenericCharmPresentatio
   public SiderealCharmPresentationProperties() {
     setPolygonString(POLYGON);
     setCharmDimension(new Dimension(178, 80));
+    setColor(new Color(147, 112, 219));
   }
 }

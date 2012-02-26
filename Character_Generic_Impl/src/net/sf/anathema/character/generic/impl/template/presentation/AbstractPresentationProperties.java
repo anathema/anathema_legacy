@@ -11,10 +11,12 @@ public abstract class AbstractPresentationProperties implements IPresentationPro
     this.templateType = templateType;
   }
 
+  @Override
   public String getSmallCasteIconResource(String casteId, String editionId) {
     return getCharacterTypeId() + "Button" + casteId + "16.png"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
+  @Override
   public String getNewActionResource() {
     return "CharacterGenerator.NewCharacter." + getCharacterTypeId() + ".Name"; //$NON-NLS-1$ //$NON-NLS-2$
   }
@@ -23,6 +25,7 @@ public abstract class AbstractPresentationProperties implements IPresentationPro
     return templateType.getCharacterType().getId();
   }
 
+  @Override
   public String getCasteLabelResource() {
     return getCharacterTypeId() + ".Caste.Label"; //$NON-NLS-1$;
   }

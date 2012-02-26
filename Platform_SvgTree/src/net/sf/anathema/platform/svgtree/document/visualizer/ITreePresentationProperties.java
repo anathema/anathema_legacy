@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.svgtree.document.visualizer;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 public interface ITreePresentationProperties {
@@ -11,4 +12,6 @@ public interface ITreePresentationProperties {
   Dimension getGapDimension();
 
   Dimension getVerticalLineDimension();
+
+  Color getColor();
 }

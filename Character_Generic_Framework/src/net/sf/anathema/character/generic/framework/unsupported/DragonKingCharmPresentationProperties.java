@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework.unsupported;
 
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericCharmPresentationProperties;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 public class DragonKingCharmPresentationProperties extends GenericCharmPresentationProperties {
@@ -11,5 +12,6 @@ public class DragonKingCharmPresentationProperties extends GenericCharmPresentat
   public DragonKingCharmPresentationProperties() {
     setPolygonString(POLYGON);
     setCharmDimension(new Dimension(190, 72));
+    setColor(new Color(250, 250, 210));
   }
 }

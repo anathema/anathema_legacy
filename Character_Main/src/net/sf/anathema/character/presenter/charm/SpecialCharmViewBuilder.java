@@ -105,7 +105,7 @@ public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
   }
 
   private Color getCharacterColor() {
-    return statistics.getCharacterTemplate().getPresentationProperties().getColor();
+    return statistics.getCharacterTemplate().getPresentationProperties().getCharmPresentationProperties().getColor();
   }
 
   private void addButtonForCharmConfiguration(String labelKey, ISVGSpecialNodeView subeffectView) {

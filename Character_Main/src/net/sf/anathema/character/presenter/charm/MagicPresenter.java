@@ -41,7 +41,7 @@ public class MagicPresenter implements IContentPresenter {
 
   private CharacterCharmPresenter createCharmPresenter(ICharacterStatistics statistics, IMagicViewFactory factory, IResources resources, ITemplateRegistry templateRegistry) {
     CharacterCharmModel model = new CharacterCharmModel(statistics);
-    Color characterColor = statistics.getCharacterTemplate().getPresentationProperties().getColor();
+    Color characterColor = statistics.getCharacterTemplate().getPresentationProperties().getCharmPresentationProperties().getColor();
     return new CharacterCharmPresenter(statistics, resources, templateRegistry, factory, model, characterColor);
   }
 

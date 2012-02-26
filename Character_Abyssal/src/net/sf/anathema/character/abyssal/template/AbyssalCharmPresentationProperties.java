@@ -2,6 +2,7 @@ package net.sf.anathema.character.abyssal.template;
 
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericCharmPresentationProperties;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 public class AbyssalCharmPresentationProperties extends GenericCharmPresentationProperties {
@@ -11,5 +12,6 @@ public class AbyssalCharmPresentationProperties extends GenericCharmPresentation
   public AbyssalCharmPresentationProperties() {
     setPolygonString(POLYGON);
     setCharmDimension(new Dimension(198, 85));
+    setColor(new Color(169, 169, 169));
   }
 }
