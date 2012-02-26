@@ -99,10 +99,10 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
       }
     });
     view.initGui();
-    ensreRefreshAfterAutomaticUnlearn();
+    ensureRefreshAfterAutomaticUnlearn();
   }
 
-  private void ensreRefreshAfterAutomaticUnlearn() {
+  private void ensureRefreshAfterAutomaticUnlearn() {
     view.getCharmComponent().addHierarchyListener(new HierarchyListener() {
       @Override
       public void hierarchyChanged(HierarchyEvent e) {
