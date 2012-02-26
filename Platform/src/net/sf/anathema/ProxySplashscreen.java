@@ -2,17 +2,8 @@ package net.sf.anathema;
 
 public class ProxySplashscreen implements ISplashscreen {
 
-  private static ISplashscreen instance = new ProxySplashscreen();
-  private final ISplashscreen screen;
-
-  {
-    if (AnathemaSplashscreen.isSplashScreenSupported()) { 
-      screen = new AnathemaSplashscreen();
-    }
-    else {
-      screen = new NullSplashscreen();
-    }
-  }
+  private static final ISplashscreen instance = new ProxySplashscreen();
+  private final ISplashscreen screen = new AnathemaSplashscreen();
 
   public static ISplashscreen getInstance() {
     return instance;

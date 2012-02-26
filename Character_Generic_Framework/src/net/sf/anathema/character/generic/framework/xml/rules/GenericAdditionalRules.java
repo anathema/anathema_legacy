@@ -1,7 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml.rules;
 
-import java.util.Map;
-
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
@@ -14,6 +12,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.collection.DefaultValueHashMap;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
+import java.util.Map;
+
 public class GenericAdditionalRules extends NullAdditionalRules implements ICloneable<GenericAdditionalRules> {
 
   private boolean revisedIntimacies = false;
@@ -22,13 +22,16 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   private String[] rejectedBackgroundIds = new String[0];
   private IAdditionalEssencePool[] essencePools = new IAdditionalEssencePool[0];
   private IAdditionalMagicLearnPool[] magicPools = new IAdditionalMagicLearnPool[0];
-  private final Map<String, ITraitCostModifier> backgroundCostModifiers = new DefaultValueHashMap<String, ITraitCostModifier>(
-      new DefaultTraitCostModifier());
+  private Map<String, ITraitCostModifier> backgroundCostModifiers;
+
+  public GenericAdditionalRules() {
+    backgroundCostModifiers = createBackgroundCostModifierMap();
+  }
 
   public void setCompulsiveCharmIds(String[] compulsiveCharmIds) {
     this.compulsiveCharmIds = compulsiveCharmIds;
   }
-  
+
   public void addCompulsiveCharmIds(String[] compulsiveCharmIds) {
     this.compulsiveCharmIds = ArrayUtilities.concat(String.class, this.compulsiveCharmIds, compulsiveCharmIds);
   }
@@ -59,7 +62,7 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   public void setMagicPools(IAdditionalMagicLearnPool[] magicPools) {
     this.magicPools = magicPools;
   }
-  
+
   public void addMagicPools(IAdditionalMagicLearnPool[] magicPools) {
     this.magicPools = ArrayUtilities.concat(IAdditionalMagicLearnPool.class, this.magicPools, magicPools);
   }
@@ -72,25 +75,25 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   public void setRejectedBackgrounds(String[] backgroundIds) {
     this.rejectedBackgroundIds = backgroundIds;
   }
-  
+
   public void addRejectedBackgrounds(String[] backgroundIds) {
     this.rejectedBackgroundIds = ArrayUtilities.concat(String.class, this.rejectedBackgroundIds, rejectedBackgroundIds);
   }
-  
+
   @Override
   public boolean isRevisedIntimacies() {
     return revisedIntimacies;
   }
-  
+
   public void setRevisedIntimacies(boolean revisedIntimacies) {
     this.revisedIntimacies = revisedIntimacies;
   }
-  
+
   @Override
   public boolean isWillpowerVirtueBased() {
     return willpowerVirtueBased;
   }
-  
+
   public void setWillpowerVirtueBased(boolean willpowerVirtueBased) {
     this.willpowerVirtueBased = willpowerVirtueBased;
   }
@@ -116,11 +119,16 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
     try {
       GenericAdditionalRules clonedRules;
       clonedRules = (GenericAdditionalRules) super.clone();
+      clonedRules.backgroundCostModifiers = createBackgroundCostModifierMap();
       clonedRules.backgroundCostModifiers.putAll(backgroundCostModifiers);
       return clonedRules;
-    }
-    catch (CloneNotSupportedException e) {
+    } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException();
     }
+  }
+
+  private DefaultValueHashMap<String, ITraitCostModifier> createBackgroundCostModifierMap() {
+    return new DefaultValueHashMap<String, ITraitCostModifier>(
+            new DefaultTraitCostModifier());
   }
 }

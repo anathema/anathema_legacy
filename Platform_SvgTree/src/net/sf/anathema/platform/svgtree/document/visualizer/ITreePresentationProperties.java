@@ -1,16 +1,17 @@
 package net.sf.anathema.platform.svgtree.document.visualizer;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 public interface ITreePresentationProperties {
-  
-  public String getNodeFramePolygonString();
 
-  public Dimension getNodeDimension();
+  String getNodeFramePolygonString();
 
-  public Dimension getGapDimension();
-  
-  public Dimension getVerticalLineDimension();
+  Dimension getNodeDimension();
 
-  public boolean isolateSingles();
+  Dimension getGapDimension();
+
+  Dimension getVerticalLineDimension();
+
+  Color getColor();
 }

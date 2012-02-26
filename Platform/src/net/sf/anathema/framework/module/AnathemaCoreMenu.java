@@ -1,5 +1,6 @@
 package net.sf.anathema.framework.module;
 
+import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
@@ -25,6 +26,10 @@ import net.sf.anathema.initialization.Menu;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
 @Menu
 public class AnathemaCoreMenu implements IAnathemaMenu {
 
@@ -37,6 +42,8 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     mainMenu.addMenuItem(AnathemaSaveAction.createMenuAction(model, resources));
     mainMenu.addMenuItem(AnathemaSaveAllAction.createMenuAction(model, resources));
     mainMenu.addSeparator();
+    mainMenu.addMenuItem(createExportImportAction(resources, model));
+    mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaPrintAction.createMenuAction(model, resources));
     mainMenu.addMenuItem(AnathemaQuickPrintAction.createMenuAction(model, resources));
     mainMenu.addSeparator();
@@ -45,6 +52,16 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     helpMenu.addMenuItem(AnathemaUpdateAction.createMenuAction(resources));
     helpMenu.addMenuItem(AnathemaAboutAction.createMenuAction(resources));
     createExtraMenu(model, resources, menubar);
+  }
+
+  private static Action createExportImportAction(IResources resources, IAnathemaModel model) {
+    Action action = RepositoryViewAction.createMenuAction(resources, model);
+    if (action instanceof SmartAction) {
+      SmartAction smartAction = (SmartAction)action;
+      smartAction.setName(resources.getString("AnathemaCore.Tools.ExportImport.Name"));
+      smartAction.setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_E, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+    }
+    return action;
   }
 
   private void createExtraMenu(IAnathemaModel anathemaModel, IResources resources, IMenuBar menubar) {

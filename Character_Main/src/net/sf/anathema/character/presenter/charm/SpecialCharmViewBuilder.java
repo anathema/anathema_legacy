@@ -11,13 +11,13 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisit
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
-import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewContainer;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGCategorizedSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGToggleButtonSpecialNodeView;
@@ -26,16 +26,21 @@ import java.awt.Color;
 
 public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
   private final IResources resources;
-  private final ICharacterStatistics statistics;
   private final ISpecialCharmViewContainer factory;
+  private CharacterCharmModel charmModel;
+  private ITreePresentationProperties presentationProperties;
   private ISVGSpecialNodeView createdView;
 
-  public SpecialCharmViewBuilder(IResources resources, ICharacterStatistics statistics, ISpecialCharmViewContainer factory) {
+  public SpecialCharmViewBuilder(IResources resources,
+                                 ISpecialCharmViewContainer factory, CharacterCharmModel charmModel,
+                                 ITreePresentationProperties presentationProperties) {
     this.resources = resources;
-    this.statistics = statistics;
     this.factory = factory;
+    this.charmModel = charmModel;
+    this.presentationProperties = presentationProperties;
   }
 
+  @Override
   public void visitMultiLearnableCharm(IMultiLearnableCharm visitedCharm) {
     SVGCategorizedSpecialNodeView specialView = createViewForCharm(visitedCharm);
     IMultiLearnableCharmConfiguration model = getModelFormCharm(visitedCharm);
@@ -43,6 +48,7 @@ public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
     addViewDirectly(specialView);
   }
 
+  @Override
   public void visitOxBodyTechnique(IOxBodyTechniqueCharm visitedCharm) {
     SVGCategorizedSpecialNodeView specialView = createViewForCharm(visitedCharm);
     IOxBodyTechniqueConfiguration model = getModelFormCharm(visitedCharm);
@@ -54,26 +60,32 @@ public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
     }
   }
 
+  @Override
   public void visitPrerequisiteModifyingCharm(IPrerequisiteModifyingCharm visited) {
     // Nothing to do
   }
 
+  @Override
   public void visitTraitCapModifyingCharm(ITraitCapModifyingCharm visited) {
     // Nothing to do
   }
 
+  @Override
   public void visitPainToleranceCharm(IPainToleranceCharm visited) {
     // Nothing to do
   }
 
+  @Override
   public void visitSubeffectCharm(ISubeffectCharm visited) {
     createMultipleEffectCharmView(visited, "CharmTreeView.SubeffectCharm.ButtonLabel"); //$NON-NLS-1$
   }
 
+  @Override
   public void visitMultipleEffectCharm(IMultipleEffectCharm visited) {
     createMultipleEffectCharmView(visited, visited.getCharmId() + ".ControlButton"); //$NON-NLS-1$
   }
 
+  @Override
   public void visitUpgradableCharm(IUpgradableCharm visited) {
     createMultipleEffectCharmView(visited, visited.getCharmId() + ".ControlButton"); //$NON-NLS-1$
   }
@@ -93,19 +105,15 @@ public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
   }
 
   private double getCharmWidth() {
-    return statistics.getCharacterTemplate()
-            .getPresentationProperties()
-            .getCharmPresentationProperties()
-            .getNodeDimension()
-            .getWidth();
+    return presentationProperties.getNodeDimension().getWidth();
   }
 
   private ICharmConfiguration getCharmConfiguration() {
-    return statistics.getCharms();
+    return charmModel.getCharmConfiguration();
   }
 
   private Color getCharacterColor() {
-    return statistics.getCharacterTemplate().getPresentationProperties().getColor();
+    return presentationProperties.getColor();
   }
 
   private void addButtonForCharmConfiguration(String labelKey, ISVGSpecialNodeView subeffectView) {

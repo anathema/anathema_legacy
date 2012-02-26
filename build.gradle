@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.*;
+
 apply plugin: 'idea'
 idea {
     project {
@@ -111,6 +113,8 @@ task buildZip(type: Zip) {
     }
     from("Development_Distribution/Linux") {
         include 'anathema.sh'
+        filter(FixCrLfFilter.class,
+                eol:FixCrLfFilter.CrLf.newInstance("lf"))
     }
     from("build/launcher") {
         include 'anathema.exe'

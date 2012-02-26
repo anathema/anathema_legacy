@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.repository;
 
-import net.sf.anathema.lib.util.IIdentificate;
+public interface IItemRepositoryLocation extends IBasicRepositoryIdData {
 
-public interface IItemRepositoryLocation extends IBasicRepositoryIdData, IIdentificate {
+  void setId(String id);
 
-  public void setId(String id);
+  String getId();
 }

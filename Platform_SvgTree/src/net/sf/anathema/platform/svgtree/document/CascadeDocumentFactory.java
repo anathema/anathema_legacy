@@ -1,9 +1,5 @@
 package net.sf.anathema.platform.svgtree.document;
 
-import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.graph.SugiyamaLayout;
 import net.sf.anathema.graph.graph.IGraphType;
 import net.sf.anathema.graph.graph.IGraphTypeVisitor;
@@ -17,10 +13,13 @@ import net.sf.anathema.platform.svgtree.document.visualizer.IVisualizedGraph;
 import net.sf.anathema.platform.svgtree.document.visualizer.InvertedTreeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.SingleNodeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.TreeVisualizer;
-
 import org.apache.batik.util.SVGConstants;
 import org.dom4j.Document;
 import org.dom4j.Element;
+
+import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CascadeDocumentFactory {
 
@@ -41,20 +40,18 @@ public class CascadeDocumentFactory {
     Element cascadeElement = createCascadeElement(root);
     double firstRowWidth = 0;
     double firstRowHeight = 0;
-    if (properties.isolateSingles()) {
-      for (IVisualizedGraph graph : visualizedGraphs) {
-        if (graph.isSingleNode()) {
-          firstRowWidth = properties.getGapDimension().width;
-          firstRowHeight = properties.getNodeDimension().height + properties.getGapDimension().height;
-          break;
-        }
+    for (IVisualizedGraph graph : visualizedGraphs) {
+      if (graph.isSingleNode()) {
+        firstRowWidth = properties.getGapDimension().width;
+        firstRowHeight = properties.getNodeDimension().height + properties.getGapDimension().height;
+        break;
       }
     }
     double currentWidth = properties.getGapDimension().width;
     double maximumHeight = 0;
     for (IVisualizedGraph graph : visualizedGraphs) {
       cascadeElement.add(graph.getCascadeElement());
-      if (graph.isSingleNode() && properties.isolateSingles()) {
+      if (graph.isSingleNode()) {
         graph.getCascadeElement().addAttribute(
             SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
             "translate(" + firstRowWidth + " 0)"); //$NON-NLS-1$ //$NON-NLS-2$

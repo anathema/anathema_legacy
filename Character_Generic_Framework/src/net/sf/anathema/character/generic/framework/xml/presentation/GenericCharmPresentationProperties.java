@@ -1,37 +1,41 @@
 package net.sf.anathema.character.generic.framework.xml.presentation;
 
-import java.awt.Dimension;
-
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
+import java.awt.Color;
+import java.awt.Dimension;
+
 public class GenericCharmPresentationProperties extends ReflectionCloneableObject<GenericCharmPresentationProperties> implements
-    ITreePresentationProperties {
+        ITreePresentationProperties {
 
   private String polygonString;
   private Dimension charmDimension;
-  private Dimension gapDimension;
-  private Dimension lineDimension;
-  private boolean isolateSingles = false;
+  private Color color;
 
+  @Override
   public String getNodeFramePolygonString() {
     return polygonString;
   }
 
+  @Override
   public Dimension getNodeDimension() {
     return charmDimension;
   }
 
+  @Override
   public Dimension getGapDimension() {
-    return gapDimension;
-  }
-  
-  public Dimension getVerticalLineDimension() {
-    return lineDimension;
+    return new Dimension(25, 50);
   }
 
-  public boolean isolateSingles() {
-    return isolateSingles;
+  @Override
+  public Color getColor() {
+    return color;
+  }
+
+  @Override
+  public final Dimension getVerticalLineDimension() {
+    return new Dimension(getGapDimension().width, getNodeDimension().height);
   }
 
   public void setPolygonString(String polygonString) {
@@ -42,15 +46,7 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
     this.charmDimension = dimension;
   }
 
-  public void setGapDimension(Dimension dimension) {
-    this.gapDimension = dimension;
-  }
-  
-  public void setVerticalLineDimension(Dimension dimension) {
-    this.lineDimension = dimension;
-  }
-
-  public void setIsolateSingles(boolean isolate) {
-    this.isolateSingles = isolate;
+  public void setColor(Color color) {
+    this.color = color;
   }
 }

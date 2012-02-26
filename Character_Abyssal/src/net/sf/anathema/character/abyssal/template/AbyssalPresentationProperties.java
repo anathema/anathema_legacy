@@ -1,7 +1,5 @@
 package net.sf.anathema.character.abyssal.template;
 
-import java.awt.Color;
-
 import net.sf.anathema.character.generic.impl.template.presentation.AbstractPresentationProperties;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -22,10 +20,7 @@ public class AbyssalPresentationProperties extends AbstractPresentationPropertie
     return newActionResoure;
   }
 
-  public Color getColor() {
-    return new Color(169, 169, 169);
-  }
-
+  @Override
   public ITreePresentationProperties getCharmPresentationProperties() {
     return abyssalCharmPresentationProperties;
   }

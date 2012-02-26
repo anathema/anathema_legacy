@@ -1,8 +1,5 @@
 package net.sf.anathema.framework.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
@@ -12,7 +9,8 @@ import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.exception.AnathemaException;
 
-import com.sun.org.apache.xml.internal.utils.WrappedRuntimeException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemManagmentModel implements IItemMangementModel {
 
@@ -52,15 +50,16 @@ public class ItemManagmentModel implements IItemMangementModel {
         public void execute(IItemManagementModelListener input) {
           try {
             input.itemAdded(item);
-          }
-          catch (AnathemaException e) {
-            throw new WrappedRuntimeException(e);
+          } catch (AnathemaException e) {
+            throw new RuntimeException(e);
           }
         }
       });
-    }
-    catch (WrappedRuntimeException e) {
-      throw (AnathemaException) e.getException();
+    } catch (RuntimeException e) {
+      if (e.getCause() instanceof AnathemaException) {
+        throw (AnathemaException) e.getCause();
+      }
+      throw e;
     }
   }
 

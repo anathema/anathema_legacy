@@ -1,7 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml.presentation;
 
-import java.awt.Color;
-
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
@@ -10,31 +8,26 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
     IPresentationProperties {
 
   private GenericCharmPresentationProperties charmPresentationProperties;
-  private Color color;
   private ICharacterTemplate template;
 
+  @Override
   public String getSmallCasteIconResource(String casteId, String editionId) {
     return getCharacterTypeId() + "Button" + casteId + editionId + "16.png"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
-  public Color getColor() {
-    return color;
-  }
-
+  @Override
   public String getNewActionResource() {
     return "CharacterGenerator.Templates." + getCharacterTypeId() + "." + getSubTypeId(); //$NON-NLS-1$//$NON-NLS-2$
   }
 
+  @Override
   public String getCasteLabelResource() {
     return getCharacterTypeId() + ".Caste.Label"; //$NON-NLS-1$;
   }
 
+  @Override
   public GenericCharmPresentationProperties getCharmPresentationProperties() {
     return charmPresentationProperties;
-  }
-
-  public void setColor(Color color) {
-    this.color = color;
   }
 
   @Override

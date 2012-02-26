@@ -10,11 +10,20 @@ http://anathema.sf.net
 			Release 3.x.x "Whatshername"
 ===------------------------------------------------------------------------------===
 
-* Reworked much of the tech behind the scenes
+-- Features --
+* Reworked much of the tech behind the scenes: If you have custom plugins, they need to be rebuilt.
 * The toolbar PDF icon now triggers a "quick print" that opens a character sheet without any dialogs
 * New preference: Paper format
-* [Dirk Walter] Added missing Mutations from many sources
 * [Dirk Walter] Magic views adapt to window size
+* [2E] [Dirk Walter] Added missing Mutations from many sources
+
+-- Bugfixes --
+* Linux-shell-script works once again.
+* Solars don't pay extra for "Mentor" background any longer, might fix a number of background cost issues.
+* No more ugly error when trying to add an unnamed background.
+* [2E] Added (Infernal/SWLIHN) "Force-Suppression Barrier"
+* [2E] Added (Infernal/Martial Arts) "Roots of the Brass Lotus". No special rules though.
+* [2E] Favored "High level" MA charms now cost 12 XP, as they should
 
 
 ===------------------------------------------------------------------------------===

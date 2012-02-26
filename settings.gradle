@@ -2,7 +2,7 @@ include('Anathema', 'Thirdparty',
 
         'Lib', 'Lib_Gui', 'Lib_Workflow',
 
-        'Platform', 'Platform_Database', 'Platform_GraphLayout', 'Platform_SvgTree',
+        'Platform', 'Platform_Database', 'GraphLayout', 'Platform_SvgTree',
 
         'Namegenerator',
 

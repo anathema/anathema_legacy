@@ -170,4 +170,17 @@
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Infernals" />
      </charm>
+    <charm id="Infernal.ForceSuppressionBarrier" exalt="Infernal" group="MindHand">
+        <prerequisite>
+            <trait id="SheWhoLivesInHerName" value="0" />
+            <essence value="3" />
+            <charmReference id="Infernal.Mind-HandManipulation"/>
+        </prerequisite>
+        <cost />
+        <duration amount="1" unit="scene" />
+        <charmtype type="Reflexive" />
+        <charmAttribute attribute="Combo-OK" visualize="true" />
+        <charmAttribute attribute="Obvious" visualize="true" />
+        <source source="Infernals" />
+    </charm>
 </charmlist>
