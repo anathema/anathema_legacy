@@ -15,7 +15,6 @@ public class CharmPresentationPropertiesParser extends AbstractXmlTemplateParser
   private static final String ATTRIB_WIDTH = "width"; //$NON-NLS-1$
   private static final String ATTRIB_HEIGHT = "height"; //$NON-NLS-1$
   private static final String TAG_GAP_DIMENSION = "gapDimension"; //$NON-NLS-1$
-  private static final String TAG_LINE_DIMENSION = "lineDimension"; //$NON-NLS-1$
 
   public CharmPresentationPropertiesParser(IXmlTemplateRegistry<GenericCharmPresentationProperties> templateRegistry) {
     super(templateRegistry);
@@ -31,18 +30,7 @@ public class CharmPresentationPropertiesParser extends AbstractXmlTemplateParser
     parsePolygonString(element, basicTemplate);
     parseCharmDimension(element, basicTemplate);
     parseGapDimension(element, basicTemplate);
-    parseLineDimension(element, basicTemplate);
     return basicTemplate;
-  }
-
-  private void parseLineDimension(Element element, GenericCharmPresentationProperties basicTemplate)
-      throws PersistenceException {
-    Element dimensionElement = element.element(TAG_LINE_DIMENSION);
-    if (dimensionElement == null) {
-      return;
-    }
-    Dimension dimension = parseDimension(dimensionElement);
-    basicTemplate.setVerticalLineDimension(dimension);
   }
 
   private void parseGapDimension(Element element, GenericCharmPresentationProperties basicTemplate)

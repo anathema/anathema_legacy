@@ -4,7 +4,7 @@ import java.awt.Dimension;
 
 public abstract class AbstractCharmPresentationProperties implements ITreePresentationProperties {
 
-	  public Dimension getVerticalLineDimension() {
-	    return new Dimension(getNodeDimension().height, getGapDimension().width);
-	  }
+  public final Dimension getVerticalLineDimension() {
+    return new Dimension(getGapDimension().width, getNodeDimension().height);
+  }
 }

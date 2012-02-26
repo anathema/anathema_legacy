@@ -8,5 +8,5 @@ public interface IExaltedRuleSet extends ITypedDescriptionType {
 
   public IExaltedEdition getEdition();
 
-  public IExaltedRuleSet getBasicRuleset();
+  IExaltedRuleSet getBasicRuleset();
 }

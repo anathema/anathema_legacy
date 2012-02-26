@@ -6,12 +6,11 @@ import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationPro
 import java.awt.Dimension;
 
 public class GenericCharmPresentationProperties extends ReflectionCloneableObject<GenericCharmPresentationProperties> implements
-    ITreePresentationProperties {
+        ITreePresentationProperties {
 
   private String polygonString;
   private Dimension charmDimension;
   private Dimension gapDimension;
-  private Dimension lineDimension;
 
   public String getNodeFramePolygonString() {
     return polygonString;
@@ -24,9 +23,9 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
   public Dimension getGapDimension() {
     return gapDimension;
   }
-  
-  public Dimension getVerticalLineDimension() {
-    return lineDimension;
+
+  public final Dimension getVerticalLineDimension() {
+    return new Dimension(getGapDimension().width, getNodeDimension().height);
   }
 
   public void setPolygonString(String polygonString) {
@@ -39,9 +38,5 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
 
   public void setGapDimension(Dimension dimension) {
     this.gapDimension = dimension;
-  }
-  
-  public void setVerticalLineDimension(Dimension dimension) {
-    this.lineDimension = dimension;
   }
 }

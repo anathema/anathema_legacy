@@ -3,12 +3,12 @@ package net.sf.anathema.platform.svgtree.document.visualizer;
 import java.awt.Dimension;
 
 public interface ITreePresentationProperties {
-  
-  public String getNodeFramePolygonString();
 
-  public Dimension getNodeDimension();
+  String getNodeFramePolygonString();
 
-  public Dimension getGapDimension();
-  
-  public Dimension getVerticalLineDimension();
+  Dimension getNodeDimension();
+
+  Dimension getGapDimension();
+
+  Dimension getVerticalLineDimension();
 }
