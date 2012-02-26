@@ -5,7 +5,6 @@ import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.charmtree.filters.CharmFilterSettingsPage;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
@@ -21,20 +20,16 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractCascadePresenter implements
-    ICascadeSelectionPresenter {
+public abstract class AbstractCascadePresenter implements ICascadeSelectionPresenter {
 
-  private final ITemplateRegistry registry;
   private final IResources resources;
 
   protected List<ICharmFilter> filterSet = new ArrayList<ICharmFilter>();
   protected ICharmGroupChangeListener changeListener;
   protected IIdentificate currentType;
 
-  public AbstractCascadePresenter(IResources resources,
-                                  ITemplateRegistry registry) {
+  public AbstractCascadePresenter(IResources resources) {
     this.resources = resources;
-    this.registry = registry;
   }
 
   protected IResources getResources() {
@@ -42,24 +37,20 @@ public abstract class AbstractCascadePresenter implements
   }
 
   protected void createCharmGroupSelector(ICascadeSelectionView selectionView,
-      ICharmGroupChangeListener charmSelectionChangeListener,
-      ICharmGroup[] allGroups) {
-    IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer(
-        "", getResources()); //$NON-NLS-1$
-    Dimension preferredSize = GuiUtilities.calculateComboBoxSize(allGroups,
-        renderer);
-    selectionView.addCharmGroupSelector(
-        getResources().getString(
-            "CardView.CharmConfiguration.AlienCharms.CharmGroup"), //$NON-NLS-1$
-        renderer, charmSelectionChangeListener, preferredSize);
+                                          ICharmGroupChangeListener charmSelectionChangeListener,
+                                          ICharmGroup[] allGroups) {
+    IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", getResources()); //$NON-NLS-1$
+    Dimension preferredSize = GuiUtilities.calculateComboBoxSize(allGroups, renderer);
+    selectionView.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"),
+            //$NON-NLS-1$
+            renderer, charmSelectionChangeListener, preferredSize);
     changeListener = charmSelectionChangeListener;
   }
 
-  protected void createCharmTypeSelector(IIdentificate[] types,
-      ICascadeSelectionView selectionView, String titleResourceKey) {
-    selectionView.addCharmTypeSelector(
-        getResources().getString(titleResourceKey), types,
-        new IdentificateSelectCellRenderer("", getResources())); //$NON-NLS-1$
+  protected void createCharmTypeSelector(IIdentificate[] types, ICascadeSelectionView selectionView,
+                                         String titleResourceKey) {
+    selectionView.addCharmTypeSelector(getResources().getString(titleResourceKey), types,
+            new IdentificateSelectCellRenderer("", getResources())); //$NON-NLS-1$
   }
 
   protected void createFilterButton(ICascadeSelectionView selectionView) {
@@ -68,21 +59,18 @@ public abstract class AbstractCascadePresenter implements
 
       @Override
       protected void execute(Component parentComponent) {
-        CharmFilterSettingsPage page = new CharmFilterSettingsPage(
-            getResources(), filterSet);
+        CharmFilterSettingsPage page = new CharmFilterSettingsPage(getResources(), filterSet);
         UserDialog userDialog = new UserDialog(parentComponent, page);
 
         boolean dirty = false;
         IDialogResult result = userDialog.show();
 
         for (ICharmFilter element : filterSet)
-          if (element.isDirty())
-            if (result.isCanceled())
-              element.reset();
-            else {
-              element.apply();
-              dirty = true;
-            }
+          if (element.isDirty()) if (result.isCanceled()) element.reset();
+          else {
+            element.apply();
+            dirty = true;
+          }
 
         if (dirty) {
           handleTypeSelectionChange(currentType);
@@ -90,9 +78,8 @@ public abstract class AbstractCascadePresenter implements
         }
       }
     };
-    selectionView.addCharmFilterButton(buttonAction,
-        resources.getString("CharmFilters.Filters"),
-        resources.getString("CharmFilters.Define"));
+    selectionView.addCharmFilterButton(buttonAction, resources.getString("CharmFilters.Filters"),
+            resources.getString("CharmFilters.Define"));
   }
 
   protected ICharmGroup[] sortCharmGroups(ICharmGroup[] originalGroups) {
@@ -119,22 +106,10 @@ public abstract class AbstractCascadePresenter implements
     ICharmGroup[] filteredGroupArray = new ICharmGroup[filteredGroups.size()];
     for (int i = 0; i != filteredGroups.size(); i++)
       filteredGroupArray[i] = filteredGroups.get(i);
-    if (filteredGroups.size() > 0)
-      return new I18nedIdentificateSorter<ICharmGroup>()
-          .sortAscending(filteredGroupArray,
-              new ICharmGroup[filteredGroups.size()], resources);
-    else
-      return filteredGroupArray;
+    if (filteredGroups.size() > 0) return new I18nedIdentificateSorter<ICharmGroup>().sortAscending(filteredGroupArray,
+            new ICharmGroup[filteredGroups.size()], resources);
+    else return filteredGroupArray;
   }
 
-  protected final ITemplateRegistry getTemplateRegistry() {
-    return registry;
-  }
-
-  public final List<ICharmFilter> getFilterSet() {
-    return filterSet;
-  }
-
-  abstract protected void handleTypeSelectionChange(
-      final IIdentificate cascadeType);
+  protected abstract void handleTypeSelectionChange(final IIdentificate cascadeType);
 }

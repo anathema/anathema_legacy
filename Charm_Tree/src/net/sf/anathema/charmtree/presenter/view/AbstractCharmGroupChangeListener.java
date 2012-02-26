@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.template.ITemplateRegistry;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.collection.ListOrderedSet;
@@ -16,25 +16,25 @@ import java.util.Set;
 
 public abstract class AbstractCharmGroupChangeListener implements ICharmGroupChangeListener, CharmGroupInformer {
 
-  private final ITemplateRegistry templateRegistry;
   private final ICharmGroupArbitrator arbitrator;
   private final CharmTreeRenderer charmTreeRenderer;
   protected final List<ICharmFilter> charmFilterSet;
   private IExaltedEdition edition;
   private ICharmGroup currentGroup;
   private IIdentificate currentType;
+  private final CharmDisplayPropertiesMap displayPropertiesMap;
 
-  public AbstractCharmGroupChangeListener(
-          ITemplateRegistry templateRegistry,
-          ICharmGroupArbitrator arbitrator,
-          List<ICharmFilter> charmFilterSet, IExaltedEdition edition, CharmTreeRenderer treeRenderer) {
+  public AbstractCharmGroupChangeListener(ICharmGroupArbitrator arbitrator, List<ICharmFilter> charmFilterSet,
+                                          IExaltedEdition edition, CharmTreeRenderer treeRenderer,
+                                          CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
     this.charmTreeRenderer = treeRenderer;
-    this.templateRegistry = templateRegistry;
     this.arbitrator = arbitrator;
     this.charmFilterSet = charmFilterSet;
     this.edition = edition;
+    this.displayPropertiesMap = charmDisplayPropertiesMap;
   }
 
+  @Override
   public final void valueChanged(Object cascade, Object type) {
     loadCharmTree((ICharmGroup) cascade, (IIdentificate) type);
   }
@@ -43,8 +43,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     ICharm[] allCharms = arbitrator.getCharms(charmGroup);
     Set<ICharm> charmsToDisplay = new ListOrderedSet<ICharm>();
     for (ICharm charm : allCharms) {
-      if (!filterCharm(charm, false) || !filterAncestors(charm))
-        continue;
+      if (!filterCharm(charm, false) || !filterAncestors(charm)) continue;
       charmsToDisplay.add(charm);
       for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms()) {
         if (charmGroup.getId().equals(prerequisite.getGroupId())) {
@@ -57,16 +56,14 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   protected boolean filterAncestors(ICharm charm) {
     for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms()) {
-      if (!filterCharm(prerequisite, true) || !filterAncestors(prerequisite))
-        return false;
+      if (!filterCharm(prerequisite, true) || !filterAncestors(prerequisite)) return false;
     }
     return true;
   }
 
   private boolean filterCharm(ICharm charm, boolean isAncestor) {
     for (ICharmFilter filter : charmFilterSet)
-      if (!filter.acceptsCharm(charm, isAncestor))
-        return false;
+      if (!filter.acceptsCharm(charm, isAncestor)) return false;
     return true;
   }
 
@@ -86,12 +83,16 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
       charmTreeRenderer.clearView();
     } else {
       boolean resetView = !(currentGroup == charmGroup && currentType != null && currentType.getId().equals(type.getId()));
-      ITreePresentationProperties presentationProperties = templateRegistry.getDefaultTemplate(
-              charmGroup.getCharacterType(),
-              getEdition()).getPresentationProperties().getCharmPresentationProperties();
+      ITreePresentationProperties presentationProperties = getDisplayProperties(charmGroup);
       IRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(getDisplayCharms(charmGroup));
       charmTreeRenderer.renderTree(resetView, presentationProperties, nodes);
     }
+  }
+
+  private ITreePresentationProperties getDisplayProperties(ICharmGroup charmGroup) {
+    ICharacterType characterType = charmGroup.getCharacterType();
+    IExaltedEdition exaltedEdition = getEdition();
+    return displayPropertiesMap.getDisplayProperties(characterType, exaltedEdition);
   }
 
   @Override
@@ -101,6 +102,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   protected abstract void modifyCharmVisuals(IIdentificate type);
 
+  @Override
   public void reselect() {
     valueChanged(getCurrentGroup(), currentType);
   }

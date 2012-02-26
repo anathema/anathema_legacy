@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
+import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.lib.gui.IDisposable;
@@ -42,7 +43,8 @@ public class MagicPresenter implements IContentPresenter {
   private CharacterCharmPresenter createCharmPresenter(ICharacterStatistics statistics, IMagicViewFactory factory, IResources resources, ITemplateRegistry templateRegistry) {
     CharacterCharmModel model = new CharacterCharmModel(statistics);
     ITreePresentationProperties presentationProperties = statistics.getCharacterTemplate().getPresentationProperties().getCharmPresentationProperties();
-    return new CharacterCharmPresenter(resources, templateRegistry, factory, model, presentationProperties);
+    return new CharacterCharmPresenter(resources, factory, model, presentationProperties,
+            new CharmDisplayPropertiesMap(templateRegistry));
   }
 
   @Override
