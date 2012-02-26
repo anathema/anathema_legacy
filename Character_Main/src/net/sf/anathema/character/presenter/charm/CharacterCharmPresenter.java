@@ -21,7 +21,7 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
+import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
 
 import javax.swing.JComponent;
@@ -39,7 +39,7 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
 
   private final ICharmTreeViewProperties viewProperties;
   private final ICharmView view;
-  private final SpecialCharmViewPresenter specialCharmViewPresenter;
+  private final SpecialCharmViewPresenter specialViewPresenter;
   private final CharacterCharmModel model;
   private Color characterColor;
   private CharacterCharmGroupChangeListener charmGroupChangeListener;
@@ -54,8 +54,8 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     this.view = factory.createCharmSelectionView(viewProperties);
     this.charmGroupChangeListener = new CharacterCharmGroupChangeListener(model.getCharmConfiguration(), filterSet,
             model.getEdition(), view.getCharmTreeRenderer(), displayPropertiesMap);
-    this.specialCharmViewPresenter = new SpecialCharmViewPresenter(view, resources, charmGroupChangeListener,
-            charmModel, presentationProperties);
+    this.specialViewPresenter = new SpecialCharmViewPresenter(view, resources, charmGroupChangeListener, charmModel,
+            presentationProperties);
   }
 
   @Override
@@ -64,7 +64,7 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     boolean alienCharms = model.isAllowedAlienCharms();
     createCharmTypeSelector(getCurrentCharmTypes(alienCharms), view, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
     initFilters(charms);
-    specialCharmViewPresenter.initPresentation();
+    specialViewPresenter.initPresentation();
     initCharmTypeSelectionListening();
     initCasteListening();
     createCharmGroupSelector(view, charmGroupChangeListener, charms.getAllGroups());
@@ -75,24 +75,21 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
         if (viewProperties.isRequirementNode(charmId)) {
           return;
         }
-        ILearningCharmGroup charmGroup = model.getCharmConfiguration().getGroup(
-                model.getCharmConfiguration().getCharmById(charmId));
-        charmGroup.toggleLearned(charms.getCharmById(charmId));
+        model.toggleLearned(charmId);
       }
     });
     initCharmLearnListening(charms);
-    reloadCharmGraphAfterFiltering();
     resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
-    view.addDocumentLoadedListener(new IDocumentLoadedListener() {
+    view.addCascadeLoadedListener(new CascadeLoadedListener() {
       @Override
-      public void documentLoaded() {
+      public void cascadeLoaded() {
         setCharmVisuals();
       }
     });
-    view.addDocumentLoadedListener(new IDocumentLoadedListener() {
+    view.addCascadeLoadedListener(new CascadeLoadedListener() {
       @Override
-      public void documentLoaded() {
-        specialCharmViewPresenter.showSpecialViews();
+      public void cascadeLoaded() {
+        specialViewPresenter.showSpecialViews();
       }
     });
     charms.addLearnableListener(new IChangeListener() {
@@ -102,31 +99,23 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
       }
     });
     view.initGui();
+    ensreRefreshAfterAutomaticUnlearn();
+  }
+
+  private void ensreRefreshAfterAutomaticUnlearn() {
+    view.getCharmComponent().addHierarchyListener(new HierarchyListener() {
+      @Override
+      public void hierarchyChanged(HierarchyEvent e) {
+        charmGroupChangeListener.reselect();
+      }
+    });
   }
 
   private void resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea() {
     getCharmComponent().addMouseListener(new MouseAdapter() {
       @Override
       public void mouseExited(MouseEvent e) {
-        specialCharmViewPresenter.resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
-      }
-    });
-  }
-
-
-  private void reloadCharmGraphAfterFiltering() {
-    getCharmComponent().addHierarchyListener(new HierarchyListener() {
-
-      @Override
-      public void hierarchyChanged(HierarchyEvent event) {
-        if ((event.getChangeFlags() & HierarchyEvent.SHOWING_CHANGED) != 0 && getCharmComponent().isShowing()) {
-          reselectTypeAndGroup();
-        }
-      }
-
-      private void reselectTypeAndGroup() {
-        handleTypeSelectionChange(currentType);
-        charmGroupChangeListener.reselect();
+        specialViewPresenter.resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
       }
     });
   }
@@ -190,13 +179,23 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
       allCharmGroups = sortCharmGroups(model.getCharmConfiguration().getCharmGroups(cascadeType));
     }
     view.fillCharmGroupBox(allCharmGroups);
-    specialCharmViewPresenter.showSpecialViews();
+    specialViewPresenter.showSpecialViews();
   }
 
   private void initCharmLearnListening(ICharmConfiguration charmConfiguration) {
     ICharmLearnListener charmLearnListener = createCharmLearnListener(view);
     for (ILearningCharmGroup group : charmConfiguration.getAllGroups()) {
       group.addCharmLearnListener(charmLearnListener);
+    }
+  }
+
+  private void setCharmVisuals() {
+    ICharmGroup group = charmGroupChangeListener.getCurrentGroup();
+    if (group == null) {
+      return;
+    }
+    for (ICharm charm : group.getAllCharms()) {
+      setCharmVisuals(charm, view);
     }
   }
 
@@ -211,28 +210,16 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     view.setCharmVisuals(charm.getId(), fillColor, opacity);
   }
 
-  private void setCharmVisuals() {
-    ICharmGroup group = charmGroupChangeListener.getCurrentGroup();
-    if (group == null) {
-      return;
-    }
-    for (ICharm charm : group.getAllCharms()) {
-      setCharmVisuals(charm, view);
-    }
-  }
-
   private ICharmLearnListener createCharmLearnListener(final ICharmView view) {
     return new CharmLearnAdapter() {
       @Override
       public void charmLearned(ICharm charm) {
         setCharmVisuals(charm, view);
-        charmGroupChangeListener.reselect();
       }
 
       @Override
       public void charmForgotten(ICharm charm) {
         setCharmVisuals(charm, view);
-        charmGroupChangeListener.reselect();
       }
 
       @Override

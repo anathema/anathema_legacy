@@ -1,19 +1,9 @@
 package net.sf.anathema.platform.svgtree.view;
 
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
-import static org.apache.batik.util.SVGConstants.*;
-
-import java.awt.Color;
-import java.awt.geom.AffineTransform;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JComponent;
-
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
-import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
+import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
@@ -24,7 +14,6 @@ import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.DomUtilities;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.view.listening.SvgTreeListening;
-
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.swing.gvt.GVTTreeRendererAdapter;
 import org.apache.batik.swing.gvt.GVTTreeRendererEvent;
@@ -44,6 +33,20 @@ import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGTextElement;
 import org.w3c.dom.svg.SVGUseElement;
 
+import javax.swing.JComponent;
+import java.awt.Color;
+import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
+import java.util.List;
+
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.ATTRIB_POINTER_EVENTS;
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.ATTRIB_VISIBILITY;
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_1500;
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_3000;
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_CASCADE_ID;
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_FILL;
+import static org.apache.batik.util.SVGConstants.*;
+
 public class SvgTreeView implements ISvgTreeView {
 
   private AnathemaCanvas canvas = new AnathemaCanvas();
@@ -57,8 +60,8 @@ public class SvgTreeView implements ISvgTreeView {
     this.calculator = new BoundsCalculator();
     this.manager = new SVGSpecialNodeViewManager(canvas, calculator);
     this.listening = new SvgTreeListening(canvas, calculator, properties);
-    addDocumentLoadedListener(new IDocumentLoadedListener() {
-      public void documentLoaded() {
+    addDocumentLoadedListener(new CascadeLoadedListener() {
+      public void cascadeLoaded() {
         initNodeNames();
       }
     });
@@ -179,11 +182,11 @@ public class SvgTreeView implements ISvgTreeView {
     nodeGroup.setAttribute(SVG_OPACITY_ATTRIBUTE, String.valueOf((float) alpha / 255));
   }
 
-  public void addDocumentLoadedListener(final IDocumentLoadedListener listener) {
+  public void addDocumentLoadedListener(final CascadeLoadedListener listener) {
     canvas.addSVGLoadEventDispatcherListener(new SVGLoadEventDispatcherAdapter() {
       @Override
       public void svgLoadEventDispatchCompleted(final SVGLoadEventDispatcherEvent arg0) {
-        listener.documentLoaded();
+        listener.cascadeLoaded();
       }
     });
   }

@@ -28,7 +28,7 @@ import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
+import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -75,9 +75,9 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     initFilters();
     createFilterButton(view);
     initCharmTypeSelectionListening();
-    view.addDocumentLoadedListener(new IDocumentLoadedListener() {
+    view.addCascadeLoadedListener(new CascadeLoadedListener() {
       @Override
-      public void documentLoaded() {
+      public void cascadeLoaded() {
         for (ICharm charm : selectionListener.getCurrentGroup().getAllCharms()) {
           view.setCharmVisuals(charm.getId(), Color.WHITE);
         }
