@@ -126,7 +126,8 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
               new EssenceLevelCharmFilter());
       filterSet.commitFilters(charms);
     } else {
-      filterSet.init(charms.getCharmFilters().toArray(new ICharmFilter[0]));
+      List<ICharmFilter> charmFilters = charms.getCharmFilters();
+      filterSet.init(charmFilters.toArray(new ICharmFilter[charmFilters.size()]));
     }
   }
 
