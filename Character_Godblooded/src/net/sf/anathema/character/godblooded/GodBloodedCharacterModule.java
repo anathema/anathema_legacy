@@ -44,7 +44,7 @@ public class GodBloodedCharacterModule extends NullObjectCharacterModuleAdapter 
     registerParsedTemplate(characterGenerics, "template/GodBlooded2nd.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/DemonBlooded2nd.template"); //$NON-NLS-1$
 
-    //registerParsedTemplate(characterGenerics, "template/GhostBlooded2nd.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/GhostBlooded2nd.template"); //$NON-NLS-1$
 
     registerParsedTemplate(characterGenerics, "template/HalfCasteAbyssal2nd.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/HalfCasteLunar2nd.template"); //$NON-NLS-1$
