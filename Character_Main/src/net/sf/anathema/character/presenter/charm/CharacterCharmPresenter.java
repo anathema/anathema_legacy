@@ -8,6 +8,7 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
+import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
@@ -132,12 +133,11 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
 
   private void initFilters(ICharmConfiguration charms) {
     if (charms.getCharmFilters() == null) {
-      filterSet.add(new ObtainableCharmFilter(model.getCharmConfiguration()));
-      filterSet.add(new SourceBookCharmFilter(model.getEdition(), model.getCharmConfiguration()));
-      filterSet.add(new EssenceLevelCharmFilter());
-      model.getCharmConfiguration().setCharmFilters(filterSet);
+      filterSet.init(new ObtainableCharmFilter(charms), new SourceBookCharmFilter(model.getEdition(), charms),
+              new EssenceLevelCharmFilter());
+      filterSet.commitFilters(charms);
     } else {
-      filterSet = charms.getCharmFilters();
+      filterSet.init(charms.getCharmFilters().toArray(new ICharmFilter[0]));
     }
   }
 

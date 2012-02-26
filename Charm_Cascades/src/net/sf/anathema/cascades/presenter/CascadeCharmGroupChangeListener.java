@@ -4,14 +4,13 @@ import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.charmtree.filters.ICharmFilter;
+import net.sf.anathema.charmtree.presenter.CharmFilterSet;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmGroupChangeListener;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.lib.util.IIdentificate;
 
 import java.awt.Color;
 import java.awt.SystemColor;
-import java.util.List;
 
 public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 
@@ -20,7 +19,7 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
   private final ITemplateRegistry templateRegistry;
 
   public CascadeCharmGroupChangeListener(ICascadeView cascadeView, CascadeCharmTreeViewProperties viewProperties,
-                                         ITemplateRegistry templateRegistry, List<ICharmFilter> charmFilterSet,
+                                         ITemplateRegistry templateRegistry, CharmFilterSet charmFilterSet,
                                          CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
     super(new FriendlyCharmGroupArbitrator(), charmFilterSet, ExaltedEdition.FirstEdition, cascadeView.getCharmTreeRenderer(), charmDisplayPropertiesMap);
     this.cascadeView = cascadeView;

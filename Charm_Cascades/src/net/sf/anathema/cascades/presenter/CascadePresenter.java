@@ -66,12 +66,10 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
     initCharacterTypeCharms(supportedCharmTypes, allCharmGroups);
     initMartialArts(supportedCharmTypes, allCharmGroups);
-    createCharmTypeSelector(
-            supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]),
-            view,
+    createCharmTypeSelector(supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]), view,
             "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
-    this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties,
-            templateRegistry, filterSet, new CharmDisplayPropertiesMap(templateRegistry));
+    this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, templateRegistry, filterSet,
+            new CharmDisplayPropertiesMap(templateRegistry));
     createCharmGroupSelector(view, selectionListener, allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]));
     initRules();
     initFilters();
@@ -123,10 +121,10 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
 
   private void initRules() {
     IChangeableJComboBox<IExaltedRuleSet> rulesComboBox = new ChangeableJComboBox<IExaltedRuleSet>(
-            ExaltedRuleSet.values(),
-            false);
+            ExaltedRuleSet.values(), false);
     rulesComboBox.setRenderer(new IdentificateSelectCellRenderer("Ruleset.", getResources())); //$NON-NLS-1$
-    view.addRuleSetComponent(rulesComboBox.getComponent(), getResources().getString("CharmCascades.RuleSetBox.Title")); //$NON-NLS-1$
+    view.addRuleSetComponent(rulesComboBox.getComponent(),
+            getResources().getString("CharmCascades.RuleSetBox.Title")); //$NON-NLS-1$
     rulesComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedRuleSet>() {
       @Override
       public void valueChanged(IExaltedRuleSet newValue) {
@@ -152,8 +150,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
 
   private void initFilters() {
     sourceFilter = new SourceBookCharmFilter(selectedRuleset.getEdition());
-    filterSet.add(sourceFilter);
-    filterSet.add(new EssenceLevelCharmFilter());
+    filterSet.init(sourceFilter, new EssenceLevelCharmFilter());
   }
 
   private CharmTreeIdentificateMap getCharmTreeMap(IExaltedRuleSet ruleSet) {

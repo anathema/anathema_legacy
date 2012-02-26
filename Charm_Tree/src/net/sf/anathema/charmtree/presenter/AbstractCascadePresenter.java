@@ -6,7 +6,6 @@ import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.charmtree.filters.CharmFilterSettingsPage;
-import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
@@ -18,13 +17,11 @@ import net.sf.anathema.lib.util.IIdentificate;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class AbstractCascadePresenter implements ICascadeSelectionPresenter {
 
   private final IResources resources;
-
-  protected List<ICharmFilter> filterSet = new ArrayList<ICharmFilter>();
+  protected CharmFilterSet filterSet = new CharmFilterSet();
   protected ICharmGroupChangeListener changeListener;
   protected IIdentificate currentType;
 
@@ -61,20 +58,24 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
       protected void execute(Component parentComponent) {
         CharmFilterSettingsPage page = new CharmFilterSettingsPage(getResources(), filterSet);
         UserDialog userDialog = new UserDialog(parentComponent, page);
-
-        boolean dirty = false;
         IDialogResult result = userDialog.show();
+        resetOrApplyFilters(result);
+        reselectTypeAndGroup(result);
+      }
 
-        for (ICharmFilter element : filterSet)
-          if (element.isDirty()) if (result.isCanceled()) element.reset();
-          else {
-            element.apply();
-            dirty = true;
-          }
+      private void reselectTypeAndGroup(IDialogResult result) {
+        if (result.isCanceled()) {
+          return;
+        }
+        handleTypeSelectionChange(currentType);
+        changeListener.reselect();
+      }
 
-        if (dirty) {
-          handleTypeSelectionChange(currentType);
-          changeListener.reselect();
+      private void resetOrApplyFilters(IDialogResult result) {
+        if (result.isCanceled()) {
+          filterSet.resetAllFilters();
+        } else {
+          filterSet.applyAllFilters();
         }
       }
     };
@@ -87,13 +88,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     for (ICharmGroup group : originalGroups) {
       boolean acceptGroup = false;
       for (ICharm charm : group.getAllCharms()) {
-        boolean acceptCharm = true;
-        for (ICharmFilter filter : filterSet) {
-          if (!filter.acceptsCharm(charm, false)) {
-            acceptCharm = false;
-            break;
-          }
-        }
+        boolean acceptCharm = filterSet.acceptsCharm(charm);
         if (acceptCharm) {
           acceptGroup = true;
           break;

@@ -5,26 +5,25 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.charmtree.filters.ICharmFilter;
+import net.sf.anathema.charmtree.presenter.CharmFilterSet;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
-import java.util.List;
 import java.util.Set;
 
 public abstract class AbstractCharmGroupChangeListener implements ICharmGroupChangeListener, CharmGroupInformer {
 
   private final ICharmGroupArbitrator arbitrator;
   private final CharmTreeRenderer charmTreeRenderer;
-  protected final List<ICharmFilter> charmFilterSet;
+  private final CharmFilterSet charmFilterSet;
   private IExaltedEdition edition;
   private ICharmGroup currentGroup;
   private IIdentificate currentType;
   private final CharmDisplayPropertiesMap displayPropertiesMap;
 
-  public AbstractCharmGroupChangeListener(ICharmGroupArbitrator arbitrator, List<ICharmFilter> charmFilterSet,
+  public AbstractCharmGroupChangeListener(ICharmGroupArbitrator arbitrator, CharmFilterSet charmFilterSet,
                                           IExaltedEdition edition, CharmTreeRenderer treeRenderer,
                                           CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
     this.charmTreeRenderer = treeRenderer;
@@ -43,7 +42,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     ICharm[] allCharms = arbitrator.getCharms(charmGroup);
     Set<ICharm> charmsToDisplay = new ListOrderedSet<ICharm>();
     for (ICharm charm : allCharms) {
-      if (!filterCharm(charm, false) || !filterAncestors(charm)) continue;
+      if (!charmFilterSet.filterCharm(charm, false) || !filterAncestors(charm)) continue;
       charmsToDisplay.add(charm);
       for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms()) {
         if (charmGroup.getId().equals(prerequisite.getGroupId())) {
@@ -56,14 +55,10 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   protected boolean filterAncestors(ICharm charm) {
     for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms()) {
-      if (!filterCharm(prerequisite, true) || !filterAncestors(prerequisite)) return false;
+      if (!charmFilterSet.filterCharm(prerequisite, true) || !filterAncestors(prerequisite))   {
+        return false;
+      }
     }
-    return true;
-  }
-
-  private boolean filterCharm(ICharm charm, boolean isAncestor) {
-    for (ICharmFilter filter : charmFilterSet)
-      if (!filter.acceptsCharm(charm, isAncestor)) return false;
     return true;
   }
 
@@ -82,7 +77,8 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     if (charmGroup == null) {
       charmTreeRenderer.clearView();
     } else {
-      boolean resetView = !(currentGroup == charmGroup && currentType != null && currentType.getId().equals(type.getId()));
+      boolean resetView = !(currentGroup == charmGroup && currentType != null && currentType.getId().equals(
+              type.getId()));
       ITreePresentationProperties presentationProperties = getDisplayProperties(charmGroup);
       IRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(getDisplayCharms(charmGroup));
       charmTreeRenderer.renderTree(resetView, presentationProperties, nodes);
