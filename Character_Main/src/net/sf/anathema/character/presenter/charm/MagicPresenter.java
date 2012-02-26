@@ -1,8 +1,5 @@
 package net.sf.anathema.character.presenter.charm;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -13,6 +10,9 @@ import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MagicPresenter implements IContentPresenter {
 
@@ -26,7 +26,7 @@ public class MagicPresenter implements IContentPresenter {
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
     if (charmTemplate.canLearnCharms(statistics.getRules())) {
-      subPresenters.add(new CharacterCharmSelectionPresenter(statistics, resources, templateRegistry, factory));
+      subPresenters.add(new CharacterCharmPresenter(statistics, resources, templateRegistry, factory));
       subPresenters.add(new ComboConfigurationPresenter(resources, statistics, factory));
     }
     ISpellMagicTemplate spellMagic = statistics.getCharacterTemplate().getMagicTemplate().getSpellMagic();

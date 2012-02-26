@@ -19,7 +19,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.presenter.charm.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.charm.SourceBookCharmFilter;
-import net.sf.anathema.charmtree.presenter.AbstractCascadeSelectionPresenter;
+import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
@@ -28,13 +28,17 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 
-import java.awt.*;
-import java.util.*;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static java.util.Arrays.sort;
 
-public class CascadePresenter extends AbstractCascadeSelectionPresenter implements ICascadePresenter {
+public class CascadePresenter extends AbstractCascadePresenter implements ICascadePresenter {
 
   private CascadeCharmGroupChangeListener selectionListener;
   private IExaltedRuleSet selectedRuleset;
