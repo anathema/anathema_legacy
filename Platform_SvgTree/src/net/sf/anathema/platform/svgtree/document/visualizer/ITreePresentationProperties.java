@@ -11,6 +11,4 @@ public interface ITreePresentationProperties {
   public Dimension getGapDimension();
   
   public Dimension getVerticalLineDimension();
-
-  public boolean isolateSingles();
 }

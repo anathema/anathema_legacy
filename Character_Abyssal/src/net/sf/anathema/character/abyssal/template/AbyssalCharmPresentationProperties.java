@@ -1,8 +1,8 @@
 package net.sf.anathema.character.abyssal.template;
 
-import java.awt.Dimension;
-
 import net.sf.anathema.platform.svgtree.document.visualizer.AbstractCharmPresentationProperties;
+
+import java.awt.Dimension;
 
 public class AbyssalCharmPresentationProperties extends AbstractCharmPresentationProperties {
 
@@ -20,7 +20,4 @@ public class AbyssalCharmPresentationProperties extends AbstractCharmPresentatio
     return new Dimension(20, 40);
   }
 
-  public boolean isolateSingles() {
-    return false;
-  }
 }

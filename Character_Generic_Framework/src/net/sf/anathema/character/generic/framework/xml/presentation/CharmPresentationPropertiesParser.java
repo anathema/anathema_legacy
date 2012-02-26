@@ -1,13 +1,12 @@
 package net.sf.anathema.character.generic.framework.xml.presentation;
 
-import java.awt.Dimension;
-
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.awt.Dimension;
 
 public class CharmPresentationPropertiesParser extends AbstractXmlTemplateParser<GenericCharmPresentationProperties> {
 
@@ -17,8 +16,6 @@ public class CharmPresentationPropertiesParser extends AbstractXmlTemplateParser
   private static final String ATTRIB_HEIGHT = "height"; //$NON-NLS-1$
   private static final String TAG_GAP_DIMENSION = "gapDimension"; //$NON-NLS-1$
   private static final String TAG_LINE_DIMENSION = "lineDimension"; //$NON-NLS-1$
-  private static final String TAG_ISOLATE_SINGLE_CHARMS = "isolateSingleCharms"; //$NON-NLS-1$
-  private static final String ATTRIB_ISOLATE = "isolate"; //$NON-NLS-1$
 
   public CharmPresentationPropertiesParser(IXmlTemplateRegistry<GenericCharmPresentationProperties> templateRegistry) {
     super(templateRegistry);
@@ -35,16 +32,7 @@ public class CharmPresentationPropertiesParser extends AbstractXmlTemplateParser
     parseCharmDimension(element, basicTemplate);
     parseGapDimension(element, basicTemplate);
     parseLineDimension(element, basicTemplate);
-    parseIsolateSingleCharms(element, basicTemplate);
     return basicTemplate;
-  }
-
-  private void parseIsolateSingleCharms(Element element, GenericCharmPresentationProperties basicTemplate) {
-    Element isolateElement = element.element(TAG_ISOLATE_SINGLE_CHARMS);
-    if (isolateElement == null) {
-      return;
-    }
-    basicTemplate.setIsolateSingles(ElementUtilities.getBooleanAttribute(isolateElement, ATTRIB_ISOLATE, false));
   }
 
   private void parseLineDimension(Element element, GenericCharmPresentationProperties basicTemplate)

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.sidereal.presentation;
 
-import java.awt.Dimension;
-
 import net.sf.anathema.platform.svgtree.document.visualizer.AbstractCharmPresentationProperties;
+
+import java.awt.Dimension;
 
 public class SiderealCharmPresentationProperties extends AbstractCharmPresentationProperties {
 
@@ -21,7 +21,4 @@ public class SiderealCharmPresentationProperties extends AbstractCharmPresentati
     return new Dimension(25, 50);
   }
 
-  public boolean isolateSingles() {
-    return true;
-  }
 }

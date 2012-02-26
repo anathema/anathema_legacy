@@ -8,7 +8,7 @@ import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 
-import java.awt.*;
+import java.awt.Dimension;
 
 public class CharmPresentationPropertiesParserTest extends TestCase {
 
@@ -86,22 +86,5 @@ public class CharmPresentationPropertiesParserTest extends TestCase {
         + "</charmPresentation>"; //$NON-NLS-1$
     GenericCharmPresentationProperties properties = parseXml(crippleXML);
     assertNull(properties.getVerticalLineDimension());
-  }
-
-  public void testNoIsolateSingles() throws Exception {
-    GenericCharmPresentationProperties properties = parseXml(XML);
-    assertFalse(properties.isolateSingles());
-  }
-
-  public void testIsolateSingles() throws Exception {
-    String isolateXml = "<charmPresentation>" //$NON-NLS-1$
-        + "<polygon>157.07742,9.777771</polygon>" //$NON-NLS-1$
-        + "<charmDimension width=\"150\" height=\"75\"/>" //$NON-NLS-1$
-        + "<gapDimension width=\"25\" height=\"50\"/>" //$NON-NLS-1$
-        + "<lineDimension width=\"25\" height=\"75\"/>" //$NON-NLS-1$
-        + "<isolateSingleCharms isolate=\"true\"/>" //$NON-NLS-1$
-        + "</charmPresentation>"; //$NON-NLS-1$
-    GenericCharmPresentationProperties properties = parseXml(isolateXml);
-    assertTrue(properties.isolateSingles());
   }
 }

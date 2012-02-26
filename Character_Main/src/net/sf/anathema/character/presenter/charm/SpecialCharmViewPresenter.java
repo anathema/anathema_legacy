@@ -20,12 +20,14 @@ public class SpecialCharmViewPresenter {
   private ISpecialCharmViewContainer view;
   private IResources resources;
   private CharmGroupInformer charmGroupInformer;
+  private CharacterCharmModel charmModel;
 
-  public SpecialCharmViewPresenter(ICharacterStatistics statistics, ISpecialCharmViewContainer view, IResources resources, CharmGroupInformer informer) {
+  public SpecialCharmViewPresenter(ICharacterStatistics statistics, ISpecialCharmViewContainer view, IResources resources, CharmGroupInformer informer, CharacterCharmModel charmModel) {
     this.statistics = statistics;
     this.view = view;
     this.resources = resources;
     this.charmGroupInformer = informer;
+    this.charmModel = charmModel;
   }
 
   public void initPresentation() {
@@ -75,6 +77,6 @@ public class SpecialCharmViewPresenter {
   }
 
   private ICharmConfiguration getCharmConfiguration() {
-    return statistics.getCharms();
+    return charmModel.getCharmConfiguration();
   }
 }

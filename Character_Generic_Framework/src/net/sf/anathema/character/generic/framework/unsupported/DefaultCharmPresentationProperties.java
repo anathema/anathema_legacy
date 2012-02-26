@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.framework.unsupported;
 
-import java.awt.Dimension;
-
 import net.sf.anathema.platform.svgtree.document.visualizer.AbstractCharmPresentationProperties;
+
+import java.awt.Dimension;
 
 public class DefaultCharmPresentationProperties extends AbstractCharmPresentationProperties {
 
@@ -21,7 +21,4 @@ public class DefaultCharmPresentationProperties extends AbstractCharmPresentatio
     return new Dimension(25, 50);
   }
 
-  public boolean isolateSingles() {
-    return false;
-  }
 }

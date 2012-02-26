@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.framework.xml.presentation;
 
-import java.awt.Dimension;
-
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+
+import java.awt.Dimension;
 
 public class GenericCharmPresentationProperties extends ReflectionCloneableObject<GenericCharmPresentationProperties> implements
     ITreePresentationProperties {
@@ -12,7 +12,6 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
   private Dimension charmDimension;
   private Dimension gapDimension;
   private Dimension lineDimension;
-  private boolean isolateSingles = false;
 
   public String getNodeFramePolygonString() {
     return polygonString;
@@ -30,10 +29,6 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
     return lineDimension;
   }
 
-  public boolean isolateSingles() {
-    return isolateSingles;
-  }
-
   public void setPolygonString(String polygonString) {
     this.polygonString = polygonString;
   }
@@ -48,9 +43,5 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
   
   public void setVerticalLineDimension(Dimension dimension) {
     this.lineDimension = dimension;
-  }
-
-  public void setIsolateSingles(boolean isolate) {
-    this.isolateSingles = isolate;
   }
 }

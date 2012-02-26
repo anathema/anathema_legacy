@@ -1,12 +1,10 @@
 package net.sf.anathema.character.presenter.charm;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
@@ -39,45 +37,46 @@ import java.util.List;
 public class CharacterCharmPresenter extends AbstractCascadePresenter implements IContentPresenter {
 
   private final ICharmTreeViewProperties viewProperties;
-  private final ICharacterStatistics statistics;
   private final ICharmSelectionView view;
   private final SpecialCharmViewPresenter specialCharmViewPresenter;
-  private CharacterCharmGroupChangeListener charmSelectionChangeListener;
+  private final CharacterCharmModel model;
+  private Color characterColor;
+  private CharacterCharmGroupChangeListener charmGroupChangeListener;
 
   public CharacterCharmPresenter(
           ICharacterStatistics statistics,
           IResources resources,
           ITemplateRegistry templateRegistry,
-          IMagicViewFactory factory) {
+          IMagicViewFactory factory, CharacterCharmModel charmModel, Color characterColor) {
     super(resources, templateRegistry);
-    this.statistics = statistics;
-    this.viewProperties = new CharacterCharmTreeViewProperties(resources, getCharmConfiguration());
+    this.model = charmModel;
+    this.characterColor = characterColor;
+    this.viewProperties = new CharacterCharmTreeViewProperties(resources, model.getCharmConfiguration());
     this.view = factory.createCharmSelectionView(viewProperties);
-    this.charmSelectionChangeListener = new CharacterCharmGroupChangeListener(
+    this.charmGroupChangeListener = new CharacterCharmGroupChangeListener(
             getTemplateRegistry(),
-            getCharmConfiguration(),
+            model.getCharmConfiguration(),
             filterSet,
-            statistics.getRules().getEdition(), view.getCharmTreeRenderer());
-    this.specialCharmViewPresenter = new SpecialCharmViewPresenter(statistics, view, resources, charmSelectionChangeListener);
+            model.getEdition(), view.getCharmTreeRenderer());
+    this.specialCharmViewPresenter = new SpecialCharmViewPresenter(statistics, view, resources, charmGroupChangeListener, charmModel);
   }
 
   public void initPresentation() {
-    final ICharmConfiguration charms = getCharmConfiguration();
-    boolean alienCharms = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(
-            statistics.getCharacterConcept().getCaste().getType());
+    final ICharmConfiguration charms = model.getCharmConfiguration();
+    boolean alienCharms = model.isAllowedAlienCharms();
     createCharmTypeSelector(getCurrentCharmTypes(alienCharms), view, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
     initFilters(charms);
     specialCharmViewPresenter.initPresentation();
     initCharmTypeSelectionListening();
     initCasteListening();
-    createCharmGroupSelector(view, charmSelectionChangeListener, charms.getAllGroups());
+    createCharmGroupSelector(view, charmGroupChangeListener, charms.getAllGroups());
     createFilterButton(view);
     view.addCharmSelectionListener(new INodeSelectionListener() {
       public void nodeSelected(String charmId) {
         if (viewProperties.isRequirementNode(charmId)) {
           return;
         }
-        ILearningCharmGroup charmGroup = getCharmConfiguration().getGroup(getCharmConfiguration().getCharmById(charmId));
+        ILearningCharmGroup charmGroup = model.getCharmConfiguration().getGroup(model.getCharmConfiguration().getCharmById(charmId));
         charmGroup.toggleLearned(charms.getCharmById(charmId));
       }
     });
@@ -125,11 +124,10 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
 
   private void initFilters(ICharmConfiguration charms) {
     if (charms.getCharmFilters() == null) {
-      filterSet.add(new ObtainableCharmFilter(getCharmConfiguration()));
-      filterSet.add(new SourceBookCharmFilter(statistics.getRules().getEdition(),
-              getCharmConfiguration()));
-	  filterSet.add(new EssenceLevelCharmFilter());
-      getCharmConfiguration().setCharmFilters(filterSet);
+      filterSet.add(new ObtainableCharmFilter(model.getCharmConfiguration()));
+      filterSet.add(new SourceBookCharmFilter(model.getEdition(), model.getCharmConfiguration()));
+      filterSet.add(new EssenceLevelCharmFilter());
+      model.getCharmConfiguration().setCharmFilters(filterSet);
     } else
       filterSet = charms.getCharmFilters();
   }
@@ -144,14 +142,10 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
   }
 
   private void initCasteListening() {
-    final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
-    caste.addChangeListener(new IChangeListener() {
+    model.addCasteChangeListener(new IChangeListener() {
       public void changeOccurred() {
-        boolean alienCharms = statistics.getCharacterTemplate()
-                .getMagicTemplate()
-                .getCharmTemplate()
-                .isAllowedAlienCharms(caste.getType());
-        ICharmConfiguration charmConfiguration = getCharmConfiguration();
+        boolean alienCharms = model.isAllowedAlienCharms();
+        ICharmConfiguration charmConfiguration = model.getCharmConfiguration();
         if (!alienCharms) {
           charmConfiguration.unlearnAllAlienCharms();
         }
@@ -163,14 +157,14 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
 
   private IIdentificate[] getCurrentCharmTypes(boolean alienCharms) {
     List<IIdentificate> types = new ArrayList<IIdentificate>();
-    Collections.addAll(types, getCharmConfiguration().getCharacterTypes(alienCharms));
+    Collections.addAll(types, model.getCharmConfiguration().getCharacterTypes(alienCharms));
     types.add(MartialArtsUtilities.MARTIAL_ARTS);
     return types.toArray(new IIdentificate[types.size()]);
   }
 
   private void refresh() {
     handleTypeSelectionChange(currentType);
-    charmSelectionChangeListener.reselect();
+    charmGroupChangeListener.reselect();
   }
 
   private void initCharmTypeSelectionListening() {
@@ -185,7 +179,7 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
   protected void handleTypeSelectionChange(IIdentificate cascadeType) {
     ICharmGroup[] allCharmGroups = new ICharmGroup[0];
     if (cascadeType != null) {
-      allCharmGroups = sortCharmGroups(getCharmConfiguration()
+      allCharmGroups = sortCharmGroups(model.getCharmConfiguration()
               .getCharmGroups(cascadeType));
     }
     view.fillCharmGroupBox(allCharmGroups);
@@ -200,18 +194,18 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
   }
 
   private void setCharmVisuals(ICharm charm, ICharmSelectionView selectionView) {
-    ICharmConfiguration charmConfiguration = getCharmConfiguration();
-    ICharmGroup selectedGroup = charmSelectionChangeListener.getCurrentGroup();
+    ICharmConfiguration charmConfiguration = model.getCharmConfiguration();
+    ICharmGroup selectedGroup = charmGroupChangeListener.getCurrentGroup();
     if (selectedGroup == null || !charm.getGroupId().equals(selectedGroup.getId())) {
       return;
     }
-    Color fillColor = charmConfiguration.isLearned(charm) ? getCharacterColor() : Color.WHITE;
+    Color fillColor = charmConfiguration.isLearned(charm) ? characterColor : Color.WHITE;
     int opacity = charmConfiguration.isLearnable(charm) ? 255 : 70;
     selectionView.setCharmVisuals(charm.getId(), fillColor, opacity);
   }
 
   private void setCharmVisuals() {
-    ICharmGroup group = charmSelectionChangeListener.getCurrentGroup();
+    ICharmGroup group = charmGroupChangeListener.getCurrentGroup();
     if (group == null) {
       return;
     }
@@ -225,13 +219,13 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
       @Override
       public void charmLearned(ICharm charm) {
         setCharmVisuals(charm, selectionView);
-        charmSelectionChangeListener.reselect();
+        charmGroupChangeListener.reselect();
       }
 
       @Override
       public void charmForgotten(ICharm charm) {
         setCharmVisuals(charm, selectionView);
-        charmSelectionChangeListener.reselect();
+        charmGroupChangeListener.reselect();
       }
 
       @Override
@@ -244,13 +238,5 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
         Toolkit.getDefaultToolkit().beep();
       }
     };
-  }
-
-  private ICharmConfiguration getCharmConfiguration() {
-    return statistics.getCharms();
-  }
-
-  private Color getCharacterColor() {
-    return statistics.getCharacterTemplate().getPresentationProperties().getColor();
   }
 }

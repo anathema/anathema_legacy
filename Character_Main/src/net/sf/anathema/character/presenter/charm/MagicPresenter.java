@@ -11,6 +11,7 @@ import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.resources.IResources;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class MagicPresenter implements IContentPresenter {
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
     if (charmTemplate.canLearnCharms(statistics.getRules())) {
-      subPresenters.add(new CharacterCharmPresenter(statistics, resources, templateRegistry, factory));
+      subPresenters.add(createCharmPresenter(statistics, factory, resources, templateRegistry));
       subPresenters.add(new ComboConfigurationPresenter(resources, statistics, factory));
     }
     ISpellMagicTemplate spellMagic = statistics.getCharacterTemplate().getMagicTemplate().getSpellMagic();
@@ -36,6 +37,12 @@ public class MagicPresenter implements IContentPresenter {
     if (spellMagic.canLearnNecromancy()) {
       subPresenters.add(new NecromancyPresenter(statistics, resources, factory));
     }
+  }
+
+  private CharacterCharmPresenter createCharmPresenter(ICharacterStatistics statistics, IMagicViewFactory factory, IResources resources, ITemplateRegistry templateRegistry) {
+    CharacterCharmModel model = new CharacterCharmModel(statistics);
+    Color characterColor = statistics.getCharacterTemplate().getPresentationProperties().getColor();
+    return new CharacterCharmPresenter(statistics, resources, templateRegistry, factory, model, characterColor);
   }
 
   public void initPresentation() {
