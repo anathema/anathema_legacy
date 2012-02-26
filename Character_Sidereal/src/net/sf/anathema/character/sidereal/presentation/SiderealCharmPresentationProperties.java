@@ -12,13 +12,7 @@ public class SiderealCharmPresentationProperties extends AbstractCharmPresentati
     return POLYGON;
   }
 
-  // private final Dimension SIDEREAL_INNER = new Dimension(142, 39);
   public Dimension getNodeDimension() {
     return new Dimension(178, 80);
   }
-
-  public Dimension getGapDimension() {
-    return new Dimension(25, 50);
-  }
-
 }

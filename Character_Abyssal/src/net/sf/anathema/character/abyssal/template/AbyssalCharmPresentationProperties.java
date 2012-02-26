@@ -15,9 +15,4 @@ public class AbyssalCharmPresentationProperties extends AbstractCharmPresentatio
   public Dimension getNodeDimension() {
     return new Dimension(198, 85);
   }
-
-  public Dimension getGapDimension() {
-    return new Dimension(20, 40);
-  }
-
 }

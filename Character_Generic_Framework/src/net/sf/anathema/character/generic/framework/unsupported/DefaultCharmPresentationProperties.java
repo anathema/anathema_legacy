@@ -12,13 +12,7 @@ public class DefaultCharmPresentationProperties extends AbstractCharmPresentatio
     return POLYGON;
   }
 
-  // private final Dimension SOLAR_INNER = new Dimension(138, 46);
   public Dimension getNodeDimension() {
     return new Dimension(190, 72);
   }
-
-  public Dimension getGapDimension() {
-    return new Dimension(25, 50);
-  }
-
 }

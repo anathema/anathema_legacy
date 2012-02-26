@@ -10,7 +10,6 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
 
   private String polygonString;
   private Dimension charmDimension;
-  private Dimension gapDimension;
 
   public String getNodeFramePolygonString() {
     return polygonString;
@@ -21,7 +20,7 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
   }
 
   public Dimension getGapDimension() {
-    return gapDimension;
+    return new Dimension(25, 50);
   }
 
   public final Dimension getVerticalLineDimension() {
@@ -34,9 +33,5 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
 
   public void setCharmDimension(Dimension dimension) {
     this.charmDimension = dimension;
-  }
-
-  public void setGapDimension(Dimension dimension) {
-    this.gapDimension = dimension;
   }
 }

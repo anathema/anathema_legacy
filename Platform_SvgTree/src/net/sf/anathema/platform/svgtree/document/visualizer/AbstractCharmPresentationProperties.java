@@ -7,4 +7,8 @@ public abstract class AbstractCharmPresentationProperties implements ITreePresen
   public final Dimension getVerticalLineDimension() {
     return new Dimension(getGapDimension().width, getNodeDimension().height);
   }
+
+  public final Dimension getGapDimension() {
+    return new Dimension(25, 50);
+  }
 }
