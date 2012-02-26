@@ -98,12 +98,12 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
         filteredGroups.add(group);
       }
     }
-    ICharmGroup[] filteredGroupArray = new ICharmGroup[filteredGroups.size()];
-    for (int i = 0; i != filteredGroups.size(); i++)
-      filteredGroupArray[i] = filteredGroups.get(i);
-    if (filteredGroups.size() > 0) return new I18nedIdentificateSorter<ICharmGroup>().sortAscending(filteredGroupArray,
-            new ICharmGroup[filteredGroups.size()], resources);
-    else return filteredGroupArray;
+    ICharmGroup[] filteredGroupArray = filteredGroups.toArray(new ICharmGroup[filteredGroups.size()]);
+    if (!filteredGroups.isEmpty()) {
+      I18nedIdentificateSorter<ICharmGroup> sorter = new I18nedIdentificateSorter<ICharmGroup>();
+      return sorter.sortAscending(filteredGroupArray, new ICharmGroup[filteredGroups.size()], resources);
+    }
+    return filteredGroupArray;
   }
 
   protected abstract void handleTypeSelectionChange(final IIdentificate cascadeType);
