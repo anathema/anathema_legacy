@@ -10,8 +10,8 @@ import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,24 +41,28 @@ public class MagicPresenter implements IContentPresenter {
 
   private CharacterCharmPresenter createCharmPresenter(ICharacterStatistics statistics, IMagicViewFactory factory, IResources resources, ITemplateRegistry templateRegistry) {
     CharacterCharmModel model = new CharacterCharmModel(statistics);
-    Color characterColor = statistics.getCharacterTemplate().getPresentationProperties().getCharmPresentationProperties().getColor();
-    return new CharacterCharmPresenter(statistics, resources, templateRegistry, factory, model, characterColor);
+    ITreePresentationProperties presentationProperties = statistics.getCharacterTemplate().getPresentationProperties().getCharmPresentationProperties();
+    return new CharacterCharmPresenter(resources, templateRegistry, factory, model, presentationProperties);
   }
 
+  @Override
   public void initPresentation() {
     for (IContentPresenter presenter : subPresenters) {
       presenter.initPresentation();
     }
   }
 
+  @Override
   public IViewContent getTabContent() {
     return new IViewContent() {
+      @Override
       public void addTo(IMultiContentView view) {
         for (IContentPresenter presenter : subPresenters) {
           presenter.getTabContent().addTo(view);
         }
       }
 
+      @Override
       public IDisposable getDisposable() {
         final List<IDisposable> disposables = new ArrayList<IDisposable>();
         for (IContentPresenter presenter : subPresenters) {
@@ -71,6 +75,7 @@ public class MagicPresenter implements IContentPresenter {
           return null;
         }
         return new IDisposable() {
+          @Override
           public void dispose() {
             for (IDisposable disposable : disposables) {
               disposable.dispose();
