@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.framework.unsupported;
 
-import java.awt.Color;
-
 import net.sf.anathema.character.generic.impl.template.presentation.AbstractPresentationProperties;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+
+import java.awt.Color;
 
 public class DragonKingPresentationProperties extends AbstractPresentationProperties {
 
@@ -22,6 +22,6 @@ public class DragonKingPresentationProperties extends AbstractPresentationProper
   }
 
   public ITreePresentationProperties getCharmPresentationProperties() {
-    return new DefaultCharmPresentationProperties();
+    return new DragonKingCharmPresentationProperties();
   }
 }
