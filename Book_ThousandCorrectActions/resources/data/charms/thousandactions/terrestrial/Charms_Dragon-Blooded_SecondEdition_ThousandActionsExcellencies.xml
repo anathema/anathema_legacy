@@ -29,7 +29,7 @@
           <prerequisite>
                <trait value="3" />
                <essence value="3" />
-               <genericCharmAttributeRequirement attribute="Excellency" />
+               <genericCharmReference id="Dragon-Blooded.2ndExcellency" />
           </prerequisite>
           <cost>
           </cost>
@@ -42,7 +42,10 @@
           <prerequisite>
                <trait value="5" />
                <essence value="4" />
-               <genericCharmAttributeRequirement attribute="Excellency" />
+               <selectiveCharmGroup threshold="1">>
+               	<genericCharmReference id="Dragon-Blooded.1stExcellency" />
+               	<genericCharmReference id="Dragon-Blooded.3rdExcellency" />
+               </selectiveCharmGroup>
           </prerequisite>
           <cost>
 		<essence cost="6" text="0+wp"/>
