@@ -59,6 +59,7 @@
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
           <charmAttribute attribute="NotAlienLernable" />
+          <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
      <charm id="Lunar.InternalFormMastery" exalt="Lunar" group="Refinement">
