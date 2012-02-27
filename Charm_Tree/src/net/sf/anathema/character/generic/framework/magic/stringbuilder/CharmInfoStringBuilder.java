@@ -1,5 +1,8 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.VerboseCharmTypeStringBuilder;
@@ -19,6 +22,8 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
   private final ICharmTypeStringBuilder typeStringBuilder;
   private final ISpecialCharmStringBuilder specialCharmStringBuilder;
   private final IResources resources;
+  
+  private final int MAX_DESCRIPTION_LENGTH = 80;
 
   public CharmInfoStringBuilder(IResources resources) {
     this.resources = resources;
@@ -55,6 +60,9 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     
     if (specialDetails != null)
     	builder.append(specialCharmStringBuilder.createDetailsString(charm, specialDetails));
+    
+    if (getDescriptionString(charm) != null)
+    	builder.append(createDescriptionLine(charm));
     
     builder.append(resources.getString("CharmTreeView.ToolTip.Source")); //$NON-NLS-1$
     builder.append(IMagicStringBuilderConstants.ColonSpace);
@@ -100,5 +108,56 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
       prerequisiteLines = prerequisiteLines.concat(HtmlLineBreak);
     }
     return prerequisiteLines;
+  }
+  
+  private String getDescriptionString(ICharm charm)
+  {
+	  //"CutID" is to obtain the descriptions of excellencies,
+	  //if they are available.
+	  String cutId = "";
+	  String id = charm.getId();
+	  String[] charmIdSegments = id.split("\\.");
+	  for (int i = 0; i != charmIdSegments.length; i++)
+		  cutId += (i == charmIdSegments.length - 1 ? "" : charmIdSegments[i]) +
+		           (i >= charmIdSegments.length - 2 ? "" : ".");
+	  
+	  if (resources.supportsKey(cutId + ".Description")) //$NON-NLS-1$
+		  return resources.getString(cutId + ".Description"); //$NON-NLS-1$
+	  if (resources.supportsKey(charm.getId() + ".Description")) //$NON-NLS-1$
+		  return resources.getString(charm.getId() + ".Description"); //$NON-NLS-1$
+	  return null;
+  }
+  
+  private String createDescriptionLine(ICharm charm)
+  {
+	  String description = resources.getString("CharmTreeView.ToolTip.Description"); //$NON-NLS-1$
+	  description += IMagicStringBuilderConstants.ColonSpace;
+	  description += getDescriptionString(charm); //$NON-NLS-1$
+
+	  //Linebreak the description at regular intervals;
+	  //seems like there should be an existing way to do this,
+	  //but I could not find anything.
+	  List<String> lines = new ArrayList<String>();
+	  while (description.length() > 0)
+	  {
+		  int lineLength = 0;
+		  if (description.length() < MAX_DESCRIPTION_LENGTH)
+			  lineLength = description.length();
+		  else
+		  {
+			  String[] words = description.split(" ");
+			  for (int i = 0; i != words.length; i++)
+				  if (lineLength + words[i].length() + 1 > MAX_DESCRIPTION_LENGTH)
+					  break;
+				  else
+					  lineLength += words[i].length() + 1;  
+		  }
+		  lines.add(description.substring(0, lineLength));
+		  description = description.substring(lineLength);		  
+	  }
+	  //assemble the lines with linebreak delimiters
+	  for (String line : lines)
+		  description += line.trim() + HtmlLineBreak;
+	  return description;
   }
 }
