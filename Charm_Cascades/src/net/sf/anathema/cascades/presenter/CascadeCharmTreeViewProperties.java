@@ -44,7 +44,11 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
   @Override
   protected ISpecialCharm getSpecialCharm(String id)
   {
-	  ISpecialCharm[] set = generics.getCharmProvider().getSpecialCharms((CharacterType)type, rules.getEdition());
+	  ISpecialCharm[] set;
+	  if (type.getId().equals("MartialArts"))
+		  set = generics.getCharmProvider().getSpecialMartialArtsCharms(rules.getEdition());
+	  else
+		  set = generics.getCharmProvider().getSpecialCharms((CharacterType)type, rules.getEdition());
 	  for (ISpecialCharm special : set)
 		  if (special.getCharmId().equals(id))
 			  return special;
