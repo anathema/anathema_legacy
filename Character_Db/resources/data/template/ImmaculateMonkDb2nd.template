@@ -6,7 +6,7 @@
     <essence uses="template/DbEssence.template" />
     <traitCollection uses="template/DefaultDbTraitCollection2nd.template"/>
     <magicTemplate uses="template/ImmaculateMonkMagic2nd.template"/>
-    <presentation uses="template/DbPresentation.template"/>
+    <presentation uses="template/DbPresentation2nd.template"/>
      <additionalRules>
      	<forbiddenBackgrounds>
      		<backgroundReference id="Contacts" />

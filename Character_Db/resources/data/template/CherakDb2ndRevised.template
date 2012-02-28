@@ -6,7 +6,7 @@
     <essence uses="template/DbEssence.template" />
     <traitCollection uses="template/CherakDbTraitCollection2nd.template"/>
     <magicTemplate uses="template/DbMagic2nd.template"/>
-    <presentation uses="template/DbPresentation.template"/>
+    <presentation uses="template/DbPresentation2nd.template"/>
      <additionalRules>
      	<forbiddenBackgrounds>
      		<backgroundReference id="Contacts" />

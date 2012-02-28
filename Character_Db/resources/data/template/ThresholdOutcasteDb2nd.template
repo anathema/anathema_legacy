@@ -6,7 +6,7 @@
     <essence uses="template/DbEssence.template" />
     <traitCollection uses="trait/DefaultTraitCollection.template" />    
     <magicTemplate uses="template/DbMagic2nd.template"/>
-    <presentation uses="template/DbPresentation.template"/>
+    <presentation uses="template/DbPresentation2nd.template"/>
     <additionalRules uses="template/OutcasteDbAdditionalRules2nd.template"/>
     <additionalTemplates>
       <template id="Db.VirtueFlaw.Template" />
