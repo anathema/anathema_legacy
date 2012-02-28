@@ -16,6 +16,7 @@ http://anathema.sf.net
 * New preference: Paper format
 * [Dirk Walter] Magic views adapt to window size
 * [2E] [Dirk Walter] Added missing Mutations from many sources
+* [2E] Added rules for Ghost-Blooded
 
 -- Bugfixes --
 * Linux-shell-script works once again.
@@ -27,6 +28,7 @@ http://anathema.sf.net
 * [2E] Lunar pay XP by the book.
 * [2E] Less flickery stuff when learning/forgetting a Charm
 * [2E] (Lunar Knack) "Changing Plumage Mastery" is now printed with its fellow knacks
+* [2E] Fixed name of (Ghost) "Essence Lasso Form"
 
 
 ===------------------------------------------------------------------------------===
