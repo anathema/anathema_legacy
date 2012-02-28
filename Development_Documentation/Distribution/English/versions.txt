@@ -26,6 +26,7 @@ http://anathema.sf.net
 * [2E] Favored "High level" MA charms now cost 12 XP, as they should
 * [2E] Lunar pay XP by the book.
 * [2E] Less flickery stuff when learning/forgetting a Charm
+* [2E] (Lunar Knack) "Changing Plumage Mastery" is now printed with its fellow knacks
 
 
 ===------------------------------------------------------------------------------===
