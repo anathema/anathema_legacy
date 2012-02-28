@@ -6,7 +6,7 @@
     <essence uses="template/GodBloodedEssence.template" />
     <traitCollection uses="template/GodBloodedTraitCollection2nd.template"/>
     <magicTemplate uses="template/HalfCasteLunarMagic2nd.template"/>
-    <presentation uses="template/LunarPresentation.template"/>
+    <presentation uses="template/LunarPresentation2nd.template"/>
     <additionalRules uses="template/GodBloodedAdditionalRules2nd.template"/>
     <additionalTemplates>
       <template id="GodBlooded.Inheritance.Template" />

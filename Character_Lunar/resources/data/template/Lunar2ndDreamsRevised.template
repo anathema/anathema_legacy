@@ -6,7 +6,7 @@
     <essence uses="template/LunarEssence.template" />
     <traitCollection uses="template/LunarTraitCollection2ndDreams.template"/>
     <magicTemplate uses="template/LunarMagic2nd.template"/>
-    <presentation uses="template/LunarPresentation.template"/>
+    <presentation uses="template/LunarPresentation2nd.template"/>
     <additionalRules uses="template/LunarAdditionalRules2ndDreams.template">    	
     	<revisedIntimacies value="true" />
     	<willpowerVirtueBased value="false" />

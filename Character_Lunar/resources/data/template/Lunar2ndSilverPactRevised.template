@@ -6,8 +6,9 @@
     <essence uses="template/LunarEssence.template" />
     <traitCollection uses="template/LunarTraitCollection2ndSilverPact.template"/>
     <magicTemplate uses="template/LunarMagic2nd.template"/>
-    <presentation uses="template/LunarPresentation.template"/>
-    <additionalRules uses="template/LunarAdditionalRules2nd.template">    	
+    <presentation uses="template/LunarPresentation2nd.template"/>
+    <presentation uses="template/LunarPresentation2nd.template"/>
+    <additionalRules uses="template/LunarAdditionalRules2nd.template">
     	<revisedIntimacies value="true" />
     	<willpowerVirtueBased value="false" />
     </additionalRules>

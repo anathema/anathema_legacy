@@ -6,7 +6,7 @@
     <essence uses="template/LunarEssence.template" />
     <traitCollection uses="template/LunarTraitCollection2ndCasteless.template"/>
     <magicTemplate uses="template/LunarMagic2nd.template"/>
-    <presentation uses="template/LunarPresentation.template"/>
+    <presentation uses="template/LunarPresentation2nd.template"/>
     <additionalRules uses="template/LunarAdditionalRules2nd.template">
 	<forbiddenBackgrounds>
      		<backgroundReference id="Reputation" />
