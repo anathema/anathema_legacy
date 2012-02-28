@@ -1,4 +1,3 @@
 <presentation>
   <charmPresentation uses="template/AbyssalCharmPresentation2nd.template" prefix="moep_Abyssals_" />
-
 </presentation>
