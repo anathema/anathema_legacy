@@ -23,7 +23,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- misc -->
-	<charm id="Sidereal.SecretLessonRevelation" exalt="Solar" group="ThroneShadowStyle">
+	<charm id="Sidereal.SecretLessonRevelation" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="4" />
