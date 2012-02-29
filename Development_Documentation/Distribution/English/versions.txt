@@ -14,6 +14,7 @@ http://anathema.sf.net
 * Reworked much of the tech behind the scenes: If you have custom plugins, they need to be rebuilt.
 * The toolbar PDF icon now triggers a "quick print" that opens a character sheet without any dialogs
 * New preference: Paper format
+* Support for Japanese (etc.) characters on the tabs
 * [Dirk Walter] Magic views adapt to window size
 * [2E] [Dirk Walter] Added missing Mutations from many sources
 * [2E] Added rules for Ghost-Blooded
