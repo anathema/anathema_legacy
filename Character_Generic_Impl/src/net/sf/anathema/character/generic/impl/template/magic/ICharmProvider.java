@@ -8,6 +8,8 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
 public interface ICharmProvider {
+	
+  public ISpecialCharm[] getSpecialMartialArtsCharms(IExaltedEdition edition);
 
   public ISpecialCharm[] getSpecialCharms(ICharacterType characterType, IExaltedEdition edition);
 

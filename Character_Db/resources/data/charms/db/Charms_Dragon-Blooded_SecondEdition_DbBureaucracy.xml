@@ -6,8 +6,8 @@
   
   <charm id="Dragon-Blooded.BenevolentMaster'sBlessing" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
-      <essence id="Essence" value="1"/>
-      <trait id="Bureaucracy" value="2"/>
+      <essence id="Essence" value="2"/>
+      <trait id="Bureaucracy" value="3"/>
       <charmReference id="Dragon-Blooded.TerrestrialReinforcement.Bureaucracy"/>
     </prerequisite>
     <cost>

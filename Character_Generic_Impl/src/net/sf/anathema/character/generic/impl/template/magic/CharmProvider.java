@@ -71,6 +71,11 @@ public class CharmProvider implements ICharmProvider {
   {
     charmsByTypeByRuleSet.add(edition, type, charms);
   }
+  
+  public ISpecialCharm[] getSpecialMartialArtsCharms(IExaltedEdition edition)
+  {
+	return martialArtsSpecialCharms.get(edition).toArray(new ISpecialCharm[0]);
+  }
 
   public void addMartialArtsSpecialCharm(IExaltedEdition edition, ISpecialCharm charm) {
     martialArtsSpecialCharms.add(edition, charm);

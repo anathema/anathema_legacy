@@ -70,6 +70,36 @@ public class AnathemaStringUtilities {
     Arrays.sort(lineBreaks);
     return lineBreaks;
   }
+  
+  public static String createFixedWidthParagraph(String textString, String breakPoint, int maxLength)
+  {
+	//Linebreak the description at regular intervals;
+	//seems like there should be an existing way to do this,
+	//but I could not find anything.
+	List<String> lines = new ArrayList<String>();
+	while (textString.length() > 0)
+	{
+		  int lineLength = 0;
+		  if (textString.length() < maxLength)
+			  lineLength = textString.length();
+		  else
+		  {
+			  String[] words = textString.split(" ");
+			  for (int i = 0; i != words.length; i++)
+				  if (lineLength + words[i].length() + 1 > maxLength)
+					  break;
+				  else
+					  lineLength += words[i].length() + 1;  
+		  }
+		  lines.add(textString.substring(0, lineLength));
+		  textString = textString.substring(lineLength);		  
+	  }
+	  //assemble the lines with linebreak delimiters
+	  for (String line : lines)
+		  textString += line.trim() + breakPoint;
+	  
+	  return textString;
+  }
 
   public static char lastCharacter(String string) {
     return string.charAt(string.length() - 1);

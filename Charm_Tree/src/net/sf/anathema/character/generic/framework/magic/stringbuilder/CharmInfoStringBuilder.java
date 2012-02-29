@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.regex.Pattern;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
@@ -12,6 +11,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
@@ -112,20 +112,19 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
   
   private String getDescriptionString(ICharm charm)
   {
-	  //"CutID" is to obtain the descriptions of excellencies,
-	  //if they are available.
-	  String cutId = "";
 	  String id = charm.getId();
-	  String[] charmIdSegments = id.split("\\.");
-	  for (int i = 0; i != charmIdSegments.length; i++)
-		  cutId += (i == charmIdSegments.length - 1 ? "" : charmIdSegments[i]) +
-		           (i >= charmIdSegments.length - 2 ? "" : ".");
+	  String genericId = id.substring(0, id.lastIndexOf('.'));
 	  
-	  if (resources.supportsKey(cutId + ".Description")) //$NON-NLS-1$
-		  return resources.getString(cutId + ".Description"); //$NON-NLS-1$
-	  if (resources.supportsKey(charm.getId() + ".Description")) //$NON-NLS-1$
-		  return resources.getString(charm.getId() + ".Description"); //$NON-NLS-1$
-	  return null;
+	  String description = null;
+	  if (resources.supportsKey(genericId + ".Description")) //$NON-NLS-1$
+		  description = resources.getString(genericId + ".Description"); //$NON-NLS-1$
+	  if (resources.supportsKey(id + ".Description")) //$NON-NLS-1$
+		  description = resources.getString(id + ".Description"); //$NON-NLS-1$
+	  
+	  if (description != null)
+		  description = description.replaceAll(Pattern.quote("${Trait}"), charm.getPrimaryTraitType().getId());
+	  
+	  return description;
   }
   
   private String createDescriptionLine(ICharm charm)
@@ -134,30 +133,8 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
 	  description += IMagicStringBuilderConstants.ColonSpace;
 	  description += getDescriptionString(charm); //$NON-NLS-1$
 
-	  //Linebreak the description at regular intervals;
-	  //seems like there should be an existing way to do this,
-	  //but I could not find anything.
-	  List<String> lines = new ArrayList<String>();
-	  while (description.length() > 0)
-	  {
-		  int lineLength = 0;
-		  if (description.length() < MAX_DESCRIPTION_LENGTH)
-			  lineLength = description.length();
-		  else
-		  {
-			  String[] words = description.split(" ");
-			  for (int i = 0; i != words.length; i++)
-				  if (lineLength + words[i].length() + 1 > MAX_DESCRIPTION_LENGTH)
-					  break;
-				  else
-					  lineLength += words[i].length() + 1;  
-		  }
-		  lines.add(description.substring(0, lineLength));
-		  description = description.substring(lineLength);		  
-	  }
-	  //assemble the lines with linebreak delimiters
-	  for (String line : lines)
-		  description += line.trim() + HtmlLineBreak;
+	  description = AnathemaStringUtilities.createFixedWidthParagraph(description, HtmlLineBreak, MAX_DESCRIPTION_LENGTH);
+	  
 	  return description;
   }
 }
