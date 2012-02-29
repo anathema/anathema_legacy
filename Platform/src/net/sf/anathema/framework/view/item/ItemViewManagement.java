@@ -3,6 +3,7 @@ package net.sf.anathema.framework.view.item;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Insets;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +12,7 @@ import javax.swing.AbstractButton;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.text.StyleContext;
 
 import net.infonode.gui.colorprovider.FixedColorProvider;
 import net.infonode.gui.hover.HoverEvent;
@@ -73,11 +75,22 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     paneProperties.setTabDropDownListVisiblePolicy(TabDropDownListVisiblePolicy.TABS_NOT_VISIBLE);
   }
 
+  private static class FontHolder {
+    public static final Font TAB_CAPTION_FONT = createCompositeFont(Font.PLAIN, 11);
+
+    private static Font createCompositeFont(int style, int size) {
+      return StyleContext.getDefaultStyleContext().getFont(Font.SANS_SERIF, style, size);
+    }
+  }
+
   public void addItemView(final IItemView view, Action closeAction) {
     JComponent component = view.getComponent();
     itemViewsByComponent.put(component, view);
     TitledTab tab = new TitledTab(view.getName(), view.getIcon(), component, createButton(closeAction));
     tab.getProperties().addSuperObject(titledTabProperties);
+    tab.getProperties().getNormalProperties().getComponentProperties().setFont(FontHolder.TAB_CAPTION_FONT);
+    tab.getProperties().getDisabledProperties().getComponentProperties().setFont(FontHolder.TAB_CAPTION_FONT);
+    tab.getProperties().getHighlightedProperties().getComponentProperties().setFont(FontHolder.TAB_CAPTION_FONT);
     tabbedPane.addTab(tab);
     tab.addTabListener(new TabAdapter() {
       @Override
