@@ -1,19 +1,5 @@
 package net.sf.anathema.framework.view.item;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Insets;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.AbstractButton;
-import javax.swing.Action;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.text.StyleContext;
-
 import net.infonode.gui.colorprovider.FixedColorProvider;
 import net.infonode.gui.hover.HoverEvent;
 import net.infonode.gui.hover.HoverListener;
@@ -33,6 +19,17 @@ import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
+import javax.swing.AbstractButton;
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ItemViewManagement implements IComponentItemViewManagement {
 
   private final TabbedPanel tabbedPane = new TabbedPanel();
@@ -51,11 +48,13 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     titledTabProperties.getNormalProperties().setTitleComponentVisible(false);
     titledTabProperties.getHighlightedProperties().setTitleComponentVisible(true);
     titledTabProperties.setHoverListener(new HoverListener() {
+      @Override
       public void mouseEntered(HoverEvent event) {
         TitledTab tab = (TitledTab) event.getSource();
         tab.getProperties().getNormalProperties().setTitleComponentVisible(true);
       }
 
+      @Override
       public void mouseExited(HoverEvent event) {
         TitledTab tab = (TitledTab) event.getSource();
         tab.getProperties().getNormalProperties().setTitleComponentVisible(false);
@@ -75,22 +74,13 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     paneProperties.setTabDropDownListVisiblePolicy(TabDropDownListVisiblePolicy.TABS_NOT_VISIBLE);
   }
 
-  private static class FontHolder {
-    public static final Font TAB_CAPTION_FONT = createCompositeFont(Font.PLAIN, 11);
-
-    private static Font createCompositeFont(int style, int size) {
-      return StyleContext.getDefaultStyleContext().getFont(Font.SANS_SERIF, style, size);
-    }
-  }
-
+  @Override
   public void addItemView(final IItemView view, Action closeAction) {
     JComponent component = view.getComponent();
     itemViewsByComponent.put(component, view);
     TitledTab tab = new TitledTab(view.getName(), view.getIcon(), component, createButton(closeAction));
     tab.getProperties().addSuperObject(titledTabProperties);
-    tab.getProperties().getNormalProperties().getComponentProperties().setFont(FontHolder.TAB_CAPTION_FONT);
-    tab.getProperties().getDisabledProperties().getComponentProperties().setFont(FontHolder.TAB_CAPTION_FONT);
-    tab.getProperties().getHighlightedProperties().getComponentProperties().setFont(FontHolder.TAB_CAPTION_FONT);
+    setTabFontToSupportUnicode(tab);
     tabbedPane.addTab(tab);
     tab.addTabListener(new TabAdapter() {
       @Override
@@ -100,6 +90,12 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     });
     initNameListening(view);
     tabbedPane.setSelectedTab(tab);
+  }
+
+  private void setTabFontToSupportUnicode(TitledTab tab) {
+    tab.getProperties().getNormalProperties().getComponentProperties().setFont(FontHolder.TAB_CAPTION_FONT);
+    tab.getProperties().getDisabledProperties().getComponentProperties().setFont(FontHolder.TAB_CAPTION_FONT);
+    tab.getProperties().getHighlightedProperties().getComponentProperties().setFont(FontHolder.TAB_CAPTION_FONT);
   }
 
   private AbstractButton createButton(Action closeAction) {
@@ -118,6 +114,7 @@ public class ItemViewManagement implements IComponentItemViewManagement {
 
   private void initNameListening(final IItemView view) {
     IObjectValueChangedListener<String> listener = new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         setItemViewName(view, newValue);
       }
@@ -126,6 +123,7 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     view.addNameChangedListener(listener);
   }
 
+  @Override
   public JComponent getComponent() {
     return tabbedPane;
   }
@@ -134,18 +132,21 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     return itemViewsByComponent.get(tabbedPane.getSelectedTab().getContentComponent());
   }
 
+  @Override
   public void addViewSelectionListener(IViewSelectionListener listener) {
     control.addListener(listener);
   }
 
   private void fireItemViewChanged(final IItemView view) {
     control.forAllDo(new IClosure<IViewSelectionListener>() {
+      @Override
       public void execute(IViewSelectionListener input) {
         input.viewSelectionChangedTo(view);
       }
     });
   }
 
+  @Override
   public void setSelectedItemView(IItemView view) {
     tabbedPane.setSelectedTab(getTab(view));
   }
@@ -161,6 +162,7 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     return null;
   }
 
+  @Override
   public void removeItemView(IItemView view) {
     Component component = view.getComponent();
     itemViewsByComponent.remove(component);
