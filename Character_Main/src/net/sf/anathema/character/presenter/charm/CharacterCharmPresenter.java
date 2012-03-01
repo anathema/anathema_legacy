@@ -37,7 +37,6 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     setCharmDye(dye);
     setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
     setInteractionPresenter(new LearnInteractionPresenter(model, view, charmGroupChangeListener, viewProperties, dye));
-    setRulesPresenter(new NullRulesPresenter());
   }
 
   @Override

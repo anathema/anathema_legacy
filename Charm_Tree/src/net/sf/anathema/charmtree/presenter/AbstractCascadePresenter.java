@@ -29,27 +29,27 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   private final IResources resources;
   protected CharmFilterSet filterSet = new CharmFilterSet();
-  protected ICharmGroupChangeListener changeListener;
+  private ICharmGroupChangeListener changeListener;
   private IIdentificate currentType;
-  private SpecialCharmViewPresenter specialCharmPresenter;
   private ICascadeSelectionView view;
   private CharmDye dye;
   private CharmTypes charmTypes;
-  private AlienCharmPresenter alienPresenter;
-  private CharmInteractionPresenter interactionPresenter;
-  private CharmRulesPresenter rulesPresenter;
+  private SpecialCharmViewPresenter specialCharmPresenter = new NullSpecialCharmPresenter();
+  private AlienCharmPresenter alienPresenter = new NullAlienCharmPresenter();
+  private CharmInteractionPresenter interactionPresenter = new NullInteractionPresenter();
+  private CharmRulesPresenter rulesPresenter = new NullRulesPresenter();
 
   public AbstractCascadePresenter(IResources resources) {
     this.resources = resources;
   }
 
   public void initPresentation() {
-    createCharmTypeSelector(charmTypes.getCurrentCharmTypes(), view);
+    createCharmTypeSelector();
     listenForCascadeLoading();
     initCharmTypeSelectionListening();
     specialCharmPresenter.initPresentation();
     resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
-    createCharmGroupSelector(getCharmGroups());
+    createCharmGroupSelector();
     initFilters();
     alienPresenter.initPresentation();
     interactionPresenter.initPresentation();
@@ -99,15 +99,17 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     return resources;
   }
 
-  protected void createCharmGroupSelector(ICharmGroup[] allGroups) {
+  protected void createCharmGroupSelector() {
+    ICharmGroup[] allGroups = getCharmGroups();
     IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", getResources()); //$NON-NLS-1$
     Dimension preferredSize = GuiUtilities.calculateComboBoxSize(allGroups, renderer);
     view.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"), renderer, changeListener, preferredSize);
   }
 
-  protected void createCharmTypeSelector(IIdentificate[] types, ICascadeSelectionView selectionView) {
-    selectionView.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types,
-                                       new IdentificateSelectCellRenderer("", getResources())); //$NON-NLS-1$
+  protected void createCharmTypeSelector() {
+    IIdentificate[] types = charmTypes.getCurrentCharmTypes();
+    view.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types,
+                              new IdentificateSelectCellRenderer("", getResources())); //$NON-NLS-1$
   }
 
   protected void createFilterButton(ICascadeSelectionView selectionView) {

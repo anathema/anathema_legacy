@@ -45,10 +45,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     setCharmTypes(new CascadeCharmTypes(generics.getTemplateRegistry(), selectedRuleSet));
     setChangeListener(selectionListener);
     setView(view);
-    setSpecialPresenter(new NullSpecialCharmPresenter());
     setCharmDye(new CascadeCharmDye(view, selectionListener));
-    setAlienCharmPresenter(new NullAlienCharmPresenter());
-    setInteractionPresenter(new NullInteractionPresenter());
     setRulesPresenter(new CascadeRulesPresenter(getResources(), view, selectedRuleSet, selectionListener, charmMapsByRules));
   }
 

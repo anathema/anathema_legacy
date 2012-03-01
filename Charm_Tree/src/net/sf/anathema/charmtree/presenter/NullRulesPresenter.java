@@ -1,6 +1,4 @@
-package net.sf.anathema.character.presenter.charm;
-
-import net.sf.anathema.charmtree.presenter.CharmRulesPresenter;
+package net.sf.anathema.charmtree.presenter;
 
 public class NullRulesPresenter implements CharmRulesPresenter {
   @Override

@@ -1,4 +1,4 @@
-package net.sf.anathema.cascades.presenter;
+package net.sf.anathema.charmtree.presenter;
 
 import net.sf.anathema.charmtree.presenter.CharmInteractionPresenter;
 
