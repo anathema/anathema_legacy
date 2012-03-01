@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.charmtree.presenter.SpecialCharmViewPresenter;
 import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
 import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewContainer;
 import net.sf.anathema.lib.resources.IResources;
@@ -14,7 +15,7 @@ import javax.swing.ToolTipManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpecialCharmViewPresenter {
+public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter {
   private final List<ISVGSpecialNodeView> specialCharmViews = new ArrayList<ISVGSpecialNodeView>();
   private ISpecialCharmViewContainer view;
   private IResources resources;
@@ -22,9 +23,8 @@ public class SpecialCharmViewPresenter {
   private CharacterCharmModel charmModel;
   private ITreePresentationProperties presentationProperties;
 
-  public SpecialCharmViewPresenter(ISpecialCharmViewContainer view,
-                                   IResources resources, CharmGroupInformer informer, CharacterCharmModel charmModel,
-                                   ITreePresentationProperties presentationProperties) {
+  public CharacterSpecialCharmPresenter(ISpecialCharmViewContainer view, IResources resources, CharmGroupInformer informer, CharacterCharmModel charmModel,
+                                        ITreePresentationProperties presentationProperties) {
     this.view = view;
     this.resources = resources;
     this.charmGroupInformer = informer;
@@ -32,6 +32,7 @@ public class SpecialCharmViewPresenter {
     this.presentationProperties = presentationProperties;
   }
 
+  @Override
   public void initPresentation() {
     for (ISpecialCharm charm : getCharmConfiguration().getSpecialCharms()) {
       SpecialCharmViewBuilder builder = new SpecialCharmViewBuilder(resources, view, charmModel, presentationProperties);
@@ -43,6 +44,7 @@ public class SpecialCharmViewPresenter {
     }
   }
 
+  @Override
   public void resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea() {
     for (ISVGSpecialNodeView charmView : specialCharmViews) {
       String nodeId = charmView.getNodeId();
@@ -56,6 +58,7 @@ public class SpecialCharmViewPresenter {
     ToolTipManager.sharedInstance().setEnabled(true);
   }
 
+  @Override
   public void showSpecialViews() {
     ICharmGroup group = charmGroupInformer.getCurrentGroup();
     if (group == null) {

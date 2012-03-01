@@ -62,10 +62,6 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return true;
   }
 
-  protected IExaltedEdition getEdition() {
-    return edition;
-  }
-
   public void setEdition(IExaltedEdition edition) {
     this.edition = edition;
   }
@@ -87,8 +83,11 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   private ITreePresentationProperties getDisplayProperties(ICharmGroup charmGroup) {
     ICharacterType characterType = charmGroup.getCharacterType();
-    IExaltedEdition exaltedEdition = getEdition();
-    return displayPropertiesMap.getDisplayProperties(characterType, exaltedEdition);
+    return getDisplayProperties(characterType);
+  }
+
+  protected ITreePresentationProperties getDisplayProperties(ICharacterType characterType) {
+    return displayPropertiesMap.getDisplayProperties(characterType, edition);
   }
 
   @Override

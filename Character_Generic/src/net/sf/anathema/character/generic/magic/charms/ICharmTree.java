@@ -1,14 +1,12 @@
 package net.sf.anathema.character.generic.magic.charms;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.magic.ICharm;
 
-public interface ICharmTree extends ICharmIdMap, ICharmLearnableArbitrator {
+import java.util.List;
 
-  public ICharmGroup[] getAllCharmGroups();
+public interface ICharmTree extends ICharmIdMap, ICharmLearnableArbitrator, GroupCharmTree {
 
-  public ICharm[] getAllCharms();
+  ICharm[] getAllCharms();
 
-  public List<ICharm> getAllCharmsForGroup(String id);
+  List<ICharm> getAllCharmsForGroup(String id);
 }

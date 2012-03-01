@@ -54,11 +54,6 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
   }
 
   @Override
-  public JComponent getCharmComponent() {
-    return getCharmTreeView().getComponent();
-  }
-
-  @Override
   public SVGCategorizedSpecialNodeView createMultiLearnableCharmView(ISpecialCharm charm, double width, Color color) {
     return new SVGCategorizedSpecialNodeView(charm.getCharmId(), width, color, EssenceTemplate.SYSTEM_ESSENCE_MAX);
   }

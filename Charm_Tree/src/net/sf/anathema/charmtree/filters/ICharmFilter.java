@@ -1,24 +1,23 @@
 package net.sf.anathema.charmtree.filters;
 
-import javax.swing.JPanel;
-
-import org.dom4j.Element;
-
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.resources.IResources;
+import org.dom4j.Element;
 
-public interface ICharmFilter
-{
-	public boolean acceptsCharm(ICharm charm, boolean isAncestor);
-	
-	public boolean isDirty();
-	
-	public void apply();
-	
-	public void reset();
-	
-	public void save(Element parent);
-	public boolean load(Element node);
-	
-	public JPanel getFilterPreferencePanel(IResources resources);
+import javax.swing.*;
+
+public interface ICharmFilter {
+  boolean acceptsCharm(ICharm charm, boolean isAncestor);
+
+  boolean isDirty();
+
+  void apply();
+
+  void reset();
+
+  void save(Element parent);
+
+  boolean load(Element node);
+
+  JPanel getFilterPreferencePanel(IResources resources);
 }
