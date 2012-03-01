@@ -22,29 +22,19 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
     this.traitContext = traitContext;
   }
 
+  @Override
   public boolean isCasteOrFavored() {
     return getFavorization().isCasteOrFavored();
   }
 
+  @Override
   public final ITraitType getType() {
     return getTraitRules().getType();
   }
 
+  @Override
   public final int getMaximalValue() {
     return getTraitRules().getAbsoluteMaximumValue();
-  }
-
-  public final boolean isLowerable() {
-    return getTraitRules().isLowerable();
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null || obj.getClass() != getClass()) {
-      return false;
-    }
-
-    return getType().getId().equals(((AbstractFavorableTrait)obj).getType().getId());
   }
 
   @Override
@@ -52,30 +42,31 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
     return getType().getId().hashCode();
   }
 
-  public int getAbsoluteMinValue() {
-    return getTraitRules().getAbsoluteMinimumValue();
-  }
-
   public final int getZeroCalculationValue() {
     return getTraitRules().getZeroCalculationCost();
   }
 
+  @Override
   public int getInitialValue() {
     return getTraitRules().getStartValue();
   }
 
+  @Override
   public final void addCreationPointListener(IIntValueChangedListener listener) {
     getCreationPointControl().addIntValueChangeListener(listener);
   }
 
+  @Override
   public final void removeCreationPointListener(IIntValueChangedListener listener) {
     getCreationPointControl().removeIntValueChangeListener(listener);
   }
 
+  @Override
   public final void addCurrentValueListener(IIntValueChangedListener listener) {
     getCurrentValueControl().addIntValueChangeListener(listener);
   }
 
+  @Override
   public final void removeCurrentValueListener(IIntValueChangedListener listener) {
     getCurrentValueControl().removeIntValueChangeListener(listener);
   }

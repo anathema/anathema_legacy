@@ -46,7 +46,7 @@
           <cost>
                <essence cost="8" />
           </cost>
-          <duration duration="Indefintte" />
+          <duration duration="Indefinite" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Sidereal" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
