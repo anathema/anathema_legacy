@@ -23,7 +23,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- misc -->
-	<charm id="Sidereal.FlowBreakingStrike" exalt="Solar" group="ThroneShadowStyle">
+	<charm id="Sidereal.FlowBreakingStrike" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="4" />
@@ -42,7 +42,7 @@
 		<charmAttribute attribute="Stackable" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.TheLotusBlossoms" exalt="Solar" group="ThroneShadowStyle">
+	<charm id="Sidereal.TheLotusBlossoms" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="5" />
@@ -57,7 +57,7 @@
 		<charmAttribute attribute="Native" visualize="true" />
 		<source source="ScrollErrata" />
 	</charm>
-	<charm id="Sidereal.ShowingTheSecretHand" exalt="Solar" group="ThroneShadowStyle">
+	<charm id="Sidereal.ShowingTheSecretHand" exalt="Sidereal" group="ThroneShadowStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="6" />
 			<essence value="6" />
