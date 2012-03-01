@@ -14,8 +14,8 @@ import java.util.List;
 public class CharmFilterSet {
   private List<ICharmFilter> filterSet = new ArrayList<ICharmFilter>();
 
-  public void init(ICharmFilter... charmFilter) {
-    filterSet = Lists.newArrayList(charmFilter);
+  public void init(Iterable<ICharmFilter> filters) {
+    filterSet = Lists.newArrayList(filters);
   }
 
   public void resetAllFilters() {

@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.charmtree.filters.CharmFilterSettingsPage;
+import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
@@ -219,5 +220,12 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   protected abstract ICharmGroup[] getCharmGroups();
 
-  protected abstract void initFilters();
+  private void initFilters() {
+    CharmFilterContainer charms = getFilterContainer();
+    List<ICharmFilter> charmFilters = charms.getCharmFilters();
+    filterSet.init(charmFilters);
+    createFilterButton(view);
+  }
+
+  protected abstract CharmFilterContainer getFilterContainer();
 }

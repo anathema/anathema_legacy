@@ -21,7 +21,9 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.presenter.charm.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.charm.SourceBookCharmFilter;
+import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
+import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -142,11 +144,8 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
   }
 
   @Override
-  protected void initFilters() {
-    SourceBookCharmFilter sourceFilter = new SourceBookCharmFilter(selectedRuleset.getEdition());
-    EssenceLevelCharmFilter essenceLevelFilter = new EssenceLevelCharmFilter();
-    filterSet.init(sourceFilter, essenceLevelFilter);
-    createFilterButton(view);
+  protected CascadeFilterContainer getFilterContainer() {
+    return new CascadeFilterContainer();
   }
 
   private CharmTreeIdentificateMap getCharmTreeMap(IExaltedRuleSet ruleSet) {
@@ -156,5 +155,14 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
   @Override
   protected GroupCharmTree getCharmTree(IIdentificate type) {
     return getCharmTreeMap(selectedRuleset).get(type);
+  }
+
+  public class CascadeFilterContainer implements CharmFilterContainer {
+    @Override
+    public List<ICharmFilter> getCharmFilters() {
+      SourceBookCharmFilter sourceFilter = new SourceBookCharmFilter(selectedRuleset.getEdition());
+      EssenceLevelCharmFilter essenceLevelFilter = new EssenceLevelCharmFilter();
+      return Lists.newArrayList(sourceFilter, essenceLevelFilter);
+    }
   }
 }
