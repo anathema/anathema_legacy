@@ -96,13 +96,8 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
   @Override
   protected void initFilters() {
     ICharmConfiguration charms = model.getCharmConfiguration();
-    if (charms.getCharmFilters() == null) {
-      filterSet.init(new ObtainableCharmFilter(charms), new SourceBookCharmFilter(model.getEdition(), charms), new EssenceLevelCharmFilter());
-      filterSet.commitFilters(charms);
-    } else {
-      List<ICharmFilter> charmFilters = charms.getCharmFilters();
-      filterSet.init(charmFilters.toArray(new ICharmFilter[charmFilters.size()]));
-    }
+    List<ICharmFilter> charmFilters = charms.getCharmFilters();
+    filterSet.init(charmFilters.toArray(new ICharmFilter[charmFilters.size()]));
     createFilterButton(view);
   }
 
@@ -134,13 +129,9 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     return Lists.<IIdentificate>newArrayList(characterTypes);
   }
 
-  protected GroupCharmTree getCharmTree(final IIdentificate cascadeType) {
-    return new GroupCharmTree() {
-      @Override
-      public ICharmGroup[] getAllCharmGroups() {
-        return model.getCharmConfiguration().getCharmGroups(cascadeType);
-      }
-    };
+  @Override
+  protected GroupCharmTree getCharmTree(IIdentificate cascadeType) {
+    return new CharacterGroupCharmTree(model, cascadeType);
   }
 
   private void initCharmLearnListening(ICharmConfiguration charmConfiguration) {

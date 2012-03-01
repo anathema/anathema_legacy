@@ -1,20 +1,14 @@
 package net.sf.anathema.charmtree.filters;
 
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
+import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.BorderFactory;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
+import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
-import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
-import net.sf.anathema.lib.resources.IResources;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class EssenceLevelCharmFilterPage implements ICharmFilterPage
 {
@@ -36,9 +30,7 @@ public class EssenceLevelCharmFilterPage implements ICharmFilterPage
 		
 		final SpinnerNumberModel model = new SpinnerNumberModel(essence[0], 1, EssenceTemplate.SYSTEM_ESSENCE_MAX, 1);
 		JPanel stringPanel = new JPanel();
-		String filterString = resources.getString("CharmFilters.EssenceLevel.ShowOnly");
 		JSpinner essenceSpinner = new JSpinner(model);
-		stringPanel.add(new JLabel(filterString));
 		stringPanel.add(essenceSpinner);
 		
 		essenceSpinner.addChangeListener(new ChangeListener()
@@ -50,7 +42,7 @@ public class EssenceLevelCharmFilterPage implements ICharmFilterPage
 			}
 		});
 		
-		JCheckBox checkBox = new JCheckBox();
+		JCheckBox checkBox = new JCheckBox(resources.getString("CharmFilters.EssenceLevel.ShowOnly"));
 		checkBox.setSelected(enabled[0]);
 		checkBox.addItemListener(new ItemListener()
 		{

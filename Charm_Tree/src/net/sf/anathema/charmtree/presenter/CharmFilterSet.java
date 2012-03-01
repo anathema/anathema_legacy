@@ -14,7 +14,6 @@ import java.util.List;
 public class CharmFilterSet {
   private List<ICharmFilter> filterSet = new ArrayList<ICharmFilter>();
 
-
   public void init(ICharmFilter... charmFilter) {
     filterSet = Lists.newArrayList(charmFilter);
   }
@@ -47,10 +46,6 @@ public class CharmFilterSet {
       }
     }
     return true;
-  }
-
-  public void commitFilters(CharmFilterContainer charms) {
-    charms.setCharmFilters(new ArrayList<ICharmFilter>(filterSet));
   }
 
   public boolean filterCharm(ICharm charm, boolean isAncestor) {

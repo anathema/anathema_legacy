@@ -6,7 +6,5 @@ import java.util.List;
 
 public interface CharmFilterContainer {
 
-  void setCharmFilters(List<ICharmFilter> filters);
-
   List<ICharmFilter> getCharmFilters();
 }

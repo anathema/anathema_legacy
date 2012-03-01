@@ -153,12 +153,6 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
 	}
 
 	@Override
-	public void setCharmFilters(List<ICharmFilter> filters) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public String getCharmTrueName(String charmName) {
 		// TODO Auto-generated method stub
 		return null;
