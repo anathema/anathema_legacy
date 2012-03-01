@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.charmtree.filters.CharmFilterSettingsPage;
+import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
@@ -34,6 +35,8 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   private IIdentificate currentType;
   private SpecialCharmViewPresenter specialCharmPresenter;
   private ICascadeSelectionView view;
+  private CharmGroupInformer groupInformer;
+  private CharmDye dye;
 
   public AbstractCascadePresenter(IResources resources) {
     this.resources = resources;
@@ -169,6 +172,14 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     this.changeListener = charmGroupChangeListener;
   }
 
+  protected void setCharmGroupInformer(CharmGroupInformer informer) {
+    this.groupInformer = informer;
+  }
+
+  protected void setCharmDye(CharmDye dye) {
+    this.dye = dye;
+  }
+
   private void handleTypeSelectionChange(IIdentificate cascadeType) {
     if (cascadeType == null) {
       view.fillCharmGroupBox(new IIdentificate[0]);
@@ -185,16 +196,24 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     specialCharmPresenter.showSpecialViews();
   }
 
-  protected abstract void setCharmVisuals();
-
-  protected abstract GroupCharmTree getCharmTree(IIdentificate type);
-
   protected IIdentificate[] getCurrentCharmTypes() {
     List<IIdentificate> types = new ArrayList<IIdentificate>();
     types.addAll(getCurrentCharacterTypes());
     types.add(MARTIAL_ARTS);
     return types.toArray(new IIdentificate[types.size()]);
   }
+
+  protected void setCharmVisuals() {
+    ICharmGroup currentGroup = groupInformer.getCurrentGroup();
+    if (currentGroup == null) {
+      return;
+    }
+    for (ICharm charm : currentGroup.getAllCharms()) {
+      dye.setCharmVisuals(charm);
+    }
+  }
+
+  protected abstract GroupCharmTree getCharmTree(IIdentificate type);
 
   protected abstract List<IIdentificate> getCurrentCharacterTypes();
 

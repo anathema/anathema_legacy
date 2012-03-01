@@ -1,9 +1,9 @@
 package net.sf.anathema.character.presenter.charm;
 
-import net.sf.anathema.character.generic.magic.ICharm;
+import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.model.charm.CharmLearnAdapter;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -22,11 +22,8 @@ import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
 
-import java.awt.*;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CharacterCharmPresenter extends AbstractCascadePresenter implements IContentPresenter {
@@ -34,21 +31,23 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
   private final ICharmTreeViewProperties viewProperties;
   private final ICharmView view;
   private final CharacterCharmModel model;
-  private Color characterColor;
   private CharacterCharmGroupChangeListener charmGroupChangeListener;
+  private CharacterCharmDye dye;
 
   public CharacterCharmPresenter(IResources resources, IMagicViewFactory factory, CharacterCharmModel charmModel,
                                  ITreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;
-    this.characterColor = presentationProperties.getColor();
     this.viewProperties = new CharacterCharmTreeViewProperties(resources, model.getCharmConfiguration());
     this.view = factory.createCharmSelectionView(viewProperties);
     this.charmGroupChangeListener = new CharacterCharmGroupChangeListener(model.getCharmConfiguration(), filterSet, model.getEdition(),
                                                                           view.getCharmTreeRenderer(), displayPropertiesMap);
+    this.dye = new CharacterCharmDye(model, charmGroupChangeListener, presentationProperties.getColor(), view);
     setChangeListener(charmGroupChangeListener);
     setView(view);
     setSpecialPresenter(new CharacterSpecialCharmPresenter(view, resources, charmGroupChangeListener, charmModel, presentationProperties));
+    setCharmGroupInformer(charmGroupChangeListener);
+    setCharmDye(dye);
   }
 
   @Override
@@ -60,7 +59,7 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
   }
 
   @Override
-  protected ILearningCharmGroup[] getCharmGroups() {
+  protected ICharmGroup[] getCharmGroups() {
     return model.getCharmConfiguration().getAllGroups();
   }
 
@@ -131,9 +130,8 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
   @Override
   protected List<IIdentificate> getCurrentCharacterTypes() {
     boolean alienCharms = model.isAllowedAlienCharms();
-    List<IIdentificate> types = new ArrayList<IIdentificate>();
-    Collections.addAll(types, model.getCharmConfiguration().getCharacterTypes(alienCharms));
-    return types;
+    ICharacterType[] characterTypes = model.getCharmConfiguration().getCharacterTypes(alienCharms);
+    return Lists.<IIdentificate>newArrayList(characterTypes);
   }
 
   protected GroupCharmTree getCharmTree(final IIdentificate cascadeType) {
@@ -146,55 +144,9 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
   }
 
   private void initCharmLearnListening(ICharmConfiguration charmConfiguration) {
-    ICharmLearnListener charmLearnListener = createCharmLearnListener(view);
+    ICharmLearnListener charmLearnListener = new CharmLearnVisualizer(dye);
     for (ILearningCharmGroup group : charmConfiguration.getAllGroups()) {
       group.addCharmLearnListener(charmLearnListener);
     }
-  }
-
-  @Override
-  protected void setCharmVisuals() {
-    ICharmGroup group = charmGroupChangeListener.getCurrentGroup();
-    if (group == null) {
-      return;
-    }
-    for (ICharm charm : group.getAllCharms()) {
-      setCharmVisuals(charm, view);
-    }
-  }
-
-  private void setCharmVisuals(ICharm charm, ICharmView view) {
-    ICharmConfiguration charmConfiguration = model.getCharmConfiguration();
-    ICharmGroup selectedGroup = charmGroupChangeListener.getCurrentGroup();
-    if (selectedGroup == null || !charm.getGroupId().equals(selectedGroup.getId())) {
-      return;
-    }
-    Color fillColor = charmConfiguration.isLearned(charm) ? characterColor : Color.WHITE;
-    int opacity = charmConfiguration.isLearnable(charm) ? 255 : 70;
-    view.setCharmVisuals(charm.getId(), fillColor, opacity);
-  }
-
-  private ICharmLearnListener createCharmLearnListener(final ICharmView view) {
-    return new CharmLearnAdapter() {
-      @Override
-      public void charmLearned(ICharm charm) {
-        setCharmVisuals(charm, view);
-      }
-
-      @Override
-      public void charmForgotten(ICharm charm) {
-        setCharmVisuals(charm, view);
-      }
-
-      @Override
-      public void charmNotLearnable(ICharm charm) {
-        Toolkit.getDefaultToolkit().beep();
-      }
-
-      @Override
-      public void charmNotUnlearnable(ICharm charm) {
-        Toolkit.getDefaultToolkit().beep();
-      }
-    };
   }
 }

@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
@@ -31,9 +30,7 @@ import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
-import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 import static java.util.Arrays.sort;
 
@@ -59,6 +56,8 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     setChangeListener(selectionListener);
     setView(view);
     setSpecialPresenter(new NullSpecialCharmPresenter());
+    setCharmGroupInformer(selectionListener);
+    setCharmDye(new CascadeCharmDye(view));
   }
 
   @Override
@@ -78,14 +77,8 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
 
   @Override
   protected List<IIdentificate> getCurrentCharacterTypes() {
-    return Lists.<IIdentificate>newArrayList(CharacterType.values());
-  }
-
-  @Override
-  protected void setCharmVisuals() {
-    for (ICharm charm : selectionListener.getCurrentGroup().getAllCharms()) {
-      view.setCharmVisuals(charm.getId(), Color.WHITE);
-    }
+    CharacterType[] characterTypes = CharacterType.values();
+    return Lists.<IIdentificate>newArrayList(characterTypes);
   }
 
   private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups) {
@@ -163,24 +156,5 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
   @Override
   protected GroupCharmTree getCharmTree(IIdentificate type) {
     return getCharmTreeMap(selectedRuleset).get(type);
-  }
-
-  private static class ByCharacterType implements Comparator<IIdentificate> {
-
-    @Override
-    public int compare(IIdentificate o1, IIdentificate o2) {
-      boolean firstCharacterType = o1 instanceof ICharacterType;
-      boolean secondCharacterType = o2 instanceof CharacterType;
-      if (firstCharacterType) {
-        if (secondCharacterType) {
-          return ((ICharacterType) o1).compareTo((CharacterType) o2);
-        }
-        return -1;
-      }
-      if (secondCharacterType) {
-        return 1;
-      }
-      return 0;
-    }
   }
 }
