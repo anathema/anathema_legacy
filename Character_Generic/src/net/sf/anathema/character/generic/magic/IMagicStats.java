@@ -18,7 +18,7 @@ public interface IMagicStats extends IStats, Comparable<IMagicStats> {
 
   public String getSourceString(IResources resources);
 
-  public String[] getDetailKeys();
+  public String[] getDetailStrings(IResources resources);
 
   public String getNameString(IResources resources);
 }

@@ -20,7 +20,7 @@ public class CharmStats extends AbstractCharmStats {
   }
 
   @Override
-  public String[] getDetailKeys() {
+  protected String[] getDetailKeys() {
     String[] detailKeys = super.getDetailKeys();
     final List<String> details = new ArrayList<String>();
     Collections.addAll(details, detailKeys);

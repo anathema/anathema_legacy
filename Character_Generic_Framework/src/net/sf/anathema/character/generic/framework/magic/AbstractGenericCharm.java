@@ -1,9 +1,12 @@
 package net.sf.anathema.character.generic.framework.magic;
 
+import java.util.regex.Pattern;
+
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -16,8 +19,10 @@ public abstract class AbstractGenericCharm implements IMagicStats {
 
   protected abstract ExaltedSourceBook getSourceBook();
 
-  public String[] getDetailKeys() {
-    return new String[] { getId() + ".Description" }; //$NON-NLS-1$
+  public String[] getDetailStrings(IResources resources) {
+	String description = resources.getString(getId() + ".Description");
+	String cleanedDescription = description.replaceAll(Pattern.quote("${Trait}"), resources.getString(getTraitType().getId())); //$NON-NLS-1$
+    return new String[] { cleanedDescription }; //$NON-NLS-1$
   }
 
   public final String getGroupName(IResources resources) {
@@ -35,6 +40,8 @@ public abstract class AbstractGenericCharm implements IMagicStats {
   protected abstract String getId();
 
   protected abstract boolean isComboOk();
+  
+  protected abstract FavoringTraitType getTraitType();
   
   public int compareTo(IMagicStats stats) {
     if (stats instanceof AbstractGenericCharm) {

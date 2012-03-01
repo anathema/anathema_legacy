@@ -6,6 +6,8 @@ import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FlawlessFocus extends AbstractGenericCharm {
@@ -31,6 +33,11 @@ public class FlawlessFocus extends AbstractGenericCharm {
 
   public String getDurationString(IResources resources) {
     return SimpleDuration.PERMANENT_DURATION.getText(); 
+  }
+  
+  public FavoringTraitType getTraitType()
+  {
+	  return CharacterType.LUNAR.getFavoringTraitType();
   }
 
   public String getType(IResources resources) {

@@ -1,5 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
+import net.disy.commons.core.util.ArrayUtilities;
+import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.generic.framework.magic.AbstractGenericCharm;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
@@ -36,16 +38,25 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
     final IMagicSourceStringBuilder<ICharm> stringBuilder = new MagicSourceStringBuilder<ICharm>(resources);
     return stringBuilder.createShortSourceString(getMagic());
   }
+  
+  protected String[] getDetailKeys()
+  {
+	  final List<String> details = new ArrayList<String>();
+	  for (ICharmAttribute attribute : getMagic().getAttributes()) {
+	    final String attributeId = attribute.getId();
+	    if (attribute.isVisualized()) {
+	      details.add("Keyword." + attributeId); //$NON-NLS-1$
+	    }
+	  }
+	  return details.toArray(new String[details.size()]);
+  }
 
-  public String[] getDetailKeys() {
-    final List<String> details = new ArrayList<String>();
-    for (ICharmAttribute attribute : getMagic().getAttributes()) {
-      final String attributeId = attribute.getId();
-      if (attribute.isVisualized()) {
-        details.add("Keyword." + attributeId); //$NON-NLS-1$
-      }
-    }
-    return details.toArray(new String[details.size()]);
+  public String[] getDetailStrings(final IResources resources) {
+    return ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
+        public String transform(String input) {
+          return resources.getString(input);
+        }
+      });
   }
 
   public int compareTo(IMagicStats stats) {

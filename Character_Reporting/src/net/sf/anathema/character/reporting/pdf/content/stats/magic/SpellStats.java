@@ -1,5 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
+import net.disy.commons.core.util.ArrayUtilities;
+import net.disy.commons.core.util.ITransformer;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.SpellSourceStringBuilder;
@@ -34,12 +36,22 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
     return stringBuilder.createShortSourceString(getMagic());
   }
 
-  public String[] getDetailKeys() {
+  protected String[] getDetailKeys() {
     final String target = getMagic().getTarget();
     if (target != null) {
       return new String[]{"Spells.Target." + target}; //$NON-NLS-1$
     }
     return new String[0];
+  }
+  
+  public String[] getDetailStrings(final IResources resources) {
+	return ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>()
+	{
+	  public String transform(String input)
+	  {
+	    return resources.getString(input);
+	  }
+	});
   }
 
   public String getNameString(IResources resources) {

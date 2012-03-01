@@ -3,8 +3,6 @@ package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 import com.google.common.base.Joiner;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.ITransformer;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
@@ -22,11 +20,7 @@ public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> 
     if (stats == null) {
       table.addCell(createTextCell(font, null));
     } else {
-      String[] details = ArrayUtilities.transform(stats.getDetailKeys(), String.class, new ITransformer<String, String>() {
-        public String transform(String input) {
-          return resources.getString(input);
-        }
-      });
+      String[] details = stats.getDetailStrings(resources);
       String detailText = Joiner.on(", ").join(details);
       if (StringUtilities.isNullOrEmpty(detailText)) {
         detailText = "-"; //$NON-NLS-1$
