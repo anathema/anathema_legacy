@@ -3,13 +3,13 @@ package net.sf.anathema.character.presenter.charm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
-import net.sf.anathema.charmtree.presenter.CharmDye;
+import net.sf.anathema.charmtree.presenter.AbstractCharmDye;
 import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 
 import java.awt.*;
 
-public class CharacterCharmDye implements CharmDye{
+public class CharacterCharmDye extends AbstractCharmDye {
 
   private final CharmGroupInformer informer;
   private final Color characterColor;
@@ -17,6 +17,7 @@ public class CharacterCharmDye implements CharmDye{
   private final ICharmView view;
 
   public CharacterCharmDye(CharacterCharmModel model, CharmGroupInformer informer, Color characterColor, ICharmView view) {
+    super(informer);
     this.informer = informer;
     this.characterColor = characterColor;
     this.model = model;

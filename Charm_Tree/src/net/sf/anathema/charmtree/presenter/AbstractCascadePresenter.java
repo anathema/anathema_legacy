@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.charmtree.filters.CharmFilterSettingsPage;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
-import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
@@ -34,10 +33,10 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   private IIdentificate currentType;
   private SpecialCharmViewPresenter specialCharmPresenter;
   private ICascadeSelectionView view;
-  private CharmGroupInformer groupInformer;
   private CharmDye dye;
   private CharmTypes charmTypes;
   private AlienCharmPresenter alienPresenter;
+  private CharmInteractionPresenter interactionPresenter;
 
   public AbstractCascadePresenter(IResources resources, CharmTypes charmTypes) {
     this.resources = resources;
@@ -53,6 +52,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     createCharmGroupSelector(getCharmGroups());
     initFilters();
     alienPresenter.initPresentation();
+    interactionPresenter.initPresentation();
   }
 
   private void initCharmTypeSelectionListening() {
@@ -69,7 +69,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     view.addCascadeLoadedListener(new CascadeLoadedListener() {
       @Override
       public void cascadeLoaded() {
-        setCharmVisuals();
+        dye.setCharmVisuals();
       }
     });
     view.addCascadeLoadedListener(new CascadeLoadedListener() {
@@ -175,10 +175,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     this.changeListener = charmGroupChangeListener;
   }
 
-  protected void setCharmGroupInformer(CharmGroupInformer informer) {
-    this.groupInformer = informer;
-  }
-
   protected void setCharmDye(CharmDye dye) {
     this.dye = dye;
   }
@@ -199,16 +195,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     specialCharmPresenter.showSpecialViews();
   }
 
-  protected void setCharmVisuals() {
-    ICharmGroup currentGroup = groupInformer.getCurrentGroup();
-    if (currentGroup == null) {
-      return;
-    }
-    for (ICharm charm : currentGroup.getAllCharms()) {
-      dye.setCharmVisuals(charm);
-    }
-  }
-
   protected abstract GroupCharmTree getCharmTree(IIdentificate type);
 
   protected abstract ICharmGroup[] getCharmGroups();
@@ -224,5 +210,9 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   protected void setAlienCharmPresenter(AlienCharmPresenter presenter) {
     this.alienPresenter = presenter;
+  }
+
+  protected void setInteractionPresenter(CharmInteractionPresenter presenter) {
+    this.interactionPresenter = presenter;
   }
 }
