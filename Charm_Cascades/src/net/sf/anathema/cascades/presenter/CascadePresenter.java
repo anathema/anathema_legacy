@@ -1,6 +1,5 @@
 package net.sf.anathema.cascades.presenter;
 
-import com.google.common.collect.Lists;
 import net.sf.anathema.cascades.module.ICascadeViewFactory;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -36,7 +35,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
   private ITemplateRegistry templateRegistry;
 
   public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory) {
-    super(resources);
+    super(resources, new CascadeCharmTypes());
     CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources, generics, charmMapsByRules, selectedRuleSet);
     this.view = factory.createCascadeView(viewProperties);
     this.templateRegistry = generics.getTemplateRegistry();
@@ -50,6 +49,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     setSpecialPresenter(new NullSpecialCharmPresenter());
     setCharmGroupInformer(selectionListener);
     setCharmDye(new CascadeCharmDye(view));
+    setAlienCharmPresenter(new NullAlienCharmPresenter());
   }
 
   @Override
@@ -65,12 +65,6 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     initCharacterTypeCharms(allCharmGroups);
     initMartialArtsCharms(allCharmGroups);
     return allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]);
-  }
-
-  @Override
-  protected List<IIdentificate> getCurrentCharacterTypes() {
-    CharacterType[] characterTypes = CharacterType.values();
-    return Lists.<IIdentificate>newArrayList(characterTypes);
   }
 
   private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups) {

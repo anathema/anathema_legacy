@@ -26,8 +26,6 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
-
 public abstract class AbstractCascadePresenter implements ICascadeSelectionPresenter {
 
   private final IResources resources;
@@ -38,19 +36,23 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   private ICascadeSelectionView view;
   private CharmGroupInformer groupInformer;
   private CharmDye dye;
+  private CharmTypes charmTypes;
+  private AlienCharmPresenter alienPresenter;
 
-  public AbstractCascadePresenter(IResources resources) {
+  public AbstractCascadePresenter(IResources resources, CharmTypes charmTypes) {
     this.resources = resources;
+    this.charmTypes = charmTypes;
   }
 
   public void initPresentation() {
-    createCharmTypeSelector(getCurrentCharmTypes(), view);
+    createCharmTypeSelector(charmTypes.getCurrentCharmTypes(), view);
     listenForCascadeLoading();
     initCharmTypeSelectionListening();
     specialCharmPresenter.initPresentation();
     resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
     createCharmGroupSelector(getCharmGroups());
     initFilters();
+    alienPresenter.initPresentation();
   }
 
   private void initCharmTypeSelectionListening() {
@@ -197,13 +199,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     specialCharmPresenter.showSpecialViews();
   }
 
-  protected IIdentificate[] getCurrentCharmTypes() {
-    List<IIdentificate> types = new ArrayList<IIdentificate>();
-    types.addAll(getCurrentCharacterTypes());
-    types.add(MARTIAL_ARTS);
-    return types.toArray(new IIdentificate[types.size()]);
-  }
-
   protected void setCharmVisuals() {
     ICharmGroup currentGroup = groupInformer.getCurrentGroup();
     if (currentGroup == null) {
@@ -216,8 +211,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   protected abstract GroupCharmTree getCharmTree(IIdentificate type);
 
-  protected abstract List<IIdentificate> getCurrentCharacterTypes();
-
   protected abstract ICharmGroup[] getCharmGroups();
 
   private void initFilters() {
@@ -228,4 +221,8 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   }
 
   protected abstract CharmFilterContainer getFilterContainer();
+
+  protected void setAlienCharmPresenter(AlienCharmPresenter presenter) {
+    this.alienPresenter = presenter;
+  }
 }

@@ -1,9 +1,7 @@
 package net.sf.anathema.character.presenter.charm;
 
-import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -24,7 +22,6 @@ import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
 
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
-import java.util.List;
 
 public class CharacterCharmPresenter extends AbstractCascadePresenter implements IContentPresenter {
 
@@ -36,7 +33,7 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
 
   public CharacterCharmPresenter(IResources resources, IMagicViewFactory factory, CharacterCharmModel charmModel,
                                  ITreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
-    super(resources);
+    super(resources, new CharacterCharmTypes(charmModel));
     this.model = charmModel;
     this.viewProperties = new CharacterCharmTreeViewProperties(resources, model.getCharmConfiguration());
     this.view = factory.createCharmSelectionView(viewProperties);
@@ -48,12 +45,12 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     setSpecialPresenter(new CharacterSpecialCharmPresenter(view, resources, charmGroupChangeListener, charmModel, presentationProperties));
     setCharmGroupInformer(charmGroupChangeListener);
     setCharmDye(dye);
+    setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
   }
 
   @Override
   public void initPresentation() {
     super.initPresentation();
-    initCasteListening();
     initCharmLearning();
     view.initGui();
   }
@@ -102,28 +99,6 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
   public IViewContent getTabContent() {
     String header = getResources().getString("CardView.CharmConfiguration.CharmSelection.Title"); //$NON-NLS-1$
     return new SimpleViewContent(new ContentProperties(header), view);
-  }
-
-  private void initCasteListening() {
-    model.addCasteChangeListener(new IChangeListener() {
-      @Override
-      public void changeOccurred() {
-        boolean alienCharms = model.isAllowedAlienCharms();
-        ICharmConfiguration charmConfiguration = model.getCharmConfiguration();
-        if (!alienCharms) {
-          charmConfiguration.unlearnAllAlienCharms();
-        }
-        IIdentificate[] currentCharmTypes = getCurrentCharmTypes();
-        view.fillCharmTypeBox(currentCharmTypes);
-      }
-    });
-  }
-
-  @Override
-  protected List<IIdentificate> getCurrentCharacterTypes() {
-    boolean alienCharms = model.isAllowedAlienCharms();
-    ICharacterType[] characterTypes = model.getCharmConfiguration().getCharacterTypes(alienCharms);
-    return Lists.<IIdentificate>newArrayList(characterTypes);
   }
 
   @Override
