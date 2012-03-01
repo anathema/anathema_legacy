@@ -6,15 +6,15 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public interface ICharmTemplate {
 
-  public ICharm[] getCharms(IExaltedRuleSet rules);
+  ICharm[] getCharms(IExaltedRuleSet rules);
 
-  public ICharm[] getMartialArtsCharms(IExaltedRuleSet rules);
+  ICharm[] getMartialArtsCharms(IExaltedRuleSet rules);
   
-  public IUniqueRequiredCharmType getUniqueRequiredCharmType();
+  IUniqueRequiredCharmType getUniqueRequiredCharmType();
 
-  public boolean canLearnCharms(IExaltedRuleSet rules);
+  boolean canLearnCharms(IExaltedRuleSet rules);
 
-  public boolean isAllowedAlienCharms(ICasteType caste);
+  boolean isAllowedAlienCharms(ICasteType caste);
 
-  public IMartialArtsRules getMartialArtsRules();
+  IMartialArtsRules getMartialArtsRules();
 }

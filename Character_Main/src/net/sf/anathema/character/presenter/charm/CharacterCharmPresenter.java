@@ -22,7 +22,7 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
 
   public CharacterCharmPresenter(IResources resources, IMagicViewFactory factory, CharacterCharmModel charmModel,
                                  ITreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
-    super(resources, new CharacterCharmTypes(charmModel));
+    super(resources);
     this.model = charmModel;
     ICharmTreeViewProperties viewProperties = new CharacterCharmTreeViewProperties(resources, model.getCharmConfiguration());
     this.view = factory.createCharmSelectionView(viewProperties);
@@ -30,18 +30,14 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
                                                                                                        model.getEdition(), view.getCharmTreeRenderer(),
                                                                                                        displayPropertiesMap);
     CharacterCharmDye dye = new CharacterCharmDye(model, charmGroupChangeListener, presentationProperties.getColor(), view);
+    setCharmTypes(new CharacterCharmTypes(charmModel));
     setChangeListener(charmGroupChangeListener);
     setView(view);
     setSpecialPresenter(new CharacterSpecialCharmPresenter(view, resources, charmGroupChangeListener, charmModel, presentationProperties));
     setCharmDye(dye);
     setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
     setInteractionPresenter(new LearnInteractionPresenter(model, view, charmGroupChangeListener, viewProperties, dye));
-  }
-
-  @Override
-  public void initPresentation() {
-    super.initPresentation();
-    view.initGui();
+    setRulesPresenter(new NullRulesPresenter());
   }
 
   @Override
@@ -55,13 +51,13 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
   }
 
   @Override
-  public IViewContent getTabContent() {
-    String header = getResources().getString("CardView.CharmConfiguration.CharmSelection.Title"); //$NON-NLS-1$
-    return new SimpleViewContent(new ContentProperties(header), view);
+  protected GroupCharmTree getCharmTree(IIdentificate cascadeType) {
+    return new CharacterGroupCharmTree(model, cascadeType);
   }
 
   @Override
-  protected GroupCharmTree getCharmTree(IIdentificate cascadeType) {
-    return new CharacterGroupCharmTree(model, cascadeType);
+  public IViewContent getTabContent() {
+    String header = getResources().getString("CardView.CharmConfiguration.CharmSelection.Title"); //$NON-NLS-1$
+    return new SimpleViewContent(new ContentProperties(header), view);
   }
 }

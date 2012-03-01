@@ -1,5 +1,7 @@
 package net.sf.anathema.charmtree.presenter;
 
-public interface CharmInteractionPresenter {
-  void initPresentation();
+import net.sf.anathema.lib.gui.IPresenter;
+
+public interface CharmInteractionPresenter extends IPresenter {
+  //nothing to do
 }

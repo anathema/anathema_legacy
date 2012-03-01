@@ -1,7 +1,8 @@
 package net.sf.anathema.charmtree.presenter;
 
-public interface SpecialCharmViewPresenter {
-  void initPresentation();
+import net.sf.anathema.lib.gui.IPresenter;
+
+public interface SpecialCharmViewPresenter extends IPresenter {
 
   void resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
 

@@ -37,10 +37,10 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   private CharmTypes charmTypes;
   private AlienCharmPresenter alienPresenter;
   private CharmInteractionPresenter interactionPresenter;
+  private CharmRulesPresenter rulesPresenter;
 
-  public AbstractCascadePresenter(IResources resources, CharmTypes charmTypes) {
+  public AbstractCascadePresenter(IResources resources) {
     this.resources = resources;
-    this.charmTypes = charmTypes;
   }
 
   public void initPresentation() {
@@ -53,6 +53,8 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     initFilters();
     alienPresenter.initPresentation();
     interactionPresenter.initPresentation();
+    rulesPresenter.initPresentation();
+    view.initGui();
   }
 
   private void initCharmTypeSelectionListening() {
@@ -140,7 +142,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     selectionView.addCharmFilterButton(buttonAction, resources.getString("CharmFilters.Filters"), resources.getString("CharmFilters.Define"));
   }
 
-  protected ICharmGroup[] sortCharmGroups(ICharmGroup[] originalGroups) {
+  private ICharmGroup[] sortCharmGroups(ICharmGroup[] originalGroups) {
     ArrayList<ICharmGroup> filteredGroups = new ArrayList<ICharmGroup>();
     for (ICharmGroup group : originalGroups) {
       boolean acceptGroup = false;
@@ -178,6 +180,15 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   protected void setCharmDye(CharmDye dye) {
     this.dye = dye;
   }
+
+  protected void setRulesPresenter(CharmRulesPresenter rulesPresenter) {
+    this.rulesPresenter = rulesPresenter;
+  }
+
+  protected void setCharmTypes(CharmTypes types) {
+    this.charmTypes = types;
+  }
+
 
   private void handleTypeSelectionChange(IIdentificate cascadeType) {
     if (cascadeType == null) {
