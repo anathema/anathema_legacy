@@ -87,6 +87,10 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   private ITreePresentationProperties getDisplayProperties(ICharmGroup charmGroup) {
     ICharacterType characterType = charmGroup.getCharacterType();
+    return getDisplayProperties(characterType);
+  }
+
+  protected ITreePresentationProperties getDisplayProperties(ICharacterType characterType) {
     IExaltedEdition exaltedEdition = getEdition();
     return displayPropertiesMap.getDisplayProperties(characterType, exaltedEdition);
   }

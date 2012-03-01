@@ -1,8 +1,5 @@
 package net.sf.anathema.cascades.presenter;
 
-import java.awt.Cursor;
-import java.util.Map;
-
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
@@ -16,25 +13,27 @@ import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
+import java.awt.*;
+import java.util.Map;
+
 public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewProperties {
 
   private IIdentificate type;
-  private IExaltedRuleSet rules;
-  private ICharacterGenerics generics;
+  private final ProxyRuleSet rules;
+  private final ICharacterGenerics generics;
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules;
 
-  public CascadeCharmTreeViewProperties(
-      IResources resources,
-      ICharacterGenerics generics,
-      Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules) {
+  public CascadeCharmTreeViewProperties(IResources resources, ICharacterGenerics generics, Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules,
+                                        ProxyRuleSet selectedRuleSet) {
     super(resources);
     this.charmMapsByRules = charmMapsByRules;
     this.generics = generics;
+    this.rules = selectedRuleSet;
   }
 
   @Override
   protected ICharm getCharmById(String id) {
-    ICharm charm = charmMapsByRules.get(rules).get(type).getCharmById(id);
+    ICharm charm = charmMapsByRules.get(rules.getDelegate()).get(type).getCharmById(id);
     if (charm == null) {
       charm = searchCharm(id);
     }
@@ -68,10 +67,6 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   public void setCharmType(IIdentificate type) {
     this.type = type;
-  }
-
-  public void setRules(IExaltedRuleSet rules) {
-    this.rules = rules;
   }
 
   @Override
