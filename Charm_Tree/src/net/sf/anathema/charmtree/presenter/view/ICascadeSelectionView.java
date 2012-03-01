@@ -6,7 +6,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 
 import javax.swing.*;
-import java.awt.Dimension;
+import java.awt.*;
 
 public interface ICascadeSelectionView {
 
@@ -17,19 +17,16 @@ public interface ICascadeSelectionView {
   void addCharmTypeSelector(String title, IIdentificate[] types, ListCellRenderer renderer);
 
   void addCharmTypeSelectionListener(IObjectValueChangedListener<IIdentificate> selectionListener);
-  
+
   void addCharmFilterButton(SmartAction action, String titleText, String buttonText);
 
   void fillCharmGroupBox(IIdentificate[] charmGroups);
 
   void fillCharmTypeBox(IIdentificate[] cascadeTypes);
 
-  void addCharmGroupSelector(
-      String title,
-      ListCellRenderer renderer,
-      ICharmGroupChangeListener selectionListener,
-      Dimension preferredSize);
-
+  void addCharmGroupSelector(String title, ListCellRenderer renderer, ICharmGroupChangeListener selectionListener, Dimension preferredSize);
 
   JComponent getCharmComponent();
+
+  void initGui();
 }

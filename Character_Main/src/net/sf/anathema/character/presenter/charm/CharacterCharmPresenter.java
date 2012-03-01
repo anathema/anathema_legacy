@@ -46,18 +46,26 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     this.view = factory.createCharmSelectionView(viewProperties);
     this.charmGroupChangeListener = new CharacterCharmGroupChangeListener(model.getCharmConfiguration(), filterSet, model.getEdition(),
                                                                           view.getCharmTreeRenderer(), displayPropertiesMap);
+    setChangeListener(charmGroupChangeListener);
     setView(view);
     setSpecialPresenter(new CharacterSpecialCharmPresenter(view, resources, charmGroupChangeListener, charmModel, presentationProperties));
   }
 
   @Override
   public void initPresentation() {
-    initPresentationInternal();
-    ICharmConfiguration charms = model.getCharmConfiguration();
-    initFilters(charms);
+    super.initPresentation();
     initCasteListening();
-    createCharmGroupSelector(view, charmGroupChangeListener, charms.getAllGroups());
-    createFilterButton(view);
+    initCharmLearning();
+    view.initGui();
+  }
+
+  @Override
+  protected ILearningCharmGroup[] getCharmGroups() {
+    return model.getCharmConfiguration().getAllGroups();
+  }
+
+  private void initCharmLearning() {
+    ICharmConfiguration charms = model.getCharmConfiguration();
     view.addCharmSelectionListener(new INodeSelectionListener() {
       @Override
       public void nodeSelected(String charmId) {
@@ -74,7 +82,6 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
         setCharmVisuals();
       }
     });
-    view.initGui();
     ensureRefreshAfterAutomaticUnlearn();
   }
 
@@ -87,7 +94,9 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     });
   }
 
-  private void initFilters(ICharmConfiguration charms) {
+  @Override
+  protected void initFilters() {
+    ICharmConfiguration charms = model.getCharmConfiguration();
     if (charms.getCharmFilters() == null) {
       filterSet.init(new ObtainableCharmFilter(charms), new SourceBookCharmFilter(model.getEdition(), charms), new EssenceLevelCharmFilter());
       filterSet.commitFilters(charms);
@@ -95,6 +104,7 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
       List<ICharmFilter> charmFilters = charms.getCharmFilters();
       filterSet.init(charmFilters.toArray(new ICharmFilter[charmFilters.size()]));
     }
+    createFilterButton(view);
   }
 
   @Override

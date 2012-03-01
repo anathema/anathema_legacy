@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class CascadeView extends AbstractCascadeSelectionView implements ICascadeView, IView {
 
-  private JPanel content;
+  private JPanel content = new JPanel(new GridDialogLayout(2, false));
   private final JPanel rulesPanel = new JPanel();
 
   public CascadeView(ISvgTreeViewProperties treeProperties) {
@@ -23,22 +23,15 @@ public class CascadeView extends AbstractCascadeSelectionView implements ICascad
 
   @Override
   public JComponent getComponent() {
-    if (content == null) {
-      content = initGui();
-    }
     return content;
   }
 
-  private JPanel initGui() {
-    JPanel panel = new JPanel(new GridDialogLayout(2, false));
-    panel.add(getSelectionComponent());
-    panel.add(rulesPanel, GridDialogLayoutData.RIGHT);
+  public void initGui() {
+    content.add(getSelectionComponent());
+    content.add(rulesPanel, GridDialogLayoutData.RIGHT);
     JComponent treeViewComponent = getCharmTreeView().getComponent();
     treeViewComponent.setBackground(Color.WHITE);
-    panel.add(treeViewComponent, GridDialogLayoutDataFactory.createHorizontalSpanData(
-        2,
-        GridDialogLayoutData.FILL_BOTH));
-    return panel;
+    content.add(treeViewComponent, GridDialogLayoutDataFactory.createHorizontalSpanData(2, GridDialogLayoutData.FILL_BOTH));
   }
 
   @Override

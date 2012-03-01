@@ -21,7 +21,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
@@ -39,12 +39,14 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     this.resources = resources;
   }
 
-  public void initPresentationInternal() {
+  public void initPresentation() {
     createCharmTypeSelector(getCurrentCharmTypes(), view); //$NON-NLS-1$
     listenForCascadeLoading();
     initCharmTypeSelectionListening();
     specialCharmPresenter.initPresentation();
     resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
+    createCharmGroupSelector(getCharmGroups());
+    initFilters();
   }
 
   private void initCharmTypeSelectionListening() {
@@ -89,18 +91,15 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     return resources;
   }
 
-  protected void createCharmGroupSelector(ICascadeSelectionView selectionView, ICharmGroupChangeListener charmSelectionChangeListener,
-                                          ICharmGroup[] allGroups) {
+  protected void createCharmGroupSelector(ICharmGroup[] allGroups) {
     IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", getResources()); //$NON-NLS-1$
     Dimension preferredSize = GuiUtilities.calculateComboBoxSize(allGroups, renderer);
-    selectionView.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"),
-                                        //$NON-NLS-1$
-                                        renderer, charmSelectionChangeListener, preferredSize);
-    changeListener = charmSelectionChangeListener;
+    view.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"), renderer, changeListener, preferredSize);
   }
 
   protected void createCharmTypeSelector(IIdentificate[] types, ICascadeSelectionView selectionView) {
-    selectionView.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types, new IdentificateSelectCellRenderer("", getResources())); //$NON-NLS-1$
+    selectionView.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types,
+                                       new IdentificateSelectCellRenderer("", getResources())); //$NON-NLS-1$
   }
 
   protected void createFilterButton(ICascadeSelectionView selectionView) {
@@ -166,6 +165,10 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     this.view = view;
   }
 
+  protected void setChangeListener(ICharmGroupChangeListener charmGroupChangeListener) {
+    this.changeListener = charmGroupChangeListener;
+  }
+
   private void handleTypeSelectionChange(IIdentificate cascadeType) {
     if (cascadeType == null) {
       view.fillCharmGroupBox(new IIdentificate[0]);
@@ -194,4 +197,8 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   }
 
   protected abstract List<IIdentificate> getCurrentCharacterTypes();
+
+  protected abstract ICharmGroup[] getCharmGroups();
+
+  protected abstract void initFilters();
 }

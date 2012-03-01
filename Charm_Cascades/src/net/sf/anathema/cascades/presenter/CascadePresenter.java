@@ -40,7 +40,7 @@ import static java.util.Arrays.sort;
 public class CascadePresenter extends AbstractCascadePresenter implements ICascadePresenter {
 
   private CascadeCharmGroupChangeListener selectionListener;
-  private IExaltedRuleSet selectedRuleset;
+  private IExaltedRuleSet selectedRuleset = AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset();
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules = new HashMap<IExaltedRuleSet, CharmTreeIdentificateMap>();
   private final CascadeCharmTreeViewProperties viewProperties;
   private final ICascadeView view;
@@ -53,23 +53,27 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     this.templateRegistry = generics.getTemplateRegistry();
     this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, templateRegistry, filterSet,
                                                                  new CharmDisplayPropertiesMap(templateRegistry));
+    for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
+      charmMapsByRules.put(ruleSet, new CharmTreeIdentificateMap());
+    }
+    setChangeListener(selectionListener);
     setView(view);
     setSpecialPresenter(new NullSpecialCharmPresenter());
   }
 
   @Override
   public void initPresentation() {
-    initPresentationInternal();
-    for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
-      charmMapsByRules.put(ruleSet, new CharmTreeIdentificateMap());
-    }
+    super.initPresentation();
+    initRulesSelection();
+    view.initGui();
+  }
+
+  @Override
+  protected ICharmGroup[] getCharmGroups() {
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
     initCharacterTypeCharms(allCharmGroups);
     initMartialArts(allCharmGroups);
-    createCharmGroupSelector(view, selectionListener, allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]));
-    initRules();
-    initFilters();
-    createFilterButton(view);
+    return allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]);
   }
 
   @Override
@@ -116,7 +120,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     }
   }
 
-  private void initRules() {
+  private void initRulesSelection() {
     IChangeableJComboBox<IExaltedRuleSet> rulesComboBox = new ChangeableJComboBox<IExaltedRuleSet>(ExaltedRuleSet.values(), false);
     rulesComboBox.setRenderer(new IdentificateSelectCellRenderer("Ruleset.", getResources())); //$NON-NLS-1$
     view.addRuleSetComponent(rulesComboBox.getComponent(), getResources().getString("CharmCascades.RuleSetBox.Title")); //$NON-NLS-1$
@@ -144,10 +148,12 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     rulesComboBox.setSelectedObject(AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset());
   }
 
-  private void initFilters() {
+  @Override
+  protected void initFilters() {
     SourceBookCharmFilter sourceFilter = new SourceBookCharmFilter(selectedRuleset.getEdition());
     EssenceLevelCharmFilter essenceLevelFilter = new EssenceLevelCharmFilter();
     filterSet.init(sourceFilter, essenceLevelFilter);
+    createFilterButton(view);
   }
 
   private CharmTreeIdentificateMap getCharmTreeMap(IExaltedRuleSet ruleSet) {
