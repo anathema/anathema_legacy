@@ -1,5 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
+import com.google.common.collect.Lists;
 import net.sf.anathema.cascades.module.ICascadeViewFactory;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -58,19 +59,22 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
 
   @Override
   public void initPresentation() {
+    initPresentationInternal();
     for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
       charmMapsByRules.put(ruleSet, new CharmTreeIdentificateMap());
     }
-    List<IIdentificate> supportedCharmTypes = new ArrayList<IIdentificate>();
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
-    initCharacterTypeCharms(supportedCharmTypes, allCharmGroups);
-    initMartialArts(supportedCharmTypes, allCharmGroups);
-    createCharmTypeSelector(supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]), view, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
+    initCharacterTypeCharms(allCharmGroups);
+    initMartialArts(allCharmGroups);
     createCharmGroupSelector(view, selectionListener, allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]));
     initRules();
     initFilters();
     createFilterButton(view);
-    initPresentationInternal();
+  }
+
+  @Override
+  protected List<IIdentificate> getCurrentCharacterTypes() {
+    return Lists.<IIdentificate>newArrayList(CharacterType.values());
   }
 
   @Override
@@ -80,7 +84,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     }
   }
 
-  private void initCharacterTypeCharms(List<IIdentificate> supportedCharmTypes, List<ICharmGroup> allCharmGroups) {
+  private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups) {
     for (ICharacterType type : CharacterType.values()) {
       for (IExaltedEdition edition : ExaltedEdition.values()) {
         ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type, edition);
@@ -96,13 +100,12 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
               allCharmGroups.addAll(Arrays.asList(groups));
             }
           }
-          supportedCharmTypes.add(type);
         }
       }
     }
   }
 
-  private void initMartialArts(List<IIdentificate> supportedCharmTypes, List<ICharmGroup> allCharmGroups) {
+  private void initMartialArts(List<ICharmGroup> allCharmGroups) {
     for (IExaltedEdition edition : ExaltedEdition.values()) {
       ICharacterTemplate template = templateRegistry.getDefaultTemplate(CharacterType.SIDEREAL, edition);
       for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
@@ -111,7 +114,6 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
         allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
       }
     }
-    supportedCharmTypes.add(MartialArtsUtilities.MARTIAL_ARTS);
   }
 
   private void initRules() {

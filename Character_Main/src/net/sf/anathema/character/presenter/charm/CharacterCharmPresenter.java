@@ -1,6 +1,5 @@
 package net.sf.anathema.character.presenter.charm;
 
-import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
@@ -53,8 +52,8 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
 
   @Override
   public void initPresentation() {
+    initPresentationInternal();
     ICharmConfiguration charms = model.getCharmConfiguration();
-    createCharmTypeSelector(getCurrentCharmTypes(), view, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
     initFilters(charms);
     initCasteListening();
     createCharmGroupSelector(view, charmGroupChangeListener, charms.getAllGroups());
@@ -69,7 +68,6 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
       }
     });
     initCharmLearnListening(charms);
-    initPresentationInternal();
     charms.addLearnableListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
@@ -120,12 +118,12 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     });
   }
 
-  private IIdentificate[] getCurrentCharmTypes() {
+  @Override
+  protected List<IIdentificate> getCurrentCharacterTypes() {
     boolean alienCharms = model.isAllowedAlienCharms();
     List<IIdentificate> types = new ArrayList<IIdentificate>();
     Collections.addAll(types, model.getCharmConfiguration().getCharacterTypes(alienCharms));
-    types.add(MartialArtsUtilities.MARTIAL_ARTS);
-    return types.toArray(new IIdentificate[types.size()]);
+    return types;
   }
 
   protected GroupCharmTree getCharmTree(final IIdentificate cascadeType) {

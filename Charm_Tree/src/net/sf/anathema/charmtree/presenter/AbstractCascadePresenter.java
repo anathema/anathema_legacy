@@ -21,7 +21,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.List;
+
+import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
 
 public abstract class AbstractCascadePresenter implements ICascadeSelectionPresenter {
 
@@ -37,6 +40,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   }
 
   public void initPresentationInternal() {
+    createCharmTypeSelector(getCurrentCharmTypes(), view); //$NON-NLS-1$
     listenForCascadeLoading();
     initCharmTypeSelectionListening();
     specialCharmPresenter.initPresentation();
@@ -95,8 +99,8 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     changeListener = charmSelectionChangeListener;
   }
 
-  protected void createCharmTypeSelector(IIdentificate[] types, ICascadeSelectionView selectionView, String titleResourceKey) {
-    selectionView.addCharmTypeSelector(getResources().getString(titleResourceKey), types, new IdentificateSelectCellRenderer("", getResources())); //$NON-NLS-1$
+  protected void createCharmTypeSelector(IIdentificate[] types, ICascadeSelectionView selectionView) {
+    selectionView.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types, new IdentificateSelectCellRenderer("", getResources())); //$NON-NLS-1$
   }
 
   protected void createFilterButton(ICascadeSelectionView selectionView) {
@@ -181,4 +185,13 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   protected abstract void setCharmVisuals();
 
   protected abstract GroupCharmTree getCharmTree(IIdentificate type);
+
+  protected IIdentificate[] getCurrentCharmTypes() {
+    List<IIdentificate> types = new ArrayList<IIdentificate>();
+    types.addAll(getCurrentCharacterTypes());
+    types.add(MARTIAL_ARTS);
+    return types.toArray(new IIdentificate[types.size()]);
+  }
+
+  protected abstract List<IIdentificate> getCurrentCharacterTypes();
 }
