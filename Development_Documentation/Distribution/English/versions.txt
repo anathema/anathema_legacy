@@ -7,14 +7,17 @@ Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
-			Release 3.x.x "Whatshername"
+			Release 3.1.0 "Whatshername"
 ===------------------------------------------------------------------------------===
 
+We reworked much of the tech behind the scenes.
+If you have custom plugins, they need to be rebuilt.
+If you use the .zip distribution, please delete your "plugins" and "lib" folders before installing.  
+
 -- Features --
-* Reworked much of the tech behind the scenes: If you have custom plugins, they need to be rebuilt.
 * The toolbar PDF icon now triggers a "quick print" that opens a character sheet without any dialogs
 * New preference: Paper format
-* Support for Japanese (etc.) characters on the tabs
+* [Attila Kelemen] Support for Japanese (etc.) characters on the tabs
 * [Dirk Walter] Magic views adapt to window size
 * [2E] [Dirk Walter] Added missing Mutations from many sources
 * [2E] Added rules for Ghost-Blooded
