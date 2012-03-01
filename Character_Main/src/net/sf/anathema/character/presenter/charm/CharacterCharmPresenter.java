@@ -60,7 +60,7 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
 
   @Override
   public void initPresentation() {
-    final ICharmConfiguration charms = model.getCharmConfiguration();
+    ICharmConfiguration charms = model.getCharmConfiguration();
     boolean alienCharms = model.isAllowedAlienCharms();
     createCharmTypeSelector(getCurrentCharmTypes(alienCharms), view, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
     initFilters(charms);
@@ -80,12 +80,7 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     });
     initCharmLearnListening(charms);
     resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
-    view.addCascadeLoadedListener(new CascadeLoadedListener() {
-      @Override
-      public void cascadeLoaded() {
-        setCharmVisuals();
-      }
-    });
+    listenForCascadeLoading(view);
     view.addCascadeLoadedListener(new CascadeLoadedListener() {
       @Override
       public void cascadeLoaded() {
@@ -190,7 +185,8 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     }
   }
 
-  private void setCharmVisuals() {
+    @Override
+  protected void setCharmVisuals() {
     ICharmGroup group = charmGroupChangeListener.getCurrentGroup();
     if (group == null) {
       return;

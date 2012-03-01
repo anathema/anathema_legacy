@@ -13,6 +13,7 @@ import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -28,6 +29,15 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   public AbstractCascadePresenter(IResources resources) {
     this.resources = resources;
   }
+
+    public void listenForCascadeLoading(ICascadeSelectionView view) {
+        view.addCascadeLoadedListener(new CascadeLoadedListener() {
+            @Override
+            public void cascadeLoaded() {
+                setCharmVisuals();
+            }
+        });
+    }
 
   protected IResources getResources() {
     return resources;
@@ -107,4 +117,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   }
 
   protected abstract void handleTypeSelectionChange(final IIdentificate cascadeType);
+
+    protected abstract void setCharmVisuals();
 }
