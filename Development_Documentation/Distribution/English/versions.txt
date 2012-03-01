@@ -32,7 +32,8 @@ http://anathema.sf.net
 * [2E] (Lunar Knack) "Changing Plumage Mastery" is now printed with its fellow knacks
 * [2E] Fixed name of (Ghost) "Essence Lasso Form"
 * [2E] Fixed prerequisites of (DB/Bureaucracy) "Benevolent Master's Blessing"
-* [2E] (Martial Arts) "Throne Shadow Style" extensions are available to Sidereals alone
+* [2E] (Martial Arts/Throne Shadow Style) Extensions are available to Sidereals alone
+* [2E] (Martial Arts/Sapphire Veil Style) Fixed typo in "Eternal Infatuation Dance"
 
 
 ===------------------------------------------------------------------------------===
