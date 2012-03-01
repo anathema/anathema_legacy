@@ -1,12 +1,5 @@
 package net.sf.anathema.character.impl.model.charm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
@@ -19,11 +12,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
-import net.sf.anathema.character.generic.magic.charms.ICharmTree;
-import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.magic.charms.*;
 import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
@@ -52,6 +41,8 @@ import net.sf.anathema.lib.collection.DefaultValueHashMap;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
+
+import java.util.*;
 
 public class CharmConfiguration implements ICharmConfiguration {
 
@@ -495,10 +486,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   public boolean isLearnable(String charmId) {
     ICharm charm = getCharmById(charmId);
-    if (charm == null) {
-      return false;
-    }
-    return isLearnable(charm);
+    return charm != null && isLearnable(charm);
   }
 
   protected boolean isLearnableWithoutPrereqs(ICharm charm) {
@@ -515,18 +503,12 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   public boolean isLearned(String charmId) {
     ICharm charm = getCharmById(charmId);
-    if (charm == null) {
-      return false;
-    }
-    return isLearned(charm);
+    return charm != null && isLearned(charm);
   }
 
   public boolean isUnlearnable(String charmId) {
     ICharm charm = getCharmById(charmId);
-    if (charm == null) {
-      return false;
-    }
-    return isUnlearnable(charm);
+    return charm != null && isUnlearnable(charm);
   }
 
   public final boolean isUnlearnable(ICharm charm) {

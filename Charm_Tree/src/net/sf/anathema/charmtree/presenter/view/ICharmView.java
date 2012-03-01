@@ -13,6 +13,4 @@ public interface ICharmView extends ICascadeSelectionView, IView, ISpecialCharmV
   void setCharmVisuals(String charmId, Color fillColor, int opacity);
 
   void initGui();
-
-  JComponent getCharmComponent();
 }

@@ -5,7 +5,7 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 
-import javax.swing.ListCellRenderer;
+import javax.swing.*;
 import java.awt.Dimension;
 
 public interface ICascadeSelectionView {
@@ -29,4 +29,7 @@ public interface ICascadeSelectionView {
       ListCellRenderer renderer,
       ICharmGroupChangeListener selectionListener,
       Dimension preferredSize);
+
+
+  JComponent getCharmComponent();
 }

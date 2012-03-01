@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
@@ -29,14 +30,9 @@ import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
+import java.awt.*;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import static java.util.Arrays.sort;
 
@@ -47,13 +43,17 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules = new HashMap<IExaltedRuleSet, CharmTreeIdentificateMap>();
   private final CascadeCharmTreeViewProperties viewProperties;
   private final ICascadeView view;
-    private ITemplateRegistry templateRegistry;
+  private ITemplateRegistry templateRegistry;
 
   public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory) {
     super(resources);
     this.viewProperties = new CascadeCharmTreeViewProperties(resources, generics, charmMapsByRules);
     this.view = factory.createCascadeView(viewProperties);
     this.templateRegistry = generics.getTemplateRegistry();
+    this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, templateRegistry, filterSet,
+                                                                 new CharmDisplayPropertiesMap(templateRegistry));
+    setView(view);
+    setSpecialPresenter(new NullSpecialCharmPresenter());
   }
 
   @Override
@@ -65,26 +65,22 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
     initCharacterTypeCharms(supportedCharmTypes, allCharmGroups);
     initMartialArts(supportedCharmTypes, allCharmGroups);
-    createCharmTypeSelector(supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]), view,
-            "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
-    this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, templateRegistry, filterSet,
-            new CharmDisplayPropertiesMap(templateRegistry));
+    createCharmTypeSelector(supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]), view, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
     createCharmGroupSelector(view, selectionListener, allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]));
     initRules();
     initFilters();
     createFilterButton(view);
-    initCharmTypeSelectionListening();
-    listenForCascadeLoading(view);
+    initPresentationInternal();
   }
 
-    @Override
-    protected void setCharmVisuals() {
-        for (ICharm charm : selectionListener.getCurrentGroup().getAllCharms()) {
-          view.setCharmVisuals(charm.getId(), Color.WHITE);
-        }
+  @Override
+  protected void setCharmVisuals() {
+    for (ICharm charm : selectionListener.getCurrentGroup().getAllCharms()) {
+      view.setCharmVisuals(charm.getId(), Color.WHITE);
     }
+  }
 
-    private void initCharacterTypeCharms(List<IIdentificate> supportedCharmTypes, List<ICharmGroup> allCharmGroups) {
+  private void initCharacterTypeCharms(List<IIdentificate> supportedCharmTypes, List<ICharmGroup> allCharmGroups) {
     for (ICharacterType type : CharacterType.values()) {
       for (IExaltedEdition edition : ExaltedEdition.values()) {
         ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type, edition);
@@ -119,11 +115,9 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
   }
 
   private void initRules() {
-    IChangeableJComboBox<IExaltedRuleSet> rulesComboBox = new ChangeableJComboBox<IExaltedRuleSet>(
-            ExaltedRuleSet.values(), false);
+    IChangeableJComboBox<IExaltedRuleSet> rulesComboBox = new ChangeableJComboBox<IExaltedRuleSet>(ExaltedRuleSet.values(), false);
     rulesComboBox.setRenderer(new IdentificateSelectCellRenderer("Ruleset.", getResources())); //$NON-NLS-1$
-    view.addRuleSetComponent(rulesComboBox.getComponent(),
-            getResources().getString("CharmCascades.RuleSetBox.Title")); //$NON-NLS-1$
+    view.addRuleSetComponent(rulesComboBox.getComponent(), getResources().getString("CharmCascades.RuleSetBox.Title")); //$NON-NLS-1$
     rulesComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedRuleSet>() {
       @Override
       public void valueChanged(IExaltedRuleSet newValue) {
@@ -137,8 +131,8 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
           return;
         }
         selectionListener.setEdition(selectedRuleset.getEdition());
-          Set<IIdentificate> typeSet = getCharmTreeMap(selectedRuleset).keySet();
-          IIdentificate[] cascadeTypes = typeSet.toArray(new IIdentificate[typeSet.size()]);
+        Set<IIdentificate> typeSet = getCharmTreeMap(selectedRuleset).keySet();
+        IIdentificate[] cascadeTypes = typeSet.toArray(new IIdentificate[typeSet.size()]);
         sort(cascadeTypes, new ByCharacterType());
         view.fillCharmTypeBox(cascadeTypes);
         view.unselect();
@@ -149,42 +143,17 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
   }
 
   private void initFilters() {
-      SourceBookCharmFilter sourceFilter = new SourceBookCharmFilter(selectedRuleset.getEdition());
-      EssenceLevelCharmFilter essenceLevelFilter = new EssenceLevelCharmFilter();
-      filterSet.init(sourceFilter, essenceLevelFilter);
+    SourceBookCharmFilter sourceFilter = new SourceBookCharmFilter(selectedRuleset.getEdition());
+    EssenceLevelCharmFilter essenceLevelFilter = new EssenceLevelCharmFilter();
+    filterSet.init(sourceFilter, essenceLevelFilter);
   }
 
   private CharmTreeIdentificateMap getCharmTreeMap(IExaltedRuleSet ruleSet) {
     return charmMapsByRules.get(ruleSet);
   }
 
-  private void initCharmTypeSelectionListening() {
-    view.addCharmTypeSelectionListener(new IObjectValueChangedListener<IIdentificate>() {
-      @Override
-      public void valueChanged(IIdentificate cascadeType) {
-        currentType = cascadeType;
-        handleTypeSelectionChange(cascadeType);
-      }
-    });
-  }
-
   @Override
-  protected void handleTypeSelectionChange(IIdentificate cascadeType) {
-    if (cascadeType == null) {
-      view.fillCharmGroupBox(new IIdentificate[0]);
-      return;
-    }
-    final ICharmTree charmTree = getCharmTree(cascadeType);
-    if (charmTree == null) {
-      view.fillCharmGroupBox(new IIdentificate[0]);
-      return;
-    }
-    ICharmGroup[] allCharmGroups = charmTree.getAllCharmGroups();
-    view.fillCharmGroupBox(sortCharmGroups(allCharmGroups));
-  }
-
-  @Override
-  public ICharmTree getCharmTree(IIdentificate type) {
+  protected GroupCharmTree getCharmTree(IIdentificate type) {
     return getCharmTreeMap(selectedRuleset).get(type);
   }
 
