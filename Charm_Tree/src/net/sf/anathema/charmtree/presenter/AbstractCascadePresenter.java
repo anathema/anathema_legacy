@@ -44,7 +44,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   }
 
   public void initPresentation() {
-    createCharmTypeSelector(getCurrentCharmTypes(), view); //$NON-NLS-1$
+    createCharmTypeSelector(getCurrentCharmTypes(), view);
     listenForCascadeLoading();
     initCharmTypeSelectionListening();
     specialCharmPresenter.initPresentation();

@@ -29,19 +29,26 @@ public class RulesChangedListener implements IObjectValueChangedListener<IExalte
 
   @Override
   public void valueChanged(IExaltedRuleSet newValue) {
-    IExaltedEdition currentEdition = null;
-    if (selectedRuleSet.hasDelegate()) {
-      currentEdition = selectedRuleSet.getEdition();
-    }
-    changeRules(newValue);
-    boolean editionHasNotChanged = selectedRuleSet.getEdition() == currentEdition;
-    if (editionHasNotChanged) {
+    IExaltedEdition currentEdition = getCurrentEdition();
+    exchangeRules(newValue);
+    if (editionIsStill(currentEdition)) {
       return;
     }
     handleEditionChange();
   }
 
-  private void changeRules(IExaltedRuleSet newValue) {
+  private boolean editionIsStill(IExaltedEdition currentEdition) {
+    return selectedRuleSet.getEdition() == currentEdition;
+  }
+
+  private IExaltedEdition getCurrentEdition() {
+    if (selectedRuleSet.hasDelegate()) {
+      return selectedRuleSet.getEdition();
+    }
+    return null;
+  }
+
+  private void exchangeRules(IExaltedRuleSet newValue) {
     selectedRuleSet.setDelegate(newValue);
   }
 

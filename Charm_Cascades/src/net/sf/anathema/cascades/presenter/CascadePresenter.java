@@ -63,7 +63,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
   protected ICharmGroup[] getCharmGroups() {
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
     initCharacterTypeCharms(allCharmGroups);
-    initMartialArts(allCharmGroups);
+    initMartialArtsCharms(allCharmGroups);
     return allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]);
   }
 
@@ -94,7 +94,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     }
   }
 
-  private void initMartialArts(List<ICharmGroup> allCharmGroups) {
+  private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups) {
     for (IExaltedEdition edition : ExaltedEdition.values()) {
       ICharacterTemplate template = templateRegistry.getDefaultTemplate(CharacterType.SIDEREAL, edition);
       for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
