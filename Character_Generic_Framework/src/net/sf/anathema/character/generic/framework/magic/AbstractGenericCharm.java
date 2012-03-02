@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.magic;
 
+import java.text.MessageFormat;
 import java.util.regex.Pattern;
 
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
@@ -21,7 +22,8 @@ public abstract class AbstractGenericCharm implements IMagicStats {
 
   public String[] getDetailStrings(IResources resources) {
 	String description = resources.getString(getId() + ".Description");
-	String cleanedDescription = description.replaceAll(Pattern.quote("${Trait}"), resources.getString(getTraitType().getId())); //$NON-NLS-1$
+	String cleanedDescription = description = MessageFormat.format(description,
+			  new Object[] { resources.getString(getTraitType().getId()) });
     return new String[] { cleanedDescription }; //$NON-NLS-1$
   }
 

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
+import java.text.MessageFormat;
 import java.util.regex.Pattern;
 
 import net.disy.commons.core.util.Ensure;
@@ -122,7 +123,8 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
 		  description = resources.getString(id + ".Description"); //$NON-NLS-1$
 	  
 	  if (description != null)
-		  description = description.replaceAll(Pattern.quote("${Trait}"), charm.getPrimaryTraitType().getId());
+		  description = MessageFormat.format(description,
+				  new Object[] { resources.getString(charm.getPrimaryTraitType().getId()) });
 	  
 	  return description;
   }
