@@ -72,6 +72,9 @@ public class BonusPointManagement implements IBonusPointManagement {
     bonusAdditionalPools = new AdditionalBonusPointPoolManagement(
         statistics.getTraitConfiguration(),
         statistics.getCharacterTemplate().getAdditionalRules().getAdditionalBonusPointPools());
+    
+    creationPoints.informTraits(statistics);
+    
     this.cost = statistics.getCharacterTemplate().getBonusPointCosts();
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(statistics);
@@ -111,8 +114,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     this.combos = statistics.getCombos();
     this.willpower = TraitCollectionUtilities.getWillpower(traitConfiguration);
     this.essence = TraitCollectionUtilities.getEssence(traitConfiguration);
-    
-    creationPoints.informTraits(statistics);
   }
 
   public void recalculate() {
