@@ -17,10 +17,13 @@ If you use the .zip distribution, please delete your "plugins" and "lib" folders
 -- Features --
 * The toolbar PDF icon now triggers a "quick print" that opens a character sheet without any dialogs
 * New preference: Paper format
+* Added facilities to show Charm descriptions in the tooltip.
+* [2E] Added such descriptions for Dragon-Blooded Charms. Texts taken from the official Wiki.
 * [Attila Kelemen] Support for Japanese (etc.) characters on the tabs
 * [Dirk Walter] Magic views adapt to window size
 * [2E] [Dirk Walter] Added missing Mutations from many sources
 * [2E] Added rules for Ghost-Blooded
+* [2E] (Dragon-Blooded) "Surging (Ability) Mastery" and "(Ability) Specialty Focus" show up as generic Charms on the sheet
 
 -- Bugfixes --
 * Linux-shell-script works once again.

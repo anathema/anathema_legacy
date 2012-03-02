@@ -1,7 +1,7 @@
 package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.CharmFilterSet;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmGroupChangeListener;
@@ -9,16 +9,18 @@ import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 
   private final ICascadeView cascadeView;
   private final CascadeCharmTreeViewProperties viewProperties;
 
-  public CascadeCharmGroupChangeListener(ICascadeView cascadeView, CascadeCharmTreeViewProperties viewProperties, CharmFilterSet charmFilterSet,
-                                         CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
-    super(new FriendlyCharmGroupArbitrator(), charmFilterSet, ExaltedEdition.FirstEdition, cascadeView.getCharmTreeRenderer(), charmDisplayPropertiesMap);
+  public CascadeCharmGroupChangeListener(ICascadeView cascadeView, CascadeCharmTreeViewProperties viewProperties,
+                                         CharmFilterSet charmFilterSet,
+                                         CharmDisplayPropertiesMap charmDisplayPropertiesMap, IExaltedEdition edition) {
+    super(new FriendlyCharmGroupArbitrator(), charmFilterSet, edition, cascadeView.getCharmTreeRenderer(), charmDisplayPropertiesMap);
     this.cascadeView = cascadeView;
     this.viewProperties = viewProperties;
   }
