@@ -40,7 +40,7 @@
     <bonusPointCosts uses="template/DbBonusPointCosts.template" />
     <creationPoints>
       <attributeDots primary="7" secondary="6" tertiary="4" />
-      <abilityDots general="22" favored="13" favoredPicks="3" />
+      <abilityDots general="11" favored="13" favoredPicks="3" />
       <backgroundDots count="12" />
       <virtueDots count="5" />
       <bonusPoints count="15" />
