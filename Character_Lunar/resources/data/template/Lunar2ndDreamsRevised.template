@@ -24,12 +24,12 @@
     <bonusPointCosts uses="template/LunarBonusPointCost2ndRevised.template" />
     <creationPoints>
       <attributeDots primary="8" secondary="6" tertiary="4" favoredPicks="1" favoredDots="2"/>
-      <abilityDots general="20" favored="5" favoredPicks="3" />
+      <abilityDots general="25" favored="0" favoredPicks="3" />
       <backgroundDots count="15" />
       <virtueDots count="5" />
       <bonusPoints count="18" />
       <specialtyDots count="4" />
-      <charmPicks favored="4" general="7" unique="1"/>
+      <charmPicks favored="0" general="12" unique="0"/>
     </creationPoints>
   </creation>
   <experience>

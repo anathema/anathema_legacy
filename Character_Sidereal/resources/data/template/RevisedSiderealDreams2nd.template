@@ -4,7 +4,7 @@
     <abilityGroups uses="template/SiderealAbilityGroup2nd.template" />
     <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
     <essence uses="template/SiderealEssence.template" />
-    <traitCollection uses="template/SiderealTraitCollectionDreams2nd.template"/>
+    <traitCollection uses="template/SiderealTraitCollectionDreamsRevised2nd.template"/>
     <magicTemplate uses="template/SiderealMagic2nd.template"/>
     <presentation uses="template/SiderealPresentation.template"/>
     <additionalRules uses="template/SiderealAdditionalRules2nd.template">
@@ -35,12 +35,12 @@
     <bonusPointCosts uses="template/RevisedSiderealBonusPointCost2nd.template" />
     <creationPoints>
       <attributeDots primary="8" secondary="6" tertiary="4"/>
-      <abilityDots general="15" favored="10" favoredPicks="4" />
-      <backgroundDots count="10" />
+      <abilityDots general="25" favored="0" favoredPicks="4" />
+      <backgroundDots count="15" />
       <specialtyDots count="4" />
       <virtueDots count="5" />
       <bonusPoints count="18" />
-      <charmPicks favored="5" general="5"/>
+      <charmPicks favored="0" general="12"/>
     </creationPoints>
   </creation>
   <experience>

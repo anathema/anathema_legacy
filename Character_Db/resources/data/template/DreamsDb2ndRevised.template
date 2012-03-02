@@ -47,7 +47,7 @@
       <virtueDots count="5" />
       <bonusPoints count="18" />
       <specialtyDots count="4" />
-      <charmPicks favored="5" general="5" />
+      <charmPicks favored="0" general="10" />
     </creationPoints>
   </creation>
   <experience>
