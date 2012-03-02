@@ -11,7 +11,7 @@ import net.sf.anathema.lib.util.Identificate;
 
 public abstract class AbstractMagicStats<T extends IMagic> implements IMagicStats {
 
-  public static final MagicInfoStringBuilder createMagicInfoStringBuilder(final IResources resources) {
+  public static MagicInfoStringBuilder createMagicInfoStringBuilder(final IResources resources) {
     CostStringBuilder essenceBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.Mote"); //$NON-NLS-1$
     CostStringBuilder willpowerBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.Willpower"); //$NON-NLS-1$
     HealthCostStringBuilder healthBuilder = new HealthCostStringBuilder(resources, "CharacterSheet.Charm.HealthLevel"); //$NON-NLS-1$
@@ -25,10 +25,12 @@ public abstract class AbstractMagicStats<T extends IMagic> implements IMagicStat
     this.magic = magic;
   }
 
+  @Override
   public IIdentificate getName() {
     return new Identificate(magic.getId());
   }
 
+  @Override
   public String getCostString(IResources resources) {
     MagicInfoStringBuilder infoBuilder = createMagicInfoStringBuilder(resources);
     return infoBuilder.createCostString(magic);
