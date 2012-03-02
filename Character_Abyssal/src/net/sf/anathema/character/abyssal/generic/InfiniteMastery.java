@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.resources.IResources;
 
 public class InfiniteMastery extends AbstractGenericCharm {
@@ -35,9 +35,9 @@ public class InfiniteMastery extends AbstractGenericCharm {
     return new QualifiedAmountDuration("1", "scene").getText(resources); //$NON-NLS-1$ //$NON-NLS-2$
   }
   
-  public FavoringTraitType getTraitType()
+  public ICharacterType getCharacterType()
   {
-	  return CharacterType.ABYSSAL.getFavoringTraitType();
+	  return CharacterType.ABYSSAL;
   }
 
   public String getType(IResources resources) {

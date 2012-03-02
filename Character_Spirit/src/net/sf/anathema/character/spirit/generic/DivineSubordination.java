@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.resources.IResources;
 
 public class DivineSubordination extends AbstractGenericCharm{
@@ -39,9 +39,9 @@ public class DivineSubordination extends AbstractGenericCharm{
     return SimpleDuration.INSTANT_DURATION.getText(resources);
   }
   
-  public FavoringTraitType getTraitType()
+  public ICharacterType getCharacterType()
   {
-	  return CharacterType.SPIRIT.getFavoringTraitType();
+	  return CharacterType.SPIRIT;
   }
 
   @Override
